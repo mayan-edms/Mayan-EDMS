@@ -40,6 +40,7 @@ class Document(models.Model):
     class Meta:
         verbose_name = _(u'document')
         verbose_name_plural = _(u'documents')
+        ordering = ['-date_updated', '-date_added']
         
     def __unicode__(self):
         return self.uuid

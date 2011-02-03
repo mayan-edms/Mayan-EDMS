@@ -4,3 +4,4 @@
 * Create indexing filesystem folders from document type metadata type
 * Validate GET data before saving file
 * Handle NULL mimetypes during model save
+* Document detail to view document metadata

@@ -39,7 +39,7 @@ def document_create(request):
     return wizard(request)
 
 
-def upload_document_with_type(request, document_type_id):
+def upload_document_with_type(request, document_type_id, multiple=True):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES, initial={'document_type':document_type})
@@ -53,7 +53,10 @@ def upload_document_with_type(request, document_type_id):
                 )
                 document_metadata.save()
                 messages.success(request, _(u'Document uploaded successfully.'))
-                return HttpResponseRedirect(reverse('document_list'))
+                if multiple:
+                    return HttpResponseRedirect(request.get_full_path())
+                else:
+                    return HttpResponseRedirect(reverse('document_list'))
     else:
         form = DocumentForm(initial={'document_type':document_type})
         
