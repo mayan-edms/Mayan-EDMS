@@ -1,0 +1,22 @@
+
+[indentation]
+indent_width=4
+indent_type=0
+indent_hard_tab_width=8
+detect_indent=false
+indent_mode=2
+
+[project]
+name=mayan
+base_path=/home/rosarior/development/git/mayan/mayan/misc
+description=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=2
+FILE_NAME_0=4811;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/settings.py;0
+FILE_NAME_1=0;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/urls.py;0
+FILE_NAME_2=1086;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/models.py;0
