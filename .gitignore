@@ -3,5 +3,5 @@
 *.pyo
 site_media/photologue/photos/*
 site_media/photologue/photos/cache/*
-django_inventory.sqlite
+*.sqlite
 settings_local.py
