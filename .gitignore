@@ -5,3 +5,4 @@ site_media/photologue/photos/*
 site_media/photologue/photos/cache/*
 *.sqlite
 settings_local.py
+site_media/documents/*

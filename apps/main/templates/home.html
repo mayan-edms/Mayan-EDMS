@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load project_tags %}
+{% load i18n %}
+{% block content %}
+    <div class="content">
+        <div class="tc"><h1>{% project_name %}</h1></div>
+        <div class="tc"><img src="{{ MEDIA_URL }}images/1068504_92921456.jpg" /></div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <div id="footer">
+        <div class="block">
+            <p>Copyright &copy; 2011 Roberto Rosario.</p>
+        </div>
+    </div>
+{% endblock %}

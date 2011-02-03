@@ -1,0 +1,30 @@
+{% load i18n %}
+{% if title %}
+    {% if striptags %}
+        {{ title|capfirst|striptags }}
+    {% else %}
+        {{ title|capfirst|safe }}
+    {% endif %}
+{% else %}
+    {% if read_only %}
+        {% if object_name %}
+            {% blocktrans %}Details for {{ object_name }}: {{ object }}{% endblocktrans %}
+        {% else %}
+            {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
+        {% endif %}
+    {% else %}
+        {% if object %}
+            {% if object_name %}
+                {% blocktrans %}Edit {{ object_name }}:{% endblocktrans %} {% if not striptags %}<a href="{{ object.get_absolute_url }}">{% endif %}{{ object|capfirst }}{% if not striptags %}</a>{% endif %}
+            {% else %}
+                {% trans "Edit" %}: {% if not striptags %}<a href="{{ object.get_absolute_url }}">{% endif %}{{ object|capfirst }}{% if not striptags %}</a>{% endif %}
+            {% endif %}
+        {% else %}
+            {% if object_name %}
+                {% blocktrans %}Create new {{ object_name }}{% endblocktrans %}
+            {% else %}
+                {% trans "Create" %}
+            {% endif %}
+        {% endif %}                
+    {% endif %}
+{% endif %}

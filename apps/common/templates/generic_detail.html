@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load styling %}
+{% load generic_views_helpers %}
+{% block title %} :: {% with "true" as read_only %}{% with "true" as striptags %}{% include "calculate_form_title.html" %}{% endwith %}{% endwith %}{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+    $(function() {
+        $("#subform form :input").each(function() {
+            this.disabled = true;
+        });
+    });
+    </script>
+{% endblock %}
+
+{% block sidebar %}
+    {% for subtemplate in sidebar_subtemplates %}
+        {% include subtemplate %}
+    {% endfor %}
+{% endblock %}
+
+{% block stylesheets %}
+    <style type="text/css">
+        #subform form  textarea, 
+        #subform form  select option,
+        #subform form  input, 
+        #subform form  select, 
+        #subform form  input { background: none; color: black; border: none; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="subform">
+        {% with "true" as read_only %}
+            {% include "generic_form_subtemplate.html" %}
+        {% endwith %}
+    </div>
+
+    {% for subtemplate in subtemplates %}
+        <div class="content">
+        {% include subtemplate %}
+        </div>
+    {% endfor %}
+
+    {% for subtemplate in subtemplates_dict %}
+    {% with subtemplate.title as title %}
+    {% with subtemplate.object_list as object_list %}
+    {% with subtemplate.extra_columns as extra_columns %}
+    {% with subtemplate.hide_object as hide_object %}
+    {% with subtemplate.main_object as main_object %}
+        <div class="content">
+        {% include subtemplate.name %}
+        </div>
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endfor %}
+
+    
+{% endblock %}
+

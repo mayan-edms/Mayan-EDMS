@@ -1,0 +1,6 @@
+{% extends "web_theme_login.html" %}
+{% load i18n %}
+{% load project_tags %}
+
+{% block html_title %}{% project_name %} :: {% trans "Login" %}{% endblock %}
+{% block project_name %}{% project_name %}{% endblock %}

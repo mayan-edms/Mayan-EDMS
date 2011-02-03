@@ -1,0 +1,12 @@
+.tc {
+    text-align: center;
+}
+
+#main-navigation ul li a {
+  line-height: 22px;
+}
+
+.secondary-navigation ul li a {
+  line-height: 23px;
+}
+ 

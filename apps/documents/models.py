@@ -1,5 +1,6 @@
 import os
 import uuid
+import mimetypes
 from datetime import datetime
 
 from django.db import models
@@ -13,9 +14,8 @@ def get_filename_from_uuid(instance, filename, directory='documents'):
 
 def populate_file_extension_and_mimetype(instance, filename):
     # First populate the file extension and mimetype
-    instance.file_mimetype, encoding = guess_type(filename) or ""
-    slug, instance.file_extension = os.path.splitext(filename)
-    #instance.slug, instance.extension = os.path.splitext(filename)
+    instance.file_mimetype, encoding = mimetypes.guess_type(filename) or ""
+    instance.file_filename, instance.file_extension = os.path.splitext(filename)
 
 class DocumentType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))    
@@ -30,64 +30,26 @@ class Document(models.Model):
     """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     file = models.FileField(upload_to=get_filename_from_uuid)#lambda i,f: 'documents/%s' % i.uuid)
-
     uuid = models.CharField(max_length=36, default=lambda:unicode(uuid.uuid4()), blank=True, editable=False)
-    #file = models.FileField(upload_to=get_filename_from_uuid)#lambda i,f: 'documents/%s' % i.uuid)
-    #file_mimetype = models.CharField(max_length=50, default="", editable=False)
-    #file_extension = models.CharField(max_length=10, default="", editable=False)
-
+    file_mimetype = models.CharField(max_length=50, default="", editable=False)
+    file_filename = models.CharField(max_length=64, default="", editable=False)
+    file_extension = models.CharField(max_length=10, default="", editable=False)
     date_added   = models.DateTimeField("added", auto_now_add=True)
     date_updated = models.DateTimeField("updated", auto_now=True)
     
-    
-    #def save_file(self, contents, save=False):
-    #    " Save a file, creating a new document_version if necessary. "
-    #    self.file.save(contents.name, contents, save=save)
-    #    # This is now done elsewhere
-    #    #self.file_mimetype = guess_type(contents.name) or ""
-    #    #try:
-    #        #self.file_extension = contents[contents.rindex(".")+1:] or ""
-    #    #except ValueError:
-    #        #pass
-    #    #self.save()
-
     class Meta:
         verbose_name = _(u'document')
-        verbose_name_plural = _(u"documents")
+        verbose_name_plural = _(u'documents')
         
     def __unicode__(self):
         return self.uuid
 
     #@property
     #def friendly_filename(self):
-    #    """ A friendly filename (ie not the UUID) for the user to see when they download.
+    #    ''' A friendly filename (ie not the UUID) for the user to see when they download.
     #        Overload this with eg a slug field. 
-    #    """
+    #    '''
     #    return 'untitled.%s' % self.file_extension
-
-
-    #def already(self, mode, request):
-    #    """ Tests if a user has already viewed, downloaded or sent this document. 
-    #        Assumes this model has a log of document interactions.
-    #    """
-    #    mode = getattr(DocumentInteractionBase.MODES, mode.upper())
-    #
-    #    if request.user.is_anonymous():
-    #        return bool(self.interactions.filter(mode=mode, session_key=request.session.session_key))
-    #    else:
-    #        return bool(self.interactions.filter(mode=mode, user=request.user))
-
-    #@property               
-    #def file_thumbnail_small(self):
-    #    # TODO: subclass DjangoThumbnail to remove UUID from URL
-    #    if DjangoThumbnail:
-    #        return DjangoThumbnail(self.file.name, (200,200))
-
-    #@property               
-    #def file_thumbnail_medium(self):
-    #    # TODO: subclass DjangoThumbnail to remove UUID from URL
-    #    if DjangoThumbnail:
-    #        return DjangoThumbnail(self.file.name, (600,600))
 
 
 class MetadataType(models.Model):
@@ -101,22 +63,36 @@ class MetadataType(models.Model):
         
     class Meta:
         verbose_name = _(u'metadata type')
-        verbose_name_plural = _(u"metadata types")
+        verbose_name_plural = _(u'metadata types')
 
 #    @models.permalink
 #    def get_absolute_url(self):
 #        return ('state_list', [])
 
 
-class DocumentTypeMetadataTypeConnector(models.Model):
+class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
     #override default
-    #create index dir
+    #create index dir? -bool
+    #required? -bool
     
     def __unicode__(self):
         return '%s <-> %s' %(self.document_type, self.metadata_type)
 
     class Meta:
-        verbose_name = _(u"document type metadata type connector")
-        verbose_name_plural = _(u"document type metadata type connectors")
+        verbose_name = _(u'document type metadata type connector')
+        verbose_name_plural = _(u'document type metadata type connectors')
+
+
+class DocumentMetadata(models.Model):
+    document = models.ForeignKey(Document, verbose_name=_(u'document'))
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
+    value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'))
+ 
+    def __unicode__(self):
+        return '%s <-> %s' %(self.document, self.metadata_type)
+
+    class Meta:
+        verbose_name = _(u'document metadata')
+        verbose_name_plural = _(u'document metadata')

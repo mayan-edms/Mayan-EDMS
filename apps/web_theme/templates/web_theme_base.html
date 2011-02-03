@@ -1,0 +1,72 @@
+{% load i18n %}
+{% load theme_tags %}
+{% get_theme as web_theme %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
+
+        <title>{% block html_title %}{% endblock %}</title>
+
+        {% block keywords %}{% endblock %}		
+
+        <link rel="stylesheet" href="{{ MEDIA_URL }}web_theme_media/stylesheets/base.css" type="text/css" media="screen" />
+        <link rel="stylesheet" id="current-theme" href="{{ MEDIA_URL }}web_theme_media/stylesheets/themes/{{ web_theme }}/style.css" type="text/css" media="screen" />
+        {% block web_theme_stylesheets %}{% endblock %}
+
+        <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery-1.3.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.scrollTo.js"></script>
+        <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.localscroll.js"></script>
+        {% block web_theme_javascript %}{% endblock %}
+	</head>
+	<body>
+        <div id="container">
+            {% if user.is_anonymous %}
+                <div id="box">
+                    {% block content_plain %}{% endblock %}
+                </div>
+            {% endif %}
+            {% if not user.is_anonymous %}
+                <div id="header">
+                    <h1><a href="{% url home %}">{% block web_theme_project_name %}{% endblock %}</a></h1>
+                        <div id="user-navigation">
+                            <ul class="wat-cf">
+                                {% block web_theme_user_navigation %}{% endblock %}
+                            </ul>
+                        </div>
+                    <div id="main-navigation">
+                        <ul class="wat-cf">
+                            {% block web_theme_main_navigation %}{% endblock %}
+                        </ul>
+                    </div>
+                </div>
+                <div id="wrapper" class="wat-cf">
+                    <div id="main">
+                        <div class="block" id="block-text">
+                            {% block web_theme_secondary_navigation %}{% endblock %}
+                            {% if messages %}
+                                <div class="inner">
+                                    <div class="flash">
+                                        {% for message in messages %}
+                                            <div class="message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}">
+                                                <p onclick="$(this).parent().parent().fadeOut(); return false;">{{ message }}</p>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% block web_theme_messages %}{% endblock %}
+                            {% block web_theme_content %}{% endblock %}
+                        </div>  
+                        {% block web_theme_footer %}{% endblock %}
+                    </div> 
+                    <div id="sidebar">
+                        {% block web_theme_sidebar %}{% endblock %}
+                    </div>                    
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>

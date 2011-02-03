@@ -1,0 +1,33 @@
+{% if is_paginated %}
+{% load i18n %}
+    <div class="actions-bar wat-cf">
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a class="prev_page" href="?page={{ page_obj.previous_page_number }}{{ getvars }}">&lsaquo;&lsaquo; {% trans "Previous" %}</a>
+            {% else %}
+                <span class="disabled prev_page">&lsaquo;&lsaquo; {% trans "Previous" %}</span>
+            {% endif %}
+            
+            {% for page in pages %}
+                
+                {% if page %}
+                    
+                    {% ifequal page page_obj.number %}
+                        <span class='current'>{{ page }}</span>
+                    {% else %}
+                        <a href="?page={{ page }}{{ getvars }}{{ hashtag }}">{{ page }}</a>
+                    {% endifequal %}
+                {% else %}
+                    <span class="disabled">...</span>
+                {% endif %}
+             
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <a class="next_page" href="?page={{ page_obj.next_page_number }}{{ getvars }}">{% trans "Next" %} &rsaquo;&rsaquo;</a>
+            {% else %}
+                <span class='disabled next-page'>{% trans "Next" %} &rsaquo;&rsaquo;</span>
+            {% endif %}
+        </div>
+    </div>
+
+{% endif %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load styling %}
+{% add_classes_to_form form %}
+{% block content %}
+    {% with step_title as title %}
+    {% with previous_fields as hidden_fields %}
+        {% if form.management_form %}
+            {% with "true" as form_display_mode_table %}
+                {% include "generic_form_subtemplate.html" %}
+            {% endwith %}
+        {% else %}
+            {% include "generic_form_subtemplate.html" %}
+        {% endif %}
+    {% endwith %}
+    {% endwith %}
+{% endblock %}

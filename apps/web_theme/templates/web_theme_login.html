@@ -1,0 +1,23 @@
+{% extends "web_theme_base.html" %}
+{% load i18n %}
+{% block html_title %}{% trans "Login" %}{% endblock %}
+{% block content_plain %}
+    <div id="box">
+        <h1>{% block project_name %}{% endblock %}</h1>
+        <div class="block" id="block-login">
+            <h2>{% trans "Login" %}</h2>
+            <div class="content login">
+                <form action="." method="post" class="form login">{% csrf_token %}
+                    <div class="group wat-cf">
+                        {% include "generic_form_instance.html" %}
+                        <input type="hidden" name="next" value="{{ next|escape }}" />
+                        <div class="group navform wat-cf">
+                        <button class="button" type="submit">
+                            <img src="{{ MEDIA_URL }}web_theme_media/images/icons/key.png" alt="Save" /> Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

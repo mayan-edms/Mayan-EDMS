@@ -1,0 +1,71 @@
+{% load i18n %}
+{% load attribute_tags %}
+{% load pagination_tags %}
+{% load navigation %}
+
+{% if side_bar %}
+    <div class="block">
+    <h3>
+        {{ title }}
+    </h3>
+    <div class="content">
+        <p>
+{% else %}    
+    {% autopaginate object_list %} 
+    <div class="content">
+    <h2 class="title">
+        {% ifnotequal page_obj.paginator.num_pages 1 %}
+            {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total %}List of {{ title }} ({{ start }} - {{ end }} out of {{ total }}){% endblocktrans %}
+        {% else %}
+            {% blocktrans with page_obj.paginator.object_list|length as total %}List of {{ title }} ({{ total }}){% endblocktrans %}
+        {% endifnotequal %}
+    </h2>
+
+<div class="inner">
+{% endif %}
+
+  <form action="#" class="form">
+    <table class="table">
+    <tbody>
+      {% if not hide_header %}
+          <tr>
+            {% if not hide_object %}
+                <th>{% trans 'Identifier' %}</th>
+            {% endif %}
+            {% for column in extra_columns %}
+                <th>{{ column.name|capfirst }}</th>
+            {% endfor %}        
+            {% if not hide_links %}
+                <th class="">&nbsp;</th>
+            {% endif %}
+          </tr>
+      {% endif %}
+        {% for object in object_list %}
+            <tr class="{% cycle 'odd' 'even2' %}">
+            {% if not hide_object %}
+                {% if main_object %}
+                    {% with object|object_property:main_object as object %}
+                        <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
+                    {% endwith %}
+                {% else %}
+                    <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
+                {% endif %}
+            {% endif %}
+                {% for column in extra_columns %}
+                    <td>{{ object|object_property:column.attribute|safe }}</td>
+                {% endfor %}
+                {% if not hide_links %}
+                    <td class='last'>
+                        {% object_navigation_template %}
+                    </td>
+                {% endif %}
+            </tr>
+        {% empty %}
+            <tr><td colspan=99 class="tc">{% blocktrans %}There are no {{ title }}{% endblocktrans %}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% paginate %}          
+  </form>
+</div>
+</div>

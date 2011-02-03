@@ -1,0 +1,102 @@
+{% extends "web_theme_base.html" %}
+{% load i18n %}
+{% load project_tags %}
+{% load navigation %}
+
+{% block html_title %}{% project_name %}{% block title %}{% endblock %}{% endblock %}
+
+{% block web_theme_project_name %}{% project_name %}{% endblock %}
+
+{% block web_theme_stylesheets %}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/override.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />
+    {% block stylesheets %}{% endblock %}
+{% endblock %}
+
+{% block web_theme_user_navigation %}
+    <li><strong>{% trans 'User' %}:</strong>
+        {% if user.is_anonymous %}
+            {% trans 'Anonymous' %}
+        {% else %}
+            {{ user }}
+            <a href="{% url password_change_view %}">({% trans 'New password' %})</a>
+        {% endif %}
+    </li>
+    {% if user.is_staff %}
+        <li><a href="/admin">{% trans "Admin site" %}</a></li>
+    {% endif %}
+    
+    
+    <li>
+        <form action="{% url set_language %}" method="post">{% csrf_token %}
+            <select name="language">
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="{% trans 'Go' %}" />
+        </form>                                
+    </li>
+    <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}{% endif %}">{% if user.is_anonymous %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
+{% endblock %}
+
+{% block web_theme_main_navigation %}
+    {% main_navigation %}                    
+    {% for link in navigation_main_links %}
+        <li class="{% if link.first %}first {% endif %}{% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
+    {% endfor %}
+{% endblock %}
+
+{% block web_theme_secondary_navigation %}
+    {% main_navigation %}  
+    {% if navigation_secondary_links %}
+            <div class="secondary-navigation">
+                <ul class="wat-cf">
+                    {% for link in navigation_secondary_links %}
+                        <li class="{% if link.first %}first {% endif %}{% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
+                    {% endfor %}     
+                </ul>
+            </div>     
+    {% endif %}
+{% endblock %}
+
+{% block web_theme_sidebar %}
+    {% get_object_navigation_links %}
+    {% if object_navigation_links %}
+        <div class="block">
+            {% if object %}
+                {% if object_name %}
+                    <h3>{% blocktrans %}Actions for {{ object_name }}: {{ object }}{% endblocktrans %}</h3>
+                {% else %}
+                    <h3>{% blocktrans %}Actions for: {{ object }}{% endblocktrans %}</h3>
+                {% endif %}
+            {% else %}
+                <h3>}{% trans 'Actions' %}</h3>
+            {% endif %}
+            <ul class="navigation">
+                {% with 'true' as as_li %}
+                    {% include 'generic_navigation.html' %}
+                {% endwith %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% get_object_navigation_links "sidebar" %}
+        {% if object_navigation_links %}
+        <div class="block">
+            <h3>{% trans 'Other available actions' %}</h3>
+            <ul class="navigation">
+                {% with 'true' as as_li %}
+                    {% include 'generic_navigation.html' %}
+                {% endwith %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% block sidebar %}{% endblock %}
+{% endblock %}
+
+
+{% block web_theme_content %}{% block content %}{% endblock %}{% endblock %}
+
+{% block web_theme_footer %}{% block footer %}{% endblock %}{% endblock %}

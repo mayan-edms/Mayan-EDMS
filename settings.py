@@ -95,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -115,7 +116,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'web_theme',
+    'main',
+    'common',
     'documents',
+    'pagination',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

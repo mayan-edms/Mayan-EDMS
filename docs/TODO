@@ -1,0 +1,6 @@
+* Filter by metadata
+* Jquery upload document upload form with ajax widget
+* Filterform date filtering widget
+* Create indexing filesystem folders from document type metadata type
+* Validate GET data before saving file
+* Handle NULL mimetypes during model save

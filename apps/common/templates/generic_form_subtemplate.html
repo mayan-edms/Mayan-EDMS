@@ -1,0 +1,87 @@
+{% load i18n %}
+                
+{% if side_bar %}
+    <div class="block">
+    <h3>
+{% else %}
+    <div class="content">    
+    <h2 class="title">
+{% endif %}
+        
+{% include "calculate_form_title.html" %}
+
+{% if side_bar %}
+    </h3>
+    <div class="content">
+        <p>
+{% else %}
+    </h2>
+    <div class="inner">
+{% endif %}
+    
+    {% if form.is_multipart %}
+        <form enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="" class="form">
+    {% else %}
+        <form method="{{ submit_method|default:'post' }}" action="" class="form">
+    {% endif %}
+        {% if step_field %}
+            <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+        {% endif %}
+        
+        {% if submit_method != 'GET' and submit_method != 'get' %}
+            {% csrf_token %}
+        {% endif %}
+
+        {% for hidden_field in hidden_fields %}
+           {{ hidden_field.as_hidden }}
+        {% endfor %}
+                   
+        {% if form.management_form %}
+            {% with form as formset %}
+                {{ formset.management_form }}
+
+                {% if form_display_mode_table %}
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            {% for field in formset.forms.0.visible_fields %}
+                                <th>
+                                    {{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}
+                                </th>
+                            {#{% if field.help_text %}<span class="description">{{ field.help_text }}</span>{% endif %}#}
+                            {% endfor %} 
+                        </tr>
+                {% endif %}
+                
+                {% for form in formset.forms %}
+                    {% include "generic_form_instance.html" %}
+                {% endfor %}
+                {% if form_display_mode_table %}
+                    </tbody>
+                    </table>
+                {% endif %}
+            {% endwith %}
+        {% else %}
+            {% include "generic_form_instance.html" %}
+        {% endif %}
+    
+        {% if not read_only %}
+        <div class="group navform wat-cf">
+            <button class="button" type="submit">
+                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
+            </button>
+            {% comment %}
+            <a href="#header" class="button">
+                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/cross.png" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
+            </a>
+            {% endcomment %}
+        </div>
+        {% endif %}
+    </form>
+    {% if sidebar %}
+        </p></div></div>
+    {% else %}
+        </div></div>
+    {% endif %}
+
+    
