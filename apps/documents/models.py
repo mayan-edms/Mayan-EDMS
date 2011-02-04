@@ -28,7 +28,11 @@ def get_filename_from_uuid(instance, filename, directory='documents'):
 def populate_file_extension_and_mimetype(instance, filename):
     # First populate the file extension and mimetype
     instance.file_mimetype, encoding = mimetypes.guess_type(filename) or ""
-    instance.file_filename, instance.file_extension = os.path.splitext(filename)
+    filename, extension = os.path.splitext(filename)
+    instance.file_filename = filename
+    #remove prefix '.'
+    instance.file_extension = extension[1:]
+    
 
 class DocumentType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))    
@@ -74,12 +78,7 @@ class Document(models.Model):
                     else: 
                         raise 'Unable to create metadata indexing directory.'
 
-                if SLUGIFY_PATH:
-                    extsep = os.extsep
-                else:
-                    extsep = ''
-                    
-                target_filepath = os.path.join(target_directory, extsep.join([slugify(self.file_filename), slugify(self.file_extension)]))
+                target_filepath = os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)]))
                     
                 try:
                     os.symlink(os.path.abspath(self.file.path), target_filepath)
