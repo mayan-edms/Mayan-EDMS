@@ -61,7 +61,10 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 document_metadata.save()
 
             messages.success(request, _(u'Document uploaded successfully.'))
-            instance.create_fs_links()
+            error_msg = instance.create_fs_links()
+            if error_msg:
+                messages.error(request, error_msg)
+                
             if multiple:
                 return HttpResponseRedirect(request.get_full_path())
             else:

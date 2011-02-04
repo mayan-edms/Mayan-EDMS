@@ -87,17 +87,16 @@ class Document(models.Model):
                     if exc.errno == errno.EEXIST:
                         pass
                     else: 
-                        raise 'Unable to create metadata indexing directory.'
+                        return _(u'Unable to create metadata indexing directory.')
 
                 target_filepath = os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)]))
-                    
                 try:
                     os.symlink(os.path.abspath(self.file.path), target_filepath)
                 except OSError as exc:
                     if exc.errno == errno.EEXIST:
                         pass
                     else: 
-                        raise 'Unable to create metadata indexing directory.'
+                        return _(u'Unable to create metadata indexing symbolic link.')
 
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
