@@ -1,0 +1,4 @@
+Django==1.2.4
+distribute==0.6.10
+django-pagination==1.0.7
+wsgiref==0.1.2
