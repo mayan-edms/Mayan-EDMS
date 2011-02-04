@@ -56,6 +56,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 document_metadata.save()
 
             messages.success(request, _(u'Document uploaded successfully.'))
+            instance.create_fs_links()
             if multiple:
                 return HttpResponseRedirect(request.get_full_path())
             else:
@@ -89,5 +90,4 @@ def document_view(request, document_id):
                 'hide_link':True,
             },
         ],  
-    }, context_instance=RequestContext(request))    
-    
+    }, context_instance=RequestContext(request))

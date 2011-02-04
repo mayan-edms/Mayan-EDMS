@@ -1,14 +1,18 @@
+import errno
 import os
 import uuid
 import mimetypes
 from datetime import datetime
 
+from django.conf import settings
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from dynamic_search.api import register
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
+from documents.conf.settings import FILESERVING_PATH
 
 
 def get_filename_from_uuid(instance, filename, directory='documents'):
@@ -48,10 +52,35 @@ class Document(models.Model):
         
     def __unicode__(self):
         return self.uuid
-
+        
     @models.permalink
     def get_absolute_url(self):
         return ('document_view', [self.id])
+
+    def create_fs_links(self):
+        for metadata in self.documentmetadata_set.all():
+            print metadata.metadata_type.name
+            
+            if metadata.metadata_type.documenttypemetadatatype_set.all()[0].create_directory_link:
+                target_directory = os.path.join(FILESERVING_PATH, slugify(metadata.metadata_type.name), slugify(metadata.value))
+                try:
+                    os.makedirs(target_directory)
+                    
+                except OSError as exc:
+                    if exc.errno == errno.EEXIST:
+                        pass
+                    else: 
+                        raise 'Unable to create metadata indexing directory.'
+
+                target_filepath = os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)]))
+                try:
+                    os.symlink(os.path.abspath(self.file.path), target_filepath)
+                except OSError as exc:
+                    if exc.errno == errno.EEXIST:
+                        pass
+                    else: 
+                        raise 'Unable to create metadata indexing directory.'
+
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
 
@@ -73,9 +102,8 @@ class MetadataType(models.Model):
 class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    #create_directory = nmode
+    create_directory_link = models.BooleanField(verbose_name=_(u'create directory link'))
     #override default
-    #create index dir? -bool
     #required? -bool
     
     def __unicode__(self):
