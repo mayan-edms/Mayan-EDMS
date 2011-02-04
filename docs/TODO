@@ -6,3 +6,5 @@
 * Handle NULL mimetypes during model save
 * Document detail to view document metadata
 * Integrate with http://code.google.com/p/pytesser/
+* File renaming dropdown
+* Delete symlinks when document is deleted of metadata changed
