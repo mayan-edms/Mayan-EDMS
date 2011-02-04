@@ -1,7 +1,8 @@
-* Fix repeated search results                                           - DONE
+* Fix repeated search results                                          - DONE
 * File renaming dropdown                                               - DONE
 * Create indexing filesystem folders from document type metadata type  - DONE
 * Document detail to view document metadata                            - DONE
+* Add file checksums (hashlib)                                         - DONE
 * Filter by metadata
 * Jquery upload document upload form with ajax widget
 * Filterform date filtering widget
@@ -10,6 +11,5 @@
 * Integrate with http://code.google.com/p/pytesser/
 * Delete symlinks when document is deleted of metadata changed
 * Check duplicated files using checksum
-* Add file checksums (hashlib)
 * If theres only one document type on db skip step 1 of wizard
 

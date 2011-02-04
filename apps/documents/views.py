@@ -81,6 +81,8 @@ def document_view(request, document_id):
         {'label':_(u'File extension'), 'field':'file_extension'},
         {'label':_(u'File mimetype'), 'field':'file_mimetype'},
         {'label':_(u'Date added'), 'field':'date_added'},
+        {'label':_(u'Checksum'), 'field':'checksum'},
+        {'label':_(u'UUID'), 'field':'uuid'}
     ])
     
     return render_to_response('generic_detail.html', {

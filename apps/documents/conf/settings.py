@@ -1,4 +1,5 @@
 import datetime
+import hashlib
 
 from django.conf import settings
 
@@ -11,3 +12,4 @@ STAGING_DIRECTORY = getattr(settings, 'DOCUMENTS_STAGIN_DIRECTORY', '/tmp')
 FILESERVING_PATH = getattr(settings, 'DOCUMENTS_FILESERVING_PATH', '/tmp')
 DELETE_ORIGINAL = getattr(settings, 'DOCUMENTS_DELETE_ORIGINAL', False)
 SLUGIFY_PATH = getattr(settings, 'DOCUMENTS_SLUGIFY_PATH', False)
+CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', lambda x: hashlib.sha256(x).hexdigest())

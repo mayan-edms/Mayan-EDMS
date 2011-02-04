@@ -8,12 +8,13 @@ from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
-
+ 
 from dynamic_search.api import register
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import FILESERVING_PATH
 from documents.conf.settings import SLUGIFY_PATH
+from documents.conf.settings import CHECKSUM_FUNCTION
 
 if SLUGIFY_PATH == False:
     #Do not slugify path or filenames and extensions
@@ -27,7 +28,7 @@ def get_filename_from_uuid(instance, filename, directory='documents'):
 
 def populate_file_extension_and_mimetype(instance, filename):
     # First populate the file extension and mimetype
-    instance.file_mimetype, encoding = mimetypes.guess_type(filename) or ""
+    instance.file_mimetype, encoding = mimetypes.guess_type(filename) or ''
     filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
     #remove prefix '.'
@@ -46,13 +47,14 @@ class Document(models.Model):
         Inherit this model to customise document metadata, see BasicDocument for an example.
     """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    file = models.FileField(upload_to=get_filename_from_uuid)#lambda i,f: 'documents/%s' % i.uuid)
+    file = models.FileField(upload_to=get_filename_from_uuid)
     uuid = models.CharField(max_length=36, default=lambda:unicode(uuid.uuid4()), blank=True, editable=False)
-    file_mimetype = models.CharField(max_length=50, default="", editable=False)
-    file_filename = models.CharField(max_length=64, default="", editable=False)
-    file_extension = models.CharField(max_length=10, default="", editable=False)
-    date_added = models.DateTimeField("added", auto_now_add=True)
-    date_updated = models.DateTimeField("updated", auto_now=True)
+    file_mimetype = models.CharField(max_length=50, default='', editable=False)
+    file_filename = models.CharField(max_length=64, default='', editable=False)
+    file_extension = models.CharField(max_length=10, default='', editable=False)
+    date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True)
+    date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
+    checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
     
     class Meta:
         verbose_name = _(u'document')
@@ -65,6 +67,15 @@ class Document(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('document_view', [self.id])
+        
+    def update_checksum(self, save=True):
+        self.checksum = unicode(CHECKSUM_FUNCTION(self.file.read()))
+        if save:
+            self.save()
+        
+    def save(self, *args, **kwargs):
+        self.update_checksum(save=False)
+        super(Document, self).save(*args, **kwargs)
 
     def create_fs_links(self):
         for metadata in self.documentmetadata_set.all():
