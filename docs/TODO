@@ -1,10 +1,12 @@
+* Create indexing filesystem folders from document type metadata type  - DONE
+* Document detail to view document metadata                            - DONE
 * Filter by metadata
 * Jquery upload document upload form with ajax widget
 * Filterform date filtering widget
-* Create indexing filesystem folders from document type metadata type
 * Validate GET data before saving file
 * Handle NULL mimetypes during model save
-* Document detail to view document metadata
 * Integrate with http://code.google.com/p/pytesser/
 * File renaming dropdown
 * Delete symlinks when document is deleted of metadata changed
+* Check duplicated files using checksum
+* If theres only one document type on db skip step 1 of wizard
