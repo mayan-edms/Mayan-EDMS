@@ -1,4 +1,5 @@
 import datetime
+import os
 
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect
@@ -16,7 +17,8 @@ from forms import DocumentForm_view
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm
-        
+    
+from documents.conf.settings import STAGING_DIRECTORY    
 
 def document_list(request):
     return object_list(
@@ -71,9 +73,20 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 return HttpResponseRedirect(reverse('document_list'))
     else:
         form = DocumentForm(initial={'document_type':document_type})
+
+    filelist = sorted([os.path.normcase(f) for f in os.listdir(STAGING_DIRECTORY)])
         
     return render_to_response('generic_form.html', {
-        'form':form
+        'form':form,
+        'subtemplates_dict':[
+            {
+            'name':'generic_list_subtemplate.html',
+            'title':_(u'files in staging'),
+            'object_list':filelist,
+            #'extra_columns':[{'name':_(u'qty'), 'attribute':'qty'}],
+            },
+        ],
+
     }, context_instance=RequestContext(request))
         
         
