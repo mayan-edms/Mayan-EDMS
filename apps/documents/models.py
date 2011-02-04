@@ -6,6 +6,8 @@ from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from documents.conf.settings import AVAILABLE_FUNCTIONS
+
 
 def get_filename_from_uuid(instance, filename, directory='documents'):
     populate_file_extension_and_mimetype(instance, filename)
@@ -46,9 +48,12 @@ class Document(models.Model):
         return self.uuid
 
 
+available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
+
 class MetadataType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
-    default = models.CharField(max_length=64, blank=True, null=True, verbose_name=_(u'default'))
+    default = models.CharField(max_length=64, blank=True, null=True,
+        verbose_name=_(u'default'), help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
     lookup = models.CharField(max_length=64, blank=True, null=True, verbose_name=_(u'lookup'))
     #datatype = models.
     

@@ -10,6 +10,8 @@ from common.utils import urlquote
 from models import Document, DocumentType, DocumentTypeMetadataType
 
 
+from documents.conf.settings import AVAILABLE_FUNCTIONS
+
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
@@ -29,8 +31,14 @@ class MetadataForm(forms.Form):
             required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
         self.fields['value'] = forms.CharField(label=_(u'Value'))
         if hasattr(self, 'metadata_type'):
-             self.fields['name'].initial=self.metadata_type.name
-             self.fields['id'].initial=self.metadata_type.id
+            self.fields['name'].initial=self.metadata_type.name
+            self.fields['id'].initial=self.metadata_type.id
+            if self.metadata_type.default:
+                try:
+                    self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
+                except Exception, err:
+                    self.fields['value'].initial = err
+            
 
 
 class DocumentCreateWizard(BoundFormWizard):
