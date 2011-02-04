@@ -1,0 +1,7 @@
+Django==1.2.4
+Werkzeug==0.6.2
+distribute==0.6.10
+django-extensions==0.6
+django-pagination==1.0.7
+django-rosetta==0.5.6
+wsgiref==0.1.2
