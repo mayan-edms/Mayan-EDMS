@@ -134,4 +134,16 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _(u'document metadata')
 
 
+class DocumentTypeFilename(models.Model):
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
+    filename = models.CharField(max_length=64, verbose_name=_('filename'))
+    
+    def __unicode__(self):
+        return self.filename
+
+    class Meta:
+        verbose_name = _(u'document type filename')
+        verbose_name_plural = _(u'document types filenames')
+        
+
 register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value'])

@@ -20,6 +20,12 @@ class DocumentForm(forms.ModelForm):
         if 'initial' in kwargs:
             if 'document_type' in kwargs['initial']:
                 self.fields['document_type'].widget = forms.HiddenInput()
+                if kwargs['initial']['document_type'].documenttypefilename_set.all().count() > 0:
+                    self.fields['new_filename'] = forms.ModelChoiceField(
+                        queryset=kwargs['initial']['document_type'].documenttypefilename_set.all(),
+                        required=False,
+                        label=_(u'Rename file'))
+
 
     class Meta:
         model = Document
