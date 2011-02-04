@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load styling %}
-{% load generic_views_helpers %}
+
 {% block title %} :: {% with "true" as read_only %}{% with "true" as striptags %}{% include "calculate_form_title.html" %}{% endwith %}{% endwith %}{% endblock %}
 
 {% block javascript %}
@@ -49,9 +48,11 @@
     {% with subtemplate.extra_columns as extra_columns %}
     {% with subtemplate.hide_object as hide_object %}
     {% with subtemplate.main_object as main_object %}
+    {% with subtemplate.hide_link as hide_link %}
         <div class="content">
         {% include subtemplate.name %}
         </div>
+    {% endwith %}
     {% endwith %}
     {% endwith %}
     {% endwith %}

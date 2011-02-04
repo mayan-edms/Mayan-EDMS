@@ -56,6 +56,11 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         return mark_safe(output + u'</ul>\n')
 
 
+class PlainWidget(forms.widgets.Widget):
+    def render(self, name, value, attrs=None):
+        return mark_safe(u'%s' % value)
+
+
 class DetailForm(forms.ModelForm):
     def __init__(self, extra_fields=None, *args, **kwargs):
         super(DetailForm, self).__init__(*args, **kwargs)
@@ -66,6 +71,11 @@ class DetailForm(forms.ModelForm):
                 #TODO: Add others result types <=> Field types
                 if isinstance(result, models.query.QuerySet):
                     self.fields[extra_field['field']]=forms.ModelMultipleChoiceField(queryset=result, label=label)
+                else:
+                    self.fields[extra_field['field']]=forms.CharField(
+                        label=extra_field['label'],
+                        initial=getattr(self.instance, extra_field['field'], None),
+                        widget=PlainWidget)
 
         for field_name, field in self.fields.items():
             if isinstance(field.widget, forms.widgets.SelectMultiple):

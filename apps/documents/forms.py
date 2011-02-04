@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 
 from common.wizard import BoundFormWizard
 from common.utils import urlquote
+from common.forms import DetailForm
 
 from models import Document, DocumentType, DocumentTypeMetadataType
 
@@ -15,7 +16,12 @@ from documents.conf.settings import AVAILABLE_FUNCTIONS
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-    
+
+
+class DocumentForm_view(DetailForm):
+    class Meta:
+        model = Document
+        exclude = ('file',)
 
 class DocumentTypeSelectForm(forms.Form):
     document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all())
@@ -23,14 +29,14 @@ class DocumentTypeSelectForm(forms.Form):
 
 class MetadataForm(forms.Form):
     def __init__(self, *args, **kwargs):
+        super(MetadataForm, self).__init__(*args, **kwargs)
+        
+        #Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-        super(MetadataForm, self).__init__(*args, **kwargs)
-        self.fields['id'] = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
-        self.fields['name'] = forms.CharField(label=_(u'Name'),
-            required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
-        self.fields['value'] = forms.CharField(label=_(u'Value'))
-        if hasattr(self, 'metadata_type'):
+            self.document_type = kwargs['initial'].pop('document_type', None)
+            self.metadata_options = kwargs['initial'].pop('metadata_options', None)
+      
             self.fields['name'].initial=self.metadata_type.name
             self.fields['id'].initial=self.metadata_type.id
             if self.metadata_type.default:
@@ -38,7 +44,11 @@ class MetadataForm(forms.Form):
                     self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
                 except Exception, err:
                     self.fields['value'].initial = err
-            
+
+    id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
+    name = forms.CharField(label=_(u'Name'),
+        required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    value = forms.CharField(label=_(u'Value'))
 
 
 class DocumentCreateWizard(BoundFormWizard):
@@ -60,6 +70,8 @@ class DocumentCreateWizard(BoundFormWizard):
             for item in DocumentTypeMetadataType.objects.filter(document_type=self.document_type):
                 initial.append({
                     'metadata_type':item.metadata_type,
+                    'document_type':self.document_type,
+                    'metadata_options':item,
                 })
             self.initial = {1:initial}
         if step == 1:

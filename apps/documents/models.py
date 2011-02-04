@@ -36,7 +36,7 @@ class Document(models.Model):
     file_mimetype = models.CharField(max_length=50, default="", editable=False)
     file_filename = models.CharField(max_length=64, default="", editable=False)
     file_extension = models.CharField(max_length=10, default="", editable=False)
-    date_added   = models.DateTimeField("added", auto_now_add=True)
+    date_added = models.DateTimeField("added", auto_now_add=True)
     date_updated = models.DateTimeField("updated", auto_now=True)
     
     class Meta:
@@ -47,6 +47,10 @@ class Document(models.Model):
     def __unicode__(self):
         return self.uuid
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('document_view', [self.id])
+        
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
 
@@ -64,20 +68,17 @@ class MetadataType(models.Model):
         verbose_name = _(u'metadata type')
         verbose_name_plural = _(u'metadata types')
 
-#    @models.permalink
-#    def get_absolute_url(self):
-#        return ('state_list', [])
-
 
 class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
+    #create_directory = nmode
     #override default
     #create index dir? -bool
     #required? -bool
     
     def __unicode__(self):
-        return '%s <-> %s' %(self.document_type, self.metadata_type)
+        return unicode(self.metadata_type)
 
     class Meta:
         verbose_name = _(u'document type metadata type connector')
@@ -90,7 +91,7 @@ class DocumentMetadata(models.Model):
     value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'))
  
     def __unicode__(self):
-        return '%s <-> %s' %(self.document, self.metadata_type)
+        return unicode(self.metadata_type)
 
     class Meta:
         verbose_name = _(u'document metadata')

@@ -11,6 +11,8 @@ from django.views.generic.create_update import create_object
 from django.forms.formsets import formset_factory
 
 
+from forms import DocumentForm_view
+
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm
@@ -52,11 +54,12 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                     value=value
                 )
                 document_metadata.save()
-                messages.success(request, _(u'Document uploaded successfully.'))
-                if multiple:
-                    return HttpResponseRedirect(request.get_full_path())
-                else:
-                    return HttpResponseRedirect(reverse('document_list'))
+
+            messages.success(request, _(u'Document uploaded successfully.'))
+            if multiple:
+                return HttpResponseRedirect(request.get_full_path())
+            else:
+                return HttpResponseRedirect(reverse('document_list'))
     else:
         form = DocumentForm(initial={'document_type':document_type})
         
@@ -65,4 +68,26 @@ def upload_document_with_type(request, document_type_id, multiple=True):
     }, context_instance=RequestContext(request))
         
         
+def document_view(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+    form = DocumentForm_view(instance=document, extra_fields=[
+        {'label':_(u'Filename'), 'field':'file_filename'},
+        {'label':_(u'File extension'), 'field':'file_extension'},
+        {'label':_(u'File mimetype'), 'field':'file_mimetype'},
+        {'label':_(u'Date added'), 'field':'date_added'},
+    ])
+    
+    return render_to_response('generic_detail.html', {
+        'form':form,
+        'object':document,
+        'subtemplates_dict':[
+            {
+                'name':'generic_list_subtemplate.html',
+                'title':_(u'metadata'),
+                'object_list':document.documentmetadata_set.all(),
+                'extra_columns':[{'name':_(u'qty'), 'attribute':'value'}],
+                'hide_link':True,
+            },
+        ],  
+    }, context_instance=RequestContext(request))    
     

@@ -8,4 +8,5 @@ urlpatterns = patterns('documents.views',
     url(r'^document/create/$', 'document_create', (), 'document_create'),
     #url(r'^document/upload/$', 'upload_document', (), 'upload_document'),
     url(r'^document/type/(?P<document_type_id>\d+)/upload/$', 'upload_document_with_type', (), 'upload_document_with_type'),
+    url(r'^document/(?P<document_id>\d+)/$', 'document_view', (), 'document_view'),
 )
