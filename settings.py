@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'common',
     'documents',
     'pagination',
+    'dynamic_search',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

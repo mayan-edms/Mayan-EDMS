@@ -6,6 +6,8 @@ from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from dynamic_search.api import register
+
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 
 
@@ -50,7 +52,6 @@ class Document(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('document_view', [self.id])
-        
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
 
@@ -96,3 +97,6 @@ class DocumentMetadata(models.Model):
     class Meta:
         verbose_name = _(u'document metadata')
         verbose_name_plural = _(u'document metadata')
+
+
+register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension'])
