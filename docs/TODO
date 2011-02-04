@@ -1,3 +1,4 @@
+* File renaming dropdown                                               - DONE
 * Create indexing filesystem folders from document type metadata type  - DONE
 * Document detail to view document metadata                            - DONE
 * Filter by metadata
@@ -6,7 +7,9 @@
 * Validate GET data before saving file
 * Handle NULL mimetypes during model save
 * Integrate with http://code.google.com/p/pytesser/
-* File renaming dropdown
 * Delete symlinks when document is deleted of metadata changed
 * Check duplicated files using checksum
+* Add file checksums (hashlib)
 * If theres only one document type on db skip step 1 of wizard
+* Fix repeated search results
+
