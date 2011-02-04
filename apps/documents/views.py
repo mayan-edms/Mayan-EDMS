@@ -72,6 +72,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
 def document_view(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     form = DocumentForm_view(instance=document, extra_fields=[
+        {'label':_(u'Document type'), 'field':'document_type'},
         {'label':_(u'Filename'), 'field':'file_filename'},
         {'label':_(u'File extension'), 'field':'file_extension'},
         {'label':_(u'File mimetype'), 'field':'file_mimetype'},

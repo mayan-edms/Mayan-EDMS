@@ -13,7 +13,14 @@ from models import Document, DocumentType, DocumentTypeMetadataType
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 
+
 class DocumentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(DocumentForm, self).__init__(*args, **kwargs)
+        if 'initial' in kwargs:
+            if 'document_type' in kwargs['initial']:
+                self.fields['document_type'].widget = forms.HiddenInput()
+
     class Meta:
         model = Document
 

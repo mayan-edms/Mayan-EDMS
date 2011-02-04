@@ -27,7 +27,11 @@
     {% endfor %} 
     </tr>
 {% else %}
-    {% for field in form %}
+    {% for field in form.hidden_fields %}
+        {{ field }}
+    {% endfor %}
+    
+    {% for field in form.visible_fields %}
         <div class="group">
             {% if field.errors %}<div class="fieldWithErrors">{% endif %}
             <label class="label">{{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}</label>
