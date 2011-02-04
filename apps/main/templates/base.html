@@ -13,6 +13,15 @@
     {% block stylesheets %}{% endblock %}
 {% endblock %}
 
+{% block web_theme_javascript %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            $("input:text:visible:not(#livesearch):not([readonly]):enabled:first").focus();        
+        });
+    </script>
+    {% block javascript %}{% endblock %}
+{% endblock %}
+
 {% block web_theme_user_navigation %}
     <li><strong>{% trans 'User' %}:</strong>
         {% if user.is_anonymous %}
