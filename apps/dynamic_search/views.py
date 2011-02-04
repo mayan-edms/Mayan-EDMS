@@ -61,7 +61,7 @@ def search(request):
         for model, data in search_list.items():
             query = get_query(terms, data['fields'])            
 
-            results = model.objects.filter(query)
+            results = model.objects.filter(query).distinct()
             if results:
                 found_entries[data['text']] = results
                 for result in results:
