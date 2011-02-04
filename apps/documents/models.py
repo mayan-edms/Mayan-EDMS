@@ -146,12 +146,14 @@ class DocumentMetadata(models.Model):
 
 class DocumentTypeFilename(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    filename = models.CharField(max_length=64, verbose_name=_('filename'))
+    filename = models.CharField(max_length=64, verbose_name=_(u'filename'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     
     def __unicode__(self):
         return self.filename
 
     class Meta:
+        ordering = ['filename']
         verbose_name = _(u'document type filename')
         verbose_name_plural = _(u'document types filenames')
         
