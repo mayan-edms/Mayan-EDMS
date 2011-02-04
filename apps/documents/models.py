@@ -134,4 +134,4 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _(u'document metadata')
 
 
-register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension'])
+register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value'])
