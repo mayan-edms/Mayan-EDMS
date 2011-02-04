@@ -45,13 +45,6 @@ class Document(models.Model):
     def __unicode__(self):
         return self.uuid
 
-    #@property
-    #def friendly_filename(self):
-    #    ''' A friendly filename (ie not the UUID) for the user to see when they download.
-    #        Overload this with eg a slug field. 
-    #    '''
-    #    return 'untitled.%s' % self.file_extension
-
 
 class MetadataType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
