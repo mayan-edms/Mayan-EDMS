@@ -3,14 +3,19 @@
 * Create indexing filesystem folders from document type metadata type  - DONE
 * Document detail to view document metadata                            - DONE
 * Add file checksums (hashlib)                                         - DONE
+* Delete symlinks when document is deleted                             - DONE
+* Handle NULL mimetypes during model save                              - DONE
 * Document list filtering by metadata
 * Jquery upload document upload form with ajax widget
 * Filterform date filtering widget
 * Validate GET data before saving file
-* Handle NULL mimetypes during model save
 * Integrate with http://code.google.com/p/pytesser/
-* Delete symlinks when document is deleted of metadata changed
+* Update symlinks when document or metadata changed
 * Check duplicated files using checksum
 * If theres only one document type on db skip step 1 of wizard
 * Option to delete source staging file after upload
 * Show last 5 recent metadata setups for easy switch
+* Change to model signal
+* Raise exception instead of returning error msg
+* Allow document type to be changed in document edit view
+* Implement single sign on or LDAP for intranets
