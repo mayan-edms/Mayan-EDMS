@@ -11,4 +11,5 @@ urlpatterns = patterns('documents.views',
     url(r'^document/type/(?P<document_type_id>\d+)/upload/multiple/$', 'upload_document_with_type', {'multiple':True}, 'upload_multiple_documents_with_type'),
     url(r'^document/(?P<document_id>\d+)/$', 'document_view', (), 'document_view'),
     url(r'^document/(?P<document_id>\d+)/delete/$', 'document_delete', (), 'document_delete'),
+    url(r'^document/(?P<document_id>\d+)/edit/$', 'document_edit', (), 'document_edit'),
 )

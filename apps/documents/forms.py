@@ -37,6 +37,14 @@ class DocumentForm_view(DetailForm):
     class Meta:
         model = Document
         exclude = ('file',)
+        
+        
+class DocumentForm_edit(forms.ModelForm):
+    class Meta:
+        model = Document
+        exclude = ('file','document_type')
+    new_filename = forms.CharField(label=_(u'New filename'), required=False)
+
 
 class DocumentTypeSelectForm(forms.Form):
     document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all())

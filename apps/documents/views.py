@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object, delete_object
+from django.views.generic.create_update import create_object, delete_object, update_object
 from django.forms.formsets import formset_factory
 
 
@@ -16,7 +16,7 @@ from forms import DocumentForm_view
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
-        MetadataForm, DocumentForm
+        MetadataForm, DocumentForm, DocumentForm_edit
     
 from documents.conf.settings import STAGING_DIRECTORY    
 
@@ -127,3 +127,26 @@ def document_delete(request, document_id):
             'object':document,
             'object_name':_(u'document'),
         })
+        
+        
+def document_edit(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+    if request.method == 'POST':
+        form = DocumentForm_edit(request.POST)
+        if form.is_valid():
+            document.delete_fs_links()
+            document.file_filename = form.cleaned_data['new_filename']
+            document.save()
+            document.create_fs_links()
+            messages.success(request, _(u'Document edited and filesystem links updated.'))
+            return HttpResponseRedirect(reverse('document_list'))
+    else:
+        form = DocumentForm_edit(instance=document, initial={'new_filename':document.file_filename})
+
+    return render_to_response('generic_form.html', {
+        'form':form,
+        'object':document,
+    
+    }, context_instance=RequestContext(request))
+
+
