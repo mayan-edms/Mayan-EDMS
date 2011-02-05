@@ -76,27 +76,45 @@ class Document(models.Model):
     def save(self, *args, **kwargs):
         self.update_checksum(save=False)
         super(Document, self).save(*args, **kwargs)
+        
+    def delete(self, *args, **kwargs):
+        self.delete_fs_links()
+        super(Document, self).delete(*args, **kwargs)
 
-    def create_fs_links(self):
+    def calculate_fs_links(self):
+        targets = []
         for metadata in self.documentmetadata_set.all():
             if metadata.metadata_type.documenttypemetadatatype_set.all()[0].create_directory_link:
                 target_directory = os.path.join(FILESERVING_PATH, slugify(metadata.metadata_type.name), slugify(metadata.value))
-                try:
-                    os.makedirs(target_directory)
-                except OSError as exc:
-                    if exc.errno == errno.EEXIST:
-                        pass
-                    else: 
-                        return _(u'Unable to create metadata indexing directory.')
+                targets.append(os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)])))
+        return targets
 
-                target_filepath = os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)]))
-                try:
-                    os.symlink(os.path.abspath(self.file.path), target_filepath)
-                except OSError as exc:
-                    if exc.errno == errno.EEXIST:
-                        pass
-                    else: 
-                        return _(u'Unable to create metadata indexing symbolic link.')
+    def create_fs_links(self):
+        for target in self.calculate_fs_links():
+            try:
+                os.makedirs(os.path.dirname(target))
+            except OSError as exc:
+                if exc.errno == errno.EEXIST:
+                    pass
+                else: 
+                    return _(u'Unable to create metadata indexing directory.')
+            try:
+                os.symlink(os.path.abspath(self.file.path), target)
+            except OSError as exc:
+                if exc.errno == errno.EEXIST:
+                    pass
+                else: 
+                    return _(u'Unable to create metadata indexing symbolic link.')
+
+    def delete_fs_links(self):
+        for target in self.calculate_fs_links():
+            try:
+                os.unlink(target)
+            except OSError as exc:
+                if exc.errno == errno.ENOENT:
+                    pass
+                else: 
+                    return _(u'Unable to delete metadata indexing symbolic link.')
 
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''

@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object
+from django.views.generic.create_update import create_object, delete_object
 from django.forms.formsets import formset_factory
 
 
@@ -78,12 +78,12 @@ def upload_document_with_type(request, document_type_id, multiple=True):
         
     return render_to_response('generic_form.html', {
         'form':form,
+        'title':_(u'upload a local document'),
         'subtemplates_dict':[
             {
             'name':'generic_list_subtemplate.html',
             'title':_(u'files in staging'),
             'object_list':filelist,
-            #'extra_columns':[{'name':_(u'qty'), 'attribute':'qty'}],
             },
         ],
 
@@ -116,5 +116,14 @@ def document_view(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-#def document_edit(request, document_id):
-    
+def document_delete(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+        
+    return delete_object(request, model=Document, object_id=document_id, 
+        template_name='generic_confirm.html', 
+        post_delete_redirect=reverse('document_list'),
+        extra_context={
+            'delete_view':True,
+            'object':document,
+            'object_name':_(u'document'),
+        })
