@@ -67,6 +67,11 @@ class MetadataForm(forms.Form):
 
 
 class DocumentCreateWizard(BoundFormWizard):
+    def __init__(self, *args, **kwargs):
+        self.multiple = kwargs.pop('multiple', True)
+        super(DocumentCreateWizard, self).__init__(*args, **kwargs)
+        
+    
     def render_template(self, request, form, previous_fields, step, context=None):
         context = {'step_title':self.extra_context['step_titles'][step]}
         return super(DocumentCreateWizard, self).render_template(request, form, previous_fields, step, context)
@@ -99,5 +104,10 @@ class DocumentCreateWizard(BoundFormWizard):
         return 'generic_wizard.html'
 
     def done(self, request, form_list):
-        url = reverse('upload_document_with_type', args=[self.document_type.id])
+        if self.multiple:
+            view = 'upload_multiple_documents_with_type'
+        else:
+            view = 'upload_document_with_type'
+
+        url = reverse(view, args=[self.document_type.id])
         return HttpResponseRedirect('%s?%s' % (url, urlencode(self.urldata)))

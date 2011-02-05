@@ -37,9 +37,9 @@ def document_list(request):
     )
 
 
-def document_create(request):
+def document_create(request, multiple=True):
     MetadataFormSet = formset_factory(MetadataForm, extra=0)
-    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataFormSet])
+    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataFormSet], multiple=multiple)
     return wizard(request)
 
 
@@ -114,3 +114,7 @@ def document_view(request, document_id):
             },
         ],  
     }, context_instance=RequestContext(request))
+
+
+#def document_edit(request, document_id):
+    
