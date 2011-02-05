@@ -29,7 +29,9 @@ def get_filename_from_uuid(instance, filename, directory='documents'):
 
 def populate_file_extension_and_mimetype(instance, filename):
     # First populate the file extension and mimetype
-    instance.file_mimetype, encoding = mimetypes.guess_type(filename) or ''
+    instance.file_mimetype, encoding = mimetypes.guess_type(filename)
+    if not instance.file_mimetype:
+         instance.file_mimetype = u'unknown'
     filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
     #remove prefix '.'
