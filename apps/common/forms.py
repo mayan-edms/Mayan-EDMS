@@ -1,8 +1,10 @@
+import types
+
 from django import forms 
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.db import models
-import types
+from django.conf import settings
 
 
 def return_attrib(obj, attrib, arguments=None):
