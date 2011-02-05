@@ -163,6 +163,14 @@ LOGIN_EXEMPT_URLS = (
 #PAGINATION_DEFAULT_PAGINATION = 10
 #--------- Web theme app ---------------
 #WEB_THEME = 'default'
+#---------- Documents ------------------
+#DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
+#DOCUMENTS_STAGING_DIRECTORY = u'/tmp'
+#DOCUMENTS_FILESERVING_PATH = u'/tmp'
+#DOCUMENTS_DELETE_LOCAL_ORIGINAL = False
+#DOCUMENTS_SLUGIFY_PATH = False
+#DOCUMENTS_CHECKSUM_FUNCTION = lambda x: hashlib.sha256(x).hexdigest())
+#DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD = False
 #======== End of configuration options =======
 
 try:
