@@ -95,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'middleware.login_required_middleware.LoginRequiredMiddleware',
     'pagination.middleware.PaginationMiddleware',
 )
 
@@ -137,8 +138,27 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #--------- Grappelli ----------------
 #GRAPPELLI_ADMIN_TITLE = PROJECT_TITLE
 #--------- Django -------------------
-#LOGIN_URL = '/login/'
-#LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+#-------- LoginRequiredMiddleware ----------
+LOGIN_EXEMPT_URLS = (
+    r'^favicon\.ico$',
+    r'^about\.html$',
+    r'^legal/', # allow the entire /legal/* subsection
+    r'^%s-site_media/' % PROJECT_NAME,
+
+    r'^accounts/register/$',
+    r'^accounts/register/complete/$',
+    r'^accounts/register/closed/$',
+
+    r'^accounts/activate/complete/',
+    r'^accounts/activate/(?P<activation_key>\w+)/$',
+
+    r'^password/reset/$',
+    r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    r'^password/reset/complete/$',
+    r'^password/reset/done/$',
+)
 #--------- Pagination ------------------
 #PAGINATION_DEFAULT_PAGINATION = 10
 #--------- Web theme app ---------------
