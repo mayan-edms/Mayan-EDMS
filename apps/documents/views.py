@@ -63,9 +63,10 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 document_metadata.save()
 
             messages.success(request, _(u'Document uploaded successfully.'))
-            error_msg = instance.create_fs_links()
-            if error_msg:
-                messages.error(request, error_msg)
+            try:
+                instance.create_fs_links()
+            except Exception, e:
+                messages.error(request, e)
                 
             if multiple:
                 return HttpResponseRedirect(request.get_full_path())
@@ -134,10 +135,21 @@ def document_edit(request, document_id):
     if request.method == 'POST':
         form = DocumentForm_edit(request.POST)
         if form.is_valid():
-            document.delete_fs_links()
+            try:
+                document.delete_fs_links()
+            except Exception, e:
+                messages.error(request, e)
+                return HttpResponseRedirect(reverse('document_list'))
+                
             document.file_filename = form.cleaned_data['new_filename']
             document.save()
-            document.create_fs_links()
+            
+            try:
+                document.create_fs_links()
+            except Exception, e:
+                messages.error(request, e)
+                return HttpResponseRedirect(reverse('document_list'))
+                
             messages.success(request, _(u'Document edited and filesystem links updated.'))
             return HttpResponseRedirect(reverse('document_list'))
     else:

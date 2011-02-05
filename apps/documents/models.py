@@ -8,6 +8,7 @@ from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
  
 from dynamic_search.api import register
 
@@ -93,28 +94,28 @@ class Document(models.Model):
         for target in self.calculate_fs_links():
             try:
                 os.makedirs(os.path.dirname(target))
-            except OSError as exc:
+            except OSError, exc:
                 if exc.errno == errno.EEXIST:
                     pass
                 else: 
-                    return _(u'Unable to create metadata indexing directory.')
+                    raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
             try:
                 os.symlink(os.path.abspath(self.file.path), target)
-            except OSError as exc:
+            except OSError, exc:
                 if exc.errno == errno.EEXIST:
                     pass
                 else: 
-                    return _(u'Unable to create metadata indexing symbolic link.')
-
+                    raise OSError(ugettext(u'Unable to create metadata indexing symbolic link: %s') % exc)
+                    
     def delete_fs_links(self):
         for target in self.calculate_fs_links():
             try:
                 os.unlink(target)
-            except OSError as exc:
+            except OSError, exc:
                 if exc.errno == errno.ENOENT:
                     pass
                 else: 
-                    return _(u'Unable to delete metadata indexing symbolic link.')
+                    raise OSError(ugettext(u'Unable to delete metadata indexing symbolic link: %s') % exc)
 
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
