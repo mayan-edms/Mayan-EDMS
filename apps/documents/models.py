@@ -53,10 +53,10 @@ class Document(models.Model):
     """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     file = models.FileField(upload_to=get_filename_from_uuid)
-    uuid = models.CharField(max_length=36, default=UUID_FUNCTION(), blank=True, editable=False)
-    file_mimetype = models.CharField(max_length=50, default='', editable=False)
+    uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
+    file_mimetype = models.CharField(max_length=64, default='', editable=False)
     file_filename = models.CharField(max_length=64, default='', editable=False)
-    file_extension = models.CharField(max_length=10, default='', editable=False)
+    file_extension = models.CharField(max_length=16, default='', editable=False)
     date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
@@ -126,10 +126,10 @@ available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' 
 available_models_string = (_(u' Available models: %s') % ','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else ''
 
 class MetadataType(models.Model):
-    name = models.CharField(max_length=32, verbose_name=_(u'name'))
-    default = models.CharField(max_length=64, blank=True, null=True,
+    name = models.CharField(max_length=48, verbose_name=_(u'name'))
+    default = models.CharField(max_length=128, blank=True, null=True,
         verbose_name=_(u'default'), help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
-    lookup = models.CharField(max_length=64, blank=True, null=True,
+    lookup = models.CharField(max_length=128, blank=True, null=True,
         verbose_name=_(u'lookup'), help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
     #datatype = models.
     
