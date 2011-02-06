@@ -9,11 +9,15 @@ from common.wizard import BoundFormWizard
 from common.utils import urlquote
 from common.forms import DetailForm
 
-from models import Document, DocumentType, DocumentTypeMetadataType
-
+from models import Document, DocumentType, DocumentTypeMetadataType, DocumentFile
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 
+
+class DocumentFileForm(forms.ModelForm):
+    class Meta:
+        model = DocumentFile
+        
 
 class DocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -104,8 +108,9 @@ class DocumentCreateWizard(BoundFormWizard):
             self.initial = {1:initial}
         if step == 1:
             self.urldata = []
-            for metadata in form.cleaned_data:
-                self.urldata.append((metadata['id'],metadata['value']))   
+            for id, metadata in enumerate(form.cleaned_data):
+                self.urldata.append(('metadata%s_id' % id,metadata['id']))   
+                self.urldata.append(('metadata%s_value' % id,metadata['value']))   
 
  
     def get_template(self, step):

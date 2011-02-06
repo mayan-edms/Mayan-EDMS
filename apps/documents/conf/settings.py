@@ -1,5 +1,6 @@
 import datetime
 import hashlib
+import uuid
 
 from django.conf import settings
 
@@ -14,3 +15,5 @@ DELETE_LOCAL_ORIGINAL = getattr(settings, 'DOCUMENTS_DELETE_LOCAL_ORIGINAL', Fal
 SLUGIFY_PATH = getattr(settings, 'DOCUMENTS_SLUGIFY_PATH', False)
 CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', lambda x: hashlib.sha256(x).hexdigest())
 DELETE_STAGING_FILE_AFTER_UPLOAD = getattr(settings, 'DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD', False)
+UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNTION', lambda:unicode(uuid.uuid4()))
+STORAGE_DIRECTORY_NAME = getattr(settings, 'DOCUMENTS_STORAGE_DIRECTORY_NAME', 'documents')

@@ -1,6 +1,3 @@
-import datetime
-import os
-
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -12,13 +9,12 @@ from django.views.generic.create_update import create_object, delete_object, upd
 from django.forms.formsets import formset_factory
 
 
-from forms import DocumentForm_view
-
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
-        MetadataForm, DocumentForm, DocumentForm_edit
+        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
+        DocumentFileForm
     
-from documents.conf.settings import STAGING_DIRECTORY    
+from staging import StagingFile
 
 def document_list(request):
     return object_list(
@@ -43,25 +39,39 @@ def document_create(request, multiple=True):
     return wizard(request)
 
 
+def _save_metadata_from_request(request, document):
+    metadata_dict = {
+        'id':{},
+        'value':{}
+    }
+    #Match out of order metadata_type ids with metadata values from request
+    for key, value in request.GET.items():
+        if 'metadata' in key:
+            index, element = key[8:].split('_')
+            metadata_dict[element][index] = value
+            
+    #Use matched metadata now to create document metadata
+    for key, value in zip(metadata_dict['id'].values(), metadata_dict['value'].values()):
+        document_metadata = DocumentMetadata(
+            document=document,
+            metadata_type=get_object_or_404(MetadataType, pk=key),
+            value=value
+        )
+        document_metadata.save()
+        
+
 def upload_document_with_type(request, document_type_id, multiple=True):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES, initial={'document_type':document_type})
+        form = DocumentFileForm(request.POST, request.FILES)#, initial={'document_type':document_type})
         if form.is_valid():
             instance = form.save()
             if 'new_filename' in form.cleaned_data:
                 if form.cleaned_data['new_filename']:
                     instance.file_filename = form.cleaned_data['new_filename'].filename
                     instance.save()
-                
-            for key, value in request.GET.items():
-                document_metadata = DocumentMetadata(
-                    document=instance,
-                    metadata_type=get_object_or_404(MetadataType, pk=key),
-                    value=value
-                )
-                document_metadata.save()
-
+        
+            _save_metadata_from_request(request, instance)
             messages.success(request, _(u'Document uploaded successfully.'))
             try:
                 instance.create_fs_links()
@@ -73,13 +83,14 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             else:
                 return HttpResponseRedirect(reverse('document_list'))
     else:
-        form = DocumentForm(initial={'document_type':document_type})
+        form = DocumentFileForm()#initial={'document_type':document_type})
 
-    filelist = sorted([os.path.normcase(f) for f in os.listdir(STAGING_DIRECTORY)])
-        
+    filelist = StagingFile.get_all()
+    
     return render_to_response('generic_form.html', {
         'form':form,
         'title':_(u'upload a local document'),
+        'document_type_id':document_type_id,
         'subtemplates_dict':[
             {
             'name':'generic_list_subtemplate.html',
@@ -162,3 +173,14 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
+
+def document_create_from_staging(request, file_id, document_type_id, multiple=True):
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    staging_file = StagingFile.get(id=int(file_id))
+    staging_file.upload(document_type=document_type)
+
+    if multiple:
+        return HttpResponseRedirect(request.get_full_path())
+    else:
+        return HttpResponseRedirect(reverse('document_list'))
+     

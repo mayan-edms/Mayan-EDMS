@@ -1,6 +1,5 @@
 import errno
 import os
-import uuid
 import mimetypes
 from datetime import datetime
 
@@ -16,18 +15,21 @@ from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import FILESERVING_PATH
 from documents.conf.settings import SLUGIFY_PATH
 from documents.conf.settings import CHECKSUM_FUNCTION
+from documents.conf.settings import UUID_FUNCTION
+from documents.conf.settings import STORAGE_DIRECTORY_NAME
 
 if SLUGIFY_PATH == False:
     #Do not slugify path or filenames and extensions
     slugify = lambda x:x
 
 
-def get_filename_from_uuid(instance, filename, directory='documents'):
-    populate_file_extension_and_mimetype(instance, filename)
+def get_filename_from_uuid(instance, filename, directory=STORAGE_DIRECTORY_NAME):
+    #populate_file_extension_and_mimetype(instance, filename)
     stem, extension = os.path.splitext(filename)
     return '%s/%s%s' % (directory, instance.uuid, extension)
 
-def populate_file_extension_and_mimetype(instance, filename):
+def populate_file_extension_and_mimetype(instance):#, filename):
+    filename = instance.file.name
     # First populate the file extension and mimetype
     instance.file_mimetype, encoding = mimetypes.guess_type(filename)
     if not instance.file_mimetype:
@@ -44,33 +46,20 @@ class DocumentType(models.Model):
     def __unicode__(self):
         return self.name
         
-        
-class Document(models.Model):
-    """ Minimum fields for a document entry.
-        Inherit this model to customise document metadata, see BasicDocument for an example.
-    """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
+class DocumentFile(models.Model):
     file = models.FileField(upload_to=get_filename_from_uuid)
-    uuid = models.CharField(max_length=36, default=lambda:unicode(uuid.uuid4()), blank=True, editable=False)
     file_mimetype = models.CharField(max_length=50, default='', editable=False)
     file_filename = models.CharField(max_length=64, default='', editable=False)
     file_extension = models.CharField(max_length=10, default='', editable=False)
-    date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True)
-    date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
     
     class Meta:
-        verbose_name = _(u'document')
-        verbose_name_plural = _(u'documents')
-        ordering = ['-date_updated', '-date_added']
-        
+        verbose_name = _(u'document file')
+        verbose_name_plural = _(u'documents files')
+         
     def __unicode__(self):
-        return self.uuid
-        
-    @models.permalink
-    def get_absolute_url(self):
-        return ('document_view', [self.id])
-        
+        return self.id
+
     def update_checksum(self, save=True):
         self.checksum = unicode(CHECKSUM_FUNCTION(self.file.read()))
         if save:
@@ -78,11 +67,12 @@ class Document(models.Model):
         
     def save(self, *args, **kwargs):
         self.update_checksum(save=False)
-        super(Document, self).save(*args, **kwargs)
-        
+        populate_file_extension_and_mimetype(self)
+        super(DocumentFile, self).save(*args, **kwargs)
+
     def delete(self, *args, **kwargs):
         self.delete_fs_links()
-        super(Document, self).delete(*args, **kwargs)
+        super(DocumentFile, self).delete(*args, **kwargs)
 
     def calculate_fs_links(self):
         targets = []
@@ -118,7 +108,34 @@ class Document(models.Model):
                     pass
                 else: 
                     raise OSError(ugettext(u'Unable to delete metadata indexing symbolic link: %s') % exc)
-
+        
+        
+class Document(models.Model):
+    """ Minimum fields for a document entry.
+        Inherit this model to customise document metadata, see BasicDocument for an example.
+    """
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
+    #file = models.FileField(upload_to=get_filename_from_uuid, blank=True, null=True)
+    uuid = models.CharField(max_length=36, default=UUID_FUNCTION(), blank=True, editable=False)
+    #file_mimetype = models.CharField(max_length=50, default='', editable=False)
+    #file_filename = models.CharField(max_length=64, default='', editable=False)
+    #file_extension = models.CharField(max_length=10, default='', editable=False)
+    date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True)
+    date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
+    #checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
+    document_file = models.ForeignKey(DocumentFile, blank=True, null=True, verbose_name=_('document file'))
+    
+    class Meta:
+        verbose_name = _(u'document')
+        verbose_name_plural = _(u'documents')
+        ordering = ['-date_updated', '-date_added']
+        
+    def __unicode__(self):
+        return self.uuid
+        
+    @models.permalink
+    def get_absolute_url(self):
+        return ('document_view', [self.id])
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
 

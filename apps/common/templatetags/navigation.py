@@ -195,7 +195,9 @@ def resolve_template_variable(context, name):
     try:
         return unescape_string_literal(name)
     except ValueError:
-        return Variable(name).resolve(context)
+        #return Variable(name).resolve(context)
+        #Research if should return always as a str
+        return str(Variable(name).resolve(context))
     except TypeError:
         return name
 
