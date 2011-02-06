@@ -17,6 +17,7 @@ from documents.conf.settings import SLUGIFY_PATH
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_DIRECTORY_NAME
+from documents.conf.settings import AVAILABLE_MODELS
 
 if SLUGIFY_PATH == False:
     #Do not slugify path or filenames and extensions
@@ -122,12 +123,14 @@ class Document(models.Model):
         
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
+available_models_string = (_(u' Available models: %s') % ','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else ''
 
 class MetadataType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
     default = models.CharField(max_length=64, blank=True, null=True,
         verbose_name=_(u'default'), help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
-    lookup = models.CharField(max_length=64, blank=True, null=True, verbose_name=_(u'lookup'))
+    lookup = models.CharField(max_length=64, blank=True, null=True,
+        verbose_name=_(u'lookup'), help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
     #datatype = models.
     
     def __unicode__(self):

@@ -173,6 +173,7 @@ LOGIN_EXEMPT_URLS = (
 #DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD = False
 #DOCUMENTS_UUID_FUNTION = lambda:unicode(uuid.uuid4())
 #DOCUMENTS_STORAGE_DIRECTORY_NAME = 'documents'
+#DOCUMENTS_METADATA_AVAILABLE_MODELS = {}
 #======== End of configuration options =======
 
 try:

@@ -12,6 +12,7 @@ from common.forms import DetailForm
 from models import Document, DocumentType, DocumentTypeMetadataType
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
+from documents.conf.settings import AVAILABLE_MODELS
         
 
 class DocumentForm(forms.ModelForm):
@@ -66,6 +67,15 @@ class MetadataForm(forms.Form):
                     self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
                 except Exception, err:
                     self.fields['value'].initial = err
+
+            if self.metadata_type.lookup:
+                try:
+                    choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
+                    self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
+                    self.fields['value'].choices = zip(choices, choices)
+                except Exception, err:
+                    self.fields['value'].initial = err
+                    self.fields['value'].widget=forms.TextInput(attrs={'readonly':'readonly'})
 
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
     name = forms.CharField(label=_(u'Name'),
