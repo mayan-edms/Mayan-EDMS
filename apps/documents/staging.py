@@ -1,8 +1,11 @@
+import errno
 import os
 
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.uploadedfile import InMemoryUploadedFile, SimpleUploadedFile
+from django.utils.translation import ugettext
+
 
 from documents.conf.settings import STAGING_DIRECTORY    
 
@@ -49,8 +52,12 @@ class StagingFile(object):
             raise AttributeError, name
     
     def upload(self):
-        return SimpleUploadedFile(name=self.filename, content=open(self.filepath).read())
-
+        try:
+            return SimpleUploadedFile(name=self.filename, content=open(self.filepath).read())
+        except Exception, exc:
+            raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
+    
+    
         #return InMemoryUploadedFile(
         #    file=open(self.filepath, 'r'),
         #    field_name='',
@@ -59,3 +66,12 @@ class StagingFile(object):
         #    size=os.path.getsize(self.filepath),
         #    charset=None,
         #)
+
+    def delete(self):
+        try:
+            os.unlink(self.filepath)
+        except OSError, exc:
+            if exc.errno == errno.ENOENT:
+                pass
+            else: 
+                raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)

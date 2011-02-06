@@ -14,6 +14,9 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
     
 from staging import StagingFile
 
+from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
+
+
 def document_list(request):
     return object_list(
         request,
@@ -175,17 +178,27 @@ def document_create_from_staging(request, file_id, document_type_id, multiple=Tr
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     staging_file = StagingFile.get(id=int(file_id))
 
-    document = Document(file=staging_file.upload(), document_type=document_type)
-    document.save()
-
-    #TODO: need to grab url query string from HTTP_REFERER
-    _save_metadata_from_request(request, document)
-    messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
     try:
-        document.create_fs_links()
+        document = Document(file=staging_file.upload(), document_type=document_type)
+        document.save()
     except Exception, e:
         messages.error(request, e)   
-    
+    else:
+        #TODO: need to grab url query string from HTTP_REFERER
+        _save_metadata_from_request(request, document)
+        messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
+        try:
+            document.create_fs_links()
+        except Exception, e:
+            messages.error(request, e)   
+            
+        if DELETE_STAGING_FILE_AFTER_UPLOAD:
+            try:
+                staging_file.delete()
+                messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+            except Exception, e:
+                messages.error(request, e)
+        
     if multiple:
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
