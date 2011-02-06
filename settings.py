@@ -165,12 +165,14 @@ LOGIN_EXEMPT_URLS = (
 #WEB_THEME = 'default'
 #---------- Documents ------------------
 #DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
-#DOCUMENTS_STAGING_DIRECTORY = u'/tmp'
-#DOCUMENTS_FILESERVING_PATH = u'/tmp'
+#DOCUMENTS_STAGING_DIRECTORY = u'/tmp/mayan/staging'
+#DOCUMENTS_FILESERVING_PATH = u'/tmp/mayan/documents'
 #DOCUMENTS_DELETE_LOCAL_ORIGINAL = False
 #DOCUMENTS_SLUGIFY_PATH = False
 #DOCUMENTS_CHECKSUM_FUNCTION = lambda x: hashlib.sha256(x).hexdigest())
 #DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD = False
+#DOCUMENTS_UUID_FUNTION = lambda:unicode(uuid.uuid4())
+#DOCUMENTS_STORAGE_DIRECTORY_NAME = 'documents'
 #======== End of configuration options =======
 
 try:
