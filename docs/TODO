@@ -19,3 +19,5 @@
 * Change to model signal
 * Allow document type to be changed in document edit view
 * Implement single sign on or LDAP for intranets
+* Rename dropbox from document edit view
+* Ability to rename staging file during upload
