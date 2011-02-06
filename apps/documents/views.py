@@ -122,7 +122,7 @@ def document_view(request, document_id):
                 'name':'generic_list_subtemplate.html',
                 'title':_(u'metadata'),
                 'object_list':document.documentmetadata_set.all(),
-                'extra_columns':[{'name':_(u'qty'), 'attribute':'value'}],
+                'extra_columns':[{'name':_(u'value'), 'attribute':'value'}],
                 'hide_link':True,
             },
         ],  
