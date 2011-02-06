@@ -13,7 +13,7 @@ Features
 * Dynamic default values for metadata
 * Lookup support for metadata
 * Filesystem integration by means of metadata indexing directories
-* Used defined document uuid generation
+* User defined document uuid generation
 * Local file or server side staging file uploads
 * Batch upload many documents with the same metadata
 * User defined document checksum algorithm
