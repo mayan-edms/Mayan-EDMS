@@ -11,7 +11,7 @@ from models import Document, get_filename_from_uuid
 
 
 def get_all_files():
-    return sorted([os.path.normcase(f) for f in os.listdir(STAGING_DIRECTORY)])
+    return sorted([os.path.normcase(f) for f in os.listdir(STAGING_DIRECTORY) if os.path.isfile(os.path.join(STAGING_DIRECTORY, f))])
 
 
 class StagingFile(object):
