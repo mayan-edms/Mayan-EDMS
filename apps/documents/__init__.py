@@ -7,7 +7,7 @@ from staging import StagingFile
 
 document_list = {'text':_(u'documents list'), 'view':'document_list', 'famfam':'page'}
 document_create = {'text':_('upload a document'), 'view':'document_create', 'famfam':'page_add'}
-document_create_multiple = {'text':_('upload multiple document'), 'view':'document_create_multiple', 'famfam':'page_add'}
+document_create_multiple = {'text':_('upload multiple documents'), 'view':'document_create_multiple', 'famfam':'page_add'}
 document_view = {'text':_('details'), 'view':'document_view', 'args':'object.id', 'famfam':'page'}
 document_delete = {'text':_('delete'), 'view':'document_delete', 'args':'object.id', 'famfam':'page_delete'}
 document_edit = {'text':_('edit'), 'view':'document_edit', 'args':'object.id', 'famfam':'page_edit'}
