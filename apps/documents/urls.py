@@ -12,7 +12,5 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/$', 'document_view', (), 'document_view'),
     url(r'^document/(?P<document_id>\d+)/delete/$', 'document_delete', (), 'document_delete'),
     url(r'^document/(?P<document_id>\d+)/edit/$', 'document_edit', (), 'document_edit'),
-
-    url(r'^document/type/(?P<document_type_id>\d+)/upload/from/staging/(?P<file_id>\d+)/single/$', 'document_create_from_staging', {'multiple':False}, 'document_create_from_staging'),
-    #url(r'^document/create/from/staging/(?P<file_id>\d+)/$', '', (), 'document_create_from_staging'),
+    url(r'^document/type/(?P<document_type_id>\d+)/upload/from/staging/(?P<file_id>\d+)/single/$', 'document_create_from_staging', {'multiple':True}, 'document_create_from_staging'),
 )

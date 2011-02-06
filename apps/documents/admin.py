@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 from models import MetadataType, DocumentType, Document, \
-    DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
-    DocumentFile
+    DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename#, \
+#    DocumentFile
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
@@ -34,15 +34,16 @@ class DocumentMetadataInline(admin.StackedInline):
     allow_add = True    
 
 
-class DocumentFileInline(admin.StackedInline):
-    model = DocumentFile
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True    
+#class DocumentFileInline(admin.StackedInline):
+#    model = DocumentFile
+#    extra = 1
+#    classes = ('collapse-open',)
+#    allow_add = True    
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    inlines = [DocumentFileInline, DocumentMetadataInline,]
+    #inlines = [DocumentFileInline]#, DocumentMetadataInline,]
+    inlines = [DocumentMetadataInline]
     list_display = ('uuid',)
     
     

@@ -9,14 +9,9 @@ from common.wizard import BoundFormWizard
 from common.utils import urlquote
 from common.forms import DetailForm
 
-from models import Document, DocumentType, DocumentTypeMetadataType, DocumentFile
+from models import Document, DocumentType, DocumentTypeMetadataType
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
-
-
-class DocumentFileForm(forms.ModelForm):
-    class Meta:
-        model = DocumentFile
         
 
 class DocumentForm(forms.ModelForm):

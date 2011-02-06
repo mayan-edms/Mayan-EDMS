@@ -1,13 +1,10 @@
 import os
-import shutil
 
-from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
-from django.core.files.storage import default_storage
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.files.uploadedfile import InMemoryUploadedFile, SimpleUploadedFile
 
 from documents.conf.settings import STAGING_DIRECTORY    
-from documents.conf.settings import UUID_FUNCTION    
-from models import Document, get_filename_from_uuid
 
 
 def get_all_files():
@@ -50,18 +47,15 @@ class StagingFile(object):
             return self._id
         else:
             raise AttributeError, name
+    
+    def upload(self):
+        return SimpleUploadedFile(name=self.filename, content=open(self.filepath).read())
 
-    def upload(self, document_type):
-        document = Document(document_type=document_type)
-        document.save(save=False)
-        print 'UUID', document.uuid
-        tmp_filepath = os.path.join(settings.MEDIA_ROOT, UUID_FUNCTION())
-        #shutil.copy(self.filepath, tmp_filepath)
-        #document = Document(document_type=document_type,
-        #    file=tmp_filepath)
-        #document.save()
-        #final_filepath = get_filename_from_uuid(document, filename=self.filename)
-        #document.save()
-        #print final_filepath
-
-        
+        #return InMemoryUploadedFile(
+        #    file=open(self.filepath, 'r'),
+        #    field_name='',
+        #    name=self.filename,
+        #    content_type='unknown',
+        #    size=os.path.getsize(self.filepath),
+        #    charset=None,
+        #)

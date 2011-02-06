@@ -8,11 +8,9 @@ from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.forms.formsets import formset_factory
 
-
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
-        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
-        DocumentFileForm
+        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view
     
 from staging import StagingFile
 
@@ -63,7 +61,7 @@ def _save_metadata_from_request(request, document):
 def upload_document_with_type(request, document_type_id, multiple=True):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     if request.method == 'POST':
-        form = DocumentFileForm(request.POST, request.FILES)#, initial={'document_type':document_type})
+        form = DocumentForm(request.POST, request.FILES, initial={'document_type':document_type})
         if form.is_valid():
             instance = form.save()
             if 'new_filename' in form.cleaned_data:
@@ -83,7 +81,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             else:
                 return HttpResponseRedirect(reverse('document_list'))
     else:
-        form = DocumentFileForm()#initial={'document_type':document_type})
+        form = DocumentForm(initial={'document_type':document_type})
 
     filelist = StagingFile.get_all()
     
@@ -173,14 +171,22 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-
 def document_create_from_staging(request, file_id, document_type_id, multiple=True):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     staging_file = StagingFile.get(id=int(file_id))
-    staging_file.upload(document_type=document_type)
 
+    document = Document(file=staging_file.upload(), document_type=document_type)
+    document.save()
+
+    #TODO: need to grab url query string from HTTP_REFERER
+    _save_metadata_from_request(request, document)
+    messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
+    try:
+        document.create_fs_links()
+    except Exception, e:
+        messages.error(request, e)   
+    
     if multiple:
-        return HttpResponseRedirect(request.get_full_path())
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         return HttpResponseRedirect(reverse('document_list'))
-     

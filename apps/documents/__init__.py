@@ -12,7 +12,7 @@ document_view = {'text':_('details'), 'view':'document_view', 'args':'object.id'
 document_delete = {'text':_('delete'), 'view':'document_delete', 'args':'object.id', 'famfam':'page_delete'}
 document_edit = {'text':_('edit'), 'view':'document_edit', 'args':'object.id', 'famfam':'page_edit'}
 
-document_create_from_staging = {'text':_('select staging'), 'view':'document_create_from_staging', 'args':{'file_id':'object.id', 'document_type_id': 'document_type_id'}, 'famfam':'page_add'}
+document_create_from_staging = {'text':_('upload file'), 'view':'document_create_from_staging', 'args':{'file_id':'object.id', 'document_type_id': 'document_type_id'}, 'famfam':'page_add'}
 
 
 register_links(Document, [document_view, document_edit, document_delete])
@@ -24,6 +24,6 @@ register_links(StagingFile, [document_create_from_staging])
 
 register_menu([
     {'text':_('documents'), 'view':'document_list', 'links':[
-        document_list#, document_create
+        document_list
     ],'famfam':'page','position':4}])
 
