@@ -52,7 +52,7 @@ class Document(models.Model):
         Inherit this model to customise document metadata, see BasicDocument for an example.
     """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    file = models.FileField(upload_to=get_filename_from_uuid, blank=True, null=True)
+    file = models.FileField(upload_to=get_filename_from_uuid)
     uuid = models.CharField(max_length=36, default=UUID_FUNCTION(), blank=True, editable=False)
     file_mimetype = models.CharField(max_length=50, default='', editable=False)
     file_filename = models.CharField(max_length=64, default='', editable=False)

@@ -1,3 +1,6 @@
+from urlparse import urlparse
+from urllib import unquote_plus
+
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -40,13 +43,13 @@ def document_create(request, multiple=True):
     return wizard(request)
 
 
-def _save_metadata_from_request(request, document):
+def _save_metadata(url_dict, document):
     metadata_dict = {
         'id':{},
         'value':{}
     }
     #Match out of order metadata_type ids with metadata values from request
-    for key, value in request.GET.items():
+    for key, value in url_dict.items():
         if 'metadata' in key:
             index, element = key[8:].split('_')
             metadata_dict[element][index] = value
@@ -56,7 +59,8 @@ def _save_metadata_from_request(request, document):
         document_metadata = DocumentMetadata(
             document=document,
             metadata_type=get_object_or_404(MetadataType, pk=key),
-            value=value
+            #Hangle 'plus sign as space' in the url
+            value=unquote_plus(value)
         )
         document_metadata.save()
         
@@ -72,7 +76,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                     instance.file_filename = form.cleaned_data['new_filename'].filename
                     instance.save()
         
-            _save_metadata_from_request(request, instance)
+            _save_metadata(request.GET, instance)
             messages.success(request, _(u'Document uploaded successfully.'))
             try:
                 instance.create_fs_links()
@@ -184,8 +188,11 @@ def document_create_from_staging(request, file_id, document_type_id, multiple=Tr
     except Exception, e:
         messages.error(request, e)   
     else:
-        #TODO: need to grab url query string from HTTP_REFERER
-        _save_metadata_from_request(request, document)
+        url = urlparse(request.META['HTTP_REFERER'])
+        #Take the url parameter defining the metadata values and turn
+        # then into a dictionary
+        params = dict([part.split('=') for part in url[4].split('&')])        
+        _save_metadata(params, document)
         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
         try:
             document.create_fs_links()
