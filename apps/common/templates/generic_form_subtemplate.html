@@ -7,7 +7,7 @@
     <div class="content">    
     <h2 class="title">
 {% endif %}
-        
+
 {% include "calculate_form_title.html" %}
 
 {% if side_bar %}
@@ -18,11 +18,10 @@
     </h2>
     <div class="inner">
 {% endif %}
-    
     {% if form.is_multipart %}
-        <form enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="" class="form">
+        <form name="{{ form.prefix }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
     {% else %}
-        <form method="{{ submit_method|default:'post' }}" action="" class="form">
+        <form name="{{ form.prefix }}" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
     {% endif %}
         {% if step_field %}
             <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
@@ -64,10 +63,10 @@
         {% else %}
             {% include "generic_form_instance.html" %}
         {% endif %}
-    
+        
         {% if not read_only %}
         <div class="group navform wat-cf">
-            <button class="button" type="submit">
+            <button class="button" type="submit" name="{{ form.prefix }}-submit">
                 <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
             </button>
             {% comment %}

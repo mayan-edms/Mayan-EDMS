@@ -2,7 +2,28 @@
 {% block title %} :: {% with "true" as striptags %}{% include "calculate_form_title.html" %}{% endwith %}{% endblock %}
 
 {% block content %}
-    {% include "generic_form_subtemplate.html" %}
+
+    {% if form %}
+        {% include "generic_form_subtemplate.html" %}
+    {% endif %}
+
+    {% for form in form_list %}
+        {% with form.submit_method as submit_method %}
+        {% with form.striptags as striptags %}
+        {% with form.title as title %}
+        {% with form.object as object %}
+        {% with form.object_name as object_name %}
+        {% with form.form_action as form_action %}
+        {% with form.form as form %}
+            {% include "generic_form_subtemplate.html" %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+    {% endfor %}
 
     {% for subtemplate in subtemplates_dict %}
     {% with subtemplate.title as title %}
