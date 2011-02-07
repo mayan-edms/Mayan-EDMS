@@ -11,7 +11,10 @@ from documents.conf.settings import STAGING_DIRECTORY
 
 
 def get_all_files():
-    return sorted([os.path.normcase(f) for f in os.listdir(STAGING_DIRECTORY) if os.path.isfile(os.path.join(STAGING_DIRECTORY, f))])
+    try:
+        return sorted([os.path.normcase(f) for f in os.listdir(STAGING_DIRECTORY) if os.path.isfile(os.path.join(STAGING_DIRECTORY, f))])
+    except OSError, exc:
+        raise OSError(ugettext(u'Unable get list of staging files: %s') % exc)
 
 
 class StagingFile(object):

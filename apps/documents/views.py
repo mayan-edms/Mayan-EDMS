@@ -18,6 +18,7 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
 from staging import StagingFile
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
+from documents.conf.settings import USE_STAGING_DIRECTORY
 
 
 def document_list(request):
@@ -90,21 +91,31 @@ def upload_document_with_type(request, document_type_id, multiple=True):
     else:
         form = DocumentForm(initial={'document_type':document_type})
 
-    filelist = StagingFile.get_all()
-    
-    return render_to_response('generic_form.html', {
+    context = {
         'form':form,
         'title':_(u'upload a local document'),
         'document_type_id':document_type_id,
-        'subtemplates_dict':[
-            {
-            'name':'generic_list_subtemplate.html',
-            'title':_(u'files in staging'),
-            'object_list':filelist,
-            },
-        ],
-
-    }, context_instance=RequestContext(request))
+    }
+    
+    if USE_STAGING_DIRECTORY:
+        try:
+            filelist = StagingFile.get_all()
+        except Exception, e:
+            messages.error(request, e)
+            filelist = []
+        finally:
+            context.update({
+                'subtemplates_dict':[
+                    {
+                    'name':'generic_list_subtemplate.html',
+                    'title':_(u'files in staging'),
+                    'object_list':filelist,
+                    },
+                ],
+            })
+    
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))
         
         
 def document_view(request, document_id):
@@ -179,32 +190,33 @@ def document_edit(request, document_id):
 
 
 def document_create_from_staging(request, file_id, document_type_id, multiple=True):
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
-    staging_file = StagingFile.get(id=int(file_id))
+    if USE_STAGING_DIRECTORY:
+        document_type = get_object_or_404(DocumentType, pk=document_type_id)
+        staging_file = StagingFile.get(id=int(file_id))
 
-    try:
-        document = Document(file=staging_file.upload(), document_type=document_type)
-        document.save()
-    except Exception, e:
-        messages.error(request, e)   
-    else:
-        url = urlparse(request.META['HTTP_REFERER'])
-        #Take the url parameter defining the metadata values and turn
-        # then into a dictionary
-        params = dict([part.split('=') for part in url[4].split('&')])        
-        _save_metadata(params, document)
-        messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
         try:
-            document.create_fs_links()
+            document = Document(file=staging_file.upload(), document_type=document_type)
+            document.save()
         except Exception, e:
             messages.error(request, e)   
-            
-        if DELETE_STAGING_FILE_AFTER_UPLOAD:
+        else:
+            url = urlparse(request.META['HTTP_REFERER'])
+            #Take the url parameter defining the metadata values and turn
+            # then into a dictionary
+            params = dict([part.split('=') for part in url[4].split('&')])        
+            _save_metadata(params, document)
+            messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
             try:
-                staging_file.delete()
-                messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                document.create_fs_links()
             except Exception, e:
-                messages.error(request, e)
+                messages.error(request, e)   
+                
+            if DELETE_STAGING_FILE_AFTER_UPLOAD:
+                try:
+                    staging_file.delete()
+                    messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                except Exception, e:
+                    messages.error(request, e)
         
     if multiple:
         return HttpResponseRedirect(request.META['HTTP_REFERER'])

@@ -164,16 +164,22 @@ LOGIN_EXEMPT_URLS = (
 #--------- Web theme app ---------------
 #WEB_THEME = 'default'
 #---------- Documents ------------------
+# Definition
 #DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
-#DOCUMENTS_STAGING_DIRECTORY = u'/tmp/mayan/staging'
-#DOCUMENTS_FILESERVING_PATH = u'/tmp/mayan/documents'
-#DOCUMENTS_DELETE_LOCAL_ORIGINAL = False
-#DOCUMENTS_SLUGIFY_PATH = False
-#DOCUMENTS_CHECKSUM_FUNCTION = lambda x: hashlib.sha256(x).hexdigest())
-#DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD = False
-#DOCUMENTS_UUID_FUNTION = lambda:unicode(uuid.uuid4())
-#DOCUMENTS_STORAGE_DIRECTORY_NAME = 'documents'
 #DOCUMENTS_METADATA_AVAILABLE_MODELS = {}
+# Upload
+#DOCUMENTS_DELETE_LOCAL_ORIGINAL = False
+#DOCUMENTS_USE_STAGING_DIRECTORY = False
+#DOCUMENTS_STAGING_DIRECTORY = u'/tmp/mayan/staging'
+#DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD = False
+# Saving
+#DOCUMENTS_CHECKSUM_FUNCTION = lambda x: hashlib.sha256(x).hexdigest())
+#DOCUMENTS_UUID_FUNCTION = lambda:unicode(uuid.uuid4())
+# Storage
+#DOCUMENTS_STORAGE_DIRECTORY_NAME = 'documents'
+# Serving
+#DOCUMENTS_FILESERVING_PATH = u'/tmp/mayan/documents'
+#DOCUMENTS_SLUGIFY_PATH = False
 #======== End of configuration options =======
 
 try:
