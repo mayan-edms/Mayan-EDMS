@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load project_tags %}
 {% load navigation %}
+{% load settings %}
 
 {% block html_title %}{% project_name %}{% block title %}{% endblock %}{% endblock %}
 
@@ -46,7 +47,8 @@
             <input type="submit" value="{% trans 'Go' %}" />
         </form>                                
     </li>
-    <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}{% endif %}">{% if user.is_anonymous %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
+    {% get_setting "LOGIN_URL" as login_url %}
+    <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}?next={{ login_url }}{% endif %}">{% if user.is_anonymous %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
 {% endblock %}
 
 {% block web_theme_main_navigation %}
