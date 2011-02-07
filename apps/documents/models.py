@@ -29,8 +29,7 @@ if FILESYSTEM_SLUGIFY_PATHS == False:
 
 def get_filename_from_uuid(instance, filename, directory=STORAGE_DIRECTORY_NAME):
     populate_file_extension_and_mimetype(instance, filename)
-    stem, extension = os.path.splitext(filename)
-    return '%s/%s%s' % (directory, instance.uuid, extension)
+    return '%s/%s' % (directory, instance.uuid)
 
 def populate_file_extension_and_mimetype(instance, filename):
     # First populate the file extension and mimetype
@@ -80,6 +79,9 @@ class Document(models.Model):
         self.checksum = unicode(CHECKSUM_FUNCTION(self.file.read()))
         if save:
             self.save()
+    
+    def exists(self):
+        return self.file.storage.exists(self.file.url)
         
     def save(self, *args, **kwargs):
         self.update_checksum(save=False)
