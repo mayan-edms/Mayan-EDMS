@@ -18,6 +18,10 @@ def get_all_files():
 
 
 class StagingFile(object):
+    """
+    Simple class to encapsulate the files in a directory and hide the 
+    specifics to the view
+    """
     @classmethod
     def get_all(cls):
         staging_files = []
