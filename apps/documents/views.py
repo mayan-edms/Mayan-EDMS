@@ -13,13 +13,14 @@ from django.forms.formsets import formset_factory
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
-        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view
+        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
+        StagingDocumentForm
     
 from staging import StagingFile
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
-
+DELETE_STAGING_FILE_AFTER_UPLOAD = True
 
 def document_list(request):
     return object_list(
@@ -68,33 +69,74 @@ def _save_metadata(url_dict, document):
 
 def upload_document_with_type(request, document_type_id, multiple=True):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    local_form = DocumentForm(prefix='local', initial={'document_type':document_type})
+    if USE_STAGING_DIRECTORY:
+        staging_form = StagingDocumentForm(prefix='staging', 
+            initial={'document_type':document_type})
+    
     if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES, initial={'document_type':document_type})
-        if form.is_valid():
-            instance = form.save()
-            if 'document_type_available_filenames' in form.cleaned_data:
-                if form.cleaned_data['document_type_available_filenames']:
-                    instance.file_filename = form.cleaned_data['document_type_available_filenames'].filename
-                    instance.save()
-        
-            _save_metadata(request.GET, instance)
-            messages.success(request, _(u'Document uploaded successfully.'))
-            try:
-                instance.create_fs_links()
-            except Exception, e:
-                messages.error(request, e)
+        if 'local-submit' in request.POST.keys():
+            local_form = DocumentForm(request.POST, request.FILES,
+                prefix='local', initial={'document_type':document_type})
+            if local_form.is_valid():
+                instance = local_form.save()
+                if 'document_type_available_filenames' in local_form.cleaned_data:
+                    if local_form.cleaned_data['document_type_available_filenames']:
+                        instance.file_filename = local_form.cleaned_data['document_type_available_filenames'].filename
+                        instance.save()
+            
+                _save_metadata(request.GET, instance)
+                messages.success(request, _(u'Document uploaded successfully.'))
+                try:
+                    instance.create_fs_links()
+                except Exception, e:
+                    messages.error(request, e)
+                    
+                if multiple:
+                    return HttpResponseRedirect(request.get_full_path())
+                else:
+                    return HttpResponseRedirect(reverse('document_list'))
+        elif 'staging-submit' in request.POST.keys() and USE_STAGING_DIRECTORY:
+            staging_form = StagingDocumentForm(request.POST, request.FILES,
+                prefix='staging', initial={'document_type':document_type})
+            if staging_form.is_valid():
+                staging_file_id = staging_form.cleaned_data['staging_file_id']
                 
+                staging_file = StagingFile.get(int(staging_file_id))
+                try:
+                    document = Document(file=staging_file.upload(), document_type=document_type)
+                    document.save()
+                except Exception, e:
+                    messages.error(request, e)   
+                else:
+                    _save_metadata(request.GET, document)                        
+                    messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
+                    try:
+                        document.create_fs_links()
+                    except Exception, e:
+                        messages.error(request, e)
+            
+                    if DELETE_STAGING_FILE_AFTER_UPLOAD:
+                        try:
+                            staging_file.delete()
+                            messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                        except Exception, e:
+                            messages.error(request, e)
+
             if multiple:
-                return HttpResponseRedirect(request.get_full_path())
+                return HttpResponseRedirect(request.META['HTTP_REFERER'])
             else:
-                return HttpResponseRedirect(reverse('document_list'))
-    else:
-        form = DocumentForm(initial={'document_type':document_type})
+                return HttpResponseRedirect(reverse('document_list'))                
+
 
     context = {
-        'form':form,
-        'title':_(u'upload a local document'),
         'document_type_id':document_type_id,
+        'form_list':[
+            {
+                'form':local_form,
+                'title':_(u'upload a local document')
+            },
+        ],
     }
     
     if USE_STAGING_DIRECTORY:
@@ -110,9 +152,16 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                     'name':'generic_list_subtemplate.html',
                     'title':_(u'files in staging'),
                     'object_list':filelist,
+                    'hide_link':True,
                     },
                 ],
             })
+            context['form_list'].append(
+                {
+                    'form':staging_form,
+                    'title':_(u'upload a document from staging'),
+                },
+            )
     
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
@@ -178,13 +227,15 @@ def document_edit(request, document_id):
                 
             document.save()
             
+            messages.success(request, _(u'Document edited successfully.'))
+            
             try:
                 document.create_fs_links()
+                messages.success(request, _(u'Document filesystem links updated successfully.'))                
             except Exception, e:
                 messages.error(request, e)
                 return HttpResponseRedirect(reverse('document_list'))
                 
-            messages.success(request, _(u'Document edited and filesystem links updated.'))
             return HttpResponseRedirect(reverse('document_list'))
     else:
         form = DocumentForm_edit(instance=document, initial={
@@ -196,7 +247,7 @@ def document_edit(request, document_id):
     
     }, context_instance=RequestContext(request))
 
-
+'''
 def document_create_from_staging(request, file_id, document_type_id, multiple=True):
     if USE_STAGING_DIRECTORY:
         document_type = get_object_or_404(DocumentType, pk=document_type_id)
@@ -230,3 +281,4 @@ def document_create_from_staging(request, file_id, document_type_id, multiple=Tr
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         return HttpResponseRedirect(reverse('document_list'))
+'''

@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
 from django.core.urlresolvers import reverse
 
+from staging import StagingFile
+
 from common.wizard import BoundFormWizard
 from common.utils import urlquote
 from common.forms import DetailForm
@@ -14,7 +16,7 @@ from models import Document, DocumentType, DocumentTypeMetadataType
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
         
-
+#TODO: Turn this into a base form and let others inherit
 class DocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DocumentForm, self).__init__(*args, **kwargs)
@@ -46,6 +48,22 @@ class DocumentForm_edit(DocumentForm):
         exclude = ('file', 'document_type')
     
     new_filename = forms.CharField(label=_(u'New document filename'), required=False)
+
+
+class StagingDocumentForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(StagingDocumentForm, self).__init__(*args, **kwargs)
+        self.fields['staging_file_id'].choices=[(staging_file.id, staging_file) for staging_file in StagingFile.get_all()]
+        if 'initial' in kwargs:
+            if 'document_type' in kwargs['initial']:
+                filenames_qs = kwargs['initial']['document_type'].documenttypefilename_set.filter(enabled=True)
+                if filenames_qs.count() > 0:
+                    self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
+                        queryset=filenames_qs,
+                        required=False,
+                        label=_(u'Document type available filenames'))
+            
+    staging_file_id = forms.ChoiceField()
 
 
 class DocumentTypeSelectForm(forms.Form):
