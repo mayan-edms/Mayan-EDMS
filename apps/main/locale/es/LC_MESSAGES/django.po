@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-07 01:35-0400\n"
+"PO-Revision-Date: 2011-02-07 01:37\n"
+"Last-Translator: Administrator  <admin@admin.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:7
+msgid "home"
+msgstr "inicio"
+
+#: __init__.py:12
+msgid "about"
+msgstr "acerca"
+
+#: templates/about.html:4
+msgid "About this program"
+msgstr "Acerca de este programa"
+
+#: templates/about.html:10
+msgid "Django based document manager with custom metadata indexing and file serving integration"
+msgstr "Gestor documental basado en Django con indexación de metadatos personalizados e integración de servicio de archivos"
+
+#: templates/base.html:26
+msgid "User"
+msgstr "Usuario"
+
+#: templates/base.html:28
+msgid "Anonymous"
+msgstr "Anónimo"
+
+#: templates/base.html:31
+msgid "New password"
+msgstr "Nueva contraseña"
+
+#: templates/base.html:35
+msgid "Admin site"
+msgstr "Sitio administrativo"
+
+#: templates/base.html:46
+msgid "Go"
+msgstr "Ir"
+
+#: templates/base.html:49
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: templates/base.html:49
+msgid "Logout"
+msgstr "Desconectarse"
+
+#: templates/base.html:78
+#, python-format
+msgid "Actions for %(object_name)s: %(object)s"
+msgstr "Acciones para %(object_name)s: %(object)s "
+
+#: templates/base.html:80
+#, python-format
+msgid "Actions for: %(object)s"
+msgstr "Acciones para: %(object)s "
+
+#: templates/base.html:83
+msgid "Actions"
+msgstr "Acciones"
+
+#: templates/base.html:96
+msgid "Other available actions"
+msgstr "Otras acciones disponibles"
