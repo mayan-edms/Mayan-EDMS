@@ -33,7 +33,7 @@ def document_list(request):
                 {'name':_(u'filename'), 'attribute':'file_filename'},
                 {'name':_(u'extension'), 'attribute':'file_extension'},
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
-                {'name':_(u'added'), 'attribute':'date_added'},
+                {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
             ],
         },
     )
@@ -173,7 +173,8 @@ def document_view(request, document_id):
         {'label':_(u'Filename'), 'field':'file_filename'},
         {'label':_(u'File extension'), 'field':'file_extension'},
         {'label':_(u'File mimetype'), 'field':'file_mimetype'},
-        {'label':_(u'Date added'), 'field':'date_added'},
+        {'label':_(u'Date added'), 'field':lambda x: x.date_added.date()},
+        {'label':_(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
         {'label':_(u'Checksum'), 'field':'checksum'},
         {'label':_(u'UUID'), 'field':'uuid'},
         {'label':_(u'Exists in storage'), 'field':'exists'}
