@@ -69,7 +69,8 @@ class Document(models.Model):
         ordering = ['-date_updated', '-date_added']
         
     def __unicode__(self):
-        return self.uuid
+        #return self.uuid
+        return '%s.%s' % (self.file_filename, self.file_extension)
         
     @models.permalink
     def get_absolute_url(self):
@@ -134,6 +135,7 @@ available_models_string = (_(u' Available models: %s') % ','.join([name for name
 
 class MetadataType(models.Model):
     name = models.CharField(max_length=48, verbose_name=_(u'name'))
+#    title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
         verbose_name=_(u'default'), help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
     lookup = models.CharField(max_length=128, blank=True, null=True,
@@ -141,12 +143,26 @@ class MetadataType(models.Model):
     #datatype = models.
     
     def __unicode__(self):
+#        return self.title if self.title else self.name
         return self.name
         
     class Meta:
         verbose_name = _(u'metadata type')
         verbose_name_plural = _(u'metadata types')
 
+
+#class MetadataIndexing(models.Model):
+#    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
+#    indexing_string = models.CharField(
+#    
+#    
+#    def __unicode__(self):
+#        return unicode(self.metadata_type)
+#        
+#    class Meta:
+#        verbose_name = _(u'metadata type')
+#        verbose_name_plural = _(u'metadata types')
+        
 
 class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))

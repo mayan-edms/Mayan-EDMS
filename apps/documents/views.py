@@ -20,7 +20,6 @@ from staging import StagingFile
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
-DELETE_STAGING_FILE_AFTER_UPLOAD = True
 
 def document_list(request):
     return object_list(
@@ -30,8 +29,8 @@ def document_list(request):
         extra_context={
             'title':_(u'documents'),
             'extra_columns':[
-                {'name':_(u'filename'), 'attribute':'file_filename'},
-                {'name':_(u'extension'), 'attribute':'file_extension'},
+                #{'name':_(u'filename'), 'attribute':'file_filename'},
+                #{'name':_(u'extension'), 'attribute':'file_extension'},
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
                 {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
             ],
@@ -102,26 +101,36 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             if staging_form.is_valid():
                 staging_file_id = staging_form.cleaned_data['staging_file_id']
                 
-                staging_file = StagingFile.get(int(staging_file_id))
                 try:
-                    document = Document(file=staging_file.upload(), document_type=document_type)
-                    document.save()
+                    staging_file = StagingFile.get(staging_file_id)
                 except Exception, e:
                     messages.error(request, e)   
                 else:
-                    _save_metadata(request.GET, document)                        
-                    messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
                     try:
-                        document.create_fs_links()
+                        document = Document(file=staging_file.upload(), document_type=document_type)
+                        document.save()
                     except Exception, e:
-                        messages.error(request, e)
-            
-                    if DELETE_STAGING_FILE_AFTER_UPLOAD:
+                        messages.error(request, e)   
+                    else:
+                        
+                        if 'document_type_available_filenames' in staging_form.cleaned_data:
+                            if staging_form.cleaned_data['document_type_available_filenames']:
+                                document.file_filename = staging_form.cleaned_data['document_type_available_filenames'].filename
+                                document.save()
+                                                
+                        _save_metadata(request.GET, document)                        
+                        messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
                         try:
-                            staging_file.delete()
-                            messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                            document.create_fs_links()
                         except Exception, e:
                             messages.error(request, e)
+                
+                        if DELETE_STAGING_FILE_AFTER_UPLOAD:
+                            try:
+                                staging_file.delete()
+                                messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                            except Exception, e:
+                                messages.error(request, e)
 
             if multiple:
                 return HttpResponseRedirect(request.META['HTTP_REFERER'])
@@ -221,7 +230,6 @@ def document_edit(request, document_id):
 
             document.file_filename = form.cleaned_data['new_filename']
 
-            print form.cleaned_data
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
                     document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
