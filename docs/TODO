@@ -21,3 +21,5 @@
 * Implement single sign on or LDAP for intranets
 * Rename dropbox from document edit view
 * Ability to rename staging file during upload
+* Encrypting storage backend
+* Indicate in generic list which document don't exist in storage backend
