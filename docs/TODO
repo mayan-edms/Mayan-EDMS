@@ -18,14 +18,15 @@
 * Check duplicated files using checksum
 * If theres only one document type on db skip step 1 of wizard
 * Show last 5 recent metadata setups for easy switch
-* Change to model signal
+* Change to use model signals
 * Allow document type to be changed in document edit view
 * Implement single sign on or LDAP for intranets
 * Encrypting storage backend
 * Indicate in generic list which document don't exist in storage backend
-* Add a 
 * Database storage backend (sql, nosql: [mongodb])
 * Add css grids
 * Document previews
 * Recognize multi-page documents
 * Staging file previews
+* Autodelete empty fs directories
+* Auto check and delete dead sym links
