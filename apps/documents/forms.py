@@ -67,7 +67,7 @@ class StagingDocumentForm(forms.Form):
                         required=False,
                         label=_(u'Document type available filenames'))
             
-    staging_file_id = forms.ChoiceField()
+    staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
 
 
 class DocumentTypeSelectForm(forms.Form):
