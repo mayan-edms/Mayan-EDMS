@@ -27,7 +27,7 @@
         {% if user.is_anonymous %}
             {% trans 'Anonymous' %}
         {% else %}
-            {{ user.full_name|default:user }}
+            {{ user.get_full_name|default:user }}
             {% if user.has_usable_password %}
                 <a href="{% url password_change_view %}">({% trans 'New password' %})</a>
             {% endif %}
