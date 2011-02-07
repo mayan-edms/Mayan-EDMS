@@ -12,14 +12,17 @@ from django.utils.translation import ugettext
 from dynamic_search.api import register
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
-from documents.conf.settings import FILESERVING_PATH
-from documents.conf.settings import SLUGIFY_PATH
+from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
+from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import STORAGE_DIRECTORY_NAME
-from documents.conf.settings import AVAILABLE_MODELS
+from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
+from documents.conf.settings import FILESYSTEM_FILESERVING_PATH
+from documents.conf.settings import FILESYSTEM_SLUGIFY_PATHS
 
-if SLUGIFY_PATH == False:
+
+if FILESYSTEM_SLUGIFY_PATHS == False:
     #Do not slugify path or filenames and extensions
     slugify = lambda x:x
 
@@ -52,7 +55,7 @@ class Document(models.Model):
         Inherit this model to customise document metadata, see BasicDocument for an example.
     """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    file = models.FileField(upload_to=get_filename_from_uuid)
+    file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND())
     uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
     file_filename = models.CharField(max_length=64, default='', editable=False)
@@ -90,36 +93,38 @@ class Document(models.Model):
         targets = []
         for metadata in self.documentmetadata_set.all():
             if metadata.metadata_type.documenttypemetadatatype_set.all()[0].create_directory_link:
-                target_directory = os.path.join(FILESERVING_PATH, slugify(metadata.metadata_type.name), slugify(metadata.value))
+                target_directory = os.path.join(FILESYSTEM_FILESERVING_PATH, slugify(metadata.metadata_type.name), slugify(metadata.value))
                 targets.append(os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)])))
         return targets
 
     def create_fs_links(self):
-        for target in self.calculate_fs_links():
-            try:
-                os.makedirs(os.path.dirname(target))
-            except OSError, exc:
-                if exc.errno == errno.EEXIST:
-                    pass
-                else: 
-                    raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
-            try:
-                os.symlink(os.path.abspath(self.file.path), target)
-            except OSError, exc:
-                if exc.errno == errno.EEXIST:
-                    pass
-                else: 
-                    raise OSError(ugettext(u'Unable to create metadata indexing symbolic link: %s') % exc)
+        if FILESYSTEM_FILESERVING_ENABLE:
+            for target in self.calculate_fs_links():
+                try:
+                    os.makedirs(os.path.dirname(target))
+                except OSError, exc:
+                    if exc.errno == errno.EEXIST:
+                        pass
+                    else: 
+                        raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
+                try:
+                    os.symlink(os.path.abspath(self.file.path), target)
+                except OSError, exc:
+                    if exc.errno == errno.EEXIST:
+                        pass
+                    else: 
+                        raise OSError(ugettext(u'Unable to create metadata indexing symbolic link: %s') % exc)
                     
     def delete_fs_links(self):
-        for target in self.calculate_fs_links():
-            try:
-                os.unlink(target)
-            except OSError, exc:
-                if exc.errno == errno.ENOENT:
-                    pass
-                else: 
-                    raise OSError(ugettext(u'Unable to delete metadata indexing symbolic link: %s') % exc)
+        if FILESYSTEM_FILESERVING_ENABLE:
+            for target in self.calculate_fs_links():
+                try:
+                    os.unlink(target)
+                except OSError, exc:
+                    if exc.errno == errno.ENOENT:
+                        pass
+                    else: 
+                        raise OSError(ugettext(u'Unable to delete metadata indexing symbolic link: %s') % exc)
         
 
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''

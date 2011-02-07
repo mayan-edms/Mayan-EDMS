@@ -5,6 +5,7 @@ import uuid
 from django.conf import settings
 from django.contrib.auth.models import User
 
+from documents.storage import DocumentStorage
 
 default_available_functions = {
     'current_date':datetime.datetime.now().date,
@@ -26,7 +27,9 @@ DELETE_LOCAL_ORIGINAL = getattr(settings, 'DOCUMENTS_DELETE_LOCAL_ORIGINAL', Fal
 CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', lambda x: hashlib.sha256(x).hexdigest())
 UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNTION', lambda:unicode(uuid.uuid4()))
 # Storage
+STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', DocumentStorage)
 STORAGE_DIRECTORY_NAME = getattr(settings, 'DOCUMENTS_STORAGE_DIRECTORY_NAME', 'documents')
 # Serving
-FILESERVING_PATH = getattr(settings, 'DOCUMENTS_FILESERVING_PATH', u'/tmp/mayan/documents')
-SLUGIFY_PATH = getattr(settings, 'DOCUMENTS_SLUGIFY_PATH', False)
+FILESYSTEM_FILESERVING_ENABLE = getattr(settings, 'DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE', True)
+FILESYSTEM_FILESERVING_PATH = getattr(settings, 'DOCUMENTS_FILESERVING_PATH', u'/tmp/mayan/documents')
+FILESYSTEM_SLUGIFY_PATHS = getattr(settings, 'DOCUMENTS_SLUGIFY_PATHS', False)

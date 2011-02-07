@@ -178,8 +178,9 @@ LOGIN_EXEMPT_URLS = (
 # Storage
 #DOCUMENTS_STORAGE_DIRECTORY_NAME = 'documents'
 # Serving
-#DOCUMENTS_FILESERVING_PATH = u'/tmp/mayan/documents'
-#DOCUMENTS_SLUGIFY_PATH = False
+#DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE = True
+#DOCUMENTS_FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
+#DOCUMENTS_FILESYSTEM_SLUGIFY_PATHS = False
 #======== End of configuration options =======
 
 try:
