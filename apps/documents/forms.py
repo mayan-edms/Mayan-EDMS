@@ -53,7 +53,11 @@ class DocumentForm_edit(DocumentForm):
 class StagingDocumentForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(StagingDocumentForm, self).__init__(*args, **kwargs)
-        self.fields['staging_file_id'].choices=[(staging_file.id, staging_file) for staging_file in StagingFile.get_all()]
+        try:
+            self.fields['staging_file_id'].choices=[(staging_file.id, staging_file) for staging_file in StagingFile.get_all()]
+        except:
+            pass
+            
         if 'initial' in kwargs:
             if 'document_type' in kwargs['initial']:
                 filenames_qs = kwargs['initial']['document_type'].documenttypefilename_set.filter(enabled=True)
@@ -63,7 +67,7 @@ class StagingDocumentForm(forms.Form):
                         required=False,
                         label=_(u'Document type available filenames'))
             
-    staging_file_id = forms.ChoiceField()
+    staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
 
 
 class DocumentTypeSelectForm(forms.Form):
