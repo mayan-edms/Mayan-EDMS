@@ -1,6 +1,10 @@
+import types
+
 from django.utils.http import urlquote  as django_urlquote
 from django.utils.http import urlencode as django_urlencode
 from django.utils.datastructures import MultiValueDict
+from django.conf import settings
+
 
 def urlquote(link=None, get={}):
     u'''
@@ -38,3 +42,25 @@ def urlquote(link=None, get={}):
         return u'%s%s' % (link, django_urlencode(get, doseq=True))
     else:
         return django_urlquote(link)
+
+
+def return_attrib(obj, attrib, arguments={}):
+    try:
+        if isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
+            return obj[attrib]
+        elif isinstance(attrib, types.FunctionType):
+            return attrib(obj)
+        else:
+            result = reduce(getattr, attrib.split("."), obj)
+            if isinstance(result, types.MethodType):
+                if arguments:
+                    return result(**arguments)
+                else:
+                    return result()
+            else:
+                return result
+    except Exception, err:
+        if settings.DEBUG:
+            return "Attribute error: %s; %s" % (attrib, err)
+        else:
+            pass
