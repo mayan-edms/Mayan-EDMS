@@ -72,9 +72,9 @@ def upload_document_with_type(request, document_type_id, multiple=True):
         form = DocumentForm(request.POST, request.FILES, initial={'document_type':document_type})
         if form.is_valid():
             instance = form.save()
-            if 'new_filename' in form.cleaned_data:
-                if form.cleaned_data['new_filename']:
-                    instance.file_filename = form.cleaned_data['new_filename'].filename
+            if 'document_type_available_filenames' in form.cleaned_data:
+                if form.cleaned_data['document_type_available_filenames']:
+                    instance.file_filename = form.cleaned_data['document_type_available_filenames'].filename
                     instance.save()
         
             _save_metadata(request.GET, instance)
@@ -161,15 +161,21 @@ def document_delete(request, document_id):
 def document_edit(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     if request.method == 'POST':
-        form = DocumentForm_edit(request.POST)
+        form = DocumentForm_edit(request.POST, initial={'document_type':document.document_type})
         if form.is_valid():
             try:
                 document.delete_fs_links()
             except Exception, e:
                 messages.error(request, e)
                 return HttpResponseRedirect(reverse('document_list'))
-                
+
             document.file_filename = form.cleaned_data['new_filename']
+
+            print form.cleaned_data
+            if 'document_type_available_filenames' in form.cleaned_data:
+                if form.cleaned_data['document_type_available_filenames']:
+                    document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
+                
             document.save()
             
             try:
@@ -181,7 +187,8 @@ def document_edit(request, document_id):
             messages.success(request, _(u'Document edited and filesystem links updated.'))
             return HttpResponseRedirect(reverse('document_list'))
     else:
-        form = DocumentForm_edit(instance=document, initial={'new_filename':document.file_filename})
+        form = DocumentForm_edit(instance=document, initial={
+            'new_filename':document.file_filename, 'document_type':document.document_type})
 
     return render_to_response('generic_form.html', {
         'form':form,

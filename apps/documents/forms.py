@@ -20,14 +20,15 @@ class DocumentForm(forms.ModelForm):
         super(DocumentForm, self).__init__(*args, **kwargs)
         if 'initial' in kwargs:
             if 'document_type' in kwargs['initial']:
-                self.fields['document_type'].widget = forms.HiddenInput()
+                if 'document_type' in self.fields:
+                    #To allow merging with DocumentForm_edit
+                    self.fields['document_type'].widget = forms.HiddenInput()
                 filenames_qs = kwargs['initial']['document_type'].documenttypefilename_set.filter(enabled=True)
                 if filenames_qs.count() > 0:
-                    self.fields['new_filename'] = forms.ModelChoiceField(
+                    self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
                         queryset=filenames_qs,
                         required=False,
-                        label=_(u'Rename file'))
-
+                        label=_(u'Document type available filenames'))
 
     class Meta:
         model = Document
@@ -39,11 +40,12 @@ class DocumentForm_view(DetailForm):
         exclude = ('file',)
         
         
-class DocumentForm_edit(forms.ModelForm):
+class DocumentForm_edit(DocumentForm):
     class Meta:
         model = Document
-        exclude = ('file','document_type')
-    new_filename = forms.CharField(label=_(u'New filename'), required=False)
+        exclude = ('file', 'document_type')
+    
+    new_filename = forms.CharField(label=_(u'New document filename'), required=False)
 
 
 class DocumentTypeSelectForm(forms.Form):
