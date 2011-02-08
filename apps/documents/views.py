@@ -10,6 +10,11 @@ from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.forms.formsets import formset_factory
+from django.core.files.base import File
+
+from filetransfers.api import serve_file
+
+from convert import convert
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
@@ -21,7 +26,7 @@ from staging import StagingFile
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
-
+from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 
 def document_list(request):
     return object_list(
@@ -158,10 +163,13 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             context.update({
                 'subtemplates_dict':[
                     {
-                    'name':'generic_list_subtemplate.html',
-                    'title':_(u'files in staging'),
-                    'object_list':filelist,
-                    'hide_link':True,
+                        'name':'fancybox.html',
+                    },
+                    {
+                        'name':'generic_list_subtemplate.html',
+                        'title':_(u'files in staging'),
+                        'object_list':filelist,
+                        'hide_link':True,
                     },
                 ],
             })
@@ -264,3 +272,13 @@ def document_edit(request, document_id):
         'object':document,
     
     }, context_instance=RequestContext(request))
+
+
+def staging_file_preview(request, staging_file_id):
+    try:
+        filepath = StagingFile.get(staging_file_id).filepath
+        output_file = convert(filepath, STAGING_FILES_PREVIEW_SIZE)
+        return serve_file(request, File(file=open(output_file, 'r')))
+    except Exception, e:
+        #messages.error(request, e)
+        return HttpResponse('')

@@ -12,6 +12,7 @@
 * Ability to rename staging file during upload                         - DONE
 * Implement single sign on or LDAP for intranets                       - DEFERRED, provided by Django AuthBackends
 * Database storage backend (sql, nosql: [mongodb])                     - DEFERRED, provided by https://bitbucket.org/david/django-storages/wiki/Home
+* Staging file previews                                                - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -27,7 +28,6 @@
 * Add css grids
 * Document previews
 * Recognize multi-page documents
-* Staging file previews
 * Document model's delete method might not get called when deleting in bulk
     from a queryset
 * Allow metadata entry form to mix required and non required metadata

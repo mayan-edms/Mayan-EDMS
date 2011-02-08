@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'documents',
     'pagination',
     'dynamic_search',
+    'filetransfers',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -172,6 +173,8 @@ LOGIN_EXEMPT_URLS = (
 #DOCUMENTS_USE_STAGING_DIRECTORY = False
 #DOCUMENTS_STAGING_DIRECTORY = u'/tmp/mayan/staging'
 #DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD = False
+#DOCUMENTS_STAGING_FILES_PREVIEW_SIZE = '640x480'
+
 # Saving
 #DOCUMENTS_CHECKSUM_FUNCTION = lambda x: hashlib.sha256(x).hexdigest())
 #DOCUMENTS_UUID_FUNCTION = lambda:unicode(uuid.uuid4())
@@ -182,6 +185,8 @@ LOGIN_EXEMPT_URLS = (
 #DOCUMENTS_FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
 #DOCUMENTS_FILESYSTEM_SLUGIFY_PATHS = False
 #DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT = 200
+# Misc
+#DOCUMENTS_TEMPORARY_DIRECTORY = u'/tmp'
 #======== End of configuration options =======
 
 try:
