@@ -84,7 +84,7 @@ class MetadataForm(forms.Form):
             self.document_type = kwargs['initial'].pop('document_type', None)
             self.metadata_options = kwargs['initial'].pop('metadata_options', None)
       
-            self.fields['name'].initial=self.metadata_type.name
+            self.fields['name'].initial=self.metadata_type.title if self.metadata_type.title else self.metadata_type.name
             self.fields['id'].initial=self.metadata_type.id
             if self.metadata_type.default:
                 try:

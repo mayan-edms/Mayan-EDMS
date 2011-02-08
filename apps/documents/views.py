@@ -178,6 +178,8 @@ def upload_document_with_type(request, document_type_id, multiple=True):
         
 def document_view(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
+    ##############TEST############
+    document.calculate_fs_links()
     form = DocumentForm_view(instance=document, extra_fields=[
         {'label':_(u'Filename'), 'field':'file_filename'},
         {'label':_(u'File extension'), 'field':'file_extension'},
