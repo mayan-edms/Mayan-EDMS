@@ -23,9 +23,10 @@
 * Implement single sign on or LDAP for intranets
 * Encrypting storage backend
 * Indicate in generic list which document don't exist in storage backend
-* Add a 
 * Database storage backend (sql, nosql: [mongodb])
 * Add css grids
 * Document previews
 * Recognize multi-page documents
 * Staging file previews
+* Document model's delete method might not get called when deleting in bulk
+    from a queryset
