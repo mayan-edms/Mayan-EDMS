@@ -36,9 +36,10 @@ class DocumentTypeAdmin(admin.ModelAdmin):
 
 class DocumentMetadataInline(admin.StackedInline):
     model = DocumentMetadata
-    extra = 1
+    extra = 0
     classes = ('collapse-open',)
-    allow_add = True    
+    allow_add = False
+    readonly_fields = ('metadata_type', 'value')  
 
 
 class DocumentMetadataIndexInline(admin.StackedInline):
@@ -46,7 +47,7 @@ class DocumentMetadataIndexInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-    readonly_fields = ('metadata_indexing', 'filename')
+    readonly_fields = ('metadata_index', 'filename')
 
 
 class DocumentAdmin(admin.ModelAdmin):
