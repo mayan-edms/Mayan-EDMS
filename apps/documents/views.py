@@ -20,6 +20,8 @@ from staging import StagingFile
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
+from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
+
 
 def document_list(request):
     return object_list(
@@ -29,8 +31,6 @@ def document_list(request):
         extra_context={
             'title':_(u'documents'),
             'extra_columns':[
-                #{'name':_(u'filename'), 'attribute':'file_filename'},
-                #{'name':_(u'extension'), 'attribute':'file_extension'},
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
                 {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
             ],
@@ -189,10 +189,7 @@ def document_view(request, document_id):
         {'label':_(u'Exists in storage'), 'field':'exists'}
     ])
     
-    return render_to_response('generic_detail.html', {
-        'form':form,
-        'object':document,
-        'subtemplates_dict':[
+    subtemplates_dict = [
             {
                 'name':'generic_list_subtemplate.html',
                 'title':_(u'metadata'),
@@ -200,7 +197,19 @@ def document_view(request, document_id):
                 'extra_columns':[{'name':_(u'value'), 'attribute':'value'}],
                 'hide_link':True,
             },
-        ],  
+        ]
+    
+    if FILESYSTEM_FILESERVING_ENABLE:
+        subtemplates_dict.append({
+            'name':'generic_list_subtemplate.html',
+            'title':_(u'index links'),
+            'object_list':document.documentmetadataindex_set.all(),
+            'hide_link':True})
+    
+    return render_to_response('generic_detail.html', {
+        'form':form,
+        'object':document,
+        'subtemplates_dict':subtemplates_dict,
     }, context_instance=RequestContext(request))
 
 
@@ -255,39 +264,3 @@ def document_edit(request, document_id):
         'object':document,
     
     }, context_instance=RequestContext(request))
-
-'''
-def document_create_from_staging(request, file_id, document_type_id, multiple=True):
-    if USE_STAGING_DIRECTORY:
-        document_type = get_object_or_404(DocumentType, pk=document_type_id)
-        staging_file = StagingFile.get(id=int(file_id))
-
-        try:
-            document = Document(file=staging_file.upload(), document_type=document_type)
-            document.save()
-        except Exception, e:
-            messages.error(request, e)   
-        else:
-            url = urlparse(request.META['HTTP_REFERER'])
-            #Take the url parameter defining the metadata values and turn
-            # then into a dictionary
-            params = dict([part.split('=') for part in url[4].split('&')])        
-            _save_metadata(params, document)
-            messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
-            try:
-                document.create_fs_links()
-            except Exception, e:
-                messages.error(request, e)   
-                
-            if DELETE_STAGING_FILE_AFTER_UPLOAD:
-                try:
-                    staging_file.delete()
-                    messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
-                except Exception, e:
-                    messages.error(request, e)
-        
-    if multiple:
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
-    else:
-        return HttpResponseRedirect(reverse('document_list'))
-'''

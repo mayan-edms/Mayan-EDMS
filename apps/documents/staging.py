@@ -11,7 +11,7 @@ from django.utils.translation import ugettext
 from documents.conf.settings import STAGING_DIRECTORY    
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
-
+#TODO: Do benchmarks
 #func = lambda:[StagingFile.get_all() is None for i in range(100)]
 #t1=time.time();func();t2=time.time();print '%s took %0.3f ms' % (func.func_name, (t2-t1)*1000.0)
 

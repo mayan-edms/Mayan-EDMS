@@ -1,13 +1,20 @@
 from django.contrib import admin
 
 from models import MetadataType, DocumentType, Document, \
-    DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename#, \
-#    DocumentFile
+    DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
+    MetadataIndex, DocumentMetadataIndex
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'default', 'lookup')
-        
+    list_display = ('name', 'title', 'default', 'lookup')
+
+
+class MetadataIndexInline(admin.StackedInline):
+    model = MetadataIndex
+    extra = 1
+    classes = ('collapse-open',)
+    allow_add = True
+
     
 class DocumentTypeMetadataTypeInline(admin.StackedInline):
     model = DocumentTypeMetadataType
@@ -24,27 +31,28 @@ class DocumentTypeFilenameInline(admin.StackedInline):
 
 
 class DocumentTypeAdmin(admin.ModelAdmin):
-    inlines = [DocumentTypeMetadataTypeInline, DocumentTypeFilenameInline]
+    inlines = [DocumentTypeFilenameInline, DocumentTypeMetadataTypeInline, MetadataIndexInline]
 
 
 class DocumentMetadataInline(admin.StackedInline):
     model = DocumentMetadata
+    extra = 0
+    classes = ('collapse-open',)
+    allow_add = False
+    readonly_fields = ('metadata_type', 'value')  
+
+
+class DocumentMetadataIndexInline(admin.StackedInline):
+    model = DocumentMetadataIndex
     extra = 1
     classes = ('collapse-open',)
-    allow_add = True    
-
-
-#class DocumentFileInline(admin.StackedInline):
-#    model = DocumentFile
-#    extra = 1
-#    classes = ('collapse-open',)
-#    allow_add = True    
+    allow_add = True
+    readonly_fields = ('metadata_index', 'filename')
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    #inlines = [DocumentFileInline]#, DocumentMetadataInline,]
-    inlines = [DocumentMetadataInline]
-    list_display = ('uuid',)
+    inlines = [DocumentMetadataInline, DocumentMetadataIndexInline]
+    list_display = ('uuid', 'file_filename', 'file_extension')
     
     
 
