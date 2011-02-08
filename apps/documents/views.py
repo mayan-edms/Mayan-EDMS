@@ -31,8 +31,6 @@ def document_list(request):
         extra_context={
             'title':_(u'documents'),
             'extra_columns':[
-                #{'name':_(u'filename'), 'attribute':'file_filename'},
-                #{'name':_(u'extension'), 'attribute':'file_extension'},
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
                 {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
             ],
