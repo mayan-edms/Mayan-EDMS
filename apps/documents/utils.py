@@ -3,16 +3,6 @@ import tempfile
 
 from documents.conf.settings import TEMPORARY_DIRECTORY
 
-#http://snippets.dzone.com/posts/show/5434
-#http://snippets.dzone.com/user/jakob
-def pretty_size(size):
-	suffixes = [("B",2**10), ("K",2**20), ("M",2**30), ("G",2**40), ("T",2**50)]
-	for suf, lim in suffixes:
-		if size > lim:
-			continue
-		else:
-			return round(size/float(lim/2**10),2).__str__()+suf
-            
             
 #http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
 def copyfile(source, dest, buffer_size=1024*1024):
