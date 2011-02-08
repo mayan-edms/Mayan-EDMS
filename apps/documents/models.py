@@ -43,27 +43,6 @@ def populate_file_extension_and_mimetype(instance, filename):
     #remove prefix '.'
     instance.file_extension = extension[1:]
     
-'''
-def custom_eval(format, dictionary):
-    try:
-        #Do a normal substitution
-        return format % dictionary
-    except:
-        #Use exception to catch unknown elements
-        (exc_type, exc_info, tb) = sys.exc_info()
-        key = unicode(exc_info)[2:-1]
-        try:
-            #Resolve unknown element
-            dictionary[key] = eval(key, dictionary)
-            #Call itself again, but with an additional resolved element in
-            #the dictionary
-            return custom_eval(format, dictionary)
-        except Exception, e:
-            #Can't resolve elemtent, give up
-            (exc_type, exc_info, tb) = sys.exc_info()
-            print exc_info
-            raise Exception(e)    
-'''            
 
 class DocumentType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))    
@@ -93,7 +72,6 @@ class Document(models.Model):
         ordering = ['-date_updated', '-date_added']
         
     def __unicode__(self):
-        #return self.uuid
         return '%s.%s' % (self.file_filename, self.file_extension)
         
     @models.permalink
@@ -125,36 +103,23 @@ class Document(models.Model):
                 
             for metadata_index in self.document_type.metadataindex_set.all():
                 if metadata_index.enabled:
-                    fabricated_directory = eval(metadata_index.expression, metadata_dict)
-                    target_directory = os.path.join(FILESYSTEM_FILESERVING_PATH, fabricated_directory)
                     try:
-                        os.makedirs(target_directory)
-                    except OSError, exc:
-                        if exc.errno == errno.EEXIST:
-                            pass
-                        else: 
-                            raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
-                   
+                        fabricated_directory = eval(metadata_index.expression, metadata_dict)
+                        target_directory = os.path.join(FILESYSTEM_FILESERVING_PATH, fabricated_directory)
+                        try:
+                            os.makedirs(target_directory)
+                        except OSError, exc:
+                            if exc.errno == errno.EEXIST:
+                                pass
+                            else: 
+                                raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
+                       
 
-                    next_available_filename(self, metadata_index, target_directory, slugify(self.file_filename), slugify(self.file_extension))
-                    
-                  
-                    #try:
-                    #    os.symlink(os.path.abspath(self.file.path), filepath)
-                    #except OSError, exc:
-                    #    raise OSError(ugettext(u'Unable to create symbolic link: %s') % exc)                        
-                        
-                    '''
-                    try:
-                        filepath = create_symlink(os.path.abspath(self.file.path), target_directory, slugify(self.file_filename), slugify(self.file_extension))
-                        document_metadata_index = DocumentMetadataIndex(
-                            document=self, metadata_index=metadata_index,
-                            filename=filepath)
-                        document_metadata_index.save()
-                    except Exception, e:
-                        raise Exception(ugettext(u'Unable to create metadata indexing symbolic link: %s') % e)
-                    '''
-
+                        next_available_filename(self, metadata_index, target_directory, slugify(self.file_filename), slugify(self.file_extension))
+                    except NameError:
+                        #Error in eval
+                        #TODO: find way to notify user
+                        pass
 
     def delete_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
@@ -232,23 +197,6 @@ def next_available_filename(document, metadata_index, path, filename, extension,
             raise Exception(ugettext(u'Maximum rename count reached, not creating symbolic link'))
         return next_available_filename(document, metadata_index, path, filename, extension, suffix+1)
  
-''' 
-def create_symlink(source, path, filename, extension, suffix=0):
-    try:
-        target = filename
-        if suffix:
-            target = '_'.join([filename, unicode(suffix)])
-        filepath = os.path.join(path, os.extsep.join([target, extension]))
-        os.symlink(source, filepath)
-        return filepath
-    except OSError, exc:
-        if exc.errno == errno.EEXIST:
-            if suffix > FILESYSTEM_MAX_RENAME_COUNT:
-                raise Exception(ugettext(u'Maximum rename count reached, not creating symbolic link'))
-            return create_symlink(source, path, filename, extension, suffix+1)
-        else:
-            raise OSError(ugettext(u'Unable to create symbolic link: %s') % exc)
-'''
     
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
 available_models_string = (_(u' Available models: %s') % ','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else ''
@@ -276,9 +224,8 @@ class MetadataType(models.Model):
 class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    #create_directory_link = models.BooleanField(verbose_name=_(u'create directory link'))
+    required = models.BooleanField(default=True, verbose_name=_(u'required'))
     #TODO: override default for this document type
-    #TODO: required? -bool
     
     def __unicode__(self):
         return unicode(self.metadata_type)

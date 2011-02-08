@@ -1,6 +1,7 @@
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
 from django.core.urlresolvers import reverse
@@ -84,7 +85,17 @@ class MetadataForm(forms.Form):
             self.document_type = kwargs['initial'].pop('document_type', None)
             self.metadata_options = kwargs['initial'].pop('metadata_options', None)
       
-            self.fields['name'].initial=self.metadata_type.title if self.metadata_type.title else self.metadata_type.name
+            
+            required=self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
+            required_string = u''
+            if required:
+                self.fields['value'].required=True
+                required_string = ' (%s)' % ugettext(u'required')
+            else:
+                #TODO: FIXME: not working correctly
+                self.fields['value'].required=False
+                
+            self.fields['name'].initial='%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
             self.fields['id'].initial=self.metadata_type.id
             if self.metadata_type.default:
                 try:
@@ -97,6 +108,7 @@ class MetadataForm(forms.Form):
                     choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
                     self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
                     self.fields['value'].choices = zip(choices, choices)
+                    self.fields['value'].required = False
                 except Exception, err:
                     self.fields['value'].initial = err
                     self.fields['value'].widget=forms.TextInput(attrs={'readonly':'readonly'})
@@ -104,7 +116,7 @@ class MetadataForm(forms.Form):
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
     name = forms.CharField(label=_(u'Name'),
         required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
-    value = forms.CharField(label=_(u'Value'))
+    value = forms.CharField(label=_(u'Value'), required=False)
 
 
 class DocumentCreateWizard(BoundFormWizard):
@@ -138,8 +150,9 @@ class DocumentCreateWizard(BoundFormWizard):
         if step == 1:
             self.urldata = []
             for id, metadata in enumerate(form.cleaned_data):
-                self.urldata.append(('metadata%s_id' % id,metadata['id']))   
-                self.urldata.append(('metadata%s_value' % id,metadata['value']))   
+                if metadata['value']:
+                    self.urldata.append(('metadata%s_id' % id,metadata['id']))   
+                    self.urldata.append(('metadata%s_value' % id,metadata['value']))
 
  
     def get_template(self, step):
