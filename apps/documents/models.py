@@ -73,6 +73,9 @@ class Document(models.Model):
         
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)
+      
+    def get_fullname(self):
+        return os.extsep.join([self.file_filename, self.file_extension])
         
     @models.permalink
     def get_absolute_url(self):

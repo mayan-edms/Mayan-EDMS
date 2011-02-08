@@ -6,6 +6,19 @@ import tempfile
 #from django.core.files.base import File
 from documents.conf.settings import TEMPORARY_DIRECTORY
 
+
+def in_cache(input_filepath, size, page=0, format='jpg'):
+    temp_directory = TEMPORARY_DIRECTORY if TEMPORARY_DIRECTORY else tempfile.mkdtemp()
+    temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
+    temp_path = os.path.join(temp_directory, temp_filename)
+    output_arg = '%s_%s%s%s' % (temp_path, size, os.extsep, format)
+    input_arg = '%s[%s]' % (input_filepath, page)
+    if os.path.exists(output_arg):
+        return output_arg
+    else:
+        return None
+    
+    
 def convert(input_filepath, size, cache=True, page=0, format='jpg'):
     temp_directory = TEMPORARY_DIRECTORY if TEMPORARY_DIRECTORY else tempfile.mkdtemp()
     #TODO: generate output file using lightweight hash function on

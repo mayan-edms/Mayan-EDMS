@@ -5,4 +5,22 @@
 
 {% block content %}
     {% include 'generic_list_subtemplate.html' %}
+
+    {% for subtemplate in subtemplates_dict %}
+    {% with subtemplate.title as title %}
+    {% with subtemplate.object_list as object_list %}
+    {% with subtemplate.extra_columns as extra_columns %}
+    {% with subtemplate.hide_object as hide_object %}
+    {% with subtemplate.main_object as main_object %}
+    {% with subtemplate.hide_link as hide_link %}
+        {% include subtemplate.name %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endfor %}
+
 {% endblock %}
+

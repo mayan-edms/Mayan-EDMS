@@ -1,4 +1,3 @@
-from urlparse import urlparse
 from urllib import unquote_plus
 
 from django.utils.translation import ugettext as _
@@ -14,7 +13,8 @@ from django.core.files.base import File
 
 from filetransfers.api import serve_file
 
-from convert import convert
+from convert import convert, in_cache
+from utils import from_descriptor_to_tempfile
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
@@ -27,6 +27,7 @@ from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
+from documents.conf.settings import PREVIEW_SIZE
 
 def document_list(request):
     return object_list(
@@ -39,9 +40,13 @@ def document_list(request):
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
                 {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
             ],
+            'subtemplates_dict':[
+                {
+                    'name':'fancybox.html',
+                },
+            ],
         },
     )
-
 
 def document_create(request, multiple=True):
     MetadataFormSet = formset_factory(MetadataForm, extra=0)
@@ -199,6 +204,9 @@ def document_view(request, document_id):
     
     subtemplates_dict = [
             {
+                'name':'fancybox.html',
+            },    
+            {
                 'name':'generic_list_subtemplate.html',
                 'title':_(u'metadata'),
                 'object_list':document.documentmetadata_set.all(),
@@ -272,6 +280,37 @@ def document_edit(request, document_id):
         'object':document,
     
     }, context_instance=RequestContext(request))
+
+
+def document_preview(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+    
+    filepath = in_cache(document.uuid, PREVIEW_SIZE)
+   
+    if filepath:
+        return serve_file(request, File(file=open(filepath, 'r')))
+    else:
+        try:
+            document.file.open()
+            desc = document.file.storage.open(document.file.path)
+            filepath = from_descriptor_to_tempfile(desc, document.uuid)
+            output_file = convert(filepath, PREVIEW_SIZE)
+            return serve_file(request, File(file=open(output_file, 'r')))
+        except Exception, e:
+            #messages.error(request, e)
+            return HttpResponse(e)
+    
+        
+        
+def document_download(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+    try:
+        #Test permissions and trigger exception
+        document.file.open()
+        return serve_file(request, document.file, save_as=document.get_fullname())
+    except Exception, e:
+        messages.error(request, e)
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def staging_file_preview(request, staging_file_id):
