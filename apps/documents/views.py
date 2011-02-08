@@ -12,9 +12,10 @@ from django.forms.formsets import formset_factory
 from django.core.files.base import File
 
 from filetransfers.api import serve_file
+from converter.api import convert, in_cache
+from common.utils import pretty_size
 
-from convert import convert, in_cache
-from utils import from_descriptor_to_tempfile, pretty_size
+from utils import from_descriptor_to_tempfile
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \

@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'pagination',
     'dynamic_search',
     'filetransfers',
+    'converter',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
