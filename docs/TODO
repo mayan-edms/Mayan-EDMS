@@ -40,3 +40,5 @@
 * Roles
 * Workflows
 * Scheduled maintenance (cleanup, deferred OCR's)
+* Show document metadata in document list
+* Show abbreviated uuid in document list
