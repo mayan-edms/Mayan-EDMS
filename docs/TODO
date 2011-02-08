@@ -13,6 +13,7 @@
 * Implement single sign on or LDAP for intranets                       - DEFERRED, provided by Django AuthBackends
 * Database storage backend (sql, nosql: [mongodb])                     - DEFERRED, provided by https://bitbucket.org/david/django-storages/wiki/Home
 * Staging file previews                                                - DONE
+* Display file size in list and details                                - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file

@@ -14,7 +14,7 @@ from django.core.files.base import File
 from filetransfers.api import serve_file
 
 from convert import convert, in_cache
-from utils import from_descriptor_to_tempfile
+from utils import from_descriptor_to_tempfile, pretty_size
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
@@ -39,11 +39,7 @@ def document_list(request):
             'extra_columns':[
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
                 {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
-            ],
-            'subtemplates_dict':[
-                {
-                    'name':'fancybox.html',
-                },
+                {'name':_(u'file size'), 'attribute':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
             ],
         },
     )
@@ -168,9 +164,6 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             context.update({
                 'subtemplates_dict':[
                     {
-                        'name':'fancybox.html',
-                    },
-                    {
                         'name':'generic_list_subtemplate.html',
                         'title':_(u'files in staging'),
                         'object_list':filelist,
@@ -195,17 +188,15 @@ def document_view(request, document_id):
         {'label':_(u'Filename'), 'field':'file_filename'},
         {'label':_(u'File extension'), 'field':'file_extension'},
         {'label':_(u'File mimetype'), 'field':'file_mimetype'},
+        {'label':_(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+        {'label':_(u'Exists in storage'), 'field':'exists'},
         {'label':_(u'Date added'), 'field':lambda x: x.date_added.date()},
         {'label':_(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
         {'label':_(u'Checksum'), 'field':'checksum'},
         {'label':_(u'UUID'), 'field':'uuid'},
-        {'label':_(u'Exists in storage'), 'field':'exists'}
     ])
     
     subtemplates_dict = [
-            {
-                'name':'fancybox.html',
-            },    
             {
                 'name':'generic_list_subtemplate.html',
                 'title':_(u'metadata'),
