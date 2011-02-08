@@ -21,6 +21,7 @@ from documents.conf.settings import STORAGE_DIRECTORY_NAME
 from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
 from documents.conf.settings import FILESYSTEM_FILESERVING_PATH
 from documents.conf.settings import FILESYSTEM_SLUGIFY_PATHS
+from documents.conf.settings import FILESYSTEM_MAX_RENAME_COUNT
 
 
 if FILESYSTEM_SLUGIFY_PATHS == False:
@@ -42,7 +43,7 @@ def populate_file_extension_and_mimetype(instance, filename):
     #remove prefix '.'
     instance.file_extension = extension[1:]
     
-
+'''
 def custom_eval(format, dictionary):
     try:
         #Do a normal substitution
@@ -62,7 +63,7 @@ def custom_eval(format, dictionary):
             (exc_type, exc_info, tb) = sys.exc_info()
             print exc_info
             raise Exception(e)    
-            
+'''            
 
 class DocumentType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))    
@@ -117,58 +118,138 @@ class Document(models.Model):
         self.delete_fs_links()
         super(Document, self).delete(*args, **kwargs)
 
-    def calculate_fs_links(self):
-        metadata_dict = {'document':self}
-        metadata_dict.update(dict([(metadata.metadata_type.name, slugify(metadata.value)) for metadata in self.documentmetadata_set.all()]))
-            
-        for metadata_index in self.document_type.metadataindex_set.all():
-            if metadata_index.enabled:
-            #print eval(metadata_index.expression, metadata_dict)
-                fabricated_directory = custom_eval(metadata_index.expression, metadata_dict)
-                target_directory = os.path.join(FILESYSTEM_FILESERVING_PATH, fabricated_directory)
-                #print target_directory
-                
-                
-                final_path = os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)]))
-                print final_path
-        #targets = []
-        #for metadata in self.documentmetadata_set.all():
-        #    if metadata.metadata_type.documenttypemetadatatype_set.all()[0].create_directory_link:
-        #        target_directory = os.path.join(FILESYSTEM_FILESERVING_PATH, slugify(metadata.metadata_type.name), slugify(metadata.value))
-        #        targets.append(os.path.join(target_directory, os.extsep.join([slugify(self.file_filename), slugify(self.file_extension)])))
-        #return targets
-
     def create_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
-            for target in self.calculate_fs_links():
-                try:
-                    os.makedirs(os.path.dirname(target))
-                except OSError, exc:
-                    if exc.errno == errno.EEXIST:
-                        pass
-                    else: 
-                        raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
-                try:
-                    os.symlink(os.path.abspath(self.file.path), target)
-                except OSError, exc:
-                    if exc.errno == errno.EEXIST:
-                        pass
-                    else: 
-                        raise OSError(ugettext(u'Unable to create metadata indexing symbolic link: %s') % exc)
+            metadata_dict = {'document':self}
+            metadata_dict.update(dict([(metadata.metadata_type.name, slugify(metadata.value)) for metadata in self.documentmetadata_set.all()]))
+                
+            for metadata_index in self.document_type.metadataindex_set.all():
+                if metadata_index.enabled:
+                    fabricated_directory = eval(metadata_index.expression, metadata_dict)
+                    target_directory = os.path.join(FILESYSTEM_FILESERVING_PATH, fabricated_directory)
+                    try:
+                        os.makedirs(target_directory)
+                    except OSError, exc:
+                        if exc.errno == errno.EEXIST:
+                            pass
+                        else: 
+                            raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
+                   
+
+                    next_available_filename(self, metadata_index, target_directory, slugify(self.file_filename), slugify(self.file_extension))
                     
+                  
+                    #try:
+                    #    os.symlink(os.path.abspath(self.file.path), filepath)
+                    #except OSError, exc:
+                    #    raise OSError(ugettext(u'Unable to create symbolic link: %s') % exc)                        
+                        
+                    '''
+                    try:
+                        filepath = create_symlink(os.path.abspath(self.file.path), target_directory, slugify(self.file_filename), slugify(self.file_extension))
+                        document_metadata_index = DocumentMetadataIndex(
+                            document=self, metadata_index=metadata_index,
+                            filename=filepath)
+                        document_metadata_index.save()
+                    except Exception, e:
+                        raise Exception(ugettext(u'Unable to create metadata indexing symbolic link: %s') % e)
+                    '''
+
+
     def delete_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
-            for target in self.calculate_fs_links():
+            for document_metadata_index in self.documentmetadataindex_set.all():
                 try:
-                    os.unlink(target)
+                    os.unlink(document_metadata_index.filename)
+                    document_metadata_index.delete()
                 except OSError, exc:
                     if exc.errno == errno.ENOENT:
-                        pass
+                        #No longer exits, so delete db entry anyway
+                        document_metadata_index.delete()
                     else: 
                         raise OSError(ugettext(u'Unable to delete metadata indexing symbolic link: %s') % exc)
- 
-       
+            
+                path, filename = os.path.split(document_metadata_index.filename)
+                
+                #Cleanup directory of dead stuff
+                #Delete siblings that are dead links
+                try:
+                    for f in os.listdir(path):
+                        filepath = os.path.join(path, f)
+                        if os.path.islink(filepath):
+                            #Get link's source
+                            source = os.readlink(filepath)
+                            if os.path.isabs(source):
+                                if not os.path.exists(source):
+                                    #link's source is absolute and doesn't exit
+                                    os.unlink(filepath)
+                            else:
+                                os.unlink(os.path.join(path, filepath))
+                        elif os.path.isdir(filepath):
+                            #is a directory, try to delete it
+                            try:
+                                os.removedirs(path)
+                            except:
+                                pass                            
+                except OSError, exc:
+                    pass
 
+                #Remove the directory if it is empty
+                try:
+                    os.removedirs(path)
+                except:
+                    pass
+           
+def next_available_filename(document, metadata_index, path, filename, extension, suffix=0): 
+    target = filename
+    if suffix:
+        target = '_'.join([filename, unicode(suffix)])
+    filepath = os.path.join(path, os.extsep.join([target, extension]))
+    matches=DocumentMetadataIndex.objects.filter(filename=filepath)
+    if matches.count() == 0:
+        document_metadata_index = DocumentMetadataIndex(
+            document=document, metadata_index=metadata_index,
+            filename=filepath)
+        try:
+            os.symlink(os.path.abspath(document.file.path), filepath)
+            document_metadata_index.save()
+        except OSError, exc:
+            if exc.errno == errno.EEXIST:
+                #This link should not exist, try to delete it
+                try:
+                    os.unlink(filepath)
+                    #Try again with same suffix
+                    return next_available_filename(document, metadata_index, path, filename, extension, suffix)
+                except Exception, exc:
+                    raise Exception(ugettext(u'Unable to create symbolic link, filename clash: %s; %s') % (filepath, exc))    
+                
+            else:
+                raise OSError(ugettext(u'Unable to create symbolic link: %s; %s') % (filepath, exc))
+        
+        return filepath
+    else:
+        if suffix > FILESYSTEM_MAX_RENAME_COUNT:
+            raise Exception(ugettext(u'Maximum rename count reached, not creating symbolic link'))
+        return next_available_filename(document, metadata_index, path, filename, extension, suffix+1)
+ 
+''' 
+def create_symlink(source, path, filename, extension, suffix=0):
+    try:
+        target = filename
+        if suffix:
+            target = '_'.join([filename, unicode(suffix)])
+        filepath = os.path.join(path, os.extsep.join([target, extension]))
+        os.symlink(source, filepath)
+        return filepath
+    except OSError, exc:
+        if exc.errno == errno.EEXIST:
+            if suffix > FILESYSTEM_MAX_RENAME_COUNT:
+                raise Exception(ugettext(u'Maximum rename count reached, not creating symbolic link'))
+            return create_symlink(source, path, filename, extension, suffix+1)
+        else:
+            raise OSError(ugettext(u'Unable to create symbolic link: %s') % exc)
+'''
+    
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
 available_models_string = (_(u' Available models: %s') % ','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else ''
 
@@ -224,8 +305,9 @@ class MetadataIndex(models.Model):
 
 class DocumentMetadataIndex(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    metadata_indexing = models.ForeignKey(MetadataIndex, verbose_name=_(u'metadata indexing'))
-    filename = models.CharField(max_length=128)
+    metadata_index = models.ForeignKey(MetadataIndex, verbose_name=_(u'metadata index'))
+    filename = models.CharField(max_length=128, verbose_name=_(u'filename'))
+    suffix = models.PositiveIntegerField(default=0, verbose_name=_(u'suffix'))
 
     def __unicode__(self):
         return unicode(self.filename)
