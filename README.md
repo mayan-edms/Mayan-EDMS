@@ -28,6 +28,7 @@ Python:
 
 * Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 * django-pagination
+* django-filetransfers - File upload/download abstraction
 
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
 
