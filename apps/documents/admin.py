@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from models import MetadataType, DocumentType, Document, \
     DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
-    MetadataIndex, DocumentMetadataIndex
+    MetadataIndex, DocumentMetadataIndex, DocumentPage
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
@@ -49,9 +49,15 @@ class DocumentMetadataIndexInline(admin.StackedInline):
     allow_add = True
     readonly_fields = ('metadata_index', 'filename')
 
+class DocumentPageInline(admin.StackedInline):
+    model = DocumentPage
+    extra = 1
+    classes = ('collapse-open',)
+    allow_add = True
+
 
 class DocumentAdmin(admin.ModelAdmin):
-    inlines = [DocumentMetadataInline, DocumentMetadataIndexInline]
+    inlines = [DocumentMetadataInline, DocumentMetadataIndexInline, DocumentPageInline]
     list_display = ('uuid', 'file_filename', 'file_extension')
     
     

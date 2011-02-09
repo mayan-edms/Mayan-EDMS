@@ -292,7 +292,6 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
             desc = document.file.storage.open(document.file.path)
             filepath = from_descriptor_to_tempfile(desc, document.uuid)
             output_file = convert(filepath, size)
-            print document_id, output_file
             return serve_file(request, File(file=open(output_file, 'r')))
         except Exception, e:
             if size == THUMBNAIL_SIZE:
@@ -328,5 +327,5 @@ def staging_file_preview(request, staging_file_id):
         output_file = convert(filepath, STAGING_FILES_PREVIEW_SIZE)
         return serve_file(request, File(file=open(output_file, 'r')))
     except Exception, e:
-        #messages.error(request, e)
-        return HttpResponse('')
+        return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))        
+     

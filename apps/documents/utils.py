@@ -1,7 +1,7 @@
 import os
 import tempfile
 
-from documents.conf.settings import TEMPORARY_DIRECTORY
+from documents import TEMPORARY_DIRECTORY
 
             
 #http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python

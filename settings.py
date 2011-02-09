@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'dynamic_search',
     'filetransfers',
     'converter',
+    'ocr',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -191,6 +192,7 @@ LOGIN_EXEMPT_URLS = (
 #DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT = 200
 # Misc
 #DOCUMENTS_TEMPORARY_DIRECTORY = u'/tmp'
+#CONVERTER_CONVERT_PATH = u'/usr/bin/convert'
 #======== End of configuration options =======
 
 try:

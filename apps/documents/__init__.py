@@ -1,9 +1,14 @@
+import tempfile
+
 from django.utils.translation import ugettext_lazy as _
 
 from common.api import register_links, register_menu
 
 from models import Document
 from staging import StagingFile
+
+from documents.conf import settings as documents_settings
+
 
 document_list = {'text':_(u'documents list'), 'view':'document_list', 'famfam':'page'}
 document_create = {'text':_('upload a document'), 'view':'document_create', 'famfam':'page_add'}
@@ -28,3 +33,4 @@ register_menu([
         document_list
     ],'famfam':'page','position':4}])
 
+TEMPORARY_DIRECTORY = documents_settings.TEMPORARY_DIRECTORY if documents_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
