@@ -83,9 +83,10 @@ class Document(models.Model):
         return ('document_view', [self.id])
 
     def update_checksum(self, save=True):
-        self.checksum = unicode(CHECKSUM_FUNCTION(self.file.read()))
-        if save:
-            self.save()
+        if self.exists():
+            self.checksum = unicode(CHECKSUM_FUNCTION(self.file.read()))
+            if save:
+                self.save()
     
     def exists(self):
         return self.file.storage.exists(self.file.url)
@@ -102,6 +103,8 @@ class Document(models.Model):
         
     def create_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
+            if not self.exists():
+                raise Exception(ugettext(u'Not creating metadata indexing, document not found in document storage'))
             metadata_dict = {'document':self}
             metadata_dict.update(dict([(metadata.metadata_type.name, slugify(metadata.value)) for metadata in self.documentmetadata_set.all()]))
                 
@@ -120,10 +123,8 @@ class Document(models.Model):
                        
 
                         next_available_filename(self, metadata_index, target_directory, slugify(self.file_filename), slugify(self.file_extension))
-                    except NameError:
-                        #Error in eval
-                        #TODO: find way to notify user
-                        pass
+                    except NameError, exc:
+                        raise NameError(ugettext(u'Error in metadata indexing expression: %s') % exc)
 
     def delete_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
@@ -180,7 +181,7 @@ def next_available_filename(document, metadata_index, path, filename, extension,
             document=document, metadata_index=metadata_index,
             filename=filepath)
         try:
-            os.symlink(os.path.abspath(document.file.path), filepath)
+            os.symlink(document.file.path, filepath)
             document_metadata_index.save()
         except OSError, exc:
             if exc.errno == errno.EEXIST:
