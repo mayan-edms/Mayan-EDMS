@@ -17,7 +17,6 @@ class LoginRequiredMiddleware:
 	loaded. You'll get an error if they aren't.
 	"""
 	def process_request(self, request):
-		#print request['user']
 		assert hasattr(request, 'user'), "The Login Required middleware\
  requires authentication middleware to be installed. Edit your\
  MIDDLEWARE_CLASSES setting to insert\
