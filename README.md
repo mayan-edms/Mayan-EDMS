@@ -25,13 +25,20 @@ Requirements
 ---
 
 Python:
+
 * Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 * django-pagination
+
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
 
 Executables:
+
 * ImageMagick - Convert, Edit, Or Compose Bitmap Images
 * tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
+
+License
+-------
+See docs/LICENSE file
 
 
 Author
@@ -39,3 +46,6 @@ Author
 
 Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](roberto.rosario.gonzalez at gmail)
 
+Credits
+-------
+See docs/CREDITS file
