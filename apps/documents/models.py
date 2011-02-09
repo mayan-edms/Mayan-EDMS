@@ -209,7 +209,7 @@ available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' 
 available_models_string = (_(u' Available models: %s') % ','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else ''
 
 class MetadataType(models.Model):
-    name = models.CharField(max_length=48, verbose_name=_(u'name'))
+    name = models.CharField(max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words.'))
     title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
         verbose_name=_(u'default'),

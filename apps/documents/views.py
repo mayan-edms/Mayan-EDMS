@@ -23,7 +23,7 @@ from utils import from_descriptor_to_tempfile
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
-        StagingDocumentForm
+        StagingDocumentForm, DocumentTypeMetadataType
     
 from staging import StagingFile
 
@@ -295,6 +295,51 @@ def document_edit(request, document_id):
     
     }, context_instance=RequestContext(request))
 
+
+def document_edit_metadata(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+    MetadataFormSet = formset_factory(MetadataForm, extra=0)
+
+    initial=[]
+    for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
+        initial.append({
+            'metadata_type':item.metadata_type,
+            'document_type':document.document_type,
+            'metadata_options':item,
+        })    
+    formset = MetadataFormSet(initial=initial)
+    if request.method == 'POST':
+        formset = MetadataFormSet(request.POST)
+        if formset.is_valid():
+            for item in formset.cleaned_data:
+                pass
+                #print item
+                #_save_metadata(request.GET, document)
+            try:
+                document.delete_fs_links()
+            except Exception, e:
+                messages.error(request, e)
+                return HttpResponseRedirect(reverse('document_list'))
+           
+            messages.success(request, _(u'Document metadata edited successfully.'))
+            
+            try:
+                document.create_fs_links()
+                messages.success(request, _(u'Document filesystem links updated successfully.'))                
+            except Exception, e:
+                messages.error(request, e)
+                return HttpResponseRedirect(reverse('document_list'))
+                
+            return HttpResponseRedirect(reverse('document_list'))
+        
+        
+    return render_to_response('generic_form.html', {
+        'form_display_mode_table':True,
+        'form':formset,
+        'object':document,
+    
+    }, context_instance=RequestContext(request))
+    
 
 def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)

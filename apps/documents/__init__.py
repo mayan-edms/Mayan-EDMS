@@ -17,12 +17,13 @@ document_create_sibling = {'text':_('upload using same metadata'), 'view':'docum
 document_view = {'text':_('details'), 'view':'document_view', 'args':'object.id', 'famfam':'page'}
 document_delete = {'text':_('delete'), 'view':'document_delete', 'args':'object.id', 'famfam':'page_delete'}
 document_edit = {'text':_('edit'), 'view':'document_edit', 'args':'object.id', 'famfam':'page_edit'}
+document_edit_metadata = {'text':_('edit metadata'), 'view':'document_edit_metadata', 'args':'object.id', 'famfam':'page_edit'}
 document_preview = {'text':_('preview'), 'class':'fancybox', 'view':'document_preview', 'args':'object.id', 'famfam':'magnifier'}
 document_download = {'text':_('download'), 'view':'document_download', 'args':'object.id', 'famfam':'page_save'}
 
 staging_file_preview = {'text':_('preview'), 'class':'fancybox', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 
-register_links(Document, [document_edit, document_delete, document_preview, document_download])
+register_links(Document, [document_edit, document_edit_metadata, document_delete, document_preview, document_download])
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling, document_view], menu_name='sidebar')
 register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
 
