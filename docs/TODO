@@ -18,6 +18,7 @@
 * Document previews on demand w/ imagemagick                           - DONE
 * Add document description                                             - DONE
 * Integrate with http://code.google.com/p/pytesser/                    - DEFERRED, done using Popen
+* Show abbreviated uuid in document list                               - DEFERRED, Impractical
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -25,12 +26,11 @@
 * Check duplicated files using checksum
 * If theres only one document type on db skip step 1 of wizard
 * Show last 5 recent metadata setups for easy switch
-* Change to model signal
+* Change to model signals
 * Allow document type to be changed in document edit view
 * Encrypting storage backend
 * Indicate in generic list which document don't exist in storage backend
 * Add css grids
-* Recognize multi-page documents
 * Document model's delete method might not get called when deleting in bulk
     from a queryset
 * Allow metadata entry form to mix required and non required metadata
@@ -43,6 +43,7 @@
 * Workflows
 * Scheduled maintenance (cleanup, deferred OCR's)
 * Show document metadata in document list
-* Show abbreviated uuid in document list
 * Add tags to documents
 * Field for document language or autodetect
+* Recognize multi-page documents
+* Count pages in a PDF file http://pybrary.net/pyPdf/
