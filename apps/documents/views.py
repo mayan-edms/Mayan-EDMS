@@ -1,4 +1,3 @@
-from urlparse import urlparse
 from urllib import unquote_plus
 
 from django.utils.translation import ugettext as _
@@ -10,6 +9,15 @@ from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.forms.formsets import formset_factory
+from django.core.files.base import File
+from django.conf import settings
+
+
+from filetransfers.api import serve_file
+from converter.api import convert, in_cache
+from common.utils import pretty_size
+
+from utils import from_descriptor_to_tempfile
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
@@ -21,7 +29,9 @@ from staging import StagingFile
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
-
+from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
+from documents.conf.settings import PREVIEW_SIZE
+from documents.conf.settings import THUMBNAIL_SIZE
 
 def document_list(request):
     return object_list(
@@ -33,10 +43,12 @@ def document_list(request):
             'extra_columns':[
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
                 {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
+                {'name':_(u'file size'), 'attribute':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+                {'name':_(u'thumbnail'), 'attribute': 
+                    lambda x: '<img src="%s" />' % reverse('document_thumbnail', args=[x.id])},
             ],
         },
     )
-
 
 def document_create(request, multiple=True):
     MetadataFormSet = formset_factory(MetadataForm, extra=0)
@@ -158,10 +170,10 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             context.update({
                 'subtemplates_dict':[
                     {
-                    'name':'generic_list_subtemplate.html',
-                    'title':_(u'files in staging'),
-                    'object_list':filelist,
-                    'hide_link':True,
+                        'name':'generic_list_subtemplate.html',
+                        'title':_(u'files in staging'),
+                        'object_list':filelist,
+                        'hide_link':True,
                     },
                 ],
             })
@@ -182,11 +194,12 @@ def document_view(request, document_id):
         {'label':_(u'Filename'), 'field':'file_filename'},
         {'label':_(u'File extension'), 'field':'file_extension'},
         {'label':_(u'File mimetype'), 'field':'file_mimetype'},
+        {'label':_(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+        {'label':_(u'Exists in storage'), 'field':'exists'},
         {'label':_(u'Date added'), 'field':lambda x: x.date_added.date()},
         {'label':_(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
         {'label':_(u'Checksum'), 'field':'checksum'},
         {'label':_(u'UUID'), 'field':'uuid'},
-        {'label':_(u'Exists in storage'), 'field':'exists'}
     ])
     
     subtemplates_dict = [
@@ -264,3 +277,55 @@ def document_edit(request, document_id):
         'object':document,
     
     }, context_instance=RequestContext(request))
+
+
+def get_document_image(request, document_id, size=PREVIEW_SIZE):
+    document = get_object_or_404(Document, pk=document_id)
+    
+    filepath = in_cache(document.uuid, size)
+   
+    if filepath:
+        return serve_file(request, File(file=open(filepath, 'r')))
+    else:
+        try:
+            document.file.open()
+            desc = document.file.storage.open(document.file.path)
+            filepath = from_descriptor_to_tempfile(desc, document.uuid)
+            output_file = convert(filepath, size)
+            return serve_file(request, File(file=open(output_file, 'r')))
+        except Exception, e:
+            if size == THUMBNAIL_SIZE:
+                return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
+            else:
+                return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))
+            #messages.error(request, e)
+            #return HttpResponse(e)
+
+
+def document_thumbnail(request, document_id):
+    return get_document_image(request, document_id, THUMBNAIL_SIZE)
+
+
+def document_preview(request, document_id):
+    return get_document_image(request, document_id, PREVIEW_SIZE)
+        
+        
+def document_download(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+    try:
+        #Test permissions and trigger exception
+        document.file.open()
+        return serve_file(request, document.file, save_as=document.get_fullname())
+    except Exception, e:
+        messages.error(request, e)
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+def staging_file_preview(request, staging_file_id):
+    try:
+        filepath = StagingFile.get(staging_file_id).filepath
+        output_file = convert(filepath, STAGING_FILES_PREVIEW_SIZE)
+        return serve_file(request, File(file=open(output_file, 'r')))
+    except Exception, e:
+        return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))        
+     

@@ -35,6 +35,7 @@ class DocumentForm(forms.ModelForm):
 
     class Meta:
         model = Document
+        exclude = ('description',)
 
 
 class DocumentForm_view(DetailForm):

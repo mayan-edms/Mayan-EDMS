@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ MEDIA_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ MEDIA_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        $("a.fancybox").fancybox({
+        'titleShow'     : false,
+        'transitionIn'  : 'elastic',
+        'transitionOut' : 'elastic',
+        'easingIn'      : 'easeOutBack',
+        'easingOut'     : 'easeInBack',
+        'type'          : 'image'
+        });
+    });
+</script>

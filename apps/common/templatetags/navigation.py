@@ -1,4 +1,5 @@
 import types
+import copy 
 
 from django.conf import settings
 from django.core.urlresolvers import reverse, NoReverseMatch
@@ -137,26 +138,30 @@ def resolve_arguments(context, src_args):
 def resolve_links(context, links, current_view, current_path):
     context_links = []
     for link in links:
+        new_link = copy.copy(link)
         args, kwargs = resolve_arguments(context, link.get('args', {}))
         
         if 'view' in link:
-            link['active'] = link['view'] == current_view
+            new_link['active'] = link['view'] == current_view
             args, kwargs = resolve_arguments(context, link.get('args', {}))
                 
             try:
                 if kwargs:
-                    link['url'] = reverse(link['view'], kwargs=kwargs)
+                    new_link['url'] = reverse(link['view'], kwargs=kwargs)
                 else:
-                    link['url'] = reverse(link['view'], args=args)
+                    new_link['url'] = reverse(link['view'], args=args)
             except NoReverseMatch, err:
-                link['url'] = '#'
-                link['error'] = err
+                new_link['url'] = '#'
+                new_link['error'] = err
         elif 'url' in link:
-            link['active'] = link['url'] == current_path
+            new_link['active'] = link['url'] == current_path
+            if kwargs:
+                new_link['url'] = link['url'] % kwargs
+            else:
+                new_link['url'] = link['url'] % args
         else:
-            link['active'] = False
-        context_links.append(link)    
-
+            new_link['active'] = False
+        context_links.append(new_link)    
     return context_links
 
 def _get_object_navigation_links(context, menu_name=None):

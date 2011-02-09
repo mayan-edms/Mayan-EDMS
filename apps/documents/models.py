@@ -65,6 +65,7 @@ class Document(models.Model):
     date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
+    description = models.TextField(blank=True, null=True, verbose_name=_(u'description'))
     
     class Meta:
         verbose_name = _(u'document')
@@ -73,6 +74,9 @@ class Document(models.Model):
         
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)
+      
+    def get_fullname(self):
+        return os.extsep.join([self.file_filename, self.file_extension])
         
     @models.permalink
     def get_absolute_url(self):
@@ -95,7 +99,7 @@ class Document(models.Model):
         #topics/db/queries.html#topics-db-queries-delete
         self.delete_fs_links()
         super(Document, self).delete(*args, **kwargs)
-
+        
     def create_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
             metadata_dict = {'document':self}
@@ -289,6 +293,20 @@ class DocumentTypeFilename(models.Model):
         ordering = ['filename']
         verbose_name = _(u'document type filename')
         verbose_name_plural = _(u'document types filenames')
-        
 
-register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value'])
+
+class DocumentPage(models.Model):
+    document = models.ForeignKey(Document, verbose_name=_(u'document'))
+    content = models.TextField(blank=True, null=True, verbose_name=_(u'content'))
+    page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
+    page_number = models.PositiveIntegerField(default=0, verbose_name=_(u'page number'))
+        
+    def __unicode__(self):
+        return '%s - %s' % (self.page_number, self.page_label)
+
+    class Meta:
+        verbose_name = _(u'document page')
+        verbose_name_plural = _(u'document pages')
+
+
+register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content'])

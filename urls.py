@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     (r'^', include('main.urls')),
     (r'^documents/', include('documents.urls')),
     (r'^search/', include('dynamic_search.urls')),
+    (r'^ocr/', include('ocr.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 )
