@@ -124,7 +124,9 @@ class Document(models.Model):
 
                         next_available_filename(self, metadata_index, target_directory, slugify(self.file_filename), slugify(self.file_extension))
                     except NameError, exc:
-                        raise NameError(ugettext(u'Error in metadata indexing expression: %s') % exc)
+                        #raise NameError(ugettext(u'Error in metadata indexing expression: %s') % exc)
+                        #This should be a warning not an error
+                        pass
 
     def delete_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
