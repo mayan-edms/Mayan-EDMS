@@ -26,7 +26,7 @@ STAGING_FILES_PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_STAGING_FILES_PREVIEW_
 DELETE_LOCAL_ORIGINAL = getattr(settings, 'DOCUMENTS_DELETE_LOCAL_ORIGINAL', False)
 # Saving
 CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', lambda x: hashlib.sha256(x).hexdigest())
-UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNTION', lambda:unicode(uuid.uuid4()))
+UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNCTION', lambda:unicode(uuid.uuid4()))
 # Storage
 STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', DocumentStorage)
 STORAGE_DIRECTORY_NAME = getattr(settings, 'DOCUMENTS_STORAGE_DIRECTORY_NAME', 'documents')
@@ -35,7 +35,7 @@ PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_PREVIEW_SIZE', '640x480')
 THUMBNAIL_SIZE = getattr(settings, 'DOCUMENTS_THUMBNAIL_SIZE', '50x50')
 # Serving
 FILESYSTEM_FILESERVING_ENABLE = getattr(settings, 'DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE', True)
-FILESYSTEM_FILESERVING_PATH = getattr(settings, 'DOCUMENTS_FILESERVING_PATH', u'/tmp/mayan/documents')
+FILESYSTEM_FILESERVING_PATH = getattr(settings, 'DOCUMENTS_FILESYSTEM_FILESERVING_PATH', u'/tmp/mayan/documents')
 FILESYSTEM_SLUGIFY_PATHS = getattr(settings, 'DOCUMENTS_SLUGIFY_PATHS', False)
 FILESYSTEM_MAX_RENAME_COUNT = getattr(settings, 'DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT', 200)
 #misc
