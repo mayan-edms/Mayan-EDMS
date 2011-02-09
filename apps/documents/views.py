@@ -11,6 +11,7 @@ from django.views.generic.create_update import create_object, delete_object, upd
 from django.forms.formsets import formset_factory
 from django.core.files.base import File
 from django.conf import settings
+from django.utils.http import urlencode
 
 
 from filetransfers.api import serve_file
@@ -55,7 +56,23 @@ def document_create(request, multiple=True):
     wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataFormSet], multiple=multiple)
     return wizard(request)
 
-
+def document_create_sibling(request, document_id, multiple=True):
+    document = get_object_or_404(Document, pk=document_id)
+    urldata = []
+    for id, metadata in enumerate(document.documentmetadata_set.all()):
+        if hasattr(metadata, 'value'):
+            urldata.append(('metadata%s_id' % id,metadata.id))   
+            urldata.append(('metadata%s_value' % id,metadata.value))
+        
+    if multiple:
+        view = 'upload_multiple_documents_with_type'
+    else:
+        view = 'upload_document_with_type'
+    
+    url = reverse(view, args=[document.document_type.id])
+    return HttpResponseRedirect('%s?%s' % (url, urlencode(urldata)))
+        
+        
 def _save_metadata(url_dict, document):
     metadata_dict = {
         'id':{},
