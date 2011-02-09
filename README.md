@@ -24,6 +24,7 @@ Requirements
 
 * Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 * django-pagination
+* ImageMagick - Convert, Edit, Or Compose Bitmap Images
 
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
 

@@ -10,6 +10,8 @@ from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.forms.formsets import formset_factory
 from django.core.files.base import File
+from django.conf import settings
+
 
 from filetransfers.api import serve_file
 from converter.api import convert, in_cache
@@ -29,6 +31,7 @@ from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import PREVIEW_SIZE
+from documents.conf.settings import THUMBNAIL_SIZE
 
 def document_list(request):
     return object_list(
@@ -41,6 +44,8 @@ def document_list(request):
                 {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
                 {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
                 {'name':_(u'file size'), 'attribute':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+                {'name':_(u'thumbnail'), 'attribute': 
+                    lambda x: '<img src="%s" />' % reverse('document_thumbnail', args=[x.id])},
             ],
         },
     )
@@ -274,10 +279,10 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def document_preview(request, document_id):
+def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)
     
-    filepath = in_cache(document.uuid, PREVIEW_SIZE)
+    filepath = in_cache(document.uuid, size)
    
     if filepath:
         return serve_file(request, File(file=open(filepath, 'r')))
@@ -286,12 +291,24 @@ def document_preview(request, document_id):
             document.file.open()
             desc = document.file.storage.open(document.file.path)
             filepath = from_descriptor_to_tempfile(desc, document.uuid)
-            output_file = convert(filepath, PREVIEW_SIZE)
+            output_file = convert(filepath, size)
+            print document_id, output_file
             return serve_file(request, File(file=open(output_file, 'r')))
         except Exception, e:
+            if size == THUMBNAIL_SIZE:
+                return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
+            else:
+                return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))
             #messages.error(request, e)
-            return HttpResponse(e)
-    
+            #return HttpResponse(e)
+
+
+def document_thumbnail(request, document_id):
+    return get_document_image(request, document_id, THUMBNAIL_SIZE)
+
+
+def document_preview(request, document_id):
+    return get_document_image(request, document_id, PREVIEW_SIZE)
         
         
 def document_download(request, document_id):
