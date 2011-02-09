@@ -22,7 +22,6 @@ def get_errors(error_string):
     returns all lines in the error_string that start with the string "error"
 
     '''
-
     lines = error_string.splitlines()
     return lines[0]
     #error_lines = (line for line in lines if line.find('error') >= 0)
@@ -30,6 +29,7 @@ def get_errors(error_string):
 
 
 def execute_convert(input_filepath, arguments, output_filepath):
+    #TODO: Timeout & kill child
     command = [CONVERT_PATH, input_filepath]
     command.extend(shlex.split(str(arguments)))
     command.append(output_filepath)
@@ -37,9 +37,8 @@ def execute_convert(input_filepath, arguments, output_filepath):
     proc = subprocess.Popen(command, stderr=subprocess.PIPE)
     return (proc.wait(), proc.stderr.read())
     
-
+#TODO: merge w/ convert
 def in_cache(input_filepath, size, page=0, format='jpg'):
-    #temp_directory = TEMPORARY_DIRECTORY if TEMPORARY_DIRECTORY else tempfile.mkdtemp()
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
     output_arg = '%s_%s%s%s' % (temp_path, size, os.extsep, format)
@@ -51,7 +50,6 @@ def in_cache(input_filepath, size, page=0, format='jpg'):
     
     
 def convert(input_filepath, size, cache=True, page=0, format='jpg'):
-    #temp_directory = TEMPORARY_DIRECTORY if TEMPORARY_DIRECTORY else tempfile.mkdtemp()
     #TODO: generate output file using lightweight hash function on
     #file name or file content
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
@@ -60,15 +58,14 @@ def convert(input_filepath, size, cache=True, page=0, format='jpg'):
     input_arg = '%s[%s]' % (input_filepath, page)
     if os.path.exists(output_arg):
         return output_arg
-        
     #TODO: Check mimetype and use corresponding utility
-    convert = subprocess.Popen([CONVERT_PATH, input_arg, '-resize', size,  output_arg])
-    return_code = convert.wait()
-    if return_code:
-        raise Exception
-    #TODO: check return code & messages
-    #TODO: Timeout & kill child
-    return output_arg
+    try:
+        status, error_string = execute_convert(input_arg, ['-resize', size], output_arg)
+        if status:
+            errors = get_errors(error_string)
+            raise ConvertError(status, errors)
+    finally:
+        return output_arg
     
 
 #TODO: slugify OCR_OPTIONS and add to file name to cache
