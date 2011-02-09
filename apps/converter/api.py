@@ -60,7 +60,7 @@ def convert(input_filepath, size, cache=True, page=0, format='jpg'):
         return output_arg
     #TODO: Check mimetype and use corresponding utility
     try:
-        status, error_string = execute_convert(input_arg, ['-resize', size], output_arg)
+        status, error_string = execute_convert(input_arg, '-resize %s' % size, output_arg)
         if status:
             errors = get_errors(error_string)
             raise ConvertError(status, errors)
