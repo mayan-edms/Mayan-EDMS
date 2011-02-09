@@ -46,10 +46,10 @@ def urlquote(link=None, get={}):
 
 def return_attrib(obj, attrib, arguments={}):
     try:
-        if isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
-            return obj[attrib]
-        elif isinstance(attrib, types.FunctionType):
+        if isinstance(attrib, types.FunctionType):
             return attrib(obj)
+        elif isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
+            return obj[attrib]
         else:
             result = reduce(getattr, attrib.split("."), obj)
             if isinstance(result, types.MethodType):
