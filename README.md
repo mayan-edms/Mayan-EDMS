@@ -17,16 +17,21 @@ Features
 * Local file or server side staging file uploads
 * Batch upload many documents with the same metadata
 * User defined document checksum algorithm
+* Previews for a great deal of image formats, including PDF
+* Document OCR and searching
 
 
 Requirements
 ---
 
+Python:
 * Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 * django-pagination
-* ImageMagick - Convert, Edit, Or Compose Bitmap Images
-
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
+
+Executables:
+* ImageMagick - Convert, Edit, Or Compose Bitmap Images
+* tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 
 
 Author
