@@ -182,6 +182,7 @@ LOGIN_EXEMPT_URLS = (
 #DOCUMENTS_UUID_FUNCTION = lambda:unicode(uuid.uuid4())
 # Storage
 #DOCUMENTS_STORAGE_DIRECTORY_NAME = 'documents'
+#DOCUMENTS_STORAGE_BACKEND = DocumentStorage
 # Usage
 #DOCUMENTS_PREVIEW_SIZE = '640x480'
 #DOCUMENTS_THUMBNAIL_SIZE = '50x50'
@@ -193,6 +194,9 @@ LOGIN_EXEMPT_URLS = (
 # Misc
 #DOCUMENTS_TEMPORARY_DIRECTORY = u'/tmp'
 #CONVERTER_CONVERT_PATH = u'/usr/bin/convert'
+#CONVERTER_OCR_OPTIONS = u'-colorspace Gray -depth 8 -resample 200x200'
+#OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
+
 #======== End of configuration options =======
 
 try:
