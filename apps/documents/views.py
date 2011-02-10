@@ -41,13 +41,6 @@ def document_list(request):
         template_name='generic_list.html',
         extra_context={
             'title':_(u'documents'),
-            'extra_columns':[
-                {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
-                {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
-                {'name':_(u'file size'), 'attribute':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
-                {'name':_(u'thumbnail'), 'attribute': 
-                    lambda x: '<img src="%s" />' % reverse('document_thumbnail', args=[x.id])},
-            ],
         },
     )
 
