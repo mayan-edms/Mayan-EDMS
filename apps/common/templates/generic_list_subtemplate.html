@@ -32,6 +32,9 @@
             {% if not hide_object %}
                 <th>{% trans 'Identifier' %}</th>
             {% endif %}
+            {% for column in object_list.0|get_model_list_columns %}
+                <th>{{ column.name|capfirst }}</th>
+            {% endfor %}            
             {% for column in extra_columns %}
                 <th>{{ column.name|capfirst }}</th>
             {% endfor %}        
@@ -51,6 +54,10 @@
                     <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
                 {% endif %}
             {% endif %}
+                {% for column in object|get_model_list_columns %}
+                    <td>{{ object|object_property:column.attribute|safe }}</td>
+                {% endfor %}
+            
                 {% for column in extra_columns %}
                     <td>{{ object|object_property:column.attribute|safe }}</td>
                 {% endfor %}

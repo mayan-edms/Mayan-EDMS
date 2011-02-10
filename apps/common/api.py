@@ -2,6 +2,7 @@ import copy
 
 object_navigation = {}
 menu_links = []
+model_list_columns = {}
 
 def register_links(src, links, menu_name=None):
     if menu_name in object_navigation:
@@ -30,3 +31,10 @@ def register_menu(links):
         menu_links.append(link)
     
     menu_links.sort(lambda x,y: 1 if x>y else -1, lambda x:x['position'] if 'position' in x else 1)
+
+
+def register_model_list_columns(model, columns):
+    if model in model_list_columns:
+        model_list_columns[model].extend(columns)
+    else:
+        model_list_columns[model] = copy.copy(columns)
