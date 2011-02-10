@@ -19,10 +19,10 @@
 * Add document description                                             - DONE
 * Integrate with http://code.google.com/p/pytesser/                    - DEFERRED, done using Popen
 * Show abbreviated uuid in document list                               - DEFERRED, Impractical
+* Update symlinks when document or metadata changed                    - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
-* Update symlinks when document or metadata changed                    - ALMOST
 * Check duplicated files using checksum
 * If theres only one document type on db skip step 1 of wizard
 * Show last 5 recent metadata setups for easy switch
@@ -47,3 +47,8 @@
 * Field for document language or autodetect
 * Recognize multi-page documents
 * Count pages in a PDF file http://pybrary.net/pyPdf/
+* Download a document in diffent formats: (jpg, png, pdf)
+* Cache thumbnails and preview by document hash not by uuid
+* Cache.cleanup function to delete cached images when document hash changes
+* Divide navigation links search by object and by view
+* Add show_summary method to model to display as results of a search
