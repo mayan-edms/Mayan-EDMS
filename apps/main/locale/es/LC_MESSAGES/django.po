@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-07 01:35-0400\n"
-"PO-Revision-Date: 2011-02-07 01:37\n"
-"Last-Translator: Administrator  <admin@admin.com>\n"
+"POT-Creation-Date: 2011-02-10 09:19-0400\n"
+"PO-Revision-Date: 2011-02-10 09:20\n"
+"Last-Translator: <admin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,64 +19,92 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:7
+#: __init__.py:5 views.py:45
+msgid "settings"
+msgstr "configuración"
+
+#: __init__.py:9
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:12
+#: __init__.py:11
+msgid "setup"
+msgstr "instalación"
+
+#: __init__.py:14
 msgid "about"
 msgstr "acerca"
+
+#: views.py:50
+msgid "name"
+msgstr "nombre"
+
+#: views.py:51
+msgid "value"
+msgstr "valor"
+
+#: views.py:52
+msgid "exists"
+msgstr "existe"
+
+#: views.py:62
+msgid "function found"
+msgstr "función encontrada"
+
+#: views.py:64 views.py:66
+msgid "class found"
+msgstr "clase encontrada"
 
 #: templates/about.html:4
 msgid "About this program"
 msgstr "Acerca de este programa"
 
 #: templates/about.html:10
-msgid "Django based document manager with custom metadata indexing and file serving integration"
-msgstr "Gestor documental basado en Django con indexación de metadatos personalizados e integración de servicio de archivos"
+msgid "Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities"
+msgstr "Gestor documental de código abierto, basado en Django con indexación de metadatos personalizados, integración de servicio de archivos y capacidades de OCR"
 
-#: templates/base.html:26
+#: templates/base.html:43
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:28
+#: templates/base.html:45
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:31
+#: templates/base.html:49
 msgid "New password"
 msgstr "Nueva contraseña"
 
-#: templates/base.html:35
+#: templates/base.html:54
 msgid "Admin site"
 msgstr "Sitio administrativo"
 
-#: templates/base.html:46
+#: templates/base.html:65
 msgid "Go"
 msgstr "Ir"
 
-#: templates/base.html:49
+#: templates/base.html:69
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:49
+#: templates/base.html:69
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:78
+#: templates/base.html:98
 #, python-format
 msgid "Actions for %(object_name)s: %(object)s"
 msgstr "Acciones para %(object_name)s: %(object)s "
 
-#: templates/base.html:80
+#: templates/base.html:100
 #, python-format
 msgid "Actions for: %(object)s"
 msgstr "Acciones para: %(object)s "
 
-#: templates/base.html:83
+#: templates/base.html:103
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:96
+#: templates/base.html:116
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"

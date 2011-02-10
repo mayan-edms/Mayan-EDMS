@@ -189,10 +189,10 @@ def next_available_filename(document, metadata_index, path, filename, extension,
                     #Try again with same suffix
                     return next_available_filename(document, metadata_index, path, filename, extension, suffix)
                 except Exception, exc:
-                    raise Exception(ugettext(u'Unable to create symbolic link, filename clash: %s; %s') % (filepath, exc))    
+                    raise Exception(ugettext(u'Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s') % {'filepath':filepath, 'exc':exc})    
                 
             else:
-                raise OSError(ugettext(u'Unable to create symbolic link: %s; %s') % (filepath, exc))
+                raise OSError(ugettext(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath':filepath, 'exc':exc})
         
         return filepath
     else:
