@@ -91,10 +91,6 @@ class Document(models.Model):
     def exists(self):
         return self.file.storage.exists(self.file.url)
         
-    def save(self, *args, **kwargs):
-        self.update_checksum(save=False)
-        super(Document, self).save(*args, **kwargs)
-
     def delete(self, *args, **kwargs):
         #TODO: Might not execute when done in bulk from a queryset
         #topics/db/queries.html#topics-db-queries-delete

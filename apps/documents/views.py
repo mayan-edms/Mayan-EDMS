@@ -116,6 +116,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 prefix='local', initial={'document_type':document_type})
             if local_form.is_valid():
                 instance = local_form.save()
+                instance.update_checksum()
                 if 'document_type_available_filenames' in local_form.cleaned_data:
                     if local_form.cleaned_data['document_type_available_filenames']:
                         instance.file_filename = local_form.cleaned_data['document_type_available_filenames'].filename
@@ -146,6 +147,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                     try:
                         document = Document(file=staging_file.upload(), document_type=document_type)
                         document.save()
+                        document.update_checksum()
                     except Exception, e:
                         messages.error(request, e)   
                     else:
@@ -358,7 +360,7 @@ def document_edit_metadata(request, document_id):
 def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)
     
-    filepath = in_cache(document.uuid, size)
+    filepath = in_cache(document.checksum, size)
    
     if filepath:
         return serve_file(request, File(file=open(filepath, 'r')))
@@ -366,7 +368,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
         try:
             document.file.open()
             desc = document.file.storage.open(document.file.path)
-            filepath = from_descriptor_to_tempfile(desc, document.uuid)
+            filepath = from_descriptor_to_tempfile(desc, document.checksum)
             output_file = convert(filepath, size)
             return serve_file(request, File(file=open(output_file, 'r')))
         except Exception, e:
