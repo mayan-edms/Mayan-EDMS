@@ -15,10 +15,8 @@ from common.forms import DetailForm
 
 from models import Document, DocumentType, DocumentTypeMetadataType
 
-#from documents.conf.settings import AVAILABLE_FUNCTIONS
-#from documents.conf.settings import AVAILABLE_MODELS
-#from documents.conf.settings import DISPLAY_SIZE
-
+from documents.conf.settings import AVAILABLE_FUNCTIONS
+from documents.conf.settings import AVAILABLE_MODELS
 
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
