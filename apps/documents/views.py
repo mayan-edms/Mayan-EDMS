@@ -12,7 +12,7 @@ from django.forms.formsets import formset_factory
 from django.core.files.base import File
 from django.conf import settings
 from django.utils.http import urlencode
-
+from django.template.defaultfilters import slugify
 
 from filetransfers.api import serve_file
 from converter.api import convert, in_image_cache
@@ -412,7 +412,7 @@ def document_download(request, document_id):
     try:
         #Test permissions and trigger exception
         document.file.open()
-        return serve_file(request, document.file, save_as=document.get_fullname())
+        return serve_file(request, document.file, save_as='%s' % document.get_fullname())
     except Exception, e:
         messages.error(request, e)
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
