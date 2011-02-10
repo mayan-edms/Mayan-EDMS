@@ -38,6 +38,14 @@ def execute_convert(input_filepath, arguments, output_filepath):
     return (proc.wait(), proc.stderr.read())
 
 
+def cache_cleanup(input_filepath, size, page=0, format='jpg'):
+    filepath = create_image_cache_filename(input_filepath, size, page=0, format='jpg')
+    try:
+        os.remove(filepath)
+    except OSError:
+        pass
+        
+
 def create_image_cache_filename(input_filepath, size, page=0, format='jpg'):
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
