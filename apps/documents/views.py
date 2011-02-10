@@ -290,7 +290,7 @@ def document_edit(request, document_id):
                 
             document.save()
             
-            messages.success(request, _(u'Document edited successfully.'))
+            messages.success(request, _(u'Document:%s edited successfully.') % document)
             
             try:
                 document.create_fs_links()
