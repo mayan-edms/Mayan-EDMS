@@ -360,25 +360,24 @@ def document_edit_metadata(request, document_id):
 def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)
     
-    filepath = in_image_cache(document.checksum, size)
+    try:
+        filepath = in_image_cache(document.checksum, size)
    
-    if filepath:
-        return serve_file(request, File(file=open(filepath, 'r')))
-    else:
-        try:
-            #Save to a temporary location
-            document.file.open()
-            desc = document.file.storage.open(document.file.path)
-            filepath = from_descriptor_to_tempfile(desc, document.checksum)
-            output_file = convert(filepath, size)
-            return serve_file(request, File(file=open(output_file, 'r')))
-        except Exception, e:
-            if size == THUMBNAIL_SIZE:
-                return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
-            else:
-                return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))
-            #messages.error(request, e)
-            #return HttpResponse(e)
+        if filepath:
+            return serve_file(request, File(file=open(filepath, 'r')))
+        #Save to a temporary location
+        document.file.open()
+        desc = document.file.storage.open(document.file.path)
+        filepath = from_descriptor_to_tempfile(desc, document.checksum)
+        output_file = convert(filepath, size)
+        return serve_file(request, File(file=open(output_file, 'r')))
+    except Exception, e:
+        if size == THUMBNAIL_SIZE:
+            return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
+        else:
+            return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))
+        #messages.error(request, e)
+        #return HttpResponse(e)
 
 
 def document_thumbnail(request, document_id):

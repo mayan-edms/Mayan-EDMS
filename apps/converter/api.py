@@ -47,9 +47,12 @@ def cache_cleanup(input_filepath, size, page=0, format='jpg'):
         
 
 def create_image_cache_filename(input_filepath, size, page=0, format='jpg'):
-    temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
-    temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    return '%s_%s%s%s' % (temp_path, size, os.extsep, format)
+    if input_filepath:
+        temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
+        temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
+        return '%s_%s%s%s' % (temp_path, size, os.extsep, format)
+    else:
+        return None
 
    
 def in_image_cache(input_filepath, size, page=0, format='jpg'):
