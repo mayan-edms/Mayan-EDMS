@@ -7,7 +7,7 @@ from documents.models import Document
 
 submit_document = {'text':_('submit to ocr'), 'view':'submit_document', 'args':'object.id', 'famfam':'page_lightning'}
 
-register_links(Document, [submit_document])
+register_links(Document, [submit_document], menu_name='sidebar')
 
 #register_menu([
 #    {'text':_('OCR'), 'view':'ocr_queue', 'links':[
