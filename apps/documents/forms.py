@@ -42,7 +42,7 @@ class DocumentForm(forms.ModelForm):
                     self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
                         queryset=filenames_qs,
                         required=False,
-                        label=_(u'Document type available filenames'))
+                        label=_(u'Quick document rename'))
 
     class Meta:
         model = Document
@@ -87,7 +87,7 @@ class StagingDocumentForm(forms.Form):
                     self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
                         queryset=filenames_qs,
                         required=False,
-                        label=_(u'Document type available filenames'))
+                        label=_(u'Quick document rename'))
             
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
 
