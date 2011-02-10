@@ -23,7 +23,7 @@ class ImageWidget(forms.widgets.Widget):
         output = []
         #img = lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
         #                reverse('document_thumbnail', args=[x.id]))        
-        output.append('<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_display', args=[value.id]),
+        output.append('<a class="fancybox-noscaling" href="%s"><img width="300" src="%s" /></a>' % (reverse('document_display', args=[value.id]),
             reverse('document_preview', args=[value.id])))
         output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
         #file_name = str(value)
