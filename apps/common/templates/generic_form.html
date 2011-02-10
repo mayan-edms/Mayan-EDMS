@@ -6,7 +6,13 @@
 {% block content %}
 <div class="container_12">
     {% if form %}
+                <div class="grid_{{ form.grid|default:11 }}">
         {% include "generic_form_subtemplate.html" %}
+
+            </div>
+            {% if form.grid_clear or not form.grid %}
+                <div class="clear"></div> 
+            {% endif %}
     {% endif %}
 
     {% for form in form_list %}
@@ -16,18 +22,16 @@
         {% with form.object as object %}
         {% with form.object_name as object_name %}
         {% with form.form_action as form_action %}
-        {% if form.grid %}
-            <div class="grid_{{ form.grid }}">
-        {% endif %}
+            <div class="grid_{{ form.grid|default:11 }}">
         {% with form.form as form %}
             {% include "generic_form_subtemplate.html" %}
         {% endwith %}
-        {% if form.grid %}
+
             </div>
-            {% if form.grid_clear %}
+            {% if form.grid_clear or not form.grid %}
                 <div class="clear"></div> 
             {% endif %}
-        {% endif %}
+
         
         {% endwith %}
         {% endwith %}

@@ -26,7 +26,7 @@ document_download = {'text':_('download'), 'view':'document_download', 'args':'o
 staging_file_preview = {'text':_('preview'), 'class':'fancybox', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 
 register_links(Document, [document_edit, document_edit_metadata, document_delete, document_download])
-register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling, document_view, document_preview], menu_name='sidebar')
+register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling, document_view], menu_name='sidebar')
 register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
 
 register_links(StagingFile, [staging_file_preview])

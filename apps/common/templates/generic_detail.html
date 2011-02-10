@@ -30,15 +30,49 @@
 {% endblock %}
 
 {% block content %}
-    <div id="subform">
+<div class="container_12">
+
+    {% if form %}
         {% with "true" as read_only %}
+            <div class="grid_{{ grid|default:11 }}">
             {% include "generic_form_subtemplate.html" %}
+            </div>
+            {% if grid_clear or not grid %}
+                <div class="clear"></div> 
+            {% endif %}
         {% endwith %}
-    </div>
+    {% endif %}
 
     {% for subtemplate in subtemplates %}
         {% include subtemplate %}
     {% endfor %}
+
+    {% for form in form_list %}
+        {% with form.submit_method as submit_method %}
+        {% with form.striptags as striptags %}
+        {% with form.title as title %}
+        {% with form.object as object %}
+        {% with form.object_name as object_name %}
+        {% with form.form_action as form_action %}
+        {% with "true" as read_only %}        
+            <div class="grid_{{ form.grid|default:11 }}">
+        {% with form.form as form %}
+            {% include "generic_form_subtemplate.html" %}
+        {% endwith %}
+            </div>
+            {% if form.grid_clear or not form.grid %}
+                <div class="clear"></div> 
+            {% endif %}
+        
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+    {% endfor %}
+
 
     {% for subtemplate in subtemplates_dict %}
     {% with subtemplate.title as title %}
@@ -47,7 +81,14 @@
     {% with subtemplate.hide_object as hide_object %}
     {% with subtemplate.main_object as main_object %}
     {% with subtemplate.hide_link as hide_link %}
+            <div class="grid_{{ subtemplate.grid|default:11 }}">
+
         {% include subtemplate.name %}
+
+            </div>
+            {% if subtemplate.grid_clear or not subtemplate.grid %}
+                <div class="clear"></div> 
+            {% endif %}
     {% endwith %}
     {% endwith %}
     {% endwith %}
@@ -55,6 +96,6 @@
     {% endwith %}
     {% endwith %}
     {% endfor %}
-    
+</div>
 {% endblock %}
 

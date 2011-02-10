@@ -23,7 +23,7 @@ from utils import from_descriptor_to_tempfile
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
-        StagingDocumentForm, DocumentTypeMetadataType
+        StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm
     
 from staging import StagingFile
 
@@ -233,6 +233,21 @@ def document_view(request, document_id):
         {'label':_(u'UUID'), 'field':'uuid'},
     ])
     
+    preview_form = DocumentPreviewForm(document=document)
+    form_list = [
+        {
+        'form':form,
+        'object':document,
+        'grid':6,
+        },
+        {
+        'form':preview_form,
+        'title':_(u'document preview'),
+        'object':document,
+        'grid':6,
+        'grid_clear':True,
+        },
+    ]
     subtemplates_dict = [
             {
                 'name':'generic_list_subtemplate.html',
@@ -251,7 +266,7 @@ def document_view(request, document_id):
             'hide_link':True})
     
     return render_to_response('generic_detail.html', {
-        'form':form,
+        'form_list':form_list,
         'object':document,
         'subtemplates_dict':subtemplates_dict,
     }, context_instance=RequestContext(request))
@@ -384,12 +399,12 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
         #return HttpResponse(e)
 
 
-def document_thumbnail(request, document_id):
-    return get_document_image(request, document_id, THUMBNAIL_SIZE)
+#def document_thumbnail(request, document_id):
+#    return get_document_image(request, document_id, THUMBNAIL_SIZE)
 
 
-def document_preview(request, document_id):
-    return get_document_image(request, document_id, PREVIEW_SIZE)
+#def document_preview(request, document_id):
+#    return get_document_image(request, document_id, PREVIEW_SIZE)
         
         
 def document_download(request, document_id):
