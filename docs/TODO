@@ -20,6 +20,7 @@
 * Integrate with http://code.google.com/p/pytesser/                    - DEFERRED, done using Popen
 * Show abbreviated uuid in document list                               - DEFERRED, Impractical
 * Update symlinks when document or metadata changed                    - DONE
+* Cache thumbnails and preview by document hash not by uuid            - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -48,7 +49,8 @@
 * Recognize multi-page documents
 * Count pages in a PDF file http://pybrary.net/pyPdf/
 * Download a document in diffent formats: (jpg, png, pdf)
-* Cache thumbnails and preview by document hash not by uuid
 * Cache.cleanup function to delete cached images when document hash changes
 * Divide navigation links search by object and by view
 * Add show_summary method to model to display as results of a search
+* Add unpaper to pre OCR document cleanup
+* DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
