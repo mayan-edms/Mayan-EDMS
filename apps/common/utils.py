@@ -51,7 +51,7 @@ def return_attrib(obj, attrib, arguments={}):
         elif isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
             return obj[attrib]
         else:
-            result = reduce(getattr, attrib.split("."), obj)
+            result = reduce(getattr, attrib.split('.'), obj)
             if isinstance(result, types.MethodType):
                 if arguments:
                     return result(**arguments)
@@ -61,7 +61,7 @@ def return_attrib(obj, attrib, arguments={}):
                 return result
     except Exception, err:
         if settings.DEBUG:
-            return "Attribute error: %s; %s" % (attrib, err)
+            return 'Attribute error: %s; %s' % (attrib, err)
         else:
             pass
 
@@ -69,7 +69,7 @@ def return_attrib(obj, attrib, arguments={}):
 #http://snippets.dzone.com/posts/show/5434
 #http://snippets.dzone.com/user/jakob
 def pretty_size(size):
-	suffixes = [("B",2**10), ("K",2**20), ("M",2**30), ("G",2**40), ("T",2**50)]
+	suffixes = [('B',2**10), ('K',2**20), ('M',2**30), ('G',2**40), ('T',2**50)]
 	for suf, lim in suffixes:
 		if size > lim:
 			continue

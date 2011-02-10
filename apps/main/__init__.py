@@ -9,7 +9,7 @@ register_menu([
     {'text':_(u'home'), 'view':'home', 'famfam':'house', 'position':0},
 
     {'text':_(u'setup'), 'view':'check_settings', 'links': [
-    ],'famfam':'cog', 'name':'setup','position':7},
+        ],'famfam':'cog', 'name':'setup','position':7},
 
     {'text':_(u'about'), 'view':'about', 'position':8},
 ])

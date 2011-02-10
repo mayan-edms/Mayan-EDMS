@@ -29,15 +29,18 @@ def check_settings(request):
         {'name':'DOCUMENTS_STORAGE_DIRECTORY_NAME', 'value':documents_settings.STORAGE_DIRECTORY_NAME},
         {'name':'DOCUMENTS_PREVIEW_SIZE', 'value':documents_settings.PREVIEW_SIZE},
         {'name':'DOCUMENTS_THUMBNAIL_SIZE', 'value':documents_settings.THUMBNAIL_SIZE},
+        {'name':'DOCUMENTS_DISPLAY_SIZE', 'value':documents_settings.DISPLAY_SIZE},
         {'name':'DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE', 'value':documents_settings.FILESYSTEM_FILESERVING_ENABLE},
         {'name':'DOCUMENTS_FILESYSTEM_FILESERVING_PATH', 'value':documents_settings.FILESYSTEM_FILESERVING_PATH, 'exists':True},
         {'name':'DOCUMENTS_SLUGIFY_PATHS', 'value':documents_settings.FILESYSTEM_SLUGIFY_PATHS},
         {'name':'DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT', 'value':documents_settings.FILESYSTEM_MAX_RENAME_COUNT},
         {'name':'DOCUMENTS_TEMPORARY_DIRECTORY', 'value':documents_settings.TEMPORARY_DIRECTORY, 'exists':True},
 
+        #Converter
         {'name':'CONVERTER_CONVERT_PATH', 'value':converter_settings.CONVERT_PATH, 'exists':True},
         {'name':'CONVERTER_OCR_OPTIONS', 'value':converter_settings.OCR_OPTIONS},
 
+        #ocr
         {'name':'OCR_TESSERACT_PATH', 'value':ocr_settings.TESSERACT_PATH, 'exists':True},
     ]
     

@@ -30,7 +30,7 @@
       {% if not hide_header %}
           <tr>
             {% if not hide_object %}
-                <th>{% trans 'Identifier' %}</th>
+                <th>{% trans "Identifier" %}</th>
             {% endif %}
             {% for column in object_list.0|get_model_list_columns %}
                 <th>{{ column.name|capfirst }}</th>
@@ -62,7 +62,7 @@
                     <td>{{ object|object_property:column.attribute|safe }}</td>
                 {% endfor %}
                 {% if not hide_links %}
-                    <td class='last'>
+                    <td class="last">
                         {% object_navigation_template %}
                     </td>
                 {% endif %}

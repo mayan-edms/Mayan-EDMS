@@ -93,7 +93,6 @@ def _save_metadata_list(metadata_list, document):
         
 def _save_metadata(metadata_dict, document):
     #Use matched metadata now to create document metadata
-    #for key, value in zip(metadata_dict['id'].values(), metadata_dict['value'].values()):
     document_metadata, created = DocumentMetadata.objects.get_or_create(
         document=document,
         metadata_type=get_object_or_404(MetadataType, pk=metadata_dict['id']),
@@ -236,16 +235,16 @@ def document_view(request, document_id):
     preview_form = DocumentPreviewForm(document=document)
     form_list = [
         {
-        'form':form,
-        'object':document,
-        'grid':6,
+            'form':form,
+            'object':document,
+            'grid':6,
         },
         {
-        'form':preview_form,
-        'title':_(u'document preview'),
-        'object':document,
-        'grid':6,
-        'grid_clear':True,
+            'form':preview_form,
+            'title':_(u'document preview'),
+            'object':document,
+            'grid':6,
+            'grid_clear':True,
         },
     ]
     subtemplates_dict = [
@@ -348,8 +347,6 @@ def document_edit_metadata(request, document_id):
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
             _save_metadata_list(formset.cleaned_data, document)
-            #for item in formset.cleaned_data:
-            #    _save_metadata(item, document)
             try:
                 document.delete_fs_links()
             except Exception, e:
@@ -395,17 +392,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
             return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
         else:
             return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))
-        #messages.error(request, e)
-        #return HttpResponse(e)
 
-
-#def document_thumbnail(request, document_id):
-#    return get_document_image(request, document_id, THUMBNAIL_SIZE)
-
-
-#def document_preview(request, document_id):
-#    return get_document_image(request, document_id, PREVIEW_SIZE)
-        
         
 def document_download(request, document_id):
     document = get_object_or_404(Document, pk=document_id)

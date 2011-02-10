@@ -18,10 +18,10 @@ if settings.DEVELOPMENT:
     urlpatterns += patterns('',
         (r'^%s-site_media/(?P<path>.*)$' % settings.PROJECT_NAME,
             'django.views.static.serve',
-            {'document_root': 'site_media', 'show_indexes': True}),
+            {'document_root':'site_media', 'show_indexes':True}),
     )
 
     if 'rosetta' in settings.INSTALLED_APPS:
         urlpatterns += patterns('',
-            url(r'^rosetta/', include('rosetta.urls'), name = "rosetta"),
+            url(r'^rosetta/', include('rosetta.urls'), name='rosetta'),
         )

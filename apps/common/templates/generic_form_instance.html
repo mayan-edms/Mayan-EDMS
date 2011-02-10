@@ -34,7 +34,7 @@
     {% for field in form.visible_fields %}
         <div class="group">
             {% if field.errors %}<div class="fieldWithErrors">{% endif %}
-            <label class="label">{{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}</label>
+            <label class="label">{{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans "required" %}){% endif %}</label>
             {% if field.errors %}<span class="error">{% for error in field.errors %}{{ error }}{% if not forloop.last %} | {% endif %}{% endfor %}</span></div>{% endif %} 
             {{ field }}
             {% if field.help_text %}<span class="description">{{ field.help_text }}</span>{% endif %}

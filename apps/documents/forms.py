@@ -21,22 +21,9 @@ from documents.conf.settings import AVAILABLE_MODELS
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
-        #img = lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
-        #                reverse('document_thumbnail', args=[x.id]))        
         output.append('<a class="fancybox-noscaling" href="%s"><img width="300" src="%s" /></a>' % (reverse('document_display', args=[value.id]),
             reverse('document_preview', args=[value.id])))
         output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
-        #file_name = str(value)
-        #if file_name:
-        #    file_path = '%s%s' % (settings.MEDIA_URL, file_name)
-        #    try:            # is image
-        #        Image.open(os.path.join(settings.MEDIA_ROOT, file_name))
-        #        output.append('<a target="_blank" href="%s">%s</a><br />%s <a target="_blank" href="%s">%s</a><br />%s ' % \
-        #            (file_path, thumbnail(file_name), _('Currently:'), file_path, file_name, _('Change:')))
-        #    except IOError: # not image
-        #        output.append('%s <a target="_blank" href="%s">%s</a> <br />%s ' % \
-        #            (_('Currently:'), file_path, file_name, _('Change:')))
-        #    
         #output.append(super(ImageWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))  
 
@@ -61,15 +48,14 @@ class DocumentForm(forms.ModelForm):
         model = Document
         exclude = ('description',)
 
+
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('document', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['preview'].initial = self.document#reverse('document_preview', args=[self.document.id])
-
-    
+        self.fields['preview'].initial = self.document
+            
     preview = forms.CharField(widget=ImageWidget)    
-    #ImageWidget
 
 
 class DocumentForm_view(DetailForm):
@@ -118,8 +104,7 @@ class MetadataForm(forms.Form):
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
             self.document_type = kwargs['initial'].pop('document_type', None)
-            #self.metadata_options = kwargs['initial'].pop('metadata_options', None)
-           
+          
             required=self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
             required_string = u''
             if required:
@@ -178,7 +163,6 @@ class DocumentCreateWizard(BoundFormWizard):
                 initial.append({
                     'metadata_type':item.metadata_type,
                     'document_type':self.document_type,
-                    #'metadata_options':item,
                 })
             self.initial = {1:initial}
         if step == 1:

@@ -2,7 +2,7 @@
 import os
 import sys
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "./"))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), './'))
 
 sys.path.append(os.path.join(PROJECT_ROOT, 'modules'))
 sys.path.append(os.path.join(PROJECT_ROOT, 'customization_apps'))
@@ -26,7 +26,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_ROOT, "%s.sqlite" % PROJECT_NAME),     # Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_ROOT, '%s.sqlite' % PROJECT_NAME),     # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -170,6 +170,7 @@ LOGIN_EXEMPT_URLS = (
 # Definition
 #DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
 #DOCUMENTS_METADATA_AVAILABLE_MODELS = {}
+
 # Upload
 #DOCUMENTS_DELETE_LOCAL_ORIGINAL = False
 #DOCUMENTS_USE_STAGING_DIRECTORY = False
@@ -180,24 +181,27 @@ LOGIN_EXEMPT_URLS = (
 # Saving
 #DOCUMENTS_CHECKSUM_FUNCTION = lambda x: hashlib.sha256(x).hexdigest())
 #DOCUMENTS_UUID_FUNCTION = lambda:unicode(uuid.uuid4())
+
 # Storage
 #DOCUMENTS_STORAGE_DIRECTORY_NAME = 'documents'
 #DOCUMENTS_STORAGE_BACKEND = DocumentStorage
+
 # Usage
 #DOCUMENTS_PREVIEW_SIZE = '640x480'
 #DOCUMENTS_THUMBNAIL_SIZE = '50x50'
 #DOCUMENTS_DISPLAY_SIZE = '1024x768'
+
 # Serving
 #DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE = True
 #DOCUMENTS_FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
 #DOCUMENTS_FILESYSTEM_SLUGIFY_PATHS = False
 #DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT = 200
+
 # Misc
 #DOCUMENTS_TEMPORARY_DIRECTORY = u'/tmp'
 #CONVERTER_CONVERT_PATH = u'/usr/bin/convert'
 #CONVERTER_OCR_OPTIONS = u'-colorspace Gray -depth 8 -resample 200x200'
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
-
 #======== End of configuration options =======
 
 try:
@@ -217,19 +221,19 @@ if DEVELOPMENT:
         import rosetta
         INSTALLED_APPS += ('rosetta',)
     except ImportError:
-        print "rosetta is not installed"
+        print 'rosetta is not installed'
 
     try:
         import django_extensions
         INSTALLED_APPS +=('django_extensions',)
     except ImportError:
-        print "django_extensions is not installed"
+        print 'django_extensions is not installed'
 
     try:
         import debug_toolbar
         #INSTALLED_APPS.append('debug_toolbar')
     except ImportError:
-        print "debug_toolbar is not installed"
+        print 'debug_toolbar is not installed'
 
     TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
 

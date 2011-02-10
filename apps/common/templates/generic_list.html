@@ -4,7 +4,7 @@
 {#{% block secondary_links %}{{ secondary_links|safe }}{% endblock %}#}
 
 {% block content %}
-    {% include 'generic_list_subtemplate.html' %}
+    {% include "generic_list_subtemplate.html" %}
 
     {% for subtemplate in subtemplates_dict %}
     {% with subtemplate.title as title %}

@@ -27,7 +27,7 @@
             <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
         {% endif %}
         
-        {% if submit_method != 'GET' and submit_method != 'get' %}
+        {% if submit_method != "GET" and submit_method != "get" %}
             {% csrf_token %}
         {% endif %}
 
@@ -45,7 +45,7 @@
                         <tr>
                             {% for field in formset.forms.0.visible_fields %}
                                 <th>
-                                    {{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}
+                                    {{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans "required" %}){% endif %}
                                 </th>
                             {#{% if field.help_text %}<span class="description">{{ field.help_text }}</span>{% endif %}#}
                             {% endfor %} 
@@ -67,7 +67,7 @@
         {% if not read_only %}
         <div class="group navform wat-cf">
             <button class="button" type="submit" name="{{ form.prefix }}-submit">
-                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
+                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}
             </button>
             {% comment %}
             <a href="#header" class="button">
