@@ -40,13 +40,13 @@
 {% endblock %}
 
 {% block web_theme_user_navigation %}
-    <li><strong>{% trans 'User' %}:</strong>
+    <li><strong>{% trans "User" %}:</strong>
         {% if user.is_anonymous %}
-            {% trans 'Anonymous' %}
+            {% trans "Anonymous" %}
         {% else %}
             {{ user.get_full_name|default:user }}
             {% if user.has_usable_password %}
-                <a href="{% url password_change_view %}">({% trans 'New password' %})</a>
+                <a href="{% url password_change_view %}">({% trans "New password" %})</a>
             {% endif %}
         {% endif %}
     </li>
@@ -66,7 +66,7 @@
         </form>                                
     </li>
     {% get_setting "LOGIN_URL" as login_url %}
-    <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}?next={{ login_url }}{% endif %}">{% if user.is_anonymous %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
+    <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}?next={{ login_url }}{% endif %}">{% if user.is_anonymous %}{% trans "Login" %}{% else %}{% trans "Logout" %}{% endif %}</a></li>
 {% endblock %}
 
 {% block web_theme_main_navigation %}
@@ -100,11 +100,11 @@
                     <h3>{% blocktrans %}Actions for: {{ object }}{% endblocktrans %}</h3>
                 {% endif %}
             {% else %}
-                <h3>}{% trans 'Actions' %}</h3>
+                <h3>}{% trans "Actions" %}</h3>
             {% endif %}
             <ul class="navigation">
-                {% with 'true' as as_li %}
-                    {% include 'generic_navigation.html' %}
+                {% with "true" as as_li %}
+                    {% include "generic_navigation.html" %}
                 {% endwith %}
             </ul>
         </div>
@@ -113,10 +113,10 @@
     {% get_object_navigation_links "sidebar" %}
         {% if object_navigation_links %}
         <div class="block">
-            <h3>{% trans 'Other available actions' %}</h3>
+            <h3>{% trans "Other available actions" %}</h3>
             <ul class="navigation">
-                {% with 'true' as as_li %}
-                    {% include 'generic_navigation.html' %}
+                {% with "true" as as_li %}
+                    {% include "generic_navigation.html" %}
                 {% endwith %}
             </ul>
         </div>
