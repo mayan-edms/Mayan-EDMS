@@ -182,14 +182,14 @@ def _get_object_navigation_links(context, menu_name=None):
     try:
         links = object_navigation[menu_name][current_view]['links']
         for link in resolve_links(context, links, current_view, current_path):
-            context_links.append(link)            
+            context_links.append(link)
     except KeyError:
         pass
 
     try:
         links = object_navigation[menu_name][type(obj)]['links']
         for link in resolve_links(context, links, current_view, current_path):
-            context_links.append(link)            
+            context_links.append(link)
     except KeyError:
         pass
 
@@ -201,7 +201,7 @@ def resolve_template_variable(context, name):
         return unescape_string_literal(name)
     except ValueError:
         #return Variable(name).resolve(context)
-        #Research if should return always as a str
+        #TODO: Research if should return always as a str
         return str(Variable(name).resolve(context))
     except TypeError:
         return name
