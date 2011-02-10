@@ -84,9 +84,8 @@ class MetadataForm(forms.Form):
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
             self.document_type = kwargs['initial'].pop('document_type', None)
-            self.metadata_options = kwargs['initial'].pop('metadata_options', None)
-      
-            
+            #self.metadata_options = kwargs['initial'].pop('metadata_options', None)
+           
             required=self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
             required_string = u''
             if required:
@@ -145,7 +144,7 @@ class DocumentCreateWizard(BoundFormWizard):
                 initial.append({
                     'metadata_type':item.metadata_type,
                     'document_type':self.document_type,
-                    'metadata_options':item,
+                    #'metadata_options':item,
                 })
             self.initial = {1:initial}
         if step == 1:

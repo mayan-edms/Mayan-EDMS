@@ -70,7 +70,7 @@ class Document(models.Model):
     class Meta:
         verbose_name = _(u'document')
         verbose_name_plural = _(u'documents')
-        ordering = ['-date_updated', '-date_added']
+        ordering = ['-date_added']
         
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)

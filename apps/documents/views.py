@@ -61,7 +61,7 @@ def document_create_sibling(request, document_id, multiple=True):
     urldata = []
     for id, metadata in enumerate(document.documentmetadata_set.all()):
         if hasattr(metadata, 'value'):
-            urldata.append(('metadata%s_id' % id,metadata.id))   
+            urldata.append(('metadata%s_id' % id,metadata.metadata_type.id))   
             urldata.append(('metadata%s_value' % id,metadata.value))
         
     if multiple:
@@ -71,29 +71,44 @@ def document_create_sibling(request, document_id, multiple=True):
     
     url = reverse(view, args=[document.document_type.id])
     return HttpResponseRedirect('%s?%s' % (url, urlencode(urldata)))
-        
-        
-def _save_metadata(url_dict, document):
+
+
+def _decode_metadata_from_url(url_dict):
     metadata_dict = {
         'id':{},
         'value':{}
     }
+    metadata_list = []
     #Match out of order metadata_type ids with metadata values from request
     for key, value in url_dict.items():
         if 'metadata' in key:
             index, element = key[8:].split('_')
             metadata_dict[element][index] = value
-            
-    #Use matched metadata now to create document metadata
-    for key, value in zip(metadata_dict['id'].values(), metadata_dict['value'].values()):
-        document_metadata = DocumentMetadata(
-            document=document,
-            metadata_type=get_object_or_404(MetadataType, pk=key),
-            #Hangle 'plus sign as space' in the url
-            value=unquote_plus(value)
-        )
-        document_metadata.save()
         
+    #Convert the nested dictionary into a list of id+values dictionaries
+    for order, id in metadata_dict['id'].items():
+        if order in metadata_dict['value'].keys():
+            metadata_list.append({'id':id, 'value':metadata_dict['value'][order]})
+
+    return metadata_list
+    
+    
+def _save_metadata_list(metadata_list, document):
+    for item in metadata_list:
+        _save_metadata(item, document)
+        
+        
+def _save_metadata(metadata_dict, document):
+    #Use matched metadata now to create document metadata
+    #for key, value in zip(metadata_dict['id'].values(), metadata_dict['value'].values()):
+    document_metadata, created = DocumentMetadata.objects.get_or_create(
+        document=document,
+        metadata_type=get_object_or_404(MetadataType, pk=metadata_dict['id']),
+    )
+    #Handle 'plus sign as space' in the url
+    document_metadata.value=unquote_plus(metadata_dict['value'])
+    document_metadata.save()
+
 
 def upload_document_with_type(request, document_type_id, multiple=True):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
@@ -113,7 +128,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         instance.file_filename = local_form.cleaned_data['document_type_available_filenames'].filename
                         instance.save()
             
-                _save_metadata(request.GET, instance)
+                _save_metadata_list(_decode_metadata_from_url(request.GET), instance)
                 messages.success(request, _(u'Document uploaded successfully.'))
                 try:
                     instance.create_fs_links()
@@ -147,7 +162,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                                 document.file_filename = staging_form.cleaned_data['document_type_available_filenames'].filename
                                 document.save()
                                                 
-                        _save_metadata(request.GET, document)                        
+                        _save_metadata_list(_decode_metadata_from_url(request.GET), document)
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
                         try:
                             document.create_fs_links()
@@ -305,16 +320,22 @@ def document_edit_metadata(request, document_id):
         initial.append({
             'metadata_type':item.metadata_type,
             'document_type':document.document_type,
-            'metadata_options':item,
-        })    
+            'value':document.documentmetadata_set.get(metadata_type=item.metadata_type).value if document.documentmetadata_set.filter(metadata_type=item.metadata_type) else None
+        })
+    #for metadata in document.documentmetadata_set.all():
+    #    initial.append({
+    #        'metadata_type':metadata.metadata_type,
+    #        'document_type':document.document_type,
+    #        'value':metadata.value,
+    #    })    
+
     formset = MetadataFormSet(initial=initial)
     if request.method == 'POST':
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
-            for item in formset.cleaned_data:
-                pass
-                #print item
-                #_save_metadata(request.GET, document)
+            _save_metadata_list(formset.cleaned_data, document)
+            #for item in formset.cleaned_data:
+            #    _save_metadata(item, document)
             try:
                 document.delete_fs_links()
             except Exception, e:
