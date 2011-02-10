@@ -182,7 +182,9 @@ def upload_document_with_type(request, document_type_id, multiple=True):
         'form_list':[
             {
                 'form':local_form,
-                'title':_(u'upload a local document')
+                'title':_(u'upload a local document'),
+                'grid':6,
+                'grid_clear':False if USE_STAGING_DIRECTORY else True,
             },
         ],
     }
@@ -208,6 +210,8 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 {
                     'form':staging_form,
                     'title':_(u'upload a document from staging'),
+                    'grid':6,
+                    'grid_clear':True,   
                 },
             )
     
