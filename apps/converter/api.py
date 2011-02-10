@@ -36,36 +36,36 @@ def execute_convert(input_filepath, arguments, output_filepath):
 
     proc = subprocess.Popen(command, stderr=subprocess.PIPE)
     return (proc.wait(), proc.stderr.read())
-    
-#TODO: merge w/ convert
-def in_cache(input_filepath, size, page=0, format='jpg'):
+
+
+def create_image_cache_filename(input_filepath, size, page=0, format='jpg'):
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    output_arg = '%s_%s%s%s' % (temp_path, size, os.extsep, format)
-    input_arg = '%s[%s]' % (input_filepath, page)
-    if os.path.exists(output_arg):
-        return output_arg
+    return '%s_%s%s%s' % (temp_path, size, os.extsep, format)
+
+   
+def in_image_cache(input_filepath, size, page=0, format='jpg'):
+    output_filepath = create_image_cache_filename(input_filepath, size, page, format)
+    if os.path.exists(output_filepath):
+        return output_filepath
     else:
         return None
     
     
 def convert(input_filepath, size, cache=True, page=0, format='jpg'):
-    #TODO: generate output file using lightweight hash function on
-    #file name or file content
-    temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
-    temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    output_arg = '%s_%s%s%s' % (temp_path, size, os.extsep, format)
-    input_arg = '%s[%s]' % (input_filepath, page)
-    if os.path.exists(output_arg):
-        return output_arg
+    output_filepath = create_image_cache_filename(input_filepath, size, page, format)
+    if os.path.exists(output_filepath):
+        return output_filepath
+        
     #TODO: Check mimetype and use corresponding utility
     try:
-        status, error_string = execute_convert(input_arg, '-resize %s' % size, output_arg)
+        input_arg = '%s[%s]' % (input_filepath, page)
+        status, error_string = execute_convert(input_arg, '-resize %s' % size, output_filepath)
         if status:
             errors = get_errors(error_string)
             raise ConvertError(status, errors)
     finally:
-        return output_arg
+        return output_filepath
     
 
 #TODO: slugify OCR_OPTIONS and add to file name to cache

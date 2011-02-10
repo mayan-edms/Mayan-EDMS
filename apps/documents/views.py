@@ -15,7 +15,7 @@ from django.utils.http import urlencode
 
 
 from filetransfers.api import serve_file
-from converter.api import convert, in_cache
+from converter.api import convert, in_image_cache
 from common.utils import pretty_size
 
 from utils import from_descriptor_to_tempfile
@@ -360,12 +360,13 @@ def document_edit_metadata(request, document_id):
 def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)
     
-    filepath = in_cache(document.checksum, size)
+    filepath = in_image_cache(document.checksum, size)
    
     if filepath:
         return serve_file(request, File(file=open(filepath, 'r')))
     else:
         try:
+            #Save to a temporary location
             document.file.open()
             desc = document.file.storage.open(document.file.path)
             filepath = from_descriptor_to_tempfile(desc, document.checksum)
