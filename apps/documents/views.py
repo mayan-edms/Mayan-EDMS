@@ -116,6 +116,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             if local_form.is_valid():
                 instance = local_form.save()
                 instance.update_checksum()
+                instance.update_mimetype()
                 if 'document_type_available_filenames' in local_form.cleaned_data:
                     if local_form.cleaned_data['document_type_available_filenames']:
                         instance.file_filename = local_form.cleaned_data['document_type_available_filenames'].filename
@@ -147,6 +148,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         document = Document(file=staging_file.upload(), document_type=document_type)
                         document.save()
                         document.update_checksum()
+                        document.update_mimetype()
                     except Exception, e:
                         messages.error(request, e)   
                     else:
@@ -224,6 +226,7 @@ def document_view(request, document_id):
         {'label':_(u'Filename'), 'field':'file_filename'},
         {'label':_(u'File extension'), 'field':'file_extension'},
         {'label':_(u'File mimetype'), 'field':'file_mimetype'},
+        {'label':_(u'File mime encoding'), 'field':'file_mime_encoding'},
         {'label':_(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
         {'label':_(u'Exists in storage'), 'field':'exists'},
         {'label':_(u'Date added'), 'field':lambda x: x.date_added.date()},

@@ -3,6 +3,7 @@ import os
 import mimetypes
 from datetime import datetime
 import sys
+from python_magic import magic
 
 from django.conf import settings
 from django.db import models
@@ -34,10 +35,7 @@ def get_filename_from_uuid(instance, filename, directory=STORAGE_DIRECTORY_NAME)
     return '%s/%s' % (directory, instance.uuid)
 
 def populate_file_extension_and_mimetype(instance, filename):
-    # First populate the file extension and mimetype
-    instance.file_mimetype, encoding = mimetypes.guess_type(filename)
-    if not instance.file_mimetype:
-         instance.file_mimetype = u'unknown'
+    # First populate the file extension
     filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
     #remove prefix '.'
@@ -59,6 +57,7 @@ class Document(models.Model):
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
     uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
+    file_mime_encoding = models.CharField(max_length=64, default='', editable=False)
     #FAT filename can be up to 255 using LFN
     file_filename = models.CharField(max_length=64, default='', editable=False)
     file_extension = models.CharField(max_length=16, default='', editable=False)
@@ -77,6 +76,21 @@ class Document(models.Model):
       
     def get_fullname(self):
         return os.extsep.join([self.file_filename, self.file_extension])
+        
+    def update_mimetype(self):
+        try:
+            mime = magic.Magic(mime=True)
+            self.file_mimetype = mime.from_buffer(self.read())
+            mime_encoding = magic.Magic(mime_encoding=True)
+            self.file_mime_encoding = mime_encoding.from_buffer(self.read())
+        except:
+            self.file_mimetype = u'unknown'
+            self.file_mime_encoding = u'unknown'
+        finally:
+            self.save()
+      
+    def read(self, count=1024):
+        return self.file.storage.open(self.file.url).read(count)
         
     @models.permalink
     def get_absolute_url(self):

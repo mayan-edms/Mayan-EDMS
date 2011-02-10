@@ -36,6 +36,7 @@ Executables:
 
 * ImageMagick - Convert, Edit, Or Compose Bitmap Images
 * tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
+* libmagic
 
 License
 -------
