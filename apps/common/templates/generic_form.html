@@ -49,7 +49,9 @@
     {% with subtemplate.hide_object as hide_object %}
     {% with subtemplate.main_object as main_object %}
     {% with subtemplate.hide_link as hide_link %}
+    {% with subtemplate.hide_header as hide_header %}
         {% include subtemplate.name %}
+    {% endwith %}
     {% endwith %}
     {% endwith %}
     {% endwith %}

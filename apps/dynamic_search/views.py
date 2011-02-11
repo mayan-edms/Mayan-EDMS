@@ -76,6 +76,7 @@ def search(request):
         'form':form,
         'object_list':object_list,
         'form_title':_(u'Search'),
+        'hide_header':True,
         'title':_(u'results with: %s') % query_string
     }
 
