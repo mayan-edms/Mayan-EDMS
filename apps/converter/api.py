@@ -8,7 +8,7 @@ from documents.utils import from_descriptor_to_tempfile
 
 from converter.conf.settings import CONVERT_PATH
 from converter.conf.settings import OCR_OPTIONS
-from converter.conf.settings import UNOCONV_PATH
+#from converter.conf.settings import UNOCONV_PATH
 
 from converter import TEMPORARY_DIRECTORY
 
@@ -86,6 +86,7 @@ def convert(input_filepath, size, cache=True, page=0, format='jpg', mimetype=Non
     output_filepath = create_image_cache_filename(input_filepath, size, page, format)
     if os.path.exists(output_filepath):
         return output_filepath
+    '''
     if extension:
         if extension.lower() == 'ods':
             unoconv_output = '%s_pdf' % output_filepath
@@ -95,6 +96,7 @@ def convert(input_filepath, size, cache=True, page=0, format='jpg', mimetype=Non
                 raise ConvertError(status, errors)            
             cleanup(input_filepath)
             input_filepath = unoconv_output
+    '''
     #TODO: Check mimetype and use corresponding utility
     try:
         input_arg = '%s[%s]' % (input_filepath, page)
