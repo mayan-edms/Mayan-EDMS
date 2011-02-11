@@ -25,20 +25,24 @@ document_download = {'text':_('download'), 'view':'document_download', 'args':'o
 
 staging_file_preview = {'text':_('preview'), 'class':'fancybox', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 
-register_links(Document, [document_edit, document_edit_metadata, document_delete, document_download])
+register_links(Document, [document_edit, document_edit_metadata, document_delete, document_download], menu_name='sidebar')
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling, document_view], menu_name='sidebar')
 register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
 
 register_links(StagingFile, [staging_file_preview])
 
 register_model_list_columns(Document, [
-                {'name':_(u'mimetype'), 'attribute':'file_mimetype'},
-                {'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
-                {'name':_(u'file size'), 'attribute':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+                #{'name':_(u'mimetype'), 'attribute':'file_mimetype'},
+                #{'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
+                #{'name':_(u'file size'), 'attribute':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
                 {'name':_(u'thumbnail'), 'attribute': 
                     lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
                         reverse('document_thumbnail', args=[x.id]))
                 },
+                {'name':_(u'metadata'), 'attribute': 
+                    lambda x: ', '.join(['%s - %s' %(metadata.metadata_type, metadata.value) for metadata in x.documentmetadata_set.all()])
+                },
+                
                 ])
 
 register_menu([
@@ -47,3 +51,10 @@ register_menu([
     ],'famfam':'page','position':4}])
 
 TEMPORARY_DIRECTORY = documents_settings.TEMPORARY_DIRECTORY if documents_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
+
+    #','.join([metadata for metadata in document.documentmetadata_set.all()])
+    #    initial.append({
+    #        'metadata_type':metadata.metadata_type,
+    #        'document_type':document.document_type,
+    #        'value':metadata.value,
+    #    })    

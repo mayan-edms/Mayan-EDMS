@@ -7,6 +7,7 @@ from django.db.models import Q
 
 from api import search_list
 from forms import SearchForm
+from conf.settings import SHOW_OBJECT_TYPE
 
 #original code from:
 #http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/
@@ -68,14 +69,19 @@ def search(request):
                     object_list.append(result)
     else:
         form = SearchForm()
+    
+    context = {
+        'query_string':query_string, 
+        'found_entries':found_entries,
+        'form':form,
+        'object_list':object_list,
+        'form_title':_(u'Search'),
+        'title':_(u'results with: %s') % query_string
+    }
 
-    return render_to_response('search_results.html', {
-                            'query_string':query_string, 
-                            'found_entries':found_entries,
-                            'form':form,
-                            'object_list':object_list,
-                            'form_title':_(u'Search'),
-                            'extra_columns':[{'name':_(u'type'), 'attribute':lambda x:x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}],
-                            'title':_(u'results with: %s') % query_string
-                            },
+    if SHOW_OBJECT_TYPE:
+        context.update({'extra_columns':
+            [{'name':_(u'type'), 'attribute':lambda x:x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]})
+        
+    return render_to_response('search_results.html', context,
                           context_instance=RequestContext(request))

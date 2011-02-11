@@ -21,6 +21,7 @@
 * Show abbreviated uuid in document list                               - DEFERRED, Impractical
 * Update symlinks when document or metadata changed                    - DONE
 * Cache thumbnails and preview by document hash not by uuid            - DONE
+* Show document metadata in document list                              - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -43,7 +44,6 @@
 * Roles
 * Workflows
 * Scheduled maintenance (cleanup, deferred OCR's)
-* Show document metadata in document list
 * Add tags to documents
 * Field for document language or autodetect
 * Recognize multi-page documents

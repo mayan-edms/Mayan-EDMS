@@ -230,8 +230,7 @@ class MetadataType(models.Model):
     #TODO: datatype?
     
     def __unicode__(self):
-        #return '%s - %s' % (self.name, self.title if self.title else self.name)
-        return self.name
+        return self.title if self.title else self.name
         
     class Meta:
         verbose_name = _(u'metadata type')

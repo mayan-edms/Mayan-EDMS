@@ -202,6 +202,8 @@ LOGIN_EXEMPT_URLS = (
 #CONVERTER_CONVERT_PATH = u'/usr/bin/convert'
 #CONVERTER_OCR_OPTIONS = u'-colorspace Gray -depth 8 -resample 200x200'
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
+# Override
+SEARCH_SHOW_OBJECT_TYPE = False
 #======== End of configuration options =======
 
 try:
