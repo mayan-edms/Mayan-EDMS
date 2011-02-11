@@ -20,7 +20,7 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/thumbnail/$', 'get_document_image', {'size':THUMBNAIL_SIZE}, 'document_thumbnail'),
     url(r'^document/(?P<document_id>\d+)/display/$', 'get_document_image', {'size':DISPLAY_SIZE}, 'document_display'),
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
-    url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':True}, 'document_create_sibling'),
+    url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':False}, 'document_create_sibling'),
     
     url(r'^staging_file/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
 )
