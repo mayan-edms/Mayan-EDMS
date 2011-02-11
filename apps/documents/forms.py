@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
+from django.forms.formsets import formset_factory
 
 from staging import StagingFile
 
@@ -17,6 +18,8 @@ from models import Document, DocumentType, DocumentTypeMetadataType
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
+
+
 
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
@@ -139,39 +142,48 @@ class MetadataForm(forms.Form):
 
 
 class DocumentCreateWizard(BoundFormWizard):
+    def _generate_metadata_initial_values(self):
+        initial=[]
+        for item in DocumentTypeMetadataType.objects.filter(document_type=self.document_type):
+            initial.append({
+                'metadata_type':item.metadata_type,
+                'document_type':self.document_type,
+            })
+        return initial
+    
     def __init__(self, *args, **kwargs):
         self.multiple = kwargs.pop('multiple', True)
+        self.step_titles = kwargs.pop('step_titles', [
+            _(u'step 1 of 2: Document type'),
+            _(u'step 2 of 2: Document metadata'),
+            ])
+        self.document_type = kwargs.pop('document_type', None)
+
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)
+
+        if self.document_type:
+            self.initial = {0:self._generate_metadata_initial_values()}
         
-    
     def render_template(self, request, form, previous_fields, step, context=None):
         context = {'step_title':self.extra_context['step_titles'][step]}
         return super(DocumentCreateWizard, self).render_template(request, form, previous_fields, step, context)
 
     def parse_params(self, request, *args, **kwargs):
-        self.extra_context={'step_titles':[
-            _(u'step 1 of 2: Document type'),
-            _(u'step 2 of 2: Document metadata'),
-            ]}
+        self.extra_context={'step_titles':self.step_titles}
             
     def process_step(self, request, form, step):
-        if step == 0:
+        #if step == 0:
+        if isinstance(form, DocumentTypeSelectForm):
             self.document_type = form.cleaned_data['document_type']
+            self.initial = {1:self._generate_metadata_initial_values()}
 
-            initial=[]
-            for item in DocumentTypeMetadataType.objects.filter(document_type=self.document_type):
-                initial.append({
-                    'metadata_type':item.metadata_type,
-                    'document_type':self.document_type,
-                })
-            self.initial = {1:initial}
-        if step == 1:
+        #if step == 1:
+        if isinstance(form, MetadataFormSet):
             self.urldata = []
             for id, metadata in enumerate(form.cleaned_data):
                 if metadata['value']:
                     self.urldata.append(('metadata%s_id' % id,metadata['id']))   
                     self.urldata.append(('metadata%s_value' % id,metadata['value']))
-
  
     def get_template(self, step):
         return 'generic_wizard.html'
@@ -184,3 +196,6 @@ class DocumentCreateWizard(BoundFormWizard):
 
         url = reverse(view, args=[self.document_type.id])
         return HttpResponseRedirect('%s?%s' % (url, urlencode(self.urldata)))
+
+
+MetadataFormSet = formset_factory(MetadataForm, extra=0)

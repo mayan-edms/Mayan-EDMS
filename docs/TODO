@@ -23,11 +23,11 @@
 * Cache thumbnails and preview by document hash not by uuid            - DONE
 * Show document metadata in document list                              - DONE
 * Add css grids                                                        - DONE
+* If theres only one document type on db skip step 1 of wizard         - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
 * Check duplicated files using checksum
-* If theres only one document type on db skip step 1 of wizard
 * Show last 5 recent metadata setups for easy switch
 * Change to model signals
 * Allow document type to be changed in document edit view
@@ -53,5 +53,8 @@
 * Divide navigation links search by object and by view
 * Add show_summary method to model to display as results of a search
 * Add unpaper to pre OCR document cleanup
+* Support distributed OCR queues (RabbitMQ & Celery?)
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Group documents by metadata
+* Support spreadsheets, wordprocessing docs using openoffice in server mode
+* WebDAV support

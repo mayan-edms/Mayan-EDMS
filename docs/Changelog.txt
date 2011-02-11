@@ -1,3 +1,4 @@
-* Added python-magic for smarter MIME type detection (https://github.com/ahupp/python-magic)
-* Added a new Document model field: file_mime_encoding
-* Show only document metadata in document list view
+* Added python-magic for smarter MIME type detection (https://github.com/ahupp/python-magic).
+* Added a new Document model field: file_mime_encoding.
+* Show only document metadata in document list view.
+* If one document type exists, the create document wizard skips the first step.

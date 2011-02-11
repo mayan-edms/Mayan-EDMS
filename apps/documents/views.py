@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
-from django.forms.formsets import formset_factory
+#from django.forms.formsets import formset_factory
 from django.core.files.base import File
 from django.conf import settings
 from django.utils.http import urlencode
@@ -23,7 +23,8 @@ from utils import from_descriptor_to_tempfile
 from models import Document, DocumentMetadata, DocumentType, MetadataType
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
-        StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm
+        StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
+        MetadataFormSet
     
 from staging import StagingFile
 
@@ -45,8 +46,16 @@ def document_list(request):
     )
 
 def document_create(request, multiple=True):
-    MetadataFormSet = formset_factory(MetadataForm, extra=0)
-    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataFormSet], multiple=multiple)
+    if DocumentType.objects.all().count() == 1:
+        wizard = DocumentCreateWizard(
+            document_type=DocumentType.objects.all()[0],
+            form_list=[MetadataFormSet], multiple=multiple,
+            step_titles = [
+            _(u'document metadata'),
+            ])
+    else:
+        wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataFormSet], multiple=multiple)
+        
     return wizard(request)
 
 def document_create_sibling(request, document_id, multiple=True):
@@ -329,7 +338,6 @@ def document_edit(request, document_id):
 
 def document_edit_metadata(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
-    MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
     initial=[]
     for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
