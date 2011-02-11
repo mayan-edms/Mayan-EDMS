@@ -3,7 +3,7 @@ Mayan
 
 Django based document manager with custom metadata indexing and file serving integration.
  
-![screenshot](http://img84.imageshack.us/img84/4893/screenshot3qo.png)
+![screenshot](http://img7.imageshack.us/img7/8885/fullscreenshota.png)
 
 
 Features
