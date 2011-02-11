@@ -1,5 +1,3 @@
-from urllib import unquote_plus
-
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -34,6 +32,8 @@ from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
+
+from utils import save_metadata, save_metadata_list, decode_metadata_from_url
 
 def document_list(request):
     return object_list(
@@ -75,42 +75,6 @@ def document_create_sibling(request, document_id, multiple=True):
     return HttpResponseRedirect('%s?%s' % (url, urlencode(urldata)))
 
 
-def _decode_metadata_from_url(url_dict):
-    metadata_dict = {
-        'id':{},
-        'value':{}
-    }
-    metadata_list = []
-    #Match out of order metadata_type ids with metadata values from request
-    for key, value in url_dict.items():
-        if 'metadata' in key:
-            index, element = key[8:].split('_')
-            metadata_dict[element][index] = value
-        
-    #Convert the nested dictionary into a list of id+values dictionaries
-    for order, id in metadata_dict['id'].items():
-        if order in metadata_dict['value'].keys():
-            metadata_list.append({'id':id, 'value':metadata_dict['value'][order]})
-
-    return metadata_list
-    
-    
-def _save_metadata_list(metadata_list, document):
-    for item in metadata_list:
-        _save_metadata(item, document)
-        
-        
-def _save_metadata(metadata_dict, document):
-    #Use matched metadata now to create document metadata
-    document_metadata, created = DocumentMetadata.objects.get_or_create(
-        document=document,
-        metadata_type=get_object_or_404(MetadataType, pk=metadata_dict['id']),
-    )
-    #Handle 'plus sign as space' in the url
-    document_metadata.value=unquote_plus(metadata_dict['value'])
-    document_metadata.save()
-
-
 def upload_document_with_type(request, document_type_id, multiple=True):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     local_form = DocumentForm(prefix='local', initial={'document_type':document_type})
@@ -131,7 +95,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         instance.file_filename = local_form.cleaned_data['document_type_available_filenames'].filename
                         instance.save()
             
-                _save_metadata_list(_decode_metadata_from_url(request.GET), instance)
+                save_metadata_list(decode_metadata_from_url(request.GET), instance)
                 messages.success(request, _(u'Document uploaded successfully.'))
                 try:
                     instance.create_fs_links()
@@ -167,7 +131,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                                 document.file_filename = staging_form.cleaned_data['document_type_available_filenames'].filename
                                 document.save()
                                                 
-                        _save_metadata_list(_decode_metadata_from_url(request.GET), document)
+                        save_metadata_list(decode_metadata_from_url(request.GET), document)
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
                         try:
                             document.create_fs_links()
@@ -315,16 +279,16 @@ def document_edit(request, document_id):
                 
             document.save()
             
-            messages.success(request, _(u'Document:%s edited successfully.') % document)
+            messages.success(request, _(u'Document %s edited successfully.') % document)
             
             try:
                 document.create_fs_links()
                 messages.success(request, _(u'Document filesystem links updated successfully.'))                
             except Exception, e:
                 messages.error(request, e)
-                return HttpResponseRedirect(reverse('document_list'))
+                return HttpResponseRedirect(document.get_absolute_url())
                 
-            return HttpResponseRedirect(reverse('document_list'))
+            return HttpResponseRedirect(document.get_absolute_url())
     else:
         form = DocumentForm_edit(instance=document, initial={
             'new_filename':document.file_filename, 'document_type':document.document_type})
@@ -357,23 +321,23 @@ def document_edit_metadata(request, document_id):
     if request.method == 'POST':
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
-            _save_metadata_list(formset.cleaned_data, document)
+            save_metadata_list(formset.cleaned_data, document)
             try:
                 document.delete_fs_links()
             except Exception, e:
                 messages.error(request, e)
                 return HttpResponseRedirect(reverse('document_list'))
            
-            messages.success(request, _(u'Document metadata edited successfully.'))
+            messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
             
             try:
                 document.create_fs_links()
                 messages.success(request, _(u'Document filesystem links updated successfully.'))                
             except Exception, e:
                 messages.error(request, e)
-                return HttpResponseRedirect(reverse('document_list'))
+                return HttpResponseRedirect(document.get_absolute_url())
                 
-            return HttpResponseRedirect(reverse('document_list'))
+            return HttpResponseRedirect(document.get_absolute_url())
         
         
     return render_to_response('generic_form.html', {
