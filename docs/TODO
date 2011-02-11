@@ -58,3 +58,4 @@
 * Group documents by metadata
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
+* Handle ziped or rar archives
