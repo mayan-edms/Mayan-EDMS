@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 {% block title %} :: {% with "true" as striptags %}{% include "calculate_form_title.html" %}{% endwith %}{% endblock %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ MEDIA_URL }}packages/nathansmith-960-Grid-System-30906f2/code/css/960.css" type="text/css" media="screen" />
-{% endblock %}
 {% block content %}
 <div class="container_12">
     {% if form %}

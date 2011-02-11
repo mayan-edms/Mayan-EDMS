@@ -2,3 +2,4 @@
 * Added a new Document model field: file_mime_encoding.
 * Show only document metadata in document list view.
 * If one document type exists, the create document wizard skips the first step.
+* Changed to a liquid css grid
