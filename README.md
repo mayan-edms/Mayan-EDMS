@@ -1,7 +1,7 @@
 Mayan
 =============
 
-Django based document manager with custom metadata indexing and file serving integration.
+Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities.
  
 ![screenshot](http://img7.imageshack.us/img7/8885/fullscreenshota.png)
 
