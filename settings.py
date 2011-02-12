@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'filetransfers',
     'converter',
     'ocr',
+    'permissions',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

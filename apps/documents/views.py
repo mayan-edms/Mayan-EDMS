@@ -1,16 +1,16 @@
 from django.utils.translation import ugettext as _
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
-#from django.forms.formsets import formset_factory
 from django.core.files.base import File
 from django.conf import settings
 from django.utils.http import urlencode
 from django.template.defaultfilters import slugify
+
 
 from filetransfers.api import serve_file
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT
@@ -35,6 +35,13 @@ from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
 
+from documents import PERMISSION_DOCUMENT_CREATE, \
+    PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
+    PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
+    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_OCR, \
+    PERMISSION_DOCUMENT_DOWNLOAD
+   
+    
 from utils import save_metadata, save_metadata_list, decode_metadata_from_url
 
 def document_list(request):
@@ -48,6 +55,10 @@ def document_list(request):
     )
 
 def document_create(request, multiple=True):
+    permissions = [PERMISSION_DOCUMENT_CREATE]
+    if not check_permissions(main_object, request.user, permissions):
+        raise Http404
+
     if DocumentType.objects.all().count() == 1:
         wizard = DocumentCreateWizard(
             document_type=DocumentType.objects.all()[0],

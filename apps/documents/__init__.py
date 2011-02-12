@@ -3,7 +3,8 @@ import tempfile
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
-from common.api import register_links, register_menu, register_model_list_columns
+from common.api import register_links, register_menu, \
+    register_model_list_columns, register_permissions
 from common.utils import pretty_size
 
 from models import Document
@@ -33,9 +34,6 @@ register_links(['document_list', 'document_create', 'document_create_multiple', 
 register_links(StagingFile, [staging_file_preview, staging_file_delete])
 
 register_model_list_columns(Document, [
-    #{'name':_(u'mimetype'), 'attribute':'file_mimetype'},
-    #{'name':_(u'added'), 'attribute':lambda x: x.date_added.date()},
-    #{'name':_(u'file size'), 'attribute':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
     {'name':_(u'thumbnail'), 'attribute': 
         lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
             reverse('document_thumbnail', args=[x.id]))
@@ -53,9 +51,20 @@ register_menu([
 
 TEMPORARY_DIRECTORY = documents_settings.TEMPORARY_DIRECTORY if documents_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
 
-    #','.join([metadata for metadata in document.documentmetadata_set.all()])
-    #    initial.append({
-    #        'metadata_type':metadata.metadata_type,
-    #        'document_type':document.document_type,
-    #        'value':metadata.value,
-    #    })    
+PERMISSION_DOCUMENT_CREATE = 'document_create'
+PERMISSION_DOCUMENT_PROPERTIES_EDIT = 'document_properties_edit'
+PERMISSION_DOCUMENT_METADATA_EDIT = 'document_metadata_edit'
+PERMISSION_DOCUMENT_VIEW = 'document_view'
+PERMISSION_DOCUMENT_DELETE = 'document_delete'
+PERMISSION_DOCUMENT_OCR = 'document_ocr'
+PERMISSION_DOCUMENT_DOWNLOAD = 'document_download'
+
+register_permissions('documents', [
+    {'name':PERMISSION_DOCUMENT_CREATE, 'label':_(u'Create document')},
+    {'name':PERMISSION_DOCUMENT_PROPERTIES_EDIT, 'label':_(u'Edit document properties')},
+    {'name':PERMISSION_DOCUMENT_METADATA_EDIT, 'label':_(u'Edit document metadata')},
+    {'name':PERMISSION_DOCUMENT_VIEW, 'label':_(u'View document')},
+    {'name':PERMISSION_DOCUMENT_DELETE, 'label':_(u'Delete document')},
+    {'name':PERMISSION_DOCUMENT_OCR, 'label':_(u'Submit document for OCR')},
+    {'name':PERMISSION_DOCUMENT_DOWNLOAD, 'label':_(u'Download document')},
+])
