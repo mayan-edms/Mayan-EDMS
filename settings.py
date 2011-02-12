@@ -223,19 +223,22 @@ if DEVELOPMENT:
         import rosetta
         INSTALLED_APPS += ('rosetta',)
     except ImportError:
-        print 'rosetta is not installed'
+        #print 'rosetta is not installed'
+        pass
 
     try:
         import django_extensions
         INSTALLED_APPS +=('django_extensions',)
     except ImportError:
-        print 'django_extensions is not installed'
+        #print 'django_extensions is not installed'
+        pass
 
     try:
         import debug_toolbar
         #INSTALLED_APPS.append('debug_toolbar')
     except ImportError:
-        print 'debug_toolbar is not installed'
+        #print 'debug_toolbar is not installed'
+        pass
 
     TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
 
@@ -245,4 +248,3 @@ if DEVELOPMENT:
         DEBUG_TOOLBAR_CONFIG={
             'INTERCEPT_REDIRECTS' : False,
         }
-
