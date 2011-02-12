@@ -20,7 +20,7 @@ def submit_document(request, document_id):
     try:
         result = ocr_document(document)
     except Exception, e:
-        messages.error(request, e.message)
+        messages.error(request, e)
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
    
     messages.success(request, _(u'Document OCR was successful.'))
