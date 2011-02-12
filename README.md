@@ -19,7 +19,7 @@ Features
 * User defined document checksum algorithm
 * Previews for a great deal of image formats, including PDF
 * Document OCR and searching
-
+* Group documents by metadata automatically
 
 Requirements
 ---

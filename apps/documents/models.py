@@ -10,7 +10,8 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
- 
+from django.db.models import Q
+
 from dynamic_search.api import register
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
@@ -110,6 +111,36 @@ class Document(models.Model):
         #topics/db/queries.html#topics-db-queries-delete
         self.delete_fs_links()
         super(Document, self).delete(*args, **kwargs)
+
+    def get_metadata_groups(self):
+        errors = []
+        metadata_groups = {}
+        if MetadataGroup.objects.all().count():
+            metadata_dict = {}
+            for document_metadata in self.documentmetadata_set.all():
+                metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
+                
+            for group in MetadataGroup.objects.filter((Q(document_type=self.document_type) | Q(document_type=None)) & Q(enabled=True)):
+                total_query = Q()
+                for item in group.metadatagroupitem_set.filter(enabled=True):
+                    try:
+                        value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
+                    except Exception, e:
+                        errors.append(e)
+                        value_query = Q()
+                        
+                    if item.negated:
+                        query = (Q(metadata_type__id=item.metadata_type.id) & ~value_query)
+                    else:
+                        query = (Q(metadata_type__id=item.metadata_type.id) & value_query)
+                        
+                    if item.inclusion == INCLUSION_AND:
+                        total_query &= query
+                    elif item.inclusion == INCLUSION_OR:
+                        total_query |= query
+                document_id_list = DocumentMetadata.objects.filter(query).values_list('document', flat=True)
+                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list) & ~Q(id=self.id)) or []
+        return metadata_groups, errors
         
     def create_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
@@ -326,6 +357,7 @@ class MetadataGroup(models.Model):
         verbose_name=_(u'document type'), help_text=_(u'If left blank, all document types will be matched.'))
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
     label = models.CharField(max_length=32, verbose_name=_(u'label'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     
     def __unicode__(self):
         return self.label if self.label else self.name
@@ -333,7 +365,6 @@ class MetadataGroup(models.Model):
     class Meta:
         verbose_name = _(u'metadata document group')
         verbose_name_plural = _(u'metadata document groups')    
-
 
 
 INCLUSION_AND = '&'
@@ -344,24 +375,36 @@ INCLUSION_CHOICES = (
     (INCLUSION_OR, _(u'or')),
 )
 
-OPERATOR_EQUAL = ' '
-OPERATOR_IS_NOT_EQUAL = '~'
-
 OPERATOR_CHOCIES = (
-    (OPERATOR_EQUAL, _(u'is equal')),
-    (OPERATOR_IS_NOT_EQUAL, _(u'is not equal')),
+    ('exact', _(u'is equal')),
+    ('iexact', _(u'is equal (case insensitive)')),
+    ('contains', _(u'contains')),
+    ('icontains', _(u'contains (case insensitive)')),
+    ('in', _(u'is in')),
+    ('gt', _(u'is greater than')),
+    ('gte', _(u'is greater than or equal')),
+    ('lt', _(u'is less than')),
+    ('lte', _(u'is less than or equal')),
+    ('startswith', _(u'starts with')),
+    ('istartswith', _(u'starts with (case insensitive)')),
+    ('endswith', _(u'ends with')),
+    ('iendswith', _(u'ends with (case insensitive)')),
+    ('regex', _(u'is in regular expression')),
+    ('iregex', _(u'is in regular expression (case insensitive)')),
 )
     
 class MetadataGroupItem(models.Model):
     metadata_group = models.ForeignKey(MetadataGroup, verbose_name=_(u'metadata group'))
-    inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES)
+    inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'), help_text=_(u'This represents the metadata of all other documents.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOCIES)
-    expression = models.CharField(max_length=64,
+    expression = models.CharField(max_length=128,
         verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current seleted document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
+    negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     
     def __unicode__(self):
-        return '%s %s %s %s' % (self.get_inclusion_display(), self.metadata_type, self.get_operator_display(), self.expression)
+        return '[%s] %s %s %s %s %s' % ('x' if self.enabled else ' ', self.get_inclusion_display(), self.metadata_type, _(u'not') if self.negated else '', self.get_operator_display(), self.expression)
 
     class Meta:
         verbose_name = _(u'metadata group item')

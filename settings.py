@@ -191,6 +191,10 @@ LOGIN_EXEMPT_URLS = (
 #DOCUMENTS_THUMBNAIL_SIZE = '50x50'
 #DOCUMENTS_DISPLAY_SIZE = '1024x768'
 
+# Groups
+#DOCUMENTS_GROUP_MAX_RESULTS = 20
+#DOCUMENTS_GROUP_SHOW_EMPTY = True
+
 # Serving
 #DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE = True
 #DOCUMENTS_FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
@@ -202,6 +206,7 @@ LOGIN_EXEMPT_URLS = (
 #CONVERTER_CONVERT_PATH = u'/usr/bin/convert'
 #CONVERTER_OCR_OPTIONS = u'-colorspace Gray -depth 8 -resample 200x200'
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
+
 # Override
 SEARCH_SHOW_OBJECT_TYPE = False
 #======== End of configuration options =======

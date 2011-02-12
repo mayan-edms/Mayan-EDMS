@@ -25,6 +25,7 @@
 * Add css grids                                                        - DONE
 * If theres only one document type on db skip step 1 of wizard         - DONE
 * Be able to delete staging file                                       - DONE
+* Group documents by metadata                                          - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -56,7 +57,6 @@
 * Add unpaper to pre OCR document cleanup
 * Support distributed OCR queues (RabbitMQ & Celery?)
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
-* Group documents by metadata
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
 * Handle ziped or rar archives

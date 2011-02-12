@@ -32,6 +32,8 @@ from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
+from documents.conf.settings import GROUP_MAX_RESULTS
+from documents.conf.settings import GROUP_SHOW_EMPTY
 
 from utils import save_metadata, save_metadata_list, decode_metadata_from_url
 
@@ -192,12 +194,6 @@ def upload_document_with_type(request, document_type_id, multiple=True):
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
         
-from django.db.models import Q
-        
-from models import MetadataGroup
-
-from models import INCLUSION_AND, INCLUSION_OR, OPERATOR_EQUAL, OPERATOR_IS_NOT_EQUAL
-
 def document_view(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     form = DocumentForm_view(instance=document, extra_fields=[
@@ -213,43 +209,12 @@ def document_view(request, document_id):
         {'label':_(u'UUID'), 'field':'uuid'},
     ])
 
-    metadata_groups = {}
-    if MetadataGroup.objects.all().count():
-        metadata_dict = {}
-        for document_metadata in document.documentmetadata_set.all():
-            metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
-            
-        for group in MetadataGroup.objects.filter(Q(document_type=document.document_type) | Q(document_type=None)):
-            total_query = None
-            for count, item in enumerate(group.metadatagroupitem_set.all()):
-                try:
-                    expression_result = eval(item.expression, metadata_dict)
-                
-                    if item.operator == OPERATOR_EQUAL:
-                        value_query = Q(documentmetadata__value=expression_result)
-                    elif item.operator == OPERATOR_IS_NOT_EQUAL:
-                        value_query = ~Q(documentmetadata__value=expression_result)
-                        
-                    query = (Q(documentmetadata__metadata_type__id=item.metadata_type.id) & value_query)
-                    if count == 0:
-                        total_query = query
-                    else:
-                        if item.inclusion == INCLUSION_AND:
-                            total_query &= query
-                        elif item.inclusion == INCLUSION_AND:
-                            total_query |= query
-                except Exception, e:
-                    if request.user.is_staff:
-                        messages.warning(request, _(u'Metadata group query error: %s' % e))
-                    else:
-                        pass
-                        
-                    
-            if total_query:
-                print 'total_query',total_query
-                metadata_groups[group] = Document.objects.filter(total_query)
-                print 'documents',Document.objects.filter(total_query)
-            
+        
+    metadata_groups, errors = document.get_metadata_groups()
+    if request.user.is_staff and errors:
+        for error in errors:
+            messages.warning(request, _(u'Metadata group query error: %s' % error))
+
     preview_form = DocumentPreviewForm(document=document)
     form_list = [
         {
@@ -284,13 +249,21 @@ def document_view(request, document_id):
 
     sidebar_groups = []
     for group, data in metadata_groups.items():
-        sidebar_groups.append({
-            'title':group.label,
-            'name':'generic_list_subtemplate.html',
-            'object_list':data,
-            'hide_columns':True,
-            'hide_header':True,
-            })
+        if len(data) or GROUP_SHOW_EMPTY:
+            if len(data):
+                if len(data) > GROUP_MAX_RESULTS:
+                    total_string = '(%s out of %s)' % (GROUP_MAX_RESULTS, len(data))
+                else:
+                    total_string = '(%s)' % len(data)
+            else:
+                total_string = ''
+            sidebar_groups.append({
+                'title':'%s %s' % (group.label, total_string),
+                'name':'generic_list_subtemplate.html',
+                'object_list':data[:GROUP_MAX_RESULTS],
+                'hide_columns':True,
+                'hide_header':True,
+                })
             
     return render_to_response('generic_detail.html', {
         'form_list':form_list,
