@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load i18n %}
-{% block title %} :: {% trans 'Confirm' %} {{ title }}{% endblock %}
+{% block title %} :: {% trans "Confirm" %} {{ title }}{% endblock %}
 
 {% block sidebar %}
     {% for subtemplate in subtemplates %}
@@ -12,37 +12,36 @@
     <div id="box">
       <div class="block" id="block-login">
         {% if delete_view %}      
-            <h2>{% trans 'Confirm delete' %}</h2>
+            <h2>{% trans "Confirm delete" %}</h2>
         {% else %}
-            <h2>{% trans 'Confirm' %}</h2>
+            <h2>{% trans "Confirm" %}</h2>
         {% endif %}
         <div class="content login">
           <form action="" method="post" class="form login">{% csrf_token %}
             {% if next %}
-                <input name='next' type='hidden' value='{{ next }}' />
+                <input name="next" type="hidden" value="{{ next }}" />
             {% endif %}          
 
-            {% if delete_view %}
-                {% if object_name %}
-                    <h3>{% blocktrans %}Are you sure you wish to delete {{ object_name }}: {{ object }}?{% endblocktrans %}</h3>
-                {% else %}
-                    <h3>{% blocktrans %}Are you sure you wish to delete: {{ object }}?{% endblocktrans %}</h3>
-                {% endif %}
-            {% else %}
+            {% if title %}
                 <h3>{{ title }}</h3>
+            {% else %}
+                {% if delete_view %}
+                    {% if object_name %}
+                        <h3>{% blocktrans %}Are you sure you wish to delete {{ object_name }}: {{ object }}?{% endblocktrans %}</h3>
+                    {% else %}
+                        <h3>{% blocktrans %}Are you sure you wish to delete: {{ object }}?{% endblocktrans %}</h3>
+                    {% endif %}
+                {% endif %}
             {% endif %}
             <h4>{{ message }}</h4>
 
             <div class="group navform wat-cf">        
               <button class="button" type="submit">
-                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% trans 'Yes' %}" /> {% trans 'Yes' %}
+                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% trans 'Yes' %}" /> {% trans "Yes" %}
               </button>
-              {# TODO: Fix back button #}
-              {% comment %}
               <a href="#header" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}' class="button">
-                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/cross.png"  alt="{% trans 'No' %}"/> {% trans 'No' %}
+                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/cross.png"  alt="{% trans 'No' %}"/> {% trans "No" %}
               </a>
-              {% endcomment %}
             </div>
           </form>
         </div>

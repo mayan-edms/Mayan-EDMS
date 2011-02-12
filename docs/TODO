@@ -24,6 +24,7 @@
 * Show document metadata in document list                              - DONE
 * Add css grids                                                        - DONE
 * If theres only one document type on db skip step 1 of wizard         - DONE
+* Be able to delete staging file                                       - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file

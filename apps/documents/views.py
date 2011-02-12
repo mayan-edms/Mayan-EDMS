@@ -387,4 +387,24 @@ def staging_file_preview(request, staging_file_id):
         return serve_file(request, File(file=open(output_file, 'r')))
     except Exception, e:
         return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))        
+
      
+def staging_file_delete(request, staging_file_id):
+    staging_file = StagingFile.get(staging_file_id)
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            staging_file.delete()
+            messages.success(request, _(u'Staging file delete successfully.'))
+        except Exception, e:
+            messages.error(request, e)
+        return HttpResponseRedirect(next)
+        
+    return render_to_response('generic_confirm.html', {
+        'delete_view':True,
+        'object':staging_file,
+        'next':next,
+        'previous':previous,
+    }, context_instance=RequestContext(request))
