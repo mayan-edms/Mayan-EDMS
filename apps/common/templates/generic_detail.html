@@ -17,6 +17,28 @@
     {% for subtemplate in sidebar_subtemplates %}
         {% include subtemplate %}
     {% endfor %}
+
+    {% for subtemplate in sidebar_subtemplates_dict %}
+    {% with subtemplate.title as title %}
+    {% with subtemplate.object_list as object_list %}
+    {% with subtemplate.extra_columns as extra_columns %}
+    {% with subtemplate.hide_object as hide_object %}
+    {% with subtemplate.main_object as main_object %}
+    {% with subtemplate.hide_link as hide_link %}
+    {% with subtemplate.hide_header as hide_header %}
+    {% with subtemplate.hide_columns as hide_columns %}
+    {% with "true" as side_bar %}
+        {% include subtemplate.name %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endfor %}    
 {% endblock %}
 
 {% block stylesheets %}

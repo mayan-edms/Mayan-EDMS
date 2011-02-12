@@ -54,10 +54,11 @@
                     <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
                 {% endif %}
             {% endif %}
+            {% if not hide_columns %}
                 {% for column in object|get_model_list_columns %}
                     <td>{{ object|object_property:column.attribute|safe }}</td>
                 {% endfor %}
-            
+            {% endif %}
                 {% for column in extra_columns %}
                     <td>{{ object|object_property:column.attribute|safe }}</td>
                 {% endfor %}

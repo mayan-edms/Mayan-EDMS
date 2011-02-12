@@ -192,7 +192,12 @@ def upload_document_with_type(request, document_type_id, multiple=True):
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
         
+from django.db.models import Q
         
+from models import MetadataGroup
+
+from models import INCLUSION_AND, INCLUSION_OR, OPERATOR_EQUAL, OPERATOR_IS_NOT_EQUAL
+
 def document_view(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     form = DocumentForm_view(instance=document, extra_fields=[
@@ -207,7 +212,44 @@ def document_view(request, document_id):
         {'label':_(u'Checksum'), 'field':'checksum'},
         {'label':_(u'UUID'), 'field':'uuid'},
     ])
-    
+
+    metadata_groups = {}
+    if MetadataGroup.objects.all().count():
+        metadata_dict = {}
+        for document_metadata in document.documentmetadata_set.all():
+            metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
+            
+        for group in MetadataGroup.objects.filter(Q(document_type=document.document_type) | Q(document_type=None)):
+            total_query = None
+            for count, item in enumerate(group.metadatagroupitem_set.all()):
+                try:
+                    expression_result = eval(item.expression, metadata_dict)
+                
+                    if item.operator == OPERATOR_EQUAL:
+                        value_query = Q(documentmetadata__value=expression_result)
+                    elif item.operator == OPERATOR_IS_NOT_EQUAL:
+                        value_query = ~Q(documentmetadata__value=expression_result)
+                        
+                    query = (Q(documentmetadata__metadata_type__id=item.metadata_type.id) & value_query)
+                    if count == 0:
+                        total_query = query
+                    else:
+                        if item.inclusion == INCLUSION_AND:
+                            total_query &= query
+                        elif item.inclusion == INCLUSION_AND:
+                            total_query |= query
+                except Exception, e:
+                    if request.user.is_staff:
+                        messages.warning(request, _(u'Metadata group query error: %s' % e))
+                    else:
+                        pass
+                        
+                    
+            if total_query:
+                print 'total_query',total_query
+                metadata_groups[group] = Document.objects.filter(total_query)
+                print 'documents',Document.objects.filter(total_query)
+            
     preview_form = DocumentPreviewForm(document=document)
     form_list = [
         {
@@ -239,11 +281,22 @@ def document_view(request, document_id):
             'title':_(u'index links'),
             'object_list':document.documentmetadataindex_set.all(),
             'hide_link':True})
-    
+
+    sidebar_groups = []
+    for group, data in metadata_groups.items():
+        sidebar_groups.append({
+            'title':group.label,
+            'name':'generic_list_subtemplate.html',
+            'object_list':data,
+            'hide_columns':True,
+            'hide_header':True,
+            })
+            
     return render_to_response('generic_detail.html', {
         'form_list':form_list,
         'object':document,
         'subtemplates_dict':subtemplates_dict,
+        'sidebar_subtemplates_dict':sidebar_groups,
     }, context_instance=RequestContext(request))
 
 

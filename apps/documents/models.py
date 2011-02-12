@@ -303,8 +303,8 @@ class DocumentTypeFilename(models.Model):
 
     class Meta:
         ordering = ['filename']
-        verbose_name = _(u'document type filename')
-        verbose_name_plural = _(u'document types filenames')
+        verbose_name = _(u'document type quick rename filename')
+        verbose_name_plural = _(u'document types quick rename filenames')
 
 
 class DocumentPage(models.Model):
@@ -321,4 +321,51 @@ class DocumentPage(models.Model):
         verbose_name_plural = _(u'document pages')
 
 
+class MetadataGroup(models.Model):
+    document_type = models.ManyToManyField(DocumentType, null=True, blank=True,
+        verbose_name=_(u'document type'), help_text=_(u'If left blank, all document types will be matched.'))
+    name = models.CharField(max_length=32, verbose_name=_(u'name'))
+    label = models.CharField(max_length=32, verbose_name=_(u'label'))
+    
+    def __unicode__(self):
+        return self.label if self.label else self.name
+
+    class Meta:
+        verbose_name = _(u'metadata document group')
+        verbose_name_plural = _(u'metadata document groups')    
+
+
+
+INCLUSION_AND = '&'
+INCLUSION_OR = '|'
+
+INCLUSION_CHOICES = (
+    (INCLUSION_AND, _(u'and')),
+    (INCLUSION_OR, _(u'or')),
+)
+
+OPERATOR_EQUAL = ' '
+OPERATOR_IS_NOT_EQUAL = '~'
+
+OPERATOR_CHOCIES = (
+    (OPERATOR_EQUAL, _(u'is equal')),
+    (OPERATOR_IS_NOT_EQUAL, _(u'is not equal')),
+)
+    
+class MetadataGroupItem(models.Model):
+    metadata_group = models.ForeignKey(MetadataGroup, verbose_name=_(u'metadata group'))
+    inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES)
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'), help_text=_(u'This represents the metadata of all other documents.'))
+    operator = models.CharField(max_length=16, choices=OPERATOR_CHOCIES)
+    expression = models.CharField(max_length=64,
+        verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current seleted document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
+    
+    def __unicode__(self):
+        return '%s %s %s %s' % (self.get_inclusion_display(), self.metadata_type, self.get_operator_display(), self.expression)
+
+    class Meta:
+        verbose_name = _(u'metadata group item')
+        verbose_name_plural = _(u'metadata group items')
+
+    
 register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content'])

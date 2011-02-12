@@ -2,7 +2,8 @@ from django.contrib import admin
 
 from models import MetadataType, DocumentType, Document, \
     DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
-    MetadataIndex, DocumentMetadataIndex, DocumentPage
+    MetadataIndex, DocumentMetadataIndex, DocumentPage, MetadataGroup, \
+    MetadataGroupItem
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
@@ -59,12 +60,22 @@ class DocumentPageInline(admin.StackedInline):
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [DocumentMetadataInline, DocumentMetadataIndexInline, DocumentPageInline]
     list_display = ('uuid', 'file_filename', 'file_extension')
+
+
+class MetadataGroupItemInline(admin.StackedInline):
+    model = MetadataGroupItem
+    extra = 1
+    classes = ('collapse-open',)
+    allow_add = True
     
     
-
-
-
+class MetadataGroupAdmin(admin.ModelAdmin):
+    inlines = [MetadataGroupItemInline]
+    filter_horizontal = ['document_type']
+    
+   
 admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
+admin.site.register(MetadataGroup, MetadataGroupAdmin)
                 
