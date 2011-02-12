@@ -60,3 +60,5 @@
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
 * Handle ziped or rar archives
+* Display preferences (Rotation, default zoom)
+* Gallery view for document groups

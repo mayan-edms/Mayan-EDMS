@@ -4,14 +4,28 @@ import subprocess
 import tempfile
 import shutil
 
+from django.template.defaultfilters import slugify
+
+
 from documents.utils import from_descriptor_to_tempfile
 
 from converter.conf.settings import CONVERT_PATH
 from converter.conf.settings import OCR_OPTIONS
+from converter.conf.settings import DEFAULT_OPTIONS
+from converter.conf.settings import LOW_QUALITY_OPTIONS
+from converter.conf.settings import HIGH_QUALITY_OPTIONS
+
 #from converter.conf.settings import UNOCONV_PATH
 
 from converter import TEMPORARY_DIRECTORY
 
+
+QUALITY_DEFAULT = 'quality_default'
+QUALITY_LOW = 'quality_low'
+QUALITY_HIGH = 'quality_high'
+
+QUALITY_SETTINGS = {QUALITY_DEFAULT:DEFAULT_OPTIONS, QUALITY_LOW:LOW_QUALITY_OPTIONS,
+    QUALITY_HIGH:HIGH_QUALITY_OPTIONS}
 
 class ConvertError(Exception):
     def __init__(self, status, message):
@@ -37,8 +51,11 @@ def get_errors(error_string):
 
 
 #TODO: Timeout & kill child
-def execute_convert(input_filepath, arguments, output_filepath):
-    command = [CONVERT_PATH, input_filepath]
+def execute_convert(input_filepath, arguments, output_filepath, quality=QUALITY_DEFAULT):
+    command = []
+    command.append(CONVERT_PATH)
+    command.extend(shlex.split(str(QUALITY_SETTINGS[quality])))
+    command.append(input_filepath)
     command.extend(shlex.split(str(arguments)))
     command.append(output_filepath)
 
@@ -64,26 +81,33 @@ def cache_cleanup(input_filepath, size, page=0, format='jpg'):
         pass
         
 
-def create_image_cache_filename(input_filepath, size, page=0, format='jpg'):
+def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, *args, **kwargs):
     if input_filepath:
         temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
         temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-        return '%s_%s_%s%s%s' % (temp_path, page, size, os.extsep, format)
+
+        final_filepath = []
+        [final_filepath.append(str(arg)) for arg in args]
+        final_filepath.extend(['%s_%s' % (key, value) for key, value in kwargs.items()])
+        final_filepath.append(QUALITY_SETTINGS[quality])
+        
+        temp_path += slugify('_'.join(final_filepath))
+
+        return temp_path
     else:
         return None
-
    
-def in_image_cache(input_filepath, size, page=0, format='jpg'):
-    output_filepath = create_image_cache_filename(input_filepath, size, page, format)
+def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_DEFAULT):
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality)
     if os.path.exists(output_filepath):
         return output_filepath
     else:
         return None
     
     
-def convert(input_filepath, size, cache=True, page=0, format='jpg', mimetype=None, extension=None):
+def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', mimetype=None, extension=None):
     unoconv_output = None
-    output_filepath = create_image_cache_filename(input_filepath, size, page, format)
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality)
     if os.path.exists(output_filepath):
         return output_filepath
     '''
@@ -100,7 +124,7 @@ def convert(input_filepath, size, cache=True, page=0, format='jpg', mimetype=Non
     #TODO: Check mimetype and use corresponding utility
     try:
         input_arg = '%s[%s]' % (input_filepath, page)
-        status, error_string = execute_convert(input_arg, '-resize %s' % size, output_filepath)
+        status, error_string = execute_convert(input_arg, '-resize %s' % size, '%s:%s' % (format, output_filepath), quality=quality)
         if status:
             errors = get_errors(error_string)
             raise ConvertError(status, errors)

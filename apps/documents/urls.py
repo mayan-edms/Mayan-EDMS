@@ -6,6 +6,9 @@ from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import DISPLAY_SIZE
 
+from converter.api import QUALITY_HIGH
+
+
 urlpatterns = patterns('documents.views',
     url(r'^document/list/$', 'document_list', (), 'document_list'),
     url(r'^document/create/from/local/single/$', 'document_create', {'multiple':False}, 'document_create'),
@@ -18,7 +21,7 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/edit/metadata/$', 'document_edit_metadata', (), 'document_edit_metadata'),
     url(r'^document/(?P<document_id>\d+)/preview/$', 'get_document_image', {'size':PREVIEW_SIZE}, 'document_preview'),
     url(r'^document/(?P<document_id>\d+)/thumbnail/$', 'get_document_image', {'size':THUMBNAIL_SIZE}, 'document_thumbnail'),
-    url(r'^document/(?P<document_id>\d+)/display/$', 'get_document_image', {'size':DISPLAY_SIZE}, 'document_display'),
+    url(r'^document/(?P<document_id>\d+)/display/$', 'get_document_image', {'size':DISPLAY_SIZE,'quality':QUALITY_HIGH}, 'document_display'),
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':False}, 'document_create_sibling'),
     

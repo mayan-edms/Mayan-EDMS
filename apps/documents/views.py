@@ -13,7 +13,7 @@ from django.utils.http import urlencode
 from django.template.defaultfilters import slugify
 
 from filetransfers.api import serve_file
-from converter.api import convert, in_image_cache
+from converter.api import convert, in_image_cache, QUALITY_DEFAULT
 from common.utils import pretty_size
 
 from utils import from_descriptor_to_tempfile
@@ -374,20 +374,20 @@ def document_edit_metadata(request, document_id):
     }, context_instance=RequestContext(request))
     
 
-def get_document_image(request, document_id, size=PREVIEW_SIZE):
+def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
     document = get_object_or_404(Document, pk=document_id)
     
     try:
-        filepath = in_image_cache(document.checksum, size)
-   
+        filepath = in_image_cache(document.checksum, size=size, quality=quality)
+
         if filepath:
             return serve_file(request, File(file=open(filepath, 'r')))
         #Save to a temporary location
         document.file.open()
         desc = document.file.storage.open(document.file.path)
         filepath = from_descriptor_to_tempfile(desc, document.checksum)
-        output_file = convert(filepath, size)
-        return serve_file(request, File(file=open(output_file, 'r')))
+        output_file = convert(filepath, size=size, format='jpg', quality=quality)
+        return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
     except Exception, e:
         if size == THUMBNAIL_SIZE:
             return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
