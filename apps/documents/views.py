@@ -38,7 +38,8 @@ from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD
+    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
+    PERMISSION_DOCUMENT_TRANSFORM
    
 from utils import save_metadata, save_metadata_list, decode_metadata_from_url
 
@@ -435,9 +436,19 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         raise Http404(e)
         
     document = get_object_or_404(Document, pk=document_id)
-    
+    transformation_list = []
+    for tranformation in document.documenttransformation_set.all():
+        try:
+            transformation_list.append(tranformation.get_transformation())
+        except Exception, e:
+            if request.user.is_staff:
+                messages.warning(request, _(u'Transformation %s error: %s' % (tranformation, e)))
+            else:
+                pass
+   
+    tranformation_string = ' '.join(transformation_list)
     try:
-        filepath = in_image_cache(document.checksum, size=size, quality=quality)
+        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string)
 
         if filepath:
             return serve_file(request, File(file=open(filepath, 'r')))
@@ -445,7 +456,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         document.file.open()
         desc = document.file.storage.open(document.file.path)
         filepath = from_descriptor_to_tempfile(desc, document.checksum)
-        output_file = convert(filepath, size=size, format='jpg', quality=quality)
+        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string)
         return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
     except Exception, e:
         if size == THUMBNAIL_SIZE:
@@ -501,3 +512,40 @@ def staging_file_delete(request, staging_file_id):
         'next':next,
         'previous':previous,
     }, context_instance=RequestContext(request))
+
+
+def document_transformation_list(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+    
+    document = get_object_or_404(Document, pk=document_id)
+    
+    return object_list(
+        request,
+        queryset=document.documenttransformation_set.all(),
+        template_name='generic_list.html',
+        extra_context={
+            'title':_(u'document transformations'),
+        },
+    )
+
+def document_transformation_delete(request, document_transformation_id):
+    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
+    document_transformation = get_object_or_404(DocumentTransformation, pk=document_transformation_id)
+        
+    return delete_object(request, model=DocumentTransformation, object_id=document_transformation_id, 
+        template_name='generic_confirm.html', 
+        post_delete_redirect=reverse('document_transformation_list'),
+        extra_context={
+            'delete_view':True,
+            'object':document_transformation,
+            'object_name':_(u'document transformation'),
+        })

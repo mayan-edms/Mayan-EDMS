@@ -9,7 +9,7 @@ from common.utils import pretty_size
 
 from permissions.api import register_permissions
 
-from models import Document
+from models import Document, DocumentTransformation
 from staging import StagingFile
 
 from documents.conf import settings as documents_settings
@@ -20,6 +20,7 @@ PERMISSION_DOCUMENT_METADATA_EDIT = 'document_metadata_edit'
 PERMISSION_DOCUMENT_VIEW = 'document_view'
 PERMISSION_DOCUMENT_DELETE = 'document_delete'
 PERMISSION_DOCUMENT_DOWNLOAD = 'document_download'
+PERMISSION_DOCUMENT_TRANSFORM = 'document_transform'
 
 register_permissions('documents', [
     {'name':PERMISSION_DOCUMENT_CREATE, 'label':_(u'Create document')},
@@ -28,6 +29,7 @@ register_permissions('documents', [
     {'name':PERMISSION_DOCUMENT_VIEW, 'label':_(u'View document')},
     {'name':PERMISSION_DOCUMENT_DELETE, 'label':_(u'Delete document')},
     {'name':PERMISSION_DOCUMENT_DOWNLOAD, 'label':_(u'Download document')},
+    {'name':PERMISSION_DOCUMENT_TRANSFORM, 'label':_(u'Transform document')},
 ])
 
 document_list = {'text':_(u'documents list'), 'view':'document_list', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
@@ -41,12 +43,20 @@ document_edit_metadata = {'text':_('edit metadata'), 'view':'document_edit_metad
 document_preview = {'text':_('preview'), 'class':'fancybox', 'view':'document_preview', 'args':'object.id', 'famfam':'magnifier', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_download = {'text':_('download'), 'view':'document_download', 'args':'object.id', 'famfam':'page_save', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DOWNLOAD]}}
 
+document_transformation_list = {'text':_(u'transformations'), 'view':'document_transformation_list', 'args':'object.id', 'famfam':'page_paintbrush', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+document_transformation_delete = {'text':_('delete'), 'view':'document_transformation_delete', 'args':'object.id', 'famfam':'delete'}#, 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+
+
 staging_file_preview = {'text':_('preview'), 'class':'fancybox', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':'object.id', 'famfam':'drive_delete'}
 
-register_links(Document, [document_view, document_edit, document_edit_metadata, document_delete, document_download], menu_name='sidebar')
+register_links(Document, [document_view, document_edit, document_edit_metadata, document_delete, document_download, document_transformation_list], menu_name='sidebar')
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
 register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
+
+register_links(DocumentTransformation, [document_transformation_delete])
+
+
 
 register_links(StagingFile, [staging_file_preview, staging_file_delete])
 

@@ -24,6 +24,10 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/display/$', 'get_document_image', {'size':DISPLAY_SIZE,'quality':QUALITY_HIGH}, 'document_display'),
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':False}, 'document_create_sibling'),
+
+    url(r'^document/(?P<document_id>\d+)/tranformation/list/$', 'document_transformation_list', (), 'document_transformation_list'),
+    url(r'^document/tranformation/(?P<document_transformation_id>\d+)/delete/$', 'document_transformation_delete', (), 'document_transformation_delete'),
+
     
     url(r'^staging_file/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
     url(r'^staging_file/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),

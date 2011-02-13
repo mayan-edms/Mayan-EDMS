@@ -28,6 +28,7 @@
 * Group documents by metadata                                          - DONE
 * Permissions                                                          - DONE
 * Roles                                                                - DONE
+* Assign default role to new users                                     - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -62,4 +63,10 @@
 * Handle ziped or rar archives
 * Display preferences 'document transformations' (Rotation, default zoom)
 * Gallery view for document groups
-* Assign default role to new users
+* Role editing view under setup
+* Download metadata group documents as a single zip file
+* Download original document or transformed document
+* Include annotations in transformed documents downloads
+* DB stored transformations
+* Document view temp transformations
+* Implement permissions decorators

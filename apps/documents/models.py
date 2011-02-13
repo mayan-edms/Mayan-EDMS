@@ -14,6 +14,8 @@ from django.db.models import Q
 
 from dynamic_search.api import register
 
+from converter.conf.settings import TRANFORMATION_CHOICES
+
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
@@ -410,5 +412,28 @@ class MetadataGroupItem(models.Model):
         verbose_name = _(u'metadata group item')
         verbose_name_plural = _(u'metadata group items')
 
+    
+class DocumentTransformation(models.Model):
+    document = models.ForeignKey(Document, verbose_name=_(u'document'))
+    order = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'order'))
+    transformation = models.CharField(choices=TRANFORMATION_CHOICES, max_length=128, verbose_name=_(u'transformation'))
+    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use directories to indentify arguments, example: {\'degrees\':90}'))
+
+    def __unicode__(self):
+        return self.get_transformation_display()
+
+    def get_transformation(self):
+        try:
+            return self.transformation % eval(self.arguments)
+        except Exception, e:
+            raise Exception(e)
+
+    class Meta:
+        ordering = ('order',)
+        verbose_name = _(u'document transformation')
+        verbose_name_plural = _(u'document transformations')
+    
+    
+    
     
 register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content'])

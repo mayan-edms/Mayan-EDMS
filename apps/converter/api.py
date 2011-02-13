@@ -81,7 +81,7 @@ def cache_cleanup(input_filepath, size, page=0, format='jpg'):
         pass
         
 
-def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, *args, **kwargs):
+def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, extra_options='', *args, **kwargs):
     if input_filepath:
         temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
         temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
@@ -90,6 +90,7 @@ def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, *args, 
         [final_filepath.append(str(arg)) for arg in args]
         final_filepath.extend(['%s_%s' % (key, value) for key, value in kwargs.items()])
         final_filepath.append(QUALITY_SETTINGS[quality])
+        final_filepath.append(extra_options)
         
         temp_path += slugify('_'.join(final_filepath))
 
@@ -97,17 +98,17 @@ def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, *args, 
     else:
         return None
    
-def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_DEFAULT):
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality)
+def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_DEFAULT, extra_options=''):
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     if os.path.exists(output_filepath):
         return output_filepath
     else:
         return None
     
     
-def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', mimetype=None, extension=None):
+def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', extra_options='', mimetype=None, extension=None):
     unoconv_output = None
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality)
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     if os.path.exists(output_filepath):
         return output_filepath
     '''
@@ -124,7 +125,9 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
     #TODO: Check mimetype and use corresponding utility
     try:
         input_arg = '%s[%s]' % (input_filepath, page)
-        status, error_string = execute_convert(input_arg, '-resize %s' % size, '%s:%s' % (format, output_filepath), quality=quality)
+        extra_options += ' -resize %s' % size
+        print 'extra_options', extra_options
+        status, error_string = execute_convert(input_arg, extra_options, '%s:%s' % (format, output_filepath), quality=quality)
         if status:
             errors = get_errors(error_string)
             raise ConvertError(status, errors)
