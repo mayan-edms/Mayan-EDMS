@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-13 04:12-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: api.py:40
+msgid "Insufficient permissions."
+msgstr ""
+
+#: models.py:8
+msgid "namespace"
+msgstr ""
+
+#: models.py:9
+msgid "name"
+msgstr ""
+
+#: models.py:10 models.py:40
+msgid "label"
+msgstr ""
+
+#: models.py:14 models.py:23
+msgid "permission"
+msgstr ""
+
+#: models.py:15
+msgid "permissions"
+msgstr ""
+
+#: models.py:31
+msgid "permission holder"
+msgstr ""
+
+#: models.py:32
+msgid "permission holders"
+msgstr ""
+
+#: models.py:44 models.py:58
+msgid "role"
+msgstr ""
+
+#: models.py:45
+msgid "roles"
+msgstr ""
+
+#: models.py:67
+msgid "role member"
+msgstr ""
+
+#: models.py:68
+msgid "role members"
+msgstr ""

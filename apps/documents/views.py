@@ -11,7 +11,7 @@ from django.conf import settings
 from django.utils.http import urlencode
 from django.template.defaultfilters import slugify
 
-
+from permissions.api import check_permissions, Unauthorized
 from filetransfers.api import serve_file
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT
 from common.utils import pretty_size
@@ -38,13 +38,17 @@ from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_OCR, \
-    PERMISSION_DOCUMENT_DOWNLOAD
+    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD
    
-    
 from utils import save_metadata, save_metadata_list, decode_metadata_from_url
 
 def document_list(request):
+    permissions = [PERMISSION_DOCUMENT_VIEW]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
     return object_list(
         request,
         queryset=Document.objects.all(),
@@ -56,8 +60,10 @@ def document_list(request):
 
 def document_create(request, multiple=True):
     permissions = [PERMISSION_DOCUMENT_CREATE]
-    if not check_permissions(main_object, request.user, permissions):
-        raise Http404
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
 
     if DocumentType.objects.all().count() == 1:
         wizard = DocumentCreateWizard(
@@ -72,6 +78,12 @@ def document_create(request, multiple=True):
     return wizard(request)
 
 def document_create_sibling(request, document_id, multiple=True):
+    permissions = [PERMISSION_DOCUMENT_CREATE]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
     document = get_object_or_404(Document, pk=document_id)
     urldata = []
     for id, metadata in enumerate(document.documentmetadata_set.all()):
@@ -89,6 +101,12 @@ def document_create_sibling(request, document_id, multiple=True):
 
 
 def upload_document_with_type(request, document_type_id, multiple=True):
+    permissions = [PERMISSION_DOCUMENT_CREATE]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     local_form = DocumentForm(prefix='local', initial={'document_type':document_type})
     if USE_STAGING_DIRECTORY:
@@ -206,6 +224,12 @@ def upload_document_with_type(request, document_type_id, multiple=True):
         context_instance=RequestContext(request))
         
 def document_view(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_VIEW]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
     document = get_object_or_404(Document, pk=document_id)
     form = DocumentForm_view(instance=document, extra_fields=[
         {'label':_(u'Filename'), 'field':'file_filename'},
@@ -285,6 +309,12 @@ def document_view(request, document_id):
 
 
 def document_delete(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_DELETE]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
     document = get_object_or_404(Document, pk=document_id)
         
     return delete_object(request, model=Document, object_id=document_id, 
@@ -298,6 +328,12 @@ def document_delete(request, document_id):
         
         
 def document_edit(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_PROPERTIES_EDIT]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
     document = get_object_or_404(Document, pk=document_id)
     if request.method == 'POST':
         form = DocumentForm_edit(request.POST, initial={'document_type':document.document_type})
@@ -338,6 +374,12 @@ def document_edit(request, document_id):
 
 
 def document_edit_metadata(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_METADATA_EDIT]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
     document = get_object_or_404(Document, pk=document_id)
 
     initial=[]
@@ -386,6 +428,12 @@ def document_edit_metadata(request, document_id):
     
 
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
+    permissions = [PERMISSION_DOCUMENT_VIEW]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+        
     document = get_object_or_404(Document, pk=document_id)
     
     try:
@@ -407,6 +455,12 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
 
         
 def document_download(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_DOWNLOAD]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)    
+    
     document = get_object_or_404(Document, pk=document_id)
     try:
         #Test permissions and trigger exception
@@ -417,6 +471,7 @@ def document_download(request, document_id):
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
+#TODO: Need permission
 def staging_file_preview(request, staging_file_id):
     try:
         filepath = StagingFile.get(staging_file_id).filepath
@@ -425,7 +480,8 @@ def staging_file_preview(request, staging_file_id):
     except Exception, e:
         return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))        
 
-     
+
+#TODO: Need permission     
 def staging_file_delete(request, staging_file_id):
     staging_file = StagingFile.get(staging_file_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))

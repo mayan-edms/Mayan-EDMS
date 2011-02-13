@@ -20,6 +20,7 @@ Features
 * Previews for a great deal of image formats, including PDF
 * Document OCR and searching
 * Group documents by metadata automatically
+* Permissions and roles support
 
 Requirements
 ---

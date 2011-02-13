@@ -2,9 +2,6 @@ import copy
 
 from django.db.utils import DatabaseError
 
-from permissions.utils import has_permission
-from permissions.models import Permission
-
 
 object_navigation = {}
 menu_links = []
@@ -44,25 +41,3 @@ def register_model_list_columns(model, columns):
         model_list_columns[model].extend(columns)
     else:
         model_list_columns[model] = copy.copy(columns)
-
-
-def register_permissions(app, permissions):
-    if permissions:
-        for permission in permissions:
-            full_permission_name =  "%s_%s" % (app, permission['name'])
-            try:
-                #if not Permission.objects.filter(codename=full_permission_name):
-                #    Permission(name=unicode(permission['label']), codename=full_permission_name).save()
-                permission_obj, created = Permission.objects.get_or_create(codename=full_permission_name)
-                permission_obj.name=unicode(permission['label'])
-                permission_obj.save()
-            except DatabaseError:
-                #Special case for ./manage.py syncdb
-                pass
-
-
-def check_permissions(object, user, permission_list):
-    temp_role = []
-    for permission in permission_list:
-        if has_permission(object, user, permission):
-            return True

@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.contrib import messages
@@ -8,13 +8,19 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
-
+from permissions.api import check_permissions, Unauthorized
 from documents.models import Document
 
-
+from ocr import OCR_DOCUMENT_OCR
 from api import ocr_document
 
 def submit_document(request, document_id):
+    permissions = [OCR_DOCUMENT_OCR]
+    try:
+        check_permissions(request.user, 'ocr', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+        
     document = get_object_or_404(Document, pk=document_id)
     
     try:

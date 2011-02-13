@@ -77,7 +77,7 @@ MEDIA_URL = '/%s-site_media/' % PROJECT_NAME
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin_media/'
+ADMIN_MEDIA_PREFIX = MEDIA_URL + 'grappelli/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
@@ -214,6 +214,9 @@ LOGIN_EXEMPT_URLS = (
 
 # OCR
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
+
+# Permissions
+#ROLES_DEFAULT_ROLES = []
 
 # Override
 SEARCH_SHOW_OBJECT_TYPE = False

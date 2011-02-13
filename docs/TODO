@@ -26,6 +26,8 @@
 * If theres only one document type on db skip step 1 of wizard         - DONE
 * Be able to delete staging file                                       - DONE
 * Group documents by metadata                                          - DONE
+* Permissions                                                          - DONE
+* Roles                                                                - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -42,8 +44,6 @@
 * MuliThreading deferred OCR
 * Versioning support
 * Generic document anotations using layer overlays
-* Permissions
-* Roles
 * Workflows
 * Scheduled maintenance (cleanup, deferred OCR's)
 * Add tags to documents
@@ -60,6 +60,6 @@
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
 * Handle ziped or rar archives
-* Display preferences (Rotation, default zoom)
+* Display preferences 'document transformations' (Rotation, default zoom)
 * Gallery view for document groups
 * Assign default role to new users

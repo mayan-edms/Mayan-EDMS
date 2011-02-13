@@ -5,3 +5,4 @@
 * Changed to a liquid css grid
 * Added the ability to group documents by their metadata
 * New abstracted options to adjust document conversion quality (default, low, high)
+* Added permissions and roles support

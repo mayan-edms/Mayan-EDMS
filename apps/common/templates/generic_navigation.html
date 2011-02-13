@@ -1,7 +1,17 @@
 {% load i18n %}
+{% load permission_tags %}
 
 {% for link in object_navigation_links %}
+{% if link.permissions %}
+    {% check_permissions request.user link.permissions.namespace link.permissions.permissions %}
+    {% if permission %}
+        {% if as_li %}<li>{% endif %}
+            <a class="{{ link.class }}" href="{{ link.url }}">{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
+        {% if as_li %}</li>{% endif %}    
+    {% endif %}
+{% else %}
     {% if as_li %}<li>{% endif %}
         <a class="{{ link.class }}" href="{{ link.url }}">{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
     {% if as_li %}</li>{% endif %}    
+{% endif %}
 {% endfor %}
