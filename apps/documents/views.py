@@ -474,7 +474,9 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
                     transformation_list.append(output)
             except Exception, e:
                 if request.user.is_staff:
-                    messages.warning(request, _(u'Error for transformation %s:, %s' % (page_transformation.get_transformation_display(), e)))
+                    messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') % 
+                        {'transformation':page_transformation.get_transformation_display(),
+                        'error':e})
                 else:
                     pass
     except ObjectDoesNotExist:
