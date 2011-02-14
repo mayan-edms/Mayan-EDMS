@@ -5,6 +5,7 @@ from django.views.generic.create_update import create_object, update_object
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import DISPLAY_SIZE
+from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
 
 from converter.api import QUALITY_HIGH
 
@@ -19,8 +20,9 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/delete/$', 'document_delete', (), 'document_delete'),
     url(r'^document/(?P<document_id>\d+)/edit/$', 'document_edit', (), 'document_edit'),
     url(r'^document/(?P<document_id>\d+)/edit/metadata/$', 'document_edit_metadata', (), 'document_edit_metadata'),
-    url(r'^document/(?P<document_id>\d+)/preview/$', 'get_document_image', {'size':PREVIEW_SIZE}, 'document_preview'),
-    url(r'^document/(?P<document_id>\d+)/thumbnail/$', 'get_document_image', {'size':THUMBNAIL_SIZE}, 'document_thumbnail'),
+    url(r'^document/(?P<document_id>\d+)/display/preview/$', 'get_document_image', {'size':PREVIEW_SIZE}, 'document_preview'),
+    url(r'^document/(?P<document_id>\d+)/display/preview/multipage/$', 'get_document_image', {'size':MULTIPAGE_PREVIEW_SIZE}, 'document_preview_multipage'),
+    url(r'^document/(?P<document_id>\d+)/display/thumbnail/$', 'get_document_image', {'size':THUMBNAIL_SIZE}, 'document_thumbnail'),
     url(r'^document/(?P<document_id>\d+)/display/$', 'get_document_image', {'size':DISPLAY_SIZE,'quality':QUALITY_HIGH}, 'document_display'),
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':False}, 'document_create_sibling'),

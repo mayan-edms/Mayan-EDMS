@@ -6,10 +6,8 @@ import shutil
 
 from django.template.defaultfilters import slugify
 
-
-from documents.utils import from_descriptor_to_tempfile
-
 from converter.conf.settings import CONVERT_PATH
+from converter.conf.settings import IDENTIFY_PATH
 from converter.conf.settings import OCR_OPTIONS
 from converter.conf.settings import DEFAULT_OPTIONS
 from converter.conf.settings import LOW_QUALITY_OPTIONS
@@ -18,6 +16,7 @@ from converter.conf.settings import HIGH_QUALITY_OPTIONS
 #from converter.conf.settings import UNOCONV_PATH
 
 from converter import TEMPORARY_DIRECTORY
+from utils import from_descriptor_to_tempfile
 
 
 QUALITY_DEFAULT = 'quality_default'
@@ -73,6 +72,16 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
     return (proc.wait(), proc.stderr.read())
 
 
+def execute_identify(input_filepath, arguments):
+    command = []
+    command.append(IDENTIFY_PATH)
+    command.extend(shlex.split(str(arguments)))
+    command.append(input_filepath)
+
+    proc = subprocess.Popen(command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    return (proc.wait(), proc.stderr.read(), proc.stdout.read())
+
+
 def cache_cleanup(input_filepath, size, page=0, format='jpg'):
     filepath = create_image_cache_filename(input_filepath, size, page, format)
     try:
@@ -126,7 +135,6 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
     try:
         input_arg = '%s[%s]' % (input_filepath, page)
         extra_options += ' -resize %s' % size
-        print 'extra_options', extra_options
         status, error_string = execute_convert(input_arg, extra_options, '%s:%s' % (format, output_filepath), quality=quality)
         if status:
             errors = get_errors(error_string)
@@ -136,7 +144,16 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
         if unoconv_output:
             cleanup(unoconv_output)
         return output_filepath
-    
+
+
+def get_page_count(input_filepath):
+    try:
+        status, error_string, output = execute_identify(input_filepath, '-format %n')
+        if status:
+            errors = get_errors(error_string)
+            raise ConvertError(status, errors)
+    finally:
+        return int(output)
 
 #TODO: slugify OCR_OPTIONS and add to file name to cache
 def convert_document_for_ocr(document, page=0, format='tif'):

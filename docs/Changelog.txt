@@ -6,3 +6,6 @@
 * Added the ability to group documents by their metadata
 * New abstracted options to adjust document conversion quality (default, low, high)
 * Added permissions and roles support
+* Added multipage documents support (only tested on pdfs)
+    To update a previous database do: [d.update_page_count() for d in Document.objects.all()]
+* Added support for document page transformation (no GUI yet)

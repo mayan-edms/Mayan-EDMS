@@ -24,8 +24,22 @@ from documents.conf.settings import AVAILABLE_MODELS
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
-        output.append('<a class="fancybox-noscaling" href="%s"><img width="300" src="%s" /></a>' % (reverse('document_display', args=[value.id]),
-            reverse('document_preview', args=[value.id])))
+
+        page_count = value.documentpage_set.count()
+        if page_count > 1:
+            output.append('<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' % ugettext(u'Pages'))
+            for page_index in range(value.documentpage_set.count()):
+                output.append('<span>%(page)s)<a rel="gallery_1" class="fancybox-noscaling" href="%(url)s?page=%(page)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
+                    'url':reverse('document_display', args=[value.id]),
+                    'img':reverse('document_preview_multipage', args=[value.id]),
+                    'page':page_index+1,
+                    })
+        else:
+            output.append('<a class="fancybox-noscaling" href="%(url)s"><img width="300" src="%(img)s" /></a>' % {
+                'url':reverse('document_display', args=[value.id]),
+                'img':reverse('document_preview', args=[value.id]),
+                })
+
         output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
         #output.append(super(ImageWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))  
@@ -57,8 +71,8 @@ class DocumentPreviewForm(forms.Form):
         self.document = kwargs.pop('document', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = self.document
-            
-    preview = forms.CharField(widget=ImageWidget)    
+                    
+    preview = forms.CharField(widget=ImageWidget())
 
 
 class DocumentForm_view(DetailForm):

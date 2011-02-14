@@ -29,6 +29,8 @@
 * Permissions                                                          - DONE
 * Roles                                                                - DONE
 * Assign default role to new users                                     - DONE
+* DB stored transformations                                            - DONE
+* Recognize multi-page documents                                       - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -49,7 +51,6 @@
 * Scheduled maintenance (cleanup, deferred OCR's)
 * Add tags to documents
 * Field for document language or autodetect
-* Recognize multi-page documents
 * Count pages in a PDF file http://pybrary.net/pyPdf/
 * Download a document in diffent formats: (jpg, png, pdf)
 * Cache.cleanup function to delete cached images when document hash changes
@@ -67,6 +68,5 @@
 * Download metadata group documents as a single zip file
 * Download original document or transformed document
 * Include annotations in transformed documents downloads
-* DB stored transformations
 * Document view temp transformations
 * Implement permissions decorators

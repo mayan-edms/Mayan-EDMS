@@ -9,10 +9,10 @@ from common.utils import pretty_size
 
 from permissions.api import register_permissions
 
-from models import Document, DocumentTransformation
+from models import Document, DocumentPage, DocumentPageTransformation
 from staging import StagingFile
 
-from documents.conf import settings as documents_settings
+from common.conf import settings as common_settings
 
 PERMISSION_DOCUMENT_CREATE = 'document_create'
 PERMISSION_DOCUMENT_PROPERTIES_EDIT = 'document_properties_edit'
@@ -43,18 +43,18 @@ document_edit_metadata = {'text':_('edit metadata'), 'view':'document_edit_metad
 document_preview = {'text':_('preview'), 'class':'fancybox', 'view':'document_preview', 'args':'object.id', 'famfam':'magnifier', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_download = {'text':_('download'), 'view':'document_download', 'args':'object.id', 'famfam':'page_save', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DOWNLOAD]}}
 
-document_transformation_list = {'text':_(u'transformations'), 'view':'document_transformation_list', 'args':'object.id', 'famfam':'page_paintbrush', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
-document_transformation_delete = {'text':_('delete'), 'view':'document_transformation_delete', 'args':'object.id', 'famfam':'delete'}#, 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+#document_transformation_list = {'text':_(u'transformations'), 'view':'document_transformation_list', 'args':'object.id', 'famfam':'page_paintbrush', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+#document_transformation_delete = {'text':_('delete'), 'view':'document_transformation_delete', 'args':'object.id', 'famfam':'delete'}#, 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
 
 
 staging_file_preview = {'text':_('preview'), 'class':'fancybox', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':'object.id', 'famfam':'drive_delete'}
 
-register_links(Document, [document_view, document_edit, document_edit_metadata, document_delete, document_download, document_transformation_list], menu_name='sidebar')
+register_links(Document, [document_view, document_edit, document_edit_metadata, document_delete, document_download], menu_name='sidebar')
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
 register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
 
-register_links(DocumentTransformation, [document_transformation_delete])
+#register_links(DocumentTransformation, [document_transformation_delete])
 
 
 
@@ -76,4 +76,4 @@ register_menu([
         document_list
     ],'famfam':'page','position':4}])
 
-TEMPORARY_DIRECTORY = documents_settings.TEMPORARY_DIRECTORY if documents_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
+TEMPORARY_DIRECTORY = common_settings.TEMPORARY_DIRECTORY if common_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()

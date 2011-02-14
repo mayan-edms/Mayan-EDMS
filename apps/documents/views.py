@@ -18,7 +18,8 @@ from common.utils import pretty_size
 
 from utils import from_descriptor_to_tempfile
 
-from models import Document, DocumentMetadata, DocumentType, MetadataType
+from models import Document, DocumentMetadata, DocumentType, MetadataType, \
+    DocumentPage
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
@@ -122,6 +123,8 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 instance = local_form.save()
                 instance.update_checksum()
                 instance.update_mimetype()
+                instance.update_page_count()
+
                 if 'document_type_available_filenames' in local_form.cleaned_data:
                     if local_form.cleaned_data['document_type_available_filenames']:
                         instance.file_filename = local_form.cleaned_data['document_type_available_filenames'].filename
@@ -154,6 +157,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         document.save()
                         document.update_checksum()
                         document.update_mimetype()
+                        document.update_page_count()
                     except Exception, e:
                         messages.error(request, e)   
                     else:
@@ -243,6 +247,7 @@ def document_view(request, document_id):
         {'label':_(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
         {'label':_(u'Checksum'), 'field':'checksum'},
         {'label':_(u'UUID'), 'field':'uuid'},
+        {'label':_(u'Pages'), 'field':lambda x: x.documentpage_set.count()},
     ])
 
         
@@ -436,27 +441,33 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         raise Http404(e)
         
     document = get_object_or_404(Document, pk=document_id)
+
+    page = int(request.GET.get('page', 1))
     transformation_list = []
-    for tranformation in document.documenttransformation_set.all():
-        try:
-            transformation_list.append(tranformation.get_transformation())
-        except Exception, e:
-            if request.user.is_staff:
-                messages.warning(request, _(u'Transformation %s error: %s' % (tranformation, e)))
-            else:
-                pass
-   
+    try:
+        document_page = DocumentPage.objects.get(document=document, page_number=page)
+    
+        for tranformation in document_page.documentpagetransformation_set.all():
+            try:
+                transformation_list.append(tranformation.get_transformation())
+            except Exception, e:
+                if request.user.is_staff:
+                    messages.warning(request, _(u'Transformation %s error: %s' % (tranformation, e)))
+                else:
+                    pass
+    except:
+        pass
+
     tranformation_string = ' '.join(transformation_list)
     try:
-        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string)
-
+        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page-1)
         if filepath:
             return serve_file(request, File(file=open(filepath, 'r')))
         #Save to a temporary location
         document.file.open()
         desc = document.file.storage.open(document.file.path)
         filepath = from_descriptor_to_tempfile(desc, document.checksum)
-        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string)
+        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
         return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
     except Exception, e:
         if size == THUMBNAIL_SIZE:
@@ -523,6 +534,7 @@ def document_transformation_list(request, document_id):
     
     document = get_object_or_404(Document, pk=document_id)
     
+    
     return object_list(
         request,
         queryset=document.documenttransformation_set.all(),
@@ -539,9 +551,9 @@ def document_transformation_delete(request, document_transformation_id):
     except Unauthorized, e:
         raise Http404(e)
             
-    document_transformation = get_object_or_404(DocumentTransformation, pk=document_transformation_id)
+    document_transformation = get_object_or_404(DocumentPageTransformation, pk=document_transformation_id)
         
-    return delete_object(request, model=DocumentTransformation, object_id=document_transformation_id, 
+    return delete_object(request, model=DocumentPageTransformation, object_id=document_transformation_id, 
         template_name='generic_confirm.html', 
         post_delete_redirect=reverse('document_transformation_list'),
         extra_context={

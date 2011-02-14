@@ -8,7 +8,7 @@ import tempfile
 from django.utils.translation import ugettext as _
 
 from documents.models import DocumentPage
-from documents.conf.settings import TEMPORARY_DIRECTORY
+from common.conf.settings import TEMPORARY_DIRECTORY
 from converter.api import convert_document_for_ocr
 
 from ocr.conf.settings import TESSERACT_PATH

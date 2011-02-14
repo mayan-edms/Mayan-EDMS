@@ -1,9 +1,12 @@
 import datetime
 import hashlib
 import uuid
+import tempfile
 
 from django.conf import settings
 from django.contrib.auth.models import User
+
+from converter.api import get_page_count
 
 from documents.storage import DocumentStorage
 
@@ -29,6 +32,7 @@ DELETE_LOCAL_ORIGINAL = getattr(settings, 'DOCUMENTS_DELETE_LOCAL_ORIGINAL', Fal
 # Saving
 CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', lambda x: hashlib.sha256(x).hexdigest())
 UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNCTION', lambda:unicode(uuid.uuid4()))
+PAGE_COUNT_FUNCTION = getattr(settings, 'DOCUMENTS_PAGE_COUNT_FUNCTION', lambda x: get_page_count(x.save_to_file(tempfile.mkstemp()[1])))
 
 # Storage
 STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', DocumentStorage)
@@ -36,6 +40,7 @@ STORAGE_DIRECTORY_NAME = getattr(settings, 'DOCUMENTS_STORAGE_DIRECTORY_NAME', '
 
 # Usage
 PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_PREVIEW_SIZE', '640x480')
+MULTIPAGE_PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_MULTIPAGE_PREVIEW_SIZE', '160x120')
 THUMBNAIL_SIZE = getattr(settings, 'DOCUMENTS_THUMBNAIL_SIZE', '50x50')
 DISPLAY_SIZE = getattr(settings, 'DOCUMENTS_DISPLAY_SIZE', '1200')
 
@@ -48,8 +53,3 @@ FILESYSTEM_FILESERVING_ENABLE = getattr(settings, 'DOCUMENTS_FILESYSTEM_FILESERV
 FILESYSTEM_FILESERVING_PATH = getattr(settings, 'DOCUMENTS_FILESYSTEM_FILESERVING_PATH', u'/tmp/mayan/documents')
 FILESYSTEM_SLUGIFY_PATHS = getattr(settings, 'DOCUMENTS_SLUGIFY_PATHS', False)
 FILESYSTEM_MAX_RENAME_COUNT = getattr(settings, 'DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT', 200)
-
-#misc
-TEMPORARY_DIRECTORY = getattr(settings, 'DOCUMENTS_TEMPORARY_DIRECTORY', u'/tmp')
-
-

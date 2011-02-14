@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from common.conf import settings as common_settings
 from documents.conf import settings as documents_settings
 from converter.conf import settings as converter_settings
 from ocr.conf import settings as ocr_settings
@@ -34,7 +35,9 @@ def check_settings(request):
         {'name':'DOCUMENTS_FILESYSTEM_FILESERVING_PATH', 'value':documents_settings.FILESYSTEM_FILESERVING_PATH, 'exists':True},
         {'name':'DOCUMENTS_SLUGIFY_PATHS', 'value':documents_settings.FILESYSTEM_SLUGIFY_PATHS},
         {'name':'DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT', 'value':documents_settings.FILESYSTEM_MAX_RENAME_COUNT},
-        {'name':'DOCUMENTS_TEMPORARY_DIRECTORY', 'value':documents_settings.TEMPORARY_DIRECTORY, 'exists':True},
+        
+        #Common
+        {'name':'COMMON_TEMPORARY_DIRECTORY', 'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True},
 
         #Converter
         {'name':'CONVERTER_CONVERT_PATH', 'value':converter_settings.CONVERT_PATH, 'exists':True},

@@ -20,6 +20,7 @@ from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
+from documents.conf.settings import PAGE_COUNT_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import STORAGE_DIRECTORY_NAME
 from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
@@ -73,12 +74,15 @@ class Document(models.Model):
         verbose_name = _(u'document')
         verbose_name_plural = _(u'documents')
         ordering = ['-date_added']
+
         
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)
+
       
     def get_fullname(self):
         return os.extsep.join([self.file_filename, self.file_extension])
+
         
     def update_mimetype(self):
         try:
@@ -94,25 +98,52 @@ class Document(models.Model):
       
     def read(self, count=1024):
         return self.file.storage.open(self.file.url).read(count)
+
         
     @models.permalink
     def get_absolute_url(self):
         return ('document_view', [self.id])
+
 
     def update_checksum(self, save=True):
         if self.exists():
             self.checksum = unicode(CHECKSUM_FUNCTION(self.file.read()))
             if save:
                 self.save()
+
+    
+    def update_page_count(self):
+        total_pages = PAGE_COUNT_FUNCTION(self)
+        for page_number in range(total_pages):
+            document_page, created = DocumentPage.objects.get_or_create(
+                document=self, page_number=page_number+1)
+
+        
+    def save_to_file(self, filepath, buffer_size=1024*1024):
+        storage = self.file.storage.open(self.file.url)
+        output_descriptor = open(filepath, 'wb')
+        while 1:
+            copy_buffer = storage.read()
+            if copy_buffer:
+                output_descriptor.write(copy_buffer)
+            else:
+                break
+    
+        #input_descriptor.close()
+        output_descriptor.close()
+        return filepath       
+       
     
     def exists(self):
         return self.file.storage.exists(self.file.url)
+
         
     def delete(self, *args, **kwargs):
         #TODO: Might not execute when done in bulk from a queryset
         #topics/db/queries.html#topics-db-queries-delete
         self.delete_fs_links()
         super(Document, self).delete(*args, **kwargs)
+
 
     def get_metadata_groups(self):
         errors = []
@@ -143,6 +174,7 @@ class Document(models.Model):
                 document_id_list = DocumentMetadata.objects.filter(query).values_list('document', flat=True)
                 metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list) & ~Q(id=self.id)) or []
         return metadata_groups, errors
+
         
     def create_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
@@ -170,6 +202,7 @@ class Document(models.Model):
                         #raise NameError(ugettext(u'Error in metadata indexing expression: %s') % exc)
                         #This should be a warning not an error
                         pass
+
 
     def delete_fs_links(self):
         if FILESYSTEM_FILESERVING_ENABLE:
@@ -209,11 +242,13 @@ class Document(models.Model):
                 except OSError, exc:
                     pass
 
+
                 #Remove the directory if it is empty
                 try:
                     os.removedirs(path)
                 except:
                     pass
+
            
 def next_available_filename(document, metadata_index, path, filename, extension, suffix=0): 
     target = filename
@@ -344,10 +379,10 @@ class DocumentPage(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     content = models.TextField(blank=True, null=True, verbose_name=_(u'content'))
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
-    page_number = models.PositiveIntegerField(default=0, verbose_name=_(u'page number'))
+    page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'))
         
     def __unicode__(self):
-        return '%s - %s' % (self.page_number, self.page_label)
+        return '%s - %s - %s' % (self.document, self.page_number, self.page_label)
 
     class Meta:
         verbose_name = _(u'document page')
@@ -377,7 +412,7 @@ INCLUSION_CHOICES = (
     (INCLUSION_OR, _(u'or')),
 )
 
-OPERATOR_CHOCIES = (
+OPERATOR_CHOICES = (
     ('exact', _(u'is equal')),
     ('iexact', _(u'is equal (case insensitive)')),
     ('contains', _(u'contains')),
@@ -399,7 +434,7 @@ class MetadataGroupItem(models.Model):
     metadata_group = models.ForeignKey(MetadataGroup, verbose_name=_(u'metadata group'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'), help_text=_(u'This represents the metadata of all other documents.'))
-    operator = models.CharField(max_length=16, choices=OPERATOR_CHOCIES)
+    operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
     expression = models.CharField(max_length=128,
         verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current seleted document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
     negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
@@ -413,8 +448,8 @@ class MetadataGroupItem(models.Model):
         verbose_name_plural = _(u'metadata group items')
 
     
-class DocumentTransformation(models.Model):
-    document = models.ForeignKey(Document, verbose_name=_(u'document'))
+class DocumentPageTransformation(models.Model):
+    document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'order'))
     transformation = models.CharField(choices=TRANFORMATION_CHOICES, max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use directories to indentify arguments, example: {\'degrees\':90}'))
@@ -430,10 +465,8 @@ class DocumentTransformation(models.Model):
 
     class Meta:
         ordering = ('order',)
-        verbose_name = _(u'document transformation')
-        verbose_name_plural = _(u'document transformations')
+        verbose_name = _(u'document page transformation')
+        verbose_name_plural = _(u'document page transformations')
     
-    
-    
-    
+  
 register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content'])

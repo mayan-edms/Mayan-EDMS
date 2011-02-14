@@ -11,11 +11,11 @@ from django.utils.translation import ugettext as _
 from permissions.api import check_permissions, Unauthorized
 from documents.models import Document
 
-from ocr import OCR_DOCUMENT_OCR
+from ocr import PERMISSION_OCR_DOCUMENT
 from api import ocr_document
 
 def submit_document(request, document_id):
-    permissions = [OCR_DOCUMENT_OCR]
+    permissions = [PERMISSION_OCR_DOCUMENT]
     try:
         check_permissions(request.user, 'ocr', permissions)
     except Unauthorized, e:

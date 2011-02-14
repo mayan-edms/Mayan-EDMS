@@ -3,7 +3,7 @@ from django.contrib import admin
 from models import MetadataType, DocumentType, Document, \
     DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
     MetadataIndex, DocumentMetadataIndex, DocumentPage, MetadataGroup, \
-    MetadataGroupItem, DocumentTransformation
+    MetadataGroupItem, DocumentPageTransformation
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
@@ -48,8 +48,12 @@ class DocumentMetadataIndexInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-    readonly_fields = ('metadata_index', 'filename')
+    readonly_fields = ('suffix', 'metadata_index', 'filename')
 
+
+class DocumentPageTransformationAdmin(admin.ModelAdmin):
+    model = DocumentPageTransformation
+    
 
 class DocumentPageInline(admin.StackedInline):
     model = DocumentPage
@@ -58,16 +62,9 @@ class DocumentPageInline(admin.StackedInline):
     allow_add = True
 
 
-class DocumentTransformationline(admin.StackedInline):
-    model = DocumentTransformation
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
-    
-
 class DocumentAdmin(admin.ModelAdmin):
-    inlines = [DocumentMetadataInline, DocumentMetadataIndexInline, 
-        DocumentTransformationline, DocumentPageInline]
+    inlines = [DocumentMetadataInline, DocumentMetadataIndexInline,
+        DocumentPageInline]
     list_display = ('uuid', 'file_filename', 'file_extension')
 
 
@@ -87,4 +84,5 @@ admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(MetadataGroup, MetadataGroupAdmin)
+admin.site.register(DocumentPageTransformation, DocumentPageTransformationAdmin)
                 
