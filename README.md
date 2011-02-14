@@ -21,6 +21,8 @@ Features
 * Document OCR and searching
 * Group documents by metadata automatically
 * Permissions and roles support
+* Multi page document support
+* Page transformations
 
 Requirements
 ---

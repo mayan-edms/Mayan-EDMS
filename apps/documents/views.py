@@ -10,16 +10,19 @@ from django.core.files.base import File
 from django.conf import settings
 from django.utils.http import urlencode
 from django.template.defaultfilters import slugify
+from django.core.exceptions import ObjectDoesNotExist
 
+from common.utils import pretty_size
 from permissions.api import check_permissions, Unauthorized
 from filetransfers.api import serve_file
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT
-from common.utils import pretty_size
+from converter import TRANFORMATION_CHOICES
 
 from utils import from_descriptor_to_tempfile
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
-    DocumentPage
+    DocumentPage, DocumentPageTransformation
+    
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
@@ -35,6 +38,8 @@ from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
+from documents.conf.settings import DEFAULT_TRANSFORMATIONS
+
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
@@ -124,6 +129,20 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 instance.update_checksum()
                 instance.update_mimetype()
                 instance.update_page_count()
+                if DEFAULT_TRANSFORMATIONS:
+                    for transformation in DEFAULT_TRANSFORMATIONS:
+                        if 'name' in transformation:
+                            for document_page in instance.documentpage_set.all():
+                                page_transformation = DocumentPageTransformation(
+                                    document_page=document_page,
+                                    order=0, 
+                                    transformation=transformation['name'])
+                                if 'arguments' in transformation:
+                                    page_transformation.arguments = transformation['arguments']
+                                
+                                page_transformation.save()
+                        
+                        
 
                 if 'document_type_available_filenames' in local_form.cleaned_data:
                     if local_form.cleaned_data['document_type_available_filenames']:
@@ -445,17 +464,20 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     page = int(request.GET.get('page', 1))
     transformation_list = []
     try:
+        #Catch invalid or non existing pages
         document_page = DocumentPage.objects.get(document=document, page_number=page)
     
-        for tranformation in document_page.documentpagetransformation_set.all():
+        for page_transformation in document_page.documentpagetransformation_set.all():
             try:
-                transformation_list.append(tranformation.get_transformation())
+                if page_transformation.transformation in TRANFORMATION_CHOICES:
+                    output = TRANFORMATION_CHOICES[page_transformation.transformation] % eval(page_transformation.arguments)
+                    transformation_list.append(output)
             except Exception, e:
                 if request.user.is_staff:
-                    messages.warning(request, _(u'Transformation %s error: %s' % (tranformation, e)))
+                    messages.warning(request, _(u'Error for transformation %s:, %s' % (page_transformation.get_transformation_display(), e)))
                 else:
                     pass
-    except:
+    except ObjectDoesNotExist:
         pass
 
     tranformation_string = ' '.join(transformation_list)

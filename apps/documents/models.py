@@ -14,8 +14,6 @@ from django.db.models import Q
 
 from dynamic_search.api import register
 
-from converter.conf.settings import TRANFORMATION_CHOICES
-
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
@@ -27,7 +25,7 @@ from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
 from documents.conf.settings import FILESYSTEM_FILESERVING_PATH
 from documents.conf.settings import FILESYSTEM_SLUGIFY_PATHS
 from documents.conf.settings import FILESYSTEM_MAX_RENAME_COUNT
-
+from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 
 if FILESYSTEM_SLUGIFY_PATHS == False:
     #Do not slugify path or filenames and extensions
@@ -447,21 +445,18 @@ class MetadataGroupItem(models.Model):
         verbose_name = _(u'metadata group item')
         verbose_name_plural = _(u'metadata group items')
 
+
+available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()]) if AVAILABLE_MODELS else []
+
     
 class DocumentPageTransformation(models.Model):
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'order'))
-    transformation = models.CharField(choices=TRANFORMATION_CHOICES, max_length=128, verbose_name=_(u'transformation'))
+    transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use directories to indentify arguments, example: {\'degrees\':90}'))
 
     def __unicode__(self):
-        return self.get_transformation_display()
-
-    def get_transformation(self):
-        try:
-            return self.transformation % eval(self.arguments)
-        except Exception, e:
-            raise Exception(e)
+        return '%s - %s' % (self.document_page, self.get_transformation_display())
 
     class Meta:
         ordering = ('order',)

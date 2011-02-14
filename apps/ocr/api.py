@@ -37,10 +37,8 @@ def run_tesseract(input_filename, output_filename_base, lang=None):
 
 
 def ocr_document(document):
-    total_pages = 1
-    page = 0
-    while page < total_pages:
-        imagefile = convert_document_for_ocr(document, page=page)
+    for page_index, document_page in enumerate(document.documentpage_set.all()):    
+        imagefile = convert_document_for_ocr(document, page=page_index)
         desc, filepath = tempfile.mkstemp()
         try:
             status, error_string = run_tesseract(imagefile, filepath)
@@ -52,7 +50,7 @@ def ocr_document(document):
             f = file(ocr_output)
             try:
                 document_page, created = DocumentPage.objects.get_or_create(document=document,
-                    page_number=page)
+                    page_number=page_index+1)
                 document_page.content = f.read().strip()
                 document_page.page_label = _(u'Text from OCR')
                 document_page.save()
@@ -61,6 +59,3 @@ def ocr_document(document):
                 cleanup(filepath)
                 cleanup(ocr_output)
                 cleanup(imagefile)
-            
-        page += 1
-        

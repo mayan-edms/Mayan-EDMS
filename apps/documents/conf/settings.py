@@ -5,6 +5,7 @@ import tempfile
 
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 from converter.api import get_page_count
 
@@ -17,6 +18,11 @@ default_available_functions = {
 default_available_models = {
     'User':User
 }
+
+available_transformations = {
+    'rotate': {'label':_(u'Rotate [degrees]'), 'arguments':[{'name':'degrees'}]}
+}
+
 
 # Definition
 AVAILABLE_FUNCTIONS = getattr(settings, 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', default_available_functions)
@@ -43,6 +49,10 @@ PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_PREVIEW_SIZE', '640x480')
 MULTIPAGE_PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_MULTIPAGE_PREVIEW_SIZE', '160x120')
 THUMBNAIL_SIZE = getattr(settings, 'DOCUMENTS_THUMBNAIL_SIZE', '50x50')
 DISPLAY_SIZE = getattr(settings, 'DOCUMENTS_DISPLAY_SIZE', '1200')
+
+# Transformations
+AVAILABLE_TRANSFORMATIONS = getattr(settings, 'DOCUMENTS_AVAILABLE_TRANSFORMATIONS', available_transformations)
+DEFAULT_TRANSFORMATIONS = getattr(settings, 'DOCUMENTS_DEFAULT_TRANSFORMATIONS', [])
 
 #Groups
 GROUP_MAX_RESULTS = getattr(settings, 'DOCUMENTS_GROUP_MAX_RESULTS', 20)
