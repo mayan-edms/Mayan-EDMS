@@ -6,7 +6,6 @@ from django.utils.http import urlencode
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.forms.formsets import formset_factory
-from django.utils.http import urlquote_plus
 
 from staging import StagingFile
 
@@ -197,7 +196,7 @@ class DocumentCreateWizard(BoundFormWizard):
             for id, metadata in enumerate(form.cleaned_data):
                 if metadata['value']:
                     self.urldata.append(('metadata%s_id' % id, metadata['id']))   
-                    self.urldata.append(('metadata%s_value' % id, urlquote_plus(metadata['value'])))
+                    self.urldata.append(('metadata%s_value' % id, metadata['value']))
  
     def get_template(self, step):
         return 'generic_wizard.html'
@@ -210,6 +209,3 @@ class DocumentCreateWizard(BoundFormWizard):
 
         url = reverse(view, args=[self.document_type.id])
         return HttpResponseRedirect('%s?%s' % (url, urlencode(self.urldata)))
-
-urlquote_plus
-MetadataFormSet = formset_factory(MetadataForm, extra=0)

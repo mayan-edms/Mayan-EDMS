@@ -11,7 +11,6 @@ from django.conf import settings
 from django.utils.http import urlencode
 from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.http import urlquote_plus
 
 from common.utils import pretty_size
 from permissions.api import check_permissions, Unauthorized
@@ -97,7 +96,7 @@ def document_create_sibling(request, document_id, multiple=True):
     for id, metadata in enumerate(document.documentmetadata_set.all()):
         if hasattr(metadata, 'value'):
             urldata.append(('metadata%s_id' % id, metadata.metadata_type.id))   
-            urldata.append(('metadata%s_value' % id, urlquote_plus(metadata.value)))
+            urldata.append(('metadata%s_value' % id, metadata.value))
         
     if multiple:
         view = 'upload_multiple_documents_with_type'
