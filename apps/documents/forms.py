@@ -197,7 +197,7 @@ class DocumentCreateWizard(BoundFormWizard):
             for id, metadata in enumerate(form.cleaned_data):
                 if metadata['value']:
                     self.urldata.append(('metadata%s_id' % id, metadata['id']))   
-                    self.urldata.append(('metadata%s_value' % id, urlquote_plus(metadata['value']))
+                    self.urldata.append(('metadata%s_value' % id, urlquote_plus(metadata['value'])))
  
     def get_template(self, step):
         return 'generic_wizard.html'
