@@ -151,9 +151,13 @@ def get_page_count(input_filepath):
         status, error_string, output = execute_identify(input_filepath, '-format %n')
         if status:
             errors = get_errors(error_string)
-            raise ConvertError(status, errors)
+            return 1
+            #raise ConvertError(status, errors)
     finally:
-        return int(output)
+        if output:
+            return int(output)
+        else:
+            return 1
 
 #TODO: slugify OCR_OPTIONS and add to file name to cache
 def convert_document_for_ocr(document, page=0, format='tif'):
