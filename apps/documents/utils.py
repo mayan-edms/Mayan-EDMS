@@ -97,5 +97,5 @@ def save_metadata(metadata_dict, document):
         metadata_type=get_object_or_404(MetadataType, pk=metadata_dict['id']),
     )
     #Handle 'plus sign as space' in the url
-    document_metadata.value=unquote_plus(metadata_dict['value'])
+    document_metadata.value=unquote_plus(metadata_dict['value']).decode('utf-8')
     document_metadata.save()        
