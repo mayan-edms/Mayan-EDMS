@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 09:20-0400\n"
-"PO-Revision-Date: 2011-02-10 09:21\n"
+"POT-Creation-Date: 2011-02-14 02:26-0400\n"
+"PO-Revision-Date: 2011-02-14 02:27\n"
 "Last-Translator: <admin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,14 +19,18 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:8
+#: __init__.py:11
+msgid "Submit document for OCR"
+msgstr "Enviar documento para OCR"
+
+#: __init__.py:14
 msgid "submit to OCR queue"
 msgstr "enviar a lista de OCR"
 
-#: api.py:57
+#: api.py:55
 msgid "Text from OCR"
 msgstr "Texto de OCR"
 
-#: views.py:26
+#: views.py:32
 msgid "Document OCR was successful."
 msgstr "El OCR del documento se ha realizado con éxito."

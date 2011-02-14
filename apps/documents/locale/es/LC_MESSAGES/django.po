@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 09:08-0400\n"
-"PO-Revision-Date: 2011-02-10 09:17\n"
+"POT-Creation-Date: 2011-02-14 02:19-0400\n"
+"PO-Revision-Date: 2011-02-14 02:25\n"
 "Last-Translator: <admin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,107 +19,143 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:15
+#: __init__.py:26
+#, fuzzy
+msgid "Create document"
+msgstr "documento"
+
+#: __init__.py:27
+#, fuzzy
+msgid "Edit document properties"
+msgstr "páginas de documentos"
+
+#: __init__.py:28
+#, fuzzy
+msgid "Edit document metadata"
+msgstr "metadatos de documento"
+
+#: __init__.py:29
+#, fuzzy
+msgid "View document"
+msgstr "documento"
+
+#: __init__.py:30
+#, fuzzy
+msgid "Delete document"
+msgstr "documento"
+
+#: __init__.py:31
+#, fuzzy
+msgid "Download document"
+msgstr "subir un documento"
+
+#: __init__.py:32
+#, fuzzy
+msgid "Transform document"
+msgstr "documento"
+
+#: __init__.py:35
 msgid "documents list"
 msgstr "lista de documentos"
 
-#: __init__.py:16
+#: __init__.py:36
 msgid "upload a document"
 msgstr "subir un documento"
 
-#: __init__.py:17
+#: __init__.py:37
 msgid "upload multiple documents"
 msgstr "subir varios documentos"
 
-#: __init__.py:18
+#: __init__.py:38
 msgid "upload using same metadata"
 msgstr "subir con los mismos metadatos"
 
-#: __init__.py:19
+#: __init__.py:39
 msgid "details"
 msgstr "detalles"
 
-#: __init__.py:20
+#: __init__.py:40 __init__.py:51
 msgid "delete"
 msgstr "eliminar"
 
-#: __init__.py:21
+#: __init__.py:41
 msgid "edit"
 msgstr "editar"
 
-#: __init__.py:22
+#: __init__.py:42
 msgid "edit metadata"
 msgstr "editar metadatos"
 
-#: __init__.py:23 __init__.py:26
+#: __init__.py:43 __init__.py:50
 msgid "preview"
 msgstr "muestra"
 
-#: __init__.py:24
+#: __init__.py:44
 msgid "download"
 msgstr "descarga"
 
-#: __init__.py:35
-msgid "mimetype"
-msgstr ""
-
-#: __init__.py:36 models.py:65
-msgid "added"
-msgstr "agregado"
-
-#: __init__.py:37
-msgid "file size"
-msgstr "tamaño de archivo"
-
-#: __init__.py:38
+#: __init__.py:64
 msgid "thumbnail"
 msgstr "miniatura"
 
-#: __init__.py:45 models.py:72 views.py:43
+#: __init__.py:68 views.py:296
+msgid "metadata"
+msgstr "metadatos"
+
+#: __init__.py:75 models.py:73 views.py:64
 msgid "documents"
 msgstr "documentos"
 
-#: forms.py:34 forms.py:70
-msgid "Document type available filenames"
-msgstr "Nombres disponibles"
+#: forms.py:30 views.py:269
+msgid "Pages"
+msgstr "Páginas"
 
-#: forms.py:52
+#: forms.py:43
+msgid "Click on the image for full size view"
+msgstr "Haga clic en la imagen para ver en tamaño completo"
+
+#: forms.py:62 forms.py:107
+#, fuzzy
+msgid "Quick document rename"
+msgstr "Nuevo nombre del archivo"
+
+#: forms.py:89
 msgid "New document filename"
 msgstr "Nuevo nombre del archivo"
 
-#: forms.py:72
+#: forms.py:109
 msgid "Staging file"
 msgstr "Archivo de ensayo"
 
-#: forms.py:93 models.py:230
+#: forms.py:129 models.py:309
 msgid "required"
 msgstr "requerido"
 
-#: forms.py:116
+#: forms.py:152
 msgid "id"
 msgstr "Identificador"
 
-#: forms.py:117
+#: forms.py:153
 msgid "Name"
 msgstr "Nombre"
 
-#: forms.py:119
+#: forms.py:155
 msgid "Value"
 msgstr "Valor"
 
-#: forms.py:134
+#: forms.py:171
 msgid "step 1 of 2: Document type"
 msgstr "paso 1 de 2: Tipo de documento"
 
-#: forms.py:135
+#: forms.py:172
 msgid "step 2 of 2: Document metadata"
 msgstr "paso 2 de 2: Metadatos de documento"
 
-#: models.py:48 models.py:208
+#: models.py:48 models.py:288 models.py:393
 msgid "name"
 msgstr "nombre"
 
-#: models.py:58 models.py:228 models.py:242 models.py:284
+#: models.py:58 models.py:307 models.py:321 models.py:363 models.py:392
 msgid "document type"
 msgstr "tipo de documento"
 
@@ -128,278 +164,485 @@ msgid "file"
 msgstr "archivo"
 
 #: models.py:66
+msgid "added"
+msgstr "agregado"
+
+#: models.py:67
 msgid "updated"
 msgstr "actualizado"
 
-#: models.py:67
+#: models.py:68
 msgid "checksum"
 msgstr ""
 
-#: models.py:68
+#: models.py:69
 msgid "description"
 msgstr "descripción"
 
-#: models.py:71 models.py:257 models.py:271 models.py:298 models.py:311
-#: views.py:265
+#: models.py:72 models.py:336 models.py:350 models.py:377 models.py:467
+#: views.py:351
 msgid "document"
 msgstr "documento"
 
-#: models.py:103
+#: models.py:180
 msgid "Not creating metadata indexing, document not found in document storage"
 msgstr "No se creó la indexación de metadatos, el documento no se encuentran en almacenamiento de documentos"
 
-#: models.py:118
+#: models.py:195
 #, python-format
 msgid "Unable to create metadata indexing directory: %s"
 msgstr "No se puede crear el directorio de indexación de metadatos: %s"
 
-#: models.py:138
+#: models.py:216
 #, python-format
 msgid "Unable to delete metadata indexing symbolic link: %s"
 msgstr "No se puede eliminar el enlace simbólico de indexación de metadatos: %s"
 
-#: models.py:192
+#: models.py:272
 #, python-format
 msgid "Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s"
 msgstr "No se puede crear un enlace simbólico, choque de nombre de archivo: %(filepath)s; %(exc)s "
 
-#: models.py:195
+#: models.py:275
 #, python-format
 msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
 msgstr "No se puede crear un enlace simbólico de indexación de metadatos %(filepath)s; %(exc)s"
 
-#: models.py:200
+#: models.py:280
 msgid "Maximum rename count reached, not creating symbolic link"
 msgstr "Conteo de cambio de nombre llego al máximo, no se va a crear el enlaces simbólico"
 
-#: models.py:204
+#: models.py:284
 #, python-format
 msgid " Available functions: %s"
 msgstr "Funciones disponibles: %s"
 
-#: models.py:205
+#: models.py:285
 #, python-format
 msgid " Available models: %s"
 msgstr "Modelos disponibles: %s"
 
-#: models.py:208
+#: models.py:288
 msgid "Do not use python reserved words."
 msgstr "No utilice palabras reservadas de Python."
 
-#: models.py:209
+#: models.py:289
 msgid "title"
 msgstr "título"
 
-#: models.py:211
+#: models.py:291
 msgid "default"
 msgstr "por defecto"
 
-#: models.py:212
+#: models.py:292
 #, python-format
 msgid "Enter a string to be evaluated.%s"
 msgstr "Introduzca una cadena para ser evaluada.%s"
 
-#: models.py:214
+#: models.py:294
 msgid "lookup"
 msgstr "búsqueda"
 
-#: models.py:215
+#: models.py:295
 #, python-format
 msgid "Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s"
 msgstr "Introduzca una cadena para ser evaluada. Ejemplo: [user.get_full_name () for user in User.objects.all ()].%s"
 
-#: models.py:223 models.py:229 models.py:272
+#: models.py:302 models.py:308 models.py:351 models.py:434
 msgid "metadata type"
 msgstr "tipo de metadatos"
 
-#: models.py:224
+#: models.py:303
 msgid "metadata types"
 msgstr "tipos de metadatos"
 
-#: models.py:237
+#: models.py:316
 msgid "document type metadata type connector"
 msgstr "conector tipo de documento y tipo de metadatos "
 
-#: models.py:238
+#: models.py:317
 msgid "document type metadata type connectors"
 msgstr "conectores de tipos de documentos y tipos de metadatos"
 
-#: models.py:244
+#: models.py:323
 msgid "indexing expression"
 msgstr "expresión de indexación"
 
-#: models.py:245
+#: models.py:324
 msgid "Enter a python string expression to be evaluated.  The slash caracter \"/\" acts as a directory delimiter."
 msgstr "Introduzca una expresión de cadena de python para ser evaluada. El caracter barra \"/\" actúa como un delimitador de directorio."
 
-#: models.py:246 models.py:286
+#: models.py:325 models.py:365 models.py:395 models.py:439
 msgid "enabled"
 msgstr "habilitado"
 
-#: models.py:252 models.py:258
+#: models.py:331 models.py:337
 msgid "metadata index"
 msgstr "índice de metadatos"
 
-#: models.py:253
+#: models.py:332
 msgid "metadata indexes"
 msgstr "índices de metadatos"
 
-#: models.py:259 models.py:285
+#: models.py:338 models.py:364
 msgid "filename"
 msgstr "nombre de archivo"
 
-#: models.py:260
+#: models.py:339
 msgid "suffix"
 msgstr "sufijo"
 
-#: models.py:266
+#: models.py:345
 msgid "document metadata index"
 msgstr "índice de metadatos de documento"
 
-#: models.py:267
+#: models.py:346
 msgid "document metadata indexes"
 msgstr "índices de metadatos de documento"
 
-#: models.py:273
+#: models.py:352
 msgid "metadata value"
 msgstr "datos de metadato"
 
-#: models.py:279 models.py:280
+#: models.py:358 models.py:359 views.py:80
 msgid "document metadata"
 msgstr "metadatos de documento"
 
-#: models.py:293
-msgid "document type filename"
+#: models.py:372
+#, fuzzy
+msgid "document type quick rename filename"
 msgstr "nombre de archivo de tipo de documento"
 
-#: models.py:294
-msgid "document types filenames"
+#: models.py:373
+#, fuzzy
+msgid "document types quick rename filenames"
 msgstr "nombres de archivos de tipos de documentos"
 
-#: models.py:299
+#: models.py:378
 msgid "content"
 msgstr "contenido"
 
-#: models.py:300
+#: models.py:379
 msgid "page label"
 msgstr "etiqueta de la página"
 
-#: models.py:301
+#: models.py:380
 msgid "page number"
 msgstr "número de página"
 
-#: models.py:307
+#: models.py:386 models.py:453
 msgid "document page"
 msgstr "página de documento"
 
-#: models.py:308
+#: models.py:387
 msgid "document pages"
 msgstr "páginas de documentos"
 
-#: staging.py:23
+#: models.py:392
+msgid "If left blank, all document types will be matched."
+msgstr ""
+
+#: models.py:394
+#, fuzzy
+msgid "label"
+msgstr "etiqueta de la página"
+
+#: models.py:401
+#, fuzzy
+msgid "metadata document group"
+msgstr "tipo de metadatos"
+
+#: models.py:402
+#, fuzzy
+msgid "metadata document groups"
+msgstr "tipos de metadatos"
+
+#: models.py:409
+msgid "and"
+msgstr "y"
+
+#: models.py:410
+msgid "or"
+msgstr "o"
+
+#: models.py:414
+msgid "is equal"
+msgstr "es igual"
+
+#: models.py:415
+msgid "is equal (case insensitive)"
+msgstr "es igual (mayúsculas y minúsculas)"
+
+#: models.py:416
+#, fuzzy
+msgid "contains"
+msgstr "contenido"
+
+#: models.py:417
+msgid "contains (case insensitive)"
+msgstr "contiene (mayúsculas y minúsculas)"
+
+#: models.py:418
+msgid "is in"
+msgstr "está en"
+
+#: models.py:419
+msgid "is greater than"
+msgstr "es mayor que"
+
+#: models.py:420
+msgid "is greater than or equal"
+msgstr "es mayor o igual"
+
+#: models.py:421
+msgid "is less than"
+msgstr "es menor que"
+
+#: models.py:422
+msgid "is less than or equal"
+msgstr "es menor o igual"
+
+#: models.py:423
+msgid "starts with"
+msgstr "comienza con"
+
+#: models.py:424
+msgid "starts with (case insensitive)"
+msgstr "comienza con (mayúsculas y minúsculas)"
+
+#: models.py:425
+msgid "ends with"
+msgstr "termina con"
+
+#: models.py:426
+msgid "ends with (case insensitive)"
+msgstr "termina con (mayúsculas y minúsculas)"
+
+#: models.py:427
+msgid "is in regular expression"
+msgstr "está en la expresion regular"
+
+#: models.py:428
+msgid "is in regular expression (case insensitive)"
+msgstr "está en la expresión regular (mayúsculas y minúsculas)"
+
+#: models.py:432
+#, fuzzy
+msgid "metadata group"
+msgstr "tipo de metadatos"
+
+#: models.py:433
+msgid "The inclusion is ignored for the first item."
+msgstr "La inclusión es ignorada para el primer artículo."
+
+#: models.py:434
+msgid "This represents the metadata of all other documents."
+msgstr "Esto representa los metadatos de todos los demás documentos."
+
+#: models.py:437
+#, fuzzy
+msgid "expression"
+msgstr "extensión"
+
+#: models.py:437
+msgid "This expression will be evaluated against the current seleted document.  The document metadata is available as variables of the same name but with the \"metadata_\" prefix added their name."
+msgstr ""
+
+#: models.py:438
+msgid "negated"
+msgstr "negada"
+
+#: models.py:438
+msgid "Inverts the logic of the operator."
+msgstr "Invierte la lógica del operador."
+
+#: models.py:442
+msgid "not"
+msgstr "not"
+
+#: models.py:445
+#, fuzzy
+msgid "metadata group item"
+msgstr "tipo de metadatos"
+
+#: models.py:446
+#, fuzzy
+msgid "metadata group items"
+msgstr "tipos de metadatos"
+
+#: models.py:454
+msgid "order"
+msgstr "orden"
+
+#: models.py:455
+msgid "transformation"
+msgstr "transformación"
+
+#: models.py:456
+#, fuzzy
+msgid "arguments"
+msgstr "documentos"
+
+#: models.py:456
+msgid "Use directories to indentify arguments, example: {'degrees':90}"
+msgstr "Use directorios para identificar los argumentos, por ejemplo: {'grados': 90}"
+
+#: models.py:463
+#, fuzzy
+msgid "document page transformation"
+msgstr "páginas de documentos"
+
+#: models.py:464
+#, fuzzy
+msgid "document page transformations"
+msgstr "páginas de documentos"
+
+#: staging.py:24
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "No se puede obtener la lista de archivos de ensayo: %s"
 
-#: staging.py:69
+#: staging.py:70
 #, python-format
 msgid "Unable to upload staging file: %s"
 msgstr "No se puede subir archivo de ensayo: %s"
 
-#: staging.py:88
+#: staging.py:89
 #, python-format
 msgid "Unable to delete staging file: %s"
 msgstr "No se puede eliminar archivo de ensayo: %s"
 
-#: views.py:126
+#: views.py:153
 msgid "Document uploaded successfully."
 msgstr "Documento subido con éxito."
 
-#: views.py:161
+#: views.py:190
 #, python-format
 msgid "Staging file: %s, uploaded successfully."
 msgstr "Archivo de ensayo: %s, ha subido con éxito."
 
-#: views.py:170
+#: views.py:199
 #, python-format
 msgid "Staging file: %s, deleted successfully."
 msgstr "Archivo de ensayo: %s, eliminado con éxito."
 
-#: views.py:185
+#: views.py:214
 msgid "upload a local document"
 msgstr "subir un documento local"
 
-#: views.py:201
+#: views.py:232
 msgid "files in staging"
 msgstr "archivos de ensayo"
 
-#: views.py:210
+#: views.py:241
 msgid "upload a document from staging"
 msgstr "subir un documento de ensayo"
 
-#: views.py:221
+#: views.py:259
 msgid "Filename"
 msgstr "Nombre del archivo"
 
-#: views.py:222
+#: views.py:260
 msgid "File extension"
 msgstr "Extensión de archivo"
 
-#: views.py:223
+#: views.py:261
 msgid "File mimetype"
 msgstr "Tipo MIME del archivo"
 
-#: views.py:224
+#: views.py:262
+#, fuzzy
+msgid "File mime encoding"
+msgstr "Tipo MIME del archivo"
+
+#: views.py:263
 msgid "File size"
 msgstr "Tamaños del archivo"
 
-#: views.py:225
+#: views.py:264
 msgid "Exists in storage"
 msgstr "Existe en el almacenamiento"
 
-#: views.py:226
+#: views.py:265
 msgid "Date added"
 msgstr "Fecha en que se agregó"
 
-#: views.py:227
+#: views.py:266
 msgid "Time added"
 msgstr "El tiempo añadido"
 
-#: views.py:228
+#: views.py:267
 msgid "Checksum"
 msgstr ""
 
-#: views.py:229
+#: views.py:268
 msgid "UUID"
 msgstr "UUID"
 
-#: views.py:235
-msgid "metadata"
-msgstr "metadatos"
+#: views.py:276
+#, python-format
+msgid "Metadata group query error: %s"
+msgstr "error de consulta de grupo de metadatos: %s"
 
-#: views.py:237
+#: views.py:287
+#, fuzzy
+msgid "document preview"
+msgstr "página de documento"
+
+#: views.py:298
 msgid "value"
 msgstr "valor"
 
-#: views.py:245
+#: views.py:306
 msgid "index links"
 msgstr "enlaces de índice"
 
-#: views.py:288
-#, python-format
-msgid "Document:%s edited successfully."
+#: views.py:380
+#, fuzzy, python-format
+msgid "Document %s edited successfully."
 msgstr "Documento:%s editado con éxito."
 
-#: views.py:292 views.py:344
+#: views.py:384 views.py:439
 msgid "Document filesystem links updated successfully."
 msgstr "Enlaces del documento actualizados con éxito."
 
-#: views.py:340
-msgid "Document metadata edited successfully."
-msgstr "Metadatos de documento editados con éxito."
+#: views.py:435
+#, fuzzy, python-format
+msgid "Metadata for document %s edited successfully."
+msgstr "Documento:%s editado con éxito."
+
+#: views.py:477
+#, python-format
+msgid "Error for transformation %(transformation)s:, %(error)s"
+msgstr ""
+
+#: views.py:539
+#, fuzzy
+msgid "Staging file delete successfully."
+msgstr "Archivo de ensayo: %s, eliminado con éxito."
+
+#: views.py:567
+#, fuzzy
+msgid "document transformations"
+msgstr "índices de metadatos de documento"
+
+#: views.py:586
+#, fuzzy
+msgid "document transformation"
+msgstr "índice de metadatos de documento"
+
+#: conf/settings.py:23
+msgid "Rotate [degrees]"
+msgstr "Rotar [degrees]"
+
+#~ msgid "file size"
+#~ msgstr "tamaño de archivo"
+
+#~ msgid "Document type available filenames"
+#~ msgstr "Nombres disponibles"
+
+#~ msgid "Document metadata edited successfully."
+#~ msgstr "Metadatos de documento editados con éxito."
 
 #~ msgid "create directory link"
 #~ msgstr "crear enlace de directorio"
-
-#~ msgid "extension"
-#~ msgstr "extensión"
