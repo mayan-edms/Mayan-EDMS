@@ -52,6 +52,10 @@ class Role(models.Model):
                 
     def __unicode__(self):
         return self.label
+        
+    @models.permalink
+    def get_absolute_url(self):
+        return ('role_view', [self.id])
 
 
 class RoleMember(models.Model):

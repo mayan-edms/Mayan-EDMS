@@ -6,7 +6,7 @@
 {% block javascript %}
     <script type="text/javascript">
     $(function() {
-        $("#subform form :input").each(function() {
+        $(".generic_subform form :input").each(function() {
             this.disabled = true;
         });
     });
@@ -15,7 +15,9 @@
 
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates %}
-        {% include subtemplate %}
+        <div class="generic_subform">
+            {% include subtemplate %}
+        </div>        
     {% endfor %}
 
     {% for subtemplate in sidebar_subtemplates_dict %}
@@ -57,7 +59,9 @@
     {% if form %}
         {% with "true" as read_only %}
             <div class="grid_{{ grid|default:11 }}">
-            {% include "generic_form_subtemplate.html" %}
+                <div class="generic_subform">
+                    {% include "generic_form_subtemplate.html" %}
+                </div>
             </div>
             {% if grid_clear or not grid %}
                 <div class="clear"></div> 
@@ -79,7 +83,9 @@
         {% with "true" as read_only %}        
             <div class="grid_{{ form.grid|default:11 }}">
         {% with form.form as form %}
-            {% include "generic_form_subtemplate.html" %}
+            <div class="generic_subform">
+                {% include "generic_form_subtemplate.html" %}
+            </div>
         {% endwith %}
             </div>
             {% if form.grid_clear or not form.grid %}
@@ -104,14 +110,12 @@
     {% with subtemplate.main_object as main_object %}
     {% with subtemplate.hide_link as hide_link %}
     {% with subtemplate.hide_header as hide_header %}
-            <div class="grid_{{ subtemplate.grid|default:11 }}">
-
-        {% include subtemplate.name %}
-
-            </div>
-            {% if subtemplate.grid_clear or not subtemplate.grid %}
-                <div class="clear"></div> 
-            {% endif %}
+        <div class="grid_{{ subtemplate.grid|default:11 }}">
+            {% include subtemplate.name %}
+        </div>
+        {% if subtemplate.grid_clear or not subtemplate.grid %}
+            <div class="clear"></div> 
+        {% endif %}
     {% endwith %}
     {% endwith %}
     {% endwith %}
