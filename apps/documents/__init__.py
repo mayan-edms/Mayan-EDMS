@@ -47,7 +47,7 @@ document_download = {'text':_('download'), 'view':'document_download', 'args':'o
 #document_transformation_delete = {'text':_('delete'), 'view':'document_transformation_delete', 'args':'object.id', 'famfam':'delete'}#, 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
 
 
-staging_file_preview = {'text':_('preview'), 'class':'fancybox', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
+staging_file_preview = {'text':_('preview'), 'class':'fancybox-noscaling', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':'object.id', 'famfam':'drive_delete'}
 
 register_links(Document, [document_view, document_edit, document_edit_metadata, document_delete, document_download], menu_name='sidebar')
