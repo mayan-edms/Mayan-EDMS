@@ -115,7 +115,7 @@ def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_D
         return None
     
     
-def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', extra_options='', mimetype=None, extension=None, cleanup=True):
+def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', extra_options='', mimetype=None, extension=None, cleanup_files=True):
     unoconv_output = None
     output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     if os.path.exists(output_filepath):
@@ -140,7 +140,7 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
             errors = get_errors(error_string)
             raise ConvertError(status, errors)
     finally:
-        if cleanup:
+        if cleanup_files:
             cleanup(input_filepath)
         if unoconv_output:
             cleanup(unoconv_output)
