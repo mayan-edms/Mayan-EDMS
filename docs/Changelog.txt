@@ -9,3 +9,4 @@
 * Added multipage documents support (only tested on pdfs)
     To update a previous database do: [d.update_page_count() for d in Document.objects.all()]
 * Added support for document page transformation (no GUI yet)
+* Added views to create, edit and grant/revoke permissions to roles
