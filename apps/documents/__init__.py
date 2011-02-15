@@ -72,8 +72,8 @@ register_model_list_columns(Document, [
     ])
 
 register_menu([
-    {'text':_('documents'), 'view':'document_list', 'links':[
-        document_list
+    {'text':_('documents'), 'view':'document_create', 'links':[
+        document_create, document_create_multiple, document_list
     ],'famfam':'page','position':4}])
 
 TEMPORARY_DIRECTORY = common_settings.TEMPORARY_DIRECTORY if common_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
