@@ -519,9 +519,24 @@ def document_download(request, document_id):
 
 #TODO: Need permission
 def staging_file_preview(request, staging_file_id):
+    transformation_list = []
+    for page_transformation in DEFAULT_TRANSFORMATIONS:
+        try:
+            if page_transformation['name'] in TRANFORMATION_CHOICES:
+                output = TRANFORMATION_CHOICES[page_transformation['name']] % eval(page_transformation['arguments'])
+                transformation_list.append(output)
+        except Exception, e:
+            if request.user.is_staff:
+                messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') % 
+                    {'transformation':page_transformation.get_transformation_display(),
+                    'error':e})
+            else:
+                pass
+    tranformation_string = ' '.join(transformation_list)
+     
     try:
         filepath = StagingFile.get(staging_file_id).filepath
-        output_file = convert(filepath, STAGING_FILES_PREVIEW_SIZE, cleanup=False)
+        output_file = convert(filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup=False)
         return serve_file(request, File(file=open(output_file, 'r')))
     except Exception, e:
         return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))        
