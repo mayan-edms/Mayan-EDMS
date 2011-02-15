@@ -70,3 +70,4 @@
 * Include annotations in transformed documents downloads
 * Document view temp transformations
 * Implement permissions decorators
+* block Setup menu item to non staff and non superuser users

@@ -227,6 +227,7 @@ def get_object_navigation_links(parser, token):
     
 def object_navigation_template(context):
     return {
+        'request':context['request'],
         'horizontal':True,
         'object_navigation_links':_get_object_navigation_links(context)
     }

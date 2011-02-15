@@ -4,16 +4,23 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 
+class PermissionManager(models.Manager):
+    def get_for_holder(self, holder):
+        ct = ContentType.objects.get_for_model(holder)
+        return [Permission.objects.get(id=id) for id in PermissionHolder.objects.filter(holder_type=ct,holder_id=holder.id).values_list('permission_id', flat=True)]
+
 class Permission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
     label = models.CharField(max_length=64, verbose_name=_(u'label'))
 
+    objects = PermissionManager()
+    
     class Meta:
+        ordering = ('namespace', 'label')
         unique_together = ('namespace', 'name')
         verbose_name = _(u'permission')
         verbose_name_plural = _(u'permissions')
-
 
     def __unicode__(self):
         return self.label
@@ -38,7 +45,7 @@ class PermissionHolder(models.Model):
 class Role(models.Model):
     name = models.CharField(max_length=64, unique=True)
     label = models.CharField(max_length=64, unique=True, verbose_name=_(u'label'))
-
+    
     class Meta:
         ordering = ('label',)
         verbose_name = _(u'role')
@@ -52,17 +59,17 @@ class Role(models.Model):
                 
     def __unicode__(self):
         return self.label
-        
+   
     @models.permalink
     def get_absolute_url(self):
-        return ('role_view', [self.id])
+        return ('role_list',)
 
 
 class RoleMember(models.Model):
     role = models.ForeignKey(Role, verbose_name=_(u'role'))
     member_type = models.ForeignKey(ContentType,
         related_name='role_member', 
-        limit_choices_to = {'model__in': ('user', 'group', 'role')})
+        limit_choices_to = {'model__in': ('user', 'group')})
     member_id = models.PositiveIntegerField()
     member_object = generic.GenericForeignKey(ct_field='member_type', fk_field='member_id')
 
