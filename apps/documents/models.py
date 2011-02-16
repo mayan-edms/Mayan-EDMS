@@ -400,7 +400,7 @@ class DocumentPage(models.Model):
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'))
         
     def __unicode__(self):
-        return '%s - %s - %s' % (self.document, self.page_number, self.page_label)
+        return '%s - %d - %s' % (unicode(self.document), self.page_number, self.page_label)
 
     class Meta:
         verbose_name = _(u'document page')
@@ -471,12 +471,12 @@ available_transformations = ([(name, data['label']) for name, data in AVAILABLE_
     
 class DocumentPageTransformation(models.Model):
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
-    order = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'order'))
+    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'))
     transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use directories to indentify arguments, example: {\'degrees\':90}'))
+    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
 
     def __unicode__(self):
-        return '%s - %s' % (self.document_page, self.get_transformation_display())
+        return '%s - %s' % (unicode(self.document_page), self.get_transformation_display())
 
     class Meta:
         ordering = ('order',)

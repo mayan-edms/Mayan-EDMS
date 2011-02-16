@@ -13,12 +13,43 @@ from common.wizard import BoundFormWizard
 from common.utils import urlquote
 from common.forms import DetailForm
 
-from models import Document, DocumentType, DocumentTypeMetadataType
+from models import Document, DocumentType, DocumentTypeMetadataType, \
+    DocumentPage, DocumentPageTransformation
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 
 
+class DocumentPageTransformationForm(forms.ModelForm):
+    class Meta:
+        model = DocumentPageTransformation
+        
+    def __init__(self, *args, **kwargs):
+        super(DocumentPageTransformationForm, self).__init__(*args, **kwargs)
+        self.fields['document_page'].widget = forms.HiddenInput()
+    
+
+class DocumentPageImageWidget(forms.widgets.Widget):
+    def render(self, name, value, attrs=None):
+        output = []
+        output.append('<img src="%(img)s?page=%(page)s" />' % {
+            'img':reverse('document_preview', args=[value.document.id]),
+            'page':value.page_number,
+            })
+        #output.append(super(ImageWidget, self).render(name, value, attrs))
+        return mark_safe(u''.join(output))  
+    
+
+class DocumentPageForm(forms.ModelForm):
+    class Meta:
+        model = DocumentPage
+
+    def __init__(self, *args, **kwargs):
+        super(DocumentPageForm, self).__init__(*args, **kwargs)
+        self.fields['page_image'].initial = self.instance
+                    
+    page_image = forms.CharField(widget=DocumentPageImageWidget())
+    
 
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
@@ -40,6 +71,11 @@ class ImageWidget(forms.widgets.Widget):
                 })
 
         output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
+        
+        #for document_page in value.documentpage_set.all():
+        #    output.append('<br/>%s)<a href="%s">%s</a>' % (document_page.page_number,
+        #        reverse('document_page_view', args=[document_page.id]),
+        #        ugettext(u'page view')))
         #output.append(super(ImageWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))  
 

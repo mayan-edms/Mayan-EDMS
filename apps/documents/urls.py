@@ -27,10 +27,11 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':False}, 'document_create_sibling'),
 
-    url(r'^document/(?P<document_id>\d+)/tranformation/list/$', 'document_transformation_list', (), 'document_transformation_list'),
-    url(r'^document/tranformation/(?P<document_transformation_id>\d+)/delete/$', 'document_transformation_delete', (), 'document_transformation_delete'),
-
-    
     url(r'^staging_file/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
     url(r'^staging_file/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),
+    
+    url(r'^document/page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
+    url(r'^document/page/(?P<document_page_id>\d+)/transformation/create/$', 'document_page_transformation_create', (), 'document_page_transformation_create'),
+    url(r'^document/page/transformation/(?P<document_page_transformation_id>\d+)/edit/$', 'document_page_transformation_edit', (), 'document_page_transformation_edit'),
+    url(r'^document/page/transformation/(?P<document_page_transformation_id>\d+)/delete/$', 'document_page_transformation_delete', (), 'document_page_transformation_delete'),
 )

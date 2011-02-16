@@ -43,9 +43,10 @@ document_edit_metadata = {'text':_('edit metadata'), 'view':'document_edit_metad
 document_preview = {'text':_('preview'), 'class':'fancybox', 'view':'document_preview', 'args':'object.id', 'famfam':'magnifier', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_download = {'text':_('download'), 'view':'document_download', 'args':'object.id', 'famfam':'page_save', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DOWNLOAD]}}
 
-#document_transformation_list = {'text':_(u'transformations'), 'view':'document_transformation_list', 'args':'object.id', 'famfam':'page_paintbrush', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
-#document_transformation_delete = {'text':_('delete'), 'view':'document_transformation_delete', 'args':'object.id', 'famfam':'delete'}#, 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
-
+document_page_transformation_create = {'text':_('create new transformation'), 'view':'document_page_transformation_create', 'args':'object.id', 'famfam':'pencil_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+document_page_transformation_edit = {'text':_('edit'), 'view':'document_page_transformation_edit', 'args':'object.id', 'famfam':'pencil_go', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+document_page_transformation_delete = {'text':_('delete'), 'view':'document_page_transformation_delete', 'args':'object.id', 'famfam':'pencil_delete', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+#document_page_transformation_go_back = {'text':_('delete'), 'view':'document_page_transformation_delete', 'args':'object.id', 'famfam':'pencil_delete', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
 
 staging_file_preview = {'text':_('preview'), 'class':'fancybox-noscaling', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':'object.id', 'famfam':'drive_delete'}
@@ -54,7 +55,8 @@ register_links(Document, [document_view, document_edit, document_edit_metadata, 
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
 register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
 
-#register_links(DocumentTransformation, [document_transformation_delete])
+register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
+register_links(['document_page_view', 'document_page_transformation_edit', 'document_page_transformation_delete', 'document_page_transformation_create'], [document_page_transformation_create], menu_name='sidebar')
 
 
 

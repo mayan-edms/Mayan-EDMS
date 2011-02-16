@@ -26,7 +26,7 @@ from models import Document, DocumentMetadata, DocumentType, MetadataType, \
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
-        MetadataFormSet
+        MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm
     
 from staging import StagingFile
 
@@ -461,7 +461,6 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     try:
         #Catch invalid or non existing pages
         document_page = DocumentPage.objects.get(document=document, page_number=page)
-    
         for page_transformation in document_page.documentpagetransformation_set.all():
             try:
                 if page_transformation.transformation in TRANFORMATION_CHOICES:
@@ -559,39 +558,118 @@ def staging_file_delete(request, staging_file_id):
     }, context_instance=RequestContext(request))
 
 
-def document_transformation_list(request, document_id):
+def document_page_view(request, document_page_id):
+    permissions = [PERMISSION_DOCUMENT_VIEW]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+        
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    document_page_form = DocumentPageForm(instance=document_page)
+
+    form_list = [
+        {
+            'form':document_page_form,
+            'title':_(u'document page'),
+            'object':document_page,
+            'grid':6,
+        },
+    ]
+    subtemplates_dict = [
+        {
+            'name':'generic_list_subtemplate.html',
+            'title':_(u'transformations'),
+            'object_list':document_page.documentpagetransformation_set.all(),
+            'extra_columns':[
+                {'name':_(u'order'), 'attribute':'order'},
+                {'name':_(u'transformation'), 'attribute':lambda x: x.get_transformation_display()},
+                {'name':_(u'arguments'), 'attribute':'arguments'}
+                ],
+            'hide_link':True,
+            'hide_object':True,
+            'grid':6,
+            'grid_clear':True,
+            'hide_header':True,
+        },
+    ]
+           
+    return render_to_response('generic_detail.html', {
+        'form_list':form_list,
+        'object':document_page,
+        'subtemplates_dict':subtemplates_dict,
+    }, context_instance=RequestContext(request))
+    
+    
+def document_page_transformation_create(request, document_page_id):
     permissions = [PERMISSION_DOCUMENT_TRANSFORM]
     try:
         check_permissions(request.user, 'documents', permissions)
     except Unauthorized, e:
         raise Http404(e)
-    
-    document = get_object_or_404(Document, pk=document_id)
-    
-    
-    return object_list(
-        request,
-        queryset=document.documenttransformation_set.all(),
-        template_name='generic_list.html',
-        extra_context={
-            'title':_(u'document transformations'),
-        },
-    )
 
-def document_transformation_delete(request, document_transformation_id):
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+        
+    if request.method == 'POST':
+        form = DocumentPageTransformationForm(request.POST, initial={'document_page':document_page})
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('document_page_view', args=[document_page_id]))
+    else:
+        form = DocumentPageTransformationForm(initial={'document_page':document_page})
+
+    return render_to_response('generic_form.html', {
+        'form':form,
+        'object':document_page,
+        'title':_(u'Create new transformation for page: %s of document: %s') % (
+            document_page.page_number, document_page.document),
+    }, context_instance=RequestContext(request))            
+
+
+def document_page_transformation_edit(request, document_page_transformation_id):
+    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+
+    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
+    return update_object(request, template_name='generic_form.html', 
+        form_class=DocumentPageTransformationForm, 
+        object_id=document_page_transformation_id,
+        post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page.id]),
+        extra_context={
+            'object_name':_(u'transformation')}
+        )
+
+    return render_to_response('generic_form.html', {
+        'form':form,
+        'object':document_page_transformation.document_page,
+        'title':_(u'Edit transformation "%s" for page: %s of document: %s') % (
+            document_page_transformation.get_transformation_display(),
+            document_page_transformation.document_page.page_number,
+            document_page_transformation.document_page.document),
+    }, context_instance=RequestContext(request))     
+
+
+def document_page_transformation_delete(request, document_page_transformation_id):
     permissions = [PERMISSION_DOCUMENT_TRANSFORM]
     try:
         check_permissions(request.user, 'documents', permissions)
     except Unauthorized, e:
         raise Http404(e)
             
-    document_transformation = get_object_or_404(DocumentPageTransformation, pk=document_transformation_id)
+    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
         
-    return delete_object(request, model=DocumentPageTransformation, object_id=document_transformation_id, 
+    return delete_object(request, model=DocumentPageTransformation, object_id=document_page_transformation_id, 
         template_name='generic_confirm.html', 
-        post_delete_redirect=reverse('document_transformation_list'),
+        post_delete_redirect=reverse('document_page_view', args=[document_page_transformation.document_page.id]),
         extra_context={
             'delete_view':True,
-            'object':document_transformation,
+            'object':document_page_transformation,
             'object_name':_(u'document transformation'),
+            'title':_(u'Are you sure you wish to delete transformation "%s" for page: %s of document: %s') % (
+                document_page_transformation.get_transformation_display(),
+                document_page_transformation.document_page.page_number,
+                document_page_transformation.document_page.document),
         })
