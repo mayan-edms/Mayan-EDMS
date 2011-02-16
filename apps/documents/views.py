@@ -333,6 +333,8 @@ def document_delete(request, document_id):
         raise Http404(e)
             
     document = get_object_or_404(Document, pk=document_id)
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
         
     return delete_object(request, model=Document, object_id=document_id, 
         template_name='generic_confirm.html', 
@@ -341,6 +343,7 @@ def document_delete(request, document_id):
             'delete_view':True,
             'object':document,
             'object_name':_(u'document'),
+            'previous':previous,
         })
         
         
