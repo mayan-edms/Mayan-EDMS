@@ -129,20 +129,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 instance.update_checksum()
                 instance.update_mimetype()
                 instance.update_page_count()
-                if DEFAULT_TRANSFORMATIONS:
-                    for transformation in DEFAULT_TRANSFORMATIONS:
-                        if 'name' in transformation:
-                            for document_page in instance.documentpage_set.all():
-                                page_transformation = DocumentPageTransformation(
-                                    document_page=document_page,
-                                    order=0, 
-                                    transformation=transformation['name'])
-                                if 'arguments' in transformation:
-                                    page_transformation.arguments = transformation['arguments']
-                                
-                                page_transformation.save()
-                        
-                        
+                instance.apply_default_transformations()
 
                 if 'document_type_available_filenames' in local_form.cleaned_data:
                     if local_form.cleaned_data['document_type_available_filenames']:
@@ -177,6 +164,8 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         document.update_checksum()
                         document.update_mimetype()
                         document.update_page_count()
+                        document.apply_default_transformations()
+                        
                     except Exception, e:
                         messages.error(request, e)   
                     else:

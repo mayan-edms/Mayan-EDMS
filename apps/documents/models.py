@@ -26,6 +26,7 @@ from documents.conf.settings import FILESYSTEM_FILESERVING_PATH
 from documents.conf.settings import FILESYSTEM_SLUGIFY_PATHS
 from documents.conf.settings import FILESYSTEM_MAX_RENAME_COUNT
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
+from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 
 if FILESYSTEM_SLUGIFY_PATHS == False:
     #Do not slugify path or filenames and extensions
@@ -176,6 +177,21 @@ class Document(models.Model):
                     document_id_list = []
                 metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)) or []
         return metadata_groups, errors
+
+
+    def apply_default_transformations(self):
+        if DEFAULT_TRANSFORMATIONS:
+            for transformation in DEFAULT_TRANSFORMATIONS:
+                if 'name' in transformation:
+                    for document_page in self.documentpage_set.all():
+                        page_transformation = DocumentPageTransformation(
+                            document_page=document_page,
+                            order=0, 
+                            transformation=transformation['name'])
+                        if 'arguments' in transformation:
+                            page_transformation.arguments = transformation['arguments']
+                        
+                        page_transformation.save()
 
         
     def create_fs_links(self):
