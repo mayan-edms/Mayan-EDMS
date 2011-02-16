@@ -142,8 +142,11 @@ class MetadataForm(forms.Form):
                 try:
                     choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
                     self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
-                    self.fields['value'].choices = zip(choices, choices)
-                    self.fields['value'].required = False
+                    choices = zip(choices, choices)
+                    if not required:
+                        choices.insert(0,('', '------'))
+                    self.fields['value'].choices = choices
+                    self.fields['value'].required = required
                 except Exception, err:
                     self.fields['value'].initial = err
                     self.fields['value'].widget=forms.TextInput(attrs={'readonly':'readonly'})
