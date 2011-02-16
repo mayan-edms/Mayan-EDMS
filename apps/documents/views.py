@@ -323,6 +323,9 @@ def document_view(request, document_id):
                 'object_list':data[:GROUP_MAX_RESULTS],
                 'hide_columns':True,
                 'hide_header':True,
+                'extra_columns':[
+                    {'name':'current','attribute':lambda x: '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}
+                ],
                 })
             
     return render_to_response('generic_detail.html', {
