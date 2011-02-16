@@ -156,20 +156,24 @@ class Document(models.Model):
                 for item in group.metadatagroupitem_set.filter(enabled=True):
                     try:
                         value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
+                        if item.negated:
+                            query = (Q(metadata_type__id=item.metadata_type.id) & ~value_query)
+                        else:
+                            query = (Q(metadata_type__id=item.metadata_type.id) & value_query)
+
+                        if item.inclusion == INCLUSION_AND:
+                            total_query &= query
+                        elif item.inclusion == INCLUSION_OR:
+                            total_query |= query
                     except Exception, e:
                         errors.append(e)
                         value_query = Q()
-                        
-                    if item.negated:
-                        query = (Q(metadata_type__id=item.metadata_type.id) & ~value_query)
-                    else:
-                        query = (Q(metadata_type__id=item.metadata_type.id) & value_query)
-                        
-                    if item.inclusion == INCLUSION_AND:
-                        total_query &= query
-                    elif item.inclusion == INCLUSION_OR:
-                        total_query |= query
-                document_id_list = DocumentMetadata.objects.filter(query).values_list('document', flat=True)
+                        query = Q()
+
+                if total_query:
+                    document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
+                else:
+                    document_id_list = []
                 metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list) & ~Q(id=self.id)) or []
         return metadata_groups, errors
 
