@@ -174,7 +174,7 @@ class Document(models.Model):
                     document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
                 else:
                     document_id_list = []
-                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list) & ~Q(id=self.id)) or []
+                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)) or []
         return metadata_groups, errors
 
         
