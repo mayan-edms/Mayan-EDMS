@@ -33,9 +33,9 @@ register_permissions('documents', [
 ])
 
 document_list = {'text':_(u'documents list'), 'view':'document_list', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
-document_create = {'text':_('upload a document'), 'view':'document_create', 'famfam':'page_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
-document_create_multiple = {'text':_('upload multiple documents'), 'view':'document_create_multiple', 'famfam':'page_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
-document_create_sibling = {'text':_('upload using same metadata'), 'view':'document_create_sibling', 'args':'object.id', 'famfam':'page_copy', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
+document_create = {'text':_('upload a new document'), 'view':'document_create', 'famfam':'page_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
+document_create_multiple = {'text':_('upload multiple new documents'), 'view':'document_create_multiple', 'famfam':'page_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
+document_create_sibling = {'text':_('upload new document using same metadata'), 'view':'document_create_sibling', 'args':'object.id', 'famfam':'page_copy', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
 document_view = {'text':_('details'), 'view':'document_view', 'args':'object.id', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_delete = {'text':_('delete'), 'view':'document_delete', 'args':'object.id', 'famfam':'page_delete', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DELETE]}}
 document_edit = {'text':_('edit'), 'view':'document_edit', 'args':'object.id', 'famfam':'page_edit', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_PROPERTIES_EDIT]}}
