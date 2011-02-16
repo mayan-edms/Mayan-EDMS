@@ -3,6 +3,7 @@ import tempfile
 from urllib import unquote_plus
 
 from django.shortcuts import get_object_or_404
+from django.core.exceptions import ObjectDoesNotExist
 
 
 from documents import TEMPORARY_DIRECTORY
@@ -87,8 +88,17 @@ def decode_metadata_from_url(url_dict):
     
 def save_metadata_list(metadata_list, document):
     for item in metadata_list:
-        save_metadata(item, document)
-        
+        if item['value']:
+            save_metadata(item, document)
+        else:
+            try:
+                metadata_type = MetadataType.objects.get(id=item['id'])
+                document_metadata = DocumentMetadata.objects.get(document=document,
+                    metadata_type=metadata_type)
+                document_metadata.delete()
+            except ObjectDoesNotExist:
+                pass
+                        
         
 def save_metadata(metadata_dict, document):
     #Use matched metadata now to create document metadata
