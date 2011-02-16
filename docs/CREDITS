@@ -4,7 +4,8 @@ Python
     Copyright (c) 1995-2001 Corporation for National Research Initiatives.
     Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
 
-Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+Django - A high-level Python Web framework that encourages rapid 
+         development and clean, pragmatic design.
     Copyright Django Software Foundation
     http://www.djangoproject.com/
 
@@ -32,7 +33,8 @@ django-extensions - Extensions for Django
     Copyright Bas van Oostveen (v.oostveen@gmail.com)
     http://code.google.com/p/django-command-extensions/
 
-django-rosetta - A Django application that eases the translation of Django projects
+django-rosetta - A Django application that eases the translation of
+                 Django projects
     Copyright Marco Bonetti (mbonetti@gmail.com)
     http://code.google.com/p/django-rosetta/
 
@@ -48,7 +50,8 @@ django-filetransfers - File upload/download abstraction
     Waldemar Kornewald
     http://www.allbuttonspressed.com/projects/django-filetransfers
 
-tesseract - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
+tesseract - An OCR Engine that was developed at HP Labs between 1985 and
+            1995... and now at Google.
     http://code.google.com/p/tesseract-ocr/
 
 Image file 1068504_92921456 "Mayan piramid" (Stock Exchange)
@@ -63,3 +66,12 @@ Fat cow icon set
 Python-magic - python-magic is a simple wrapper for libmagic
     Adam Hupp <adam at hupp.org>
     https://github.com/ahupp/python-magic
+
+Fancybox - FancyBox is a tool for displaying images, html content and
+           multi-media in a Mac-style "lightbox" that floats overtop of
+           web page. 
+    http://fancybox.net
+
+unpaper - post-processing scanned and photocopied book pages
+    Jens Gulden 2005-2007 - unpaper@jensgulden.de.
+    http://unpaper.berlios.de/

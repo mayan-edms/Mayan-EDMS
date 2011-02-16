@@ -38,8 +38,9 @@ Or execute pip install -r requirements/production.txt to install the dependencie
 Executables:
 
 * ImageMagick - Convert, Edit, Or Compose Bitmap Images
-* tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 * libmagic
+* tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
+* unpaper - post-processing scanned and photocopied book pages
 
 License
 -------

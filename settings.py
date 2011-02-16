@@ -216,6 +216,7 @@ LOGIN_EXEMPT_URLS = (
 #CONVERTER_CONVERT_PATH = u'/usr/bin/convert'
 #CONVERTER_OCR_OPTIONS = u'-colorspace Gray -depth 8 -resample 200x200'
 #CONVERTER_IDENTIFY_PATH = u'/usr/bin/identify'
+#CONVERTER_UNPAPER_PATH = u'/usr/bin/unpaper'
 
 # OCR
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'

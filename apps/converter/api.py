@@ -7,6 +7,7 @@ import shutil
 from django.template.defaultfilters import slugify
 
 from converter.conf.settings import CONVERT_PATH
+from converter.conf.settings import UNPAPER_PATH
 from converter.conf.settings import IDENTIFY_PATH
 from converter.conf.settings import OCR_OPTIONS
 from converter.conf.settings import DEFAULT_OPTIONS
@@ -15,7 +16,7 @@ from converter.conf.settings import HIGH_QUALITY_OPTIONS
 
 #from converter.conf.settings import UNOCONV_PATH
 
-from converter import TEMPORARY_DIRECTORY
+from converter import TEMPORARY_DIRECTORY, TRANFORMATION_CHOICES
 from utils import from_descriptor_to_tempfile
 
 
@@ -50,16 +51,27 @@ def get_errors(error_string):
 
 
 #TODO: Timeout & kill child
-def execute_convert(input_filepath, arguments, output_filepath, quality=QUALITY_DEFAULT):
+def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
     command = []
     command.append(CONVERT_PATH)
     command.extend(shlex.split(str(QUALITY_SETTINGS[quality])))
     command.append(input_filepath)
-    command.extend(shlex.split(str(arguments)))
+    if arguments:
+        command.extend(shlex.split(str(arguments)))
     command.append(output_filepath)
-
     proc = subprocess.Popen(command, stderr=subprocess.PIPE)
     return (proc.wait(), proc.stderr.read())
+
+
+def execute_unpaper(input_filepath, output_filepath):
+    command = []
+    command.append(UNPAPER_PATH)
+    command.append('--overwrite')
+    command.append(input_filepath)
+    command.append(output_filepath)
+    proc = subprocess.Popen(command, stderr=subprocess.PIPE)
+    return (proc.wait(), proc.stderr.read())
+
 
 def execute_unoconv(input_filepath, output_filepath, arguments=''):
     command = [UNOCONV_PATH]
@@ -135,7 +147,7 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
     try:
         input_arg = '%s[%s]' % (input_filepath, page)
         extra_options += ' -resize %s' % size
-        status, error_string = execute_convert(input_arg, extra_options, '%s:%s' % (format, output_filepath), quality=quality)
+        status, error_string = execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath='%s:%s' % (format, output_filepath), quality=quality)
         if status:
             errors = get_errors(error_string)
             raise ConvertError(status, errors)
@@ -170,12 +182,44 @@ def convert_document_for_ocr(document, page=0, format='tif'):
     #Convert for OCR
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    output_arg = '%s_ocr%s%s%s' % (temp_path, page, os.extsep, format)
+    transformation_output_file = '%s_trans%s%s%s' % (temp_path, page, os.extsep, format)
+    unpaper_input_file = '%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
+    unpaper_output_file = '%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
+    convert_output_file = '%s_ocr%s%s%s' % (temp_path, page, os.extsep, format)
+    
     input_arg = '%s[%s]' % (input_filepath, page)
+
+    transformation_list = []
     try:
-        status, error_string = execute_convert(input_arg, OCR_OPTIONS, output_arg)
+        #Catch invalid or non existing pages
+        document_page = document.documentpage_set.get(document=document, page_number=page+1)
+        for page_transformation in document_page.documentpagetransformation_set.all():
+            try:
+                if page_transformation.transformation in TRANFORMATION_CHOICES:
+                    output = TRANFORMATION_CHOICES[page_transformation.transformation] % eval(page_transformation.arguments)
+                    transformation_list.append(output)
+            except Exception, e:
+                if request.user.is_staff:
+                    messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') % 
+                        {'transformation':page_transformation.get_transformation_display(),
+                        'error':e})
+                else:
+                    pass
+    except ObjectDoesNotExist:
+        pass
+
+    tranformation_string = ' '.join(transformation_list)
+    try:
+        status, error_string = execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=tranformation_string, output_filepath=transformation_output_file)
+        status, error_string = execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
+        status, error_string = execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
+        status, error_string = execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
+        
         if status:
             errors = get_errors(error_string)
             raise ConvertError(status, errors)
     finally:
-        return output_arg
+        cleanup(transformation_output_file)
+        cleanup(unpaper_input_file)
+        cleanup(unpaper_output_file)
+        return convert_output_file

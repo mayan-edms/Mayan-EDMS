@@ -31,6 +31,8 @@
 * Assign default role to new users                                     - DONE
 * DB stored transformations                                            - DONE
 * Recognize multi-page documents                                       - DONE
+* Add unpaper to pre OCR document cleanup                              - DONE
+* Role editing view under setup                                        - STARTED
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -53,10 +55,10 @@
 * Field for document language or autodetect
 * Count pages in a PDF file http://pybrary.net/pyPdf/
 * Download a document in diffent formats: (jpg, png, pdf)
+* Download a document in diffent formats: (jpg, png, pdf)
 * Cache.cleanup function to delete cached images when document hash changes
 * Divide navigation links search by object and by view
 * Add show_summary method to model to display as results of a search
-* Add unpaper to pre OCR document cleanup
 * Support distributed OCR queues (RabbitMQ & Celery?)
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
@@ -64,10 +66,12 @@
 * Handle ziped or rar archives
 * Display preferences 'document transformations' (Rotation, default zoom)
 * Gallery view for document groups
-* Role editing view under setup
 * Download metadata group documents as a single zip file
 * Download original document or transformed document
 * Include annotations in transformed documents downloads
 * Document view temp transformations
 * Implement permissions decorators
 * block Setup menu item to non staff and non superuser users
+* Don't append an extension separator if extension is non existant
+* Don't do OCR on wordproccessing or spreadsheet document, strip tags and store text
+* Storage backend to storage backend copy support, to move/migrate document to new storage backend

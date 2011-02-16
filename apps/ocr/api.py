@@ -22,10 +22,20 @@ def cleanup(filename):
         pass
 
 class TesseractError(Exception):
-    def __init__(self, status, message):
-        self.status = status
-        self.message = message
+    pass
+#    def __init__(self, status, message):
+#        self.status = status
+#        self.message = message
 
+def get_errors(error_string):
+    '''
+    returns all lines in the error_string that start with the string "error"
+
+    '''
+    lines = error_string.splitlines()
+    return lines[1]
+    #error_lines = (line for line in lines if line.find('error') >= 0)
+    #return '\n'.join(error_lines)
 
 def run_tesseract(input_filename, output_filename_base, lang=None):
     command = [TESSERACT_PATH, input_filename, output_filename_base]
@@ -44,18 +54,19 @@ def ocr_document(document):
             status, error_string = run_tesseract(imagefile, filepath)
             if status:
                 errors = get_errors(error_string)
-                raise TesseractError(status, errors)
+                raise TesseractError(errors)
         finally:
             ocr_output = os.extsep.join([filepath, 'txt'])
-            f = file(ocr_output)
-            try:
-                document_page, created = DocumentPage.objects.get_or_create(document=document,
-                    page_number=page_index+1)
-                document_page.content = f.read().strip()
-                document_page.page_label = _(u'Text from OCR')
-                document_page.save()
-            finally:
-                f.close()
-                cleanup(filepath)
-                cleanup(ocr_output)
-                cleanup(imagefile)
+
+        f = file(ocr_output)
+        try:
+            document_page, created = DocumentPage.objects.get_or_create(document=document,
+                page_number=page_index+1)
+            document_page.content = f.read().strip()
+            document_page.page_label = _(u'Text from OCR')
+            document_page.save()
+        finally:
+            f.close()
+            #cleanup(filepath)
+            #cleanup(ocr_output)
+            #cleanup(imagefile)
