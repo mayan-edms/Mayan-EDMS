@@ -12,9 +12,11 @@ from permissions.api import check_permissions, Unauthorized
 from documents.models import Document
 
 from ocr import PERMISSION_OCR_DOCUMENT
-from api import ocr_document
 
-def submit_document(request, document_id):
+from models import DocumentQueue, QueueDocument
+
+
+def submit_document(request, document_id, queue_name='default'):
     permissions = [PERMISSION_OCR_DOCUMENT]
     try:
         check_permissions(request.user, 'ocr', permissions)
@@ -23,11 +25,10 @@ def submit_document(request, document_id):
         
     document = get_object_or_404(Document, pk=document_id)
     
-    try:
-        result = ocr_document(document)
-    except Exception, e:
-        messages.error(request, e)
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
-   
-    messages.success(request, _(u'Document OCR was successful.'))
+    document_queue = get_object_or_404(DocumentQueue, name=queue_name)
+    #document_queue.add_document(document)
+    queue_document = QueueDocument(document_queue=document_queue, document=document)
+    queue_document.save()
+
+    messages.success(request, _(u'Document: %s was added to the OCR queue: %s.') % (document, document_queue.label))
     return HttpResponseRedirect(request.META['HTTP_REFERER'])    

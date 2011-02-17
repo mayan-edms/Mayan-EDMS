@@ -75,3 +75,4 @@
 * Don't append an extension separator if extension is non existant
 * Don't do OCR on wordproccessing or spreadsheet document, strip tags and store text
 * Storage backend to storage backend copy support, to move/migrate document to new storage backend
+* Tesserat default option ocr setup

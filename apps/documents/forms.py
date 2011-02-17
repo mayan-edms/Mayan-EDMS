@@ -72,10 +72,10 @@ class ImageWidget(forms.widgets.Widget):
 
         output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
         
-        #for document_page in value.documentpage_set.all():
-        #    output.append('<br/>%s)<a href="%s">%s</a>' % (document_page.page_number,
-        #        reverse('document_page_view', args=[document_page.id]),
-        #        ugettext(u'page view')))
+        for document_page in value.documentpage_set.all():
+            output.append('<br/>%s)<a href="%s">%s</a>' % (document_page.page_number,
+                reverse('document_page_view', args=[document_page.id]),
+                ugettext(u'page view')))
         #output.append(super(ImageWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))  
 
