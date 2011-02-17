@@ -16,6 +16,7 @@ sys.path.insert(0, ve_path)
 # Avoid ``[Errno 13] Permission denied: '/var/www/.python-eggs'`` messages
 os.environ['PYTHON_EGG_CACHE'] = '/tmp'
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['CELERY_LOADER'] = 'django'
 
 from django.core.handlers.wsgi import WSGIHandler
 application = WSGIHandler()

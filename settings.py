@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'converter',
     'ocr',
     'permissions',
+    'djcelery',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -220,12 +221,22 @@ LOGIN_EXEMPT_URLS = (
 
 # OCR
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
+#OCR_MAX_CONCURRENT_EXECUTION = 2
 
 # Permissions
 #ROLES_DEFAULT_ROLES = []
 
 # Override
 SEARCH_SHOW_OBJECT_TYPE = False
+#----------- django-celery --------------
+import djcelery
+djcelery.setup_loader()
+BROKER_HOST = "localhost"
+BROKER_PORT = 5672
+BROKER_USER = "guest"
+BROKER_PASSWORD = "guest"
+BROKER_VHOST = "/"
+CELERYBEAT_SCHEDULER='djcelery.schedulers.DatabaseScheduler'
 #======== End of configuration options =======
 
 try:

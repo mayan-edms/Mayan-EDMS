@@ -32,7 +32,11 @@
 * DB stored transformations                                            - DONE
 * Recognize multi-page documents                                       - DONE
 * Add unpaper to pre OCR document cleanup                              - DONE
+* Count pages in a PDF file http://pybrary.net/pyPdf/                  - NOT NEEDED
+* Support distributed OCR queues (RabbitMQ & Celery?)                  - DONE
+* MuliThreading deferred OCR                                           - DONE
 * Role editing view under setup                                        - STARTED
+* Scheduled maintenance (cleanup, deferred OCR's)                      - DONE
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
@@ -46,20 +50,15 @@
     from a queryset
 * Allow metadata entry form to mix required and non required metadata
 * Link to delete and recreate all document links
-* MuliThreading deferred OCR
 * Versioning support
 * Generic document anotations using layer overlays
 * Workflows
-* Scheduled maintenance (cleanup, deferred OCR's)
 * Add tags to documents
 * Field for document language or autodetect
-* Count pages in a PDF file http://pybrary.net/pyPdf/
-* Download a document in diffent formats: (jpg, png, pdf)
 * Download a document in diffent formats: (jpg, png, pdf)
 * Cache.cleanup function to delete cached images when document hash changes
 * Divide navigation links search by object and by view
 * Add show_summary method to model to display as results of a search
-* Support distributed OCR queues (RabbitMQ & Celery?)
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support

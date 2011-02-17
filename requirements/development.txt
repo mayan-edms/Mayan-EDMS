@@ -5,3 +5,6 @@ django-extensions==0.6
 django-pagination==1.0.7
 django-rosetta==0.5.6
 wsgiref==0.1.2
+celery==2.2.2
+django-celery==2.2.2
+

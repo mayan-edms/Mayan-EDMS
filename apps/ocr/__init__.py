@@ -11,9 +11,8 @@ from documents.models import Document
 
 from models import DocumentQueue
 from literals import QUEUEDOCUMENT_STATE_PROCESSING, \
-    DOCUMENTQUEUE_STATE_STOPPED, QUEUEDOCUMENT_STATE_PENDING
-
-from api import start_queue_watcher
+    QUEUEDOCUMENT_STATE_PENDING, DOCUMENTQUEUE_STATE_STOPPED, \
+    DOCUMENTQUEUE_STATE_ACTIVE
 
 #Permissions
 PERMISSION_OCR_DOCUMENT = 'ocr_document'
@@ -39,9 +38,8 @@ try:
         default_queue.save()
 
     for queue in DocumentQueue.objects.all():
-        queue.state = DOCUMENTQUEUE_STATE_STOPPED
+        queue.state = DOCUMENTQUEUE_STATE_ACTIVE
         queue.save()
-        start_queue_watcher(queue.name)
         for document in queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING):
             document.state = QUEUEDOCUMENT_STATE_PENDING
             document.save()

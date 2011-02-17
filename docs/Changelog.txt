@@ -12,3 +12,4 @@
 * Added views to create, edit and grant/revoke permissions to roles
 * Apply default transformations to document before OCR
 * Added unpaper to the OCR convertion pipe
+* Added support for concurrent, queued OCR processing using celery

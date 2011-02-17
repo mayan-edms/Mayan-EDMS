@@ -8,9 +8,6 @@ from literals import DOCUMENTQUEUE_STATE_STOPPED,\
     QUEUEDOCUMENT_STATE_CHOICES
     
 
-#from api import queue_dict
-
-
 class DocumentQueue(models.Model):
     name = models.CharField(max_length=64, unique=True, verbose_name=_(u'name'))
     label = models.CharField(max_length=64, verbose_name=_(u'label'))
