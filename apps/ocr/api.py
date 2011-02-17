@@ -67,6 +67,6 @@ def ocr_document(document):
             document_page.save()
         finally:
             f.close()
-            #cleanup(filepath)
-            #cleanup(ocr_output)
-            #cleanup(imagefile)
+            cleanup(filepath)
+            cleanup(ocr_output)
+            cleanup(imagefile)
