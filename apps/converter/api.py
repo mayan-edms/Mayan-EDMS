@@ -210,11 +210,23 @@ def convert_document_for_ocr(document, page=0, format='tif'):
 
     tranformation_string = ' '.join(transformation_list)
     try:
+        #Apply default transformations
         status, error_string = execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=tranformation_string, output_filepath=transformation_output_file)
+        if status:
+            errors = get_errors(error_string)
+            raise ConvertError(status, errors)
+        #Do OCR operations
         status, error_string = execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
+        if status:
+            errors = get_errors(error_string)
+            raise ConvertError(status, errors)        
+        # Process by unpaper
         status, error_string = execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
+        if status:
+            errors = get_errors(error_string)
+            raise ConvertError(status, errors)        
+        # Convert to tif
         status, error_string = execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
-        
         if status:
             errors = get_errors(error_string)
             raise ConvertError(status, errors)
