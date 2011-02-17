@@ -30,6 +30,8 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
     
 from staging import StagingFile
 
+from ocr.models import add_document_to_queue
+
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
@@ -39,6 +41,7 @@ from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
+from documents.conf.settings import AUTOMATIC_OCR
 
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
@@ -130,6 +133,9 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 instance.update_mimetype()
                 instance.update_page_count()
                 instance.apply_default_transformations()
+                if AUTOMATIC_OCR:
+                    document_queue = add_document_to_queue(instance)
+                    messages.success(request, _(u'Document: %s was added to the OCR queue: %s.') % (instance, document_queue.label))
 
                 if 'document_type_available_filenames' in local_form.cleaned_data:
                     if local_form.cleaned_data['document_type_available_filenames']:
@@ -165,7 +171,9 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         document.update_mimetype()
                         document.update_page_count()
                         document.apply_default_transformations()
-                        
+                        if AUTOMATIC_OCR:
+                            document_queue = add_document_to_queue(instance)
+                            messages.success(request, _(u'Document: %s was added to the OCR queue: %s.') % (instance, document_queue.label))
                     except Exception, e:
                         messages.error(request, e)   
                     else:

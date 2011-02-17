@@ -6,6 +6,13 @@ from documents.models import Document
 from literals import DOCUMENTQUEUE_STATE_STOPPED,\
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING,\
     QUEUEDOCUMENT_STATE_CHOICES
+
+
+def add_document_to_queue(document, queue_name='default'):
+    document_queue = DocumentQueue.objects.get(name=queue_name)
+    queue_document = QueueDocument(document_queue=document_queue, document=document)
+    queue_document.save()
+    return document_queue
     
 
 class DocumentQueue(models.Model):
@@ -23,10 +30,9 @@ class DocumentQueue(models.Model):
     def __unicode__(self):
         return self.label
 
-#    def add_document(self, document):
-#        queue_document = QueueDocument(document_queue=self, document=document)
-#        queue_document.save()
-#        queue_dict[self.name].put(queue_document)
+    def add_document(self, document):
+        queue_document = QueueDocument(document_queue=self, document=document)
+        queue_document.save()
         
 
 class QueueDocument(models.Model):
@@ -38,7 +44,6 @@ class QueueDocument(models.Model):
         default=QUEUEDOCUMENT_STATE_PENDING,
         verbose_name=_(u'state'))
     result = models.TextField(blank=True, null=True, verbose_name=_(u'result'))
-    pid = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'process id'))
     
     class Meta:
         verbose_name = _(u'queue document')

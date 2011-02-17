@@ -75,3 +75,7 @@
 * Don't do OCR on wordproccessing or spreadsheet document, strip tags and store text
 * Storage backend to storage backend copy support, to move/migrate document to new storage backend
 * Tesserat default option ocr setup
+* Do separate default transformations for staging and for local uploads
+* Multiple ocr queue support
+* Enable/disable ocr queue view & links
+* Restrict view permission free form rename

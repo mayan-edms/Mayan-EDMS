@@ -32,6 +32,8 @@ Python:
 * Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 * django-pagination
 * django-filetransfers - File upload/download abstraction
+* django-celery
+* celery
 
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
 
@@ -41,6 +43,7 @@ Executables:
 * libmagic
 * tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 * unpaper - post-processing scanned and photocopied book pages
+
 
 License
 -------

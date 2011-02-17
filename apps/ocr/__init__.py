@@ -25,11 +25,10 @@ submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'a
 register_links(Document, [submit_document], menu_name='sidebar')
 
 #Menus
-#register_menu([
-#    {'text':_('OCR'), 'view':'ocr_queue', 'links':[
-#        ocr_queue
-#    ],'famfam':'hourglass','position':5}])
-
+register_menu([
+    {'text':_('OCR'), 'view':'queue_document_list', 'links':[
+        #ocr_queue
+    ],'famfam':'hourglass','position':4}])
 
 try:
     default_queue, created = DocumentQueue.objects.get_or_create(name='default')

@@ -15,11 +15,6 @@ from converter.api import convert_document_for_ocr
 
 from ocr.conf.settings import TESSERACT_PATH
 
-#from literals import QUEUEDOCUMENT_STATE_PROCESSING, \
-#    QUEUEDOCUMENT_STATE_ERROR, QUEUEDOCUMENT_STATE_PENDING
-
-#from models import DocumentQueue
-
 
 def cleanup(filename):
     ''' tries to remove the given filename. Ignores non-existent files '''

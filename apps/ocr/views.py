@@ -13,9 +13,35 @@ from documents.models import Document
 
 from ocr import PERMISSION_OCR_DOCUMENT
 
-from models import DocumentQueue, QueueDocument
+from models import DocumentQueue, QueueDocument, add_document_to_queue
 
 from tasks import do_document_ocr_task
+
+
+def queue_document_list(request, queue_name='default'):
+    permissions = [PERMISSION_OCR_DOCUMENT]
+    try:
+        check_permissions(request.user, 'ocr', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+        
+    document_queue = get_object_or_404(DocumentQueue, name=queue_name)
+            
+    return object_list(
+        request,
+        queryset=document_queue.queuedocument_set.all(),
+        template_name='generic_list.html',
+        extra_context={
+            'title':_(u'queued documents'),
+            'hide_object':True,
+            'extra_columns':[
+                {'name':'document', 'attribute': 'document'},
+                {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0]},
+                {'name':'state', 'attribute': lambda x: x.get_state_display()},
+            ],
+        },
+    )    
+        
 
 def submit_document(request, document_id, queue_name='default'):
     permissions = [PERMISSION_OCR_DOCUMENT]
@@ -27,13 +53,7 @@ def submit_document(request, document_id, queue_name='default'):
     document = get_object_or_404(Document, pk=document_id)
     
     document_queue = get_object_or_404(DocumentQueue, name=queue_name)
-    do_document_ocr_task.delay(document.id)
-    ##document_queue.add_document(document)
-    #queue_document = QueueDocument(document_queue=document_queue, document=document)
-    #queue_document.save()
-
-
-    #add.delay(1,2)
+    add_document_to_queue(document, document_queue.name)
 
     messages.success(request, _(u'Document: %s was added to the OCR queue: %s.') % (document, document_queue.label))
     return HttpResponseRedirect(request.META['HTTP_REFERER'])    
