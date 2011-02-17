@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 02:27-0400\n"
+"POT-Creation-Date: 2011-02-17 04:58-0400\n"
 "PO-Revision-Date: 2011-02-10 09:20\n"
 "Last-Translator: <admin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,39 +19,39 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:5 views.py:51
+#: __init__.py:8 views.py:53
 msgid "settings"
 msgstr "configuración"
 
-#: __init__.py:9
+#: __init__.py:12
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:11
+#: __init__.py:14
 msgid "setup"
 msgstr "instalación"
 
-#: __init__.py:14
+#: __init__.py:18
 msgid "about"
 msgstr "acerca"
 
-#: views.py:56
+#: views.py:58
 msgid "name"
 msgstr "nombre"
 
-#: views.py:57
+#: views.py:59
 msgid "value"
 msgstr "valor"
 
-#: views.py:58
+#: views.py:60
 msgid "exists"
 msgstr "existe"
 
-#: views.py:68
+#: views.py:70
 msgid "function found"
 msgstr "función encontrada"
 
-#: views.py:70 views.py:72
+#: views.py:72 views.py:74
 msgid "class found"
 msgstr "clase encontrada"
 
@@ -68,48 +68,48 @@ msgstr ""
 "metadatos personalizados, integración de servicio de archivos y capacidades "
 "de OCR"
 
-#: templates/base.html:56
+#: templates/base.html:65
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:58
+#: templates/base.html:67
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:62
+#: templates/base.html:71
 msgid "New password"
 msgstr "Nueva contraseña"
 
-#: templates/base.html:67
+#: templates/base.html:76
 msgid "Admin site"
 msgstr "Sitio administrativo"
 
-#: templates/base.html:78
+#: templates/base.html:87
 msgid "Go"
 msgstr "Ir"
 
-#: templates/base.html:82
+#: templates/base.html:91
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:82
+#: templates/base.html:91
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:111
+#: templates/base.html:120
 #, python-format
 msgid "Actions for %(object_name)s: %(object)s"
 msgstr "Acciones para %(object_name)s: %(object)s "
 
-#: templates/base.html:113
+#: templates/base.html:122
 #, python-format
 msgid "Actions for: %(object)s"
 msgstr "Acciones para: %(object)s "
 
-#: templates/base.html:116
+#: templates/base.html:125
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:129
+#: templates/base.html:138
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"

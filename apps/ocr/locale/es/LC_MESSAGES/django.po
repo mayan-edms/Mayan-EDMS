@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 02:26-0400\n"
-"PO-Revision-Date: 2011-02-14 02:27\n"
+"POT-Creation-Date: 2011-02-17 04:56-0400\n"
+"PO-Revision-Date: 2011-02-17 04:58\n"
 "Last-Translator: <admin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,18 +19,94 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:11
+#: __init__.py:20
 msgid "Submit document for OCR"
 msgstr "Enviar documento para OCR"
 
-#: __init__.py:14
+#: __init__.py:24
 msgid "submit to OCR queue"
 msgstr "enviar a lista de OCR"
 
-#: api.py:55
+#: __init__.py:29
+msgid "OCR"
+msgstr "OCR"
+
+#: __init__.py:36
+msgid "Default"
+msgstr "Por defecto"
+
+#: api.py:67
 msgid "Text from OCR"
 msgstr "Texto de OCR"
 
-#: views.py:32
-msgid "Document OCR was successful."
-msgstr "El OCR del documento se ha realizado con éxito."
+#: literals.py:8
+msgid "stopped"
+msgstr "detenido"
+
+#: literals.py:9
+msgid "active"
+msgstr "activo"
+
+#: literals.py:18
+msgid "pending"
+msgstr "pendiente"
+
+#: literals.py:19
+msgid "processing"
+msgstr "en procesamiento"
+
+#: literals.py:20
+msgid "error"
+msgstr "error"
+
+#: models.py:19
+msgid "name"
+msgstr "nombre"
+
+#: models.py:20
+msgid "label"
+msgstr "etiqueta"
+
+#: models.py:24 models.py:45
+msgid "state"
+msgstr "estado"
+
+#: models.py:27 models.py:39
+msgid "document queue"
+msgstr ""
+
+#: models.py:28
+msgid "document queues"
+msgstr ""
+
+#: models.py:40
+msgid "document"
+msgstr "documento"
+
+#: models.py:41
+msgid "date time submitted"
+msgstr "fecha y hora sometido"
+
+#: models.py:46
+msgid "result"
+msgstr "resultado"
+
+#: models.py:49
+msgid "queue document"
+msgstr ""
+
+#: models.py:50
+msgid "queue documents"
+msgstr ""
+
+#: views.py:35
+msgid "queued documents"
+msgstr ""
+
+#: views.py:58
+#, python-format
+msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
+msgstr "Documento: %(document)s ha sido añadido a la cola de reconocimiento óptico de caracteres: %(queue)s."
+
+#~ msgid "Document OCR was successful."
+#~ msgstr "El OCR del documento se ha realizado con éxito."

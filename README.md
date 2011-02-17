@@ -23,6 +23,9 @@ Features
 * Permissions and roles support
 * Multi page document support
 * Page transformations
+* OCR queue (via celery)
+* Multilingual (English, Spanish)
+
 
 Requirements
 ---

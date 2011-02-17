@@ -55,5 +55,6 @@ def submit_document(request, document_id, queue_name='default'):
     document_queue = get_object_or_404(DocumentQueue, name=queue_name)
     add_document_to_queue(document, document_queue.name)
 
-    messages.success(request, _(u'Document: %s was added to the OCR queue: %s.') % (document, document_queue.label))
+    messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
+        'document':document, 'queue':document_queue.label})
     return HttpResponseRedirect(request.META['HTTP_REFERER'])    

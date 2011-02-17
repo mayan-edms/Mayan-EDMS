@@ -135,7 +135,8 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 instance.apply_default_transformations()
                 if AUTOMATIC_OCR:
                     document_queue = add_document_to_queue(instance)
-                    messages.success(request, _(u'Document: %s was added to the OCR queue: %s.') % (instance, document_queue.label))
+                    messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
+                        'document':instance, 'queue':document_queue.label})
 
                 if 'document_type_available_filenames' in local_form.cleaned_data:
                     if local_form.cleaned_data['document_type_available_filenames']:
@@ -173,7 +174,8 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         document.apply_default_transformations()
                         if AUTOMATIC_OCR:
                             document_queue = add_document_to_queue(instance)
-                            messages.success(request, _(u'Document: %s was added to the OCR queue: %s.') % (instance, document_queue.label))
+                            messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
+                                'document':instance, 'queue':document_queue.label})
                     except Exception, e:
                         messages.error(request, e)   
                     else:
@@ -629,8 +631,8 @@ def document_page_transformation_create(request, document_page_id):
     return render_to_response('generic_form.html', {
         'form':form,
         'object':document_page,
-        'title':_(u'Create new transformation for page: %s of document: %s') % (
-            document_page.page_number, document_page.document),
+        'title':_(u'Create new transformation for page: %(page)s of document: %(document)s') % {
+            'page':document_page.page_number, 'document':document_page.document},
     }, context_instance=RequestContext(request))            
 
 
@@ -653,10 +655,10 @@ def document_page_transformation_edit(request, document_page_transformation_id):
     return render_to_response('generic_form.html', {
         'form':form,
         'object':document_page_transformation.document_page,
-        'title':_(u'Edit transformation "%s" for page: %s of document: %s') % (
-            document_page_transformation.get_transformation_display(),
-            document_page_transformation.document_page.page_number,
-            document_page_transformation.document_page.document),
+        'title':_(u'Edit transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
+            'transformation':document_page_transformation.get_transformation_display(),
+            'page':document_page_transformation.document_page.page_number,
+            'document':document_page_transformation.document_page.document},
     }, context_instance=RequestContext(request))     
 
 
@@ -676,8 +678,8 @@ def document_page_transformation_delete(request, document_page_transformation_id
             'delete_view':True,
             'object':document_page_transformation,
             'object_name':_(u'document transformation'),
-            'title':_(u'Are you sure you wish to delete transformation "%s" for page: %s of document: %s') % (
-                document_page_transformation.get_transformation_display(),
-                document_page_transformation.document_page.page_number,
-                document_page_transformation.document_page.document),
+            'title':_(u'Are you sure you wish to delete transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
+                'transformation':document_page_transformation.get_transformation_display(),
+                'page':document_page_transformation.document_page.page_number,
+                'document':document_page_transformation.document_page.document},
         })
