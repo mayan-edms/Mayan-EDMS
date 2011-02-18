@@ -21,7 +21,7 @@ register_permissions('ocr', [
 ])
 
 #Links
-submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'args':'object.id', 'famfam':'page_lightning', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
+submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'args':'object.id', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 register_links(Document, [submit_document], menu_name='sidebar')
 queue_document_delete = {'text':_(u'delete'), 'view':'queue_document_delete', 'args':'object.id', 'famfam':'hourglass_delete', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 
