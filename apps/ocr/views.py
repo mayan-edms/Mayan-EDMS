@@ -38,6 +38,7 @@ def queue_document_list(request, queue_name='default'):
                 {'name':'document', 'attribute': 'document'},
                 {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0]},
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
+                {'name':'result', 'attribute':'result'},
             ],
         },
     )    
