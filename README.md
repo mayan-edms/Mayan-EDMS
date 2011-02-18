@@ -23,7 +23,7 @@ Features
 * Permissions and roles support
 * Multi page document support
 * Page transformations
-* OCR queue (via celery)
+* Distributed OCR processing
 * Multilingual (English, Spanish)
 
 
@@ -50,7 +50,7 @@ Executables:
 
 License
 -------
-See docs/LICENSE file
+See docs/LICENSE file.
 
 
 Author
@@ -58,6 +58,12 @@ Author
 
 Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](roberto.rosario.gonzalez at gmail)
 
+
 Credits
 -------
-See docs/CREDITS file
+See docs/CREDITS file.
+
+
+FAQ
+---
+See docs/FAQ file for common questions and issues.
