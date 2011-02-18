@@ -1,0 +1,25 @@
+* Following error when using MySQL and doing OCR:
+    Incorrect string value: '\xE2\x80\x95rs6...' for column 'content' at row 1
+    
+    - Solution:
+    Use utf-8 collantion on MySQL server, or at least in table 'documents_documentpage', 'content' field
+    Ref: 1- http://groups.google.com/group/django-users/browse_thread/thread/429447086fca6412
+    Ref: 2- http://markmail.org/message/bqajx2utvmtriixi
+
+
+* File system links not showing on client computers when serving content with Samba:
+    - Solution:
+    Disable unix extensions in the [global] section and enable wide links for the file serving share
+
+    - Example:
+    [global]
+        unix extensions = no
+
+    [digitalizacion]
+        path = /var/local/mayan
+        guest ok = yes
+        read only = yes
+        wide links = yes
+        follow symlinks = yes
+        
+    Ref: 1- http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
