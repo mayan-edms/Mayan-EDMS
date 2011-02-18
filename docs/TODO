@@ -79,3 +79,4 @@
 * Multiple ocr queue support
 * Enable/disable ocr queue view & links
 * Restrict view permission free form rename
+* Add per node max ocr concurrent execution
