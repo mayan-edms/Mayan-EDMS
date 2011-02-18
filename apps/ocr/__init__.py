@@ -9,7 +9,7 @@ from permissions.api import register_permissions
 
 from documents.models import Document
 
-from models import DocumentQueue
+from models import DocumentQueue, QueueDocument
 from literals import QUEUEDOCUMENT_STATE_PROCESSING, \
     QUEUEDOCUMENT_STATE_PENDING, DOCUMENTQUEUE_STATE_STOPPED, \
     DOCUMENTQUEUE_STATE_ACTIVE
@@ -23,12 +23,17 @@ register_permissions('ocr', [
 #Links
 submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'args':'object.id', 'famfam':'page_lightning', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 register_links(Document, [submit_document], menu_name='sidebar')
+queue_document_delete = {'text':_(u'delete'), 'view':'queue_document_delete', 'args':'object.id', 'famfam':'hourglass_delete', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
+
+register_links(QueueDocument, [queue_document_delete])
+
 
 #Menus
 register_menu([
     {'text':_('OCR'), 'view':'queue_document_list', 'links':[
         #ocr_queue
     ],'famfam':'hourglass','position':4}])
+
 
 try:
     default_queue, created = DocumentQueue.objects.get_or_create(name='default')

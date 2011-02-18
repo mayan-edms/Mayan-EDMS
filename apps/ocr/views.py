@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
-#from django.views.generic.create_update import create_object, delete_object, update_object
+from django.views.generic.create_update import create_object, delete_object, update_object
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
@@ -43,6 +43,28 @@ def queue_document_list(request, queue_name='default'):
         },
     )    
         
+        
+def queue_document_delete(request, queue_document_id):
+    permissions = [PERMISSION_OCR_DOCUMENT]
+    try:
+        check_permissions(request.user, 'ocr', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+        
+    return delete_object(request, model=QueueDocument, object_id=queue_document_id, 
+        template_name='generic_confirm.html', 
+        post_delete_redirect=reverse('queue_document_list'),
+        extra_context={
+            'delete_view':True,
+            'next':next,
+            'previous':previous,
+            'object_name':_(u'queued document'),
+        })
+    
+
 
 def submit_document(request, document_id, queue_name='default'):
     permissions = [PERMISSION_OCR_DOCUMENT]
