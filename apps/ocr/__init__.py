@@ -16,14 +16,17 @@ from literals import QUEUEDOCUMENT_STATE_PROCESSING, \
 
 #Permissions
 PERMISSION_OCR_DOCUMENT = 'ocr_document'
+PERMISSION_OCR_DOCUMENT_DELETE = 'ocr_document_delete'
+
 register_permissions('ocr', [
     {'name':PERMISSION_OCR_DOCUMENT, 'label':_(u'Submit document for OCR')},
+    {'name':PERMISSION_OCR_DOCUMENT_DELETE, 'label':_(u'Delete document for OCR queue')},
 ])
 
 #Links
 submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'args':'object.id', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 register_links(Document, [submit_document], menu_name='sidebar')
-queue_document_delete = {'text':_(u'delete'), 'view':'queue_document_delete', 'args':'object.id', 'famfam':'hourglass_delete', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
+queue_document_delete = {'text':_(u'delete'), 'view':'queue_document_delete', 'args':'object.id', 'famfam':'hourglass_delete', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT_DELETE]}}
 
 register_links(QueueDocument, [queue_document_delete])
 

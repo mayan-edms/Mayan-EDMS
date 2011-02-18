@@ -11,7 +11,7 @@ from django.utils.translation import ugettext as _
 from permissions.api import check_permissions, Unauthorized
 from documents.models import Document
 
-from ocr import PERMISSION_OCR_DOCUMENT
+from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE
 
 from models import DocumentQueue, QueueDocument, add_document_to_queue
 
@@ -45,7 +45,7 @@ def queue_document_list(request, queue_name='default'):
         
         
 def queue_document_delete(request, queue_document_id):
-    permissions = [PERMISSION_OCR_DOCUMENT]
+    permissions = [PERMISSION_OCR_DOCUMENT_DELETE]
     try:
         check_permissions(request.user, 'ocr', permissions)
     except Unauthorized, e:
