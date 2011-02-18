@@ -46,6 +46,7 @@ def check_settings(request):
 
         #ocr
         {'name':'OCR_TESSERACT_PATH', 'value':ocr_settings.TESSERACT_PATH, 'exists':True},
+        {'name':'OCR_TESSERACT_LANGUAGE', 'value':ocr_settings.TESSERACT_LANGUAGE},
         {'name':'OCR_MAX_CONCURRENT_EXECUTION', 'value':ocr_settings.MAX_CONCURRENT_EXECUTION},
     ]
     
