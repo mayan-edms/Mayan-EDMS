@@ -6,7 +6,8 @@ from documents import Document
 
 from ocr.api import do_document_ocr
 from literals import QUEUEDOCUMENT_STATE_PENDING, \
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE
+    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE, \
+    QUEUEDOCUMENT_STATE_ERROR
 from models import QueueDocument, DocumentQueue
 from ocr.conf.settings import MAX_CONCURRENT_EXECUTION
 
