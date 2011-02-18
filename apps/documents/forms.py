@@ -40,7 +40,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         return mark_safe(u''.join(output))  
     
 
-class DocumentPageForm(forms.ModelForm):
+class DocumentPageForm(DetailForm):
     class Meta:
         model = DocumentPage
 
@@ -73,9 +73,10 @@ class ImageWidget(forms.widgets.Widget):
         output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
         
         for document_page in value.documentpage_set.all():
-            output.append('<br/>%s)<a href="%s">%s</a>' % (document_page.page_number,
-                reverse('document_page_view', args=[document_page.id]),
-                ugettext(u'page view')))
+            output.append('<br/><a href="%(url)s"><span class="famfam active famfam-page_white"></span>%(text)s</a>' % {
+                'page_number': document_page.page_number,
+                'url':reverse('document_page_view', args=[document_page.id]),
+                'text':ugettext(u'Page %s details') % document_page.page_number})
         #output.append(super(ImageWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))  
 

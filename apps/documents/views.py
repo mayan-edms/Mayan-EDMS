@@ -581,7 +581,7 @@ def document_page_view(request, document_page_id):
     form_list = [
         {
             'form':document_page_form,
-            'title':_(u'document page: %s') % document_page.page_number,
+            'title':_(u'details for document page: %s') % document_page.page_number,
             'object':document_page,
             'grid':6,
         },
