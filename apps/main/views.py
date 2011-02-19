@@ -23,7 +23,6 @@ def check_settings(request):
         {'name':'DOCUMENTS_STAGING_DIRECTORY', 'value':documents_settings.STAGING_DIRECTORY, 'exists':True},
         {'name':'DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD', 'value':documents_settings.DELETE_STAGING_FILE_AFTER_UPLOAD},
         {'name':'DOCUMENTS_STAGING_FILES_PREVIEW_SIZE', 'value':documents_settings.STAGING_FILES_PREVIEW_SIZE},
-        {'name':'DOCUMENTS_DELETE_LOCAL_ORIGINAL', 'value':documents_settings.DELETE_LOCAL_ORIGINAL},
         {'name':'DOCUMENTS_CHECKSUM_FUNCTION', 'value':documents_settings.CHECKSUM_FUNCTION},
         {'name':'DOCUMENTS_UUID_FUNTION', 'value':documents_settings.UUID_FUNCTION},
         {'name':'DOCUMENTS_STORAGE_BACKEND', 'value':documents_settings.STORAGE_BACKEND},
@@ -37,13 +36,20 @@ def check_settings(request):
         {'name':'DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT', 'value':documents_settings.FILESYSTEM_MAX_RENAME_COUNT},
         {'name':'DOCUMENTS_AUTOMATIC_OCR', 'value':documents_settings.AUTOMATIC_OCR},
         {'name':'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value':documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
+        {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
+        {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
         
         #Common
         {'name':'COMMON_TEMPORARY_DIRECTORY', 'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True},
 
         #Converter
         {'name':'CONVERTER_CONVERT_PATH', 'value':converter_settings.CONVERT_PATH, 'exists':True},
+        {'name':'CONVERTER_UNPAPER_PATH', 'value':converter_settings.UNPAPER_PATH, 'exists':True},
+        {'name':'CONVERTER_IDENTIFY_PATH', 'value':converter_settings.IDENTIFY_PATH, 'exists':True},
         {'name':'CONVERTER_OCR_OPTIONS', 'value':converter_settings.OCR_OPTIONS},
+        {'name':'CONVERTER_DEFAULT_OPTIONS', 'value':converter_settings.DEFAULT_OPTIONS},
+        {'name':'CONVERTER_LOW_QUALITY_OPTIONS', 'value':converter_settings.LOW_QUALITY_OPTIONS},
+        {'name':'CONVERTER_HIGH_QUALITY_OPTIONS', 'value':converter_settings.HIGH_QUALITY_OPTIONS},
 
         #ocr
         {'name':'OCR_TESSERACT_PATH', 'value':ocr_settings.TESSERACT_PATH, 'exists':True},
