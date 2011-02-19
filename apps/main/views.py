@@ -36,6 +36,7 @@ def check_settings(request):
         {'name':'DOCUMENTS_SLUGIFY_PATHS', 'value':documents_settings.FILESYSTEM_SLUGIFY_PATHS},
         {'name':'DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT', 'value':documents_settings.FILESYSTEM_MAX_RENAME_COUNT},
         {'name':'DOCUMENTS_AUTOMATIC_OCR', 'value':documents_settings.AUTOMATIC_OCR},
+        {'name':'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value':documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
         
         #Common
         {'name':'COMMON_TEMPORARY_DIRECTORY', 'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True},

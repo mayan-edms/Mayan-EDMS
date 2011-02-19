@@ -82,7 +82,6 @@ register_model_list_columns(Document, [
 
     ])
 
-print 'ENABLE_SINGLE_DOCUMENT_UPLOAD', ENABLE_SINGLE_DOCUMENT_UPLOAD
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
     register_menu([
         {'text':_('documents'), 'view':'document_create', 'links':[
