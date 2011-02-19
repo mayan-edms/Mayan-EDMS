@@ -668,6 +668,8 @@ def document_page_transformation_delete(request, document_page_transformation_id
         check_permissions(request.user, 'documents', permissions)
     except Unauthorized, e:
         raise Http404(e)
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
             
     document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
         
@@ -682,4 +684,5 @@ def document_page_transformation_delete(request, document_page_transformation_id
                 'transformation':document_page_transformation.get_transformation_display(),
                 'page':document_page_transformation.document_page.page_number,
                 'document':document_page_transformation.document_page.document},
+            'previous':previous,
         })
