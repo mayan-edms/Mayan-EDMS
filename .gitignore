@@ -6,3 +6,5 @@ site_media/photologue/photos/cache/*
 *.sqlite
 settings_local.py
 site_media/documents/*
+celerybeat-schedule
+document_storage/
