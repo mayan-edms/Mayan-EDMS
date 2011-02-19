@@ -114,7 +114,7 @@ def role_create(request):
 def role_delete(request, role_id):
     permissions = [PERMISSION_ROLE_DELETE]
     try:
-        check_permissions(request.user, 'documents', permissions)
+        check_permissions(request.user, 'permissions', permissions)
     except Unauthorized, e:
         raise Http404(e)
             
