@@ -13,3 +13,4 @@
 * Apply default transformations to document before OCR
 * Added unpaper to the OCR convertion pipe
 * Added support for concurrent, queued OCR processing using celery
+* Added sentry to monitor and store error for later debugging

@@ -15,12 +15,10 @@ PROJECT_NAME = 'mayan'
 
 DEBUG = False
 DEVELOPMENT = False
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-)
-
+ADMINS = ()
+SENTRY_ADMINS = ('root@localhost',)
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -128,6 +126,12 @@ INSTALLED_APPS = (
     'ocr',
     'permissions',
     'djcelery',
+    'indexer',
+    'paging',
+    'sentry',
+    'sentry.client',
+    'sentry.client.celery',
+    
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
