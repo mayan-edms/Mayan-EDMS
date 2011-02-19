@@ -35,6 +35,7 @@
 * Count pages in a PDF file http://pybrary.net/pyPdf/                  - NOT NEEDED
 * Support distributed OCR queues (RabbitMQ & Celery?)                  - DONE
 * MuliThreading deferred OCR                                           - DONE
+* Handle ziped or rar archives                                         - DONE (zip only)
 * Role editing view under setup                                        - STARTED
 * Scheduled maintenance (cleanup, deferred OCR's)                      - DONE
 * Document list filtering by metadata
@@ -62,7 +63,6 @@
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
-* Handle ziped or rar archives
 * Display preferences 'document transformations' (Rotation, default zoom)
 * Gallery view for document groups
 * Download metadata group documents as a single zip file
@@ -80,3 +80,4 @@
 * Enable/disable ocr queue view & links
 * Restrict view permission free form rename
 * Add per node max ocr concurrent execution
+* Staging file hash colition when same file with different name, newhash = content hash + filename hash

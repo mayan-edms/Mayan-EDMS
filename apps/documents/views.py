@@ -1,3 +1,5 @@
+import zipfile
+
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -11,6 +13,7 @@ from django.conf import settings
 from django.utils.http import urlencode
 from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.files.uploadedfile import SimpleUploadedFile    
 
 from common.utils import pretty_size
 from permissions.api import check_permissions, Unauthorized
@@ -42,6 +45,8 @@ from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import AUTOMATIC_OCR
+from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
+from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
 
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
@@ -110,6 +115,47 @@ def document_create_sibling(request, document_id, multiple=True):
     return HttpResponseRedirect('%s?%s' % (url, urlencode(urldata)))
 
 
+def _handle_save_document(request, document, form=None):
+    document.update_checksum()
+    document.update_mimetype()
+    document.update_page_count()
+    document.apply_default_transformations()
+    if AUTOMATIC_OCR:
+        document_queue = add_document_to_queue(document)
+        messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
+            'document':document, 'queue':document_queue.label})
+    
+    if form and 'document_type_available_filenames' in form.cleaned_data:
+        if form.cleaned_data['document_type_available_filenames']:
+            document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
+            document.save()
+
+    save_metadata_list(decode_metadata_from_url(request.GET), document)
+    try:
+        document.create_fs_links()
+    except Exception, e:
+        messages.error(request, e)
+
+
+def _handle_zip_file(request, uploaded_file, document_type):
+    filename = getattr(uploaded_file, 'filename', getattr(uploaded_file, 'name', ''))
+    if filename.lower().endswith('zip'):
+        zfobj = zipfile.ZipFile(uploaded_file)
+        for filename in zfobj.namelist():
+            if not filename.endswith('/'):
+                zip_document = Document(file=SimpleUploadedFile(
+                    name=filename, content=zfobj.read(filename)),
+                    document_type=document_type)
+                zip_document.save()
+                _handle_save_document(request, zip_document)
+                messages.success(request, _(u'Extracted file: %s, uploaded successfully.') % filename)
+        #Signal that uploaded file was a zip file
+        return True
+    else:
+        #Otherwise tell parent to handle file
+        return False
+    
+
 def upload_document_with_type(request, document_type_id, multiple=True):
     permissions = [PERMISSION_DOCUMENT_CREATE]
     try:
@@ -128,28 +174,14 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             local_form = DocumentForm(request.POST, request.FILES,
                 prefix='local', initial={'document_type':document_type})
             if local_form.is_valid():
-                instance = local_form.save()
-                instance.update_checksum()
-                instance.update_mimetype()
-                instance.update_page_count()
-                instance.apply_default_transformations()
-                if AUTOMATIC_OCR:
-                    document_queue = add_document_to_queue(instance)
-                    messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-                        'document':instance, 'queue':document_queue.label})
-
-                if 'document_type_available_filenames' in local_form.cleaned_data:
-                    if local_form.cleaned_data['document_type_available_filenames']:
-                        instance.file_filename = local_form.cleaned_data['document_type_available_filenames'].filename
-                        instance.save()
-            
-                save_metadata_list(decode_metadata_from_url(request.GET), instance)
-                messages.success(request, _(u'Document uploaded successfully.'))
                 try:
-                    instance.create_fs_links()
+                    if (not UNCOMPRESS_COMPRESSED_LOCAL_FILES) or (UNCOMPRESS_COMPRESSED_LOCAL_FILES and not _handle_zip_file(request, request.FILES['local-file'], document_type)):
+                        instance = local_form.save()
+                        _handle_save_document(request, instance, local_form)
+                        messages.success(request, _(u'Document uploaded successfully.'))
                 except Exception, e:
                     messages.error(request, e)
-                    
+
                 if multiple:
                     return HttpResponseRedirect(request.get_full_path())
                 else:
@@ -158,51 +190,24 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             staging_form = StagingDocumentForm(request.POST, request.FILES,
                 prefix='staging', initial={'document_type':document_type})
             if staging_form.is_valid():
-                staging_file_id = staging_form.cleaned_data['staging_file_id']
-                
                 try:
-                    staging_file = StagingFile.get(staging_file_id)
-                except Exception, e:
-                    messages.error(request, e)   
-                else:
-                    try:
+                    staging_file = StagingFile.get(staging_form.cleaned_data['staging_file_id'])
+                    if (not UNCOMPRESS_COMPRESSED_STAGING_FILES) or (UNCOMPRESS_COMPRESSED_STAGING_FILES and not _handle_zip_file(request, staging_file.upload(), document_type)):
                         document = Document(file=staging_file.upload(), document_type=document_type)
                         document.save()
-                        document.update_checksum()
-                        document.update_mimetype()
-                        document.update_page_count()
-                        document.apply_default_transformations()
-                        if AUTOMATIC_OCR:
-                            document_queue = add_document_to_queue(document)
-                            messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-                                'document':document, 'queue':document_queue.label})
-                    except Exception, e:
-                        messages.error(request, e)   
-                    else:
-                        
-                        if 'document_type_available_filenames' in staging_form.cleaned_data:
-                            if staging_form.cleaned_data['document_type_available_filenames']:
-                                document.file_filename = staging_form.cleaned_data['document_type_available_filenames'].filename
-                                document.save()
-                                                
-                        save_metadata_list(decode_metadata_from_url(request.GET), document)
+                        _handle_save_document(request, document, staging_form)
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
-                        try:
-                            document.create_fs_links()
-                        except Exception, e:
-                            messages.error(request, e)
-                
-                        if DELETE_STAGING_FILE_AFTER_UPLOAD:
-                            try:
-                                staging_file.delete()
-                                messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
-                            except Exception, e:
-                                messages.error(request, e)
+           
+                    if DELETE_STAGING_FILE_AFTER_UPLOAD:
+                        staging_file.delete()
+                        messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                except Exception, e:
+                    messages.error(request, e)
 
-            if multiple:
-                return HttpResponseRedirect(request.META['HTTP_REFERER'])
-            else:
-                return HttpResponseRedirect(reverse('document_list'))                
+                if multiple:
+                    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+                else:
+                    return HttpResponseRedirect(reverse('document_list'))                
 
 
     context = {
