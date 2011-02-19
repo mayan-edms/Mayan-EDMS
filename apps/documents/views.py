@@ -173,9 +173,9 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         document.update_page_count()
                         document.apply_default_transformations()
                         if AUTOMATIC_OCR:
-                            document_queue = add_document_to_queue(instance)
+                            document_queue = add_document_to_queue(document)
                             messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-                                'document':instance, 'queue':document_queue.label})
+                                'document':document, 'queue':document_queue.label})
                     except Exception, e:
                         messages.error(request, e)   
                     else:
