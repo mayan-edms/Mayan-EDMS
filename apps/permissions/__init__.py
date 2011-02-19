@@ -29,7 +29,7 @@ register_permissions('permissions', [
 
 
 role_list = {'text':_(u'roles'), 'view':'role_list', 'famfam':'medal_gold_1', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_VIEW]}}
-role_create = {'text':_(u'create new role'), 'view':'role_create', 'famfam':'medal_gold_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_ROLE_CREATE]}}
+role_create = {'text':_(u'create new role'), 'view':'role_create', 'famfam':'medal_gold_add', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_CREATE]}}
 role_edit = {'text':_(u'edit'), 'view':'role_edit', 'args':'object.id', 'famfam':'medal_gold_1', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_EDIT]}}
 role_permissions = {'text':_(u'role permissions'), 'view':'role_permissions', 'args':'object.id', 'famfam':'key_go', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]}}
 role_delete = {'text':_(u'delete'), 'view':'role_delete', 'args':'object.id', 'famfam':'medal_gold_delete', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_DELETE]}}
