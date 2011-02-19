@@ -14,6 +14,8 @@ from staging import StagingFile
 
 from common.conf import settings as common_settings
 
+from conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
+
 PERMISSION_DOCUMENT_CREATE = 'document_create'
 PERMISSION_DOCUMENT_PROPERTIES_EDIT = 'document_properties_edit'
 PERMISSION_DOCUMENT_METADATA_EDIT = 'document_metadata_edit'
@@ -55,7 +57,11 @@ staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':
 
 register_links(Document, [document_view, document_edit, document_edit_metadata, document_delete, document_download], menu_name='sidebar')
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
-register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
+
+if ENABLE_SINGLE_DOCUMENT_UPLOAD:
+    register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
+else:
+    register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create_multiple], menu_name='sidebar')
 
 register_links(DocumentPage, [document_page_go_back], menu_name='sidebar')
 
@@ -76,9 +82,16 @@ register_model_list_columns(Document, [
 
     ])
 
-register_menu([
-    {'text':_('documents'), 'view':'document_create', 'links':[
-        document_create, document_create_multiple, document_list
-    ],'famfam':'page','position':1}])
+print 'ENABLE_SINGLE_DOCUMENT_UPLOAD', ENABLE_SINGLE_DOCUMENT_UPLOAD
+if ENABLE_SINGLE_DOCUMENT_UPLOAD:
+    register_menu([
+        {'text':_('documents'), 'view':'document_create', 'links':[
+            document_create, document_create_multiple, document_list
+        ],'famfam':'page','position':1}])
+else:
+    register_menu([
+        {'text':_('documents'), 'view':'document_create_multiple', 'links':[
+            document_create_multiple, document_list
+        ],'famfam':'page','position':1}])
 
 TEMPORARY_DIRECTORY = common_settings.TEMPORARY_DIRECTORY if common_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
