@@ -691,3 +691,45 @@ def document_page_transformation_delete(request, document_page_transformation_id
                 'document':document_page_transformation.document_page.document},
             'previous':previous,
         })
+
+
+def document_find_duplicates(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_VIEW]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
+    document = get_object_or_404(Document, pk=document_id)
+    return _find_duplicate_list(request, [document])    
+
+
+def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False):
+    permissions = [PERMISSION_DOCUMENT_VIEW]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+           
+    duplicated = []
+    for document in source_document_list:
+        results = Document.objects.filter(checksum=document.checksum)
+        if not include_source:
+            results = results.exclude(id=document.id)
+        duplicated.extend(results)
+
+
+    return render_to_response('generic_list.html', {
+        'object_list':duplicated,
+        'title':_(u'duplicated documents'),
+    }, context_instance=RequestContext(request))   
+
+
+def document_find_all_duplicates(request):
+    permissions = [PERMISSION_DOCUMENT_VIEW]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+
+    return _find_duplicate_list(request, include_source=True)
