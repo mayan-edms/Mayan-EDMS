@@ -701,28 +701,38 @@ def document_find_duplicates(request, document_id):
         raise Http404(e)
             
     document = get_object_or_404(Document, pk=document_id)
-    return _find_duplicate_list(request, [document])    
+    return _find_duplicate_list(request, [document], include_source=True, confirmation=False)    
 
 
-def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False):
+def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False, confirmation=True):
     permissions = [PERMISSION_DOCUMENT_VIEW]
     try:
         check_permissions(request.user, 'documents', permissions)
     except Unauthorized, e:
         raise Http404(e)
-           
-    duplicated = []
-    for document in source_document_list:
-        results = Document.objects.filter(checksum=document.checksum)
-        if not include_source:
-            results = results.exclude(id=document.id)
-        duplicated.extend(results)
 
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    
+    if confirmation and request.method != 'POST':
+        return render_to_response('generic_confirm.html', {
+            #'title':_(u'dupli'),
+            'previous':previous,
+            'message':_(u'On large databases this operation may take some time to execute.'),
+        }, context_instance=RequestContext(request))
+    else:     
+        duplicated = []
+        for document in source_document_list:
+            if document not in duplicated:
+                results = Document.objects.filter(checksum=document.checksum).exclude(id__in=[d.id for d in duplicated]).exclude(id=document.id)
+                duplicated.extend(results)
 
-    return render_to_response('generic_list.html', {
-        'object_list':duplicated,
-        'title':_(u'duplicated documents'),
-    }, context_instance=RequestContext(request))   
+        if include_source:
+            duplicated.extend(source_document_list)
+
+        return render_to_response('generic_list.html', {
+            'object_list':duplicated,
+            'title':_(u'duplicated documents'),
+        }, context_instance=RequestContext(request))   
 
 
 def document_find_all_duplicates(request):
@@ -732,4 +742,4 @@ def document_find_all_duplicates(request):
     except Unauthorized, e:
         raise Http404(e)
 
-    return _find_duplicate_list(request, include_source=True)
+    return _find_duplicate_list(request, include_source=False)

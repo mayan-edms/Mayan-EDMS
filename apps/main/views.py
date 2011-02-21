@@ -64,8 +64,8 @@ def check_settings(request):
         'hide_object':True,
         'extra_columns':[
             {'name':_(u'name'), 'attribute':'name'},
-            {'name':_(u'value'), 'attribute': lambda x: return_type(x['value'])},
-            {'name':_(u'exists'), 'attribute':lambda x: exists(x['value']) if 'exists' in x else ''},
+            {'name':_(u'value'), 'attribute': lambda x: _return_type(x['value'])},
+            {'name':_(u'exists'), 'attribute':lambda x: _exists(x['value']) if 'exists' in x else ''},
         ]
     }
     
@@ -73,7 +73,7 @@ def check_settings(request):
         context_instance=RequestContext(request))
         
 
-def return_type(value):
+def _return_type(value):
     if isinstance(value, types.FunctionType):
         return _(u'function found')
     elif isinstance(value, types.ClassType):
@@ -85,8 +85,16 @@ def return_type(value):
     else:
         return value
 
-def exists(path):
+def _exists(path):
     try:
         return os.path.exists(path)
     except Exception, exc:
         return exc
+
+
+def blank_menu(request):
+    return render_to_response('generic_template.html', {
+        'title':_(u'Tools menu'),
+        'content':_(u'"Find all duplicates": Search all the documents\' checksums and return a list of the exact matches.')
+        },
+    context_instance=RequestContext(request))    

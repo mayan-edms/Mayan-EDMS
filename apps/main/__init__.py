@@ -12,7 +12,7 @@ check_settings = {'text':_(u'settings'), 'view':'check_settings', 'famfam':'cog'
 register_menu([
     {'text':_(u'home'), 'view':'home', 'famfam':'house', 'position':0},
 
-    {'text':_(u'tools'), 'view':'document_find_all_duplicates', 'links': [
+    {'text':_(u'tools'), 'view':'tools_menu', 'links': [
         document_find_all_duplicates,
         ],'famfam':'wrench', 'name':'tools','position':7},
 
