@@ -1,3 +1,5 @@
+TODO, WISHLIST
+===========
 * Fix repeated search results                                          - DONE
 * File renaming dropdown                                               - DONE
 * Create indexing filesystem folders from document type metadata type  - DONE
@@ -36,12 +38,13 @@
 * Support distributed OCR queues (RabbitMQ & Celery?)                  - DONE
 * MuliThreading deferred OCR                                           - DONE
 * Handle ziped or rar archives                                         - DONE (zip only)
-* Role editing view under setup                                        - STARTED
 * Scheduled maintenance (cleanup, deferred OCR's)                      - DONE
+* Tesserat default option ocr setup                                    - DONE
+* Check duplicated files using checksum                                - DONE
+* Role editing view under setup                                        - STARTED
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
-* Check duplicated files using checksum
 * Show last 5 recent metadata setups for easy switch
 * Change to model signals
 * Allow document type to be changed in document edit view
@@ -64,20 +67,24 @@
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
 * Display preferences 'document transformations' (Rotation, default zoom)
+* Document view temp transformations
 * Gallery view for document groups
 * Download metadata group documents as a single zip file
 * Download original document or transformed document
 * Include annotations in transformed documents downloads
-* Document view temp transformations
 * Implement permissions decorators
-* block Setup menu item to non staff and non superuser users
+* Block Setup menu item to non staff and non superuser users
 * Don't append an extension separator if extension is non existant
 * Don't do OCR on wordproccessing or spreadsheet document, strip tags and store text
 * Storage backend to storage backend copy support, to move/migrate document to new storage backend
-* Tesserat default option ocr setup
 * Do separate default transformations for staging and for local uploads
 * Multiple ocr queue support
 * Enable/disable ocr queue view & links
 * Restrict view permission free form rename
 * Add per node max ocr concurrent execution
+* Skip step 2 of wizard (metadata) if no document type metadata types have been defined
+
+
+ISSUES
+===========
 * Staging file hash colition when same file with different name, newhash = content hash + filename hash
