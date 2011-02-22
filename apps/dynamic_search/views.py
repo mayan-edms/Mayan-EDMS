@@ -4,6 +4,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from django.db.models import Q
+from django.contrib import messages
+from django.core.exceptions import FieldError
+
 
 from api import search_list
 from forms import SearchForm
@@ -62,11 +65,15 @@ def search(request):
         for model, data in search_list.items():
             query = get_query(terms, data['fields'])            
 
-            results = model.objects.filter(query).distinct()
-            if results:
-                found_entries[data['text']] = results
-                for result in results:
-                    object_list.append(result)
+            try:
+                results = model.objects.filter(query).distinct()
+                if results:
+                    found_entries[data['text']] = results
+                    for result in results:
+                        object_list.append(result)
+            except FieldError, e:
+                if request.user.is_staff or request.user.is_superuser:
+                    messages.error(request, _(u'Search error: %s') % e)
     else:
         form = SearchForm()
     
