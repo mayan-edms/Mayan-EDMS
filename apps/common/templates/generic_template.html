@@ -6,6 +6,10 @@
         <h2 class="title">{{ title }}</h2>
         <div class="inner">
             <p>{{ content }}</p>
+        
+            {% for paragraph in paragraphs %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

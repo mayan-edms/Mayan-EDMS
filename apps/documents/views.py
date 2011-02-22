@@ -21,7 +21,7 @@ from filetransfers.api import serve_file
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT
 from converter import TRANFORMATION_CHOICES
 
-from utils import from_descriptor_to_tempfile
+from utils import from_descriptor_to_tempfile, recreate_links
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
     DocumentPage, DocumentPageTransformation
@@ -53,7 +53,7 @@ from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
-    PERMISSION_DOCUMENT_TRANSFORM
+    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS
    
 from utils import save_metadata, save_metadata_list, decode_metadata_from_url
 
@@ -743,3 +743,29 @@ def document_find_all_duplicates(request):
         raise Http404(e)
 
     return _find_duplicate_list(request, include_source=False)
+
+
+def document_recreate_all_links(request):
+    permissions = [PERMISSION_DOCUMENT_TOOLS]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    
+    if request.method != 'POST':
+        return render_to_response('generic_confirm.html', {
+            'previous':previous,
+            'next':next,
+            'message':_(u'On large databases this operation may take some time to execute.'),
+        }, context_instance=RequestContext(request))
+    else:     
+        try:
+            recreate_links()
+            messages.success(request, _(u'Filesystem links re-creation completed successfully.'))
+        except Exception, e:
+            messages.error(request, _(u'Filesystem links re-creation error: %s') % e)
+            
+        return HttpResponseRedirect(next)

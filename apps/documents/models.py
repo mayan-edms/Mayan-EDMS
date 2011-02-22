@@ -62,7 +62,7 @@ class Document(models.Model):
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
     file_mime_encoding = models.CharField(max_length=64, default='', editable=False)
     #FAT filename can be up to 255 using LFN
-    file_filename = models.CharField(max_length=64, default='', editable=False)
+    file_filename = models.CharField(max_length=255, default='', editable=False)
     file_extension = models.CharField(max_length=16, default='', editable=False)
     date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
@@ -355,7 +355,7 @@ class MetadataIndex(models.Model):
 class DocumentMetadataIndex(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     metadata_index = models.ForeignKey(MetadataIndex, verbose_name=_(u'metadata index'))
-    filename = models.CharField(max_length=128, verbose_name=_(u'filename'))
+    filename = models.CharField(max_length=255, verbose_name=_(u'filename'))
     suffix = models.PositiveIntegerField(default=0, verbose_name=_(u'suffix'))
 
     def __unicode__(self):
@@ -381,7 +381,7 @@ class DocumentMetadata(models.Model):
 
 class DocumentTypeFilename(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    filename = models.CharField(max_length=64, verbose_name=_(u'filename'))
+    filename = models.CharField(max_length=128, verbose_name=_(u'filename'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     
     def __unicode__(self):

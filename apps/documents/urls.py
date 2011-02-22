@@ -13,7 +13,6 @@ from converter.api import QUALITY_HIGH
 
 urlpatterns = patterns('documents.views',
     url(r'^document/list/$', 'document_list', (), 'document_list'),
-    url(r'^document/list/duplicates/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
     url(r'^document/create/from/local/single/$', 'document_create', {'multiple':False}, 'document_create'),
     url(r'^document/create/from/local/multiple/$', 'document_create', {'multiple':True}, 'document_create_multiple'),
     url(r'^document/type/(?P<document_type_id>\d+)/upload/single/$', 'upload_document_with_type', {'multiple':False}, 'upload_document_with_type'),
@@ -29,6 +28,8 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':True if ENABLE_SINGLE_DOCUMENT_UPLOAD == False else False}, 'document_create_sibling'),
     url(r'^document/(?P<document_id>\d+)/find_duplicates/$', 'document_find_duplicates', (), 'document_find_duplicates'),
+    url(r'^recreate_all_links/$', 'document_recreate_all_links', (), 'document_recreate_all_links'),
+    url(r'^duplicates/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
 
     url(r'^staging_file/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
     url(r'^staging_file/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),

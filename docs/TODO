@@ -41,6 +41,7 @@ TODO, WISHLIST
 * Scheduled maintenance (cleanup, deferred OCR's)                      - DONE
 * Tesserat default option ocr setup                                    - DONE
 * Check duplicated files using checksum                                - DONE
+* Link to delete and recreate all document links                       - DONE
 * Role editing view under setup                                        - STARTED
 * Document list filtering by metadata
 * Filterform date filtering widget
@@ -53,7 +54,6 @@ TODO, WISHLIST
 * Document model's delete method might not get called when deleting in bulk
     from a queryset
 * Allow metadata entry form to mix required and non required metadata
-* Link to delete and recreate all document links
 * Versioning support
 * Generic document anotations using layer overlays
 * Workflows
@@ -83,6 +83,7 @@ TODO, WISHLIST
 * Restrict view permission free form rename
 * Add per node max ocr concurrent execution
 * Skip step 2 of wizard (metadata) if no document type metadata types have been defined
+* Add permissions support to menus
 
 
 ISSUES

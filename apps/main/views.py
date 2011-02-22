@@ -95,6 +95,9 @@ def _exists(path):
 def blank_menu(request):
     return render_to_response('generic_template.html', {
         'title':_(u'Tools menu'),
-        'content':_(u'"Find all duplicates": Search all the documents\' checksums and return a list of the exact matches.')
+        'paragraphs':[
+            _(u'"Find all duplicates": Search all the documents\' checksums and return a list of the exact matches.'),
+            _(u'"Recreate index links": Deletes and creates from scratch all the file system indexing links.')
+        ],
         },
     context_instance=RequestContext(request))    

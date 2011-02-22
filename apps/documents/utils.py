@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from documents import TEMPORARY_DIRECTORY
 
-from models import DocumentMetadata, MetadataType
+from models import Document, DocumentMetadata, MetadataType
 
 #http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
 def copyfile(source, dest, buffer_size=1024*1024):
@@ -112,3 +112,28 @@ def save_metadata(metadata_dict, document):
     #http://stackoverflow.com/questions/4382875/handling-iri-in-django
     document_metadata.value=unquote_plus(metadata_dict['value'])#.decode('utf-8')
     document_metadata.save()        
+
+
+def recreate_links(raise_exception=True):
+    errors = []
+    for document in Document.objects.all():
+        try:
+            document.delete_fs_links()
+        except Exception, e:
+            print document
+            if raise_exception:
+                raise Exception(e)
+            else:
+                error.append(e)
+
+    for document in Document.objects.all():
+        try:
+            document.create_fs_links()
+        except Exception, e:
+            print document
+            if raise_exception:
+                raise Exception(e)
+            else:
+                error.append(e)
+    
+    return errors
