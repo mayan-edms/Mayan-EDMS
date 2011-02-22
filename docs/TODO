@@ -89,3 +89,4 @@ TODO, WISHLIST
 ISSUES
 ===========
 * Staging file hash colition when same file with different name, newhash = content hash + filename hash
+* Fix search action for documents with no metadata
