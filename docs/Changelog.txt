@@ -15,5 +15,7 @@
 * Added support for concurrent, queued OCR processing using celery
 * Added sentry to monitor and store error for later debugging
 * Zip files can now be uncompressed in memory and their content uploaded individually in one step
+
+2011-Feb 21
 * Added per document duplicate search and a tools menu option to seach all duplicated documents
 * Added document tool that deletes and re-creates all documents filesystem links
