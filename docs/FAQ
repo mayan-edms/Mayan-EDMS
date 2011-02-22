@@ -1,8 +1,8 @@
-* Following error when using MySQL and doing OCR:
+* Following error when using MySQL and doing OCR on languages other than english:
     Incorrect string value: '\xE2\x80\x95rs6...' for column 'content' at row 1
     
     - Solution:
-    Use utf-8 collantion on MySQL server, or at least in table 'documents_documentpage', 'content' field
+    Use utf-8 collation on MySQL server, or at least in table 'documents_documentpage', 'content' field
     Ref: 1- http://groups.google.com/group/django-users/browse_thread/thread/429447086fca6412
     Ref: 2- http://markmail.org/message/bqajx2utvmtriixi
 
@@ -23,3 +23,21 @@
         follow symlinks = yes
         
     Ref: 1- http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
+
+
+* How to store documents outside Mayan's path:
+    1)Sub class Django's FileSystemStorage class:
+        -Create a file called customstorage.py
+        
+        from django.core.files.storage import FileSystemStorage
+
+        class CustomStorage(FileSystemStorage):
+            def __init__(self, *args, **kwargs):
+                super(CustomStorage, self).__init__(*args, **kwargs)
+                self.location='/new/path/to/documents/'
+                self.base_url='document_storage'
+
+    2)In settings.py add:
+        from customstorage import CustomStorage
+        DOCUMENTS_STORAGE_BACKEND = CustomStorage
+
