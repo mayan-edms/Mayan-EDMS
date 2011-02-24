@@ -66,11 +66,12 @@ def search(request):
             query = get_query(terms, data['fields'])            
 
             try:
-                results = model.objects.filter(query).distinct()
+                results = model.objects.filter(query)
                 if results:
                     found_entries[data['text']] = results
                     for result in results:
-                        object_list.append(result)
+                        if result not in object_list:
+                            object_list.append(result)
             except FieldError, e:
                 if request.user.is_staff or request.user.is_superuser:
                     messages.error(request, _(u'Search error: %s') % e)
