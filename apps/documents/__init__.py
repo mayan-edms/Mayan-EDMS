@@ -48,7 +48,6 @@ document_preview = {'text':_('preview'), 'class':'fancybox', 'view':'document_pr
 document_download = {'text':_('download'), 'view':'document_download', 'args':'object.id', 'famfam':'page_save', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DOWNLOAD]}}
 document_find_duplicates = {'text':_('find duplicates'), 'view':'document_find_duplicates', 'args':'object.id', 'famfam':'page_refresh', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_find_all_duplicates = {'text':_('find all duplicates'), 'view':'document_find_all_duplicates', 'famfam':'page_refresh', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
-document_recreate_all_links = {'text':_('recreate index links'), 'view':'document_recreate_all_links', 'famfam':'page_link', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TOOLS]}}
 
 document_page_transformation_create = {'text':_('create new transformation'), 'view':'document_page_transformation_create', 'args':'object.id', 'famfam':'pencil_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
 document_page_transformation_edit = {'text':_('edit'), 'view':'document_page_transformation_edit', 'args':'object.id', 'famfam':'pencil_go', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}

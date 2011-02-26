@@ -20,8 +20,10 @@ from permissions.api import check_permissions, Unauthorized
 from filetransfers.api import serve_file
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT
 from converter import TRANFORMATION_CHOICES
+from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 
-from utils import from_descriptor_to_tempfile, recreate_links
+
+from utils import from_descriptor_to_tempfile
 
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
     DocumentPage, DocumentPageTransformation
@@ -37,7 +39,6 @@ from ocr.models import add_document_to_queue
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
-from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
@@ -47,6 +48,8 @@ from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import AUTOMATIC_OCR
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
+
+from filesystem_serving.conf.settings import FILESERVING_ENABLE
 
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
@@ -128,7 +131,7 @@ def _handle_save_document(request, document, form=None):
 
     save_metadata_list(decode_metadata_from_url(request.GET), document)
     try:
-        document.create_fs_links()
+        document_create_fs_links(document)
     except Exception, e:
         messages.error(request, e)
 
@@ -300,7 +303,7 @@ def document_view(request, document_id):
             },
         ]
     
-    if FILESYSTEM_FILESERVING_ENABLE:
+    if FILESERVING_ENABLE:
         subtemplates_dict.append({
             'name':'generic_list_subtemplate.html',
             'title':_(u'index links'),
@@ -370,7 +373,7 @@ def document_edit(request, document_id):
         form = DocumentForm_edit(request.POST, initial={'document_type':document.document_type})
         if form.is_valid():
             try:
-                document.delete_fs_links()
+                document_delete_fs_links(document)
             except Exception, e:
                 messages.error(request, e)
                 return HttpResponseRedirect(reverse('document_list'))
@@ -386,7 +389,7 @@ def document_edit(request, document_id):
             messages.success(request, _(u'Document %s edited successfully.') % document)
             
             try:
-                document.create_fs_links()
+                document_create_fs_links(document)
                 messages.success(request, _(u'Document filesystem links updated successfully.'))                
             except Exception, e:
                 messages.error(request, e)
@@ -433,7 +436,7 @@ def document_edit_metadata(request, document_id):
         if formset.is_valid():
             save_metadata_list(formset.cleaned_data, document)
             try:
-                document.delete_fs_links()
+                document_delete_fs_links(document)
             except Exception, e:
                 messages.error(request, e)
                 return HttpResponseRedirect(reverse('document_list'))
@@ -441,7 +444,7 @@ def document_edit_metadata(request, document_id):
             messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
             
             try:
-                document.create_fs_links()
+                document_create_fs_links(document)
                 messages.success(request, _(u'Document filesystem links updated successfully.'))                
             except Exception, e:
                 messages.error(request, e)
@@ -739,29 +742,3 @@ def document_find_all_duplicates(request):
         raise Http404(e)
 
     return _find_duplicate_list(request, include_source=False)
-
-
-def document_recreate_all_links(request):
-    permissions = [PERMISSION_DOCUMENT_TOOLS]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    
-    if request.method != 'POST':
-        return render_to_response('generic_confirm.html', {
-            'previous':previous,
-            'next':next,
-            'message':_(u'On large databases this operation may take some time to execute.'),
-        }, context_instance=RequestContext(request))
-    else:     
-        try:
-            recreate_links()
-            messages.success(request, _(u'Filesystem links re-creation completed successfully.'))
-        except Exception, e:
-            messages.error(request, _(u'Filesystem links re-creation error: %s') % e)
-            
-        return HttpResponseRedirect(next)
