@@ -84,6 +84,9 @@ TODO, WISHLIST
 * Add per node max ocr concurrent execution
 * Skip step 2 of wizard (metadata) if no document type metadata types have been defined
 * Add permissions support to menus
+* Add timeout support to ocr and convert tasks
+* Allow for OCR document requeue on error and requeue limit
+* Publish document option
 
 
 ISSUES
