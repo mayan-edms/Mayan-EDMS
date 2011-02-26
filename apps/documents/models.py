@@ -484,4 +484,4 @@ class DocumentPageTransformation(models.Model):
         verbose_name_plural = _(u'document page transformations')
     
   
-register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content'])
+register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description'])
