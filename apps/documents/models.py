@@ -12,6 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.models import Q
 
+
 from dynamic_search.api import register
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
@@ -77,13 +78,24 @@ class Document(models.Model):
         
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)
+    
+    
+    def save(self, *args, **kwargs):
+        internal_save = kwargs.pop('internal_save', False)
+        super(Document, self).save(*args, **kwargs)
+        if not internal_save:
+            self.update_checksum(save=False)
+            self.update_mimetype(save=False)
+            self.update_page_count(save=False)
+            self.apply_default_transformations()
+            self.save(internal_save=True)
 
       
     def get_fullname(self):
         return os.extsep.join([self.file_filename, self.file_extension])
 
         
-    def update_mimetype(self):
+    def update_mimetype(self, save=True):
         try:
             mime = magic.Magic(mime=True)
             self.file_mimetype = mime.from_buffer(self.read())
@@ -93,7 +105,8 @@ class Document(models.Model):
             self.file_mimetype = u'unknown'
             self.file_mime_encoding = u'unknown'
         finally:
-            self.save()
+            if save:
+                self.save()
       
     def read(self, count=1024):
         return self.file.storage.open(self.file.url).read(count)
@@ -111,11 +124,13 @@ class Document(models.Model):
                 self.save()
 
     
-    def update_page_count(self):
+    def update_page_count(self, save=True):
         total_pages = PAGE_COUNT_FUNCTION(self)
         for page_number in range(total_pages):
             document_page, created = DocumentPage.objects.get_or_create(
                 document=self, page_number=page_number+1)
+        if save:
+            self.save()
 
         
     def save_to_file(self, filepath, buffer_size=1024*1024):
@@ -180,7 +195,8 @@ class Document(models.Model):
 
 
     def apply_default_transformations(self):
-        if DEFAULT_TRANSFORMATIONS:
+        #Only apply default transformations on new documents
+        if DEFAULT_TRANSFORMATIONS and not [page.documentpagetransformation_set.all() for page in self.documentpage_set.all()]:
             for transformation in DEFAULT_TRANSFORMATIONS:
                 if 'name' in transformation:
                     for document_page in self.documentpage_set.all():

@@ -116,10 +116,6 @@ def document_create_sibling(request, document_id, multiple=True):
 
 
 def _handle_save_document(request, document, form=None):
-    document.update_checksum()
-    document.update_mimetype()
-    document.update_page_count()
-    document.apply_default_transformations()
     if AUTOMATIC_OCR:
         document_queue = add_document_to_queue(document)
         messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
