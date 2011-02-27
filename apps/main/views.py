@@ -9,6 +9,7 @@ from common.conf import settings as common_settings
 from documents.conf import settings as documents_settings
 from converter.conf import settings as converter_settings
 from ocr.conf import settings as ocr_settings
+from filesystem_serving.conf import settings as filesystem_serving_settings
 
 
 def home(request):
@@ -30,14 +31,17 @@ def check_settings(request):
         {'name':'DOCUMENTS_PREVIEW_SIZE', 'value':documents_settings.PREVIEW_SIZE},
         {'name':'DOCUMENTS_THUMBNAIL_SIZE', 'value':documents_settings.THUMBNAIL_SIZE},
         {'name':'DOCUMENTS_DISPLAY_SIZE', 'value':documents_settings.DISPLAY_SIZE},
-        {'name':'DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE', 'value':documents_settings.FILESYSTEM_FILESERVING_ENABLE},
-        {'name':'DOCUMENTS_FILESYSTEM_FILESERVING_PATH', 'value':documents_settings.FILESYSTEM_FILESERVING_PATH, 'exists':True},
-        {'name':'DOCUMENTS_SLUGIFY_PATHS', 'value':documents_settings.FILESYSTEM_SLUGIFY_PATHS},
-        {'name':'DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT', 'value':documents_settings.FILESYSTEM_MAX_RENAME_COUNT},
         {'name':'DOCUMENTS_AUTOMATIC_OCR', 'value':documents_settings.AUTOMATIC_OCR},
         {'name':'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value':documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
         {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
         {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
+
+        #Filesystem_serving
+        {'name':'FILESYSTEM_FILESERVING_ENABLE', 'value':filesystem_serving_settings.FILESERVING_ENABLE},
+        {'name':'FILESYSTEM_FILESERVING_PATH', 'value':filesystem_serving_settings.FILESERVING_PATH, 'exists':True},
+        {'name':'FILESYSTEM_SLUGIFY_PATHS', 'value':filesystem_serving_settings.SLUGIFY_PATHS},
+        {'name':'FILESYSTEM_MAX_RENAME_COUNT', 'value':filesystem_serving_settings.MAX_RENAME_COUNT},
+        
         
         #Common
         {'name':'COMMON_TEMPORARY_DIRECTORY', 'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True},

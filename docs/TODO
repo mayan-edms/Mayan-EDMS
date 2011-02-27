@@ -42,12 +42,12 @@ TODO, WISHLIST
 * Tesserat default option ocr setup                                    - DONE
 * Check duplicated files using checksum                                - DONE
 * Link to delete and recreate all document links                       - DONE
+* Change to model signals                                              - NOT NEEDED, found way to prevent save method recursion
 * Role editing view under setup                                        - STARTED
 * Document list filtering by metadata
 * Filterform date filtering widget
 * Validate GET data before saving file
 * Show last 5 recent metadata setups for easy switch
-* Change to model signals
 * Allow document type to be changed in document edit view
 * Encrypting storage backend
 * Indicate in generic list which document don't exist in storage backend
@@ -84,6 +84,9 @@ TODO, WISHLIST
 * Add per node max ocr concurrent execution
 * Skip step 2 of wizard (metadata) if no document type metadata types have been defined
 * Add permissions support to menus
+* Add timeout support to ocr and convert tasks
+* Allow for OCR document requeue on error and requeue limit
+* Publish document option
 
 
 ISSUES

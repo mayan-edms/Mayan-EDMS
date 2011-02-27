@@ -46,6 +46,7 @@ class QueueDocument(models.Model):
     result = models.TextField(blank=True, null=True, verbose_name=_(u'result'))
     
     class Meta:
+        ordering = ('datetime_submitted',)
         verbose_name = _(u'queue document')
         verbose_name_plural = _(u'queue documents')
 

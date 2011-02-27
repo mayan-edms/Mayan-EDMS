@@ -20,3 +20,26 @@
 * Added per document duplicate search and a tools menu option to seach all duplicated documents
 * Added document tool that deletes and re-creates all documents filesystem links
 * Increased document's and document metadata index filename field's size to 255 characters
+
+2011-Feb 26
+* Added document description to the field search list
+* Sort OCR queued documents according to submitted date & time
+* Document filesystem serving is now a separate app
+    - Step to update:
+        1) rename the following settings:
+            DOCUMENTS_FILESYSTEM_FILESERVING_ENABLE
+            DOCUMENTS_FILESYSTEM_FILESERVING_PATH
+            DOCUMENTS_FILESYSTEM_SLUGIFY_PATHS
+            DOCUMENTS_FILESYSTEM_MAX_RENAME_COUNT
+        to:    
+            FILESYSTEM_FILESERVING_ENABLE
+            FILESYSTEM_FILESERVING_PATH
+            FILESYSTEM_SLUGIFY_PATHS
+            FILESYSTEM_MAX_RENAME_COUNT
+        
+        2) Do a ./manage.py syncdb
+        3) Execute 'Recreate index links' locate in the tools menu
+        4) Wait a few minutes
+        
+        Some warnings may be returned, but these are not fatal as they might 
+        be related to missing metadata in some documents.

@@ -111,29 +111,4 @@ def save_metadata(metadata_dict, document):
     #unquote_plus handles utf-8?!?
     #http://stackoverflow.com/questions/4382875/handling-iri-in-django
     document_metadata.value=unquote_plus(metadata_dict['value'])#.decode('utf-8')
-    document_metadata.save()        
-
-
-def recreate_links(raise_exception=True):
-    errors = []
-    for document in Document.objects.all():
-        try:
-            document.delete_fs_links()
-        except Exception, e:
-            print document
-            if raise_exception:
-                raise Exception(e)
-            else:
-                error.append(e)
-
-    for document in Document.objects.all():
-        try:
-            document.create_fs_links()
-        except Exception, e:
-            print document
-            if raise_exception:
-                raise Exception(e)
-            else:
-                error.append(e)
-    
-    return errors
+    document_metadata.save()

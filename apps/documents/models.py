@@ -1,16 +1,13 @@
-import errno
 import os
-import mimetypes
 from datetime import datetime
 import sys
 from python_magic import magic
 
 from django.conf import settings
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
 from django.db.models import Q
+
 
 from dynamic_search.api import register
 
@@ -21,16 +18,9 @@ from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import PAGE_COUNT_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import STORAGE_DIRECTORY_NAME
-from documents.conf.settings import FILESYSTEM_FILESERVING_ENABLE
-from documents.conf.settings import FILESYSTEM_FILESERVING_PATH
-from documents.conf.settings import FILESYSTEM_SLUGIFY_PATHS
-from documents.conf.settings import FILESYSTEM_MAX_RENAME_COUNT
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 
-if FILESYSTEM_SLUGIFY_PATHS == False:
-    #Do not slugify path or filenames and extensions
-    slugify = lambda x:x
 
 
 def get_filename_from_uuid(instance, filename, directory=STORAGE_DIRECTORY_NAME):
@@ -77,13 +67,24 @@ class Document(models.Model):
         
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)
+    
+    
+    def save(self, *args, **kwargs):
+        internal_save = kwargs.pop('internal_save', False)
+        super(Document, self).save(*args, **kwargs)
+        if not internal_save:
+            self.update_checksum(save=False)
+            self.update_mimetype(save=False)
+            self.update_page_count(save=False)
+            self.apply_default_transformations()
+            self.save(internal_save=True)
 
       
     def get_fullname(self):
         return os.extsep.join([self.file_filename, self.file_extension])
 
         
-    def update_mimetype(self):
+    def update_mimetype(self, save=True):
         try:
             mime = magic.Magic(mime=True)
             self.file_mimetype = mime.from_buffer(self.read())
@@ -93,7 +94,8 @@ class Document(models.Model):
             self.file_mimetype = u'unknown'
             self.file_mime_encoding = u'unknown'
         finally:
-            self.save()
+            if save:
+                self.save()
       
     def read(self, count=1024):
         return self.file.storage.open(self.file.url).read(count)
@@ -111,11 +113,13 @@ class Document(models.Model):
                 self.save()
 
     
-    def update_page_count(self):
+    def update_page_count(self, save=True):
         total_pages = PAGE_COUNT_FUNCTION(self)
         for page_number in range(total_pages):
             document_page, created = DocumentPage.objects.get_or_create(
                 document=self, page_number=page_number+1)
+        if save:
+            self.save()
 
         
     def save_to_file(self, filepath, buffer_size=1024*1024):
@@ -180,7 +184,8 @@ class Document(models.Model):
 
 
     def apply_default_transformations(self):
-        if DEFAULT_TRANSFORMATIONS:
+        #Only apply default transformations on new documents
+        if DEFAULT_TRANSFORMATIONS and not [page.documentpagetransformation_set.all() for page in self.documentpage_set.all()]:
             for transformation in DEFAULT_TRANSFORMATIONS:
                 if 'name' in transformation:
                     for document_page in self.documentpage_set.all():
@@ -192,113 +197,6 @@ class Document(models.Model):
                             page_transformation.arguments = transformation['arguments']
                         
                         page_transformation.save()
-
-        
-    def create_fs_links(self):
-        if FILESYSTEM_FILESERVING_ENABLE:
-            if not self.exists():
-                raise Exception(ugettext(u'Not creating metadata indexing, document not found in document storage'))
-            metadata_dict = {'document':self}
-            metadata_dict.update(dict([(metadata.metadata_type.name, slugify(metadata.value)) for metadata in self.documentmetadata_set.all()]))
-                
-            for metadata_index in self.document_type.metadataindex_set.all():
-                if metadata_index.enabled:
-                    try:
-                        fabricated_directory = eval(metadata_index.expression, metadata_dict)
-                        target_directory = os.path.join(FILESYSTEM_FILESERVING_PATH, fabricated_directory)
-                        try:
-                            os.makedirs(target_directory)
-                        except OSError, exc:
-                            if exc.errno == errno.EEXIST:
-                                pass
-                            else: 
-                                raise OSError(ugettext(u'Unable to create metadata indexing directory: %s') % exc)
-                       
-
-                        next_available_filename(self, metadata_index, target_directory, slugify(self.file_filename), slugify(self.file_extension))
-                    except NameError, exc:
-                        #raise NameError(ugettext(u'Error in metadata indexing expression: %s') % exc)
-                        #This should be a warning not an error
-                        pass
-
-
-    def delete_fs_links(self):
-        if FILESYSTEM_FILESERVING_ENABLE:
-            for document_metadata_index in self.documentmetadataindex_set.all():
-                try:
-                    os.unlink(document_metadata_index.filename)
-                    document_metadata_index.delete()
-                except OSError, exc:
-                    if exc.errno == errno.ENOENT:
-                        #No longer exits, so delete db entry anyway
-                        document_metadata_index.delete()
-                    else: 
-                        raise OSError(ugettext(u'Unable to delete metadata indexing symbolic link: %s') % exc)
-            
-                path, filename = os.path.split(document_metadata_index.filename)
-                
-                #Cleanup directory of dead stuff
-                #Delete siblings that are dead links
-                try:
-                    for f in os.listdir(path):
-                        filepath = os.path.join(path, f)
-                        if os.path.islink(filepath):
-                            #Get link's source
-                            source = os.readlink(filepath)
-                            if os.path.isabs(source):
-                                if not os.path.exists(source):
-                                    #link's source is absolute and doesn't exit
-                                    os.unlink(filepath)
-                            else:
-                                os.unlink(os.path.join(path, filepath))
-                        elif os.path.isdir(filepath):
-                            #is a directory, try to delete it
-                            try:
-                                os.removedirs(path)
-                            except:
-                                pass                            
-                except OSError, exc:
-                    pass
-
-
-                #Remove the directory if it is empty
-                try:
-                    os.removedirs(path)
-                except:
-                    pass
-
-           
-def next_available_filename(document, metadata_index, path, filename, extension, suffix=0): 
-    target = filename
-    if suffix:
-        target = '_'.join([filename, unicode(suffix)])
-    filepath = os.path.join(path, os.extsep.join([target, extension]))
-    matches=DocumentMetadataIndex.objects.filter(filename=filepath)
-    if matches.count() == 0:
-        document_metadata_index = DocumentMetadataIndex(
-            document=document, metadata_index=metadata_index,
-            filename=filepath)
-        try:
-            os.symlink(document.file.path, filepath)
-            document_metadata_index.save()
-        except OSError, exc:
-            if exc.errno == errno.EEXIST:
-                #This link should not exist, try to delete it
-                try:
-                    os.unlink(filepath)
-                    #Try again with same suffix
-                    return next_available_filename(document, metadata_index, path, filename, extension, suffix)
-                except Exception, exc:
-                    raise Exception(ugettext(u'Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s') % {'filepath':filepath, 'exc':exc})    
-                
-            else:
-                raise OSError(ugettext(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath':filepath, 'exc':exc})
-        
-        return filepath
-    else:
-        if suffix > FILESYSTEM_MAX_RENAME_COUNT:
-            raise Exception(ugettext(u'Maximum rename count reached, not creating symbolic link'))
-        return next_available_filename(document, metadata_index, path, filename, extension, suffix+1)
  
     
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
@@ -350,20 +248,6 @@ class MetadataIndex(models.Model):
     class Meta:
         verbose_name = _(u'metadata index')
         verbose_name_plural = _(u'metadata indexes')
-
-
-class DocumentMetadataIndex(models.Model):
-    document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    metadata_index = models.ForeignKey(MetadataIndex, verbose_name=_(u'metadata index'))
-    filename = models.CharField(max_length=255, verbose_name=_(u'filename'))
-    suffix = models.PositiveIntegerField(default=0, verbose_name=_(u'suffix'))
-
-    def __unicode__(self):
-        return unicode(self.filename)
-
-    class Meta:
-        verbose_name = _(u'document metadata index')
-        verbose_name_plural = _(u'document metadata indexes')
 
 
 class DocumentMetadata(models.Model):
@@ -484,4 +368,4 @@ class DocumentPageTransformation(models.Model):
         verbose_name_plural = _(u'document page transformations')
     
   
-register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content'])
+register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description'])

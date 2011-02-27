@@ -2,8 +2,10 @@ from django.contrib import admin
 
 from models import MetadataType, DocumentType, Document, \
     DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
-    MetadataIndex, DocumentMetadataIndex, DocumentPage, MetadataGroup, \
+    MetadataIndex, DocumentPage, MetadataGroup, \
     MetadataGroupItem, DocumentPageTransformation
+
+from filesystem_serving.admin import DocumentMetadataIndexInline
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
@@ -40,15 +42,6 @@ class DocumentMetadataInline(admin.StackedInline):
     extra = 0
     classes = ('collapse-open',)
     allow_add = False
-    readonly_fields = ('metadata_type', 'value')  
-
-
-class DocumentMetadataIndexInline(admin.StackedInline):
-    model = DocumentMetadataIndex
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
-    readonly_fields = ('suffix', 'metadata_index', 'filename')
 
 
 class DocumentPageTransformationAdmin(admin.ModelAdmin):
