@@ -87,7 +87,7 @@ TODO, WISHLIST
 * Add timeout support to ocr and convert tasks
 * Allow for OCR document requeue on error and requeue limit
 * Publish document option
-
+* Show current page in generic list template
 
 ISSUES
 ===========
