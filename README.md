@@ -18,13 +18,15 @@ Features
 * Batch upload many documents with the same metadata
 * User defined document checksum algorithm
 * Previews for a great deal of image formats, including PDF
-* Document OCR and searching
+* Search documents by any field value
 * Group documents by metadata automatically
 * Permissions and roles support
 * Multi page document support
 * Page transformations
 * Distributed OCR processing
 * Multilingual (English, Spanish)
+* Duplicated document search
+* Upload multiple documents inside a ZIP file 
 
 
 Requirements
