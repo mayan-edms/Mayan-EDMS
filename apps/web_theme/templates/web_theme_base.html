@@ -14,11 +14,33 @@
 
         <link rel="stylesheet" href="{{ MEDIA_URL }}web_theme_media/stylesheets/base.css" type="text/css" media="screen" />
         <link rel="stylesheet" id="current-theme" href="{{ MEDIA_URL }}web_theme_media/stylesheets/themes/{{ web_theme }}/style.css" type="text/css" media="screen" />
+        <style>
+            .message span.dismiss {
+                padding:0 5px;
+                cursor:pointer;
+                float:right;
+                margin-right:10px;
+            }
+            .message a {
+                text-decoration:none;
+                font-weight:bold
+            }
+        </style> 
         {% block web_theme_stylesheets %}{% endblock %}
 
         <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery-1.3.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.scrollTo.js"></script>
         <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.localscroll.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".message").fadeIn("slow");
+                $(".dismiss").click(function(){
+                    $(this).parent().parent().fadeOut("slow"); return false;
+                });
+            });
+        </script>
+        
         {% block web_theme_javascript %}{% endblock %}
 	</head>
 	<body>
@@ -50,9 +72,9 @@
                                 <div class="inner">
                                     <div class="flash">
                                         {% for message in messages %}
-                                            <div class="message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}">
-                                                <p onclick="$(this).parent().parent().fadeOut(); return false;">{{ message }}</p>
-                                            </div>
+                                            <div class="message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}" style="display: none;">
+                                                <p>{{ message }}<span class="dismiss"><a title={% trans "dismiss this notification" %}>[{% trans "close" %}]</a></span></p>
+                                             </div>
                                         {% endfor %}
                                     </div>
                                 </div>
