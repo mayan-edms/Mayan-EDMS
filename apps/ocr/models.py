@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
+from django.core.exceptions import ObjectDoesNotExist
 
 from documents.models import Document
 
@@ -51,4 +53,7 @@ class QueueDocument(models.Model):
         verbose_name_plural = _(u'queue documents')
 
     def __unicode__(self):
-        return unicode(self.document)
+        try:
+            return unicode(self.document)
+        except ObjectDoesNotExist:
+            return ugettext(u'Missing document.')
