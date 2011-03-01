@@ -179,7 +179,7 @@ class Document(models.Model):
                     document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
                 else:
                     document_id_list = []
-                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)) or []
+                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)).order_by('file_filename') or []
         return metadata_groups, errors
 
 
