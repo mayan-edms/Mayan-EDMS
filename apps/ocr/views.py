@@ -35,7 +35,7 @@ def queue_document_list(request, queue_name='default'):
             'title':_(u'queued documents'),
             'hide_object':True,
             'extra_columns':[
-                {'name':'document', 'attribute': lambda x: x.document if hasattr(x, 'document') else _(u'Missing document.')},
+                {'name':'document', 'attribute': lambda x: '<a href="%s">%s</a>' % (x.document.get_absolute_url(), x.document) if hasattr(x, 'document') else _(u'Missing document.')},
                 {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0]},
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
                 {'name':'result', 'attribute':'result'},
