@@ -10,3 +10,6 @@
   line-height: 23px;
 }
  
+.nowrap {
+    white-space: nowrap;
+}
