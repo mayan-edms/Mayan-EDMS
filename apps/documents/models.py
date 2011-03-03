@@ -96,8 +96,9 @@ class Document(models.Model):
             if save:
                 self.save()
       
-    def read(self, count=1024):
-        return self.file.storage.open(self.file.url).read(count)
+      
+    def open(self):
+        return self.file.storage.open(self.file.path)
 
         
     @models.permalink
@@ -107,7 +108,7 @@ class Document(models.Model):
 
     def update_checksum(self, save=True):
         if self.exists():
-            self.checksum = unicode(CHECKSUM_FUNCTION(self.file.read()))
+            self.checksum = unicode(CHECKSUM_FUNCTION(self.open().read()))
             if save:
                 self.save()
 
@@ -122,22 +123,21 @@ class Document(models.Model):
 
         
     def save_to_file(self, filepath, buffer_size=1024*1024):
-        storage = self.file.storage.open(self.file.url)
+        input_descriptor = self.open()
         output_descriptor = open(filepath, 'wb')
         while 1:
-            copy_buffer = storage.read()
+            copy_buffer = input_descriptor.read()
             if copy_buffer:
                 output_descriptor.write(copy_buffer)
             else:
                 break
     
-        #input_descriptor.close()
         output_descriptor.close()
         return filepath       
        
     
     def exists(self):
-        return self.file.storage.exists(self.file.url)
+        return self.file.storage.exists(self.file.path)
 
         
     def get_metadata_groups(self):

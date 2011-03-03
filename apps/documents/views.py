@@ -503,9 +503,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         if filepath:
             return serve_file(request, File(file=open(filepath, 'r')))
         #Save to a temporary location
-        document.file.open()
-        desc = document.file.storage.open(document.file.path)
-        filepath = from_descriptor_to_tempfile(desc, document.checksum)
+        filepath = from_descriptor_to_tempfile(document.open(), document.checksum)
         output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
         return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
     except Exception, e:
@@ -525,7 +523,7 @@ def document_download(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     try:
         #Test permissions and trigger exception
-        document.file.open()
+        document.open()
         return serve_file(request, document.file, save_as='%s' % document.get_fullname())
     except Exception, e:
         messages.error(request, e)
