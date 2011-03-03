@@ -8,6 +8,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
 
+from filesystem_serving.api import document_delete_fs_links
 
 from dynamic_search.api import register
 
@@ -144,7 +145,7 @@ class Document(models.Model):
     def delete(self, *args, **kwargs):
         #TODO: Might not execute when done in bulk from a queryset
         #topics/db/queries.html#topics-db-queries-delete
-        self.delete_fs_links()
+        document_delete_fs_links(self)
         super(Document, self).delete(*args, **kwargs)
 
 
