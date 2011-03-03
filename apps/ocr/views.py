@@ -1,3 +1,5 @@
+import datetime
+
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
@@ -12,11 +14,10 @@ from permissions.api import check_permissions, Unauthorized
 from documents.models import Document
 
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE
-
 from models import DocumentQueue, QueueDocument, add_document_to_queue
-
 from tasks import do_document_ocr_task
-
+from literals import QUEUEDOCUMENT_STATE_PENDING, \
+    QUEUEDOCUMENT_STATE_PROCESSING, QUEUEDOCUMENT_STATE_ERROR
 
 def queue_document_list(request, queue_name='default'):
     permissions = [PERMISSION_OCR_DOCUMENT]
@@ -81,3 +82,50 @@ def submit_document(request, document_id, queue_name='default'):
     messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
         'document':document, 'queue':document_queue.label})
     return HttpResponseRedirect(request.META['HTTP_REFERER'])    
+
+
+def re_queue_document(request, queue_document_id):
+    permissions = [PERMISSION_OCR_DOCUMENT]
+    try:
+        check_permissions(request.user, 'ocr', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+            
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    queue_document = get_object_or_404(QueueDocument, pk=queue_document_id)
+
+    try:
+        queue_document.document
+    except Document.DoesNotExist:
+        messages.error(request, _(u'This document no longer exists.'))
+        return HttpResponseRedirect(previous)
+
+    if queue_document.state == QUEUEDOCUMENT_STATE_PENDING:
+        messages.warning(request, _(u'This document is already queued and pending processing.'))
+        return HttpResponseRedirect(previous)
+    elif queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
+        messages.warning(request, _(u'This document is already being processed and can\'t be re-queded.'))
+        return HttpResponseRedirect(previous)
+
+    if request.method == 'POST':
+        try:
+            if queue_document.state == QUEUEDOCUMENT_STATE_ERROR:
+                queue_document.datetime_submitted = datetime.datetime.now()
+                queue_document.state = QUEUEDOCUMENT_STATE_PENDING
+                queue_document.save()
+                messages.success(request, _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
+                    'document':queue_document.document, 'queue':queue_document.document_queue.label})
+
+        except Exception, e:
+            messages.error(request, e)
+        return HttpResponseRedirect(next)
+
+    
+        
+    return render_to_response('generic_confirm.html', {
+        'object':queue_document,
+        'title':_(u'Are you sure you wish to re-queue document: %s') % queue_document,
+        'next':next,
+        'previous':previous,
+    }, context_instance=RequestContext(request))

@@ -25,11 +25,11 @@ register_permissions('ocr', [
 
 #Links
 submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'args':'object.id', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
-register_links(Document, [submit_document], menu_name='sidebar')
+re_queue_document = {'text':_('re-queue'), 'view':'re_queue_document', 'args':'object.id', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 queue_document_delete = {'text':_(u'delete'), 'view':'queue_document_delete', 'args':'object.id', 'famfam':'hourglass_delete', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT_DELETE]}}
 
-register_links(QueueDocument, [queue_document_delete])
-
+register_links(Document, [submit_document], menu_name='sidebar')
+register_links(QueueDocument, [re_queue_document, queue_document_delete])
 
 #Menus
 register_menu([

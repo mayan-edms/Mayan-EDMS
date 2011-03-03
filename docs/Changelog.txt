@@ -43,3 +43,7 @@
         
         Some warnings may be returned, but these are not fatal as they might 
         be related to missing metadata in some documents.
+
+2011-Mar 03
+* Added document link in the OCR document queue list
+* Link to manually re queue failed OCR
