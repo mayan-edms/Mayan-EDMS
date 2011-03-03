@@ -349,16 +349,23 @@ def document_delete(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            document_delete_fs_links(document)
+            document.delete()
+            messages.success(request, _(u'Document deleted successfully.'))
+            return HttpResponseRedirect(reverse('document_list'))
+        except Exception, e:
+            messages.error(request, _(u'Document delete error: %s') % e)
+            return HttpResponseRedirect(previous)
         
-    return delete_object(request, model=Document, object_id=document_id, 
-        template_name='generic_confirm.html', 
-        post_delete_redirect=reverse('document_list'),
-        extra_context={
-            'delete_view':True,
-            'object':document,
-            'object_name':_(u'document'),
-            'previous':previous,
-        })
+    return render_to_response('generic_confirm.html', {
+        'object':document,
+        'delete_view':True,
+        'object_name':_(u'document'),
+        'previous':previous,
+    }, context_instance=RequestContext(request))
         
         
 def document_edit(request, document_id):
