@@ -59,7 +59,7 @@ TODO, WISHLIST
 * Workflows
 * Add tags to documents
 * Field for document language or autodetect
-* Download a document in diffent formats: (jpg, png, pdf)
+* Download a document in different formats: (jpg, png, pdf)
 * Cache.cleanup function to delete cached images when document hash changes
 * Divide navigation links search by object and by view
 * Add show_summary method to model to display as results of a search
@@ -88,6 +88,9 @@ TODO, WISHLIST
 * Allow for OCR document requeue on error and requeue limit
 * Publish document option
 * Show current page in generic list template
+* Advanced search by metadata fields
+* Save advanced search by metadata setup as a virtual folder
+
 
 ISSUES
 ===========
