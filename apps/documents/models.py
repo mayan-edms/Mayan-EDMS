@@ -75,8 +75,8 @@ class Document(models.Model):
             self.update_checksum(save=False)
             self.update_mimetype(save=False)
             self.update_page_count(save=False)
-            self.apply_default_transformations()
             self.save(internal_save=True)
+            self.apply_default_transformations()
 
       
     def get_fullname(self):
@@ -177,7 +177,7 @@ class Document(models.Model):
 
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
-        if DEFAULT_TRANSFORMATIONS and not [page.documentpagetransformation_set.all() for page in self.documentpage_set.all()]:
+        if DEFAULT_TRANSFORMATIONS and reduce(lambda x,y : x+y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
             for transformation in DEFAULT_TRANSFORMATIONS:
                 if 'name' in transformation:
                     for document_page in self.documentpage_set.all():
