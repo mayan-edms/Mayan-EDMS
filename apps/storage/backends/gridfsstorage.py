@@ -6,22 +6,19 @@ from django.utils.encoding import force_unicode
 from pymongo import Connection
 from gridfs import GridFS
 
-HOST = u'localhost'
-PORT = 27017
-DATABASE_NAME = u'document_storage'
 
-#TODO: Implement user settings
-#TODO: Implement delete-open soft locking
-#TODO :master_slave_connection
+from storage.conf import settings
+
 
 class GridFSStorage(Storage):
     def __init__(self, *args, **kwargs):
-        self.db = Connection(host=HOST, port=PORT)[DATABASE_NAME]
+        self.db = Connection(host=settings.GRIDFS_HOST,
+            port=settings.GRIDFS_PORT)[settings.DATABASE_NAME]
         self.fs = GridFS(self.db)
 
 
     def save(self, name, content):
-        #TODO: if exists adding _ plus a counter
+        #TODO: if exists add _ plus a counter
         while True:
             try:
                 # This file has a file path that we can move.

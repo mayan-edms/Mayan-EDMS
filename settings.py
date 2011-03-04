@@ -195,6 +195,10 @@ LOGIN_EXEMPT_URLS = (
 
 # Storage
 #DOCUMENTS_STORAGE_BACKEND = FileBasedStorage
+# Storage - GridFS settings
+#STORAGE_GRIDFS_HOST = 'localhost'  # or list ['host a', 'host b']
+#STORAGE_GRIDFS_PORT = 27017
+#STORAGE_GRIDFS_DATABASE_NAME = u'document_storage'
 
 # Usage
 #DOCUMENTS_PREVIEW_SIZE = '640x480'

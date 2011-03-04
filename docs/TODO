@@ -90,12 +90,13 @@ TODO, WISHLIST
 * Show current page in generic list template
 * Advanced search by metadata fields
 * Save advanced search by metadata setup as a virtual folder
+* Avoid metadata indexing folders name clash
 
 
 GridFSStorage
 ============
-* Implement user settings
-* Implement delete-open soft locking
+* Implement user settings                                              - DONE
+* Implement delete-open soft locking                                   - DEFERRED
 * Implement master_slave_connection
 * if exists adding _ plus a counter - avoid file versioning
 
