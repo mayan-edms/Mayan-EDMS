@@ -27,7 +27,7 @@ Features
 * Multilingual (English, Spanish)
 * Duplicated document search
 * Upload multiple documents inside a ZIP file 
-
+* Plugable storage backend (File based and GridFS included)
 
 Requirements
 ---
@@ -40,6 +40,10 @@ Python:
 * django-celery
 * celery
 
+For the GridFS storage backend:
+* PyMongo
+* GridFS
+
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
 
 Executables:
@@ -48,7 +52,7 @@ Executables:
 * libmagic
 * tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 * unpaper - post-processing scanned and photocopied book pages
-
+* MongoDB
 
 License
 -------

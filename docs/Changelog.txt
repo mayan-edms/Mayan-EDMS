@@ -51,3 +51,4 @@
 
 2011-Mar 04
 * Initial GridFS storage support
+* Implemented size and delete methods for GridFS

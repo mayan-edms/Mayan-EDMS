@@ -93,9 +93,18 @@ favicon
     http://www.iconfinder.com/icondetails/21581/24/draw_pyramid_icon
     by Gnome Project    
 
-MongoDB
+MongoDB - (from "humongous") is a scalable, high-performance, open 
+          source, document-oriented database.
+    Copyright 10gen
+    http://www.mongodb.org/
 
-PyMongo
-
-GridFS
-
+PyMongo - is a Python distribution containing tools for working with
+          MongoDB, and is the recommended way to work with MongoDB from
+          Python.
+          
+    Copyright 2009, Michael Dirolf
+    http://api.mongodb.org/python/
+          
+GridFS - is a storage specification for large objects in MongoDB
+    Copyright 10gen
+    http://www.mongodb.org/display/DOCS/GridFS+Specification

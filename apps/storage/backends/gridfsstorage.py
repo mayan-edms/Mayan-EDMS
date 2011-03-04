@@ -71,8 +71,7 @@ class GridFSStorage(Storage):
 
 
     def size(self, name):
-        #TODO: Implement
-        return 0
+        return self.fs.get_last_version(name).length
         
         
     def move(self, old_file_name, name, chunk_size=1024*64):
