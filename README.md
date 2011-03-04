@@ -27,7 +27,7 @@ Features
 * Multilingual (English, Spanish)
 * Duplicated document search
 * Upload multiple documents inside a ZIP file 
-* Plugable storage backend (File based and GridFS included)
+* Plugable storage backends (File based and GridFS included)
 
 Requirements
 ---
@@ -37,22 +37,23 @@ Python:
 * Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 * django-pagination
 * django-filetransfers - File upload/download abstraction
-* django-celery
-* celery
+* celery - asynchronous task queue/job queue based on distributed message passing
+* django-celery - celery Django integration
 
 For the GridFS storage backend:
-* PyMongo
-* GridFS
+
+* PyMongo - the recommended way to work with MongoDB from Python
+* GridFS - a storage specification for large objects in MongoDB
 
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
 
 Executables:
 
 * ImageMagick - Convert, Edit, Or Compose Bitmap Images
-* libmagic
+* libmagic - MIME detection library
 * tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 * unpaper - post-processing scanned and photocopied book pages
-* MongoDB
+* MongoDB - a scalable, open source, document-oriented database
 
 License
 -------
