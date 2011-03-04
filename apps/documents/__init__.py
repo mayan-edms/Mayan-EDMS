@@ -13,7 +13,6 @@ from models import Document, DocumentPage, DocumentPageTransformation
 from staging import StagingFile
 
 from common.conf import settings as common_settings
-
 from conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
 
 PERMISSION_DOCUMENT_CREATE = 'document_create'
@@ -75,6 +74,18 @@ register_links(['document_page_view', 'document_page_transformation_edit', 'docu
 
 register_links(StagingFile, [staging_file_preview, staging_file_delete])
 
+
+
+def document_exists(document):
+    try:
+        if document.exists():
+            return '<span class="famfam active famfam-tick"></span>'
+        else:
+            return '<span class="famfam active famfam-cross"></span>'
+    except Exception, exc:
+        return exc
+
+
 register_model_list_columns(Document, [
     {'name':_(u'thumbnail'), 'attribute': 
         lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
@@ -83,7 +94,9 @@ register_model_list_columns(Document, [
     {'name':_(u'metadata'), 'attribute': 
         lambda x: ', '.join(['%s - %s' %(metadata.metadata_type, metadata.value) for metadata in x.documentmetadata_set.all()])
     },
-
+    {'name':_(u'exists'), 'attribute': 
+        lambda x: document_exists(x)
+    },
     ])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
@@ -96,5 +109,3 @@ else:
         {'text':_('documents'), 'view':'document_create_multiple', 'links':[
             document_create_multiple, document_list
         ],'famfam':'page','position':1}])
-
-TEMPORARY_DIRECTORY = common_settings.TEMPORARY_DIRECTORY if common_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()

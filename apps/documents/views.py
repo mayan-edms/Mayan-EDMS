@@ -16,26 +16,14 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.uploadedfile import SimpleUploadedFile    
 
 from common.utils import pretty_size
-from permissions.api import check_permissions, Unauthorized
-from filetransfers.api import serve_file
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT
 from converter import TRANFORMATION_CHOICES
+from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
-
-
-from utils import from_descriptor_to_tempfile
-
-from models import Document, DocumentMetadata, DocumentType, MetadataType, \
-    DocumentPage, DocumentPageTransformation
-    
-from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
-        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
-        StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
-        MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm
-    
-from staging import StagingFile
-
+from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from ocr.models import add_document_to_queue
+from permissions.api import check_permissions, Unauthorized
+
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -49,16 +37,23 @@ from documents.conf.settings import AUTOMATIC_OCR
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
 
-from filesystem_serving.conf.settings import FILESERVING_ENABLE
-
-
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS
+
+from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
+        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
+        StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
+        MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm
    
-from utils import save_metadata, save_metadata_list, decode_metadata_from_url
+from metadata import save_metadata, save_metadata_list, decode_metadata_from_url
+from models import Document, DocumentMetadata, DocumentType, MetadataType, \
+    DocumentPage, DocumentPageTransformation
+from staging import StagingFile
+from utils import document_save_to_temp_dir
+
 
 def document_list(request):
     permissions = [PERMISSION_DOCUMENT_VIEW]
@@ -249,7 +244,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
     
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
-        
+    
 def document_view(request, document_id):
     permissions = [PERMISSION_DOCUMENT_VIEW]
     try:
@@ -503,10 +498,11 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         if filepath:
             return serve_file(request, File(file=open(filepath, 'r')))
         #Save to a temporary location
-        filepath = from_descriptor_to_tempfile(document.open(), document.checksum)
+        filepath = document_save_to_temp_dir(document, filename=document.checksum)
         output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
         return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
     except Exception, e:
+        #messages.error(request, e)
         if size == THUMBNAIL_SIZE:
             return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
         else:

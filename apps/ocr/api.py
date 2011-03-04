@@ -8,7 +8,7 @@ import tempfile
 from django.utils.translation import ugettext as _
 from django.contrib import messages
 
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common import TEMPORARY_DIRECTORY
 
 from documents.models import Document
 

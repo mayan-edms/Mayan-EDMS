@@ -1,9 +1,10 @@
-import os
 import types
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+
+from common.utils import exists_with_famfam
 
 from common.conf import settings as common_settings
 from documents.conf import settings as documents_settings
@@ -68,7 +69,7 @@ def check_settings(request):
         'extra_columns':[
             {'name':_(u'name'), 'attribute':'name'},
             {'name':_(u'value'), 'attribute': lambda x: _return_type(x['value'])},
-            {'name':_(u'exists'), 'attribute':lambda x: _exists(x['value']) if 'exists' in x else ''},
+            {'name':_(u'exists'), 'attribute':lambda x: exists_with_famfam(x['value']) if 'exists' in x else ''},
         ]
     }
     
@@ -87,15 +88,6 @@ def _return_type(value):
         return ','.join(list(value))
     else:
         return value
-
-def _exists(path):
-    try:
-        if os.path.exists(path):
-            return '<span class="famfam active famfam-tick"></span>'
-        else:
-            return '<span class="famfam active famfam-cross"></span>'
-    except Exception, exc:
-        return exc
 
 
 def blank_menu(request):

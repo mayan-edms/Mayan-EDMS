@@ -19,7 +19,6 @@ from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 
-
 def get_filename_from_uuid(instance, filename):
     filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
@@ -80,9 +79,9 @@ class Document(models.Model):
     def update_mimetype(self, save=True):
         try:
             mime = magic.Magic(mime=True)
-            self.file_mimetype = mime.from_buffer(self.read())
+            self.file_mimetype = mime.from_buffer(self.open().read())
             mime_encoding = magic.Magic(mime_encoding=True)
-            self.file_mime_encoding = mime_encoding.from_buffer(self.read())
+            self.file_mime_encoding = mime_encoding.from_buffer(self.open().read())
         except:
             self.file_mimetype = u'unknown'
             self.file_mime_encoding = u'unknown'
@@ -119,8 +118,8 @@ class Document(models.Model):
     def save_to_file(self, filepath, buffer_size=1024*1024):
         input_descriptor = self.open()
         output_descriptor = open(filepath, 'wb')
-        while 1:
-            copy_buffer = input_descriptor.read()
+        while True:
+            copy_buffer = input_descriptor.read(buffer_size)
             if copy_buffer:
                 output_descriptor.write(copy_buffer)
             else:
@@ -129,7 +128,7 @@ class Document(models.Model):
         output_descriptor.close()
         return filepath       
        
-    
+   
     def exists(self):
         return self.file.storage.exists(self.file.path)
 

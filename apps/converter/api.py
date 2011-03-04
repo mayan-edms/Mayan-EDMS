@@ -15,10 +15,9 @@ from converter.conf.settings import LOW_QUALITY_OPTIONS
 from converter.conf.settings import HIGH_QUALITY_OPTIONS
 
 #from converter.conf.settings import UNOCONV_PATH
-
-from converter import TEMPORARY_DIRECTORY, TRANFORMATION_CHOICES
-from utils import from_descriptor_to_tempfile
-
+from common import TEMPORARY_DIRECTORY
+from converter import TRANFORMATION_CHOICES
+from documents.utils import document_save_to_temp_dir
 
 QUALITY_DEFAULT = 'quality_default'
 QUALITY_LOW = 'quality_low'
@@ -175,10 +174,8 @@ def get_page_count(input_filepath):
 #TODO: slugify OCR_OPTIONS and add to file name to cache
 def convert_document_for_ocr(document, page=0, format='tif'):
     #Extract document file
-    document.file.open()
-    desc = document.file.storage.open(document.file.path)
-    input_filepath = from_descriptor_to_tempfile(desc, document.uuid)
-        
+    input_filepath = document_save_to_temp_dir(document, document.uuid)
+            
     #Convert for OCR
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)

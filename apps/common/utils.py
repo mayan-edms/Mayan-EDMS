@@ -1,3 +1,4 @@
+import os
 import types
 
 from django.utils.http import urlquote  as django_urlquote
@@ -75,3 +76,13 @@ def pretty_size(size):
 			continue
 		else:
 			return round(size/float(lim/2**10),2).__str__()+suf
+
+
+def exists_with_famfam(path):
+    try:
+        if os.path.exists(path):
+            return '<span class="famfam active famfam-tick"></span>'
+        else:
+            return '<span class="famfam active famfam-cross"></span>'
+    except Exception, exc:
+        return exc
