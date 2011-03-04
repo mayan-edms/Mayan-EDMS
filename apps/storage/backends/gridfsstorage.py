@@ -10,6 +10,10 @@ HOST = u'localhost'
 PORT = 27017
 DATABASE_NAME = u'document_storage'
 
+#TODO: Implement user settings
+#TODO: Implement delete-open soft locking
+#TODO :master_slave_connection
+
 class GridFSStorage(Storage):
     def __init__(self, *args, **kwargs):
         self.db = Connection(host=HOST, port=PORT)[DATABASE_NAME]
@@ -54,9 +58,8 @@ class GridFSStorage(Storage):
 
         
     def delete(self, name):
-        oid = self.fs.get_last_version(name)
-        self.delete(oid)
-        return True
+        oid = self.fs.get_last_version(name)._id
+        self.fs.delete(oid)
 
         
     def exists(self, name):
@@ -66,6 +69,11 @@ class GridFSStorage(Storage):
     def path(self, name):
         return force_unicode(name)
 
+
+    def size(self, name):
+        #TODO: Implement
+        return 0
+        
         
     def move(self, old_file_name, name, chunk_size=1024*64):
         # first open the old file, so that it won't go away

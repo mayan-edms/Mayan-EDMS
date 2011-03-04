@@ -92,6 +92,14 @@ TODO, WISHLIST
 * Save advanced search by metadata setup as a virtual folder
 
 
+GridFSStorage
+============
+* Implement user settings
+* Implement delete-open soft locking
+* Implement master_slave_connection
+* if exists adding _ plus a counter - avoid file versioning
+
+
 ISSUES
 ===========
 * Staging file hash colition when same file with different name, newhash = content hash + filename hash

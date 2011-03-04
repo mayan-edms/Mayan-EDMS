@@ -48,3 +48,6 @@
 * Added document link in the OCR document queue list
 * Link to manually re queue failed OCR
 * Don't separate links (encose object list links with white-space: nowrap;)
+
+2011-Mar 04
+* Initial GridFS storage support

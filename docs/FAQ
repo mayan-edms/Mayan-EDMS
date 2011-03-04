@@ -41,3 +41,12 @@
         from customstorage import CustomStorage
         DOCUMENTS_STORAGE_BACKEND = CustomStorage
 
+
+* How to enable the GridFS storage backend
+    - Solution:
+    Add the following lines to settings.py:
+        from storage.backends.gridfsstorage import GridFSStorage
+        DOCUMENTS_STORAGE_BACKEND = GridFSStorage
+        
+    - Filesystem metadata indexing will not work with this storage backend as
+        file are inside a MongoDB database and can't be linked (at least for now)
