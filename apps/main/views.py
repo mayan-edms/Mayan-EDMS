@@ -90,7 +90,10 @@ def _return_type(value):
 
 def _exists(path):
     try:
-        return os.path.exists(path)
+        if os.path.exists(path):
+            return '<span class="famfam active famfam-tick"></span>'
+        else:
+            return '<span class="famfam active famfam-cross"></span>'
     except Exception, exc:
         return exc
 
