@@ -16,23 +16,17 @@ from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import PAGE_COUNT_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
-from documents.conf.settings import STORAGE_DIRECTORY_NAME
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 
 
-
-def get_filename_from_uuid(instance, filename, directory=STORAGE_DIRECTORY_NAME):
-    populate_file_extension_and_mimetype(instance, filename)
-    return '%s/%s' % (directory, instance.uuid)
-
-def populate_file_extension_and_mimetype(instance, filename):
-    # First populate the file extension
+def get_filename_from_uuid(instance, filename):
     filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
     #remove prefix '.'
     instance.file_extension = extension[1:]
-    
+    return instance.uuid
+   
 
 class DocumentType(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))    

@@ -45,7 +45,6 @@ PAGE_COUNT_FUNCTION = getattr(settings, 'DOCUMENTS_PAGE_COUNT_FUNCTION', lambda 
 
 # Storage
 STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', DocumentStorage)
-STORAGE_DIRECTORY_NAME = getattr(settings, 'DOCUMENTS_STORAGE_DIRECTORY_NAME', 'documents')
 
 # Usage
 PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_PREVIEW_SIZE', '640x480')
