@@ -132,7 +132,7 @@ INSTALLED_APPS = (
     'sentry.client',
     'sentry.client.celery',
     'filesystem_serving',
-    
+    'storage',    
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -194,7 +194,7 @@ LOGIN_EXEMPT_URLS = (
 #DOCUMENTS_DEFAULT_TRANSFORMATIONS = []
 
 # Storage
-#DOCUMENTS_STORAGE_BACKEND = DocumentStorage
+#DOCUMENTS_STORAGE_BACKEND = FileBasedStorage
 
 # Usage
 #DOCUMENTS_PREVIEW_SIZE = '640x480'

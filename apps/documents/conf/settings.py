@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from converter.api import get_page_count
 
-from documents.storage import DocumentStorage
+from storage.backends.filebasedstorage import FileBasedStorage
 
 default_available_functions = {
     'current_date':datetime.datetime.now().date,
@@ -22,7 +22,6 @@ default_available_models = {
 available_transformations = {
     'rotate': {'label':_(u'Rotate [degrees]'), 'arguments':[{'name':'degrees'}]}
 }
-
 
 # Definition
 AVAILABLE_FUNCTIONS = getattr(settings, 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', default_available_functions)
@@ -44,7 +43,7 @@ UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNCTION', lambda:unicode(uuid
 PAGE_COUNT_FUNCTION = getattr(settings, 'DOCUMENTS_PAGE_COUNT_FUNCTION', lambda x: get_page_count(x.save_to_file(tempfile.mkstemp()[1])))
 
 # Storage
-STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', DocumentStorage)
+STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', FileBasedStorage)
 
 # Usage
 PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_PREVIEW_SIZE', '640x480')
