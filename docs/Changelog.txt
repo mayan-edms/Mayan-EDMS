@@ -53,3 +53,7 @@
 * Initial GridFS storage support
 * Implemented size and delete methods for GridFS
 * Implement GridFS storage user settings
+
+2011-Mar 05
+* If current user is superuser or staff show thumbnail & preview generation error messages
+* Added a setting to show document thumbnail in metadata group list

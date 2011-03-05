@@ -36,6 +36,11 @@ def check_settings(request):
         {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
         {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
 
+        #Groups
+        {'name':'DOCUMENTS_GROUP_MAX_RESULTS', 'value':documents_settings.GROUP_MAX_RESULTS},
+        {'name':'DOCUMENTS_GROUP_SHOW_EMPTY', 'value':documents_settings.GROUP_SHOW_EMPTY},
+        {'name':'DOCUMENTS_GROUP_SHOW_THUMBNAIL', 'value':documents_settings.GROUP_SHOW_THUMBNAIL},
+
         #Filesystem_serving
         {'name':'FILESYSTEM_FILESERVING_ENABLE', 'value':filesystem_serving_settings.FILESERVING_ENABLE},
         {'name':'FILESYSTEM_FILESERVING_PATH', 'value':filesystem_serving_settings.FILESERVING_PATH, 'exists':True},

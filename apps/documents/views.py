@@ -32,6 +32,7 @@ from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
+from documents.conf.settings import GROUP_SHOW_THUMBNAIL
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import AUTOMATIC_OCR
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
@@ -315,15 +316,22 @@ def document_view(request, document_id):
                     total_string = '(%s)' % len(data)
             else:
                 total_string = ''
+              
+            extra_columns = [{'name':'current','attribute':lambda x:
+                    '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
+                    
+            if GROUP_SHOW_THUMBNAIL:
+                extra_columns.append({'name':_(u'thumbnail'), 'attribute': 
+                        lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
+                        reverse('document_thumbnail', args=[x.id]))})
+                
             sidebar_groups.append({
                 'title':'%s %s' % (group.label, total_string),
                 'name':'generic_list_subtemplate.html',
                 'object_list':data[:GROUP_MAX_RESULTS],
                 'hide_columns':True,
                 'hide_header':True,
-                'extra_columns':[
-                    {'name':'current','attribute':lambda x: '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}
-                ],
+                'extra_columns':extra_columns,
                 })
             
     return render_to_response('generic_detail.html', {
