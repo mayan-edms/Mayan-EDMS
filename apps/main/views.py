@@ -39,8 +39,10 @@ def check_settings(request):
         #Groups
         {'name':'DOCUMENTS_GROUP_MAX_RESULTS', 'value':documents_settings.GROUP_MAX_RESULTS},
         {'name':'DOCUMENTS_GROUP_SHOW_EMPTY', 'value':documents_settings.GROUP_SHOW_EMPTY},
-        {'name':'DOCUMENTS_GROUP_SHOW_THUMBNAIL', 'value':documents_settings.GROUP_SHOW_THUMBNAIL},
-
+        {'name':'DOCUMENTS_GROUP_SHOW_THUMBNAIL',
+            'value':documents_settings.GROUP_SHOW_THUMBNAIL,
+            'description':documents_settings.setting_description},
+            
         #Filesystem_serving
         {'name':'FILESYSTEM_FILESERVING_ENABLE', 'value':filesystem_serving_settings.FILESERVING_ENABLE},
         {'name':'FILESYSTEM_FILESERVING_PATH', 'value':filesystem_serving_settings.FILESERVING_PATH, 'exists':True},
@@ -49,12 +51,20 @@ def check_settings(request):
         
         
         #Common
-        {'name':'COMMON_TEMPORARY_DIRECTORY', 'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True},
+        {'name':'COMMON_TEMPORARY_DIRECTORY',
+            'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True,
+            'description':common_settings.setting_description},
 
         #Converter
-        {'name':'CONVERTER_CONVERT_PATH', 'value':converter_settings.CONVERT_PATH, 'exists':True},
-        {'name':'CONVERTER_UNPAPER_PATH', 'value':converter_settings.UNPAPER_PATH, 'exists':True},
-        {'name':'CONVERTER_IDENTIFY_PATH', 'value':converter_settings.IDENTIFY_PATH, 'exists':True},
+        {'name':'CONVERTER_CONVERT_PATH',
+            'value':converter_settings.CONVERT_PATH, 'exists':True,
+            'description':converter_settings.setting_description},
+        {'name':'CONVERTER_UNPAPER_PATH',
+            'value':converter_settings.UNPAPER_PATH, 'exists':True,
+            'description':converter_settings.setting_description},
+        {'name':'CONVERTER_IDENTIFY_PATH',
+            'value':converter_settings.IDENTIFY_PATH, 'exists':True,
+            'description':converter_settings.setting_description},
         {'name':'CONVERTER_OCR_OPTIONS', 'value':converter_settings.OCR_OPTIONS},
         {'name':'CONVERTER_DEFAULT_OPTIONS', 'value':converter_settings.DEFAULT_OPTIONS},
         {'name':'CONVERTER_LOW_QUALITY_OPTIONS', 'value':converter_settings.LOW_QUALITY_OPTIONS},
@@ -74,6 +84,7 @@ def check_settings(request):
         'extra_columns':[
             {'name':_(u'name'), 'attribute':'name'},
             {'name':_(u'value'), 'attribute': lambda x: _return_type(x['value'])},
+            {'name':_(u'description'), 'attribute': lambda x: x.get('description', {}).get(x['name'], '')},
             {'name':_(u'exists'), 'attribute':lambda x: exists_with_famfam(x['value']) if 'exists' in x else ''},
         ]
     }

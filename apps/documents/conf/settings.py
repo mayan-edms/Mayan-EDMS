@@ -59,3 +59,7 @@ DEFAULT_TRANSFORMATIONS = getattr(settings, 'DOCUMENTS_DEFAULT_TRANSFORMATIONS',
 GROUP_MAX_RESULTS = getattr(settings, 'DOCUMENTS_GROUP_MAX_RESULTS', 20)
 GROUP_SHOW_EMPTY = getattr(settings, 'DOCUMENTS_GROUP_SHOW_EMPTY', True)
 GROUP_SHOW_THUMBNAIL = getattr(settings, 'DOCUMENTS_GROUP_SHOW_THUMBNAIL', True)
+
+setting_description = {
+    'DOCUMENTS_GROUP_SHOW_THUMBNAIL': _(u'Show document thumbnail in metadata group list')
+}
