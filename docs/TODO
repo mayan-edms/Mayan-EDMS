@@ -42,6 +42,7 @@ TODO, WISHLIST
 * Tesserat default option ocr setup                                    - DONE
 * Check duplicated files using checksum                                - DONE
 * Link to delete and recreate all document links                       - DONE
+* Indicate in generic list which don't exist in storage backend        - DONE
 * Change to model signals                                              - NOT NEEDED, found way to prevent save method recursion
 * Role editing view under setup                                        - STARTED
 * Document list filtering by metadata
@@ -50,7 +51,6 @@ TODO, WISHLIST
 * Show last 5 recent metadata setups for easy switch
 * Allow document type to be changed in document edit view
 * Encrypting storage backend
-* Indicate in generic list which document don't exist in storage backend
 * Document model's delete method might not get called when deleting in bulk
     from a queryset
 * Allow metadata entry form to mix required and non required metadata
