@@ -91,6 +91,11 @@ TODO, WISHLIST
 * Advanced search by metadata fields
 * Save advanced search by metadata setup as a virtual folder
 * Avoid metadata indexing folders name clash
+* Tile based image server
+* Merge all generic templates into template widget object based rendering
+* Multiple document select in generic list template
+* Multiple document actions (clear transformations, delete, publish)
+
 
 
 GridFSStorage
