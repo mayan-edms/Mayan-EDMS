@@ -502,7 +502,8 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
         return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
     except Exception, e:
-        #messages.error(request, e)
+        if request.user.is_staff or request.user.is_superuser:
+            messages.error(request, e)
         if size == THUMBNAIL_SIZE:
             return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
         else:
