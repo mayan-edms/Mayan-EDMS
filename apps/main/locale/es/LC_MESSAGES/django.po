@@ -2,71 +2,86 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 04:58-0400\n"
-"PO-Revision-Date: 2011-02-10 09:20\n"
-"Last-Translator: <admin@admin.com>\n"
+"POT-Creation-Date: 2011-03-05 19:34-0400\n"
+"PO-Revision-Date: 2011-03-05 19:35\n"
+"Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:8 views.py:53
+#: __init__.py:10 views.py:80
 msgid "settings"
 msgstr "configuración"
 
-#: __init__.py:12
+#: __init__.py:14
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:14
+#: __init__.py:16
+msgid "tools"
+msgstr "herramientas"
+
+#: __init__.py:20
 msgid "setup"
 msgstr "instalación"
 
-#: __init__.py:18
+#: __init__.py:24
 msgid "about"
 msgstr "acerca"
 
-#: views.py:58
+#: views.py:85
 msgid "name"
 msgstr "nombre"
 
-#: views.py:59
+#: views.py:86
 msgid "value"
 msgstr "valor"
 
-#: views.py:60
+#: views.py:87
+msgid "description"
+msgstr "descripción"
+
+#: views.py:88
 msgid "exists"
 msgstr "existe"
 
-#: views.py:70
+#: views.py:98
 msgid "function found"
 msgstr "función encontrada"
 
-#: views.py:72 views.py:74
+#: views.py:100 views.py:102
 msgid "class found"
 msgstr "clase encontrada"
+
+#: views.py:111
+msgid "Tools menu"
+msgstr "Menú de herramientas"
+
+#: views.py:113
+msgid "\"Find all duplicates\": Search all the documents' checksums and return a list of the exact matches."
+msgstr "\"Encontrar todos los duplicados\": Buscar todas las sumas de comprobación de documentos y devolver una lista de las coincidencias exactas."
+
+#: views.py:114
+msgid "\"Recreate index links\": Deletes and creates from scratch all the file system indexing links."
+msgstr "\"Volver a crear vínculos índice\": borra y crea de la nada todos los enlaces de indexación de archivos del sistema."
 
 #: templates/about.html:4
 msgid "About this program"
 msgstr "Acerca de este programa"
 
 #: templates/about.html:10
-msgid ""
-"Open source, Django based document manager with custom metadata indexing, "
-"file serving integration and OCR capabilities"
-msgstr ""
-"Gestor documental de código abierto, basado en Django con indexación de "
-"metadatos personalizados, integración de servicio de archivos y capacidades "
-"de OCR"
+msgid "Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities"
+msgstr "Gestor documental de código abierto, basado en Django con indexación de metadatos personalizados, integración de servicio de archivos y capacidades de OCR"
 
 #: templates/base.html:65
 msgid "User"

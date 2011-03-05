@@ -143,7 +143,8 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
             check_permissions(request.user, 'permissions', permissions)
         except Unauthorized, e:
             raise Http404(e)
-        title = _('Are you sure you wish to grant the permission "%s" to %s: %s') % (permission, ct.name, requester)
+        title = _('Are you sure you wish to grant the permission "%(permission)s" to %(ct_name)s: %(requester)s') % {
+            'permission':permission, 'ct_name':ct.name, 'requester':requester}
 
     elif action == 'revoke':
         permissions = [PERMISSION_PERMISSION_REVOKE]
@@ -151,7 +152,8 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
             check_permissions(request.user, 'permissions', permissions)
         except Unauthorized, e:
             raise Http404(e)
-        title = _('Are you sure you wish to revoke the permission "%s" from %s: %s') % (permission, ct.name, requester)
+        title = _('Are you sure you wish to revoke the permission "%(permission)s" from %(ct_name)s: %(requester)s') % {
+            'permission':permission, 'ct_name':ct.name, 'requester':requester}
     else:
         return HttpResponseRedirect('/')
 
@@ -163,16 +165,20 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
         if action == 'grant':
             permission_holder, created = PermissionHolder.objects.get_or_create(permission=permission, holder_type=ct, holder_id=requester.id)
             if created:
-                messages.success(request, _(u'Permission "%s" granted to %s: %s.') % (permission, ct.name, requester))
+                messages.success(request, _(u'Permission "%(permission)s" granted to %(ct_name)s: %(requester)s.') % {
+                    'permission':permission, 'ct_name':ct.name, 'requester':requester})
             else:
-                messages.warning(request, _(u'%s: %s, already had the permission "%s" granted.') % (ct.name, requester, permission))
+                messages.warning(request, _(u'%(ct_name)s: %(requester)s, already had the permission "%(permission)s" granted.') % {
+                    'ct_name':ct.name, 'requester':requester, 'permission':permission})
         elif action == 'revoke':
             try:
                 permission_holder = PermissionHolder.objects.get(permission=permission, holder_type=ct, holder_id=requester.id)
                 permission_holder.delete()
-                messages.success(request, _(u'Permission "%s" revoked from %s: %s.') % (permission, ct.name, requester))
+                messages.success(request, _(u'Permission "%(permission)s" revoked from %(ct_name)s: %(requester)s.') % {
+                    'permission':permission, 'ct_name':ct.name, 'requester':requester})
             except ObjectDoesNotExist:
-                messages.warning(request, _(u'%s: %s doesn\'t have the permission "%s".') % (ct.name, requester, permission))
+                messages.warning(request, _(u'%(ct_name)s: %(requester)s doesn\'t have the permission "%(permission)s".') % {
+                    'ct_name':ct.name, 'requester':requester, 'permission':permission})
         return HttpResponseRedirect(next)
         
     return render_to_response('generic_confirm.html', {

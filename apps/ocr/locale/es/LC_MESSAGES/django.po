@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 04:56-0400\n"
-"PO-Revision-Date: 2011-02-17 04:58\n"
-"Last-Translator: <admin@admin.com>\n"
+"POT-Creation-Date: 2011-03-05 19:36-0400\n"
+"PO-Revision-Date: 2011-03-05 19:38\n"
+"Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,23 +19,35 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:20
+#: __init__.py:22
 msgid "Submit document for OCR"
 msgstr "Enviar documento para OCR"
 
-#: __init__.py:24
+#: __init__.py:23
+msgid "Delete document for OCR queue"
+msgstr "Eliminar documento de la cola de OCR"
+
+#: __init__.py:27
 msgid "submit to OCR queue"
 msgstr "enviar a lista de OCR"
 
+#: __init__.py:28
+msgid "re-queue"
+msgstr "volver a la cola"
+
 #: __init__.py:29
+msgid "delete"
+msgstr "eliminar"
+
+#: __init__.py:36
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:36
+#: __init__.py:44
 msgid "Default"
 msgstr "Por defecto"
 
-#: api.py:67
+#: api.py:55
 msgid "Text from OCR"
 msgstr "Texto de OCR"
 
@@ -59,54 +71,84 @@ msgstr "en procesamiento"
 msgid "error"
 msgstr "error"
 
-#: models.py:19
+#: models.py:21
 msgid "name"
 msgstr "nombre"
 
-#: models.py:20
+#: models.py:22
 msgid "label"
 msgstr "etiqueta"
 
-#: models.py:24 models.py:45
+#: models.py:26 models.py:47
 msgid "state"
 msgstr "estado"
 
-#: models.py:27 models.py:39
+#: models.py:29 models.py:41
 msgid "document queue"
-msgstr ""
+msgstr "cola de documento"
 
-#: models.py:28
+#: models.py:30
 msgid "document queues"
-msgstr ""
+msgstr "colas de documentos"
 
-#: models.py:40
+#: models.py:42
 msgid "document"
 msgstr "documento"
 
-#: models.py:41
+#: models.py:43
 msgid "date time submitted"
 msgstr "fecha y hora sometido"
 
-#: models.py:46
+#: models.py:48
 msgid "result"
 msgstr "resultado"
 
-#: models.py:49
+#: models.py:52
 msgid "queue document"
-msgstr ""
+msgstr "documento en la cola"
 
-#: models.py:50
+#: models.py:53
 msgid "queue documents"
-msgstr ""
+msgstr "documentos en la cola"
 
-#: views.py:35
+#: models.py:59 views.py:39
+msgid "Missing document."
+msgstr "Documento no encontrado."
+
+#: views.py:36
 msgid "queued documents"
-msgstr ""
+msgstr "documentos en la cola"
 
-#: views.py:58
+#: views.py:65
+msgid "queued document"
+msgstr "documento en cola"
+
+#: views.py:82
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
 msgstr "Documento: %(document)s ha sido añadido a la cola de reconocimiento óptico de caracteres: %(queue)s."
+
+#: views.py:101
+msgid "This document no longer exists."
+msgstr "Este documento ya no existe."
+
+#: views.py:105
+msgid "This document is already queued and pending processing."
+msgstr "Este documento ya está en cola y en espera de su procesamiento."
+
+#: views.py:108
+msgid "This document is already being processed and can't be re-queded."
+msgstr "Este documento ya está en proceso y no se puede volver a poner en la cola."
+
+#: views.py:117
+#, python-format
+msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+msgstr "Documento: %(document)s fue puesto de vuelta en la cola de reconocimiento óptico de caracteres: %(queue)s "
+
+#: views.py:128
+#, python-format
+msgid "Are you sure you wish to re-queue document: %s"
+msgstr "¿Está seguro que desea el volver a colocar el documento en la cola: %s?"
 
 #~ msgid "Document OCR was successful."
 #~ msgstr "El OCR del documento se ha realizado con éxito."
