@@ -3,7 +3,7 @@ Mayan
 
 Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities.
  
-![screenshot](http://img7.imageshack.us/img7/8885/fullscreenshota.png)
+![screenshot](http://img339.imageshack.us/img339/3116/newfullscreenshot2.png)
 
 
 Features
