@@ -75,18 +75,20 @@
     {% if user.is_staff %}
         <li><a href="/admin">{% trans "Admin site" %}</a></li>
     {% endif %}
-    
-    
-    <li>
-        <form action="{% url set_language %}" method="post">{% csrf_token %}
-            <select name="language">
-                {% for lang in LANGUAGES %}
-                    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="{% trans 'Go' %}" />
-        </form>                                
-    </li>
+
+    {% get_setting "MIDDLEWARE_CLASSES" as middleware_classes %}
+    {% if "django.middleware.locale.LocaleMiddleware" in middleware_classes %}
+        <li>
+            <form action="{% url set_language %}" method="post">{% csrf_token %}
+                <select name="language">
+                    {% for lang in LANGUAGES %}
+                        <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="{% trans 'Go' %}" />
+            </form>                                
+        </li>
+    {% endif %}
     {% get_setting "LOGIN_URL" as login_url %}
     <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}?next={{ login_url }}{% endif %}">{% if user.is_anonymous %}{% trans "Login" %}{% else %}{% trans "Logout" %}{% endif %}</a></li>
 {% endblock %}
