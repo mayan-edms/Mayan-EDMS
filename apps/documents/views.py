@@ -724,7 +724,6 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
     
     if confirmation and request.method != 'POST':
         return render_to_response('generic_confirm.html', {
-            #'title':_(u'dupli'),
             'previous':previous,
             'message':_(u'On large databases this operation may take some time to execute.'),
         }, context_instance=RequestContext(request))
@@ -735,8 +734,8 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
                 results = Document.objects.filter(checksum=document.checksum).exclude(id__in=[d.id for d in duplicated]).exclude(id=document.id)
                 duplicated.extend(results)
 
-        if include_source:
-            duplicated.extend(source_document_list)
+                if include_source and results:
+                    duplicated.append(document)
 
         return render_to_response('generic_list.html', {
             'object_list':duplicated,
@@ -751,4 +750,4 @@ def document_find_all_duplicates(request):
     except Unauthorized, e:
         raise Http404(e)
 
-    return _find_duplicate_list(request, include_source=False)
+    return _find_duplicate_list(request, include_source=True)
