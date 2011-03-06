@@ -1,27 +1,27 @@
-* Added python-magic for smarter MIME type detection (https://github.com/ahupp/python-magic).
-* Added a new Document model field: file_mime_encoding.
-* Show only document metadata in document list view.
-* If one document type exists, the create document wizard skips the first step.
-* Changed to a liquid css grid
-* Added the ability to group documents by their metadata
-* New abstracted options to adjust document conversion quality (default, low, high)
-* Added permissions and roles support
-* Added multipage documents support (only tested on pdfs)
-    To update a previous database do: [d.update_page_count() for d in Document.objects.all()]
-* Added support for document page transformation (no GUI yet)
-* Added views to create, edit and grant/revoke permissions to roles
-* Apply default transformations to document before OCR
-* Added unpaper to the OCR convertion pipe
-* Added support for concurrent, queued OCR processing using celery
-* Added sentry to monitor and store error for later debugging
-* Zip files can now be uncompressed in memory and their content uploaded individually in one step
+2011-Mar-06
+* Fixed duplicated document search
+* Optimized document duplicate search
+* Added locale middleware, menu bar language switching works now
+* Only show language selection list if localemiddleware is active
+* Spanish translation updates
+* Added links, views and permissions to disable or enable an OCR queue
 
-2011-Feb 21
-* Added per document duplicate search and a tools menu option to seach all duplicated documents
-* Added document tool that deletes and re-creates all documents filesystem links
-* Increased document's and document metadata index filename field's size to 255 characters
+2011-Mar-05
+* If current user is superuser or staff show thumbnail & preview generation error messages
+* Added a setting to show document thumbnail in metadata group list
+* Started adding configurations setting descriptions
 
-2011-Feb 26
+2011-Mar-04
+* Initial GridFS storage support
+* Implemented size and delete methods for GridFS
+* Implement GridFS storage user settings
+
+2011-Mar-03
+* Added document link in the OCR document queue list
+* Link to manually re queue failed OCR
+* Don't separate links (encose object list links with white-space: nowrap;)
+
+2011-Feb-26
 * Added document description to the field search list
 * Sort OCR queued documents according to submitted date & time
 * Document filesystem serving is now a separate app
@@ -44,17 +44,39 @@
         Some warnings may be returned, but these are not fatal as they might 
         be related to missing metadata in some documents.
 
-2011-Mar 03
-* Added document link in the OCR document queue list
-* Link to manually re queue failed OCR
-* Don't separate links (encose object list links with white-space: nowrap;)
+2011-Feb-21
+* Added per document duplicate search and a tools menu option to seach all duplicated documents
+* Added document tool that deletes and re-creates all documents filesystem links
+* Increased document's and document metadata index filename field's size to 255 characters
 
-2011-Mar 04
-* Initial GridFS storage support
-* Implemented size and delete methods for GridFS
-* Implement GridFS storage user settings
+2011-Feb-19
+* Added sentry to monitor and store error for later debugging
+* Zip files can now be uncompressed in memory and their content uploaded individually in one step
 
-2011-Mar 05
-* If current user is superuser or staff show thumbnail & preview generation error messages
-* Added a setting to show document thumbnail in metadata group list
-* Started adding configurations setting descriptions
+2011-Feb-17
+* Added support for concurrent, queued OCR processing using celery
+
+2011-Feb-16
+* Apply default transformations to document before OCR
+* Added unpaper to the OCR convertion pipe
+
+2011-Feb-15
+* Added views to create, edit and grant/revoke permissions to roles
+
+2011-Feb-14
+* Added multipage documents support (only tested on pdfs)
+    To update a previous database do: [d.update_page_count() for d in Document.objects.all()]
+* Added support for document page transformation (no GUI yet)
+
+2011-Feb-13
+* Added permissions and roles support
+
+2011-Feb-10
+* Added python-magic for smarter MIME type detection (https://github.com/ahupp/python-magic).
+* Added a new Document model field: file_mime_encoding.
+* Show only document metadata in document list view.
+* If one document type exists, the create document wizard skips the first step.
+* Changed to a liquid css grid
+
+* Added the ability to group documents by their metadata
+* New abstracted options to adjust document conversion quality (default, low, high)
