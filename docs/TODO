@@ -44,6 +44,7 @@ TODO, WISHLIST
 * Link to delete and recreate all document links                       - DONE
 * Indicate in generic list which don't exist in storage backend        - DONE
 * Change to model signals                                              - NOT NEEDED, found way to prevent save method recursion
+* Show current page in generic list template                           - DONE
 * Role editing view under setup                                        - STARTED
 * Document list filtering by metadata
 * Filterform date filtering widget
@@ -84,10 +85,8 @@ TODO, WISHLIST
 * Add per node max ocr concurrent execution
 * Skip step 2 of wizard (metadata) if no document type metadata types have been defined
 * Add permissions support to menus
-* Add timeout support to ocr and convert tasks
 * Allow for OCR document requeue on error and requeue limit
 * Publish document option
-* Show current page in generic list template
 * Advanced search by metadata fields
 * Save advanced search by metadata setup as a virtual folder
 * Avoid metadata indexing folders name clash
@@ -95,6 +94,7 @@ TODO, WISHLIST
 * Merge all generic templates into template widget object based rendering
 * Multiple document select in generic list template
 * Multiple document actions (clear transformations, delete, publish)
+* Add timeout support to ocr and convert tasks
 
 
 
