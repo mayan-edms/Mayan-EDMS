@@ -15,8 +15,9 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
             
     def render(self, name, value, attrs=None, choices=()):
         if value is None: value = ''
-        #final_attrs = self.build_attrs(attrs, name=name)
-        output = u'<ul class="list">'
+        final_attrs = self.build_attrs(attrs, name=name)
+        css_class = final_attrs.get('class', 'list')
+        output = u'<ul class="%s">' % css_class
         options = None
         if value:
             if getattr(value, '__iter__', None):
