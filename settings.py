@@ -96,6 +96,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'middleware.login_required_middleware.LoginRequiredMiddleware',
     'pagination.middleware.PaginationMiddleware',
+    'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
