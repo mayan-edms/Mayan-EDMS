@@ -504,7 +504,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     try:
         filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page-1)
         if filepath:
-            return serve_file(request, File(file=open(filepath, 'r')))
+            return serve_file(request, File(file=open(filepath, 'r')), content_type='image/jpeg')
         #Save to a temporary location
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
         output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
