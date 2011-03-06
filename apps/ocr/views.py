@@ -20,6 +20,7 @@ from tasks import do_document_ocr_task
 from literals import QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_PROCESSING, QUEUEDOCUMENT_STATE_ERROR, \
     DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE
+from forms import DocumentQueueForm_view
 
 def queue_document_list(request, queue_name='default'):
     permissions = [PERMISSION_OCR_DOCUMENT]
@@ -29,7 +30,7 @@ def queue_document_list(request, queue_name='default'):
         raise Http404(e)
         
     document_queue = get_object_or_404(DocumentQueue, name=queue_name)
-            
+
     return object_list(
         request,
         queryset=document_queue.queuedocument_set.all(),
@@ -45,9 +46,15 @@ def queue_document_list(request, queue_name='default'):
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
                 {'name':'result', 'attribute':'result'},
             ],
+            'sidebar_subtemplates_list':[
+                {
+                    'title':_(u'document queue properties'),
+                    'name':'generic_detail_subtemplate.html',
+                    'form':DocumentQueueForm_view(instance=document_queue),
+                }],
         },
     )    
-        
+            
         
 def queue_document_delete(request, queue_document_id):
     permissions = [PERMISSION_OCR_DOCUMENT_DELETE]

@@ -13,3 +13,7 @@
 .nowrap {
     white-space: nowrap;
 }
+
+.undecorated_list {
+    list-style-type: none;
+}
