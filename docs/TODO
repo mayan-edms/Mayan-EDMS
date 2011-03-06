@@ -45,6 +45,7 @@ TODO, WISHLIST
 * Indicate in generic list which don't exist in storage backend        - DONE
 * Change to model signals                                              - NOT NEEDED, found way to prevent save method recursion
 * Show current page in generic list template                           - DONE
+* Enable/disable ocr queue view & links                                - DONE
 * Role editing view under setup                                        - STARTED
 * Document list filtering by metadata
 * Filterform date filtering widget
@@ -80,7 +81,6 @@ TODO, WISHLIST
 * Storage backend to storage backend copy support, to move/migrate document to new storage backend
 * Do separate default transformations for staging and for local uploads
 * Multiple ocr queue support
-* Enable/disable ocr queue view & links
 * Restrict view permission free form rename
 * Add per node max ocr concurrent execution
 * Skip step 2 of wizard (metadata) if no document type metadata types have been defined
