@@ -730,15 +730,15 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
     else:     
         duplicated = []
         for document in source_document_list:
-            if document not in duplicated:
-                results = Document.objects.filter(checksum=document.checksum).exclude(id__in=[d.id for d in duplicated]).exclude(id=document.id)
+            if document.pk not in duplicated:
+                results = Document.objects.filter(checksum=document.checksum).exclude(id__in=duplicated).exclude(pk=document.pk).values_list('pk', flat=True)
                 duplicated.extend(results)
 
                 if include_source and results:
-                    duplicated.append(document)
+                    duplicated.append(document.pk)
 
         return render_to_response('generic_list.html', {
-            'object_list':duplicated,
+            'object_list':Document.objects.filter(pk__in=duplicated),
             'title':_(u'duplicated documents'),
         }, context_instance=RequestContext(request))   
 
