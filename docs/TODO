@@ -95,7 +95,8 @@ TODO, WISHLIST
 * Multiple document select in generic list template
 * Multiple document actions (clear transformations, delete, publish)
 * Add timeout support to ocr and convert tasks
-
+* Migrate ocr app tesseract handling to convert app
+* Create mimetype convertion map for convert app
 
 
 GridFSStorage
