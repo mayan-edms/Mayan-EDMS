@@ -42,7 +42,7 @@ def queue_document_list(request, queue_name='default'):
             'object_name':_(u'document queue'),
             'extra_columns':[
                 {'name':'document', 'attribute': lambda x: '<a href="%s">%s</a>' % (x.document.get_absolute_url(), x.document) if hasattr(x, 'document') else _(u'Missing document.')},
-                {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0]},
+                {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0], 'keep_together':True},
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
                 {'name':'result', 'attribute':'result'},
             ],
