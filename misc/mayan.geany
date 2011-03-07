@@ -8,7 +8,7 @@ indent_mode=2
 
 [project]
 name=mayan
-base_path=/home/rosarior/development/git/mayan/mayan/misc
+base_path=/home/rosarior/development/mayan/mayan/misc
 description=
 
 [long line marker]
@@ -16,33 +16,26 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=12
-FILE_NAME_0=5757;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/settings.py;0
-FILE_NAME_1=275;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/urls.py;0
-FILE_NAME_2=0;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/models.py;0
-FILE_NAME_3=1180;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/admin.py;0
-FILE_NAME_4=1085;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/urls.py;0
-FILE_NAME_5=117;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/main/urls.py;0
-FILE_NAME_6=111;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/main/views.py;0
-FILE_NAME_7=416;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/main/templates/about.html;0
-FILE_NAME_8=102;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/main/templates/base.html;0
-FILE_NAME_9=248;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/main/templates/home.html;0
-FILE_NAME_10=284;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/main/__init__.py;0
-FILE_NAME_11=419;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/__init__.py;0
-FILE_NAME_12=4876;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/views.py;0
-FILE_NAME_13=0;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templates/generic_list.html;0
-FILE_NAME_14=38;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templates/generic_list_subtemplate.html;0
-FILE_NAME_15=245;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templatetags/attribute_tags.py;0
-FILE_NAME_16=2916;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/forms.py;0
-FILE_NAME_17=234;None;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/docs/TODO;0
-FILE_NAME_18=0;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/forms.py;0
-FILE_NAME_19=245;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templates/generic_wizard.html;0
-FILE_NAME_20=0;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/utils.py;0
-FILE_NAME_21=929;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/conf/settings.py;0
-FILE_NAME_22=671;None;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/wsgi/dispatch.wsgi;0
-FILE_NAME_23=785;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templates/generic_form.html;0
-FILE_NAME_24=0;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templates/generic_form_instance.html;0
-FILE_NAME_25=0;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templates/generic_form_subtemplate.html;0
-FILE_NAME_26=1166;HTML;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/common/templates/generic_detail.html;0
-FILE_NAME_27=1672;Python;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/apps/documents/staging.py;0
-FILE_NAME_28=372;Markdown;0;16;0;1;0;/home/rosarior/development/git/mayan/mayan/README.md;0
+current_page=21
+FILE_NAME_0=275;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/main/__init__.py;0
+FILE_NAME_1=3931;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/documents/__init__.py;0
+FILE_NAME_2=1132;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/documents/urls.py;0
+FILE_NAME_3=0;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/documents/staging.py;0
+FILE_NAME_4=9731;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/documents/views.py;0
+FILE_NAME_5=4010;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/converter/api.py;0
+FILE_NAME_6=2005;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/documents/conf/settings.py;0
+FILE_NAME_7=541;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/converter/conf/settings.py;0
+FILE_NAME_8=1428;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/ocr/tasks.py;0
+FILE_NAME_9=3262;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/documents/models.py;0
+FILE_NAME_10=2574;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/dynamic_search/views.py;0
+FILE_NAME_11=5970;None;0;16;0;1;0;/home/rosarior/development/mayan/mayan/docs/TODO;0
+FILE_NAME_12=679;Markdown;0;16;0;1;0;/home/rosarior/development/mayan/mayan/README.md;0
+FILE_NAME_13=3347;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/settings.py;0
+FILE_NAME_14=0;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/filesystem_serving/models.py;0
+FILE_NAME_15=2206;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/filesystem_serving/api.py;0
+FILE_NAME_16=0;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/ocr/views.py;0
+FILE_NAME_17=123;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/ocr/api.py;0
+FILE_NAME_18=7270;Python;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/permissions/views.py;0
+FILE_NAME_19=3613;HTML;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/web_theme/templates/web_theme_base.html;0
+FILE_NAME_20=1800;HTML;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/main/templates/base.html;0
+FILE_NAME_21=1588;HTML;0;16;0;1;0;/home/rosarior/development/mayan/mayan/apps/documents/templates/document_upload.html;0
