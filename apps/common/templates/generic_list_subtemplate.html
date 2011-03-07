@@ -2,6 +2,7 @@
 {% load attribute_tags %}
 {% load pagination_tags %}
 {% load navigation %}
+{% load non_breakable %}
 
 {% if side_bar %}
     <div class="block">
@@ -60,7 +61,13 @@
                 {% endfor %}
             {% endif %}
                 {% for column in extra_columns %}
-                    <td>{{ object|object_property:column.attribute|safe }}</td>
+                    {% if column.keep_together %}
+                        <div class="nowrap" style="word-wrap:  normal">
+                            <td>{{ object|object_property:column.attribute|safe|make_non_breakable }}</td>
+                        </div>
+                    {% else %}
+                        <td>{{ object|object_property:column.attribute|safe }}</td>
+                    {% endif %}
                 {% endfor %}
                 {% if not hide_links %}
                     <td class="last">
