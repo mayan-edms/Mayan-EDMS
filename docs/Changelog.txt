@@ -1,5 +1,13 @@
 2011-Mar-07
 * Converter now differentiates between unknown file format and convert errors 
+* Close file descriptors when executing external programs to prevent/reduce file descriptior leaks
+* Improved exception handling of external programs
+* Show document thumbnail in document ocr queue list
+* Make ocr document date submitted column non breakable
+* Fix permissions, directories set to mode 755 and files to mode 644
+* Try to fix issue #2, "random ORM field error on search while doing OCR"
+* Added configurable location setting for file based storage
+* Prepend storage name to differentiate config options
 
 2011-Mar-06
 * Fixed duplicated document search
@@ -8,6 +16,9 @@
 * Only show language selection list if localemiddleware is active
 * Spanish translation updates
 * Added links, views and permissions to disable or enable an OCR queue
+* Enabled Django's template caching
+* Added document queue property side bar window to the document queue list view
+* Added HTML spaceless middleware to remove whitespace in HTML code
 
 2011-Mar-05
 * If current user is superuser or staff show thumbnail & preview generation error messages
