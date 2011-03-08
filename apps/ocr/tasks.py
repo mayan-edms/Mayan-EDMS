@@ -11,14 +11,10 @@ from literals import QUEUEDOCUMENT_STATE_PENDING, \
 from models import QueueDocument, DocumentQueue
 from ocr.conf.settings import MAX_CONCURRENT_EXECUTION
 
-@task()    
-def do_document_ocr_task(document_id):
-    document = Document.objects.get(id=document_id)
-    do_document_ocr(document)
     
-    
-@task()
-def do_queue_document(queue_document_id):
+#Disable calling a task from a task to try to fix issue #2
+#@task()
+def task_process_queue_document(queue_document_id):
     queue_document = QueueDocument.objects.get(id=queue_document_id)
     queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
     queue_document.save()
@@ -44,7 +40,7 @@ class DocumentQueueWatcher(PeriodicTask):
                     oldest_queued_document = document_queue.queuedocument_set.filter(
                             state=QUEUEDOCUMENT_STATE_PENDING).order_by('datetime_submitted')[0]
 
-                    do_queue_document(oldest_queued_document.id).delay()
+                    task_process_queue_document(oldest_queued_document.id).delay()
                 except:
                     #No Documents in queue
                     pass
