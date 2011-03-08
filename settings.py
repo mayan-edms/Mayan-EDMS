@@ -245,6 +245,9 @@ LOGIN_EXEMPT_URLS = (
 # Permissions
 #ROLES_DEFAULT_ROLES = []
 
+# Searching
+#SEARCH_LIMIT = 100
+
 # Override
 SEARCH_SHOW_OBJECT_TYPE = False
 #----------- django-celery --------------

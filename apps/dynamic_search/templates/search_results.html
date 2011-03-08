@@ -14,5 +14,9 @@
     {% endif %}
     
 {% endblock %}
-
+{% block footer %}
+    {% if query_string %}
+        {% blocktrans %}Elapsed time: {{ time_delta }} seconds{% endblocktrans %}
+    {% endif %}
+{% endblock %}
 

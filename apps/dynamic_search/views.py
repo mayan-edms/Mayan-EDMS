@@ -1,3 +1,4 @@
+import datetime
 import re
 
 from django.shortcuts import render_to_response
@@ -10,7 +11,7 @@ from django.core.exceptions import FieldError
 
 from api import search_list
 from forms import SearchForm
-from conf.settings import SHOW_OBJECT_TYPE
+from conf.settings import SHOW_OBJECT_TYPE, LIMIT
 
 #original code from:
 #http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/
@@ -34,28 +35,26 @@ def get_query(terms, search_fields):
         aims to search keywords within a model by testing the given search fields.
     
     '''
-    query = None # Query to search for every search term        
-    #terms = normalize_query(query_string)
+    queries = []
     for term in terms:
-        or_query = None # Query to search for a given term in each field
+        or_query = None
         for field_name in search_fields:
-            q = Q(**{"%s__icontains" % field_name: term})
+            q = Q(**{'%s__icontains' % field_name:term})        
             if or_query is None:
                 or_query = q
             else:
                 or_query = or_query | q
-        if query is None:
-            query = or_query
-        else:
-            query = query & or_query
-    return query
-
+            
+        queries.append(or_query)
+    return queries
 
 def search(request):
     query_string = ''
     found_entries = {}
     object_list = []
 
+    start_time = datetime.datetime.now()
+    
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
         form = SearchForm(initial={'q':query_string})
@@ -63,10 +62,20 @@ def search(request):
         terms = normalize_query(query_string)
         
         for model, data in search_list.items():
-            query = get_query(terms, data['fields'])            
+            queries = get_query(terms, data['fields'])
 
             try:
-                results = model.objects.filter(query)
+                model_results = None
+                for query in queries:
+                    single_results = set(model.objects.filter(query).values_list('pk', flat=True))
+                    #Convert queryset to python set and perform the 
+                    #AND operation on the program and not as a query
+                    if model_results == None:
+                        model_results = single_results
+                    else:
+                        model_results &= single_results
+                    
+                    results = model.objects.filter(pk__in=model_results)[:LIMIT]
                 if results:
                     found_entries[data['text']] = results
                     for result in results:
@@ -78,6 +87,11 @@ def search(request):
     else:
         form = SearchForm()
     
+    if LIMIT and len(model_results) > LIMIT:
+        title = _(u'results with: %s (showing only %s out of %s)') % (query_string, LIMIT, len(model_results))
+    else:
+        title = _(u'results with: %s') % query_string
+    
     context = {
         'query_string':query_string, 
         'found_entries':found_entries,
@@ -85,7 +99,8 @@ def search(request):
         'object_list':object_list,
         'form_title':_(u'Search'),
         'hide_header':True,
-        'title':_(u'results with: %s') % query_string
+        'title':title,
+        'time_delta':str(datetime.datetime.now() - start_time).split(':')[2]
     }
 
     if SHOW_OBJECT_TYPE:
