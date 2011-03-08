@@ -12,8 +12,7 @@ from models import QueueDocument, DocumentQueue
 from ocr.conf.settings import MAX_CONCURRENT_EXECUTION
 
     
-#Disable calling a task from a task to try to fix issue #2
-#@task()
+@task
 def task_process_queue_document(queue_document_id):
     queue_document = QueueDocument.objects.get(id=queue_document_id)
     queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
