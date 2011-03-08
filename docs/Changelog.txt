@@ -1,3 +1,10 @@
+2011-Mar-08
+* Added document action to clear all the document's page transformations
+* Allow search across related fields
+* Optimzed search for speed and memory footprint
+* Added LIMIT setting to search
+* Show search elapsed time on result page
+
 2011-Mar-07
 * Converter now differentiates between unknown file format and convert errors 
 * Close file descriptors when executing external programs to prevent/reduce file descriptior leaks
