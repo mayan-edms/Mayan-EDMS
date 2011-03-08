@@ -61,53 +61,74 @@ TODO, WISHLIST
 * Workflows
 * Add tags to documents
 * Field for document language or autodetect
-* Download a document in different formats: (jpg, png, pdf)
 * Cache.cleanup function to delete cached images when document hash changes
 * Divide navigation links search by object and by view
 * Add show_summary method to model to display as results of a search
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
-* Display preferences 'document transformations' (Rotation, default zoom)
-* Document view temp transformations
-* Gallery view for document groups
-* Download metadata group documents as a single zip file
-* Download original document or transformed document
 * Include annotations in transformed documents downloads
 * Implement permissions decorators
 * Block Setup menu item to non staff and non superuser users
 * Don't append an extension separator if extension is non existant
-* Don't do OCR on wordproccessing or spreadsheet document, strip tags and store text
-* Storage backend to storage backend copy support, to move/migrate document to new storage backend
-* Do separate default transformations for staging and for local uploads
-* Multiple ocr queue support
-* Restrict view permission free form rename
-* Add per node max ocr concurrent execution
-* Skip step 2 of wizard (metadata) if no document type metadata types have been defined
-* Add permissions support to menus
-* Allow for OCR document requeue on error and requeue limit
 * Publish document option
-* Advanced search by metadata fields
-* Save advanced search by metadata setup as a virtual folder
-* Avoid metadata indexing folders name clash
-* Tile based image server
 * Merge all generic templates into template widget object based rendering
 * Multiple document select in generic list template
 * Multiple document actions (clear transformations, delete, publish)
-* Add timeout support to ocr and convert tasks
-* Migrate ocr app tesseract handling to convert app
-* Create mimetype convertion map for convert app
 
+Permissions
+===========
+* Add permissions support to menus
+
+Documents
+=========
+* Restrict view permission free form rename
+* Skip step 2 of wizard (metadata) if no document type metadata types have been defined
+* Tile based image server
+* Do separate default transformations for staging and for local uploads
+* Download a document in different formats: (jpg, png, pdf)
+* Download metadata group documents as a single zip file
+* Download original document or transformed document
+* Display preferences 'document transformations' (Rotation, default zoom)
+* Document view temp transformations
+* Gallery view for document groups
+
+Filesystem
+==========
+* Avoid metadata indexing folders name clash
+
+Search
+======
+* Advanced search by metadata fields
+* Save advanced search by metadata setup as a virtual folder
+
+Convert
+=======
+* Create mimetype convertion map for convert app
+* Migrate ocr app tesseract handling to convert app                    - STARTED
+* Add timeout support convert tasks
+
+Storage
+=======
+* Storage backend to storage backend copy support, to move/migrate document to new storage backend
 
 GridFSStorage
-============
+=============
 * Implement user settings                                              - DONE
 * Implement delete-open soft locking                                   - DEFERRED
 * Implement master_slave_connection
 * if exists adding _ plus a counter - avoid file versioning
 
+OCR
+===
+* Don't do OCR on wordproccessing or spreadsheet document, strip tags and store text
+* Add timeout support to ocr tasks
+* Allow for OCR document requeue on error and requeue limit
+* Multiple ocr queue support                                           - STARTED
+* Add per node max ocr concurrent execution
+
 
 ISSUES
 ===========
 * Staging file hash colition when same file with different name, newhash = content hash + filename hash
-* Fix search action for documents with no metadata
+* Fix field error on search action for documents while processing OCR queue
