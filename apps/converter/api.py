@@ -26,10 +26,16 @@ QUALITY_HIGH = 'quality_high'
 QUALITY_SETTINGS = {QUALITY_DEFAULT:DEFAULT_OPTIONS, QUALITY_LOW:LOW_QUALITY_OPTIONS,
     QUALITY_HIGH:HIGH_QUALITY_OPTIONS}
 
+CONVERTER_ERROR_STRING_NO_DECODER = 'no decode delegate for this image format'
+
+
 class ConvertError(Exception):
-    def __init__(self, status, message):
-        self.status = status
-        self.message = message
+    pass
+
+
+class UnknownFormat(Exception):
+    pass
+
 
 def cleanup(filename):
     ''' tries to remove the given filename. Ignores non-existent files '''
@@ -37,17 +43,6 @@ def cleanup(filename):
         os.remove(filename)
     except OSError:
         pass
-
-def get_errors(error_string):
-    '''
-    returns all lines in the error_string that start with the string "error"
-
-    '''
-    lines = error_string.splitlines()
-    return lines[0]
-    #error_lines = (line for line in lines if line.find('error') >= 0)
-    #return '\n'.join(error_lines)
-
 
 #TODO: Timeout & kill child
 def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
@@ -58,10 +53,17 @@ def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, ar
     if arguments:
         command.extend(shlex.split(str(arguments)))
     command.append(output_filepath)
-    proc = subprocess.Popen(command, stderr=subprocess.PIPE)
-    return (proc.wait(), proc.stderr.read())
-
-
+    proc = subprocess.Popen(command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    return_code = proc.wait()
+    if return_code != 0:
+        #Got an error from convert program
+        error_line = proc.stderr.readline()
+        if CONVERTER_ERROR_STRING_NO_DECODER in error_line:
+            #Try to determine from error message which class of error is it
+            raise UnknownFormat
+        else:
+            raise ConvertError(error_line)
+        
 def execute_unpaper(input_filepath, output_filepath):
     command = []
     command.append(UNPAPER_PATH)
@@ -70,7 +72,6 @@ def execute_unpaper(input_filepath, output_filepath):
     command.append(output_filepath)
     proc = subprocess.Popen(command, stderr=subprocess.PIPE)
     return (proc.wait(), proc.stderr.read())
-
 
 def execute_unoconv(input_filepath, output_filepath, arguments=''):
     command = [UNOCONV_PATH]
@@ -82,7 +83,6 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
         shutil.copyfileobj(proc.stdout, output)
     return (proc.wait(), proc.stderr.read())
 
-
 def execute_identify(input_filepath, arguments):
     command = []
     command.append(IDENTIFY_PATH)
@@ -92,14 +92,12 @@ def execute_identify(input_filepath, arguments):
     proc = subprocess.Popen(command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return (proc.wait(), proc.stderr.read(), proc.stdout.read())
 
-
 def cache_cleanup(input_filepath, size, page=0, format='jpg'):
     filepath = create_image_cache_filename(input_filepath, size, page, format)
     try:
         os.remove(filepath)
     except OSError:
         pass
-        
 
 def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, extra_options='', *args, **kwargs):
     if input_filepath:
@@ -125,7 +123,6 @@ def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_D
     else:
         return None
     
-    
 def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', extra_options='', mimetype=None, extension=None, cleanup_files=True):
     unoconv_output = None
     output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
@@ -142,36 +139,29 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
             cleanup(input_filepath)
             input_filepath = unoconv_output
     '''
-    #TODO: Check mimetype and use corresponding utility
     try:
         input_arg = '%s[%s]' % (input_filepath, page)
         extra_options += ' -resize %s' % size
-        status, error_string = execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath='%s:%s' % (format, output_filepath), quality=quality)
-        if status:
-            errors = get_errors(error_string)
-            raise ConvertError(status, errors)
+        execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath='%s:%s' % (format, output_filepath), quality=quality)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
         if unoconv_output:
             cleanup(unoconv_output)
-        return output_filepath
-
+        
+    return output_filepath
 
 def get_page_count(input_filepath):
     try:
         status, error_string, output = execute_identify(input_filepath, '-format %n')
         if status:
-            errors = get_errors(error_string)
             return 1
-            #raise ConvertError(status, errors)
     finally:
         if output:
             return int(output)
         else:
             return 1
 
-#TODO: slugify OCR_OPTIONS and add to file name to cache
 def convert_document_for_ocr(document, page=0, format='tif'):
     #Extract document file
     input_filepath = document_save_to_temp_dir(document, document.uuid)
@@ -208,25 +198,13 @@ def convert_document_for_ocr(document, page=0, format='tif'):
     tranformation_string = ' '.join(transformation_list)
     try:
         #Apply default transformations
-        status, error_string = execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=tranformation_string, output_filepath=transformation_output_file)
-        if status:
-            errors = get_errors(error_string)
-            raise ConvertError(status, errors)
+        execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=tranformation_string, output_filepath=transformation_output_file)
         #Do OCR operations
-        status, error_string = execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
-        if status:
-            errors = get_errors(error_string)
-            raise ConvertError(status, errors)        
+        execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper
         status, error_string = execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
-        if status:
-            errors = get_errors(error_string)
-            raise ConvertError(status, errors)        
         # Convert to tif
-        status, error_string = execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
-        if status:
-            errors = get_errors(error_string)
-            raise ConvertError(status, errors)
+        execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
     finally:
         cleanup(transformation_output_file)
         cleanup(unpaper_input_file)

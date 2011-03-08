@@ -1,3 +1,6 @@
+2011-Mar-07
+* Converter now differentiates between unknown file format and convert errors 
+
 2011-Mar-06
 * Fixed duplicated document search
 * Optimized document duplicate search
