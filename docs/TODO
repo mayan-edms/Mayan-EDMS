@@ -46,39 +46,25 @@ TODO, WISHLIST
 * Change to model signals                                              - NOT NEEDED, found way to prevent save method recursion
 * Show current page in generic list template                           - DONE
 * Enable/disable ocr queue view & links                                - DONE
-* Role editing view under setup                                        - STARTED
-* Document list filtering by metadata
-* Filterform date filtering widget
-* Validate GET data before saving file
-* Show last 5 recent metadata setups for easy switch
-* Allow document type to be changed in document edit view
-* Encrypting storage backend
-* Document model's delete method might not get called when deleting in bulk
-    from a queryset
-* Allow metadata entry form to mix required and non required metadata
-* Versioning support
-* Generic document anotations using layer overlays
+
+
 * Workflows
-* Add tags to documents
-* Field for document language or autodetect
 * Cache.cleanup function to delete cached images when document hash changes
-* Divide navigation links search by object and by view
-* Add show_summary method to model to display as results of a search
-* DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
-* Support spreadsheets, wordprocessing docs using openoffice in server mode
 * WebDAV support
-* Include annotations in transformed documents downloads
-* Implement permissions decorators
-* Block Setup menu item to non staff and non superuser users
 * Don't append an extension separator if extension is non existant
-* Publish document option
+
+Common
+======
+* Filterform date filtering widget
+* Divide navigation links search by object and by view
 * Merge all generic templates into template widget object based rendering
 * Multiple document select in generic list template
-* Multiple document actions (clear transformations, delete, publish)
 
 Permissions
 ===========
 * Add permissions support to menus
+* Role editing view under setup                                        - STARTED
+* Implement permissions decorators
 
 Documents
 =========
@@ -92,25 +78,44 @@ Documents
 * Display preferences 'document transformations' (Rotation, default zoom)
 * Document view temp transformations
 * Gallery view for document groups
-
-Filesystem
-==========
+* Versioning support
+* Generic document anotations using layer overlays
+* Field for document language or autodetect
+* Validate GET data before saving file
+* Multiple document actions (clear transformations, delete, publish)
+* Publish document option
+* Document list filtering by metadata
+* Show last 5 recent metadata setups for easy switch
+* Allow document type to be changed in document edit view
+* Document model's delete method might not get called when deleting in bulk
+    from a queryset
+* Allow metadata entry form to mix required and non required metadata
+* Block Setup menu item to non staff and non superuser users
+* Include annotations in transformed documents downloads
+* Add document tagging
+    
+Filesystem serving
+==================
 * Avoid metadata indexing folders name clash
 
 Search
 ======
 * Advanced search by metadata fields
 * Save advanced search by metadata setup as a virtual folder
+* Add show_summary method to model to display as results of a search
 
 Convert
 =======
 * Create mimetype convertion map for convert app
-* Migrate ocr app tesseract handling to convert app                    - STARTED
+* Migrate ocr app tesseract handling to convert app                    - DONE
 * Add timeout support convert tasks
+* DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
+* Support spreadsheets, wordprocessing docs using openoffice in server mode
 
 Storage
 =======
 * Storage backend to storage backend copy support, to move/migrate document to new storage backend
+* Encrypting storage backend
 
 GridFSStorage
 =============
