@@ -35,7 +35,7 @@ def run_tesseract(input_filename, output_filename_base, lang=None):
     if lang is not None:
         command += ['-l', lang]
     
-    proc = subprocess.Popen(command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
     if return_code != 0:
         error_text = proc.stderr.read()
