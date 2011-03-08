@@ -16,7 +16,6 @@ from documents.models import Document
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
     PERMISSION_OCR_QUEUE_ENABLE_DISABLE
 from models import DocumentQueue, QueueDocument, add_document_to_queue
-from tasks import do_document_ocr_task
 from literals import QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_PROCESSING, QUEUEDOCUMENT_STATE_ERROR, \
     DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE
