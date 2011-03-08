@@ -33,7 +33,19 @@ class ConvertError(Exception):
     pass
 
 
-class UnknownFormat(Exception):
+class UnknownFormat(ConvertError):
+    pass
+
+
+class UnpaperError(ConvertError):
+    pass
+    
+    
+class IdentifyError(ConvertError):
+    pass
+
+    
+class UnkownConvertError(ConvertError):
     pass
 
 
@@ -53,7 +65,7 @@ def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, ar
     if arguments:
         command.extend(shlex.split(str(arguments)))
     command.append(output_filepath)
-    proc = subprocess.Popen(command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
     if return_code != 0:
         #Got an error from convert program
@@ -70,9 +82,11 @@ def execute_unpaper(input_filepath, output_filepath):
     command.append('--overwrite')
     command.append(input_filepath)
     command.append(output_filepath)
-    proc = subprocess.Popen(command, stderr=subprocess.PIPE)
-    return (proc.wait(), proc.stderr.read())
-
+    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE)
+    return_code = proc.wait()
+    if return_code != 0:
+        raise UnpaperError(proc.stderr.readline())
+"""
 def execute_unoconv(input_filepath, output_filepath, arguments=''):
     command = [UNOCONV_PATH]
     command.extend(['--stdout'])
@@ -82,16 +96,19 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
     with open(output_filepath, 'w') as output:
         shutil.copyfileobj(proc.stdout, output)
     return (proc.wait(), proc.stderr.read())
-
+"""
 def execute_identify(input_filepath, arguments):
     command = []
     command.append(IDENTIFY_PATH)
     command.extend(shlex.split(str(arguments)))
     command.append(input_filepath)
 
-    proc = subprocess.Popen(command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    return (proc.wait(), proc.stderr.read(), proc.stdout.read())
-
+    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    return_code = proc.wait()
+    if return_code != 0:
+        raise IdentifyError(proc.stderr.readline())
+    return stdout
+        
 def cache_cleanup(input_filepath, size, page=0, format='jpg'):
     filepath = create_image_cache_filename(input_filepath, size, page, format)
     try:
@@ -153,14 +170,10 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
 
 def get_page_count(input_filepath):
     try:
-        status, error_string, output = execute_identify(input_filepath, '-format %n')
-        if status:
-            return 1
-    finally:
-        if output:
-            return int(output)
-        else:
-            return 1
+        return int(execute_identify(input_filepath, '-format %n'))
+    except:
+        #TODO: send to other page number identifying program
+        return 1
 
 def convert_document_for_ocr(document, page=0, format='tif'):
     #Extract document file
@@ -202,7 +215,7 @@ def convert_document_for_ocr(document, page=0, format='tif'):
         #Do OCR operations
         execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper
-        status, error_string = execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
+        execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
         # Convert to tif
         execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
     finally:

@@ -17,7 +17,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 from common.utils import pretty_size
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT, \
-    ConvertError, UnknownFormat
+    UnkownConvertError, UnknownFormat
 from converter import TRANFORMATION_CHOICES
 from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
@@ -510,7 +510,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
         output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
         return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
-    except ConvertError, e:
+    except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         if size == THUMBNAIL_SIZE:
