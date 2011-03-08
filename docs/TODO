@@ -48,23 +48,23 @@ TODO, WISHLIST
 * Enable/disable ocr queue view & links                                - DONE
 
 
-* Workflows
-* Cache.cleanup function to delete cached images when document hash changes
-* WebDAV support
-* Don't append an extension separator if extension is non existant
-
 Common
 ======
 * Filterform date filtering widget
 * Divide navigation links search by object and by view
 * Merge all generic templates into template widget object based rendering
 * Multiple document select in generic list template
+* Keyboard navigation
+* Default button linking to 'Enter' and ESC key for cancel
+* Dismiss all messages
 
 Permissions
 ===========
 * Add permissions support to menus
 * Role editing view under setup                                        - STARTED
 * Implement permissions decorators
+* Add user editing under roles menus
+* Workflows app
 
 Documents
 =========
@@ -92,17 +92,23 @@ Documents
 * Allow metadata entry form to mix required and non required metadata
 * Block Setup menu item to non staff and non superuser users
 * Include annotations in transformed documents downloads
+* Toggable option to include default transformation on document upload
 * Add document tagging
+* Separate free form document rename and require new permission
+* Test zip file upload with multi directories zip file
+* Don't append an extension separator if extension is non existant
     
 Filesystem serving
 ==================
 * Avoid metadata indexing folders name clash
+* WebDAV support
 
 Search
 ======
 * Advanced search by metadata fields
 * Save advanced search by metadata setup as a virtual folder
 * Add show_summary method to model to display as results of a search
+* Cross model inclusion search
 
 Convert
 =======
@@ -111,6 +117,7 @@ Convert
 * Add timeout support convert tasks
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
+* Cache.cleanup function to delete cached images when document hash changes
 
 Storage
 =======
@@ -123,6 +130,7 @@ GridFSStorage
 * Implement delete-open soft locking                                   - DEFERRED
 * Implement master_slave_connection
 * if exists adding _ plus a counter - avoid file versioning
+* GridFS FUSE to filesystem serving bridge
 
 OCR
 ===
@@ -135,5 +143,5 @@ OCR
 
 ISSUES
 ===========
-* Staging file hash colition when same file with different name, newhash = content hash + filename hash
-* Fix field error on search action for documents while processing OCR queue
+1) Staging file hash colition when same file with different name, newhash = content hash + filename hash
+2) Fix field error on search action for documents while processing OCR queue
