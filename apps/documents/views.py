@@ -764,3 +764,32 @@ def document_find_all_duplicates(request):
         raise Http404(e)
 
     return _find_duplicate_list(request, include_source=True)
+
+
+def document_clear_transformations(request, document_id):
+    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
+    try:
+        check_permissions(request.user, 'documents', permissions)
+    except Unauthorized, e:
+        raise Http404(e)
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+            
+    document = get_object_or_404(Document, pk=document_id)
+        
+    if request.method == 'POST':
+        for document_page in document.documentpage_set.all():
+            for transformation in document_page.documentpagetransformation_set.all():
+                transformation.delete()
+                
+        messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % document)
+        return HttpResponseRedirect(reverse('document_view', args=[document.pk]))
+        
+
+    return render_to_response('generic_confirm.html', {
+        'object_name':_(u'document transformation'),
+        'delete_view':True,
+        'object':document,
+        'title':_(u'Are you sure you with to clear all the page transformations for document: %s?') % document,
+        'previous':previous,
+    }, context_instance=RequestContext(request))

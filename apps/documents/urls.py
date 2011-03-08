@@ -28,6 +28,7 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple':True if ENABLE_SINGLE_DOCUMENT_UPLOAD == False else False}, 'document_create_sibling'),
     url(r'^document/(?P<document_id>\d+)/find_duplicates/$', 'document_find_duplicates', (), 'document_find_duplicates'),
+    url(r'^document/(?P<document_id>\d+)/clear_transformations/$', 'document_clear_transformations', (), 'document_clear_transformations'),
     url(r'^duplicates/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
 
     url(r'^staging_file/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
