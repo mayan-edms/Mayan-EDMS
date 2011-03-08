@@ -1,7 +1,9 @@
 from django.core.files.storage import FileSystemStorage
 
+from storage.conf.settings import FILESTORAGE_LOCATION
+
 class FileBasedStorage(FileSystemStorage):
     def __init__(self, *args, **kwargs):
         super(FileBasedStorage, self).__init__(*args, **kwargs)
-        self.location='document_storage'
+        self.location=FILESTORAGE_LOCATION
 
