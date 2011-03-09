@@ -1,7 +1,8 @@
+from django.core.exceptions import PermissionDenied 
 from django.template import TemplateSyntaxError, Library, \
                             VariableDoesNotExist, Node, Variable
 
-from permissions.api import check_permissions as check_permission_function, Unauthorized
+from permissions.api import check_permissions as check_permission_function
 
 register = Library()
 
@@ -20,7 +21,7 @@ class CheckPermissionsNode(Node):
             check_permission_function(requester, namespace, permission_list)
             context['permission'] = True
             return ''
-        except Unauthorized:
+        except PermissionDenied:
             context['permission'] = False
             return ''
 

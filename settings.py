@@ -98,6 +98,7 @@ MIDDLEWARE_CLASSES = (
     'common.middleware.login_required_middleware.LoginRequiredMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
+    'permissions.middleware.permissiondeniedmiddleware.PermissionDeniedMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
