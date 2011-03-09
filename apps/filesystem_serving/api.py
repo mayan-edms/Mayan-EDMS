@@ -17,6 +17,7 @@ if SLUGIFY_PATHS == False:
 
 
 def document_create_fs_links(document):
+    warnings = []
     if FILESERVING_ENABLE:
         if not document.exists():
             raise Exception(_(u'Not creating metadata indexing, document not found in document storage'))
@@ -39,12 +40,14 @@ def document_create_fs_links(document):
 
                     next_available_filename(document, metadata_index, target_directory, slugify(document.file_filename), slugify(document.file_extension))
                 except NameError, exc:
-                    raise NameError(_(u'Error in metadata indexing expression: %s') % exc)
+                    warnings.append(_(u'Error in metadata indexing expression: %s') % exc)
+                    #raise NameError()
                     #This should be a warning not an error
                     #pass
                 except Exception, exc:
                     raise Exception(_(u'Unable to create metadata indexing directory: %s') % exc)
 
+    return warnings
 
 def document_delete_fs_links(document):
     if FILESERVING_ENABLE:
@@ -143,13 +146,13 @@ def do_recreate_all_links(raise_exception=True):
 
     for document in Document.objects.all():
         try:
-            document_create_fs_links(document)
-        except NameError, e:
-            warnings.append('%s: %s' % (document, e))
+            create_warnings = document_create_fs_links(document)
         except Exception, e:
             if raise_exception:
                 raise Exception(e)
             else:
                 errors.append('%s: %s' % (document, e))
     
+    for warning in create_warnings:
+        warnings.append('%s: %s' % (document, e))
     return errors, warnings

@@ -117,9 +117,13 @@ def _handle_save_document(request, document, form=None):
 
     save_metadata_list(decode_metadata_from_url(request.GET), document)
     try:
-        document_create_fs_links(document)
+        warnings = document_create_fs_links(document)
+        if request.user.is_staff or request.user.is_superuser:
+            for warning in warnings:
+                messages.warning(request, warning)        
     except Exception, e:
         messages.error(request, e)
+
 
 
 def _handle_zip_file(request, uploaded_file, document_type):
@@ -382,7 +386,12 @@ def document_edit(request, document_id):
             messages.success(request, _(u'Document %s edited successfully.') % document)
             
             try:
-                document_create_fs_links(document)
+                warnings = document_create_fs_links(document)
+
+                if request.user.is_staff or request.user.is_superuser:
+                    for warning in warnings:
+                        messages.warning(request, warning)
+
                 messages.success(request, _(u'Document filesystem links updated successfully.'))                
             except Exception, e:
                 messages.error(request, e)
@@ -433,7 +442,12 @@ def document_edit_metadata(request, document_id):
             messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
             
             try:
-                document_create_fs_links(document)
+                warnings = document_create_fs_links(document)
+
+                if request.user.is_staff or request.user.is_superuser:
+                    for warning in warnings:
+                        messages.warning(request, warning)                
+
                 messages.success(request, _(u'Document filesystem links updated successfully.'))                
             except Exception, e:
                 messages.error(request, e)
