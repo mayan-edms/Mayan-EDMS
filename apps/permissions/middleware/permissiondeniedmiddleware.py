@@ -8,7 +8,7 @@ from django.utils.importlib import import_module
 class PermissionDeniedMiddleware(object):
     def process_exception(self, request, exception):
         if isinstance(exception, PermissionDenied):
-            if settings.DEBUG==123:
+            if settings.DEBUG:
                 raise PermissionDenied
             else:
                 try:
