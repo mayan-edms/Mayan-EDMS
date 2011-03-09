@@ -50,7 +50,8 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm
    
-from metadata import save_metadata, save_metadata_list, decode_metadata_from_url
+from metadata import save_metadata, save_metadata_list, \
+    decode_metadata_from_url, metadata_repr_as_list
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
     DocumentPage, DocumentPageTransformation
 from staging import StagingFile
@@ -227,7 +228,16 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                     'grid_clear':True,   
                 },
             )
-    
+            
+    context.update({
+        'sidebar_subtemplates_list':[
+            {
+                'title':_(u'Current metadata'),
+                'name':'generic_subtemplate.html',
+                #'content':metadata_repr(decode_metadata_from_url(request.GET)),
+                'paragraphs':metadata_repr_as_list(decode_metadata_from_url(request.GET))
+            }]
+    })
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
     

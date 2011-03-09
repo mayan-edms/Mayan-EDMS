@@ -31,6 +31,8 @@ def save_metadata_list(metadata_list, document):
         if item['value']:
             save_metadata(item, document)
         else:
+            #If there is no metadata value, delete the metadata entry 
+            #completely from the document
             try:
                 metadata_type = MetadataType.objects.get(id=item['id'])
                 document_metadata = DocumentMetadata.objects.get(document=document,
@@ -52,3 +54,21 @@ def save_metadata(metadata_dict, document):
     #http://stackoverflow.com/questions/4382875/handling-iri-in-django
     document_metadata.value=unquote_plus(metadata_dict['value'])#.decode('utf-8')
     document_metadata.save()
+
+
+def metadata_repr(metadata_list):
+    return ', '.join(metadata_repr_as_list(metadata_list))
+   
+    
+def metadata_repr_as_list(metadata_list):
+    output = []
+    for metadata_dict in metadata_list:
+        try:
+            output.append('%s - %s' % (MetadataType.objects.get(pk=metadata_dict['id']), metadata_dict.get('value', '')))
+        except:
+            pass
+        
+    return output
+    
+    
+    
