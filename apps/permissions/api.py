@@ -6,11 +6,10 @@ from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
+from django.core.exceptions import PermissionDenied 
+
 
 from models import Permission, Role
-
-class Unauthorized(Exception):
-    pass
 
 
 def register_permissions(namespace, permissions):
@@ -37,7 +36,7 @@ def check_permissions(requester, namespace, permission_list):
         if check_permission(requester, permission):
             return True
         
-    raise Unauthorized(ugettext(u'Insufficient permissions.'))
+    raise PermissionDenied(ugettext(u'Insufficient permissions.'))
 
 
 def check_permission(requester, permission):
