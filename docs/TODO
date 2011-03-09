@@ -109,6 +109,7 @@ Search
 * Save advanced search by metadata setup as a virtual folder
 * Add show_summary method to model to display as results of a search
 * Cross model inclusion search                                         - DONE
+* Separate view code from search code                                  - DONE
 
 Convert
 =======
