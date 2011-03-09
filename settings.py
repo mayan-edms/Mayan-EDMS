@@ -95,7 +95,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'middleware.login_required_middleware.LoginRequiredMiddleware',
+    'common.middleware.login_required_middleware.LoginRequiredMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
 )
