@@ -72,8 +72,12 @@
             {% endif %}
         {% endif %}
     </li>
-    {% if user.is_staff %}
+    {% if user.is_staff or user.is_superuser %}
         <li><a href="/admin">{% trans "Admin site" %}</a></li>
+    {% endif %}
+    
+    {% if user.is_staff or user.is_superuser  %}
+        <li><a href="{% url sentry %}">{% trans "Sentry" %}</a></li>
     {% endif %}
 
     {% get_setting "MIDDLEWARE_CLASSES" as middleware_classes %}
