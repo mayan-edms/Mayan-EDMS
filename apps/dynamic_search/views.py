@@ -8,6 +8,7 @@ from django.utils.translation import ugettext as _
 from django.db.models import Q
 from django.contrib import messages
 from django.core.exceptions import FieldError
+from django.conf import settings
 
 
 from api import search_list
@@ -106,54 +107,67 @@ def get_query(query_string, terms, search_fields):
     print '2nd', or_query            
     return queries, or_query
 
-def search(request):
-    query_string = ''
-    found_entries = {}
-    object_list = []
 
-    start_time = datetime.datetime.now()
-    result_count = 0
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-        form = SearchForm(initial={'q':query_string})
-        
+def perform_search(query_string):
+    model_list = {}
+    flat_list = []
+    result_count = 0    
+
+    if query_string:
         terms = normalize_query(query_string)
         
         for model, data in search_list.items():
             queries, query_full = get_query(query_string, terms, data['fields'])
 
-            try:
-                model_results = None
-                for query in queries:
-                    single_results = set(model.objects.filter(query).values_list('pk', flat=True))
-                    #Convert queryset to python set and perform the 
-                    #AND operation on the program and not as a query
-                    if model_results == None:
-                        model_results = single_results
-                    else:
-                        model_results &= single_results
-                    
-                results = model.objects.filter(pk__in=model_results)[:LIMIT]
-                #result_count += len(model_results)
-                if results:
-                    found_entries[data['text']] = results
-                    for result in results:
-                        if result not in object_list:
-                            object_list.append(result)
+            model_result_ids = None
+            for query in queries:
+                single_result_ids = set(model.objects.filter(query).values_list('pk', flat=True))
+                #Convert queryset to python set and perform the 
+                #AND operation on the program and not as a query
+                if model_result_ids == None:
+                    model_result_ids = single_result_ids
+                else:
+                    model_result_ids &= single_result_ids
                 
-                full_results = set(model.objects.filter(query_full).values_list('pk', flat=True))
-                results = model.objects.filter(pk__in=full_results)[:LIMIT]
-                result_count += len(full_results | model_results)
-                if results:
-                    found_entries[data['text']] = results
-                    for result in results:
-                        if result not in object_list:
-                            object_list.append(result)                
-                
-                print 'full_results', full_results
-            except FieldError, e:
-                if request.user.is_staff or request.user.is_superuser:
-                    messages.error(request, _(u'Search error: %s') % e)
+            model_results = model.objects.filter(pk__in=model_result_ids)[:LIMIT]
+
+            if model_results:
+                model_list[data['text']] = model_results
+                for result in model_results:
+                    if result not in flat_list:
+                        flat_list.append(result)
+            
+            full_result_ids = set(model.objects.filter(query_full).values_list('pk', flat=True))
+            full_results = model.objects.filter(pk__in=full_result_ids)[:LIMIT]
+            result_count += len(full_result_ids | model_result_ids)
+            if full_results:
+                model_list[data['text']] |= full_results
+                for result in full_results:
+                    if result not in flat_list:
+                        flat_list.append(result)                
+            
+            print 'full_results', full_results
+
+    return model_list, flat_list, result_count
+
+
+def search(request):
+    model_list = {}
+    flat_list = []
+    result_count = 0
+            
+    start_time = datetime.datetime.now()
+    result_count = 0
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+        form = SearchForm(initial={'q':query_string})
+        try:
+            model_list, flat_list, result_count = perform_search(query_string)
+        except Exception, e:
+            if settings.DEBUG:
+                raise
+            elif request.user.is_staff or request.user.is_superuser:
+                messages.error(request, _(u'Search error: %s') % e)
     else:
         form = SearchForm()
 
@@ -164,9 +178,9 @@ def search(request):
     
     context = {
         'query_string':query_string, 
-        'found_entries':found_entries,
+        'found_entries':model_list,
         'form':form,
-        'object_list':object_list,
+        'object_list':flat_list,
         'form_title':_(u'Search'),
         'hide_header':True,
         'title':title,
