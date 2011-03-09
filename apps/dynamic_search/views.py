@@ -54,7 +54,7 @@ def search(request):
     object_list = []
 
     start_time = datetime.datetime.now()
-    
+    result_count = 0
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
         form = SearchForm(initial={'q':query_string})
@@ -75,7 +75,8 @@ def search(request):
                     else:
                         model_results &= single_results
                     
-                    results = model.objects.filter(pk__in=model_results)[:LIMIT]
+                results = model.objects.filter(pk__in=model_results)[:LIMIT]
+                result_count += len(model_results)
                 if results:
                     found_entries[data['text']] = results
                     for result in results:
@@ -86,9 +87,9 @@ def search(request):
                     messages.error(request, _(u'Search error: %s') % e)
     else:
         form = SearchForm()
-    
-    if LIMIT and len(model_results) > LIMIT:
-        title = _(u'results with: %s (showing only %s out of %s)') % (query_string, LIMIT, len(model_results))
+
+    if LIMIT and result_count > LIMIT:
+        title = _(u'results with: %s (showing only %s out of %s)') % (query_string, LIMIT, result_count)
     else:
         title = _(u'results with: %s') % query_string
     
