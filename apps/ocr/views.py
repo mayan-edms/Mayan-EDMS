@@ -10,7 +10,7 @@ from django.views.generic.create_update import create_object, delete_object, upd
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
-from permissions.api import check_permissions, Unauthorized
+from permissions.api import check_permissions
 from documents.models import Document
 
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
@@ -22,11 +22,7 @@ from literals import QUEUEDOCUMENT_STATE_PENDING, \
 from forms import DocumentQueueForm_view
 
 def queue_document_list(request, queue_name='default'):
-    permissions = [PERMISSION_OCR_DOCUMENT]
-    try:
-        check_permissions(request.user, 'ocr', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
         
     document_queue = get_object_or_404(DocumentQueue, name=queue_name)
 
@@ -60,11 +56,7 @@ def queue_document_list(request, queue_name='default'):
             
         
 def queue_document_delete(request, queue_document_id):
-    permissions = [PERMISSION_OCR_DOCUMENT_DELETE]
-    try:
-        check_permissions(request.user, 'ocr', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT_DELETE])
             
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -82,11 +74,7 @@ def queue_document_delete(request, queue_document_id):
 
 
 def submit_document(request, document_id, queue_name='default'):
-    permissions = [PERMISSION_OCR_DOCUMENT]
-    try:
-        check_permissions(request.user, 'ocr', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
         
     document = get_object_or_404(Document, pk=document_id)
     
@@ -99,11 +87,7 @@ def submit_document(request, document_id, queue_name='default'):
 
 
 def re_queue_document(request, queue_document_id):
-    permissions = [PERMISSION_OCR_DOCUMENT]
-    try:
-        check_permissions(request.user, 'ocr', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
             
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -146,11 +130,7 @@ def re_queue_document(request, queue_document_id):
 
 
 def document_queue_disable(request, document_queue_id):
-    permissions = [PERMISSION_OCR_QUEUE_ENABLE_DISABLE]
-    try:
-        check_permissions(request.user, 'ocr', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))    
@@ -175,11 +155,7 @@ def document_queue_disable(request, document_queue_id):
     
 
 def document_queue_enable(request, document_queue_id):
-    permissions = [PERMISSION_OCR_QUEUE_ENABLE_DISABLE]
-    try:
-        check_permissions(request.user, 'ocr', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))    

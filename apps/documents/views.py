@@ -23,7 +23,7 @@ from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from ocr.models import add_document_to_queue
-from permissions.api import check_permissions, Unauthorized
+from permissions.api import check_permissions
 
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
@@ -58,11 +58,7 @@ from utils import document_save_to_temp_dir
 
 
 def document_list(request):
-    permissions = [PERMISSION_DOCUMENT_VIEW]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
             
     return object_list(
         request,
@@ -74,11 +70,7 @@ def document_list(request):
     )
 
 def document_create(request, multiple=True):
-    permissions = [PERMISSION_DOCUMENT_CREATE]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
 
     if DocumentType.objects.all().count() == 1:
         wizard = DocumentCreateWizard(
@@ -93,11 +85,7 @@ def document_create(request, multiple=True):
     return wizard(request)
 
 def document_create_sibling(request, document_id, multiple=True):
-    permissions = [PERMISSION_DOCUMENT_CREATE]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
             
     document = get_object_or_404(Document, pk=document_id)
     urldata = []
@@ -153,11 +141,7 @@ def _handle_zip_file(request, uploaded_file, document_type):
     
 
 def upload_document_with_type(request, document_type_id, multiple=True):
-    permissions = [PERMISSION_DOCUMENT_CREATE]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
             
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
     local_form = DocumentForm(prefix='local', initial={'document_type':document_type})
@@ -248,11 +232,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
         context_instance=RequestContext(request))
     
 def document_view(request, document_id):
-    permissions = [PERMISSION_DOCUMENT_VIEW]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
             
     document = get_object_or_404(Document, pk=document_id)
     form = DocumentForm_view(instance=document, extra_fields=[
@@ -344,11 +324,7 @@ def document_view(request, document_id):
 
 
 def document_delete(request, document_id):
-    permissions = [PERMISSION_DOCUMENT_DELETE]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DELETE])
             
     document = get_object_or_404(Document, pk=document_id)
 
@@ -373,11 +349,7 @@ def document_delete(request, document_id):
         
         
 def document_edit(request, document_id):
-    permissions = [PERMISSION_DOCUMENT_PROPERTIES_EDIT]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
             
     document = get_object_or_404(Document, pk=document_id)
     if request.method == 'POST':
@@ -419,11 +391,7 @@ def document_edit(request, document_id):
 
 
 def document_edit_metadata(request, document_id):
-    permissions = [PERMISSION_DOCUMENT_METADATA_EDIT]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_METADATA_EDIT])
             
     document = get_object_or_404(Document, pk=document_id)
 
@@ -473,11 +441,7 @@ def document_edit_metadata(request, document_id):
     
 
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
-    permissions = [PERMISSION_DOCUMENT_VIEW]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
         
     document = get_object_or_404(Document, pk=document_id)
 
@@ -532,11 +496,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
 
         
 def document_download(request, document_id):
-    permissions = [PERMISSION_DOCUMENT_DOWNLOAD]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)    
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DOWNLOAD])
     
     document = get_object_or_404(Document, pk=document_id)
     try:
@@ -596,11 +556,7 @@ def staging_file_delete(request, staging_file_id):
 
 
 def document_page_view(request, document_page_id):
-    permissions = [PERMISSION_DOCUMENT_VIEW]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
         
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page_form = DocumentPageForm(instance=document_page)
@@ -639,11 +595,7 @@ def document_page_view(request, document_page_id):
     
     
 def document_page_transformation_create(request, document_page_id):
-    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
         
@@ -664,11 +616,7 @@ def document_page_transformation_create(request, document_page_id):
 
 
 def document_page_transformation_edit(request, document_page_transformation_id):
-    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
     return update_object(request, template_name='generic_form.html', 
@@ -690,11 +638,7 @@ def document_page_transformation_edit(request, document_page_transformation_id):
 
 
 def document_page_transformation_delete(request, document_page_transformation_id):
-    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
             
@@ -716,23 +660,13 @@ def document_page_transformation_delete(request, document_page_transformation_id
 
 
 def document_find_duplicates(request, document_id):
-    permissions = [PERMISSION_DOCUMENT_VIEW]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
             
     document = get_object_or_404(Document, pk=document_id)
     return _find_duplicate_list(request, [document], include_source=True, confirmation=False)    
 
 
 def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False, confirmation=True):
-    permissions = [PERMISSION_DOCUMENT_VIEW]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
-
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
     
     if confirmation and request.method != 'POST':
@@ -757,21 +691,13 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
 
 
 def document_find_all_duplicates(request):
-    permissions = [PERMISSION_DOCUMENT_VIEW]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     return _find_duplicate_list(request, include_source=True)
 
 
 def document_clear_transformations(request, document_id):
-    permissions = [PERMISSION_DOCUMENT_TRANSFORM]
-    try:
-        check_permissions(request.user, 'documents', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
             

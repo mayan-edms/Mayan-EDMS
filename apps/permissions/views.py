@@ -15,15 +15,11 @@ from forms import RoleForm, RoleForm_view
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_PERMISSION_GRANT, \
     PERMISSION_PERMISSION_REVOKE
-from api import check_permissions, Unauthorized
+from api import check_permissions
 
 
 def role_list(request):
-    permissions = [PERMISSION_ROLE_VIEW]
-    try:
-        check_permissions(request.user, 'permissions', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'permissions', [PERMISSION_ROLE_VIEW])
             
     return object_list(
         request,
@@ -54,11 +50,7 @@ def _role_permission_link(requester, permission, permission_list):
         
         
 def role_permissions(request, role_id):
-    permissions = [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]
-    try:
-        check_permissions(request.user, 'permissions', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'permissions', [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE])
             
     role = get_object_or_404(Role, pk=role_id)
     form = RoleForm_view(instance=role)
@@ -88,11 +80,7 @@ def role_permissions(request, role_id):
 
 
 def role_edit(request, role_id):
-    permissions = [PERMISSION_ROLE_EDIT]
-    try:
-        check_permissions(request.user, 'permissions', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'permissions', [PERMISSION_ROLE_EDIT])
 
     return update_object(request, template_name='generic_form.html', 
         form_class=RoleForm, object_id=role_id, extra_context={
@@ -100,11 +88,7 @@ def role_edit(request, role_id):
 
 
 def role_create(request):
-    permissions = [PERMISSION_ROLE_CREATE]
-    try:
-        check_permissions(request.user, 'permissions', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'permissions', [PERMISSION_ROLE_CREATE])
 
     return create_object(request, model=Role, 
         template_name='generic_form.html',
@@ -112,11 +96,7 @@ def role_create(request):
 
     
 def role_delete(request, role_id):
-    permissions = [PERMISSION_ROLE_DELETE]
-    try:
-        check_permissions(request.user, 'permissions', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'permissions', [PERMISSION_ROLE_DELETE])
             
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -138,20 +118,12 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
     permission = get_object_or_404(Permission, pk=permission_id)
 
     if action == 'grant':
-        permissions = [PERMISSION_PERMISSION_GRANT]
-        try:
-            check_permissions(request.user, 'permissions', permissions)
-        except Unauthorized, e:
-            raise Http404(e)
+        check_permissions(request.user, 'permissions', [PERMISSION_PERMISSION_GRANT])
         title = _('Are you sure you wish to grant the permission "%(permission)s" to %(ct_name)s: %(requester)s') % {
             'permission':permission, 'ct_name':ct.name, 'requester':requester}
 
     elif action == 'revoke':
-        permissions = [PERMISSION_PERMISSION_REVOKE]
-        try:
-            check_permissions(request.user, 'permissions', permissions)
-        except Unauthorized, e:
-            raise Http404(e)
+        check_permissions(request.user, 'permissions', [PERMISSION_PERMISSION_REVOKE])
         title = _('Are you sure you wish to revoke the permission "%(permission)s" from %(ct_name)s: %(requester)s') % {
             'permission':permission, 'ct_name':ct.name, 'requester':requester}
     else:
@@ -187,5 +159,3 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
         'previous':previous,
         'title':title,
     }, context_instance=RequestContext(request))
-
-

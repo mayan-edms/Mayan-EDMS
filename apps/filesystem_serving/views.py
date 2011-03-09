@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.contrib import messages
 
 
-from permissions.api import check_permissions, Unauthorized
+from permissions.api import check_permissions
 
 
 from filesystem_serving import FILESYSTEM_SERVING_RECREATE_LINKS
@@ -13,11 +13,7 @@ from api import do_recreate_all_links
 
 
 def recreate_all_links(request):
-    permissions = [FILESYSTEM_SERVING_RECREATE_LINKS]
-    try:
-        check_permissions(request.user, 'filesystem_serving', permissions)
-    except Unauthorized, e:
-        raise Http404(e)
+    check_permissions(request.user, 'filesystem_serving', [FILESYSTEM_SERVING_RECREATE_LINKS])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
