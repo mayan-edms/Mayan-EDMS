@@ -528,7 +528,7 @@ def staging_file_preview(request, staging_file_id):
     try:
         filepath = StagingFile.get(staging_file_id).filepath
         output_file = convert(filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
-        return serve_file(request, File(file=open(output_file, 'r')))
+        return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
     except Exception, e:
         return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))        
 
