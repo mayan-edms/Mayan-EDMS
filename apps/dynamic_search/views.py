@@ -1,5 +1,6 @@
 import datetime
 import re
+import types
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -30,23 +31,80 @@ def normalize_query(query_string,
     return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
 
-def get_query(terms, search_fields):
+def get_query(query_string, terms, search_fields):
     ''' Returns a query, that is a combination of Q objects. That combination
         aims to search keywords within a model by testing the given search fields.
     
     '''
+    """
     queries = []
     for term in terms:
         or_query = None
-        for field_name in search_fields:
-            q = Q(**{'%s__icontains' % field_name:term})        
+        for field in search_fields:
+            if isinstance(field, types.StringTypes):
+                comparison = u'icontains'
+                field_name = field
+            elif isinstance(field, types.DictType):
+                comparison = field.get('comparison', u'icontains')
+                field_name = field.get('field_name', '')
+            
+            if field:
+                q = Q(**{'%s__%s' % (field_name, comparison):term})
+                if or_query is None:
+                    or_query = q
+                else:
+                    or_query = or_query | q
+            
+        queries.append(or_query)
+    """
+    queries = []
+    queries_full = []
+    #for field in search_fields:
+    for term in terms:
+        or_query = None
+        #for term in terms:
+        for field in search_fields:
+            if isinstance(field, types.StringTypes):
+                comparison = u'icontains'
+                field_name = field
+            elif isinstance(field, types.DictType):
+                comparison = field.get('comparison', u'icontains')
+                field_name = field.get('field_name', '')
+                
+            print 'field', field
+            print 'term', term
+            
+            if field_name:
+                q = Q(**{'%s__%s' % (field_name, comparison):term})
+                print '%s__%s' % (field_name, comparison)
+                if or_query is None:
+                    or_query = q
+                else:
+                    or_query = or_query | q
+            
+        queries.append(or_query)
+        print 'or_query', or_query
+    print 'queries', queries
+
+    or_query = None
+    for field in search_fields:
+        if isinstance(field, types.StringTypes):
+            comparison = u'icontains'
+            field_name = field
+        elif isinstance(field, types.DictType):
+            comparison = field.get('comparison', u'icontains')
+            field_name = field.get('field_name', '')        
+
+        if field_name:
+            q = Q(**{'%s__%s' % (field_name, comparison):query_string})
+            print '%s__%s' % (field_name, comparison)
             if or_query is None:
                 or_query = q
             else:
                 or_query = or_query | q
-            
-        queries.append(or_query)
-    return queries
+               
+    print '2nd', or_query            
+    return queries, or_query
 
 def search(request):
     query_string = ''
@@ -62,7 +120,7 @@ def search(request):
         terms = normalize_query(query_string)
         
         for model, data in search_list.items():
-            queries = get_query(terms, data['fields'])
+            queries, query_full = get_query(query_string, terms, data['fields'])
 
             try:
                 model_results = None
@@ -76,12 +134,23 @@ def search(request):
                         model_results &= single_results
                     
                 results = model.objects.filter(pk__in=model_results)[:LIMIT]
-                result_count += len(model_results)
+                #result_count += len(model_results)
                 if results:
                     found_entries[data['text']] = results
                     for result in results:
                         if result not in object_list:
                             object_list.append(result)
+                
+                full_results = set(model.objects.filter(query_full).values_list('pk', flat=True))
+                results = model.objects.filter(pk__in=full_results)[:LIMIT]
+                result_count += len(full_results | model_results)
+                if results:
+                    found_entries[data['text']] = results
+                    for result in results:
+                        if result not in object_list:
+                            object_list.append(result)                
+                
+                print 'full_results', full_results
             except FieldError, e:
                 if request.user.is_staff or request.user.is_superuser:
                     messages.error(request, _(u'Search error: %s') % e)
