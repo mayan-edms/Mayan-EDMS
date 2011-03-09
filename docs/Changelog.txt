@@ -1,3 +1,11 @@
+2011-Mar-09
+* Implemented new PermissioDenied exception middleware handler
+* Permissions app api now returns a PermissionDenied exception instead of a custom one
+* Added new 403 error template
+* Updated the 404 template to display only a not found message
+* Moved the login required middleware to the common app
+* Fixed search app's model.objects.filter indentation, improved result count calculation
+
 2011-Mar-08
 * Added document action to clear all the document's page transformations
 * Allow search across related fields
