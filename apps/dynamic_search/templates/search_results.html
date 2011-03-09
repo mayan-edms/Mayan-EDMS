@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %} :: {% trans 'Search results' %}{% endblock %}
+{% block title %} :: {% trans "Search results" %}{% endblock %}
 {% block content %}
 
-    {% with 'get' as submit_method %}
+    {% with "get" as submit_method %}
     {% with form_title as title %}
-        {% include 'generic_form_subtemplate.html' %}
+        {% include "generic_form_subtemplate.html" %}
     {% endwith %}
     {% endwith %}
 
     {% if query_string %}
-            {% include 'generic_list_subtemplate.html' %}
+            {% include "generic_list_subtemplate.html" %}
     {% endif %}
     
 {% endblock %}
