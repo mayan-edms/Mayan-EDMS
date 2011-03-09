@@ -251,7 +251,7 @@ def document_view(request, document_id):
 
         
     metadata_groups, errors = document.get_metadata_groups()
-    if request.user.is_staff and errors:
+    if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
             messages.warning(request, _(u'Metadata group query error: %s' % error))
 
