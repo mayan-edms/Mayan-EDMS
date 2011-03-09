@@ -8,3 +8,4 @@ settings_local.py
 site_media/documents/*
 celerybeat-schedule
 document_storage/
+misc/mayan.geany
