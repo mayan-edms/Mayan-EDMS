@@ -29,9 +29,15 @@
         {% with subtemplate.object_name as object_name %}
         {% with subtemplate.form_action as form_action %}    
         {% with subtemplate.form as form %}
+        
+        {% with subtemplate.content as content %}
+        {% with subtemplate.paragraphs as paragraphs %}
 
         {% include subtemplate.name %}
 
+        {% endwith %}
+        {% endwith %}
+        
         {% endwith %}
         {% endwith %}
         {% endwith %}

@@ -19,7 +19,7 @@ from models import DocumentQueue, QueueDocument, add_document_to_queue
 from literals import QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_PROCESSING, QUEUEDOCUMENT_STATE_ERROR, \
     DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE
-from forms import DocumentQueueForm_view
+
 
 def queue_document_list(request, queue_name='default'):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
@@ -48,8 +48,8 @@ def queue_document_list(request, queue_name='default'):
             'sidebar_subtemplates_list':[
                 {
                     'title':_(u'document queue properties'),
-                    'name':'generic_detail_subtemplate.html',
-                    'form':DocumentQueueForm_view(instance=document_queue),
+                    'name':'generic_subtemplate.html',
+                    'content':_(u'Current state: %s') % document_queue.get_state_display(),
                 }],
         },
     )    
