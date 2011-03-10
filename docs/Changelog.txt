@@ -5,6 +5,15 @@
 * Updated the 404 template to display only a not found message
 * Moved the login required middleware to the common app
 * Fixed search app's model.objects.filter indentation, improved result count calculation
+* Added dynamic comparison types to search app
+* Separated search code from view code
+* Correctly calculate show result count for multi model searches
+* Fixed OCR queue list showing wrong thumbnail
+* Fixed staging file preview
+* Show current metadata in document upload view sidebar
+* Show sentry login for admin users
+* Do not reinitialize document queue and/or queued document on reentry
+* Try extra hard not to assign same uuid to two documents
 
 2011-Mar-08
 * Added document action to clear all the document's page transformations
