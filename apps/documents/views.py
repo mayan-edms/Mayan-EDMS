@@ -31,6 +31,7 @@ from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
+from documents.conf.settings import TRANFORMATION_PREVIEW_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents.conf.settings import GROUP_SHOW_THUMBNAIL

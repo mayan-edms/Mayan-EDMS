@@ -33,7 +33,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
         output.append('<img src="%(img)s?page=%(page)s" />' % {
-            'img':reverse('document_preview', args=[value.document.id]),
+            'img':reverse('document_preview_transformation', args=[value.document.id]),
             'page':value.page_number,
             })
         #output.append(super(ImageWidget, self).render(name, value, attrs))
