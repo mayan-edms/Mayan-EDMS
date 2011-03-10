@@ -1,3 +1,6 @@
+2011-Mar-10
+* Added new setting: side bar search box
+
 2011-Mar-09
 * Implemented new PermissioDenied exception middleware handler
 * Permissions app api now returns a PermissionDenied exception instead of a custom one
@@ -14,6 +17,9 @@
 * Show sentry login for admin users
 * Do not reinitialize document queue and/or queued document on reentry
 * Try extra hard not to assign same uuid to two documents
+* Added new transformation preview size setting
+* Renamed document queue state links
+* Changed ocr status display sidebar from form based to text based
 
 2011-Mar-08
 * Added document action to clear all the document's page transformations

@@ -177,6 +177,8 @@ LOGIN_EXEMPT_URLS = (
 #PAGINATION_DEFAULT_PAGINATION = 10
 #--------- Web theme app ---------------
 #WEB_THEME = 'default'
+#-------------- Main -----------------
+#MAIN_SIDE_BAR_SEARCH = False
 #---------- Documents ------------------
 # Definition
 #DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
@@ -242,7 +244,6 @@ LOGIN_EXEMPT_URLS = (
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
 #OCR_MAX_CONCURRENT_EXECUTION = 2
 #OCR_TESSERACT_LANGUAGE = None
-
 
 # Permissions
 #ROLES_DEFAULT_ROLES = []

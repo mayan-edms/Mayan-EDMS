@@ -47,7 +47,11 @@ TODO, WISHLIST
 * Show current page in generic list template                           - DONE
 * Enable/disable ocr queue view & links                                - DONE
 
+
+Main
+====
 * Diagnostics (document file <-> document db entry mismatches, orphan files)
+* Sidebar search                                                       - DONE
 
 Common
 ======
@@ -70,7 +74,6 @@ Permissions
 
 Documents
 =========
-* Restrict view permission free form rename
 * Skip step 2 of wizard (metadata) if no document type metadata types have been defined
 * Tile based image server
 * Do separate default transformations for staging and for local uploads
@@ -103,6 +106,7 @@ Documents
 * Improve doc page template/view
 * Document page edit view
 * Show all document's pages content combined
+* Create 'simple view' = stripped down document view for non technical users
     
 Filesystem serving
 ==================
@@ -116,7 +120,7 @@ Search
 * Add show_summary method to model to display as results of a search
 * Cross model inclusion search                                         - DONE
 * Separate view code from search code                                  - DONE
-* Sidebar search
+* New results only view                                                - DONE
 
 Convert
 =======

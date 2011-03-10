@@ -1,22 +1,19 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %} :: {% trans "Search results" %}{% endblock %}
+
 {% block content %}
-
-    {% with "get" as submit_method %}
-    {% with form_title as title %}
-        {% include "generic_form_subtemplate.html" %}
-    {% endwith %}
-    {% endwith %}
-
-    {% if query_string %}
-            {% include "generic_list_subtemplate.html" %}
+    {% if form %}
+            {% include "search_results_subtemplate.html" %}
     {% endif %}
     
+    {% if query_string %}
+        {% include "generic_list_subtemplate.html" %}
+    {% endif %}    
 {% endblock %}
+
 {% block footer %}
     {% if query_string %}
         {% blocktrans %}Elapsed time: {{ time_delta }} seconds{% endblocktrans %}
     {% endif %}
 {% endblock %}
-

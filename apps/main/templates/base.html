@@ -3,6 +3,8 @@
 {% load project_tags %}
 {% load navigation %}
 {% load settings %}
+{% load search_tags %}
+{% load main_settings_tags %}
 
 {% block html_title %}{% project_name %}{% block title %}{% endblock %}{% endblock %}
 
@@ -118,6 +120,13 @@
 {% endblock %}
 
 {% block web_theme_sidebar %}
+    {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
+    {% if side_bar_search %}
+        {% with "true" as side_bar %}
+            {% search_form %}
+        {% endwith %}
+    {% endif %}
+
     {% get_object_navigation_links %}
     {% if object_navigation_links %}
         <div class="block">
