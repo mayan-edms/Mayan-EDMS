@@ -32,7 +32,9 @@ class DocumentQueueWatcher(PeriodicTask):
     def run(self, **kwargs):
         logger = self.get_logger(**kwargs)
         logger.info('Running queue watcher.')
+        logger.debug('Active queues: %s' % DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE))
         for document_queue in DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE):
+            logger.debug('Analysing queue: %s' % document_queue)
             current_running_queues = QueueDocument.objects.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).count()
             if current_running_queues < MAX_CONCURRENT_EXECUTION:
                 try:
