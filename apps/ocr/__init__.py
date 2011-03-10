@@ -30,8 +30,8 @@ submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'a
 re_queue_document = {'text':_('re-queue'), 'view':'re_queue_document', 'args':'object.id', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 queue_document_delete = {'text':_(u'delete'), 'view':'queue_document_delete', 'args':'object.id', 'famfam':'hourglass_delete', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT_DELETE]}}
 
-document_queue_disable = {'text':_(u'stop queue'), 'view':'document_queue_disable', 'args':'object.id', 'famfam':'control_pause_blue', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}}
-document_queue_enable = {'text':_(u'active queue'), 'view':'document_queue_enable', 'args':'object.id', 'famfam':'control_play_blue', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}}
+document_queue_disable = {'text':_(u'stop queue'), 'view':'document_queue_disable', 'args':'object.id', 'famfam':'control_stop_blue', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}}
+document_queue_enable = {'text':_(u'activate queue'), 'view':'document_queue_enable', 'args':'object.id', 'famfam':'control_play_blue', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}}
 
 register_links(Document, [submit_document], menu_name='sidebar')
 register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
