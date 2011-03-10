@@ -47,6 +47,7 @@ TODO, WISHLIST
 * Show current page in generic list template                           - DONE
 * Enable/disable ocr queue view & links                                - DONE
 
+* Diagnostics (document file <-> document db entry mismatches, orphan files)
 
 Common
 ======
@@ -57,6 +58,7 @@ Common
 * Keyboard navigation
 * Default button linking to 'Enter' and ESC key for cancel
 * Dismiss all messages
+* Sidebar multi item action box
 
 Permissions
 ===========
@@ -97,6 +99,10 @@ Documents
 * Separate free form document rename and require new permission
 * Test zip file upload with multi directories zip file
 * Don't append an extension separator if extension is non existant
+* Statistics page (total used storage, total docs, per metadata group, per type, per metadata)
+* Improve doc page template/view
+* Document page edit view
+* Show all document's pages content combined
     
 Filesystem serving
 ==================
@@ -110,6 +116,7 @@ Search
 * Add show_summary method to model to display as results of a search
 * Cross model inclusion search                                         - DONE
 * Separate view code from search code                                  - DONE
+* Sidebar search
 
 Convert
 =======
@@ -141,8 +148,3 @@ OCR
 * Multiple ocr queue support                                           - STARTED
 * Add per node max ocr concurrent execution
 
-
-ISSUES
-===========
-1) Staging file hash colition when same file with different name, newhash = content hash + filename hash
-2) Fix field error on search action for documents while processing OCR queue
