@@ -49,13 +49,6 @@ try:
     if created:
         default_queue.label = ugettext(u'Default')
         default_queue.save()
-
-    for queue in DocumentQueue.objects.all():
-        queue.state = DOCUMENTQUEUE_STATE_ACTIVE
-        queue.save()
-        for document in queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING):
-            document.state = QUEUEDOCUMENT_STATE_PENDING
-            document.save()
 except DatabaseError:
     #syncdb
     pass
