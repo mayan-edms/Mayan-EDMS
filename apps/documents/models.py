@@ -24,7 +24,9 @@ def get_filename_from_uuid(instance, filename):
     instance.file_filename = filename
     #remove prefix '.'
     instance.file_extension = extension[1:]
-    return instance.uuid
+    uuid = UUID_FUNCTION()
+    instance.uuid = uuid
+    return uuid
    
 
 class DocumentType(models.Model):
