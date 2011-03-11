@@ -48,14 +48,21 @@ from documents import PERMISSION_DOCUMENT_CREATE, \
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
-        MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm
-   
+        MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
+        DocumentContentForm
+        
 from metadata import save_metadata, save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
     DocumentPage, DocumentPageTransformation
 from staging import StagingFile
 from utils import document_save_to_temp_dir
+
+
+PICTURE_ERROR_SMALL = u'picture_error.png'
+PICTURE_ERROR_MEDIUM = u'1297211435_error.png'
+PICTURE_UNKNOWN_SMALL = u'1299549572_unknown2.png'
+PICTURE_UNKNOWN_MEDIUM = u'1299549805_unknown.png'
 
 
 def document_list(request):
@@ -486,7 +493,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
                     pass
     except ObjectDoesNotExist:
         pass
-
+    
     tranformation_string = ' '.join(transformation_list)
     try:
         filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page-1)
@@ -500,21 +507,21 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         if size == THUMBNAIL_SIZE:
-            return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
+            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL), 'r')))
         else:
-            return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))
+            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
     except UnknownFormat:
         if size == THUMBNAIL_SIZE:
-            return serve_file(request, File(file=open('%simages/1299549572_unknown2.png' % settings.MEDIA_ROOT, 'r')))
+            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_SMALL), 'r')))
         else:
-            return serve_file(request, File(file=open('%simages/1299549805_unknown.png' % settings.MEDIA_ROOT, 'r')))
+            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM), 'r')))
     except Exception, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         if size == THUMBNAIL_SIZE:
-            return serve_file(request, File(file=open('%simages/picture_error.png' % settings.MEDIA_ROOT, 'r')))
+            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL), 'r')))
         else:
-            return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))
+            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
 
         
 def document_download(request, document_id):
@@ -546,13 +553,21 @@ def staging_file_preview(request, staging_file_id):
             else:
                 pass
     tranformation_string = ' '.join(transformation_list)
-     
+
     try:
         filepath = StagingFile.get(staging_file_id).filepath
         output_file = convert(filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
         return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
+    except UnkownConvertError, e:
+        if request.user.is_staff or request.user.is_superuser:
+            messages.error(request, e)
+        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
+    except UnknownFormat:
+        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM), 'r')))
     except Exception, e:
-        return serve_file(request, File(file=open('%simages/1297211435_error.png' % settings.MEDIA_ROOT, 'r')))        
+        if request.user.is_staff or request.user.is_superuser:
+            messages.error(request, e)
+        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))   
 
 
 #TODO: Need permission     
@@ -742,7 +757,6 @@ def document_clear_transformations(request, document_id):
         'previous':previous,
     }, context_instance=RequestContext(request))
 
-from forms import DocumentContentForm
 
 def document_view_simple(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])

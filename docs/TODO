@@ -110,7 +110,7 @@ Documents
 * Show all document's pages content combined
 * Create 'simple view' document view for non technical users           - DONE
 * Unify document form classes
-* Use document preview code for staging file also
+* Use document preview code for staging file also                      - DONE
     
 Filesystem serving
 ==================

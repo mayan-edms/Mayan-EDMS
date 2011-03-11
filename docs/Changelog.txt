@@ -3,6 +3,8 @@
 * Don't raise PermissionDenied exception in PermissionDenied middleware, even while debugging
 * Fixed page number detection
 * Created 'simple document' for non technical users with all of a document pages content
+* Use document preview code for staging file also
+* Error picture literal name removal
 
 2011-Mar-10
 * Added new setting: side bar search box
