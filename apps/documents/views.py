@@ -261,6 +261,7 @@ def document_view(request, document_id):
         {'label':_(u'File mime encoding'), 'field':'file_mime_encoding'},
         {'label':_(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
         {'label':_(u'Exists in storage'), 'field':'exists'},
+        {'label':_(u'File path in storage'), 'field':'file'},
         {'label':_(u'Date added'), 'field':lambda x: x.date_added.date()},
         {'label':_(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
         {'label':_(u'Checksum'), 'field':'checksum'},
