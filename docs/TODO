@@ -108,7 +108,9 @@ Documents
 * Improve doc page template/view
 * Document page edit view
 * Show all document's pages content combined
-* Create 'simple view' = stripped down document view for non technical users
+* Create 'simple view' document view for non technical users           - DONE
+* Unify document form classes
+* Use document preview code for staging file also
     
 Filesystem serving
 ==================
@@ -156,4 +158,6 @@ OCR
 * Don't allow duplicate documents in queues                            - STARTED
 * OCR queue schedule support
 * Make automatic OCR a function of OCR app and not of Documents app (via signals)
+* Two types of OCR nodes: thin, fat (thin = document file is passed serialize to node,
+    fat = has direct access to document storage read document file)
 

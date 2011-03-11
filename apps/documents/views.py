@@ -741,3 +741,77 @@ def document_clear_transformations(request, document_id):
         'title':_(u'Are you sure you with to clear all the page transformations for document: %s?') % document,
         'previous':previous,
     }, context_instance=RequestContext(request))
+
+from forms import DocumentContentForm
+
+def document_view_simple(request, document_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+            
+    document = get_object_or_404(Document, pk=document_id)
+    
+    content_form = DocumentContentForm(document=document)
+        
+    metadata_groups, errors = document.get_metadata_groups()
+    if (request.user.is_staff or request.user.is_superuser) and errors:
+        for error in errors:
+            messages.warning(request, _(u'Metadata group query error: %s' % error))
+
+    preview_form = DocumentPreviewForm(document=document, hide_detail_link=True)
+    form_list = [
+        {
+            'form':content_form,
+            'object':document,
+            'grid':6,
+        },
+        {
+            'form':preview_form,
+            'title':_(u'document preview'),
+            'object':document,
+            'grid':6,
+            'grid_clear':True,
+        },
+    ]
+    subtemplates_dict = [
+            {
+                'name':'generic_list_subtemplate.html',
+                'title':_(u'metadata'),
+                'object_list':document.documentmetadata_set.all(),
+                'extra_columns':[{'name':_(u'value'), 'attribute':'value'}],
+                'hide_link':True,
+            },
+        ]
+
+    sidebar_groups = []
+    for group, data in metadata_groups.items():
+        if len(data) or GROUP_SHOW_EMPTY:
+            if len(data):
+                if len(data) > GROUP_MAX_RESULTS:
+                    total_string = '(%s out of %s)' % (GROUP_MAX_RESULTS, len(data))
+                else:
+                    total_string = '(%s)' % len(data)
+            else:
+                total_string = ''
+              
+            extra_columns = [{'name':'current','attribute':lambda x:
+                    '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
+                    
+            if GROUP_SHOW_THUMBNAIL:
+                extra_columns.append({'name':_(u'thumbnail'), 'attribute': 
+                        lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
+                        reverse('document_thumbnail', args=[x.id]))})
+                
+            sidebar_groups.append({
+                'title':'%s %s' % (group.label, total_string),
+                'name':'generic_list_subtemplate.html',
+                'object_list':data[:GROUP_MAX_RESULTS],
+                'hide_columns':True,
+                'hide_header':True,
+                'extra_columns':extra_columns,
+                })
+            
+    return render_to_response('generic_detail.html', {
+        'form_list':form_list,
+        'object':document,
+        'subtemplates_dict':subtemplates_dict,
+        'sidebar_subtemplates_dict':sidebar_groups,
+    }, context_instance=RequestContext(request))

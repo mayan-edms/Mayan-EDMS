@@ -49,12 +49,11 @@ class DocumentPageForm(DetailForm):
         self.fields['page_image'].initial = self.instance
                     
     page_image = forms.CharField(widget=DocumentPageImageWidget())
-    
+
 
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
-
         page_count = value.documentpage_set.count()
         if page_count > 1:
             output.append('<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' % ugettext(u'Pages'))
@@ -71,13 +70,13 @@ class ImageWidget(forms.widgets.Widget):
                 })
 
         output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
+        if not self.attrs.get('hide_detail_link', False):
+            for document_page in value.documentpage_set.all():
+                output.append('<br/><a href="%(url)s"><span class="famfam active famfam-page_white"></span>%(text)s</a>' % {
+                    'page_number': document_page.page_number,
+                    'url':reverse('document_page_view', args=[document_page.id]),
+                    'text':ugettext(u'Page %s details') % document_page.page_number})
         
-        for document_page in value.documentpage_set.all():
-            output.append('<br/><a href="%(url)s"><span class="famfam active famfam-page_white"></span>%(text)s</a>' % {
-                'page_number': document_page.page_number,
-                'url':reverse('document_page_view', args=[document_page.id]),
-                'text':ugettext(u'Page %s details') % document_page.page_number})
-        #output.append(super(ImageWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))  
 
 
@@ -105,10 +104,23 @@ class DocumentForm(forms.ModelForm):
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('document', None)
+        self.hide_detail_link = kwargs.pop('hide_detail_link', False)
+
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = self.document
+        self.fields['preview'].widget.attrs['hide_detail_link']=self.hide_detail_link
                     
     preview = forms.CharField(widget=ImageWidget())
+
+
+class DocumentContentForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.document = kwargs.pop('document', None)
+        super(DocumentContentForm, self).__init__(*args, **kwargs)
+        page_break_template = u'\n\n\n------------------ %s ------------------\n\n\n' % _(u'page break')
+        self.fields['contents'].initial = page_break_template.join([page.content for page in self.document.documentpage_set.all() if page.content])
+        
+    contents = forms.CharField(label=_(u'Contents'), widget=forms.widgets.Textarea(attrs={'rows':24, 'cols':80}))
 
 
 class DocumentForm_view(DetailForm):

@@ -39,7 +39,8 @@ document_list = {'text':_(u'documents list'), 'view':'document_list', 'famfam':'
 document_create = {'text':_('upload a new document'), 'view':'document_create', 'famfam':'page_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
 document_create_multiple = {'text':_('upload multiple new documents'), 'view':'document_create_multiple', 'famfam':'page_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
 document_create_sibling = {'text':_('upload new document using same metadata'), 'view':'document_create_sibling', 'args':'object.id', 'famfam':'page_copy', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_CREATE]}}
-document_view = {'text':_('details'), 'view':'document_view', 'args':'object.id', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
+document_view = {'text':_('details (advanced)'), 'view':'document_view', 'args':'object.id', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
+document_view_simple = {'text':_('details (simple)'), 'view':'document_view_simple', 'args':'object.id', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_delete = {'text':_('delete'), 'view':'document_delete', 'args':'object.id', 'famfam':'page_delete', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DELETE]}}
 document_edit = {'text':_('edit'), 'view':'document_edit', 'args':'object.id', 'famfam':'page_edit', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_PROPERTIES_EDIT]}}
 document_edit_metadata = {'text':_('edit metadata'), 'view':'document_edit_metadata', 'args':'object.id', 'famfam':'page_edit', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_METADATA_EDIT]}}
@@ -59,7 +60,7 @@ document_page_go_back = {'text':_('return to document'), 'view':'document_view',
 staging_file_preview = {'text':_('preview'), 'class':'fancybox-noscaling', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':'object.id', 'famfam':'drive_delete'}
 
-register_links(Document, [document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations], menu_name='sidebar')
+register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations], menu_name='sidebar')
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:

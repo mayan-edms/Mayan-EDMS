@@ -98,7 +98,7 @@ class Document(models.Model):
         
     @models.permalink
     def get_absolute_url(self):
-        return ('document_view', [self.id])
+        return ('document_view_simple', [self.id])
 
 
     def update_checksum(self, save=True):
