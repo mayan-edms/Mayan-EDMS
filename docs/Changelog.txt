@@ -1,3 +1,6 @@
+2011-Mar-11
+* Don't allow duplicate documents in queues
+
 2011-Mar-10
 * Added new setting: side bar search box
 

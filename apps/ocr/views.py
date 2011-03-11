@@ -15,10 +15,11 @@ from documents.models import Document
 
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
     PERMISSION_OCR_QUEUE_ENABLE_DISABLE
-from models import DocumentQueue, QueueDocument, add_document_to_queue
+from models import DocumentQueue, QueueDocument
 from literals import QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_PROCESSING, QUEUEDOCUMENT_STATE_ERROR, \
     DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE
+from exceptions import AlreadyQueued
 
 
 def queue_document_list(request, queue_name='default'):
@@ -72,19 +73,30 @@ def queue_document_delete(request, queue_document_id):
         })
     
 
-
-def submit_document(request, document_id, queue_name='default'):
+def submit_document(request, document_id):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
         
     document = get_object_or_404(Document, pk=document_id)
+    return submit_document_to_queue(request, document=document, 
+        post_submit_redirect=request.META['HTTP_REFERER'])
+  
+
+def submit_document_to_queue(request, document, post_submit_redirect=None):
+    """This view is meant to be reusable"""
     
-    document_queue = get_object_or_404(DocumentQueue, name=queue_name)
-    add_document_to_queue(document, document_queue.name)
+    try:
+        document_queue = DocumentQueue.objects.queue_document(document)
+        messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
+            'document':document, 'queue':document_queue.label})
+    except AlreadyQueued:
+        messages.warning(request, _(u'Document: %(document)s is already queued.') % {
+        'document':document})
+    except Exception, e:
+        messages.error(request, e)
 
-    messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-        'document':document, 'queue':document_queue.label})
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])    
-
+    if post_submit_redirect:
+        return HttpResponseRedirect(post_submit_redirect)
+        
 
 def re_queue_document(request, queue_document_id):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])

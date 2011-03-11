@@ -1,0 +1,2 @@
+class AlreadyQueued(Exception):
+    pass

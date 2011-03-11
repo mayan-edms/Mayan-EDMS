@@ -8,14 +8,23 @@ from documents.models import Document
 from literals import DOCUMENTQUEUE_STATE_STOPPED,\
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING,\
     QUEUEDOCUMENT_STATE_CHOICES
+from exceptions import AlreadyQueued
 
-
-def add_document_to_queue(document, queue_name='default'):
-    document_queue = DocumentQueue.objects.get(name=queue_name)
-    queue_document = QueueDocument(document_queue=document_queue, document=document)
-    queue_document.save()
-    return document_queue
     
+class DocumentQueueManager(models.Manager):
+    def queue_document(self, document, queue_name='default'):
+        print 'self', self
+        print 'document', document
+        print 'queue_name', queue_name
+        document_queue = DocumentQueue.objects.get(name=queue_name)
+        if QueueDocument.objects.filter(document_queue=document_queue, document=document).count():
+            raise AlreadyQueued
+
+        queue_document = QueueDocument(document_queue=document_queue, document=document)
+        queue_document.save()    
+
+        return document_queue
+
 
 class DocumentQueue(models.Model):
     name = models.CharField(max_length=64, unique=True, verbose_name=_(u'name'))
@@ -25,17 +34,15 @@ class DocumentQueue(models.Model):
         default=DOCUMENTQUEUE_STATE_STOPPED,
         verbose_name=_(u'state'))
     
+    objects = DocumentQueueManager()
+    
     class Meta:
         verbose_name = _(u'document queue')
         verbose_name_plural = _(u'document queues')
 
     def __unicode__(self):
         return self.label
-
-    def add_document(self, document):
-        queue_document = QueueDocument(document_queue=self, document=document)
-        queue_document.save()
-        
+       
 
 class QueueDocument(models.Model):
     document_queue = models.ForeignKey(DocumentQueue, verbose_name=_(u'document queue'))

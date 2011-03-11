@@ -22,9 +22,8 @@ from converter import TRANFORMATION_CHOICES
 from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
-from ocr.models import add_document_to_queue
 from permissions.api import check_permissions
-
+from ocr.views import submit_document_to_queue
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -107,9 +106,7 @@ def document_create_sibling(request, document_id, multiple=True):
 
 def _handle_save_document(request, document, form=None):
     if AUTOMATIC_OCR:
-        document_queue = add_document_to_queue(document)
-        messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-            'document':document, 'queue':document_queue.label})
+        submit_document_to_queue(request, document)
     
     if form and 'document_type_available_filenames' in form.cleaned_data:
         if form.cleaned_data['document_type_available_filenames']:
