@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-05 19:34-0400\n"
-"PO-Revision-Date: 2011-03-05 19:35\n"
+"POT-Creation-Date: 2011-03-11 14:26-0400\n"
+"PO-Revision-Date: 2011-03-11 14:27\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,25 +19,29 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:10 views.py:80
+#: __init__.py:13 views.py:80
 msgid "settings"
 msgstr "configuración"
 
-#: __init__.py:14
+#: __init__.py:16
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:16
+#: __init__.py:17
 msgid "tools"
 msgstr "herramientas"
 
-#: __init__.py:20
+#: __init__.py:21
 msgid "setup"
 msgstr "instalación"
 
-#: __init__.py:24
+#: __init__.py:26
 msgid "about"
 msgstr "acerca"
+
+#: __init__.py:30
+msgid "search"
+msgstr "búsqueda"
 
 #: views.py:85
 msgid "name"
@@ -83,48 +87,52 @@ msgstr "Acerca de este programa"
 msgid "Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities"
 msgstr "Gestor documental de código abierto, basado en Django con indexación de metadatos personalizados, integración de servicio de archivos y capacidades de OCR"
 
-#: templates/base.html:65
+#: templates/base.html:67
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:67
+#: templates/base.html:69
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:71
+#: templates/base.html:73
 msgid "New password"
 msgstr "Nueva contraseña"
 
-#: templates/base.html:76
+#: templates/base.html:78
 msgid "Admin site"
 msgstr "Sitio administrativo"
 
-#: templates/base.html:87
+#: templates/base.html:82
+msgid "Sentry"
+msgstr "Sentry"
+
+#: templates/base.html:94
 msgid "Go"
 msgstr "Ir"
 
-#: templates/base.html:91
+#: templates/base.html:99
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:91
+#: templates/base.html:99
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:120
+#: templates/base.html:135
 #, python-format
 msgid "Actions for %(object_name)s: %(object)s"
 msgstr "Acciones para %(object_name)s: %(object)s "
 
-#: templates/base.html:122
+#: templates/base.html:137
 #, python-format
 msgid "Actions for: %(object)s"
 msgstr "Acciones para: %(object)s "
 
-#: templates/base.html:125
+#: templates/base.html:140
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:138
+#: templates/base.html:153
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"

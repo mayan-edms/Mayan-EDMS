@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-05 19:15-0400\n"
-"PO-Revision-Date: 2011-03-05 19:16\n"
+"POT-Creation-Date: 2011-03-11 14:18-0400\n"
+"PO-Revision-Date: 2011-03-11 14:19\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:41
+#: forms.py:42
 msgid "None"
 msgstr "Ninguno"
 
@@ -31,13 +31,17 @@ msgstr "Su contraseña se ha modificado correctamente."
 msgid "Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp()"
 msgstr "Directorio temporal utilizado por todo el sitio para almacenar imágenes en miniatura, vistas previas y los archivos temporales. Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp ()"
 
-#: templates/404.html:3
+#: templates/403.html:3 templates/403.html.py:7
+msgid "Insufficient permissions"
+msgstr "Permisos insuficientes"
+
+#: templates/403.html:9
+msgid "You don't have enough permissions for this operation."
+msgstr "No tiene suficientes permisos para esta operación."
+
+#: templates/404.html:3 templates/404.html.py:7
 msgid "Page not found"
 msgstr "Página no encontrada"
-
-#: templates/404.html:7
-msgid "Page not found or insufficient permissions."
-msgstr "Página no encontrada o permisos insuficientes."
 
 #: templates/404.html:9
 msgid "Sorry, but the requested page could not be found."
@@ -124,21 +128,21 @@ msgstr "Cancelar"
 msgid "List of %(title)s"
 msgstr "Lista de %(title)s "
 
-#: templates/generic_list_subtemplate.html:18
+#: templates/generic_list_subtemplate.html:19
 #, python-format
 msgid "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of %(total_pages)s)"
 msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
-#: templates/generic_list_subtemplate.html:20
+#: templates/generic_list_subtemplate.html:21
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr "Lista de %(title)s (%(total)s)"
 
-#: templates/generic_list_subtemplate.html:33
+#: templates/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/generic_list_subtemplate.html:72
+#: templates/generic_list_subtemplate.html:79
 #, python-format
 msgid "There are no %(title)s"
 msgstr "No hay %(title)s "

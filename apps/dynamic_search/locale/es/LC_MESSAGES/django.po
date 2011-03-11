@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 09:18-0400\n"
-"PO-Revision-Date: 2011-02-10 09:18\n"
-"Last-Translator: <admin@admin.com>\n"
+"POT-Creation-Date: 2011-03-11 14:25-0400\n"
+"PO-Revision-Date: 2011-03-11 14:26\n"
+"Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,30 +19,44 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:5
-msgid "search"
-msgstr "búsqueda"
-
 #: forms.py:6
 msgid "Search term"
 msgstr "Término de búsqueda"
 
-#: views.py:77
-msgid "Search"
-msgstr "Búsqueda"
+#: views.py:23
+#, python-format
+msgid "results with: %(query_string)s (showing only %(shown_result_count)s out of %(total_result_count)s)"
+msgstr "resultados con: %(query_string)s  (mostrando solamente %(shown_result_count)s de %(total_result_count)s)"
 
-#: views.py:78
-msgid "type"
-msgstr "tipo"
-
-#: views.py:79
+#: views.py:27
 #, python-format
 msgid "results with: %s"
 msgstr "resultados con: %s"
 
+#: views.py:39
+#, python-format
+msgid "Search error: %s"
+msgstr "Error de búsqueda: %s"
+
+#: views.py:44 templatetags/search_tags.py:18
+msgid "Search"
+msgstr "Búsqueda"
+
+#: views.py:50
+msgid "type"
+msgstr "tipo"
+
 #: templates/search_results.html:3
 msgid "Search results"
 msgstr "Resultados de la búsqueda"
+
+#: templates/search_results.html:17
+#, python-format
+msgid "Elapsed time: %(time_delta)s seconds"
+msgstr "Tiempo transcurrido: %(time_delta)s segundos"
+
+#~ msgid "search"
+#~ msgstr "búsqueda"
 
 #~ msgid "No results found"
 #~ msgstr "No hay resultados"

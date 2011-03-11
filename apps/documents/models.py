@@ -325,7 +325,7 @@ class MetadataGroupItem(models.Model):
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'), help_text=_(u'This represents the metadata of all other documents.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
     expression = models.CharField(max_length=128,
-        verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current seleted document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
+        verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
     negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     

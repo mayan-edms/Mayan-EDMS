@@ -20,7 +20,9 @@ def results(request, form=None):
         try:
             model_list, flat_list, shown_result_count, total_result_count, elapsed_time = perform_search(query_string)
             if shown_result_count != total_result_count:
-                title = _(u'results with: %s (showing only %s out of %s)') % (query_string, shown_result_count, total_result_count)
+                title = _(u'results with: %(query_string)s (showing only %(shown_result_count)s out of %(total_result_count)s)') % {
+                    'query_string':query_string, 'shown_result_count':shown_result_count,
+                    'total_result_count':total_result_count}
             else:
                 title = _(u'results with: %s') % query_string
             context.update({
