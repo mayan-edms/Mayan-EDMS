@@ -97,7 +97,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'common.middleware.login_required_middleware.LoginRequiredMiddleware',
     'pagination.middleware.PaginationMiddleware',
-    'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
+    #'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'permissions.middleware.permissiondeniedmiddleware.PermissionDeniedMiddleware',
 )
 
