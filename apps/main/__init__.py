@@ -2,7 +2,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.api import register_menu
 
-from permissions import role_list
+#from permissions import role_list
+#TODO: Disabled until issue #4 is fixed
 
 from documents import document_find_all_duplicates
 from filesystem_serving import filesystem_serving_recreate_all_links
@@ -18,7 +19,8 @@ main_menu = [
         ],'famfam':'wrench', 'name':'tools','position':7},
 
     {'text':_(u'setup'), 'view':'check_settings', 'links': [
-        check_settings, role_list
+        check_settings#, role_list
+        #TODO: Disabled until issue #4 is fixed
         ],'famfam':'cog', 'name':'setup','position':8},
 
     {'text':_(u'about'), 'view':'about', 'position':9},
