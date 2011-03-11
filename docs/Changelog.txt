@@ -5,6 +5,8 @@
 * Created 'simple document' for non technical users with all of a document pages content
 * Use document preview code for staging file also
 * Error picture literal name removal
+* Spanish translation updates
+* Show document file path in regards of its storage
 
 2011-Mar-10
 * Added new setting: side bar search box
