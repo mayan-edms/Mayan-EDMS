@@ -107,7 +107,7 @@ def execute_identify(input_filepath, arguments):
     return_code = proc.wait()
     if return_code != 0:
         raise IdentifyError(proc.stderr.readline())
-    return stdout
+    return proc.stdout.read()
         
 def cache_cleanup(input_filepath, size, page=0, format='jpg'):
     filepath = create_image_cache_filename(input_filepath, size, page, format)
@@ -171,7 +171,8 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
 def get_page_count(input_filepath):
     try:
         return int(execute_identify(input_filepath, '-format %n'))
-    except:
+    except Exception, e:
+        print 'exception', e
         #TODO: send to other page number identifying program
         return 1
 
