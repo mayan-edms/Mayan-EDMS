@@ -1,20 +1,22 @@
 import os
 from datetime import datetime
 import sys
-from python_magic import magic
+import tempfile
 
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
 
+from python_magic import magic
+
 from dynamic_search.api import register
+from converter.api import get_page_count
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
-from documents.conf.settings import PAGE_COUNT_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
@@ -118,12 +120,22 @@ class Document(models.Model):
             if save:
                 self.save()
 
-    
+  
     def update_page_count(self, save=True):
-        total_pages = PAGE_COUNT_FUNCTION(self)
+        handle, filepath = tempfile.mkstemp()
+        self.save_to_file(filepath)
+        total_pages = get_page_count(filepath)
+        
         for page_number in range(total_pages):
             document_page, created = DocumentPage.objects.get_or_create(
                 document=self, page_number=page_number+1)
+
+        os.close(handle)
+        try:
+            os.remove(filepath)
+        except OSError:
+            pass
+
         if save:
             self.save()
 

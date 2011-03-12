@@ -1,13 +1,10 @@
 import datetime
 import hashlib
 import uuid
-import tempfile
 
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-
-from converter.api import get_page_count
 
 from storage.backends.filebasedstorage import FileBasedStorage
 
@@ -40,7 +37,6 @@ UNCOMPRESS_COMPRESSED_STAGING_FILES = getattr(settings, 'DOCUMENTS_UNCOMPRESS_CO
 # Saving
 CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', lambda x: hashlib.sha256(x).hexdigest())
 UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNCTION', lambda:unicode(uuid.uuid4()))
-PAGE_COUNT_FUNCTION = getattr(settings, 'DOCUMENTS_PAGE_COUNT_FUNCTION', lambda x: get_page_count(x.save_to_file(tempfile.mkstemp()[1])))
 
 # Storage
 STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', FileBasedStorage)
