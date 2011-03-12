@@ -172,7 +172,6 @@ def get_page_count(input_filepath):
     try:
         return int(execute_identify(input_filepath, '-format %n'))
     except Exception, e:
-        print 'exception', e
         #TODO: send to other page number identifying program
         return 1
 
