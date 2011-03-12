@@ -112,6 +112,7 @@ def document_create_sibling(request, document_id, multiple=True):
 
 
 def _handle_save_document(request, document, form=None):
+    #TODO: move this to OCR app as a post_save signal on create==True
     if AUTOMATIC_OCR:
         submit_document_to_queue(request, document)
     
@@ -128,7 +129,6 @@ def _handle_save_document(request, document, form=None):
                 messages.warning(request, warning)        
     except Exception, e:
         messages.error(request, e)
-
 
 
 def _handle_zip_file(request, uploaded_file, document_type):
