@@ -11,11 +11,13 @@ from documents.conf import settings as documents_settings
 from converter.conf import settings as converter_settings
 from ocr.conf import settings as ocr_settings
 from filesystem_serving.conf import settings as filesystem_serving_settings
+from dynamic_search.conf import settings as search_settings
 
 
 def home(request):
     return render_to_response('home.html', {},
     context_instance=RequestContext(request))
+
 
 def check_settings(request):
     settings = [
@@ -31,6 +33,7 @@ def check_settings(request):
         {'name':'DOCUMENTS_PREVIEW_SIZE', 'value':documents_settings.PREVIEW_SIZE},
         {'name':'DOCUMENTS_THUMBNAIL_SIZE', 'value':documents_settings.THUMBNAIL_SIZE},
         {'name':'DOCUMENTS_DISPLAY_SIZE', 'value':documents_settings.DISPLAY_SIZE},
+        {'name':'DOCUMENTS_TRANFORMATION_PREVIEW_SIZE', 'value':documents_settings.TRANFORMATION_PREVIEW_SIZE},
         {'name':'DOCUMENTS_AUTOMATIC_OCR', 'value':documents_settings.AUTOMATIC_OCR},
         {'name':'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value':documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
         {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
@@ -49,13 +52,12 @@ def check_settings(request):
         {'name':'FILESYSTEM_SLUGIFY_PATHS', 'value':filesystem_serving_settings.SLUGIFY_PATHS},
         {'name':'FILESYSTEM_MAX_RENAME_COUNT', 'value':filesystem_serving_settings.MAX_RENAME_COUNT},
         
-        
-        #Common
+        # Common
         {'name':'COMMON_TEMPORARY_DIRECTORY',
             'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True,
             'description':common_settings.setting_description},
 
-        #Converter
+        # Converter
         {'name':'CONVERTER_CONVERT_PATH',
             'value':converter_settings.CONVERT_PATH, 'exists':True,
             'description':converter_settings.setting_description},
@@ -70,10 +72,14 @@ def check_settings(request):
         {'name':'CONVERTER_LOW_QUALITY_OPTIONS', 'value':converter_settings.LOW_QUALITY_OPTIONS},
         {'name':'CONVERTER_HIGH_QUALITY_OPTIONS', 'value':converter_settings.HIGH_QUALITY_OPTIONS},
 
-        #ocr
+        # OCR
         {'name':'OCR_TESSERACT_PATH', 'value':ocr_settings.TESSERACT_PATH, 'exists':True},
         {'name':'OCR_TESSERACT_LANGUAGE', 'value':ocr_settings.TESSERACT_LANGUAGE},
         {'name':'OCR_MAX_CONCURRENT_EXECUTION', 'value':ocr_settings.MAX_CONCURRENT_EXECUTION},
+        
+        
+        # Search
+        {'name':'SEARCH_LIMIT', 'value':search_settings.LIMIT},
     ]
     
     context={
