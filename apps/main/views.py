@@ -103,9 +103,9 @@ def _return_type(value):
     if isinstance(value, types.FunctionType):
         return _(u'function found')
     elif isinstance(value, types.ClassType):
-        return _(u'class found')
+        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
     elif isinstance(value, types.TypeType):
-        return _(u'class found')
+        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
     elif isinstance(value, types.DictType) or isinstance(value, types.DictionaryType):
         return ','.join(list(value))
     else:
