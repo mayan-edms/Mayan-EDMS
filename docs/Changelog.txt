@@ -1,3 +1,9 @@
+2011-Mar-12
+* Plugged another file descriptor leak
+* Show class name in config settings view
+* Added missing config option from the setup menu
+* Close file descriptor to avoid leaks
+
 2011-Mar-11
 * Don't allow duplicate documents in queues
 * Don't raise PermissionDenied exception in PermissionDenied middleware, even while debugging
