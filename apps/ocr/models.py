@@ -13,9 +13,6 @@ from exceptions import AlreadyQueued
     
 class DocumentQueueManager(models.Manager):
     def queue_document(self, document, queue_name='default'):
-        print 'self', self
-        print 'document', document
-        print 'queue_name', queue_name
         document_queue = DocumentQueue.objects.get(name=queue_name)
         if QueueDocument.objects.filter(document_queue=document_queue, document=document).count():
             raise AlreadyQueued
