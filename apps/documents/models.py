@@ -62,15 +62,18 @@ class Document(models.Model):
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)
     
-    
+
     def save(self, *args, **kwargs):
-        internal_save = kwargs.pop('internal_save', False)
+        new_document = not self.pk
+
         super(Document, self).save(*args, **kwargs)
-        if not internal_save:
+
+        if new_document:
+            #Only do this for new documents
             self.update_checksum(save=False)
             self.update_mimetype(save=False)
+            self.save()
             self.update_page_count(save=False)
-            self.save(internal_save=True)
             self.apply_default_transformations()
 
       
@@ -79,17 +82,23 @@ class Document(models.Model):
 
         
     def update_mimetype(self, save=True):
-        try:
-            mime = magic.Magic(mime=True)
-            self.file_mimetype = mime.from_buffer(self.open().read())
-            mime_encoding = magic.Magic(mime_encoding=True)
-            self.file_mime_encoding = mime_encoding.from_buffer(self.open().read())
-        except:
-            self.file_mimetype = u'unknown'
-            self.file_mime_encoding = u'unknown'
-        finally:
-            if save:
-                self.save()
+        if self.exists():
+            try:
+                source = self.open()
+                mime = magic.Magic(mime=True)
+                self.file_mimetype = mime.from_buffer(source.read())
+                source.seek(0)
+                mime_encoding = magic.Magic(mime_encoding=True)
+                self.file_mime_encoding = mime_encoding.from_buffer(source.read())
+            except:
+                #TODO: Should this be 'unknown' or simply ''?
+                self.file_mimetype = u'unknown'
+                self.file_mime_encoding = u'unknown'
+            finally:
+                if source:
+                    source.close()
+                if save:
+                    self.save()
       
       
     def open(self):
@@ -103,7 +112,9 @@ class Document(models.Model):
 
     def update_checksum(self, save=True):
         if self.exists():
-            self.checksum = unicode(CHECKSUM_FUNCTION(self.open().read()))
+            source = self.open()
+            self.checksum = unicode(CHECKSUM_FUNCTION(source.read()))
+            source.close()
             if save:
                 self.save()
 
@@ -128,6 +139,7 @@ class Document(models.Model):
                 break
     
         output_descriptor.close()
+        input_descriptor.close()
         return filepath       
        
    
