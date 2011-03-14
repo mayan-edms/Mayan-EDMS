@@ -111,7 +111,7 @@ Documents
 * Create 'simple view' document view for non technical users           - DONE
 * Unify document form classes
 * Use document preview code for staging file also                      - DONE
-* Delete physical file on delete method
+* Delete physical file on delete method                                - DEFFERED (Not needed until Django 1.3)
     
 Filesystem serving
 ==================
@@ -126,6 +126,7 @@ Search
 * Cross model inclusion search                                         - DONE
 * Separate view code from search code                                  - DONE
 * New results only view                                                - DONE
+* Date search support
 
 Convert
 =======
@@ -140,6 +141,7 @@ Storage
 =======
 * Storage backend to storage backend copy support, to move/migrate document to new storage backend
 * Encrypting storage backend
+    Middleware storage that calls final storage backend, http://www.freenet.org.nz/ezPyCrypto/
 
 GridFSStorage
 =============
