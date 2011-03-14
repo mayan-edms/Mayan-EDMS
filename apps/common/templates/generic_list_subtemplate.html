@@ -30,6 +30,9 @@
     <tbody>
       {% if not hide_header %}
           <tr>
+            {% if multi_select %}
+                <th class="first"><input type="checkbox" class="checkbox toggle" /></th>
+            {% endif %}
             {% if not hide_object %}
                 <th>{% trans "Identifier" %}</th>
             {% endif %}
@@ -46,6 +49,9 @@
       {% endif %}
         {% for object in object_list %}
             <tr class="{% cycle 'odd' 'even2' %}">
+            {% if multi_select %}    
+                <td><input type="checkbox" class="checkbox" name="id" value="1" /></td>            
+            {% endif %}
             {% if not hide_object %}
                 {% if main_object %}
                     {% with object|object_property:main_object as object %}
