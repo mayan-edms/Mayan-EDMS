@@ -8,7 +8,8 @@
 
 {% block html_title %}{% project_name %}{% block title %}{% endblock %}{% endblock %}
 
-{% block web_theme_project_name %}{% project_name %}{% endblock %}
+{% get_main_setting "SIDE_BAR_SEARCH" as debug %}
+{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG Mode)" %} {% endif %}{% endblock %}
 
 {% block web_theme_stylesheets %}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/override.css" type="text/css" media="screen" />
