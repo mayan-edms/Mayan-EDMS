@@ -267,7 +267,11 @@ CELERYBEAT_SCHEDULER='djcelery.schedulers.DatabaseScheduler'
 try:
     from settings_local import *
 except ImportError:
-    pass
+    import sys, traceback
+    sys.stderr.write("Can't find 'setttings_local.py'\n")
+    sys.stderr.write("\nThe exception was: \n\n")
+    traceback.print_exc()
+    #pass
 
 
 if DEVELOPMENT:
