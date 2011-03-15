@@ -7,8 +7,10 @@ from django.core.urlresolvers import RegexURLResolver, RegexURLPattern, Resolver
 from django.template import TemplateSyntaxError, Library, \
                             VariableDoesNotExist, Node, Variable
 from django.utils.text import unescape_string_literal
+from django.utils.translation import ugettext as _
 
 from common.api import object_navigation, menu_links as menu_navigation
+from common.forms import MultiItemForm
 
 register = Library()
 
@@ -234,3 +236,12 @@ def object_navigation_template(context):
     return new_context
 register.inclusion_tag('generic_navigation.html', takes_context=True)(object_navigation_template)
  
+ 
+def get_multi_item_links_form(context):
+    new_context = copy.copy(context)
+    new_context.update({
+        'form':MultiItemForm(),
+        'title':_(u'Selected item actions:')
+    })
+    return new_context
+register.inclusion_tag('generic_form_subtemplate.html', takes_context=True)(get_multi_item_links_form)

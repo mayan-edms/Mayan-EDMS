@@ -754,7 +754,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
                 for transformation in document_page.documentpagetransformation_set.all():
                     transformation.delete()
 
-        if len(documents) == 1:        
+        if len(documents) == 1:
             messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % documents)
         elif len(documents) > 1:
             messages.success(request, _(u'All the page transformations for the documents: %s, have been deleted successfully.') % documents)

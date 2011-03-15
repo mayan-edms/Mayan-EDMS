@@ -4,8 +4,14 @@ from django.db.utils import DatabaseError
 
 
 object_navigation = {}
+multi_object_navigation = {}
 menu_links = []
 model_list_columns = {}
+
+
+
+def register_multi_item_links(src, links, menu_name=None):
+    pass
 
 def register_links(src, links, menu_name=None):
     if menu_name in object_navigation:
