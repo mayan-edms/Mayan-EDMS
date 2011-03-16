@@ -6,6 +6,10 @@ from django.conf import settings
 
 
 from common.utils import return_attrib
+
+
+class MultiItemForm(forms.Form):
+    action = forms.ChoiceField()
            
 
 class DetailSelectMultiple(forms.widgets.SelectMultiple):

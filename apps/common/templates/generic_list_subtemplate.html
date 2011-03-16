@@ -25,7 +25,7 @@
 <div class="inner">
 {% endif %}
 
-  <form action="#" class="form">
+  <form action="#" class="form" method="">
     <table class="table">
     <tbody>
       {% if not hide_header %}
@@ -50,7 +50,7 @@
         {% for object in object_list %}
             <tr class="{% cycle 'odd' 'even2' %}">
             {% if multi_select %}    
-                <td><input type="checkbox" class="checkbox" name="id" value="1" /></td>            
+                <td><input type="checkbox" class="checkbox" name="id" value="{{ object.pk }}" /></td>            
             {% endif %}
             {% if not hide_object %}
                 {% if main_object %}
@@ -86,7 +86,10 @@
         {% endfor %}
         </tbody>
     </table>
-    {% paginate %}          
+    {% if multi_select %}
+        {% get_multi_item_links_form %}
+    {% endif %}    
+    {% paginate %}
   </form>
 </div>
 </div>
