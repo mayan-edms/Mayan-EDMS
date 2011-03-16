@@ -22,6 +22,15 @@ from literals import QUEUEDOCUMENT_STATE_PENDING, \
 from exceptions import AlreadyQueued
 
 
+def _display_thumbnail(ocr_document):
+    try:
+        preview_url = reverse('document_preview', args=[ocr_document.document.pk])
+        thumbnail_url = reverse('document_thumbnail', args=[ocr_document.document.pk])
+        return u'<a class="fancybox" href="%s"><img src="%s" /></a>' % (preview_url, thumbnail_url)
+    except:
+        return u''
+
+
 def queue_document_list(request, queue_name='default'):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
         
@@ -38,10 +47,7 @@ def queue_document_list(request, queue_name='default'):
             'object_name':_(u'document queue'),
             'extra_columns':[
                 {'name':'document', 'attribute': lambda x: '<a href="%s">%s</a>' % (x.document.get_absolute_url(), x.document) if hasattr(x, 'document') else _(u'Missing document.')},
-                {'name':_(u'thumbnail'), 'attribute': 
-                    lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.document.id]),
-                        reverse('document_thumbnail', args=[x.document.id]))
-                },                
+                {'name':_(u'thumbnail'), 'attribute': lambda x: _display_thumbnail(x) },                
                 {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0], 'keep_together':True},
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
                 {'name':'result', 'attribute':'result'},
