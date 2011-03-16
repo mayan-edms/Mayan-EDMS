@@ -50,3 +50,9 @@
         
     - Filesystem metadata indexing will not work with this storage backend as
         file are inside a MongoDB database and can't be linked (at least for now)
+
+* Site search is slow
+    - Add indexes to the following fields:
+        documents_document - description, recomended size: 160
+        documents_documentmetadata - value, recomended size: 80
+        documents_documentpage - content, recomended size: 3000
