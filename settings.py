@@ -293,7 +293,7 @@ if DEVELOPMENT:
 
     try:
         import debug_toolbar
-        #INSTALLED_APPS.append('debug_toolbar')
+        #INSTALLED_APPS +=('debug_toolbar',)
     except ImportError:
         #print 'debug_toolbar is not installed'
         pass
@@ -302,7 +302,7 @@ if DEVELOPMENT:
 
     WSGI_AUTO_RELOAD = True
     if 'debug_toolbar' in INSTALLED_APPS:
-        MIDDLEWARE_CLASSES.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+        MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
         DEBUG_TOOLBAR_CONFIG={
             'INTERCEPT_REDIRECTS' : False,
         }
