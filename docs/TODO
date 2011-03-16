@@ -47,6 +47,11 @@ TODO, WISHLIST
 * Show current page in generic list template                           - DONE
 * Enable/disable ocr queue view & links                                - DONE
 
+* Receive documents via email
+* Mobile version
+* Exif to metadata convertion
+* Extract nagivation code into new navigation app
+* External portal using sites contrib app
 
 Main
 ====
@@ -112,9 +117,6 @@ Documents
 * Unify document form classes
 * Use document preview code for staging file also                      - DONE
 * Delete physical file on delete method                                - DEFFERED (Not needed until Django 1.3)
-* Receive documents via email
-* Mobile version
-* Exif to metadata convertion
     
 Filesystem serving
 ==================
