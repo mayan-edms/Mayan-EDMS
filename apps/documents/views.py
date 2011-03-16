@@ -70,7 +70,7 @@ def document_list(request):
             
     return object_list(
         request,
-        queryset=Document.objects.only('file_filename', 'file_filename', 'file_extension').all(),
+        queryset=Document.objects.only('file_filename', 'file_extension').all(),
         template_name='generic_list.html',
         extra_context={
             'title':_(u'documents'),

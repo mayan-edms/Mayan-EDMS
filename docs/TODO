@@ -173,3 +173,4 @@ OCR
 * Support ocropus
 * Support cuneiform
 * Implement StringIO
+* Add storage replication delay setting
