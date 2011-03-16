@@ -44,7 +44,7 @@ class DocumentQueue(models.Model):
 class QueueDocument(models.Model):
     document_queue = models.ForeignKey(DocumentQueue, verbose_name=_(u'document queue'))
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    datetime_submitted = models.DateTimeField(verbose_name=_(u'date time submitted'), auto_now_add=True)
+    datetime_submitted = models.DateTimeField(verbose_name=_(u'date time submitted'), auto_now_add=True, db_index=True)
     state = models.CharField(max_length=4,
         choices=QUEUEDOCUMENT_STATE_CHOICES,
         default=QUEUEDOCUMENT_STATE_PENDING,
