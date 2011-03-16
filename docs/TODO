@@ -112,6 +112,10 @@ Documents
 * Unify document form classes
 * Use document preview code for staging file also                      - DONE
 * Delete physical file on delete method                                - DEFFERED (Not needed until Django 1.3)
+
+* Receive documents via email
+* Mobile version
+* Exif to metadata convertion
     
 Filesystem serving
 ==================
@@ -136,6 +140,7 @@ Convert
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Support spreadsheets, wordprocessing docs using openoffice in server mode
 * Cache.cleanup function to delete cached images when document hash changes
+* Support ExactImage
 
 Storage
 =======
@@ -164,4 +169,6 @@ OCR
 * Two types of OCR nodes: thin, fat (thin = document file is passed serialize to node,
     fat = has direct access to document storage read document file)
 * Move document in queue (up, down, top, bottom)
-
+* Support ocropus
+* Support cuneiform
+* Implement StringIO
