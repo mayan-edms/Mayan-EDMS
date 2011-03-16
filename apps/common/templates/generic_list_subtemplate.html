@@ -62,9 +62,11 @@
             {% endif %}
                 {% for column in extra_columns %}
                     {% if column.keep_together %}
-                        <div class="nowrap" style="word-wrap:  normal">
-                            <td>{{ object|object_property:column.attribute|safe|make_non_breakable }}</td>
-                        </div>
+                        <td>
+                            <span class="nowrap" style="word-wrap: normal">
+                                {{ object|object_property:column.attribute|safe|make_non_breakable }}
+                            </span>
+                        </td>
                     {% else %}
                         <td>{{ object|object_property:column.attribute|safe }}</td>
                     {% endif %}
