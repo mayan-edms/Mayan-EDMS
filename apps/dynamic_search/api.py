@@ -84,7 +84,7 @@ def perform_search(query_string):
                     model_result_ids &= single_result_ids
                 
             result_count += len(model_result_ids)
-            results = model.objects.filter(pk__in=model_result_ids)[:LIMIT]
+            results = model.objects.filter(pk__in=list(model_result_ids)[:LIMIT])[:LIMIT]
             shown_result_count += results.count()                
             if results:
                 model_list[data['text']] = results

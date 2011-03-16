@@ -12,5 +12,9 @@ def object_property(value, arg):
     return return_attrib(value, arg)
     
 @register.filter
-def get_model_list_columns(value):
-    return model_list_columns.get(type(value), [])
+def get_model_list_columns(obj):
+    for key, value in model_list_columns.items():
+        if isinstance(obj, key):
+            return value
+
+    return []

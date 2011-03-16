@@ -48,12 +48,12 @@ class Document(models.Model):
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
     file_mime_encoding = models.CharField(max_length=64, default='', editable=False)
     #FAT filename can be up to 255 using LFN
-    file_filename = models.CharField(max_length=255, default='', editable=False)
-    file_extension = models.CharField(max_length=16, default='', editable=False)
-    date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True)
+    file_filename = models.CharField(max_length=255, default='', editable=False, db_index=True)
+    file_extension = models.CharField(max_length=16, default='', editable=False, db_index=True)
+    date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True, db_index=True)
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
-    description = models.TextField(blank=True, null=True, verbose_name=_(u'description'))
+    description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
     
     class Meta:
         verbose_name = _(u'document')
@@ -264,7 +264,7 @@ class MetadataIndex(models.Model):
 class DocumentMetadata(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'))
+    value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'), db_index=True)
  
     def __unicode__(self):
         return unicode(self.metadata_type)
@@ -276,7 +276,7 @@ class DocumentMetadata(models.Model):
 
 class DocumentTypeFilename(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    filename = models.CharField(max_length=128, verbose_name=_(u'filename'))
+    filename = models.CharField(max_length=128, verbose_name=_(u'filename'), db_index=True)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     
     def __unicode__(self):
@@ -290,7 +290,7 @@ class DocumentTypeFilename(models.Model):
 
 class DocumentPage(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    content = models.TextField(blank=True, null=True, verbose_name=_(u'content'))
+    content = models.TextField(blank=True, null=True, verbose_name=_(u'content'), db_index=True)
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'))
         
@@ -366,7 +366,7 @@ available_transformations = ([(name, data['label']) for name, data in AVAILABLE_
     
 class DocumentPageTransformation(models.Model):
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
-    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'))
+    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
     transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
 
