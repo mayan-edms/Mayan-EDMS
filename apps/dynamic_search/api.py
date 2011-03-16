@@ -84,8 +84,10 @@ def perform_search(query_string):
                     model_result_ids &= single_result_ids
                 
             result_count += len(model_result_ids)
-            results = model.objects.filter(pk__in=list(model_result_ids)[:LIMIT])[:LIMIT]
-            shown_result_count += results.count()                
+            #results = model.objects.filter(pk__in=list(model_result_ids)[:LIMIT])
+            results = model.objects.only('file_filename', 'file_extension').in_bulk(list(model_result_ids)[:LIMIT]).values()
+            #shown_result_count += results.count()                
+            shown_result_count += len(results)#.count()                
             if results:
                 model_list[data['text']] = results
                 for result in results:
