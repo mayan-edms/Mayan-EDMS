@@ -26,7 +26,7 @@ def _display_thumbnail(ocr_document):
     try:
         preview_url = reverse('document_preview', args=[ocr_document.document.pk])
         thumbnail_url = reverse('document_thumbnail', args=[ocr_document.document.pk])
-        return u'<a class="fancybox" href="%s"><img src="%s" /></a>' % (preview_url, thumbnail_url)
+        return u'<a class="fancybox" href="%s"><img src="%s" alt="%s" /></a>' % (preview_url, thumbnail_url, _(u'thumbnail'))
     except:
         return u''
 
