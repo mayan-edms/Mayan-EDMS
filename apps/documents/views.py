@@ -744,6 +744,9 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
         post_redirect = None
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
@@ -755,16 +758,15 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
                     transformation.delete()
 
         if len(documents) == 1:
-            messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % documents)
+            messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % ', '.join([unicode(d) for d in documents]))
         elif len(documents) > 1:
-            messages.success(request, _(u'All the page transformations for the documents: %s, have been deleted successfully.') % documents)
+            messages.success(request, _(u'All the page transformations for the documents: %s, have been deleted successfully.') % ', '.join([unicode(d) for d in documents]))
             
-        return HttpResponseRedirect(next)#reverse('document_view', args=[document.pk]))
+        return HttpResponseRedirect(next)
         
     context = {
         'object_name':_(u'document transformation'),
         'delete_view':True,
-        #'object':document,
         'previous':previous,
         'next':next,
     }
@@ -778,6 +780,10 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
+
+
+def document_multiple_clear_transformations(request):
+    return document_clear_transformations(request, document_id_list=request.GET.get('id_list', []))
 
 
 def document_view_simple(request, document_id):

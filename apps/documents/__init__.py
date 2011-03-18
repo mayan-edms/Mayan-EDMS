@@ -49,6 +49,7 @@ document_download = {'text':_('download'), 'view':'document_download', 'args':'o
 document_find_duplicates = {'text':_('find duplicates'), 'view':'document_find_duplicates', 'args':'object.id', 'famfam':'page_refresh', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_find_all_duplicates = {'text':_('find all duplicates'), 'view':'document_find_all_duplicates', 'famfam':'page_refresh', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_clear_transformations = {'text':_('clear all transformations'), 'view':'document_clear_transformations', 'args':'object.id', 'famfam':'page_paintbrush', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
+document_multiple_clear_transformations = {'text':_('clear all transformations'), 'view':'document_multiple_clear_transformations', 'famfam':'page_paintbrush', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
 
 document_page_transformation_create = {'text':_('create new transformation'), 'view':'document_page_transformation_create', 'args':'object.id', 'famfam':'pencil_add', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
 document_page_transformation_edit = {'text':_('edit'), 'view':'document_page_transformation_edit', 'args':'object.id', 'famfam':'pencil_go', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_TRANSFORM]}}
@@ -62,7 +63,7 @@ staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':
 
 register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations], menu_name='sidebar')
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
-register_multi_item_links(Document, [document_clear_transformations], menu_name='sidebar')
+register_multi_item_links(['document_list'], [document_multiple_clear_transformations])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
     register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')

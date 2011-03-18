@@ -3,13 +3,20 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.db import models
 from django.conf import settings
-
+from django.template.defaultfilters import capfirst
 
 from common.utils import return_attrib
 
 
 class MultiItemForm(forms.Form):
-    action = forms.ChoiceField()
+    def __init__(self, *args, **kwargs):
+        actions = kwargs.pop('actions', [])
+        super(MultiItemForm, self).__init__(*args, **kwargs)
+        choices = [('', '------')]
+        choices.extend([(action[0], capfirst(action[1])) for action in actions])
+        self.fields['action'].choices = choices
+        
+    action = forms.ChoiceField(label=_(u'Multi item action'))
            
 
 class DetailSelectMultiple(forms.widgets.SelectMultiple):

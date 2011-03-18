@@ -9,9 +9,27 @@ menu_links = []
 model_list_columns = {}
 
 
-
 def register_multi_item_links(src, links, menu_name=None):
-    pass
+    if menu_name in multi_object_navigation:
+        if hasattr(src, '__iter__'):        
+            for one_src in src:
+                if one_src in object_navigation[menu_name]:
+                    multi_object_navigation[menu_name][one_src]['links'].extend(links)
+                else:
+                    multi_object_navigation[menu_name][one_src] = {'links':copy.copy(links)}
+        else:
+            if src in multi_object_navigation[menu_name]:
+                multi_object_navigation[menu_name][src]['links'].extend(links)
+            else:
+                multi_object_navigation[menu_name][src] = {'links':links}
+    else:
+        multi_object_navigation[menu_name] = {}
+        if hasattr(src, '__iter__'):
+            for one_src in src:
+                multi_object_navigation[menu_name][one_src] = {'links':links}
+        else:
+            multi_object_navigation[menu_name] = {src:{'links':links}}            
+
 
 def register_links(src, links, menu_name=None):
     if menu_name in object_navigation:
@@ -20,7 +38,7 @@ def register_links(src, links, menu_name=None):
                 if one_src in object_navigation[menu_name]:
                     object_navigation[menu_name][one_src]['links'].extend(links)
                 else:
-                    object_navigation[menu_name][one_src]={'links':copy.copy(links)}
+                    object_navigation[menu_name][one_src] = {'links':copy.copy(links)}
         else:
             if src in object_navigation[menu_name]:
                 object_navigation[menu_name][src]['links'].extend(links)

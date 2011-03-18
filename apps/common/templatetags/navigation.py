@@ -9,7 +9,8 @@ from django.template import TemplateSyntaxError, Library, \
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
-from common.api import object_navigation, menu_links as menu_navigation
+from common.api import object_navigation, multi_object_navigation, \
+    menu_links as menu_navigation
 from common.forms import MultiItemForm
 
 register = Library()
@@ -141,12 +142,15 @@ def resolve_links(context, links, current_view, current_path):
     context_links = []
     for link in links:
         new_link = copy.copy(link)
-        args, kwargs = resolve_arguments(context, link.get('args', {}))
-        
+        try:
+            args, kwargs = resolve_arguments(context, link.get('args', {}))
+        except VariableDoesNotExist:
+            args = []
+            kwargs = {}      
+            
         if 'view' in link:
             new_link['active'] = link['view'] == current_view
-            args, kwargs = resolve_arguments(context, link.get('args', {}))
-                
+               
             try:
                 if kwargs:
                     new_link['url'] = reverse(link['view'], kwargs=kwargs)
@@ -166,7 +170,8 @@ def resolve_links(context, links, current_view, current_path):
         context_links.append(new_link)    
     return context_links
 
-def _get_object_navigation_links(context, menu_name=None):
+
+def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
     current_path = Variable('request').resolve(context).META['PATH_INFO']
     current_view = resolve_to_name(current_path)#.get_full_path())
     context_links = []    
@@ -182,14 +187,14 @@ def _get_object_navigation_links(context, menu_name=None):
         obj = None
         
     try:
-        links = object_navigation[menu_name][current_view]['links']
+        links = links_dict[menu_name][current_view]['links']
         for link in resolve_links(context, links, current_view, current_path):
             context_links.append(link)
     except KeyError:
         pass
 
     try:
-        links = object_navigation[menu_name][type(obj)]['links']
+        links = links_dict[menu_name][type(obj)]['links']
         for link in resolve_links(context, links, current_view, current_path):
             context_links.append(link)
     except KeyError:
@@ -227,6 +232,7 @@ def get_object_navigation_links(parser, token):
     return GetNavigationLinks(*args[1:])
     
     
+@register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
     return {
         'request':context['request'],
@@ -234,14 +240,15 @@ def object_navigation_template(context):
         'object_navigation_links':_get_object_navigation_links(context)
     }
     return new_context
-register.inclusion_tag('generic_navigation.html', takes_context=True)(object_navigation_template)
+
  
- 
+@register.inclusion_tag('generic_form_instance.html', takes_context=True)
 def get_multi_item_links_form(context):
     new_context = copy.copy(context)
     new_context.update({
-        'form':MultiItemForm(),
-        'title':_(u'Selected item actions:')
+        'form':MultiItemForm(actions=[(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]),
+        'title':_(u'Selected item actions:'),
+        'form_action':reverse('multi_object_action_view'),
+        'submit_method':'get',
     })
     return new_context
-register.inclusion_tag('generic_form_subtemplate.html', takes_context=True)(get_multi_item_links_form)
