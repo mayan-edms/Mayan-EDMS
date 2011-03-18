@@ -1,6 +1,0 @@
-ISSUES
-===========
-1) Staging file hash colition when same file with different name, newhash = content hash + filename hash
-2) Fix field error on search action for documents while processing OCR queue
-3) Two documents might get the same UUID assigned, trigger(s) unknown
-4) Import role_list in main.__init__.py is causing an import error only in production with apache

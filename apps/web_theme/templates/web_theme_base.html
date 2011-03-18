@@ -7,14 +7,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
-
+        <meta http-equiv="X-UA-Compatible" content="IE-edge" /><!--Every day that passes, hating more this dark side IE9 I am-->  
         <title>{% block html_title %}{% endblock %}</title>
 
         {% block keywords %}{% endblock %}		
 
         <link rel="stylesheet" href="{{ MEDIA_URL }}web_theme_media/stylesheets/base.css" type="text/css" media="screen" />
         <link rel="stylesheet" id="current-theme" href="{{ MEDIA_URL }}web_theme_media/stylesheets/themes/{{ web_theme }}/style.css" type="text/css" media="screen" />
-        <style>
+        <style type="text/css">
             .message span.dismiss {
                 padding:0 5px;
                 cursor:pointer;

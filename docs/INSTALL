@@ -1,0 +1,17 @@
+apt-get update
+apt-get install tesseract-ocr-spa unpaper imagemagick python-virtualenv -y
+cd /usr/share
+virtualenv --no-site-packages mayan
+cd mayan
+git clone git://github.com/rosarior/mayan.git
+cd mayan
+source ../bin/activate
+pip install -r requirements/production.txt
+
+
+
+
+#For MySQL support
+apt-get install python-dev libmysqlclient-dev
+pip install MySQL-python
+
