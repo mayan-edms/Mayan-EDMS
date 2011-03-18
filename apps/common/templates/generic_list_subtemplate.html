@@ -87,7 +87,9 @@
                 </tbody>
             </table>
             {% if multi_select %}
-                {% get_multi_item_links_form %}
+                {% with "true" as form_hide_required_text %}
+                    {% get_multi_item_links_form %}
+                {% endwith %}
                 <div class="group navform wat-cf">
                     <button class="button" type="submit" name="{{ form.prefix }}-submit">
                         <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}
