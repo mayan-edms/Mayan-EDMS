@@ -42,6 +42,7 @@ document_create_sibling = {'text':_('upload new document using same metadata'), 
 document_view = {'text':_('details (advanced)'), 'view':'document_view', 'args':'object.id', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_view_simple = {'text':_('details (simple)'), 'view':'document_view_simple', 'args':'object.id', 'famfam':'page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 document_delete = {'text':_('delete'), 'view':'document_delete', 'args':'object.id', 'famfam':'page_delete', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DELETE]}}
+document_multiple_delete = {'text':_('delete'), 'view':'document_multiple_delete', 'famfam':'page_delete', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_DELETE]}}
 document_edit = {'text':_('edit'), 'view':'document_edit', 'args':'object.id', 'famfam':'page_edit', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_PROPERTIES_EDIT]}}
 document_edit_metadata = {'text':_('edit metadata'), 'view':'document_edit_metadata', 'args':'object.id', 'famfam':'page_edit', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_METADATA_EDIT]}}
 document_preview = {'text':_('preview'), 'class':'fancybox', 'view':'document_preview', 'args':'object.id', 'famfam':'magnifier', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
@@ -63,7 +64,7 @@ staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':
 
 register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations], menu_name='sidebar')
 register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
-register_multi_item_links(['document_list'], [document_multiple_clear_transformations])
+register_multi_item_links(['document_list'], [document_multiple_clear_transformations, document_multiple_delete])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
     register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')

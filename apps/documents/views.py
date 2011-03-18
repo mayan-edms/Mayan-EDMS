@@ -343,31 +343,54 @@ def document_view(request, document_id):
         'sidebar_subtemplates_dict':sidebar_groups,
     }, context_instance=RequestContext(request))
 
-
-def document_delete(request, document_id):
+    
+def document_delete(request, document_id=None, document_id_list=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DELETE])
+          
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+        post_redirect = reverse('document_view', args=[documents[0].pk])
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        post_redirect = None
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))          
             
-    document = get_object_or_404(Document, pk=document_id)
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
 
     if request.method == 'POST':
-        try:
-            document_delete_fs_links(document)
-            document.delete()
-            messages.success(request, _(u'Document deleted successfully.'))
-            return HttpResponseRedirect(reverse('document_list'))
-        except Exception, e:
-            messages.error(request, _(u'Document delete error: %s') % e)
-            return HttpResponseRedirect(previous)
+        for document in documents:
+            try:
+                document_delete_fs_links(document)
+                document.delete()
+                messages.success(request, _(u'Document: %s deleted successfully.') % document)
+            except Exception, e:
+                messages.error(request, _(u'Document: %s delete error: %s') % (document, e))
+
+        return HttpResponseRedirect(next)
         
-    return render_to_response('generic_confirm.html', {
-        'object':document,
-        'delete_view':True,
+    context = {
         'object_name':_(u'document'),
+        'delete_view':True,
         'previous':previous,
-    }, context_instance=RequestContext(request))
+        'next':next,
+    }
+    if len(documents) == 1:
+        context['object'] = documents[0]  
+        context['title'] = _(u'Are you sure you with to delete the document: %s?') % ', '.join([unicode(d) for d in documents])
+    elif len(documents) > 1:
+        context['title'] = _(u'Are you sure you with to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
         
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def document_multiple_delete(request):
+    return document_delete(request, document_id_list=request.GET.get('id_list', []))
+  
         
 def document_edit(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_PROPERTIES_EDIT])

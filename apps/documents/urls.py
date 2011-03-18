@@ -21,6 +21,7 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/$', 'document_view', (), 'document_view'),
     url(r'^document/(?P<document_id>\d+)/simple/$', 'document_view_simple', (), 'document_view_simple'),
     url(r'^document/(?P<document_id>\d+)/delete/$', 'document_delete', (), 'document_delete'),
+    url(r'^document/multiple/delete/$', 'document_multiple_delete', (), 'document_multiple_delete'),
     url(r'^document/(?P<document_id>\d+)/edit/$', 'document_edit', (), 'document_edit'),
     url(r'^document/(?P<document_id>\d+)/edit/metadata/$', 'document_edit_metadata', (), 'document_edit_metadata'),
     
