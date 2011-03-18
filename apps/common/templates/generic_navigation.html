@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load permission_tags %}
 
-<div class="nowrap">
+<span class="nowrap">
 {% for link in object_navigation_links %}
 {% if link.permissions %}
     {% check_permissions request.user link.permissions.namespace link.permissions.permissions %}
@@ -16,4 +16,4 @@
     {% if as_li %}</li>{% endif %}    
 {% endif %}
 {% endfor %}
-</div>
+</span>
