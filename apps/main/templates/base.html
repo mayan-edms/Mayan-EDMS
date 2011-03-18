@@ -124,7 +124,9 @@
     {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
     {% if side_bar_search %}
         {% with "true" as side_bar %}
+        {% with "true" as form_hide_required_text %} 
             {% search_form %}
+        {% endwith %}
         {% endwith %}
     {% endif %}
 

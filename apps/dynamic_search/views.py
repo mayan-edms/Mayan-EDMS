@@ -43,6 +43,7 @@ def results(request, form=None):
         'form':form,
         'form_title':_(u'Search'),
         'hide_header':True,
+        'form_hide_required_text':True,
     })
 
     if SHOW_OBJECT_TYPE:
