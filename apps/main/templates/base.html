@@ -130,7 +130,7 @@
         {% endwith %}
     {% endif %}
 
-    {% get_object_navigation_links %}
+    {% get_object_navigation_links as object_navigation_links %}
     {% if object_navigation_links %}
         <div class="block">
             {% if object %}
@@ -150,7 +150,7 @@
         </div>
     {% endif %}
 
-    {% get_object_navigation_links "sidebar" %}
+    {% get_object_navigation_links "sidebar" as object_navigation_links %}
         {% if object_navigation_links %}
         <div class="block">
             <h3>{% trans "Other available actions" %}</h3>

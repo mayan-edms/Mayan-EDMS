@@ -1,5 +1,6 @@
 import types
 import copy 
+import re
 
 from django.conf import settings
 from django.core.urlresolvers import reverse, NoReverseMatch
@@ -215,21 +216,27 @@ def resolve_template_variable(context, name):
 
 
 class GetNavigationLinks(Node):
-    def __init__(self, *args):
-        self.menu_name = None
-        if args:
-            self.menu_name = args[0]
+    def __init__(self, menu_name=None, links_dict=object_navigation, var_name='object_navigation_links'):
+        self.menu_name = menu_name
+        self.links_dict = links_dict
+        self.var_name = var_name
 
     def render(self, context):
         menu_name = resolve_template_variable(context, self.menu_name)
-        context['object_navigation_links'] = _get_object_navigation_links(context, menu_name)
+        context[self.var_name] = _get_object_navigation_links(context, menu_name, links_dict=self.links_dict)
         return ''
 
 
 @register.tag
 def get_object_navigation_links(parser, token):
-    args = token.split_contents()
-    return GetNavigationLinks(*args[1:])
+    tag_name, arg = token.contents.split(None, 1)
+
+    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
+    if not m:
+        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+
+    menu_name, var_name = m.groups()    
+    return GetNavigationLinks(menu_name=menu_name, var_name=var_name)
     
     
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
@@ -242,6 +249,17 @@ def object_navigation_template(context):
     return new_context
 
  
+@register.tag
+def get_multi_item_links(parser, token):
+    tag_name, arg = token.contents.split(None, 1)
+    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
+    if not m:
+        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+
+    menu_name, var_name = m.groups()
+    return GetNavigationLinks(menu_name=menu_name, links_dict=multi_object_navigation, var_name=var_name)
+
+
 @register.inclusion_tag('generic_form_instance.html', takes_context=True)
 def get_multi_item_links_form(context):
     new_context = copy.copy(context)

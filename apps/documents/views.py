@@ -74,7 +74,7 @@ def document_list(request):
         template_name='generic_list.html',
         extra_context={
             'title':_(u'documents'),
-            'multi_select':True,
+            'multi_select_as_buttons':True,
         },
     )
 
