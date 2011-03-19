@@ -1,3 +1,18 @@
+2011-Mar-18
+* Implemented form based and button based multi item actions (button based by default)
+* Added multi document delete
+* Fixed a few HTML validation errors
+* Issues are now tracked using github
+
+2011-Mar-16
+* Added indexing flags to ocr model
+* Small optimization in document list view
+* Small search optimization
+
+2011-Mar-14
+* Display "DEBUG mode" string in title if DEBUG variable is set to True
+* Added the fix-permissions bash script under misc/ folder
+
 2011-Mar-12
 * Plugged another file descriptor leak
 * Show class name in config settings view
