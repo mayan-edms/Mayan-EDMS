@@ -30,7 +30,7 @@
                 <tbody>
                     {% if not hide_header %}
                         <tr>
-                            {% if multi_select %}
+                            {% if multi_select or multi_select_as_buttons %}
                                 <th class="first"><input type="checkbox" class="checkbox toggle" /></th>
                             {% endif %}
                             {% if not hide_object %}
@@ -49,7 +49,7 @@
                     {% endif %}
                     {% for object in object_list %}
                         <tr class="{% cycle 'odd' 'even2' %}">
-                        {% if multi_select %}    
+                        {% if multi_select or multi_select_as_buttons %}    
                             <td><input type="checkbox" class="checkbox" name="pk_{{ object.pk }}" value="" /></td>            
                         {% endif %}
                         {% if not hide_object %}
