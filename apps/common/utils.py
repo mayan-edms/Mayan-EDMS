@@ -69,13 +69,15 @@ def return_attrib(obj, attrib, arguments={}):
 
 #http://snippets.dzone.com/posts/show/5434
 #http://snippets.dzone.com/user/jakob
-def pretty_size(size):
-	suffixes = [('B',2**10), ('K',2**20), ('M',2**30), ('G',2**40), ('T',2**50)]
+def pretty_size(size, suffixes = [('B',2**10), ('K',2**20), ('M',2**30), ('G',2**40), ('T',2**50)]):
 	for suf, lim in suffixes:
 		if size > lim:
 			continue
 		else:
 			return round(size/float(lim/2**10),2).__str__()+suf
+
+def pretty_size_10(size):
+    return pretty_size(size, suffixes = [('B',10**3), ('K',10**6), ('M',10**9), ('G',10**12), ('T',10**15)])
 
 
 def exists_with_famfam(path):

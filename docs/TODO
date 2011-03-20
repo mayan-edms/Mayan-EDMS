@@ -109,7 +109,7 @@ Documents
 * Separate free form document rename and require new permission
 * Test zip file upload with multi directories zip file
 * Don't append an extension separator if extension is non existant
-* Statistics page (total used storage, total docs, per metadata group, per type, per metadata)
+* Statistics page (total used storage, total docs, per metadata group, per type, per metadata) - DONE
 * Improve doc page template/view
 * Document page edit view
 * Show all document's pages content combined
@@ -174,3 +174,4 @@ OCR
 * Support cuneiform
 * Implement StringIO
 * Add storage replication delay setting
+* Advanced statistics (OCR average completion time, error rate)

@@ -11,6 +11,8 @@ from storage.conf import settings
 
 
 class GridFSStorage(Storage):
+    separator = u'/'
+    
     def __init__(self, *args, **kwargs):
         self.db = Connection(host=settings.GRIDFS_HOST,
             port=settings.GRIDFS_PORT)[settings.GRIDFS_DATABASE_NAME]

@@ -1,3 +1,6 @@
+2011-Mar-20
+* Added simple statistics page (total used storage, total docs, etc)
+
 2011-Mar-18
 * Implemented form based and button based multi item actions (button based by default)
 * Added multi document delete

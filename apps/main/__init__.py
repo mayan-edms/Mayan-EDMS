@@ -15,7 +15,8 @@ check_settings = {'text':_(u'settings'), 'view':'check_settings', 'famfam':'cog'
 main_menu = [
     {'text':_(u'home'), 'view':'home', 'famfam':'house', 'position':0},
     {'text':_(u'tools'), 'view':'tools_menu', 'links': [
-        document_find_all_duplicates, filesystem_serving_recreate_all_links
+        document_find_all_duplicates, filesystem_serving_recreate_all_links,
+        {'text':_(u'statistics'), 'view':'statistics', 'famfam':'table'}
         ],'famfam':'wrench', 'name':'tools','position':7},
 
     {'text':_(u'setup'), 'view':'check_settings', 'links': [

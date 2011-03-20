@@ -8,8 +8,10 @@ from common.utils import exists_with_famfam
 
 from common.conf import settings as common_settings
 from documents.conf import settings as documents_settings
+from documents.statistics import get_statistics as documents_statistics
 from converter.conf import settings as converter_settings
 from ocr.conf import settings as ocr_settings
+from ocr.statistics import get_statistics as ocr_statistics
 from filesystem_serving.conf import settings as filesystem_serving_settings
 from dynamic_search.conf import settings as search_settings
 
@@ -121,3 +123,16 @@ def blank_menu(request):
         ],
         },
     context_instance=RequestContext(request))    
+
+
+def statistics(request):
+    blocks = []
+    blocks.append(documents_statistics())
+    blocks.append(ocr_statistics())
+    
+    return render_to_response('statistics.html', {
+        'blocks':blocks,
+        'title':_(u'Statistics') },
+    context_instance=RequestContext(request))
+    
+    

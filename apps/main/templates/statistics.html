@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} :: {{ title|capfirst }}{% endblock %}
+
+{% block content %}
+    {% for block in blocks %}
+        {% with block.title as title %}
+        {% with block.paragraphs as paragraphs %}
+            {% include "generic_subtemplate.html" %}
+        {% endwith %}
+        {% endwith %}
+    {% endfor %}
+{% endblock %}
