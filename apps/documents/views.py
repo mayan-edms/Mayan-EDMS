@@ -38,6 +38,7 @@ from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import AUTOMATIC_OCR
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
+from documents.conf.settings import STORAGE_BACKEND
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
@@ -878,4 +879,18 @@ def document_view_simple(request, document_id):
         'object':document,
         'subtemplates_dict':subtemplates_dict,
         'sidebar_subtemplates_dict':sidebar_groups,
+    }, context_instance=RequestContext(request))
+
+
+def document_missing_list(request):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+    missing_id_list = []
+    for document in Document.objects.only('id',):
+        if not STORAGE_BACKEND().exists(document.file):
+            missing_id_list.append(document.pk)
+
+    return render_to_response('generic_list.html', {
+        'object_list':Document.objects.in_bulk(missing_id_list).values(),
+        'title':_(u'missing documents'),
     }, context_instance=RequestContext(request))

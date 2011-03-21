@@ -6,13 +6,12 @@ from django.core.urlresolvers import reverse
 from common.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
 from common.utils import pretty_size
-
+from common.conf import settings as common_settings
+from main.api import register_diagnostic
 from permissions.api import register_permissions
 
 from models import Document, DocumentPage, DocumentPageTransformation
 from staging import StagingFile
-
-from common.conf import settings as common_settings
 from conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
 
 PERMISSION_DOCUMENT_CREATE = 'document_create'
@@ -59,6 +58,8 @@ document_page_transformation_go_back = {'text':_('return to document'), 'view':'
 
 document_page_go_back = {'text':_('return to document'), 'view':'document_view', 'args':'object.document.id', 'famfam':'page_go', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
 
+document_missing_list = {'text':_('Find missing document files'), 'url':reverse('document_missing_list'), 'famfam':'folder_page', 'permissions':{'namespace':'documents', 'permissions':[PERMISSION_DOCUMENT_VIEW]}}
+
 staging_file_preview = {'text':_('preview'), 'class':'fancybox-noscaling', 'view':'staging_file_preview', 'args':'object.id', 'famfam':'drive_magnify'}
 staging_file_delete = {'text':_('delete'), 'view':'staging_file_delete', 'args':'object.id', 'famfam':'drive_delete'}
 
@@ -79,6 +80,7 @@ register_links(['document_page_view', 'document_page_transformation_edit', 'docu
 
 register_links(StagingFile, [staging_file_preview, staging_file_delete])
 
+register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
 
 def document_exists(document):

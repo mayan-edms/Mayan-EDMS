@@ -45,4 +45,6 @@ urlpatterns = patterns('documents.views',
     url(r'^document/page/(?P<document_page_id>\d+)/transformation/create/$', 'document_page_transformation_create', (), 'document_page_transformation_create'),
     url(r'^document/page/transformation/(?P<document_page_transformation_id>\d+)/edit/$', 'document_page_transformation_edit', (), 'document_page_transformation_edit'),
     url(r'^document/page/transformation/(?P<document_page_transformation_id>\d+)/delete/$', 'document_page_transformation_delete', (), 'document_page_transformation_delete'),
+    
+    url(r'^document/missing/list/$', 'document_missing_list', (), 'document_missing_list'),
 )

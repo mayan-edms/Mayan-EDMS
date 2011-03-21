@@ -15,6 +15,7 @@ from ocr.statistics import get_statistics as ocr_statistics
 from filesystem_serving.conf import settings as filesystem_serving_settings
 from dynamic_search.conf import settings as search_settings
 
+from main.api import diagnostics
 
 def home(request):
     return render_to_response('home.html', {},
@@ -136,3 +137,8 @@ def statistics(request):
     context_instance=RequestContext(request))
     
     
+def diagnostics_view(request):
+    return render_to_response('diagnostics.html', {
+        'blocks':diagnostics,
+        'title':_(u'Diagnostics') },
+    context_instance=RequestContext(request))

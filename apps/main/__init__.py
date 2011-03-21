@@ -11,12 +11,14 @@ from filesystem_serving import filesystem_serving_recreate_all_links
 from main.conf.settings import SIDE_BAR_SEARCH
 
 check_settings = {'text':_(u'settings'), 'view':'check_settings', 'famfam':'cog'}
+statistics = {'text':_(u'statistics'), 'view':'statistics', 'famfam':'table'}
+diagnostics = {'text':_(u'diagnostics'), 'view':'diagnostics', 'famfam':'pill'}
 
 main_menu = [
     {'text':_(u'home'), 'view':'home', 'famfam':'house', 'position':0},
     {'text':_(u'tools'), 'view':'tools_menu', 'links': [
         document_find_all_duplicates, filesystem_serving_recreate_all_links,
-        {'text':_(u'statistics'), 'view':'statistics', 'famfam':'table'}
+        statistics, diagnostics,
         ],'famfam':'wrench', 'name':'tools','position':7},
 
     {'text':_(u'setup'), 'view':'check_settings', 'links': [
