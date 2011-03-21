@@ -5,6 +5,7 @@ urlpatterns = patterns('ocr.views',
     url(r'^(?P<document_id>\d+)/submit/$', 'submit_document', (), 'submit_document'),
     url(r'^ocr/queue/document/list/$', 'queue_document_list', (), 'queue_document_list'),
     url(r'^ocr/queue/document/(?P<queue_document_id>\d+)/delete/$', 'queue_document_delete', (), 'queue_document_delete'),
+    url(r'^ocr/queue/document/multiple/delete/$', 'queue_document_multiple_delete', (), 'queue_document_multiple_delete'),
     url(r'^ocr/queue/document/(?P<queue_document_id>\d+)/re-queue/$', 're_queue_document', (), 're_queue_document'),
     url(r'^ocr/queue/document/multiple/re-queue/$', 're_queue_multiple_document', (), 're_queue_multiple_document'),
 

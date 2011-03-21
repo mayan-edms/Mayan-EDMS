@@ -63,21 +63,70 @@ def queue_document_list(request, queue_name='default'):
     )    
             
         
-def queue_document_delete(request, queue_document_id):
+def queue_document_delete(request, queue_document_id=None, queue_document_id_list=[]):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT_DELETE])
+
+    if queue_document_id:
+        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
+        post_redirect = None
+    elif queue_document_id_list:
+        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
+        post_redirect = None
+    else:
+        messages.error(request, _(u'Must provide at least one queue document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
             
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    for queue_document in queue_documents:
+        try:
+            queue_document.document
+        except Document.DoesNotExist:
+            messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
+            return HttpResponseRedirect(previous)
+
+    if request.method == 'POST':
+        for queue_document in queue_documents:
+            try:
+                queue_document.delete()
+                messages.success(request, _(u'Document: %(document)s deleted successfully.') % {
+                    'document':queue_document.document})
+
+            except Exception, e:
+                messages.error(request, _(u'Error deleting document: %(document)s; %(error)s') % {
+                    'document':queue_document, 'error':e})
+        return HttpResponseRedirect(next)
+
+    context = {
+        'next':next,
+        'previous':previous,
+        'delete_view':True
+    }
+    
+    if len(queue_documents) == 1:
+        context['object'] = queue_documents[0]  
+        context['title'] = _(u'Are you sure you with to delete from queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
+    elif len(queue_documents) > 1:
+        context['title'] = _(u'Are you sure you with to delete from queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
         
-    return delete_object(request, model=QueueDocument, object_id=queue_document_id, 
-        template_name='generic_confirm.html', 
-        post_delete_redirect=reverse('queue_document_list'),
-        extra_context={
-            'delete_view':True,
-            'next':next,
-            'previous':previous,
-            'object_name':_(u'queued document'),
-        })
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+        
+                
+#    return delete_object(request, model=QueueDocument, object_id=queue_document_id, 
+#        template_name='generic_confirm.html', 
+#        post_delete_redirect=reverse('queue_document_list'),
+#        extra_context={
+#            'delete_view':True,
+#            'next':next,
+#            'previous':previous,
+#            'object_name':_(u'queued document'),
+#        })
+ 
+
+def queue_document_multiple_delete(request):
+    return queue_document_delete(request, queue_document_id_list=request.GET.get('id_list', []))
     
 
 def submit_document(request, document_id):
