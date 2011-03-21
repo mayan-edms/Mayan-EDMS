@@ -52,6 +52,7 @@ def queue_document_list(request, queue_name='default'):
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
                 {'name':'result', 'attribute':'result'},
             ],
+            'multi_select_as_buttons':True,            
             'sidebar_subtemplates_list':[
                 {
                     'title':_(u'document queue properties'),
@@ -104,47 +105,67 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
         return HttpResponseRedirect(post_submit_redirect)
         
 
-def re_queue_document(request, queue_document_id):
+def re_queue_document(request, queue_document_id=None, queue_document_id_list=[]):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
+
+    if queue_document_id:
+        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
+        post_redirect = None
+    elif queue_document_id_list:
+        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
+        post_redirect = None
+    else:
+        messages.error(request, _(u'Must provide at least one queue document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
             
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    queue_document = get_object_or_404(QueueDocument, pk=queue_document_id)
 
-    try:
-        queue_document.document
-    except Document.DoesNotExist:
-        messages.error(request, _(u'This document no longer exists.'))
-        return HttpResponseRedirect(previous)
+    for queue_document in queue_documents:
+        try:
+            queue_document.document
+        except Document.DoesNotExist:
+            messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
+            return HttpResponseRedirect(previous)
 
-    if queue_document.state == QUEUEDOCUMENT_STATE_PENDING:
-        messages.warning(request, _(u'This document is already queued and pending processing.'))
-        return HttpResponseRedirect(previous)
-    elif queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
-        messages.warning(request, _(u'This document is already being processed and can\'t be re-queded.'))
-        return HttpResponseRedirect(previous)
+        if queue_document.state == QUEUEDOCUMENT_STATE_PENDING:
+            messages.warning(request, _(u'Document: %s is already queued and pending processing.') % queue_document)
+            return HttpResponseRedirect(previous)
+        elif queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
+            messages.warning(request, _(u'Document: %s is already being processed and can\'t be re-queded.') % queue_document)
+            return HttpResponseRedirect(previous)
 
     if request.method == 'POST':
-        try:
-            if queue_document.state == QUEUEDOCUMENT_STATE_ERROR:
-                queue_document.datetime_submitted = datetime.datetime.now()
-                queue_document.state = QUEUEDOCUMENT_STATE_PENDING
-                queue_document.save()
-                messages.success(request, _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
-                    'document':queue_document.document, 'queue':queue_document.document_queue.label})
+        for queue_document in queue_documents:
+            try:
+                if queue_document.state == QUEUEDOCUMENT_STATE_ERROR:
+                    queue_document.datetime_submitted = datetime.datetime.now()
+                    queue_document.state = QUEUEDOCUMENT_STATE_PENDING
+                    queue_document.save()
+                    messages.success(request, _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
+                        'document':queue_document.document, 'queue':queue_document.document_queue.label})
 
-        except Exception, e:
-            messages.error(request, e)
+            except Exception, e:
+                messages.error(request, e)
         return HttpResponseRedirect(next)
 
-    
-        
-    return render_to_response('generic_confirm.html', {
-        'object':queue_document,
-        'title':_(u'Are you sure you wish to re-queue document: %s') % queue_document,
+    context = {
         'next':next,
         'previous':previous,
-    }, context_instance=RequestContext(request))
+    }
+    
+    if len(queue_documents) == 1:
+        context['object'] = queue_documents[0]  
+        context['title'] = _(u'Are you sure you with to re-queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
+    elif len(queue_documents) > 1:
+        context['title'] = _(u'Are you sure you with to re-queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
+        
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def re_queue_multiple_document(request):
+    return re_queue_document(request, queue_document_id_list=request.GET.get('id_list', []))
 
 
 def document_queue_disable(request, document_queue_id):

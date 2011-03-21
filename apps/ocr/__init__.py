@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
 
-from common.api import register_links, register_menu
+from common.api import register_links, register_menu, register_multi_item_links
 from permissions.api import register_permissions
 
 from documents.models import Document
@@ -28,6 +28,7 @@ register_permissions('ocr', [
 #Links
 submit_document = {'text':_('submit to OCR queue'), 'view':'submit_document', 'args':'object.id', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 re_queue_document = {'text':_('re-queue'), 'view':'re_queue_document', 'args':'object.id', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
+re_queue_multiple_document = {'text':_('re-queue'), 'view':'re_queue_multiple_document', 'famfam':'hourglass_add', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT]}}
 queue_document_delete = {'text':_(u'delete'), 'view':'queue_document_delete', 'args':'object.id', 'famfam':'hourglass_delete', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_DOCUMENT_DELETE]}}
 
 document_queue_disable = {'text':_(u'stop queue'), 'view':'document_queue_disable', 'args':'object.id', 'famfam':'control_stop_blue', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}}
@@ -36,6 +37,8 @@ document_queue_enable = {'text':_(u'activate queue'), 'view':'document_queue_ena
 register_links(Document, [submit_document], menu_name='sidebar')
 register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
 register_links(QueueDocument, [re_queue_document, queue_document_delete])
+
+register_multi_item_links(['queue_document_list'], [re_queue_multiple_document])
 
 #Menus
 register_menu([
