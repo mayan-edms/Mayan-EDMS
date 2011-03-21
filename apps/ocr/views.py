@@ -113,17 +113,6 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
         
-                
-#    return delete_object(request, model=QueueDocument, object_id=queue_document_id, 
-#        template_name='generic_confirm.html', 
-#        post_delete_redirect=reverse('queue_document_list'),
-#        extra_context={
-#            'delete_view':True,
-#            'next':next,
-#            'previous':previous,
-#            'object_name':_(u'queued document'),
-#        })
- 
 
 def queue_document_multiple_delete(request):
     return queue_document_delete(request, queue_document_id_list=request.GET.get('id_list', []))
