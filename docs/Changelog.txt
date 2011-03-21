@@ -1,3 +1,6 @@
+2011-Mar-21
+*  Added a new diagnostics tab under the tools menu
+
 2011-Mar-20
 * Added simple statistics page (total used storage, total docs, etc)
 
