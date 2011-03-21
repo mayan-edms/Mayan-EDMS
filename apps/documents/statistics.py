@@ -1,8 +1,10 @@
 from django.utils.translation import ugettext as _
-from documents.conf.settings import STORAGE_BACKEND
+from django.core.urlresolvers import reverse
 
 from common.utils import pretty_size, pretty_size_10
+from permissions.api import check_permissions
 
+from documents.conf.settings import STORAGE_BACKEND
 from models import Document, DocumentType
 
 
@@ -30,13 +32,14 @@ def storage_count(path=u'.'):
 
 
 def get_statistics():
-    total_db_documents = Document.objects.only('pk',).count()
+    total_db_documents = Document.objects.only('id',).count()
 
-    
     paragraphs = [
         _(u'Document types: %d') % DocumentType.objects.count(),
-        _(u'Documents in database: %d') % total_db_documents
+        _(u'Documents in database: %d') % total_db_documents,
     ]
+    
+    
     try:
         total_storage_documents, storage_used_space = storage_count()
         paragraphs.append(_(u'Documents in storage: %d') % total_storage_documents)
