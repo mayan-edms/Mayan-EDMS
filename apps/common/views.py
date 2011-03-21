@@ -10,7 +10,6 @@ def password_change_done(request):
 
 
 def multi_object_action_view(request):
-    print 'request', request.GET
     action = request.GET.get('action', None)
     id_list = u','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
     
