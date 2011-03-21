@@ -1,5 +1,7 @@
 2011-Mar-21
-*  Added a new diagnostics tab under the tools menu
+* Added a new diagnostics tab under the tools menu
+* Added a new option OCR_REPLICATION_DELAY to allow the storage some
+  time for replication before attempting to do OCR to a document
 
 2011-Mar-20
 * Added simple statistics page (total used storage, total docs, etc)

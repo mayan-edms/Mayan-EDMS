@@ -10,6 +10,7 @@ from literals import QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_ERROR
 from models import QueueDocument, DocumentQueue
 from ocr.conf.settings import MAX_CONCURRENT_EXECUTION
+from ocr.conf.settings import REPLICATION_DELAY
 
     
 @task
@@ -39,7 +40,7 @@ class DocumentQueueWatcher(PeriodicTask):
             if current_running_queues < MAX_CONCURRENT_EXECUTION:
                 try:
                     oldest_queued_document = document_queue.queuedocument_set.filter(
-                            state=QUEUEDOCUMENT_STATE_PENDING).order_by('datetime_submitted')[0]
+                            state=QUEUEDOCUMENT_STATE_PENDING).filter(datetime_submitted__lt=datetime.datetime.now()-datetime.timedelta(seconds=REPLICATION_DELAY)).order_by('datetime_submitted')[0]
 
                     task_process_queue_document(oldest_queued_document.id).delay()
                 except:

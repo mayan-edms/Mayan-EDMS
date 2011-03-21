@@ -46,6 +46,7 @@ TODO, WISHLIST
 * Change to model signals                                              - NOT NEEDED, found way to prevent save method recursion
 * Show current page in generic list template                           - DONE
 * Enable/disable ocr queue view & links                                - DONE
+* Android App                                                          - NOT NEEDED (Use CamSanner, (C) IntSig Information Co, Ltd.)
 
 * Receive documents via email
 * Mobile version
