@@ -37,7 +37,6 @@ document_queue_enable = {'text':_(u'activate queue'), 'view':'document_queue_ena
 
 register_links(Document, [submit_document], menu_name='sidebar')
 register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
-register_links(QueueDocument, [re_queue_document, queue_document_delete])
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
