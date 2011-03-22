@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'navigation',
     'web_theme',
     'main',
     'common',
@@ -136,7 +137,7 @@ INSTALLED_APPS = (
     'sentry.client',
     'sentry.client.celery',
     'filesystem_serving',
-    'storage',    
+    'storage',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

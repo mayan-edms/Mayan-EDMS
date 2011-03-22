@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from common.api import register_menu
+from navigation.api import register_menu
 
 #from permissions import role_list
 #TODO: Disabled until issue #4 is fixed

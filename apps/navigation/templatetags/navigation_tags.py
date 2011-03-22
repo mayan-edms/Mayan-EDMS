@@ -10,9 +10,9 @@ from django.template import TemplateSyntaxError, Library, \
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
-from common.api import object_navigation, multi_object_navigation, \
+from navigation.api import object_navigation, multi_object_navigation, \
     menu_links as menu_navigation
-from common.forms import MultiItemForm
+from navigation.forms import MultiItemForm
 
 register = Library()
 

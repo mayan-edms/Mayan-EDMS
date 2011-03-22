@@ -7,7 +7,6 @@ from django.template import TemplateSyntaxError, Library, \
                             VariableDoesNotExist, Node, Variable
 from django.utils.text import unescape_string_literal
 
-#from common.api import object_navigation
 from web_theme.conf import settings as web_theme_settings
 
 register = Library()

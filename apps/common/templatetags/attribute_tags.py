@@ -3,7 +3,7 @@ from django.template.defaultfilters import stringfilter
 from django.template import Library, Node, Variable, VariableDoesNotExist
 
 from common.utils import return_attrib
-from common.api import model_list_columns
+from navigation.api import model_list_columns
 
 register = Library()
 

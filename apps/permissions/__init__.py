@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
 
-from common.api import register_links, register_menu, \
+from navigation.api import register_links, register_menu, \
     register_model_list_columns
     
 from permissions.conf.settings import DEFAULT_ROLES

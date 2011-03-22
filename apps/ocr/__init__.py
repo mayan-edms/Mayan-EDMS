@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
 
-from common.api import register_links, register_menu, register_multi_item_links
+from navigation.api import register_links, register_menu, register_multi_item_links
 from permissions.api import register_permissions
 
 from documents.models import Document

@@ -3,7 +3,7 @@ import tempfile
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
-from common.api import register_links, register_menu, \
+from navigation.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
 from common.utils import pretty_size
 from common.conf import settings as common_settings
