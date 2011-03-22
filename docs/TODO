@@ -46,17 +46,18 @@ TODO, WISHLIST
 * Change to model signals                                              - NOT NEEDED, found way to prevent save method recursion
 * Show current page in generic list template                           - DONE
 * Enable/disable ocr queue view & links                                - DONE
-* Android App                                                          - NOT NEEDED (Use CamSanner, (C) IntSig Information Co, Ltd.)
+* Android App                                                          - NOT NEEDED (Use CamScanner, (C) IntSig Information Co, Ltd.)
+* Extract nagivation code into new navigation app                      - DONE
 
 * Receive documents via email
 * Mobile version
 * Exif to metadata convertion
-* Extract nagivation code into new navigation app
 * External portal using sites contrib app
+* Scanned document embedded barcode reading
 
 Main
 ====
-* Diagnostics (document file <-> document db entry mismatches, orphan files)
+* Diagnostics (document file <-> document db mismatches, orphan files) - STARTED
 * Sidebar search                                                       - DONE
 * Convert home and about views to use generic_template
 
@@ -118,6 +119,8 @@ Documents
 * Unify document form classes
 * Use document preview code for staging file also                      - DONE
 * Delete physical file on delete method                                - DEFFERED (Not needed until Django 1.3)
+* Download individual document pages
+* Document printing support
     
 Filesystem serving
 ==================
