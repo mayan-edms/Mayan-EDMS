@@ -1,4 +1,7 @@
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+
+from django.db.models import Q
+
 from celery.task import Task, PeriodicTask
 from celery.decorators import task
 
@@ -34,16 +37,20 @@ class DocumentQueueWatcher(PeriodicTask):
         logger = self.get_logger(**kwargs)
         logger.info('Running queue watcher.')
         logger.debug('Active queues: %s' % DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE))
+        q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
+        q_delayed = Q(delay=True)
+        q_delay_interval = Q(datetime_submitted__lt=datetime.now()-timedelta(seconds=REPLICATION_DELAY))        
         for document_queue in DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE):
             logger.debug('Analysing queue: %s' % document_queue)
             current_running_queues = QueueDocument.objects.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).count()
             if current_running_queues < MAX_CONCURRENT_EXECUTION:
                 try:
-                    oldest_queued_document = document_queue.queuedocument_set.filter(
-                            state=QUEUEDOCUMENT_STATE_PENDING).filter(datetime_submitted__lt=datetime.datetime.now()-datetime.timedelta(seconds=REPLICATION_DELAY)).order_by('datetime_submitted')[0]
-
-                    task_process_queue_document(oldest_queued_document.id).delay()
-                except:
-                    #No Documents in queue
-                    pass
+                    oldest_queued_document_qs = document_queue.queuedocument_set.filter(
+                        (q_pending & ~q_delayed) | (q_pending & q_delayed & q_delay_interval))
+                        
+                    if oldest_queued_document_qs:
+                        oldest_queued_document = oldest_queued_document_qs.order_by('datetime_submitted')[0]
+                        task_process_queue_document.delay(oldest_queued_document.id)
+                except Exception, e:
+                    print 'DocumentQueueWatcher exception: %s' % e
         return True

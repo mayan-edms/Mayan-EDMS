@@ -49,6 +49,7 @@ def queue_document_list(request, queue_name='default'):
                 {'name':'document', 'attribute': lambda x: '<a href="%s">%s</a>' % (x.document.get_absolute_url(), x.document) if hasattr(x, 'document') else _(u'Missing document.')},
                 {'name':_(u'thumbnail'), 'attribute': lambda x: _display_thumbnail(x) },                
                 {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0], 'keep_together':True},
+                {'name':'delay', 'attribute':'delay'},
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
                 {'name':'result', 'attribute':'result'},
             ],
@@ -179,6 +180,7 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=[]
                 if queue_document.state == QUEUEDOCUMENT_STATE_ERROR:
                     queue_document.datetime_submitted = datetime.datetime.now()
                     queue_document.state = QUEUEDOCUMENT_STATE_PENDING
+                    queue_document.delay = False
                     queue_document.save()
                     messages.success(request, _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
                         'document':queue_document.document, 'queue':queue_document.document_queue.label})

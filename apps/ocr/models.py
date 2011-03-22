@@ -17,7 +17,7 @@ class DocumentQueueManager(models.Manager):
         if QueueDocument.objects.filter(document_queue=document_queue, document=document).count():
             raise AlreadyQueued
 
-        queue_document = QueueDocument(document_queue=document_queue, document=document)
+        queue_document = QueueDocument(document_queue=document_queue, document=document, delay=True)
         queue_document.save()    
 
         return document_queue
@@ -45,6 +45,7 @@ class QueueDocument(models.Model):
     document_queue = models.ForeignKey(DocumentQueue, verbose_name=_(u'document queue'))
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     datetime_submitted = models.DateTimeField(verbose_name=_(u'date time submitted'), auto_now_add=True, db_index=True)
+    delay = models.BooleanField(verbose_name=_(u'delay ocr'), default=False)
     state = models.CharField(max_length=4,
         choices=QUEUEDOCUMENT_STATE_CHOICES,
         default=QUEUEDOCUMENT_STATE_PENDING,
