@@ -173,9 +173,9 @@ class Document(models.Model):
                     try:
                         value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
                         if item.negated:
-                            query = (Q(metadata_type__id=item.metadata_type.id) & ~value_query)
+                            query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
                         else:
-                            query = (Q(metadata_type__id=item.metadata_type.id) & value_query)
+                            query = (Q(metadata_type__id=item.metadata_type_id) & value_query)
 
                         if item.inclusion == INCLUSION_AND:
                             total_query &= query
