@@ -51,6 +51,7 @@ def queue_document_list(request, queue_name='default'):
                 {'name':'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0], 'keep_together':True},
                 {'name':'delay', 'attribute':'delay'},
                 {'name':'state', 'attribute': lambda x: x.get_state_display()},
+                {'name':'node', 'attribute':'node_name'},
                 {'name':'result', 'attribute':'result'},
             ],
             'multi_select_as_buttons':True,            

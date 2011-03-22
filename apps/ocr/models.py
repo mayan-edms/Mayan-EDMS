@@ -51,6 +51,7 @@ class QueueDocument(models.Model):
         default=QUEUEDOCUMENT_STATE_PENDING,
         verbose_name=_(u'state'))
     result = models.TextField(blank=True, null=True, verbose_name=_(u'result'))
+    node_name = models.CharField(max_length=32, verbose_name=_(u'node name'), blank=True, null=True)
     
     class Meta:
         ordering = ('datetime_submitted',)
