@@ -1,5 +1,10 @@
 2011-Mar-22
 * Moved navigation code to its own app
+* Reimplemented OCR delay code, only delay new document
+  Added a new field: delay, update your database schema acordinging
+* Made the concurrent ocr code more granular, per node, every node can
+  handle different amounts of concurrent ocr tasks
+  Added a new field: node_name, update your database schema acordinging
 
 2011-Mar-21
 * Added a new diagnostics tab under the tools menu
@@ -11,7 +16,8 @@
 * Added simple statistics page (total used storage, total docs, etc)
 
 2011-Mar-18
-* Implemented form based and button based multi item actions (button based by default)
+* Implemented form based and button based multi item actions (button
+  based by default)
 * Added multi document delete
 * Fixed a few HTML validation errors
 * Issues are now tracked using github
@@ -33,9 +39,11 @@
 
 2011-Mar-11
 * Don't allow duplicate documents in queues
-* Don't raise PermissionDenied exception in PermissionDenied middleware, even while debugging
+* Don't raise PermissionDenied exception in PermissionDenied middleware,
+  even while debugging
 * Fixed page number detection
-* Created 'simple document' for non technical users with all of a document pages content
+* Created 'simple document' for non technical users with all of a
+  document pages content
 * Use document preview code for staging file also
 * Error picture literal name removal
 * Spanish translation updates
@@ -46,11 +54,13 @@
 
 2011-Mar-09
 * Implemented new PermissioDenied exception middleware handler
-* Permissions app api now returns a PermissionDenied exception instead of a custom one
+* Permissions app api now returns a PermissionDenied exception instead
+  of a custom one
 * Added new 403 error template
 * Updated the 404 template to display only a not found message
 * Moved the login required middleware to the common app
-* Fixed search app's model.objects.filter indentation, improved result count calculation
+* Fixed search app's model.objects.filter indentation, improved result
+  count calculation
 * Added dynamic comparison types to search app
 * Separated search code from view code
 * Correctly calculate show result count for multi model searches
@@ -72,8 +82,10 @@
 * Show search elapsed time on result page
 
 2011-Mar-07
-* Converter now differentiates between unknown file format and convert errors 
-* Close file descriptors when executing external programs to prevent/reduce file descriptior leaks
+* Converter now differentiates between unknown file format and convert
+  errors 
+* Close file descriptors when executing external programs to
+  prevent/reduce file descriptior leaks
 * Improved exception handling of external programs
 * Show document thumbnail in document ocr queue list
 * Make ocr document date submitted column non breakable
@@ -90,11 +102,13 @@
 * Spanish translation updates
 * Added links, views and permissions to disable or enable an OCR queue
 * Enabled Django's template caching
-* Added document queue property side bar window to the document queue list view
+* Added document queue property side bar window to the document queue
+  list view
 * Added HTML spaceless middleware to remove whitespace in HTML code
 
 2011-Mar-05
-* If current user is superuser or staff show thumbnail & preview generation error messages
+* If current user is superuser or staff show thumbnail & preview
+  generation error messages
 * Added a setting to show document thumbnail in metadata group list
 * Started adding configurations setting descriptions
 
@@ -106,7 +120,8 @@
 2011-Mar-03
 * Added document link in the OCR document queue list
 * Link to manually re queue failed OCR
-* Don't separate links (encose object list links with white-space: nowrap;)
+* Don't separate links (encose object list links with white-space:
+  nowrap;)
 
 2011-Feb-26
 * Added document description to the field search list
@@ -128,17 +143,21 @@
         3) Execute 'Recreate index links' locate in the tools menu
         4) Wait a few minutes
         
-        Some warnings may be returned, but these are not fatal as they might 
-        be related to missing metadata in some documents.
+        Some warnings may be returned, but these are not fatal as they
+        might be related to missing metadata in some documents.
 
 2011-Feb-21
-* Added per document duplicate search and a tools menu option to seach all duplicated documents
-* Added document tool that deletes and re-creates all documents filesystem links
-* Increased document's and document metadata index filename field's size to 255 characters
+* Added per document duplicate search and a tools menu option to seach
+  all duplicated documents
+* Added document tool that deletes and re-creates all documents
+  filesystem links
+* Increased document's and document metadata index filename field's size
+  to 255 characters
 
 2011-Feb-19
 * Added sentry to monitor and store error for later debugging
-* Zip files can now be uncompressed in memory and their content uploaded individually in one step
+* Zip files can now be uncompressed in memory and their content uploaded
+  individually in one step
 
 2011-Feb-17
 * Added support for concurrent, queued OCR processing using celery
@@ -152,18 +171,22 @@
 
 2011-Feb-14
 * Added multipage documents support (only tested on pdfs)
-    To update a previous database do: [d.update_page_count() for d in Document.objects.all()]
+    To update a previous database do: [d.update_page_count() for d in
+    Document.objects.all()]
 * Added support for document page transformation (no GUI yet)
 
 2011-Feb-13
 * Added permissions and roles support
 
 2011-Feb-10
-* Added python-magic for smarter MIME type detection (https://github.com/ahupp/python-magic).
+* Added python-magic for smarter MIME type detection
+  (https://github.com/ahupp/python-magic).
 * Added a new Document model field: file_mime_encoding.
 * Show only document metadata in document list view.
-* If one document type exists, the create document wizard skips the first step.
+* If one document type exists, the create document wizard skips the
+  first step.
 * Changed to a liquid css grid
 
 * Added the ability to group documents by their metadata
-* New abstracted options to adjust document conversion quality (default, low, high)
+* New abstracted options to adjust document conversion quality (default,
+  low, high)
