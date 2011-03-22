@@ -111,7 +111,8 @@ Documents
 * Separate free form document rename and require new permission
 * Test zip file upload with multi directories zip file
 * Don't append an extension separator if extension is non existant
-* Statistics page (total used storage, total docs, per metadata group, per type, per metadata) - DONE
+* Statistics page (total used storage, total docs, per metadata group,
+  per type, per metadata)                                              - DONE
 * Improve doc page template/view
 * Document page edit view
 * Show all document's pages content combined
@@ -143,15 +144,19 @@ Convert
 * Migrate ocr app tesseract handling to convert app                    - DONE
 * Add timeout support convert tasks
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
-* Support spreadsheets, wordprocessing docs using openoffice in server mode
-* Cache.cleanup function to delete cached images when document hash changes
+* Support spreadsheets, wordprocessing docs using openoffice in server
+  mode
+* Cache.cleanup function to delete cached images when document hash
+  changes
 * Support ExactImage
 
 Storage
 =======
-* Storage backend to storage backend copy support, to move/migrate document to new storage backend
+* Storage backend to storage backend copy support, to move/migrate
+  document to new storage backend
 * Encrypting storage backend
-    Middleware storage that calls final storage backend, http://www.freenet.org.nz/ezPyCrypto/
+    Middleware storage that calls final storage backend,
+    http://www.freenet.org.nz/ezPyCrypto/
 
 GridFSStorage
 =============
@@ -163,19 +168,22 @@ GridFSStorage
 
 OCR
 ===
-* Don't do OCR on wordproccessing or spreadsheet document, strip tags and store text
+* Don't do OCR on wordproccessing or spreadsheet document, strip tags
+  and store text
 * Add timeout support to ocr tasks
 * Allow for OCR document requeue on error and requeue limit
 * Multiple ocr queue support                                           - STARTED
-* Add per node max ocr concurrent execution
-* Don't allow duplicate documents in queues                            - STARTED
+* Add per node max ocr concurrent execution                            - DONE
+* Don't allow duplicate documents in queues                            - DONE
 * OCR queue schedule support
-* Make automatic OCR a function of OCR app and not of Documents app (via signals)
-* Two types of OCR nodes: thin, fat (thin = document file is passed serialize to node,
-    fat = has direct access to document storage read document file)
+* Make automatic OCR a function of OCR app and not of Documents app
+  (via signals)
+* Two types of OCR nodes: thin, fat (thin = document file is passed
+  serialize to node, fat = has direct access to document storage read
+  document file)
 * Move document in queue (up, down, top, bottom)
 * Support ocropus
 * Support cuneiform
 * Implement StringIO
-* Add storage replication delay setting
+* Add storage replication delay setting                                - DONE
 * Advanced statistics (OCR average completion time, error rate)
