@@ -20,6 +20,9 @@ from ocr.conf.settings import REPLICATION_DELAY
 @task
 def task_process_queue_document(queue_document_id):
     queue_document = QueueDocument.objects.get(id=queue_document_id)
+    if queue_document.node_name != platform.node():
+    #Recheck to avoid race condition
+        return
     queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
     queue_document.node_name = platform.node()
     queue_document.save()
