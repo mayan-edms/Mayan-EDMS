@@ -81,13 +81,6 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
-    for queue_document in queue_documents:
-        try:
-            queue_document.document
-        except Document.DoesNotExist:
-            messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
-            return HttpResponseRedirect(previous)
-
     if request.method == 'POST':
         for queue_document in queue_documents:
             try:
