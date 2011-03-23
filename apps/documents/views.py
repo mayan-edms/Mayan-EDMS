@@ -557,7 +557,7 @@ def document_download(request, document_id):
     try:
         #Test permissions and trigger exception
         document.open()
-        return serve_file(request, document.file, save_as='%s' % document.get_fullname())
+        return serve_file(request, document.file, save_as='%s' % document.get_fullname(), content_type='image/jpeg')
     except Exception, e:
         messages.error(request, e)
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
