@@ -1,5 +1,7 @@
 from datetime import date, timedelta, datetime
 import platform
+import time
+import random
 
 from django.db.models import Q
 
@@ -20,8 +22,8 @@ from ocr.conf.settings import REPLICATION_DELAY
 @task
 def task_process_queue_document(queue_document_id):
     queue_document = QueueDocument.objects.get(id=queue_document_id)
-    if queue_document.node_name != platform.node():
-    #Recheck to avoid race condition
+    if queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
+        #Recheck to avoid race condition
         return
     queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
     queue_document.node_name = platform.node()
@@ -39,6 +41,9 @@ class DocumentQueueWatcher(PeriodicTask):
     run_every = timedelta(seconds=5)
 
     def run(self, **kwargs):
+        #Introduce random 0 < t < 1 second delay to further reduce the
+        #chance of a race condition
+        time.sleep(random.random())
         logger = self.get_logger(**kwargs)
         logger.info('Running queue watcher.')
         logger.debug('Active queues: %s' % DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE))
