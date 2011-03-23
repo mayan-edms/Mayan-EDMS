@@ -161,23 +161,23 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=[]
             messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
             return HttpResponseRedirect(previous)
 
-        if queue_document.state == QUEUEDOCUMENT_STATE_PENDING:
-            messages.warning(request, _(u'Document: %s is already queued and pending processing.') % queue_document)
-            return HttpResponseRedirect(previous)
-        elif queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
+        if queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
             messages.warning(request, _(u'Document: %s is already being processed and can\'t be re-queded.') % queue_document)
             return HttpResponseRedirect(previous)
 
     if request.method == 'POST':
         for queue_document in queue_documents:
             try:
-                if queue_document.state == QUEUEDOCUMENT_STATE_ERROR:
+                if queue_document.state != QUEUEDOCUMENT_STATE_PROCESSING:
                     queue_document.datetime_submitted = datetime.datetime.now()
                     queue_document.state = QUEUEDOCUMENT_STATE_PENDING
                     queue_document.delay = False
                     queue_document.save()
                     messages.success(request, _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
                         'document':queue_document.document, 'queue':queue_document.document_queue.label})
+                else:
+                    messages.success(request, _(u'Document: %(document)s can\'t be re-queued.') % {
+                        'document':queue_document.document})
 
             except Exception, e:
                 messages.error(request, e)
