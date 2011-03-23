@@ -54,6 +54,8 @@ TODO, WISHLIST
 * Exif to metadata convertion
 * External portal using sites contrib app
 * Scanned document embedded barcode reading
+* Print view
+* Encode metadata in barcode or qrcode on hardcopy 
 
 Main
 ====
