@@ -94,16 +94,13 @@ def document_exists(document):
 
 
 register_model_list_columns(Document, [
-    {'name':_(u'thumbnail'), 'attribute': 
-        lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
-            reverse('document_thumbnail', args=[x.id]))
-    },
-    {'name':_(u'metadata'), 'attribute': 
-        lambda x: ', '.join(['%s - %s' %(metadata.metadata_type, metadata.value) for metadata in x.documentmetadata_set.all()])
-    },
-    {'name':_(u'exists'), 'attribute': 
-        lambda x: document_exists(x)
-    },
+        {'name':_(u'thumbnail'), 'attribute': 
+            lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
+                reverse('document_thumbnail', args=[x.id]))
+        },
+        {'name':_(u'metadata'), 'attribute': 
+            lambda x: ', '.join(['%s - %s' %(metadata.metadata_type, metadata.value) for metadata in x.documentmetadata_set.all()])
+        },
     ])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
