@@ -101,7 +101,7 @@ def document_create_sibling(request, document_id, multiple=True):
     urldata = []
     for id, metadata in enumerate(document.documentmetadata_set.all()):
         if hasattr(metadata, 'value'):
-            urldata.append(('metadata%s_id' % id, metadata.metadata_type.id))   
+            urldata.append(('metadata%s_id' % id, metadata.metadata_type_id))   
             urldata.append(('metadata%s_value' % id, metadata.value))
         
     if multiple:
@@ -109,7 +109,7 @@ def document_create_sibling(request, document_id, multiple=True):
     else:
         view = 'upload_document_with_type'
     
-    url = reverse(view, args=[document.document_type.id])
+    url = reverse(view, args=[document.document_type_id])
     return HttpResponseRedirect('%s?%s' % (url, urlencode(urldata)))
 
 
@@ -255,7 +255,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
 def document_view(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
             
-    document = get_object_or_404(Document, pk=document_id)
+    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     form = DocumentForm_view(instance=document, extra_fields=[
         {'label':_(u'Filename'), 'field':'file_filename'},
         {'label':_(u'File extension'), 'field':'file_extension'},
@@ -685,7 +685,7 @@ def document_page_transformation_edit(request, document_page_transformation_id):
     return update_object(request, template_name='generic_form.html', 
         form_class=DocumentPageTransformationForm, 
         object_id=document_page_transformation_id,
-        post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page.id]),
+        post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
         extra_context={
             'object_name':_(u'transformation')}
         )
@@ -709,7 +709,7 @@ def document_page_transformation_delete(request, document_page_transformation_id
         
     return delete_object(request, model=DocumentPageTransformation, object_id=document_page_transformation_id, 
         template_name='generic_confirm.html', 
-        post_delete_redirect=reverse('document_page_view', args=[document_page_transformation.document_page.id]),
+        post_delete_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
         extra_context={
             'delete_view':True,
             'object':document_page_transformation,
@@ -763,7 +763,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
+        documents = [get_object_or_404(Document.objects, pk=document_id)]
         post_redirect = reverse('document_view', args=[documents[0].pk])
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
@@ -812,7 +812,7 @@ def document_multiple_clear_transformations(request):
 def document_view_simple(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
             
-    document = get_object_or_404(Document, pk=document_id)
+    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     
     content_form = DocumentContentForm(document=document)
         
