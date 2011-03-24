@@ -15,6 +15,7 @@ from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.uploadedfile import SimpleUploadedFile    
 
+import sendfile
 from common.utils import pretty_size
 from converter.api import convert, in_image_cache, QUALITY_DEFAULT, \
     UnkownConvertError, UnknownFormat
@@ -524,30 +525,30 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     try:
         filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page-1)
         if filepath:
-            return serve_file(request, File(file=open(filepath, 'r')), content_type='image/jpeg')
+            return sendfile.sendfile(request, filename=filepath)
         #Save to a temporary location
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
         output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
-        return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
+        return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         if size == THUMBNAIL_SIZE:
-            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL), 'r')))
+            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL))
         else:
-            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
+            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
     except UnknownFormat:
         if size == THUMBNAIL_SIZE:
-            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_SMALL), 'r')))
+            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_SMALL))
         else:
-            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM), 'r')))
+            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM))
     except Exception, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         if size == THUMBNAIL_SIZE:
-            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL), 'r')))
+            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL))
         else:
-            return serve_file(request, File(file=open('%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
+            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
 
         
 def document_download(request, document_id):
