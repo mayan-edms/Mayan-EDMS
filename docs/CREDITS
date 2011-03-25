@@ -120,3 +120,7 @@ Image 1299549805_unknown.png
 Image 1299551545_egypt200.png
     Iconka
     http://iconka.com/
+
+django-sendfile - This is a wrapper around web-server specific methods for sending files to web clients. 
+    johnsensible (John Montgomery)
+    https://github.com/johnsensible/django-sendfile
