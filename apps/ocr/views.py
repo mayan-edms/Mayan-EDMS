@@ -172,6 +172,7 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=[]
                     queue_document.datetime_submitted = datetime.datetime.now()
                     queue_document.state = QUEUEDOCUMENT_STATE_PENDING
                     queue_document.delay = False
+                    queue_document.result = None
                     queue_document.save()
                     messages.success(request, _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
                         'document':queue_document.document, 'queue':queue_document.document_queue.label})
