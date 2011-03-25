@@ -229,7 +229,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Searching
 #SEARCH_LIMIT = 100
 
-# Override
+# django-sendfile
+# Change to xsendfile for apache if x-sendfile is enabled
+SENDFILE_BACKEND = 'sendfile.backends.simple'
+
 #----------- django-celery --------------
 import djcelery
 djcelery.setup_loader()
