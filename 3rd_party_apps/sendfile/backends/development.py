@@ -2,7 +2,7 @@ from django.views.static import serve
 
 import os.path
 
-def sendfile(request, filename):
+def sendfile(request, filename, **kwargs):
     '''
     Send file using django dev static file server.
 

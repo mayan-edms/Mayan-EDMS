@@ -18,7 +18,7 @@ def _convert_file_to_url(filename):
 
     return u''.join(url)
 
-def sendfile(request, filename):
+def sendfile(request, filename, **kwargs):
     response = HttpResponse()
     response['Location'] = _convert_file_to_url(filename)
     # need to destroy get_host() to stop django

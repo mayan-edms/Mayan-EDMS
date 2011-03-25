@@ -4,6 +4,8 @@ __version__ = '.'.join(map(str, VERSION))
 import os.path
 from mimetypes import guess_type
 
+from django.http import Http404
+
 def _lazy_load(fn):
     _cached = []
     def _decorated():
@@ -19,7 +21,7 @@ def _get_sendfile():
     from django.conf import settings
     from django.core.exceptions import ImproperlyConfigured
 
-    backend = getattr(settings, 'SENDFILE_BACKEND', 'sendfile.backends.simple')
+    backend = getattr(settings, 'SENDFILE_BACKEND', None)
     if not backend:
         raise ImproperlyConfigured('You must specify a valued for SENDFILE_BACKEND')
     module = import_module(backend)
@@ -36,16 +38,22 @@ def sendfile(request, filename, attachment=False, attachment_filename=None):
     will typically prompt the user to download the file, rather than view it.
     '''
     _sendfile = _get_sendfile()
-    response = _sendfile(request, filename)
+
+    if not os.path.exists(filename):
+        raise Http404('"%s" does not exist' % filename)
+
+    mimetype, encoding = guess_type(filename)
+    if mimetype is None:
+        mimetype = 'application/octet-stream'
+        
+    response = _sendfile(request, filename, mimetype=mimetype)
     if attachment:
         attachment_filename = attachment_filename or os.path.basename(filename)
         response['Content-Disposition'] = 'attachment; filename=%s' % attachment_filename
 
     response['Content-length'] = os.path.getsize(filename)
-
-    content_type = guess_type(filename)[0]
-    if content_type is None:
-        content_type = "application/octet-stream"
-    response['Content-Type'] = content_type
+    response['Content-Type'] = mimetype
+    if encoding:
+        response['Content-Encoding'] = encoding
 
     return response
