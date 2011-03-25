@@ -240,6 +240,8 @@ BROKER_PASSWORD = "guest"
 BROKER_VHOST = "/"
 CELERYBEAT_SCHEDULER='djcelery.schedulers.DatabaseScheduler'
 #======== End of user configuration options =======
+#--------- Web theme ---------------
+WEB_THEME_ENABLE_SCROLL_JS = False
 #--------- Grappelli ----------------
 #GRAPPELLI_ADMIN_TITLE = PROJECT_TITLE
 #--------- Django -------------------

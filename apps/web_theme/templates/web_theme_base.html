@@ -28,15 +28,24 @@
         {% block web_theme_stylesheets %}{% endblock %}
 
         <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery-1.3.min.js"></script>
-        <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.scrollTo.js"></script>
-        <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.localscroll.js"></script>
-
+        {% if enable_scroll_js %}
+            <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.scrollTo.js"></script>#}
+            <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.localscroll.js"></script>#}
+        {% endif %}
+        
         <script type="text/javascript">
             $(document).ready(function() {
                 $(".message").fadeIn("slow");
                 $(".dismiss").click(function(){
                     $(this).parent().parent().fadeOut("slow"); return false;
                 });
+              $('.table :checkbox.toggle').each(function(i, toggle) {
+                $(toggle).change(function(e) {
+                  $(toggle).parents('table:first').find(':checkbox:not(.toggle)').each(function(j, checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                  })
+                });
+              });                
             });
         </script>
         

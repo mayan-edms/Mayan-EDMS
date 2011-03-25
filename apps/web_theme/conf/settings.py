@@ -5,3 +5,4 @@ from django.conf import settings
 #kathleene, olive, orange, red, reidb-greenish, warehouse
 
 THEME = getattr(settings, 'WEB_THEME', 'default')
+ENABLE_SCROLL_JS = getattr(settings, 'WEB_THEME_ENABLE_SCROLL_JS', True)
