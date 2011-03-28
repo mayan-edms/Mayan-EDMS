@@ -5,7 +5,7 @@ from common.utils import pretty_size, pretty_size_10
 from permissions.api import check_permissions
 
 from documents.conf.settings import STORAGE_BACKEND
-from models import Document, DocumentType
+from models import Document, DocumentType, DocumentPage
 
 
 def get_used_size(path, file_list):
@@ -47,6 +47,10 @@ def get_statistics():
             (pretty_size(storage_used_space), pretty_size_10(storage_used_space), storage_used_space))
     except NotImplementedError:
         pass
+
+    paragraphs.append(
+        _(u'Document pages in database: %d') % DocumentPage.objects.only('id',).count(),
+    )
     
     return {
         'title':_(u'Document statistics'),
