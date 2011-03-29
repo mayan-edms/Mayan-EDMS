@@ -8,9 +8,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.core.exceptions import PermissionDenied 
 
+from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
+    PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, \
+    PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE
 
 from models import Permission, Role
-
 
 def register_permissions(namespace, permissions):
     if permissions:
@@ -67,3 +69,13 @@ def check_elements(requester, requester_list):
     for requester_object in requester_list:
         if requester == requester_object:
             return True
+
+
+register_permissions('permissions', [
+    {'name':PERMISSION_ROLE_VIEW, 'label':_(u'View roles')},
+    {'name':PERMISSION_ROLE_EDIT, 'label':_(u'Edit roles')},
+    {'name':PERMISSION_ROLE_CREATE, 'label':_(u'Create roles')},
+    {'name':PERMISSION_ROLE_DELETE, 'label':_(u'Delete roles')},
+    {'name':PERMISSION_PERMISSION_GRANT, 'label':_(u'Grant permissions')},
+    {'name':PERMISSION_PERMISSION_REVOKE, 'label':_(u'Revoke permissions')},
+])

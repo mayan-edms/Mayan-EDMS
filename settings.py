@@ -97,8 +97,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'common.middleware.login_required_middleware.LoginRequiredMiddleware',
+    'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
     'pagination.middleware.PaginationMiddleware',
-    'permissions.middleware.permissiondeniedmiddleware.PermissionDeniedMiddleware',
 )
 
 ROOT_URLCONF = 'urls'

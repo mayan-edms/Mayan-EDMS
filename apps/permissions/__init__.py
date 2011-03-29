@@ -3,13 +3,10 @@ from django.db.models.signals import post_save
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_menu, \
-    register_model_list_columns
+from navigation.api import register_links, register_menu
     
 from permissions.conf.settings import DEFAULT_ROLES
-
 from models import Role
-from api import register_permissions
 
 PERMISSION_ROLE_VIEW = 'role_view'
 PERMISSION_ROLE_EDIT = 'role_edit'
@@ -17,15 +14,6 @@ PERMISSION_ROLE_CREATE = 'role_create'
 PERMISSION_ROLE_DELETE = 'role_delete'
 PERMISSION_PERMISSION_GRANT = 'permission_grant'
 PERMISSION_PERMISSION_REVOKE = 'permission_revoke'
-
-register_permissions('permissions', [
-    {'name':PERMISSION_ROLE_VIEW, 'label':_(u'View roles')},
-    {'name':PERMISSION_ROLE_EDIT, 'label':_(u'Edit roles')},
-    {'name':PERMISSION_ROLE_CREATE, 'label':_(u'Create roles')},
-    {'name':PERMISSION_ROLE_DELETE, 'label':_(u'Delete roles')},
-    {'name':PERMISSION_PERMISSION_GRANT, 'label':_(u'Grant permissions')},
-    {'name':PERMISSION_PERMISSION_REVOKE, 'label':_(u'Revoke permissions')},
-])
 
 
 role_list = {'text':_(u'roles'), 'view':'role_list', 'famfam':'medal_gold_1', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_VIEW]}}
