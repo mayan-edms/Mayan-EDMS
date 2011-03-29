@@ -348,19 +348,19 @@ def document_view(request, document_id):
     
 def document_delete(request, document_id=None, document_id_list=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DELETE])
-          
+    post_action_redirect = None
+    
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
-        post_redirect = reverse('document_view', args=[documents[0].pk])
+        post_action_redirect = reverse('document_list')
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-        post_redirect = None
     else:
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))          
             
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
         for document in documents:
