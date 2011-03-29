@@ -27,14 +27,17 @@ register_links(['role_list', 'role_view', 'role_create', 'role_edit', 'role_perm
 
 
 def user_post_save(sender, instance, **kwargs):
-    for default_role in DEFAULT_ROLES:
-        if isinstance(default_role, Role):
-            default_role.add_member(instance)
-        else:
-            try:
-                role = Role.objects.get(name=default_role)
-                role.add_member(instance)
-            except ObjectDoesNotExist:
-                pass
+    if kwargs.get('created', False):
+        for default_role in DEFAULT_ROLES:
+            if isinstance(default_role, Role):
+                #If a model is passed, execute method
+                default_role.add_member(instance)
+            else:
+                #If a role name is passed, lookup the corresponding model
+                try:
+                    role = Role.objects.get(name=default_role)
+                    role.add_member(instance)
+                except ObjectDoesNotExist:
+                    pass
 
 post_save.connect(user_post_save, sender=User)
