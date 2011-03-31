@@ -4,16 +4,22 @@ import subprocess
 import tempfile
 import shutil
 
+from django.utils.importlib import import_module
+from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
 from django.template.defaultfilters import slugify
 
-from converter.conf.settings import CONVERT_PATH
+
 from converter.conf.settings import UNPAPER_PATH
-from converter.conf.settings import IDENTIFY_PATH
 from converter.conf.settings import OCR_OPTIONS
 from converter.conf.settings import DEFAULT_OPTIONS
 from converter.conf.settings import LOW_QUALITY_OPTIONS
 from converter.conf.settings import HIGH_QUALITY_OPTIONS
+from converter.conf.settings import GRAPHICS_BACKEND
 
+from exceptions import ConvertError, UnknownFormat, UnpaperError, \
+    IdentifyError, UnkownConvertError
+    
 #from converter.conf.settings import UNOCONV_PATH
 from common import TEMPORARY_DIRECTORY
 from converter import TRANFORMATION_CHOICES
@@ -26,28 +32,19 @@ QUALITY_HIGH = 'quality_high'
 QUALITY_SETTINGS = {QUALITY_DEFAULT:DEFAULT_OPTIONS, QUALITY_LOW:LOW_QUALITY_OPTIONS,
     QUALITY_HIGH:HIGH_QUALITY_OPTIONS}
 
-CONVERTER_ERROR_STRING_NO_DECODER = 'no decode delegate for this image format'
+def _lazy_load(fn):
+    _cached = []
+    def _decorated():
+        if not _cached:
+            _cached.append(fn())
+        return _cached[0]
+    return _decorated
 
-
-class ConvertError(Exception):
-    pass
-
-
-class UnknownFormat(ConvertError):
-    pass
-
-
-class UnpaperError(ConvertError):
-    pass
+@_lazy_load
+def _get_backend():
+    return import_module(GRAPHICS_BACKEND)
     
-    
-class IdentifyError(ConvertError):
-    pass
-
-    
-class UnkownConvertError(ConvertError):
-    pass
-
+backend = _get_backend()
 
 def cleanup(filename):
     ''' tries to remove the given filename. Ignores non-existent files '''
@@ -56,26 +53,6 @@ def cleanup(filename):
     except OSError:
         pass
 
-#TODO: Timeout & kill child
-def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
-    command = []
-    command.append(CONVERT_PATH)
-    command.extend(shlex.split(str(QUALITY_SETTINGS[quality])))
-    command.append(input_filepath)
-    if arguments:
-        command.extend(shlex.split(str(arguments)))
-    command.append(output_filepath)
-    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    return_code = proc.wait()
-    if return_code != 0:
-        #Got an error from convert program
-        error_line = proc.stderr.readline()
-        if CONVERTER_ERROR_STRING_NO_DECODER in error_line:
-            #Try to determine from error message which class of error is it
-            raise UnknownFormat
-        else:
-            raise ConvertError(error_line)
-        
 def execute_unpaper(input_filepath, output_filepath):
     command = []
     command.append(UNPAPER_PATH)
@@ -97,17 +74,7 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
         shutil.copyfileobj(proc.stdout, output)
     return (proc.wait(), proc.stderr.read())
 """
-def execute_identify(input_filepath, arguments):
-    command = []
-    command.append(IDENTIFY_PATH)
-    command.extend(shlex.split(str(arguments)))
-    command.append(input_filepath)
 
-    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    return_code = proc.wait()
-    if return_code != 0:
-        raise IdentifyError(proc.stderr.readline())
-    return proc.stdout.read()
         
 def cache_cleanup(input_filepath, size, page=0, format='jpg'):
     filepath = create_image_cache_filename(input_filepath, size, page, format)
@@ -159,7 +126,7 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
     try:
         input_arg = '%s[%s]' % (input_filepath, page)
         extra_options += ' -resize %s' % size
-        execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath='%s:%s' % (format, output_filepath), quality=quality)
+        backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath='%s:%s' % (format, output_filepath), quality=quality)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -170,7 +137,7 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
 
 def get_page_count(input_filepath):
     try:
-        return int(execute_identify(input_filepath, '-format %n'))
+        return int(backend.execute_identify(input_filepath, '-format %n'))
     except Exception, e:
         #TODO: send to other page number identifying program
         return 1
@@ -211,13 +178,13 @@ def convert_document_for_ocr(document, page=0, format='tif'):
     tranformation_string = ' '.join(transformation_list)
     try:
         #Apply default transformations
-        execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=tranformation_string, output_filepath=transformation_output_file)
+        backend.execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=tranformation_string, output_filepath=transformation_output_file)
         #Do OCR operations
-        execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
+        backend.execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper
         execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
         # Convert to tif
-        execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
+        backend.execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
     finally:
         cleanup(transformation_output_file)
         cleanup(unpaper_input_file)

@@ -17,8 +17,8 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 import sendfile
 from common.utils import pretty_size
-from converter.api import convert, in_image_cache, QUALITY_DEFAULT, \
-    UnkownConvertError, UnknownFormat
+from converter.api import convert, in_image_cache, QUALITY_DEFAULT
+from converter.exceptions import UnkownConvertError, UnknownFormat
 from converter import TRANFORMATION_CHOICES
 from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
