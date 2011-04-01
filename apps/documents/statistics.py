@@ -42,9 +42,13 @@ def get_statistics():
     
     try:
         total_storage_documents, storage_used_space = storage_count()
-        paragraphs.append(_(u'Documents in storage: %d') % total_storage_documents)
-        paragraphs.append(_(u'Space used in storage: %s (base 2), %s (base 10), %d bytes') %
-            (pretty_size(storage_used_space), pretty_size_10(storage_used_space), storage_used_space))
+        paragraphs.append(_(u'Documents in storage: %d') %
+            total_storage_documents)
+        paragraphs.append(_(u'Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes') % {
+            'base_2':pretty_size(storage_used_space),
+            'base_10':pretty_size_10(storage_used_space),
+            'bytes':storage_used_space
+        })
     except NotImplementedError:
         pass
 

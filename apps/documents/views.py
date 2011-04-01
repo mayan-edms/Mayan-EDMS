@@ -369,7 +369,8 @@ def document_delete(request, document_id=None, document_id_list=None):
                 document.delete()
                 messages.success(request, _(u'Document: %s deleted successfully.') % document)
             except Exception, e:
-                messages.error(request, _(u'Document: %s delete error: %s') % (document, e))
+                messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
+                    'document':document, 'error':e})
 
         return HttpResponseRedirect(next)
         
@@ -510,9 +511,9 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
     }
     if len(documents) == 1:
         context['object'] = documents[0]  
-        context['title'] = _(u'Edit metadata for document: %s?') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Edit metadata for document: %s') % ', '.join([unicode(d) for d in documents])
     elif len(documents) > 1:
-        context['title'] = _(u'Edit metadata for documents: %s?') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Edit metadata for documents: %s') % ', '.join([unicode(d) for d in documents])
                 
         
     return render_to_response('generic_form.html', context,
@@ -809,7 +810,8 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
                         transformation.delete()
                 messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % document)
             except Exception, e:
-                messages.error(request, _(u'Error deleting the page transformations for document: %s; %s.') % (document, e))
+                messages.error(request, _(u'Error deleting the page transformations for document: %(document)s; %(error)s.') % {
+                    'document':document, 'error':e})
 
         return HttpResponseRedirect(next)
         
