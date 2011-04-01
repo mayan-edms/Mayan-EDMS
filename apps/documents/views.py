@@ -441,61 +441,86 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def document_edit_metadata(request, document_id):
+def document_edit_metadata(request, document_id=None, document_id_list=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_METADATA_EDIT])
             
-    document = get_object_or_404(Document, pk=document_id)
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        if len(set([document.document_type for document in documents])) > 1:
+            messages.error(request, _(u'All documents must be from the same type.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))          
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))          
 
+    metadata={}
+    for document in documents:
+        for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
+            value = document.documentmetadata_set.get(metadata_type=item.metadata_type).value if document.documentmetadata_set.filter(metadata_type=item.metadata_type) else u''
+            if item.metadata_type in metadata:
+                if value not in metadata[item.metadata_type]:
+                    metadata[item.metadata_type].append(value)
+            else:
+                metadata[item.metadata_type] = [value]
+                
     initial=[]
-    for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
+    for key, value in metadata.items():
         initial.append({
-            'metadata_type':item.metadata_type,
+            'metadata_type':key,
             'document_type':document.document_type,
-            'value':document.documentmetadata_set.get(metadata_type=item.metadata_type).value if document.documentmetadata_set.filter(metadata_type=item.metadata_type) else None
+            'value': u', '.join(value)
         })
-    #for metadata in document.documentmetadata_set.all():
-    #    initial.append({
-    #        'metadata_type':metadata.metadata_type,
-    #        'document_type':document.document_type,
-    #        'value':metadata.value,
-    #    })    
 
     formset = MetadataFormSet(initial=initial)
     if request.method == 'POST':
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
-            save_metadata_list(formset.cleaned_data, document)
-            try:
-                document_delete_fs_links(document)
-            except Exception, e:
-                messages.error(request, e)
-                return HttpResponseRedirect(reverse('document_list'))
-           
-            messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
-            
-            try:
-                warnings = document_create_fs_links(document)
-
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, warning)                
-
-                messages.success(request, _(u'Document filesystem links updated successfully.'))                
-            except Exception, e:
-                messages.error(request, e)
-                return HttpResponseRedirect(document.get_absolute_url())
+            for document in documents:
+                save_metadata_list(formset.cleaned_data, document)
+                try:
+                    document_delete_fs_links(document)
+                except Exception, e:
+                    messages.error(request, _(u'Error deleting filesystem links for document: %(document)s; %(error)s') % {
+                        'document':document, 'error':e})
+               
+                messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
                 
-            return HttpResponseRedirect(document.get_absolute_url())
+                try:
+                    warnings = document_create_fs_links(document)
+
+                    if request.user.is_staff or request.user.is_superuser:
+                        for warning in warnings:
+                            messages.warning(request, warning)                
+
+                    messages.success(request, _(u'Filesystem links updated successfully for document: %s.') % document)
+                except Exception, e:
+                    messages.error(request, _('Error creating filesystem links for document: %(document)s; %(error)s') % {
+                        'document':document, 'error':e})
+                    
+            if len(documents) == 1:
+                return HttpResponseRedirect(document.get_absolute_url())
+            elif len(documents) > 1:
+                return HttpResponseRedirect(reverse('document_list'))
         
-        
-    return render_to_response('generic_form.html', {
+    context = {
         'form_display_mode_table':True,
         'form':formset,
-        'object':document,
+    }
+    if len(documents) == 1:
+        context['object'] = documents[0]  
+        context['title'] = _(u'Edit metadata for document: %s?') % ', '.join([unicode(d) for d in documents])
+    elif len(documents) > 1:
+        context['title'] = _(u'Edit metadata for documents: %s?') % ', '.join([unicode(d) for d in documents])
+                
+        
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))
     
-    }, context_instance=RequestContext(request))
+def document_multiple_edit_metadata(request):
+    return document_edit_metadata(request, document_id_list=request.GET.get('id_list', []))
     
-
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
         
