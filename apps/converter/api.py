@@ -43,8 +43,11 @@ def _lazy_load(fn):
 @_lazy_load
 def _get_backend():
     return import_module(GRAPHICS_BACKEND)
-    
-backend = _get_backend()
+
+try:    
+    backend = _get_backend()
+except ImportError:
+    raise ImportError('Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
 
 def cleanup(filename):
     ''' tries to remove the given filename. Ignores non-existent files '''
