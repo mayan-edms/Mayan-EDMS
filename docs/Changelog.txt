@@ -1,3 +1,54 @@
+2011-Apr-01
+* Added support for editing the metadata of multiple documents at the
+  same time
+
+2011-Mar-31
+* Added Graphics magick support by means of user selectable graphic
+  convertion backends
+  Some settings renamed to support this change:
+      CONVERTER_CONVERT_PATH is now CONVERTER_IM_CONVERT_PATH
+      CONVERTER_IDENTIFY_PATH is now CONVERTER_IM_IDENTIFY_PATH
+  Added options:
+      CONVERTER_GM_PATH - File path to graphicsmagick's program.
+      CONVERTER_GRAPHICS_BACKEND - Backend to use: ImageMagick or 
+      GraphicMagick
+  
+* Raise ImportError and notify user when specifying a non existant
+  converter graphics backend
+
+2011-Mar-29
+* Fixed issue #4, avoid circular import in permissions/__init__.py
+* Add a user to a default role only when the user is created
+
+2011-Mar-28
+* Added total page count to statistics view
+
+2011-Mar-25
+* Added support to disable the default scrolling JS code included in
+  web_theme app, saving some KBs in transfer
+* Clear last ocr results when requeueing a document
+
+2011-Mar-24
+* Removed the 'exists' column in document list view, diagnostics
+  superceded this
+* Added 3rd party sendfile app (support apache's X-sendfile)
+* Updated the get_document_image view to use the new sendfile app
+
+2011-Mar-23
+* Fixed the issue of the strip spaces middleware conflicting with
+  downloads
+* Removed custom IE9 tags
+* Closed Issue #6
+* Allow deletion of non existing documents from OCR queue
+* Allow OCR requeue of pending documents
+* Invalid page numbers now raise Http404, not found instead of error
+* Added an additional check to lower the chance of OCR race conditions
+  between nodes
+* Introduce a random delay to each node to further reduce the chance of
+  a race condition, until row locking can be implemented or is
+  implemented by Django
+
+
 2011-Mar-22
 * Moved navigation code to its own app
 * Reimplemented OCR delay code, only delay new document
@@ -5,6 +56,7 @@
 * Made the concurrent ocr code more granular, per node, every node can
   handle different amounts of concurrent ocr tasks
   Added a new field: node_name, update your database schema acordinging
+* Reduced default ocr delay time
 
 2011-Mar-21
 * Added a new diagnostics tab under the tools menu
