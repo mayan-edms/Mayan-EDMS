@@ -37,7 +37,6 @@ def check_settings(request):
         {'name':'DOCUMENTS_THUMBNAIL_SIZE', 'value':documents_settings.THUMBNAIL_SIZE},
         {'name':'DOCUMENTS_DISPLAY_SIZE', 'value':documents_settings.DISPLAY_SIZE},
         {'name':'DOCUMENTS_TRANFORMATION_PREVIEW_SIZE', 'value':documents_settings.TRANFORMATION_PREVIEW_SIZE},
-        {'name':'DOCUMENTS_AUTOMATIC_OCR', 'value':documents_settings.AUTOMATIC_OCR},
         {'name':'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value':documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
         {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
         {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
@@ -84,6 +83,7 @@ def check_settings(request):
         {'name':'CONVERTER_HIGH_QUALITY_OPTIONS', 'value':converter_settings.HIGH_QUALITY_OPTIONS},
 
         # OCR
+        {'name':'OCR_AUTOMATIC_OCR', 'value':ocr_settings.AUTOMATIC_OCR},
         {'name':'OCR_TESSERACT_PATH', 'value':ocr_settings.TESSERACT_PATH, 'exists':True},
         {'name':'OCR_TESSERACT_LANGUAGE', 'value':ocr_settings.TESSERACT_LANGUAGE},
         {'name':'OCR_NODE_CONCURRENT_EXECUTION', 'value':ocr_settings.NODE_CONCURRENT_EXECUTION},

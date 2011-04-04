@@ -3,12 +3,13 @@ from multiprocessing import Queue
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
+from django.db.models.signals import post_save
 
 from navigation.api import register_links, register_menu, register_multi_item_links
 from permissions.api import register_permissions
-
 from documents.models import Document
 
+from ocr.conf.settings import AUTOMATIC_OCR
 from models import DocumentQueue, QueueDocument
 from literals import QUEUEDOCUMENT_STATE_PROCESSING, \
     QUEUEDOCUMENT_STATE_PENDING, DOCUMENTQUEUE_STATE_STOPPED, \
@@ -55,3 +56,11 @@ try:
 except DatabaseError:
     #syncdb
     pass
+
+
+def document_post_save(sender, instance, **kwargs):
+    if kwargs.get('created', False):
+        if AUTOMATIC_OCR:
+            DocumentQueue.objects.queue_document(instance)
+
+post_save.connect(document_post_save, sender=Document)

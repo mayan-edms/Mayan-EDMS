@@ -24,7 +24,6 @@ from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from permissions.api import check_permissions
-from ocr.views import submit_document_to_queue
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -36,7 +35,6 @@ from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents.conf.settings import GROUP_SHOW_THUMBNAIL
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
-from documents.conf.settings import AUTOMATIC_OCR
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
 from documents.conf.settings import STORAGE_BACKEND
@@ -115,10 +113,6 @@ def document_create_sibling(request, document_id, multiple=True):
 
 
 def _handle_save_document(request, document, form=None):
-    #TODO: move this to OCR app as a post_save signal on create==True
-    if AUTOMATIC_OCR:
-        submit_document_to_queue(request, document)
-    
     if form and 'document_type_available_filenames' in form.cleaned_data:
         if form.cleaned_data['document_type_available_filenames']:
             document.file_filename = form.cleaned_data['document_type_available_filenames'].filename

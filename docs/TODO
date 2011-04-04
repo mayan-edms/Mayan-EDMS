@@ -179,7 +179,7 @@ OCR
 * Don't allow duplicate documents in queues                            - DONE
 * OCR queue schedule support
 * Make automatic OCR a function of OCR app and not of Documents app
-  (via signals)
+  (via signals)                                                        - DONE
 * Two types of OCR nodes: thin, fat (thin = document file is passed
   serialized to node, fat = has direct access to document storage read
   document file)

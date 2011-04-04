@@ -2,6 +2,9 @@
 * Added a new setup option:
     FILESYSTEM_INDEXING_AVAILABLE_FUNCTIONS - a dictionary to allow users
     to add custom functions
+* Made automatic OCR a function of the OCR app and not of Documents app
+  (via signals)
+  Renamed setup option DOCUMENT_AUTOMATIC_OCR to OCR_AUTOMATIC_OCR
 
 2011-Apr-01
 * Added support for editing the metadata of multiple documents at the
