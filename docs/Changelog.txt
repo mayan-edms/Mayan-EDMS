@@ -1,3 +1,8 @@
+2011-Apr-04
+* Added a new setup option:
+    FILESYSTEM_INDEXING_AVAILABLE_FUNCTIONS - a dictionary to allow users
+    to add custom functions
+
 2011-Apr-01
 * Added support for editing the metadata of multiple documents at the
   same time

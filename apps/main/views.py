@@ -54,7 +54,8 @@ def check_settings(request):
         {'name':'FILESYSTEM_FILESERVING_PATH', 'value':filesystem_serving_settings.FILESERVING_PATH, 'exists':True},
         {'name':'FILESYSTEM_SLUGIFY_PATHS', 'value':filesystem_serving_settings.SLUGIFY_PATHS},
         {'name':'FILESYSTEM_MAX_RENAME_COUNT', 'value':filesystem_serving_settings.MAX_RENAME_COUNT},
-        
+        {'name':'FILESYSTEM_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value':filesystem_serving_settings.AVAILABLE_INDEXING_FUNCTIONS},
+
         # Common
         {'name':'COMMON_TEMPORARY_DIRECTORY',
             'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True,

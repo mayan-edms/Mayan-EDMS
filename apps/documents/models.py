@@ -12,6 +12,7 @@ from python_magic import magic
 
 from dynamic_search.api import register
 from converter.api import get_page_count
+from filesystem_serving.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
@@ -246,11 +247,14 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name_plural = _(u'document type metadata type connectors')
 
 
+
+available_indexing_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else ''
+
 class MetadataIndex(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     expression = models.CharField(max_length=128,
         verbose_name=_(u'indexing expression'),
-        help_text=_(u'Enter a python string expression to be evaluated.  The slash caracter "/" acts as a directory delimiter.'))
+        help_text=_(u'Enter a python string expression to be evaluated.  The slash caracter "/" acts as a directory delimiter.%s') % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     
     def __unicode__(self):

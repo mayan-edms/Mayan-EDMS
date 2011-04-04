@@ -8,6 +8,7 @@ from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from filesystem_serving.conf.settings import FILESERVING_PATH
 from filesystem_serving.conf.settings import SLUGIFY_PATHS
 from filesystem_serving.conf.settings import MAX_RENAME_COUNT
+from filesystem_serving.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
 from models import DocumentMetadataIndex, Document
 
@@ -27,7 +28,7 @@ def document_create_fs_links(document):
         for metadata_index in document.document_type.metadataindex_set.all():
             if metadata_index.enabled:
                 try:
-                    fabricated_directory = eval(metadata_index.expression, metadata_dict)
+                    fabricated_directory = eval(metadata_index.expression, metadata_dict, AVAILABLE_INDEXING_FUNCTIONS)
                     target_directory = os.path.join(FILESERVING_PATH, fabricated_directory)
                     try:
                         os.makedirs(target_directory)
