@@ -142,7 +142,7 @@ Search
 
 Convert
 =======
-* Create mimetype convertion map for convert app
+* Create mimetype convert map
 * Migrate ocr app tesseract handling to convert app                    - DONE
 * Add timeout support convert tasks
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
@@ -181,7 +181,7 @@ OCR
 * Make automatic OCR a function of OCR app and not of Documents app
   (via signals)
 * Two types of OCR nodes: thin, fat (thin = document file is passed
-  serialize to node, fat = has direct access to document storage read
+  serialized to node, fat = has direct access to document storage read
   document file)
 * Move document in queue (up, down, top, bottom)
 * Support ocropus
