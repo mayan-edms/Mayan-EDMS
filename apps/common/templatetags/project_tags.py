@@ -1,4 +1,4 @@
-from django.template import TemplateSyntaxError, Library, VariableDoesNotExist
+from django.template import Library
 from django.conf import settings
 
 register = Library()

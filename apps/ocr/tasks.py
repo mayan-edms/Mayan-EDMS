@@ -1,14 +1,12 @@
-from datetime import date, timedelta, datetime
+from datetime import timedelta, datetime
 import platform
 import time
 import random
 
 from django.db.models import Q
 
-from celery.task import Task, PeriodicTask
+from celery.task import PeriodicTask
 from celery.decorators import task
-
-from documents import Document
 
 from ocr.api import do_document_ocr
 from literals import QUEUEDOCUMENT_STATE_PENDING, \

@@ -1,5 +1,4 @@
 from django.utils.translation import ugettext as _
-from django.core.urlresolvers import reverse
 
 from common.utils import pretty_size, pretty_size_10
 from permissions.api import check_permissions

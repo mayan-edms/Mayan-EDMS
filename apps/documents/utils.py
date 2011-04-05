@@ -1,6 +1,4 @@
 import os
-import tempfile
-
 
 from common import TEMPORARY_DIRECTORY
 

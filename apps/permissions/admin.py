@@ -1,8 +1,6 @@
 from django.contrib import admin
 
 from models import Permission, PermissionHolder, Role, RoleMember
-from django.contrib.contenttypes import generic
-
 
 class PermissionHolderInline(admin.StackedInline):
     model = PermissionHolder

@@ -128,7 +128,7 @@ class Document(models.Model):
         total_pages = get_page_count(filepath)
         
         for page_number in range(total_pages):
-            document_page, created = DocumentPage.objects.get_or_create(
+            DocumentPage.objects.get_or_create(
                 document=self, page_number=page_number+1)
 
         os.close(handle)
@@ -197,7 +197,7 @@ class Document(models.Model):
 
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
-        if DEFAULT_TRANSFORMATIONS and reduce(lambda x,y : x+y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
+        if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y : x+y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
             for transformation in DEFAULT_TRANSFORMATIONS:
                 if 'name' in transformation:
                     for document_page in self.documentpage_set.all():

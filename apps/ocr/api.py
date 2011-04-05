@@ -6,12 +6,8 @@ import subprocess
 import tempfile
 
 from django.utils.translation import ugettext as _
-from django.contrib import messages
 
 from common import TEMPORARY_DIRECTORY
-
-from documents.models import Document
-
 from converter.api import convert_document_for_ocr
 
 from ocr.conf.settings import TESSERACT_PATH

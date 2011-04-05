@@ -1,11 +1,7 @@
 import os
-import shlex
 import subprocess
-import tempfile
-import shutil
 
 from django.utils.importlib import import_module
-from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.template.defaultfilters import slugify
 
@@ -17,8 +13,7 @@ from converter.conf.settings import LOW_QUALITY_OPTIONS
 from converter.conf.settings import HIGH_QUALITY_OPTIONS
 from converter.conf.settings import GRAPHICS_BACKEND
 
-from exceptions import ConvertError, UnknownFormat, UnpaperError, \
-    IdentifyError, UnkownConvertError
+from exceptions import UnpaperError
     
 #from converter.conf.settings import UNOCONV_PATH
 from common import TEMPORARY_DIRECTORY
@@ -164,17 +159,9 @@ def convert_document_for_ocr(document, page=0, format='tif'):
         #Catch invalid or non existing pages
         document_page = document.documentpage_set.get(document=document, page_number=page+1)
         for page_transformation in document_page.documentpagetransformation_set.all():
-            try:
-                if page_transformation.transformation in TRANFORMATION_CHOICES:
-                    output = TRANFORMATION_CHOICES[page_transformation.transformation] % eval(page_transformation.arguments)
-                    transformation_list.append(output)
-            except Exception, e:
-                if request.user.is_staff:
-                    messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') % 
-                        {'transformation':page_transformation.get_transformation_display(),
-                        'error':e})
-                else:
-                    pass
+            if page_transformation.transformation in TRANFORMATION_CHOICES:
+                output = TRANFORMATION_CHOICES[page_transformation.transformation] % eval(page_transformation.arguments)
+                transformation_list.append(output)
     except ObjectDoesNotExist:
         pass
 

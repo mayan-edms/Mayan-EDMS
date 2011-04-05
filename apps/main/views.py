@@ -93,7 +93,7 @@ def check_settings(request):
         {'name':'SEARCH_LIMIT', 'value':search_settings.LIMIT},
     ]
     
-    context={
+    context = {
         'title':_(u'settings'),
         'object_list':settings,
         'hide_link':True,

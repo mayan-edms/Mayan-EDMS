@@ -2,10 +2,8 @@ import errno
 import os
 import hashlib
 
-from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.files.uploadedfile import InMemoryUploadedFile, \
-    SimpleUploadedFile
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils.translation import ugettext
 
 

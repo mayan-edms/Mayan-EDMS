@@ -3,8 +3,7 @@ import subprocess
 
 from converter.conf.settings import GM_PATH
 from converter.api import QUALITY_DEFAULT, QUALITY_SETTINGS
-from converter.exceptions import ConvertError, UnknownFormat, UnpaperError, \
-    IdentifyError, UnkownConvertError
+from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 
 CONVERTER_ERROR_STRING_NO_DECODER = 'No decode delegate for this image format'
 

@@ -1,6 +1,6 @@
 from django.core.exceptions import PermissionDenied 
 from django.template import TemplateSyntaxError, Library, \
-                            VariableDoesNotExist, Node, Variable
+                            Node, Variable
 
 from permissions.api import check_permissions as check_permission_function
 
@@ -32,7 +32,7 @@ def check_permissions(parser, token):
         # Splitting by None == splitting by spaces.
         tag_name, args = token.contents.split(None, 1)
     except ValueError:
-        raise template.TemplateSyntaxError, "%r tag requires arguments" % token.contents.split()[0]
+        raise TemplateSyntaxError, "%r tag requires arguments" % token.contents.split()[0]
         
     return CheckPermissionsNode(*args.split())
     

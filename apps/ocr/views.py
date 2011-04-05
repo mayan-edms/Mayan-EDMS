@@ -1,13 +1,11 @@
 import datetime
 
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_detail, object_list
+from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object, delete_object, update_object
-from django.conf import settings
 from django.utils.translation import ugettext as _
 
 from permissions.api import check_permissions

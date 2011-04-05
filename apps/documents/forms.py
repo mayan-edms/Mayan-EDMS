@@ -73,7 +73,6 @@ class ImageWidget(forms.widgets.Widget):
         if not self.attrs.get('hide_detail_link', False):
             for document_page in value.documentpage_set.all():
                 output.append('<br/><a href="%(url)s"><span class="famfam active famfam-page_white"></span>%(text)s</a>' % {
-                    'page_number': document_page.page_number,
                     'url':reverse('document_page_view', args=[document_page.id]),
                     'text':ugettext(u'Page %s details') % document_page.page_number})
         
@@ -108,7 +107,7 @@ class DocumentPreviewForm(forms.Form):
 
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = self.document
-        self.fields['preview'].widget.attrs['hide_detail_link']=self.hide_detail_link
+        self.fields['preview'].widget.attrs['hide_detail_link'] = self.hide_detail_link
                     
     preview = forms.CharField(widget=ImageWidget())
 
@@ -141,7 +140,7 @@ class StagingDocumentForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(StagingDocumentForm, self).__init__(*args, **kwargs)
         try:
-            self.fields['staging_file_id'].choices=[(staging_file.id, staging_file) for staging_file in StagingFile.get_all()]
+            self.fields['staging_file_id'].choices = [(staging_file.id, staging_file) for staging_file in StagingFile.get_all()]
         except:
             pass
             
@@ -170,17 +169,17 @@ class MetadataForm(forms.Form):
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
             self.document_type = kwargs['initial'].pop('document_type', None)
           
-            required=self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
+            required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
             required_string = u''
             if required:
-                self.fields['value'].required=True
+                self.fields['value'].required = True
                 required_string = ' (%s)' % ugettext(u'required')
             else:
                 #TODO: FIXME: not working correctly
-                self.fields['value'].required=False
+                self.fields['value'].required = False
                 
-            self.fields['name'].initial='%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
-            self.fields['id'].initial=self.metadata_type.id
+            self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
+            self.fields['id'].initial = self.metadata_type.id
             if self.metadata_type.default:
                 try:
                     self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
@@ -198,7 +197,7 @@ class MetadataForm(forms.Form):
                     self.fields['value'].required = required
                 except Exception, err:
                     self.fields['value'].initial = err
-                    self.fields['value'].widget=forms.TextInput(attrs={'readonly':'readonly'})
+                    self.fields['value'].widget = forms.TextInput(attrs={'readonly':'readonly'})
 
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
     name = forms.CharField(label=_(u'Name'),
@@ -235,7 +234,7 @@ class DocumentCreateWizard(BoundFormWizard):
         return super(DocumentCreateWizard, self).render_template(request, form, previous_fields, step, context)
 
     def parse_params(self, request, *args, **kwargs):
-        self.extra_context={'step_titles':self.step_titles}
+        self.extra_context = {'step_titles':self.step_titles}
             
     def process_step(self, request, form, step):
         #if step == 0:

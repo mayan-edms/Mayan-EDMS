@@ -1,8 +1,8 @@
 import zipfile
 
 from django.utils.translation import ugettext as _
-from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_detail, object_list
@@ -11,7 +11,6 @@ from django.views.generic.create_update import create_object, delete_object, upd
 from django.core.files.base import File
 from django.conf import settings
 from django.utils.http import urlencode
-from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.uploadedfile import SimpleUploadedFile    
 
@@ -30,7 +29,6 @@ from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
-from documents.conf.settings import TRANFORMATION_PREVIEW_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents.conf.settings import GROUP_SHOW_THUMBNAIL
@@ -51,7 +49,7 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm
         
-from metadata import save_metadata, save_metadata_list, \
+from metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
     DocumentPage, DocumentPageTransformation
@@ -315,7 +313,7 @@ def document_view(request, document_id):
             else:
                 total_string = ''
               
-            extra_columns = [{'name':'current','attribute':lambda x:
+            extra_columns = [{'name':'current', 'attribute':lambda x:
                     '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
                     
             if GROUP_SHOW_THUMBNAIL:
@@ -708,17 +706,13 @@ def document_page_transformation_edit(request, document_page_transformation_id):
         object_id=document_page_transformation_id,
         post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
         extra_context={
-            'object_name':_(u'transformation')}
+            'object_name':_(u'transformation'),
+            'title':_(u'Edit transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
+                'transformation':document_page_transformation.get_transformation_display(),
+                'page':document_page_transformation.document_page.page_number,
+                'document':document_page_transformation.document_page.document},
+            }
         )
-
-    return render_to_response('generic_form.html', {
-        'form':form,
-        'object':document_page_transformation.document_page,
-        'title':_(u'Edit transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
-            'transformation':document_page_transformation.get_transformation_display(),
-            'page':document_page_transformation.document_page.page_number,
-            'document':document_page_transformation.document_page.document},
-    }, context_instance=RequestContext(request))     
 
 
 def document_page_transformation_delete(request, document_page_transformation_id):
@@ -879,7 +873,7 @@ def document_view_simple(request, document_id):
             else:
                 total_string = ''
               
-            extra_columns = [{'name':'current','attribute':lambda x:
+            extra_columns = [{'name':'current', 'attribute':lambda x:
                     '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
                     
             if GROUP_SHOW_THUMBNAIL:

@@ -1,9 +1,7 @@
 import re
 
-from django.template import Node, Variable
-from django.template import TemplateSyntaxError, Library, VariableDoesNotExist
-from django.template.defaultfilters import stringfilter
-from django.template.defaultfilters import date as datefilter
+from django.template import Node
+from django.template import TemplateSyntaxError, Library
 from django.conf import settings
 
 register = Library()

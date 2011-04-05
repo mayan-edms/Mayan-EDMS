@@ -1,4 +1,3 @@
-from django.http import Http404
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.db.utils import DatabaseError
@@ -20,7 +19,7 @@ def register_permissions(namespace, permissions):
             try:
                 permission_obj, created = Permission.objects.get_or_create(
                     namespace=namespace, name=permission['name'])
-                permission_obj.label=unicode(permission['label'])
+                permission_obj.label = unicode(permission['label'])
                 permission_obj.save()
             except DatabaseError:
                 #Special case for ./manage.py syncdb

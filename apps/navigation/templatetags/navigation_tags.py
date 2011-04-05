@@ -1,8 +1,6 @@
-import types
 import copy 
 import re
 
-from django.conf import settings
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.core.urlresolvers import RegexURLResolver, RegexURLPattern, Resolver404, get_resolver
 from django.template import TemplateSyntaxError, Library, \
@@ -246,7 +244,6 @@ def object_navigation_template(context):
         'horizontal':True,
         'object_navigation_links':_get_object_navigation_links(context)
     }
-    return new_context
 
  
 @register.tag

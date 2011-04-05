@@ -101,7 +101,7 @@ def next_available_filename(document, metadata_index, path, filename, extension,
     if suffix:
         target = '_'.join([filename, unicode(suffix)])
     filepath = os.path.join(path, os.extsep.join([target, extension]))
-    matches=DocumentMetadataIndex.objects.filter(filename=filepath)
+    matches = DocumentMetadataIndex.objects.filter(filename=filepath)
     if matches.count() == 0:
         document_metadata_index = DocumentMetadataIndex(
             document=document, metadata_index=metadata_index,

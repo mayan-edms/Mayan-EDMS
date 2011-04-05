@@ -11,8 +11,8 @@ class PermissionDeniedMiddleware(object):
             try:
                 # Handle import error but allow any type error from view
                 callback = getattr(import_module(settings.ROOT_URLCONF),'handler403')
-                return callback(request,exception)
-            except (ImportError,AttributeError):
+                return callback(request, exception)
+            except (ImportError, AttributeError):
                 # Try to get a 403 template
                 try:
                     # First look for a user-defined template named "403.html"

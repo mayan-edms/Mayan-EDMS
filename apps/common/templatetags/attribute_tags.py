@@ -1,6 +1,4 @@
-from django.core.urlresolvers import reverse
-from django.template.defaultfilters import stringfilter
-from django.template import Library, Node, Variable, VariableDoesNotExist
+from django.template import Library
 
 from common.utils import return_attrib
 from navigation.api import model_list_columns

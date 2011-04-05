@@ -7,7 +7,7 @@ from django.contrib.contenttypes import generic
 class PermissionManager(models.Manager):
     def get_for_holder(self, holder):
         ct = ContentType.objects.get_for_model(holder)
-        return [Permission.objects.get(id=id) for id in PermissionHolder.objects.filter(holder_type=ct,holder_id=holder.id).values_list('permission_id', flat=True)]
+        return [Permission.objects.get(id=id) for id in PermissionHolder.objects.filter(holder_type=ct, holder_id=holder.id).values_list('permission_id', flat=True)]
 
 class Permission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))

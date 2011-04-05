@@ -1,8 +1,3 @@
-import os
-import tempfile
-
-from common import TEMPORARY_DIRECTORY
-
 #http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
 def copyfile(source, dest, buffer_size=1024*1024):
     """

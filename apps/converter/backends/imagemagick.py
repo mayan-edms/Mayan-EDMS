@@ -4,8 +4,8 @@ import subprocess
 from converter.conf.settings import IM_IDENTIFY_PATH
 from converter.conf.settings import IM_CONVERT_PATH
 from converter.api import QUALITY_DEFAULT, QUALITY_SETTINGS
-from converter.exceptions import ConvertError, UnknownFormat, UnpaperError, \
-    IdentifyError, UnkownConvertError
+from converter.exceptions import ConvertError, UnknownFormat, \
+    IdentifyError
 
 CONVERTER_ERROR_STRING_NO_DECODER = 'no decode delegate for this image format'
 
