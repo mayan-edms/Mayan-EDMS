@@ -602,18 +602,17 @@ def staging_file_preview(request, staging_file_id):
     try:
         filepath = StagingFile.get(staging_file_id).filepath
         output_file = convert(filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
-        return serve_file(request, File(file=open(output_file, 'r')), content_type='image/jpeg')
+        return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
-        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
+        return sendfile.sendfile(request, filename=u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
     except UnknownFormat:
-        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM), 'r')))
+        return sendfile.sendfile(request, filename=u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM))
     except Exception, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
-        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
-
+        return sendfile.sendfile(request, filename=u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
 
 #TODO: Need permission
 def staging_file_delete(request, staging_file_id):
