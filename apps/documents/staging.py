@@ -62,7 +62,7 @@ class StagingFile(object):
 
     def upload(self):
         try:
-            return File(file(self.filepath, 'rb'))
+            return File(file(self.filepath, 'rb'), name=self.filename)
         except Exception, exc:
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
 
