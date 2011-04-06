@@ -74,14 +74,15 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
 """
 
         
-def cache_cleanup(input_filepath, size, page=0, format='jpg'):
-    filepath = create_image_cache_filename(input_filepath, size, page, format)
+def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, format='jpg', extra_options=''):
+    filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     try:
         os.remove(filepath)
     except OSError:
         pass
 
-def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, extra_options='', *args, **kwargs):
+
+def create_image_cache_filename(input_filepath, *args, **kwargs):
     if input_filepath:
         temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
         temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
@@ -89,8 +90,6 @@ def create_image_cache_filename(input_filepath, quality=QUALITY_DEFAULT, extra_o
         final_filepath = []
         [final_filepath.append(str(arg)) for arg in args]
         final_filepath.extend(['%s_%s' % (key, value) for key, value in kwargs.items()])
-        final_filepath.append(QUALITY_SETTINGS[quality])
-        final_filepath.append(extra_options)
         
         temp_path += slugify('_'.join(final_filepath))
 

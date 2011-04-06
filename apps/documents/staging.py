@@ -10,7 +10,7 @@ from documents.conf.settings import STAGING_DIRECTORY
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from converter import TRANFORMATION_CHOICES
-from converter.api import convert#, in_image_cache, QUALITY_DEFAULT
+from converter.api import convert, cache_cleanup
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
@@ -71,6 +71,8 @@ class StagingFile(object):
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
 
     def delete(self):
+        tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
+        cache_cleanup(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string)
         try:
             os.unlink(self.filepath)
         except OSError, exc:
@@ -80,17 +82,21 @@ class StagingFile(object):
                 raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
 
     def preview(self):
-        transformation_list = []
-        errors = []
-        for transformation in DEFAULT_TRANSFORMATIONS:
-            try:
-                if transformation['name'] in TRANFORMATION_CHOICES:
-                    output = TRANFORMATION_CHOICES[transformation['name']] % eval(transformation['arguments'])
-                    transformation_list.append(output)
-            except Exception, e:
-                errors.append(e)
-
-        tranformation_string = ' '.join(transformation_list)
-
+        tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
         output_file = convert(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
         return output_file, errors
+
+
+def get_transformation_string(transformations):
+    transformation_list = []
+    errors = []
+    for transformation in transformations:
+        try:
+            if transformation['name'] in TRANFORMATION_CHOICES:
+                output = TRANFORMATION_CHOICES[transformation['name']] % eval(transformation['arguments'])
+                transformation_list.append(output)
+        except Exception, e:
+            errors.append(e)
+
+    tranformation_string = ' '.join(transformation_list)
+    return tranformation_string, errors
