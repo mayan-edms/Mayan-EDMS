@@ -2,12 +2,11 @@ import errno
 import os
 import hashlib
 
+from django.core.files.base import File
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils.translation import ugettext
 
-
-from documents.conf.settings import STAGING_DIRECTORY    
+from documents.conf.settings import STAGING_DIRECTORY
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
@@ -24,7 +23,7 @@ def get_all_files():
 
 class StagingFile(object):
     """
-    Simple class to encapsulate the files in a directory and hide the 
+    Simple class to encapsulate the files in a directory and hide the
     specifics to the view
     """
     @classmethod
@@ -33,7 +32,7 @@ class StagingFile(object):
         for filename in get_all_files():
             staging_files.append(StagingFile(
                 filepath=os.path.join(STAGING_DIRECTORY, filename)))
-                
+
         return staging_files
 
     @classmethod
@@ -48,7 +47,7 @@ class StagingFile(object):
         self.filepath = filepath
         self.filename = os.path.basename(filepath)
         self._id = HASH_FUNCTION(open(filepath).read())
-        
+
     def __unicode__(self):
         return self.filename
 
@@ -59,23 +58,13 @@ class StagingFile(object):
         if name == 'id':
             return self._id
         else:
-            raise AttributeError, name
-    
+            raise AttributeError
+
     def upload(self):
         try:
-            return SimpleUploadedFile(name=self.filename, content=open(self.filepath).read())
+            return File(file(self.filepath, 'rb'))
         except Exception, exc:
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
-    
-    
-        #return InMemoryUploadedFile(
-        #    file=open(self.filepath, 'r'),
-        #    field_name='',
-        #    name=self.filename,
-        #    content_type='unknown',
-        #    size=os.path.getsize(self.filepath),
-        #    charset=None,
-        #)
 
     def delete(self):
         try:
@@ -83,5 +72,5 @@ class StagingFile(object):
         except OSError, exc:
             if exc.errno == errno.ENOENT:
                 pass
-            else: 
+            else:
                 raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
