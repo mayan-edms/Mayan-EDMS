@@ -12,7 +12,7 @@ from django.core.files.base import File
 from django.conf import settings
 from django.utils.http import urlencode
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.files.uploadedfile import SimpleUploadedFile    
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 import sendfile
 from common.utils import pretty_size
@@ -48,7 +48,7 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm
-        
+
 from metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
@@ -65,16 +65,17 @@ PICTURE_UNKNOWN_MEDIUM = u'1299549805_unknown.png'
 
 def document_list(request):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-            
+
     return object_list(
         request,
         queryset=Document.objects.only('file_filename', 'file_extension').all(),
         template_name='generic_list.html',
         extra_context={
-            'title':_(u'documents'),
-            'multi_select_as_buttons':True,
+            'title': _(u'documents'),
+            'multi_select_as_buttons': True,
         },
     )
+
 
 def document_create(request, multiple=True):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
@@ -83,29 +84,30 @@ def document_create(request, multiple=True):
         wizard = DocumentCreateWizard(
             document_type=DocumentType.objects.all()[0],
             form_list=[MetadataFormSet], multiple=multiple,
-            step_titles = [
+            step_titles=[
             _(u'document metadata'),
             ])
     else:
         wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataFormSet], multiple=multiple)
-        
+
     return wizard(request)
+
 
 def document_create_sibling(request, document_id, multiple=True):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
-            
+
     document = get_object_or_404(Document, pk=document_id)
     urldata = []
     for id, metadata in enumerate(document.documentmetadata_set.all()):
         if hasattr(metadata, 'value'):
-            urldata.append(('metadata%s_id' % id, metadata.metadata_type_id))   
+            urldata.append(('metadata%s_id' % id, metadata.metadata_type_id))
             urldata.append(('metadata%s_value' % id, metadata.value))
-        
+
     if multiple:
         view = 'upload_multiple_documents_with_type'
     else:
         view = 'upload_document_with_type'
-    
+
     url = reverse(view, args=[document.document_type_id])
     return HttpResponseRedirect('%s?%s' % (url, urlencode(urldata)))
 
@@ -121,7 +123,7 @@ def _handle_save_document(request, document, form=None):
         warnings = document_create_fs_links(document)
         if request.user.is_staff or request.user.is_superuser:
             for warning in warnings:
-                messages.warning(request, warning)        
+                messages.warning(request, warning)
     except Exception, e:
         messages.error(request, e)
 
@@ -143,21 +145,21 @@ def _handle_zip_file(request, uploaded_file, document_type):
     else:
         #Otherwise tell parent to handle file
         return False
-    
+
 
 def upload_document_with_type(request, document_type_id, multiple=True):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
-            
+
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
-    local_form = DocumentForm(prefix='local', initial={'document_type':document_type})
+    local_form = DocumentForm(prefix='local', initial={'document_type': document_type})
     if USE_STAGING_DIRECTORY:
-        staging_form = StagingDocumentForm(prefix='staging', 
-            initial={'document_type':document_type})
-    
+        staging_form = StagingDocumentForm(prefix='staging',
+            initial={'document_type': document_type})
+
     if request.method == 'POST':
         if 'local-submit' in request.POST.keys():
             local_form = DocumentForm(request.POST, request.FILES,
-                prefix='local', initial={'document_type':document_type})
+                prefix='local', initial={'document_type': document_type})
             if local_form.is_valid():
                 try:
                     if (not UNCOMPRESS_COMPRESSED_LOCAL_FILES) or (UNCOMPRESS_COMPRESSED_LOCAL_FILES and not _handle_zip_file(request, request.FILES['local-file'], document_type)):
@@ -173,7 +175,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                     return HttpResponseRedirect(reverse('document_list'))
         elif 'staging-submit' in request.POST.keys() and USE_STAGING_DIRECTORY:
             staging_form = StagingDocumentForm(request.POST, request.FILES,
-                prefix='staging', initial={'document_type':document_type})
+                prefix='staging', initial={'document_type': document_type})
             if staging_form.is_valid():
                 try:
                     staging_file = StagingFile.get(staging_form.cleaned_data['staging_file_id'])
@@ -182,7 +184,7 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                         document.save()
                         _handle_save_document(request, document, staging_form)
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
-           
+
                     if DELETE_STAGING_FILE_AFTER_UPLOAD:
                         staging_file.delete()
                         messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
@@ -192,21 +194,20 @@ def upload_document_with_type(request, document_type_id, multiple=True):
                 if multiple:
                     return HttpResponseRedirect(request.META['HTTP_REFERER'])
                 else:
-                    return HttpResponseRedirect(reverse('document_list'))                
-
+                    return HttpResponseRedirect(reverse('document_list'))
 
     context = {
-        'document_type_id':document_type_id,
-        'form_list':[
+        'document_type_id': document_type_id,
+        'form_list': [
             {
-                'form':local_form,
-                'title':_(u'upload a local document'),
-                'grid':6,
-                'grid_clear':False if USE_STAGING_DIRECTORY else True,
+                'form': local_form,
+                'title': _(u'upload a local document'),
+                'grid': 6,
+                'grid_clear': False if USE_STAGING_DIRECTORY else True,
             },
         ],
     }
-    
+
     if USE_STAGING_DIRECTORY:
         try:
             filelist = StagingFile.get_all()
@@ -215,56 +216,56 @@ def upload_document_with_type(request, document_type_id, multiple=True):
             filelist = []
         finally:
             context.update({
-                'subtemplates_dict':[
+                'subtemplates_dict': [
                     {
-                        'name':'generic_list_subtemplate.html',
-                        'title':_(u'files in staging'),
-                        'object_list':filelist,
-                        'hide_link':True,
+                        'name': 'generic_list_subtemplate.html',
+                        'title': _(u'files in staging'),
+                        'object_list': filelist,
+                        'hide_link': True,
                     },
                 ],
             })
             context['form_list'].append(
                 {
-                    'form':staging_form,
-                    'title':_(u'upload a document from staging'),
-                    'grid':6,
-                    'grid_clear':True,   
+                    'form': staging_form,
+                    'title': _(u'upload a document from staging'),
+                    'grid': 6,
+                    'grid_clear': True,
                 },
             )
-            
+
     context.update({
-        'sidebar_subtemplates_list':[
+        'sidebar_subtemplates_list': [
             {
-                'title':_(u'Current metadata'),
-                'name':'generic_subtemplate.html',
-                #'content':metadata_repr(decode_metadata_from_url(request.GET)),
-                'paragraphs':metadata_repr_as_list(decode_metadata_from_url(request.GET))
+                'title': _(u'Current metadata'),
+                'name': 'generic_subtemplate.html',
+                #'content': metadata_repr(decode_metadata_from_url(request.GET)),
+                'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET))
             }]
     })
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
-    
+
+
 def document_view(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-            
+
     document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     form = DocumentForm_view(instance=document, extra_fields=[
-        {'label':_(u'Filename'), 'field':'file_filename'},
-        {'label':_(u'File extension'), 'field':'file_extension'},
-        {'label':_(u'File mimetype'), 'field':'file_mimetype'},
-        {'label':_(u'File mime encoding'), 'field':'file_mime_encoding'},
-        {'label':_(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
-        {'label':_(u'Exists in storage'), 'field':'exists'},
-        {'label':_(u'File path in storage'), 'field':'file'},
-        {'label':_(u'Date added'), 'field':lambda x: x.date_added.date()},
-        {'label':_(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
-        {'label':_(u'Checksum'), 'field':'checksum'},
-        {'label':_(u'UUID'), 'field':'uuid'},
-        {'label':_(u'Pages'), 'field':lambda x: x.documentpage_set.count()},
+        {'label': _(u'Filename'), 'field': 'file_filename'},
+        {'label': _(u'File extension'), 'field': 'file_extension'},
+        {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
+        {'label': _(u'File mime encoding'), 'field': 'file_mime_encoding'},
+        {'label': _(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+        {'label': _(u'Exists in storage'), 'field': 'exists'},
+        {'label': _(u'File path in storage'), 'field': 'file'},
+        {'label': _(u'Date added'), 'field':lambda x: x.date_added.date()},
+        {'label': _(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
+        {'label': _(u'Checksum'), 'field': 'checksum'},
+        {'label': _(u'UUID'), 'field': 'uuid'},
+        {'label': _(u'Pages'), 'field': lambda x: x.documentpage_set.count()},
     ])
 
-        
     metadata_groups, errors = document.get_metadata_groups()
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
@@ -294,13 +295,13 @@ def document_view(request, document_id):
                 'hide_link':True,
             },
         ]
-    
+
     if FILESERVING_ENABLE:
         subtemplates_dict.append({
-            'name':'generic_list_subtemplate.html',
-            'title':_(u'index links'),
-            'object_list':document.documentmetadataindex_set.all(),
-            'hide_link':True})
+            'name': 'generic_list_subtemplate.html',
+            'title': _(u'index links'),
+            'object_list': document.documentmetadataindex_set.all(),
+            'hide_link': True})
 
     sidebar_groups = []
     for group, data in metadata_groups.items():
@@ -312,36 +313,36 @@ def document_view(request, document_id):
                     total_string = '(%s)' % len(data)
             else:
                 total_string = ''
-              
+
             extra_columns = [{'name':'current', 'attribute':lambda x:
                     '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
-                    
+
             if GROUP_SHOW_THUMBNAIL:
-                extra_columns.append({'name':_(u'thumbnail'), 'attribute': 
+                extra_columns.append({'name': _(u'thumbnail'), 'attribute':
                         lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
                         reverse('document_thumbnail', args=[x.id]))})
-                
+
             sidebar_groups.append({
-                'title':'%s %s' % (group.label, total_string),
-                'name':'generic_list_subtemplate.html',
-                'object_list':data[:GROUP_MAX_RESULTS],
-                'hide_columns':True,
-                'hide_header':True,
-                'extra_columns':extra_columns,
+                'title': '%s %s' % (group.label, total_string),
+                'name': 'generic_list_subtemplate.html',
+                'object_list': data[:GROUP_MAX_RESULTS],
+                'hide_columns': True,
+                'hide_header': True,
+                'extra_columns': extra_columns,
                 })
-            
+
     return render_to_response('generic_detail.html', {
-        'form_list':form_list,
-        'object':document,
-        'subtemplates_dict':subtemplates_dict,
-        'sidebar_subtemplates_dict':sidebar_groups,
+        'form_list': form_list,
+        'object': document,
+        'subtemplates_dict': subtemplates_dict,
+        'sidebar_subtemplates_dict': sidebar_groups,
     }, context_instance=RequestContext(request))
 
-    
+
 def document_delete(request, document_id=None, document_id_list=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DELETE])
     post_action_redirect = None
-    
+
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
         post_action_redirect = reverse('document_list')
@@ -349,8 +350,8 @@ def document_delete(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))          
-            
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
 
@@ -362,22 +363,21 @@ def document_delete(request, document_id=None, document_id_list=None):
                 messages.success(request, _(u'Document: %s deleted successfully.') % document)
             except Exception, e:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
-                    'document':document, 'error':e})
+                    'document': document, 'error': e})
 
         return HttpResponseRedirect(next)
-        
+
     context = {
-        'object_name':_(u'document'),
-        'delete_view':True,
-        'previous':previous,
-        'next':next,
+        'object_name': _(u'document'),
+        'delete_view': True,
+        'previous': previous,
+        'next': next,
     }
     if len(documents) == 1:
-        context['object'] = documents[0]  
+        context['object'] = documents[0]
         context['title'] = _(u'Are you sure you with to delete the document: %s?') % ', '.join([unicode(d) for d in documents])
     elif len(documents) > 1:
         context['title'] = _(u'Are you sure you with to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
-        
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
@@ -385,14 +385,14 @@ def document_delete(request, document_id=None, document_id_list=None):
 
 def document_multiple_delete(request):
     return document_delete(request, document_id_list=request.GET.get('id_list', []))
-  
-        
+
+
 def document_edit(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
-            
+
     document = get_object_or_404(Document, pk=document_id)
     if request.method == 'POST':
-        form = DocumentForm_edit(request.POST, initial={'document_type':document.document_type})
+        form = DocumentForm_edit(request.POST, initial={'document_type': document.document_type})
         if form.is_valid():
             try:
                 document_delete_fs_links(document)
@@ -405,11 +405,11 @@ def document_edit(request, document_id):
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
                     document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
-                
+
             document.save()
-            
+
             messages.success(request, _(u'Document %s edited successfully.') % document)
-            
+
             try:
                 warnings = document_create_fs_links(document)
 
@@ -417,38 +417,37 @@ def document_edit(request, document_id):
                     for warning in warnings:
                         messages.warning(request, warning)
 
-                messages.success(request, _(u'Document filesystem links updated successfully.'))                
+                messages.success(request, _(u'Document filesystem links updated successfully.'))
             except Exception, e:
                 messages.error(request, e)
                 return HttpResponseRedirect(document.get_absolute_url())
-                
+
             return HttpResponseRedirect(document.get_absolute_url())
     else:
         form = DocumentForm_edit(instance=document, initial={
-            'new_filename':document.file_filename, 'document_type':document.document_type})
+            'new_filename': document.file_filename, 'document_type': document.document_type})
 
     return render_to_response('generic_form.html', {
-        'form':form,
-        'object':document,
-    
+        'form': form,
+        'object': document,
     }, context_instance=RequestContext(request))
 
 
 def document_edit_metadata(request, document_id=None, document_id_list=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_METADATA_EDIT])
-            
+
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
         if len(set([document.document_type for document in documents])) > 1:
             messages.error(request, _(u'All documents must be from the same type.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))          
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     else:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))          
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    metadata={}
+    metadata = {}
     for document in documents:
         for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
             value = document.documentmetadata_set.get(metadata_type=item.metadata_type).value if document.documentmetadata_set.filter(metadata_type=item.metadata_type) else u''
@@ -457,12 +456,12 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
                     metadata[item.metadata_type].append(value)
             else:
                 metadata[item.metadata_type] = [value]
-                
-    initial=[]
+
+    initial = []
     for key, value in metadata.items():
         initial.append({
-            'metadata_type':key,
-            'document_type':document.document_type,
+            'metadata_type': key,
+            'document_type': document.document_type,
             'value': u', '.join(value)
         })
 
@@ -476,47 +475,48 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
                     document_delete_fs_links(document)
                 except Exception, e:
                     messages.error(request, _(u'Error deleting filesystem links for document: %(document)s; %(error)s') % {
-                        'document':document, 'error':e})
-               
+                        'document': document, 'error': e})
+
                 messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
-                
+
                 try:
                     warnings = document_create_fs_links(document)
 
                     if request.user.is_staff or request.user.is_superuser:
                         for warning in warnings:
-                            messages.warning(request, warning)                
+                            messages.warning(request, warning)
 
                     messages.success(request, _(u'Filesystem links updated successfully for document: %s.') % document)
                 except Exception, e:
                     messages.error(request, _('Error creating filesystem links for document: %(document)s; %(error)s') % {
-                        'document':document, 'error':e})
-                    
+                        'document': document, 'error': e})
+
             if len(documents) == 1:
                 return HttpResponseRedirect(document.get_absolute_url())
             elif len(documents) > 1:
                 return HttpResponseRedirect(reverse('document_list'))
-        
+
     context = {
-        'form_display_mode_table':True,
-        'form':formset,
+        'form_display_mode_table': True,
+        'form': formset,
     }
     if len(documents) == 1:
-        context['object'] = documents[0]  
+        context['object'] = documents[0]
         context['title'] = _(u'Edit metadata for document: %s') % ', '.join([unicode(d) for d in documents])
     elif len(documents) > 1:
         context['title'] = _(u'Edit metadata for documents: %s') % ', '.join([unicode(d) for d in documents])
-                
-        
+
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
-    
+
+
 def document_multiple_edit_metadata(request):
     return document_edit_metadata(request, document_id_list=request.GET.get('id_list', []))
-    
+
+
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-        
+
     document = get_object_or_404(Document, pk=document_id)
 
     page = int(request.GET.get('page', 1))
@@ -531,22 +531,22 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
                     transformation_list.append(output)
             except Exception, e:
                 if request.user.is_staff:
-                    messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') % 
-                        {'transformation':page_transformation.get_transformation_display(),
-                        'error':e})
+                    messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') %
+                        {'transformation': page_transformation.get_transformation_display(),
+                        'error': e})
                 else:
                     pass
     except ObjectDoesNotExist:
         pass
-    
+
     tranformation_string = ' '.join(transformation_list)
     try:
-        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page-1)
+        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page - 1)
         if filepath:
             return sendfile.sendfile(request, filename=filepath)
         #Save to a temporary location
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
-        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page-1)
+        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page - 1)
         return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
@@ -568,10 +568,10 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         else:
             return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
 
-        
+
 def document_download(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DOWNLOAD])
-    
+
     document = get_object_or_404(Document, pk=document_id)
     try:
         #Test permissions and trigger exception
@@ -592,9 +592,9 @@ def staging_file_preview(request, staging_file_id):
                 transformation_list.append(output)
         except Exception, e:
             if request.user.is_staff:
-                messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') % 
-                    {'transformation':page_transformation.get_transformation_display(),
-                    'error':e})
+                messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') %
+                    {'transformation': page_transformation.get_transformation_display(),
+                    'error': e})
             else:
                 pass
     tranformation_string = ' '.join(transformation_list)
@@ -612,10 +612,10 @@ def staging_file_preview(request, staging_file_id):
     except Exception, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
-        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))   
+        return serve_file(request, File(file=open(u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM), 'r')))
 
 
-#TODO: Need permission     
+#TODO: Need permission
 def staging_file_delete(request, staging_file_id):
     staging_file = StagingFile.get(staging_file_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
@@ -628,89 +628,89 @@ def staging_file_delete(request, staging_file_id):
         except Exception, e:
             messages.error(request, e)
         return HttpResponseRedirect(next)
-        
+
     return render_to_response('generic_confirm.html', {
-        'delete_view':True,
-        'object':staging_file,
-        'next':next,
-        'previous':previous,
+        'delete_view': True,
+        'object': staging_file,
+        'next': next,
+        'previous': previous,
     }, context_instance=RequestContext(request))
 
 
 def document_page_view(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-        
+
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page_form = DocumentPageForm(instance=document_page)
 
     form_list = [
         {
-            'form':document_page_form,
-            'title':_(u'details for document page: %s') % document_page.page_number,
-            'object':document_page,
-            'grid':6,
+            'form': document_page_form,
+            'title': _(u'details for document page: %s') % document_page.page_number,
+            'object': document_page,
+            'grid': 6,
         },
     ]
     subtemplates_dict = [
         {
-            'name':'generic_list_subtemplate.html',
-            'title':_(u'transformations'),
-            'object_list':document_page.documentpagetransformation_set.all(),
-            'extra_columns':[
-                {'name':_(u'order'), 'attribute':'order'},
-                {'name':_(u'transformation'), 'attribute':lambda x: x.get_transformation_display()},
-                {'name':_(u'arguments'), 'attribute':'arguments'}
+            'name': 'generic_list_subtemplate.html',
+            'title': _(u'transformations'),
+            'object_list': document_page.documentpagetransformation_set.all(),
+            'extra_columns': [
+                {'name': _(u'order'), 'attribute': 'order'},
+                {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
+                {'name': _(u'arguments'), 'attribute': 'arguments'}
                 ],
-            'hide_link':True,
-            'hide_object':True,
-            'grid':6,
-            'grid_clear':True,
-            'hide_header':True,
+            'hide_link': True,
+            'hide_object': True,
+            'grid': 6,
+            'grid_clear': True,
+            'hide_header': True,
         },
     ]
-           
+
     return render_to_response('generic_detail.html', {
-        'form_list':form_list,
-        'object':document_page,
-        'subtemplates_dict':subtemplates_dict,
+        'form_list': form_list,
+        'object': document_page,
+        'subtemplates_dict': subtemplates_dict,
     }, context_instance=RequestContext(request))
-    
-    
+
+
 def document_page_transformation_create(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-        
+
     if request.method == 'POST':
-        form = DocumentPageTransformationForm(request.POST, initial={'document_page':document_page})
+        form = DocumentPageTransformationForm(request.POST, initial={'document_page': document_page})
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('document_page_view', args=[document_page_id]))
     else:
-        form = DocumentPageTransformationForm(initial={'document_page':document_page})
+        form = DocumentPageTransformationForm(initial={'document_page': document_page})
 
     return render_to_response('generic_form.html', {
-        'form':form,
-        'object':document_page,
-        'title':_(u'Create new transformation for page: %(page)s of document: %(document)s') % {
-            'page':document_page.page_number, 'document':document_page.document},
-    }, context_instance=RequestContext(request))            
+        'form': form,
+        'object': document_page,
+        'title': _(u'Create new transformation for page: %(page)s of document: %(document)s') % {
+            'page': document_page.page_number, 'document': document_page.document},
+    }, context_instance=RequestContext(request))
 
 
 def document_page_transformation_edit(request, document_page_transformation_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
-    return update_object(request, template_name='generic_form.html', 
-        form_class=DocumentPageTransformationForm, 
+    return update_object(request, template_name='generic_form.html',
+        form_class=DocumentPageTransformationForm,
         object_id=document_page_transformation_id,
         post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
         extra_context={
-            'object_name':_(u'transformation'),
-            'title':_(u'Edit transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
-                'transformation':document_page_transformation.get_transformation_display(),
-                'page':document_page_transformation.document_page.page_number,
-                'document':document_page_transformation.document_page.document},
+            'object_name': _(u'transformation'),
+            'title': _(u'Edit transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
+                'transformation': document_page_transformation.get_transformation_display(),
+                'page': document_page_transformation.document_page.page_number,
+                'document': document_page_transformation.document_page.document},
             }
         )
 
@@ -719,40 +719,40 @@ def document_page_transformation_delete(request, document_page_transformation_id
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-            
+
     document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
-        
-    return delete_object(request, model=DocumentPageTransformation, object_id=document_page_transformation_id, 
-        template_name='generic_confirm.html', 
+
+    return delete_object(request, model=DocumentPageTransformation, object_id=document_page_transformation_id,
+        template_name='generic_confirm.html',
         post_delete_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
         extra_context={
-            'delete_view':True,
-            'object':document_page_transformation,
-            'object_name':_(u'document transformation'),
-            'title':_(u'Are you sure you wish to delete transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
-                'transformation':document_page_transformation.get_transformation_display(),
-                'page':document_page_transformation.document_page.page_number,
-                'document':document_page_transformation.document_page.document},
-            'previous':previous,
+            'delete_view': True,
+            'object': document_page_transformation,
+            'object_name': _(u'document transformation'),
+            'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
+                'transformation': document_page_transformation.get_transformation_display(),
+                'page': document_page_transformation.document_page.page_number,
+                'document': document_page_transformation.document_page.document},
+            'previous': previous,
         })
 
 
 def document_find_duplicates(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-            
+
     document = get_object_or_404(Document, pk=document_id)
-    return _find_duplicate_list(request, [document], include_source=True, confirmation=False)    
+    return _find_duplicate_list(request, [document], include_source=True, confirmation=False)
 
 
 def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False, confirmation=True):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    
+
     if confirmation and request.method != 'POST':
         return render_to_response('generic_confirm.html', {
-            'previous':previous,
-            'message':_(u'On large databases this operation may take some time to execute.'),
+            'previous': previous,
+            'message': _(u'On large databases this operation may take some time to execute.'),
         }, context_instance=RequestContext(request))
-    else:     
+    else:
         duplicated = []
         for document in source_document_list:
             if document.pk not in duplicated:
@@ -763,9 +763,9 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
                     duplicated.append(document.pk)
 
         return render_to_response('generic_list.html', {
-            'object_list':Document.objects.filter(pk__in=duplicated),
-            'title':_(u'duplicated documents'),
-        }, context_instance=RequestContext(request))   
+            'object_list': Document.objects.filter(pk__in=duplicated),
+            'title': _(u'duplicated documents'),
+        }, context_instance=RequestContext(request))
 
 
 def document_find_all_duplicates(request):
@@ -786,10 +786,10 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     else:
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-    
+
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
-        
+
     if request.method == 'POST':
         for document in documents:
             try:
@@ -799,23 +799,22 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
                 messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % document)
             except Exception, e:
                 messages.error(request, _(u'Error deleting the page transformations for document: %(document)s; %(error)s.') % {
-                    'document':document, 'error':e})
+                    'document': document, 'error': e})
 
         return HttpResponseRedirect(next)
-        
+
     context = {
-        'object_name':_(u'document transformation'),
-        'delete_view':True,
-        'previous':previous,
-        'next':next,
+        'object_name': _(u'document transformation'),
+        'delete_view': True,
+        'previous': previous,
+        'next': next,
     }
 
     if len(documents) == 1:
-        context['object'] = documents[0]  
+        context['object'] = documents[0]
         context['title'] = _(u'Are you sure you with to clear all the page transformations for document: %s?') % ', '.join([unicode(d) for d in documents])
     elif len(documents) > 1:
         context['title'] = _(u'Are you sure you with to clear all the page transformations for documents: %s?') % ', '.join([unicode(d) for d in documents])
-        
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
@@ -827,11 +826,11 @@ def document_multiple_clear_transformations(request):
 
 def document_view_simple(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-            
+
     document = get_object_or_404(Document.objects.select_related(), pk=document_id)
-    
+
     content_form = DocumentContentForm(document=document)
-        
+
     metadata_groups, errors = document.get_metadata_groups()
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
@@ -840,25 +839,25 @@ def document_view_simple(request, document_id):
     preview_form = DocumentPreviewForm(document=document, hide_detail_link=True)
     form_list = [
         {
-            'form':content_form,
-            'object':document,
-            'grid':6,
+            'form': content_form,
+            'object': document,
+            'grid': 6,
         },
         {
-            'form':preview_form,
-            'title':_(u'document preview'),
-            'object':document,
-            'grid':6,
-            'grid_clear':True,
+            'form': preview_form,
+            'title': _(u'document preview'),
+            'object': document,
+            'grid': 6,
+            'grid_clear': True,
         },
     ]
     subtemplates_dict = [
             {
-                'name':'generic_list_subtemplate.html',
-                'title':_(u'metadata'),
-                'object_list':document.documentmetadata_set.all(),
-                'extra_columns':[{'name':_(u'value'), 'attribute':'value'}],
-                'hide_link':True,
+                'name': 'generic_list_subtemplate.html',
+                'title': _(u'metadata'),
+                'object_list': document.documentmetadata_set.all(),
+                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+                'hide_link': True,
             },
         ]
 
@@ -872,29 +871,29 @@ def document_view_simple(request, document_id):
                     total_string = '(%s)' % len(data)
             else:
                 total_string = ''
-              
-            extra_columns = [{'name':'current', 'attribute':lambda x:
+
+            extra_columns = [{'name': 'current', 'attribute': lambda x:
                     '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
-                    
+
             if GROUP_SHOW_THUMBNAIL:
-                extra_columns.append({'name':_(u'thumbnail'), 'attribute': 
+                extra_columns.append({'name': _(u'thumbnail'), 'attribute':
                         lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
                         reverse('document_thumbnail', args=[x.id]))})
-                
+
             sidebar_groups.append({
-                'title':'%s %s' % (group.label, total_string),
-                'name':'generic_list_subtemplate.html',
-                'object_list':data[:GROUP_MAX_RESULTS],
-                'hide_columns':True,
-                'hide_header':True,
-                'extra_columns':extra_columns,
+                'title': '%s %s' % (group.label, total_string),
+                'name': 'generic_list_subtemplate.html',
+                'object_list': data[:GROUP_MAX_RESULTS],
+                'hide_columns': True,
+                'hide_header': True,
+                'extra_columns': extra_columns,
                 })
-            
+
     return render_to_response('generic_detail.html', {
-        'form_list':form_list,
-        'object':document,
-        'subtemplates_dict':subtemplates_dict,
-        'sidebar_subtemplates_dict':sidebar_groups,
+        'form_list': form_list,
+        'object': document,
+        'subtemplates_dict': subtemplates_dict,
+        'sidebar_subtemplates_dict': sidebar_groups,
     }, context_instance=RequestContext(request))
 
 
@@ -907,6 +906,6 @@ def document_missing_list(request):
             missing_id_list.append(document.pk)
 
     return render_to_response('generic_list.html', {
-        'object_list':Document.objects.in_bulk(missing_id_list).values(),
-        'title':_(u'missing documents'),
+        'object_list': Document.objects.in_bulk(missing_id_list).values(),
+        'title': _(u'missing documents'),
     }, context_instance=RequestContext(request))

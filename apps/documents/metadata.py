@@ -1,3 +1,6 @@
+'''Metadata handling commonalities
+'''
+
 from urllib import unquote_plus
 
 from django.shortcuts import get_object_or_404
@@ -7,6 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from models import DocumentMetadata, MetadataType
 
 def decode_metadata_from_url(url_dict):
+    '''Parses a URL query string to a list of metadata
+    '''
     metadata_dict = {
         'id':{},
         'value':{}
@@ -19,14 +24,19 @@ def decode_metadata_from_url(url_dict):
             metadata_dict[element][index] = value
         
     #Convert the nested dictionary into a list of id+values dictionaries
-    for order, id in metadata_dict['id'].items():
+    for order, identifier in metadata_dict['id'].items():
         if order in metadata_dict['value'].keys():
-            metadata_list.append({'id':id, 'value':metadata_dict['value'][order]})
+            metadata_list.append({
+                'id':identifier,
+                'value':metadata_dict['value'][order]
+            })
 
     return metadata_list
     
     
 def save_metadata_list(metadata_list, document):
+    '''Takes a list of metadata values and associates a document to it
+    '''
     for item in metadata_list:
         if item['value']:
             save_metadata(item, document)
@@ -35,36 +45,49 @@ def save_metadata_list(metadata_list, document):
             #completely from the document
             try:
                 metadata_type = MetadataType.objects.get(id=item['id'])
-                document_metadata = DocumentMetadata.objects.get(document=document,
-                    metadata_type=metadata_type)
+                document_metadata = DocumentMetadata.objects.get(
+                    document=document,
+                    metadata_type=metadata_type
+                )
                 document_metadata.delete()
             except ObjectDoesNotExist:
                 pass
                         
         
 def save_metadata(metadata_dict, document):
+    '''save metadata_dict
+    '''
     #Use matched metadata now to create document metadata
     document_metadata, created = DocumentMetadata.objects.get_or_create(
         document=document,
-        metadata_type=get_object_or_404(MetadataType, pk=metadata_dict['id']),
+        metadata_type=get_object_or_404(
+            MetadataType,
+            pk=metadata_dict['id']
+        ),
     )
     #Handle 'plus sign as space' in the url
     
     #unquote_plus handles utf-8?!?
     #http://stackoverflow.com/questions/4382875/handling-iri-in-django
-    document_metadata.value = unquote_plus(metadata_dict['value'])#.decode('utf-8')
+    #.decode('utf-8')
+    document_metadata.value = unquote_plus(metadata_dict['value'])
     document_metadata.save()
 
 
 def metadata_repr(metadata_list):
+    '''Return a printable representation of a metadata list
+    '''
     return ', '.join(metadata_repr_as_list(metadata_list))
    
     
 def metadata_repr_as_list(metadata_list):
+    '''Turn a list of metadata into a list of printable representations
+    '''
     output = []
     for metadata_dict in metadata_list:
         try:
-            output.append('%s - %s' % (MetadataType.objects.get(pk=metadata_dict['id']), metadata_dict.get('value', '')))
+            output.append('%s - %s' % (MetadataType.objects.get(
+                pk=metadata_dict['id']), metadata_dict.get('value', '')))
         except:
             pass
         

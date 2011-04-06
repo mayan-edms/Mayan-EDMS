@@ -22,6 +22,7 @@ from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 
+
 def get_filename_from_uuid(instance, filename):
     filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
@@ -30,19 +31,18 @@ def get_filename_from_uuid(instance, filename):
     uuid = UUID_FUNCTION()
     instance.uuid = uuid
     return uuid
-   
+
 
 class DocumentType(models.Model):
-    name = models.CharField(max_length=32, verbose_name=_(u'name'))    
-    
+    name = models.CharField(max_length=32, verbose_name=_(u'name'))
+
     def __unicode__(self):
         return self.name
 
 
 class Document(models.Model):
-    """ Minimum fields for a document entry.
-        Inherit this model to customise document metadata, see BasicDocument for an example.
-    """
+    ''' Minimum fields for a document entry.
+    '''
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
     uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
@@ -55,16 +55,14 @@ class Document(models.Model):
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
-    
+
     class Meta:
         verbose_name = _(u'document')
         verbose_name_plural = _(u'documents')
         ordering = ['-date_added']
 
-        
     def __unicode__(self):
         return '%s.%s' % (self.file_filename, self.file_extension)
-    
 
     def save(self, *args, **kwargs):
         new_document = not self.pk
@@ -79,11 +77,9 @@ class Document(models.Model):
             self.update_page_count(save=False)
             self.apply_default_transformations()
 
-      
     def get_fullname(self):
         return os.extsep.join([self.file_filename, self.file_extension])
 
-        
     def update_mimetype(self, save=True):
         if self.exists():
             try:
@@ -102,16 +98,13 @@ class Document(models.Model):
                     source.close()
                 if save:
                     self.save()
-      
-      
+
     def open(self):
         return self.file.storage.open(self.file.path)
 
-        
     @models.permalink
     def get_absolute_url(self):
         return ('document_view_simple', [self.id])
-
 
     def update_checksum(self, save=True):
         if self.exists():
@@ -121,15 +114,14 @@ class Document(models.Model):
             if save:
                 self.save()
 
-  
     def update_page_count(self, save=True):
         handle, filepath = tempfile.mkstemp()
         self.save_to_file(filepath)
         total_pages = get_page_count(filepath)
-        
+
         for page_number in range(total_pages):
             DocumentPage.objects.get_or_create(
-                document=self, page_number=page_number+1)
+                document=self, page_number=page_number + 1)
 
         os.close(handle)
         try:
@@ -140,8 +132,7 @@ class Document(models.Model):
         if save:
             self.save()
 
-        
-    def save_to_file(self, filepath, buffer_size=1024*1024):
+    def save_to_file(self, filepath, buffer_size=1024 * 1024):
         input_descriptor = self.open()
         output_descriptor = open(filepath, 'wb')
         while True:
@@ -150,16 +141,14 @@ class Document(models.Model):
                 output_descriptor.write(copy_buffer)
             else:
                 break
-    
+
         output_descriptor.close()
         input_descriptor.close()
-        return filepath       
-       
-   
+        return filepath
+
     def exists(self):
         return self.file.storage.exists(self.file.path)
 
-        
     def get_metadata_groups(self):
         errors = []
         metadata_groups = {}
@@ -167,7 +156,7 @@ class Document(models.Model):
             metadata_dict = {}
             for document_metadata in self.documentmetadata_set.all():
                 metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
-                
+
             for group in MetadataGroup.objects.filter((Q(document_type=self.document_type) | Q(document_type=None)) & Q(enabled=True)):
                 total_query = Q()
                 for item in group.metadatagroupitem_set.filter(enabled=True):
@@ -194,25 +183,24 @@ class Document(models.Model):
                 metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)).order_by('file_filename') or []
         return metadata_groups, errors
 
-
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
-        if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y : x+y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
+        if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
             for transformation in DEFAULT_TRANSFORMATIONS:
                 if 'name' in transformation:
                     for document_page in self.documentpage_set.all():
                         page_transformation = DocumentPageTransformation(
                             document_page=document_page,
-                            order=0, 
+                            order=0,
                             transformation=transformation['name'])
                         if 'arguments' in transformation:
                             page_transformation.arguments = transformation['arguments']
-                        
+
                         page_transformation.save()
- 
-    
+
 available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
 available_models_string = (_(u' Available models: %s') % ','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else ''
+
 
 class MetadataType(models.Model):
     name = models.CharField(max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words.'))
@@ -224,10 +212,10 @@ class MetadataType(models.Model):
         verbose_name=_(u'lookup'),
         help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
     #TODO: datatype?
-    
+
     def __unicode__(self):
         return self.title if self.title else self.name
-        
+
     class Meta:
         verbose_name = _(u'metadata type')
         verbose_name_plural = _(u'metadata types')
@@ -238,7 +226,7 @@ class DocumentTypeMetadataType(models.Model):
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
     required = models.BooleanField(default=True, verbose_name=_(u'required'))
     #TODO: override default for this document type
-    
+
     def __unicode__(self):
         return unicode(self.metadata_type)
 
@@ -247,8 +235,8 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name_plural = _(u'document type metadata type connectors')
 
 
-
 available_indexing_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else ''
+
 
 class MetadataIndex(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
@@ -256,10 +244,10 @@ class MetadataIndex(models.Model):
         verbose_name=_(u'indexing expression'),
         help_text=_(u'Enter a python string expression to be evaluated.  The slash caracter "/" acts as a directory delimiter.%s') % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-    
+
     def __unicode__(self):
         return unicode(self.expression)
-        
+
     class Meta:
         verbose_name = _(u'metadata index')
         verbose_name_plural = _(u'metadata indexes')
@@ -269,7 +257,7 @@ class DocumentMetadata(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
     value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'), db_index=True)
- 
+
     def __unicode__(self):
         return unicode(self.metadata_type)
 
@@ -282,7 +270,7 @@ class DocumentTypeFilename(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     filename = models.CharField(max_length=128, verbose_name=_(u'filename'), db_index=True)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-    
+
     def __unicode__(self):
         return self.filename
 
@@ -297,7 +285,7 @@ class DocumentPage(models.Model):
     content = models.TextField(blank=True, null=True, verbose_name=_(u'content'), db_index=True)
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'))
-        
+
     def __unicode__(self):
         return '%s - %d - %s' % (unicode(self.document), self.page_number, self.page_label)
 
@@ -312,13 +300,13 @@ class MetadataGroup(models.Model):
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
     label = models.CharField(max_length=32, verbose_name=_(u'label'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-    
+
     def __unicode__(self):
         return self.label if self.label else self.name
 
     class Meta:
         verbose_name = _(u'metadata document group')
-        verbose_name_plural = _(u'metadata document groups')    
+        verbose_name_plural = _(u'metadata document groups')
 
 
 INCLUSION_AND = '&'
@@ -346,7 +334,8 @@ OPERATOR_CHOICES = (
     ('regex', _(u'is in regular expression')),
     ('iregex', _(u'is in regular expression (case insensitive)')),
 )
-    
+
+
 class MetadataGroupItem(models.Model):
     metadata_group = models.ForeignKey(MetadataGroup, verbose_name=_(u'metadata group'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
@@ -356,7 +345,7 @@ class MetadataGroupItem(models.Model):
         verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
     negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-    
+
     def __unicode__(self):
         return '[%s] %s %s %s %s %s' % ('x' if self.enabled else ' ', self.get_inclusion_display(), self.metadata_type, _(u'not') if self.negated else '', self.get_operator_display(), self.expression)
 
@@ -367,7 +356,7 @@ class MetadataGroupItem(models.Model):
 
 available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()]) if AVAILABLE_MODELS else []
 
-    
+
 class DocumentPageTransformation(models.Model):
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
@@ -381,7 +370,7 @@ class DocumentPageTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'document page transformation')
         verbose_name_plural = _(u'document page transformations')
-    
-  
+
+
 register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description'])
 #register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])

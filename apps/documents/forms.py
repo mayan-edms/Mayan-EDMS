@@ -10,7 +10,6 @@ from django.forms.formsets import formset_factory
 from staging import StagingFile
 
 from common.wizard import BoundFormWizard
-from common.utils import urlquote
 from common.forms import DetailForm
 
 from models import Document, DocumentType, DocumentTypeMetadataType, \
@@ -23,22 +22,22 @@ from documents.conf.settings import AVAILABLE_MODELS
 class DocumentPageTransformationForm(forms.ModelForm):
     class Meta:
         model = DocumentPageTransformation
-        
+
     def __init__(self, *args, **kwargs):
         super(DocumentPageTransformationForm, self).__init__(*args, **kwargs)
         self.fields['document_page'].widget = forms.HiddenInput()
-    
+
 
 class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
         output.append('<img src="%(img)s?page=%(page)s" />' % {
-            'img':reverse('document_preview_transformation', args=[value.document.id]),
-            'page':value.page_number,
+            'img': reverse('document_preview_transformation',
+                args=[value.document.id]),
+            'page': value.page_number,
             })
-        #output.append(super(ImageWidget, self).render(name, value, attrs))
-        return mark_safe(u''.join(output))  
-    
+        return mark_safe(u''.join(output))
+
 
 class DocumentPageForm(DetailForm):
     class Meta:
@@ -47,7 +46,7 @@ class DocumentPageForm(DetailForm):
     def __init__(self, *args, **kwargs):
         super(DocumentPageForm, self).__init__(*args, **kwargs)
         self.fields['page_image'].initial = self.instance
-                    
+
     page_image = forms.CharField(widget=DocumentPageImageWidget())
 
 
@@ -56,27 +55,34 @@ class ImageWidget(forms.widgets.Widget):
         output = []
         page_count = value.documentpage_set.count()
         if page_count > 1:
-            output.append('<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' % ugettext(u'Pages'))
+            output.append(
+                '<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' %
+                ugettext(u'Pages'))
             for page_index in range(value.documentpage_set.count()):
-                output.append('<span>%(page)s)<a rel="gallery_1" class="fancybox-noscaling" href="%(url)s?page=%(page)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
-                    'url':reverse('document_display', args=[value.id]),
-                    'img':reverse('document_preview_multipage', args=[value.id]),
-                    'page':page_index+1,
+                output.append(
+                    '<span>%(page)s)<a rel="gallery_1" class="fancybox-noscaling" href="%(url)s?page=%(page)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
+                    'url': reverse('document_display', args=[value.id]),
+                    'img': reverse('document_preview_multipage', args=[value.id]),
+                    'page': page_index + 1,
                     })
         else:
-            output.append('<a class="fancybox-noscaling" href="%(url)s"><img width="300" src="%(img)s" /></a>' % {
-                'url':reverse('document_display', args=[value.id]),
-                'img':reverse('document_preview', args=[value.id]),
+            output.append(
+                '<a class="fancybox-noscaling" href="%(url)s"><img width="300" src="%(img)s" /></a>' % {
+                'url': reverse('document_display', args=[value.id]),
+                'img': reverse('document_preview', args=[value.id]),
                 })
 
-        output.append('<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size view'))
+        output.append(
+            '<br /><span class="famfam active famfam-magnifier"></span>%s' %
+             ugettext(u'Click on the image for full size view'))
         if not self.attrs.get('hide_detail_link', False):
             for document_page in value.documentpage_set.all():
-                output.append('<br/><a href="%(url)s"><span class="famfam active famfam-page_white"></span>%(text)s</a>' % {
-                    'url':reverse('document_page_view', args=[document_page.id]),
-                    'text':ugettext(u'Page %s details') % document_page.page_number})
-        
-        return mark_safe(u''.join(output))  
+                output.append(
+                    '<br/><a href="%(url)s"><span class="famfam active famfam-page_white"></span>%(text)s</a>' % {
+                    'url': reverse('document_page_view', args=[document_page.id]),
+                    'text': ugettext(u'Page %s details') % document_page.page_number})
+
+        return mark_safe(u''.join(output))
 
 
 #TODO: Turn this into a base form and let others inherit
@@ -108,7 +114,7 @@ class DocumentPreviewForm(forms.Form):
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = self.document
         self.fields['preview'].widget.attrs['hide_detail_link'] = self.hide_detail_link
-                    
+
     preview = forms.CharField(widget=ImageWidget())
 
 
@@ -118,21 +124,23 @@ class DocumentContentForm(forms.Form):
         super(DocumentContentForm, self).__init__(*args, **kwargs)
         page_break_template = u'\n\n\n------------------ %s ------------------\n\n\n' % _(u'page break')
         self.fields['contents'].initial = page_break_template.join([page.content for page in self.document.documentpage_set.all() if page.content])
-        
-    contents = forms.CharField(label=_(u'Contents'), widget=forms.widgets.Textarea(attrs={'rows':24, 'cols':80}))
+
+    contents = forms.CharField(
+        label=_(u'Contents'),
+        widget=forms.widgets.Textarea(attrs={'rows': 24, 'cols': 80}))
 
 
 class DocumentForm_view(DetailForm):
     class Meta:
         model = Document
         exclude = ('file',)
-        
-        
+
+
 class DocumentForm_edit(DocumentForm):
     class Meta:
         model = Document
         exclude = ('file', 'document_type')
-    
+
     new_filename = forms.CharField(label=_(u'New document filename'), required=False)
 
 
@@ -143,7 +151,7 @@ class StagingDocumentForm(forms.Form):
             self.fields['staging_file_id'].choices = [(staging_file.id, staging_file) for staging_file in StagingFile.get_all()]
         except:
             pass
-            
+
         if 'initial' in kwargs:
             if 'document_type' in kwargs['initial']:
                 filenames_qs = kwargs['initial']['document_type'].documenttypefilename_set.filter(enabled=True)
@@ -152,7 +160,7 @@ class StagingDocumentForm(forms.Form):
                         queryset=filenames_qs,
                         required=False,
                         label=_(u'Quick document rename'))
-            
+
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
 
 
@@ -163,12 +171,12 @@ class DocumentTypeSelectForm(forms.Form):
 class MetadataForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
-        
+
         #Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
             self.document_type = kwargs['initial'].pop('document_type', None)
-          
+
             required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
             required_string = u''
             if required:
@@ -177,7 +185,7 @@ class MetadataForm(forms.Form):
             else:
                 #TODO: FIXME: not working correctly
                 self.fields['value'].required = False
-                
+
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
             self.fields['id'].initial = self.metadata_type.id
             if self.metadata_type.default:
@@ -192,31 +200,32 @@ class MetadataForm(forms.Form):
                     self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
                     choices = zip(choices, choices)
                     if not required:
-                        choices.insert(0,('', '------'))
+                        choices.insert(0, ('', '------'))
                     self.fields['value'].choices = choices
                     self.fields['value'].required = required
                 except Exception, err:
                     self.fields['value'].initial = err
-                    self.fields['value'].widget = forms.TextInput(attrs={'readonly':'readonly'})
+                    self.fields['value'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
 
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
     name = forms.CharField(label=_(u'Name'),
-        required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
+        required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     value = forms.CharField(label=_(u'Value'), required=False)
 MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
 
 class DocumentCreateWizard(BoundFormWizard):
-    def _generate_metadata_initial_values(self):
-        initial=[]
+    def generate_metadata_initial_values(self):
+        initial = []
         for item in DocumentTypeMetadataType.objects.filter(document_type=self.document_type):
             initial.append({
-                'metadata_type':item.metadata_type,
-                'document_type':self.document_type,
+                'metadata_type': item.metadata_type,
+                'document_type': self.document_type,
             })
         return initial
-    
+
     def __init__(self, *args, **kwargs):
+        self.urldata = []
         self.multiple = kwargs.pop('multiple', True)
         self.step_titles = kwargs.pop('step_titles', [
             _(u'step 1 of 2: Document type'),
@@ -227,29 +236,26 @@ class DocumentCreateWizard(BoundFormWizard):
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)
 
         if self.document_type:
-            self.initial = {0:self._generate_metadata_initial_values()}
-        
+            self.initial = {0: self.generate_metadata_initial_values()}
+
     def render_template(self, request, form, previous_fields, step, context=None):
-        context = {'step_title':self.extra_context['step_titles'][step]}
+        context = {'step_title': self.extra_context['step_titles'][step]}
         return super(DocumentCreateWizard, self).render_template(request, form, previous_fields, step, context)
 
     def parse_params(self, request, *args, **kwargs):
-        self.extra_context = {'step_titles':self.step_titles}
-            
+        self.extra_context = {'step_titles': self.step_titles}
+
     def process_step(self, request, form, step):
-        #if step == 0:
         if isinstance(form, DocumentTypeSelectForm):
             self.document_type = form.cleaned_data['document_type']
-            self.initial = {1:self._generate_metadata_initial_values()}
+            self.initial = {1: self.generate_metadata_initial_values()}
 
-        #if step == 1:
         if isinstance(form, MetadataFormSet):
-            self.urldata = []
-            for id, metadata in enumerate(form.cleaned_data):
+            for identifier, metadata in enumerate(form.cleaned_data):
                 if metadata['value']:
-                    self.urldata.append(('metadata%s_id' % id, metadata['id']))   
-                    self.urldata.append(('metadata%s_value' % id, metadata['value']))
- 
+                    self.urldata.append(('metadata%s_id' % identifier, metadata['id']))
+                    self.urldata.append(('metadata%s_value' % identifier, metadata['value']))
+
     def get_template(self, step):
         return 'generic_wizard.html'
 
