@@ -26,7 +26,6 @@ from permissions.api import check_permissions
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
-from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
@@ -584,24 +583,13 @@ def document_download(request, document_id):
 
 #TODO: Need permission
 def staging_file_preview(request, staging_file_id):
-    transformation_list = []
-    for page_transformation in DEFAULT_TRANSFORMATIONS:
-        try:
-            if page_transformation['name'] in TRANFORMATION_CHOICES:
-                output = TRANFORMATION_CHOICES[page_transformation['name']] % eval(page_transformation['arguments'])
-                transformation_list.append(output)
-        except Exception, e:
-            if request.user.is_staff:
-                messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') %
-                    {'transformation': page_transformation.get_transformation_display(),
-                    'error': e})
-            else:
-                pass
-    tranformation_string = ' '.join(transformation_list)
-
     try:
-        filepath = StagingFile.get(staging_file_id).filepath
-        output_file = convert(filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
+        output_file, errors = StagingFile.get(staging_file_id).preview()
+        if errors and (request.user.is_staff or request.user.is_superuser):
+            messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') %
+                {'transformation': page_transformation.get_transformation_display(),
+                'error': e})
+
         return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
@@ -613,6 +601,7 @@ def staging_file_preview(request, staging_file_id):
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         return sendfile.sendfile(request, filename=u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
+
 
 #TODO: Need permission
 def staging_file_delete(request, staging_file_id):
