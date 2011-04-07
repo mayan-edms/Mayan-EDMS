@@ -128,7 +128,8 @@ def blank_menu(request):
         'title':_(u'Tools menu'),
         'paragraphs':[
             _(u'"Find all duplicates": Search all the documents\' checksums and return a list of the exact matches.'),
-            _(u'"Recreate index links": Deletes and creates from scratch all the file system indexing links.')
+            _(u'"Recreate index links": Deletes and creates from scratch all the file system indexing links.'),
+            _(u'"Clean up pages content": Runs a language filter to remove common OCR mistakes from document pages content.')
         ],
         },
     context_instance=RequestContext(request))    

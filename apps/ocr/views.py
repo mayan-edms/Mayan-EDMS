@@ -12,13 +12,14 @@ from permissions.api import check_permissions
 from documents.models import Document
 
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
-    PERMISSION_OCR_QUEUE_ENABLE_DISABLE
+    PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES
+
 from models import DocumentQueue, QueueDocument
 from literals import QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_PROCESSING, QUEUEDOCUMENT_STATE_ERROR, \
     DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE
 from exceptions import AlreadyQueued
-
+from api import clean_pages
 
 def _display_thumbnail(ocr_document):
     try:
@@ -249,4 +250,26 @@ def document_queue_enable(request, document_queue_id):
         'title':_(u'Are you sure you wish to activate document queue: %s') % document_queue,
         'next':next,
         'previous':previous,
-    }, context_instance=RequestContext(request))        
+    }, context_instance=RequestContext(request))
+
+
+def all_document_ocr_cleanup(request):
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_CLEAN_ALL_PAGES])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    
+    if request.method != 'POST':
+        return render_to_response('generic_confirm.html', {
+            'previous':previous,
+            'next':next,
+            'message':_(u'On large databases this operation may take some time to execute.'),
+        }, context_instance=RequestContext(request))
+    else:     
+        try:
+            clean_pages()
+            messages.success(request, _(u'Document pages content clean up complete.'))
+        except Exception, e:
+            messages.error(request, _(u'Document pages content clean up error: %s') % e)
+            
+        return HttpResponseRedirect(next)

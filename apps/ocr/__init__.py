@@ -19,11 +19,13 @@ from literals import QUEUEDOCUMENT_STATE_PROCESSING, \
 PERMISSION_OCR_DOCUMENT = 'ocr_document'
 PERMISSION_OCR_DOCUMENT_DELETE = 'ocr_document_delete'
 PERMISSION_OCR_QUEUE_ENABLE_DISABLE = 'ocr_queue_enable_disable'
+PERMISSION_OCR_CLEAN_ALL_PAGES = 'ocr_clean_all_pages'
 
 register_permissions('ocr', [
     {'name':PERMISSION_OCR_DOCUMENT, 'label':_(u'Submit document for OCR')},
     {'name':PERMISSION_OCR_DOCUMENT_DELETE, 'label':_(u'Delete document for OCR queue')},
     {'name':PERMISSION_OCR_QUEUE_ENABLE_DISABLE, 'label':_(u'Can enable/disable an OCR queue')},
+    {'name':PERMISSION_OCR_CLEAN_ALL_PAGES, 'label':_(u'Can execute an OCR clean up on all document pages')},
 ])
 
 #Links
@@ -35,6 +37,8 @@ queue_document_multiple_delete = {'text':_(u'delete'), 'view':'queue_document_mu
 
 document_queue_disable = {'text':_(u'stop queue'), 'view':'document_queue_disable', 'args':'object.id', 'famfam':'control_stop_blue', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}}
 document_queue_enable = {'text':_(u'activate queue'), 'view':'document_queue_enable', 'args':'object.id', 'famfam':'control_play_blue', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}}
+
+all_document_ocr_cleanup = {'text':_(u'clean up pages content'), 'view':'all_document_ocr_cleanup', 'famfam':'text_strikethrough', 'permissions':{'namespace':'ocr', 'permissions':[PERMISSION_OCR_CLEAN_ALL_PAGES]}}
 
 register_links(Document, [submit_document], menu_name='sidebar')
 register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
