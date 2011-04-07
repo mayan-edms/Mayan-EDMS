@@ -14,7 +14,7 @@ from models import DocumentMetadataIndex, Document
 
 if SLUGIFY_PATHS == False:
     #Do not slugify path or filenames and extensions
-    slugify = lambda x:x
+    slugify = lambda x: x
 
 
 def document_create_fs_links(document):
@@ -22,9 +22,9 @@ def document_create_fs_links(document):
     if FILESERVING_ENABLE:
         if not document.exists():
             raise Exception(_(u'Not creating metadata indexing, document not found in document storage'))
-        metadata_dict = {'document':document}
+        metadata_dict = {'document': document}
         metadata_dict.update(dict([(metadata.metadata_type.name, slugify(metadata.value)) for metadata in document.documentmetadata_set.all()]))
-            
+
         for metadata_index in document.document_type.metadataindex_set.all():
             if metadata_index.enabled:
                 try:
@@ -35,9 +35,8 @@ def document_create_fs_links(document):
                     except OSError, exc:
                         if exc.errno == errno.EEXIST:
                             pass
-                        else: 
+                        else:
                             raise OSError(_(u'Unable to create metadata indexing directory: %s') % exc)
-                   
 
                     next_available_filename(document, metadata_index, target_directory, slugify(document.file_filename), slugify(document.file_extension))
                 except NameError, exc:
@@ -50,6 +49,7 @@ def document_create_fs_links(document):
 
     return warnings
 
+
 def document_delete_fs_links(document):
     if FILESERVING_ENABLE:
         for document_metadata_index in document.documentmetadataindex_set.all():
@@ -60,11 +60,11 @@ def document_delete_fs_links(document):
                 if exc.errno == errno.ENOENT:
                     #No longer exits, so delete db entry anyway
                     document_metadata_index.delete()
-                else: 
+                else:
                     raise OSError(_(u'Unable to delete metadata indexing symbolic link: %s') % exc)
-        
+
             path, filename = os.path.split(document_metadata_index.filename)
-            
+
             #Cleanup directory of dead stuff
             #Delete siblings that are dead links
             try:
@@ -84,10 +84,9 @@ def document_delete_fs_links(document):
                         try:
                             os.removedirs(path)
                         except:
-                            pass                            
+                            pass
             except OSError, exc:
                 pass
-
 
             #Remove the directory if it is empty
             try:
@@ -95,8 +94,8 @@ def document_delete_fs_links(document):
             except:
                 pass
 
-           
-def next_available_filename(document, metadata_index, path, filename, extension, suffix=0): 
+
+def next_available_filename(document, metadata_index, path, filename, extension, suffix=0):
     target = filename
     if suffix:
         target = '_'.join([filename, unicode(suffix)])
@@ -117,23 +116,22 @@ def next_available_filename(document, metadata_index, path, filename, extension,
                     #Try again with same suffix
                     return next_available_filename(document, metadata_index, path, filename, extension, suffix)
                 except Exception, exc:
-                    raise Exception(_(u'Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s') % {'filepath':filepath, 'exc':exc})    
-                
+                    raise Exception(_(u'Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
             else:
-                raise OSError(_(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath':filepath, 'exc':exc})
-        
+                raise OSError(_(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
+
         return filepath
     else:
         if suffix > MAX_RENAME_COUNT:
             raise Exception(_(u'Maximum rename count reached, not creating symbolic link'))
-        return next_available_filename(document, metadata_index, path, filename, extension, suffix+1)
+        return next_available_filename(document, metadata_index, path, filename, extension, suffix + 1)
 
 
 #TODO: diferentiate between evaluation error and filesystem errors
 def do_recreate_all_links(raise_exception=True):
     errors = []
     warnings = []
-    
+
     for document in Document.objects.all():
         try:
             document_delete_fs_links(document)
@@ -153,7 +151,7 @@ def do_recreate_all_links(raise_exception=True):
                 raise Exception(e)
             else:
                 errors.append('%s: %s' % (document, e))
-    
+
     for warning in create_warnings:
-        warnings.append('%s: %s' % (document, e))
+        warnings.append('%s: %s' % (document, warning))
     return errors, warnings

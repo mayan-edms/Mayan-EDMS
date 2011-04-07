@@ -9,6 +9,7 @@ from converter.exceptions import ConvertError, UnknownFormat, \
 
 CONVERTER_ERROR_STRING_NO_DECODER = 'no decode delegate for this image format'
 
+
 def execute_identify(input_filepath, arguments):
     command = []
     command.append(IM_IDENTIFY_PATH)
@@ -20,7 +21,8 @@ def execute_identify(input_filepath, arguments):
     if return_code != 0:
         raise IdentifyError(proc.stderr.readline())
     return proc.stdout.read()
-    
+
+
 def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
     command = []
     command.append(IM_CONVERT_PATH)

@@ -15,9 +15,9 @@ HIGH_QUALITY_OPTIONS = getattr(settings, 'CONVERTER_HIGH_QUALITY_OPTIONS', u'-de
 
 
 setting_description = {
-    'CONVERTER_IM_CONVERT_PATH':_(u'File path to imagemagick\'s convert program.'),
-    'CONVERTER_IM_IDENTIFY_PATH':_(u'File path to imagemagick\'s identify program.'),
-    'CONVERTER_GM_PATH':_(u'File path to graphicsmagick\'s program.'),
-    'CONVERTER_UNPAPER_PATH':_(u'File path to unpaper program.'),
-    'CONVERTER_GRAPHICS_BACKEND':_(u'Graphics conversion backend to use.  Options are: converter.backends.imagemagick and converter.backends.graphicsmagick.'), 
+    'CONVERTER_IM_CONVERT_PATH': _(u'File path to imagemagick\'s convert program.'),
+    'CONVERTER_IM_IDENTIFY_PATH': _(u'File path to imagemagick\'s identify program.'),
+    'CONVERTER_GM_PATH': _(u'File path to graphicsmagick\'s program.'),
+    'CONVERTER_UNPAPER_PATH': _(u'File path to unpaper program.'),
+    'CONVERTER_GRAPHICS_BACKEND': _(u'Graphics conversion backend to use.  Options are: converter.backends.imagemagick and converter.backends.graphicsmagick.'),
 }

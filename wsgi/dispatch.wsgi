@@ -20,4 +20,3 @@ os.environ['CELERY_LOADER'] = 'django'
 
 from django.core.handlers.wsgi import WSGIHandler
 application = WSGIHandler()
-

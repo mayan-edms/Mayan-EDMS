@@ -1,5 +1,6 @@
-from django import forms 
+from django import forms
 from django.utils.translation import ugettext as _
+from django.template.defaultfilters import capfirst
 
 
 class MultiItemForm(forms.Form):
@@ -9,5 +10,5 @@ class MultiItemForm(forms.Form):
         choices = [('', '------')]
         choices.extend([(action[0], capfirst(action[1])) for action in actions])
         self.fields['action'].choices = choices
-        
+
     action = forms.ChoiceField(label=_(u'Multi item action'))

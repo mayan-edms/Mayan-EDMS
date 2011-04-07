@@ -1,9 +1,12 @@
+'''Configuration options for the filesystem_serving app
+'''
+
 from django.conf import settings
 
 from common.utils import proper_name
 
 available_indexing_functions = {
-    'proper_name':proper_name
+    'proper_name': proper_name
 }
 
 

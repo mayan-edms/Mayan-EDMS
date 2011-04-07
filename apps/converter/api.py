@@ -2,9 +2,8 @@ import os
 import subprocess
 
 from django.utils.importlib import import_module
-from django.core.exceptions import ImproperlyConfigured
 from django.template.defaultfilters import slugify
-
+from django.core.exceptions import ObjectDoesNotExist
 
 from converter.conf.settings import UNPAPER_PATH
 from converter.conf.settings import OCR_OPTIONS
@@ -14,7 +13,7 @@ from converter.conf.settings import HIGH_QUALITY_OPTIONS
 from converter.conf.settings import GRAPHICS_BACKEND
 
 from exceptions import UnpaperError
-    
+
 #from converter.conf.settings import UNOCONV_PATH
 from common import TEMPORARY_DIRECTORY
 from converter import TRANFORMATION_CHOICES
@@ -24,25 +23,29 @@ QUALITY_DEFAULT = 'quality_default'
 QUALITY_LOW = 'quality_low'
 QUALITY_HIGH = 'quality_high'
 
-QUALITY_SETTINGS = {QUALITY_DEFAULT:DEFAULT_OPTIONS, QUALITY_LOW:LOW_QUALITY_OPTIONS,
-    QUALITY_HIGH:HIGH_QUALITY_OPTIONS}
+QUALITY_SETTINGS = {QUALITY_DEFAULT: DEFAULT_OPTIONS,
+    QUALITY_LOW: LOW_QUALITY_OPTIONS, QUALITY_HIGH: HIGH_QUALITY_OPTIONS}
+
 
 def _lazy_load(fn):
     _cached = []
+
     def _decorated():
         if not _cached:
             _cached.append(fn())
         return _cached[0]
     return _decorated
 
+
 @_lazy_load
 def _get_backend():
     return import_module(GRAPHICS_BACKEND)
 
-try:    
+try:
     backend = _get_backend()
 except ImportError:
     raise ImportError('Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
+
 
 def cleanup(filename):
     ''' tries to remove the given filename. Ignores non-existent files '''
@@ -50,6 +53,7 @@ def cleanup(filename):
         os.remove(filename)
     except OSError:
         pass
+
 
 def execute_unpaper(input_filepath, output_filepath):
     command = []
@@ -73,7 +77,7 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
     return (proc.wait(), proc.stderr.read())
 """
 
-        
+
 def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, format='jpg', extra_options=''):
     filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     try:
@@ -90,20 +94,22 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         final_filepath = []
         [final_filepath.append(str(arg)) for arg in args]
         final_filepath.extend(['%s_%s' % (key, value) for key, value in kwargs.items()])
-        
+
         temp_path += slugify('_'.join(final_filepath))
 
         return temp_path
     else:
         return None
-   
+
+
 def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_DEFAULT, extra_options=''):
     output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     if os.path.exists(output_filepath):
         return output_filepath
     else:
         return None
-    
+
+
 def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', extra_options='', mimetype=None, extension=None, cleanup_files=True):
     unoconv_output = None
     output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
@@ -116,7 +122,7 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
             status, error_string = execute_unoconv(input_filepath, unoconv_output, arguments='-f pdf')
             if status:
                 errors = get_errors(error_string)
-                raise ConvertError(status, errors)            
+                raise ConvertError(status, errors)
             cleanup(input_filepath)
             input_filepath = unoconv_output
     '''
@@ -129,8 +135,9 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
             cleanup(input_filepath)
         if unoconv_output:
             cleanup(unoconv_output)
-        
+
     return output_filepath
+
 
 def get_page_count(input_filepath):
     try:
@@ -139,10 +146,11 @@ def get_page_count(input_filepath):
         #TODO: send to other page number identifying program
         return 1
 
+
 def convert_document_for_ocr(document, page=0, format='tif'):
     #Extract document file
     input_filepath = document_save_to_temp_dir(document, document.uuid)
-            
+
     #Convert for OCR
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
@@ -150,13 +158,13 @@ def convert_document_for_ocr(document, page=0, format='tif'):
     unpaper_input_file = '%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
     unpaper_output_file = '%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
     convert_output_file = '%s_ocr%s%s%s' % (temp_path, page, os.extsep, format)
-    
+
     input_arg = '%s[%s]' % (input_filepath, page)
 
     transformation_list = []
     try:
         #Catch invalid or non existing pages
-        document_page = document.documentpage_set.get(document=document, page_number=page+1)
+        document_page = document.documentpage_set.get(document=document, page_number=page + 1)
         for page_transformation in document_page.documentpagetransformation_set.all():
             if page_transformation.transformation in TRANFORMATION_CHOICES:
                 output = TRANFORMATION_CHOICES[page_transformation.transformation] % eval(page_transformation.arguments)

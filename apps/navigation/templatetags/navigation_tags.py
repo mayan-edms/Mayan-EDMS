@@ -1,4 +1,4 @@
-import copy 
+import copy
 import re
 
 from django.core.urlresolvers import reverse, NoReverseMatch
@@ -32,24 +32,22 @@ def process_links(links, view_name, url):
                     child_url = 'url' in child_link and child_link['url']
                     if view_name == child_view or url == child_url:
                         active = True
-                        active_item = item                
-            
-        items.append(
-            {
-                'first':count==0,
-                'active':active,
-                'url':item_view and reverse(item_view) or item_url or '#',
-                'text':unicode(item['text']),
-                'famfam':'famfam' in item and item['famfam'],
-            }
-        )
+                        active_item = item
+
+        items.append({
+            'first': count == 0,
+            'active': active,
+            'url': item_view and reverse(item_view) or item_url or '#',
+            'text': unicode(item['text']),
+            'famfam': 'famfam' in item and item['famfam'],
+            })
     return items, active_item
 
 
 class NavigationNode(Node):
     def __init__(self, navigation, *args, **kwargs):
         self.navigation = navigation
-        
+
     def render(self, context):
         request = Variable('request').resolve(context)
         view_name = resolve_to_name(request.META['PATH_INFO'])
@@ -59,7 +57,7 @@ class NavigationNode(Node):
         if active_item and 'links' in active_item:
             secondary_links, active_item = process_links(links=active_item['links'], view_name=view_name, url=request.META['PATH_INFO'])
             context['navigation_secondary_links'] = secondary_links
-        return ''                
+        return ''
 
 
 @register.tag
@@ -69,12 +67,13 @@ def main_navigation(parser, token):
 #    if len(args) != 3 or args[1] != 'as':
 #        raise TemplateSyntaxError("'get_all_states' requires 'as variable' (got %r)" % args)
 
-    #return NavigationNode(variable=args[2], navigation=navigation)    
-    return NavigationNode(navigation=menu_navigation)    
+    #return NavigationNode(variable=args[2], navigation=navigation)
+    return NavigationNode(navigation=menu_navigation)
 
 
 #http://www.djangosnippets.org/snippets/1378/
 __all__ = ('resolve_to_name',)
+
 
 def _pattern_resolve_to_name(self, path):
     match = self.regex.search(path)
@@ -87,6 +86,7 @@ def _pattern_resolve_to_name(self, path):
         else:
             name = "%s.%s" % (self.callback.__module__, self.callback.func_name)
         return name
+
 
 def _resolver_resolve_to_name(self, path):
     tried = []
@@ -109,12 +109,15 @@ def _resolver_resolve_to_name(self, path):
 RegexURLPattern.resolve_to_name = _pattern_resolve_to_name
 RegexURLResolver.resolve_to_name = _resolver_resolve_to_name
 
+
 def resolve_to_name(path, urlconf=None):
     return get_resolver(urlconf).resolve_to_name(path)
+
 
 @register.filter
 def resolve_url_name(value):
     return resolve_to_name(value)
+
 
 def resolve_arguments(context, src_args):
     args = []
@@ -132,10 +135,10 @@ def resolve_arguments(context, src_args):
     else:
         val = resolve_template_variable(context, src_args)
         if val:
-            args.append(val)    
+            args.append(val)
 
     return args, kwargs
-    
+
 
 def resolve_links(context, links, current_view, current_path):
     context_links = []
@@ -145,11 +148,11 @@ def resolve_links(context, links, current_view, current_path):
             args, kwargs = resolve_arguments(context, link.get('args', {}))
         except VariableDoesNotExist:
             args = []
-            kwargs = {}      
-            
+            kwargs = {}
+
         if 'view' in link:
             new_link['active'] = link['view'] == current_view
-               
+
             try:
                 if kwargs:
                     new_link['url'] = reverse(link['view'], kwargs=kwargs)
@@ -166,25 +169,25 @@ def resolve_links(context, links, current_view, current_path):
                 new_link['url'] = link['url'] % args
         else:
             new_link['active'] = False
-        context_links.append(new_link)    
+        context_links.append(new_link)
     return context_links
 
 
 def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
     current_path = Variable('request').resolve(context).META['PATH_INFO']
-    current_view = resolve_to_name(current_path)#.get_full_path())
-    context_links = []    
+    current_view = resolve_to_name(current_path)
+    context_links = []
 
     try:
         object_name = Variable('navigation_object_name').resolve(context)
     except VariableDoesNotExist:
         object_name = 'object'
-        
+
     try:
         obj = Variable(object_name).resolve(context)
     except VariableDoesNotExist:
         obj = None
-        
+
     try:
         links = links_dict[menu_name][current_view]['links']
         for link in resolve_links(context, links, current_view, current_path):
@@ -233,19 +236,19 @@ def get_object_navigation_links(parser, token):
     if not m:
         raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
 
-    menu_name, var_name = m.groups()    
+    menu_name, var_name = m.groups()
     return GetNavigationLinks(menu_name=menu_name, var_name=var_name)
-    
-    
+
+
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
     return {
-        'request':context['request'],
-        'horizontal':True,
-        'object_navigation_links':_get_object_navigation_links(context)
+        'request': context['request'],
+        'horizontal': True,
+        'object_navigation_links': _get_object_navigation_links(context)
     }
 
- 
+
 @register.tag
 def get_multi_item_links(parser, token):
     tag_name, arg = token.contents.split(None, 1)
@@ -261,9 +264,9 @@ def get_multi_item_links(parser, token):
 def get_multi_item_links_form(context):
     new_context = copy.copy(context)
     new_context.update({
-        'form':MultiItemForm(actions=[(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]),
-        'title':_(u'Selected item actions:'),
-        'form_action':reverse('multi_object_action_view'),
-        'submit_method':'get',
+        'form': MultiItemForm(actions=[(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]),
+        'title': _(u'Selected item actions:'),
+        'form_action': reverse('multi_object_action_view'),
+        'submit_method': 'get',
     })
     return new_context

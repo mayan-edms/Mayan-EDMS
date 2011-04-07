@@ -8,24 +8,24 @@ model_list_columns = {}
 
 def register_multi_item_links(src, links, menu_name=None):
     if menu_name in multi_object_navigation:
-        if hasattr(src, '__iter__'):        
+        if hasattr(src, '__iter__'):
             for one_src in src:
                 if one_src in object_navigation[menu_name]:
                     multi_object_navigation[menu_name][one_src]['links'].extend(links)
                 else:
-                    multi_object_navigation[menu_name][one_src] = {'links':copy.copy(links)}
+                    multi_object_navigation[menu_name][one_src] = {'links': copy.copy(links)}
         else:
             if src in multi_object_navigation[menu_name]:
                 multi_object_navigation[menu_name][src]['links'].extend(links)
             else:
-                multi_object_navigation[menu_name][src] = {'links':links}
+                multi_object_navigation[menu_name][src] = {'links': links}
     else:
         multi_object_navigation[menu_name] = {}
         if hasattr(src, '__iter__'):
             for one_src in src:
-                multi_object_navigation[menu_name][one_src] = {'links':links}
+                multi_object_navigation[menu_name][one_src] = {'links': links}
         else:
-            multi_object_navigation[menu_name] = {src:{'links':links}}            
+            multi_object_navigation[menu_name] = {src: {'links': links}}
 
 
 def register_links(src, links, menu_name=None):
@@ -35,26 +35,26 @@ def register_links(src, links, menu_name=None):
                 if one_src in object_navigation[menu_name]:
                     object_navigation[menu_name][one_src]['links'].extend(links)
                 else:
-                    object_navigation[menu_name][one_src] = {'links':copy.copy(links)}
+                    object_navigation[menu_name][one_src] = {'links': copy.copy(links)}
         else:
             if src in object_navigation[menu_name]:
                 object_navigation[menu_name][src]['links'].extend(links)
             else:
-                object_navigation[menu_name][src] = {'links':links}
+                object_navigation[menu_name][src] = {'links': links}
     else:
-        object_navigation[menu_name] = {}        
+        object_navigation[menu_name] = {}
         if hasattr(src, '__iter__'):
             for one_src in src:
-                object_navigation[menu_name][one_src] = {'links':links}
+                object_navigation[menu_name][one_src] = {'links': links}
         else:
-            object_navigation[menu_name] = {src:{'links':links}}
-        
+            object_navigation[menu_name] = {src: {'links': links}}
+
 
 def register_menu(links):
     for link in links:
         menu_links.append(link)
-    
-    menu_links.sort(lambda x, y: 1 if x>y else -1, lambda x:x['position'] if 'position' in x else 1)
+
+    menu_links.sort(lambda x, y: 1 if x > y else -1, lambda x: x['position'] if 'position' in x else 1)
 
 
 def register_model_list_columns(model, columns):
