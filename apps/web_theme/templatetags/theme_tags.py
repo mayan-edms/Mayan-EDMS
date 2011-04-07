@@ -1,4 +1,5 @@
 import types
+import re
 
 from django.conf import settings
 from django.core.urlresolvers import reverse, NoReverseMatch
@@ -22,8 +23,6 @@ class GetThemeNode(Node):
         return ''
 
 
-import re
-
 @register.tag
 def get_theme(parser, token):
     try:
@@ -42,3 +41,14 @@ def get_theme(parser, token):
     #if not (format_string[0] == format_string[-1] and format_string[0] in ('"', "'")):
     #    raise template.TemplateSyntaxError, "%r tag's argument should be in quotes" % tag_name
     return GetThemeNode(var_name)    
+
+
+class LoginRedirectNode(Node):
+    def render(self, context):
+        context['LOGIN_REDIRECT_URL'] = getattr(settings, 'LOGIN_REDIRECT_URL', '/')
+        return ''
+    
+
+@register.tag
+def get_login_redirect_url(parser, token):
+    return LoginRedirectNode()

@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
         <title>{% block html_title %}{% endblock %}</title>
 
-        {% block keywords %}{% endblock %}		
+        {% block web_theme_head %}{% endblock %}	
 
         <link rel="stylesheet" href="{{ MEDIA_URL }}web_theme_media/stylesheets/base.css" type="text/css" media="screen" />
         <link rel="stylesheet" id="current-theme" href="{{ MEDIA_URL }}web_theme_media/stylesheets/themes/{{ web_theme }}/style.css" type="text/css" media="screen" />
@@ -57,8 +57,7 @@
                 <div id="box">
                     {% block content_plain %}{% endblock %}
                 </div>
-            {% endif %}
-            {% if not user.is_anonymous %}
+            {% else %}
                 <div id="header">
                     <h1><a href="{% url home %}">{% block web_theme_project_name %}{% endblock %}</a></h1>
                         <div id="user-navigation">
