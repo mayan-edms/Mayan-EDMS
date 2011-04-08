@@ -13,6 +13,7 @@ from django.utils.hashcompat import md5_constructor
 
 __all__ = ('security_hash', 'BoundFormWizard')
 
+
 def security_hash(request, form, exclude=None, *args):
     """Calculates a security hash for the given Form/FormSet instance.
 
@@ -48,6 +49,7 @@ def security_hash(request, form, exclude=None, *args):
 
     return md5_constructor(pickled).hexdigest()
 
+
 class BoundFormWizard(FormWizard):
     """Render prev_fields as a list of bound form fields in the template
     context rather than raw html."""
@@ -78,5 +80,3 @@ class BoundFormWizard(FormWizard):
                 bf = BoundField(forms.Form(), hash_field, hash_name)
                 prev_fields.append(bf)
         return self.render_template(request, form, prev_fields, step, context)
-
-# vim: ai ts=4 sts=4 et sw=4

@@ -77,6 +77,10 @@ class Document(models.Model):
             self.update_page_count(save=False)
             self.apply_default_transformations()
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('document_view_simple', [self.id])
+
     def get_fullname(self):
         return os.extsep.join([self.file_filename, self.file_extension])
 
@@ -101,10 +105,6 @@ class Document(models.Model):
 
     def open(self):
         return self.file.storage.open(self.file.path)
-
-    @models.permalink
-    def get_absolute_url(self):
-        return ('document_view_simple', [self.id])
 
     def update_checksum(self, save=True):
         if self.exists():

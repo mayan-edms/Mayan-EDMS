@@ -1,16 +1,16 @@
-from django import forms 
+from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.db import models
 
 from common.utils import return_attrib
-          
+
 
 class DetailSelectMultiple(forms.widgets.SelectMultiple):
     def __init__(self, queryset=None, *args, **kwargs):
         self.queryset = queryset
         super(DetailSelectMultiple, self).__init__(*args, **kwargs)
-            
+
     def render(self, name, value, attrs=None, choices=()):
         if value is None:
             value = ''
@@ -30,7 +30,7 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
                 if self.choices[0] != (u'', u'---------') and value != []:
                     options = [(index, string) for index, string in \
                         self.choices]
-                
+
         if options:
             for index, string in options:
                 if self.queryset:
@@ -110,7 +110,7 @@ class GenericAssignRemoveForm(forms.Form):
     left_list = forms.ModelMultipleChoiceField(required=False, queryset=None)
     right_list = forms.ModelMultipleChoiceField(required=False, queryset=None)
 
-        
+
 class FilterForm(forms.Form):
     def __init__(self, list_filters, *args, **kwargs):
         super(FilterForm, self).__init__(*args, **kwargs)
