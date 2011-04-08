@@ -9,17 +9,16 @@ import sys
 from django.utils.translation import ugettext as _
 from django.utils.importlib import import_module
 
-from common import TEMPORARY_DIRECTORY
 from converter.api import convert_document_for_ocr
 from documents.models import DocumentPage
 
 from ocr.conf.settings import TESSERACT_PATH
 from ocr.conf.settings import TESSERACT_LANGUAGE
 
-    
+
 def get_language_backend():
     try:
-        module = import_module(u'.'.join([u'ocr',u'lang', TESSERACT_LANGUAGE]))
+        module = import_module(u'.'.join([u'ocr', u'lang', TESSERACT_LANGUAGE]))
     except ImportError:
         sys.stderr.write('\nError: No OCR app language backend for language: %s\n\n' % TESSERACT_LANGUAGE)
         return None
@@ -44,7 +43,7 @@ def run_tesseract(input_filename, output_filename_base, lang=None):
     command = [TESSERACT_PATH, input_filename, output_filename_base]
     if lang is not None:
         command += ['-l', lang]
-    
+
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
     if return_code != 0:
@@ -87,10 +86,10 @@ def ocr_cleanup(text):
             if result:
                 output.append(result)
         output.append('\n')
-            
+
     return u' '.join(output)
 
-   
+
 def clean_pages():
     for page in DocumentPage.objects.all():
         if page.content:

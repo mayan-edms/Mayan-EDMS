@@ -1,4 +1,4 @@
-from django.core.exceptions import PermissionDenied 
+from django.core.exceptions import PermissionDenied
 from django.template import TemplateSyntaxError, Library, \
                             Node, Variable
 
@@ -12,7 +12,7 @@ class CheckPermissionsNode(Node):
         self.requester = requester
         self.namespace = namespace
         self.permission_list = permission_list
-        
+
     def render(self, context):
         requester = Variable(self.requester).resolve(context)
         namespace = Variable(self.namespace).resolve(context)
@@ -32,7 +32,6 @@ def check_permissions(parser, token):
         # Splitting by None == splitting by spaces.
         tag_name, args = token.contents.split(None, 1)
     except ValueError:
-        raise TemplateSyntaxError, "%r tag requires arguments" % token.contents.split()[0]
-        
+        raise TemplateSyntaxError('%r tag requires arguments' % token.contents.split()[0])
+
     return CheckPermissionsNode(*args.split())
-    

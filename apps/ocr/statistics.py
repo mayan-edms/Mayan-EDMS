@@ -9,8 +9,8 @@ def get_statistics():
         _(u'Document queues: %d') % DocumentQueue.objects.count(),
         _(u'Queued documents: %d') % QueueDocument.objects.only('pk').count()
     ]
-    
+
     return {
-        'title':_(u'OCR statistics'),
+        'title': _(u'OCR statistics'),
         'paragraphs': paragraphs
     }

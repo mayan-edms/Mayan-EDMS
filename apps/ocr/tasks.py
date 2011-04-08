@@ -16,7 +16,7 @@ from models import QueueDocument, DocumentQueue
 from ocr.conf.settings import NODE_CONCURRENT_EXECUTION
 from ocr.conf.settings import REPLICATION_DELAY
 
-    
+
 @task
 def task_process_queue_document(queue_document_id):
     queue_document = QueueDocument.objects.get(id=queue_document_id)
@@ -32,7 +32,7 @@ def task_process_queue_document(queue_document_id):
     except Exception, e:
         queue_document.state = QUEUEDOCUMENT_STATE_ERROR
         queue_document.result = e
-        queue_document.save()    
+        queue_document.save()
 
 
 class DocumentQueueWatcher(PeriodicTask):
@@ -47,7 +47,7 @@ class DocumentQueueWatcher(PeriodicTask):
         logger.debug('Active queues: %s' % DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE))
         q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
         q_delayed = Q(delay=True)
-        q_delay_interval = Q(datetime_submitted__lt=datetime.now()-timedelta(seconds=REPLICATION_DELAY))        
+        q_delay_interval = Q(datetime_submitted__lt=datetime.now() - timedelta(seconds=REPLICATION_DELAY))
         for document_queue in DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE):
             logger.debug('Analysing queue: %s' % document_queue)
             if QueueDocument.objects.filter(
@@ -56,7 +56,7 @@ class DocumentQueueWatcher(PeriodicTask):
                 try:
                     oldest_queued_document_qs = document_queue.queuedocument_set.filter(
                         (q_pending & ~q_delayed) | (q_pending & q_delayed & q_delay_interval))
-                        
+
                     if oldest_queued_document_qs:
                         oldest_queued_document = oldest_queued_document_qs.order_by('datetime_submitted')[0]
                         task_process_queue_document.delay(oldest_queued_document.id)

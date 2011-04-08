@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_menu
-    
+
 from permissions.conf.settings import DEFAULT_ROLES
 from models import Role
 
@@ -16,11 +16,11 @@ PERMISSION_PERMISSION_GRANT = 'permission_grant'
 PERMISSION_PERMISSION_REVOKE = 'permission_revoke'
 
 
-role_list = {'text':_(u'roles'), 'view':'role_list', 'famfam':'medal_gold_1', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_VIEW]}}
-role_create = {'text':_(u'create new role'), 'view':'role_create', 'famfam':'medal_gold_add', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_CREATE]}}
-role_edit = {'text':_(u'edit'), 'view':'role_edit', 'args':'object.id', 'famfam':'medal_gold_1', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_EDIT]}}
-role_permissions = {'text':_(u'role permissions'), 'view':'role_permissions', 'args':'object.id', 'famfam':'key_go', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]}}
-role_delete = {'text':_(u'delete'), 'view':'role_delete', 'args':'object.id', 'famfam':'medal_gold_delete', 'permissions':{'namespace':'permissions', 'permissions':[PERMISSION_ROLE_DELETE]}}
+role_list = {'text': _(u'roles'), 'view': 'role_list', 'famfam': 'medal_gold_1', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_VIEW]}}
+role_create = {'text': _(u'create new role'), 'view': 'role_create', 'famfam': 'medal_gold_add', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_CREATE]}}
+role_edit = {'text': _(u'edit'), 'view': 'role_edit', 'args': 'object.id', 'famfam': 'medal_gold_1', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_EDIT]}}
+role_permissions = {'text': _(u'role permissions'), 'view': 'role_permissions', 'args': 'object.id', 'famfam': 'key_go', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]}}
+role_delete = {'text': _(u'delete'), 'view': 'role_delete', 'args': 'object.id', 'famfam': 'medal_gold_delete', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_DELETE]}}
 
 register_links(Role, [role_permissions, role_edit, role_delete])
 register_links(['role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_create], menu_name='sidebar')

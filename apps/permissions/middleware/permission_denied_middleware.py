@@ -1,8 +1,9 @@
 from django.conf import settings
-from django.core.exceptions import PermissionDenied 
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseForbidden
 from django.template import RequestContext, Template, loader, TemplateDoesNotExist
 from django.utils.importlib import import_module
+
 
 #http://mitchfournier.com/2010/07/12/show-a-custom-403-forbidden-error-page-in-django/
 class PermissionDeniedMiddleware(object):
@@ -10,7 +11,7 @@ class PermissionDeniedMiddleware(object):
         if isinstance(exception, PermissionDenied):
             try:
                 # Handle import error but allow any type error from view
-                callback = getattr(import_module(settings.ROOT_URLCONF),'handler403')
+                callback = getattr(import_module(settings.ROOT_URLCONF), 'handler403')
                 return callback(request, exception)
             except (ImportError, AttributeError):
                 # Try to get a 403 template

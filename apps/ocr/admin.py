@@ -8,12 +8,11 @@ class QueueDocumentInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-    
+
 
 class DocumentQueueAdmin(admin.ModelAdmin):
     inlines = [QueueDocumentInline]
     list_display = ('name', 'label', 'state')
 
-  
-admin.site.register(DocumentQueue, DocumentQueueAdmin)
 
+admin.site.register(DocumentQueue, DocumentQueueAdmin)

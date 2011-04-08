@@ -10,7 +10,7 @@ from literals import DOCUMENTQUEUE_STATE_STOPPED, \
     QUEUEDOCUMENT_STATE_CHOICES
 from exceptions import AlreadyQueued
 
-    
+
 class DocumentQueueManager(models.Manager):
     def queue_document(self, document, queue_name='default'):
         document_queue = DocumentQueue.objects.get(name=queue_name)
@@ -18,7 +18,7 @@ class DocumentQueueManager(models.Manager):
             raise AlreadyQueued
 
         queue_document = QueueDocument(document_queue=document_queue, document=document, delay=True)
-        queue_document.save()    
+        queue_document.save()
 
         return document_queue
 
@@ -30,16 +30,16 @@ class DocumentQueue(models.Model):
         choices=DOCUMENTQUEUE_STATE_CHOICES,
         default=DOCUMENTQUEUE_STATE_STOPPED,
         verbose_name=_(u'state'))
-    
+
     objects = DocumentQueueManager()
-    
+
     class Meta:
         verbose_name = _(u'document queue')
         verbose_name_plural = _(u'document queues')
 
     def __unicode__(self):
         return self.label
-       
+
 
 class QueueDocument(models.Model):
     document_queue = models.ForeignKey(DocumentQueue, verbose_name=_(u'document queue'))
@@ -52,7 +52,7 @@ class QueueDocument(models.Model):
         verbose_name=_(u'state'))
     result = models.TextField(blank=True, null=True, verbose_name=_(u'result'))
     node_name = models.CharField(max_length=32, verbose_name=_(u'node name'), blank=True, null=True)
-    
+
     class Meta:
         ordering = ('datetime_submitted',)
         verbose_name = _(u'queue document')

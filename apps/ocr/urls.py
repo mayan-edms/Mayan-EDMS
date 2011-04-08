@@ -1,5 +1,4 @@
-from django.conf.urls.defaults import *
-from django.utils.translation import ugettext_lazy as _
+from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('ocr.views',
     url(r'^(?P<document_id>\d+)/submit/$', 'submit_document', (), 'submit_document'),
@@ -11,6 +10,6 @@ urlpatterns = patterns('ocr.views',
 
     url(r'^ocr/queue/(?P<document_queue_id>\d+)/enable/$', 'document_queue_enable', (), 'document_queue_enable'),
     url(r'^ocr/queue/(?P<document_queue_id>\d+)/disable/$', 'document_queue_disable', (), 'document_queue_disable'),
-    
+
     url(r'^ocr/document/all/clean_up/$', 'all_document_ocr_cleanup', (), 'all_document_ocr_cleanup'),
 )
