@@ -19,9 +19,9 @@ from common import TEMPORARY_DIRECTORY
 from converter import TRANFORMATION_CHOICES
 from documents.utils import document_save_to_temp_dir
 
-QUALITY_DEFAULT = 'quality_default'
-QUALITY_LOW = 'quality_low'
-QUALITY_HIGH = 'quality_high'
+QUALITY_DEFAULT = u'quality_default'
+QUALITY_LOW = u'quality_low'
+QUALITY_HIGH = u'quality_high'
 
 QUALITY_SETTINGS = {QUALITY_DEFAULT: DEFAULT_OPTIONS,
     QUALITY_LOW: LOW_QUALITY_OPTIONS, QUALITY_HIGH: HIGH_QUALITY_OPTIONS}
@@ -44,7 +44,7 @@ def _get_backend():
 try:
     backend = _get_backend()
 except ImportError:
-    raise ImportError('Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
+    raise ImportError(u'Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
 
 
 def cleanup(filename):
@@ -58,7 +58,7 @@ def cleanup(filename):
 def execute_unpaper(input_filepath, output_filepath):
     command = []
     command.append(UNPAPER_PATH)
-    command.append('--overwrite')
+    command.append(u'--overwrite')
     command.append(input_filepath)
     command.append(output_filepath)
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE)
@@ -78,7 +78,7 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
 """
 
 
-def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, format='jpg', extra_options=''):
+def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, format=u'jpg', extra_options=u''):
     filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     try:
         os.remove(filepath)
@@ -93,16 +93,16 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
 
         final_filepath = []
         [final_filepath.append(str(arg)) for arg in args]
-        final_filepath.extend(['%s_%s' % (key, value) for key, value in kwargs.items()])
+        final_filepath.extend([u'%s_%s' % (key, value) for key, value in kwargs.items()])
 
-        temp_path += slugify('_'.join(final_filepath))
+        temp_path += slugify(u'_'.join(final_filepath))
 
         return temp_path
     else:
         return None
 
 
-def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_DEFAULT, extra_options=''):
+def in_image_cache(input_filepath, size, page=0, format=u'jpg', quality=QUALITY_DEFAULT, extra_options=u''):
     output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     if os.path.exists(output_filepath):
         return output_filepath
@@ -110,7 +110,7 @@ def in_image_cache(input_filepath, size, page=0, format='jpg', quality=QUALITY_D
         return None
 
 
-def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format='jpg', extra_options='', mimetype=None, extension=None, cleanup_files=True):
+def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format=u'jpg', extra_options=u'', mimetype=None, extension=None, cleanup_files=True):
     unoconv_output = None
     output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
     if os.path.exists(output_filepath):
@@ -127,9 +127,9 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
             input_filepath = unoconv_output
     '''
     try:
-        input_arg = '%s[%s]' % (input_filepath, page)
-        extra_options += ' -resize %s' % size
-        backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath='%s:%s' % (format, output_filepath), quality=quality)
+        input_arg = u'%s[%s]' % (input_filepath, page)
+        extra_options += u' -resize %s' % size
+        backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (format, output_filepath), quality=quality)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -141,7 +141,7 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
 
 def get_page_count(input_filepath):
     try:
-        return int(backend.execute_identify(input_filepath, '-format %n'))
+        return len(backend.execute_identify(unicode(input_filepath)).splitlines())
     except Exception, e:
         #TODO: send to other page number identifying program
         return 1
@@ -154,12 +154,12 @@ def convert_document_for_ocr(document, page=0, format='tif'):
     #Convert for OCR
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    transformation_output_file = '%s_trans%s%s%s' % (temp_path, page, os.extsep, format)
-    unpaper_input_file = '%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
-    unpaper_output_file = '%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
-    convert_output_file = '%s_ocr%s%s%s' % (temp_path, page, os.extsep, format)
+    transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, format)
+    unpaper_input_file = u'%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
+    unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
+    convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, format)
 
-    input_arg = '%s[%s]' % (input_filepath, page)
+    input_arg = u'%s[%s]' % (input_filepath, page)
 
     transformation_list = []
     try:

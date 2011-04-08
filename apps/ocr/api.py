@@ -20,7 +20,7 @@ def get_language_backend():
     try:
         module = import_module(u'.'.join([u'ocr', u'lang', TESSERACT_LANGUAGE]))
     except ImportError:
-        sys.stderr.write('\nError: No OCR app language backend for language: %s\n\n' % TESSERACT_LANGUAGE)
+        sys.stderr.write(u'\nError: No OCR app language backend for language: %s\n\n' % TESSERACT_LANGUAGE)
         return None
     return module
 
@@ -40,9 +40,9 @@ def cleanup(filename):
 
 
 def run_tesseract(input_filename, output_filename_base, lang=None):
-    command = [TESSERACT_PATH, input_filename, output_filename_base]
+    command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(output_filename_base)]
     if lang is not None:
-        command += ['-l', lang]
+        command += [u'-l', lang]
 
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
@@ -85,7 +85,7 @@ def ocr_cleanup(text):
                 result = word
             if result:
                 output.append(result)
-        output.append('\n')
+        output.append(u'\n')
 
     return u' '.join(output)
 

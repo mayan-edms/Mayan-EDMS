@@ -117,20 +117,26 @@ class Document(models.Model):
     def update_page_count(self, save=True):
         handle, filepath = tempfile.mkstemp()
         self.save_to_file(filepath)
-        total_pages = get_page_count(filepath)
-
-        for page_number in range(total_pages):
-            DocumentPage.objects.get_or_create(
-                document=self, page_number=page_number + 1)
-
+        detected_pages = get_page_count(filepath)
         os.close(handle)
         try:
             os.remove(filepath)
         except OSError:
             pass
 
+        current_pages = DocumentPage.objects.filter(document=self).order_by('page_number',)
+        if current_pages.count() > detected_pages:
+            for page in current_pages[detected_pages:]:
+                page.delete()
+
+        for page_number in range(detected_pages):
+            DocumentPage.objects.get_or_create(
+                document=self, page_number=page_number + 1)
+
         if save:
             self.save()
+
+        return detected_pages
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
         input_descriptor = self.open()
@@ -287,7 +293,7 @@ class DocumentPage(models.Model):
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'))
 
     def __unicode__(self):
-        return '%s - %d - %s' % (unicode(self.document), self.page_number, self.page_label)
+        return u'%s - %d - %s' % (unicode(self.document), self.page_number, self.page_label)
 
     class Meta:
         verbose_name = _(u'document page')
@@ -309,8 +315,8 @@ class MetadataGroup(models.Model):
         verbose_name_plural = _(u'metadata document groups')
 
 
-INCLUSION_AND = '&'
-INCLUSION_OR = '|'
+INCLUSION_AND = u'&'
+INCLUSION_OR = u'|'
 
 INCLUSION_CHOICES = (
     (INCLUSION_AND, _(u'and')),
@@ -318,21 +324,21 @@ INCLUSION_CHOICES = (
 )
 
 OPERATOR_CHOICES = (
-    ('exact', _(u'is equal')),
-    ('iexact', _(u'is equal (case insensitive)')),
-    ('contains', _(u'contains')),
-    ('icontains', _(u'contains (case insensitive)')),
-    ('in', _(u'is in')),
-    ('gt', _(u'is greater than')),
-    ('gte', _(u'is greater than or equal')),
-    ('lt', _(u'is less than')),
-    ('lte', _(u'is less than or equal')),
-    ('startswith', _(u'starts with')),
-    ('istartswith', _(u'starts with (case insensitive)')),
-    ('endswith', _(u'ends with')),
-    ('iendswith', _(u'ends with (case insensitive)')),
-    ('regex', _(u'is in regular expression')),
-    ('iregex', _(u'is in regular expression (case insensitive)')),
+    (u'exact', _(u'is equal')),
+    (u'iexact', _(u'is equal (case insensitive)')),
+    (u'contains', _(u'contains')),
+    (u'icontains', _(u'contains (case insensitive)')),
+    (u'in', _(u'is in')),
+    (u'gt', _(u'is greater than')),
+    (u'gte', _(u'is greater than or equal')),
+    (u'lt', _(u'is less than')),
+    (u'lte', _(u'is less than or equal')),
+    (u'startswith', _(u'starts with')),
+    (u'istartswith', _(u'starts with (case insensitive)')),
+    (u'endswith', _(u'ends with')),
+    (u'iendswith', _(u'ends with (case insensitive)')),
+    (u'regex', _(u'is in regular expression')),
+    (u'iregex', _(u'is in regular expression (case insensitive)')),
 )
 
 
@@ -347,7 +353,7 @@ class MetadataGroupItem(models.Model):
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
     def __unicode__(self):
-        return '[%s] %s %s %s %s %s' % ('x' if self.enabled else ' ', self.get_inclusion_display(), self.metadata_type, _(u'not') if self.negated else '', self.get_operator_display(), self.expression)
+        return u'[%s] %s %s %s %s %s' % (u'x' if self.enabled else u' ', self.get_inclusion_display(), self.metadata_type, _(u'not') if self.negated else u'', self.get_operator_display(), self.expression)
 
     class Meta:
         verbose_name = _(u'metadata group item')
@@ -364,7 +370,7 @@ class DocumentPageTransformation(models.Model):
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
 
     def __unicode__(self):
-        return '%s - %s' % (unicode(self.document_page), self.get_transformation_display())
+        return u'%s - %s' % (unicode(self.document_page), self.get_transformation_display())
 
     class Meta:
         ordering = ('order',)

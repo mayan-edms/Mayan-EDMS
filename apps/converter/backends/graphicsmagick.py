@@ -1,20 +1,18 @@
-import shlex
 import subprocess
 
 from converter.conf.settings import GM_PATH
 from converter.api import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 
-CONVERTER_ERROR_STRING_NO_DECODER = 'No decode delegate for this image format'
+CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
 
 
-def execute_identify(input_filepath, arguments):
+def execute_identify(input_filepath, arguments=u''):
     command = []
-    command.append(GM_PATH)
+    command.append(unicode(GM_PATH))
     command.append(u'identify')
-    command.extend(shlex.split(str(arguments)))
-    command.append(input_filepath)
-
+    command.extend(unicode(arguments).split())
+    command.append(unicode(input_filepath))
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
     if return_code != 0:
@@ -24,13 +22,13 @@ def execute_identify(input_filepath, arguments):
 
 def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
     command = []
-    command.append(GM_PATH)
+    command.append(unicode(GM_PATH))
     command.append(u'convert')
-    command.extend(shlex.split(str(QUALITY_SETTINGS[quality])))
-    command.append(input_filepath)
+    command.extend(unicode(QUALITY_SETTINGS[quality]).split())
+    command.append(unicode(input_filepath))
     if arguments:
-        command.extend(shlex.split(str(arguments)))
-    command.append(output_filepath)
+        command.extend(unicode(arguments).split())
+    command.append(unicode(output_filepath))
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
     if return_code != 0:

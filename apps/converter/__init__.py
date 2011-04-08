@@ -1,3 +1,3 @@
 TRANFORMATION_CHOICES = {
-    'rotate': '-rotate %(degrees)d'
+    u'rotate': u'-rotate %(degrees)d'
 }
