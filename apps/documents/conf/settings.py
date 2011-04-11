@@ -6,6 +6,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
+from common.utils import proper_name
+
 from storage.backends.filebasedstorage import FileBasedStorage
 
 default_available_functions = {
@@ -20,9 +22,15 @@ available_transformations = {
     'rotate': {'label':_(u'Rotate [degrees]'), 'arguments':[{'name':'degrees'}]}
 }
 
+
+available_indexing_functions = {
+    'proper_name': proper_name
+}
+
 # Definition
 AVAILABLE_FUNCTIONS = getattr(settings, 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', default_available_functions)
 AVAILABLE_MODELS = getattr(settings, 'DOCUMENTS_METADATA_AVAILABLE_MODELS', default_available_models)
+AVAILABLE_INDEXING_FUNCTIONS = getattr(settings, 'DOCUMENTS_INDEXING_AVAILABLE_FUNCTIONS', available_indexing_functions)
 
 # Upload
 USE_STAGING_DIRECTORY = getattr(settings, 'DOCUMENTS_USE_STAGING_DIRECTORY', False)

@@ -12,8 +12,8 @@ from python_magic import magic
 
 from dynamic_search.api import register
 from converter.api import get_page_count
-from filesystem_serving.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
+from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
