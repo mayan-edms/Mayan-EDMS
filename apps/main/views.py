@@ -26,7 +26,7 @@ def check_settings(request):
     settings = [
         {'name':'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'value':documents_settings.AVAILABLE_FUNCTIONS},
         {'name':'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'value':documents_settings.AVAILABLE_MODELS},
-        {'name':'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value':documents.AVAILABLE_INDEXING_FUNCTIONS},
+        {'name':'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value':documents_settings.AVAILABLE_INDEXING_FUNCTIONS},
         {'name':'DOCUMENTS_USE_STAGING_DIRECTORY', 'value':documents_settings.USE_STAGING_DIRECTORY},
         {'name':'DOCUMENTS_STAGING_DIRECTORY', 'value':documents_settings.STAGING_DIRECTORY, 'exists':True},
         {'name':'DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD', 'value':documents_settings.DELETE_STAGING_FILE_AFTER_UPLOAD},
