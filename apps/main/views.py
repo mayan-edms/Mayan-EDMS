@@ -17,6 +17,7 @@ from dynamic_search.conf import settings as search_settings
 
 from main.api import diagnostics
 
+
 def home(request):
     return render_to_response('home.html', {},
     context_instance=RequestContext(request))
@@ -24,91 +25,91 @@ def home(request):
 
 def check_settings(request):
     settings = [
-        {'name':'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'value':documents_settings.AVAILABLE_FUNCTIONS},
-        {'name':'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'value':documents_settings.AVAILABLE_MODELS},
-        {'name':'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value':documents_settings.AVAILABLE_INDEXING_FUNCTIONS},
-        {'name':'DOCUMENTS_USE_STAGING_DIRECTORY', 'value':documents_settings.USE_STAGING_DIRECTORY},
-        {'name':'DOCUMENTS_STAGING_DIRECTORY', 'value':documents_settings.STAGING_DIRECTORY, 'exists':True},
-        {'name':'DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD', 'value':documents_settings.DELETE_STAGING_FILE_AFTER_UPLOAD},
-        {'name':'DOCUMENTS_STAGING_FILES_PREVIEW_SIZE', 'value':documents_settings.STAGING_FILES_PREVIEW_SIZE},
-        {'name':'DOCUMENTS_CHECKSUM_FUNCTION', 'value':documents_settings.CHECKSUM_FUNCTION},
-        {'name':'DOCUMENTS_UUID_FUNTION', 'value':documents_settings.UUID_FUNCTION},
-        {'name':'DOCUMENTS_STORAGE_BACKEND', 'value':documents_settings.STORAGE_BACKEND},
-        {'name':'DOCUMENTS_PREVIEW_SIZE', 'value':documents_settings.PREVIEW_SIZE},
-        {'name':'DOCUMENTS_THUMBNAIL_SIZE', 'value':documents_settings.THUMBNAIL_SIZE},
-        {'name':'DOCUMENTS_DISPLAY_SIZE', 'value':documents_settings.DISPLAY_SIZE},
-        {'name':'DOCUMENTS_TRANFORMATION_PREVIEW_SIZE', 'value':documents_settings.TRANFORMATION_PREVIEW_SIZE},
-        {'name':'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value':documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
-        {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
-        {'name':'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value':documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
+        {'name': 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'value': documents_settings.AVAILABLE_FUNCTIONS},
+        {'name': 'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'value': documents_settings.AVAILABLE_MODELS},
+        {'name': 'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value': documents_settings.AVAILABLE_INDEXING_FUNCTIONS},
+        {'name': 'DOCUMENTS_USE_STAGING_DIRECTORY', 'value': documents_settings.USE_STAGING_DIRECTORY},
+        {'name': 'DOCUMENTS_STAGING_DIRECTORY', 'value': documents_settings.STAGING_DIRECTORY, 'exists': True},
+        {'name': 'DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD', 'value': documents_settings.DELETE_STAGING_FILE_AFTER_UPLOAD},
+        {'name': 'DOCUMENTS_STAGING_FILES_PREVIEW_SIZE', 'value': documents_settings.STAGING_FILES_PREVIEW_SIZE},
+        {'name': 'DOCUMENTS_CHECKSUM_FUNCTION', 'value': documents_settings.CHECKSUM_FUNCTION},
+        {'name': 'DOCUMENTS_UUID_FUNTION', 'value': documents_settings.UUID_FUNCTION},
+        {'name': 'DOCUMENTS_STORAGE_BACKEND', 'value': documents_settings.STORAGE_BACKEND},
+        {'name': 'DOCUMENTS_PREVIEW_SIZE', 'value': documents_settings.PREVIEW_SIZE},
+        {'name': 'DOCUMENTS_THUMBNAIL_SIZE', 'value': documents_settings.THUMBNAIL_SIZE},
+        {'name': 'DOCUMENTS_DISPLAY_SIZE', 'value': documents_settings.DISPLAY_SIZE},
+        {'name': 'DOCUMENTS_TRANFORMATION_PREVIEW_SIZE', 'value': documents_settings.TRANFORMATION_PREVIEW_SIZE},
+        {'name': 'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value': documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
+        {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
+        {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
 
         #Groups
-        {'name':'DOCUMENTS_GROUP_MAX_RESULTS', 'value':documents_settings.GROUP_MAX_RESULTS},
-        {'name':'DOCUMENTS_GROUP_SHOW_EMPTY', 'value':documents_settings.GROUP_SHOW_EMPTY},
-        {'name':'DOCUMENTS_GROUP_SHOW_THUMBNAIL',
-            'value':documents_settings.GROUP_SHOW_THUMBNAIL,
-            'description':documents_settings.setting_description},
-            
+        {'name': 'DOCUMENTS_GROUP_MAX_RESULTS', 'value': documents_settings.GROUP_MAX_RESULTS},
+        {'name': 'DOCUMENTS_GROUP_SHOW_EMPTY', 'value': documents_settings.GROUP_SHOW_EMPTY},
+        {'name': 'DOCUMENTS_GROUP_SHOW_THUMBNAIL',
+            'value': documents_settings.GROUP_SHOW_THUMBNAIL,
+            'description': documents_settings.setting_description},
+
         #Filesystem_serving
-        {'name':'FILESYSTEM_FILESERVING_ENABLE', 'value':filesystem_serving_settings.FILESERVING_ENABLE},
-        {'name':'FILESYSTEM_FILESERVING_PATH', 'value':filesystem_serving_settings.FILESERVING_PATH, 'exists':True},
-        {'name':'FILESYSTEM_SLUGIFY_PATHS', 'value':filesystem_serving_settings.SLUGIFY_PATHS},
-        {'name':'FILESYSTEM_MAX_RENAME_COUNT', 'value':filesystem_serving_settings.MAX_RENAME_COUNT},
+        {'name': 'FILESYSTEM_FILESERVING_ENABLE', 'value': filesystem_serving_settings.FILESERVING_ENABLE},
+        {'name': 'FILESYSTEM_FILESERVING_PATH', 'value': filesystem_serving_settings.FILESERVING_PATH, 'exists': True},
+        {'name': 'FILESYSTEM_SLUGIFY_PATHS', 'value': filesystem_serving_settings.SLUGIFY_PATHS},
+        {'name': 'FILESYSTEM_MAX_RENAME_COUNT', 'value': filesystem_serving_settings.MAX_RENAME_COUNT},
 
         # Common
-        {'name':'COMMON_TEMPORARY_DIRECTORY',
-            'value':common_settings.TEMPORARY_DIRECTORY, 'exists':True,
-            'description':common_settings.setting_description},
+        {'name': 'COMMON_TEMPORARY_DIRECTORY',
+            'value': common_settings.TEMPORARY_DIRECTORY, 'exists': True,
+            'description': common_settings.setting_description},
 
         # Converter
-        {'name':'CONVERTER_IM_CONVERT_PATH',
-            'value':converter_settings.IM_CONVERT_PATH, 'exists':True,
-            'description':converter_settings.setting_description},
-        {'name':'CONVERTER_UNPAPER_PATH',
-            'value':converter_settings.UNPAPER_PATH, 'exists':True,
-            'description':converter_settings.setting_description},
-        {'name':'CONVERTER_IM_IDENTIFY_PATH',
-            'value':converter_settings.IM_IDENTIFY_PATH, 'exists':True,
-            'description':converter_settings.setting_description},
-        {'name':'CONVERTER_GM_PATH',
-            'value':converter_settings.GM_PATH, 'exists':True,
-            'description':converter_settings.setting_description},
-        {'name':'CONVERTER_GRAPHICS_BACKEND',
-            'value':converter_settings.GRAPHICS_BACKEND,
-            'description':converter_settings.setting_description},            
-            
-        {'name':'CONVERTER_OCR_OPTIONS', 'value':converter_settings.OCR_OPTIONS},
-        {'name':'CONVERTER_DEFAULT_OPTIONS', 'value':converter_settings.DEFAULT_OPTIONS},
-        {'name':'CONVERTER_LOW_QUALITY_OPTIONS', 'value':converter_settings.LOW_QUALITY_OPTIONS},
-        {'name':'CONVERTER_HIGH_QUALITY_OPTIONS', 'value':converter_settings.HIGH_QUALITY_OPTIONS},
+        {'name': 'CONVERTER_IM_CONVERT_PATH',
+            'value': converter_settings.IM_CONVERT_PATH, 'exists': True,
+            'description': converter_settings.setting_description},
+        {'name': 'CONVERTER_UNPAPER_PATH',
+            'value': converter_settings.UNPAPER_PATH, 'exists': True,
+            'description': converter_settings.setting_description},
+        {'name': 'CONVERTER_IM_IDENTIFY_PATH',
+            'value': converter_settings.IM_IDENTIFY_PATH, 'exists': True,
+            'description': converter_settings.setting_description},
+        {'name': 'CONVERTER_GM_PATH',
+            'value': converter_settings.GM_PATH, 'exists': True,
+            'description': converter_settings.setting_description},
+        {'name': 'CONVERTER_GRAPHICS_BACKEND',
+            'value': converter_settings.GRAPHICS_BACKEND,
+            'description': converter_settings.setting_description},
+
+        {'name': 'CONVERTER_OCR_OPTIONS', 'value': converter_settings.OCR_OPTIONS},
+        {'name': 'CONVERTER_DEFAULT_OPTIONS', 'value': converter_settings.DEFAULT_OPTIONS},
+        {'name': 'CONVERTER_LOW_QUALITY_OPTIONS', 'value': converter_settings.LOW_QUALITY_OPTIONS},
+        {'name': 'CONVERTER_HIGH_QUALITY_OPTIONS', 'value': converter_settings.HIGH_QUALITY_OPTIONS},
 
         # OCR
-        {'name':'OCR_AUTOMATIC_OCR', 'value':ocr_settings.AUTOMATIC_OCR},
-        {'name':'OCR_TESSERACT_PATH', 'value':ocr_settings.TESSERACT_PATH, 'exists':True},
-        {'name':'OCR_TESSERACT_LANGUAGE', 'value':ocr_settings.TESSERACT_LANGUAGE},
-        {'name':'OCR_NODE_CONCURRENT_EXECUTION', 'value':ocr_settings.NODE_CONCURRENT_EXECUTION},
-        {'name':'OCR_REPLICATION_DELAY', 'value':ocr_settings.REPLICATION_DELAY},
+        {'name': 'OCR_AUTOMATIC_OCR', 'value': ocr_settings.AUTOMATIC_OCR},
+        {'name': 'OCR_TESSERACT_PATH', 'value': ocr_settings.TESSERACT_PATH, 'exists': True},
+        {'name': 'OCR_TESSERACT_LANGUAGE', 'value': ocr_settings.TESSERACT_LANGUAGE},
+        {'name': 'OCR_NODE_CONCURRENT_EXECUTION', 'value': ocr_settings.NODE_CONCURRENT_EXECUTION},
+        {'name': 'OCR_REPLICATION_DELAY', 'value': ocr_settings.REPLICATION_DELAY},
 
         # Search
-        {'name':'SEARCH_LIMIT', 'value':search_settings.LIMIT},
+        {'name': 'SEARCH_LIMIT', 'value': search_settings.LIMIT},
     ]
-    
+
     context = {
-        'title':_(u'settings'),
-        'object_list':settings,
-        'hide_link':True,
-        'hide_object':True,
-        'extra_columns':[
-            {'name':_(u'name'), 'attribute':'name'},
-            {'name':_(u'value'), 'attribute': lambda x: _return_type(x['value'])},
-            {'name':_(u'description'), 'attribute': lambda x: x.get('description', {}).get(x['name'], '')},
-            {'name':_(u'exists'), 'attribute':lambda x: exists_with_famfam(x['value']) if 'exists' in x else ''},
+        'title': _(u'settings'),
+        'object_list': settings,
+        'hide_link': True,
+        'hide_object': True,
+        'extra_columns': [
+            {'name': _(u'name'), 'attribute': 'name'},
+            {'name': _(u'value'), 'attribute':  lambda x:  _return_type(x['value'])},
+            {'name': _(u'description'), 'attribute':  lambda x:  x.get('description', {}).get(x['name'], '')},
+            {'name': _(u'exists'), 'attribute': lambda x:  exists_with_famfam(x['value']) if 'exists' in x else ''},
         ]
     }
-    
+
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
-        
+
 
 def _return_type(value):
     if isinstance(value, types.FunctionType):
@@ -125,29 +126,29 @@ def _return_type(value):
 
 def blank_menu(request):
     return render_to_response('generic_template.html', {
-        'title':_(u'Tools menu'),
-        'paragraphs':[
+        'title': _(u'Tools menu'),
+        'paragraphs': [
             _(u'"Find all duplicates": Search all the documents\' checksums and return a list of the exact matches.'),
             _(u'"Recreate index links": Deletes and creates from scratch all the file system indexing links.'),
             _(u'"Clean up pages content": Runs a language filter to remove common OCR mistakes from document pages content.')
         ],
-        },
-    context_instance=RequestContext(request))    
+    },
+    context_instance=RequestContext(request))
 
 
 def statistics(request):
     blocks = []
     blocks.append(documents_statistics())
     blocks.append(ocr_statistics())
-    
+
     return render_to_response('statistics.html', {
-        'blocks':blocks,
-        'title':_(u'Statistics') },
+        'blocks': blocks,
+        'title': _(u'Statistics') },
     context_instance=RequestContext(request))
-    
-    
+
+
 def diagnostics_view(request):
     return render_to_response('diagnostics.html', {
-        'blocks':diagnostics,
-        'title':_(u'Diagnostics') },
+        'blocks': diagnostics,
+        'title': _(u'Diagnostics') },
     context_instance=RequestContext(request))

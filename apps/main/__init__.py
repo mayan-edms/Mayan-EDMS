@@ -10,26 +10,25 @@ from ocr import all_document_ocr_cleanup
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
-check_settings = {'text':_(u'settings'), 'view':'check_settings', 'famfam':'cog'}
-statistics = {'text':_(u'statistics'), 'view':'statistics', 'famfam':'table'}
-diagnostics = {'text':_(u'diagnostics'), 'view':'diagnostics', 'famfam':'pill'}
+check_settings = {'text': _(u'settings'), 'view': 'check_settings', 'famfam': 'cog'}
+statistics = {'text': _(u'statistics'), 'view': 'statistics', 'famfam': 'table'}
+diagnostics = {'text': _(u'diagnostics'), 'view': 'diagnostics', 'famfam': 'pill'}
 
 main_menu = [
-    {'text':_(u'home'), 'view':'home', 'famfam':'house', 'position':0},
-    {'text':_(u'tools'), 'view':'tools_menu', 'links': [
+    {'text': _(u'home'), 'view': 'home', 'famfam': 'house', 'position': 0},
+    {'text': _(u'tools'), 'view': 'tools_menu', 'links': [
         document_find_all_duplicates, filesystem_serving_recreate_all_links,
         all_document_ocr_cleanup, statistics, diagnostics,
-        ],'famfam':'wrench', 'name':'tools','position':7},
+        ], 'famfam': 'wrench', 'name': 'tools', 'position': 7},
 
-    {'text':_(u'setup'), 'view':'check_settings', 'links': [
+    {'text': _(u'setup'), 'view': 'check_settings', 'links': [
         check_settings, role_list
-        ],'famfam':'cog', 'name':'setup','position':8},
+        ], 'famfam': 'cog', 'name': 'setup', 'position': 8},
 
-    {'text':_(u'about'), 'view':'about', 'position':9},
+    {'text': _(u'about'), 'view': 'about', 'position': 9},
 ]
 
 if not SIDE_BAR_SEARCH:
-    main_menu.insert(1, {'text':_(u'search'), 'view':'search', 'famfam':'zoom', 'position':2})
+    main_menu.insert(1, {'text': _(u'search'), 'view': 'search', 'famfam': 'zoom', 'position': 2})
 
 register_menu(main_menu)
-
