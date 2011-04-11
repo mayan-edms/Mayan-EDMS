@@ -3,12 +3,12 @@ import os
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
+from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from filesystem_serving.conf.settings import FILESERVING_PATH
 from filesystem_serving.conf.settings import SLUGIFY_PATHS
 from filesystem_serving.conf.settings import MAX_RENAME_COUNT
-from filesystem_serving.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
 from models import DocumentMetadataIndex, Document
 
