@@ -24,7 +24,8 @@ Features
 * Multi page document support
 * Page transformations
 * Distributed OCR processing
-* Multilingual (English, Spanish)
+* Multilingual user interface (English, Spanish, and easily expanded to others)
+* Multilingual OCR support: English, French, Italian, German, Spanish and others (as supported by Tesseract)
 * Duplicated document search
 * Upload multiple documents inside a ZIP file 
 * Plugable storage backends (File based and GridFS included)
@@ -37,23 +38,24 @@ Python:
 * Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 * django-pagination
 * django-filetransfers - File upload/download abstraction
-* celery - asynchronous task queue/job queue based on distributed message passing
+* celery- asynchronous task queue/job queue based on distributed message passing
 * django-celery - celery Django integration
 
 For the GridFS storage backend:
 
 * PyMongo - the recommended way to work with MongoDB from Python
 * GridFS - a storage specification for large objects in MongoDB
+* MongoDB - a scalable, open source, document-oriented database
 
 Or execute pip install -r requirements/production.txt to install the dependencies automatically.
 
 Executables:
 
-* ImageMagick - Convert, Edit, Or Compose Bitmap Images
 * libmagic - MIME detection library
 * tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 * unpaper - post-processing scanned and photocopied book pages
-* MongoDB - a scalable, open source, document-oriented database
+* ImageMagick - Convert, Edit, Or Compose Bitmap Images
+* GraphicMagick - Robust collection of tools and libraries to read, write, and manipulate an image.
 
 License
 -------
