@@ -94,9 +94,8 @@ class Document(models.Model):
                 mime_encoding = magic.Magic(mime_encoding=True)
                 self.file_mime_encoding = mime_encoding.from_buffer(source.read())
             except:
-                #TODO: Should this be 'unknown' or simply ''?
-                self.file_mimetype = u'unknown'
-                self.file_mime_encoding = u'unknown'
+                self.file_mimetype = u''
+                self.file_mime_encoding = u''
             finally:
                 if source:
                     source.close()
