@@ -248,7 +248,7 @@ CELERYBEAT_SCHEDULER='djcelery.schedulers.DatabaseScheduler'
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 #--------- Grappelli ----------------
-#GRAPPELLI_ADMIN_TITLE = PROJECT_TITLE
+GRAPPELLI_ADMIN_TITLE = PROJECT_TITLE
 #--------- Django -------------------
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
