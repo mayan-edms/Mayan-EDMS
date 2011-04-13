@@ -279,11 +279,7 @@ SEARCH_SHOW_OBJECT_TYPE = False
 try:
     from settings_local import *
 except ImportError:
-    import sys, traceback
-    sys.stderr.write("Can't find 'setttings_local.py'\n")
-    sys.stderr.write("\nThe exception was: \n\n")
-    traceback.print_exc()
-    #pass
+    pass
 
 
 if DEVELOPMENT:
