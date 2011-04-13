@@ -25,6 +25,7 @@
         {% with subtemplate.object as object %}
         {% with subtemplate.object_name as object_name %}
         {% with subtemplate.form_action as form_action %}    
+        {% with subtemplate.submit_label as submit_label %}    
         {% with subtemplate.form as form %}
 
         {% with subtemplate.content as content %}
@@ -35,6 +36,7 @@
         {% endwith %}
         {% endwith %}
         
+        {% endwith %}
         {% endwith %}
         {% endwith %}
         {% endwith %}
@@ -73,6 +75,7 @@
         {% with form.title as title %}
         {% with form.object as object %}
         {% with form.object_name as object_name %}
+        {% with form.submit_label as submit_label %}
         {% with form.form_action as form_action %}
             <div class="grid_{{ form.grid|default:11 }}">
                 {% with form.form as form %}
@@ -82,6 +85,7 @@
             {% if form.grid_clear or not form.grid %}
                 <div class="clear"></div> 
             {% endif %}
+        {% endwith %}
         {% endwith %}
         {% endwith %}
         {% endwith %}

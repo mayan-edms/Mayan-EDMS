@@ -8,9 +8,10 @@ from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 
-from models import Role, Permission, PermissionHolder
-from forms import RoleForm, RoleForm_view
+from models import Role, Permission, PermissionHolder, RoleMember
+from forms import RoleForm, RoleForm_view, ChoiceForm
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_PERMISSION_GRANT, \
     PERMISSION_PERMISSION_REVOKE
@@ -158,3 +159,97 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
         'previous': previous,
         'title': title,
     }, context_instance=RequestContext(request))
+
+
+def generate_choices_w_labels(choices):
+    results = []
+    for choice in choices:
+        ct_label = ContentType.objects.get_for_model(choice).name
+        label = unicode(choice)
+        if isinstance(choice, User):
+            label = choice.get_full_name() if choice.get_full_name() else choice
+
+        results.append(('%s,%s' % (ct_label, choice.pk), '%s: %s' % (ct_label, label)))
+
+    #Sort results by the label not the key value
+    return sorted(results, key=lambda x: x[1])
+
+
+def get_role_members(role):
+    return [member.member_object for member in role.rolemember_set.filter(member_type=ContentType.objects.get(model='user'))]
+
+
+def get_non_role_members(role):
+    #non members = all users - members - staff - super users
+    staff_users = User.objects.filter(is_staff=True)
+    super_users = User.objects.filter(is_superuser=True)
+    return list(set(User.objects.exclude(pk__in=[member.id for member in get_role_members(role)])) - set(staff_users) - set(super_users))
+
+
+def role_members(request, role_id):
+    check_permissions(request.user, 'permissions', [PERMISSION_ROLE_EDIT])
+    role = get_object_or_404(Role, pk=role_id)
+
+    if request.method == 'POST':
+        if 'unselected-users-submit' in request.POST.keys():
+            unselected_users_form = ChoiceForm(request.POST,
+                prefix='unselected-users',
+                choices=generate_choices_w_labels(get_non_role_members(role)))
+            if unselected_users_form.is_valid():
+                for selection in unselected_users_form.cleaned_data['selection']:
+                    model, pk = selection.split(u',')
+                    ct = ContentType.objects.get(model=model)
+                    obj = ct.get_object_for_this_type(pk=pk)
+                    new_member, created = RoleMember.objects.get_or_create(role=role, member_type=ct, member_id=pk)
+                    if created:
+                        messages.success(request, _(u'%(obj)s added successfully to the role: %(role)s.') % {
+                            'obj': generate_choices_w_labels([obj])[0][1], 'role': role})
+
+        elif 'selected-users-submit' in request.POST.keys():
+            selected_users_form = ChoiceForm(request.POST,
+                prefix='selected-users',
+                choices=generate_choices_w_labels(get_role_members(role)))
+            if selected_users_form.is_valid():
+                for selection in selected_users_form.cleaned_data['selection']:
+                    model, pk = selection.split(u',')
+                    ct = ContentType.objects.get(model=model)
+                    obj = ct.get_object_for_this_type(pk=pk)
+
+                    try:
+                        member = RoleMember.objects.get(role=role, member_type=ct, member_id=pk)
+                        member.delete()
+                        messages.success(request, _(u'%(obj)s removed successfully from the role: %(role)s.') % {
+                            'obj': generate_choices_w_labels([obj])[0][1], 'role': role})
+                    except member.DoesNotExist:
+                        messages.error(request, _(u'Unable to remove %(obj)s from the role: %(role)s.') % {
+                            'obj': generate_choices_w_labels([obj])[0][1], 'role': role})
+
+    unselected_users_form = ChoiceForm(prefix='unselected-users',
+        choices=generate_choices_w_labels(get_non_role_members(role)))
+    selected_users_form = ChoiceForm(prefix='selected-users',
+        choices=generate_choices_w_labels(get_role_members(role)))
+
+    context = {
+        'object': role,
+        'object_name': _(u'role'),
+        'form_list': [
+            {
+                'form': unselected_users_form,
+                'title': _(u'non members of role'),
+                'grid': 6,
+                'grid_clear': False,
+                'submit_label': _(u'Add'),
+            },
+            {
+                'form': selected_users_form,
+                'title': _(u'members of role'),
+                'grid': 6,
+                'grid_clear': True,
+                'submit_label': _(u'Remove'),
+            },
+
+        ],
+    }
+
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))
