@@ -1,3 +1,36 @@
+2011-Apr-13
+* Added view to add or remove user to a specific role
+
+2011-Apr-12
+* Updated the jQuery packages with the web_theme app to version 1.5.2
+
+2011-Apr-11
+* Made AVAILABLE_INDEXING_FUNCTION setting a setting of the documents 
+  app instead of the filesystem_serving app
+* Fixed document download in FireFox for documents containing spaces in
+  the filename
+* If mime detection fails set mime type to '' instead of 'unknown'
+* Use document MIME type when downloading otherwise use
+  'application/octet-stream' if none
+
+2011-Apr-08
+* Changed the way document page count is parsed from the graphics
+  backend, fixing issue #7
+* Optimized document metadata query and display
+
+2011-Apr-07
+* Implemented OCR output cleanups for English and Spanish
+* Redirect user to the website entry point if already logged and lands
+  in the login template
+
+2011-Apr-06
+* Changed from using SimpleUploadedFile class to stream file to the
+  simpler File class wrapper
+* Updated staging files previews to use sendfile instead of serve_file
+* Moved staging file preview creation logic from documents.views to
+  staging.py
+* When deleting staging file, it's cached preview is also deleted
+
 2011-Apr-04
 * Added a new setup option:
     FILESYSTEM_INDEXING_AVAILABLE_FUNCTIONS - a dictionary to allow users
@@ -5,6 +38,7 @@
 * Made automatic OCR a function of the OCR app and not of Documents app
   (via signals)
   Renamed setup option DOCUMENT_AUTOMATIC_OCR to OCR_AUTOMATIC_OCR
+* Clear node name when requeueing a document for OCR
 
 2011-Apr-01
 * Added support for editing the metadata of multiple documents at the
