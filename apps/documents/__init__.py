@@ -59,7 +59,7 @@ document_page_transformation_go_back = {'text': _('return to document'), 'view':
 
 document_page_go_back = {'text': _('return to document'), 'view': 'document_view', 'args': 'object.document.id', 'famfam': 'page_go', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
-document_missing_list = {'text': _('Find missing document files'), 'url': reverse('document_missing_list'), 'famfam': 'folder_page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_missing_list = {'text': _('Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
 staging_file_preview = {'text': _('preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': 'object.id', 'famfam': 'drive_magnify'}
 staging_file_delete = {'text': _('delete'), 'view': 'staging_file_delete', 'args': 'object.id', 'famfam': 'drive_delete'}
