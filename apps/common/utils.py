@@ -77,7 +77,10 @@ def pretty_size(size, suffixes=[('B', 2 ** 10), ('K', 2 ** 20), ('M', 2 ** 30), 
         if size > lim:
             continue
         else:
-            return round(size / float(lim / 2 ** 10), 2).__str__() + suf
+            try:
+                return round(size / float(lim / 2 ** 10), 2).__str__() + suf
+            except ZeroDivisionError:
+                return 0
 
 
 def pretty_size_10(size):
