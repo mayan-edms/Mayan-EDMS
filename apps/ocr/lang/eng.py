@@ -13,7 +13,7 @@ def check_word(word):
     if len(word) > 20:
         return None
 
-    #(A) If a string’s ratio of alphanumeric characters to total 
+    #(A) If a string's ratio of alphanumeric characters to total 
     #characters is less than 50%, the string is garbage
     if len(ALL_ALPHANUM.findall(word)) < len(word) / 2:
         return None
