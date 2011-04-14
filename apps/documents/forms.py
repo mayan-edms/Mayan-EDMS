@@ -122,8 +122,14 @@ class DocumentContentForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('document', None)
         super(DocumentContentForm, self).__init__(*args, **kwargs)
-        page_break_template = u'\n\n\n------------------ %s ------------------\n\n\n' % _(u'page break')
-        self.fields['contents'].initial = page_break_template.join([page.content for page in self.document.documentpage_set.all() if page.content])
+        content = []
+        self.fields['contents'].initial = u''
+        for page in self.document.documentpage_set.all():
+            if page.content:
+                content.append(page.content)
+                content.append(u'\n\n\n - Page %s - \n\n\n' % page.page_number)
+
+        self.fields['contents'].initial = u''.join(content)
 
     contents = forms.CharField(
         label=_(u'Contents'),
