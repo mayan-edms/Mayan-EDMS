@@ -400,6 +400,7 @@ def document_edit(request, document_id):
                 return HttpResponseRedirect(reverse('document_list'))
 
             document.file_filename = form.cleaned_data['new_filename']
+            document.description = form.cleaned_data['description']
 
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
