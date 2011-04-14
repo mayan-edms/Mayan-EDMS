@@ -14,6 +14,7 @@ from ocr.conf import settings as ocr_settings
 from ocr.statistics import get_statistics as ocr_statistics
 from filesystem_serving.conf import settings as filesystem_serving_settings
 from dynamic_search.conf import settings as search_settings
+from main.conf import settings as main_settings
 
 from main.api import diagnostics
 
@@ -25,6 +26,10 @@ def home(request):
 
 def check_settings(request):
     settings = [
+        {'name': 'MAIN_SIDE_BAR_SEARCH',
+            'value': main_settings.SIDE_BAR_SEARCH,
+            'description': main_settings.setting_description},
+        
         {'name': 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'value': documents_settings.AVAILABLE_FUNCTIONS},
         {'name': 'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'value': documents_settings.AVAILABLE_MODELS},
         {'name': 'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value': documents_settings.AVAILABLE_INDEXING_FUNCTIONS},
