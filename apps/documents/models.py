@@ -298,6 +298,10 @@ class DocumentPage(models.Model):
         verbose_name = _(u'document page')
         verbose_name_plural = _(u'document pages')
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('document_page_view', [self.id])
+
 
 class MetadataGroup(models.Model):
     document_type = models.ManyToManyField(DocumentType, null=True, blank=True,

@@ -40,13 +40,14 @@ from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS
+    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS, \
+    PERMISSION_DOCUMENT_EDIT
 
 from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
-        DocumentContentForm
+        DocumentContentForm, DocumentPageForm_edit
 
 from metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
@@ -906,11 +907,34 @@ def document_page_view(request, document_page_id):
         {
             'form': document_page_form,
             'title': _(u'details for page: %s') % document_page.page_number,
-            'object': document_page,
         },
     ]
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document_page,
+        'web_theme_hide_menus': True,
+    }, context_instance=RequestContext(request))
+    
+    
+def document_page_edit(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_EDIT])
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+
+    if request.method == 'POST':
+        form = DocumentPageForm_edit(request.POST, instance=document_page)
+        if form.is_valid():
+            document_page.page_label = form.cleaned_data['page_label']
+            document_page.content = form.cleaned_data['content']
+            document_page.save()
+            messages.success(request, _(u'Document page edited successfully.'))
+            return HttpResponseRedirect(document_page.get_absolute_url())
+    else:
+        form = DocumentPageForm_edit(instance=document_page)
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'object': document_page,
+        'title': _(u'edit page: %s') % document_page.page_number,
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))

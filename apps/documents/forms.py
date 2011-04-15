@@ -30,12 +30,15 @@ class DocumentPageTransformationForm(forms.ModelForm):
 
 class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
-        output = []
-        output.append('<div style="overflow: auto;"><img src="%(img)s?page=%(page)s" /></div>' % {
-            'img': reverse('document_display', args=[value.document.id]),
-            'page': value.page_number,
-            })
-        return mark_safe(u''.join(output))
+        if value:
+            output = []
+            output.append('<div style="overflow: auto;"><img src="%(img)s?page=%(page)s" /></div>' % {
+                'img': reverse('document_display', args=[value.document.id]),
+                'page': value.page_number,
+                })
+            return mark_safe(u''.join(output))
+        else:
+            return u''
 
 
 class DocumentPageForm(DetailForm):
@@ -55,6 +58,22 @@ class DocumentPageForm(DetailForm):
     page_image = forms.CharField(widget=DocumentPageImageWidget())
 
 
+class DocumentPageForm_edit(forms.ModelForm):
+    class Meta:
+        model = DocumentPage
+        fields = ('page_label', 'content')
+
+    def __init__(self, *args, **kwargs):
+        super(DocumentPageForm_edit, self).__init__(*args, **kwargs)
+        self.fields['page_image'].initial = self.instance
+        self.fields.keyOrder = [
+            'page_image',
+            'page_label',
+            'content',
+        ]
+    page_image = forms.CharField(required=False, widget=DocumentPageImageWidget())
+
+
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
@@ -64,7 +83,6 @@ class ImageWidget(forms.widgets.Widget):
             ugettext(u'Pages'))
         for page in value.documentpage_set.all():
             output.append(
-                #'<span>%(page)s)<a rel="gallery_1" class="fancybox-iframe" href="%(url)s?page=%(page)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
                 '<span>%(page)s)<a rel="gallery_1" class="fancybox-iframe" href="%(url)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
                     'url': reverse('document_page_view', args=[page.id]),
                     'img': reverse('document_preview_multipage', args=[value.id]),

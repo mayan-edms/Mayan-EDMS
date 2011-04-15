@@ -16,6 +16,7 @@ from conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
 
 PERMISSION_DOCUMENT_CREATE = 'document_create'
 PERMISSION_DOCUMENT_PROPERTIES_EDIT = 'document_properties_edit'
+PERMISSION_DOCUMENT_EDIT = 'document_edit'
 PERMISSION_DOCUMENT_METADATA_EDIT = 'document_metadata_edit'
 PERMISSION_DOCUMENT_VIEW = 'document_view'
 PERMISSION_DOCUMENT_DELETE = 'document_delete'
@@ -26,6 +27,7 @@ PERMISSION_DOCUMENT_TOOLS = 'document_tools'
 register_permissions('documents', [
     {'name': PERMISSION_DOCUMENT_CREATE, 'label': _(u'Create document')},
     {'name': PERMISSION_DOCUMENT_PROPERTIES_EDIT, 'label': _(u'Edit document properties')},
+    {'name': PERMISSION_DOCUMENT_EDIT, 'label': _(u'Edit document')},
     {'name': PERMISSION_DOCUMENT_METADATA_EDIT, 'label': _(u'Edit document metadata')},
     {'name': PERMISSION_DOCUMENT_VIEW, 'label': _(u'View document')},
     {'name': PERMISSION_DOCUMENT_DELETE, 'label': _(u'Delete document')},
@@ -58,7 +60,8 @@ document_page_transformation_edit = {'text': _('edit'), 'view': 'document_page_t
 document_page_transformation_delete = {'text': _('delete'), 'view': 'document_page_transformation_delete', 'args': 'object.id', 'famfam': 'pencil_delete', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}}
 document_page_transformation_go_back = {'text': _('page view'), 'view': 'document_page_view', 'args': 'object.document_page.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
-document_page_go_back = {'text': _('page view'), 'view': 'document_page_view', 'args': 'object.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_page_go_back = {'text': _('page details'), 'view': 'document_page_view', 'args': 'object.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_page_edit = {'text': _('edit page'), 'view': 'document_page_edit', 'args': 'object.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_EDIT]}}
 
 document_missing_list = {'text': _('Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
@@ -74,13 +77,13 @@ if ENABLE_SINGLE_DOCUMENT_UPLOAD:
 else:
     register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create_multiple], menu_name='sidebar')
 
-register_links(DocumentPage, [document_page_go_back], menu_name='sidebar')
+register_links(DocumentPage, [document_page_edit, document_page_go_back], menu_name='sidebar')
 register_links('document_page_transformation_list', [document_page_transformation_create, document_page_transformation_list], menu_name='sidebar')
 register_links('document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
 
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
-register_links(DocumentPageTransformation, [document_page_transformation_go_back], menu_name='sidebar')
-register_links(['document_page_view', 'document_page_transformation_edit', 'document_page_transformation_delete', 'document_page_transformation_create'], [document_page_transformation_list], menu_name='sidebar')
+register_links(DocumentPageTransformation, [document_page_edit, document_page_transformation_go_back], menu_name='sidebar')
+register_links(['document_page_edit', 'document_page_view', 'document_page_transformation_edit', 'document_page_transformation_delete', 'document_page_transformation_create'], [document_page_transformation_list], menu_name='sidebar')
 
 register_links(StagingFile, [staging_file_preview, staging_file_delete])
 
