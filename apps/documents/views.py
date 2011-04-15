@@ -270,28 +270,26 @@ def document_view(request, document_id):
         for error in errors:
             messages.warning(request, _(u'Metadata group query error: %s' % error))
 
+
     preview_form = DocumentPreviewForm(document=document)
     form_list = [
         {
-            'form':form,
-            'object':document,
-            'grid':6,
+            'form': preview_form,
+            'object': document,
         },
         {
-            'form':preview_form,
-            'title':_(u'document preview'),
-            'object':document,
-            'grid':6,
-            'grid_clear':True,
+            'title': _(u'document properties'),
+            'form': form,
+            'object': document,
         },
     ]
     subtemplates_dict = [
             {
-                'name':'generic_list_subtemplate.html',
-                'title':_(u'metadata'),
-                'object_list':document.documentmetadata_set.all(),
-                'extra_columns':[{'name':_(u'value'), 'attribute':'value'}],
-                'hide_link':True,
+                'name': 'generic_list_subtemplate.html',
+                'title': _(u'metadata'),
+                'object_list': document.documentmetadata_set.all(),
+                'extra_columns': [{'name':_(u'value'), 'attribute':'value'}],
+                'hide_link': True,
             },
         ]
 
@@ -631,25 +629,19 @@ def staging_file_delete(request, staging_file_id):
     }, context_instance=RequestContext(request))
 
 
-def document_page_view(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+def document_page_transformation_list(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    document_page_form = DocumentPageForm(instance=document_page)
 
-    form_list = [
-        {
-            'form': document_page_form,
-            'title': _(u'details for document page: %s') % document_page.page_number,
+    return object_list(
+        request,
+        queryset=document_page.documentpagetransformation_set.all(),
+        template_name='generic_list.html',
+        extra_context={
             'object': document_page,
-            'grid': 6,
-        },
-    ]
-    subtemplates_dict = [
-        {
-            'name': 'generic_list_subtemplate.html',
-            'title': _(u'transformations'),
-            'object_list': document_page.documentpagetransformation_set.all(),
+            'title': _(u'document page transformations'),
+            'web_theme_hide_menus': True,
             'extra_columns': [
                 {'name': _(u'order'), 'attribute': 'order'},
                 {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
@@ -657,17 +649,8 @@ def document_page_view(request, document_page_id):
                 ],
             'hide_link': True,
             'hide_object': True,
-            'grid': 6,
-            'grid_clear': True,
-            'hide_header': True,
         },
-    ]
-
-    return render_to_response('generic_detail.html', {
-        'form_list': form_list,
-        'object': document_page,
-        'subtemplates_dict': subtemplates_dict,
-    }, context_instance=RequestContext(request))
+    )
 
 
 def document_page_transformation_create(request, document_page_id):
@@ -688,6 +671,7 @@ def document_page_transformation_create(request, document_page_id):
         'object': document_page,
         'title': _(u'Create new transformation for page: %(page)s of document: %(document)s') % {
             'page': document_page.page_number, 'document': document_page.document},
+        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
 
 
@@ -705,6 +689,7 @@ def document_page_transformation_edit(request, document_page_transformation_id):
                 'transformation': document_page_transformation.get_transformation_display(),
                 'page': document_page_transformation.document_page.page_number,
                 'document': document_page_transformation.document_page.document},
+                'web_theme_hide_menus': True,
             }
         )
 
@@ -728,6 +713,7 @@ def document_page_transformation_delete(request, document_page_transformation_id
                 'page': document_page_transformation.document_page.page_number,
                 'document': document_page_transformation.document_page.document},
             'previous': previous,
+            'web_theme_hide_menus': True,
         })
 
 
@@ -830,19 +816,16 @@ def document_view_simple(request, document_id):
         for error in errors:
             messages.warning(request, _(u'Metadata group query error: %s' % error))
 
-    preview_form = DocumentPreviewForm(document=document, hide_detail_link=True)
+    preview_form = DocumentPreviewForm(document=document)
     form_list = [
         {
-            'form': content_form,
+            'form': preview_form,
             'object': document,
-            'grid': 6,
         },
         {
-            'form': preview_form,
-            'title': _(u'document preview'),
+            'title':_(u'document properties'),
+            'form': content_form,
             'object': document,
-            'grid': 6,
-            'grid_clear': True,
         },
     ]
     subtemplates_dict = [
@@ -902,4 +885,24 @@ def document_missing_list(request):
     return render_to_response('generic_list.html', {
         'object_list': Document.objects.in_bulk(missing_id_list).values(),
         'title': _(u'missing documents'),
+    }, context_instance=RequestContext(request))
+
+
+def document_page_view(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    document_page_form = DocumentPageForm(instance=document_page)
+
+    form_list = [
+        {
+            'form': document_page_form,
+            'title': _(u'details for page: %s') % document_page.page_number,
+            'object': document_page,
+        },
+    ]
+    return render_to_response('generic_detail.html', {
+        'form_list': form_list,
+        'object': document_page,
+        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))

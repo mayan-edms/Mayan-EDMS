@@ -58,23 +58,27 @@
                     {% block content_plain %}{% endblock %}
                 </div>
             {% else %}
-                <div id="header">
-                    <h1><a href="{% url home %}">{% block web_theme_project_name %}{% endblock %}</a></h1>
-                        <div id="user-navigation">
+                {% if not web_theme_hide_menus %}
+                    <div id="header">
+                        <h1><a href="{% url home %}">{% block web_theme_project_name %}{% endblock %}</a></h1>
+                            <div id="user-navigation">
+                                <ul class="wat-cf">
+                                    {% block web_theme_user_navigation %}{% endblock %}
+                                </ul>
+                            </div>
+                        <div id="main-navigation">
                             <ul class="wat-cf">
-                                {% block web_theme_user_navigation %}{% endblock %}
+                                {% block web_theme_main_navigation %}{% endblock %}
                             </ul>
                         </div>
-                    <div id="main-navigation">
-                        <ul class="wat-cf">
-                            {% block web_theme_main_navigation %}{% endblock %}
-                        </ul>
                     </div>
-                </div>
+                {% endif %}
                 <div id="wrapper" class="wat-cf">
                     <div id="main">
                         <div class="block" id="block-text">
-                            {% block web_theme_secondary_navigation %}{% endblock %}
+                            {% if not web_theme_hide_menus %}
+                                {% block web_theme_secondary_navigation %}{% endblock %}
+                            {% endif %}
                             {% if messages %}
                                 <div class="inner">
                                     <div class="flash">

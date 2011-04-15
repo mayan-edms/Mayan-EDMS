@@ -31,9 +31,8 @@ class DocumentPageTransformationForm(forms.ModelForm):
 class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
-        output.append('<img src="%(img)s?page=%(page)s" />' % {
-            'img': reverse('document_preview_transformation',
-                args=[value.document.id]),
+        output.append('<div style="overflow: auto;"><img src="%(img)s?page=%(page)s" /></div>' % {
+            'img': reverse('document_display', args=[value.document.id]),
             'page': value.page_number,
             })
         return mark_safe(u''.join(output))
@@ -42,10 +41,16 @@ class DocumentPageImageWidget(forms.widgets.Widget):
 class DocumentPageForm(DetailForm):
     class Meta:
         model = DocumentPage
+        exclude = ('document_type')
 
     def __init__(self, *args, **kwargs):
         super(DocumentPageForm, self).__init__(*args, **kwargs)
         self.fields['page_image'].initial = self.instance
+        self.fields.keyOrder = [
+            'page_image',
+            'page_label',
+            'content',
+        ]
 
     page_image = forms.CharField(widget=DocumentPageImageWidget())
 
@@ -54,33 +59,21 @@ class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
         page_count = value.documentpage_set.count()
-        if page_count > 1:
+        output.append(
+            '<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' %
+            ugettext(u'Pages'))
+        for page in value.documentpage_set.all():
             output.append(
-                '<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' %
-                ugettext(u'Pages'))
-            for page_index in range(value.documentpage_set.count()):
-                output.append(
-                    '<span>%(page)s)<a rel="gallery_1" class="fancybox-noscaling" href="%(url)s?page=%(page)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
-                    'url': reverse('document_display', args=[value.id]),
+                #'<span>%(page)s)<a rel="gallery_1" class="fancybox-iframe" href="%(url)s?page=%(page)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
+                '<span>%(page)s)<a rel="gallery_1" class="fancybox-iframe" href="%(url)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
+                    'url': reverse('document_page_view', args=[page.id]),
                     'img': reverse('document_preview_multipage', args=[value.id]),
-                    'page': page_index + 1,
-                    })
-        else:
-            output.append(
-                '<a class="fancybox-noscaling" href="%(url)s"><img width="300" src="%(img)s" /></a>' % {
-                'url': reverse('document_display', args=[value.id]),
-                'img': reverse('document_preview', args=[value.id]),
+                    'page': page.page_number,
                 })
 
         output.append(
             '<br /><span class="famfam active famfam-magnifier"></span>%s' %
              ugettext(u'Click on the image for full size view'))
-        if not self.attrs.get('hide_detail_link', False):
-            for document_page in value.documentpage_set.all():
-                output.append(
-                    '<br/><a href="%(url)s"><span class="famfam active famfam-page_white"></span>%(text)s</a>' % {
-                    'url': reverse('document_page_view', args=[document_page.id]),
-                    'text': ugettext(u'Page %s details') % document_page.page_number})
 
         return mark_safe(u''.join(output))
 
@@ -109,11 +102,9 @@ class DocumentForm(forms.ModelForm):
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('document', None)
-        self.hide_detail_link = kwargs.pop('hide_detail_link', False)
 
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = self.document
-        self.fields['preview'].widget.attrs['hide_detail_link'] = self.hide_detail_link
 
     preview = forms.CharField(widget=ImageWidget())
 
@@ -133,7 +124,7 @@ class DocumentContentForm(forms.Form):
 
     contents = forms.CharField(
         label=_(u'Contents'),
-        widget=forms.widgets.Textarea(attrs={'rows': 24, 'cols': 80}))
+        widget=forms.widgets.Textarea(attrs={'rows': 14, 'cols': 80, 'readonly': 'readonly'}))
 
 
 class DocumentForm_view(DetailForm):

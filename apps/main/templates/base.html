@@ -59,6 +59,18 @@
             'type'          : 'image',
             'autoScale'     : false
             });
+            $("a.fancybox-iframe").fancybox({
+            'titleShow'     : false,
+            'transitionIn'  : 'elastic',
+            'transitionOut' : 'elastic',
+            'easingIn'      : 'easeOutBack',
+            'easingOut'     : 'easeInBack',
+            'type'          : 'iframe',
+            'autoScale'     : false,
+            'width'         : '99%',
+            'height'        : '99%',
+            'showNavArrows' : false
+            });            
         });
     </script>
     {% block javascript %}{% endblock %}
@@ -122,9 +134,9 @@
 
 {% block web_theme_sidebar %}
     {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
-    {% if side_bar_search %}
+    {% if side_bar_search and not web_theme_hide_menus %}
         {% with "true" as side_bar %}
-        {% with "true" as form_hide_required_text %} 
+        {% with "true" as form_hide_required_text %}
             {% search_form %}
         {% endwith %}
         {% endwith %}
