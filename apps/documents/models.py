@@ -289,12 +289,13 @@ class DocumentPage(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     content = models.TextField(blank=True, null=True, verbose_name=_(u'content'), db_index=True)
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
-    page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'))
+    page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'), db_index=True)
 
     def __unicode__(self):
         return u'%s - %d - %s' % (unicode(self.document), self.page_number, self.page_label)
 
     class Meta:
+        ordering = ['page_number']
         verbose_name = _(u'document page')
         verbose_name_plural = _(u'document pages')
 
