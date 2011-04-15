@@ -3,16 +3,6 @@
 
 {% block title %} :: {% with "true" as read_only %}{% with "true" as striptags %}{% include "calculate_form_title.html" %}{% endwith %}{% endwith %}{% endblock %}
 
-{% block javascript %}
-    <script type="text/javascript">
-    $(function() {
-        $(".generic_subform form :input").each(function() {
-            this.disabled = true;
-        });
-    });
-    </script>
-{% endblock %}
-
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates %}
         <div class="generic_subform">

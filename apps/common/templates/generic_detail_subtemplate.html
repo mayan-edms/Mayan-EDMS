@@ -1,15 +1,5 @@
 {% load i18n %}
 
-{% block javascript %}
-    <script type="text/javascript">
-    $(function() {
-        $(".generic_subform form :input").each(function() {
-            this.disabled = true;
-        });
-    });
-    </script>
-{% endblock %}
-
 {% block stylesheets %}
     <style type="text/css">
         #subform form  textarea, 
