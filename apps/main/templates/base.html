@@ -137,7 +137,9 @@
     {% if side_bar_search and not web_theme_hide_menus %}
         {% with "true" as side_bar %}
         {% with "true" as form_hide_required_text %}
+        {% with "" as object %}
             {% search_form %}
+        {% endwith %}
         {% endwith %}
         {% endwith %}
     {% endif %}
