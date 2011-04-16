@@ -94,6 +94,7 @@ def check_settings(request):
         {'name': 'OCR_TESSERACT_LANGUAGE', 'value': ocr_settings.TESSERACT_LANGUAGE},
         {'name': 'OCR_NODE_CONCURRENT_EXECUTION', 'value': ocr_settings.NODE_CONCURRENT_EXECUTION},
         {'name': 'OCR_REPLICATION_DELAY', 'value': ocr_settings.REPLICATION_DELAY},
+        {'name': 'OCR_PDFTOTEXT_PATH', 'value': ocr_settings.PDFTOTEXT_PATH, 'exists': True},
 
         # Search
         {'name': 'SEARCH_LIMIT', 'value': search_settings.LIMIT},
