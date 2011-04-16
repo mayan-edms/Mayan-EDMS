@@ -641,7 +641,7 @@ def document_page_transformation_list(request, document_page_id):
         template_name='generic_list.html',
         extra_context={
             'object': document_page,
-            'title': _(u'document page transformations'),
+            'title': _(u'transformations for: %s') % document_page,
             'web_theme_hide_menus': True,
             'extra_columns': [
                 {'name': _(u'order'), 'attribute': 'order'},
@@ -686,11 +686,10 @@ def document_page_transformation_edit(request, document_page_transformation_id):
         post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
         extra_context={
             'object_name': _(u'transformation'),
-            'title': _(u'Edit transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
+            'title': _(u'Edit transformation "%(transformation)s" for: %(document_page)s') % {
                 'transformation': document_page_transformation.get_transformation_display(),
-                'page': document_page_transformation.document_page.page_number,
-                'document': document_page_transformation.document_page.document},
-                'web_theme_hide_menus': True,
+                'document_page': document_page_transformation.document_page},
+            'web_theme_hide_menus': True,
             }
         )
 
@@ -709,10 +708,9 @@ def document_page_transformation_delete(request, document_page_transformation_id
             'delete_view': True,
             'object': document_page_transformation,
             'object_name': _(u'document transformation'),
-            'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for page: %(page)s of document: %(document)s') % {
+            'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
                 'transformation': document_page_transformation.get_transformation_display(),
-                'page': document_page_transformation.document_page.page_number,
-                'document': document_page_transformation.document_page.document},
+                'document_page': document_page_transformation.document_page},
             'previous': previous,
             'web_theme_hide_menus': True,
         })
@@ -906,7 +904,7 @@ def document_page_view(request, document_page_id):
     form_list = [
         {
             'form': document_page_form,
-            'title': _(u'details for page: %s') % document_page.page_number,
+            'title': _(u'details for: %s') % document_page,
         },
     ]
     return render_to_response('generic_detail.html', {
@@ -935,6 +933,6 @@ def document_page_edit(request, document_page_id):
     return render_to_response('generic_form.html', {
         'form': form,
         'object': document_page,
-        'title': _(u'edit page: %s') % document_page.page_number,
+        'title': _(u'edit: %s') % document_page,
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
