@@ -1,4 +1,5 @@
 import zipfile
+import urlparse
 
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect
@@ -23,6 +24,7 @@ from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from permissions.api import check_permissions
+from navigation.utils import resolve_to_name
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -936,3 +938,29 @@ def document_page_edit(request, document_page_id):
         'title': _(u'edit: %s') % document_page,
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
+
+
+def document_page_navigation_next(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    if document_page.page_number >= document_page.document.documentpage_set.count():
+        messages.warning(request, _(u'There are no more pages in this document'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number + 1)
+        return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+
+    
+def document_page_navigation_previous(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    if document_page.page_number <= 1:
+        messages.warning(request, _(u'You are already at the first page of this document'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number - 1)
+        return HttpResponseRedirect(reverse(view, args=[document_page.pk]))

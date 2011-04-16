@@ -375,7 +375,7 @@ class DocumentPageTransformation(models.Model):
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
 
     def __unicode__(self):
-        return u'%s - %s' % (unicode(self.document_page), self.get_transformation_display())
+        return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.document_page))
 
     class Meta:
         ordering = ('order',)
