@@ -54,7 +54,7 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
 from metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
-    DocumentPage, DocumentPageTransformation
+    DocumentPage, DocumentPageTransformation, RecentDocument
 from staging import StagingFile
 from utils import document_save_to_temp_dir
 
@@ -115,6 +115,8 @@ def document_create_sibling(request, document_id, multiple=True):
 
 
 def _handle_save_document(request, document, form=None):
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
     if form and 'document_type_available_filenames' in form.cleaned_data:
         if form.cleaned_data['document_type_available_filenames']:
             document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
@@ -253,6 +255,9 @@ def document_view(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
     form = DocumentForm_view(instance=document, extra_fields=[
         {'label': _(u'Filename'), 'field': 'file_filename'},
         {'label': _(u'File extension'), 'field': 'file_extension'},
@@ -391,6 +396,9 @@ def document_edit(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
 
     document = get_object_or_404(Document, pk=document_id)
+
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
     if request.method == 'POST':
         form = DocumentForm_edit(request.POST, initial={'document_type': document.document_type})
         if form.is_valid():
@@ -450,6 +458,8 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
 
     metadata = {}
     for document in documents:
+        RecentDocument.objects.add_document_for_user(request.user, document)
+        
         for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
             value = document.documentmetadata_set.get(metadata_type=item.metadata_type).value if document.documentmetadata_set.filter(metadata_type=item.metadata_type) else u''
             if item.metadata_type in metadata:
@@ -809,7 +819,9 @@ def document_view_simple(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document.objects.select_related(), pk=document_id)
-
+    
+    RecentDocument.objects.add_document_for_user(request.user, document)
+    
     content_form = DocumentContentForm(document=document)
 
     metadata_groups, errors = document.get_metadata_groups()
@@ -964,3 +976,25 @@ def document_page_navigation_previous(request, document_page_id):
     else:
         document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number - 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+
+
+def document_list_recent(request):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+
+    return render_to_response('generic_list.html', {
+        'object_list': [recent_document.document for recent_document in RecentDocument.objects.all()],
+            'title': _(u'recent documents'),
+            'multi_select_as_buttons': True,
+    }, context_instance=RequestContext(request))
+
+
+    return object_list(
+        request,
+        queryset=[recent_document.document for recent_document in RecentDocument.objects.all()],
+        template_name='generic_list.html',
+        extra_context={
+            'title': _(u'recent documents'),
+            'multi_select_as_buttons': True,
+        },
+    )

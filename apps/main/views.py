@@ -54,6 +54,7 @@ def check_settings(request):
         {'name': 'DOCUMENTS_GROUP_SHOW_THUMBNAIL',
             'value': documents_settings.GROUP_SHOW_THUMBNAIL,
             'description': documents_settings.setting_description},
+        {'name': 'DOCUMENTS_RECENT_COUNT', 'value': documents_settings.RECENT_COUNT},
 
         #Filesystem_serving
         {'name': 'FILESYSTEM_FILESERVING_ENABLE', 'value': filesystem_serving_settings.FILESERVING_ENABLE},

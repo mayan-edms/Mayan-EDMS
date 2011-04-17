@@ -3,7 +3,7 @@ from django.contrib import admin
 from models import MetadataType, DocumentType, Document, \
     DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
     MetadataIndex, DocumentPage, MetadataGroup, \
-    MetadataGroupItem, DocumentPageTransformation
+    MetadataGroupItem, DocumentPageTransformation, RecentDocument
 
 from filesystem_serving.admin import DocumentMetadataIndexInline
 
@@ -71,11 +71,19 @@ class MetadataGroupItemInline(admin.StackedInline):
 class MetadataGroupAdmin(admin.ModelAdmin):
     inlines = [MetadataGroupItemInline]
     filter_horizontal = ['document_type']
+
     
+class RecentDocumentAdmin(admin.ModelAdmin):
+    model = RecentDocument
+    list_display = ('user', 'document', 'datetime_accessed')
+    readonly_fields = ('user', 'document', 'datetime_accessed')
+    list_filter = ('user',)
+    date_hierarchy = 'datetime_accessed'
+        
    
 admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(MetadataGroup, MetadataGroupAdmin)
 admin.site.register(DocumentPageTransformation, DocumentPageTransformationAdmin)
-                
+admin.site.register(RecentDocument, RecentDocumentAdmin)

@@ -37,6 +37,7 @@ register_permissions('documents', [
 ])
 
 document_list = {'text':  _(u'documents list'), 'view': 'document_list', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_list_recent = {'text':  _(u'recent documents list'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_create = {'text': _('upload a new document'), 'view': 'document_create', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
 document_create_multiple = {'text': _('upload multiple new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
 document_create_sibling = {'text': _('upload new document using same metadata'), 'view': 'document_create_sibling', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
@@ -73,13 +74,13 @@ staging_file_preview = {'text': _('preview'), 'class': 'fancybox-noscaling', 'vi
 staging_file_delete = {'text': _('delete'), 'view': 'staging_file_delete', 'args': 'object.id', 'famfam': 'drive_delete'}
 
 register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations], menu_name='sidebar')
-register_links(Document, [document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
+register_links(Document, [document_list_recent, document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
 register_multi_item_links(['document_list'], [document_multiple_clear_transformations, document_multiple_edit_metadata, document_multiple_delete])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
-    register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create, document_create_multiple], menu_name='sidebar')
+    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list_recent, document_list, document_create, document_create_multiple], menu_name='sidebar')
 else:
-    register_links(['document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list, document_create_multiple], menu_name='sidebar')
+    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
 
 register_links(DocumentPage, [document_page_transformation_list, document_page_edit, document_page_view, document_page_navigation_previous, document_page_navigation_next])
 
@@ -117,10 +118,11 @@ register_model_list_columns(Document, [
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
     register_menu([
         {'text': _('documents'), 'view': 'document_create', 'links': [
-            document_create, document_create_multiple, document_list
+            document_create, document_create_multiple, document_list,\
+            document_list_recent
         ], 'famfam': 'page', 'position': 1}])
 else:
     register_menu([
         {'text': _('documents'), 'view': 'document_create_multiple', 'links': [
-            document_create_multiple, document_list
+            document_create_multiple, document_list, document_list_recent
         ], 'famfam': 'page', 'position': 1}])

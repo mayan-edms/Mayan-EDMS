@@ -14,6 +14,7 @@ from converter.api import QUALITY_HIGH
 
 urlpatterns = patterns('documents.views',
     url(r'^document/list/$', 'document_list', (), 'document_list'),
+    url(r'^document/list/recent/$', 'document_list_recent', (), 'document_list_recent'),
     url(r'^document/create/from/local/single/$', 'document_create', {'multiple': False}, 'document_create'),
     url(r'^document/create/from/local/multiple/$', 'document_create', {'multiple': True}, 'document_create_multiple'),
     url(r'^document/type/(?P<document_type_id>\d+)/upload/single/$', 'upload_document_with_type', {'multiple': False}, 'upload_document_with_type'),

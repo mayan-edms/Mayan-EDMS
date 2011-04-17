@@ -7,6 +7,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 from python_magic import magic
 
@@ -21,6 +22,7 @@ from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
+from documents.conf.settings import RECENT_COUNT
 
 
 def get_filename_from_uuid(instance, filename):
@@ -381,6 +383,32 @@ class DocumentPageTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'document page transformation')
         verbose_name_plural = _(u'document page transformations')
+
+
+class RecentDocumentManager(models.Manager):
+    def add_document_for_user(self, user, document):
+        new_recent, _ = RecentDocument.objects.get_or_create(user=user, document=document, defaults={'datetime_accessed': datetime.now()})
+        new_recent.datetime_accessed = datetime.now()
+        new_recent.save()
+        to_delete = RecentDocument.objects.filter(user=user)[RECENT_COUNT:]
+        for recent_to_delete in to_delete:
+            recent_to_delete.delete()
+
+
+class RecentDocument(models.Model):
+    user = models.ForeignKey(User, verbose_name=_(u'user'), editable=False)
+    document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
+    datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), db_index=True)
+    
+    objects = RecentDocumentManager()
+    
+    def __unicode__(self):
+        return unicode(self.document)
+
+    class Meta:
+        ordering = ('-datetime_accessed',)
+        verbose_name = _(u'recent document')
+        verbose_name_plural = _(u'recent documents')
 
 
 register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description'])
