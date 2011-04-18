@@ -987,14 +987,3 @@ def document_list_recent(request):
             'title': _(u'recent documents'),
             'multi_select_as_buttons': True,
     }, context_instance=RequestContext(request))
-
-
-    return object_list(
-        request,
-        queryset=[recent_document.document for recent_document in RecentDocument.objects.all()],
-        template_name='generic_list.html',
-        extra_context={
-            'title': _(u'recent documents'),
-            'multi_select_as_buttons': True,
-        },
-    )
