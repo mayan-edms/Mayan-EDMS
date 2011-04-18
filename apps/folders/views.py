@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_detail, object_list
 from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
+from django.core.exceptions import PermissionDenied
 
 from documents import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
@@ -53,7 +54,10 @@ def folder_create(request):
 
 def folder_edit(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
-    
+
+    if not request.user.is_staff and not request.user.is_superuser and not request.user == folder.user:
+        raise PermissionDenied
+
     if request.method == 'POST':
         form = FolderForm(request.POST)
         if form.is_valid():
@@ -77,6 +81,9 @@ def folder_edit(request, folder_id):
 
 def folder_delete(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
+
+    if not request.user.is_staff and not request.user.is_superuser and not request.user == folder.user:
+        raise PermissionDenied
 
     post_action_redirect = reverse('folder_list')
 
@@ -109,10 +116,24 @@ def folder_delete(request, folder_id):
 def folder_view(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
     
+    if not request.user.is_staff and not request.user.is_superuser and not request.user == folder.user:
+        raise PermissionDenied
+    
     return render_to_response('generic_list.html', {
-        'object_list': [folder_document.document for folder_document in folder.folderdocument_set.all()],
-            'title': _(u'documents in folder: %s') % folder,
-            'multi_select_as_buttons': True,
+        'object_list': folder.folderdocument_set.all(),
+        'extra_columns': [
+            {'name': _(u'document'), 'attribute':
+                lambda x: '<a href="%s">%s</a>' % (reverse('document_view_simple', args=[x.document.pk]), x.document)
+            },
+            {'name': _(u'thumbnail'), 'attribute':
+                lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.document.pk]),
+                    reverse('document_thumbnail', args=[x.document.pk]))
+            },
+        ],
+        'hide_link': True,
+        'hide_object': True,
+        'title': _(u'documents in folder: %s') % folder,
+        'multi_select_as_buttons': True,
     }, context_instance=RequestContext(request))
     
     
