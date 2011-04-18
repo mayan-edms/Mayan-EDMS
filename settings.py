@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'sentry.client.celery',
     'filesystem_serving',
     'storage',
+    'folders',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
