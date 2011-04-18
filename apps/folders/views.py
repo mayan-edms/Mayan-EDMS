@@ -12,7 +12,7 @@ from documents.models import Document
 from permissions.api import check_permissions
 
 from models import Folder, FolderDocument
-from forms import FolderForm
+from forms import FolderForm, AddDocumentForm
 
 
 def folder_list(request):
@@ -116,20 +116,33 @@ def folder_view(request, folder_id):
     }, context_instance=RequestContext(request))
     
     
-def folder_add_document(request, folder_id, document_id):
-    folder = get_object_or_404(Folder, pk=folder_id)
-    document = get_object_or_404(Document, pk=document_id)
+def folder_add_document(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    document = get_object_or_404(Document, pk=document_id)
 
     if request.method == 'POST':
         previous = request.META.get('HTTP_REFERER', '/')
+        form = AddDocumentForm(request.POST, user=request.user)
+        if form.is_valid():
+            if form.cleaned_data['existing_folder']:
+                folder = form.cleaned_data['existing_folder']
+            elif form.cleaned_data['title']:
+                folder, created = Folder.objects.get_or_create(user=request.user, title=form.cleaned_data['title'])
+                if created:
+                    messages.success(request, _(u'Folder created successfully'))
+                else:
+                    messages.error(request, _(u'A folder named: %s, already exists.') % form.cleaned_data['title'])
+                    return HttpResponseRedirect(previous)
+            else:
+                messages.error(request, _(u'Must specify a new folder or an existing one.'))
+                return HttpResponseRedirect(previous)
 
-        folder_document, created = FolderDocument.objects.get_or_create(folder=folder, document=document)
-        if created:
-            messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
-                'document': document, 'folder': folder})
-        else:
-            messages.warning(request, _(u'Document: %(document)s is already in folder: %(folder)s.') % {
-                'document': document, 'folder': folder})
-    
+            folder_document, created = FolderDocument.objects.get_or_create(folder=folder, document=document)
+            if created:
+                messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
+                    'document': document, 'folder': folder})
+            else:
+                messages.warning(request, _(u'Document: %(document)s is already in folder: %(folder)s.') % {
+                    'document': document, 'folder': folder})
+
     return HttpResponseRedirect(previous)
