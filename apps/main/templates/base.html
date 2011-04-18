@@ -143,7 +143,7 @@
         {% endwith %}
         {% endwith %}
     {% endif %}
-
+    
     {% get_object_navigation_links as object_navigation_links %}
     {% if object_navigation_links %}
         <div class="block">
@@ -175,6 +175,13 @@
             </ul>
         </div>
     {% endif %}
+
+    {% get_sidebar_templates as sidebar_templates %}
+    {% for template in sidebar_templates %}
+        {% with "true" as side_bar %}
+            {% include template %}
+        {% endwith %}
+    {% endfor %}
 
     {% block sidebar %}{% endblock %}
 {% endblock %}

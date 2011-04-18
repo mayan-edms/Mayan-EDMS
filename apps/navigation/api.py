@@ -4,6 +4,7 @@ object_navigation = {}
 multi_object_navigation = {}
 menu_links = []
 model_list_columns = {}
+sidebar_templates = {}
 
 
 def register_multi_item_links(src, links, menu_name=None):
@@ -62,3 +63,11 @@ def register_model_list_columns(model, columns):
         model_list_columns[model].extend(columns)
     else:
         model_list_columns[model] = copy.copy(columns)
+        
+
+def register_sidebar_template(source_list, template_name):
+    for source in source_list:
+        if source in sidebar_templates:
+            sidebar_templates[source].append(template_name)
+        else:
+            sidebar_templates[source] = [template_name]

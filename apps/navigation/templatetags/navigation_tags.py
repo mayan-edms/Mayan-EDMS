@@ -8,7 +8,7 @@ from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
 from navigation.api import object_navigation, multi_object_navigation, \
-    menu_links as menu_navigation
+    menu_links as menu_navigation, sidebar_templates
 from navigation.forms import MultiItemForm
 from navigation.utils import resolve_to_name
 
@@ -222,3 +222,26 @@ def get_multi_item_links_form(context):
         'submit_method': 'get',
     })
     return new_context
+
+
+class GetSidebarTemplatesNone(Node):
+    def __init__(self, var_name='sidebar_templates'):
+        self.var_name = var_name
+
+    def render(self, context):
+        request = Variable('request').resolve(context)
+        view_name = resolve_to_name(request.META['PATH_INFO'])
+        context[self.var_name] = sidebar_templates.get(view_name, [])
+        return ''
+
+
+@register.tag
+def get_sidebar_templates(parser, token):
+    tag_name, arg = token.contents.split(None, 1)
+
+    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
+    if not m:
+        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+
+    menu_name, var_name = m.groups()
+    return GetSidebarTemplatesNone(var_name=var_name)
