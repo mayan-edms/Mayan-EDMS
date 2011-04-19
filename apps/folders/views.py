@@ -134,6 +134,8 @@ def folder_view(request, folder_id):
         'hide_object': True,
         'title': _(u'documents in folder: %s') % folder,
         'multi_select_as_buttons': True,
+        'object': folder,
+        'object_name': _(u'folder'),
     }, context_instance=RequestContext(request))
     
     
@@ -167,3 +169,47 @@ def folder_add_document(request, document_id):
                     'document': document, 'folder': folder})
 
     return HttpResponseRedirect(previous)
+
+
+def folder_document_remove(request, folder_document_id=None, folder_document_id_list=None):
+    post_action_redirect = None
+    
+    if folder_document_id:
+        folder_documents = [get_object_or_404(FolderDocument, pk=folder_document_id)]
+    elif folder_document_id_list:
+        folder_documents = [get_object_or_404(FolderDocument, pk=folder_document_id) for folder_document_id in folder_document_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one folder document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        for folder_document in folder_documents:
+            try:
+                folder_document.delete()
+                messages.success(request, _(u'Document: %s removed successfully.') % folder_document)
+            except Exception, e:
+                messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
+                    'document': folder_document, 'error': e})
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'object_name': _(u'folder document'),
+        'previous': previous,
+        'next': next,
+    }
+    if len(folder_documents) == 1:
+        context['object'] = folder_documents[0]
+        context['title'] = _(u'Are you sure you with to remove the document: %s?') % ', '.join([unicode(d) for d in folder_documents])
+    elif len(folder_documents) > 1:
+        context['title'] = _(u'Are you sure you with to remove the documents: %s?') % ', '.join([unicode(d) for d in folder_documents])
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def folder_document_multiple_remove(request):
+    return folder_document_remove(request, folder_document_id_list=request.GET.get('id_list', []))

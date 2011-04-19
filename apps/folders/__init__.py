@@ -11,6 +11,9 @@ folder_list = {'text':  _(u'folder list'), 'view': 'folder_list', 'famfam': 'fol
 folder_create = {'text': _('create folder'), 'view': 'folder_create', 'famfam': 'folder_add'}
 folder_edit = {'text': _('edit'), 'view': 'folder_edit', 'args': 'object.id', 'famfam': 'folder_edit'}
 folder_delete = {'text': _('delete'), 'view': 'folder_delete', 'args': 'object.id', 'famfam': 'folder_delete'}
+folder_document_multiple_remove = {'text': _('remove'), 'view': 'folder_document_multiple_remove', 'famfam': 'delete'}
+
+register_multi_item_links(['folder_view'], [folder_document_multiple_remove])
 
 register_links(Folder, [folder_edit, folder_delete])
 
