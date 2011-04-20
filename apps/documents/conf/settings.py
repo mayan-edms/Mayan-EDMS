@@ -62,7 +62,6 @@ PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_PREVIEW_SIZE', '640x480')
 MULTIPAGE_PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_MULTIPAGE_PREVIEW_SIZE', '160x120')
 THUMBNAIL_SIZE = getattr(settings, 'DOCUMENTS_THUMBNAIL_SIZE', '50x50')
 DISPLAY_SIZE = getattr(settings, 'DOCUMENTS_DISPLAY_SIZE', '1200')
-TRANFORMATION_PREVIEW_SIZE = getattr(settings, 'DOCUMENTS_TRANFORMATION_PREVIEW_SIZE', '640x480')
 RECENT_COUNT = getattr(settings, 'DOCUMENTS_RECENT_COUNT', 20)
 
 # Transformations
@@ -72,8 +71,6 @@ DEFAULT_TRANSFORMATIONS = getattr(settings, 'DOCUMENTS_DEFAULT_TRANSFORMATIONS',
 #Groups
 GROUP_MAX_RESULTS = getattr(settings, 'DOCUMENTS_GROUP_MAX_RESULTS', 20)
 GROUP_SHOW_EMPTY = getattr(settings, 'DOCUMENTS_GROUP_SHOW_EMPTY', True)
-GROUP_SHOW_THUMBNAIL = getattr(settings, 'DOCUMENTS_GROUP_SHOW_THUMBNAIL', True)
 
 setting_description = {
-    'DOCUMENTS_GROUP_SHOW_THUMBNAIL': _(u'Show document thumbnail in metadata group list')
 }

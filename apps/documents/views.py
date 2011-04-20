@@ -32,7 +32,6 @@ from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
-from documents.conf.settings import GROUP_SHOW_THUMBNAIL
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES

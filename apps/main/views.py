@@ -43,7 +43,6 @@ def check_settings(request):
         {'name': 'DOCUMENTS_PREVIEW_SIZE', 'value': documents_settings.PREVIEW_SIZE},
         {'name': 'DOCUMENTS_THUMBNAIL_SIZE', 'value': documents_settings.THUMBNAIL_SIZE},
         {'name': 'DOCUMENTS_DISPLAY_SIZE', 'value': documents_settings.DISPLAY_SIZE},
-        {'name': 'DOCUMENTS_TRANFORMATION_PREVIEW_SIZE', 'value': documents_settings.TRANFORMATION_PREVIEW_SIZE},
         {'name': 'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value': documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
         {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
         {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
@@ -51,9 +50,6 @@ def check_settings(request):
         #Groups
         {'name': 'DOCUMENTS_GROUP_MAX_RESULTS', 'value': documents_settings.GROUP_MAX_RESULTS},
         {'name': 'DOCUMENTS_GROUP_SHOW_EMPTY', 'value': documents_settings.GROUP_SHOW_EMPTY},
-        {'name': 'DOCUMENTS_GROUP_SHOW_THUMBNAIL',
-            'value': documents_settings.GROUP_SHOW_THUMBNAIL,
-            'description': documents_settings.setting_description},
         {'name': 'DOCUMENTS_RECENT_COUNT', 'value': documents_settings.RECENT_COUNT},
 
         #Filesystem_serving
