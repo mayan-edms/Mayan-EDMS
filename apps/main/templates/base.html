@@ -34,6 +34,11 @@
     <script type="text/javascript">
         jQuery(document).ready(function() {
             $("input:text:visible:not(#livesearch):not([readonly]):enabled:first").focus();        
+            $('form').submit(function(){
+                // On submit disable all submit buttons or otherwise
+                $('input[type=submit]', this).attr('disabled', 'disabled');
+                $('button', this).attr('disabled', 'disabled');
+            });        
         });
     </script>
 
