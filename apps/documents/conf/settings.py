@@ -10,6 +10,16 @@ from common.utils import proper_name
 
 from storage.backends.filebasedstorage import FileBasedStorage
 
+
+def default_checksum(x):
+    """hashlib.sha256(x).hexdigest()"""
+    return hashlib.sha256(x).hexdigest()
+
+
+def default_uuid():
+    """unicode(uuid.uuid4())"""
+    return unicode(uuid.uuid4())
+    
 default_available_functions = {
     'current_date':datetime.datetime.now().date,
 }
@@ -21,7 +31,6 @@ default_available_models = {
 available_transformations = {
     'rotate': {'label':_(u'Rotate [degrees]'), 'arguments':[{'name':'degrees'}]}
 }
-
 
 available_indexing_functions = {
     'proper_name': proper_name
@@ -42,8 +51,8 @@ UNCOMPRESS_COMPRESSED_LOCAL_FILES = getattr(settings, 'DOCUMENTS_UNCOMPRESS_COMP
 UNCOMPRESS_COMPRESSED_STAGING_FILES = getattr(settings, 'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', True)
 
 # Saving
-CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', lambda x: hashlib.sha256(x).hexdigest())
-UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNCTION', lambda:unicode(uuid.uuid4()))
+CHECKSUM_FUNCTION = getattr(settings, 'DOCUMENTS_CHECKSUM_FUNCTION', default_checksum)
+UUID_FUNCTION = getattr(settings, 'DOCUMENTS_UUID_FUNCTION', default_uuid)
 
 # Storage
 STORAGE_BACKEND = getattr(settings, 'DOCUMENTS_STORAGE_BACKEND', FileBasedStorage)

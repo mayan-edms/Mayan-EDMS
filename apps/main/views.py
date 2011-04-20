@@ -120,7 +120,7 @@ def check_settings(request):
 
 def _return_type(value):
     if isinstance(value, types.FunctionType):
-        return _(u'function found')
+        return value.__doc__ if value.__doc__ else _(u'function found')
     elif isinstance(value, types.ClassType):
         return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
     elif isinstance(value, types.TypeType):
