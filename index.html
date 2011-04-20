@@ -42,37 +42,73 @@
         <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
 
-    <h1><a href="http://github.com/rosarior/mayan">mayan</a>
-      <span class="small">by <a href="http://github.com/rosarior">rosarior</a></span></h1>
+    <h1><a href="http://github.com/rosarior/mayan">Mayan</a>
+      <span class="small">by <a href="http://github.com/rosarior">Roberto Rosario</a></span></h1>
 
     <div class="description">
       Open source, Django based document manager with custom meta-data indexing, file serving integration and OCR capabilities
     </div>
 
-    <p>Bulk upload documents directly or by using a staging folder to receive scanned documents.  Organize using document classes and custom meta-data as well as automatic document grouping.  Find document by means of full text searching, either meta-data, document properties or content extracted from PDFs or transcribed by OCR.</p><h2>Dependencies</h2>
-<p>Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
-django-pagination
-django-filetransfers - File upload/download abstraction
-celery- asynchronous task queue/job queue based on distributed message passing
-django-celery - celery Django integration
-libmagic - MIME detection library
-tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
-unpaper - post-processing scanned and photocopied book pages
-ImageMagick - Convert, Edit, Or Compose Bitmap Images
-GraphicMagick - Robust collection of tools and libraries to read, write, and manipulate an image.
-popper-utils' pdftotext
-</p>
-<h2>Install</h2>
-<p>virtualenv --no-site-packages mayan
+    <p>Bulk upload documents directly or by using a staging folder to receive scanned documents.  Organize using document classes and custom meta-data as well as automatic document grouping.  Find document by means of full text searching, either meta-data, document properties, content extracted from PDFs or transcribed by OCR.</p>
+    <h2>Features</h2>
+    <p>
+    <ul>
+<li>User defined metadata fields</li>
+<li>Dynamic default values for metadata</li>
+<li>Lookup support for metadata</li>
+<li>Filesystem integration by means of metadata indexing directories</li>
+<li>User defined document uuid generation</li>
+<li>Local file or server side staging file uploads</li>
+<li>Batch upload many documents with the same metadata</li>
+<li>User defined document checksum algorithm</li>
+<li>Previews for a great deal of image formats, including PDF</li>
+<li>Search documents by any field value</li>
+<li>Group documents by metadata automatically</li>
+<li>Permissions and roles support</li>
+<li>Multi page document support</li>
+<li>Page transformations</li>
+<li>Distributed OCR processing</li>
+<li>Multilingual user interface (English, Spanish, and easily expanded to others)</li>
+<li>Multilingual OCR support: English, French, Italian, German, Spanish and others (as supported by Tesseract)</li>
+<li>Duplicated document search</li>
+<li>Upload multiple documents inside a ZIP file</li>
+<li>Plugable storage backends (File based and GridFS included)</li>
+    </ul>
+    </p>
+    <h2>Screenshots</h2>    
+    
+    <p>
+    <img src="images/pages-carousel.png"/>
+    Document's page previews
+    </p>
+    
+    <h2>Dependencies</h2>
+<p>
+<ul>
+<li>Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.</li>
+<li>django-pagination</li>
+<li>django-filetransfers - File upload/download abstraction</li>
+<li>celery- asynchronous task queue/job queue based on distributed message passing</li>
+<li>django-celery - celery Django integration</li>
+<li>libmagic - MIME detection library</li>
+<li>tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.</li>
+<li>unpaper - post-processing scanned and photocopied book pages</li>
+<li>ImageMagick - Convert, Edit, Or Compose Bitmap Images</li>
+<li>GraphicMagick - Robust collection of tools and libraries to read, write, and manipulate an image.</li>
+<li>popper-utils' pdftotext</li>
+</ul></p>
+<h2>Installation</h2>
+<pre>
+virtualenv --no-site-packages mayan
 cd mayan
 git clone git://github.com/rosarior/mayan.git
 cd mayan
 source ../bin/activate
-pip install -r requirements/production.txt</p>
+pip install -r requirements/production.txt</pre>
 <h2>License</h2>
 <p>Licensed under the GPL Version 3</p>
 <h2>Authors</h2>
-<p>Roberto Rosario (Roberto.Rosario.Gonzalez@gmail.com)<br/>http://twitter.com/#siloraptor<br/>      </p>
+<p>Roberto Rosario<br/>      </p>
 <h2>Contact</h2>
 <p>Roberto Rosario (roberto.rosario.gonzalez@gmail.com)<br/>http://twitter.com/#siloraptor</p>
 
