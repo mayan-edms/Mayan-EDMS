@@ -9,7 +9,6 @@ from api import perform_search
 from forms import SearchForm
 from conf.settings import SHOW_OBJECT_TYPE
 
-
 def results(request, form=None):
     query_string = ''
     context = {}
@@ -37,6 +36,12 @@ def results(request, form=None):
                 raise
             elif request.user.is_staff or request.user.is_superuser:
                 messages.error(request, _(u'Search error: %s') % e)
+    else:
+        context.update({
+            'found_entries': [],
+            'object_list':[],
+            'title':_(u'results'),
+        })
 
     context.update({
         'query_string':query_string, 

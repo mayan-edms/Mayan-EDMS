@@ -7,9 +7,7 @@
             {% include "search_results_subtemplate.html" %}
     {% endif %}
     
-    {% if query_string %}
-        {% include "generic_list_subtemplate.html" %}
-    {% endif %}    
+    {% include "generic_list_subtemplate.html" %}
 {% endblock %}
 
 {% block footer %}
