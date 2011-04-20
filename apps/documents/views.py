@@ -115,6 +115,9 @@ def document_create_sibling(request, document_id, multiple=True):
 
 def _handle_save_document(request, document, form=None):
     RecentDocument.objects.add_document_for_user(request.user, document)
+    if form.cleaned_data['new_filename']:
+        document.file_filename = form.cleaned_data['new_filename']
+        document.save()
 
     if form and 'document_type_available_filenames' in form.cleaned_data:
         if form.cleaned_data['document_type_available_filenames']:

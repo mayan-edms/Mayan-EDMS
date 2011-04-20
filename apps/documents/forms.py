@@ -131,6 +131,8 @@ class DocumentForm(forms.ModelForm):
         model = Document
         exclude = ('description',)
 
+    new_filename = forms.CharField(label=_('New document filename'), required=False)
+
 
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -171,8 +173,6 @@ class DocumentForm_edit(DocumentForm):
         model = Document
         exclude = ('file', 'document_type')
 
-    new_filename = forms.CharField(label=_(u'New document filename'), required=False)
-
 
 class StagingDocumentForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -192,6 +192,7 @@ class StagingDocumentForm(forms.Form):
                         label=_(u'Quick document rename'))
 
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
+    new_filename = forms.CharField(label=_('New document filename'), required=False)
 
 
 class DocumentTypeSelectForm(forms.Form):
