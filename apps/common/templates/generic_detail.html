@@ -91,7 +91,6 @@
         {% endwith %}
     {% endfor %}
 
-
     {% for subtemplate in subtemplates_dict %}
     {% with subtemplate.title as title %}
     {% with subtemplate.object_list as object_list %}
@@ -100,8 +99,30 @@
     {% with subtemplate.main_object as main_object %}
     {% with subtemplate.hide_link as hide_link %}
     {% with subtemplate.hide_header as hide_header %}
+            
         <div class="grid_{{ subtemplate.grid|default:11 }}">
-            {% include subtemplate.name %}
+
+    {% if subtemplate.form %}
+        {% with subtemplate.submit_method as submit_method %}
+        {% with subtemplate.striptags as striptags %}
+        {% with subtemplate.object as object %}
+        {% with subtemplate.object_name as object_name %}
+        {% with subtemplate.form_action as form_action %}
+        {% with "true" as read_only %}
+        {% with subtemplate.form as form %}
+            <div class="generic_subform">        
+                {% include subtemplate.name %}            
+            </div>
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+    {% else %}
+        {% include subtemplate.name %}
+    {% endif %}
         </div>
         {% if subtemplate.grid_clear or not subtemplate.grid %}
             <div class="clear"></div> 

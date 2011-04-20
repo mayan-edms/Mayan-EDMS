@@ -49,7 +49,7 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
-        DocumentContentForm, DocumentPageForm_edit
+        DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm
 
 from metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
@@ -301,46 +301,36 @@ def document_view(request, document_id):
             },
         ]
 
+    metadata_groups, errors = document.get_metadata_groups()
+    if (request.user.is_staff or request.user.is_superuser) and errors:
+        for error in errors:
+            messages.warning(request, _(u'Metadata group query error: %s' % error))
+
+    if not GROUP_SHOW_EMPTY:
+        #If GROUP_SHOW_EMPTY is False, remove empty groups from
+        #dictionary
+        metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
+    
+    if metadata_groups:
+        subtemplates_dict.append(
+            {
+                'title':_(u'metadata groups'),
+                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document),
+                'name': 'generic_form_subtemplate.html',
+            }
+        )
+
     if FILESERVING_ENABLE:
         subtemplates_dict.append({
             'name': 'generic_list_subtemplate.html',
             'title': _(u'index links'),
             'object_list': document.documentmetadataindex_set.all(),
             'hide_link': True})
-
-    sidebar_groups = []
-    for group, data in metadata_groups.items():
-        if len(data) or GROUP_SHOW_EMPTY:
-            if len(data):
-                if len(data) > GROUP_MAX_RESULTS:
-                    total_string = '(%s out of %s)' % (GROUP_MAX_RESULTS, len(data))
-                else:
-                    total_string = '(%s)' % len(data)
-            else:
-                total_string = ''
-
-            extra_columns = [{'name':'current', 'attribute':lambda x:
-                    '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
-
-            if GROUP_SHOW_THUMBNAIL:
-                extra_columns.append({'name': _(u'thumbnail'), 'attribute':
-                        lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
-                        reverse('document_thumbnail', args=[x.id]))})
-
-            sidebar_groups.append({
-                'title': '%s %s' % (group.label, total_string),
-                'name': 'generic_list_subtemplate.html',
-                'object_list': data[:GROUP_MAX_RESULTS],
-                'hide_columns': True,
-                'hide_header': True,
-                'extra_columns': extra_columns,
-                })
-
+            
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document,
         'subtemplates_dict': subtemplates_dict,
-        'sidebar_subtemplates_dict': sidebar_groups,
     }, context_instance=RequestContext(request))
 
 
@@ -824,11 +814,6 @@ def document_view_simple(request, document_id):
     
     content_form = DocumentContentForm(document=document)
 
-    metadata_groups, errors = document.get_metadata_groups()
-    if (request.user.is_staff or request.user.is_superuser) and errors:
-        for error in errors:
-            messages.warning(request, _(u'Metadata group query error: %s' % error))
-
     preview_form = DocumentPreviewForm(document=document)
     form_list = [
         {
@@ -841,6 +826,7 @@ def document_view_simple(request, document_id):
             'object': document,
         },
     ]
+
     subtemplates_dict = [
             {
                 'name': 'generic_list_subtemplate.html',
@@ -851,39 +837,29 @@ def document_view_simple(request, document_id):
             },
         ]
 
-    sidebar_groups = []
-    for group, data in metadata_groups.items():
-        if len(data) or GROUP_SHOW_EMPTY:
-            if len(data):
-                if len(data) > GROUP_MAX_RESULTS:
-                    total_string = '(%s out of %s)' % (GROUP_MAX_RESULTS, len(data))
-                else:
-                    total_string = '(%s)' % len(data)
-            else:
-                total_string = ''
+    metadata_groups, errors = document.get_metadata_groups()
+    if (request.user.is_staff or request.user.is_superuser) and errors:
+        for error in errors:
+            messages.warning(request, _(u'Metadata group query error: %s' % error))
 
-            extra_columns = [{'name': 'current', 'attribute': lambda x:
-                    '<span class="famfam active famfam-resultset_previous"></span>' if x == document else ''}]
-
-            if GROUP_SHOW_THUMBNAIL:
-                extra_columns.append({'name': _(u'thumbnail'), 'attribute':
-                        lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
-                        reverse('document_thumbnail', args=[x.id]))})
-
-            sidebar_groups.append({
-                'title': '%s %s' % (group.label, total_string),
-                'name': 'generic_list_subtemplate.html',
-                'object_list': data[:GROUP_MAX_RESULTS],
-                'hide_columns': True,
-                'hide_header': True,
-                'extra_columns': extra_columns,
-                })
+    if not GROUP_SHOW_EMPTY:
+        #If GROUP_SHOW_EMPTY is False, remove empty groups from
+        #dictionary
+        metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
+    
+    if metadata_groups:
+        subtemplates_dict.append(
+            {
+                'title':_(u'metadata groups'),
+                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document),
+                'name': 'generic_form_subtemplate.html',
+            }
+        )
 
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document,
         'subtemplates_dict': subtemplates_dict,
-        'sidebar_subtemplates_dict': sidebar_groups,
     }, context_instance=RequestContext(request))
 
 

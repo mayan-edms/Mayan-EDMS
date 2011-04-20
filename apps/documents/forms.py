@@ -92,7 +92,7 @@ class ImageWidget(forms.widgets.Widget):
                                 <img src="%(img)s?page=%(page)s" />
                             </a>
                         <div class="tc">
-                            <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_go"></span>%(details_string)s</a>
+                            <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
                         </div>
                     </div>''' % {
                     'url': reverse('document_page_view', args=[page.pk]),
@@ -297,3 +297,60 @@ class DocumentCreateWizard(BoundFormWizard):
 
         url = reverse(view, args=[self.document_type.id])
         return HttpResponseRedirect('%s?%s' % (url, urlencode(self.urldata)))
+
+
+class MetaDataImageWidget(forms.widgets.Widget):
+    def render(self, name, value, attrs=None):
+        output = []
+        output.append(
+            u'<br /><span class="famfam active famfam-page_copy"></span>%s<br />' %
+            ugettext(u'Total documents: %s') % len(value['group_data']))
+
+        output.append(u'<div style="white-space:nowrap; overflow: auto;">')
+        for document in value['group_data']:
+            output.append(
+                u'''<div style="display: inline-block; margin: 10px; %(current)s">
+                        <div class="tc">%(document_name)s</div>
+                        <div class="tc">%(page_string)s: %(document_pages)d</div>
+                        <div class="tc">
+                            <a rel="group_%(group_id)d_documents_gallery" class="fancybox-noscaling" href="%(view_url)s">
+                                <img style="border: 1px solid black; margin: 10px;" src="%(img)s" />
+                            </a>
+                        </div>
+                        <div class="tc">
+                            <a href="%(url)s"><span class="famfam active famfam-page_go"></span>%(details_string)s</a>
+                        </div>
+                    </div>''' % {
+                    'url': reverse('document_view_simple', args=[document.pk]),
+                    'img': reverse('document_preview_multipage', args=[document.pk]),
+                    'current': u'border: 5px solid black; padding: 3px;' if value['current_document'] == document else u'',
+                    'view_url': reverse('document_display', args=[document.pk]),
+                    'document_pages': document.documentpage_set.count(),
+                    'page_string': ugettext(u'Pages'),
+                    'details_string': ugettext(u'Select'),
+                    'group_id': value['group'].pk,
+                    'document_name': document
+                })
+        output.append(u'</div>')
+        output.append(
+            u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
+             ugettext(u'Click on the image for full size view of the first page.'))
+
+        return mark_safe(u''.join(output))
+        
+
+class MetaDataGroupForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        groups = kwargs.pop('groups', None)
+        current_document = kwargs.pop('current_document', None)
+        super(MetaDataGroupForm, self).__init__(*args, **kwargs)
+        for group, data in groups.items():
+            self.fields['preview-%s' % group] = forms.CharField(
+                widget=MetaDataImageWidget(),
+                label=group,
+                initial={
+                    'group': group,
+                    'group_data': data,
+                    'current_document': current_document
+                }
+            )
