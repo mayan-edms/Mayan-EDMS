@@ -79,18 +79,33 @@ class ImageWidget(forms.widgets.Widget):
         output = []
         page_count = value.documentpage_set.count()
         output.append(
-            '<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' %
-            ugettext(u'Pages'))
+            u'<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' %
+            ugettext(u'Total pages: %s') % page_count)
+
+        output.append(u'<div style="white-space:nowrap; overflow: auto;">')
+
         for page in value.documentpage_set.all():
             output.append(
-                '<span>%(page)s)<a rel="gallery_1" class="fancybox-iframe" href="%(url)s"><img src="%(img)s?page=%(page)s" /></a></span>' % {
-                    'url': reverse('document_page_view', args=[page.id]),
-                    'img': reverse('document_preview_multipage', args=[value.id]),
+                u'''<div style="display: inline-block; border: 1px solid black; margin: 10px;">
+                        <div class="tc">%(page_string)s %(page)s</div>
+                            <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)s">
+                                <img src="%(img)s?page=%(page)s" />
+                            </a>
+                        <div class="tc">
+                            <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_go"></span>%(details_string)s</a>
+                        </div>
+                    </div>''' % {
+                    'url': reverse('document_page_view', args=[page.pk]),
+                    'img': reverse('document_preview_multipage', args=[value.pk]),
                     'page': page.page_number,
+                    'view_url': reverse('document_display', args=[page.document.pk]),
+                    'page_string': ugettext(u'Page'),
+                    'details_string': ugettext(u'Details'),
                 })
 
+        output.append(u'</div>')
         output.append(
-            '<br /><span class="famfam active famfam-magnifier"></span>%s' %
+            u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
              ugettext(u'Click on the image for full size view'))
 
         return mark_safe(u''.join(output))
@@ -124,7 +139,7 @@ class DocumentPreviewForm(forms.Form):
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = self.document
 
-    preview = forms.CharField(widget=ImageWidget())
+    preview = forms.CharField(widget=ImageWidget(), label=_(u'Page previews'))
 
 
 class DocumentContentForm(forms.Form):
