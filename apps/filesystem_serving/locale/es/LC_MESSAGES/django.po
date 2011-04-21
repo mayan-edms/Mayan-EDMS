@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 14:26-0400\n"
+"POT-Creation-Date: 2011-04-21 04:25-0400\n"
 "PO-Revision-Date: 2011-03-05 19:34\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,13 +27,13 @@ msgstr "Recrear vínculos de sistema de archivos."
 msgid "recreate index links"
 msgstr "recrear enlaces índice"
 
-#: api.py:23
+#: api.py:24
 msgid "Not creating metadata indexing, document not found in document storage"
 msgstr ""
 "No de creara indexación de metadatos, el documento no se encuentran en "
 "almacenamiento de documentos"
 
-#: api.py:38 api.py:48
+#: api.py:39 api.py:48
 #, python-format
 msgid "Unable to create metadata indexing directory: %s"
 msgstr "No se puedo crear el directorio de indexación de metadatos: %s"
@@ -43,7 +43,7 @@ msgstr "No se puedo crear el directorio de indexación de metadatos: %s"
 msgid "Error in metadata indexing expression: %s"
 msgstr "Error en la expresión de indexación de metadatos: %s"
 
-#: api.py:63
+#: api.py:64
 #, python-format
 msgid "Unable to delete metadata indexing symbolic link: %s"
 msgstr ""
@@ -56,12 +56,12 @@ msgstr ""
 "No se puede crear el enlace simbólico, coque de nombre de archivo: "
 "%(filepath)s; %(exc)s "
 
-#: api.py:122
+#: api.py:121
 #, python-format
 msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
 msgstr "No se puedo crear enlace simbólico: %(filepath)s; %(exc)s "
 
-#: api.py:127
+#: api.py:126
 msgid "Maximum rename count reached, not creating symbolic link"
 msgstr ""
 "Conteo máxima de cambio de nombre alcanzado, no se creará el enlaces "

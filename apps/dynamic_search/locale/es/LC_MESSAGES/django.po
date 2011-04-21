@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 14:25-0400\n"
-"PO-Revision-Date: 2011-03-11 14:26\n"
+"POT-Creation-Date: 2011-04-21 04:24-0400\n"
+"PO-Revision-Date: 2011-04-21 04:24\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,26 +23,30 @@ msgstr ""
 msgid "Search term"
 msgstr "Término de búsqueda"
 
-#: views.py:23
+#: views.py:21
 #, python-format
 msgid "results with: %(query_string)s (showing only %(shown_result_count)s out of %(total_result_count)s)"
 msgstr "resultados con: %(query_string)s  (mostrando solamente %(shown_result_count)s de %(total_result_count)s)"
 
-#: views.py:27
+#: views.py:25
 #, python-format
 msgid "results with: %s"
 msgstr "resultados con: %s"
 
-#: views.py:39
+#: views.py:37
 #, python-format
 msgid "Search error: %s"
 msgstr "Error de búsqueda: %s"
 
-#: views.py:44 templatetags/search_tags.py:18
+#: views.py:42
+msgid "results"
+msgstr "resultados"
+
+#: views.py:48 templatetags/search_tags.py:17
 msgid "Search"
 msgstr "Búsqueda"
 
-#: views.py:50
+#: views.py:56
 msgid "type"
 msgstr "tipo"
 
@@ -50,7 +54,7 @@ msgstr "tipo"
 msgid "Search results"
 msgstr "Resultados de la búsqueda"
 
-#: templates/search_results.html:17
+#: templates/search_results.html:15
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Tiempo transcurrido: %(time_delta)s segundos"
