@@ -138,6 +138,17 @@
                 </ul>
             </div>     
     {% endif %}
+
+    {% get_object_navigation_links "form_header" as form_navigation_links %}
+        {% if form_navigation_links %}
+            <div class="secondary-navigation">
+                <ul class="wat-cf">
+                    {% for link in form_navigation_links %}
+                        <li class="{% if forloop.first %}first {% endif %}{% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
+                    {% endfor %}     
+                </ul>
+            </div>    
+    {% endif %}
 {% endblock %}
 
 {% block web_theme_sidebar %}
