@@ -42,6 +42,7 @@ urlpatterns = patterns('documents.views',
     url(r'^staging_file/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),
 
     url(r'^document/page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
+    url(r'^document/page/(?P<document_page_id>\d+)/text/$', 'document_page_text', (), 'document_page_text'),
     url(r'^document/page/(?P<document_page_id>\d+)/edit/$', 'document_page_edit', (), 'document_page_edit'),
     url(r'^document/page/(?P<document_page_id>\d+)/navigation/next/$', 'document_page_navigation_next', (), 'document_page_navigation_next'),
     url(r'^document/page/(?P<document_page_id>\d+)/navigation/previous/$', 'document_page_navigation_previous', (), 'document_page_navigation_previous'),

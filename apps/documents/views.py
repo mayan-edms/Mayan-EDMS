@@ -48,7 +48,8 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
-        DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm
+        DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm, \
+        DocumentPageForm_text
 
 from metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
@@ -892,6 +893,25 @@ def document_page_view(request, document_page_id):
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page_form = DocumentPageForm(instance=document_page)
+
+    form_list = [
+        {
+            'form': document_page_form,
+            'title': _(u'details for: %s') % document_page,
+        },
+    ]
+    return render_to_response('generic_detail.html', {
+        'form_list': form_list,
+        'object': document_page,
+        'web_theme_hide_menus': True,
+    }, context_instance=RequestContext(request))
+    
+
+def document_page_text(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    document_page_form = DocumentPageForm_text(instance=document_page)
 
     form_list = [
         {

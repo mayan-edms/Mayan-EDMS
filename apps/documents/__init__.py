@@ -63,7 +63,8 @@ document_page_transformation_page_view = {'text': _('page details'), 'view': 'do
 document_page_transformation_page_edit = {'text': _('edit page'), 'view': 'document_page_edit', 'args': 'object.document_page.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_EDIT]}}
 document_page_transformation_page_transformation_list = {'text': _('page transformations'), 'view': 'document_page_transformation_list', 'args': 'object.document_page.id', 'famfam': 'pencil_go', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}}
 
-document_page_view = {'text': _('page details'), 'view': 'document_page_view', 'args': 'object.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_page_view = {'text': _('page image'), 'view': 'document_page_view', 'args': 'object.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_page_text = {'text': _('page text'), 'view': 'document_page_text', 'args': 'object.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_page_edit = {'text': _('edit page'), 'view': 'document_page_edit', 'args': 'object.id', 'famfam': 'page_white', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_EDIT]}}
 document_page_navigation_next = {'text': _('next page'), 'view': 'document_page_navigation_next', 'args': 'object.id', 'famfam': 'resultset_next', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_page_navigation_previous = {'text': _('previous page'), 'view': 'document_page_navigation_previous', 'args': 'object.id', 'famfam': 'resultset_previous', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
@@ -82,7 +83,7 @@ if ENABLE_SINGLE_DOCUMENT_UPLOAD:
 else:
     register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
 
-register_links(DocumentPage, [document_page_transformation_list, document_page_edit, document_page_view, document_page_navigation_previous, document_page_navigation_next])
+register_links(DocumentPage, [document_page_transformation_list, document_page_view, document_page_text, document_page_edit, document_page_navigation_previous, document_page_navigation_next])
 
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
 register_links(DocumentPageTransformation, [document_page_transformation_page_edit, document_page_transformation_page_view], menu_name='sidebar')

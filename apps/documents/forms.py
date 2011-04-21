@@ -44,20 +44,25 @@ class DocumentPageImageWidget(forms.widgets.Widget):
 class DocumentPageForm(DetailForm):
     class Meta:
         model = DocumentPage
-        exclude = ('document_type')
+        exclude = ('document', 'document_type', 'page_label', 'content')
 
     def __init__(self, *args, **kwargs):
         super(DocumentPageForm, self).__init__(*args, **kwargs)
         self.fields['page_image'].initial = self.instance
-        self.fields.keyOrder = [
-            'page_image',
-            'page_label',
-            'content',
-        ]
 
-    page_image = forms.CharField(widget=DocumentPageImageWidget())
+    page_image = forms.CharField(widget=DocumentPageImageWidget(attrs={'height': '100px'}))
 
 
+class DocumentPageForm_text(DetailForm):
+    class Meta:
+        model = DocumentPage
+        fields = ('page_label', 'content')
+
+    content = forms.CharField(
+        label=_(u'Contents'),
+        widget=forms.widgets.Textarea(attrs={'rows': 18, 'cols': 80, 'readonly': 'readonly'}))
+        
+        
 class DocumentPageForm_edit(forms.ModelForm):
     class Meta:
         model = DocumentPage
