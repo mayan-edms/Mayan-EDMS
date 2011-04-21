@@ -32,7 +32,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         if value:
             output = []
-            output.append('<div style="overflow: auto;"><img src="%(img)s?page=%(page)s" /></div>' % {
+            output.append('<div class="full-height scrollable" style="overflow: auto;"><img src="%(img)s?page=%(page)s" /></div>' % {
                 'img': reverse('document_display', args=[value.document.id]),
                 'page': value.page_number,
                 })
