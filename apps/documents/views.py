@@ -545,13 +545,18 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         pass
 
     tranformation_string = ' '.join(transformation_list)
+    
+    zoom = int(request.GET.get('zoom', 100))
+    if zoom > 200:
+        zoom = 200
+    
     try:
-        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page - 1)
+        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom)
         if filepath:
             return sendfile.sendfile(request, filename=filepath)
         #Save to a temporary location
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
-        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page - 1)
+        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom)
         return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
@@ -893,8 +898,10 @@ def document_page_view(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    document_page_form = DocumentPageForm(instance=document_page)
 
+    zoom = int(request.GET.get('zoom', 100))
+    document_page_form = DocumentPageForm(instance=document_page, zoom=zoom)
+    
     form_list = [
         {
             'form': document_page_form,
@@ -1004,3 +1011,39 @@ def document_list_recent(request):
         'multi_select_as_buttons': True,
         'hide_links': True
     }, context_instance=RequestContext(request))
+
+
+def document_page_zoom_in(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    #TODO: Improve this hack
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query.split(u'=')
+    try:
+        zoom = int(query[1])
+    except:
+        zoom = 100
+    zoom += 50
+    if zoom > 200:
+        zoom = 200
+    
+    return HttpResponseRedirect(reverse(view, args=[document_page.pk]) + u'?zoom=%s' % zoom)
+
+    
+def document_page_zoom_out(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    #TODO: Improve this hack
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query.split(u'=')
+    try:
+        zoom = int(query[1])
+    except:
+        zoom = 100
+    zoom -= 50
+    if zoom <50:
+        zoom = 50
+
+    return HttpResponseRedirect(reverse(view, args=[document_page.pk]) + u'?zoom=%s' % zoom)

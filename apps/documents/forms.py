@@ -30,11 +30,14 @@ class DocumentPageTransformationForm(forms.ModelForm):
 
 class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
+        final_attrs = self.build_attrs(attrs)
+        zoom = final_attrs.get('zoom', 100)
         if value:
             output = []
-            output.append('<div class="full-height scrollable" style="overflow: auto;"><img src="%(img)s?page=%(page)s" /></div>' % {
+            output.append('<div class="full-height scrollable" style="overflow: auto;"><img src="%(img)s?page=%(page)d&zoom=%(zoom)d" /></div>' % {
                 'img': reverse('document_display', args=[value.document.id]),
                 'page': value.page_number,
+                'zoom': zoom,
                 })
             return mark_safe(u''.join(output))
         else:
@@ -47,10 +50,12 @@ class DocumentPageForm(DetailForm):
         exclude = ('document', 'document_type', 'page_label', 'content')
 
     def __init__(self, *args, **kwargs):
+        zoom = kwargs.pop('zoom', 100)
         super(DocumentPageForm, self).__init__(*args, **kwargs)
         self.fields['page_image'].initial = self.instance
+        self.fields['page_image'].widget.attrs.update({'zoom': zoom})
 
-    page_image = forms.CharField(widget=DocumentPageImageWidget(attrs={'height': '100px'}))
+    page_image = forms.CharField(widget=DocumentPageImageWidget())
 
 
 class DocumentPageForm_text(DetailForm):
@@ -93,8 +98,8 @@ class ImageWidget(forms.widgets.Widget):
             output.append(
                 u'''<div style="display: inline-block; border: 1px solid black; margin: 10px;">
                         <div class="tc">%(page_string)s %(page)s</div>
-                            <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)s">
-                                <img src="%(img)s?page=%(page)s" />
+                            <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
+                                <img src="%(img)s?page=%(page)d" />
                             </a>
                         <div class="tc">
                             <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
@@ -164,7 +169,8 @@ class DocumentContentForm(forms.Form):
 
     contents = forms.CharField(
         label=_(u'Contents'),
-        widget=forms.widgets.Textarea(attrs={'rows': 14, 'cols': 80, 'readonly': 'readonly'}))
+        widget=forms.widgets.Textarea(attrs={'rows': 14, 'cols': 80, 'readonly': 'readonly'})
+    )
 
 
 class DocumentForm_view(DetailForm):
