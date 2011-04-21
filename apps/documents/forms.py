@@ -111,7 +111,7 @@ class ImageWidget(forms.widgets.Widget):
         output.append(u'</div>')
         output.append(
             u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
-             ugettext(u'Click on the image for full size view'))
+             ugettext(u'Click on the image for full size preview'))
 
         return mark_safe(u''.join(output))
 
