@@ -114,7 +114,7 @@ register_model_list_columns(Document, [
                 reverse('document_thumbnail', args=[x.id]))
         },
         {'name':_(u'metadata'), 'attribute':
-            lambda x: u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in x.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
+            lambda x: x.get_metadata_string()
         },
     ])
 
