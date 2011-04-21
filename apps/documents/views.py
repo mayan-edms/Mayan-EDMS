@@ -975,10 +975,27 @@ def document_page_navigation_previous(request, document_page_id):
         document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number - 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
+    
+def document_page_navigation_first(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=1)
+    return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+
+
+def document_page_navigation_last(request, document_page_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+    document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.document.documentpage_set.count())
+    return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+
 
 def document_list_recent(request):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-
 
     return render_to_response('generic_list.html', {
         'object_list': [recent_document.document for recent_document in RecentDocument.objects.all()],

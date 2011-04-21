@@ -46,6 +46,8 @@ urlpatterns = patterns('documents.views',
     url(r'^document/page/(?P<document_page_id>\d+)/edit/$', 'document_page_edit', (), 'document_page_edit'),
     url(r'^document/page/(?P<document_page_id>\d+)/navigation/next/$', 'document_page_navigation_next', (), 'document_page_navigation_next'),
     url(r'^document/page/(?P<document_page_id>\d+)/navigation/previous/$', 'document_page_navigation_previous', (), 'document_page_navigation_previous'),
+    url(r'^document/page/(?P<document_page_id>\d+)/navigation/first/$', 'document_page_navigation_first', (), 'document_page_navigation_first'),
+    url(r'^document/page/(?P<document_page_id>\d+)/navigation/last/$', 'document_page_navigation_last', (), 'document_page_navigation_last'),
 
     url(r'^document/page/(?P<document_page_id>\d+)/transformation/list/$', 'document_page_transformation_list', (), 'document_page_transformation_list'),
     url(r'^document/page/(?P<document_page_id>\d+)/transformation/create/$', 'document_page_transformation_create', (), 'document_page_transformation_create'),
