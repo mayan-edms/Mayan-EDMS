@@ -203,9 +203,9 @@ def folder_document_remove(request, folder_document_id=None, folder_document_id_
     }
     if len(folder_documents) == 1:
         context['object'] = folder_documents[0]
-        context['title'] = _(u'Are you sure you with to remove the document: %s?') % ', '.join([unicode(d) for d in folder_documents])
+        context['title'] = _(u'Are you sure you wish to remove the document: %s?') % ', '.join([unicode(d) for d in folder_documents])
     elif len(folder_documents) > 1:
-        context['title'] = _(u'Are you sure you with to remove the documents: %s?') % ', '.join([unicode(d) for d in folder_documents])
+        context['title'] = _(u'Are you sure you wish to remove the documents: %s?') % ', '.join([unicode(d) for d in folder_documents])
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))

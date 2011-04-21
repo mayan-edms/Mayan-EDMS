@@ -374,9 +374,9 @@ def document_delete(request, document_id=None, document_id_list=None):
     }
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _(u'Are you sure you with to delete the document: %s?') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Are you sure you wish to delete the document: %s?') % ', '.join([unicode(d) for d in documents])
     elif len(documents) > 1:
-        context['title'] = _(u'Are you sure you with to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Are you sure you wish to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
@@ -802,9 +802,9 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
 
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _(u'Are you sure you with to clear all the page transformations for document: %s?') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Are you sure you wish to clear all the page transformations for document: %s?') % ', '.join([unicode(d) for d in documents])
     elif len(documents) > 1:
-        context['title'] = _(u'Are you sure you with to clear all the page transformations for documents: %s?') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Are you sure you wish to clear all the page transformations for documents: %s?') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
