@@ -75,6 +75,7 @@ def document_list(request):
         extra_context={
             'title': _(u'documents'),
             'multi_select_as_buttons': True,
+            'hide_links': True,
         },
     )
 
@@ -999,6 +1000,7 @@ def document_list_recent(request):
 
     return render_to_response('generic_list.html', {
         'object_list': [recent_document.document for recent_document in RecentDocument.objects.all()],
-            'title': _(u'recent documents'),
-            'multi_select_as_buttons': True,
+        'title': _(u'recent documents'),
+        'multi_select_as_buttons': True,
+        'hide_links': True
     }, context_instance=RequestContext(request))

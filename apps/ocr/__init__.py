@@ -40,7 +40,7 @@ document_queue_enable = {'text': _(u'activate queue'), 'view': 'document_queue_e
 
 all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': {'namespace': 'ocr', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES]}}
 
-register_links(Document, [submit_document], menu_name='sidebar')
+register_links(Document, [submit_document])
 register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])

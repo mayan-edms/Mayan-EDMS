@@ -76,8 +76,12 @@ document_missing_list = {'text': _('Find missing document files'), 'view': 'docu
 staging_file_preview = {'text': _('preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': 'object.id', 'famfam': 'drive_magnify'}
 staging_file_delete = {'text': _('delete'), 'view': 'staging_file_delete', 'args': 'object.id', 'famfam': 'drive_delete'}
 
-register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations], menu_name='sidebar')
-register_links(Document, [document_list_recent, document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
+#register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations], menu_name='sidebar')
+#register_links(Document, [document_list_recent, document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
+register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations])
+#register_links(Document, [document_list_recent, document_list, document_create, document_create_multiple, document_create_sibling], menu_name='sidebar')
+register_links(Document, [document_create_sibling], menu_name='sidebar')
+
 register_multi_item_links(['document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_edit_metadata, document_multiple_delete])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
