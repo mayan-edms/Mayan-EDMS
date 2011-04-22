@@ -1,3 +1,56 @@
+2011-Apr-21
+* Added first & last page navigation links to document page view
+* Added interactive zoom support to document page detail view
+* Spanish translation updates
+* Added DOCUMENTS_ZOOM_PERCENT_STEP, DOCUMENTS_ZOOM_MAX_LEVEL,
+  DOCUMENTS_ZOOM_MIN_LEVEL configuration options to allow detailed
+  zoom control
+* Added interactive document page view rotation support
+    
+2011-Apr-20
+* Changed the side bar document grouping with carousel style document
+  grouping form widget
+* Removed the obsolete DOCUMENTS_TRANFORMATION_PREVIEW_SIZE and
+  DOCUMENTS_GROUP_SHOW_THUMBNAIL setting options
+* Improved double submit prevention
+* Added a direct rename field to the local update and staging upload
+  forms
+* Separated document page detail view into document text and document
+  image views
+* Added grab-scroll to document page view
+
+2011-Apr-19
+* Disabled submit buttons and any buttons when during a form submit
+* Updated the page preview widget to display a infinite-style horizontal
+  carousel of page previews
+
+2011-Apr-18
+* Added support user document folders
+    Must to a syncdb to add the new tables
+
+2011-Apr-17
+* Added support for listing the most recent accessed documents per user
+
+2011-Apr-16
+* Added document page navigation
+
+2011-Apr-15
+* Fixed diagnostics url resolution
+* Added confirmation dialog to document's find missing document file
+  diagnostic
+* Added a document page edit view
+* Added support for the command line program pdftotext from the
+  poppler-utils packages to extract text from PDF documents without
+  doing OCR
+
+2011-Apr-14
+* Fixed document description editing
+* Replaced page break text with page number when displaying document
+  content
+* Implemented detail form readonly fields the correct way, this fixes
+  copy & paste issues with Firefox
+* New document page view
+
 2011-Apr-13
 * Added view to add or remove user to a specific role
 
