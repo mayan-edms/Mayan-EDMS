@@ -13,7 +13,7 @@ class PermissionManager(models.Manager):
 class Permission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
-    label = models.CharField(max_length=64, verbose_name=_(u'label'))
+    label = models.CharField(max_length=96, verbose_name=_(u'label'))
 
     objects = PermissionManager()
 
