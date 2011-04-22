@@ -134,7 +134,10 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
 
         if rotation != 0 and rotation != 360:
             extra_options += u' -rotate %d ' % rotation
-
+        
+        if format == u'jpg':
+            extra_options += u' -quality 85'
+    
         backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (format, output_filepath), quality=quality)
     finally:
         if cleanup_files:

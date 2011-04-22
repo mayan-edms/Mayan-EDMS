@@ -562,12 +562,12 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     rotation = int(request.GET.get('rotation', 0)) % 360
 
     try:
-        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
+        filepath = in_image_cache(document.checksum, size=size, format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
         if filepath:
             return sendfile.sendfile(request, filename=filepath)
         #Save to a temporary location
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
-        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
+        output_file = convert(filepath, size=size, format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
         return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
