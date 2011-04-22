@@ -49,6 +49,7 @@ def check_settings(request):
         {'name': 'DOCUMENTS_ZOOM_PERCENT_STEP', 'value': documents_settings.ZOOM_PERCENT_STEP},
         {'name': 'DOCUMENTS_ZOOM_MAX_LEVEL', 'value': documents_settings.ZOOM_MAX_LEVEL},
         {'name': 'DOCUMENTS_ZOOM_MIN_LEVEL', 'value': documents_settings.ZOOM_MIN_LEVEL},
+        {'name': 'DOCUMENTS_ROTATION_STEP', 'value': documents_settings.ROTATION_STEP},
 
         #Groups
         {'name': 'DOCUMENTS_GROUP_MAX_RESULTS', 'value': documents_settings.GROUP_MAX_RESULTS},

@@ -50,6 +50,8 @@ urlpatterns = patterns('documents.views',
     url(r'^document/page/(?P<document_page_id>\d+)/navigation/last/$', 'document_page_navigation_last', (), 'document_page_navigation_last'),
     url(r'^document/page/(?P<document_page_id>\d+)/zoom/in/$', 'document_page_zoom_in', (), 'document_page_zoom_in'),
     url(r'^document/page/(?P<document_page_id>\d+)/zoom/out/$', 'document_page_zoom_out', (), 'document_page_zoom_out'),
+    url(r'^document/page/(?P<document_page_id>\d+)/rotate/right/$', 'document_page_rotate_right', (), 'document_page_rotate_right'),
+    url(r'^document/page/(?P<document_page_id>\d+)/rotate/left/$', 'document_page_rotate_left', (), 'document_page_rotate_left'),
 
     url(r'^document/page/(?P<document_page_id>\d+)/transformation/list/$', 'document_page_transformation_list', (), 'document_page_transformation_list'),
     url(r'^document/page/(?P<document_page_id>\d+)/transformation/create/$', 'document_page_transformation_create', (), 'document_page_transformation_create'),

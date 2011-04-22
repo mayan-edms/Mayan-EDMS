@@ -32,12 +32,14 @@ class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         final_attrs = self.build_attrs(attrs)
         zoom = final_attrs.get('zoom', 100)
+        rotation = final_attrs.get('rotation', 0)
         if value:
             output = []
-            output.append('<div class="full-height scrollable" style="overflow: auto;"><img src="%(img)s?page=%(page)d&zoom=%(zoom)d" /></div>' % {
+            output.append('<div class="full-height scrollable" style="overflow: auto;"><img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" /></div>' % {
                 'img': reverse('document_display', args=[value.document.id]),
                 'page': value.page_number,
                 'zoom': zoom,
+                'rotation': rotation,
                 })
             return mark_safe(u''.join(output))
         else:
@@ -51,9 +53,13 @@ class DocumentPageForm(DetailForm):
 
     def __init__(self, *args, **kwargs):
         zoom = kwargs.pop('zoom', 100)
+        rotation = kwargs.pop('rotation', 0)
         super(DocumentPageForm, self).__init__(*args, **kwargs)
         self.fields['page_image'].initial = self.instance
-        self.fields['page_image'].widget.attrs.update({'zoom': zoom})
+        self.fields['page_image'].widget.attrs.update({
+            'zoom': zoom,
+            'rotation': rotation
+        })
 
     page_image = forms.CharField(widget=DocumentPageImageWidget())
 

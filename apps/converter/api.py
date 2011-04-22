@@ -102,17 +102,17 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         return None
 
 
-def in_image_cache(input_filepath, size, page=0, format=u'jpg', quality=QUALITY_DEFAULT, extra_options=u'', zoom=100):
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options, zoom=zoom)
+def in_image_cache(input_filepath, size, page=0, format=u'jpg', quality=QUALITY_DEFAULT, extra_options=u'', zoom=100, rotation=0):
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
     else:
         return None
 
 
-def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format=u'jpg', extra_options=u'', mimetype=None, extension=None, cleanup_files=True, zoom=100):
+def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format=u'jpg', extra_options=u'', mimetype=None, extension=None, cleanup_files=True, zoom=100, rotation=0):
     unoconv_output = None
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options, zoom=zoom)
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
     '''
@@ -130,7 +130,11 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
         input_arg = u'%s[%s]' % (input_filepath, page)
         extra_options += u' -resize %s' % size
         if zoom != 100:
-            extra_options += ' -resize %d%% ' % zoom    
+            extra_options += u' -resize %d%% ' % zoom
+
+        if rotation != 0 and rotation != 360:
+            extra_options += u' -rotate %d ' % rotation
+
         backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (format, output_filepath), quality=quality)
     finally:
         if cleanup_files:

@@ -72,6 +72,8 @@ document_page_navigation_first = {'text': _('first page'), 'view': 'document_pag
 document_page_navigation_last = {'text': _('last page'), 'view': 'document_page_navigation_last', 'args': 'object.id', 'famfam': 'resultset_last', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_page_zoom_in = {'text': _('zoom in'), 'view': 'document_page_zoom_in', 'args': 'object.id', 'famfam': 'zoom_in', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_page_zoom_out = {'text': _('zoom out'), 'view': 'document_page_zoom_out', 'args': 'object.id', 'famfam': 'zoom_out', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_page_rotate_right = {'text': _('rotate right'), 'view': 'document_page_rotate_right', 'args': 'object.id', 'famfam': 'arrow_turn_right', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_page_rotate_left = {'text': _('rotate left'), 'view': 'document_page_rotate_left', 'args': 'object.id', 'famfam': 'arrow_turn_left', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
 document_missing_list = {'text': _('Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
@@ -95,8 +97,7 @@ register_links(DocumentPage, [
     document_page_navigation_next, document_page_navigation_last
 ])
 
-register_links(['document_page_view'], [document_page_zoom_in, document_page_zoom_out], menu_name='sidebar')
-
+register_links(['document_page_view'], [document_page_rotate_right, document_page_rotate_left, document_page_zoom_in, document_page_zoom_out], menu_name='form_header')
 
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
 register_links(DocumentPageTransformation, [document_page_transformation_page_edit, document_page_transformation_page_view], menu_name='sidebar')

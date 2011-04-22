@@ -66,6 +66,7 @@ RECENT_COUNT = getattr(settings, 'DOCUMENTS_RECENT_COUNT', 20)
 ZOOM_PERCENT_STEP = getattr(settings, 'DOCUMENTS_ZOOM_PERCENT_STEP', 50)
 ZOOM_MAX_LEVEL = getattr(settings, 'DOCUMENTS_ZOOM_MAX_LEVEL', 200)
 ZOOM_MIN_LEVEL = getattr(settings, 'DOCUMENTS_ZOOM_MIN_LEVEL', 50)
+ROTATION_STEP = getattr(settings, 'DOCUMENTS_ROTATION_STEP', 90)
 
 # Transformations
 AVAILABLE_TRANSFORMATIONS = getattr(settings, 'DOCUMENTS_AVAILABLE_TRANSFORMATIONS', available_transformations)
