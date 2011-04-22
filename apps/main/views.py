@@ -68,11 +68,11 @@ def check_settings(request):
             'description': common_settings.setting_description},
 
         # Converter
-        {'name': 'CONVERTER_IM_CONVERT_PATH',
-            'value': converter_settings.IM_CONVERT_PATH, 'exists': True,
-            'description': converter_settings.setting_description},
         {'name': 'CONVERTER_UNPAPER_PATH',
             'value': converter_settings.UNPAPER_PATH, 'exists': True,
+            'description': converter_settings.setting_description},
+        {'name': 'CONVERTER_IM_CONVERT_PATH',
+            'value': converter_settings.IM_CONVERT_PATH, 'exists': True,
             'description': converter_settings.setting_description},
         {'name': 'CONVERTER_IM_IDENTIFY_PATH',
             'value': converter_settings.IM_IDENTIFY_PATH, 'exists': True,
@@ -80,6 +80,7 @@ def check_settings(request):
         {'name': 'CONVERTER_GM_PATH',
             'value': converter_settings.GM_PATH, 'exists': True,
             'description': converter_settings.setting_description},
+        {'name': 'CONVERTER_GM_SETTINGS', 'value': converter_settings.GM_SETTINGS},
         {'name': 'CONVERTER_GRAPHICS_BACKEND',
             'value': converter_settings.GRAPHICS_BACKEND,
             'description': converter_settings.setting_description},

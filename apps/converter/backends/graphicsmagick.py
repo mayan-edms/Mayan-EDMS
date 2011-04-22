@@ -1,6 +1,7 @@
 import subprocess
 
 from converter.conf.settings import GM_PATH
+from converter.conf.settings import GM_SETTINGS
 from converter.api import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 
@@ -25,6 +26,7 @@ def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, ar
     command.append(unicode(GM_PATH))
     command.append(u'convert')
     command.extend(unicode(QUALITY_SETTINGS[quality]).split())
+    command.extend(unicode(GM_SETTINGS).split())
     command.append(unicode(input_filepath))
     if arguments:
         command.extend(unicode(arguments).split())

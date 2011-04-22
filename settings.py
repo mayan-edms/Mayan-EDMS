@@ -221,6 +221,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #CONVERTER_IM_IDENTIFY_PATH = u'/usr/bin/identify'
 #CONVERTER_UNPAPER_PATH = u'/usr/bin/unpaper'
 #CONVERTER_GRAPHICS_BACKEND = u'converter.backends.imagemagick'
+#CONVERTER_GM_PATH = u'/usr/bin/gm'
+#CONVERTER_GM_SETTINGS = u''
 
 # OCR
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
