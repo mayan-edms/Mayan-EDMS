@@ -59,10 +59,11 @@ from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
 from metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
 from models import Document, DocumentMetadata, DocumentType, MetadataType, \
-    DocumentPage, DocumentPageTransformation, RecentDocument
+    DocumentPage, DocumentPageTransformation, RecentDocument, \
+    MetadataGroup
 from staging import StagingFile
 from utils import document_save_to_temp_dir
-
+from documents import metadata_group_link
 
 PICTURE_ERROR_SMALL = u'picture_error.png'
 PICTURE_ERROR_MEDIUM = u'1297211435_error.png'
@@ -282,12 +283,6 @@ def document_view(request, document_id):
         {'label': _(u'Pages'), 'field': lambda x: x.documentpage_set.count()},
     ])
 
-    metadata_groups, errors = document.get_metadata_groups()
-    if (request.user.is_staff or request.user.is_superuser) and errors:
-        for error in errors:
-            messages.warning(request, _(u'Metadata group query error: %s' % error))
-
-
     preview_form = DocumentPreviewForm(document=document)
     form_list = [
         {
@@ -324,8 +319,11 @@ def document_view(request, document_id):
         subtemplates_dict.append(
             {
                 'title':_(u'metadata groups'),
-                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document),
+                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
+                metadata_group_link]),
                 'name': 'generic_form_subtemplate.html',
+                'form_action': reverse('metadatagroup_action'),
+                'submit_method': 'GET',
             }
         )
 
@@ -871,11 +869,14 @@ def document_view_simple(request, document_id):
         subtemplates_dict.append(
             {
                 'title':_(u'metadata groups'),
-                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document),
+                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
+                    metadata_group_link]),
                 'name': 'generic_form_subtemplate.html',
+                'form_action': reverse('metadatagroup_action'),
+                'submit_method': 'GET',
             }
         )
-
+                
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document,
@@ -1081,3 +1082,30 @@ def document_page_rotate_left(request, document_page_id):
         document_page_id,
         rotation_function = lambda x: (x - ROTATION_STEP) % 360
     )
+
+
+def metadatagroup_action(request):
+    action = request.GET.get('action', None)
+
+    if not action:
+        messages.error(request, _(u'No action selected.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    return HttpResponseRedirect(action)
+
+
+def metadatagroup_view(request, document_id, metadata_group_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+    document = get_object_or_404(Document, pk=document_id)
+    metadata_group = get_object_or_404(MetadataGroup, pk=metadata_group_id)
+
+    object_list, errors = document.get_metadata_groups(metadata_group)
+    
+    return render_to_response('generic_list.html', {
+        'object_list': object_list,
+        'title': _(u'documents in group: %s, for document: %s') % (metadata_group, document),
+        'multi_select_as_buttons': True,
+        'hide_links': True,
+        'ref_object': document
+    }, context_instance=RequestContext(request))

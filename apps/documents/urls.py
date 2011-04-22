@@ -35,6 +35,8 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple': True if ENABLE_SINGLE_DOCUMENT_UPLOAD == False else False}, 'document_create_sibling'),
     url(r'^document/(?P<document_id>\d+)/find_duplicates/$', 'document_find_duplicates', (), 'document_find_duplicates'),
     url(r'^document/(?P<document_id>\d+)/clear_transformations/$', 'document_clear_transformations', (), 'document_clear_transformations'),
+    url(r'^document/(?P<document_id>\d+)/group/(?P<metadata_group_id>\d+)/$', 'metadatagroup_view', (), 'metadatagroup_view'),
+
     url(r'^document/multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^duplicates/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
 
@@ -60,4 +62,6 @@ urlpatterns = patterns('documents.views',
     url(r'^document/page/transformation/(?P<document_page_transformation_id>\d+)/delete/$', 'document_page_transformation_delete', (), 'document_page_transformation_delete'),
 
     url(r'^document/missing/list/$', 'document_missing_list', (), 'document_missing_list'),
+
+    url(r'^metadatagroup_action/action/$', 'metadatagroup_action', (), 'metadatagroup_action'),
 )

@@ -6,6 +6,7 @@ from django.utils.http import urlencode
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.forms.formsets import formset_factory
+from django.template.defaultfilters import capfirst
 
 from staging import StagingFile
 
@@ -320,8 +321,22 @@ class DocumentCreateWizard(BoundFormWizard):
 class MetaDataImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
+        if value['links']:
+            output.append(u'<div class="group navform wat-cf">')
+            for link in value['links']:
+                output.append(u'''
+                    <button class="button" type="submit" name="action" value="%(action)s">
+                        <span class="famfam active famfam-%(famfam)s"></span>%(text)s
+                    </button>
+                ''' % {
+                    'famfam': link.get('famfam', 'link'),
+                    'text': capfirst(link['text']),
+                    'action': reverse('metadatagroup_view', args=[value['current_document'].pk, value['group'].pk])
+                })
+            output.append(u'</div>')
+        
         output.append(
-            u'<br /><span class="famfam active famfam-page_copy"></span>%s<br />' %
+            u'<span class="famfam active famfam-page_copy"></span>%s<br />' %
             ugettext(u'Total documents: %s') % len(value['group_data']))
 
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
@@ -360,6 +375,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
 class MetaDataGroupForm(forms.Form):
     def __init__(self, *args, **kwargs):
         groups = kwargs.pop('groups', None)
+        links = kwargs.pop('links', None)
         current_document = kwargs.pop('current_document', None)
         super(MetaDataGroupForm, self).__init__(*args, **kwargs)
         for group, data in groups.items():
@@ -369,6 +385,7 @@ class MetaDataGroupForm(forms.Form):
                 initial={
                     'group': group,
                     'group_data': data,
-                    'current_document': current_document
+                    'current_document': current_document,
+                    'links': links
                 }
             )

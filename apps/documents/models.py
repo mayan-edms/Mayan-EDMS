@@ -159,8 +159,8 @@ class Document(models.Model):
     def get_metadata_string(self):
         return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in self.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
 
-    def get_metadata_groups(self):
-        return MetadataGroup.objects.get_groups_for(self)
+    def get_metadata_groups(self, group_obj=None):
+        return MetadataGroup.objects.get_groups_for(self, group_obj)
 
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
@@ -280,38 +280,46 @@ class DocumentPage(models.Model):
 
 
 class MetadataGroupManager(models.Manager):
-    def get_groups_for(self, document):
+    def get_groups_for(self, document, group_obj=None):
         errors = []
         metadata_groups = {}
-        if MetadataGroup.objects.all().count():
-            metadata_dict = {}
-            for document_metadata in document.documentmetadata_set.all():
-                metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
+        metadata_dict = {}
+        for document_metadata in document.documentmetadata_set.all():
+            metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
+       
+        if group_obj:
+            groups_qs = MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True) & Q(pk=group_obj.pk))
+        else:
+            groups_qs = MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True))
 
-            for group in MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True)):
-                total_query = Q()
-                for item in group.metadatagroupitem_set.filter(enabled=True):
-                    try:
-                        value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
-                        if item.negated:
-                            query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
-                        else:
-                            query = (Q(metadata_type__id=item.metadata_type_id) & value_query)
+        for group in groups_qs:
+            total_query = Q()
+            for item in group.metadatagroupitem_set.filter(enabled=True):
+                try:
+                    value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
+                    if item.negated:
+                        query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
+                    else:
+                        query = (Q(metadata_type__id=item.metadata_type_id) & value_query)
 
-                        if item.inclusion == INCLUSION_AND:
-                            total_query &= query
-                        elif item.inclusion == INCLUSION_OR:
-                            total_query |= query
-                    except Exception, e:
-                        errors.append(e)
-                        value_query = Q()
-                        query = Q()
+                    if item.inclusion == INCLUSION_AND:
+                        total_query &= query
+                    elif item.inclusion == INCLUSION_OR:
+                        total_query |= query
+                except Exception, e:
+                    errors.append(e)
+                    value_query = Q()
+                    query = Q()
 
-                if total_query:
-                    document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
-                else:
-                    document_id_list = []
+            if total_query:
+                document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
                 metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)).order_by('file_filename') or []
+            else:
+                metadata_groups[group] = []
+
+        if group_obj:
+            return metadata_groups[group_obj], errors
+            
         return metadata_groups, errors
     
 

@@ -77,13 +77,17 @@ document_page_rotate_left = {'text': _('rotate left'), 'view': 'document_page_ro
 
 document_missing_list = {'text': _('Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
+metadata_group_link = {'text': _('group actions'), 'view': 'metadatagroup_view', 'famfam': 'page_go', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+metadata_group_back_to_document = {'text': _('return to document'), 'view': 'document_view_simple', 'args': 'ref_object.id', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+metadata_group_create_sibling = {'text': _('upload new document using same metadata'), 'view': 'document_create_sibling', 'args': 'ref_object.id', 'famfam': 'page_copy', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
+
 staging_file_preview = {'text': _('preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': 'object.id', 'famfam': 'drive_magnify'}
 staging_file_delete = {'text': _('delete'), 'view': 'staging_file_delete', 'args': 'object.id', 'famfam': 'drive_delete'}
 
 register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_delete, document_download, document_find_duplicates, document_clear_transformations])
 register_links(Document, [document_create_sibling], menu_name='sidebar')
 
-register_multi_item_links(['document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_edit_metadata, document_multiple_delete])
+register_multi_item_links(['metadatagroup_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_edit_metadata, document_multiple_delete])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
     register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list_recent, document_list, document_create, document_create_multiple], menu_name='sidebar')
@@ -106,6 +110,8 @@ register_links('document_page_transformation_create', [document_page_transformat
 register_links(['document_page_transformation_edit', 'document_page_transformation_delete'], [document_page_transformation_page_transformation_list], menu_name='sidebar')
 
 register_links(StagingFile, [staging_file_preview, staging_file_delete])
+
+register_links(['metadatagroup_view'], [metadata_group_back_to_document, metadata_group_create_sibling], menu_name='sidebar')
 
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
