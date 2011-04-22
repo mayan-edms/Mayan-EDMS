@@ -318,7 +318,7 @@ def document_view(request, document_id):
     if metadata_groups:
         subtemplates_dict.append(
             {
-                'title':_(u'metadata groups'),
+                'title':_(u'metadata groups (%s)') % len(metadata_groups.keys()),
                 'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
                 metadata_group_link]),
                 'name': 'generic_form_subtemplate.html',
@@ -868,7 +868,7 @@ def document_view_simple(request, document_id):
     if metadata_groups:
         subtemplates_dict.append(
             {
-                'title':_(u'metadata groups'),
+                'title':_(u'metadata groups (%s)') % len(metadata_groups.keys()),
                 'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
                     metadata_group_link]),
                 'name': 'generic_form_subtemplate.html',
