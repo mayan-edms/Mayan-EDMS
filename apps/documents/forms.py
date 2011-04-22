@@ -335,9 +335,9 @@ class MetaDataImageWidget(forms.widgets.Widget):
                 })
             output.append(u'</div>')
         
-        output.append(
-            u'<span class="famfam active famfam-page_copy"></span>%s<br />' %
-            ugettext(u'Total documents: %s') % len(value['group_data']))
+        #output.append(
+            #u'<span class="famfam active famfam-page_copy"></span>%s<br />' %
+            #ugettext(u'Total documents: %s') % len(value['group_data']))
 
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
@@ -381,7 +381,7 @@ class MetaDataGroupForm(forms.Form):
         for group, data in groups.items():
             self.fields['preview-%s' % group] = forms.CharField(
                 widget=MetaDataImageWidget(),
-                label=group,
+                label=u'%s (%d)' % (unicode(group), len(data)),
                 initial={
                     'group': group,
                     'group_data': data,
