@@ -62,7 +62,7 @@ class DocumentPageForm(DetailForm):
             'rotation': rotation
         })
 
-    page_image = forms.CharField(widget=DocumentPageImageWidget())
+    page_image = forms.CharField(label=_(u'Page image'), widget=DocumentPageImageWidget())
 
 
 class DocumentPageForm_text(DetailForm):
