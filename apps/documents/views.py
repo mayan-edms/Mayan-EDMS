@@ -1025,7 +1025,7 @@ def document_list_recent(request):
     }, context_instance=RequestContext(request))
 
 
-def document_page_zoom_in(request, document_page_id):
+def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
 
@@ -1036,82 +1036,48 @@ def document_page_zoom_in(request, document_page_id):
     # parse_qs return a dictionary whose values are lists
     zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
     rotation = int(urlparse.parse_qs(query).get('rotation', ['0'])[0])
+    
+    if zoom_function:
+        zoom = zoom_function(zoom)
 
-    zoom += ZOOM_PERCENT_STEP
-    if zoom > ZOOM_MAX_LEVEL:
-        zoom = ZOOM_MAX_LEVEL
+    if rotation_function:
+        rotation = rotation_function(rotation)
 
     return HttpResponseRedirect(
         u'?'.join([
             reverse(view, args=[document_page.pk]),
             urllib.urlencode({'zoom': zoom, 'rotation': rotation})
         ])
+    )
+
+
+def document_page_zoom_in(request, document_page_id):
+    return transform_page(
+        request,
+        document_page_id,
+        zoom_function = lambda x: ZOOM_MAX_LEVEL if x + ZOOM_PERCENT_STEP > ZOOM_MAX_LEVEL else x + ZOOM_PERCENT_STEP
     )
 
     
 def document_page_zoom_out(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
-
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    # Get the query string from the referer url
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query
-    # Parse the query string and get the zoom value
-    # parse_qs return a dictionary whose values are lists
-    zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
-    rotation = int(urlparse.parse_qs(query).get('rotation', ['0'])[0])
-
-    zoom -= ZOOM_PERCENT_STEP
-    if zoom < ZOOM_MIN_LEVEL:
-        zoom = ZOOM_MIN_LEVEL
-
-    return HttpResponseRedirect(
-        u'?'.join([
-            reverse(view, args=[document_page.pk]),
-            urllib.urlencode({'zoom': zoom, 'rotation': rotation})
-        ])
+    return transform_page(
+        request,
+        document_page_id,
+        zoom_function = lambda x: ZOOM_MIN_LEVEL if x - ZOOM_PERCENT_STEP < ZOOM_MIN_LEVEL else x - ZOOM_PERCENT_STEP
     )
     
     
 def document_page_rotate_right(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
-
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    # Get the query string from the referer url
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query
-    # Parse the query string and get the zoom value
-    # parse_qs return a dictionary whose values are lists
-    zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
-    rotation = int(urlparse.parse_qs(query).get('rotation', ['0'])[0])
-
-    rotation = (rotation + ROTATION_STEP) % 360
-
-    return HttpResponseRedirect(
-        u'?'.join([
-            reverse(view, args=[document_page.pk]),
-            urllib.urlencode({'zoom': zoom, 'rotation': rotation})
-        ])
+    return transform_page(
+        request,
+        document_page_id,
+        rotation_function = lambda x: (x + ROTATION_STEP) % 360
     )
 
 
 def document_page_rotate_left(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
-
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    # Get the query string from the referer url
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query
-    # Parse the query string and get the zoom value
-    # parse_qs return a dictionary whose values are lists
-    zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
-    rotation = int(urlparse.parse_qs(query).get('rotation', ['0'])[0])
-
-    rotation = (rotation - ROTATION_STEP) % 360
-
-    return HttpResponseRedirect(
-        u'?'.join([
-            reverse(view, args=[document_page.pk]),
-            urllib.urlencode({'zoom': zoom, 'rotation': rotation})
-        ])
+    return transform_page(
+        request,
+        document_page_id,
+        rotation_function = lambda x: (x - ROTATION_STEP) % 360
     )
