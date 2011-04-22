@@ -160,38 +160,7 @@ class Document(models.Model):
         return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in self.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
 
     def get_metadata_groups(self):
-        errors = []
-        metadata_groups = {}
-        if MetadataGroup.objects.all().count():
-            metadata_dict = {}
-            for document_metadata in self.documentmetadata_set.all():
-                metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
-
-            for group in MetadataGroup.objects.filter((Q(document_type=self.document_type) | Q(document_type=None)) & Q(enabled=True)):
-                total_query = Q()
-                for item in group.metadatagroupitem_set.filter(enabled=True):
-                    try:
-                        value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
-                        if item.negated:
-                            query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
-                        else:
-                            query = (Q(metadata_type__id=item.metadata_type_id) & value_query)
-
-                        if item.inclusion == INCLUSION_AND:
-                            total_query &= query
-                        elif item.inclusion == INCLUSION_OR:
-                            total_query |= query
-                    except Exception, e:
-                        errors.append(e)
-                        value_query = Q()
-                        query = Q()
-
-                if total_query:
-                    document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
-                else:
-                    document_id_list = []
-                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)).order_by('file_filename') or []
-        return metadata_groups, errors
+        return MetadataGroup.objects.get_groups_for(self)
 
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
@@ -310,12 +279,50 @@ class DocumentPage(models.Model):
         return ('document_page_view', [self.id])
 
 
+class MetadataGroupManager(models.Manager):
+    def get_groups_for(self, document):
+        errors = []
+        metadata_groups = {}
+        if MetadataGroup.objects.all().count():
+            metadata_dict = {}
+            for document_metadata in document.documentmetadata_set.all():
+                metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
+
+            for group in MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True)):
+                total_query = Q()
+                for item in group.metadatagroupitem_set.filter(enabled=True):
+                    try:
+                        value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
+                        if item.negated:
+                            query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
+                        else:
+                            query = (Q(metadata_type__id=item.metadata_type_id) & value_query)
+
+                        if item.inclusion == INCLUSION_AND:
+                            total_query &= query
+                        elif item.inclusion == INCLUSION_OR:
+                            total_query |= query
+                    except Exception, e:
+                        errors.append(e)
+                        value_query = Q()
+                        query = Q()
+
+                if total_query:
+                    document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
+                else:
+                    document_id_list = []
+                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)).order_by('file_filename') or []
+        return metadata_groups, errors
+    
+
 class MetadataGroup(models.Model):
     document_type = models.ManyToManyField(DocumentType, null=True, blank=True,
         verbose_name=_(u'document type'), help_text=_(u'If left blank, all document types will be matched.'))
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
     label = models.CharField(max_length=32, verbose_name=_(u'label'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
+
+    objects = MetadataGroupManager()
 
     def __unicode__(self):
         return self.label if self.label else self.name
