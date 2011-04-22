@@ -97,7 +97,7 @@ register_links(DocumentPage, [
     document_page_navigation_next, document_page_navigation_last
 ])
 
-register_links(['document_page_view'], [document_page_rotate_right, document_page_rotate_left, document_page_zoom_in, document_page_zoom_out], menu_name='form_header')
+register_links(['document_page_view'], [document_page_rotate_left, document_page_rotate_right, document_page_zoom_in, document_page_zoom_out], menu_name='form_header')
 
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
 register_links(DocumentPageTransformation, [document_page_transformation_page_edit, document_page_transformation_page_view], menu_name='sidebar')
