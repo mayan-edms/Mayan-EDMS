@@ -36,6 +36,9 @@ from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
 from documents.conf.settings import STORAGE_BACKEND
+from documents.conf.settings import ZOOM_PERCENT_STEP
+from documents.conf.settings import ZOOM_MAX_LEVEL
+from documents.conf.settings import ZOOM_MIN_LEVEL
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
@@ -1031,9 +1034,10 @@ def document_page_zoom_in(request, document_page_id):
     # Parse the query string and get the zoom value
     # parse_qs return a dictionary whose values are lists
     zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
-    zoom += 50
-    if zoom > 200:
-        zoom = 200
+
+    zoom += ZOOM_PERCENT_STEP
+    if zoom > ZOOM_MAX_LEVEL:
+        zoom = ZOOM_MAX_LEVEL
     
     return HttpResponseRedirect(reverse(view, args=[document_page.pk]) + u'?zoom=%s' % zoom)
 
@@ -1048,8 +1052,9 @@ def document_page_zoom_out(request, document_page_id):
     # Parse the query string and get the zoom value
     # parse_qs return a dictionary whose values are lists
     zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
-    zoom -= 50
-    if zoom < 50:
-        zoom = 50
+    print 'zoom', zoom
+    zoom -= ZOOM_PERCENT_STEP
+    if zoom < ZOOM_MIN_LEVEL:
+        zoom = ZOOM_MIN_LEVEL
 
     return HttpResponseRedirect(reverse(view, args=[document_page.pk]) + u'?zoom=%s' % zoom)

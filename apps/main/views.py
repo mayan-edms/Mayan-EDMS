@@ -46,6 +46,9 @@ def check_settings(request):
         {'name': 'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value': documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
         {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
         {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
+        {'name': 'DOCUMENTS_ZOOM_PERCENT_STEP', 'value': documents_settings.ZOOM_PERCENT_STEP},
+        {'name': 'DOCUMENTS_ZOOM_MAX_LEVEL', 'value': documents_settings.ZOOM_MAX_LEVEL},
+        {'name': 'DOCUMENTS_ZOOM_MIN_LEVEL', 'value': documents_settings.ZOOM_MIN_LEVEL},
 
         #Groups
         {'name': 'DOCUMENTS_GROUP_MAX_RESULTS', 'value': documents_settings.GROUP_MAX_RESULTS},
