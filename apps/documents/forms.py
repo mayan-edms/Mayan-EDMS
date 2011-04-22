@@ -95,9 +95,6 @@ class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
         page_count = value.documentpage_set.count()
-        output.append(
-            u'<br /><span class="famfam active famfam-page_white_copy"></span>%s<br />' %
-            ugettext(u'Total pages: %s') % page_count)
 
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
@@ -153,12 +150,12 @@ class DocumentForm(forms.ModelForm):
 
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        self.document = kwargs.pop('document', None)
-
+        document = kwargs.pop('document', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['preview'].initial = self.document
+        self.fields['preview'].initial = document
+        self.fields['preview'].label = _(u'Document pages (%s)') % document.documentpage_set.count()
 
-    preview = forms.CharField(widget=ImageWidget(), label=_(u'Page previews'))
+    preview = forms.CharField(widget=ImageWidget())
 
 
 class DocumentContentForm(forms.Form):
@@ -335,10 +332,6 @@ class MetaDataImageWidget(forms.widgets.Widget):
                 })
             output.append(u'</div>')
         
-        #output.append(
-            #u'<span class="famfam active famfam-page_copy"></span>%s<br />' %
-            #ugettext(u'Total documents: %s') % len(value['group_data']))
-
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
             output.append(
