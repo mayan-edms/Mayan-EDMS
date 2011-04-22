@@ -549,14 +549,21 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     zoom = int(request.GET.get('zoom', 100))
     if zoom > 200:
         zoom = 200
+
+    if zoom < 1:
+        zoom = 1
+    
+    rotation = int(request.GET.get('rotation', 0))
+    if rotation > 360 or rotation < 0:
+        rotation %= 360
     
     try:
-        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom)
+        filepath = in_image_cache(document.checksum, size=size, quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
         if filepath:
             return sendfile.sendfile(request, filename=filepath)
         #Save to a temporary location
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
-        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom)
+        output_file = convert(filepath, size=size, format='jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
         return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
@@ -900,7 +907,8 @@ def document_page_view(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
     zoom = int(request.GET.get('zoom', 100))
-    document_page_form = DocumentPageForm(instance=document_page, zoom=zoom)
+    rotation = int(request.GET.get('rotation', 0))
+    document_page_form = DocumentPageForm(instance=document_page, zoom=zoom, rotation=rotation)
     
     form_list = [
         {
@@ -1018,12 +1026,11 @@ def document_page_zoom_in(request, document_page_id):
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    #TODO: Improve this hack
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query.split(u'=')
-    try:
-        zoom = int(query[1])
-    except:
-        zoom = 100
+    # Get the query string from the referer url
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query
+    # Parse the query string and get the zoom value
+    # parse_qs return a dictionary whose values are lists
+    zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
     zoom += 50
     if zoom > 200:
         zoom = 200
@@ -1036,14 +1043,13 @@ def document_page_zoom_out(request, document_page_id):
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    #TODO: Improve this hack
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query.split(u'=')
-    try:
-        zoom = int(query[1])
-    except:
-        zoom = 100
+    # Get the query string from the referer url
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query
+    # Parse the query string and get the zoom value
+    # parse_qs return a dictionary whose values are lists
+    zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
     zoom -= 50
-    if zoom <50:
+    if zoom < 50:
         zoom = 50
 
     return HttpResponseRedirect(reverse(view, args=[document_page.pk]) + u'?zoom=%s' % zoom)
