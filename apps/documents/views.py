@@ -1,3 +1,4 @@
+import os
 import zipfile
 import urlparse
 import urllib
@@ -17,7 +18,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 import sendfile
 from common.utils import pretty_size
-from converter.api import convert, in_image_cache, QUALITY_DEFAULT
+from converter.api import convert, QUALITY_DEFAULT
 from converter.exceptions import UnkownConvertError, UnknownFormat
 from converter import TRANFORMATION_CHOICES
 from filetransfers.api import serve_file
@@ -58,7 +59,6 @@ from documents.metadata import save_metadata_list, \
 from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument, MetadataGroup
 from documents.staging import StagingFile
-from documents.utils import document_save_to_temp_dir
 from documents import metadata_group_link
 
 PICTURE_ERROR_SMALL = u'picture_error.png'
@@ -563,32 +563,28 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     rotation = int(request.GET.get('rotation', 0)) % 360
 
     try:
-        filepath = in_image_cache(document.checksum, size=size, file_format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
-        if filepath:
-            return sendfile.sendfile(request, filename=filepath)
-        #Save to a temporary location
-        filepath = document_save_to_temp_dir(document, filename=document.checksum)
-        output_file = convert(filepath, size=size, file_format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
-        return sendfile.sendfile(request, filename=output_file)
+        output_file = convert(document, size=size, file_format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         if size == THUMBNAIL_SIZE:
-            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL))
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
         else:
-            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
     except UnknownFormat:
         if size == THUMBNAIL_SIZE:
-            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_SMALL))
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_SMALL)
         else:
-            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM))
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_MEDIUM)
     except Exception, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
         if size == THUMBNAIL_SIZE:
-            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_SMALL))
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
         else:
-            return sendfile.sendfile(request, filename='%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
+    finally:
+        return sendfile.sendfile(request, output_file)
 
 
 def document_download(request, document_id):
@@ -609,8 +605,8 @@ def document_download(request, document_id):
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-#TODO: Need permission
 def staging_file_preview(request, staging_file_id):
+    #TODO: Need permission
     try:
         output_file, errors = StagingFile.get(staging_file_id).preview()
         if errors and (request.user.is_staff or request.user.is_superuser):
@@ -619,21 +615,23 @@ def staging_file_preview(request, staging_file_id):
                     'error': error
                 })
 
-        return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
-        return sendfile.sendfile(request, filename=u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
+            
+        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
     except UnknownFormat:
-        return sendfile.sendfile(request, filename=u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_UNKNOWN_MEDIUM))
+        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_MEDIUM)
     except Exception, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
-        return sendfile.sendfile(request, filename=u'%simages/%s' % (settings.MEDIA_ROOT, PICTURE_ERROR_MEDIUM))
+        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
+    finally:
+        return sendfile.sendfile(request, output_file)
 
 
-#TODO: Need permission
 def staging_file_delete(request, staging_file_id):
+    #TODO: Need permission
     staging_file = StagingFile.get(staging_file_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
