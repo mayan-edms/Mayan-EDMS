@@ -96,6 +96,7 @@ def check_settings(request):
         {'name': 'OCR_NODE_CONCURRENT_EXECUTION', 'value': ocr_settings.NODE_CONCURRENT_EXECUTION},
         {'name': 'OCR_REPLICATION_DELAY', 'value': ocr_settings.REPLICATION_DELAY},
         {'name': 'OCR_PDFTOTEXT_PATH', 'value': ocr_settings.PDFTOTEXT_PATH, 'exists': True},
+        {'name': 'OCR_QUEUE_PROCESSING_INTERVAL', 'value': ocr_settings.QUEUE_PROCESSING_INTERVAL},
 
         # Search
         {'name': 'SEARCH_LIMIT', 'value': search_settings.LIMIT},
