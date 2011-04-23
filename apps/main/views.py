@@ -52,7 +52,6 @@ def check_settings(request):
         {'name': 'DOCUMENTS_ROTATION_STEP', 'value': documents_settings.ROTATION_STEP},
 
         #Groups
-        {'name': 'DOCUMENTS_GROUP_MAX_RESULTS', 'value': documents_settings.GROUP_MAX_RESULTS},
         {'name': 'DOCUMENTS_GROUP_SHOW_EMPTY', 'value': documents_settings.GROUP_SHOW_EMPTY},
         {'name': 'DOCUMENTS_RECENT_COUNT', 'value': documents_settings.RECENT_COUNT},
 
