@@ -72,22 +72,22 @@
                 {% endif %}
                 <div id="wrapper" class="wat-cf">
                     <div id="main">
+                        {% if messages %}
+                            <div class="inner">
+                                <div class="flash">
+                                    {% for message in messages %}
+                                        <div class="message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}" style="display: none;">
+                                            <p>{{ message }}<span class="dismiss"><a title={% trans "dismiss this notification" %}>[{% trans "close" %}]</a></span></p>
+                                         </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% block web_theme_messages %}{% endblock %}
                         <div class="block" id="block-text">
                             {#{% if not web_theme_hide_menus %}#}
                                 {% block web_theme_secondary_navigation %}{% endblock %}
                             {#{% endif %}#}
-                            {% if messages %}
-                                <div class="inner">
-                                    <div class="flash">
-                                        {% for message in messages %}
-                                            <div class="message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}" style="display: none;">
-                                                <p>{{ message }}<span class="dismiss"><a title={% trans "dismiss this notification" %}>[{% trans "close" %}]</a></span></p>
-                                             </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% block web_theme_messages %}{% endblock %}
                             {% block web_theme_content %}{% endblock %}
                         </div><!--end .block #block-text-->  
                         {% block web_theme_footer %}{% endblock %}
