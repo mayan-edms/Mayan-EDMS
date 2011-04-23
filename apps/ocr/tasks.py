@@ -4,6 +4,7 @@ import time
 import random
 
 from django.db.models import Q
+from django.utils.translation import ugettext as _
 
 from celery.decorators import task, periodic_task
 
@@ -14,6 +15,7 @@ from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
 from ocr.models import QueueDocument, DocumentQueue
 from ocr.conf.settings import NODE_CONCURRENT_EXECUTION
 from ocr.conf.settings import REPLICATION_DELAY
+from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
 
 
 @task
@@ -24,6 +26,7 @@ def task_process_queue_document(queue_document_id):
         return
     queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
     queue_document.node_name = platform.node()
+    queue_document.result = task_process_queue_document.request.id
     queue_document.save()
     try:
         do_document_ocr(queue_document.document)
@@ -34,7 +37,7 @@ def task_process_queue_document(queue_document_id):
         queue_document.save()
 
 
-@periodic_task(run_every=timedelta(seconds=15))
+@periodic_task(run_every=timedelta(seconds=QUEUE_PROCESSING_INTERVAL))
 def task_process_document_queues():
     #Introduce random 0 < t < 1 second delay to further reduce the
     #chance of a race condition
