@@ -102,19 +102,14 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         return None
 
 
-def in_image_cache(input_filepath, size, page=0, file_format=u'jpg', quality=QUALITY_DEFAULT, extra_options=u'', zoom=100, rotation=0):
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
+def convert(document, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u'', cleanup_files=True, zoom=100, rotation=0):
+    #unoconv_output = None
+    output_filepath = create_image_cache_filename(document.checksum, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
-    else:
-        return None
+        
+    input_filepath = document_save_to_temp_dir(document, document.checksum)
 
-
-def convert(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u'', cleanup_files=True, zoom=100, rotation=0):
-    unoconv_output = None
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
-    if os.path.exists(output_filepath):
-        return output_filepath
     '''
     if extension:
         if extension.lower() == 'ods':
@@ -142,8 +137,8 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u
     finally:
         if cleanup_files:
             cleanup(input_filepath)
-        if unoconv_output:
-            cleanup(unoconv_output)
+        #if unoconv_output:
+            #cleanup(unoconv_output)
 
     return output_filepath
 
@@ -163,7 +158,7 @@ def convert_document_for_ocr(document, page=0, file_format=u'tif'):
     #Convert for OCR
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, file_format)
+    transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, format)
     unpaper_input_file = u'%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
     unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
     convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
