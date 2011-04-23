@@ -70,7 +70,7 @@ Common
 * Multiple document select in generic list template                    - DONE
 * Keyboard navigation
 * Default button linking to 'Enter' and ESC key for cancel
-* Dismiss all messages
+* Dismiss all messages                                                 - DONE
 * Sidebar multi item action box                                        - DONE (inline w/ list)
 * Show big icons in confirmation prompts (ie: document delete)
 
