@@ -6,18 +6,16 @@ from django.utils.encoding import force_unicode
 from pymongo import Connection
 from gridfs import GridFS
 
-
 from storage.conf import settings
 
 
 class GridFSStorage(Storage):
     separator = u'/'
-    
+
     def __init__(self, *args, **kwargs):
         self.db = Connection(host=settings.GRIDFS_HOST,
             port=settings.GRIDFS_PORT)[settings.GRIDFS_DATABASE_NAME]
         self.fs = GridFS(self.db)
-
 
     def save(self, name, content):
         #TODO: if exists add _ plus a counter
@@ -37,7 +35,7 @@ class GridFSStorage(Storage):
                             newfile.write(chunk)
                     finally:
                         newfile.close()
-            except Exception, e:#OSError, e:
+            except Exception, e:  # OSError, e:
             #    if e.errno == errno.EEXIST:
             #        # Ooops, the file exists. We need a new file name.
             #        name = self.get_available_name(name)
@@ -51,34 +49,28 @@ class GridFSStorage(Storage):
 
         return name
 
-        
     def open(self, name, *args, **kwars):
         return self.fs.get_last_version(name)
 
-        
     def delete(self, name):
         oid = self.fs.get_last_version(name)._id
         self.fs.delete(oid)
 
-        
     def exists(self, name):
-        return self.fs.exists(filename=name)        
-
+        return self.fs.exists(filename=name)
 
     def path(self, name):
         return force_unicode(name)
 
-
     def size(self, name):
         return self.fs.get_last_version(name).length
-        
-        
-    def move(self, old_file_name, name, chunk_size=1024*64):
+
+    def move(self, old_file_name, name, chunk_size=1024 * 64):
         # first open the old file, so that it won't go away
         old_file = open(old_file_name, 'rb')
         try:
             newfile = self.fs.new_file(filename=name)
-            
+
             try:
                 current_chunk = None
                 while current_chunk != '':
@@ -92,10 +84,9 @@ class GridFSStorage(Storage):
         try:
             os.remove(old_file_name)
         except OSError, e:
-            # Certain operating systems (Cygwin and Windows) 
-            # fail when deleting opened files, ignore it.  (For the 
+            # Certain operating systems (Cygwin and Windows)
+            # fail when deleting opened files, ignore it.  (For the
             # systems where this happens, temporary files will be auto-deleted
             # on close anyway.)
             if getattr(e, 'winerror', 0) != 32 and getattr(e, 'errno', 0) != 13:
                 raise
-

@@ -12,7 +12,7 @@ from converter.conf.settings import LOW_QUALITY_OPTIONS
 from converter.conf.settings import HIGH_QUALITY_OPTIONS
 from converter.conf.settings import GRAPHICS_BACKEND
 
-from exceptions import UnpaperError
+from converter.exceptions import UnpaperError
 
 #from converter.conf.settings import UNOCONV_PATH
 from common import TEMPORARY_DIRECTORY
@@ -78,8 +78,8 @@ def execute_unoconv(input_filepath, output_filepath, arguments=''):
 """
 
 
-def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, format=u'jpg', extra_options=u''):
-    filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options)
+def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u''):
+    filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options)
     try:
         os.remove(filepath)
     except OSError:
@@ -102,17 +102,17 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         return None
 
 
-def in_image_cache(input_filepath, size, page=0, format=u'jpg', quality=QUALITY_DEFAULT, extra_options=u'', zoom=100, rotation=0):
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
+def in_image_cache(input_filepath, size, page=0, file_format=u'jpg', quality=QUALITY_DEFAULT, extra_options=u'', zoom=100, rotation=0):
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
     else:
         return None
 
 
-def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, format=u'jpg', extra_options=u'', mimetype=None, extension=None, cleanup_files=True, zoom=100, rotation=0):
+def convert(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u'', cleanup_files=True, zoom=100, rotation=0):
     unoconv_output = None
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, format=format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
     '''
@@ -134,11 +134,11 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, cache=True, page=0, f
 
         if rotation != 0 and rotation != 360:
             extra_options += u' -rotate %d ' % rotation
-        
+
         if format == u'jpg':
             extra_options += u' -quality 85'
-    
-        backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (format, output_filepath), quality=quality)
+
+        backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -156,7 +156,7 @@ def get_page_count(input_filepath):
         return 1
 
 
-def convert_document_for_ocr(document, page=0, format='tif'):
+def convert_document_for_ocr(document, page=0, file_format=u'tif'):
     #Extract document file
     input_filepath = document_save_to_temp_dir(document, document.uuid)
 
@@ -166,7 +166,7 @@ def convert_document_for_ocr(document, page=0, format='tif'):
     transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, format)
     unpaper_input_file = u'%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
     unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
-    convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, format)
+    convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
 
     input_arg = u'%s[%s]' % (input_filepath, page)
 
@@ -195,4 +195,5 @@ def convert_document_for_ocr(document, page=0, format='tif'):
         cleanup(transformation_output_file)
         cleanup(unpaper_input_file)
         cleanup(unpaper_output_file)
-        return convert_output_file
+
+    return convert_output_file

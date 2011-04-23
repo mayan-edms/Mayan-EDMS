@@ -6,8 +6,7 @@ from urllib import unquote_plus
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 
-
-from models import DocumentMetadata, MetadataType
+from documents.models import DocumentMetadata, MetadataType
 
 
 def decode_metadata_from_url(url_dict):

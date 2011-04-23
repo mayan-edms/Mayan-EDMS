@@ -1,9 +1,7 @@
 import os
 from datetime import datetime
-import sys
 import tempfile
 
-from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
@@ -81,7 +79,7 @@ class Document(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('document_view_simple', [self.id])
+        return ('document_view_simple', [self.pk])
 
     def get_fullname(self):
         return os.extsep.join([self.file_filename, self.file_extension])
@@ -276,7 +274,7 @@ class DocumentPage(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('document_page_view', [self.id])
+        return ('document_page_view', [self.pk])
 
 
 class MetadataGroupManager(models.Manager):

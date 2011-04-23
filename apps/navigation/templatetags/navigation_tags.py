@@ -62,7 +62,7 @@ class NavigationNode(Node):
 
 @register.tag
 def main_navigation(parser, token):
-    args = token.split_contents()
+    #args = token.split_contents()
 
 #    if len(args) != 3 or args[1] != 'as':
 #        raise TemplateSyntaxError("'get_all_states' requires 'as variable' (got %r)" % args)

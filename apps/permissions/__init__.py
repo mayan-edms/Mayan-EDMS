@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, register_menu
 
 from permissions.conf.settings import DEFAULT_ROLES
-from models import Role
+from permissions.models import Role
 
 PERMISSION_ROLE_VIEW = 'role_view'
 PERMISSION_ROLE_EDIT = 'role_edit'

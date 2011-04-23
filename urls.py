@@ -1,8 +1,6 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
-from django.conf.urls.defaults import *
-from django.views.defaults import page_not_found, server_error
 
 admin.autodiscover()
 
@@ -21,6 +19,7 @@ urlpatterns = patterns('',
     (r'^sentry/', include('sentry.urls')),
 )
 
+
 def handler500(request):
     """
     500 error handler which includes ``request`` in the context.
@@ -31,21 +30,19 @@ def handler500(request):
     from django.template import Context, loader
     from django.http import HttpResponseServerError
 
-    t = loader.get_template('500.html') # You need to create a 500.html template.
+    t = loader.get_template('500.html')  # You need to create a 500.html template.
     return HttpResponseServerError(t.render(Context({
         'request': request,
     })))
-    
+
 if settings.DEVELOPMENT:
     urlpatterns += patterns('',
         (r'^%s-site_media/(?P<path>.*)$' % settings.PROJECT_NAME,
             'django.views.static.serve',
-            {'document_root':'site_media', 'show_indexes':True}),
+            {'document_root': 'site_media', 'show_indexes': True}),
     )
 
     if 'rosetta' in settings.INSTALLED_APPS:
         urlpatterns += patterns('',
             url(r'^rosetta/', include('rosetta.urls'), name='rosetta'),
         )
-
-

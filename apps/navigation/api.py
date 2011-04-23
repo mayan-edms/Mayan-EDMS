@@ -63,7 +63,7 @@ def register_model_list_columns(model, columns):
         model_list_columns[model].extend(columns)
     else:
         model_list_columns[model] = copy.copy(columns)
-        
+
 
 def register_sidebar_template(source_list, template_name):
     for source in source_list:

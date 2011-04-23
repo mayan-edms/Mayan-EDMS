@@ -3,14 +3,13 @@ import urlparse
 import urllib
 
 from django.utils.translation import ugettext as _
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_detail, object_list
+from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object, delete_object, update_object
-from django.core.files.base import File
+from django.views.generic.create_update import delete_object, update_object
 from django.conf import settings
 from django.utils.http import urlencode
 from django.core.exceptions import ObjectDoesNotExist
@@ -31,9 +30,7 @@ from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
-from documents.conf.settings import GROUP_MAX_RESULTS
 from documents.conf.settings import GROUP_SHOW_EMPTY
-from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
 from documents.conf.settings import STORAGE_BACKEND
@@ -46,23 +43,22 @@ from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS, \
+    PERMISSION_DOCUMENT_TRANSFORM, \
     PERMISSION_DOCUMENT_EDIT
 
-from forms import DocumentTypeSelectForm, DocumentCreateWizard, \
-        MetadataForm, DocumentForm, DocumentForm_edit, DocumentForm_view, \
+from documents.forms import DocumentTypeSelectForm, DocumentCreateWizard, \
+        DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm, \
         DocumentPageForm_text
 
-from metadata import save_metadata_list, \
+from documents.metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
-from models import Document, DocumentMetadata, DocumentType, MetadataType, \
-    DocumentPage, DocumentPageTransformation, RecentDocument, \
-    MetadataGroup
-from staging import StagingFile
-from utils import document_save_to_temp_dir
+from documents.models import Document, DocumentType, DocumentPage, \
+    DocumentPageTransformation, RecentDocument, MetadataGroup
+from documents.staging import StagingFile
+from documents.utils import document_save_to_temp_dir
 from documents import metadata_group_link
 
 PICTURE_ERROR_SMALL = u'picture_error.png'
@@ -107,10 +103,10 @@ def document_create_sibling(request, document_id, multiple=True):
 
     document = get_object_or_404(Document, pk=document_id)
     urldata = []
-    for id, metadata in enumerate(document.documentmetadata_set.all()):
+    for pk, metadata in enumerate(document.documentmetadata_set.all()):
         if hasattr(metadata, 'value'):
-            urldata.append(('metadata%s_id' % id, metadata.metadata_type_id))
-            urldata.append(('metadata%s_value' % id, metadata.value))
+            urldata.append(('metadata%s_id' % pk, metadata.metadata_type_id))
+            urldata.append(('metadata%s_value' % pk, metadata.value))
 
     if multiple:
         view = 'upload_multiple_documents_with_type'
@@ -314,13 +310,14 @@ def document_view(request, document_id):
         #If GROUP_SHOW_EMPTY is False, remove empty groups from
         #dictionary
         metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
-    
+
     if metadata_groups:
         subtemplates_dict.append(
             {
-                'title':_(u'metadata groups (%s)') % len(metadata_groups.keys()),
+                'title': _(u'metadata groups (%s)') % len(metadata_groups.keys()),
                 'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
-                metadata_group_link]),
+                    metadata_group_link
+                ]),
                 'name': 'generic_form_subtemplate.html',
                 'form_action': reverse('metadatagroup_action'),
                 'submit_method': 'GET',
@@ -332,8 +329,9 @@ def document_view(request, document_id):
             'name': 'generic_list_subtemplate.html',
             'title': _(u'index links'),
             'object_list': document.documentmetadataindex_set.all(),
-            'hide_link': True})
-            
+            'hide_link': True
+        })
+
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document,
@@ -365,7 +363,8 @@ def document_delete(request, document_id=None, document_id_list=None):
                 messages.success(request, _(u'Document: %s deleted successfully.') % document)
             except Exception, e:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
-                    'document': document, 'error': e})
+                    'document': document, 'error': e
+                })
 
         return HttpResponseRedirect(next)
 
@@ -386,11 +385,15 @@ def document_delete(request, document_id=None, document_id_list=None):
 
 
 def document_multiple_delete(request):
-    return document_delete(request, document_id_list=request.GET.get('id_list', []))
+    return document_delete(
+        request, document_id_list=request.GET.get('id_list', [])
+    )
 
 
 def document_edit(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
+    check_permissions(
+        request.user, 'documents', [PERMISSION_DOCUMENT_PROPERTIES_EDIT]
+    )
 
     document = get_object_or_404(Document, pk=document_id)
 
@@ -456,7 +459,7 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
     metadata = {}
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
-        
+
         for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
             value = document.documentmetadata_set.get(metadata_type=item.metadata_type).value if document.documentmetadata_set.filter(metadata_type=item.metadata_type) else u''
             if item.metadata_type in metadata:
@@ -548,24 +551,24 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         pass
 
     tranformation_string = ' '.join(transformation_list)
-    
+
     zoom = int(request.GET.get('zoom', 100))
 
     if zoom < ZOOM_MIN_LEVEL:
-        zoom = ZOOM_MIN_LEVEL    
+        zoom = ZOOM_MIN_LEVEL
 
     if zoom > ZOOM_MAX_LEVEL:
-        zoom = ZOOM_MAX_LEVEL    
+        zoom = ZOOM_MAX_LEVEL
 
     rotation = int(request.GET.get('rotation', 0)) % 360
 
     try:
-        filepath = in_image_cache(document.checksum, size=size, format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
+        filepath = in_image_cache(document.checksum, size=size, file_format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
         if filepath:
             return sendfile.sendfile(request, filename=filepath)
         #Save to a temporary location
         filepath = document_save_to_temp_dir(document, filename=document.checksum)
-        output_file = convert(filepath, size=size, format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
+        output_file = convert(filepath, size=size, file_format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
         return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
@@ -611,9 +614,10 @@ def staging_file_preview(request, staging_file_id):
     try:
         output_file, errors = StagingFile.get(staging_file_id).preview()
         if errors and (request.user.is_staff or request.user.is_superuser):
-            messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') %
-                {'transformation': page_transformation.get_transformation_display(),
-                'error': e})
+            for error in errors:
+                messages.warning(request, _(u'Staging file transformation error:, %(error)s') % {
+                    'error': error
+                })
 
         return sendfile.sendfile(request, filename=output_file)
     except UnkownConvertError, e:
@@ -827,9 +831,9 @@ def document_view_simple(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document.objects.select_related(), pk=document_id)
-    
+
     RecentDocument.objects.add_document_for_user(request.user, document)
-    
+
     content_form = DocumentContentForm(document=document)
 
     preview_form = DocumentPreviewForm(document=document)
@@ -864,19 +868,23 @@ def document_view_simple(request, document_id):
         #If GROUP_SHOW_EMPTY is False, remove empty groups from
         #dictionary
         metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
-    
+
     if metadata_groups:
         subtemplates_dict.append(
             {
-                'title':_(u'metadata groups (%s)') % len(metadata_groups.keys()),
-                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
-                    metadata_group_link]),
+                'title': _(u'metadata groups (%s)') % len(metadata_groups.keys()),
+                'form': MetaDataGroupForm(
+                    groups=metadata_groups, current_document=document,
+                    links=[
+                        metadata_group_link
+                    ]
+                ),
                 'name': 'generic_form_subtemplate.html',
                 'form_action': reverse('metadatagroup_action'),
                 'submit_method': 'GET',
             }
         )
-                
+
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document,
@@ -914,7 +922,7 @@ def document_page_view(request, document_page_id):
     zoom = int(request.GET.get('zoom', 100))
     rotation = int(request.GET.get('rotation', 0))
     document_page_form = DocumentPageForm(instance=document_page, zoom=zoom, rotation=rotation)
-    
+
     form_list = [
         {
             'form': document_page_form,
@@ -926,7 +934,7 @@ def document_page_view(request, document_page_id):
         'object': document_page,
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
-    
+
 
 def document_page_text(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
@@ -945,8 +953,8 @@ def document_page_text(request, document_page_id):
         'object': document_page,
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
-    
-    
+
+
 def document_page_edit(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_EDIT])
 
@@ -983,7 +991,7 @@ def document_page_navigation_next(request, document_page_id):
         document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number + 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
-    
+
 def document_page_navigation_previous(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
@@ -996,7 +1004,7 @@ def document_page_navigation_previous(request, document_page_id):
         document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number - 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
-    
+
 def document_page_navigation_first(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
@@ -1037,7 +1045,7 @@ def transform_page(request, document_page_id, zoom_function=None, rotation_funct
     # parse_qs return a dictionary whose values are lists
     zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
     rotation = int(urlparse.parse_qs(query).get('rotation', ['0'])[0])
-    
+
     if zoom_function:
         zoom = zoom_function(zoom)
 
@@ -1056,23 +1064,23 @@ def document_page_zoom_in(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        zoom_function = lambda x: ZOOM_MAX_LEVEL if x + ZOOM_PERCENT_STEP > ZOOM_MAX_LEVEL else x + ZOOM_PERCENT_STEP
+        zoom_function=lambda x: ZOOM_MAX_LEVEL if x + ZOOM_PERCENT_STEP > ZOOM_MAX_LEVEL else x + ZOOM_PERCENT_STEP
     )
 
-    
+
 def document_page_zoom_out(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        zoom_function = lambda x: ZOOM_MIN_LEVEL if x - ZOOM_PERCENT_STEP < ZOOM_MIN_LEVEL else x - ZOOM_PERCENT_STEP
+        zoom_function=lambda x: ZOOM_MIN_LEVEL if x - ZOOM_PERCENT_STEP < ZOOM_MIN_LEVEL else x - ZOOM_PERCENT_STEP
     )
-    
-    
+
+
 def document_page_rotate_right(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        rotation_function = lambda x: (x + ROTATION_STEP) % 360
+        rotation_function=lambda x: (x + ROTATION_STEP) % 360
     )
 
 
@@ -1080,7 +1088,7 @@ def document_page_rotate_left(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        rotation_function = lambda x: (x - ROTATION_STEP) % 360
+        rotation_function=lambda x: (x - ROTATION_STEP) % 360
     )
 
 
@@ -1101,7 +1109,7 @@ def metadatagroup_view(request, document_id, metadata_group_id):
     metadata_group = get_object_or_404(MetadataGroup, pk=metadata_group_id)
 
     object_list, errors = document.get_metadata_groups(metadata_group)
-    
+
     return render_to_response('generic_list.html', {
         'object_list': object_list,
         'title': _(u'documents in group: %s, for document: %s') % (metadata_group, document),

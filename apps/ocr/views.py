@@ -14,12 +14,12 @@ from documents.models import Document
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
     PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES
 
-from models import DocumentQueue, QueueDocument
-from literals import QUEUEDOCUMENT_STATE_PENDING, \
+from ocr.models import DocumentQueue, QueueDocument
+from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED, \
     DOCUMENTQUEUE_STATE_ACTIVE
-from exceptions import AlreadyQueued
-from api import clean_pages
+from ocr.exceptions import AlreadyQueued
+from ocr.api import clean_pages
 
 
 def _display_thumbnail(ocr_document):
@@ -65,15 +65,13 @@ def queue_document_list(request, queue_name='default'):
     )
 
 
-def queue_document_delete(request, queue_document_id=None, queue_document_id_list=[]):
+def queue_document_delete(request, queue_document_id=None, queue_document_id_list=None):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT_DELETE])
 
     if queue_document_id:
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
-        post_redirect = None
     elif queue_document_id_list:
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
-        post_redirect = None
     else:
         messages.error(request, _(u'Must provide at least one queue document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
@@ -138,15 +136,13 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
         return HttpResponseRedirect(post_submit_redirect)
 
 
-def re_queue_document(request, queue_document_id=None, queue_document_id_list=[]):
+def re_queue_document(request, queue_document_id=None, queue_document_id_list=None):
     check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
 
     if queue_document_id:
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
-        post_redirect = None
     elif queue_document_id_list:
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
-        post_redirect = None
     else:
         messages.error(request, _(u'Must provide at least one queue document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

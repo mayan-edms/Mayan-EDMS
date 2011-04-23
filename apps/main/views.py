@@ -29,7 +29,7 @@ def check_settings(request):
         {'name': 'MAIN_SIDE_BAR_SEARCH',
             'value': main_settings.SIDE_BAR_SEARCH,
             'description': main_settings.setting_description},
-        
+
         {'name': 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'value': documents_settings.AVAILABLE_FUNCTIONS},
         {'name': 'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'value': documents_settings.AVAILABLE_MODELS},
         {'name': 'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value': documents_settings.AVAILABLE_INDEXING_FUNCTIONS},
@@ -151,12 +151,14 @@ def statistics(request):
 
     return render_to_response('statistics.html', {
         'blocks': blocks,
-        'title': _(u'Statistics') },
+        'title': _(u'Statistics')
+    },
     context_instance=RequestContext(request))
 
 
 def diagnostics_view(request):
     return render_to_response('diagnostics.html', {
         'blocks': diagnostics,
-        'title': _(u'Diagnostics') },
+        'title': _(u'Diagnostics')
+    },
     context_instance=RequestContext(request))

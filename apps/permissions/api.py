@@ -11,7 +11,7 @@ from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, \
     PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE
 
-from models import Permission, Role
+from permissions.models import Permission, Role
 
 
 def register_permissions(namespace, permissions):
@@ -66,7 +66,7 @@ def check_requester(requester, permission_holder):
 
 #TODO: a role may contain groups, make recursive
 def check_elements(requester, requester_list):
-    ct = ContentType.objects.get_for_model(requester)
+    #ct = ContentType.objects.get_for_model(requester)
     for requester_object in requester_list:
         if requester == requester_object:
             return True

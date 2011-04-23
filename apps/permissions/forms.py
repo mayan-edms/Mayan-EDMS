@@ -1,10 +1,9 @@
-from django.conf import settings
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from common.forms import DetailForm
 
-from models import Role, RoleMember
+from permissions.models import Role
 
 
 class RoleForm(forms.ModelForm):
@@ -24,6 +23,6 @@ class ChoiceForm(forms.Form):
         super(ChoiceForm, self).__init__(*args, **kwargs)
         self.fields['selection'].choices = choices
         self.fields['selection'].label = label
-        self.fields['selection'].widget.attrs.update({'size':14})
+        self.fields['selection'].widget.attrs.update({'size': 14})
 
     selection = forms.MultipleChoiceField()

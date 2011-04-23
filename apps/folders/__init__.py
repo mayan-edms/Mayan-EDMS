@@ -5,7 +5,7 @@ from navigation.api import register_links, register_menu, \
 from permissions.api import register_permissions
 from navigation.api import register_sidebar_template
 
-from models import Folder
+from folders.models import Folder
 
 folder_list = {'text':  _(u'folder list'), 'view': 'folder_list', 'famfam': 'folder'}
 folder_create = {'text': _('create folder'), 'view': 'folder_create', 'famfam': 'folder_add'}

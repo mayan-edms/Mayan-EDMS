@@ -1,5 +1,6 @@
 import errno
 import os
+
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,7 +11,7 @@ from filesystem_serving.conf.settings import FILESERVING_PATH
 from filesystem_serving.conf.settings import SLUGIFY_PATHS
 from filesystem_serving.conf.settings import MAX_RENAME_COUNT
 
-from models import DocumentMetadataIndex, Document
+from filesystem_serving.models import DocumentMetadataIndex, Document
 
 if SLUGIFY_PATHS == False:
     #Do not slugify path or filenames and extensions

@@ -5,10 +5,10 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from documents.models import Document
 
-from literals import DOCUMENTQUEUE_STATE_STOPPED, \
+from ocr.literals import DOCUMENTQUEUE_STATE_STOPPED, \
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_CHOICES
-from exceptions import AlreadyQueued
+from ocr.exceptions import AlreadyQueued
 
 
 class DocumentQueueManager(models.Manager):

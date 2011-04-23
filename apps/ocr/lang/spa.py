@@ -1,5 +1,6 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 import re
+
 
 def check_word(word):
     ALL_ALPHANUM = re.compile('([0-9a-záéíóúüñ])', re.I)
@@ -14,7 +15,7 @@ def check_word(word):
     if len(word) > 20:
         return None
 
-    #(A) If a string’s ratio of alphanumeric characters to total 
+    #(A) If a string’s ratio of alphanumeric characters to total
     #characters is less than 50%, the string is garbage
     if len(ALL_ALPHANUM.findall(word)) < len(word) / 2:
         return None
@@ -22,18 +23,17 @@ def check_word(word):
     #Remove word if all the letters in the word are non alphanumeric
     if len(NON_ALPHANUM.findall(word)) == len(word):
         return None
-    
+
     #Removed words with too many consecutie vowels
     if TOO_MANY_VOWELS.findall(word):
-        return None 
+        return None
 
     #Removed words with too many consecutie consonants
     if TOO_MANY_CONSONANTS.findall(word):
-        return None 
+        return None
 
     #Only allow specific single letter words
     if len(word) == 1 and not SINGLE_LETTER_WORDS.findall(word):
         return None
-        
+
     return word
-    

@@ -1,10 +1,13 @@
+# original code from:
+# http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/
+
 import re
 import types
 import datetime
 
 from django.db.models import Q
 
-from conf.settings import LIMIT
+from dynamic_search.conf.settings import LIMIT
 
 search_list = {}
 
@@ -15,29 +18,26 @@ def register(model, text, field_list):
     else:
         search_list[model] = {'fields': field_list, 'text': text}
 
-#original code from:
-#http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/
-
 
 def normalize_query(query_string,
                     findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
                     normspace=re.compile(r'\s{2,}').sub):
-    ''' Splits the query string in invidual keywords, getting rid of unecessary spaces
+    """ Splits the query string in invidual keywords, getting rid of unecessary spaces
         and grouping quoted words together.
         Example:
 
         >>> normalize_query('  some random  words "with   quotes  " and   spaces')
         ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
 
-    '''
+    """
     return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
 
-def get_query(query_string, terms, search_fields):
-    ''' Returns a query, that is a combination of Q objects. That combination
+def get_query(terms, search_fields):
+    """
+        Returns a query, that is a combination of Q objects. That combination
         aims to search keywords within a model by testing the given search fields.
-
-    '''
+    """
     queries = []
     for term in terms:
         or_query = None
@@ -47,7 +47,7 @@ def get_query(query_string, terms, search_fields):
                 field_name = field
             elif isinstance(field, types.DictType):
                 comparison = field.get('comparison', u'icontains')
-                field_name = field.get('field_name', '')
+                field_name = field.get('field_name', u'')
 
             if field_name:
                 q = Q(**{'%s__%s' % (field_name, comparison): term})
@@ -72,7 +72,7 @@ def perform_search(query_string):
         terms = normalize_query(query_string)
 
         for model, data in search_list.items():
-            queries = get_query(query_string, terms, data['fields'])
+            queries = get_query(terms, data['fields'])
 
             model_result_ids = None
             for query in queries:

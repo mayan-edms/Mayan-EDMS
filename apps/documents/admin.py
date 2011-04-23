@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import MetadataType, DocumentType, Document, \
+from documents.models import MetadataType, DocumentType, Document, \
     DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
     MetadataIndex, DocumentPage, MetadataGroup, \
     MetadataGroupItem, DocumentPageTransformation, RecentDocument
@@ -34,7 +34,10 @@ class DocumentTypeFilenameInline(admin.StackedInline):
 
 
 class DocumentTypeAdmin(admin.ModelAdmin):
-    inlines = [DocumentTypeFilenameInline, DocumentTypeMetadataTypeInline, MetadataIndexInline]
+    inlines = [
+        DocumentTypeFilenameInline, DocumentTypeMetadataTypeInline, 
+        MetadataIndexInline
+    ]
 
 
 class DocumentMetadataInline(admin.StackedInline):
@@ -56,8 +59,10 @@ class DocumentPageInline(admin.StackedInline):
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    inlines = [DocumentMetadataInline, DocumentMetadataIndexInline,
-        DocumentPageInline]
+    inlines = [
+        DocumentMetadataInline, DocumentMetadataIndexInline,
+        DocumentPageInline
+    ]
     list_display = ('uuid', 'file_filename', 'file_extension')
 
 
@@ -85,5 +90,6 @@ admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(MetadataGroup, MetadataGroupAdmin)
-admin.site.register(DocumentPageTransformation, DocumentPageTransformationAdmin)
+admin.site.register(DocumentPageTransformation, 
+    DocumentPageTransformationAdmin)
 admin.site.register(RecentDocument, RecentDocumentAdmin)

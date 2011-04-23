@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext as _
 
-from models import Folder
+from folders.models import Folder
 
 
 class FolderForm(forms.ModelForm):
@@ -17,9 +17,7 @@ class AddDocumentForm(forms.ModelForm):
         self.fields['existing_folder'] = forms.ModelChoiceField(required=False, queryset=Folder.objects.filter(user=user))
         self.fields['title'].required = False
         self.fields['title'].label = _(u'New folder')
-    
+
     class Meta:
         model = Folder
         fields = ('title',)
-        
-    

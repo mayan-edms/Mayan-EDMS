@@ -7,7 +7,7 @@ from django.contrib.contenttypes import generic
 class PermissionManager(models.Manager):
     def get_for_holder(self, holder):
         ct = ContentType.objects.get_for_model(holder)
-        return [Permission.objects.get(id=id) for id in PermissionHolder.objects.filter(holder_type=ct, holder_id=holder.id).values_list('permission_id', flat=True)]
+        return [Permission.objects.get(pk=pk) for pk in PermissionHolder.objects.filter(holder_type=ct, holder_id=holder.pk).values_list('permission_id', flat=True)]
 
 
 class Permission(models.Model):
@@ -56,7 +56,7 @@ class Role(models.Model):
         role_member, created = RoleMember.objects.get_or_create(
             role=self,
             member_type=ContentType.objects.get_for_model(member),
-            member_id=member.id)
+            member_id=member.pk)
 
     def __unicode__(self):
         return self.label

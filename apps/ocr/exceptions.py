@@ -4,7 +4,7 @@ class AlreadyQueued(Exception):
 
 class TesseractError(Exception):
     pass
-    
-    
+
+
 class PdftotextError(Exception):
     pass

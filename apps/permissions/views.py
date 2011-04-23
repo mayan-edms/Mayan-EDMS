@@ -10,12 +10,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 
-from models import Role, Permission, PermissionHolder, RoleMember
-from forms import RoleForm, RoleForm_view, ChoiceForm
+from permissions.models import Role, Permission, PermissionHolder, RoleMember
+from permissions.forms import RoleForm, RoleForm_view, ChoiceForm
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_PERMISSION_GRANT, \
     PERMISSION_PERMISSION_REVOKE
-from api import check_permissions
+from permissions.api import check_permissions
 
 
 def role_list(request):

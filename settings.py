@@ -23,7 +23,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': os.path.join(PROJECT_ROOT, '%s.sqlite' % PROJECT_NAME),     # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -250,7 +250,7 @@ BROKER_PORT = 5672
 BROKER_USER = "guest"
 BROKER_PASSWORD = "guest"
 BROKER_VHOST = "/"
-CELERYBEAT_SCHEDULER='djcelery.schedulers.DatabaseScheduler'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 #======== End of user configuration options =======
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
@@ -263,7 +263,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_EXEMPT_URLS = (
     r'^favicon\.ico$',
     r'^about\.html$',
-    r'^legal/', # allow the entire /legal/* subsection
+    r'^legal/',  # allow the entire /legal/* subsection
     r'^%s-site_media/' % PROJECT_NAME,
 
     r'^accounts/register/$',
@@ -305,7 +305,7 @@ if DEVELOPMENT:
 
     try:
         import django_extensions
-        INSTALLED_APPS +=('django_extensions',)
+        INSTALLED_APPS += ('django_extensions',)
     except ImportError:
         #print 'django_extensions is not installed'
         pass
@@ -322,6 +322,6 @@ if DEVELOPMENT:
     WSGI_AUTO_RELOAD = True
     if 'debug_toolbar' in INSTALLED_APPS:
         MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-        DEBUG_TOOLBAR_CONFIG={
-            'INTERCEPT_REDIRECTS' : False,
+        DEBUG_TOOLBAR_CONFIG = {
+            'INTERCEPT_REDIRECTS': False,
         }

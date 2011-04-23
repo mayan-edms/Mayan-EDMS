@@ -10,8 +10,8 @@ from permissions.api import register_permissions
 from documents.models import Document
 
 from ocr.conf.settings import AUTOMATIC_OCR
-from models import DocumentQueue, QueueDocument
-from literals import QUEUEDOCUMENT_STATE_PROCESSING, \
+from ocr.models import DocumentQueue, QueueDocument
+from ocr.literals import QUEUEDOCUMENT_STATE_PROCESSING, \
     QUEUEDOCUMENT_STATE_PENDING, DOCUMENTQUEUE_STATE_STOPPED, \
     DOCUMENTQUEUE_STATE_ACTIVE
 

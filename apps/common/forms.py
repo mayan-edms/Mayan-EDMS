@@ -86,7 +86,7 @@ class DetailForm(forms.ModelForm):
                     queryset=getattr(field, 'queryset', None),
                 )
                 self.fields[field_name].help_text = ''
-        
+
         for field_name, field in self.fields.items():
             self.fields[field_name].widget.attrs.update({'readonly': 'readonly'})
 

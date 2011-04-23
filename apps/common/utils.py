@@ -1,4 +1,4 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 import os
 import re
 import types
@@ -9,7 +9,7 @@ from django.utils.datastructures import MultiValueDict
 from django.conf import settings
 
 
-def urlquote(link=None, get={}):
+def urlquote(link=None, get=None):
     u'''
     This method does both: urlquote() and urlencode()
 
@@ -26,6 +26,9 @@ def urlquote(link=None, get={}):
       urlquote('/mypath/', {'key': ['value1', 'value2']}) --> '/mypath/?key=value1&key=value2'
       urlquote({'key': ['value1', 'value2']})             --> 'key=value1&key=value2'
     '''
+    if get is None:
+        get = []
+
     assert link or get
     if isinstance(link, dict):
         # urlqoute({'key': 'value', 'key2': 'value2'}) --> key=value&key2=value2
@@ -48,7 +51,7 @@ def urlquote(link=None, get={}):
         return django_urlquote(link)
 
 
-def return_attrib(obj, attrib, arguments={}):
+def return_attrib(obj, attrib, arguments=None):
     try:
         if isinstance(attrib, types.FunctionType):
             return attrib(obj)

@@ -4,12 +4,10 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
 
-
 from permissions.api import check_permissions
 
-
 from filesystem_serving import FILESYSTEM_SERVING_RECREATE_LINKS
-from api import do_recreate_all_links
+from filesystem_serving.api import do_recreate_all_links
 
 
 def recreate_all_links(request):

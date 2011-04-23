@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import Folder, FolderDocument
+from folders.models import Folder, FolderDocument
 
 
 class FolderDocumentInline(admin.StackedInline):
@@ -8,10 +8,10 @@ class FolderDocumentInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-        
-        
+
+
 class FolderAdmin(admin.ModelAdmin):
     inlines = [FolderDocumentInline]
 
-   
+
 admin.site.register(Folder, FolderAdmin)

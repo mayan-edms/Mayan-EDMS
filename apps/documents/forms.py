@@ -8,12 +8,12 @@ from django.utils.safestring import mark_safe
 from django.forms.formsets import formset_factory
 from django.template.defaultfilters import capfirst
 
-from staging import StagingFile
+from documents.staging import StagingFile
 
 from common.wizard import BoundFormWizard
 from common.forms import DetailForm
 
-from models import Document, DocumentType, DocumentTypeMetadataType, \
+from documents.models import Document, DocumentType, DocumentTypeMetadataType, \
     DocumentPage, DocumentPageTransformation
 
 from documents.conf.settings import AVAILABLE_FUNCTIONS
@@ -62,7 +62,9 @@ class DocumentPageForm(DetailForm):
             'rotation': rotation
         })
 
-    page_image = forms.CharField(label=_(u'Page image'), widget=DocumentPageImageWidget())
+    page_image = forms.CharField(
+        label=_(u'Page image'), widget=DocumentPageImageWidget()
+    )
 
 
 class DocumentPageForm_text(DetailForm):
@@ -72,9 +74,11 @@ class DocumentPageForm_text(DetailForm):
 
     content = forms.CharField(
         label=_(u'Contents'),
-        widget=forms.widgets.Textarea(attrs={'rows': 18, 'cols': 80, 'readonly': 'readonly'}))
-        
-        
+        widget=forms.widgets.Textarea(attrs={
+            'rows': 18, 'cols': 80, 'readonly': 'readonly'
+        }))
+
+
 class DocumentPageForm_edit(forms.ModelForm):
     class Meta:
         model = DocumentPage
@@ -88,7 +92,9 @@ class DocumentPageForm_edit(forms.ModelForm):
             'page_label',
             'content',
         ]
-    page_image = forms.CharField(required=False, widget=DocumentPageImageWidget())
+    page_image = forms.CharField(
+        required=False, widget=DocumentPageImageWidget()
+    )
 
 
 class ImageWidget(forms.widgets.Widget):
@@ -145,7 +151,9 @@ class DocumentForm(forms.ModelForm):
         model = Document
         exclude = ('description',)
 
-    new_filename = forms.CharField(label=_('New document filename'), required=False)
+    new_filename = forms.CharField(
+        label=_('New document filename'), required=False
+    )
 
 
 class DocumentPreviewForm(forms.Form):
@@ -173,7 +181,9 @@ class DocumentContentForm(forms.Form):
 
     contents = forms.CharField(
         label=_(u'Contents'),
-        widget=forms.widgets.Textarea(attrs={'rows': 14, 'cols': 80, 'readonly': 'readonly'})
+        widget=forms.widgets.Textarea(attrs={
+            'rows': 14, 'cols': 80, 'readonly': 'readonly'
+        })
     )
 
 
@@ -193,7 +203,9 @@ class StagingDocumentForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(StagingDocumentForm, self).__init__(*args, **kwargs)
         try:
-            self.fields['staging_file_id'].choices = [(staging_file.id, staging_file) for staging_file in StagingFile.get_all()]
+            self.fields['staging_file_id'].choices = [
+                (staging_file.id, staging_file) for staging_file in StagingFile.get_all()
+            ]
         except:
             pass
 
@@ -207,7 +219,9 @@ class StagingDocumentForm(forms.Form):
                         label=_(u'Quick document rename'))
 
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
-    new_filename = forms.CharField(label=_('New document filename'), required=False)
+    new_filename = forms.CharField(
+        label=_('New document filename'), required=False
+    )
 
 
 class DocumentTypeSelectForm(forms.Form):
@@ -286,7 +300,9 @@ class DocumentCreateWizard(BoundFormWizard):
 
     def render_template(self, request, form, previous_fields, step, context=None):
         context = {'step_title': self.extra_context['step_titles'][step]}
-        return super(DocumentCreateWizard, self).render_template(request, form, previous_fields, step, context)
+        return super(DocumentCreateWizard, self).render_template(
+            request, form, previous_fields, step, context
+        )
 
     def parse_params(self, request, *args, **kwargs):
         self.extra_context = {'step_titles': self.step_titles}
@@ -331,7 +347,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
                     'action': reverse('metadatagroup_view', args=[value['current_document'].pk, value['group'].pk])
                 })
             output.append(u'</div>')
-        
+
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
             output.append(
@@ -363,7 +379,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
              ugettext(u'Click on the image for full size view of the first page.'))
 
         return mark_safe(u''.join(output))
-        
+
 
 class MetaDataGroupForm(forms.Form):
     def __init__(self, *args, **kwargs):

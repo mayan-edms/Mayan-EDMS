@@ -1,11 +1,11 @@
-from re import compile
+import re
 
 from django.http import HttpResponseRedirect
 from django.conf import settings
 
-EXEMPT_URLS = [compile(settings.LOGIN_URL.lstrip('/'))]
+EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
 if hasattr(settings, 'LOGIN_EXEMPT_URLS'):
-    EXEMPT_URLS += [compile(expr) for expr in settings.LOGIN_EXEMPT_URLS]
+    EXEMPT_URLS += [re.compile(expr) for expr in settings.LOGIN_EXEMPT_URLS]
 
 
 class LoginRequiredMiddleware:

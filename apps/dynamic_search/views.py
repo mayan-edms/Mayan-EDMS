@@ -4,9 +4,9 @@ from django.utils.translation import ugettext as _
 from django.contrib import messages
 from django.conf import settings
 
-from api import perform_search
-from forms import SearchForm
-from conf.settings import SHOW_OBJECT_TYPE
+from dynamic_search.api import perform_search
+from dynamic_search.forms import SearchForm
+from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
 
 
 def results(request, form=None):

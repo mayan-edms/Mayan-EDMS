@@ -19,17 +19,17 @@ def default_checksum(x):
 def default_uuid():
     """unicode(uuid.uuid4())"""
     return unicode(uuid.uuid4())
-    
+
 default_available_functions = {
-    'current_date':datetime.datetime.now().date,
+    'current_date': datetime.datetime.now().date,
 }
 
 default_available_models = {
-    'User':User
+    'User': User
 }
 
 available_transformations = {
-    'rotate': {'label':_(u'Rotate [degrees]'), 'arguments':[{'name':'degrees'}]}
+    'rotate': {'label': _(u'Rotate [degrees]'), 'arguments': [{'name': 'degrees'}]}
 }
 
 available_indexing_functions = {

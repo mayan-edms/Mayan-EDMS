@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import DocumentQueue, QueueDocument
+from ocr.models import DocumentQueue, QueueDocument
 
 
 class QueueDocumentInline(admin.StackedInline):

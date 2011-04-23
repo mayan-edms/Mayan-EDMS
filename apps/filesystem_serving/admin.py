@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from models import DocumentMetadataIndex
+from filesystem_serving.models import DocumentMetadataIndex
+
 
 class DocumentMetadataIndexInline(admin.StackedInline):
     model = DocumentMetadataIndex

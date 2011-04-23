@@ -1,19 +1,18 @@
 from django.utils.translation import ugettext as _
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_detail, object_list
+from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object, delete_object, update_object
 from django.core.exceptions import PermissionDenied
 
 from documents import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from permissions.api import check_permissions
 
-from models import Folder, FolderDocument
-from forms import FolderForm, AddDocumentForm
+from folders.models import Folder, FolderDocument
+from folders.forms import FolderForm, AddDocumentForm
 
 
 def folder_list(request):
@@ -44,7 +43,7 @@ def folder_create(request):
                 messages.error(request, _(u'A folder named: %s, already exists.') % form.cleaned_data['title'])
     else:
         form = FolderForm()
-    
+
     return render_to_response('generic_form.html', {
         'title': _(u'create folder'),
         'form': form,
@@ -61,7 +60,7 @@ def folder_edit(request, folder_id):
     if request.method == 'POST':
         form = FolderForm(request.POST)
         if form.is_valid():
-            folder.title=form.cleaned_data['title']
+            folder.title = form.cleaned_data['title']
             try:
                 folder.save()
                 messages.success(request, _(u'Folder edited successfully'))
@@ -70,7 +69,7 @@ def folder_edit(request, folder_id):
                 messages.error(request, _(u'Error editing folder; %s') % e)
     else:
         form = FolderForm(instance=folder)
-    
+
     return render_to_response('generic_form.html', {
         'title': _(u'edit folder: %s') % folder,
         'form': form,
@@ -115,10 +114,10 @@ def folder_delete(request, folder_id):
 
 def folder_view(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
-    
+
     if not request.user.is_staff and not request.user.is_superuser and not request.user == folder.user:
         raise PermissionDenied
-    
+
     return render_to_response('generic_list.html', {
         'object_list': folder.folderdocument_set.all(),
         'extra_columns': [
@@ -137,8 +136,8 @@ def folder_view(request, folder_id):
         'object': folder,
         'object_name': _(u'folder'),
     }, context_instance=RequestContext(request))
-    
-    
+
+
 def folder_add_document(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
@@ -173,7 +172,7 @@ def folder_add_document(request, document_id):
 
 def folder_document_remove(request, folder_document_id=None, folder_document_id_list=None):
     post_action_redirect = None
-    
+
     if folder_document_id:
         folder_documents = [get_object_or_404(FolderDocument, pk=folder_document_id)]
     elif folder_document_id_list:

@@ -15,7 +15,7 @@ from documents.models import DocumentPage
 from ocr.conf.settings import TESSERACT_PATH
 from ocr.conf.settings import TESSERACT_LANGUAGE
 from ocr.conf.settings import PDFTOTEXT_PATH
-from exceptions import TesseractError, PdftotextError
+from ocr.exceptions import TesseractError, PdftotextError
 
 
 def get_language_backend():
@@ -59,7 +59,7 @@ def run_pdftotext(input_filename, output_filename, page_number=None):
     if return_code != 0:
         error_text = proc.stderr.read()
         raise PdftotextError(error_text)
-  
+
 
 def do_document_ocr(document):
     for page_index, document_page in enumerate(document.documentpage_set.all()):

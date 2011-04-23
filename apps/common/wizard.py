@@ -14,7 +14,7 @@ from django.utils.hashcompat import md5_constructor
 __all__ = ('security_hash', 'BoundFormWizard')
 
 
-def security_hash(request, form, exclude=None, *args):
+def security_hash_new(form, exclude=None, *args):
     """Calculates a security hash for the given Form/FormSet instance.
 
     This creates a list of the form field names/values in a deterministic
@@ -60,7 +60,7 @@ class BoundFormWizard(FormWizard):
         Subclasses may want to take into account request-specific information,
         such as the IP address.
         """
-        return security_hash(request, form)
+        return security_hash_new(form)
 
     def render(self, form, request, step, context=None):
         "Renders the given Form object, returning an HttpResponse."

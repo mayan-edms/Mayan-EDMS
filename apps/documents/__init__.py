@@ -10,9 +10,9 @@ from common.conf import settings as common_settings
 from main.api import register_diagnostic
 from permissions.api import register_permissions
 
-from models import Document, DocumentPage, DocumentPageTransformation
-from staging import StagingFile
-from conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
+from documents.models import Document, DocumentPage, DocumentPageTransformation
+from documents.staging import StagingFile
+from documents.conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
 
 PERMISSION_DOCUMENT_CREATE = 'document_create'
 PERMISSION_DOCUMENT_PROPERTIES_EDIT = 'document_properties_edit'
