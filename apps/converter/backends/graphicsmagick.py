@@ -6,7 +6,7 @@ from converter.api import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 
 CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
-
+CONVERTER_ERROR_STARTS_WITH = u'starts with'
 
 def execute_identify(input_filepath, arguments=u''):
     command = []
@@ -36,7 +36,7 @@ def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, ar
     if return_code != 0:
         #Got an error from convert program
         error_line = proc.stderr.readline()
-        if CONVERTER_ERROR_STRING_NO_DECODER in error_line:
+        if (CONVERTER_ERROR_STRING_NO_DECODER in error_line) or (CONVERTER_ERROR_STARTS_WITH in error_line):
             #Try to determine from error message which class of error is it
             raise UnknownFormat
         else:
