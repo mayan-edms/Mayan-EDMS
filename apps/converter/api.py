@@ -3,7 +3,6 @@ import subprocess
 
 from django.utils.importlib import import_module
 from django.template.defaultfilters import slugify
-from django.core.exceptions import ObjectDoesNotExist
 
 from converter.conf.settings import UNPAPER_PATH
 from converter.conf.settings import OCR_OPTIONS
@@ -16,7 +15,6 @@ from converter.conf.settings import UNOCONV_PATH
 from converter.exceptions import UnpaperError, OfficeConversionError
 
 from common import TEMPORARY_DIRECTORY
-from converter import TRANFORMATION_CHOICES
 from documents.utils import document_save_to_temp_dir
 
 QUALITY_DEFAULT = u'quality_default'
@@ -171,21 +169,12 @@ def convert_document_for_ocr(document, page=0, file_format=u'tif'):
 
     input_arg = u'%s[%s]' % (input_filepath, page)
 
-    transformation_list = []
     try:
-        #Catch invalid or non existing pages
-        document_page = document.documentpage_set.get(document=document, page_number=page + 1)
-        for page_transformation in document_page.documentpagetransformation_set.all():
-            if page_transformation.transformation in TRANFORMATION_CHOICES:
-                output = TRANFORMATION_CHOICES[page_transformation.transformation] % eval(page_transformation.arguments)
-                transformation_list.append(output)
-    except ObjectDoesNotExist:
-        pass
+        document_page = document.documentpage_set.get(page_number=page + 1)
+        transformation_string, warnings = document_page.get_transformation_string()
 
-    tranformation_string = ' '.join(transformation_list)
-    try:
         #Apply default transformations
-        backend.execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=tranformation_string, output_filepath=transformation_output_file)
+        backend.execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
         #Do OCR operations
         backend.execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper
