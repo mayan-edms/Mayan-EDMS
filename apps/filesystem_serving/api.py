@@ -15,7 +15,9 @@ from filesystem_serving.models import DocumentMetadataIndex, Document
 
 if SLUGIFY_PATHS == False:
     #Do not slugify path or filenames and extensions
-    slugify = lambda x: x
+    SLUGIFY_FUNCTION = lambda x: x
+else:
+    SLUGIFY_FUNCTION = slugify
 
 
 def document_create_fs_links(document):
@@ -24,7 +26,7 @@ def document_create_fs_links(document):
         if not document.exists():
             raise Exception(_(u'Not creating metadata indexing, document not found in document storage'))
         metadata_dict = {'document': document}
-        metadata_dict.update(dict([(metadata.metadata_type.name, slugify(metadata.value)) for metadata in document.documentmetadata_set.all()]))
+        metadata_dict.update(dict([(metadata.metadata_type.name, SLUGIFY_FUNCTION(metadata.value)) for metadata in document.documentmetadata_set.all()]))
 
         for metadata_index in document.document_type.metadataindex_set.all():
             if metadata_index.enabled:
@@ -39,7 +41,7 @@ def document_create_fs_links(document):
                         else:
                             raise OSError(_(u'Unable to create metadata indexing directory: %s') % exc)
 
-                    next_available_filename(document, metadata_index, target_directory, slugify(document.file_filename), slugify(document.file_extension))
+                    next_available_filename(document, metadata_index, target_directory, SLUGIFY_FUNCTION(document.file_filename), SLUGIFY_FUNCTION(document.file_extension))
                 except NameError, exc:
                     warnings.append(_(u'Error in metadata indexing expression: %s') % exc)
                     #raise NameError()
