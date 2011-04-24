@@ -8,6 +8,7 @@ UNPAPER_PATH = getattr(settings, 'CONVERTER_UNPAPER_PATH', u'/usr/bin/unpaper')
 GM_PATH = getattr(settings, 'CONVERTER_GM_PATH', u'/usr/bin/gm')
 GM_SETTINGS = getattr(settings, 'CONVERTER_GM_SETTINGS', u'')
 GRAPHICS_BACKEND = getattr(settings, 'CONVERTER_GRAPHICS_BACKEND', u'converter.backends.imagemagick')
+UNOCONV_PATH = getattr(settings, 'CONVERTER_UNOCONV_PATH', u'/usr/bin/unoconv')
 
 OCR_OPTIONS = getattr(settings, 'CONVERTER_OCR_OPTIONS', u'-colorspace Gray -depth 8 -resample 200x200')
 DEFAULT_OPTIONS = getattr(settings, 'CONVERTER_DEFAULT_OPTIONS', u'')

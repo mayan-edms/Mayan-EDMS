@@ -27,3 +27,7 @@ class UnkownConvertError(ConvertError):
     identify the kind of error
     '''
     pass
+
+
+class OfficeConversionError(ConvertError):
+    pass

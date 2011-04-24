@@ -11,10 +11,10 @@ from converter.conf.settings import DEFAULT_OPTIONS
 from converter.conf.settings import LOW_QUALITY_OPTIONS
 from converter.conf.settings import HIGH_QUALITY_OPTIONS
 from converter.conf.settings import GRAPHICS_BACKEND
+from converter.conf.settings import UNOCONV_PATH
 
-from converter.exceptions import UnpaperError
+from converter.exceptions import UnpaperError, OfficeConversionError
 
-#from converter.conf.settings import UNOCONV_PATH
 from common import TEMPORARY_DIRECTORY
 from converter import TRANFORMATION_CHOICES
 from documents.utils import document_save_to_temp_dir
@@ -26,7 +26,11 @@ QUALITY_HIGH = u'quality_high'
 QUALITY_SETTINGS = {QUALITY_DEFAULT: DEFAULT_OPTIONS,
     QUALITY_LOW: LOW_QUALITY_OPTIONS, QUALITY_HIGH: HIGH_QUALITY_OPTIONS}
 
-
+CONVERTER_OFFICE_FILE_EXTENSIONS = [
+    u'ods', u'docx'
+] 
+ 
+ 
 def _lazy_load(fn):
     _cached = []
 
@@ -65,17 +69,17 @@ def execute_unpaper(input_filepath, output_filepath):
     return_code = proc.wait()
     if return_code != 0:
         raise UnpaperError(proc.stderr.readline())
-"""
-def execute_unoconv(input_filepath, output_filepath, arguments=''):
-    command = [UNOCONV_PATH]
-    command.extend(['--stdout'])
-    command.extend(shlex.split(str(arguments)))
+
+
+def execute_unoconv(input_filepath, arguments=''):
+    command = []
+    command.append(UNOCONV_PATH)
+    command.extend(unicode(arguments).split())
     command.append(input_filepath)
-    proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    with open(output_filepath, 'w') as output:
-        shutil.copyfileobj(proc.stdout, output)
-    return (proc.wait(), proc.stderr.read())
-"""
+    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE)
+    return_code = proc.wait()
+    if return_code != 0:
+        raise OfficeConversionError(proc.stderr.readline())
 
 
 def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u''):
@@ -102,43 +106,45 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         return None
 
 
+def convert_office_document(input_filepath):
+    if os.path.exists(UNOCONV_PATH):
+        execute_unoconv(input_filepath, arguments='-f pdf')
+        return input_filepath + u'.pdf'
+    return None
+
+
 def convert(document, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u'', cleanup_files=True, zoom=100, rotation=0):
-    #unoconv_output = None
+    unoconv_output = None
     output_filepath = create_image_cache_filename(document.checksum, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
         
     input_filepath = document_save_to_temp_dir(document, document.checksum)
 
-    '''
-    if extension:
-        if extension.lower() == 'ods':
-            unoconv_output = '%s_pdf' % output_filepath
-            status, error_string = execute_unoconv(input_filepath, unoconv_output, arguments='-f pdf')
-            if status:
-                errors = get_errors(error_string)
-                raise ConvertError(status, errors)
-            cleanup(input_filepath)
-            input_filepath = unoconv_output
-    '''
+    if document.file_extension.lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
+        result = convert_office_document(input_filepath)
+        if result:
+            unoconv_output = result
+            input_filepath = result
+            extra_options = u''
+        
+    input_arg = u'%s[%s]' % (input_filepath, page)
+    extra_options += u' -resize %s' % size
+    if zoom != 100:
+        extra_options += u' -resize %d%% ' % zoom
+
+    if rotation != 0 and rotation != 360:
+        extra_options += u' -rotate %d ' % rotation
+
+    if format == u'jpg':
+        extra_options += u' -quality 85'
     try:
-        input_arg = u'%s[%s]' % (input_filepath, page)
-        extra_options += u' -resize %s' % size
-        if zoom != 100:
-            extra_options += u' -resize %d%% ' % zoom
-
-        if rotation != 0 and rotation != 360:
-            extra_options += u' -rotate %d ' % rotation
-
-        if format == u'jpg':
-            extra_options += u' -quality 85'
-
         backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
-        #if unoconv_output:
-            #cleanup(unoconv_output)
+        if unoconv_output:
+            cleanup(unoconv_output)
 
     return output_filepath
 

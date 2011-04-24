@@ -83,7 +83,8 @@ def check_settings(request):
         {'name': 'CONVERTER_GRAPHICS_BACKEND',
             'value': converter_settings.GRAPHICS_BACKEND,
             'description': converter_settings.setting_description},
-
+        {'name': 'CONVERTER_UNOCONV_PATH',
+            'value': converter_settings.UNOCONV_PATH, 'exists': True},
         {'name': 'CONVERTER_OCR_OPTIONS', 'value': converter_settings.OCR_OPTIONS},
         {'name': 'CONVERTER_DEFAULT_OPTIONS', 'value': converter_settings.DEFAULT_OPTIONS},
         {'name': 'CONVERTER_LOW_QUALITY_OPTIONS', 'value': converter_settings.LOW_QUALITY_OPTIONS},
