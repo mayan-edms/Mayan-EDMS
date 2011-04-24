@@ -82,9 +82,12 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
     if request.method == 'POST':
         for queue_document in queue_documents:
             try:
-                queue_document.delete()
-                messages.success(request, _(u'Document: %(document)s deleted successfully.') % {
-                    'document': queue_document.document})
+                if queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
+                    messages.error(request, _(u'Document: %s is being processed and can\'t be deleted.') % queue_document)
+                else:
+                    queue_document.delete()
+                    messages.success(request, _(u'Queue document: %(document)s deleted successfully.') % {
+                        'document': queue_document.document})
 
             except Exception, e:
                 messages.error(request, _(u'Error deleting document: %(document)s; %(error)s') % {
@@ -99,9 +102,9 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
 
     if len(queue_documents) == 1:
         context['object'] = queue_documents[0]
-        context['title'] = _(u'Are you sure you with to delete from queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
+        context['title'] = _(u'Are you sure you wish to delete from queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
     elif len(queue_documents) > 1:
-        context['title'] = _(u'Are you sure you with to delete from queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
+        context['title'] = _(u'Are you sure you wish to delete from queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
@@ -188,9 +191,9 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
 
     if len(queue_documents) == 1:
         context['object'] = queue_documents[0]
-        context['title'] = _(u'Are you sure you with to re-queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
+        context['title'] = _(u'Are you sure you wish to re-queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
     elif len(queue_documents) > 1:
-        context['title'] = _(u'Are you sure you with to re-queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
+        context['title'] = _(u'Are you sure you wish to re-queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
