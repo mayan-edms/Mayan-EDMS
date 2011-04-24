@@ -41,7 +41,7 @@ from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf.settings import ROTATION_STEP
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
-    PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
     PERMISSION_DOCUMENT_TRANSFORM, \
@@ -618,7 +618,7 @@ def staging_file_preview(request, staging_file_id):
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
-            
+
         output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
     except UnknownFormat:
         output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_MEDIUM)

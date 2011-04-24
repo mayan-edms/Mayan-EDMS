@@ -110,9 +110,9 @@ def check_settings(request):
         'hide_object': True,
         'extra_columns': [
             {'name': _(u'name'), 'attribute': 'name'},
-            {'name': _(u'value'), 'attribute':  lambda x:  _return_type(x['value'])},
-            {'name': _(u'description'), 'attribute':  lambda x:  x.get('description', {}).get(x['name'], '')},
-            {'name': _(u'exists'), 'attribute': lambda x:  exists_with_famfam(x['value']) if 'exists' in x else ''},
+            {'name': _(u'value'), 'attribute': lambda x: _return_type(x['value'])},
+            {'name': _(u'description'), 'attribute': lambda x: x.get('description', {}).get(x['name'], '')},
+            {'name': _(u'exists'), 'attribute': lambda x: exists_with_famfam(x['value']) if 'exists' in x else ''},
         ]
     }
 

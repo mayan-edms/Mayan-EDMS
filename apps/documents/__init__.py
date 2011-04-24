@@ -1,12 +1,8 @@
-import tempfile
-
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 from navigation.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
-from common.utils import pretty_size
-from common.conf import settings as common_settings
 from main.api import register_diagnostic
 from permissions.api import register_permissions
 
@@ -36,8 +32,8 @@ register_permissions('documents', [
     {'name': PERMISSION_DOCUMENT_TOOLS, 'label': _(u'Execute document modifying tools')},
 ])
 
-document_list = {'text':  _(u'documents list'), 'view': 'document_list', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
-document_list_recent = {'text':  _(u'recent documents list'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_list = {'text': _(u'documents list'), 'view': 'document_list', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_list_recent = {'text': _(u'recent documents list'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_create = {'text': _('upload a new document'), 'view': 'document_create', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
 document_create_multiple = {'text': _('upload multiple new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
 document_create_sibling = {'text': _('upload new document using same metadata'), 'view': 'document_create_sibling', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}

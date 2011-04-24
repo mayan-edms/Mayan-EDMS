@@ -18,7 +18,7 @@ class MetadataIndexInline(admin.StackedInline):
     classes = ('collapse-open',)
     allow_add = True
 
-    
+
 class DocumentTypeMetadataTypeInline(admin.StackedInline):
     model = DocumentTypeMetadataType
     extra = 1
@@ -35,7 +35,7 @@ class DocumentTypeFilenameInline(admin.StackedInline):
 
 class DocumentTypeAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentTypeFilenameInline, DocumentTypeMetadataTypeInline, 
+        DocumentTypeFilenameInline, DocumentTypeMetadataTypeInline,
         MetadataIndexInline
     ]
 
@@ -49,7 +49,7 @@ class DocumentMetadataInline(admin.StackedInline):
 
 class DocumentPageTransformationAdmin(admin.ModelAdmin):
     model = DocumentPageTransformation
-    
+
 
 class DocumentPageInline(admin.StackedInline):
     model = DocumentPage
@@ -71,25 +71,25 @@ class MetadataGroupItemInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-    
-    
+
+
 class MetadataGroupAdmin(admin.ModelAdmin):
     inlines = [MetadataGroupItemInline]
     filter_horizontal = ['document_type']
 
-    
+
 class RecentDocumentAdmin(admin.ModelAdmin):
     model = RecentDocument
     list_display = ('user', 'document', 'datetime_accessed')
     readonly_fields = ('user', 'document', 'datetime_accessed')
     list_filter = ('user',)
     date_hierarchy = 'datetime_accessed'
-        
-   
+
+
 admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(MetadataGroup, MetadataGroupAdmin)
-admin.site.register(DocumentPageTransformation, 
+admin.site.register(DocumentPageTransformation,
     DocumentPageTransformationAdmin)
 admin.site.register(RecentDocument, RecentDocumentAdmin)

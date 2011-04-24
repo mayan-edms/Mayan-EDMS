@@ -1,13 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_menu, \
-    register_model_list_columns, register_multi_item_links
-from permissions.api import register_permissions
+    register_multi_item_links
 from navigation.api import register_sidebar_template
 
 from folders.models import Folder
 
-folder_list = {'text':  _(u'folder list'), 'view': 'folder_list', 'famfam': 'folder'}
+folder_list = {'text': _(u'folder list'), 'view': 'folder_list', 'famfam': 'folder'}
 folder_create = {'text': _('create folder'), 'view': 'folder_create', 'famfam': 'folder_add'}
 folder_edit = {'text': _('edit'), 'view': 'folder_edit', 'args': 'object.id', 'famfam': 'folder_edit'}
 folder_delete = {'text': _('delete'), 'view': 'folder_delete', 'args': 'object.id', 'famfam': 'folder_delete'}

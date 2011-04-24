@@ -28,9 +28,9 @@ QUALITY_SETTINGS = {QUALITY_DEFAULT: DEFAULT_OPTIONS,
 
 CONVERTER_OFFICE_FILE_EXTENSIONS = [
     u'ods', u'docx'
-] 
- 
- 
+]
+
+
 def _lazy_load(fn):
     _cached = []
 
@@ -118,7 +118,7 @@ def convert(document, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg',
     output_filepath = create_image_cache_filename(document.checksum, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
-        
+
     input_filepath = document_save_to_temp_dir(document, document.checksum)
 
     if document.file_extension.lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
@@ -127,7 +127,7 @@ def convert(document, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg',
             unoconv_output = result
             input_filepath = result
             extra_options = u''
-        
+
     input_arg = u'%s[%s]' % (input_filepath, page)
     extra_options += u' -resize %s' % size
     if zoom != 100:
@@ -152,7 +152,7 @@ def convert(document, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg',
 def get_page_count(input_filepath):
     try:
         return len(backend.execute_identify(unicode(input_filepath)).splitlines())
-    except Exception, e:
+    except:
         #TODO: send to other page number identifying program
         return 1
 

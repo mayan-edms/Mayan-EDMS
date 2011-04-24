@@ -100,8 +100,6 @@ class DocumentPageForm_edit(forms.ModelForm):
 class ImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
-        page_count = value.documentpage_set.count()
-
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
         for page in value.documentpage_set.all():

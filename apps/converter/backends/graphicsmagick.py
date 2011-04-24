@@ -8,6 +8,7 @@ from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
 CONVERTER_ERROR_STARTS_WITH = u'starts with'
 
+
 def execute_identify(input_filepath, arguments=u''):
     command = []
     command.append(unicode(GM_PATH))
