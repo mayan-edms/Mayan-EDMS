@@ -11,6 +11,7 @@ from python_magic import magic
 
 from dynamic_search.api import register
 from converter.api import get_page_count
+from converter import TRANFORMATION_CHOICES
 
 from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 from documents.conf.settings import AVAILABLE_FUNCTIONS
@@ -275,6 +276,22 @@ class DocumentPage(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('document_page_view', [self.pk])
+
+    def get_transformation_string(self):
+        transformation_list = []
+        warnings = []
+        for page_transformation in self.documentpagetransformation_set.all():
+            try:
+                if page_transformation.transformation in TRANFORMATION_CHOICES:
+                    transformation_list.append(
+                        TRANFORMATION_CHOICES[page_transformation.transformation] % eval(
+                            page_transformation.arguments
+                        )
+                    )
+            except Exception, e:
+                warnings.append(e)
+
+        return ' '.join(transformation_list), warnings  
 
 
 class MetadataGroupManager(models.Manager):

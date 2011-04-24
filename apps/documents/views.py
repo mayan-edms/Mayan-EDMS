@@ -13,14 +13,12 @@ from django.core.urlresolvers import reverse
 from django.views.generic.create_update import delete_object, update_object
 from django.conf import settings
 from django.utils.http import urlencode
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 import sendfile
 from common.utils import pretty_size
 from converter.api import convert, QUALITY_DEFAULT
 from converter.exceptions import UnkownConvertError, UnknownFormat
-from converter import TRANFORMATION_CHOICES
 from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
@@ -531,39 +529,25 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     document = get_object_or_404(Document, pk=document_id)
 
     page = int(request.GET.get('page', 1))
-    transformation_list = []
+
     try:
-        #Catch invalid or non existing pages
         document_page = DocumentPage.objects.get(document=document, page_number=page)
-        for page_transformation in document_page.documentpagetransformation_set.all():
-            try:
-                if page_transformation.transformation in TRANFORMATION_CHOICES:
-                    output = TRANFORMATION_CHOICES[page_transformation.transformation] % eval(page_transformation.arguments)
-                    transformation_list.append(output)
-            except Exception, e:
-                if request.user.is_staff:
-                    messages.warning(request, _(u'Error for transformation %(transformation)s:, %(error)s') %
-                        {'transformation': page_transformation.get_transformation_display(),
-                        'error': e})
-                else:
-                    pass
-    except ObjectDoesNotExist:
-        pass
+        transformation_string, warnings = document_page.get_transformation_string()
+        if warnings and (request.user.is_staff or request.user.is_superuser):
+            for warning in warnings:
+                messages.warning(request, _(u'Page transformation error: %s') % warning)
 
-    tranformation_string = ' '.join(transformation_list)
+        zoom = int(request.GET.get('zoom', 100))
 
-    zoom = int(request.GET.get('zoom', 100))
+        if zoom < ZOOM_MIN_LEVEL:
+            zoom = ZOOM_MIN_LEVEL
 
-    if zoom < ZOOM_MIN_LEVEL:
-        zoom = ZOOM_MIN_LEVEL
+        if zoom > ZOOM_MAX_LEVEL:
+            zoom = ZOOM_MAX_LEVEL
 
-    if zoom > ZOOM_MAX_LEVEL:
-        zoom = ZOOM_MAX_LEVEL
+        rotation = int(request.GET.get('rotation', 0)) % 360
 
-    rotation = int(request.GET.get('rotation', 0)) % 360
-
-    try:
-        output_file = convert(document, size=size, file_format=u'jpg', quality=quality, extra_options=tranformation_string, page=page - 1, zoom=zoom, rotation=rotation)
+        output_file = convert(document, size=size, file_format=u'jpg', quality=quality, extra_options=transformation_string, page=page - 1, zoom=zoom, rotation=rotation)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
