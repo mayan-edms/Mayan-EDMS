@@ -403,8 +403,8 @@ class DocumentPageTransformation(models.Model):
 
 class RecentDocumentManager(models.Manager):
     def add_document_for_user(self, user, document):
-        new_recent, _ = RecentDocument.objects.get_or_create(user=user, document=document, defaults={'datetime_accessed': datetime.now()})
-        new_recent.datetime_accessed = datetime.now()
+        RecentDocument.objects.filter(user=user, document=document).delete()
+        new_recent = RecentDocument(user=user, document=document, datetime_accessed=datetime.now())
         new_recent.save()
         to_delete = RecentDocument.objects.filter(user=user)[RECENT_COUNT:]
         for recent_to_delete in to_delete:
