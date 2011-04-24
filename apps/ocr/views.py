@@ -153,21 +153,13 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
-    for queue_document in queue_documents:
-        try:
-            queue_document.document
-        except Document.DoesNotExist:
-            messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
-            return HttpResponseRedirect(previous)
-
-        if queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
-            messages.warning(request, _(u'Document: %s is already being processed and can\'t be re-queded.') % queue_document)
-            return HttpResponseRedirect(previous)
-
     if request.method == 'POST':
         for queue_document in queue_documents:
             try:
-                if queue_document.state != QUEUEDOCUMENT_STATE_PROCESSING:
+                queue_document.document
+                if queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
+                    messages.warning(request, _(u'Document: %s is already being processed and can\'t be re-queded.') % queue_document)
+                else:
                     queue_document.datetime_submitted = datetime.datetime.now()
                     queue_document.state = QUEUEDOCUMENT_STATE_PENDING
                     queue_document.delay = False
@@ -176,10 +168,8 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
                     queue_document.save()
                     messages.success(request, _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
                         'document': queue_document.document, 'queue': queue_document.document_queue.label})
-                else:
-                    messages.success(request, _(u'Document: %(document)s can\'t be re-queued.') % {
-                        'document': queue_document.document})
-
+            except Document.DoesNotExist:
+                messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
             except Exception, e:
                 messages.error(request, e)
         return HttpResponseRedirect(next)
