@@ -162,7 +162,7 @@ def convert_document_for_ocr(document, page=0, file_format=u'tif'):
     #Convert for OCR
     temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
     temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, format)
+    transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, file_format)
     unpaper_input_file = u'%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
     unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
     convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
