@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+    # Uncomment if libapache2-mod-xsendfile is installed
+    # XSendFile On
+    # XSendFileAllowAbove On
+
+    WSGIScriptAlias / /usr/share/mayan/mayan/wsgi/dispatch.wsgi
+    
+    <Directory /usr/share/mayan/mayan>
+        Order deny,allow
+        Allow from all
+    </Directory>
+    ErrorLog /var/log/apache2/mayan_error.log
+    LogLevel warn
+    CustomLog /var/log/apache2/mayan_access.log combined
+
+    Alias /mayan-site_media "/usr/share/mayan/mayan/site_media/"
+    <Location "/site_media">
+        SetHandler None
+    </Location>
+</VirtualHost>
