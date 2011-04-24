@@ -55,6 +55,7 @@ TODO, WISHLIST
 * External portal using sites contrib app
 * Scanned document embedded barcode reading
 * Encode metadata in barcode or qrcode on hardcopy 
+* Support custom applets (coordinates)
 
 Main
 ====
@@ -116,14 +117,14 @@ Documents
   per type, per metadata)                                              - DONE
 * Improve doc page template/view                                       - DONE
 * Document page edit view                                              - DONE
-* Show all document's pages content combined
+* Show all document's pages content combined                           - DONE
 * Create 'simple view' document view for non technical users           - DONE
 * Unify document form classes
 * Use document preview code for staging file also                      - DONE
 * Delete physical file on delete method                                - DEFFERED (Not needed until Django 1.3)
 * Download individual document pages
 * Document printing support
-* Document group actions
+* Document group actions                                               - DONE
     
 Filesystem serving
 ==================
@@ -147,7 +148,7 @@ Convert
 * Add timeout support convert tasks
 * DXF viewer - http://code.google.com/p/dxf-reader/source/browse/#svn%2Ftrunk
 * Support spreadsheets, wordprocessing docs using openoffice in server
-  mode
+  mode                                                                 - DONE   
 * Cache.cleanup function to delete cached images when document hash
   changes
 * Support ExactImage
