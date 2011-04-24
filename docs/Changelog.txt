@@ -1,3 +1,35 @@
+2011-Apr-23
+* PEP8, pylint cleanups and removal of relative imports
+* Removed the obsolote DOCUMENTS_GROUP_MAX_RESULTS setting option
+* Improved visual appearance of messages by displaying them outside the
+  main form
+* Added link to close all notifications with one click
+* Made the queue processing interval configurable by means of a new
+  setting: OCR_QUEUE_PROCESSING_INTERVAL
+* Added detection and reset of orphaned ocr documents being left as
+  'processing' when celery dies
+* Improved unkwnown format detection in the graphicsmagick backend
+* Improved document convertion API
+* Added initial support for converting office documents (only ods and
+  docx tested)
+* Added sample configuration files for supervisor and apache under
+  contrib/
+* Avoid duplicates in recent document list
+
+2011-Apr-22
+* Added the configuration option CONVERTER_GM_SETTINGS to pass
+  GraphicsMagicks specific commands the the GM backend
+* Lower image convertion quality if the format is jpg
+* Inverted the rotation button, more intuitive this way
+* Merged and reduced the document page zoom and rotation views
+* Increased permissions app permission's label field size
+        ** DB Update required
+* Added support for metadata group actions
+* Reduced the document pages widget size
+* Display the metadata group numeric total in the metadata group form
+  title
+* Reorganized page detail icons
+
 2011-Apr-21
 * Added first & last page navigation links to document page view
 * Added interactive zoom support to document page detail view
