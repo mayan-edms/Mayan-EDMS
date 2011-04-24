@@ -39,11 +39,11 @@ def task_process_queue_document(queue_document_id):
 
 
 def reset_orphans():
-    i = inspect()
+    i = inspect().active()
     active_tasks = []
 
     if i:
-        for host, instances in i.active().items():
+        for host, instances in i.items():
             for instance in instances:
                 active_tasks.append(instance['id'])
 
