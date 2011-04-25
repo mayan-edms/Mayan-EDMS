@@ -56,6 +56,9 @@ TODO, WISHLIST
 * Scanned document embedded barcode reading
 * Encode metadata in barcode or qrcode on hardcopy 
 * Support custom applets (coordinates)
+    http://facstaff.unca.edu/mcmcclur/GoogleMaps/Projections/Lambert.html
+    http://code.google.com/p/django-gmapi/
+    http://pypi.python.org/pypi/django-easy-maps
 
 Main
 ====
