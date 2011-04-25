@@ -111,20 +111,23 @@ def convert_office_document(input_filepath):
     return None
 
 
-def convert(document, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u'', cleanup_files=True, zoom=100, rotation=0):
+def convert_document(document, *args, **kwargs):
+    input_filepath = document_save_to_temp_dir(document, document.checksum)
+    return convert(input_filepath, *args, **kwargs)
+    
+
+def convert(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u'', cleanup_files=True, zoom=100, rotation=0):
     unoconv_output = None
-    output_filepath = create_image_cache_filename(document.checksum, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
+    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
     if os.path.exists(output_filepath):
         return output_filepath
 
-    input_filepath = document_save_to_temp_dir(document, document.checksum)
-
-    if document.file_extension.lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
-        result = convert_office_document(input_filepath)
-        if result:
-            unoconv_output = result
-            input_filepath = result
-            extra_options = u''
+    #if document.file_extension.lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
+    #    result = convert_office_document(input_filepath)
+    #    if result:
+    #        unoconv_output = result
+    #        input_filepath = result
+    #        extra_options = u''
 
     input_arg = u'%s[%s]' % (input_filepath, page)
     extra_options += u' -resize %s' % size
