@@ -252,6 +252,8 @@ BROKER_PASSWORD = "guest"
 BROKER_VHOST = "/"
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 #======== End of user configuration options =======
+#--------- Celery ------------------
+CELERY_DISABLE_RATE_LIMITS = True
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 #--------- Grappelli ----------------
