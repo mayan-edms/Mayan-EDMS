@@ -17,7 +17,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 import sendfile
 from common.utils import pretty_size
-from converter.api import convert, QUALITY_DEFAULT
+from converter.api import convert_document, QUALITY_DEFAULT
 from converter.exceptions import UnkownConvertError, UnknownFormat
 from filetransfers.api import serve_file
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
@@ -547,7 +547,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
 
         rotation = int(request.GET.get('rotation', 0)) % 360
 
-        output_file = convert(document, size=size, file_format=u'jpg', quality=quality, extra_options=transformation_string, page=page - 1, zoom=zoom, rotation=rotation)
+        output_file = convert_document(document, size=size, file_format=u'jpg', quality=quality, extra_options=transformation_string, page=page - 1, zoom=zoom, rotation=rotation)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)

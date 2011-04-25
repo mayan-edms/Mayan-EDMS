@@ -122,12 +122,13 @@ def convert(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u
     if os.path.exists(output_filepath):
         return output_filepath
 
-    #if document.file_extension.lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
-    #    result = convert_office_document(input_filepath)
-    #    if result:
-    #        unoconv_output = result
-    #        input_filepath = result
-    #        extra_options = u''
+    path, extension = os.path.splitext(input_filepath)
+    if extension[1:].lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
+        result = convert_office_document(input_filepath)
+        if result:
+            unoconv_output = result
+            input_filepath = result
+            extra_options = u''
 
     input_arg = u'%s[%s]' % (input_filepath, page)
     extra_options += u' -resize %s' % size
