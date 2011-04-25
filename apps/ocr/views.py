@@ -1,4 +1,5 @@
 import datetime
+import socket
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -8,6 +9,7 @@ from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 
+from celery.task.control import inspect
 from permissions.api import check_permissions
 from documents.models import Document
 
@@ -263,3 +265,51 @@ def all_document_ocr_cleanup(request):
             messages.error(request, _(u'Document pages content clean up error: %s') % e)
 
         return HttpResponseRedirect(next)
+
+
+def display_link(obj):
+    output = []
+    if hasattr(obj, 'get_absolute_url'):
+        output.append(u'<a href="%(url)s">%(obj)s</a>'% {
+            'url': obj.get_absolute_url(),
+            'obj': obj
+        })
+    if output:
+        return u''.join(output)
+    else:
+        return obj
+
+
+def node_active_list(request):
+    check_permissions(request.user, 'ocr', [PERMISSION_OCR_DOCUMENT])
+
+    i = inspect()
+    active_tasks = []
+    try:
+        active_nodes = i.active()
+        for node, tasks in active_nodes.items():
+            for task in tasks:
+                task_info = {
+                    'node': node,
+                    'task_name': task['name'],
+                    'task_id': task['id'],
+                    'related_object': None,
+                }
+                if task['name'] == u'ocr.tasks.task_process_queue_document':
+                    task_info['related_object'] = QueueDocument.objects.get(pk=eval(task['args'])[0]).document
+                active_tasks.append(task_info)
+    except socket.error:
+        active_tasks = []
+
+    return render_to_response('generic_list.html', {
+        'object_list': active_tasks,
+        'title': _(u'active tasks'),
+        'hide_links': True,
+        'hide_object': True,
+        'extra_columns': [
+            {'name': _(u'node'), 'attribute': 'node'},
+            {'name': _(u'task id'), 'attribute': 'task_id'},
+            {'name': _(u'task name'), 'attribute': 'task_name'},
+            {'name': _(u'related object'), 'attribute': lambda x: display_link(x['related_object']) if x['related_object'] else u''}
+        ],
+    }, context_instance=RequestContext(request))

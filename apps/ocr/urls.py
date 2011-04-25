@@ -12,4 +12,5 @@ urlpatterns = patterns('ocr.views',
     url(r'^ocr/queue/(?P<document_queue_id>\d+)/disable/$', 'document_queue_disable', (), 'document_queue_disable'),
 
     url(r'^ocr/document/all/clean_up/$', 'all_document_ocr_cleanup', (), 'all_document_ocr_cleanup'),
+    url(r'^ocr/node/active/list/$', 'node_active_list', (), 'node_active_list'),
 )

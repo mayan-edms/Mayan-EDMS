@@ -35,6 +35,9 @@ document_queue_enable = {'text': _(u'activate queue'), 'view': 'document_queue_e
 
 all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': {'namespace': 'ocr', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES]}}
 
+queue_document_list = {'text': _(u'queue document list'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'permissions': {'namespace': 'ocr', 'permissions': [PERMISSION_OCR_DOCUMENT]}}
+node_active_list = {'text': _(u'active tasks'), 'view': 'node_active_list', 'famfam': 'server_chart', 'permissions': {'namespace': 'ocr', 'permissions': [PERMISSION_OCR_DOCUMENT]}}
+
 register_links(Document, [submit_document])
 register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
 
@@ -43,7 +46,7 @@ register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, 
 #Menus
 register_menu([
     {'text': _('OCR'), 'view': 'queue_document_list', 'links':[
-        #ocr_queue
+        queue_document_list, node_active_list
     ], 'famfam': 'hourglass', 'position': 4}])
 
 
