@@ -287,17 +287,18 @@ def node_active_list(request):
     active_tasks = []
     try:
         active_nodes = i.active()
-        for node, tasks in active_nodes.items():
-            for task in tasks:
-                task_info = {
-                    'node': node,
-                    'task_name': task['name'],
-                    'task_id': task['id'],
-                    'related_object': None,
-                }
-                if task['name'] == u'ocr.tasks.task_process_queue_document':
-                    task_info['related_object'] = QueueDocument.objects.get(pk=eval(task['args'])[0]).document
-                active_tasks.append(task_info)
+        if active_nodes:
+            for node, tasks in active_nodes.items():
+                for task in tasks:
+                    task_info = {
+                        'node': node,
+                        'task_name': task['name'],
+                        'task_id': task['id'],
+                        'related_object': None,
+                    }
+                    if task['name'] == u'ocr.tasks.task_process_queue_document':
+                        task_info['related_object'] = QueueDocument.objects.get(pk=eval(task['args'])[0]).document
+                    active_tasks.append(task_info)
     except socket.error:
         active_tasks = []
 
