@@ -17,6 +17,12 @@ from converter.exceptions import UnpaperError, OfficeConversionError
 from common import TEMPORARY_DIRECTORY
 from documents.utils import document_save_to_temp_dir
 
+DEFAULT_ZOOM_LEVEL = 100
+DEFAULT_ROTATION = 0
+DEFAULT_PAGE_INDEX_NUMBER = 0
+DEFAULT_FILE_FORMAT = u'jpg'
+DEFAULT_OCR_FILE_FORMAT = u'tif'
+
 QUALITY_DEFAULT = u'quality_default'
 QUALITY_LOW = u'quality_low'
 QUALITY_HIGH = u'quality_high'
@@ -80,10 +86,9 @@ def execute_unoconv(input_filepath, arguments=''):
         raise OfficeConversionError(proc.stderr.readline())
 
 
-def cache_cleanup(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u''):
-    filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options)
+def cache_cleanup(input_filepath, *args, **kwargs):
     try:
-        os.remove(filepath)
+        os.remove(create_image_cache_filename(input_filepath, *args, **kwargs))
     except OSError:
         pass
 
@@ -112,13 +117,26 @@ def convert_office_document(input_filepath):
 
 
 def convert_document(document, *args, **kwargs):
-    input_filepath = document_save_to_temp_dir(document, document.checksum)
-    return convert(input_filepath, *args, **kwargs)
+    document_filepath = create_image_cache_filename(document.checksum, *args, **kwargs)
+    if os.path.exists(document_filepath):
+        return document_filepath
+        
+    return convert(document_save_to_temp_dir(document, document.checksum), *args, **kwargs)
     
 
-def convert(input_filepath, size, quality=QUALITY_DEFAULT, page=0, file_format=u'jpg', extra_options=u'', cleanup_files=True, zoom=100, rotation=0):
+def convert(input_filepath, *args, **kwargs):
+    size = kwargs.get('size')
+    file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
+    extra_options = kwargs.get('extra_options', u'')
+    zoom = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
+    rotation = kwargs.get('rotation', DEFAULT_ROTATION)
+    page = kwargs.get('page', DEFAULT_PAGE_INDEX_NUMBER)
+    cleanup_files = kwargs.get('cleanup_files', True)
+    quality = kwargs.get('quality', QUALITY_DEFAULT)
+    
     unoconv_output = None
-    output_filepath = create_image_cache_filename(input_filepath, size=size, page=page, file_format=file_format, quality=quality, extra_options=extra_options, zoom=zoom, rotation=rotation)
+    
+    output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
     if os.path.exists(output_filepath):
         return output_filepath
 
@@ -159,7 +177,7 @@ def get_page_count(input_filepath):
         return 1
 
 
-def convert_document_for_ocr(document, page=0, file_format=u'tif'):
+def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
     #Extract document file
     input_filepath = document_save_to_temp_dir(document, document.uuid)
 
