@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.forms.formsets import formset_factory
 from django.template.defaultfilters import capfirst
+from django.conf import settings
 
 from documents.staging import StagingFile
 
@@ -36,11 +37,20 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         rotation = final_attrs.get('rotation', 0)
         if value:
             output = []
-            output.append('<div class="full-height scrollable" style="overflow: auto;"><img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" /></div>' % {
+            output.append('''
+                <div class="full-height scrollable" style="overflow: auto;">
+                    <div class="tc">
+                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(media_url)s/images/blank.gif" />
+                        <noscript>
+                            <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" />
+                        </noscript>     
+                    </div>    
+                </div>''' % {
                 'img': reverse('document_display', args=[value.document.id]),
                 'page': value.page_number,
                 'zoom': zoom,
                 'rotation': rotation,
+                'media_url': settings.MEDIA_URL
                 })
             return mark_safe(u''.join(output))
         else:
@@ -106,9 +116,14 @@ class ImageWidget(forms.widgets.Widget):
             output.append(
                 u'''<div style="display: inline-block; border: 1px solid black; margin: 10px;">
                         <div class="tc">%(page_string)s %(page)s</div>
+                        <div class="tc">
                             <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
-                                <img src="%(img)s?page=%(page)d" />
+                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(media_url)s/images/blank.gif"/>
+                                <noscript>
+                                    <img src="%(img)s?page=%(page)d" />
+                                </noscript>
                             </a>
+                        </div>
                         <div class="tc">
                             <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
                         </div>
@@ -119,6 +134,7 @@ class ImageWidget(forms.widgets.Widget):
                     'view_url': reverse('document_display', args=[page.document.pk]),
                     'page_string': ugettext(u'Page'),
                     'details_string': ugettext(u'Details'),
+                    'media_url': settings.MEDIA_URL,
                 })
 
         output.append(u'</div>')
@@ -354,7 +370,10 @@ class MetaDataImageWidget(forms.widgets.Widget):
                         <div class="tc">%(page_string)s: %(document_pages)d</div>
                         <div class="tc">
                             <a rel="group_%(group_id)d_documents_gallery" class="fancybox-noscaling" href="%(view_url)s">
-                                <img style="border: 1px solid black; margin: 10px;" src="%(img)s" />
+                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(media_url)s/images/blank.gif" data-href="%(img)s" />
+                                <noscript>
+                                    <img style="border: 1px solid black; margin: 10px;" src="%(img)s" />
+                                </noscript>
                             </a>
                         </div>
                         <div class="tc">
@@ -369,7 +388,8 @@ class MetaDataImageWidget(forms.widgets.Widget):
                     'page_string': ugettext(u'Pages'),
                     'details_string': ugettext(u'Select'),
                     'group_id': value['group'].pk,
-                    'document_name': document
+                    'document_name': document,
+                    'media_url': settings.MEDIA_URL
                 })
         output.append(u'</div>')
         output.append(

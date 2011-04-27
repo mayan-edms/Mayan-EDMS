@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 from navigation.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
@@ -124,11 +125,13 @@ def document_exists(document):
     except Exception, exc:
         return exc
 
-
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
-            lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.id]),
-                reverse('document_thumbnail', args=[x.id]))
+            lambda x: '<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(media_url)s/images/blank.gif" /><noscript><img src="%(thumbnail)s" /></noscript></a>' % {
+                'url': reverse('document_preview', args=[x.pk]),
+                'thumbnail': reverse('document_thumbnail', args=[x.pk]),
+                'media_url': settings.MEDIA_URL
+            }
         },
         {'name':_(u'metadata'), 'attribute':
             lambda x: x.get_metadata_string()
