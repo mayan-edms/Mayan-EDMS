@@ -834,14 +834,14 @@ def document_view_simple(request, document_id):
     ]
 
     subtemplates_dict = [
-            {
-                'name': 'generic_list_subtemplate.html',
-                'title': _(u'metadata'),
-                'object_list': document.documentmetadata_set.all(),
-                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
-                'hide_link': True,
-            },
-        ]
+        {
+            'name': 'generic_list_subtemplate.html',
+            'title': _(u'metadata'),
+            'object_list': document.documentmetadata_set.all(),
+            'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+            'hide_link': True,
+        },
+    ]
 
     metadata_groups, errors = document.get_metadata_groups()
     if (request.user.is_staff or request.user.is_superuser) and errors:
@@ -869,9 +869,20 @@ def document_view_simple(request, document_id):
             }
         )
 
+    subtemplates_dict.append(
+        {
+            'name': 'generic_list_subtemplate.html',
+            'title': _(u'tags'),
+            'object_list': document.tags.all(),
+            #'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+            'hide_link': True,
+        }
+    )
+
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document,
+        'document': document,
         'subtemplates_dict': subtemplates_dict,
     }, context_instance=RequestContext(request))
 

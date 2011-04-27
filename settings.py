@@ -139,6 +139,8 @@ INSTALLED_APPS = (
     'filesystem_serving',
     'storage',
     'folders',
+    'taggit',
+    'tags',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

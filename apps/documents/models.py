@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 
 from python_magic import magic
 
+from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
 from converter import TRANFORMATION_CHOICES
@@ -56,6 +57,8 @@ class Document(models.Model):
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
+
+    tags = TaggableManager()
 
     class Meta:
         verbose_name = _(u'document')
@@ -444,5 +447,5 @@ class RecentDocument(models.Model):
         verbose_name_plural = _(u'recent documents')
 
 
-register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description'])
+register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', 'tags__name'])
 #register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])

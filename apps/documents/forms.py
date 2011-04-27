@@ -364,10 +364,21 @@ class MetaDataImageWidget(forms.widgets.Widget):
 
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
+            tags_template = []
+            tag_count = document.tags.count()
+            if tag_count:
+                tags_template.append(u'<div class="tc">')
+                tags_template.append(u'%(tag_string)s (%(tag_count)s): ' % {
+                    'tag_string': _(u'Tags'), 'tag_count': tag_count})
+                
+                tags_template.append(u', '.join(document.tags.values_list('name', flat=True)))
+                tags_template.append(u'</div>')
+                                
             output.append(
                 u'''<div style="display: inline-block; margin: 10px; %(current)s">
                         <div class="tc">%(document_name)s</div>
                         <div class="tc">%(page_string)s: %(document_pages)d</div>
+                        %(tags_template)s
                         <div class="tc">
                             <a rel="group_%(group_id)d_documents_gallery" class="fancybox-noscaling" href="%(view_url)s">
                                 <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(media_url)s/images/blank.gif" data-href="%(img)s" />
@@ -389,7 +400,8 @@ class MetaDataImageWidget(forms.widgets.Widget):
                     'details_string': ugettext(u'Select'),
                     'group_id': value['group'].pk,
                     'document_name': document,
-                    'media_url': settings.MEDIA_URL
+                    'media_url': settings.MEDIA_URL,
+                    'tags_template': u''.join(tags_template) if tags_template else u''
                 })
         output.append(u'</div>')
         output.append(

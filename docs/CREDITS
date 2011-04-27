@@ -124,3 +124,7 @@ Image 1299551545_egypt200.png
 django-sendfile - This is a wrapper around web-server specific methods for sending files to web clients. 
     johnsensible (John Montgomery)
     https://github.com/johnsensible/django-sendfile
+
+jQuery-Jail
+
+django-taggit

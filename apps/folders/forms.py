@@ -14,7 +14,10 @@ class AddDocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super(AddDocumentForm, self).__init__(*args, **kwargs)
-        self.fields['existing_folder'] = forms.ModelChoiceField(required=False, queryset=Folder.objects.filter(user=user))
+        self.fields['existing_folder'] = forms.ModelChoiceField(
+            required=False,
+            queryset=Folder.objects.filter(user=user),
+            label=_(u'Existing folders'))
         self.fields['title'].required = False
         self.fields['title'].label = _(u'New folder')
 
