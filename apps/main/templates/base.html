@@ -81,7 +81,10 @@
             });    
             $('.scrollable').scrollview();
             $('.full-height').height($(window).height() - 210);
-
+            $('.no-parent-history', this).click(function() {
+                location.replace(this.href);
+                return false;
+            });
         });
     </script>
     {% block javascript %}{% endblock %}
@@ -136,7 +139,7 @@
             <div class="secondary-navigation">
                 <ul class="wat-cf">
                     {% for link in navigation_secondary_links %}
-                        <li class="{% if link.first %}first {% endif %}{% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
+                        <li class="{% if link.first %}first {% endif %}{% if link.active %}active{% endif %}"><a class="{{ link.class }}" href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
                     {% endfor %}     
                 </ul>
             </div>     
@@ -147,7 +150,7 @@
             <div class="secondary-navigation">
                 <ul class="wat-cf">
                     {% for link in form_navigation_links %}
-                        <li class="{% if forloop.first %}first {% endif %}{% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
+                        <li class="{% if forloop.first %}first {% endif %}{% if link.active %}active{% endif %}"><a class="{{ link.class }}" href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
                     {% endfor %}     
                 </ul>
             </div>    
