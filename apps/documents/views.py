@@ -590,7 +590,8 @@ def document_download(request, document_id):
 
 
 def staging_file_preview(request, staging_file_id):
-    #TODO: Need permission
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+
     try:
         output_file, errors = StagingFile.get(staging_file_id).preview()
         if errors and (request.user.is_staff or request.user.is_superuser):
@@ -615,7 +616,8 @@ def staging_file_preview(request, staging_file_id):
 
 
 def staging_file_delete(request, staging_file_id):
-    #TODO: Need permission
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+
     staging_file = StagingFile.get(staging_file_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
