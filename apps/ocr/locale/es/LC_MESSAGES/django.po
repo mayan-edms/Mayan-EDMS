@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-21 04:32-0400\n"
-"PO-Revision-Date: 2011-04-21 04:33\n"
+"POT-Creation-Date: 2011-04-27 14:40-0400\n"
+"PO-Revision-Date: 2011-04-27 14:41\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,51 +19,59 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:25
+#: __init__.py:20
 msgid "Submit document for OCR"
 msgstr "Enviar documento para OCR"
 
-#: __init__.py:26
+#: __init__.py:21
 msgid "Delete document for OCR queue"
 msgstr "Eliminar documento de la cola de OCR"
 
-#: __init__.py:27
+#: __init__.py:22
 msgid "Can enable/disable an OCR queue"
 msgstr "Puede activar / desactivar una cola de OCR"
 
-#: __init__.py:28
+#: __init__.py:23
 msgid "Can execute an OCR clean up on all document pages"
 msgstr "Puede ejecutar un programa de OCR de limpieza en todas las páginas de los documentos"
 
-#: __init__.py:32
+#: __init__.py:27
 msgid "submit to OCR queue"
 msgstr "enviar a lista de OCR"
 
-#: __init__.py:33 __init__.py:34
+#: __init__.py:28 __init__.py:29
 msgid "re-queue"
 msgstr "volver a la cola"
 
-#: __init__.py:35 __init__.py:36
+#: __init__.py:30 __init__.py:31
 msgid "delete"
 msgstr "eliminar"
 
-#: __init__.py:38
+#: __init__.py:33
 msgid "stop queue"
 msgstr "detener cola"
 
-#: __init__.py:39
+#: __init__.py:34
 msgid "activate queue"
 msgstr "activar cola"
 
-#: __init__.py:41
+#: __init__.py:36
 msgid "clean up pages content"
-msgstr "limpiar el contenido de las páginas"
+msgstr "limpiar el contenido"
 
-#: __init__.py:50
+#: __init__.py:38
+msgid "queue document list"
+msgstr "lista de documentos en la cola"
+
+#: __init__.py:39 views.py:307
+msgid "active tasks"
+msgstr "tareas activas"
+
+#: __init__.py:48
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:58
+#: __init__.py:56
 msgid "Default"
 msgstr "Por defecto"
 
@@ -107,7 +115,7 @@ msgstr "etiqueta"
 msgid "state"
 msgstr "estado"
 
-#: models.py:37 models.py:45 views.py:47
+#: models.py:37 models.py:45 views.py:49
 msgid "document queue"
 msgstr "cola de documento"
 
@@ -143,148 +151,171 @@ msgstr "documento en la cola"
 msgid "queue documents"
 msgstr "documentos en la cola"
 
-#: models.py:65 views.py:49
+#: models.py:65 views.py:51
 msgid "Missing document."
 msgstr "Documento no encontrado."
 
-#: statistics.py:9
+#: statistics.py:8
 #, python-format
 msgid "Document queues: %d"
 msgstr "Colas de documentos: %d"
 
-#: statistics.py:10
+#: statistics.py:9
 #, python-format
 msgid "Queued documents: %d"
 msgstr "Documentos en la cola: %d"
 
-#: statistics.py:14
+#: statistics.py:13
 msgid "OCR statistics"
 msgstr "Estadísticas de OCR"
 
-#: views.py:29 views.py:50
+#: tasks.py:55
+msgid "Orphaned"
+msgstr "Huérfano"
+
+#: views.py:31 views.py:52
 msgid "thumbnail"
 msgstr "miniatura"
 
-#: views.py:44
+#: views.py:46
 #, python-format
 msgid "documents in queue: %s"
 msgstr "documentos en la cola: %s"
 
-#: views.py:60
+#: views.py:62
 msgid "document queue properties"
 msgstr "propiedades de la cola de documentos"
 
-#: views.py:62
+#: views.py:64
 #, python-format
 msgid "Current state: %s"
 msgstr "Estado actual: %s"
 
-#: views.py:78 views.py:151
+#: views.py:78 views.py:152
 msgid "Must provide at least one queue document."
 msgstr "Debe proveer al menos un documento en cola."
 
 #: views.py:88
 #, python-format
-msgid "Document: %(document)s deleted successfully."
-msgstr "Documento: %(document)s eliminado con éxito."
+msgid "Document: %s is being processed and can't be deleted."
+msgstr "El documento: %s ya está en proceso y no se puede se eliminado."
 
-#: views.py:92
+#: views.py:91
+#, python-format
+msgid "Queue document: %(document)s deleted successfully."
+msgstr "Documento de la cola: %(document)s eliminado exitosamente."
+
+#: views.py:95
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Error al eliminar el documento: %(document)s; %(error)s "
 
-#: views.py:104
+#: views.py:107
 #, python-format
-msgid "Are you sure you with to delete from queue document: %s?"
+msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "¿Está seguro que desea eliminar de la cola el documento: %s?"
 
-#: views.py:106
+#: views.py:109
 #, python-format
-msgid "Are you sure you with to delete from queue documents: %s?"
-msgstr "¿Estás seguro que desea eliminar de la cola los documentos: %s?"
+msgid "Are you sure you wish to delete queue documents: %s?"
+msgstr "¿Está seguro que desea eliminar de la cola los documentos: %s?"
 
-#: views.py:129
+#: views.py:132
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
 msgstr "Documento: %(document)s ha sido añadido a la cola de reconocimiento óptico de caracteres: %(queue)s."
 
-#: views.py:132
+#: views.py:135
 #, python-format
 msgid "Document: %(document)s is already queued."
 msgstr "Documento: %(document)s ya está en cola."
 
-#: views.py:161
-#, python-format
-msgid "Document id#: %d, no longer exists."
-msgstr "Documento de #: %d, ya no existe."
-
-#: views.py:165
+#: views.py:163
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
 msgstr "El documento: %s ya está en proceso y no se puede volver a agregar a la cola."
 
-#: views.py:178
+#: views.py:171
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 msgstr "Documento: %(document)s fue puesto de vuelta en la cola de reconocimiento óptico de caracteres: %(queue)s "
 
-#: views.py:181
+#: views.py:174
 #, python-format
-msgid "Document: %(document)s can't be re-queued."
-msgstr "Documento: %(document)s no puede ser agregado a la cola."
+msgid "Document id#: %d, no longer exists."
+msgstr "Documento de #: %d, ya no existe."
 
-#: views.py:195
+#: views.py:186
 #, python-format
-msgid "Are you sure you with to re-queue document: %s?"
+msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "¿Está seguro desea volver a agregar a la cola el documento: %s?"
 
-#: views.py:197
+#: views.py:188
 #, python-format
-msgid "Are you sure you with to re-queue documents: %s?"
+msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "¿Está seguro desea volver a agregar a la cola los documento: %s?"
 
-#: views.py:215
+#: views.py:206
 #, python-format
 msgid "Document queue: %s, already stopped."
 msgstr "Cola de documento: %s, ya esta detenida."
 
-#: views.py:221
+#: views.py:212
 #, python-format
 msgid "Document queue: %s, stopped successfully."
 msgstr "Cola de documento: %s, se ha detenido con éxito."
 
-#: views.py:226
+#: views.py:217
 #, python-format
 msgid "Are you sure you wish to disable document queue: %s"
 msgstr "¿Está seguro de que desea desactivar la cola de documento: %s?"
 
-#: views.py:240
+#: views.py:231
 #, python-format
 msgid "Document queue: %s, already active."
 msgstr "Cola de documento: %s, ya esta activa."
 
-#: views.py:246
+#: views.py:237
 #, python-format
 msgid "Document queue: %s, activated successfully."
 msgstr "Cola de documento: %s, activada con éxito."
 
-#: views.py:251
+#: views.py:242
 #, python-format
 msgid "Are you sure you wish to activate document queue: %s"
 msgstr "¿Estás seguro de que desea activar la cola de documento: %s?"
 
-#: views.py:267
+#: views.py:258
 msgid "On large databases this operation may take some time to execute."
 msgstr "En grandes bases de datos esta operación puede tardar algún tiempo en ejecutarse."
 
-#: views.py:272
+#: views.py:263
 msgid "Document pages content clean up complete."
-msgstr "Limpieza de contenido de páginas de completado."
+msgstr "Limpieza de contenido completada."
 
-#: views.py:274
+#: views.py:265
 #, python-format
 msgid "Document pages content clean up error: %s"
-msgstr "Error en limpieza de contenido de páginas: %s"
+msgstr "Error en limpieza de contenido: %s"
+
+#: views.py:311
+msgid "node"
+msgstr "nodo"
+
+#: views.py:312
+msgid "task id"
+msgstr "Identificación de tarea"
+
+#: views.py:313
+msgid "task name"
+msgstr "nombre de tarea"
+
+#: views.py:314
+msgid "related object"
+msgstr "objeto relacionado"
+
+#~ msgid "Document: %(document)s can't be re-queued."
+#~ msgstr "Documento: %(document)s no puede ser agregado a la cola."
 
 #~ msgid "queued document"
 #~ msgstr "documento en cola"

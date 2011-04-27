@@ -302,7 +302,7 @@ def document_view(request, document_id):
     metadata_groups, errors = document.get_metadata_groups()
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
-            messages.warning(request, _(u'Metadata group query error: %s' % error))
+            messages.warning(request, _(u'Document group query error: %s' % error))
 
     if not GROUP_SHOW_EMPTY:
         #If GROUP_SHOW_EMPTY is False, remove empty groups from
@@ -312,7 +312,7 @@ def document_view(request, document_id):
     if metadata_groups:
         subtemplates_dict.append(
             {
-                'title': _(u'metadata groups (%s)') % len(metadata_groups.keys()),
+                'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
                 'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
                     metadata_group_link
                 ]),
@@ -596,7 +596,7 @@ def staging_file_preview(request, staging_file_id):
         output_file, errors = StagingFile.get(staging_file_id).preview()
         if errors and (request.user.is_staff or request.user.is_superuser):
             for error in errors:
-                messages.warning(request, _(u'Staging file transformation error:, %(error)s') % {
+                messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
                     'error': error
                 })
 
@@ -846,7 +846,7 @@ def document_view_simple(request, document_id):
     metadata_groups, errors = document.get_metadata_groups()
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
-            messages.warning(request, _(u'Metadata group query error: %s' % error))
+            messages.warning(request, _(u'Document group query error: %s' % error))
 
     if not GROUP_SHOW_EMPTY:
         #If GROUP_SHOW_EMPTY is False, remove empty groups from
@@ -856,7 +856,7 @@ def document_view_simple(request, document_id):
     if metadata_groups:
         subtemplates_dict.append(
             {
-                'title': _(u'metadata groups (%s)') % len(metadata_groups.keys()),
+                'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
                 'form': MetaDataGroupForm(
                     groups=metadata_groups, current_document=document,
                     links=[
@@ -1096,7 +1096,9 @@ def metadatagroup_view(request, document_id, metadata_group_id):
 
     return render_to_response('generic_list.html', {
         'object_list': object_list,
-        'title': _(u'documents in group: %s, for document: %s') % (metadata_group, document),
+        'title': _(u'documents in group: %(group)s, for document: %(document)s') % {
+            'group': metadata_group, 'document': document
+        },
         'multi_select_as_buttons': True,
         'hide_links': True,
         'ref_object': document

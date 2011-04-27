@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-21 04:30-0400\n"
-"PO-Revision-Date: 2011-04-21 04:31\n"
+"POT-Creation-Date: 2011-04-27 14:36-0400\n"
+"PO-Revision-Date: 2011-04-27 14:37\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:13 views.py:101
+#: __init__.py:13 views.py:107
 msgid "settings"
 msgstr "configuración"
 
@@ -31,72 +31,72 @@ msgstr "estadísticas"
 msgid "diagnostics"
 msgstr "diagnósticos"
 
-#: __init__.py:18
+#: __init__.py:41
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:19
+#: __init__.py:42
 msgid "tools"
 msgstr "herramientas"
 
-#: __init__.py:24
+#: __init__.py:47
 msgid "setup"
 msgstr "instalación"
 
-#: __init__.py:28
+#: __init__.py:51
 msgid "about"
 msgstr "acerca"
 
-#: __init__.py:32
+#: __init__.py:55
 msgid "search"
 msgstr "búsqueda"
 
-#: views.py:106
+#: views.py:112
 msgid "name"
 msgstr "nombre"
 
-#: views.py:107
+#: views.py:113
 msgid "value"
 msgstr "valor"
 
-#: views.py:108
+#: views.py:114
 msgid "description"
 msgstr "descripción"
 
-#: views.py:109
+#: views.py:115
 msgid "exists"
 msgstr "existe"
 
-#: views.py:119
+#: views.py:125
 msgid "function found"
 msgstr "función encontrada"
 
-#: views.py:121 views.py:123
+#: views.py:127 views.py:129
 #, python-format
 msgid "class found: %s"
 msgstr "clase encontrada: %s"
 
-#: views.py:132
+#: views.py:138
 msgid "Tools menu"
 msgstr "Menú de herramientas"
 
-#: views.py:134
+#: views.py:140
 msgid "\"Find all duplicates\": Search all the documents' checksums and return a list of the exact matches."
 msgstr "\"Encontrar todos los duplicados\": Buscar todas las sumas de comprobación de documentos y devolver una lista de las coincidencias exactas."
 
-#: views.py:135
+#: views.py:141
 msgid "\"Recreate index links\": Deletes and creates from scratch all the file system indexing links."
 msgstr "\"Volver a crear vínculos índice\": borra y crea de la nada todos los enlaces de indexación de archivos del sistema."
 
-#: views.py:136
+#: views.py:142
 msgid "\"Clean up pages content\": Runs a language filter to remove common OCR mistakes from document pages content."
-msgstr "\"Limpiar el contenido de las páginas\": Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR del contenido de las páginas de documentos."
+msgstr "\"Limpiar contenido\": Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR del contenido de las páginas de documentos."
 
-#: views.py:149
+#: views.py:155
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: views.py:156
+#: views.py:163
 msgid "Diagnostics"
 msgstr "Diagnósticos"
 
@@ -104,15 +104,19 @@ msgstr "Diagnósticos"
 msgid "Controls whether the search     functionality is provided by a sidebar widget or by a menu entry."
 msgstr "Controla si la funcionalidad de búsqueda es proporcionada por una barra lateral o por una entrada de menú."
 
-#: templates/about.html:4
+#: templates/about.html:5
 msgid "About this program"
 msgstr "Acerca de este programa"
 
 #: templates/about.html:10
+msgid "Version"
+msgstr "Versión"
+
+#: templates/about.html:11
 msgid "Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities"
 msgstr "Gestor documental de código abierto, basado en Django con indexación de metadatos personalizados, integración de servicio de archivos y capacidades de OCR"
 
-#: templates/about.html:12
+#: templates/about.html:13
 msgid "Released under the GPL V3 License"
 msgstr "Publicado bajo la licencia GPL v3"
 
@@ -120,52 +124,52 @@ msgstr "Publicado bajo la licencia GPL v3"
 msgid "(DEBUG Mode)"
 msgstr "(Modo debug)"
 
-#: templates/base.html:91
+#: templates/base.html:100
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:93
+#: templates/base.html:102
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:97
+#: templates/base.html:106
 msgid "New password"
 msgstr "Nueva contraseña"
 
-#: templates/base.html:102
+#: templates/base.html:111
 msgid "Admin site"
 msgstr "Sitio administrativo"
 
-#: templates/base.html:106
+#: templates/base.html:115
 msgid "Sentry"
 msgstr "Sentry"
 
-#: templates/base.html:118
+#: templates/base.html:127
 msgid "Go"
 msgstr "Ir"
 
-#: templates/base.html:123
+#: templates/base.html:132
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:123
+#: templates/base.html:132
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:174
+#: templates/base.html:183
 #, python-format
 msgid "Actions for %(object_name)s: %(object)s"
 msgstr "Acciones para %(object_name)s: %(object)s "
 
-#: templates/base.html:176
+#: templates/base.html:185
 #, python-format
 msgid "Actions for: %(object)s"
 msgstr "Acciones para: %(object)s "
 
-#: templates/base.html:179
+#: templates/base.html:188
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:192
+#: templates/base.html:201
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"

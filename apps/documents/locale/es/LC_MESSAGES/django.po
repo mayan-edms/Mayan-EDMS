@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-21 04:16-0400\n"
-"PO-Revision-Date: 2011-04-21 04:24\n"
+"POT-Creation-Date: 2011-04-27 14:35-0400\n"
+"PO-Revision-Date: 2011-04-27 14:43\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,564 +19,575 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:28
+#: __init__.py:25
 msgid "Create document"
 msgstr "Crear documento"
 
-#: __init__.py:29
+#: __init__.py:26
 msgid "Edit document properties"
 msgstr "Editar propiedades del documento"
 
-#: __init__.py:30
+#: __init__.py:27
 msgid "Edit document"
 msgstr "Editar documento"
 
-#: __init__.py:31
+#: __init__.py:28
 msgid "Edit document metadata"
 msgstr "Editar metadatos del documento"
 
-#: __init__.py:32
+#: __init__.py:29
 msgid "View document"
 msgstr "Ver documento"
 
-#: __init__.py:33
+#: __init__.py:30
 msgid "Delete document"
 msgstr "Eliminar documento"
 
-#: __init__.py:34
+#: __init__.py:31
 msgid "Download document"
 msgstr "Descargar el documento"
 
-#: __init__.py:35
+#: __init__.py:32
 msgid "Transform document"
 msgstr "Transformar el documento"
 
-#: __init__.py:36
+#: __init__.py:33
 msgid "Execute document modifying tools"
 msgstr "Ejecutar herramientas de modificación de documento"
 
-#: __init__.py:39
+#: __init__.py:36
 msgid "documents list"
 msgstr "lista de documentos"
 
-#: __init__.py:40
+#: __init__.py:37
 msgid "recent documents list"
 msgstr "documentos recientes"
 
-#: __init__.py:41
+#: __init__.py:38
 msgid "upload a new document"
 msgstr "subir un nuevo documento"
 
-#: __init__.py:42
+#: __init__.py:39
 msgid "upload multiple new documents"
 msgstr "subir varios documentos nuevos"
 
-#: __init__.py:43
+#: __init__.py:40 __init__.py:79
 msgid "upload new document using same metadata"
-msgstr "subir nuevo documento con los mismos metadatos"
+msgstr "nuevo documento con los mismos metadatos"
 
-#: __init__.py:44
+#: __init__.py:41
 msgid "details (advanced)"
 msgstr "detalles (avanzado)"
 
-#: __init__.py:45
+#: __init__.py:42
 msgid "details (simple)"
 msgstr "detalles (simple)"
 
-#: __init__.py:46 __init__.py:47 __init__.py:61 __init__.py:79
+#: __init__.py:43 __init__.py:44 __init__.py:58 __init__.py:82
 msgid "delete"
 msgstr "eliminar"
 
-#: __init__.py:48 __init__.py:60
+#: __init__.py:45 __init__.py:57
 msgid "edit"
 msgstr "editar"
 
-#: __init__.py:49 __init__.py:50
+#: __init__.py:46 __init__.py:47
 msgid "edit metadata"
 msgstr "editar metadatos"
 
-#: __init__.py:51 __init__.py:78
+#: __init__.py:48 __init__.py:81
 msgid "preview"
 msgstr "muestra"
 
-#: __init__.py:52
+#: __init__.py:49
 msgid "download"
 msgstr "descarga"
 
-#: __init__.py:53
+#: __init__.py:50
 msgid "find duplicates"
 msgstr "encontrar duplicados"
 
-#: __init__.py:54
+#: __init__.py:51
 msgid "find all duplicates"
 msgstr "encontrar todos los duplicados"
 
-#: __init__.py:55 __init__.py:56
+#: __init__.py:52 __init__.py:53
 msgid "clear all transformations"
 msgstr "borrar todas las transformaciones"
 
-#: __init__.py:58 __init__.py:64
+#: __init__.py:55 __init__.py:61
 msgid "page transformations"
 msgstr "transformaciones de la página"
 
-#: __init__.py:59
+#: __init__.py:56
 msgid "create new transformation"
 msgstr "crear nueva transformación"
 
-#: __init__.py:62
+#: __init__.py:59
 msgid "page details"
 msgstr "detalles de la página"
 
-#: __init__.py:63
+#: __init__.py:60
 msgid "edit page"
 msgstr "editar página"
 
-#: __init__.py:66
+#: __init__.py:63
 msgid "page image"
 msgstr "imagen de la página"
 
-#: __init__.py:67
+#: __init__.py:64
 msgid "page text"
 msgstr "texto de la página"
 
-#: __init__.py:68
+#: __init__.py:65
 msgid "edit page text"
 msgstr "editar el texto de la página"
 
-#: __init__.py:69
+#: __init__.py:66
 msgid "next page"
 msgstr "página siguiente"
 
-#: __init__.py:70
+#: __init__.py:67
 msgid "previous page"
 msgstr "página anterior"
 
-#: __init__.py:71
+#: __init__.py:68
 msgid "first page"
 msgstr "primera página"
 
-#: __init__.py:72
+#: __init__.py:69
 msgid "last page"
 msgstr "última página"
 
-#: __init__.py:73
+#: __init__.py:70
 msgid "zoom in"
 msgstr "acercar imagen"
 
-#: __init__.py:74
+#: __init__.py:71
 msgid "zoom out"
 msgstr "alejar imagen"
 
-#: __init__.py:76
+#: __init__.py:72
+msgid "rotate right"
+msgstr "girar a la derecha"
+
+#: __init__.py:73
+msgid "rotate left"
+msgstr "girar a la izquierda"
+
+#: __init__.py:75
 msgid "Find missing document files"
 msgstr "Buscar archivos de documentos perdidos"
 
-#: __init__.py:109
+#: __init__.py:77
+msgid "group actions"
+msgstr "acciones de grupo"
+
+#: __init__.py:78
+msgid "return to document"
+msgstr "volver al documento"
+
+#: __init__.py:116
 msgid "Documents"
 msgstr "Documentos"
 
-#: __init__.py:123
+#: __init__.py:129
 msgid "thumbnail"
 msgstr "miniatura"
 
-#: __init__.py:127 views.py:301 views.py:842
+#: __init__.py:136 views.py:295 views.py:839
 msgid "metadata"
 msgstr "metadatos"
 
-#: __init__.py:134 __init__.py:140 models.py:63 views.py:76
+#: __init__.py:143 __init__.py:149 models.py:62 views.py:76
 msgid "documents"
 msgstr "documentos"
 
-#: forms.py:67 forms.py:171
+#: forms.py:76
+msgid "Page image"
+msgstr "Imagen de la página"
+
+#: forms.py:86 forms.py:197
 msgid "Contents"
 msgstr "Contenido"
 
-#: forms.py:93
-#, python-format
-msgid "Total pages: %s"
-msgstr "Total de páginas: %s"
-
-#: forms.py:112
+#: forms.py:135
 msgid "Page"
 msgstr "Página"
 
-#: forms.py:113
+#: forms.py:136
 msgid "Details"
 msgstr "Detalles"
 
-#: forms.py:119
+#: forms.py:143
 msgid "Click on the image for full size preview"
 msgstr "Haga clic en la imagen para ver una muestra de tamaño completo"
 
-#: forms.py:138 forms.py:203
+#: forms.py:162 forms.py:233
 msgid "Quick document rename"
 msgstr "Cambio rápido de nombre"
 
-#: forms.py:144 forms.py:206
+#: forms.py:169 forms.py:237
 msgid "New document filename"
 msgstr "Nuevo nombre del archivo"
 
-#: forms.py:154
-msgid "Page previews"
-msgstr "Muestas de las páginas"
+#: forms.py:178
+#, python-format
+msgid "Document pages (%s)"
+msgstr "Páginas del documento (%s)"
 
-#: forms.py:205
+#: forms.py:235
 msgid "Staging file"
 msgstr "Archivo de ensayo"
 
-#: forms.py:226 models.py:237
+#: forms.py:258 models.py:205
 msgid "required"
 msgstr "requerido"
 
-#: forms.py:252
+#: forms.py:284
 msgid "id"
 msgstr "Identificador"
 
-#: forms.py:253
+#: forms.py:285
 msgid "Name"
 msgstr "Nombre"
 
-#: forms.py:255
+#: forms.py:287
 msgid "Value"
 msgstr "Valor"
 
-#: forms.py:273
+#: forms.py:305
 msgid "step 1 of 2: Document type"
 msgstr "paso 1 de 2: Tipo de documento"
 
-#: forms.py:274
+#: forms.py:306
 msgid "step 2 of 2: Document metadata"
 msgstr "paso 2 de 2: Metadatos de documento"
 
-#: forms.py:319
-#, python-format
-msgid "Total documents: %s"
-msgstr "documentos en total: %s"
-
-#: forms.py:341 views.py:277
+#: forms.py:388 views.py:277
 msgid "Pages"
 msgstr "Páginas"
 
-#: forms.py:342
+#: forms.py:389
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
-#: forms.py:349
+#: forms.py:397
 msgid "Click on the image for full size view of the first page."
-msgstr "Haga clic en la imagen para ver en la primera página en tamaño completo"
+msgstr "Haga clic en la imagen para ver la primera página en tamaño completo"
 
-#: models.py:39 models.py:216 models.py:316
+#: models.py:38 models.py:184 models.py:344
 msgid "name"
 msgstr "nombre"
 
-#: models.py:48 models.py:235 models.py:252 models.py:280 models.py:315
+#: models.py:47 models.py:203 models.py:220 models.py:248 models.py:343
 msgid "document type"
 msgstr "tipo de documento"
 
-#: models.py:49
+#: models.py:48
 msgid "file"
 msgstr "archivo"
 
-#: models.py:56
+#: models.py:55
 msgid "added"
 msgstr "agregado"
 
-#: models.py:57
+#: models.py:56
 msgid "updated"
 msgstr "actualizado"
 
-#: models.py:58
+#: models.py:57
 msgid "checksum"
 msgstr "suma de comprobación"
 
-#: models.py:59
+#: models.py:58
 msgid "description"
 msgstr "descripción"
 
-#: models.py:62 models.py:267 models.py:294 models.py:403 models.py:417
+#: models.py:61 models.py:235 models.py:262 models.py:433 models.py:447
 #: views.py:370
 msgid "document"
 msgstr "documento"
 
-#: models.py:211 models.py:248
+#: models.py:179 models.py:216
 #, python-format
 msgid " Available functions: %s"
 msgstr "Funciones disponibles: %s"
 
-#: models.py:212
+#: models.py:180
 #, python-format
 msgid " Available models: %s"
 msgstr "Modelos disponibles: %s"
 
-#: models.py:216
+#: models.py:184
 msgid "Do not use python reserved words."
 msgstr "No utilice palabras reservadas de Python."
 
-#: models.py:217
+#: models.py:185
 msgid "title"
 msgstr "título"
 
-#: models.py:219
+#: models.py:187
 msgid "default"
 msgstr "por defecto"
 
-#: models.py:220
+#: models.py:188
 #, python-format
 msgid "Enter a string to be evaluated.%s"
 msgstr "Introduzca una cadena para ser evaluada.%s"
 
-#: models.py:222
+#: models.py:190
 msgid "lookup"
 msgstr "búsqueda"
 
-#: models.py:223
+#: models.py:191
 #, python-format
 msgid "Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s"
 msgstr "Introduzca una cadena para ser evaluada. Ejemplo: [user.get_full_name () for user in User.objects.all ()].%s"
 
-#: models.py:230 models.py:236 models.py:268 models.py:358
+#: models.py:198 models.py:204 models.py:236 models.py:388
 msgid "metadata type"
 msgstr "tipo de metadatos"
 
-#: models.py:231
+#: models.py:199
 msgid "metadata types"
 msgstr "tipos de metadatos"
 
-#: models.py:244
+#: models.py:212
 msgid "document type metadata type connector"
 msgstr "conector tipo de documento y tipo de metadatos "
 
-#: models.py:245
+#: models.py:213
 msgid "document type metadata type connectors"
 msgstr "conectores de tipos de documentos y tipos de metadatos"
 
-#: models.py:254
+#: models.py:222
 msgid "indexing expression"
 msgstr "expresión de indexación"
 
-#: models.py:255
+#: models.py:223
 #, python-format
 msgid "Enter a python string expression to be evaluated.  The slash caracter \"/\" acts as a directory delimiter.%s"
 msgstr "Introduzca una expresión de cadena de python para ser evaluada. El caracter barra \"/\" actúa como un delimitador de directorio. %s"
 
-#: models.py:256 models.py:282 models.py:318 models.py:363
+#: models.py:224 models.py:250 models.py:346 models.py:393
 msgid "enabled"
 msgstr "habilitado"
 
-#: models.py:262
+#: models.py:230
 msgid "metadata index"
 msgstr "índice de metadatos"
 
-#: models.py:263
+#: models.py:231
 msgid "metadata indexes"
 msgstr "índices de metadatos"
 
-#: models.py:269
+#: models.py:237
 msgid "metadata value"
 msgstr "datos de metadato"
 
-#: models.py:275 models.py:276 views.py:91
+#: models.py:243 models.py:244 views.py:91
 msgid "document metadata"
 msgstr "metadatos de documento"
 
-#: models.py:281
+#: models.py:249
 msgid "filename"
 msgstr "nombre de archivo"
 
-#: models.py:289
+#: models.py:257
 msgid "document type quick rename filename"
 msgstr "nombre de archivo para cambio rápido de nombre para tipo de documento"
 
-#: models.py:290
+#: models.py:258
 msgid "document types quick rename filenames"
 msgstr "nombres de archivos para cambio rápido de nombre para tipo de documentos"
 
-#: models.py:295
+#: models.py:263
 msgid "content"
 msgstr "contenido"
 
-#: models.py:296
+#: models.py:264
 msgid "page label"
 msgstr "etiqueta de la página"
 
-#: models.py:297
+#: models.py:265
 msgid "page number"
 msgstr "número de página"
 
-#: models.py:300
+#: models.py:268
 #, python-format
 msgid "Page %(page_num)d of %(document)s"
 msgstr "Page %(page_num)d de %(document)s "
 
-#: models.py:305 models.py:377
+#: models.py:273 models.py:407
 msgid "document page"
 msgstr "página de documento"
 
-#: models.py:306
+#: models.py:274
 msgid "document pages"
 msgstr "páginas de documentos"
 
-#: models.py:315
+#: models.py:343
 msgid "If left blank, all document types will be matched."
 msgstr "Si deja en blanco, todos los tipos de documentos será igualado."
 
-#: models.py:317
+#: models.py:345
 msgid "label"
 msgstr "etiqueta"
 
-#: models.py:324
-msgid "metadata document group"
-msgstr "grupo de metadatos de documento"
+#: models.py:354
+msgid "document group"
+msgstr "grupo de documentos"
 
-#: models.py:325
-msgid "metadata document groups"
-msgstr "grupos de metadatos de documentos"
+#: models.py:355
+msgid "document groups"
+msgstr "grupos de documentos"
 
-#: models.py:332
+#: models.py:362
 msgid "and"
 msgstr "y"
 
-#: models.py:333
+#: models.py:363
 msgid "or"
 msgstr "o"
 
-#: models.py:337
+#: models.py:367
 msgid "is equal"
 msgstr "es igual"
 
-#: models.py:338
+#: models.py:368
 msgid "is equal (case insensitive)"
 msgstr "es igual (mayúsculas y minúsculas)"
 
-#: models.py:339
+#: models.py:369
 msgid "contains"
 msgstr "contiene"
 
-#: models.py:340
+#: models.py:370
 msgid "contains (case insensitive)"
 msgstr "contiene (mayúsculas y minúsculas)"
 
-#: models.py:341
+#: models.py:371
 msgid "is in"
 msgstr "está en"
 
-#: models.py:342
+#: models.py:372
 msgid "is greater than"
 msgstr "es mayor que"
 
-#: models.py:343
+#: models.py:373
 msgid "is greater than or equal"
 msgstr "es mayor o igual"
 
-#: models.py:344
+#: models.py:374
 msgid "is less than"
 msgstr "es menor que"
 
-#: models.py:345
+#: models.py:375
 msgid "is less than or equal"
 msgstr "es menor o igual"
 
-#: models.py:346
+#: models.py:376
 msgid "starts with"
 msgstr "comienza con"
 
-#: models.py:347
+#: models.py:377
 msgid "starts with (case insensitive)"
 msgstr "comienza con (mayúsculas y minúsculas)"
 
-#: models.py:348
+#: models.py:378
 msgid "ends with"
 msgstr "termina con"
 
-#: models.py:349
+#: models.py:379
 msgid "ends with (case insensitive)"
 msgstr "termina con (mayúsculas y minúsculas)"
 
-#: models.py:350
+#: models.py:380
 msgid "is in regular expression"
 msgstr "está en la expresion regular"
 
-#: models.py:351
+#: models.py:381
 msgid "is in regular expression (case insensitive)"
 msgstr "está en la expresión regular (mayúsculas y minúsculas)"
 
-#: models.py:356
+#: models.py:386
 msgid "metadata group"
 msgstr "grupo de metadatos"
 
-#: models.py:357
+#: models.py:387
 msgid "The inclusion is ignored for the first item."
 msgstr "La inclusión es ignorada para el primer artículo."
 
-#: models.py:358
+#: models.py:388
 msgid "This represents the metadata of all other documents."
 msgstr "Esto representa los metadatos de todos los demás documentos."
 
-#: models.py:361
+#: models.py:391
 msgid "expression"
 msgstr "expresión"
 
-#: models.py:361
+#: models.py:391
 msgid "This expression will be evaluated against the current selected document.  The document metadata is available as variables of the same name but with the \"metadata_\" prefix added their name."
 msgstr "Esta expresión se evalúa con respecto al documento actual seleccionado. Los metadatos del documento están disponible como variables del mismo nombre pero con prefijo \"metadata_\" agregado al nombre."
 
-#: models.py:362
+#: models.py:392
 msgid "negated"
 msgstr "negada"
 
-#: models.py:362
+#: models.py:392
 msgid "Inverts the logic of the operator."
 msgstr "Invierte la lógica del operador."
 
-#: models.py:366
+#: models.py:396
 msgid "not"
 msgstr "not"
 
-#: models.py:369
-msgid "metadata group item"
-msgstr "artículo de grupo de metadatos"
+#: models.py:399
+msgid "group item"
+msgstr "artículo de grupo de documentos"
 
-#: models.py:370
-msgid "metadata group items"
-msgstr "artículos de grupos de metadatos"
+#: models.py:400
+msgid "group items"
+msgstr "artículos de grupos de documentos"
 
-#: models.py:378 views.py:658
+#: models.py:408 views.py:655
 msgid "order"
 msgstr "orden"
 
-#: models.py:379 views.py:659 views.py:699
+#: models.py:409 views.py:656 views.py:696
 msgid "transformation"
 msgstr "transformación"
 
-#: models.py:380 views.py:660
+#: models.py:410 views.py:657
 msgid "arguments"
 msgstr "argumentos"
 
-#: models.py:380
+#: models.py:410
 msgid "Use dictionaries to indentify arguments, example: {'degrees':90}"
 msgstr "Use diccionarios para identificar los argumentos, por ejemplo: {'grados': 90}"
 
-#: models.py:387
+#: models.py:417
 msgid "document page transformation"
 msgstr "transformación de página de documento"
 
-#: models.py:388
+#: models.py:418
 msgid "document page transformations"
 msgstr "transformaciones de páginas de documentos"
 
-#: models.py:402
+#: models.py:432
 msgid "user"
 msgstr "usuario"
 
-#: models.py:404
+#: models.py:434
 msgid "accessed"
-msgstr ""
+msgstr "accesado"
 
-#: models.py:413
+#: models.py:443
 msgid "recent document"
 msgstr "documento reciente"
 
-#: models.py:414 views.py:1010
+#: models.py:444 views.py:1015
 msgid "recent documents"
 msgstr "documentos recientes"
 
@@ -605,22 +616,22 @@ msgstr "Tipos de documentos: %d"
 msgid "Documents in database: %d"
 msgstr "Documentos en la base de datos: %d"
 
-#: statistics.py:44
+#: statistics.py:43
 #, python-format
 msgid "Documents in storage: %d"
 msgstr "Documentos en almacenamiento: %d"
 
-#: statistics.py:46
+#: statistics.py:45
 #, python-format
 msgid "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
 msgstr "Espacio utilizado en el almacenamiento: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
 
-#: statistics.py:55
+#: statistics.py:54
 #, python-format
 msgid "Document pages in database: %d"
 msgstr "Páginas de documentos en la base de datos: %d"
 
-#: statistics.py:59
+#: statistics.py:58
 msgid "Document statistics"
 msgstr "Estadísticas de documentos"
 
@@ -703,37 +714,38 @@ msgstr "Suma de comprobación"
 msgid "UUID"
 msgstr "UUID"
 
-#: views.py:283 views.py:311 views.py:852
-#, python-format
-msgid "Metadata group query error: %s"
-msgstr "error de consulta de grupo de metadatos: %s"
-
-#: views.py:293 views.py:833
+#: views.py:287 views.py:830
 msgid "document properties"
 msgstr "propiedades del documento"
 
-#: views.py:303 views.py:844
+#: views.py:297 views.py:841
 msgid "value"
 msgstr "valor"
 
-#: views.py:321 views.py:862
-msgid "metadata groups"
-msgstr "grupos de metadatos"
+#: views.py:305 views.py:849
+#, python-format
+msgid "Document group query error: %s"
+msgstr "Drror de consulta de grupo de documentos: %s"
 
-#: views.py:330
+#: views.py:315 views.py:859
+#, python-format
+msgid "document groups (%s)"
+msgstr "grupo de documentos (%s)"
+
+#: views.py:328
 msgid "index links"
 msgstr "enlaces de índice"
 
-#: views.py:351 views.py:450 views.py:777
+#: views.py:350 views.py:454 views.py:774
 msgid "Must provide at least one document."
 msgstr "Debe proveer al menos un documento."
 
-#: views.py:362
+#: views.py:361
 #, python-format
 msgid "Document: %s deleted successfully."
 msgstr "Documento: %s eliminado con éxito."
 
-#: views.py:364
+#: views.py:363
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s, error de eliminación: %(error)s "
@@ -748,142 +760,165 @@ msgstr "¿Está seguro que desea eliminar el documento: %s?"
 msgid "Are you sure you wish to delete the documents: %s?"
 msgstr "¿Está seguro que desea eliminar los documentos: %s?"
 
-#: views.py:414
+#: views.py:418
 #, python-format
 msgid "Document %s edited successfully."
 msgstr "Documento %s editado con éxito."
 
-#: views.py:423
+#: views.py:427
 msgid "Document filesystem links updated successfully."
 msgstr "Enlaces del documento actualizados con éxito."
 
-#: views.py:447
+#: views.py:451
 msgid "All documents must be from the same type."
 msgstr "Todos los documentos deben ser del mismo tipo."
 
-#: views.py:482
+#: views.py:486
 #, python-format
 msgid "Error deleting filesystem links for document: %(document)s; %(error)s"
 msgstr "Error al eliminar los enlaces del sistema de archivos para el documento: %(document)s; %(error)s "
 
-#: views.py:485
+#: views.py:489
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadatos para documento %s editado con éxito."
 
-#: views.py:494
+#: views.py:498
 #, python-format
 msgid "Filesystem links updated successfully for document: %s."
 msgstr "Enlaces del sistema de archivos actualizados con éxito para el documento: %s."
 
-#: views.py:496
+#: views.py:500
 #, python-format
 msgid "Error creating filesystem links for document: %(document)s; %(error)s"
 msgstr "Error al crear vínculos de sistema de archivos para el documento: %(document)s; %(error)s "
 
-#: views.py:510
+#: views.py:514
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Editar de metadatos para el documento: %s"
 
-#: views.py:512
+#: views.py:516
 #, python-format
 msgid "Edit metadata for documents: %s"
 msgstr "Editar metadatos para los documentos: %s"
 
-#: views.py:539 views.py:605
+#: views.py:538
 #, python-format
-msgid "Error for transformation %(transformation)s:, %(error)s"
-msgstr "Error para transformación %(transformation)s:, %(error)s "
+msgid "Page transformation error: %s"
+msgstr "Error de transformación de página: %s"
 
-#: views.py:631
+#: views.py:599
+#, python-format
+msgid "Staging file transformation error: %(error)s"
+msgstr "Error de transformación de archivo de ensayo: %(error)s "
+
+#: views.py:628
 msgid "Staging file delete successfully."
 msgstr "Archivo de ensayo eliminado con éxito."
 
-#: views.py:655
+#: views.py:652
 #, python-format
 msgid "transformations for: %s"
 msgstr "transformaciones para: %s"
 
-#: views.py:684
+#: views.py:681
 #, python-format
 msgid "Create new transformation for page: %(page)s of document: %(document)s"
 msgstr "Crear nueva transformación de la página: %(page)s del documento: %(document)s "
 
-#: views.py:700
+#: views.py:697
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(document_page)s"
 msgstr "Editar transformación \" %(transformation)s\" para: %(document_page)s"
 
-#: views.py:721 views.py:797
+#: views.py:718 views.py:794
 msgid "document transformation"
 msgstr "transformación de documento"
 
-#: views.py:722
+#: views.py:719
 #, python-format
 msgid "Are you sure you wish to delete transformation \"%(transformation)s\" for: %(document_page)s"
 msgstr "¿Está seguro que desea eliminar la transformación \"%(transformation)s\" para: %(document_page)s"
 
-#: views.py:743 views.py:883
+#: views.py:740 views.py:887
 msgid "On large databases this operation may take some time to execute."
 msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
-#: views.py:757
+#: views.py:754
 msgid "duplicated documents"
 msgstr "documentos duplicados"
 
-#: views.py:789
+#: views.py:786
 #, python-format
 msgid "All the page transformations for document: %s, have been deleted successfully."
 msgstr "Todas las transformaciones de la página de documento: %s, se han eliminado con éxito."
 
-#: views.py:791
+#: views.py:788
 #, python-format
 msgid "Error deleting the page transformations for document: %(document)s; %(error)s."
 msgstr "Error al eliminar las transformaciones de página para el documento: %(document)s; %(error)s."
 
-#: views.py:805
+#: views.py:802
 #, python-format
 msgid "Are you sure you wish to clear all the page transformations for document: %s?"
 msgstr "¿Está seguro que desea eliminar todas las transformaciones de página del documento: %s?"
 
-#: views.py:807
+#: views.py:804
 #, python-format
 msgid "Are you sure you wish to clear all the page transformations for documents: %s?"
 msgstr "¿Está seguro que desea eliminar las transformaciones de página de los documentos: %s?"
 
-#: views.py:893
+#: views.py:897
 msgid "missing documents"
 msgstr "documentos perdidos"
 
-#: views.py:908 views.py:927
+#: views.py:913 views.py:932
 #, python-format
 msgid "details for: %s"
 msgstr "detalles para: %s"
 
-#: views.py:948
+#: views.py:953
 msgid "Document page edited successfully."
 msgstr "Página del documento se ha editado correctamente."
 
-#: views.py:956
+#: views.py:961
 #, python-format
 msgid "edit: %s"
 msgstr "editar: %s"
 
-#: views.py:967
+#: views.py:972
 msgid "There are no more pages in this document"
 msgstr "No hay más páginas en este documento"
 
-#: views.py:980
+#: views.py:985
 msgid "You are already at the first page of this document"
 msgstr "Usted ya está en la primera página de este documento"
+
+#: views.py:1083
+msgid "No action selected."
+msgstr "Ninguna acción seleccionada."
+
+#: views.py:1099
+#, python-format
+msgid "documents in group: %(group)s, for document: %(document)s"
+msgstr "grupo de documentos: %(group)s, para el documento: %(document)s "
 
 #: conf/settings.py:32
 msgid "Rotate [degrees]"
 msgstr "Rotar [degrees]"
 
-#~ msgid "return to document"
-#~ msgstr "volver al documento"
+#~ msgid "metadata groups (%s)"
+#~ msgstr "grupos de metadatos (%s)"
+
+#~ msgid "Total pages: %s"
+#~ msgstr "Total de páginas: %s"
+
+#~ msgid "Page previews"
+#~ msgstr "Muestas de las páginas"
+
+#~ msgid "Total documents: %s"
+#~ msgstr "documentos en total: %s"
 
 #~ msgid "document preview"
 #~ msgstr "muestra del documento"

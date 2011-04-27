@@ -351,8 +351,8 @@ class MetadataGroup(models.Model):
         return self.label if self.label else self.name
 
     class Meta:
-        verbose_name = _(u'metadata document group')
-        verbose_name_plural = _(u'metadata document groups')
+        verbose_name = _(u'document group')
+        verbose_name_plural = _(u'document groups')
 
 
 INCLUSION_AND = u'&'
@@ -396,8 +396,8 @@ class MetadataGroupItem(models.Model):
         return u'[%s] %s %s %s %s %s' % (u'x' if self.enabled else u' ', self.get_inclusion_display(), self.metadata_type, _(u'not') if self.negated else u'', self.get_operator_display(), self.expression)
 
     class Meta:
-        verbose_name = _(u'metadata group item')
-        verbose_name_plural = _(u'metadata group items')
+        verbose_name = _(u'group item')
+        verbose_name_plural = _(u'group items')
 
 
 available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()]) if AVAILABLE_MODELS else []

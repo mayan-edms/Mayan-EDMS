@@ -104,9 +104,9 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
 
     if len(queue_documents) == 1:
         context['object'] = queue_documents[0]
-        context['title'] = _(u'Are you sure you wish to delete from queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
+        context['title'] = _(u'Are you sure you wish to delete queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
     elif len(queue_documents) > 1:
-        context['title'] = _(u'Are you sure you wish to delete from queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
+        context['title'] = _(u'Are you sure you wish to delete queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
