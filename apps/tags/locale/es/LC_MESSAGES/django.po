@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-28 00:14-0400\n"
+"PO-Revision-Date: 2011-04-28 00:17\n"
+"Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:10
+msgid "delete"
+msgstr "eliminar"
+
+#: forms.py:15
+msgid "New tag"
+msgstr "Nueva etiqueta"
+
+#: forms.py:16
+msgid "Color"
+msgstr "Color"
+
+#: forms.py:17
+msgid "Existing tags"
+msgstr "Etiquetas existentes"
+
+#: models.py:14
+msgid "Blue"
+msgstr "Azul"
+
+#: models.py:15
+msgid "Cyan"
+msgstr "Cian"
+
+#: models.py:16
+msgid "Green-Yellow"
+msgstr "Verde-Amarillo"
+
+#: models.py:17
+msgid "Magenta"
+msgstr "Magenta"
+
+#: models.py:18
+msgid "Red"
+msgstr "Rojo"
+
+#: models.py:19
+msgid "Yellow"
+msgstr "Amarillo"
+
+#: models.py:33
+msgid "tag"
+msgstr "etiqueta"
+
+#: models.py:34
+msgid "color"
+msgstr "color"
+
+#: models.py:37
+msgid "tag properties"
+msgstr "propiedades de etiqueta"
+
+#: models.py:38
+msgid "tags properties"
+msgstr "propiedades de etiquetas"
+
+#: views.py:25
+#, python-format
+msgid "Tag \"%s\" removed successfully."
+msgstr "Etiqueta \"%s\" eliminada exitosamente."
+
+#: views.py:52
+#, python-format
+msgid "Document is already tagged as \"%s\""
+msgstr "Documento ya está etiquetado como \"%s\""
+
+#: views.py:61
+#, python-format
+msgid "Tag \"%s\" added successfully."
+msgstr "Etiqueta \"%s\", agregada exitosamente."
+
+#: templatetags/tags_tags.py:17
+msgid "Add tag to document"
+msgstr "Agregar etiqueta al documento"

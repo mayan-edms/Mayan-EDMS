@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from taggit.models import Tag
 
@@ -8,21 +8,24 @@ COLOR_BLUE = u'blu'
 COLOR_MAGENTA = u'mag'
 COLOR_CYAN = u'cya'
 COLOR_YELLOW = u'yel'
+COLOR_GREENYELLOW = u'gry'
 
 COLOR_CHOICES = (
-    (COLOR_RED, _(u'red')),
-    (COLOR_BLUE, _(u'blue')),
-#    (COLOR_MAGENTA, _(u'magenta')),
-#    (COLOR_CYAN, _(u'cyan')),
-    (COLOR_YELLOW, _(u'yellow'))
+    (COLOR_BLUE, _(u'Blue')),
+    (COLOR_CYAN, _(u'Cyan')),
+    (COLOR_GREENYELLOW, _(u'Green-Yellow')),
+    (COLOR_MAGENTA, _(u'Magenta')),
+    (COLOR_RED, _(u'Red')),
+    (COLOR_YELLOW, _(u'Yellow'))
 )
 
 COLOR_CODES = (
-    (COLOR_RED, u'FF0000'),
-    (COLOR_BLUE, u'0000FF'),
-#    (COLOR_MAGENTA, u'FF0000'),
-#    (COLOR_CYAN, u'FF0000'),
-    (COLOR_YELLOW, u'00FFFF')
+    (COLOR_RED, u'red'),
+    (COLOR_BLUE, u'blue'),
+    (COLOR_MAGENTA, u'magenta'),
+    (COLOR_CYAN, u'cyan'),
+    (COLOR_YELLOW, u'yellow'),
+    (COLOR_GREENYELLOW, u'greenyellow '),
 )
     
 
@@ -35,4 +38,7 @@ class TagProperties(models.Model):
         verbose_name_plural = _(u'tags properties')
 
     def __unicode__(self):
-        return self.tag
+        return unicode(self.tag)
+
+    def get_color_code(self):
+        return dict(COLOR_CODES)[self.color]

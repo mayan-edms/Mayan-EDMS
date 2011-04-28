@@ -47,7 +47,7 @@ register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, 
 register_menu([
     {'text': _('OCR'), 'view': 'queue_document_list', 'links':[
         queue_document_list, node_active_list
-    ], 'famfam': 'hourglass', 'position': 4}])
+    ], 'famfam': 'hourglass', 'position': 5}])
 
 
 try:

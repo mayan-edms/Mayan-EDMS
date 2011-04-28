@@ -356,7 +356,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
                         <span class="famfam active famfam-%(famfam)s"></span>%(text)s
                     </button>
                 ''' % {
-                    'famfam': link.get('famfam', 'link'),
+                    'famfam': link.get('famfam', u'link'),
                     'text': capfirst(link['text']),
                     'action': reverse('metadatagroup_view', args=[value['current_document'].pk, value['group'].pk])
                 })
@@ -365,13 +365,16 @@ class MetaDataImageWidget(forms.widgets.Widget):
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
             tags_template = []
+            tag_block_template = u'<div style="padding: 1px; border: 1px solid black; background: %s;">%s</div>'
             tag_count = document.tags.count()
             if tag_count:
                 tags_template.append(u'<div class="tc">')
-                tags_template.append(u'%(tag_string)s (%(tag_count)s): ' % {
+                tags_template.append(u'<div>%(tag_string)s: %(tag_count)s</div>' % {
                     'tag_string': _(u'Tags'), 'tag_count': tag_count})
                 
-                tags_template.append(u', '.join(document.tags.values_list('name', flat=True)))
+                for tag in document.tags.all():
+                    tags_template.append(tag_block_template % (tag.tagproperties_set.get().get_color_code(), tag.name))
+
                 tags_template.append(u'</div>')
                                 
             output.append(
