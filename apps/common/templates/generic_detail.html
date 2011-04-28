@@ -99,6 +99,7 @@
     {% with subtemplate.main_object as main_object %}
     {% with subtemplate.hide_link as hide_link %}
     {% with subtemplate.hide_header as hide_header %}
+    {% with subtemplate.navigation_object_links as navigation_object_links %}
             
         <div class="grid_{{ subtemplate.grid|default:11 }}">
 
@@ -127,6 +128,7 @@
         {% if subtemplate.grid_clear or not subtemplate.grid %}
             <div class="clear"></div> 
         {% endif %}
+    {% endwith %}
     {% endwith %}
     {% endwith %}
     {% endwith %}

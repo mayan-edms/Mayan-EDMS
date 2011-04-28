@@ -24,6 +24,7 @@ from filesystem_serving.api import document_create_fs_links, document_delete_fs_
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from permissions.api import check_permissions
 from navigation.utils import resolve_to_name
+from tags.utils import get_tags_subtemplate
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -289,20 +290,10 @@ def document_view(request, document_id):
             'object': document,
         },
     ]
-    
+
     subtemplates_dict = []
     if document.tags.count():
-        subtemplates_dict.append( 
-            {
-                'name': 'generic_list_subtemplate.html',
-                'title': _(u'tags'),
-                'object_list': document.tags.all(),
-                'extra_columns': [
-                    {'name': _(u'color'), 'attribute': lambda x: u'<div style="width: 20px; height: 20px; border: 1px solid black; background: %s;"></div>' % x.tagproperties_set.get().get_color_code()}
-                ],
-                'hide_link': True,
-            }
-        )
+        subtemplates_dict.append(get_tags_subtemplate(document))
 
     subtemplates_dict.append(
         {
@@ -851,17 +842,7 @@ def document_view_simple(request, document_id):
     
     subtemplates_dict = []
     if document.tags.count():
-        subtemplates_dict.append( 
-            {
-                'name': 'generic_list_subtemplate.html',
-                'title': _(u'tags'),
-                'object_list': document.tags.all(),
-                'extra_columns': [
-                    {'name': _(u'color'), 'attribute': lambda x: u'<div style="width: 20px; height: 20px; border: 1px solid black; background: %s;"></div>' % x.tagproperties_set.get().get_color_code()}
-                ],
-                'hide_link': True,
-            }
-        )
+        subtemplates_dict.append(get_tags_subtemplate(document))
 
     subtemplates_dict.append(
         {
