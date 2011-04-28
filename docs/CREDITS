@@ -101,7 +101,6 @@ MongoDB - (from "humongous") is a scalable, high-performance, open
 PyMongo - is a Python distribution containing tools for working with
           MongoDB, and is the recommended way to work with MongoDB from
           Python.
-          
     Copyright 2009, Michael Dirolf
     http://api.mongodb.org/python/
           
@@ -121,10 +120,15 @@ Image 1299551545_egypt200.png
     Iconka
     http://iconka.com/
 
-django-sendfile - This is a wrapper around web-server specific methods for sending files to web clients. 
+django-sendfile - This is a wrapper around web-server specific methods
+                  for sending files to web clients. 
     johnsensible (John Montgomery)
     https://github.com/johnsensible/django-sendfile
 
-jQuery-Jail
+jQuery-Jail - Jquery Asynchronous Image Loader (JAIL)
+    Sebastiano Armeli-Battana (contact@sebarmeli.com)
+    http://www.sebastianoarmelibattana.com/projects/jail
 
-django-taggit
+django-taggit - is a reusable Django application for simple tagging
+    Alex Gaynor (alex.gaynor@gmail.com)
+    http://pypi.python.org/pypi/django-taggit

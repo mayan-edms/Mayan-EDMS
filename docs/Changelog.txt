@@ -1,3 +1,28 @@
+2011-Apr-28
+* Added document tagging support
+    - Required installing django-taggit and doing a sync-db
+ 
+2011-Apr-27
+* Changed the previewing and deleting staging files views to required DOCUMENT_CREATE permission
+* Added no-parent-history class to document page links so that iframe clicking doesn't affect the parent window history
+  Fixes back button issue on Chrome 9 & 10
+* Added per app version display tag
+* Added loading spinner animation
+* Messages tweaks and translation updates
+
+2011-Apr-26
+* Converter app cleanups, document pre-cache, magic number removal
+
+2011-Apr-25
+* Added OCR view displaying all active OCR tasks from all cluster nodes
+* Disabled CELERY_DISABLE_RATE_LIMITS by default
+* Implement local task locking using Django locmem cache backend
+
+2011-Apr-24
+* Added doc extension to office document format list
+* Removed redundant tranformation calculation
+* Make sure OCR in processing documents cannot be deleted
+
 2011-Apr-23
 * PEP8, pylint cleanups and removal of relative imports
 * Removed the obsolote DOCUMENTS_GROUP_MAX_RESULTS setting option
