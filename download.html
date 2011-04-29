@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Mayan EDMS :: Download</title>
+	<meta name="description" content="Open Source Django-based Electronic Document Management System" />
+	<meta name="keywords" content="open source, django, dms, edms, cms, electronic document" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="images/bullet.png" title="Mayan" />	
+</head>
+<body>
+  <a href="http://github.com/rosarior/mayan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+	<div id="header">
+		<h1><a href="#">Downloading Mayan EDMS</a></h1>
+		<ul id="menu">
+			<li><a href="index.html">about</a></li>
+			<li><a href="screenshots.html">screenshots</a></li>
+			<li class="active"><a href="download.html">download</a></li>
+		</ul>
+	</div>
+
+	<div id="teaser">
+		<div class="wrap">
+			<div id="image"></div>
+			<div class="box">
+				<h2>Welcome to <em title="Electronic Document Management System">Mayan EDMS</em></em></h2>
+				<p>
+					Open source, Django based document manager with custom meta-data indexing, file serving integration, document tagging and OCR capabilities.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="bar">
+		<div class="wrap">
+			<span class="step"><a>1</a> capture</span>
+			<span class="step"><a>2</a> organize</span>
+			<span class="step"><a>3</a> store</span>
+		</div>
+	</div>
+
+
+    
+
+	<div class="wrap">
+		<div class="col">
+			<h3><span class="red">Where</span> to get it?</h3>
+    <p>
+     <p>The latest releases are available at <a href="https://github.com/rosarior/mayan/archives/master">GitHub.com</a></p>
+     <p>
+      Or you can download the latest development version either in
+      <a href="http://github.com/rosarior/mayan/zipball/master">zip</a> or
+      <a href="http://github.com/rosarior/mayan/tarball/master">tar</a> format.
+    </p>
+    
+    </p>
+    
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:</p>
+      <span class="info">$ git clone git://github.com/rosarior/mayan</span>
+
+	</div>
+		
+		<div class="col">
+			<h3><span class="red">What</span> it needs?</h3>
+				<ul class="bullets">
+					<li>Django - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.</li>
+					<li>django-pagination</li>
+					<li>django-filetransfers - File upload/download abstraction</li>
+					<li>celery- asynchronous task queue/job queue based on distributed message passing</li>
+					<li>django-celery - celery Django integration</li>
+					<li>libmagic - MIME detection library</li>
+					<li>tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.</li>
+					<li>unpaper - post-processing scanned and photocopied book pages</li>
+					<li>ImageMagick - Convert, Edit, Or Compose Bitmap Images</li>
+					<li>GraphicMagick - Robust collection of tools and libraries to read, write, and manipulate an image.</li>
+					<li>popper-utils' pdftotext</li>
+				</ul>
+		</div>
+		<div class="col last">
+			<h3><span class="red">How</span> to install it?</h3>
+				<p class="info">
+					virtualenv --no-site-packages mayan<br />
+					cd mayan<br />
+					git clone git://github.com/rosarior/mayan.git<br />
+					cd mayan<br />
+					source ../bin/activate<br />
+					pip install -r requirements/production.txt<br />
+				</p>
+		</div>
+	</div>
+		
+	<div id="footer">
+		<p class="right">Design: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.solucija.com/">Solucija</a></p>
+		<p>&copy; Copyright 2011 <a href="mailto:roberto.rosario.gonzalez[at]gmail.com">Roberto Rosario</a> &middot; All Rights Reserved</p>
+	</div>
+</body>
+</html>
