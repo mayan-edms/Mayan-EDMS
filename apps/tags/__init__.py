@@ -24,9 +24,23 @@ register_permissions('tags', [
 tag_list = {'text': _('tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}
 tag_document_remove = {'text': _('delete'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_REMOVE]}}
 tag_delete = {'text': _('delete'), 'view': 'tag_delete', 'args': 'object.id', 'famfam': 'tag_blue_delete', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_DELETE]}}
+tag_edit = {'text': _('edit'), 'view': 'tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_EDIT]}}
+tag_tagged_item_list = {'text': _('tagged documents'), 'view': 'tag_tagged_item_list', 'args': 'object.id', 'famfam': 'tag_blue_edit'}
 tag_multiple_delete = {'text': _('delete'), 'view': 'tag_multiple_delete', 'famfam': 'tag_blue_delete', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_DELETE]}}
 
-#register_links(Tag, [tag_delete])
+register_model_list_columns(Tag, [
+    {
+        'name': _(u'color'),
+        'attribute': lambda x: u'<div style="width: 20px; height: 20px; border: 1px solid black; background: %s;"></div>' %
+            x.tagproperties_set.get().get_color_code(),
+    },
+    {
+        'name': _(u'color name'),
+        'attribute': lambda x: x.tagproperties_set.get().get_color_display(),
+    }
+])
+
+register_links(Tag, [tag_tagged_item_list, tag_edit])
 
 register_multi_item_links(['tag_list'], [tag_multiple_delete])
 
@@ -39,5 +53,4 @@ tags_menu = [
         ]
     },
 ]
-
 register_menu(tags_menu)

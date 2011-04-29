@@ -27,7 +27,7 @@ COLOR_CODES = (
     (COLOR_YELLOW, u'yellow'),
     (COLOR_GREENYELLOW, u'greenyellow '),
 )
-    
+
 
 class TagProperties(models.Model):
     tag = models.ForeignKey(Tag, verbose_name=_(u'tag'))

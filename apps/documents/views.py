@@ -66,19 +66,15 @@ PICTURE_UNKNOWN_SMALL = u'1299549572_unknown2.png'
 PICTURE_UNKNOWN_MEDIUM = u'1299549805_unknown.png'
 
 
-def document_list(request):
+def document_list(request, object_list=None, title=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
-    return object_list(
-        request,
-        queryset=Document.objects.only('file_filename', 'file_extension').all(),
-        template_name='generic_list.html',
-        extra_context={
-            'title': _(u'documents'),
-            'multi_select_as_buttons': True,
-            'hide_links': True,
-        },
-    )
+    return render_to_response('generic_list.html', {
+        'object_list': object_list if object_list else Document.objects.only('file_filename', 'file_extension').all(),
+        'title': title if title else _(u'documents'),
+        'multi_select_as_buttons': True,
+        'hide_links': True,
+    }, context_instance=RequestContext(request))
 
 
 def document_create(request, multiple=True):

@@ -131,6 +131,17 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     context_links = []
 
     try:
+        """
+        Override the navigation links dictionary with the provided
+        link list
+        """
+        navigation_object_links = Variable('navigation_object_links').resolve(context)
+        if navigation_object_links:
+            return navigation_object_links
+    except VariableDoesNotExist:
+        pass
+
+    try:
         object_name = Variable('navigation_object_name').resolve(context)
     except VariableDoesNotExist:
         object_name = 'object'
@@ -139,12 +150,6 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         obj = Variable(object_name).resolve(context)
     except VariableDoesNotExist:
         obj = None
-
-    try:
-        navigation_object_links = Variable('navigation_object_links').resolve(context)
-        links_dict = navigation_object_links if navigation_object_links else object_navigation
-    except VariableDoesNotExist:
-        pass
     
     try:
         links = links_dict[menu_name][current_view]['links']

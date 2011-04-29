@@ -6,26 +6,25 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from permissions.api import check_permissions
-
 from taggit.models import Tag
 from documents.models import Document
+from documents.views import document_list
 
-from tags.forms import AddTagForm
+from tags.forms import AddTagForm, TagForm
 from tags.models import TagProperties
 from tags import PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH, \
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT
-    
+
 
 def tag_remove(request, tag_id, document_id):
     check_permissions(request.user, 'tags', [PERMISSION_TAG_REMOVE])
 
     tag = get_object_or_404(Tag, pk=tag_id)
-    document = get_object_or_404(Document, pk=document_id)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
     tag.delete()
     messages.success(request, _(u'Tag "%s" removed successfully.') % tag)
-    
+
     return HttpResponseRedirect(previous)
 
 
@@ -33,7 +32,7 @@ def tag_add(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    
+
     if request.method == 'POST':
         previous = request.META.get('HTTP_REFERER', '/')
         form = AddTagForm(request.POST)
@@ -52,17 +51,17 @@ def tag_add(request, document_id):
             else:
                 messages.error(request, _(u'Must choose either a new tag or an existing one.'))
                 return HttpResponseRedirect(previous)
-                    
+
             if tag_name in document.tags.values_list('name', flat=True):
                 messages.warning(request, _(u'Document is already tagged as "%s"') % tag_name)
                 return HttpResponseRedirect(previous)
-            
+
             document.tags.add(tag_name)
-            
+
             if is_new:
                 tag = Tag.objects.get(name=tag_name)
                 TagProperties(tag=tag, color=form.cleaned_data['color']).save()
-                
+
             messages.success(request, _(u'Tag "%s" added successfully.') % tag_name)
 
     return HttpResponseRedirect(previous)
@@ -127,3 +126,37 @@ def tag_multiple_delete(request):
     return tag_delete(
         request, tag_id_list=request.GET.get('id_list', [])
     )
+
+
+def tag_edit(request, tag_id):
+    check_permissions(request.user, 'tags', [PERMISSION_TAG_EDIT])
+    tag = get_object_or_404(Tag, pk=tag_id)
+
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            tag.name = form.cleaned_data['name']
+            tag.save()
+            tag_properties = tag.tagproperties_set.get()
+            tag_properties.color = form.cleaned_data['color']
+            tag_properties.save()
+            return HttpResponseRedirect(reverse('tag_list'))
+    else:
+        form = TagForm(initial={
+            'name': tag.name,
+            'color': tag.tagproperties_set.get().color
+        })
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit tag: %s') % tag,
+        'form': form,
+        'object': tag,
+    },
+    context_instance=RequestContext(request))
+
+
+def tag_tagged_item_list(request, tag_id):
+    tag = get_object_or_404(Tag, pk=tag_id)
+    object_list = [tagged_item.content_object for tagged_item in tag.taggit_taggeditem_items.all()]
+
+    return document_list(request, object_list=object_list, title=_('documents with the tag "%s"') % tag)

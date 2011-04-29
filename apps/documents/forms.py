@@ -365,7 +365,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
             tags_template = []
-            tag_block_template = u'<div style="padding: 1px; border: 1px solid black; background: %s;">%s</div>'
+            tag_block_template = u'<div style="padding: 0px 5px 0px 5px; border: 1px solid black; background: %s;">%s</div>'
             tag_count = document.tags.count()
             if tag_count:
                 tags_template.append(u'<div class="tc">')
