@@ -22,7 +22,7 @@ register_permissions('tags', [
 ])
 
 tag_list = {'text': _('tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}
-tag_document_remove = {'text': _('delete'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_REMOVE]}}
+tag_document_remove = {'text': _('remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_REMOVE]}}
 tag_delete = {'text': _('delete'), 'view': 'tag_delete', 'args': 'object.id', 'famfam': 'tag_blue_delete', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_DELETE]}}
 tag_edit = {'text': _('edit'), 'view': 'tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': {'namespace': 'tags', 'permissions': [PERMISSION_TAG_EDIT]}}
 tag_tagged_item_list = {'text': _('tagged documents'), 'view': 'tag_tagged_item_list', 'args': 'object.id', 'famfam': 'tag_blue_edit'}
