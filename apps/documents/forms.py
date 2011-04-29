@@ -204,13 +204,13 @@ class DocumentContentForm(forms.Form):
 class DocumentForm_view(DetailForm):
     class Meta:
         model = Document
-        exclude = ('file',)
+        exclude = ('file', 'tags')
 
 
 class DocumentForm_edit(DocumentForm):
     class Meta:
         model = Document
-        exclude = ('file', 'document_type')
+        exclude = ('file', 'document_type', 'tags')
 
 
 class StagingDocumentForm(forms.Form):
