@@ -40,7 +40,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
             output.append('''
                 <div class="full-height scrollable" style="overflow: auto;">
                     <div class="tc">
-                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(media_url)s/images/blank.gif" />
+                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(media_url)s/images/ajax-loader.gif" />
                         <noscript>
                             <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" />
                         </noscript>     
@@ -118,7 +118,7 @@ class ImageWidget(forms.widgets.Widget):
                         <div class="tc">%(page_string)s %(page)s</div>
                         <div class="tc">
                             <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
-                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(media_url)s/images/blank.gif"/>
+                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(media_url)s/images/ajax-loader.gif"/>
                                 <noscript>
                                     <img src="%(img)s?page=%(page)d" />
                                 </noscript>
@@ -384,7 +384,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
                         %(tags_template)s
                         <div class="tc">
                             <a rel="group_%(group_id)d_documents_gallery" class="fancybox-noscaling" href="%(view_url)s">
-                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(media_url)s/images/blank.gif" data-href="%(img)s" />
+                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(media_url)s/images/ajax-loader.gif" data-href="%(img)s" />
                                 <noscript>
                                     <img style="border: 1px solid black; margin: 10px;" src="%(img)s" />
                                 </noscript>

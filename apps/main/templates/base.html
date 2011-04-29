@@ -88,8 +88,8 @@
             });
             $('img.lazy-load').jail({
                 event: 'load',
-                placeholder : '{{ MEDIA_URL }}/images/ajax-loader.gif'
-                //effect: 'fadeIn'
+                timeout: 10,
+                placeholder: '{{ MEDIA_URL }}/images/ajax-loader.gif'
             });
         });
     </script>
