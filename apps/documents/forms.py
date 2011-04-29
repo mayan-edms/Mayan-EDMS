@@ -163,7 +163,7 @@ class DocumentForm(forms.ModelForm):
 
     class Meta:
         model = Document
-        exclude = ('description',)
+        exclude = ('description', 'tags')
 
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
