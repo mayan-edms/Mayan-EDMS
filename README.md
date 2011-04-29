@@ -2,33 +2,7 @@ Mayan
 =============
 
 Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities.
- 
-![screenshot](http://img339.imageshack.us/img339/3116/newfullscreenshot2.png)
-
-
-Features
----
-
-* User defined metadata fields
-* Dynamic default values for metadata
-* Lookup support for metadata
-* Filesystem integration by means of metadata indexing directories
-* User defined document uuid generation
-* Local file or server side staging file uploads
-* Batch upload many documents with the same metadata
-* User defined document checksum algorithm
-* Previews for a great deal of image formats, including PDF
-* Search documents by any field value
-* Group documents by metadata automatically
-* Permissions and roles support
-* Multi page document support
-* Page transformations
-* Distributed OCR processing
-* Multilingual user interface (English, Spanish, and easily expanded to others)
-* Multilingual OCR support: English, French, Italian, German, Spanish and others (as supported by Tesseract)
-* Duplicated document search
-* Upload multiple documents inside a ZIP file 
-* Plugable storage backends (File based and GridFS included)
+(http://bit.ly/mayan-edms)
 
 Requirements
 ---
@@ -59,7 +33,7 @@ Executables:
 
 License
 -------
-See docs/LICENSE file.
+GPL Version 3
 
 
 Author
