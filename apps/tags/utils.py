@@ -10,8 +10,10 @@ def get_tags_subtemplate(obj):
     """
     return {
         'name': 'generic_list_subtemplate.html',
-        'title': _(u'tags'),
-        'object_list': obj.tags.all(),
-        'hide_link': True,
-        'navigation_object_links': [tag_document_remove],
+        'context': {
+            'title': _(u'tags'),
+            'object_list': obj.tags.all(),
+            'hide_link': True,
+            'navigation_object_links': [tag_document_remove],
+        }
     }
