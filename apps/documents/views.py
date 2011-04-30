@@ -70,7 +70,7 @@ def document_list(request, object_list=None, title=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     return render_to_response('generic_list.html', {
-        'object_list': object_list if object_list else Document.objects.only('file_filename', 'file_extension').all(),
+        'object_list': object_list if not (object_list is None) else Document.objects.only('file_filename', 'file_extension').all(),
         'title': title if title else _(u'documents'),
         'multi_select_as_buttons': True,
         'hide_links': True,
@@ -287,17 +287,19 @@ def document_view(request, document_id):
         },
     ]
 
-    subtemplates_dict = []
+    subtemplates_list = []
     if document.tags.count():
-        subtemplates_dict.append(get_tags_subtemplate(document))
+        subtemplates_list.append(get_tags_subtemplate(document))
 
-    subtemplates_dict.append(
+    subtemplates_list.append(
         {
             'name': 'generic_list_subtemplate.html',
-            'title': _(u'metadata'),
-            'object_list': document.documentmetadata_set.all(),
-            'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
-            'hide_link': True,
+            'context': {
+                'title': _(u'metadata'),
+                'object_list': document.documentmetadata_set.all(),
+                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+                'hide_link': True,
+            }
         },
     )
 
@@ -312,31 +314,35 @@ def document_view(request, document_id):
         metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
 
     if metadata_groups:
-        subtemplates_dict.append(
+        subtemplates_list.append(
             {
-                'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
-                'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
-                    metadata_group_link
-                ]),
                 'name': 'generic_form_subtemplate.html',
-                'form_action': reverse('metadatagroup_action'),
-                'submit_method': 'GET',
+                'context': {
+                    'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
+                    'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
+                        metadata_group_link
+                    ]),
+                    'form_action': reverse('metadatagroup_action'),
+                    'submit_method': 'GET',
+                }
             }
         )
 
     if FILESERVING_ENABLE:
-        subtemplates_dict.append({
+        subtemplates_list.append({
             'name': 'generic_list_subtemplate.html',
-            'title': _(u'index links'),
-            'object_list': document.documentmetadataindex_set.all(),
-            'hide_link': True
+            'context': {
+                'title': _(u'index links'),
+                'object_list': document.documentmetadataindex_set.all(),
+                'hide_link': True
+            }
         })
 
     return render_to_response('generic_detail.html', {
         'form_list': form_list,
         'object': document,
         'document': document,
-        'subtemplates_dict': subtemplates_dict,
+        'subtemplates_list': subtemplates_list,
     }, context_instance=RequestContext(request))
 
 
@@ -836,17 +842,19 @@ def document_view_simple(request, document_id):
         },
     ]
     
-    subtemplates_dict = []
+    subtemplates_list = []
     if document.tags.count():
-        subtemplates_dict.append(get_tags_subtemplate(document))
+        subtemplates_list.append(get_tags_subtemplate(document))
 
-    subtemplates_dict.append(
+    subtemplates_list.append(
         {
             'name': 'generic_list_subtemplate.html',
-            'title': _(u'metadata'),
-            'object_list': document.documentmetadata_set.all(),
-            'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
-            'hide_link': True,
+            'context': {
+                'title': _(u'metadata'),
+                'object_list': document.documentmetadata_set.all(),
+                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+                'hide_link': True,
+            }
         },
     )
 
@@ -861,18 +869,20 @@ def document_view_simple(request, document_id):
         metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
 
     if metadata_groups:
-        subtemplates_dict.append(
+        subtemplates_list.append(
             {
-                'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
-                'form': MetaDataGroupForm(
-                    groups=metadata_groups, current_document=document,
-                    links=[
-                        metadata_group_link
-                    ]
-                ),
                 'name': 'generic_form_subtemplate.html',
-                'form_action': reverse('metadatagroup_action'),
-                'submit_method': 'GET',
+                'context': {
+                    'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
+                    'form': MetaDataGroupForm(
+                        groups=metadata_groups, current_document=document,
+                        links=[
+                            metadata_group_link
+                        ]
+                    ),
+                    'form_action': reverse('metadatagroup_action'),
+                    'submit_method': 'GET',
+                }
             }
         )
 
@@ -880,7 +890,7 @@ def document_view_simple(request, document_id):
         'form_list': form_list,
         'object': document,
         'document': document,
-        'subtemplates_dict': subtemplates_dict,
+        'subtemplates_list': subtemplates_list,
     }, context_instance=RequestContext(request))
 
 

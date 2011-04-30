@@ -137,7 +137,7 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         """
         navigation_object_links = Variable('navigation_object_links').resolve(context)
         if navigation_object_links:
-            return navigation_object_links
+            return [link for link in resolve_links(context, navigation_object_links, current_view, current_path)]
     except VariableDoesNotExist:
         pass
 
