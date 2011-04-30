@@ -424,6 +424,7 @@ class MetaDataGroupForm(forms.Form):
             self.fields['preview-%s' % group] = forms.CharField(
                 widget=MetaDataImageWidget(),
                 label=u'%s (%d)' % (unicode(group), len(data)),
+                required=False,
                 initial={
                     'group': group,
                     'group_data': data,
