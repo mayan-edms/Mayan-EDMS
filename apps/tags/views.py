@@ -20,9 +20,10 @@ def tag_remove(request, tag_id, document_id):
     check_permissions(request.user, 'tags', [PERMISSION_TAG_REMOVE])
 
     tag = get_object_or_404(Tag, pk=tag_id)
-
+    document = get_object_or_404(Document, pk=document_id)
+    
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    tag.delete()
+    document.tags.remove(tag)
     messages.success(request, _(u'Tag "%s" removed successfully.') % tag)
 
     return HttpResponseRedirect(previous)
