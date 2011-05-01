@@ -3,7 +3,7 @@ import zipfile
 import urlparse
 import urllib
 
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -14,6 +14,7 @@ from django.views.generic.create_update import delete_object, update_object
 from django.conf import settings
 from django.utils.http import urlencode
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.contrib.comments.models import Comment
 
 import sendfile
 from common.utils import pretty_size
@@ -25,6 +26,7 @@ from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from permissions.api import check_permissions
 from navigation.utils import resolve_to_name
 from tags.utils import get_tags_subtemplate
+from comments.utils import get_comments_subtemplate
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -291,6 +293,9 @@ def document_view(request, document_id):
     if document.tags.count():
         subtemplates_list.append(get_tags_subtemplate(document))
 
+    if Comment.objects.for_model(document).count():
+        subtemplates_list.append(get_comments_subtemplate(document))
+        
     subtemplates_list.append(
         {
             'name': 'generic_list_subtemplate.html',
@@ -845,6 +850,9 @@ def document_view_simple(request, document_id):
     subtemplates_list = []
     if document.tags.count():
         subtemplates_list.append(get_tags_subtemplate(document))
+    
+    if Comment.objects.for_model(document).count():
+        subtemplates_list.append(get_comments_subtemplate(document))
 
     subtemplates_list.append(
         {

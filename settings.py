@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'folders',
     'taggit',
     'tags',
+    'comments',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

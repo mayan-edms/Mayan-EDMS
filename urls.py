@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^grappelli/', include('grappelli.urls')),
     (r'^sentry/', include('sentry.urls')),
-    (r'^comments/', include('django.contrib.comments.urls')),
+    (r'^comments/', include('comments.urls')),
 )
 
 
