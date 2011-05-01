@@ -12,9 +12,11 @@ def get_comments_subtemplate(obj):
         'name': 'generic_list_subtemplate.html',
         'context': {
             'title': _(u'comments'),
-            'object_list': Comment.objects.for_model(obj),
+            'object_list': Comment.objects.for_model(obj).order_by('-submit_date'),
             'hide_link': True,
             'hide_object': True,
             'navigation_object_links': [comment_delete],
+            'scrollable_content': True,
+            'scrollable_content_height': '200px',
         }
     }
