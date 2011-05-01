@@ -46,7 +46,7 @@
 		<div class="col">
 			<h3><span class="red">Where</span> to get it?</h3>
     <p>
-     <p>The latest releases are available at <a href="https://github.com/rosarior/mayan/archives/master">GitHub.com</a></p>
+     <p>The latest releases are available at <a href="https://github.com/rosarior/mayan/downloads">GitHub.com</a></p>
      <p>
       Or you can download the latest development version either in
       <a href="http://github.com/rosarior/mayan/zipball/master">zip</a> or
@@ -81,11 +81,16 @@
 				<p class="info">
 					virtualenv --no-site-packages mayan<br />
 					cd mayan<br />
-					git clone git://github.com/rosarior/mayan.git<br />
+					tar -xvzf mayan.tar.gz<br />
 					cd mayan<br />
 					source ../bin/activate<br />
 					pip install -r requirements/production.txt<br />
 				</p>
+				<p>Create the database that will hold the data.  Install any corresponding python database drivers.  Update the settings.py file with you database settings.</p>
+				<p class="info">
+					./manage.py syncdb
+				</p>
+				<p>Then finish deploying it as any other Django project.</p>
 		</div>
 	</div>
 		
