@@ -6,6 +6,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
+from django.contrib.comments.models import Comment
 
 from python_magic import magic
 
@@ -59,6 +61,12 @@ class Document(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
 
     tags = TaggableManager()
+    
+    comments = generic.GenericRelation(
+        Comment,
+        content_type_field='content_type',
+        object_id_field='object_pk'
+    )
 
     class Meta:
         verbose_name = _(u'document')
@@ -447,5 +455,5 @@ class RecentDocument(models.Model):
         verbose_name_plural = _(u'recent documents')
 
 
-register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', 'tags__name'])
+register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', 'tags__name', 'comments__comment'])
 #register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])
