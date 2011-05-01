@@ -112,7 +112,7 @@ Documents
 * Block Setup menu item to non staff and non superuser users
 * Include annotations in transformed documents downloads
 * Toggable option to include default transformation on document upload
-* Add document tagging
+* Add document tagging                                                 - DONE
 * Separate free form document rename and require new permission
 * Test zip file upload with multi directories zip file
 * Don't append an extension separator if extension is non existant
