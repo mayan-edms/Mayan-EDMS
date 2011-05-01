@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.comments.models import Comment
-from comments import comment_delete
+from document_comments import comment_delete
 
 
 def get_comments_subtemplate(obj):

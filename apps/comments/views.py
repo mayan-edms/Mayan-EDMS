@@ -10,8 +10,8 @@ from django.contrib.sites.models import Site
 from permissions.api import check_permissions
 from documents.models import Document
 
-from comments import PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_CREATE
-from comments.forms import CommentForm
+from document_comments import PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_CREATE
+from document_comments.forms import CommentForm
 
 
 def comment_delete(request, comment_id=None, comment_id_list=None):
