@@ -74,6 +74,12 @@ def tag_list(request):
         'title': _(u'tags'),
         'hide_link': True,
         'multi_select_as_buttons': True,
+        'extra_columns': [
+            {
+                'name': _(u'count'),
+                'attribute': lambda x: x.taggit_taggeditem_items.count()
+            }
+        ]
     }, context_instance=RequestContext(request))
 
 
