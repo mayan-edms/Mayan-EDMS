@@ -1,11 +1,11 @@
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from tags import tag_document_remove
 
 
 def get_tags_subtemplate(obj):
     """
-    Return all the settings to render a subtemplate containing and
+    Return all the settings to render a subtemplate containing an
     object's tags
     """
     return {
