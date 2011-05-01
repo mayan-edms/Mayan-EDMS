@@ -26,7 +26,7 @@ from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from permissions.api import check_permissions
 from navigation.utils import resolve_to_name
 from tags.utils import get_tags_subtemplate
-from comments.utils import get_comments_subtemplate
+from document_comments.utils import get_comments_subtemplate
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
