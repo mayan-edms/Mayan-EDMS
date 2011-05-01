@@ -1,10 +1,38 @@
+2011-May-01
+* Added comment app with support for adding and deleting comments to 
+  and from documents
+* Updated requirements files as per issue #9
+* Show tagged item count in the tag list view
+* Show tagget document link in the tags subtemplate of documents
+* Made comment sorted by oldest first, made comment subtemplate
+  scrollable
+* Rename comments app to document_comment to avoid conflict with 
+  Django's comment app
+* Made document comments searchable
+* Bumped version to 0.5.5
+
+2011-Apr-30
+* Bumped version to 0.5.1
+* Applied initial merge of the new subtemplate renderer
+* Fixed tag removal logic
+* Initial commit to support document comments
+
+2011-Apr-29
+* Updated so that loading spinner is displayed always
+* Exclude tags from the local document upload form
+
 2011-Apr-28
 * Added document tagging support
     - Required installing django-taggit and doing a sync-db
- 
+* Bumped version to 0.5
+  Added tag list view and global tag delete support
+     Added tag editing view and listing documents with an specific tag
+
 2011-Apr-27
-* Changed the previewing and deleting staging files views to required DOCUMENT_CREATE permission
-* Added no-parent-history class to document page links so that iframe clicking doesn't affect the parent window history
+* Changed the previewing and deleting staging files views to required
+  DOCUMENT_CREATE permission
+* Added no-parent-history class to document page links so that iframe 
+  clicking doesn't affect the parent window history
   Fixes back button issue on Chrome 9 & 10
 * Added per app version display tag
 * Added loading spinner animation
