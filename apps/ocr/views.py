@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
+from django.conf import settings
 
 from celery.task.control import inspect
 from permissions.api import check_permissions
@@ -26,9 +27,11 @@ from ocr.api import clean_pages
 
 def _display_thumbnail(ocr_document):
     try:
-        preview_url = reverse('document_preview', args=[ocr_document.document.pk])
-        thumbnail_url = reverse('document_thumbnail', args=[ocr_document.document.pk])
-        return u'<a class="fancybox" href="%s"><img src="%s" alt="%s" /></a>' % (preview_url, thumbnail_url, _(u'thumbnail'))
+        return u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail_url)s" src="%(media_url)s/images/ajax-loader.gif" /><noscript><img src="%(thumbnail_url)s" /></noscript></a>' % {
+            'url': reverse('document_preview', args=[ocr_document.document.pk]),
+            'thumbnail_url': reverse('document_thumbnail', args=[ocr_document.document.pk]),
+            'media_url': settings.MEDIA_URL
+        }
     except:
         return u''
 
