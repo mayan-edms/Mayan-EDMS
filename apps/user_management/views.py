@@ -5,9 +5,6 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object, delete_object, update_object
-from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 
 from permissions.api import check_permissions
@@ -16,6 +13,7 @@ from user_management import PERMISSION_USER_VIEW, \
     PERMISSION_USER_EDIT, PERMISSION_USER_CREATE, \
     PERMISSION_USER_DELETE
 from user_management.forms import UserForm
+
 
 def user_list(request):
     check_permissions(request.user, 'user_management', [PERMISSION_USER_VIEW])
@@ -36,7 +34,7 @@ def user_list(request):
                     'name': _(u'active'),
                     'attribute': 'is_active'
                 }
-                
+
             ],
             'multi_select_as_buttons': True,
         },
@@ -46,7 +44,7 @@ def user_list(request):
 def user_edit(request, user_id):
     check_permissions(request.user, 'user_management', [PERMISSION_USER_EDIT])
     user = get_object_or_404(User, pk=user_id)
-    
+
     if request.method == 'POST':
         form = UserForm(instance=user, data=request.POST)
         if form.is_valid():
@@ -66,7 +64,7 @@ def user_edit(request, user_id):
 
 def user_add(request):
     check_permissions(request.user, 'user_management', [PERMISSION_USER_CREATE])
-    
+
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
