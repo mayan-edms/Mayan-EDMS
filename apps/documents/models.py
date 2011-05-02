@@ -38,6 +38,10 @@ def get_filename_from_uuid(instance, filename):
 
 
 class DocumentType(models.Model):
+    """
+    Define document types or classes to which a specific set of
+    properties can be attached
+    """
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
 
     def __unicode__(self):
@@ -45,8 +49,9 @@ class DocumentType(models.Model):
 
 
 class Document(models.Model):
-    ''' Minimum fields for a document entry.
-    '''
+    """
+    Defines a single document with it's fields and properties
+    """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
     uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
@@ -94,6 +99,9 @@ class Document(models.Model):
         return ('document_view_simple', [self.pk])
 
     def get_fullname(self):
+        """
+        Return the fullname of the document's file
+        """
         return os.extsep.join([self.file_filename, self.file_extension])
 
     def update_mimetype(self, save=True):
@@ -115,6 +123,10 @@ class Document(models.Model):
                     self.save()
 
     def open(self):
+        """
+        Return a file descriptor to a document's file irrespective of
+        the storage backend
+        """
         return self.file.storage.open(self.file.path)
 
     def update_checksum(self, save=True):
@@ -164,9 +176,16 @@ class Document(models.Model):
         return filepath
 
     def exists(self):
+        """
+        Returns a boolean value that indicates if the document's file
+        exists in storage
+        """
         return self.file.storage.exists(self.file.path)
 
     def get_metadata_string(self):
+        """
+        Return a formated representation of a document's metadata values
+        """
         return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in self.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
 
     def get_metadata_groups(self, group_obj=None):
@@ -187,8 +206,8 @@ class Document(models.Model):
 
                         page_transformation.save()
 
-available_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else ''
-available_models_string = (_(u' Available models: %s') % ','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else ''
+available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else u''
+available_models_string = (_(u' Available models: %s') % u','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else u''
 
 
 class MetadataType(models.Model):
@@ -211,6 +230,9 @@ class MetadataType(models.Model):
 
 
 class DocumentTypeMetadataType(models.Model):
+    """
+    Define the set of metadata that relates to a single document type
+    """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
     required = models.BooleanField(default=True, verbose_name=_(u'required'))
@@ -224,7 +246,7 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name_plural = _(u'document type metadata type connectors')
 
 
-available_indexing_functions_string = (_(u' Available functions: %s') % ','.join(['%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else ''
+available_indexing_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
 
 
 class MetadataIndex(models.Model):
@@ -243,6 +265,10 @@ class MetadataIndex(models.Model):
 
 
 class DocumentMetadata(models.Model):
+    """
+    Link a document to a specific instance of a metadata type with it's
+    current value
+    """
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
     value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'), db_index=True)
@@ -256,6 +282,10 @@ class DocumentMetadata(models.Model):
 
 
 class DocumentTypeFilename(models.Model):
+    """
+    List of filenames available to a specific document type for the
+    quick rename functionality
+    """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     filename = models.CharField(max_length=128, verbose_name=_(u'filename'), db_index=True)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
@@ -440,6 +470,10 @@ class RecentDocumentManager(models.Manager):
 
 
 class RecentDocument(models.Model):
+    """
+    Keeps a list of the n most recent accessed or created document for
+    a given user
+    """
     user = models.ForeignKey(User, verbose_name=_(u'user'), editable=False)
     document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
     datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), db_index=True)
@@ -455,5 +489,5 @@ class RecentDocument(models.Model):
         verbose_name_plural = _(u'recent documents')
 
 
-register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_filename', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', 'tags__name', 'comments__comment'])
+register(Document, _(u'document'), [u'document_type__name', u'file_mimetype', u'file_filename', u'file_extension', u'documentmetadata__value', u'documentpage__content', u'description', u'tags__name', u'comments__comment'])
 #register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])
