@@ -147,6 +147,7 @@ def tag_edit(request, tag_id):
             tag_properties = tag.tagproperties_set.get()
             tag_properties.color = form.cleaned_data['color']
             tag_properties.save()
+            messages.success(request, _(u'Tag updated succesfully.'))
             return HttpResponseRedirect(reverse('tag_list'))
     else:
         form = TagForm(initial={
