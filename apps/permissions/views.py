@@ -56,18 +56,20 @@ def role_permissions(request, role_id):
     form = RoleForm_view(instance=role)
 
     role_permissions_list = Permission.objects.get_for_holder(role)
-    subtemplates_dict = [
+    subtemplates_list = [
         {
             'name':'generic_list_subtemplate.html',
-            'title':_(u'permissions'),
-            'object_list':Permission.objects.all(),
-            'extra_columns':[
-                {'name':_(u'namespace'), 'attribute':'namespace'},
-                {'name':_(u'name'), 'attribute':'label'},
-                {'name':_(u'state'), 'attribute':lambda x: _role_permission_link(role, x, role_permissions_list)}
-            ],
-            'hide_link':True,
-            'hide_object':True,
+            'context': {
+                'title':_(u'permissions'),
+                'object_list':Permission.objects.all(),
+                'extra_columns':[
+                    {'name':_(u'namespace'), 'attribute':'namespace'},
+                    {'name':_(u'name'), 'attribute':'label'},
+                    {'name':_(u'state'), 'attribute':lambda x: _role_permission_link(role, x, role_permissions_list)}
+                ],
+                'hide_link':True,
+                'hide_object':True,
+            }
         },
     ]
 
@@ -75,7 +77,7 @@ def role_permissions(request, role_id):
         'form': form,
         'object': role,
         'object_name': _(u'role'),
-        'subtemplates_dict': subtemplates_dict,
+        'subtemplates_list': subtemplates_list,
     }, context_instance=RequestContext(request))
 
 
