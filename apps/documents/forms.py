@@ -40,9 +40,9 @@ class DocumentPageImageWidget(forms.widgets.Widget):
             output.append('''
                 <div class="full-height scrollable" style="overflow: auto;">
                     <div class="tc">
-                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(media_url)s/images/ajax-loader.gif" />
+                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" />
                         <noscript>
-                            <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" />
+                            <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" alt="%(string)s" />
                         </noscript>     
                     </div>    
                 </div>''' % {
@@ -50,7 +50,8 @@ class DocumentPageImageWidget(forms.widgets.Widget):
                 'page': value.page_number,
                 'zoom': zoom,
                 'rotation': rotation,
-                'media_url': settings.MEDIA_URL
+                'media_url': settings.MEDIA_URL,
+                'string': ugettext(u'page image')
                 })
             return mark_safe(u''.join(output))
         else:
@@ -118,9 +119,9 @@ class ImageWidget(forms.widgets.Widget):
                         <div class="tc">%(page_string)s %(page)s</div>
                         <div class="tc">
                             <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
-                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(media_url)s/images/ajax-loader.gif"/>
+                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" />
                                 <noscript>
-                                    <img src="%(img)s?page=%(page)d" />
+                                    <img src="%(img)s?page=%(page)d" alt="%(string)s" />
                                 </noscript>
                             </a>
                         </div>
@@ -135,6 +136,7 @@ class ImageWidget(forms.widgets.Widget):
                     'page_string': ugettext(u'Page'),
                     'details_string': ugettext(u'Details'),
                     'media_url': settings.MEDIA_URL,
+                    'string': _(u'document page')
                 })
 
         output.append(u'</div>')
@@ -384,9 +386,9 @@ class MetaDataImageWidget(forms.widgets.Widget):
                         %(tags_template)s
                         <div class="tc">
                             <a rel="group_%(group_id)d_documents_gallery" class="fancybox-noscaling" href="%(view_url)s">
-                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(media_url)s/images/ajax-loader.gif" data-href="%(img)s" />
+                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(media_url)s/images/ajax-loader.gif" data-href="%(img)s" alt="%(string)s" />
                                 <noscript>
-                                    <img style="border: 1px solid black; margin: 10px;" src="%(img)s" />
+                                    <img style="border: 1px solid black; margin: 10px;" src="%(img)s" alt="%(string)s" />
                                 </noscript>
                             </a>
                         </div>
@@ -404,7 +406,8 @@ class MetaDataImageWidget(forms.widgets.Widget):
                     'group_id': value['group'].pk,
                     'document_name': document,
                     'media_url': settings.MEDIA_URL,
-                    'tags_template': u''.join(tags_template) if tags_template else u''
+                    'tags_template': u''.join(tags_template) if tags_template else u'',
+                    'string': _(u'group document'),
                 })
         output.append(u'</div>')
         output.append(

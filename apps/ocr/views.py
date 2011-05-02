@@ -27,10 +27,11 @@ from ocr.api import clean_pages
 
 def _display_thumbnail(ocr_document):
     try:
-        return u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail_url)s" src="%(media_url)s/images/ajax-loader.gif" /><noscript><img src="%(thumbnail_url)s" /></noscript></a>' % {
+        return u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail_url)s" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail_url)s" alt="%(string)s" /></noscript></a>' % {
             'url': reverse('document_preview', args=[ocr_document.document.pk]),
             'thumbnail_url': reverse('document_thumbnail', args=[ocr_document.document.pk]),
-            'media_url': settings.MEDIA_URL
+            'media_url': settings.MEDIA_URL,
+            'string': _(u'thumbnail')
         }
     except:
         return u''

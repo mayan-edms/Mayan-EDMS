@@ -127,10 +127,11 @@ def document_exists(document):
 
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
-            lambda x: u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(media_url)s/images/ajax-loader.gif" /><noscript><img src="%(thumbnail)s" /></noscript></a>' % {
+            lambda x: u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>' % {
                 'url': reverse('document_preview', args=[x.pk]),
                 'thumbnail': reverse('document_thumbnail', args=[x.pk]),
-                'media_url': settings.MEDIA_URL
+                'media_url': settings.MEDIA_URL,
+                'string': _(u'thumbnail')
             }
         },
         {'name':_(u'metadata'), 'attribute':
