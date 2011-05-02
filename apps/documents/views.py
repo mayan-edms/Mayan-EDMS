@@ -1034,14 +1034,11 @@ def document_page_navigation_last(request, document_page_id):
 
 
 def document_list_recent(request):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-
-    return render_to_response('generic_list.html', {
-        'object_list': [recent_document.document for recent_document in RecentDocument.objects.all()],
-        'title': _(u'recent documents'),
-        'multi_select_as_buttons': True,
-        'hide_links': True
-    }, context_instance=RequestContext(request))
+    return document_list(
+        request,
+        object_list=[recent_document.document for recent_document in RecentDocument.objects.all()],
+        title=_(u'recent documents')
+    )
 
 
 def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
