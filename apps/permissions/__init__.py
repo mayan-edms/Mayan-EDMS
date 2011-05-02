@@ -23,8 +23,8 @@ role_members = {'text': _(u'members'), 'view': 'role_members', 'args': 'object.i
 role_permissions = {'text': _(u'role permissions'), 'view': 'role_permissions', 'args': 'object.id', 'famfam': 'key_go', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]}}
 role_delete = {'text': _(u'delete'), 'view': 'role_delete', 'args': 'object.id', 'famfam': 'medal_gold_delete', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_DELETE]}}
 
-register_links(Role, [role_permissions, role_edit, role_members, role_delete])
-register_links(['role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_create], menu_name='sidebar')
+register_links(Role, [role_edit, role_delete, role_permissions, role_members])
+register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_create, role_list], menu_name='sidebar')
 
 
 def user_post_save(sender, instance, **kwargs):
