@@ -7,6 +7,7 @@ from permissions import role_list
 from documents import document_find_all_duplicates
 from filesystem_serving import filesystem_serving_recreate_all_links
 from ocr import all_document_ocr_cleanup
+from user_management import user_list
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
@@ -45,7 +46,7 @@ main_menu = [
         ], 'famfam': 'wrench', 'name': 'tools', 'position': 7},
 
     {'text': _(u'setup'), 'view': 'check_settings', 'links': [
-        check_settings, role_list
+        check_settings, role_list, user_list
         ], 'famfam': 'cog', 'name': 'setup', 'position': 8},
 
     {'text': _(u'about'), 'view': 'about', 'position': 9},

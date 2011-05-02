@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'taggit',
     'tags',
     'document_comments',
+    'user_management',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     (r'^grappelli/', include('grappelli.urls')),
     (r'^sentry/', include('sentry.urls')),
     (r'^comments/', include('document_comments.urls')),
+    (r'^user_management/', include('user_management.urls')),
 )
 
 
