@@ -142,12 +142,13 @@ register_model_list_columns(Document, [
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
     register_menu([
-        {'text': _(u'documents'), 'view': 'document_create', 'links': [
-            document_create, document_create_multiple, document_list,\
-            document_list_recent
+        {'text': _(u'documents'), 'view': 'document_list_recent', 'links': [
+            document_list_recent, document_list, document_create, \
+            document_create_multiple
+            
         ], 'famfam': 'page', 'position': 1}])
 else:
     register_menu([
-        {'text': _(u'documents'), 'view': 'document_create_multiple', 'links': [
-            document_create_multiple, document_list, document_list_recent
+        {'text': _(u'documents'), 'view': 'document_list_recent', 'links': [
+            document_list_recent, document_list, document_create_multiple
         ], 'famfam': 'page', 'position': 1}])
