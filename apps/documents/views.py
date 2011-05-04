@@ -1036,7 +1036,7 @@ def document_page_navigation_last(request, document_page_id):
 def document_list_recent(request):
     return document_list(
         request,
-        object_list=[recent_document.document for recent_document in RecentDocument.objects.all()],
+        object_list=[recent_document.document for recent_document in RecentDocument.objects.filter(user=request.user)],
         title=_(u'recent documents')
     )
 
