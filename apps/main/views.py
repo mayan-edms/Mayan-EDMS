@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import PermissionDenied
 
 from common.utils import exists_with_famfam, return_type
 from common.conf import settings as common_settings
@@ -11,6 +12,7 @@ from ocr.conf import settings as ocr_settings
 from ocr.statistics import get_statistics as ocr_statistics
 from filesystem_serving.conf import settings as filesystem_serving_settings
 from dynamic_search.conf import settings as search_settings
+from permissions.api import check_permissions
 
 from main.conf import settings as main_settings
 from main.api import diagnostics, tools
@@ -116,12 +118,29 @@ def check_settings(request):
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
 
+
 def tools_menu(request):
+    user_tools = {}
+    for namespace, values in tools.items():
+        for link in values['links']:
+            try:
+                namespace = link.get('permissions', {}).get('namespace', None)
+                permissions = link.get('permissions', {}).get('permissions', [])
+                check_permissions(request.user, namespace, permissions)
+                user_tools[namespace] = {
+                    'title': values['title']
+                    }
+                user_links = user_tools[namespace].setdefault('links', [])
+                user_tools[namespace]['links'].append(link)
+            except PermissionDenied:
+                pass
+
     return render_to_response('tools.html', {
-        'blocks': tools,
+        'blocks': user_tools,
         'title': _(u'tools menu')
     },
     context_instance=RequestContext(request))
+
 
 def statistics(request):
     blocks = []
