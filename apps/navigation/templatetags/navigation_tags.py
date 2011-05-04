@@ -7,6 +7,8 @@ from django.template import TemplateSyntaxError, Library, \
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
+from django.template import TemplateSyntaxError, Library, Context
+    
 from navigation.api import object_navigation, multi_object_navigation, \
     menu_links as menu_navigation, sidebar_templates
 from navigation.forms import MultiItemForm
@@ -21,11 +23,12 @@ def process_links(links, view_name, url):
     for item, count in zip(links, range(len(links))):
         item_view = 'view' in item and item['view']
         item_url = 'url' in item and item['url']
+        new_link = item.copy()
         if view_name == item_view or url == item_url:
-            active = True
+            new_link['active'] = True
             active_item = item
         else:
-            active = False
+            new_link['active'] = False
             if 'links' in item:
                 for child_link in item['links']:
                     child_view = 'view' in child_link and child_link['view']
@@ -33,14 +36,12 @@ def process_links(links, view_name, url):
                     if view_name == child_view or url == child_url:
                         active = True
                         active_item = item
-
-        items.append({
+        new_link.update({
             'first': count == 0,
-            'active': active,
-            'url': item_view and reverse(item_view) or item_url or '#',
-            'text': unicode(item['text']),
-            'famfam': 'famfam' in item and item['famfam'],
+            'url': item_view and reverse(item_view) or item_url or u'#',
             })
+        items.append(new_link)
+            
     return items, active_item
 
 
@@ -256,3 +257,29 @@ def get_sidebar_templates(parser, token):
 
     menu_name, var_name = m.groups()
     return GetSidebarTemplatesNone(var_name=var_name)
+
+
+class EvaluateLinkNone(Node):
+    def __init__(self, condition, var_name):
+        self.condition = condition
+        self.var_name = var_name
+
+    def render(self, context):
+        condition = Variable(self.condition).resolve(context)
+        if condition:
+             context[self.var_name] = condition(Context(context))
+             return u''
+        else:
+            context[self.var_name] = True
+            return u''
+
+
+@register.tag
+def evaluate_link(parser, token):
+    tag_name, arg = token.contents.split(None, 1)
+    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
+    if not m:
+        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+
+    condition, var_name = m.groups()
+    return EvaluateLinkNone(condition=condition, var_name=var_name)
