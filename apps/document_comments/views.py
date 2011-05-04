@@ -48,7 +48,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         'next': next,
     }
     if len(comments) == 1:
-        context['object'] = comments[0]
+        context['object'] = comments[0].content_object
         context['title'] = _(u'Are you sure you wish to delete the comment: %s?') % ', '.join([unicode(d) for d in comments])
     elif len(comments) > 1:
         context['title'] = _(u'Are you sure you wish to delete the comments: %s?') % ', '.join([unicode(d) for d in comments])
@@ -90,4 +90,5 @@ def comment_add(request, document_id):
         'form': form,
         'title': _(u'Add comment to document: %s') % document,
         'next': next,
+        'object': document,
     }, context_instance=RequestContext(request))
