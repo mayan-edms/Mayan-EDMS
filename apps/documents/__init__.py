@@ -6,6 +6,7 @@ from navigation.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
 from main.api import register_diagnostic, register_tool
 from permissions.api import register_permissions
+from tags.widgets import get_tags_inline_widget_simple
 
 from documents.models import Document, DocumentPage, DocumentPageTransformation
 from documents.staging import StagingFile
@@ -134,6 +135,9 @@ register_model_list_columns(Document, [
                 'media_url': settings.MEDIA_URL,
                 'string': _(u'thumbnail')
             }
+        },
+        {'name':_(u'tags'), 'attribute':
+            lambda x: get_tags_inline_widget_simple(x)
         },
         {'name':_(u'metadata'), 'attribute':
             lambda x: x.get_metadata_string()

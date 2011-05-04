@@ -9,14 +9,13 @@ from django.forms.formsets import formset_factory
 from django.template.defaultfilters import capfirst
 from django.conf import settings
 
-from documents.staging import StagingFile
-
+from tags.widgets import get_tags_inline_widget
 from common.wizard import BoundFormWizard
 from common.forms import DetailForm
 
+from documents.staging import StagingFile
 from documents.models import Document, DocumentType, DocumentTypeMetadataType, \
     DocumentPage, DocumentPageTransformation
-
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 
@@ -366,18 +365,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
 
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
-            tags_template = []
-            tag_block_template = u'<div style="padding: 0px 5px 0px 5px; border: 1px solid black; background: %s;">%s</div>'
-            tag_count = document.tags.count()
-            if tag_count:
-                tags_template.append(u'<div class="tc">')
-                tags_template.append(u'<div>%(tag_string)s: %(tag_count)s</div>' % {
-                    'tag_string': _(u'Tags'), 'tag_count': tag_count})
-                
-                for tag in document.tags.all():
-                    tags_template.append(tag_block_template % (tag.tagproperties_set.get().get_color_code(), tag.name))
-
-                tags_template.append(u'</div>')
+            tags_template = get_tags_inline_widget(document)
                                 
             output.append(
                 u'''<div style="display: inline-block; margin: 10px; %(current)s">
@@ -406,7 +394,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
                     'group_id': value['group'].pk,
                     'document_name': document,
                     'media_url': settings.MEDIA_URL,
-                    'tags_template': u''.join(tags_template) if tags_template else u'',
+                    'tags_template': tags_template if tags_template else u'',
                     'string': _(u'group document'),
                 })
         output.append(u'</div>')
