@@ -7,6 +7,7 @@ from django.utils.http import urlquote  as django_urlquote
 from django.utils.http import urlencode as django_urlencode
 from django.utils.datastructures import MultiValueDict
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 
 def urlquote(link=None, get=None):
@@ -112,19 +113,6 @@ def exists_with_famfam(path):
 
 # The code here is based loosely on John Cardinal's notes found at:
 # http://www.johncardinal.com/tmgutil/capitalizenames.htm
-
-# 2006-03-16
-# Thanks to David Kern <kernd@reasonspace.com> for fixing some bugs.
-
-#class Name(str):
-#    """A Class (based on the string type) that properly capitalizes a name."""
-#
-#    def __new__(cls, value=''):
-#        original = value
-#        proper = Capitalize(value)
-#        obj = str.__new__(cls, proper)
-#        obj.original = original
-#        return obj
 
 def proper_name(name):
     """Does the work of capitalizing a name (can be a full name)."""
@@ -303,3 +291,15 @@ def proper_name(name):
 
 mc = re.compile(r'^Mc(\w)(?=\w)', re.I)
 mac = re.compile(r'^Mac(\w)(?=\w)', re.I)
+
+def return_type(value):
+    if isinstance(value, types.FunctionType):
+        return value.__doc__ if value.__doc__ else _(u'function found')
+    elif isinstance(value, types.ClassType):
+        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
+    elif isinstance(value, types.TypeType):
+        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
+    elif isinstance(value, types.DictType) or isinstance(value, types.DictionaryType):
+        return ','.join(list(value))
+    else:
+        return value

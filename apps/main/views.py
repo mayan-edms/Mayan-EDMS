@@ -1,11 +1,8 @@
-import types
-
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import exists_with_famfam
-
+from common.utils import exists_with_famfam, return_type
 from common.conf import settings as common_settings
 from documents.conf import settings as documents_settings
 from documents.statistics import get_statistics as documents_statistics
@@ -14,8 +11,8 @@ from ocr.conf import settings as ocr_settings
 from ocr.statistics import get_statistics as ocr_statistics
 from filesystem_serving.conf import settings as filesystem_serving_settings
 from dynamic_search.conf import settings as search_settings
-from main.conf import settings as main_settings
 
+from main.conf import settings as main_settings
 from main.api import diagnostics
 
 
@@ -110,7 +107,7 @@ def check_settings(request):
         'hide_object': True,
         'extra_columns': [
             {'name': _(u'name'), 'attribute': 'name'},
-            {'name': _(u'value'), 'attribute': lambda x: _return_type(x['value'])},
+            {'name': _(u'value'), 'attribute': lambda x: return_type(x['value'])},
             {'name': _(u'description'), 'attribute': lambda x: x.get('description', {}).get(x['name'], '')},
             {'name': _(u'exists'), 'attribute': lambda x: exists_with_famfam(x['value']) if 'exists' in x else ''},
         ]
@@ -120,20 +117,7 @@ def check_settings(request):
         context_instance=RequestContext(request))
 
 
-def _return_type(value):
-    if isinstance(value, types.FunctionType):
-        return value.__doc__ if value.__doc__ else _(u'function found')
-    elif isinstance(value, types.ClassType):
-        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
-    elif isinstance(value, types.TypeType):
-        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
-    elif isinstance(value, types.DictType) or isinstance(value, types.DictionaryType):
-        return ','.join(list(value))
-    else:
-        return value
-
-
-def blank_menu(request):
+def tools_menu(request):
     return render_to_response('generic_template.html', {
         'title': _(u'Tools menu'),
         'paragraphs': [
