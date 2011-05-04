@@ -8,15 +8,20 @@ register = Library()
 
 
 class CheckPermissionsNode(Node):
-    def __init__(self, requester, namespace, permission_list, *args, **kwargs):
+    def __init__(self, requester, namespace=None, permission_list=None, *args, **kwargs):
         self.requester = requester
         self.namespace = namespace
         self.permission_list = permission_list
 
     def render(self, context):
+        permission_list = Variable(self.permission_list).resolve(context)
+        if not permission_list:
+            # There is no permissions list to check against which means
+            # this link is available for all
+            context['permission'] = True
+            return ''
         requester = Variable(self.requester).resolve(context)
         namespace = Variable(self.namespace).resolve(context)
-        permission_list = Variable(self.permission_list).resolve(context)
         try:
             check_permission_function(requester, namespace, permission_list)
             context['permission'] = True
