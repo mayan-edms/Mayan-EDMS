@@ -20,7 +20,7 @@ register_permissions('comments', [
 
 comment_delete = {'text': _('delete'), 'view': 'comment_delete', 'args': 'object.id', 'famfam': 'comment_delete', 'permissions': {'namespace': 'comments', 'permissions': [PERMISSION_COMMENT_DELETE]}}
 comment_multiple_delete = {'text': _('delete'), 'view': 'comment_multiple_delete', 'args': 'object.id', 'famfam': 'comments_delete', 'permissions': {'namespace': 'comments', 'permissions': [PERMISSION_COMMENT_DELETE]}}
-comment_add = {'text': _('add comment'), 'view': 'comment_add', 'args': 'document.id', 'famfam': 'comment_add', 'permissions': {'namespace': 'comments', 'permissions': [PERMISSION_COMMENT_CREATE]}}
+comment_add = {'text': _('add comment'), 'view': 'comment_add', 'args': 'object.id', 'famfam': 'comment_add', 'permissions': {'namespace': 'comments', 'permissions': [PERMISSION_COMMENT_CREATE]}}
 
 register_model_list_columns(Comment, [
     {
