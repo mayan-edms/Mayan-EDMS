@@ -116,7 +116,8 @@ def exists_with_famfam(path):
 
 def proper_name(name):
     """Does the work of capitalizing a name (can be a full name)."""
-
+    mc = re.compile(r'^Mc(\w)(?=\w)', re.I)
+    mac = re.compile(r'^Mac(\w)(?=\w)', re.I)
     suffixes = [
         u"II", u"(II)", u"III", u"(III)", u"IV", u"(IV)", u"VI", u"(VI)",
         u"VII", u"(VII)", u"2nd", u"(2nd)", u"3rd", u"(3rd)", u"4th", u"(4th)",
@@ -270,9 +271,9 @@ def proper_name(name):
         name = name[:index] + u'-' + name[index + 1:]
 
     # funky stuff (no capitalization)
-    name = name.replace(' Dit ', ' dit ')
-    name = name.replace(' Van ', ' van ')
-    name = name.replace(' De ', ' de ')
+    name = name.replace(u' Dit ', u' dit ')
+    name = name.replace(u' Van ', u' van ')
+    name = name.replace(u' De ', u' de ')
 
     # special surnames and suffixes
     name += u' '
@@ -289,8 +290,6 @@ def proper_name(name):
                 name = name[:pos] + surname + name[pos + len(surname):]
     return name.strip()
 
-mc = re.compile(r'^Mc(\w)(?=\w)', re.I)
-mac = re.compile(r'^Mac(\w)(?=\w)', re.I)
 
 def return_type(value):
     if isinstance(value, types.FunctionType):
