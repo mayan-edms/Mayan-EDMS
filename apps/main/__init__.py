@@ -14,6 +14,9 @@ from main.conf.settings import SIDE_BAR_SEARCH
 check_settings = {'text': _(u'settings'), 'view': 'check_settings', 'famfam': 'cog'}
 statistics = {'text': _(u'statistics'), 'view': 'statistics', 'famfam': 'table'}
 diagnostics = {'text': _(u'diagnostics'), 'view': 'diagnostics', 'famfam': 'pill'}
+tools = {'text': _(u'tools'), 'view': 'tools_menu', 'famfam': 'wrench'}
+admin_site = {'text': _(u'admin site'), 'url': '/admin', 'famfam': 'keyboard'}
+sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug'}
 
 __version_info__ = {
     'major': 0,
@@ -22,6 +25,25 @@ __version_info__ = {
     'releaselevel': 'final',
     'serial': 0
 }
+
+main_menu = [
+    {'text': _(u'home'), 'view': 'home', 'famfam': 'house', 'position': 0},
+    {'text': _(u'tools'), 'view': 'tools_menu', 'links': [
+        tools, statistics, diagnostics, sentry
+        ], 'famfam': 'wrench', 'name': 'tools', 'position': 7},
+
+    {'text': _(u'setup'), 'view': 'check_settings', 'links': [
+        check_settings, role_list, user_list, admin_site
+        ], 'famfam': 'cog', 'name': 'setup', 'position': 8},
+
+    {'text': _(u'about'), 'view': 'about', 'position': 9},
+]
+
+if not SIDE_BAR_SEARCH:
+    main_menu.insert(1, {'text': _(u'search'), 'view': 'search', 'famfam': 'zoom', 'position': 2})
+
+register_menu(main_menu)
+
 
 def get_version():
     """
@@ -36,23 +58,3 @@ def get_version():
     return ''.join(vers)
 
 __version__ = get_version()
-
-
-main_menu = [
-    {'text': _(u'home'), 'view': 'home', 'famfam': 'house', 'position': 0},
-    {'text': _(u'tools'), 'view': 'tools_menu', 'links': [
-        document_find_all_duplicates, filesystem_serving_recreate_all_links,
-        all_document_ocr_cleanup, statistics, diagnostics,
-        ], 'famfam': 'wrench', 'name': 'tools', 'position': 7},
-
-    {'text': _(u'setup'), 'view': 'check_settings', 'links': [
-        check_settings, role_list, user_list
-        ], 'famfam': 'cog', 'name': 'setup', 'position': 8},
-
-    {'text': _(u'about'), 'view': 'about', 'position': 9},
-]
-
-if not SIDE_BAR_SEARCH:
-    main_menu.insert(1, {'text': _(u'search'), 'view': 'search', 'famfam': 'zoom', 'position': 2})
-
-register_menu(main_menu)

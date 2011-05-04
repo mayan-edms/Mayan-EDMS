@@ -13,7 +13,7 @@ from filesystem_serving.conf import settings as filesystem_serving_settings
 from dynamic_search.conf import settings as search_settings
 
 from main.conf import settings as main_settings
-from main.api import diagnostics
+from main.api import diagnostics, tools
 
 
 def home(request):
@@ -116,18 +116,12 @@ def check_settings(request):
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
 
-
 def tools_menu(request):
-    return render_to_response('generic_template.html', {
-        'title': _(u'Tools menu'),
-        'paragraphs': [
-            _(u'"Find all duplicates": Search all the documents\' checksums and return a list of the exact matches.'),
-            _(u'"Recreate index links": Deletes and creates from scratch all the file system indexing links.'),
-            _(u'"Clean up pages content": Runs a language filter to remove common OCR mistakes from document pages content.')
-        ],
+    return render_to_response('tools.html', {
+        'blocks': tools,
+        'title': _(u'tools menu')
     },
     context_instance=RequestContext(request))
-
 
 def statistics(request):
     blocks = []

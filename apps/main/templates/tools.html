@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} :: {{ title|capfirst }}{% endblock %}
+
+{% block content %}
+    {% for key, value in blocks.items %}
+        <div class="content">    
+        <h2 class="title">{{ value.title|capfirst }}</h2>
+        <div class="inner">
+        <p>
+            <ul class="undecorated_list">
+                {% for link in value.links %}
+                    <li>
+                        {% include "generic_subnavigation.html" %}{% if link.description %} - {{ link.description }}{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </p>
+        
+        </div></div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% load permission_tags %}
+
+{% if link.permissions %}
+    {% check_permissions request.user link.permissions.namespace link.permissions.permissions %}
+    {% if permission %}
+        {% if as_li %}<li>{% endif %}
+            {% include "generic_link_instance.html" %}
+        {% if as_li %}</li>{% endif %}    
+    {% endif %}
+{% else %}
+    {% if as_li %}<li>{% endif %}
+        {% include "generic_link_instance.html" %}
+    {% if as_li %}</li>{% endif %}    
+{% endif %}

@@ -4,7 +4,7 @@ from django.conf import settings
 
 from navigation.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
-from main.api import register_diagnostic
+from main.api import register_diagnostic, register_tool
 from permissions.api import register_permissions
 
 from documents.models import Document, DocumentPage, DocumentPageTransformation
@@ -48,7 +48,7 @@ document_multiple_edit_metadata = {'text': _(u'edit metadata'), 'view': 'documen
 document_preview = {'text': _(u'preview'), 'class': 'fancybox', 'view': 'document_preview', 'args': 'object.id', 'famfam': 'magnifier', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_download = {'text': _(u'download'), 'view': 'document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}}
 document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_refresh', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
-document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_refresh', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_refresh', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}, 'description': _(u'Search all the documents\' checksums and return a list of the exact matches.')}
 document_clear_transformations = {'text': _(u'clear all transformations'), 'view': 'document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}}
 document_multiple_clear_transformations = {'text': _(u'clear all transformations'), 'view': 'document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}}
 
@@ -115,6 +115,7 @@ register_links(['metadatagroup_view'], [metadata_group_back_to_document, metadat
 
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
+register_tool(document_find_all_duplicates, namespace='documents', title=_(u'documents'))
 
 def document_exists(document):
     try:
