@@ -8,10 +8,12 @@
         <h2 class="title">{{ value.title|capfirst }}</h2>
         <div class="inner">
         <p>
-            <ul>
-            {% with value.links as object_navigation_links %}
-                {% include "generic_navigation.html" %}
-            {% endwith %}
+            <ul class="undecorated_list">
+                {% with value.links as object_navigation_links %}
+                {% with 'true' as as_li %}
+                    {% include "generic_navigation.html" %}
+                {% endwith %}
+                {% endwith %}
             </ul>
         </p>
         
