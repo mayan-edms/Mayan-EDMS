@@ -107,13 +107,6 @@
             {% endif %}
         {% endif %}
     </li>
-    {% if user.is_staff or user.is_superuser %}
-        <li><a href="/admin">{% trans "Admin site" %}</a></li>
-    {% endif %}
-    
-    {% if user.is_staff or user.is_superuser  %}
-        <li><a href="{% url sentry %}">{% trans "Sentry" %}</a></li>
-    {% endif %}
 
     {% get_setting "MIDDLEWARE_CLASSES" as middleware_classes %}
     {% if "django.middleware.locale.LocaleMiddleware" in middleware_classes %}
@@ -135,7 +128,15 @@
 {% block web_theme_main_navigation %}
     {% main_navigation %}                    
     {% for link in navigation_main_links %}
-        <li class="{% if link.first %}first {% endif %}{% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
+        {% with "true" as as_li %}
+        {% with "true" as hide_active_anchor %}
+        {% with "active" as li_class_active %}
+        {% with "first" as li_class_first %}
+            {% include "generic_subnavigation.html" %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
     {% endfor %}
 {% endblock %}
 
@@ -145,7 +146,15 @@
             <div class="secondary-navigation">
                 <ul class="wat-cf">
                     {% for link in navigation_secondary_links %}
-                        <li class="{% if link.first %}first {% endif %}{% if link.active %}active{% endif %}"><a class="{{ link.class }}" href="{{ link.url }}">{{ link.text|capfirst }}{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}</a></li>
+                        {% with "true" as as_li %}
+                        {% with "true" as hide_active_anchor %}
+                        {% with "active" as li_class_active %}
+                        {% with "first" as li_class_first %}
+                            {% include "generic_subnavigation.html" %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
                     {% endfor %}     
                 </ul>
             </div>     

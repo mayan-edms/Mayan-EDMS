@@ -1,14 +1,22 @@
 {% load permission_tags %}
+{% load navigation_tags %}
 
-{% if link.permissions %}
-    {% check_permissions request.user link.permissions.namespace link.permissions.permissions %}
+{% with link.permissions.namespace as namespace %}
+{% with link.permissions.permissions as permissions %}
+{% with link.condition as condition %}
+
+    {% check_permissions request.user namespace permissions %}
     {% if permission %}
-        {% if as_li %}<li>{% endif %}
-            {% include "generic_link_instance.html" %}
-        {% if as_li %}</li>{% endif %}    
+        {% evaluate_link condition as conditional_display %}
+        {% if conditional_display %}
+            {% if as_li %}
+                <li class="{% if link.first and li_class_first %}{{ li_class_first}} {% endif %}{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
+            {% endif %}
+                {% include "generic_link_instance.html" %}
+            {% if as_li %}</li>{% endif %}    
+        {% endif %}
     {% endif %}
-{% else %}
-    {% if as_li %}<li>{% endif %}
-        {% include "generic_link_instance.html" %}
-    {% if as_li %}</li>{% endif %}    
-{% endif %}
+
+{% endwith %}
+{% endwith %}
+{% endwith %}

@@ -11,12 +11,17 @@ from user_management import user_list
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
+
+def is_superuser(context):
+    return context['request'].user.is_staff or context['request'].user.is_superuser
+
 check_settings = {'text': _(u'settings'), 'view': 'check_settings', 'famfam': 'cog'}
 statistics = {'text': _(u'statistics'), 'view': 'statistics', 'famfam': 'table'}
 diagnostics = {'text': _(u'diagnostics'), 'view': 'diagnostics', 'famfam': 'pill'}
 tools = {'text': _(u'tools'), 'view': 'tools_menu', 'famfam': 'wrench'}
-admin_site = {'text': _(u'admin site'), 'url': '/admin', 'famfam': 'keyboard'}
-sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug'}
+admin_site = {'text': _(u'admin site'), 'url': '/admin', 'famfam': 'keyboard', 'condition': is_superuser}
+sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug', 'condition': is_superuser}
+
 
 __version_info__ = {
     'major': 0,
