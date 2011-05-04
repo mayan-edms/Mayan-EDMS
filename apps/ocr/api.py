@@ -19,6 +19,10 @@ from ocr.exceptions import TesseractError, PdftotextError
 
 
 def get_language_backend():
+    """
+    Return the OCR cleanup language backend using the selected tesseract
+    language in the configuration settings
+    """
     try:
         module = import_module(u'.'.join([u'ocr', u'lang', TESSERACT_LANGUAGE]))
     except ImportError:
@@ -30,7 +34,9 @@ backend = get_language_backend()
 
 
 def cleanup(filename):
-    ''' tries to remove the given filename. Ignores non-existent files '''
+    """
+    Try to remove the given filename, ignoring non-existent files
+    """
     try:
         os.remove(filename)
     except OSError:
@@ -38,6 +44,9 @@ def cleanup(filename):
 
 
 def run_tesseract(input_filename, output_filename_base, lang=None):
+    """
+    Execute the command line binary of tesseract
+    """
     command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(output_filename_base)]
     if lang is not None:
         command += [u'-l', lang]
@@ -50,6 +59,9 @@ def run_tesseract(input_filename, output_filename_base, lang=None):
 
 
 def run_pdftotext(input_filename, output_filename, page_number=None):
+    """
+        Execute the command line binary of pdftotext
+    """
     command = [unicode(PDFTOTEXT_PATH)]
     if page_number:
         command.extend(['-nopgbrk', '-f', unicode(page_number), '-l', unicode(page_number)])
@@ -62,6 +74,11 @@ def run_pdftotext(input_filename, output_filename, page_number=None):
 
 
 def do_document_ocr(document):
+    """
+    Do OCR on all the pages of the given document object, first
+    trying to extract text from PDF using pdftotext then by calling
+    tesseract
+    """
     for page_index, document_page in enumerate(document.documentpage_set.all()):
         desc, filepath = tempfile.mkstemp()
         imagefile = None
@@ -100,6 +117,11 @@ def do_document_ocr(document):
 
 
 def ocr_cleanup(text):
+    """
+    Cleanup the OCR's output passing it thru the selected language's
+    cleanup filter
+    """
+    
     output = []
     for line in text.splitlines():
         line = line.strip()
@@ -116,6 +138,10 @@ def ocr_cleanup(text):
 
 
 def clean_pages():
+    """
+    Tool that executes the OCR cleanup code on all of the existing
+    documents
+    """
     for page in DocumentPage.objects.all():
         if page.content:
             page.content = ocr_cleanup(page.content)
