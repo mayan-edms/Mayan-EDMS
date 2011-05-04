@@ -64,7 +64,7 @@ def run_pdftotext(input_filename, output_filename, page_number=None):
     """
     command = [unicode(PDFTOTEXT_PATH)]
     if page_number:
-        command.extend(['-nopgbrk', '-f', unicode(page_number), '-l', unicode(page_number)])
+        command.extend([u'-nopgbrk', u'-f', unicode(page_number), u'-l', unicode(page_number)])
     command.extend([unicode(input_filename), unicode(output_filename)])
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
@@ -93,7 +93,7 @@ def do_document_ocr(document):
                     #PDF page had no text, run tesseract on the page
                     imagefile = convert_document_for_ocr(document, page=page_index)
                     run_tesseract(imagefile, filepath, TESSERACT_LANGUAGE)
-                    ocr_output = os.extsep.join([filepath, 'txt'])
+                    ocr_output = os.extsep.join([filepath, u'txt'])
                     source = _(u'Text from OCR')
                 else:
                     ocr_output = filepath
@@ -101,7 +101,7 @@ def do_document_ocr(document):
             else:
                 imagefile = convert_document_for_ocr(document, page=page_index)
                 run_tesseract(imagefile, filepath, TESSERACT_LANGUAGE)
-                ocr_output = os.extsep.join([filepath, 'txt'])
+                ocr_output = os.extsep.join([filepath, u'txt'])
                 source = _(u'Text from OCR')
             f = codecs.open(ocr_output, 'r', 'utf-8')
             document_page = document.documentpage_set.get(page_number=page_index + 1)
