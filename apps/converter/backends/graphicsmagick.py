@@ -9,11 +9,12 @@ CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
 CONVERTER_ERROR_STARTS_WITH = u'starts with'
 
 
-def execute_identify(input_filepath, arguments=u''):
+def execute_identify(input_filepath, arguments=None):
     command = []
     command.append(unicode(GM_PATH))
     command.append(u'identify')
-    command.extend(unicode(arguments).split())
+    if arguments:
+        command.extend(arguments)
     command.append(unicode(input_filepath))
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()

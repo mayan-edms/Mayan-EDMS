@@ -27,6 +27,8 @@ from permissions.api import check_permissions
 from navigation.utils import resolve_to_name
 from tags.utils import get_tags_subtemplate
 from document_comments.utils import get_comments_subtemplate
+from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
+    DEFAULT_FILE_FORMAT
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -537,6 +539,30 @@ def document_multiple_edit_metadata(request):
     return document_edit_metadata(request, document_id_list=request.GET.get('id_list', []))
 
 
+def calculate_converter_arguments(document, *args, **kwargs):
+    size = kwargs.pop('size', PREVIEW_SIZE)
+    quality = kwargs.pop('quality', QUALITY_DEFAULT)
+    page = kwargs.pop('page', 1)
+    file_format = kwargs.pop('file_format', DEFAULT_FILE_FORMAT)
+    zoom = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
+    rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
+    
+    document_page = DocumentPage.objects.get(document=document, page_number=page)
+    transformation_string, warnings = document_page.get_transformation_string()
+    
+    arguments = {
+        'size': size,
+        'file_format': file_format,
+        'quality': quality,
+        'extra_options': transformation_string,
+        'page': page - 1,
+        'zoom': zoom,
+        'rotation': rotation
+    }
+
+    return arguments, warnings
+    
+
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
@@ -544,24 +570,24 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
 
     page = int(request.GET.get('page', 1))
 
+    zoom = int(request.GET.get('zoom', 100))
+
+    if zoom < ZOOM_MIN_LEVEL:
+        zoom = ZOOM_MIN_LEVEL
+
+    if zoom > ZOOM_MAX_LEVEL:
+        zoom = ZOOM_MAX_LEVEL
+
+    rotation = int(request.GET.get('rotation', 0)) % 360
+        
+    arguments, warnings = calculate_converter_arguments(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation)
+    
+    if warnings and (request.user.is_staff or request.user.is_superuser):
+        for warning in warnings:
+            messages.warning(request, _(u'Page transformation error: %s') % warning)
+
     try:
-        document_page = DocumentPage.objects.get(document=document, page_number=page)
-        transformation_string, warnings = document_page.get_transformation_string()
-        if warnings and (request.user.is_staff or request.user.is_superuser):
-            for warning in warnings:
-                messages.warning(request, _(u'Page transformation error: %s') % warning)
-
-        zoom = int(request.GET.get('zoom', 100))
-
-        if zoom < ZOOM_MIN_LEVEL:
-            zoom = ZOOM_MIN_LEVEL
-
-        if zoom > ZOOM_MAX_LEVEL:
-            zoom = ZOOM_MAX_LEVEL
-
-        rotation = int(request.GET.get('rotation', 0)) % 360
-
-        output_file = convert_document(document, size=size, file_format=u'jpg', quality=quality, extra_options=transformation_string, page=page - 1, zoom=zoom, rotation=rotation)
+        output_file = convert_document(document, **arguments)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)
@@ -1125,4 +1151,16 @@ def metadatagroup_view(request, document_id, metadata_group_id):
         'multi_select_as_buttons': True,
         'hide_links': True,
         'ref_object': document
+    }, context_instance=RequestContext(request))
+
+
+def document_print(request, document_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
+    return render_to_response('document_print.html', {
+        'object': document,
     }, context_instance=RequestContext(request))

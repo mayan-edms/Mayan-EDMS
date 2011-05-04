@@ -9,6 +9,7 @@ from converter.conf.settings import OCR_OPTIONS
 from converter.conf.settings import DEFAULT_OPTIONS
 from converter.conf.settings import LOW_QUALITY_OPTIONS
 from converter.conf.settings import HIGH_QUALITY_OPTIONS
+from converter.conf.settings import PRINT_QUALITY_OPTIONS
 from converter.conf.settings import GRAPHICS_BACKEND
 from converter.conf.settings import UNOCONV_PATH
 
@@ -26,9 +27,14 @@ DEFAULT_OCR_FILE_FORMAT = u'tif'
 QUALITY_DEFAULT = u'quality_default'
 QUALITY_LOW = u'quality_low'
 QUALITY_HIGH = u'quality_high'
+QUALITY_PRINT = u'quality_print'
 
-QUALITY_SETTINGS = {QUALITY_DEFAULT: DEFAULT_OPTIONS,
-    QUALITY_LOW: LOW_QUALITY_OPTIONS, QUALITY_HIGH: HIGH_QUALITY_OPTIONS}
+QUALITY_SETTINGS = {
+    QUALITY_DEFAULT: DEFAULT_OPTIONS,
+    QUALITY_LOW: LOW_QUALITY_OPTIONS,
+    QUALITY_HIGH: HIGH_QUALITY_OPTIONS,
+    QUALITY_PRINT: PRINT_QUALITY_OPTIONS
+}
 
 CONVERTER_OFFICE_FILE_EXTENSIONS = [
     u'ods', u'docx', u'doc'
@@ -176,6 +182,15 @@ def get_page_count(input_filepath):
         #TODO: send to other page number identifying program
         return 1
 
+
+def get_document_dimensions(document, *args, **kwargs):
+    document_filepath = create_image_cache_filename(document.checksum, *args, **kwargs)
+    if os.path.exists(document_filepath):
+        options = [u'-format', u'%w %h']
+        return [int(dimension) for dimension in backend.execute_identify(unicode(document_filepath), options).split()]
+    else:
+        return [0, 0]
+    
 
 def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
     #Extract document file

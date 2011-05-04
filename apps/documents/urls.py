@@ -1,12 +1,13 @@
 from django.conf.urls.defaults import patterns, url
 
 from documents.conf.settings import PREVIEW_SIZE
+from documents.conf.settings import PRINT_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import DISPLAY_SIZE
 from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
 from documents.conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
 
-from converter.api import QUALITY_HIGH
+from converter.api import QUALITY_HIGH, QUALITY_PRINT
 
 urlpatterns = patterns('documents.views',
     url(r'^document/list/$', 'document_list', (), 'document_list'),
@@ -22,11 +23,13 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/edit/$', 'document_edit', (), 'document_edit'),
     url(r'^document/(?P<document_id>\d+)/edit/metadata/$', 'document_edit_metadata', (), 'document_edit_metadata'),
     url(r'^document/multiple/edit/metadata/$', 'document_multiple_edit_metadata', (), 'document_multiple_edit_metadata'),
+    url(r'^document/(?P<document_id>\d+)/print/$', 'document_print', (), 'document_print'),
 
     url(r'^document/(?P<document_id>\d+)/display/preview/$', 'get_document_image', {'size': PREVIEW_SIZE}, 'document_preview'),
     url(r'^document/(?P<document_id>\d+)/display/preview/multipage/$', 'get_document_image', {'size': MULTIPAGE_PREVIEW_SIZE}, 'document_preview_multipage'),
     url(r'^document/(?P<document_id>\d+)/display/thumbnail/$', 'get_document_image', {'size': THUMBNAIL_SIZE}, 'document_thumbnail'),
     url(r'^document/(?P<document_id>\d+)/display/$', 'get_document_image', {'size': DISPLAY_SIZE, 'quality': QUALITY_HIGH}, 'document_display'),
+    url(r'^document/(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE, 'quality': QUALITY_PRINT}, 'document_display_print'),
 
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple': True if ENABLE_SINGLE_DOCUMENT_UPLOAD == False else False}, 'document_create_sibling'),

@@ -9,10 +9,11 @@ from converter.exceptions import ConvertError, UnknownFormat, \
 CONVERTER_ERROR_STRING_NO_DECODER = u'no decode delegate for this image format'
 
 
-def execute_identify(input_filepath, arguments=u''):
+def execute_identify(input_filepath, arguments=None):
     command = []
     command.append(unicode(IM_IDENTIFY_PATH))
-    command.extend(unicode(arguments).split())
+    if arguments:
+        command.extend(arguments)    
     command.append(unicode(input_filepath))
 
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
