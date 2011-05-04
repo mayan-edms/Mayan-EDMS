@@ -115,9 +115,9 @@ class ImageWidget(forms.widgets.Widget):
 
         for page in value.documentpage_set.all():
             output.append(
-                u'''<div style="display: inline-block; border: 1px solid black; margin: 10px;">
+                u'''<div style="display: inline-block; margin: 5px 10px 0px 10px;">
                         <div class="tc">%(page_string)s %(page)s</div>
-                        <div class="tc">
+                        <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
                             <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
                                 <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" />
                                 <noscript>
