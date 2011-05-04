@@ -35,7 +35,7 @@ def urlquote(link=None, get=None):
         assert not get, get
         get = link
         link = ''
-    assert isinstance(get, dict), 'wrong type "%s", dict required' % type(get)
+    assert isinstance(get, dict), u'wrong type "%s", dict required' % type(get)
     #assert not (link.startswith('http://') or link.startswith('https://')), \
     #    'This method should only quote the url path.
     #    It should not start with http(s)://  (%s)' % (
@@ -45,7 +45,7 @@ def urlquote(link=None, get=None):
         if isinstance(get, MultiValueDict):
             get = get.lists()
         if link:
-            link = '%s?' % django_urlquote(link)
+            link = u'%s?' % django_urlquote(link)
         return u'%s%s' % (link, django_urlencode(get, doseq=True))
     else:
         return django_urlquote(link)
@@ -58,7 +58,7 @@ def return_attrib(obj, attrib, arguments=None):
         elif isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
             return obj[attrib]
         else:
-            result = reduce(getattr, attrib.split('.'), obj)
+            result = reduce(getattr, attrib.split(u'.'), obj)
             if isinstance(result, types.MethodType):
                 if arguments:
                     return result(**arguments)
@@ -75,27 +75,37 @@ def return_attrib(obj, attrib, arguments=None):
 
 #http://snippets.dzone.com/posts/show/5434
 #http://snippets.dzone.com/user/jakob
-def pretty_size(size, suffixes=[('B', 2 ** 10), ('K', 2 ** 20), ('M', 2 ** 30), ('G', 2 ** 40), ('T', 2 ** 50)]):
+def pretty_size(size, suffixes=None):
+    suffixes = suffixes if not suffixes is None else [
+        (u'B', 1024L), (u'K', 1048576L), (u'M', 1073741824L),
+        (u'G', 1099511627776L), (u'T', 1125899906842624L)
+    ]
+
     for suf, lim in suffixes:
         if size > lim:
             continue
         else:
             try:
-                return round(size / float(lim / 2 ** 10), 2).__str__() + suf
+                return round(size / float(lim / 1024L), 2).__str__() + suf
             except ZeroDivisionError:
                 return 0
 
 
 def pretty_size_10(size):
-    return pretty_size(size, suffixes=[('B', 10 ** 3), ('K', 10 ** 6), ('M', 10 ** 9), ('G', 10 ** 12), ('T', 10 ** 15)])
+    return pretty_size(
+        size, 
+        suffixes=[
+            (u'B', 1000L), (u'K', 1000000L), (u'M', 1000000000L),
+            (u'G', 1000000000000L), (u'T', 1000000000000000L)
+        ])
 
 
 def exists_with_famfam(path):
     try:
         if os.path.exists(path):
-            return '<span class="famfam active famfam-tick"></span>'
+            return u'<span class="famfam active famfam-tick"></span>'
         else:
-            return '<span class="famfam active famfam-cross"></span>'
+            return u'<span class="famfam active famfam-cross"></span>'
     except Exception, exc:
         return exc
 
