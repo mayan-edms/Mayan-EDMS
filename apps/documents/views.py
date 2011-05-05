@@ -29,6 +29,7 @@ from tags.utils import get_tags_subtemplate
 from document_comments.utils import get_comments_subtemplate
 from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_FILE_FORMAT
+from converter.api import QUALITY_PRINT
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -42,6 +43,7 @@ from documents.conf.settings import ZOOM_PERCENT_STEP
 from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf.settings import ROTATION_STEP
+from documents.conf.settings import PRINT_SIZE
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
@@ -63,11 +65,9 @@ from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument, MetadataGroup
 from documents.staging import StagingFile
 from documents import metadata_group_link
-
-PICTURE_ERROR_SMALL = u'picture_error.png'
-PICTURE_ERROR_MEDIUM = u'1297211435_error.png'
-PICTURE_UNKNOWN_SMALL = u'1299549572_unknown2.png'
-PICTURE_UNKNOWN_MEDIUM = u'1299549805_unknown.png'
+from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
+    PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM, PAGE_SIZE_DIMENSIONS, \
+    PAGE_SIZE_LETTER, PAGE_SIZE_LEGAL
 
 
 def document_list(request, object_list=None, title=None):
@@ -1154,13 +1154,36 @@ def metadatagroup_view(request, document_id, metadata_group_id):
     }, context_instance=RequestContext(request))
 
 
-def document_print(request, document_id):
+def document_print(request, document_id, page_size=PAGE_SIZE_LEGAL):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document.objects.select_related(), pk=document_id)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
+    #page = int(request.GET.get('page', 1))
+    #zoom = int(request.GET.get('zoom', 100))
+    #if zoom < ZOOM_MIN_LEVEL:
+    #    zoom = ZOOM_MIN_LEVEL
+    #if zoom > ZOOM_MAX_LEVEL:
+    #    zoom = ZOOM_MAX_LEVEL
+    #rotation = int(request.GET.get('rotation', 0)) % 360
+       
+    arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT, quality=QUALITY_PRINT)
+    #, page=page, zoom=zoom, rotation=rotation)
+    
+    #Pre-generate
+    output_file = convert_document(document, **arguments)
+
+    page_dimensions = dict(PAGE_SIZE_DIMENSIONS)[page_size]
+    width = float(page_dimensions[0].split('i')[0].split('c')[0].split('m')[0])
+    height = float(page_dimensions[1].split('i')[0].split('c')[0].split('m')[0])
+    
     return render_to_response('document_print.html', {
         'object': document,
+        'page_size': page_dimensions,
+        'page_aspect': width / height,
+        'page_orientation': u'landscape' if width / height > 1 else u'portrait',
+        'page_orientation_landscape': True if width / height > 1 else False,
+        'page_orientation_portrait': False if width / height > 1 else True,
     }, context_instance=RequestContext(request))

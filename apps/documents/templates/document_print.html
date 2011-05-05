@@ -1,14 +1,14 @@
 {% load project_tags %}
 {% load printing_tags %}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% project_name %}</title>
 
         <style type="text/css">
+            {% comment %}
             * {
                 padding: 0;
                 margin: 0;
@@ -34,21 +34,25 @@
                   left: 0;
                   margin: auto;
             } 
-            .break { page-break-before: always; }
+            {% endcomment %}
+            .break { page-break-after: always; }
+            img { border: 1px solid black; }
             @page {
-                margin: 0cm;
+                size: {{ page_size.0 }} {{ page_size.1 }};
+                margin-top: 1cm;
+                margin-bottom: 1cm;
+                margin-left: auto;
+                margin-right: auto;
             }
-            {media print{@page {size: landscape}} 
         </style> 
-        
-        <style>
-@PAGE landscape {size: landscape;}
-TABLE {PAGE: landscape;}
-</style> 
 	</head>
 	<body>
-        {% get_document_size object %}
-        {{ document_width }} {{ document_height }}
-        <img class="centered" src="{% url document_display_print object.id %}" {% if document_width > document_height %}width="100%"{% else %}height="100%"{% endif %} />
+        {% for page in object.documentpage_set.all %}
+            {% get_document_size object %}
+            <div class="{% if forloop.counter > 1 %}break{% endif %}">
+                <img src="{% url document_display_print object.id %}?page={{ page.page_number }}" {% if document_aspect > page_aspect %}width="97%"{% else %}height="97%"{% endif %} />
+            </div>
+        {% endfor %}
+
     </body>
 </html>

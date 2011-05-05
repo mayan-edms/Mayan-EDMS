@@ -14,7 +14,9 @@ class GetImageSizeNode(Node):
     def render(self, context):
         document = Variable(self.document).resolve(context)
         arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, quality=QUALITY_PRINT)
-        context[u'document_width'], context['document_height'] = get_document_dimensions(document, **arguments)
+        width, height = get_document_dimensions(document, **arguments)
+        context[u'document_width'], context['document_height'] = width, height
+        context[u'document_aspect'] = float(width) / float(height)
         return u''
  
 @register.tag
