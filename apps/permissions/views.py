@@ -35,7 +35,7 @@ def role_list(request):
 def _role_permission_link(requester, permission, permission_list):
     ct = ContentType.objects.get_for_model(requester)
 
-    template = '<a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a>'
+    template = '<span class="nowrap"><a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a></span>'
 
     if permission in permission_list:
         return template % {
@@ -65,7 +65,10 @@ def role_permissions(request, role_id):
                 'extra_columns':[
                     {'name':_(u'namespace'), 'attribute':'namespace'},
                     {'name':_(u'name'), 'attribute':'label'},
-                    {'name':_(u'state'), 'attribute':lambda x: _role_permission_link(role, x, role_permissions_list)}
+                    {
+                        'name':_(u'state'),
+                        'attribute':lambda x: _role_permission_link(role, x, role_permissions_list),
+                    }
                 ],
                 'hide_link':True,
                 'hide_object':True,
