@@ -2,102 +2,102 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-02 01:11-0400\n"
+"POT-Creation-Date: 2011-05-06 13:41-0400\n"
 "PO-Revision-Date: 2011-05-02 01:14\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:15
+#: __init__.py:13
 msgid "Create new users"
 msgstr "Crear nuevos usuarios"
 
-#: __init__.py:16
+#: __init__.py:14
 msgid "Edit existing users"
 msgstr "Editar usuarios existentes"
 
-#: __init__.py:17
+#: __init__.py:15
 msgid "View existing users"
 msgstr "Ver usuarios existentes"
 
-#: __init__.py:18
+#: __init__.py:16
 msgid "Delete existing users"
 msgstr "Eliminar usuarios existentes"
 
-#: __init__.py:21 views.py:28
+#: __init__.py:19 views.py:26
 msgid "users"
 msgstr "usuarios"
 
-#: __init__.py:22
+#: __init__.py:20
 msgid "edit"
 msgstr "editar"
 
-#: __init__.py:23 views.py:80
+#: __init__.py:21 views.py:78
 msgid "create new user"
 msgstr "crear nuevo usuario"
 
-#: __init__.py:24
+#: __init__.py:22
 msgid "delete"
 msgstr "eliminar"
 
-#: views.py:32
+#: views.py:30
 msgid "full name"
 msgstr "nombre completo"
 
-#: views.py:36
+#: views.py:34
 msgid "active"
 msgstr "activo"
 
-#: views.py:54
+#: views.py:52
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "Usuario \"%s\" actualizado exitsamente."
 
-#: views.py:60
+#: views.py:58
 #, python-format
 msgid "edit user: %s"
 msgstr "editar usuario: %s"
 
-#: views.py:74
+#: views.py:72
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Usuario \"%s\" ha creado exitosamente."
 
-#: views.py:96
+#: views.py:94
 msgid "Must provide at least one user."
 msgstr "Debe proveer al menos un usuario."
 
-#: views.py:106
+#: views.py:104
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Usuario \"%s\" eliminado exitosamente."
 
-#: views.py:108
+#: views.py:106
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Error eliminando el usuario \"%(user)s\": %(error)s "
 
-#: views.py:115
+#: views.py:113
 msgid "user"
 msgstr "usuario"
 
-#: views.py:122
+#: views.py:120
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "¿Está seguro que desea eliminar el usuario: %s?"
 
-#: views.py:124
+#: views.py:122
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "¿Está seguro que desea eliminar los usuarios: %s?"

@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-21 04:25-0400\n"
-"PO-Revision-Date: 2011-03-05 19:34\n"
+"POT-Creation-Date: 2011-05-06 13:29-0400\n"
+"PO-Revision-Date: 2011-05-06 13:30\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Translated-Using: django-rosetta 0.5.6\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: __init__.py:10
+#: __init__.py:11
 msgid "Recreate filesystem links."
 msgstr "Recrear vínculos de sistema de archivos."
 
@@ -27,41 +27,52 @@ msgstr "Recrear vínculos de sistema de archivos."
 msgid "recreate index links"
 msgstr "recrear enlaces índice"
 
-#: api.py:24
+#: __init__.py:14
+msgid "Deletes and creates from scratch all the file system indexing links."
+msgstr ""
+"Borra y crea de la nada todos los enlaces de indexación del sistema de"
+" archivos."
+
+#: __init__.py:16
+msgid "Filesystem"
+msgstr "Sistema de archivos"
+
+#: api.py:27
 msgid "Not creating metadata indexing, document not found in document storage"
 msgstr ""
-"No de creara indexación de metadatos, el documento no se encuentran en "
-"almacenamiento de documentos"
+"No de creara indexación de metadatos, el documento no se encuentran en"
+" almacenamiento de documentos"
 
-#: api.py:39 api.py:48
+#: api.py:42 api.py:51
 #, python-format
 msgid "Unable to create metadata indexing directory: %s"
 msgstr "No se puedo crear el directorio de indexación de metadatos: %s"
 
-#: api.py:43
+#: api.py:46
 #, python-format
 msgid "Error in metadata indexing expression: %s"
 msgstr "Error en la expresión de indexación de metadatos: %s"
 
-#: api.py:64
+#: api.py:67
 #, python-format
 msgid "Unable to delete metadata indexing symbolic link: %s"
 msgstr ""
-"No se puede eliminar el enlace simbólico de indexación de metadatos: %s"
+"No se puede eliminar el enlace simbólico de indexación de metadatos: "
+"%s"
 
-#: api.py:119
+#: api.py:122
 #, python-format
 msgid "Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s"
 msgstr ""
 "No se puede crear el enlace simbólico, coque de nombre de archivo: "
 "%(filepath)s; %(exc)s "
 
-#: api.py:121
+#: api.py:124
 #, python-format
 msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
 msgstr "No se puedo crear enlace simbólico: %(filepath)s; %(exc)s "
 
-#: api.py:126
+#: api.py:129
 msgid "Maximum rename count reached, not creating symbolic link"
 msgstr ""
 "Conteo máxima de cambio de nombre alcanzado, no se creará el enlaces "
@@ -91,17 +102,17 @@ msgstr "índice de metadatos de document"
 msgid "document metadata indexes"
 msgstr "índices de metadatos de documentos"
 
-#: views.py:25
+#: views.py:23
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
-"ejecutarse."
+"En bases de datos de gran tamaño esta operación puede tardar algún "
+"tiempo en ejecutarse."
 
-#: views.py:30
+#: views.py:28
 msgid "Filesystem links re-creation completed successfully."
 msgstr "Re creación de enlaces de sistema de archivos completó correctamente."
 
-#: views.py:35
+#: views.py:33
 #, python-format
 msgid "Filesystem links re-creation error: %s"
 msgstr "Error de re creación de enlaces de sistema de archivos: %s"

@@ -8,18 +8,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-27 14:36-0400\n"
-"PO-Revision-Date: 2011-04-27 14:37\n"
+"POT-Creation-Date: 2011-05-06 13:30-0400\n"
+"PO-Revision-Date: 2011-05-06 13:31\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: __init__.py:13 views.py:107
+#: __init__.py:13 views.py:110
 msgid "settings"
 msgstr "configuración"
 
@@ -31,78 +31,69 @@ msgstr "estadísticas"
 msgid "diagnostics"
 msgstr "diagnósticos"
 
-#: __init__.py:41
-msgid "home"
-msgstr "inicio"
-
-#: __init__.py:42
+#: __init__.py:16 __init__.py:31
 msgid "tools"
 msgstr "herramientas"
 
-#: __init__.py:47
+#: __init__.py:17
+msgid "admin site"
+msgstr "sitio administrativo"
+
+#: __init__.py:18
+msgid "sentry"
+msgstr "sentry"
+
+#: __init__.py:30
+msgid "home"
+msgstr "inicio"
+
+#: __init__.py:35
 msgid "setup"
 msgstr "instalación"
 
-#: __init__.py:51
+#: __init__.py:39
 msgid "about"
 msgstr "acerca"
 
-#: __init__.py:55
+#: __init__.py:43
 msgid "search"
 msgstr "búsqueda"
 
-#: views.py:112
+#: views.py:115
 msgid "name"
 msgstr "nombre"
 
-#: views.py:113
+#: views.py:116
 msgid "value"
 msgstr "valor"
 
-#: views.py:114
+#: views.py:117
 msgid "description"
 msgstr "descripción"
 
-#: views.py:115
+#: views.py:118
 msgid "exists"
 msgstr "existe"
 
-#: views.py:125
-msgid "function found"
-msgstr "función encontrada"
+#: views.py:144
+msgid "tools menu"
+msgstr "menú de herramientas"
 
-#: views.py:127 views.py:129
-#, python-format
-msgid "class found: %s"
-msgstr "clase encontrada: %s"
-
-#: views.py:138
-msgid "Tools menu"
-msgstr "Menú de herramientas"
-
-#: views.py:140
-msgid "\"Find all duplicates\": Search all the documents' checksums and return a list of the exact matches."
-msgstr "\"Encontrar todos los duplicados\": Buscar todas las sumas de comprobación de documentos y devolver una lista de las coincidencias exactas."
-
-#: views.py:141
-msgid "\"Recreate index links\": Deletes and creates from scratch all the file system indexing links."
-msgstr "\"Volver a crear vínculos índice\": borra y crea de la nada todos los enlaces de indexación de archivos del sistema."
-
-#: views.py:142
-msgid "\"Clean up pages content\": Runs a language filter to remove common OCR mistakes from document pages content."
-msgstr "\"Limpiar contenido\": Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR del contenido de las páginas de documentos."
-
-#: views.py:155
+#: views.py:156
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: views.py:163
+#: views.py:164
 msgid "Diagnostics"
 msgstr "Diagnósticos"
 
 #: conf/settings.py:10
-msgid "Controls whether the search     functionality is provided by a sidebar widget or by a menu entry."
-msgstr "Controla si la funcionalidad de búsqueda es proporcionada por una barra lateral o por una entrada de menú."
+msgid ""
+"Controls whether the search     functionality is provided by a sidebar "
+"widget or by a menu entry."
+msgstr ""
+"Controla si la funcionalidad de búsqueda es proporcionada por una "
+"barra lateral o por una entrada de menú."
 
 #: templates/about.html:5
 msgid "About this program"
@@ -113,63 +104,88 @@ msgid "Version"
 msgstr "Versión"
 
 #: templates/about.html:11
-msgid "Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities"
-msgstr "Gestor documental de código abierto, basado en Django con indexación de metadatos personalizados, integración de servicio de archivos y capacidades de OCR"
+msgid ""
+"Open source, Django based document manager with custom metadata "
+"indexing, file serving integration and OCR capabilities"
+msgstr ""
+"Gestor documental de código abierto, basado en Django con indexación "
+"de metadatos personalizados, integración de servicio de archivos y "
+"capacidades de OCR"
 
 #: templates/about.html:13
 msgid "Released under the GPL V3 License"
 msgstr "Publicado bajo la licencia GPL v3"
 
-#: templates/base.html:12
+#: templates/base.html:26
 msgid "(DEBUG Mode)"
 msgstr "(Modo debug)"
 
-#: templates/base.html:100
+#: templates/base.html:114
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:102
+#: templates/base.html:116
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:106
+#: templates/base.html:120
 msgid "New password"
 msgstr "Nueva contraseña"
 
-#: templates/base.html:111
-msgid "Admin site"
-msgstr "Sitio administrativo"
-
-#: templates/base.html:115
-msgid "Sentry"
-msgstr "Sentry"
-
-#: templates/base.html:127
+#: templates/base.html:134
 msgid "Go"
 msgstr "Ir"
 
-#: templates/base.html:132
+#: templates/base.html:139
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:132
+#: templates/base.html:139
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:183
+#: templates/base.html:206
 #, python-format
 msgid "Actions for %(object_name)s: %(object)s"
 msgstr "Acciones para %(object_name)s: %(object)s "
 
-#: templates/base.html:185
+#: templates/base.html:208
 #, python-format
 msgid "Actions for: %(object)s"
 msgstr "Acciones para: %(object)s "
 
-#: templates/base.html:188
+#: templates/base.html:211
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:201
+#: templates/base.html:224
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
+
+#~ msgid "function found"
+#~ msgstr "función encontrada"
+
+#~ msgid "class found: %s"
+#~ msgstr "clase encontrada: %s"
+
+#~ msgid ""
+#~ "\"Find all duplicates\": Search all the documents' checksums and return a"
+#~ " list of the exact matches."
+#~ msgstr ""
+#~ "\"Encontrar todos los duplicados\": Buscar todas las sumas de "
+#~ "comprobación de documentos y devolver una lista de las coincidencias "
+#~ "exactas."
+
+#~ msgid ""
+#~ "\"Recreate index links\": Deletes and creates from scratch all the file "
+#~ "system indexing links."
+#~ msgstr ""
+#~ "\"Volver a crear vínculos índice\": borra y crea de la nada todos los "
+#~ "enlaces de indexación de archivos del sistema."
+
+#~ msgid ""
+#~ "\"Clean up pages content\": Runs a language filter to remove common OCR "
+#~ "mistakes from document pages content."
+#~ msgstr ""
+#~ "\"Limpiar contenido\": Ejecuta un filtro de lenguaje para eliminar los "
+#~ "errores más comunes de OCR del contenido de las páginas de documentos."
