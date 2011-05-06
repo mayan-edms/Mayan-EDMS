@@ -126,9 +126,9 @@ def convert_document(document, *args, **kwargs):
     document_filepath = create_image_cache_filename(document.checksum, *args, **kwargs)
     if os.path.exists(document_filepath):
         return document_filepath
-        
+
     return convert(document_save_to_temp_dir(document, document.checksum), *args, **kwargs)
-    
+
 
 def convert(input_filepath, *args, **kwargs):
     size = kwargs.get('size')
@@ -139,9 +139,9 @@ def convert(input_filepath, *args, **kwargs):
     page = kwargs.get('page', DEFAULT_PAGE_INDEX_NUMBER)
     cleanup_files = kwargs.get('cleanup_files', True)
     quality = kwargs.get('quality', QUALITY_DEFAULT)
-    
+
     unoconv_output = None
-    
+
     output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
     if os.path.exists(output_filepath):
         return output_filepath
@@ -190,7 +190,7 @@ def get_document_dimensions(document, *args, **kwargs):
         return [int(dimension) for dimension in backend.execute_identify(unicode(document_filepath), options).split()]
     else:
         return [0, 0]
-    
+
 
 def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
     #Extract document file

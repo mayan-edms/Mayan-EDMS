@@ -134,7 +134,7 @@ def tools_menu(request):
                 user_tools[namespace] = {
                     'title': values['title']
                     }
-                user_links = user_tools[namespace].setdefault('links', [])
+                user_tools[namespace].setdefault('links', [])
                 user_tools[namespace]['links'].append(link)
             except PermissionDenied:
                 pass

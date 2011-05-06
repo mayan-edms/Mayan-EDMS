@@ -121,7 +121,7 @@ def ocr_cleanup(text):
     Cleanup the OCR's output passing it thru the selected language's
     cleanup filter
     """
-    
+
     output = []
     for line in text.splitlines():
         line = line.strip()

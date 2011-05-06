@@ -13,7 +13,7 @@ def execute_identify(input_filepath, arguments=None):
     command = []
     command.append(unicode(IM_IDENTIFY_PATH))
     if arguments:
-        command.extend(arguments)    
+        command.extend(arguments)
     command.append(unicode(input_filepath))
 
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)

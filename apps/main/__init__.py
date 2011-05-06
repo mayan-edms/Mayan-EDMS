@@ -1,12 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_menu
-
 from permissions import role_list
-
-from documents import document_find_all_duplicates
-from filesystem_serving import filesystem_serving_recreate_all_links
-from ocr import all_document_ocr_cleanup
 from user_management import user_list
 
 from main.conf.settings import SIDE_BAR_SEARCH
@@ -55,7 +50,7 @@ def get_version():
     Return the formatted version information
     """
     vers = ["%(major)i.%(minor)i" % __version_info__, ]
-    
+
     if __version_info__['micro']:
         vers.append(".%(micro)i" % __version_info__)
     if __version_info__['releaselevel'] != 'final':

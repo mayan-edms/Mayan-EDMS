@@ -274,7 +274,7 @@ def all_document_ocr_cleanup(request):
 def display_link(obj):
     output = []
     if hasattr(obj, 'get_absolute_url'):
-        output.append(u'<a href="%(url)s">%(obj)s</a>'% {
+        output.append(u'<a href="%(url)s">%(obj)s</a>' % {
             'url': obj.get_absolute_url(),
             'obj': obj
         })

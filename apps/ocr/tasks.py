@@ -17,8 +17,9 @@ from ocr.conf.settings import NODE_CONCURRENT_EXECUTION
 from ocr.conf.settings import REPLICATION_DELAY
 from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
 
-LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
+LOCK_EXPIRE = 60 * 5  # Lock expires in 5 minutes
 local_cache = CacheClass([], {})
+
 
 @task
 def task_process_queue_document(queue_document_id):
@@ -40,7 +41,7 @@ def reset_orphans():
     i = inspect().active()
     active_tasks = []
     orphans = []
-    
+
     if i:
         for host, instances in i.items():
             for instance in instances:

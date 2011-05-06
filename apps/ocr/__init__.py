@@ -2,7 +2,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
 from django.db.models.signals import post_save
-from django.core.urlresolvers import reverse
 
 from navigation.api import register_links, register_menu, register_multi_item_links
 from permissions.api import register_permissions
@@ -11,7 +10,6 @@ from main.api import register_tool
 
 from ocr.conf.settings import AUTOMATIC_OCR
 from ocr.models import DocumentQueue
-from ocr.urls import urlpatterns
 
 #Permissions
 PERMISSION_OCR_DOCUMENT = 'ocr_document'

@@ -7,8 +7,8 @@ from django.template import TemplateSyntaxError, Library, \
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
-from django.template import TemplateSyntaxError, Library, Context
-    
+from django.template import Context
+
 from navigation.api import object_navigation, multi_object_navigation, \
     menu_links as menu_navigation, sidebar_templates
 from navigation.forms import MultiItemForm
@@ -34,14 +34,13 @@ def process_links(links, view_name, url):
                     child_view = 'view' in child_link and child_link['view']
                     child_url = 'url' in child_link and child_link['url']
                     if view_name == child_view or url == child_url:
-                        active = True
                         active_item = item
         new_link.update({
             'first': count == 0,
             'url': item_view and reverse(item_view) or item_url or u'#',
             })
         items.append(new_link)
-            
+
     return items, active_item
 
 
@@ -151,7 +150,7 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         obj = Variable(object_name).resolve(context)
     except VariableDoesNotExist:
         obj = None
-    
+
     try:
         links = links_dict[menu_name][current_view]['links']
         for link in resolve_links(context, links, current_view, current_path):
@@ -267,8 +266,8 @@ class EvaluateLinkNone(Node):
     def render(self, context):
         condition = Variable(self.condition).resolve(context)
         if condition:
-             context[self.var_name] = condition(Context(context))
-             return u''
+            context[self.var_name] = condition(Context(context))
+            return u''
         else:
             context[self.var_name] = True
             return u''
