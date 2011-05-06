@@ -17,7 +17,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.comments.models import Comment
 
 import sendfile
-from common.utils import pretty_size
+from common.utils import pretty_size, parse_range, urlquote
 from converter.api import convert_document, QUALITY_DEFAULT
 from converter.exceptions import UnkownConvertError, UnknownFormat
 from filetransfers.api import serve_file
@@ -28,8 +28,10 @@ from navigation.utils import resolve_to_name
 from tags.utils import get_tags_subtemplate
 from document_comments.utils import get_comments_subtemplate
 from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_FILE_FORMAT
-from converter.api import QUALITY_PRINT
+    DEFAULT_FILE_FORMAT, QUALITY_PRINT
+from common.literals import PAGE_SIZE_DIMENSIONS, \
+    PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
+from common.conf.settings import DEFAULT_PAPER_SIZE
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -57,7 +59,7 @@ from documents.forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm, \
-        DocumentPageForm_text
+        DocumentPageForm_text, PrintForm
 
 from documents.metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
@@ -66,8 +68,7 @@ from documents.models import Document, DocumentType, DocumentPage, \
 from documents.staging import StagingFile
 from documents import metadata_group_link
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
-    PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM, PAGE_SIZE_DIMENSIONS, \
-    PAGE_SIZE_LETTER, PAGE_SIZE_LEGAL
+    PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 
 
 def document_list(request, object_list=None, title=None):
@@ -297,7 +298,7 @@ def document_view(request, document_id):
 
     if Comment.objects.for_model(document).count():
         subtemplates_list.append(get_comments_subtemplate(document))
-        
+
     subtemplates_list.append(
         {
             'name': 'generic_list_subtemplate.html',
@@ -546,10 +547,10 @@ def calculate_converter_arguments(document, *args, **kwargs):
     file_format = kwargs.pop('file_format', DEFAULT_FILE_FORMAT)
     zoom = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
     rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
-    
+
     document_page = DocumentPage.objects.get(document=document, page_number=page)
     transformation_string, warnings = document_page.get_transformation_string()
-    
+
     arguments = {
         'size': size,
         'file_format': file_format,
@@ -561,7 +562,7 @@ def calculate_converter_arguments(document, *args, **kwargs):
     }
 
     return arguments, warnings
-    
+
 
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
@@ -579,9 +580,9 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
         zoom = ZOOM_MAX_LEVEL
 
     rotation = int(request.GET.get('rotation', 0)) % 360
-        
+
     arguments, warnings = calculate_converter_arguments(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation)
-    
+
     if warnings and (request.user.is_staff or request.user.is_superuser):
         for warning in warnings:
             messages.warning(request, _(u'Page transformation error: %s') % warning)
@@ -872,11 +873,11 @@ def document_view_simple(request, document_id):
             'object': document,
         },
     ]
-    
+
     subtemplates_list = []
     if document.tags.count():
         subtemplates_list.append(get_tags_subtemplate(document))
-    
+
     if Comment.objects.for_model(document).count():
         subtemplates_list.append(get_comments_subtemplate(document))
 
@@ -1154,36 +1155,96 @@ def metadatagroup_view(request, document_id, metadata_group_id):
     }, context_instance=RequestContext(request))
 
 
-def document_print(request, document_id, page_size=PAGE_SIZE_LEGAL):
+def document_print(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
-    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+    document = get_object_or_404(Document, pk=document_id)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
-    #page = int(request.GET.get('page', 1))
-    #zoom = int(request.GET.get('zoom', 100))
-    #if zoom < ZOOM_MIN_LEVEL:
-    #    zoom = ZOOM_MIN_LEVEL
-    #if zoom > ZOOM_MAX_LEVEL:
-    #    zoom = ZOOM_MAX_LEVEL
-    #rotation = int(request.GET.get('rotation', 0)) % 360
-       
-    arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT, quality=QUALITY_PRINT)
-    #, page=page, zoom=zoom, rotation=rotation)
-    
-    #Pre-generate
-    output_file = convert_document(document, **arguments)
+    post_redirect = None
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or document.get_absolute_url())))
 
-    page_dimensions = dict(PAGE_SIZE_DIMENSIONS)[page_size]
-    width = float(page_dimensions[0].split('i')[0].split('c')[0].split('m')[0])
-    height = float(page_dimensions[1].split('i')[0].split('c')[0].split('m')[0])
-    
+    new_window_url = None
+    html_redirect = None
+
+    if request.method == 'POST':
+        form = PrintForm(request.POST)
+        if form.is_valid():
+            hard_copy_arguments = {}
+            # Get page range
+            if form.cleaned_data['page_range']:
+                hard_copy_arguments['page_range'] = form.cleaned_data['page_range']
+
+            # Compute page width and height
+            if form.cleaned_data['custom_page_width'] and form.cleaned_data['custom_page_height']:
+                page_width = form.cleaned_data['custom_page_width']
+                page_height = form.cleaned_data['custom_page_height']
+            elif form.cleaned_data['page_size']:
+                page_width, page_height = dict(PAGE_SIZE_DIMENSIONS)[form.cleaned_data['page_size']]
+
+            # Page orientation
+            if form.cleaned_data['page_orientation'] == PAGE_ORIENTATION_LANDSCAPE:
+                page_width, page_height = page_height, page_width
+
+            hard_copy_arguments['page_width'] = page_width
+            hard_copy_arguments['page_height'] = page_height
+
+            new_url = [reverse('document_hard_copy', args=[document_id])]
+            if hard_copy_arguments:
+                new_url.append(urlquote(hard_copy_arguments))
+
+            new_window_url = u'?'.join(new_url)
+            #html_redirect = next
+            #messages.success(request, _(u'Preparing document hardcopy.'))
+    else:
+        form = PrintForm()
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'object': document,
+        'title': _(u'print: %s') % document,
+        'next': next,
+        'html_redirect': html_redirect if html_redirect else html_redirect,
+        'new_window_url': new_window_url if new_window_url else new_window_url
+    }, context_instance=RequestContext(request))
+
+
+def document_hard_copy(request, document_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+    document = get_object_or_404(Document, pk=document_id)
+
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
+    arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT, quality=QUALITY_PRINT)
+
+    # Pre-generate
+    convert_document(document, **arguments)
+
+    # Extract dimension values ignoring any unit
+    page_width = request.GET.get('page_width', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][0])
+    page_height = request.GET.get('page_height', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][1])
+
+    width = float(page_width.split('i')[0].split('c')[0].split('m')[0])
+    height = float(page_height.split('i')[0].split('c')[0].split('m')[0])
+
+    page_range = request.GET.get('page_range', u'')
+    if page_range:
+        page_range = parse_range(page_range)
+
+        pages = document.documentpage_set.filter(page_number__in=page_range)
+    else:
+        pages = document.documentpage_set.all()
+
     return render_to_response('document_print.html', {
         'object': document,
-        'page_size': page_dimensions,
         'page_aspect': width / height,
-        'page_orientation': u'landscape' if width / height > 1 else u'portrait',
+        'page_orientation': PAGE_ORIENTATION_LANDSCAPE if width / height > 1 else PAGE_ORIENTATION_PORTRAIT,
         'page_orientation_landscape': True if width / height > 1 else False,
         'page_orientation_portrait': False if width / height > 1 else True,
+        'page_range': page_range,
+        'page_width': page_width,
+        'page_height': page_height,
+        'pages': pages,
     }, context_instance=RequestContext(request))

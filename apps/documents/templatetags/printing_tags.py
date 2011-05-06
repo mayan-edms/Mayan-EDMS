@@ -1,6 +1,7 @@
-from django.template import TemplateSyntaxError, Library, \
-                            VariableDoesNotExist, Node, Variable
+from django.template import Library, Node, Variable
+
 from converter.api import get_document_dimensions, QUALITY_PRINT
+
 from documents.views import calculate_converter_arguments
 from documents.conf.settings import PRINT_SIZE
 
@@ -18,7 +19,8 @@ class GetImageSizeNode(Node):
         context[u'document_width'], context['document_height'] = width, height
         context[u'document_aspect'] = float(width) / float(height)
         return u''
- 
+
+
 @register.tag
 def get_document_size(parser, token):
     tag_name, arg = token.contents.split(None, 1)

@@ -12,6 +12,9 @@ from django.conf import settings
 from tags.widgets import get_tags_inline_widget
 from common.wizard import BoundFormWizard
 from common.forms import DetailForm
+from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
+from common.conf.settings import DEFAULT_PAPER_SIZE
+from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 
 from documents.staging import StagingFile
 from documents.models import Document, DocumentType, DocumentTypeMetadataType, \
@@ -42,8 +45,8 @@ class DocumentPageImageWidget(forms.widgets.Widget):
                         <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" />
                         <noscript>
                             <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" alt="%(string)s" />
-                        </noscript>     
-                    </div>    
+                        </noscript>
+                    </div>
                 </div>''' % {
                 'img': reverse('document_display', args=[value.document.id]),
                 'page': value.page_number,
@@ -366,7 +369,7 @@ class MetaDataImageWidget(forms.widgets.Widget):
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['group_data']:
             tags_template = get_tags_inline_widget(document)
-                                
+
             output.append(
                 u'''<div style="display: inline-block; margin: 10px; %(current)s">
                         <div class="tc">%(document_name)s</div>
@@ -423,3 +426,11 @@ class MetaDataGroupForm(forms.Form):
                     'links': links
                 }
             )
+
+
+class PrintForm(forms.Form):
+    page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
+    custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
+    custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
+    page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
+    page_range = forms.CharField(label=_(u'Page range'), required=False)

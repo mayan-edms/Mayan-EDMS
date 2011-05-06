@@ -24,6 +24,7 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/edit/metadata/$', 'document_edit_metadata', (), 'document_edit_metadata'),
     url(r'^document/multiple/edit/metadata/$', 'document_multiple_edit_metadata', (), 'document_multiple_edit_metadata'),
     url(r'^document/(?P<document_id>\d+)/print/$', 'document_print', (), 'document_print'),
+    url(r'^document/(?P<document_id>\d+)/hard_copy/$', 'document_hard_copy', (), 'document_hard_copy'),
 
     url(r'^document/(?P<document_id>\d+)/display/preview/$', 'get_document_image', {'size': PREVIEW_SIZE}, 'document_preview'),
     url(r'^document/(?P<document_id>\d+)/display/preview/multipage/$', 'get_document_image', {'size': MULTIPAGE_PREVIEW_SIZE}, 'document_preview_multipage'),

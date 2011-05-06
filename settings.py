@@ -162,6 +162,19 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #WEB_THEME = 'default'
 #-------------- Main -----------------
 #MAIN_SIDE_BAR_SEARCH = False
+#------------ Common --------------
+# Printing
+# from common.literals import PAGE_SIZE_LETTER, PAGE_ORIENTATION_PORTRAIT
+#COMMON_DEFAULT_PAPER_SIZE = PAGE_SIZE_LETTER
+#COMMON_DEFAULT_PAGE_ORIENTATION = PAGE_ORIENTATION_PORTRAIT
+#------------ Storage --------------
+#DOCUMENTS_STORAGE_BACKEND = FileBasedStorage
+# GridFS settings
+#STORAGE_GRIDFS_HOST = 'localhost'  # or list ['host a', 'host b']
+#STORAGE_GRIDFS_PORT = 27017
+#STORAGE_GRIDFS_DATABASE_NAME = u'document_storage'
+# Filebased
+#STORAGE_FILESTORAGE_LOCATION = u'document_storage'
 #---------- Documents ------------------
 # Definition
 #DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
@@ -182,15 +195,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #DOCUMENTS_UUID_FUNCTION = lambda:unicode(uuid.uuid4())
 #DOCUMENTS_DEFAULT_TRANSFORMATIONS = []
 
-# Storage
-#DOCUMENTS_STORAGE_BACKEND = FileBasedStorage
-# Storage - GridFS settings
-#STORAGE_GRIDFS_HOST = 'localhost'  # or list ['host a', 'host b']
-#STORAGE_GRIDFS_PORT = 27017
-#STORAGE_GRIDFS_DATABASE_NAME = u'document_storage'
-# Filebased
-#STORAGE_FILESTORAGE_LOCATION = u'document_storage'
-
 # Usage
 #DOCUMENTS_PREVIEW_SIZE = '640x480'
 #DOCUMENTS_THUMBNAIL_SIZE = '50x50'
@@ -206,17 +210,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # Groups
 #DOCUMENTS_GROUP_SHOW_EMPTY = True
-
-# Serving
+#------------ Filesystem serving --------------
 #FILESYSTEM_FILESERVING_ENABLE = True
 #FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
 #FILESYSTEM_SLUGIFY_PATHS = False
 #FILESYSTEM_MAX_RENAME_COUNT = 200
-
-# Misc
-#COMMON_TEMPORARY_DIRECTORY = u'/tmp'
-
-# Converter
+#------------ Converter --------------
 #CONVERTER_DEFAULT_OPTIONS = u''
 #CONVERTER_LOW_QUALITY_OPTIONS = u''
 #CONVERTER_HIGH_QUALITY_OPTIONS =  u'-density 400'
@@ -227,8 +226,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #CONVERTER_GRAPHICS_BACKEND = u'converter.backends.imagemagick'
 #CONVERTER_GM_PATH = u'/usr/bin/gm'
 #CONVERTER_GM_SETTINGS = u''
-
-# OCR
+#------------ OCR --------------
 #OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
 #OCR_NODE_CONCURRENT_EXECUTION = 1
 #OCR_TESSERACT_LANGUAGE = u'eng'
@@ -236,17 +234,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #OCR_AUTOMATIC_OCR = False
 #OCR_PDFTOTEXT_PATH = u'/usr/bin/pdftotext'
 #OCR_QUEUE_PROCESSING_INTERVAL = 10  # In seconds
-
-# Permissions
+#------------ Permissions --------------
 #ROLES_DEFAULT_ROLES = []
-
-# Searching
+#------------ Searching --------------
 #SEARCH_LIMIT = 100
-
-# django-sendfile
+#------------ django-sendfile --------------
 # Change to xsendfile for apache if x-sendfile is enabled
 SENDFILE_BACKEND = 'sendfile.backends.simple'
-
 #----------- django-celery --------------
 import djcelery
 djcelery.setup_loader()

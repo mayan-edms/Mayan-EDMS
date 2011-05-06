@@ -66,7 +66,7 @@ class Document(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
 
     tags = TaggableManager()
-    
+
     comments = generic.GenericRelation(
         Comment,
         content_type_field='content_type',
@@ -332,7 +332,7 @@ class DocumentPage(models.Model):
             except Exception, e:
                 warnings.append(e)
 
-        return ' '.join(transformation_list), warnings  
+        return ' '.join(transformation_list), warnings
 
 
 class MetadataGroupManager(models.Manager):

@@ -119,6 +119,7 @@ register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
 register_tool(document_find_all_duplicates, namespace='documents', title=_(u'documents'))
 
+
 def document_exists(document):
     try:
         if document.exists():
@@ -150,7 +151,7 @@ if ENABLE_SINGLE_DOCUMENT_UPLOAD:
         {'text': _(u'documents'), 'view': 'document_list_recent', 'links': [
             document_list_recent, document_list, document_create, \
             document_create_multiple
-            
+
         ], 'famfam': 'page', 'position': 1}])
 else:
     register_menu([

@@ -5,8 +5,22 @@
 {% load settings %}
 {% load search_tags %}
 {% load main_settings_tags %}
+{% block web_theme_head %}
+    {% if new_window_url %}
+        <script type="text/javascript">
+            window.open('{{ new_window_url|safe }}','name','toolbar=1,scrollbars=1,location=1,status=1,menubar=1,resizable=1');
+        </script>
+        <noscript>
+            <META HTTP-EQUIV="refresh" CONTENT="{{ new_window_url_timeout|default:'2' }};{{ new_window_url|safe }}">
+        </noscript>
+    {% endif %}
+    
+    {% if html_redirect %}
+        <META HTTP-EQUIV="refresh" CONTENT="{{ html_redirect_timeout|default:'2' }};{{ html_redirect|safe }}">
+    {% endif %}
+{% endblock %}
 
-{% block html_title %}{% project_name %}{% block title %}{% endblock %}{% endblock %}
+{% block html_title %}{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}{% endblock %}
 
 {% get_main_setting "SIDE_BAR_SEARCH" as debug %}
 {% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG Mode)" %} {% endif %}{% endblock %}

@@ -38,16 +38,16 @@
             .break { page-break-after: always; }
             img { border: 1px solid black; }
             @page {
-                size: {{ page_size.0 }} {{ page_size.1 }};
+                size: {{ page_width }} {{ page_height }};
                 margin-top: 1cm;
                 margin-bottom: 1cm;
                 margin-left: auto;
                 margin-right: auto;
             }
-        </style> 
+        </style>
 	</head>
 	<body>
-        {% for page in object.documentpage_set.all %}
+        {% for page in pages %}
             {% get_document_size object %}
             <div class="{% if forloop.counter > 1 %}break{% endif %}">
                 <img src="{% url document_display_print object.id %}?page={{ page.page_number }}" {% if document_aspect > page_aspect %}width="97%"{% else %}height="97%"{% endif %} />

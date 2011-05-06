@@ -64,6 +64,10 @@ def check_settings(request):
         {'name': 'COMMON_TEMPORARY_DIRECTORY',
             'value': common_settings.TEMPORARY_DIRECTORY, 'exists': True,
             'description': common_settings.setting_description},
+        {'name': 'COMMON_DEFAULT_PAPER_SIZE',
+            'value': common_settings.PAGE_SIZE_LETTER},
+        {'name': 'COMMON_DEFAULT_PAGE_ORIENTATION',
+            'value': common_settings.PAGE_ORIENTATION_PORTRAIT},
 
         # Converter
         {'name': 'CONVERTER_UNPAPER_PATH',
