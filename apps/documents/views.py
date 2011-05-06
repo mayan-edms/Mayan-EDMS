@@ -1195,6 +1195,7 @@ def document_print(request, document_id):
                 new_url.append(urlquote(hard_copy_arguments))
 
             new_window_url = u'?'.join(new_url)
+            new_window_url_name = u'document_hard_copy'
             #html_redirect = next
             #messages.success(request, _(u'Preparing document hardcopy.'))
     else:

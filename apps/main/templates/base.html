@@ -8,7 +8,7 @@
 {% block web_theme_head %}
     {% if new_window_url %}
         <script type="text/javascript">
-            window.open('{{ new_window_url|safe }}','name','toolbar=1,scrollbars=1,location=1,status=1,menubar=1,resizable=1');
+            window.open('{{ new_window_url|safe }}','{{ new_window_url_name|default:"_blank" }}','toolbar=1,scrollbars=1,location=1,status=1,menubar=1,resizable=1');
         </script>
         <noscript>
             <META HTTP-EQUIV="refresh" CONTENT="{{ new_window_url_timeout|default:'2' }};{{ new_window_url|safe }}">
