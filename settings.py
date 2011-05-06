@@ -234,6 +234,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #OCR_AUTOMATIC_OCR = False
 #OCR_PDFTOTEXT_PATH = u'/usr/bin/pdftotext'
 #OCR_QUEUE_PROCESSING_INTERVAL = 10  # In seconds
+#OCR_CACHE_URI = None  # Can be a single host (u'memcached://127.0.0.1:11211/'), or multiple separated by a semicolon
 #------------ Permissions --------------
 #ROLES_DEFAULT_ROLES = []
 #------------ Searching --------------
