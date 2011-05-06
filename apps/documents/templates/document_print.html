@@ -49,7 +49,7 @@
 	<body>
         {% for page in pages %}
             {% get_document_size object %}
-            <div class="{% if forloop.counter > 1 %}break{% endif %}">
+            <div class="{% if forloop.counter > 1 and not forloop.last %}break{% endif %}">
                 <img src="{% url document_display_print object.id %}?page={{ page.page_number }}" {% if document_aspect > page_aspect %}width="97%"{% else %}height="97%"{% endif %} />
             </div>
         {% endfor %}
