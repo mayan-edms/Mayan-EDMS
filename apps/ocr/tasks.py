@@ -93,7 +93,9 @@ def task_process_document_queues():
     if not cache_backend:
         random_delay()
 
-    reset_orphans()
+    # reset_orphans()
+    # Causes problems with big clusters increased latency
+    # Disabled until better solution 
     q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
     q_delayed = Q(delay=True)
     q_delay_interval = Q(datetime_submitted__lt=datetime.now() - timedelta(seconds=REPLICATION_DELAY))
