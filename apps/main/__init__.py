@@ -5,14 +5,12 @@ from permissions import role_list
 from user_management import user_list
 
 from main.conf.settings import SIDE_BAR_SEARCH
-from main.conf import settings as main_settings
-from main.api import register_setting
 
 
 def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
 
-check_settings = {'text': _(u'settings'), 'view': 'check_settings', 'famfam': 'cog'}
+check_settings = {'text': _(u'settings'), 'view': 'setting_list', 'famfam': 'cog'}
 statistics = {'text': _(u'statistics'), 'view': 'statistics', 'famfam': 'table'}
 diagnostics = {'text': _(u'diagnostics'), 'view': 'diagnostics', 'famfam': 'pill'}
 tools = {'text': _(u'tools'), 'view': 'tools_menu', 'famfam': 'wrench'}
@@ -34,7 +32,7 @@ main_menu = [
         tools, statistics, diagnostics, sentry
         ], 'famfam': 'wrench', 'name': 'tools', 'position': 7},
 
-    {'text': _(u'setup'), 'view': 'check_settings', 'links': [
+    {'text': _(u'setup'), 'view': 'setting_list', 'links': [
         check_settings, role_list, user_list, admin_site
         ], 'famfam': 'cog', 'name': 'setup', 'position': 8},
 
@@ -60,6 +58,3 @@ def get_version():
     return ''.join(vers)
 
 __version__ = get_version()
-
-
-#register_setting(u'main', main_settings, u'SIDE_BAR_SEARCH', u'MAIN_SIDE_BAR_SEARCH')

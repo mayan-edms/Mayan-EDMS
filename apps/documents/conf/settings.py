@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 from common.utils import proper_name
 from storage.backends.filebasedstorage import FileBasedStorage
-from main.api import register_settings
+from smart_settings.api import register_settings
 
 
 def default_checksum(x):

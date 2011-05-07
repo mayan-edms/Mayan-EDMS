@@ -3,136 +3,16 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import PermissionDenied
 
-from common.utils import exists_with_famfam, return_type
-#from common.conf import settings as common_settings
-#from documents.conf import settings as documents_settings
-#from documents.statistics import get_statistics as documents_statistics
-#from converter.conf import settings as converter_settings
-#from ocr.conf import settings as ocr_settings
-#from ocr.statistics import get_statistics as ocr_statistics
-#from filesystem_serving.conf import settings as filesystem_serving_settings
-#from dynamic_search.conf import settings as search_settings
+from documents.statistics import get_statistics as documents_statistics
+from ocr.statistics import get_statistics as ocr_statistics
 from permissions.api import check_permissions
 
-from main.conf import settings as main_settings
-from main.api import diagnostics, tools, settings
+from main.api import diagnostics, tools
 
 
 def home(request):
     return render_to_response('home.html', {},
     context_instance=RequestContext(request))
-
-
-def check_settings(request):
-    """
-    settings = [
-        
-        {'name': 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'value': documents_settings.AVAILABLE_FUNCTIONS},
-        {'name': 'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'value': documents_settings.AVAILABLE_MODELS},
-        {'name': 'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value': documents_settings.AVAILABLE_INDEXING_FUNCTIONS},
-        {'name': 'DOCUMENTS_USE_STAGING_DIRECTORY', 'value': documents_settings.USE_STAGING_DIRECTORY},
-        {'name': 'DOCUMENTS_STAGING_DIRECTORY', 'value': documents_settings.STAGING_DIRECTORY, 'exists': True},
-        {'name': 'DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD', 'value': documents_settings.DELETE_STAGING_FILE_AFTER_UPLOAD},
-        {'name': 'DOCUMENTS_STAGING_FILES_PREVIEW_SIZE', 'value': documents_settings.STAGING_FILES_PREVIEW_SIZE},
-        {'name': 'DOCUMENTS_CHECKSUM_FUNCTION', 'value': documents_settings.CHECKSUM_FUNCTION},
-        {'name': 'DOCUMENTS_UUID_FUNTION', 'value': documents_settings.UUID_FUNCTION},
-        {'name': 'DOCUMENTS_STORAGE_BACKEND', 'value': documents_settings.STORAGE_BACKEND},
-        {'name': 'DOCUMENTS_PREVIEW_SIZE', 'value': documents_settings.PREVIEW_SIZE},
-        {'name': 'DOCUMENTS_THUMBNAIL_SIZE', 'value': documents_settings.THUMBNAIL_SIZE},
-        {'name': 'DOCUMENTS_DISPLAY_SIZE', 'value': documents_settings.DISPLAY_SIZE},
-        {'name': 'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'value': documents_settings.ENABLE_SINGLE_DOCUMENT_UPLOAD},
-        {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_LOCAL_FILES},
-        {'name': 'DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES', 'value': documents_settings.UNCOMPRESS_COMPRESSED_STAGING_FILES},
-        {'name': 'DOCUMENTS_ZOOM_PERCENT_STEP', 'value': documents_settings.ZOOM_PERCENT_STEP},
-        {'name': 'DOCUMENTS_ZOOM_MAX_LEVEL', 'value': documents_settings.ZOOM_MAX_LEVEL},
-        {'name': 'DOCUMENTS_ZOOM_MIN_LEVEL', 'value': documents_settings.ZOOM_MIN_LEVEL},
-        {'name': 'DOCUMENTS_ROTATION_STEP', 'value': documents_settings.ROTATION_STEP},
-
-        #Groups
-        {'name': 'DOCUMENTS_GROUP_SHOW_EMPTY', 'value': documents_settings.GROUP_SHOW_EMPTY},
-        {'name': 'DOCUMENTS_RECENT_COUNT', 'value': documents_settings.RECENT_COUNT},
-
-        #Filesystem_serving
-        {'name': 'FILESYSTEM_FILESERVING_ENABLE', 'value': filesystem_serving_settings.FILESERVING_ENABLE},
-        {'name': 'FILESYSTEM_FILESERVING_PATH', 'value': filesystem_serving_settings.FILESERVING_PATH, 'exists': True},
-        {'name': 'FILESYSTEM_SLUGIFY_PATHS', 'value': filesystem_serving_settings.SLUGIFY_PATHS},
-        {'name': 'FILESYSTEM_MAX_RENAME_COUNT', 'value': filesystem_serving_settings.MAX_RENAME_COUNT},
-
-        # Common
-        {'name': 'COMMON_TEMPORARY_DIRECTORY',
-            'value': common_settings.TEMPORARY_DIRECTORY, 'exists': True,
-            'description': common_settings.setting_description},
-        {'name': 'COMMON_DEFAULT_PAPER_SIZE',
-            'value': common_settings.PAGE_SIZE_LETTER},
-        {'name': 'COMMON_DEFAULT_PAGE_ORIENTATION',
-            'value': common_settings.PAGE_ORIENTATION_PORTRAIT},
-
-        # Converter
-        {'name': 'CONVERTER_UNPAPER_PATH',
-            'value': converter_settings.UNPAPER_PATH, 'exists': True,
-            'description': converter_settings.setting_description},
-        {'name': 'CONVERTER_IM_CONVERT_PATH',
-            'value': converter_settings.IM_CONVERT_PATH, 'exists': True,
-            'description': converter_settings.setting_description},
-        {'name': 'CONVERTER_IM_IDENTIFY_PATH',
-            'value': converter_settings.IM_IDENTIFY_PATH, 'exists': True,
-            'description': converter_settings.setting_description},
-        {'name': 'CONVERTER_GM_PATH',
-            'value': converter_settings.GM_PATH, 'exists': True,
-            'description': converter_settings.setting_description},
-        {'name': 'CONVERTER_GM_SETTINGS', 'value': converter_settings.GM_SETTINGS},
-        {'name': 'CONVERTER_GRAPHICS_BACKEND',
-            'value': converter_settings.GRAPHICS_BACKEND,
-            'description': converter_settings.setting_description},
-        {'name': 'CONVERTER_UNOCONV_PATH',
-            'value': converter_settings.UNOCONV_PATH, 'exists': True},
-        {'name': 'CONVERTER_OCR_OPTIONS', 'value': converter_settings.OCR_OPTIONS},
-        {'name': 'CONVERTER_DEFAULT_OPTIONS', 'value': converter_settings.DEFAULT_OPTIONS},
-        {'name': 'CONVERTER_LOW_QUALITY_OPTIONS', 'value': converter_settings.LOW_QUALITY_OPTIONS},
-        {'name': 'CONVERTER_HIGH_QUALITY_OPTIONS', 'value': converter_settings.HIGH_QUALITY_OPTIONS},
-
-        # OCR
-        {'name': 'OCR_AUTOMATIC_OCR', 'value': ocr_settings.AUTOMATIC_OCR},
-        {'name': 'OCR_TESSERACT_PATH', 'value': ocr_settings.TESSERACT_PATH, 'exists': True},
-        {'name': 'OCR_TESSERACT_LANGUAGE', 'value': ocr_settings.TESSERACT_LANGUAGE},
-        {'name': 'OCR_NODE_CONCURRENT_EXECUTION', 'value': ocr_settings.NODE_CONCURRENT_EXECUTION},
-        {'name': 'OCR_REPLICATION_DELAY', 'value': ocr_settings.REPLICATION_DELAY},
-        {'name': 'OCR_PDFTOTEXT_PATH', 'value': ocr_settings.PDFTOTEXT_PATH, 'exists': True},
-        {'name': 'OCR_QUEUE_PROCESSING_INTERVAL', 'value': ocr_settings.QUEUE_PROCESSING_INTERVAL},
-        {'name': 'OCR_CACHE_URI', 'value': ocr_settings.CACHE_URI},
-
-        # Search
-        {'name': 'SEARCH_LIMIT', 'value': search_settings.LIMIT},
-    ]
-    """
-    new_settings = []
-    for namespace, sub_settings in settings.items():
-        for sub_setting in sub_settings:
-            if not sub_setting.get('hidden', False):
-                new_settings.append({
-                    'module': sub_setting['module'],
-                    'name': sub_setting['name'],
-                    'global_name': sub_setting['global_name'],
-                    'description': sub_setting.get('description', None),
-                    'exists': sub_setting.get('exists', False),
-                    'default': sub_setting['default'],
-                    })
-    context = {
-        'title': _(u'settings'),
-        'object_list': new_settings,
-        'hide_link': True,
-        'hide_object': True,
-        'extra_columns': [
-            {'name': _(u'name'), 'attribute': 'global_name'},
-            {'name': _(u'default'), 'attribute': lambda x: return_type(x['default'])},
-            {'name': _(u'value'), 'attribute': lambda x: return_type(getattr(x['module'], x['name']))},
-            {'name': _(u'description'), 'attribute': 'description'},
-            {'name': _(u'exists'), 'attribute': lambda x: exists_with_famfam(getattr(x['module'], x['name'])) if x['exists'] else ''},
-        ]
-    }
-
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
 
 
 def tools_menu(request):

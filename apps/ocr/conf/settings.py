@@ -2,7 +2,7 @@
 
 from django.utils.translation import ugettext_lazy as _
 
-from main.api import register_settings
+from smart_settings.api import register_settings
 
 register_settings(
     namespace=u'ocr',
@@ -18,4 +18,3 @@ register_settings(
         {'name': u'CACHE_URI', 'global_name': u'OCR_CACHE_URI', 'default': None, 'description': _(u'URI in the form: "memcached://127.0.0.1:11211/" to specify a cache backend to use for locking. Multiple hosts can be specified separated by a semicolon.')}
     ]
 )
-

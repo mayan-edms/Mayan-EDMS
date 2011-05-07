@@ -6,7 +6,7 @@ from random import random
 from django.db.models import Q
 from django.utils.translation import ugettext as _
 from django.core.cache import get_cache
-    
+
 from celery.decorators import task, periodic_task
 from celery.task.control import inspect
 
@@ -92,7 +92,7 @@ def reset_orphans():
 def task_process_document_queues():
     if not cache_backend:
         random_delay()
-        
+
     reset_orphans()
     q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
     q_delayed = Q(delay=True)

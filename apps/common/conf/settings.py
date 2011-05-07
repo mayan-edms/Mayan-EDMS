@@ -2,7 +2,7 @@
 
 from django.utils.translation import ugettext_lazy as _
 
-from main.api import register_setting
+from smart_settings.api import register_setting
 
 from common.literals import PAGE_SIZE_LETTER, PAGE_ORIENTATION_PORTRAIT
 

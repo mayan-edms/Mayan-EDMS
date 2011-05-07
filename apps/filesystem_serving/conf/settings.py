@@ -1,6 +1,6 @@
 """Configuration options for the filesystem_serving app"""
 
-from main.api import register_settings
+from smart_settings.api import register_settings
 
 register_settings(
     namespace=u'filesystem_serving',
@@ -12,4 +12,3 @@ register_settings(
         {'name': u'FILESERVING_ENABLE', 'global_name': u'FILESYSTEM_FILESERVING_ENABLE', 'default': True}
     ]
 )
-

@@ -1,7 +1,7 @@
 """Configuration options for the main app"""
 
 from django.utils.translation import ugettext_lazy as _
-from main.api import register_setting
+from smart_settings.api import register_setting
 
 register_setting(
     namespace=u'main',

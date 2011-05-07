@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.comments',
+    'smart_settings',
     'navigation',
     'web_theme',
     'main',

@@ -1,7 +1,7 @@
 """Configuration options for the permissions app"""
 from django.utils.translation import ugettext_lazy as _
 
-from main.api import register_settings
+from smart_settings.api import register_settings
 
 register_settings(
     namespace=u'permissions',
