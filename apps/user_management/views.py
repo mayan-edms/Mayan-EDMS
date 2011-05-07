@@ -12,7 +12,7 @@ from permissions.api import check_permissions
 from user_management import PERMISSION_USER_VIEW, \
     PERMISSION_USER_EDIT, PERMISSION_USER_CREATE, \
     PERMISSION_USER_DELETE
-from user_management.forms import UserForm
+from user_management.forms import UserForm, PasswordForm
 
 
 def user_list(request):
@@ -20,7 +20,7 @@ def user_list(request):
 
     return object_list(
         request,
-        queryset=User.objects.all(),
+        queryset=User.objects.exclude(is_superuser=True).exclude(is_staff=True),
         template_name='generic_list.html',
         extra_context={
             'title': _(u'users'),
@@ -31,6 +31,9 @@ def user_list(request):
                     'attribute': 'get_full_name'
                 },
                 {
+                    'name': _(u'email'),
+                    'attribute': 'email'
+                },                {
                     'name': _(u'active'),
                     'attribute': 'is_active'
                 }
@@ -45,6 +48,10 @@ def user_edit(request, user_id):
     check_permissions(request.user, 'user_management', [PERMISSION_USER_EDIT])
     user = get_object_or_404(User, pk=user_id)
 
+    if user.is_superuser or user.is_staff:
+        messages.error(request, _(u'Super user and staff user editing is not allowed, use the admin interface for these cases.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        
     if request.method == 'POST':
         form = UserForm(instance=user, data=request.POST)
         if form.is_valid():
@@ -100,8 +107,11 @@ def user_delete(request, user_id=None, user_id_list=None):
     if request.method == 'POST':
         for user in users:
             try:
-                user.delete()
-                messages.success(request, _(u'User "%s" deleted successfully.') % user)
+                if user.is_superuser or user.is_staff:
+                    messages.error(request, _(u'Super user and staff user deleting is not allowed, use the admin interface for these cases.'))
+                else:
+                    user.delete()
+                    messages.success(request, _(u'User "%s" deleted successfully.') % user)
             except Exception, e:
                 messages.error(request, _(u'Error deleting user "%(user)s": %(error)s') % {
                     'user': user, 'error': e
@@ -127,5 +137,67 @@ def user_delete(request, user_id=None, user_id_list=None):
 
 def user_multiple_delete(request):
     return user_delete(
+        request, user_id_list=request.GET.get('id_list', [])
+    )
+    
+    
+def user_set_password(request, user_id=None, user_id_list=None):
+    check_permissions(request.user, 'users', [PERMISSION_USER_EDIT])
+    post_action_redirect = None
+
+    if user_id:
+        users = [get_object_or_404(User, pk=user_id)]
+        post_action_redirect = reverse('user_list')
+    elif user_id_list:
+        users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one user.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+            password_1 = form.cleaned_data['new_password_1']
+            password_2 = form.cleaned_data['new_password_2']
+            if password_1 != password_2:
+                messages.error(request, _(u'Passwords do not match, try again.'))
+            else:
+                for user in users:
+                    try:
+                        if user.is_superuser or user.is_staff:
+                            messages.error(request, _(u'Super user and staff user password reseting is not allowed, use the admin interface for these cases.'))
+                        else:
+                            user.set_password(password_1)
+                            user.save()
+                            messages.success(request, _(u'Successfull password reset for user: %s.') % user)
+                    except Exception, e:
+                        messages.error(request, _(u'Error reseting password for user "%(user)s": %(error)s') % {
+                            'user': user, 'error': e
+                        })                
+
+                return HttpResponseRedirect(next)
+    else:
+        form = PasswordForm()
+
+    context = {
+        'object_name': _(u'user'),
+        'next': next,
+        'form': form,
+    }
+
+    if len(users) == 1:
+        context['object'] = users[0]
+        context['title'] = _(u'Reseting password for user: %s') % ', '.join([unicode(d) for d in users])
+    elif len(users) > 1:
+        context['title'] = _(u'Reseting password for users: %s') % ', '.join([unicode(d) for d in users])
+        
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))
+
+
+def user_multiple_set_password(request):
+    return user_set_password(
         request, user_id_list=request.GET.get('id_list', [])
     )

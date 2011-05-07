@@ -16,11 +16,14 @@ register_permissions('user_management', [
     {'name': PERMISSION_USER_DELETE, 'label': _(u'Delete existing users')},
 ])
 
-user_list = {'text': _(u'users'), 'view': 'user_list', 'famfam': 'user', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_VIEW]}}
+user_list = {'text': _(u'user list'), 'view': 'user_list', 'famfam': 'user', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_VIEW]}}
 user_edit = {'text': _(u'edit'), 'view': 'user_edit', 'args': 'object.id', 'famfam': 'user_edit', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_EDIT]}}
-user_add = {'text': _(u'create new user'), 'view': 'user_add', 'args': 'object.id', 'famfam': 'user_add', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_CREATE]}}
+user_add = {'text': _(u'create new user'), 'view': 'user_add', 'famfam': 'user_add', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_CREATE]}}
+user_delete = {u'text': _('delete'), 'view': 'user_delete', 'args': 'object.id', 'famfam': 'user_delete', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_DELETE]}}
 user_multiple_delete = {u'text': _('delete'), 'view': 'user_multiple_delete', 'famfam': 'user_delete', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_DELETE]}}
+user_set_password = {u'text': _('reset password'), 'view': 'user_set_password', 'args': 'object.id', 'famfam': 'lock_edit', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_EDIT]}}
+user_multiple_set_password = {u'text': _('reset password'), 'view': 'user_multiple_set_password', 'famfam': 'lock_edit', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_EDIT]}}
 
-register_links(User, [user_edit])
-register_links('user_list', [user_add], menu_name=u'sidebar')
-register_multi_item_links(['user_list'], [user_multiple_delete])
+register_links(User, [user_edit, user_set_password, user_delete])
+register_links(['user_multiple_set_password', 'user_set_password', 'user_multiple_delete', 'user_delete', 'user_edit', 'user_list','user_add'], [user_add, user_list], menu_name=u'sidebar')
+register_multi_item_links(['user_list'], [user_multiple_set_password, user_multiple_delete])
