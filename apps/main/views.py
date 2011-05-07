@@ -4,18 +4,18 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import PermissionDenied
 
 from common.utils import exists_with_famfam, return_type
-from common.conf import settings as common_settings
-from documents.conf import settings as documents_settings
-from documents.statistics import get_statistics as documents_statistics
-from converter.conf import settings as converter_settings
-from ocr.conf import settings as ocr_settings
-from ocr.statistics import get_statistics as ocr_statistics
-from filesystem_serving.conf import settings as filesystem_serving_settings
-from dynamic_search.conf import settings as search_settings
+#from common.conf import settings as common_settings
+#from documents.conf import settings as documents_settings
+#from documents.statistics import get_statistics as documents_statistics
+#from converter.conf import settings as converter_settings
+#from ocr.conf import settings as ocr_settings
+#from ocr.statistics import get_statistics as ocr_statistics
+#from filesystem_serving.conf import settings as filesystem_serving_settings
+#from dynamic_search.conf import settings as search_settings
 from permissions.api import check_permissions
 
 from main.conf import settings as main_settings
-from main.api import diagnostics, tools
+from main.api import diagnostics, tools, settings
 
 
 def home(request):
@@ -24,11 +24,9 @@ def home(request):
 
 
 def check_settings(request):
+    """
     settings = [
-        {'name': 'MAIN_SIDE_BAR_SEARCH',
-            'value': main_settings.SIDE_BAR_SEARCH,
-            'description': main_settings.setting_description},
-
+        
         {'name': 'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'value': documents_settings.AVAILABLE_FUNCTIONS},
         {'name': 'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'value': documents_settings.AVAILABLE_MODELS},
         {'name': 'DOCUMENTS_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'value': documents_settings.AVAILABLE_INDEXING_FUNCTIONS},
@@ -106,17 +104,30 @@ def check_settings(request):
         # Search
         {'name': 'SEARCH_LIMIT', 'value': search_settings.LIMIT},
     ]
-
+    """
+    new_settings = []
+    for namespace, sub_settings in settings.items():
+        for sub_setting in sub_settings:
+            if not sub_setting.get('hidden', False):
+                new_settings.append({
+                    'module': sub_setting['module'],
+                    'name': sub_setting['name'],
+                    'global_name': sub_setting['global_name'],
+                    'description': sub_setting.get('description', None),
+                    'exists': sub_setting.get('exists', False),
+                    'default': sub_setting['default'],
+                    })
     context = {
         'title': _(u'settings'),
-        'object_list': settings,
+        'object_list': new_settings,
         'hide_link': True,
         'hide_object': True,
         'extra_columns': [
-            {'name': _(u'name'), 'attribute': 'name'},
-            {'name': _(u'value'), 'attribute': lambda x: return_type(x['value'])},
-            {'name': _(u'description'), 'attribute': lambda x: x.get('description', {}).get(x['name'], '')},
-            {'name': _(u'exists'), 'attribute': lambda x: exists_with_famfam(x['value']) if 'exists' in x else ''},
+            {'name': _(u'name'), 'attribute': 'global_name'},
+            {'name': _(u'default'), 'attribute': lambda x: return_type(x['default'])},
+            {'name': _(u'value'), 'attribute': lambda x: return_type(getattr(x['module'], x['name']))},
+            {'name': _(u'description'), 'attribute': 'description'},
+            {'name': _(u'exists'), 'attribute': lambda x: exists_with_famfam(getattr(x['module'], x['name'])) if x['exists'] else ''},
         ]
     }
 

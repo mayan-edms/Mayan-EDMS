@@ -1,3 +1,12 @@
-from django.conf import settings
+"""Configuration options for the permissions app"""
+from django.utils.translation import ugettext_lazy as _
 
-DEFAULT_ROLES = getattr(settings, 'ROLES_DEFAULT_ROLES', [])
+from main.api import register_settings
+
+register_settings(
+    namespace=u'permissions',
+    module=u'permissions.conf.settings',
+    settings=[
+        {'name': u'DEFAULT_ROLES', 'global_name': u'ROLES_DEFAULT_ROLES', 'default': [], 'description': _('A list of existing roles that are automatically assigned to newly created users')},
+    ]
+)

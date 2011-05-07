@@ -5,6 +5,8 @@ from permissions import role_list
 from user_management import user_list
 
 from main.conf.settings import SIDE_BAR_SEARCH
+from main.conf import settings as main_settings
+from main.api import register_setting
 
 
 def is_superuser(context):
@@ -58,3 +60,6 @@ def get_version():
     return ''.join(vers)
 
 __version__ = get_version()
+
+
+#register_setting(u'main', main_settings, u'SIDE_BAR_SEARCH', u'MAIN_SIDE_BAR_SEARCH')

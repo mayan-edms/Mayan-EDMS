@@ -1,4 +1,15 @@
-from django.conf import settings
+"""Configuration options for the dynamic_search app"""
 
-SHOW_OBJECT_TYPE = getattr(settings, 'SEARCH_SHOW_OBJECT_TYPE', True)
-LIMIT = getattr(settings, 'SEARCH_LIMIT', 100)
+from django.utils.translation import ugettext_lazy as _
+
+from main.api import register_settings
+
+register_settings(
+    namespace=u'dynamic_search',
+    module=u'dynamic_search.conf.settings',
+    settings=[
+        {'name': u'SHOW_OBJECT_TYPE', 'global_name': u'SEARCH_SHOW_OBJECT_TYPE', 'default': True, 'hidden': True},
+        {'name': u'LIMIT', 'global_name': u'SEARCH_LIMIT', 'default': 100, 'description': _(u'Maximum amount search hits to fetch and display.')},
+    ]
+)
+
