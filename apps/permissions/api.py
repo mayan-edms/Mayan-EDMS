@@ -1,5 +1,5 @@
-from django.contrib.auth.models import User
-from django.contrib.auth.models import Group
+#from django.contrib.auth.models import User
+#from django.contrib.auth.models import Group
 from django.db.utils import DatabaseError
 from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
@@ -29,47 +29,14 @@ def register_permissions(namespace, permissions):
 
 #TODO: Handle anonymous users
 def check_permissions(requester, namespace, permission_list):
-    if isinstance(requester, User):
-        if requester.is_superuser:
-            return True
-
     for permission_item in permission_list:
         permission = get_object_or_404(Permission,
             namespace=namespace, name=permission_item)
-        if check_permission(requester, permission):
+        #if check_permission(requester, permission):
+        if permission.has_permission(requester):
             return True
 
     raise PermissionDenied(ugettext(u'Insufficient permissions.'))
-
-
-def check_permission(requester, permission):
-    for permission_holder in permission.permissionholder_set.all():
-        if check_requester(requester, permission_holder):
-            return True
-
-
-def check_requester(requester, permission_holder):
-    ct = ContentType.objects.get_for_model(requester)
-    if permission_holder.holder_type == ct and permission_holder.holder_id == requester.id:
-        return True
-
-    if isinstance(permission_holder.holder_object, Role):
-        requester_list = [role_member.member_object for role_member in permission_holder.holder_object.rolemember_set.all()]
-        if check_elements(requester, requester_list):
-            return True
-
-    #Untested
-    if isinstance(permission_holder.holder_object, Group):
-        if check_elements(requester, permission_holder.holder_object.user_set.all()):
-            return True
-
-
-#TODO: a role may contain groups, make recursive
-def check_elements(requester, requester_list):
-    #ct = ContentType.objects.get_for_model(requester)
-    for requester_object in requester_list:
-        if requester == requester_object:
-            return True
 
 
 register_permissions('permissions', [
