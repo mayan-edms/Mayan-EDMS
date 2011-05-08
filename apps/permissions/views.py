@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 from permissions.models import Role, Permission, PermissionHolder, RoleMember
 from permissions.forms import RoleForm, RoleForm_view, ChoiceForm
@@ -125,15 +125,15 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
 
     if action == 'grant':
         check_permissions(request.user, 'permissions', [PERMISSION_PERMISSION_GRANT])
-        title = _('Are you sure you wish to grant the permission "%(permission)s" to %(ct_name)s: %(requester)s') % {
+        title = _(u'Are you sure you wish to grant the permission "%(permission)s" to %(ct_name)s: %(requester)s') % {
             'permission': permission, 'ct_name': ct.name, 'requester': requester}
 
     elif action == 'revoke':
         check_permissions(request.user, 'permissions', [PERMISSION_PERMISSION_REVOKE])
-        title = _('Are you sure you wish to revoke the permission "%(permission)s" from %(ct_name)s: %(requester)s') % {
+        title = _(u'Are you sure you wish to revoke the permission "%(permission)s" from %(ct_name)s: %(requester)s') % {
             'permission': permission, 'ct_name': ct.name, 'requester': requester}
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect(u'/')
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -170,25 +170,30 @@ def generate_choices_w_labels(choices):
     results = []
     for choice in choices:
         ct_label = ContentType.objects.get_for_model(choice).name
+        verbose_name = unicode(getattr(choice._meta, u'verbose_name', ct_label))
         label = unicode(choice)
         if isinstance(choice, User):
             label = choice.get_full_name() if choice.get_full_name() else choice
 
-        results.append(('%s,%s' % (ct_label, choice.pk), '%s: %s' % (ct_label, label)))
+        results.append((u'%s,%s' % (ct_label, choice.pk), u'%s: %s' % (verbose_name, label)))
 
     #Sort results by the label not the key value
     return sorted(results, key=lambda x: x[1])
 
 
 def get_role_members(role):
-    return [member.member_object for member in role.rolemember_set.filter(member_type=ContentType.objects.get(model='user'))]
+    user_ct = ContentType.objects.get(model='user')
+    group_ct = ContentType.objects.get(model='group')
+    return [member.member_object for member in role.rolemember_set.filter(member_type__in=[user_ct, group_ct])]
 
 
 def get_non_role_members(role):
     #non members = all users - members - staff - super users
     staff_users = User.objects.filter(is_staff=True)
     super_users = User.objects.filter(is_superuser=True)
-    return list(set(User.objects.exclude(pk__in=[member.id for member in get_role_members(role)])) - set(staff_users) - set(super_users))
+    users = set(User.objects.exclude(pk__in=[member.pk for member in get_role_members(role)])) - set(staff_users) - set(super_users)
+    groups = set(Group.objects.exclude(pk__in=[member.pk for member in get_role_members(role)]))
+    return list(users | groups)
 
 
 def role_members(request, role_id):
@@ -240,14 +245,14 @@ def role_members(request, role_id):
         'form_list': [
             {
                 'form': unselected_users_form,
-                'title': _(u'non members of role'),
+                'title': _(u'non members of role: %s') % role,
                 'grid': 6,
                 'grid_clear': False,
                 'submit_label': _(u'Add'),
             },
             {
                 'form': selected_users_form,
-                'title': _(u'members of role'),
+                'title': _(u'members of role: %s') % role,
                 'grid': 6,
                 'grid_clear': True,
                 'submit_label': _(u'Remove'),
