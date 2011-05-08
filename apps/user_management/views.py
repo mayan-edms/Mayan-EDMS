@@ -10,7 +10,7 @@ from django.contrib.contenttypes.models import ContentType
 
 from permissions.api import check_permissions
 from common.forms import ChoiceForm
-from common.utils import generate_choices_w_labels
+from common.utils import generate_choices_w_labels, two_state_template
 
 from user_management import PERMISSION_USER_VIEW, \
     PERMISSION_USER_EDIT, PERMISSION_USER_CREATE, \
@@ -40,7 +40,7 @@ def user_list(request):
                     'attribute': 'email'
                 },                {
                     'name': _(u'active'),
-                    'attribute': 'is_active'
+                    'attribute': lambda x: two_state_template(x.is_active),
                 }
 
             ],
