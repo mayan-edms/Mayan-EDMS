@@ -18,17 +18,17 @@ class CheckPermissionsNode(Node):
         if not permission_list:
             # There is no permissions list to check against which means
             # this link is available for all
-            context['permission'] = True
-            return ''
+            context[u'permission'] = True
+            return u''
         requester = Variable(self.requester).resolve(context)
         namespace = Variable(self.namespace).resolve(context)
         try:
             check_permission_function(requester, namespace, permission_list)
-            context['permission'] = True
-            return ''
+            context[u'permission'] = True
+            return u''
         except PermissionDenied:
-            context['permission'] = False
-            return ''
+            context[u'permission'] = False
+            return u''
 
 
 @register.tag
@@ -37,6 +37,6 @@ def check_permissions(parser, token):
         # Splitting by None == splitting by spaces.
         tag_name, args = token.contents.split(None, 1)
     except ValueError:
-        raise TemplateSyntaxError('%r tag requires arguments' % token.contents.split()[0])
+        raise TemplateSyntaxError(u'%r tag requires arguments' % token.contents.split()[0])
 
     return CheckPermissionsNode(*args.split())
