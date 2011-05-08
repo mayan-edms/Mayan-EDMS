@@ -48,12 +48,10 @@ class Permission(models.Model):
         else:
             groups = []
             
-        result = False
         for membership in list(set(roles) | set(groups)):
-            result |= self.has_permission(membership)
+            if self.has_permission(membership):
+                return True
 
-        return result
-        
 
 class PermissionHolder(models.Model):
     permission = models.ForeignKey(Permission, verbose_name=_(u'permission'))
