@@ -10,8 +10,11 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User, Group
 
+from common.forms import ChoiceForm
+from common.utils import generate_choices_w_labels
+
 from permissions.models import Role, Permission, PermissionHolder, RoleMember
-from permissions.forms import RoleForm, RoleForm_view, ChoiceForm
+from permissions.forms import RoleForm, RoleForm_view
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_PERMISSION_GRANT, \
     PERMISSION_PERMISSION_REVOKE
@@ -164,21 +167,6 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
         'previous': previous,
         'title': title,
     }, context_instance=RequestContext(request))
-
-
-def generate_choices_w_labels(choices):
-    results = []
-    for choice in choices:
-        ct_label = ContentType.objects.get_for_model(choice).name
-        verbose_name = unicode(getattr(choice._meta, u'verbose_name', ct_label))
-        label = unicode(choice)
-        if isinstance(choice, User):
-            label = choice.get_full_name() if choice.get_full_name() else choice
-
-        results.append((u'%s,%s' % (ct_label, choice.pk), u'%s: %s' % (verbose_name, label)))
-
-    #Sort results by the label not the key value
-    return sorted(results, key=lambda x: x[1])
 
 
 def get_role_members(role):

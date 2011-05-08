@@ -122,3 +122,19 @@ class FilterForm(forms.Form):
             self.fields[list_filter['name']] = forms.ModelChoiceField(
                 queryset=list_filter['queryset'],
                 label=label[0].upper() + label[1:], required=False)
+                
+
+class ChoiceForm(forms.Form):
+    """
+    Form to be used in side by side templates used to add or remove
+    items from a many to many field
+    """
+    def __init__(self, *args, **kwargs):
+        choices = kwargs.pop('choices', [])
+        label = kwargs.pop('label', _(u'Selection'))
+        super(ChoiceForm, self).__init__(*args, **kwargs)
+        self.fields['selection'].choices = choices
+        self.fields['selection'].label = label
+        self.fields['selection'].widget.attrs.update({'size': 14, 'class': 'choice_form'})
+
+    selection = forms.MultipleChoiceField()

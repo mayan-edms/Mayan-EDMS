@@ -6,8 +6,11 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User, Group
+from django.contrib.contenttypes.models import ContentType
 
 from permissions.api import check_permissions
+from common.forms import ChoiceForm
+from common.utils import generate_choices_w_labels
 
 from user_management import PERMISSION_USER_VIEW, \
     PERMISSION_USER_EDIT, PERMISSION_USER_CREATE, \
@@ -22,7 +25,7 @@ def user_list(request):
 
     return object_list(
         request,
-        queryset=User.objects.exclude(is_superuser=True).exclude(is_staff=True),
+        queryset=User.objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('username'),
         template_name='generic_list.html',
         extra_context={
             'title': _(u'users'),
@@ -67,6 +70,7 @@ def user_edit(request, user_id):
         'title': _(u'edit user: %s') % user,
         'form': form,
         'object': user,
+        'object_name': _(u'user'),
     },
     context_instance=RequestContext(request))
 
@@ -243,6 +247,7 @@ def group_edit(request, group_id):
         'title': _(u'edit group: %s') % group,
         'form': form,
         'object': group,
+        'object_name': _(u'group'),
     },
     context_instance=RequestContext(request))
 
@@ -315,3 +320,74 @@ def group_multiple_delete(request):
         request, group_id_list=request.GET.get('id_list', [])
     )
     
+
+def get_group_members(group):
+    return group.user_set.all()
+
+
+def get_non_group_members(group):
+    return User.objects.exclude(groups=group).exclude(is_staff=True).exclude(is_superuser=True)
+
+
+def group_members(request, group_id):
+    check_permissions(request.user, 'user_management', [PERMISSION_GROUP_EDIT])
+    group = get_object_or_404(Group, pk=group_id)
+
+    if request.method == 'POST':
+        if 'unselected-users-submit' in request.POST.keys():
+            unselected_users_form = ChoiceForm(request.POST,
+                prefix='unselected-users',
+                choices=generate_choices_w_labels(get_non_group_members(group), display_object_type=False))
+            if unselected_users_form.is_valid():
+                for selection in unselected_users_form.cleaned_data['selection']:
+                    model, pk = selection.split(u',')
+                    ct = ContentType.objects.get(model=model)
+                    obj = ct.get_object_for_this_type(pk=pk)
+                    group.user_set.add(obj)
+                    messages.success(request, _(u'%(obj)s added successfully to the group: %(group)s.') % {
+                        'obj': generate_choices_w_labels([obj])[0][1], 'group': group})
+        elif 'selected-users-submit' in request.POST.keys():
+            selected_users_form = ChoiceForm(request.POST,
+                prefix='selected-users',
+                choices=generate_choices_w_labels(get_group_members(group), display_object_type=False))
+            if selected_users_form.is_valid():
+                for selection in selected_users_form.cleaned_data['selection']:
+                    model, pk = selection.split(u',')
+                    ct = ContentType.objects.get(model=model)
+                    obj = ct.get_object_for_this_type(pk=pk)
+                    try:
+                        group.user_set.remove(obj)
+                        messages.success(request, _(u'%(obj)s removed successfully from the group: %(group)s.') % {
+                            'obj': generate_choices_w_labels([obj])[0][1], 'group': group})
+                    except member.DoesNotExist:
+                        messages.error(request, _(u'Unable to remove %(obj)s from the group: %(group)s.') % {
+                            'obj': generate_choices_w_labels([obj])[0][1], 'group': group})
+    unselected_users_form = ChoiceForm(prefix='unselected-users',
+        choices=generate_choices_w_labels(get_non_group_members(group), display_object_type=False))
+    selected_users_form = ChoiceForm(prefix='selected-users',
+        choices=generate_choices_w_labels(get_group_members(group), display_object_type=False))
+
+    context = {
+        'object': group,
+        'object_name': _(u'group'),
+        'form_list': [
+            {
+                'form': unselected_users_form,
+                'title': _(u'non members of group: %s') % group,
+                'grid': 6,
+                'grid_clear': False,
+                'submit_label': _(u'Add'),
+            },
+            {
+                'form': selected_users_form,
+                'title': _(u'members of group: %s') % group,
+                'grid': 6,
+                'grid_clear': True,
+                'submit_label': _(u'Remove'),
+            },
+
+        ],
+    }
+
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))

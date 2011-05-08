@@ -14,4 +14,5 @@ urlpatterns = patterns('user_management.views',
     url(r'^group/(?P<group_id>\d+)/edit/$', 'group_edit', (), 'group_edit'),
     url(r'^group/(?P<group_id>\d+)/delete/$', 'group_delete', (), 'group_delete'),
     url(r'^group/multiple/delete/$', 'group_multiple_delete', (), 'group_multiple_delete'),
+    url(r'^group/(?P<group_id>\d+)/members/$', 'group_members', (), 'group_members'),
 )

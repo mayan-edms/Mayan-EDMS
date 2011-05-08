@@ -17,3 +17,7 @@
 .undecorated_list {
     list-style-type: none;
 }
+
+.choice_form {
+    min-width: 200px;
+}
