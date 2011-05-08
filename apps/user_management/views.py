@@ -5,14 +5,16 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 from permissions.api import check_permissions
 
 from user_management import PERMISSION_USER_VIEW, \
     PERMISSION_USER_EDIT, PERMISSION_USER_CREATE, \
-    PERMISSION_USER_DELETE
-from user_management.forms import UserForm, PasswordForm
+    PERMISSION_USER_DELETE, PERMISSION_GROUP_CREATE, \
+    PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, \
+    PERMISSION_GROUP_DELETE
+from user_management.forms import UserForm, PasswordForm, GroupForm
 
 
 def user_list(request):
@@ -89,7 +91,7 @@ def user_add(request):
 
 
 def user_delete(request, user_id=None, user_id_list=None):
-    check_permissions(request.user, 'users', [PERMISSION_USER_DELETE])
+    check_permissions(request.user, 'user_management', [PERMISSION_USER_DELETE])
     post_action_redirect = None
 
     if user_id:
@@ -142,7 +144,7 @@ def user_multiple_delete(request):
     
     
 def user_set_password(request, user_id=None, user_id_list=None):
-    check_permissions(request.user, 'users', [PERMISSION_USER_EDIT])
+    check_permissions(request.user, 'user_management', [PERMISSION_USER_EDIT])
     post_action_redirect = None
 
     if user_id:
@@ -201,3 +203,115 @@ def user_multiple_set_password(request):
     return user_set_password(
         request, user_id_list=request.GET.get('id_list', [])
     )
+    
+
+def group_list(request):
+    check_permissions(request.user, 'user_management', [PERMISSION_GROUP_VIEW])
+
+    return object_list(
+        request,
+        queryset=Group.objects.all(),
+        template_name='generic_list.html',
+        extra_context={
+            'title': _(u'groups'),
+            'hide_link': True,
+            'extra_columns': [
+                {
+                    'name': _(u'members'),
+                    'attribute': 'user_set.count'
+                },
+            ],
+            'multi_select_as_buttons': True,
+        },
+    )
+
+
+def group_edit(request, group_id):
+    check_permissions(request.user, 'user_management', [PERMISSION_GROUP_EDIT])
+    group = get_object_or_404(Group, pk=group_id)
+
+    if request.method == 'POST':
+        form = GroupForm(instance=group, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _(u'Group "%s" updated successfully.') % group)
+            return HttpResponseRedirect(reverse('group_list'))
+    else:
+        form = GroupForm(instance=group)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit group: %s') % group,
+        'form': form,
+        'object': group,
+    },
+    context_instance=RequestContext(request))
+
+
+def group_add(request):
+    check_permissions(request.user, 'user_management', [PERMISSION_GROUP_CREATE])
+
+    if request.method == 'POST':
+        form = GroupForm(request.POST)
+        if form.is_valid():
+            group = form.save()
+            messages.success(request, _(u'Group "%s" created successfully.') % group)
+            return HttpResponseRedirect(reverse('group_list'))
+    else:
+        form = GroupForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'create new group'),
+        'form': form,
+    },
+    context_instance=RequestContext(request))
+
+
+def group_delete(request, group_id=None, group_id_list=None):
+    check_permissions(request.user, 'user_management', [PERMISSION_GROUP_DELETE])
+    post_action_redirect = None
+
+    if group_id:
+        groups = [get_object_or_404(Group, pk=group_id)]
+        post_action_redirect = reverse('group_list')
+    elif group_id_list:
+        groups = [get_object_or_404(Group, pk=group_id) for group_id in group_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one group.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        for group in groups:
+            try:
+                group.delete()
+                messages.success(request, _(u'Group "%s" deleted successfully.') % group)
+            except Exception, e:
+                messages.error(request, _(u'Error deleting group "%(group)s": %(error)s') % {
+                    'group': group, 'error': e
+                })
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'object_name': _(u'group'),
+        'delete_view': True,
+        'previous': previous,
+        'next': next,
+    }
+    if len(groups) == 1:
+        context['object'] = groups[0]
+        context['title'] = _(u'Are you sure you wish to delete the group: %s?') % ', '.join([unicode(d) for d in groups])
+    elif len(groups) > 1:
+        context['title'] = _(u'Are you sure you wish to delete the groups: %s?') % ', '.join([unicode(d) for d in groups])
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def group_multiple_delete(request):
+    return group_delete(
+        request, group_id_list=request.GET.get('id_list', [])
+    )
+    

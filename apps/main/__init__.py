@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_menu
 from permissions import role_list
-from user_management import user_list
+from user_management import user_list, group_list
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
@@ -33,7 +33,7 @@ main_menu = [
         ], 'famfam': 'wrench', 'name': 'tools', 'position': 7},
 
     {'text': _(u'setup'), 'view': 'setting_list', 'links': [
-        check_settings, role_list, user_list, admin_site
+        check_settings, role_list, user_list, group_list, admin_site
         ], 'famfam': 'cog', 'name': 'setup', 'position': 8},
 
     {'text': _(u'about'), 'view': 'about', 'position': 9},
