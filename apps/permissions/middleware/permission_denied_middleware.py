@@ -34,8 +34,6 @@ class PermissionDeniedMiddleware(object):
                      </html>""")
 
                 # Now use context and render template
-                c = RequestContext(request, {
-                      'message': exception.message
-                 })
+                c = RequestContext(request)
 
                 return HttpResponseForbidden(t.render(c))
