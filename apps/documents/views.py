@@ -475,7 +475,6 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
 
         for item in document.documentmetadata_set.all():
             value = item.value
-            print item
             if item.metadata_type in metadata:
                 if value not in metadata[item.metadata_type]:
                     metadata[item.metadata_type].append(value)

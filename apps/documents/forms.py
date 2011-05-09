@@ -294,8 +294,8 @@ class MetadataForm(forms.Form):
     name = forms.CharField(label=_(u'Name'),
         required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     value = forms.CharField(label=_(u'Value'), required=False)
-MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
+MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
 class DocumentCreateWizard(BoundFormWizard):
     def generate_metadata_initial_values(self):
