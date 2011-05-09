@@ -5,3 +5,4 @@ celery==2.2.2
 django-celery==2.2.2
 django-sentry==1.6.0
 django-taggit==0.9.3
+South==0.7.3

@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'tags',
     'document_comments',
     'user_management',
+    'south',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
