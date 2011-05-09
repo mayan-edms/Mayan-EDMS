@@ -52,7 +52,7 @@ class Document(models.Model):
     """
     Defines a single document with it's fields and properties
     """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
     uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
@@ -211,7 +211,7 @@ available_models_string = (_(u' Available models: %s') % u','.join([name for nam
 
 
 class MetadataType(models.Model):
-    name = models.CharField(max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words.'))
+    name = models.CharField(max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words, or spaces.'))
     title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
         verbose_name=_(u'default'),
@@ -229,21 +229,32 @@ class MetadataType(models.Model):
         verbose_name_plural = _(u'metadata types')
 
 
-class DocumentTypeMetadataType(models.Model):
+class MetadataSet(models.Model):
+    title = models.CharField(max_length=48, verbose_name=_(u'title'))
+
+    def __unicode__(self):
+        return self.title if self.title else self.name
+
+    class Meta:
+        verbose_name = _(u'metadata set')
+        verbose_name_plural = _(u'metadata set')
+
+
+class MetadataSetItem(models.Model):
     """
-    Define the set of metadata that relates to a single document type
+    Define the set of metadata that relates to a set or group of
+    metadata fields
     """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
+    metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'metadata set'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    required = models.BooleanField(default=True, verbose_name=_(u'required'))
-    #TODO: override default for this document type
+    #required = models.BooleanField(default=True, verbose_name=_(u'required'))
 
     def __unicode__(self):
         return unicode(self.metadata_type)
 
     class Meta:
-        verbose_name = _(u'document type metadata type connector')
-        verbose_name_plural = _(u'document type metadata type connectors')
+        verbose_name = _(u'metadata set item')
+        verbose_name_plural = _(u'metadata set items')
 
 
 available_indexing_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''

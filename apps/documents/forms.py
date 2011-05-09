@@ -15,10 +15,11 @@ from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
+from common.utils import urlquote
 
 from documents.staging import StagingFile
-from documents.models import Document, DocumentType, DocumentTypeMetadataType, \
-    DocumentPage, DocumentPageTransformation
+from documents.models import Document, DocumentType, \
+    DocumentPage, DocumentPageTransformation, MetadataSet, MetadataType
 from documents.conf.settings import AVAILABLE_FUNCTIONS
 from documents.conf.settings import AVAILABLE_MODELS
 
@@ -154,7 +155,8 @@ class DocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DocumentForm, self).__init__(*args, **kwargs)
         if 'initial' in kwargs:
-            if 'document_type' in kwargs['initial']:
+            document_type = kwargs['initial'].get('document_type', None)
+            if document_type:
                 if 'document_type' in self.fields:
                     #To allow merging with DocumentForm_edit
                     self.fields['document_type'].widget = forms.HiddenInput()
@@ -167,7 +169,7 @@ class DocumentForm(forms.ModelForm):
 
     class Meta:
         model = Document
-        exclude = ('description', 'tags')
+        exclude = ('description', 'tags', 'document_type')
 
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
@@ -228,7 +230,8 @@ class StagingDocumentForm(forms.Form):
             pass
 
         if 'initial' in kwargs:
-            if 'document_type' in kwargs['initial']:
+            document_type = kwargs['initial'].get('document_type', None)
+            if document_type:
                 filenames_qs = kwargs['initial']['document_type'].documenttypefilename_set.filter(enabled=True)
                 if filenames_qs.count() > 0:
                     self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
@@ -243,7 +246,7 @@ class StagingDocumentForm(forms.Form):
 
 
 class DocumentTypeSelectForm(forms.Form):
-    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all())
+    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'), required=False)
 
 
 class MetadataForm(forms.Form):
@@ -253,9 +256,11 @@ class MetadataForm(forms.Form):
         #Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            self.document_type = kwargs['initial'].pop('document_type', None)
+            #self.document_type = kwargs['initial'].pop('document_type', None)
 
-            required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
+            # FIXME:
+            #required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
+            required = False
             required_string = u''
             if required:
                 self.fields['value'].required = True
@@ -295,19 +300,28 @@ MetadataFormSet = formset_factory(MetadataForm, extra=0)
 class DocumentCreateWizard(BoundFormWizard):
     def generate_metadata_initial_values(self):
         initial = []
-        for item in DocumentTypeMetadataType.objects.filter(document_type=self.document_type):
+        for metadata_type in self.metadata_types:
             initial.append({
-                'metadata_type': item.metadata_type,
-                'document_type': self.document_type,
+                'metadata_type': metadata_type,
             })
+
+        for metadata_set in self.metadata_sets:
+            for metadata_set_item in metadata_set.metadatasetitem_set.all():
+                data = {
+                    'metadata_type': metadata_set_item.metadata_type,
+                }
+                if data not in initial:
+                    initial.append(data)
+
         return initial
 
     def __init__(self, *args, **kwargs):
-        self.urldata = []
+        self.query_dict = {}
         self.multiple = kwargs.pop('multiple', True)
         self.step_titles = kwargs.pop('step_titles', [
-            _(u'step 1 of 2: Document type'),
-            _(u'step 2 of 2: Document metadata'),
+            _(u'step 1 of 3: Document type'),
+            _(u'step 2 of 3: Metadata selection'),
+            _(u'step 3 of 3: Document metadata'),
             ])
         self.document_type = kwargs.pop('document_type', None)
 
@@ -328,25 +342,31 @@ class DocumentCreateWizard(BoundFormWizard):
     def process_step(self, request, form, step):
         if isinstance(form, DocumentTypeSelectForm):
             self.document_type = form.cleaned_data['document_type']
-            self.initial = {1: self.generate_metadata_initial_values()}
+
+        if isinstance(form, MetadataSelectionForm):
+            self.metadata_sets = form.cleaned_data['metadata_sets']
+            self.metadata_types = form.cleaned_data['metadata_types']
+            self.initial = {2: self.generate_metadata_initial_values()}
 
         if isinstance(form, MetadataFormSet):
             for identifier, metadata in enumerate(form.cleaned_data):
-                if metadata['value']:
-                    self.urldata.append(('metadata%s_id' % identifier, metadata['id']))
-                    self.urldata.append(('metadata%s_value' % identifier, metadata['value']))
-
+                self.query_dict['metadata%s_id' % identifier] = metadata['id']
+                self.query_dict['metadata%s_value' % identifier] = metadata['value']
+                
     def get_template(self, step):
         return 'generic_wizard.html'
 
     def done(self, request, form_list):
         if self.multiple:
-            view = 'upload_multiple_documents_with_type'
+            view = 'upload_document_multiple'
         else:
-            view = 'upload_document_with_type'
-
-        url = reverse(view, args=[self.document_type.id])
-        return HttpResponseRedirect('%s?%s' % (url, urlencode(self.urldata)))
+            view = 'upload_document'
+        
+        if self.document_type:
+            self.query_dict['document_type_id'] = self.document_type.pk
+            
+        url = urlquote(reverse(view), self.query_dict)
+        return HttpResponseRedirect(url)
 
 
 class MetaDataImageWidget(forms.widgets.Widget):
@@ -434,3 +454,8 @@ class PrintForm(forms.Form):
     custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
     page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
+
+
+class MetadataSelectionForm(forms.Form):
+    metadata_sets = forms.ModelMultipleChoiceField(queryset=MetadataSet.objects.all(), label=_(u'Metadata sets'), required=False)
+    metadata_types = forms.ModelMultipleChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata'), required=False)

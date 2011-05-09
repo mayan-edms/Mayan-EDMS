@@ -15,8 +15,8 @@ def password_change_done(request):
 
 def multi_object_action_view(request):
     """
-        Proxy view called first when usuing a multi object action, which
-        then redirects to the appropiate specialized view
+    Proxy view called first when usuing a multi object action, which
+    then redirects to the appropiate specialized view
     """
 
     action = request.GET.get('action', None)

@@ -1,7 +1,6 @@
 import os
 import zipfile
 import urlparse
-import urllib
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
@@ -56,10 +55,10 @@ from documents import PERMISSION_DOCUMENT_CREATE, \
 
 from documents.forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         DocumentForm, DocumentForm_edit, DocumentForm_view, \
-        StagingDocumentForm, DocumentTypeMetadataType, DocumentPreviewForm, \
+        StagingDocumentForm, DocumentPreviewForm, \
         MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm, \
-        DocumentPageForm_text, PrintForm
+        DocumentPageForm_text, PrintForm, MetadataSelectionForm
 
 from documents.metadata import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
@@ -85,15 +84,7 @@ def document_list(request, object_list=None, title=None):
 def document_create(request, multiple=True):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
 
-    if DocumentType.objects.all().count() == 1:
-        wizard = DocumentCreateWizard(
-            document_type=DocumentType.objects.all()[0],
-            form_list=[MetadataFormSet], multiple=multiple,
-            step_titles=[
-            _(u'document metadata'),
-            ])
-    else:
-        wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataFormSet], multiple=multiple)
+    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet], multiple=multiple)
 
     return wizard(request)
 
@@ -102,19 +93,21 @@ def document_create_sibling(request, document_id, multiple=True):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
 
     document = get_object_or_404(Document, pk=document_id)
-    urldata = []
+    query_dict = {}
     for pk, metadata in enumerate(document.documentmetadata_set.all()):
-        if hasattr(metadata, 'value'):
-            urldata.append(('metadata%s_id' % pk, metadata.metadata_type_id))
-            urldata.append(('metadata%s_value' % pk, metadata.value))
+        query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
+        query_dict['metadata%s_value' % pk] = metadata.value
 
     if multiple:
-        view = 'upload_multiple_documents_with_type'
+        view = 'upload_document_multiple'
     else:
-        view = 'upload_document_with_type'
+        view = 'upload_document'
 
-    url = reverse(view, args=[document.document_type_id])
-    return HttpResponseRedirect('%s?%s' % (url, urlencode(urldata)))
+    if document.document_type_id:
+        query_dict['document_type_id'] = document.document_type_id
+    
+    url = reverse(view)
+    return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
 
 def _handle_save_document(request, document, form=None):
@@ -157,10 +150,15 @@ def _handle_zip_file(request, uploaded_file, document_type):
         return False
 
 
-def upload_document_with_type(request, document_type_id, multiple=True):
+def upload_document_with_type(request, multiple=True):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
-
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    
+    document_type_id = request.GET.get('document_type_id', None)
+    if document_type_id:
+        document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    else:
+        document_type = None
+    
     local_form = DocumentForm(prefix='local', initial={'document_type': document_type})
     if USE_STAGING_DIRECTORY:
         staging_form = StagingDocumentForm(prefix='staging',
@@ -475,8 +473,9 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
 
-        for item in DocumentTypeMetadataType.objects.filter(document_type=document.document_type):
-            value = document.documentmetadata_set.get(metadata_type=item.metadata_type).value if document.documentmetadata_set.filter(metadata_type=item.metadata_type) else u''
+        for item in document.documentmetadata_set.all():
+            value = item.value
+            print item
             if item.metadata_type in metadata:
                 if value not in metadata[item.metadata_type]:
                     metadata[item.metadata_type].append(value)
@@ -487,7 +486,6 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
     for key, value in metadata.items():
         initial.append({
             'metadata_type': key,
-            'document_type': document.document_type,
             'value': u', '.join(value)
         })
 
@@ -496,12 +494,13 @@ def document_edit_metadata(request, document_id=None, document_id_list=None):
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
             for document in documents:
-                save_metadata_list(formset.cleaned_data, document)
                 try:
                     document_delete_fs_links(document)
                 except Exception, e:
                     messages.error(request, _(u'Error deleting filesystem links for document: %(document)s; %(error)s') % {
                         'document': document, 'error': e})
+
+                save_metadata_list(formset.cleaned_data, document)
 
                 messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
 
@@ -1089,7 +1088,7 @@ def transform_page(request, document_page_id, zoom_function=None, rotation_funct
     return HttpResponseRedirect(
         u'?'.join([
             reverse(view, args=[document_page.pk]),
-            urllib.urlencode({'zoom': zoom, 'rotation': rotation})
+            urlencode({'zoom': zoom, 'rotation': rotation})
         ])
     )
 

@@ -38,20 +38,22 @@ def save_metadata_list(metadata_list, document):
     '''Takes a list of metadata values and associates a document to it
     '''
     for item in metadata_list:
-        if item['value']:
-            save_metadata(item, document)
-        else:
-            #If there is no metadata value, delete the metadata entry
-            #completely from the document
-            try:
-                metadata_type = MetadataType.objects.get(id=item['id'])
-                document_metadata = DocumentMetadata.objects.get(
-                    document=document,
-                    metadata_type=metadata_type
-                )
-                document_metadata.delete()
-            except ObjectDoesNotExist:
-                pass
+        save_metadata(item, document)
+
+        #if item['value']:
+        #    save_metadata(item, document)
+        #else:
+        #    #If there is no metadata value, delete the metadata entry
+        #    #completely from the document
+        #    try:
+        #        metadata_type = MetadataType.objects.get(id=item['id'])
+        #        document_metadata = DocumentMetadata.objects.get(
+        #            document=document,
+        #            metadata_type=metadata_type
+        #        )
+        #        document_metadata.delete()
+        #    except ObjectDoesNotExist:
+        #        pass
 
 
 def save_metadata(metadata_dict, document):

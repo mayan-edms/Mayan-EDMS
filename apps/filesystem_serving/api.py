@@ -26,7 +26,7 @@ def document_create_fs_links(document):
         if not document.exists():
             raise Exception(_(u'Not creating metadata indexing, document not found in document storage'))
         metadata_dict = {'document': document}
-        metadata_dict.update(dict([(metadata.metadata_type.name, SLUGIFY_FUNCTION(metadata.value)) for metadata in document.documentmetadata_set.all()]))
+        metadata_dict.update(dict([(metadata.metadata_type.name, SLUGIFY_FUNCTION(metadata.value)) for metadata in document.documentmetadata_set.all() if metadata.value]))
 
         for metadata_index in document.document_type.metadataindex_set.all():
             if metadata_index.enabled:

@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 from documents.models import MetadataType, DocumentType, Document, \
-    DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
-    MetadataIndex, DocumentPage, MetadataGroup, \
+    MetadataSet, MetadataSetItem, DocumentMetadata, \
+    DocumentTypeFilename, MetadataIndex, DocumentPage, MetadataGroup, \
     MetadataGroupItem, DocumentPageTransformation, RecentDocument
 
 from filesystem_serving.admin import DocumentMetadataIndexInline
@@ -19,8 +19,8 @@ class MetadataIndexInline(admin.StackedInline):
     allow_add = True
 
 
-class DocumentTypeMetadataTypeInline(admin.StackedInline):
-    model = DocumentTypeMetadataType
+class MetadataSetItemInline(admin.StackedInline):
+    model = MetadataSetItem
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
@@ -35,8 +35,7 @@ class DocumentTypeFilenameInline(admin.StackedInline):
 
 class DocumentTypeAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentTypeFilenameInline, DocumentTypeMetadataTypeInline,
-        MetadataIndexInline
+        DocumentTypeFilenameInline, MetadataIndexInline
     ]
 
 
@@ -86,6 +85,11 @@ class RecentDocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'datetime_accessed'
 
 
+class MetadataSetAdmin(admin.ModelAdmin):
+    inlines = [MetadataSetItemInline]
+    #filter_horizontal = ['document_type']    
+
+
 admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
@@ -93,3 +97,4 @@ admin.site.register(MetadataGroup, MetadataGroupAdmin)
 admin.site.register(DocumentPageTransformation,
     DocumentPageTransformationAdmin)
 admin.site.register(RecentDocument, RecentDocumentAdmin)
+admin.site.register(MetadataSet, MetadataSetAdmin)
