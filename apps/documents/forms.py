@@ -346,7 +346,11 @@ class DocumentCreateWizard(BoundFormWizard):
         if isinstance(form, MetadataSelectionForm):
             self.metadata_sets = form.cleaned_data['metadata_sets']
             self.metadata_types = form.cleaned_data['metadata_types']
-            self.initial = {2: self.generate_metadata_initial_values()}
+            initial_data = self.generate_metadata_initial_values()
+            self.initial = {2: initial_data}
+            if not initial_data:
+                # If there is no metadata selected end wizard
+                self.form_list=[DocumentTypeSelectForm, MetadataSelectionForm]
 
         if isinstance(form, MetadataFormSet):
             for identifier, metadata in enumerate(form.cleaned_data):
@@ -457,5 +461,16 @@ class PrintForm(forms.Form):
 
 
 class MetadataSelectionForm(forms.Form):
-    metadata_sets = forms.ModelMultipleChoiceField(queryset=MetadataSet.objects.all(), label=_(u'Metadata sets'), required=False)
-    metadata_types = forms.ModelMultipleChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata'), required=False)
+    metadata_sets = forms.ModelMultipleChoiceField(
+        queryset=MetadataSet.objects.all(),
+        label=_(u'Metadata sets'),
+        required=False,
+        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+    )
+
+    metadata_types = forms.ModelMultipleChoiceField(
+        queryset=MetadataType.objects.all(),
+        label=_(u'Metadata'),
+        required=False,
+        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+    )
