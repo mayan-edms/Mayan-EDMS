@@ -17,6 +17,7 @@ from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 from common.utils import urlquote
 from metadata.models import MetadataSet, MetadataType
+from metadata.forms import MetadataFormSet
 
 from documents.staging import StagingFile
 from documents.models import Document, DocumentType, \

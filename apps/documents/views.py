@@ -33,6 +33,7 @@ from common.literals import PAGE_SIZE_DIMENSIONS, \
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from metadata.api import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
+from metadata.forms import MetadataFormSet
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
