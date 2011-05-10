@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
-from documents.classes import MetadataObject
+from metadata.classes import MetadataObject
 
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from filesystem_serving.conf.settings import FILESERVING_PATH
