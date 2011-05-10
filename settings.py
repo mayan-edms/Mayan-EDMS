@@ -125,7 +125,7 @@ INSTALLED_APPS = (
     'web_theme',
     'main',
     'common',
-    'documents',
+    'metadata',
     'pagination',
     'dynamic_search',
     'filetransfers',
@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'tags',
     'document_comments',
     'user_management',
+    'documents',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -160,7 +161,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #--------- Pagination ------------------
 #PAGINATION_DEFAULT_PAGINATION = 10
 #--------- Web theme app ---------------
-#WEB_THEME = 'default'
+#WEB_THEME_THEME = 'default'
 #-------------- Main -----------------
 #MAIN_SIDE_BAR_SEARCH = False
 #------------ Common --------------
@@ -176,10 +177,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #STORAGE_GRIDFS_DATABASE_NAME = u'document_storage'
 # Filebased
 #STORAGE_FILESTORAGE_LOCATION = u'document_storage'
+#---------- Metadata -----------------
+# METADATA_AVAILABLE_FUNCTIONS = {}
+# METADATA_AVAILABLE_MODELS = {}
 #---------- Documents ------------------
 # Definition
-#DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
-#DOCUMENTS_METADATA_AVAILABLE_MODELS = {}
 #DOCUMENTS_INDEXING_AVAILABLE_FUNCTIONS = {}
 
 # Upload

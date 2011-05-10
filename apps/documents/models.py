@@ -15,18 +15,16 @@ from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
 from converter import TRANFORMATION_CHOICES
+from metadata.classes import MetadataObject
 
 from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
-from documents.conf.settings import AVAILABLE_FUNCTIONS
-from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import RECENT_COUNT
-from documents.classes import MetadataObject
-
+from documents.managers import DocumentGroupManager
 
 def get_filename_from_uuid(instance, filename):
     filename, extension = os.path.splitext(filename)
@@ -190,7 +188,7 @@ class Document(models.Model):
         return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in self.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
 
     def get_metadata_groups(self, group_obj=None):
-        return MetadataGroup.objects.get_groups_for(self, group_obj)
+        return DocumentGroup.objects.get_groups_for(self, group_obj)
 
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
@@ -207,59 +205,7 @@ class Document(models.Model):
 
                         page_transformation.save()
 
-available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else u''
-available_models_string = (_(u' Available models: %s') % u','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else u''
-
-
-class MetadataType(models.Model):
-    name = models.CharField(max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words, or spaces.'))
-    title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
-    default = models.CharField(max_length=128, blank=True, null=True,
-        verbose_name=_(u'default'),
-        help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
-    lookup = models.CharField(max_length=128, blank=True, null=True,
-        verbose_name=_(u'lookup'),
-        help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
-    #TODO: datatype?
-
-    def __unicode__(self):
-        return self.title if self.title else self.name
-
-    class Meta:
-        verbose_name = _(u'metadata type')
-        verbose_name_plural = _(u'metadata types')
-
-
-class MetadataSet(models.Model):
-    title = models.CharField(max_length=48, verbose_name=_(u'title'))
-
-    def __unicode__(self):
-        return self.title if self.title else self.name
-
-    class Meta:
-        verbose_name = _(u'metadata set')
-        verbose_name_plural = _(u'metadata set')
-
-
-class MetadataSetItem(models.Model):
-    """
-    Define the set of metadata that relates to a set or group of
-    metadata fields
-    """
-    metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'metadata set'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    #required = models.BooleanField(default=True, verbose_name=_(u'required'))
-
-    def __unicode__(self):
-        return unicode(self.metadata_type)
-
-    class Meta:
-        verbose_name = _(u'metadata set item')
-        verbose_name_plural = _(u'metadata set items')
-
-
 available_indexing_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
-
 
 class MetadataIndex(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
@@ -274,23 +220,6 @@ class MetadataIndex(models.Model):
     class Meta:
         verbose_name = _(u'metadata index')
         verbose_name_plural = _(u'metadata indexes')
-
-
-class DocumentMetadata(models.Model):
-    """
-    Link a document to a specific instance of a metadata type with it's
-    current value
-    """
-    document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'), db_index=True)
-
-    def __unicode__(self):
-        return unicode(self.metadata_type)
-
-    class Meta:
-        verbose_name = _(u'document metadata')
-        verbose_name_plural = _(u'document metadata')
 
 
 class DocumentTypeFilename(models.Model):
@@ -347,61 +276,13 @@ class DocumentPage(models.Model):
         return ' '.join(transformation_list), warnings
 
 
-class MetadataGroupManager(models.Manager):
-    def get_groups_for(self, document, group_obj=None):
-        errors = []
-        metadata_groups = {}
-        metadata_dict = {}
-        for document_metadata in document.documentmetadata_set.all():
-            metadata_dict[document_metadata.metadata_type.name] = document_metadata.value
-        eval_dict = {}
-        eval_dict['document'] = document
-        eval_dict['metadata'] = MetadataObject(metadata_dict)
-        
-        if group_obj:
-            groups_qs = MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True) & Q(pk=group_obj.pk))
-        else:
-            groups_qs = MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True))
-
-        for group in groups_qs:
-            total_query = Q()
-            for item in group.metadatagroupitem_set.filter(enabled=True):
-                try:
-                    value_query = Q(**{'value__%s' % item.operator: eval(item.expression, eval_dict)})
-                    if item.negated:
-                        query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
-                    else:
-                        query = (Q(metadata_type__id=item.metadata_type_id) & value_query)
-
-                    if item.inclusion == INCLUSION_AND:
-                        total_query &= query
-                    elif item.inclusion == INCLUSION_OR:
-                        total_query |= query
-                except Exception, e:
-                    errors.append(e)
-                    value_query = Q()
-                    query = Q()
-
-            if total_query:
-                document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
-                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)).order_by('file_filename') or []
-            else:
-                metadata_groups[group] = []
-
-        if group_obj:
-            return metadata_groups[group_obj], errors
-
-        return metadata_groups, errors
-
-
 class DocumentGroup(models.Model):
     document_type = models.ManyToManyField(DocumentType, null=True, blank=True,
         verbose_name=_(u'document type'), help_text=_(u'If left blank, all document types will be matched.'))
-    #name = models.CharField(max_length=32, verbose_name=_(u'name'))
     label = models.CharField(max_length=32, verbose_name=_(u'label'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
-    objects = MetadataGroupManager()
+    objects = DocumentGroupManager()
 
     def __unicode__(self):
         return self.label if self.label else self.name
@@ -443,10 +324,10 @@ OPERATOR_CHOICES = (
 class DocumentGroupItem(models.Model):
     metadata_group = models.ForeignKey(DocumentGroup, verbose_name=_(u'metadata group'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
-    foreign_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_foreign', verbose_name=_(u'foreign metadata'), help_text=_(u'This represents the metadata of all other documents.'))
+    #foreign_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_foreign', verbose_name=_(u'foreign metadata'), help_text=_(u'This represents the metadata of all other documents.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
     
-    local_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_local', verbose_name=_(u'local metadata'), help_text=_(u'This represents the metadata of the current document.'))
+    #local_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_local', verbose_name=_(u'local metadata'), help_text=_(u'This represents the metadata of the current document.'))
     expression = models.TextField(verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables `metadata` and document properties under the variable `document`.'))
     negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
@@ -458,8 +339,7 @@ class DocumentGroupItem(models.Model):
         verbose_name = _(u'group item')
         verbose_name_plural = _(u'group items')
 
-
-available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()]) if AVAILABLE_MODELS else []
+available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 
 
 class DocumentPageTransformation(models.Model):

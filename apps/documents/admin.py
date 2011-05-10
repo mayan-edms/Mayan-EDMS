@@ -1,26 +1,16 @@
 from django.contrib import admin
 
-from documents.models import MetadataType, DocumentType, Document, \
-    MetadataSet, MetadataSetItem, DocumentMetadata, \
+from metadata.admin import DocumentMetadataInline
+
+from documents.models import DocumentType, Document, \
     DocumentTypeFilename, MetadataIndex, DocumentPage, DocumentGroup, \
     DocumentGroupItem, DocumentPageTransformation, RecentDocument
 
 from filesystem_serving.admin import DocumentMetadataIndexInline
 
 
-class MetadataTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'title', 'default', 'lookup')
-
-
 class MetadataIndexInline(admin.StackedInline):
     model = MetadataIndex
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
-
-
-class MetadataSetItemInline(admin.StackedInline):
-    model = MetadataSetItem
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
@@ -37,13 +27,6 @@ class DocumentTypeAdmin(admin.ModelAdmin):
     inlines = [
         DocumentTypeFilenameInline, MetadataIndexInline
     ]
-
-
-class DocumentMetadataInline(admin.StackedInline):
-    model = DocumentMetadata
-    extra = 0
-    classes = ('collapse-open',)
-    allow_add = False
 
 
 class DocumentPageTransformationAdmin(admin.ModelAdmin):
@@ -85,15 +68,9 @@ class RecentDocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'datetime_accessed'
 
 
-class MetadataSetAdmin(admin.ModelAdmin):
-    inlines = [MetadataSetItemInline]
-
-
-admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
-admin.site.register(MetadataGroup, MetadataGroupAdmin)
+admin.site.register(DocumentGroup, DocumentGroupAdmin)
 admin.site.register(DocumentPageTransformation,
     DocumentPageTransformationAdmin)
 admin.site.register(RecentDocument, RecentDocumentAdmin)
-admin.site.register(MetadataSet, MetadataSetAdmin)

@@ -3,10 +3,9 @@
 from urllib import unquote_plus
 
 from django.shortcuts import get_object_or_404
-from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import DocumentMetadata, MetadataType
+from metadata.models import DocumentMetadata, MetadataType
 
 
 def decode_metadata_from_url(url_dict):
@@ -59,13 +58,22 @@ def save_metadata_list(metadata_list, document):
 def save_metadata(metadata_dict, document):
     """save metadata_dict"""
     # Use matched metadata now to create document metadata
-    document_metadata, created = DocumentMetadata.objects.get_or_create(
+    #document_metadata, created = DocumentMetadata.objects.get_or_create(
+    #    document=document,
+    #    metadata_type=get_object_or_404(
+    #        MetadataType,
+    #        pk=metadata_dict['id']
+    #   ),
+    #)
+
+    document_metadata = DocumentMetadata.objects.get(
         document=document,
         metadata_type=get_object_or_404(
             MetadataType,
             pk=metadata_dict['id']
         ),
     )
+
     # Handle 'plus sign as space' in the url
 
     # unquote_plus handles utf-8?!?

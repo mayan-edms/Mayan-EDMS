@@ -16,12 +16,11 @@ from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 from common.utils import urlquote
+from metadata.models import MetadataSet, MetadataType
 
 from documents.staging import StagingFile
 from documents.models import Document, DocumentType, \
-    DocumentPage, DocumentPageTransformation, MetadataSet, MetadataType
-from documents.conf.settings import AVAILABLE_FUNCTIONS
-from documents.conf.settings import AVAILABLE_MODELS
+    DocumentPage, DocumentPageTransformation
 
 
 class DocumentPageTransformationForm(forms.ModelForm):
@@ -248,54 +247,6 @@ class StagingDocumentForm(forms.Form):
 class DocumentTypeSelectForm(forms.Form):
     document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'), required=False)
 
-
-class MetadataForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super(MetadataForm, self).__init__(*args, **kwargs)
-
-        #Set form fields initial values
-        if 'initial' in kwargs:
-            self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            #self.document_type = kwargs['initial'].pop('document_type', None)
-
-            # FIXME:
-            #required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
-            required = False
-            required_string = u''
-            if required:
-                self.fields['value'].required = True
-                required_string = ' (%s)' % ugettext(u'required')
-            else:
-                #TODO: FIXME: not working correctly
-                self.fields['value'].required = False
-
-            self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
-            self.fields['id'].initial = self.metadata_type.id
-            if self.metadata_type.default:
-                try:
-                    self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
-                except Exception, err:
-                    self.fields['value'].initial = err
-
-            if self.metadata_type.lookup:
-                try:
-                    choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
-                    self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
-                    choices = zip(choices, choices)
-                    if not required:
-                        choices.insert(0, ('', '------'))
-                    self.fields['value'].choices = choices
-                    self.fields['value'].required = required
-                except Exception, err:
-                    self.fields['value'].initial = err
-                    self.fields['value'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
-
-    id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
-    name = forms.CharField(label=_(u'Name'),
-        required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-    value = forms.CharField(label=_(u'Value'), required=False)
-
-MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
 class DocumentCreateWizard(BoundFormWizard):
     def generate_metadata_initial_values(self):

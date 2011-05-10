@@ -15,7 +15,6 @@ from documents.conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
 PERMISSION_DOCUMENT_CREATE = 'document_create'
 PERMISSION_DOCUMENT_PROPERTIES_EDIT = 'document_properties_edit'
 PERMISSION_DOCUMENT_EDIT = 'document_edit'
-PERMISSION_DOCUMENT_METADATA_EDIT = 'document_metadata_edit'
 PERMISSION_DOCUMENT_VIEW = 'document_view'
 PERMISSION_DOCUMENT_DELETE = 'document_delete'
 PERMISSION_DOCUMENT_DOWNLOAD = 'document_download'
@@ -26,7 +25,6 @@ register_permissions('documents', [
     {'name': PERMISSION_DOCUMENT_CREATE, 'label': _(u'Create document')},
     {'name': PERMISSION_DOCUMENT_PROPERTIES_EDIT, 'label': _(u'Edit document properties')},
     {'name': PERMISSION_DOCUMENT_EDIT, 'label': _(u'Edit document')},
-    {'name': PERMISSION_DOCUMENT_METADATA_EDIT, 'label': _(u'Edit document metadata')},
     {'name': PERMISSION_DOCUMENT_VIEW, 'label': _(u'View document')},
     {'name': PERMISSION_DOCUMENT_DELETE, 'label': _(u'Delete document')},
     {'name': PERMISSION_DOCUMENT_DOWNLOAD, 'label': _(u'Download document')},
@@ -44,8 +42,6 @@ document_view_simple = {'text': _(u'details (simple)'), 'view': 'document_view_s
 document_delete = {'text': _(u'delete'), 'view': 'document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_DELETE]}}
 document_multiple_delete = {'text': _(u'delete'), 'view': 'document_multiple_delete', 'famfam': 'page_delete', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_DELETE]}}
 document_edit = {'text': _(u'edit'), 'view': 'document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}}
-document_edit_metadata = {'text': _(u'edit metadata'), 'view': 'document_edit_metadata', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_METADATA_EDIT]}}
-document_multiple_edit_metadata = {'text': _(u'edit metadata'), 'view': 'document_multiple_edit_metadata', 'famfam': 'page_edit', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_METADATA_EDIT]}}
 document_preview = {'text': _(u'preview'), 'class': 'fancybox', 'view': 'document_preview', 'args': 'object.id', 'famfam': 'magnifier', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_download = {'text': _(u'download'), 'view': 'document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}}
 document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_refresh', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
@@ -83,10 +79,10 @@ metadata_group_create_sibling = {'text': _(u'upload new document using same meta
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': 'object.id', 'famfam': 'drive_magnify'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': 'object.id', 'famfam': 'drive_delete'}
 
-register_links(Document, [document_view_simple, document_view, document_edit, document_edit_metadata, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
+register_links(Document, [document_view_simple, document_view, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
 register_links(Document, [document_create_sibling], menu_name='sidebar')
 
-register_multi_item_links(['metadatagroup_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_edit_metadata, document_multiple_delete])
+register_multi_item_links(['metadatagroup_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
     register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list_recent, document_list, document_create, document_create_multiple], menu_name='sidebar')

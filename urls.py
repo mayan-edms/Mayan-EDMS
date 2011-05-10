@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^comments/', include('document_comments.urls')),
     (r'^user_management/', include('user_management.urls')),
     (r'^settings/', include('smart_settings.urls')),
+    (r'^metadata/', include('metadata.urls')),
 )
 
 

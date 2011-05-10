@@ -31,6 +31,8 @@ from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
+from metadata.api import save_metadata_list, \
+    decode_metadata_from_url, metadata_repr_as_list
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -48,7 +50,7 @@ from documents.conf.settings import PRINT_SIZE
 
 from documents import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
-    PERMISSION_DOCUMENT_METADATA_EDIT, PERMISSION_DOCUMENT_VIEW, \
+    PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
     PERMISSION_DOCUMENT_TRANSFORM, \
     PERMISSION_DOCUMENT_EDIT
@@ -56,14 +58,12 @@ from documents import PERMISSION_DOCUMENT_CREATE, \
 from documents.forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentPreviewForm, \
-        MetadataFormSet, DocumentPageForm, DocumentPageTransformationForm, \
+        DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm, \
         DocumentPageForm_text, PrintForm, MetadataSelectionForm
 
-from documents.metadata import save_metadata_list, \
-    decode_metadata_from_url, metadata_repr_as_list
 from documents.models import Document, DocumentType, DocumentPage, \
-    DocumentPageTransformation, RecentDocument, MetadataGroup
+    DocumentPageTransformation, RecentDocument, DocumentGroup
 from documents.staging import StagingFile
 from documents import metadata_group_link
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
@@ -453,89 +453,6 @@ def document_edit(request, document_id):
         'form': form,
         'object': document,
     }, context_instance=RequestContext(request))
-
-
-def document_edit_metadata(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_METADATA_EDIT])
-
-    if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
-    elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-        if len(set([document.document_type for document in documents])) > 1:
-            messages.error(request, _(u'All documents must be from the same type.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-    else:
-        messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
-    metadata = {}
-    for document in documents:
-        RecentDocument.objects.add_document_for_user(request.user, document)
-
-        for item in document.documentmetadata_set.all():
-            value = item.value
-            if item.metadata_type in metadata:
-                if value not in metadata[item.metadata_type]:
-                    metadata[item.metadata_type].append(value)
-            else:
-                metadata[item.metadata_type] = [value]
-
-    initial = []
-    for key, value in metadata.items():
-        initial.append({
-            'metadata_type': key,
-            'value': u', '.join(value)
-        })
-
-    formset = MetadataFormSet(initial=initial)
-    if request.method == 'POST':
-        formset = MetadataFormSet(request.POST)
-        if formset.is_valid():
-            for document in documents:
-                try:
-                    document_delete_fs_links(document)
-                except Exception, e:
-                    messages.error(request, _(u'Error deleting filesystem links for document: %(document)s; %(error)s') % {
-                        'document': document, 'error': e})
-
-                save_metadata_list(formset.cleaned_data, document)
-
-                messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
-
-                try:
-                    warnings = document_create_fs_links(document)
-
-                    if request.user.is_staff or request.user.is_superuser:
-                        for warning in warnings:
-                            messages.warning(request, warning)
-
-                    messages.success(request, _(u'Filesystem links updated successfully for document: %s.') % document)
-                except Exception, e:
-                    messages.error(request, _('Error creating filesystem links for document: %(document)s; %(error)s') % {
-                        'document': document, 'error': e})
-
-            if len(documents) == 1:
-                return HttpResponseRedirect(document.get_absolute_url())
-            elif len(documents) > 1:
-                return HttpResponseRedirect(reverse('document_list'))
-
-    context = {
-        'form_display_mode_table': True,
-        'form': formset,
-    }
-    if len(documents) == 1:
-        context['object'] = documents[0]
-        context['title'] = _(u'Edit metadata for document: %s') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _(u'Edit metadata for documents: %s') % ', '.join([unicode(d) for d in documents])
-
-    return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))
-
-
-def document_multiple_edit_metadata(request):
-    return document_edit_metadata(request, document_id_list=request.GET.get('id_list', []))
 
 
 def calculate_converter_arguments(document, *args, **kwargs):

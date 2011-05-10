@@ -1,11 +1,9 @@
 """Configuration options for the documents app"""
 
-import datetime
 import hashlib
 import uuid
 
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
 
 from common.utils import proper_name
 from storage.backends.filebasedstorage import FileBasedStorage
@@ -21,14 +19,6 @@ def default_uuid():
     """unicode(uuid.uuid4())"""
     return unicode(uuid.uuid4())
 
-default_available_functions = {
-    'current_date': datetime.datetime.now().date,
-}
-
-default_available_models = {
-    'User': User
-}
-
 available_transformations = {
     'rotate': {'label': _(u'Rotate [degrees]'), 'arguments': [{'name': 'degrees'}]}
 }
@@ -42,8 +32,6 @@ register_settings(
     module=u'documents.conf.settings',
     settings=[
         # Definition
-        {'name': u'AVAILABLE_FUNCTIONS', 'global_name': u'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'default': default_available_functions},
-        {'name': u'AVAILABLE_MODELS', 'global_name': u'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'default': default_available_models},
         {'name': u'AVAILABLE_INDEXING_FUNCTIONS', 'global_name': u'DOCUMENTS_INDEXING_AVAILABLE_FUNCTIONS', 'default': available_indexing_functions},
         # Upload
         {'name': u'USE_STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_USE_STAGING_DIRECTORY', 'default': False},
