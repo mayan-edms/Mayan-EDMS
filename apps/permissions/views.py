@@ -1,4 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -44,12 +45,12 @@ def _role_permission_link(requester, permission, permission_list):
         return template % {
             'url': reverse('permission_revoke',
                 args=[permission.id, ct.app_label, ct.model, requester.id]),
-            'icon': 'delete', 'text': _(u'Revoke')}
+            'icon': 'delete', 'text': ugettext(u'Revoke')}
     else:
         return template % {
             'url': reverse('permission_grant',
                 args=[permission.id, ct.app_label, ct.model, requester.id]),
-            'icon': 'add', 'text': _(u'Grant')}
+            'icon': 'add', 'text': ugettext(u'Grant')}
 
 
 def role_permissions(request, role_id):
