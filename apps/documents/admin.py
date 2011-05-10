@@ -2,8 +2,8 @@ from django.contrib import admin
 
 from documents.models import MetadataType, DocumentType, Document, \
     MetadataSet, MetadataSetItem, DocumentMetadata, \
-    DocumentTypeFilename, MetadataIndex, DocumentPage, MetadataGroup, \
-    MetadataGroupItem, DocumentPageTransformation, RecentDocument
+    DocumentTypeFilename, MetadataIndex, DocumentPage, DocumentGroup, \
+    DocumentGroupItem, DocumentPageTransformation, RecentDocument
 
 from filesystem_serving.admin import DocumentMetadataIndexInline
 
@@ -65,15 +65,15 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = ('uuid', 'file_filename', 'file_extension')
 
 
-class MetadataGroupItemInline(admin.StackedInline):
-    model = MetadataGroupItem
+class DocumentGroupItemInline(admin.StackedInline):
+    model = DocumentGroupItem
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
 
 
-class MetadataGroupAdmin(admin.ModelAdmin):
-    inlines = [MetadataGroupItemInline]
+class DocumentGroupAdmin(admin.ModelAdmin):
+    inlines = [DocumentGroupItemInline]
     filter_horizontal = ['document_type']
 
 
@@ -87,7 +87,6 @@ class RecentDocumentAdmin(admin.ModelAdmin):
 
 class MetadataSetAdmin(admin.ModelAdmin):
     inlines = [MetadataSetItemInline]
-    #filter_horizontal = ['document_type']    
 
 
 admin.site.register(MetadataType, MetadataTypeAdmin)

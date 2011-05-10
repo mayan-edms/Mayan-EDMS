@@ -1,17 +1,16 @@
-'''Metadata handling commonalities
-'''
+"""Metadata handling commonalities"""
 
 from urllib import unquote_plus
 
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import ugettext_lazy as _
 
 from documents.models import DocumentMetadata, MetadataType
 
 
 def decode_metadata_from_url(url_dict):
-    '''Parses a URL query string to a list of metadata
-    '''
+    """Parse a URL query string to a list of metadata"""
     metadata_dict = {
         'id': {},
         'value': {}
@@ -35,8 +34,9 @@ def decode_metadata_from_url(url_dict):
 
 
 def save_metadata_list(metadata_list, document):
-    '''Takes a list of metadata values and associates a document to it
-    '''
+    """
+    Take a list of metadata values and associate a document to it
+    """
     for item in metadata_list:
         save_metadata(item, document)
 
@@ -57,9 +57,8 @@ def save_metadata_list(metadata_list, document):
 
 
 def save_metadata(metadata_dict, document):
-    '''save metadata_dict
-    '''
-    #Use matched metadata now to create document metadata
+    """save metadata_dict"""
+    # Use matched metadata now to create document metadata
     document_metadata, created = DocumentMetadata.objects.get_or_create(
         document=document,
         metadata_type=get_object_or_404(
@@ -67,24 +66,24 @@ def save_metadata(metadata_dict, document):
             pk=metadata_dict['id']
         ),
     )
-    #Handle 'plus sign as space' in the url
+    # Handle 'plus sign as space' in the url
 
-    #unquote_plus handles utf-8?!?
-    #http://stackoverflow.com/questions/4382875/handling-iri-in-django
+    # unquote_plus handles utf-8?!?
+    # http://stackoverflow.com/questions/4382875/handling-iri-in-django
     #.decode('utf-8')
     document_metadata.value = unquote_plus(metadata_dict['value'])
     document_metadata.save()
 
 
 def metadata_repr(metadata_list):
-    '''Return a printable representation of a metadata list
-    '''
-    return ', '.join(metadata_repr_as_list(metadata_list))
+    """Return a printable representation of a metadata list"""
+    return u', '.join(metadata_repr_as_list(metadata_list))
 
 
 def metadata_repr_as_list(metadata_list):
-    '''Turn a list of metadata into a list of printable representations
-    '''
+    """
+    Turn a list of metadata into a list of printable representations
+    """
     output = []
     for metadata_dict in metadata_list:
         try:

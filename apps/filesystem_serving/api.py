@@ -5,6 +5,7 @@ from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
+from documents.classes import MetadataObject
 
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from filesystem_serving.conf.settings import FILESERVING_PATH
@@ -25,13 +26,15 @@ def document_create_fs_links(document):
     if FILESERVING_ENABLE:
         if not document.exists():
             raise Exception(_(u'Not creating metadata indexing, document not found in document storage'))
-        metadata_dict = {'document': document}
-        metadata_dict.update(dict([(metadata.metadata_type.name, SLUGIFY_FUNCTION(metadata.value)) for metadata in document.documentmetadata_set.all() if metadata.value]))
-
+        eval_dict = {}
+        eval_dict['document'] = document
+        metadata_dict = dict([(metadata.metadata_type.name, SLUGIFY_FUNCTION(metadata.value)) for metadata in document.documentmetadata_set.all() if metadata.value])
+        eval_dict['metadata'] = MetadataObject(metadata_dict)
+        
         for metadata_index in document.document_type.metadataindex_set.all():
             if metadata_index.enabled:
                 try:
-                    fabricated_directory = eval(metadata_index.expression, metadata_dict, AVAILABLE_INDEXING_FUNCTIONS)
+                    fabricated_directory = eval(metadata_index.expression, eval_dict, AVAILABLE_INDEXING_FUNCTIONS)
                     target_directory = os.path.join(FILESERVING_PATH, fabricated_directory)
                     try:
                         os.makedirs(target_directory)
@@ -48,7 +51,7 @@ def document_create_fs_links(document):
                     #This should be a warning not an error
                     #pass
                 except Exception, exc:
-                    raise Exception(_(u'Unable to create metadata indexing directory: %s') % exc)
+                    warnings.append(_(u'Unable to create metadata indexing directory: %s') % exc)
 
     return warnings
 

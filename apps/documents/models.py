@@ -25,6 +25,7 @@ from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import RECENT_COUNT
+from documents.classes import MetadataObject
 
 
 def get_filename_from_uuid(instance, filename):
@@ -352,8 +353,11 @@ class MetadataGroupManager(models.Manager):
         metadata_groups = {}
         metadata_dict = {}
         for document_metadata in document.documentmetadata_set.all():
-            metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
-
+            metadata_dict[document_metadata.metadata_type.name] = document_metadata.value
+        eval_dict = {}
+        eval_dict['document'] = document
+        eval_dict['metadata'] = MetadataObject(metadata_dict)
+        
         if group_obj:
             groups_qs = MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True) & Q(pk=group_obj.pk))
         else:
@@ -363,7 +367,7 @@ class MetadataGroupManager(models.Manager):
             total_query = Q()
             for item in group.metadatagroupitem_set.filter(enabled=True):
                 try:
-                    value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
+                    value_query = Q(**{'value__%s' % item.operator: eval(item.expression, eval_dict)})
                     if item.negated:
                         query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
                     else:
@@ -390,10 +394,10 @@ class MetadataGroupManager(models.Manager):
         return metadata_groups, errors
 
 
-class MetadataGroup(models.Model):
+class DocumentGroup(models.Model):
     document_type = models.ManyToManyField(DocumentType, null=True, blank=True,
         verbose_name=_(u'document type'), help_text=_(u'If left blank, all document types will be matched.'))
-    name = models.CharField(max_length=32, verbose_name=_(u'name'))
+    #name = models.CharField(max_length=32, verbose_name=_(u'name'))
     label = models.CharField(max_length=32, verbose_name=_(u'label'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
@@ -433,14 +437,17 @@ OPERATOR_CHOICES = (
     (u'iregex', _(u'is in regular expression (case insensitive)')),
 )
 
+#LOCAL_SOURCE_CHOICES = (
+#    (u'
 
-class MetadataGroupItem(models.Model):
-    metadata_group = models.ForeignKey(MetadataGroup, verbose_name=_(u'metadata group'))
+class DocumentGroupItem(models.Model):
+    metadata_group = models.ForeignKey(DocumentGroup, verbose_name=_(u'metadata group'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'), help_text=_(u'This represents the metadata of all other documents.'))
+    foreign_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_foreign', verbose_name=_(u'foreign metadata'), help_text=_(u'This represents the metadata of all other documents.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
-    expression = models.CharField(max_length=128,
-        verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
+    
+    local_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_local', verbose_name=_(u'local metadata'), help_text=_(u'This represents the metadata of the current document.'))
+    expression = models.TextField(verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables `metadata` and document properties under the variable `document`.'))
     negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
