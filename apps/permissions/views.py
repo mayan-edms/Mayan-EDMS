@@ -44,12 +44,12 @@ def _role_permission_link(requester, permission, permission_list):
     if permission in permission_list:
         return template % {
             'url': reverse('permission_revoke',
-                args=[permission.id, ct.app_label, ct.model, requester.id]),
+                args=[permission.pk, ct.app_label, ct.model, requester.pk]),
             'icon': 'delete', 'text': ugettext(u'Revoke')}
     else:
         return template % {
             'url': reverse('permission_grant',
-                args=[permission.id, ct.app_label, ct.model, requester.id]),
+                args=[permission.pk, ct.app_label, ct.model, requester.pk]),
             'icon': 'add', 'text': ugettext(u'Grant')}
 
 
@@ -144,7 +144,7 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
 
     if request.method == 'POST':
         if action == 'grant':
-            permission_holder, created = PermissionHolder.objects.get_or_create(permission=permission, holder_type=ct, holder_id=requester.id)
+            permission_holder, created = PermissionHolder.objects.get_or_create(permission=permission, holder_type=ct, holder_id=requester.pk)
             if created:
                 messages.success(request, _(u'Permission "%(permission)s" granted to %(ct_name)s: %(requester)s.') % {
                     'permission': permission, 'ct_name': ct.name, 'requester': requester})
@@ -153,7 +153,7 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
                     'ct_name': ct.name, 'requester': requester, 'permission': permission})
         elif action == 'revoke':
             try:
-                permission_holder = PermissionHolder.objects.get(permission=permission, holder_type=ct, holder_id=requester.id)
+                permission_holder = PermissionHolder.objects.get(permission=permission, holder_type=ct, holder_id=requester.pk)
                 permission_holder.delete()
                 messages.success(request, _(u'Permission "%(permission)s" revoked from %(ct_name)s: %(requester)s.') % {
                     'permission': permission, 'ct_name': ct.name, 'requester': requester})
