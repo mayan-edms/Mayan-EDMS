@@ -24,7 +24,6 @@ from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import RECENT_COUNT
-from documents.managers import DocumentGroupManager
 
 def get_filename_from_uuid(instance, filename):
     filename, extension = os.path.splitext(filename)
@@ -187,9 +186,6 @@ class Document(models.Model):
         """
         return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in self.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
 
-    def get_metadata_groups(self, group_obj=None):
-        return DocumentGroup.objects.get_groups_for(self, group_obj)
-
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
         if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
@@ -276,68 +272,7 @@ class DocumentPage(models.Model):
         return ' '.join(transformation_list), warnings
 
 
-class DocumentGroup(models.Model):
-    document_type = models.ManyToManyField(DocumentType, null=True, blank=True,
-        verbose_name=_(u'document type'), help_text=_(u'If left blank, all document types will be matched.'))
-    label = models.CharField(max_length=32, verbose_name=_(u'label'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
-    objects = DocumentGroupManager()
-
-    def __unicode__(self):
-        return self.label if self.label else self.name
-
-    class Meta:
-        verbose_name = _(u'document group')
-        verbose_name_plural = _(u'document groups')
-
-
-INCLUSION_AND = u'&'
-INCLUSION_OR = u'|'
-
-INCLUSION_CHOICES = (
-    (INCLUSION_AND, _(u'and')),
-    (INCLUSION_OR, _(u'or')),
-)
-
-OPERATOR_CHOICES = (
-    (u'exact', _(u'is equal')),
-    (u'iexact', _(u'is equal (case insensitive)')),
-    (u'contains', _(u'contains')),
-    (u'icontains', _(u'contains (case insensitive)')),
-    (u'in', _(u'is in')),
-    (u'gt', _(u'is greater than')),
-    (u'gte', _(u'is greater than or equal')),
-    (u'lt', _(u'is less than')),
-    (u'lte', _(u'is less than or equal')),
-    (u'startswith', _(u'starts with')),
-    (u'istartswith', _(u'starts with (case insensitive)')),
-    (u'endswith', _(u'ends with')),
-    (u'iendswith', _(u'ends with (case insensitive)')),
-    (u'regex', _(u'is in regular expression')),
-    (u'iregex', _(u'is in regular expression (case insensitive)')),
-)
-
-#LOCAL_SOURCE_CHOICES = (
-#    (u'
-
-class DocumentGroupItem(models.Model):
-    metadata_group = models.ForeignKey(DocumentGroup, verbose_name=_(u'metadata group'))
-    inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
-    #foreign_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_foreign', verbose_name=_(u'foreign metadata'), help_text=_(u'This represents the metadata of all other documents.'))
-    operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
-    
-    #local_metadata_type = models.ForeignKey(MetadataType, related_name='metadata_type_local', verbose_name=_(u'local metadata'), help_text=_(u'This represents the metadata of the current document.'))
-    expression = models.TextField(verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables `metadata` and document properties under the variable `document`.'))
-    negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-
-    def __unicode__(self):
-        return u'[%s] %s %s %s %s %s' % (u'x' if self.enabled else u' ', self.get_inclusion_display(), self.metadata_type, _(u'not') if self.negated else u'', self.get_operator_display(), self.expression)
-
-    class Meta:
-        verbose_name = _(u'group item')
-        verbose_name_plural = _(u'group items')
 
 available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 

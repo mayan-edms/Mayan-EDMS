@@ -60,7 +60,5 @@ register_settings(
         {'name': u'ZOOM_MAX_LEVEL', 'global_name': u'DOCUMENTS_ZOOM_MAX_LEVEL', 'default': 200, 'description': _(u'Maximum amount in percent (%) to allow user to zoom in a document page interactively.')},
         {'name': u'ZOOM_MIN_LEVEL', 'global_name': u'DOCUMENTS_ZOOM_MIN_LEVEL', 'default': 50, 'description': _(u'Minimum amount in percent (%) to allow user to zoom out a document page interactively.')},
         {'name': u'ROTATION_STEP', 'global_name': u'DOCUMENTS_ROTATION_STEP', 'default': 90, 'description': _(u'Amount in degrees to rotate a document page per user interaction.')},
-        #Groups
-        {'name': u'GROUP_SHOW_EMPTY', 'global_name': u'DOCUMENTS_GROUP_SHOW_EMPTY', 'default': True},
     ]
 )

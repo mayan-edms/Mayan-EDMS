@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'document_comments',
     'user_management',
     'documents',
+    'grouping',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -212,8 +213,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #DOCUMENTS_ZOOM_MIN_LEVEL = 50
 #DOCUMENTS_ROTATION_STEP = 90
 
-# Groups
-#DOCUMENTS_GROUP_SHOW_EMPTY = True
+#------------- Groups --------------------
+#GROUPING_SHOW_EMPTY_GROUPS = True
 #------------ Filesystem serving --------------
 #FILESYSTEM_FILESERVING_ENABLE = True
 #FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'

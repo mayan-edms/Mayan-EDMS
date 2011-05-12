@@ -17,29 +17,31 @@ from django.contrib.comments.models import Comment
 
 import sendfile
 from common.utils import pretty_size, parse_range, urlquote
-from converter.api import convert_document, QUALITY_DEFAULT
-from converter.exceptions import UnkownConvertError, UnknownFormat
-from filetransfers.api import serve_file
-from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
-from filesystem_serving.conf.settings import FILESERVING_ENABLE
-from permissions.api import check_permissions
-from navigation.utils import resolve_to_name
-from tags.utils import get_tags_subtemplate
-from document_comments.utils import get_comments_subtemplate
-from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_FILE_FORMAT, QUALITY_PRINT
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
+from converter.api import convert_document, QUALITY_DEFAULT
+from converter.exceptions import UnkownConvertError, UnknownFormat
+from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
+    DEFAULT_FILE_FORMAT, QUALITY_PRINT
+from document_comments.utils import get_comments_subtemplate
+from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
+from filesystem_serving.conf.settings import FILESERVING_ENABLE
+from filetransfers.api import serve_file
+from grouping.models import DocumentGroup
+from grouping import document_group_link
+from grouping.utils import get_document_group_subtemplate
 from metadata.api import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
 from metadata.forms import MetadataFormSet
+from navigation.utils import resolve_to_name
+from permissions.api import check_permissions
+from tags.utils import get_tags_subtemplate
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
-from documents.conf.settings import GROUP_SHOW_EMPTY
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
 from documents.conf.settings import STORAGE_BACKEND
@@ -49,7 +51,7 @@ from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf.settings import ROTATION_STEP
 from documents.conf.settings import PRINT_SIZE
 
-from documents import PERMISSION_DOCUMENT_CREATE, \
+from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
     PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
@@ -60,13 +62,12 @@ from documents.forms import DocumentTypeSelectForm, DocumentCreateWizard, \
         DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
-        DocumentContentForm, DocumentPageForm_edit, MetaDataGroupForm, \
+        DocumentContentForm, DocumentPageForm_edit, \
         DocumentPageForm_text, PrintForm, MetadataSelectionForm
 
 from documents.models import Document, DocumentType, DocumentPage, \
-    DocumentPageTransformation, RecentDocument, DocumentGroup
+    DocumentPageTransformation, RecentDocument
 from documents.staging import StagingFile
-from documents import metadata_group_link
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 
@@ -314,33 +315,10 @@ def document_view_simple(request, document_id):
         },
     )
 
-    metadata_groups, errors = document.get_metadata_groups()
-    if (request.user.is_staff or request.user.is_superuser) and errors:
-        for error in errors:
-            messages.warning(request, _(u'Document group query error: %s' % error))
+    document_group_subtemplate = get_document_group_subtemplate(request, document)
 
-    if not GROUP_SHOW_EMPTY:
-        #If GROUP_SHOW_EMPTY is False, remove empty groups from
-        #dictionary
-        metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
-
-    if metadata_groups:
-        subtemplates_list.append(
-            {
-                'name': 'generic_form_subtemplate.html',
-                'context': {
-                    'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
-                    'form': MetaDataGroupForm(
-                        groups=metadata_groups, current_document=document,
-                        links=[
-                            metadata_group_link
-                        ]
-                    ),
-                    'form_action': reverse('metadatagroup_action'),
-                    'submit_method': 'GET',
-                }
-            }
-        )
+    if document_group_subtemplate:
+        subtemplates_list.append(document_group_subtemplate)
 
     return render_to_response('generic_detail.html', {
         'object': document,
@@ -413,30 +391,10 @@ def document_view_advanced(request, document_id):
         },
     )
 
-    metadata_groups, errors = document.get_metadata_groups()
-    if (request.user.is_staff or request.user.is_superuser) and errors:
-        for error in errors:
-            messages.warning(request, _(u'Document group query error: %s' % error))
+    document_group_subtemplate = get_document_group_subtemplate(request, document)
 
-    if not GROUP_SHOW_EMPTY:
-        #If GROUP_SHOW_EMPTY is False, remove empty groups from
-        #dictionary
-        metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
-
-    if metadata_groups:
-        subtemplates_list.append(
-            {
-                'name': 'generic_form_subtemplate.html',
-                'context': {
-                    'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
-                    'form': MetaDataGroupForm(groups=metadata_groups, current_document=document, links=[
-                        metadata_group_link
-                    ]),
-                    'form_action': reverse('metadatagroup_action'),
-                    'submit_method': 'GET',
-                }
-            }
-        )
+    if document_group_subtemplate:
+        subtemplates_list.append(document_group_subtemplate)
 
     if FILESERVING_ENABLE:
         subtemplates_list.append({
@@ -1055,35 +1013,6 @@ def document_page_rotate_left(request, document_page_id):
         document_page_id,
         rotation_function=lambda x: (x - ROTATION_STEP) % 360
     )
-
-
-def metadatagroup_action(request):
-    action = request.GET.get('action', None)
-
-    if not action:
-        messages.error(request, _(u'No action selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
-
-    return HttpResponseRedirect(action)
-
-
-def metadatagroup_view(request, document_id, metadata_group_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-
-    document = get_object_or_404(Document, pk=document_id)
-    metadata_group = get_object_or_404(MetadataGroup, pk=metadata_group_id)
-
-    object_list, errors = document.get_metadata_groups(metadata_group)
-
-    return render_to_response('generic_list.html', {
-        'object_list': object_list,
-        'title': _(u'documents in group: %(group)s, for document: %(document)s') % {
-            'group': metadata_group, 'document': document
-        },
-        'multi_select_as_buttons': True,
-        'hide_links': True,
-        'ref_object': document
-    }, context_instance=RequestContext(request))
 
 
 def document_print(request, document_id):
