@@ -32,12 +32,12 @@ def decode_metadata_from_url(url_dict):
     return metadata_list
 
 
-def save_metadata_list(metadata_list, document):
+def save_metadata_list(metadata_list, document, create=False):
     """
     Take a list of metadata values and associate a document to it
     """
     for item in metadata_list:
-        save_metadata(item, document)
+        save_metadata(item, document, create)
 
         #if item['value']:
         #    save_metadata(item, document)
@@ -55,24 +55,25 @@ def save_metadata_list(metadata_list, document):
         #        pass
 
 
-def save_metadata(metadata_dict, document):
+def save_metadata(metadata_dict, document, create=False):
     """save metadata_dict"""
-    # Use matched metadata now to create document metadata
-    #document_metadata, created = DocumentMetadata.objects.get_or_create(
-    #    document=document,
-    #    metadata_type=get_object_or_404(
-    #        MetadataType,
-    #        pk=metadata_dict['id']
-    #   ),
-    #)
-
-    document_metadata = DocumentMetadata.objects.get(
-        document=document,
-        metadata_type=get_object_or_404(
-            MetadataType,
-            pk=metadata_dict['id']
-        ),
-    )
+    if create:
+        # Use matched metadata now to create document metadata
+        document_metadata, created = DocumentMetadata.objects.get_or_create(
+            document=document,
+            metadata_type=get_object_or_404(
+                MetadataType,
+                pk=metadata_dict['id']
+           ),
+        )
+    else:
+        document_metadata = DocumentMetadata.objects.get(
+            document=document,
+            metadata_type=get_object_or_404(
+                MetadataType,
+                pk=metadata_dict['id']
+            ),
+        )
 
     # Handle 'plus sign as space' in the url
 

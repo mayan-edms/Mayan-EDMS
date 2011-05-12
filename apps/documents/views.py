@@ -122,7 +122,7 @@ def _handle_save_document(request, document, form=None):
             document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
             document.save()
 
-    save_metadata_list(decode_metadata_from_url(request.GET), document)
+    save_metadata_list(decode_metadata_from_url(request.GET), document, create=True)
     try:
         warnings = document_create_fs_links(document)
         if request.user.is_staff or request.user.is_superuser:
