@@ -205,16 +205,15 @@ def upload_document_with_type(request, multiple=True):
                 else:
                     return HttpResponseRedirect(reverse('document_list'))
 
-    context = {
-        'document_type_id': document_type_id,
-        'form_list': [
-            {
-                'form': local_form,
-                'title': _(u'upload a local document'),
-                'grid': 6,
-                'grid_clear': False if USE_STAGING_DIRECTORY else True,
-            },
-        ],
+    subtemplates_list = []
+    local_upload_form = {
+        'name': 'generic_form_subtemplate.html',
+        'context': {
+            'form': local_form,
+            'title': _(u'upload a local document'),
+            'grid': 6,
+            'grid_clear': False if USE_STAGING_DIRECTORY else True,
+        }
     }
 
     if USE_STAGING_DIRECTORY:
@@ -224,44 +223,145 @@ def upload_document_with_type(request, multiple=True):
             messages.error(request, e)
             filelist = []
         finally:
-            context.update({
-                'subtemplates_dict': [
-                    {
-                        'name': 'generic_list_subtemplate.html',
+            subtemplates_list.append(local_upload_form)
+            subtemplates_list.append(
+                {
+                    'name': 'generic_form_subtemplate.html',
+                    'context': {
+                        'form': staging_form,
+                        'title': _(u'upload a document from staging'),
+                        'grid': 6,
+                        'grid_clear': True,
+                    }
+                },
+            )
+            subtemplates_list.append(
+                {
+                    'name': 'generic_list_subtemplate.html',
+                    'context': {
                         'title': _(u'files in staging'),
                         'object_list': filelist,
                         'hide_link': True,
-                    },
-                ],
-            })
-            context['form_list'].append(
-                {
-                    'form': staging_form,
-                    'title': _(u'upload a document from staging'),
-                    'grid': 6,
-                    'grid_clear': True,
+                    }
                 },
-            )
+            )    
+    else:
+        subtemplates_list.append(local_upload_form)
+        
+    
+    context = {
+        'document_type_id': document_type_id,
 
+        'subtemplates_list': subtemplates_list,
+    }    
     context.update({
         'sidebar_subtemplates_list': [
             {
-                'title': _(u'Current metadata'),
                 'name': 'generic_subtemplate.html',
-                #'content': metadata_repr(decode_metadata_from_url(request.GET)),
-                'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET))
+                'context': {
+                    'title': _(u'Current metadata'),
+                    #'content': metadata_repr(decode_metadata_from_url(request.GET)),
+                    'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET))
+                }
             }]
-    })
+    })    
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
 
 
-def document_view(request, document_id):
+def document_view_simple(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document.objects.select_related(), pk=document_id)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
+
+    subtemplates_list = []
+
+    content_form = DocumentContentForm(document=document)
+
+    preview_form = DocumentPreviewForm(document=document)
+    subtemplates_list.append(
+        {
+            'name': 'generic_form_subtemplate.html',
+            'context': {
+                'form': preview_form,
+                'object': document,
+            }
+        },    
+    )
+    subtemplates_list.append(
+        {
+            'name': 'generic_form_subtemplate.html',
+            'context': {
+                'title':_(u'document properties'),
+                'form': content_form,
+                'object': document,
+            },
+        }
+    )
+
+    if document.tags.count():
+        subtemplates_list.append(get_tags_subtemplate(document))
+
+    if Comment.objects.for_model(document).count():
+        subtemplates_list.append(get_comments_subtemplate(document))
+
+    subtemplates_list.append(
+        {
+            'name': 'generic_list_subtemplate.html',
+            'context': {
+                'title': _(u'metadata'),
+                'object_list': document.documentmetadata_set.all(),
+                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+                'hide_link': True,
+            }
+        },
+    )
+
+    metadata_groups, errors = document.get_metadata_groups()
+    if (request.user.is_staff or request.user.is_superuser) and errors:
+        for error in errors:
+            messages.warning(request, _(u'Document group query error: %s' % error))
+
+    if not GROUP_SHOW_EMPTY:
+        #If GROUP_SHOW_EMPTY is False, remove empty groups from
+        #dictionary
+        metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
+
+    if metadata_groups:
+        subtemplates_list.append(
+            {
+                'name': 'generic_form_subtemplate.html',
+                'context': {
+                    'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
+                    'form': MetaDataGroupForm(
+                        groups=metadata_groups, current_document=document,
+                        links=[
+                            metadata_group_link
+                        ]
+                    ),
+                    'form_action': reverse('metadatagroup_action'),
+                    'submit_method': 'GET',
+                }
+            }
+        )
+
+    return render_to_response('generic_detail.html', {
+        'object': document,
+        'document': document,
+        'subtemplates_list': subtemplates_list,
+    }, context_instance=RequestContext(request))
+
+
+def document_view_advanced(request, document_id):
+    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+
+    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
+    subtemplates_list = []
 
     form = DocumentForm_view(instance=document, extra_fields=[
         {'label': _(u'Filename'), 'field': 'file_filename'},
@@ -279,19 +379,27 @@ def document_view(request, document_id):
     ])
 
     preview_form = DocumentPreviewForm(document=document)
-    form_list = [
-        {
-            'form': preview_form,
-            'object': document,
-        },
-        {
-            'title': _(u'document properties'),
-            'form': form,
-            'object': document,
-        },
-    ]
 
-    subtemplates_list = []
+    subtemplates_list.append(
+        {
+            'name': 'generic_form_subtemplate.html',
+            'context': {
+                'form': preview_form,
+                'object': document,
+            }
+        },
+    )
+    subtemplates_list.append(
+        {
+            'name': 'generic_form_subtemplate.html',
+            'context': {
+                'form': form,
+                'title': _(u'document properties'),
+                'object': document,
+            }
+        },
+    )
+
     if document.tags.count():
         subtemplates_list.append(get_tags_subtemplate(document))
 
@@ -346,7 +454,6 @@ def document_view(request, document_id):
         })
 
     return render_to_response('generic_detail.html', {
-        'form_list': form_list,
         'object': document,
         'document': document,
         'subtemplates_list': subtemplates_list,
@@ -723,13 +830,13 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
 
     if document_id:
         documents = [get_object_or_404(Document.objects, pk=document_id)]
-        post_redirect = reverse('document_view', args=[documents[0].pk])
+        post_redirect = reverse('document_view_simple', args=[documents[0].pk])
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
         post_redirect = None
     else:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
@@ -768,83 +875,6 @@ def document_multiple_clear_transformations(request):
     return document_clear_transformations(request, document_id_list=request.GET.get('id_list', []))
 
 
-def document_view_simple(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-
-    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
-
-    RecentDocument.objects.add_document_for_user(request.user, document)
-
-    content_form = DocumentContentForm(document=document)
-
-    preview_form = DocumentPreviewForm(document=document)
-    form_list = [
-        {
-            'form': preview_form,
-            'object': document,
-        },
-        {
-            'title':_(u'document properties'),
-            'form': content_form,
-            'object': document,
-        },
-    ]
-
-    subtemplates_list = []
-    if document.tags.count():
-        subtemplates_list.append(get_tags_subtemplate(document))
-
-    if Comment.objects.for_model(document).count():
-        subtemplates_list.append(get_comments_subtemplate(document))
-
-    subtemplates_list.append(
-        {
-            'name': 'generic_list_subtemplate.html',
-            'context': {
-                'title': _(u'metadata'),
-                'object_list': document.documentmetadata_set.all(),
-                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
-                'hide_link': True,
-            }
-        },
-    )
-
-    metadata_groups, errors = document.get_metadata_groups()
-    if (request.user.is_staff or request.user.is_superuser) and errors:
-        for error in errors:
-            messages.warning(request, _(u'Document group query error: %s' % error))
-
-    if not GROUP_SHOW_EMPTY:
-        #If GROUP_SHOW_EMPTY is False, remove empty groups from
-        #dictionary
-        metadata_groups = dict([(group, data) for group, data in metadata_groups.items() if data])
-
-    if metadata_groups:
-        subtemplates_list.append(
-            {
-                'name': 'generic_form_subtemplate.html',
-                'context': {
-                    'title': _(u'document groups (%s)') % len(metadata_groups.keys()),
-                    'form': MetaDataGroupForm(
-                        groups=metadata_groups, current_document=document,
-                        links=[
-                            metadata_group_link
-                        ]
-                    ),
-                    'form_action': reverse('metadatagroup_action'),
-                    'submit_method': 'GET',
-                }
-            }
-        )
-
-    return render_to_response('generic_detail.html', {
-        'form_list': form_list,
-        'object': document,
-        'document': document,
-        'subtemplates_list': subtemplates_list,
-    }, context_instance=RequestContext(request))
-
-
 def document_missing_list(request):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
@@ -876,16 +906,11 @@ def document_page_view(request, document_page_id):
     rotation = int(request.GET.get('rotation', 0))
     document_page_form = DocumentPageForm(instance=document_page, zoom=zoom, rotation=rotation)
 
-    form_list = [
-        {
-            'form': document_page_form,
-            'title': _(u'details for: %s') % document_page,
-        },
-    ]
     return render_to_response('generic_detail.html', {
-        'form_list': form_list,
         'object': document_page,
         'web_theme_hide_menus': True,
+        'form': document_page_form,
+        'title': _(u'details for: %s') % document_page,        
     }, context_instance=RequestContext(request))
 
 
@@ -895,16 +920,11 @@ def document_page_text(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page_form = DocumentPageForm_text(instance=document_page)
 
-    form_list = [
-        {
-            'form': document_page_form,
-            'title': _(u'details for: %s') % document_page,
-        },
-    ]
     return render_to_response('generic_detail.html', {
-        'form_list': form_list,
         'object': document_page,
         'web_theme_hide_menus': True,
+        'form': document_page_form,
+        'title': _(u'details for: %s') % document_page,
     }, context_instance=RequestContext(request))
 
 
@@ -934,12 +954,12 @@ def document_page_edit(request, document_page_id):
 
 def document_page_navigation_next(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     if document_page.page_number >= document_page.document.documentpage_set.count():
         messages.warning(request, _(u'There are no more pages in this document'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
     else:
         document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number + 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
@@ -947,12 +967,12 @@ def document_page_navigation_next(request, document_page_id):
 
 def document_page_navigation_previous(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     if document_page.page_number <= 1:
         messages.warning(request, _(u'You are already at the first page of this document'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
     else:
         document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number - 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
@@ -960,7 +980,7 @@ def document_page_navigation_previous(request, document_page_id):
 
 def document_page_navigation_first(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=1)
@@ -969,7 +989,7 @@ def document_page_navigation_first(request, document_page_id):
 
 def document_page_navigation_last(request, document_page_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.document.documentpage_set.count())
@@ -986,11 +1006,11 @@ def document_list_recent(request):
 
 def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     # Get the query string from the referer url
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', '/')).query
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
     # Parse the query string and get the zoom value
     # parse_qs return a dictionary whose values are lists
     zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
@@ -1047,7 +1067,7 @@ def metadatagroup_action(request):
 
     if not action:
         messages.error(request, _(u'No action selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
 
     return HttpResponseRedirect(action)
 

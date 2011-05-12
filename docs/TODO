@@ -49,6 +49,8 @@ TODO, WISHLIST
 * Android App                                                          - NOT NEEDED (Use CamScanner, (C) IntSig Information Co, Ltd.)
 * Extract nagivation code into new navigation app                      - DONE
 
+* TODO: Solve css:last column problem
+* Change task manager from celery/rabbit to gearman
 * Receive documents via email
 * Mobile version
 * Exif to metadata convertion
@@ -70,7 +72,7 @@ Common
 ======
 * Filterform date filtering widget
 * Divide navigation links search by object and by view
-* Merge all generic templates into template widget object based rendering
+* Merge generic templates into template widget object based rendering  - DONE
 * Multiple document select in generic list template                    - DONE
 * Keyboard navigation
 * Default button linking to 'Enter' and ESC key for cancel
@@ -80,7 +82,7 @@ Common
 
 Permissions
 ===========
-* Add permissions support to menus
+* Add permissions support to menus                                     - STARTED (secondary menus done)
 * Role editing view under setup                                        - DONE
 * Implement permissions decorators
 * Add user editing under roles menus                                   - DONE
@@ -88,7 +90,8 @@ Permissions
 
 Documents
 =========
-* Skip step 2 of wizard (metadata) if no document type metadata types have been defined
+* Skip step 2 of wizard (metadata) if no document type metadata types  - DONE
+  have been defined
 * Tile based image server
 * Do separate default transformations for staging and for local uploads
 * Download a document in different formats: (jpg, png, pdf)
@@ -96,7 +99,7 @@ Documents
 * Download original document or transformed document
 * Display preferences 'document transformations' (Rotation, default zoom)
 * Document view temp transformations
-* Gallery view for document groups
+* Gallery view for document groups                                     - DONE
 * Versioning support
 * Generic document anotations using layer overlays
 * Field for document language or autodetect
@@ -108,7 +111,7 @@ Documents
 * Allow document type to be changed in document edit view
 * Document model's delete method might not get called when deleting in bulk
     from a queryset
-* Allow metadata entry form to mix required and non required metadata
+* Allow metadata entry form to mix required and non required metadata  - DEFFERED
 * Block Setup menu item to non staff and non superuser users
 * Include annotations in transformed documents downloads
 * Toggable option to include default transformation on document upload
@@ -126,7 +129,7 @@ Documents
 * Use document preview code for staging file also                      - DONE
 * Delete physical file on delete method                                - DEFFERED (Not needed until Django 1.3)
 * Download individual document pages
-* Document printing support
+* Document printing support                                            - STARTED
 * Document group actions                                               - DONE
     
 Filesystem serving

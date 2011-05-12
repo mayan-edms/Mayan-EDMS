@@ -19,49 +19,5 @@
             </div><!--end generic_subform-->
         {% endwith %}
     {% endif %}
-
-    {% for subtemplate in subtemplates %}
-        {% include subtemplate %}
-    {% endfor %}
-
-    {% for form in form_list %}
-        {% with form.submit_method as submit_method %}
-        {% with form.striptags as striptags %}
-        {% with form.title as title %}
-        {% with form.object as object %}
-        {% with form.object_name as object_name %}
-        {% with form.form_action as form_action %}
-        {% with "true" as read_only %}        
-        {% with form.form as form %}
-                {% include "generic_form_subtemplate.html" %}
-        {% endwith %}
-
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-    {% endfor %}
-
-
-    {% for subtemplate in subtemplates_dict %}
-    {% with subtemplate.title as title %}
-    {% with subtemplate.object_list as object_list %}
-    {% with subtemplate.extra_columns as extra_columns %}
-    {% with subtemplate.hide_object as hide_object %}
-    {% with subtemplate.main_object as main_object %}
-    {% with subtemplate.hide_link as hide_link %}
-    {% with subtemplate.hide_header as hide_header %}
-            {% include subtemplate.name %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endfor %}
 {% endblock %}
 

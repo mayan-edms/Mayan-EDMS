@@ -4,84 +4,16 @@
 {% block title %} :: {% blocktrans %}List of {{ title }}{% endblocktrans %}{% endblock %}
 {#{% block secondary_links %}{{ secondary_links|safe }}{% endblock %}#}
 
-
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates %}
         <div class="generic_subform">
             {% include subtemplate %}
         </div><!--end subform-->
     {% endfor %}
-
-    {% for subtemplate in sidebar_subtemplates_list %}
-    {% with subtemplate.title as title %}
-    {% with subtemplate.object_list as object_list %}
-    {% with subtemplate.extra_columns as extra_columns %}
-    {% with subtemplate.hide_object as hide_object %}
-    {% with subtemplate.main_object as main_object %}
-    {% with subtemplate.hide_link as hide_link %}
-    {% with subtemplate.hide_header as hide_header %}
-    {% with subtemplate.hide_columns as hide_columns %}
-    {% with "true" as side_bar %}
-    
-        {% with subtemplate.submit_method as submit_method %}
-        {% with subtemplate.striptags as striptags %}
-        {% with subtemplate.title as title %}
-        {% with subtemplate.object as object %}
-        {% with subtemplate.object_name as object_name %}
-        {% with subtemplate.form_action as form_action %}    
-        {% with subtemplate.form as form %}
-        
-        {% with subtemplate.content as content %}
-        {% with subtemplate.paragraphs as paragraphs %}
-
-        {% include subtemplate.name %}
-
-        {% endwith %}
-        {% endwith %}
-        
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-
-        
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endfor %} 
 {% endblock %}
 
 {% block content %}
     {% include "generic_list_subtemplate.html" %}
-
-    {% for subtemplate in subtemplates_dict %}
-    {% with subtemplate.title as title %}
-    {% with subtemplate.object_list as object_list %}
-    {% with subtemplate.extra_columns as extra_columns %}
-    {% with subtemplate.hide_object as hide_object %}
-    {% with subtemplate.main_object as main_object %}
-    {% with subtemplate.hide_link as hide_link %}
-    {% with subtemplate.hide_header as hide_header %}
-    {% with subtemplate.multi_select as multi_select %}
-        {% include subtemplate.name %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endfor %}
 
 {% endblock %}
 

@@ -1,116 +1,51 @@
 {% extends "base.html" %}
+{% load subtemplates_tags %}
+
 {% block title %} :: {% with "true" as striptags %}{% include "calculate_form_title.html" %}{% endwith %}{% endblock %}
 
 {% block sidebar %}
-    {% for subtemplate in sidebar_subtemplates %}
-        <div class="generic_subform">
-            {% include subtemplate %}
-        </div><!--end subform-->
-    {% endfor %}
-
     {% for subtemplate in sidebar_subtemplates_list %}
-    {% with subtemplate.title as title %}
-    {% with subtemplate.object_list as object_list %}
-    {% with subtemplate.extra_columns as extra_columns %}
-    {% with subtemplate.hide_object as hide_object %}
-    {% with subtemplate.main_object as main_object %}
-    {% with subtemplate.hide_link as hide_link %}
-    {% with subtemplate.hide_header as hide_header %}
-    {% with subtemplate.hide_columns as hide_columns %}
-    {% with "true" as side_bar %}
-    
-        {% with subtemplate.submit_method as submit_method %}
-        {% with subtemplate.striptags as striptags %}
-        {% with subtemplate.title as title %}
-        {% with subtemplate.object as object %}
-        {% with subtemplate.object_name as object_name %}
-        {% with subtemplate.form_action as form_action %}    
-        {% with subtemplate.submit_label as submit_label %}    
-        {% with subtemplate.form as form %}
-
-        {% with subtemplate.content as content %}
-        {% with subtemplate.paragraphs as paragraphs %}
-
-        {% include subtemplate.name %}
-
-        {% endwith %}
-        {% endwith %}
-        
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-
-        
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endfor %} 
+        {% if subtemplate.form %}
+            {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                <div class="generic_subform">
+                    {{ rendered_subtemplate }}
+                </div>
+        {% else %}
+            {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+            {{ rendered_subtemplate }}
+        {% endif %}
+            {% if subtemplate.grid_clear or not subtemplate.grid %}
+            {% endif %}
+    {% endfor %}
 {% endblock %}
 
 {% block content %}
-<div class="container_12">
-    {% if form %}
-        <div class="grid_{{ form.grid|default:11 }}">
-            {% include "generic_form_subtemplate.html" %}
-        </div>
-        {% if form.grid_clear or not form.grid %}
-            <div class="clear"></div> 
-        {% endif %}
-    {% endif %}
-
-    {% for form in form_list %}
-        {% with form.submit_method as submit_method %}
-        {% with form.striptags as striptags %}
-        {% with form.title as title %}
-        {% with form.object as object %}
-        {% with form.object_name as object_name %}
-        {% with form.submit_label as submit_label %}
-        {% with form.form_action as form_action %}
-            <div class="grid_{{ form.grid|default:11 }}">
-                {% with form.form as form %}
-                    {% include "generic_form_subtemplate.html" %}
-                {% endwith %}
+    <div class="">
+        {% if form %}
+            <div class="">
+                {% include "generic_form_subtemplate.html" %}
             </div>
             {% if form.grid_clear or not form.grid %}
-                <div class="clear"></div> 
+                <div class=""></div> 
             {% endif %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-    {% endfor %}
-</div>
+        {% endif %}
 
-    {% for subtemplate in subtemplates_dict %}
-    {% with subtemplate.title as title %}
-    {% with subtemplate.object_list as object_list %}
-    {% with subtemplate.extra_columns as extra_columns %}
-    {% with subtemplate.hide_object as hide_object %}
-    {% with subtemplate.main_object as main_object %}
-    {% with subtemplate.hide_link as hide_link %}
-    {% with subtemplate.hide_header as hide_header %}
-        {% include subtemplate.name %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endfor %}
+        {% for subtemplate in subtemplates_list %}
+            <div class="">
+            {% if subtemplate.form %}
+                {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                    <div class="generic_subform">
+                        {{ rendered_subtemplate }}
+                    </div>
+            {% else %}
+                {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                {{ rendered_subtemplate }}
+            {% endif %}
+                </div>
+                {% if subtemplate.grid_clear or not subtemplate.grid %}
+                    <div class=""></div> 
+                {% endif %}
+        {% endfor %}
 
+    </div>
 {% endblock %}

@@ -37,8 +37,8 @@ document_list_recent = {'text': _(u'recent documents list'), 'view': 'document_l
 document_create = {'text': _(u'upload a new document'), 'view': 'document_create', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
 document_create_multiple = {'text': _(u'upload multiple new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
 document_create_sibling = {'text': _(u'upload new document using same metadata'), 'view': 'document_create_sibling', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
-document_view = {'text': _(u'details (advanced)'), 'view': 'document_view', 'args': 'object.id', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_view_simple = {'text': _(u'details (simple)'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
+document_view_advanced = {'text': _(u'details (advanced)'), 'view': 'document_view_advanced', 'args': 'object.id', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_delete = {'text': _(u'delete'), 'view': 'document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_DELETE]}}
 document_multiple_delete = {'text': _(u'delete'), 'view': 'document_multiple_delete', 'famfam': 'page_delete', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_DELETE]}}
 document_edit = {'text': _(u'edit'), 'view': 'document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}}
@@ -79,7 +79,7 @@ metadata_group_create_sibling = {'text': _(u'upload new document using same meta
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': 'object.id', 'famfam': 'drive_magnify'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': 'object.id', 'famfam': 'drive_delete'}
 
-register_links(Document, [document_view_simple, document_view, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
+register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
 register_links(Document, [document_create_sibling], menu_name='sidebar')
 
 register_multi_item_links(['metadatagroup_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
