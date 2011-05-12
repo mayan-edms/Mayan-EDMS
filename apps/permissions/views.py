@@ -234,21 +234,20 @@ def role_members(request, role_id):
         'subtemplates_list': [
             {
                 'name':'generic_form_subtemplate.html',
+                'grid': 6,
                 'context': {
                     'form': unselected_users_form,
                     'title': _(u'non members of role: %s') % role,
-                    'grid': 6,
-                    'grid_clear': False,
                     'submit_label': _(u'Add'),
                 }
             },        
             {
                 'name':'generic_form_subtemplate.html',
+                'grid': 6,
+                'grid_clear': True,
                 'context': {
                     'form': selected_users_form,
                     'title': _(u'members of role: %s') % role,
-                    'grid': 6,
-                    'grid_clear': True,
                     'submit_label': _(u'Remove'),
                 }
             },

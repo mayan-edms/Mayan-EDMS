@@ -211,9 +211,7 @@ def upload_document_with_type(request, multiple=True):
         'context': {
             'form': local_form,
             'title': _(u'upload a local document'),
-            'grid': 6,
-            'grid_clear': False if USE_STAGING_DIRECTORY else True,
-        }
+        },
     }
 
     if USE_STAGING_DIRECTORY:
@@ -223,15 +221,16 @@ def upload_document_with_type(request, multiple=True):
             messages.error(request, e)
             filelist = []
         finally:
+            local_upload_form.update({'grid': 6})
             subtemplates_list.append(local_upload_form)
             subtemplates_list.append(
                 {
                     'name': 'generic_form_subtemplate.html',
+                    'grid': 6,
+                    'grid_clear': True,
                     'context': {
                         'form': staging_form,
                         'title': _(u'upload a document from staging'),
-                        'grid': 6,
-                        'grid_clear': True,
                     }
                 },
             )
@@ -247,14 +246,10 @@ def upload_document_with_type(request, multiple=True):
             )    
     else:
         subtemplates_list.append(local_upload_form)
-        
     
     context = {
         'document_type_id': document_type_id,
-
         'subtemplates_list': subtemplates_list,
-    }    
-    context.update({
         'sidebar_subtemplates_list': [
             {
                 'name': 'generic_subtemplate.html',
@@ -264,7 +259,7 @@ def upload_document_with_type(request, multiple=True):
                     'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET))
                 }
             }]
-    })    
+    }
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
 

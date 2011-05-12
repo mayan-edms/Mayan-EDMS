@@ -376,20 +376,20 @@ def group_members(request, group_id):
                 'context': {
                     'form': unselected_users_form,
                     'title': _(u'non members of group: %s') % group,
-                    'grid': 6,
-                    'grid_clear': False,
                     'submit_label': _(u'Add'),
-                }
+                },
+                'grid': 6,
+                'grid_clear': False,
             },
             {
                 'name': u'generic_form_subtemplate.html',
                 'context': {
                     'form': selected_users_form,
                     'title': _(u'members of group: %s') % group,
-                    'grid': 6,
-                    'grid_clear': True,
                     'submit_label': _(u'Remove'),
-                }
+                },
+                'grid': 6,
+                'grid_clear': True,
             },
 
         ],
