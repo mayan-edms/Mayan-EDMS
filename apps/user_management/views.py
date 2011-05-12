@@ -359,7 +359,7 @@ def group_members(request, group_id):
                         group.user_set.remove(obj)
                         messages.success(request, _(u'%(obj)s removed successfully from the group: %(group)s.') % {
                             'obj': generate_choices_w_labels([obj])[0][1], 'group': group})
-                    except member.DoesNotExist:
+                    except obj.DoesNotExist:
                         messages.error(request, _(u'Unable to remove %(obj)s from the group: %(group)s.') % {
                             'obj': generate_choices_w_labels([obj])[0][1], 'group': group})
     unselected_users_form = ChoiceForm(prefix='unselected-users',
