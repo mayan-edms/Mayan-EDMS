@@ -85,9 +85,9 @@ register_links(Document, [document_create_sibling], menu_name='sidebar')
 register_multi_item_links(['document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
 if ENABLE_SINGLE_DOCUMENT_UPLOAD:
-    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list_recent, document_list, document_create, document_create_multiple], menu_name='sidebar')
+    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_multiple'], [document_list_recent, document_list, document_create, document_create_multiple], menu_name='sidebar')
 else:
-    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document_with_type', 'upload_multiple_documents_with_type'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
+    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_multiple'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
 
 register_links(DocumentPage, [
     document_page_transformation_list, document_page_view,
