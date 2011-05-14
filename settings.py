@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'user_management',
     'documents',
     'grouping',
+    'document_indexing',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -181,10 +182,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #---------- Metadata -----------------
 # METADATA_AVAILABLE_FUNCTIONS = {}
 # METADATA_AVAILABLE_MODELS = {}
+#---------- Indexing -----------------
+#DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS = {}
 #---------- Documents ------------------
-# Definition
-#DOCUMENTS_INDEXING_AVAILABLE_FUNCTIONS = {}
-
 # Upload
 #DOCUMENTS_USE_STAGING_DIRECTORY = False
 #DOCUMENTS_STAGING_DIRECTORY = u'/tmp/mayan/staging'

@@ -17,13 +17,15 @@ from converter.api import get_page_count
 from converter import TRANFORMATION_CHOICES
 from metadata.classes import MetadataObject
 
-from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import RECENT_COUNT
+
+available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
+
 
 def get_filename_from_uuid(instance, filename):
     filename, extension = os.path.splitext(filename)
@@ -201,22 +203,6 @@ class Document(models.Model):
 
                         page_transformation.save()
 
-available_indexing_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
-
-class MetadataIndex(models.Model):
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    expression = models.CharField(max_length=128,
-        verbose_name=_(u'indexing expression'),
-        help_text=_(u'Enter a python string expression to be evaluated.  The slash caracter "/" acts as a directory delimiter.%s') % available_indexing_functions_string)
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-
-    def __unicode__(self):
-        return unicode(self.expression)
-
-    class Meta:
-        verbose_name = _(u'metadata index')
-        verbose_name_plural = _(u'metadata indexes')
-
 
 class DocumentTypeFilename(models.Model):
     """
@@ -270,11 +256,6 @@ class DocumentPage(models.Model):
                 warnings.append(e)
 
         return ' '.join(transformation_list), warnings
-
-
-
-
-available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 
 
 class DocumentPageTransformation(models.Model):

@@ -3,17 +3,10 @@ from django.contrib import admin
 from metadata.admin import DocumentMetadataInline
 
 from documents.models import DocumentType, Document, \
-    DocumentTypeFilename, MetadataIndex, DocumentPage, \
+    DocumentTypeFilename, DocumentPage, \
     DocumentPageTransformation, RecentDocument
 
 from filesystem_serving.admin import DocumentMetadataIndexInline
-
-
-class MetadataIndexInline(admin.StackedInline):
-    model = MetadataIndex
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
 
 
 class DocumentTypeFilenameInline(admin.StackedInline):
@@ -25,7 +18,7 @@ class DocumentTypeFilenameInline(admin.StackedInline):
 
 class DocumentTypeAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentTypeFilenameInline, MetadataIndexInline
+        DocumentTypeFilenameInline
     ]
 
 
