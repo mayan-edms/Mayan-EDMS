@@ -11,7 +11,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User, Group
 
-from common.forms import ChoiceForm
+from common.views import assign_remove
 from common.utils import generate_choices_w_labels
 
 from permissions.models import Role, Permission, PermissionHolder, RoleMember
@@ -39,18 +39,18 @@ def role_list(request):
 def _role_permission_link(requester, permission, permission_list):
     ct = ContentType.objects.get_for_model(requester)
 
-    template = '<span class="nowrap"><a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a></span>'
+    template = u'<span class="nowrap"><a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a></span>'
 
     if permission in permission_list:
         return template % {
             'url': reverse('permission_revoke',
                 args=[permission.pk, ct.app_label, ct.model, requester.pk]),
-            'icon': 'delete', 'text': ugettext(u'Revoke')}
+            'icon': u'delete', 'text': ugettext(u'Revoke')}
     else:
         return template % {
             'url': reverse('permission_grant',
                 args=[permission.pk, ct.app_label, ct.model, requester.pk]),
-            'icon': 'add', 'text': ugettext(u'Grant')}
+            'icon': u'add', 'text': ugettext(u'Grant')}
 
 
 def role_permissions(request, role_id):
@@ -62,20 +62,20 @@ def role_permissions(request, role_id):
     role_permissions_list = Permission.objects.get_for_holder(role)
     subtemplates_list = [
         {
-            'name':'generic_list_subtemplate.html',
+            'name': u'generic_list_subtemplate.html',
             'context': {
-                'title':_(u'permissions'),
-                'object_list':Permission.objects.all(),
-                'extra_columns':[
-                    {'name':_(u'namespace'), 'attribute':'namespace'},
-                    {'name':_(u'name'), 'attribute':'label'},
+                'title': _(u'permissions'),
+                'object_list': Permission.objects.all(),
+                'extra_columns': [
+                    {'name': _(u'namespace'), 'attribute': u'namespace'},
+                    {'name': _(u'name'), 'attribute': u'label'},
                     {
                         'name':_(u'state'),
-                        'attribute':lambda x: _role_permission_link(role, x, role_permissions_list),
+                        'attribute': lambda x: _role_permission_link(role, x, role_permissions_list),
                     }
                 ],
-                'hide_link':True,
-                'hide_object':True,
+                'hide_link': True,
+                'hide_object': True,
             }
         },
     ]
@@ -185,75 +185,33 @@ def get_non_role_members(role):
     return list(users | groups)
 
 
+def add_role_member(role, selection):
+    model, pk = selection.split(u',')
+    ct = ContentType.objects.get(model=model)
+    new_member, created = RoleMember.objects.get_or_create(role=role, member_type=ct, member_id=pk)
+    if not created:
+        raise Exception
+    
+    
+def remove_role_member(role, selection):
+    model, pk = selection.split(u',')
+    ct = ContentType.objects.get(model=model)
+    member = RoleMember.objects.get(role=role, member_type=ct, member_id=pk)
+    member.delete()    
+    
+
 def role_members(request, role_id):
     check_permissions(request.user, 'permissions', [PERMISSION_ROLE_EDIT])
     role = get_object_or_404(Role, pk=role_id)
-
-    if request.method == 'POST':
-        if 'unselected-users-submit' in request.POST.keys():
-            unselected_users_form = ChoiceForm(request.POST,
-                prefix='unselected-users',
-                choices=generate_choices_w_labels(get_non_role_members(role)))
-            if unselected_users_form.is_valid():
-                for selection in unselected_users_form.cleaned_data['selection']:
-                    model, pk = selection.split(u',')
-                    ct = ContentType.objects.get(model=model)
-                    obj = ct.get_object_for_this_type(pk=pk)
-                    new_member, created = RoleMember.objects.get_or_create(role=role, member_type=ct, member_id=pk)
-                    if created:
-                        messages.success(request, _(u'%(obj)s added successfully to the role: %(role)s.') % {
-                            'obj': generate_choices_w_labels([obj])[0][1], 'role': role})
-
-        elif 'selected-users-submit' in request.POST.keys():
-            selected_users_form = ChoiceForm(request.POST,
-                prefix='selected-users',
-                choices=generate_choices_w_labels(get_role_members(role)))
-            if selected_users_form.is_valid():
-                for selection in selected_users_form.cleaned_data['selection']:
-                    model, pk = selection.split(u',')
-                    ct = ContentType.objects.get(model=model)
-                    obj = ct.get_object_for_this_type(pk=pk)
-
-                    try:
-                        member = RoleMember.objects.get(role=role, member_type=ct, member_id=pk)
-                        member.delete()
-                        messages.success(request, _(u'%(obj)s removed successfully from the role: %(role)s.') % {
-                            'obj': generate_choices_w_labels([obj])[0][1], 'role': role})
-                    except member.DoesNotExist:
-                        messages.error(request, _(u'Unable to remove %(obj)s from the role: %(role)s.') % {
-                            'obj': generate_choices_w_labels([obj])[0][1], 'role': role})
-
-    unselected_users_form = ChoiceForm(prefix='unselected-users',
-        choices=generate_choices_w_labels(get_non_role_members(role)))
-    selected_users_form = ChoiceForm(prefix='selected-users',
-        choices=generate_choices_w_labels(get_role_members(role)))
-
-    context = {
-        'object': role,
-        'object_name': _(u'role'),
-        'subtemplates_list': [
-            {
-                'name':'generic_form_subtemplate.html',
-                'grid': 6,
-                'context': {
-                    'form': unselected_users_form,
-                    'title': _(u'non members of role: %s') % role,
-                    'submit_label': _(u'Add'),
-                }
-            },        
-            {
-                'name':'generic_form_subtemplate.html',
-                'grid': 6,
-                'grid_clear': True,
-                'context': {
-                    'form': selected_users_form,
-                    'title': _(u'members of role: %s') % role,
-                    'submit_label': _(u'Remove'),
-                }
-            },
-
-        ],
-    }
-
-    return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))
+    
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),
+        right_list=lambda: generate_choices_w_labels(get_role_members(role)),
+        add_method=lambda x: add_role_member(role, x),
+        remove_method=lambda x: remove_role_member(role, x),
+        left_list_title=_(u'non members of role: %s') % role,
+        right_list_title=_(u'members of role: %s') % role,
+        obj=role,
+        object_name=_(u'role'),
+    )
