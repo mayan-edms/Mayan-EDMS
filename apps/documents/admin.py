@@ -6,8 +6,6 @@ from documents.models import DocumentType, Document, \
     DocumentTypeFilename, DocumentPage, \
     DocumentPageTransformation, RecentDocument
 
-from filesystem_serving.admin import DocumentMetadataIndexInline
-
 
 class DocumentTypeFilenameInline(admin.StackedInline):
     model = DocumentTypeFilename
@@ -35,8 +33,7 @@ class DocumentPageInline(admin.StackedInline):
 
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentMetadataInline, DocumentMetadataIndexInline,
-        DocumentPageInline
+        DocumentMetadataInline, DocumentPageInline
     ]
     list_display = ('uuid', 'file_filename', 'file_extension')
 

@@ -4,7 +4,8 @@ import os
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
-from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
+from document_indexing.models import IndexInstance
+
 from metadata.classes import MetadataObject
 
 from filesystem_serving.conf.settings import FILESERVING_ENABLE
@@ -12,7 +13,7 @@ from filesystem_serving.conf.settings import FILESERVING_PATH
 from filesystem_serving.conf.settings import SLUGIFY_PATHS
 from filesystem_serving.conf.settings import MAX_RENAME_COUNT
 
-from filesystem_serving.models import DocumentMetadataIndex, Document
+#from filesystem_serving.models import DocumentMetadataIndex, Document
 
 if SLUGIFY_PATHS == False:
     #Do not slugify path or filenames and extensions
@@ -24,6 +25,8 @@ else:
 def document_create_fs_links(document):
     warnings = []
     if FILESERVING_ENABLE:
+        pass
+        '''
         if not document.exists():
             raise Exception(_(u'Not creating metadata indexing, document not found in document storage'))
         eval_dict = {}
@@ -52,12 +55,14 @@ def document_create_fs_links(document):
                     #pass
                 except Exception, exc:
                     warnings.append(_(u'Unable to create metadata indexing directory: %s') % exc)
-
+        '''
     return warnings
 
 
 def document_delete_fs_links(document):
     if FILESERVING_ENABLE:
+        pass
+        '''
         for document_metadata_index in document.documentmetadataindex_set.all():
             try:
                 os.unlink(document_metadata_index.filename)
@@ -99,6 +104,7 @@ def document_delete_fs_links(document):
                 os.removedirs(path)
             except:
                 pass
+        '''
 
 
 def next_available_filename(document, metadata_index, path, filename, extension, suffix=0):

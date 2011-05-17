@@ -5,7 +5,6 @@ import uuid
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import proper_name
 from storage.backends.filebasedstorage import FileBasedStorage
 from smart_settings.api import register_settings
 
@@ -23,16 +22,10 @@ available_transformations = {
     'rotate': {'label': _(u'Rotate [degrees]'), 'arguments': [{'name': 'degrees'}]}
 }
 
-available_indexing_functions = {
-    'proper_name': proper_name
-}
-
 register_settings(
     namespace=u'documents',
     module=u'documents.conf.settings',
     settings=[
-        # Definition
-        {'name': u'AVAILABLE_INDEXING_FUNCTIONS', 'global_name': u'DOCUMENTS_INDEXING_AVAILABLE_FUNCTIONS', 'default': available_indexing_functions},
         # Upload
         {'name': u'USE_STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_USE_STAGING_DIRECTORY', 'default': False},
         {'name': u'STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_STAGING_DIRECTORY', 'default': u'/tmp/mayan/staging', 'exists': True},

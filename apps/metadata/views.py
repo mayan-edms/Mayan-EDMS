@@ -10,6 +10,7 @@ from django.utils.http import urlencode
 from documents.models import Document, RecentDocument
 from permissions.api import check_permissions
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
+from document_indexing.api import update_indexes, delete_indexes
 
 from metadata import PERMISSION_METADATA_DOCUMENT_EDIT, \
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE
@@ -56,6 +57,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
             for document in documents:
+                delete_indexes(document)
                 try:
                     document_delete_fs_links(document)
                 except Exception, e:
@@ -70,7 +72,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                         except Exception, e:
                             messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
                                 'document': document, 'error': e})
-
+                update_indexes(document)
                 try:
                     warnings = document_create_fs_links(document)
 

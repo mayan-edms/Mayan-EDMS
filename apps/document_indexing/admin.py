@@ -1,23 +1,25 @@
 from django.contrib import admin
 
-from document_indexing.models import DocumentIndex
+from mptt.admin import MPTTModelAdmin
 
-#from filesystem_serving.admin import DocumentMetadataIndexInline
-
-
-#class MetadataIndexInline(admin.StackedInline):
-#    model = MetadataIndex
-#    extra = 1
-#    classes = ('collapse-open',)
-#    allow_add = True
+from document_indexing.models import Index, IndexInstance
 
 
-class DocumentIndexAdmin(admin.ModelAdmin):
-    pass
-    #inlines = [
-    #    DocumentMetadataIndexInline,
-    #
+class IndexInstanceInline(admin.StackedInline):
+    model = IndexInstance
+    extra = 1
+    classes = ('collapse-open',)
+    allow_add = True
 
 
+class IndexAdmin(MPTTModelAdmin):
+    list_display = ('expression', 'enabled', 'link_document')
+    
+    
+class IndexInstanceAdmin(MPTTModelAdmin):
+    model = IndexInstance
+    list_display = ('value', 'index', 'get_document_list_display')
 
-admin.site.register(DocumentIndex, DocumentIndexAdmin)
+
+admin.site.register(Index, IndexAdmin)
+admin.site.register(IndexInstance, IndexInstanceAdmin)

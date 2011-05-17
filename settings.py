@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'documents',
     'grouping',
     'document_indexing',
+    'mptt',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
