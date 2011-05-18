@@ -158,7 +158,7 @@ def metadata_multiple_add(request):
     return metadata_add(request, document_id_list=request.GET.get('id_list', []))
 
 
-def metadata_remove(request, document_id):
+def metadata_remove(request, document_id=None, document_id_list=None):
     check_permissions(request.user, 'metadata', [PERMISSION_METADATA_DOCUMENT_REMOVE])
 
     if document_id:
