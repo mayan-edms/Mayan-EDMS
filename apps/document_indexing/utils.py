@@ -16,7 +16,7 @@ def get_document_indexing_subtemplate(document):
     return {
             'name': 'generic_list_subtemplate.html',
             'context': {
-                'title': _(u'index links'),
+                'title': _(u'document indexes'),
                 'object_list': object_list,
                 'hide_link': True
             }

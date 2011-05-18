@@ -8,15 +8,7 @@ from metadata.classes import MetadataObject
 
 from document_indexing.models import Index, IndexInstance
 from document_indexing.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
-from document_indexing.conf.settings import FILESERVING_ENABLE
-from document_indexing.conf.settings import FILESERVING_PATH
-from document_indexing.conf.settings import SLUGIFY_PATHS
-
-if SLUGIFY_PATHS == False:
-    # Do not slugify path or filenames and extensions
-    SLUGIFY_FUNCTION = lambda x: x
-else:
-    SLUGIFY_FUNCTION = slugify
+from document_indexing.filesystem import fs_create_index_directory
 
 
 # External functions
@@ -114,6 +106,8 @@ def _evaluate_index(eval_dict, document, node, parent_index_instance=None):
         try:
             result = eval(node.expression, eval_dict, AVAILABLE_INDEXING_FUNCTIONS)
             index_instance, created = IndexInstance.objects.get_or_create(index=node, value=result, parent=parent_index_instance)
+            if created:
+                fs_create_index_directory(index_instance)
             if node.link_documents:
                 index_instance.documents.add(document)
 

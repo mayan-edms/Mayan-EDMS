@@ -23,10 +23,10 @@ def index_instance_list(request, index_id=None):
 
     if index_id:
         index_instance = get_object_or_404(IndexInstance, pk=index_id)
-        index_instance_list = [index for index in index_instance.get_children()]
+        index_instance_list = [index for index in index_instance.get_children().order_by('value')]
         breadcrumbs = get_breadcrumbs(index_instance)
         if index_instance.documents.count():
-            for document in index_instance.documents.all():
+            for document in index_instance.documents.all().order_by('file_filename'):
                 index_instance_list.append(document)
     else:
         index_instance_list = IndexInstance.objects.filter(parent=None)
