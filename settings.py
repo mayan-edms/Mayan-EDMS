@@ -138,7 +138,6 @@ INSTALLED_APPS = (
     'sentry',
     'sentry.client',
     'sentry.client.celery',
-    'filesystem_serving',
     'storage',
     'folders',
     'taggit',

@@ -9,7 +9,6 @@ from django.utils.http import urlencode
 
 from documents.models import Document, RecentDocument
 from permissions.api import check_permissions
-from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 from document_indexing.api import update_indexes, delete_indexes
 
 from metadata import PERMISSION_METADATA_DOCUMENT_EDIT, \
@@ -57,33 +56,31 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
             for document in documents:
-                delete_indexes(document)
-                try:
-                    document_delete_fs_links(document)
-                except Exception, e:
-                    messages.error(request, _(u'Error deleting filesystem links for document: %(document)s; %(error)s') % {
-                        'document': document, 'error': e})
+
+                warnings = delete_indexes(document)
+                if request.user.is_staff or request.user.is_superuser:
+                    for warning in warnings:
+                        messages.warning(request, warning)                    
                 
+                errors = []
                 for form in formset.forms:
                     if form.cleaned_data['update']:
                         try:
                             save_metadata_list([form.cleaned_data], document)
-                            messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
                         except Exception, e:
-                            messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
-                                'document': document, 'error': e})
-                update_indexes(document)
-                try:
-                    warnings = document_create_fs_links(document)
+                            errors.append(e)
 
-                    if request.user.is_staff or request.user.is_superuser:
-                        for warning in warnings:
-                            messages.warning(request, warning)
+                if errors:
+                    for error in errors:
+                        messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
+                        'document': document, 'error': error})
+                else:
+                    messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
 
-                    messages.success(request, _(u'Filesystem links updated successfully for document: %s.') % document)
-                except Exception, e:
-                    messages.error(request, _('Error creating filesystem links for document: %(document)s; %(error)s') % {
-                        'document': document, 'error': e})
+                warnings = update_indexes(document)
+                if request.user.is_staff or request.user.is_superuser:
+                    for warning in warnings:
+                        messages.warning(request, warning)
 
             if len(documents) == 1:
                 return HttpResponseRedirect(document.get_absolute_url())

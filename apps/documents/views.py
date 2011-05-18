@@ -25,7 +25,6 @@ from converter.exceptions import UnkownConvertError, UnknownFormat
 from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_FILE_FORMAT, QUALITY_PRINT
 from document_comments.utils import get_comments_subtemplate
-from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
 from filetransfers.api import serve_file
 from grouping.models import DocumentGroup
 from grouping import document_group_link
@@ -37,6 +36,7 @@ from navigation.utils import resolve_to_name
 from permissions.api import check_permissions
 from tags.utils import get_tags_subtemplate
 from document_indexing.utils import get_document_indexing_subtemplate
+from document_indexing.api import update_indexes, delete_indexes
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -124,13 +124,11 @@ def _handle_save_document(request, document, form=None):
             document.save()
 
     save_metadata_list(decode_metadata_from_url(request.GET), document, create=True)
-    try:
-        warnings = document_create_fs_links(document)
-        if request.user.is_staff or request.user.is_superuser:
-            for warning in warnings:
-                messages.warning(request, warning)
-    except Exception, e:
-        messages.error(request, e)
+
+    warnings = update_indexes(document)
+    if request.user.is_staff or request.user.is_superuser:
+        for warning in warnings:
+            messages.warning(request, warning)    
 
 
 def _handle_zip_file(request, uploaded_file, document_type):
@@ -425,7 +423,11 @@ def document_delete(request, document_id=None, document_id_list=None):
     if request.method == 'POST':
         for document in documents:
             try:
-                document_delete_fs_links(document)
+                warnings = delete_indexes(document)
+                if request.user.is_staff or request.user.is_superuser:
+                    for warning in warnings:
+                        messages.warning(request, warning)
+
                 document.delete()
                 messages.success(request, _(u'Document: %s deleted successfully.') % document)
             except Exception, e:
@@ -469,11 +471,10 @@ def document_edit(request, document_id):
     if request.method == 'POST':
         form = DocumentForm_edit(request.POST, initial={'document_type': document.document_type})
         if form.is_valid():
-            try:
-                document_delete_fs_links(document)
-            except Exception, e:
-                messages.error(request, e)
-                return HttpResponseRedirect(reverse('document_list'))
+            warnings = delete_indexes(document)
+            if request.user.is_staff or request.user.is_superuser:
+                for warning in warnings:
+                    messages.warning(request, warning)
 
             document.file_filename = form.cleaned_data['new_filename']
             document.description = form.cleaned_data['description']
@@ -486,17 +487,10 @@ def document_edit(request, document_id):
 
             messages.success(request, _(u'Document %s edited successfully.') % document)
 
-            try:
-                warnings = document_create_fs_links(document)
-
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, warning)
-
-                messages.success(request, _(u'Document filesystem links updated successfully.'))
-            except Exception, e:
-                messages.error(request, e)
-                return HttpResponseRedirect(document.get_absolute_url())
+            warnings = update_indexes(document)
+            if request.user.is_staff or request.user.is_superuser:
+                for warning in warnings:
+                    messages.warning(request, warning)
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:
