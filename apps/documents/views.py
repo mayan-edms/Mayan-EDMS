@@ -26,7 +26,6 @@ from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_FILE_FORMAT, QUALITY_PRINT
 from document_comments.utils import get_comments_subtemplate
 from filesystem_serving.api import document_create_fs_links, document_delete_fs_links
-from filesystem_serving.conf.settings import FILESERVING_ENABLE
 from filetransfers.api import serve_file
 from grouping.models import DocumentGroup
 from grouping import document_group_link
@@ -37,6 +36,7 @@ from metadata.forms import MetadataFormSet
 from navigation.utils import resolve_to_name
 from permissions.api import check_permissions
 from tags.utils import get_tags_subtemplate
+from document_indexing.utils import get_document_indexing_subtemplate
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -396,15 +396,8 @@ def document_view_advanced(request, document_id):
     if document_group_subtemplate:
         subtemplates_list.append(document_group_subtemplate)
 
-    if FILESERVING_ENABLE:
-        subtemplates_list.append({
-            'name': 'generic_list_subtemplate.html',
-            'context': {
-                'title': _(u'index links'),
-                'object_list': document.documentmetadataindex_set.all(),
-                'hide_link': True
-            }
-        })
+    if document.indexinstance_set.count():
+        subtemplates_list.append(get_document_indexing_subtemplate(document))
 
     return render_to_response('generic_detail.html', {
         'object': document,

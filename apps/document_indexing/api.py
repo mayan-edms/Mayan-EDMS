@@ -1,4 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
+from django.core.urlresolvers import reverse
+from django.utils.safestring import mark_safe
 
 from metadata.classes import MetadataObject
 
@@ -14,7 +17,7 @@ def evaluate_index(eval_dict, document, node, parent_index_instance=None):
         try:
             result = eval(node.expression, eval_dict, AVAILABLE_INDEXING_FUNCTIONS)
             index_instance, created = IndexInstance.objects.get_or_create(index=node, value=result, parent=parent_index_instance)
-            if node.link_document:
+            if node.link_documents:
                 index_instance.documents.add(document)
                 
             for children in node.get_children():
@@ -42,7 +45,6 @@ def update_indexes(document):
     eval_dict['metadata'] = MetadataObject(metadata_dict)
 
     for root in Index.objects.filter(parent=None):
-        #for node in root.get_children():
         index_warnings = evaluate_index(eval_dict, document, root)
         warnings.extend(index_warnings)
 
@@ -51,3 +53,40 @@ def update_indexes(document):
     
 def delete_indexes(document):
     print 'delete_indexes'
+
+
+def get_instance_link(index_instance=None, text=None, simple=False):
+    if simple:
+        # Just display the instance's value or overrided text, no
+        # HTML anchor
+        template = u'%(value)s'
+    else:
+        template = u'<a href="%(url)s">%(value)s</a>'
+    if index_instance:
+        return template % {
+            'url': index_instance.get_absolute_url(), 'value': text if text else index_instance
+        }
+    else:
+        # Root node
+        return template % {
+            'url': reverse('index_instance_list'), 'value': ugettext(u'root')
+        }
+        
+
+def get_breadcrumbs(index_instance, simple=False, single_link=False):
+    result = []
+    if single_link:
+        # Return the entire breadcrumb as a single HTML anchor
+        simple = True
+    
+    result.append(get_instance_link(simple=simple))
+
+    for instance in index_instance.get_ancestors():
+        result.append(get_instance_link(instance, simple=simple))
+
+    result.append(get_instance_link(index_instance, simple=simple))
+
+    if single_link:
+        return mark_safe(get_instance_link(index_instance=index_instance, text=(u' / '.join(result))))
+    else:
+        return mark_safe(u' / '.join(result))

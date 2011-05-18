@@ -147,8 +147,8 @@ INSTALLED_APPS = (
     'user_management',
     'documents',
     'grouping',
-    'document_indexing',
     'mptt',
+    'document_indexing',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

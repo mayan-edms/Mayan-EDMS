@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     (r'^settings/', include('smart_settings.urls')),
     (r'^metadata/', include('metadata.urls')),
     (r'^grouping/', include('grouping.urls')),
+    (r'^document_indexing/', include('document_indexing.urls')),
 )
 
 

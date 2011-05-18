@@ -13,7 +13,7 @@ class IndexInstanceInline(admin.StackedInline):
 
 
 class IndexAdmin(MPTTModelAdmin):
-    list_display = ('expression', 'enabled', 'link_document')
+    list_display = ('expression', 'enabled', 'link_documents')
     
     
 class IndexInstanceAdmin(MPTTModelAdmin):
