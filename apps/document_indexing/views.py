@@ -8,13 +8,18 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.utils.safestring import mark_safe
 
+from permissions.api import check_permissions
+
+from document_indexing import PERMISSION_DOCUMENT_INDEXING_VIEW, \
+    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES
+
 from document_indexing.models import IndexInstance
-from document_indexing.api import get_breadcrumbs, get_instance_link
+from document_indexing.api import get_breadcrumbs, get_instance_link, \
+    do_rebuild_all_indexes
 
 
 def index_instance_list(request, index_id=None):
-    #TODO: check_permissions
-    #check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, 'document_indexing', [PERMISSION_DOCUMENT_INDEXING_VIEW])
 
     if index_id:
         index_instance = get_object_or_404(IndexInstance, pk=index_id)
@@ -35,3 +40,27 @@ def index_instance_list(request, index_id=None):
         'hide_links': True,
     }, context_instance=RequestContext(request))
     
+
+def rebuild_index_instances(request):
+    check_permissions(request.user, 'document_indexing', [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+
+    if request.method != 'POST':
+        return render_to_response('generic_confirm.html', {
+            'previous': previous,
+            'next': next,
+            'message': _(u'On large databases this operation may take some time to execute.'),
+        }, context_instance=RequestContext(request))
+    else:
+        try:
+            errors, warnings = do_rebuild_all_indexes()
+            messages.success(request, _(u'Index rebuild completed successfully.'))
+            for warning in warnings:
+                messages.warning(request, warning)
+
+        except Exception, e:
+            messages.error(request, _(u'Index rebuild error: %s') % e)
+
+        return HttpResponseRedirect(next)

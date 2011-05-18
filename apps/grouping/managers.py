@@ -45,10 +45,8 @@ class DocumentGroupManager(models.Manager):
                             '%s__%s' % (attribute, item.operator): eval(item.expression, eval_dict)
                         })
                         if item.negated:
-                            #query = (Q(metadata_type__name=attribute) & ~value_query)
                             query = ~value_query
                         else:
-                            #query = (Q(metadata_type__name=attribute) & value_query)
                             query = value_query
                         if item.inclusion == INCLUSION_AND:
                             total_query &= query
@@ -59,7 +57,6 @@ class DocumentGroupManager(models.Manager):
                     errors.append(e)
                     value_query = Q()
                     query = Q()
-            print 'total_query', total_query
             if total_query:
                 try:
                     document_qs = Document.objects.filter(total_query)

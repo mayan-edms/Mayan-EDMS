@@ -3,6 +3,7 @@ from django.utils.translation import ugettext
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 
+from documents.models import Document
 from metadata.classes import MetadataObject
 
 from document_indexing.models import Index, IndexInstance
@@ -43,8 +44,8 @@ def delete_indexes(document):
     """    
     warnings = []
     
-    for node in document.indexinstance_set.all():
-        _delete_document_from_node(document, node)
+    for index_instance in document.indexinstance_set.all():
+        _remove_document_from_index_instance(document, index_instance)
             
     return warnings
 
@@ -78,7 +79,7 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False):
     """    
     result = []
     if single_link:
-        # Return the entire breadcrumb as a single HTML anchor
+        # Return the entire breadcrumb path as a single HTML anchor
         simple = True
     
     result.append(get_instance_link(simple=simple))
@@ -89,17 +90,24 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False):
     result.append(get_instance_link(index_instance, simple=simple))
 
     if single_link:
+        # Return the entire breadcrumb path as a single HTML anchor
         return mark_safe(get_instance_link(index_instance=index_instance, text=(u' / '.join(result))))
     else:
         return mark_safe(u' / '.join(result))
 
 
+def do_rebuild_all_indexes():
+    IndexInstance.objects.all().delete()
+    for document in Document.objects.all():
+        update_indexes(document)
+    
+    
 # Internal functions
 def _evaluate_index(eval_dict, document, node, parent_index_instance=None):
     """
-    Evaluate an index expression and update or create all the related
-    index instances also recursively calling itself to evaluate all the
-    index's children
+    Evaluate an enabled index expression and update or create all the
+    related index instances also recursively calling itself to evaluate
+    all the index's children
     """    
     warnings = []
     if node.enabled:
@@ -116,9 +124,6 @@ def _evaluate_index(eval_dict, document, node, parent_index_instance=None):
         except (NameError, AttributeError), exc:
             warnings.append(_(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
                 'expression': node.expression, 'exception': exc})
-            #raise NameError()
-            #This should be a warning not an error
-            #pass
 
         except Exception, exc:
             warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
@@ -127,8 +132,7 @@ def _evaluate_index(eval_dict, document, node, parent_index_instance=None):
     return warnings
 
 
-
-def _delete_document_from_node(document, node):
+def _remove_document_from_index_instance(document, index_instance):
     """
     Delete a documents reference from an index instance and call itself
     recusively deleting documents and empty index instances up to the 
@@ -136,11 +140,13 @@ def _delete_document_from_node(document, node):
     """
     warnings = []
     try:
-        node.documents.remove(document)
-        if node.documents.count() == 0 and node.get_children().count() == 0:
-            parent = node.parent
-            node.delete()
-            parent_warnings = _delete_document_from_node(document, parent)
+        index_instance.documents.remove(document)
+        if index_instance.documents.count() == 0 and index_instance.get_children().count() == 0:
+            # if there are no more documents and no children, delete
+            # node and check parent for the same conditions
+            parent = index_instance.parent
+            index_instance.delete()
+            parent_warnings = _remove_document_from_index_instance(document, parent)
             warnings.extend(parent_warnings)
             
     except Exception, exc:

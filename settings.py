@@ -184,6 +184,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # METADATA_AVAILABLE_MODELS = {}
 #---------- Indexing -----------------
 #DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS = {}
+# Flesystem serving
+#DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE = True
+#DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
+#DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS = False
 #---------- Documents ------------------
 # Upload
 #DOCUMENTS_USE_STAGING_DIRECTORY = False
@@ -215,11 +219,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 #------------- Groups --------------------
 #GROUPING_SHOW_EMPTY_GROUPS = True
-#------------ Filesystem serving --------------
-#FILESYSTEM_FILESERVING_ENABLE = True
-#FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
-#FILESYSTEM_SLUGIFY_PATHS = False
-#FILESYSTEM_MAX_RENAME_COUNT = 200
 #------------ Converter --------------
 #CONVERTER_DEFAULT_OPTIONS = u''
 #CONVERTER_LOW_QUALITY_OPTIONS = u''

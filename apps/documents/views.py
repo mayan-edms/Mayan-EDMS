@@ -318,6 +318,9 @@ def document_view_simple(request, document_id):
     if document_group_subtemplate:
         subtemplates_list.append(document_group_subtemplate)
 
+    if document.indexinstance_set.count():
+        subtemplates_list.append(get_document_indexing_subtemplate(document))
+
     return render_to_response('generic_detail.html', {
         'object': document,
         'document': document,
