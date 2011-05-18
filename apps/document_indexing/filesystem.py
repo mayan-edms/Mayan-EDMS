@@ -1,24 +1,15 @@
 import errno
 import os
 
-from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
-
-from document_indexing.models import IndexInstance
 
 from metadata.classes import MetadataObject
 
+from document_indexing.models import IndexInstance
 from document_indexing.conf.settings import FILESERVING_ENABLE
 from document_indexing.conf.settings import FILESERVING_PATH
-from document_indexing.conf.settings import SLUGIFY_PATHS
-#from document_indexing.conf.settings import MAX_RENAME_COUNT
 
-if SLUGIFY_PATHS == False:
-    #Do not slugify path or filenames and extensions
-    SLUGIFY_FUNCTION = lambda x: x
-else:
-    SLUGIFY_FUNCTION = slugify
-
+# TODO: delete fileserving document function for use with rebuild index function
 
 def get_instance_path(index_instance):
     """
@@ -33,29 +24,56 @@ def fs_create_index_directory(index_instance):
         target_directory = os.path.join(FILESERVING_PATH, get_instance_path(index_instance))
         try:
             os.makedirs(target_directory)
-            #next_available_filename(document, metadata_index, target_directory, SLUGIFY_FUNCTION(document.file_filename), SLUGIFY_FUNCTION(document.file_extension))
         except OSError, exc:
             if exc.errno == errno.EEXIST:
                 pass
             else:
-                raise OSError(_(u'Unable to create metadata indexing directory: %s') % exc)    
+                raise OSError(_(u'Unable to create indexing directory; %s') % exc)    
 
 
-def document_delete_fs_links(document):
+def fs_create_document_link(index_instance, document, suffix=0):
     if FILESERVING_ENABLE:
-        pass
-        '''
-        for document_metadata_index in document.documentmetadataindex_set.all():
-            try:
-                os.unlink(document_metadata_index.filename)
-                document_metadata_index.delete()
-            except OSError, exc:
-                if exc.errno == errno.ENOENT:
-                    #No longer exits, so delete db entry anyway
-                    document_metadata_index.delete()
-                else:
-                    raise OSError(_(u'Unable to delete metadata indexing symbolic link: %s') % exc)
+        name_part = document.file_filename
+        if suffix:
+            name_part = u'_'.join([name_part, unicode(suffix)])
+        
+        filename = os.extsep.join([name_part, document.file_extension])
+        filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
+        print 'filepath', filepath
+        
+        try:
+            os.symlink(document.file.path, filepath)
+        except OSError, exc:
+            if exc.errno == errno.EEXIST:
+                # This link should not exist, try to delete it
+                try:
+                    os.unlink(filepath)
+                    # Try again
+                    os.symlink(document.file.path, filepath)
+                except Exception, exc:
+                    raise Exception(_(u'Unable to create symbolic link, file exists and could not be deleted: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
+            else:
+                raise OSError(_(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
 
+
+def fs_delete_document_link(index_instance, document, suffix=0):
+    if FILESERVING_ENABLE:
+        name_part = document.file_filename
+        if suffix:
+            name_part = u'_'.join([name_part, unicode(suffix)])
+        
+        filename = os.extsep.join([name_part, document.file_extension])
+        filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
+        print 'delete filepath', filepath
+                
+        try:
+            os.unlink(filepath)
+        except OSError, exc:
+            if exc.errno != errno.ENOENT:
+                # Raise when any error other than doesn't exits
+                raise OSError(_(u'Unable to delete document symbolic link; %s') % exc)
+
+'''
             path, filename = os.path.split(document_metadata_index.filename)
 
             #Cleanup directory of dead stuff
@@ -86,9 +104,9 @@ def document_delete_fs_links(document):
                 os.removedirs(path)
             except:
                 pass
-        '''
+'''     
 
-
+'''
 def next_available_filename(document, metadata_index, path, filename, extension, suffix=0):
     target = filename
     if suffix:
@@ -149,3 +167,4 @@ def do_recreate_all_links(raise_exception=True):
     for warning in create_warnings:
         warnings.append('%s: %s' % (document, warning))
     return errors, warnings
+'''

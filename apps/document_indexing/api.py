@@ -2,20 +2,37 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
+from django.template.defaultfilters import slugify
 
 from documents.models import Document
 from metadata.classes import MetadataObject
 
-from document_indexing.models import Index, IndexInstance
+from document_indexing.models import Index, IndexInstance, \
+    DocumentRenameCount
 from document_indexing.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
-from document_indexing.filesystem import fs_create_index_directory
+from document_indexing.conf.settings import MAX_SUFFIX_COUNT
+from document_indexing.filesystem import fs_create_index_directory, \
+    fs_create_document_link, fs_delete_document_link
+
+from document_indexing.conf.settings import SLUGIFY_PATHS
+
+if SLUGIFY_PATHS == False:
+    # Do not slugify path or filenames and extensions
+    SLUGIFY_FUNCTION = lambda x: x
+else:
+    SLUGIFY_FUNCTION = slugify
+
+
+class MaxSuffixCountReached(Exception):
+    pass
 
 
 # External functions
 def update_indexes(document):
     """
     Update or create all the index instances related to a document
-    """    
+    """
+    print 'update_indexes'
     warnings = []
 
     eval_dict = {}
@@ -55,12 +72,14 @@ def get_instance_link(index_instance=None, text=None, simple=False):
         template = u'<a href="%(url)s">%(value)s</a>'
     if index_instance:
         return template % {
-            'url': index_instance.get_absolute_url(), 'value': text if text else index_instance
+            'url': index_instance.get_absolute_url(),
+            'value': text if text else index_instance
         }
     else:
         # Root node
         return template % {
-            'url': reverse('index_instance_list'), 'value': ugettext(u'root')
+            'url': reverse('index_instance_list'),
+            'value': ugettext(u'root')
         }
         
 
@@ -90,11 +109,24 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False):
 
 def do_rebuild_all_indexes():
     IndexInstance.objects.all().delete()
+    DocumentRenameCount.objects.all().delete()
     for document in Document.objects.all():
         update_indexes(document)
     
     
 # Internal functions
+def find_lowest_available_suffix(suffix_list):
+    print 'suffix_list', suffix_list
+    suffix = 0
+    
+    while suffix in suffix_list:
+        suffix += 1
+        if suffix > MAX_SUFFIX_COUNT:
+            raise MaxSuffixCountReached(ugettext(u'Maximum suffix (%s) count reached.') % MAX_SUFFIX_COUNT)
+    else:
+        return suffix
+
+
 def _evaluate_index(eval_dict, document, node, parent_index_instance=None):
     """
     Evaluate an enabled index expression and update or create all the
@@ -108,11 +140,25 @@ def _evaluate_index(eval_dict, document, node, parent_index_instance=None):
             index_instance, created = IndexInstance.objects.get_or_create(index=node, value=result, parent=parent_index_instance)
             if created:
                 fs_create_index_directory(index_instance)
-            if node.link_documents:
+            if node.link_documents and document not in index_instance.documents.all():
+                #suffix_list = index_instance.documents.filter(file_filename=document.file_filename).filter(file_extension=document.file_extension).values_list('suffix', flat=True)
+                suffix_list = DocumentRenameCount.objects.filter(document__file_filename=document.file_filename).filter(document__file_extension=document.file_extension).filter(index_instance=index_instance).values_list('suffix', flat=True)
+                suffix = find_lowest_available_suffix(suffix_list)
+                print 'lower suffix: %s' % suffix
+                document_count = DocumentRenameCount(
+                    index_instance=index_instance,
+                    document=document,
+                    suffix=suffix
+                )
+                document_count.save()
+
+                fs_create_document_link(index_instance, document, suffix)
                 index_instance.documents.add(document)
 
             for children in node.get_children():
-                children_warnings = _evaluate_index(eval_dict, document, children, index_instance)
+                children_warnings = _evaluate_index(
+                    eval_dict, document, children, index_instance
+                )
                 warnings.extend(children_warnings)
 
         except (NameError, AttributeError), exc:
@@ -134,16 +180,22 @@ def _remove_document_from_index_instance(document, index_instance):
     """
     warnings = []
     try:
+        document_rename_count = DocumentRenameCount.objects.get(index_instance=index_instance, document=document)
+        fs_delete_document_link(index_instance, document, document_rename_count.suffix)
+        document_rename_count.delete()
         index_instance.documents.remove(document)
         if index_instance.documents.count() == 0 and index_instance.get_children().count() == 0:
             # if there are no more documents and no children, delete
             # node and check parent for the same conditions
             parent = index_instance.parent
             index_instance.delete()
-            parent_warnings = _remove_document_from_index_instance(document, parent)
+            parent_warnings = _remove_document_from_index_instance(
+                document, parent
+            )
             warnings.extend(parent_warnings)
             
     except Exception, exc:
+        print '_remove_document_from_index_instance exception: %s' % exc
         warnings.append(_(u'Unable to delete document indexing node; %s') % exc)
 
     return warnings

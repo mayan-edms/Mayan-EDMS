@@ -2,7 +2,8 @@ from django.contrib import admin
 
 from mptt.admin import MPTTModelAdmin
 
-from document_indexing.models import Index, IndexInstance
+from document_indexing.models import Index, IndexInstance, \
+    DocumentRenameCount
 
 
 class IndexInstanceInline(admin.StackedInline):
@@ -23,3 +24,4 @@ class IndexInstanceAdmin(MPTTModelAdmin):
 
 admin.site.register(Index, IndexAdmin)
 admin.site.register(IndexInstance, IndexInstanceAdmin)
+admin.site.register(DocumentRenameCount)
