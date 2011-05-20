@@ -111,6 +111,7 @@ def do_document_ocr(document):
             f.close()
             cleanup(ocr_output)
         finally:
+            os.close(desc)
             cleanup(filepath)
             if imagefile:
                 cleanup(imagefile)
