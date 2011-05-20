@@ -64,7 +64,7 @@ TODO, WISHLIST
 
 Main
 ====
-* Diagnostics (document file <-> document db mismatches, orphan files) - STARTED
+* Diagnostics (document file <-> document db mismatches, orphan files) - DONE
 * Sidebar search                                                       - DONE
 * Convert home and about views to use generic_template
 
