@@ -118,6 +118,7 @@ def role_delete(request, role_id):
             'next': next,
             'previous': previous,
             'object_name': _(u'role'),
+            'form_icon': u'medal_gold_delete.png',
         })
 
 

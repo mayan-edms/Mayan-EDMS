@@ -130,6 +130,7 @@ def user_delete(request, user_id=None, user_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
+        'form_icon': u'user_delete.png',        
     }
     if len(users) == 1:
         context['object'] = users[0]
@@ -304,6 +305,7 @@ def group_delete(request, group_id=None, group_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
+        'form_icon': u'group_delete.png',        
     }
     if len(groups) == 1:
         context['object'] = groups[0]

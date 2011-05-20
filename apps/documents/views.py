@@ -443,6 +443,7 @@ def document_delete(request, document_id=None, document_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
+        'form_icon': u'page_delete.png',
     }
     if len(documents) == 1:
         context['object'] = documents[0]
@@ -726,6 +727,7 @@ def document_page_transformation_delete(request, document_page_transformation_id
                 'document_page': document_page_transformation.document_page},
             'previous': previous,
             'web_theme_hide_menus': True,
+            'form_icon': u'pencil_delete.png',
         })
 
 
@@ -743,6 +745,7 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
         return render_to_response('generic_confirm.html', {
             'previous': previous,
             'message': _(u'On large databases this operation may take some time to execute.'),
+            'form_icon': u'page_refresh.png',        
         }, context_instance=RequestContext(request))
     else:
         duplicated = []
@@ -800,6 +803,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         'delete_view': True,
         'previous': previous,
         'next': next,
+        'form_icon': u'page_paintbrush.png',
     }
 
     if len(documents) == 1:
