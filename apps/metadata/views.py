@@ -60,7 +60,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                 warnings = delete_indexes(document)
                 if request.user.is_staff or request.user.is_superuser:
                     for warning in warnings:
-                        messages.warning(request, warning)                    
+                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)                    
                 
                 errors = []
                 for form in formset.forms:
@@ -78,9 +78,11 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                     messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
 
                 warnings = update_indexes(document)
-                if request.user.is_staff or request.user.is_superuser:
+                if warnings and (request.user.is_staff or request.user.is_superuser):
                     for warning in warnings:
-                        messages.warning(request, warning)
+                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)   
+                else:
+                    messages.success(request, _(u'Document indexes updated successfully.'))
 
             if len(documents) == 1:
                 return HttpResponseRedirect(document.get_absolute_url())
@@ -132,6 +134,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 else:
                     messages.warning(request, _(u'Metadata type: %(metadata_type)s already present in document %(document)s.') % {
                         'metadata_type': metadata_type, 'document': document})
+
             if len(documents) == 1:
                 return HttpResponseRedirect(reverse(metadata_edit, args=[document.pk]))
             elif len(documents) > 1:
@@ -197,11 +200,11 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         formset = MetadataRemoveFormSet(request.POST)
         if formset.is_valid():
             for document in documents:
-                try:
-                    document_delete_fs_links(document)
-                except Exception, e:
-                    messages.error(request, _(u'Error deleting filesystem links for document: %(document)s; %(error)s') % {
-                        'document': document, 'error': e})
+
+                warnings = delete_indexes(document)
+                if request.user.is_staff or request.user.is_superuser:
+                    for warning in warnings:
+                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)                  
                 
                 for form in formset.forms:
                     if form.cleaned_data['update']:
@@ -215,17 +218,12 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                             messages.error(request, _(u'Error removing metadata type: %(metadata_type)s from document: %(document)s.') % {
                                 'metadata_type': metadata_type, 'document': document})
 
-                try:
-                    warnings = document_create_fs_links(document)
-
-                    if request.user.is_staff or request.user.is_superuser:
-                        for warning in warnings:
-                            messages.warning(request, warning)
-
-                    messages.success(request, _(u'Filesystem links updated successfully for document: %s.') % document)
-                except Exception, e:
-                    messages.error(request, _('Error creating filesystem links for document: %(document)s; %(error)s') % {
-                        'document': document, 'error': e})
+                warnings = update_indexes(document)
+                if warnings and (request.user.is_staff or request.user.is_superuser):
+                    for warning in warnings:
+                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)   
+                else:
+                    messages.success(request, _(u'Document indexes updated successfully.'))
 
             if len(documents) == 1:
                 return HttpResponseRedirect(document.get_absolute_url())
