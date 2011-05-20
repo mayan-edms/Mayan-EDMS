@@ -58,8 +58,8 @@ class Document(models.Model):
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
     file_mime_encoding = models.CharField(max_length=64, default='', editable=False)
     #FAT filename can be up to 255 using LFN
-    file_filename = models.CharField(max_length=255, default='', editable=False, db_index=True)
-    file_extension = models.CharField(max_length=16, default='', editable=False, db_index=True)
+    file_filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
+    file_extension = models.CharField(max_length=16, default=u'', editable=False, db_index=True)
     date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True, db_index=True)
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
