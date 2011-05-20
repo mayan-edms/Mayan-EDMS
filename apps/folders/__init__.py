@@ -23,4 +23,4 @@ register_menu([
         folder_list, folder_create
     ], 'famfam': 'folder_user', 'position': 2}])
 
-register_sidebar_template(['document_view', 'document_view_simple'], 'folders_sidebar_template.html')
+register_sidebar_template(['document_view_advanced', 'document_view_simple'], 'folders_sidebar_template.html')
