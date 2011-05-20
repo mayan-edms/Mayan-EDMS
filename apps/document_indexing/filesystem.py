@@ -3,20 +3,23 @@ import os
 
 from django.utils.translation import ugettext_lazy as _
 
-from metadata.classes import MetadataObject
-
-from document_indexing.models import IndexInstance
+from document_indexing.os_agnostic import assemble_document_filename
 from document_indexing.conf.settings import FILESERVING_ENABLE
 from document_indexing.conf.settings import FILESERVING_PATH
 
-# TODO: delete fileserving document function for use with rebuild index function
 
 def get_instance_path(index_instance):
     """
     Return a platform formated filesytem path corresponding to an
     index instance
     """
-    return os.sep.join(index_instance.get_ancestors().values_list(u'value', flat=True))
+    names = []
+    for ancestor in index_instance.get_ancestors():
+        names.append(ancestor.value)
+
+    names.append(index_instance.value)
+
+    return os.sep.join(names)
 
 
 def fs_create_index_directory(index_instance):
@@ -28,19 +31,14 @@ def fs_create_index_directory(index_instance):
             if exc.errno == errno.EEXIST:
                 pass
             else:
-                raise OSError(_(u'Unable to create indexing directory; %s') % exc)    
+                raise OSError(_(u'Unable to create indexing directory; %s') % exc)
 
 
 def fs_create_document_link(index_instance, document, suffix=0):
     if FILESERVING_ENABLE:
-        name_part = document.file_filename
-        if suffix:
-            name_part = u'_'.join([name_part, unicode(suffix)])
-        
+        name_part = assemble_document_filename(document, suffix)
         filename = os.extsep.join([name_part, document.file_extension])
         filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
-        print 'filepath', filepath
-        
         try:
             os.symlink(document.file.path, filepath)
         except OSError, exc:
@@ -61,11 +59,10 @@ def fs_delete_document_link(index_instance, document, suffix=0):
         name_part = document.file_filename
         if suffix:
             name_part = u'_'.join([name_part, unicode(suffix)])
-        
+
         filename = os.extsep.join([name_part, document.file_extension])
         filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
-        print 'delete filepath', filepath
-                
+
         try:
             os.unlink(filepath)
         except OSError, exc:
@@ -73,98 +70,23 @@ def fs_delete_document_link(index_instance, document, suffix=0):
                 # Raise when any error other than doesn't exits
                 raise OSError(_(u'Unable to delete document symbolic link; %s') % exc)
 
-'''
-            path, filename = os.path.split(document_metadata_index.filename)
 
-            #Cleanup directory of dead stuff
-            #Delete siblings that are dead links
-            try:
-                for f in os.listdir(path):
-                    filepath = os.path.join(path, f)
-                    if os.path.islink(filepath):
-                        #Get link's source
-                        source = os.readlink(filepath)
-                        if os.path.isabs(source):
-                            if not os.path.exists(source):
-                                #link's source is absolute and doesn't exit
-                                os.unlink(filepath)
-                        else:
-                            os.unlink(os.path.join(path, filepath))
-                    elif os.path.isdir(filepath):
-                        #is a directory, try to delete it
-                        try:
-                            os.removedirs(path)
-                        except:
-                            pass
-            except OSError, exc:
-                pass
-
-            #Remove the directory if it is empty
-            try:
-                os.removedirs(path)
-            except:
-                pass
-'''     
-
-'''
-def next_available_filename(document, metadata_index, path, filename, extension, suffix=0):
-    target = filename
-    if suffix:
-        target = '_'.join([filename, unicode(suffix)])
-    filepath = os.path.join(path, os.extsep.join([target, extension]))
-    matches = DocumentMetadataIndex.objects.filter(filename=filepath)
-    if matches.count() == 0:
-        document_metadata_index = DocumentMetadataIndex(
-            document=document, metadata_index=metadata_index,
-            filename=filepath)
+def fs_delete_index_directory(index_instance):
+    if FILESERVING_ENABLE:
+        target_directory = os.path.join(FILESERVING_PATH, get_instance_path(index_instance))
         try:
-            os.symlink(document.file.path, filepath)
-            document_metadata_index.save()
+            os.removedirs(target_directory)
         except OSError, exc:
             if exc.errno == errno.EEXIST:
-                #This link should not exist, try to delete it
-                try:
-                    os.unlink(filepath)
-                    #Try again with same suffix
-                    return next_available_filename(document, metadata_index, path, filename, extension, suffix)
-                except Exception, exc:
-                    raise Exception(_(u'Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
+                pass
             else:
-                raise OSError(_(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
-
-        return filepath
-    else:
-        if suffix > MAX_RENAME_COUNT:
-            raise Exception(_(u'Maximum rename count reached, not creating symbolic link'))
-        return next_available_filename(document, metadata_index, path, filename, extension, suffix + 1)
+                raise OSError(_(u'Unable to delete indexing directory; %s') % exc)
 
 
-#TODO: diferentiate between evaluation error and filesystem errors
-def do_recreate_all_links(raise_exception=True):
-    errors = []
-    warnings = []
-
-    for document in Document.objects.all():
-        try:
-            document_delete_fs_links(document)
-        except NameError, e:
-            warnings.append('%s: %s' % (document, e))
-        except Exception, e:
-            if raise_exception:
-                raise Exception(e)
-            else:
-                errors.append('%s: %s' % (document, e))
-
-    for document in Document.objects.all():
-        try:
-            create_warnings = document_create_fs_links(document)
-        except Exception, e:
-            if raise_exception:
-                raise Exception(e)
-            else:
-                errors.append('%s: %s' % (document, e))
-
-    for warning in create_warnings:
-        warnings.append('%s: %s' % (document, warning))
-    return errors, warnings
-'''
+def fs_delete_directory_recusive(path=FILESERVING_PATH):
+    if FILESERVING_ENABLE:
+        for dirpath, dirnames, filenames in os.walk(path, topdown=False):
+            for filename in filenames:
+                os.unlink(os.path.join(dirpath, filename))
+            for dirname in dirnames:
+                os.rmdir(os.path.join(dirpath, dirname))

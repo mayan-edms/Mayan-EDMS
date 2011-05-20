@@ -9,10 +9,10 @@ def get_document_indexing_subtemplate(document):
     list of index instances where a document may be found
     """
     object_list = []
-    
+
     for index_instance in document.indexinstance_set.all():
-        object_list.append(get_breadcrumbs(index_instance, single_link=True))
-    
+        object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
+
     return {
             'name': 'generic_list_subtemplate.html',
             'context': {

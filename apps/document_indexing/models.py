@@ -17,7 +17,7 @@ class Index(MPTTModel):
         # % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'))
-    
+
     def __unicode__(self):
         return self.expression if not self.link_documents else u'%s/[document]' % self.expression
 
@@ -31,7 +31,7 @@ class IndexInstance(MPTTModel):
     index = models.ForeignKey(Index, verbose_name=_(u'index'))
     value = models.CharField(max_length=128, blank=True, verbose_name=_(u'value'))
     documents = models.ManyToManyField(Document, verbose_name=_(u'documents'))
-    
+
     def __unicode__(self):
         return self.value
 

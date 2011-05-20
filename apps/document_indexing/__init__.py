@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_menu
+from navigation.api import register_menu
 from permissions.api import register_permissions
 from main.api import register_tool
 
