@@ -4,7 +4,6 @@ import tempfile
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.comments.models import Comment
@@ -15,7 +14,6 @@ from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
 from converter import TRANFORMATION_CHOICES
-from metadata.classes import MetadataObject
 
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION

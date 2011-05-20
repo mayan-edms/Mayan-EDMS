@@ -1,8 +1,5 @@
-#from django.contrib.auth.models import User
-#from django.contrib.auth.models import Group
 from django.db.utils import DatabaseError
 from django.shortcuts import get_object_or_404
-from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.core.exceptions import PermissionDenied
@@ -11,7 +8,7 @@ from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, \
     PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE
 
-from permissions.models import Permission, Role
+from permissions.models import Permission
 
 
 def register_permissions(namespace, permissions):

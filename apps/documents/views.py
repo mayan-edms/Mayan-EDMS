@@ -26,8 +26,6 @@ from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_FILE_FORMAT, QUALITY_PRINT
 from document_comments.utils import get_comments_subtemplate
 from filetransfers.api import serve_file
-from grouping.models import DocumentGroup
-from grouping import document_group_link
 from grouping.utils import get_document_group_subtemplate
 from metadata.api import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
@@ -288,7 +286,7 @@ def document_view_simple(request, document_id):
         {
             'name': 'generic_form_subtemplate.html',
             'context': {
-                'title':_(u'document properties'),
+                'title': _(u'document properties'),
                 'form': content_form,
                 'object': document,
             },
