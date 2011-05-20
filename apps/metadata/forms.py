@@ -4,9 +4,9 @@ from django.forms.formsets import formset_factory
 
 from metadata.conf.settings import AVAILABLE_MODELS
 from metadata.conf.settings import AVAILABLE_FUNCTIONS
-from metadata.models import MetadataType, DocumentMetadata
+from metadata.models import MetadataType
 
-    
+
 class MetadataForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
@@ -63,5 +63,5 @@ class AddMetadataForm(forms.Form):
 
 class MetadataRemoveForm(MetadataForm):
     update = forms.BooleanField(initial=False, label=_(u'Remove'), required=False)
-    
+
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)

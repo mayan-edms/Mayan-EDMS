@@ -298,13 +298,13 @@ class DocumentCreateWizard(BoundFormWizard):
             self.initial = {2: initial_data}
             if not initial_data:
                 # If there is no metadata selected end wizard
-                self.form_list=[DocumentTypeSelectForm, MetadataSelectionForm]
+                self.form_list = [DocumentTypeSelectForm, MetadataSelectionForm]
 
         if isinstance(form, MetadataFormSet):
             for identifier, metadata in enumerate(form.cleaned_data):
                 self.query_dict['metadata%s_id' % identifier] = metadata['id']
                 self.query_dict['metadata%s_value' % identifier] = metadata['value']
-                
+
     def get_template(self, step):
         return 'generic_wizard.html'
 
@@ -313,10 +313,10 @@ class DocumentCreateWizard(BoundFormWizard):
             view = 'upload_document_multiple'
         else:
             view = 'upload_document'
-        
+
         if self.document_type:
             self.query_dict['document_type_id'] = self.document_type.pk
-            
+
         url = urlquote(reverse(view), self.query_dict)
         return HttpResponseRedirect(url)
 

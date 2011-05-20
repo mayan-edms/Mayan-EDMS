@@ -25,7 +25,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id)]
         if documents[0].documentmetadata_set.count() == 0:
             messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
@@ -60,8 +60,8 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                 warnings = delete_indexes(document)
                 if request.user.is_staff or request.user.is_superuser:
                     for warning in warnings:
-                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)                    
-                
+                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)
+
                 errors = []
                 for form in formset.forms:
                     if form.cleaned_data['update']:
@@ -80,7 +80,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                 warnings = update_indexes(document)
                 if warnings and (request.user.is_staff or request.user.is_superuser):
                     for warning in warnings:
-                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)   
+                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)
                 else:
                     messages.success(request, _(u'Document indexes updated successfully.'))
 
@@ -118,7 +118,6 @@ def metadata_add(request, document_id=None, document_id_list=None):
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    metadata = {}
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
 
@@ -142,7 +141,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
     else:
         form = AddMetadataForm()
-        
+
     context = {
         #'form_display_mode_table': True,
         'form': form,
@@ -169,7 +168,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         if documents[0].documentmetadata_set.count() == 0:
             messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-            
+
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
@@ -204,8 +203,8 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                 warnings = delete_indexes(document)
                 if request.user.is_staff or request.user.is_superuser:
                     for warning in warnings:
-                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)                  
-                
+                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)
+
                 for form in formset.forms:
                     if form.cleaned_data['update']:
                         metadata_type = get_object_or_404(MetadataType, pk=form.cleaned_data['id'])
@@ -221,7 +220,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                 warnings = update_indexes(document)
                 if warnings and (request.user.is_staff or request.user.is_superuser):
                     for warning in warnings:
-                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)   
+                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)
                 else:
                     messages.success(request, _(u'Document indexes updated successfully.'))
 
@@ -229,7 +228,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                 return HttpResponseRedirect(document.get_absolute_url())
             elif len(documents) > 1:
                 return HttpResponseRedirect(reverse('document_list_recent'))
-        
+
     context = {
         'form_display_mode_table': True,
         'form': formset,

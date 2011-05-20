@@ -1,5 +1,4 @@
 from django import forms
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
@@ -77,7 +76,7 @@ class FilterForm(forms.Form):
             self.fields[list_filter['name']] = forms.ModelChoiceField(
                 queryset=list_filter['queryset'],
                 label=label[0].upper() + label[1:], required=False)
-                
+
 
 class ChoiceForm(forms.Form):
     """

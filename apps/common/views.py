@@ -1,13 +1,11 @@
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 
-from common.utils import generate_choices_w_labels
 from common.forms import ChoiceForm
 
 
@@ -44,12 +42,12 @@ def get_obj_from_content_type_string(string):
     model, pk = string.split(u',')
     ct = ContentType.objects.get(model=model)
     return ct.get_object_for_this_type(pk=pk)
-    
+
 
 def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, obj=None, object_name=None, decode_content_type=False):
     left_list_name = u'left_list'
     right_list_name = u'right_list'
-    
+
     if request.method == 'POST':
         if u'%s-submit' % left_list_name in request.POST.keys():
             unselected_list = ChoiceForm(request.POST,
@@ -101,7 +99,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'title': left_list_title,
                     'submit_label': _(u'Add'),
                 }
-            },        
+            },
             {
                 'name':'generic_form_subtemplate.html',
                 'grid': 6,
@@ -121,13 +119,13 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 'object': obj
             }
         )
-        
+
     if object_name:
         context.update(
             {
                 'object_name': object_name,
             }
         )
-        
+
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))

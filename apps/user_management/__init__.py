@@ -24,7 +24,7 @@ register_permissions('user_management', [
     {'name': PERMISSION_GROUP_CREATE, 'label': _(u'Create new groups')},
     {'name': PERMISSION_GROUP_EDIT, 'label': _(u'Edit existing groups')},
     {'name': PERMISSION_GROUP_VIEW, 'label': _(u'View existing groups')},
-    {'name': PERMISSION_GROUP_DELETE, 'label': _(u'Delete existing groups')},    
+    {'name': PERMISSION_GROUP_DELETE, 'label': _(u'Delete existing groups')},
 ])
 
 user_list = {'text': _(u'user list'), 'view': 'user_list', 'famfam': 'user', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_USER_VIEW]}}
@@ -43,9 +43,9 @@ group_multiple_delete = {u'text': _('delete'), 'view': 'group_multiple_delete', 
 group_members = {'text': _(u'members'), 'view': 'group_members', 'args': 'object.id', 'famfam': 'group_link', 'permissions': {'namespace': 'user_management', 'permissions': [PERMISSION_GROUP_EDIT]}}
 
 register_links(User, [user_edit, user_set_password, user_delete])
-register_links(['user_multiple_set_password', 'user_set_password', 'user_multiple_delete', 'user_delete', 'user_edit', 'user_list','user_add'], [user_add, user_list], menu_name=u'sidebar')
+register_links(['user_multiple_set_password', 'user_set_password', 'user_multiple_delete', 'user_delete', 'user_edit', 'user_list', 'user_add'], [user_add, user_list], menu_name=u'sidebar')
 register_multi_item_links(['user_list'], [user_multiple_set_password, user_multiple_delete])
 
 register_links(Group, [group_edit, group_members, group_delete])
-register_links(['group_multiple_delete', 'group_delete', 'group_edit', 'group_list','group_add', 'group_members'], [group_add, group_list], menu_name=u'sidebar')
+register_links(['group_multiple_delete', 'group_delete', 'group_edit', 'group_list', 'group_add', 'group_members'], [group_add, group_list], menu_name=u'sidebar')
 register_multi_item_links(['group_list'], [group_multiple_delete])

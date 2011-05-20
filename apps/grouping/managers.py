@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models import Q
 
 from metadata.classes import MetadataObject
-from metadata.models import DocumentMetadata
 from documents.models import Document
 
 from grouping.literals import INCLUSION_AND, INCLUSION_OR
@@ -18,7 +17,7 @@ class DocumentGroupManager(models.Manager):
         eval_dict = {}
         eval_dict['document'] = document
         eval_dict['metadata'] = MetadataObject(metadata_dict)
-        
+
         if group_obj:
             groups_qs = self.model.objects.filter(Q(enabled=True) & Q(pk=group_obj.pk))
         else:
@@ -39,7 +38,7 @@ class DocumentGroupManager(models.Manager):
                             total_query &= query
                         elif item.inclusion == INCLUSION_OR:
                             total_query |= query
-                    
+
                     elif cls == u'document':
                         value_query = Q(**{
                             '%s__%s' % (attribute, item.operator): eval(item.expression, eval_dict)
@@ -51,8 +50,8 @@ class DocumentGroupManager(models.Manager):
                         if item.inclusion == INCLUSION_AND:
                             total_query &= query
                         elif item.inclusion == INCLUSION_OR:
-                            total_query |= query                        
-                    
+                            total_query |= query
+
                 except Exception, e:
                     errors.append(e)
                     value_query = Q()
@@ -66,7 +65,7 @@ class DocumentGroupManager(models.Manager):
                     errors.append(e)
             else:
                 document_groups[group] = {'documents': []}
-            
+
             if group.dynamic_title:
                 try:
                     document_groups[group]['title'] = eval(group.dynamic_title, eval_dict)
@@ -74,7 +73,7 @@ class DocumentGroupManager(models.Manager):
                     document_groups[group]['title'] = 'Error; %s' % e
             else:
                 document_groups[group]['title'] = group.title
-                
+
         if group_obj:
             # Return a single group if documents even if there were
             # many matches

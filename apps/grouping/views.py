@@ -6,7 +6,6 @@ from django.template import RequestContext
 
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
-from documents.views import document_list
 from permissions.api import check_permissions
 
 from grouping.models import DocumentGroup

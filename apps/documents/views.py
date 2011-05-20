@@ -105,7 +105,7 @@ def document_create_sibling(request, document_id, multiple=True):
 
     if document.document_type_id:
         query_dict['document_type_id'] = document.document_type_id
-    
+
     url = reverse(view)
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
@@ -126,7 +126,7 @@ def _handle_save_document(request, document, form=None):
     warnings = update_indexes(document)
     if request.user.is_staff or request.user.is_superuser:
         for warning in warnings:
-            messages.warning(request, warning)    
+            messages.warning(request, warning)
 
 
 def _handle_zip_file(request, uploaded_file, document_type):
@@ -150,13 +150,13 @@ def _handle_zip_file(request, uploaded_file, document_type):
 
 def upload_document_with_type(request, multiple=True):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
-    
+
     document_type_id = request.GET.get('document_type_id', None)
     if document_type_id:
         document_type = get_object_or_404(DocumentType, pk=document_type_id)
     else:
         document_type = None
-    
+
     local_form = DocumentForm(prefix='local', initial={'document_type': document_type})
     if USE_STAGING_DIRECTORY:
         staging_form = StagingDocumentForm(prefix='staging',
@@ -240,10 +240,10 @@ def upload_document_with_type(request, multiple=True):
                         'hide_link': True,
                     }
                 },
-            )    
+            )
     else:
         subtemplates_list.append(local_upload_form)
-    
+
     context = {
         'document_type_id': document_type_id,
         'subtemplates_list': subtemplates_list,
@@ -280,7 +280,7 @@ def document_view_simple(request, document_id):
                 'form': preview_form,
                 'object': document,
             }
-        },    
+        },
     )
     subtemplates_list.append(
         {
@@ -851,7 +851,7 @@ def document_page_view(request, document_page_id):
         'object': document_page,
         'web_theme_hide_menus': True,
         'form': document_page_form,
-        'title': _(u'details for: %s') % document_page,        
+        'title': _(u'details for: %s') % document_page,
     }, context_instance=RequestContext(request))
 
 

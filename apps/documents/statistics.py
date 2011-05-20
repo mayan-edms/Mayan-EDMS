@@ -60,7 +60,7 @@ def get_statistics():
         ]
     )
     #[(day_count['date_added'].strftime('%Y-%m-%d'), day_count['id__count']) for day_count in Document.objects.values('date_added').annotate(Count("id"))]
-    
+
     return {
         'title': _(u'Document statistics'),
         'paragraphs': paragraphs

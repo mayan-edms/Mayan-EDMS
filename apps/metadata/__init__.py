@@ -1,10 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_menu, \
-    register_model_list_columns, register_multi_item_links
-from main.api import register_diagnostic, register_tool
+from navigation.api import register_links, register_multi_item_links
 from permissions.api import register_permissions
-
 from documents.models import Document
 
 PERMISSION_METADATA_DOCUMENT_EDIT = u'metadata_document_edit'

@@ -191,19 +191,19 @@ def add_role_member(role, selection):
     new_member, created = RoleMember.objects.get_or_create(role=role, member_type=ct, member_id=pk)
     if not created:
         raise Exception
-    
-    
+
+
 def remove_role_member(role, selection):
     model, pk = selection.split(u',')
     ct = ContentType.objects.get(model=model)
     member = RoleMember.objects.get(role=role, member_type=ct, member_id=pk)
     member.delete()    
-    
+
 
 def role_members(request, role_id):
     check_permissions(request.user, 'permissions', [PERMISSION_ROLE_EDIT])
     role = get_object_or_404(Role, pk=role_id)
-    
+
     return assign_remove(
         request,
         left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),

@@ -317,7 +317,7 @@ def parse_range(astr):
         x = part.split(u'-')
         result.update(range(int(x[0]), int(x[-1]) + 1))
     return sorted(result)
-    
+
 
 def generate_choices_w_labels(choices, display_object_type=True):
     results = []

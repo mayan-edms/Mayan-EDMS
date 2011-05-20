@@ -1,27 +1,12 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.http import HttpResponseRedirect
-from django.utils.http import urlencode
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
-from django.forms.formsets import formset_factory
 from django.template.defaultfilters import capfirst
 from django.conf import settings
 
 from tags.widgets import get_tags_inline_widget
-#from common.wizard import BoundFormWizard
-#from common.forms import DetailForm
-#from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
-#from common.conf.settings import DEFAULT_PAPER_SIZE
-#from common.conf.settings import DEFAULT_PAGE_ORIENTATION
-#from common.utils import urlquote
-#from metadata.models import MetadataSet, MetadataType
-#from metadata.forms import MetadataFormSet
-
-#from documents.staging import StagingFile
-#from documents.models import Document, DocumentType, \
-#    DocumentPage, DocumentPageTransformation
 
 
 class DocumentGroupImageWidget(forms.widgets.Widget):
