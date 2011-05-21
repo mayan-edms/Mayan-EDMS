@@ -144,7 +144,6 @@ INSTALLED_APPS = (
     'tags',
     'document_comments',
     'user_management',
-    'south',
     'documents',
     'grouping',
     'mptt',
