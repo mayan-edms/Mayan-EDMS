@@ -15,7 +15,6 @@ from common.utils import urlquote
 from metadata.models import MetadataSet, MetadataType
 from metadata.forms import MetadataFormSet
 
-from documents.staging import StagingFile
 from documents.models import Document, DocumentType, \
     DocumentPage, DocumentPageTransformation
 
@@ -217,10 +216,11 @@ class DocumentForm_edit(DocumentForm):
 
 class StagingDocumentForm(forms.Form):
     def __init__(self, *args, **kwargs):
+        cls = kwargs.pop('cls')
         super(StagingDocumentForm, self).__init__(*args, **kwargs)
         try:
             self.fields['staging_file_id'].choices = [
-                (staging_file.id, staging_file) for staging_file in StagingFile.get_all()
+                (staging_file.id, staging_file) for staging_file in cls.get_all()
             ]
         except:
             pass

@@ -29,6 +29,9 @@ register_settings(
         # Upload
         {'name': u'USE_STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_USE_STAGING_DIRECTORY', 'default': False},
         {'name': u'STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_STAGING_DIRECTORY', 'default': u'/tmp/mayan/staging', 'exists': True},
+        {'name': u'PER_USER_STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_PER_USER_STAGING_DIRECTORY', 'default': False},
+        {'name': u'USER_STAGING_DIRECTORY_ROOT', 'global_name': u'DOCUMENTS_USER_STAGING_DIRECTORY_ROOT', 'default': u'/tmp/mayan/staging/users', 'exists': True},
+        {'name': u'USER_STAGING_DIRECTORY_EXPRESSION', 'global_name': u'DOCUMENTS_USER_STAGING_DIRECTORY_EXPRESSION', 'default': u'user.username'},
         {'name': u'DELETE_STAGING_FILE_AFTER_UPLOAD', 'global_name': u'DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD', 'default': False},
         {'name': u'STAGING_FILES_PREVIEW_SIZE', 'global_name': u'DOCUMENTS_STAGING_FILES_PREVIEW_SIZE', 'default': u'640x480'},
         {'name': u'ENABLE_SINGLE_DOCUMENT_UPLOAD', 'global_name': u'DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD', 'default': True},

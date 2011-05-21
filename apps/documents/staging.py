@@ -18,24 +18,34 @@ HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #t1=time.time();func();t2=time.time();print '%s took %0.3f ms' % (func.func_name, (t2-t1)*1000.0)
 
 
-def get_all_files():
+def get_all_files(path):
     try:
-        return sorted([os.path.normcase(f) for f in os.listdir(STAGING_DIRECTORY) if os.path.isfile(os.path.join(STAGING_DIRECTORY, f))])
+        return sorted([os.path.normcase(f) for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))])
     except OSError, exc:
         raise OSError(ugettext(u'Unable get list of staging files: %s') % exc)
-
+        
+        
+def create_staging_file_class():
+    return type('StagingFile', (StagingFile,), dict(StagingFile.__dict__))
+        
 
 class StagingFile(object):
     """
     Simple class to encapsulate the files in a directory and hide the
     specifics to the view
     """
+    path = STAGING_DIRECTORY
+
+    @classmethod
+    def set_path(cls, path):
+       cls.path = path 
+        
     @classmethod
     def get_all(cls):
         staging_files = []
-        for filename in get_all_files():
+        for filename in get_all_files(cls.path):
             staging_files.append(StagingFile(
-                filepath=os.path.join(STAGING_DIRECTORY, filename)))
+                filepath=os.path.join(cls.path, filename)))
 
         return staging_files
 

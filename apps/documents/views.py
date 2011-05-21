@@ -38,6 +38,10 @@ from document_indexing.api import update_indexes, delete_indexes
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
+from documents.conf.settings import PER_USER_STAGING_DIRECTORY
+from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
+from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
+
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
@@ -65,7 +69,7 @@ from documents.forms import DocumentTypeSelectForm, DocumentCreateWizard, \
 
 from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument
-from documents.staging import StagingFile
+from documents.staging import create_staging_file_class
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 
@@ -156,10 +160,20 @@ def upload_document_with_type(request, multiple=True):
         document_type = get_object_or_404(DocumentType, pk=document_type_id)
     else:
         document_type = None
-
+    
     local_form = DocumentForm(prefix='local', initial={'document_type': document_type})
     if USE_STAGING_DIRECTORY:
-        staging_form = StagingDocumentForm(prefix='staging',
+        StagingFile = create_staging_file_class()
+
+        staging_form = StagingDocumentForm(prefix='staging', 
+            cls=StagingFile,
+            initial={'document_type': document_type})
+
+    if PER_USER_STAGING_DIRECTORY:
+        UserStagingFile = create_staging_file_class()
+        UserStagingFile.set_path('/tmp/mayan/staging/users/admin')
+        user_staging_form = StagingDocumentForm(prefix='user_staging',
+            cls=UserStagingFile,
             initial={'document_type': document_type})
 
     if request.method == 'POST':
@@ -211,38 +225,82 @@ def upload_document_with_type(request, multiple=True):
         },
     }
 
-    if USE_STAGING_DIRECTORY:
-        try:
-            filelist = StagingFile.get_all()
-        except Exception, e:
-            messages.error(request, e)
-            filelist = []
-        finally:
-            local_upload_form.update({'grid': 6})
-            subtemplates_list.append(local_upload_form)
-            subtemplates_list.append(
-                {
-                    'name': 'generic_form_subtemplate.html',
-                    'grid': 6,
-                    'grid_clear': True,
-                    'context': {
-                        'form': staging_form,
-                        'title': _(u'upload a document from staging'),
-                    }
-                },
-            )
+    if USE_STAGING_DIRECTORY or PER_USER_STAGING_DIRECTORY:
+        local_upload_form.update({'grid': 12})        
+        subtemplates_list.append(local_upload_form)
+
+        if PER_USER_STAGING_DIRECTORY:
+            try:
+                user_filelist = UserStagingFile.get_all()
+            except Exception, e:
+                messages.error(request, e)
+                filelist = []
+            finally:
+                subtemplates_list.append(
+                    {
+                        'name': 'generic_form_subtemplate.html',
+                        'grid': 6,
+                        #'grid_clear': False,
+                        'context': {
+                            'form': user_staging_form,
+                            'title': _(u'upload a document from user staging'),
+                        }
+                    },
+                )
+
+        if USE_STAGING_DIRECTORY:
+            try:
+                staging_filelist = StagingFile.get_all()
+            except Exception, e:
+                messages.error(request, e)
+                filelist = []
+            finally:
+                subtemplates_list.append(
+                    {
+                        'name': 'generic_form_subtemplate.html',
+                        'grid': 6,
+                        #'grid_clear': False,
+                        'context': {
+                            'form': staging_form,
+                            'title': _(u'upload a document from staging'),
+                        }
+                    },
+                )
+
+        if PER_USER_STAGING_DIRECTORY:
             subtemplates_list.append(
                 {
                     'name': 'generic_list_subtemplate.html',
+                    'grid': 6,
+                    
+                    'context': {
+                        'title': _(u'files in user staging'),
+                        'object_list': user_filelist,
+                        'hide_link': True,
+                    }
+                },
+            )            
+
+                
+        if USE_STAGING_DIRECTORY:
+            subtemplates_list.append(
+                {
+                    'name': 'generic_list_subtemplate.html',
+                        'grid': 6,
+                        'grid_clear': True,
+
                     'context': {
                         'title': _(u'files in staging'),
-                        'object_list': filelist,
+                        'object_list': staging_filelist,
                         'hide_link': True,
                     }
                 },
             )
+                
+                        
     else:
-        subtemplates_list.append(local_upload_form)
+        subtemplates_list.append(local_upload_form)  
+        
 
     context = {
         'document_type_id': document_type_id,
@@ -597,6 +655,7 @@ def document_download(request, document_id):
 
 def staging_file_preview(request, staging_file_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+    StagingFile = create_staging_file_class()
 
     try:
         output_file, errors = StagingFile.get(staging_file_id).preview()
@@ -623,6 +682,7 @@ def staging_file_preview(request, staging_file_id):
 
 def staging_file_delete(request, staging_file_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+    StagingFile = create_staging_file_class()
 
     staging_file = StagingFile.get(staging_file_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
