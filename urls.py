@@ -9,7 +9,6 @@ urlpatterns = patterns('',
     (r'^', include('main.urls')),
     (r'^documents/', include('documents.urls')),
     (r'^folders/', include('folders.urls')),
-    (r'^filesystem_serving/', include('filesystem_serving.urls')),
     (r'^search/', include('dynamic_search.urls')),
     (r'^ocr/', include('ocr.urls')),
     (r'^permissions/', include('permissions.urls')),
@@ -21,6 +20,9 @@ urlpatterns = patterns('',
     (r'^comments/', include('document_comments.urls')),
     (r'^user_management/', include('user_management.urls')),
     (r'^settings/', include('smart_settings.urls')),
+    (r'^metadata/', include('metadata.urls')),
+    (r'^grouping/', include('grouping.urls')),
+    (r'^document_indexing/', include('document_indexing.urls')),
 )
 
 

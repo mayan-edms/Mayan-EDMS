@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 
 
 class PermissionManager(models.Manager):
@@ -26,10 +26,10 @@ class Permission(models.Model):
 
     def __unicode__(self):
         return self.label
-        
+
     def get_holders(self):
         return [holder.holder_object for holder in self.permissionholder_set.all()]
-        
+
     def has_permission(self, requester):
         if isinstance(requester, User):
             if requester.is_superuser or requester.is_staff:
@@ -38,8 +38,8 @@ class Permission(models.Model):
         # Request is one of the permission's holders?
         if requester in self.get_holders():
             return True
-        
-        # If not check if the requesters memberships objects is one of 
+
+        # If not check if the requesters memberships objects is one of
         # the permission's holder?
         roles = RoleMember.objects.get_roles_for_member(requester)
 
@@ -47,7 +47,7 @@ class Permission(models.Model):
             groups = requester.groups.all()
         else:
             groups = []
-            
+
         for membership in list(set(roles) | set(groups)):
             if self.has_permission(membership):
                 return True

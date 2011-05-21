@@ -125,7 +125,7 @@ INSTALLED_APPS = (
     'web_theme',
     'main',
     'common',
-    'documents',
+    'metadata',
     'pagination',
     'dynamic_search',
     'filetransfers',
@@ -138,7 +138,6 @@ INSTALLED_APPS = (
     'sentry',
     'sentry.client',
     'sentry.client.celery',
-    'filesystem_serving',
     'storage',
     'folders',
     'taggit',
@@ -146,6 +145,10 @@ INSTALLED_APPS = (
     'document_comments',
     'user_management',
     'south',
+    'documents',
+    'grouping',
+    'mptt',
+    'document_indexing',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -161,7 +164,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #--------- Pagination ------------------
 #PAGINATION_DEFAULT_PAGINATION = 10
 #--------- Web theme app ---------------
-#WEB_THEME = 'default'
+#WEB_THEME_THEME = 'default'
 #-------------- Main -----------------
 #MAIN_SIDE_BAR_SEARCH = False
 #------------ Common --------------
@@ -177,12 +180,16 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #STORAGE_GRIDFS_DATABASE_NAME = u'document_storage'
 # Filebased
 #STORAGE_FILESTORAGE_LOCATION = u'document_storage'
+#---------- Metadata -----------------
+# METADATA_AVAILABLE_FUNCTIONS = {}
+# METADATA_AVAILABLE_MODELS = {}
+#---------- Indexing -----------------
+#DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS = {}
+# Flesystem serving
+#DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE = True
+#DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
+#DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS = False
 #---------- Documents ------------------
-# Definition
-#DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS = {}
-#DOCUMENTS_METADATA_AVAILABLE_MODELS = {}
-#DOCUMENTS_INDEXING_AVAILABLE_FUNCTIONS = {}
-
 # Upload
 #DOCUMENTS_USE_STAGING_DIRECTORY = False
 #DOCUMENTS_STAGING_DIRECTORY = u'/tmp/mayan/staging'
@@ -211,13 +218,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #DOCUMENTS_ZOOM_MIN_LEVEL = 50
 #DOCUMENTS_ROTATION_STEP = 90
 
-# Groups
-#DOCUMENTS_GROUP_SHOW_EMPTY = True
-#------------ Filesystem serving --------------
-#FILESYSTEM_FILESERVING_ENABLE = True
-#FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
-#FILESYSTEM_SLUGIFY_PATHS = False
-#FILESYSTEM_MAX_RENAME_COUNT = 200
+#------------- Groups --------------------
+#GROUPING_SHOW_EMPTY_GROUPS = True
 #------------ Converter --------------
 #CONVERTER_DEFAULT_OPTIONS = u''
 #CONVERTER_LOW_QUALITY_OPTIONS = u''

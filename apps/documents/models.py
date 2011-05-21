@@ -4,7 +4,6 @@ import tempfile
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.comments.models import Comment
@@ -16,15 +15,14 @@ from dynamic_search.api import register
 from converter.api import get_page_count
 from converter import TRANFORMATION_CHOICES
 
-from documents.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
-from documents.conf.settings import AVAILABLE_FUNCTIONS
-from documents.conf.settings import AVAILABLE_MODELS
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import RECENT_COUNT
+
+available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 
 
 def get_filename_from_uuid(instance, filename):
@@ -52,14 +50,14 @@ class Document(models.Model):
     """
     Defines a single document with it's fields and properties
     """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
     uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
     file_mime_encoding = models.CharField(max_length=64, default='', editable=False)
     #FAT filename can be up to 255 using LFN
-    file_filename = models.CharField(max_length=255, default='', editable=False, db_index=True)
-    file_extension = models.CharField(max_length=16, default='', editable=False, db_index=True)
+    file_filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
+    file_extension = models.CharField(max_length=16, default=u'', editable=False, db_index=True)
     date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True, db_index=True)
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
@@ -188,9 +186,6 @@ class Document(models.Model):
         """
         return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in self.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
 
-    def get_metadata_groups(self, group_obj=None):
-        return MetadataGroup.objects.get_groups_for(self, group_obj)
-
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
         if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
@@ -205,80 +200,6 @@ class Document(models.Model):
                             page_transformation.arguments = transformation['arguments']
 
                         page_transformation.save()
-
-available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else u''
-available_models_string = (_(u' Available models: %s') % u','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else u''
-
-
-class MetadataType(models.Model):
-    name = models.CharField(max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words.'))
-    title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
-    default = models.CharField(max_length=128, blank=True, null=True,
-        verbose_name=_(u'default'),
-        help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
-    lookup = models.CharField(max_length=128, blank=True, null=True,
-        verbose_name=_(u'lookup'),
-        help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
-    #TODO: datatype?
-
-    def __unicode__(self):
-        return self.title if self.title else self.name
-
-    class Meta:
-        verbose_name = _(u'metadata type')
-        verbose_name_plural = _(u'metadata types')
-
-
-class DocumentTypeMetadataType(models.Model):
-    """
-    Define the set of metadata that relates to a single document type
-    """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    required = models.BooleanField(default=True, verbose_name=_(u'required'))
-    #TODO: override default for this document type
-
-    def __unicode__(self):
-        return unicode(self.metadata_type)
-
-    class Meta:
-        verbose_name = _(u'document type metadata type connector')
-        verbose_name_plural = _(u'document type metadata type connectors')
-
-
-available_indexing_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
-
-
-class MetadataIndex(models.Model):
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    expression = models.CharField(max_length=128,
-        verbose_name=_(u'indexing expression'),
-        help_text=_(u'Enter a python string expression to be evaluated.  The slash caracter "/" acts as a directory delimiter.%s') % available_indexing_functions_string)
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-
-    def __unicode__(self):
-        return unicode(self.expression)
-
-    class Meta:
-        verbose_name = _(u'metadata index')
-        verbose_name_plural = _(u'metadata indexes')
-
-
-class DocumentMetadata(models.Model):
-    """
-    Link a document to a specific instance of a metadata type with it's
-    current value
-    """
-    document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    value = models.TextField(blank=True, null=True, verbose_name=_(u'metadata value'), db_index=True)
-
-    def __unicode__(self):
-        return unicode(self.metadata_type)
-
-    class Meta:
-        verbose_name = _(u'document metadata')
-        verbose_name_plural = _(u'document metadata')
 
 
 class DocumentTypeFilename(models.Model):
@@ -333,115 +254,6 @@ class DocumentPage(models.Model):
                 warnings.append(e)
 
         return ' '.join(transformation_list), warnings
-
-
-class MetadataGroupManager(models.Manager):
-    def get_groups_for(self, document, group_obj=None):
-        errors = []
-        metadata_groups = {}
-        metadata_dict = {}
-        for document_metadata in document.documentmetadata_set.all():
-            metadata_dict['metadata_%s' % document_metadata.metadata_type.name] = document_metadata.value
-
-        if group_obj:
-            groups_qs = MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True) & Q(pk=group_obj.pk))
-        else:
-            groups_qs = MetadataGroup.objects.filter((Q(document_type=document.document_type) | Q(document_type=None)) & Q(enabled=True))
-
-        for group in groups_qs:
-            total_query = Q()
-            for item in group.metadatagroupitem_set.filter(enabled=True):
-                try:
-                    value_query = Q(**{'value__%s' % item.operator: eval(item.expression, metadata_dict)})
-                    if item.negated:
-                        query = (Q(metadata_type__id=item.metadata_type_id) & ~value_query)
-                    else:
-                        query = (Q(metadata_type__id=item.metadata_type_id) & value_query)
-
-                    if item.inclusion == INCLUSION_AND:
-                        total_query &= query
-                    elif item.inclusion == INCLUSION_OR:
-                        total_query |= query
-                except Exception, e:
-                    errors.append(e)
-                    value_query = Q()
-                    query = Q()
-
-            if total_query:
-                document_id_list = DocumentMetadata.objects.filter(total_query).values_list('document', flat=True)
-                metadata_groups[group] = Document.objects.filter(Q(id__in=document_id_list)).order_by('file_filename') or []
-            else:
-                metadata_groups[group] = []
-
-        if group_obj:
-            return metadata_groups[group_obj], errors
-
-        return metadata_groups, errors
-
-
-class MetadataGroup(models.Model):
-    document_type = models.ManyToManyField(DocumentType, null=True, blank=True,
-        verbose_name=_(u'document type'), help_text=_(u'If left blank, all document types will be matched.'))
-    name = models.CharField(max_length=32, verbose_name=_(u'name'))
-    label = models.CharField(max_length=32, verbose_name=_(u'label'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-
-    objects = MetadataGroupManager()
-
-    def __unicode__(self):
-        return self.label if self.label else self.name
-
-    class Meta:
-        verbose_name = _(u'document group')
-        verbose_name_plural = _(u'document groups')
-
-
-INCLUSION_AND = u'&'
-INCLUSION_OR = u'|'
-
-INCLUSION_CHOICES = (
-    (INCLUSION_AND, _(u'and')),
-    (INCLUSION_OR, _(u'or')),
-)
-
-OPERATOR_CHOICES = (
-    (u'exact', _(u'is equal')),
-    (u'iexact', _(u'is equal (case insensitive)')),
-    (u'contains', _(u'contains')),
-    (u'icontains', _(u'contains (case insensitive)')),
-    (u'in', _(u'is in')),
-    (u'gt', _(u'is greater than')),
-    (u'gte', _(u'is greater than or equal')),
-    (u'lt', _(u'is less than')),
-    (u'lte', _(u'is less than or equal')),
-    (u'startswith', _(u'starts with')),
-    (u'istartswith', _(u'starts with (case insensitive)')),
-    (u'endswith', _(u'ends with')),
-    (u'iendswith', _(u'ends with (case insensitive)')),
-    (u'regex', _(u'is in regular expression')),
-    (u'iregex', _(u'is in regular expression (case insensitive)')),
-)
-
-
-class MetadataGroupItem(models.Model):
-    metadata_group = models.ForeignKey(MetadataGroup, verbose_name=_(u'metadata group'))
-    inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'), help_text=_(u'This represents the metadata of all other documents.'))
-    operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
-    expression = models.CharField(max_length=128,
-        verbose_name=_(u'expression'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables of the same name but with the "metadata_" prefix added their name.'))
-    negated = models.BooleanField(default=False, verbose_name=_(u'negated'), help_text=_(u'Inverts the logic of the operator.'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-
-    def __unicode__(self):
-        return u'[%s] %s %s %s %s %s' % (u'x' if self.enabled else u' ', self.get_inclusion_display(), self.metadata_type, _(u'not') if self.negated else u'', self.get_operator_display(), self.expression)
-
-    class Meta:
-        verbose_name = _(u'group item')
-        verbose_name_plural = _(u'group items')
-
-
-available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()]) if AVAILABLE_MODELS else []
 
 
 class DocumentPageTransformation(models.Model):

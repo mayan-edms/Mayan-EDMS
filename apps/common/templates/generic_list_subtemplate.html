@@ -85,7 +85,7 @@
                             {% endif %}
                         </tr>
                     {% empty %}
-                        <tr><td colspan=99 class="tc">{% blocktrans %}There are no {{ title }}{% endblocktrans %}</td></tr>
+                        <tr><td colspan=99 class="tc">{% blocktrans with title|striptags as stripped_title %}There are no {{ stripped_title }}{% endblocktrans %}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>

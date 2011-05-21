@@ -103,7 +103,8 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
     context = {
         'next': next,
         'previous': previous,
-        'delete_view': True
+        'delete_view': True,
+        'form_icon': u'hourglass_delete.png',
     }
 
     if len(queue_documents) == 1:
@@ -260,6 +261,7 @@ def all_document_ocr_cleanup(request):
             'previous': previous,
             'next': next,
             'message': _(u'On large databases this operation may take some time to execute.'),
+            'form_icon': u'text_strikethroungh.png',
         }, context_instance=RequestContext(request))
     else:
         try:

@@ -1,29 +1,10 @@
 from django.contrib import admin
 
-from documents.models import MetadataType, DocumentType, Document, \
-    DocumentTypeMetadataType, DocumentMetadata, DocumentTypeFilename, \
-    MetadataIndex, DocumentPage, MetadataGroup, \
-    MetadataGroupItem, DocumentPageTransformation, RecentDocument
+from metadata.admin import DocumentMetadataInline
 
-from filesystem_serving.admin import DocumentMetadataIndexInline
-
-
-class MetadataTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'title', 'default', 'lookup')
-
-
-class MetadataIndexInline(admin.StackedInline):
-    model = MetadataIndex
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
-
-
-class DocumentTypeMetadataTypeInline(admin.StackedInline):
-    model = DocumentTypeMetadataType
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
+from documents.models import DocumentType, Document, \
+    DocumentTypeFilename, DocumentPage, \
+    DocumentPageTransformation, RecentDocument
 
 
 class DocumentTypeFilenameInline(admin.StackedInline):
@@ -35,16 +16,8 @@ class DocumentTypeFilenameInline(admin.StackedInline):
 
 class DocumentTypeAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentTypeFilenameInline, DocumentTypeMetadataTypeInline,
-        MetadataIndexInline
+        DocumentTypeFilenameInline
     ]
-
-
-class DocumentMetadataInline(admin.StackedInline):
-    model = DocumentMetadata
-    extra = 0
-    classes = ('collapse-open',)
-    allow_add = False
 
 
 class DocumentPageTransformationAdmin(admin.ModelAdmin):
@@ -60,22 +33,9 @@ class DocumentPageInline(admin.StackedInline):
 
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentMetadataInline, DocumentMetadataIndexInline,
-        DocumentPageInline
+        DocumentMetadataInline, DocumentPageInline
     ]
     list_display = ('uuid', 'file_filename', 'file_extension')
-
-
-class MetadataGroupItemInline(admin.StackedInline):
-    model = MetadataGroupItem
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
-
-
-class MetadataGroupAdmin(admin.ModelAdmin):
-    inlines = [MetadataGroupItemInline]
-    filter_horizontal = ['document_type']
 
 
 class RecentDocumentAdmin(admin.ModelAdmin):
@@ -86,10 +46,8 @@ class RecentDocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'datetime_accessed'
 
 
-admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
-admin.site.register(MetadataGroup, MetadataGroupAdmin)
 admin.site.register(DocumentPageTransformation,
     DocumentPageTransformationAdmin)
 admin.site.register(RecentDocument, RecentDocumentAdmin)

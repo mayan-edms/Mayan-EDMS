@@ -23,7 +23,11 @@
                 {% if next %}
                     <input name="next" type="hidden" value="{{ next }}" />
                 {% endif %}          
-
+                
+                <div style="float: left; margin-right: 10px;">
+                    <img style="margin-top: 12px;" src="{{ MEDIA_URL }}images/icons/{{ form_icon|default:'question.png' }}" alt="{% trans 'form icon' %}" />
+                </div>                
+                <div style="float: left; width: 90%;">
                 {% if title %}
                     <h3>{{ title }}</h3>
                 {% else %}
@@ -47,6 +51,10 @@
                   </a>
                   {% endif %}
                 </div>
+
+                </div>                
+                <div class="clear"></div>                 
+
             </form>
         </div>
     </div>

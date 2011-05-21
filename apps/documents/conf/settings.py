@@ -1,13 +1,10 @@
 """Configuration options for the documents app"""
 
-import datetime
 import hashlib
 import uuid
 
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
 
-from common.utils import proper_name
 from storage.backends.filebasedstorage import FileBasedStorage
 from smart_settings.api import register_settings
 
@@ -21,30 +18,14 @@ def default_uuid():
     """unicode(uuid.uuid4())"""
     return unicode(uuid.uuid4())
 
-default_available_functions = {
-    'current_date': datetime.datetime.now().date,
-}
-
-default_available_models = {
-    'User': User
-}
-
 available_transformations = {
     'rotate': {'label': _(u'Rotate [degrees]'), 'arguments': [{'name': 'degrees'}]}
-}
-
-available_indexing_functions = {
-    'proper_name': proper_name
 }
 
 register_settings(
     namespace=u'documents',
     module=u'documents.conf.settings',
     settings=[
-        # Definition
-        {'name': u'AVAILABLE_FUNCTIONS', 'global_name': u'DOCUMENTS_METADATA_AVAILABLE_FUNCTIONS', 'default': default_available_functions},
-        {'name': u'AVAILABLE_MODELS', 'global_name': u'DOCUMENTS_METADATA_AVAILABLE_MODELS', 'default': default_available_models},
-        {'name': u'AVAILABLE_INDEXING_FUNCTIONS', 'global_name': u'DOCUMENTS_INDEXING_AVAILABLE_FUNCTIONS', 'default': available_indexing_functions},
         # Upload
         {'name': u'USE_STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_USE_STAGING_DIRECTORY', 'default': False},
         {'name': u'STAGING_DIRECTORY', 'global_name': u'DOCUMENTS_STAGING_DIRECTORY', 'default': u'/tmp/mayan/staging', 'exists': True},
@@ -72,7 +53,5 @@ register_settings(
         {'name': u'ZOOM_MAX_LEVEL', 'global_name': u'DOCUMENTS_ZOOM_MAX_LEVEL', 'default': 200, 'description': _(u'Maximum amount in percent (%) to allow user to zoom in a document page interactively.')},
         {'name': u'ZOOM_MIN_LEVEL', 'global_name': u'DOCUMENTS_ZOOM_MIN_LEVEL', 'default': 50, 'description': _(u'Minimum amount in percent (%) to allow user to zoom out a document page interactively.')},
         {'name': u'ROTATION_STEP', 'global_name': u'DOCUMENTS_ROTATION_STEP', 'default': 90, 'description': _(u'Amount in degrees to rotate a document page per user interaction.')},
-        #Groups
-        {'name': u'GROUP_SHOW_EMPTY', 'global_name': u'DOCUMENTS_GROUP_SHOW_EMPTY', 'default': True},
     ]
 )

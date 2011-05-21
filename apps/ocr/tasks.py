@@ -28,7 +28,7 @@ if CACHE_URI:
         cache_backend = get_cache(CACHE_URI)
     except ImportError:
         # TODO: display or log error
-        cache_backend = None        
+        cache_backend = None
 else:
     cache_backend = None
 
@@ -95,7 +95,7 @@ def task_process_document_queues():
 
     # reset_orphans()
     # Causes problems with big clusters increased latency
-    # Disabled until better solution 
+    # Disabled until better solution
     q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
     q_delayed = Q(delay=True)
     q_delay_interval = Q(datetime_submitted__lt=datetime.now() - timedelta(seconds=REPLICATION_DELAY))

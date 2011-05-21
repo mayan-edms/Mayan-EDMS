@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -105,7 +105,8 @@ def folder_delete(request, folder_id):
         'previous': previous,
         'next': next,
         'object': folder,
-        'title': _(u'Are you sure you with to delete the folder: %s?') % folder
+        'title': _(u'Are you sure you with to delete the folder: %s?') % folder,
+        'form_icon': u'folder_delete.png',
     }
 
     return render_to_response('generic_confirm.html', context,

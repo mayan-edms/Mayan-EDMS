@@ -4,6 +4,7 @@ from common.utils import pretty_size, pretty_size_10
 
 from documents.conf.settings import STORAGE_BACKEND
 from documents.models import Document, DocumentType, DocumentPage
+from django.db.models import Avg, Count, Min, Max
 
 
 def get_used_size(path, file_list):
@@ -50,9 +51,15 @@ def get_statistics():
     except NotImplementedError:
         pass
 
-    paragraphs.append(
-        _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
+    paragraphs.extend(
+        [
+            _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
+            _(u'Minimum amount of pages per document: %(page_count__min)d') % Document.objects.annotate(page_count=Count('documentpage')).aggregate(Min('page_count')),
+            _(u'Maximum amount of pages per document: %(page_count__max)d') % Document.objects.annotate(page_count=Count('documentpage')).aggregate(Max('page_count')),
+            _(u'Average amount of pages per document: %(page_count__avg)f') % Document.objects.annotate(page_count=Count('documentpage')).aggregate(Avg('page_count')),
+        ]
     )
+    #[(day_count['date_added'].strftime('%Y-%m-%d'), day_count['id__count']) for day_count in Document.objects.values('date_added').annotate(Count("id"))]
 
     return {
         'title': _(u'Document statistics'),

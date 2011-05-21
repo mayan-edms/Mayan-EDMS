@@ -6,7 +6,7 @@ from navigation.api import register_sidebar_template
 
 from folders.models import Folder
 
-folder_list = {'text': _(u'folder list'), 'view': 'folder_list', 'famfam': 'folder'}
+folder_list = {'text': _(u'folder list'), 'view': 'folder_list', 'famfam': 'folder_user'}
 folder_create = {'text': _('create folder'), 'view': 'folder_create', 'famfam': 'folder_add'}
 folder_edit = {'text': _('edit'), 'view': 'folder_edit', 'args': 'object.id', 'famfam': 'folder_edit'}
 folder_delete = {'text': _('delete'), 'view': 'folder_delete', 'args': 'object.id', 'famfam': 'folder_delete'}
@@ -21,6 +21,6 @@ register_links(['folder_edit', 'folder_delete', 'folder_list', 'folder_create'],
 register_menu([
     {'text': _('folders'), 'view': 'folder_list', 'links': [
         folder_list, folder_create
-    ], 'famfam': 'folder', 'position': 2}])
+    ], 'famfam': 'folder_user', 'position': 2}])
 
-register_sidebar_template(['document_view', 'document_view_simple'], 'folders_sidebar_template.html')
+register_sidebar_template(['document_view_advanced', 'document_view_simple'], 'folders_sidebar_template.html')

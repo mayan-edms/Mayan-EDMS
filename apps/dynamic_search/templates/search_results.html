@@ -6,8 +6,12 @@
     {% if form %}
             {% include "search_results_subtemplate.html" %}
     {% endif %}
-    
-    {% include "generic_list_subtemplate.html" %}
+    {% if query_string %}
+        {% include "generic_list_subtemplate.html" %}
+    {% endif %}
+    {% if not form and not query_string %}
+        {% include "generic_list_subtemplate.html" %}
+    {% endif %}
 {% endblock %}
 
 {% block footer %}

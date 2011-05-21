@@ -46,6 +46,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
+        'form_icon': u'comment_delete.png',
     }
     if len(comments) == 1:
         context['object'] = comments[0].content_object

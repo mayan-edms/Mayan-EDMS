@@ -1,5 +1,3 @@
-import copy
-
 object_navigation = {}
 multi_object_navigation = {}
 menu_links = []
@@ -8,47 +6,25 @@ sidebar_templates = {}
 
 
 def register_multi_item_links(src, links, menu_name=None):
-    if menu_name in multi_object_navigation:
-        if hasattr(src, '__iter__'):
-            for one_src in src:
-                if one_src in object_navigation[menu_name]:
-                    multi_object_navigation[menu_name][one_src]['links'].extend(links)
-                else:
-                    multi_object_navigation[menu_name][one_src] = {'links': copy.copy(links)}
-        else:
-            if src in multi_object_navigation[menu_name]:
-                multi_object_navigation[menu_name][src]['links'].extend(links)
-            else:
-                multi_object_navigation[menu_name][src] = {'links': links}
+    multi_object_navigation.setdefault(menu_name, {})
+    if hasattr(src, '__iter__'):
+        for one_src in src:
+            multi_object_navigation[menu_name].setdefault(one_src, {'links': []})
+            multi_object_navigation[menu_name][one_src]['links'].extend(links)
     else:
-        multi_object_navigation[menu_name] = {}
-        if hasattr(src, '__iter__'):
-            for one_src in src:
-                multi_object_navigation[menu_name][one_src] = {'links': links}
-        else:
-            multi_object_navigation[menu_name] = {src: {'links': links}}
+        multi_object_navigation[menu_name].setdefault(src, {'links': []})
+        multi_object_navigation[menu_name][src]['links'].extend(links)
 
 
 def register_links(src, links, menu_name=None):
-    if menu_name in object_navigation:
-        if hasattr(src, '__iter__'):
-            for one_src in src:
-                if one_src in object_navigation[menu_name]:
-                    object_navigation[menu_name][one_src]['links'].extend(links)
-                else:
-                    object_navigation[menu_name][one_src] = {'links': copy.copy(links)}
-        else:
-            if src in object_navigation[menu_name]:
-                object_navigation[menu_name][src]['links'].extend(links)
-            else:
-                object_navigation[menu_name][src] = {'links': links}
+    object_navigation.setdefault(menu_name, {})
+    if hasattr(src, '__iter__'):
+        for one_src in src:
+            object_navigation[menu_name].setdefault(one_src, {'links': []})
+            object_navigation[menu_name][one_src]['links'].extend(links)
     else:
-        object_navigation[menu_name] = {}
-        if hasattr(src, '__iter__'):
-            for one_src in src:
-                object_navigation[menu_name][one_src] = {'links': links}
-        else:
-            object_navigation[menu_name] = {src: {'links': links}}
+        object_navigation[menu_name].setdefault(src, {'links': []})
+        object_navigation[menu_name][src]['links'].extend(links)
 
 
 def register_menu(links):
@@ -59,15 +35,11 @@ def register_menu(links):
 
 
 def register_model_list_columns(model, columns):
-    if model in model_list_columns:
-        model_list_columns[model].extend(columns)
-    else:
-        model_list_columns[model] = copy.copy(columns)
+    model_list_columns.setdefault(model, [])
+    model_list_columns[model].extend(columns)
 
 
 def register_sidebar_template(source_list, template_name):
     for source in source_list:
-        if source in sidebar_templates:
-            sidebar_templates[source].append(template_name)
-        else:
-            sidebar_templates[source] = [template_name]
+        sidebar_templates.setdefault(source, [])
+        sidebar_templates[source].append(template_name)

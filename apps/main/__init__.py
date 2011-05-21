@@ -20,7 +20,7 @@ sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug', 'condition': 
 
 __version_info__ = {
     'major': 0,
-    'minor': 6,
+    'minor': 7,
     'micro': 0,
     'releaselevel': 'final',
     'serial': 0
