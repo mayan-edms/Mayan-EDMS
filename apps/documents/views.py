@@ -641,6 +641,7 @@ def staging_file_delete(request, staging_file_id):
         'object': staging_file,
         'next': next,
         'previous': previous,
+        'form_icon': u'drive_delete.png',
     }, context_instance=RequestContext(request))
 
 
