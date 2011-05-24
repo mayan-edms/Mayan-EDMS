@@ -6,12 +6,10 @@ from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.conf import settings
 
-from common.wizard import BoundFormWizard
 from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
-from common.utils import urlquote
 from metadata.models import MetadataSet, MetadataType
 from metadata.forms import MetadataFormSet
 
@@ -243,82 +241,6 @@ class StagingDocumentForm(forms.Form):
 
 class DocumentTypeSelectForm(forms.Form):
     document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'), required=False)
-
-
-class DocumentCreateWizard(BoundFormWizard):
-    def generate_metadata_initial_values(self):
-        initial = []
-        for metadata_type in self.metadata_types:
-            initial.append({
-                'metadata_type': metadata_type,
-            })
-
-        for metadata_set in self.metadata_sets:
-            for metadata_set_item in metadata_set.metadatasetitem_set.all():
-                data = {
-                    'metadata_type': metadata_set_item.metadata_type,
-                }
-                if data not in initial:
-                    initial.append(data)
-
-        return initial
-
-    def __init__(self, *args, **kwargs):
-        self.query_dict = {}
-        self.multiple = kwargs.pop('multiple', True)
-        self.step_titles = kwargs.pop('step_titles', [
-            _(u'step 1 of 3: Document type'),
-            _(u'step 2 of 3: Metadata selection'),
-            _(u'step 3 of 3: Document metadata'),
-            ])
-        self.document_type = kwargs.pop('document_type', None)
-
-        super(DocumentCreateWizard, self).__init__(*args, **kwargs)
-
-        if self.document_type:
-            self.initial = {0: self.generate_metadata_initial_values()}
-
-    def render_template(self, request, form, previous_fields, step, context=None):
-        context = {'step_title': self.extra_context['step_titles'][step]}
-        return super(DocumentCreateWizard, self).render_template(
-            request, form, previous_fields, step, context
-        )
-
-    def parse_params(self, request, *args, **kwargs):
-        self.extra_context = {'step_titles': self.step_titles}
-
-    def process_step(self, request, form, step):
-        if isinstance(form, DocumentTypeSelectForm):
-            self.document_type = form.cleaned_data['document_type']
-
-        if isinstance(form, MetadataSelectionForm):
-            self.metadata_sets = form.cleaned_data['metadata_sets']
-            self.metadata_types = form.cleaned_data['metadata_types']
-            initial_data = self.generate_metadata_initial_values()
-            self.initial = {2: initial_data}
-            if not initial_data:
-                # If there is no metadata selected end wizard
-                self.form_list = [DocumentTypeSelectForm, MetadataSelectionForm]
-
-        if isinstance(form, MetadataFormSet):
-            for identifier, metadata in enumerate(form.cleaned_data):
-                self.query_dict['metadata%s_id' % identifier] = metadata['id']
-                self.query_dict['metadata%s_value' % identifier] = metadata['value']
-
-    def get_template(self, step):
-        return 'generic_wizard.html'
-
-    def done(self, request, form_list):
-        if self.multiple:
-            view = 'upload_document_multiple'
-        else:
-            view = 'upload_document'
-
-        if self.document_type:
-            self.query_dict['document_type_id'] = self.document_type.pk
-
-        url = urlquote(reverse(view), self.query_dict)
-        return HttpResponseRedirect(url)
 
 
 class PrintForm(forms.Form):

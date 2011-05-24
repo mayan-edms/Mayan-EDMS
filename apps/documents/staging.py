@@ -5,17 +5,37 @@ import hashlib
 from django.core.files.base import File
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext
+from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
+
+from converter import TRANFORMATION_CHOICES
+from converter.api import convert, cache_cleanup
 
 from documents.conf.settings import STAGING_DIRECTORY
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
-from converter import TRANFORMATION_CHOICES
-from converter.api import convert, cache_cleanup
+from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
+from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
+
+from documents.literals import UPLOAD_SOURCE_LOCAL, \
+    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
 #func = lambda:[StagingFile.get_all() is None for i in range(100)]
 #t1=time.time();func();t2=time.time();print '%s took %0.3f ms' % (func.func_name, (t2-t1)*1000.0)
+
+STAGING_FILE_FUNCTIONS = {
+    UPLOAD_SOURCE_STAGING: lambda x: STAGING_DIRECTORY,
+    UPLOAD_SOURCE_USER_STAGING: lambda x: os.path.join(USER_STAGING_DIRECTORY_ROOT, eval(USER_STAGING_DIRECTORY_EXPRESSION, {'user': x.user}))
+}
+
+def evaluate_user_staging_path(request, source):
+    try:
+        return STAGING_FILE_FUNCTIONS[source](request)
+    except Exception, exc:
+        messages.error(request, _(u'Error evaluating user staging directory expression; %s') % exc)
+        return u''
 
 
 def get_all_files(path):
@@ -23,11 +43,17 @@ def get_all_files(path):
         return sorted([os.path.normcase(f) for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))])
     except OSError, exc:
         raise OSError(ugettext(u'Unable get list of staging files: %s') % exc)
-        
-        
-def create_staging_file_class():
+    
+     
+def _return_new_class():
     return type('StagingFile', (StagingFile,), dict(StagingFile.__dict__))
+    
         
+def create_staging_file_class(request, source):
+    cls = _return_new_class()
+    cls.set_path(evaluate_user_staging_path(request, source))
+    return cls
+    
 
 class StagingFile(object):
     """

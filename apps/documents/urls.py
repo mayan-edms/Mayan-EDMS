@@ -1,23 +1,26 @@
 from django.conf.urls.defaults import patterns, url
 
+from converter.api import QUALITY_HIGH, QUALITY_PRINT
+
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import PRINT_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import DISPLAY_SIZE
 from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
-from documents.conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
-
-from converter.api import QUALITY_HIGH, QUALITY_PRINT
+from documents.literals import UPLOAD_SOURCE_LOCAL, \
+    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
 
 urlpatterns = patterns('documents.views',
     url(r'^document/list/$', 'document_list', (), 'document_list'),
     url(r'^document/list/recent/$', 'document_list_recent', (), 'document_list_recent'),
-    url(r'^document/create/from/local/single/$', 'document_create', {'multiple': False}, 'document_create'),
-    url(r'^document/create/from/local/multiple/$', 'document_create', {'multiple': True}, 'document_create_multiple'),
-    url(r'^document/type/upload/single/$', 'upload_document_with_type', {'multiple': False}, 'upload_document'),
-    url(r'^document/type/upload/multiple/$', 'upload_document_with_type', {'multiple': True}, 'upload_document_multiple'),
-    url(r'^document/(?P<document_id>\d+)/$', 'document_view_advanced', (), 'document_view_advanced'),
-    url(r'^document/(?P<document_id>\d+)/simple/$', 'document_view_simple', (), 'document_view_simple'),
+    url(r'^document/create/from/local/multiple/$', 'document_create', (), 'document_create_multiple'),
+
+    url(r'^document/upload/local/$', 'upload_document_with_type', {'source': UPLOAD_SOURCE_LOCAL}, 'upload_document_from_local'),
+    url(r'^document/upload/staging/$', 'upload_document_with_type', {'source': UPLOAD_SOURCE_STAGING}, 'upload_document_from_staging'),
+    url(r'^document/upload/staging/user/$', 'upload_document_with_type', {'source': UPLOAD_SOURCE_USER_STAGING}, 'upload_document_from_user_staging'),
+
+    url(r'^document/(?P<document_id>\d+)/view/advanced/$', 'document_view_advanced', (), 'document_view_advanced'),
+    url(r'^document/(?P<document_id>\d+)/view/$', 'document_view_simple', (), 'document_view_simple'),
     url(r'^document/(?P<document_id>\d+)/delete/$', 'document_delete', (), 'document_delete'),
     url(r'^document/multiple/delete/$', 'document_multiple_delete', (), 'document_multiple_delete'),
     url(r'^document/(?P<document_id>\d+)/edit/$', 'document_edit', (), 'document_edit'),
@@ -31,15 +34,15 @@ urlpatterns = patterns('documents.views',
     url(r'^document/(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE, 'quality': QUALITY_PRINT}, 'document_display_print'),
 
     url(r'^document/(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
-    url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', {'multiple': True if ENABLE_SINGLE_DOCUMENT_UPLOAD == False else False}, 'document_create_sibling'),
+    url(r'^document/(?P<document_id>\d+)/create/siblings/$', 'document_create_sibling', 'document_create_sibling'),
     url(r'^document/(?P<document_id>\d+)/find_duplicates/$', 'document_find_duplicates', (), 'document_find_duplicates'),
     url(r'^document/(?P<document_id>\d+)/clear_transformations/$', 'document_clear_transformations', (), 'document_clear_transformations'),
 
     url(r'^document/multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^duplicates/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
 
-    url(r'^staging_file/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
-    url(r'^staging_file/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),
+    url(r'^staging_file/type/(?P<source>\w+)/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
+    url(r'^staging_file/type/(?P<source>\w+)/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),
 
     url(r'^document/page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
     url(r'^document/page/(?P<document_page_id>\d+)/text/$', 'document_page_text', (), 'document_page_text'),

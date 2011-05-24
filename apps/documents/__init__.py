@@ -10,7 +10,8 @@ from tags.widgets import get_tags_inline_widget_simple
 
 from documents.models import Document, DocumentPage, DocumentPageTransformation
 from documents.staging import StagingFile
-from documents.conf.settings import ENABLE_SINGLE_DOCUMENT_UPLOAD
+from documents.conf.settings import USE_STAGING_DIRECTORY
+from documents.conf.settings import PER_USER_STAGING_DIRECTORY
 from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
@@ -31,8 +32,8 @@ register_permissions('documents', [
 document_list = {'text': _(u'documents list'), 'view': 'document_list', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_list_recent = {'text': _(u'recent documents list'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_create = {'text': _(u'upload a new document'), 'view': 'document_create', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
-document_create_multiple = {'text': _(u'upload multiple new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
-document_create_sibling = {'text': _(u'upload new document using same metadata'), 'view': 'document_create_sibling', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
+document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
+document_create_sibling = {'text': _(u'upload new documents using same metadata'), 'view': 'document_create_sibling', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_CREATE]}}
 document_view_simple = {'text': _(u'details (simple)'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_view_advanced = {'text': _(u'details (advanced)'), 'view': 'document_view_advanced', 'args': 'object.id', 'famfam': 'page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 document_delete = {'text': _(u'delete'), 'view': 'document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_DELETE]}}
@@ -68,18 +69,19 @@ document_page_rotate_left = {'text': _(u'rotate left'), 'class': 'no-parent-hist
 
 document_missing_list = {'text': _(u'Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': {'namespace': 'documents', 'permissions': [PERMISSION_DOCUMENT_VIEW]}}
 
-staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': 'object.id', 'famfam': 'drive_magnify'}
-staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': 'object.id', 'famfam': 'drive_delete'}
+upload_document_from_local = {'text': _(u'local'), 'view': 'upload_document_from_local', 'famfam': 'drive_disk', 'keep_query': True}
+upload_document_from_staging = {'text': _(u'staging'), 'view': 'upload_document_from_staging', 'famfam': 'drive_network', 'keep_query': True, 'condition': lambda x: USE_STAGING_DIRECTORY}
+upload_document_from_user_staging = {'text': _(u'user staging'), 'view': 'upload_document_from_user_staging', 'famfam': 'drive_user', 'keep_query': True, 'condition': lambda x: PER_USER_STAGING_DIRECTORY}
+
+staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source', 'object.id'], 'famfam': 'drive_magnify'}
+staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source', 'object.id'], 'famfam': 'drive_delete'}
 
 register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
 register_links(Document, [document_create_sibling], menu_name='sidebar')
 
 register_multi_item_links(['document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
-if ENABLE_SINGLE_DOCUMENT_UPLOAD:
-    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_multiple'], [document_list_recent, document_list, document_create, document_create_multiple], menu_name='sidebar')
-else:
-    register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_multiple'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
+register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
 
 register_links(DocumentPage, [
     document_page_transformation_list, document_page_view,
@@ -92,6 +94,10 @@ register_links(DocumentPage, [
 ], menu_name='sidebar')
 
 register_links(['document_page_view'], [document_page_rotate_left, document_page_rotate_right, document_page_zoom_in, document_page_zoom_out], menu_name='form_header')
+
+# Upload sources
+register_links(['upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging'], [upload_document_from_local, upload_document_from_staging, upload_document_from_user_staging], menu_name='form_header')
+
 
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
 register_links(DocumentPageTransformation, [document_page_transformation_page_edit, document_page_transformation_page_view], menu_name='sidebar')
@@ -132,15 +138,7 @@ register_model_list_columns(Document, [
         },
     ])
 
-if ENABLE_SINGLE_DOCUMENT_UPLOAD:
-    register_menu([
-        {'text': _(u'documents'), 'view': 'document_list_recent', 'links': [
-            document_list_recent, document_list, document_create, \
-            document_create_multiple
-
-        ], 'famfam': 'page', 'position': 1}])
-else:
-    register_menu([
-        {'text': _(u'documents'), 'view': 'document_list_recent', 'links': [
-            document_list_recent, document_list, document_create_multiple
-        ], 'famfam': 'page', 'position': 1}])
+register_menu([
+    {'text': _(u'documents'), 'view': 'document_list_recent', 'links': [
+        document_list_recent, document_list, document_create_multiple
+    ], 'famfam': 'page', 'position': 1}])

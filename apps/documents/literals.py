@@ -11,3 +11,7 @@ PERMISSION_DOCUMENT_DELETE = 'document_delete'
 PERMISSION_DOCUMENT_DOWNLOAD = 'document_download'
 PERMISSION_DOCUMENT_TRANSFORM = 'document_transform'
 PERMISSION_DOCUMENT_TOOLS = 'document_tools'
+
+UPLOAD_SOURCE_LOCAL = u'local'
+UPLOAD_SOURCE_STAGING = u'staging'
+UPLOAD_SOURCE_USER_STAGING = u'user_staging'

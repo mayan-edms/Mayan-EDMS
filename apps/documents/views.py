@@ -39,8 +39,6 @@ from document_indexing.api import update_indexes, delete_indexes
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import PER_USER_STAGING_DIRECTORY
-from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
-from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
 
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
@@ -60,19 +58,21 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_TRANSFORM, \
     PERMISSION_DOCUMENT_EDIT
 
-from documents.forms import DocumentTypeSelectForm, DocumentCreateWizard, \
+from documents.forms import DocumentTypeSelectForm, \
         DocumentForm, DocumentForm_edit, DocumentForm_view, \
         StagingDocumentForm, DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, \
         DocumentPageForm_text, PrintForm, MetadataSelectionForm
-
+from documents.wizards import DocumentCreateWizard
 from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument
 from documents.staging import create_staging_file_class
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
-
+from documents.literals import UPLOAD_SOURCE_LOCAL, \
+    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
+    
 
 def document_list(request, object_list=None, title=None):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
@@ -85,15 +85,15 @@ def document_list(request, object_list=None, title=None):
     }, context_instance=RequestContext(request))
 
 
-def document_create(request, multiple=True):
+def document_create(request):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
 
-    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet], multiple=multiple)
+    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
 
     return wizard(request)
 
 
-def document_create_sibling(request, document_id, multiple=True):
+def document_create_sibling(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
 
     document = get_object_or_404(Document, pk=document_id)
@@ -102,15 +102,10 @@ def document_create_sibling(request, document_id, multiple=True):
         query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
         query_dict['metadata%s_value' % pk] = metadata.value
 
-    if multiple:
-        view = 'upload_document_multiple'
-    else:
-        view = 'upload_document'
-
     if document.document_type_id:
         query_dict['document_type_id'] = document.document_type_id
 
-    url = reverse(view)
+    url = reverse('upload_document_from_local')
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
 
@@ -152,57 +147,41 @@ def _handle_zip_file(request, uploaded_file, document_type):
         return False
 
 
-def upload_document_with_type(request, multiple=True):
+def upload_document_with_type(request, source):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
-
+    
     document_type_id = request.GET.get('document_type_id', None)
     if document_type_id:
-        document_type = get_object_or_404(DocumentType, pk=document_type_id)
+        document_type = get_object_or_404(DocumentType, pk=document_type_id[0])
     else:
         document_type = None
-    
-    local_form = DocumentForm(prefix='local', initial={'document_type': document_type})
-    if USE_STAGING_DIRECTORY:
-        StagingFile = create_staging_file_class()
-
-        staging_form = StagingDocumentForm(prefix='staging', 
-            cls=StagingFile,
-            initial={'document_type': document_type})
-
-    if PER_USER_STAGING_DIRECTORY:
-        UserStagingFile = create_staging_file_class()
-        UserStagingFile.set_path('/tmp/mayan/staging/users/admin')
-        user_staging_form = StagingDocumentForm(prefix='user_staging',
-            cls=UserStagingFile,
-            initial={'document_type': document_type})
 
     if request.method == 'POST':
-        if 'local-submit' in request.POST.keys():
-            local_form = DocumentForm(request.POST, request.FILES,
-                prefix='local', initial={'document_type': document_type})
-            if local_form.is_valid():
+        if source == UPLOAD_SOURCE_LOCAL:
+            form = DocumentForm(request.POST, request.FILES,
+                initial={'document_type': document_type})
+            if form.is_valid():
                 try:
-                    if (not UNCOMPRESS_COMPRESSED_LOCAL_FILES) or (UNCOMPRESS_COMPRESSED_LOCAL_FILES and not _handle_zip_file(request, request.FILES['local-file'], document_type)):
-                        instance = local_form.save()
-                        _handle_save_document(request, instance, local_form)
+                    if (not UNCOMPRESS_COMPRESSED_LOCAL_FILES) or (UNCOMPRESS_COMPRESSED_LOCAL_FILES and not _handle_zip_file(request, request.FILES['file'], document_type)):
+                        instance = form.save()
+                        _handle_save_document(request, instance, form)
                         messages.success(request, _(u'Document uploaded successfully.'))
                 except Exception, e:
                     messages.error(request, e)
 
-                if multiple:
-                    return HttpResponseRedirect(request.get_full_path())
-                else:
-                    return HttpResponseRedirect(reverse('document_list'))
-        elif 'staging-submit' in request.POST.keys() and USE_STAGING_DIRECTORY:
-            staging_form = StagingDocumentForm(request.POST, request.FILES,
-                prefix='staging', initial={'document_type': document_type})
-            if staging_form.is_valid():
+                return HttpResponseRedirect(request.get_full_path())
+        elif (USE_STAGING_DIRECTORY and source == UPLOAD_SOURCE_STAGING) or (PER_USER_STAGING_DIRECTORY and source == UPLOAD_SOURCE_USER_STAGING):
+            StagingFile = create_staging_file_class(request, source)
+            form = StagingDocumentForm(request.POST,
+                request.FILES, cls=StagingFile,
+                initial={'document_type': document_type})
+            if form.is_valid():
                 try:
-                    staging_file = StagingFile.get(staging_form.cleaned_data['staging_file_id'])
+                    staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
                     if (not UNCOMPRESS_COMPRESSED_STAGING_FILES) or (UNCOMPRESS_COMPRESSED_STAGING_FILES and not _handle_zip_file(request, staging_file.upload(), document_type)):
                         document = Document(file=staging_file.upload(), document_type=document_type)
                         document.save()
-                        _handle_save_document(request, document, staging_form)
+                        _handle_save_document(request, document, form)
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
                     if DELETE_STAGING_FILE_AFTER_UPLOAD:
@@ -211,98 +190,60 @@ def upload_document_with_type(request, multiple=True):
                 except Exception, e:
                     messages.error(request, e)
 
-                if multiple:
-                    return HttpResponseRedirect(request.META['HTTP_REFERER'])
-                else:
-                    return HttpResponseRedirect(reverse('document_list'))
+                return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    else:
+        if source == UPLOAD_SOURCE_LOCAL:
+            form = DocumentForm(initial={'document_type': document_type})
+        elif (USE_STAGING_DIRECTORY and source == UPLOAD_SOURCE_STAGING) or (PER_USER_STAGING_DIRECTORY and source == UPLOAD_SOURCE_USER_STAGING):
+            StagingFile = create_staging_file_class(request, source)
+            form = StagingDocumentForm(cls=StagingFile,
+                initial={'document_type': document_type})
+        
 
     subtemplates_list = []
-    local_upload_form = {
-        'name': 'generic_form_subtemplate.html',
-        'context': {
-            'form': local_form,
-            'title': _(u'upload a local document'),
-        },
-    }
 
-    if USE_STAGING_DIRECTORY or PER_USER_STAGING_DIRECTORY:
-        local_upload_form.update({'grid': 12})        
-        subtemplates_list.append(local_upload_form)
+    if source == UPLOAD_SOURCE_LOCAL:
+        subtemplates_list.append({
+            'name': 'generic_form_subtemplate.html',
+            'context': {
+                'form': form,
+                'title': _(u'upload a local document'),
+            },
+        })
 
-        if PER_USER_STAGING_DIRECTORY:
-            try:
-                user_filelist = UserStagingFile.get_all()
-            except Exception, e:
-                messages.error(request, e)
-                filelist = []
-            finally:
-                subtemplates_list.append(
-                    {
-                        'name': 'generic_form_subtemplate.html',
-                        'grid': 6,
-                        #'grid_clear': False,
-                        'context': {
-                            'form': user_staging_form,
-                            'title': _(u'upload a document from user staging'),
-                        }
-                    },
-                )
-
-        if USE_STAGING_DIRECTORY:
-            try:
-                staging_filelist = StagingFile.get_all()
-            except Exception, e:
-                messages.error(request, e)
-                filelist = []
-            finally:
-                subtemplates_list.append(
-                    {
-                        'name': 'generic_form_subtemplate.html',
-                        'grid': 6,
-                        #'grid_clear': False,
-                        'context': {
-                            'form': staging_form,
-                            'title': _(u'upload a document from staging'),
-                        }
-                    },
-                )
-
-        if PER_USER_STAGING_DIRECTORY:
-            subtemplates_list.append(
+    elif (USE_STAGING_DIRECTORY and source == UPLOAD_SOURCE_STAGING) or (PER_USER_STAGING_DIRECTORY and source == UPLOAD_SOURCE_USER_STAGING):
+        if source == UPLOAD_SOURCE_STAGING:
+            form_title = _(u'upload a document from staging')
+            list_title = _(u'files in staging')
+        else:
+            form_title = _(u'upload a document from user staging')
+            list_title = _(u'files in user staging')
+        try:
+            staging_filelist = StagingFile.get_all()
+        except Exception, e:
+            messages.error(request, e)
+            staging_filelist = []
+        finally:
+            subtemplates_list = [
                 {
-                    'name': 'generic_list_subtemplate.html',
-                    'grid': 6,
-                    
+                    'name': 'generic_form_subtemplate.html',
                     'context': {
-                        'title': _(u'files in user staging'),
-                        'object_list': user_filelist,
-                        'hide_link': True,
+                        'form': form,
+                        'title': form_title,
                     }
                 },
-            )            
-
-                
-        if USE_STAGING_DIRECTORY:
-            subtemplates_list.append(
                 {
                     'name': 'generic_list_subtemplate.html',
-                        'grid': 6,
-                        'grid_clear': True,
-
                     'context': {
-                        'title': _(u'files in staging'),
+                        'title': list_title,
                         'object_list': staging_filelist,
                         'hide_link': True,
                     }
                 },
-            )
-                
-                        
-    else:
-        subtemplates_list.append(local_upload_form)  
-        
+            ]
 
     context = {
+        'source': source,
         'document_type_id': document_type_id,
         'subtemplates_list': subtemplates_list,
         'sidebar_subtemplates_list': [
@@ -310,7 +251,6 @@ def upload_document_with_type(request, multiple=True):
                 'name': 'generic_subtemplate.html',
                 'context': {
                     'title': _(u'Current metadata'),
-                    #'content': metadata_repr(decode_metadata_from_url(request.GET)),
                     'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET))
                 }
             }]
@@ -322,7 +262,10 @@ def upload_document_with_type(request, multiple=True):
 def document_view_simple(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
-    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+    #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+    # Triggers a 404 error on documents uploaded via local upload
+    # TODO: investigate
+    document = get_object_or_404(Document, pk=document_id)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
@@ -387,7 +330,10 @@ def document_view_simple(request, document_id):
 def document_view_advanced(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
 
-    document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+    #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+    # Triggers a 404 error on documents uploaded via local upload
+    # TODO: investigate
+    document = get_object_or_404(Document, pk=document_id)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
@@ -653,10 +599,9 @@ def document_download(request, document_id):
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-def staging_file_preview(request, staging_file_id):
+def staging_file_preview(request, source, staging_file_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
-    StagingFile = create_staging_file_class()
-
+    StagingFile = create_staging_file_class(request, source)
     try:
         output_file, errors = StagingFile.get(staging_file_id).preview()
         if errors and (request.user.is_staff or request.user.is_superuser):
@@ -680,9 +625,9 @@ def staging_file_preview(request, staging_file_id):
         return sendfile.sendfile(request, output_file)
 
 
-def staging_file_delete(request, staging_file_id):
+def staging_file_delete(request, source, staging_file_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
-    StagingFile = create_staging_file_class()
+    StagingFile = create_staging_file_class(request, source)
 
     staging_file = StagingFile.get(staging_file_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
@@ -697,6 +642,7 @@ def staging_file_delete(request, staging_file_id):
         return HttpResponseRedirect(next)
 
     return render_to_response('generic_confirm.html', {
+        'source': source,
         'delete_view': True,
         'object': staging_file,
         'next': next,
