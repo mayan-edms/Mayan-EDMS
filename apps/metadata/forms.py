@@ -4,7 +4,7 @@ from django.forms.formsets import formset_factory
 
 from metadata.conf.settings import AVAILABLE_MODELS
 from metadata.conf.settings import AVAILABLE_FUNCTIONS
-from metadata.models import MetadataType
+from metadata.models import MetadataSet, MetadataType
 
 
 class MetadataForm(forms.Form):
@@ -64,4 +64,21 @@ class AddMetadataForm(forms.Form):
 class MetadataRemoveForm(MetadataForm):
     update = forms.BooleanField(initial=False, label=_(u'Remove'), required=False)
 
+
+class MetadataSelectionForm(forms.Form):
+    metadata_sets = forms.ModelMultipleChoiceField(
+        queryset=MetadataSet.objects.all(),
+        label=_(u'Metadata sets'),
+        required=False,
+        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+    )
+
+    metadata_types = forms.ModelMultipleChoiceField(
+        queryset=MetadataType.objects.all(),
+        label=_(u'Metadata'),
+        required=False,
+        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+    )
+
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
+

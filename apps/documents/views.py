@@ -29,7 +29,7 @@ from filetransfers.api import serve_file
 from grouping.utils import get_document_group_subtemplate
 from metadata.api import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
-from metadata.forms import MetadataFormSet
+from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.api import check_permissions
 from tags.utils import get_tags_subtemplate
@@ -63,7 +63,7 @@ from documents.forms import DocumentTypeSelectForm, \
         StagingDocumentForm, DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, \
-        DocumentPageForm_text, PrintForm, MetadataSelectionForm
+        DocumentPageForm_text, PrintForm
 from documents.wizards import DocumentCreateWizard
 from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument
@@ -128,15 +128,16 @@ def _handle_save_document(request, document, form=None):
             messages.warning(request, warning)
 
 
-def _handle_zip_file(request, uploaded_file, document_type):
+def _handle_zip_file(request, uploaded_file, document_type=None):
     filename = getattr(uploaded_file, 'filename', getattr(uploaded_file, 'name', ''))
     if filename.lower().endswith('zip'):
         zfobj = zipfile.ZipFile(uploaded_file)
         for filename in zfobj.namelist():
             if not filename.endswith('/'):
                 zip_document = Document(file=SimpleUploadedFile(
-                    name=filename, content=zfobj.read(filename)),
-                    document_type=document_type)
+                    name=filename, content=zfobj.read(filename)))
+                if document_type:
+                    zip_document.document_type = document_type
                 zip_document.save()
                 _handle_save_document(request, zip_document)
                 messages.success(request, _(u'Extracted file: %s, uploaded successfully.') % filename)
@@ -179,7 +180,9 @@ def upload_document_with_type(request, source):
                 try:
                     staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
                     if (not UNCOMPRESS_COMPRESSED_STAGING_FILES) or (UNCOMPRESS_COMPRESSED_STAGING_FILES and not _handle_zip_file(request, staging_file.upload(), document_type)):
-                        document = Document(file=staging_file.upload(), document_type=document_type)
+                        document = Document(file=staging_file.upload())
+                        if document_type:
+                            document.document_type=document_type
                         document.save()
                         _handle_save_document(request, document, form)
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)

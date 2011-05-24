@@ -10,8 +10,6 @@ from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
-from metadata.models import MetadataSet, MetadataType
-from metadata.forms import MetadataFormSet
 
 from documents.models import Document, DocumentType, \
     DocumentPage, DocumentPageTransformation
@@ -148,7 +146,7 @@ class DocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DocumentForm, self).__init__(*args, **kwargs)
         if 'initial' in kwargs:
-            document_type = kwargs['initial'].get('document_type', None)
+            document_type = kwargs['initial'].get('document_type', u'')
             if document_type:
                 if 'document_type' in self.fields:
                     #To allow merging with DocumentForm_edit
@@ -250,18 +248,3 @@ class PrintForm(forms.Form):
     page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
-
-class MetadataSelectionForm(forms.Form):
-    metadata_sets = forms.ModelMultipleChoiceField(
-        queryset=MetadataSet.objects.all(),
-        label=_(u'Metadata sets'),
-        required=False,
-        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
-    )
-
-    metadata_types = forms.ModelMultipleChoiceField(
-        queryset=MetadataType.objects.all(),
-        label=_(u'Metadata'),
-        required=False,
-        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
-    )

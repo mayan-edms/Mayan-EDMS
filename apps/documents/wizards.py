@@ -5,8 +5,9 @@ from django.http import HttpResponseRedirect
 from common.wizard import BoundFormWizard
 from common.utils import urlquote
 
-from documents.forms import DocumentTypeSelectForm, \
-    MetadataSelectionForm, MetadataFormSet
+from metadata.forms import MetadataSelectionForm, MetadataFormSet
+
+from documents.forms import DocumentTypeSelectForm
 
 
 class DocumentCreateWizard(BoundFormWizard):
