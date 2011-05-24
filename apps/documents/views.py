@@ -503,8 +503,12 @@ def document_edit(request, document_id):
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:
+        if hasattr(document, 'document_type'):
+            document_type = document.document_type
+        else:
+            document_type = None
         form = DocumentForm_edit(instance=document, initial={
-            'new_filename': document.file_filename, 'document_type': document.document_type})
+            'new_filename': document.file_filename, 'document_type': document_type})
 
     return render_to_response('generic_form.html', {
         'form': form,
