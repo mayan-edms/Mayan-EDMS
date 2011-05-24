@@ -1,5 +1,6 @@
 import copy
 import re
+import urlparse
 
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.template import TemplateSyntaxError, Library, \
@@ -8,6 +9,8 @@ from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
 from django.template import Context
+
+from common.utils import urlquote
 
 from navigation.api import object_navigation, multi_object_navigation, \
     menu_links as menu_navigation, sidebar_templates
@@ -18,6 +21,9 @@ register = Library()
 
 
 def process_links(links, view_name, url):
+    """
+    Process menu navigation links
+    """
     items = []
     active_item = None
     for item, count in zip(links, range(len(links))):
@@ -92,7 +98,7 @@ def resolve_arguments(context, src_args):
     return args, kwargs
 
 
-def resolve_links(context, links, current_view, current_path):
+def resolve_links(context, links, current_view, current_path, parsed_query_string):
     context_links = []
     for link in links:
         new_link = copy.copy(link)
@@ -110,6 +116,8 @@ def resolve_links(context, links, current_view, current_path):
                     new_link['url'] = reverse(link['view'], kwargs=kwargs)
                 else:
                     new_link['url'] = reverse(link['view'], args=args)
+                    if link.get('keep_query', False):
+                        new_link['url'] = urlquote(new_link['url'], parsed_query_string)
             except NoReverseMatch, err:
                 new_link['url'] = '#'
                 new_link['error'] = err
@@ -119,6 +127,8 @@ def resolve_links(context, links, current_view, current_path):
                 new_link['url'] = link['url'] % kwargs
             else:
                 new_link['url'] = link['url'] % args
+                if link.get('keep_query', False):
+                    new_link['url'] = urlquote(new_link['url'], parsed_query_string)
         else:
             new_link['active'] = False
         context_links.append(new_link)
@@ -126,9 +136,13 @@ def resolve_links(context, links, current_view, current_path):
 
 
 def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
-    current_path = Variable('request').resolve(context).META['PATH_INFO']
+    request = Variable('request').resolve(context)
+    current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
     context_links = []
+
+    query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
+    parsed_query_string = urlparse.parse_qs(query_string)
 
     try:
         """
@@ -137,7 +151,7 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         """
         navigation_object_links = Variable('navigation_object_links').resolve(context)
         if navigation_object_links:
-            return [link for link in resolve_links(context, navigation_object_links, current_view, current_path)]
+            return [link for link in resolve_links(context, navigation_object_links, current_view, current_path, parsed_query_string)]
     except VariableDoesNotExist:
         pass
 
@@ -153,14 +167,14 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
 
     try:
         links = links_dict[menu_name][current_view]['links']
-        for link in resolve_links(context, links, current_view, current_path):
+        for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
             context_links.append(link)
     except KeyError:
         pass
 
     try:
         links = links_dict[menu_name][type(obj)]['links']
-        for link in resolve_links(context, links, current_view, current_path):
+        for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
             context_links.append(link)
     except KeyError:
         pass
