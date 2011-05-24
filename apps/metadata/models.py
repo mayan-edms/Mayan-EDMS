@@ -64,7 +64,7 @@ class DocumentMetadata(models.Model):
     """
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'type'))
-    value = models.TextField(blank=True, null=True, verbose_name=_(u'value'), db_index=True)
+    value = models.CharField(max_length=256, blank=True, verbose_name=_(u'value'), db_index=True)
 
     def __unicode__(self):
         return unicode(self.metadata_type)
