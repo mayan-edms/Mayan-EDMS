@@ -20,9 +20,8 @@ def tools_menu(request):
     for namespace, values in tools.items():
         for link in values['links']:
             try:
-                namespace = link.get('permissions', {}).get('namespace', None)
-                permissions = link.get('permissions', {}).get('permissions', [])
-                check_permissions(request.user, namespace, permissions)
+                permissions = link.get('permissions', [])
+                check_permissions(request.user, permissions)
                 user_tools[namespace] = {
                     'title': values['title']
                     }

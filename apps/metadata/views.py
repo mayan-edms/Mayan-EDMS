@@ -19,7 +19,7 @@ from metadata.models import DocumentMetadata, MetadataType
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, 'metadata', [PERMISSION_METADATA_DOCUMENT_EDIT])
+    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
 
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
@@ -108,7 +108,7 @@ def metadata_multiple_edit(request):
 
 
 def metadata_add(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, 'metadata', [PERMISSION_METADATA_DOCUMENT_ADD])
+    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
 
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
@@ -161,7 +161,7 @@ def metadata_multiple_add(request):
 
 
 def metadata_remove(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, 'metadata', [PERMISSION_METADATA_DOCUMENT_REMOVE])
+    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
 
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]

@@ -16,7 +16,7 @@ from document_indexing.api import get_breadcrumbs, get_instance_link, \
 
 
 def index_instance_list(request, index_id=None):
-    check_permissions(request.user, 'document_indexing', [PERMISSION_DOCUMENT_INDEXING_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
 
     if index_id:
         index_instance = get_object_or_404(IndexInstance, pk=index_id)
@@ -39,7 +39,7 @@ def index_instance_list(request, index_id=None):
 
 
 def rebuild_index_instances(request):
-    check_permissions(request.user, 'document_indexing', [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))

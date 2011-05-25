@@ -1,11 +1,10 @@
 {% load permission_tags %}
 {% load navigation_tags %}
 
-{% with link.permissions.namespace as namespace %}
-{% with link.permissions.permissions as permissions %}
+{% with link.permissions as permissions %}
 {% with link.condition as condition %}
 
-    {% check_permissions request.user namespace permissions %}
+    {% check_permissions request.user permissions %}
     {% if permission %}
         {% evaluate_link condition as conditional_display %}
         {% if conditional_display %}
@@ -17,6 +16,5 @@
         {% endif %}
     {% endif %}
 
-{% endwith %}
 {% endwith %}
 {% endwith %}

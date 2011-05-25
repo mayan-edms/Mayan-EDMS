@@ -140,7 +140,7 @@ def folder_view(request, folder_id):
 
 
 def folder_add_document(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
     if request.method == 'POST':

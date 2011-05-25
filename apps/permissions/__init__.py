@@ -8,20 +8,20 @@ from navigation.api import register_links
 from permissions.conf.settings import DEFAULT_ROLES
 from permissions.models import Role
 
-PERMISSION_ROLE_VIEW = 'role_view'
-PERMISSION_ROLE_EDIT = 'role_edit'
-PERMISSION_ROLE_CREATE = 'role_create'
-PERMISSION_ROLE_DELETE = 'role_delete'
-PERMISSION_PERMISSION_GRANT = 'permission_grant'
-PERMISSION_PERMISSION_REVOKE = 'permission_revoke'
+PERMISSION_ROLE_VIEW = {'namespace': 'permissions', 'name': 'role_view', 'label':_(u'View roles')}
+PERMISSION_ROLE_EDIT = {'namespace': 'permissions', 'name': 'role_edit', 'label':_(u'Edit roles')}
+PERMISSION_ROLE_CREATE = {'namespace': 'permissions', 'name': 'role_create', 'label':_(u'Create roles')}
+PERMISSION_ROLE_DELETE = {'namespace': 'permissions', 'name': 'role_delete', 'label':_(u'Delete roles')}
+PERMISSION_PERMISSION_GRANT = {'namespace': 'permissions', 'name': 'permission_grant', 'label':_(u'Grant permissions')}
+PERMISSION_PERMISSION_REVOKE = {'namespace': 'permissions', 'name': 'permission_revoke', 'label':_(u'Revoke permissions')}
 
 
-role_list = {'text': _(u'roles'), 'view': 'role_list', 'famfam': 'medal_gold_1', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_VIEW]}}
-role_create = {'text': _(u'create new role'), 'view': 'role_create', 'famfam': 'medal_gold_add', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_CREATE]}}
-role_edit = {'text': _(u'edit'), 'view': 'role_edit', 'args': 'object.id', 'famfam': 'medal_gold_1', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_EDIT]}}
-role_members = {'text': _(u'members'), 'view': 'role_members', 'args': 'object.id', 'famfam': 'group_key', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_EDIT]}}
-role_permissions = {'text': _(u'role permissions'), 'view': 'role_permissions', 'args': 'object.id', 'famfam': 'key_go', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]}}
-role_delete = {'text': _(u'delete'), 'view': 'role_delete', 'args': 'object.id', 'famfam': 'medal_gold_delete', 'permissions': {'namespace': 'permissions', 'permissions': [PERMISSION_ROLE_DELETE]}}
+role_list = {'text': _(u'roles'), 'view': 'role_list', 'famfam': 'medal_gold_1', 'permissions': [PERMISSION_ROLE_VIEW]}
+role_create = {'text': _(u'create new role'), 'view': 'role_create', 'famfam': 'medal_gold_add', 'permissions': [PERMISSION_ROLE_CREATE]}
+role_edit = {'text': _(u'edit'), 'view': 'role_edit', 'args': 'object.id', 'famfam': 'medal_gold_1', 'permissions': [PERMISSION_ROLE_EDIT]}
+role_members = {'text': _(u'members'), 'view': 'role_members', 'args': 'object.id', 'famfam': 'group_key', 'permissions': [PERMISSION_ROLE_EDIT]}
+role_permissions = {'text': _(u'role permissions'), 'view': 'role_permissions', 'args': 'object.id', 'famfam': 'key_go', 'permissions': [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]}
+role_delete = {'text': _(u'delete'), 'view': 'role_delete', 'args': 'object.id', 'famfam': 'medal_gold_delete', 'permissions': [PERMISSION_ROLE_DELETE]}
 
 register_links(Role, [role_edit, role_delete, role_permissions, role_members])
 register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_create, role_list], menu_name='sidebar')

@@ -22,12 +22,11 @@ def document_group_action(request):
 
 
 def document_group_view(request, document_id, document_group_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
     document_group = get_object_or_404(DocumentGroup, pk=document_group_id)
     object_list, errors = DocumentGroup.objects.get_groups_for(document, document_group)
-    #object_list, errors = document.get_metadata_groups(document_group)
 
     return render_to_response('generic_list.html', {
         'object_list': object_list['documents'],

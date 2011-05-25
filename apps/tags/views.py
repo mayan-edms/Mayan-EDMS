@@ -17,7 +17,7 @@ from tags import PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH, \
 
 
 def tag_remove(request, tag_id, document_id):
-    check_permissions(request.user, 'tags', [PERMISSION_TAG_REMOVE])
+    check_permissions(request.user, [PERMISSION_TAG_REMOVE])
 
     tag = get_object_or_404(Tag, pk=tag_id)
     document = get_object_or_404(Document, pk=document_id)
@@ -39,14 +39,14 @@ def tag_add(request, document_id):
         form = AddTagForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['new_tag']:
-                check_permissions(request.user, 'tags', [PERMISSION_TAG_CREATE])
+                check_permissions(request.user, [PERMISSION_TAG_CREATE])
                 tag_name = form.cleaned_data['new_tag']
                 if Tag.objects.filter(name=tag_name):
                     is_new = False
                 else:
                     is_new = True
             elif form.cleaned_data['existing_tags']:
-                check_permissions(request.user, 'tags', [PERMISSION_TAG_ATTACH])
+                check_permissions(request.user, [PERMISSION_TAG_ATTACH])
                 tag_name = form.cleaned_data['existing_tags']
                 is_new = False
             else:
@@ -84,7 +84,7 @@ def tag_list(request):
 
 
 def tag_delete(request, tag_id=None, tag_id_list=None):
-    check_permissions(request.user, 'tags', [PERMISSION_TAG_DELETE])
+    check_permissions(request.user, [PERMISSION_TAG_DELETE])
     post_action_redirect = None
 
     if tag_id:
@@ -137,7 +137,7 @@ def tag_multiple_delete(request):
 
 
 def tag_edit(request, tag_id):
-    check_permissions(request.user, 'tags', [PERMISSION_TAG_EDIT])
+    check_permissions(request.user, [PERMISSION_TAG_EDIT])
     tag = get_object_or_404(Tag, pk=tag_id)
 
     if request.method == 'POST':

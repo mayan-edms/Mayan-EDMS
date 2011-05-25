@@ -75,7 +75,7 @@ from documents.literals import UPLOAD_SOURCE_LOCAL, \
     
 
 def document_list(request, object_list=None, title=None):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     return render_to_response('generic_list.html', {
         'object_list': object_list if not (object_list is None) else Document.objects.only('file_filename', 'file_extension').all(),
@@ -86,7 +86,7 @@ def document_list(request, object_list=None, title=None):
 
 
 def document_create(request):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
 
     wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
 
@@ -94,7 +94,7 @@ def document_create(request):
 
 
 def document_create_siblings(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
 
     document = get_object_or_404(Document, pk=document_id)
     query_dict = {}
@@ -149,7 +149,7 @@ def _handle_zip_file(request, uploaded_file, document_type=None):
 
 
 def upload_document_with_type(request, source):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     
     document_type_id = request.GET.get('document_type_id', None)
     if document_type_id:
@@ -263,7 +263,7 @@ def upload_document_with_type(request, source):
 
 
 def document_view_simple(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     # Triggers a 404 error on documents uploaded via local upload
@@ -331,7 +331,7 @@ def document_view_simple(request, document_id):
 
 
 def document_view_advanced(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     # Triggers a 404 error on documents uploaded via local upload
@@ -413,7 +413,7 @@ def document_view_advanced(request, document_id):
 
 
 def document_delete(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DELETE])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_DELETE])
     post_action_redirect = None
 
     if document_id:
@@ -469,9 +469,7 @@ def document_multiple_delete(request):
 
 
 def document_edit(request, document_id):
-    check_permissions(
-        request.user, 'documents', [PERMISSION_DOCUMENT_PROPERTIES_EDIT]
-    )
+    check_permissions(request.user, [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
 
     document = get_object_or_404(Document, pk=document_id)
 
@@ -541,7 +539,7 @@ def calculate_converter_arguments(document, *args, **kwargs):
 
 
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
 
@@ -589,7 +587,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
 
 
 def document_download(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_DOWNLOAD])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_DOWNLOAD])
 
     document = get_object_or_404(Document, pk=document_id)
     try:
@@ -607,7 +605,7 @@ def document_download(request, document_id):
 
 
 def staging_file_preview(request, source, staging_file_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     StagingFile = create_staging_file_class(request, source)
     try:
         output_file, errors = StagingFile.get(staging_file_id).preview()
@@ -633,7 +631,7 @@ def staging_file_preview(request, source, staging_file_id):
 
 
 def staging_file_delete(request, source, staging_file_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     StagingFile = create_staging_file_class(request, source)
 
     staging_file = StagingFile.get(staging_file_id)
@@ -659,7 +657,7 @@ def staging_file_delete(request, source, staging_file_id):
 
 
 def document_page_transformation_list(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
@@ -683,7 +681,7 @@ def document_page_transformation_list(request, document_page_id):
 
 
 def document_page_transformation_create(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
@@ -705,7 +703,7 @@ def document_page_transformation_create(request, document_page_id):
 
 
 def document_page_transformation_edit(request, document_page_transformation_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
 
     document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
     return update_object(request, template_name='generic_form.html',
@@ -723,7 +721,7 @@ def document_page_transformation_edit(request, document_page_transformation_id):
 
 
 def document_page_transformation_delete(request, document_page_transformation_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
@@ -746,7 +744,7 @@ def document_page_transformation_delete(request, document_page_transformation_id
 
 
 def document_find_duplicates(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
     return _find_duplicate_list(request, [document], include_source=True, confirmation=False)
@@ -778,13 +776,13 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
 
 
 def document_find_all_duplicates(request):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     return _find_duplicate_list(request, include_source=True)
 
 
 def document_clear_transformations(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_TRANSFORM])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
 
     if document_id:
         documents = [get_object_or_404(Document.objects, pk=document_id)]
@@ -835,7 +833,7 @@ def document_multiple_clear_transformations(request):
 
 
 def document_missing_list(request):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
@@ -857,7 +855,7 @@ def document_missing_list(request):
 
 
 def document_page_view(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
@@ -874,7 +872,7 @@ def document_page_view(request, document_page_id):
 
 
 def document_page_text(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page_form = DocumentPageForm_text(instance=document_page)
@@ -888,7 +886,7 @@ def document_page_text(request, document_page_id):
 
 
 def document_page_edit(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_EDIT])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_EDIT])
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
@@ -912,7 +910,7 @@ def document_page_edit(request, document_page_id):
 
 
 def document_page_navigation_next(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
@@ -925,7 +923,7 @@ def document_page_navigation_next(request, document_page_id):
 
 
 def document_page_navigation_previous(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
@@ -938,7 +936,7 @@ def document_page_navigation_previous(request, document_page_id):
 
 
 def document_page_navigation_first(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
@@ -947,7 +945,7 @@ def document_page_navigation_first(request, document_page_id):
 
 
 def document_page_navigation_last(request, document_page_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
@@ -964,7 +962,7 @@ def document_list_recent(request):
 
 
 def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
@@ -1022,7 +1020,7 @@ def document_page_rotate_left(request, document_page_id):
 
 
 def document_print(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
 
@@ -1078,7 +1076,7 @@ def document_print(request, document_id):
 
 
 def document_hard_copy(request, document_id):
-    check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
 

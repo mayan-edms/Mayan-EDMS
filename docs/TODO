@@ -82,11 +82,12 @@ Common
 
 Permissions
 ===========
-* Add permissions support to menus                                     - STARTED (secondary menus done)
+* Add permissions support to menus                                     - DONE
 * Role editing view under setup                                        - DONE
 * Implement permissions decorators
 * Add user editing under roles menus                                   - DONE
 * Workflows app
+* Handle anonymous users
 
 Documents
 =========
@@ -112,7 +113,7 @@ Documents
 * Document model's delete method might not get called when deleting in bulk
     from a queryset
 * Allow metadata entry form to mix required and non required metadata  - DEFFERED
-* Block Setup menu item to non staff and non superuser users
+* Block Setup menu item to non staff and non superuser users           - DONE by means of evaluation or permissions
 * Include annotations in transformed documents downloads
 * Toggable option to include default transformation on document upload
 * Add document tagging                                                 - DONE

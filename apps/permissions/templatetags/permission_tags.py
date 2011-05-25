@@ -8,9 +8,8 @@ register = Library()
 
 
 class CheckPermissionsNode(Node):
-    def __init__(self, requester, namespace=None, permission_list=None, *args, **kwargs):
+    def __init__(self, requester, permission_list=None, *args, **kwargs):
         self.requester = requester
-        self.namespace = namespace
         self.permission_list = permission_list
 
     def render(self, context):
@@ -21,9 +20,8 @@ class CheckPermissionsNode(Node):
             context[u'permission'] = True
             return u''
         requester = Variable(self.requester).resolve(context)
-        namespace = Variable(self.namespace).resolve(context)
         try:
-            check_permission_function(requester, namespace, permission_list)
+            check_permission_function(requester, permission_list)
             context[u'permission'] = True
             return u''
         except PermissionDenied:
