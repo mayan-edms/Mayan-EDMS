@@ -4,11 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
 
-
-class PermissionManager(models.Manager):
-    def get_for_holder(self, holder):
-        ct = ContentType.objects.get_for_model(holder)
-        return [Permission.objects.get(pk=pk) for pk in PermissionHolder.objects.filter(holder_type=ct, holder_id=holder.pk).values_list('permission_id', flat=True)]
+from permissions.managers import RoleMemberManager, PermissionManager
 
 
 class Permission(models.Model):
@@ -90,12 +86,6 @@ class Role(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('role_list',)
-
-
-class RoleMemberManager(models.Manager):
-    def get_roles_for_member(self, member_obj):
-        member_type = ContentType.objects.get_for_model(member_obj)
-        return [role_member.role for role_member in RoleMember.objects.filter(member_type=member_type, member_id=member_obj.pk)]
 
 
 class RoleMember(models.Model):
