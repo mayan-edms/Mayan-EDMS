@@ -8,19 +8,7 @@ from documents.models import Document
 from ocr.literals import DOCUMENTQUEUE_STATE_STOPPED, \
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_CHOICES
-from ocr.exceptions import AlreadyQueued
-
-
-class DocumentQueueManager(models.Manager):
-    def queue_document(self, document, queue_name='default'):
-        document_queue = DocumentQueue.objects.get(name=queue_name)
-        if QueueDocument.objects.filter(document_queue=document_queue, document=document).count():
-            raise AlreadyQueued
-
-        queue_document = QueueDocument(document_queue=document_queue, document=document, delay=True)
-        queue_document.save()
-
-        return document_queue
+from ocr.manager import DocumentQueueManager
 
 
 class DocumentQueue(models.Model):
