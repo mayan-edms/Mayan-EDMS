@@ -37,7 +37,7 @@ main_menu = [
         check_settings, role_list, user_list, group_list, admin_site
         ], 'famfam': 'cog', 'name': 'setup', 'position': 8},
 
-    {'text': _(u'about'), 'view': 'about', 'position': 9},
+    {'text': _(u'about'), 'view': 'about', 'famfam': 'information', 'position': 9},
 ]
 
 if not SIDE_BAR_SEARCH:
