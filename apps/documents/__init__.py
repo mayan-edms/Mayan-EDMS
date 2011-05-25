@@ -5,7 +5,7 @@ from django.conf import settings
 from navigation.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
 from main.api import register_diagnostic, register_tool
-from permissions.api import register_permission
+from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 
 from documents.models import Document, DocumentPage, DocumentPageTransformation
@@ -18,6 +18,7 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS, \
     PERMISSION_DOCUMENT_EDIT
 
+set_namespace_title('documents', _(u'documents'))
 register_permission(PERMISSION_DOCUMENT_CREATE)
 register_permission(PERMISSION_DOCUMENT_PROPERTIES_EDIT)
 register_permission(PERMISSION_DOCUMENT_EDIT)

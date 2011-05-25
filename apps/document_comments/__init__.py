@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, \
     register_model_list_columns
-from permissions.api import register_permission
+from permissions.api import register_permission, set_namespace_title
 
 from django.contrib.comments.models import Comment
 
@@ -12,6 +12,7 @@ PERMISSION_COMMENT_CREATE = {'namespace': 'comments', 'name': 'comment_create', 
 PERMISSION_COMMENT_DELETE = {'namespace': 'comments', 'name': 'comment_delete', 'label': _(u'Delete comments')}
 PERMISSION_COMMENT_EDIT = {'namespace': 'comments', 'name': 'comment_edit', 'label': _(u'Edit comments')}
 
+set_namespace_title('comments', _(u'comments'))
 register_permission(PERMISSION_COMMENT_CREATE)
 register_permission(PERMISSION_COMMENT_DELETE)
 register_permission(PERMISSION_COMMENT_EDIT)

@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_menu, \
     register_model_list_columns, register_multi_item_links
-from permissions.api import register_permission
+from permissions.api import register_permission, set_namespace_title
 from navigation.api import register_sidebar_template
 
 from taggit.models import Tag
@@ -13,6 +13,7 @@ PERMISSION_TAG_REMOVE = {'namespace': 'tags', 'name': 'tag_remove', 'label': _(u
 PERMISSION_TAG_DELETE = {'namespace': 'tags', 'name': 'tag_delete', 'label': _(u'Delete global tags')}
 PERMISSION_TAG_EDIT = {'namespace': 'tags', 'name': 'tag_edit', 'label': _(u'Edit global tags')}
 
+set_namespace_title('tags', _(u'tags'))
 register_permission(PERMISSION_TAG_CREATE)
 register_permission(PERMISSION_TAG_ATTACH)
 register_permission(PERMISSION_TAG_REMOVE)

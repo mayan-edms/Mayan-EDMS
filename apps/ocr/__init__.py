@@ -4,7 +4,7 @@ from django.db.utils import DatabaseError
 from django.db.models.signals import post_save
 
 from navigation.api import register_links, register_menu, register_multi_item_links
-from permissions.api import register_permission
+from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
 from main.api import register_tool
 
@@ -17,6 +17,7 @@ PERMISSION_OCR_DOCUMENT_DELETE = {'namespace': 'ocr', 'name': 'ocr_document_dele
 PERMISSION_OCR_QUEUE_ENABLE_DISABLE = {'namespace': 'ocr', 'name': 'ocr_queue_enable_disable', 'label': _(u'Can enable/disable an OCR queue')}
 PERMISSION_OCR_CLEAN_ALL_PAGES = {'namespace': 'ocr', 'name': 'ocr_clean_all_pages', 'label': _(u'Can execute an OCR clean up on all document pages')}
 
+set_namespace_title('ocr', _(u'ocr'))
 register_permission(PERMISSION_OCR_DOCUMENT)
 register_permission(PERMISSION_OCR_DOCUMENT_DELETE)
 register_permission(PERMISSION_OCR_QUEUE_ENABLE_DISABLE)

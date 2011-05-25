@@ -1,12 +1,13 @@
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_menu
-from permissions.api import register_permission
+from permissions.api import register_permission, set_namespace_title
 from main.api import register_tool
 
 PERMISSION_DOCUMENT_INDEXING_VIEW = {'namespace': 'document_indexing', 'name': 'document_index_view', 'label': _(u'View document indexes')}
 PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES = {'namespace': 'document_indexing', 'name': 'document_rebuild_indexes', 'label': _(u'Rebuild document indexes')}
 
+set_namespace_title('document_indexing', _(u'indexing'))
 register_permission(PERMISSION_DOCUMENT_INDEXING_VIEW)
 register_permission(PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES)
 

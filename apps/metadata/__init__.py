@@ -1,13 +1,14 @@
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_multi_item_links
-from permissions.api import register_permission
+from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
 
 PERMISSION_METADATA_DOCUMENT_EDIT = {'namespace': 'metadata', 'name': u'metadata_document_edit', 'label': _(u'Edit a document\'s metadata')}
 PERMISSION_METADATA_DOCUMENT_ADD = {'namespace': 'metadata', 'name': u'metadata_document_add', 'label': _(u'Add metadata to a document')}
 PERMISSION_METADATA_DOCUMENT_REMOVE = {'namespace': 'metadata', 'name': u'metadata_document_remove', 'label': _(u'Remove metadata from a document')}
 
+set_namespace_title('metadata', _(u'metadata'))
 register_permission(PERMISSION_METADATA_DOCUMENT_EDIT)
 register_permission(PERMISSION_METADATA_DOCUMENT_ADD)
 register_permission(PERMISSION_METADATA_DOCUMENT_REMOVE)
