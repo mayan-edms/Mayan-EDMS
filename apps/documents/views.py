@@ -74,15 +74,20 @@ from documents.literals import UPLOAD_SOURCE_LOCAL, \
     UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
     
 
-def document_list(request, object_list=None, title=None):
+def document_list(request, object_list=None, title=None, extra_context=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-
-    return render_to_response('generic_list.html', {
+    
+    context = {
         'object_list': object_list if not (object_list is None) else Document.objects.only('file_filename', 'file_extension').all(),
         'title': title if title else _(u'documents'),
         'multi_select_as_buttons': True,
         'hide_links': True,
-    }, context_instance=RequestContext(request))
+    }
+    if extra_context:
+        context.update(extra_context)
+        
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def document_create(request):
