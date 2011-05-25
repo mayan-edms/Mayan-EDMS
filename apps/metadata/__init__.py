@@ -21,4 +21,4 @@ metadata_remove = {'text': _(u'remove metadata'), 'view': 'metadata_remove', 'ar
 metadata_multiple_remove = {'text': _(u'remove metadata'), 'view': 'metadata_multiple_remove', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_DOCUMENT_REMOVE]}
 
 register_links(Document, [metadata_add, metadata_edit, metadata_remove])
-register_multi_item_links(['document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
+register_multi_item_links(['search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])

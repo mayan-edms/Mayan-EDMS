@@ -78,7 +78,7 @@ staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'arg
 register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
 register_links(Document, [document_create_siblings], menu_name='sidebar')
 
-register_multi_item_links(['document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
+register_multi_item_links(['search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
 register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
 
