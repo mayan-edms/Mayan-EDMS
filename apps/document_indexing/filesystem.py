@@ -26,7 +26,7 @@ def fs_create_index_directory(index_instance):
     if FILESERVING_ENABLE:
         target_directory = os.path.join(FILESERVING_PATH, get_instance_path(index_instance))
         try:
-            os.makedirs(target_directory)
+            os.mkdir(target_directory)
         except OSError, exc:
             if exc.errno == errno.EEXIST:
                 pass
