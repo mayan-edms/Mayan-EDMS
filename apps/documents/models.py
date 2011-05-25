@@ -20,7 +20,7 @@ from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.conf.settings import DEFAULT_TRANSFORMATIONS
-from documents.conf.settings import RECENT_COUNT
+from documents.managers import RecentDocumentManager
 
 available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 
@@ -269,16 +269,6 @@ class DocumentPageTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'document page transformation')
         verbose_name_plural = _(u'document page transformations')
-
-
-class RecentDocumentManager(models.Manager):
-    def add_document_for_user(self, user, document):
-        RecentDocument.objects.filter(user=user, document=document).delete()
-        new_recent = RecentDocument(user=user, document=document, datetime_accessed=datetime.now())
-        new_recent.save()
-        to_delete = RecentDocument.objects.filter(user=user)[RECENT_COUNT:]
-        for recent_to_delete in to_delete:
-            recent_to_delete.delete()
 
 
 class RecentDocument(models.Model):
