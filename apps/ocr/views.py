@@ -184,6 +184,7 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
     context = {
         'next': next,
         'previous': previous,
+        'form_icon': u'hourglass_add.png',
     }
 
     if len(queue_documents) == 1:
