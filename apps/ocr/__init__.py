@@ -43,6 +43,9 @@ register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
+register_links(['queue_document_list', 'node_active_list'], [queue_document_list, node_active_list], menu_name='sidebar')
+
+
 register_tool(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
 
 #Menus
