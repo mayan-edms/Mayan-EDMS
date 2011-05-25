@@ -15,7 +15,7 @@ index_list = {'text': _(u'index list'), 'view': 'index_instance_list', 'famfam':
 
 register_menu([
     {'text': _('indexes'), 'view': 'index_instance_list', 'links': [
-    ], 'famfam': 'folder_link', 'position': 2, 'permissions': [PERMISSION_DOCUMENT_INDEXING_VIEW]}])
+    ], 'famfam': 'folder_page', 'position': 2, 'permissions': [PERMISSION_DOCUMENT_INDEXING_VIEW]}])
 
 rebuild_index_instances = {'text': _('rebuild indexes'), 'view': 'rebuild_index_instances', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES], 'description': _(u'Deletes and creates from scratch all the document indexes.')}
 
