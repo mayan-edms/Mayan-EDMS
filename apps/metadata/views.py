@@ -42,7 +42,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                 if value not in metadata[item.metadata_type]:
                     metadata[item.metadata_type].append(value)
             else:
-                metadata[item.metadata_type] = [value] if value else u''
+                metadata[item.metadata_type] = [value] if value else []
 
     initial = []
     for key, value in metadata.items():
