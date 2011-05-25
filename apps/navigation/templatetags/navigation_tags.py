@@ -26,7 +26,8 @@ def process_links(links, view_name, url):
     """
     items = []
     active_item = None
-    for item, count in zip(links, range(len(links))):
+    #for item, count in zip(links, range(len(links))):
+    for item in links:
         item_view = 'view' in item and item['view']
         item_url = 'url' in item and item['url']
         new_link = item.copy()
@@ -42,7 +43,6 @@ def process_links(links, view_name, url):
                     if view_name == child_view or url == child_url:
                         active_item = item
         new_link.update({
-            'first': count == 0,
             'url': item_view and reverse(item_view) or item_url or u'#',
             })
         items.append(new_link)

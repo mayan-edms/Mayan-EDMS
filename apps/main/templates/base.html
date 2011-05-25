@@ -177,11 +177,11 @@
         {% if form_navigation_links %}
             <div class="secondary-navigation">
                 <ul class="wat-cf">
+                        {% with form_navigation_links as object_navigation_links %}
                         {% with "true" as as_li %}
                         {% with "true" as hide_active_anchor %}
                         {% with "active" as li_class_active %}
                         {% with "first" as li_class_first %}
-                        {% with form_navigation_links as object_navigation_links %}
                             {% include "generic_navigation.html" %}
                         {% endwith %}
                         {% endwith %}
