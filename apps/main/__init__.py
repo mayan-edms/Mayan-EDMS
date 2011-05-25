@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_menu
 from permissions import role_list
 from user_management import user_list, group_list
+from navigation.api import register_links
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
@@ -21,7 +22,7 @@ sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug', 'condition': 
 __version_info__ = {
     'major': 0,
     'minor': 7,
-    'micro': 0,
+    'micro': 1,
     'releaselevel': 'final',
     'serial': 0
 }
@@ -43,6 +44,9 @@ if not SIDE_BAR_SEARCH:
     main_menu.insert(1, {'text': _(u'search'), 'view': 'search', 'famfam': 'zoom', 'position': 2})
 
 register_menu(main_menu)
+
+register_links(['tools_menu', 'statistics', 'diagnostics'], [tools, statistics, diagnostics, sentry], menu_name='sidebar')
+#register_links(['setting_list'], [check_settings, role_list, user_list, group_list, admin_site], menu_name='sidebar')
 
 
 def get_version():
