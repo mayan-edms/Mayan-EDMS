@@ -93,7 +93,7 @@ def document_create(request):
     return wizard(request)
 
 
-def document_create_sibling(request, document_id):
+def document_create_siblings(request, document_id):
     check_permissions(request.user, 'documents', [PERMISSION_DOCUMENT_CREATE])
 
     document = get_object_or_404(Document, pk=document_id)
