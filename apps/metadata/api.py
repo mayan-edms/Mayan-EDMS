@@ -33,14 +33,18 @@ def decode_metadata_from_url(url_dict):
 
 def save_metadata_list(metadata_list, document, create=False):
     """
-    Take a list of metadata values and associate a document to it
+    Take a list of metadata dictionaries and associate them to a 
+    document
     """
     for item in metadata_list:
         save_metadata(item, document, create)
 
 
 def save_metadata(metadata_dict, document, create=False):
-    """save metadata_dict"""
+    """
+    Take a dictionary of metadata type & value and associate it to a
+    document
+    """
     if create:
         # Use matched metadata now to create document metadata
         document_metadata, created = DocumentMetadata.objects.get_or_create(
@@ -51,21 +55,26 @@ def save_metadata(metadata_dict, document, create=False):
            ),
         )
     else:
-        document_metadata = DocumentMetadata.objects.get(
-            document=document,
-            metadata_type=get_object_or_404(
-                MetadataType,
-                pk=metadata_dict['id']
-            ),
-        )
+        try:
+            document_metadata = DocumentMetadata.objects.get(
+                document=document,
+                metadata_type=get_object_or_404(
+                    MetadataType,
+                    pk=metadata_dict['id']
+                ),
+            )
+        except DocumentMetadata.DoesNotExist:
+            # TODO: Maybe return warning to caller?
+            document_metadata = None
 
     # Handle 'plus sign as space' in the url
 
     # unquote_plus handles utf-8?!?
     # http://stackoverflow.com/questions/4382875/handling-iri-in-django
     #.decode('utf-8')
-    document_metadata.value = unquote_plus(metadata_dict['value'])
-    document_metadata.save()
+    if document_metadata:
+        document_metadata.value = unquote_plus(metadata_dict['value'])
+        document_metadata.save()
 
 
 def metadata_repr(metadata_list):
