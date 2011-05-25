@@ -45,12 +45,12 @@ def _role_permission_link(requester, permission, permission_list):
         return template % {
             'url': reverse('permission_revoke',
                 args=[permission.pk, ct.app_label, ct.model, requester.pk]),
-            'icon': u'delete', 'text': ugettext(u'Revoke')}
+            'icon': u'key_delete', 'text': ugettext(u'Revoke')}
     else:
         return template % {
             'url': reverse('permission_grant',
                 args=[permission.pk, ct.app_label, ct.model, requester.pk]),
-            'icon': u'add', 'text': ugettext(u'Grant')}
+            'icon': u'key_add', 'text': ugettext(u'Grant')}
 
 
 def role_permissions(request, role_id):
@@ -132,11 +132,12 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
         check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
         title = _(u'Are you sure you wish to grant the permission "%(permission)s" to %(ct_name)s: %(requester)s') % {
             'permission': permission, 'ct_name': ct.name, 'requester': requester}
-
+        icon_name = u'key_add.png'
     elif action == 'revoke':
         check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
         title = _(u'Are you sure you wish to revoke the permission "%(permission)s" from %(ct_name)s: %(requester)s') % {
             'permission': permission, 'ct_name': ct.name, 'requester': requester}
+        icon_name = u'key_delete.png'
     else:
         return HttpResponseRedirect(u'/')
 
@@ -168,6 +169,7 @@ def permission_grant_revoke(request, permission_id, app_label, module_name, pk, 
         'next': next,
         'previous': previous,
         'title': title,
+        'form_icon': icon_name,
     }, context_instance=RequestContext(request))
 
 
