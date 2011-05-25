@@ -72,11 +72,11 @@ from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 from documents.literals import UPLOAD_SOURCE_LOCAL, \
     UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
-    
+
 
 def document_list(request, object_list=None, title=None, extra_context=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    
+
     context = {
         'object_list': object_list if not (object_list is None) else Document.objects.only('file_filename', 'file_extension').all(),
         'title': title if title else _(u'documents'),
@@ -85,7 +85,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
     }
     if extra_context:
         context.update(extra_context)
-        
+
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
 
@@ -155,7 +155,7 @@ def _handle_zip_file(request, uploaded_file, document_type=None):
 
 def upload_document_with_type(request, source):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-    
+
     document_type_id = request.GET.get('document_type_id', None)
     if document_type_id:
         document_type = get_object_or_404(DocumentType, pk=document_type_id[0])
@@ -187,7 +187,7 @@ def upload_document_with_type(request, source):
                     if (not UNCOMPRESS_COMPRESSED_STAGING_FILES) or (UNCOMPRESS_COMPRESSED_STAGING_FILES and not _handle_zip_file(request, staging_file.upload(), document_type)):
                         document = Document(file=staging_file.upload())
                         if document_type:
-                            document.document_type=document_type
+                            document.document_type = document_type
                         document.save()
                         _handle_save_document(request, document, form)
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
@@ -206,7 +206,6 @@ def upload_document_with_type(request, source):
             StagingFile = create_staging_file_class(request, source)
             form = StagingDocumentForm(cls=StagingFile,
                 initial={'document_type': document_type})
-        
 
     subtemplates_list = []
 
@@ -386,7 +385,7 @@ def document_view_advanced(request, document_id):
             },
         }
     )
-    
+
     subtemplates_list.append(
         {
             'name': 'generic_form_subtemplate.html',
@@ -776,7 +775,7 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
         return render_to_response('generic_confirm.html', {
             'previous': previous,
             'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'page_refresh.png',        
+            'form_icon': u'page_refresh.png',
         }, context_instance=RequestContext(request))
     else:
         duplicated = []

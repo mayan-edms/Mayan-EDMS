@@ -1,6 +1,5 @@
 from django.db.utils import DatabaseError
 from django.shortcuts import get_object_or_404
-from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.core.exceptions import PermissionDenied
 
@@ -30,7 +29,6 @@ def check_permissions(requester, permission_list):
             return True
 
     raise PermissionDenied(ugettext(u'Insufficient permissions.'))
-
 
 register_permission(PERMISSION_ROLE_VIEW)
 register_permission(PERMISSION_ROLE_EDIT)

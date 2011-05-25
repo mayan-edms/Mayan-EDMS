@@ -1,7 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.conf import settings
@@ -13,6 +12,7 @@ from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 
 from documents.models import Document, DocumentType, \
     DocumentPage, DocumentPageTransformation
+
 
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):

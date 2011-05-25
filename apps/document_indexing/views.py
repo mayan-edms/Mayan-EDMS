@@ -49,7 +49,7 @@ def rebuild_index_instances(request):
             'previous': previous,
             'next': next,
             'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'folder_link.png',        
+            'form_icon': u'folder_link.png',
         }, context_instance=RequestContext(request))
     else:
         try:

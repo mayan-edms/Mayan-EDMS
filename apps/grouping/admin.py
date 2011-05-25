@@ -12,5 +12,5 @@ class DocumentGroupItemInline(admin.StackedInline):
 
 class DocumentGroupAdmin(admin.ModelAdmin):
     inlines = [DocumentGroupItemInline]
-    
+
 admin.site.register(DocumentGroup, DocumentGroupAdmin)

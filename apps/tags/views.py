@@ -116,7 +116,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'tag_blue_delete.png',        
+        'form_icon': u'tag_blue_delete.png',
     }
     if len(tags) == 1:
         context['object'] = tags[0]

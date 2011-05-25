@@ -1,8 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 
 from documents.models import Document
 from documents.views import document_list
@@ -26,7 +25,7 @@ def document_group_view(request, document_id, document_group_id):
     object_list, errors = DocumentGroup.objects.get_groups_for(document, document_group)
 
     return document_list(
-        request, 
+        request,
         title=_(u'documents in group: %(group)s') % {
             'group': object_list['title']
         },

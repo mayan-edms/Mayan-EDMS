@@ -17,8 +17,8 @@ from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
 from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
 from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
 
-from documents.literals import UPLOAD_SOURCE_LOCAL, \
-    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
+from documents.literals import UPLOAD_SOURCE_STAGING, \
+    UPLOAD_SOURCE_USER_STAGING
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
@@ -29,6 +29,7 @@ STAGING_FILE_FUNCTIONS = {
     UPLOAD_SOURCE_STAGING: lambda x: STAGING_DIRECTORY,
     UPLOAD_SOURCE_USER_STAGING: lambda x: os.path.join(USER_STAGING_DIRECTORY_ROOT, eval(USER_STAGING_DIRECTORY_EXPRESSION, {'user': x.user}))
 }
+
 
 def evaluate_user_staging_path(request, source):
     try:
@@ -43,17 +44,17 @@ def get_all_files(path):
         return sorted([os.path.normcase(f) for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))])
     except OSError, exc:
         raise OSError(ugettext(u'Unable get list of staging files: %s') % exc)
-    
-     
+
+
 def _return_new_class():
     return type('StagingFile', (StagingFile,), dict(StagingFile.__dict__))
-    
-        
+
+
 def create_staging_file_class(request, source):
     cls = _return_new_class()
     cls.set_path(evaluate_user_staging_path(request, source))
     return cls
-    
+
 
 class StagingFile(object):
     """
@@ -64,8 +65,8 @@ class StagingFile(object):
 
     @classmethod
     def set_path(cls, path):
-       cls.path = path 
-        
+        cls.path = path
+
     @classmethod
     def get_all(cls):
         staging_files = []

@@ -8,12 +8,12 @@ from navigation.api import register_links
 from permissions.conf.settings import DEFAULT_ROLES
 from permissions.models import Role
 
-PERMISSION_ROLE_VIEW = {'namespace': 'permissions', 'name': 'role_view', 'label':_(u'View roles')}
-PERMISSION_ROLE_EDIT = {'namespace': 'permissions', 'name': 'role_edit', 'label':_(u'Edit roles')}
-PERMISSION_ROLE_CREATE = {'namespace': 'permissions', 'name': 'role_create', 'label':_(u'Create roles')}
-PERMISSION_ROLE_DELETE = {'namespace': 'permissions', 'name': 'role_delete', 'label':_(u'Delete roles')}
-PERMISSION_PERMISSION_GRANT = {'namespace': 'permissions', 'name': 'permission_grant', 'label':_(u'Grant permissions')}
-PERMISSION_PERMISSION_REVOKE = {'namespace': 'permissions', 'name': 'permission_revoke', 'label':_(u'Revoke permissions')}
+PERMISSION_ROLE_VIEW = {'namespace': 'permissions', 'name': 'role_view', 'label': _(u'View roles')}
+PERMISSION_ROLE_EDIT = {'namespace': 'permissions', 'name': 'role_edit', 'label': _(u'Edit roles')}
+PERMISSION_ROLE_CREATE = {'namespace': 'permissions', 'name': 'role_create', 'label': _(u'Create roles')}
+PERMISSION_ROLE_DELETE = {'namespace': 'permissions', 'name': 'role_delete', 'label': _(u'Delete roles')}
+PERMISSION_PERMISSION_GRANT = {'namespace': 'permissions', 'name': 'permission_grant', 'label': _(u'Grant permissions')}
+PERMISSION_PERMISSION_REVOKE = {'namespace': 'permissions', 'name': 'permission_revoke', 'label': _(u'Revoke permissions')}
 
 
 role_list = {'text': _(u'roles'), 'view': 'role_list', 'famfam': 'medal_gold_1', 'permissions': [PERMISSION_ROLE_VIEW]}

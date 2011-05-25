@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 import tempfile
 
 from django.db import models

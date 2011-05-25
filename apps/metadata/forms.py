@@ -81,4 +81,3 @@ class MetadataSelectionForm(forms.Form):
     )
 
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
-

@@ -200,7 +200,7 @@ def remove_role_member(role, selection):
     model, pk = selection.split(u',')
     ct = ContentType.objects.get(model=model)
     member = RoleMember.objects.get(role=role, member_type=ct, member_id=pk)
-    member.delete()    
+    member.delete()
 
 
 def role_members(request, role_id):
