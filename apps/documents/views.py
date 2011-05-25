@@ -774,6 +774,7 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
     if confirmation and request.method != 'POST':
         return render_to_response('generic_confirm.html', {
             'previous': previous,
+            'title': _(u'Are you sure you wish to find all duplicates?'),
             'message': _(u'On large databases this operation may take some time to execute.'),
             'form_icon': u'page_refresh.png',
         }, context_instance=RequestContext(request))

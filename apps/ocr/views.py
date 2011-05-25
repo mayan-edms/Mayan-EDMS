@@ -261,6 +261,7 @@ def all_document_ocr_cleanup(request):
         return render_to_response('generic_confirm.html', {
             'previous': previous,
             'next': next,
+            'title': _(u'Are you sure you wish to clean up all the pages content?'),
             'message': _(u'On large databases this operation may take some time to execute.'),
             'form_icon': u'text_strikethroungh.png',
         }, context_instance=RequestContext(request))
