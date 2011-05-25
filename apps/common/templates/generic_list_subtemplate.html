@@ -36,15 +36,23 @@
                             {% if multi_select or multi_select_as_buttons %}
                                 <th class="first"><input type="checkbox" class="checkbox toggle" /></th>
                             {% endif %}
+
                             {% if not hide_object %}
                                 <th>{% trans "Identifier" %}</th>
                             {% endif %}
+
+                            {% for column in extra_columns_preffixed %}
+                                <th>{{ column.name|capfirst }}</th>
+                            {% endfor %}
+
                             {% for column in object_list.0|get_model_list_columns %}
                                 <th>{{ column.name|capfirst }}</th>
                             {% endfor %}            
+
                             {% for column in extra_columns %}
                                 <th>{{ column.name|capfirst }}</th>
                             {% endfor %}        
+
                             {% if not hide_links %}
                                 <th class="">&nbsp;</th>
                             {% endif %}
@@ -64,6 +72,15 @@
                                 <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
                             {% endif %}
                         {% endif %}
+                        {% for column in extra_columns_preffixed %}
+                            {% if column.keep_together %}
+                                <td>
+                                    {{ object|object_property:column.attribute|safe|make_non_breakable }}
+                                </td>
+                            {% else %}
+                                <td>{{ object|object_property:column.attribute|safe }}</td>
+                            {% endif %}
+                        {% endfor %}                        
                         {% if not hide_columns %}
                             {% for column in object|get_model_list_columns %}
                                 <td>{{ object|object_property:column.attribute|safe }}</td>

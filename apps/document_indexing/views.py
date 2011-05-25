@@ -15,6 +15,12 @@ from document_indexing.api import get_breadcrumbs, get_instance_link, \
     do_rebuild_all_indexes
 
 
+def _index_instance_item_link(index_instance_item):
+    icon = u'folder_page' if isinstance(index_instance_item, IndexInstance) else u'page'
+    return u'<span class="famfam active famfam-%(icon)s"></span><a href="%(url)s">%(text)s</a>' % {
+        'url': index_instance_item.get_absolute_url(), 'icon': icon, 'text': index_instance_item}
+
+    
 def index_instance_list(request, index_id=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
 
@@ -33,8 +39,15 @@ def index_instance_list(request, index_id=None):
 
     return render_to_response('generic_list.html', {
         'object_list': index_instance_list,
+        'extra_columns_preffixed': [
+            {
+                'name': _(u'item'),
+                'attribute': lambda x: _index_instance_item_link(x)
+            }
+        ],
         'title': title,
         'hide_links': True,
+        'hide_object': True,
     }, context_instance=RequestContext(request))
 
 
@@ -48,8 +61,9 @@ def rebuild_index_instances(request):
         return render_to_response('generic_confirm.html', {
             'previous': previous,
             'next': next,
+            'title': _(u'Are you sure you wish to rebuild all indexes?'),
             'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'folder_link.png',
+            'form_icon': u'folder_page.png',
         }, context_instance=RequestContext(request))
     else:
         try:
