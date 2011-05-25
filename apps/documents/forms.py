@@ -14,7 +14,7 @@ from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 from documents.models import Document, DocumentType, \
     DocumentPage, DocumentPageTransformation
 
-
+# Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
     class Meta:
         model = DocumentPageTransformation
@@ -102,7 +102,11 @@ class DocumentPageForm_edit(forms.ModelForm):
     )
 
 
-class ImageWidget(forms.widgets.Widget):
+# Document forms
+class DocumentPagesCarouselWidget(forms.widgets.Widget):
+    """
+    Display many small representations of a document pages
+    """
     def render(self, name, value, attrs=None):
         output = []
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
@@ -141,6 +145,16 @@ class ImageWidget(forms.widgets.Widget):
         return mark_safe(u''.join(output))
 
 
+class DocumentPreviewForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        document = kwargs.pop('document', None)
+        super(DocumentPreviewForm, self).__init__(*args, **kwargs)
+        self.fields['preview'].initial = document
+        self.fields['preview'].label = _(u'Document pages (%s)') % document.documentpage_set.count()
+
+    preview = forms.CharField(widget=DocumentPagesCarouselWidget())
+
+
 #TODO: Turn this into a base form and let others inherit
 class DocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -167,17 +181,26 @@ class DocumentForm(forms.ModelForm):
     )
 
 
-class DocumentPreviewForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        document = kwargs.pop('document', None)
-        super(DocumentPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['preview'].initial = document
-        self.fields['preview'].label = _(u'Document pages (%s)') % document.documentpage_set.count()
+class DocumentForm_edit(DocumentForm):
+    class Meta:
+        model = Document
+        exclude = ('file', 'document_type', 'tags')
 
-    preview = forms.CharField(widget=ImageWidget())
+
+class DocumentPropertiesForm(DetailForm):
+    """
+    Detail class form to display a document file based properties
+    """
+    class Meta:
+        model = Document
+        exclude = ('file', 'tags')
 
 
 class DocumentContentForm(forms.Form):
+    """
+    Form that contatenates all of a document pages' text content into a
+    single textarea widget
+    """
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('document', None)
         super(DocumentContentForm, self).__init__(*args, **kwargs)
@@ -198,16 +221,16 @@ class DocumentContentForm(forms.Form):
     )
 
 
-class DocumentForm_view(DetailForm):
-    class Meta:
-        model = Document
-        exclude = ('file', 'tags')
+class DocumentTypeSelectForm(forms.Form):
+    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'), required=False)
 
 
-class DocumentForm_edit(DocumentForm):
-    class Meta:
-        model = Document
-        exclude = ('file', 'document_type', 'tags')
+class PrintForm(forms.Form):
+    page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
+    custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
+    custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
+    page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
+    page_range = forms.CharField(label=_(u'Page range'), required=False)
 
 
 class StagingDocumentForm(forms.Form):
@@ -235,16 +258,3 @@ class StagingDocumentForm(forms.Form):
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
     )
-
-
-class DocumentTypeSelectForm(forms.Form):
-    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'), required=False)
-
-
-class PrintForm(forms.Form):
-    page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
-    custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
-    custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
-    page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
-    page_range = forms.CharField(label=_(u'Page range'), required=False)
-

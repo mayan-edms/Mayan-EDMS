@@ -59,7 +59,7 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_EDIT
 
 from documents.forms import DocumentTypeSelectForm, \
-        DocumentForm, DocumentForm_edit, DocumentForm_view, \
+        DocumentForm, DocumentForm_edit, DocumentPropertiesForm, \
         StagingDocumentForm, DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, \
@@ -295,7 +295,7 @@ def document_view_simple(request, document_id):
         {
             'name': 'generic_form_subtemplate.html',
             'context': {
-                'title': _(u'document properties'),
+                'title': _(u'document data'),
                 'form': content_form,
                 'object': document,
             },
@@ -347,7 +347,7 @@ def document_view_advanced(request, document_id):
 
     subtemplates_list = []
 
-    form = DocumentForm_view(instance=document, extra_fields=[
+    document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
         {'label': _(u'Filename'), 'field': 'file_filename'},
         {'label': _(u'File extension'), 'field': 'file_extension'},
         {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
@@ -364,6 +364,8 @@ def document_view_advanced(request, document_id):
 
     preview_form = DocumentPreviewForm(document=document)
 
+    content_form = DocumentContentForm(document=document)
+
     subtemplates_list.append(
         {
             'name': 'generic_form_subtemplate.html',
@@ -373,11 +375,23 @@ def document_view_advanced(request, document_id):
             }
         },
     )
+
     subtemplates_list.append(
         {
             'name': 'generic_form_subtemplate.html',
             'context': {
-                'form': form,
+                'title': _(u'document data'),
+                'form': content_form,
+                'object': document,
+            },
+        }
+    )
+    
+    subtemplates_list.append(
+        {
+            'name': 'generic_form_subtemplate.html',
+            'context': {
+                'form': document_properties_form,
                 'title': _(u'document properties'),
                 'object': document,
             }
