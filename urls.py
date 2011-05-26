@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     (r'^metadata/', include('metadata.urls')),
     (r'^grouping/', include('grouping.urls')),
     (r'^document_indexing/', include('document_indexing.urls')),
+    (r'^history/', include('history.urls')),
 )
 
 

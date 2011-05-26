@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'smart_settings',
     'navigation',
+    'history',
     'web_theme',
     'main',
     'common',

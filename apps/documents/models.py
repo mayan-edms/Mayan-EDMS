@@ -63,7 +63,7 @@ class Document(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
 
     tags = TaggableManager()
-
+    
     comments = generic.GenericRelation(
         Comment,
         content_type_field='content_type',

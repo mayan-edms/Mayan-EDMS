@@ -7,6 +7,7 @@ from navigation.api import register_links, register_menu, \
 from main.api import register_diagnostic, register_tool
 from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
+from history.api import register_history_type
 
 from documents.models import Document, DocumentPage, DocumentPageTransformation
 from documents.staging import StagingFile
@@ -17,7 +18,10 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS, \
     PERMISSION_DOCUMENT_EDIT
+from documents.literals import HISTORY_DOCUMENT_CREATED, \
+    HISTORY_DOCUMENT_EDITED
 
+# Permission setup
 set_namespace_title('documents', _(u'documents'))
 register_permission(PERMISSION_DOCUMENT_CREATE)
 register_permission(PERMISSION_DOCUMENT_PROPERTIES_EDIT)
@@ -27,6 +31,10 @@ register_permission(PERMISSION_DOCUMENT_DELETE)
 register_permission(PERMISSION_DOCUMENT_DOWNLOAD)
 register_permission(PERMISSION_DOCUMENT_TRANSFORM)
 register_permission(PERMISSION_DOCUMENT_TOOLS)
+
+# History setup
+register_history_type(HISTORY_DOCUMENT_CREATED)
+register_history_type(HISTORY_DOCUMENT_EDITED)
 
 document_list = {'text': _(u'documents list'), 'view': 'document_list', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_list_recent = {'text': _(u'recent documents list'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -96,7 +104,6 @@ register_links(['document_page_view'], [document_page_rotate_left, document_page
 
 # Upload sources
 register_links(['upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging'], [upload_document_from_local, upload_document_from_staging, upload_document_from_user_staging], menu_name='form_header')
-
 
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
 register_links(DocumentPageTransformation, [document_page_transformation_page_edit, document_page_transformation_page_view], menu_name='sidebar')

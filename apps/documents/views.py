@@ -35,6 +35,7 @@ from permissions.api import check_permissions
 from tags.utils import get_tags_subtemplate
 from document_indexing.utils import get_document_indexing_subtemplate
 from document_indexing.api import update_indexes, delete_indexes
+from history.api import create_history
 
 from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
 from documents.conf.settings import USE_STAGING_DIRECTORY
@@ -57,6 +58,8 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
     PERMISSION_DOCUMENT_TRANSFORM, \
     PERMISSION_DOCUMENT_EDIT
+from documents.literals import HISTORY_DOCUMENT_CREATED, \
+    HISTORY_DOCUMENT_EDITED
 
 from documents.forms import DocumentTypeSelectForm, \
         DocumentForm, DocumentForm_edit, DocumentPropertiesForm, \
@@ -131,6 +134,8 @@ def _handle_save_document(request, document, form=None):
     if request.user.is_staff or request.user.is_superuser:
         for warning in warnings:
             messages.warning(request, warning)
+
+    create_history(HISTORY_DOCUMENT_CREATED, document, {'user': request.user})
 
 
 def _handle_zip_file(request, uploaded_file, document_type=None):
@@ -273,7 +278,7 @@ def document_view_simple(request, document_id):
     # Triggers a 404 error on documents uploaded via local upload
     # TODO: investigate
     document = get_object_or_404(Document, pk=document_id)
-
+    
     RecentDocument.objects.add_document_for_user(request.user, document)
 
     subtemplates_list = []
@@ -491,8 +496,6 @@ def document_edit(request, document_id):
 
     document = get_object_or_404(Document, pk=document_id)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
-
     if request.method == 'POST':
         form = DocumentForm_edit(request.POST, initial={'document_type': document.document_type})
         if form.is_valid():
@@ -509,6 +512,9 @@ def document_edit(request, document_id):
                     document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
 
             document.save()
+
+            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
+            RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document %s edited successfully.') % document)
 
