@@ -4,6 +4,7 @@ from navigation.api import register_menu
 from permissions import role_list
 from user_management import user_list, group_list
 from navigation.api import register_links
+from history import history_list
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
@@ -30,7 +31,7 @@ __version_info__ = {
 main_menu = [
     {'text': _(u'home'), 'view': 'home', 'famfam': 'house', 'position': 0},
     {'text': _(u'tools'), 'view': 'tools_menu', 'links': [
-        tools, statistics, diagnostics, sentry
+        tools, statistics, diagnostics, history_list, sentry, 
         ], 'famfam': 'wrench', 'name': 'tools', 'position': 7},
 
     {'text': _(u'setup'), 'view': 'setting_list', 'links': [
