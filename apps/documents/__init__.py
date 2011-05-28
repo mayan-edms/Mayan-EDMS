@@ -53,6 +53,7 @@ document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'docu
 document_clear_transformations = {'text': _(u'clear all transformations'), 'view': 'document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_multiple_clear_transformations = {'text': _(u'clear all transformations'), 'view': 'document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_print = {'text': _(u'print'), 'view': 'document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_history_view = {'text': _(u'history'), 'view': 'history_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 document_page_transformation_list = {'text': _(u'page transformations'), 'class': 'no-parent-history', 'view': 'document_page_transformation_list', 'args': 'object.id', 'famfam': 'pencil_go', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_page_transformation_create = {'text': _(u'create new transformation'), 'class': 'no-parent-history', 'view': 'document_page_transformation_create', 'args': 'object.id', 'famfam': 'pencil_add', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
@@ -83,7 +84,7 @@ upload_document_from_user_staging = {'text': _(u'user staging'), 'view': 'upload
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source', 'object.id'], 'famfam': 'drive_magnify'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source', 'object.id'], 'famfam': 'drive_delete'}
 
-register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
+register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view])
 register_links(Document, [document_create_siblings], menu_name='sidebar')
 
 register_multi_item_links(['search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])

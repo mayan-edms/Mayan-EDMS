@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 from django.contrib.contenttypes.models import ContentType
+from django.db.models.loading import get_model
 
 from permissions.api import check_permissions
 
@@ -42,15 +43,19 @@ def history_list(request):
         context_instance=RequestContext(request))
 
 
-def history_for_object(request, content_type_id, object_id):
+def history_for_object(request, app_label, module_name, object_id):
     check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
 
-    content_type = get_object_or_404(ContentType, pk=content_type_id)
-    content_object = get_object_or_404(content_type.model_class(), pk=object_id)
+    model = get_model(app_label, module_name)
+    if not model:
+        raise Http404
+    content_object = get_object_or_404(model, pk=object_id)
+    content_type = ContentType.objects.get_for_model(model)
 
     context = {
-        'object_list': History.objects.filter(content_type=content_type_id, object_id=object_id),
+        'object_list': History.objects.filter(content_type=content_type, object_id=object_id),
         'title': _(u'history for: %s') % content_object,
+        'object': content_object,
         'extra_columns': [
             {
                 'name': _(u'date and time'),
