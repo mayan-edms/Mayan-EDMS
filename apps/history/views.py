@@ -29,6 +29,13 @@ def history_list(request):
                 'attribute': 'datetime'
             },
             {
+                'name': _(u'object'),
+                'attribute': lambda x: '<a href="%(url)s">%(label)s</a>' % {
+                    'url': x.content_object.get_absolute_url() if x.content_object else u'#',
+                    'label': unicode(x.content_object) if x.content_object else u''
+                }
+            },
+            {
                 'name': _(u'summary'),
                 'attribute': lambda x: '<a href="%(url)s">%(label)s</a>' % {
                     'url': x.get_absolute_url(),
