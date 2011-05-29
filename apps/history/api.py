@@ -53,5 +53,5 @@ def create_history(history_type_dict, source_object=None, data=None):
             new_dict[key]['type'] = pickle.dumps(type(value))
             
         new_history.dictionary = json.dumps(new_dict)
-    
+    print 'new_history', new_history
     new_history.save()

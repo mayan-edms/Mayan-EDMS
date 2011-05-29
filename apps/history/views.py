@@ -81,7 +81,6 @@ def history_view(request, object_id):
 
     history = get_object_or_404(History, pk=object_id)
     
-    
     form = HistoryDetailForm(instance=history, extra_fields=[
         {'label': _(u'Date'), 'field':lambda x: x.datetime.date()},
         {'label': _(u'Time'), 'field':lambda x: unicode(x.datetime.time()).split('.')[0]},
@@ -93,6 +92,6 @@ def history_view(request, object_id):
     return render_to_response('generic_detail.html', {
         'title': _(u'details for: %s') % history.get_processed_summary(),
         'form': form,
-        'object': history,
+        'object': history.content_object,
     },
     context_instance=RequestContext(request))

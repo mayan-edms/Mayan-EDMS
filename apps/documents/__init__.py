@@ -19,7 +19,7 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS, \
     PERMISSION_DOCUMENT_EDIT
 from documents.literals import HISTORY_DOCUMENT_CREATED, \
-    HISTORY_DOCUMENT_EDITED
+    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 
 # Permission setup
 set_namespace_title('documents', _(u'documents'))
@@ -35,6 +35,7 @@ register_permission(PERMISSION_DOCUMENT_TOOLS)
 # History setup
 register_history_type(HISTORY_DOCUMENT_CREATED)
 register_history_type(HISTORY_DOCUMENT_EDITED)
+register_history_type(HISTORY_DOCUMENT_DELETED)
 
 document_list = {'text': _(u'documents list'), 'view': 'document_list', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_list_recent = {'text': _(u'recent documents list'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}

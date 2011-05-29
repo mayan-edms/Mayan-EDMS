@@ -60,7 +60,7 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_TRANSFORM, \
     PERMISSION_DOCUMENT_EDIT
 from documents.literals import HISTORY_DOCUMENT_CREATED, \
-    HISTORY_DOCUMENT_EDITED
+    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 
 from documents.forms import DocumentTypeSelectForm, \
         DocumentForm, DocumentForm_edit, DocumentPropertiesForm, \
@@ -275,7 +275,6 @@ def upload_document_with_type(request, source):
 
 def document_view_simple(request, document_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-
     #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     # Triggers a 404 error on documents uploaded via local upload
     # TODO: investigate
@@ -462,6 +461,7 @@ def document_delete(request, document_id=None, document_id_list=None):
                         messages.warning(request, warning)
 
                 document.delete()
+                #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
                 messages.success(request, _(u'Document: %s deleted successfully.') % document)
             except Exception, e:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
@@ -515,10 +515,7 @@ def document_edit(request, document_id):
                     document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
             
             document.save()
-
-            #print 'diff', return_diff(old_document, document)
-            
-            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
+            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['file_filename', 'description'])})
             RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)

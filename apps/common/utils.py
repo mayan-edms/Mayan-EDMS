@@ -339,7 +339,8 @@ def generate_choices_w_labels(choices, display_object_type=True):
 
 def return_diff(old_obj, new_obj, attrib_list=None):
     diff_dict = {}
-    attrib_list = old_obj.__dict__.keys()
+    if not attrib_list:
+        attrib_list = old_obj.__dict__.keys()
     for attrib in attrib_list:
         old_val = getattr(old_obj, attrib)
         new_val = getattr(new_obj, attrib)

@@ -54,7 +54,7 @@ class History(models.Model):
         return history_types_dict[self.history_type.namespace][self.history_type.name].get('details', u'')
 
     def get_expressions(self):
-        return history_types_dict[self.history_type.namespace][self.history_type.name].get('expressions', [])
+        return history_types_dict[self.history_type.namespace][self.history_type.name].get('expressions', {})
 
     def get_processed_summary(self):
         return _process_history_text(self, self.get_summary())
@@ -95,18 +95,13 @@ def _process_history_text(history, text):
             new_dict[key] = json.loads(values['value'])
             
     key_values.update(new_dict)
-    
     expressions_dict = {}
-    for expression_item in history.get_expressions():
-        key, value = expression_item.items()[0]
+
+    for key, value in history.get_expressions().items():
         try:
-            expressions_dict = {
-                key: eval(value, key_values.copy())
-            }
+            expressions_dict[key] = eval(value, key_values.copy())
         except Exception, e:
-            expressions_dict = {
-                key: e
-            }
-    
+            expressions_dict[key] = e
+
     key_values.update(expressions_dict)
     return text % key_values
