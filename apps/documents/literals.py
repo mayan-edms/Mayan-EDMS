@@ -21,15 +21,15 @@ UPLOAD_SOURCE_USER_STAGING = u'user_staging'
 HISTORY_DOCUMENT_CREATED = {
     'namespace': 'documents', 'name': 'document_created',
     'label': _(u'Document creation'),
-    'summary': _(u'Document: %(content_object)s created by %(fullname)s.'),
-    'details': _(u'Document: %(content_object)s created on %(datetime)s by %(fullname)s.'),
+    'summary': _(u'Document "%(content_object)s" created by %(fullname)s.'),
+    'details': _(u'Document "%(content_object)s" created on %(datetime)s by %(fullname)s.'),
     'expressions': [{'fullname': 'user.get_full_name() if user.get_full_name() else user.username'}]
 }
 
 HISTORY_DOCUMENT_EDITED = {
     'namespace': 'documents', 'name': 'document_edited',
     'label': _(u'Document edited'),
-    'summary': _(u'Document: %(content_object)s edited by %(fullname)s.'),
-    'details': _(u'Document: %(content_object)s edited on %(datetime)s by %(fullname)s.'),
+    'summary': _(u'Document "%(content_object)s" edited by %(fullname)s.'),
+    'details': _(u'Document "%(content_object)s" edited on %(datetime)s by %(fullname)s.'),
     'expressions': [{'fullname': 'user.get_full_name() if user.get_full_name() else user.username'}]
 }

@@ -54,7 +54,7 @@ def history_for_object(request, app_label, module_name, object_id):
 
     context = {
         'object_list': History.objects.filter(content_type=content_type, object_id=object_id),
-        'title': _(u'history for: %s') % content_object,
+        'title': _(u'history events for: %s') % content_object,
         'object': content_object,
         'extra_columns': [
             {

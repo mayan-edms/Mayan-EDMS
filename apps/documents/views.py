@@ -1,6 +1,7 @@
 import os
 import zipfile
 import urlparse
+import copy
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
@@ -16,7 +17,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.comments.models import Comment
 
 import sendfile
-from common.utils import pretty_size, parse_range, urlquote
+from common.utils import pretty_size, parse_range, urlquote, return_diff
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
@@ -166,15 +167,16 @@ def upload_document_with_type(request, source):
         document_type = get_object_or_404(DocumentType, pk=document_type_id[0])
     else:
         document_type = None
-
+        
     if request.method == 'POST':
         if source == UPLOAD_SOURCE_LOCAL:
-            form = DocumentForm(request.POST, request.FILES,
-                initial={'document_type': document_type})
+            form = DocumentForm(request.POST, request.FILES, document_type=document_type)
             if form.is_valid():
                 try:
                     if (not UNCOMPRESS_COMPRESSED_LOCAL_FILES) or (UNCOMPRESS_COMPRESSED_LOCAL_FILES and not _handle_zip_file(request, request.FILES['file'], document_type)):
                         instance = form.save()
+                        if document_type:
+                            instance.document_type = document_type
                         _handle_save_document(request, instance, form)
                         messages.success(request, _(u'Document uploaded successfully.'))
                 except Exception, e:
@@ -185,7 +187,7 @@ def upload_document_with_type(request, source):
             StagingFile = create_staging_file_class(request, source)
             form = StagingDocumentForm(request.POST,
                 request.FILES, cls=StagingFile,
-                initial={'document_type': document_type})
+                document_type=document_type)
             if form.is_valid():
                 try:
                     staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
@@ -206,11 +208,11 @@ def upload_document_with_type(request, source):
                 return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         if source == UPLOAD_SOURCE_LOCAL:
-            form = DocumentForm(initial={'document_type': document_type})
+            form = DocumentForm(document_type=document_type)
         elif (USE_STAGING_DIRECTORY and source == UPLOAD_SOURCE_STAGING) or (PER_USER_STAGING_DIRECTORY and source == UPLOAD_SOURCE_USER_STAGING):
             StagingFile = create_staging_file_class(request, source)
             form = StagingDocumentForm(cls=StagingFile,
-                initial={'document_type': document_type})
+                document_type=document_type)
 
     subtemplates_list = []
 
@@ -497,7 +499,8 @@ def document_edit(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     if request.method == 'POST':
-        form = DocumentForm_edit(request.POST, initial={'document_type': document.document_type})
+        old_document = copy.copy(document)
+        form = DocumentForm_edit(request.POST, instance=document)
         if form.is_valid():
             warnings = delete_indexes(document)
             if request.user.is_staff or request.user.is_superuser:
@@ -510,13 +513,15 @@ def document_edit(request, document_id):
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
                     document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
-
+            
             document.save()
 
+            #print 'diff', return_diff(old_document, document)
+            
             create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
             RecentDocument.objects.add_document_for_user(request.user, document)
 
-            messages.success(request, _(u'Document %s edited successfully.') % document)
+            messages.success(request, _(u'Document "%s" edited successfully.') % document)
 
             warnings = update_indexes(document)
             if request.user.is_staff or request.user.is_superuser:
@@ -525,12 +530,8 @@ def document_edit(request, document_id):
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:
-        if hasattr(document, 'document_type'):
-            document_type = document.document_type
-        else:
-            document_type = None
         form = DocumentForm_edit(instance=document, initial={
-            'new_filename': document.file_filename, 'document_type': document_type})
+            'new_filename': document.file_filename})
 
     return render_to_response('generic_form.html', {
         'form': form,

@@ -209,7 +209,7 @@ class DocumentPropertiesForm(DetailForm):
 
 class DocumentContentForm(forms.Form):
     """
-    Form that contatenates all of a document pages' text content into a
+    Form that concatenates all of a document pages' text content into a
     single textarea widget
     """
     def __init__(self, *args, **kwargs):

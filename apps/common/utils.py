@@ -335,3 +335,18 @@ def generate_choices_w_labels(choices, display_object_type=True):
 
     #Sort results by the label not the key value
     return sorted(results, key=lambda x: x[1])
+
+
+def return_diff(old_obj, new_obj, attrib_list=None):
+    diff_dict = {}
+    attrib_list = old_obj.__dict__.keys()
+    for attrib in attrib_list:
+        old_val = getattr(old_obj, attrib)
+        new_val = getattr(new_obj, attrib)
+        if old_val != new_val:
+            diff_dict[attrib] = {
+                'old_value': old_val,
+                'new_value': new_val
+            }
+
+    return diff_dict
