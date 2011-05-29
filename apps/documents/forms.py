@@ -155,26 +155,34 @@ class DocumentPreviewForm(forms.Form):
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
 
-#TODO: Turn this into a base form and let others inherit
 class DocumentForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(DocumentForm, self).__init__(*args, **kwargs)
-        if 'initial' in kwargs:
-            document_type = kwargs['initial'].get('document_type', u'')
-            if document_type:
-                if 'document_type' in self.fields:
-                    #To allow merging with DocumentForm_edit
-                    self.fields['document_type'].widget = forms.HiddenInput()
-                filenames_qs = kwargs['initial']['document_type'].documenttypefilename_set.filter(enabled=True)
-                if filenames_qs.count() > 0:
-                    self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
-                        queryset=filenames_qs,
-                        required=False,
-                        label=_(u'Quick document rename'))
-
+    """
+    Baseform for document creation, and editing, made generic enough to
+    be used by document creation from staging files
+    """
     class Meta:
         model = Document
         exclude = ('description', 'tags', 'document_type')
+
+    def __init__(self, *args, **kwargs):
+        document_type = kwargs.pop('document_type', None)
+        super(DocumentForm, self).__init__(*args, **kwargs)
+
+        if 'document_type' in self.fields:
+            # To allow merging with DocumentForm_edit
+            self.fields['document_type'].widget = forms.HiddenInput()
+
+        # Instance's document_type overrides the passed document_type
+        if hasattr(self, 'instance'):
+            if hasattr(self.instance, 'document_type'):
+                document_type = self.instance.document_type
+        if document_type:
+            filenames_qs = document_type.documenttypefilename_set.filter(enabled=True)
+            if filenames_qs.count() > 0:
+                self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
+                    queryset=filenames_qs,
+                    required=False,
+                    label=_(u'Quick document rename'))
 
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
@@ -182,6 +190,9 @@ class DocumentForm(forms.ModelForm):
 
 
 class DocumentForm_edit(DocumentForm):
+    """
+    Form sub classes from DocumentForm used only when editing a document
+    """
     class Meta:
         model = Document
         exclude = ('file', 'document_type', 'tags')
@@ -222,6 +233,10 @@ class DocumentContentForm(forms.Form):
 
 
 class DocumentTypeSelectForm(forms.Form):
+    """
+    Form to select the document type of a document to be created, used
+    as form #1 in the document creation wizard
+    """
     document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'), required=False)
 
 
@@ -233,7 +248,11 @@ class PrintForm(forms.Form):
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
 
-class StagingDocumentForm(forms.Form):
+class StagingDocumentForm(DocumentForm):
+    """
+    Form that show all the files in the staging folder specified by the
+    StagingFile class passed as 'cls' argument
+    """
     def __init__(self, *args, **kwargs):
         cls = kwargs.pop('cls')
         super(StagingDocumentForm, self).__init__(*args, **kwargs)
@@ -244,17 +263,11 @@ class StagingDocumentForm(forms.Form):
         except:
             pass
 
-        if 'initial' in kwargs:
-            document_type = kwargs['initial'].get('document_type', None)
-            if document_type:
-                filenames_qs = kwargs['initial']['document_type'].documenttypefilename_set.filter(enabled=True)
-                if filenames_qs.count() > 0:
-                    self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
-                        queryset=filenames_qs,
-                        required=False,
-                        label=_(u'Quick document rename'))
+        # Put staging_list field first in the field order list
+        staging_list = self.fields.keyOrder.pop(1)
+        self.fields.keyOrder.insert(0, staging_list)
 
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
-    new_filename = forms.CharField(
-        label=_('New document filename'), required=False
-    )
+
+    class Meta(DocumentForm.Meta):
+        exclude = ('description', 'file', 'document_type', 'tags')
