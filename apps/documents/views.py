@@ -273,7 +273,7 @@ def upload_document_with_type(request, source):
         context_instance=RequestContext(request))
 
 
-def document_view_simple(request, document_id):
+def document_view(request, document_id, advanced=False):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     # Triggers a 404 error on documents uploaded via local upload
@@ -284,8 +284,6 @@ def document_view_simple(request, document_id):
 
     subtemplates_list = []
 
-    content_form = DocumentContentForm(document=document)
-
     preview_form = DocumentPreviewForm(document=document)
     subtemplates_list.append(
         {
@@ -296,90 +294,8 @@ def document_view_simple(request, document_id):
             }
         },
     )
-    subtemplates_list.append(
-        {
-            'name': 'generic_form_subtemplate.html',
-            'context': {
-                'title': _(u'document data'),
-                'form': content_form,
-                'object': document,
-            },
-        }
-    )
-
-    if document.tags.count():
-        subtemplates_list.append(get_tags_subtemplate(document))
-
-    if Comment.objects.for_model(document).count():
-        subtemplates_list.append(get_comments_subtemplate(document))
-
-    subtemplates_list.append(
-        {
-            'name': 'generic_list_subtemplate.html',
-            'context': {
-                'title': _(u'metadata'),
-                'object_list': document.documentmetadata_set.all(),
-                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
-                'hide_link': True,
-            }
-        },
-    )
-
-    document_group_subtemplate = get_document_group_subtemplate(request, document)
-
-    if document_group_subtemplate:
-        subtemplates_list.append(document_group_subtemplate)
-
-    if document.indexinstance_set.count():
-        subtemplates_list.append(get_document_indexing_subtemplate(document))
-
-    return render_to_response('generic_detail.html', {
-        'object': document,
-        'document': document,
-        'subtemplates_list': subtemplates_list,
-    }, context_instance=RequestContext(request))
-
-
-def document_view_advanced(request, document_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-
-    #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
-    # Triggers a 404 error on documents uploaded via local upload
-    # TODO: investigate
-    document = get_object_or_404(Document, pk=document_id)
-
-    RecentDocument.objects.add_document_for_user(request.user, document)
-
-    subtemplates_list = []
-
-    document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
-        {'label': _(u'Filename'), 'field': 'file_filename'},
-        {'label': _(u'File extension'), 'field': 'file_extension'},
-        {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
-        {'label': _(u'File mime encoding'), 'field': 'file_mime_encoding'},
-        {'label': _(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
-        {'label': _(u'Exists in storage'), 'field': 'exists'},
-        {'label': _(u'File path in storage'), 'field': 'file'},
-        {'label': _(u'Date added'), 'field':lambda x: x.date_added.date()},
-        {'label': _(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
-        {'label': _(u'Checksum'), 'field': 'checksum'},
-        {'label': _(u'UUID'), 'field': 'uuid'},
-        {'label': _(u'Pages'), 'field': lambda x: x.documentpage_set.count()},
-    ])
-
-    preview_form = DocumentPreviewForm(document=document)
-
+        
     content_form = DocumentContentForm(document=document)
-
-    subtemplates_list.append(
-        {
-            'name': 'generic_form_subtemplate.html',
-            'context': {
-                'form': preview_form,
-                'object': document,
-            }
-        },
-    )
 
     subtemplates_list.append(
         {
@@ -392,16 +308,32 @@ def document_view_advanced(request, document_id):
         }
     )
 
-    subtemplates_list.append(
-        {
-            'name': 'generic_form_subtemplate.html',
-            'context': {
-                'form': document_properties_form,
-                'title': _(u'document properties'),
-                'object': document,
-            }
-        },
-    )
+    if advanced:
+        document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
+            {'label': _(u'Filename'), 'field': 'file_filename'},
+            {'label': _(u'File extension'), 'field': 'file_extension'},
+            {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
+            {'label': _(u'File mime encoding'), 'field': 'file_mime_encoding'},
+            {'label': _(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+            {'label': _(u'Exists in storage'), 'field': 'exists'},
+            {'label': _(u'File path in storage'), 'field': 'file'},
+            {'label': _(u'Date added'), 'field':lambda x: x.date_added.date()},
+            {'label': _(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
+            {'label': _(u'Checksum'), 'field': 'checksum'},
+            {'label': _(u'UUID'), 'field': 'uuid'},
+            {'label': _(u'Pages'), 'field': lambda x: x.documentpage_set.count()},
+        ])
+
+        subtemplates_list.append(
+            {
+                'name': 'generic_form_subtemplate.html',
+                'context': {
+                    'form': document_properties_form,
+                    'object': document,
+                    'title': _(u'document properties'),
+                }
+            },
+        )        
 
     if document.tags.count():
         subtemplates_list.append(get_tags_subtemplate(document))
