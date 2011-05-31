@@ -4,7 +4,8 @@ from django.forms.formsets import formset_factory
 
 from metadata.conf.settings import AVAILABLE_MODELS
 from metadata.conf.settings import AVAILABLE_FUNCTIONS
-from metadata.models import MetadataSet, MetadataType
+from metadata.models import MetadataSet, MetadataType, \
+    DocumentTypeDefaults
 
 
 class MetadataForm(forms.Form):
@@ -66,6 +67,18 @@ class MetadataRemoveForm(MetadataForm):
 
 
 class MetadataSelectionForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        #document_type = kwargs.pop('document_type', None)
+        super(MetadataSelectionForm, self).__init__(*args, **kwargs)
+        document_type = getattr(self, 'initial', {}).get('document_type', None)
+        if document_type:
+            try:
+                defaults = document_type.documenttypedefaults_set.get()
+                self.fields['metadata_sets'].initial = defaults.default_metadata_sets.all()
+                self.fields['metadata_types'].initial = defaults.default_metadata.all()
+            except DocumentTypeDefaults.DoesNotExist:
+                pass
+            
     metadata_sets = forms.ModelMultipleChoiceField(
         queryset=MetadataSet.objects.all(),
         label=_(u'Metadata sets'),

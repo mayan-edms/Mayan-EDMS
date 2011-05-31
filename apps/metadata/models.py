@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document
+from documents.models import Document, DocumentType
 
 from metadata.conf.settings import AVAILABLE_MODELS
 from metadata.conf.settings import AVAILABLE_FUNCTIONS
@@ -30,6 +30,9 @@ class MetadataType(models.Model):
 
 
 class MetadataSet(models.Model):
+    """
+    Define a group of metadata types
+    """
     title = models.CharField(max_length=48, verbose_name=_(u'title'))
 
     def __unicode__(self):
@@ -72,3 +75,16 @@ class DocumentMetadata(models.Model):
     class Meta:
         verbose_name = _(u'document metadata')
         verbose_name_plural = _(u'document metadata')
+
+
+class DocumentTypeDefaults(models.Model):
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
+    default_metadata_sets = models.ManyToManyField(MetadataSet, blank=True, verbose_name=_(u'default metadata sets'))
+    default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'default metadata'))
+
+    def __unicode__(self):
+        return unicode(self.document_type)
+
+    class Meta:
+        verbose_name = _(u'document type defaults')
+        verbose_name_plural = _(u'document types defaults')

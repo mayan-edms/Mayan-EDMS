@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from metadata.models import MetadataType, MetadataSet, MetadataSetItem, \
-    DocumentMetadata
+    DocumentMetadata, DocumentTypeDefaults
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
@@ -26,5 +26,10 @@ class MetadataSetAdmin(admin.ModelAdmin):
     inlines = [MetadataSetItemInline]
 
 
+class DocumentTypeDefaultsAdmin(admin.ModelAdmin):
+    filter_horizontal = ('default_metadata_sets', 'default_metadata')
+    
+    
 admin.site.register(MetadataType, MetadataTypeAdmin)
 admin.site.register(MetadataSet, MetadataSetAdmin)
+admin.site.register(DocumentTypeDefaults, DocumentTypeDefaultsAdmin)

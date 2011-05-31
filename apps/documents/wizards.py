@@ -25,7 +25,7 @@ class DocumentCreateWizard(BoundFormWizard):
                 }
                 if data not in initial:
                     initial.append(data)
-
+    
         return initial
 
     def __init__(self, *args, **kwargs):
@@ -36,12 +36,8 @@ class DocumentCreateWizard(BoundFormWizard):
             _(u'step 2 of 3: Metadata selection'),
             _(u'step 3 of 3: Document metadata'),
             ])
-        self.document_type = kwargs.pop('document_type', None)
 
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)
-
-        if self.document_type:
-            self.initial = {0: self.generate_metadata_initial_values()}
 
     def render_template(self, request, form, previous_fields, step, context=None):
         context = {'step_title': self.extra_context['step_titles'][step]}
@@ -55,6 +51,7 @@ class DocumentCreateWizard(BoundFormWizard):
     def process_step(self, request, form, step):
         if isinstance(form, DocumentTypeSelectForm):
             self.document_type = form.cleaned_data['document_type']
+            self.initial = {1: {'document_type': self.document_type}}
 
         if isinstance(form, MetadataSelectionForm):
             self.metadata_sets = form.cleaned_data['metadata_sets']
@@ -62,7 +59,7 @@ class DocumentCreateWizard(BoundFormWizard):
             initial_data = self.generate_metadata_initial_values()
             self.initial = {2: initial_data}
             if not initial_data:
-                # If there is no metadata selected end wizard
+                # If there is no metadata selected, finish wizard
                 self.form_list = [DocumentTypeSelectForm, MetadataSelectionForm]
 
         if isinstance(form, MetadataFormSet):
