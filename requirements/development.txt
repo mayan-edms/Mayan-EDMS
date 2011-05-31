@@ -8,4 +8,4 @@ celery==2.2.2
 django-celery==2.2.2
 django-sentry==1.6.0
 django-taggit==0.9.3
-django-mptt==0.4.2
+-e git://github.com/django-mptt/django-mptt.git@0af02a95877041b2fd6d458bd95413dc1666c321#egg=django-mptt
