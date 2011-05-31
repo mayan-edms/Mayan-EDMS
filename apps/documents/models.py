@@ -76,7 +76,7 @@ class Document(models.Model):
         ordering = ['-date_added']
 
     def __unicode__(self):
-        return '%s.%s' % (self.file_filename, self.file_extension)
+        return os.extsep.join([self.file_filename, self.file_extension])
 
     def save(self, *args, **kwargs):
         new_document = not self.pk
