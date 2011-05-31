@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-31 13:14-0400\n"
+"PO-Revision-Date: 2011-05-31 13:16\n"
+"Last-Translator:   <rosario_r@jp.pr.gov>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.6.0\n"
+
+#: __init__.py:7
+msgid "View document indexes"
+msgstr "Ver los índices de documentos"
+
+#: __init__.py:8
+msgid "Rebuild document indexes"
+msgstr "Generar índices de documentos"
+
+#: __init__.py:10
+msgid "indexing"
+msgstr "indexación"
+
+#: __init__.py:14
+msgid "index list"
+msgstr "lista de indices"
+
+#: __init__.py:17 models.py:26
+msgid "indexes"
+msgstr "índices"
+
+#: __init__.py:20
+msgid "rebuild indexes"
+msgstr "generar índices"
+
+#: __init__.py:20
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "Borra y crea de la nada todos los índices de documentos."
+
+#: __init__.py:22
+msgid "Indexes"
+msgstr "Índices"
+
+#: api.py:83
+msgid "root"
+msgstr "raíz"
+
+#: api.py:139
+#, python-format
+msgid "Maximum suffix (%s) count reached."
+msgstr "Cuenta máxima de sufijo (%s) alcanzada."
+
+#: api.py:175
+#, python-format
+msgid ""
+"Error in document indexing update expression: %(expression)s; "
+"%(exception)s"
+msgstr ""
+
+#: api.py:178
+#, python-format
+msgid ""
+"Error updating document index, expression: %(expression)s; "
+"%(exception)s"
+msgstr ""
+
+#: api.py:209
+#, python-format
+msgid "Unable to delete document indexing node; %s"
+msgstr ""
+
+#: filesystem.py:34
+#, python-format
+msgid "Unable to create indexing directory; %s"
+msgstr ""
+
+#: filesystem.py:52
+#, python-format
+msgid ""
+"Unable to create symbolic link, file exists and could not be deleted: "
+"%(filepath)s; %(exc)s"
+msgstr ""
+
+#: filesystem.py:54
+#, python-format
+msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
+msgstr ""
+
+#: filesystem.py:71
+#, python-format
+msgid "Unable to delete document symbolic link; %s"
+msgstr ""
+
+#: filesystem.py:83
+#, python-format
+msgid "Unable to delete indexing directory; %s"
+msgstr ""
+
+#: models.py:11
+#, python-format
+msgid "Available functions: %s"
+msgstr ""
+
+#: models.py:16
+msgid "indexing expression"
+msgstr ""
+
+#: models.py:16
+msgid "Enter a python string expression to be evaluated."
+msgstr ""
+
+#: models.py:18
+msgid "enabled"
+msgstr ""
+
+#: models.py:19
+msgid "link documents"
+msgstr ""
+
+#: models.py:25 models.py:31
+msgid "index"
+msgstr ""
+
+#: models.py:32
+msgid "value"
+msgstr ""
+
+#: models.py:33
+msgid "documents"
+msgstr ""
+
+#: models.py:46 models.py:51
+msgid "index instance"
+msgstr ""
+
+#: models.py:47
+msgid "indexes instances"
+msgstr ""
+
+#: models.py:52
+msgid "document"
+msgstr ""
+
+#: models.py:59
+msgid "document rename count"
+msgstr ""
+
+#: models.py:60
+msgid "documents rename count"
+msgstr ""
+
+#: utils.py:19
+msgid "document indexes"
+msgstr ""
+
+#: views.py:38
+#, python-format
+msgid "contents for index: %s"
+msgstr ""
+
+#: views.py:44
+msgid "item"
+msgstr ""
+
+#: views.py:64
+msgid "Are you sure you wish to rebuild all indexes?"
+msgstr ""
+
+#: views.py:65
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+
+#: views.py:71
+msgid "Index rebuild completed successfully."
+msgstr ""
+
+#: views.py:76
+#, python-format
+msgid "Index rebuild error: %s"
+msgstr ""
