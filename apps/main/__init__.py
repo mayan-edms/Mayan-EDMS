@@ -46,7 +46,7 @@ if not SIDE_BAR_SEARCH:
 
 register_menu(main_menu)
 
-register_links(['tools_menu', 'statistics', 'diagnostics'], [tools, statistics, diagnostics, sentry], menu_name='sidebar')
+register_links(['tools_menu', 'statistics', 'diagnostics', 'history_list'], [tools, statistics, diagnostics, history_list, sentry], menu_name='sidebar')
 #register_links(['setting_list'], [check_settings, role_list, user_list, group_list, admin_site], menu_name='sidebar')
 
 
