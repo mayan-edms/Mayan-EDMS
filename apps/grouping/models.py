@@ -22,7 +22,7 @@ class DocumentGroup(models.Model):
 
 
 class DocumentGroupItem(models.Model):
-    metadata_group = models.ForeignKey(DocumentGroup, verbose_name=_(u'metadata group'))
+    document_group = models.ForeignKey(DocumentGroup, verbose_name=_(u'document group'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
     foreign_document_data = models.CharField(max_length=32, verbose_name=_(u'foreign document data'), help_text=_(u'This represents the metadata of all other documents.  Available objects: `document.<attribute>` and `metadata.<metadata_type_name>`.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
