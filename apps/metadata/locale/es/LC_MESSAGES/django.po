@@ -1,0 +1,287 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-31 15:11-0400\n"
+"PO-Revision-Date: 2011-05-31 15:24\n"
+"Last-Translator:   <rosario_r@jp.pr.gov>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.6.0\n"
+
+#: __init__.py:7
+msgid "Edit a document's metadata"
+msgstr "Editar metadatos de documento"
+
+#: __init__.py:8
+msgid "Add metadata to a document"
+msgstr "Añadir metadatos a documento"
+
+#: __init__.py:9
+msgid "Remove metadata from a document"
+msgstr "Eliminar metadatos de un documento"
+
+#: __init__.py:11
+msgid "metadata"
+msgstr "metadatos"
+
+#: __init__.py:16 __init__.py:17
+msgid "edit metadata"
+msgstr "editar metadatos"
+
+#: __init__.py:18 __init__.py:19
+msgid "add metadata"
+msgstr "añadir metadatos"
+
+#: __init__.py:20 __init__.py:21
+msgid "remove metadata"
+msgstr "eliminar los metadatos"
+
+#: classes.py:12
+#, python-format
+msgid "'metadata' object has no attribute '%s'"
+msgstr "objeto 'metadata' no tiene attributo '%s'"
+
+#: forms.py:26
+msgid "required"
+msgstr "requerido"
+
+#: forms.py:52
+msgid "id"
+msgstr "Identificacador"
+
+#: forms.py:53
+msgid "Name"
+msgstr "Nombre"
+
+#: forms.py:55
+msgid "Value"
+msgstr "Valor"
+
+#: forms.py:56
+msgid "Update"
+msgstr "Actualizar"
+
+#: forms.py:62
+msgid "Metadata type"
+msgstr "Tipo de metadato"
+
+#: forms.py:66
+msgid "Remove"
+msgstr "Eliminar"
+
+#: forms.py:84
+msgid "Metadata sets"
+msgstr "Conjunto de metadatos"
+
+#: forms.py:91
+msgid "Metadata"
+msgstr "Metadatos"
+
+#: models.py:9
+#, python-format
+msgid " Available models: %s"
+msgstr "Modelos disponibles: %s"
+
+#: models.py:10
+#, python-format
+msgid " Available functions: %s"
+msgstr "Funciones disponibles: %s"
+
+#: models.py:14
+msgid "name"
+msgstr "nombre"
+
+#: models.py:14
+msgid "Do not use python reserved words, or spaces."
+msgstr "No utilice palabras reservadas de Python, o espacios."
+
+#: models.py:15 models.py:36
+msgid "title"
+msgstr "título"
+
+#: models.py:17
+msgid "default"
+msgstr "por defecto"
+
+#: models.py:18
+#, python-format
+msgid "Enter a string to be evaluated.%s"
+msgstr "Introduzca una cadena para ser evaluada. %s"
+
+#: models.py:20
+msgid "lookup"
+msgstr "búsqueda"
+
+#: models.py:21
+#, python-format
+msgid ""
+"Enter a string to be evaluated.  Example: [user.get_full_name() for "
+"user in User.objects.all()].%s"
+msgstr ""
+"Introduzca una cadena para ser evaluada.  Ejemplo: "
+"[user.get_full_name() for user in User.objects.all ()].%s"
+
+#: models.py:28 models.py:52
+msgid "metadata type"
+msgstr "tipos de metadatos"
+
+#: models.py:29
+msgid "metadata types"
+msgstr "tipos de metadatos"
+
+#: models.py:42 models.py:43 models.py:51
+msgid "metadata set"
+msgstr "conjunto de metadatos"
+
+#: models.py:59
+msgid "metadata set item"
+msgstr "artículo de conjunto de metadatos"
+
+#: models.py:60
+msgid "metadata set items"
+msgstr "artículos de conjuntos de metadatos"
+
+#: models.py:68
+msgid "document"
+msgstr "documento"
+
+#: models.py:69
+msgid "type"
+msgstr "tipo"
+
+#: models.py:70
+msgid "value"
+msgstr "valor"
+
+#: models.py:76 models.py:77
+msgid "document metadata"
+msgstr "metadatos de documento"
+
+#: models.py:81
+msgid "document type"
+msgstr "tipo de documento"
+
+#: models.py:82
+msgid "default metadata sets"
+msgstr "conjuntos de metadatos predeterminados "
+
+#: models.py:83
+msgid "default metadata"
+msgstr "metadatos predeterminados"
+
+#: models.py:89
+msgid "document type defaults"
+msgstr "predeterminados de tipo de documento"
+
+#: models.py:90
+msgid "document types defaults"
+msgstr "predeterminados de tipos de documentos"
+
+#: views.py:27 views.py:169
+msgid "The selected document doesn't have any metadata."
+msgstr "El documento seleccionado no tiene ningún tipo de metadatos."
+
+#: views.py:32 views.py:118 views.py:175
+msgid "Must provide at least one document."
+msgstr "Debe proveer al menos un documento."
+
+#: views.py:63 views.py:206
+#, python-format
+msgid "Error deleting document indexes; %s"
+msgstr "Error eliminando indicies de documento; %s"
+
+#: views.py:75
+#, python-format
+msgid "Error editing metadata for document %(document)s; %(error)s."
+msgstr "Error editando metadatos para documento %(document)s; %(error)s."
+
+#: views.py:78
+#, python-format
+msgid "Metadata for document %s edited successfully."
+msgstr "Metadatos para documento %s editados exitosamente."
+
+#: views.py:83 views.py:223
+#, python-format
+msgid "Error updating document indexes; %s"
+msgstr "Error editando indices de documento; %s"
+
+#: views.py:85 views.py:225
+msgid "Document indexes updated successfully."
+msgstr "Indices documento actualizados exitosamente."
+
+#: views.py:98
+#, python-format
+msgid "Edit metadata for document: %s"
+msgstr "Editar metadatos para documento: %s"
+
+#: views.py:100
+#, python-format
+msgid "Edit metadata for documents: %s"
+msgstr "Editar metadatos para documentos: %s"
+
+#: views.py:131
+#, python-format
+msgid ""
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
+msgstr ""
+"Typo de metadatos: %(metadata_type)s agregado exitosamente al "
+"documento %(document)s."
+
+#: views.py:134
+#, python-format
+msgid ""
+"Metadata type: %(metadata_type)s already present in document "
+"%(document)s."
+msgstr ""
+"Typo de metadatos: %(metadata_type)s ya esta presente en el documento "
+"%(document)s."
+
+#: views.py:151
+#, python-format
+msgid "Add metadata type to document: %s"
+msgstr "Agregar tipo de metadato al documento: %s"
+
+#: views.py:153
+#, python-format
+msgid "Add metadata type to documents: %s"
+msgstr "Agregar tipo de metadato a los documentos: %s"
+
+#: views.py:214
+#, python-format
+msgid ""
+"Successfully remove metadata type: %(metadata_type)s from document: "
+"%(document)s."
+msgstr ""
+"Se elimino exitosamente el tipo de metadatos: %(metadata_type)s del "
+"documento: %(document)s."
+
+#: views.py:217
+#, python-format
+msgid ""
+"Error removing metadata type: %(metadata_type)s from document: "
+"%(document)s."
+msgstr ""
+"Se elimino exitosamente el tipo de metadatos: %(metadata_type)s de los"
+" documentos: %(document)s."
+
+#: views.py:238
+#, python-format
+msgid "Remove metadata types to document: %s"
+msgstr "Eliminar tipo de metadatos del documento: %s"
+
+#: views.py:240
+#, python-format
+msgid "Remove metadata types to documents: %s"
+msgstr "Eliminar tipo de metadatos de los documentos: %s"

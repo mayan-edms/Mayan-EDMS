@@ -8,22 +8,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-21 04:35-0400\n"
-"PO-Revision-Date: 2011-04-21 04:36\n"
-"Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
+"POT-Creation-Date: 2011-05-31 15:36-0400\n"
+"PO-Revision-Date: 2011-05-31 15:37\n"
+"Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: templates/web_theme_base.html:84
+#: conf/settings.py:10
+msgid ""
+"CSS theme to apply, options are: amro, bec, bec-green, blue, default, "
+"djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-"
+"greenish and warehouse."
+msgstr ""
+"Tema CSS para aplicar, las opciones son: amro, bec, bec-green, blue, "
+"default, djime-cerulean, drastic-dark, kathleene, olive, orange, red, "
+"reidb-greenish y warehouse."
+
+#: templates/web_theme_base.html:94
+msgid "dismiss all notifications"
+msgstr "cerrar todas las notificaciones"
+
+#: templates/web_theme_base.html:94
+msgid "close all"
+msgstr "cerrar todos"
+
+#: templates/web_theme_base.html:95
 msgid "dismiss this notification"
 msgstr "cerrar esta notificación"
 
-#: templates/web_theme_base.html:84
+#: templates/web_theme_base.html:95
 msgid "close"
 msgstr "cerrar"
 
@@ -41,8 +59,12 @@ msgstr "Se va a redirigir al punto de entrada al sitio web en 5 segundos."
 
 #: templates/web_theme_login.html:23
 #, python-format
-msgid "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't work."
-msgstr "O haga clic <a href=\"%(LOGIN_REDIRECT_URL)s\">aquí</a> si la redirección no funciona."
+msgid ""
+"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection "
+"doesn't work."
+msgstr ""
+"O haga clic <a href=\"%(LOGIN_REDIRECT_URL)s\">aquí</a> si la "
+"redirección no funciona."
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8

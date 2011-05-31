@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 13:14-0400\n"
-"PO-Revision-Date: 2011-05-31 13:16\n"
+"POT-Creation-Date: 2011-05-31 14:20-0400\n"
+"PO-Revision-Date: 2011-05-31 14:33\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -66,6 +66,8 @@ msgid ""
 "Error in document indexing update expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
+"Error en la expresión de actualización de indexación: %(expression)s; "
+"%(exception)s "
 
 #: api.py:178
 #, python-format
@@ -73,16 +75,18 @@ msgid ""
 "Error updating document index, expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
+"Error actualizando el indice de documento, expresión: %(expression)s; "
+"%(exception)s "
 
 #: api.py:209
 #, python-format
 msgid "Unable to delete document indexing node; %s"
-msgstr ""
+msgstr "No se puede eliminar el nodo de indexación de documento; %s"
 
 #: filesystem.py:34
 #, python-format
 msgid "Unable to create indexing directory; %s"
-msgstr ""
+msgstr "No se puede crear el directorio de indexación; %s"
 
 #: filesystem.py:52
 #, python-format
@@ -90,101 +94,105 @@ msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
 msgstr ""
+"No se puede crear un enlace simbólico, el archivo existe y no puede "
+"eliminarse: %(filepath)s; %(exc)s "
 
 #: filesystem.py:54
 #, python-format
 msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
-msgstr ""
+msgstr "No se puede crear enlace simbólico: %(filepath)s; %(exc)s "
 
 #: filesystem.py:71
 #, python-format
 msgid "Unable to delete document symbolic link; %s"
-msgstr ""
+msgstr "No se puede eliminar vínculo simbólico de documento; %s"
 
 #: filesystem.py:83
 #, python-format
 msgid "Unable to delete indexing directory; %s"
-msgstr ""
+msgstr "No se puede eliminar el directorio de indexación; %s"
 
 #: models.py:11
 #, python-format
 msgid "Available functions: %s"
-msgstr ""
+msgstr "Funciones disponibles: %s"
 
 #: models.py:16
 msgid "indexing expression"
-msgstr ""
+msgstr "expresión de indexación"
 
 #: models.py:16
 msgid "Enter a python string expression to be evaluated."
-msgstr ""
+msgstr "Introduzca una expresión de python para ser evaluada."
 
 #: models.py:18
 msgid "enabled"
-msgstr ""
+msgstr "habilitado"
 
 #: models.py:19
 msgid "link documents"
-msgstr ""
+msgstr "enlace de documentos"
 
 #: models.py:25 models.py:31
 msgid "index"
-msgstr ""
+msgstr "índice"
 
 #: models.py:32
 msgid "value"
-msgstr ""
+msgstr "valor"
 
 #: models.py:33
 msgid "documents"
-msgstr ""
+msgstr "documentos"
 
 #: models.py:46 models.py:51
 msgid "index instance"
-msgstr ""
+msgstr "instancia de indice"
 
 #: models.py:47
 msgid "indexes instances"
-msgstr ""
+msgstr "instancias de indices"
 
 #: models.py:52
 msgid "document"
-msgstr ""
+msgstr "documento"
 
 #: models.py:59
 msgid "document rename count"
-msgstr ""
+msgstr "conteo de cambio de nombre de documento"
 
 #: models.py:60
 msgid "documents rename count"
-msgstr ""
+msgstr "conteos de cambio de nombre de documentos"
 
 #: utils.py:19
 msgid "document indexes"
-msgstr ""
+msgstr "indices de documentos"
 
 #: views.py:38
 #, python-format
 msgid "contents for index: %s"
-msgstr ""
+msgstr "contenido del indice: %s"
 
 #: views.py:44
 msgid "item"
-msgstr ""
+msgstr "artículo"
 
 #: views.py:64
 msgid "Are you sure you wish to rebuild all indexes?"
-msgstr ""
+msgstr "¿Está seguro que desea reconstruir todos los índices?"
 
 #: views.py:65
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
+"En bases de datos de gran tamaño esta operación puede tardar algún "
+"tiempo en ejecutarse."
 
 #: views.py:71
 msgid "Index rebuild completed successfully."
-msgstr ""
+msgstr "Reconstrucción de Índices completada exitosamente."
 
 #: views.py:76
 #, python-format
 msgid "Index rebuild error: %s"
-msgstr ""
+msgstr "Error de reconstrucción de índices: %s"

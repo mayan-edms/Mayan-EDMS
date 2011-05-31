@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-06 13:30-0400\n"
-"PO-Revision-Date: 2011-05-06 13:31\n"
-"Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
+"POT-Creation-Date: 2011-05-31 15:08-0400\n"
+"PO-Revision-Date: 2011-05-31 15:11\n"
+"Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,77 +19,61 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: __init__.py:13 views.py:110
+#: __init__.py:15
 msgid "settings"
 msgstr "configuración"
 
-#: __init__.py:14
+#: __init__.py:16
 msgid "statistics"
 msgstr "estadísticas"
 
-#: __init__.py:15
+#: __init__.py:17
 msgid "diagnostics"
 msgstr "diagnósticos"
 
-#: __init__.py:16 __init__.py:31
+#: __init__.py:18 __init__.py:33
 msgid "tools"
 msgstr "herramientas"
 
-#: __init__.py:17
+#: __init__.py:19
 msgid "admin site"
 msgstr "sitio administrativo"
 
-#: __init__.py:18
+#: __init__.py:20
 msgid "sentry"
 msgstr "sentry"
 
-#: __init__.py:30
+#: __init__.py:32
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:35
+#: __init__.py:37
 msgid "setup"
 msgstr "instalación"
 
-#: __init__.py:39
+#: __init__.py:41
 msgid "about"
 msgstr "acerca"
 
-#: __init__.py:43
+#: __init__.py:45
 msgid "search"
 msgstr "búsqueda"
 
-#: views.py:115
-msgid "name"
-msgstr "nombre"
-
-#: views.py:116
-msgid "value"
-msgstr "valor"
-
-#: views.py:117
-msgid "description"
-msgstr "descripción"
-
-#: views.py:118
-msgid "exists"
-msgstr "existe"
-
-#: views.py:144
+#: views.py:35
 msgid "tools menu"
 msgstr "menú de herramientas"
 
-#: views.py:156
+#: views.py:47
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: views.py:164
+#: views.py:55
 msgid "Diagnostics"
 msgstr "Diagnósticos"
 
-#: conf/settings.py:10
+#: conf/settings.py:12
 msgid ""
-"Controls whether the search     functionality is provided by a sidebar "
+"Controls whether the search functionality is provided by a sidebar "
 "widget or by a menu entry."
 msgstr ""
 "Controla si la funcionalidad de búsqueda es proporcionada por una "
@@ -99,20 +83,21 @@ msgstr ""
 msgid "About this program"
 msgstr "Acerca de este programa"
 
-#: templates/about.html:10
+#: templates/about.html:9
 msgid "Version"
 msgstr "Versión"
 
 #: templates/about.html:11
 msgid ""
-"Open source, Django based document manager with custom metadata "
-"indexing, file serving integration and OCR capabilities"
+"Open source, Django based electronic document manager with custom "
+"metadata, indexing, tagging, file serving integration and OCR "
+"capabilities"
 msgstr ""
-"Gestor documental de código abierto, basado en Django con indexación "
-"de metadatos personalizados, integración de servicio de archivos y "
-"capacidades de OCR"
+"Gestor documental de código abierto, basado en Django con metadatos "
+"personaliables, indexación, etiquedado de documentos, integración de "
+"servicio de archivos y capacidades de OCR"
 
-#: templates/about.html:13
+#: templates/about.html:20
 msgid "Released under the GPL V3 License"
 msgstr "Publicado bajo la licencia GPL v3"
 
@@ -120,47 +105,59 @@ msgstr "Publicado bajo la licencia GPL v3"
 msgid "(DEBUG Mode)"
 msgstr "(Modo debug)"
 
-#: templates/base.html:114
+#: templates/base.html:113
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:116
+#: templates/base.html:115
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:120
+#: templates/base.html:119
 msgid "New password"
 msgstr "Nueva contraseña"
 
-#: templates/base.html:134
+#: templates/base.html:133
 msgid "Go"
 msgstr "Ir"
 
-#: templates/base.html:139
+#: templates/base.html:138
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:139
+#: templates/base.html:138
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:206
+#: templates/base.html:214
 #, python-format
 msgid "Actions for %(object_name)s: %(object)s"
 msgstr "Acciones para %(object_name)s: %(object)s "
 
-#: templates/base.html:208
+#: templates/base.html:216
 #, python-format
 msgid "Actions for: %(object)s"
 msgstr "Acciones para: %(object)s "
 
-#: templates/base.html:211
+#: templates/base.html:219
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:224
+#: templates/base.html:232
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
+
+#~ msgid "name"
+#~ msgstr "nombre"
+
+#~ msgid "value"
+#~ msgstr "valor"
+
+#~ msgid "description"
+#~ msgstr "descripción"
+
+#~ msgid "exists"
+#~ msgstr "existe"
 
 #~ msgid "function found"
 #~ msgstr "función encontrada"

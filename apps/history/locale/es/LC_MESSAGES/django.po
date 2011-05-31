@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 13:21-0400\n"
-"PO-Revision-Date: 2011-05-31 13:23\n"
+"POT-Creation-Date: 2011-05-31 15:07-0400\n"
+"PO-Revision-Date: 2011-05-31 15:08\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "historial"
 
 #: models.py:16
 msgid "namespace"
-msgstr ""
+msgstr "espacio de nombres"
 
 #: models.py:17
 msgid "name"
@@ -57,7 +57,7 @@ msgstr "historiales"
 
 #: views.py:25
 msgid "history events"
-msgstr ""
+msgstr "eventos de historial"
 
 #: views.py:28 views.py:68
 msgid "date and time"
@@ -74,7 +74,7 @@ msgstr "resumen"
 #: views.py:64
 #, python-format
 msgid "history events for: %s"
-msgstr ""
+msgstr "eventos de historial para: %s"
 
 #: views.py:92
 msgid "Date"

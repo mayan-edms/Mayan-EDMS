@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 13:19-0400\n"
-"PO-Revision-Date: 2011-05-31 13:21\n"
+"POT-Creation-Date: 2011-05-31 14:55-0400\n"
+"PO-Revision-Date: 2011-05-31 15:07\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "volver al documento"
 
 #: __init__.py:9
 msgid "upload new documents using same metadata"
-msgstr ""
+msgstr "subir nuevos documentos usando los mismos metadatos"
 
 #: forms.py:55
 msgid "Pages"
@@ -37,15 +37,17 @@ msgstr "Páginas"
 
 #: forms.py:56
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #: forms.py:61
 msgid "group document"
-msgstr ""
+msgstr "documento del grupo"
 
 #: forms.py:66
 msgid "Click on the image for full size view of the first page."
 msgstr ""
+"Haga clic en la imagen para ver el tamaño completo de la primera "
+"página."
 
 #: literals.py:7
 msgid "and"
@@ -127,31 +129,30 @@ msgstr "título dinámico"
 msgid "enabled"
 msgstr "habilitado"
 
-#: models.py:20
+#: models.py:20 models.py:25
 msgid "document group"
-msgstr ""
+msgstr "grupo de documento"
 
 #: models.py:21
 msgid "document groups"
-msgstr ""
-
-#: models.py:25
-msgid "metadata group"
-msgstr ""
+msgstr "grupos de documentos"
 
 #: models.py:26
 msgid "The inclusion is ignored for the first item."
-msgstr ""
+msgstr "La inclusión es ignorada para el primer artículo."
 
 #: models.py:27
 msgid "foreign document data"
-msgstr ""
+msgstr "datos de documento foráneo"
 
 #: models.py:27
 msgid ""
 "This represents the metadata of all other documents.  Available "
 "objects: `document.<attribute>` and `metadata.<metadata_type_name>`."
 msgstr ""
+"Esto representa los metadatos de todos los demás documentos.  Objetos "
+"disponibles: `document.<attributo>` y `metadata.<nombre de tipo de "
+"metadata>`."
 
 #: models.py:31
 msgid "expression"
@@ -163,6 +164,9 @@ msgid ""
 "document.  The document metadata is available as variables `metadata` "
 "and document properties under the variable `document`."
 msgstr ""
+"Esta expresión sera evaluada con respecto al documento seleccionado "
+"actual.  Los metadatos del documento están disponible como variables "
+"`metadata` y las propiedades del documento en la variable `document`."
 
 #: models.py:32
 msgid "negated"
@@ -178,21 +182,21 @@ msgstr "no"
 
 #: models.py:39
 msgid "group item"
-msgstr ""
+msgstr "artículo del grupo"
 
 #: models.py:40
 msgid "group items"
-msgstr ""
+msgstr "artículo del grupo"
 
 #: utils.py:15
 #, python-format
 msgid "Document group query error: %s"
-msgstr ""
+msgstr "Error en consulta de grupo de documentos: %s"
 
 #: utils.py:26
 #, python-format
 msgid "document groups (%s)"
-msgstr ""
+msgstr "grupos de documentos (%s)"
 
 #: views.py:16
 msgid "No action selected."
@@ -201,4 +205,4 @@ msgstr "Ninguna acción seleccionada."
 #: views.py:29
 #, python-format
 msgid "documents in group: %(group)s"
-msgstr ""
+msgstr "documentos en el grupo: %(group)s "

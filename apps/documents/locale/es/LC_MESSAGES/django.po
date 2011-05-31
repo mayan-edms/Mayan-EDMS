@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 13:16-0400\n"
-"PO-Revision-Date: 2011-05-31 13:19\n"
+"POT-Creation-Date: 2011-05-31 15:44-0400\n"
+"PO-Revision-Date: 2011-05-31 14:42\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.6.0\n"
 
@@ -41,7 +41,7 @@ msgstr "subir nuevos documentos"
 
 #: __init__.py:44
 msgid "upload new documents using same metadata"
-msgstr "nuevos documentos con los mismos metadatos"
+msgstr "nuevos documentos con mismos metadatos"
 
 #: __init__.py:45
 msgid "details (simple)"
@@ -77,11 +77,10 @@ msgstr "encontrar todos los duplicados"
 
 #: __init__.py:53
 msgid ""
-"Search all the documents' checksums and return a list of the exact "
-"matches."
+"Search all the documents' checksums and return a list of the exact matches."
 msgstr ""
-"Buscar todas las sumas de comprobación de los documentos y devolver "
-"una lista de las coincidencias exactas."
+"Buscar todas las sumas de comprobación de los documentos y devolver una "
+"lista de las coincidencias exactas."
 
 #: __init__.py:54 __init__.py:55
 msgid "clear all transformations"
@@ -287,12 +286,14 @@ msgstr "Creación de documentos"
 #: literals.py:24
 #, python-format
 msgid "Document \"%(content_object)s\" created by %(fullname)s."
-msgstr ""
+msgstr "Documento \"%(content_object)s\", creado por %(fullname)s."
 
 #: literals.py:25
 #, python-format
-msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgid ""
+"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 msgstr ""
+"Documento \"%(content_object)s\", creado en %(datetime)s  por %(fullname)s."
 
 #: literals.py:31
 msgid "Document edited"
@@ -301,28 +302,30 @@ msgstr "Documento editado"
 #: literals.py:32
 #, python-format
 msgid "Document \"%(content_object)s\" edited by %(fullname)s."
-msgstr ""
+msgstr "Documento \"%(content_object)s\", editado por %(fullname)s."
 
 #: literals.py:33
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by "
-"%(fullname)s.  The following changes took place: %(changes)s."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
+"The following changes took place: %(changes)s."
 msgstr ""
+"Documento \"%(content_object)s\" fue editado en \"%(datetime)s  por "
+"%(fullname)s.  Los siguientes cambios tuvieron lugar: %(changes)s."
 
 #: literals.py:42
 msgid "Document deleted"
 msgstr "Documento eliminado"
 
 #: literals.py:43
-#, fuzzy, python-format
+#, python-format
 msgid "Document \"%(document)s\" deleted by %(fullname)s."
-msgstr "Documento: %(document)s, error de eliminación: %(error)s "
+msgstr "Documento \"%(document)s\" eliminado por %(fullname)s."
 
 #: literals.py:44
-#, fuzzy, python-format
+#, python-format
 msgid "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
-msgstr "Documento: %(document)s, error de eliminación: %(error)s "
+msgstr "Documento \"%(document)s\" eliminado en %(datetime)s por %(fullname)s."
 
 #: models.py:46
 msgid "name"
@@ -371,8 +374,7 @@ msgstr "nombre de archivo para cambio rápido de nombre para tipo de documento"
 #: models.py:239
 msgid "document types quick rename filenames"
 msgstr ""
-"nombres de archivos para cambio rápido de nombre para tipo de "
-"documentos"
+"nombres de archivos para cambio rápido de nombre para tipo de documentos"
 
 #: models.py:247
 msgid "content"
@@ -410,8 +412,7 @@ msgstr "argumentos"
 #: models.py:289
 msgid "Use dictionaries to indentify arguments, example: {'degrees':90}"
 msgstr ""
-"Use diccionarios para identificar los argumentos, por ejemplo: "
-"{'grados': 90}"
+"Use diccionarios para identificar los argumentos, por ejemplo: {'grados': 90}"
 
 #: models.py:296
 msgid "document page transformation"
@@ -440,7 +441,7 @@ msgstr "documentos recientes"
 #: staging.py:38
 #, python-format
 msgid "Error evaluating user staging directory expression; %s"
-msgstr ""
+msgstr "Error al evaluar la expresión de directorio de ensayo de usuario; %s"
 
 #: staging.py:46
 #, python-format
@@ -475,11 +476,11 @@ msgstr "Documentos en almacenamiento: %d"
 #: statistics.py:46
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), "
-"%(bytes)d bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
+"bytes"
 msgstr ""
-"Espacio utilizado en el almacenamiento: %(base_2)s (base 2), "
-"%(base_10)s (base 10), %(bytes)d bytes"
+"Espacio utilizado en el almacenamiento: %(base_2)s (base 2), %(base_10)s "
+"(base 10), %(bytes)d bytes"
 
 #: statistics.py:56
 #, python-format
@@ -489,17 +490,17 @@ msgstr "Páginas de documentos en la base de datos: %d"
 #: statistics.py:57
 #, python-format
 msgid "Minimum amount of pages per document: %(page_count__min)d"
-msgstr ""
+msgstr "Cantidad mínima de páginas por documento: %(page_count__min)d"
 
 #: statistics.py:58
 #, python-format
 msgid "Maximum amount of pages per document: %(page_count__max)d"
-msgstr ""
+msgstr "Cantidad máxima de páginas por documento: %(page_count__max)d"
 
 #: statistics.py:59
 #, python-format
 msgid "Average amount of pages per document: %(page_count__avg)f"
-msgstr ""
+msgstr "Promedio de páginas por documento: %(page_count__avg)f"
 
 #: statistics.py:65
 msgid "Document statistics"
@@ -537,14 +538,12 @@ msgid "files in staging"
 msgstr "archivos de ensayo"
 
 #: views.py:233
-#, fuzzy
 msgid "upload a document from user staging"
-msgstr "subir un documento de ensayo"
+msgstr "subir un documento de ensayo de usuario"
 
 #: views.py:234
-#, fuzzy
 msgid "files in user staging"
-msgstr "archivos de ensayo"
+msgstr "archivos de ensayo de usuario"
 
 #: views.py:267
 msgid "Current metadata"
@@ -635,9 +634,9 @@ msgid "Are you sure you wish to delete the documents: %s?"
 msgstr "¿Está seguro que desea eliminar los documentos: %s?"
 
 #: views.py:453
-#, fuzzy, python-format
+#, python-format
 msgid "Document \"%s\" edited successfully."
-msgstr "Documento %s editado con éxito."
+msgstr "Documento \"%s\" editado exitosamente."
 
 #: views.py:516
 #, python-format
@@ -677,22 +676,21 @@ msgstr "transformación de documento"
 #: views.py:691
 #, python-format
 msgid ""
-"Are you sure you wish to delete transformation \"%(transformation)s\" "
-"for: %(document_page)s"
+"Are you sure you wish to delete transformation \"%(transformation)s\" for: "
+"%(document_page)s"
 msgstr ""
-"¿Está seguro que desea eliminar la transformación \"%(transformation)s\""
-" para: %(document_page)s"
+"¿Está seguro que desea eliminar la transformación \"%(transformation)s\" "
+"para: %(document_page)s"
 
 #: views.py:713
-#, fuzzy
 msgid "Are you sure you wish to find all duplicates?"
-msgstr "¿Está seguro que desea eliminar el documento: %s?"
+msgstr "¿Está seguro que desea encontrar todos los duplicados?"
 
 #: views.py:714 views.py:798
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún "
-"tiempo en ejecutarse."
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
+"ejecutarse."
 
 #: views.py:729
 msgid "duplicated documents"
@@ -704,8 +702,8 @@ msgid ""
 "All the page transformations for document: %s, have been deleted "
 "successfully."
 msgstr ""
-"Todas las transformaciones de la página de documento: %s, se han "
-"eliminado con éxito."
+"Todas las transformaciones de la página de documento: %s, se han eliminado "
+"con éxito."
 
 #: views.py:763
 #, python-format
@@ -719,17 +717,16 @@ msgstr ""
 #: views.py:778
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for "
-"document: %s?"
+"Are you sure you wish to clear all the page transformations for document: %s?"
 msgstr ""
-"¿Está seguro que desea eliminar todas las transformaciones de página "
-"del documento: %s?"
+"¿Está seguro que desea eliminar todas las transformaciones de página del "
+"documento: %s?"
 
 #: views.py:780
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for "
-"documents: %s?"
+"Are you sure you wish to clear all the page transformations for documents: "
+"%s?"
 msgstr ""
 "¿Está seguro que desea eliminar las transformaciones de página de los "
 "documentos: %s?"
@@ -783,352 +780,36 @@ msgstr "Rotar [degrees]"
 
 #: conf/settings.py:53
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to "
-"remember per user."
+"Maximum number of recent (created, edited, viewed) documents to remember per "
+"user."
 msgstr ""
+"El número máximo de documentos recientes (creados, editados, vistos) a "
+"recordar por usuario."
 
 #: conf/settings.py:54
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr ""
+"Cantidad en porcentaje acercar o alejar una página de documento por la "
+"interacción del usuario."
 
 #: conf/settings.py:55
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr ""
+"Cantidad máxima en porcentaje (%) a permitir al usuario aumentar la página "
+"del documento interactivamente."
 
 #: conf/settings.py:56
 msgid ""
-"Minimum amount in percent (%) to allow user to zoom out a document page"
-" interactively."
+"Minimum amount in percent (%) to allow user to zoom out a document page "
+"interactively."
 msgstr ""
+"Cantidad mínima en porcentaje (%) a permitir al usuario disminuir la página "
+"del documento interactivamente."
 
 #: conf/settings.py:57
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr ""
-
-#~ msgid "Edit document metadata"
-#~ msgstr "Editar metadatos del documento"
-
-#~ msgid "upload multiple new documents"
-#~ msgstr "subir varios documentos nuevos"
-
-#~ msgid "edit metadata"
-#~ msgstr "editar metadatos"
-
-#~ msgid "group actions"
-#~ msgstr "acciones de grupo"
-
-#~ msgid "return to document"
-#~ msgstr "volver al documento"
-
-#~ msgid "required"
-#~ msgstr "requerido"
-
-#~ msgid "id"
-#~ msgstr "Identificador"
-
-#~ msgid "Name"
-#~ msgstr "Nombre"
-
-#~ msgid "Value"
-#~ msgstr "Valor"
-
-#~ msgid "Select"
-#~ msgstr "Seleccionar"
-
-#~ msgid "group document"
-#~ msgstr "documento del grupo"
-
-#~ msgid "Click on the image for full size view of the first page."
-#~ msgstr "Haga clic en la imagen para ver la primera página en tamaño completo"
-
-#~ msgid " Available functions: %s"
-#~ msgstr "Funciones disponibles: %s"
-
-#~ msgid " Available models: %s"
-#~ msgstr "Modelos disponibles: %s"
-
-#~ msgid "Do not use python reserved words."
-#~ msgstr "No utilice palabras reservadas de Python."
-
-#~ msgid "title"
-#~ msgstr "título"
-
-#~ msgid "default"
-#~ msgstr "por defecto"
-
-#~ msgid "Enter a string to be evaluated.%s"
-#~ msgstr "Introduzca una cadena para ser evaluada.%s"
-
-#~ msgid "lookup"
-#~ msgstr "búsqueda"
-
-#~ msgid ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for "
-#~ "user in User.objects.all()].%s"
-#~ msgstr ""
-#~ "Introduzca una cadena para ser evaluada. Ejemplo: [user.get_full_name "
-#~ "() for user in User.objects.all ()].%s"
-
-#~ msgid "metadata type"
-#~ msgstr "tipo de metadatos"
-
-#~ msgid "metadata types"
-#~ msgstr "tipos de metadatos"
-
-#~ msgid "document type metadata type connector"
-#~ msgstr "conector tipo de documento y tipo de metadatos "
-
-#~ msgid "document type metadata type connectors"
-#~ msgstr "conectores de tipos de documentos y tipos de metadatos"
-
-#~ msgid "indexing expression"
-#~ msgstr "expresión de indexación"
-
-#~ msgid ""
-#~ "Enter a python string expression to be evaluated.  The slash caracter "
-#~ "\"/\" acts as a directory delimiter.%s"
-#~ msgstr ""
-#~ "Introduzca una expresión de cadena de python para ser evaluada. El "
-#~ "caracter barra \"/\" actúa como un delimitador de directorio. %s"
-
-#~ msgid "metadata index"
-#~ msgstr "índice de metadatos"
-
-#~ msgid "metadata indexes"
-#~ msgstr "índices de metadatos"
-
-#~ msgid "metadata value"
-#~ msgstr "datos de metadato"
-
-#~ msgid "If left blank, all document types will be matched."
-#~ msgstr "Si deja en blanco, todos los tipos de documentos será igualado."
-
-#~ msgid "label"
-#~ msgstr "etiqueta"
-
-#~ msgid "document group"
-#~ msgstr "grupo de documentos"
-
-#~ msgid "document groups"
-#~ msgstr "grupos de documentos"
-
-#~ msgid "and"
-#~ msgstr "y"
-
-#~ msgid "or"
-#~ msgstr "o"
-
-#~ msgid "is equal"
-#~ msgstr "es igual"
-
-#~ msgid "is equal (case insensitive)"
-#~ msgstr "es igual (mayúsculas y minúsculas)"
-
-#~ msgid "contains"
-#~ msgstr "contiene"
-
-#~ msgid "contains (case insensitive)"
-#~ msgstr "contiene (mayúsculas y minúsculas)"
-
-#~ msgid "is in"
-#~ msgstr "está en"
-
-#~ msgid "is greater than"
-#~ msgstr "es mayor que"
-
-#~ msgid "is greater than or equal"
-#~ msgstr "es mayor o igual"
-
-#~ msgid "is less than"
-#~ msgstr "es menor que"
-
-#~ msgid "is less than or equal"
-#~ msgstr "es menor o igual"
-
-#~ msgid "starts with"
-#~ msgstr "comienza con"
-
-#~ msgid "starts with (case insensitive)"
-#~ msgstr "comienza con (mayúsculas y minúsculas)"
-
-#~ msgid "ends with"
-#~ msgstr "termina con"
-
-#~ msgid "ends with (case insensitive)"
-#~ msgstr "termina con (mayúsculas y minúsculas)"
-
-#~ msgid "is in regular expression"
-#~ msgstr "está en la expresion regular"
-
-#~ msgid "is in regular expression (case insensitive)"
-#~ msgstr "está en la expresión regular (mayúsculas y minúsculas)"
-
-#~ msgid "metadata group"
-#~ msgstr "grupo de metadatos"
-
-#~ msgid "The inclusion is ignored for the first item."
-#~ msgstr "La inclusión es ignorada para el primer artículo."
-
-#~ msgid "This represents the metadata of all other documents."
-#~ msgstr "Esto representa los metadatos de todos los demás documentos."
-
-#~ msgid "expression"
-#~ msgstr "expresión"
-
-#~ msgid ""
-#~ "This expression will be evaluated against the current selected "
-#~ "document.  The document metadata is available as variables of the same "
-#~ "name but with the \"metadata_\" prefix added their name."
-#~ msgstr ""
-#~ "Esta expresión se evalúa con respecto al documento actual "
-#~ "seleccionado. Los metadatos del documento están disponible como "
-#~ "variables del mismo nombre pero con prefijo \"metadata_\" agregado al "
-#~ "nombre."
-
-#~ msgid "negated"
-#~ msgstr "negada"
-
-#~ msgid "Inverts the logic of the operator."
-#~ msgstr "Invierte la lógica del operador."
-
-#~ msgid "not"
-#~ msgstr "not"
-
-#~ msgid "group item"
-#~ msgstr "artículo de grupo de documentos"
-
-#~ msgid "group items"
-#~ msgstr "artículos de grupos de documentos"
-
-#~ msgid "Document group query error: %s"
-#~ msgstr "Drror de consulta de grupo de documentos: %s"
-
-#~ msgid "document groups (%s)"
-#~ msgstr "grupo de documentos (%s)"
-
-#~ msgid "index links"
-#~ msgstr "enlaces de índice"
-
-#~ msgid "Document filesystem links updated successfully."
-#~ msgstr "Enlaces del documento actualizados con éxito."
-
-#~ msgid "All documents must be from the same type."
-#~ msgstr "Todos los documentos deben ser del mismo tipo."
-
-#~ msgid "Error deleting filesystem links for document: %(document)s; %(error)s"
-#~ msgstr ""
-#~ "Error al eliminar los enlaces del sistema de archivos para el "
-#~ "documento: %(document)s; %(error)s "
-
-#~ msgid "Metadata for document %s edited successfully."
-#~ msgstr "Metadatos para documento %s editado con éxito."
-
-#~ msgid "Filesystem links updated successfully for document: %s."
-#~ msgstr ""
-#~ "Enlaces del sistema de archivos actualizados con éxito para el "
-#~ "documento: %s."
-
-#~ msgid "Error creating filesystem links for document: %(document)s; %(error)s"
-#~ msgstr ""
-#~ "Error al crear vínculos de sistema de archivos para el documento: "
-#~ "%(document)s; %(error)s "
-
-#~ msgid "Edit metadata for document: %s"
-#~ msgstr "Editar de metadatos para el documento: %s"
-
-#~ msgid "Edit metadata for documents: %s"
-#~ msgstr "Editar metadatos para los documentos: %s"
-
-#~ msgid "No action selected."
-#~ msgstr "Ninguna acción seleccionada."
-
-#~ msgid "documents in group: %(group)s, for document: %(document)s"
-#~ msgstr "grupo de documentos: %(group)s, para el documento: %(document)s "
-
-#~ msgid "Tags"
-#~ msgstr "Etiquetas"
-
-#~ msgid "color"
-#~ msgstr "color"
-
-#~ msgid "metadata groups (%s)"
-#~ msgstr "grupos de metadatos (%s)"
-
-#~ msgid "Total pages: %s"
-#~ msgstr "Total de páginas: %s"
-
-#~ msgid "Page previews"
-#~ msgstr "Muestas de las páginas"
-
-#~ msgid "Total documents: %s"
-#~ msgstr "documentos en total: %s"
-
-#~ msgid "document preview"
-#~ msgstr "muestra del documento"
-
-#~ msgid "Show document thumbnail in metadata group list"
-#~ msgstr ""
-#~ "Mostrar imagen de muestra del documento en la lista de grupos de "
-#~ "metadatos"
-
-#~ msgid "exists"
-#~ msgstr "existe"
-
-#~ msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-#~ msgstr ""
-#~ "Documento: %(document)s ha sido añadido a la cola de reconocimiento "
-#~ "óptico de caracteres: %(queue)s."
-
-#~ msgid "Not creating metadata indexing, document not found in document storage"
-#~ msgstr ""
-#~ "No se creó la indexación de metadatos, el documento no se encuentran "
-#~ "en almacenamiento de documentos"
-
-#~ msgid "Unable to create metadata indexing directory: %s"
-#~ msgstr "No se puede crear el directorio de indexación de metadatos: %s"
-
-#~ msgid "Unable to delete metadata indexing symbolic link: %s"
-#~ msgstr ""
-#~ "No se puede eliminar el enlace simbólico de indexación de metadatos: "
-#~ "%s"
-
-#~ msgid "Unable to create symbolic link, filename clash: %(filepath)s; %(exc)s"
-#~ msgstr ""
-#~ "No se puede crear un enlace simbólico, choque de nombre de archivo: "
-#~ "%(filepath)s; %(exc)s "
-
-#~ msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
-#~ msgstr ""
-#~ "No se puede crear un enlace simbólico de indexación de metadatos "
-#~ "%(filepath)s; %(exc)s"
-
-#~ msgid "Maximum rename count reached, not creating symbolic link"
-#~ msgstr ""
-#~ "Conteo de cambio de nombre llego al máximo, no se va a crear el "
-#~ "enlaces simbólico"
-
-#~ msgid "suffix"
-#~ msgstr "sufijo"
-
-#~ msgid "document metadata index"
-#~ msgstr "índice de metadatos de documento"
-
-#~ msgid "document metadata indexes"
-#~ msgstr "índices de metadatos de documento"
-
-#~ msgid "document transformations"
-#~ msgstr "índices de metadatos de documento"
-
-#~ msgid "file size"
-#~ msgstr "tamaño de archivo"
-
-#~ msgid "Document type available filenames"
-#~ msgstr "Nombres disponibles"
-
-#~ msgid "Document metadata edited successfully."
-#~ msgstr "Metadatos de documento editados con éxito."
-
-#~ msgid "create directory link"
-#~ msgstr "crear enlace de directorio"
+"Cantidad de grados que se va a girar una página de documento "
+"interactivamente con el usuario."
