@@ -69,6 +69,10 @@ class StagingFile(object):
 
     @classmethod
     def get_all(cls):
+        """
+        Return a list of StagingFile instances corresponding to the 
+        current path
+        """
         staging_files = []
         for filename in get_all_files(cls.path):
             staging_files.append(StagingFile(
@@ -78,6 +82,10 @@ class StagingFile(object):
 
     @classmethod
     def get(cls, id):
+        """
+        Return a single StagingFile instance corresponding to the id
+        given as argument
+        """
         files_dict = dict([(file.id, file) for file in cls.get_all()])
         if id in files_dict:
             return files_dict[id]
@@ -102,6 +110,10 @@ class StagingFile(object):
             raise AttributeError
 
     def upload(self):
+        """
+        Return a StagingFile encapsulated in a File class instance to
+        allow for easier upload a staging files
+        """
         try:
             return File(file(self.filepath, 'rb'), name=self.filename)
         except Exception, exc:

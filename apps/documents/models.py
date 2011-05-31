@@ -25,6 +25,10 @@ available_transformations = ([(name, data['label']) for name, data in AVAILABLE_
 
 
 def get_filename_from_uuid(instance, filename):
+    """
+    Store the orignal filename of the uploaded file and replace it with
+    a UUID
+    """
     filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
     #remove prefix '.'
@@ -79,6 +83,10 @@ class Document(models.Model):
         return os.extsep.join([self.file_filename, self.file_extension])
 
     def save(self, *args, **kwargs):
+        """
+        Overloaded save method that updates the document's checksum,
+        mimetype, page count and transformation when originally created
+        """
         new_document = not self.pk
 
         super(Document, self).save(*args, **kwargs)
@@ -102,6 +110,10 @@ class Document(models.Model):
         return os.extsep.join([self.file_filename, self.file_extension])
 
     def update_mimetype(self, save=True):
+        """
+        Read a document's file and determine the mimetype by calling the
+        libmagic library
+        """
         if self.exists():
             try:
                 source = self.open()
@@ -127,6 +139,10 @@ class Document(models.Model):
         return self.file.storage.open(self.file.path)
 
     def update_checksum(self, save=True):
+        """
+        Open a document's file and update the checksum field using the
+        user provided checksum function
+        """
         if self.exists():
             source = self.open()
             self.checksum = unicode(CHECKSUM_FUNCTION(source.read()))
@@ -159,6 +175,10 @@ class Document(models.Model):
         return detected_pages
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
+        """
+        Save a copy of the document from the document storage backend
+        to the local filesystem
+        """
         input_descriptor = self.open()
         output_descriptor = open(filepath, 'wb')
         while True:
@@ -220,6 +240,9 @@ class DocumentTypeFilename(models.Model):
 
 
 class DocumentPage(models.Model):
+    """
+    Model that describes a document page including it's content
+    """
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     content = models.TextField(blank=True, null=True, verbose_name=_(u'content'), db_index=True)
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
@@ -252,10 +275,14 @@ class DocumentPage(models.Model):
             except Exception, e:
                 warnings.append(e)
 
-        return ' '.join(transformation_list), warnings
+        return u' '.join(transformation_list), warnings
 
 
 class DocumentPageTransformation(models.Model):
+    """
+    Model that stores the transformation and transformation arguments
+    for a given document page
+    """
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
     transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
@@ -290,5 +317,6 @@ class RecentDocument(models.Model):
         verbose_name_plural = _(u'recent documents')
 
 
+# Register the fields that will be searchable
 register(Document, _(u'document'), [u'document_type__name', u'file_mimetype', u'file_filename', u'file_extension', u'documentmetadata__value', u'documentpage__content', u'description', u'tags__name', u'comments__comment'])
 #register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])
