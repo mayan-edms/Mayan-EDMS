@@ -139,8 +139,8 @@
 {% endblock %}
 
 {% block web_theme_main_navigation %}
-    {% main_navigation %}                    
-    {% for link in navigation_main_links %}
+    {% get_top_menu_links %}
+    {% for link in menu_links %}
         {% with "true" as as_li %}
         {% with "true" as hide_active_anchor %}
         {% with "active" as li_class_active %}
@@ -154,25 +154,6 @@
 {% endblock %}
 
 {% block web_theme_secondary_navigation %}
-    {% main_navigation %}  
-    {% if navigation_secondary_links %}
-            <div class="secondary-navigation">
-                <ul class="wat-cf">
-                    {% for link in navigation_secondary_links %}
-                        {% with "true" as as_li %}
-                        {% with "true" as hide_active_anchor %}
-                        {% with "active" as li_class_active %}
-                        {% with "first" as li_class_first %}
-                            {% include "generic_subnavigation.html" %}
-                        {% endwith %}
-                        {% endwith %}
-                        {% endwith %}
-                        {% endwith %}
-                    {% endfor %}     
-                </ul>
-            </div>     
-    {% endif %}
-
     {% get_object_navigation_links "form_header" as form_navigation_links %}
         {% if form_navigation_links %}
             <div class="secondary-navigation">
@@ -191,7 +172,6 @@
                 </ul>
             </div>    
     {% endif %}
-    
 {% endblock %}
 
 {% block web_theme_sidebar %}
@@ -205,7 +185,19 @@
         {% endwith %}
         {% endwith %}
     {% endif %}
-    
+
+    {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
+        {% if object_navigation_links %}
+        <div class="block">
+            <h3>{% trans "Secondary actions" %}</h3>
+            <ul class="navigation">
+                {% with "true" as as_li %}
+                    {% include "generic_navigation.html" %}
+                {% endwith %}
+            </ul>
+        </div>
+    {% endif %}
+        
     {% get_object_navigation_links as object_navigation_links %}
     {% if object_navigation_links %}
         <div class="block">

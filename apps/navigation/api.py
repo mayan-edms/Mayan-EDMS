@@ -1,11 +1,16 @@
 object_navigation = {}
 multi_object_navigation = {}
-menu_links = []
 model_list_columns = {}
 sidebar_templates = {}
+top_menu_entries = []
 
 
 def register_multi_item_links(src, links, menu_name=None):
+    """
+    Register a multiple item action action to be displayed in the
+    generic list template
+    """
+    
     multi_object_navigation.setdefault(menu_name, {})
     if hasattr(src, '__iter__'):
         for one_src in src:
@@ -17,6 +22,10 @@ def register_multi_item_links(src, links, menu_name=None):
 
 
 def register_links(src, links, menu_name=None):
+    """
+    Associate a link to a model a view, or an url
+    """    
+    
     object_navigation.setdefault(menu_name, {})
     if hasattr(src, '__iter__'):
         for one_src in src:
@@ -27,14 +36,29 @@ def register_links(src, links, menu_name=None):
         object_navigation[menu_name][src]['links'].extend(links)
 
 
-def register_menu(links):
-    for link in links:
-        menu_links.append(link)
-
-    menu_links.sort(lambda x, y: 1 if x > y else -1, lambda x: x['position'] if 'position' in x else 1)
+def register_top_menu(name, link, children_views=None, children_path_regex=None, position=None):
+    """
+    Register a new menu entry for the main menu displayed at the top
+    of the page
+    """
+    
+    entry = {'link': link, 'name': name}
+    if children_views:
+        entry['children_views'] = children_views
+    if children_path_regex:
+        entry['children_path_regex'] = children_path_regex
+    if position is not None:
+        top_menu_entries.insert(position, entry)
+    else:
+        top_menu_entries.append(entry)
 
 
 def register_model_list_columns(model, columns):
+    """
+    Define which columns will be displayed in the generic list template
+    for a given model
+    """
+    
     model_list_columns.setdefault(model, [])
     model_list_columns[model].extend(columns)
 

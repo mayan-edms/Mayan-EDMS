@@ -13,69 +13,40 @@ from django.template import Context
 from common.utils import urlquote
 
 from navigation.api import object_navigation, multi_object_navigation, \
-    menu_links as menu_navigation, sidebar_templates
+    top_menu_entries, sidebar_templates
 from navigation.forms import MultiItemForm
 from navigation.utils import resolve_to_name
 
 register = Library()
 
 
-def process_links(links, view_name, url):
-    """
-    Process menu navigation links
-    """
-    items = []
-    active_item = None
-    #for item, count in zip(links, range(len(links))):
-    for item in links:
-        item_view = 'view' in item and item['view']
-        item_url = 'url' in item and item['url']
-        new_link = item.copy()
-        if view_name == item_view or url == item_url:
-            new_link['active'] = True
-            active_item = item
-        else:
-            new_link['active'] = False
-            if 'links' in item:
-                for child_link in item['links']:
-                    child_view = 'view' in child_link and child_link['view']
-                    child_url = 'url' in child_link and child_link['url']
-                    if view_name == child_view or url == child_url:
-                        active_item = item
-        new_link.update({
-            'url': item_view and reverse(item_view) or item_url or u'#',
-            })
-        items.append(new_link)
-
-    return items, active_item
-
-
-class NavigationNode(Node):
-    def __init__(self, navigation, *args, **kwargs):
-        self.navigation = navigation
-
+class TopMenuNavigationNode(Node):
     def render(self, context):
         request = Variable('request').resolve(context)
-        view_name = resolve_to_name(request.META['PATH_INFO'])
+        current_path = request.META['PATH_INFO']
+        current_view = resolve_to_name(current_path)
+        
+        all_menu_links = [entry.get('link', {}) for entry in top_menu_entries]
+        menu_links = resolve_links(context, all_menu_links, current_view, current_path)
+        
+        for index, link in enumerate(top_menu_entries):
+            children_views = link.get('children_views', [])
+            if current_view in children_views:
+                menu_links[index]['active'] = True
+            
+            children_path_regex = link.get('children_path_regex', [])
+            for child_path_regex in children_path_regex:
+                if re.compile(child_path_regex).match(current_path.lstrip('/')):
+                    menu_links[index]['active'] = True                    
 
-        main_items, active_item = process_links(links=self.navigation, view_name=view_name, url=request.META['PATH_INFO'])
-        context['navigation_main_links'] = main_items
-        if active_item and 'links' in active_item:
-            secondary_links, active_item = process_links(links=active_item['links'], view_name=view_name, url=request.META['PATH_INFO'])
-            context['navigation_secondary_links'] = secondary_links
+        context['menu_links'] = menu_links
         return ''
 
 
 @register.tag
-def main_navigation(parser, token):
-    #args = token.split_contents()
-
-#    if len(args) != 3 or args[1] != 'as':
-#        raise TemplateSyntaxError("'get_all_states' requires 'as variable' (got %r)" % args)
-
-    #return NavigationNode(variable=args[2], navigation=navigation)
-    return NavigationNode(navigation=menu_navigation)
-
+def get_top_menu_links(parser, token):
+    return TopMenuNavigationNode()
+    
 
 def resolve_arguments(context, src_args):
     args = []
@@ -98,7 +69,7 @@ def resolve_arguments(context, src_args):
     return args, kwargs
 
 
-def resolve_links(context, links, current_view, current_path, parsed_query_string):
+def resolve_links(context, links, current_view, current_path, parsed_query_string=None):
     context_links = []
     for link in links:
         new_link = copy.copy(link)
