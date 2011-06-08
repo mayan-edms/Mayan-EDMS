@@ -223,6 +223,7 @@ def document_queue_disable(request, document_queue_id):
         'title': _(u'Are you sure you wish to disable document queue: %s') % document_queue,
         'next': next,
         'previous': previous,
+        'form_icon': u'control_stop_blue.png',
     }, context_instance=RequestContext(request))
 
 
@@ -248,6 +249,7 @@ def document_queue_enable(request, document_queue_id):
         'title': _(u'Are you sure you wish to activate document queue: %s') % document_queue,
         'next': next,
         'previous': previous,
+        'form_icon': u'control_play_blue.png',
     }, context_instance=RequestContext(request))
 
 
