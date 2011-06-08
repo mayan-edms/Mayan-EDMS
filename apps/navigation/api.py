@@ -10,7 +10,7 @@ def register_multi_item_links(src, links, menu_name=None):
     Register a multiple item action action to be displayed in the
     generic list template
     """
-    
+
     multi_object_navigation.setdefault(menu_name, {})
     if hasattr(src, '__iter__'):
         for one_src in src:
@@ -24,8 +24,8 @@ def register_multi_item_links(src, links, menu_name=None):
 def register_links(src, links, menu_name=None):
     """
     Associate a link to a model a view, or an url
-    """    
-    
+    """
+
     object_navigation.setdefault(menu_name, {})
     if hasattr(src, '__iter__'):
         for one_src in src:
@@ -41,7 +41,7 @@ def register_top_menu(name, link, children_views=None, children_path_regex=None,
     Register a new menu entry for the main menu displayed at the top
     of the page
     """
-    
+
     entry = {'link': link, 'name': name}
     if children_views:
         entry['children_views'] = children_views
@@ -58,7 +58,7 @@ def register_model_list_columns(model, columns):
     Define which columns will be displayed in the generic list template
     for a given model
     """
-    
+
     model_list_columns.setdefault(model, [])
     model_list_columns[model].extend(columns)
 

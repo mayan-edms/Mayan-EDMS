@@ -28,6 +28,7 @@ register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_e
 
 permission_views = ['role_list', 'role_create', 'role_edit', 'role_members', 'role_permissions', 'role_delete']
 
+
 def user_post_save(sender, instance, **kwargs):
     if kwargs.get('created', False):
         for default_role in DEFAULT_ROLES:

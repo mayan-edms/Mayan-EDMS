@@ -70,7 +70,7 @@ class StagingFile(object):
     @classmethod
     def get_all(cls):
         """
-        Return a list of StagingFile instances corresponding to the 
+        Return a list of StagingFile instances corresponding to the
         current path
         """
         staging_files = []

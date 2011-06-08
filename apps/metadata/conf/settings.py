@@ -2,7 +2,6 @@
 
 import datetime
 
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 from smart_settings.api import register_settings

@@ -34,8 +34,6 @@ class History(models.Model):
     history_type = models.ForeignKey(HistoryType, verbose_name=_(u'history type'))
     dictionary = models.TextField(verbose_name=_(u'dictionary'), blank=True)
 
-    #objects = HistoryManager()
-    
     def __unicode__(self):
         return u'%s - %s - %s' % (self.datetime, self.content_object, self.history_type)
 
@@ -77,9 +75,9 @@ def _process_history_text(history, text):
         'content_object': history.content_object,
         'datetime': history.datetime
     }
-    
+
     loaded_dictionary = json.loads(history.dictionary)
-    
+
     new_dict = {}
     for key, values in loaded_dictionary.items():
         value_type = pickle.loads(str(values['type']))
@@ -93,7 +91,7 @@ def _process_history_text(history, text):
             new_dict[key] = qs
         else:
             new_dict[key] = json.loads(values['value'])
-            
+
     key_values.update(new_dict)
     expressions_dict = {}
 

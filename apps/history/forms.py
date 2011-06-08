@@ -1,5 +1,3 @@
-from django import forms
-
 from common.forms import DetailForm
 
 from history.models import History

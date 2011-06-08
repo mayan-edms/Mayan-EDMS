@@ -167,7 +167,7 @@ def upload_document_with_type(request, source):
         document_type = get_object_or_404(DocumentType, pk=document_type_id[0])
     else:
         document_type = None
-        
+
     if request.method == 'POST':
         if source == UPLOAD_SOURCE_LOCAL:
             form = DocumentForm(request.POST, request.FILES, document_type=document_type)
@@ -279,7 +279,7 @@ def document_view(request, document_id, advanced=False):
     # Triggers a 404 error on documents uploaded via local upload
     # TODO: investigate
     document = get_object_or_404(Document, pk=document_id)
-    
+
     RecentDocument.objects.add_document_for_user(request.user, document)
 
     subtemplates_list = []
@@ -294,7 +294,7 @@ def document_view(request, document_id, advanced=False):
             }
         },
     )
-        
+
     content_form = DocumentContentForm(document=document)
 
     subtemplates_list.append(
@@ -333,7 +333,7 @@ def document_view(request, document_id, advanced=False):
                     'title': _(u'document properties'),
                 }
             },
-        )        
+        )
 
     if document.tags.count():
         subtemplates_list.append(get_tags_subtemplate(document))
@@ -445,7 +445,7 @@ def document_edit(request, document_id):
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
                     document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
-            
+
             document.save()
             create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['file_filename', 'description'])})
             RecentDocument.objects.add_document_for_user(request.user, document)

@@ -4,8 +4,6 @@ import json
 from django.db.utils import DatabaseError
 #from django.utils import simplejson
 from django.core import serializers
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import get_object_or_404
 from django.db import models
 
@@ -51,7 +49,6 @@ def create_history(history_type_dict, source_object=None, data=None):
             else:
                 new_dict[key]['value'] = json.dumps(value)
             new_dict[key]['type'] = pickle.dumps(type(value))
-            
+
         new_history.dictionary = json.dumps(new_dict)
-    print 'new_history', new_history
     new_history.save()

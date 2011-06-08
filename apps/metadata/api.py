@@ -33,7 +33,7 @@ def decode_metadata_from_url(url_dict):
 
 def save_metadata_list(metadata_list, document, create=False):
     """
-    Take a list of metadata dictionaries and associate them to a 
+    Take a list of metadata dictionaries and associate them to a
     document
     """
     for item in metadata_list:

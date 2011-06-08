@@ -23,7 +23,7 @@ sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug', 'condition': 
 __version_info__ = {
     'major': 0,
     'minor': 7,
-    'micro': 2,
+    'micro': 3,
     'releaselevel': 'final',
     'serial': 0
 }
@@ -48,7 +48,7 @@ register_links(['setting_list'], tool_links, menu_name='secondary_menu')
 register_links(permission_views, tool_links, menu_name='secondary_menu')
 register_links(user_management_views, tool_links, menu_name='secondary_menu')
 
-    
+
 def get_version():
     """
     Return the formatted version information

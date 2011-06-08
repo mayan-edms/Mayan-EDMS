@@ -25,19 +25,19 @@ class TopMenuNavigationNode(Node):
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
         current_view = resolve_to_name(current_path)
-        
+
         all_menu_links = [entry.get('link', {}) for entry in top_menu_entries]
         menu_links = resolve_links(context, all_menu_links, current_view, current_path)
-        
+
         for index, link in enumerate(top_menu_entries):
             children_views = link.get('children_views', [])
             if current_view in children_views:
                 menu_links[index]['active'] = True
-            
+
             children_path_regex = link.get('children_path_regex', [])
             for child_path_regex in children_path_regex:
                 if re.compile(child_path_regex).match(current_path.lstrip('/')):
-                    menu_links[index]['active'] = True                    
+                    menu_links[index]['active'] = True
 
         context['menu_links'] = menu_links
         return ''
@@ -46,7 +46,7 @@ class TopMenuNavigationNode(Node):
 @register.tag
 def get_top_menu_links(parser, token):
     return TopMenuNavigationNode()
-    
+
 
 def resolve_arguments(context, src_args):
     args = []

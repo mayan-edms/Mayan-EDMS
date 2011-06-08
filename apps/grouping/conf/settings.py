@@ -1,7 +1,5 @@
 """Configuration options for the grouping app"""
 
-from django.utils.translation import ugettext_lazy as _
-
 from smart_settings.api import register_settings
 
 register_settings(

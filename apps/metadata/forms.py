@@ -78,7 +78,7 @@ class MetadataSelectionForm(forms.Form):
                 self.fields['metadata_types'].initial = defaults.default_metadata.all()
             except DocumentTypeDefaults.DoesNotExist:
                 pass
-            
+
     metadata_sets = forms.ModelMultipleChoiceField(
         queryset=MetadataSet.objects.all(),
         label=_(u'Metadata sets'),

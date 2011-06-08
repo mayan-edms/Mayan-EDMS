@@ -2,17 +2,13 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import get_object_or_404
-from django.contrib import messages
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.utils.http import urlencode
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.loading import get_model
+from django.http import Http404
 
 from permissions.api import check_permissions
 
 from history.models import History
-from history.api import history_types_dict
 from history.forms import HistoryDetailForm
 from history import PERMISSION_HISTORY_VIEW
 
@@ -87,7 +83,7 @@ def history_view(request, object_id):
     check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
 
     history = get_object_or_404(History, pk=object_id)
-    
+
     form = HistoryDetailForm(instance=history, extra_fields=[
         {'label': _(u'Date'), 'field':lambda x: x.datetime.date()},
         {'label': _(u'Time'), 'field':lambda x: unicode(x.datetime.time()).split('.')[0]},
@@ -95,7 +91,7 @@ def history_view(request, object_id):
         {'label': _(u'Event type'), 'field': lambda x: x.get_label()},
         {'label': _(u'Event details'), 'field': lambda x: x.get_processed_details()},
     ])
-    
+
     return render_to_response('generic_detail.html', {
         'title': _(u'details for: %s') % history.get_processed_summary(),
         'form': form,

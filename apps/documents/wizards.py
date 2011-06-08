@@ -25,7 +25,7 @@ class DocumentCreateWizard(BoundFormWizard):
                 }
                 if data not in initial:
                     initial.append(data)
-    
+
         return initial
 
     def __init__(self, *args, **kwargs):

@@ -20,7 +20,7 @@ def _index_instance_item_link(index_instance_item):
     return u'<span class="famfam active famfam-%(icon)s"></span><a href="%(url)s">%(text)s</a>' % {
         'url': index_instance_item.get_absolute_url(), 'icon': icon, 'text': index_instance_item}
 
-    
+
 def index_instance_list(request, index_id=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
 
