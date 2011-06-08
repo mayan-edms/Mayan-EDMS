@@ -168,4 +168,11 @@ def tag_tagged_item_list(request, tag_id):
     tag = get_object_or_404(Tag, pk=tag_id)
     object_list = [tagged_item.content_object for tagged_item in tag.taggit_taggeditem_items.all()]
 
-    return document_list(request, object_list=object_list, title=_('documents with the tag "%s"') % tag)
+    return document_list(
+        request, 
+        object_list=object_list, 
+        title=_('documents with the tag "%s"') % tag,
+        extra_context={
+            'object': tag
+        }
+    )

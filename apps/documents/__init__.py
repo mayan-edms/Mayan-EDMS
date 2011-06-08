@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.conf import settings
 
-from navigation.api import register_links, register_menu, \
+from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links
 from main.api import register_diagnostic, register_tool
 from permissions.api import register_permission, set_namespace_title
@@ -39,7 +39,6 @@ register_history_type(HISTORY_DOCUMENT_DELETED)
 
 document_list = {'text': _(u'documents list'), 'view': 'document_list', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_list_recent = {'text': _(u'recent documents list'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_create = {'text': _(u'upload a new document'), 'view': 'document_create', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_create_siblings = {'text': _(u'upload new documents using same metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_view_simple = {'text': _(u'details (simple)'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -90,7 +89,7 @@ register_links(Document, [document_create_siblings], menu_name='sidebar')
 
 register_multi_item_links(['search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
-register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging'], [document_list_recent, document_list, document_create_multiple], menu_name='sidebar')
+register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging', 'document_find_duplicates'], [document_list_recent, document_list, document_create_multiple], menu_name='secondary_menu')
 
 register_links(DocumentPage, [
     document_page_transformation_list, document_page_view,
@@ -146,7 +145,4 @@ register_model_list_columns(Document, [
         },
     ])
 
-register_menu([
-    {'text': _(u'documents'), 'view': 'document_list_recent', 'links': [
-        document_list_recent, document_list, document_create_multiple
-    ], 'famfam': 'page', 'position': 1}])
+register_top_menu('documents', link={'famfam': 'folder', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/', r'^metadata/', r'comments'], position=0)

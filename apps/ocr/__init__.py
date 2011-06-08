@@ -3,7 +3,7 @@ from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
 from django.db.models.signals import post_save
 
-from navigation.api import register_links, register_menu, register_multi_item_links
+from navigation.api import register_links, register_top_menu, register_multi_item_links
 from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
 from main.api import register_tool
@@ -43,17 +43,13 @@ register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
-register_links(['queue_document_list', 'node_active_list'], [queue_document_list, node_active_list], menu_name='sidebar')
+register_links(['queue_document_list', 'node_active_list'], [queue_document_list, node_active_list], menu_name='secondary_menu')
 
 
 register_tool(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
 
 #Menus
-register_menu([
-    {'text': _('OCR'), 'view': 'queue_document_list', 'links':[
-        queue_document_list, node_active_list
-    ], 'famfam': 'hourglass', 'position': 5}])
-
+register_top_menu('ocr', link={'text': _('OCR'), 'famfam': 'hourglass', 'view': 'queue_document_list'}, children_path_regex=[r'^ocr/'])
 
 try:
     default_queue, created = DocumentQueue.objects.get_or_create(name='default')

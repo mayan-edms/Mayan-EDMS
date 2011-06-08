@@ -74,6 +74,7 @@ def folder_edit(request, folder_id):
         'title': _(u'edit folder: %s') % folder,
         'form': form,
         'object': folder,
+        'object_name': _(u'folder'),
     },
     context_instance=RequestContext(request))
 

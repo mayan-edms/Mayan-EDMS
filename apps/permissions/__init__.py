@@ -24,8 +24,9 @@ role_permissions = {'text': _(u'role permissions'), 'view': 'role_permissions', 
 role_delete = {'text': _(u'delete'), 'view': 'role_delete', 'args': 'object.id', 'famfam': 'medal_gold_delete', 'permissions': [PERMISSION_ROLE_DELETE]}
 
 register_links(Role, [role_edit, role_delete, role_permissions, role_members])
-register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_create, role_list], menu_name='sidebar')
+register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_create], menu_name='sidebar')
 
+permission_views = ['role_list', 'role_create', 'role_edit', 'role_members', 'role_permissions', 'role_delete']
 
 def user_post_save(sender, instance, **kwargs):
     if kwargs.get('created', False):
