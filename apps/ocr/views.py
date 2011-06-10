@@ -63,10 +63,13 @@ def queue_document_list(request, queue_name='default'):
             'multi_select_as_buttons': True,
             'sidebar_subtemplates_list': [
                 {
-                    'title': _(u'document queue properties'),
                     'name': 'generic_subtemplate.html',
-                    'content': _(u'Current state: %s') % document_queue.get_state_display(),
-                }],
+                    'context': {
+                        'title': _(u'document queue properties'),
+                        'content': _(u'Current state: %s') % document_queue.get_state_display(),
+                    }
+                }
+            ]
         },
     )
 
