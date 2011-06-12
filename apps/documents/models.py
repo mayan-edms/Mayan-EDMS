@@ -53,7 +53,7 @@ class Document(models.Model):
     """
     Defines a single document with it's fields and properties
     """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), blank=True)
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
     uuid = models.CharField(max_length=48, default=UUID_FUNCTION(), blank=True, editable=False)
     file_mimetype = models.CharField(max_length=64, default='', editable=False)
