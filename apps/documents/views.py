@@ -179,6 +179,7 @@ def upload_document_with_type(request, source):
                 try:
                     if (not UNCOMPRESS_COMPRESSED_LOCAL_FILES) or (UNCOMPRESS_COMPRESSED_LOCAL_FILES and not _handle_zip_file(request, request.FILES['file'], document_type)):
                         instance = form.save()
+                        instance.save()
                         if document_type:
                             instance.document_type = document_type
                         _handle_save_document(request, instance, form)
