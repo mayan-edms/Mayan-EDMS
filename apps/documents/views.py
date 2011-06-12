@@ -67,7 +67,7 @@ from documents.forms import DocumentTypeSelectForm, \
         StagingDocumentForm, DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, \
-        DocumentPageForm_text, PrintForm
+        DocumentPageForm_text, PrintForm, DocumentTypeForm
 from documents.wizards import DocumentCreateWizard
 from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument
@@ -76,6 +76,10 @@ from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 from documents.literals import UPLOAD_SOURCE_LOCAL, \
     UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
+    
+# Document type permissions
+from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT, \
+    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE
 
 
 def document_list(request, object_list=None, title=None, extra_context=None):
@@ -1046,6 +1050,7 @@ def document_hard_copy(request, document_id):
     page_width = request.GET.get('page_width', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][0])
     page_height = request.GET.get('page_height', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][1])
 
+    # TODO: Replace with regex to extact numeric portion
     width = float(page_width.split('i')[0].split('c')[0].split('m')[0])
     height = float(page_height.split('i')[0].split('c')[0].split('m')[0])
 
@@ -1068,3 +1073,113 @@ def document_hard_copy(request, document_id):
         'page_height': page_height,
         'pages': pages,
     }, context_instance=RequestContext(request))
+
+
+def document_type_list(request):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+
+    context = {
+        'object_list': DocumentType.objects.all(),
+        'title': _(u'document types'),
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
+
+def document_type_document_list(request, document_type_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    
+    return document_list(
+        request,
+        object_list=Document.objects.filter(document_type=document_type),
+        title=_(u'documents of type "%s"') % document_type,
+        extra_context={
+            'object': document_type,
+        }
+    )
+
+
+def document_type_edit(request, document_type_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+
+    if request.method == 'POST':
+        form = DocumentTypeForm(instance=document_type, data=request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, _(u'Document type edited successfully'))
+                return HttpResponseRedirect(reverse('document_type_list'))
+            except Exception, e:
+                messages.error(request, _(u'Error editing document type; %s') % e)
+    else:
+        form = DocumentTypeForm(instance=document_type)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit document type: %s') % document_type,
+        'form': form,
+        'object': document_type,
+        'object_name': _(u'document type'),
+    },
+    context_instance=RequestContext(request))    
+
+
+def document_type_delete(request, document_type_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_DELETE])
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+
+    post_action_redirect = reverse('document_type_list')
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            Document.objects.filter(document_type=document_type).update(document_type=None)
+            document_type.delete()
+            messages.success(request, _(u'Document type: %s deleted successfully.') % document_type)
+        except Exception, e:
+            messages.error(request, _(u'Document type: %(document_type)s delete error: %(error)s') % {
+                'document_type': document_type, 'error': e})
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'object_name': _(u'document tyep'),
+        'delete_view': True,
+        'previous': previous,
+        'next': next,
+        'object': document_type,
+        'title': _(u'Are you sure you with to delete the document type: %s?') % document_type,
+        'message': _(u'The document type of all documents using this document type will be set to none.'),
+        'form_icon': u'layout_delete.png',
+    }
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def document_type_create(request):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_CREATE])
+    
+    if request.method == 'POST':
+        form = DocumentTypeForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, _(u'Document type created successfully'))
+                return HttpResponseRedirect(reverse('document_type_list'))
+            except Exception, e:
+                messages.error(request, _(u'Error creating document type; %(error)s') % {
+                    'error': e})
+    else:
+        form = DocumentTypeForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'create document type'),
+        'form': form,
+    },
+    context_instance=RequestContext(request))

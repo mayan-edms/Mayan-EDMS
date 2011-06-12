@@ -271,3 +271,11 @@ class StagingDocumentForm(DocumentForm):
 
     class Meta(DocumentForm.Meta):
         exclude = ('description', 'file', 'document_type', 'tags')
+
+
+class DocumentTypeForm(forms.ModelForm):
+    """
+    Model class form to create or edit a document type
+    """
+    class Meta:
+        model = DocumentType
