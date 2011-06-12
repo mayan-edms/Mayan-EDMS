@@ -48,6 +48,11 @@ class DocumentType(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _(u'document type')
+        verbose_name_plural = _(u'documentstypes')
+        ordering = ['name']        
+
 
 class Document(models.Model):
     """
