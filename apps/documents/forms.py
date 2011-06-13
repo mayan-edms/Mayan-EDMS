@@ -11,7 +11,7 @@ from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 
 from documents.models import Document, DocumentType, \
-    DocumentPage, DocumentPageTransformation
+    DocumentPage, DocumentPageTransformation, DocumentTypeFilename
 
 
 # Document page forms
@@ -279,3 +279,21 @@ class DocumentTypeForm(forms.ModelForm):
     """
     class Meta:
         model = DocumentType
+
+
+class DocumentTypeFilenameForm(forms.ModelForm):
+    """
+    Model class form to edit a document type filename
+    """
+    class Meta:
+        model = DocumentTypeFilename
+        fields = ('filename', 'enabled')
+
+
+class DocumentTypeFilenameForm_create(forms.ModelForm):
+    """
+    Model class form to create a new document type filename
+    """
+    class Meta:
+        model = DocumentTypeFilename
+        fields = ('filename',)

@@ -10,7 +10,7 @@ from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
 
 from documents.models import Document, DocumentPage, \
-    DocumentPageTransformation, DocumentType
+    DocumentPageTransformation, DocumentType, DocumentTypeFilename
 from documents.staging import StagingFile
 from documents.conf.settings import USE_STAGING_DIRECTORY
 from documents.conf.settings import PER_USER_STAGING_DIRECTORY
@@ -94,15 +94,26 @@ staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'arg
 
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_type_document_list = {'text': _(u'document list for type'), 'view': 'document_type_document_list', 'args': 'object.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_type_document_list = {'text': _(u'list of documents of this type'), 'view': 'document_type_document_list', 'args': 'object.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_type_edit = {'text': _(u'edit'), 'view': 'document_type_edit', 'args': 'object.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _(u'delete'), 'view': 'document_type_delete', 'args': 'object.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
-document_type_create = {'text': _(u'Create document type'), 'view': 'document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}
+document_type_create = {'text': _(u'create document type'), 'view': 'document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}
 
-# Register links
-register_links(DocumentType, [document_type_document_list, document_type_edit, document_type_delete])
-register_links(['document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='sidebar')
+document_type_filename_list = {'text': _(u'document type filenames'), 'view': 'document_type_filename_list', 'args': 'object.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_type_filename_create = {'text': _(u'add filename to document type'), 'view': 'document_type_filename_create', 'args': 'document_type.id', 'famfam': 'database_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+document_type_filename_edit = {'text': _(u'edit'), 'view': 'document_type_filename_edit', 'args': 'object.id', 'famfam': 'database_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+document_type_filename_delete = {'text': _(u'delete'), 'view': 'document_type_filename_delete', 'args': 'object.id', 'famfam': 'database_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+document_type_filename_return_to_document_type = {'text': _(u'return to document type filenames'), 'view': 'document_type_filename_list', 'args': 'object.document_type.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 
+# Register document type links
+register_links(DocumentType, [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
+register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
+
+register_links(['document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='sidebar')
+register_links(['document_type_filename_create', 'document_type_filename_list', 'document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_create], menu_name='sidebar')
+register_links(['document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_return_to_document_type], menu_name='sidebar')
+
+# Register document links 
 register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view])
 register_links(Document, [document_create_siblings], menu_name='sidebar')
 

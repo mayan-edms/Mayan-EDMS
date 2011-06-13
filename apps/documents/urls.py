@@ -70,4 +70,10 @@ urlpatterns = patterns('documents.views',
     url(r'^type/(?P<document_type_id>\d+)/list/documents/$', 'document_type_document_list', (), 'document_type_document_list'),
     url(r'^type/(?P<document_type_id>\d+)/edit/$', 'document_type_edit', (), 'document_type_edit'),
     url(r'^type/(?P<document_type_id>\d+)/delete/$', 'document_type_delete', (), 'document_type_delete'),
+    
+    url(r'^type/(?P<document_type_id>\d+)/filename/list/$', 'document_type_filename_list', (), 'document_type_filename_list'),
+    url(r'^type/filename/(?P<document_type_filename_id>\d+)/edit/$', 'document_type_filename_edit', (), 'document_type_filename_edit'),
+    url(r'^type/filename/(?P<document_type_filename_id>\d+)/delete/$', 'document_type_filename_delete', (), 'document_type_filename_delete'),
+    url(r'^type/(?P<document_type_id>\d+)/filename/create/$', 'document_type_filename_create', (), 'document_type_filename_create'),
+
 )

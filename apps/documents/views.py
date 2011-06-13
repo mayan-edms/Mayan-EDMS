@@ -17,7 +17,8 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.comments.models import Comment
 
 import sendfile
-from common.utils import pretty_size, parse_range, urlquote, return_diff
+from common.utils import pretty_size, parse_range, urlquote, \
+    return_diff, two_state_template
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
@@ -67,10 +68,11 @@ from documents.forms import DocumentTypeSelectForm, \
         StagingDocumentForm, DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, \
-        DocumentPageForm_text, PrintForm, DocumentTypeForm
+        DocumentPageForm_text, PrintForm, DocumentTypeForm, \
+        DocumentTypeFilenameForm, DocumentTypeFilenameForm_create
 from documents.wizards import DocumentCreateWizard
 from documents.models import Document, DocumentType, DocumentPage, \
-    DocumentPageTransformation, RecentDocument
+    DocumentPageTransformation, RecentDocument, DocumentTypeFilename
 from documents.staging import create_staging_file_class
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
@@ -1082,6 +1084,7 @@ def document_type_list(request):
     context = {
         'object_list': DocumentType.objects.all(),
         'title': _(u'document types'),
+        'hide_link': True,
     }
 
     return render_to_response('generic_list.html', context,
@@ -1099,6 +1102,7 @@ def document_type_document_list(request, document_type_id):
         title=_(u'documents of type "%s"') % document_type,
         extra_context={
             'object': document_type,
+            'object_name': _(u'document type'),
         }
     )
 
@@ -1107,13 +1111,15 @@ def document_type_edit(request, document_type_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_type_list'))))
+
     if request.method == 'POST':
         form = DocumentTypeForm(instance=document_type, data=request.POST)
         if form.is_valid():
             try:
                 form.save()
                 messages.success(request, _(u'Document type edited successfully'))
-                return HttpResponseRedirect(reverse('document_type_list'))
+                return HttpResponseRedirect(next)
             except Exception, e:
                 messages.error(request, _(u'Error editing document type; %s') % e)
     else:
@@ -1124,6 +1130,7 @@ def document_type_edit(request, document_type_id):
         'form': form,
         'object': document_type,
         'object_name': _(u'document type'),
+        'next': next
     },
     context_instance=RequestContext(request))    
 
@@ -1149,12 +1156,12 @@ def document_type_delete(request, document_type_id):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'document tyep'),
+        'object_name': _(u'document type'),
         'delete_view': True,
         'previous': previous,
         'next': next,
         'object': document_type,
-        'title': _(u'Are you sure you with to delete the document type: %s?') % document_type,
+        'title': _(u'Are you sure you wish to delete the document type: %s?') % document_type,
         'message': _(u'The document type of all documents using this document type will be set to none.'),
         'form_icon': u'layout_delete.png',
     }
@@ -1182,5 +1189,129 @@ def document_type_create(request):
     return render_to_response('generic_form.html', {
         'title': _(u'create document type'),
         'form': form,
+    },
+    context_instance=RequestContext(request))
+
+
+def document_type_filename_list(request, document_type_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+
+    context = {
+        'object_list': document_type.documenttypefilename_set.all(),
+        'title': _(u'filenames for document type: %s') % document_type,
+        'object': document_type,
+        'object_name': _(u'document type'),
+        'document_type': document_type,
+        'hide_link': True,
+        'extra_columns': [
+            {
+                'name': _(u'enabled'),
+                'attribute': lambda x: two_state_template(x.enabled),
+            }
+        ]
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))    
+
+
+def document_type_filename_edit(request, document_type_filename_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_type_filename_list', args=[document_type_filename.document_type_id]))))
+
+    if request.method == 'POST':
+        form = DocumentTypeFilenameForm(instance=document_type_filename, data=request.POST)
+        if form.is_valid():
+            try:
+                document_type_filename.filename = form.cleaned_data['filename']
+                document_type_filename.enabled = form.cleaned_data['enabled']
+                document_type_filename.save()
+                messages.success(request, _(u'Document type filename edited successfully'))
+                return HttpResponseRedirect(next)
+            except Exception, e:
+                messages.error(request, _(u'Error editing document type filename; %s') % e)
+    else:
+        form = DocumentTypeFilenameForm(instance=document_type_filename)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit filename "%(filename)s" from document type "%(document_type)s"') % {
+            'document_type': document_type_filename.document_type, 'filename': document_type_filename
+        },
+        'form': form,
+        'object': document_type_filename,
+        'object_name': _(u'document type filename'),
+        'next': next,
+        'document_type': document_type_filename.document_type,
+    },
+    context_instance=RequestContext(request))
+    
+
+def document_type_filename_delete(request, document_type_filename_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
+
+    post_action_redirect = reverse('document_type_filename_list', args=[document_type_filename.document_type_id])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            document_type_filename.delete()
+            messages.success(request, _(u'Document type filename: %s deleted successfully.') % document_type_filename)
+        except Exception, e:
+            messages.error(request, _(u'Document type filename: %(document_type_filename)s delete error: %(error)s') % {
+                'document_type_filename': document_type_filename, 'error': e})
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'object_name': _(u'document type filename'),
+        'delete_view': True,
+        'previous': previous,
+        'next': next,
+        'object': document_type_filename,
+        'title': _(u'Are you sure you wish to delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
+            'document_type': document_type_filename.document_type, 'filename': document_type_filename
+        },
+        'form_icon': u'database_delete.png',
+        'document_type': document_type_filename.document_type,
+    }
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))    
+
+
+def document_type_filename_create(request, document_type_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    
+    if request.method == 'POST':
+        form = DocumentTypeFilenameForm_create(request.POST)
+        if form.is_valid():
+            try:
+                document_type_filename = DocumentTypeFilename(
+                    document_type=document_type,
+                    filename=form.cleaned_data['filename'],
+                    enabled=True
+                )
+                document_type_filename.save()
+                messages.success(request, _(u'Document type filename created successfully'))
+                return HttpResponseRedirect(reverse('document_type_filename_list', args=[document_type_id]))
+            except Exception, e:
+                messages.error(request, _(u'Error creating document type filename; %(error)s') % {
+                    'error': e})
+    else:
+        form = DocumentTypeFilenameForm_create()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'create filename for document type: %s') % document_type,
+        'form': form,
+        'document_type': document_type,
+        'object': document_type,
     },
     context_instance=RequestContext(request))
