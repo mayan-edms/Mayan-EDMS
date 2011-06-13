@@ -177,4 +177,4 @@ register_model_list_columns(Document, [
         },
     ])
 
-register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/', r'^metadata/', r'comments'], position=0)
+register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/[^t]', r'^metadata/', r'comments'], position=0)
