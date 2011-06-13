@@ -98,6 +98,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'form': unselected_list,
                     'title': left_list_title,
                     'submit_label': _(u'Add'),
+                    'submit_icon_famfam': 'add'                
                 }
             },
             {
@@ -108,6 +109,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'form': selected_list,
                     'title': right_list_title,
                     'submit_label': _(u'Remove'),
+                    'submit_icon_famfam': 'delete'
                 }
             },
 

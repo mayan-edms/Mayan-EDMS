@@ -70,7 +70,12 @@
         {% if not read_only %}
         <div class="group navform wat-cf">
             <button class="button" type="submit" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}">
-                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}" /> {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}{% endif %}
+                {% if submit_icon_famfam %}
+                    <span class="famfam active famfam-{{ submit_icon_famfam|default:'tick' }}"></span>
+                {% else %}
+                    <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}" />
+                {% endif %}
+                {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}{% endif %}
             </button>
             {% comment %}
             <a href="#header" class="button">
