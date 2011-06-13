@@ -25,7 +25,7 @@ from documents.literals import HISTORY_DOCUMENT_CREATED, \
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 
 # Permission setup
-set_namespace_title('documents', _(u'documents'))
+set_namespace_title('documents', _(u'Documents'))
 register_permission(PERMISSION_DOCUMENT_CREATE)
 register_permission(PERMISSION_DOCUMENT_PROPERTIES_EDIT)
 register_permission(PERMISSION_DOCUMENT_EDIT)

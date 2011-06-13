@@ -12,7 +12,7 @@ PERMISSION_COMMENT_CREATE = {'namespace': 'comments', 'name': 'comment_create', 
 PERMISSION_COMMENT_DELETE = {'namespace': 'comments', 'name': 'comment_delete', 'label': _(u'Delete comments')}
 PERMISSION_COMMENT_EDIT = {'namespace': 'comments', 'name': 'comment_edit', 'label': _(u'Edit comments')}
 
-set_namespace_title('comments', _(u'comments'))
+set_namespace_title('comments', _(u'Comments'))
 register_permission(PERMISSION_COMMENT_CREATE)
 register_permission(PERMISSION_COMMENT_DELETE)
 register_permission(PERMISSION_COMMENT_EDIT)

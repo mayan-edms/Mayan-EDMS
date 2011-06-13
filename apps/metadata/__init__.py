@@ -8,7 +8,7 @@ PERMISSION_METADATA_DOCUMENT_EDIT = {'namespace': 'metadata', 'name': u'metadata
 PERMISSION_METADATA_DOCUMENT_ADD = {'namespace': 'metadata', 'name': u'metadata_document_add', 'label': _(u'Add metadata to a document')}
 PERMISSION_METADATA_DOCUMENT_REMOVE = {'namespace': 'metadata', 'name': u'metadata_document_remove', 'label': _(u'Remove metadata from a document')}
 
-set_namespace_title('metadata', _(u'metadata'))
+set_namespace_title('metadata', _(u'Metadata'))
 register_permission(PERMISSION_METADATA_DOCUMENT_EDIT)
 register_permission(PERMISSION_METADATA_DOCUMENT_ADD)
 register_permission(PERMISSION_METADATA_DOCUMENT_REMOVE)

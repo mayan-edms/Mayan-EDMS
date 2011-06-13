@@ -7,7 +7,7 @@ from main.api import register_tool
 PERMISSION_DOCUMENT_INDEXING_VIEW = {'namespace': 'document_indexing', 'name': 'document_index_view', 'label': _(u'View document indexes')}
 PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES = {'namespace': 'document_indexing', 'name': 'document_rebuild_indexes', 'label': _(u'Rebuild document indexes')}
 
-set_namespace_title('document_indexing', _(u'indexing'))
+set_namespace_title('document_indexing', _(u'Indexing'))
 register_permission(PERMISSION_DOCUMENT_INDEXING_VIEW)
 register_permission(PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES)
 

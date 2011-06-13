@@ -13,7 +13,7 @@ PERMISSION_TAG_REMOVE = {'namespace': 'tags', 'name': 'tag_remove', 'label': _(u
 PERMISSION_TAG_DELETE = {'namespace': 'tags', 'name': 'tag_delete', 'label': _(u'Delete global tags')}
 PERMISSION_TAG_EDIT = {'namespace': 'tags', 'name': 'tag_edit', 'label': _(u'Edit global tags')}
 
-set_namespace_title('tags', _(u'tags'))
+set_namespace_title('tags', _(u'Tags'))
 register_permission(PERMISSION_TAG_CREATE)
 register_permission(PERMISSION_TAG_ATTACH)
 register_permission(PERMISSION_TAG_REMOVE)

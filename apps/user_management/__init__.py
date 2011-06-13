@@ -14,7 +14,7 @@ PERMISSION_GROUP_EDIT = {'namespace': 'user_management', 'name': 'group_edit', '
 PERMISSION_GROUP_VIEW = {'namespace': 'user_management', 'name': 'group_view', 'label': _(u'View existing groups')}
 PERMISSION_GROUP_DELETE = {'namespace': 'user_management', 'name': 'group_delete', 'label': _(u'Delete existing groups')}
 
-set_namespace_title('user_management', _(u'user management'))
+set_namespace_title('user_management', _(u'User management'))
 register_permission(PERMISSION_USER_CREATE)
 register_permission(PERMISSION_USER_EDIT)
 register_permission(PERMISSION_USER_VIEW)

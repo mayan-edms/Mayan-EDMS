@@ -11,7 +11,7 @@ from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
 from permissions.models import Permission
 
 namespace_titles = {
-    'permissions': _(u'permissions')
+    'permissions': _(u'Permissions')
 }
 
 
