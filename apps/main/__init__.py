@@ -5,7 +5,7 @@ from permissions import role_list, permission_views
 from user_management import user_list, group_list, user_management_views
 from navigation.api import register_links
 from history import history_list
-#from documents import document_type_list
+from documents import document_type_views
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
@@ -48,6 +48,7 @@ tool_links = [check_settings, role_list, user_list, group_list, document_types, 
 register_links(['setting_list'], tool_links, menu_name='secondary_menu')
 register_links(permission_views, tool_links, menu_name='secondary_menu')
 register_links(user_management_views, tool_links, menu_name='secondary_menu')
+register_links(document_type_views, tool_links, menu_name='secondary_menu')
 
 
 def get_version():
