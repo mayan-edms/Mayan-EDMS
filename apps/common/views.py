@@ -5,8 +5,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
+from django.core.urlresolvers import reverse
 
-from common.forms import ChoiceForm
+from common.forms import ChoiceForm, UserForm, UserForm_view
 
 
 def password_change_done(request):
@@ -131,3 +132,43 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
 
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
+
+
+def current_user_details(request):
+    """
+    Display the current user's details
+    """
+    form = UserForm_view(instance=request.user)
+    
+    return render_to_response(
+        'generic_form.html', {
+            'form': form,
+            'title': _(u'current user details'),
+            'read_only': True,
+        },
+        context_instance=RequestContext(request))
+        
+        
+def current_user_edit(request):
+    """
+    Allow an user to edit his own details
+    """
+    
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('current_user_details'))))
+    
+    if request.method == 'POST':
+        form = UserForm(instance=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _(u'Current user\'s details updated.'))
+            return HttpResponseRedirect(next)
+    else:
+        form = UserForm(instance=request.user)
+    
+    return render_to_response(
+        'generic_form.html', {
+            'form': form,
+            'next': next,
+            'title': _(u'edit current user details'),
+        },
+        context_instance=RequestContext(request))   
