@@ -66,7 +66,7 @@ Main
 ====
 * Diagnostics (document file <-> document db mismatches, orphan files) - DONE
 * Sidebar search                                                       - DONE
-* Convert home and about views to use generic_template
+* Convert home and about views to use generic_template                 - DEFFERED, cleanup html
 
 Common
 ======
@@ -78,7 +78,7 @@ Common
 * Default button linking to 'Enter' and ESC key for cancel
 * Dismiss all messages                                                 - DONE
 * Sidebar multi item action box                                        - DONE (inline w/ list)
-* Show big icons in confirmation prompts (ie: document delete)
+* Show big icons in confirmation prompts (ie: document delete)         - DONE
 
 Permissions
 ===========
@@ -126,7 +126,7 @@ Documents
 * Document page edit view                                              - DONE
 * Show all document's pages content combined                           - DONE
 * Create 'simple view' document view for non technical users           - DONE
-* Unify document form classes
+* Unify document form classes                                          - DONE
 * Use document preview code for staging file also                      - DONE
 * Delete physical file on delete method                                - DEFFERED (Not needed until Django 1.3)
 * Download individual document pages
