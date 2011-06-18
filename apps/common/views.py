@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from django.utils.http import urlencode
 
 from common.forms import ChoiceForm, UserForm, UserForm_view
 
@@ -21,9 +22,11 @@ def password_change_done(request):
 
 def multi_object_action_view(request):
     """
-    Proxy view called first when usuing a multi object action, which
+    Proxy view called first when using a multi object action, which
     then redirects to the appropiate specialized view
     """
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
     action = request.GET.get('action', None)
     id_list = u','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
@@ -36,7 +39,10 @@ def multi_object_action_view(request):
         messages.error(request, _(u'Must select at least one item.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    return HttpResponseRedirect('%s?id_list=%s' % (action, id_list))
+    return HttpResponseRedirect('%s?%s' % (
+        action,
+        urlencode({'id_list': id_list, 'next': next}))
+    )
 
 
 def get_obj_from_content_type_string(string):
