@@ -1,4 +1,5 @@
 import subprocess
+import re
 
 from converter.conf.settings import IM_IDENTIFY_PATH
 from converter.conf.settings import IM_CONVERT_PATH
@@ -41,3 +42,27 @@ def execute_convert(input_filepath, output_filepath, quality=QUALITY_DEFAULT, ar
             raise UnknownFormat
         else:
             raise ConvertError(error_line)
+
+
+def get_format_list():
+    """
+    Call ImageMagick to parse all of it's supported file formats, and
+    return a list of the names and descriptions
+    """
+    format_regex = re.compile(' *([A-Z0-9]+)[*]? +([A-Z0-9]+) +([rw\-+]+) *(.*).*')
+    formats = []
+    command = []
+    command.append(unicode(IM_CONVERT_PATH))
+    command.append(u'-list')
+    command.append(u'format')
+    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    return_code = proc.wait()
+    if return_code != 0:
+        raise ConvertError(proc.stderr.readline())
+    
+    for line in proc.stdout.readlines():
+        fields = format_regex.findall(line)
+        if fields:
+            formats.append((fields[0][0], fields[0][3]))
+    
+    return formats

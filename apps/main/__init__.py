@@ -5,6 +5,7 @@ from permissions import role_list, permission_views
 from user_management import user_list, group_list, user_management_views
 from navigation.api import register_links
 from history import history_list
+from converter import formats_list
 from documents import document_type_views
 
 from main.conf.settings import SIDE_BAR_SEARCH
@@ -37,12 +38,12 @@ __version_info__ = {
 register_top_menu('home', link={'text': _(u'home'), 'view': 'home', 'famfam': 'house'}, position=0)
 if not SIDE_BAR_SEARCH:
     register_top_menu('search', link={'text': _(u'search'), 'view': 'search', 'famfam': 'zoom'})
-register_top_menu('tools', link=tools_menu, children_views=['statistics', 'history_list'])
+register_top_menu('tools', link=tools_menu, children_views=['statistics', 'history_list', 'formats_list'])
 #register_top_menu('setup_menu', link={'text': _(u'setup'), 'view': 'setting_list', 'famfam': 'cog'}, children=setup_views)
 register_top_menu('setup_menu', link={'text': _(u'setup'), 'view': 'setting_list', 'famfam': 'cog'}, children_path_regex=[r'^settings/', r'^user_management/', r'^permissions', r'^documents/type'])
 register_top_menu('about', link={'text': _(u'about'), 'view': 'about', 'famfam': 'information'})
 
-register_links(['tools_menu', 'statistics', 'history_list', 'history_view'], [tools_menu, statistics, history_list, sentry], menu_name='secondary_menu')
+register_links(['tools_menu', 'statistics', 'history_list', 'history_view', 'formats_list'], [tools_menu, statistics, history_list, formats_list, sentry], menu_name='secondary_menu')
 
 tool_links = [check_settings, role_list, user_list, group_list, document_types, admin_site]
 register_links(['setting_list'], tool_links, menu_name='secondary_menu')

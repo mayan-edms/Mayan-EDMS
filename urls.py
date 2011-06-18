@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     (r'^grouping/', include('grouping.urls')),
     (r'^document_indexing/', include('document_indexing.urls')),
     (r'^history/', include('history.urls')),
+    (r'^converter/', include('converter.urls')),
 )
 
 

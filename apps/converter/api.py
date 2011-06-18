@@ -62,7 +62,9 @@ except ImportError:
 
 
 def cleanup(filename):
-    ''' tries to remove the given filename. Ignores non-existent files '''
+    """
+    Tries to remove the given filename. Ignores non-existent files
+    """
     try:
         os.remove(filename)
     except OSError:
@@ -70,6 +72,9 @@ def cleanup(filename):
 
 
 def execute_unpaper(input_filepath, output_filepath):
+    """
+    Executes the program unpaper using subprocess's Popen
+    """
     command = []
     command.append(UNPAPER_PATH)
     command.append(u'--overwrite')
@@ -82,6 +87,9 @@ def execute_unpaper(input_filepath, output_filepath):
 
 
 def execute_unoconv(input_filepath, arguments=''):
+    """
+    Executes the program unoconv using subprocess's Popen
+    """
     command = []
     command.append(UNOCONV_PATH)
     command.extend(unicode(arguments).split())
