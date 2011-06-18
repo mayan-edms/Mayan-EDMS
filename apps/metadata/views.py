@@ -32,6 +32,10 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+    post_action_redirect = reverse('document_list_recent')
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+
     metadata = {}
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
@@ -84,14 +88,12 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                 else:
                     messages.success(request, _(u'Document indexes updated successfully.'))
 
-            if len(documents) == 1:
-                return HttpResponseRedirect(document.get_absolute_url())
-            elif len(documents) > 1:
-                return HttpResponseRedirect(reverse('document_list_recent'))
+            return HttpResponseRedirect(next)
 
     context = {
         'form_display_mode_table': True,
         'form': formset,
+        'next': next,
     }
     if len(documents) == 1:
         context['object'] = documents[0]
@@ -121,6 +123,10 @@ def metadata_add(request, document_id=None, document_id_list=None):
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
 
+    post_action_redirect = reverse('document_list_recent')
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+
     if request.method == 'POST':
         form = AddMetadataForm(request.POST)
         if form.is_valid():
@@ -135,9 +141,15 @@ def metadata_add(request, document_id=None, document_id_list=None):
                         'metadata_type': metadata_type, 'document': document})
 
             if len(documents) == 1:
-                return HttpResponseRedirect(reverse(metadata_edit, args=[document.pk]))
+                return HttpResponseRedirect(u'%s?%s' % (
+                    reverse(metadata_edit, args=[document.pk]),
+                    urlencode({'next': next}))
+                )
             elif len(documents) > 1:
-                return HttpResponseRedirect(u'%s?%s' % (reverse('metadata_multiple_edit'), urlencode({'id_list': document_id_list})))
+                return HttpResponseRedirect(u'%s?%s' % (
+                    reverse('metadata_multiple_edit'),
+                    urlencode({'id_list': document_id_list, 'next': next}))
+                )
 
     else:
         form = AddMetadataForm()
@@ -145,6 +157,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
     context = {
         #'form_display_mode_table': True,
         'form': form,
+        'next': next,
     }
     if len(documents) == 1:
         context['object'] = documents[0]
@@ -174,6 +187,10 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     else:
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    post_action_redirect = reverse('document_list_recent')
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
 
     metadata = {}
     for document in documents:
@@ -224,14 +241,12 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                 else:
                     messages.success(request, _(u'Document indexes updated successfully.'))
 
-            if len(documents) == 1:
-                return HttpResponseRedirect(document.get_absolute_url())
-            elif len(documents) > 1:
-                return HttpResponseRedirect(reverse('document_list_recent'))
+            return HttpResponseRedirect(next)
 
     context = {
         'form_display_mode_table': True,
         'form': formset,
+        'next': next,
     }
     if len(documents) == 1:
         context['object'] = documents[0]
