@@ -12,7 +12,9 @@ from permissions.api import check_permissions
 from document_indexing.api import update_indexes, delete_indexes
 
 from metadata import PERMISSION_METADATA_DOCUMENT_EDIT, \
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE
+    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE, \
+    PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_CREATE, \
+    PERMISSION_METADATA_TYPE_DELETE, PERMISSION_METADATA_TYPE_VIEW
 from metadata.forms import MetadataFormSet, AddMetadataForm, \
     MetadataRemoveFormSet, MetadataTypeForm
 from metadata.api import save_metadata_list
@@ -264,7 +266,7 @@ def metadata_multiple_remove(request):
 
 
 def setup_metadata_type_list(request):
-    #check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_METADATA_TYPE_VIEW])
 
     context = {
         'object_list': MetadataType.objects.all(),
@@ -283,7 +285,8 @@ def setup_metadata_type_list(request):
 
 
 def setup_metadata_type_edit(request, metadatatype_id):
-    #check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
+    
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
     if request.method == 'POST':
@@ -310,6 +313,8 @@ def setup_metadata_type_edit(request, metadatatype_id):
         
         
 def setup_metadata_type_create(request):
+    check_permissions(request.user, [PERMISSION_METADATA_TYPE_CREATE])
+    
     if request.method == 'POST':
         form = MetadataTypeForm(request.POST)
         if form.is_valid():
@@ -327,6 +332,8 @@ def setup_metadata_type_create(request):
 
 
 def setup_metadata_type_delete(request, metadatatype_id):
+    check_permissions(request.user, [PERMISSION_METADATA_TYPE_DELETE])
+    
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
     post_action_redirect = reverse('setup_metadata_type_list')
