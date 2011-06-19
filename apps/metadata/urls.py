@@ -7,4 +7,9 @@ urlpatterns = patterns('metadata.views',
     url(r'^multiple/add/$', 'metadata_multiple_add', (), 'metadata_multiple_add'),
     url(r'^(?P<document_id>\d+)/remove/$', 'metadata_remove', (), 'metadata_remove'),
     url(r'^multiple/remove/$', 'metadata_multiple_remove', (), 'metadata_multiple_remove'),
+
+    url(r'^setup/type/list/$', 'setup_metadata_type_list', (), 'setup_metadata_type_list'),
+    url(r'^setup/type/create/$', 'setup_metadata_type_create', (), 'setup_metadata_type_create'),
+    url(r'^setup/type/(?P<metadatatype_id>\d+)/edit/$', 'setup_metadata_type_edit', (), 'setup_metadata_type_edit'),
+    url(r'^setup/type/(?P<metadatatype_id>\d+)/delete/$', 'setup_metadata_type_delete', (), 'setup_metadata_type_delete'),
 )

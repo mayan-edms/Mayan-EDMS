@@ -13,7 +13,8 @@ from document_indexing.api import update_indexes, delete_indexes
 
 from metadata import PERMISSION_METADATA_DOCUMENT_EDIT, \
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE
-from metadata.forms import MetadataFormSet, AddMetadataForm, MetadataRemoveFormSet
+from metadata.forms import MetadataFormSet, AddMetadataForm, \
+    MetadataRemoveFormSet, MetadataTypeForm
 from metadata.api import save_metadata_list
 from metadata.models import DocumentMetadata, MetadataType
 
@@ -260,3 +261,98 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
 def metadata_multiple_remove(request):
     return metadata_remove(request, document_id_list=request.GET.get('id_list', []))
+
+
+def setup_metadata_type_list(request):
+    #check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+
+    context = {
+        'object_list': MetadataType.objects.all(),
+        'title': _(u'metadata types'),
+        'hide_link': True,
+        'extra_columns': [
+            {
+                'name': _(u'internal name'),
+                'attribute': 'name',
+            },
+        ]
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))    
+
+
+def setup_metadata_type_edit(request, metadatatype_id):
+    #check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
+
+    if request.method == 'POST':
+        form = MetadataTypeForm(instance=metadata_type, data=request.POST)
+        if form.is_valid():
+            #folder.title = form.cleaned_data['title']
+            try:
+                form.save()
+                messages.success(request, _(u'Metadata type edited successfully'))
+                return HttpResponseRedirect(reverse('setup_metadata_type_list'))
+            except Exception, e:
+                messages.error(request, _(u'Error editing metadata type; %s') % e)
+            pass
+    else:
+        form = MetadataTypeForm(instance=metadata_type)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit metadata type: %s') % metadata_type,
+        'form': form,
+        'object': metadata_type,
+        'object_name': _(u'metadata type'),
+    },
+    context_instance=RequestContext(request))    
+        
+        
+def setup_metadata_type_create(request):
+    if request.method == 'POST':
+        form = MetadataTypeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _(u'Metadata type created successfully'))
+            return HttpResponseRedirect(reverse('setup_metadata_type_list'))
+    else:
+        form = MetadataTypeForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'create metadata type'),
+        'form': form,
+    },
+    context_instance=RequestContext(request))
+
+
+def setup_metadata_type_delete(request, metadatatype_id):
+    metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
+
+    post_action_redirect = reverse('setup_metadata_type_list')
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_action_redirect)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+
+    if request.method == 'POST':
+        try:
+            metadata_type.delete()
+            messages.success(request, _(u'Metadata type: %s deleted successfully.') % metadata_type)
+        except Exception, e:
+            messages.error(request, _(u'Folder: %(metadata_type)s delete error: %(error)s') % {
+                'metadata_type': metadata_type, 'error': e})
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'object_name': _(u'metadata type'),
+        'delete_view': True,
+        'next': next,
+        'previous': previous,
+        'object': metadata_type,
+        'title': _(u'Are you sure you with to delete the metadata type: %s?') % metadata_type,
+        'form_icon': u'xhtml_delete.png',
+    }
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))

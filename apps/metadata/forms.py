@@ -94,3 +94,8 @@ class MetadataSelectionForm(forms.Form):
     )
 
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
+
+
+class MetadataTypeForm(forms.ModelForm):
+    class Meta:
+        model = MetadataType
