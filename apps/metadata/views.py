@@ -11,14 +11,20 @@ from documents.models import Document, RecentDocument
 from permissions.api import check_permissions
 from document_indexing.api import update_indexes, delete_indexes
 
+from common.utils import generate_choices_w_labels#, two_state_template
+from common.views import assign_remove
+
 from metadata import PERMISSION_METADATA_DOCUMENT_EDIT, \
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE, \
     PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_CREATE, \
-    PERMISSION_METADATA_TYPE_DELETE, PERMISSION_METADATA_TYPE_VIEW
+    PERMISSION_METADATA_TYPE_DELETE, PERMISSION_METADATA_TYPE_VIEW, \
+    PERMISSION_METADATA_SET_EDIT, PERMISSION_METADATA_SET_CREATE, \
+    PERMISSION_METADATA_SET_DELETE, PERMISSION_METADATA_SET_VIEW
 from metadata.forms import MetadataFormSet, AddMetadataForm, \
-    MetadataRemoveFormSet, MetadataTypeForm
+    MetadataRemoveFormSet, MetadataTypeForm, MetadataSetForm
 from metadata.api import save_metadata_list
-from metadata.models import DocumentMetadata, MetadataType
+from metadata.models import DocumentMetadata, MetadataType, MetadataSet, \
+    MetadataSetItem
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
@@ -357,8 +363,121 @@ def setup_metadata_type_delete(request, metadatatype_id):
         'next': next,
         'previous': previous,
         'object': metadata_type,
-        'title': _(u'Are you sure you with to delete the metadata type: %s?') % metadata_type,
+        'title': _(u'Are you sure you wish to delete the metadata type: %s?') % metadata_type,
         'form_icon': u'xhtml_delete.png',
+    }
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def setup_metadata_set_list(request):
+    check_permissions(request.user, [PERMISSION_METADATA_SET_VIEW])
+
+    context = {
+        'object_list': MetadataSet.objects.all(),
+        'title': _(u'metadata sets'),
+        'hide_link': True,
+        'extra_columns': [
+            {
+                'name': _(u'members'),
+                'attribute': lambda x: x.metadatasetitem_set.count(),
+            },
+        ]
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))    
+
+
+def get_set_members(metadata_set):
+    return [item.metadata_type for item in metadata_set.metadatasetitem_set.all()]
+
+
+def get_non_set_members(metadata_set):
+    return MetadataType.objects.exclude(pk__in=[member.pk for member in get_set_members(metadata_set)])
+
+
+def add_set_member(metadata_set, selection):
+    model, pk = selection.split(u',')
+    metadata_type = get_object_or_404(MetadataType, pk=pk)
+    new_member, created = MetadataSetItem.objects.get_or_create(metadata_set=metadata_set, metadata_type=metadata_type)
+    if not created:
+        raise Exception
+
+
+def remove_set_member(metadata_set, selection):
+    model, pk = selection.split(u',')
+    metadata_type = get_object_or_404(MetadataType, pk=pk)
+    member = MetadataSetItem.objects.get(metadata_type=metadata_type, metadata_set=metadata_set)
+    member.delete()
+
+
+def setup_metadata_set_edit(request, metadata_set_id):
+    check_permissions(request.user, [PERMISSION_METADATA_SET_EDIT])
+
+    metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
+
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(get_non_set_members(metadata_set)),
+        right_list=lambda: generate_choices_w_labels(get_set_members(metadata_set)),
+        add_method=lambda x: add_set_member(metadata_set, x),
+        remove_method=lambda x: remove_set_member(metadata_set, x),
+        left_list_title=_(u'non members of metadata set: %s') % metadata_set,
+        right_list_title=_(u'members of metadata set: %s') % metadata_set,
+        obj=metadata_set,
+        object_name=_(u'metadata set'),
+    )
+
+
+def setup_metadata_set_create(request):
+    check_permissions(request.user, [PERMISSION_METADATA_SET_CREATE])
+    
+    if request.method == 'POST':
+        form = MetadataSetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _(u'Metadata set created successfully'))
+            return HttpResponseRedirect(reverse('setup_metadata_set_list'))
+    else:
+        form = MetadataSetForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'create metadata set'),
+        'form': form,
+    },
+    context_instance=RequestContext(request))
+
+
+def setup_metadata_set_delete(request, metadata_set_id):
+    check_permissions(request.user, [PERMISSION_METADATA_SET_DELETE])
+    
+    metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
+
+    post_action_redirect = reverse('setup_metadata_set_list')
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_action_redirect)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+
+    if request.method == 'POST':
+        try:
+            metadata_set.delete()
+            messages.success(request, _(u'Metadata set: %s deleted successfully.') % metadata_set)
+        except Exception, e:
+            messages.error(request, _(u'Folder: %(metadata_set)s delete error: %(error)s') % {
+                'metadata_set': metadata_set, 'error': e})
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'object_name': _(u'metadata set'),
+        'delete_view': True,
+        'next': next,
+        'previous': previous,
+        'object': metadata_set,
+        'title': _(u'Are you sure you wish to delete the metadata set: %s?') % metadata_set,
+        'form_icon': u'application_form_delete.png',
     }
 
     return render_to_response('generic_confirm.html', context,

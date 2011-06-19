@@ -11,6 +11,9 @@ available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()
 
 
 class MetadataType(models.Model):
+    """
+    Define a type of metadata
+    """    
     name = models.CharField(unique=True, max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words, or spaces.'))
     title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
@@ -25,6 +28,7 @@ class MetadataType(models.Model):
         return self.title if self.title else self.name
 
     class Meta:
+        ordering = ('title',)
         verbose_name = _(u'metadata type')
         verbose_name_plural = _(u'metadata types')
 
@@ -39,6 +43,7 @@ class MetadataSet(models.Model):
         return self.title if self.title else self.name
 
     class Meta:
+        ordering = ('title',)
         verbose_name = _(u'metadata set')
         verbose_name_plural = _(u'metadata set')
 
@@ -78,6 +83,10 @@ class DocumentMetadata(models.Model):
 
 
 class DocumentTypeDefaults(models.Model):
+    """
+    Default preselected metadata types and metadata set per document
+    type
+    """    
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     default_metadata_sets = models.ManyToManyField(MetadataSet, blank=True, verbose_name=_(u'default metadata sets'))
     default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'default metadata'))

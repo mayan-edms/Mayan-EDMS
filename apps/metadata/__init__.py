@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, register_multi_item_links
 from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
-from metadata.models import MetadataType
+from metadata.models import MetadataType, MetadataSet
 
 PERMISSION_METADATA_DOCUMENT_EDIT = {'namespace': 'metadata', 'name': u'metadata_document_edit', 'label': _(u'Edit a document\'s metadata')}
 PERMISSION_METADATA_DOCUMENT_ADD = {'namespace': 'metadata', 'name': u'metadata_document_add', 'label': _(u'Add metadata to a document')}
@@ -13,6 +13,11 @@ PERMISSION_METADATA_TYPE_EDIT = {'namespace': 'metadata_setup', 'name': u'metada
 PERMISSION_METADATA_TYPE_CREATE = {'namespace': 'metadata_setup', 'name': u'metadata_type_create', 'label': _(u'Create new metadata types')}
 PERMISSION_METADATA_TYPE_DELETE = {'namespace': 'metadata_setup', 'name': u'metadata_type_delete', 'label': _(u'Delete metadata types')}
 PERMISSION_METADATA_TYPE_VIEW = {'namespace': 'metadata_setup', 'name': u'metadata_type_view', 'label': _(u'View metadata types')}
+
+PERMISSION_METADATA_SET_EDIT = {'namespace': 'metadata_setup', 'name': u'metadata_set_edit', 'label': _(u'Edit metadata sets')}
+PERMISSION_METADATA_SET_CREATE = {'namespace': 'metadata_setup', 'name': u'metadata_set_create', 'label': _(u'Create new metadata sets')}
+PERMISSION_METADATA_SET_DELETE = {'namespace': 'metadata_setup', 'name': u'metadata_set_delete', 'label': _(u'Delete metadata sets')}
+PERMISSION_METADATA_SET_VIEW = {'namespace': 'metadata_setup', 'name': u'metadata_set_view', 'label': _(u'View metadata sets')}
 
 set_namespace_title('metadata', _(u'Metadata'))
 register_permission(PERMISSION_METADATA_DOCUMENT_EDIT)
@@ -24,6 +29,11 @@ register_permission(PERMISSION_METADATA_TYPE_EDIT)
 register_permission(PERMISSION_METADATA_TYPE_CREATE)
 register_permission(PERMISSION_METADATA_TYPE_DELETE)
 register_permission(PERMISSION_METADATA_TYPE_VIEW)
+
+register_permission(PERMISSION_METADATA_SET_EDIT)
+register_permission(PERMISSION_METADATA_SET_CREATE)
+register_permission(PERMISSION_METADATA_SET_DELETE)
+register_permission(PERMISSION_METADATA_SET_VIEW)
 
 metadata_edit = {'text': _(u'edit metadata'), 'view': 'metadata_edit', 'args': 'object.id', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
 metadata_multiple_edit = {'text': _(u'edit metadata'), 'view': 'metadata_multiple_edit', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
@@ -37,10 +47,19 @@ setup_metadata_type_edit = {'text': _(u'edit'), 'view': 'setup_metadata_type_edi
 setup_metadata_type_delete = {'text': _(u'delete'), 'view': 'setup_metadata_type_delete', 'args': 'object.id', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_TYPE_DELETE]}
 setup_metadata_type_create = {'text': _(u'create new'), 'view': 'setup_metadata_type_create', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_TYPE_CREATE]}
 
+setup_metadata_set_list = {'text': _(u'metadata sets'), 'view': 'setup_metadata_set_list', 'famfam': 'application_form', 'permissions': [PERMISSION_METADATA_SET_VIEW]}
+setup_metadata_set_edit = {'text': _(u'edit'), 'view': 'setup_metadata_set_edit', 'args': 'object.id', 'famfam': 'application_form_edit', 'permissions': [PERMISSION_METADATA_SET_EDIT]}
+setup_metadata_set_delete = {'text': _(u'delete'), 'view': 'setup_metadata_set_delete', 'args': 'object.id', 'famfam': 'application_form_delete', 'permissions': [PERMISSION_METADATA_SET_DELETE]}
+setup_metadata_set_create = {'text': _(u'create new'), 'view': 'setup_metadata_set_create', 'famfam': 'application_form_add', 'permissions': [PERMISSION_METADATA_SET_CREATE]}
+
 register_links(Document, [metadata_add, metadata_edit, metadata_remove])
 register_multi_item_links(['document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
 
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links(['setup_metadata_type_delete', 'setup_metadata_type_edit', 'setup_metadata_type_list', 'setup_metadata_type_create'], [setup_metadata_type_create], menu_name='sidebar')
 
-metadata_setup_view = ['setup_metadata_type_list', 'setup_metadata_type_edit', 'setup_metadata_type_delete', 'setup_metadata_type_create']
+register_links(MetadataSet, [setup_metadata_set_edit, setup_metadata_set_delete])
+register_links(['setup_metadata_set_delete', 'setup_metadata_set_edit', 'setup_metadata_set_list', 'setup_metadata_set_create'], [setup_metadata_set_create], menu_name='sidebar')
+
+metadata_type_setup_views = ['setup_metadata_type_list', 'setup_metadata_type_edit', 'setup_metadata_type_delete', 'setup_metadata_type_create']
+metadata_set_setup_views = ['setup_metadata_set_list', 'setup_metadata_set_edit', 'setup_metadata_set_delete', 'setup_metadata_set_create']

@@ -12,4 +12,9 @@ urlpatterns = patterns('metadata.views',
     url(r'^setup/type/create/$', 'setup_metadata_type_create', (), 'setup_metadata_type_create'),
     url(r'^setup/type/(?P<metadatatype_id>\d+)/edit/$', 'setup_metadata_type_edit', (), 'setup_metadata_type_edit'),
     url(r'^setup/type/(?P<metadatatype_id>\d+)/delete/$', 'setup_metadata_type_delete', (), 'setup_metadata_type_delete'),
+
+    url(r'^setup/set/list/$', 'setup_metadata_set_list', (), 'setup_metadata_set_list'),
+    url(r'^setup/set/create/$', 'setup_metadata_set_create', (), 'setup_metadata_set_create'),
+    url(r'^setup/set/(?P<metadata_set_id>\d+)/edit/$', 'setup_metadata_set_edit', (), 'setup_metadata_set_edit'),
+    url(r'^setup/set/(?P<metadata_set_id>\d+)/delete/$', 'setup_metadata_set_delete', (), 'setup_metadata_set_delete'),
 )

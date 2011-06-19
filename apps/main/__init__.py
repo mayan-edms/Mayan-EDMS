@@ -7,7 +7,8 @@ from navigation.api import register_links
 from history import history_list
 from converter import formats_list
 from documents import document_type_views
-from metadata import setup_metadata_type_list, metadata_setup_view
+from metadata import setup_metadata_type_list, metadata_type_setup_views
+from metadata import setup_metadata_set_list, metadata_set_setup_views
 
 from main.conf.settings import SIDE_BAR_SEARCH
 
@@ -46,12 +47,13 @@ register_top_menu('about', link={'text': _(u'about'), 'view': 'about', 'famfam':
 
 register_links(['tools_menu', 'statistics', 'history_list', 'history_view', 'formats_list'], [tools_menu, statistics, history_list, formats_list, sentry], menu_name='secondary_menu')
 
-setup_links = [check_settings, role_list, user_list, group_list, document_types, setup_metadata_type_list, admin_site]
+setup_links = [check_settings, role_list, user_list, group_list, document_types, setup_metadata_type_list, setup_metadata_set_list, admin_site]
 register_links(['setting_list'], setup_links, menu_name='secondary_menu')
 register_links(permission_views, setup_links, menu_name='secondary_menu')
 register_links(user_management_views, setup_links, menu_name='secondary_menu')
 register_links(document_type_views, setup_links, menu_name='secondary_menu')
-register_links(metadata_setup_view, setup_links, menu_name='secondary_menu')
+register_links(metadata_type_setup_views, setup_links, menu_name='secondary_menu')
+register_links(metadata_set_setup_views, setup_links, menu_name='secondary_menu')
 
 
 def get_version():
