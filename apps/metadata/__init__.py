@@ -3,7 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, register_multi_item_links, \
     register_sidebar_template
 from permissions.api import register_permission, set_namespace_title
-from documents.models import Document
+from documents.models import Document, DocumentType
+from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT
 from metadata.models import MetadataType, MetadataSet
 
 PERMISSION_METADATA_DOCUMENT_EDIT = {'namespace': 'metadata', 'name': u'metadata_document_edit', 'label': _(u'Edit a document\'s metadata')}
@@ -53,6 +54,8 @@ setup_metadata_set_edit = {'text': _(u'edit'), 'view': 'setup_metadata_set_edit'
 setup_metadata_set_delete = {'text': _(u'delete'), 'view': 'setup_metadata_set_delete', 'args': 'object.id', 'famfam': 'application_form_delete', 'permissions': [PERMISSION_METADATA_SET_DELETE]}
 setup_metadata_set_create = {'text': _(u'create new'), 'view': 'setup_metadata_set_create', 'famfam': 'application_form_add', 'permissions': [PERMISSION_METADATA_SET_CREATE]}
 
+setup_document_type_metadata = {'text': _(u'default metadata'), 'view': 'setup_document_type_metadata', 'args': 'object.id', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+
 register_links(Document, [metadata_add, metadata_edit, metadata_remove])
 register_multi_item_links(['document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
 
@@ -61,6 +64,8 @@ register_links(['setup_metadata_type_delete', 'setup_metadata_type_edit', 'setup
 
 register_links(MetadataSet, [setup_metadata_set_edit, setup_metadata_set_delete])
 register_links(['setup_metadata_set_delete', 'setup_metadata_set_edit', 'setup_metadata_set_list', 'setup_metadata_set_create'], [setup_metadata_set_create], menu_name='sidebar')
+
+register_links(DocumentType, [setup_document_type_metadata])
 
 metadata_type_setup_views = ['setup_metadata_type_list', 'setup_metadata_type_edit', 'setup_metadata_type_delete', 'setup_metadata_type_create']
 metadata_set_setup_views = ['setup_metadata_set_list', 'setup_metadata_set_edit', 'setup_metadata_set_delete', 'setup_metadata_set_create']

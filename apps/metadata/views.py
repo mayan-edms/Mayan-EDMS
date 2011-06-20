@@ -7,7 +7,8 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 
-from documents.models import Document, RecentDocument
+from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT
+from documents.models import Document, RecentDocument, DocumentType
 from permissions.api import check_permissions
 from document_indexing.api import update_indexes, delete_indexes
 
@@ -24,7 +25,7 @@ from metadata.forms import MetadataFormSet, AddMetadataForm, \
     MetadataRemoveFormSet, MetadataTypeForm, MetadataSetForm
 from metadata.api import save_metadata_list
 from metadata.models import DocumentMetadata, MetadataType, MetadataSet, \
-    MetadataSetItem
+    MetadataSetItem, DocumentTypeDefaults
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
@@ -482,3 +483,60 @@ def setup_metadata_set_delete(request, metadata_set_id):
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
+
+
+def get_document_type_metadata_members(document_type):
+    metadata_types = set(document_type.documenttypedefaults_set.get().default_metadata.all())
+    metadata_sets = set(document_type.documenttypedefaults_set.get().default_metadata_sets.all())
+    return list(metadata_types | metadata_sets)
+
+
+def get_document_type_metadata_non_members(document_type):
+    members = set(get_document_type_metadata_members(document_type))
+    all_metadata_objects = set(MetadataType.objects.all()) | set(MetadataSet.objects.all())
+    return list(all_metadata_objects - members)
+
+
+def add_document_type_metadata(document_type, selection):
+    model, pk = selection.split(u',')
+    if model == 'metadata type':
+        metadata_type = get_object_or_404(MetadataType, pk=pk)
+        document_type.documenttypedefaults_set.get().default_metadata.add(metadata_type)
+    elif model == 'metadata set':
+        metadata_set = get_object_or_404(MetadataSet, pk=pk)
+        document_type.documenttypedefaults_set.get().default_metadata_sets.add(metadata_set)
+    else:
+        raise Exception
+
+
+def remove_document_type_metadata(document_type, selection):
+    model, pk = selection.split(u',')
+    if model == 'metadata type':
+        metadata_type = get_object_or_404(MetadataType, pk=pk)
+        document_type.documenttypedefaults_set.get().default_metadata.remove(metadata_type)
+    elif model == 'metadata set':
+        metadata_set = get_object_or_404(MetadataSet, pk=pk)
+        document_type.documenttypedefaults_set.get().default_metadata_sets.remove(metadata_set)
+    else:
+        raise Exception
+
+
+def setup_document_type_metadata(request, document_type_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+
+    # Initialize defaults
+    DocumentTypeDefaults.objects.get_or_create(document_type=document_type)
+    
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(get_document_type_metadata_non_members(document_type)),
+        right_list=lambda: generate_choices_w_labels(get_document_type_metadata_members(document_type)),
+        add_method=lambda x: add_document_type_metadata(document_type, x),
+        remove_method=lambda x: remove_document_type_metadata(document_type, x),
+        left_list_title=_(u'non members of document type: %s') % document_type,
+        right_list_title=_(u'members of document type: %s') % document_type,
+        obj=document_type,
+        object_name=_(u'document type'),
+    )
