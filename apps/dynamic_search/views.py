@@ -50,6 +50,8 @@ def results(request, form=None):
         'form_hide_required_text': True,
         'hide_links': True,
         'multi_select_as_buttons': True,
+        'submit_label': _(u'Search'),
+        'submit_icon_famfam': 'zoom',
     })
 
     if SHOW_OBJECT_TYPE:
