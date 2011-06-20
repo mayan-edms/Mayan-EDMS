@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_top_menu, \
-    register_multi_item_links
+    register_multi_item_links, register_sidebar_template
 from navigation.api import register_sidebar_template
 
 from folders.models import Folder
@@ -22,3 +22,5 @@ register_links(['folder_edit', 'folder_delete', 'folder_list', 'folder_create', 
 register_top_menu(name='folders', link={'text': _('folders'), 'famfam': 'folder_user', 'view': 'folder_list'}, children_path_regex=[r'^folders/'])
 
 register_sidebar_template(['document_view_advanced', 'document_view_simple'], 'folders_sidebar_template.html')
+
+register_sidebar_template(['folder_list'], 'folders_help.html')
