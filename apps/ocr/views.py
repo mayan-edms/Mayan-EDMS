@@ -65,6 +65,7 @@ def queue_document_list(request, queue_name='default'):
                 {
                     'name': 'generic_subtemplate.html',
                     'context': {
+                        'side_bar': True,
                         'title': _(u'document queue properties'),
                         'content': _(u'Current state: %s') % document_queue.get_state_display(),
                     }
