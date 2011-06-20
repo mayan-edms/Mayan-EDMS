@@ -7,6 +7,7 @@ from django.conf import settings
 from dynamic_search.api import perform_search
 from dynamic_search.forms import SearchForm
 from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
+from dynamic_search.conf.settings import LIMIT
 
 
 def results(request, form=None):
@@ -52,6 +53,7 @@ def results(request, form=None):
         'multi_select_as_buttons': True,
         'submit_label': _(u'Search'),
         'submit_icon_famfam': 'zoom',
+        'search_results_limit': LIMIT,
     })
 
     if SHOW_OBJECT_TYPE:
