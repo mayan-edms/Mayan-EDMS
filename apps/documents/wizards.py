@@ -40,7 +40,11 @@ class DocumentCreateWizard(BoundFormWizard):
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)
 
     def render_template(self, request, form, previous_fields, step, context=None):
-        context = {'step_title': self.extra_context['step_titles'][step]}
+        context = {
+            'step_title': self.extra_context['step_titles'][step],
+            'submit_label': _(u'Next step'),
+            'submit_icon_famfam': 'arrow_right',
+        }
         return super(DocumentCreateWizard, self).render_template(
             request, form, previous_fields, step, context
         )
