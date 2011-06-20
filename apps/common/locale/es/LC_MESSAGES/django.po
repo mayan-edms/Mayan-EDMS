@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-06 13:19-0400\n"
-"PO-Revision-Date: 2011-05-06 13:22\n"
-"Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
+"POT-Creation-Date: 2011-06-20 11:52-0400\n"
+"PO-Revision-Date: 2011-06-20 13:17\n"
+"Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,9 +19,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: forms.py:46
-msgid "None"
-msgstr "Ninguno"
+#: __init__.py:15
+msgid "change password"
+msgstr "cambiar contraseña"
+
+#: __init__.py:16
+msgid "user details"
+msgstr "detalles de usuario"
+
+#: __init__.py:17
+msgid "edit details"
+msgstr "editar detalles"
+
+#: forms.py:89
+msgid "Selection"
+msgstr "Selección"
 
 #: literals.py:24
 msgid "A5"
@@ -63,28 +75,67 @@ msgstr "Retrato"
 msgid "Landscape"
 msgstr "Paisaje"
 
-#: utils.py:296
+#: utils.py:302
 msgid "function found"
 msgstr "función encontrada"
 
-#: utils.py:298 utils.py:300
+#: utils.py:304 utils.py:306
 #, python-format
 msgid "class found: %s"
 msgstr "clase encontrada: %s"
 
-#: views.py:12 templates/password_change_done.html:5
+#: views.py:19 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
 msgstr "Su contraseña se ha modificado correctamente."
 
-#: views.py:26
+#: views.py:35
 msgid "No action selected."
 msgstr "Ninguna acción seleccionada."
 
-#: views.py:30
+#: views.py:39
 msgid "Must select at least one item."
 msgstr "Debe seleccionar al menos un artículo."
 
-#: conf/settings.py:9
+#: views.py:72
+#, python-format
+msgid "%(selection)s added successfully added to %(right_list_title)s."
+msgstr "Se agrego exitosamente %(selection)s a %(right_list_title)s."
+
+#: views.py:75 views.py:92
+#, python-format
+msgid "Unable to add %(selection)s to %(right_list_title)s."
+msgstr "No se puede agregar %(selection)s a %(right_list_title)s."
+
+#: views.py:89
+#, python-format
+msgid "%(selection)s added successfully removed from %(right_list_title)s."
+msgstr "Se removió exitosamente %(selection)s de %(right_list_title)s."
+
+#: views.py:107
+msgid "Add"
+msgstr "Agregar"
+
+#: views.py:118
+msgid "Remove"
+msgstr "Remover"
+
+#: views.py:152
+msgid "current user details"
+msgstr "detalles del usuario corriente"
+
+#: views.py:169
+msgid "Current user's details updated."
+msgstr "Datos del usuario corriente actualizados."
+
+#: views.py:178
+msgid "edit current user details"
+msgstr "editar detalles del usuario corriente"
+
+#: widgets.py:48
+msgid "None"
+msgstr "Ninguno"
+
+#: conf/settings.py:15
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using "
@@ -151,21 +202,25 @@ msgstr "Confirmar"
 msgid "Confirm delete"
 msgstr "Confirmar eliminación"
 
-#: templates/generic_confirm.html:32
+#: templates/generic_confirm.html:28
+msgid "form icon"
+msgstr "emblema de la forma"
+
+#: templates/generic_confirm.html:36
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
 msgstr "¿Está seguro que desea eliminar %(object_name)s: %(object)s?"
 
-#: templates/generic_confirm.html:34
+#: templates/generic_confirm.html:38
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
 msgstr "¿Está seguro que desea eliminar: %(object)s?"
 
-#: templates/generic_confirm.html:42
+#: templates/generic_confirm.html:46
 msgid "Yes"
 msgstr "Sí"
 
-#: templates/generic_confirm.html:46
+#: templates/generic_confirm.html:50
 msgid "No"
 msgstr "No"
 
@@ -174,24 +229,28 @@ msgstr "No"
 msgid "required"
 msgstr "requerido"
 
-#: templates/generic_form_subtemplate.html:73
-#: templates/generic_list_subtemplate.html:111
+#: templates/generic_form_subtemplate.html:76
+#: templates/generic_form_subtemplate.html:78
+#: templates/generic_list_subtemplate.html:47
+#: templates/generic_list_subtemplate.html:157
 msgid "Save"
 msgstr "Guardar"
 
-#: templates/generic_form_subtemplate.html:73
-#: templates/generic_list_subtemplate.html:111
+#: templates/generic_form_subtemplate.html:76
+#: templates/generic_form_subtemplate.html:78
+#: templates/generic_list_subtemplate.html:47
+#: templates/generic_list_subtemplate.html:157
 msgid "Submit"
 msgstr "Enviar"
 
-#: templates/generic_form_subtemplate.html:77
+#: templates/generic_form_subtemplate.html:82
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/generic_list.html:4
+#: templates/generic_list.html:6
 #, python-format
-msgid "List of %(title)s"
-msgstr "Lista de %(title)s "
+msgid "List of %(stripped_title)s"
+msgstr "Lista de %(stripped_title)s "
 
 #: templates/generic_list_subtemplate.html:19
 #, python-format
@@ -207,14 +266,14 @@ msgstr ""
 msgid "List of %(title)s (%(total)s)"
 msgstr "Lista de %(title)s (%(total)s)"
 
-#: templates/generic_list_subtemplate.html:40
+#: templates/generic_list_subtemplate.html:67
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/generic_list_subtemplate.html:88
+#: templates/generic_list_subtemplate.html:131
 #, python-format
-msgid "There are no %(title)s"
-msgstr "No hay %(title)s "
+msgid "There are no %(stripped_title)s"
+msgstr "No hay %(stripped_title)s "
 
 #: templates/login.html:5
 msgid "Login"

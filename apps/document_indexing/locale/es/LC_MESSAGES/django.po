@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 14:20-0400\n"
-"PO-Revision-Date: 2011-05-31 14:33\n"
+"POT-Creation-Date: 2011-06-20 13:21-0400\n"
+"PO-Revision-Date: 2011-06-20 13:22\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,26 +28,26 @@ msgid "Rebuild document indexes"
 msgstr "Generar índices de documentos"
 
 #: __init__.py:10
-msgid "indexing"
-msgstr "indexación"
+msgid "Indexing"
+msgstr "Indexación"
 
 #: __init__.py:14
 msgid "index list"
 msgstr "lista de indices"
 
-#: __init__.py:17 models.py:26
+#: __init__.py:16 models.py:26
 msgid "indexes"
 msgstr "índices"
 
-#: __init__.py:20
+#: __init__.py:18
 msgid "rebuild indexes"
 msgstr "generar índices"
 
-#: __init__.py:20
+#: __init__.py:18
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Borra y crea de la nada todos los índices de documentos."
 
-#: __init__.py:22
+#: __init__.py:20
 msgid "Indexes"
 msgstr "Índices"
 
@@ -196,3 +196,13 @@ msgstr "Reconstrucción de Índices completada exitosamente."
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr "Error de reconstrucción de índices: %s"
+
+#: templates/indexing_help.html:3
+msgid "What are indexes?"
+msgstr "¿Que son los índices?"
+
+#: templates/indexing_help.html:4
+msgid "Indexes group documents into a tree like hierarchical structure."
+msgstr ""
+"Los índices agrupan documentos en una estructura jerárquica tipo "
+"árbol. "

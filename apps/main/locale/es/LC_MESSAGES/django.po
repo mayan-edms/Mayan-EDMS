@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 15:08-0400\n"
-"PO-Revision-Date: 2011-05-31 15:11\n"
+"POT-Creation-Date: 2011-06-20 13:29-0400\n"
+"PO-Revision-Date: 2011-06-20 13:29\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,45 +19,49 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: __init__.py:15
+#: __init__.py:19
 msgid "settings"
 msgstr "configuración"
 
-#: __init__.py:16
+#: __init__.py:20
 msgid "statistics"
 msgstr "estadísticas"
 
-#: __init__.py:17
+#: __init__.py:21
 msgid "diagnostics"
 msgstr "diagnósticos"
 
-#: __init__.py:18 __init__.py:33
+#: __init__.py:22
 msgid "tools"
 msgstr "herramientas"
 
-#: __init__.py:19
+#: __init__.py:23
 msgid "admin site"
 msgstr "sitio administrativo"
 
-#: __init__.py:20
+#: __init__.py:24
 msgid "sentry"
 msgstr "sentry"
 
-#: __init__.py:32
+#: __init__.py:25
+msgid "document types"
+msgstr "tipos de documento"
+
+#: __init__.py:40
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:37
+#: __init__.py:42
+msgid "search"
+msgstr "búsqueda"
+
+#: __init__.py:45
 msgid "setup"
 msgstr "instalación"
 
-#: __init__.py:41
+#: __init__.py:46
 msgid "about"
 msgstr "acerca"
-
-#: __init__.py:45
-msgid "search"
-msgstr "búsqueda"
 
 #: views.py:35
 msgid "tools menu"
@@ -113,39 +117,46 @@ msgstr "Usuario"
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:119
-msgid "New password"
-msgstr "Nueva contraseña"
+#: templates/base.html:118
+msgid "User details"
+msgstr "Detalles de usuario"
 
-#: templates/base.html:133
+#: templates/base.html:131
 msgid "Go"
 msgstr "Ir"
 
-#: templates/base.html:138
+#: templates/base.html:136
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:138
+#: templates/base.html:136
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:214
+#: templates/base.html:192
+msgid "Secondary menu"
+msgstr "Menú secundario"
+
+#: templates/base.html:206
 #, python-format
 msgid "Actions for %(object_name)s: %(object)s"
 msgstr "Acciones para %(object_name)s: %(object)s "
 
-#: templates/base.html:216
+#: templates/base.html:208
 #, python-format
 msgid "Actions for: %(object)s"
 msgstr "Acciones para: %(object)s "
 
-#: templates/base.html:219
+#: templates/base.html:211
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:232
+#: templates/base.html:224
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
+
+#~ msgid "New password"
+#~ msgstr "Nueva contraseña"
 
 #~ msgid "name"
 #~ msgstr "nombre"

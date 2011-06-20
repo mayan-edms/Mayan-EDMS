@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 14:44-0400\n"
-"PO-Revision-Date: 2011-05-31 14:45\n"
+"POT-Creation-Date: 2011-06-20 13:26-0400\n"
+"PO-Revision-Date: 2011-06-20 13:28\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,10 @@ msgstr "eliminar"
 msgid "remove"
 msgstr "quitar"
 
+#: __init__.py:14
+msgid "folder documents"
+msgstr "documentos en la carpeta"
+
 #: __init__.py:22 models.py:31 views.py:24
 msgid "folders"
 msgstr "carpetas"
@@ -63,15 +67,15 @@ msgstr "usuario"
 msgid "datetime created"
 msgstr "fecha y hora creados"
 
-#: models.py:30 models.py:35 views.py:103 views.py:138
+#: models.py:30 models.py:35 views.py:77 views.py:104 views.py:139
 msgid "folder"
 msgstr "carpeta"
 
-#: models.py:36 views.py:125
+#: models.py:36 views.py:126
 msgid "document"
 msgstr "documento"
 
-#: models.py:42 views.py:200
+#: models.py:42 views.py:201
 msgid "folder document"
 msgstr "documento de carpeta"
 
@@ -87,11 +91,11 @@ msgstr "creado"
 msgid "documents"
 msgstr "documentos"
 
-#: views.py:40 views.py:155
+#: views.py:40 views.py:156
 msgid "Folder created successfully"
 msgstr "Carpeta creada con éxito"
 
-#: views.py:43 views.py:157
+#: views.py:43 views.py:158
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Una carpeta con el nombre: %s, ya existe."
@@ -110,61 +114,61 @@ msgstr "Error editando carpeta; %s"
 msgid "edit folder: %s"
 msgstr "editar carpeta: %s"
 
-#: views.py:95
+#: views.py:96
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Carpeta: %s eliminada con éxito."
 
-#: views.py:97
+#: views.py:98
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Carpeta: %(folder)s error de eliminación: %(error)s "
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "¿Está seguro de que desea eliminar la carpeta: %s?"
 
-#: views.py:128
+#: views.py:129
 msgid "thumbnail"
 msgstr "miniatura"
 
-#: views.py:135
+#: views.py:136
 #, python-format
 msgid "documents in folder: %s"
 msgstr "documentos en la carpeta: %s"
 
-#: views.py:160
+#: views.py:161
 msgid "Must specify a new folder or an existing one."
 msgstr "Debe especificar una carpeta nueva o una ya existente."
 
-#: views.py:165
+#: views.py:166
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 "Documento: %(document)s agregado a la carpeta: %(folder)s "
 "exitosamente."
 
-#: views.py:168
+#: views.py:169
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s ya está en la carpeta: %(folder)s."
 
-#: views.py:182
+#: views.py:183
 msgid "Must provide at least one folder document."
 msgstr "Debe proveer al menos un documento de carpeta."
 
-#: views.py:192
+#: views.py:193
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s removido exitosamente."
 
-#: views.py:194
+#: views.py:195
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s error de remoción: %(error)s "
 
-#: views.py:207
+#: views.py:208
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the "
@@ -173,7 +177,7 @@ msgstr ""
 "¿Está seguro que desea remover el documento: %(document)s de la "
 "carpeta \"%(folder)s\"?"
 
-#: views.py:210
+#: views.py:211
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the "
@@ -181,6 +185,23 @@ msgid ""
 msgstr ""
 "¿Está seguro que desea eliminar los documentos: %(documents)s de la "
 "carpeta \"%(folder)s\"?"
+
+#: templates/folders_help.html:3
+msgid "What are folders?"
+msgstr "¿Qué son las carpetas?"
+
+#: templates/folders_help.html:4
+msgid ""
+"These folders can also be described as user folders.  They are a way to"
+" let individual users create their own document organization methods.  "
+"Folders created by one user and the documents contained by them don't "
+"affect any other user folders or documents."
+msgstr ""
+"Estas carpetas también se pueden describir como carpetas de usuarios."
+"  Son una manera de permitir a usuarios individuales crear sus propios"
+" métodos de organización de documentos.  Las carpetas creadas por un "
+"usuario y los documentos contenidos en ellas no afectan las carpetas "
+"de otros usuarios o los documentos."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"

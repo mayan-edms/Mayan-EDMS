@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 15:07-0400\n"
-"PO-Revision-Date: 2011-05-31 15:08\n"
+"POT-Creation-Date: 2011-06-20 13:28-0400\n"
+"PO-Revision-Date: 2011-06-20 13:28\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: __init__.py:6
+#: __init__.py:5
 msgid "Access the history app"
 msgstr "Acceder a la aplicación de historial"
 
-#: __init__.py:8 __init__.py:12 models.py:71
+#: __init__.py:7
+msgid "History"
+msgstr "Historial"
+
+#: __init__.py:11 models.py:69
 msgid "history"
 msgstr "historial"
 
@@ -51,52 +55,52 @@ msgstr "fecha y hora"
 msgid "dictionary"
 msgstr "diccionario"
 
-#: models.py:72
+#: models.py:70
 msgid "histories"
 msgstr "historiales"
 
-#: views.py:25
+#: views.py:21
 msgid "history events"
 msgstr "eventos de historial"
 
-#: views.py:28 views.py:68
+#: views.py:24 views.py:64
 msgid "date and time"
 msgstr "fecha y hora"
 
-#: views.py:32
+#: views.py:28
 msgid "object"
 msgstr "objeto"
 
-#: views.py:39 views.py:72
+#: views.py:35 views.py:68
 msgid "summary"
 msgstr "resumen"
 
-#: views.py:64
+#: views.py:60
 #, python-format
 msgid "history events for: %s"
 msgstr "eventos de historial para: %s"
 
-#: views.py:92
+#: views.py:88
 msgid "Date"
 msgstr "Fecha"
 
-#: views.py:93
+#: views.py:89
 msgid "Time"
 msgstr "Tiempo"
 
-#: views.py:94
+#: views.py:90
 msgid "Object"
 msgstr "Objeto"
 
-#: views.py:95
+#: views.py:91
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: views.py:96
+#: views.py:92
 msgid "Event details"
 msgstr "Detalles del evento"
 
-#: views.py:100
+#: views.py:96
 #, python-format
 msgid "details for: %s"
 msgstr "Detalles para: %s"

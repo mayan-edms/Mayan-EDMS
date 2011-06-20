@@ -50,7 +50,7 @@ class DocumentType(models.Model):
 
     class Meta:
         verbose_name = _(u'document type')
-        verbose_name_plural = _(u'documentstypes')
+        verbose_name_plural = _(u'documents types')
         ordering = ['name']        
 
 

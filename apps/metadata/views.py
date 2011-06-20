@@ -353,7 +353,7 @@ def setup_metadata_type_delete(request, metadatatype_id):
             metadata_type.delete()
             messages.success(request, _(u'Metadata type: %s deleted successfully.') % metadata_type)
         except Exception, e:
-            messages.error(request, _(u'Folder: %(metadata_type)s delete error: %(error)s') % {
+            messages.error(request, _(u'Metadata type: %(metadata_type)s delete error: %(error)s') % {
                 'metadata_type': metadata_type, 'error': e})
 
         return HttpResponseRedirect(next)
@@ -466,7 +466,7 @@ def setup_metadata_set_delete(request, metadata_set_id):
             metadata_set.delete()
             messages.success(request, _(u'Metadata set: %s deleted successfully.') % metadata_set)
         except Exception, e:
-            messages.error(request, _(u'Folder: %(metadata_set)s delete error: %(error)s') % {
+            messages.error(request, _(u'Metadata set: %(metadata_set)s delete error: %(error)s') % {
                 'metadata_set': metadata_set, 'error': e})
 
         return HttpResponseRedirect(next)

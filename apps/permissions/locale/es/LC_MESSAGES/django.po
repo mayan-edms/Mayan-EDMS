@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 15:28-0400\n"
-"PO-Revision-Date: 2011-05-31 15:29\n"
+"POT-Creation-Date: 2011-06-20 13:42-0400\n"
+"PO-Revision-Date: 2011-06-20 13:42\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,9 +67,9 @@ msgstr "permisos de la funcion"
 msgid "delete"
 msgstr "eliminar"
 
-#: api.py:14 models.py:21 views.py:67
-msgid "permissions"
-msgstr "permisos"
+#: api.py:14
+msgid "Permissions"
+msgstr "Permisos"
 
 #: api.py:40
 msgid "Insufficient permissions."
@@ -90,6 +90,10 @@ msgstr "etiqueta"
 #: models.py:20 models.py:53
 msgid "permission"
 msgstr "permiso"
+
+#: models.py:21 views.py:67
+msgid "permissions"
+msgstr "permisos"
 
 #: models.py:61
 msgid "permission holder"

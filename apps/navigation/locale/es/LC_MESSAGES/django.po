@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 15:24-0400\n"
+"POT-Creation-Date: 2011-06-20 13:42-0400\n"
 "PO-Revision-Date: 2011-05-06 13:32\n"
 "Last-Translator: Roberto Rosario <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,6 @@ msgstr ""
 msgid "Multi item action"
 msgstr "Acción para multiple artículos"
 
-#: templatetags/navigation_tags.py:245
+#: templatetags/navigation_tags.py:216
 msgid "Selected item actions:"
 msgstr "Acciones para el artículo seleccionado:"
