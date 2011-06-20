@@ -3,7 +3,8 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 
 from navigation.api import register_links, register_top_menu, \
-    register_model_list_columns, register_multi_item_links
+    register_model_list_columns, register_multi_item_links, \
+    register_sidebar_template
 from main.api import register_diagnostic, register_tool
 from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
@@ -178,3 +179,6 @@ register_model_list_columns(Document, [
     ])
 
 register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/[^t]', r'^metadata/[^s]', r'comments'], position=0)
+
+register_sidebar_template(['document_list_recent'], 'recent_document_list_help.html')
+register_sidebar_template(['document_type_list'], 'document_types_help.html')

@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_multi_item_links
+from navigation.api import register_links, register_multi_item_links, \
+    register_sidebar_template
 from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
 from metadata.models import MetadataType, MetadataSet
@@ -63,3 +64,6 @@ register_links(['setup_metadata_set_delete', 'setup_metadata_set_edit', 'setup_m
 
 metadata_type_setup_views = ['setup_metadata_type_list', 'setup_metadata_type_edit', 'setup_metadata_type_delete', 'setup_metadata_type_create']
 metadata_set_setup_views = ['setup_metadata_set_list', 'setup_metadata_set_edit', 'setup_metadata_set_delete', 'setup_metadata_set_create']
+
+register_sidebar_template(['setup_metadata_type_list'], 'metadata_type_help.html')
+register_sidebar_template(['setup_metadata_set_list'], 'metadata_set_help.html')

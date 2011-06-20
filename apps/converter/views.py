@@ -42,7 +42,8 @@ def formats_list(request):
                 'name': _(u'description'),
                 'attribute': lambda x: x[1]
             }
-        ]
+        ],
+        'backend': GRAPHICS_BACKEND,
     }
 
     return render_to_response('generic_list.html', context,

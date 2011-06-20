@@ -53,6 +53,7 @@ from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf.settings import ROTATION_STEP
 from documents.conf.settings import PRINT_SIZE
+from documents.conf.settings import RECENT_COUNT
 
 from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
@@ -921,7 +922,10 @@ def document_list_recent(request):
     return document_list(
         request,
         object_list=[recent_document.document for recent_document in RecentDocument.objects.filter(user=request.user)],
-        title=_(u'recent documents')
+        title=_(u'recent documents'),
+        extra_context={
+            'recent_count': RECENT_COUNT
+        }
     )
 
 
