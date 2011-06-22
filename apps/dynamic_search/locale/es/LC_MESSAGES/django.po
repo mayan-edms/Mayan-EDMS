@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-20 13:22-0400\n"
-"PO-Revision-Date: 2011-06-20 13:23\n"
+"POT-Creation-Date: 2011-06-22 11:18-0400\n"
+"PO-Revision-Date: 2011-06-22 11:20\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,40 +19,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: forms.py:6
-msgid "Search term"
-msgstr "Término de búsqueda"
+#: __init__.py:5
+msgid "search"
+msgstr "búsqueda"
 
-#: views.py:22
+#: __init__.py:6 views.py:66
+msgid "advanced search"
+msgstr "búsqueda avanzada"
+
+#: __init__.py:7
+msgid "search again"
+msgstr "buscar de nuevo"
+
+#: forms.py:8
+msgid "Search terms"
+msgstr "Términos de búsqueda"
+
+#: views.py:34
 #, python-format
-msgid ""
-"results with: %(query_string)s (showing only %(shown_result_count)s out"
-" of %(total_result_count)s)"
+msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
-"resultados con: %(query_string)s  (mostrando solamente "
-"%(shown_result_count)s de %(total_result_count)s)"
-
-#: views.py:26
-#, python-format
-msgid "results with: %s"
-msgstr "resultados con: %s"
+"resultados, (mostrando solamente %(shown_result_count)s de "
+"%(result_count)s)"
 
 #: views.py:38
+msgid "results"
+msgstr "resultados"
+
+#: views.py:50
 #, python-format
 msgid "Search error: %s"
 msgstr "Error de búsqueda: %s"
 
-#: views.py:43
-msgid "results"
-msgstr "resultados"
-
-#: views.py:49 views.py:54 templatetags/search_tags.py:17
-msgid "Search"
-msgstr "Búsqueda"
-
-#: views.py:61
+#: views.py:54
 msgid "type"
 msgstr "tipo"
+
+#: views.py:70 views.py:77 views.py:79 templatetags/search_tags.py:17
+#: templatetags/search_tags.py:18
+msgid "Search"
+msgstr "Búsqueda"
 
 #: conf/settings.py:12
 msgid "Maximum amount search hits to fetch and display."
@@ -81,8 +87,8 @@ msgstr "Resultados de la búsqueda"
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Tiempo transcurrido: %(time_delta)s segundos"
 
-#~ msgid "search"
-#~ msgstr "búsqueda"
+#~ msgid "results with: %s"
+#~ msgstr "resultados con: %s"
 
 #~ msgid "No results found"
 #~ msgstr "No hay resultados"

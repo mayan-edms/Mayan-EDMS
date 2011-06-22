@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-20 11:43-0400\n"
-"PO-Revision-Date: 2011-06-20 11:51\n"
+"POT-Creation-Date: 2011-06-22 11:03-0400\n"
+"PO-Revision-Date: 2011-06-22 11:18\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -475,6 +475,42 @@ msgstr "accesado"
 msgid "recent document"
 msgstr "documento reciente"
 
+#: models.py:327
+msgid "Document type"
+msgstr "Tipo de documento"
+
+#: models.py:328
+msgid "MIME type"
+msgstr "Tipo MIME"
+
+#: models.py:329 views.py:323
+msgid "Filename"
+msgstr "Nombre del archivo"
+
+#: models.py:330
+msgid "Filename extension"
+msgstr "Extensión de archivo"
+
+#: models.py:331
+msgid "Metadata value"
+msgstr "Valor de metadatos"
+
+#: models.py:332
+msgid "Content"
+msgstr "Contenido"
+
+#: models.py:333
+msgid "Description"
+msgstr "Descripción"
+
+#: models.py:334
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: models.py:335
+msgid "Comments"
+msgstr "Comentarios"
+
 #: staging.py:38
 #, python-format
 msgid "Error evaluating user staging directory expression; %s"
@@ -589,10 +625,6 @@ msgstr "metadatos actuales"
 #: views.py:314
 msgid "document data"
 msgstr "datos del documento"
-
-#: views.py:323
-msgid "Filename"
-msgstr "Nombre del archivo"
 
 #: views.py:324
 msgid "File extension"
@@ -875,6 +907,8 @@ msgstr "Error al modificar el nombre de archivo para tipo de document; %s"
 #, python-format
 msgid "edit filename \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
+"editar nombre de archivo \"%(filename)s\" del tipo de documento "
+"\"%(document_type)s\""
 
 #: views.py:1251 views.py:1278
 msgid "document type filename"
