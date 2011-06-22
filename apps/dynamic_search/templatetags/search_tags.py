@@ -16,6 +16,6 @@ def search_form(context):
         'form_action': reverse('results'),
         'form_title': _(u'Search'),
         'submit_label': _(u'Search'),
-        'submit_icon_famfam': 'zoom',        
+        'submit_icon_famfam': 'zoom',
     })
     return context

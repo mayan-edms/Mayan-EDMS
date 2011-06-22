@@ -1,31 +1,30 @@
+import urlparse
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
-from dynamic_search.api import perform_search, registered_search_dict
+from dynamic_search.api import perform_search
 from dynamic_search.forms import SearchForm, AdvancedSearchForm
 from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
 from dynamic_search.conf.settings import LIMIT
 
 
 def results(request, extra_context=None):
-    query_string = ''
     context = {}
 
     context.update({
         'query_string': request.GET,
-        'form_title': _(u'Search'),
         #'hide_header': True,
-        'form_hide_required_text': True,
         'hide_links': True,
         'multi_select_as_buttons': True,
-        'submit_label': _(u'Search'),
-        'submit_icon_famfam': 'zoom',
         'search_results_limit': LIMIT,
     })
-    
+
     if extra_context:
         context.update(extra_context)
 
@@ -60,36 +59,38 @@ def results(request, extra_context=None):
 
 def search(request, advanced=False):
     if advanced:
-        search_fields = []
-        for model_name, values in registered_search_dict.items():
-            for field in values['fields']:
-                search_fields.append(
-                    {
-                        'title': field['title'],
-                        'name': '%s__%s' % (model_name, field['name'])
-                    }
-                )
-        form = AdvancedSearchForm(
-            search_fields=search_fields,
-            data=request.GET
-        )
-
-        return results(request, extra_context={
+        form = AdvancedSearchForm(data=request.GET)
+        return render_to_response('generic_form.html',
+            {
                 'form': form,
-                'form_title': _(u'advanced search')
-            }
+                'title': _(u'advanced search'),
+                'form_action': reverse('results'),
+                'submit_method': 'GET',
+                'search_results_limit': LIMIT,
+                'submit_label': _(u'Search'),
+                'submit_icon_famfam': 'zoom',
+            },
+            context_instance=RequestContext(request)
         )
     else:
+        extra_context = {
+            'submit_label': _(u'Search'),
+            'submit_icon_famfam': 'zoom',
+            'form_title': _(u'Search'),
+            'form_hide_required_text': True,
+        }
+
         if ('q' in request.GET) and request.GET['q'].strip():
             query_string = request.GET['q']
             form = SearchForm(initial={'q': query_string})
-            return results(request, extra_context={
-                    'form': form
-                }
-            )
+            extra_context.update({'form': form})
+            return results(request, extra_context=extra_context)
         else:
             form = SearchForm()
-            return results(request, extra_context={
-                    'form': form
-                }
-            )
+            extra_context.update({'form': form})
+            return results(request, extra_context=extra_context)
+
+
+def search_again(request):
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
+    return HttpResponseRedirect('%s?%s' % (reverse('search_advanced'), query))

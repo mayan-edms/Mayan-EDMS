@@ -55,7 +55,7 @@ def get_query(terms, search_fields):
 
         queries.append(or_query)
     return queries
-    
+
 
 def perform_search(query_string, field_list=None):
     model_list = {}
@@ -101,7 +101,7 @@ def perform_search(query_string, field_list=None):
         for model, data in search_dict.items():
             title = data['title']
             queries = []
-            
+
             for query_entry in data['query_entries']:
                 queries.extend(get_query(query_entry['terms'], query_entry['field_name']))
 
@@ -117,7 +117,7 @@ def perform_search(query_string, field_list=None):
 
             if model_result_ids == None:
                 model_result_ids = []
-                
+
             result_count += len(model_result_ids)
             results = model.objects.in_bulk(list(model_result_ids)[: LIMIT]).values()
             shown_result_count += len(results)
@@ -126,7 +126,7 @@ def perform_search(query_string, field_list=None):
                 for result in results:
                     if result not in flat_list:
                         flat_list.append(result)
-                        
+
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
     return {
