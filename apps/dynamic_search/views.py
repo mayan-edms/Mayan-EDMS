@@ -4,48 +4,18 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.conf import settings
 
-from dynamic_search.api import perform_search
-from dynamic_search.forms import SearchForm
+from dynamic_search.api import perform_search, registered_search_dict
+from dynamic_search.forms import SearchForm, AdvancedSearchForm
 from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
 from dynamic_search.conf.settings import LIMIT
 
 
-def results(request, form=None):
+def results(request, extra_context=None):
     query_string = ''
     context = {}
 
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-        try:
-            model_list, flat_list, shown_result_count, total_result_count, elapsed_time = perform_search(query_string)
-            if shown_result_count != total_result_count:
-                title = _(u'results with: %(query_string)s (showing only %(shown_result_count)s out of %(total_result_count)s)') % {
-                    'query_string': query_string, 'shown_result_count': shown_result_count,
-                    'total_result_count': total_result_count}
-            else:
-                title = _(u'results with: %s') % query_string
-            context.update({
-                'found_entries': model_list,
-                'object_list': flat_list,
-                'title': title,
-                'time_delta': elapsed_time,
-            })
-
-        except Exception, e:
-            if settings.DEBUG:
-                raise
-            elif request.user.is_staff or request.user.is_superuser:
-                messages.error(request, _(u'Search error: %s') % e)
-    else:
-        context.update({
-            'found_entries': [],
-            'object_list': [],
-            'title': _(u'results'),
-        })
-
     context.update({
-        'query_string': query_string,
-        'form': form,
+        'query_string': request.GET,
         'form_title': _(u'Search'),
         #'hide_header': True,
         'form_hide_required_text': True,
@@ -55,6 +25,30 @@ def results(request, form=None):
         'submit_icon_famfam': 'zoom',
         'search_results_limit': LIMIT,
     })
+    
+    if extra_context:
+        context.update(extra_context)
+
+    try:
+        response = perform_search(request.GET)
+        if response['shown_result_count'] != response['result_count']:
+            title = _(u'results, (showing only %(shown_result_count)s out of %(result_count)s)') % {
+                'shown_result_count': response['shown_result_count'],
+                'result_count': response['result_count']}
+        else:
+            title = _(u'results')
+        context.update({
+            'found_entries': response['model_list'],
+            'object_list': response['flat_list'],
+            'title': title,
+            'time_delta': response['elapsed_time'],
+        })
+
+    except Exception, e:
+        if settings.DEBUG:
+            raise
+        elif request.user.is_staff or request.user.is_superuser:
+            messages.error(request, _(u'Search error: %s') % e)
 
     if SHOW_OBJECT_TYPE:
         context.update({'extra_columns':
@@ -64,11 +58,38 @@ def results(request, form=None):
                           context_instance=RequestContext(request))
 
 
-def search(request):
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-        form = SearchForm(initial={'q': query_string})
-        return results(request, form=form)
+def search(request, advanced=False):
+    if advanced:
+        search_fields = []
+        for model_name, values in registered_search_dict.items():
+            for field in values['fields']:
+                search_fields.append(
+                    {
+                        'title': field['title'],
+                        'name': '%s__%s' % (model_name, field['name'])
+                    }
+                )
+        form = AdvancedSearchForm(
+            search_fields=search_fields,
+            data=request.GET
+        )
+
+        return results(request, extra_context={
+                'form': form,
+                'form_title': _(u'advanced search')
+            }
+        )
     else:
-        form = SearchForm()
-        return results(request, form=form)
+        if ('q' in request.GET) and request.GET['q'].strip():
+            query_string = request.GET['q']
+            form = SearchForm(initial={'q': query_string})
+            return results(request, extra_context={
+                    'form': form
+                }
+            )
+        else:
+            form = SearchForm()
+            return results(request, extra_context={
+                    'form': form
+                }
+            )

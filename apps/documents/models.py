@@ -323,5 +323,16 @@ class RecentDocument(models.Model):
 
 
 # Register the fields that will be searchable
-register(Document, _(u'document'), [u'document_type__name', u'file_mimetype', u'file_filename', u'file_extension', u'documentmetadata__value', u'documentpage__content', u'description', u'tags__name', u'comments__comment'])
+register('document', Document, _(u'document'), [
+    {'name': u'document_type__name', 'title': _(u'Document type')},
+    {'name': u'file_mimetype', 'title': _(u'MIME type')},
+    {'name': u'file_filename', 'title': _(u'Filename')},
+    {'name': u'file_extension', 'title': _(u'Filename extension')},
+    {'name': u'documentmetadata__value', 'title': _(u'Metadata value')},
+    {'name': u'documentpage__content', 'title': _(u'Content')},
+    {'name': u'description', 'title': _(u'Description')},
+    {'name': u'tags__name', 'title': _(u'Tags')},
+    {'name': u'comments__comment', 'title': _(u'Comments')},
+    ]
+)
 #register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])
