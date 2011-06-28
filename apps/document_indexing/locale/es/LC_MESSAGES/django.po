@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-20 13:21-0400\n"
-"PO-Revision-Date: 2011-06-20 13:22\n"
-"Last-Translator:   <rosario_r@jp.pr.gov>\n"
+"POT-Creation-Date: 2011-06-27 23:30-0400\n"
+"PO-Revision-Date: 2011-06-27 23:32\n"
+"Last-Translator: Administrador Local <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Translated-Using: django-rosetta 0.6.0\n"
 
 #: __init__.py:7
 msgid "View document indexes"
@@ -62,21 +62,13 @@ msgstr "Cuenta máxima de sufijo (%s) alcanzada."
 
 #: api.py:175
 #, python-format
-msgid ""
-"Error in document indexing update expression: %(expression)s; "
-"%(exception)s"
-msgstr ""
-"Error en la expresión de actualización de indexación: %(expression)s; "
-"%(exception)s "
+msgid "Error in document indexing update expression: %(expression)s; %(exception)s"
+msgstr "Error en la expresión de actualización de indexación: %(expression)s; %(exception)s "
 
 #: api.py:178
 #, python-format
-msgid ""
-"Error updating document index, expression: %(expression)s; "
-"%(exception)s"
-msgstr ""
-"Error actualizando el indice de documento, expresión: %(expression)s; "
-"%(exception)s "
+msgid "Error updating document index, expression: %(expression)s; %(exception)s"
+msgstr "Error actualizando el indice de documento, expresión: %(expression)s; %(exception)s "
 
 #: api.py:209
 #, python-format
@@ -90,12 +82,8 @@ msgstr "No se puede crear el directorio de indexación; %s"
 
 #: filesystem.py:52
 #, python-format
-msgid ""
-"Unable to create symbolic link, file exists and could not be deleted: "
-"%(filepath)s; %(exc)s"
-msgstr ""
-"No se puede crear un enlace simbólico, el archivo existe y no puede "
-"eliminarse: %(filepath)s; %(exc)s "
+msgid "Unable to create symbolic link, file exists and could not be deleted: %(filepath)s; %(exc)s"
+msgstr "No se puede crear un enlace simbólico, el archivo existe y no puede eliminarse: %(filepath)s; %(exc)s "
 
 #: filesystem.py:54
 #, python-format
@@ -184,9 +172,7 @@ msgstr "¿Está seguro que desea reconstruir todos los índices?"
 
 #: views.py:65
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún "
-"tiempo en ejecutarse."
+msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:71
 msgid "Index rebuild completed successfully."
@@ -203,6 +189,4 @@ msgstr "¿Que son los índices?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr ""
-"Los índices agrupan documentos en una estructura jerárquica tipo "
-"árbol. "
+msgstr "Los índices agrupan documentos en una estructura jerárquica tipo árbol. "
