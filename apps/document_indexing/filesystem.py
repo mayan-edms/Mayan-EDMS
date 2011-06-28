@@ -31,7 +31,7 @@ def fs_create_index_directory(index_instance):
             if exc.errno == errno.EEXIST:
                 pass
             else:
-                raise OSError(_(u'Unable to create indexing directory; %s') % exc)
+                raise Exception(_(u'Unable to create indexing directory; %s') % exc)
 
 
 def fs_create_document_link(index_instance, document, suffix=0):
@@ -51,7 +51,7 @@ def fs_create_document_link(index_instance, document, suffix=0):
                 except Exception, exc:
                     raise Exception(_(u'Unable to create symbolic link, file exists and could not be deleted: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
             else:
-                raise OSError(_(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
+                raise Exception(_(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
 
 
 def fs_delete_document_link(index_instance, document, suffix=0):
@@ -68,7 +68,7 @@ def fs_delete_document_link(index_instance, document, suffix=0):
         except OSError, exc:
             if exc.errno != errno.ENOENT:
                 # Raise when any error other than doesn't exits
-                raise OSError(_(u'Unable to delete document symbolic link; %s') % exc)
+                raise Exception(_(u'Unable to delete document symbolic link; %s') % exc)
 
 
 def fs_delete_index_directory(index_instance):
@@ -80,7 +80,7 @@ def fs_delete_index_directory(index_instance):
             if exc.errno == errno.EEXIST:
                 pass
             else:
-                raise OSError(_(u'Unable to delete indexing directory; %s') % exc)
+                raise Exception(_(u'Unable to delete indexing directory; %s') % exc)
 
 
 def fs_delete_directory_recusive(path=FILESERVING_PATH):
