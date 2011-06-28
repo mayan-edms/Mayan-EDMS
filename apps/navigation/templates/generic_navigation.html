@@ -1,5 +1,7 @@
 <span class="nowrap">
 {% for link in object_navigation_links %}
     {% include "generic_subnavigation.html" %}
+{% empty %}
+none
 {% endfor %}
 </span>

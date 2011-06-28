@@ -70,39 +70,55 @@ def resolve_arguments(context, src_args):
 
 
 def resolve_links(context, links, current_view, current_path, parsed_query_string=None):
+    """
+    Express a list of links from definition to final values
+    """
     context_links = []
     for link in links:
-        new_link = copy.copy(link)
-        try:
-            args, kwargs = resolve_arguments(context, link.get('args', {}))
-        except VariableDoesNotExist:
-            args = []
-            kwargs = {}
-
-        if 'view' in link:
-            new_link['active'] = link['view'] == current_view
-
+        # Check to see if link has conditional display
+        if 'condition' in link:
+            condition_result = link['condition'](context)
+        else:
+            condition_result = True
+        
+        if condition_result:
+            new_link = copy.copy(link)
             try:
+                args, kwargs = resolve_arguments(context, link.get('args', {}))
+            except VariableDoesNotExist:
+                args = []
+                kwargs = {}
+
+            if 'view' in link:
+                new_link['active'] = link['view'] == current_view
+
+                try:
+                    if kwargs:
+                        new_link['url'] = reverse(link['view'], kwargs=kwargs)
+                    else:
+                        new_link['url'] = reverse(link['view'], args=args)
+                        if link.get('keep_query', False):
+                            new_link['url'] = urlquote(new_link['url'], parsed_query_string)
+                except NoReverseMatch, err:
+                    new_link['url'] = '#'
+                    new_link['error'] = err
+            elif 'url' in link:
+                new_link['active'] = link['url'] == current_path
                 if kwargs:
-                    new_link['url'] = reverse(link['view'], kwargs=kwargs)
+                    new_link['url'] = link['url'] % kwargs
                 else:
-                    new_link['url'] = reverse(link['view'], args=args)
+                    new_link['url'] = link['url'] % args
                     if link.get('keep_query', False):
                         new_link['url'] = urlquote(new_link['url'], parsed_query_string)
-            except NoReverseMatch, err:
-                new_link['url'] = '#'
-                new_link['error'] = err
-        elif 'url' in link:
-            new_link['active'] = link['url'] == current_path
-            if kwargs:
-                new_link['url'] = link['url'] % kwargs
             else:
-                new_link['url'] = link['url'] % args
-                if link.get('keep_query', False):
-                    new_link['url'] = urlquote(new_link['url'], parsed_query_string)
-        else:
-            new_link['active'] = False
-        context_links.append(new_link)
+                new_link['active'] = False
+                
+            if 'conditional_disable' in link:
+                new_link['disabled'] = link['conditional_disable'](context)
+            else:
+                new_link['disabled'] = False
+                            
+            context_links.append(new_link)
     return context_links
 
 
@@ -241,29 +257,3 @@ def get_sidebar_templates(parser, token):
 
     menu_name, var_name = m.groups()
     return GetSidebarTemplatesNone(var_name=var_name)
-
-
-class EvaluateLinkNone(Node):
-    def __init__(self, condition, var_name):
-        self.condition = condition
-        self.var_name = var_name
-
-    def render(self, context):
-        condition = Variable(self.condition).resolve(context)
-        if condition:
-            context[self.var_name] = condition(Context(context))
-            return u''
-        else:
-            context[self.var_name] = True
-            return u''
-
-
-@register.tag
-def evaluate_link(parser, token):
-    tag_name, arg = token.contents.split(None, 1)
-    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
-    if not m:
-        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
-
-    condition, var_name = m.groups()
-    return EvaluateLinkNone(condition=condition, var_name=var_name)

@@ -2,19 +2,16 @@
 {% load navigation_tags %}
 
 {% with link.permissions as permissions %}
-{% with link.condition as condition %}
-
     {% check_permissions request.user permissions %}
     {% if permission %}
-        {% evaluate_link condition as conditional_display %}
-        {% if conditional_display %}
-            {% if as_li %}
-                <li class="{% if forloop.first and li_class_first %}{{ li_class_first}} {% endif %}{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
-            {% endif %}
-                {% include "generic_link_instance.html" %}
-            {% if as_li %}</li>{% endif %}    
+        {% if as_li %}
+            <li class="{% if forloop.first and li_class_first %}{{ li_class_first }} {% endif %}{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
         {% endif %}
+        
+            {% include "generic_link_instance.html" %}
+        
+        {% if as_li %}
+            </li>
+        {% endif %}    
     {% endif %}
-
-{% endwith %}
 {% endwith %}
