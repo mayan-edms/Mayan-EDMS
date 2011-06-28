@@ -275,7 +275,8 @@ def upload_document_with_type(request, source):
                 'name': 'generic_subtemplate.html',
                 'context': {
                     'title': _(u'Current metadata'),
-                    'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET))
+                    'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
+                    'side_bar': True,
                 }
             }]
     }
