@@ -49,7 +49,7 @@ register_history_type(HISTORY_DOCUMENT_DELETED)
 document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
-document_create_siblings = {'text': _(u'upload new documents using same metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+document_create_siblings = {'text': _(u'clone metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_view_simple = {'text': _(u'details (simple)'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_view_advanced = {'text': _(u'details (advanced)'), 'view': 'document_view_advanced', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_delete = {'text': _(u'delete'), 'view': 'document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
@@ -117,18 +117,18 @@ register_links(['document_type_filename_create', 'document_type_filename_list', 
 register_links(['document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_return_to_document_type], menu_name='sidebar')
 
 # Register document links 
-register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view])
-register_links(Document, [document_create_siblings], menu_name='sidebar')
-
+register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view, document_create_siblings])
 register_multi_item_links(['document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
 register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging', 'document_find_duplicates'], [document_list_recent, document_list, document_create_multiple], menu_name='secondary_menu')
 
+# Document page links
 register_links(DocumentPage, [
     document_page_transformation_list, document_page_view,
     document_page_text, document_page_edit,
 ])
 
+# Document page navigation links
 register_links(DocumentPage, [
     document_page_navigation_first, document_page_navigation_previous,
     document_page_navigation_next, document_page_navigation_last
