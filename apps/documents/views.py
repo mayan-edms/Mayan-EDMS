@@ -45,8 +45,6 @@ from documents.conf.settings import PER_USER_STAGING_DIRECTORY
 
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
-from documents.conf.settings import UNCOMPRESS_COMPRESSED_LOCAL_FILES
-from documents.conf.settings import UNCOMPRESS_COMPRESSED_STAGING_FILES
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import ZOOM_PERCENT_STEP
 from documents.conf.settings import ZOOM_MAX_LEVEL
@@ -182,7 +180,8 @@ def upload_document_with_type(request, source):
             form = DocumentForm(request.POST, request.FILES, document_type=document_type)
             if form.is_valid():
                 try:
-                    if (not UNCOMPRESS_COMPRESSED_LOCAL_FILES) or (UNCOMPRESS_COMPRESSED_LOCAL_FILES and not _handle_zip_file(request, request.FILES['file'], document_type)):
+                    expand = form.cleaned_data['expand']
+                    if (not expand) or (expand and not _handle_zip_file(request, request.FILES['file'], document_type)):
                         instance = form.save()
                         instance.save()
                         if document_type:
@@ -201,7 +200,8 @@ def upload_document_with_type(request, source):
             if form.is_valid():
                 try:
                     staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
-                    if (not UNCOMPRESS_COMPRESSED_STAGING_FILES) or (UNCOMPRESS_COMPRESSED_STAGING_FILES and not _handle_zip_file(request, staging_file.upload(), document_type)):
+                    expand = form.cleaned_data['expand']
+                    if (not expand) or (expand and not _handle_zip_file(request, staging_file.upload(), document_type)):
                         document = Document(file=staging_file.upload())
                         if document_type:
                             document.document_type = document_type

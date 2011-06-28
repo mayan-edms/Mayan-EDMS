@@ -186,9 +186,19 @@ class DocumentForm(forms.ModelForm):
                     queryset=filenames_qs,
                     required=False,
                     label=_(u'Quick document rename'))
+                    
+        # Put the expand field last in the field order list
+        expand_field_index = self.fields.keyOrder.index('expand')
+        expand_field = self.fields.keyOrder.pop(expand_field_index)
+        self.fields.keyOrder.append(expand_field)                    
 
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
+    )
+
+    expand = forms.BooleanField(
+        label=_(u'Expand compressed files'), required=False, 
+        help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
     )
     
 
@@ -198,8 +208,13 @@ class DocumentForm_edit(DocumentForm):
     """
     class Meta:
         model = Document
-        exclude = ('file', 'document_type', 'tags')
+        exclude = ('file', 'document_type', 'tags', 'expand')
 
+    
+    def __init__(self, *args, **kwargs):
+        super(DocumentForm_edit, self).__init__(*args, **kwargs)
+        self.fields.pop('expand')
+        
 
 class DocumentPropertiesForm(DetailForm):
     """
@@ -267,7 +282,8 @@ class StagingDocumentForm(DocumentForm):
             pass
 
         # Put staging_list field first in the field order list
-        staging_list = self.fields.keyOrder.pop(1)
+        staging_list_index = self.fields.keyOrder.index('staging_file_id')
+        staging_list = self.fields.keyOrder.pop(staging_list_index)
         self.fields.keyOrder.insert(0, staging_list)
 
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
