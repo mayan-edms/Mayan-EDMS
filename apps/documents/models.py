@@ -254,8 +254,11 @@ class DocumentPage(models.Model):
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'), db_index=True)
 
     def __unicode__(self):
-        return _(u'Page %(page_num)d of %(document)s') % {
-            'document': unicode(self.document), 'page_num': self.page_number}
+        return _(u'Page %(page_num)d out of %(total_pages)d of %(document)s') % {
+            'document': unicode(self.document),
+            'page_num': self.page_number,
+            'total_pages': self.document.documentpage_set.count()
+        }
 
     class Meta:
         ordering = ['page_number']
