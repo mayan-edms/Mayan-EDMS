@@ -7,7 +7,9 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.utils.http import urlencode
 
+from dynamic_search.models import RecentSearch
 from dynamic_search.api import perform_search
 from dynamic_search.forms import SearchForm, AdvancedSearchForm
 from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
@@ -25,9 +27,6 @@ def results(request, extra_context=None):
         'search_results_limit': LIMIT,
     })
 
-    if extra_context:
-        context.update(extra_context)
-
     try:
         response = perform_search(request.GET)
         if response['shown_result_count'] != response['result_count']:
@@ -36,13 +35,20 @@ def results(request, extra_context=None):
                 'result_count': response['result_count']}
         else:
             title = _(u'results')
+
+        if extra_context:
+            context.update(extra_context)
+        query = urlencode(dict(request.GET.items()))
+        
+        if query:
+            RecentSearch.objects.add_query_for_user(request.user, query, response['result_count'])            
+            
         context.update({
             'found_entries': response['model_list'],
             'object_list': response['flat_list'],
             'title': title,
             'time_delta': response['elapsed_time'],
         })
-
     except Exception, e:
         if settings.DEBUG:
             raise

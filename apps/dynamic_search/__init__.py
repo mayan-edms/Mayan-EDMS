@@ -8,5 +8,7 @@ search_again = {'text': _(u'search again'), 'view': 'search_again', 'famfam': 'a
 
 register_sidebar_template(['search', 'search_advanced'], 'search_help.html')
 
-register_links(['search', 'search_advanced'], [search, search_advanced], menu_name='form_header')
+register_links(['search', 'search_advanced', 'results'], [search, search_advanced], menu_name='form_header')
 register_links(['results'], [search_again], menu_name='sidebar')
+
+register_sidebar_template(['search', 'search_advanced', 'results'], 'recent_searches.html')
