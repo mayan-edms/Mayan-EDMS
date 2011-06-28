@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import zipfile
 import urlparse
@@ -830,11 +832,23 @@ def document_page_view(request, document_page_id):
     rotation = int(request.GET.get('rotation', 0))
     document_page_form = DocumentPageForm(instance=document_page, zoom=zoom, rotation=rotation)
 
+    base_title = _(u'details for: %s') % document_page
+
+    if zoom != 100:
+        zoom_text = u'(%d%%)' % zoom
+    else:
+        zoom_text = u''
+        
+    if rotation != 0 and rotation != 360:
+        rotation_text = u'(%d°)' % rotation
+    else:
+        rotation_text = u''
+
     return render_to_response('generic_detail.html', {
         'object': document_page,
         'web_theme_hide_menus': True,
         'form': document_page_form,
-        'title': _(u'details for: %s') % document_page,
+        'title': u' '.join([base_title, zoom_text, rotation_text])
     }, context_instance=RequestContext(request))
 
 
