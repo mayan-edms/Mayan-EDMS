@@ -375,6 +375,7 @@ def document_view(request, document_id, advanced=False):
         'object': document,
         'document': document,
         'subtemplates_list': subtemplates_list,
+        'disable_auto_focus': True,
     }, context_instance=RequestContext(request))
 
 
