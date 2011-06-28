@@ -166,6 +166,8 @@ class DocumentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
+        instance = kwargs.pop('instance', None)
+
         super(DocumentForm, self).__init__(*args, **kwargs)
 
         if 'document_type' in self.fields:
@@ -173,9 +175,10 @@ class DocumentForm(forms.ModelForm):
             self.fields['document_type'].widget = forms.HiddenInput()
 
         # Instance's document_type overrides the passed document_type
-        if hasattr(self, 'instance'):
-            if hasattr(self.instance, 'document_type'):
-                document_type = self.instance.document_type
+        if instance:
+            if hasattr(instance, 'document_type'):
+                document_type = instance.document_type
+                
         if document_type:
             filenames_qs = document_type.documenttypefilename_set.filter(enabled=True)
             if filenames_qs.count() > 0:
@@ -187,7 +190,7 @@ class DocumentForm(forms.ModelForm):
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
     )
-
+    
 
 class DocumentForm_edit(DocumentForm):
     """
