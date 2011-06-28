@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 import zipfile
 import urlparse
@@ -840,7 +838,7 @@ def document_page_view(request, document_page_id):
         zoom_text = u''
         
     if rotation != 0 and rotation != 360:
-        rotation_text = u'(%d°)' % rotation
+        rotation_text = u'(%d&deg;)' % rotation
     else:
         rotation_text = u''
 
@@ -848,7 +846,9 @@ def document_page_view(request, document_page_id):
         'object': document_page,
         'web_theme_hide_menus': True,
         'form': document_page_form,
-        'title': u' '.join([base_title, zoom_text, rotation_text])
+        'title': u' '.join([base_title, zoom_text, rotation_text]),
+        'zoom': zoom,
+        'rotation': rotation,
     }, context_instance=RequestContext(request))
 
 
