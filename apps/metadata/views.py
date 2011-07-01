@@ -15,7 +15,8 @@ from document_indexing.api import update_indexes, delete_indexes
 from common.utils import generate_choices_w_labels#, two_state_template
 from common.views import assign_remove
 
-from metadata import PERMISSION_METADATA_DOCUMENT_EDIT, \
+from metadata import PERMISSION_METADATA_DOCUMENT_VIEW, \
+    PERMISSION_METADATA_DOCUMENT_EDIT, \
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE, \
     PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_CREATE, \
     PERMISSION_METADATA_TYPE_DELETE, PERMISSION_METADATA_TYPE_VIEW, \
@@ -271,6 +272,19 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 def metadata_multiple_remove(request):
     return metadata_remove(request, document_id_list=request.GET.get('id_list', []))
 
+
+def metadata_view(request, document_id):
+    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])    
+    document = get_object_or_404(Document, pk=document_id)
+
+    return render_to_response('generic_list.html', {
+        'title': _(u'metadata for: %s') % document,
+        'object_list': document.documentmetadata_set.all(),
+        'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+        'hide_link': True,
+        'object': document,
+    }, context_instance=RequestContext(request))
+            
 
 def setup_metadata_type_list(request):
     check_permissions(request.user, [PERMISSION_METADATA_TYPE_VIEW])

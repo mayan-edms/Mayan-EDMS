@@ -10,7 +10,8 @@ from django.contrib.sites.models import Site
 from permissions.api import check_permissions
 from documents.models import Document
 
-from document_comments import PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_CREATE
+from document_comments import PERMISSION_COMMENT_DELETE, \
+    PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_VIEW
 from document_comments.forms import CommentForm
 
 
@@ -42,7 +43,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'comment'),
+        #'object_name': _(u'comment'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -92,4 +93,21 @@ def comment_add(request, document_id):
         'title': _(u'Add comment to document: %s') % document,
         'next': next,
         'object': document,
+    }, context_instance=RequestContext(request))
+
+
+def comments_for_object(request, document_id):
+    """
+    Show a list of all the comments related to the passed object
+    """
+    check_permissions(request.user, [PERMISSION_COMMENT_VIEW])
+
+    document = get_object_or_404(Document, pk=document_id)
+
+    return render_to_response('generic_list.html', {
+        'object': document,
+        'title': _(u'comments: %s') % document,
+        'object_list': Comment.objects.for_model(document).order_by('-submit_date'),
+        'hide_link': True,
+        'hide_object': True,
     }, context_instance=RequestContext(request))

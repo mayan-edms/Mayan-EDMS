@@ -123,7 +123,13 @@
                             {% endfor %}
                             {% if not hide_links %}
                                 <td class="last">
-                                    {% object_navigation_template %}
+                                    {% if navigation_object_links %}
+                                        {% with navigation_object_links as overrided_object_links %}
+                                            {% object_navigation_template %}
+                                        {% endwith %}
+                                    {% else %}
+                                            {% object_navigation_template %}
+                                    {% endif %}
                                 </td>
                             {% endif %}
                         </tr>

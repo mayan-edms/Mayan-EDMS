@@ -14,7 +14,7 @@ from django.views.generic.create_update import delete_object, update_object
 from django.conf import settings
 from django.utils.http import urlencode
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.contrib.comments.models import Comment
+#from django.contrib.comments.models import Comment
 
 import sendfile
 from common.utils import pretty_size, parse_range, urlquote, \
@@ -26,7 +26,6 @@ from converter.api import convert_document, QUALITY_DEFAULT
 from converter.exceptions import UnkownConvertError, UnknownFormat
 from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_FILE_FORMAT, QUALITY_PRINT
-from document_comments.utils import get_comments_subtemplate
 from filetransfers.api import serve_file
 from grouping.utils import get_document_group_subtemplate
 from metadata.api import save_metadata_list, \
@@ -34,7 +33,6 @@ from metadata.api import save_metadata_list, \
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.api import check_permissions
-from tags.utils import get_tags_subtemplate
 from document_indexing.utils import get_document_indexing_subtemplate
 from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
@@ -295,30 +293,6 @@ def document_view(request, document_id, advanced=False):
 
     subtemplates_list = []
 
-    preview_form = DocumentPreviewForm(document=document)
-    subtemplates_list.append(
-        {
-            'name': 'generic_form_subtemplate.html',
-            'context': {
-                'form': preview_form,
-                'object': document,
-            }
-        },
-    )
-
-    content_form = DocumentContentForm(document=document)
-
-    subtemplates_list.append(
-        {
-            'name': 'generic_form_subtemplate.html',
-            'context': {
-                'title': _(u'document data'),
-                'form': content_form,
-                'object': document,
-            },
-        }
-    )
-
     if advanced:
         document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
             {'label': _(u'Filename'), 'field': 'file_filename'},
@@ -341,36 +315,42 @@ def document_view(request, document_id, advanced=False):
                 'context': {
                     'form': document_properties_form,
                     'object': document,
-                    'title': _(u'document properties'),
+                    'title': _(u'document properties for: %s') % document,
+                }
+            },
+        )
+    else:
+        preview_form = DocumentPreviewForm(document=document)
+        subtemplates_list.append(
+            {
+                'name': 'generic_form_subtemplate.html',
+                'context': {
+                    'form': preview_form,
+                    'object': document,
                 }
             },
         )
 
-    if document.tags.count():
-        subtemplates_list.append(get_tags_subtemplate(document))
+        content_form = DocumentContentForm(document=document)
 
-    if Comment.objects.for_model(document).count():
-        subtemplates_list.append(get_comments_subtemplate(document))
-
-    subtemplates_list.append(
-        {
-            'name': 'generic_list_subtemplate.html',
-            'context': {
-                'title': _(u'metadata'),
-                'object_list': document.documentmetadata_set.all(),
-                'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
-                'hide_link': True,
+        subtemplates_list.append(
+            {
+                'name': 'generic_form_subtemplate.html',
+                'context': {
+                    'title': _(u'document data'),
+                    'form': content_form,
+                    'object': document,
+                },
             }
-        },
-    )
+        )
 
-    document_group_subtemplate = get_document_group_subtemplate(request, document)
+        document_group_subtemplate = get_document_group_subtemplate(request, document)
 
-    if document_group_subtemplate:
-        subtemplates_list.append(document_group_subtemplate)
+        if document_group_subtemplate:
+            subtemplates_list.append(document_group_subtemplate)
 
-    if document.indexinstance_set.count():
-        subtemplates_list.append(get_document_indexing_subtemplate(document))
+        if document.indexinstance_set.count():
+            subtemplates_list.append(get_document_indexing_subtemplate(document))
 
     return render_to_response('generic_detail.html', {
         'object': document,

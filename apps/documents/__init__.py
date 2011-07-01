@@ -9,6 +9,7 @@ from main.api import register_diagnostic, register_tool
 from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
+#from document_comments import comments_for_object
 
 from documents.models import Document, DocumentPage, \
     DocumentPageTransformation, DocumentType, DocumentTypeFilename
@@ -69,8 +70,8 @@ document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam':
 document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_create_siblings = {'text': _(u'clone metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
-document_view_simple = {'text': _(u'details (simple)'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_view_advanced = {'text': _(u'details (advanced)'), 'view': 'document_view_advanced', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_view_simple = {'text': _(u'details'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_view_advanced = {'text': _(u'properties'), 'view': 'document_view_advanced', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_delete = {'text': _(u'delete'), 'view': 'document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
 document_multiple_delete = {'text': _(u'delete'), 'view': 'document_multiple_delete', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
 document_edit = {'text': _(u'edit'), 'view': 'document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
@@ -136,7 +137,10 @@ register_links(['document_type_filename_create', 'document_type_filename_list', 
 register_links(['document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_return_to_document_type], menu_name='sidebar')
 
 # Register document links 
-register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view, document_create_siblings])
+#register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view, document_create_siblings])
+#register_links(Document, [document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view, document_create_siblings])
+#register_links(Document, [document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
+register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
 register_multi_item_links(['document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
 register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging', 'document_find_duplicates'], [document_list_recent, document_list, document_create_multiple], menu_name='secondary_menu')
@@ -197,7 +201,11 @@ register_model_list_columns(Document, [
         },
     ])
 
-register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/[^t]', r'^metadata/[^s]', r'comments'], position=0)
+register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document'], position=0)
 
 register_sidebar_template(['document_list_recent'], 'recent_document_list_help.html')
 register_sidebar_template(['document_type_list'], 'document_types_help.html')
+
+register_links(Document, [document_view_simple], menu_name='form_header')
+register_links(Document, [document_view_advanced], menu_name='form_header')
+register_links(Document, [document_history_view], menu_name='form_header')

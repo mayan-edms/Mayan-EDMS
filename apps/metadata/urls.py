@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('metadata.views',
     url(r'^(?P<document_id>\d+)/edit/$', 'metadata_edit', (), 'metadata_edit'),
+    url(r'^(?P<document_id>\d+)/view/$', 'metadata_view', (), 'metadata_view'),
     url(r'^multiple/edit/$', 'metadata_multiple_edit', (), 'metadata_multiple_edit'),
     url(r'^(?P<document_id>\d+)/add/$', 'metadata_add', (), 'metadata_add'),
     url(r'^multiple/add/$', 'metadata_multiple_add', (), 'metadata_multiple_add'),
