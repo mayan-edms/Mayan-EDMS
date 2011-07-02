@@ -139,7 +139,7 @@ register_links(['document_type_filename_edit', 'document_type_filename_delete'],
 
 # Register document links 
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
-register_multi_item_links(['document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
+register_multi_item_links(['index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
 register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging', 'document_find_duplicates'], [document_list_recent, document_list, document_create_multiple], menu_name='secondary_menu')
 

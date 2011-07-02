@@ -29,6 +29,12 @@ def index_instance_list(request, index_id=None):
     else:
         index_instance_list = IndexInstance.objects.filter(parent=None)
         breadcrumbs = get_instance_link()
+        index_instance = None
+    
+    show_multi_select_buttons = False
+    if index_instance:
+        if index_instance.index.link_documents:
+            show_multi_select_buttons = True
 
     title = mark_safe(_(u'contents for index: %s') % breadcrumbs)
 
@@ -43,6 +49,8 @@ def index_instance_list(request, index_id=None):
         'title': title,
         'hide_links': True,
         'hide_object': True,
+        'multi_select_as_buttons': show_multi_select_buttons,
+
     }, context_instance=RequestContext(request))
 
 
