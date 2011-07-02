@@ -11,6 +11,7 @@ from metadata import setup_metadata_type_list, metadata_type_setup_views
 from metadata import setup_metadata_set_list, metadata_set_setup_views
 
 from main.conf.settings import SIDE_BAR_SEARCH
+from main.conf.settings import DISABLE_HOME_VIEW
 
 
 def is_superuser(context):
@@ -37,7 +38,8 @@ __version_info__ = {
 #setup_views.extend(user_management_views)
 #setup_views.extend(['setting_list'])
 
-register_top_menu('home', link={'text': _(u'home'), 'view': 'home', 'famfam': 'house'}, position=0)
+if not DISABLE_HOME_VIEW:
+    register_top_menu('home', link={'text': _(u'home'), 'view': 'home', 'famfam': 'house'}, position=0)
 if not SIDE_BAR_SEARCH:
     register_top_menu('search', link={'text': _(u'search'), 'view': 'search', 'famfam': 'zoom'}, children_path_regex=[r'^search/'])
     
