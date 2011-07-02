@@ -101,24 +101,24 @@
                         {% for column in extra_columns_preffixed %}
                             {% if column.keep_together %}
                                 <td>
-                                    {{ object|object_property:column.attribute|safe|make_non_breakable }}
+                                    {{ object|object_property:column.attribute|make_non_breakable }}
                                 </td>
                             {% else %}
-                                <td>{{ object|object_property:column.attribute|safe }}</td>
+                                <td>{{ object|object_property:column.attribute }}</td>
                             {% endif %}
                         {% endfor %}                        
                         {% if not hide_columns %}
                             {% for column in object|get_model_list_columns %}
-                                <td>{{ object|object_property:column.attribute|safe }}</td>
+                                <td>{{ object|object_property:column.attribute }}</td>
                             {% endfor %}
                         {% endif %}
                             {% for column in extra_columns %}
                                 {% if column.keep_together %}
                                     <td>
-                                        {{ object|object_property:column.attribute|safe|make_non_breakable }}
+                                        {{ object|object_property:column.attribute|make_non_breakable }}
                                     </td>
                                 {% else %}
-                                    <td>{{ object|object_property:column.attribute|safe }}</td>
+                                    <td>{{ object|object_property:column.attribute }}</td>
                                 {% endif %}
                             {% endfor %}
                             {% if not hide_links %}
