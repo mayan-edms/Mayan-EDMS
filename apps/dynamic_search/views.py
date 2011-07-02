@@ -79,22 +79,27 @@ def search(request, advanced=False):
             context_instance=RequestContext(request)
         )
     else:
-        extra_context = {
-            'submit_label': _(u'Search'),
-            'submit_icon_famfam': 'zoom',
-            'form_title': _(u'Search'),
-            'form_hide_required_text': True,
-        }
-
-        if ('q' in request.GET) and request.GET['q'].strip():
-            query_string = request.GET['q']
-            form = SearchForm(initial={'q': query_string})
-            extra_context.update({'form': form})
-            return results(request, extra_context=extra_context)
+        if request.GET.get('source') != 'sidebar':
+            # Don't include a form a top of the results if the search
+            # was originated from the sidebar search form
+            extra_context = {
+                'submit_label': _(u'Search'),
+                'submit_icon_famfam': 'zoom',
+                'form_title': _(u'Search'),
+                'form_hide_required_text': True,
+            }
+            if ('q' in request.GET) and request.GET['q'].strip():
+                query_string = request.GET['q']
+                form = SearchForm(initial={'q': query_string})
+                extra_context.update({'form': form})
+                return results(request, extra_context=extra_context)
+            else:
+                form = SearchForm()
+                extra_context.update({'form': form})
+                return results(request, extra_context=extra_context)
         else:
-            form = SearchForm()
-            extra_context.update({'form': form})
-            return results(request, extra_context=extra_context)
+            # Already has a form with data, go to results
+            return results(request)
 
 
 def search_again(request):

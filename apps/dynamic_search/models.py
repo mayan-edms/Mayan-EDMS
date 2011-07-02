@@ -41,7 +41,6 @@ class RecentSearch(models.Model):
                             advanced_string.append(u'%s: %s' % (model_field.get('title', model_field['name']), u' '.join(value)))
 
             display_string = u', '.join(advanced_string)
-
         return u'%s (%s)' % (display_string, self.hits)
 
     def save(self, *args, **kwargs):

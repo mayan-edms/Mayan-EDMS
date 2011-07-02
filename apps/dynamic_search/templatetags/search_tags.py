@@ -12,10 +12,10 @@ register = Library()
 @register.inclusion_tag('search_results_subtemplate.html', takes_context=True)
 def search_form(context):
     context.update({
-        'form': SearchForm(initial={'q': context.get('query_string', '')}),
+        'form': SearchForm(initial={'q': context.get('query_string', {}).get('q'), 'source': 'sidebar'}),
         'request': context['request'],
         'MEDIA_URL': context['MEDIA_URL'],
-        'form_action': reverse('results'),
+        'form_action': reverse('search'),
         'form_title': _(u'Search'),
         'submit_label': _(u'Search'),
         'submit_icon_famfam': 'zoom',
@@ -26,7 +26,6 @@ def search_form(context):
 @register.inclusion_tag('generic_subtemplate.html', takes_context=True)
 def recent_searches_template(context):
     recent_searches = RecentSearch.objects.filter(user=context['user'])
-    
     context.update({
         'request': context['request'],
         'MEDIA_URL': context['MEDIA_URL'],
@@ -40,5 +39,4 @@ def recent_searches_template(context):
             } for rs in recent_searches
         ]
     })
-    
     return context
