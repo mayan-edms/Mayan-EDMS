@@ -45,5 +45,4 @@ register_model_list_columns(Comment, [
 register_links(['comments_for_object', 'comment_add', 'comment_delete', 'comment_multiple_delete'], [comment_add], menu_name='sidebar')
 register_links(Comment, [comment_delete])
 
-#comment_views = ['comment_delete', 'comment_multiple_delete', 'comment_add', 'comments_for_object']
 register_links(Document, [comments_for_object], menu_name='form_header')
