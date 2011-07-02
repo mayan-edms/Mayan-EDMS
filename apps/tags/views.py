@@ -15,54 +15,7 @@ from tags.models import TagProperties
 from tags import PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH, \
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, \
     PERMISSION_TAG_VIEW
-from tags import tag_document_remove as tag_document_remove_link
 from tags import tag_tagged_item_list as tag_tagged_item_list_link
-
-
-def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
-    check_permissions(request.user, [PERMISSION_TAG_REMOVE])
-
-    post_action_redirect = None
-
-    if tag_id:
-        tags = [get_object_or_404(Tag, pk=tag_id)]
-    elif tag_id_list:
-        tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
-    else:
-        messages.error(request, _(u'Must provide at least one tag.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
-    document = get_object_or_404(Document, pk=document_id)
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
-
-    if request.method == 'POST':
-        for tag in tags:
-            try:
-                document.tags.remove(tag)
-                messages.success(request, _(u'Tag "%s" removed successfully.') % tag)
-            except Exception, e:
-                messages.error(request, _(u'Error deleting tag "%(tag)s": %(error)s') % {
-                    'tag': tag, 'error': e
-                })
-
-        return HttpResponseRedirect(next)
-        
-    context = {
-        'previous': previous,
-        'next': next,
-        'form_icon': u'tag_blue_delete.png',
-        'object': document,
-    }
-
-    if len(tags) == 1:
-        context['title'] = _(u'Are you sure you wish to remove the tag: %s?') % ', '.join([unicode(d) for d in tags])
-    elif len(tags) > 1:
-        context['title'] = _(u'Are you sure you wish to remove the tags: %s?') % ', '.join([unicode(d) for d in tags])
-
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
 
 
 def tag_add(request, document_id):
@@ -222,9 +175,61 @@ def document_tags(request, document_id):
         'title': _(u'tags for: %s') % document,
         'object_list': document.tags.all(),
         'hide_link': True,
-        'navigation_object_links': [tag_tagged_item_list_link, tag_document_remove_link],
+        'navigation_object_links': [tag_tagged_item_list_link],
         'object': document,
         'document': document,
         'disable_auto_focus': True,
+        'multi_select_as_buttons': True,
     },
     context_instance=RequestContext(request))
+
+
+def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
+    check_permissions(request.user, [PERMISSION_TAG_REMOVE])
+
+    post_action_redirect = None
+
+    if tag_id:
+        tags = [get_object_or_404(Tag, pk=tag_id)]
+    elif tag_id_list:
+        tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one tag.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    document = get_object_or_404(Document, pk=document_id)
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        for tag in tags:
+            try:
+                document.tags.remove(tag)
+                messages.success(request, _(u'Tag "%s" removed successfully.') % tag)
+            except Exception, e:
+                messages.error(request, _(u'Error deleting tag "%(tag)s": %(error)s') % {
+                    'tag': tag, 'error': e
+                })
+
+        return HttpResponseRedirect(next)
+        
+    context = {
+        'previous': previous,
+        'next': next,
+        'form_icon': u'tag_blue_delete.png',
+        'object': document,
+    }
+
+    if len(tags) == 1:
+        context['title'] = _(u'Are you sure you wish to remove the tag: %s?') % ', '.join([unicode(d) for d in tags])
+    elif len(tags) > 1:
+        context['title'] = _(u'Are you sure you wish to remove the tags: %s?') % ', '.join([unicode(d) for d in tags])
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def tag_multiple_remove(request, document_id):
+    return tag_remove(request, document_id=document_id, tag_id_list=request.GET.get('id_list', []))
+

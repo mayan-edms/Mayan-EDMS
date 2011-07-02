@@ -28,6 +28,7 @@ register_permission(PERMISSION_TAG_VIEW)
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
+tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_delete = {'text': _(u'delete'), 'view': 'tag_delete', 'args': 'object.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
 tag_edit = {'text': _(u'edit'), 'view': 'tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': [PERMISSION_TAG_EDIT]}
@@ -56,3 +57,5 @@ register_sidebar_template(['document_tags'], 'tags_sidebar_template.html')
 register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}, children_path_regex=[r'^tags/[^d]/'])
 
 register_links(Document, [tag_document_list], menu_name='form_header')
+
+register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
