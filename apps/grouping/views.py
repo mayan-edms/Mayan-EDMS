@@ -31,6 +31,6 @@ def document_group_view(request, document_id, document_group_id):
         },
         object_list=object_list['documents'],
         extra_context={
-            'ref_object': document
+            'object': document
         }
     )
