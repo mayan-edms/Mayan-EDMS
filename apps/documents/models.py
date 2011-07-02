@@ -204,12 +204,6 @@ class Document(models.Model):
         """
         return self.file.storage.exists(self.file.path)
 
-    def get_metadata_string(self):
-        """
-        Return a formated representation of a document's metadata values
-        """
-        return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in self.documentmetadata_set.select_related('metadata_type', 'document').defer('document__document_type', 'document__file', 'document__description', 'document__file_filename', 'document__uuid', 'document__date_added', 'document__date_updated', 'document__file_mimetype', 'document__file_mime_encoding')])
-
     def apply_default_transformations(self):
         #Only apply default transformations on new documents
         if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:

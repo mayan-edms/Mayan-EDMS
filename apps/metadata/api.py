@@ -95,3 +95,10 @@ def metadata_repr_as_list(metadata_list):
             pass
 
     return output
+
+
+def get_metadata_string(document):
+    """
+    Return a formated representation of a document's metadata values
+    """
+    return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in DocumentMetadata.objects.filter(document=document).select_related('metadata_type')])

@@ -9,6 +9,7 @@ from main.api import register_diagnostic, register_tool
 from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
+from metadata.api import get_metadata_string
 
 from documents.models import Document, DocumentPage, \
     DocumentPageTransformation, DocumentType, DocumentTypeFilename
@@ -189,7 +190,7 @@ register_model_list_columns(Document, [
             lambda x: get_tags_inline_widget_simple(x)
         },
         {'name':_(u'metadata'), 'attribute':
-            lambda x: x.get_metadata_string()
+            lambda x: get_metadata_string(x)
         },
     ])
 
