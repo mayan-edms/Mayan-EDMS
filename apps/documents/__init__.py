@@ -198,6 +198,6 @@ register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 
 register_sidebar_template(['document_list_recent'], 'recent_document_list_help.html')
 register_sidebar_template(['document_type_list'], 'document_types_help.html')
 
-register_links(Document, [document_view_simple], menu_name='form_header')
-register_links(Document, [document_view_advanced], menu_name='form_header')
+register_links(Document, [document_view_simple], menu_name='form_header', position=0)
+register_links(Document, [document_view_advanced], menu_name='form_header', position=1)
 register_links(Document, [document_history_view], menu_name='form_header')
