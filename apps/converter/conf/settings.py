@@ -18,6 +18,6 @@ register_settings(
         {'name': u'DEFAULT_OPTIONS', 'global_name': u'CONVERTER_DEFAULT_OPTIONS', 'default': u''},
         {'name': u'LOW_QUALITY_OPTIONS', 'global_name': u'CONVERTER_LOW_QUALITY_OPTIONS', 'default': u''},
         {'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},
-        {'name': u'PRINT_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 500'},
+        {'name': u'PRINT_QUALITY_OPTIONS', 'global_name': u'CONVERTER_PRINT_QUALITY_OPTIONS', 'default': u'-density 500'},
     ]
 )
