@@ -47,7 +47,7 @@ register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete])
 
 register_multi_item_links(['tag_list'], [tag_multiple_delete])
 
-register_links(['tag_list', 'tag_remove', 'tag_delete', 'tag_edit', 'tag_tagged_item_list', 'tag_multiple_delete'], [tag_list], menu_name='secondary_menu')
+register_links(['tag_list', 'tag_delete', 'tag_edit', 'tag_tagged_item_list', 'tag_multiple_delete'], [tag_list], menu_name='secondary_menu')
 
 register_sidebar_template(['document_tags'], 'tags_sidebar_template.html')
 
