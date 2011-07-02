@@ -5,29 +5,11 @@
 {% block title %} :: {% trans "About this program" %}{% endblock %}
 {% block content %}
 
-<div class="content tc">
-    <h3>{% project_name %} ({% trans "Version" %} {% app_version "main" %})</h3>
-    <p>
-        {% trans "Open source, Django based electronic document manager with custom metadata, indexing, tagging, file serving integration and OCR capabilities" %}
-    </p>
-    <p>
-        <a href="http://bit.ly/mayan-edms">http://bit.ly/mayan-edms</a>
-    </p>
-    <p>
-        <a href="http://www.github.com/rosarior/mayan/">http://www.github.com/rosarior/mayan/</a>
-    </p>
-    <p>
-        {% trans "Released under the GPL V3 License" %}
-    </p>
-    <div class="tc">
-        <img src="{{ MEDIA_URL }}images/392336_7079-small.png"/>
+    <div class="content tc">
+        <h3>{% project_name %} ({% trans "Version" %} {% app_version "main" %})</h3>
     </div>
-    <div class="tc">
-        <img src="{{ MEDIA_URL }}images/gplv3-127x51.png"/>
-        <img src="{{ MEDIA_URL }}images/djangopowered126x54.gif"/>
-    </div>
+    {% include "project_description.html" %}
 
-</div>
 {% endblock %}
 {% block footer %}
     <div id="footer">
