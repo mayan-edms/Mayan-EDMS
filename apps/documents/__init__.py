@@ -9,7 +9,6 @@ from main.api import register_diagnostic, register_tool
 from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
-#from document_comments import comments_for_object
 
 from documents.models import Document, DocumentPage, \
     DocumentPageTransformation, DocumentType, DocumentTypeFilename
@@ -27,6 +26,7 @@ from documents.literals import HISTORY_DOCUMENT_CREATED, \
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
+from documents.widgets import document_thumbnail
 
 # Permission setup
 set_namespace_title('documents', _(u'Documents'))
@@ -137,9 +137,6 @@ register_links(['document_type_filename_create', 'document_type_filename_list', 
 register_links(['document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_return_to_document_type], menu_name='sidebar')
 
 # Register document links 
-#register_links(Document, [document_view_simple, document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view, document_create_siblings])
-#register_links(Document, [document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_history_view, document_create_siblings])
-#register_links(Document, [document_view_advanced, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
 register_multi_item_links(['document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
@@ -186,12 +183,7 @@ def document_exists(document):
 
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
-            lambda x: u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>' % {
-                'url': reverse('document_preview', args=[x.pk]),
-                'thumbnail': reverse('document_thumbnail', args=[x.pk]),
-                'media_url': settings.MEDIA_URL,
-                'string': _(u'thumbnail')
-            }
+            lambda x: document_thumbnail(x)
         },
         {'name':_(u'tags'), 'attribute':
             lambda x: get_tags_inline_widget_simple(x)

@@ -9,6 +9,7 @@ from django.core.exceptions import PermissionDenied
 
 from documents import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from documents.widgets import document_thumbnail, document_link
 from permissions.api import check_permissions
 
 from folders.models import Folder, FolderDocument
@@ -124,11 +125,10 @@ def folder_view(request, folder_id):
         'object_list': folder.folderdocument_set.all(),
         'extra_columns': [
             {'name': _(u'document'), 'attribute':
-                lambda x: '<a href="%s">%s</a>' % (reverse('document_view_simple', args=[x.document.pk]), x.document)
+                lambda x: document_link(x.document)
             },
             {'name': _(u'thumbnail'), 'attribute':
-                lambda x: '<a class="fancybox" href="%s"><img src="%s" /></a>' % (reverse('document_preview', args=[x.document.pk]),
-                    reverse('document_thumbnail', args=[x.document.pk]))
+                lambda x: document_thumbnail(x.document)
             },
         ],
         'hide_link': True,

@@ -11,6 +11,7 @@ from permissions.api import check_permissions
 from history.models import History
 from history.forms import HistoryDetailForm
 from history import PERMISSION_HISTORY_VIEW
+from history.widgets import history_entry_object_link, history_entry_summary
 
 
 def history_list(request):
@@ -26,17 +27,11 @@ def history_list(request):
             },
             {
                 'name': _(u'object'),
-                'attribute': lambda x: '<a href="%(url)s">%(label)s</a>' % {
-                    'url': x.content_object.get_absolute_url() if x.content_object else u'#',
-                    'label': unicode(x.content_object) if x.content_object else u''
-                }
+                'attribute': lambda x: history_entry_object_link(x)
             },
             {
                 'name': _(u'summary'),
-                'attribute': lambda x: '<a href="%(url)s">%(label)s</a>' % {
-                    'url': x.get_absolute_url(),
-                    'label': unicode(x.get_processed_summary())
-                }
+                'attribute': lambda x: history_entry_summary(x)
             }
         ],
         'hide_object': True,
@@ -66,10 +61,7 @@ def history_for_object(request, app_label, module_name, object_id):
             },
             {
                 'name': _(u'summary'),
-                'attribute': lambda x: '<a href="%(url)s">%(label)s</a>' % {
-                    'url': x.get_absolute_url(),
-                    'label': unicode(x.get_processed_summary())
-                }
+                'attribute': lambda x: history_entry_summary(x)
             }
         ],
         'hide_object': True,

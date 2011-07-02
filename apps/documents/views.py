@@ -14,11 +14,11 @@ from django.views.generic.create_update import delete_object, update_object
 from django.conf import settings
 from django.utils.http import urlencode
 from django.core.files.uploadedfile import SimpleUploadedFile
-#from django.contrib.comments.models import Comment
 
 import sendfile
 from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff, two_state_template
+    return_diff
+from common.widgets import two_state_template
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE

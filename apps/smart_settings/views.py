@@ -2,7 +2,8 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import exists_with_famfam, return_type
+from common.utils import return_type
+from common.widgets import exists_with_famfam
 
 from smart_settings.api import settings
 

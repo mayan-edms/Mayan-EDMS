@@ -9,6 +9,8 @@ from documents.models import Document
 
 from taggit.models import Tag
 
+from tags.widgets import tag_color_block
+
 PERMISSION_TAG_CREATE = {'namespace': 'tags', 'name': 'tag_create', 'label': _(u'Create new tags')}
 PERMISSION_TAG_ATTACH = {'namespace': 'tags', 'name': 'tag_attach', 'label': _(u'Attach exising tags')}
 PERMISSION_TAG_REMOVE = {'namespace': 'tags', 'name': 'tag_remove', 'label': _(u'Remove tags from documents')}
@@ -33,8 +35,7 @@ tag_multiple_delete = {'text': _(u'delete'), 'view': 'tag_multiple_delete', 'fam
 register_model_list_columns(Tag, [
     {
         'name': _(u'color'),
-        'attribute': lambda x: u'<div style="width: 20px; height: 20px; border: 1px solid black; background: %s;"></div>' %
-            x.tagproperties_set.get().get_color_code(),
+        'attribute': lambda x: tag_color_block(x)
     },
     {
         'name': _(u'color name'),

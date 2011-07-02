@@ -103,20 +103,6 @@ def pretty_size_10(size):
         ])
 
 
-def exists_with_famfam(path):
-    try:
-        return two_state_template(os.path.exists(path))
-    except Exception, exc:
-        return exc
-
-
-def two_state_template(state, famfam_ok_icon=u'tick', famfam_fail_icon=u'cross'):
-    if state:
-        return u'<span class="famfam active famfam-%s"></span>' % famfam_ok_icon
-    else:
-        return u'<span class="famfam active famfam-%s"></span>' % famfam_fail_icon
-
-
 # The code here is based loosely on John Cardinal's notes found at:
 # http://www.johncardinal.com/tmgutil/capitalizenames.htm
 

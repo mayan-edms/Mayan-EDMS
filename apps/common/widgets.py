@@ -47,3 +47,17 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         else:
             output += u'<li>%s</li>' % _(u"None")
         return mark_safe(output + u'</ul>\n')
+
+
+def exists_with_famfam(path):
+    try:
+        return two_state_template(os.path.exists(path))
+    except Exception, exc:
+        return exc
+
+
+def two_state_template(state, famfam_ok_icon=u'tick', famfam_fail_icon=u'cross'):
+    if state:
+        return mark_safe(u'<span class="famfam active famfam-%s"></span>' % famfam_ok_icon)
+    else:
+        return mark_safe(u'<span class="famfam active famfam-%s"></span>' % famfam_fail_icon)

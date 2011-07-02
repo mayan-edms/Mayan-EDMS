@@ -8,7 +8,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User, Group
 
 from permissions.api import check_permissions
-from common.utils import generate_choices_w_labels, two_state_template
+from common.utils import generate_choices_w_labels
+from common.widgets import two_state_template
 from common.views import assign_remove
 
 from user_management import PERMISSION_USER_VIEW, \

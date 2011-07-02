@@ -13,6 +13,7 @@ from django.conf import settings
 from celery.task.control import inspect
 from permissions.api import check_permissions
 from documents.models import Document
+from documents.widgets import document_link, document_thumbnail
 
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
     PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES
@@ -23,18 +24,6 @@ from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
     DOCUMENTQUEUE_STATE_ACTIVE
 from ocr.exceptions import AlreadyQueued
 from ocr.api import clean_pages
-
-
-def _display_thumbnail(ocr_document):
-    try:
-        return u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail_url)s" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail_url)s" alt="%(string)s" /></noscript></a>' % {
-            'url': reverse('document_preview', args=[ocr_document.document.pk]),
-            'thumbnail_url': reverse('document_thumbnail', args=[ocr_document.document.pk]),
-            'media_url': settings.MEDIA_URL,
-            'string': _(u'thumbnail')
-        }
-    except:
-        return u''
 
 
 def queue_document_list(request, queue_name='default'):
@@ -52,8 +41,8 @@ def queue_document_list(request, queue_name='default'):
             'object': document_queue,
             'object_name': _(u'document queue'),
             'extra_columns': [
-                {'name': 'document', 'attribute': lambda x: '<a href="%s">%s</a>' % (x.document.get_absolute_url(), x.document) if hasattr(x, 'document') else _(u'Missing document.')},
-                {'name': _(u'thumbnail'), 'attribute': lambda x: _display_thumbnail(x)},
+                {'name': 'document', 'attribute': lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.')},
+                {'name': _(u'thumbnail'), 'attribute': lambda x: document_thumbnail(x.document)},
                 {'name': 'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0], 'keep_together':True},
                 {'name': 'delay', 'attribute': 'delay'},
                 {'name': 'state', 'attribute': lambda x: x.get_state_display()},

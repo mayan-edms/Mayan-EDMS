@@ -13,12 +13,7 @@ from document_indexing import PERMISSION_DOCUMENT_INDEXING_VIEW, \
 from document_indexing.models import IndexInstance
 from document_indexing.api import get_breadcrumbs, get_instance_link, \
     do_rebuild_all_indexes
-
-
-def _index_instance_item_link(index_instance_item):
-    icon = u'folder_page' if isinstance(index_instance_item, IndexInstance) else u'page'
-    return u'<span class="famfam active famfam-%(icon)s"></span><a href="%(url)s">%(text)s</a>' % {
-        'url': index_instance_item.get_absolute_url(), 'icon': icon, 'text': index_instance_item}
+from document_indexing.widgets import index_instance_item_link
 
 
 def index_instance_list(request, index_id=None):
@@ -42,7 +37,7 @@ def index_instance_list(request, index_id=None):
         'extra_columns_preffixed': [
             {
                 'name': _(u'item'),
-                'attribute': lambda x: _index_instance_item_link(x)
+                'attribute': lambda x: index_instance_item_link(x)
             }
         ],
         'title': title,
