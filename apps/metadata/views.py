@@ -261,9 +261,9 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     }
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _(u'Remove metadata types to document: %s') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Remove metadata types from document: %s') % ', '.join([unicode(d) for d in documents])
     elif len(documents) > 1:
-        context['title'] = _(u'Remove metadata types to documents: %s') % ', '.join([unicode(d) for d in documents])
+        context['title'] = _(u'Remove metadata types from documents: %s') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
