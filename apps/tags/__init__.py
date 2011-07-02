@@ -16,6 +16,7 @@ PERMISSION_TAG_ATTACH = {'namespace': 'tags', 'name': 'tag_attach', 'label': _(u
 PERMISSION_TAG_REMOVE = {'namespace': 'tags', 'name': 'tag_remove', 'label': _(u'Remove tags from documents')}
 PERMISSION_TAG_DELETE = {'namespace': 'tags', 'name': 'tag_delete', 'label': _(u'Delete global tags')}
 PERMISSION_TAG_EDIT = {'namespace': 'tags', 'name': 'tag_edit', 'label': _(u'Edit global tags')}
+PERMISSION_TAG_VIEW = {'namespace': 'tags', 'name': 'tag_view', 'label': _(u'View a document\'s tags')}
 
 set_namespace_title('tags', _(u'Tags'))
 register_permission(PERMISSION_TAG_CREATE)
@@ -23,6 +24,7 @@ register_permission(PERMISSION_TAG_ATTACH)
 register_permission(PERMISSION_TAG_REMOVE)
 register_permission(PERMISSION_TAG_DELETE)
 register_permission(PERMISSION_TAG_EDIT)
+register_permission(PERMISSION_TAG_VIEW)
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}

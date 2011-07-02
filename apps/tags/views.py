@@ -13,7 +13,8 @@ from documents.views import document_list
 from tags.forms import AddTagForm, TagForm
 from tags.models import TagProperties
 from tags import PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH, \
-    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT
+    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, \
+    PERMISSION_TAG_VIEW
 from tags import tag_document_remove as tag_document_remove_link
 from tags import tag_tagged_item_list as tag_tagged_item_list_link
 
@@ -214,7 +215,7 @@ def tag_tagged_item_list(request, tag_id):
 
 
 def document_tags(request, document_id):
-    #check_permissions(request.user, [PERMISSION_TAG_VIEW])
+    check_permissions(request.user, [PERMISSION_TAG_VIEW])
     document = get_object_or_404(Document, pk=document_id)
     
     return render_to_response('generic_list.html', {
