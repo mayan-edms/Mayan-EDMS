@@ -194,7 +194,7 @@ register_model_list_columns(Document, [
         },
     ])
 
-register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document'], position=0)
+register_top_menu('documents', link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, children_path_regex=[r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]'], position=0)
 
 register_sidebar_template(['document_list_recent'], 'recent_document_list_help.html')
 register_sidebar_template(['document_type_list'], 'document_types_help.html')
