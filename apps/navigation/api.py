@@ -21,7 +21,7 @@ def register_multi_item_links(src, links, menu_name=None):
         multi_object_navigation[menu_name][src]['links'].extend(links)
 
 
-def register_links(src, links, menu_name=None):
+def register_links(src, links, menu_name=None, position=None):
     """
     Associate a link to a model a view, or an url
     """
@@ -30,10 +30,18 @@ def register_links(src, links, menu_name=None):
     if hasattr(src, '__iter__'):
         for one_src in src:
             object_navigation[menu_name].setdefault(one_src, {'links': []})
-            object_navigation[menu_name][one_src]['links'].extend(links)
+            if position is not None:
+                for link in reversed(links):
+                    object_navigation[menu_name][one_src]['links'].insert(position, link)
+            else:        
+                object_navigation[menu_name][one_src]['links'].extend(links)
     else:
         object_navigation[menu_name].setdefault(src, {'links': []})
-        object_navigation[menu_name][src]['links'].extend(links)
+        if position is not None:
+            for link in reversed(links):
+                object_navigation[menu_name][src]['links'].insert(position, link)
+        else:        
+            object_navigation[menu_name][src]['links'].extend(links)
 
 
 def register_top_menu(name, link, children_views=None, children_path_regex=None, position=None):
