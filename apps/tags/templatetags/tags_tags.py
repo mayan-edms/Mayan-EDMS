@@ -13,7 +13,7 @@ def get_add_tag_to_document_form(context):
     context.update({
         'form': AddTagForm(),
         'request': context['request'],
-        'form_action': reverse('tag_add', args=[context['document'].pk]),
+        'form_action': reverse('tag_add_sidebar', args=[context['document'].pk]),
         'title': _('Add tag to document')
     })
     return context

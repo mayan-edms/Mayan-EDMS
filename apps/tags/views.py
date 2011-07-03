@@ -18,7 +18,7 @@ from tags import PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH, \
 from tags import tag_tagged_item_list as tag_tagged_item_list_link
 
 
-def tag_add(request, document_id):
+def tag_add_sidebar(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -55,6 +55,56 @@ def tag_add(request, document_id):
             messages.success(request, _(u'Tag "%s" added successfully.') % tag_name)
 
     return HttpResponseRedirect(previous)
+
+
+def tag_add_attach(request, document_id):
+    # TODO: merge with tag_add_sidebar
+    document = get_object_or_404(Document, pk=document_id)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_tags', args=[document.pk]))))
+    
+    if request.method == 'POST':
+        form = AddTagForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['new_tag']:
+                check_permissions(request.user, [PERMISSION_TAG_CREATE])
+                tag_name = form.cleaned_data['new_tag']
+                if Tag.objects.filter(name=tag_name):
+                    is_new = False
+                else:
+                    is_new = True
+            elif form.cleaned_data['existing_tags']:
+                check_permissions(request.user, [PERMISSION_TAG_ATTACH])
+                tag_name = form.cleaned_data['existing_tags']
+                is_new = False
+            else:
+                messages.error(request, _(u'Must choose either a new tag or an existing one.'))
+                return HttpResponseRedirect(next)
+
+            if tag_name in document.tags.values_list('name', flat=True):
+                messages.warning(request, _(u'Document is already tagged as "%s"') % tag_name)
+                return HttpResponseRedirect(next)
+
+            document.tags.add(tag_name)
+
+            if is_new:
+                tag = Tag.objects.get(name=tag_name)
+                TagProperties(tag=tag, color=form.cleaned_data['color']).save()
+                messages.success(request, _(u'Tag "%s" added and attached successfully.') % tag_name)
+            else:
+                messages.success(request, _(u'Tag "%s" attached successfully.') % tag_name)
+
+            return HttpResponseRedirect(next)
+    else:
+        form = AddTagForm()
+        
+    return render_to_response('generic_form.html', {
+        'title': _(u'attach tag to: %s') % document,
+        'form': form,
+        'object': document,
+        'next': next,
+    },
+    context_instance=RequestContext(request))        
 
 
 def tag_list(request):
@@ -149,6 +199,7 @@ def tag_edit(request, tag_id):
         'title': _(u'edit tag: %s') % tag,
         'form': form,
         'object': tag,
+        'object_name': _(u'tag'),
     },
     context_instance=RequestContext(request))
 
@@ -162,7 +213,8 @@ def tag_tagged_item_list(request, tag_id):
         object_list=object_list,
         title=_('documents with the tag "%s"') % tag,
         extra_context={
-            'object': tag
+            'object': tag,
+            'object_name': _(u'tag'),
         }
     )
 

@@ -27,6 +27,7 @@ register_permission(PERMISSION_TAG_EDIT)
 register_permission(PERMISSION_TAG_VIEW)
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
+tag_add_attach = {'text': _(u'attach tag'), 'view': 'tag_add_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH]}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE]}
@@ -52,10 +53,11 @@ register_multi_item_links(['tag_list'], [tag_multiple_delete])
 
 register_links(['tag_list', 'tag_delete', 'tag_edit', 'tag_tagged_item_list', 'tag_multiple_delete'], [tag_list], menu_name='secondary_menu')
 
-register_sidebar_template(['document_tags'], 'tags_sidebar_template.html')
+#register_sidebar_template(['document_tags'], 'tags_sidebar_template.html')
 
-register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}, children_path_regex=[r'^tags/[^d]/'])
+register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}, children_path_regex=[r'^tags/[^d]'])
 
 register_links(Document, [tag_document_list], menu_name='form_header')
+register_links(['document_tags', 'tag_add_attach', 'tag_remove', 'tag_multiple_remove'], [tag_add_attach], menu_name='sidebar')
 
 register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
