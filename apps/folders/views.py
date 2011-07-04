@@ -7,7 +7,7 @@ from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 
-from documents import PERMISSION_DOCUMENT_VIEW
+from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.widgets import document_thumbnail, document_link
 from permissions.api import check_permissions

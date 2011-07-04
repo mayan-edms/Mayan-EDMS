@@ -4,6 +4,7 @@ from navigation.api import register_links, register_top_menu, \
     register_multi_item_links, register_sidebar_template
 from navigation.api import register_sidebar_template
 from documents.models import Document
+from documents.literals import PERMISSION_DOCUMENT_VIEW
 
 from folders.models import Folder
 
@@ -13,8 +14,8 @@ folder_edit = {'text': _('edit'), 'view': 'folder_edit', 'args': 'object.pk', 'f
 folder_delete = {'text': _('delete'), 'view': 'folder_delete', 'args': 'object.pk', 'famfam': 'folder_delete'}
 folder_document_multiple_remove = {'text': _('remove from folder'), 'view': 'folder_document_multiple_remove', 'args': 'object.pk', 'famfam': 'delete'}
 folder_view = {'text': _(u'folder documents'), 'view': 'folder_view', 'args': 'object.pk', 'famfam': 'folder_go'}
-folder_add_document = {'text': _('add to folder'), 'view': 'folder_add_document', 'args': 'object.pk', 'famfam': 'add'}
-document_folder_list = {'text': _(u'folders'), 'view': 'document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user'}
+folder_add_document = {'text': _('add to a folder'), 'view': 'folder_add_document', 'args': 'object.pk', 'famfam': 'add'}
+document_folder_list = {'text': _(u'folders'), 'view': 'document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 register_multi_item_links(['folder_view'], [folder_document_multiple_remove])
 
