@@ -33,7 +33,6 @@ from metadata.api import save_metadata_list, \
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.api import check_permissions
-from document_indexing.utils import get_document_indexing_subtemplate
 from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
 
@@ -348,9 +347,6 @@ def document_view(request, document_id, advanced=False):
 
         if document_group_subtemplate:
             subtemplates_list.append(document_group_subtemplate)
-
-        if document.indexinstance_set.count():
-            subtemplates_list.append(get_document_indexing_subtemplate(document))
 
     return render_to_response('generic_detail.html', {
         'object': document,

@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.utils.safestring import mark_safe
 
 from permissions.api import check_permissions
+from documents.literals import PERMISSION_DOCUMENT_VIEW
+from documents.models import Document
 
 from document_indexing import PERMISSION_DOCUMENT_INDEXING_VIEW, \
     PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES
@@ -80,3 +82,21 @@ def rebuild_index_instances(request):
             messages.error(request, _(u'Index rebuild error: %s') % e)
 
         return HttpResponseRedirect(next)
+
+
+def document_index_list(request, document_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
+    document = get_object_or_404(Document, pk=document_id)
+   
+    object_list = []
+
+    for index_instance in document.indexinstance_set.all():
+        object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
+
+
+    return render_to_response('generic_list.html', {
+        'title': _(u'indexes containing: %s') % document,
+        'object_list': object_list,
+        'hide_link': True,
+        'object': document
+    }, context_instance=RequestContext(request))
