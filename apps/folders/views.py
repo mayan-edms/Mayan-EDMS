@@ -16,21 +16,24 @@ from folders.models import Folder, FolderDocument
 from folders.forms import FolderForm, AddDocumentForm
 
 
-def folder_list(request):
+def folder_list(request, queryset=None, extra_context=None):
+    context = {
+        'title': _(u'folders'),
+        'multi_select_as_buttons': True,
+        'extra_columns': [
+            {'name': _(u'created'), 'attribute': 'datetime_created'},
+            {'name': _(u'documents'), 'attribute': lambda x: x.folderdocument_set.count()}
+        ]
+    }
+    if extra_context:
+        context.update(extra_context)
+    
     return object_list(
         request,
-        queryset=Folder.objects.filter(user=request.user),
+        queryset=queryset if not (queryset is None) else Folder.objects.filter(user=request.user),
         template_name='generic_list.html',
-        extra_context={
-            'title': _(u'folders'),
-            'multi_select_as_buttons': True,
-            'extra_columns': [
-                {'name': _(u'created'), 'attribute': 'datetime_created'},
-                {'name': _(u'documents'), 'attribute': lambda x: x.folderdocument_set.count()}
-            ]
-        },
+        extra_context=context,
     )
-
 
 def folder_create(request):
     if request.method == 'POST':
@@ -122,17 +125,8 @@ def folder_view(request, folder_id):
         raise PermissionDenied
 
     return render_to_response('generic_list.html', {
-        'object_list': folder.folderdocument_set.all(),
-        'extra_columns': [
-            {'name': _(u'document'), 'attribute':
-                lambda x: document_link(x.document)
-            },
-            {'name': _(u'thumbnail'), 'attribute':
-                lambda x: document_thumbnail(x.document)
-            },
-        ],
-        'hide_link': True,
-        'hide_object': True,
+        'object_list': [fd.document for fd in folder.folderdocument_set.all()],
+        'hide_links': True,
         'title': _(u'documents in folder: %s') % folder,
         'multi_select_as_buttons': True,
         'object': folder,
@@ -140,12 +134,13 @@ def folder_view(request, folder_id):
     }, context_instance=RequestContext(request))
 
 
-def folder_add_document(request, document_id):
+def folder_add_document_sidebar(request, document_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
+    previous = request.META.get('HTTP_REFERER', '/')
+
     if request.method == 'POST':
-        previous = request.META.get('HTTP_REFERER', '/')
         form = AddDocumentForm(request.POST, user=request.user)
         if form.is_valid():
             if form.cleaned_data['existing_folder']:
@@ -172,13 +167,73 @@ def folder_add_document(request, document_id):
     return HttpResponseRedirect(previous)
 
 
-def folder_document_remove(request, folder_document_id=None, folder_document_id_list=None):
+def folder_add_document(request, document_id):
+    # TODO: merge with folder_add_document_sidebar
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    document = get_object_or_404(Document, pk=document_id)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))#reverse('document_tags', args=[document.pk]))))
+
+    if request.method == 'POST':
+        form = AddDocumentForm(request.POST, user=request.user)
+        if form.is_valid():
+            if form.cleaned_data['existing_folder']:
+                folder = form.cleaned_data['existing_folder']
+            elif form.cleaned_data['title']:
+                folder, created = Folder.objects.get_or_create(user=request.user, title=form.cleaned_data['title'])
+                if created:
+                    messages.success(request, _(u'Folder "%s" created successfully') % form.cleaned_data['title'])
+                else:
+                    messages.error(request, _(u'A folder named: %s, already exists.') % form.cleaned_data['title'])
+                    return HttpResponseRedirect(next)
+            else:
+                messages.error(request, _(u'Must specify a new folder or an existing one.'))
+                return HttpResponseRedirect(next)
+
+            folder_document, created = FolderDocument.objects.get_or_create(folder=folder, document=document)
+            if created:
+                messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
+                    'document': document, 'folder': folder})
+            else:
+                messages.warning(request, _(u'Document: %(document)s is already in folder: %(folder)s.') % {
+                    'document': document, 'folder': folder})
+
+            return HttpResponseRedirect(next)
+    else:
+        form = AddDocumentForm(user=request.user)
+        
+    return render_to_response('generic_form.html', {
+        'title': _(u'add document "%s" to a folder') % document,
+        'form': form,
+        'object': document,
+        'next': next,
+    },
+    context_instance=RequestContext(request))    
+   
+
+def document_folder_list(request, document_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    document = get_object_or_404(Document, pk=document_id)
+        
+    return folder_list(
+        request,
+        queryset=Folder.objects.filter(user=request.user).filter(folderdocument__document=document),
+        extra_context={
+            'title': _(u'folders containing: %s') % document,
+            'object': document,
+        }
+    )
+       
+
+def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
     post_action_redirect = None
 
-    if folder_document_id:
-        folder_documents = [get_object_or_404(FolderDocument, pk=folder_document_id)]
-    elif folder_document_id_list:
-        folder_documents = [get_object_or_404(FolderDocument, pk=folder_document_id) for folder_document_id in folder_document_id_list.split(',')]
+    folder = get_object_or_404(Folder, pk=folder_id)
+
+    if document_id:
+        folder_documents = [get_object_or_404(FolderDocument, folder__pk=folder_id, document__pk=document_id)]
+    elif document_id_list:
+        folder_documents = [get_object_or_404(FolderDocument, folder__pk=folder_id, document__pk=document_id) for document_id in document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one folder document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
@@ -201,10 +256,11 @@ def folder_document_remove(request, folder_document_id=None, folder_document_id_
         'object_name': _(u'folder document'),
         'previous': previous,
         'next': next,
-        'form_icon': u'folder_page.png',
+        'form_icon': u'delete.png',
+        'object': folder
     }
     if len(folder_documents) == 1:
-        context['object'] = folder_documents[0]
+        #context['object'] = folder_documents[0]
         context['title'] = _(u'Are you sure you wish to remove the document: %(document)s from the folder "%(folder)s"?') % {
             'document': ', '.join([unicode(d) for d in folder_documents]), 'folder': folder_documents[0].folder}
     elif len(folder_documents) > 1:
@@ -215,5 +271,5 @@ def folder_document_remove(request, folder_document_id=None, folder_document_id_
         context_instance=RequestContext(request))
 
 
-def folder_document_multiple_remove(request):
-    return folder_document_remove(request, folder_document_id_list=request.GET.get('id_list', []))
+def folder_document_multiple_remove(request, folder_id):
+    return folder_document_remove(request, folder_id, document_id_list=request.GET.get('id_list', []))
