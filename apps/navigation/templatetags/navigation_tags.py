@@ -90,7 +90,8 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                 kwargs = {}
 
             if 'view' in link:
-                new_link['active'] = link['view'] == current_view
+                if not link.get('dont_mark_active', False):
+                    new_link['active'] = link['view'] == current_view
 
                 try:
                     if kwargs:
@@ -103,7 +104,9 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                     new_link['url'] = '#'
                     new_link['error'] = err
             elif 'url' in link:
-                new_link['active'] = link['url'] == current_path
+                if not link.get('dont_mark_active', False):
+                    new_link['active'] = link['url'] == current_path
+                    
                 if kwargs:
                     new_link['url'] = link['url'] % kwargs
                 else:

@@ -50,6 +50,7 @@ def index_instance_list(request, index_id=None):
         'hide_links': True,
         'hide_object': True,
         'multi_select_as_buttons': show_multi_select_buttons,
+        'object': index_instance
 
     }, context_instance=RequestContext(request))
 
