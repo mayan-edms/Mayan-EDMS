@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.utils.safestring import mark_safe
 
 from common.utils import return_type
 from common.widgets import exists_with_famfam
@@ -27,10 +28,9 @@ def setting_list(request):
         'hide_link': True,
         'hide_object': True,
         'extra_columns': [
-            {'name': _(u'name'), 'attribute': 'global_name'},
+            {'name': _(u'name'), 'attribute': lambda x: mark_safe(u'<span style="font-weight: bold;">%s</span><br>%s' % (x.get('global_name'), x.get('description')))},
             {'name': _(u'default'), 'attribute': lambda x: return_type(x['default'])},
             {'name': _(u'value'), 'attribute': lambda x: return_type(getattr(x['module'], x['name']))},
-            {'name': _(u'description'), 'attribute': 'description'},
             {'name': _(u'exists'), 'attribute': lambda x: exists_with_famfam(getattr(x['module'], x['name'])) if x['exists'] else ''},
         ]
     }
