@@ -131,6 +131,9 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     current_view = resolve_to_name(current_path)
     context_links = []
 
+    # Don't fudge with the original global dictionary
+    links_dict = links_dict.copy()
+
     query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
     parsed_query_string = urlparse.parse_qs(query_string)
 
@@ -156,6 +159,16 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         obj = None
 
     try:
+        """
+        Check for and inject a temporary navigation dictionary
+        """
+        temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
+        if temp_navigation_links:
+            links_dict.update(temp_navigation_links)
+    except VariableDoesNotExist:
+        pass
+
+    try:
         links = links_dict[menu_name][current_view]['links']
         for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
             context_links.append(link)
@@ -168,6 +181,7 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
             context_links.append(link)
     except KeyError:
         pass
+
 
     return context_links
 

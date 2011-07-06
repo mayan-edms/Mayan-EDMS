@@ -36,10 +36,6 @@ from permissions.api import check_permissions
 from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
 
-from documents.conf.settings import DELETE_STAGING_FILE_AFTER_UPLOAD
-from documents.conf.settings import USE_STAGING_DIRECTORY
-from documents.conf.settings import PER_USER_STAGING_DIRECTORY
-
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import STORAGE_BACKEND
@@ -61,7 +57,7 @@ from documents.literals import HISTORY_DOCUMENT_CREATED, \
 
 from documents.forms import DocumentTypeSelectForm, \
         DocumentForm, DocumentForm_edit, DocumentPropertiesForm, \
-        StagingDocumentForm, DocumentPreviewForm, \
+        DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, \
         DocumentPageForm_text, PrintForm, DocumentTypeForm, \
@@ -69,11 +65,8 @@ from documents.forms import DocumentTypeSelectForm, \
 from documents.wizards import DocumentCreateWizard
 from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename
-from documents.staging import create_staging_file_class
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
-from documents.literals import UPLOAD_SOURCE_LOCAL, \
-    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
     
 # Document type permissions
 from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT, \
@@ -116,10 +109,10 @@ def document_create_siblings(request, document_id):
     if document.document_type_id:
         query_dict['document_type_id'] = document.document_type_id
 
-    url = reverse('upload_document_from_local')
+    url = reverse('upload_interactive')
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
-
+'''
 def _handle_save_document(request, document, form=None):
     RecentDocument.objects.add_document_for_user(request.user, document)
     
@@ -279,7 +272,7 @@ def upload_document_with_type(request, source):
     }
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
-
+'''
 
 def document_view(request, document_id, advanced=False):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
@@ -545,7 +538,7 @@ def document_download(request, document_id):
         messages.error(request, e)
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-
+'''
 def staging_file_preview(request, source, staging_file_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     StagingFile = create_staging_file_class(request, source)
@@ -596,7 +589,7 @@ def staging_file_delete(request, source, staging_file_id):
         'previous': previous,
         'form_icon': u'drive_delete.png',
     }, context_instance=RequestContext(request))
-
+'''
 
 def document_page_transformation_list(request, document_page_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])

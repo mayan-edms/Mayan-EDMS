@@ -18,10 +18,6 @@ PERMISSION_DOCUMENT_TYPE_EDIT = {'namespace': 'documents', 'name': 'document_typ
 PERMISSION_DOCUMENT_TYPE_DELETE = {'namespace': 'documents', 'name': 'document_type_delete', 'label': _(u'Delete document types')}
 PERMISSION_DOCUMENT_TYPE_CREATE = {'namespace': 'documents', 'name': 'document_type_create', 'label': _(u'Create document types')}
 
-UPLOAD_SOURCE_LOCAL = u'local'
-UPLOAD_SOURCE_STAGING = u'staging'
-UPLOAD_SOURCE_USER_STAGING = u'user_staging'
-
 HISTORY_DOCUMENT_CREATED = {
     'namespace': 'documents', 'name': 'document_created',
     'label': _(u'Document creation'),

@@ -11,24 +11,30 @@ from django.utils.translation import ugettext_lazy as _
 from converter import TRANFORMATION_CHOICES
 from converter.api import convert, cache_cleanup
 
-from documents.conf.settings import STAGING_DIRECTORY
-from documents.conf.settings import DEFAULT_TRANSFORMATIONS
-from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
-from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
-from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
+#from documents.conf.settings import STAGING_DIRECTORY
+STAGING_DIRECTORY = u'/tmp'
+#from documents.conf.settings import DEFAULT_TRANSFORMATIONS
+#from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
+STAGING_FILES_PREVIEW_SIZE = u'640'
+#from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
+#from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
 
-from documents.literals import UPLOAD_SOURCE_STAGING, \
-    UPLOAD_SOURCE_USER_STAGING
+#from documents.literals import UPLOAD_SOURCE_STAGING, \
+#    UPLOAD_SOURCE_USER_STAGING
+
+UPLOAD_SOURCE_LOCAL = u'local'
+UPLOAD_SOURCE_STAGING = u'staging'
+UPLOAD_SOURCE_USER_STAGING = u'user_staging'
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
 #func = lambda:[StagingFile.get_all() is None for i in range(100)]
 #t1=time.time();func();t2=time.time();print '%s took %0.3f ms' % (func.func_name, (t2-t1)*1000.0)
 
-STAGING_FILE_FUNCTIONS = {
-    UPLOAD_SOURCE_STAGING: lambda x: STAGING_DIRECTORY,
-    UPLOAD_SOURCE_USER_STAGING: lambda x: os.path.join(USER_STAGING_DIRECTORY_ROOT, eval(USER_STAGING_DIRECTORY_EXPRESSION, {'user': x.user}))
-}
+#STAGING_FILE_FUNCTIONS = {
+#    UPLOAD_SOURCE_STAGING: lambda x: STAGING_DIRECTORY,
+#    UPLOAD_SOURCE_USER_STAGING: lambda x: os.path.join(USER_STAGING_DIRECTORY_ROOT, eval(USER_STAGING_DIRECTORY_EXPRESSION, {'user': x.user}))
+#}
 
 
 def evaluate_user_staging_path(request, source):
@@ -52,7 +58,8 @@ def _return_new_class():
 
 def create_staging_file_class(request, source):
     cls = _return_new_class()
-    cls.set_path(evaluate_user_staging_path(request, source))
+    #cls.set_path(evaluate_user_staging_path(request, source))
+    cls.set_path(source)
     return cls
 
 
@@ -120,8 +127,8 @@ class StagingFile(object):
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
 
     def delete(self):
-        tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        cache_cleanup(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string)
+        #tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
+        cache_cleanup(self.filepath, size=STAGING_FILES_PREVIEW_SIZE)#, extra_options=tranformation_string)
         try:
             os.unlink(self.filepath)
         except OSError, exc:
@@ -130,9 +137,11 @@ class StagingFile(object):
             else:
                 raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
 
-    def preview(self):
-        tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        output_file = convert(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
+    def preview(self, preview_size):
+        errors = []
+        #tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
+        #output_file = convert(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
+        output_file = convert(self.filepath, size=preview_size, cleanup_files=False)
         return output_file, errors
 
 

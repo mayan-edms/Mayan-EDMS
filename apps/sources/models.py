@@ -40,8 +40,8 @@ SOURCE_ICON_CHOICES = (
     (SOURCE_ICON_WORLD, _(u'world'))
 )
 
-SOURCE_CHOICE_WEB_FORM = 'wform'
-SOURCE_CHOICE_STAGING = 'stagn'
+SOURCE_CHOICE_WEB_FORM = 'webform'
+SOURCE_CHOICE_STAGING = 'staging'
     
 SOURCE_CHOICES = (
     (SOURCE_CHOICE_WEB_FORM, _(u'Web form')),
@@ -56,15 +56,11 @@ class BaseModel(models.Model):
     blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'))
     document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'))
     
-    # M2M
-    # Default Metadata sets
-    # Default Metadata types & default values
-
     def __unicode__(self):
         return u'%s (%s)' % (self.title, dict(SOURCE_CHOICES).get(self.source_type))    
 
     class Meta:
-        ordering = ['title']
+        ordering = ('title',)
         abstract = True
 
 
@@ -103,6 +99,14 @@ class StagingFolder(InteractiveBaseModel):
     preview_height = models.IntegerField(blank=True, null=True, verbose_name=_(u'preview height'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'))
     delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'delete after upload'))
+    
+    def get_preview_size(self):
+        dimensions = []
+        dimensions.append(unicode(self.preview_width))
+        if self.preview_height:
+            dimensions.append(unicode(self.preview_height))
+            
+        return u'x'.join(dimensions)
     
     class Meta:
         verbose_name = _(u'staging folder')

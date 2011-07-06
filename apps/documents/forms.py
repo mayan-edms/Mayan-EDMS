@@ -265,7 +265,7 @@ class PrintForm(forms.Form):
     page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
-
+'''
 class StagingDocumentForm(DocumentForm):
     """
     Form that show all the files in the staging folder specified by the
@@ -290,7 +290,7 @@ class StagingDocumentForm(DocumentForm):
 
     class Meta(DocumentForm.Meta):
         exclude = ('description', 'file', 'document_type', 'tags')
-
+'''
 
 class DocumentTypeForm(forms.ModelForm):
     """

@@ -13,9 +13,6 @@ from metadata.api import get_metadata_string
 
 from documents.models import Document, DocumentPage, \
     DocumentPageTransformation, DocumentType, DocumentTypeFilename
-from documents.staging import StagingFile
-from documents.conf.settings import USE_STAGING_DIRECTORY
-from documents.conf.settings import PER_USER_STAGING_DIRECTORY
 from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
@@ -107,13 +104,6 @@ document_page_rotate_left = {'text': _(u'rotate left'), 'class': 'no-parent-hist
 
 document_missing_list = {'text': _(u'Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
-upload_document_from_local = {'text': _(u'local'), 'view': 'upload_document_from_local', 'famfam': 'drive_disk', 'keep_query': True}
-upload_document_from_staging = {'text': _(u'staging'), 'view': 'upload_document_from_staging', 'famfam': 'drive_network', 'keep_query': True, 'condition': lambda x: USE_STAGING_DIRECTORY}
-upload_document_from_user_staging = {'text': _(u'user staging'), 'view': 'upload_document_from_user_staging', 'famfam': 'drive_user', 'keep_query': True, 'condition': lambda x: PER_USER_STAGING_DIRECTORY}
-
-staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source', 'object.id'], 'famfam': 'drive_magnify'}
-staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source', 'object.id'], 'famfam': 'drive_delete'}
-
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_type_document_list = {'text': _(u'documents of this type'), 'view': 'document_type_document_list', 'args': 'object.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -141,7 +131,7 @@ register_links(['document_type_filename_edit', 'document_type_filename_delete'],
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
 register_multi_item_links(['folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
-register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_document', 'upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging', 'document_find_duplicates'], [document_list_recent, document_list, document_create_multiple], menu_name='secondary_menu')
+register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'document_find_duplicates'], [document_list_recent, document_list, document_create_multiple], menu_name='secondary_menu')
 
 # Document page links
 register_links(DocumentPage, [
@@ -157,16 +147,11 @@ register_links(DocumentPage, [
 
 register_links(['document_page_view'], [document_page_rotate_left, document_page_rotate_right, document_page_zoom_in, document_page_zoom_out], menu_name='form_header')
 
-# Upload sources
-register_links(['upload_document_from_local', 'upload_document_from_staging', 'upload_document_from_user_staging'], [upload_document_from_local, upload_document_from_staging, upload_document_from_user_staging], menu_name='form_header')
-
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
 register_links(DocumentPageTransformation, [document_page_transformation_page_edit, document_page_transformation_page_view], menu_name='sidebar')
 register_links('document_page_transformation_list', [document_page_transformation_create], menu_name='sidebar')
 register_links('document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
 register_links(['document_page_transformation_edit', 'document_page_transformation_delete'], [document_page_transformation_page_transformation_list], menu_name='sidebar')
-
-register_links(StagingFile, [staging_file_preview, staging_file_delete])
 
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
 

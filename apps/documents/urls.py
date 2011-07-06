@@ -7,17 +7,13 @@ from documents.conf.settings import PRINT_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import DISPLAY_SIZE
 from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
-from documents.literals import UPLOAD_SOURCE_LOCAL, \
-    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
+#from documents.literals import UPLOAD_SOURCE_LOCAL, \
+#    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),
     url(r'^list/recent/$', 'document_list_recent', (), 'document_list_recent'),
     url(r'^create/from/local/multiple/$', 'document_create', (), 'document_create_multiple'),
-
-    url(r'^upload/local/$', 'upload_document_with_type', {'source': UPLOAD_SOURCE_LOCAL}, 'upload_document_from_local'),
-    url(r'^upload/staging/$', 'upload_document_with_type', {'source': UPLOAD_SOURCE_STAGING}, 'upload_document_from_staging'),
-    url(r'^upload/staging/user/$', 'upload_document_with_type', {'source': UPLOAD_SOURCE_USER_STAGING}, 'upload_document_from_user_staging'),
 
     url(r'^(?P<document_id>\d+)/view/$', 'document_view', (), 'document_view_simple'),
     url(r'^(?P<document_id>\d+)/view/advanced/$', 'document_view', {'advanced': True}, 'document_view_advanced'),
@@ -40,9 +36,6 @@ urlpatterns = patterns('documents.views',
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^duplicates/list/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
-
-    url(r'^staging_file/type/(?P<source>\w+)/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
-    url(r'^staging_file/type/(?P<source>\w+)/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),
 
     url(r'^page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
     url(r'^page/(?P<document_page_id>\d+)/text/$', 'document_page_text', (), 'document_page_text'),
