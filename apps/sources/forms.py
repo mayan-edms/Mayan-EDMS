@@ -1,14 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.core.urlresolvers import reverse
-from django.utils.safestring import mark_safe
-from django.conf import settings
-
-from common.forms import DetailForm
-from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
-from common.conf.settings import DEFAULT_PAPER_SIZE
-from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 
 from documents.forms import DocumentForm
 
@@ -31,7 +23,7 @@ class StagingDocumentForm(DocumentForm):
 
         if show_expand:
             self.fields['expand'] = forms.BooleanField(
-                label=_(u'Expand compressed files'), required=False, 
+                label=_(u'Expand compressed files'), required=False,
                 help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
             )
 
@@ -50,9 +42,9 @@ class WebFormForm(DocumentForm):
     def __init__(self, *args, **kwargs):
         show_expand = kwargs.pop('show_expand', False)
         super(WebFormForm, self).__init__(*args, **kwargs)
-        
+
         if show_expand:
             self.fields['expand'] = forms.BooleanField(
-                label=_(u'Expand compressed files'), required=False, 
+                label=_(u'Expand compressed files'), required=False,
                 help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
             )

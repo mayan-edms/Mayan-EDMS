@@ -25,12 +25,12 @@ HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #}
 
 
-def evaluate_user_staging_path(request, source):
-    try:
-        return STAGING_FILE_FUNCTIONS[source](request)
-    except Exception, exc:
-        messages.error(request, _(u'Error evaluating user staging directory expression; %s') % exc)
-        return u''
+#def evaluate_user_staging_path(request, source):
+#    try:
+#        return STAGING_FILE_FUNCTIONS[source](request)
+#    except Exception, exc:
+#        messages.error(request, _(u'Error evaluating user staging directory expression; %s') % exc)
+#        return u''
 
 
 def get_all_files(path):
@@ -115,8 +115,8 @@ class StagingFile(object):
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
 
     def delete(self, preview_size):
-        #tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        cache_cleanup(self.filepath, size=preview_size)#, extra_options=tranformation_string)
+        # tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
+        cache_cleanup(self.filepath, size=preview_size)# , extra_options=tranformation_string)
         try:
             os.unlink(self.filepath)
         except OSError, exc:
@@ -127,8 +127,8 @@ class StagingFile(object):
 
     def preview(self, preview_size):
         errors = []
-        #tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        #output_file = convert(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
+        # tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
+        # output_file = convert(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
         output_file = convert(self.filepath, size=preview_size, cleanup_files=False)
         return output_file, errors
 

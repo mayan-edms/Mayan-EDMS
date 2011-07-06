@@ -42,7 +42,7 @@ SOURCE_ICON_CHOICES = (
 
 SOURCE_CHOICE_WEB_FORM = 'webform'
 SOURCE_CHOICE_STAGING = 'staging'
-    
+
 SOURCE_CHOICES = (
     (SOURCE_CHOICE_WEB_FORM, _(u'Web form')),
     (SOURCE_CHOICE_STAGING, _(u'Server staging folder')),
@@ -55,10 +55,10 @@ class BaseModel(models.Model):
     whitelist = models.TextField(blank=True, verbose_name=_(u'whitelist'))
     blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'))
     document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'))
-    
-    def __unicode__(self):
-        return u'%s (%s)' % (self.title, dict(SOURCE_CHOICES).get(self.source_type))    
 
+    def __unicode__(self):
+        return u'%s (%s)' % (self.title, dict(SOURCE_CHOICES).get(self.source_type))
+        
     class Meta:
         ordering = ('title',)
         abstract = True
@@ -86,18 +86,18 @@ class StagingFolder(InteractiveBaseModel):
     preview_height = models.IntegerField(blank=True, null=True, verbose_name=_(u'preview height'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'))
     delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'delete after upload'))
-    
+
     def get_preview_size(self):
         dimensions = []
         dimensions.append(unicode(self.preview_width))
         if self.preview_height:
             dimensions.append(unicode(self.preview_height))
-            
+
         return u'x'.join(dimensions)
-    
+
     class Meta:
         verbose_name = _(u'staging folder')
-        verbose_name_plural = _(u'staging folder')    
+        verbose_name_plural = _(u'staging folder')
 
 
 #class StagingFolderMetadataValue(models.Model):
@@ -111,7 +111,7 @@ class StagingFolder(InteractiveBaseModel):
 #    class Meta:
 #        verbose_name = _(u'source metadata')
 #        verbose_name_plural = _(u'sources metadata')
-    
+
 
 class WebForm(InteractiveBaseModel):
     is_interactive = True
@@ -123,4 +123,4 @@ class WebForm(InteractiveBaseModel):
 
     class Meta:
         verbose_name = _(u'web form')
-        verbose_name_plural = _(u'web forms')    
+        verbose_name_plural = _(u'web forms')

@@ -20,14 +20,13 @@ from document_indexing.api import update_indexes
 from history.api import create_history
 from metadata.api import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
-from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from permissions.api import check_permissions
 import sendfile
-        
+
 from sources.models import WebForm, StagingFolder
 from sources.models import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
 from sources.models import SOURCE_UNCOMPRESS_CHOICE_Y, \
-    SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_ASK
+    SOURCE_UNCOMPRESS_CHOICE_ASK
 from sources.staging import create_staging_file_class
 from sources.forms import StagingDocumentForm, WebFormForm
 
@@ -38,7 +37,7 @@ def upload_interactive(request, source_type=None, source_id=None):
     subtemplates_list = []
 
     tab_links = []
-    
+
     context = {}
 
     web_forms = WebForm.objects.filter(enabled=True)
@@ -62,7 +61,7 @@ def upload_interactive(request, source_type=None, source_id=None):
             'keep_query': True,
             'conditional_highlight': lambda context: context['source'].source_type == staging_folder.source_type and context['source'].pk == staging_folder.pk,
         })
-        
+
     if web_forms.count() == 0 and staging_folders.count() == 0:
         subtemplates_list.append(
             {
@@ -83,7 +82,7 @@ def upload_interactive(request, source_type=None, source_id=None):
         document_type = None
 
     subtemplates_list = []
-    
+
     if source_type is None and source_id is None:
         if web_forms.count():
             source_type = web_forms[0].source_type
@@ -99,14 +98,14 @@ def upload_interactive(request, source_type=None, source_id=None):
             if request.method == 'POST':
                 form = WebFormForm(request.POST, request.FILES,
                     document_type=document_type,
-                    show_expand=(web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK)
+                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK)
                 )
                 if form.is_valid():
                     try:
-                        if web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK:
+                        if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
                             expand = form.cleaned_data['expand']
                         else:
-                            if web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_Y:
+                            if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
                                 expand = True
                             else:
                                 expand = False
@@ -143,10 +142,10 @@ def upload_interactive(request, source_type=None, source_id=None):
                 if form.is_valid():
                     try:
                         staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
-                        if staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK:
+                        if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
                             expand = form.cleaned_data['expand']
                         else:
-                            if staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_Y:
+                            if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
                                 expand = True
                             else:
                                 expand = False                        
@@ -306,4 +305,4 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
         'next': next,
         'previous': previous,
         'form_icon': u'delete.png',
-    }, context_instance=RequestContext(request))        
+    }, context_instance=RequestContext(request))
