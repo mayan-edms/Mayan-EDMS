@@ -57,7 +57,7 @@ class BaseModel(models.Model):
     document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'))
 
     def __unicode__(self):
-        return u'%s (%s)' % (self.title, dict(SOURCE_CHOICES).get(self.source_type))
+        return u'%s' % self.title
         
     class Meta:
         ordering = ('title',)
@@ -72,7 +72,7 @@ class InteractiveBaseModel(BaseModel):
             self.icon = self.default_icon
         super(BaseModel, self).save(*args, **kwargs)
 
-    class Meta:
+    class Meta(BaseModel.Meta):
         abstract = True
 
         
@@ -95,7 +95,7 @@ class StagingFolder(InteractiveBaseModel):
 
         return u'x'.join(dimensions)
 
-    class Meta:
+    class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'staging folder')
         verbose_name_plural = _(u'staging folder')
 
@@ -121,6 +121,6 @@ class WebForm(InteractiveBaseModel):
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'))
     #Default path
 
-    class Meta:
+    class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'web form')
         verbose_name_plural = _(u'web forms')

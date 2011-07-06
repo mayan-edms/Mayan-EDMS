@@ -4,6 +4,8 @@ from django.utils.translation import ugettext
 
 from documents.forms import DocumentForm
 
+from sources.models import WebForm, StagingFolder
+
 
 class StagingDocumentForm(DocumentForm):
     """
@@ -48,3 +50,13 @@ class WebFormForm(DocumentForm):
                 label=_(u'Expand compressed files'), required=False,
                 help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
             )
+
+
+class WebFormSetupForm(forms.ModelForm):
+    class Meta:
+        model = WebForm
+        
+        
+class StagingFolderSetupForm(forms.ModelForm):
+    class Meta:
+        model = StagingFolder

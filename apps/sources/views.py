@@ -29,6 +29,8 @@ from sources.models import SOURCE_UNCOMPRESS_CHOICE_Y, \
     SOURCE_UNCOMPRESS_CHOICE_ASK
 from sources.staging import create_staging_file_class
 from sources.forms import StagingDocumentForm, WebFormForm
+from sources.forms import WebFormSetupForm, StagingFolderSetupForm
+
 
 def return_function(obj):
     return lambda context: context['source'].source_type == obj.source_type and context['source'].pk == obj.pk
@@ -72,7 +74,7 @@ def upload_interactive(request, source_type=None, source_id=None):
                 'context': {
                     'title': _(u'Upload sources'),
                     'paragraphs': [
-                        _(u'Not document sources have been defined or there are no sources enabled.')
+                        _(u'No interactive document sources have been defined or none have been enabled.')
                         # TODO: Add link to setup
                     ],
                 }
@@ -309,3 +311,135 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
         'previous': previous,
         'form_icon': u'delete.png',
     }, context_instance=RequestContext(request))
+
+
+def setup_source_list(request, source_type):
+    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
+    
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        cls = WebForm
+        title = _(u'web form sources')
+    elif source_type == SOURCE_CHOICE_STAGING:
+        cls = StagingFolder
+        title = _(u'staging folder sources')
+        
+    context = {
+        'object_list': cls.objects.all(),
+        'title': title,
+        #'multi_select_as_buttons': True,
+        #'hide_links': True,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))    
+
+
+def setup_source_edit(request, source_type, source_id):
+    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        cls = WebForm
+        form_class = WebFormSetupForm
+        title = _(u'edit web form source: %s')
+    elif source_type == SOURCE_CHOICE_STAGING:
+        cls = StagingFolder
+        form_class = StagingFolderSetupForm
+        title = _(u'edit staging folder source: %s')
+    
+    source = get_object_or_404(cls, pk=source_id)
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = form_class(instance=source, data=request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, _(u'Source edited successfully'))
+                return HttpResponseRedirect(next)
+            except Exception, e:
+                messages.error(request, _(u'Error editing source; %s') % e)
+    else:
+        form = form_class(instance=source)
+
+    return render_to_response('generic_form.html', {
+        'title': title % source,
+        'form': form,
+        'object': source,
+        'next': next,
+        'object_name': _(u'source'),
+    },
+    context_instance=RequestContext(request))
+
+
+def setup_source_delete(request, source_type, source_id):
+    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_DELETE])
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        cls = WebForm
+        title = _(u'Are you sure you wish to delete the web form source: %s?')
+        form_icon = u'application_form_delete.png'
+        redirect_view = 'setup_web_form_list'
+    elif source_type == SOURCE_CHOICE_STAGING:
+        cls = StagingFolder
+        title = _(u'Are you sure you wish to delete the staging folder source: %s?')
+        form_icon = u'folder_delete.png'
+        redirect_view = 'setup_staging_folder_list'
+
+    source = get_object_or_404(cls, pk=source_id)
+   
+    if request.method == 'POST':
+        try:
+            source.delete()
+            messages.success(request, _(u'Source "%s" deleted successfully.') % source)
+        except Exception, e:
+            messages.error(request, _(u'Error deleting source "%(source)s": %(error)s') % {
+                'source': source, 'error': e
+            })
+
+        return HttpResponseRedirect(reverse(redirect_view))
+
+    context = {
+        'title': title % source,
+        'object': source,
+        'object_name': _(u'source'),
+        'delete_view': True,
+        'previous': next,
+        'next': next,
+        'form_icon': form_icon,
+    }
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def setup_source_create(request, source_type):
+    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        #cls = WebForm
+        form_class = WebFormSetupForm
+        title = _(u'Creating web form source')
+    elif source_type == SOURCE_CHOICE_STAGING:
+        #cls = StagingFolder
+        form_class = StagingFolderSetupForm
+        title = _(u'Creating staging folder source')
+    
+    #source = get_object_or_404(cls, pk=source_id)
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, _(u'Source created successfully'))
+                return HttpResponseRedirect(reverse('setup_web_form_list'))
+            except Exception, e:
+                messages.error(request, _(u'Error creating source; %s') % e)
+    else:
+        form = form_class()
+
+    return render_to_response('generic_form.html', {
+        'title': title,
+        'form': form,
+        #'object_name': _(u'source'),
+    },
+    context_instance=RequestContext(request))
