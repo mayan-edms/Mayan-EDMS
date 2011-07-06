@@ -30,6 +30,9 @@ from sources.models import SOURCE_UNCOMPRESS_CHOICE_Y, \
 from sources.staging import create_staging_file_class
 from sources.forms import StagingDocumentForm, WebFormForm
 
+def return_function(obj):
+    return lambda context: context['source'].source_type == obj.source_type and context['source'].pk == obj.pk
+    
 
 def upload_interactive(request, source_type=None, source_id=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
@@ -48,7 +51,7 @@ def upload_interactive(request, source_type=None, source_id=None):
             'args': [u'"%s"' % web_form.source_type, web_form.pk],
             'famfam': web_form.icon,
             'keep_query': True,
-            'conditional_highlight': lambda context: context['source'].source_type == web_form.source_type and context['source'].pk == web_form.pk,
+            'conditional_highlight': return_function(web_form),
         })
 
     staging_folders = StagingFolder.objects.filter(enabled=True)
@@ -59,7 +62,7 @@ def upload_interactive(request, source_type=None, source_id=None):
             'args': [u'"%s"' % staging_folder.source_type, staging_folder.pk],
             'famfam': staging_folder.icon,
             'keep_query': True,
-            'conditional_highlight': lambda context: context['source'].source_type == staging_folder.source_type and context['source'].pk == staging_folder.pk,
+            'conditional_highlight': return_function(staging_folder),
         })
 
     if web_forms.count() == 0 and staging_folders.count() == 0:
