@@ -64,19 +64,6 @@ class BaseModel(models.Model):
         abstract = True
 
 
-#class MetadataValue(models.Model):
-#    source = models.ForeignKey(BaseModel, verbose_name=_(u'document source'))
-#    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-#    value = models.CharField(max_length=256, blank=True, verbose_name=_(u'value'))
-#
-#    def __unicode__(self):
-#        return self.source
-#
-#    class Meta:
-#        verbose_name = _(u'source metadata')
-#        verbose_name_plural = _(u'sources metadata')
-
-
 class InteractiveBaseModel(BaseModel):
     icon = models.CharField(blank=True, null=True, max_length=24, choices=SOURCE_ICON_CHOICES, verbose_name=_(u'icon'))
 
@@ -111,6 +98,19 @@ class StagingFolder(InteractiveBaseModel):
     class Meta:
         verbose_name = _(u'staging folder')
         verbose_name_plural = _(u'staging folder')    
+
+
+#class StagingFolderMetadataValue(models.Model):
+#    source = models.ForeignKey(BaseModel, verbose_name=_(u'document source'))
+#    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
+#    value = models.CharField(max_length=256, blank=True, verbose_name=_(u'value'))
+#
+#    def __unicode__(self):
+#        return self.source
+#
+#    class Meta:
+#        verbose_name = _(u'source metadata')
+#        verbose_name_plural = _(u'sources metadata')
     
 
 class WebForm(InteractiveBaseModel):

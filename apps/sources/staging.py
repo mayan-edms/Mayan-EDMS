@@ -11,20 +11,8 @@ from django.utils.translation import ugettext_lazy as _
 from converter import TRANFORMATION_CHOICES
 from converter.api import convert, cache_cleanup
 
-#from documents.conf.settings import STAGING_DIRECTORY
-STAGING_DIRECTORY = u'/tmp'
+DEFAULT_STAGING_DIRECTORY = u'/tmp'
 #from documents.conf.settings import DEFAULT_TRANSFORMATIONS
-#from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
-STAGING_FILES_PREVIEW_SIZE = u'640'
-#from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
-#from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
-
-#from documents.literals import UPLOAD_SOURCE_STAGING, \
-#    UPLOAD_SOURCE_USER_STAGING
-
-UPLOAD_SOURCE_LOCAL = u'local'
-UPLOAD_SOURCE_STAGING = u'staging'
-UPLOAD_SOURCE_USER_STAGING = u'user_staging'
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
@@ -68,7 +56,7 @@ class StagingFile(object):
     Simple class to encapsulate the files in a directory and hide the
     specifics to the view
     """
-    path = STAGING_DIRECTORY
+    path = DEFAULT_STAGING_DIRECTORY
 
     @classmethod
     def set_path(cls, path):
@@ -126,9 +114,9 @@ class StagingFile(object):
         except Exception, exc:
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
 
-    def delete(self):
+    def delete(self, preview_size):
         #tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        cache_cleanup(self.filepath, size=STAGING_FILES_PREVIEW_SIZE)#, extra_options=tranformation_string)
+        cache_cleanup(self.filepath, size=preview_size)#, extra_options=tranformation_string)
         try:
             os.unlink(self.filepath)
         except OSError, exc:

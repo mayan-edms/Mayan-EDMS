@@ -8,19 +8,23 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from permissions.api import check_permissions
-from documents.literals import PERMISSION_DOCUMENT_CREATE
-from documents.models import DocumentType
-from metadata.api import save_metadata_list, \
-    decode_metadata_from_url, metadata_repr_as_list
-from metadata.forms import MetadataFormSet, MetadataSelectionForm
-import sendfile
 from converter.exceptions import UnkownConvertError, UnknownFormat
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
-    
+from documents.literals import PERMISSION_DOCUMENT_CREATE
+from documents.literals import HISTORY_DOCUMENT_CREATED
+from documents.models import RecentDocument, Document, DocumentType
+from document_indexing.api import update_indexes
+from history.api import create_history
+from metadata.api import save_metadata_list, \
+    decode_metadata_from_url, metadata_repr_as_list
+from metadata.forms import MetadataFormSet, MetadataSelectionForm
+from permissions.api import check_permissions
+import sendfile
+        
 #TEMP
 from documents.forms import DocumentForm
+#TEMP
 
 from sources.models import WebForm, StagingFolder
 from sources.models import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
@@ -91,6 +95,23 @@ def upload_interactive(request, source_type=None, source_id=None):
         if source_type == SOURCE_CHOICE_WEB_FORM:
             web_form = get_object_or_404(WebForm, pk=source_id)
             context['source'] = web_form
+            if request.method == 'POST':
+                form = DocumentForm(request.POST, request.FILES, document_type=document_type)
+                if form.is_valid():
+                    try:
+                        expand = form.cleaned_data['expand']
+                        if (not expand) or (expand and not _handle_zip_file(request, request.FILES['file'], document_type)):
+                            instance = form.save()
+                            instance.save()
+                            if document_type:
+                                instance.document_type = document_type
+                            _handle_save_document(request, instance, form)
+                            messages.success(request, _(u'Document uploaded successfully.'))
+                    except Exception, e:
+                        messages.error(request, e)
+
+                    return HttpResponseRedirect(request.get_full_path())
+
             form = DocumentForm(document_type=document_type)
 
             subtemplates_list.append({
@@ -104,6 +125,31 @@ def upload_interactive(request, source_type=None, source_id=None):
             staging_folder = get_object_or_404(StagingFolder, pk=source_id)
             context['source'] = staging_folder
             StagingFile = create_staging_file_class(request, staging_folder.folder_path)
+            if request.method == 'POST':
+                form = StagingDocumentForm(request.POST, request.FILES,
+                    cls=StagingFile, document_type=document_type)
+                if form.is_valid():
+                    try:
+                        staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
+                        expand = form.cleaned_data['expand']
+                        if (not expand) or (expand and not _handle_zip_file(request, staging_file.upload(), document_type)):
+                            document = Document(file=staging_file.upload())
+                            if document_type:
+                                document.document_type = document_type
+                            document.save()
+                            _handle_save_document(request, document, form)
+                            messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
+
+                        if staging_folder.delete_after_upload:
+                            staging_file.delete()
+                            messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                    except Exception, e:
+                        messages.error(request, e)
+
+                    #return HttpResponseRedirect(request.META['HTTP_REFERER'])
+                    return HttpResponseRedirect(request.get_full_path())
+                    
+                                    
             form = StagingDocumentForm(cls=StagingFile,
                 document_type=document_type)
             try:
@@ -130,10 +176,6 @@ def upload_interactive(request, source_type=None, source_id=None):
                     },
                 ]    
 
-
-
-
-  
 
     context.update({
         'document_type_id': document_type_id,
@@ -352,7 +394,7 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
 
     if request.method == 'POST':
         try:
-            staging_file.delete()
+            staging_file.delete(staging_folder.get_preview_size())
             messages.success(request, _(u'Staging file delete successfully.'))
         except Exception, e:
             messages.error(request, e)
