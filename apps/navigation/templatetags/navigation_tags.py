@@ -115,6 +115,9 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                         new_link['url'] = urlquote(new_link['url'], parsed_query_string)
             else:
                 new_link['active'] = False
+
+            if 'conditional_highlight' in link:
+                new_link['active'] = link['conditional_highlight'](context)
                 
             if 'conditional_disable' in link:
                 new_link['disabled'] = link['conditional_disable'](context)

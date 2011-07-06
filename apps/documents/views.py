@@ -1,5 +1,4 @@
 import os
-import zipfile
 import urlparse
 import copy
 
@@ -13,7 +12,6 @@ from django.core.urlresolvers import reverse
 from django.views.generic.create_update import delete_object, update_object
 from django.conf import settings
 from django.utils.http import urlencode
-from django.core.files.uploadedfile import SimpleUploadedFile
 
 import sendfile
 from common.utils import pretty_size, parse_range, urlquote, \
@@ -112,167 +110,6 @@ def document_create_siblings(request, document_id):
     url = reverse('upload_interactive')
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
-'''
-def _handle_save_document(request, document, form=None):
-    RecentDocument.objects.add_document_for_user(request.user, document)
-    
-    if form:
-        if form.cleaned_data['new_filename']:
-            document.file_filename = form.cleaned_data['new_filename']
-            document.save()
-
-    if form and 'document_type_available_filenames' in form.cleaned_data:
-        if form.cleaned_data['document_type_available_filenames']:
-            document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
-            document.save()
-
-    save_metadata_list(decode_metadata_from_url(request.GET), document, create=True)
-
-    warnings = update_indexes(document)
-    if request.user.is_staff or request.user.is_superuser:
-        for warning in warnings:
-            messages.warning(request, warning)
-
-    create_history(HISTORY_DOCUMENT_CREATED, document, {'user': request.user})
-
-
-def _handle_zip_file(request, uploaded_file, document_type=None):
-    filename = getattr(uploaded_file, 'filename', getattr(uploaded_file, 'name', ''))
-    if filename.lower().endswith('zip'):
-        zfobj = zipfile.ZipFile(uploaded_file)
-        for filename in zfobj.namelist():
-            if not filename.endswith('/'):
-                zip_document = Document(file=SimpleUploadedFile(
-                    name=filename, content=zfobj.read(filename)))
-                if document_type:
-                    zip_document.document_type = document_type
-                zip_document.save()
-                _handle_save_document(request, zip_document)
-                messages.success(request, _(u'Extracted file: %s, uploaded successfully.') % filename)
-        #Signal that uploaded file was a zip file
-        return True
-    else:
-        #Otherwise tell parent to handle file
-        return False
-
-
-def upload_document_with_type(request, source):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-
-    document_type_id = request.GET.get('document_type_id', None)
-    if document_type_id:
-        document_type = get_object_or_404(DocumentType, pk=document_type_id[0])
-    else:
-        document_type = None
-
-    if request.method == 'POST':
-        if source == UPLOAD_SOURCE_LOCAL:
-            form = DocumentForm(request.POST, request.FILES, document_type=document_type)
-            if form.is_valid():
-                try:
-                    expand = form.cleaned_data['expand']
-                    if (not expand) or (expand and not _handle_zip_file(request, request.FILES['file'], document_type)):
-                        instance = form.save()
-                        instance.save()
-                        if document_type:
-                            instance.document_type = document_type
-                        _handle_save_document(request, instance, form)
-                        messages.success(request, _(u'Document uploaded successfully.'))
-                except Exception, e:
-                    messages.error(request, e)
-
-                return HttpResponseRedirect(request.get_full_path())
-        elif (USE_STAGING_DIRECTORY and source == UPLOAD_SOURCE_STAGING) or (PER_USER_STAGING_DIRECTORY and source == UPLOAD_SOURCE_USER_STAGING):
-            StagingFile = create_staging_file_class(request, source)
-            form = StagingDocumentForm(request.POST,
-                request.FILES, cls=StagingFile,
-                document_type=document_type)
-            if form.is_valid():
-                try:
-                    staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
-                    expand = form.cleaned_data['expand']
-                    if (not expand) or (expand and not _handle_zip_file(request, staging_file.upload(), document_type)):
-                        document = Document(file=staging_file.upload())
-                        if document_type:
-                            document.document_type = document_type
-                        document.save()
-                        _handle_save_document(request, document, form)
-                        messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
-
-                    if DELETE_STAGING_FILE_AFTER_UPLOAD:
-                        staging_file.delete()
-                        messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
-                except Exception, e:
-                    messages.error(request, e)
-
-                return HttpResponseRedirect(request.META['HTTP_REFERER'])
-    else:
-        if source == UPLOAD_SOURCE_LOCAL:
-            form = DocumentForm(document_type=document_type)
-        elif (USE_STAGING_DIRECTORY and source == UPLOAD_SOURCE_STAGING) or (PER_USER_STAGING_DIRECTORY and source == UPLOAD_SOURCE_USER_STAGING):
-            StagingFile = create_staging_file_class(request, source)
-            form = StagingDocumentForm(cls=StagingFile,
-                document_type=document_type)
-
-    subtemplates_list = []
-
-    if source == UPLOAD_SOURCE_LOCAL:
-        subtemplates_list.append({
-            'name': 'generic_form_subtemplate.html',
-            'context': {
-                'form': form,
-                'title': _(u'upload a local document'),
-            },
-        })
-
-    elif (USE_STAGING_DIRECTORY and source == UPLOAD_SOURCE_STAGING) or (PER_USER_STAGING_DIRECTORY and source == UPLOAD_SOURCE_USER_STAGING):
-        if source == UPLOAD_SOURCE_STAGING:
-            form_title = _(u'upload a document from staging')
-            list_title = _(u'files in staging')
-        else:
-            form_title = _(u'upload a document from user staging')
-            list_title = _(u'files in user staging')
-        try:
-            staging_filelist = StagingFile.get_all()
-        except Exception, e:
-            messages.error(request, e)
-            staging_filelist = []
-        finally:
-            subtemplates_list = [
-                {
-                    'name': 'generic_form_subtemplate.html',
-                    'context': {
-                        'form': form,
-                        'title': form_title,
-                    }
-                },
-                {
-                    'name': 'generic_list_subtemplate.html',
-                    'context': {
-                        'title': list_title,
-                        'object_list': staging_filelist,
-                        'hide_link': True,
-                    }
-                },
-            ]
-
-    context = {
-        'source': source,
-        'document_type_id': document_type_id,
-        'subtemplates_list': subtemplates_list,
-        'sidebar_subtemplates_list': [
-            {
-                'name': 'generic_subtemplate.html',
-                'context': {
-                    'title': _(u'Current metadata'),
-                    'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
-                    'side_bar': True,
-                }
-            }]
-    }
-    return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))
-'''
 
 def document_view(request, document_id, advanced=False):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])

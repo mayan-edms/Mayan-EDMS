@@ -186,21 +186,11 @@ class DocumentForm(forms.ModelForm):
                     queryset=filenames_qs,
                     required=False,
                     label=_(u'Quick document rename'))
-                    
-        # Put the expand field last in the field order list
-        expand_field_index = self.fields.keyOrder.index('expand')
-        expand_field = self.fields.keyOrder.pop(expand_field_index)
-        self.fields.keyOrder.append(expand_field)                    
 
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
     )
-
-    expand = forms.BooleanField(
-        label=_(u'Expand compressed files'), required=False, 
-        help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
-    )
-    
+  
 
 class DocumentForm_edit(DocumentForm):
     """
@@ -265,32 +255,6 @@ class PrintForm(forms.Form):
     page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
-'''
-class StagingDocumentForm(DocumentForm):
-    """
-    Form that show all the files in the staging folder specified by the
-    StagingFile class passed as 'cls' argument
-    """
-    def __init__(self, *args, **kwargs):
-        cls = kwargs.pop('cls')
-        super(StagingDocumentForm, self).__init__(*args, **kwargs)
-        try:
-            self.fields['staging_file_id'].choices = [
-                (staging_file.id, staging_file) for staging_file in cls.get_all()
-            ]
-        except:
-            pass
-
-        # Put staging_list field first in the field order list
-        staging_list_index = self.fields.keyOrder.index('staging_file_id')
-        staging_list = self.fields.keyOrder.pop(staging_list_index)
-        self.fields.keyOrder.insert(0, staging_list)
-
-    staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
-
-    class Meta(DocumentForm.Meta):
-        exclude = ('description', 'file', 'document_type', 'tags')
-'''
 
 class DocumentTypeForm(forms.ModelForm):
     """
