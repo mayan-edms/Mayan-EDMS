@@ -38,6 +38,7 @@ register_permission(PERMISSION_DOCUMENT_TRANSFORM)
 register_permission(PERMISSION_DOCUMENT_TOOLS)
 
 # Document type permissions
+set_namespace_title('documents_setup', _(u'Documents setup'))
 register_permission(PERMISSION_DOCUMENT_TYPE_EDIT)
 register_permission(PERMISSION_DOCUMENT_TYPE_DELETE)
 register_permission(PERMISSION_DOCUMENT_TYPE_CREATE)
@@ -129,9 +130,12 @@ register_links(['document_type_filename_edit', 'document_type_filename_delete'],
 
 # Register document links 
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
-register_multi_item_links(['folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
-register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'document_find_duplicates'], [document_list_recent, document_list, document_create_multiple], menu_name='secondary_menu')
+secondary_menu_links = [document_list_recent, document_list, document_create_multiple]
+
+register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
+#register_links(Document, secondary_menu_links, menu_name='sidebar')
 
 # Document page links
 register_links(DocumentPage, [

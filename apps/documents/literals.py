@@ -14,9 +14,9 @@ PERMISSION_DOCUMENT_DOWNLOAD = {'namespace': 'documents', 'name': 'document_down
 PERMISSION_DOCUMENT_TRANSFORM = {'namespace': 'documents', 'name': 'document_transform', 'label': _(u'Transform documents')}
 PERMISSION_DOCUMENT_TOOLS = {'namespace': 'documents', 'name': 'document_tools', 'label': _(u'Execute document modifying tools')}
 
-PERMISSION_DOCUMENT_TYPE_EDIT = {'namespace': 'documents', 'name': 'document_type_edit', 'label': _(u'Edit document types')}
-PERMISSION_DOCUMENT_TYPE_DELETE = {'namespace': 'documents', 'name': 'document_type_delete', 'label': _(u'Delete document types')}
-PERMISSION_DOCUMENT_TYPE_CREATE = {'namespace': 'documents', 'name': 'document_type_create', 'label': _(u'Create document types')}
+PERMISSION_DOCUMENT_TYPE_EDIT = {'namespace': 'documents_setup', 'name': 'document_type_edit', 'label': _(u'Edit document types')}
+PERMISSION_DOCUMENT_TYPE_DELETE = {'namespace': 'documents_setup', 'name': 'document_type_delete', 'label': _(u'Delete document types')}
+PERMISSION_DOCUMENT_TYPE_CREATE = {'namespace': 'documents_setup', 'name': 'document_type_create', 'label': _(u'Create document types')}
 
 HISTORY_DOCUMENT_CREATED = {
     'namespace': 'documents', 'name': 'document_created',

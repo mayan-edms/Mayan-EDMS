@@ -375,58 +375,6 @@ def document_download(request, document_id):
         messages.error(request, e)
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-'''
-def staging_file_preview(request, source, staging_file_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-    StagingFile = create_staging_file_class(request, source)
-    try:
-        output_file, errors = StagingFile.get(staging_file_id).preview()
-        if errors and (request.user.is_staff or request.user.is_superuser):
-            for error in errors:
-                messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
-                    'error': error
-                })
-
-    except UnkownConvertError, e:
-        if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, e)
-
-        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
-    except UnknownFormat:
-        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_MEDIUM)
-    except Exception, e:
-        if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, e)
-        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
-    finally:
-        return sendfile.sendfile(request, output_file)
-
-
-def staging_file_delete(request, source, staging_file_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-    StagingFile = create_staging_file_class(request, source)
-
-    staging_file = StagingFile.get(staging_file_id)
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method == 'POST':
-        try:
-            staging_file.delete()
-            messages.success(request, _(u'Staging file delete successfully.'))
-        except Exception, e:
-            messages.error(request, e)
-        return HttpResponseRedirect(next)
-
-    return render_to_response('generic_confirm.html', {
-        'source': source,
-        'delete_view': True,
-        'object': staging_file,
-        'next': next,
-        'previous': previous,
-        'form_icon': u'drive_delete.png',
-    }, context_instance=RequestContext(request))
-'''
 
 def document_page_transformation_list(request, document_page_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
@@ -519,10 +467,14 @@ def document_find_duplicates(request, document_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
-    return _find_duplicate_list(request, [document], include_source=True, confirmation=False)
+    extra_context = {
+        'title': _(u'duplicates of: %s') % document,
+        'object': document,
+    }
+    return _find_duplicate_list(request, [document], include_source=True, confirmation=False, extra_context=extra_context)
 
 
-def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False, confirmation=True):
+def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False, confirmation=True, extra_context=None):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
     if confirmation and request.method != 'POST':
@@ -542,10 +494,18 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
                 if include_source and results:
                     duplicated.append(document.pk)
 
-        return render_to_response('generic_list.html', {
+        context = {
             'object_list': Document.objects.filter(pk__in=duplicated),
             'title': _(u'duplicated documents'),
-        }, context_instance=RequestContext(request))
+            'hide_links': True,
+            'multi_select_as_buttons': True,
+        }
+        
+        if extra_context:
+            context.update(extra_context)
+            
+        return render_to_response('generic_list.html', context,
+            context_instance=RequestContext(request))
 
 
 def document_find_all_duplicates(request):

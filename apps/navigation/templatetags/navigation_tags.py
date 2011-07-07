@@ -123,6 +123,13 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                 new_link['disabled'] = link['conditional_disable'](context)
             else:
                 new_link['disabled'] = False
+                
+            if current_view in link.get('children_views', []):
+                new_link['active'] = True
+
+            for child_url_regex in link.get('children_url_regex', []):
+                if re.compile(child_url_regex).match(current_path.lstrip('/')):
+                    new_link['active'] = True                
                             
             context_links.append(new_link)
     return context_links

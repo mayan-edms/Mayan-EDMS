@@ -198,12 +198,7 @@ class DocumentForm_edit(DocumentForm):
     """
     class Meta:
         model = Document
-        exclude = ('file', 'document_type', 'tags', 'expand')
-
-    
-    def __init__(self, *args, **kwargs):
-        super(DocumentForm_edit, self).__init__(*args, **kwargs)
-        self.fields.pop('expand')
+        exclude = ('file', 'document_type', 'tags')
         
 
 class DocumentPropertiesForm(DetailForm):

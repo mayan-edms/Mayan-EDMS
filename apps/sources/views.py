@@ -27,23 +27,17 @@ from sources.models import WebForm, StagingFolder
 from sources.models import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
 from sources.models import SOURCE_UNCOMPRESS_CHOICE_Y, \
     SOURCE_UNCOMPRESS_CHOICE_ASK
-from sources.staging import create_staging_file_class
+from sources.staging import create_staging_file_class, StagingFile
 from sources.forms import StagingDocumentForm, WebFormForm
 from sources.forms import WebFormSetupForm, StagingFolderSetupForm
 
 
 def return_function(obj):
     return lambda context: context['source'].source_type == obj.source_type and context['source'].pk == obj.pk
-    
 
-def upload_interactive(request, source_type=None, source_id=None):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
 
-    subtemplates_list = []
-
+def get_active_tab_links():
     tab_links = []
-
-    context = {}
 
     web_forms = WebForm.objects.filter(enabled=True)
     for web_form in web_forms:
@@ -66,8 +60,24 @@ def upload_interactive(request, source_type=None, source_id=None):
             'keep_query': True,
             'conditional_highlight': return_function(staging_folder),
         })
+        
+    return {
+        'tab_links': tab_links,
+        'web_forms': web_forms,
+        'staging_folders': staging_folders
+    }
+    
 
-    if web_forms.count() == 0 and staging_folders.count() == 0:
+def upload_interactive(request, source_type=None, source_id=None):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+
+    subtemplates_list = []
+
+    context = {}
+
+    results = get_active_tab_links()
+
+    if results['web_forms'].count() == 0 and results['staging_folders'].count() == 0:
         subtemplates_list.append(
             {
                 'name': 'generic_subtemplate.html',
@@ -89,12 +99,12 @@ def upload_interactive(request, source_type=None, source_id=None):
     subtemplates_list = []
 
     if source_type is None and source_id is None:
-        if web_forms.count():
-            source_type = web_forms[0].source_type
-            source_id = web_forms[0].pk
-        elif staging_folders.count():
-            source_type = staging_folders[0].source_type
-            source_id = staging_folders[0].pk
+        if results['web_forms'].count():
+            source_type = results['web_forms'][0].source_type
+            source_id = results['web_forms'][0].pk
+        elif results['staging_folders'].count():
+            source_type = results['staging_folders'][0].source_type
+            source_id = results['staging_folders'][0].pk
 
     if source_type and source_id:
         if source_type == SOURCE_CHOICE_WEB_FORM:
@@ -210,7 +220,7 @@ def upload_interactive(request, source_type=None, source_id=None):
                     'side_bar': True,
                 }
             }],
-        'temporary_navigation_links': {'form_header': {'upload_interactive': {'links': tab_links}}}
+        'temporary_navigation_links': {'form_header': {'upload_interactive': {'links': results['tab_links']}}},
     })
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))    
@@ -303,6 +313,8 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
             messages.error(request, e)
         return HttpResponseRedirect(next)
 
+    results = get_active_tab_links()
+    
     return render_to_response('generic_confirm.html', {
         'source': staging_folder,
         'delete_view': True,
@@ -310,6 +322,7 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
         'next': next,
         'previous': previous,
         'form_icon': u'delete.png',
+        'temporary_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
     }, context_instance=RequestContext(request))
 
 
@@ -326,8 +339,7 @@ def setup_source_list(request, source_type):
     context = {
         'object_list': cls.objects.all(),
         'title': title,
-        #'multi_select_as_buttons': True,
-        #'hide_links': True,
+        'hide_link': True,
     }
 
     return render_to_response('generic_list.html', context,
@@ -402,8 +414,7 @@ def setup_source_delete(request, source_type, source_id):
         'object': source,
         'object_name': _(u'source'),
         'delete_view': True,
-        'previous': next,
-        'next': next,
+        'previous': reverse(redirect_view),
         'form_icon': form_icon,
     }
 
