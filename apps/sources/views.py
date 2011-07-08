@@ -135,8 +135,8 @@ def upload_interactive(request, source_type=None, source_id=None):
                         messages.error(request, e)
 
                     return HttpResponseRedirect(request.get_full_path())
-
-            form = WebFormForm(show_expand=(web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK), document_type=document_type)
+            else:
+                form = WebFormForm(show_expand=(web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK), document_type=document_type)
 
             subtemplates_list.append({
                 'name': 'generic_form_subtemplate.html',
@@ -179,11 +179,11 @@ def upload_interactive(request, source_type=None, source_id=None):
                         messages.error(request, e)
 
                     return HttpResponseRedirect(request.get_full_path())
-                                    
-            form = StagingDocumentForm(cls=StagingFile,
-                document_type=document_type, 
-                show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK)
-            )
+            else:
+                form = StagingDocumentForm(cls=StagingFile,
+                    document_type=document_type, 
+                    show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK)
+                )
             try:
                 staging_filelist = StagingFile.get_all()
             except Exception, e:
