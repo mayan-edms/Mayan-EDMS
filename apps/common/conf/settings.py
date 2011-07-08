@@ -31,3 +31,27 @@ DEFAULT_PAGE_ORIENTATION = register_setting(
     global_name=u'COMMON_DEFAULT_PAGE_ORIENTATION',
     default=PAGE_ORIENTATION_PORTRAIT,
 )
+
+register_setting(
+    namespace=u'common',
+    module=u'common.conf.settings',
+    name=u'AUTO_CREATE_ADMIN',
+    global_name=u'COMMON_AUTO_CREATE_ADMIN',
+    default=True,
+)
+
+register_setting(
+    namespace=u'common',
+    module=u'common.conf.settings',
+    name=u'AUTO_ADMIN_USERNAME',
+    global_name=u'COMMON_AUTO_ADMIN_USERNAME',
+    default=u'admin',
+)
+
+register_setting(
+    namespace=u'common',
+    module=u'common.conf.settings',
+    name=u'AUTO_ADMIN_PASSWORD',
+    global_name=u'COMMON_AUTO_ADMIN_PASSWORD',
+    default=u'admin',
+)
