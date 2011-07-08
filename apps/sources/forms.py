@@ -5,6 +5,7 @@ from django.utils.translation import ugettext
 from documents.forms import DocumentForm
 
 from sources.models import WebForm, StagingFolder
+from sources.widgets import FamFamRadioSelect
 
 
 class StagingDocumentForm(DocumentForm):
@@ -53,10 +54,24 @@ class WebFormForm(DocumentForm):
 
 
 class WebFormSetupForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(WebFormSetupForm, self).__init__(*args, **kwargs)    
+        self.fields['icon'].widget = FamFamRadioSelect(
+            attrs=self.fields['icon'].widget.attrs,
+            choices=self.fields['icon'].widget.choices,
+        )
+            
     class Meta:
         model = WebForm
         
         
 class StagingFolderSetupForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(StagingFolderSetupForm, self).__init__(*args, **kwargs)    
+        self.fields['icon'].widget = FamFamRadioSelect(
+            attrs=self.fields['icon'].widget.attrs,
+            choices=self.fields['icon'].widget.choices,
+        )
+    
     class Meta:
         model = StagingFolder
