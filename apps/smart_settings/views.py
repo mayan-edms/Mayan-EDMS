@@ -30,8 +30,11 @@ def setting_list(request):
         'extra_columns': [
             {'name': _(u'name'), 'attribute': lambda x: mark_safe(u'<span style="font-weight: bold;">%s</span><br>%s' % (x.get('global_name'), x.get('description')))},
             {'name': _(u'default'), 'attribute': lambda x: return_type(x['default'])},
-            {'name': _(u'value'), 'attribute': lambda x: return_type(getattr(x['module'], x['name']))},
-            {'name': _(u'exists'), 'attribute': lambda x: exists_with_famfam(getattr(x['module'], x['name'])) if x['exists'] else ''},
+            {'name': _(u'value'), 'attribute': lambda x: mark_safe(u'<div class="nowrap">%s&nbsp;%s</div>' % (
+                    return_type(getattr(x['module'], x['name'])),
+                    exists_with_famfam(getattr(x['module'], x['name'])) if x['exists'] else ''
+                ))
+            },
         ]
     }
 
