@@ -10,12 +10,12 @@ from sources.models import WebForm, StagingFolder
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
 
-setup_web_form_list = {'text': _(u'web forms'), 'view': 'setup_web_form_list', 'famfam': 'application_form'}
+setup_web_form_list = {'text': _(u'web forms'), 'view': 'setup_web_form_list', 'famfam': 'application_form', 'children_url_regex': [r'sources/setup/interactive/webforms']}
 setup_web_form_edit = {'text': _(u'edit'), 'view': 'setup_web_form_edit', 'args': 'object.pk', 'famfam': 'application_form_edit'}
 setup_web_form_delete = {'text': _(u'delete'), 'view': 'setup_web_form_delete', 'args': 'object.pk', 'famfam': 'application_form_delete'}
 setup_web_form_create = {'text': _(u'add new'), 'view': 'setup_web_form_create', 'famfam': 'application_form_add'}
 
-setup_staging_folder_list = {'text': _(u'staging folders'), 'view': 'setup_staging_folder_list', 'famfam': 'folder_magnify'}
+setup_staging_folder_list = {'text': _(u'staging folders'), 'view': 'setup_staging_folder_list', 'famfam': 'folder_magnify', 'children_url_regex': [r'sources/setup/interactive/staging_folder']}
 setup_staging_folder_edit = {'text': _(u'edit'), 'view': 'setup_staging_folder_edit', 'args': 'object.pk', 'famfam': 'folder_edit'}
 setup_staging_folder_delete = {'text': _(u'delete'), 'view': 'setup_staging_folder_delete', 'args': 'object.pk', 'famfam': 'folder_delete'}
 setup_staging_folder_create = {'text': _(u'add new'), 'view': 'setup_staging_folder_create', 'famfam': 'folder_add'}
