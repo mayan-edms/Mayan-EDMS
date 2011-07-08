@@ -6,6 +6,7 @@ from documents.forms import DocumentForm
 
 from sources.models import WebForm, StagingFolder
 from sources.widgets import FamFamRadioSelect
+from sources.utils import validate_whitelist_blacklist
 
 
 class StagingDocumentForm(DocumentForm):
@@ -16,6 +17,7 @@ class StagingDocumentForm(DocumentForm):
     def __init__(self, *args, **kwargs):
         cls = kwargs.pop('cls')
         show_expand = kwargs.pop('show_expand', False)
+        self.source = kwargs.pop('source')
         super(StagingDocumentForm, self).__init__(*args, **kwargs)
         try:
             self.fields['staging_file_id'].choices = [
@@ -44,13 +46,21 @@ class StagingDocumentForm(DocumentForm):
 class WebFormForm(DocumentForm):
     def __init__(self, *args, **kwargs):
         show_expand = kwargs.pop('show_expand', False)
+        self.source = kwargs.pop('source')
         super(WebFormForm, self).__init__(*args, **kwargs)
+        print self.instance
 
         if show_expand:
             self.fields['expand'] = forms.BooleanField(
                 label=_(u'Expand compressed files'), required=False,
                 help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
             )
+            
+    def clean_file(self):
+        data = self.cleaned_data['file']
+        validate_whitelist_blacklist(data.name, self.source.whitelist.split(','), self.source.blacklist.split(','))
+
+        return data            
 
 
 class WebFormSetupForm(forms.ModelForm):

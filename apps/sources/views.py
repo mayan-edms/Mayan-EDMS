@@ -113,7 +113,8 @@ def upload_interactive(request, source_type=None, source_id=None):
             if request.method == 'POST':
                 form = WebFormForm(request.POST, request.FILES,
                     document_type=document_type,
-                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK)
+                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    source=web_form
                 )
                 if form.is_valid():
                     try:
@@ -136,7 +137,11 @@ def upload_interactive(request, source_type=None, source_id=None):
 
                     return HttpResponseRedirect(request.get_full_path())
             else:
-                form = WebFormForm(show_expand=(web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK), document_type=document_type)
+                form = WebFormForm(
+                    show_expand=(web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    document_type=document_type,
+                    source=web_form
+                )
 
             subtemplates_list.append({
                 'name': 'generic_form_subtemplate.html',
@@ -152,7 +157,8 @@ def upload_interactive(request, source_type=None, source_id=None):
             if request.method == 'POST':
                 form = StagingDocumentForm(request.POST, request.FILES,
                     cls=StagingFile, document_type=document_type,
-                    show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK)
+                    show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    source=staging_folder
                 )
                 if form.is_valid():
                     try:
@@ -182,7 +188,8 @@ def upload_interactive(request, source_type=None, source_id=None):
             else:
                 form = StagingDocumentForm(cls=StagingFile,
                     document_type=document_type, 
-                    show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK)
+                    show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    source=staging_folder
                 )
             try:
                 staging_filelist = StagingFile.get_all()
