@@ -23,13 +23,14 @@ from metadata.api import save_metadata_list, \
 from permissions.api import check_permissions
 import sendfile
 
-from sources.models import WebForm, StagingFolder
+from sources.models import WebForm, StagingFolder, SourceTransformation
 from sources.models import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
 from sources.models import SOURCE_UNCOMPRESS_CHOICE_Y, \
     SOURCE_UNCOMPRESS_CHOICE_ASK
 from sources.staging import create_staging_file_class, StagingFile
 from sources.forms import StagingDocumentForm, WebFormForm
 from sources.forms import WebFormSetupForm, StagingFolderSetupForm
+from sources.forms import SourceTransformationForm
 
 
 def return_function(obj):
@@ -461,3 +462,98 @@ def setup_source_create(request, source_type):
         #'object_name': _(u'source'),
     },
     context_instance=RequestContext(request))
+
+
+def setup_source_transformation_list(request, source_type, source_id):
+    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
+    
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        cls = WebForm
+        #title = _(u'web form sources')
+    elif source_type == SOURCE_CHOICE_STAGING:
+        cls = StagingFolder
+        #title = _(u'staging folder sources')
+
+    source = get_object_or_404(cls, pk=source_id)
+
+    context = {
+        'object_list': SourceTransformation.objects.get_for_object(source),
+        'title': _(u'default transformations for: %s') % source,
+        'object': source,
+        'extra_columns': [
+            {'name': _(u'order'), 'attribute': 'order'},
+            {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
+            {'name': _(u'arguments'), 'attribute': 'arguments'}
+            ],
+        'hide_link': True,
+        'hide_object': True,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))    
+
+
+def setup_source_transformation_edit(request, source_transformation_id):
+    #check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+
+    source_transformation = get_object_or_404(SourceTransformation, pk=source_transformation_id)
+    return update_object(request, template_name='generic_form.html',
+        form_class=DocumentPageTransformationForm,
+        object_id=document_page_transformation_id,
+        post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
+        extra_context={
+            'object_name': _(u'transformation'),
+            'title': _(u'Edit transformation "%(transformation)s" for: %(document_page)s') % {
+                'transformation': document_page_transformation.get_transformation_display(),
+                'document_page': document_page_transformation.document_page},
+            'web_theme_hide_menus': True,
+            }
+        )
+'''
+def document_page_transformation_create(request, document_page_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+
+    if request.method == 'POST':
+        form = DocumentPageTransformationForm(request.POST, initial={'document_page': document_page})
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('document_page_view', args=[document_page_id]))
+    else:
+        form = DocumentPageTransformationForm(initial={'document_page': document_page})
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'object': document_page,
+        'title': _(u'Create new transformation for page: %(page)s of document: %(document)s') % {
+            'page': document_page.page_number, 'document': document_page.document},
+        'web_theme_hide_menus': True,
+    }, context_instance=RequestContext(request))
+
+
+
+
+
+def document_page_transformation_delete(request, document_page_transformation_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
+
+    return delete_object(request, model=DocumentPageTransformation, object_id=document_page_transformation_id,
+        template_name='generic_confirm.html',
+        post_delete_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
+        extra_context={
+            'delete_view': True,
+            'object': document_page_transformation,
+            'object_name': _(u'document transformation'),
+            'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
+                'transformation': document_page_transformation.get_transformation_display(),
+                'document_page': document_page_transformation.document_page},
+            'previous': previous,
+            'web_theme_hide_menus': True,
+            'form_icon': u'pencil_delete.png',
+        })
+'''

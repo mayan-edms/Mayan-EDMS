@@ -18,7 +18,6 @@ from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
-from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 from documents.managers import RecentDocumentManager
 
 available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])

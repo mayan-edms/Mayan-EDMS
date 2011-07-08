@@ -4,7 +4,7 @@ from django.utils.translation import ugettext
 
 from documents.forms import DocumentForm
 
-from sources.models import WebForm, StagingFolder
+from sources.models import WebForm, StagingFolder, SourceTransformation
 from sources.widgets import FamFamRadioSelect
 from sources.utils import validate_whitelist_blacklist
 
@@ -85,3 +85,12 @@ class StagingFolderSetupForm(forms.ModelForm):
     
     class Meta:
         model = StagingFolder
+
+
+class SourceTransformationForm(forms.ModelForm):
+    class Meta:
+        model = SourceTransformation
+
+    #def __init__(self, *args, **kwargs):
+    #    super(SourceTransformationForm, self).__init__(*args, **kwargs)
+    #    self.fields['document_page'].widget = forms.HiddenInput()

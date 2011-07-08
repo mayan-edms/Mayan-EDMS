@@ -33,7 +33,6 @@ register_settings(
         {'name': u'STORAGE_BACKEND', 'global_name': u'DOCUMENTS_STORAGE_BACKEND', 'default': FileBasedStorage},
         # Transformations
         {'name': u'AVAILABLE_TRANSFORMATIONS', 'global_name': u'DOCUMENTS_AVAILABLE_TRANSFORMATIONS', 'default': available_transformations},
-        {'name': u'DEFAULT_TRANSFORMATIONS', 'global_name': u'DOCUMENTS_DEFAULT_TRANSFORMATIONS', 'default': []},
         # Usage
         {'name': u'PREVIEW_SIZE', 'global_name': u'DOCUMENTS_PREVIEW_SIZE', 'default': u'640x480'},
         {'name': u'PRINT_SIZE', 'global_name': u'DOCUMENTS_PRINT_SIZE', 'default': u'1400'},

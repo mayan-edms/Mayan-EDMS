@@ -1,9 +1,16 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 
 from documents.models import DocumentType
+from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
+from documents.managers import RecentDocumentManager
 from metadata.models import MetadataType
 
+from sources.managers import SourceTransformationManager
+
+available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
 SOURCE_UNCOMPRESS_CHOICE_N = 'n'
@@ -103,19 +110,21 @@ class StagingFolder(InteractiveBaseModel):
         verbose_name = _(u'staging folder')
         verbose_name_plural = _(u'staging folder')
 
+'''
+class SourceMetadata(models.Model):
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
+    value = models.CharField(max_length=256, blank=True, verbose_name=_(u'value'))
 
-#class StagingFolderMetadataValue(models.Model):
-#    source = models.ForeignKey(BaseModel, verbose_name=_(u'document source'))
-#    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-#    value = models.CharField(max_length=256, blank=True, verbose_name=_(u'value'))
-#
-#    def __unicode__(self):
-#        return self.source
-#
-#    class Meta:
-#        verbose_name = _(u'source metadata')
-#        verbose_name_plural = _(u'sources metadata')
+    def __unicode__(self):
+        return self.source
 
+    class Meta:
+        verbose_name = _(u'source metadata')
+        verbose_name_plural = _(u'sources metadata')
+'''
 
 class WebForm(InteractiveBaseModel):
     is_interactive = True
@@ -128,3 +137,27 @@ class WebForm(InteractiveBaseModel):
     class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'web form')
         verbose_name_plural = _(u'web forms')
+
+
+class SourceTransformation(models.Model):
+    """
+    Model that stores the transformation and transformation arguments
+    for a given document source
+    """
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
+    transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
+    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
+
+    objects = SourceTransformationManager()
+
+    def __unicode__(self):
+        #return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.content_object))
+        return self.get_transformation_display()
+
+    class Meta:
+        ordering = ('order',)
+        verbose_name = _(u'document source transformation')
+        verbose_name_plural = _(u'document source transformations')
