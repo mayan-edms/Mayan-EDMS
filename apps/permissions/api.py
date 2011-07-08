@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
+from django.db import transaction
 
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, \
@@ -19,6 +20,7 @@ def set_namespace_title(namespace, title):
     namespace_titles.setdefault(namespace, title)
 
 
+@transaction.commit_manually
 def register_permission(permission):
     try:
         permission_obj, created = Permission.objects.get_or_create(
@@ -26,8 +28,12 @@ def register_permission(permission):
         permission_obj.label = unicode(permission['label'])
         permission_obj.save()
     except DatabaseError:
+        transaction.rollback()
         #Special case for ./manage.py syncdb
-        pass
+    except IntegrityError:
+        transaction.rollback()
+    else:
+        transaction.commit()
 
 
 def check_permissions(requester, permission_list):
