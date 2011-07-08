@@ -7,13 +7,12 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.comments.models import Comment
 
-from python_magic import magic
-
 from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
 from converter import TRANFORMATION_CHOICES
 
+from documents.utils import get_document_mimetype
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
@@ -117,22 +116,15 @@ class Document(models.Model):
     def update_mimetype(self, save=True):
         """
         Read a document's file and determine the mimetype by calling the
-        libmagic library
+        get_mimetype wrapper
         """
         if self.exists():
             try:
-                source = self.open()
-                mime = magic.Magic(mime=True)
-                self.file_mimetype = mime.from_buffer(source.read())
-                source.seek(0)
-                mime_encoding = magic.Magic(mime_encoding=True)
-                self.file_mime_encoding = mime_encoding.from_buffer(source.read())
+                self.file_mimetype, self.mime_encoding = get_document_mimetype(self)
             except:
                 self.file_mimetype = u''
                 self.file_mime_encoding = u''
             finally:
-                if source:
-                    source.close()
                 if save:
                     self.save()
 
