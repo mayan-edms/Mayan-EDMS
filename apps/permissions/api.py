@@ -30,8 +30,6 @@ def register_permission(permission):
     except DatabaseError:
         transaction.rollback()
         #Special case for ./manage.py syncdb
-    except IntegrityError:
-        transaction.rollback()
     else:
         transaction.commit()
 
