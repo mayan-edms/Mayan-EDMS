@@ -3,6 +3,7 @@
 {% load pagination_tags %}
 {% load navigation_tags %}
 {% load non_breakable %}
+{% load variable_tags %}
 
 {% if side_bar %}
     <div class="block">
@@ -122,13 +123,17 @@
                                 {% endif %}
                             {% endfor %}
                             {% if not hide_links %}
+                                {% if list_object_variable_name %}
+                                    {% copy_variable object as list_object_variable_name %}
+                                    {% copy_variable list_object_variable_name as "navigation_object_name" %}
+                                {% endif %}
                                 <td class="last">
                                     {% if navigation_object_links %}
                                         {% with navigation_object_links as overrided_object_links %}
                                             {% object_navigation_template %}
                                         {% endwith %}
                                     {% else %}
-                                            {% object_navigation_template %}
+                                        {% object_navigation_template %}
                                     {% endif %}
                                 </td>
                             {% endif %}

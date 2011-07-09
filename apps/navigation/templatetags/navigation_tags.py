@@ -129,11 +129,30 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
 
             for child_url_regex in link.get('children_url_regex', []):
                 if re.compile(child_url_regex).match(current_path.lstrip('/')):
-                    new_link['active'] = True                
+                    new_link['active'] = True
+                    
+            for cls in link.get('children_classes', []):
+                obj, object_name = get_navigation_object(context)
+                if type(obj) == cls:
+                    new_link['active'] = True
                             
             context_links.append(new_link)
     return context_links
 
+
+def get_navigation_object(context):
+    try:
+        object_name = Variable('navigation_object_name').resolve(context)
+    except VariableDoesNotExist:
+        object_name = 'object'
+
+    try:
+        obj = Variable(object_name).resolve(context)
+    except VariableDoesNotExist:
+        obj = None
+        
+    return obj, object_name
+    
 
 def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
     request = Variable('request').resolve(context)
@@ -159,16 +178,6 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         pass
 
     try:
-        object_name = Variable('navigation_object_name').resolve(context)
-    except VariableDoesNotExist:
-        object_name = 'object'
-
-    try:
-        obj = Variable(object_name).resolve(context)
-    except VariableDoesNotExist:
-        obj = None
-
-    try:
         """
         Check for and inject a temporary navigation dictionary
         """
@@ -184,6 +193,8 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
             context_links.append(link)
     except KeyError:
         pass
+
+    obj, object_name = get_navigation_object(context)
 
     try:
         links = links_dict[menu_name][type(obj)]['links']
@@ -216,6 +227,8 @@ class GetNavigationLinks(Node):
     def render(self, context):
         menu_name = resolve_template_variable(context, self.menu_name)
         context[self.var_name] = _get_object_navigation_links(context, menu_name, links_dict=self.links_dict)
+        obj, object_name = get_navigation_object(context)
+        context['navigation_object'] = obj
         return ''
 
 
