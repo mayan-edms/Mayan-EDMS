@@ -91,6 +91,7 @@ class SourceTransformationForm(forms.ModelForm):
     class Meta:
         model = SourceTransformation
 
-    #def __init__(self, *args, **kwargs):
-    #    super(SourceTransformationForm, self).__init__(*args, **kwargs)
-    #    self.fields['document_page'].widget = forms.HiddenInput()
+    def __init__(self, *args, **kwargs):
+        super(SourceTransformationForm, self).__init__(*args, **kwargs)
+        self.fields['content_type'].widget = forms.HiddenInput()
+        self.fields['object_id'].widget = forms.HiddenInput()

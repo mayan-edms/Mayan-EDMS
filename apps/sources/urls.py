@@ -21,5 +21,7 @@ urlpatterns = patterns('sources.views',
     url(r'^setup/interactive/staging_folder/(?P<source_id>\w+)/edit/$', 'setup_source_edit', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_edit'),
     url(r'^setup/interactive/staging_folder/(?P<source_id>\w+)/delete/$', 'setup_source_delete', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_delete'),
     url(r'^setup/interactive/staging_folder/create/$', 'setup_source_create', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_create'),
+    url(r'^setup/interactive/staging_folder/(?P<source_id>\w+)/transformation/list/$', 'setup_source_transformation_list', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_transformation_list'),
 
+    url(r'^setup/interactive/source/transformation/(?P<transformation_id>\w+)/edit/$', 'setup_source_transformation_edit', (), 'setup_source_transformation_edit'),
 )

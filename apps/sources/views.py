@@ -348,6 +348,7 @@ def setup_source_list(request, source_type):
         'object_list': cls.objects.all(),
         'title': title,
         'hide_link': True,
+        'list_object_variable_name': 'source'
     }
 
     return render_to_response('generic_list.html', context,
@@ -384,7 +385,8 @@ def setup_source_edit(request, source_type, source_id):
     return render_to_response('generic_form.html', {
         'title': title % source,
         'form': form,
-        'object': source,
+        'source': source,
+        'navigation_object_name': 'source',
         'next': next,
         'object_name': _(u'source'),
     },
@@ -419,8 +421,9 @@ def setup_source_delete(request, source_type, source_id):
 
     context = {
         'title': title % source,
-        'object': source,
+        'source': source,
         'object_name': _(u'source'),
+        'navigation_object_name': 'source',
         'delete_view': True,
         'previous': reverse(redirect_view),
         'form_icon': form_icon,
@@ -478,8 +481,11 @@ def setup_source_transformation_list(request, source_type, source_id):
 
     context = {
         'object_list': SourceTransformation.objects.get_for_object(source),
-        'title': _(u'default transformations for: %s') % source,
-        'object': source,
+        'title': _(u'transformations for: %s') % source,
+        'source': source,
+        'object_name': _(u'source'),
+        'navigation_object_name': 'source',
+        'list_object_variable_name': 'transformation',
         'extra_columns': [
             {'name': _(u'order'), 'attribute': 'order'},
             {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
@@ -493,22 +499,38 @@ def setup_source_transformation_list(request, source_type, source_id):
         context_instance=RequestContext(request))    
 
 
-def setup_source_transformation_edit(request, source_transformation_id):
-    #check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+def setup_source_transformation_edit(request, transformation_id):
+    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    
+    source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
-    source_transformation = get_object_or_404(SourceTransformation, pk=source_transformation_id)
-    return update_object(request, template_name='generic_form.html',
-        form_class=DocumentPageTransformationForm,
-        object_id=document_page_transformation_id,
-        post_save_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
-        extra_context={
-            'object_name': _(u'transformation'),
-            'title': _(u'Edit transformation "%(transformation)s" for: %(document_page)s') % {
-                'transformation': document_page_transformation.get_transformation_display(),
-                'document_page': document_page_transformation.document_page},
-            'web_theme_hide_menus': True,
-            }
-        )
+    if request.method == 'POST':
+        form = SourceTransformationForm(instance=source_transformation, data=request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, _(u'Source transformation edited successfully'))
+                return HttpResponseRedirect(next)
+            except Exception, e:
+                messages.error(request, _(u'Error editing source transformation; %s') % e)
+    else:
+        form = SourceTransformationForm(instance=source_transformation)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'Edit transformation: %s') % source_transformation,
+        'form': form,
+        'source': source_transformation.content_object,
+        'transformation': source_transformation,
+        #'navigation_object_name_list': ['source', 'transformation'],
+        'navigation_object_list': [
+            {'object': 'source', 'name': _(u'source')},
+            {'object': 'transformation', 'name': _(u'transformation')}
+        ],
+        #'object_name_list': [_(u'source'), _(u'transformation')],
+        'next': next,
+    },
+    context_instance=RequestContext(request))        
 '''
 def document_page_transformation_create(request, document_page_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
