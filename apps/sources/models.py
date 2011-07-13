@@ -55,8 +55,13 @@ SOURCE_CHOICE_WEB_FORM = 'webform'
 SOURCE_CHOICE_STAGING = 'staging'
 
 SOURCE_CHOICES = (
-    (SOURCE_CHOICE_WEB_FORM, _(u'Web form')),
-    (SOURCE_CHOICE_STAGING, _(u'Server staging folder')),
+    (SOURCE_CHOICE_WEB_FORM, _(u'web form')),
+    (SOURCE_CHOICE_STAGING, _(u'server staging folder')),
+)
+
+SOURCE_CHOICES_PLURAL = (
+    (SOURCE_CHOICE_WEB_FORM, _(u'web forms')),
+    (SOURCE_CHOICE_STAGING, _(u'server staging folders')),
 )
 
 
@@ -69,6 +74,17 @@ class BaseModel(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.title
+        
+    def fullname(self):
+        return u' '.join([self.class_fullname(), '"%s"' % self.title])
+
+    @classmethod
+    def class_fullname(cls):
+        return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
+
+    @classmethod
+    def class_fullname_plural(cls):
+        return unicode(dict(SOURCE_CHOICES_PLURAL).get(cls.source_type))
         
     class Meta:
         ordering = ('title',)

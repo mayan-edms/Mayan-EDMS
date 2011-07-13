@@ -12,17 +12,16 @@ urlpatterns = patterns('sources.views',
     #Setup views
 
     url(r'^setup/interactive/webforms/list/$', 'setup_source_list', {'source_type': SOURCE_CHOICE_WEB_FORM}, 'setup_web_form_list'),
-    url(r'^setup/interactive/webforms/(?P<source_id>\w+)/edit/$', 'setup_source_edit', {'source_type': SOURCE_CHOICE_WEB_FORM}, 'setup_web_form_edit'),
-    url(r'^setup/interactive/webforms/(?P<source_id>\w+)/delete/$', 'setup_source_delete', {'source_type': SOURCE_CHOICE_WEB_FORM}, 'setup_web_form_delete'),
-    url(r'^setup/interactive/webforms/create/$', 'setup_source_create', {'source_type': SOURCE_CHOICE_WEB_FORM}, 'setup_web_form_create'),
-    url(r'^setup/interactive/webforms/(?P<source_id>\w+)/transformation/list/$', 'setup_source_transformation_list', {'source_type': SOURCE_CHOICE_WEB_FORM}, 'setup_web_form_transformation_list'),
 
     url(r'^setup/interactive/staging_folder/list/$', 'setup_source_list', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_list'),
-    url(r'^setup/interactive/staging_folder/(?P<source_id>\w+)/edit/$', 'setup_source_edit', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_edit'),
-    url(r'^setup/interactive/staging_folder/(?P<source_id>\w+)/delete/$', 'setup_source_delete', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_delete'),
-    url(r'^setup/interactive/staging_folder/create/$', 'setup_source_create', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_create'),
-    url(r'^setup/interactive/staging_folder/(?P<source_id>\w+)/transformation/list/$', 'setup_source_transformation_list', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_transformation_list'),
 
+    url(r'^setup/interactive/(?P<source_type>\w+)/list/$', 'setup_source_list', (), 'setup_source_list'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/edit/$', 'setup_source_edit', (), 'setup_source_edit'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/delete/$', 'setup_source_delete', (), 'setup_source_delete'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/create/$', 'setup_source_create', (), 'setup_source_create'),
+
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/transformation/list/$', 'setup_source_transformation_list', (), 'setup_source_transformation_list'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/transformation/create/$', 'setup_source_transformation_create', (), 'setup_source_transformation_create'),
     url(r'^setup/interactive/source/transformation/(?P<transformation_id>\w+)/edit/$', 'setup_source_transformation_edit', (), 'setup_source_transformation_edit'),
     url(r'^setup/interactive/source/transformation/(?P<transformation_id>\w+)/delete/$', 'setup_source_transformation_delete', (), 'setup_source_transformation_delete'),
 )

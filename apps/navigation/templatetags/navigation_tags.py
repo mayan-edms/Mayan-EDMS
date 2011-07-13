@@ -133,7 +133,7 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                     
             for cls in link.get('children_classes', []):
                 obj, object_name = get_navigation_object(context)
-                if type(obj) == cls:
+                if type(obj) == cls or obj == cls:
                     new_link['active'] = True
                             
             context_links.append(new_link)

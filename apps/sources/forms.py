@@ -95,3 +95,9 @@ class SourceTransformationForm(forms.ModelForm):
         super(SourceTransformationForm, self).__init__(*args, **kwargs)
         self.fields['content_type'].widget = forms.HiddenInput()
         self.fields['object_id'].widget = forms.HiddenInput()
+
+
+class SourceTransformationForm_create(forms.ModelForm):
+    class Meta:
+        model = SourceTransformation
+        exclude = ('content_type', 'object_id')
