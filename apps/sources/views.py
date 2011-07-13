@@ -31,7 +31,10 @@ from sources.staging import create_staging_file_class, StagingFile
 from sources.forms import StagingDocumentForm, WebFormForm
 from sources.forms import WebFormSetupForm, StagingFolderSetupForm
 from sources.forms import SourceTransformationForm, SourceTransformationForm_create
-
+from sources import PERMISSION_SOURCES_SETUP_VIEW, \
+    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE, \
+    PERMISSION_SOURCES_SETUP_CREATE
+    
 
 def return_function(obj):
     return lambda context: context['source'].source_type == obj.source_type and context['source'].pk == obj.pk
@@ -335,7 +338,7 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
 
 
 def setup_source_list(request, source_type):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
     
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
@@ -355,7 +358,7 @@ def setup_source_list(request, source_type):
 
 
 def setup_source_edit(request, source_type, source_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
     
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
@@ -392,7 +395,7 @@ def setup_source_edit(request, source_type, source_id):
 
 
 def setup_source_delete(request, source_type, source_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_DELETE])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_DELETE])
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
         form_icon = u'application_form_delete.png'
@@ -434,7 +437,7 @@ def setup_source_delete(request, source_type, source_id):
 
 
 def setup_source_create(request, source_type):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_CREATE])
     
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
@@ -466,7 +469,7 @@ def setup_source_create(request, source_type):
 
 
 def setup_source_transformation_list(request, source_type, source_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
     
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
@@ -496,7 +499,7 @@ def setup_source_transformation_list(request, source_type, source_id):
 
 
 def setup_source_transformation_edit(request, transformation_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
     
     source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
     redirect_view = reverse('setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
@@ -529,7 +532,7 @@ def setup_source_transformation_edit(request, transformation_id):
 
 
 def setup_source_transformation_delete(request, transformation_id):
-    #check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
     redirect_view = reverse('setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
@@ -563,7 +566,7 @@ def setup_source_transformation_delete(request, transformation_id):
 
 
 def setup_source_transformation_create(request, source_type, source_id):
-    #check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+    check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm

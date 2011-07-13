@@ -3,9 +3,22 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
+from permissions.api import register_permission, set_namespace_title
 
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation
+
+PERMISSION_SOURCES_SETUP_VIEW = {'namespace': 'sources_setup', 'name': 'sources_setup_view', 'label': _(u'View exisinting document sources')}
+PERMISSION_SOURCES_SETUP_EDIT = {'namespace': 'sources_setup', 'name': 'sources_setup_edit', 'label': _(u'Edit document sources')}
+PERMISSION_SOURCES_SETUP_DELETE = {'namespace': 'sources_setup', 'name': 'sources_setup_delete', 'label': _(u'Delete document sources')}
+PERMISSION_SOURCES_SETUP_CREATE = {'namespace': 'sources_setup', 'name': 'sources_setup_create', 'label': _(u'Create new document sources')}
+
+set_namespace_title('sources_setup', _(u'Sources setup'))
+register_permission(PERMISSION_SOURCES_SETUP_VIEW)
+register_permission(PERMISSION_SOURCES_SETUP_EDIT)
+register_permission(PERMISSION_SOURCES_SETUP_DELETE)
+register_permission(PERMISSION_SOURCES_SETUP_CREATE)
+
 
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
