@@ -531,6 +531,43 @@ def setup_source_transformation_edit(request, transformation_id):
         'next': next,
     },
     context_instance=RequestContext(request))        
+
+
+def setup_source_transformation_delete(request, transformation_id):
+    #check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+
+    source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            source_transformation.delete()
+            messages.success(request, _(u'Transformation deleted successfully.'))
+        except Exception, e:
+            messages.error(request, _(u'Error deleting transformation; %(error)s') % {
+                'error': e}
+            )
+        return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'delete_view': True,
+        'transformation': source_transformation,
+        #'object_name': _(u'document transformation'),
+        'source': source_transformation.content_object,
+        'navigation_object_list': [
+            {'object': 'source', 'name': _(u'source')},
+            {'object': 'transformation', 'name': _(u'transformation')}
+        ],            
+        'title': _(u'Are you sure you wish to delete transformation "%(transformation)s"') % {
+            'transformation': source_transformation.get_transformation_display(),
+            #'document_page': document_page_transformation.document_page
+        },
+        'next': next,
+        'previous': next,
+        'form_icon': u'shape_square_delete.png',
+    },
+    context_instance=RequestContext(request))       
+
 '''
 def document_page_transformation_create(request, document_page_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
@@ -557,25 +594,4 @@ def document_page_transformation_create(request, document_page_id):
 
 
 
-def document_page_transformation_delete(request, document_page_transformation_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
-
-    return delete_object(request, model=DocumentPageTransformation, object_id=document_page_transformation_id,
-        template_name='generic_confirm.html',
-        post_delete_redirect=reverse('document_page_view', args=[document_page_transformation.document_page_id]),
-        extra_context={
-            'delete_view': True,
-            'object': document_page_transformation,
-            'object_name': _(u'document transformation'),
-            'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
-                'transformation': document_page_transformation.get_transformation_display(),
-                'document_page': document_page_transformation.document_page},
-            'previous': previous,
-            'web_theme_hide_menus': True,
-            'form_icon': u'pencil_delete.png',
-        })
 '''
