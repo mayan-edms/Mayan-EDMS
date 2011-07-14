@@ -1,14 +1,12 @@
 from django.conf.urls.defaults import patterns, url
 
-from converter.api import QUALITY_HIGH, QUALITY_PRINT
+from converter.literals import QUALITY_HIGH, QUALITY_PRINT
 
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import PRINT_SIZE
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import DISPLAY_SIZE
 from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
-#from documents.literals import UPLOAD_SOURCE_LOCAL, \
-#    UPLOAD_SOURCE_STAGING, UPLOAD_SOURCE_USER_STAGING
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),

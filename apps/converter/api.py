@@ -3,62 +3,28 @@ import subprocess
 
 from django.utils.importlib import import_module
 from django.template.defaultfilters import slugify
-
-from converter.conf.settings import UNPAPER_PATH
-from converter.conf.settings import OCR_OPTIONS
-from converter.conf.settings import DEFAULT_OPTIONS
-from converter.conf.settings import LOW_QUALITY_OPTIONS
-from converter.conf.settings import HIGH_QUALITY_OPTIONS
-from converter.conf.settings import PRINT_QUALITY_OPTIONS
-from converter.conf.settings import GRAPHICS_BACKEND
-from converter.conf.settings import UNOCONV_PATH
-
-from converter.exceptions import UnpaperError, OfficeConversionError
+from django.core.exceptions import ImproperlyConfigured
 
 from common import TEMPORARY_DIRECTORY
 from documents.utils import document_save_to_temp_dir
 
-DEFAULT_ZOOM_LEVEL = 100
-DEFAULT_ROTATION = 0
-DEFAULT_PAGE_INDEX_NUMBER = 0
-DEFAULT_FILE_FORMAT = u'jpg'
-DEFAULT_OCR_FILE_FORMAT = u'tif'
-
-QUALITY_DEFAULT = u'quality_default'
-QUALITY_LOW = u'quality_low'
-QUALITY_HIGH = u'quality_high'
-QUALITY_PRINT = u'quality_print'
-
-QUALITY_SETTINGS = {
-    QUALITY_DEFAULT: DEFAULT_OPTIONS,
-    QUALITY_LOW: LOW_QUALITY_OPTIONS,
-    QUALITY_HIGH: HIGH_QUALITY_OPTIONS,
-    QUALITY_PRINT: PRINT_QUALITY_OPTIONS
-}
+from converter.conf.settings import UNPAPER_PATH
+from converter.conf.settings import OCR_OPTIONS
+from converter.conf.settings import UNOCONV_PATH
+from converter.exceptions import UnpaperError, OfficeConversionError
+from converter.utils import load_backend
+from converter.literals import DEFAULT_PAGE_INDEX_NUMBER, \
+    DEFAULT_OCR_FILE_FORMAT, QUALITY_DEFAULT, DEFAULT_ZOOM_LEVEL, \
+    DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_PRINT
 
 CONVERTER_OFFICE_FILE_EXTENSIONS = [
     u'ods', u'docx', u'doc'
 ]
 
-
-def _lazy_load(fn):
-    _cached = []
-
-    def _decorated():
-        if not _cached:
-            _cached.append(fn())
-        return _cached[0]
-    return _decorated
-
-
-@_lazy_load
-def _get_backend():
-    return import_module(GRAPHICS_BACKEND)
-
 try:
-    backend = _get_backend()
-except ImportError:
-    raise ImportError(u'Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
+    backend = load_backend().ConverterClass()
+except ImproperlyConfigured:
+    raise ImproperlyConfigured(u'Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
 
 
 def cleanup(filename):
@@ -173,7 +139,7 @@ def convert(input_filepath, *args, **kwargs):
     if format == u'jpg':
         extra_options += u' -quality 85'
     try:
-        backend.execute_convert(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality)
+        backend.convert_file(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -185,7 +151,7 @@ def convert(input_filepath, *args, **kwargs):
 
 def get_page_count(input_filepath):
     try:
-        return len(backend.execute_identify(unicode(input_filepath)).splitlines())
+        return len(backend.identify_file(unicode(input_filepath)).splitlines())
     except:
         #TODO: send to other page number identifying program
         return 1
@@ -195,7 +161,7 @@ def get_document_dimensions(document, *args, **kwargs):
     document_filepath = create_image_cache_filename(document.checksum, *args, **kwargs)
     if os.path.exists(document_filepath):
         options = [u'-format', u'%w %h']
-        return [int(dimension) for dimension in backend.execute_identify(unicode(document_filepath), options).split()]
+        return [int(dimension) for dimension in backend.identify_file(unicode(document_filepath), options).split()]
     else:
         return [0, 0]
 
@@ -219,13 +185,13 @@ def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_form
         transformation_string, warnings = document_page.get_transformation_string()
 
         #Apply default transformations
-        backend.execute_convert(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
+        backend.convert_file(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
         #Do OCR operations
-        backend.execute_convert(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
+        backend.convert_file(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper
         execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
         # Convert to tif
-        backend.execute_convert(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
+        backend.convert_file(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
     finally:
         cleanup(transformation_output_file)
         cleanup(unpaper_input_file)

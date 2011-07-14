@@ -18,10 +18,6 @@ def default_uuid():
     """unicode(uuid.uuid4())"""
     return unicode(uuid.uuid4())
 
-available_transformations = {
-    'rotate': {'label': _(u'Rotate [degrees]'), 'arguments': [{'name': 'degrees'}]}
-}
-
 register_settings(
     namespace=u'documents',
     module=u'documents.conf.settings',
@@ -31,8 +27,6 @@ register_settings(
         {'name': u'UUID_FUNCTION', 'global_name': u'DOCUMENTS_UUID_FUNCTION', 'default': default_uuid},
         # Storage
         {'name': u'STORAGE_BACKEND', 'global_name': u'DOCUMENTS_STORAGE_BACKEND', 'default': FileBasedStorage},
-        # Transformations
-        {'name': u'AVAILABLE_TRANSFORMATIONS', 'global_name': u'DOCUMENTS_AVAILABLE_TRANSFORMATIONS', 'default': available_transformations},
         # Usage
         {'name': u'PREVIEW_SIZE', 'global_name': u'DOCUMENTS_PREVIEW_SIZE', 'default': u'640x480'},
         {'name': u'PRINT_SIZE', 'global_name': u'DOCUMENTS_PRINT_SIZE', 'default': u'1400'},

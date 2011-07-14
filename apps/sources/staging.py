@@ -8,7 +8,6 @@ from django.utils.translation import ugettext
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-from converter import TRANFORMATION_CHOICES
 from converter.api import convert, cache_cleanup
 
 DEFAULT_STAGING_DIRECTORY = u'/tmp'
@@ -136,13 +135,13 @@ class StagingFile(object):
 def get_transformation_string(transformations):
     transformation_list = []
     errors = []
-    for transformation in transformations:
-        try:
-            if transformation['name'] in TRANFORMATION_CHOICES:
-                output = TRANFORMATION_CHOICES[transformation['name']] % eval(transformation['arguments'])
-                transformation_list.append(output)
-        except Exception, e:
-            errors.append(e)
+    #for transformation in transformations:
+    #    try:
+    #        if transformation['name'] in TRANFORMATION_CHOICES:
+    #            output = TRANFORMATION_CHOICES[transformation['name']] % eval(transformation['arguments'])
+    #            transformation_list.append(output)
+    #    except Exception, e:
+    #        errors.append(e)
 
-    tranformation_string = ' '.join(transformation_list)
+    #tranformation_string = ' '.join(transformation_list)
     return tranformation_string, errors

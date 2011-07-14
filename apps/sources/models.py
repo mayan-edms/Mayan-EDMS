@@ -4,13 +4,11 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from documents.models import DocumentType
-from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.managers import RecentDocumentManager
 from metadata.models import MetadataType
+from converter.api import backend
 
 from sources.managers import SourceTransformationManager
-
-available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
 SOURCE_UNCOMPRESS_CHOICE_N = 'n'
@@ -164,7 +162,7 @@ class SourceTransformation(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
-    transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
+    transformation = models.CharField(choices=backend.get_available_transformations_labels(), max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
 
     objects = SourceTransformationManager()
