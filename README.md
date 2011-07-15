@@ -5,7 +5,7 @@ Open source, Django based document manager with custom metadata indexing, file s
 
 [Website](http://bit.ly/mayan-edms)
 
-Requirements
+Basic requirements
 ---
 
 Python:
@@ -15,6 +15,19 @@ Python:
 * django-filetransfers - File upload/download abstraction
 * celery- asynchronous task queue/job queue based on distributed message passing
 * django-celery - celery Django integration
+* django-mptt - Utilities for implementing a modified pre-order traversal tree in django
+* python-magic - A python wrapper for libmagic
+* django-taggit - Simple tagging for django
+
+Execute pip install -r requirements/production.txt to install the python/django dependencies automatically.
+
+Executables:
+
+* tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
+* unpaper - post-processing scanned and photocopied book pages
+
+Optional requirements
+---
 
 For the GridFS storage backend:
 
@@ -22,13 +35,12 @@ For the GridFS storage backend:
 * GridFS - a storage specification for large objects in MongoDB
 * MongoDB - a scalable, open source, document-oriented database
 
-Or execute pip install -r requirements/production.txt to install the dependencies automatically.
+Libraries:
 
-Executables:
+* libmagic - MIME detection library, if not installed Mayan will fall back to using python's simpler mimetype built in library
 
-* libmagic - MIME detection library
-* tesseract-ocr - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
-* unpaper - post-processing scanned and photocopied book pages
+Mayan has the ability to switch between different image conversion backends, at the moment these two are supported:
+
 * ImageMagick - Convert, Edit, Or Compose Bitmap Images
 * GraphicMagick - Robust collection of tools and libraries to read, write, and manipulate an image.
 
