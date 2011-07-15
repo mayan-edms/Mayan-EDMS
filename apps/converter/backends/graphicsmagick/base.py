@@ -8,6 +8,10 @@ from converter.conf.settings import GM_SETTINGS
 from converter.literals import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 from converter.backends import ConverterBase
+from converter.literals import TRANSFORMATION_RESIZE, \
+    TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
+    TRANSFORMATION_ZOOM
+from converter.literals import DIMENSION_SEPARATOR    
 
 CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
 CONVERTER_ERROR_STARTS_WITH = u'starts with'
@@ -28,7 +32,29 @@ class ConverterClass(ConverterBase):
         return proc.stdout.read()
 
 
-    def convert_file(self, input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
+    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT):
+        arguments = []
+        if transformations:
+            for transformation in transformations:
+                if transformation['transformation'] == TRANSFORMATION_RESIZE:
+                    dimensions = []
+                    dimensions.append(unicode(transformation['arguments']['width']))
+                    if 'height' in transformation['arguments']:
+                        dimensions.append(unicode(transformation['arguments']['height']))                    
+                    arguments.append(u'-resize')
+                    arguments.append(u'%s' % DIMENSION_SEPARATOR.join(dimensions))
+
+                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
+                    arguments.append(u'-resize')
+                    arguments.append(u'%d%%' % transformation['arguments']['zoom'])
+                    
+                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                    arguments.append(u'-rotate')
+                    arguments.append(u'%s' % transformation['arguments']['degrees'])
+                
+        print 'arguments: %s' % arguments
+        #if format == u'jpg':
+        #    extra_options += u' -quality 85'
         command = []
         command.append(unicode(GM_PATH))
         command.append(u'convert')
@@ -36,8 +62,9 @@ class ConverterClass(ConverterBase):
         command.extend(unicode(GM_SETTINGS).split())
         command.append(unicode(input_filepath))
         if arguments:
-            command.extend(unicode(arguments).split())
+            command.extend(arguments)
         command.append(unicode(output_filepath))
+        print 'command: %s' % command
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
         if return_code != 0:
@@ -76,10 +103,22 @@ class ConverterClass(ConverterBase):
 
 
     def get_available_transformations(self):
-        return {
-            'rotate': {
-                'label': _(u'Rotate [degrees]'),
-                'arguments': [{'name': 'degrees'}],
-                'command_line': u'-rotate %(degrees)d'
-            }
-        }
+        return [
+            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, \
+            TRANSFORMATION_DENSITY, TRANSFORMATION_ZOOM
+        ]
+
+
+    def get_page_count(self, input_filepath):
+        try:
+            return len(self.identify_file(unicode(input_filepath)).splitlines())
+        except:
+            #TODO: send to other page number identifying program
+            return 1
+                
+
+    def _get_transformation_string():
+        pass
+        #'command_line': u'-rotate %(degrees)d'
+        #    }
+        #}

@@ -3,7 +3,6 @@ import subprocess
 
 from django.utils.importlib import import_module
 from django.template.defaultfilters import slugify
-from django.core.exceptions import ImproperlyConfigured
 
 from common import TEMPORARY_DIRECTORY
 from documents.utils import document_save_to_temp_dir
@@ -12,20 +11,21 @@ from converter.conf.settings import UNPAPER_PATH
 from converter.conf.settings import OCR_OPTIONS
 from converter.conf.settings import UNOCONV_PATH
 from converter.exceptions import UnpaperError, OfficeConversionError
-from converter.utils import load_backend
-from converter.literals import DEFAULT_PAGE_INDEX_NUMBER, \
+from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_OCR_FILE_FORMAT, QUALITY_DEFAULT, DEFAULT_ZOOM_LEVEL, \
     DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_PRINT
 
+from converter import backend
+from converter.literals import TRANSFORMATION_CHOICES
+from converter.literals import TRANSFORMATION_RESIZE, \
+    TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
+    TRANSFORMATION_ZOOM
+from converter.literals import DIMENSION_SEPARATOR    
+
+    
 CONVERTER_OFFICE_FILE_EXTENSIONS = [
     u'ods', u'docx', u'doc'
 ]
-
-try:
-    backend = load_backend().ConverterClass()
-except ImproperlyConfigured:
-    raise ImproperlyConfigured(u'Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
-
 
 def cleanup(filename):
     """
@@ -107,18 +107,18 @@ def convert_document(document, *args, **kwargs):
 def convert(input_filepath, *args, **kwargs):
     size = kwargs.get('size')
     file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
-    extra_options = kwargs.get('extra_options', u'')
     zoom = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
-    page = kwargs.get('page', DEFAULT_PAGE_INDEX_NUMBER)
+    page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
     cleanup_files = kwargs.get('cleanup_files', True)
     quality = kwargs.get('quality', QUALITY_DEFAULT)
+    transformations = kwargs.get('transformations', [])
 
     unoconv_output = None
 
     output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
-    if os.path.exists(output_filepath):
-        return output_filepath
+    #if os.path.exists(output_filepath):
+    #    return output_filepath
 
     path, extension = os.path.splitext(input_filepath)
     if extension[1:].lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
@@ -128,18 +128,33 @@ def convert(input_filepath, *args, **kwargs):
             input_filepath = result
             extra_options = u''
 
-    input_arg = u'%s[%s]' % (input_filepath, page)
-    extra_options += u' -resize %s' % size
+    #TODO: not here in the backend
+    input_arg = u'%s[%s]' % (input_filepath, page-1)
+    transformations.append(
+        {
+            'transformation': TRANSFORMATION_RESIZE,
+            'arguments': dict(zip([u'width', u'height'], size.split(DIMENSION_SEPARATOR)))
+        }
+    )
+
     if zoom != 100:
-        extra_options += u' -resize %d%% ' % zoom
+        transformations.append(
+            {
+                'transformation': TRANSFORMATION_ZOOM,
+                'arguments': {'percent': zoom}
+            }
+        )        
 
     if rotation != 0 and rotation != 360:
-        extra_options += u' -rotate %d ' % rotation
+        transformations.append(
+            {
+                'transformation': TRANSFORMATION_ROTATE,
+                'arguments': {'degrees': rotation}
+            }
+        )           
 
-    if format == u'jpg':
-        extra_options += u' -quality 85'
     try:
-        backend.convert_file(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality)
+        backend.convert_file(input_filepath=input_arg, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality, transformations=transformations)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -150,11 +165,7 @@ def convert(input_filepath, *args, **kwargs):
 
 
 def get_page_count(input_filepath):
-    try:
-        return len(backend.identify_file(unicode(input_filepath)).splitlines())
-    except:
-        #TODO: send to other page number identifying program
-        return 1
+    return backend.get_page_count(input_filepath)
 
 
 def get_document_dimensions(document, *args, **kwargs):
@@ -166,7 +177,7 @@ def get_document_dimensions(document, *args, **kwargs):
         return [0, 0]
 
 
-def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
+def convert_document_for_ocr(document, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
     #Extract document file
     input_filepath = document_save_to_temp_dir(document, document.uuid)
 
@@ -178,7 +189,7 @@ def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_form
     unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
     convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
 
-    input_arg = u'%s[%s]' % (input_filepath, page)
+    input_arg = u'%s[%s]' % (input_filepath, page-1)
 
     try:
         document_page = document.documentpage_set.get(page_number=page + 1)
@@ -198,3 +209,12 @@ def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_form
         cleanup(unpaper_output_file)
 
     return convert_output_file
+
+
+def get_available_transformations_choices():
+    result = []
+    for transformation in backend.get_available_transformations():
+        transformation_template = u'%s %s' % (TRANSFORMATION_CHOICES[transformation]['label'], u','.join(['<%s>' % argument['name'] if argument['required'] else '[%s]' % argument['name'] for argument in TRANSFORMATION_CHOICES[transformation]['arguments']]))
+        result.append([transformation, transformation_template])
+        
+    return result

@@ -285,7 +285,7 @@ def document_edit(request, document_id):
         'object': document,
     }, context_instance=RequestContext(request))
 
-
+'''
 def calculate_converter_arguments(document, *args, **kwargs):
     size = kwargs.pop('size', PREVIEW_SIZE)
     quality = kwargs.pop('quality', QUALITY_DEFAULT)
@@ -308,7 +308,7 @@ def calculate_converter_arguments(document, *args, **kwargs):
     }
 
     return arguments, warnings
-
+'''
 
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
@@ -327,14 +327,17 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
 
     rotation = int(request.GET.get('rotation', 0)) % 360
 
-    arguments, warnings = calculate_converter_arguments(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation)
+    #arguments, warnings = calculate_converter_arguments(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation)
 
-    if warnings and (request.user.is_staff or request.user.is_superuser):
-        for warning in warnings:
-            messages.warning(request, _(u'Page transformation error: %s') % warning)
+    #if warnings and (request.user.is_staff or request.user.is_superuser):
+    #    for warning in warnings:
+    #        messages.warning(request, _(u'Page transformation error: %s') % warning)
+
+    transformations = DocumentPageTransformation.objects.get_for_document_page_as_list(document)
 
     try:
-        output_file = convert_document(document, **arguments)
+        #output_file = convert_document(document, **arguments)
+        output_file = convert_document(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation, transformations=transformations)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
             messages.error(request, e)

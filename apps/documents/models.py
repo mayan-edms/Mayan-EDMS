@@ -12,12 +12,13 @@ from python_magic import magic
 from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
-from converter.api import backend
+from converter.api import get_available_transformations_choices
 
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
-from documents.managers import RecentDocumentManager
+from documents.managers import RecentDocumentManager, \
+    DocumentPageTransformationManager
 
 
 def get_filename_from_uuid(instance, filename):
@@ -259,9 +260,6 @@ class DocumentPage(models.Model):
     def get_absolute_url(self):
         return ('document_page_view', [self.pk])
 
-    def get_transformation_string(self):
-        return backend.get_transformation_string(self.documentpagetransformation_set.values('transformation', 'arguments'))
-
 
 class DocumentPageTransformation(models.Model):
     """
@@ -270,8 +268,10 @@ class DocumentPageTransformation(models.Model):
     """
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
-    transformation = models.CharField(choices=backend.get_available_transformations_labels(), max_length=128, verbose_name=_(u'transformation'))
+    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
+
+    objects = DocumentPageTransformationManager()
 
     def __unicode__(self):
         return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.document_page))

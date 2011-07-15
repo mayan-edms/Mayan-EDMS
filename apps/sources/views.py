@@ -285,7 +285,10 @@ def staging_file_preview(request, source_type, source_id, staging_file_id):
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
     try:
-        output_file, errors = StagingFile.get(staging_file_id).preview(staging_folder.get_preview_size())
+        output_file, errors = StagingFile.get(staging_file_id).preview(
+            preview_size=staging_folder.get_preview_size(),
+            transformations=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+        )
         if errors and (request.user.is_staff or request.user.is_superuser):
             for error in errors:
                 messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
@@ -318,7 +321,10 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
 
     if request.method == 'POST':
         try:
-            staging_file.delete(staging_folder.get_preview_size())
+            staging_file.delete(
+                preview_size=staging_folder.get_preview_size(),
+                transformations=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+            )
             messages.success(request, _(u'Staging file delete successfully.'))
         except Exception, e:
             messages.error(request, e)
@@ -509,6 +515,8 @@ def setup_source_transformation_edit(request, transformation_id):
         form = SourceTransformationForm(instance=source_transformation, data=request.POST)
         if form.is_valid():
             try:
+                # Test the validity of the argument field
+                eval(form.cleaned_data['arguments'])                
                 form.save()
                 messages.success(request, _(u'Source transformation edited successfully'))
                 return HttpResponseRedirect(next)
@@ -598,6 +606,8 @@ def setup_source_transformation_create(request, source_type, source_id):
         form = SourceTransformationForm_create(request.POST)
         if form.is_valid():
             try:
+                # Test the validity of the argument field
+                eval(form.cleaned_data['arguments'])
                 source_tranformation = form.save(commit=False)
                 source_tranformation.content_object = source
                 source_tranformation.save()
