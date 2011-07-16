@@ -2,9 +2,6 @@ import os
 import subprocess
 import hashlib
 
-from django.utils.importlib import import_module
-from django.template.defaultfilters import slugify
-
 from common import TEMPORARY_DIRECTORY
 from documents.utils import document_save_to_temp_dir
 
@@ -14,7 +11,7 @@ from converter.conf.settings import UNOCONV_PATH
 from converter.exceptions import UnpaperError, OfficeConversionError
 from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_OCR_FILE_FORMAT, QUALITY_DEFAULT, DEFAULT_ZOOM_LEVEL, \
-    DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_PRINT
+    DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_HIGH
 
 from converter import backend
 from converter.literals import TRANSFORMATION_CHOICES
@@ -119,7 +116,6 @@ def convert(input_filepath, cleanup_files=True, *args, **kwargs):
         if result:
             unoconv_output = result
             input_filepath = result
-            extra_options = u''
 
     transformations.append(
         {
