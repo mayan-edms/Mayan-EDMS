@@ -3,7 +3,7 @@ import re
 
 from converter.conf.settings import IM_IDENTIFY_PATH
 from converter.conf.settings import IM_CONVERT_PATH
-from converter.api import QUALITY_DEFAULT, QUALITY_SETTINGS
+from converter.literals import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, \
     IdentifyError
 from converter.backends import ConverterBase
@@ -30,7 +30,7 @@ class ConverterClass(ConverterBase):
             raise IdentifyError(proc.stderr.readline())
         return proc.stdout.read()
 
-    def convert_file(self, input_filepath, output_filepath, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         arguments = []
         if transformations:
             for transformation in transformations:
