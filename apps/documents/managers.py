@@ -20,4 +20,17 @@ class DocumentPageTransformationManager(models.Manager):
         return self.model.objects.filter(document_page=document_page)
 
     def get_for_document_page_as_list(self, document_page):
-        return list([{'transformation': transformation['transformation'], 'arguments': eval(transformation['arguments'])} for transformation in self.get_for_document_page(document_page).values('transformation', 'arguments')])
+        warnings = []
+        transformations = []
+        for transformation in self.get_for_document_page(document_page).values('transformation', 'arguments'):
+            try:
+                transformations.append(
+                    {
+                        'transformation': transformation['transformation'],
+                        'arguments': eval(transformation['arguments'], {})
+                    }
+                )
+            except Exception, e:
+                warnings.append(e)
+        
+        return transformations, warnings  

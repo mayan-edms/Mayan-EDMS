@@ -11,7 +11,8 @@ from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
     TRANSFORMATION_ZOOM
-from converter.literals import DIMENSION_SEPARATOR    
+from converter.literals import DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER, \
+    DEFAULT_FILE_FORMAT
 
 CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
 CONVERTER_ERROR_STARTS_WITH = u'starts with'
@@ -32,10 +33,12 @@ class ConverterClass(ConverterBase):
         return proc.stdout.read()
 
 
-    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT):
+    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+        print 'convert_file'
         arguments = []
         if transformations:
             for transformation in transformations:
+                print 'transformation: %s' % transformation
                 if transformation['transformation'] == TRANSFORMATION_RESIZE:
                     dimensions = []
                     dimensions.append(unicode(transformation['arguments']['width']))
@@ -46,21 +49,31 @@ class ConverterClass(ConverterBase):
 
                 elif transformation['transformation'] == TRANSFORMATION_ZOOM:
                     arguments.append(u'-resize')
-                    arguments.append(u'%d%%' % transformation['arguments']['zoom'])
+                    arguments.append(u'%d%%' % transformation['arguments']['percent'])
                     
                 elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                    print 'Do rotate'
                     arguments.append(u'-rotate')
                     arguments.append(u'%s' % transformation['arguments']['degrees'])
                 
         print 'arguments: %s' % arguments
-        #if format == u'jpg':
-        #    extra_options += u' -quality 85'
+        if format == u'jpg':
+            arguments.append(u'-quality')
+            arguments.append(u'85')
+
+        
+        # Graphicsmagick page number is 0 base
+        input_arg = u'%s[%d]' % (input_filepath, page - 1)
+        
+        # Specify the file format next to the output filename
+        output_filepath = u'%s:%s' % (file_format, output_filepath)
+        
         command = []
         command.append(unicode(GM_PATH))
         command.append(u'convert')
         command.extend(unicode(QUALITY_SETTINGS[quality]).split())
         command.extend(unicode(GM_SETTINGS).split())
-        command.append(unicode(input_filepath))
+        command.append(unicode(input_arg))
         if arguments:
             command.extend(arguments)
         command.append(unicode(output_filepath))
@@ -115,10 +128,3 @@ class ConverterClass(ConverterBase):
         except:
             #TODO: send to other page number identifying program
             return 1
-                
-
-    def _get_transformation_string():
-        pass
-        #'command_line': u'-rotate %(degrees)d'
-        #    }
-        #}

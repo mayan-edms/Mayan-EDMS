@@ -20,10 +20,11 @@ from common.widgets import two_state_template
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
-from converter.api import convert_document, QUALITY_DEFAULT
+from converter.api import convert_document
 from converter.exceptions import UnkownConvertError, UnknownFormat
-from converter.api import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_FILE_FORMAT, QUALITY_PRINT
+from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
+    DEFAULT_FILE_FORMAT, QUALITY_PRINT, QUALITY_DEFAULT, \
+    DEFAULT_PAGE_NUMBER
 from filetransfers.api import serve_file
 from grouping.utils import get_document_group_subtemplate
 from metadata.api import save_metadata_list, \
@@ -285,39 +286,15 @@ def document_edit(request, document_id):
         'object': document,
     }, context_instance=RequestContext(request))
 
-'''
-def calculate_converter_arguments(document, *args, **kwargs):
-    size = kwargs.pop('size', PREVIEW_SIZE)
-    quality = kwargs.pop('quality', QUALITY_DEFAULT)
-    page = kwargs.pop('page', 1)
-    file_format = kwargs.pop('file_format', DEFAULT_FILE_FORMAT)
-    zoom = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
-    rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
-
-    document_page = DocumentPage.objects.get(document=document, page_number=page)
-    transformation_string, warnings = document_page.get_transformation_string()
-
-    arguments = {
-        'size': size,
-        'file_format': file_format,
-        'quality': quality,
-        'extra_options': transformation_string,
-        'page': page - 1,
-        'zoom': zoom,
-        'rotation': rotation
-    }
-
-    return arguments, warnings
-'''
 
 def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
 
-    page = int(request.GET.get('page', 1))
+    page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
 
-    zoom = int(request.GET.get('zoom', 100))
+    zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
 
     if zoom < ZOOM_MIN_LEVEL:
         zoom = ZOOM_MIN_LEVEL
@@ -325,18 +302,16 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     if zoom > ZOOM_MAX_LEVEL:
         zoom = ZOOM_MAX_LEVEL
 
-    rotation = int(request.GET.get('rotation', 0)) % 360
+    rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
-    #arguments, warnings = calculate_converter_arguments(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation)
+    document_page = get_object_or_404(document.documentpage_set, page_number=page)
+    transformations, warnings = DocumentPageTransformation.objects.get_for_document_page_as_list(document_page)
 
-    #if warnings and (request.user.is_staff or request.user.is_superuser):
-    #    for warning in warnings:
-    #        messages.warning(request, _(u'Page transformation error: %s') % warning)
-
-    transformations = DocumentPageTransformation.objects.get_for_document_page_as_list(document)
-
+    if warnings and (request.user.is_staff or request.user.is_superuser):
+        for warning in warnings:
+            messages.warning(request, _(u'Page transformation error: %s') % warning)
+            
     try:
-        #output_file = convert_document(document, **arguments)
         output_file = convert_document(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation, transformations=transformations)
     except UnkownConvertError, e:
         if request.user.is_staff or request.user.is_superuser:
@@ -595,13 +570,13 @@ def document_page_view(request, document_page_id):
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
-    zoom = int(request.GET.get('zoom', 100))
-    rotation = int(request.GET.get('rotation', 0))
+    zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
+    rotation = int(request.GET.get('rotation', DEFAULT_ROTATION))
     document_page_form = DocumentPageForm(instance=document_page, zoom=zoom, rotation=rotation)
 
     base_title = _(u'details for: %s') % document_page
 
-    if zoom != 100:
+    if zoom != DEFAULT_ZOOM_LEVEL:
         zoom_text = u'(%d%%)' % zoom
     else:
         zoom_text = u''

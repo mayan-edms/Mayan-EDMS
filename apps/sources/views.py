@@ -285,9 +285,11 @@ def staging_file_preview(request, source_type, source_id, staging_file_id):
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
     try:
+        transformations, errors=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+        
         output_file, errors = StagingFile.get(staging_file_id).preview(
             preview_size=staging_folder.get_preview_size(),
-            transformations=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+            transformations=transformations
         )
         if errors and (request.user.is_staff or request.user.is_superuser):
             for error in errors:
@@ -321,9 +323,10 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
 
     if request.method == 'POST':
         try:
+            transformations, errors=SourceTransformation.objects.get_for_object_as_list(staging_folder)
             staging_file.delete(
                 preview_size=staging_folder.get_preview_size(),
-                transformations=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+                transformations=transformations
             )
             messages.success(request, _(u'Staging file delete successfully.'))
         except Exception, e:
@@ -516,12 +519,16 @@ def setup_source_transformation_edit(request, transformation_id):
         if form.is_valid():
             try:
                 # Test the validity of the argument field
-                eval(form.cleaned_data['arguments'])                
-                form.save()
-                messages.success(request, _(u'Source transformation edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing source transformation; %s') % e)
+                eval(form.cleaned_data['arguments'], {})
+            except:
+                messages.error(request, _(u'Source transformation argument error.'))
+            else:
+                try:
+                    form.save()
+                    messages.success(request, _(u'Source transformation edited successfully'))
+                    return HttpResponseRedirect(next)
+                except Exception, e:
+                    messages.error(request, _(u'Error editing source transformation; %s') % e)
     else:
         form = SourceTransformationForm(instance=source_transformation)
 
@@ -607,14 +614,18 @@ def setup_source_transformation_create(request, source_type, source_id):
         if form.is_valid():
             try:
                 # Test the validity of the argument field
-                eval(form.cleaned_data['arguments'])
-                source_tranformation = form.save(commit=False)
-                source_tranformation.content_object = source
-                source_tranformation.save()
-                messages.success(request, _(u'Source transformation created successfully'))
-                return HttpResponseRedirect(redirect_view)
-            except Exception, e:
-                messages.error(request, _(u'Error creating source transformation; %s') % e)
+                eval(form.cleaned_data['arguments'], {})
+            except:
+                messages.error(request, _(u'Source transformation argument error.'))
+            else:            
+                try:
+                    source_tranformation = form.save(commit=False)
+                    source_tranformation.content_object = source
+                    source_tranformation.save()
+                    messages.success(request, _(u'Source transformation created successfully'))
+                    return HttpResponseRedirect(redirect_view)
+                except Exception, e:
+                    messages.error(request, _(u'Error creating source transformation; %s') % e)
     else:
         form = SourceTransformationForm_create()
         

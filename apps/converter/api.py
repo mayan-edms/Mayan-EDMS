@@ -1,5 +1,6 @@
 import os
 import subprocess
+import hashlib
 
 from django.utils.importlib import import_module
 from django.template.defaultfilters import slugify
@@ -22,6 +23,7 @@ from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ZOOM
 from converter.literals import DIMENSION_SEPARATOR    
 
+HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
     
 CONVERTER_OFFICE_FILE_EXTENSIONS = [
     u'ods', u'docx', u'doc'
@@ -75,19 +77,11 @@ def cache_cleanup(input_filepath, *args, **kwargs):
 
 def create_image_cache_filename(input_filepath, *args, **kwargs):
     if input_filepath:
-        temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
-        temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-
-        final_filepath = []
-        [final_filepath.append(str(arg)) for arg in args]
-        final_filepath.extend([u'%s_%s' % (key, value) for key, value in kwargs.items()])
-
-        temp_path += slugify(u'_'.join(final_filepath))
-
-        return temp_path
+        hash_value = HASH_FUNCTION(u''.join([input_filepath, unicode(args), unicode(kwargs)]))
+        return os.path.join(TEMPORARY_DIRECTORY, hash_value)
     else:
         return None
-
+        
 
 def convert_office_document(input_filepath):
     if os.path.exists(UNOCONV_PATH):
@@ -104,21 +98,21 @@ def convert_document(document, *args, **kwargs):
     return convert(document_save_to_temp_dir(document, document.checksum), *args, **kwargs)
 
 
-def convert(input_filepath, *args, **kwargs):
+def convert(input_filepath, cleanup_files=True, *args, **kwargs):
     size = kwargs.get('size')
     file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
     zoom = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
     page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
-    cleanup_files = kwargs.get('cleanup_files', True)
     quality = kwargs.get('quality', QUALITY_DEFAULT)
     transformations = kwargs.get('transformations', [])
 
     unoconv_output = None
 
     output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
-    #if os.path.exists(output_filepath):
-    #    return output_filepath
+    print 'output_filepath', output_filepath
+    if os.path.exists(output_filepath):
+        return output_filepath
 
     path, extension = os.path.splitext(input_filepath)
     if extension[1:].lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
@@ -128,8 +122,6 @@ def convert(input_filepath, *args, **kwargs):
             input_filepath = result
             extra_options = u''
 
-    #TODO: not here in the backend
-    input_arg = u'%s[%s]' % (input_filepath, page-1)
     transformations.append(
         {
             'transformation': TRANSFORMATION_RESIZE,
@@ -154,7 +146,7 @@ def convert(input_filepath, *args, **kwargs):
         )           
 
     try:
-        backend.convert_file(input_filepath=input_arg, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality, transformations=transformations)
+        backend.convert_file(input_filepath=input_filepath, output_filepath=output_filepath, quality=quality, transformations=transformations, page=page, file_format=file_format)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -189,14 +181,12 @@ def convert_document_for_ocr(document, page=DEFAULT_PAGE_NUMBER, file_format=DEF
     unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
     convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
 
-    input_arg = u'%s[%s]' % (input_filepath, page-1)
-
     try:
-        document_page = document.documentpage_set.get(page_number=page + 1)
+        document_page = document.documentpage_set.get(page_number=page)
         transformation_string, warnings = document_page.get_transformation_string()
 
         #Apply default transformations
-        backend.convert_file(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
+        backend.convert_file(input_filepath=input_filepath, page=page, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
         #Do OCR operations
         backend.convert_file(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper

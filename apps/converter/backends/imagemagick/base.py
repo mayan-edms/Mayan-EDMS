@@ -31,15 +31,42 @@ class ConverterClass(ConverterBase):
         return proc.stdout.read()
 
 
-    def convert_file(self, input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
-        #if format == u'jpg':
-        #    extra_options += u' -quality 85'        
+    def convert_file(self, input_filepath, output_filepath, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+        arguments = []
+        if transformations:
+            for transformation in transformations:
+                if transformation['transformation'] == TRANSFORMATION_RESIZE:
+                    dimensions = []
+                    dimensions.append(unicode(transformation['arguments']['width']))
+                    if 'height' in transformation['arguments']:
+                        dimensions.append(unicode(transformation['arguments']['height']))                    
+                    arguments.append(u'-resize')
+                    arguments.append(u'%s' % DIMENSION_SEPARATOR.join(dimensions))
+
+                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
+                    arguments.append(u'-resize')
+                    arguments.append(u'%d%%' % transformation['arguments']['percent'])
+                    
+                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                    arguments.append(u'-rotate')
+                    arguments.append(u'%s' % transformation['arguments']['degrees'])
+                    
+        if format == u'jpg':
+            arguments.append(u'-quality')
+            arguments.append(u'85')
+        
+        # Imagemagick page number is 0 base
+        input_arg = u'%s[%d]' % (input_filepath, page - 1)
+
+        # Specify the file format next to the output filename
+        output_filepath = u'%s:%s' % (file_format, output_filepath)
+                  
         command = []
         command.append(unicode(IM_CONVERT_PATH))
         command.extend(unicode(QUALITY_SETTINGS[quality]).split())
-        command.append(unicode(input_filepath))
+        command.append(unicode(input_arg))
         if arguments:
-            command.extend(unicode(arguments).split())
+            command.extend(arguments)
         command.append(unicode(output_filepath))
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
