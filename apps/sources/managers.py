@@ -7,9 +7,6 @@ class SourceTransformationManager(models.Manager):
         ct = ContentType.objects.get_for_model(obj)
         return self.model.objects.filter(content_type=ct).filter(object_id=obj.pk)
 
-    #def get_for_object_as_list(self, obj):
-    #    return list([{'transformation': transformation['transformation'], 'arguments': eval(transformation['arguments'])} for transformation in self.get_for_object(obj).values('transformation', 'arguments')])
-
     def get_for_object_as_list(self, obj):
         warnings = []
         transformations = []

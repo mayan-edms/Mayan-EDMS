@@ -34,11 +34,9 @@ class ConverterClass(ConverterBase):
 
 
     def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
-        print 'convert_file'
         arguments = []
         if transformations:
             for transformation in transformations:
-                print 'transformation: %s' % transformation
                 if transformation['transformation'] == TRANSFORMATION_RESIZE:
                     dimensions = []
                     dimensions.append(unicode(transformation['arguments']['width']))
@@ -52,11 +50,9 @@ class ConverterClass(ConverterBase):
                     arguments.append(u'%d%%' % transformation['arguments']['percent'])
                     
                 elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                    print 'Do rotate'
                     arguments.append(u'-rotate')
                     arguments.append(u'%s' % transformation['arguments']['degrees'])
                 
-        print 'arguments: %s' % arguments
         if format == u'jpg':
             arguments.append(u'-quality')
             arguments.append(u'85')
@@ -77,7 +73,6 @@ class ConverterClass(ConverterBase):
         if arguments:
             command.extend(arguments)
         command.append(unicode(output_filepath))
-        print 'command: %s' % command
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
         if return_code != 0:

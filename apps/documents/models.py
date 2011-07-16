@@ -90,7 +90,7 @@ class Document(models.Model):
         mimetype, page count and transformation when originally created
         """
         new_document = not self.pk
-
+        transformations = kwargs.pop('transformations', None)
         super(Document, self).save(*args, **kwargs)
 
         if new_document:
@@ -99,7 +99,8 @@ class Document(models.Model):
             self.update_mimetype(save=False)
             self.save()
             self.update_page_count(save=False)
-            self.apply_default_transformations()
+            if transformations:
+                self.apply_default_transformations(transformations)
 
     @models.permalink
     def get_absolute_url(self):
@@ -200,21 +201,21 @@ class Document(models.Model):
         exists in storage
         """
         return self.file.storage.exists(self.file.path)
+    
 
-    def apply_default_transformations(self):
+    def apply_default_transformations(self, transformations):
         #Only apply default transformations on new documents
-        if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
-            for transformation in DEFAULT_TRANSFORMATIONS:
-                if 'name' in transformation:
-                    for document_page in self.documentpage_set.all():
-                        page_transformation = DocumentPageTransformation(
-                            document_page=document_page,
-                            order=0,
-                            transformation=transformation['name'])
-                        if 'arguments' in transformation:
-                            page_transformation.arguments = transformation['arguments']
+        if reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
+            for transformation in transformations:
+                for document_page in self.documentpage_set.all():
+                    page_transformation = DocumentPageTransformation(
+                        document_page=document_page,
+                        order=0,
+                        transformation=transformation.get('transformation'),
+                        arguments=transformation.get('arguments')
+                    )
 
-                        page_transformation.save()
+                    page_transformation.save()
 
 
 class DocumentTypeFilename(models.Model):

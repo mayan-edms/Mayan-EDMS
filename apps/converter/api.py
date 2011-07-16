@@ -110,7 +110,6 @@ def convert(input_filepath, cleanup_files=True, *args, **kwargs):
     unoconv_output = None
 
     output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
-    print 'output_filepath', output_filepath
     if os.path.exists(output_filepath):
         return output_filepath
 

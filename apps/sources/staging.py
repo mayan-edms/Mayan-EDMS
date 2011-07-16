@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 from converter.api import convert, cache_cleanup
 
 DEFAULT_STAGING_DIRECTORY = u'/tmp'
-#from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
