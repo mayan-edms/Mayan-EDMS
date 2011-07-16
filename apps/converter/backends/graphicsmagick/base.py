@@ -4,7 +4,8 @@ import re
 from converter.conf.settings import GM_PATH
 from converter.conf.settings import GM_SETTINGS
 from converter.literals import QUALITY_DEFAULT, QUALITY_SETTINGS
-from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
+from converter.exceptions import ConvertError, UnknownFormat, \
+    IdentifyError
 from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
@@ -50,7 +51,7 @@ class ConverterClass(ConverterBase):
                     arguments.append(u'-rotate')
                     arguments.append(u'%s' % transformation['arguments']['degrees'])
 
-        if format == u'jpg':
+        if format == u'jpeg':
             arguments.append(u'-quality')
             arguments.append(u'85')
 

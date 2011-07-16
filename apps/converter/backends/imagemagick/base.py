@@ -1,8 +1,6 @@
 import subprocess
 import re
 
-from django.utils.translation import ugettext_lazy as _
-
 from converter.conf.settings import IM_IDENTIFY_PATH
 from converter.conf.settings import IM_CONVERT_PATH
 from converter.api import QUALITY_DEFAULT, QUALITY_SETTINGS
@@ -12,6 +10,8 @@ from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
     TRANSFORMATION_ZOOM
+from converter.literals import DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER, \
+    DEFAULT_FILE_FORMAT
     
 CONVERTER_ERROR_STRING_NO_DECODER = u'no decode delegate for this image format'
 
@@ -29,7 +29,6 @@ class ConverterClass(ConverterBase):
         if return_code != 0:
             raise IdentifyError(proc.stderr.readline())
         return proc.stdout.read()
-
 
     def convert_file(self, input_filepath, output_filepath, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         arguments = []
@@ -51,7 +50,7 @@ class ConverterClass(ConverterBase):
                     arguments.append(u'-rotate')
                     arguments.append(u'%s' % transformation['arguments']['degrees'])
                     
-        if format == u'jpg':
+        if format == u'jpeg':
             arguments.append(u'-quality')
             arguments.append(u'85')
         

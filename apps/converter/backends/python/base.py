@@ -6,13 +6,11 @@ from converter.literals import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
-    TRANSFORMATION_ROTATE
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
+from converter.literals import QUALITY_DEFAULT, DEFAULT_PAGE_NUMBER, \
+    DEFAULT_FILE_FORMAT
 
 class ConverterClass(ConverterBase):
-    def identify_file(self, input_filepath, arguments=None):
-        pass
-
-
     def get_page_count(self, input_filepath):
         page_count = 1
         im = Image.open(input_filepath)
@@ -26,33 +24,39 @@ class ConverterClass(ConverterBase):
             pass # end of sequence
             
         return page_count
+    
+    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+        try:
+            im = Image.open(input_filepath)
+        except Exception: # Python Imaging Library doesn't recognize it as an image
+            raise UnknownFormat
         
-            
-    def convert_file(self, input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
-        im = Image.open(input_filepath)
-        outfile, format = output_filepath.split(u':')
-        im.save(outfile, format)
-        '''
-        command = []
-        command.append(unicode(GM_PATH))
-        command.append(u'convert')
-        command.extend(unicode(QUALITY_SETTINGS[quality]).split())
-        command.extend(unicode(GM_SETTINGS).split())
-        command.append(unicode(input_filepath))
-        if arguments:
-            command.extend(unicode(arguments).split())
-        command.append(unicode(output_filepath))
-        proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-        return_code = proc.wait()
-        if return_code != 0:
-            #Got an error from convert program
-            error_line = proc.stderr.readline()
-            if (CONVERTER_ERROR_STRING_NO_DECODER in error_line) or (CONVERTER_ERROR_STARTS_WITH in error_line):
-                #Try to determine from error message which class of error is it
-                raise UnknownFormat
-            else:
-                raise ConvertError(error_line)
-        '''
+        current_page = 0
+        try:
+            while current_page == page - 1:
+                im.seek(im.tell() + 1)
+                current_page += 1
+                # do something to im
+        except EOFError:
+            pass # end of sequence        
+
+        if transformations:
+            for transformation in transformations:
+                aspect = 1.0 * im.size[1] / im.size[0]
+                if transformation['transformation'] == TRANSFORMATION_RESIZE:
+                    width = int(transformation['arguments']['width'])
+                    height = int(transformation['arguments'].get('height', 1.0 * width * aspect))
+                    im = im.resize((width, height), Image.ANTIALIAS)
+                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
+                    decimal_value = float(transformation['arguments']['percent']) / 100
+                    im = im.transform((im.size[0] * decimal_value, im.size[1] * decimal_value), Image.EXTENT, (0, 0, im.size[0], im.size[1])) 
+                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                    # PIL counter degress counter-clockwise, reverse them
+                    im = im.rotate(360 - transformation['arguments']['degrees'])
+
+        if im.mode not in ('L', 'RGB'):
+            im = im.convert('RGB')
+        im.save(output_filepath, format=file_format)
 
     def get_format_list(self):
         """
@@ -65,16 +69,8 @@ class ConverterClass(ConverterBase):
         
         return formats
 
-
     def get_available_transformations(self):
         return [
-            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE
+            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, \
+            TRANSFORMATION_ZOOM
         ]
-
-
-    def get_page_count(self, input_filepath):
-        try:
-            return len(self.identify_file(unicode(input_filepath)).splitlines())
-        except:
-            #TODO: send to other page number identifying program
-            return 1
