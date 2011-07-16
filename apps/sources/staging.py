@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 from converter.api import convert, cache_cleanup
 
 DEFAULT_STAGING_DIRECTORY = u'/tmp'
-#from documents.conf.settings import DEFAULT_TRANSFORMATIONS
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
@@ -106,16 +105,15 @@ class StagingFile(object):
     def upload(self):
         """
         Return a StagingFile encapsulated in a File class instance to
-        allow for easier upload a staging files
+        allow for easier upload of staging files
         """
         try:
             return File(file(self.filepath, 'rb'), name=self.filename)
         except Exception, exc:
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
 
-    def delete(self, preview_size):
-        # tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        cache_cleanup(self.filepath, size=preview_size)# , extra_options=tranformation_string)
+    def delete(self, preview_size, transformations):
+        cache_cleanup(self.filepath, size=preview_size, transformations=transformations)
         try:
             os.unlink(self.filepath)
         except OSError, exc:
@@ -124,24 +122,7 @@ class StagingFile(object):
             else:
                 raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
 
-    def preview(self, preview_size):
+    def preview(self, preview_size, transformations):
         errors = []
-        # tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        # output_file = convert(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
-        output_file = convert(self.filepath, size=preview_size, cleanup_files=False)
+        output_file = convert(self.filepath, size=preview_size, cleanup_files=False, transformations=transformations)
         return output_file, errors
-
-
-def get_transformation_string(transformations):
-    transformation_list = []
-    errors = []
-    #for transformation in transformations:
-    #    try:
-    #        if transformation['name'] in TRANFORMATION_CHOICES:
-    #            output = TRANFORMATION_CHOICES[transformation['name']] % eval(transformation['arguments'])
-    #            transformation_list.append(output)
-    #    except Exception, e:
-    #        errors.append(e)
-
-    #tranformation_string = ' '.join(transformation_list)
-    return tranformation_string, errors

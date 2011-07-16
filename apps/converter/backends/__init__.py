@@ -21,9 +21,6 @@ class ConverterBase(object):
     def get_available_transformations(self):
         raise NotImplementedError("Your %s class has not defined a get_available_transformations() method, which is required." % self.__class__.__name__)
 
-    def get_available_transformations_labels(self):
-        return ([(name, data['label']) for name, data in self.get_available_transformations().items()])
-
     def get_transformation_string(self, transformation_list):
         transformations = []
         warnings = []
@@ -41,3 +38,5 @@ class ConverterBase(object):
 
         return u' '.join(transformations), warnings        
     
+    def get_page_count(self):
+        raise NotImplementedError("Your %s class has not defined a get_page_count() method, which is required." % self.__class__.__name__)

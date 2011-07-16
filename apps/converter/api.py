@@ -1,9 +1,6 @@
 import os
 import subprocess
-
-from django.utils.importlib import import_module
-from django.template.defaultfilters import slugify
-from django.core.exceptions import ImproperlyConfigured
+import hashlib
 
 from common import TEMPORARY_DIRECTORY
 from documents.utils import document_save_to_temp_dir
@@ -12,20 +9,22 @@ from converter.conf.settings import UNPAPER_PATH
 from converter.conf.settings import OCR_OPTIONS
 from converter.conf.settings import UNOCONV_PATH
 from converter.exceptions import UnpaperError, OfficeConversionError
-from converter.utils import load_backend
-from converter.literals import DEFAULT_PAGE_INDEX_NUMBER, \
+from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_OCR_FILE_FORMAT, QUALITY_DEFAULT, DEFAULT_ZOOM_LEVEL, \
-    DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_PRINT
+    DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_HIGH
 
+from converter import backend
+from converter.literals import TRANSFORMATION_CHOICES
+from converter.literals import TRANSFORMATION_RESIZE, \
+    TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
+    TRANSFORMATION_ZOOM
+from converter.literals import DIMENSION_SEPARATOR    
+
+HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
+    
 CONVERTER_OFFICE_FILE_EXTENSIONS = [
     u'ods', u'docx', u'doc'
 ]
-
-try:
-    backend = load_backend().ConverterClass()
-except ImproperlyConfigured:
-    raise ImproperlyConfigured(u'Missing or incorrect converter backend: %s' % GRAPHICS_BACKEND)
-
 
 def cleanup(filename):
     """
@@ -75,19 +74,11 @@ def cache_cleanup(input_filepath, *args, **kwargs):
 
 def create_image_cache_filename(input_filepath, *args, **kwargs):
     if input_filepath:
-        temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
-        temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-
-        final_filepath = []
-        [final_filepath.append(str(arg)) for arg in args]
-        final_filepath.extend([u'%s_%s' % (key, value) for key, value in kwargs.items()])
-
-        temp_path += slugify(u'_'.join(final_filepath))
-
-        return temp_path
+        hash_value = HASH_FUNCTION(u''.join([input_filepath, unicode(args), unicode(kwargs)]))
+        return os.path.join(TEMPORARY_DIRECTORY, hash_value)
     else:
         return None
-
+        
 
 def convert_office_document(input_filepath):
     if os.path.exists(UNOCONV_PATH):
@@ -104,15 +95,14 @@ def convert_document(document, *args, **kwargs):
     return convert(document_save_to_temp_dir(document, document.checksum), *args, **kwargs)
 
 
-def convert(input_filepath, *args, **kwargs):
+def convert(input_filepath, cleanup_files=True, *args, **kwargs):
     size = kwargs.get('size')
     file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
-    extra_options = kwargs.get('extra_options', u'')
     zoom = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
-    page = kwargs.get('page', DEFAULT_PAGE_INDEX_NUMBER)
-    cleanup_files = kwargs.get('cleanup_files', True)
+    page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
     quality = kwargs.get('quality', QUALITY_DEFAULT)
+    transformations = kwargs.get('transformations', [])
 
     unoconv_output = None
 
@@ -126,20 +116,32 @@ def convert(input_filepath, *args, **kwargs):
         if result:
             unoconv_output = result
             input_filepath = result
-            extra_options = u''
 
-    input_arg = u'%s[%s]' % (input_filepath, page)
-    extra_options += u' -resize %s' % size
+    transformations.append(
+        {
+            'transformation': TRANSFORMATION_RESIZE,
+            'arguments': dict(zip([u'width', u'height'], size.split(DIMENSION_SEPARATOR)))
+        }
+    )
+
     if zoom != 100:
-        extra_options += u' -resize %d%% ' % zoom
+        transformations.append(
+            {
+                'transformation': TRANSFORMATION_ZOOM,
+                'arguments': {'percent': zoom}
+            }
+        )        
 
     if rotation != 0 and rotation != 360:
-        extra_options += u' -rotate %d ' % rotation
+        transformations.append(
+            {
+                'transformation': TRANSFORMATION_ROTATE,
+                'arguments': {'degrees': rotation}
+            }
+        )           
 
-    if format == u'jpg':
-        extra_options += u' -quality 85'
     try:
-        backend.convert_file(input_filepath=input_arg, arguments=extra_options, output_filepath=u'%s:%s' % (file_format, output_filepath), quality=quality)
+        backend.convert_file(input_filepath=input_filepath, output_filepath=output_filepath, quality=quality, transformations=transformations, page=page, file_format=file_format)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -150,11 +152,7 @@ def convert(input_filepath, *args, **kwargs):
 
 
 def get_page_count(input_filepath):
-    try:
-        return len(backend.identify_file(unicode(input_filepath)).splitlines())
-    except:
-        #TODO: send to other page number identifying program
-        return 1
+    return backend.get_page_count(input_filepath)
 
 
 def get_document_dimensions(document, *args, **kwargs):
@@ -166,7 +164,7 @@ def get_document_dimensions(document, *args, **kwargs):
         return [0, 0]
 
 
-def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
+def convert_document_for_ocr(document, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
     #Extract document file
     input_filepath = document_save_to_temp_dir(document, document.uuid)
 
@@ -178,14 +176,12 @@ def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_form
     unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
     convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
 
-    input_arg = u'%s[%s]' % (input_filepath, page)
-
     try:
-        document_page = document.documentpage_set.get(page_number=page + 1)
+        document_page = document.documentpage_set.get(page_number=page)
         transformation_string, warnings = document_page.get_transformation_string()
 
         #Apply default transformations
-        backend.convert_file(input_filepath=input_arg, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
+        backend.convert_file(input_filepath=input_filepath, page=page, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
         #Do OCR operations
         backend.convert_file(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper
@@ -198,3 +194,12 @@ def convert_document_for_ocr(document, page=DEFAULT_PAGE_INDEX_NUMBER, file_form
         cleanup(unpaper_output_file)
 
     return convert_output_file
+
+
+def get_available_transformations_choices():
+    result = []
+    for transformation in backend.get_available_transformations():
+        transformation_template = u'%s %s' % (TRANSFORMATION_CHOICES[transformation]['label'], u','.join(['<%s>' % argument['name'] if argument['required'] else '[%s]' % argument['name'] for argument in TRANSFORMATION_CHOICES[transformation]['arguments']]))
+        result.append([transformation, transformation_template])
+        
+    return result

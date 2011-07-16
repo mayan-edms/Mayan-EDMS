@@ -1,13 +1,16 @@
 import subprocess
 import re
 
-from django.utils.translation import ugettext_lazy as _
-
 from converter.conf.settings import GM_PATH
 from converter.conf.settings import GM_SETTINGS
 from converter.literals import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 from converter.backends import ConverterBase
+from converter.literals import TRANSFORMATION_RESIZE, \
+    TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
+    TRANSFORMATION_ZOOM
+from converter.literals import DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER, \
+    DEFAULT_FILE_FORMAT
 
 CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
 CONVERTER_ERROR_STARTS_WITH = u'starts with'
@@ -27,16 +30,44 @@ class ConverterClass(ConverterBase):
             raise IdentifyError(proc.stderr.readline())
         return proc.stdout.read()
 
+    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+        arguments = []
+        if transformations:
+            for transformation in transformations:
+                if transformation['transformation'] == TRANSFORMATION_RESIZE:
+                    dimensions = []
+                    dimensions.append(unicode(transformation['arguments']['width']))
+                    if 'height' in transformation['arguments']:
+                        dimensions.append(unicode(transformation['arguments']['height']))
+                    arguments.append(u'-resize')
+                    arguments.append(u'%s' % DIMENSION_SEPARATOR.join(dimensions))
 
-    def convert_file(self, input_filepath, output_filepath, quality=QUALITY_DEFAULT, arguments=None):
+                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
+                    arguments.append(u'-resize')
+                    arguments.append(u'%d%%' % transformation['arguments']['percent'])
+
+                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                    arguments.append(u'-rotate')
+                    arguments.append(u'%s' % transformation['arguments']['degrees'])
+
+        if format == u'jpg':
+            arguments.append(u'-quality')
+            arguments.append(u'85')
+
+        # Graphicsmagick page number is 0 base
+        input_arg = u'%s[%d]' % (input_filepath, page - 1)
+
+        # Specify the file format next to the output filename
+        output_filepath = u'%s:%s' % (file_format, output_filepath)
+
         command = []
         command.append(unicode(GM_PATH))
         command.append(u'convert')
         command.extend(unicode(QUALITY_SETTINGS[quality]).split())
         command.extend(unicode(GM_SETTINGS).split())
-        command.append(unicode(input_filepath))
+        command.append(unicode(input_arg))
         if arguments:
-            command.extend(unicode(arguments).split())
+            command.extend(arguments)
         command.append(unicode(output_filepath))
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
@@ -49,13 +80,12 @@ class ConverterClass(ConverterBase):
             else:
                 raise ConvertError(error_line)
 
-
     def get_format_list(self):
         """
         Call GraphicsMagick to parse all of it's supported file formats, and
         return a list of the names and descriptions
         """
-        format_regex = re.compile(' *([A-Z0-9]+)[*]? +([A-Z0-9]+) +([rw\-+]+) *(.*).*')    
+        format_regex = re.compile(' *([A-Z0-9]+)[*]? +([A-Z0-9]+) +([rw\-+]+) *(.*).*')
         formats = []
         command = []
         command.append(unicode(GM_PATH))
@@ -66,20 +96,23 @@ class ConverterClass(ConverterBase):
         return_code = proc.wait()
         if return_code != 0:
             raise ConvertError(proc.stderr.readline())
-        
+
         for line in proc.stdout.readlines():
             fields = format_regex.findall(line)
             if fields:
                 formats.append((fields[0][0], fields[0][3]))
-        
+
         return formats
 
-
     def get_available_transformations(self):
-        return {
-            'rotate': {
-                'label': _(u'Rotate [degrees]'),
-                'arguments': [{'name': 'degrees'}],
-                'command_line': u'-rotate %(degrees)d'
-            }
-        }
+        return [
+            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, \
+            TRANSFORMATION_DENSITY, TRANSFORMATION_ZOOM
+        ]
+
+    def get_page_count(self, input_filepath):
+        try:
+            return len(self.identify_file(unicode(input_filepath)).splitlines())
+        except:
+            #TODO: send to other page number identifying program
+            return 1
