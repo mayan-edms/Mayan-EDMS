@@ -178,10 +178,10 @@ def convert_document_for_ocr(document, page=DEFAULT_PAGE_NUMBER, file_format=DEF
 
     try:
         document_page = document.documentpage_set.get(page_number=page)
-        transformation_string, warnings = document_page.get_transformation_string()
+        transformations, warnings = document_page.get_transformation_list()
 
         #Apply default transformations
-        backend.convert_file(input_filepath=input_filepath, page=page, quality=QUALITY_HIGH, arguments=transformation_string, output_filepath=transformation_output_file)
+        backend.convert_file(input_filepath=input_filepath, page=page, quality=QUALITY_HIGH, transformations=transformations, output_filepath=transformation_output_file)
         #Do OCR operations
         backend.convert_file(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
         # Process by unpaper

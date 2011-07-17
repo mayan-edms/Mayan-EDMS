@@ -79,7 +79,7 @@ def do_document_ocr(document):
     trying to extract text from PDF using pdftotext then by calling
     tesseract
     """
-    for page_index, document_page in enumerate(document.documentpage_set.all()):
+    for document_page in document.documentpage_set.all():
         desc, filepath = tempfile.mkstemp()
         imagefile = None
         source = u''
@@ -91,7 +91,7 @@ def do_document_ocr(document):
                 cleanup(pdf_filename)
                 if os.stat(filepath).st_size == 0:
                     #PDF page had no text, run tesseract on the page
-                    imagefile = convert_document_for_ocr(document, page=page_index)
+                    imagefile = convert_document_for_ocr(document, page=document_page.page_number)
                     run_tesseract(imagefile, filepath, TESSERACT_LANGUAGE)
                     ocr_output = os.extsep.join([filepath, u'txt'])
                     source = _(u'Text from OCR')
@@ -99,12 +99,11 @@ def do_document_ocr(document):
                     ocr_output = filepath
                     source = _(u'Text extracted from PDF')
             else:
-                imagefile = convert_document_for_ocr(document, page=page_index)
+                imagefile = convert_document_for_ocr(document, page=document_page.page_number)
                 run_tesseract(imagefile, filepath, TESSERACT_LANGUAGE)
                 ocr_output = os.extsep.join([filepath, u'txt'])
                 source = _(u'Text from OCR')
             f = codecs.open(ocr_output, 'r', 'utf-8')
-            document_page = document.documentpage_set.get(page_number=page_index + 1)
             document_page.content = ocr_cleanup(f.read().strip())
             document_page.page_label = source
             document_page.save()

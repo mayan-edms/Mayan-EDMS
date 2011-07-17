@@ -305,7 +305,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
     document_page = get_object_or_404(document.documentpage_set, page_number=page)
-    transformations, warnings = DocumentPageTransformation.objects.get_for_document_page_as_list(document_page)
+    transformations, warnings = document_page.get_transformation_list()
 
     if warnings and (request.user.is_staff or request.user.is_superuser):
         for warning in warnings:
