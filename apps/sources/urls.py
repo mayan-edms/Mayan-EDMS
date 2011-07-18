@@ -16,12 +16,12 @@ urlpatterns = patterns('sources.views',
     url(r'^setup/interactive/staging_folder/list/$', 'setup_source_list', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_list'),
 
     url(r'^setup/interactive/(?P<source_type>\w+)/list/$', 'setup_source_list', (), 'setup_source_list'),
-    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/edit/$', 'setup_source_edit', (), 'setup_source_edit'),
-    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/delete/$', 'setup_source_delete', (), 'setup_source_delete'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/edit/$', 'setup_source_edit', (), 'setup_source_edit'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/delete/$', 'setup_source_delete', (), 'setup_source_delete'),
     url(r'^setup/interactive/(?P<source_type>\w+)/create/$', 'setup_source_create', (), 'setup_source_create'),
 
-    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/transformation/list/$', 'setup_source_transformation_list', (), 'setup_source_transformation_list'),
-    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\w+)/transformation/create/$', 'setup_source_transformation_create', (), 'setup_source_transformation_create'),
-    url(r'^setup/interactive/source/transformation/(?P<transformation_id>\w+)/edit/$', 'setup_source_transformation_edit', (), 'setup_source_transformation_edit'),
-    url(r'^setup/interactive/source/transformation/(?P<transformation_id>\w+)/delete/$', 'setup_source_transformation_delete', (), 'setup_source_transformation_delete'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/transformation/list/$', 'setup_source_transformation_list', (), 'setup_source_transformation_list'),
+    url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/transformation/create/$', 'setup_source_transformation_create', (), 'setup_source_transformation_create'),
+    url(r'^setup/interactive/source/transformation/(?P<transformation_id>\d+)/edit/$', 'setup_source_transformation_edit', (), 'setup_source_transformation_edit'),
+    url(r'^setup/interactive/source/transformation/(?P<transformation_id>\d+)/delete/$', 'setup_source_transformation_delete', (), 'setup_source_transformation_delete'),
 )

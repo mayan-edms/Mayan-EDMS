@@ -12,15 +12,13 @@ from python_magic import magic
 from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
-from converter import TRANFORMATION_CHOICES
+from converter.api import get_available_transformations_choices
 
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
-from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
-from documents.managers import RecentDocumentManager
-
-available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
+from documents.managers import RecentDocumentManager, \
+    DocumentPageTransformationManager
 
 
 def get_filename_from_uuid(instance, filename):
@@ -92,7 +90,7 @@ class Document(models.Model):
         mimetype, page count and transformation when originally created
         """
         new_document = not self.pk
-
+        transformations = kwargs.pop('transformations', None)
         super(Document, self).save(*args, **kwargs)
 
         if new_document:
@@ -101,7 +99,8 @@ class Document(models.Model):
             self.update_mimetype(save=False)
             self.save()
             self.update_page_count(save=False)
-            self.apply_default_transformations()
+            if transformations:
+                self.apply_default_transformations(transformations)
 
     @models.permalink
     def get_absolute_url(self):
@@ -202,21 +201,21 @@ class Document(models.Model):
         exists in storage
         """
         return self.file.storage.exists(self.file.path)
+    
 
-    def apply_default_transformations(self):
+    def apply_default_transformations(self, transformations):
         #Only apply default transformations on new documents
-        if DEFAULT_TRANSFORMATIONS and reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
-            for transformation in DEFAULT_TRANSFORMATIONS:
-                if 'name' in transformation:
-                    for document_page in self.documentpage_set.all():
-                        page_transformation = DocumentPageTransformation(
-                            document_page=document_page,
-                            order=0,
-                            transformation=transformation['name'])
-                        if 'arguments' in transformation:
-                            page_transformation.arguments = transformation['arguments']
+        if reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
+            for transformation in transformations:
+                for document_page in self.documentpage_set.all():
+                    page_transformation = DocumentPageTransformation(
+                        document_page=document_page,
+                        order=0,
+                        transformation=transformation.get('transformation'),
+                        arguments=transformation.get('arguments')
+                    )
 
-                        page_transformation.save()
+                    page_transformation.save()
 
 
 class DocumentTypeFilename(models.Model):
@@ -258,25 +257,12 @@ class DocumentPage(models.Model):
         verbose_name = _(u'document page')
         verbose_name_plural = _(u'document pages')
 
+    def get_transformation_list(self):
+        return DocumentPageTransformation.objects.get_for_document_page_as_list(self)
+
     @models.permalink
     def get_absolute_url(self):
         return ('document_page_view', [self.pk])
-
-    def get_transformation_string(self):
-        transformation_list = []
-        warnings = []
-        for page_transformation in self.documentpagetransformation_set.all():
-            try:
-                if page_transformation.transformation in TRANFORMATION_CHOICES:
-                    transformation_list.append(
-                        TRANFORMATION_CHOICES[page_transformation.transformation] % eval(
-                            page_transformation.arguments
-                        )
-                    )
-            except Exception, e:
-                warnings.append(e)
-
-        return u' '.join(transformation_list), warnings
 
 
 class DocumentPageTransformation(models.Model):
@@ -286,8 +272,10 @@ class DocumentPageTransformation(models.Model):
     """
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
-    transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
+    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
+
+    objects = DocumentPageTransformationManager()
 
     def __unicode__(self):
         return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.document_page))

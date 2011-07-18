@@ -129,9 +129,13 @@ def upload_interactive(request, source_type=None, source_id=None):
                                 expand = True
                             else:
                                 expand = False
-                        if (not expand) or (expand and not _handle_zip_file(request, request.FILES['file'], document_type)):
+
+                        transformations, errors = SourceTransformation.objects.get_for_object_as_list(web_form)
+                               
+                        if (not expand) or (expand and not _handle_zip_file(request, request.FILES['file'], document_type=document_type, transformations=transformations)):
                             instance = form.save()
                             instance.save()
+                            instance.apply_default_transformations(transformations)
                             if document_type:
                                 instance.document_type = document_type
                             _handle_save_document(request, instance, form)
@@ -174,16 +178,18 @@ def upload_interactive(request, source_type=None, source_id=None):
                                 expand = True
                             else:
                                 expand = False                        
-                        if (not expand) or (expand and not _handle_zip_file(request, staging_file.upload(), document_type)):
+                        transformations, errors = SourceTransformation.objects.get_for_object_as_list(staging_folder)
+                        if (not expand) or (expand and not _handle_zip_file(request, staging_file.upload(), document_type=document_type, transformations=transformations)):
                             document = Document(file=staging_file.upload())
                             if document_type:
                                 document.document_type = document_type
                             document.save()
+                            document.apply_default_transformations(transformations)
                             _handle_save_document(request, document, form)
                             messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
-                            staging_file.delete(staging_folder.get_preview_size())
+                            staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
                             messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
                     except Exception, e:
                         messages.error(request, e)
@@ -260,7 +266,7 @@ def _handle_save_document(request, document, form=None):
     create_history(HISTORY_DOCUMENT_CREATED, document, {'user': request.user})
 
 
-def _handle_zip_file(request, uploaded_file, document_type=None):
+def _handle_zip_file(request, uploaded_file, document_type=None, transformations=None):
     filename = getattr(uploaded_file, 'filename', getattr(uploaded_file, 'name', ''))
     if filename.lower().endswith('zip'):
         zfobj = zipfile.ZipFile(uploaded_file)
@@ -285,7 +291,12 @@ def staging_file_preview(request, source_type, source_id, staging_file_id):
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
     try:
-        output_file, errors = StagingFile.get(staging_file_id).preview(staging_folder.get_preview_size())
+        transformations, errors=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+        
+        output_file, errors = StagingFile.get(staging_file_id).preview(
+            preview_size=staging_folder.get_preview_size(),
+            transformations=transformations
+        )
         if errors and (request.user.is_staff or request.user.is_superuser):
             for error in errors:
                 messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
@@ -313,15 +324,19 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)    
 
     staging_file = StagingFile.get(staging_file_id)
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
         try:
-            staging_file.delete(staging_folder.get_preview_size())
+            transformations, errors=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+            staging_file.delete(
+                preview_size=staging_folder.get_preview_size(),
+                transformations=transformations
+            )
             messages.success(request, _(u'Staging file delete successfully.'))
         except Exception, e:
-            messages.error(request, e)
+            messages.error(request, _(u'Staging file delete error; %s.') % e)
         return HttpResponseRedirect(next)
 
     results = get_active_tab_links()
@@ -509,11 +524,17 @@ def setup_source_transformation_edit(request, transformation_id):
         form = SourceTransformationForm(instance=source_transformation, data=request.POST)
         if form.is_valid():
             try:
-                form.save()
-                messages.success(request, _(u'Source transformation edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing source transformation; %s') % e)
+                # Test the validity of the argument field
+                eval(form.cleaned_data['arguments'], {})
+            except:
+                messages.error(request, _(u'Source transformation argument error.'))
+            else:
+                try:
+                    form.save()
+                    messages.success(request, _(u'Source transformation edited successfully'))
+                    return HttpResponseRedirect(next)
+                except Exception, e:
+                    messages.error(request, _(u'Error editing source transformation; %s') % e)
     else:
         form = SourceTransformationForm(instance=source_transformation)
 
@@ -541,9 +562,9 @@ def setup_source_transformation_delete(request, transformation_id):
     if request.method == 'POST':
         try:
             source_transformation.delete()
-            messages.success(request, _(u'Transformation deleted successfully.'))
+            messages.success(request, _(u'Source transformation deleted successfully.'))
         except Exception, e:
-            messages.error(request, _(u'Error deleting transformation; %(error)s') % {
+            messages.error(request, _(u'Error deleting source transformation; %(error)s') % {
                 'error': e}
             )
         return HttpResponseRedirect(redirect_view)
@@ -556,7 +577,7 @@ def setup_source_transformation_delete(request, transformation_id):
             {'object': 'source', 'name': _(u'source')},
             {'object': 'transformation', 'name': _(u'transformation')}
         ],            
-        'title': _(u'Are you sure you wish to delete transformation "%(transformation)s"') % {
+        'title': _(u'Are you sure you wish to delete source transformation "%(transformation)s"') % {
             'transformation': source_transformation.get_transformation_display(),
         },
         'previous': previous,
@@ -598,13 +619,19 @@ def setup_source_transformation_create(request, source_type, source_id):
         form = SourceTransformationForm_create(request.POST)
         if form.is_valid():
             try:
-                source_tranformation = form.save(commit=False)
-                source_tranformation.content_object = source
-                source_tranformation.save()
-                messages.success(request, _(u'Source transformation created successfully'))
-                return HttpResponseRedirect(redirect_view)
-            except Exception, e:
-                messages.error(request, _(u'Error creating source transformation; %s') % e)
+                # Test the validity of the argument field
+                eval(form.cleaned_data['arguments'], {})
+            except:
+                messages.error(request, _(u'Source transformation argument error.'))
+            else:            
+                try:
+                    source_tranformation = form.save(commit=False)
+                    source_tranformation.content_object = source
+                    source_tranformation.save()
+                    messages.success(request, _(u'Source transformation created successfully'))
+                    return HttpResponseRedirect(redirect_view)
+                except Exception, e:
+                    messages.error(request, _(u'Error creating source transformation; %s') % e)
     else:
         form = SourceTransformationForm_create()
         

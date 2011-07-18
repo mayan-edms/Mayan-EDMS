@@ -4,13 +4,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from documents.models import DocumentType
-from documents.conf.settings import AVAILABLE_TRANSFORMATIONS
 from documents.managers import RecentDocumentManager
 from metadata.models import MetadataType
+from converter.api import get_available_transformations_choices
+from converter.literals import DIMENSION_SEPARATOR    
 
 from sources.managers import SourceTransformationManager
-
-available_transformations = ([(name, data['label']) for name, data in AVAILABLE_TRANSFORMATIONS.items()])
 
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
 SOURCE_UNCOMPRESS_CHOICE_N = 'n'
@@ -120,7 +119,7 @@ class StagingFolder(InteractiveBaseModel):
         if self.preview_height:
             dimensions.append(unicode(self.preview_height))
 
-        return u'x'.join(dimensions)
+        return DIMENSION_SEPARATOR.join(dimensions)
 
     class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'staging folder')
@@ -164,8 +163,8 @@ class SourceTransformation(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
-    transformation = models.CharField(choices=available_transformations, max_length=128, verbose_name=_(u'transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'))
+    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
+    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}')
 
     objects = SourceTransformationManager()
 
