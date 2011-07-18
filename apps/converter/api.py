@@ -5,8 +5,6 @@ import hashlib
 from common import TEMPORARY_DIRECTORY
 from documents.utils import document_save_to_temp_dir
 
-from converter.conf.settings import UNPAPER_PATH
-from converter.conf.settings import OCR_OPTIONS
 from converter.conf.settings import UNOCONV_PATH
 from converter.exceptions import UnpaperError, OfficeConversionError
 from converter.literals import DEFAULT_PAGE_NUMBER, \
@@ -34,21 +32,6 @@ def cleanup(filename):
         os.remove(filename)
     except OSError:
         pass
-
-
-def execute_unpaper(input_filepath, output_filepath):
-    """
-    Executes the program unpaper using subprocess's Popen
-    """
-    command = []
-    command.append(UNPAPER_PATH)
-    command.append(u'--overwrite')
-    command.append(input_filepath)
-    command.append(output_filepath)
-    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE)
-    return_code = proc.wait()
-    if return_code != 0:
-        raise UnpaperError(proc.stderr.readline())
 
 
 def execute_unoconv(input_filepath, arguments=''):
@@ -162,38 +145,6 @@ def get_document_dimensions(document, *args, **kwargs):
         return [int(dimension) for dimension in backend.identify_file(unicode(document_filepath), options).split()]
     else:
         return [0, 0]
-
-
-def convert_document_for_ocr(document, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
-    #Extract document file
-    input_filepath = document_save_to_temp_dir(document, document.uuid)
-
-    #Convert for OCR
-    temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
-    temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, file_format)
-    unpaper_input_file = u'%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
-    unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
-    convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
-
-    try:
-        document_page = document.documentpage_set.get(page_number=page)
-        transformations, warnings = document_page.get_transformation_list()
-
-        #Apply default transformations
-        backend.convert_file(input_filepath=input_filepath, page=page, quality=QUALITY_HIGH, transformations=transformations, output_filepath=transformation_output_file)
-        #Do OCR operations
-        backend.convert_file(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
-        # Process by unpaper
-        execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
-        # Convert to tif
-        backend.convert_file(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
-    finally:
-        cleanup(transformation_output_file)
-        cleanup(unpaper_input_file)
-        cleanup(unpaper_output_file)
-
-    return convert_output_file
 
 
 def get_available_transformations_choices():
