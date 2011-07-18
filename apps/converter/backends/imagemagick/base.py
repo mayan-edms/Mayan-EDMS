@@ -106,7 +106,7 @@ class ConverterClass(ConverterBase):
     def get_available_transformations(self):
         return [
             TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, \
-            TRANSFORMATION_DENSITY, TRANSFORMATION_ZOOM
+            TRANSFORMATION_ZOOM
         ]
 
 

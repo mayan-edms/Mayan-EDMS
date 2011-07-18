@@ -1,3 +1,4 @@
+import slate
 from PIL import Image
 
 from django.utils.translation import ugettext_lazy as _
@@ -9,12 +10,28 @@ from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
 from converter.literals import QUALITY_DEFAULT, DEFAULT_PAGE_NUMBER, \
     DEFAULT_FILE_FORMAT
+from converter.utils import get_mimetype
+
 
 class ConverterClass(ConverterBase):
     def get_page_count(self, input_filepath):
         page_count = 1
-        im = Image.open(input_filepath)
-
+        
+        mimetype, encoding = get_mimetype(input_filepath)
+        if mimetype == 'application/pdf':
+            # If file is a PDF open it with slate to determine the page
+            # count
+            with open(input_filepath) as fd:
+                pages = slate.PDF(fd)
+            return len(pages)
+            
+        try:
+            im = Image.open(input_filepath)
+        except IOError:  #cannot identify image file
+            # Return a page count of 1, to atleast allow the document
+            # to be created
+            return 1
+            
         try:
             while 1:
                 im.seek(im.tell()+1)

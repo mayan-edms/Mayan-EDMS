@@ -562,9 +562,9 @@ def setup_source_transformation_delete(request, transformation_id):
     if request.method == 'POST':
         try:
             source_transformation.delete()
-            messages.success(request, _(u'Transformation deleted successfully.'))
+            messages.success(request, _(u'Source transformation deleted successfully.'))
         except Exception, e:
-            messages.error(request, _(u'Error deleting transformation; %(error)s') % {
+            messages.error(request, _(u'Error deleting source transformation; %(error)s') % {
                 'error': e}
             )
         return HttpResponseRedirect(redirect_view)
@@ -577,7 +577,7 @@ def setup_source_transformation_delete(request, transformation_id):
             {'object': 'source', 'name': _(u'source')},
             {'object': 'transformation', 'name': _(u'transformation')}
         ],            
-        'title': _(u'Are you sure you wish to delete transformation "%(transformation)s"') % {
+        'title': _(u'Are you sure you wish to delete source transformation "%(transformation)s"') % {
             'transformation': source_transformation.get_transformation_display(),
         },
         'previous': previous,

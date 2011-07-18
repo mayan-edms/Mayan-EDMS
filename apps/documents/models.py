@@ -257,6 +257,9 @@ class DocumentPage(models.Model):
         verbose_name = _(u'document page')
         verbose_name_plural = _(u'document pages')
 
+    def get_transformation_list(self):
+        return DocumentPageTransformation.objects.get_for_document_page_as_list(self)
+
     @models.permalink
     def get_absolute_url(self):
         return ('document_page_view', [self.pk])
