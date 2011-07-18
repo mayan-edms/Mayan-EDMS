@@ -18,6 +18,8 @@ Python:
 * django-mptt - Utilities for implementing a modified pre-order traversal tree in django
 * python-magic - A python wrapper for libmagic
 * django-taggit - Simple tagging for django
+* slate - The simplest way to extract text from PDFs in Python
+
 
 Execute pip install -r requirements/production.txt to install the python/django dependencies automatically.
 
