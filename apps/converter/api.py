@@ -8,7 +8,7 @@ from documents.utils import document_save_to_temp_dir
 from converter.conf.settings import UNOCONV_PATH
 from converter.exceptions import UnpaperError, OfficeConversionError
 from converter.literals import DEFAULT_PAGE_NUMBER, \
-    DEFAULT_OCR_FILE_FORMAT, QUALITY_DEFAULT, DEFAULT_ZOOM_LEVEL, \
+    QUALITY_DEFAULT, DEFAULT_ZOOM_LEVEL, \
     DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_HIGH
 
 from converter import backend
@@ -100,12 +100,13 @@ def convert(input_filepath, cleanup_files=True, *args, **kwargs):
             unoconv_output = result
             input_filepath = result
 
-    transformations.append(
-        {
-            'transformation': TRANSFORMATION_RESIZE,
-            'arguments': dict(zip([u'width', u'height'], size.split(DIMENSION_SEPARATOR)))
-        }
-    )
+    if size:
+        transformations.append(
+            {
+                'transformation': TRANSFORMATION_RESIZE,
+                'arguments': dict(zip([u'width', u'height'], size.split(DIMENSION_SEPARATOR)))
+            }
+        )
 
     if zoom != 100:
         transformations.append(
