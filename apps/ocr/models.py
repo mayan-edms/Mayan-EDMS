@@ -48,6 +48,9 @@ class QueueDocument(models.Model):
         ordering = ('datetime_submitted',)
         verbose_name = _(u'queue document')
         verbose_name_plural = _(u'queue documents')
+        
+    def get_transformation_list(self):
+        return QueueTransformation.objects.get_for_object_as_list(self)
 
     def __unicode__(self):
         try:
