@@ -9,8 +9,10 @@ import sys
 from django.utils.translation import ugettext as _
 from django.utils.importlib import import_module
 
+from common import TEMPORARY_DIRECTORY
 from converter.api import convert
 from documents.models import DocumentPage
+from documents.utils import document_save_to_temp_dir
 
 from ocr.conf.settings import TESSERACT_PATH
 from ocr.conf.settings import TESSERACT_LANGUAGE
@@ -18,6 +20,7 @@ from ocr.exceptions import TesseractError
 from ocr.conf.settings import UNPAPER_PATH
 from ocr.parsers import parse_document_page
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
+from ocr.literals import DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT
 
 
 def get_language_backend():
@@ -45,11 +48,14 @@ def cleanup(filename):
         pass
 
 
-def run_tesseract(input_filename, output_filename_base, lang=None):
+def run_tesseract(input_filename, lang=None):
     """
     Execute the command line binary of tesseract
     """
-    command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(output_filename_base)]
+    fd, filepath = tempfile.mkstemp()
+    os.close(fd)
+    ocr_output = os.extsep.join([filepath, u'txt'])
+    command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(filepath)]
     if lang is not None:
         command += [u'-l', lang]
 
@@ -57,41 +63,57 @@ def run_tesseract(input_filename, output_filename_base, lang=None):
     return_code = proc.wait()
     if return_code != 0:
         error_text = proc.stderr.read()
+        cleanup(filepath)
+        cleanup(ocr_output)
         raise TesseractError(error_text)
+        
+    return codecs.open(ocr_output, 'r', 'utf-8'), ocr_output
+    
 
-
-def do_document_ocr(document):
+def do_document_ocr(queue_document):
     """
-    first try to extract text from document pages using the registered
-    parser if the parser fails or if there is no parser registered for
+    Try first to extract text from document pages using the registered
+    parser, if the parser fails or if there is no parser registered for
     the document mimetype do a visual OCR by calling tesseract
     """
-    for document_page in document.documentpage_set.all():
+    for document_page in queue_document.document.documentpage_set.all():
         try:
             # Try to extract text by means of a parser
             parse_document_page(document_page)
         except (ParserError, ParserUnknownFile):
             # Fall back to doing visual OCR
-            pass
-            #desc, filepath = tempfile.mkstemp()
-            #imagefile = None
-            #source = u''
-            #imagefile = convert_document_for_ocr(document, page=document_page.page_number)
-            #run_tesseract(imagefile, filepath, TESSERACT_LANGUAGE)
-            #ocr_output = os.extsep.join([filepath, u'txt'])
-            #source = _(u'Text from OCR')
-            #f = codecs.open(ocr_output, 'r', 'utf-8')
-            #document_page.content = ocr_cleanup(f.read().strip())
-            #document_page.page_label = source
-            #document_page.save()
-            #f.close()
-            #cleanup(ocr_output)
-        #finally:
-        #    pass
-            #os.close(desc)
-            #cleanup(filepath)
-            #if imagefile:
-            #    cleanup(imagefile)
+            transformations = []
+            document_transformations, warnings = document_page.get_transformation_list()
+            ocr_transformations, warnings = queue_document.get_transformation_list()
+            transformations.extend(document_transformations)
+            transformations.extend(ocr_transformations)
+
+            unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
+
+            document_filepath = os.path.join(TEMPORARY_DIRECTORY, document_page.document.uuid)
+            unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
+            
+            document.save_to_file(document_filepath)
+
+            transformed_filepath=convert(document_filepath, file_format=UNPAPER_FILE_FORMAT, page=document_page.page_number, transformations=transformations)
+            execute_unpaper(input_filepath=transformed_filepath, output_filepath=unpaper_output_filepath)
+            # Convert to TIFF
+            pre_ocr_filepath = output_filepath=convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)
+            # Tesseract needs an explicit file extension
+            pre_ocr_filepath_w_ext = os.extsep.join([pre_ocr_filepath, DEFAULT_OCR_FILE_FORMAT])
+            os.rename(pre_ocr_filepath, pre_ocr_filepath_w_ext)
+            try:
+                fd, ocr_output = run_tesseract(pre_ocr_filepath_w_ext, TESSERACT_LANGUAGE)
+                document_page.content = ocr_cleanup(fd.read().strip())
+                document_page.page_label = _(u'Text from OCR')
+                document_page.save()
+                fd.close()
+                cleanup(ocr_output)
+            finally:
+                cleanup(pre_ocr_filepath_w_ext)
+                cleanup(transformed_filepath)
+                cleanup(document_filepath)
+                cleanup(unpaper_output_filepath)
 
 
 def ocr_cleanup(text):
@@ -139,38 +161,3 @@ def execute_unpaper(input_filepath, output_filepath):
     return_code = proc.wait()
     if return_code != 0:
         raise UnpaperError(proc.stderr.readline())
-
-'''
-def convert_document_for_ocr(document, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_OCR_FILE_FORMAT):
-    #Extract document file
-    input_filepath = document_save_to_temp_dir(document, document.uuid)
-
-    #Convert for OCR
-    temp_filename, separator = os.path.splitext(os.path.basename(input_filepath))
-    temp_path = os.path.join(TEMPORARY_DIRECTORY, temp_filename)
-    transformation_output_file = u'%s_trans%s%s%s' % (temp_path, page, os.extsep, file_format)
-    unpaper_input_file = u'%s_unpaper_in%s%spnm' % (temp_path, page, os.extsep)
-    unpaper_output_file = u'%s_unpaper_out%s%spnm' % (temp_path, page, os.extsep)
-    convert_output_file = u'%s_ocr%s%s%s' % (temp_path, page, os.extsep, file_format)
-
-    try:
-        document_page = document.documentpage_set.get(page_number=page)
-        transformations, warnings = document_page.get_transformation_list()
-
-        #Apply default transformations
-        backend.convert_file(input_filepath=input_filepath, page=page, quality=QUALITY_HIGH, transformations=transformations, output_filepath=transformation_output_file)
-        #Do OCR operations
-        backend.convert_file(input_filepath=transformation_output_file, arguments=OCR_OPTIONS, output_filepath=unpaper_input_file)
-        # Process by unpaper
-        execute_unpaper(input_filepath=unpaper_input_file, output_filepath=unpaper_output_file)
-        # Convert to tif
-        backend.convert_file(input_filepath=unpaper_output_file, output_filepath=convert_output_file)
-    finally:
-        cleanup(transformation_output_file)
-        cleanup(unpaper_input_file)
-        cleanup(unpaper_output_file)
-
-    return convert_output_file
-'''
-
-
