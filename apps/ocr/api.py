@@ -16,11 +16,12 @@ from documents.utils import document_save_to_temp_dir
 
 from ocr.conf.settings import TESSERACT_PATH
 from ocr.conf.settings import TESSERACT_LANGUAGE
-from ocr.exceptions import TesseractError
+from ocr.exceptions import TesseractError, UnpaperError
 from ocr.conf.settings import UNPAPER_PATH
 from ocr.parsers import parse_document_page
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
-from ocr.literals import DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT
+from ocr.literals import DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT, \
+    DEFAULT_OCR_FILE_EXTENSION
 
 
 def get_language_backend():
@@ -100,7 +101,7 @@ def do_document_ocr(queue_document):
             # Convert to TIFF
             pre_ocr_filepath = output_filepath=convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)
             # Tesseract needs an explicit file extension
-            pre_ocr_filepath_w_ext = os.extsep.join([pre_ocr_filepath, DEFAULT_OCR_FILE_FORMAT])
+            pre_ocr_filepath_w_ext = os.extsep.join([pre_ocr_filepath, DEFAULT_OCR_FILE_EXTENSION])
             os.rename(pre_ocr_filepath, pre_ocr_filepath_w_ext)
             try:
                 fd, ocr_output = run_tesseract(pre_ocr_filepath_w_ext, TESSERACT_LANGUAGE)
