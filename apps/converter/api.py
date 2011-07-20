@@ -6,7 +6,7 @@ from common import TEMPORARY_DIRECTORY
 from documents.utils import document_save_to_temp_dir
 
 from converter.conf.settings import UNOCONV_PATH
-from converter.exceptions import UnpaperError, OfficeConversionError
+from converter.exceptions import OfficeConversionError
 from converter.literals import DEFAULT_PAGE_NUMBER, \
     QUALITY_DEFAULT, DEFAULT_ZOOM_LEVEL, \
     DEFAULT_ROTATION, DEFAULT_FILE_FORMAT, QUALITY_HIGH
@@ -17,21 +17,13 @@ from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
     TRANSFORMATION_ZOOM
 from converter.literals import DIMENSION_SEPARATOR    
+from converter.utils import cleanup
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
     
 CONVERTER_OFFICE_FILE_EXTENSIONS = [
     u'ods', u'docx', u'doc'
 ]
-
-def cleanup(filename):
-    """
-    Tries to remove the given filename. Ignores non-existent files
-    """
-    try:
-        os.remove(filename)
-    except OSError:
-        pass
 
 
 def execute_unoconv(input_filepath, arguments=''):
