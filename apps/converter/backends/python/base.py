@@ -9,12 +9,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.utils import get_mimetype
 
-from converter.literals import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
-from converter.literals import QUALITY_DEFAULT, DEFAULT_PAGE_NUMBER, \
+from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_FILE_FORMAT
 from converter.utils import cleanup
 
@@ -48,7 +47,7 @@ class ConverterClass(ConverterBase):
             
         return page_count
     
-    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         tmpfile = None
         mimetype, encoding = get_mimetype(input_filepath)
         if mimetype == 'application/pdf':
@@ -65,7 +64,7 @@ class ConverterClass(ConverterBase):
                 '-dNOPAUSE', '-dNOPROMPT', 
                 first_page_tmpl, last_page_tmpl,
                 '-sDEVICE=jpeg', '-dJPEGQ=75',
-                '-r300', output_file_tmpl,
+                '-r150', output_file_tmpl,
                 input_file_tmpl,
                 '-c "60000000 setvmthreshold"',  # use 30MB
                 '-dNOGC',  # No garbage collection
