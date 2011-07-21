@@ -1,6 +1,6 @@
 import os
 
-from common import TEMPORARY_DIRECTORY
+from common.conf.settings import TEMPORARY_DIRECTORY
 
 
 #http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
