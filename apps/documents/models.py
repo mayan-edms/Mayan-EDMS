@@ -1,11 +1,13 @@
 import os
 import tempfile
+import hashlib
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.comments.models import Comment
+from django.conf import settings
 
 from python_magic import magic
 
@@ -13,12 +15,26 @@ from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
+from converter.api import create_image_cache_filename, convert
+from converter.exceptions import UnknownFormat, UnkownConvertError
 
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
+from documents.conf.settings import PREVIEW_SIZE
+from documents.conf.settings import THUMBNAIL_SIZE
+from documents.conf.settings import CACHE_PATH
+
 from documents.managers import RecentDocumentManager, \
     DocumentPageTransformationManager
+from documents.utils import document_save_to_temp_dir
+from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
+    PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
+from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
+    DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER
+    
+# document image cache name hash function
+HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
 
 def get_filename_from_uuid(instance, filename):
@@ -201,8 +217,7 @@ class Document(models.Model):
         exists in storage
         """
         return self.file.storage.exists(self.file.path)
-    
-
+   
     def apply_default_transformations(self, transformations):
         #Only apply default transformations on new documents
         if reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.documentpage_set.all()]) == 0:
@@ -216,6 +231,29 @@ class Document(models.Model):
                     )
 
                     page_transformation.save()
+                    
+    def get_image_cache_name(self, page):
+        document_page = self.documentpage_set.get(page_number=page)
+        transformations, warnings = document_page.get_transformation_list()
+        hash_value = HASH_FUNCTION(u''.join([self.checksum, unicode(page), unicode(transformations)]))
+        cache_file_path = os.path.join(CACHE_PATH, hash_value)
+        if os.path.exists(cache_file_path):
+            return cache_file_path
+        else:
+            document_file = document_save_to_temp_dir(self, self.checksum)
+            return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations)
+            
+    def get_image(self, size=PREVIEW_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
+        try:
+            image_cache_name = self.get_image_cache_name(page=page)
+            output_file = convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
+        except UnknownFormat:
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_SMALL)
+        except UnkownConvertError:    
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
+        except Exception, e:
+            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
+        return output_file
 
 
 class DocumentTypeFilename(models.Model):

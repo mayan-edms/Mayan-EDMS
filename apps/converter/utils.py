@@ -2,14 +2,6 @@ import os
 
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.importlib import import_module
-
-try:
-    from python_magic import magic
-    USE_PYTHON_MAGIC = True
-except:
-    import mimetypes
-    mimetypes.init()
-    USE_PYTHON_MAGIC = False
     
     
 #http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
@@ -82,30 +74,11 @@ def load_backend():
                 raise # If there's some other error, this must be an error in Mayan itself.
 
 
-def get_mimetype(filepath):
+def cleanup(filename):
     """
-    Determine a file's mimetype by calling the system's libmagic
-    library via python-magic or fallback to use python's mimetypes
-    library
+    Tries to remove the given filename. Ignores non-existent files
     """
-    file_mimetype = u''
-    file_mime_encoding = u''
-    
-    if USE_PYTHON_MAGIC:
-        if os.path.exists(filepath):
-            try:
-                source = open(filepath, 'r')
-                mime = magic.Magic(mime=True)
-                file_mimetype = mime.from_buffer(source.read())
-                source.seek(0)
-                mime_encoding = magic.Magic(mime_encoding=True)
-                file_mime_encoding = mime_encoding.from_buffer(source.read())
-            finally:
-                if source:
-                    source.close()
-    else:
-        path, filename = os.path.split(filepath)
-        file_mimetype, file_mime_encoding = mimetypes.guess_type(filename)
-        
-    return file_mimetype, file_mime_encoding
-
+    try:
+        os.remove(filename)
+    except OSError:
+        pass

@@ -3,7 +3,6 @@ import re
 
 from converter.conf.settings import IM_IDENTIFY_PATH
 from converter.conf.settings import IM_CONVERT_PATH
-from converter.literals import QUALITY_DEFAULT, QUALITY_SETTINGS
 from converter.exceptions import ConvertError, UnknownFormat, \
     IdentifyError
 from converter.backends import ConverterBase
@@ -30,7 +29,7 @@ class ConverterClass(ConverterBase):
             raise IdentifyError(proc.stderr.readline())
         return proc.stdout.read()
 
-    def convert_file(self, input_filepath, output_filepath, transformations=None, quality=QUALITY_DEFAULT, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         arguments = []
         if transformations:
             for transformation in transformations:
@@ -50,7 +49,7 @@ class ConverterClass(ConverterBase):
                     arguments.append(u'-rotate')
                     arguments.append(u'%s' % transformation['arguments']['degrees'])
                     
-        if format == u'jpeg':
+        if file_format.lower() == u'jpeg' or file_format.lower() == u'jpg':
             arguments.append(u'-quality')
             arguments.append(u'85')
         
@@ -62,7 +61,6 @@ class ConverterClass(ConverterBase):
                   
         command = []
         command.append(unicode(IM_CONVERT_PATH))
-        command.extend(unicode(QUALITY_SETTINGS[quality]).split())
         command.append(unicode(input_arg))
         if arguments:
             command.extend(arguments)

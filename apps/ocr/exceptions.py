@@ -4,3 +4,10 @@ class AlreadyQueued(Exception):
 
 class TesseractError(Exception):
     pass
+
+
+class UnpaperError(Exception):
+    """
+    Raised by unpaper
+    """
+    pass
