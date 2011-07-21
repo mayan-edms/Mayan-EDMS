@@ -14,9 +14,7 @@ register_settings(
         {'name': u'GRAPHICS_BACKEND', 'global_name': u'CONVERTER_GRAPHICS_BACKEND', 'default': u'converter.backends.python', 'description': _(u'Graphics conversion backend to use.  Options are: converter.backends.imagemagick, converter.backends.graphicsmagick and converter.backends.python.')},
         {'name': u'UNOCONV_PATH', 'global_name': u'CONVERTER_UNOCONV_PATH', 'default': u'/usr/bin/unoconv', 'exists': True},
         #{'name': u'OCR_OPTIONS', 'global_name': u'CONVERTER_OCR_OPTIONS', 'default': u'-colorspace Gray -depth 8 -resample 200x200'},
-        {'name': u'DEFAULT_OPTIONS', 'global_name': u'CONVERTER_DEFAULT_OPTIONS', 'default': u''},
-        {'name': u'LOW_QUALITY_OPTIONS', 'global_name': u'CONVERTER_LOW_QUALITY_OPTIONS', 'default': u''},
-        {'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},
-        {'name': u'PRINT_QUALITY_OPTIONS', 'global_name': u'CONVERTER_PRINT_QUALITY_OPTIONS', 'default': u'-density 500'},
+        #{'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},
+        #{'name': u'PRINT_QUALITY_OPTIONS', 'global_name': u'CONVERTER_PRINT_QUALITY_OPTIONS', 'default': u'-density 500'},
     ]
 )
