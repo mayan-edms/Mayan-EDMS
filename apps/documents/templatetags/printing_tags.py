@@ -1,6 +1,6 @@
 from django.template import Library, Node, Variable
 
-from converter.api import get_document_dimensions, QUALITY_PRINT
+from converter.api import get_document_dimensions
 
 from documents.views import calculate_converter_arguments
 from documents.conf.settings import PRINT_SIZE
@@ -14,8 +14,7 @@ class GetImageSizeNode(Node):
 
     def render(self, context):
         document = Variable(self.document).resolve(context)
-        arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, quality=QUALITY_PRINT)
-        width, height = get_document_dimensions(document, **arguments)
+        width, height = get_document_dimensions(document)
         context[u'document_width'], context['document_height'] = width, height
         context[u'document_aspect'] = float(width) / float(height)
         return u''
