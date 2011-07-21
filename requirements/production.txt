@@ -10,3 +10,4 @@ django-taggit==0.9.3
 slate==0.3
 PIL==1.1.7
 ghostscript==0.4.1
+pdfminer==20110227
