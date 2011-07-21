@@ -2,11 +2,10 @@ import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.conf import settings as common_settings
 from navigation.api import register_links
 
-TEMPORARY_DIRECTORY = common_settings.TEMPORARY_DIRECTORY \
-    if common_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
+from common.conf import settings as common_settings
+from common.utils import validate_path
 
 
 def has_usable_password(context):
@@ -17,3 +16,6 @@ current_user_details = {'text': _(u'user details'), 'view': 'current_user_detail
 current_user_edit = {'text': _(u'edit details'), 'view': 'current_user_edit', 'famfam': 'vcard_edit'}
 
 register_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
+
+if (validate_path(common_settings.TEMPORARY_DIRECTORY) == False) or (not common_settings.TEMPORARY_DIRECTORY):
+    setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())

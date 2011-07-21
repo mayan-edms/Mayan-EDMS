@@ -2,6 +2,7 @@
 import os
 import re
 import types
+import tempfile
 
 from django.utils.http import urlquote  as django_urlquote
 from django.utils.http import urlencode as django_urlencode
@@ -374,3 +375,22 @@ def get_mimetype(filepath):
         file_mimetype, file_mime_encoding = mimetypes.guess_type(filename)
         
     return file_mimetype, file_mime_encoding
+
+
+def validate_path(path):
+    if os.path.exists(path) != True:
+        # If doesn't exist try to create it
+        try:
+            os.mkdir(path)
+        except:
+            return False
+    
+    # Check if it is writable
+    try:
+        fd, test_filepath = tempfile.mkstemp(dir=path)
+        os.close(fd)
+        os.unlink(test_filepath)
+    except:
+        return False
+        
+    return True
