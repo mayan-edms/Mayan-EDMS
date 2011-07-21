@@ -62,7 +62,7 @@ def tag_add_attach(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_tags', args=[document.pk]))))
-    
+
     if request.method == 'POST':
         form = AddTagForm(request.POST)
         if form.is_valid():
@@ -97,14 +97,14 @@ def tag_add_attach(request, document_id):
             return HttpResponseRedirect(next)
     else:
         form = AddTagForm()
-        
+
     return render_to_response('generic_form.html', {
         'title': _(u'attach tag to: %s') % document,
         'form': form,
         'object': document,
         'next': next,
     },
-    context_instance=RequestContext(request))        
+    context_instance=RequestContext(request))
 
 
 def tag_list(request):
@@ -222,7 +222,7 @@ def tag_tagged_item_list(request, tag_id):
 def document_tags(request, document_id):
     check_permissions(request.user, [PERMISSION_TAG_VIEW])
     document = get_object_or_404(Document, pk=document_id)
-    
+
     return render_to_response('generic_list.html', {
         'title': _(u'tags for: %s') % document,
         'object_list': document.tags.all(),
@@ -265,7 +265,7 @@ def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
                 })
 
         return HttpResponseRedirect(next)
-        
+
     context = {
         'previous': previous,
         'next': next,
@@ -284,4 +284,3 @@ def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
 
 def tag_multiple_remove(request, document_id):
     return tag_remove(request, document_id=document_id, tag_id_list=request.GET.get('id_list', []))
-

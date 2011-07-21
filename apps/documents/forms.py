@@ -178,7 +178,7 @@ class DocumentForm(forms.ModelForm):
         if instance:
             if hasattr(instance, 'document_type'):
                 document_type = instance.document_type
-                
+
         if document_type:
             filenames_qs = document_type.documenttypefilename_set.filter(enabled=True)
             if filenames_qs.count() > 0:
@@ -190,7 +190,7 @@ class DocumentForm(forms.ModelForm):
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
     )
-  
+
 
 class DocumentForm_edit(DocumentForm):
     """
@@ -199,7 +199,7 @@ class DocumentForm_edit(DocumentForm):
     class Meta:
         model = Document
         exclude = ('file', 'document_type', 'tags')
-        
+
 
 class DocumentPropertiesForm(DetailForm):
     """

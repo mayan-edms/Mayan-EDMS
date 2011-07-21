@@ -29,6 +29,7 @@ if common_settings.AUTO_CREATE_ADMIN:
     # the "syncdb" command during database creation.)
     #
     # Create our own test user automatically.
+
     def create_testuser(app, created_models, verbosity, **kwargs):
         USERNAME = common_settings.AUTO_ADMIN_USERNAME
         PASSWORD = common_settings.AUTO_ADMIN_PASSWORD

@@ -2,7 +2,6 @@ from django.template import Library, Node, Variable
 
 from converter.api import get_document_dimensions
 
-from documents.views import calculate_converter_arguments
 from documents.conf.settings import PRINT_SIZE
 
 register = Library()

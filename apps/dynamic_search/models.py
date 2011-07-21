@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from dynamic_search.managers import RecentSearchManager
 from dynamic_search.api import registered_search_dict
 
-        
+
 class RecentSearch(models.Model):
     """
     Keeps a list of the n most recent search keywords for a given user
@@ -46,15 +46,15 @@ class RecentSearch(models.Model):
     def save(self, *args, **kwargs):
         self.datetime_created = datetime.now()
         super(RecentSearch, self).save(*args, **kwargs)
-    
+
     def url(self):
         view = 'results' if self.is_advanced() else 'search'
         return '%s?%s' % (reverse(view), self.query)
-        
+
     def is_advanced(self):
         return 'q' not in urlparse.parse_qs(self.query)
 
     class Meta:
         ordering = ('-datetime_created',)
         verbose_name = _(u'recent search')
-        verbose_name_plural = _(u'recent searches')        
+        verbose_name_plural = _(u'recent searches')

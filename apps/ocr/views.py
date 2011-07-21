@@ -41,7 +41,7 @@ def queue_document_list(request, queue_name='default'):
             'queue': document_queue,
             'object_name': _(u'document queue'),
             'navigation_object_name': 'queue',
-            'list_object_variable_name': 'queue_document',               
+            'list_object_variable_name': 'queue_document',
             'extra_columns': [
                 {'name': 'document', 'attribute': lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.')},
                 {'name': _(u'thumbnail'), 'attribute': lambda x: document_thumbnail(x.document)},
@@ -325,7 +325,7 @@ def node_active_list(request):
 
 def setup_queue_transformation_list(request, document_queue_id):
     #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-    
+
     document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
 
     context = {
@@ -336,7 +336,7 @@ def setup_queue_transformation_list(request, document_queue_id):
         'queue': document_queue,
         'object_name': _(u'document queue'),
         'navigation_object_name': 'queue',
-        'list_object_variable_name': 'transformation',        
+        'list_object_variable_name': 'transformation',
         'extra_columns': [
             {'name': _(u'order'), 'attribute': 'order'},
             {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
@@ -347,12 +347,12 @@ def setup_queue_transformation_list(request, document_queue_id):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def setup_queue_transformation_edit(request, transformation_id):
     #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-    
+
     transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
     redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', redirect_view)))
@@ -386,7 +386,7 @@ def setup_queue_transformation_edit(request, transformation_id):
         ],
         'next': next,
     },
-    context_instance=RequestContext(request))        
+    context_instance=RequestContext(request))
 
 
 def setup_queue_transformation_delete(request, transformation_id):
@@ -413,24 +413,23 @@ def setup_queue_transformation_delete(request, transformation_id):
         'navigation_object_list': [
             {'object': 'queue', 'name': _(u'document queue')},
             {'object': 'transformation', 'name': _(u'transformation')}
-        ],            
+        ],
         'title': _(u'Are you sure you wish to delete queue transformation "%(transformation)s"') % {
             'transformation': transformation.get_transformation_display(),
         },
         'previous': previous,
         'form_icon': u'shape_square_delete.png',
     },
-    context_instance=RequestContext(request))       
+    context_instance=RequestContext(request))
 
 
 def setup_queue_transformation_create(request, document_queue_id):
     #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-    
+
     redirect_view = reverse('setup_queue_transformation_list', args=[document_queue.pk])
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
-    
+
     if request.method == 'POST':
         form = QueueTransformationForm_create(request.POST)
         if form.is_valid():
@@ -439,7 +438,7 @@ def setup_queue_transformation_create(request, document_queue_id):
                 eval(form.cleaned_data['arguments'], {})
             except:
                 messages.error(request, _(u'Queue transformation argument error.'))
-            else:            
+            else:
                 try:
                     queue_tranformation = form.save(commit=False)
                     queue_tranformation.content_object = document_queue
@@ -450,7 +449,7 @@ def setup_queue_transformation_create(request, document_queue_id):
                     messages.error(request, _(u'Error creating queue transformation; %s') % e)
     else:
         form = QueueTransformationForm_create()
-        
+
     return render_to_response('generic_form.html', {
         'form': form,
         'queue': document_queue,
@@ -458,4 +457,3 @@ def setup_queue_transformation_create(request, document_queue_id):
         'navigation_object_name': 'queue',
         'title': _(u'Create new transformation for queue: %s') % document_queue,
     }, context_instance=RequestContext(request))
-

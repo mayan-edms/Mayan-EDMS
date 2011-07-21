@@ -43,7 +43,7 @@ if not DISABLE_HOME_VIEW:
     register_top_menu('home', link={'text': _(u'home'), 'view': 'home', 'famfam': 'house'}, position=0)
 if not SIDE_BAR_SEARCH:
     register_top_menu('search', link={'text': _(u'search'), 'view': 'search', 'famfam': 'zoom'}, children_path_regex=[r'^search/'])
-    
+
 register_top_menu('tools', link=tools_menu, children_views=['statistics', 'history_list', 'formats_list'])
 #register_top_menu('setup_menu', link={'text': _(u'setup'), 'view': 'setting_list', 'famfam': 'cog'}, children=setup_views)
 register_top_menu('setup_menu', link={'text': _(u'setup'), 'view': 'setting_list', 'famfam': 'cog'}, children_path_regex=[r'^settings/', r'^user_management/', r'^permissions', r'^documents/type', r'^metadata/setup', r'sources/setup'])

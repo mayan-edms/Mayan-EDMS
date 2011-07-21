@@ -39,10 +39,10 @@ def results(request, extra_context=None):
         if extra_context:
             context.update(extra_context)
         query = urlencode(dict(request.GET.items()))
-        
+
         if query:
-            RecentSearch.objects.add_query_for_user(request.user, query, response['result_count'])            
-            
+            RecentSearch.objects.add_query_for_user(request.user, query, response['result_count'])
+
         context.update({
             'found_entries': response['model_list'],
             'object_list': response['flat_list'],

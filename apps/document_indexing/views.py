@@ -32,7 +32,7 @@ def index_instance_list(request, index_id=None):
         index_instance_list = IndexInstance.objects.filter(parent=None)
         breadcrumbs = get_instance_link()
         index_instance = None
-    
+
     show_multi_select_buttons = False
     if index_instance:
         if index_instance.index.link_documents:
@@ -87,7 +87,7 @@ def rebuild_index_instances(request):
 def document_index_list(request, document_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     document = get_object_or_404(Document, pk=document_id)
-   
+
     object_list = []
 
     for index_instance in document.indexinstance_set.all():

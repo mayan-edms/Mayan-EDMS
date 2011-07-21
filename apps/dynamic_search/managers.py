@@ -1,5 +1,4 @@
 import urlparse
-from datetime import datetime
 
 from django.db import models
 from django.utils.http import urlencode
@@ -12,7 +11,7 @@ class RecentSearchManager(models.Manager):
         parsed_query = urlparse.parse_qs(query)
         for key, value in parsed_query.items():
             parsed_query[key] = u' '.join(value)
-            
+
         if 'q=' in query:
             # Is a simple query
             if not parsed_query.get('q'):

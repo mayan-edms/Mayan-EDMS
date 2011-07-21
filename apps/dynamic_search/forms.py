@@ -11,7 +11,7 @@ class SearchForm(forms.Form):
         required=False,
         widget=forms.widgets.HiddenInput()
     )
-    
+
 
 class AdvancedSearchForm(forms.Form):
     def __init__(self, *args, **kwargs):

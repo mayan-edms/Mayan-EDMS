@@ -37,5 +37,5 @@ class QueueTransformationManager(models.Manager):
                 )
             except Exception, e:
                 warnings.append(e)
-        
+
         return transformations, warnings

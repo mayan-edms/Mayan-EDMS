@@ -5,7 +5,6 @@ import hashlib
 from django.core.files.base import File
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext
-from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
 from converter.api import convert, cache_cleanup

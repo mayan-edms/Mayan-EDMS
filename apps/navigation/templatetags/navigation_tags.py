@@ -8,8 +8,6 @@ from django.template import TemplateSyntaxError, Library, \
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
-from django.template import Context
-
 from common.utils import urlquote
 
 from navigation.api import object_navigation, multi_object_navigation, \
@@ -80,7 +78,7 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
             condition_result = link['condition'](context)
         else:
             condition_result = True
-        
+
         if condition_result:
             new_link = copy.copy(link)
             try:
@@ -106,7 +104,7 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
             elif 'url' in link:
                 if not link.get('dont_mark_active', False):
                     new_link['active'] = link['url'] == current_path
-                    
+
                 if kwargs:
                     new_link['url'] = link['url'] % kwargs
                 else:
@@ -118,24 +116,24 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
 
             if 'conditional_highlight' in link:
                 new_link['active'] = link['conditional_highlight'](context)
-                
+
             if 'conditional_disable' in link:
                 new_link['disabled'] = link['conditional_disable'](context)
             else:
                 new_link['disabled'] = False
-                
+
             if current_view in link.get('children_views', []):
                 new_link['active'] = True
 
             for child_url_regex in link.get('children_url_regex', []):
                 if re.compile(child_url_regex).match(current_path.lstrip('/')):
                     new_link['active'] = True
-                    
+
             for cls in link.get('children_classes', []):
                 obj, object_name = get_navigation_object(context)
                 if type(obj) == cls or obj == cls:
                     new_link['active'] = True
-                            
+
             context_links.append(new_link)
     return context_links
 
@@ -150,9 +148,9 @@ def get_navigation_object(context):
         obj = Variable(object_name).resolve(context)
     except VariableDoesNotExist:
         obj = None
-        
+
     return obj, object_name
-    
+
 
 def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
     request = Variable('request').resolve(context)
@@ -202,7 +200,6 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
             context_links.append(link)
     except KeyError:
         pass
-
 
     return context_links
 

@@ -46,8 +46,8 @@ def get_document_mimetype(document):
     library
     """
     file_mimetype = u''
-    file_mime_encoding = u''    
-    
+    file_mime_encoding = u''
+
     if USE_PYTHON_MAGIC:
         if document.exists():
             try:
@@ -62,5 +62,5 @@ def get_document_mimetype(document):
                     source.close()
     else:
         file_mimetype, file_mime_encoding = mimetypes.guess_type(document.get_fullname())
-        
+
     return file_mimetype, file_mime_encoding

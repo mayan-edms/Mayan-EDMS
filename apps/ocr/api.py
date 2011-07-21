@@ -56,7 +56,7 @@ def run_tesseract(input_filename, lang=None):
     os.close(fd)
     ocr_output = os.extsep.join([filepath, u'txt'])
     command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(filepath)]
-    
+
     # TODO: Tesseract 3.0 segfaults
     #if lang is not None:
     #    command.extend([u'-l', lang])
@@ -68,15 +68,15 @@ def run_tesseract(input_filename, lang=None):
         cleanup(filepath)
         cleanup(ocr_output)
         raise TesseractError(error_text)
-        
+
     fd = codecs.open(ocr_output, 'r', 'utf-8')
     text = fd.read().strip()
     fd.close()
-    
-    os.unlink(filepath)    
-    
+
+    os.unlink(filepath)
+
     return text
-    
+
 
 def do_document_ocr(queue_document):
     """
@@ -91,12 +91,12 @@ def do_document_ocr(queue_document):
         except (ParserError, ParserUnknownFile):
             # Fall back to doing visual OCR
             ##ocr_transformations, warnings = queue_document.get_transformation_list()
-            
+
             document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number)
             unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
             unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
 
-            unpaper_input=convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
+            unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
             execute_unpaper(input_filepath=unpaper_input, output_filepath=unpaper_output_filepath)
 
             #from PIL import Image, ImageOps
@@ -108,7 +108,7 @@ def do_document_ocr(queue_document):
             #im.save(unpaper_output_filepath)
 
             # Convert to TIFF
-            pre_ocr_filepath = output_filepath=convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)
+            pre_ocr_filepath = convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)
             # Tesseract needs an explicit file extension
             pre_ocr_filepath_w_ext = os.extsep.join([pre_ocr_filepath, DEFAULT_OCR_FILE_EXTENSION])
             os.rename(pre_ocr_filepath, pre_ocr_filepath_w_ext)

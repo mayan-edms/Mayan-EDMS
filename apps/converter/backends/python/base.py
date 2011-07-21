@@ -129,6 +129,9 @@ class ConverterClass(ConverterBase):
         for format_name in Image.ID:
             formats.append((format_name, u''))
         
+        #if USE_GHOSTSCRIPT:
+        #PDF, PS    
+        
         return formats
 
     def get_available_transformations(self):
@@ -147,30 +150,30 @@ class ConverterClass(ConverterBase):
         '''
         #preresize image with factor 2, 4, 8 and fast algorithm
         factor = 1
-        while img.size[0]/factor > 2*box[0] and img.size[1]*2/factor > 2*box[1]:
+        while img.size[0]/factor > 2 * box[0] and img.size[1] * 2/factor > 2 * box[1]:
             factor *=2
         if factor > 1:
-            img.thumbnail((img.size[0]/factor, img.size[1]/factor), Image.NEAREST)
+            img.thumbnail((img.size[0] / factor, img.size[1] / factor), Image.NEAREST)
 
         #calculate the cropping box and get the cropped part
         if fit:
             x1 = y1 = 0
             x2, y2 = img.size
-            wRatio = 1.0 * x2/box[0]
-            hRatio = 1.0 * y2/box[1]
+            wRatio = 1.0 * x2 / box[0]
+            hRatio = 1.0 * y2 / box[1]
             if hRatio > wRatio:
-                y1 = y2/2-box[1]*wRatio/2
-                y2 = y2/2+box[1]*wRatio/2
+                y1 = y2 / 2 - box[1] * wRatio / 2
+                y2 = y2 / 2 + box[1] * wRatio / 2
             else:
-                x1 = x2/2-box[0]*hRatio/2
-                x2 = x2/2+box[0]*hRatio/2
-            img = img.crop((x1,y1,x2,y2))
+                x1 = x2 / 2 - box[0] * hRatio / 2
+                x2 = x2 / 2 + box[0] * hRatio / 2
+            img = img.crop((x1, y1, x2, y2))
 
         #Resize the image with best quality algorithm ANTI-ALIAS
         img.thumbnail(box, Image.ANTIALIAS)
 
         if out:
             #save it into a file-like object
-            img.save(out, "JPEG", quality=75)
+            img.save(out, 'JPEG', quality=75)
         else:
             return img

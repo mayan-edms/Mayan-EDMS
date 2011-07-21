@@ -4,7 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from documents.models import DocumentType
-from documents.managers import RecentDocumentManager
 from metadata.models import MetadataType
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR    

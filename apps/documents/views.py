@@ -1,4 +1,3 @@
-import os
 import urlparse
 import copy
 
@@ -10,7 +9,6 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.views.generic.create_update import delete_object, update_object
-from django.conf import settings
 from django.utils.http import urlencode
 
 import sendfile
@@ -24,8 +22,6 @@ from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER
 from filetransfers.api import serve_file
 from grouping.utils import get_document_group_subtemplate
-from metadata.api import save_metadata_list, \
-    decode_metadata_from_url, metadata_repr_as_list
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.api import check_permissions
@@ -33,7 +29,6 @@ from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
 
 from documents.conf.settings import PREVIEW_SIZE
-from documents.conf.settings import THUMBNAIL_SIZE
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import ZOOM_PERCENT_STEP
 from documents.conf.settings import ZOOM_MAX_LEVEL
@@ -52,7 +47,7 @@ from documents.literals import HISTORY_DOCUMENT_CREATED, \
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 
 from documents.forms import DocumentTypeSelectForm, \
-        DocumentForm, DocumentForm_edit, DocumentPropertiesForm, \
+        DocumentForm_edit, DocumentPropertiesForm, \
         DocumentPreviewForm, \
         DocumentPageForm, DocumentPageTransformationForm, \
         DocumentContentForm, DocumentPageForm_edit, \
@@ -61,9 +56,7 @@ from documents.forms import DocumentTypeSelectForm, \
 from documents.wizards import DocumentCreateWizard
 from documents.models import Document, DocumentType, DocumentPage, \
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename
-from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
-    PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
-    
+
 # Document type permissions
 from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT, \
     PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE
@@ -446,10 +439,10 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
             'hide_links': True,
             'multi_select_as_buttons': True,
         }
-        
+
         if extra_context:
             context.update(extra_context)
-            
+
         return render_to_response('generic_list.html', context,
             context_instance=RequestContext(request))
 
@@ -548,7 +541,7 @@ def document_page_view(request, document_page_id):
         zoom_text = u'(%d%%)' % zoom
     else:
         zoom_text = u''
-        
+
     if rotation != 0 and rotation != 360:
         rotation_text = u'(%d&deg;)' % rotation
     else:
@@ -779,10 +772,10 @@ def document_hard_copy(request, document_id):
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
-    arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT)
+    #arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT)
 
     # Pre-generate
-    convert_document(document, **arguments)
+    #convert_document(document, **arguments)
 
     # Extract dimension values ignoring any unit
     page_width = request.GET.get('page_width', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][0])
@@ -828,9 +821,9 @@ def document_type_list(request):
 
 def document_type_document_list(request, document_type_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    
+
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
-    
+
     return document_list(
         request,
         object_list=Document.objects.filter(document_type=document_type),
@@ -867,7 +860,7 @@ def document_type_edit(request, document_type_id):
         'object_name': _(u'document type'),
         'next': next
     },
-    context_instance=RequestContext(request))    
+    context_instance=RequestContext(request))
 
 
 def document_type_delete(request, document_type_id):
@@ -907,7 +900,7 @@ def document_type_delete(request, document_type_id):
 
 def document_type_create(request):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_CREATE])
-    
+
     if request.method == 'POST':
         form = DocumentTypeForm(request.POST)
         if form.is_valid():
@@ -948,7 +941,7 @@ def document_type_filename_list(request, document_type_id):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def document_type_filename_edit(request, document_type_filename_id):
@@ -982,7 +975,7 @@ def document_type_filename_edit(request, document_type_filename_id):
         'document_type': document_type_filename.document_type,
     },
     context_instance=RequestContext(request))
-    
+
 
 def document_type_filename_delete(request, document_type_filename_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
@@ -1017,14 +1010,14 @@ def document_type_filename_delete(request, document_type_filename_id):
     }
 
     return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def document_type_filename_create(request, document_type_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
-    
+
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
-    
+
     if request.method == 'POST':
         form = DocumentTypeFilenameForm_create(request.POST)
         if form.is_valid():

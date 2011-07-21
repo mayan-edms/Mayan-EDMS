@@ -1,6 +1,4 @@
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
-from django.conf import settings
 
 from common.utils import validate_path
 from navigation.api import register_links, register_top_menu, \
@@ -28,6 +26,7 @@ from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf.settings import CACHE_PATH
 from documents.widgets import document_thumbnail
 
+
 # Document page links expressions
 def is_first_page(context):
     return context['object'].page_number <= 1
@@ -35,7 +34,7 @@ def is_first_page(context):
 
 def is_last_page(context):
     return context['object'].page_number >= context['object'].document.documentpage_set.count()
-    
+
 
 def is_min_zoom(context):
     return context['zoom'] <= ZOOM_MIN_LEVEL
@@ -129,7 +128,7 @@ register_links(['setup_document_type_metadata', 'document_type_filename_delete',
 register_links(['document_type_filename_create', 'document_type_filename_list', 'document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_create], menu_name='sidebar')
 register_links(['document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_return_to_document_type], menu_name='sidebar')
 
-# Register document links 
+# Register document links
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
@@ -185,8 +184,8 @@ register_model_list_columns(Document, [
     ])
 
 register_top_menu(
-    'documents', 
-    link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'}, 
+    'documents',
+    link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'},
     children_path_regex=[
         r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents'
     ],

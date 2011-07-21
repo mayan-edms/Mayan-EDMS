@@ -20,7 +20,7 @@ except:
     import mimetypes
     mimetypes.init()
     USE_PYTHON_MAGIC = False
-    
+
 
 def urlquote(link=None, get=None):
     u'''
@@ -357,7 +357,7 @@ def get_mimetype(filepath):
     """
     file_mimetype = u''
     file_mime_encoding = u''
-    
+
     if USE_PYTHON_MAGIC:
         if os.path.exists(filepath):
             try:
@@ -373,7 +373,7 @@ def get_mimetype(filepath):
     else:
         path, filename = os.path.split(filepath)
         file_mimetype, file_mime_encoding = mimetypes.guess_type(filename)
-        
+
     return file_mimetype, file_mime_encoding
 
 
@@ -384,7 +384,7 @@ def validate_path(path):
             os.mkdir(path)
         except:
             return False
-    
+
     # Check if it is writable
     try:
         fd, test_filepath = tempfile.mkstemp(dir=path)
@@ -392,5 +392,5 @@ def validate_path(path):
         os.unlink(test_filepath)
     except:
         return False
-        
+
     return True

@@ -105,7 +105,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'form': unselected_list,
                     'title': left_list_title,
                     'submit_label': _(u'Add'),
-                    'submit_icon_famfam': 'add'                
+                    'submit_icon_famfam': 'add'
                 }
             },
             {
@@ -145,7 +145,7 @@ def current_user_details(request):
     Display the current user's details
     """
     form = UserForm_view(instance=request.user)
-    
+
     return render_to_response(
         'generic_form.html', {
             'form': form,
@@ -153,15 +153,15 @@ def current_user_details(request):
             'read_only': True,
         },
         context_instance=RequestContext(request))
-        
-        
+
+
 def current_user_edit(request):
     """
     Allow an user to edit his own details
     """
-    
+
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('current_user_details'))))
-    
+
     if request.method == 'POST':
         form = UserForm(instance=request.user, data=request.POST)
         if form.is_valid():
@@ -170,11 +170,11 @@ def current_user_edit(request):
             return HttpResponseRedirect(next)
     else:
         form = UserForm(instance=request.user)
-    
+
     return render_to_response(
         'generic_form.html', {
             'form': form,
             'next': next,
             'title': _(u'edit current user details'),
         },
-        context_instance=RequestContext(request))   
+        context_instance=RequestContext(request))

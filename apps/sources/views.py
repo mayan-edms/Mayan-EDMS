@@ -595,25 +595,8 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = StagingFolder
 
     source = get_object_or_404(cls, pk=source_id)
-
-    context = {
-        'object_list': SourceTransformation.objects.get_for_object(source),
-        'title': _(u'transformations for: %s') % source.fullname(),
-        'source': source,
-        'object_name': _(u'source'),
-        'navigation_object_name': 'source',
-        'list_object_variable_name': 'transformation',
-        'extra_columns': [
-            {'name': _(u'order'), 'attribute': 'order'},
-            {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
-            {'name': _(u'arguments'), 'attribute': 'arguments'}
-            ],
-        'hide_link': True,
-        'hide_object': True,
-    }
-    
+  
     redirect_view = reverse('setup_source_transformation_list', args=[source.source_type, source.pk])
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
     
     if request.method == 'POST':
         form = SourceTransformationForm_create(request.POST)

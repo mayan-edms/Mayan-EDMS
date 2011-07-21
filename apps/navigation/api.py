@@ -33,14 +33,14 @@ def register_links(src, links, menu_name=None, position=None):
             if position is not None:
                 for link in reversed(links):
                     object_navigation[menu_name][one_src]['links'].insert(position, link)
-            else:        
+            else:
                 object_navigation[menu_name][one_src]['links'].extend(links)
     else:
         object_navigation[menu_name].setdefault(src, {'links': []})
         if position is not None:
             for link in reversed(links):
                 object_navigation[menu_name][src]['links'].insert(position, link)
-        else:        
+        else:
             object_navigation[menu_name][src]['links'].extend(links)
 
 
