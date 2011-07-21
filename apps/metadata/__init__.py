@@ -52,17 +52,17 @@ setup_metadata_type_edit = {'text': _(u'edit'), 'view': 'setup_metadata_type_edi
 setup_metadata_type_delete = {'text': _(u'delete'), 'view': 'setup_metadata_type_delete', 'args': 'object.pk', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_TYPE_DELETE]}
 setup_metadata_type_create = {'text': _(u'create new'), 'view': 'setup_metadata_type_create', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_TYPE_CREATE]}
 
-setup_metadata_set_list = {'text': _(u'metadata sets'), 'view': 'setup_metadata_set_list', 'famfam': 'application_form', 'permissions': [PERMISSION_METADATA_SET_VIEW]}
-setup_metadata_set_edit = {'text': _(u'edit'), 'view': 'setup_metadata_set_edit', 'args': 'object.pk', 'famfam': 'application_form_edit', 'permissions': [PERMISSION_METADATA_SET_EDIT]}
-setup_metadata_set_delete = {'text': _(u'delete'), 'view': 'setup_metadata_set_delete', 'args': 'object.pk', 'famfam': 'application_form_delete', 'permissions': [PERMISSION_METADATA_SET_DELETE]}
-setup_metadata_set_create = {'text': _(u'create new'), 'view': 'setup_metadata_set_create', 'famfam': 'application_form_add', 'permissions': [PERMISSION_METADATA_SET_CREATE]}
+setup_metadata_set_list = {'text': _(u'metadata sets'), 'view': 'setup_metadata_set_list', 'famfam': 'table', 'permissions': [PERMISSION_METADATA_SET_VIEW]}
+setup_metadata_set_edit = {'text': _(u'edit'), 'view': 'setup_metadata_set_edit', 'args': 'object.pk', 'famfam': 'table_edit', 'permissions': [PERMISSION_METADATA_SET_EDIT]}
+setup_metadata_set_delete = {'text': _(u'delete'), 'view': 'setup_metadata_set_delete', 'args': 'object.pk', 'famfam': 'table_delete', 'permissions': [PERMISSION_METADATA_SET_DELETE]}
+setup_metadata_set_create = {'text': _(u'create new'), 'view': 'setup_metadata_set_create', 'famfam': 'table_add', 'permissions': [PERMISSION_METADATA_SET_CREATE]}
 
 setup_document_type_metadata = {'text': _(u'default metadata'), 'view': 'setup_document_type_metadata', 'args': 'object.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 
 #register_links(Document, [metadata_add, metadata_edit, metadata_remove])
 register_links(['metadata_add', 'metadata_edit', 'metadata_remove', 'metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
 register_links(Document, [metadata_view], menu_name='form_header')#, metadata_edit, metadata_remove])
-register_multi_item_links(['folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
 
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links(['setup_metadata_type_delete', 'setup_metadata_type_edit', 'setup_metadata_type_list', 'setup_metadata_type_create'], [setup_metadata_type_create], menu_name='sidebar')

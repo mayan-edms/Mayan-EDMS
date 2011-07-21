@@ -10,3 +10,5 @@ django-sentry==1.6.0
 django-taggit==0.9.3
 -e git://github.com/django-mptt/django-mptt.git@0af02a95877041b2fd6d458bd95413dc1666c321#egg=django-mptt
 -e git://github.com/ahupp/python-magic.git@a75cf0a4a7790eb106155c947af9612f15693b6e#egg=python-magic
+slate==0.3
+PIL==1.1.7

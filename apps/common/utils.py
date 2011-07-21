@@ -2,6 +2,7 @@
 import os
 import re
 import types
+import tempfile
 
 from django.utils.http import urlquote  as django_urlquote
 from django.utils.http import urlencode as django_urlencode
@@ -11,6 +12,15 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 
+
+try:
+    from python_magic import magic
+    USE_PYTHON_MAGIC = True
+except:
+    import mimetypes
+    mimetypes.init()
+    USE_PYTHON_MAGIC = False
+    
 
 def urlquote(link=None, get=None):
     u'''
@@ -337,3 +347,50 @@ def return_diff(old_obj, new_obj, attrib_list=None):
             }
 
     return diff_dict
+
+
+def get_mimetype(filepath):
+    """
+    Determine a file's mimetype by calling the system's libmagic
+    library via python-magic or fallback to use python's mimetypes
+    library
+    """
+    file_mimetype = u''
+    file_mime_encoding = u''
+    
+    if USE_PYTHON_MAGIC:
+        if os.path.exists(filepath):
+            try:
+                source = open(filepath, 'r')
+                mime = magic.Magic(mime=True)
+                file_mimetype = mime.from_buffer(source.read())
+                source.seek(0)
+                mime_encoding = magic.Magic(mime_encoding=True)
+                file_mime_encoding = mime_encoding.from_buffer(source.read())
+            finally:
+                if source:
+                    source.close()
+    else:
+        path, filename = os.path.split(filepath)
+        file_mimetype, file_mime_encoding = mimetypes.guess_type(filename)
+        
+    return file_mimetype, file_mime_encoding
+
+
+def validate_path(path):
+    if os.path.exists(path) != True:
+        # If doesn't exist try to create it
+        try:
+            os.mkdir(path)
+        except:
+            return False
+    
+    # Check if it is writable
+    try:
+        fd, test_filepath = tempfile.mkstemp(dir=path)
+        os.close(fd)
+        os.unlink(test_filepath)
+    except:
+        return False
+        
+    return True

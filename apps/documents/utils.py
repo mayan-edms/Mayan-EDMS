@@ -1,6 +1,6 @@
 import os
 
-from common import TEMPORARY_DIRECTORY
+from common.conf.settings import TEMPORARY_DIRECTORY
 
 try:
     from python_magic import magic

@@ -9,13 +9,18 @@ import sys
 from django.utils.translation import ugettext as _
 from django.utils.importlib import import_module
 
-from converter.api import convert_document_for_ocr
+from common.conf.settings import TEMPORARY_DIRECTORY
+from converter.api import convert
 from documents.models import DocumentPage
 
 from ocr.conf.settings import TESSERACT_PATH
 from ocr.conf.settings import TESSERACT_LANGUAGE
-from ocr.conf.settings import PDFTOTEXT_PATH
-from ocr.exceptions import TesseractError, PdftotextError
+from ocr.exceptions import TesseractError, UnpaperError
+from ocr.conf.settings import UNPAPER_PATH
+from ocr.parsers import parse_document_page
+from ocr.parsers.exceptions import ParserError, ParserUnknownFile
+from ocr.literals import DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT, \
+    DEFAULT_OCR_FILE_EXTENSION
 
 
 def get_language_backend():
@@ -30,7 +35,7 @@ def get_language_backend():
         return None
     return module
 
-backend = get_language_backend()
+language_backend = get_language_backend()
 
 
 def cleanup(filename):
@@ -43,78 +48,81 @@ def cleanup(filename):
         pass
 
 
-def run_tesseract(input_filename, output_filename_base, lang=None):
+def run_tesseract(input_filename, lang=None):
     """
     Execute the command line binary of tesseract
     """
-    command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(output_filename_base)]
-    if lang is not None:
-        command += [u'-l', lang]
+    fd, filepath = tempfile.mkstemp()
+    os.close(fd)
+    ocr_output = os.extsep.join([filepath, u'txt'])
+    command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(filepath)]
+    
+    # TODO: Tesseract 3.0 segfaults
+    #if lang is not None:
+    #    command.extend([u'-l', lang])
 
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
     if return_code != 0:
         error_text = proc.stderr.read()
+        cleanup(filepath)
+        cleanup(ocr_output)
         raise TesseractError(error_text)
+        
+    fd = codecs.open(ocr_output, 'r', 'utf-8')
+    text = fd.read().strip()
+    fd.close()
+    
+    os.unlink(filepath)    
+    
+    return text
+    
 
-
-def run_pdftotext(input_filename, output_filename, page_number=None):
+def do_document_ocr(queue_document):
     """
-        Execute the command line binary of pdftotext
+    Try first to extract text from document pages using the registered
+    parser, if the parser fails or if there is no parser registered for
+    the document mimetype do a visual OCR by calling tesseract
     """
-    command = [unicode(PDFTOTEXT_PATH)]
-    if page_number:
-        command.extend([u'-nopgbrk', u'-f', unicode(page_number), u'-l', unicode(page_number)])
-    command.extend([unicode(input_filename), unicode(output_filename)])
-    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    return_code = proc.wait()
-    if return_code != 0:
-        error_text = proc.stderr.read()
-        raise PdftotextError(error_text)
-
-
-def do_document_ocr(document):
-    """
-    Do OCR on all the pages of the given document object, first
-    trying to extract text from PDF using pdftotext then by calling
-    tesseract
-    """
-    for page_index, document_page in enumerate(document.documentpage_set.all()):
-        desc, filepath = tempfile.mkstemp()
-        imagefile = None
-        source = u''
+    for document_page in queue_document.document.documentpage_set.all():
         try:
-            if document.file_mimetype == u'application/pdf':
-                pdf_filename = os.extsep.join([filepath, u'pdf'])
-                document.save_to_file(pdf_filename)
-                run_pdftotext(pdf_filename, filepath, document_page.page_number)
-                cleanup(pdf_filename)
-                if os.stat(filepath).st_size == 0:
-                    #PDF page had no text, run tesseract on the page
-                    imagefile = convert_document_for_ocr(document, page=page_index)
-                    run_tesseract(imagefile, filepath, TESSERACT_LANGUAGE)
-                    ocr_output = os.extsep.join([filepath, u'txt'])
-                    source = _(u'Text from OCR')
-                else:
-                    ocr_output = filepath
-                    source = _(u'Text extracted from PDF')
-            else:
-                imagefile = convert_document_for_ocr(document, page=page_index)
-                run_tesseract(imagefile, filepath, TESSERACT_LANGUAGE)
-                ocr_output = os.extsep.join([filepath, u'txt'])
-                source = _(u'Text from OCR')
-            f = codecs.open(ocr_output, 'r', 'utf-8')
-            document_page = document.documentpage_set.get(page_number=page_index + 1)
-            document_page.content = ocr_cleanup(f.read().strip())
-            document_page.page_label = source
-            document_page.save()
-            f.close()
-            cleanup(ocr_output)
-        finally:
-            os.close(desc)
-            cleanup(filepath)
-            if imagefile:
-                cleanup(imagefile)
+            # Try to extract text by means of a parser
+            parse_document_page(document_page)
+        except (ParserError, ParserUnknownFile):
+            # Fall back to doing visual OCR
+            ##ocr_transformations, warnings = queue_document.get_transformation_list()
+            
+            document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number)
+            unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
+            unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
+
+            unpaper_input=convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
+            execute_unpaper(input_filepath=unpaper_input, output_filepath=unpaper_output_filepath)
+
+            #from PIL import Image, ImageOps
+            #im = Image.open(document_filepath)
+            ##if im.mode=='RGBA':
+            ##    im=im.convert('RGB')
+            ##im = im.convert('L')
+            #im = ImageOps.grayscale(im)
+            #im.save(unpaper_output_filepath)
+
+            # Convert to TIFF
+            pre_ocr_filepath = output_filepath=convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)
+            # Tesseract needs an explicit file extension
+            pre_ocr_filepath_w_ext = os.extsep.join([pre_ocr_filepath, DEFAULT_OCR_FILE_EXTENSION])
+            os.rename(pre_ocr_filepath, pre_ocr_filepath_w_ext)
+            try:
+                ocr_text = run_tesseract(pre_ocr_filepath_w_ext, TESSERACT_LANGUAGE)
+
+                document_page.content = ocr_cleanup(ocr_text)
+                document_page.page_label = _(u'Text from OCR')
+                document_page.save()
+            finally:
+                cleanup(pre_ocr_filepath_w_ext)
+                cleanup(unpaper_input)
+                cleanup(document_filepath)
+                cleanup(unpaper_output_filepath)
 
 
 def ocr_cleanup(text):
@@ -127,8 +135,8 @@ def ocr_cleanup(text):
     for line in text.splitlines():
         line = line.strip()
         for word in line.split():
-            if backend:
-                result = backend.check_word(word)
+            if language_backend:
+                result = language_backend.check_word(word)
             else:
                 result = word
             if result:
@@ -147,3 +155,19 @@ def clean_pages():
         if page.content:
             page.content = ocr_cleanup(page.content)
             page.save()
+
+
+def execute_unpaper(input_filepath, output_filepath):
+    """
+    Executes the program unpaper using subprocess's Popen
+    """
+    command = []
+    command.append(UNPAPER_PATH)
+    command.append(u'--overwrite')
+    command.append(u'--no-multi-pages')
+    command.append(input_filepath)
+    command.append(output_filepath)
+    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE)
+    return_code = proc.wait()
+    if return_code != 0:
+        raise UnpaperError(proc.stderr.readline())

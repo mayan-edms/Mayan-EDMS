@@ -13,13 +13,6 @@ class UnknownFormat(ConvertError):
     pass
 
 
-class UnpaperError(ConvertError):
-    """
-    Raised by unpaper
-    """
-    pass
-
-
 class IdentifyError(ConvertError):
     """
     Raised by identify
