@@ -30,7 +30,6 @@ class DocumentCreateWizard(BoundFormWizard):
 
     def __init__(self, *args, **kwargs):
         self.query_dict = {}
-        self.multiple = kwargs.pop('multiple', True)
         self.step_titles = kwargs.pop('step_titles', [
             _(u'step 1 of 3: Document type'),
             _(u'step 2 of 3: Metadata selection'),
@@ -75,13 +74,8 @@ class DocumentCreateWizard(BoundFormWizard):
         return 'generic_wizard.html'
 
     def done(self, request, form_list):
-        if self.multiple:
-            view = 'upload_document_from_local'
-        else:
-            view = 'upload_document'
-
         if self.document_type:
             self.query_dict['document_type_id'] = self.document_type.pk
 
-        url = urlquote(reverse(view), self.query_dict)
+        url = urlquote(reverse('upload_interactive'), self.query_dict)
         return HttpResponseRedirect(url)

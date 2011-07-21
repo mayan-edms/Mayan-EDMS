@@ -56,7 +56,7 @@ def task_process_queue_document(queue_document_id):
         queue_document.result = task_process_queue_document.request.id
         queue_document.save()
         try:
-            do_document_ocr(queue_document.document)
+            do_document_ocr(queue_document)
             queue_document.delete()
         except Exception, e:
             queue_document.state = QUEUEDOCUMENT_STATE_ERROR

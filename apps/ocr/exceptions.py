@@ -6,5 +6,8 @@ class TesseractError(Exception):
     pass
 
 
-class PdftotextError(Exception):
+class UnpaperError(Exception):
+    """
+    Raised by unpaper
+    """
     pass

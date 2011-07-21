@@ -115,21 +115,53 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                         new_link['url'] = urlquote(new_link['url'], parsed_query_string)
             else:
                 new_link['active'] = False
+
+            if 'conditional_highlight' in link:
+                new_link['active'] = link['conditional_highlight'](context)
                 
             if 'conditional_disable' in link:
                 new_link['disabled'] = link['conditional_disable'](context)
             else:
                 new_link['disabled'] = False
+                
+            if current_view in link.get('children_views', []):
+                new_link['active'] = True
+
+            for child_url_regex in link.get('children_url_regex', []):
+                if re.compile(child_url_regex).match(current_path.lstrip('/')):
+                    new_link['active'] = True
+                    
+            for cls in link.get('children_classes', []):
+                obj, object_name = get_navigation_object(context)
+                if type(obj) == cls or obj == cls:
+                    new_link['active'] = True
                             
             context_links.append(new_link)
     return context_links
 
+
+def get_navigation_object(context):
+    try:
+        object_name = Variable('navigation_object_name').resolve(context)
+    except VariableDoesNotExist:
+        object_name = 'object'
+
+    try:
+        obj = Variable(object_name).resolve(context)
+    except VariableDoesNotExist:
+        obj = None
+        
+    return obj, object_name
+    
 
 def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
     context_links = []
+
+    # Don't fudge with the original global dictionary
+    links_dict = links_dict.copy()
 
     query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
     parsed_query_string = urlparse.parse_qs(query_string)
@@ -146,14 +178,14 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         pass
 
     try:
-        object_name = Variable('navigation_object_name').resolve(context)
+        """
+        Check for and inject a temporary navigation dictionary
+        """
+        temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
+        if temp_navigation_links:
+            links_dict.update(temp_navigation_links)
     except VariableDoesNotExist:
-        object_name = 'object'
-
-    try:
-        obj = Variable(object_name).resolve(context)
-    except VariableDoesNotExist:
-        obj = None
+        pass
 
     try:
         links = links_dict[menu_name][current_view]['links']
@@ -162,12 +194,15 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     except KeyError:
         pass
 
+    obj, object_name = get_navigation_object(context)
+
     try:
         links = links_dict[menu_name][type(obj)]['links']
         for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
             context_links.append(link)
     except KeyError:
         pass
+
 
     return context_links
 
@@ -192,6 +227,8 @@ class GetNavigationLinks(Node):
     def render(self, context):
         menu_name = resolve_template_variable(context, self.menu_name)
         context[self.var_name] = _get_object_navigation_links(context, menu_name, links_dict=self.links_dict)
+        obj, object_name = get_navigation_object(context)
+        context['navigation_object'] = obj
         return ''
 
 

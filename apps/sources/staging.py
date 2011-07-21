@@ -8,35 +8,27 @@ from django.utils.translation import ugettext
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-from converter import TRANFORMATION_CHOICES
 from converter.api import convert, cache_cleanup
 
-from documents.conf.settings import STAGING_DIRECTORY
-from documents.conf.settings import DEFAULT_TRANSFORMATIONS
-from documents.conf.settings import STAGING_FILES_PREVIEW_SIZE
-from documents.conf.settings import USER_STAGING_DIRECTORY_ROOT
-from documents.conf.settings import USER_STAGING_DIRECTORY_EXPRESSION
-
-from documents.literals import UPLOAD_SOURCE_STAGING, \
-    UPLOAD_SOURCE_USER_STAGING
+DEFAULT_STAGING_DIRECTORY = u'/tmp'
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 #TODO: Do benchmarks
 #func = lambda:[StagingFile.get_all() is None for i in range(100)]
 #t1=time.time();func();t2=time.time();print '%s took %0.3f ms' % (func.func_name, (t2-t1)*1000.0)
 
-STAGING_FILE_FUNCTIONS = {
-    UPLOAD_SOURCE_STAGING: lambda x: STAGING_DIRECTORY,
-    UPLOAD_SOURCE_USER_STAGING: lambda x: os.path.join(USER_STAGING_DIRECTORY_ROOT, eval(USER_STAGING_DIRECTORY_EXPRESSION, {'user': x.user}))
-}
+#STAGING_FILE_FUNCTIONS = {
+#    UPLOAD_SOURCE_STAGING: lambda x: STAGING_DIRECTORY,
+#    UPLOAD_SOURCE_USER_STAGING: lambda x: os.path.join(USER_STAGING_DIRECTORY_ROOT, eval(USER_STAGING_DIRECTORY_EXPRESSION, {'user': x.user}))
+#}
 
 
-def evaluate_user_staging_path(request, source):
-    try:
-        return STAGING_FILE_FUNCTIONS[source](request)
-    except Exception, exc:
-        messages.error(request, _(u'Error evaluating user staging directory expression; %s') % exc)
-        return u''
+#def evaluate_user_staging_path(request, source):
+#    try:
+#        return STAGING_FILE_FUNCTIONS[source](request)
+#    except Exception, exc:
+#        messages.error(request, _(u'Error evaluating user staging directory expression; %s') % exc)
+#        return u''
 
 
 def get_all_files(path):
@@ -52,7 +44,8 @@ def _return_new_class():
 
 def create_staging_file_class(request, source):
     cls = _return_new_class()
-    cls.set_path(evaluate_user_staging_path(request, source))
+    #cls.set_path(evaluate_user_staging_path(request, source))
+    cls.set_path(source)
     return cls
 
 
@@ -61,7 +54,7 @@ class StagingFile(object):
     Simple class to encapsulate the files in a directory and hide the
     specifics to the view
     """
-    path = STAGING_DIRECTORY
+    path = DEFAULT_STAGING_DIRECTORY
 
     @classmethod
     def set_path(cls, path):
@@ -112,16 +105,15 @@ class StagingFile(object):
     def upload(self):
         """
         Return a StagingFile encapsulated in a File class instance to
-        allow for easier upload a staging files
+        allow for easier upload of staging files
         """
         try:
             return File(file(self.filepath, 'rb'), name=self.filename)
         except Exception, exc:
             raise Exception(ugettext(u'Unable to upload staging file: %s') % exc)
 
-    def delete(self):
-        tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        cache_cleanup(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string)
+    def delete(self, preview_size, transformations):
+        cache_cleanup(self.filepath, size=preview_size, transformations=transformations)
         try:
             os.unlink(self.filepath)
         except OSError, exc:
@@ -130,22 +122,7 @@ class StagingFile(object):
             else:
                 raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
 
-    def preview(self):
-        tranformation_string, errors = get_transformation_string(DEFAULT_TRANSFORMATIONS)
-        output_file = convert(self.filepath, size=STAGING_FILES_PREVIEW_SIZE, extra_options=tranformation_string, cleanup_files=False)
+    def preview(self, preview_size, transformations):
+        errors = []
+        output_file = convert(self.filepath, size=preview_size, cleanup_files=False, transformations=transformations)
         return output_file, errors
-
-
-def get_transformation_string(transformations):
-    transformation_list = []
-    errors = []
-    for transformation in transformations:
-        try:
-            if transformation['name'] in TRANFORMATION_CHOICES:
-                output = TRANFORMATION_CHOICES[transformation['name']] % eval(transformation['arguments'])
-                transformation_list.append(output)
-        except Exception, e:
-            errors.append(e)
-
-    tranformation_string = ' '.join(transformation_list)
-    return tranformation_string, errors

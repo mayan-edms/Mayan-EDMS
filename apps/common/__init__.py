@@ -8,9 +8,7 @@ from django.db.models import signals
 from navigation.api import register_links
 
 from common.conf import settings as common_settings
-
-TEMPORARY_DIRECTORY = common_settings.TEMPORARY_DIRECTORY \
-    if common_settings.TEMPORARY_DIRECTORY else tempfile.mkdtemp()
+from common.utils import validate_path
 
 
 def has_usable_password(context):
@@ -21,7 +19,6 @@ current_user_details = {'text': _(u'user details'), 'view': 'current_user_detail
 current_user_edit = {'text': _(u'edit details'), 'view': 'current_user_edit', 'famfam': 'vcard_edit'}
 
 register_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
-
 
 if common_settings.AUTO_CREATE_ADMIN:
     # From https://github.com/lambdalisue/django-qwert/blob/master/qwert/autoscript/__init__.py
@@ -50,3 +47,6 @@ if common_settings.AUTO_CREATE_ADMIN:
         dispatch_uid='django.contrib.auth.management.create_superuser')
     signals.post_syncdb.connect(create_testuser,
         sender=auth_models, dispatch_uid='common.models.create_testuser')
+
+if (validate_path(common_settings.TEMPORARY_DIRECTORY) == False) or (not common_settings.TEMPORARY_DIRECTORY):
+    setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())
