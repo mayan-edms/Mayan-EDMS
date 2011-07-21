@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.conf import settings
 
+from common.utils import validate_path
 from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
@@ -24,7 +25,24 @@ from documents.literals import HISTORY_DOCUMENT_CREATED, \
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
+from documents.conf.settings import CACHE_PATH
 from documents.widgets import document_thumbnail
+
+# Document page links expressions
+def is_first_page(context):
+    return context['object'].page_number <= 1
+
+
+def is_last_page(context):
+    return context['object'].page_number >= context['object'].document.documentpage_set.count()
+    
+
+def is_min_zoom(context):
+    return context['zoom'] <= ZOOM_MIN_LEVEL
+
+
+def is_max_zoom(context):
+    return context['zoom'] >= ZOOM_MAX_LEVEL
 
 # Permission setup
 set_namespace_title('documents', _(u'Documents'))
@@ -47,23 +65,6 @@ register_permission(PERMISSION_DOCUMENT_TYPE_CREATE)
 register_history_type(HISTORY_DOCUMENT_CREATED)
 register_history_type(HISTORY_DOCUMENT_EDITED)
 register_history_type(HISTORY_DOCUMENT_DELETED)
-
-
-# Document page links expressions
-def is_first_page(context):
-    return context['object'].page_number <= 1
-
-
-def is_last_page(context):
-    return context['object'].page_number >= context['object'].document.documentpage_set.count()
-    
-
-def is_min_zoom(context):
-    return context['zoom'] <= ZOOM_MIN_LEVEL
-
-
-def is_max_zoom(context):
-    return context['zoom'] >= ZOOM_MAX_LEVEL
 
 document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -198,3 +199,5 @@ register_sidebar_template(['document_type_list'], 'document_types_help.html')
 register_links(Document, [document_view_simple], menu_name='form_header', position=0)
 register_links(Document, [document_view_advanced], menu_name='form_header', position=1)
 register_links(Document, [document_history_view], menu_name='form_header')
+
+validate_path(CACHE_PATH)

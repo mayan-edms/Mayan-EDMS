@@ -20,11 +20,8 @@ from common.widgets import two_state_template
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
-from converter.api import convert_document
-from converter.exceptions import UnkownConvertError, UnknownFormat
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_FILE_FORMAT, QUALITY_PRINT, QUALITY_DEFAULT, \
-    DEFAULT_PAGE_NUMBER
+    DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER
 from filetransfers.api import serve_file
 from grouping.utils import get_document_group_subtemplate
 from metadata.api import save_metadata_list, \
@@ -287,7 +284,7 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_DEFAULT):
+def get_document_image(request, document_id, size=PREVIEW_SIZE):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
@@ -304,36 +301,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, quality=QUALITY_
 
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
-    document_page = get_object_or_404(document.documentpage_set, page_number=page)
-    transformations, warnings = document_page.get_transformation_list()
-
-    if warnings and (request.user.is_staff or request.user.is_superuser):
-        for warning in warnings:
-            messages.warning(request, _(u'Page transformation error: %s') % warning)
-            
-    try:
-        output_file = convert_document(document, size=size, file_format=DEFAULT_FILE_FORMAT, quality=quality, page=page, zoom=zoom, rotation=rotation, transformations=transformations)
-    except UnkownConvertError, e:
-        if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, e)
-        if size == THUMBNAIL_SIZE:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
-        else:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
-    except UnknownFormat:
-        if size == THUMBNAIL_SIZE:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_SMALL)
-        else:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_MEDIUM)
-    except Exception, e:
-        if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, e)
-        if size == THUMBNAIL_SIZE:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
-        else:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
-    finally:
-        return sendfile.sendfile(request, output_file)
+    return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation))
 
 
 def document_download(request, document_id):
@@ -804,13 +772,14 @@ def document_print(request, document_id):
 
 
 def document_hard_copy(request, document_id):
+    #TODO: FIXME
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
-    arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT, quality=QUALITY_PRINT)
+    arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT)
 
     # Pre-generate
     convert_document(document, **arguments)
