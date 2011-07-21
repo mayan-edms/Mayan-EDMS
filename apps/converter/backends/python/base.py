@@ -3,7 +3,12 @@ import os
 
 import slate
 from PIL import Image
-import ghostscript
+
+try:
+    import ghostscript
+    USE_GHOSTSCRIPT = True
+except RuntimeError:
+    USE_GHOSTSCRIPT = False
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -50,7 +55,7 @@ class ConverterClass(ConverterBase):
     def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         tmpfile = None
         mimetype, encoding = get_mimetype(input_filepath)
-        if mimetype == 'application/pdf':
+        if mimetype == 'application/pdf' and USE_GHOSTSCRIPT:
             # If file is a PDF open it with ghostscript and convert it to
             # TIFF
             first_page_tmpl = '-dFirstPage=%d' % page
