@@ -150,6 +150,7 @@ INSTALLED_APPS = (
     'mptt',
     'document_indexing',
     'sources',
+    'mimetype',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
