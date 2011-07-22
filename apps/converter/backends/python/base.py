@@ -12,7 +12,7 @@ except RuntimeError:
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import get_mimetype
+from mimetype.api import get_mimetype
 
 from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
 from converter.backends import ConverterBase

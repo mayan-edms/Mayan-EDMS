@@ -15,12 +15,14 @@ from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
 from converter.api import convert
 from converter.exceptions import UnknownFormat, UnkownConvertError
+from mimetype.api import get_document_mimetype, get_icon_file_path, \
+    get_error_icon_file_path
 
-from documents.utils import get_document_mimetype
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
 from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import PREVIEW_SIZE
+from documents.conf.settings import DISPLAY_SIZE
 from documents.conf.settings import CACHE_PATH
 
 from documents.managers import RecentDocumentManager, \
@@ -234,17 +236,16 @@ class Document(models.Model):
             document_file = document_save_to_temp_dir(self, self.checksum)
             return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations)
 
-    def get_image(self, size=PREVIEW_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
+    def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
         try:
             image_cache_name = self.get_image_cache_name(page=page)
-            output_file = convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
+            return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
         except UnknownFormat:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_SMALL)
+            return get_icon_file_path(self.file_mimetype)
         except UnkownConvertError:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
+            return get_error_icon_file_path()
         except:
-            output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_SMALL)
-        return output_file
+            return get_error_icon_file_path()
 
 
 class DocumentTypeFilename(models.Model):
