@@ -129,6 +129,10 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                 if re.compile(child_url_regex).match(current_path.lstrip('/')):
                     new_link['active'] = True
 
+            for children_view_regex in link.get('children_view_regex', []):
+                if re.compile(children_view_regex).match(current_view):
+                    new_link['active'] = True
+
             for cls in link.get('children_classes', []):
                 obj, object_name = get_navigation_object(context)
                 if type(obj) == cls or obj == cls:

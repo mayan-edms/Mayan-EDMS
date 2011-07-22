@@ -24,7 +24,7 @@ diagnostics = {'text': _(u'diagnostics'), 'view': 'diagnostics', 'famfam': 'pill
 tools_menu = {'text': _(u'tools'), 'view': 'tools_menu', 'famfam': 'wrench'}
 admin_site = {'text': _(u'admin site'), 'url': '/admin', 'famfam': 'keyboard', 'condition': is_superuser}
 sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug', 'condition': is_superuser}
-document_types = {'text': _(u'document types'), 'view': 'document_type_list', 'famfam': 'layout'}
+document_types = {'text': _(u'document types'), 'view': 'document_type_list', 'famfam': 'layout', 'children_view_regex': ['document_type', 'setup_document_type']}
 
 __version_info__ = {
     'major': 0,
