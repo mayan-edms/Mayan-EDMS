@@ -7,8 +7,7 @@ from django.db.models import Q
 from django.utils.translation import ugettext as _
 from django.core.cache import get_cache
 
-from celery.decorators import task, periodic_task
-from celery.task.control import inspect
+from job_processor.api import process_job
 
 from ocr.api import do_document_ocr
 from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
@@ -46,7 +45,6 @@ else:
     release_lock = lambda lock_id: True
 
 
-#@task
 def task_process_queue_document(queue_document_id):
     lock_id = u'%s-lock-%d' % (u'task_process_queue_document', queue_document_id)
     if acquire_lock(lock_id):
@@ -112,6 +110,7 @@ def task_process_document_queues():
                 if oldest_queued_document_qs:
                     oldest_queued_document = oldest_queued_document_qs.order_by('datetime_submitted')[0]
                     #task_process_queue_document.delay(oldest_queued_document.pk)
-                    task_process_queue_document(oldest_queued_document.pk)
+                    #task_process_queue_document(oldest_queued_document.pk)
+                    process_job(task_process_queue_document, oldest_queued_document.pk)
             except Exception, e:
                 print 'DocumentQueueWatcher exception: %s' % e
