@@ -136,7 +136,6 @@ secondary_menu_links = [document_list_recent, document_list, document_create_mul
 
 register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
 register_links(Document, secondary_menu_links, menu_name='secondary_menu')
-#register_links(Document, secondary_menu_links, menu_name='sidebar')
 
 # Document page links
 register_links(DocumentPage, [
