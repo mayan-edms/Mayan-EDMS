@@ -8,7 +8,7 @@ from permissions.api import register_permission, set_namespace_title
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation
 
-PERMISSION_SOURCES_SETUP_VIEW = {'namespace': 'sources_setup', 'name': 'sources_setup_view', 'label': _(u'View exisinting document sources')}
+PERMISSION_SOURCES_SETUP_VIEW = {'namespace': 'sources_setup', 'name': 'sources_setup_view', 'label': _(u'View existing document sources')}
 PERMISSION_SOURCES_SETUP_EDIT = {'namespace': 'sources_setup', 'name': 'sources_setup_edit', 'label': _(u'Edit document sources')}
 PERMISSION_SOURCES_SETUP_DELETE = {'namespace': 'sources_setup', 'name': 'sources_setup_delete', 'label': _(u'Delete document sources')}
 PERMISSION_SOURCES_SETUP_CREATE = {'namespace': 'sources_setup', 'name': 'sources_setup_create', 'label': _(u'Create new document sources')}

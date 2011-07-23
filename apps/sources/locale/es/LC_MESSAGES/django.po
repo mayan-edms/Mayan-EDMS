@@ -1,0 +1,426 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-23 01:07-0400\n"
+"PO-Revision-Date: 2011-07-23 02:19\n"
+"Last-Translator: Administrador Local <rosario_r@jp.pr.gov>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:11
+msgid "View existing document sources"
+msgstr "Ver fuentes de documento existentes"
+
+#: __init__.py:12
+msgid "Edit document sources"
+msgstr "Editar fuentes de documentos"
+
+#: __init__.py:13
+msgid "Delete document sources"
+msgstr "Eliminar fuentes de documentos"
+
+#: __init__.py:14
+msgid "Create new document sources"
+msgstr "Crear nuevas fuentes de documentos"
+
+#: __init__.py:16
+msgid "Sources setup"
+msgstr "Configuración de fuentes de documentos"
+
+#: __init__.py:23
+msgid "preview"
+msgstr "muestra"
+
+#: __init__.py:24 __init__.py:30 __init__.py:36
+msgid "delete"
+msgstr "borrar"
+
+#: __init__.py:26 models.py:61 models.py:153
+msgid "web forms"
+msgstr "formularios web"
+
+#: __init__.py:27
+msgid "staging folders"
+msgstr "carpetas provisionales"
+
+#: __init__.py:29 __init__.py:35
+msgid "edit"
+msgstr "editar"
+
+#: __init__.py:31
+msgid "add new"
+msgstr "Añadir nuevo"
+
+#: __init__.py:33
+msgid "transformations"
+msgstr "transformaciones"
+
+#: __init__.py:34
+msgid "add transformation"
+msgstr "añadir transformación"
+
+#: __init__.py:38
+msgid "Document sources"
+msgstr "Fuentes de documentos"
+
+#: forms.py:31 forms.py:55
+msgid "Expand compressed files"
+msgstr "Expandir archivos comprimidos"
+
+#: forms.py:32 forms.py:56
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr ""
+
+#: forms.py:40
+msgid "Staging file"
+msgstr "Archivo de ensayo"
+
+#: models.py:18 models.py:23
+msgid "Always"
+msgstr "Siempre"
+
+#: models.py:19 models.py:24
+msgid "Never"
+msgstr "Nunca"
+
+#: models.py:25
+msgid "Ask user"
+msgstr "Preguntar al usuario"
+
+#: models.py:40
+msgid "Disk"
+msgstr "Disco"
+
+#: models.py:41
+msgid "Database"
+msgstr "Base de datos"
+
+#: models.py:42
+msgid "Drive"
+msgstr "Unidad datos"
+
+#: models.py:43
+msgid "Network drive"
+msgstr "Unidad de red"
+
+#: models.py:44
+msgid "User drive"
+msgstr "Unidad datos usuario"
+
+#: models.py:45
+msgid "Envelope"
+msgstr "Sobre"
+
+#: models.py:46
+msgid "Folder"
+msgstr "Carpeta"
+
+#: models.py:47
+msgid "World"
+msgstr "Mundo"
+
+#: models.py:48
+msgid "Printer"
+msgstr "Impresora"
+
+#: models.py:49
+msgid "Empty printer"
+msgstr "Impresora vacia"
+
+#: models.py:56 models.py:152
+msgid "web form"
+msgstr "formulario web"
+
+#: models.py:57
+msgid "server staging folder"
+msgstr "carpeta de ensayo de servidor"
+
+#: models.py:62
+msgid "server staging folders"
+msgstr "carpetas de ensayo de servidor"
+
+#: models.py:67
+msgid "title"
+msgstr "título"
+
+#: models.py:68
+msgid "enabled"
+msgstr "activado"
+
+#: models.py:69
+msgid "whitelist"
+msgstr "lista blanca"
+
+#: models.py:70
+msgid "blacklist"
+msgstr "lista negra"
+
+#: models.py:71
+msgid "document type"
+msgstr "tipo de documento"
+
+#: models.py:93
+msgid "icon"
+msgstr "icono"
+
+#: models.py:93
+msgid "An icon to visually distinguish this source."
+msgstr "Un icono para distinguir visualmente esta fuente."
+
+#: models.py:109
+msgid "folder path"
+msgstr "ruta de la carpeta"
+
+#: models.py:109
+msgid "Server side filesystem path."
+msgstr ""
+
+#: models.py:110
+msgid "preview width"
+msgstr "ancho de muestra"
+
+#: models.py:110
+msgid "Width value to be passed to the converter backend."
+msgstr "Valor de la anchura que se pasa al backend convertidor."
+
+#: models.py:111
+msgid "preview height"
+msgstr "alto de muestra"
+
+#: models.py:111
+msgid "Height value to be passed to the converter backend."
+msgstr "Valor de la altura que se pasa al backend convertidor."
+
+#: models.py:112 models.py:148
+msgid "uncompress"
+msgstr "descomprimir"
+
+#: models.py:112 models.py:148
+msgid "Whether to expand or not compressed archives."
+msgstr ""
+
+#: models.py:113
+msgid "delete after upload"
+msgstr "eliminar después de subir"
+
+#: models.py:113
+msgid "Delete the file after is has been successfully uploaded."
+msgstr ""
+
+#: models.py:124 models.py:125
+msgid "staging folder"
+msgstr "carpeta de ensayo"
+
+#: models.py:164 views.py:504
+msgid "order"
+msgstr "orden"
+
+#: models.py:165 views.py:505 views.py:548 views.py:578
+msgid "transformation"
+msgstr "transformación"
+
+#: models.py:166 views.py:506
+msgid "arguments"
+msgstr "argumentos"
+
+#: models.py:166
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr ""
+
+#: models.py:176
+msgid "document source transformation"
+msgstr ""
+
+#: models.py:177
+msgid "document source transformations"
+msgstr ""
+
+#: staging.py:37
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr ""
+
+#: staging.py:112
+#, python-format
+msgid "Unable to upload staging file: %s"
+msgstr ""
+
+#: staging.py:122
+#, python-format
+msgid "Unable to delete staging file: %s"
+msgstr ""
+
+#: utils.py:37
+msgid "Whitelist Blacklist validation error."
+msgstr ""
+
+#: views.py:89
+msgid "Upload sources"
+msgstr ""
+
+#: views.py:91
+msgid "No interactive document sources have been defined or none have been enabled."
+msgstr ""
+
+#: views.py:142
+msgid "Document uploaded successfully."
+msgstr ""
+
+#: views.py:158
+#, python-format
+msgid "upload a local document from source: %s"
+msgstr ""
+
+#: views.py:189
+#, python-format
+msgid "Staging file: %s, uploaded successfully."
+msgstr ""
+
+#: views.py:193
+#, python-format
+msgid "Staging file: %s, deleted successfully."
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "upload a document from staging source: %s"
+msgstr ""
+
+#: views.py:221
+msgid "files in staging path"
+msgstr ""
+
+#: views.py:235
+msgid "Current metadata"
+msgstr "Metadatos actuales"
+
+#: views.py:281
+#, python-format
+msgid "Extracted file: %s, uploaded successfully."
+msgstr ""
+
+#: views.py:302
+#, python-format
+msgid "Staging file transformation error: %(error)s"
+msgstr ""
+
+#: views.py:337
+msgid "Staging file delete successfully."
+msgstr ""
+
+#: views.py:339
+#, python-format
+msgid "Staging file delete error; %s."
+msgstr ""
+
+#: views.py:393
+msgid "Source edited successfully"
+msgstr ""
+
+#: views.py:396
+#, python-format
+msgid "Error editing source; %s"
+msgstr ""
+
+#: views.py:401
+#, python-format
+msgid "edit source: %s"
+msgstr "editar fuente: %s"
+
+#: views.py:406 views.py:442 views.py:500 views.py:547 views.py:577
+#: views.py:624
+msgid "source"
+msgstr "fuente"
+
+#: views.py:431
+#, python-format
+msgid "Source \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:433
+#, python-format
+msgid "Error deleting source \"%(source)s\": %(error)s"
+msgstr ""
+
+#: views.py:440
+#, python-format
+msgid "Are you sure you wish to delete the source: %s?"
+msgstr ""
+
+#: views.py:469
+msgid "Source created successfully"
+msgstr ""
+
+#: views.py:472
+#, python-format
+msgid "Error creating source; %s"
+msgstr ""
+
+#: views.py:477
+#, python-format
+msgid "Create new source of type: %s"
+msgstr ""
+
+#: views.py:498
+#, python-format
+msgid "transformations for: %s"
+msgstr ""
+
+#: views.py:530 views.py:608
+msgid "Source transformation argument error."
+msgstr ""
+
+#: views.py:534
+msgid "Source transformation edited successfully"
+msgstr ""
+
+#: views.py:537
+#, python-format
+msgid "Error editing source transformation; %s"
+msgstr ""
+
+#: views.py:542
+#, python-format
+msgid "Edit transformation: %s"
+msgstr ""
+
+#: views.py:565
+msgid "Source transformation deleted successfully."
+msgstr ""
+
+#: views.py:567
+#, python-format
+msgid "Error deleting source transformation; %(error)s"
+msgstr ""
+
+#: views.py:580
+#, python-format
+msgid "Are you sure you wish to delete source transformation \"%(transformation)s\""
+msgstr ""
+
+#: views.py:614
+msgid "Source transformation created successfully"
+msgstr ""
+
+#: views.py:617
+#, python-format
+msgid "Error creating source transformation; %s"
+msgstr ""
+
+#: views.py:626
+#, python-format
+msgid "Create new transformation for source: %s"
+msgstr ""
