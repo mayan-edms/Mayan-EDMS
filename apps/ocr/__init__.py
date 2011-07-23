@@ -8,8 +8,12 @@ from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
 from main.api import register_tool
 
+from scheduler.api import register_interval_job
+
 from ocr.conf.settings import AUTOMATIC_OCR
+from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
 from ocr.models import DocumentQueue, QueueTransformation
+from ocr.tasks import task_process_document_queues
 
 #Permissions
 PERMISSION_OCR_DOCUMENT = {'namespace': 'ocr', 'name': 'ocr_document', 'label': _(u'Submit document for OCR')}
@@ -74,3 +78,5 @@ def document_post_save(sender, instance, **kwargs):
             DocumentQueue.objects.queue_document(instance)
 
 post_save.connect(document_post_save, sender=Document)
+
+register_interval_job(task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
