@@ -28,13 +28,15 @@ class TopMenuNavigationNode(Node):
         menu_links = resolve_links(context, all_menu_links, current_view, current_path)
 
         for index, link in enumerate(top_menu_entries):
-            children_views = link.get('children_views', [])
-            if current_view in children_views:
+            if current_view in link.get('children_views', []):
                 menu_links[index]['active'] = True
 
-            children_path_regex = link.get('children_path_regex', [])
-            for child_path_regex in children_path_regex:
+            for child_path_regex in link.get('children_path_regex', []):
                 if re.compile(child_path_regex).match(current_path.lstrip('/')):
+                    menu_links[index]['active'] = True
+            
+            for children_view_regex in link.get('children_view_regex', []):
+                if re.compile(children_view_regex).match(children_view_regex):
                     menu_links[index]['active'] = True
 
         context['menu_links'] = menu_links

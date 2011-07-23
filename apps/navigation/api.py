@@ -44,7 +44,8 @@ def register_links(src, links, menu_name=None, position=None):
             object_navigation[menu_name][src]['links'].extend(links)
 
 
-def register_top_menu(name, link, children_views=None, children_path_regex=None, position=None):
+def register_top_menu(name, link, children_views=None, \
+    children_path_regex=None, children_view_regex=None, position=None):
     """
     Register a new menu entry for the main menu displayed at the top
     of the page
@@ -55,6 +56,8 @@ def register_top_menu(name, link, children_views=None, children_path_regex=None,
         entry['children_views'] = children_views
     if children_path_regex:
         entry['children_path_regex'] = children_path_regex
+    if children_view_regex:
+        entry['children_view_regex'] = children_view_regex
     if position is not None:
         top_menu_entries.insert(position, entry)
     else:

@@ -189,6 +189,7 @@ register_top_menu(
     children_path_regex=[
         r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents'
     ],
+    children_views=['document_folder_list', 'folder_add_document', 'document_index_list'],
     position=0
 )
 
