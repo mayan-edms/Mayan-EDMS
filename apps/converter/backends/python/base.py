@@ -44,7 +44,7 @@ class ConverterClass(ConverterBase):
             
         try:
             while 1:
-                im.seek(im.tell()+1)
+                im.seek(im.tell() + 1)
                 page_count += 1
                 # do something to im
         except EOFError:

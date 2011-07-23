@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'sources',
     'mimetype',
     'scheduler',
+    'job_processor',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
