@@ -8,6 +8,6 @@ set_namespace_title('history', _(u'History'))
 register_permission(PERMISSION_HISTORY_VIEW)
 
 # TODO: support permissions AND operand
-history_list = {'text': _(u'history'), 'view': 'history_list', 'famfam': 'book', 'permissions': [PERMISSION_HISTORY_VIEW]}
+history_list = {'text': _(u'history'), 'view': 'history_list', 'famfam': 'book', 'permissions': [PERMISSION_HISTORY_VIEW], 'children_views': ['history_view']}
 
 #register_links(['history_view'], [history_list], menu_name='sidebar')

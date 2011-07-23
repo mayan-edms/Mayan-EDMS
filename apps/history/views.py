@@ -87,6 +87,5 @@ def history_view(request, object_id):
     return render_to_response('generic_detail.html', {
         'title': _(u'details for: %s') % history.get_processed_summary(),
         'form': form,
-        'object': history.content_object,
     },
     context_instance=RequestContext(request))

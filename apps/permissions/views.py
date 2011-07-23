@@ -198,6 +198,8 @@ def role_members(request, role_id):
         remove_method=lambda x: remove_role_member(role, x),
         left_list_title=_(u'non members of role: %s') % role,
         right_list_title=_(u'members of role: %s') % role,
-        obj=role,
-        object_name=_(u'role'),
+        extra_context={
+            'object': role,
+            'object_name': _(u'role'),
+        }
     )

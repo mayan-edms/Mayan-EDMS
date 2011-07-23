@@ -107,16 +107,15 @@ document_missing_list = {'text': _(u'Find missing document files'), 'view': 'doc
 
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_type_document_list = {'text': _(u'documents of this type'), 'view': 'document_type_document_list', 'args': 'object.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_type_edit = {'text': _(u'edit'), 'view': 'document_type_edit', 'args': 'object.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_delete = {'text': _(u'delete'), 'view': 'document_type_delete', 'args': 'object.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
+document_type_document_list = {'text': _(u'documents of this type'), 'view': 'document_type_document_list', 'args': 'document_type.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_type_edit = {'text': _(u'edit'), 'view': 'document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+document_type_delete = {'text': _(u'delete'), 'view': 'document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
 document_type_create = {'text': _(u'create document type'), 'view': 'document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}
 
-document_type_filename_list = {'text': _(u'filenames'), 'view': 'document_type_filename_list', 'args': 'object.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_type_filename_list = {'text': _(u'filenames'), 'view': 'document_type_filename_list', 'args': 'document_type.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_type_filename_create = {'text': _(u'add filename to document type'), 'view': 'document_type_filename_create', 'args': 'document_type.id', 'famfam': 'database_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_filename_edit = {'text': _(u'edit'), 'view': 'document_type_filename_edit', 'args': 'object.id', 'famfam': 'database_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_filename_delete = {'text': _(u'delete'), 'view': 'document_type_filename_delete', 'args': 'object.id', 'famfam': 'database_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_filename_return_to_document_type = {'text': _(u'return to document type filenames'), 'view': 'document_type_filename_list', 'args': 'object.document_type.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+document_type_filename_edit = {'text': _(u'edit'), 'view': 'document_type_filename_edit', 'args': 'filename.id', 'famfam': 'database_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+document_type_filename_delete = {'text': _(u'delete'), 'view': 'document_type_filename_delete', 'args': 'filename.id', 'famfam': 'database_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 
 document_type_views = ['setup_document_type_metadata', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete', 'document_type_create', 'document_type_filename_list', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_delete']
 
@@ -126,7 +125,6 @@ register_links(DocumentTypeFilename, [document_type_filename_edit, document_type
 
 register_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_create], menu_name='sidebar')
 register_links(['document_type_filename_create', 'document_type_filename_list', 'document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_create], menu_name='sidebar')
-register_links(['document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_return_to_document_type], menu_name='sidebar')
 
 # Register document links
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])

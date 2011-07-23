@@ -51,7 +51,7 @@ def get_obj_from_content_type_string(string):
     return ct.get_object_for_this_type(pk=pk)
 
 
-def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, obj=None, object_name=None, decode_content_type=False):
+def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, decode_content_type=False, extra_context=None):
     left_list_name = u'left_list'
     right_list_name = u'right_list'
 
@@ -122,19 +122,8 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
 
         ],
     }
-    if obj:
-        context.update(
-            {
-                'object': obj
-            }
-        )
-
-    if object_name:
-        context.update(
-            {
-                'object_name': object_name,
-            }
-        )
+    if extra_context:
+        context.update(extra_context)
 
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))

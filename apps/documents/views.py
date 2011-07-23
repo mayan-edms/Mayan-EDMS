@@ -813,6 +813,7 @@ def document_type_list(request):
         'object_list': DocumentType.objects.all(),
         'title': _(u'document types'),
         'hide_link': True,
+        'list_object_variable_name': 'document_type',
     }
 
     return render_to_response('generic_list.html', context,
@@ -829,8 +830,9 @@ def document_type_document_list(request, document_type_id):
         object_list=Document.objects.filter(document_type=document_type),
         title=_(u'documents of type "%s"') % document_type,
         extra_context={
-            'object': document_type,
             'object_name': _(u'document type'),
+            'navigation_object_name': 'document_type',
+            'document_type': document_type,            
         }
     )
 
@@ -856,8 +858,11 @@ def document_type_edit(request, document_type_id):
     return render_to_response('generic_form.html', {
         'title': _(u'edit document type: %s') % document_type,
         'form': form,
-        'object': document_type,
+        #'object': document_type,
+        #'object_name': _(u'document type'),
         'object_name': _(u'document type'),
+        'navigation_object_name': 'document_type',
+        'document_type': document_type,        
         'next': next
     },
     context_instance=RequestContext(request))
@@ -888,7 +893,11 @@ def document_type_delete(request, document_type_id):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'object': document_type,
+        
+        'object_name': _(u'document type'),
+        'navigation_object_name': 'document_type',
+        'document_type': document_type,
+                
         'title': _(u'Are you sure you wish to delete the document type: %s?') % document_type,
         'message': _(u'The document type of all documents using this document type will be set to none.'),
         'form_icon': u'layout_delete.png',
@@ -928,9 +937,10 @@ def document_type_filename_list(request, document_type_id):
     context = {
         'object_list': document_type.documenttypefilename_set.all(),
         'title': _(u'filenames for document type: %s') % document_type,
-        'object': document_type,
         'object_name': _(u'document type'),
+        'navigation_object_name': 'document_type',
         'document_type': document_type,
+        'list_object_variable_name': 'filename',
         'hide_link': True,
         'extra_columns': [
             {
@@ -969,10 +979,13 @@ def document_type_filename_edit(request, document_type_filename_id):
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
         'form': form,
-        'object': document_type_filename,
-        'object_name': _(u'document type filename'),
         'next': next,
+        'filename': document_type_filename,
         'document_type': document_type_filename.document_type,
+        'navigation_object_list': [
+            {'object': 'document_type', 'name': _(u'document type')},
+            {'object': 'filename', 'name': _(u'document type filename')}
+        ],         
     },
     context_instance=RequestContext(request))
 
@@ -1001,12 +1014,16 @@ def document_type_filename_delete(request, document_type_filename_id):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'object': document_type_filename,
+        'filename': document_type_filename,
+        'document_type': document_type_filename.document_type,
+        'navigation_object_list': [
+            {'object': 'document_type', 'name': _(u'document type')},
+            {'object': 'filename', 'name': _(u'document type filename')}
+        ],        
         'title': _(u'Are you sure you wish to delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
         'form_icon': u'database_delete.png',
-        'document_type': document_type_filename.document_type,
     }
 
     return render_to_response('generic_confirm.html', context,
@@ -1040,6 +1057,5 @@ def document_type_filename_create(request, document_type_id):
         'title': _(u'create filename for document type: %s') % document_type,
         'form': form,
         'document_type': document_type,
-        'object': document_type,
     },
     context_instance=RequestContext(request))

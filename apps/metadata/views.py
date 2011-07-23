@@ -441,8 +441,10 @@ def setup_metadata_set_edit(request, metadata_set_id):
         remove_method=lambda x: remove_set_member(metadata_set, x),
         left_list_title=_(u'non members of metadata set: %s') % metadata_set,
         right_list_title=_(u'members of metadata set: %s') % metadata_set,
-        obj=metadata_set,
-        object_name=_(u'metadata set'),
+        extra_context={
+            'object': metadata_set,
+            'object_name': _(u'metadata set'),
+        }
     )
 
 
@@ -551,6 +553,9 @@ def setup_document_type_metadata(request, document_type_id):
         remove_method=lambda x: remove_document_type_metadata(document_type, x),
         left_list_title=_(u'non members of document type: %s') % document_type,
         right_list_title=_(u'members of document type: %s') % document_type,
-        obj=document_type,
-        object_name=_(u'document type'),
+        extra_context={
+            'document_type': document_type,
+            'navigation_object_name': 'document_type',
+            'object_name': _(u'document type'),
+        },
     )

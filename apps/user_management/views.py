@@ -344,7 +344,9 @@ def group_members(request, group_id):
         remove_method=lambda x: group.user_set.remove(x),
         left_list_title=_(u'non members of group: %s') % group,
         right_list_title=_(u'members of group: %s') % group,
-        obj=group,
-        object_name=_(u'group'),
         decode_content_type=True,
+        extra_context={
+            'object': group,
+            'object_name': _(u'group'),
+        }
     )
