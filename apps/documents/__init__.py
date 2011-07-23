@@ -135,6 +135,7 @@ register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_ins
 secondary_menu_links = [document_list_recent, document_list, document_create_multiple]
 
 register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
+register_links(Document, secondary_menu_links, menu_name='secondary_menu')
 #register_links(Document, secondary_menu_links, menu_name='sidebar')
 
 # Document page links
