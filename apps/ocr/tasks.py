@@ -17,8 +17,8 @@ from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
 from ocr.models import QueueDocument, DocumentQueue
 from ocr.conf.settings import NODE_CONCURRENT_EXECUTION
 from ocr.conf.settings import REPLICATION_DELAY
-from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
 from ocr.conf.settings import CACHE_URI
+from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
 
 LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
@@ -46,14 +46,14 @@ else:
     release_lock = lambda lock_id: True
 
 
-@task
+#@task
 def task_process_queue_document(queue_document_id):
     lock_id = u'%s-lock-%d' % (u'task_process_queue_document', queue_document_id)
     if acquire_lock(lock_id):
         queue_document = QueueDocument.objects.get(pk=queue_document_id)
         queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
         queue_document.node_name = platform.node()
-        queue_document.result = task_process_queue_document.request.id
+        #queue_document.result = task_process_queue_document.request.id
         queue_document.save()
         try:
             do_document_ocr(queue_document)
@@ -66,6 +66,8 @@ def task_process_queue_document(queue_document_id):
 
 
 def reset_orphans():
+    pass
+    '''
     i = inspect().active()
     active_tasks = []
     orphans = []
@@ -86,13 +88,12 @@ def reset_orphans():
         orphan.delay = False
         orphan.node_name = None
         orphan.save()
+    '''
+    
 
-
-@periodic_task(run_every=timedelta(seconds=QUEUE_PROCESSING_INTERVAL))
 def task_process_document_queues():
     if not cache_backend:
         random_delay()
-
     # reset_orphans()
     # Causes problems with big clusters increased latency
     # Disabled until better solution
@@ -110,6 +111,7 @@ def task_process_document_queues():
 
                 if oldest_queued_document_qs:
                     oldest_queued_document = oldest_queued_document_qs.order_by('datetime_submitted')[0]
-                    task_process_queue_document.delay(oldest_queued_document.pk)
+                    #task_process_queue_document.delay(oldest_queued_document.pk)
+                    task_process_queue_document(oldest_queued_document.pk)
             except Exception, e:
                 print 'DocumentQueueWatcher exception: %s' % e

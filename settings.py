@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'document_indexing',
     'sources',
     'mimetype',
+    'scheduler',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
