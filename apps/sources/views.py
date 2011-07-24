@@ -17,6 +17,7 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE
 from documents.literals import HISTORY_DOCUMENT_CREATED
 from documents.models import RecentDocument, Document, DocumentType
 from document_indexing.api import update_indexes
+from documents.conf.settings import THUMBNAIL_SIZE
 from history.api import create_history
 from metadata.api import save_metadata_list, \
     decode_metadata_from_url, metadata_repr_as_list
@@ -161,7 +162,7 @@ def upload_interactive(request, source_type=None, source_id=None):
         elif source_type == SOURCE_CHOICE_STAGING:
             staging_folder = get_object_or_404(StagingFolder, pk=source_id)
             context['source'] = staging_folder
-            StagingFile = create_staging_file_class(request, staging_folder.folder_path)
+            StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
             if request.method == 'POST':
                 form = StagingDocumentForm(request.POST, request.FILES,
                     cls=StagingFile, document_type=document_type,
@@ -290,32 +291,38 @@ def staging_file_preview(request, source_type, source_id, staging_file_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
-    try:
-        transformations, errors=SourceTransformation.objects.get_for_object_as_list(staging_folder)
-        
-        output_file, errors = StagingFile.get(staging_file_id).preview(
-            preview_size=staging_folder.get_preview_size(),
-            transformations=transformations
-        )
-        if errors and (request.user.is_staff or request.user.is_superuser):
-            for error in errors:
-                messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
-                    'error': error
-                })
+    transformations, errors = SourceTransformation.objects.get_for_object_as_list(staging_folder)
+    
+    output_file = StagingFile.get(staging_file_id).get_image(
+        size=staging_folder.get_preview_size(),
+        transformations=transformations
+    )
+    if errors and (request.user.is_staff or request.user.is_superuser):
+        for error in errors:
+            messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
+                'error': error
+            })
 
-    except UnkownConvertError, e:
-        if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, e)
+    return sendfile.sendfile(request, output_file)
 
-        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
-    except UnknownFormat:
-        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_UNKNOWN_MEDIUM)
-    except Exception, e:
-        if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, e)
-        output_file = os.path.join(settings.MEDIA_ROOT, u'images', PICTURE_ERROR_MEDIUM)
-    finally:
-        return sendfile.sendfile(request, output_file)
+
+def staging_file_thumbnail(request, source_id, staging_file_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+    staging_folder = get_object_or_404(StagingFolder, pk=source_id)
+    StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
+    transformations, errors = SourceTransformation.objects.get_for_object_as_list(staging_folder)
+    
+    output_file = StagingFile.get(staging_file_id).get_image(
+        size=THUMBNAIL_SIZE,
+        transformations=transformations
+    )
+    if errors and (request.user.is_staff or request.user.is_superuser):
+        for error in errors:
+            messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
+                'error': error
+            })
+
+    return sendfile.sendfile(request, output_file)
 
 
 def staging_file_delete(request, source_type, source_id, staging_file_id):

@@ -5,6 +5,7 @@ from sources.models import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
 urlpatterns = patterns('sources.views',
     url(r'^staging_file/type/(?P<source_type>\w+)/(?P<source_id>\d+)/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
     url(r'^staging_file/type/(?P<source_type>\w+)/(?P<source_id>\d+)/(?P<staging_file_id>\w+)/delete/$', 'staging_file_delete', (), 'staging_file_delete'),
+    url(r'^staging_file/type/staging_folder/(?P<source_id>\d+)/(?P<staging_file_id>\w+)/thumbnail/$', 'staging_file_thumbnail', (), 'staging_file_thumbnail'),
 
     url(r'^upload/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/$', 'upload_interactive', (), 'upload_interactive'),
     url(r'^upload/interactive/$', 'upload_interactive', (), 'upload_interactive'),

@@ -7,7 +7,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
+from mimetype.api import get_icon_file_path, get_error_icon_file_path, \
+    get_mimetype
 from converter.api import convert, cache_cleanup
+from converter.exceptions import UnknownFormat, UnkownConvertError
+
 
 DEFAULT_STAGING_DIRECTORY = u'/tmp'
 
@@ -41,10 +45,12 @@ def _return_new_class():
     return type('StagingFile', (StagingFile,), dict(StagingFile.__dict__))
 
 
-def create_staging_file_class(request, source):
+def create_staging_file_class(request, directory_path, source=None):
     cls = _return_new_class()
     #cls.set_path(evaluate_user_staging_path(request, source))
-    cls.set_path(source)
+    cls.set_path(directory_path)
+    if source is not None:
+        cls.set_source(source)
     return cls
 
 
@@ -54,10 +60,15 @@ class StagingFile(object):
     specifics to the view
     """
     path = DEFAULT_STAGING_DIRECTORY
+    source = None
 
     @classmethod
     def set_path(cls, path):
         cls.path = path
+
+    @classmethod
+    def set_source(cls, source):
+        cls.source = source
 
     @classmethod
     def get_all(cls):
@@ -68,7 +79,7 @@ class StagingFile(object):
         staging_files = []
         for filename in get_all_files(cls.path):
             staging_files.append(StagingFile(
-                filepath=os.path.join(cls.path, filename)))
+                filepath=os.path.join(cls.path, filename), source=cls.source))
 
         return staging_files
 
@@ -84,10 +95,13 @@ class StagingFile(object):
         else:
             raise ObjectDoesNotExist
 
-    def __init__(self, filepath):
+    def __init__(self, filepath, source=None):
+        self.source = source
         self.filepath = filepath
         self.filename = os.path.basename(filepath)
-        self._id = HASH_FUNCTION(open(filepath).read())
+        fd = open(filepath, 'rb')
+        self._id = HASH_FUNCTION(fd.read())
+        fd.close()
 
     def __unicode__(self):
         return self.filename
@@ -121,7 +135,10 @@ class StagingFile(object):
             else:
                 raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
 
-    def preview(self, preview_size, transformations):
-        errors = []
-        output_file = convert(self.filepath, size=preview_size, cleanup_files=False, transformations=transformations)
-        return output_file, errors
+    def get_image(self, size, transformations):
+        try:
+            return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
+        except UnknownFormat:
+            return get_icon_file_path(get_mimetype(self.filepath))
+        except UnkownConvertError:
+            return get_error_icon_file_path()
