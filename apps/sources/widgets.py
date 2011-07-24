@@ -1,6 +1,9 @@
 from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.encoding import force_unicode
+from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 
 class FamFamRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
@@ -20,3 +23,15 @@ class FamFamRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
 
 class FamFamRadioSelect(forms.widgets.RadioSelect):
     renderer = FamFamRadioFieldRenderer
+
+
+def staging_file_thumbnail(staging_file):
+    #try:
+    return mark_safe(u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>' % {
+        'url': reverse('staging_file_preview', args=[staging_file.source.source_type, staging_file.source.pk, staging_file.id]),
+        'thumbnail': reverse('staging_file_thumbnail', args=[staging_file.source.pk, staging_file.id]),
+        'media_url': settings.MEDIA_URL,
+        'string': _(u'thumbnail')
+    })
+#    except:
+#        return u''

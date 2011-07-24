@@ -7,6 +7,7 @@ from permissions.api import register_permission, set_namespace_title
 
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation
+from sources.widgets import staging_file_thumbnail
 
 PERMISSION_SOURCES_SETUP_VIEW = {'namespace': 'sources_setup', 'name': 'sources_setup_view', 'label': _(u'View existing document sources')}
 PERMISSION_SOURCES_SETUP_EDIT = {'namespace': 'sources_setup', 'name': 'sources_setup_edit', 'label': _(u'Edit document sources')}
@@ -18,7 +19,6 @@ register_permission(PERMISSION_SOURCES_SETUP_VIEW)
 register_permission(PERMISSION_SOURCES_SETUP_EDIT)
 register_permission(PERMISSION_SOURCES_SETUP_DELETE)
 register_permission(PERMISSION_SOURCES_SETUP_CREATE)
-
 
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
@@ -37,7 +37,7 @@ setup_source_transformation_delete = {'text': _(u'delete'), 'view': 'setup_sourc
 
 source_list = {'text': _(u'Document sources'), 'view': 'setup_web_form_list', 'famfam': 'page_add', 'children_url_regex': [r'sources/setup']}
 
-register_links(StagingFile, [staging_file_preview, staging_file_delete])
+register_links(StagingFile, [staging_file_delete])
 
 register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
 
@@ -54,3 +54,9 @@ register_links(StagingFolder, [setup_source_transformation_list, setup_source_ed
 register_links(['setup_source_transformation_create', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
 
 source_views = ['setup_web_form_list', 'setup_staging_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create', 'setup_source_transformation_list', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_create']
+
+register_model_list_columns(StagingFile, [
+        {'name':_(u'thumbnail'), 'attribute':
+            lambda x: staging_file_thumbnail(x)
+        },
+    ])

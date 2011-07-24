@@ -38,6 +38,7 @@ mimetype_icons = {
     'application/vnd.ms-powerpoint': 'file_extension_pps.png',
     'application/wav'                      : 'file_extension_wav.png',
     'application/x-wav'                    : 'file_extension_wav.png',
+    'application/vnd.oasis.opendocument.text' : 'ODF_textdocument_32x32.png',
     
     'image/jpeg'              : 'file_extension_jpeg.png',
     'image/png'               : 'file_extension_png.png',
@@ -89,7 +90,7 @@ def get_mimetype(filepath):
     if USE_PYTHON_MAGIC:
         if os.path.exists(filepath):
             try:
-                source = open(filepath, 'r')
+                source = open(filepath, 'rb')
                 mime = magic.Magic(mime=True)
                 file_mimetype = mime.from_buffer(source.read())
                 source.seek(0)
