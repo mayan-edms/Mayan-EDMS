@@ -332,8 +332,6 @@ def setup_queue_transformation_list(request, document_queue_id):
     context = {
         'object_list': QueueTransformation.objects.get_for_object(document_queue),
         'title': _(u'transformations for: %s') % document_queue,
-        #'object_name': _(u'document queue'),
-        #'object': document_queue,
         'queue': document_queue,
         'object_name': _(u'document queue'),
         'navigation_object_name': 'queue',
@@ -362,17 +360,11 @@ def setup_queue_transformation_edit(request, transformation_id):
         form = QueueTransformationForm(instance=transformation, data=request.POST)
         if form.is_valid():
             try:
-                # Test the validity of the argument field
-                eval(form.cleaned_data['arguments'], {})
-            except:
-                messages.error(request, _(u'Queue transformation argument error.'))
-            else:
-                try:
-                    form.save()
-                    messages.success(request, _(u'Queue transformation edited successfully'))
-                    return HttpResponseRedirect(next)
-                except Exception, e:
-                    messages.error(request, _(u'Error editing queue transformation; %s') % e)
+                form.save()
+                messages.success(request, _(u'Queue transformation edited successfully'))
+                return HttpResponseRedirect(next)
+            except Exception, e:
+                messages.error(request, _(u'Error editing queue transformation; %s') % e)
     else:
         form = QueueTransformationForm(instance=transformation)
 
@@ -435,19 +427,13 @@ def setup_queue_transformation_create(request, document_queue_id):
         form = QueueTransformationForm_create(request.POST)
         if form.is_valid():
             try:
-                # Test the validity of the argument field
-                eval(form.cleaned_data['arguments'], {})
-            except:
-                messages.error(request, _(u'Queue transformation argument error.'))
-            else:
-                try:
-                    queue_tranformation = form.save(commit=False)
-                    queue_tranformation.content_object = document_queue
-                    queue_tranformation.save()
-                    messages.success(request, _(u'Queue transformation created successfully'))
-                    return HttpResponseRedirect(redirect_view)
-                except Exception, e:
-                    messages.error(request, _(u'Error creating queue transformation; %s') % e)
+                queue_tranformation = form.save(commit=False)
+                queue_tranformation.content_object = document_queue
+                queue_tranformation.save()
+                messages.success(request, _(u'Queue transformation created successfully'))
+                return HttpResponseRedirect(redirect_view)
+            except Exception, e:
+                messages.error(request, _(u'Error creating queue transformation; %s') % e)
     else:
         form = QueueTransformationForm_create()
 
