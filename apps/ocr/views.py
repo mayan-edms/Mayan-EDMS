@@ -330,7 +330,7 @@ def setup_queue_transformation_list(request, document_queue_id):
     document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
 
     context = {
-        'object_list': QueueTransformation.objects.get_for_object(document_queue),
+        'object_list': QueueTransformation.transformations.get_for_object(document_queue),
         'title': _(u'transformations for: %s') % document_queue,
         'queue': document_queue,
         'object_name': _(u'document queue'),
