@@ -1,3 +1,5 @@
+from ast import literal_eval
+
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 
@@ -15,10 +17,10 @@ class SourceTransformationManager(models.Manager):
                 transformations.append(
                     {
                         'transformation': transformation['transformation'],
-                        'arguments': eval(transformation['arguments'], {})
+                        'arguments': literal_eval(transformation['arguments'].strip())
                     }
                 )
-            except Exception, e:
+            except (ValueError, SyntaxError), e:
                 warnings.append(e)
         
         return transformations, warnings
