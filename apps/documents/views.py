@@ -557,6 +557,10 @@ def document_page_view(request, document_page_id):
     }, context_instance=RequestContext(request))
 
 
+def document_page_view_reset(request, document_page_id):
+    return HttpResponseRedirect(reverse('document_page_view', args=[document_page_id]))
+
+
 def document_page_text(request, document_page_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
