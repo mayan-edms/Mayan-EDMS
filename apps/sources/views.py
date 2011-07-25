@@ -7,8 +7,10 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.utils.safestring import mark_safe
 
 from converter.exceptions import UnkownConvertError, UnknownFormat
 from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
@@ -25,8 +27,8 @@ from permissions.api import check_permissions
 import sendfile
 
 from sources.models import WebForm, StagingFolder, SourceTransformation
-from sources.models import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
-from sources.models import SOURCE_UNCOMPRESS_CHOICE_Y, \
+from sources.literals import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
+from sources.literals import SOURCE_UNCOMPRESS_CHOICE_Y, \
     SOURCE_UNCOMPRESS_CHOICE_ASK
 from sources.staging import create_staging_file_class, StagingFile
 from sources.forms import StagingDocumentForm, WebFormForm
@@ -68,8 +70,8 @@ def get_active_tab_links():
         
     return {
         'tab_links': tab_links,
-        'web_forms': web_forms,
-        'staging_folders': staging_folders
+        SOURCE_CHOICE_WEB_FORM: web_forms,
+        SOURCE_CHOICE_STAGING: staging_folders
     }
     
 
@@ -82,15 +84,18 @@ def upload_interactive(request, source_type=None, source_id=None):
 
     results = get_active_tab_links()
 
-    if results['web_forms'].count() == 0 and results['staging_folders'].count() == 0:
+    if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
+        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'here')))
         subtemplates_list.append(
             {
                 'name': 'generic_subtemplate.html',
                 'context': {
                     'title': _(u'Upload sources'),
                     'paragraphs': [
-                        _(u'No interactive document sources have been defined or none have been enabled.')
-                        # TODO: Add link to setup
+                        _(u'No interactive document sources have been defined or none have been enabled.'),
+                        _(u'Click %(setup_link)s to add or enable some document sources.') % {
+                            'setup_link': source_setup_link
+                        }
                     ],
                 }
             })
@@ -101,15 +106,13 @@ def upload_interactive(request, source_type=None, source_id=None):
     else:
         document_type = None
 
-    subtemplates_list = []
-
     if source_type is None and source_id is None:
-        if results['web_forms'].count():
-            source_type = results['web_forms'][0].source_type
-            source_id = results['web_forms'][0].pk
-        elif results['staging_folders'].count():
-            source_type = results['staging_folders'][0].source_type
-            source_id = results['staging_folders'][0].pk
+        if results[SOURCE_CHOICE_WEB_FORM].count():
+            source_type = results[SOURCE_CHOICE_WEB_FORM][0].source_type
+            source_id = results[SOURCE_CHOICE_WEB_FORM][0].pk
+        elif results[SOURCE_CHOICE_STAGING].count():
+            source_type = results[SOURCE_CHOICE_STAGING][0].source_type
+            source_id = results[SOURCE_CHOICE_STAGING][0].pk
 
     if source_type and source_id:
         if source_type == SOURCE_CHOICE_WEB_FORM:
