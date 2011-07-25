@@ -487,6 +487,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         for document in documents:
             try:
                 for document_page in document.documentpage_set.all():
+                    document_page.document.invalidate_cached_image(document_page.page_number)
                     for transformation in document_page.documentpagetransformation_set.all():
                         transformation.delete()
                 messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % document)
