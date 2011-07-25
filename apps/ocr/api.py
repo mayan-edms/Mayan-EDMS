@@ -90,13 +90,13 @@ def do_document_ocr(queue_document):
             parse_document_page(document_page)
         except (ParserError, ParserUnknownFile):
             # Fall back to doing visual OCR
-            ##ocr_transformations, warnings = queue_document.get_transformation_list()
+            ocr_transformations, warnings = queue_document.get_transformation_list()
 
             document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number)
             unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
             unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
 
-            unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
+            unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT, transformations=ocr_transformations)
             execute_unpaper(input_filepath=unpaper_input, output_filepath=unpaper_output_filepath)
 
             #from PIL import Image, ImageOps
