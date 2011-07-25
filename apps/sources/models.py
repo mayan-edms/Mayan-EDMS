@@ -9,58 +9,10 @@ from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR    
 
 from sources.managers import SourceTransformationManager
-
-SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
-SOURCE_UNCOMPRESS_CHOICE_N = 'n'
-SOURCE_UNCOMPRESS_CHOICE_ASK = 'a'
-
-SOURCE_UNCOMPRESS_CHOICES = (
-    (SOURCE_UNCOMPRESS_CHOICE_Y, _(u'Always')),
-    (SOURCE_UNCOMPRESS_CHOICE_N, _(u'Never')),
-)
-
-SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES = (
-    (SOURCE_UNCOMPRESS_CHOICE_Y, _(u'Always')),
-    (SOURCE_UNCOMPRESS_CHOICE_N, _(u'Never')),
-    (SOURCE_UNCOMPRESS_CHOICE_ASK, _(u'Ask user'))
-)
-
-SOURCE_ICON_DISK = 'disk'
-SOURCE_ICON_DATABASE = 'database'
-SOURCE_ICON_DRIVE = 'drive'
-SOURCE_ICON_DRIVE_NETWORK = 'drive_network'
-SOURCE_ICON_DRIVE_USER = 'drive_user'
-SOURCE_ICON_EMAIL = 'email'
-SOURCE_ICON_FOLDER = 'folder'
-SOURCE_ICON_WORLD = 'world'
-SOURCE_ICON_PRINTER = 'printer'
-SOURCE_ICON_PRINTER_EMPTY = 'printer_empty'
-
-SOURCE_ICON_CHOICES = (
-    (SOURCE_ICON_DISK, _(u'Disk')),
-    (SOURCE_ICON_DATABASE, _(u'Database')),
-    (SOURCE_ICON_DRIVE, _(u'Drive')),
-    (SOURCE_ICON_DRIVE_NETWORK, _(u'Network drive')),
-    (SOURCE_ICON_DRIVE_USER, _(u'User drive')),
-    (SOURCE_ICON_EMAIL, _(u'Envelope')),
-    (SOURCE_ICON_FOLDER, _(u'Folder')),
-    (SOURCE_ICON_WORLD, _(u'World')),
-    (SOURCE_ICON_PRINTER, _(u'Printer')),
-    (SOURCE_ICON_PRINTER_EMPTY, _(u'Empty printer')),
-)
-
-SOURCE_CHOICE_WEB_FORM = 'webform'
-SOURCE_CHOICE_STAGING = 'staging'
-
-SOURCE_CHOICES = (
-    (SOURCE_CHOICE_WEB_FORM, _(u'web form')),
-    (SOURCE_CHOICE_STAGING, _(u'server staging folder')),
-)
-
-SOURCE_CHOICES_PLURAL = (
-    (SOURCE_CHOICE_WEB_FORM, _(u'web forms')),
-    (SOURCE_CHOICE_STAGING, _(u'server staging folders')),
-)
+from sources.literals import SOURCE_CHOICES, SOURCE_CHOICES_PLURAL, \
+    SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM, \
+    SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE, \
+    SOURCE_ICON_CHOICES
 
 
 class BaseModel(models.Model):
