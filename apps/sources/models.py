@@ -141,7 +141,8 @@ class SourceTransformation(models.Model):
     transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
 
-    objects = SourceTransformationManager()
+    objects = models.Manager()
+    transformations = SourceTransformationManager()
 
     def __unicode__(self):
         #return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.content_object))
