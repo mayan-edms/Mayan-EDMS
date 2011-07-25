@@ -534,17 +534,11 @@ def setup_source_transformation_edit(request, transformation_id):
         form = SourceTransformationForm(instance=source_transformation, data=request.POST)
         if form.is_valid():
             try:
-                # Test the validity of the argument field
-                eval(form.cleaned_data['arguments'], {})
-            except:
-                messages.error(request, _(u'Source transformation argument error.'))
-            else:
-                try:
-                    form.save()
-                    messages.success(request, _(u'Source transformation edited successfully'))
-                    return HttpResponseRedirect(next)
-                except Exception, e:
-                    messages.error(request, _(u'Error editing source transformation; %s') % e)
+                form.save()
+                messages.success(request, _(u'Source transformation edited successfully'))
+                return HttpResponseRedirect(next)
+            except Exception, e:
+                messages.error(request, _(u'Error editing source transformation; %s') % e)
     else:
         form = SourceTransformationForm(instance=source_transformation)
 
@@ -612,19 +606,13 @@ def setup_source_transformation_create(request, source_type, source_id):
         form = SourceTransformationForm_create(request.POST)
         if form.is_valid():
             try:
-                # Test the validity of the argument field
-                eval(form.cleaned_data['arguments'], {})
-            except:
-                messages.error(request, _(u'Source transformation argument error.'))
-            else:            
-                try:
-                    source_tranformation = form.save(commit=False)
-                    source_tranformation.content_object = source
-                    source_tranformation.save()
-                    messages.success(request, _(u'Source transformation created successfully'))
-                    return HttpResponseRedirect(redirect_view)
-                except Exception, e:
-                    messages.error(request, _(u'Error creating source transformation; %s') % e)
+                source_tranformation = form.save(commit=False)
+                source_tranformation.content_object = source
+                source_tranformation.save()
+                messages.success(request, _(u'Source transformation created successfully'))
+                return HttpResponseRedirect(redirect_view)
+            except Exception, e:
+                messages.error(request, _(u'Error creating source transformation; %s') % e)
     else:
         form = SourceTransformationForm_create()
         
