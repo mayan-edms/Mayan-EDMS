@@ -325,9 +325,11 @@ def document_page_transformation_list(request, document_page_id):
         queryset=document_page.documentpagetransformation_set.all(),
         template_name='generic_list.html',
         extra_context={
-            'object': document_page,
+            'page': document_page,
+            'navigation_object_name': 'page',
             'title': _(u'transformations for: %s') % document_page,
             'web_theme_hide_menus': True,
+            'list_object_variable_name': 'transformation',
             'extra_columns': [
                 {'name': _(u'order'), 'attribute': 'order'},
                 {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
@@ -356,7 +358,8 @@ def document_page_transformation_create(request, document_page_id):
 
     return render_to_response('generic_form.html', {
         'form': form,
-        'object': document_page,
+        'page': document_page,
+        'navigation_object_name': 'page',
         'title': _(u'Create new transformation for page: %(page)s of document: %(document)s') % {
             'page': document_page.page_number, 'document': document_page.document},
         'web_theme_hide_menus': True,
@@ -380,8 +383,12 @@ def document_page_transformation_edit(request, document_page_transformation_id):
 
     return render_to_response('generic_form.html', {
         'form': form,
-        'object': document_page_transformation,
-        'object_name': _(u'transformation'),        
+        'transformation': document_page_transformation,
+        'page': document_page_transformation.document_page,
+        'navigation_object_list': [
+            {'object': 'page'},
+            {'object': 'transformation', 'name': _(u'transformation')}
+        ],         
         'title': _(u'Edit transformation "%(transformation)s" for: %(document_page)s') % {
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
@@ -405,8 +412,12 @@ def document_page_transformation_delete(request, document_page_transformation_id
 
     return render_to_response('generic_confirm.html', {
         'delete_view': True,
-        'object': document_page_transformation,
-        'object_name': _(u'transformation'),        
+        'page': document_page_transformation.document_page,
+        'transformation': document_page_transformation,
+        'navigation_object_list': [
+            {'object': 'page'},
+            {'object': 'transformation', 'name': _(u'transformation')}
+        ], 
         'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
@@ -563,7 +574,8 @@ def document_page_view(request, document_page_id):
         rotation_text = u''
 
     return render_to_response('generic_detail.html', {
-        'object': document_page,
+        'page': document_page,
+        'navigation_object_name': 'page',
         'web_theme_hide_menus': True,
         'form': document_page_form,
         'title': u' '.join([base_title, zoom_text, rotation_text]),
@@ -583,7 +595,8 @@ def document_page_text(request, document_page_id):
     document_page_form = DocumentPageForm_text(instance=document_page)
 
     return render_to_response('generic_detail.html', {
-        'object': document_page,
+        'page': document_page,
+        'navigation_object_name': 'page',
         'web_theme_hide_menus': True,
         'form': document_page_form,
         'title': _(u'details for: %s') % document_page,
@@ -608,7 +621,8 @@ def document_page_edit(request, document_page_id):
 
     return render_to_response('generic_form.html', {
         'form': form,
-        'object': document_page,
+        'page': document_page,
+        'navigation_object_name': 'page',
         'title': _(u'edit: %s') % document_page,
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
