@@ -134,7 +134,7 @@ def upload_interactive(request, source_type=None, source_id=None):
                             else:
                                 expand = False
 
-                        transformations, errors = SourceTransformation.objects.get_for_object_as_list(web_form)
+                        transformations, errors = SourceTransformation.transformations.get_for_object_as_list(web_form)
                                
                         if (not expand) or (expand and not _handle_zip_file(request, request.FILES['file'], document_type=document_type, transformations=transformations)):
                             instance = form.save()
@@ -182,7 +182,7 @@ def upload_interactive(request, source_type=None, source_id=None):
                                 expand = True
                             else:
                                 expand = False                        
-                        transformations, errors = SourceTransformation.objects.get_for_object_as_list(staging_folder)
+                        transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
                         if (not expand) or (expand and not _handle_zip_file(request, staging_file.upload(), document_type=document_type, transformations=transformations)):
                             document = Document(file=staging_file.upload())
                             if document_type:
@@ -294,7 +294,7 @@ def staging_file_preview(request, source_type, source_id, staging_file_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
-    transformations, errors = SourceTransformation.objects.get_for_object_as_list(staging_folder)
+    transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
     
     output_file = StagingFile.get(staging_file_id).get_image(
         size=staging_folder.get_preview_size(),
@@ -313,7 +313,7 @@ def staging_file_thumbnail(request, source_id, staging_file_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
-    transformations, errors = SourceTransformation.objects.get_for_object_as_list(staging_folder)
+    transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
     
     output_file = StagingFile.get(staging_file_id).get_image(
         size=THUMBNAIL_SIZE,
@@ -339,7 +339,7 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
 
     if request.method == 'POST':
         try:
-            transformations, errors=SourceTransformation.objects.get_for_object_as_list(staging_folder)
+            transformations, errors=SourceTransformation.transformations.get_for_object_as_list(staging_folder)
             staging_file.delete(
                 preview_size=staging_folder.get_preview_size(),
                 transformations=transformations
@@ -504,7 +504,7 @@ def setup_source_transformation_list(request, source_type, source_id):
     source = get_object_or_404(cls, pk=source_id)
 
     context = {
-        'object_list': SourceTransformation.objects.get_for_object(source),
+        'object_list': SourceTransformation.transformations.get_for_object(source),
         'title': _(u'transformations for: %s') % source.fullname(),
         'source': source,
         'object_name': _(u'source'),
