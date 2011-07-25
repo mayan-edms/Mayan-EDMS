@@ -10,11 +10,12 @@ from django.core.exceptions import ValidationError
 
 from documents.models import Document
 from converter.api import get_available_transformations_choices
+from sources.managers import SourceTransformationManager
 
 from ocr.literals import DOCUMENTQUEUE_STATE_STOPPED, \
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING, \
     QUEUEDOCUMENT_STATE_CHOICES
-from ocr.managers import DocumentQueueManager, QueueTransformationManager
+from ocr.managers import DocumentQueueManager
 
 
 class DocumentQueue(models.Model):
@@ -53,7 +54,7 @@ class QueueDocument(models.Model):
         verbose_name_plural = _(u'queue documents')
 
     def get_transformation_list(self):
-        return QueueTransformation.objects.get_for_object_as_list(self)
+        return QueueTransformation.transformations.get_for_object_as_list(self)
 
     def __unicode__(self):
         try:
@@ -95,7 +96,7 @@ class QueueTransformation(models.Model):
     transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
 
-    objects = QueueTransformationManager()
+    transformations = SourceTransformationManager()
 
     def __unicode__(self):
         return self.get_transformation_display()
