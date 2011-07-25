@@ -1,3 +1,4 @@
+from ast import literal_eval
 from datetime import datetime
 
 from django.db import models
@@ -27,10 +28,10 @@ class DocumentPageTransformationManager(models.Manager):
                 transformations.append(
                     {
                         'transformation': transformation['transformation'],
-                        'arguments': eval(transformation['arguments'], {})
+                        'arguments': literal_eval(transformation['arguments'].strip())
                     }
                 )
-            except Exception, e:
+            except (ValueError, SyntaxError), e:
                 warnings.append(e)
 
         return transformations, warnings
