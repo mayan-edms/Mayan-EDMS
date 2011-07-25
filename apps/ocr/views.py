@@ -15,7 +15,8 @@ from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
 
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
-    PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES
+    PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES, \
+    PERMISSION_OCR_QUEUE_EDIT
 
 from ocr.models import DocumentQueue, QueueDocument, QueueTransformation
 from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
@@ -324,7 +325,7 @@ def node_active_list(request):
 
 
 def setup_queue_transformation_list(request, document_queue_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
 
@@ -351,7 +352,7 @@ def setup_queue_transformation_list(request, document_queue_id):
 
 
 def setup_queue_transformation_edit(request, transformation_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
     redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
@@ -390,7 +391,7 @@ def setup_queue_transformation_edit(request, transformation_id):
 
 
 def setup_queue_transformation_delete(request, transformation_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
     redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
@@ -424,7 +425,7 @@ def setup_queue_transformation_delete(request, transformation_id):
 
 
 def setup_queue_transformation_create(request, document_queue_id):
-    #check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
 

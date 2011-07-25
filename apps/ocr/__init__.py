@@ -20,12 +20,16 @@ PERMISSION_OCR_DOCUMENT = {'namespace': 'ocr', 'name': 'ocr_document', 'label': 
 PERMISSION_OCR_DOCUMENT_DELETE = {'namespace': 'ocr', 'name': 'ocr_document_delete', 'label': _(u'Delete document for OCR queue')}
 PERMISSION_OCR_QUEUE_ENABLE_DISABLE = {'namespace': 'ocr', 'name': 'ocr_queue_enable_disable', 'label': _(u'Can enable/disable an OCR queue')}
 PERMISSION_OCR_CLEAN_ALL_PAGES = {'namespace': 'ocr', 'name': 'ocr_clean_all_pages', 'label': _(u'Can execute an OCR clean up on all document pages')}
+PERMISSION_OCR_QUEUE_EDIT = {'namespace': 'ocr_setup', 'name': 'ocr_queue_edit', 'label': _(u'Can edit an OCR queue properties')}
 
 set_namespace_title('ocr', _(u'OCR'))
 register_permission(PERMISSION_OCR_DOCUMENT)
 register_permission(PERMISSION_OCR_DOCUMENT_DELETE)
 register_permission(PERMISSION_OCR_QUEUE_ENABLE_DISABLE)
 register_permission(PERMISSION_OCR_CLEAN_ALL_PAGES)
+
+set_namespace_title('ocr_setup', _(u'OCR Setup'))
+register_permission(PERMISSION_OCR_QUEUE_EDIT)
 
 #Links
 submit_document = {'text': _('submit to OCR queue'), 'view': 'submit_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
