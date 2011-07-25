@@ -31,23 +31,26 @@ class ConverterClass(ConverterBase):
 
     def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         arguments = []
-        if transformations:
-            for transformation in transformations:
-                if transformation['transformation'] == TRANSFORMATION_RESIZE:
-                    dimensions = []
-                    dimensions.append(unicode(transformation['arguments']['width']))
-                    if 'height' in transformation['arguments']:
-                        dimensions.append(unicode(transformation['arguments']['height']))                    
-                    arguments.append(u'-resize')
-                    arguments.append(u'%s' % DIMENSION_SEPARATOR.join(dimensions))
+        try:
+            if transformations:
+                for transformation in transformations:
+                    if transformation['transformation'] == TRANSFORMATION_RESIZE:
+                        dimensions = []
+                        dimensions.append(unicode(transformation['arguments']['width']))
+                        if 'height' in transformation['arguments']:
+                            dimensions.append(unicode(transformation['arguments']['height']))                    
+                        arguments.append(u'-resize')
+                        arguments.append(u'%s' % DIMENSION_SEPARATOR.join(dimensions))
 
-                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
-                    arguments.append(u'-resize')
-                    arguments.append(u'%d%%' % transformation['arguments']['percent'])
-                    
-                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                    arguments.append(u'-rotate')
-                    arguments.append(u'%s' % transformation['arguments']['degrees'])
+                    elif transformation['transformation'] == TRANSFORMATION_ZOOM:
+                        arguments.append(u'-resize')
+                        arguments.append(u'%d%%' % transformation['arguments']['percent'])
+                        
+                    elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                        arguments.append(u'-rotate')
+                        arguments.append(u'%s' % transformation['arguments']['degrees'])
+        except:
+            pass
                     
         if file_format.lower() == u'jpeg' or file_format.lower() == u'jpg':
             arguments.append(u'-quality')

@@ -100,20 +100,25 @@ class ConverterClass(ConverterBase):
                 # do something to im
         except EOFError:
             pass # end of sequence        
-
-        if transformations:
-            aspect = 1.0 * im.size[0] / im.size[1]
-            for transformation in transformations:
-                if transformation['transformation'] == TRANSFORMATION_RESIZE:
-                    width = int(transformation['arguments']['width'])
-                    height = int(transformation['arguments'].get('height', 1.0 * width * aspect))
-                    im = self.resize(im, (width, height))
-                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
-                    decimal_value = float(transformation['arguments']['percent']) / 100
-                    im = im.transform((im.size[0] * decimal_value, im.size[1] * decimal_value), Image.EXTENT, (0, 0, im.size[0], im.size[1])) 
-                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                    # PIL counter degress counter-clockwise, reverse them
-                    im = im.rotate(360 - transformation['arguments']['degrees'])
+        
+        try:
+            if transformations:
+                aspect = 1.0 * im.size[0] / im.size[1]
+                for transformation in transformations:
+                    arguments = transformation.get('arguments')
+                    if transformation['transformation'] == TRANSFORMATION_RESIZE:
+                        width = int(arguments.get('width', 0))
+                        height = int(arguments.get('height', 1.0 * width * aspect))
+                        im = self.resize(im, (width, height))
+                    elif transformation['transformation'] == TRANSFORMATION_ZOOM:
+                        decimal_value = float(arguments.get('percent', 100)) / 100
+                        im = im.transform((im.size[0] * decimal_value, im.size[1] * decimal_value), Image.EXTENT, (0, 0, im.size[0], im.size[1])) 
+                    elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                        # PIL counter degress counter-clockwise, reverse them
+                        im = im.rotate(360 - arguments.get('degrees', 0))
+        except:
+            # Ignore all transformation error
+            pass
 
         if im.mode not in ('L', 'RGB'):
             im = im.convert('RGB')
@@ -177,3 +182,6 @@ class ConverterClass(ConverterBase):
             img.save(out, 'JPEG', quality=75)
         else:
             return img
+
+        #if isinstance(self.regex, basestring):
+        #    self.regex = re.compile(regex)
