@@ -339,7 +339,7 @@ class DocumentPageTransformation(models.Model):
     objects = DocumentPageTransformationManager()
 
     def __unicode__(self):
-        return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.document_page))
+        return self.get_transformation_display()
 
     class Meta:
         ordering = ('order',)
