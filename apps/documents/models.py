@@ -226,12 +226,15 @@ class Document(models.Model):
                     )
 
                     page_transformation.save()
-
-    def get_image_cache_name(self, page):
+                    
+    def get_cached_image_name(self, page):
         document_page = self.documentpage_set.get(page_number=page)
         transformations, warnings = document_page.get_transformation_list()
         hash_value = HASH_FUNCTION(u''.join([self.checksum, unicode(page), unicode(transformations)]))
-        cache_file_path = os.path.join(CACHE_PATH, hash_value)
+        return os.path.join(CACHE_PATH, hash_value), transformations
+
+    def get_image_cache_name(self, page):
+        cache_file_path, transformations = self.get_cached_image_name(page)
         if os.path.exists(cache_file_path):
             return cache_file_path
         else:
@@ -249,6 +252,12 @@ class Document(models.Model):
         except:
             return get_error_icon_file_path()
 
+    def invalidate_cached_image(self, page):
+        try:
+            os.unlink(self.get_cached_image_name(page)[0])
+        except OSError:
+            pass
+            
 
 class DocumentTypeFilename(models.Model):
     """
