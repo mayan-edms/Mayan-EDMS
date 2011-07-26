@@ -4,6 +4,9 @@
 {% load navigation_tags %}
 {% load non_breakable %}
 {% load variable_tags %}
+{% load main_settings_tags %}
+
+{% get_main_setting "DISABLE_ICONS" as disable_icons %}
 
 {% if side_bar %}
     <div class="block">
@@ -35,7 +38,7 @@
                         <div class="group navform wat-cf">
                         {% for link in multi_item_links %}
                             <button class="button" type="submit" name="action" value="{{ link.url }}">
-                               {% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
                             </button>
                         {% endfor %}
                         </div>
@@ -155,7 +158,7 @@
                         <div class="group navform wat-cf">
                         {% for link in multi_item_links %}
                             <button class="button" type="submit" name="action" value="{{ link.url }}">
-                               {% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
                             </button>
                         {% endfor %}
                         </div>

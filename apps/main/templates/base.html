@@ -25,7 +25,7 @@
 {% block html_title %}{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}{% endblock %}
 
 {% get_main_setting "SIDE_BAR_SEARCH" as debug %}
-{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG Mode)" %} {% endif %}{% endblock %}
+{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %} {% endif %}{% endblock %}
 
 {% block web_theme_stylesheets %}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />

@@ -19,3 +19,11 @@ register_setting(
     global_name=u'MAIN_DISABLE_HOME_VIEW',
     default=False,
 )
+
+register_setting(
+    namespace=u'main',
+    module=u'main.conf.settings',
+    name=u'DISABLE_ICONS',
+    global_name=u'MAIN_DISABLE_ICONS',
+    default=False,
+)
