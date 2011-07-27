@@ -1,0 +1,2 @@
+class AlreadyScheduled(Exception):
+    pass

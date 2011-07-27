@@ -60,7 +60,6 @@ register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, 
 register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'node_active_list', 'setup_queue_transformation_list'], [queue_document_list, node_active_list], menu_name='secondary_menu')
 register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
-
 register_tool(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
 
 #Menus
@@ -83,4 +82,4 @@ def document_post_save(sender, instance, **kwargs):
 
 post_save.connect(document_post_save, sender=Document)
 
-register_interval_job(task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
+register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
