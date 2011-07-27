@@ -26,12 +26,15 @@ from metadata.api import save_metadata_list, \
 from permissions.api import check_permissions
 import sendfile
 
-from sources.models import WebForm, StagingFolder, SourceTransformation
-from sources.literals import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING
+from sources.models import WebForm, StagingFolder, SourceTransformation, \
+    WatchFolder
+from sources.literals import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING, \
+    SOURCE_CHOICE_WATCH
 from sources.literals import SOURCE_UNCOMPRESS_CHOICE_Y, \
     SOURCE_UNCOMPRESS_CHOICE_ASK
 from sources.staging import create_staging_file_class, StagingFile
-from sources.forms import StagingDocumentForm, WebFormForm
+from sources.forms import StagingDocumentForm, WebFormForm, \
+    WatchFolderSetupForm
 from sources.forms import WebFormSetupForm, StagingFolderSetupForm
 from sources.forms import SourceTransformationForm, SourceTransformationForm_create
 from sources import PERMISSION_SOURCES_SETUP_VIEW, \
@@ -369,6 +372,8 @@ def setup_source_list(request, source_type):
         cls = WebForm
     elif source_type == SOURCE_CHOICE_STAGING:
         cls = StagingFolder
+    elif source_type == SOURCE_CHOICE_WATCH:
+        cls = WatchFolder
         
     context = {
         'object_list': cls.objects.all(),
@@ -391,6 +396,9 @@ def setup_source_edit(request, source_type, source_id):
     elif source_type == SOURCE_CHOICE_STAGING:
         cls = StagingFolder
         form_class = StagingFolderSetupForm
+    elif source_type == SOURCE_CHOICE_WATCH:
+        cls = WatchFolder
+        form_class = WatchFolderSetupForm
     
     source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
@@ -429,7 +437,11 @@ def setup_source_delete(request, source_type, source_id):
         cls = StagingFolder
         form_icon = u'folder_delete.png'
         redirect_view = 'setup_staging_folder_list'
-
+    elif source_type == SOURCE_CHOICE_WATCH:
+        cls = WatchFolder
+        form_icon = u'folder_delete.png'
+        redirect_view = 'setup_watch_folder_list'
+        
     redirect_view = reverse('setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
@@ -470,7 +482,10 @@ def setup_source_create(request, source_type):
     elif source_type == SOURCE_CHOICE_STAGING:
         cls = StagingFolder
         form_class = StagingFolderSetupForm
-    
+    elif source_type == SOURCE_CHOICE_WATCH:
+        cls = WatchFolder
+        form_class = WatchFolderSetupForm
+            
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
@@ -500,6 +515,8 @@ def setup_source_transformation_list(request, source_type, source_id):
         cls = WebForm
     elif source_type == SOURCE_CHOICE_STAGING:
         cls = StagingFolder
+    elif source_type == SOURCE_CHOICE_WATCH:
+        cls = WatchFolder
 
     source = get_object_or_404(cls, pk=source_id)
 
@@ -597,7 +614,9 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = WebForm
     elif source_type == SOURCE_CHOICE_STAGING:
         cls = StagingFolder
-
+    elif source_type == SOURCE_CHOICE_WATCH:
+        cls = WatchFolder
+        
     source = get_object_or_404(cls, pk=source_id)
   
     redirect_view = reverse('setup_source_transformation_list', args=[source.source_type, source.pk])

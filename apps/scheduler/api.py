@@ -21,4 +21,5 @@ def register_interval_job(name, title, func, weeks=0, days=0, hours=0, minutes=0
 def remove_job(name):
     if name in registered_jobs:
         scheduler.unschedule_job(registered_jobs[name]['job'])
+        registered_jobs.pop(name)
         

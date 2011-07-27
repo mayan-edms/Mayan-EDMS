@@ -10,12 +10,13 @@ from documents.models import DocumentType
 from metadata.models import MetadataType
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR    
+from scheduler.api import register_interval_job, remove_job
 
 from sources.managers import SourceTransformationManager
 from sources.literals import SOURCE_CHOICES, SOURCE_CHOICES_PLURAL, \
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM, \
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE, \
-    SOURCE_ICON_CHOICES
+    SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES
 
 
 class BaseModel(models.Model):
@@ -77,7 +78,7 @@ class StagingFolder(InteractiveBaseModel):
 
     class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'staging folder')
-        verbose_name_plural = _(u'staging folder')
+        verbose_name_plural = _(u'staging folders')
 
 '''
 class SourceMetadata(models.Model):
@@ -107,6 +108,29 @@ class WebForm(InteractiveBaseModel):
         verbose_name = _(u'web form')
         verbose_name_plural = _(u'web forms')
 
+def test():
+    print 'WatchFolder'
+    
+class WatchFolder(BaseModel):
+    is_interactive = False
+    source_type = SOURCE_CHOICE_WATCH
+    
+    folder_path = models.CharField(max_length=255, verbose_name=_(u'folder path'), help_text=_(u'Server side filesystem path.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
+    interval = models.PositiveIntegerField(verbose_name=_(u'interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
+    
+    def save(self, *args, **kwargs):
+        if self.pk:
+            remove_job('watch_folder_%d' % self.pk)
+        super(WatchFolder, self).save(*args, **kwargs)
+        if self.enabled:
+            register_interval_job('watch_folder_%d' % self.pk, self.fullname(), test, seconds=self.interval)
+
+    class Meta(BaseModel.Meta):
+        verbose_name = _(u'watch folder')
+        verbose_name_plural = _(u'watch folders')
+        
 
 class ArgumentsValidator(object):
     message = _(u'Enter a valid value.')

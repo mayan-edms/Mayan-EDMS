@@ -4,7 +4,8 @@ from django.utils.translation import ugettext
 
 from documents.forms import DocumentForm
 
-from sources.models import WebForm, StagingFolder, SourceTransformation
+from sources.models import WebForm, StagingFolder, SourceTransformation, \
+    WatchFolder
 from sources.widgets import FamFamRadioSelect
 from sources.utils import validate_whitelist_blacklist
 
@@ -86,6 +87,11 @@ class StagingFolderSetupForm(forms.ModelForm):
     class Meta:
         model = StagingFolder
 
+
+class WatchFolderSetupForm(forms.ModelForm):
+    class Meta:
+        model = WatchFolder
+        
 
 class SourceTransformationForm(forms.ModelForm):
     class Meta:
