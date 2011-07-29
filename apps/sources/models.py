@@ -6,17 +6,23 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 
-from documents.models import DocumentType
-from metadata.models import MetadataType
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR    
+from documents.models import DocumentType, Document#, RecentDocument
+from documents.literals import HISTORY_DOCUMENT_CREATED
+from document_indexing.api import update_indexes
+from history.api import create_history
+from metadata.models import MetadataType
+from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
 
 from sources.managers import SourceTransformationManager
 from sources.literals import SOURCE_CHOICES, SOURCE_CHOICES_PLURAL, \
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM, \
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE, \
-    SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES
+    SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES, \
+    SOURCE_UNCOMPRESS_CHOICE_Y
+from sources.compressed_file import CompressedFile, NotACompressedFile
 
 
 class BaseModel(models.Model):
@@ -25,13 +31,7 @@ class BaseModel(models.Model):
     whitelist = models.TextField(blank=True, verbose_name=_(u'whitelist'))
     blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'))
     document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'), help_text=(u'Optional document type to be applied to documents uploaded from this source.'))
-
-    def __unicode__(self):
-        return u'%s' % self.title
-        
-    def fullname(self):
-        return u' '.join([self.class_fullname(), '"%s"' % self.title])
-
+    
     @classmethod
     def class_fullname(cls):
         return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
@@ -39,6 +39,55 @@ class BaseModel(models.Model):
     @classmethod
     def class_fullname_plural(cls):
         return unicode(dict(SOURCE_CHOICES_PLURAL).get(cls.source_type))
+
+    def __unicode__(self):
+        return u'%s' % self.title
+        
+    def fullname(self):
+        return u' '.join([self.class_fullname(), '"%s"' % self.title])
+        
+    def internal_name(self):
+        return u'%s_%d' % (self.source_type, self.pk)
+
+    def get_transformation_list(self):
+        return SourceTransformation.transformations.get_for_object_as_list(self)
+
+    def upload_file(self, file_object, filename=None, document_type=None, expand=False, metadata_dict_list=None, user=None):
+        if expand:
+            try:
+                cf = CompressedFile(file_object)
+                for fp in cf.children():
+                    self.upload_single_file(fp, None, document_type, metadata_dict_list, user)
+                    fp.close()
+
+            except NotACompressedFile:
+                self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
+        else:
+            self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
+           
+        file_object.close()
+            
+    def upload_single_file(self, file_object, filename=None, document_type=None, metadata_dict_list=None, user=None):
+        transformations, errors = self.get_transformation_list()
+        document = Document(file=file_object)
+        if document_type:
+            document.document_type = document_type
+        document.save()
+        if filename:
+            document.file_filename = filename
+            document.save()    
+
+        document.apply_default_transformations(transformations)
+
+        if metadata_dict_list:
+            save_metadata_list(metadata_dict_list, document, create=True)
+        warnings = update_indexes(document)
+
+        if user:
+            document.add_as_recent_document_for_user(user)
+            create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
+        else:
+            create_history(HISTORY_DOCUMENT_CREATED, document)
         
     class Meta:
         ordering = ('title',)
@@ -108,8 +157,6 @@ class WebForm(InteractiveBaseModel):
         verbose_name = _(u'web form')
         verbose_name_plural = _(u'web forms')
 
-def test():
-    print 'WatchFolder'
     
 class WatchFolder(BaseModel):
     is_interactive = False
@@ -122,11 +169,25 @@ class WatchFolder(BaseModel):
     
     def save(self, *args, **kwargs):
         if self.pk:
-            remove_job('watch_folder_%d' % self.pk)
+            remove_job(self.internal_name())
         super(WatchFolder, self).save(*args, **kwargs)
-        if self.enabled:
-            register_interval_job('watch_folder_%d' % self.pk, self.fullname(), test, seconds=self.interval)
+        self.schedule()
 
+    def schedule(self):
+        if self.enabled:
+            register_interval_job(self.internal_name(), 
+                title=self.fullname(), func=self.execute, 
+                kwargs={'source_id': self.pk}, seconds=self.interval
+            )
+                        
+    def execute(self, source_id):
+        source = WatchFolder.objects.get(pk=source_id)
+        if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+            expand = True
+        else:
+            expand = False
+        print 'execute: %s' % self.internal_name()
+            
     class Meta(BaseModel.Meta):
         verbose_name = _(u'watch folder')
         verbose_name_plural = _(u'watch folders')

@@ -17,7 +17,7 @@ from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
     PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 from documents.literals import PERMISSION_DOCUMENT_CREATE
 from documents.literals import HISTORY_DOCUMENT_CREATED
-from documents.models import RecentDocument, Document, DocumentType
+from documents.models import Document, DocumentType
 from document_indexing.api import update_indexes
 from documents.conf.settings import THUMBNAIL_SIZE
 from history.api import create_history
@@ -137,16 +137,14 @@ def upload_interactive(request, source_type=None, source_id=None):
                             else:
                                 expand = False
 
-                        transformations, errors = SourceTransformation.transformations.get_for_object_as_list(web_form)
-                               
-                        if (not expand) or (expand and not _handle_zip_file(request, request.FILES['file'], document_type=document_type, transformations=transformations)):
-                            instance = form.save()
-                            instance.save()
-                            instance.apply_default_transformations(transformations)
-                            if document_type:
-                                instance.document_type = document_type
-                            _handle_save_document(request, instance, form)
-                            messages.success(request, _(u'Document uploaded successfully.'))
+                        new_filename = get_form_filename(form)
+                        web_form.upload_file(request.FILES['file'],
+                            new_filename, document_type=document_type,
+                            expand=expand,
+                            metadata_dict_list=decode_metadata_from_url(request.GET),
+                            user=request.user
+                        )
+                        messages.success(request, _(u'Document uploaded successfully.'))
                     except Exception, e:
                         messages.error(request, e)
 
@@ -185,15 +183,14 @@ def upload_interactive(request, source_type=None, source_id=None):
                                 expand = True
                             else:
                                 expand = False                        
-                        transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
-                        if (not expand) or (expand and not _handle_zip_file(request, staging_file.upload(), document_type=document_type, transformations=transformations)):
-                            document = Document(file=staging_file.upload())
-                            if document_type:
-                                document.document_type = document_type
-                            document.save()
-                            document.apply_default_transformations(transformations)
-                            _handle_save_document(request, document, form)
-                            messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
+                        new_filename = get_form_filename(form)
+                        staging_folder.upload_file(staging_file.upload(),
+                            new_filename, document_type=document_type,
+                            expand=expand,
+                            metadata_dict_list=decode_metadata_from_url(request.GET),
+                            user=request.user
+                        )                        
+                        messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
                             staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
@@ -250,49 +247,19 @@ def upload_interactive(request, source_type=None, source_id=None):
         context_instance=RequestContext(request))    
 
 
-def _handle_save_document(request, document, form=None):
-    RecentDocument.objects.add_document_for_user(request.user, document)
-    
+def get_form_filename(form):
+    filename = None
     if form:
         if form.cleaned_data['new_filename']:
-            document.file_filename = form.cleaned_data['new_filename']
-            document.save()
+            return form.cleaned_data['new_filename']
 
     if form and 'document_type_available_filenames' in form.cleaned_data:
         if form.cleaned_data['document_type_available_filenames']:
-            document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
-            document.save()
-
-    save_metadata_list(decode_metadata_from_url(request.GET), document, create=True)
-
-    warnings = update_indexes(document)
-    if request.user.is_staff or request.user.is_superuser:
-        for warning in warnings:
-            messages.warning(request, warning)
-
-    create_history(HISTORY_DOCUMENT_CREATED, document, {'user': request.user})
-
-
-def _handle_zip_file(request, uploaded_file, document_type=None, transformations=None):
-    filename = getattr(uploaded_file, 'filename', getattr(uploaded_file, 'name', ''))
-    if filename.lower().endswith('zip'):
-        zfobj = zipfile.ZipFile(uploaded_file)
-        for filename in zfobj.namelist():
-            if not filename.endswith('/'):
-                zip_document = Document(file=SimpleUploadedFile(
-                    name=filename, content=zfobj.read(filename)))
-                if document_type:
-                    zip_document.document_type = document_type
-                zip_document.save()
-                _handle_save_document(request, zip_document)
-                messages.success(request, _(u'Extracted file: %s, uploaded successfully.') % filename)
-        #Signal that uploaded file was a zip file
-        return True
-    else:
-        #Otherwise tell parent to handle file
-        return False
-        
-        
+            return form.cleaned_data['document_type_available_filenames'].filename
+            
+    return filename
+    
+       
 def staging_file_preview(request, source_type, source_id, staging_file_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)

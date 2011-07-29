@@ -3,6 +3,7 @@ import re
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext
 
+
 # From http://www.peterbe.com/plog/whitelist-blacklist-logic
 def accept_item(value, whitelist, blacklist, default_accept=True): 
     """ return true if this item is either whitelisted or  

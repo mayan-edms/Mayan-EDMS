@@ -257,6 +257,9 @@ class Document(models.Model):
             os.unlink(self.get_cached_image_name(page)[0])
         except OSError:
             pass
+
+    def add_as_recent_document_for_user(self, user):
+        RecentDocument.objects.add_document_for_user(user, self)
             
 
 class DocumentTypeFilename(models.Model):
