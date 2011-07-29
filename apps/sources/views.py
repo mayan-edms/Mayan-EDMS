@@ -1,6 +1,3 @@
-import os
-import zipfile
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -8,21 +5,12 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.conf import settings
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils.safestring import mark_safe
 
-from converter.exceptions import UnkownConvertError, UnknownFormat
-from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
-    PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 from documents.literals import PERMISSION_DOCUMENT_CREATE
-from documents.literals import HISTORY_DOCUMENT_CREATED
-from documents.models import Document, DocumentType
-from document_indexing.api import update_indexes
+from documents.models import DocumentType
 from documents.conf.settings import THUMBNAIL_SIZE
-from history.api import create_history
-from metadata.api import save_metadata_list, \
-    decode_metadata_from_url, metadata_repr_as_list
+from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.api import check_permissions
 import sendfile
 
@@ -193,6 +181,7 @@ def upload_interactive(request, source_type=None, source_id=None):
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
+                            transformations, errors = staging_folder.get_transformation_list()
                             staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
                             messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
                     except Exception, e:

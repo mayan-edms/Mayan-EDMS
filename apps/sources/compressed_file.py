@@ -1,4 +1,3 @@
-import os
 import zipfile
 
 from django.core.files.uploadedfile import SimpleUploadedFile
