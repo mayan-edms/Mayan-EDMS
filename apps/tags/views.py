@@ -9,6 +9,7 @@ from permissions.api import check_permissions
 from taggit.models import Tag
 from documents.models import Document
 from documents.views import document_list
+from common.utils import encapsulate
 
 from tags.forms import AddTagForm, TagForm
 from tags.models import TagProperties
@@ -116,7 +117,7 @@ def tag_list(request):
         'extra_columns': [
             {
                 'name': _(u'count'),
-                'attribute': lambda x: x.taggit_taggeditem_items.count()
+                'attribute': encapsulate(lambda x: x.taggit_taggeditem_items.count())
             }
         ]
     }, context_instance=RequestContext(request))

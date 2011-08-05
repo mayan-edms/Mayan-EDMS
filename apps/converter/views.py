@@ -2,8 +2,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from converter import backend
+from common.utils import encapsulate
 
+from converter import backend
 from converter.conf.settings import GRAPHICS_BACKEND
 
 def formats_list(request):
@@ -16,11 +17,11 @@ def formats_list(request):
         'extra_columns': [
             {
                 'name': _(u'name'),
-                'attribute': lambda x: x[0]
+                'attribute': encapsulate(lambda x: x[0])
             },
             {
                 'name': _(u'description'),
-                'attribute': lambda x: x[1]
+                'attribute': encapsulate(lambda x: x[1])
             }
         ],
         'backend': GRAPHICS_BACKEND,

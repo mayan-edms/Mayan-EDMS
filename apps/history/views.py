@@ -7,6 +7,7 @@ from django.db.models.loading import get_model
 from django.http import Http404
 
 from permissions.api import check_permissions
+from common.utils import encapsulate
 
 from history.models import History
 from history.forms import HistoryDetailForm
@@ -27,11 +28,11 @@ def history_list(request):
             },
             {
                 'name': _(u'object'),
-                'attribute': lambda x: history_entry_object_link(x)
+                'attribute': encapsulate(lambda x: history_entry_object_link(x))
             },
             {
                 'name': _(u'summary'),
-                'attribute': lambda x: history_entry_summary(x)
+                'attribute': encapsulate(lambda x: history_entry_summary(x))
             }
         ],
         'hide_object': True,
@@ -61,7 +62,7 @@ def history_for_object(request, app_label, module_name, object_id):
             },
             {
                 'name': _(u'summary'),
-                'attribute': lambda x: history_entry_summary(x)
+                'attribute': encapsulate(lambda x: history_entry_summary(x))
             }
         ],
         'hide_object': True,

@@ -11,6 +11,7 @@ from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.widgets import document_thumbnail, document_link
 from permissions.api import check_permissions
+from common.utils import encapsulate
 
 from folders.models import Folder, FolderDocument
 from folders.forms import FolderForm, AddDocumentForm
@@ -22,7 +23,7 @@ def folder_list(request, queryset=None, extra_context=None):
         'multi_select_as_buttons': True,
         'extra_columns': [
             {'name': _(u'created'), 'attribute': 'datetime_created'},
-            {'name': _(u'documents'), 'attribute': lambda x: x.folderdocument_set.count()}
+            {'name': _(u'documents'), 'attribute': encapsulate(lambda x: x.folderdocument_set.count())}
         ]
     }
     if extra_context:

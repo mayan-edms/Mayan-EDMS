@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links
 from permissions.api import register_permission, set_namespace_title
-
+from common.utils import encapsulate
 from documents.models import Document
 
 from taggit.models import Tag
@@ -38,11 +38,11 @@ tag_multiple_delete = {'text': _(u'delete'), 'view': 'tag_multiple_delete', 'fam
 register_model_list_columns(Tag, [
     {
         'name': _(u'color'),
-        'attribute': lambda x: tag_color_block(x)
+        'attribute': encapsulate(lambda x: tag_color_block(x))
     },
     {
         'name': _(u'color name'),
-        'attribute': lambda x: x.tagproperties_set.get().get_color_display(),
+        'attribute': encapsulate(lambda x: x.tagproperties_set.get().get_color_display()),
     }
 ])
 

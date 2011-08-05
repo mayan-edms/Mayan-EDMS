@@ -5,6 +5,7 @@ from django.contrib.comments.models import Comment
 from navigation.api import register_links, \
     register_model_list_columns
 from permissions.api import register_permission, set_namespace_title
+from common.utils import encapsulate
 
 from documents.models import Document
 
@@ -34,7 +35,7 @@ register_model_list_columns(Comment, [
     },
     {
         'name': _(u'user'),
-        'attribute': lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user
+        'attribute': encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user)
     },
     {
         'name': _(u'comment'),

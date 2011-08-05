@@ -11,7 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User, Group
 
 from common.views import assign_remove
-from common.utils import generate_choices_w_labels
+from common.utils import generate_choices_w_labels, encapsulate
 
 from permissions.models import Role, Permission, PermissionHolder, RoleMember
 from permissions.forms import RoleForm, RoleForm_view
@@ -50,11 +50,11 @@ def role_permissions(request, role_id):
                 'title': _(u'permissions'),
                 'object_list': Permission.objects.all(),
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': lambda x: namespace_titles[x.namespace] if x.namespace in namespace_titles else x.namespace},
+                    {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: namespace_titles[x.namespace] if x.namespace in namespace_titles else x.namespace)},
                     {'name': _(u'name'), 'attribute': u'label'},
                     {
                         'name':_(u'state'),
-                        'attribute': lambda x: role_permission_link(role, x, role_permissions_list),
+                        'attribute': encapsulate(lambda x: role_permission_link(role, x, role_permissions_list)),
                     }
                 ],
                 'hide_link': True,

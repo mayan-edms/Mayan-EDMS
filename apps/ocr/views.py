@@ -13,6 +13,7 @@ from celery.task.control import inspect
 from permissions.api import check_permissions
 from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
+from common.utils import encapsulate
 
 from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
     PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES, \
@@ -44,11 +45,11 @@ def queue_document_list(request, queue_name='default'):
             'navigation_object_name': 'queue',
             'list_object_variable_name': 'queue_document',
             'extra_columns': [
-                {'name': 'document', 'attribute': lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.')},
-                {'name': _(u'thumbnail'), 'attribute': lambda x: document_thumbnail(x.document)},
-                {'name': 'submitted', 'attribute': lambda x: unicode(x.datetime_submitted).split('.')[0], 'keep_together':True},
+                {'name': 'document', 'attribute': encapsulate(lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.'))},
+                {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document))},
+                {'name': 'submitted', 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
                 {'name': 'delay', 'attribute': 'delay'},
-                {'name': 'state', 'attribute': lambda x: x.get_state_display()},
+                {'name': 'state', 'attribute': encapsulate(lambda x: x.get_state_display())},
                 {'name': 'node', 'attribute': 'node_name'},
                 {'name': 'result', 'attribute': 'result'},
             ],

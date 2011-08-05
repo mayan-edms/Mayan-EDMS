@@ -13,7 +13,7 @@ from django.utils.http import urlencode
 
 import sendfile
 from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff
+    return_diff, encapsulate
 from common.widgets import two_state_template
 from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
@@ -978,7 +978,7 @@ def document_type_filename_list(request, document_type_id):
         'extra_columns': [
             {
                 'name': _(u'enabled'),
-                'attribute': lambda x: two_state_template(x.enabled),
+                'attribute': encapsulate(lambda x: two_state_template(x.enabled)),
             }
         ]
     }

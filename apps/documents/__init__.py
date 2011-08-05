@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import validate_path
+from common.utils import validate_path, encapsulate
 from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
@@ -168,13 +168,13 @@ def document_exists(document):
 
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
-            lambda x: document_thumbnail(x)
+            encapsulate(lambda x: document_thumbnail(x))
         },
         {'name':_(u'tags'), 'attribute':
-            lambda x: get_tags_inline_widget_simple(x)
+            encapsulate(lambda x: get_tags_inline_widget_simple(x))
         },
         {'name':_(u'metadata'), 'attribute':
-            lambda x: get_metadata_string(x)
+            encapsulate(lambda x: get_metadata_string(x))
         },
     ])
 

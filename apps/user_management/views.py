@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User, Group
 
 from permissions.api import check_permissions
-from common.utils import generate_choices_w_labels
+from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 from common.views import assign_remove
 
@@ -41,7 +41,7 @@ def user_list(request):
                 },
                 {
                     'name': _(u'active'),
-                    'attribute': lambda x: two_state_template(x.is_active),
+                    'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
                 }
 
             ],

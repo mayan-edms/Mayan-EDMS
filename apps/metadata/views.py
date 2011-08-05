@@ -12,7 +12,7 @@ from documents.models import Document, RecentDocument, DocumentType
 from permissions.api import check_permissions
 from document_indexing.api import update_indexes, delete_indexes
 
-from common.utils import generate_choices_w_labels#, two_state_template
+from common.utils import generate_choices_w_labels, encapsulate
 from common.views import assign_remove
 
 from metadata import PERMISSION_METADATA_DOCUMENT_VIEW, \
@@ -396,7 +396,7 @@ def setup_metadata_set_list(request):
         'extra_columns': [
             {
                 'name': _(u'members'),
-                'attribute': lambda x: x.metadatasetitem_set.count(),
+                'attribute': encapsulate(lambda x: x.metadatasetitem_set.count()),
             },
         ]
     }
