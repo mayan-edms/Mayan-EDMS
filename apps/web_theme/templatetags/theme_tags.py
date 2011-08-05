@@ -2,6 +2,7 @@ import re
 
 from django.conf import settings
 from django.template import Library, Node, TemplateSyntaxError
+from django.utils.safestring import mark_safe
 
 from web_theme.conf import settings as web_theme_settings
 
@@ -58,6 +59,7 @@ class SettingsNode(Node):
         context[self.var_name] = getattr(web_theme_settings, self.format_string, '')
         return ''
 
+from django.utils.safestring import mark_safe
 
 @register.tag
 def get_web_theme_setting(parser, token):
@@ -74,3 +76,9 @@ def get_web_theme_setting(parser, token):
     if not (format_string[0] == format_string[-1] and format_string[0] in ('"', "'")):
         raise TemplateSyntaxError('%r tag\'s argument should be in quotes' % tag_name)
     return SettingsNode(format_string[1:-1], var_name)
+
+
+@register.filter
+def highlight(text, word):
+    #return mark_safe(unicode(text).replace(word, mark_safe('<span class="highlight">%s</span>' % word)))
+    return mark_safe(unicode(text).replace(word, mark_safe('<mark>%s</mark>' % word)))
