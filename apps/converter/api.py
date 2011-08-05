@@ -5,7 +5,7 @@ import hashlib
 from common.conf.settings import TEMPORARY_DIRECTORY
 
 from converter.conf.settings import UNOCONV_PATH
-from converter.exceptions import OfficeConversionError
+from converter.exceptions import OfficeConversionError, UnknownFileFormat
 from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT
 
@@ -119,7 +119,12 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
 
 
 def get_page_count(input_filepath):
-    return backend.get_page_count(input_filepath)
+    try:
+        return backend.get_page_count(input_filepath)
+    except UnknownFileFormat:
+        # If converter backend doesn't understand the format return
+        # 1 as the total page count
+        return 1
 
 
 def get_document_dimensions(document, *args, **kwargs):

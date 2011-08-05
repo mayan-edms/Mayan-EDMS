@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mimetype.api import get_mimetype
 
-from converter.exceptions import ConvertError, UnknownFormat, IdentifyError
+from converter.exceptions import ConvertError, UnknownFileFormat, IdentifyError
 from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
@@ -38,9 +38,7 @@ class ConverterClass(ConverterBase):
         try:
             im = Image.open(input_filepath)
         except IOError:  #cannot identify image file
-            # Return a page count of 1, to atleast allow the document
-            # to be created
-            return 1
+            return UnknownFileFormat
             
         try:
             while 1:
@@ -87,7 +85,7 @@ class ConverterClass(ConverterBase):
         try:
             im = Image.open(input_filepath)
         except Exception: # Python Imaging Library doesn't recognize it as an image
-            raise UnknownFormat
+            raise UnknownFileFormat
         finally:
             if tmpfile:
                 cleanup(tmpfile)

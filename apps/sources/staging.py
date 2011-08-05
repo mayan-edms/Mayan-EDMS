@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 from mimetype.api import get_icon_file_path, get_error_icon_file_path, \
     get_mimetype
 from converter.api import convert, cache_cleanup
-from converter.exceptions import UnknownFormat, UnkownConvertError
+from converter.exceptions import UnknownFileFormat, UnkownConvertError
 
 
 DEFAULT_STAGING_DIRECTORY = u'/tmp'
@@ -138,7 +138,7 @@ class StagingFile(object):
     def get_image(self, size, transformations):
         try:
             return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
-        except UnknownFormat:
+        except UnknownFileFormat:
             return get_icon_file_path(get_mimetype(self.filepath))
         except UnkownConvertError:
             return get_error_icon_file_path()

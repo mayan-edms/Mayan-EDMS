@@ -16,7 +16,7 @@ from dynamic_search.api import register
 from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
 from converter.api import convert
-from converter.exceptions import UnknownFormat, UnkownConvertError
+from converter.exceptions import UnknownFileFormat, UnkownConvertError
 from mimetype.api import get_document_mimetype, get_icon_file_path, \
     get_error_icon_file_path
 
@@ -245,7 +245,7 @@ class Document(models.Model):
         try:
             image_cache_name = self.get_image_cache_name(page=page)
             return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
-        except UnknownFormat:
+        except UnknownFileFormat:
             return get_icon_file_path(self.file_mimetype)
         except UnkownConvertError:
             return get_error_icon_file_path()

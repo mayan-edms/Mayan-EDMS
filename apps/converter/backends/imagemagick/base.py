@@ -3,7 +3,7 @@ import re
 
 from converter.conf.settings import IM_IDENTIFY_PATH
 from converter.conf.settings import IM_CONVERT_PATH
-from converter.exceptions import ConvertError, UnknownFormat, \
+from converter.exceptions import ConvertError, UnknownFileFormat, \
     IdentifyError
 from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
@@ -75,7 +75,7 @@ class ConverterClass(ConverterBase):
             error_line = proc.stderr.readline()
             if CONVERTER_ERROR_STRING_NO_DECODER in error_line:
                 #Try to determine from error message which class of error is it
-                raise UnknownFormat
+                raise UnknownFileFormat
             else:
                 raise ConvertError(error_line)
 
@@ -114,6 +114,5 @@ class ConverterClass(ConverterBase):
     def get_page_count(self, input_filepath):
         try:
             return len(self.identify_file(unicode(input_filepath)).splitlines())
-        except:
-            #TODO: send to other page number identifying program
-            return 1
+        except IdentifyError:
+            raise UnknownFileFormat

@@ -5,17 +5,16 @@ class ConvertError(Exception):
     pass
 
 
-class UnknownFormat(ConvertError):
+class UnknownFileFormat(ConvertError):
     """
-    Raised when the converter backend can't understand or there
-    isn't an appropiate driver available
+    Raised when the converter backend can't understand a file
     """
     pass
 
 
 class IdentifyError(ConvertError):
     """
-    Raised by identify
+    Raised by the graphcismagick and imagemagics identify program
     """
     pass
 
