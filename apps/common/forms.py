@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from common.utils import return_attrib
-from common.widgets import DetailSelectMultiple, PlainWidget
+from common.widgets import DetailSelectMultiple, PlainWidget, TextAreaDiv
 
 
 class DetailForm(forms.ModelForm):
@@ -41,7 +41,11 @@ class DetailForm(forms.ModelForm):
                     queryset=getattr(field, 'queryset', None),
                 )
                 self.fields[field_name].help_text = ''
-
+            elif isinstance(field.widget, forms.widgets.Textarea):
+                self.fields[field_name].widget = TextAreaDiv(
+                    attrs=field.widget.attrs,
+                )
+                
         for field_name, field in self.fields.items():
             self.fields[field_name].widget.attrs.update({'readonly': 'readonly'})
 

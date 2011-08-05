@@ -72,7 +72,6 @@ class TextAreaDiv(forms.widgets.Widget):
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
         default_attrs = {'class': 'text_area_div'}
-        #'cols': '40', 'rows': '10'}
         if attrs:
             default_attrs.update(attrs)
         super(TextAreaDiv, self).__init__(default_attrs)

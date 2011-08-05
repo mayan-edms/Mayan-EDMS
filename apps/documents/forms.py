@@ -9,6 +9,7 @@ from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
+from common.widgets import TextAreaDiv
 
 from documents.models import Document, DocumentType, \
     DocumentPage, DocumentPageTransformation, DocumentTypeFilename
@@ -229,9 +230,7 @@ class DocumentContentForm(forms.Form):
 
     contents = forms.CharField(
         label=_(u'Contents'),
-        widget=forms.widgets.Textarea(attrs={
-            'rows': 14, 'cols': 80, 'readonly': 'readonly'
-        })
+        widget=TextAreaDiv()
     )
 
 
