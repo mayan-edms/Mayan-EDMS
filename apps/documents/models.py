@@ -5,6 +5,7 @@ from ast import literal_eval
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.comments.models import Comment
@@ -166,9 +167,18 @@ class Document(models.Model):
 
     def update_page_count(self, save=True):
         handle, filepath = tempfile.mkstemp()
+        # Just need the filepath, close the file description
+        os.close(handle)  
+
         self.save_to_file(filepath)
-        detected_pages = get_page_count(filepath)
-        os.close(handle)
+        try:
+            detected_pages = get_page_count(filepath)
+        except UnknownFileFormat:
+            # If converter backend doesn't understand the format,
+            # use 1 as the total page count
+            detected_pages = 1
+            self.description = ugettext(u'This document\'s file format is not known, the page count has therefore defaulted to 1.')
+            self.save()
         try:
             os.remove(filepath)
         except OSError:

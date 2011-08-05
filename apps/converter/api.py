@@ -119,12 +119,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
 
 
 def get_page_count(input_filepath):
-    try:
-        return backend.get_page_count(input_filepath)
-    except UnknownFileFormat:
-        # If converter backend doesn't understand the format return
-        # 1 as the total page count
-        return 1
+    return backend.get_page_count(input_filepath)
 
 
 def get_document_dimensions(document, *args, **kwargs):
