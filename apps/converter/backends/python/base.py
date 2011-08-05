@@ -38,7 +38,7 @@ class ConverterClass(ConverterBase):
         try:
             im = Image.open(input_filepath)
         except IOError:  #cannot identify image file
-            return UnknownFileFormat
+            raise UnknownFileFormat
             
         try:
             while 1:
