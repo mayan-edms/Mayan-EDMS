@@ -19,10 +19,40 @@ from tags import PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH, \
 from tags import tag_tagged_item_list as tag_tagged_item_list_link
 
 
+def tag_create(request):
+    #check_permissions(request.user, [PERMISSION_TAG_EDIT])
+    redirect_url = reverse('tag_list')
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_url)))
+
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            tag_name = form.cleaned_data['name']
+
+            if tag_name in Tag.objects.values_list('name', flat=True):
+                messages.error(request, _(u'Tag already exists.'))
+                return HttpResponseRedirect(previous)
+                            
+            tag = Tag(name=tag_name)
+            tag.save()
+            TagProperties(tag=tag, color=form.cleaned_data['color']).save()
+                                            
+            messages.success(request, _(u'Tag created succesfully.'))
+            return HttpResponseRedirect(redirect_url)
+    else:
+        form = TagForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'create tag'),
+        'form': form,
+    },
+    context_instance=RequestContext(request))    
+
+
 def tag_add_sidebar(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('tag_list'))))
 
     if request.method == 'POST':
         previous = request.META.get('HTTP_REFERER', '/')
@@ -116,7 +146,7 @@ def tag_list(request):
         'multi_select_as_buttons': True,
         'extra_columns': [
             {
-                'name': _(u'count'),
+                'name': _(u'tagged items'),
                 'attribute': encapsulate(lambda x: x.taggit_taggeditem_items.count())
             }
         ]

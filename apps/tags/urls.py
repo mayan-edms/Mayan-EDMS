@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('tags.views',
     url(r'^list/$', 'tag_list', (), 'tag_list'),
+    url(r'^create/$', 'tag_create', (), 'tag_create'),
     url(r'^(?P<tag_id>\d+)/delete/$', 'tag_delete', (), 'tag_delete'),
     url(r'^(?P<tag_id>\d+)/edit/$', 'tag_edit', (), 'tag_edit'),
     url(r'^(?P<tag_id>\d+)/tagged_item/list/$', 'tag_tagged_item_list', (), 'tag_tagged_item_list'),

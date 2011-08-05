@@ -26,6 +26,7 @@ register_permission(PERMISSION_TAG_EDIT)
 register_permission(PERMISSION_TAG_VIEW)
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
+tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add'}
 tag_add_attach = {'text': _(u'attach tag'), 'view': 'tag_add_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH]}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
@@ -50,7 +51,7 @@ register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete])
 
 register_multi_item_links(['tag_list'], [tag_multiple_delete])
 
-register_links(['tag_list', 'tag_delete', 'tag_edit', 'tag_tagged_item_list', 'tag_multiple_delete'], [tag_list], menu_name='secondary_menu')
+register_links(['tag_list', 'tag_delete', 'tag_edit', 'tag_tagged_item_list', 'tag_multiple_delete', 'tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
 
 #register_sidebar_template(['document_tags'], 'tags_sidebar_template.html')
 
