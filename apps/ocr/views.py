@@ -339,7 +339,7 @@ def setup_queue_transformation_list(request, document_queue_id):
         'list_object_variable_name': 'transformation',
         'extra_columns': [
             {'name': _(u'order'), 'attribute': 'order'},
-            {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
+            {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
             {'name': _(u'arguments'), 'attribute': 'arguments'}
             ],
         'hide_link': True,

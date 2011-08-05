@@ -8,6 +8,7 @@ from django.utils.safestring import mark_safe
 from permissions.api import check_permissions
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from common.utils import encapsulate
 
 from document_indexing import PERMISSION_DOCUMENT_INDEXING_VIEW, \
     PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES
@@ -45,7 +46,7 @@ def index_instance_list(request, index_id=None):
         'extra_columns_preffixed': [
             {
                 'name': _(u'item'),
-                'attribute': lambda x: index_instance_item_link(x)
+                'attribute': encapsulate(lambda x: index_instance_item_link(x))
             }
         ],
         'title': title,
