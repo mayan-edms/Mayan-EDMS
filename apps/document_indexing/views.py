@@ -8,6 +8,7 @@ from django.utils.safestring import mark_safe
 from permissions.api import check_permissions
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from documents.views import document_list
 from common.utils import encapsulate
 
 from document_indexing import PERMISSION_DOCUMENT_INDEXING_VIEW, \
@@ -34,25 +35,35 @@ def index_instance_list(request, index_id=None):
         breadcrumbs = get_instance_link()
         index_instance = None
 
-    show_multi_select_buttons = False
+    title = mark_safe(_(u'contents for index: %s') % breadcrumbs)
+
     if index_instance:
         if index_instance.index.link_documents:
-            show_multi_select_buttons = True
-
-    title = mark_safe(_(u'contents for index: %s') % breadcrumbs)
+            # Document list, use the document_list view for consistency
+            return document_list(
+                request,
+                title=title,
+                object_list=index_instance_list,
+                extra_context = {
+                    'object': index_instance
+                }
+            )
 
     return render_to_response('generic_list.html', {
         'object_list': index_instance_list,
         'extra_columns_preffixed': [
             {
-                'name': _(u'item'),
+                'name': _(u'index'),
                 'attribute': encapsulate(lambda x: index_instance_item_link(x))
+            },
+            {
+                'name': _(u'items'),
+                'attribute': encapsulate(lambda x: x.documents.count() if x.index.link_documents else x.get_children().count() )
             }
         ],
         'title': title,
         'hide_links': True,
         'hide_object': True,
-        'multi_select_as_buttons': show_multi_select_buttons,
         'object': index_instance
 
     }, context_instance=RequestContext(request))
