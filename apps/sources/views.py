@@ -12,6 +12,7 @@ from documents.models import DocumentType
 from documents.conf.settings import THUMBNAIL_SIZE
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.api import check_permissions
+from common.utils import encapsulate
 import sendfile
 
 from sources.models import WebForm, StagingFolder, SourceTransformation, \
@@ -485,7 +486,7 @@ def setup_source_transformation_list(request, source_type, source_id):
         'list_object_variable_name': 'transformation',
         'extra_columns': [
             {'name': _(u'order'), 'attribute': 'order'},
-            {'name': _(u'transformation'), 'attribute': lambda x: x.get_transformation_display()},
+            {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
             {'name': _(u'arguments'), 'attribute': 'arguments'}
             ],
         'hide_link': True,
