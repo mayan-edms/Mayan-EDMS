@@ -16,13 +16,13 @@ def accept_item(value, whitelist, blacklist, default_accept=True):
 
     # note the order  
     for reject, item_list in ([False, whitelist], [True, blacklist]): 
-        print 'item_list: %s' % item_list
-        print 'reject: %s' % reject
+        #print 'item_list: %s' % item_list
+        #print 'reject: %s' % reject
         for okpattern in item_list: 
             print 'okpattern: %s' % okpattern
             if re.findall(okpattern.replace('*','\S+'), value, re.I): 
                 # match! 
-                print 'MATCH'
+                #print 'MATCH'
                 if reject: 
                     return False 
                 else: 
@@ -33,6 +33,6 @@ def accept_item(value, whitelist, blacklist, default_accept=True):
 
 
 def validate_whitelist_blacklist(value, whitelist, blacklist):
-    print 'blacklist', blacklist
+    #print 'blacklist', blacklist
     if not accept_item(value, whitelist, blacklist):
         raise ValidationError(ugettext(u'Whitelist Blacklist validation error.'))
