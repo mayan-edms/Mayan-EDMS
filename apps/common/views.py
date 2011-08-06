@@ -7,8 +7,11 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
+from django.contrib.auth.views import login
 
 from common.forms import ChoiceForm, UserForm, UserForm_view
+from common.forms import EmailAuthenticationForm
+from common.conf.settings import LOGIN_METHOD
 
 
 def password_change_done(request):
@@ -167,3 +170,14 @@ def current_user_edit(request):
             'title': _(u'edit current user details'),
         },
         context_instance=RequestContext(request))
+
+
+def login_view(request):
+    #url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login_view'),
+    #url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html', 'authentication_form': EmailAuthenticationForm}, name='login_view'),
+    kwargs = {'template_name': 'login.html'}
+    
+    if LOGIN_METHOD == 'email':
+        kwargs['authentication_form'] = EmailAuthenticationForm
+        
+    return login(request, **kwargs)

@@ -55,3 +55,12 @@ register_setting(
     global_name=u'COMMON_AUTO_ADMIN_PASSWORD',
     default=u'admin',
 )
+
+register_setting(
+    namespace=u'common',
+    module=u'common.conf.settings',
+    name=u'LOGIN_METHOD',
+    global_name=u'COMMON_LOGIN_METHOD',
+    default=u'username',
+    description=_(u'Controls the mechanism used to authenticated user.  Options are: username, email'),
+)

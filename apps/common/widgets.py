@@ -83,3 +83,16 @@ class TextAreaDiv(forms.widgets.Widget):
             conditional_escape(force_unicode(value))))
             
         return mark_safe(result.replace('\n', '<br>'))
+
+
+# From: http://www.peterbe.com/plog/emailinput-html5-django
+class EmailInput(forms.widgets.Input):
+    input_type = 'email'
+
+    def render(self, name, value, attrs=None):
+        if attrs is None:
+            attrs = {}
+        attrs.update(dict(autocorrect='off',
+                          autocapitalize='off',
+                          spellcheck='false'))
+        return super(EmailInput, self).render(name, value, attrs=attrs)
