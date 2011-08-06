@@ -173,8 +173,6 @@ def current_user_edit(request):
 
 
 def login_view(request):
-    #url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login_view'),
-    #url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html', 'authentication_form': EmailAuthenticationForm}, name='login_view'),
     kwargs = {'template_name': 'login.html'}
     
     if LOGIN_METHOD == 'email':
