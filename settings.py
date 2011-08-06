@@ -123,7 +123,6 @@ INSTALLED_APPS = (
     'smart_settings',
     'navigation',
     'web_theme',
-    'history',
     'common',
     'metadata',
     'pagination',
@@ -152,6 +151,7 @@ INSTALLED_APPS = (
     'mimetype',
     'scheduler',
     'job_processor',
+    'history',
     'main',
 )
 
