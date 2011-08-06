@@ -13,7 +13,7 @@
     LogLevel warn
     CustomLog /var/log/apache2/mayan_access.log combined
 
-    Alias /mayan-site_media "/usr/share/mayan/mayan/site_media/"
+    Alias /mayan-static "/usr/share/mayan/mayan/static/"
     <Location "/site_media">
         SetHandler None
     </Location>

@@ -65,14 +65,14 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'site_mediad/')
+#MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'site_media/')
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/%s-site_mediad/' % PROJECT_NAME
+#MEDIA_URL = '/%s-site_media/' % PROJECT_NAME
 
 STATIC_URL = '/%s-static/' % PROJECT_NAME
 
@@ -163,7 +163,7 @@ INSTALLED_APPS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
+    #'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.request',
 #    'django.contrib.messages.context_processors.messages',

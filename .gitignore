@@ -9,3 +9,5 @@ site_media/documents/*
 celerybeat-schedule
 document_storage/
 misc/mayan.geany
+image_cache/
+static/
