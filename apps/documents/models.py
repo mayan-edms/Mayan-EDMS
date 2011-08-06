@@ -270,6 +270,10 @@ class Document(models.Model):
 
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
+        
+    def delete(self, *args, **kwargs):
+        super(Document, self).delete(*args, **kwargs)
+        return self.file.storage.delete(self.file.path)
             
 
 class DocumentTypeFilename(models.Model):
