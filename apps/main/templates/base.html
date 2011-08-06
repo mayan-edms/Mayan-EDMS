@@ -127,12 +127,11 @@
     {% if "django.middleware.locale.LocaleMiddleware" in middleware_classes %}
         <li>
             <form action="{% url set_language %}" method="post">{% csrf_token %}
-                <select name="language">
+                <select name="language" onchange="this.form.submit()">
                     {% for lang in LANGUAGES %}
-                        <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+                        <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected="selected"{% endif %}>{{ lang.0|language_name_local }}</option>
                     {% endfor %}
                 </select>
-                <input type="submit" value="{% trans 'Go' %}" />
             </form>                                
         </li>
     {% endif %}
