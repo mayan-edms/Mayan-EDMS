@@ -73,13 +73,13 @@
                 {% if submit_icon_famfam %}
                     <span class="famfam active famfam-{{ submit_icon_famfam|default:'tick' }}"></span>
                 {% else %}
-                    <img src="{{ MEDIA_URL }}web_theme_media/images/icons/tick.png" alt="{% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}" />
+                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/tick.png" alt="{% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}" />
                 {% endif %}
                 {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}{% endif %}
             </button>
             {% comment %}
             <a href="#header" class="button">
-                <img src="{{ MEDIA_URL }}web_theme_media/images/icons/cross.png" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
+                <img src="{{ STATIC_URL }}web_theme_media/images/icons/cross.png" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
             </a>
             {% endcomment %}
         </div>
@@ -90,5 +90,3 @@
     {% else %}
         </div></div>
     {% endif %}
-
-    

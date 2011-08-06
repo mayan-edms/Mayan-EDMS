@@ -12,3 +12,4 @@ PIL==1.1.7
 ghostscript==0.4.1
 pdfminer==20110227
 APScheduler==2.0.2
+-e https://github.com/sehmaschine/django-grappelli/zipball/2.3.3

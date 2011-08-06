@@ -37,7 +37,7 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
                         %(tags_template)s
                         <div class="tc">
                             <a rel="group_%(group_id)d_documents_gallery" class="fancybox-noscaling" href="%(view_url)s">
-                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(media_url)s/images/ajax-loader.gif" data-href="%(img)s" alt="%(string)s" />
+                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(static_url)s/images/ajax-loader.gif" data-href="%(img)s" alt="%(string)s" />
                                 <noscript>
                                     <img style="border: 1px solid black; margin: 10px;" src="%(img)s" alt="%(string)s" />
                                 </noscript>
@@ -56,7 +56,7 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
                     'details_string': ugettext(u'Select'),
                     'group_id': value['group'].pk,
                     'document_name': document,
-                    'media_url': settings.MEDIA_URL,
+                    'static_url': settings.STATIC_URL,
                     'tags_template': tags_template if tags_template else u'',
                     'string': _(u'group document'),
                 })

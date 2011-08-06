@@ -14,7 +14,7 @@ def search_form(context):
     context.update({
         'form': SearchForm(initial={'q': context.get('query_string', {}).get('q'), 'source': 'sidebar'}),
         'request': context['request'],
-        'MEDIA_URL': context['MEDIA_URL'],
+        'STATIC_URL': context['STATIC_URL'],
         'form_action': reverse('search'),
         'form_title': _(u'Search'),
         'submit_label': _(u'Search'),
@@ -28,7 +28,7 @@ def recent_searches_template(context):
     recent_searches = RecentSearch.objects.filter(user=context['user'])
     context.update({
         'request': context['request'],
-        'MEDIA_URL': context['MEDIA_URL'],
+        'STATIC_URL': context['STATIC_URL'],
         'side_bar': True,
         'title': _(u'recent searches (maximum of %d)') % RECENT_COUNT,
         'paragraphs': [

@@ -28,10 +28,10 @@
 {% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %} {% endif %}{% endblock %}
 
 {% block web_theme_stylesheets %}
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/960-fluid.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/override.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{{ MEDIA_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/960-fluid.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/override.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <style type="text/css"> 
         #fancybox-left-ico { 
          left: 20px; 
@@ -46,11 +46,11 @@
 {% endblock %}
 
 {% block web_theme_javascript %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}packages/JqueryAsynchImageLoader-0.8.min.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}packages/JqueryAsynchImageLoader-0.8.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js"></script>
 
-    <script type="text/javascript" src="{{ MEDIA_URL }}packages/jquery.scrollview.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.scrollview.js"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function() {
@@ -106,7 +106,7 @@
             $('img.lazy-load').jail({
                 event: 'load',
                 timeout: 10,
-                placeholder: '{{ MEDIA_URL }}/images/ajax-loader.gif'
+                placeholder: '{{ STATIC_URL }}/images/ajax-loader.gif'
             });
         });
     </script>

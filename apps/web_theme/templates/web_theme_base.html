@@ -11,8 +11,8 @@
 
         {% block web_theme_head %}{% endblock %}	
 
-        <link rel="stylesheet" href="{{ MEDIA_URL }}web_theme_media/stylesheets/base.css" type="text/css" media="screen" />
-        <link rel="stylesheet" id="current-theme" href="{{ MEDIA_URL }}web_theme_media/stylesheets/themes/{{ web_theme }}/style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}web_theme_media/stylesheets/base.css" type="text/css" media="screen" />
+        <link rel="stylesheet" id="current-theme" href="{{ STATIC_URL }}web_theme_media/stylesheets/themes/{{ web_theme }}/style.css" type="text/css" media="screen" />
         <style type="text/css">
             .message span.dismiss {
                 padding:0 5px;
@@ -33,10 +33,10 @@
         </style> 
         {% block web_theme_stylesheets %}{% endblock %}
 
-        <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery-1.5.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}web_theme_media/javascripts/jquery-1.5.2.min.js"></script>
         {% if enable_scroll_js %}
-            <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.scrollTo.js"></script>#}
-            <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}web_theme_media/javascripts/jquery.localscroll.js"></script>#}
+            <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}web_theme_media/javascripts/jquery.scrollTo.js"></script>#}
+            <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}web_theme_media/javascripts/jquery.localscroll.js"></script>#}
         {% endif %}
 
         {% block web_theme_javascript %}{% endblock %}

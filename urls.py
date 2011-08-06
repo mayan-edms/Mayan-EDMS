@@ -45,11 +45,8 @@ def handler500(request):
     })))
 
 if settings.DEVELOPMENT:
-    urlpatterns += patterns('',
-        (r'^%s-site_media/(?P<path>.*)$' % settings.PROJECT_NAME,
-            'django.views.static.serve',
-            {'document_root': 'site_media', 'show_indexes': True}),
-    )
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns()
 
     if 'rosetta' in settings.INSTALLED_APPS:
         urlpatterns += patterns('',

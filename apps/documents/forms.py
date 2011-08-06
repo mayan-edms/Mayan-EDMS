@@ -35,7 +35,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
             output.append('''
                 <div class="full-height scrollable" style="overflow: auto;">
                     <div class="tc">
-                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" />
+                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
                         <noscript>
                             <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" alt="%(string)s" />
                         </noscript>
@@ -45,7 +45,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
                 'page': value.page_number,
                 'zoom': zoom,
                 'rotation': rotation,
-                'media_url': settings.MEDIA_URL,
+                'static_url': settings.STATIC_URL,
                 'string': ugettext(u'page image')
                 })
             return mark_safe(u''.join(output))
@@ -118,7 +118,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                         <div class="tc">%(page_string)s %(page)s</div>
                         <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
                             <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
-                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(media_url)s/images/ajax-loader.gif" alt="%(string)s" />
+                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
                                 <noscript>
                                     <img src="%(img)s?page=%(page)d" alt="%(string)s" />
                                 </noscript>
@@ -134,7 +134,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     'view_url': reverse('document_display', args=[page.document.pk]),
                     'page_string': ugettext(u'Page'),
                     'details_string': ugettext(u'Details'),
-                    'media_url': settings.MEDIA_URL,
+                    'static_url': settings.STATIC_URL,
                     'string': _(u'document page')
                 })
 

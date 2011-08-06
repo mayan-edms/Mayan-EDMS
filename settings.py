@@ -65,17 +65,21 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'site_media/')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'site_mediad/')
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/%s-site_media/' % PROJECT_NAME
+MEDIA_URL = '/%s-site_mediad/' % PROJECT_NAME
+
+STATIC_URL = '/%s-static/' % PROJECT_NAME
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = MEDIA_URL + 'grappelli/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
@@ -120,6 +124,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.comments',
+    'django.contrib.staticfiles',
     'smart_settings',
     'navigation',
     'web_theme',
@@ -159,8 +164,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
     'django.core.context_processors.request',
-    'grappelli.context_processors.admin_template_path',
 #    'django.contrib.messages.context_processors.messages',
 )
 
