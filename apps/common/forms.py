@@ -1,9 +1,12 @@
+import os
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
+from django.conf import settings
 
 from common.utils import return_attrib
 from common.widgets import DetailSelectMultiple, PlainWidget, \
@@ -144,3 +147,22 @@ class EmailAuthenticationForm(AuthenticationForm):
 
 # Remove the inherited username field 
 EmailAuthenticationForm.base_fields.keyOrder = ['email', 'password']
+
+
+class ChangelogForm(forms.Form):
+    text = forms.CharField(
+        label=_(u'Text'),
+        widget=forms.widgets.Textarea(
+            attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(ChangelogForm, self).__init__(*args, **kwargs)
+        CHANGELOG_FILENAME = u'Changelog.txt'
+        CHANGELOG_DIRECTORY = u'docs'
+        changelog_path = os.path.join(settings.PROJECT_ROOT, CHANGELOG_DIRECTORY, CHANGELOG_FILENAME)
+        fd = open(changelog_path)
+        self.fields['text'].initial = fd.read()
+        fd.close()        
+        

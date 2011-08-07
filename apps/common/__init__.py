@@ -20,6 +20,12 @@ current_user_edit = {'text': _(u'edit details'), 'view': 'current_user_edit', 'f
 
 register_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
 
+about = {'text': _('about'), 'view': 'about', 'famfam': 'information'}
+changelog = {'text': _('changelog'), 'view': 'changelog', 'famfam': 'book_open'}
+
+register_links(['about', 'changelog'], [about, changelog], menu_name='secondary_menu')
+
+
 if common_settings.AUTO_CREATE_ADMIN:
     # From https://github.com/lambdalisue/django-qwert/blob/master/qwert/autoscript/__init__.py
     # From http://stackoverflow.com/questions/1466827/ --
