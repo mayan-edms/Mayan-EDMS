@@ -1,5 +1,174 @@
-2011-Aug-06
+2011-07-06
+Tag: Version 0.8.2 
+
 * Moved code to Django 1.3
+  - Users must do a: ./manage.py collectstatic when deploying from this
+    version onwards
+  - The 'site_media' directory is no more, users must update the media
+    serving directives in current deployments and point them to the
+    'static' directory instead
+
+* Changelog available under the 'about' main menu
+
+* Grappelli no longer bundled with Mayan
+  -  Users must install Grappelli or execute:
+     pip install --upgrade -r requirements/production.txt
+
+* Even easier UI language switching
+
+* Added email login method
+  - To enable, set:
+    AUTHENTICATION_BACKENDS = ('common.auth.email_auth_backend.EmailAuthBackend',)
+    COMMON_LOGIN_METHOD = 'email'
+
+
+2011-07-05
+Tag: Version 0.8.1
+
+* Tags can now also be created from the main menu
+
+* Added item count column to index instance list view
+
+* Updated document indexing widget to show different icon for indexes or
+  indexes that contain documents
+
+* Replaced the Textarea widget with the TextAreaDiv widget on document
+  and document page detail views
+  - This change will allow highlighting search terms in the future
+
+* Unknown document file format page count now defaults to 1
+  - When uploading documents which the selected converted backend doesn't
+  understand, the total page count will fallback to 1 page to at least
+  show some data, and a comment will be automatically added to the 
+  document description
+
+* Added new MAIN_DISABLE_ICONS to turn off all icons
+  - This options works very well when using the 'default' theme
+
+* The default theme is now 'activo'
+
+* Improved document page views and document page transformation views
+  navigation
+
+* Added OCR queue document transformations
+  - Use this for doing resizing or rotation fixes to improve OCR results
+
+* Added reset view link to the document page view to reset the zoom 
+  level and page rotation
+
+* Staging files now show a thumbnail preview instead of preview link
+
+
+2011-07-23
+Tag: Version 0.8.0
+
+* Distributed OCR queue processing via celery is disabled for the time
+  being
+  
+* Added support for local scheduling of jobs
+  - This addition removes celery beat requirement, and make is optional
+
+* Improve link highlighting
+
+* Navigation improvements
+
+* Documents with an unknonw file format now display a mime type place
+  holder icon instead of a error icon
+
+* Mayan now does pre caching of document visual representation improving
+  overall thumbnail, preview and display speed
+  - Page image rotation and zooming is faster too with this update
+
+* Removed all QUALITY related settings
+
+* COMMON_TEMPORARY_DIRECTORY is now validated when Mayan starts and if
+  not valid falls back to creating it's own temporary folder
+
+* Added PDF file support to the python converter backend via ghostscript
+  - This requires the installation of:
+    - ghostscript python package
+    - ghostscript system binaries and libraries
+
+* Added PDF text parsing support to the python converter backend
+  - This requires the installation of:
+    - pdfminer python package
+
+* Added PDF page count support to the python converter backend
+
+* Added python only converter backend supporting resizing, zooming and 
+  rotation
+  - This backend required the installation of the python image library
+    (PIL)
+  - This backend is useful when Graphicsmagick or Imagemagick can not
+    be installed for some reason
+  - If understand fewer file format than the other 2 backends
+
+* Added default tranformation support to document sources
+
+* Removed DOCUMENT_DEFAULT_TRANSFORMATIONS setup options
+
+* Document sources are now defined via a series of view under the setup
+  main menu
+  - This removes all the DOCUMENT_STAGING related setup options
+  - Two document source types are supported local (via a web form), 
+    and staging
+  - However multiple document sources can be defined each with their own
+    set of transformations and default metadata selection
+
+* Use python-magic to determine a document's mimetype otherwise 
+  fallback to use python's mimetypes library
+
+* Remove the included sources for python-magic instead it is now fetched
+  from github by pip
+
+* Removed the document subtemplates and changed to a tabbed style
+
+* Added link to document index content view to navigate the tree upwards
+
+* Added new option MAIN_DISABLE_HOME_VIEW to disable the home main menu
+  tab and save some space
+
+* Added new option to the web theme app, 'WEB_THEME_VERBOSE_LOGIN' 
+  that display a more information on the login screen
+  (version, copyright, logos)
+
+* Added a confirmation dialog to the document tag removal view
+
+
+2011-06-28
+Tag: Version 0.7.6
+
+* Added recent searches per user support
+  - The ammount of searches stored is controlled by the setup option
+    SEARCH_RECENT_COUNT
+    
+* The document page zoom button are now disabled when reaching the minimum
+  or maximum zoom level
+  
+* The document page navigation links are now disabled when view the first
+  and last page of a document
+  
+* Document page title now displays the current page vs the total page
+  count
+  
+* Document page title now displays the current zoom level and rotation
+  degrees
+  
+* Added means set the expansion compressed files during document creation,
+  via web interface removing the need for the configuration options:
+  UNCOMPRESS_COMPRESSED_LOCAL_FILES and UNCOMPRESS_COMPRESSED_STAGING_FILES
+
+* Added 'search again' button to the advances search results view
+
+* Implementes an advanced search feature, which allows for individual
+  field terms
+  - Search fields supported: document type, MIME type, filename, 
+    extension, metadata values, content, description, tags, comments
+
+
+2011-05-20
+Tag: Version 0.7.5
+
 
 2011-May-01
 * Added comment app with support for adding and deleting comments to 
