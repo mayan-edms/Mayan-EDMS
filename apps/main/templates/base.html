@@ -129,7 +129,7 @@
             <form action="{% url set_language %}" method="post">{% csrf_token %}
                 <select name="language" onchange="this.form.submit()">
                     {% for lang in LANGUAGES %}
-                        <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected="selected"{% endif %}>{{ lang.0|language_name_local }}</option>
+                        <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected="selected"{% endif %}>{{ lang.0|language_name_local|capfirst }}</option>
                     {% endfor %}
                 </select>
             </form>                                
