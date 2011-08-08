@@ -1,3 +1,5 @@
+import tempfile
+
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import validate_path, encapsulate
@@ -24,6 +26,7 @@ from documents.literals import HISTORY_DOCUMENT_CREATED, \
 from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf.settings import CACHE_PATH
+from documents.conf import settings as document_settings
 from documents.widgets import document_thumbnail
 
 
@@ -195,4 +198,5 @@ register_links(Document, [document_view_simple], menu_name='form_header', positi
 register_links(Document, [document_view_advanced], menu_name='form_header', position=1)
 register_links(Document, [document_history_view], menu_name='form_header')
 
-validate_path(CACHE_PATH)
+if (validate_path(document_settings.CACHE_PATH) == False) or (not document_settings.CACHE_PATH):
+    setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
