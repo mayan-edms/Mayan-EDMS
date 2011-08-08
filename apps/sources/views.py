@@ -459,7 +459,6 @@ def setup_source_create(request, source_type):
         'title': _(u'Create new source of type: %s') % cls.class_fullname(),
         'form': form,
         'source_type': source_type,
-        'source': cls,
         'navigation_object_name': 'source',
     },
     context_instance=RequestContext(request))
