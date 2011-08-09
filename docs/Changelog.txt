@@ -4,6 +4,11 @@
 
 * Perform extra validation of the image cache directory and fallback to
   creating a temporary directory on validation failure
+  
+* Added remediatory code to sidestep issue #10 caused by DjangoZoom's 
+  deployment script executing the collectstatic command before creating
+  the database structure with syncdb.  Thanks to Joost Cassee
+  (https://github.com/jcassee) for reporting this one.
 
 
 2011-08-06
