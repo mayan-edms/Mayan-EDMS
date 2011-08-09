@@ -4,6 +4,7 @@ except ImportError:
     class OperationalError(Exception):
         pass
 
+from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.db.utils import DatabaseError
 from django.shortcuts import get_object_or_404
@@ -36,7 +37,7 @@ def register_permission(permission):
     except DatabaseError:
         transaction.rollback()
         # Special case for ./manage.py syncdb
-    except OperationalError:
+    except (OperationalError, ImproperlyConfigured):
         transaction.rollback()
         # Special for DjangoZoom, which executes collectstatic media
         # doing syncdb and creating the database tables
