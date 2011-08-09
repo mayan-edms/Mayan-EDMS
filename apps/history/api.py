@@ -7,6 +7,7 @@ except ImportError:
     class OperationalError(Exception):
         pass
 
+from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.db.utils import DatabaseError
 #from django.utils import simplejson
@@ -38,7 +39,7 @@ def register_history_type(history_type_dict):
     except DatabaseError:
         transaction.rollback()
         # Special case for ./manage.py syncdb
-    except OperationalError:
+    except (OperationalError, ImproperlyConfigured):
         transaction.rollback()
         # Special for DjangoZoom, which executes collectstatic media
         # doing syncdb and creating the database tables

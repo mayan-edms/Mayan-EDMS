@@ -3,7 +3,8 @@ try:
 except ImportError:
     class OperationalError(Exception):
         pass
-
+        
+from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -82,7 +83,7 @@ def create_default_queue():
     except DatabaseError:
         transaction.rollback()
         # Special case for ./manage.py syncdb
-    except OperationalError:
+    except (OperationalError, ImproperlyConfigured):
         transaction.rollback()
         # Special for DjangoZoom, which executes collectstatic media
         # doing syncdb and creating the database tables
