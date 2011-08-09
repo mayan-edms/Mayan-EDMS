@@ -1,3 +1,10 @@
+try:
+    from psycopg2 import OperationalError
+except ImportError:
+    class OperationalError(Exception):
+        pass
+
+from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
@@ -65,14 +72,22 @@ register_tool(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
 #Menus
 register_top_menu('ocr', link={'text': _('OCR'), 'famfam': 'hourglass', 'view': 'queue_document_list'}, children_path_regex=[r'^ocr/'])
 
-try:
-    default_queue, created = DocumentQueue.objects.get_or_create(name='default')
-    if created:
-        default_queue.label = ugettext(u'Default')
-        default_queue.save()
-except DatabaseError:
-    #syncdb
-    pass
+@transaction.commit_manually
+def create_default_queue():
+    try:
+        default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+        if created:
+            default_queue.label = ugettext(u'Default')
+            default_queue.save()
+    except DatabaseError:
+        transaction.rollback()
+        # Special case for ./manage.py syncdb
+    except OperationalError:
+        transaction.rollback()
+        # Special for DjangoZoom, which executes collectstatic media
+        # doing syncdb and creating the database tables
+    else:
+        transaction.commit()
 
 
 def document_post_save(sender, instance, **kwargs):
@@ -81,5 +96,7 @@ def document_post_save(sender, instance, **kwargs):
             DocumentQueue.objects.queue_document(instance)
 
 post_save.connect(document_post_save, sender=Document)
+
+create_default_queue()
 
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)

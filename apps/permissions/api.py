@@ -1,9 +1,15 @@
+try:
+    from psycopg2 import OperationalError
+except ImportError:
+    class OperationalError(Exception):
+        pass
+
+from django.db import transaction
 from django.db.utils import DatabaseError
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
-from django.db import transaction
 
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, \
@@ -29,7 +35,11 @@ def register_permission(permission):
         permission_obj.save()
     except DatabaseError:
         transaction.rollback()
-        #Special case for ./manage.py syncdb
+        # Special case for ./manage.py syncdb
+    except OperationalError:
+        transaction.rollback()
+        # Special for DjangoZoom, which executes collectstatic media
+        # doing syncdb and creating the database tables
     else:
         transaction.commit()
 
