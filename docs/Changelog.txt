@@ -9,6 +9,8 @@
   deployment script executing the collectstatic command before creating
   the database structure with syncdb.  Thanks to Joost Cassee
   (https://github.com/jcassee) for reporting this one.
+  
+* Updated the static media url in the login excempt url list
 
 
 2011-08-06
