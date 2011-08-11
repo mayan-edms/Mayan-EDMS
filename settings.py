@@ -10,7 +10,7 @@ sys.path.append(os.path.join(PROJECT_ROOT, 'apps'))
 sys.path.append(os.path.join(PROJECT_ROOT, 'shared_apps'))
 sys.path.append(os.path.join(PROJECT_ROOT, '3rd_party_apps'))
 
-PROJECT_TITLE = 'Mayan'
+PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
 
 DEBUG = False
