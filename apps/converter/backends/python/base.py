@@ -132,8 +132,9 @@ class ConverterClass(ConverterBase):
         for format_name in Image.ID:
             formats.append((format_name, u''))
         
-        #if USE_GHOSTSCRIPT:
-        #PDF, PS    
+        if USE_GHOSTSCRIPT:
+            formats.append(('PDF', u''))
+            formats.append(('PS', u''))
         
         return formats
 
