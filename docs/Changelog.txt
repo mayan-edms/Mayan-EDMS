@@ -12,6 +12,11 @@
   
 * Updated the static media url in the login excempt url list
 
+* Use Pillow (http://pypi.python.org/pypi/Pillow) instead of PIL
+  - Pillow is a fork of PIL with several updated including better 
+    jpeg and png library detection
+  - Users must uninstall PIL before installing Pillow
+  
 
 2011-08-06
 Tag: Version 0.8.2 

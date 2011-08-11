@@ -11,8 +11,8 @@ django-taggit==0.9.3
 -e git://github.com/django-mptt/django-mptt.git@0af02a95877041b2fd6d458bd95413dc1666c321#egg=django-mptt
 -e git://github.com/ahupp/python-magic.git@a75cf0a4a7790eb106155c947af9612f15693b6e#egg=python-magic
 slate==0.3
-PIL==1.1.7
 ghostscript==0.4.1
 pdfminer==20110227
 APScheduler==2.0.2
 django-grappelli==2.3.3
+Pillow==1.7.4
