@@ -110,7 +110,7 @@ class ConverterClass(ConverterBase):
                         im = self.resize(im, (width, height))
                     elif transformation['transformation'] == TRANSFORMATION_ZOOM:
                         decimal_value = float(arguments.get('percent', 100)) / 100
-                        im = im.transform((im.size[0] * decimal_value, im.size[1] * decimal_value), Image.EXTENT, (0, 0, im.size[0], im.size[1])) 
+                        im = im.transform((int(im.size[0] * decimal_value), int(im.size[1] * decimal_value)), Image.EXTENT, (0, 0, im.size[0], im.size[1])) 
                     elif transformation['transformation'] == TRANSFORMATION_ROTATE:
                         # PIL counter degress counter-clockwise, reverse them
                         im = im.rotate(360 - arguments.get('degrees', 0))
@@ -153,7 +153,7 @@ class ConverterClass(ConverterBase):
         '''
         #preresize image with factor 2, 4, 8 and fast algorithm
         factor = 1
-        while img.size[0]/factor > 2 * box[0] and img.size[1] * 2/factor > 2 * box[1]:
+        while img.size[0] / factor > 2 * box[0] and img.size[1] * 2 / factor > 2 * box[1]:
             factor *=2
         if factor > 1:
             img.thumbnail((img.size[0] / factor, img.size[1] / factor), Image.NEAREST)
