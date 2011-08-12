@@ -4,7 +4,7 @@ from django.template import RequestContext
 
 from common.utils import encapsulate
 
-from converter import backend
+from converter.api import get_format_list
 from converter.conf.settings import GRAPHICS_BACKEND
 
 
@@ -14,7 +14,7 @@ def formats_list(request):
     context = {
         'title': _(u'suported file formats'),
         'hide_object': True,
-        'object_list': sorted(backend.get_format_list()),
+        'object_list': sorted(get_format_list()),
         'extra_columns': [
             {
                 'name': _(u'name'),

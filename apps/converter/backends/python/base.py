@@ -130,11 +130,14 @@ class ConverterClass(ConverterBase):
         """
         formats = []
         for format_name in Image.ID:
-            formats.append((format_name, u''))
+            if format_name == 'GBR':
+                formats.append('GBR_PIL')
+            else:
+                formats.append(format_name)
         
         if USE_GHOSTSCRIPT:
-            formats.append(('PDF', u''))
-            formats.append(('PS', u''))
+            formats.append('PDF')
+            formats.append('PS')
         
         return formats
 

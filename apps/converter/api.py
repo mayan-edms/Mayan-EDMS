@@ -14,6 +14,7 @@ from converter.literals import TRANSFORMATION_CHOICES
 from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
 from converter.literals import DIMENSION_SEPARATOR
+from converter.literals import FILE_FORMATS
 from converter.utils import cleanup
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
@@ -137,3 +138,8 @@ def get_available_transformations_choices():
         result.append([transformation, transformation_template])
 
     return result
+    
+    
+def get_format_list():
+    return [(format, FILE_FORMATS.get(format, u'')) for format in backend.get_format_list()]
+        

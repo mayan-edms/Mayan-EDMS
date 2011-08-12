@@ -99,7 +99,7 @@ class ConverterClass(ConverterBase):
         for line in proc.stdout.readlines():
             fields = format_regex.findall(line)
             if fields:
-                formats.append((fields[0][0], fields[0][3]))
+                formats.append(fields[0][0])
         
         return formats
 
