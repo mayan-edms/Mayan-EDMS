@@ -11,7 +11,7 @@ class CompressedFile(object):
     def __init__(self, file_object):
         self.file_object = file_object
 
-    def children(self):        
+    def children(self):
         try:
             # Try for a ZIP file
             zfobj = zipfile.ZipFile(self.file_object)
@@ -19,6 +19,6 @@ class CompressedFile(object):
             return (SimpleUploadedFile(name=filename, content=zfobj.read(filename)) for filename in filenames)
         except zipfile.BadZipfile:
             raise NotACompressedFile
-        
+
     #def close(self):
     #    self.file_object.close()

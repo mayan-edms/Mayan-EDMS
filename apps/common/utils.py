@@ -358,12 +358,6 @@ def validate_path(path):
 
     return True
 
-
-#def encapsulate(function):
-#   def wrapper():
-#        return function
-#    return wrapper
-    
 def encapsulate(function):
     # Workaround Django ticket 15791
     # Changeset 16045

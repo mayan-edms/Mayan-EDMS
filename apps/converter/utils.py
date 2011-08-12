@@ -2,8 +2,8 @@ import os
 
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.importlib import import_module
-    
-    
+
+
 #http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
 def copyfile(source, dest, buffer_size=1024 * 1024):
     """
@@ -36,7 +36,7 @@ def _lazy_load(fn):
         return _cached[0]
     return _decorated
 
-    
+
 @_lazy_load
 def load_backend():
     from converter.conf.settings import GRAPHICS_BACKEND as backend_name
@@ -71,7 +71,8 @@ def load_backend():
                     (backend_name, ", ".join(map(repr, available_backends)), e_user)
                 raise ImproperlyConfigured(error_msg)
             else:
-                raise # If there's some other error, this must be an error in Mayan itself.
+                # If there's some other error, this must be an error in Mayan itself.
+                raise
 
 
 def cleanup(filename):

@@ -4,8 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 from django import forms
 from django.forms.util import flatatt
-from django.utils.html import escape, conditional_escape
-from django.utils.encoding import StrAndUnicode, force_unicode
+from django.utils.html import conditional_escape
+from django.utils.encoding import force_unicode
 
 
 class PlainWidget(forms.widgets.Widget):
@@ -77,11 +77,12 @@ class TextAreaDiv(forms.widgets.Widget):
         super(TextAreaDiv, self).__init__(default_attrs)
 
     def render(self, name, value, attrs=None):
-        if value is None: value = ''
+        if value is None:
+            value = ''
         final_attrs = self.build_attrs(attrs, name=name)
         result = mark_safe(u'<div%s>%s</div>' % (flatatt(final_attrs),
             conditional_escape(force_unicode(value))))
-            
+
         return mark_safe(result.replace('\n', '<br>'))
 
 

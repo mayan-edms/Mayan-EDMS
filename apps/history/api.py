@@ -10,13 +10,13 @@ except ImportError:
 from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.db.utils import DatabaseError
-#from django.utils import simplejson
 from django.core import serializers
 from django.shortcuts import get_object_or_404
 from django.db import models
 
 from history.models import HistoryType, History
 from history.runtime_data import history_types_dict
+
 
 @transaction.commit_manually
 def register_history_type(history_type_dict):

@@ -1,8 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, \
-    register_model_list_columns, register_multi_item_links, \
-    register_sidebar_template
+    register_model_list_columns
 from permissions.api import register_permission, set_namespace_title
 
 from sources.staging import StagingFile

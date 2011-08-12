@@ -51,7 +51,7 @@ class DetailForm(forms.ModelForm):
                 self.fields[field_name].widget = TextAreaDiv(
                     attrs=field.widget.attrs,
                 )
-                
+
         for field_name, field in self.fields.items():
             self.fields[field_name].widget.attrs.update({'readonly': 'readonly'})
 
@@ -128,10 +128,10 @@ class EmailAuthenticationForm(AuthenticationForm):
     Override the default authentication form to use email address
     authentication
     """
-    email = forms.CharField(label=_(u'Email'), max_length=75, 
+    email = forms.CharField(label=_(u'Email'), max_length=75,
         widget=EmailInput()
     )
-    
+
     def clean(self):
         email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
@@ -145,7 +145,7 @@ class EmailAuthenticationForm(AuthenticationForm):
         self.check_for_test_cookie()
         return self.cleaned_data
 
-# Remove the inherited username field 
+# Remove the inherited username field
 EmailAuthenticationForm.base_fields.keyOrder = ['email', 'password']
 
 
@@ -164,5 +164,4 @@ class ChangelogForm(forms.Form):
         changelog_path = os.path.join(settings.PROJECT_ROOT, CHANGELOG_DIRECTORY, CHANGELOG_FILENAME)
         fd = open(changelog_path)
         self.fields['text'].initial = fd.read()
-        fd.close()        
-        
+        fd.close()

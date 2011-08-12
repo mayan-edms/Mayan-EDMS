@@ -5,7 +5,6 @@ import hashlib
 from django.core.files.base import File
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
 
 from mimetype.api import get_icon_file_path, get_error_icon_file_path, \
     get_mimetype

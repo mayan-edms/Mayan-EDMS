@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR    
-from documents.models import DocumentType, Document#, RecentDocument
+from documents.models import DocumentType, Document
 from documents.literals import HISTORY_DOCUMENT_CREATED
 from document_indexing.api import update_indexes
 from history.api import create_history
@@ -144,6 +144,7 @@ class SourceMetadata(models.Model):
         verbose_name = _(u'source metadata')
         verbose_name_plural = _(u'sources metadata')
 '''
+
 
 class WebForm(InteractiveBaseModel):
     is_interactive = True

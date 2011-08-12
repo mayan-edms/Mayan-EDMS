@@ -1,12 +1,12 @@
 # From: http://www.micahcarrick.com/django-email-authentication.html
-from django.contrib.auth.models import User, check_password
+from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend
 
 
 class EmailAuthBackend(ModelBackend):
     """
     Email Authentication Backend
-    
+
     Allows a user to sign in using an email/password pair rather than
     a username/password pair.
     """

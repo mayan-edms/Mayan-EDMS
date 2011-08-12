@@ -4,7 +4,6 @@ from time import sleep
 from random import random
 
 from django.db.models import Q
-from django.utils.translation import ugettext as _
 from django.core.cache import get_cache
 
 from job_processor.api import process_job

@@ -8,7 +8,6 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import delete_object, update_object
 from django.utils.http import urlencode
 
 import sendfile
@@ -19,7 +18,7 @@ from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER
+    DEFAULT_PAGE_NUMBER
 from filetransfers.api import serve_file
 from grouping.utils import get_document_group_subtemplate
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
@@ -388,13 +387,13 @@ def document_page_transformation_edit(request, document_page_transformation_id):
         'navigation_object_list': [
             {'object': 'page'},
             {'object': 'transformation', 'name': _(u'transformation')}
-        ],         
+        ],
         'title': _(u'Edit transformation "%(transformation)s" for: %(document_page)s') % {
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
-    
+
 
 def document_page_transformation_delete(request, document_page_transformation_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
@@ -417,7 +416,7 @@ def document_page_transformation_delete(request, document_page_transformation_id
         'navigation_object_list': [
             {'object': 'page'},
             {'object': 'transformation', 'name': _(u'transformation')}
-        ], 
+        ],
         'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
@@ -865,7 +864,7 @@ def document_type_document_list(request, document_type_id):
         extra_context={
             'object_name': _(u'document type'),
             'navigation_object_name': 'document_type',
-            'document_type': document_type,            
+            'document_type': document_type,
         }
     )
 
@@ -926,11 +925,11 @@ def document_type_delete(request, document_type_id):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        
+
         'object_name': _(u'document type'),
         'navigation_object_name': 'document_type',
         'document_type': document_type,
-                
+
         'title': _(u'Are you sure you wish to delete the document type: %s?') % document_type,
         'message': _(u'The document type of all documents using this document type will be set to none.'),
         'form_icon': u'layout_delete.png',
@@ -1018,7 +1017,7 @@ def document_type_filename_edit(request, document_type_filename_id):
         'navigation_object_list': [
             {'object': 'document_type', 'name': _(u'document type')},
             {'object': 'filename', 'name': _(u'document type filename')}
-        ],         
+        ],
     },
     context_instance=RequestContext(request))
 
@@ -1052,7 +1051,7 @@ def document_type_filename_delete(request, document_type_filename_id):
         'navigation_object_list': [
             {'object': 'document_type', 'name': _(u'document type')},
             {'object': 'filename', 'name': _(u'document type filename')}
-        ],        
+        ],
         'title': _(u'Are you sure you wish to delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },

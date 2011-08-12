@@ -9,7 +9,6 @@ from django.utils.translation import ugettext
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.comments.models import Comment
-from django.conf import settings
 from django.core.exceptions import ValidationError
 
 from taggit.managers import TaggableManager
@@ -31,8 +30,6 @@ from documents.conf.settings import CACHE_PATH
 from documents.managers import RecentDocumentManager, \
     DocumentPageTransformationManager
 from documents.utils import document_save_to_temp_dir
-from documents.literals import PICTURE_ERROR_SMALL, PICTURE_ERROR_MEDIUM, \
-    PICTURE_UNKNOWN_SMALL, PICTURE_UNKNOWN_MEDIUM
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_PAGE_NUMBER
 
@@ -168,7 +165,7 @@ class Document(models.Model):
     def update_page_count(self, save=True):
         handle, filepath = tempfile.mkstemp()
         # Just need the filepath, close the file description
-        os.close(handle)  
+        os.close(handle)
 
         self.save_to_file(filepath)
         try:
@@ -236,7 +233,7 @@ class Document(models.Model):
                     )
 
                     page_transformation.save()
-                    
+
     def get_cached_image_name(self, page):
         document_page = self.documentpage_set.get(page_number=page)
         transformations, warnings = document_page.get_transformation_list()

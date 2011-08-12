@@ -16,7 +16,7 @@ class FamFamRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
             else:
                 famfam_template = u'<span class="famfam active famfam-cross" style="vertical-align: bottom;"></span>'
             results.append(u'<li class="undecorated_list">%s%s</li>' % (famfam_template, force_unicode(w)))
-        
+
         results.append(u'\n</ul>')
         return mark_safe(u'\n'.join(results))
 

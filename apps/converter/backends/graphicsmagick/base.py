@@ -7,8 +7,7 @@ from converter.exceptions import ConvertError, UnknownFileFormat, \
     IdentifyError
 from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
-    TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
-    TRANSFORMATION_ZOOM
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
 from converter.literals import DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER, \
     DEFAULT_FILE_FORMAT
 

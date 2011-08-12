@@ -29,7 +29,7 @@ from sources.forms import SourceTransformationForm, SourceTransformationForm_cre
 from sources import PERMISSION_SOURCES_SETUP_VIEW, \
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE, \
     PERMISSION_SOURCES_SETUP_CREATE
-    
+
 
 def return_function(obj):
     return lambda context: context['source'].source_type == obj.source_type and context['source'].pk == obj.pk
@@ -59,13 +59,13 @@ def get_active_tab_links():
             'keep_query': True,
             'conditional_highlight': return_function(staging_folder),
         })
-        
+
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
         SOURCE_CHOICE_STAGING: staging_folders
     }
-    
+
 
 def upload_interactive(request, source_type=None, source_id=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
@@ -140,7 +140,7 @@ def upload_interactive(request, source_type=None, source_id=None):
                     return HttpResponseRedirect(request.get_full_path())
             else:
                 form = WebFormForm(
-                    show_expand=(web_form.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
                     document_type=document_type,
                     source=web_form
                 )
@@ -159,7 +159,7 @@ def upload_interactive(request, source_type=None, source_id=None):
             if request.method == 'POST':
                 form = StagingDocumentForm(request.POST, request.FILES,
                     cls=StagingFile, document_type=document_type,
-                    show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
                     source=staging_folder
                 )
                 if form.is_valid():
@@ -171,14 +171,14 @@ def upload_interactive(request, source_type=None, source_id=None):
                             if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
                                 expand = True
                             else:
-                                expand = False                        
+                                expand = False
                         new_filename = get_form_filename(form)
                         staging_folder.upload_file(staging_file.upload(),
                             new_filename, document_type=document_type,
                             expand=expand,
                             metadata_dict_list=decode_metadata_from_url(request.GET),
                             user=request.user
-                        )                        
+                        )
                         messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
@@ -191,8 +191,8 @@ def upload_interactive(request, source_type=None, source_id=None):
                     return HttpResponseRedirect(request.get_full_path())
             else:
                 form = StagingDocumentForm(cls=StagingFile,
-                    document_type=document_type, 
-                    show_expand=(staging_folder.uncompress==SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    document_type=document_type,
+                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
                     source=staging_folder
                 )
             try:
@@ -217,7 +217,7 @@ def upload_interactive(request, source_type=None, source_id=None):
                             'hide_link': True,
                         }
                     },
-                ]    
+                ] 
 
     context.update({
         'document_type_id': document_type_id,
@@ -234,7 +234,7 @@ def upload_interactive(request, source_type=None, source_id=None):
         'temporary_navigation_links': {'form_header': {'upload_interactive': {'links': results['tab_links']}}},
     })
     return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def get_form_filename(form):
@@ -246,16 +246,16 @@ def get_form_filename(form):
     if form and 'document_type_available_filenames' in form.cleaned_data:
         if form.cleaned_data['document_type_available_filenames']:
             return form.cleaned_data['document_type_available_filenames'].filename
-            
+
     return filename
-    
-       
+
+
 def staging_file_preview(request, source_type, source_id, staging_file_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
     transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
-    
+
     output_file = StagingFile.get(staging_file_id).get_image(
         size=staging_folder.get_preview_size(),
         transformations=transformations
@@ -274,7 +274,7 @@ def staging_file_thumbnail(request, source_id, staging_file_id):
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
     transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
-    
+
     output_file = StagingFile.get(staging_file_id).get_image(
         size=THUMBNAIL_SIZE,
         transformations=transformations
@@ -291,7 +291,7 @@ def staging_file_thumbnail(request, source_id, staging_file_id):
 def staging_file_delete(request, source_type, source_id, staging_file_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-    StagingFile = create_staging_file_class(request, staging_folder.folder_path)    
+    StagingFile = create_staging_file_class(request, staging_folder.folder_path)
 
     staging_file = StagingFile.get(staging_file_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
@@ -299,7 +299,7 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
 
     if request.method == 'POST':
         try:
-            transformations, errors=SourceTransformation.transformations.get_for_object_as_list(staging_folder)
+            transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
             staging_file.delete(
                 preview_size=staging_folder.get_preview_size(),
                 transformations=transformations
@@ -310,7 +310,7 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
         return HttpResponseRedirect(next)
 
     results = get_active_tab_links()
-    
+
     return render_to_response('generic_confirm.html', {
         'source': staging_folder,
         'delete_view': True,
@@ -324,14 +324,14 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
 
 def setup_source_list(request, source_type):
     check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
-    
+
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
     elif source_type == SOURCE_CHOICE_STAGING:
         cls = StagingFolder
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
-        
+
     context = {
         'object_list': cls.objects.all(),
         'title': cls.class_fullname_plural(),

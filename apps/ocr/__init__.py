@@ -73,6 +73,7 @@ register_tool(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
 #Menus
 register_top_menu('ocr', link={'text': _('OCR'), 'famfam': 'hourglass', 'view': 'queue_document_list'}, children_path_regex=[r'^ocr/'])
 
+
 @transaction.commit_manually
 def create_default_queue():
     try:

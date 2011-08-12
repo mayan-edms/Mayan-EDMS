@@ -17,29 +17,29 @@ UNKNWON_TYPE_FILE_NAME = 'unknown.png'
 ERROR_FILE_NAME = 'error.png'
 
 mimetype_icons = {
-    'application/pdf'                      : 'file_extension_pdf.png',
-    'application/zip'                      : 'file_extension_zip.png',
-    'application/ogg'                      : 'file_extension_ogg.png',
-    'application/postscript'               : 'file_extension_ps.png',
-    'application/x-gzip'                   : 'file_extension_gz.png',
-    'application/x-rar-compressed'         : 'file_extension_rar.png',
-    'application/x-troff-msvideo'          : 'file_extension_avi.png',
-    'application/acad'                     : 'file_extension_dwg.png',
-    'application/octet-stream'             : 'file_extension_exe.png',
+    'application/pdf': 'file_extension_pdf.png',
+    'application/zip': 'file_extension_zip.png',
+    'application/ogg': 'file_extension_ogg.png',
+    'application/postscript': 'file_extension_ps.png',
+    'application/x-gzip': 'file_extension_gz.png',
+    'application/x-rar-compressed': 'file_extension_rar.png',
+    'application/x-troff-msvideo': 'file_extension_avi.png',
+    'application/acad': 'file_extension_dwg.png',
+    'application/octet-stream': 'file_extension_exe.png',
     'application/vnd.oasis.opendocument.text': 'ODF_textdocument_32x32.png',
     'application/vnd.oasis.opendocument.spreadsheet': 'ODF_spreadsheet_32x32.png',
     'application/vnd.oasis.opendocument.presentation': 'ODF_presentation_32x32.png',
     'application/vnd.oasis.opendocument.graphics': 'ODF_drawing_32x32.png',
-    'application/vnd.ms-excel':  'file_extension_xls.png',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':  'file_extension_xls.png',
+    'application/vnd.ms-excel': 'file_extension_xls.png',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'file_extension_xls.png',
     'application/msword': 'file_extension_doc.png',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'file_extension_doc.png',
     'application/mspowerpoint': 'file_extension_pps.png',
     'application/vnd.ms-powerpoint': 'file_extension_pps.png',
-    'application/wav'                      : 'file_extension_wav.png',
-    'application/x-wav'                    : 'file_extension_wav.png',
-    'application/vnd.oasis.opendocument.text' : 'ODF_textdocument_32x32.png',
-    
+    'application/wav': 'file_extension_wav.png',
+    'application/x-wav': 'file_extension_wav.png',
+    'application/vnd.oasis.opendocument.text': 'ODF_textdocument_32x32.png',
+
     'image/jpeg'              : 'file_extension_jpeg.png',
     'image/png'               : 'file_extension_png.png',
     'image/x-png'             : 'file_extension_png.png',
@@ -49,7 +49,7 @@ mimetype_icons = {
     'image/gif'               : 'file_extension_gif.png',
     'image/vnd.dwg'           : 'file_extension_dwg.png',
     'image/x-dwg'             : 'file_extension_dwg.png',
-    
+
     'audio/mpeg'              : 'file_extension_mp3.png',
     'audio/mid'               : 'file_extension_mid.png',
     'audio/x-wav'             : 'file_extension_wav.png',
@@ -63,7 +63,7 @@ mimetype_icons = {
     'video/quicktime'         : 'file_extension_mov.png',
     'video/x-ms-asf'          : 'file_extension_asf.png',
     'video/x-ms-wmv'          : 'file_extension_wmv.png',
-    
+
     'text/html'               : 'file_extension_html.png',
     'text/plain'              : 'file_extension_txt.png',
 }

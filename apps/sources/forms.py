@@ -56,34 +56,34 @@ class WebFormForm(DocumentForm):
                 label=_(u'Expand compressed files'), required=False,
                 help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
             )
-            
+
     def clean_file(self):
         data = self.cleaned_data['file']
         validate_whitelist_blacklist(data.name, self.source.whitelist.split(','), self.source.blacklist.split(','))
 
-        return data            
+        return data
 
 
 class WebFormSetupForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(WebFormSetupForm, self).__init__(*args, **kwargs)    
+        super(WebFormSetupForm, self).__init__(*args, **kwargs)
         self.fields['icon'].widget = FamFamRadioSelect(
             attrs=self.fields['icon'].widget.attrs,
             choices=self.fields['icon'].widget.choices,
         )
-            
+
     class Meta:
         model = WebForm
-        
-        
+
+
 class StagingFolderSetupForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(StagingFolderSetupForm, self).__init__(*args, **kwargs)    
+        super(StagingFolderSetupForm, self).__init__(*args, **kwargs)
         self.fields['icon'].widget = FamFamRadioSelect(
             attrs=self.fields['icon'].widget.attrs,
             choices=self.fields['icon'].widget.choices,
         )
-    
+
     class Meta:
         model = StagingFolder
 
@@ -91,7 +91,7 @@ class StagingFolderSetupForm(forms.ModelForm):
 class WatchFolderSetupForm(forms.ModelForm):
     class Meta:
         model = WatchFolder
-        
+
 
 class SourceTransformationForm(forms.ModelForm):
     class Meta:

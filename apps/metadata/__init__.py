@@ -61,7 +61,7 @@ setup_document_type_metadata = {'text': _(u'default metadata'), 'view': 'setup_d
 
 #register_links(Document, [metadata_add, metadata_edit, metadata_remove])
 register_links(['metadata_add', 'metadata_edit', 'metadata_remove', 'metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
-register_links(Document, [metadata_view], menu_name='form_header')#, metadata_edit, metadata_remove])
+register_links(Document, [metadata_view], menu_name='form_header')  #, metadata_edit, metadata_remove])
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
 
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])

@@ -10,11 +10,9 @@ try:
 except RuntimeError:
     USE_GHOSTSCRIPT = False
 
-from django.utils.translation import ugettext_lazy as _
-
 from mimetype.api import get_mimetype
 
-from converter.exceptions import ConvertError, UnknownFileFormat, IdentifyError
+from converter.exceptions import UnknownFileFormat
 from converter.backends import ConverterBase
 from converter.literals import TRANSFORMATION_RESIZE, \
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
@@ -26,7 +24,7 @@ from converter.utils import cleanup
 class ConverterClass(ConverterBase):
     def get_page_count(self, input_filepath):
         page_count = 1
-        
+
         mimetype, encoding = get_mimetype(input_filepath)
         if mimetype == 'application/pdf':
             # If file is a PDF open it with slate to determine the page
@@ -37,7 +35,7 @@ class ConverterClass(ConverterBase):
             
         try:
             im = Image.open(input_filepath)
-        except IOError:  #cannot identify image file
+        except IOError:  # cannot identify image file
             raise UnknownFileFormat
             
         try:
@@ -46,10 +44,10 @@ class ConverterClass(ConverterBase):
                 page_count += 1
                 # do something to im
         except EOFError:
-            pass # end of sequence
+            pass  # end of sequence
             
         return page_count
-    
+
     def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         tmpfile = None
         mimetype, encoding = get_mimetype(input_filepath)
@@ -79,12 +77,13 @@ class ConverterClass(ConverterBase):
             ] 
 
             ghostscript.Ghostscript(*args)
-            page = 1 # Don't execute the following while loop
+            page = 1  # Don't execute the following while loop
             input_filepath = tmpfile    
 
         try:
             im = Image.open(input_filepath)
-        except Exception: # Python Imaging Library doesn't recognize it as an image
+        except Exception:
+            # Python Imaging Library doesn't recognize it as an image
             raise UnknownFileFormat
         finally:
             if tmpfile:
@@ -97,7 +96,8 @@ class ConverterClass(ConverterBase):
                 current_page += 1
                 # do something to im
         except EOFError:
-            pass # end of sequence        
+            # end of sequence
+            pass
         
         try:
             if transformations:

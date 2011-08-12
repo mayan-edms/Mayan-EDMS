@@ -9,7 +9,6 @@ from django.core.exceptions import PermissionDenied
 
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
-from documents.widgets import document_thumbnail, document_link
 from permissions.api import check_permissions
 from common.utils import encapsulate
 
@@ -35,6 +34,7 @@ def folder_list(request, queryset=None, extra_context=None):
         template_name='generic_list.html',
         extra_context=context,
     )
+
 
 def folder_create(request):
     if request.method == 'POST':
@@ -202,7 +202,7 @@ def folder_add_document(request, document_id):
             return HttpResponseRedirect(next)
     else:
         form = AddDocumentForm(user=request.user)
-        
+
     return render_to_response('generic_form.html', {
         'title': _(u'add document "%s" to a folder') % document,
         'form': form,
@@ -210,12 +210,12 @@ def folder_add_document(request, document_id):
         'next': next,
     },
     context_instance=RequestContext(request))    
-   
+
 
 def document_folder_list(request, document_id):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
-        
+
     return folder_list(
         request,
         queryset=Folder.objects.filter(user=request.user).filter(folderdocument__document=document),
@@ -224,7 +224,7 @@ def document_folder_list(request, document_id):
             'object': document,
         }
     )
-       
+
 
 def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
     post_action_redirect = None

@@ -1,5 +1,3 @@
-import os
-
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
@@ -10,10 +8,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 from django.contrib.auth.views import login
-from django.conf import settings
-from django.utils.safestring import mark_safe
 
-from common.forms import ChoiceForm, UserForm, UserForm_view
+from common.forms import ChoiceForm, UserForm, UserForm_view, ChangelogForm
 from common.forms import EmailAuthenticationForm
 from common.conf.settings import LOGIN_METHOD
 
@@ -181,18 +177,15 @@ def login_view(request):
     
     if LOGIN_METHOD == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
-        
+
     return login(request, **kwargs)
 
-from common.forms import ChangelogForm
-def changelog(request):
 
-    
-    #changelog_widget = mark_safe(u'<form class="form"><div class="group"><textarea rows="10" cols="40" class="text_area">%s</textarea></div></form>' % changelog)
+def changelog(request):
     form = ChangelogForm()
     return render_to_response(
         'generic_detail.html', {
             'form': form,
             'title': _(u'Changelog'),
         },
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))

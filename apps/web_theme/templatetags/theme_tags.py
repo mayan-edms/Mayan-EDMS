@@ -59,7 +59,6 @@ class SettingsNode(Node):
         context[self.var_name] = getattr(web_theme_settings, self.format_string, '')
         return ''
 
-from django.utils.safestring import mark_safe
 
 @register.tag
 def get_web_theme_setting(parser, token):

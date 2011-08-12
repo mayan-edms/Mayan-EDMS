@@ -44,7 +44,7 @@ def index_instance_list(request, index_id=None):
                 request,
                 title=title,
                 object_list=index_instance_list,
-                extra_context = {
+                extra_context={
                     'object': index_instance
                 }
             )
@@ -104,7 +104,6 @@ def document_index_list(request, document_id):
 
     for index_instance in document.indexinstance_set.all():
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
-
 
     return render_to_response('generic_list.html', {
         'title': _(u'indexes containing: %s') % document,

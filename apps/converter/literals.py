@@ -35,12 +35,12 @@ TRANSFORMATION_CHOICES = {
             {'name': 'width', 'label': _(u'width'), 'required': True},
             {'name': 'height', 'label': _(u'height'), 'required': False},
         ]
-    }, 
+    },
     TRANSFORMATION_ZOOM: {
         'label': _(u'Zoom'),
         'description': _(u'Zoom by n percent.'),
         'arguments': [
             {'name': 'percent', 'label': _(u'percent'), 'required': True}
         ]
-    },        
+    },
 }

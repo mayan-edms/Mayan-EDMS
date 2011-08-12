@@ -7,6 +7,7 @@ from common.utils import encapsulate
 from converter import backend
 from converter.conf.settings import GRAPHICS_BACKEND
 
+
 def formats_list(request):
     #check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 

@@ -2,7 +2,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_top_menu, \
     register_multi_item_links, register_sidebar_template
-from navigation.api import register_sidebar_template
 from documents.models import Document
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 

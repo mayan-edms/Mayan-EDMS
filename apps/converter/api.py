@@ -5,16 +5,15 @@ import hashlib
 from common.conf.settings import TEMPORARY_DIRECTORY
 
 from converter.conf.settings import UNOCONV_PATH
-from converter.exceptions import OfficeConversionError, UnknownFileFormat
+from converter.exceptions import OfficeConversionError
 from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT
 
 from converter import backend
 from converter.literals import TRANSFORMATION_CHOICES
 from converter.literals import TRANSFORMATION_RESIZE, \
-    TRANSFORMATION_ROTATE, TRANSFORMATION_DENSITY, \
-    TRANSFORMATION_ZOOM
-from converter.literals import DIMENSION_SEPARATOR    
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
+from converter.literals import DIMENSION_SEPARATOR
 from converter.utils import cleanup
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
@@ -51,7 +50,7 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         return os.path.join(TEMPORARY_DIRECTORY, hash_value)
     else:
         return None
-        
+
 
 def convert_office_document(input_filepath):
     if os.path.exists(UNOCONV_PATH):
@@ -136,5 +135,5 @@ def get_available_transformations_choices():
     for transformation in backend.get_available_transformations():
         transformation_template = u'%s %s' % (TRANSFORMATION_CHOICES[transformation]['label'], u','.join(['<%s>' % argument['name'] if argument['required'] else '[%s]' % argument['name'] for argument in TRANSFORMATION_CHOICES[transformation]['arguments']]))
         result.append([transformation, transformation_template])
-        
+
     return result

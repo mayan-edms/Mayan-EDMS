@@ -25,7 +25,6 @@ from documents.literals import HISTORY_DOCUMENT_CREATED, \
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
-from documents.conf.settings import CACHE_PATH
 from documents.conf import settings as document_settings
 from documents.widgets import document_thumbnail
 
