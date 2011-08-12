@@ -46,12 +46,14 @@ register_links(SourceTransformation, [setup_source_transformation_edit, setup_so
 #register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
 register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 
-register_links(WebForm, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
+#register_links(WebForm, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
+register_links(WebForm, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 register_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create'], [setup_source_create], menu_name='sidebar')
 
-register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
+#register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
+register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 register_links(StagingFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 register_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
