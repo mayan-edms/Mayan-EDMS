@@ -28,9 +28,9 @@ from sources.compressed_file import CompressedFile, NotACompressedFile
 class BaseModel(models.Model):
     title = models.CharField(max_length=64, verbose_name=_(u'title'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-    whitelist = models.TextField(blank=True, verbose_name=_(u'whitelist'))
-    blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'))
-    document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'), help_text=(u'Optional document type to be applied to documents uploaded from this source.'))
+    whitelist = models.TextField(blank=True, verbose_name=_(u'whitelist'), editable=False)
+    blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'), editable=False)
+    #document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'), help_text=(u'Optional document type to be applied to documents uploaded from this source.'))
     
     @classmethod
     def class_fullname(cls):
