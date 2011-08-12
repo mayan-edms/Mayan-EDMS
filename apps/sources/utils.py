@@ -19,7 +19,7 @@ def accept_item(value, whitelist, blacklist, default_accept=True):
         #print 'item_list: %s' % item_list
         #print 'reject: %s' % reject
         for okpattern in item_list: 
-            print 'okpattern: %s' % okpattern
+            #print 'okpattern: %s' % okpattern
             if re.findall(okpattern.replace('*','\S+'), value, re.I): 
                 # match! 
                 #print 'MATCH'
