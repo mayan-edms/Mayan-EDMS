@@ -1,22 +1,40 @@
-2011-08-08
-* Fixed a source creation bug, that caused invalid links to a non existing
-  source transformation to appear on the sidebar
+2011-08-14
+* Added a view to the about menu to read the LICENSE file included with Mayan
 
-* Perform extra validation of the image cache directory and fallback to
-  creating a temporary directory on validation failure
-  
-* Added remediatory code to sidestep issue #10 caused by DjangoZoom's 
-  deployment script executing the collectstatic command before creating
-  the database structure with syncdb.  Thanks to Joost Cassee
-  (https://github.com/jcassee) for reporting this one.
-  
-* Updated the static media url in the login excempt url list
+2011-08-12
+* Added converter backend agnostic image file format descriptions
 
+2011-08-11
+* Disable whitelist and blacklist temporarily, removed document_type
+  field from interactive sources
+
+* Fully disabled watch folders until they are working correctly
+
+* Updated the project title to 'Mayan EDMS'
+
+* If ghostscript is installed add PDF and PS to the list of file formats 
+  by the python converter backend
+  
 * Use Pillow (http://pypi.python.org/pypi/Pillow) instead of PIL
   - Pillow is a fork of PIL with several updated including better 
     jpeg and png library detection
   - Users must uninstall PIL before installing Pillow
-  
+
+2011-08-10  
+* Updated the static media url in the login excempt url list
+
+2011-08-08
+* Added remediatory code to sidestep issue #10 caused by DjangoZoom's 
+  deployment script executing the collectstatic command before creating
+  the database structure with syncdb.  Thanks to Joost Cassee
+  (https://github.com/jcassee) for reporting this one.
+
+* Perform extra validation of the image cache directory and fallback to
+  creating a temporary directory on validation failure
+
+* Fixed a source creation bug, that caused invalid links to a non existing
+  source transformation to appear on the sidebar
+
 
 2011-08-06
 Tag: Version 0.8.2 
