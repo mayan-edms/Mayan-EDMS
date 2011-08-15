@@ -40,7 +40,7 @@ class MetadataSet(models.Model):
     title = models.CharField(max_length=48, verbose_name=_(u'title'))
 
     def __unicode__(self):
-        return self.title if self.title else self.name
+        return self.title
 
     class Meta:
         ordering = ('title',)
