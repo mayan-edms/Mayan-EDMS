@@ -3,9 +3,9 @@ from django.views.generic.simple import direct_to_template
 from django.conf import settings
 
 urlpatterns = patterns('common.views',
-    url(r'^about/$', direct_to_template, {'template': 'about.html'}, 'about'),
-    url(r'^changelog/$', 'changelog', (), 'changelog'),
-    #url(r'^password/change/done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'password_change_done.html'}),
+    url(r'^about/$', direct_to_template, {'template': 'about.html'}, 'about_view'),
+    url(r'^changelog/$', 'changelog_view', (), 'changelog_view'),
+    url(r'^license/$', 'license_view', (), 'license_view'),
     url(r'^password/change/done/$', 'password_change_done', (), name='password_change_done'),
     url(r'^object/multiple/action/$', 'multi_object_action_view', (), name='multi_object_action_view'),
 

@@ -149,19 +149,27 @@ class EmailAuthenticationForm(AuthenticationForm):
 EmailAuthenticationForm.base_fields.keyOrder = ['email', 'password']
 
 
-class ChangelogForm(forms.Form):
+class FileDisplayForm(forms.Form):
     text = forms.CharField(
-        label=_(u'Text'),
+        label='',#_(u'Text'),
         widget=forms.widgets.Textarea(
             attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
         )
     )
 
     def __init__(self, *args, **kwargs):
-        super(ChangelogForm, self).__init__(*args, **kwargs)
-        CHANGELOG_FILENAME = u'Changelog.txt'
-        CHANGELOG_DIRECTORY = u'docs'
-        changelog_path = os.path.join(settings.PROJECT_ROOT, CHANGELOG_DIRECTORY, CHANGELOG_FILENAME)
+        super(FileDisplayForm, self).__init__(*args, **kwargs)
+        changelog_path = os.path.join(settings.PROJECT_ROOT, self.DIRECTORY, self.FILENAME)
         fd = open(changelog_path)
         self.fields['text'].initial = fd.read()
         fd.close()
+
+
+class ChangelogForm(FileDisplayForm):
+    FILENAME = u'Changelog.txt'
+    DIRECTORY = u'docs'
+
+
+class LicenseForm(FileDisplayForm):
+    FILENAME = u'LICENSE'
+    DIRECTORY = u'docs'

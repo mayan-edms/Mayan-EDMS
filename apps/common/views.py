@@ -9,7 +9,8 @@ from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 from django.contrib.auth.views import login
 
-from common.forms import ChoiceForm, UserForm, UserForm_view, ChangelogForm
+from common.forms import ChoiceForm, UserForm, UserForm_view, \
+    ChangelogForm, LicenseForm
 from common.forms import EmailAuthenticationForm
 from common.conf.settings import LOGIN_METHOD
 
@@ -173,6 +174,10 @@ def current_user_edit(request):
 
 
 def login_view(request):
+    """
+    Control how the use is to be authenticated, options are 'email' and 
+    'username'
+    """        
     kwargs = {'template_name': 'login.html'}
     
     if LOGIN_METHOD == 'email':
@@ -181,11 +186,27 @@ def login_view(request):
     return login(request, **kwargs)
 
 
-def changelog(request):
+def changelog_view(request):
+    """
+    Display the included Changelog.txt file from the about menu
+    """    
     form = ChangelogForm()
     return render_to_response(
         'generic_detail.html', {
             'form': form,
             'title': _(u'Changelog'),
+        },
+        context_instance=RequestContext(request))
+
+
+def license_view(request):
+    """
+    Display the included LICENSE file from the about menu
+    """    
+    form = LicenseForm()
+    return render_to_response(
+        'generic_detail.html', {
+            'form': form,
+            'title': _(u'License'),
         },
         context_instance=RequestContext(request))
