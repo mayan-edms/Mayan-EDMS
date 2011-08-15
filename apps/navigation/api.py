@@ -1,3 +1,5 @@
+import copy
+
 object_navigation = {}
 multi_object_navigation = {}
 model_list_columns = {}
@@ -44,8 +46,9 @@ def register_links(src, links, menu_name=None, position=None):
             object_navigation[menu_name][src]['links'].extend(links)
 
 
-def register_top_menu(name, link, children_views=None, \
-    children_path_regex=None, children_view_regex=None, position=None):
+def register_top_menu(name, link, children_views=None, 
+                      children_path_regex=None, children_view_regex=None,
+                      position=None):
     """
     Register a new menu entry for the main menu displayed at the top
     of the page
@@ -59,9 +62,19 @@ def register_top_menu(name, link, children_views=None, \
     if children_view_regex:
         entry['children_view_regex'] = children_view_regex
     if position is not None:
+        entry['position'] = position
         top_menu_entries.insert(position, entry)
     else:
+        length = len(top_menu_entries)
+        entry['position'] = length
         top_menu_entries.append(entry)
+
+    sort_menu_entries()
+
+
+def sort_menu_entries():
+    global top_menu_entries
+    top_menu_entries = sorted(top_menu_entries, key=lambda k: (k['position'] < 0, k['position']))
 
 
 def register_model_list_columns(model, columns):
