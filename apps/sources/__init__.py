@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, \
     register_model_list_columns
 from permissions.api import register_permission, set_namespace_title
+from common.utils import encapsulate
 
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation, \
@@ -64,6 +65,6 @@ source_views = ['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch
 
 register_model_list_columns(StagingFile, [
         {'name':_(u'thumbnail'), 'attribute':
-            lambda x: staging_file_thumbnail(x)
+            encapsulate(lambda x: staging_file_thumbnail(x))
         },
     ])
