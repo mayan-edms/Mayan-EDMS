@@ -5,6 +5,8 @@ Open source, Django based document manager with custom metadata indexing, file s
 
 [Website](http://bit.ly/mayan-edms)
 
+[Video demostration](http://bit.ly/pADNXv)
+
 Basic requirements
 ---
 
@@ -53,7 +55,7 @@ This project is open sourced under [GNU GPL Version 3](http://www.gnu.org/licens
 
 Author
 ------
-Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](roberto.rosario.gonzalez at gmail)
+Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](mailto://roberto.rosario.gonzalez_at_gmail)
 
 
 Donations
