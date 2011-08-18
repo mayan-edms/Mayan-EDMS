@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.comments',
     'django.contrib.staticfiles',
+    'project_setup',
     'smart_settings',
     'navigation',
     'web_theme',

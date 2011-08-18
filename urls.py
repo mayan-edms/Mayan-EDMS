@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     (r'^history/', include('history.urls')),
     (r'^converter/', include('converter.urls')),
     (r'^sources/', include('sources.urls')),
+    (r'^project_setup/', include('project_setup.urls')),
 )
 
 

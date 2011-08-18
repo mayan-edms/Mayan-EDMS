@@ -11,6 +11,7 @@ from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
 from metadata.api import get_metadata_string
+from project_setup.api import register_setup
 
 from documents.models import Document, DocumentPage, \
     DocumentPageTransformation, DocumentType, DocumentTypeFilename
@@ -107,6 +108,7 @@ document_missing_list = {'text': _(u'Find missing document files'), 'view': 'doc
 
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_type_setup = {'text': _(u'document types'), 'view': 'document_type_list', 'famfam': 'layout', 'icon': 'layout.png', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_type_document_list = {'text': _(u'documents of this type'), 'view': 'document_type_document_list', 'args': 'document_type.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_type_edit = {'text': _(u'edit'), 'view': 'document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _(u'delete'), 'view': 'document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
@@ -123,7 +125,7 @@ document_type_views = ['setup_document_type_metadata', 'document_type_list', 'do
 register_links(DocumentType, [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
 register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
 
-register_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_create], menu_name='sidebar')
+register_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='sidebar')
 register_links(['document_type_filename_create', 'document_type_filename_list', 'document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
@@ -199,3 +201,5 @@ register_links(Document, [document_history_view], menu_name='form_header')
 
 if (validate_path(document_settings.CACHE_PATH) == False) or (not document_settings.CACHE_PATH):
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
+
+register_setup(document_type_setup)

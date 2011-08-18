@@ -4,6 +4,7 @@ from navigation.api import register_links, \
     register_model_list_columns
 from permissions.api import register_permission, set_namespace_title
 from common.utils import encapsulate
+from project_setup.api import register_setup
 
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation, \
@@ -24,7 +25,8 @@ register_permission(PERMISSION_SOURCES_SETUP_CREATE)
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
 
-setup_web_form_list = {'text': _(u'web forms'), 'view': 'setup_web_form_list', 'famfam': 'application_form', 'children_classes': [WebForm]}
+setup_sources = {'text': _(u'sources'), 'view': 'setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebForm]}
+setup_web_form_list = {'text': _(u'web forms'), 'view': 'setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebForm]}
 setup_staging_folder_list = {'text': _(u'staging folders'), 'view': 'setup_staging_folder_list', 'famfam': 'folder_camera', 'children_classes': [StagingFolder]}
 setup_watch_folder_list = {'text': _(u'watch folders'), 'view': 'setup_watch_folder_list', 'famfam': 'folder_magnify', 'children_classes': [WatchFolder]}
 
@@ -50,7 +52,7 @@ register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch
 register_links(WebForm, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 register_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
-register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create'], [setup_source_create], menu_name='sidebar')
+register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create'], [setup_sources, setup_source_create], menu_name='sidebar')
 
 #register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
 register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
@@ -68,3 +70,6 @@ register_model_list_columns(StagingFile, [
             encapsulate(lambda x: staging_file_thumbnail(x))
         },
     ])
+
+
+register_setup(setup_sources)
