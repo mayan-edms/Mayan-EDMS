@@ -1,5 +1,10 @@
+2011-08-18
+* Change the mode the setup options are shown, opting to use a more of
+  a dashboard style now
+
 2011-08-14
-* Added a view to the about menu to read the LICENSE file included with Mayan
+* Added a view to the about menu to read the LICENSE file included with
+  Mayan
 
 2011-08-12
 * Added converter backend agnostic image file format descriptions
