@@ -49,7 +49,6 @@ class WebFormForm(DocumentForm):
         show_expand = kwargs.pop('show_expand', False)
         self.source = kwargs.pop('source')
         super(WebFormForm, self).__init__(*args, **kwargs)
-        print self.instance
 
         if show_expand:
             self.fields['expand'] = forms.BooleanField(
