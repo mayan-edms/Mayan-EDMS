@@ -1,6 +1,13 @@
 2011-08-18
 * Change the mode the setup options are shown, opting to use a more of
   a dashboard style now
+  
+* Changed the tool menu to use the same button layout of the setup menu
+
+* Moved OCR related handling to the tools main menu
+
+* Improved the metadata type and metadata set selection widget during the
+  document upload wizard
 
 2011-08-14
 * Added a view to the about menu to read the LICENSE file included with
