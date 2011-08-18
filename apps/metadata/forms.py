@@ -2,6 +2,8 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.forms.formsets import formset_factory
 
+from common.widgets import ScrollableCheckboxSelectMultiple
+
 from metadata.conf.settings import AVAILABLE_MODELS
 from metadata.conf.settings import AVAILABLE_FUNCTIONS
 from metadata.models import MetadataSet, MetadataType, \
@@ -83,14 +85,16 @@ class MetadataSelectionForm(forms.Form):
         queryset=MetadataSet.objects.all(),
         label=_(u'Metadata sets'),
         required=False,
-        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+        #widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+        widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
     )
 
     metadata_types = forms.ModelMultipleChoiceField(
         queryset=MetadataType.objects.all(),
         label=_(u'Metadata'),
         required=False,
-        widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+        #widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+        widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
     )
 
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)

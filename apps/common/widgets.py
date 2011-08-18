@@ -1,4 +1,5 @@
 import os
+from itertools import chain
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
@@ -97,3 +98,33 @@ class EmailInput(forms.widgets.Input):
                           autocapitalize='off',
                           spellcheck='false'))
         return super(EmailInput, self).render(name, value, attrs=attrs)
+
+
+class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
+    def render(self, name, value, attrs=None, choices=()):
+        if value is None: value = []
+        has_id = attrs and 'id' in attrs
+        final_attrs = self.build_attrs(attrs, name=name)
+        output = [u'<ul class="undecorated_list" style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px;">']
+        # Normalize to strings
+        str_values = set([force_unicode(v) for v in value])
+        for i, (option_value, option_label) in enumerate(chain(self.choices, choices)):
+            # If an ID attribute was given, add a numeric index as a suffix,
+            # so that the checkboxes don't all have the same ID attribute.
+            if has_id:
+                final_attrs = dict(final_attrs, id='%s_%s' % (attrs['id'], i))
+                label_for = u' for="%s"' % final_attrs['id']
+            else:
+                label_for = ''
+
+            cb = forms.widgets.CheckboxInput(final_attrs, check_test=lambda value: value in str_values)
+            option_value = force_unicode(option_value)
+            rendered_cb = cb.render(name, option_value)
+            option_label = conditional_escape(force_unicode(option_label))
+            output.append(u'<li><label%s>%s %s</label></li>' % (label_for, rendered_cb, option_label))
+        output.append(u'</ul>')
+        #return mark_safe(u'\n'.join(output))
+        result = u'\n'.join(output)
+       
+        #result = super(ScrollableCheckboxSelectMultiple, self).render(name, value, attrs=None, choices=())
+        return mark_safe(u'<div class="text_area_div">%s</div>' % result)
