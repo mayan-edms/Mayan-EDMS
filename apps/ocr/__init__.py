@@ -15,6 +15,7 @@ from navigation.api import register_links, register_top_menu, register_multi_ite
 from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
 from main.api import register_maintenance
+from project_tools.api import register_tool
 
 from scheduler.api import register_interval_job
 
@@ -52,6 +53,8 @@ document_queue_enable = {'text': _(u'activate queue'), 'view': 'document_queue_e
 all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _(u'Runs a language filter to remove common OCR mistakes from document pages content.')}
 
 queue_document_list = {'text': _(u'queue document list'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+
 node_active_list = {'text': _(u'active tasks'), 'view': 'node_active_list', 'famfam': 'server_chart', 'permissions': [PERMISSION_OCR_DOCUMENT]}
 
 setup_queue_transformation_list = {'text': _(u'transformations'), 'view': 'setup_queue_transformation_list', 'args': 'queue.pk', 'famfam': 'shape_move_front'}
@@ -69,9 +72,6 @@ register_links(['setup_queue_transformation_create', 'setup_queue_transformation
 register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
 register_maintenance(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
-
-#Menus
-register_top_menu('ocr', link={'text': _('OCR'), 'famfam': 'hourglass', 'view': 'queue_document_list'}, children_path_regex=[r'^ocr/'])
 
 
 @transaction.commit_manually
@@ -102,3 +102,5 @@ post_save.connect(document_post_save, sender=Document)
 create_default_queue()
 
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
+
+register_tool(ocr_tool_link)
