@@ -14,7 +14,7 @@ def register_diagnostic(namespace, title, link):
     diagnostics[namespace] = namespace_dict
 
 
-def register_tool(link, title=None, namespace=None):
+def register_maintenance(link, title=None, namespace=None):
     namespace_dict = tools.get(namespace, {'title': None, 'links': []})
     namespace_dict['title'] = title
     link['url'] = link.get('url', reverse_lazy(link['view']))

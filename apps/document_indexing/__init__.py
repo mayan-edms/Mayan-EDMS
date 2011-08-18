@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_top_menu, register_sidebar_template, \
     register_links
 from permissions.api import register_permission, set_namespace_title
-from main.api import register_tool
+from main.api import register_maintenance
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 
@@ -24,7 +24,7 @@ register_top_menu('indexes', link={'text': _('indexes'), 'famfam': 'folder_page'
 
 rebuild_index_instances = {'text': _('rebuild indexes'), 'view': 'rebuild_index_instances', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES], 'description': _(u'Deletes and creates from scratch all the document indexes.')}
 
-register_tool(rebuild_index_instances, namespace='document_indexing', title=_(u'Indexes'))
+register_maintenance(rebuild_index_instances, namespace='document_indexing', title=_(u'Indexes'))
 
 register_sidebar_template(['index_instance_list'], 'indexing_help.html')
 

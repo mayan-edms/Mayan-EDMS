@@ -21,7 +21,7 @@ def home(request):
         context_instance=RequestContext(request))
 
 
-def tools_menu(request):
+def maintenance_menu(request):
     user_tools = {}
     for namespace, values in tools.items():
         for link in values['links']:
@@ -38,7 +38,7 @@ def tools_menu(request):
 
     return render_to_response('tools.html', {
         'blocks': user_tools,
-        'title': _(u'tools menu')
+        'title': _(u'maintenance menu')
     },
     context_instance=RequestContext(request))
 

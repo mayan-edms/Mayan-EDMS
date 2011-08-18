@@ -14,7 +14,7 @@ from django.db.models.signals import post_save
 from navigation.api import register_links, register_top_menu, register_multi_item_links
 from permissions.api import register_permission, set_namespace_title
 from documents.models import Document
-from main.api import register_tool
+from main.api import register_maintenance
 
 from scheduler.api import register_interval_job
 
@@ -68,7 +68,7 @@ register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, 
 register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'node_active_list', 'setup_queue_transformation_list'], [queue_document_list, node_active_list], menu_name='secondary_menu')
 register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
-register_tool(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
+register_maintenance(all_document_ocr_cleanup, namespace='ocr', title=_(u'OCR'))
 
 #Menus
 register_top_menu('ocr', link={'text': _('OCR'), 'famfam': 'hourglass', 'view': 'queue_document_list'}, children_path_regex=[r'^ocr/'])

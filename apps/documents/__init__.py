@@ -6,7 +6,7 @@ from common.utils import validate_path, encapsulate
 from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
-from main.api import register_diagnostic, register_tool
+from main.api import register_diagnostic, register_maintenance
 from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
@@ -158,7 +158,7 @@ register_links(['document_page_transformation_edit', 'document_page_transformati
 
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
-register_tool(document_find_all_duplicates, namespace='documents', title=_(u'documents'))
+register_maintenance(document_find_all_duplicates, namespace='documents', title=_(u'documents'))
 
 
 def document_exists(document):
