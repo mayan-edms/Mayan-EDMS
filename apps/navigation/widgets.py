@@ -8,22 +8,22 @@ from django.core.exceptions import PermissionDenied
 from permissions.api import check_permissions
 
 
-def setup_button_widget(request, setup_link):
-    if 'permissions' in setup_link:
+def button_navigation_widget(request, link):
+    if 'permissions' in link:
         try:
-            check_permissions(request.user, setup_link['permissions'])
-            return render_widget(setup_link)
+            check_permissions(request.user, link['permissions'])
+            return render_widget(link)
         except PermissionDenied:
             return u''
     else:
-        return render_widget(setup_link)
+        return render_widget(link)
 
  
-def render_widget(setup_link):
+def render_widget(link):
     return mark_safe(u'<a style="text-decoration:none; margin-right: 10px;" href="%(url)s"><button style="vertical-align: top; padding: 1px; width: 110px; height: 100px; margin: 10px;"><img src="%(static_url)simages/icons/%(icon)s" alt="%(image_alt)s" /><p style="margin: 0px 0px 0px 0px;">%(string)s</p></button></a>' % {
-        'url': reverse(setup_link['view']) if 'view' in setup_link else setup_link['url'],
-        'icon': setup_link.get('icon', 'link_button.png'),
+        'url': reverse(link['view']) if 'view' in link else link['url'],
+        'icon': link.get('icon', 'link_button.png'),
         'static_url': settings.STATIC_URL,
-        'string': capfirst(setup_link['text']),
+        'string': capfirst(link['text']),
         'image_alt': _(u'icon'),
     })
