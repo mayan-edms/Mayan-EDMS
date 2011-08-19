@@ -29,6 +29,7 @@ Contents
     features
     requirements
     installation
+    settings
     technical
     updates
     contributors
