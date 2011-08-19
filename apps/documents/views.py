@@ -20,7 +20,6 @@ from common.conf.settings import DEFAULT_PAPER_SIZE
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_PAGE_NUMBER
 from filetransfers.api import serve_file
-from grouping.utils import get_document_group_subtemplate
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.api import check_permissions
@@ -162,11 +161,6 @@ def document_view(request, document_id, advanced=False):
                 },
             }
         )
-
-        document_group_subtemplate = get_document_group_subtemplate(request, document)
-
-        if document_group_subtemplate:
-            subtemplates_list.append(document_group_subtemplate)
 
     return render_to_response('generic_detail.html', {
         'object': document,
