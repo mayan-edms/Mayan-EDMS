@@ -21,7 +21,7 @@ admin_site = {'text': _(u'admin site'), 'url': '/admin', 'famfam': 'keyboard', '
 __version_info__ = {
     'major': 0,
     'minor': 8,
-    'micro': 2,
+    'micro': 3,
     'releaselevel': 'final',
     'serial': 0
 }
