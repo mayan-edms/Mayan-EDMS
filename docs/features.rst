@@ -1,6 +1,7 @@
 ========
 Features
 ========
+
 * User defined meta-data fields
 * Dynamic default values for metadata
 * Filesystem integration

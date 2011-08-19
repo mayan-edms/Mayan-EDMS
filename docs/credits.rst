@@ -1,3 +1,7 @@
+=======
+Credits
+=======
+
 * Python
     * Copyright (c) 2001-2010 Python Software Foundation.
     * Copyright (c) 2000 BeOpen.com.

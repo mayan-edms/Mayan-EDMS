@@ -20,7 +20,6 @@ as well as automatic document grouping. Find document by means of full
 text searching, either meta-data, document properties, content extracted
 from PDFs or transcribed by OCR.
 
-
 Contents
 ========
 
@@ -31,5 +30,7 @@ Contents
     requirements
     installation
     updates
-    license
+    contributors
+    credits
     faq
+    license
