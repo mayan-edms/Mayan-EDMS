@@ -166,7 +166,7 @@ class FileDisplayForm(forms.Form):
 
 
 class ChangelogForm(FileDisplayForm):
-    FILENAME = u'Changelog.txt'
+    FILENAME = u'changelog.rst'
     DIRECTORY = u'docs'
 
 
