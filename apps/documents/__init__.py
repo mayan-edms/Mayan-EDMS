@@ -189,7 +189,7 @@ register_top_menu(
         r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents'
     ],
     children_views=['document_folder_list', 'folder_add_document', 'document_index_list'],
-    position=0
+    position=1
 )
 
 register_sidebar_template(['document_list_recent'], 'recent_document_list_help.html')
