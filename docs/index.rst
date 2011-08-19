@@ -9,7 +9,7 @@ Open source, Django_ based document manager with custom metadata indexing, file 
 
 :Website: http://bit.ly/mayan-edms
 :Source:  http://github.com/rosarior/mayan
-
+:Video:   http://bit.ly/pADNXv
 
 Overview
 ========
@@ -29,6 +29,7 @@ Contents
     features
     requirements
     installation
+    technical
     updates
     contributors
     credits
