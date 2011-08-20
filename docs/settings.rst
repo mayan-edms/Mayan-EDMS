@@ -265,4 +265,122 @@ OCR
     File path to unpaper program.
     
 
+Metadata
+--------
+
+.. data:: METADATA_AVAILABLE_FUNCTIONS    
     
+    Default: ``current_date`` 
+   
+   
+.. data:: METADATA_AVAILABLE_MODELS    
+    
+    Default: ``User`` 
+   
+   
+Common
+------
+   
+.. data:: COMMON_TEMPORARY_DIRECTORY    
+    
+    Default: ``/tmp`` 
+    
+    Temporary directory used site wide to store thumbnails, previews
+    and temporary files. If none is specified, one will be created 
+    using tempfile.mkdtemp()
+
+
+.. data:: COMMON_DEFAULT_PAPER_SIZE    
+    
+    Default: ``Letter`` 
+    
+
+.. data:: COMMON_DEFAULT_PAGE_ORIENTATION    
+    
+    Default: ``Portrait`` 
+    
+
+.. data:: COMMON_AUTO_CREATE_ADMIN    
+    
+    Default: ``True`` 
+    
+    
+.. data:: COMMON_AUTO_ADMIN_USERNAME    
+    
+    Default: ``admin`` 
+    
+    
+.. data:: COMMON_AUTO_ADMIN_PASSWORD    
+    
+    Default: ``admin`` 
+        
+    
+.. data:: COMMON_LOGIN_METHOD    
+    
+    Default: ``username`` 
+    
+    Controls the mechanism used to authenticated user. Options are: ``username``, ``email``    
+    
+    
+Search
+------
+
+.. data:: SEARCH_LIMIT    
+    
+    Default: ``100`` 
+    
+    Maximum amount search hits to fetch and display.
+    
+    
+.. data:: SEARCH_RECENT_COUNT    
+    
+    Default: ``5`` 
+    
+    Maximum number of search queries to remember per user.    
+    
+
+Web theme
+---------
+
+.. data:: WEB_THEME_THEME    
+    
+    Default: ``activo`` 
+    
+    CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``, ``default``, ``djime-cerulean``, ``drastic-dark``, ``kathleene``, ``olive``, ``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
+    
+    
+.. data:: WEB_THEME_VERBOSE_LOGIN    
+    
+    Default: ``True`` 
+    
+    Display extra information in the login screen.
+    
+    
+Main
+----
+
+.. data:: MAIN_SIDE_BAR_SEARCH    
+    
+    Default: ``False`` 
+    
+    Controls whether the search functionality is provided by a sidebar widget or by a menu entry.
+    
+
+.. data:: MAIN_DISABLE_HOME_VIEW    
+    
+    Default: ``False`` 
+
+
+.. data:: MAIN_DISABLE_ICONS    
+    
+    Default: ``False`` 
+    
+    
+User management
+-----
+
+.. data:: ROLES_DEFAULT_ROLES    
+    
+    Default: ``[]`` 
+    
+    A list of existing roles that are automatically assigned to newly created users
