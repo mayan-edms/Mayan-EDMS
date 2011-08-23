@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'project_tools',
     'smart_settings',
     'navigation',
+    'lock_manager',
     'web_theme',
     'common',
     'metadata',
