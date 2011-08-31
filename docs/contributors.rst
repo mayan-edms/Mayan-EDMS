@@ -13,6 +13,7 @@ Bug reports
 * tightwork (https://github.com/tightwork)
 * Joost Cassee (joost@cassee.net, https://github.com/jcassee)
 * Brian Huxley
+* dAnjou (https://github.com/dAnjou)
 
 Bug fixes
 ---------

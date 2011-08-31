@@ -36,8 +36,12 @@ If using the ``MySQL`` database manager, use the following commands::
 Populate the database with the project's schema doing::
 
     $ ./manage.py syncdb 
+    
+Collect the static files of the project into the ``static`` folder for serving via a webserver::
 
-After that deploy it using the webserver of your preference.  Using your are using Apache_, a sample site file is included under the contrib directory.
+    $ ./manage.py collectstatic
+
+After that deploy it using the webserver of your preference.  If your are using Apache_, a sample site file is included under the contrib directory.
 
 .. _Apache: https://www.apache.org/
 .. _Debian: http://www.debian.org/
