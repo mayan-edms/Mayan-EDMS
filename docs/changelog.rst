@@ -104,7 +104,7 @@ Version 0.8.0
   
 * Improve link highlighting
 * Navigation improvements
-* Documents with an unknonw file format now display a mime type place
+* Documents with an unknown file format now display a mime type place
   holder icon instead of a error icon
 * Mayan now does pre caching of document visual representation improving
   overall thumbnail, preview and display speed
@@ -212,7 +212,7 @@ Version 0.7.3
 * Multi item links are now displayed on top of generic lists as well as
   on the bottom
 * Spanish translation updates
-* Updated requirements to use the latests development version of
+* Updated requirements to use the latest development version of
   django-mptt
 * Improved user folder document removal views
 * Added ability to specify default metadata or metadataset per
@@ -281,10 +281,10 @@ Version 0.5
 * Disabled ``CELERY_DISABLE_RATE_LIMITS`` by default
 * Implement local task locking using Django locmem cache backend
 * Added doc extension to office document format list
-* Removed redundant tranformation calculation
+* Removed redundant transformation calculation
 * Make sure OCR in processing documents cannot be deleted
 * PEP8, pylint cleanups and removal of relative imports
-* Removed the obsolote ``DOCUMENTS_GROUP_MAX_RESULTS`` setting option
+* Removed the obsolete ``DOCUMENTS_GROUP_MAX_RESULTS`` setting option
 * Improved visual appearance of messages by displaying them outside the
   main form
 * Added link to close all notifications with one click
@@ -292,7 +292,7 @@ Version 0.5
   setting: ``OCR_QUEUE_PROCESSING_INTERVAL``
 * Added detection and reset of orphaned ocr documents being left as
   'processing' when celery dies
-* Improved unkwnown format detection in the graphicsmagick backend
+* Improved unknown format detection in the graphicsmagick backend
 * Improved document convertion API
 * Added initial support for converting office documents (only ods and
   docx tested)
@@ -424,7 +424,7 @@ Version 0.5
   implemented by Django
 * Moved navigation code to its own app
 * Reimplemented OCR delay code, only delay new document
-  Added a new field: delay, update your database schema acordinging
+  Added a new field: delay, update your database schema accordingly
 * Made the concurrent ocr code more granular, per node, every node can
   handle different amounts of concurrent ocr tasks
   Added a new field: node_name, update your database schema acordinging

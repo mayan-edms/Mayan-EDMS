@@ -2,7 +2,7 @@
 Settings
 ========
 
-Mayan EDMS has many configuration options that make it very adaptable to
+**Mayan EDMS** has many configuration options that make it very adaptable to
 different server configurations.
 
 Documents
@@ -134,7 +134,7 @@ Converter
     Default: ``/usr/bin/unoconv``
     
     
-Groupping
+Grouping
 ---------
 
 .. data:: GROUPING_SHOW_EMPTY_GROUPS    
@@ -377,7 +377,7 @@ Main
     
     
 User management
------
+---------------
 
 .. data:: ROLES_DEFAULT_ROLES    
     

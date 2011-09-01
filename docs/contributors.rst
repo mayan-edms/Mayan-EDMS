@@ -1,3 +1,5 @@
+.. _contributors:
+
 ============
 Contributors
 ============
@@ -5,7 +7,7 @@ Contributors
 How to contribute?
 ------------------
 
-You can help further the development of Mayan EDMS by reporting bugs, submitting documentation, patches, with monetary or hardware donations. 
+You can help further the development of **Mayan EDMS** by reporting bugs, submitting documentation, patches, with monetary or hardware donations. 
 
 Bug reports
 -----------

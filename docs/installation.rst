@@ -1,7 +1,7 @@
 ============
 Installation
 ============
-Mayan EDMS should be installed like any other Django project and preferably using ``virtualenv``.
+**Mayan EDMS** should be installed like any other Django project and preferably using ``virtualenv``.
 
 If using a Debian_ or Ubuntu_ based Linux distribution getting the executable requirements is as easy as::
 
@@ -11,7 +11,7 @@ To initialize a ``virtualenv`` to deploy the project do::
 
 	$ virtualenv --no-site-packages mayan
     
-Download_ and uncompress the latest version of Mayan::
+Download_ and decompress the latest version of **Mayan EDMS**::
 
 	$ cd mayan
 	$ tar -xvzf mayan.tar.gz
@@ -21,7 +21,7 @@ Or clone the latest development version straight from github::
 	$ cd mayan
 	$ git clone git://github.com/rosarior/mayan.git
 
-To install the python depencies ``easy_install`` can be used, however for easier retrieval a production dependencies file is included, to use it execute::
+To install the python dependencies ``easy_install`` can be used, however for easier retrieval a production dependencies file is included, to use it execute::
 
 	$ cd mayan
 	$ source ../bin/activate

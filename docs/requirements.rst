@@ -1,7 +1,7 @@
 ============
 Requirements
 ============
-Mayan EDMS supports various levels of functionality because of this
+**Mayan EDMS** supports various levels of functionality, because of this
 requirements can vary for each individual deployment.
 
 Basic requirements
@@ -40,15 +40,15 @@ To store documents in a GridFS database
 * ``GridFS`` - a storage specification for large objects in ``MongoDB``
 * ``MongoDB`` - a scalable, open source, document-oriented database
 
-Enchanced MIME detection
+Enhanced MIME detection
 ------------------------
 
-* ``libmagic`` - MIME detection library, if not installed Mayan will fall back to using python's simpler mimetype built in library
+* ``libmagic`` - MIME detection library, if not installed **Mayan EDMS** will fall back to using python's simpler mimetype built in library
 * ``python-magic`` - A python wrapper for libmagic
 
 Image conversion backends
 -------------------------
-Mayan has the ability to switch between different image conversion backends, at the moment these three are supported:
+**Mayan EDMS** has the ability to switch between different image conversion backends, at the moment these three are supported:
 
 * ``ImageMagick`` - Convert, Edit, Or Compose Bitmap Images.
 * ``GraphicMagick`` - Robust collection of tools and libraries to read, write, and manipulate an image.

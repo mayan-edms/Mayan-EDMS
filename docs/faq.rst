@@ -8,7 +8,7 @@ Frequently asked questions and solutions
 Incorrect string value: ``'\xE2\x80\x95rs6...'`` for column ``'content'`` at row 1
 ----------------------------------------------------------------------------------
 
-When using ``MySQL`` and doing OCR on languages other than english
+When using ``MySQL`` and doing OCR on languages other than English
     
   * Solution:
   
@@ -41,8 +41,8 @@ File system links not showing when serving content with ``Samba``
     - Ref: 1- http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
 
 
-How to store documents outside Mayan's path
--------------------------------------------
+How to store documents outside of **Mayan EDMS's** path
+-------------------------------------------------------
 
   * Sub class Django's ``FileSystemStorage`` class:
     
@@ -81,9 +81,9 @@ Site search is slow
 
   * Add indexes to the following fields:
   
-    - ``documents_document`` - description, recomended size: 160
-    - ``documents_documentmetadata`` - value, recomended size: 80
-    - ``documents_documentpage`` - content, recomended size: 3000
+    - ``documents_document`` - description, recommended size: 160
+    - ``documents_documentmetadata`` - value, recommended size: 80
+    - ``documents_documentpage`` - content, recommended size: 3000
 
 
 How to enable x-sendile support for ``Apache``
