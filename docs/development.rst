@@ -23,7 +23,7 @@ Source Control
 
 The project is publicly accessable, hosted and can be cloned from **GitHub** using::
 
-    ``git clone git://github.com/rosarior/mayan.git``
+    $ git clone git://github.com/rosarior/mayan.git
 
 
 Git branch structure
@@ -32,9 +32,12 @@ Git branch structure
 **Mayan EDMS** follows the model layout by Vincent Driessen in his `Successful Git Branching Model`_ blog post. Git-flow_ is a great tool for managing the repository in this way.
 
 ``develop``
-    The "next release" branch. Likely unstable.
+    The "next release" branch, likely unstable.
 ``master``
     Current production release (|version|).
+``feature/``
+    Unfinished/ummerged feature.
+
 
 Each release is tagged and available for download on the Downloads_ section of the **Mayan EDMS** repository on GitHub_
 
@@ -54,7 +57,7 @@ Documentation
 
 The documentation is written in `reStructured Text`_ format.
 
-The documentation lives in ``docs`` directory.  In order to build it, you will first need to install Sphinx_. ::
+The documentation lives in the ``docs`` directory.  In order to build it, you will first need to install Sphinx_. ::
 
 	$ pip install sphinx
 

@@ -1,6 +1,6 @@
-==========
-Mayan EDMS
-==========
+========
+Overview
+========
 
 Open source, Django_ based document manager with custom metadata indexing, file serving integration and OCR_ capabilities.
 
@@ -12,8 +12,6 @@ Open source, Django_ based document manager with custom metadata indexing, file 
 :Video:   http://bit.ly/pADNXv
 :Issue tracker:  http://github.com/rosarior/mayan/issues
 
-Overview
-========
 
 **Mayan EDMS** started as a simple project whose only requirement was the storage of PDF files, from there it has grown into a complete electronic document management solution.
 **Mayan EDMS** can optimize an organization's bulk upload, storage and retrieval or documents.
@@ -32,6 +30,7 @@ On hosting providers that support Django_ such as DjangoZoom_, **Mayan EDMS** ca
 .. _DjangoZoom: http://djangozoom.com/
 
 
+========
 Contents
 ========
 
