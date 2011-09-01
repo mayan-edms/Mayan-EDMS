@@ -23,3 +23,5 @@ Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](mailto://ro
 Donations
 ---------
 Please [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W6LMMZHTNUJ6L) if you are willing to support the further development of this project.
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=rosarior&url=http://github.com/rosarior/mayan&title=Mayan EDMS&language=en_GB&tags=github&category=software) 
