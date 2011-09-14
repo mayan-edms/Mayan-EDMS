@@ -14,7 +14,7 @@
     CustomLog /var/log/apache2/mayan_access.log combined
 
     Alias /mayan-static "/usr/share/mayan/mayan/static/"
-    <Location "/site_media">
+    <Location "/static">
         SetHandler None
     </Location>
 </VirtualHost>
