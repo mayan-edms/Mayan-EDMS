@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-23 01:06-0400\n"
+"POT-Creation-Date: 2011-09-29 18:47-0400\n"
 "PO-Revision-Date: 2011-06-20 13:42\n"
 "Last-Translator:   <rosario_r@jp.pr.gov>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,59 +19,59 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.6.0\n"
 
-#: __init__.py:11
+#: __init__.py:12
 msgid "View roles"
 msgstr "Ver las funciones"
 
-#: __init__.py:12
+#: __init__.py:13
 msgid "Edit roles"
 msgstr "Modificar las funciones"
 
-#: __init__.py:13
+#: __init__.py:14
 msgid "Create roles"
 msgstr "Crear funciones"
 
-#: __init__.py:14
+#: __init__.py:15
 msgid "Delete roles"
 msgstr "Eliminar funciones"
 
-#: __init__.py:15
+#: __init__.py:16
 msgid "Grant permissions"
 msgstr "Conceder permisos"
 
-#: __init__.py:16
+#: __init__.py:17
 msgid "Revoke permissions"
 msgstr "Revocar permisos"
 
-#: __init__.py:19 models.py:75 views.py:33
+#: __init__.py:20 models.py:75 views.py:33
 msgid "roles"
 msgstr "funciones"
 
-#: __init__.py:20
+#: __init__.py:21
 msgid "create new role"
 msgstr "crear nueva función"
 
-#: __init__.py:21
+#: __init__.py:22
 msgid "edit"
 msgstr "editar"
 
-#: __init__.py:22
+#: __init__.py:23
 msgid "members"
 msgstr "miembros"
 
-#: __init__.py:23
+#: __init__.py:24
 msgid "role permissions"
 msgstr "permisos de la funcion"
 
-#: __init__.py:24
+#: __init__.py:25
 msgid "delete"
 msgstr "eliminar"
 
-#: api.py:15
+#: api.py:22
 msgid "Permissions"
 msgstr "Permisos"
 
-#: api.py:44
+#: api.py:55
 msgid "Insufficient permissions."
 msgstr "Permisos insuficientes."
 
