@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:47-0400\n"
-"PO-Revision-Date: 2011-05-31 15:28\n"
-"Last-Translator:   <rosario_r@jp.pr.gov>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Translated-Using: django-rosetta 0.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:28
 msgid "Submit document for OCR"
@@ -38,9 +36,8 @@ msgstr ""
 "documentos"
 
 #: __init__.py:32
-#, fuzzy
 msgid "Can edit an OCR queue properties"
-msgstr "propiedades de la cola de documentos"
+msgstr ""
 
 #: __init__.py:34 __init__.py:56 __init__.py:74
 msgid "OCR"
@@ -209,14 +206,12 @@ msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr ""
 
 #: models.py:107
-#, fuzzy
 msgid "document queue transformation"
-msgstr "propiedades de la cola de documentos"
+msgstr ""
 
 #: models.py:108
-#, fuzzy
 msgid "document queue transformations"
-msgstr "propiedades de la cola de documentos"
+msgstr ""
 
 #: statistics.py:8
 #, python-format
@@ -295,7 +290,8 @@ msgstr "Documento: %(document)s ya está en cola."
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
 msgstr ""
-"El documento: %s ya está en proceso y no se puede volver a agregar a la cola."
+"El documento: %s ya está en proceso y no se puede volver a agregar a la "
+"cola."
 
 #: views.py:173
 #, python-format
@@ -390,9 +386,8 @@ msgid "transformations for: %s"
 msgstr ""
 
 #: views.py:365
-#, fuzzy
 msgid "Queue transformation edited successfully"
-msgstr "Documento de la cola: %(document)s eliminado exitosamente."
+msgstr ""
 
 #: views.py:368
 #, python-format
@@ -405,25 +400,23 @@ msgid "Edit transformation: %s"
 msgstr ""
 
 #: views.py:396
-#, fuzzy
 msgid "Queue transformation deleted successfully."
-msgstr "Documento de la cola: %(document)s eliminado exitosamente."
+msgstr ""
 
 #: views.py:398
-#, fuzzy, python-format
+#, python-format
 msgid "Error deleting queue transformation; %(error)s"
-msgstr "Error al eliminar el documento: %(document)s; %(error)s "
+msgstr ""
 
 #: views.py:411
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr "¿Está seguro que desea eliminar de la cola el documento: %s?"
+msgstr ""
 
 #: views.py:434
-#, fuzzy
 msgid "Queue transformation created successfully"
-msgstr "Documento de la cola: %(document)s eliminado exitosamente."
+msgstr ""
 
 #: views.py:437
 #, python-format
@@ -455,8 +448,9 @@ msgstr "Agregar automáticamente la cola de OCR los documentos creados."
 
 #: conf/settings.py:17
 msgid ""
-"URI in the form: \"memcached://127.0.0.1:11211/\" to specify a cache backend "
-"to use for locking. Multiple hosts can be specified separated by a semicolon."
+"URI in the form: \"memcached://127.0.0.1:11211/\" to specify a cache backend"
+" to use for locking. Multiple hosts can be specified separated by a "
+"semicolon."
 msgstr ""
 "URI de la forma: \"memcached:/ /127.0.0.1:11211/\" para especificar un "
 "servidor de caché para usar de bloqueo.  Multiple servidores se pueden "
@@ -470,17 +464,4 @@ msgstr ""
 msgid "Text extracted from PDF"
 msgstr "Texto extraído de PDF"
 
-#~ msgid "Orphaned"
-#~ msgstr "Huérfano"
 
-#~ msgid "ocr"
-#~ msgstr "ocr"
-
-#~ msgid "Document: %(document)s can't be re-queued."
-#~ msgstr "Documento: %(document)s no puede ser agregado a la cola."
-
-#~ msgid "queued document"
-#~ msgstr "documento en cola"
-
-#~ msgid "This document is already queued and pending processing."
-#~ msgstr "Este documento ya está en cola y en espera de su procesamiento."
