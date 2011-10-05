@@ -49,8 +49,9 @@ LANGUAGE_CODE = 'en'
 ugettext = lambda s: s
 
 LANGUAGES = (
-    ('es', ugettext('Spanish')),
     ('en', ugettext('English')),
+    ('es', ugettext('Spanish')),
+    ('pt', ugettext('Portuguese')),
 )
 
 SITE_ID = 1

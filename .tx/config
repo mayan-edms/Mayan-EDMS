@@ -17,6 +17,7 @@ trans.es = apps/permissions/locale/es/LC_MESSAGES/django.po
 source_file = apps/sources/locale/en/LC_MESSAGES/django.po
 source_lang = en
 trans.es = apps/sources/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/sources/locale/pt/LC_MESSAGES/django.po
 
 [mayan-edms.apps-document_indexing]
 source_file = apps/document_indexing/locale/en/LC_MESSAGES/django.po
@@ -80,6 +81,7 @@ trans.es = apps/tags/locale/es/LC_MESSAGES/django.po
 source_file = apps/documents/locale/en/LC_MESSAGES/django.po
 source_lang = en
 trans.es = apps/documents/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/documents/locale/pt/LC_MESSAGES/django.po
 
 [mayan-edms.apps-project_tools]
 source_file = apps/project_tools/locale/en/LC_MESSAGES/django.po
@@ -95,6 +97,7 @@ trans.es = apps/grouping/locale/es/LC_MESSAGES/django.po
 source_file = apps/document_comments/locale/en/LC_MESSAGES/django.po
 source_lang = en
 trans.es = apps/document_comments/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/document_comments/locale/pt/LC_MESSAGES/django.po
 
 [mayan-edms.apps-metadata]
 source_file = apps/metadata/locale/en/LC_MESSAGES/django.po
