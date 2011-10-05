@@ -20,3 +20,7 @@ Bug reports
 Bug fixes
 ---------
 * Aziz M. Bookwala (https://github.com/azizmb)
+
+Translations
+------------
+* Emerson Soares (http://emersonsoares.com)

@@ -72,3 +72,10 @@ You can also generate the documentation in format other than HTML.
 
 .. _`reStructured Text`: http://docutils.sourceforge.net/rst.html
 .. _Sphinx: http://sphinx.pocoo.org
+
+
+---------------
+Translations
+---------------
+
+Translations are now being handled online via the **Transifex** website: https://www.transifex.net/projects/p/mayan-edms/

@@ -1,3 +1,7 @@
+2011-10-05
+----------
+* Initial translation to Portuguese
+
 2011-08-19
 ----------
 * Added improved documentation
