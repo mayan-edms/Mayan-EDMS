@@ -7,6 +7,8 @@
 * Used new multi parameter passing method to improve the usability of
   the grant/revoke permission view, thanks to Cezar Jenkins
   (https://twitter.com/#!/emperorcezar) for the suggestion
+* Added step to the documentation explaining how to install Mayan EDMS
+  on Webfaction
 
 2011-10-05
 ----------
