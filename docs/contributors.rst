@@ -24,3 +24,7 @@ Bug fixes
 Translations
 ------------
 * Emerson Soares (http://emersonsoares.com)
+
+Suggestions
+-----------
+* Cezar Jenkins (https://twitter.com/#!/emperorcezar)

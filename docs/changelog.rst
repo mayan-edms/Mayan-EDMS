@@ -1,6 +1,24 @@
+2011-10-16
+----------
+* Added granting and revoking permission methods to the permission model
+* Correctly calculate the mimetype icons paths when on development mode
+* Added a new more comprehensive method of passing multiple variables
+  per item in multi item selection views
+* Used new multi parameter passing method to improve the usability of
+  the grant/revoke permission view, thanks to Cezar Jenkins
+  (https://twitter.com/#!/emperorcezar) for the suggestion
+
 2011-10-05
 ----------
 * Initial translation to Portuguese
+
+2011-09-29
+----------
+* Added required changes to add Mayan EDMS to Transifex.com
+
+2011-09-13
+----------
+* Fixed the apache contrib file static file directory name
 
 2011-08-19
 ----------
