@@ -21,7 +21,7 @@ Source Control
 
 **Mayan EDMS** source is controlled with Git_
 
-The project is publicly accessable, hosted and can be cloned from **GitHub** using::
+The project is publicly accessible, hosted and can be cloned from **GitHub** using::
 
     $ git clone git://github.com/rosarior/mayan.git
 

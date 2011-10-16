@@ -138,6 +138,20 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
         
         WSGIScriptAlias / /home/<username>/webapps/mayan_app/mayan/mayan/wsgi/dispatch.wsgi
 
+DjangoZoom
+----------
+For instructions on how to deploy **Mayan EDMS** on DjangoZoom, watch the screencast:
+
+"Deploying Mayan EDMS on DjangoZoom.net" available on Youtube_
+
+
+.. _`vendor lock-in`: https://secure.wikimedia.org/wikipedia/en/wiki/Vendor_lock-in
+.. _Python: http://www.python.org/
+.. _Django: http://www.djangoproject.com/
+.. _OCR: https://secure.wikimedia.org/wikipedia/en/wiki/Optical_character_recognition
+.. _`Open source`: https://secure.wikimedia.org/wikipedia/en/wiki/Open_source
+.. _DjangoZoom: http://djangozoom.com/
+.. _Youtube: http://bit.ly/mayan-djangozoom
 
 
 .. _Apache: https://www.apache.org/

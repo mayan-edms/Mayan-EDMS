@@ -9,6 +9,8 @@
   (https://twitter.com/#!/emperorcezar) for the suggestion
 * Added step to the documentation explaining how to install Mayan EDMS
   on Webfaction
+* Added an entry in the documentation to the screencast explaining how
+  to install Mayan EDMS on DjangoZoom
 
 2011-10-05
 ----------
