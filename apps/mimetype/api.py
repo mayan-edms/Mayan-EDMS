@@ -71,12 +71,18 @@ mimetype_icons = {
 
 def get_icon_file_path(mimetype):
     file_name = mimetype_icons.get(mimetype, UNKNWON_TYPE_FILE_NAME)
-    return os.path.join(settings.STATIC_ROOT, MIMETYPE_ICONS_DIRECTORY_NAME, file_name)
-    
+    if settings.DEVELOPMENT:
+        return os.path.join(settings.PROJECT_ROOT, 'apps', 'mimetype', 'static', MIMETYPE_ICONS_DIRECTORY_NAME, file_name)
+    else:
+        return os.path.join(settings.STATIC_ROOT, MIMETYPE_ICONS_DIRECTORY_NAME, file_name)
+
 
 def get_error_icon_file_path():
-    return os.path.join(settings.STATIC_ROOT, MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
-    
+    if settings.DEVELOPMENT:
+        return os.path.join(settings.PROJECT_ROOT, 'apps', 'mimetype', 'static', MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
+    else:
+        return os.path.join(settings.STATIC_ROOT, MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
+   
 
 def get_mimetype(filepath):
     """

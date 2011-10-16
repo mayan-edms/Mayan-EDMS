@@ -8,6 +8,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 from django.contrib.auth.views import login
+from django.utils.simplejson import dumps, loads
 
 from common.forms import ChoiceForm, UserForm, UserForm_view, \
     ChangelogForm, LicenseForm
@@ -34,19 +35,28 @@ def multi_object_action_view(request):
 
     action = request.GET.get('action', None)
     id_list = u','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
+    items_property_list = [loads(key[11:]) for key in request.GET.keys() if key.startswith('properties_')]
 
     if not action:
         messages.error(request, _(u'No action selected.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    if not id_list:
+    if not id_list and not items_property_list:
         messages.error(request, _(u'Must select at least one item.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    return HttpResponseRedirect('%s?%s' % (
-        action,
-        urlencode({'id_list': id_list, 'next': next}))
-    )
+    # Separate redirects to keep backwards compatibility with older
+    # functions that don't expect a properties_list parameter
+    if items_property_list:
+        return HttpResponseRedirect('%s?%s' % (
+            action,
+            urlencode({'items_property_list': dumps(items_property_list), 'next': next}))
+        )
+    else:
+        return HttpResponseRedirect('%s?%s' % (
+            action,
+            urlencode({'id_list': id_list, 'next': next}))
+        )
 
 
 def get_obj_from_content_type_string(string):
