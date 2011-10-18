@@ -46,11 +46,10 @@
 {% endblock %}
 
 {% block web_theme_javascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.scrollview.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}packages/JqueryAsynchImageLoader-0.8.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js"></script>
-
-    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.scrollview.js"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function() {

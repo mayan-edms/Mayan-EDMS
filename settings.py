@@ -162,6 +162,7 @@ INSTALLED_APPS = (
     'job_processor',
     'history',
     'main',
+    'compressor',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -172,6 +173,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 #    'django.contrib.messages.context_processors.messages',
 )
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_PARSER = 'compressor.parser.HtmlParser'
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
 
 #===== User configuration options ===============
 #--------- Pagination ------------------
