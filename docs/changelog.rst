@@ -1,3 +1,7 @@
+2011-10-18
+* Added django_compress and cssmin to the requirements files and enabled
+  django_compress for CSS and JS files
+
 2011-10-16
 ----------
 * Added granting and revoking permission methods to the permission model
