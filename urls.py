@@ -28,6 +28,8 @@ urlpatterns = patterns('',
     (r'^sources/', include('sources.urls')),
     (r'^project_setup/', include('project_setup.urls')),
     (r'^project_tools/', include('project_tools.urls')),
+    (r'^acls/', include('acls.urls')),
+    (r'^document_acls/', include('document_acls.urls')),
 )
 
 
