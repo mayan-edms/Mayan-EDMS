@@ -11,7 +11,6 @@ from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User, Group
-from django.contrib.contenttypes.models import ContentType
 from django.utils.simplejson import loads
 
 from common.views import assign_remove
