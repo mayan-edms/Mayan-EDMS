@@ -1,6 +1,6 @@
 Django==1.3
 Werkzeug==0.6.2
-django-extensions==0.6
+django-extensions==0.7.1
 django-pagination==1.0.7
 django-rosetta==0.6.2
 wsgiref==0.1.2
@@ -14,7 +14,7 @@ slate==0.3
 ghostscript==0.4.1
 pdfminer==20110227
 APScheduler==2.0.2
-django-grappelli==2.3.3
+django-grappelli==2.3.5
 Pillow==1.7.4
 cssmin==0.1.4
 django-compressor==1.1
