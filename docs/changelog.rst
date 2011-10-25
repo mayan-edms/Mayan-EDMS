@@ -1,4 +1,9 @@
+2011-10-24
+----------
+* Improved appearance of the document tag widget
+
 2011-10-18
+----------
 * Added django_compress and cssmin to the requirements files and enabled
   django_compress for CSS and JS files
 
