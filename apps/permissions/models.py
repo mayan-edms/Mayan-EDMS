@@ -21,7 +21,7 @@ class Permission(models.Model):
         verbose_name_plural = _(u'permissions')
 
     def __unicode__(self):
-        return self.label
+        return '%s: %s' % (self.namespace, self.label)
 
     def get_holders(self):
         return [holder.holder_object for holder in self.permissionholder_set.all()]
