@@ -14,7 +14,7 @@ def get_tags_inline_widget(document):
             'tag_string': _(u'Tags'), 'tag_count': tag_count})
 
         for tag in document.tags.all():
-            tags_template.append(u'<ul class="tags"><li style="background: %s; margin-bottom: 2px;">%s</li></ul>' % (tag.tagproperties_set.get().get_color_code(), tag.name))
+            tags_template.append(u'<ul class="tags"><li style="background: %s;">%s</li></ul>' % (tag.tagproperties_set.get().get_color_code(), tag.name))
         
         tags_template.append(u'<div style="clear:both;"></div>')
         tags_template.append(u'</div>')
