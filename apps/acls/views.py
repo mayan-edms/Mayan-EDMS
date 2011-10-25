@@ -9,19 +9,33 @@ from django.views.generic.create_update import create_object, delete_object, upd
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User, Group
 
-from permissions.api import check_permissions, namespace_titles
+from permissions.api import check_permissions, namespace_titles, get_permission_label
+from common.utils import generate_choices_w_labels, encapsulate
 
 from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from acls.models import AccessEntry
 
 
+def _permission_titles(permission_list):
+	return u', '.join([get_permission_label(permission) for permission in permission_list])
+	
+	
 def acl_list_for(request, obj, extra_context=None):
 	check_permissions(request.user, [ACLS_VIEW_ACL])
 
 	context = {
-		'object_list': [],
+		'object_list': AccessEntry.objects.get_holders_for(obj),
 		'title': _(u'access control lists for: %s' % obj),
 		#'multi_select_as_buttons': True,
 		#'hide_links': True,
+		'extra_columns': [
+			#{'name': _(u'holder'), 'attribute': 'label'},
+			{'name': _(u'holder'), 'attribute': 'widget'},
+			{'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_acls_for_holder(obj, x['object'])))},
+			#{'name': _(u'arguments'), 'attribute': 'arguments'}
+			],
+		#'hide_link': True,
+		'hide_object': True,
 	}
 
 	if extra_context:
