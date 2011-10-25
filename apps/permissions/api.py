@@ -22,6 +22,8 @@ namespace_titles = {
     'permissions': _(u'Permissions')
 }
 
+permission_titles = {}
+
 
 def set_namespace_title(namespace, title):
     namespace_titles.setdefault(namespace, title)
@@ -34,6 +36,7 @@ def register_permission(permission):
             namespace=permission['namespace'], name=permission['name'])
         permission_obj.label = unicode(permission['label'])
         permission_obj.save()
+        permission_titles['%s.%s' % (permission['namespace'], permission['name'])] = permission['label']
     except DatabaseError:
         transaction.rollback()
         # Special case for ./manage.py syncdb
@@ -53,6 +56,11 @@ def check_permissions(requester, permission_list):
             return True
 
     raise PermissionDenied(ugettext(u'Insufficient permissions.'))
+
+
+def get_permission_label(permission):
+	return unicode(permission_titles.get('%s.%s' % (permission.namespace, permission.name), permission.label))
+	
 
 register_permission(PERMISSION_ROLE_VIEW)
 register_permission(PERMISSION_ROLE_EDIT)
