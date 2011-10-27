@@ -2,6 +2,8 @@ from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('acls.views',
     url(r'^list_for/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/$', 'acl_list', (), 'acl_list'),
+    #url(r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/holder/(?P<holder_app_label>[-\w]+)/(?P<holder_model_name>[-\w]+)/(?P<holder_id>\d+)/$', 'acl_detail', (), 'acl_detail'),
+    url(r'^details/(?P<access_object_gid>[.\w]+)/holder/(?P<holder_object_gid>[.\w]+)/$', 'acl_detail', (), 'acl_detail'),
 	
 #    url(r'^role/list/$', 'role_list', (), 'role_list'),
 #    url(r'^role/create/$', 'role_create', (), 'role_create'),
