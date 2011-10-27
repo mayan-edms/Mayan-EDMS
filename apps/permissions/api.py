@@ -61,7 +61,11 @@ def check_permissions(requester, permission_list):
 def get_permission_label(permission):
 	return unicode(permission_titles.get('%s.%s' % (permission.namespace, permission.name), permission.label))
 	
-
+    
+def get_permission_namespace_label(permission):
+    return namespace_titles[permission.namespace] if permission.namespace in namespace_titles else permission.namespace
+    
+    
 register_permission(PERMISSION_ROLE_VIEW)
 register_permission(PERMISSION_ROLE_EDIT)
 register_permission(PERMISSION_ROLE_CREATE)
