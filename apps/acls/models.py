@@ -1,34 +1,37 @@
+import sys
+import types
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404
 
 from permissions.models import Permission
 
-#from acls.widgets import object_w_content_type_icon
+_cache = {}
 
-_encapsulation_cache = {}
 
 class EncapsulatedObject(object):
     source_object_name = u'source_object'
-    '''
+
+    #@classmethod
+    #def __new__(cls, *args, **kwargs):
+    #    cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
+    #    return super(EncapsulatedObject, cls).__new__(*args, **kwargs)
+
     @classmethod
-    def get_by_ct(cls, content_type, object_id):
-        """
-        Return a single ACLHolder instance corresponding to the content
-        type object given as argument
-        """
-        try:
-            return AccessHolder(
-                holder_object=ContentType.objects.get(content_type=access_entry.holder_type, object_id=access_entry.holder_id)
-            )
-        except ContentType.DoesNotExits:
-            raise ObjectDoesNotExist
-    '''
+    def add_to_class(cls, name, value):
+        if hasattr(value, 'contribute_to_class'):
+            value.contribute_to_class(cls, name)
+        else:
+           setattr(cls, name, value)
+
     @classmethod
     def set_source_object_name(cls, new_name):
         cls.source_object_name = new_name
@@ -38,31 +41,40 @@ class EncapsulatedObject(object):
         if source_object:
             content_type = ContentType.objects.get_for_model(source_object)
         elif app_label and model and pk:
-            content_type = ContentType.objects.get(app_label=app_label, model=model)
-            source_object = content_type.get_object_for_this_type(pk=pk)
-            
-        object_id = '%s.%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model, source_object.pk)
-        if object_id not in _encapsulation_cache:
+            try:
+                content_type = ContentType.objects.get(app_label=app_label, model=model)
+                source_object_model_class = content_type.model_class()
+                source_object = content_type.get_object_for_this_type(pk=pk)
+            except ContentType.DoesNotExist:
+                #cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
+                #raise cls.DoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
+                raise ObjectDoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
+            except source_object_model_class.DoesNotExist:
+                #cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
+                #raise cls.DoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
+                raise ObjectDoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
+           
+        object_key = '%s.%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model, source_object.pk)
+
+        try:
+            return _cache[object_key]
+        except KeyError:
             encapsulated_object = cls(source_object)
-            _encapsulation_cache[object_id] = encapsulated_object
-        else:
-            return _encapsulation_cache[object_id]
-        return encapsulated_object
+            _cache[object_key] = encapsulated_object
+            return encapsulated_object
 
     @classmethod
     def get(cls, gid):
         app_label, model, pk = gid.split('.')
-        object_id = '%s.%s.%s.%s' % (cls.__name__, app_label, model, pk)
+        object_key = '%s.%s.%s.%s' % (cls.__name__, app_label, model, pk)
         try:
-            return _encapsulation_cache[object_id]
+            return _cache[object_key]
         except KeyError:
             return cls.encapsulate(app_label=app_label, model=model, pk=pk)
                 
     def __init__(self, source_object):
         content_type = ContentType.objects.get_for_model(source_object)
         self.gid = '%s.%s.%s' % (content_type.app_label, content_type.name, source_object.pk)
-        #self.source_object_name = self.__class__.source_object_name
-        #self.source_object = source_object
         setattr(self, self.__class__.source_object_name, source_object)
 
     def __unicode__(self):
@@ -112,21 +124,28 @@ class AccessEntryManager(models.Manager):
         except self.model.DoesNotExist:
             return False		
 
-    def check_accesses(self, permission_list, requester, obj):
-        for permission_item in permission_list:
-            permission = get_object_or_404(Permission,
-                namespace=permission_item['namespace'], name=permission_item['name'])
-            try:
-                access_entry = self.model.objects.get(
-                    permission=permission,
-                    holder_type=ContentType.objects.get_for_model(requester),
-                    holder_id=requester.pk,
-                    content_type=ContentType.objects.get_for_model(obj),
-                    object_id=obj.pk
-                )
+    def has_accesses(self, permission, requester, obj):
+        if isinstance(requester, User):
+            if requester.is_superuser or requester.is_staff:
                 return True
-            except self.model.DoesNotExist:
-                raise PermissionDenied(ugettext(u'Insufficient permissions.'))
+                        
+        try:
+            access_entry = self.model.objects.get(
+                permission=permission,
+                holder_type=ContentType.objects.get_for_model(requester),
+                holder_id=requester.pk,
+                content_type=ContentType.objects.get_for_model(obj),
+                object_id=obj.pk
+            )
+            return True
+        except self.model.DoesNotExist:
+            return False
+                
+    def check_access(self, permission, requester, obj):
+        if has_accesses(permission, requester, obj):
+            return True
+        else:
+            raise PermissionDenied(ugettext(u'Insufficient permissions.'))
                 
     def get_acl_url(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
@@ -136,14 +155,6 @@ class AccessEntryManager(models.Manager):
         content_type = ContentType.objects.get_for_model(obj)
         holder_list = []
         for access_entry in self.model.objects.filter(content_type=content_type, object_id=obj.pk):
-            #entry = {
-            #	'object': access_entry.holder_object,
-            #	'label': '%s: %s' % (access_entry.holder_type, access_entry.holder_object),
-            #	#'widget': object_w_content_type_icon(access_entry.holder_object),
-            #    'compound_id': '9',
-            #}
-            #entry = ACLHolder.objects.get(content_type=access_entry.holder_type, object_id=access_entry.holder_id)
-            #entry = access_entry.holder_object
             entry = AccessHolder.encapsulate(access_entry.holder_object)
             
             if entry not in holder_list:
@@ -152,6 +163,10 @@ class AccessEntryManager(models.Manager):
         return holder_list
 
     def get_permissions_for_holder(self, obj, holder):
+        if isinstance(holder, User):
+            if holder.is_superuser or holder.is_staff:
+                return Permission.objects.active_only()
+                        
         holder_type = ContentType.objects.get_for_model(holder)
         content_type = ContentType.objects.get_for_model(obj)
         return [access.permission for access in self.model.objects.filter(content_type=content_type, object_id=obj.pk, holder_type=holder_type, holder_id=holder.pk)]
@@ -189,3 +204,13 @@ class AccessEntry(models.Model):
 
     def __unicode__(self):
         return u'%s: %s' % (self.content_type, self.content_object)
+
+
+if sys.version_info < (2, 5):
+    # Prior to Python 2.5, Exception was an old-style class
+    def subclass_exception(name, parents, unused):
+        return types.ClassType(name, parents, {})
+else:
+    def subclass_exception(name, parents, module):
+        return type(name, parents, {'__module__': module})
+
