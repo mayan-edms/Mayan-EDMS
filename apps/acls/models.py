@@ -34,20 +34,29 @@ class EncapsulatedObject(object):
         cls.source_object_name = new_name
     
     @classmethod
-    def encapsulate(cls, source_object):
-        if source_object not in _encapsulation_cache:
+    def encapsulate(cls, source_object=None, app_label=None, model=None, pk=None):
+        if source_object:
+            content_type = ContentType.objects.get_for_model(source_object)
+        elif app_label and model and pk:
+            content_type = ContentType.objects.get(app_label=app_label, model=model)
+            source_object = content_type.get_object_for_this_type(pk=pk)
+            
+        object_id = '%s.%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model, source_object.pk)
+        if object_id not in _encapsulation_cache:
             encapsulated_object = cls(source_object)
-            _encapsulation_cache[source_object] = encapsulated_object
+            _encapsulation_cache[object_id] = encapsulated_object
         else:
-            return _encapsulation_cache[source_object]
+            return _encapsulation_cache[object_id]
         return encapsulated_object
 
     @classmethod
     def get(cls, gid):
         app_label, model, pk = gid.split('.')
-        content_type = ContentType.objects.get(app_label=app_label, model=model)
-        source_object = content_type.get_object_for_this_type(pk=pk)
-        return cls.encapsulate(source_object)
+        object_id = '%s.%s.%s.%s' % (cls.__name__, app_label, model, pk)
+        try:
+            return _encapsulation_cache[object_id]
+        except KeyError:
+            return cls.encapsulate(app_label=app_label, model=model, pk=pk)
                 
     def __init__(self, source_object):
         content_type = ContentType.objects.get_for_model(source_object)
