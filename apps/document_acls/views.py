@@ -13,6 +13,5 @@ def document_acl_list(request, document_id):
 		document,
 		extra_context={
 			'object': document,
-			'object_name': _(u'document'),
 		}
 	)
