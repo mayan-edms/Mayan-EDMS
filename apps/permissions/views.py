@@ -22,7 +22,7 @@ from permissions.forms import RoleForm, RoleForm_view
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_PERMISSION_GRANT, \
     PERMISSION_PERMISSION_REVOKE
-from permissions.api import check_permissions, namespace_titles
+from permissions.api import check_permissions, namespace_titles, get_permission_label, get_permission_namespace_label
 from permissions.widgets import role_permission_link
 
 
@@ -52,10 +52,10 @@ def role_permissions(request, role_id):
             'name': u'generic_list_subtemplate.html',
             'context': {
                 'title': _(u'permissions'),
-                'object_list': Permission.objects.all(),
+                'object_list': Permission.objects.active_only(),
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: namespace_titles[x.namespace] if x.namespace in namespace_titles else x.namespace)},
-                    {'name': _(u'name'), 'attribute': u'label'},
+                    {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: get_permission_namespace_label(x))},
+                    {'name': _(u'name'), 'attribute': encapsulate(lambda x: get_permission_label(x))},
                     {
                         'name':_(u'has permission'),
                         'attribute': encapsulate(lambda x: two_state_template(x.has_permission(role))),

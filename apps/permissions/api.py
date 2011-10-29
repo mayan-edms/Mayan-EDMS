@@ -17,12 +17,7 @@ from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE
 
 from permissions.models import Permission
-
-namespace_titles = {
-    'permissions': _(u'Permissions')
-}
-
-permission_titles = {}
+from permissions.runtime import namespace_titles, permission_titles
 
 
 def set_namespace_title(namespace, title):
