@@ -22,8 +22,8 @@ __version_info__ = {
     'major': 0,
     'minor': 8,
     'micro': 3,
-    'releaselevel': 'final',
-    'serial': 0
+    'releaselevel': 'hotfix',
+    'serial': 2
 }
 
 if not DISABLE_HOME_VIEW:
