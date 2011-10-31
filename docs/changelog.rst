@@ -1,3 +1,7 @@
+2011-10-30
+----------
+* The admin and sentry links are no longer hard-coded (Meurig Freeman)
+
 2011-10-24
 ----------
 * Improved appearance of the document tag widget
