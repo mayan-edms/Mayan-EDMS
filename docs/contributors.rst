@@ -28,3 +28,7 @@ Translations
 Suggestions
 -----------
 * Cezar Jenkins (https://twitter.com/#!/emperorcezar)
+
+Patches
+-------
+* Meurig Freeman (https://github.com/meurig)
