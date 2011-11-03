@@ -1,3 +1,7 @@
+2011-11-03
+* Portuguese translation updates (Emerson Soares and Renata Oliveira)
+* Initial Russian translation (Sergey Glita)
+
 2011-10-30
 ----------
 * The admin and sentry links are no longer hard-coded (Meurig Freeman)
