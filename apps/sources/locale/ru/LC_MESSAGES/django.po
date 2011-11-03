@@ -1,51 +1,49 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-03 16:38-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-29 18:49-0400\n"
+"PO-Revision-Date: 2011-11-03 17:13+0000\n"
+"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:14
 msgid "View existing document sources"
-msgstr ""
+msgstr "Просмотр существующих источников документов"
 
 #: __init__.py:15
 msgid "Edit document sources"
-msgstr ""
+msgstr "Редактировать источник документов"
 
 #: __init__.py:16
 msgid "Delete document sources"
-msgstr ""
+msgstr "Удалить источник документов "
 
 #: __init__.py:17
 msgid "Create new document sources"
-msgstr ""
+msgstr "Создать новый источник документов"
 
 #: __init__.py:19
 msgid "Sources setup"
-msgstr ""
+msgstr "Настройки источников"
 
 #: __init__.py:25
 msgid "preview"
-msgstr ""
+msgstr "предварительный просмотр"
 
 #: __init__.py:26 __init__.py:34 __init__.py:40
 msgid "delete"
-msgstr ""
+msgstr "удалить"
 
 #: __init__.py:28
 msgid "sources"
@@ -65,7 +63,7 @@ msgstr ""
 
 #: __init__.py:33 __init__.py:39
 msgid "edit"
-msgstr ""
+msgstr "редактировать"
 
 #: __init__.py:35
 msgid "add new source"
@@ -81,11 +79,11 @@ msgstr ""
 
 #: __init__.py:42
 msgid "Document sources"
-msgstr ""
+msgstr "Источники документов"
 
 #: __init__.py:69 widgets.py:33
 msgid "thumbnail"
-msgstr ""
+msgstr "миниатюра"
 
 #: forms.py:32 forms.py:55
 msgid "Expand compressed files"
@@ -94,10 +92,11 @@ msgstr ""
 #: forms.py:33 forms.py:56
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr ""
+"Загрузить файлы, содержащиеся в архиве в качестве отдельных документов"
 
 #: forms.py:41
 msgid "Staging file"
-msgstr ""
+msgstr "Промежуточный файл"
 
 #: literals.py:8 literals.py:13
 msgid "Always"
@@ -137,7 +136,7 @@ msgstr ""
 
 #: literals.py:36
 msgid "Folder"
-msgstr ""
+msgstr "Папка"
 
 #: literals.py:37
 msgid "World"
@@ -165,7 +164,7 @@ msgstr ""
 
 #: literals.py:54
 msgid "server staging folders"
-msgstr ""
+msgstr "папки на промежуточном сервере"
 
 #: literals.py:55
 msgid "server watch folders"
@@ -173,11 +172,11 @@ msgstr ""
 
 #: models.py:29
 msgid "title"
-msgstr ""
+msgstr "название"
 
 #: models.py:30
 msgid "enabled"
-msgstr ""
+msgstr "разрешено"
 
 #: models.py:31
 msgid "whitelist"
@@ -197,7 +196,7 @@ msgstr ""
 
 #: models.py:114 models.py:166
 msgid "folder path"
-msgstr ""
+msgstr "путь к папке"
 
 #: models.py:114 models.py:166
 msgid "Server side filesystem path."
@@ -237,7 +236,7 @@ msgstr ""
 
 #: models.py:129
 msgid "staging folder"
-msgstr ""
+msgstr "промежуточная папка"
 
 #: models.py:169
 msgid "interval"
@@ -245,28 +244,30 @@ msgstr ""
 
 #: models.py:169
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
 msgstr ""
+"Интервал в секундах, между проверками папки на появление новых документов."
 
 #: models.py:193
 msgid "watch folder"
-msgstr ""
+msgstr "просматривать папку"
 
 #: models.py:198
 msgid "Enter a valid value."
-msgstr ""
+msgstr "Введите допустимое значение."
 
 #: models.py:226 views.py:487
 msgid "order"
-msgstr ""
+msgstr "порядок"
 
 #: models.py:227 views.py:488 views.py:525 views.py:555
 msgid "transformation"
-msgstr ""
+msgstr "преобразование"
 
 #: models.py:228 views.py:489
 msgid "arguments"
-msgstr ""
+msgstr "аргументы"
 
 #: models.py:228
 #, python-format
@@ -275,26 +276,26 @@ msgstr ""
 
 #: models.py:239
 msgid "document source transformation"
-msgstr ""
+msgstr "преобразования источника документов"
 
 #: models.py:240
 msgid "document source transformations"
-msgstr ""
+msgstr "преобразования источника документов"
 
 #: staging.py:40
 #, python-format
 msgid "Unable get list of staging files: %s"
-msgstr ""
+msgstr "Не удалось получить список промежуточных файлов: %s"
 
 #: staging.py:125
 #, python-format
 msgid "Unable to upload staging file: %s"
-msgstr ""
+msgstr "Невозможно загрузить промежуточный файл: %s"
 
 #: staging.py:135
 #, python-format
 msgid "Unable to delete staging file: %s"
-msgstr ""
+msgstr "Не удается удалить промежуточный файл: %s"
 
 #: utils.py:40
 msgid "Whitelist Blacklist validation error."
@@ -311,36 +312,38 @@ msgstr ""
 #: views.py:87
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
+msgstr "Интерактивные источники документов не были определены разрешены."
 
 #: views.py:88
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
 msgstr ""
+"Нажмите %(setup_link)s, чтобы добавить или включить какой-нибудь документ "
+"источников."
 
 #: views.py:136
 msgid "Document uploaded successfully."
-msgstr ""
+msgstr "Документ загружен успешно."
 
 #: views.py:152
 #, python-format
 msgid "upload a local document from source: %s"
-msgstr ""
+msgstr "загрузить локальный документ из источника: %s"
 
 #: views.py:182
 #, python-format
 msgid "Staging file: %s, uploaded successfully."
-msgstr ""
+msgstr "Промежуточный файл %s загружен."
 
 #: views.py:187
 #, python-format
 msgid "Staging file: %s, deleted successfully."
-msgstr ""
+msgstr "Постановка файл %s успешно удален."
 
 #: views.py:209
 #, python-format
 msgid "upload a document from staging source: %s"
-msgstr ""
+msgstr "загрузить документ из промежуточного источника %s"
 
 #: views.py:215
 msgid "files in staging path"
@@ -415,7 +418,7 @@ msgstr ""
 #: views.py:481
 #, python-format
 msgid "transformations for: %s"
-msgstr ""
+msgstr "преобразования для: %s"
 
 #: views.py:511
 msgid "Source transformation edited successfully"
@@ -459,3 +462,5 @@ msgstr ""
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr ""
+
+
