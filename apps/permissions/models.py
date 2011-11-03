@@ -5,6 +5,7 @@ from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
 
 from permissions.managers import RoleMemberManager, PermissionManager
+from permissions.runtime import namespace_titles, permission_titles
 
 
 class Permission(models.Model):
@@ -21,7 +22,7 @@ class Permission(models.Model):
         verbose_name_plural = _(u'permissions')
 
     def __unicode__(self):
-        return '%s: %s' % (self.namespace, self.label)
+        return u'%s: %s' % (self.get_namespace_label(), self.get_label())
 
     def get_holders(self):
         return [holder.holder_object for holder in self.permissionholder_set.all()]
@@ -60,6 +61,12 @@ class Permission(models.Model):
         except PermissionHolder.DoesNotExist:
             return False
 
+    def get_label(self):
+        return unicode(permission_titles.get('%s.%s' % (self.namespace, self.name), self.label))
+        
+    def get_namespace_label(self):
+        return unicode(namespace_titles[self.namespace]) if self.namespace in namespace_titles else self.namespace
+        
 
 class PermissionHolder(models.Model):
     permission = models.ForeignKey(Permission, verbose_name=_(u'permission'))
