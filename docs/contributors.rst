@@ -9,6 +9,10 @@ How to contribute?
 
 You can help further the development of **Mayan EDMS** by reporting bugs, submitting documentation, patches, with monetary or hardware donations. 
 
+Bug fixes
+---------
+* Aziz M. Bookwala (https://github.com/azizmb)
+
 Bug reports
 -----------
 * Aziz M. Bookwala (https://github.com/azizmb)
@@ -17,18 +21,16 @@ Bug reports
 * Brian Huxley
 * dAnjou (https://github.com/dAnjou)
 
-Bug fixes
----------
-* Aziz M. Bookwala (https://github.com/azizmb)
-
-Translations
-------------
-* Emerson Soares (http://emersonsoares.com)
+Patches
+-------
+* Meurig Freeman (https://github.com/meurig)
 
 Suggestions
 -----------
 * Cezar Jenkins (https://twitter.com/#!/emperorcezar)
 
-Patches
--------
-* Meurig Freeman (https://github.com/meurig)
+Translations
+------------
+* Emerson Soares (http://emersonsoares.com)
+* Renata Oliveira (https://twitter.com/#!/rnataoliveira)
+* Sergey Glita
