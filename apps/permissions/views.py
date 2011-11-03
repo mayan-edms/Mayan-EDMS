@@ -139,7 +139,7 @@ def permission_grant(request):
     grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
     
     # Warning: trial and error black magic ahead
-    title_suffix = _(u' and ').join([_(u'%s to %s') % (', '.join(['"%s"' % unicode(ps) for ps in p]), unicode(r)) for r, p in grouped_items])
+    title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
     
     if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
         permissions_label = _(u'permission')
@@ -198,7 +198,7 @@ def permission_revoke(request):
     grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
     
     # Warning: trial and error black magic ahead
-    title_suffix = _(u' and ').join([_(u'%s from %s') % (', '.join(['"%s"' % unicode(ps) for ps in p]), unicode(r)) for r, p in grouped_items])
+    title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
     
     if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
         permissions_label = _(u'permission')
