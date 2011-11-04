@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:46-0400\n"
-"PO-Revision-Date: 2011-11-03 17:29+0000\n"
+"PO-Revision-Date: 2011-11-03 23:30+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: __init__.py:6
 msgid "Access the history app"
-msgstr ""
+msgstr "Доступ к истории приложения"
 
 #: __init__.py:8
 msgid "History"
-msgstr ""
+msgstr "История"
 
 #: __init__.py:12 models.py:69
 msgid "history"
@@ -31,7 +31,7 @@ msgstr "история"
 
 #: models.py:16
 msgid "namespace"
-msgstr ""
+msgstr "пространство имен"
 
 #: models.py:17
 msgid "name"
@@ -39,64 +39,64 @@ msgstr "имя"
 
 #: models.py:25 models.py:34
 msgid "history type"
-msgstr ""
+msgstr "тип истории"
 
 #: models.py:26
 msgid "history types"
-msgstr ""
+msgstr "типы истории"
 
 #: models.py:30
 msgid "date time"
-msgstr ""
+msgstr "дата и время"
 
 #: models.py:35
 msgid "dictionary"
-msgstr ""
+msgstr "словарь"
 
 #: models.py:70
 msgid "histories"
-msgstr ""
+msgstr "истории"
 
 #: views.py:23
 msgid "history events"
-msgstr ""
+msgstr "события"
 
 #: views.py:26 views.py:60
 msgid "date and time"
-msgstr ""
+msgstr "дата и время"
 
 #: views.py:30
 msgid "object"
-msgstr ""
+msgstr "объект"
 
 #: views.py:34 views.py:64
 msgid "summary"
-msgstr ""
+msgstr "итого"
 
 #: views.py:56
 #, python-format
 msgid "history events for: %s"
-msgstr ""
+msgstr "события для: %s"
 
 #: views.py:81
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: views.py:82
 msgid "Time"
-msgstr ""
+msgstr "Время"
 
 #: views.py:83
 msgid "Object"
-msgstr ""
+msgstr "Объект"
 
 #: views.py:84
 msgid "Event type"
-msgstr ""
+msgstr "Тип события"
 
 #: views.py:85
 msgid "Event details"
-msgstr ""
+msgstr "Подробности события"
 
 #: views.py:89
 #, python-format
