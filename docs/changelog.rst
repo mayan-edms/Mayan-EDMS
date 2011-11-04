@@ -1,6 +1,11 @@
+2011-11-04
+* Complete Portuguese and Russian translations
+
 2011-11-03
 * Portuguese translation updates (Emerson Soares and Renata Oliveira)
 * Initial Russian translation (Sergey Glita)
+* Added animate.css to use CSS to animate flash messages with better
+  fallback on non JS browsers
 
 2011-10-30
 ----------
