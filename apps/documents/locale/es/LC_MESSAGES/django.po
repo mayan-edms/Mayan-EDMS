@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:43-0400\n"
-"PO-Revision-Date: 2011-09-30 04:31+0000\n"
+"PO-Revision-Date: 2011-11-04 00:54+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -147,7 +148,7 @@ msgstr "girar a la izquierda"
 
 #: __init__.py:105
 msgid "reset view"
-msgstr ""
+msgstr "Restablecer vista"
 
 #: __init__.py:107
 msgid "Find missing document files"
@@ -383,6 +384,8 @@ msgid ""
 "This document's file format is not known, the page count has therefore "
 "defaulted to 1."
 msgstr ""
+"El formato de este archivo de documento no se conoce, el número de páginas "
+"por lo tanto sera 1."
 
 #: models.py:282
 msgid "filename"
@@ -424,7 +427,7 @@ msgstr "páginas de documentos"
 
 #: models.py:324
 msgid "Enter a valid value."
-msgstr ""
+msgstr "Introduzca un valor válido."
 
 #: models.py:350 views.py:327
 msgid "order"
@@ -441,7 +444,7 @@ msgstr "argumentos"
 #: models.py:352
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
+msgstr "Utilize diccionarios para indentificar argumentos, por ejemplo: %s"
 
 #: models.py:360
 msgid "document page transformation"
@@ -636,7 +639,7 @@ msgstr "transformaciones para: %s"
 
 #: views.py:347
 msgid "Document page transformation created successfully."
-msgstr ""
+msgstr "Transformación de página de documento creada con exitosamente."
 
 #: views.py:356
 #, python-format
@@ -647,7 +650,7 @@ msgstr ""
 
 #: views.py:372
 msgid "Document page transformation edited successfully."
-msgstr ""
+msgstr "Transformación de página de documento editada con exitosamente."
 
 #: views.py:385
 #, python-format
@@ -656,7 +659,7 @@ msgstr "Editar transformación \" %(transformation)s\" para: %(document_page)s"
 
 #: views.py:403
 msgid "Document page transformation deleted successfully."
-msgstr ""
+msgstr "Transformación de página de documento eliminada exitosamente."
 
 #: views.py:414
 #, python-format

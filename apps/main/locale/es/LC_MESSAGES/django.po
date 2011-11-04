@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:46-0400\n"
-"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"PO-Revision-Date: 2011-11-04 00:56+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: __init__.py:15
 msgid "maintenance"
-msgstr ""
+msgstr "mantenimiento"
 
 #: __init__.py:16
 msgid "statistics"
@@ -47,7 +48,7 @@ msgstr "búsqueda"
 
 #: views.py:41
 msgid "maintenance menu"
-msgstr ""
+msgstr "menú de mantenimiento"
 
 #: views.py:53
 msgid "Statistics"
@@ -75,7 +76,7 @@ msgstr "Versión"
 
 #: templates/base.html:28
 msgid "(DEBUG)"
-msgstr ""
+msgstr "(DEBUG)"
 
 #: templates/base.html:117
 msgid "User"

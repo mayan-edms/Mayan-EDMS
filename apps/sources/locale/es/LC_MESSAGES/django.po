@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:49-0400\n"
-"PO-Revision-Date: 2011-09-30 05:29+0000\n"
+"PO-Revision-Date: 2011-11-04 01:00+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "Fuentes de documentos"
 
 #: __init__.py:69 widgets.py:33
 msgid "thumbnail"
-msgstr ""
+msgstr "muestra"
 
 #: forms.py:32 forms.py:55
 msgid "Expand compressed files"
@@ -93,6 +93,7 @@ msgstr "Expandir archivos comprimidos"
 #: forms.py:33 forms.py:56
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr ""
+"Subir los archivos de un archivo comprimido como documentos individuales"
 
 #: forms.py:41
 msgid "Staging file"
@@ -271,7 +272,7 @@ msgstr "argumentos"
 #: models.py:228
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
+msgstr "Utilizar diccionarios para identificar argumentos, por ejemplo: %s"
 
 #: models.py:239
 msgid "document source transformation"
@@ -302,7 +303,7 @@ msgstr ""
 
 #: views.py:80
 msgid "here"
-msgstr ""
+msgstr "aquí"
 
 #: views.py:85
 msgid "Upload sources"
@@ -327,7 +328,7 @@ msgstr "Documento cargado con exitosamente."
 #: views.py:152
 #, python-format
 msgid "upload a local document from source: %s"
-msgstr ""
+msgstr "subir un documento local de la fuente: %s"
 
 #: views.py:182
 #, python-format
