@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:45-0400\n"
-"PO-Revision-Date: 2011-11-03 17:25+0000\n"
+"PO-Revision-Date: 2011-11-03 22:40+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,19 +19,19 @@ msgstr ""
 
 #: __init__.py:5
 msgid "search"
-msgstr ""
+msgstr "поиск"
 
 #: __init__.py:6 views.py:72
 msgid "advanced search"
-msgstr ""
+msgstr "расширенный поиск"
 
 #: __init__.py:7
 msgid "search again"
-msgstr ""
+msgstr "искать ещё раз"
 
 #: forms.py:8
 msgid "Search terms"
-msgstr ""
+msgstr "Слова для поиска"
 
 #: models.py:18
 msgid "user"
@@ -39,7 +39,7 @@ msgstr "пользователь"
 
 #: models.py:19
 msgid "query"
-msgstr ""
+msgstr "запрос"
 
 #: models.py:20
 msgid "datetime created"
@@ -47,33 +47,34 @@ msgstr "даты и время создания"
 
 #: models.py:21
 msgid "hits"
-msgstr ""
+msgstr "хитов"
 
 #: models.py:59
 msgid "recent search"
-msgstr ""
+msgstr "недавний поиск"
 
 #: models.py:60
 msgid "recent searches"
-msgstr ""
+msgstr "последние запросы"
 
 #: views.py:33
 #, python-format
 msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
+"результаты, (показывая только %(shown_result_count)s из %(result_count)s)"
 
 #: views.py:37
 msgid "results"
-msgstr ""
+msgstr "результаты"
 
 #: views.py:56
 #, python-format
 msgid "Search error: %s"
-msgstr ""
+msgstr "Ошибка поиска: %s"
 
 #: views.py:60
 msgid "type"
-msgstr ""
+msgstr "тип"
 
 #: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
 #: templatetags/search_tags.py:20
@@ -83,14 +84,17 @@ msgstr "Поиск"
 #: conf/settings.py:12
 msgid "Maximum amount search hits to fetch and display."
 msgstr ""
+"Максимальное количество отображаемых документов из результатов поиска."
 
 #: conf/settings.py:13
 msgid "Maximum number of search queries to remember per user."
 msgstr ""
+"Максимальное количество поисковых запросов запоминаемых для каждого "
+"пользователя."
 
 #: templates/search_help.html:3
 msgid "Help"
-msgstr ""
+msgstr "Помощь"
 
 #: templates/search_help.html:4
 #, python-format
@@ -98,15 +102,17 @@ msgid ""
 "Enter the desired search keywords separated by space.  Only the top "
 "%(search_results_limit)s results will be available."
 msgstr ""
+"Введите ключевые слова для поиска желаемого через пробел. Только первые "
+"%(search_results_limit)s будут доступны."
 
 #: templates/search_results.html:3
 msgid "Search results"
-msgstr ""
+msgstr "Результаты поиска"
 
 #: templates/search_results.html:19
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
-msgstr ""
+msgstr "Прошедшее время в секундах: %(time_delta)s"
 
 #: templatetags/search_tags.py:33
 #, python-format

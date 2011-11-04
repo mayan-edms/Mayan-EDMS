@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:45-0400\n"
-"PO-Revision-Date: 2011-11-03 17:24+0000\n"
+"PO-Revision-Date: 2011-11-03 23:21+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: __init__.py:8
 msgid "group actions"
-msgstr ""
+msgstr "групповые действия"
 
 #: __init__.py:9
 msgid "groups"
-msgstr ""
+msgstr "группы"
 
 #: forms.py:55
 msgid "Pages"
@@ -31,7 +31,7 @@ msgstr "Страницы"
 
 #: forms.py:56
 msgid "Select"
-msgstr ""
+msgstr "Выбрать"
 
 #: forms.py:61
 msgid "group document"
@@ -40,74 +40,75 @@ msgstr ""
 #: forms.py:66
 msgid "Click on the image for full size view of the first page."
 msgstr ""
+"Нажмите на изображение для просмотра  первой страницы в полном размере."
 
 #: literals.py:7
 msgid "and"
-msgstr ""
+msgstr "и"
 
 #: literals.py:8
 msgid "or"
-msgstr ""
+msgstr "или"
 
 #: literals.py:12
 msgid "is equal to"
-msgstr ""
+msgstr "равно"
 
 #: literals.py:13
 msgid "is equal to (case insensitive)"
-msgstr ""
+msgstr "равно (без учета регистра)"
 
 #: literals.py:14
 msgid "contains"
-msgstr ""
+msgstr "содержит"
 
 #: literals.py:15
 msgid "contains (case insensitive)"
-msgstr ""
+msgstr "содержит (без учета регистра)"
 
 #: literals.py:16
 msgid "is in"
-msgstr ""
+msgstr "находится в"
 
 #: literals.py:17
 msgid "is greater than"
-msgstr ""
+msgstr "больше"
 
 #: literals.py:18
 msgid "is greater than or equal to"
-msgstr ""
+msgstr "больше или равно"
 
 #: literals.py:19
 msgid "is less than"
-msgstr ""
+msgstr "меньше"
 
 #: literals.py:20
 msgid "is less than or equal to"
-msgstr ""
+msgstr "меньше или равно"
 
 #: literals.py:21
 msgid "starts with"
-msgstr ""
+msgstr "начинается с"
 
 #: literals.py:22
 msgid "starts with (case insensitive)"
-msgstr ""
+msgstr "начинается с (без учета регистра)"
 
 #: literals.py:23
 msgid "ends with"
-msgstr ""
+msgstr "заканчивается на"
 
 #: literals.py:24
 msgid "ends with (case insensitive)"
-msgstr ""
+msgstr "заканчивается на (без учета регистра)"
 
 #: literals.py:25
 msgid "is in regular expression"
-msgstr ""
+msgstr "В регулярном выражении"
 
 #: literals.py:26
 msgid "is in regular expression (case insensitive)"
-msgstr ""
+msgstr "В регулярном выражении (без учета регистра)"
 
 #: models.py:10
 msgid "title"
@@ -115,7 +116,7 @@ msgstr "название"
 
 #: models.py:11
 msgid "dynamic title"
-msgstr ""
+msgstr "динамический заголовок"
 
 #: models.py:12 models.py:33
 msgid "enabled"
@@ -131,7 +132,7 @@ msgstr ""
 
 #: models.py:26
 msgid "The inclusion is ignored for the first item."
-msgstr ""
+msgstr "Включение игнорируется для первого элемента."
 
 #: models.py:27
 msgid "foreign document data"
@@ -147,7 +148,7 @@ msgstr ""
 
 #: models.py:31
 msgid "expression"
-msgstr ""
+msgstr "выражение"
 
 #: models.py:31
 msgid ""
@@ -161,23 +162,23 @@ msgstr ""
 
 #: models.py:32
 msgid "negated"
-msgstr ""
+msgstr "отрицание"
 
 #: models.py:32
 msgid "Inverts the logic of the operator."
-msgstr ""
+msgstr "Инвертирует логику оператора."
 
 #: models.py:36
 msgid "not"
-msgstr ""
+msgstr "не"
 
 #: models.py:39
 msgid "group item"
-msgstr ""
+msgstr "член группы"
 
 #: models.py:40
 msgid "group items"
-msgstr ""
+msgstr "члены группы"
 
 #: views.py:21
 msgid "No action selected."

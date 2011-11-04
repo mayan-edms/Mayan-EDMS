@@ -6,83 +6,104 @@ BASE=$PWD
 cd $BASE/apps/common
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/converter
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/documents
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/document_comments
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/document_indexing
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/dynamic_search
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/folders
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/history
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/grouping
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/main
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/metadata
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/navigation
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/ocr
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/permissions
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/project_setup
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/project_tools
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/smart_settings
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/sources
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/tags
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/user_management
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
 
 cd $BASE/apps/web_theme
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es

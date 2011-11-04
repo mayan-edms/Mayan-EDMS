@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-30 00:54-0400\n"
-"PO-Revision-Date: 2011-09-30 05:17+0000\n"
+"PO-Revision-Date: 2011-11-04 00:58+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -32,11 +32,11 @@ msgstr "editar detalles"
 
 #: __init__.py:23 __init__.py:29
 msgid "about"
-msgstr ""
+msgstr "sobre"
 
 #: __init__.py:24
 msgid "changelog"
-msgstr ""
+msgstr "cambios"
 
 #: __init__.py:25
 msgid "license"
@@ -48,17 +48,20 @@ msgstr "Selección"
 
 #: forms.py:131
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: forms.py:142
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
 msgstr ""
+"Por favor entre la dirección de correo electrónico y la contraseña "
+"correctas.  Tenga en cuenta que los campos de contraseña distingue entre "
+"mayúsculas y minúsculas."
 
 #: forms.py:144
 msgid "This account is inactive."
-msgstr ""
+msgstr "Esta cuenta está inactiva."
 
 #: literals.py:24
 msgid "A5"
@@ -158,7 +161,7 @@ msgstr "editar detalles del usuario corriente"
 
 #: views.py:197
 msgid "Changelog"
-msgstr ""
+msgstr "Cambios"
 
 #: views.py:210
 msgid "License"
@@ -183,6 +186,8 @@ msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
 msgstr ""
+"Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
+"son: 'username' nombre de usuario, 'email' correo electrónico"
 
 #: templates/403.html:3 templates/403.html.py:7
 msgid "Insufficient permissions"
