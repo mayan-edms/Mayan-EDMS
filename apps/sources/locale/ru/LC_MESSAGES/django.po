@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:49-0400\n"
-"PO-Revision-Date: 2011-11-03 17:13+0000\n"
+"PO-Revision-Date: 2011-11-04 15:25+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -47,19 +48,19 @@ msgstr "удалить"
 
 #: __init__.py:28
 msgid "sources"
-msgstr ""
+msgstr "источники"
 
 #: __init__.py:29 literals.py:53 models.py:159
 msgid "web forms"
-msgstr ""
+msgstr "web-формы"
 
 #: __init__.py:30 models.py:130
 msgid "staging folders"
-msgstr ""
+msgstr "транспортные папки"
 
 #: __init__.py:31 models.py:194
 msgid "watch folders"
-msgstr ""
+msgstr "наблюдаемые папки"
 
 #: __init__.py:33 __init__.py:39
 msgid "edit"
@@ -67,15 +68,15 @@ msgstr "редактировать"
 
 #: __init__.py:35
 msgid "add new source"
-msgstr ""
+msgstr "добавить новый источник"
 
 #: __init__.py:37
 msgid "transformations"
-msgstr ""
+msgstr "преобразования"
 
 #: __init__.py:38
 msgid "add transformation"
-msgstr ""
+msgstr "добавить преобразование"
 
 #: __init__.py:42
 msgid "Document sources"
@@ -87,7 +88,7 @@ msgstr "миниатюра"
 
 #: forms.py:32 forms.py:55
 msgid "Expand compressed files"
-msgstr ""
+msgstr "Извлекать из архивов?"
 
 #: forms.py:33 forms.py:56
 msgid "Upload a compressed file's contained files as individual documents"
@@ -100,39 +101,39 @@ msgstr "Промежуточный файл"
 
 #: literals.py:8 literals.py:13
 msgid "Always"
-msgstr ""
+msgstr "Всегда"
 
 #: literals.py:9 literals.py:14
 msgid "Never"
-msgstr ""
+msgstr "Никогда"
 
 #: literals.py:15
 msgid "Ask user"
-msgstr ""
+msgstr "Спросить пользователя"
 
 #: literals.py:30
 msgid "Disk"
-msgstr ""
+msgstr "Диск"
 
 #: literals.py:31
 msgid "Database"
-msgstr ""
+msgstr "База данных"
 
 #: literals.py:32
 msgid "Drive"
-msgstr ""
+msgstr "Привод"
 
 #: literals.py:33
 msgid "Network drive"
-msgstr ""
+msgstr "Сетевой диск"
 
 #: literals.py:34
 msgid "User drive"
-msgstr ""
+msgstr "Диск пользователя"
 
 #: literals.py:35
 msgid "Envelope"
-msgstr ""
+msgstr "Конверт"
 
 #: literals.py:36
 msgid "Folder"
@@ -140,27 +141,27 @@ msgstr "Папка"
 
 #: literals.py:37
 msgid "World"
-msgstr ""
+msgstr "Мир"
 
 #: literals.py:38
 msgid "Printer"
-msgstr ""
+msgstr "Принтер"
 
 #: literals.py:39
 msgid "Empty printer"
-msgstr ""
+msgstr "Пустой принтер"
 
 #: literals.py:47 models.py:158
 msgid "web form"
-msgstr ""
+msgstr "веб-формы"
 
 #: literals.py:48
 msgid "server staging folder"
-msgstr ""
+msgstr "транспортные папки сервера"
 
 #: literals.py:49
 msgid "server watch folder"
-msgstr ""
+msgstr "наблюдаемая папка"
 
 #: literals.py:54
 msgid "server staging folders"
@@ -168,7 +169,7 @@ msgstr "папки на промежуточном сервере"
 
 #: literals.py:55
 msgid "server watch folders"
-msgstr ""
+msgstr "наблюдаемые папки"
 
 #: models.py:29
 msgid "title"
@@ -180,19 +181,19 @@ msgstr "разрешено"
 
 #: models.py:31
 msgid "whitelist"
-msgstr ""
+msgstr "белый список"
 
 #: models.py:32
 msgid "blacklist"
-msgstr ""
+msgstr "черный список"
 
 #: models.py:98
 msgid "icon"
-msgstr ""
+msgstr "иконка"
 
 #: models.py:98
 msgid "An icon to visually distinguish this source."
-msgstr ""
+msgstr "Значок, чтобы визуально отличать этот источник."
 
 #: models.py:114 models.py:166
 msgid "folder path"
@@ -200,39 +201,39 @@ msgstr "путь к папке"
 
 #: models.py:114 models.py:166
 msgid "Server side filesystem path."
-msgstr ""
+msgstr "Путь на сервере"
 
 #: models.py:115
 msgid "preview width"
-msgstr ""
+msgstr "ширина предпросмотра"
 
 #: models.py:115
 msgid "Width value to be passed to the converter backend."
-msgstr ""
+msgstr "Ширина после обработки."
 
 #: models.py:116
 msgid "preview height"
-msgstr ""
+msgstr "Предварительный просмотр высоты"
 
 #: models.py:116
 msgid "Height value to be passed to the converter backend."
-msgstr ""
+msgstr "Высота после обработки."
 
 #: models.py:117 models.py:154 models.py:167
 msgid "uncompress"
-msgstr ""
+msgstr "распаковать"
 
 #: models.py:117 models.py:154 models.py:167
 msgid "Whether to expand or not compressed archives."
-msgstr ""
+msgstr "Независимо от того распакованы или нет архивы."
 
 #: models.py:118 models.py:168
 msgid "delete after upload"
-msgstr ""
+msgstr "удалить после загрузки"
 
 #: models.py:118 models.py:168
 msgid "Delete the file after is has been successfully uploaded."
-msgstr ""
+msgstr "Удалить файл после загрузки."
 
 #: models.py:129
 msgid "staging folder"
@@ -240,7 +241,7 @@ msgstr "промежуточная папка"
 
 #: models.py:169
 msgid "interval"
-msgstr ""
+msgstr "интервал"
 
 #: models.py:169
 msgid ""
@@ -272,7 +273,7 @@ msgstr "аргументы"
 #: models.py:228
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
+msgstr "Использование словарей для определения аргументов, например: %s"
 
 #: models.py:239
 msgid "document source transformation"
@@ -299,15 +300,15 @@ msgstr "Не удается удалить промежуточный файл: 
 
 #: utils.py:40
 msgid "Whitelist Blacklist validation error."
-msgstr ""
+msgstr "Ошибка проверки белого или черного списков."
 
 #: views.py:80
 msgid "here"
-msgstr ""
+msgstr "здесь"
 
 #: views.py:85
 msgid "Upload sources"
-msgstr ""
+msgstr "Загрузить источники"
 
 #: views.py:87
 msgid ""
@@ -347,73 +348,73 @@ msgstr "загрузить документ из промежуточного и
 
 #: views.py:215
 msgid "files in staging path"
-msgstr ""
+msgstr " файлы в транспортном пути"
 
 #: views.py:229
 msgid "Current metadata"
-msgstr ""
+msgstr "Действующие метаданные"
 
 #: views.py:265 views.py:284
 #, python-format
 msgid "Staging file transformation error: %(error)s"
-msgstr ""
+msgstr "Ошибка преобразования транспортного файла: %(error)s"
 
 #: views.py:307
 msgid "Staging file delete successfully."
-msgstr ""
+msgstr "Транспортный файл удалён."
 
 #: views.py:309
 #, python-format
 msgid "Staging file delete error; %s."
-msgstr ""
+msgstr "Ошибка удаления транспортного файла %s."
 
 #: views.py:368
 msgid "Source edited successfully"
-msgstr ""
+msgstr "Источник успешно изменен"
 
 #: views.py:371
 #, python-format
 msgid "Error editing source; %s"
-msgstr ""
+msgstr "Ошибка редактирования источника; %s"
 
 #: views.py:376
 #, python-format
 msgid "edit source: %s"
-msgstr ""
+msgstr "редактировать источник: %s"
 
 #: views.py:381 views.py:421 views.py:483 views.py:524 views.py:554
 #: views.py:597
 msgid "source"
-msgstr ""
+msgstr "источник"
 
 #: views.py:410
 #, python-format
 msgid "Source \"%s\" deleted successfully."
-msgstr ""
+msgstr "Источник \"%s\"удален."
 
 #: views.py:412
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
-msgstr ""
+msgstr "Ошибка при удалении источника \"%(source)s\": %(error)s"
 
 #: views.py:419
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
-msgstr ""
+msgstr "Вы действительно хотите удалить источник: %s?"
 
 #: views.py:451
 msgid "Source created successfully"
-msgstr ""
+msgstr "Источник создан"
 
 #: views.py:454
 #, python-format
 msgid "Error creating source; %s"
-msgstr ""
+msgstr "Ошибка создания источника; %s"
 
 #: views.py:459
 #, python-format
 msgid "Create new source of type: %s"
-msgstr ""
+msgstr "Создать новый источник типа: %s"
 
 #: views.py:481
 #, python-format
@@ -422,45 +423,47 @@ msgstr "преобразования для: %s"
 
 #: views.py:511
 msgid "Source transformation edited successfully"
-msgstr ""
+msgstr "Преобразование источника изменено"
 
 #: views.py:514
 #, python-format
 msgid "Error editing source transformation; %s"
-msgstr ""
+msgstr "Ошибка редактирования преобразования источника; %s"
 
 #: views.py:519
 #, python-format
 msgid "Edit transformation: %s"
-msgstr ""
+msgstr "Изменить преобразование: %s"
 
 #: views.py:542
 msgid "Source transformation deleted successfully."
-msgstr ""
+msgstr "Преобразование источника удалено."
 
 #: views.py:544
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr ""
+msgstr "Ошибка при удалении преобразования источника; %(error)s"
 
 #: views.py:557
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr ""
+"Вы действительно хотите удалить источник трансформации "
+"\"%(transformation)s\""
 
 #: views.py:587
 msgid "Source transformation created successfully"
-msgstr ""
+msgstr "Преобразование источника создано"
 
 #: views.py:590
 #, python-format
 msgid "Error creating source transformation; %s"
-msgstr ""
+msgstr "Ошибка создания преобразования источника; %s"
 
 #: views.py:599
 #, python-format
 msgid "Create new transformation for source: %s"
-msgstr ""
+msgstr "Создать новое преобразование для источника: %s"
 
 

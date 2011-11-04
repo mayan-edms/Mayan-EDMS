@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:47-0400\n"
-"PO-Revision-Date: 2011-11-03 17:23+0000\n"
+"PO-Revision-Date: 2011-11-04 12:02+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,35 +19,35 @@ msgstr ""
 
 #: __init__.py:12
 msgid "View roles"
-msgstr ""
+msgstr "Просмотр ролей"
 
 #: __init__.py:13
 msgid "Edit roles"
-msgstr ""
+msgstr "Изменить роли"
 
 #: __init__.py:14
 msgid "Create roles"
-msgstr ""
+msgstr "Создание ролей"
 
 #: __init__.py:15
 msgid "Delete roles"
-msgstr ""
+msgstr "Удаление ролей"
 
 #: __init__.py:16
 msgid "Grant permissions"
-msgstr ""
+msgstr "Предоставление разрешений"
 
 #: __init__.py:17
 msgid "Revoke permissions"
-msgstr ""
+msgstr "Отмена разрешений"
 
 #: __init__.py:20 models.py:75 views.py:33
 msgid "roles"
-msgstr ""
+msgstr "ролей"
 
 #: __init__.py:21
 msgid "create new role"
-msgstr ""
+msgstr "создать новую роль"
 
 #: __init__.py:22
 msgid "edit"
@@ -55,11 +55,11 @@ msgstr "редактировать"
 
 #: __init__.py:23
 msgid "members"
-msgstr ""
+msgstr "элементы"
 
 #: __init__.py:24
 msgid "role permissions"
-msgstr ""
+msgstr "разрешения роли"
 
 #: __init__.py:25
 msgid "delete"
@@ -67,15 +67,15 @@ msgstr "удалить"
 
 #: api.py:22
 msgid "Permissions"
-msgstr ""
+msgstr "Разрешения"
 
 #: api.py:55
 msgid "Insufficient permissions."
-msgstr ""
+msgstr "Недостаточно разрешений."
 
 #: models.py:11 views.py:53
 msgid "namespace"
-msgstr ""
+msgstr "пространство имен"
 
 #: models.py:12 views.py:54
 msgid "name"
@@ -83,39 +83,39 @@ msgstr "имя"
 
 #: models.py:13 models.py:70
 msgid "label"
-msgstr ""
+msgstr "этикетка"
 
 #: models.py:20 models.py:53
 msgid "permission"
-msgstr ""
+msgstr "разрешение"
 
 #: models.py:21 views.py:50
 msgid "permissions"
-msgstr ""
+msgstr "разрешения"
 
 #: models.py:61
 msgid "permission holder"
-msgstr ""
+msgstr "держатель разрешения"
 
 #: models.py:62
 msgid "permission holders"
-msgstr ""
+msgstr "разрешения владельцев"
 
 #: models.py:74 models.py:92 views.py:69 views.py:79 views.py:103 views.py:203
 msgid "role"
-msgstr ""
+msgstr "роль"
 
 #: models.py:103
 msgid "role member"
-msgstr ""
+msgstr "Роль члена"
 
 #: models.py:104
 msgid "role members"
-msgstr ""
+msgstr "Роль членов"
 
 #: views.py:56
 msgid "state"
-msgstr ""
+msgstr "состояние"
 
 #: views.py:116
 #, python-format
@@ -123,6 +123,8 @@ msgid ""
 "Are you sure you wish to grant the permission \"%(permission)s\" to "
 "%(ct_name)s: %(requester)s"
 msgstr ""
+"Вы действительно хотите предоставить разрешение  \"%(permission)s\" для "
+"%(ct_name)s: %(requester)s"
 
 #: views.py:121
 #, python-format
@@ -130,51 +132,55 @@ msgid ""
 "Are you sure you wish to revoke the permission \"%(permission)s\" from "
 "%(ct_name)s: %(requester)s"
 msgstr ""
+"Вы уверены, что хотите отозвать разрешение \"%(permission)s\" у %(ct_name)s:"
+" %(requester)s"
 
 #: views.py:134
 #, python-format
 msgid "Permission \"%(permission)s\" granted to %(ct_name)s: %(requester)s."
-msgstr ""
+msgstr "Разрешение \"%(permission)s\" предоставлено %(ct_name)s: %(requester)s."
 
 #: views.py:137
 #, python-format
 msgid ""
 "%(ct_name)s: %(requester)s, already had the permission \"%(permission)s\" "
 "granted."
-msgstr ""
+msgstr "%(ct_name)s: %(requester)s,  уже имеет разрешение \"%(permission)s\"."
 
 #: views.py:143
 #, python-format
 msgid "Permission \"%(permission)s\" revoked from %(ct_name)s: %(requester)s."
-msgstr ""
+msgstr "Разрешение \"%(permission)s\" отозвано у %(ct_name)s: %(requester)s."
 
 #: views.py:146
 #, python-format
 msgid "%(ct_name)s: %(requester)s doesn't have the permission \"%(permission)s\"."
-msgstr ""
+msgstr "%(ct_name)s: %(requester)s не имеет разрешения \"%(permission)s\"."
 
 #: views.py:199
 #, python-format
 msgid "non members of role: %s"
-msgstr ""
+msgstr "не участвует в %s"
 
 #: views.py:200
 #, python-format
 msgid "members of role: %s"
-msgstr ""
+msgstr "участвует в %s"
 
 #: widgets.py:16
 msgid "Revoke"
-msgstr ""
+msgstr "Отозвать"
 
 #: widgets.py:21
 msgid "Grant"
-msgstr ""
+msgstr "Предоставить"
 
 #: conf/settings.py:10
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
 msgstr ""
+"Список существующих ролей, которые автоматически назначаются вновь "
+"создаваемым пользователям"
 
 
