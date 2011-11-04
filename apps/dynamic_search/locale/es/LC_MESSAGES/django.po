@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:45-0400\n"
-"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"PO-Revision-Date: 2011-11-04 17:06+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -35,27 +36,27 @@ msgstr "Términos de búsqueda"
 
 #: models.py:18
 msgid "user"
-msgstr ""
+msgstr "usuario"
 
 #: models.py:19
 msgid "query"
-msgstr ""
+msgstr "pregunta"
 
 #: models.py:20
 msgid "datetime created"
-msgstr ""
+msgstr "fecha y hora creados"
 
 #: models.py:21
 msgid "hits"
-msgstr ""
+msgstr "accesos"
 
 #: models.py:59
 msgid "recent search"
-msgstr ""
+msgstr "búsqueda reciente"
 
 #: models.py:60
 msgid "recent searches"
-msgstr ""
+msgstr "búsquedas recientes"
 
 #: views.py:33
 #, python-format
@@ -87,7 +88,7 @@ msgstr "La cantidad máxima de resultados de búsqueda a buscar y mostrar."
 
 #: conf/settings.py:13
 msgid "Maximum number of search queries to remember per user."
-msgstr ""
+msgstr "El número máximo de consultas de búsqueda para recordar por usuario."
 
 #: templates/search_help.html:3
 msgid "Help"
@@ -115,6 +116,6 @@ msgstr "Tiempo transcurrido: %(time_delta)s segundos"
 #: templatetags/search_tags.py:33
 #, python-format
 msgid "recent searches (maximum of %d)"
-msgstr ""
+msgstr "búsquedas recientes (máximo de %d)"
 
 

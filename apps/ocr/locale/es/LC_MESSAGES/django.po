@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:47-0400\n"
-"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"PO-Revision-Date: 2011-11-04 17:11+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +46,7 @@ msgstr "OCR"
 
 #: __init__.py:40
 msgid "OCR Setup"
-msgstr ""
+msgstr "Configuración de OCR"
 
 #: __init__.py:44
 msgid "submit to OCR queue"
@@ -89,15 +90,15 @@ msgstr "tareas activas"
 
 #: __init__.py:60
 msgid "transformations"
-msgstr ""
+msgstr "transformaciones"
 
 #: __init__.py:61
 msgid "add transformation"
-msgstr ""
+msgstr "añadir transformación"
 
 #: __init__.py:62
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 #: __init__.py:82
 msgid "Default"
@@ -186,24 +187,24 @@ msgstr "Documento no encontrado."
 
 #: models.py:67
 msgid "Enter a valid value."
-msgstr ""
+msgstr "Introduzca un valor válido."
 
 #: models.py:95 views.py:341
 msgid "order"
-msgstr ""
+msgstr "orden"
 
 #: models.py:96 views.py:342 views.py:379 views.py:409
 msgid "transformation"
-msgstr ""
+msgstr "transformación"
 
 #: models.py:97 views.py:343
 msgid "arguments"
-msgstr ""
+msgstr "argumentos"
 
 #: models.py:97
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
+msgstr "Utilize diccionarios para indentificar argumentos, por ejemplo: %s"
 
 #: models.py:107
 msgid "document queue transformation"
@@ -383,11 +384,11 @@ msgstr "objeto relacionado"
 #: views.py:335
 #, python-format
 msgid "transformations for: %s"
-msgstr ""
+msgstr "transformaciones para: %s"
 
 #: views.py:365
 msgid "Queue transformation edited successfully"
-msgstr ""
+msgstr "Transformación de la cola editada con exitosamente"
 
 #: views.py:368
 #, python-format
@@ -397,7 +398,7 @@ msgstr ""
 #: views.py:373
 #, python-format
 msgid "Edit transformation: %s"
-msgstr ""
+msgstr "Editar transformación: %s"
 
 #: views.py:396
 msgid "Queue transformation deleted successfully."
@@ -458,7 +459,7 @@ msgstr ""
 
 #: conf/settings.py:18
 msgid "File path to unpaper program."
-msgstr ""
+msgstr "La ruta de archivo del programa unpaper."
 
 #: parsers/__init__.py:23
 msgid "Text extracted from PDF"

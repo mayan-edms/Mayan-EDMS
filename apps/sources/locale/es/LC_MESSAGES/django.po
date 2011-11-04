@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:49-0400\n"
-"PO-Revision-Date: 2011-11-04 01:00+0000\n"
+"PO-Revision-Date: 2011-11-04 17:10+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "carpetas provisionales"
 
 #: __init__.py:31 models.py:194
 msgid "watch folders"
-msgstr ""
+msgstr "carpetas bajo observación"
 
 #: __init__.py:33 __init__.py:39
 msgid "edit"
@@ -201,7 +201,7 @@ msgstr "ruta de la carpeta"
 
 #: models.py:114 models.py:166
 msgid "Server side filesystem path."
-msgstr ""
+msgstr "Camino a los archivos en el servidor."
 
 #: models.py:115
 msgid "preview width"
@@ -255,7 +255,7 @@ msgstr ""
 
 #: models.py:198
 msgid "Enter a valid value."
-msgstr ""
+msgstr "Introduzca un valor válido."
 
 #: models.py:226 views.py:487
 msgid "order"
@@ -276,11 +276,11 @@ msgstr "Utilizar diccionarios para identificar argumentos, por ejemplo: %s"
 
 #: models.py:239
 msgid "document source transformation"
-msgstr ""
+msgstr "transformación de fuente de documentos"
 
 #: models.py:240
 msgid "document source transformations"
-msgstr ""
+msgstr "transformaciones de fuentes de documentos"
 
 #: staging.py:40
 #, python-format
@@ -333,12 +333,12 @@ msgstr "subir un documento local de la fuente: %s"
 #: views.py:182
 #, python-format
 msgid "Staging file: %s, uploaded successfully."
-msgstr ""
+msgstr "Archivo en espera: %s, subido exitosamente."
 
 #: views.py:187
 #, python-format
 msgid "Staging file: %s, deleted successfully."
-msgstr ""
+msgstr "Archivo en espera: %s, eliminado exitosamente."
 
 #: views.py:209
 #, python-format
@@ -347,7 +347,7 @@ msgstr ""
 
 #: views.py:215
 msgid "files in staging path"
-msgstr ""
+msgstr "archivos en el camino de espera"
 
 #: views.py:229
 msgid "Current metadata"
@@ -360,7 +360,7 @@ msgstr ""
 
 #: views.py:307
 msgid "Staging file delete successfully."
-msgstr ""
+msgstr "Archivos en espera borrado exitosamente."
 
 #: views.py:309
 #, python-format
@@ -418,7 +418,7 @@ msgstr ""
 #: views.py:481
 #, python-format
 msgid "transformations for: %s"
-msgstr ""
+msgstr "transformaciones para: %s"
 
 #: views.py:511
 msgid "Source transformation edited successfully"
@@ -432,7 +432,7 @@ msgstr ""
 #: views.py:519
 #, python-format
 msgid "Edit transformation: %s"
-msgstr ""
+msgstr "Editar transformación: %s"
 
 #: views.py:542
 msgid "Source transformation deleted successfully."
