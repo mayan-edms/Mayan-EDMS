@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+#   <dev.emerson@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-03 15:43-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-29 18:49-0400\n"
+"PO-Revision-Date: 2011-11-04 00:46+0000\n"
+"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/team/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: conf/settings.py:10
@@ -24,38 +24,41 @@ msgid ""
 "cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
 "warehouse."
 msgstr ""
+"Tema CSS a ser aplicado, as opções são: amro, bec, bec-green, blue, default,"
+" djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish"
+" and warehouse."
 
 #: conf/settings.py:12
 msgid "Display extra information in the login screen."
-msgstr ""
+msgstr "Exibir informações extras na tela de login."
 
-#: templates/web_theme_base.html:101
+#: templates/web_theme_base.html:94
 msgid "dismiss all notifications"
-msgstr ""
+msgstr "rejeitar todas as notificações"
 
-#: templates/web_theme_base.html:101
+#: templates/web_theme_base.html:94
 msgid "close all"
-msgstr ""
+msgstr "fechar todos"
 
-#: templates/web_theme_base.html:102
+#: templates/web_theme_base.html:95
 msgid "dismiss this notification"
-msgstr ""
+msgstr "descartar essa notificação"
 
-#: templates/web_theme_base.html:102
+#: templates/web_theme_base.html:95
 msgid "close"
-msgstr ""
+msgstr "fechar"
 
 #: templates/web_theme_login.html:12 templates/web_theme_login.html.py:33
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: templates/web_theme_login.html:17
 msgid "You are already logged in"
-msgstr ""
+msgstr "Você já está logado"
 
 #: templates/web_theme_login.html:20
 msgid "Redirecting you to the website entry point in 5 seconds."
-msgstr ""
+msgstr "Redirecionando você para o ponto de entrada do site em 5 segundos."
 
 #: templates/web_theme_login.html:23
 #, python-format
@@ -63,13 +66,17 @@ msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
 msgstr ""
+"Ou clique <a href=\"%(LOGIN_REDIRECT_URL)s\">aqui</a> se o redirecionamento "
+"não funcionar."
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: templates/pagination/pagination.html:26
 #: templates/pagination/pagination.html:28
 msgid "Next"
-msgstr ""
+msgstr "Próximo"
+
+

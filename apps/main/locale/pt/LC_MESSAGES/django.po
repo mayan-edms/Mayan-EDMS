@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:46-0400\n"
-"PO-Revision-Date: 2011-11-02 02:25+0000\n"
+"PO-Revision-Date: 2011-11-03 21:55+0000\n"
 "Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/team/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "site de administação"
 
 #: __init__.py:30
 msgid "home"
-msgstr "casa"
+msgstr "inicio"
 
 #: __init__.py:32
 msgid "search"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: templates/about.html:5
 msgid "About this program"
-msgstr "Sobre este programa"
+msgstr "Sobre este sistema"
 
 #: templates/about.html:9 templates/verbose_login.html:4
 msgid "Version"
