@@ -33,7 +33,8 @@
                 text-decoration:none;
                 font-weight:bold
             }
-        </style> 
+        </style>
+        <link rel="stylesheet" href="{{ STATIC_URL }}packages/animate-custom.css" type="text/css" media="screen" />
         {% block web_theme_stylesheets %}{% endblock %}
 		{% endcompress %}
 
@@ -49,13 +50,12 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $(".message").fadeIn("slow");
                 $(".dismiss").click(function(){
-                    $(this).parent().parent().fadeOut("slow"); return false;
+                    $(this).parent().parent().addClass("fadeOutUp").fadeOut("slow"); return false;
                 });
                 $(".dismiss-all").click(function(){
                     $(".message").each(function(){
-                        $(this).fadeOut("slow");
+                        $(this).addClass("fadeOutUp").fadeOut("slow");
                     });     
                     return false;
                 });
@@ -95,7 +95,7 @@
                             <div class="inner">
                                 <div class="flash">
                                     {% for message in messages %}
-                                        <div class="message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}" style="display: none;">
+                                        <div class="animated fadeInDown message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}">
                                             <p>
                                                 {{ message }}
                                                 <span class="dismiss-all"><a title={% trans "dismiss all notifications" %}>[{% trans "close all" %}]</a></span>
