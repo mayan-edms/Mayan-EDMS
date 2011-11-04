@@ -33,4 +33,4 @@ Translations
 ------------
 * Emerson Soares (http://emersonsoares.com)
 * Renata Oliveira (https://twitter.com/#!/rnataoliveira)
-* Sergey Glita
+* Sergey Glita (s.v.glita@gmail.com)
