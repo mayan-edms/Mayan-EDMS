@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:45-0400\n"
-"PO-Revision-Date: 2011-11-03 23:21+0000\n"
+"PO-Revision-Date: 2011-11-04 10:53+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +36,7 @@ msgstr "Выбрать"
 
 #: forms.py:61
 msgid "group document"
-msgstr ""
+msgstr "group document"
 
 #: forms.py:66
 msgid "Click on the image for full size view of the first page."
@@ -124,11 +125,11 @@ msgstr "разрешено"
 
 #: models.py:20 models.py:25
 msgid "document group"
-msgstr ""
+msgstr "document group"
 
 #: models.py:21
 msgid "document groups"
-msgstr ""
+msgstr "document groups"
 
 #: models.py:26
 msgid "The inclusion is ignored for the first item."
@@ -136,7 +137,7 @@ msgstr "Включение игнорируется для первого эле
 
 #: models.py:27
 msgid "foreign document data"
-msgstr ""
+msgstr "foreign document data"
 
 #: models.py:27
 msgid ""

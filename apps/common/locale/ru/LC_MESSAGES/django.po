@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-30 00:54-0400\n"
-"PO-Revision-Date: 2011-11-03 17:28+0000\n"
+"PO-Revision-Date: 2011-11-04 10:27+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -83,15 +84,15 @@ msgstr "B4"
 
 #: literals.py:29
 msgid "Letter"
-msgstr ""
+msgstr "Letter"
 
 #: literals.py:30
 msgid "Legal"
-msgstr ""
+msgstr "Legal"
 
 #: literals.py:31
 msgid "Ledger"
-msgstr ""
+msgstr "Ledger"
 
 #: literals.py:38
 msgid "Portrait"
@@ -278,7 +279,7 @@ msgstr "требуется"
 #: templates/generic_list_subtemplate.html:51
 #: templates/generic_list_subtemplate.html:171
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: templates/generic_form_subtemplate.html:76
 #: templates/generic_form_subtemplate.html:78
@@ -287,16 +288,16 @@ msgstr ""
 #: templates/generic_list_subtemplate.html:51
 #: templates/generic_list_subtemplate.html:171
 msgid "Submit"
-msgstr ""
+msgstr "Выполнить"
 
 #: templates/generic_form_subtemplate.html:82
 msgid "Cancel"
-msgstr ""
+msgstr "Отменить"
 
 #: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
 #, python-format
 msgid "List of %(stripped_title)s"
-msgstr ""
+msgstr "Список %(stripped_title)s"
 
 #: templates/generic_list_horizontal_subtemplate.html:23
 #: templates/generic_list_subtemplate.html:23
@@ -305,31 +306,33 @@ msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
 msgstr ""
+"Список %(title)s (%(start)s - %(end)s из %(total)s) (Page %(page_number)s из"
+" %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:25
 #, python-format
 msgid "List of %(title)s (%(total)s)"
-msgstr ""
+msgstr "Список %(title)s (%(total)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:72
 #: templates/generic_list_subtemplate.html:71
 msgid "Identifier"
-msgstr ""
+msgstr "Идентификатор"
 
 #: templates/generic_list_horizontal_subtemplate.html:146
 #: templates/generic_list_subtemplate.html:145
 #, python-format
 msgid "There are no %(stripped_title)s"
-msgstr ""
+msgstr "Нет %(stripped_title)s"
 
 #: templates/login.html:5
 msgid "Login"
-msgstr ""
+msgstr "Войти"
 
 #: templates/password_change_done.html:3 templates/password_change_form.html:3
 #: templates/password_change_form.html:5
 msgid "Password change"
-msgstr ""
+msgstr "Изменение пароля"
 
 

@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:45-0400\n"
-"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"PO-Revision-Date: 2011-11-04 17:05+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +36,7 @@ msgstr "lista de indices"
 
 #: __init__.py:20
 msgid "go up one level"
-msgstr ""
+msgstr "subir un nivel"
 
 #: __init__.py:21 __init__.py:23 models.py:26
 msgid "indexes"
@@ -176,7 +177,7 @@ msgstr "contenido del indice: %s"
 
 #: views.py:60
 msgid "items"
-msgstr ""
+msgstr "artículos"
 
 #: views.py:82
 msgid "Are you sure you wish to rebuild all indexes?"
@@ -200,7 +201,7 @@ msgstr "Error de reconstrucción de índices: %s"
 #: views.py:109
 #, python-format
 msgid "indexes containing: %s"
-msgstr ""
+msgstr "índices que contienen: %s"
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
