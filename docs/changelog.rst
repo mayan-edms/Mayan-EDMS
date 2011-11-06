@@ -1,3 +1,8 @@
+2011-11-06
+* Added Russian locale post OCR cleanup backend (Сергей Глита [Sergei Glita])
+* Reduce severity of the messages displayed when no OCR cleanup backend
+  is found for a language
+
 2011-11-04
 * Complete Portuguese and Russian translations
 
