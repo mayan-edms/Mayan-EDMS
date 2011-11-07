@@ -8,6 +8,10 @@
   valid image
 * Removed tag count from the group document list widget to conserve
   vertical space
+* Updated required Django version to 1.3.1
+* Removed the included 3rd party module django-sendfile
+
+    * User should do a pip install -r requirements/production.txt to update
 
 2011-11-06
 ----------
