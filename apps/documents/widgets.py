@@ -6,7 +6,13 @@ from django.core.urlresolvers import reverse
 
 def document_thumbnail(document):
     try:
-        return mark_safe(u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>' % {
+        document.get_valid_image()
+        template = u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>'
+    except:
+        template = u'<img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript>'
+   
+    try:
+        return mark_safe(template % {
             'url': reverse('document_preview', args=[document.pk]),
             'thumbnail': reverse('document_thumbnail', args=[document.pk]),
             'static_url': settings.STATIC_URL,
