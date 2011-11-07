@@ -1,3 +1,6 @@
+import operator
+import itertools
+
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -7,11 +10,13 @@ from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.views.generic.create_update import create_object, delete_object, update_object
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User, Group
+from django.contrib.contenttypes.models import ContentType
+from django.utils.simplejson import loads
 
 from common.views import assign_remove
 from common.utils import generate_choices_w_labels, encapsulate
+from common.widgets import two_state_template
 
 from permissions.models import Role, Permission, PermissionHolder, RoleMember
 from permissions.forms import RoleForm, RoleForm_view
@@ -53,9 +58,9 @@ def role_permissions(request, role_id):
                     {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: namespace_titles[x.namespace] if x.namespace in namespace_titles else x.namespace)},
                     {'name': _(u'name'), 'attribute': u'label'},
                     {
-                        'name':_(u'state'),
-                        'attribute': encapsulate(lambda x: role_permission_link(role, x, role_permissions_list)),
-                    }
+                        'name':_(u'has permission'),
+                        'attribute': encapsulate(lambda x: two_state_template(x.has_permission(role))),
+                    },
                 ],
                 'hide_link': True,
                 'hide_object': True,
@@ -68,6 +73,13 @@ def role_permissions(request, role_id):
         'object': role,
         'object_name': _(u'role'),
         'subtemplates_list': subtemplates_list,
+        'multi_select_as_buttons': True,
+        'multi_select_item_properties': {
+            'permission_id': lambda x: x.pk,
+            'requester_id': lambda x: role.pk,
+            'requester_app_label': lambda x: ContentType.objects.get_for_model(role).app_label,
+            'requester_model': lambda x: ContentType.objects.get_for_model(role).model,
+        },
     }, context_instance=RequestContext(request))
 
 
@@ -105,55 +117,122 @@ def role_delete(request, role_id):
         })
 
 
-def permission_grant_revoke(request, permission_id, app_label, module_name, pk, action):
-    ct = get_object_or_404(ContentType, app_label=app_label, model=module_name)
-    requester_model = ct.model_class()
-    requester = get_object_or_404(requester_model, pk=pk)
-    permission = get_object_or_404(Permission, pk=permission_id)
-
-    if action == 'grant':
-        check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
-        title = _(u'Are you sure you wish to grant the permission "%(permission)s" to %(ct_name)s: %(requester)s') % {
-            'permission': permission, 'ct_name': ct.name, 'requester': requester}
-        icon_name = u'key_add.png'
-    elif action == 'revoke':
-        check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
-        title = _(u'Are you sure you wish to revoke the permission "%(permission)s" from %(ct_name)s: %(requester)s') % {
-            'permission': permission, 'ct_name': ct.name, 'requester': requester}
-        icon_name = u'key_delete.png'
-    else:
-        return HttpResponseRedirect(u'/')
+def permission_grant(request):
+    check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
+    items_property_list = loads(request.GET.get('items_property_list', []))
+    post_action_redirect = None
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
+    items = []
+    for item_properties in items_property_list:
+        permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
+        requester_model = ct.model_class()
+        requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
+        items.append({'requester': requester, 'permission': permission})
+        
+    sorted_items = sorted(items, key=operator.itemgetter('requester'))
+    # Group items by requester
+    groups = itertools.groupby(sorted_items, key=operator.itemgetter('requester'))
+    grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
+    
+    # Warning: trial and error black magic ahead
+    title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
+    
+    if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
+        permissions_label = _(u'permission')
+    else:
+        permissions_label = _(u'permissions')
+
     if request.method == 'POST':
-        if action == 'grant':
-            permission_holder, created = PermissionHolder.objects.get_or_create(permission=permission, holder_type=ct, holder_id=requester.pk)
-            if created:
-                messages.success(request, _(u'Permission "%(permission)s" granted to %(ct_name)s: %(requester)s.') % {
-                    'permission': permission, 'ct_name': ct.name, 'requester': requester})
+        for item in items:
+            if item['permission'].grant_to(item['requester']):
+                messages.success(request, _(u'Permission "%(permission)s" granted to: %(requester)s.') % {
+                    'permission': item['permission'], 'requester': item['requester']})
             else:
-                messages.warning(request, _(u'%(ct_name)s: %(requester)s, already had the permission "%(permission)s" granted.') % {
-                    'ct_name': ct.name, 'requester': requester, 'permission': permission})
-        elif action == 'revoke':
-            try:
-                permission_holder = PermissionHolder.objects.get(permission=permission, holder_type=ct, holder_id=requester.pk)
-                permission_holder.delete()
-                messages.success(request, _(u'Permission "%(permission)s" revoked from %(ct_name)s: %(requester)s.') % {
-                    'permission': permission, 'ct_name': ct.name, 'requester': requester})
-            except ObjectDoesNotExist:
-                messages.warning(request, _(u'%(ct_name)s: %(requester)s doesn\'t have the permission "%(permission)s".') % {
-                    'ct_name': ct.name, 'requester': requester, 'permission': permission})
+                messages.warning(request, _(u'%(requester)s, already had the permission "%(permission)s" granted.') % {
+                    'requester': item['requester'], 'permission': item['permission']})
+
         return HttpResponseRedirect(next)
 
-    return render_to_response('generic_confirm.html', {
-        'object': requester,
-        'next': next,
+    context = {
+        'delete_view': True,
         'previous': previous,
-        'title': title,
-        'form_icon': icon_name,
-    }, context_instance=RequestContext(request))
+        'next': next,
+        'form_icon': u'key_add.png',
+    }
+
+    context['title'] = _(u'Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?') % {
+        'permissions_label': permissions_label,
+        'title_suffix': title_suffix,
+    }
+    
+    if len(grouped_items) == 1:
+        context['object'] = grouped_items[0][0]
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+        
+
+def permission_revoke(request):
+    check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
+    items_property_list = loads(request.GET.get('items_property_list', []))
+    post_action_redirect = None
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    items = []
+    for item_properties in items_property_list:
+        permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
+        requester_model = ct.model_class()
+        requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
+        items.append({'requester': requester, 'permission': permission})
+        
+    sorted_items = sorted(items, key=operator.itemgetter('requester'))
+    # Group items by requester
+    groups = itertools.groupby(sorted_items, key=operator.itemgetter('requester'))
+    grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
+    
+    # Warning: trial and error black magic ahead
+    title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
+    
+    if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
+        permissions_label = _(u'permission')
+    else:
+        permissions_label = _(u'permissions')
+
+    if request.method == 'POST':
+        for item in items:
+            if item['permission'].revoke_from(item['requester']):
+                messages.success(request, _(u'Permission "%(permission)s" revoked from: %(requester)s.') % {
+                    'permission': item['permission'], 'requester': item['requester']})
+            else:
+                messages.warning(request, _(u'%(requester)s, doesn\'t have the permission "%(permission)s" granted.') % {
+                    'requester': item['requester'], 'permission': item['permission']})
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'delete_view': True,
+        'previous': previous,
+        'next': next,
+        'form_icon': u'key_delete.png',
+    }
+
+    context['title'] = _(u'Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?') % {
+        'permissions_label': permissions_label,
+        'title_suffix': title_suffix,
+    }
+    
+    if len(grouped_items) == 1:
+        context['object'] = grouped_items[0][0]
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
 
 
 def get_role_members(role):

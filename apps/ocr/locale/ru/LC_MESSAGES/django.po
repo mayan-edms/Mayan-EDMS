@@ -1,0 +1,464 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Sergey Glita <gsv70@mail.ru>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-29 18:47-0400\n"
+"PO-Revision-Date: 2011-11-04 10:48+0000\n"
+"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: __init__.py:28
+msgid "Submit document for OCR"
+msgstr "Отправить документ для распознавания текста"
+
+#: __init__.py:29
+msgid "Delete document for OCR queue"
+msgstr "Удалить документ из очереди распознавания"
+
+#: __init__.py:30
+msgid "Can enable/disable an OCR queue"
+msgstr "Можно включить / выключить очереди распознавания"
+
+#: __init__.py:31
+msgid "Can execute an OCR clean up on all document pages"
+msgstr "Невозможно выполнить распознавание на всех страницах документа"
+
+#: __init__.py:32
+msgid "Can edit an OCR queue properties"
+msgstr "Можно редактировать свойства очереди распознавания"
+
+#: __init__.py:34 __init__.py:56 __init__.py:74
+msgid "OCR"
+msgstr "Распознавание текста"
+
+#: __init__.py:40
+msgid "OCR Setup"
+msgstr "Настройки  распознавания "
+
+#: __init__.py:44
+msgid "submit to OCR queue"
+msgstr "отправить на распознавание"
+
+#: __init__.py:45 __init__.py:46
+msgid "re-queue"
+msgstr "переотправить"
+
+#: __init__.py:47 __init__.py:48 __init__.py:63
+msgid "delete"
+msgstr "удалить"
+
+#: __init__.py:50
+msgid "stop queue"
+msgstr "остановка очереди"
+
+#: __init__.py:51
+msgid "activate queue"
+msgstr "активировать очередь"
+
+#: __init__.py:53
+msgid "clean up pages content"
+msgstr "очистка содержимого страниц"
+
+#: __init__.py:53
+msgid ""
+"Runs a language filter to remove common OCR mistakes from document pages "
+"content."
+msgstr ""
+"Применить языковый фильтр для удаления общих ошибок распознавания "
+"содержимого страниц документа."
+
+#: __init__.py:55
+msgid "queue document list"
+msgstr "список очереди документов"
+
+#: __init__.py:58 views.py:316
+msgid "active tasks"
+msgstr "активные задачи"
+
+#: __init__.py:60
+msgid "transformations"
+msgstr "преобразования"
+
+#: __init__.py:61
+msgid "add transformation"
+msgstr "добавить преобразование"
+
+#: __init__.py:62
+msgid "edit"
+msgstr "редактировать"
+
+#: __init__.py:82
+msgid "Default"
+msgstr "Умолчание"
+
+#: __init__.py:104
+msgid "Checks the OCR queue for pending documents."
+msgstr "Проверить очередь документов ожидающих распознавания ."
+
+#: api.py:119
+msgid "Text from OCR"
+msgstr "Распознанный текст"
+
+#: literals.py:8
+msgid "stopped"
+msgstr "остановлено"
+
+#: literals.py:9
+msgid "active"
+msgstr "активно"
+
+#: literals.py:18
+msgid "pending"
+msgstr "в ожидании"
+
+#: literals.py:19
+msgid "processing"
+msgstr "обработка"
+
+#: literals.py:20
+msgid "error"
+msgstr "ошибка"
+
+#: models.py:22
+msgid "name"
+msgstr "имя"
+
+#: models.py:23
+msgid "label"
+msgstr "этикетка"
+
+#: models.py:27 models.py:47
+msgid "state"
+msgstr "состояние"
+
+#: models.py:32 models.py:40 views.py:44 views.py:337 views.py:378
+#: views.py:408 views.py:444
+msgid "document queue"
+msgstr "очередь документов"
+
+#: models.py:33
+msgid "document queues"
+msgstr "очереди документов"
+
+#: models.py:41
+msgid "document"
+msgstr "документ"
+
+#: models.py:42
+msgid "date time submitted"
+msgstr "дата и время отправления"
+
+#: models.py:43
+msgid "delay ocr"
+msgstr "задержка распознавания"
+
+#: models.py:48
+msgid "result"
+msgstr "результат"
+
+#: models.py:49
+msgid "node name"
+msgstr "имя узла"
+
+#: models.py:53
+msgid "queue document"
+msgstr "документ очереди"
+
+#: models.py:54
+msgid "queue documents"
+msgstr "документы очереди"
+
+#: models.py:63 views.py:48
+msgid "Missing document."
+msgstr "Документа отсутствует."
+
+#: models.py:67
+msgid "Enter a valid value."
+msgstr "Введите допустимое значение."
+
+#: models.py:95 views.py:341
+msgid "order"
+msgstr "порядок"
+
+#: models.py:96 views.py:342 views.py:379 views.py:409
+msgid "transformation"
+msgstr "преобразование"
+
+#: models.py:97 views.py:343
+msgid "arguments"
+msgstr "аргументы"
+
+#: models.py:97
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr "Использование словарей для определения аргументов, например: %s"
+
+#: models.py:107
+msgid "document queue transformation"
+msgstr "преобразование очереди документов "
+
+#: models.py:108
+msgid "document queue transformations"
+msgstr "преобразование очереди документов "
+
+#: statistics.py:8
+#, python-format
+msgid "Document queues: %d"
+msgstr "Очередей документов: %d"
+
+#: statistics.py:9
+#, python-format
+msgid "Queued documents: %d"
+msgstr "Документов в очереди : %d"
+
+#: statistics.py:13
+msgid "OCR statistics"
+msgstr "статистика распознавания"
+
+#: views.py:41
+#, python-format
+msgid "documents in queue: %s"
+msgstr "документы в очереди: %s"
+
+#: views.py:49
+msgid "thumbnail"
+msgstr "миниатюра"
+
+#: views.py:62
+msgid "document queue properties"
+msgstr "свойства очереди документов"
+
+#: views.py:63
+#, python-format
+msgid "Current state: %s"
+msgstr "Текущее состояние:%s"
+
+#: views.py:79 views.py:154
+msgid "Must provide at least one queue document."
+msgstr "Должна быть хотя бы одна очередь документов."
+
+#: views.py:89
+#, python-format
+msgid "Document: %s is being processed and can't be deleted."
+msgstr "Документ: %s обрабатывается и не может быть удален."
+
+#: views.py:92
+#, python-format
+msgid "Queue document: %(document)s deleted successfully."
+msgstr "Очередь документов: %(document)s успешно удалён."
+
+#: views.py:96
+#, python-format
+msgid "Error deleting document: %(document)s; %(error)s"
+msgstr "Ошибка при удалении документа:%(document)s; %(error)s"
+
+#: views.py:109
+#, python-format
+msgid "Are you sure you wish to delete queue document: %s?"
+msgstr "Вы действительно хотите удалить очередь документа: %s?"
+
+#: views.py:111
+#, python-format
+msgid "Are you sure you wish to delete queue documents: %s?"
+msgstr "Вы действительно хотите удалить очереди документов: %s?"
+
+#: views.py:134
+#, python-format
+msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
+msgstr ""
+"Документ: %(document)s добавлен для распознавания в очередь: %(queue)s."
+
+#: views.py:137
+#, python-format
+msgid "Document: %(document)s is already queued."
+msgstr "Документ: %(document)s уже находится в очереди."
+
+#: views.py:165
+#, python-format
+msgid "Document: %s is already being processed and can't be re-queded."
+msgstr ""
+"Документ: %s уже обработан и не может быть повторно добавлен в очередь."
+
+#: views.py:173
+#, python-format
+msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+msgstr "Документ: %(document)s повторно добавлен в очередь: %(queue)s"
+
+#: views.py:176
+#, python-format
+msgid "Document id#: %d, no longer exists."
+msgstr "Документ №: %d больше не существует."
+
+#: views.py:189
+#, python-format
+msgid "Are you sure you wish to re-queue document: %s?"
+msgstr "Вы действительно хотите повторно добавить документ в очередь: %s?"
+
+#: views.py:191
+#, python-format
+msgid "Are you sure you wish to re-queue documents: %s?"
+msgstr "Вы действительно хотите повторно добавить документы в очередь: %s?"
+
+#: views.py:209
+#, python-format
+msgid "Document queue: %s, already stopped."
+msgstr "Очередь документов: %s, уже остановлена."
+
+#: views.py:215
+#, python-format
+msgid "Document queue: %s, stopped successfully."
+msgstr "Очередь документов: %s успешно остановлена."
+
+#: views.py:221
+#, python-format
+msgid "Are you sure you wish to disable document queue: %s"
+msgstr "Вы действительно хотите отключить очередь документов: %s "
+
+#: views.py:236
+#, python-format
+msgid "Document queue: %s, already active."
+msgstr "Очередь документов %s уже активна."
+
+#: views.py:242
+#, python-format
+msgid "Document queue: %s, activated successfully."
+msgstr "Очередь документов %s успешно активирована."
+
+#: views.py:248
+#, python-format
+msgid "Are you sure you wish to activate document queue: %s"
+msgstr "Вы действительно хотите активировать очередь документов %s"
+
+#: views.py:265
+msgid "Are you sure you wish to clean up all the pages content?"
+msgstr "Вы уверены, что хотите очистить все содержимое страниц?"
+
+#: views.py:266
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+"В больших базах данных эта операция может занять некоторое время для "
+"выполнения."
+
+#: views.py:272
+msgid "Document pages content clean up complete."
+msgstr "Чистка содержимого страниц документа завершена."
+
+#: views.py:274
+#, python-format
+msgid "Document pages content clean up error: %s"
+msgstr "Ошибка:%s при чистка содержимого страниц документа"
+
+#: views.py:320
+msgid "node"
+msgstr "узел"
+
+#: views.py:321
+msgid "task id"
+msgstr "идентификатор задачи"
+
+#: views.py:322
+msgid "task name"
+msgstr "имя задачи"
+
+#: views.py:323
+msgid "related object"
+msgstr "связанный объект"
+
+#: views.py:335
+#, python-format
+msgid "transformations for: %s"
+msgstr "преобразования для: %s"
+
+#: views.py:365
+msgid "Queue transformation edited successfully"
+msgstr "Преобразование очереди изменено"
+
+#: views.py:368
+#, python-format
+msgid "Error editing queue transformation; %s"
+msgstr "Ошибка редактирования преобразования очереди; %s"
+
+#: views.py:373
+#, python-format
+msgid "Edit transformation: %s"
+msgstr "Изменить преобразование: %s"
+
+#: views.py:396
+msgid "Queue transformation deleted successfully."
+msgstr "Преобразование очереди успешно удалено."
+
+#: views.py:398
+#, python-format
+msgid "Error deleting queue transformation; %(error)s"
+msgstr "Ошибка при удалении преобразования очереди; %(error)s"
+
+#: views.py:411
+#, python-format
+msgid ""
+"Are you sure you wish to delete queue transformation \"%(transformation)s\""
+msgstr ""
+"Вы действительно хотите удалить преобразование очереди "
+"\"%(transformation)s\""
+
+#: views.py:434
+msgid "Queue transformation created successfully"
+msgstr "Преобразование очереди создано"
+
+#: views.py:437
+#, python-format
+msgid "Error creating queue transformation; %s"
+msgstr "Ошибка при создании преобразования очереди; %s"
+
+#: views.py:446
+#, python-format
+msgid "Create new transformation for queue: %s"
+msgstr "Создать новое преобразование для очереди:% s."
+
+#: conf/settings.py:13
+msgid ""
+"Amount of seconds to delay OCR of documents to allow for the node's storage "
+"replication overhead."
+msgstr ""
+"Количество секунд задержки оптического распознавания документов для "
+"завершения репликации узла."
+
+#: conf/settings.py:14
+msgid "Maximum amount of concurrent document OCRs a node can perform."
+msgstr ""
+"Максимальное количество одновременно распознаваемых документов для узла."
+
+#: conf/settings.py:15
+msgid "Automatically queue newly created documents for OCR."
+msgstr ""
+"Автоматически ставить в очередь новые документы для распознавания текста."
+
+#: conf/settings.py:17
+msgid ""
+"URI in the form: \"memcached://127.0.0.1:11211/\" to specify a cache backend"
+" to use for locking. Multiple hosts can be specified separated by a "
+"semicolon."
+msgstr ""
+"URI в виде: \"memcached://127.0.0.1:11211/\", для определения обработчика, "
+"используемого для блокирования. Несколько хостов могут быть указаны через "
+"точку с запятой."
+
+#: conf/settings.py:18
+msgid "File path to unpaper program."
+msgstr "Путь к программе unpaper."
+
+#: parsers/__init__.py:23
+msgid "Text extracted from PDF"
+msgstr "Текст, извлеченный из PDF"
+
+

@@ -17,7 +17,7 @@ from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
 from converter.api import convert
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
-from mimetype.api import get_document_mimetype, get_icon_file_path, \
+from mimetype.api import get_mimetype, get_icon_file_path, \
     get_error_icon_file_path
 
 from documents.conf.settings import CHECKSUM_FUNCTION
@@ -135,7 +135,7 @@ class Document(models.Model):
         """
         if self.exists():
             try:
-                self.file_mimetype, self.mime_encoding = get_document_mimetype(self)
+                self.file_mimetype, self.mime_encoding = get_mimetype(self.open(), self.get_fullname())
             except:
                 self.file_mimetype = u''
                 self.file_mime_encoding = u''
@@ -248,10 +248,13 @@ class Document(models.Model):
             document_file = document_save_to_temp_dir(self, self.checksum)
             return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations)
 
+    def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
+        image_cache_name = self.get_image_cache_name(page=page)
+        return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
+
     def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
         try:
-            image_cache_name = self.get_image_cache_name(page=page)
-            return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
+            return self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation)
         except UnknownFileFormat:
             return get_icon_file_path(self.file_mimetype)
         except UnkownConvertError:

@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-23 01:00-0400\n"
-"PO-Revision-Date: 2011-06-20 13:17\n"
-"Last-Translator:   <rosario_r@jp.pr.gov>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-30 00:54-0400\n"
+"PO-Revision-Date: 2011-11-04 00:58+0000\n"
+"Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Translated-Using: django-rosetta 0.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:17
 msgid "change password"
@@ -31,9 +30,38 @@ msgstr "detalles de usuario"
 msgid "edit details"
 msgstr "editar detalles"
 
-#: forms.py:89
+#: __init__.py:23 __init__.py:29
+msgid "about"
+msgstr "sobre"
+
+#: __init__.py:24
+msgid "changelog"
+msgstr "cambios"
+
+#: __init__.py:25
+msgid "license"
+msgstr "licencia"
+
+#: forms.py:99
 msgid "Selection"
 msgstr "Selección"
+
+#: forms.py:131
+msgid "Email"
+msgstr "E-mail"
+
+#: forms.py:142
+msgid ""
+"Please enter a correct email and password. Note that the password fields is "
+"case-sensitive."
+msgstr ""
+"Por favor entre la dirección de correo electrónico y la contraseña "
+"correctas.  Tenga en cuenta que los campos de contraseña distingue entre "
+"mayúsculas y minúsculas."
+
+#: forms.py:144
+msgid "This account is inactive."
+msgstr "Esta cuenta está inactiva."
 
 #: literals.py:24
 msgid "A5"
@@ -84,66 +112,82 @@ msgstr "función encontrada"
 msgid "class found: %s"
 msgstr "clase encontrada: %s"
 
-#: views.py:19 templates/password_change_done.html:5
+#: views.py:23 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
 msgstr "Su contraseña se ha modificado correctamente."
 
-#: views.py:35
+#: views.py:39
 msgid "No action selected."
 msgstr "Ninguna acción seleccionada."
 
-#: views.py:39
+#: views.py:43
 msgid "Must select at least one item."
 msgstr "Debe seleccionar al menos un artículo."
 
-#: views.py:72
+#: views.py:76
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "Se agrego exitosamente %(selection)s a %(right_list_title)s."
 
-#: views.py:75 views.py:92
+#: views.py:79 views.py:96
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "No se puede agregar %(selection)s a %(right_list_title)s."
 
-#: views.py:89
+#: views.py:93
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr "Se removió exitosamente %(selection)s de %(right_list_title)s."
 
-#: views.py:107
+#: views.py:111
 msgid "Add"
 msgstr "Agregar"
 
-#: views.py:118
+#: views.py:122
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:141
+#: views.py:145
 msgid "current user details"
 msgstr "detalles del usuario corriente"
 
-#: views.py:158
+#: views.py:162
 msgid "Current user's details updated."
 msgstr "Datos del usuario corriente actualizados."
 
-#: views.py:167
+#: views.py:171
 msgid "edit current user details"
 msgstr "editar detalles del usuario corriente"
 
-#: widgets.py:50
+#: views.py:197
+msgid "Changelog"
+msgstr "Cambios"
+
+#: views.py:210
+msgid "License"
+msgstr "Licencia"
+
+#: widgets.py:58
 msgid "None"
 msgstr "Ninguno"
 
 #: conf/settings.py:15
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
 msgstr ""
 "Directorio temporal utilizado por todo el sitio para almacenar imágenes en "
 "miniatura, vistas previas y los archivos temporales. Si no se especifica "
 "ninguno, se creará utilizando tempfile.mkdtemp ()"
+
+#: conf/settings.py:65
+msgid ""
+"Controls the mechanism used to authenticated user.  Options are: username, "
+"email"
+msgstr ""
+"Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
+"son: 'username' nombre de usuario, 'email' correo electrónico"
 
 #: templates/403.html:3 templates/403.html.py:7
 msgid "Insufficient permissions"
@@ -231,15 +275,19 @@ msgstr "requerido"
 
 #: templates/generic_form_subtemplate.html:76
 #: templates/generic_form_subtemplate.html:78
-#: templates/generic_list_subtemplate.html:48
-#: templates/generic_list_subtemplate.html:168
+#: templates/generic_list_horizontal_subtemplate.html:51
+#: templates/generic_list_horizontal_subtemplate.html:178
+#: templates/generic_list_subtemplate.html:51
+#: templates/generic_list_subtemplate.html:171
 msgid "Save"
 msgstr "Guardar"
 
 #: templates/generic_form_subtemplate.html:76
 #: templates/generic_form_subtemplate.html:78
-#: templates/generic_list_subtemplate.html:48
-#: templates/generic_list_subtemplate.html:168
+#: templates/generic_list_horizontal_subtemplate.html:51
+#: templates/generic_list_horizontal_subtemplate.html:178
+#: templates/generic_list_subtemplate.html:51
+#: templates/generic_list_subtemplate.html:171
 msgid "Submit"
 msgstr "Enviar"
 
@@ -247,12 +295,13 @@ msgstr "Enviar"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/generic_list.html:6
+#: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
 #, python-format
 msgid "List of %(stripped_title)s"
 msgstr "Lista de %(stripped_title)s "
 
-#: templates/generic_list_subtemplate.html:20
+#: templates/generic_list_horizontal_subtemplate.html:23
+#: templates/generic_list_subtemplate.html:23
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
@@ -261,16 +310,19 @@ msgstr ""
 "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página "
 "%(page_number)s de %(total_pages)s)"
 
-#: templates/generic_list_subtemplate.html:22
+#: templates/generic_list_horizontal_subtemplate.html:25
+#: templates/generic_list_subtemplate.html:25
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr "Lista de %(title)s (%(total)s)"
 
-#: templates/generic_list_subtemplate.html:68
+#: templates/generic_list_horizontal_subtemplate.html:72
+#: templates/generic_list_subtemplate.html:71
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/generic_list_subtemplate.html:142
+#: templates/generic_list_horizontal_subtemplate.html:146
+#: templates/generic_list_subtemplate.html:145
 #, python-format
 msgid "There are no %(stripped_title)s"
 msgstr "No hay %(stripped_title)s "
@@ -283,3 +335,5 @@ msgstr "Iniciar sesión"
 #: templates/password_change_form.html:5
 msgid "Password change"
 msgstr "Cambio de contraseña"
+
+

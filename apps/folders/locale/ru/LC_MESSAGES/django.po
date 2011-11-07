@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-29 18:45-0400\n"
+"PO-Revision-Date: 2011-11-03 16:56+0000\n"
+"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: __init__.py:10
+msgid "folder list"
+msgstr "список папок"
+
+#: __init__.py:11 views.py:53
+msgid "create folder"
+msgstr "создать папку"
+
+#: __init__.py:12
+msgid "edit"
+msgstr "редактировать"
+
+#: __init__.py:13
+msgid "delete"
+msgstr "удалить"
+
+#: __init__.py:14
+msgid "remove from folder"
+msgstr "удалить из папки"
+
+#: __init__.py:15
+msgid "folder documents"
+msgstr "документы папки"
+
+#: __init__.py:16
+msgid "add to a folder"
+msgstr "добавить в папку"
+
+#: __init__.py:17 __init__.py:25 models.py:31 views.py:21
+msgid "folders"
+msgstr "папки"
+
+#: forms.py:20
+msgid "Existing folders"
+msgstr "Существующие папки"
+
+#: forms.py:22
+msgid "New folder"
+msgstr "Новая папка"
+
+#: models.py:11
+msgid "title"
+msgstr "название"
+
+#: models.py:12
+msgid "user"
+msgstr "пользователь"
+
+#: models.py:13
+msgid "datetime created"
+msgstr "даты и время создания"
+
+#: models.py:30 models.py:35 views.py:82 views.py:109 views.py:134
+msgid "folder"
+msgstr "папка"
+
+#: models.py:36
+msgid "document"
+msgstr "документ"
+
+#: models.py:42 views.py:257
+msgid "folder document"
+msgstr "документ папки"
+
+#: models.py:43
+msgid "folders documents"
+msgstr "документы из папок"
+
+#: views.py:24
+msgid "created"
+msgstr "создано"
+
+#: views.py:25
+msgid "documents"
+msgstr "документы"
+
+#: views.py:45 views.py:152
+msgid "Folder created successfully"
+msgstr "Папка успешно создана"
+
+#: views.py:48 views.py:154 views.py:188
+#, python-format
+msgid "A folder named: %s, already exists."
+msgstr "Папку с именем %s уже существует."
+
+#: views.py:71
+msgid "Folder edited successfully"
+msgstr "Папка успешно изменена"
+
+#: views.py:74
+#, python-format
+msgid "Error editing folder; %s"
+msgstr "Ошибка редактирования папки; %s."
+
+#: views.py:79
+#, python-format
+msgid "edit folder: %s"
+msgstr "редактировать папку %s"
+
+#: views.py:101
+#, python-format
+msgid "Folder: %s deleted successfully."
+msgstr "Папка %s успешно удалена."
+
+#: views.py:103
+#, python-format
+msgid "Folder: %(folder)s delete error: %(error)s"
+msgstr "При удалении папки %(folder)s произошла ошибка: %(error)s"
+
+#: views.py:114
+#, python-format
+msgid "Are you sure you with to delete the folder: %s?"
+msgstr "Вы хотите удалить папку %s?"
+
+#: views.py:131
+#, python-format
+msgid "documents in folder: %s"
+msgstr "документы в папке: %s"
+
+#: views.py:157 views.py:191
+msgid "Must specify a new folder or an existing one."
+msgstr "Необходимо указать новую илисуществующую папку ."
+
+#: views.py:162 views.py:196
+#, python-format
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgstr "Документ: %(document)s добавлен в папку: %(folder)s успешно."
+
+#: views.py:165 views.py:199
+#, python-format
+msgid "Document: %(document)s is already in folder: %(folder)s."
+msgstr "Документ: %(document)s is already in folder: %(folder)s."
+
+#: views.py:186
+#, python-format
+msgid "Folder \"%s\" created successfully"
+msgstr "Папка \"%s\" создана"
+
+#: views.py:207
+#, python-format
+msgid "add document \"%s\" to a folder"
+msgstr "добавить документ \"%s\" в папку"
+
+#: views.py:223
+#, python-format
+msgid "folders containing: %s"
+msgstr "папки, содержащие %s"
+
+#: views.py:239
+msgid "Must provide at least one folder document."
+msgstr "Должна быть хотя бы одна папка документов."
+
+#: views.py:249
+#, python-format
+msgid "Document: %s removed successfully."
+msgstr "Документ: %s успешно удален."
+
+#: views.py:251
+#, python-format
+msgid "Document: %(document)s delete error: %(error)s"
+msgstr "Документ:%(document)s ошибка удаления: %(error)s"
+
+#: views.py:265
+#, python-format
+msgid ""
+"Are you sure you wish to remove the document: %(document)s from the folder "
+"\"%(folder)s\"?"
+msgstr ""
+"Вы действительно хотите удалить документ: %(document)s из папки \"%(folder)s"
+" \"?"
+
+#: views.py:268
+#, python-format
+msgid ""
+"Are you sure you wish to remove the documents: %(documents)s from the folder"
+" \"%(folder)s\"?"
+msgstr ""
+"Вы действительно хотите удалить документы: %(documents)s из папки "
+"\"%(folder)s\"?"
+
+#: templates/folders_help.html:3
+msgid "What are folders?"
+msgstr "Что такое папки?"
+
+#: templates/folders_help.html:4
+msgid ""
+"These folders can also be described as user folders.  They are a way to let "
+"individual users create their own document organization methods.  Folders "
+"created by one user and the documents contained by them don't affect any "
+"other user folders or documents."
+msgstr ""
+"Эти папки можно описать как пользовательские папки. Они позволяют отдельным "
+"пользователям хранить папки ао своему. Папки, созданные одним пользователем "
+"и документы, содержащиеся в них, не влияют других пользователей."
+
+#: templatetags/folder_tags.py:17
+msgid "Add document to a folder"
+msgstr "Добавить документ в папку"
+
+

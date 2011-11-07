@@ -31,7 +31,7 @@ To enable distributed OCR support
 ---------------------------------
 
 * ``celery`` - asynchronous task queue/job queue based on distributed message passing
-* ``django-celery`` - ``celery`` Django integration
+* ``django-celery`` - celery integration for Django
 
 To store documents in a GridFS database
 ---------------------------------------

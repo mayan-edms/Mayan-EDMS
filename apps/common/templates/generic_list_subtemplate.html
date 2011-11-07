@@ -5,6 +5,7 @@
 {% load non_breakable %}
 {% load variable_tags %}
 {% load main_settings_tags %}
+{% load multiselect_tags %}
 
 {% get_main_setting "DISABLE_ICONS" as disable_icons %}
 
@@ -91,7 +92,13 @@
                     {% for object in object_list %}
                         <tr class="{% cycle 'odd' 'even2' %}">
                         {% if multi_select or multi_select_as_buttons %}    
-                            <td><input type="checkbox" class="checkbox" name="pk_{{ object.pk }}" value="" /></td>            
+                            <td>
+                            {% if multi_select_item_properties %}
+                                <input type="checkbox" class="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" value="" />
+                            {% else %}
+                                <input type="checkbox" class="checkbox" name="pk_{{ object.pk }}" value="" />
+                            {% endif %}
+                            </td>
                         {% endif %}
                         {% if not hide_object %}
                             {% if main_object %}

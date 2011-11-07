@@ -21,7 +21,7 @@ Source Control
 
 **Mayan EDMS** source is controlled with Git_
 
-The project is publicly accessable, hosted and can be cloned from **GitHub** using::
+The project is publicly accessible, hosted and can be cloned from **GitHub** using::
 
     $ git clone git://github.com/rosarior/mayan.git
 
@@ -72,3 +72,10 @@ You can also generate the documentation in format other than HTML.
 
 .. _`reStructured Text`: http://docutils.sourceforge.net/rst.html
 .. _Sphinx: http://sphinx.pocoo.org
+
+
+---------------
+Translations
+---------------
+
+Translations are now being handled online via the **Transifex** website: https://www.transifex.net/projects/p/mayan-edms/

@@ -31,7 +31,7 @@ def get_language_backend():
     try:
         module = import_module(u'.'.join([u'ocr', u'lang', TESSERACT_LANGUAGE]))
     except ImportError:
-        sys.stderr.write(u'\nError: No OCR app language backend for language: %s\n\n' % TESSERACT_LANGUAGE)
+        sys.stderr.write(u'\nWarning: No OCR app language backend for language: %s\n\n' % TESSERACT_LANGUAGE)
         return None
     return module
 

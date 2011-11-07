@@ -113,21 +113,38 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
         for page in value.documentpage_set.all():
-            output.append(
-                u'''<div style="display: inline-block; margin: 5px 10px 10px 10px;">
-                        <div class="tc">%(page_string)s %(page)s</div>
-                        <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
-                            <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
+            try: 
+                page.document.get_valid_image()
+                template =  u'''<div style="display: inline-block; margin: 5px 10px 10px 10px;">
+                            <div class="tc">%(page_string)s %(page)s</div>
+                            <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
+                                <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
+                                    <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
+                                    <noscript>
+                                        <img src="%(img)s?page=%(page)d" alt="%(string)s" />
+                                    </noscript>
+                                </a>
+                            </div>
+                            <div class="tc">
+                                <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
+                            </div>
+                        </div>'''
+            except:
+                template =  u'''<div style="display: inline-block; margin: 5px 10px 10px 10px;">
+                            <div class="tc">%(page_string)s %(page)s</div>
+                            <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
                                 <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
                                 <noscript>
                                     <img src="%(img)s?page=%(page)d" alt="%(string)s" />
                                 </noscript>
-                            </a>
-                        </div>
-                        <div class="tc">
-                            <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
-                        </div>
-                    </div>''' % {
+                            </div>
+                            <div class="tc">
+                                <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
+                            </div>
+                        </div>'''
+                
+            
+            output.append(template % {
                     'url': reverse('document_page_view', args=[page.pk]),
                     'img': reverse('document_preview_multipage', args=[value.pk]),
                     'page': page.page_number,

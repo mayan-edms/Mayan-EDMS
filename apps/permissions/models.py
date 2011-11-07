@@ -48,6 +48,18 @@ class Permission(models.Model):
             if self.has_permission(membership):
                 return True
 
+    def grant_to(self, requester):
+        permission_holder, created = PermissionHolder.objects.get_or_create(permission=self, holder_type=ContentType.objects.get_for_model(requester), holder_id=requester.pk)
+        return created
+
+    def revoke_from(self, holder):
+        try:
+            permission_holder = PermissionHolder.objects.get(permission=self, holder_type=ContentType.objects.get_for_model(holder), holder_id=holder.pk)
+            permission_holder.delete()
+            return True
+        except PermissionHolder.DoesNotExist:
+            return False
+
 
 class PermissionHolder(models.Model):
     permission = models.ForeignKey(Permission, verbose_name=_(u'permission'))

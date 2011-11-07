@@ -25,7 +25,7 @@ class ConverterClass(ConverterBase):
     def get_page_count(self, input_filepath):
         page_count = 1
 
-        mimetype, encoding = get_mimetype(input_filepath)
+        mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath)
         if mimetype == 'application/pdf':
             # If file is a PDF open it with slate to determine the page
             # count
@@ -50,7 +50,7 @@ class ConverterClass(ConverterBase):
 
     def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
         tmpfile = None
-        mimetype, encoding = get_mimetype(input_filepath)
+        mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath)
         if mimetype == 'application/pdf' and USE_GHOSTSCRIPT:
             # If file is a PDF open it with ghostscript and convert it to
             # TIFF

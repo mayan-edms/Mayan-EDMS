@@ -7,16 +7,14 @@ def get_tags_inline_widget(document):
     A tag widget that includes the total tag count for a given document
     """
     tags_template = []
-    tag_block_template = u'<div style="padding: 0px 5px 0px 5px; border: 1px solid black; background: %s;">%s</div>'
     tag_count = document.tags.count()
     if tag_count:
         tags_template.append(u'<div class="tc">')
-        tags_template.append(u'<div>%(tag_string)s: %(tag_count)s</div>' % {
-            'tag_string': _(u'Tags'), 'tag_count': tag_count})
 
         for tag in document.tags.all():
-            tags_template.append(tag_block_template % (tag.tagproperties_set.get().get_color_code(), tag.name))
-
+            tags_template.append(u'<ul class="tags"><li style="background: %s;">%s</li></ul>' % (tag.tagproperties_set.get().get_color_code(), tag.name))
+        
+        tags_template.append(u'<div style="clear:both;"></div>')
         tags_template.append(u'</div>')
     return mark_safe(u''.join(tags_template))
 
@@ -27,15 +25,15 @@ def get_tags_inline_widget_simple(document):
     given document
     """
     tags_template = []
-    tag_block_template = u'<div style="padding: 0px 5px 0px 5px; border: 1px solid black; background: %s;">%s</div>'
+
     tag_count = document.tags.count()
     if tag_count:
-        tags_template.append(u'<div class="tc">')
-
+        tags_template.append('<ul class="tags">')
         for tag in document.tags.all():
-            tags_template.append(tag_block_template % (tag.tagproperties_set.get().get_color_code(), tag.name))
+            tags_template.append('<li style="background: %s">%s</li>' % (tag.tagproperties_set.get().get_color_code(), tag.name))
 
-        tags_template.append(u'</div>')
+        tags_template.append('</ul>')
+
     return mark_safe(u''.join(tags_template))
 
 

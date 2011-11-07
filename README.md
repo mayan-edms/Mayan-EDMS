@@ -9,6 +9,8 @@ Open source, Django based document manager with custom metadata indexing, file s
 
 [Documentation](http://readthedocs.org/docs/mayan/en/latest/)
 
+[Translations](https://www.transifex.net/projects/p/mayan-edms/)
+
 
 License
 -------

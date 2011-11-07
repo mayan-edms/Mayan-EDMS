@@ -1,71 +1,54 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
+# Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-23 02:23-0400\n"
-"PO-Revision-Date: 2011-07-23 02:24\n"
-"Last-Translator: Administrador Local <rosario_r@jp.pr.gov>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-29 18:46-0400\n"
+"PO-Revision-Date: 2011-11-04 00:56+0000\n"
+"Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"X-Translated-Using: django-rosetta 0.5.6\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:21
-msgid "settings"
-msgstr "configuración"
+#: __init__.py:15
+msgid "maintenance"
+msgstr "mantenimiento"
 
-#: __init__.py:22
+#: __init__.py:16
 msgid "statistics"
 msgstr "estadísticas"
 
-#: __init__.py:23
+#: __init__.py:17
 msgid "diagnostics"
 msgstr "diagnósticos"
 
-#: __init__.py:24
-msgid "tools"
-msgstr "herramientas"
-
-#: __init__.py:25
-msgid "admin site"
-msgstr "sitio administrativo"
-
-#: __init__.py:26
+#: __init__.py:18
 msgid "sentry"
 msgstr "sentry"
 
-#: __init__.py:27
-msgid "document types"
-msgstr "tipos de documento"
+#: __init__.py:19
+msgid "admin site"
+msgstr "sitio administrativo"
 
-#: __init__.py:43
+#: __init__.py:30
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:45
+#: __init__.py:32
 msgid "search"
 msgstr "búsqueda"
 
-#: __init__.py:49
-msgid "setup"
-msgstr "instalación"
-
-#: __init__.py:50
-msgid "about"
-msgstr "acerca"
-
 #: views.py:41
-msgid "tools menu"
-msgstr "menú de herramientas"
+msgid "maintenance menu"
+msgstr "menú de mantenimiento"
 
 #: views.py:53
 msgid "Statistics"
@@ -76,8 +59,12 @@ msgid "Diagnostics"
 msgstr "Diagnósticos"
 
 #: conf/settings.py:12
-msgid "Controls whether the search functionality is provided by a sidebar widget or by a menu entry."
-msgstr "Controla si la funcionalidad de búsqueda es proporcionada por una barra lateral o por una entrada de menú."
+msgid ""
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr ""
+"Controla si la funcionalidad de búsqueda es proporcionada por una barra "
+"lateral o por una entrada de menú."
 
 #: templates/about.html:5
 msgid "About this program"
@@ -88,8 +75,8 @@ msgid "Version"
 msgstr "Versión"
 
 #: templates/base.html:28
-msgid "(DEBUG Mode)"
-msgstr "(Modo debug)"
+msgid "(DEBUG)"
+msgstr "(DEBUG)"
 
 #: templates/base.html:117
 msgid "User"
@@ -103,87 +90,60 @@ msgstr "Anónimo"
 msgid "User details"
 msgstr "Detalles de usuario"
 
-#: templates/base.html:135
-msgid "Go"
-msgstr "Ir"
-
-#: templates/base.html:140
+#: templates/base.html:139
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:140
+#: templates/base.html:139
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:220
+#: templates/base.html:219
 msgid "Secondary menu"
 msgstr "Menú secundario"
 
-#: templates/base.html:237
+#: templates/base.html:236
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Acciones para %(name)s: %(navigation_object)s "
 
-#: templates/base.html:239 templates/base.html.py:260
+#: templates/base.html:238 templates/base.html.py:270
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Acciones para: %(navigation_object)s "
 
-#: templates/base.html:242
+#: templates/base.html:241
 msgid "Available actions"
 msgstr "Acciones disponibles"
 
-#: templates/base.html:258
+#: templates/base.html:253 templates/base.html.py:285
+msgid "Related actions"
+msgstr "Acciones relacionadas"
+
+#: templates/base.html:268
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Acciones para %(object_name)s: %(navigation_object)s "
 
-#: templates/base.html:263
+#: templates/base.html:273
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/base.html:276
-msgid "Related actions"
-msgstr "Acciones relacionadas"
-
-#: templates/base.html:287
+#: templates/base.html:298
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
 
 #: templates/project_description.html:6
-msgid "Open source, Django based electronic document manager with custom metadata, indexing, tagging, file serving integration and OCR capabilities"
-msgstr "Gestor documental de código abierto, basado en Django con metadatos personaliables, indexación, etiquedado de documentos, integración de servicio de archivos y capacidades de OCR"
+msgid ""
+"Open source, Django based electronic document manager with custom metadata, "
+"indexing, tagging, file serving integration and OCR capabilities"
+msgstr ""
+"Gestor documental de código abierto, basado en Django con metadatos "
+"personaliables, indexación, etiquedado de documentos, integración de "
+"servicio de archivos y capacidades de OCR"
 
 #: templates/project_description.html:15
 msgid "Released under the GPL V3 License"
 msgstr "Publicado bajo la licencia GPL v3"
 
-#~ msgid "New password"
-#~ msgstr "Nueva contraseña"
 
-#~ msgid "name"
-#~ msgstr "nombre"
-
-#~ msgid "value"
-#~ msgstr "valor"
-
-#~ msgid "description"
-#~ msgstr "descripción"
-
-#~ msgid "exists"
-#~ msgstr "existe"
-
-#~ msgid "function found"
-#~ msgstr "función encontrada"
-
-#~ msgid "class found: %s"
-#~ msgstr "clase encontrada: %s"
-
-#~ msgid "\"Find all duplicates\": Search all the documents' checksums and return a list of the exact matches."
-#~ msgstr "\"Encontrar todos los duplicados\": Buscar todas las sumas de comprobación de documentos y devolver una lista de las coincidencias exactas."
-
-#~ msgid "\"Recreate index links\": Deletes and creates from scratch all the file system indexing links."
-#~ msgstr "\"Volver a crear vínculos índice\": borra y crea de la nada todos los enlaces de indexación de archivos del sistema."
-
-#~ msgid "\"Clean up pages content\": Runs a language filter to remove common OCR mistakes from document pages content."
-#~ msgstr "\"Limpiar contenido\": Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR del contenido de las páginas de documentos."

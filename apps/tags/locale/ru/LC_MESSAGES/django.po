@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-29 18:49-0400\n"
+"PO-Revision-Date: 2011-11-04 15:20+0000\n"
+"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: __init__.py:13
+msgid "Create new tags"
+msgstr "Создание новых меток"
+
+#: __init__.py:14
+msgid "Attach exising tags"
+msgstr "Прикрепить существующие метки"
+
+#: __init__.py:15
+msgid "Remove tags from documents"
+msgstr "Удаление тегов из документов"
+
+#: __init__.py:16
+msgid "Delete global tags"
+msgstr "Удалить общие метки"
+
+#: __init__.py:17
+msgid "Edit global tags"
+msgstr "Изменить общие метки"
+
+#: __init__.py:18
+msgid "View a document's tags"
+msgstr "Просмотр тегов документа"
+
+#: __init__.py:20 widgets.py:15
+msgid "Tags"
+msgstr "Метки"
+
+#: __init__.py:28
+msgid "tag list"
+msgstr "список меток"
+
+#: __init__.py:29
+msgid "create new tag"
+msgstr "создать новую метку"
+
+#: __init__.py:30
+msgid "attach tag"
+msgstr "пометить"
+
+#: __init__.py:31 __init__.py:32
+msgid "remove"
+msgstr "удаление"
+
+#: __init__.py:33 __init__.py:58 utils.py:14 views.py:144
+msgid "tags"
+msgstr "метки"
+
+#: __init__.py:34 __init__.py:37
+msgid "delete"
+msgstr "удалить"
+
+#: __init__.py:35
+msgid "edit"
+msgstr "редактировать"
+
+#: __init__.py:36
+msgid "tagged documents"
+msgstr "помеченные документы"
+
+#: __init__.py:41 models.py:46
+msgid "color"
+msgstr "цвет"
+
+#: __init__.py:45
+msgid "color name"
+msgstr "название цвета"
+
+#: forms.py:14
+msgid "New tag"
+msgstr "Новая метка"
+
+#: forms.py:15 forms.py:24
+msgid "Color"
+msgstr "Цвет"
+
+#: forms.py:16
+msgid "Existing tags"
+msgstr "Существующие метки"
+
+#: forms.py:23
+msgid "Name"
+msgstr "Имя"
+
+#: models.py:18
+msgid "Blue"
+msgstr "Синий"
+
+#: models.py:19
+msgid "Cyan"
+msgstr "Голубой"
+
+#: models.py:20
+msgid "Coral"
+msgstr "Коралловый"
+
+#: models.py:21
+msgid "Green-Yellow"
+msgstr "Зелено-желтый"
+
+#: models.py:22
+msgid "Khaki"
+msgstr "Хаки"
+
+#: models.py:23
+msgid "LightGrey"
+msgstr "Светло-серый"
+
+#: models.py:24
+msgid "Magenta"
+msgstr "Пурпурный"
+
+#: models.py:25
+msgid "Red"
+msgstr "Красный"
+
+#: models.py:26
+msgid "Orange"
+msgstr "Оранжевый"
+
+#: models.py:27
+msgid "Yellow"
+msgstr "Желтый"
+
+#: models.py:45 views.py:185 views.py:233 views.py:248
+msgid "tag"
+msgstr "метка"
+
+#: models.py:49
+msgid "tag properties"
+msgstr "свойства метки"
+
+#: models.py:50
+msgid "tags properties"
+msgstr "свойства метки"
+
+#: views.py:33
+msgid "Tag already exists."
+msgstr "Метка уже существует."
+
+#: views.py:40
+msgid "Tag created succesfully."
+msgstr "Метка создана."
+
+#: views.py:46
+msgid "create tag"
+msgstr "создать метку"
+
+#: views.py:73 views.py:112
+msgid "Must choose either a new tag or an existing one."
+msgstr "Необходимо выбрать новые метки или существующие."
+
+#: views.py:77 views.py:116
+#, python-format
+msgid "Document is already tagged as \"%s\""
+msgstr "Документ уже помечены как \"%s\""
+
+#: views.py:86
+#, python-format
+msgid "Tag \"%s\" added successfully."
+msgstr "Метка \"%s\" добавлена"
+
+#: views.py:124
+#, python-format
+msgid "Tag \"%s\" added and attached successfully."
+msgstr "Метка\"%s\" добавлена и прикреплена."
+
+#: views.py:126
+#, python-format
+msgid "Tag \"%s\" attached successfully."
+msgstr "Помечено как \"%s\""
+
+#: views.py:133
+#, python-format
+msgid "attach tag to: %s"
+msgstr "пометить как %s"
+
+#: views.py:149
+msgid "tagged items"
+msgstr "помеченные элементы"
+
+#: views.py:166 views.py:280
+msgid "Must provide at least one tag."
+msgstr "Должна быть хотя бы одна метка."
+
+#: views.py:176
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "Метка \"%s\"удалён."
+
+#: views.py:178 views.py:294
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "Ошибка при удалении метки \"%(tag)s\": %(error)s"
+
+#: views.py:193
+#, python-format
+msgid "Are you sure you wish to delete the tag: %s?"
+msgstr "Вы действительно хотите удалить метку: %s?"
+
+#: views.py:194 views.py:197
+msgid "Will be removed from all documents."
+msgstr "Будет удален из всех документов."
+
+#: views.py:196
+#, python-format
+msgid "Are you sure you wish to delete the tags: %s?"
+msgstr "Вы действительно хотите удалить метки: %s?"
+
+#: views.py:221
+msgid "Tag updated succesfully."
+msgstr "Метка обновлена."
+
+#: views.py:230
+#, python-format
+msgid "edit tag: %s"
+msgstr "редактировать метку %s"
+
+#: views.py:245
+#, python-format
+msgid "documents with the tag \"%s\""
+msgstr "документы с тегом \"%s\""
+
+#: views.py:258
+#, python-format
+msgid "tags for: %s"
+msgstr "теги для:%s"
+
+#: views.py:292
+#, python-format
+msgid "Tag \"%s\" removed successfully."
+msgstr "Метка \"%s\" удалена."
+
+#: views.py:308
+#, python-format
+msgid "Are you sure you wish to remove the tag: %s?"
+msgstr "Вы действительно хотите снять метку: %s?"
+
+#: views.py:310
+#, python-format
+msgid "Are you sure you wish to remove the tags: %s?"
+msgstr "Вы действительно хотите снять метку: %s?"
+
+#: templatetags/tags_tags.py:17
+msgid "Add tag to document"
+msgstr "Добавить тег к документу"
+
+
