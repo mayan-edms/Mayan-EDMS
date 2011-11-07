@@ -4,6 +4,10 @@
   (document based and file based)
 * Updated python converter backend, document model and staging module
   to use the new get_mimetype API
+* Only allow clickable thumbnails for document and staging files with a
+  valid image
+* Removed tag count from the group document list widget to conserve
+  vertical space
 
 2011-11-06
 ----------
