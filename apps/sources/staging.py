@@ -138,6 +138,7 @@ class StagingFile(object):
         try:
             return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
         except UnknownFileFormat:
-            return get_icon_file_path(get_mimetype(self.filepath))
+            mimetype, encoding = get_mimetype(open(self.filepath, 'rb'), self.filepath)
+            return get_icon_file_path(mimetype)
         except UnkownConvertError:
             return get_error_icon_file_path()

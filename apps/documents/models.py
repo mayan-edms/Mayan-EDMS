@@ -17,7 +17,7 @@ from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
 from converter.api import convert
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
-from mimetype.api import get_document_mimetype, get_icon_file_path, \
+from mimetype.api import get_mimetype, get_icon_file_path, \
     get_error_icon_file_path
 
 from documents.conf.settings import CHECKSUM_FUNCTION
@@ -135,7 +135,7 @@ class Document(models.Model):
         """
         if self.exists():
             try:
-                self.file_mimetype, self.mime_encoding = get_document_mimetype(self)
+                self.file_mimetype, self.mime_encoding = get_mimetype(self.open(), self.get_fullname())
             except:
                 self.file_mimetype = u''
                 self.file_mime_encoding = u''
