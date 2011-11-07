@@ -67,6 +67,8 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
     page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
     transformations = kwargs.get('transformations', [])
+    if transformations is None:
+        transformations = []
 
     unoconv_output = None
 
