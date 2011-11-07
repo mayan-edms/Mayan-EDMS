@@ -1,5 +1,5 @@
-2011-11-07
-----------
+Version 0.9.0
+-------------
 * Simplified getting mimetypes from files by merging 2 implementations
   (document based and file based)
 * Updated python converter backend, document model and staging module
@@ -9,42 +9,25 @@
 * Removed tag count from the group document list widget to conserve
   vertical space
 * Updated required Django version to 1.3.1
-* Removed the included 3rd party module django-sendfile
+* Removed the included 3rd party module django-sendfile, now added to
+  the requirement files.
 
     * User should do a pip install -r requirements/production.txt to update
 
-2011-11-06
-----------
+* Changed to Semantic Versioning (http://semver.org/), with
+  recommendations 7, 8 and 9 causing the most effect in the versioning number.
 * Added Russian locale post OCR cleanup backend (Сергей Глита [Sergei Glita])
-* Reduce severity of the messages displayed when no OCR cleanup backend
+* Reduced severity of the messages displayed when no OCR cleanup backend
   is found for a language
-
-2011-11-04
-----------
-* Complete Portuguese and Russian translations
-
-2011-11-03
-----------
-* Portuguese translation updates (Emerson Soares and Renata Oliveira)
-* Initial Russian translation (Sergey Glita)
+* Complete Portuguese translation (Emerson Soares and Renata Oliveira)
+* Complete Russian translation (Сергей Глита [Sergei Glita])
 * Added animate.css to use CSS to animate flash messages with better
   fallback on non JS browsers
-
-2011-10-30
-----------
 * The admin and sentry links are no longer hard-coded (Meurig Freeman)
-
-2011-10-24
-----------
 * Improved appearance of the document tag widget
-
-2011-10-18
-----------
+  (https://p.twimg.com/Ac0Q0b-CAAE1lfA.png:large)
 * Added django_compress and cssmin to the requirements files and enabled
   django_compress for CSS and JS files
-
-2011-10-16
-----------
 * Added granting and revoking permission methods to the permission model
 * Correctly calculate the mimetype icons paths when on development mode
 * Added a new more comprehensive method of passing multiple variables
@@ -56,21 +39,8 @@
   on Webfaction
 * Added an entry in the documentation to the screencast explaining how
   to install Mayan EDMS on DjangoZoom
-
-2011-10-05
-----------
-* Initial translation to Portuguese
-
-2011-09-29
-----------
 * Added required changes to add Mayan EDMS to Transifex.com
-
-2011-09-13
-----------
 * Fixed the apache contrib file static file directory name
-
-2011-08-19
-----------
 * Added improved documentation
 
 Version 0.8.3
