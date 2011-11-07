@@ -82,9 +82,9 @@ def get_error_icon_file_path():
         return os.path.join(settings.PROJECT_ROOT, 'apps', 'mimetype', 'static', MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
     else:
         return os.path.join(settings.STATIC_ROOT, MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
-   
 
-def get_mimetype(filepath):
+   
+def get_mimetype(file_description, filepath):
     """
     Determine a file's mimetype by calling the system's libmagic
     library via python-magic or fallback to use python's mimetypes
@@ -92,50 +92,16 @@ def get_mimetype(filepath):
     """
     file_mimetype = u''
     file_mime_encoding = u''
-    source = None
     if USE_PYTHON_MAGIC:
-        if os.path.exists(filepath):
-            try:
-                source = open(filepath, 'rb')
-                mime = magic.Magic(mime=True)
-                file_mimetype = mime.from_buffer(source.read())
-                source.seek(0)
-                mime_encoding = magic.Magic(mime_encoding=True)
-                file_mime_encoding = mime_encoding.from_buffer(source.read())
-            finally:
-                if source:
-                    source.close()
+        mime = magic.Magic(mime=True)
+        file_mimetype = mime.from_buffer(file_description.read())
+        file_description.seek(0)
+        mime_encoding = magic.Magic(mime_encoding=True)
+        file_mime_encoding = mime_encoding.from_buffer(file_description.read())
     else:
         path, filename = os.path.split(filepath)
         file_mimetype, file_mime_encoding = mimetypes.guess_type(filename)
 
-    return file_mimetype, file_mime_encoding
-
-
-def get_document_mimetype(document):
-    """
-    Determine a documents mimetype by calling the system's libmagic
-    library via python-magic or fallback to use python's mimetypes
-    library
-    """
-    file_mimetype = u''
-    file_mime_encoding = u''
-
-    source = None
-
-    if USE_PYTHON_MAGIC:
-        if document.exists():
-            try:
-                source = document.open()
-                mime = magic.Magic(mime=True)
-                file_mimetype = mime.from_buffer(source.read())
-                source.seek(0)
-                mime_encoding = magic.Magic(mime_encoding=True)
-                file_mime_encoding = mime_encoding.from_buffer(source.read())
-            finally:
-                if source:
-                    source.close()
-    else:
-        file_mimetype, file_mime_encoding = mimetypes.guess_type(document.get_fullname())
+    file_description.close()
 
     return file_mimetype, file_mime_encoding
