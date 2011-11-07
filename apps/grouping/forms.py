@@ -30,8 +30,9 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
         for document in value['group_data']:
             tags_template = get_tags_inline_widget(document)
 
-            output.append(
-                u'''<div style="display: inline-block; margin: 0px 10px 10px 10px; %(current)s">
+            try:
+                document.get_valid_image()
+                template = u'''<div style="display: inline-block; margin: 0px 10px 10px 10px; %(current)s">
                         <div class="tc">%(document_name)s</div>
                         <div class="tc">%(page_string)s: %(document_pages)d</div>
                         %(tags_template)s
@@ -46,7 +47,24 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
                         <div class="tc">
                             <a href="%(url)s"><span class="famfam active famfam-page_go"></span>%(details_string)s</a>
                         </div>
-                    </div>''' % {
+                    </div>'''
+            except:
+                template = u'''<div style="display: inline-block; margin: 0px 10px 10px 10px; %(current)s">
+                        <div class="tc">%(document_name)s</div>
+                        <div class="tc">%(page_string)s: %(document_pages)d</div>
+                        %(tags_template)s
+                        <div class="tc">
+                            <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(static_url)s/images/ajax-loader.gif" data-href="%(img)s" alt="%(string)s" />
+                            <noscript>
+                                <img style="border: 1px solid black; margin: 10px;" src="%(img)s" alt="%(string)s" />
+                            </noscript>
+                        </div>
+                        <div class="tc">
+                            <a href="%(url)s"><span class="famfam active famfam-page_go"></span>%(details_string)s</a>
+                        </div>
+                    </div>'''
+                    
+            output.append(template % {
                     'url': reverse('document_view_simple', args=[document.pk]),
                     'img': reverse('document_preview_multipage', args=[document.pk]),
                     'current': u'border: 5px solid black; padding: 3px;' if value['current_document'] == document else u'',
