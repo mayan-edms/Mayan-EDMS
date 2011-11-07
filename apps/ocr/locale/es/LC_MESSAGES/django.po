@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:47-0400\n"
-"PO-Revision-Date: 2011-11-04 17:11+0000\n"
+"PO-Revision-Date: 2011-11-07 04:17+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: __init__.py:32
 msgid "Can edit an OCR queue properties"
-msgstr ""
+msgstr "Puede editar las propiedades de un cola de OCR"
 
 #: __init__.py:34 __init__.py:56 __init__.py:74
 msgid "OCR"
@@ -106,7 +106,7 @@ msgstr "Por defecto"
 
 #: __init__.py:104
 msgid "Checks the OCR queue for pending documents."
-msgstr ""
+msgstr "Comprueba la cola de OCR para documentos pendientes."
 
 #: api.py:119
 msgid "Text from OCR"
@@ -208,11 +208,11 @@ msgstr "Utilize diccionarios para indentificar argumentos, por ejemplo: %s"
 
 #: models.py:107
 msgid "document queue transformation"
-msgstr ""
+msgstr "transformación de cola de documentos"
 
 #: models.py:108
 msgid "document queue transformations"
-msgstr ""
+msgstr "transformaciones de cola de documentos"
 
 #: statistics.py:8
 #, python-format
@@ -393,7 +393,7 @@ msgstr "Transformación de la cola editada con exitosamente"
 #: views.py:368
 #, python-format
 msgid "Error editing queue transformation; %s"
-msgstr ""
+msgstr "Error al modificar la transformación de cola; %s"
 
 #: views.py:373
 #, python-format
@@ -402,32 +402,34 @@ msgstr "Editar transformación: %s"
 
 #: views.py:396
 msgid "Queue transformation deleted successfully."
-msgstr ""
+msgstr "Transformación de la cola borrada exitosamente."
 
 #: views.py:398
 #, python-format
 msgid "Error deleting queue transformation; %(error)s"
-msgstr ""
+msgstr "Error al tratar de borrar la transformación de cola; %(error)s "
 
 #: views.py:411
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 msgstr ""
+"¿Está seguro que desea borrar la transformación de cola "
+"\"%(transformation)s\""
 
 #: views.py:434
 msgid "Queue transformation created successfully"
-msgstr ""
+msgstr "Transformación de cola creada exitosamente"
 
 #: views.py:437
 #, python-format
 msgid "Error creating queue transformation; %s"
-msgstr ""
+msgstr "Error al crear la transformación de cola; %s"
 
 #: views.py:446
 #, python-format
 msgid "Create new transformation for queue: %s"
-msgstr ""
+msgstr "Crear nueva transformación para la cola: %s"
 
 #: conf/settings.py:13
 msgid ""
