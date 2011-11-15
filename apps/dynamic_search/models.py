@@ -1,4 +1,5 @@
 import urlparse
+import urllib
 
 from datetime import datetime
 
@@ -6,6 +7,7 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.utils.encoding import smart_unicode, smart_str
 
 from dynamic_search.managers import RecentSearchManager
 from dynamic_search.api import registered_search_dict
@@ -23,10 +25,10 @@ class RecentSearch(models.Model):
     objects = RecentSearchManager()
 
     def __unicode__(self):
-        query_dict = urlparse.parse_qs(self.query)
+        query_dict = urlparse.parse_qs(urllib.unquote_plus(smart_str(self.query)))
         if 'q' in query_dict:
             # Is a simple search
-            display_string = u' '.join(query_dict['q'])
+            display_string = smart_unicode(' '.join(query_dict['q']))
         else:
             # Advanced search
             advanced_string = []
@@ -38,7 +40,7 @@ class RecentSearch(models.Model):
                     # Find the field name title
                     for model_field in model_entry.get('fields', [{}]):
                         if model_field.get('name') == field_name:
-                            advanced_string.append(u'%s: %s' % (model_field.get('title', model_field['name']), u' '.join(value)))
+                            advanced_string.append(u'%s: %s' % (model_field.get('title', model_field['name']), smart_unicode(' '.join(value))))
 
             display_string = u', '.join(advanced_string)
         return u'%s (%s)' % (display_string, self.hits)
