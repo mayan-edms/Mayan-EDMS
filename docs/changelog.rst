@@ -1,3 +1,11 @@
+Version 0.9.1
+-------------
+* Added handling percent encoded unicode query strings in search URL,
+  thanks to (Сергей Глита [Sergei Glita]) for reporting.
+* Added a FAQ explaing how to fix MySQL collation related error when
+  doing searches also thanks to (Сергей Глита [Sergei Glita]) for
+  reporting this one.
+
 Version 0.9.0
 -------------
 * Simplified getting mimetypes from files by merging 2 implementations

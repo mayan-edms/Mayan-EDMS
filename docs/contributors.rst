@@ -20,6 +20,7 @@ Bug reports
 * Joost Cassee (joost@cassee.net, https://github.com/jcassee)
 * Brian Huxley
 * dAnjou (https://github.com/dAnjou)
+* Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 
 Patches
 -------
