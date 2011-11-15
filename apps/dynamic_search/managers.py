@@ -10,7 +10,7 @@ class RecentSearchManager(models.Manager):
     def add_query_for_user(self, user, query, hits):
         parsed_query = urlparse.parse_qs(query)
         for key, value in parsed_query.items():
-            parsed_query[key] = u' '.join(value)
+            parsed_query[key] = ' '.join(value)
 
         if 'q=' in query:
             # Is a simple query
