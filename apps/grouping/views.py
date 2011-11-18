@@ -17,8 +17,8 @@ from grouping.models import DocumentGroup
 from grouping.conf.settings import SHOW_EMPTY_GROUPS
 from grouping.forms import DocumentDataGroupForm, DocumentGroupForm
 from grouping import document_group_link
-from grouping import PERMISSION_DOCUMENT_GROUP_VIEW, \
-    PERMISSION_DOCUMENT_GROUP_CREATE, PERMISSION_DOCUMENT_GROUP_DELETE
+from grouping import PERMISSION_SMART_LINK_VIEW, \
+    PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE
 
 
 def document_group_action(request):
@@ -38,7 +38,7 @@ def document_group_view(request, document_id, document_group_id):
 
     return document_list(
         request,
-        title=_(u'documents in group: %(group)s') % {
+        title=_(u'documents in smart link: %(group)s') % {
             'group': object_list['title']
         },
         object_list=object_list['documents'],
@@ -54,7 +54,7 @@ def groups_for_document(request, document_id):
     document_groups, errors = DocumentGroup.objects.get_groups_for(document)
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
-            messages.warning(request, _(u'Document group query error: %s' % error))
+            messages.warning(request, _(u'Smart link query error: %s' % error))
 
     if not SHOW_EMPTY_GROUPS:
         #If GROUP_SHOW_EMPTY is False, remove empty groups from
@@ -65,7 +65,7 @@ def groups_for_document(request, document_id):
         subtemplates_list = [{
             'name': 'generic_form_subtemplate.html',
             'context': {
-                'title': _(u'document groups (%s)') % len(document_groups.keys()),
+                'title': _(u'smart links (%s)') % len(document_groups.keys()),
                 'form': DocumentDataGroupForm(
                     groups=document_groups, current_document=document,
                     links=[document_group_link]
@@ -79,7 +79,7 @@ def groups_for_document(request, document_id):
         subtemplates_list = [{
             'name': 'generic_subtemplate.html',
             'context': {
-                'content': _(u'There no defined groups for the current document.'),
+                'content': _(u'There no defined smart links for the current document.'),
             }
         }]
 
@@ -91,10 +91,10 @@ def groups_for_document(request, document_id):
     
     
 def document_group_list(request):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_GROUP_VIEW])
+    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
     
     return render_to_response('generic_list.html', {
-        'title': _(u'document groups'),
+        'title': _(u'smart links'),
         'object_list': DocumentGroup.objects.all(),
         'extra_columns': [
             {'name': _(u'dynamic title'), 'attribute': 'dynamic_title'},
@@ -105,25 +105,25 @@ def document_group_list(request):
         
         
 def document_group_create(request):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_GROUP_CREATE])
+    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
 
     if request.method == 'POST':
         form = DocumentGroupForm(request.POST)
         if form.is_valid():
             document_group = form.save()
-            messages.success(request, _(u'Document group: %s created successfully.') % document_group)
+            messages.success(request, _(u'Smart link: %s created successfully.') % document_group)
             return HttpResponseRedirect(reverse('document_group_list'))
     else:
         form = DocumentGroupForm()
 
     return render_to_response('generic_form.html', {
         'form': form,
-        'title': _(u'Create new document group')
+        'title': _(u'Create new smart link')
     }, context_instance=RequestContext(request))    
     
     
 def document_group_delete(request, document_group_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_GROUP_DELETE])
+    check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
     
     document_group = get_object_or_404(DocumentGroup, pk=document_group_id)
 
@@ -133,9 +133,9 @@ def document_group_delete(request, document_group_id):
     if request.method == 'POST':
         try:
             document_group.delete()
-            messages.success(request, _(u'Document group: %s deleted successfully.') % document_group)
+            messages.success(request, _(u'Smart link: %s deleted successfully.') % document_group)
         except Exception, error:
-            messages.error(request, _(u'Error deleting document group: %(document_group)s; %(error)s.') % {
+            messages.error(request, _(u'Error deleting smart link: %(document_group)s; %(error)s.') % {
                 'document_group': document_group,
                 'error': error
             })
@@ -146,10 +146,7 @@ def document_group_delete(request, document_group_id):
         'object': document_group,
         'next': next,
         'previous': previous,
-        'form_icon': u'package_delete.png',
+        'form_icon': u'link_delete.png',
         #'temporary_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
     }, context_instance=RequestContext(request))    
-                
-        
-        
-          
+       

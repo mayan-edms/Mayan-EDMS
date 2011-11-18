@@ -9,22 +9,22 @@ from documents.models import Document
 from grouping.models import DocumentGroup
 
 
-PERMISSION_DOCUMENT_GROUP_VIEW = {'namespace': 'grouping', 'name': 'group_view', 'label': _(u'View existing document groups')}
-PERMISSION_DOCUMENT_GROUP_CREATE = {'namespace': 'grouping', 'name': 'group_create', 'label': _(u'Create new document groups')}
-PERMISSION_DOCUMENT_GROUP_DELETE = {'namespace': 'grouping', 'name': 'group_delete', 'label': _(u'Delete document groups')}
+PERMISSION_SMART_LINK_VIEW = {'namespace': 'grouping', 'name': 'group_view', 'label': _(u'View existing smart links')}
+PERMISSION_SMART_LINK_CREATE = {'namespace': 'grouping', 'name': 'group_create', 'label': _(u'Create new smart links')}
+PERMISSION_SMART_LINK_DELETE = {'namespace': 'grouping', 'name': 'group_delete', 'label': _(u'Delete smart links')}
 
-set_namespace_title('grouping', _(u'Grouping'))
-register_permission(PERMISSION_DOCUMENT_GROUP_VIEW)
-register_permission(PERMISSION_DOCUMENT_GROUP_CREATE)
-register_permission(PERMISSION_DOCUMENT_GROUP_DELETE)
+set_namespace_title('grouping', _(u'Smart links'))
+register_permission(PERMISSION_SMART_LINK_VIEW)
+register_permission(PERMISSION_SMART_LINK_CREATE)
+register_permission(PERMISSION_SMART_LINK_DELETE)
 
-document_group_link = {'text': _(u'group actions'), 'view': 'document_group_view', 'famfam': 'package_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-groups_for_document = {'text': _(u'groups'), 'view': 'groups_for_document', 'args': 'object.pk', 'famfam': 'package_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_group_link = {'text': _(u'smart links actions'), 'view': 'document_group_view', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+groups_for_document = {'text': _(u'smart links'), 'view': 'groups_for_document', 'args': 'object.pk', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
-document_groups_setup = {'text': _(u'document groups'), 'view': 'document_group_list', 'icon': 'package.png', 'permissions': [PERMISSION_DOCUMENT_GROUP_VIEW]}
-document_group_list = {'text': _(u'document groups'), 'view': 'document_group_list', 'famfam': 'package', 'permissions': [PERMISSION_DOCUMENT_GROUP_VIEW]}
-document_group_create = {'text': _(u'create new'), 'view': 'document_group_create', 'famfam': 'package_add', 'permissions': [PERMISSION_DOCUMENT_GROUP_CREATE]}
-document_group_delete = {'text': _(u'delete'), 'view': 'document_group_delete', 'args': 'object.pk', 'famfam': 'package_delete', 'permissions': [PERMISSION_DOCUMENT_GROUP_DELETE]}
+document_groups_setup = {'text': _(u'smart links'), 'view': 'document_group_list', 'icon': 'link.png', 'permissions': [PERMISSION_SMART_LINK_VIEW]}
+document_group_list = {'text': _(u'smart links'), 'view': 'document_group_list', 'famfam': 'link', 'permissions': [PERMISSION_SMART_LINK_VIEW]}
+document_group_create = {'text': _(u'create new'), 'view': 'document_group_create', 'famfam': 'link_add', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
+document_group_delete = {'text': _(u'delete'), 'view': 'document_group_delete', 'args': 'object.pk', 'famfam': 'link_delete', 'permissions': [PERMISSION_SMART_LINK_DELETE]}
 
 register_links(Document, [groups_for_document], menu_name='form_header')
 

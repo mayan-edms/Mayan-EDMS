@@ -17,12 +17,12 @@ class DocumentGroup(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = _(u'document group')
-        verbose_name_plural = _(u'document groups')
+        verbose_name = _(u'smart link')
+        verbose_name_plural = _(u'smart links')
 
 
 class DocumentGroupItem(models.Model):
-    document_group = models.ForeignKey(DocumentGroup, verbose_name=_(u'document group'))
+    document_group = models.ForeignKey(DocumentGroup, verbose_name=_(u'smart link'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
     foreign_document_data = models.CharField(max_length=32, verbose_name=_(u'foreign document data'), help_text=_(u'This represents the metadata of all other documents.  Available objects: `document.<attribute>` and `metadata.<metadata_type_name>`.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
@@ -36,5 +36,5 @@ class DocumentGroupItem(models.Model):
         return u'[%s] %s foreign %s %s %s %s' % (u'x' if self.enabled else u' ', self.get_inclusion_display(), self.foreign_document_data, _(u'not') if self.negated else u'', self.get_operator_display(), self.expression)
 
     class Meta:
-        verbose_name = _(u'group item')
-        verbose_name_plural = _(u'group items')
+        verbose_name = _(u'link condition')
+        verbose_name_plural = _(u'link conditions')

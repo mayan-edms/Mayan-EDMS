@@ -83,7 +83,7 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
                     'document_name': document,
                     'static_url': settings.STATIC_URL,
                     'tags_template': tags_template if tags_template else u'',
-                    'string': _(u'group document'),
+                    'string': _(u'smart links'),
                 })
         output.append(u'</div>')
         output.append(
