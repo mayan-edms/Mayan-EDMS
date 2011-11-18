@@ -5,13 +5,20 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 
+from common.utils import generate_choices_w_labels, encapsulate
+from common.widgets import two_state_template
+
 from documents.models import Document
 from documents.views import document_list
 
+from permissions.api import check_permissions
+
 from grouping.models import DocumentGroup
 from grouping.conf.settings import SHOW_EMPTY_GROUPS
-from grouping.forms import DocumentDataGroupForm
+from grouping.forms import DocumentDataGroupForm, DocumentGroupForm
 from grouping import document_group_link
+from grouping import PERMISSION_DOCUMENT_GROUP_VIEW, \
+    PERMISSION_DOCUMENT_GROUP_CREATE, PERMISSION_DOCUMENT_GROUP_DELETE
 
 
 def document_group_action(request):
@@ -80,4 +87,69 @@ def groups_for_document(request, document_id):
         'object': document,
         'document': document,
         'subtemplates_list': subtemplates_list,
-    }, context_instance=RequestContext(request))        
+    }, context_instance=RequestContext(request))
+    
+    
+def document_group_list(request):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_GROUP_VIEW])
+    
+    return render_to_response('generic_list.html', {
+        'title': _(u'document groups'),
+        'object_list': DocumentGroup.objects.all(),
+        'extra_columns': [
+            {'name': _(u'dynamic title'), 'attribute': 'dynamic_title'},
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+        ],        
+        'hide_link': True,
+        }, context_instance=RequestContext(request))
+        
+        
+def document_group_create(request):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_GROUP_CREATE])
+
+    if request.method == 'POST':
+        form = DocumentGroupForm(request.POST)
+        if form.is_valid():
+            document_group = form.save()
+            messages.success(request, _(u'Document group: %s created successfully.') % document_group)
+            return HttpResponseRedirect(reverse('document_group_list'))
+    else:
+        form = DocumentGroupForm()
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'title': _(u'Create new document group')
+    }, context_instance=RequestContext(request))    
+    
+    
+def document_group_delete(request, document_group_id):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_GROUP_DELETE])
+    
+    document_group = get_object_or_404(DocumentGroup, pk=document_group_id)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            document_group.delete()
+            messages.success(request, _(u'Document group: %s deleted successfully.') % document_group)
+        except Exception, error:
+            messages.error(request, _(u'Error deleting document group: %(document_group)s; %(error)s.') % {
+                'document_group': document_group,
+                'error': error
+            })
+        return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'delete_view': True,
+        'object': document_group,
+        'next': next,
+        'previous': previous,
+        'form_icon': u'package_delete.png',
+        #'temporary_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
+    }, context_instance=RequestContext(request))    
+                
+        
+        
+          

@@ -8,6 +8,13 @@ from django.conf import settings
 
 from tags.widgets import get_tags_inline_widget
 
+from grouping.models import DocumentGroup
+
+
+class DocumentGroupForm(forms.ModelForm):
+    class Meta:
+        model = DocumentGroup
+        
 
 class DocumentGroupImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
