@@ -7,7 +7,7 @@ from documents.models import Document
 from grouping.literals import INCLUSION_AND, INCLUSION_OR
 
 
-class DocumentGroupManager(models.Manager):
+class SmartLinkManager(models.Manager):
     def get_groups_for(self, document, group_obj=None):
         errors = []
         document_groups = {}

@@ -102,8 +102,8 @@ def role_create(request):
 def role_delete(request, role_id):
     check_permissions(request.user, [PERMISSION_ROLE_DELETE])
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     return delete_object(request, model=Role, object_id=role_id,
         template_name='generic_confirm.html',
@@ -122,8 +122,8 @@ def permission_grant(request):
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     items = []
     for item_properties in items_property_list:

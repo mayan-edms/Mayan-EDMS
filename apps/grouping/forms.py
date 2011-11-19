@@ -8,10 +8,27 @@ from django.conf import settings
 
 from tags.widgets import get_tags_inline_widget
 
+from grouping.models import DocumentGroup, DocumentGroupItem
 
-class DocumentGroupImageWidget(forms.widgets.Widget):
+
+class SmartLinkForm(forms.ModelForm):
+    class Meta:
+        model = DocumentGroup
+
+        
+class SmartLinkConditionForm(forms.ModelForm):
+    class Meta:
+        model = DocumentGroupItem
+        
+    def __init__(self, *args, **kwargs):
+        super(DocumentGroupItemForm, self).__init__(*args, **kwargs)
+        self.fields['document_group'].widget = forms.HiddenInput()    
+
+
+class SmartLinkImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
+        # TODO: convert to navigation app
         if value['links']:
             output.append(u'<div class="group navform wat-cf">')
             for link in value['links']:
@@ -22,7 +39,7 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
                 ''' % {
                     'famfam': link.get('famfam', u'link'),
                     'text': capfirst(link['text']),
-                    'action': reverse('document_group_view', args=[value['current_document'].pk, value['group'].pk])
+                    'action': reverse(link.get('view'), args=[value['current_document'].pk, value['group'].pk])
                 })
             output.append(u'</div>')
 
@@ -76,7 +93,7 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
                     'document_name': document,
                     'static_url': settings.STATIC_URL,
                     'tags_template': tags_template if tags_template else u'',
-                    'string': _(u'group document'),
+                    'string': _(u'smart links'),
                 })
         output.append(u'</div>')
         output.append(
@@ -86,19 +103,19 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
         return mark_safe(u''.join(output))
 
 
-class DocumentDataGroupForm(forms.Form):
+class SmartLinkInstanceForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        groups = kwargs.pop('groups', None)
+        smart_link_instances = kwargs.pop('smart_link_instances', None)
         links = kwargs.pop('links', None)
         current_document = kwargs.pop('current_document', None)
-        super(DocumentDataGroupForm, self).__init__(*args, **kwargs)
-        for group, data in groups.items():
-            self.fields['preview-%s' % group] = forms.CharField(
-                widget=DocumentGroupImageWidget(),
+        super(SmartLinkInstanceForm, self).__init__(*args, **kwargs)
+        for smart_link_instance, data in smart_link_instances.items():
+            self.fields['preview-%s' % smart_link_instance] = forms.CharField(
+                widget=SmartLinkImageWidget(),
                 label=u'%s (%d)' % (unicode(data['title']), len(data['documents'])),
                 required=False,
                 initial={
-                    'group': group,
+                    'group': smart_link_instance,
                     'group_data': data['documents'],
                     'current_document': current_document,
                     'links': links
