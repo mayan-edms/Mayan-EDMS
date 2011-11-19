@@ -15,15 +15,15 @@ from permissions.api import check_permissions
 
 from grouping.models import DocumentGroup, DocumentGroupItem
 from grouping.conf.settings import SHOW_EMPTY_GROUPS
-from grouping.forms import (DocumentDataGroupForm, DocumentGroupForm,
-    DocumentGroupItemForm)
-from grouping import document_group_link
+from grouping.forms import (SmartLinkInstanceForm, SmartLinkForm,
+    SmartLinkConditionForm)
+from grouping import smart_link_instance_view_link
 from grouping import (PERMISSION_SMART_LINK_VIEW,
     PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
     PERMISSION_SMART_LINK_EDIT)
 
 
-def document_group_action(request):
+def smart_link_action(request):
     check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
     
     action = request.GET.get('action', None)
@@ -35,12 +35,12 @@ def document_group_action(request):
     return HttpResponseRedirect(action)
 
 
-def document_group_view(request, document_id, document_group_id):
+def smart_link_instance_view(request, document_id, smart_link_pk):
     check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
-    document_group = get_object_or_404(DocumentGroup, pk=document_group_id)
-    object_list, errors = DocumentGroup.objects.get_groups_for(document, document_group)
+    smart_link = get_object_or_404(DocumentGroup, pk=smart_link_pk)
+    object_list, errors = DocumentGroup.objects.get_groups_for(document, smart_link)
 
     return document_list(
         request,
@@ -54,12 +54,12 @@ def document_group_view(request, document_id, document_group_id):
     )
 
 
-def groups_for_document(request, document_id):
+def smart_link_instances_for_document(request, document_id):
     check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
 
     subtemplates_list = []
     document = get_object_or_404(Document, pk=document_id)
-    document_groups, errors = DocumentGroup.objects.get_groups_for(document)
+    smart_links, errors = DocumentGroup.objects.get_groups_for(document)
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
             messages.warning(request, _(u'Smart link query error: %s' % error))
@@ -69,16 +69,16 @@ def groups_for_document(request, document_id):
         #dictionary
         document_groups = dict([(group, data) for group, data in document_groups.items() if data['documents']])
 
-    if document_groups:
+    if smart_links:
         subtemplates_list = [{
             'name': 'generic_form_subtemplate.html',
             'context': {
-                'title': _(u'smart links (%s)') % len(document_groups.keys()),
-                'form': DocumentDataGroupForm(
-                    groups=document_groups, current_document=document,
-                    links=[document_group_link]
+                'title': _(u'smart links (%s)') % len(smart_links.keys()),
+                'form': SmartLinkInstanceForm(
+                    groups=smart_links, current_document=document,
+                    links=[smart_link_instance_view_link]
                 ),
-                'form_action': reverse('document_group_action'),
+                'form_action': reverse('smart_link_action'),
                 'submit_method': 'GET',
             }
         }]
@@ -118,13 +118,13 @@ def document_group_create(request):
     check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
 
     if request.method == 'POST':
-        form = DocumentGroupForm(request.POST)
+        form = SmartLinkForm(request.POST)
         if form.is_valid():
             document_group = form.save()
             messages.success(request, _(u'Smart link: %s created successfully.') % document_group)
             return HttpResponseRedirect(reverse('document_group_list'))
     else:
-        form = DocumentGroupForm()
+        form = SmartLinkForm()
 
     return render_to_response('generic_form.html', {
         'form': form,
@@ -132,19 +132,19 @@ def document_group_create(request):
     }, context_instance=RequestContext(request))    
     
     
-def document_group_edit(request, document_group_id):
+def document_group_edit(request, smart_link_pk):
     check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
     
-    smart_link = get_object_or_404(DocumentGroup, pk=document_group_id)
+    smart_link = get_object_or_404(DocumentGroup, pk=smart_link_pk)
 
     if request.method == 'POST':
-        form = DocumentGroupForm(request.POST, instance=smart_link)
+        form = SmartLinkForm(request.POST, instance=smart_link)
         if form.is_valid():
             smart_link = form.save()
             messages.success(request, _(u'Smart link: %s edited successfully.') % smart_link)
             return HttpResponseRedirect(reverse('document_group_list'))
     else:
-        form = DocumentGroupForm(instance=smart_link)
+        form = SmartLinkForm(instance=smart_link)
 
     return render_to_response('generic_form.html', {
         'navigation_object_name': 'smart_link',
@@ -154,10 +154,10 @@ def document_group_edit(request, document_group_id):
     }, context_instance=RequestContext(request))    
         
     
-def document_group_delete(request, document_group_id):
+def document_group_delete(request, smart_link_pk):
     check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
     
-    smart_link = get_object_or_404(DocumentGroup, pk=document_group_id)
+    smart_link = get_object_or_404(DocumentGroup, pk=smart_link_pk)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
@@ -208,13 +208,13 @@ def smart_link_condition_create(request, smart_link_pk):
     smart_link = get_object_or_404(DocumentGroup, pk=smart_link_pk)
 
     if request.method == 'POST':
-        form = DocumentGroupItemForm(request.POST, initial={'document_group': smart_link})
+        form = SmartLinkConditionForm(request.POST, initial={'document_group': smart_link})
         if form.is_valid():
             smart_link_condition = form.save()
             messages.success(request, _(u'Smart link condition: "%s" created successfully.') % smart_link_condition)
             return HttpResponseRedirect(reverse('smart_link_condition_list', args=[smart_link.pk]))
     else:
-        form = DocumentGroupItemForm(initial={'document_group': smart_link})
+        form = SmartLinkConditionForm(initial={'document_group': smart_link})
 
     return render_to_response('generic_form.html', {
         'form': form,
@@ -233,13 +233,13 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
-        form = DocumentGroupItemForm(request.POST, instance=smart_link_condition)
+        form = SmartLinkConditionForm(request.POST, instance=smart_link_condition)
         if form.is_valid():
             smart_link_condition = form.save()
             messages.success(request, _(u'Smart link condition: "%s" created successfully.') % smart_link_condition)
             return HttpResponseRedirect(next)
     else:
-        form = DocumentGroupItemForm(instance=smart_link_condition)
+        form = SmartLinkConditionForm(instance=smart_link_condition)
 
     return render_to_response('generic_form.html', {
         'form': form,

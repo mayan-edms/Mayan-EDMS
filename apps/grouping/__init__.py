@@ -20,8 +20,8 @@ register_permission(PERMISSION_SMART_LINK_CREATE)
 register_permission(PERMISSION_SMART_LINK_DELETE)
 register_permission(PERMISSION_SMART_LINK_EDIT)
 
-document_group_link = {'text': _(u'smart links actions'), 'view': 'document_group_view', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-groups_for_document = {'text': _(u'smart links'), 'view': 'groups_for_document', 'args': 'object.pk', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+smart_link_instance_view_link = {'text': _(u'smart links actions'), 'view': 'smart_link_instance_view', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+smart_link_instances_for_document = {'text': _(u'smart links'), 'view': 'smart_link_instances_for_document', 'args': 'object.pk', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 document_groups_setup = {'text': _(u'smart links'), 'view': 'document_group_list', 'icon': 'link.png', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 document_group_list = {'text': _(u'smart links list'), 'view': 'document_group_list', 'famfam': 'link', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
@@ -34,7 +34,7 @@ smart_link_condition_create = {'text': _(u'create condition'), 'view': 'smart_li
 smart_link_condition_edit = {'text': _(u'edit'), 'view': 'smart_link_condition_edit', 'args': 'condition.pk', 'famfam': 'cog_edit', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT]}
 smart_link_condition_delete = {'text': _(u'delete'), 'view': 'smart_link_condition_delete', 'args': 'condition.pk', 'famfam': 'cog_delete', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT]}
 
-register_links(Document, [groups_for_document], menu_name='form_header')
+register_links(Document, [smart_link_instances_for_document], menu_name='form_header')
 
 register_links(DocumentGroup, [document_group_edit, document_group_delete, smart_link_condition_list])
 register_links(DocumentGroupItem, [smart_link_condition_edit, smart_link_condition_delete])

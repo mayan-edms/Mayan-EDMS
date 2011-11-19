@@ -11,12 +11,12 @@ from tags.widgets import get_tags_inline_widget
 from grouping.models import DocumentGroup, DocumentGroupItem
 
 
-class DocumentGroupForm(forms.ModelForm):
+class SmartLinkForm(forms.ModelForm):
     class Meta:
         model = DocumentGroup
 
         
-class DocumentGroupItemForm(forms.ModelForm):
+class SmartLinkConditionForm(forms.ModelForm):
     class Meta:
         model = DocumentGroupItem
         
@@ -25,9 +25,10 @@ class DocumentGroupItemForm(forms.ModelForm):
         self.fields['document_group'].widget = forms.HiddenInput()    
 
 
-class DocumentGroupImageWidget(forms.widgets.Widget):
+class SmartLinkImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         output = []
+        # TODO: convert to navigation app
         if value['links']:
             output.append(u'<div class="group navform wat-cf">')
             for link in value['links']:
@@ -38,7 +39,7 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
                 ''' % {
                     'famfam': link.get('famfam', u'link'),
                     'text': capfirst(link['text']),
-                    'action': reverse('document_group_view', args=[value['current_document'].pk, value['group'].pk])
+                    'action': reverse(link.get('view'), args=[value['current_document'].pk, value['group'].pk])
                 })
             output.append(u'</div>')
 
@@ -102,15 +103,15 @@ class DocumentGroupImageWidget(forms.widgets.Widget):
         return mark_safe(u''.join(output))
 
 
-class DocumentDataGroupForm(forms.Form):
+class SmartLinkInstanceForm(forms.Form):
     def __init__(self, *args, **kwargs):
         groups = kwargs.pop('groups', None)
         links = kwargs.pop('links', None)
         current_document = kwargs.pop('current_document', None)
-        super(DocumentDataGroupForm, self).__init__(*args, **kwargs)
+        super(SmartLinkInstanceForm, self).__init__(*args, **kwargs)
         for group, data in groups.items():
             self.fields['preview-%s' % group] = forms.CharField(
-                widget=DocumentGroupImageWidget(),
+                widget=SmartLinkImageWidget(),
                 label=u'%s (%d)' % (unicode(data['title']), len(data['documents'])),
                 required=False,
                 initial={

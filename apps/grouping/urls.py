@@ -1,14 +1,14 @@
 from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('grouping.views',
-    url(r'^action/$', 'document_group_action', (), 'document_group_action'),
-    url(r'^document/(?P<document_id>\d+)/group/(?P<document_group_id>\d+)/$', 'document_group_view', (), 'document_group_view'),
-    url(r'^groups/for_document/(?P<document_id>\d+)/$', 'groups_for_document', (), 'groups_for_document'),
+    url(r'^action/$', 'smart_link_action', (), 'smart_link_action'),
+    url(r'^document/(?P<document_id>\d+)/smart_link/(?P<smart_link_pk>\d+)/$', 'smart_link_instance_view', (), 'smart_link_instance_view'),
+    url(r'^smart/for_document/(?P<document_id>\d+)/$', 'smart_link_instances_for_document', (), 'smart_link_instances_for_document'),
     
     url(r'^setup/list/$', 'document_group_list', (), 'document_group_list'),
     url(r'^setup/create/$', 'document_group_create', (), 'document_group_create'),
-    url(r'^setup/(?P<document_group_id>\d+)/delete/$', 'document_group_delete', (), 'document_group_delete'),
-    url(r'^setup/(?P<document_group_id>\d+)/edit/$', 'document_group_edit', (), 'document_group_edit'),
+    url(r'^setup/(?P<smart_link_pk>\d+)/delete/$', 'document_group_delete', (), 'document_group_delete'),
+    url(r'^setup/(?P<smart_link_pk>\d+)/edit/$', 'document_group_edit', (), 'document_group_edit'),
     
     url(r'^setup/(?P<smart_link_pk>\d+)/condition/list/$', 'smart_link_condition_list', (), 'smart_link_condition_list'),
     url(r'^setup/(?P<smart_link_pk>\d+)/condition/create/$', 'smart_link_condition_create', (), 'smart_link_condition_create'),
