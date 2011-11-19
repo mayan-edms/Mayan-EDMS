@@ -19,10 +19,7 @@ class SmartLinkForm(forms.ModelForm):
 class SmartLinkConditionForm(forms.ModelForm):
     class Meta:
         model = DocumentGroupItem
-        
-    def __init__(self, *args, **kwargs):
-        super(DocumentGroupItemForm, self).__init__(*args, **kwargs)
-        self.fields['document_group'].widget = forms.HiddenInput()    
+        exclude = ('document_group',)
 
 
 class SmartLinkImageWidget(forms.widgets.Widget):

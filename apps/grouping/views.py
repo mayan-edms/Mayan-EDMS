@@ -235,8 +235,10 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     if request.method == 'POST':
         form = SmartLinkConditionForm(request.POST, instance=smart_link_condition)
         if form.is_valid():
-            smart_link_condition = form.save()
-            messages.success(request, _(u'Smart link condition: "%s" created successfully.') % smart_link_condition)
+            new_smart_link_condition = form.save(commit=False)
+            new_smart_link_condition.document_group = smart_link_condition.document_group
+            new_smart_link_condition.save()
+            messages.success(request, _(u'Smart link condition: "%s" edited successfully.') % smart_link_condition)
             return HttpResponseRedirect(next)
     else:
         form = SmartLinkConditionForm(instance=smart_link_condition)
