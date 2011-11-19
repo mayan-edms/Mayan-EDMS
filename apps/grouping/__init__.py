@@ -1,13 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links
+from navigation.api import register_links, register_sidebar_template
 from permissions.api import register_permission, set_namespace_title
 from project_setup.api import register_setup
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 
 from grouping.models import DocumentGroup, DocumentGroupItem
-
 
 PERMISSION_SMART_LINK_VIEW = {'namespace': 'grouping', 'name': 'group_view', 'label': _(u'View existing smart links')}
 PERMISSION_SMART_LINK_CREATE = {'namespace': 'grouping', 'name': 'group_create', 'label': _(u'Create new smart links')}
@@ -42,3 +41,4 @@ register_links(['document_group_list', 'document_group_create', 'document_group_
 register_links(['smart_link_condition_list', 'smart_link_condition_create', 'smart_link_condition_edit', 'smart_link_condition_delete'], [smart_link_condition_create], menu_name='sidebar')
 
 register_setup(document_groups_setup)
+register_sidebar_template(['document_group_list'], 'smart_links_help.html')
