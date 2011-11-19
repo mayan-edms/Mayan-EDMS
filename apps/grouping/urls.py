@@ -8,4 +8,10 @@ urlpatterns = patterns('grouping.views',
     url(r'^setup/list/$', 'document_group_list', (), 'document_group_list'),
     url(r'^setup/create/$', 'document_group_create', (), 'document_group_create'),
     url(r'^setup/(?P<document_group_id>\d+)/delete/$', 'document_group_delete', (), 'document_group_delete'),
+    url(r'^setup/(?P<document_group_id>\d+)/edit/$', 'document_group_edit', (), 'document_group_edit'),
+    
+    url(r'^setup/(?P<smart_link_pk>\d+)/condition/list/$', 'smart_link_condition_list', (), 'smart_link_condition_list'),
+    url(r'^setup/(?P<smart_link_pk>\d+)/condition/create/$', 'smart_link_condition_create', (), 'smart_link_condition_create'),
+    url(r'^setup/smart_link/condition/(?P<smart_link_condition_pk>\d+)/edit/$', 'smart_link_condition_edit', (), 'smart_link_condition_edit'),
+    url(r'^setup/smart_link/condition/(?P<smart_link_condition_pk>\d+)/delete/$', 'smart_link_condition_delete', (), 'smart_link_condition_delete'),
 )

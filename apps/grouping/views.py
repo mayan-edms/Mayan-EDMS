@@ -13,15 +13,19 @@ from documents.views import document_list
 
 from permissions.api import check_permissions
 
-from grouping.models import DocumentGroup
+from grouping.models import DocumentGroup, DocumentGroupItem
 from grouping.conf.settings import SHOW_EMPTY_GROUPS
-from grouping.forms import DocumentDataGroupForm, DocumentGroupForm
+from grouping.forms import (DocumentDataGroupForm, DocumentGroupForm,
+    DocumentGroupItemForm)
 from grouping import document_group_link
-from grouping import PERMISSION_SMART_LINK_VIEW, \
-    PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE
+from grouping import (PERMISSION_SMART_LINK_VIEW,
+    PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
+    PERMISSION_SMART_LINK_EDIT)
 
 
 def document_group_action(request):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    
     action = request.GET.get('action', None)
 
     if not action:
@@ -32,6 +36,8 @@ def document_group_action(request):
 
 
 def document_group_view(request, document_id, document_group_id):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+
     document = get_object_or_404(Document, pk=document_id)
     document_group = get_object_or_404(DocumentGroup, pk=document_group_id)
     object_list, errors = DocumentGroup.objects.get_groups_for(document, document_group)
@@ -49,6 +55,8 @@ def document_group_view(request, document_id, document_group_id):
 
 
 def groups_for_document(request, document_id):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+
     subtemplates_list = []
     document = get_object_or_404(Document, pk=document_id)
     document_groups, errors = DocumentGroup.objects.get_groups_for(document)
@@ -91,7 +99,7 @@ def groups_for_document(request, document_id):
     
     
 def document_group_list(request):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
     
     return render_to_response('generic_list.html', {
         'title': _(u'smart links'),
@@ -101,6 +109,8 @@ def document_group_list(request):
             {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],        
         'hide_link': True,
+        'list_object_variable_name': 'smart_link',
+
         }, context_instance=RequestContext(request))
         
         
@@ -122,31 +132,159 @@ def document_group_create(request):
     }, context_instance=RequestContext(request))    
     
     
+def document_group_edit(request, document_group_id):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
+    
+    smart_link = get_object_or_404(DocumentGroup, pk=document_group_id)
+
+    if request.method == 'POST':
+        form = DocumentGroupForm(request.POST, instance=smart_link)
+        if form.is_valid():
+            smart_link = form.save()
+            messages.success(request, _(u'Smart link: %s edited successfully.') % smart_link)
+            return HttpResponseRedirect(reverse('document_group_list'))
+    else:
+        form = DocumentGroupForm(instance=smart_link)
+
+    return render_to_response('generic_form.html', {
+        'navigation_object_name': 'smart_link',
+        'smart_link': smart_link,
+        'form': form,
+        'title': _(u'Edit smart link: %s') % smart_link
+    }, context_instance=RequestContext(request))    
+        
+    
 def document_group_delete(request, document_group_id):
     check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
     
-    document_group = get_object_or_404(DocumentGroup, pk=document_group_id)
+    smart_link = get_object_or_404(DocumentGroup, pk=document_group_id)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
         try:
-            document_group.delete()
-            messages.success(request, _(u'Smart link: %s deleted successfully.') % document_group)
+            smart_link.delete()
+            messages.success(request, _(u'Smart link: %s deleted successfully.') % smart_link)
         except Exception, error:
-            messages.error(request, _(u'Error deleting smart link: %(document_group)s; %(error)s.') % {
-                'document_group': document_group,
+            messages.error(request, _(u'Error deleting smart link: %(smart_link)s; %(error)s.') % {
+                'smart_link': smart_link,
                 'error': error
             })
         return HttpResponseRedirect(next)
 
     return render_to_response('generic_confirm.html', {
         'delete_view': True,
-        'object': document_group,
+        'navigation_object_name': 'smart_link',
+        'smart_link': smart_link,
+        'title': _(u'Are you sure you wish to delete smart link: %s?') % smart_link,
         'next': next,
         'previous': previous,
         'form_icon': u'link_delete.png',
-        #'temporary_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
     }, context_instance=RequestContext(request))    
        
+
+def smart_link_condition_list(request, smart_link_pk):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    
+    smart_link = get_object_or_404(DocumentGroup, pk=smart_link_pk)
+    
+    return render_to_response('generic_list.html', {
+        'title': _(u'conditions for smart link: %s') % smart_link,
+        'object_list': smart_link.documentgroupitem_set.all(),
+        'extra_columns': [
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+        ],        
+        'hide_link': True,
+        'smart_link': smart_link,
+        'navigation_object_name': 'smart_link',
+        'list_object_variable_name': 'condition',        
+        }, context_instance=RequestContext(request))
+
+
+def smart_link_condition_create(request, smart_link_pk):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+
+    smart_link = get_object_or_404(DocumentGroup, pk=smart_link_pk)
+
+    if request.method == 'POST':
+        form = DocumentGroupItemForm(request.POST, initial={'document_group': smart_link})
+        if form.is_valid():
+            smart_link_condition = form.save()
+            messages.success(request, _(u'Smart link condition: "%s" created successfully.') % smart_link_condition)
+            return HttpResponseRedirect(reverse('smart_link_condition_list', args=[smart_link.pk]))
+    else:
+        form = DocumentGroupItemForm(initial={'document_group': smart_link})
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'title': _(u'Add new conditions to smart link: "%s"') % smart_link,
+        'navigation_object_name': 'smart_link',
+        'smart_link': smart_link,        
+    }, context_instance=RequestContext(request))    
+
+
+def smart_link_condition_edit(request, smart_link_condition_pk):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+
+    smart_link_condition = get_object_or_404(DocumentGroupItem, pk=smart_link_condition_pk)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = DocumentGroupItemForm(request.POST, instance=smart_link_condition)
+        if form.is_valid():
+            smart_link_condition = form.save()
+            messages.success(request, _(u'Smart link condition: "%s" created successfully.') % smart_link_condition)
+            return HttpResponseRedirect(next)
+    else:
+        form = DocumentGroupItemForm(instance=smart_link_condition)
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'title': _(u'Edit smart link condition'),
+        'next': next,
+        'previous': previous,
+        'condition': smart_link_condition,
+        'smart_link': smart_link_condition.document_group,
+        'navigation_object_list': [
+            {'object': 'smart_link', 'name': _(u'smart link')},
+            {'object': 'condition', 'name': _(u'condition')}
+        ],
+        
+    }, context_instance=RequestContext(request))    
+
+
+def smart_link_condition_delete(request, smart_link_condition_pk):
+    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+
+    smart_link_condition = get_object_or_404(DocumentGroupItem, pk=smart_link_condition_pk)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            smart_link_condition.delete()
+            messages.success(request, _(u'Smart link condition: "%s" deleted successfully.') % smart_link_condition)
+        except Exception, error:
+            messages.error(request, _(u'Error deleting smart link condition: %(smart_link_condition)s; %(error)s.') % {
+                'smart_link_condition': smart_link_condition,
+                'error': error
+            })
+        return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'delete_view': True,
+        'condition': smart_link_condition,
+        'smart_link': smart_link_condition.document_group,
+        'navigation_object_list': [
+            {'object': 'smart_link', 'name': _(u'smart link')},
+            {'object': 'condition', 'name': _(u'condition')}
+        ],
+        'title': _(u'Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
+        'next': next,
+        'previous': previous,
+        'form_icon': u'cog_delete.png',
+    }, context_instance=RequestContext(request))    

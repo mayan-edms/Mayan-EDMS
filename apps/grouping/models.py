@@ -8,7 +8,7 @@ from grouping.literals import OPERATOR_CHOICES, INCLUSION_AND, \
 
 class DocumentGroup(models.Model):
     title = models.CharField(max_length=96, verbose_name=_(u'title'))
-    dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_(u'dynamic title'))
+    dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_(u'dynamic title'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables `metadata` and document properties under the variable `document`.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
     objects = DocumentGroupManager()
@@ -33,7 +33,7 @@ class DocumentGroupItem(models.Model):
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
     def __unicode__(self):
-        return u'[%s] %s foreign %s %s %s %s' % (u'x' if self.enabled else u' ', self.get_inclusion_display(), self.foreign_document_data, _(u'not') if self.negated else u'', self.get_operator_display(), self.expression)
+        return u'%s foreign %s %s %s %s' % (self.get_inclusion_display(), self.foreign_document_data, _(u'not') if self.negated else u'', self.get_operator_display(), self.expression)
 
     class Meta:
         verbose_name = _(u'link condition')
