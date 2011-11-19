@@ -8,18 +8,18 @@ from django.conf import settings
 
 from tags.widgets import get_tags_inline_widget
 
-from grouping.models import DocumentGroup, DocumentGroupItem
+from linking.models import SmartLink, SmartLinkCondition
 
 
 class SmartLinkForm(forms.ModelForm):
     class Meta:
-        model = DocumentGroup
+        model = SmartLink
 
         
 class SmartLinkConditionForm(forms.ModelForm):
     class Meta:
-        model = DocumentGroupItem
-        exclude = ('document_group',)
+        model = SmartLinkCondition
+        exclude = ('smart_link',)
 
 
 class SmartLinkImageWidget(forms.widgets.Widget):
@@ -105,7 +105,9 @@ class SmartLinkInstanceForm(forms.Form):
         smart_link_instances = kwargs.pop('smart_link_instances', None)
         links = kwargs.pop('links', None)
         current_document = kwargs.pop('current_document', None)
+        
         super(SmartLinkInstanceForm, self).__init__(*args, **kwargs)
+        
         for smart_link_instance, data in smart_link_instances.items():
             self.fields['preview-%s' % smart_link_instance] = forms.CharField(
                 widget=SmartLinkImageWidget(),

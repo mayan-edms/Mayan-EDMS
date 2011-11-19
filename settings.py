@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     'document_comments',
     'user_management',
     'documents',
-    'grouping',
+    'linking',
     'mptt',
     'document_indexing',
     'ocr',
