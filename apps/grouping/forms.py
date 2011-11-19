@@ -105,17 +105,17 @@ class SmartLinkImageWidget(forms.widgets.Widget):
 
 class SmartLinkInstanceForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        groups = kwargs.pop('groups', None)
+        smart_link_instances = kwargs.pop('smart_link_instances', None)
         links = kwargs.pop('links', None)
         current_document = kwargs.pop('current_document', None)
         super(SmartLinkInstanceForm, self).__init__(*args, **kwargs)
-        for group, data in groups.items():
-            self.fields['preview-%s' % group] = forms.CharField(
+        for smart_link_instance, data in smart_link_instances.items():
+            self.fields['preview-%s' % smart_link_instance] = forms.CharField(
                 widget=SmartLinkImageWidget(),
                 label=u'%s (%d)' % (unicode(data['title']), len(data['documents'])),
                 required=False,
                 initial={
-                    'group': group,
+                    'group': smart_link_instance,
                     'group_data': data['documents'],
                     'current_document': current_document,
                     'links': links

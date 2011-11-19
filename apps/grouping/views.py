@@ -59,7 +59,7 @@ def smart_link_instances_for_document(request, document_id):
 
     subtemplates_list = []
     document = get_object_or_404(Document, pk=document_id)
-    smart_links, errors = DocumentGroup.objects.get_groups_for(document)
+    smart_link_instances, errors = DocumentGroup.objects.get_groups_for(document)
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
             messages.warning(request, _(u'Smart link query error: %s' % error))
@@ -67,15 +67,15 @@ def smart_link_instances_for_document(request, document_id):
     if not SHOW_EMPTY_GROUPS:
         #If GROUP_SHOW_EMPTY is False, remove empty groups from
         #dictionary
-        document_groups = dict([(group, data) for group, data in document_groups.items() if data['documents']])
+        smart_link_instances = dict([(group, data) for group, data in smart_link_instances.items() if data['documents']])
 
-    if smart_links:
+    if smart_link_instances:
         subtemplates_list = [{
             'name': 'generic_form_subtemplate.html',
             'context': {
-                'title': _(u'smart links (%s)') % len(smart_links.keys()),
+                'title': _(u'smart links (%s)') % len(smart_link_instances.keys()),
                 'form': SmartLinkInstanceForm(
-                    groups=smart_links, current_document=document,
+                    smart_link_instances=smart_link_instances, current_document=document,
                     links=[smart_link_instance_view_link]
                 ),
                 'form_action': reverse('smart_link_action'),

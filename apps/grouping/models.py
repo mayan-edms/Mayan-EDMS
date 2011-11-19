@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from grouping.managers import DocumentGroupManager
+from grouping.managers import SmartLinkManager
 from grouping.literals import OPERATOR_CHOICES, INCLUSION_AND, \
     INCLUSION_CHOICES
 
@@ -11,7 +11,7 @@ class DocumentGroup(models.Model):
     dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_(u'dynamic title'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables `metadata` and document properties under the variable `document`.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
-    objects = DocumentGroupManager()
+    objects = SmartLinkManager()
 
     def __unicode__(self):
         return self.title
