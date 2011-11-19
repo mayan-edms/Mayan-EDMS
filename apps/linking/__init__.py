@@ -6,14 +6,14 @@ from project_setup.api import register_setup
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 
-from grouping.models import DocumentGroup, DocumentGroupItem
+from linking.models import SmartLink, SmartLinkCondition
 
-PERMISSION_SMART_LINK_VIEW = {'namespace': 'grouping', 'name': 'group_view', 'label': _(u'View existing smart links')}
-PERMISSION_SMART_LINK_CREATE = {'namespace': 'grouping', 'name': 'group_create', 'label': _(u'Create new smart links')}
-PERMISSION_SMART_LINK_DELETE = {'namespace': 'grouping', 'name': 'group_delete', 'label': _(u'Delete smart links')}
-PERMISSION_SMART_LINK_EDIT = {'namespace': 'grouping', 'name': 'group_edit', 'label': _(u'Edit smart links')}
+PERMISSION_SMART_LINK_VIEW = {'namespace': 'linking', 'name': 'group_view', 'label': _(u'View existing smart links')}
+PERMISSION_SMART_LINK_CREATE = {'namespace': 'linking', 'name': 'group_create', 'label': _(u'Create new smart links')}
+PERMISSION_SMART_LINK_DELETE = {'namespace': 'linking', 'name': 'group_delete', 'label': _(u'Delete smart links')}
+PERMISSION_SMART_LINK_EDIT = {'namespace': 'linking', 'name': 'group_edit', 'label': _(u'Edit smart links')}
 
-set_namespace_title('grouping', _(u'Smart links'))
+set_namespace_title('linking', _(u'Smart links'))
 register_permission(PERMISSION_SMART_LINK_VIEW)
 register_permission(PERMISSION_SMART_LINK_CREATE)
 register_permission(PERMISSION_SMART_LINK_DELETE)
@@ -35,8 +35,8 @@ smart_link_condition_delete = {'text': _(u'delete'), 'view': 'smart_link_conditi
 
 register_links(Document, [smart_link_instances_for_document], menu_name='form_header')
 
-register_links(DocumentGroup, [document_group_edit, document_group_delete, smart_link_condition_list])
-register_links(DocumentGroupItem, [smart_link_condition_edit, smart_link_condition_delete])
+register_links(SmartLink, [document_group_edit, document_group_delete, smart_link_condition_list])
+register_links(SmartLinkCondition, [smart_link_condition_edit, smart_link_condition_delete])
 register_links(['document_group_list', 'document_group_create', 'document_group_edit', 'document_group_delete', 'smart_link_condition_list', 'smart_link_condition_create', 'smart_link_condition_edit', 'smart_link_condition_delete'], [document_group_list, document_group_create], menu_name='sidebar')
 register_links(['smart_link_condition_list', 'smart_link_condition_create', 'smart_link_condition_edit', 'smart_link_condition_delete'], [smart_link_condition_create], menu_name='sidebar')
 

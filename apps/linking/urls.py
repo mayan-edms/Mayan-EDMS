@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('grouping.views',
+urlpatterns = patterns('linking.views',
     url(r'^action/$', 'smart_link_action', (), 'smart_link_action'),
     url(r'^document/(?P<document_id>\d+)/smart_link/(?P<smart_link_pk>\d+)/$', 'smart_link_instance_view', (), 'smart_link_instance_view'),
     url(r'^smart/for_document/(?P<document_id>\d+)/$', 'smart_link_instances_for_document', (), 'smart_link_instances_for_document'),
