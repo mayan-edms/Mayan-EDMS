@@ -6,6 +6,7 @@ from django.utils.safestring import mark_safe
 from django.template.defaultfilters import capfirst
 from django.conf import settings
 
+from documents.widgets import document_html_widget
 from tags.widgets import get_tags_inline_widget
 
 from linking.models import SmartLink, SmartLinkCondition
@@ -36,62 +37,24 @@ class SmartLinkImageWidget(forms.widgets.Widget):
                 ''' % {
                     'famfam': link.get('famfam', u'link'),
                     'text': capfirst(link['text']),
-                    'action': reverse(link.get('view'), args=[value['current_document'].pk, value['group'].pk])
+                    'action': reverse(link.get('view'), args=[value['current_document'].pk, value['smart_link_instance'].pk])
                 })
             output.append(u'</div>')
 
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
-        for document in value['group_data']:
-            tags_template = get_tags_inline_widget(document)
-
-            try:
-                document.get_valid_image()
-                template = u'''<div style="display: inline-block; margin: 0px 10px 10px 10px; %(current)s">
-                        <div class="tc">%(document_name)s</div>
-                        <div class="tc">%(page_string)s: %(document_pages)d</div>
-                        %(tags_template)s
-                        <div class="tc">
-                            <a rel="group_%(group_id)d_documents_gallery" class="fancybox-noscaling" href="%(view_url)s">
-                                <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(static_url)s/images/ajax-loader.gif" data-href="%(img)s" alt="%(string)s" />
-                                <noscript>
-                                    <img style="border: 1px solid black; margin: 10px;" src="%(img)s" alt="%(string)s" />
-                                </noscript>
-                            </a>
-                        </div>
-                        <div class="tc">
-                            <a href="%(url)s"><span class="famfam active famfam-page_go"></span>%(details_string)s</a>
-                        </div>
-                    </div>'''
-            except:
-                template = u'''<div style="display: inline-block; margin: 0px 10px 10px 10px; %(current)s">
-                        <div class="tc">%(document_name)s</div>
-                        <div class="tc">%(page_string)s: %(document_pages)d</div>
-                        %(tags_template)s
-                        <div class="tc">
-                            <img class="lazy-load" style="border: 1px solid black; margin: 10px;" src="%(static_url)s/images/ajax-loader.gif" data-href="%(img)s" alt="%(string)s" />
-                            <noscript>
-                                <img style="border: 1px solid black; margin: 10px;" src="%(img)s" alt="%(string)s" />
-                            </noscript>
-                        </div>
-                        <div class="tc">
-                            <a href="%(url)s"><span class="famfam active famfam-page_go"></span>%(details_string)s</a>
-                        </div>
-                    </div>'''
-                    
-            output.append(template % {
-                    'url': reverse('document_view_simple', args=[document.pk]),
-                    'img': reverse('document_preview_multipage', args=[document.pk]),
-                    'current': u'border: 5px solid black; padding: 3px;' if value['current_document'] == document else u'',
-                    'view_url': reverse('document_display', args=[document.pk]),
-                    'document_pages': document.documentpage_set.count(),
-                    'page_string': ugettext(u'Pages'),
-                    'details_string': ugettext(u'Select'),
-                    'group_id': value['group'].pk,
-                    'document_name': document,
-                    'static_url': settings.STATIC_URL,
-                    'tags_template': tags_template if tags_template else u'',
-                    'string': _(u'smart links'),
-                })
+        for document in value['documents']:
+            output.append(u'<div style="display: inline-block; margin: 0px 10px 10px 10px; %s">' % (u'border: 5px solid black; padding: 3px;' if value['current_document'] == document else u''))
+            output.append(u'<div class="tc">%s</div>' % document)
+            output.append(u'<div class="tc">%s: %d</div>' % (ugettext(u'Pages'), document.documentpage_set.count()))
+            output.append(get_tags_inline_widget(document))
+            output.append(u'<div style="padding: 5px;">' % document)
+            output.append(document_html_widget(document, click_view='document_display', size='document_preview_multipage', fancybox_class='fancybox-noscaling', gallery_name=u'smart_link_%d_documents_gallery' % value['smart_link_instance'].pk))
+            output.append(u'</div>')
+            output.append(u'<div class="tc">')
+            output.append(u'<a href="%s"><span class="famfam active famfam-page_go"></span>%s</a>' % (reverse('document_view_simple', args=[document.pk]), ugettext(u'Select')))
+            output.append(u'</div>')
+            output.append(u'</div>')
+            
         output.append(u'</div>')
         output.append(
             u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
@@ -114,8 +77,8 @@ class SmartLinkInstanceForm(forms.Form):
                 label=u'%s (%d)' % (unicode(data['title']), len(data['documents'])),
                 required=False,
                 initial={
-                    'group': smart_link_instance,
-                    'group_data': data['documents'],
+                    'smart_link_instance': smart_link_instance,
+                    'documents': data['documents'],
                     'current_document': current_document,
                     'links': links
                 }
