@@ -4,8 +4,6 @@ import hashlib
 
 from common.conf.settings import TEMPORARY_DIRECTORY
 
-from converter.conf.settings import UNOCONV_PATH
-from converter.exceptions import OfficeConversionError
 from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT
 
@@ -16,28 +14,12 @@ from converter.literals import TRANSFORMATION_RESIZE, \
 from converter.literals import DIMENSION_SEPARATOR
 from converter.literals import FILE_FORMATS
 from converter.utils import cleanup
+from converter.office_converter import OfficeConverter
+
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
-    
-CONVERTER_OFFICE_FILE_EXTENSIONS = [
-    u'ods', u'docx', u'doc'
-]
 
-
-def execute_unoconv(input_filepath, arguments=''):
-    """
-    Executes the program unoconv using subprocess's Popen
-    """
-    command = []
-    command.append(UNOCONV_PATH)
-    command.extend(unicode(arguments).split())
-    command.append(input_filepath)
-    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE)
-    return_code = proc.wait()
-    if return_code != 0:
-        raise OfficeConversionError(proc.stderr.readline())
-
-
+            
 def cache_cleanup(input_filepath, *args, **kwargs):
     try:
         os.remove(create_image_cache_filename(input_filepath, *args, **kwargs))
@@ -53,13 +35,6 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         return None
 
 
-def convert_office_document(input_filepath):
-    if os.path.exists(UNOCONV_PATH):
-        execute_unoconv(input_filepath, arguments='-f pdf')
-        return input_filepath + u'.pdf'
-    return None
-
-
 def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **kwargs):
     size = kwargs.get('size')
     file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
@@ -70,20 +45,23 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
     if transformations is None:
         transformations = []
 
-    unoconv_output = None
-
     if output_filepath is None:
         output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
+    print 'cache image', output_filepath
         
     if os.path.exists(output_filepath):
         return output_filepath
+    
+    print 'cleanup_files', cleanup_files
 
-    path, extension = os.path.splitext(input_filepath)
-    if extension[1:].lower() in CONVERTER_OFFICE_FILE_EXTENSIONS:
-        result = convert_office_document(input_filepath)
-        if result:
-            unoconv_output = result
-            input_filepath = result
+    office_converter = OfficeConverter(input_filepath)
+    if office_converter:
+        try:
+            #cleanup_files =False.
+            input_filepath = office_converter.output_filepath
+        except OfficeConverter:
+            print 'office converter exception'
+            raise UnknownFileFormat('office converter exception')
 
     if size:
         transformations.append(
@@ -114,8 +92,6 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
     finally:
         if cleanup_files:
             cleanup(input_filepath)
-        if unoconv_output:
-            cleanup(unoconv_output)
 
     return output_filepath
 
