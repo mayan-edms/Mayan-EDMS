@@ -14,8 +14,7 @@ from converter.literals import TRANSFORMATION_RESIZE, \
 from converter.literals import DIMENSION_SEPARATOR
 from converter.literals import FILE_FORMATS
 from converter.utils import cleanup
-from converter.office_converter import OfficeConverter
-
+from converter.runtime import office_converter
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
@@ -52,7 +51,6 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
     if os.path.exists(output_filepath):
         return output_filepath
     
-    office_converter = OfficeConverter()
     office_converter.convert(input_filepath, mimetype=mimetype)
     if office_converter:
         try:
