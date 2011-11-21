@@ -37,11 +37,14 @@ class OfficeConverter(object):
     def mimetypes(self):
         return CONVERTER_OFFICE_FILE_MIMETYPES
 
-    def convert(self, input_filepath):
+    def convert(self, input_filepath, mimetype=None):
         self.input_filepath = input_filepath
 
-        # Make sure file is of a known office format  
-        self.mimetype, self.encoding = get_mimetype(open(self.input_filepath), self.input_filepath, mimetype_only=True)
+        # Make sure file is of a known office format
+        if mimetype:
+            self.mimetype = mimetype
+        else:
+            self.mimetype, self.encoding = get_mimetype(open(self.input_filepath), self.input_filepath, mimetype_only=True)
 
         if self.mimetype in CONVERTER_OFFICE_FILE_MIMETYPES:
             # Cache results of conversion

@@ -35,14 +35,13 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
         return None
 
 
-def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **kwargs):
+def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=None, *args, **kwargs):
     size = kwargs.get('size')
     file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
     zoom = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
     page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
     transformations = kwargs.get('transformations', [])
-    mimetype = kwargs.get('mimetype', None)
     
     if transformations is None:
         transformations = []
@@ -54,7 +53,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
         return output_filepath
     
     office_converter = OfficeConverter()
-    office_converter.convert(input_filepath)
+    office_converter.convert(input_filepath, mimetype=mimetype)
     if office_converter:
         try:
             input_filepath = office_converter.output_filepath
