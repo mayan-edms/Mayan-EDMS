@@ -250,7 +250,7 @@ class Document(models.Model):
             return cache_file_path
         else:
             document_file = document_save_to_temp_dir(self, self.checksum)
-            return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations)
+            return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
 
     def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
         image_cache_name = self.get_image_cache_name(page=page)
