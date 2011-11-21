@@ -19,6 +19,7 @@ from common.literals import PAGE_SIZE_DIMENSIONS, \
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_PAGE_NUMBER
+from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
@@ -40,7 +41,7 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
     PERMISSION_DOCUMENT_TRANSFORM, \
-    PERMISSION_DOCUMENT_EDIT
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_TOOLS
 from documents.literals import HISTORY_DOCUMENT_CREATED, \
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 
@@ -117,14 +118,14 @@ def document_view(request, document_id, advanced=False):
             {'label': _(u'File extension'), 'field': 'file_extension'},
             {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
             {'label': _(u'File mime encoding'), 'field': 'file_mime_encoding'},
-            {'label': _(u'File size'), 'field':lambda x: pretty_size(x.file.storage.size(x.file.path)) if x.exists() else '-'},
+            {'label': _(u'File size'), 'field':lambda x: pretty_size(x.size) if x.size else '-'},
             {'label': _(u'Exists in storage'), 'field': 'exists'},
             {'label': _(u'File path in storage'), 'field': 'file'},
             {'label': _(u'Date added'), 'field':lambda x: x.date_added.date()},
             {'label': _(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
             {'label': _(u'Checksum'), 'field': 'checksum'},
             {'label': _(u'UUID'), 'field': 'uuid'},
-            {'label': _(u'Pages'), 'field': lambda x: x.documentpage_set.count()},
+            {'label': _(u'Pages'), 'field': 'page_count'},
         ])
 
         subtemplates_list.append(
@@ -469,6 +470,37 @@ def document_find_all_duplicates(request):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     return _find_duplicate_list(request, include_source=True)
+
+
+def document_update_page_count(request):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    office_converter = OfficeConverter()
+    qs = Document.objects.exclude(file_extension__iendswith='dxf').filter(file_mimetype__in=office_converter.mimetypes())
+
+    if request.method == 'POST':
+        updated = 0
+        processed = 0
+        for document in qs:
+            old_page_count = document.page_count
+            document.update_page_count()
+            processed += 1
+            if old_page_count != document.page_count:
+                updated += 1
+            
+        messages.success(request, _(u'Page count update complete.  Documents processed: %(total)d, documents with changed page count: %(change)d') % {
+            'total': processed,
+            'change': updated
+        })
+        return HttpResponseRedirect(previous)
+
+    return render_to_response('generic_confirm.html', {
+        'previous': previous,
+        'title': _(u'Are you sure you wish to update the page count for the office documents (%d)?') % qs.count(),
+        'message': _(u'On large databases this operation may take some time to execute.'),
+        'form_icon': u'page_white_csharp.png',
+    }, context_instance=RequestContext(request))
 
 
 def document_clear_transformations(request, document_id=None, document_id_list=None):

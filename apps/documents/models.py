@@ -194,6 +194,10 @@ class Document(models.Model):
             self.save()
 
         return detected_pages
+        
+    @property
+    def page_count(self):
+        return self.documentpage_set.count()
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
         """
@@ -246,7 +250,7 @@ class Document(models.Model):
             return cache_file_path
         else:
             document_file = document_save_to_temp_dir(self, self.checksum)
-            return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations)
+            return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
 
     def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
         image_cache_name = self.get_image_cache_name(page=page)
@@ -274,6 +278,13 @@ class Document(models.Model):
     def delete(self, *args, **kwargs):
         super(Document, self).delete(*args, **kwargs)
         return self.file.storage.delete(self.file.path)
+        
+    @property
+    def size(self):
+        if self.exists():
+            return self.file.storage.size(self.file.path)
+        else:
+            return None
             
 
 class DocumentTypeFilename(models.Model):

@@ -1,4 +1,4 @@
-from scheduler import scheduler
+from scheduler.runtime import scheduler
 from scheduler.exceptions import AlreadyScheduled
 
 registered_jobs = {}
