@@ -28,16 +28,22 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
 
 
 class OfficeConverter(object):
-    def __init__(self, input_filepath):
+    def __init__(self):
         self.backend_class = OfficeConverterBackendUnoconv
-        self.input_filepath = input_filepath
         self.exists = False
+        self.mimetype = None
+        self.encoding = None
+    
+    def mimetypes(self):
+        return CONVERTER_OFFICE_FILE_MIMETYPES
+
+    def convert(self, input_filepath):
+        self.input_filepath = input_filepath
 
         # Make sure file is of a known office format  
-        descriptor = open(self.input_filepath)
-        mimetype, encoding = get_mimetype(descriptor, self.input_filepath)
+        self.mimetype, self.encoding = get_mimetype(open(self.input_filepath), self.input_filepath, mimetype_only=True)
 
-        if mimetype in CONVERTER_OFFICE_FILE_MIMETYPES:
+        if self.mimetype in CONVERTER_OFFICE_FILE_MIMETYPES:
             # Cache results of conversion
             self.output_filepath = os.path.join(TEMPORARY_DIRECTORY, u''.join([self.input_filepath, CACHED_FILE_SUFFIX]))
             self.exists = os.path.exists(self.output_filepath)
@@ -45,6 +51,7 @@ class OfficeConverter(object):
                 try:
                     self.backend = self.backend_class()
                     self.backend.convert(self.input_filepath, self.output_filepath)
+                    self.exists = True
                 except OfficeBackendError, msg:
                     # convert exception so that at least the mime type icon is displayed
                     raise UnknownFileFormat(msg)
