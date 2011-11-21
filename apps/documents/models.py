@@ -194,6 +194,10 @@ class Document(models.Model):
             self.save()
 
         return detected_pages
+        
+    @property
+    def page_count(self):
+        return self.documentpage_set.count()
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
         """
@@ -274,6 +278,13 @@ class Document(models.Model):
     def delete(self, *args, **kwargs):
         super(Document, self).delete(*args, **kwargs)
         return self.file.storage.delete(self.file.path)
+        
+    @property
+    def size(self):
+        if self.exists():
+            return self.file.storage.size(self.file.path)
+        else:
+            return None
             
 
 class DocumentTypeFilename(models.Model):
