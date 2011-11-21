@@ -42,6 +42,8 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
     page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
     transformations = kwargs.get('transformations', [])
+    mimetype = kwargs.get('mimetype', None)
+    
     if transformations is None:
         transformations = []
 
@@ -51,12 +53,17 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
     if os.path.exists(output_filepath):
         return output_filepath
     
-    office_converter = OfficeConverter(input_filepath)
+    office_converter = OfficeConverter()
+    office_converter.convert(input_filepath)
     if office_converter:
         try:
             input_filepath = office_converter.output_filepath
+            mimetype = 'application/pdf'
         except OfficeConverter:
             raise UnknownFileFormat('office converter exception')
+    else:
+        # Recycle the already detected mimetype
+        mimetype = office_converter.mimetype
 
     if size:
         transformations.append(
@@ -83,7 +90,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
         )           
 
     try:
-        backend.convert_file(input_filepath=input_filepath, output_filepath=output_filepath, transformations=transformations, page=page, file_format=file_format)
+        backend.convert_file(input_filepath=input_filepath, output_filepath=output_filepath, transformations=transformations, page=page, file_format=file_format, mimetype=mimetype)
     finally:
         if cleanup_files:
             cleanup(input_filepath)
@@ -92,6 +99,14 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
 
 
 def get_page_count(input_filepath):
+    office_converter = OfficeConverter()
+    office_converter.convert(input_filepath)    
+    if office_converter:
+        try:
+            input_filepath = office_converter.output_filepath
+        except OfficeConverter:
+            raise UnknownFileFormat('office converter exception')
+                
     return backend.get_page_count(input_filepath)
 
 
