@@ -47,20 +47,15 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, *args, **
 
     if output_filepath is None:
         output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
-    print 'cache image', output_filepath
         
     if os.path.exists(output_filepath):
         return output_filepath
     
-    print 'cleanup_files', cleanup_files
-
     office_converter = OfficeConverter(input_filepath)
     if office_converter:
         try:
-            #cleanup_files =False.
             input_filepath = office_converter.output_filepath
         except OfficeConverter:
-            print 'office converter exception'
             raise UnknownFileFormat('office converter exception')
 
     if size:

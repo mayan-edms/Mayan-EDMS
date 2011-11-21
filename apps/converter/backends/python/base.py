@@ -64,7 +64,7 @@ class ConverterClass(ConverterBase):
                 'gs', '-q', '-dQUIET', '-dSAFER', '-dBATCH',
                 '-dNOPAUSE', '-dNOPROMPT', 
                 first_page_tmpl, last_page_tmpl,
-                '-sDEVICE=jpeg', '-dJPEGQ=75',
+                '-sDEVICE=jpeg', '-dJPEGQ=95',
                 '-r150', output_file_tmpl,
                 input_file_tmpl,
                 '-c "60000000 setvmthreshold"',  # use 30MB
