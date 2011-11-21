@@ -32,6 +32,7 @@ urlpatterns = patterns('documents.views',
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^duplicates/list/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
+    url(r'^maintenance/update_page_count/$', 'document_update_page_count', (), 'document_update_page_count'),
 
     url(r'^page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
     url(r'^page/(?P<document_page_id>\d+)/text/$', 'document_page_text', (), 'document_page_text'),

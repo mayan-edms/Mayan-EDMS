@@ -6,7 +6,7 @@ from common.utils import validate_path, encapsulate
 from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
-from main.api import register_diagnostic, register_maintenance
+from main.api import register_diagnostic, register_maintenance_links
 from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
@@ -28,7 +28,6 @@ from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf import settings as document_settings
 from documents.widgets import document_thumbnail
-
 
 # Document page links expressions
 def is_first_page(context):
@@ -81,6 +80,7 @@ document_preview = {'text': _(u'preview'), 'class': 'fancybox', 'view': 'documen
 document_download = {'text': _(u'download'), 'view': 'document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'description': _(u'Search all the documents\' checksums and return a list of the exact matches.')}
+document_update_page_count = {'text': _(u'update office documents\' page count'), 'view': 'document_update_page_count', 'famfam': 'page_white_csharp', 'permissions': [PERMISSION_DOCUMENT_TOOLS], 'description': _(u'Update the page count of the office type documents.  This is useful when enabling office document support after there were already office type documents in the database.')}
 document_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_multiple_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_print = {'text': _(u'print'), 'view': 'document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -158,17 +158,16 @@ register_links(['document_page_transformation_edit', 'document_page_transformati
 
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
-register_maintenance(document_find_all_duplicates, namespace='documents', title=_(u'documents'))
+register_maintenance_links([document_find_all_duplicates, document_update_page_count], namespace='documents', title=_(u'documents'))
 
-
-def document_exists(document):
-    try:
-        if document.exists():
-            return u'<span class="famfam active famfam-tick"></span>'
-        else:
-            return u'<span class="famfam active famfam-cross"></span>'
-    except Exception, exc:
-        return exc
+#def document_exists(document):
+#    try:
+#        if document.exists():
+#            return u'<span class="famfam active famfam-tick"></span>'
+#        else:
+#            return u'<span class="famfam active famfam-cross"></span>'
+#    except Exception, exc:
+#        return exc
 
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
