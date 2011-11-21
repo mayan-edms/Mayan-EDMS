@@ -48,7 +48,7 @@ def document_html_widget(document, size='document_thumbnail', click_view=None, p
         if click_view:
             result.append('</a>')
         result.append('</div>')
-    except UnknownFileFormat, UnkownConvertError:
+    except (UnknownFileFormat, UnkownConvertError):
         result.append('<div class="tc">')
         result.append('<img class="lazy-load" data-href="%s" src="%s/images/ajax-loader.gif" alt="%s" />' % (preview_view, settings.STATIC_URL, alt_text))
         result.append('<noscript><img src="%s" alt="%s" /></noscript>' % (preview_view, alt_text))
