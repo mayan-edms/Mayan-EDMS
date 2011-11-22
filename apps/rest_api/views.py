@@ -40,30 +40,16 @@ class APIBase(View):
 class Version_0(View):
     def get(self, request):
         return [
-            {'name': 'Resources', 'resources': ['documents/<pk>']}
+            {'name': 'Resources', 'resources': ['document/<pk>']}
         ]
 
 
 class IsZoomable(View):
-    def get(self, request, pk):
+    def get(self, request, pk, page_number):
         logger.info('received is_zoomable call from: %s' % (request.META['REMOTE_ADDR']))
         document = get_object_or_404(Document, pk=pk)
         try:
-            document.get_image_cache_name(1) # TODO: page
+            document.get_image_cache_name(int(page_number))
             return {'result': True}
         except (UnknownFileFormat, UnkownConvertError):
             return {'result': False}
-
-
-class Exists(View):
-    def get(self, request, pk):
-        logger.info('received exists call from: %s' % (request.META['REMOTE_ADDR']))
-        document = get_object_or_404(Document, pk=pk)
-        return {'result': document.exists()}
-        
-        
-class Size(View):
-    def get(self, request, pk):
-        logger.info('received size call from: %s' % (request.META['REMOTE_ADDR']))
-        document = get_object_or_404(Document, pk=pk)
-        return {'result': document.size}        
