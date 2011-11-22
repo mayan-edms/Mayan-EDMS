@@ -18,7 +18,7 @@ from common.literals import PAGE_SIZE_DIMENSIONS, \
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_PAGE_NUMBER
+    DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE
 from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
@@ -288,7 +288,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
 
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
-    return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation))
+    return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
 
 
 def document_download(request, document_id):
