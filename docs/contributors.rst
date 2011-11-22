@@ -25,10 +25,12 @@ Bug reports
 Patches
 -------
 * Meurig Freeman (https://github.com/meurig)
+* Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 
 Suggestions
 -----------
 * Cezar Jenkins (https://twitter.com/#!/emperorcezar)
+* Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 
 Translations
 ------------
