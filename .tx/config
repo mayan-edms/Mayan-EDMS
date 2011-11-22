@@ -120,12 +120,12 @@ trans.es = apps/project_tools/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/project_tools/locale/pt/LC_MESSAGES/django.po
 trans.ru = apps/project_tools/locale/ru/LC_MESSAGES/django.po
 
-[mayan-edms.apps-grouping]
-source_file = apps/grouping/locale/en/LC_MESSAGES/django.po
+[mayan-edms.apps-linking]
+source_file = apps/linking/locale/en/LC_MESSAGES/django.po
 source_lang = en
-trans.es = apps/grouping/locale/es/LC_MESSAGES/django.po
-trans.pt = apps/grouping/locale/pt/LC_MESSAGES/django.po
-trans.ru = apps/grouping/locale/ru/LC_MESSAGES/django.po
+trans.es = apps/linking/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/linking/locale/pt/LC_MESSAGES/django.po
+trans.ru = apps/linking/locale/ru/LC_MESSAGES/django.po
 
 [mayan-edms.apps-document_comments]
 source_file = apps/document_comments/locale/en/LC_MESSAGES/django.po

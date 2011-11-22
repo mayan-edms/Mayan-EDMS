@@ -43,7 +43,7 @@ $MAKEMESSAGES -l pt
 $MAKEMESSAGES -l ru
 $MAKEMESSAGES -l es
 
-cd $BASE/apps/grouping
+cd $BASE/apps/linking
 $MAKEMESSAGES -l pt
 $MAKEMESSAGES -l ru
 $MAKEMESSAGES -l es
