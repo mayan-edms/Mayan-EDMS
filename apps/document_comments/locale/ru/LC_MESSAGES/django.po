@@ -1,102 +1,103 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-03 16:38-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-09-29 18:44-0400\n"
+"PO-Revision-Date: 2011-11-19 20:58+0000\n"
+"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:15
 msgid "Create new comments"
-msgstr ""
+msgstr "Создать новые комментарии"
 
 #: __init__.py:16
 msgid "Delete comments"
-msgstr ""
+msgstr "Удалить комментарии"
 
 #: __init__.py:17
 msgid "Edit comments"
-msgstr ""
+msgstr "Редактировать комментарии"
 
 #: __init__.py:18
 msgid "View comments"
-msgstr ""
+msgstr "Просмотр комментариев"
 
 #: __init__.py:20
 msgid "Comments"
-msgstr ""
+msgstr "Комментарии"
 
 #: __init__.py:26 __init__.py:27
 msgid "delete"
-msgstr ""
+msgstr "удалить"
 
 #: __init__.py:28
 msgid "add comment"
-msgstr ""
+msgstr "добавить комментарий"
 
 #: __init__.py:29 utils.py:14
 msgid "comments"
-msgstr ""
+msgstr "комментарии"
 
 #: __init__.py:33
 msgid "date"
-msgstr ""
+msgstr "дата"
 
 #: __init__.py:37
 msgid "user"
-msgstr ""
+msgstr "пользователь"
 
 #: __init__.py:41
 msgid "comment"
-msgstr ""
+msgstr "комментарий"
 
 #: views.py:27
 msgid "Must provide at least one comment."
-msgstr ""
+msgstr "Должен быть хотя бы один комментарий."
 
 #: views.py:37
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
-msgstr ""
+msgstr "Комментарий \"%s\" удален."
 
 #: views.py:39
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
-msgstr ""
+msgstr "Ошибка при удалении комментариев \"%(comment)s\": %(error)s"
 
 #: views.py:54
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
-msgstr ""
+msgstr "Вы действительно хотите удалить комментарий %s?"
 
 #: views.py:56
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
-msgstr ""
+msgstr "Вы действительно хотите удалить комментарии %s?"
 
 #: views.py:86
 msgid "Comment added successfully."
-msgstr ""
+msgstr "Комментарий добавлен."
 
 #: views.py:93
 #, python-format
 msgid "Add comment to document: %s"
-msgstr ""
+msgstr "Добавить комментарий на документ: %s"
 
 #: views.py:109
 #, python-format
 msgid "comments: %s"
-msgstr ""
+msgstr "комментарии:  %s"
+
+

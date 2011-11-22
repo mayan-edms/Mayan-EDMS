@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:46-0400\n"
-"PO-Revision-Date: 2011-11-03 17:21+0000\n"
+"PO-Revision-Date: 2011-11-19 21:05+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Массовое действие"
 
 #: widgets.py:28
 msgid "icon"
-msgstr "значек"
+msgstr "значок"
 
 #: templatetags/navigation_tags.py:275
 msgid "Selected item actions:"

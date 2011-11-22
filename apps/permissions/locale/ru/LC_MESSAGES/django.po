@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-29 18:47-0400\n"
-"PO-Revision-Date: 2011-11-04 12:02+0000\n"
+"PO-Revision-Date: 2011-11-19 21:05+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Отмена разрешений"
 
 #: __init__.py:20 models.py:75 views.py:33
 msgid "roles"
-msgstr "ролей"
+msgstr "роли"
 
 #: __init__.py:21
 msgid "create new role"
@@ -55,7 +55,7 @@ msgstr "редактировать"
 
 #: __init__.py:23
 msgid "members"
-msgstr "элементы"
+msgstr "участники"
 
 #: __init__.py:24
 msgid "role permissions"
@@ -83,7 +83,7 @@ msgstr "имя"
 
 #: models.py:13 models.py:70
 msgid "label"
-msgstr "этикетка"
+msgstr "надпись"
 
 #: models.py:20 models.py:53
 msgid "permission"
@@ -95,11 +95,11 @@ msgstr "разрешения"
 
 #: models.py:61
 msgid "permission holder"
-msgstr "держатель разрешения"
+msgstr "владелец разрешения"
 
 #: models.py:62
 msgid "permission holders"
-msgstr "разрешения владельцев"
+msgstr "владельцы разрешения "
 
 #: models.py:74 models.py:92 views.py:69 views.py:79 views.py:103 views.py:203
 msgid "role"
@@ -107,11 +107,11 @@ msgstr "роль"
 
 #: models.py:103
 msgid "role member"
-msgstr "Роль члена"
+msgstr "участник"
 
 #: models.py:104
 msgid "role members"
-msgstr "Роль членов"
+msgstr "участники"
 
 #: views.py:56
 msgid "state"
@@ -160,12 +160,12 @@ msgstr "%(ct_name)s: %(requester)s не имеет разрешения \"%(perm
 #: views.py:199
 #, python-format
 msgid "non members of role: %s"
-msgstr "не участвует в %s"
+msgstr "не входит в %s"
 
 #: views.py:200
 #, python-format
 msgid "members of role: %s"
-msgstr "участвует в %s"
+msgstr "входит в %s"
 
 #: widgets.py:16
 msgid "Revoke"

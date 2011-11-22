@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-09-30 00:54-0400\n"
-"PO-Revision-Date: 2011-11-04 10:27+0000\n"
+"PO-Revision-Date: 2011-11-19 21:02+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "изменение сведений"
 
 #: __init__.py:23 __init__.py:29
 msgid "about"
-msgstr "о"
+msgstr "инфо"
 
 #: __init__.py:24
 msgid "changelog"
@@ -297,7 +297,7 @@ msgstr "Отменить"
 #: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
 #, python-format
 msgid "List of %(stripped_title)s"
-msgstr "Список %(stripped_title)s"
+msgstr "Список \"%(stripped_title)s\""
 
 #: templates/generic_list_horizontal_subtemplate.html:23
 #: templates/generic_list_subtemplate.html:23
