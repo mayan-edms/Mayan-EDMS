@@ -3,6 +3,7 @@ import subprocess
 
 from mimetype.api import get_mimetype
 from common.conf.settings import TEMPORARY_DIRECTORY
+from common.utils import id_generator
 
 from converter.conf.settings import UNOCONV_PATH, UNOCONV_USE_PIPE
 from converter.exceptions import (OfficeConversionError,
@@ -89,12 +90,12 @@ class OfficeConverterBackendUnoconv(object):
 
         if UNOCONV_USE_PIPE:
             command.append(u'--pipe')
-            command.append(u'mayan')
+            command.append(u'mayan-%s' % id_generator())
 
         command.append(u'--format=pdf')
         command.append(u'--output=%s' % self.output_filepath)
         command.append(self.input_filepath)
-        
+
         try:
             proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             return_code = proc.wait()
