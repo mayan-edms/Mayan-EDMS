@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"PO-Revision-Date: 2011-11-22 15:37+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:12
@@ -67,14 +67,12 @@ msgid "delete"
 msgstr "eliminar"
 
 #: __init__.py:26
-#, fuzzy
 msgid "grant"
-msgstr "Otorgar"
+msgstr "otorgar"
 
 #: __init__.py:27
-#, fuzzy
 msgid "revoke"
-msgstr "Revocar"
+msgstr "revocar"
 
 #: api.py:22
 msgid "Permissions"
@@ -126,55 +124,51 @@ msgid "role members"
 msgstr "miembros de las functiones"
 
 #: views.py:61
-#, fuzzy
 msgid "has permission"
-msgstr "permiso"
+msgstr "tiene permiso"
 
 #: views.py:142 views.py:201
 msgid " and "
-msgstr ""
+msgstr "y"
 
 #: views.py:142 views.py:201
-#, fuzzy, python-format
+#, python-format
 msgid "%(permissions)s to %(requester)s"
-msgstr "Permiso \"%(permission)s\" otorgado a %(ct_name)s: %(requester)s"
+msgstr "%(permissions)s a %(requester)s"
 
 #: views.py:152
-#, fuzzy, python-format
+#, python-format
 msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-msgstr "Permiso \"%(permission)s\" otorgado a %(ct_name)s: %(requester)s"
+msgstr "Permiso \"%(permission)s\" otorgado a: %(requester)s."
 
 #: views.py:155
-#, fuzzy, python-format
+#, python-format
 msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-msgstr ""
-" %(ct_name)s: %(requester)s, ya tenía el permiso \"%(permission)s\" otorgado."
+msgstr "%(requester)s, ya tenía el permiso \"%(permission)s\" concedido."
 
 #: views.py:167
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
-"¿Está seguro que desea conceder el permiso \"%(permission)s\" a %(ct_name)s: "
-"%(requester)s?"
+"¿Está seguro que desea otorgar el %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:211
-#, fuzzy, python-format
+#, python-format
 msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-msgstr "Permiso \"%(permission)s\" revocado de %(ct_name)s: %(requester)s"
+msgstr "Permiso \"%(permission)s\" revocado de: %(requester)s."
 
 #: views.py:214
-#, fuzzy, python-format
+#, python-format
 msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-msgstr " %(ct_name)s: %(requester)s, no tiene el permiso \"%(permission)s\"."
+msgstr "%(requester)s, no tiene el permiso \"%(permission)s\" concedido."
 
 #: views.py:226
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
-"¿Está seguro que desea revocar el permiso \"%(permission)s\" de %(ct_name)s: "
-"%(requester)s?"
+"¿Estás seguro que quiere revocar el %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:278
 #, python-format
@@ -202,5 +196,4 @@ msgstr ""
 "Una lista de funciones existentes que se asignan automáticamente a los "
 "usuarios nuevos"
 
-#~ msgid "state"
-#~ msgstr "estado"
+

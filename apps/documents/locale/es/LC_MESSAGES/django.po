@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-04 00:54+0000\n"
+"PO-Revision-Date: 2011-11-22 15:33+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:49 __init__.py:159
@@ -85,7 +84,7 @@ msgstr ""
 
 #: __init__.py:83
 msgid "update office documents' page count"
-msgstr ""
+msgstr "actualizar el número de páginas de los documentos de oficina"
 
 #: __init__.py:83
 msgid ""
@@ -93,6 +92,9 @@ msgid ""
 "enabling office document support after there were already office type "
 "documents in the database."
 msgstr ""
+"Actualizar el número de páginas de los documentos de oficina.  Esto es útil "
+"cuando active el apoyo de documentos de oficina después de que ya existían "
+"documentos de oficina en la base de datos."
 
 #: __init__.py:84 __init__.py:85
 msgid "clear transformations"
@@ -310,8 +312,7 @@ msgstr "Documento \"%(content_object)s\", creado por %(fullname)s."
 
 #: literals.py:25
 #, python-format
-msgid ""
-"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 msgstr ""
 "Documento \"%(content_object)s\", creado en %(datetime)s  por %(fullname)s."
 
@@ -327,8 +328,8 @@ msgstr "Documento \"%(content_object)s\", editado por %(fullname)s."
 #: literals.py:33
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
-"The following changes took place: %(changes)s."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
 msgstr ""
 "Documento \"%(content_object)s\" fue editado en \"%(datetime)s  por "
 "%(fullname)s.  Los siguientes cambios tuvieron lugar: %(changes)s."
@@ -529,8 +530,8 @@ msgstr "Documentos en almacenamiento: %d"
 #: statistics.py:46
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
 msgstr ""
 "Espacio utilizado en el almacenamiento: %(base_2)s (base 2), %(base_10)s "
 "(base 10), %(bytes)d bytes"
@@ -691,8 +692,8 @@ msgstr "¿Está seguro que desea encontrar todos los duplicados?"
 #: views.py:447 views.py:506 views.py:571
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
-"ejecutarse."
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en"
+" ejecutarse."
 
 #: views.py:462
 msgid "duplicated documents"
@@ -704,12 +705,17 @@ msgid ""
 "Page count update complete.  Documents processed: %(total)d, documents with "
 "changed page count: %(change)d"
 msgstr ""
+"Actualización de número de páginas completado.  Documentos procesados: "
+"%(total)d, documentos con el número de páginas actualizado: %(change)d"
 
 #: views.py:505
-#, fuzzy, python-format
+#, python-format
 msgid ""
-"Are you sure you wish to update the page count for the office documents (%d)?"
-msgstr "¿Está seguro que desea eliminar los documentos: %s?"
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
+msgstr ""
+"¿Seguro que desea actualizar el número de páginas de los documentos de "
+"oficina (%d)?"
 
 #: views.py:534
 #, python-format
@@ -736,7 +742,8 @@ msgstr "transformación de documento"
 #: views.py:551
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
 msgstr ""
 "¿Está seguro que desea eliminar todas las transformaciones de página del "
 "documento: %s?"
@@ -868,8 +875,8 @@ msgstr "Nombre de archivo para tipo de documento: %s eliminado exitosamente."
 msgid ""
 "Document type filename: %(document_type_filename)s delete error: %(error)s"
 msgstr ""
-"Error de eliminación: %(error)s para nombre de archivo de tipo de documento: "
-"%(document_type_filename)s  "
+"Error de eliminación: %(error)s para nombre de archivo de tipo de documento:"
+" %(document_type_filename)s  "
 
 #: views.py:1086
 #, python-format
@@ -895,9 +902,8 @@ msgid "create filename for document type: %s"
 msgstr "crear nombre de archivo para tipo de documento: %s"
 
 #: widgets.py:26
-#, fuzzy
 msgid "document page image"
-msgstr "página de documento"
+msgstr "imagen de página de documento"
 
 #: wizards.py:34
 msgid "step 1 of 3: Document type"
@@ -917,8 +923,8 @@ msgstr "Siguiente paso"
 
 #: conf/settings.py:38
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
 msgstr ""
 "El número máximo de documentos recientes (creados, editados, vistos) a "
 "recordar por usuario."
@@ -965,8 +971,8 @@ msgstr ""
 "Los tipos de documentos definene una clase que representa a un grupo amplio "
 "de documentos, tales como: facturas, reglamentos o manuales. La ventaja de "
 "utilizar los tipos de documentos son: la asignación de una lista de nombres "
-"de archivos típicos para el cambio de nombre rápido durante la creación, así "
-"como la asignación de tipos de metadatos y grupos por defecto."
+"de archivos típicos para el cambio de nombre rápido durante la creación, así"
+" como la asignación de tipos de metadatos y grupos por defecto."
 
 #: templates/recent_document_list_help.html:3
 msgid "What are recent documents?"
@@ -981,5 +987,4 @@ msgstr ""
 "Aquí encontrará los últimos %(recent_count)s documentos que haya creado o "
 "editado de alguna manera."
 
-#~ msgid "Page"
-#~ msgstr "Página"
+
