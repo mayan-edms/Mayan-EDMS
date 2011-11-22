@@ -1,3 +1,46 @@
+Version 0.10
+------------
+* Added a proper setup views for the document grouping functionality
+* Document grouping is now called smart linking as it relates better to
+  how it actually works.  The data base schema was changed and users must
+  do the required::
+  
+  $ ./manager syncdb
+  
+  for the new tables to be created.
+* Grappelli is no longer required as can be uninstalled.
+* New smarter document preview widget that doesn't allow zooming or viewing
+  unknown or invalid documents.
+* New office document converter, requires:
+
+    * LibreOffice (https://www.libreoffice.org/)
+    * unoconv [version 0.5] (https://github.com/dagwieers/unoconv)
+    
+* The new office documents converter won't convert files with the extension
+  .docx becasue these files are recognized as zip files instead.  This
+  is an issue of the libmagic library.
+
+* New configuration option added CONVERTER_UNOCONV_USE_PIPE that controls
+  how unoconv handles the communication with LibreOffice.  The default of
+  `True` causes unoconv to use pipes, this approach is slower than using 
+  TCP/IP ports but it is more stable.
+  
+* Initial REST API that exposes documents properties and one method, this
+  new API is used by the new smart document widget and requires the 
+  packaged `djangorestframework`, users must issue a::
+  
+  $ pip install -r requirements/production.txt
+  
+  to install the new requirement.
+  
+* MIME type detection and caching performance updates.
+* Updated the included version of jQuery to 1.7
+* Updated the included version of JqueryAsynchImageLoader to 0.9.7
+* Document image serving response now specifies a MIME type for increased
+  browser compatibility.
+* Small change in the scheduler that increases stability.
+  
+  
 Version 0.9.1
 -------------
 * Added handling percent encoded unicode query strings in search URL,
