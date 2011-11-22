@@ -23,7 +23,7 @@ LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
 
 def task_process_queue_document(queue_document_id):
-    lock_id = u'%s-lock-%d' % (u'task_process_queue_document', queue_document_id)
+    lock_id = u'task_proc_queue_doc-%d' % queue_document_id
     try:
         lock = Lock.objects.acquire_lock(lock_id, LOCK_EXPIRE)
         queue_document = QueueDocument.objects.get(pk=queue_document_id)
