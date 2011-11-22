@@ -4,12 +4,15 @@ except ImportError:
     class OperationalError(Exception):
         pass
         
+import logging
+        
 from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from navigation.api import register_links, register_top_menu, register_multi_item_links
 from permissions.api import register_permission, set_namespace_title
@@ -21,8 +24,10 @@ from scheduler.api import register_interval_job
 
 from ocr.conf.settings import AUTOMATIC_OCR
 from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
-from ocr.models import DocumentQueue, QueueTransformation
+from ocr.models import DocumentQueue, QueueTransformation, QueueDocument
 from ocr.tasks import task_process_document_queues
+
+logger = logging.getLogger(__name__)
 
 #Permissions
 PERMISSION_OCR_DOCUMENT = {'namespace': 'ocr', 'name': 'ocr_document', 'label': _(u'Submit document for OCR')}
@@ -98,6 +103,13 @@ def document_post_save(sender, instance, **kwargs):
             DocumentQueue.objects.queue_document(instance)
 
 post_save.connect(document_post_save, sender=Document)
+
+
+@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
+def call_queue(sender, **kwargs):
+    logger.debug('got call_queue signal')
+    task_process_document_queues()
+
 
 create_default_queue()
 
