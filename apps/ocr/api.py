@@ -57,9 +57,8 @@ def run_tesseract(input_filename, lang=None):
     ocr_output = os.extsep.join([filepath, u'txt'])
     command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(filepath)]
 
-    # TODO: Tesseract 3.0 segfaults
-    #if lang is not None:
-    #    command.extend([u'-l', lang])
+    if lang is not None:
+        command.extend([u'-l', lang])
 
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
@@ -67,7 +66,12 @@ def run_tesseract(input_filename, lang=None):
         error_text = proc.stderr.read()
         cleanup(filepath)
         cleanup(ocr_output)
-        raise TesseractError(error_text)
+        if lang:
+            # If tesseract gives an error with a language parameter
+            # re-run it with no parameter again
+            return run_tesseract(input_filename, lang=None)
+        else:
+            raise TesseractError(error_text)
 
     fd = codecs.open(ocr_output, 'r', 'utf-8')
     text = fd.read().strip()
