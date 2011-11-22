@@ -3,6 +3,8 @@ import os
 import re
 import types
 import tempfile
+import string
+import random
 
 from django.utils.http import urlquote  as django_urlquote
 from django.utils.http import urlencode as django_urlencode
@@ -358,8 +360,13 @@ def validate_path(path):
 
     return True
 
+
 def encapsulate(function):
     # Workaround Django ticket 15791
     # Changeset 16045
     # http://stackoverflow.com/questions/6861601/cannot-resolve-callable-context-variable/6955045#6955045
     return lambda: function
+
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for x in range(size))

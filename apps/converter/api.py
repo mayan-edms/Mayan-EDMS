@@ -14,8 +14,8 @@ from converter.literals import TRANSFORMATION_RESIZE, \
 from converter.literals import DIMENSION_SEPARATOR
 from converter.literals import FILE_FORMATS
 from converter.utils import cleanup
-from converter.office_converter import OfficeConverter
-
+from converter.runtime import office_converter
+from converter.exceptions import OfficeConversionError
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
@@ -51,18 +51,19 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
         
     if os.path.exists(output_filepath):
         return output_filepath
-    
-    office_converter = OfficeConverter()
-    office_converter.convert(input_filepath, mimetype=mimetype)
+
     if office_converter:
         try:
-            input_filepath = office_converter.output_filepath
-            mimetype = 'application/pdf'
-        except OfficeConverter:
-            raise UnknownFileFormat('office converter exception')
-    else:
-        # Recycle the already detected mimetype
-        mimetype = office_converter.mimetype
+            office_converter.convert(input_filepath, mimetype=mimetype)
+            if office_converter.exists:
+                input_filepath = office_converter.output_filepath
+                mimetype = 'application/pdf'
+            else:
+                # Recycle the already detected mimetype
+                mimetype = office_converter.mimetype
+
+        except OfficeConversionError:
+                raise UnknownFileFormat('office converter exception')
 
     if size:
         transformations.append(
@@ -98,14 +99,15 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
 
 
 def get_page_count(input_filepath):
-    office_converter = OfficeConverter()
-    office_converter.convert(input_filepath)    
     if office_converter:
         try:
-            input_filepath = office_converter.output_filepath
-        except OfficeConverter:
-            raise UnknownFileFormat('office converter exception')
-                
+            office_converter.convert(input_filepath)
+            if office_converter.exists:
+                input_filepath = office_converter.output_filepath
+
+        except OfficeConversionError:
+                raise UnknownFileFormat('office converter exception')
+                                
     return backend.get_page_count(input_filepath)
 
 

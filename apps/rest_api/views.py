@@ -1,0 +1,69 @@
+'''Views file for the rest_api app'''
+
+import logging
+
+from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
+
+from documents.models import Document
+from converter.exceptions import UnknownFileFormat, UnkownConvertError
+
+from djangorestframework.views import View, ModelView, ListModelView, InstanceModelView
+from djangorestframework.mixins import InstanceMixin, ReadModelMixin
+from djangorestframework.response import Response
+from djangorestframework import status
+
+logger = logging.getLogger(__name__)
+
+
+class ReadOnlyInstanceModelView(InstanceModelView):
+    allowed_methods = ['GET']
+
+
+class APIBase(View):
+    """This is the REST API for Mayan EDMS (https://github.com/rosarior/mayan/).
+
+    All the API calls can be navigated either through the browser or from the command line...
+
+        bash: curl -X GET http://127.0.0.1:8000/api/                           # (Use default renderer)
+        bash: curl -X GET http://127.0.0.1:8000/api/ -H 'Accept: text/plain'   # (Use plaintext documentation renderer)
+
+    """
+
+    def get(self, request):
+        return [
+            {'name': 'Version 0 Alpha', 'url': reverse('api-version-0')}
+        ]
+
+
+class Version_0(View):
+    def get(self, request):
+        return [
+            {'name': 'Resources', 'resources': ['documents/<pk>']}
+        ]
+
+
+class IsZoomable(View):
+    def get(self, request, pk):
+        logger.info('received is_zoomable call from: %s' % (request.META['REMOTE_ADDR']))
+        document = get_object_or_404(Document, pk=pk)
+        try:
+            document.get_image_cache_name(1) # TODO: page
+            return {'result': True}
+        except (UnknownFileFormat, UnkownConvertError):
+            return {'result': False}
+
+
+class Exists(View):
+    def get(self, request, pk):
+        logger.info('received exists call from: %s' % (request.META['REMOTE_ADDR']))
+        document = get_object_or_404(Document, pk=pk)
+        return {'result': document.exists()}
+        
+        
+class Size(View):
+    def get(self, request, pk):
+        logger.info('received size call from: %s' % (request.META['REMOTE_ADDR']))
+        document = get_object_or_404(Document, pk=pk)
+        return {'result': document.size}        
