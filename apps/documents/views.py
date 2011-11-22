@@ -2,7 +2,7 @@ import urlparse
 import copy
 
 from django.utils.translation import ugettext_lazy as _
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
@@ -271,7 +271,7 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def get_document_image(request, document_id, size=PREVIEW_SIZE):
+def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=False):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
@@ -288,7 +288,12 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
 
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
-    return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
+    if base64_version:
+        return HttpResponse(u'<html><body><img src="%s" /></body></html>' % document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True))
+    else:
+        # TODO: hardcoded MIMETYPE
+        return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
+        
 
 
 def document_download(request, document_id):

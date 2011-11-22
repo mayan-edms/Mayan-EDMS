@@ -83,6 +83,9 @@ def get_error_icon_file_path():
     else:
         return os.path.join(settings.STATIC_ROOT, MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
 
+def get_error_icon_url():
+    return os.path.join(MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
+
    
 def get_mimetype(file_description, filepath, mimetype_only=False):
     """

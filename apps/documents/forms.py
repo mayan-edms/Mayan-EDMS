@@ -15,7 +15,6 @@ from documents.models import Document, DocumentType, \
     DocumentPage, DocumentPageTransformation, DocumentTypeFilename
 from documents.widgets import document_html_widget
 
-
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
     class Meta:
@@ -35,7 +34,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
             output = []
             output.append('<div class="full-height scrollable" style="overflow: auto;">')
 
-            output.append(document_html_widget(value.document, size='document_display', page=value.page_number, zoom=zoom, rotation=rotation))
+            output.append(document_html_widget(value.document, view='document_display', page=value.page_number, zoom=zoom, rotation=rotation))
             output.append('</div>')
             return mark_safe(u''.join(output))
         else:
@@ -106,7 +105,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
             output.append(
                 document_html_widget(
                     page.document,
-                    size='document_preview_multipage',
+                    view='document_preview_multipage',
                     click_view='document_display',
                     page=page.page_number,
                     gallery_name='document_pages',

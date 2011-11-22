@@ -3,7 +3,7 @@ from django.conf.urls.defaults import patterns, url
 from djangorestframework.views import ListModelView
 from djangorestframework.views import ListOrCreateModelView, InstanceModelView
 
-from rest_api.views import APIBase, Version_0, ReadOnlyInstanceModelView, IsZoomable, Exists, Size
+from rest_api.views import APIBase, Version_0, ReadOnlyInstanceModelView, IsZoomable
 from rest_api.resources import DocumentResourceSimple
 
 urlpatterns = patterns('',
@@ -12,7 +12,5 @@ urlpatterns = patterns('',
     
     # Version 0 alpha API calls    
     url(r'^v0/document/(?P<pk>[0-9]+)/$', ReadOnlyInstanceModelView.as_view(resource=DocumentResourceSimple), name='documents-simple'),
-    url(r'^v0/document/(?P<pk>[0-9]+)/expensive/is_zoomable/$', IsZoomable.as_view(), name='documents-expensive-is_zoomable'),
-    url(r'^v0/document/(?P<pk>[0-9]+)/expensive/exists/$', IsZoomable.as_view(), name='documents-expensive-exists'),
-    url(r'^v0/document/(?P<pk>[0-9]+)/expensive/size/$', Size.as_view(), name='documents-expensive-size'),
+    url(r'^v0/document/(?P<pk>[0-9]+)/page/(?P<page_number>[0-9]+)/expensive/is_zoomable/$', IsZoomable.as_view(), name='documents-expensive-is_zoomable'),
 )

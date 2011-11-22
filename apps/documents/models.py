@@ -2,7 +2,9 @@ import os
 import tempfile
 import hashlib
 from ast import literal_eval
-
+import base64
+from StringIO import StringIO
+    
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -26,6 +28,8 @@ from documents.conf.settings import STORAGE_BACKEND
 from documents.conf.settings import PREVIEW_SIZE
 from documents.conf.settings import DISPLAY_SIZE
 from documents.conf.settings import CACHE_PATH
+from documents.conf.settings import ZOOM_MAX_LEVEL
+from documents.conf.settings import ZOOM_MIN_LEVEL
 
 from documents.managers import RecentDocumentManager, \
     DocumentPageTransformationManager
@@ -256,15 +260,31 @@ class Document(models.Model):
         image_cache_name = self.get_image_cache_name(page=page)
         return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
 
-    def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
+    def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False):
+        if zoom < ZOOM_MIN_LEVEL:
+            zoom = ZOOM_MIN_LEVEL
+
+        if zoom > ZOOM_MAX_LEVEL:
+            zoom = ZOOM_MAX_LEVEL
+
+        rotation = rotation % 360        
+        
         try:
-            return self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation)
+            file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation)
         except UnknownFileFormat:
-            return get_icon_file_path(self.file_mimetype)
+            file_path = get_icon_file_path(self.file_mimetype)
         except UnkownConvertError:
-            return get_error_icon_file_path()
+            file_path = get_error_icon_file_path()
         except:
-            return get_error_icon_file_path()
+            file_path = get_error_icon_file_path()
+            
+        if as_base64:
+            image = open(file_path, 'r')
+            out = StringIO()
+            base64.encode(image, out)
+            return u'data:%s;base64,%s' % (get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0], out.getvalue().replace('\n', ''))
+        else:
+            return file_path
 
     def invalidate_cached_image(self, page):
         try:

@@ -25,6 +25,8 @@ class DocumentResourceSimple(ModelResource):
                     {
                         'page_numer': page.page_number,
                         'page_label': page.page_label,
+                        'is_zoomable': reverse('documents-expensive-is_zoomable', args=[instance.pk, page.page_number]),
+                        
                         #'content':
                     }
                     for page in instance.documentpage_set.all()
@@ -33,6 +35,4 @@ class DocumentResourceSimple(ModelResource):
         ]
     
     def expensive_methods(self, instance):
-        return [
-            {'is_zoomable': reverse('documents-expensive-is_zoomable', args=[instance.pk])},
-        ]
+        return []
