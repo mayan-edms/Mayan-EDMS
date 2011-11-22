@@ -20,8 +20,8 @@ admin_site = {'text': _(u'admin site'), 'view': 'admin:index', 'famfam': 'keyboa
 
 __version_info__ = {
     'major': 0,
-    'minor': 9,
-    'micro': 1,
+    'minor': 10,
+    'micro': 0,
     'releaselevel': 'final',
     'serial': 0
 }
