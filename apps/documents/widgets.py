@@ -64,10 +64,10 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
                 .error(function(data) {
                     $('#document-%(pk)d-%(page)d').html('<img src="%(error_image)s" />');
                 });
-          });
+        });
         </script>
     ''' % {
-            'url': reverse('documents-expensive-is_zoomable', args=[document.pk]),
+            'url': reverse('documents-expensive-is_zoomable', args=[document.pk, page]),
             'pk': document.pk,
             'page': page if page else 1,
             'plain_template': mark_safe(u''.join(plain_template)),
