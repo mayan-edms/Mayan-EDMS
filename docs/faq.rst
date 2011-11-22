@@ -119,3 +119,13 @@ How to enable x-sendile support for ``Apache``
   
       XSendFile on
       XSendFileAllowAbove on
+      
+
+The included version of ``unoconv`` in my distribution is too old
+-------------------------------------------------------------
+      
+  * Only the file 'unoconv' file from https://github.com/dagwieers/unoconv is needed.  
+    Put it in a user designated directory for binaries such as /usr/local/bin and 
+    setup Mayan's configuration option in your settings_local.py file like this::
+    
+      CONVERTER_UNOCONV_PATH = '/usr/local/bin/unoconv'

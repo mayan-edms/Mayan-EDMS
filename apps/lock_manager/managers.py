@@ -1,9 +1,4 @@
-try:
-    from psycopg2 import OperationalError
-except ImportError:
-    class OperationalError(Exception):
-        pass
-
+import logging
 import datetime
 
 from django.db.utils import DatabaseError
@@ -13,40 +8,34 @@ from django.db import models
 
 from lock_manager.exceptions import LockError
 
+logger = logging.getLogger(__name__)
+
 
 class LockManager(models.Manager):
-    @transaction.commit_manually
+    @transaction.commit_on_success
     def acquire_lock(self, name, timeout=None):
+        logger.debug('trying to acquire lock: %s' % name)
         lock = self.model(name=name, timeout=timeout)
         try:
             lock.save(force_insert=True)
+            logger.debug('acquired lock: %s' % name)
+            return lock
         except IntegrityError:
-            transaction.rollback()
             # There is already an existing lock
-            # Check it's expiration date and if expired, delete it and 
-            # create it again
-            lock = self.model.objects.get(name=name)
-            transaction.rollback()
+            # Check it's expiration date and if expired, reset it
+            try:
+                lock = self.model.objects.get(name=name)
+            except self.model.DoesNotExist:
+                # Table based locking
+                logger.debug('lock: %s does not exist' % name)
+                raise LockError('Unable to acquire lock')
 
             if datetime.datetime.now() > lock.creation_datetime + datetime.timedelta(seconds=lock.timeout):
-                self.release_lock(name)
+                logger.debug('reseting deleting stale lock: %s' % name)
                 lock.timeout=timeout
+                logger.debug('try to reacquire stale lock: %s' % name)
                 lock.save()
-                transaction.commit()
+                return lock
             else:
+                logger.debug('unable to acquire lock: %s' % name)
                 raise LockError('Unable to acquire lock')
-        except DatabaseError:
-            transaction.rollback()
-            # Special case for ./manage.py syncdb
-        except (OperationalError, ImproperlyConfigured):
-            transaction.rollback()
-            # Special for DjangoZoom, which executes collectstatic media
-            # doing syncdb and creating the database tables
-        else:
-            transaction.commit()
-        
-    @transaction.commit_manually
-    def release_lock(self, name):
-        lock = self.model.objects.get(name=name)
-        lock.delete()
-        transaction.commit()
