@@ -9,11 +9,11 @@ from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
-from common.widgets import TextAreaDiv
+from common.widgets import TextAreaDiv 
 
 from documents.models import Document, DocumentType, \
     DocumentPage, DocumentPageTransformation, DocumentTypeFilename
-
+from documents.widgets import document_html_widget
 
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
@@ -32,22 +32,10 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         rotation = final_attrs.get('rotation', 0)
         if value:
             output = []
-            output.append('''
-                <div class="full-height scrollable" style="overflow: auto;">
-                    <div class="tc">
-                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
-                        <noscript>
-                            <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" alt="%(string)s" />
-                        </noscript>
-                    </div>
-                </div>''' % {
-                'img': reverse('document_display', args=[value.document.id]),
-                'page': value.page_number,
-                'zoom': zoom,
-                'rotation': rotation,
-                'static_url': settings.STATIC_URL,
-                'string': ugettext(u'page image')
-                })
+            output.append('<div class="full-height scrollable" style="overflow: auto;">')
+
+            output.append(document_html_widget(value.document, view='document_display', page=value.page_number, zoom=zoom, rotation=rotation))
+            output.append('</div>')
             return mark_safe(u''.join(output))
         else:
             return u''
@@ -113,52 +101,24 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
         for page in value.documentpage_set.all():
-            try: 
-                page.document.get_valid_image()
-                template =  u'''<div style="display: inline-block; margin: 5px 10px 10px 10px;">
-                            <div class="tc">%(page_string)s %(page)s</div>
-                            <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
-                                <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
-                                    <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
-                                    <noscript>
-                                        <img src="%(img)s?page=%(page)d" alt="%(string)s" />
-                                    </noscript>
-                                </a>
-                            </div>
-                            <div class="tc">
-                                <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
-                            </div>
-                        </div>'''
-            except:
-                template =  u'''<div style="display: inline-block; margin: 5px 10px 10px 10px;">
-                            <div class="tc">%(page_string)s %(page)s</div>
-                            <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
-                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
-                                <noscript>
-                                    <img src="%(img)s?page=%(page)d" alt="%(string)s" />
-                                </noscript>
-                            </div>
-                            <div class="tc">
-                                <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
-                            </div>
-                        </div>'''
-                
-            
-            output.append(template % {
-                    'url': reverse('document_page_view', args=[page.pk]),
-                    'img': reverse('document_preview_multipage', args=[value.pk]),
-                    'page': page.page_number,
-                    'view_url': reverse('document_display', args=[page.document.pk]),
-                    'page_string': ugettext(u'Page'),
-                    'details_string': ugettext(u'Details'),
-                    'static_url': settings.STATIC_URL,
-                    'string': _(u'document page')
-                })
+            output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
+            output.append(
+                document_html_widget(
+                    page.document,
+                    view='document_preview_multipage',
+                    click_view='document_display',
+                    page=page.page_number,
+                    gallery_name='document_pages',
+                    fancybox_class='fancybox-noscaling',
+                )
+            )
+            output.append(u'<div class="tc">')
+            output.append(u'<a class="fancybox-iframe" href="%s"><span class="famfam active famfam-page_white_go"></span>%s</a>' % (reverse('document_page_view', args=[page.pk]), ugettext(u'Details')))
+            output.append(u'</div>')
+            output.append(u'</div>')
 
         output.append(u'</div>')
-        output.append(
-            u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
-             ugettext(u'Click on the image for full size preview'))
+        output.append(u'<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size preview'))
 
         return mark_safe(u''.join(output))
 

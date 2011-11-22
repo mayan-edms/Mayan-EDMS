@@ -1,3 +1,55 @@
+Version 0.10
+------------
+* Added a proper setup views for the document grouping functionality.
+* Document grouping is now called smart linking as it relates better to
+  how it actually works.  The data base schema was changed and users must
+  do the required::
+
+    $ ./manager syncdb
+
+  for the new tables to be created.
+* Grappelli is no longer required as can be uninstalled.
+* New smarter document preview widget that doesn't allow zooming or viewing
+  unknown or invalid documents.
+* New office document converter, requires:
+
+    * LibreOffice (https://www.libreoffice.org/)
+    * unoconv [version 0.5] (https://github.com/dagwieers/unoconv)
+
+* The new office documents converter won't convert files with the extension 
+  .docx because these files are recognized as zip files instead.  This 
+  is an issue of the libmagic library.
+
+* New configuration option added ``CONVERTER_UNOCONV_USE_PIPE`` that controls 
+  how unoconv handles the communication with LibreOffice.  The default of 
+  ``True`` causes unoconv to use **pipes**, this approach is slower than using 
+  **TCP/IP** ports but it is more stable.
+  
+* Initial `REST` `API` that exposes documents properties and one method, this 
+  new `API` is used by the new smart document widget and requires the 
+  package ``djangorestframework``, users must issue a::
+  
+  $ pip install -r requirements/production.txt
+  
+  to install this new requirement.
+  
+* MIME type detection and caching performance updates.
+* Updated the included version of ``jQuery`` to 1.7
+* Updated the included version of ``JqueryAsynchImageLoader`` to 0.9.7
+* Document image serving response now specifies a MIME type for increased 
+  browser compatibility.
+* Small change in the scheduler that increases stability.
+* Russian translation updates (Сергей Глита [Sergey Glita])
+* Improved and generalized the OCR queue locking mechanism, this should 
+  eliminate any posibility of race conditions between Mayan EDMS OCR nodes.
+* Added support for signals to the OCR queue, this results in instant OCR
+  processing upon submittal of a document to the OCR queue, this works in
+  addition to the current polling processing which eliminates the
+  posibility of stale documents in the OCR queue.
+* Added multiple document OCR submit link
+* Re enabled tesseract language specific OCR processing and added a one
+  (1) time language neutral retry for failed language specific OCR
+
 Version 0.9.1
 -------------
 * Added handling percent encoded unicode query strings in search URL,
@@ -8,44 +60,44 @@ Version 0.9.1
 
 Version 0.9.0
 -------------
-* Simplified getting mimetypes from files by merging 2 implementations
+* Simplified getting mimetypes from files by merging 2 implementations 
   (document based and file based)
-* Updated python converter backend, document model and staging module
+* Updated python converter backend, document model and staging module 
   to use the new get_mimetype API
-* Only allow clickable thumbnails for document and staging files with a
+* Only allow clickable thumbnails for document and staging files with a 
   valid image
-* Removed tag count from the group document list widget to conserve
+* Removed tag count from the group document list widget to conserve 
   vertical space
 * Updated required Django version to 1.3.1
-* Removed the included 3rd party module django-sendfile, now added to
+* Removed the included 3rd party module django-sendfile, now added to 
   the requirement files.
 
-    * User should do a pip install -r requirements/production.txt to update
+  * User should do a pip install -r requirements/production.txt to update
 
-* Changed to Semantic Versioning (http://semver.org/), with
+* Changed to Semantic Versioning (http://semver.org/), with 
   recommendations 7, 8 and 9 causing the most effect in the versioning number.
 * Added Russian locale post OCR cleanup backend (Сергей Глита [Sergei Glita])
-* Reduced severity of the messages displayed when no OCR cleanup backend
+* Reduced severity of the messages displayed when no OCR cleanup backend 
   is found for a language
 * Complete Portuguese translation (Emerson Soares and Renata Oliveira)
 * Complete Russian translation (Сергей Глита [Sergei Glita])
-* Added animate.css to use CSS to animate flash messages with better
+* Added animate.css to use CSS to animate flash messages with better 
   fallback on non JS browsers
 * The admin and sentry links are no longer hard-coded (Meurig Freeman)
-* Improved appearance of the document tag widget
+* Improved appearance of the document tag widget 
   (https://p.twimg.com/Ac0Q0b-CAAE1lfA.png:large)
-* Added django_compress and cssmin to the requirements files and enabled
+* Added django_compress and cssmin to the requirements files and enabled 
   django_compress for CSS and JS files
 * Added granting and revoking permission methods to the permission model
 * Correctly calculate the mimetype icons paths when on development mode
-* Added a new more comprehensive method of passing multiple variables
+* Added a new more comprehensive method of passing multiple variables 
   per item in multi item selection views
-* Used new multi parameter passing method to improve the usability of
+* Used new multi parameter passing method to improve the usability of 
   the grant/revoke permission view, thanks to Cezar Jenkins
   (https://twitter.com/#!/emperorcezar) for the suggestion
-* Added step to the documentation explaining how to install Mayan EDMS
+* Added step to the documentation explaining how to install Mayan EDMS 
   on Webfaction
-* Added an entry in the documentation to the screencast explaining how
+* Added an entry in the documentation to the screencast explaining how 
   to install Mayan EDMS on DjangoZoom
 * Added required changes to add Mayan EDMS to Transifex.com
 * Fixed the apache contrib file static file directory name
@@ -53,7 +105,6 @@ Version 0.9.0
 
 Version 0.8.3
 -------------
-
 * Added a Contributors file under the docs directory
 * Moved the document grouping subtemplate windows into a document
   information tab

@@ -83,8 +83,11 @@ def get_error_icon_file_path():
     else:
         return os.path.join(settings.STATIC_ROOT, MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
 
+def get_error_icon_url():
+    return os.path.join(MIMETYPE_ICONS_DIRECTORY_NAME, ERROR_FILE_NAME)
+
    
-def get_mimetype(file_description, filepath):
+def get_mimetype(file_description, filepath, mimetype_only=False):
     """
     Determine a file's mimetype by calling the system's libmagic
     library via python-magic or fallback to use python's mimetypes
@@ -95,9 +98,10 @@ def get_mimetype(file_description, filepath):
     if USE_PYTHON_MAGIC:
         mime = magic.Magic(mime=True)
         file_mimetype = mime.from_buffer(file_description.read())
-        file_description.seek(0)
-        mime_encoding = magic.Magic(mime_encoding=True)
-        file_mime_encoding = mime_encoding.from_buffer(file_description.read())
+        if not mimetype_only:
+            file_description.seek(0)
+            mime_encoding = magic.Magic(mime_encoding=True)
+            file_mime_encoding = mime_encoding.from_buffer(file_description.read())
     else:
         path, filename = os.path.split(filepath)
         file_mimetype, file_mime_encoding = mimetypes.guess_type(filename)

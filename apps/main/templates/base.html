@@ -102,13 +102,17 @@
             -webkit-box-shadow: -1px -1px 2px #004977;
             box-shadow: -1px -1px 2px #004977;
         }		
+        
+        .thin_border {
+            border: 1px solid black;
+        }
     </style> 
     {% block stylesheets %}{% endblock %}
 {% endblock %}
 
 {% block web_theme_javascript %}
     <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.scrollview.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}packages/JqueryAsynchImageLoader-0.8.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}packages/JqueryAsynchImageLoader-0.9.7.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js"></script>
 
@@ -135,6 +139,7 @@
             'type'          : 'image',
             'autoScale'     : true
             });
+            
             $("a.fancybox-noscaling").fancybox({
             'titleShow'     : false,
             'transitionIn'  : 'elastic',
@@ -144,6 +149,7 @@
             'type'          : 'image',
             'autoScale'     : false
             });
+            
             $("a.fancybox-iframe").fancybox({
                 'titleShow'     : false,
                 'transitionIn'  : 'elastic',
@@ -166,7 +172,7 @@
             $('img.lazy-load').jail({
                 event: 'load',
                 timeout: 10,
-                placeholder: '{{ STATIC_URL }}/images/ajax-loader.gif'
+                placeholder: '{{ STATIC_URL }}images/ajax-loader.gif'
             });
         });
     </script>

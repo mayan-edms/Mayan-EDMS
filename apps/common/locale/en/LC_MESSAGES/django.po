@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-30 00:54-0400\n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,67 +99,67 @@ msgstr ""
 msgid "Landscape"
 msgstr ""
 
-#: utils.py:289
+#: utils.py:291
 msgid "function found"
 msgstr ""
 
-#: utils.py:291 utils.py:293
+#: utils.py:293 utils.py:295
 #, python-format
 msgid "class found: %s"
 msgstr ""
 
-#: views.py:23 templates/password_change_done.html:5
+#: views.py:24 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
 msgstr ""
 
-#: views.py:39
+#: views.py:41
 msgid "No action selected."
 msgstr ""
 
-#: views.py:43
+#: views.py:45
 msgid "Must select at least one item."
 msgstr ""
 
-#: views.py:76
+#: views.py:86
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr ""
 
-#: views.py:79 views.py:96
+#: views.py:89 views.py:106
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr ""
 
-#: views.py:93
+#: views.py:103
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr ""
 
-#: views.py:111
+#: views.py:121
 msgid "Add"
 msgstr ""
 
-#: views.py:122
+#: views.py:132
 msgid "Remove"
 msgstr ""
 
-#: views.py:145
+#: views.py:155
 msgid "current user details"
 msgstr ""
 
-#: views.py:162
+#: views.py:172
 msgid "Current user's details updated."
 msgstr ""
 
-#: views.py:171
+#: views.py:181
 msgid "edit current user details"
 msgstr ""
 
-#: views.py:197
+#: views.py:207
 msgid "Changelog"
 msgstr ""
 
-#: views.py:210
+#: views.py:220
 msgid "License"
 msgstr ""
 
@@ -237,25 +237,25 @@ msgstr ""
 msgid "Confirm delete"
 msgstr ""
 
-#: templates/generic_confirm.html:28
+#: templates/generic_confirm.html:32
 msgid "form icon"
 msgstr ""
 
-#: templates/generic_confirm.html:36
+#: templates/generic_confirm.html:40
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
 msgstr ""
 
-#: templates/generic_confirm.html:38
+#: templates/generic_confirm.html:42
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
 msgstr ""
 
-#: templates/generic_confirm.html:46
+#: templates/generic_confirm.html:50
 msgid "Yes"
 msgstr ""
 
-#: templates/generic_confirm.html:50
+#: templates/generic_confirm.html:54
 msgid "No"
 msgstr ""
 
@@ -268,8 +268,8 @@ msgstr ""
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
 #: templates/generic_list_horizontal_subtemplate.html:178
-#: templates/generic_list_subtemplate.html:51
-#: templates/generic_list_subtemplate.html:171
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Save"
 msgstr ""
 
@@ -277,13 +277,9 @@ msgstr ""
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
 #: templates/generic_list_horizontal_subtemplate.html:178
-#: templates/generic_list_subtemplate.html:51
-#: templates/generic_list_subtemplate.html:171
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Submit"
-msgstr ""
-
-#: templates/generic_form_subtemplate.html:82
-msgid "Cancel"
 msgstr ""
 
 #: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
@@ -292,7 +288,7 @@ msgid "List of %(stripped_title)s"
 msgstr ""
 
 #: templates/generic_list_horizontal_subtemplate.html:23
-#: templates/generic_list_subtemplate.html:23
+#: templates/generic_list_subtemplate.html:24
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
@@ -300,18 +296,16 @@ msgid ""
 msgstr ""
 
 #: templates/generic_list_horizontal_subtemplate.html:25
-#: templates/generic_list_subtemplate.html:25
+#: templates/generic_list_subtemplate.html:26
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr ""
 
-#: templates/generic_list_horizontal_subtemplate.html:72
-#: templates/generic_list_subtemplate.html:71
+#: templates/generic_list_subtemplate.html:72
 msgid "Identifier"
 msgstr ""
 
-#: templates/generic_list_horizontal_subtemplate.html:146
-#: templates/generic_list_subtemplate.html:145
+#: templates/generic_list_subtemplate.html:152
 #, python-format
 msgid "There are no %(stripped_title)s"
 msgstr ""

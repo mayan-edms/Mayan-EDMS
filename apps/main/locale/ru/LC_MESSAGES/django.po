@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-09-29 18:46-0400\n"
-"PO-Revision-Date: 2011-11-04 15:53+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-19 21:04+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
+"ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:15
 msgid "maintenance"
@@ -36,7 +38,7 @@ msgstr "sentry"
 
 #: __init__.py:19
 msgid "admin site"
-msgstr "admin site"
+msgstr "админка"
 
 #: __init__.py:30
 msgid "home"
@@ -60,8 +62,8 @@ msgstr "Диагностика"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or"
-" by a menu entry."
+"Controls whether the search functionality is provided by a sidebar widget or "
+"by a menu entry."
 msgstr ""
 "Определяет, будет ли функция поиска  обеспечивается виджетом боковой панели "
 "или пунктом меню."
@@ -78,58 +80,58 @@ msgstr "Версия"
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:117
+#: templates/base.html:183
 msgid "User"
 msgstr "Пользователь"
 
-#: templates/base.html:119
+#: templates/base.html:185
 msgid "Anonymous"
 msgstr "Анонимно"
 
-#: templates/base.html:122
+#: templates/base.html:188
 msgid "User details"
 msgstr "сведения о пользователе"
 
-#: templates/base.html:139
+#: templates/base.html:205
 msgid "Login"
 msgstr "Войти"
 
-#: templates/base.html:139
+#: templates/base.html:205
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:219
+#: templates/base.html:285
 msgid "Secondary menu"
 msgstr "Вторичное меню"
 
-#: templates/base.html:236
+#: templates/base.html:302
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Действия для %(name)s: %(navigation_object)s"
 
-#: templates/base.html:238 templates/base.html.py:270
+#: templates/base.html:304 templates/base.html.py:336
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Действия для: %(navigation_object)s"
 
-#: templates/base.html:241
+#: templates/base.html:307
 msgid "Available actions"
 msgstr "Доступные действия"
 
-#: templates/base.html:253 templates/base.html.py:285
+#: templates/base.html:319 templates/base.html.py:351
 msgid "Related actions"
 msgstr "Связанные действия"
 
-#: templates/base.html:268
+#: templates/base.html:334
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Действия для %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:273
+#: templates/base.html:339
 msgid "Actions"
 msgstr "Действия"
 
-#: templates/base.html:298
+#: templates/base.html:364
 msgid "Other available actions"
 msgstr "Другие возможные действия"
 
@@ -145,5 +147,3 @@ msgstr ""
 #: templates/project_description.html:15
 msgid "Released under the GPL V3 License"
 msgstr "Выпущено под лицензией GPL V3"
-
-

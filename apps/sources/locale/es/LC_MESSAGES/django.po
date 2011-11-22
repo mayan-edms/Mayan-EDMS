@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-09-29 18:49-0400\n"
-"PO-Revision-Date: 2011-11-07 04:28+0000\n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-22 21:02+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "añadir transformación"
 msgid "Document sources"
 msgstr "Fuentes de documentos"
 
-#: __init__.py:69 widgets.py:33
+#: __init__.py:69 widgets.py:39
 msgid "thumbnail"
 msgstr "muestra"
 
@@ -161,7 +161,7 @@ msgstr "carpeta de archivos provisionales de servidor"
 
 #: literals.py:49
 msgid "server watch folder"
-msgstr ""
+msgstr "carpeta observada de servidor"
 
 #: literals.py:54
 msgid "server staging folders"
@@ -169,7 +169,7 @@ msgstr "carpetas de archivos provisionales de servidor"
 
 #: literals.py:55
 msgid "server watch folders"
-msgstr ""
+msgstr "carpetas observadas de servidor"
 
 #: models.py:29
 msgid "title"
@@ -248,10 +248,12 @@ msgid ""
 "Inverval in seconds where the watch folder path is checked for new "
 "documents."
 msgstr ""
+"Inverval es segundos, donde se comprueba la ruta de la carpeta para detectar"
+" nuevos documentos."
 
 #: models.py:193
 msgid "watch folder"
-msgstr ""
+msgstr "carpeta observada"
 
 #: models.py:198
 msgid "Enter a valid value."
@@ -282,24 +284,24 @@ msgstr "transformación de fuente de documentos"
 msgid "document source transformations"
 msgstr "transformaciones de fuentes de documentos"
 
-#: staging.py:40
+#: staging.py:42
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "No es posible obtener la lista de los archivos provisionales: %s"
 
-#: staging.py:125
+#: staging.py:127
 #, python-format
 msgid "Unable to upload staging file: %s"
 msgstr "No se puede cargar archivo provisional: %s"
 
-#: staging.py:135
+#: staging.py:137
 #, python-format
 msgid "Unable to delete staging file: %s"
 msgstr "No se puede eliminar archivo provisional: %s"
 
 #: utils.py:40
 msgid "Whitelist Blacklist validation error."
-msgstr ""
+msgstr "Error de validación de Lista Negra Lista Blanca"
 
 #: views.py:80
 msgid "here"

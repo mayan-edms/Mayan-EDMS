@@ -29,3 +29,7 @@ class UnkownConvertError(ConvertError):
 
 class OfficeConversionError(ConvertError):
     pass
+
+
+class OfficeBackendError(OfficeConversionError):
+    pass

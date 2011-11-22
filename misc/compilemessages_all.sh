@@ -43,7 +43,7 @@ $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
 $COMPILEMESSAGES -l es
 
-cd $BASE/apps/grouping
+cd $BASE/apps/linking
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
 $COMPILEMESSAGES -l es

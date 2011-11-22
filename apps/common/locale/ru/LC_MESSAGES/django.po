@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-09-30 00:54-0400\n"
-"PO-Revision-Date: 2011-11-04 10:27+0000\n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-22 19:21+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "изменение сведений"
 
 #: __init__.py:23 __init__.py:29
 msgid "about"
-msgstr "о"
+msgstr "инфо"
 
 #: __init__.py:24
 msgid "changelog"
@@ -102,67 +102,67 @@ msgstr "Портрет"
 msgid "Landscape"
 msgstr "Пейзаж"
 
-#: utils.py:289
+#: utils.py:291
 msgid "function found"
-msgstr "Функция найдены"
+msgstr "функция найдена"
 
-#: utils.py:291 utils.py:293
+#: utils.py:293 utils.py:295
 #, python-format
 msgid "class found: %s"
-msgstr "Класс найден: %s."
+msgstr "класс найден: %s."
 
-#: views.py:23 templates/password_change_done.html:5
+#: views.py:24 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
-msgstr "Ваш пароль был успешно изменен."
+msgstr "Ваш пароль был изменен."
 
-#: views.py:39
+#: views.py:41
 msgid "No action selected."
 msgstr "Никаких действий не выбрано."
 
-#: views.py:43
+#: views.py:45
 msgid "Must select at least one item."
 msgstr "Необходимо выбрать хотя бы один элемент."
 
-#: views.py:76
+#: views.py:86
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "%(selection)s успешно добавлен в %(right_list_title)s ."
 
-#: views.py:79 views.py:96
+#: views.py:89 views.py:106
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "Не удалось добавить %(selection)s до %(right_list_title)s ."
 
-#: views.py:93
+#: views.py:103
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr "%(selection)s  успешно удален из %(right_list_title)s ."
 
-#: views.py:111
+#: views.py:121
 msgid "Add"
 msgstr "Добавить"
 
-#: views.py:122
+#: views.py:132
 msgid "Remove"
 msgstr "Удалить"
 
-#: views.py:145
+#: views.py:155
 msgid "current user details"
 msgstr "данные пользователя"
 
-#: views.py:162
+#: views.py:172
 msgid "Current user's details updated."
 msgstr "Данные пользователя обновлены."
 
-#: views.py:171
+#: views.py:181
 msgid "edit current user details"
 msgstr "редактировать данные пользователя"
 
-#: views.py:197
+#: views.py:207
 msgid "Changelog"
 msgstr "Изменения"
 
-#: views.py:210
+#: views.py:220
 msgid "License"
 msgstr "Лицензия"
 
@@ -194,7 +194,7 @@ msgstr "Недостаточно прав"
 
 #: templates/403.html:9
 msgid "You don't have enough permissions for this operation."
-msgstr "У вас нет достаточно прав для этой операции."
+msgstr "У вас недостаточно прав для этой операции."
 
 #: templates/404.html:3 templates/404.html.py:7
 msgid "Page not found"
@@ -230,7 +230,7 @@ msgstr "Создать %(object_name)s"
 
 #: templates/calculate_form_title.html:26
 msgid "Create"
-msgstr "Создавать"
+msgstr "Создать"
 
 #: templates/generic_assign_remove.html:3
 #, python-format
@@ -245,25 +245,25 @@ msgstr "Подтверждать"
 msgid "Confirm delete"
 msgstr "Подтвердить удаление"
 
-#: templates/generic_confirm.html:28
+#: templates/generic_confirm.html:32
 msgid "form icon"
 msgstr "значок формы"
 
-#: templates/generic_confirm.html:36
+#: templates/generic_confirm.html:40
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
 msgstr "Вы действительно хотите удалить %(object_name)s: %(object)s?"
 
-#: templates/generic_confirm.html:38
+#: templates/generic_confirm.html:42
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
 msgstr "Вы действительно хотите удалить: %(object)s?"
 
-#: templates/generic_confirm.html:46
+#: templates/generic_confirm.html:50
 msgid "Yes"
 msgstr "Да"
 
-#: templates/generic_confirm.html:50
+#: templates/generic_confirm.html:54
 msgid "No"
 msgstr "Нет"
 
@@ -276,8 +276,8 @@ msgstr "требуется"
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
 #: templates/generic_list_horizontal_subtemplate.html:178
-#: templates/generic_list_subtemplate.html:51
-#: templates/generic_list_subtemplate.html:171
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Save"
 msgstr "Сохранить"
 
@@ -285,22 +285,18 @@ msgstr "Сохранить"
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
 #: templates/generic_list_horizontal_subtemplate.html:178
-#: templates/generic_list_subtemplate.html:51
-#: templates/generic_list_subtemplate.html:171
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Submit"
 msgstr "Выполнить"
-
-#: templates/generic_form_subtemplate.html:82
-msgid "Cancel"
-msgstr "Отменить"
 
 #: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
 #, python-format
 msgid "List of %(stripped_title)s"
-msgstr "Список %(stripped_title)s"
+msgstr "Список \"%(stripped_title)s\""
 
 #: templates/generic_list_horizontal_subtemplate.html:23
-#: templates/generic_list_subtemplate.html:23
+#: templates/generic_list_subtemplate.html:24
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
@@ -310,18 +306,16 @@ msgstr ""
 " %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
-#: templates/generic_list_subtemplate.html:25
+#: templates/generic_list_subtemplate.html:26
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr "Список %(title)s (%(total)s)"
 
-#: templates/generic_list_horizontal_subtemplate.html:72
-#: templates/generic_list_subtemplate.html:71
+#: templates/generic_list_subtemplate.html:72
 msgid "Identifier"
 msgstr "Идентификатор"
 
-#: templates/generic_list_horizontal_subtemplate.html:146
-#: templates/generic_list_subtemplate.html:145
+#: templates/generic_list_subtemplate.html:152
 #, python-format
 msgid "There are no %(stripped_title)s"
 msgstr "Нет %(stripped_title)s"

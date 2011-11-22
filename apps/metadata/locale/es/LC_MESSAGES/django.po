@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-09-29 18:46-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
 "PO-Revision-Date: 2011-09-30 05:09+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
+"mayan-edms/team/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:12
@@ -191,8 +192,8 @@ msgid ""
 "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
 "User.objects.all()].%s"
 msgstr ""
-"Introduzca una cadena para ser evaluada.  Ejemplo: [user.get_full_name() for"
-" user in User.objects.all ()].%s"
+"Introduzca una cadena para ser evaluada.  Ejemplo: [user.get_full_name() for "
+"user in User.objects.all ()].%s"
 
 #: models.py:32 models.py:57 views.py:331 views.py:376
 msgid "metadata type"
@@ -287,8 +288,7 @@ msgstr "Editar metadatos para documentos: %s"
 #: views.py:148
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
 msgstr ""
 "Typo de metadatos: %(metadata_type)s agregado exitosamente al documento "
 "%(document)s."
@@ -453,15 +453,15 @@ msgstr "¿Cuáles son los tipos de metadatos?"
 
 #: templates/metadata_type_help.html:4
 msgid ""
-"A metadata type defines the characteristics of a value of some kind that can"
-" be attached to a document.  Examples of metadata types are: a client name, "
-"a date, or a project to which several documents belong.  A metadata type's "
+"A metadata type defines the characteristics of a value of some kind that can "
+"be attached to a document.  Examples of metadata types are: a client name, a "
+"date, or a project to which several documents belong.  A metadata type's "
 "name is the internal identifier with which it can be referenced to by other "
-"modules such as the indexing module, the title is the value that is shown to"
-" the users, the default value is the value an instance of this metadata type"
-" will have initially, and the lookup value turns an instance of a metadata "
-"of this type into a choice list which options are the result of the lookup's"
-" code execution."
+"modules such as the indexing module, the title is the value that is shown to "
+"the users, the default value is the value an instance of this metadata type "
+"will have initially, and the lookup value turns an instance of a metadata of "
+"this type into a choice list which options are the result of the lookup's "
+"code execution."
 msgstr ""
 "Un tipo de metadatos define las características de un valor de algún tipo "
 "que se puede conectar a un documento.  Ejemplos de tipos de metadatos son: "
@@ -471,7 +471,5 @@ msgstr ""
 "indexación, el título es el valor que se muestra a los usuarios, el valor "
 "por defecto es el valor que una instancia de este tipo de metadatos tendrá "
 "inicialmente, y el valor de búsqueda vuelve a una instancia de metadatos de "
-"este tipo en una lista de opciones donde las opciones son el resultado de la"
-" ejecución del valor de búsqueda."
-
-
+"este tipo en una lista de opciones donde las opciones son el resultado de la "
+"ejecución del valor de búsqueda."

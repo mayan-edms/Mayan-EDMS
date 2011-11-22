@@ -115,8 +115,15 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
 
 
 def queue_document_multiple_delete(request):
-    return queue_document_delete(request, queue_document_id_list=request.GET.get('id_list', []))
+    return queue_document_delete(request, queue_document_id_list=request.GET.get('id_list', ''))
 
+
+def submit_document_multiple(request):
+    for item_id in request.GET.get('id_list', '').split(','):
+        submit_document(request, item_id)
+        
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    
 
 def submit_document(request, document_id):
     check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])

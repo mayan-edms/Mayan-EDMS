@@ -25,6 +25,10 @@ urlpatterns = patterns('documents.views',
     url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': DISPLAY_SIZE}, 'document_display'),
     url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE}, 'document_display_print'),
 
+    url(r'^(?P<document_id>\d+)/display/preview/base64/$', 'get_document_image', {'size': PREVIEW_SIZE, 'base64_version': True}, 'document_preview_base64'),
+    url(r'^(?P<document_id>\d+)/display/preview/multipage/base64/$', 'get_document_image', {'size': MULTIPAGE_PREVIEW_SIZE, 'base64_version': True}, 'document_preview_multipage_base64'),
+    url(r'^(?P<document_id>\d+)/display/thumbnail/base64/$', 'get_document_image', {'size': THUMBNAIL_SIZE, 'base64_version': True}, 'document_thumbnail_base64'),
+
     url(r'^(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', (), 'document_create_siblings'),
     url(r'^(?P<document_id>\d+)/find_duplicates/$', 'document_find_duplicates', (), 'document_find_duplicates'),
@@ -32,6 +36,7 @@ urlpatterns = patterns('documents.views',
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^duplicates/list/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
+    url(r'^maintenance/update_page_count/$', 'document_update_page_count', (), 'document_update_page_count'),
 
     url(r'^page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
     url(r'^page/(?P<document_page_id>\d+)/text/$', 'document_page_text', (), 'document_page_text'),

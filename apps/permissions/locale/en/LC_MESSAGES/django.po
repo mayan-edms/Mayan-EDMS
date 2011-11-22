@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-29 18:47-0400\n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,28 +41,36 @@ msgstr ""
 msgid "Revoke permissions"
 msgstr ""
 
-#: __init__.py:20 models.py:75 views.py:33
+#: __init__.py:19 models.py:87 views.py:38
 msgid "roles"
 msgstr ""
 
-#: __init__.py:21
+#: __init__.py:20
 msgid "create new role"
 msgstr ""
 
-#: __init__.py:22
+#: __init__.py:21
 msgid "edit"
 msgstr ""
 
-#: __init__.py:23
+#: __init__.py:22
 msgid "members"
 msgstr ""
 
-#: __init__.py:24
+#: __init__.py:23
 msgid "role permissions"
 msgstr ""
 
-#: __init__.py:25
+#: __init__.py:24
 msgid "delete"
+msgstr ""
+
+#: __init__.py:26
+msgid "grant"
+msgstr ""
+
+#: __init__.py:27
+msgid "revoke"
 msgstr ""
 
 #: api.py:22
@@ -73,93 +81,98 @@ msgstr ""
 msgid "Insufficient permissions."
 msgstr ""
 
-#: models.py:11 views.py:53
+#: models.py:11 views.py:58
 msgid "namespace"
 msgstr ""
 
-#: models.py:12 views.py:54
+#: models.py:12 views.py:59
 msgid "name"
 msgstr ""
 
-#: models.py:13 models.py:70
+#: models.py:13 models.py:82
 msgid "label"
 msgstr ""
 
-#: models.py:20 models.py:53
+#: models.py:20 models.py:65 views.py:145 views.py:204
 msgid "permission"
 msgstr ""
 
-#: models.py:21 views.py:50
+#: models.py:21 views.py:55 views.py:147 views.py:206
 msgid "permissions"
 msgstr ""
 
-#: models.py:61
+#: models.py:73
 msgid "permission holder"
 msgstr ""
 
-#: models.py:62
+#: models.py:74
 msgid "permission holders"
 msgstr ""
 
-#: models.py:74 models.py:92 views.py:69 views.py:79 views.py:103 views.py:203
+#: models.py:86 models.py:104 views.py:74 views.py:91 views.py:115
+#: views.py:282
 msgid "role"
 msgstr ""
 
-#: models.py:103
+#: models.py:115
 msgid "role member"
 msgstr ""
 
-#: models.py:104
+#: models.py:116
 msgid "role members"
 msgstr ""
 
-#: views.py:56
-msgid "state"
+#: views.py:61
+msgid "has permission"
 msgstr ""
 
-#: views.py:116
+#: views.py:142 views.py:201
+msgid " and "
+msgstr ""
+
+#: views.py:142 views.py:201
+#, python-format
+msgid "%(permissions)s to %(requester)s"
+msgstr ""
+
+#: views.py:152
+#, python-format
+msgid "Permission \"%(permission)s\" granted to: %(requester)s."
+msgstr ""
+
+#: views.py:155
+#, python-format
+msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+msgstr ""
+
+#: views.py:167
 #, python-format
 msgid ""
-"Are you sure you wish to grant the permission \"%(permission)s\" to "
-"%(ct_name)s: %(requester)s"
+"Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 
-#: views.py:121
+#: views.py:211
+#, python-format
+msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
+msgstr ""
+
+#: views.py:214
+#, python-format
+msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+msgstr ""
+
+#: views.py:226
 #, python-format
 msgid ""
-"Are you sure you wish to revoke the permission \"%(permission)s\" from "
-"%(ct_name)s: %(requester)s"
+"Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 
-#: views.py:134
-#, python-format
-msgid "Permission \"%(permission)s\" granted to %(ct_name)s: %(requester)s."
-msgstr ""
-
-#: views.py:137
-#, python-format
-msgid ""
-"%(ct_name)s: %(requester)s, already had the permission \"%(permission)s\" "
-"granted."
-msgstr ""
-
-#: views.py:143
-#, python-format
-msgid "Permission \"%(permission)s\" revoked from %(ct_name)s: %(requester)s."
-msgstr ""
-
-#: views.py:146
-#, python-format
-msgid ""
-"%(ct_name)s: %(requester)s doesn't have the permission \"%(permission)s\"."
-msgstr ""
-
-#: views.py:199
+#: views.py:278
 #, python-format
 msgid "non members of role: %s"
 msgstr ""
 
-#: views.py:200
+#: views.py:279
 #, python-format
 msgid "members of role: %s"
 msgstr ""

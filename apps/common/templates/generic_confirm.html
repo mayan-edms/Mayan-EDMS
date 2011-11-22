@@ -22,7 +22,11 @@
             <form action="" method="post" class="form login">{% csrf_token %}
                 {% if next %}
                     <input name="next" type="hidden" value="{{ next }}" />
-                {% endif %}          
+                {% endif %}   
+                       
+                {% if previous %}
+                    <input name="previous" type="hidden" value="{{ previous }}" />
+                {% endif %}   
                 
                 <div style="float: left; margin-right: 10px;">
                     <img style="margin-top: 12px;" src="{{ STATIC_URL }}images/icons/{{ form_icon|default:'question.png' }}" alt="{% trans 'form icon' %}" />

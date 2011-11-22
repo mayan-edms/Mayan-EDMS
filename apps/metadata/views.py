@@ -117,7 +117,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
 
 def metadata_multiple_edit(request):
-    return metadata_edit(request, document_id_list=request.GET.get('id_list', []))
+    return metadata_edit(request, document_id_list=request.GET.get('id_list', ''))
 
 
 def metadata_add(request, document_id=None, document_id_list=None):
