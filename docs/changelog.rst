@@ -39,7 +39,7 @@ Version 0.10
 * Document image serving response now specifies a MIME type for increased
   browser compatibility.
 * Small change in the scheduler that increases stability.
-  
+* Russian translation updates (Сергей Глита [Sergey Glita])
   
 Version 0.9.1
 -------------
