@@ -98,7 +98,7 @@ def smart_link_instances_for_document(request, document_id):
     }, context_instance=RequestContext(request))
     
     
-def document_group_list(request):
+def smart_link_list(request):
     check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
     
     return render_to_response('generic_list.html', {
@@ -114,7 +114,7 @@ def document_group_list(request):
         }, context_instance=RequestContext(request))
         
         
-def document_group_create(request):
+def smart_link_create(request):
     check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
 
     if request.method == 'POST':
@@ -132,7 +132,7 @@ def document_group_create(request):
     }, context_instance=RequestContext(request))    
     
     
-def document_group_edit(request, smart_link_pk):
+def smart_link_edit(request, smart_link_pk):
     check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
     
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
@@ -154,7 +154,7 @@ def document_group_edit(request, smart_link_pk):
     }, context_instance=RequestContext(request))    
         
     
-def document_group_delete(request, smart_link_pk):
+def smart_link_delete(request, smart_link_pk):
     check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
     
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
