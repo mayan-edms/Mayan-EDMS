@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-19 21:05+0000\n"
+"PO-Revision-Date: 2011-11-22 18:57+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:12
 msgid "View roles"
@@ -68,14 +67,12 @@ msgid "delete"
 msgstr "удалить"
 
 #: __init__.py:26
-#, fuzzy
 msgid "grant"
-msgstr "Предоставить"
+msgstr "предоставить"
 
 #: __init__.py:27
-#, fuzzy
 msgid "revoke"
-msgstr "Отозвать"
+msgstr "отозвать"
 
 #: api.py:22
 msgid "Permissions"
@@ -127,56 +124,49 @@ msgid "role members"
 msgstr "участники"
 
 #: views.py:61
-#, fuzzy
 msgid "has permission"
-msgstr "разрешение"
+msgstr "имеет право"
 
 #: views.py:142 views.py:201
 msgid " and "
-msgstr ""
+msgstr "и"
 
 #: views.py:142 views.py:201
-#, fuzzy, python-format
+#, python-format
 msgid "%(permissions)s to %(requester)s"
-msgstr ""
-"Разрешение \"%(permission)s\" предоставлено %(ct_name)s: %(requester)s."
+msgstr "%(permissions)s для %(requester)s"
 
 #: views.py:152
-#, fuzzy, python-format
+#, python-format
 msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-msgstr ""
-"Разрешение \"%(permission)s\" предоставлено %(ct_name)s: %(requester)s."
+msgstr "Право \"%(permission)s\" предоставлено %(requester)s."
 
 #: views.py:155
-#, fuzzy, python-format
+#, python-format
 msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-msgstr "%(ct_name)s: %(requester)s,  уже имеет разрешение \"%(permission)s\"."
+msgstr "%(requester)s уже имеет право \"%(permission)s\"."
 
 #: views.py:167
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Вы действительно хотите предоставить разрешение  \"%(permission)s\" для "
-"%(ct_name)s: %(requester)s"
+msgstr "Вы хотите разрешить %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:211
-#, fuzzy, python-format
+#, python-format
 msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-msgstr "Разрешение \"%(permission)s\" отозвано у %(ct_name)s: %(requester)s."
+msgstr "Право \"%(permission)s\" отозвано у %(requester)s."
 
 #: views.py:214
-#, fuzzy, python-format
+#, python-format
 msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-msgstr "%(ct_name)s: %(requester)s не имеет разрешения \"%(permission)s\"."
+msgstr "%(requester)s не имеет права \"%(permission)s\"."
 
 #: views.py:226
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Вы уверены, что хотите отозвать разрешение \"%(permission)s\" у %(ct_name)s: "
-"%(requester)s"
+msgstr "Вы хотите отозвать %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:278
 #, python-format
@@ -204,5 +194,4 @@ msgstr ""
 "Список существующих ролей, которые автоматически назначаются вновь "
 "создаваемым пользователям"
 
-#~ msgid "state"
-#~ msgstr "состояние"
+

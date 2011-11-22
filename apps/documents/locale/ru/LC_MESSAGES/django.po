@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
+# Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-03 16:20+0000\n"
+"PO-Revision-Date: 2011-11-22 19:16+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:49 __init__.py:159
 msgid "Documents"
@@ -84,7 +84,7 @@ msgstr ""
 
 #: __init__.py:83
 msgid "update office documents' page count"
-msgstr ""
+msgstr "обновить количество страниц документа"
 
 #: __init__.py:83
 msgid ""
@@ -92,6 +92,8 @@ msgid ""
 "enabling office document support after there were already office type "
 "documents in the database."
 msgstr ""
+"Пересчитать количество страниц.  Это полезно для включения поддержки уже "
+"существующих офисных документов."
 
 #: __init__.py:84 __init__.py:85
 msgid "clear transformations"
@@ -309,8 +311,7 @@ msgstr "Документ \"%(content_object)s\", создан %(fullname)s ."
 
 #: literals.py:25
 #, python-format
-msgid ""
-"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 msgstr ""
 "Документ \"%(content_object)s\" создан %(datetime)s пользователем "
 "%(fullname)s."
@@ -327,11 +328,11 @@ msgstr "Документ \"%(content_object)s\" редактировал %(fulln
 #: literals.py:33
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
-"The following changes took place: %(changes)s."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
 msgstr ""
-"Документ \"%(content_object)s\" был изменён %(datetime)s  %(fullname)s. Были "
-"внесены изменения: %(changes)s."
+"Документ \"%(content_object)s\" был изменён %(datetime)s  %(fullname)s. Были"
+" внесены изменения: %(changes)s."
 
 #: literals.py:42
 msgid "Document deleted"
@@ -388,7 +389,8 @@ msgstr "документ"
 msgid ""
 "This document's file format is not known, the page count has therefore "
 "defaulted to 1."
-msgstr "Этот формат файла документа не известен, количество страниц поэтому 1."
+msgstr ""
+"Этот формат файла документа не известен, количество страниц поэтому 1."
 
 #: models.py:316
 msgid "filename"
@@ -526,8 +528,8 @@ msgstr "Документы в хранилище: %d."
 #: statistics.py:46
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
 msgstr ""
 "Использовано:%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
 
@@ -699,12 +701,17 @@ msgid ""
 "Page count update complete.  Documents processed: %(total)d, documents with "
 "changed page count: %(change)d"
 msgstr ""
+"Страницы посчитаны. Всего обработано %(total)d документов, из них количество"
+" страниц изменилось у %(change)d"
 
 #: views.py:505
-#, fuzzy, python-format
+#, python-format
 msgid ""
-"Are you sure you wish to update the page count for the office documents (%d)?"
-msgstr "Вы действительно хотите удалить документы: %s?"
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
+msgstr ""
+"Вы действительно хотите пересчитать количество страниц для офисных "
+"документов (%d)?"
 
 #: views.py:534
 #, python-format
@@ -729,7 +736,8 @@ msgstr "преобразование документа"
 #: views.py:551
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
 msgstr ""
 "Вы действительно хотите удалить все преобразования странице документа: %s?"
 
@@ -839,8 +847,7 @@ msgstr "Ошибка редактирования документа введи�
 #: views.py:1041
 #, python-format
 msgid "edit filename \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"редактирование файла \"%(filename)s из типа документа \"%(document_type)s\""
+msgstr "редактирование файла \"%(filename)s из типа документа \"%(document_type)s\""
 
 #: views.py:1050 views.py:1076 views.py:1084
 msgid "document type filename"
@@ -883,9 +890,8 @@ msgid "create filename for document type: %s"
 msgstr "создание имени файла для типа документа: %s"
 
 #: widgets.py:26
-#, fuzzy
 msgid "document page image"
-msgstr "страница документа"
+msgstr "изображение страницы"
 
 #: wizards.py:34
 msgid "step 1 of 3: Document type"
@@ -905,8 +911,8 @@ msgstr "Далее"
 
 #: conf/settings.py:38
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
 msgstr ""
 "Максимальное количество последних (созданных, измененных, просмотренных) "
 "документов, запоминаемых для каждого пользователя."
@@ -925,7 +931,8 @@ msgstr "Максимальный процент увеличения стран�
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr "Процент уменьшения масштаба страницы документа в интерактивном режиме."
+msgstr ""
+"Процент уменьшения масштаба страницы документа в интерактивном режиме."
 
 #: conf/settings.py:42
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -961,5 +968,4 @@ msgstr ""
 "Здесь вы найдете последние %(recent_count)s документов  созданные или "
 "отредактированные вами."
 
-#~ msgid "Page"
-#~ msgstr "Страница"
+
