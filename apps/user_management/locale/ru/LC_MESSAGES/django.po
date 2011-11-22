@@ -1,21 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-09-29 18:49-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
 "PO-Revision-Date: 2011-11-19 21:07+0000\n"
 "Last-Translator: gsv70 <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
+"ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:8
 msgid "Create new users"
@@ -118,8 +120,8 @@ msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
 msgstr ""
-"Редактирование суперпользователя и персонала не допускается, используйте для"
-" этого интерфейс администратора."
+"Редактирование суперпользователя и персонала не допускается, используйте для "
+"этого интерфейс администратора."
 
 #: views.py:65
 #, python-format
@@ -256,5 +258,3 @@ msgstr "не входят в группу: %s"
 #, python-format
 msgid "members of group: %s"
 msgstr "входят в группу: %s"
-
-

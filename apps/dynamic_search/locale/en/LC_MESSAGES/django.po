@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-29 18:45-0400\n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,27 +33,27 @@ msgstr ""
 msgid "Search terms"
 msgstr ""
 
-#: models.py:18
+#: models.py:20
 msgid "user"
 msgstr ""
 
-#: models.py:19
+#: models.py:21
 msgid "query"
 msgstr ""
 
-#: models.py:20
+#: models.py:22
 msgid "datetime created"
 msgstr ""
 
-#: models.py:21
+#: models.py:23
 msgid "hits"
 msgstr ""
 
-#: models.py:59
+#: models.py:61
 msgid "recent search"
 msgstr ""
 
-#: models.py:60
+#: models.py:62
 msgid "recent searches"
 msgstr ""
 
