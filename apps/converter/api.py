@@ -50,17 +50,19 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
         
     if os.path.exists(output_filepath):
         return output_filepath
-    
-    office_converter.convert(input_filepath, mimetype=mimetype)
+
     if office_converter:
         try:
-            input_filepath = office_converter.output_filepath
-            mimetype = 'application/pdf'
+            office_converter.convert(input_filepath, mimetype=mimetype)
+            if office_converter.exists:
+                input_filepath = office_converter.output_filepath
+                mimetype = 'application/pdf'
+            else:
+                # Recycle the already detected mimetype
+                mimetype = office_converter.mimetype
+
         except OfficeConverter:
-            raise UnknownFileFormat('office converter exception')
-    else:
-        # Recycle the already detected mimetype
-        mimetype = office_converter.mimetype
+                raise UnknownFileFormat('office converter exception')
 
     if size:
         transformations.append(
