@@ -102,6 +102,10 @@
             -webkit-box-shadow: -1px -1px 2px #004977;
             box-shadow: -1px -1px 2px #004977;
         }		
+        
+        .thin_border {
+            border: 1px solid black;
+        }
     </style> 
     {% block stylesheets %}{% endblock %}
 {% endblock %}
@@ -126,36 +130,26 @@
                 });
             });        
 
-            jQuery("a.fancybox").live('click', function(){
-                jQuery.fancybox({
-                    'href'            : $(this).attr('href'),
-                    'titleShow'     : false,
-                    'transitionIn'  : 'elastic',
-                    'transitionOut' : 'elastic',
-                    'easingIn'      : 'easeOutBack',
-                    'easingOut'     : 'easeInBack',
-                    'type'          : 'image',
-                    'autoScale'     : true    
-                    
-                });
-                return false;
-            });   
-
-            jQuery("a.fancybox-noscaling").live('click', function(){
-                jQuery.fancybox({
-                    'href'            : $(this).attr('href'),
-                    'titleShow'       : false,
-                    'transitionIn'    : 'elastic',
-                    'transitionOut'   : 'elastic',
-                    'easingIn'        : 'easeOutBack',
-                    'easingOut'       : 'easeInBack',
-                    'type'            : 'image',
-                    'autoScale'       : false        
-                    
-                });
-                return false;
-            });   
-
+            $("a.fancybox").fancybox({
+            'titleShow'     : false,
+            'transitionIn'  : 'elastic',
+            'transitionOut' : 'elastic',
+            'easingIn'      : 'easeOutBack',
+            'easingOut'     : 'easeInBack',
+            'type'          : 'image',
+            'autoScale'     : true
+            });
+            
+            $("a.fancybox-noscaling").fancybox({
+            'titleShow'     : false,
+            'transitionIn'  : 'elastic',
+            'transitionOut' : 'elastic',
+            'easingIn'      : 'easeOutBack',
+            'easingOut'     : 'easeInBack',
+            'type'          : 'image',
+            'autoScale'     : false
+            });
+            
             $("a.fancybox-iframe").fancybox({
                 'titleShow'     : false,
                 'transitionIn'  : 'elastic',
@@ -178,7 +172,7 @@
             $('img.lazy-load').jail({
                 event: 'load',
                 timeout: 10,
-                placeholder: '{{ STATIC_URL }}/images/ajax-loader.gif'
+                placeholder: '{{ STATIC_URL }}images/ajax-loader.gif'
             });
         });
     </script>
