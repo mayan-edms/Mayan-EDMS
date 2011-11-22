@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-22 15:44+0000\n"
+"PO-Revision-Date: 2011-11-22 20:56+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -263,41 +263,42 @@ msgstr "Editar enlace inteligente: %s"
 #: views.py:168
 #, python-format
 msgid "Smart link: %s deleted successfully."
-msgstr ""
+msgstr "Enlace inteligente: %s eliminado exitosamente."
 
 #: views.py:170
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(error)s."
 msgstr ""
+"Error al tratar de eliminar enlace inteligente: %(smart_link)s; %(error)s."
 
 #: views.py:180
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
-msgstr ""
+msgstr "¿Está seguro que desea eliminar el enlace inteligente: %s?"
 
 #: views.py:193
 #, python-format
 msgid "conditions for smart link: %s"
-msgstr ""
+msgstr "condiciones de enlace inteligente: %s"
 
 #: views.py:216
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
-msgstr ""
+msgstr "Condición de enlace inteligente: \"%s\" creada exitosamente."
 
 #: views.py:223
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr ""
+msgstr "Añadir nuevas condiciones de enlace inteligente: \"%s\""
 
 #: views.py:243
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
-msgstr ""
+msgstr "Condición de enlace inteligente: \"%s\", editada exitosamente."
 
 #: views.py:250
 msgid "Edit smart link condition"
-msgstr ""
+msgstr "Editar condición de enlace inteligente"
 
 #: views.py:257 views.py:288
 msgid "condition"
@@ -306,22 +307,27 @@ msgstr "condición"
 #: views.py:274
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
-msgstr ""
+msgstr "Condición de enlace inteligente: \"%s\" ha eliminada exitosamente."
 
 #: views.py:276
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
 msgstr ""
+"Error al tratar de eliminar la condición de enlace inteligente: "
+"%(smart_link_condition)s; %(error)s."
 
 #: views.py:290
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr ""
+"¿Está seguro que desea eliminar la condición de enlace inteligente: \"%s\"?"
 
 #: conf/settings.py:11
 msgid "Show smart link that don't return any documents."
 msgstr ""
+"Mostrar enlace inteligente que no devuelven ningun documentos como "
+"resultado."
 
 #: templates/smart_links_help.html:3
 msgid "What are smart links?"
