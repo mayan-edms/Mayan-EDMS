@@ -6,8 +6,7 @@ from random import random
 from django.db.models import Q
 
 from job_processor.api import process_job
-from lock_manager.models import Lock
-from lock_manager.exceptions import LockError
+from lock_manager import Lock, LockError
 
 from ocr.api import do_document_ocr
 from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
@@ -25,7 +24,7 @@ LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 def task_process_queue_document(queue_document_id):
     lock_id = u'task_proc_queue_doc-%d' % queue_document_id
     try:
-        lock = Lock.objects.acquire_lock(lock_id, LOCK_EXPIRE)
+        lock = Lock.acquire_lock(lock_id, LOCK_EXPIRE)
         queue_document = QueueDocument.objects.get(pk=queue_document_id)
         queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
         queue_document.node_name = platform.node()
