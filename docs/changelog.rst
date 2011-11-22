@@ -46,6 +46,9 @@ Version 0.10
   processing upon submittal of a document to the OCR queue, this works in
   addition to the current polling processing which eliminates the
   posibility of stale documents in the OCR queue.
+* Added multiple document OCR submit link
+* Re enabled tesseract language specific OCR processing and added a one
+  (1) time language neutral retry for failed language specific OCR
 
 Version 0.9.1
 -------------
