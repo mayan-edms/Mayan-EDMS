@@ -1,3 +1,8 @@
 from converter.office_converter import OfficeConverter
+from converter.exceptions import OfficeBackendError
 
-office_converter = OfficeConverter()
+
+try:
+    office_converter = OfficeConverter()
+except OfficeBackendError:
+    office_converter = None
