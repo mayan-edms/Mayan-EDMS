@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     (r'^tags/', include('tags.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
-    (r'^grappelli/', include('grappelli.urls')),
+    #(r'^grappelli/', include('grappelli.urls')),
     (r'^sentry/', include('sentry.urls')),
     (r'^comments/', include('document_comments.urls')),
     (r'^user_management/', include('user_management.urls')),
@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     (r'^sources/', include('sources.urls')),
     (r'^project_setup/', include('project_setup.urls')),
     (r'^project_tools/', include('project_tools.urls')),
+    (r'^api/', include('rest_api.urls')),
 )
 
 
