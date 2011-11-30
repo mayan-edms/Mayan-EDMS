@@ -26,6 +26,7 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     'application/vnd.oasis.opendocument.spreadsheet',
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     'application/vnd.oasis.opendocument.graphics',
+    'application/vnd.ms-office',
 ]
 
 logger = logging.getLogger(__name__)
