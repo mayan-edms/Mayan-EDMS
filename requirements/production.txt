@@ -16,3 +16,4 @@ cssmin==0.1.4
 django-compressor==1.1
 -e git://github.com/rosarior/django-sendfile.git#egg=django-sendfile
 djangorestframework==0.2.3
+South==0.7.3
