@@ -36,8 +36,7 @@ def fs_create_index_directory(index_instance):
 
 def fs_create_document_link(index_instance, document, suffix=0):
     if FILESERVING_ENABLE:
-        name_part = assemble_document_filename(document, suffix)
-        filename = os.extsep.join([name_part, document.file_extension])
+        filename = assemble_document_filename(document.file_filename, suffix)
         filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
         try:
             os.symlink(document.file.path, filepath)
@@ -56,11 +55,7 @@ def fs_create_document_link(index_instance, document, suffix=0):
 
 def fs_delete_document_link(index_instance, document, suffix=0):
     if FILESERVING_ENABLE:
-        name_part = document.file_filename
-        if suffix:
-            name_part = u'_'.join([name_part, unicode(suffix)])
-
-        filename = os.extsep.join([name_part, document.file_extension])
+        filename = assemble_document_filename(document.file_filename, suffix)
         filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
 
         try:

@@ -127,7 +127,8 @@ def do_rebuild_all_indexes():
 
 # Internal functions
 def find_lowest_available_suffix(index_instance, document):
-    index_instance_documents = DocumentRenameCount.objects.filter(index_instance=index_instance).filter(document__file_extension=document.file_extension)
+    # TODO: verify extension's role in query
+    index_instance_documents = DocumentRenameCount.objects.filter(index_instance=index_instance)#.filter(document__file_extension=document.file_extension)
     files_list = []
     for index_instance_document in index_instance_documents:
         files_list.append(assemble_document_filename(index_instance_document.document, index_instance_document.suffix))
