@@ -133,7 +133,6 @@ INSTALLED_APPS = (
     'lock_manager',
     'web_theme',
     'common',
-    'metadata',
     'pagination',
     'dynamic_search',
     'filetransfers',
@@ -151,6 +150,7 @@ INSTALLED_APPS = (
     'tags',
     'document_comments',
     'user_management',
+    'metadata',
     'documents',
     'linking',
     'mptt',
@@ -165,6 +165,7 @@ INSTALLED_APPS = (
     'compressor',
     'djangorestframework',
     'rest_api',
+    'south',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

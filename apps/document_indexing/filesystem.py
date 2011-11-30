@@ -3,7 +3,8 @@ import os
 
 from django.utils.translation import ugettext_lazy as _
 
-from document_indexing.os_agnostic import assemble_document_filename
+from document_indexing.os_specifics import (assemble_suffixed_filename,
+    assemble_path_from_list)
 from document_indexing.conf.settings import FILESERVING_ENABLE
 from document_indexing.conf.settings import FILESERVING_PATH
 
@@ -19,12 +20,12 @@ def get_instance_path(index_instance):
 
     names.append(index_instance.value)
 
-    return os.sep.join(names)
+    return assemble_path_from_list(names)
 
 
 def fs_create_index_directory(index_instance):
     if FILESERVING_ENABLE:
-        target_directory = os.path.join(FILESERVING_PATH, get_instance_path(index_instance))
+        target_directory = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance)])
         try:
             os.mkdir(target_directory)
         except OSError, exc:
@@ -36,9 +37,9 @@ def fs_create_index_directory(index_instance):
 
 def fs_create_document_link(index_instance, document, suffix=0):
     if FILESERVING_ENABLE:
-        name_part = assemble_document_filename(document, suffix)
-        filename = os.extsep.join([name_part, document.file_extension])
-        filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
+        filename = assemble_suffixed_filename(document.file.name, suffix)
+        filepath = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance), filename])
+        
         try:
             os.symlink(document.file.path, filepath)
         except OSError, exc:
@@ -56,12 +57,8 @@ def fs_create_document_link(index_instance, document, suffix=0):
 
 def fs_delete_document_link(index_instance, document, suffix=0):
     if FILESERVING_ENABLE:
-        name_part = document.file_filename
-        if suffix:
-            name_part = u'_'.join([name_part, unicode(suffix)])
-
-        filename = os.extsep.join([name_part, document.file_extension])
-        filepath = os.path.join(FILESERVING_PATH, get_instance_path(index_instance), filename)
+        filename = assemble_suffixed_filename(document.file.name, suffix)
+        filepath = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance), filename])
 
         try:
             os.unlink(filepath)
@@ -73,7 +70,7 @@ def fs_delete_document_link(index_instance, document, suffix=0):
 
 def fs_delete_index_directory(index_instance):
     if FILESERVING_ENABLE:
-        target_directory = os.path.join(FILESERVING_PATH, get_instance_path(index_instance))
+        target_directory = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance)])
         try:
             os.removedirs(target_directory)
         except OSError, exc:
