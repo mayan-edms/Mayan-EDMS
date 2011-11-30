@@ -46,10 +46,7 @@ def get_filename_from_uuid(instance, filename):
     Store the orignal filename of the uploaded file and replace it with
     a UUID
     """
-    filename, extension = os.path.splitext(filename)
     instance.file_filename = filename
-    #remove prefix '.'
-    instance.file_extension = extension[1:]
     uuid = UUID_FUNCTION()
     instance.uuid = uuid
     return uuid
@@ -82,7 +79,6 @@ class Document(models.Model):
     file_mime_encoding = models.CharField(max_length=64, default='', editable=False)
     #FAT filename can be up to 255 using LFN
     file_filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
-    file_extension = models.CharField(max_length=16, default=u'', editable=False, db_index=True)
     date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True, db_index=True)
     date_updated = models.DateTimeField(verbose_name=_(u'updated'), auto_now=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
@@ -102,7 +98,7 @@ class Document(models.Model):
         ordering = ['-date_added']
 
     def __unicode__(self):
-        return os.extsep.join([self.file_filename, self.file_extension])
+        return self.get_fullname()
 
     def save(self, *args, **kwargs):
         """
@@ -130,7 +126,7 @@ class Document(models.Model):
         """
         Return the fullname of the document's file
         """
-        return os.extsep.join([self.file_filename, self.file_extension])
+        return self.file_filename
 
     def update_mimetype(self, save=True):
         """
@@ -420,7 +416,6 @@ register('document', Document, _(u'document'), [
     {'name': u'document_type__name', 'title': _(u'Document type')},
     {'name': u'file_mimetype', 'title': _(u'MIME type')},
     {'name': u'file_filename', 'title': _(u'Filename')},
-    {'name': u'file_extension', 'title': _(u'Filename extension')},
     {'name': u'documentmetadata__value', 'title': _(u'Metadata value')},
     {'name': u'documentpage__content', 'title': _(u'Content')},
     {'name': u'description', 'title': _(u'Description')},
@@ -428,4 +423,4 @@ register('document', Document, _(u'document'), [
     {'name': u'comments__comment', 'title': _(u'Comments')},
     ]
 )
-#register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'file_extension', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])
+#register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])

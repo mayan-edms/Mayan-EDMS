@@ -35,7 +35,7 @@ class DocumentAdmin(admin.ModelAdmin):
     inlines = [
         DocumentMetadataInline, DocumentPageInline
     ]
-    list_display = ('uuid', 'file_filename', 'file_extension')
+    list_display = ('uuid', 'file_filename',)
 
 
 class RecentDocumentAdmin(admin.ModelAdmin):

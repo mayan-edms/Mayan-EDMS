@@ -65,7 +65,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     context = {
-        'object_list': object_list if not (object_list is None) else Document.objects.only('file_filename', 'file_extension').all(),
+        'object_list': object_list if not (object_list is None) else Document.objects.only('file_filename',).all(),
         'title': title if title else _(u'documents'),
         'multi_select_as_buttons': True,
         'hide_links': True,
@@ -115,7 +115,6 @@ def document_view(request, document_id, advanced=False):
     if advanced:
         document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
             {'label': _(u'Filename'), 'field': 'file_filename'},
-            {'label': _(u'File extension'), 'field': 'file_extension'},
             {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
             {'label': _(u'File mime encoding'), 'field': 'file_mime_encoding'},
             {'label': _(u'File size'), 'field':lambda x: pretty_size(x.size) if x.size else '-'},
@@ -482,7 +481,7 @@ def document_update_page_count(request):
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     office_converter = OfficeConverter()
-    qs = Document.objects.exclude(file_extension__iendswith='dxf').filter(file_mimetype__in=office_converter.mimetypes())
+    qs = Document.objects.exclude(file_filename__iendswith='dxf').filter(file_mimetype__in=office_converter.mimetypes())
 
     if request.method == 'POST':
         updated = 0
