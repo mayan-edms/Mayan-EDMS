@@ -110,8 +110,9 @@ post_save.connect(document_post_save, sender=Document)
 
 @receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
 def call_queue(sender, **kwargs):
-    logger.debug('got call_queue signal')
-    task_process_document_queues()
+    if kwargs.get('created', False):    
+        logger.debug('got call_queue signal: %s' % kwargs)
+        task_process_document_queues()
 
 
 create_default_queue()
