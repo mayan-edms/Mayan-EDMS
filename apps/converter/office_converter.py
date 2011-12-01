@@ -29,6 +29,7 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'application/vnd.ms-office',
 ]
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -92,7 +93,7 @@ class OfficeConverterBackendUnoconv(object):
         command.append(self.unoconv_path)
 
         if UNOCONV_USE_PIPE:
-            command.append(u'--pipe')
+            command.append(u'--pipe=')
             command.append(u'mayan-%s' % id_generator())
 
         command.append(u'--format=pdf')
