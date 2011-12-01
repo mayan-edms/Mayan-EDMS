@@ -93,22 +93,24 @@ class OfficeConverterBackendUnoconv(object):
         command.append(self.unoconv_path)
 
         if UNOCONV_USE_PIPE:
-            command.append(u'--pipe=')
+            command.append(u'--pipe')
             command.append(u'mayan-%s' % id_generator())
 
-        command.append(u'--format=pdf')
-        command.append(u'--output=%s' % self.output_filepath)
+        command.append(u'--format')
+        command.append(u'pdf')
+        command.append(u'--output')
+        command.append(self.output_filepath)
         command.append(self.input_filepath)
 
         try:
-            logger.debug('prev environment: %s' % os.environ)
             proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             return_code = proc.wait()
-            logger.debug('post environment: %s' % os.environ)
+            logger.debug('return_code: %s' % return_code)
 
             readline = proc.stderr.readline()
+            logger.debug('stderr: %s' % readline)
             if return_code != 0:
-                raise OfficeBackendError(proc.stderr.readline())
+                raise OfficeBackendError(readline)
         except OSError, msg:
             raise OfficeBackendError(msg)
         except Exception, msg:
