@@ -135,7 +135,7 @@ class Document(models.Model):
         """
         if self.exists():
             try:
-                self.file_mimetype, self.mime_encoding = get_mimetype(self.open(), self.get_fullname())
+                self.file_mimetype, self.file_mime_encoding = get_mimetype(self.open(), self.get_fullname())
             except:
                 self.file_mimetype = u''
                 self.file_mime_encoding = u''
