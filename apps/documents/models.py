@@ -92,6 +92,13 @@ class Document(models.Model):
         object_id_field='object_pk'
     )
 
+    @staticmethod
+    def clear_image_cache():
+        for the_file in os.listdir(CACHE_PATH):
+            file_path = os.path.join(CACHE_PATH, the_file)
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+
     class Meta:
         verbose_name = _(u'document')
         verbose_name_plural = _(u'documents')
