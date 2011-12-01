@@ -1,3 +1,33 @@
+2011-12-1
+---------
+* OCR queue processing improvements
+* Office documents handling improvements
+* Text extraction support for office documents
+* RTF text documents are now handled as office documents
+
+2011-11-30
+----------
+* Added South to the requirements
+* Merged documents' filename and extension database fiels into a single
+  filename field, filename are store as uploaded not manipulation is done
+  Users with existing data must install South and run the appropiate
+  migrate commands::
+    $ pip install -r requirements/production.txt
+    $ ./manager syncdb
+    $ ./manage.py migrate documents 0001 --fake
+    $ ./manage.py migrate documents
+
+* Added new office document mimetype
+    * application/vnd.ms-office
+    
+* Fixed documents not saving the file encoding
+
+
+2011-11-28
+----------
+* Removed extra slash in ajax-loader.gif URL fixes #15, thanks to IHLeanne for finding this one
+
+
 Version 0.10
 ------------
 * Added a proper setup views for the document grouping functionality.
