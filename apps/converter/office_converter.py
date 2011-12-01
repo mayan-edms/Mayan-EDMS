@@ -19,7 +19,6 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'application/msexcel',
     u'application/vnd.ms-excel',
     u'application/vnd.ms-powerpoint',    
-    u'text/plain',
     u'application/vnd.oasis.opendocument.presentation',
     u'application/vnd.oasis.opendocument.text',
     u'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -27,6 +26,8 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     u'application/vnd.oasis.opendocument.graphics',
     u'application/vnd.ms-office',
+    u'text/plain',
+    u'text/rtf',
 ]
 
 
