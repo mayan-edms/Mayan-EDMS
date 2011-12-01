@@ -1121,3 +1121,24 @@ def document_type_filename_create(request, document_type_id):
         'document_type': document_type,
     },
     context_instance=RequestContext(request))
+    
+    
+def document_clear_image_cache(request):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            Document.clear_image_cache()
+            messages.success(request, _(u'Document image cache cleared successfully'))
+        except Exception, msg:
+            messages.error(request, _(u'Error clearing document image cache; %s') % msg)
+            
+        return HttpResponseRedirect(previous)
+
+    return render_to_response('generic_confirm.html', {
+        'previous': previous,
+        'title': _(u'Are you sure you wish to clear the document image cache?'),
+        'form_icon': u'camera_delete.png',
+    }, context_instance=RequestContext(request))    
