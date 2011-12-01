@@ -4,6 +4,8 @@
 * Office documents handling improvements
 * Text extraction support for office documents
 * RTF text documents are now handled as office documents
+* Added a view to delete the document image cache, useful when switching
+  converter backends or doing diagnostics
 
 2011-11-30
 ----------
