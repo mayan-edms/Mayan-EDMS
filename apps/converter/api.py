@@ -63,7 +63,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
                 mimetype = office_converter.mimetype
 
         except OfficeConversionError:
-                raise UnknownFileFormat('office converter exception')
+            raise UnknownFileFormat('office converter exception')
 
     if size:
         transformations.append(
