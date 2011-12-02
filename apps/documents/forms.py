@@ -100,7 +100,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output = []
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
-        for page in value.documentpage_set.all():
+        for page in value.pages.all():
             output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
             output.append(
                 document_html_widget(
@@ -128,7 +128,7 @@ class DocumentPreviewForm(forms.Form):
         document = kwargs.pop('document', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = document
-        self.fields['preview'].label = _(u'Document pages (%s)') % document.documentpage_set.count()
+        self.fields['preview'].label = _(u'Document pages (%s)') % document.pages.count()
 
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
@@ -198,7 +198,7 @@ class DocumentContentForm(forms.Form):
         super(DocumentContentForm, self).__init__(*args, **kwargs)
         content = []
         self.fields['contents'].initial = u''
-        for page in self.document.documentpage_set.all():
+        for page in self.document.pages.all():
             if page.content:
                 content.append(page.content)
                 content.append(u'\n\n\n - Page %s - \n\n\n' % page.page_number)

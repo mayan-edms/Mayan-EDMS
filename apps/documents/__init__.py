@@ -35,7 +35,7 @@ def is_first_page(context):
 
 
 def is_last_page(context):
-    return context['page'].page_number >= context['page'].document.documentpage_set.count()
+    return context['page'].page_number >= context['page'].document_version.pages.count()
 
 
 def is_min_zoom(context):
