@@ -26,7 +26,7 @@ def register_parser(function, mimetype=None, mimetypes=None):
 
 def pdf_parser(document_page, descriptor=None):
     if not descriptor:
-        descriptor = document_page.document.open()
+        descriptor = document_page.document_version.open()
     
     pdf_pages = slate.PDF(descriptor)
     descriptor.close()
