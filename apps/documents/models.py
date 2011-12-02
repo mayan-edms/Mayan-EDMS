@@ -361,6 +361,10 @@ class Document(models.Model):
     def get_latest_version(self):
         return self.documentversion_set.order_by('-timestamp')[0]
 
+    @property
+    def versions(self):
+        return self.documentversion_set
+
 
 RELEASE_LEVEL_FINAL = 1
 RELEASE_LEVEL_ALPHA = 2
@@ -381,12 +385,13 @@ class DocumentVersion(models.Model):
     Model that describes a document version and it properties
     '''
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    mayor = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1)
+    major = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1)
     minor = models.PositiveIntegerField(verbose_name=_(u'minor'), default=0)
     micro = models.PositiveIntegerField(verbose_name=_(u'micro'), default=0)
     release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'release level'))
     serial = models.PositiveIntegerField(verbose_name=_(u'serial'), default=0)
     timestamp = models.DateTimeField(verbose_name=_(u'timestamp'))
+    comment = models.TextField(blank=True, verbose_name=_(u'comment'))
     
     # File related fields
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
@@ -396,7 +401,7 @@ class DocumentVersion(models.Model):
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
 
     class Meta:
-        unique_together = ('document', 'mayor', 'minor', 'micro', 'release_level', 'serial')
+        unique_together = ('document', 'major', 'minor', 'micro', 'release_level', 'serial')
         verbose_name = _(u'document version')
         verbose_name_plural = _(u'document version')
 
@@ -405,16 +410,16 @@ class DocumentVersion(models.Model):
 
     # TODO: Update timestamp
 
-    def get_version():
+    def get_version(self):
         '''
         Return the formatted version information
         '''
-        vers = [u'%(major)i.%(minor)i' % self, ]
+        vers = [u'%i.%i' % (self.major, self.minor), ]
 
         if self.micro:
-            vers.append(u'.%(micro)i' % self)
-        if self.releaselevel != RELEASE_LEVEL_FINAL:
-            vers.append(u'%(releaselevel)s%(serial)i' % self)
+            vers.append(u'.%i' % self.micro)
+        if self.release_level != RELEASE_LEVEL_FINAL:
+            vers.append(u'%s%i' % (self.release_level, self.serial))
         return u''.join(vers)
 
     @property

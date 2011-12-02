@@ -53,8 +53,9 @@ from documents.forms import DocumentTypeSelectForm, \
         DocumentPageForm_text, PrintForm, DocumentTypeForm, \
         DocumentTypeFilenameForm, DocumentTypeFilenameForm_create
 from documents.wizards import DocumentCreateWizard
-from documents.models import Document, DocumentType, DocumentPage, \
-    DocumentPageTransformation, RecentDocument, DocumentTypeFilename
+from documents.models import (Document, DocumentType, DocumentPage,
+    DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
+    DocumentVersion)
 
 # Document type permissions
 from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT, \
@@ -293,6 +294,10 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=F
         # TODO: hardcoded MIMETYPE
         return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
         
+
+def document_version_download(request, document_version_pk):
+    document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
+    return document_download(request, document_version.document.pk)
 
 
 def document_download(request, document_id):
@@ -1142,3 +1147,44 @@ def document_clear_image_cache(request):
         'title': _(u'Are you sure you wish to clear the document image cache?'),
         'form_icon': u'camera_delete.png',
     }, context_instance=RequestContext(request))    
+
+
+def document_version_list(request, document_pk):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    document = get_object_or_404(Document, pk=document_pk)
+
+    context = {
+        'object_list': document.versions.all(),
+        'title': _(u'versions for document: %s') % document,
+        'hide_object': True,
+        'object': document,
+        'extra_columns': [
+            {
+                'name': _(u'version'),
+                'attribute': 'get_version',
+            },
+            {
+                'name': _(u'time and date'),
+                'attribute': 'timestamp',
+            },
+            {
+                'name': _(u'mimetype'),
+                'attribute': 'mimetype',
+            },
+            {
+                'name': _(u'encoding'),
+                'attribute': 'encoding',
+            },
+            {
+                'name': _(u'filename'),
+                'attribute': 'filename',
+            },
+            {
+                'name': _(u'comment'),
+                'attribute': 'comment',
+            },
+        ]
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
