@@ -115,4 +115,4 @@ class OfficeConverterBackendUnoconv(object):
         except OSError, msg:
             raise OfficeBackendError(msg)
         except Exception, msg:
-            logger.error('Unhandled exception: %s' % msg)
+            logger.error('Unhandled exception', exc_info=msg)
