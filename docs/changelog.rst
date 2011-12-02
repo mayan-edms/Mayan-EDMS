@@ -1,3 +1,7 @@
+2011-12-2
+---------
+* Added migrations and model updated to support document versions
+
 2011-12-1
 ---------
 * OCR queue processing improvements
