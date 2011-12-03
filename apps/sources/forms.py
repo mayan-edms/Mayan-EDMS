@@ -37,7 +37,7 @@ class StagingDocumentForm(DocumentForm):
         staging_list_index = self.fields.keyOrder.index('staging_file_id')
         staging_list = self.fields.keyOrder.pop(staging_list_index)
         self.fields.keyOrder.insert(0, staging_list)
-
+        
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
 
     class Meta(DocumentForm.Meta):
@@ -45,6 +45,8 @@ class StagingDocumentForm(DocumentForm):
 
 
 class WebFormForm(DocumentForm):
+    file = forms.FileField(label=_(u'File'))
+
     def __init__(self, *args, **kwargs):
         show_expand = kwargs.pop('show_expand', False)
         self.source = kwargs.pop('source')
@@ -56,6 +58,10 @@ class WebFormForm(DocumentForm):
                 help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
             )
 
+        # Move the file filed to the top
+        self.fields.keyOrder.remove('file')
+        self.fields.keyOrder.insert(0, 'file')
+        
     def clean_file(self):
         data = self.cleaned_data['file']
         validate_whitelist_blacklist(data.name, self.source.whitelist.split(','), self.source.blacklist.split(','))
