@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Changing field 'DocumentVersion.document'
-        db.alter_column('documents_documentversion', 'document_id', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['documents.Document']))
+        db.alter_column('documents_documentversion', 'document_id', self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['documents.Document']))
 
         # Deleting field 'Document.date_updated'
         db.delete_column('documents_document', 'date_updated')
@@ -33,7 +33,8 @@ class Migration(SchemaMigration):
         db.delete_column('documents_documentpage', 'document_id')
 
         # Changing field 'DocumentPage.document_version'
-        db.alter_column('documents_documentpage', 'document_version_id', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['documents.DocumentVersion']))
+        #db.alter_column('documents_documentpage', 'document_version_id', self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['documents.DocumentVersion']))
+        db.alter_column('documents_documentpage', 'document_version_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.DocumentVersion']))
 
 
     def backwards(self, orm):
@@ -60,7 +61,7 @@ class Migration(SchemaMigration):
         db.add_column('documents_document', 'file_mime_encoding', self.gf('django.db.models.fields.CharField')(default='', max_length=64), keep_default=False)
 
         # Adding field 'DocumentPage.document'
-        db.add_column('documents_documentpage', 'document', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['documents.Document']), keep_default=False)
+        db.add_column('documents_documentpage', 'document', self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['documents.Document']), keep_default=False)
 
         # Changing field 'DocumentPage.document_version'
         db.alter_column('documents_documentpage', 'document_version_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.DocumentVersion'], null=True))
