@@ -10,11 +10,6 @@ class Migration(DataMigration):
         for document in orm.Document.objects.all():
             document_version = document.documentversion_set.create(
                 document = document,
-                #mayor = 1
-                #minor = models.PositiveIntegerField(verbose_name=_(u'minor'), default=0)
-                #micro = models.PositiveIntegerField(verbose_name=_(u'micro'), default=0)
-                #release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'release level'))
-                #serial = models.PositiveIntegerField(verbose_name=_(u'serial'), default=0)
                 timestamp = document.date_added,
                 file = document.file,
                 mimetype = document.file_mimetype,
