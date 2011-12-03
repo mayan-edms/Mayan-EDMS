@@ -45,13 +45,13 @@ from documents.literals import PERMISSION_DOCUMENT_CREATE, \
 from documents.literals import HISTORY_DOCUMENT_CREATED, \
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
 
-from documents.forms import DocumentTypeSelectForm, \
-        DocumentForm_edit, DocumentPropertiesForm, \
-        DocumentPreviewForm, \
-        DocumentPageForm, DocumentPageTransformationForm, \
-        DocumentContentForm, DocumentPageForm_edit, \
-        DocumentPageForm_text, PrintForm, DocumentTypeForm, \
-        DocumentTypeFilenameForm, DocumentTypeFilenameForm_create
+from documents.forms import (DocumentTypeSelectForm,
+        DocumentForm_edit, DocumentPropertiesForm,
+        DocumentPreviewForm, DocumentPageForm, 
+        DocumentPageTransformationForm, DocumentContentForm, 
+        DocumentPageForm_edit, DocumentPageForm_text, PrintForm, 
+        DocumentTypeForm, DocumentTypeFilenameForm, 
+        DocumentTypeFilenameForm_create)
 from documents.wizards import DocumentCreateWizard
 from documents.models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
@@ -242,12 +242,12 @@ def document_edit(request, document_id):
                 for warning in warnings:
                     messages.warning(request, warning)
 
-            document.file_filename = form.cleaned_data['new_filename']
+            document.filename = form.cleaned_data['new_filename']
             document.description = form.cleaned_data['description']
 
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
-                    document.file_filename = form.cleaned_data['document_type_available_filenames'].filename
+                    document.filename = form.cleaned_data['document_type_available_filenames'].filename
 
             document.save()
             create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['file_filename', 'description'])})
@@ -291,27 +291,27 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=F
     if base64_version:
         return HttpResponse(u'<html><body><img src="%s" /></body></html>' % document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True))
     else:
-        # TODO: hardcoded MIMETYPE
+        # TODO: fix hardcoded MIMETYPE
         return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
         
 
-def document_version_download(request, document_version_pk):
-    document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
-    return document_download(request, document_version.document.pk)
-
-
-def document_download(request, document_id):
+def document_download(request, document_id=None, document_version_pk=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_DOWNLOAD])
 
-    document = get_object_or_404(Document, pk=document_id)
+    if document_version_pk:
+        document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
+    else:
+        document_version = get_object_or_404(Document, pk=document_id).latest_version
+        
     try:
-        #Test permissions and trigger exception
-        document.open()
+        # Test permissions and trigger exception
+        fd = document_version.open()
+        fd.close()
         return serve_file(
             request,
-            document.file,
-            save_as=u'"%s"' % document.get_fullname(),
-            content_type=document.file_mimetype if document.file_mimetype else 'application/octet-stream'
+            document_version.file,
+            save_as=u'"%s"' % document_version.filename,
+            content_type=document_version.mimetype if document_version.mimetype else 'application/octet-stream'
         )
     except Exception, e:
         messages.error(request, e)
@@ -1154,14 +1154,14 @@ def document_version_list(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     context = {
-        'object_list': document.versions.all(),
+        'object_list': document.versions.order_by('-timestamp'),
         'title': _(u'versions for document: %s') % document,
         'hide_object': True,
         'object': document,
         'extra_columns': [
             {
                 'name': _(u'version'),
-                'attribute': 'get_version',
+                'attribute': 'get_formated_version',
             },
             {
                 'name': _(u'time and date'),

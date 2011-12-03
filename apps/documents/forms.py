@@ -11,9 +11,11 @@ from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 from common.widgets import TextAreaDiv 
 
-from documents.models import Document, DocumentType, \
-    DocumentPage, DocumentPageTransformation, DocumentTypeFilename
+from documents.models import (Document, DocumentType,
+    DocumentPage, DocumentPageTransformation, DocumentTypeFilename,
+    DocumentVersion)
 from documents.widgets import document_html_widget
+from documents.literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES)
 
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
@@ -147,6 +149,8 @@ class DocumentForm(forms.ModelForm):
         instance = kwargs.pop('instance', None)
 
         super(DocumentForm, self).__init__(*args, **kwargs)
+        if instance:
+            self.version_fields(instance)
 
         if 'document_type' in self.fields:
             # To allow merging with DocumentForm_edit
@@ -164,11 +168,51 @@ class DocumentForm(forms.ModelForm):
                     queryset=filenames_qs,
                     required=False,
                     label=_(u'Quick document rename'))
+                    
+    def version_fields(self, document):
+        self.fields['comment'] = forms.CharField(
+            label=_(u'Comment'),
+            required=False,
+            widget=forms.widgets.Textarea(attrs={'rows': 4}),
+        )
+
+        self.fields['version_update'] = forms.ChoiceField(
+            label=_(u'Version update'),
+            #widget=forms.widgets.RadioSelect(),
+            choices=DocumentVersion.get_version_update_choices(document.latest_version)
+        )
+        
+        self.fields['release_level'] = forms.ChoiceField(
+            label=_(u'Release level'),
+            choices=RELEASE_LEVEL_CHOICES,
+            initial=RELEASE_LEVEL_FINAL,
+            #required=False,
+        )
+        
+        self.fields['serial'] = forms.IntegerField(
+            label=_(u'Release level serial'),
+            initial=0,
+            widget=forms.widgets.TextInput(
+                attrs = {'style': 'width: auto;'}
+            ),
+            #required=False
+        )
 
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
     )
+       
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        cleaned_data['new_version_data'] = {
+            'comment': self.cleaned_data.get('comment'),
+            'version_update': self.cleaned_data.get('version_update'),
+            'release_level': self.cleaned_data.get('release_level'),
+            'serial': self.cleaned_data.get('serial'),
+        }
 
+        # Always return the full collection of cleaned data.
+        return cleaned_data        
 
 class DocumentForm_edit(DocumentForm):
     """
@@ -177,6 +221,13 @@ class DocumentForm_edit(DocumentForm):
     class Meta:
         model = Document
         exclude = ('file', 'document_type', 'tags')
+        
+    def __init__(self, *args, **kwargs):
+        super(DocumentForm_edit, self).__init__(*args, **kwargs)
+        self.fields.pop('serial')
+        self.fields.pop('release_level')
+        self.fields.pop('version_update')
+        self.fields.pop('comment')
 
 
 class DocumentPropertiesForm(DetailForm):
