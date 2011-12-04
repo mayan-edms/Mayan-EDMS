@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 
-from documents.models import Document, DocumentVersion
+from documents.models import Document, DocumentVersion, DocumentPage
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
 
 from djangorestframework.views import View, ModelView, ListModelView, InstanceModelView
@@ -51,5 +51,7 @@ class IsZoomable(View):
         try:
             document_version.document.get_image_cache_name(int(page_number), version_pk)
             return {'result': True}
-        except (UnknownFileFormat, UnkownConvertError):
+        except (UnknownFileFormat, UnkownConvertError,
+            DocumentPage.DoesNotExist, Document.DoesNotExist,
+            DocumentVersion.DoesNotExist):
             return {'result': False}
