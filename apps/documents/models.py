@@ -179,10 +179,7 @@ class Document(models.Model):
         
     @property
     def size(self):
-        if self.exists():
-            return self.latest_version.exists()
-        else:
-            return None
+        return self.latest_version.size
             
     def new_version(self, file, comment=None, version_update=None, release_level=None, serial=None):
         logger.debug('creating new document version')
@@ -498,6 +495,13 @@ class DocumentVersion(models.Model):
         input_descriptor.close()
         return filepath
         
+    @property
+    def size(self):
+        if self.exists():
+            return self.file.storage.size(self.file.path)
+        else:
+            return None
+            
 
 class DocumentTypeFilename(models.Model):
     '''
