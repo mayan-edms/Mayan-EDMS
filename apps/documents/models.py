@@ -543,6 +543,10 @@ class DocumentPage(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('document_page_view', [self.pk])
+
+    @property
+    def siblings(self):
+        return DocumentPage.objects.filter(document_version=self.document_version)
         
     # Compatibility methods
     @property
