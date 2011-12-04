@@ -40,30 +40,6 @@ class DocumentResourceSimple(ModelResource):
             }
             for version in instance.versions.all()
         ]
-            
-        '''
-        return [
-            {
-                'version': 1,
-                'mimetype': instance.file_mimetype,
-                'encoding': instance.file_mime_encoding,
-                'filename': instance.filename,
-                'date_updated': instance.date_updated,
-                'checksum': instance.checksum,
-                'size': instance.size,
-                'exists': instance.exists(),
-                'pages': [
-                    {
-                        'page_numer': page.page_number,
-                        'page_label': page.page_label,
-                        'is_zoomable': reverse('documents-expensive-is_zoomable', args=[instance.pk, page.page_number]),
-                        
-                        #'content':
-                    }
-                    for page in instance.documentpage_set.all()
-                ]
-            }
-        ]
-        '''
+
     def expensive_methods(self, instance):
         return []
