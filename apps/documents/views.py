@@ -280,6 +280,8 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=F
     page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
 
     zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
+    
+    version = int(request.GET.get('version', document.latest_version.pk))
 
     if zoom < ZOOM_MIN_LEVEL:
         zoom = ZOOM_MIN_LEVEL
@@ -290,10 +292,10 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=F
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
     if base64_version:
-        return HttpResponse(u'<html><body><img src="%s" /></body></html>' % document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True))
+        return HttpResponse(u'<html><body><img src="%s" /></body></html>' % document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True, version=version))
     else:
         # TODO: fix hardcoded MIMETYPE
-        return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
+        return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
         
 
 def document_download(request, document_id=None, document_version_pk=None):
@@ -1197,12 +1199,12 @@ def document_version_revert(request, document_version_pk):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
-        #try:
-        document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
-        document_version.revert()
-        messages.success(request, _(u'Document version reverted successfully'))
-        #except Exception, msg:
-        #    messages.error(request, _(u'Error reverting document version; %s') % msg)
+        try:
+            document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
+            document_version.revert()
+            messages.success(request, _(u'Document version reverted successfully'))
+        except Exception, msg:
+            messages.error(request, _(u'Error reverting document version; %s') % msg)
             
         return HttpResponseRedirect(previous)
 
