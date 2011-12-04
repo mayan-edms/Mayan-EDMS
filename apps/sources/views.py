@@ -126,35 +126,37 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                     instance=document
                 )
                 if form.is_valid():
-                    #try:
-                    if document:
-                        expand = False
-                    else:
-                        if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                            expand = form.cleaned_data.get('expand')
+                    try:
+                        if document:
+                            expand = False
                         else:
-                            if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                                expand = True
+                            if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                                expand = form.cleaned_data.get('expand')
                             else:
-                                expand = False
-                        
-                    new_filename = get_form_filename(form)
-                    web_form.upload_file(request.FILES['file'],
-                        new_filename, document_type=document_type,
-                        expand=expand,
-                        metadata_dict_list=decode_metadata_from_url(request.GET),
-                        user=request.user,
-                        document=document,
-                        new_version_data=form.cleaned_data.get('new_version_data')                         
-                    )
-                    #except Exception, e:
-                    #    messages.error(request, _(u'Unhandled exception: %s') % e)
-                    if document:
-                        messages.success(request, _(u'Document version uploaded successfully.'))
-                        return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
-                    else:
-                        messages.success(request, _(u'Document uploaded successfully.'))
-                        return HttpResponseRedirect(request.get_full_path())
+                                if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                                    expand = True
+                                else:
+                                    expand = False
+
+                        new_filename = get_form_filename(form)
+                            
+                        web_form.upload_file(request.FILES['file'],
+                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
+                            document_type=document_type,
+                            expand=expand,
+                            metadata_dict_list=decode_metadata_from_url(request.GET),
+                            user=request.user,
+                            document=document,
+                            new_version_data=form.cleaned_data.get('new_version_data')                         
+                        )
+                        if document:
+                            messages.success(request, _(u'Document version uploaded successfully.'))
+                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                        else:
+                            messages.success(request, _(u'Document uploaded successfully.'))
+                            return HttpResponseRedirect(request.get_full_path())
+                    except Exception, e:
+                        messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
                 form = WebFormForm(
                     show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
@@ -186,43 +188,45 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                     instance=document
                 )
                 if form.is_valid():
-                    #try:
-                    staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
-                    if document:
-                        expand = False
-                    else:
-                        if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                            expand = form.cleaned_dataget('expand')
+                    try:
+                        staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
+                        if document:
+                            expand = False
                         else:
-                            if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                                expand = True
+                            if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                                expand = form.cleaned_dataget('expand')
                             else:
-                                expand = False
+                                if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                                    expand = True
+                                else:
+                                    expand = False
 
-                    new_filename = get_form_filename(form)
-                    staging_folder.upload_file(staging_file.upload(),
-                        new_filename, document_type=document_type,
-                        expand=expand,
-                        metadata_dict_list=decode_metadata_from_url(request.GET),
-                        user=request.user,
-                        document=document,
-                        new_version_data=form.cleaned_data.get('new_version_data')                         
-                    )
-                    if document:
-                        messages.success(request, _(u'Document version from staging file: %s, uploaded successfully.') % staging_file.filename)
-                    else:
-                        messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
+                        new_filename = get_form_filename(form)
+                            
+                        staging_folder.upload_file(staging_file.upload(),
+                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
+                            document_type=document_type,
+                            expand=expand,
+                            metadata_dict_list=decode_metadata_from_url(request.GET),
+                            user=request.user,
+                            document=document,
+                            new_version_data=form.cleaned_data.get('new_version_data')                         
+                        )
+                        if document:
+                            messages.success(request, _(u'Document version from staging file: %s, uploaded successfully.') % staging_file.filename)
+                        else:
+                            messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
-                    if staging_folder.delete_after_upload:
-                        transformations, errors = staging_folder.get_transformation_list()
-                        staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
-                        messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
-                    #except Exception, e:
-                    #    messages.error(request, _(u'Unhandled exception: %s') % e)
-                    if document:
-                        return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
-                    else:
-                        return HttpResponseRedirect(request.get_full_path())
+                        if staging_folder.delete_after_upload:
+                            transformations, errors = staging_folder.get_transformation_list()
+                            staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
+                            messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                        if document:
+                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                        else:
+                            return HttpResponseRedirect(request.get_full_path())
+                    except Exception, e:
+                        messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
                 form = StagingDocumentForm(cls=StagingFile,
                     document_type=document_type,

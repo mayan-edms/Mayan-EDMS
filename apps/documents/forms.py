@@ -156,6 +156,13 @@ class DocumentForm(forms.ModelForm):
             # To allow merging with DocumentForm_edit
             self.fields['document_type'].widget = forms.HiddenInput()
 
+        if instance:
+            self.fields['use_file_name'] = forms.BooleanField(
+                label=_(u'Use the new version filename as the document filename'),
+                initial=False,
+                required=False,
+            )
+
         # Instance's document_type overrides the passed document_type
         if instance:
             if hasattr(instance, 'document_type'):

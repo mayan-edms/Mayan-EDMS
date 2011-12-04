@@ -52,7 +52,7 @@ class BaseModel(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_file(self, file_object, filename=None, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None):
+    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         if expand:
             try:
                 cf = CompressedFile(file_object)
@@ -63,11 +63,11 @@ class BaseModel(models.Model):
             except NotACompressedFile:
                 self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
         else:
-            self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user, document, new_version_data)
+            self.upload_single_file(file_object, filename, use_file_name, document_type, metadata_dict_list, user, document, new_version_data)
            
         file_object.close()
             
-    def upload_single_file(self, file_object, filename=None, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
+    def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         if not document:
             document = Document()
             if document_type:
@@ -83,6 +83,11 @@ class BaseModel(models.Model):
                 create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
             else:
                 create_history(HISTORY_DOCUMENT_CREATED, document)
+        else:
+            if use_file_name:
+                filename = None
+            else:
+                filename = filename if filename else document.latest_version.filename
 
         if not new_version_data:
             new_version_data = {}
