@@ -1,5 +1,5 @@
 {% load project_tags %}
-{% load printing_tags %}
+{#{% load printing_tags %}#}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -48,9 +48,10 @@
 	</head>
 	<body>
         {% for page in pages %}
-            {% get_document_size object %}
+            {#{% get_document_size object %}#}
             <div class="{% if forloop.counter > 1 and not forloop.last %}break{% endif %}">
-                <img src="{% url document_display_print object.id %}?page={{ page.page_number }}" {% if document_aspect > page_aspect %}width="97%"{% else %}height="97%"{% endif %} />
+                {#<img src="{% url document_display_print object.id %}?page={{ page.page_number }}" {% if document_aspect > page_aspect %}width="97%"{% else %}height="97%"{% endif %} />#}
+                <img src="{% url document_display_print object.id %}?page={{ page.page_number }}" />
             </div>
         {% endfor %}
 

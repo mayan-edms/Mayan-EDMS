@@ -271,10 +271,10 @@ class DocumentTypeSelectForm(forms.Form):
 
 
 class PrintForm(forms.Form):
-    page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
-    custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
-    custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
-    page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
+    #page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
+    #custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
+    #custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
+    #page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
 
