@@ -200,12 +200,6 @@ class Document(models.Model):
             new_version = DocumentVersion(
                 document=self,
                 file=file,
-                #major = new_version_dict.get('major'),
-                #minor = new_version_dict.get('minor'),
-                #micro = new_version_dict.get('micro'),
-                #release_level = release_level,
-                #serial = serial,
-                #comment = comment,
             )
             new_version.save()
 
