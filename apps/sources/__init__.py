@@ -6,7 +6,7 @@ from permissions.api import register_permission, set_namespace_title
 from common.utils import encapsulate
 from project_setup.api import register_setup
 from documents.models import Document
-from documents import PERMISSION_DOCUMENT_CREATE
+from documents.literals import PERMISSION_DOCUMENT_CREATE
 
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation, \
