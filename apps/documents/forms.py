@@ -151,8 +151,6 @@ class DocumentForm(forms.ModelForm):
         instance = kwargs.pop('instance', None)
 
         super(DocumentForm, self).__init__(*args, **kwargs)
-        if instance:
-            self.version_fields(instance)
 
         if 'document_type' in self.fields:
             # To allow merging with DocumentForm_edit
@@ -170,14 +168,11 @@ class DocumentForm(forms.ModelForm):
                     queryset=filenames_qs,
                     required=False,
                     label=_(u'Quick document rename'))
+
+        if instance:
+            self.version_fields(instance)
                     
     def version_fields(self, document):
-        self.fields['comment'] = forms.CharField(
-            label=_(u'Comment'),
-            required=False,
-            widget=forms.widgets.Textarea(attrs={'rows': 4}),
-        )
-
         self.fields['version_update'] = forms.ChoiceField(
             label=_(u'Version update'),
             choices=DocumentVersion.get_version_update_choices(document.latest_version)
@@ -195,6 +190,12 @@ class DocumentForm(forms.ModelForm):
             widget=forms.widgets.TextInput(
                 attrs = {'style': 'width: auto;'}
             ),
+        )
+
+        self.fields['comment'] = forms.CharField(
+            label=_(u'Comment'),
+            required=False,
+            widget=forms.widgets.Textarea(attrs={'rows': 4}),
         )
 
     new_filename = forms.CharField(
