@@ -52,3 +52,8 @@ body { margin: 50px 0 0; background: #fff url(../images/bg.gif) repeat-x; font: 
 }
 
 pre { background: #000; color: #fff; padding: 15px; margin-left: 0px; padding:0px;}
+
+.center {display: block; margin-left: auto; margin-right: auto;}
+
+.tc {text-align: center;}
+
