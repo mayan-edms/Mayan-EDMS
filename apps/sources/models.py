@@ -52,7 +52,7 @@ class BaseModel(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_file(self, file_object, filename=None, document_type=None, expand=False, metadata_dict_list=None, user=None):
+    def upload_file(self, file_object, filename=None, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         if expand:
             try:
                 cf = CompressedFile(file_object)
@@ -63,31 +63,39 @@ class BaseModel(models.Model):
             except NotACompressedFile:
                 self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
         else:
-            self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
+            self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user, document, new_version_data)
            
         file_object.close()
             
-    def upload_single_file(self, file_object, filename=None, document_type=None, metadata_dict_list=None, user=None):
-        transformations, errors = self.get_transformation_list()
-        document = Document(file=file_object)
-        if document_type:
-            document.document_type = document_type
-        document.save()
+    def upload_single_file(self, file_object, filename=None, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
+        if not document:
+            document = Document()
+            if document_type:
+                document.document_type = document_type
+            document.save()            
+
+            if metadata_dict_list:
+                save_metadata_list(metadata_dict_list, document, create=True)
+            warnings = update_indexes(document)
+
+            if user:
+                document.add_as_recent_document_for_user(user)
+                create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
+            else:
+                create_history(HISTORY_DOCUMENT_CREATED, document)
+
+        if not new_version_data:
+            new_version_data = {}
+            
+        new_version = document.new_version(file=file_object, **new_version_data)
         if filename:
-            document.file_filename = filename
-            document.save()    
+            new_version.filename = filename
+            new_version.save()
 
-        document.apply_default_transformations(transformations)
+        transformations, errors = self.get_transformation_list()
 
-        if metadata_dict_list:
-            save_metadata_list(metadata_dict_list, document, create=True)
-        warnings = update_indexes(document)
-
-        if user:
-            document.add_as_recent_document_for_user(user)
-            create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
-        else:
-            create_history(HISTORY_DOCUMENT_CREATED, document)
+        new_version.apply_default_transformations(transformations)
+        #TODO: new HISTORY for version updates
         
     class Meta:
         ordering = ('title',)

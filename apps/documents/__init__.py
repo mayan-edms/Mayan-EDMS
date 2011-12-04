@@ -13,8 +13,9 @@ from history.api import register_history_type
 from metadata.api import get_metadata_string
 from project_setup.api import register_setup
 
-from documents.models import Document, DocumentPage, \
-    DocumentPageTransformation, DocumentType, DocumentTypeFilename
+from documents.models import (Document, DocumentPage,
+    DocumentPageTransformation, DocumentType, DocumentTypeFilename,
+    DocumentVersion)
 from documents.literals import PERMISSION_DOCUMENT_CREATE, \
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW, \
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
@@ -35,7 +36,7 @@ def is_first_page(context):
 
 
 def is_last_page(context):
-    return context['page'].page_number >= context['page'].document.documentpage_set.count()
+    return context['page'].page_number >= context['page'].document_version.pages.count()
 
 
 def is_min_zoom(context):
@@ -78,6 +79,7 @@ document_multiple_delete = {'text': _(u'delete'), 'view': 'document_multiple_del
 document_edit = {'text': _(u'edit'), 'view': 'document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
 document_preview = {'text': _(u'preview'), 'class': 'fancybox', 'view': 'document_preview', 'args': 'object.id', 'famfam': 'magnifier', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_download = {'text': _(u'download'), 'view': 'document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
+document_version_download = {'text': _(u'download'), 'view': 'document_version_download', 'args': 'object.pk', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'description': _(u'Search all the documents\' checksums and return a list of the exact matches.')}
 document_update_page_count = {'text': _(u'update office documents\' page count'), 'view': 'document_update_page_count', 'famfam': 'page_white_csharp', 'permissions': [PERMISSION_DOCUMENT_TOOLS], 'description': _(u'Update the page count of the office type documents.  This is useful when enabling office document support after there were already office type documents in the database.')}
@@ -85,8 +87,12 @@ document_clear_transformations = {'text': _(u'clear transformations'), 'view': '
 document_multiple_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_print = {'text': _(u'print'), 'view': 'document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_history_view = {'text': _(u'history'), 'view': 'history_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_missing_list = {'text': _(u'Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+
+# Tools
 document_clear_image_cache = {'text': _(u'Clear the document image cache'), 'view': 'document_clear_image_cache', 'famfam': 'camera_delete', 'permissions': [PERMISSION_DOCUMENT_TOOLS], 'description': _(u'Clear the graphics representations used to speed up the documents\' display and interactive transformations results.')}
 
+# Document pages
 document_page_transformation_list = {'text': _(u'page transformations'), 'class': 'no-parent-history', 'view': 'document_page_transformation_list', 'args': 'page.pk', 'famfam': 'pencil_go', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_page_transformation_create = {'text': _(u'create new transformation'), 'class': 'no-parent-history', 'view': 'document_page_transformation_create', 'args': 'page.pk', 'famfam': 'pencil_add', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_page_transformation_edit = {'text': _(u'edit'), 'class': 'no-parent-history', 'view': 'document_page_transformation_edit', 'args': 'transformation.pk', 'famfam': 'pencil_go', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
@@ -105,7 +111,8 @@ document_page_rotate_right = {'text': _(u'rotate right'), 'class': 'no-parent-hi
 document_page_rotate_left = {'text': _(u'rotate left'), 'class': 'no-parent-history', 'view': 'document_page_rotate_left', 'args': 'page.pk', 'famfam': 'arrow_turn_left', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_page_view_reset = {'text': _(u'reset view'), 'class': 'no-parent-history', 'view': 'document_page_view_reset', 'args': 'page.pk', 'famfam': 'page_white', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
-document_missing_list = {'text': _(u'Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+# Document versions
+document_version_list = {'text': _(u'versions'), 'view': 'document_version_list', 'args': 'object.pk', 'famfam': 'page_world', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -132,6 +139,9 @@ register_links(['document_type_filename_create', 'document_type_filename_list', 
 # Register document links
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
+
+# Document Version links
+register_links(DocumentVersion, [document_version_download])
 
 secondary_menu_links = [document_list_recent, document_list, document_create_multiple]
 
@@ -198,6 +208,7 @@ register_sidebar_template(['document_type_list'], 'document_types_help.html')
 register_links(Document, [document_view_simple], menu_name='form_header', position=0)
 register_links(Document, [document_view_advanced], menu_name='form_header', position=1)
 register_links(Document, [document_history_view], menu_name='form_header')
+register_links(Document, [document_version_list], menu_name='form_header')
 
 if (validate_path(document_settings.CACHE_PATH) == False) or (not document_settings.CACHE_PATH):
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())

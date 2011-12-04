@@ -88,7 +88,7 @@ def do_document_ocr(queue_document):
     parser, if the parser fails or if there is no parser registered for
     the document mimetype do a visual OCR by calling tesseract
     """
-    for document_page in queue_document.document.documentpage_set.all():
+    for document_page in queue_document.document.pages.all():
         try:
             # Try to extract text by means of a parser
             parse_document_page(document_page)

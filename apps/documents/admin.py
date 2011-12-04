@@ -2,11 +2,29 @@ from django.contrib import admin
 
 from metadata.admin import DocumentMetadataInline
 
-from documents.models import DocumentType, Document, \
-    DocumentTypeFilename, DocumentPage, \
-    DocumentPageTransformation, RecentDocument
+from documents.models import (DocumentType, Document,
+    DocumentTypeFilename, DocumentPage,
+    DocumentPageTransformation, RecentDocument,
+    DocumentVersion)
 
 
+class DocumentPageInline(admin.StackedInline):
+    model = DocumentPage
+    extra = 1
+    classes = ('collapse-open',)
+    allow_add = True
+
+
+class DocumentVersionInline(admin.StackedInline):
+    model = DocumentVersion
+    extra = 1
+    classes = ('collapse-open',)
+    allow_add = True
+    #inlines = [
+    #    DocumentPageInline,
+    #]
+    
+    
 class DocumentTypeFilenameInline(admin.StackedInline):
     model = DocumentTypeFilename
     extra = 1
@@ -24,16 +42,9 @@ class DocumentPageTransformationAdmin(admin.ModelAdmin):
     model = DocumentPageTransformation
 
 
-class DocumentPageInline(admin.StackedInline):
-    model = DocumentPage
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
-
-
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentMetadataInline, DocumentPageInline
+        DocumentMetadataInline, DocumentVersionInline
     ]
     list_display = ('uuid', 'file_filename',)
 
