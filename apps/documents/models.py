@@ -78,7 +78,7 @@ class Document(models.Model):
     uuid = models.CharField(max_length=48, blank=True, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
-    date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True)
+    date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True, editable=False)
 
     tags = TaggableManager()
 
@@ -438,6 +438,13 @@ class DocumentVersion(models.Model):
 
                     page_transformation.save()
 
+    def revert(self):
+        '''
+        Delete the subsequent versions after this one
+        '''
+        for version in self.document.versions.filter(timestamp__gt=self.timestamp):
+            version.delete()
+
     def update_mimetype(self, save=True):
         '''
         Read a document verions's file and determine the mimetype by calling the
@@ -454,7 +461,7 @@ class DocumentVersion(models.Model):
                     self.save()
 
     def delete(self, *args, **kwargs):
-        super(Document, self).delete(*args, **kwargs)
+        super(DocumentVesion, self).delete(*args, **kwargs)
         return self.file.storage.delete(self.file.path)
 
     def exists(self):
