@@ -37,7 +37,7 @@ def return_function(obj):
 
 def get_tab_link_for_source(source, document=None):
     if document:
-        view = u'upload_interactive_version'
+        view = u'upload_version'
         args = [document.pk, u'"%s"' % source.source_type, source.pk]
     else:
         view = u'upload_interactive'
@@ -271,7 +271,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
         'subtemplates_list': subtemplates_list,
         'temporary_navigation_links': {
             'form_header': {
-                'upload_interactive_version': {
+                'upload_version': {
                     'links': results['tab_links']
                 },
                 'upload_interactive': {

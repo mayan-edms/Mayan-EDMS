@@ -43,7 +43,7 @@ setup_source_transformation_delete = {'text': _(u'delete'), 'view': 'setup_sourc
 
 source_list = {'text': _(u'Document sources'), 'view': 'setup_web_form_list', 'famfam': 'page_add', 'children_url_regex': [r'sources/setup']}
 
-upload_interactive_version = {'text': _(u'upload new version'), 'view': 'upload_interactive_version', 'args': 'object.pk', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+upload_version = {'text': _(u'upload new version'), 'view': 'upload_version', 'args': 'object.pk', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 
 register_links(StagingFile, [staging_file_delete])
 
@@ -66,7 +66,7 @@ register_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, set
 register_links(WatchFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 # Document version
-register_links(Document, [upload_interactive_version])
+register_links(['document_version_list', 'upload_version', 'document_version_revert'], [upload_version], menu_name='sidebar')
 
 register_links(['setup_source_transformation_create', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
 
