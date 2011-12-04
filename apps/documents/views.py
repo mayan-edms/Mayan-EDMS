@@ -799,18 +799,18 @@ def document_print(request, document_id):
                 hard_copy_arguments['page_range'] = form.cleaned_data['page_range']
 
             # Compute page width and height
-            if form.cleaned_data['custom_page_width'] and form.cleaned_data['custom_page_height']:
-                page_width = form.cleaned_data['custom_page_width']
-                page_height = form.cleaned_data['custom_page_height']
-            elif form.cleaned_data['page_size']:
-                page_width, page_height = dict(PAGE_SIZE_DIMENSIONS)[form.cleaned_data['page_size']]
+            #if form.cleaned_data['custom_page_width'] and form.cleaned_data['custom_page_height']:
+            #    page_width = form.cleaned_data['custom_page_width']
+            #    page_height = form.cleaned_data['custom_page_height']
+            #elif form.cleaned_data['page_size']:
+            #    page_width, page_height = dict(PAGE_SIZE_DIMENSIONS)[form.cleaned_data['page_size']]
 
             # Page orientation
-            if form.cleaned_data['page_orientation'] == PAGE_ORIENTATION_LANDSCAPE:
-                page_width, page_height = page_height, page_width
+            #if form.cleaned_data['page_orientation'] == PAGE_ORIENTATION_LANDSCAPE:
+            #    page_width, page_height = page_height, page_width
 
-            hard_copy_arguments['page_width'] = page_width
-            hard_copy_arguments['page_height'] = page_height
+            #hard_copy_arguments['page_width'] = page_width
+            #hard_copy_arguments['page_height'] = page_height
 
             new_url = [reverse('document_hard_copy', args=[document_id])]
             if hard_copy_arguments:
