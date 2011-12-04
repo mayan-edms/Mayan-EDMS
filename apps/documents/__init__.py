@@ -46,6 +46,10 @@ def is_min_zoom(context):
 def is_max_zoom(context):
     return context['zoom'] >= ZOOM_MAX_LEVEL
 
+
+def is_current_version(context):
+    return context['object'].document.latest_version.timestamp == context['object'].timestamp
+
 # Permission setup
 set_namespace_title('documents', _(u'Documents'))
 register_permission(PERMISSION_DOCUMENT_CREATE)
@@ -114,7 +118,7 @@ document_page_view_reset = {'text': _(u'reset view'), 'class': 'no-parent-histor
 
 # Document versions
 document_version_list = {'text': _(u'versions'), 'view': 'document_version_list', 'args': 'object.pk', 'famfam': 'page_world', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_version_revert = {'text': _(u'revert'), 'view': 'document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT]}
+document_version_revert = {'text': _(u'revert'), 'view': 'document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT], 'conditional_disable': is_current_version}
 
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
