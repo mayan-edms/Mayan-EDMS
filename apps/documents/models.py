@@ -78,7 +78,7 @@ class Document(models.Model):
     uuid = models.CharField(max_length=48, blank=True, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
-    date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True)
+    date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True, editable=False)
 
     tags = TaggableManager()
 
@@ -113,35 +113,39 @@ class Document(models.Model):
             self.date_added = datetime.datetime.now()
         super(Document, self).save(*args, **kwargs)
 
-    def get_cached_image_name(self, page):
-        document_page = self.pages.get(page_number=page)
+    def get_cached_image_name(self, page, version):
+        document_version = DocumentVersion.objects.get(pk=version)
+        document_page = document_version.documentpage_set.get(page_number=page)
         transformations, warnings = document_page.get_transformation_list()
-        hash_value = HASH_FUNCTION(u''.join([self.checksum, unicode(page), unicode(transformations)]))
+        hash_value = HASH_FUNCTION(u''.join([document_version.checksum, unicode(page), unicode(transformations)]))
         return os.path.join(CACHE_PATH, hash_value), transformations
 
-    def get_image_cache_name(self, page):
-        cache_file_path, transformations = self.get_cached_image_name(page)
+    def get_image_cache_name(self, page, version):
+        cache_file_path, transformations = self.get_cached_image_name(page, version)
         if os.path.exists(cache_file_path):
             return cache_file_path
         else:
-            document_file = document_save_to_temp_dir(self, self.checksum)
+            document_version = DocumentVersion.objects.get(pk=version)
+            document_file = document_save_to_temp_dir(document_version, document_version.checksum)
             return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
 
-    def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION):
-        image_cache_name = self.get_image_cache_name(page=page)
+    def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
+        if not version:
+            version = self.latest_version.pk
+        image_cache_name = self.get_image_cache_name(page=page, version=version)
         return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
 
-    def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False):
+    def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
         if zoom < ZOOM_MIN_LEVEL:
             zoom = ZOOM_MIN_LEVEL
 
         if zoom > ZOOM_MAX_LEVEL:
             zoom = ZOOM_MAX_LEVEL
 
-        rotation = rotation % 360        
+        rotation = rotation % 360
         
         try:
-            file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation)
+            file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
         except UnknownFileFormat:
             file_path = get_icon_file_path(self.file_mimetype)
         except UnkownConvertError:
@@ -184,6 +188,7 @@ class Document(models.Model):
         logger.debug('creating new document version')
         if version_update:
             new_version_dict = self.latest_version.get_new_version_dict(version_update)
+            logger.debug('new_version_dict: %s' % new_version_dict)
             new_version = DocumentVersion(
                 document=self,
                 file=file,
@@ -202,9 +207,6 @@ class Document(models.Model):
                 file=file,
             )
             new_version.save()
-
-        
-        logger.debug('new_version_dict: %s' % new_version_dict)
 
         logger.debug('new_version saved')
         return new_version
@@ -438,6 +440,13 @@ class DocumentVersion(models.Model):
 
                     page_transformation.save()
 
+    def revert(self):
+        '''
+        Delete the subsequent versions after this one
+        '''
+        for version in self.document.versions.filter(timestamp__gt=self.timestamp):
+            version.delete()
+
     def update_mimetype(self, save=True):
         '''
         Read a document verions's file and determine the mimetype by calling the
@@ -454,7 +463,7 @@ class DocumentVersion(models.Model):
                     self.save()
 
     def delete(self, *args, **kwargs):
-        super(Document, self).delete(*args, **kwargs)
+        super(DocumentVersion, self).delete(*args, **kwargs)
         return self.file.storage.delete(self.file.path)
 
     def exists(self):

@@ -16,15 +16,15 @@ from project_setup.api import register_setup
 from documents.models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
-from documents.literals import PERMISSION_DOCUMENT_CREATE, \
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW, \
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS, \
-    PERMISSION_DOCUMENT_EDIT
-from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT, \
-    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE
-from documents.literals import HISTORY_DOCUMENT_CREATED, \
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
+from documents.literals import (PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
+    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
+    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT)
+from documents.literals import (PERMISSION_DOCUMENT_TYPE_EDIT,
+    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE)
+from documents.literals import (HISTORY_DOCUMENT_CREATED,
+    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from documents.conf.settings import ZOOM_MAX_LEVEL
 from documents.conf.settings import ZOOM_MIN_LEVEL
 from documents.conf import settings as document_settings
@@ -46,6 +46,10 @@ def is_min_zoom(context):
 def is_max_zoom(context):
     return context['zoom'] >= ZOOM_MAX_LEVEL
 
+
+def is_current_version(context):
+    return context['object'].document.latest_version.timestamp == context['object'].timestamp
+
 # Permission setup
 set_namespace_title('documents', _(u'Documents'))
 register_permission(PERMISSION_DOCUMENT_CREATE)
@@ -56,6 +60,7 @@ register_permission(PERMISSION_DOCUMENT_DELETE)
 register_permission(PERMISSION_DOCUMENT_DOWNLOAD)
 register_permission(PERMISSION_DOCUMENT_TRANSFORM)
 register_permission(PERMISSION_DOCUMENT_TOOLS)
+register_permission(PERMISSION_DOCUMENT_VERSION_REVERT)
 
 # Document type permissions
 set_namespace_title('documents_setup', _(u'Documents setup'))
@@ -80,8 +85,8 @@ document_edit = {'text': _(u'edit'), 'view': 'document_edit', 'args': 'object.id
 document_preview = {'text': _(u'preview'), 'class': 'fancybox', 'view': 'document_preview', 'args': 'object.id', 'famfam': 'magnifier', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_download = {'text': _(u'download'), 'view': 'document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_version_download = {'text': _(u'download'), 'view': 'document_version_download', 'args': 'object.pk', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
-document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'description': _(u'Search all the documents\' checksums and return a list of the exact matches.')}
+document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_white_copy', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_white_copy', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'description': _(u'Search all the documents\' checksums and return a list of the exact matches.')}
 document_update_page_count = {'text': _(u'update office documents\' page count'), 'view': 'document_update_page_count', 'famfam': 'page_white_csharp', 'permissions': [PERMISSION_DOCUMENT_TOOLS], 'description': _(u'Update the page count of the office type documents.  This is useful when enabling office document support after there were already office type documents in the database.')}
 document_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_multiple_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
@@ -113,6 +118,7 @@ document_page_view_reset = {'text': _(u'reset view'), 'class': 'no-parent-histor
 
 # Document versions
 document_version_list = {'text': _(u'versions'), 'view': 'document_version_list', 'args': 'object.pk', 'famfam': 'page_world', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_version_revert = {'text': _(u'revert'), 'view': 'document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT], 'conditional_disable': is_current_version}
 
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -141,7 +147,7 @@ register_links(Document, [document_edit, document_print, document_delete, docume
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
 
 # Document Version links
-register_links(DocumentVersion, [document_version_download])
+register_links(DocumentVersion, [document_version_revert, document_version_download])
 
 secondary_menu_links = [document_list_recent, document_list, document_create_multiple]
 

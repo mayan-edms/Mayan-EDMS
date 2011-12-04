@@ -20,14 +20,19 @@ def document_link(document):
     return mark_safe(u'<a href="%s">%s</a>' % (reverse('document_view_simple', args=[document.pk]), document))
 
 
-def document_html_widget(document, view='document_thumbnail', click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox'):
+def document_html_widget(document, view='document_thumbnail', click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None):
     result = []
                        
     alt_text = _(u'document page image')
+
+    if not version:
+        version = document.latest_version.pk
+
     query_dict = {
         'page': page,
         'zoom': zoom,
         'rotation': rotation,
+        'version': version,
     }
 
     if gallery_name:
@@ -67,7 +72,7 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
         });
         </script>
     ''' % {
-            'url': reverse('documents-expensive-is_zoomable', args=[document.pk, page]),
+            'url': reverse('documents-expensive-is_zoomable', args=[document.pk, version, page]),
             'pk': document.pk,
             'page': page if page else 1,
             'plain_template': mark_safe(u''.join(plain_template)),
