@@ -78,8 +78,7 @@ class Document(models.Model):
     uuid = models.CharField(max_length=48, blank=True, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
-    #TODO: remove date_added, it is the timestamp of the first version
-    date_added = models.DateTimeField(verbose_name=_(u'added'), auto_now_add=True, db_index=True)
+    date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True)
 
     tags = TaggableManager()
 
@@ -111,6 +110,7 @@ class Document(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.uuid = UUID_FUNCTION()
+            self.date_added = datetime.datetime.now()
         super(Document, self).save(*args, **kwargs)
 
     def get_cached_image_name(self, page):
@@ -247,11 +247,6 @@ class Document(models.Model):
     @property
     def date_updated(self):
         return self.latest_version.timestamp
-
-    # TODO: uncomment when date_added is removed
-    #@property
-    #def date_added(self):
-    #    return self.first_version.timestamp
 
     @property
     def checksum(self):
