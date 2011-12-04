@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'lock_manager',
     'web_theme',
     'common',
+    'django_gpg',
     'pagination',
     'dynamic_search',
     'filetransfers',

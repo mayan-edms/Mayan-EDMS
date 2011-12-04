@@ -1155,6 +1155,8 @@ def document_version_list(request, document_pk):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_pk)
 
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
     context = {
         'object_list': document.versions.order_by('-timestamp'),
         'title': _(u'versions for document: %s') % document,
