@@ -103,7 +103,9 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
         for page in value.pages.all():
+            
             output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
+            output.append(u'<div class="tc">%(page_string)s %(page)s</div>' % {'page_string': ugettext(u'Page'), 'page': page.page_number})
             output.append(
                 document_html_widget(
                     page.document,
@@ -178,7 +180,6 @@ class DocumentForm(forms.ModelForm):
 
         self.fields['version_update'] = forms.ChoiceField(
             label=_(u'Version update'),
-            #widget=forms.widgets.RadioSelect(),
             choices=DocumentVersion.get_version_update_choices(document.latest_version)
         )
         
@@ -186,7 +187,6 @@ class DocumentForm(forms.ModelForm):
             label=_(u'Release level'),
             choices=RELEASE_LEVEL_CHOICES,
             initial=RELEASE_LEVEL_FINAL,
-            #required=False,
         )
         
         self.fields['serial'] = forms.IntegerField(
@@ -195,7 +195,6 @@ class DocumentForm(forms.ModelForm):
             widget=forms.widgets.TextInput(
                 attrs = {'style': 'width: auto;'}
             ),
-            #required=False
         )
 
     new_filename = forms.CharField(
