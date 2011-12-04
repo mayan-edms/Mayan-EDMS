@@ -163,7 +163,7 @@ class Document(models.Model):
 
     def invalidate_cached_image(self, page):
         try:
-            os.unlink(self.get_cached_image_name(page)[0])
+            os.unlink(self.get_cached_image_name(page, self.latest_version.pk)[0])
         except OSError:
             pass
 
