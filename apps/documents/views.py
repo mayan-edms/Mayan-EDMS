@@ -36,14 +36,15 @@ from documents.conf.settings import ROTATION_STEP
 from documents.conf.settings import PRINT_SIZE
 from documents.conf.settings import RECENT_COUNT
 
-from documents.literals import PERMISSION_DOCUMENT_CREATE, \
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, \
-    PERMISSION_DOCUMENT_VIEW, \
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD, \
-    PERMISSION_DOCUMENT_TRANSFORM, \
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_TOOLS
-from documents.literals import HISTORY_DOCUMENT_CREATED, \
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED
+from documents.literals import (PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+    PERMISSION_DOCUMENT_VIEW,
+    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
+    PERMISSION_DOCUMENT_TRANSFORM,
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_TOOLS,
+    PERMISSION_DOCUMENT_VERSION_REVERT)
+from documents.literals import (HISTORY_DOCUMENT_CREATED,
+    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 
 from documents.forms import (DocumentTypeSelectForm,
         DocumentForm_edit, DocumentPropertiesForm,
@@ -1188,3 +1189,26 @@ def document_version_list(request, document_pk):
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
+
+
+def document_version_revert(request, document_version_pk):
+    check_permissions(request.user, [PERMISSION_DOCUMENT_VERSION_REVERT])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        #try:
+        document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
+        document_version.revert()
+        messages.success(request, _(u'Document version reverted successfully'))
+        #except Exception, msg:
+        #    messages.error(request, _(u'Error reverting document version; %s') % msg)
+            
+        return HttpResponseRedirect(previous)
+
+    return render_to_response('generic_confirm.html', {
+        'previous': previous,
+        'title': _(u'Are you sure you wish to revert to this version?'),
+        'message': _(u'All later version after this one will be deleted too.'),
+        'form_icon': u'page_refresh.png',
+    }, context_instance=RequestContext(request))    
