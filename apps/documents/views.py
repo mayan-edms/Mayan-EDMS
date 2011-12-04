@@ -66,7 +66,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
 
     context = {
-        'object_list': object_list if not (object_list is None) else Document.objects.only('file_filename',).all(),
+        'object_list': object_list if not (object_list is None) else Document.objects.all(),
         'title': title if title else _(u'documents'),
         'multi_select_as_buttons': True,
         'hide_links': True,
@@ -115,7 +115,7 @@ def document_view(request, document_id, advanced=False):
 
     if advanced:
         document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
-            {'label': _(u'Filename'), 'field': 'file_filename'},
+            {'label': _(u'Filename'), 'field': 'filename'},
             {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
             {'label': _(u'File mime encoding'), 'field': 'file_mime_encoding'},
             {'label': _(u'File size'), 'field':lambda x: pretty_size(x.size) if x.size else '-'},
@@ -250,7 +250,7 @@ def document_edit(request, document_id):
                     document.filename = form.cleaned_data['document_type_available_filenames'].filename
 
             document.save()
-            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['file_filename', 'description'])})
+            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['filename', 'description'])})
             RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
@@ -263,7 +263,7 @@ def document_edit(request, document_id):
             return HttpResponseRedirect(document.get_absolute_url())
     else:
         form = DocumentForm_edit(instance=document, initial={
-            'new_filename': document.file_filename})
+            'new_filename': document.filename})
 
     return render_to_response('generic_form.html', {
         'form': form,
@@ -486,16 +486,16 @@ def document_update_page_count(request):
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     office_converter = OfficeConverter()
-    qs = Document.objects.exclude(file_filename__iendswith='dxf').filter(file_mimetype__in=office_converter.mimetypes())
+    qs = DocumentVersion.objects.exclude(filename__iendswith='dxf').filter(mimetype__in=office_converter.mimetypes())
 
     if request.method == 'POST':
         updated = 0
         processed = 0
-        for document in qs:
-            old_page_count = document.page_count
-            document.update_page_count()
+        for document_version in qs:
+            old_page_count = document_version.pages.count()
+            document_version.update_page_count()
             processed += 1
-            if old_page_count != document.page_count:
+            if old_page_count != document_version.pages.count():
                 updated += 1
             
         messages.success(request, _(u'Page count update complete.  Documents processed: %(total)d, documents with changed page count: %(change)d') % {
