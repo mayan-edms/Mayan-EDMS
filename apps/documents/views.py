@@ -531,7 +531,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     if request.method == 'POST':
         for document in documents:
             try:
-                for document_page in document.documentpage_set.all():
+                for document_page in document.pages.all():
                     document_page.document.invalidate_cached_image(document_page.page_number)
                     for transformation in document_page.documentpagetransformation_set.all():
                         transformation.delete()
@@ -667,11 +667,11 @@ def document_page_navigation_next(request, document_page_id):
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    if document_page.page_number >= document_page.document.documentpage_set.count():
+    if document_page.page_number >= document_page.siblings.count():
         messages.warning(request, _(u'There are no more pages in this document'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
     else:
-        document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number + 1)
+        document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number + 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
 
@@ -684,7 +684,7 @@ def document_page_navigation_previous(request, document_page_id):
         messages.warning(request, _(u'You are already at the first page of this document'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
     else:
-        document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.page_number - 1)
+        document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number - 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
 
@@ -693,7 +693,7 @@ def document_page_navigation_first(request, document_page_id):
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=1)
+    document_page = get_object_or_404(document_page.siblings, page_number=1)
     return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
 
@@ -702,7 +702,7 @@ def document_page_navigation_last(request, document_page_id):
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
 
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    document_page = get_object_or_404(DocumentPage, document=document_page.document, page_number=document_page.document.documentpage_set.count())
+    document_page = get_object_or_404(document_page.siblings, page_number=document_page.siblings.count())    
     return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
 
@@ -856,9 +856,9 @@ def document_hard_copy(request, document_id):
     if page_range:
         page_range = parse_range(page_range)
 
-        pages = document.documentpage_set.filter(page_number__in=page_range)
+        pages = document.pages.filter(page_number__in=page_range)
     else:
-        pages = document.documentpage_set.all()
+        pages = document.pages.all()
 
     return render_to_response('document_print.html', {
         'object': document,
