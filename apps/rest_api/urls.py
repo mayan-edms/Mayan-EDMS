@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     
     # Version 0 alpha API calls    
     url(r'^v0/document/(?P<pk>[0-9]+)/$', ReadOnlyInstanceModelView.as_view(resource=DocumentResourceSimple), name='documents-simple'),
-    url(r'^v0/document/(?P<pk>[0-9]+)/page/(?P<page_number>[0-9]+)/expensive/is_zoomable/$', IsZoomable.as_view(), name='documents-expensive-is_zoomable'),
+    url(r'^v0/document/(?P<pk>[0-9]+)/version/(?P<version_pk>[0-9]+)/page/(?P<page_number>[0-9]+)/expensive/is_zoomable/$', IsZoomable.as_view(), name='documents-expensive-is_zoomable'),
 )
