@@ -59,7 +59,7 @@ class SmartLinkManager(models.Manager):
             if total_query:
                 try:
                     document_qs = Document.objects.filter(total_query)
-                    result[smart_link] = {'documents': document_qs.order_by('file_filename') or []}
+                    result[smart_link] = {'documents': document_qs.order_by('date_added') or []}
                 except Exception, e:
                     result[smart_link] = {'documents': []}
                     errors.append(e)
