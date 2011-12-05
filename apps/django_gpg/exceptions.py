@@ -29,3 +29,6 @@ class KeyFetchingError(GPGException):
 class KeyDoesNotExist(GPGException):
     pass
 
+
+class KeyImportError(GPGException):
+    pass
