@@ -22,7 +22,7 @@ from converter.api import get_available_transformations_choices
 from converter.api import convert
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
 from mimetype.api import (get_mimetype, get_icon_file_path,
-    get_error_icon_file_path, get_encoding)
+    get_error_icon_file_path)
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
 from django_gpg.runtime import gpg
@@ -499,10 +499,7 @@ class DocumentVersion(models.Model):
             try:
                 result = gpg.decrypt_file(self.file.storage.open(self.file.path))
                 # gpg return a string, turn it into a file like object
-                container = StringIO()
-                container.write(result.data)
-                container.seek(0)
-                return container                
+                return StringIO(result.data)
             except GPGDecryptionError:
                 # At least return the original raw content
                 return self.file.storage.open(self.file.path)
