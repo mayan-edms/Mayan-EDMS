@@ -19,9 +19,9 @@ __status__ = 'Production'
 __version_info__ = {
     'major': 0,
     'minor': 10,
-    'micro': 1,
-    'releaselevel': 'final',
-    'serial': 0
+    'micro': 0,
+    'releaselevel': 'hotfix',
+    'serial': 2
 }
 
 def is_superuser(context):
