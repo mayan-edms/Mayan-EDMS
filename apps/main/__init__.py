@@ -18,12 +18,11 @@ __status__ = 'Production'
 
 __version_info__ = {
     'major': 0,
-    'minor': 11,
-    'micro': 0,
-    'releaselevel': 'beta',
-    'serial': 3
+    'minor': 10,
+    'micro': 1,
+    'releaselevel': 'final',
+    'serial': 0
 }
-
 
 def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
