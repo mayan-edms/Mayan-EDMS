@@ -1,3 +1,12 @@
+Version 0.10.1
+--------------
+* Upgraded django-compressor to version 1.1.1, run::
+
+  $ pip install --upgrade -r requirements/production.txt
+
+  to upgrade
+
+
 Version 0.10
 ------------
 * Added a proper setup views for the document grouping functionality.
