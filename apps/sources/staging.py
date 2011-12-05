@@ -6,6 +6,8 @@ from django.core.files.base import File
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext
 
+from documents.conf.settings import THUMBNAIL_SIZE
+
 from mimetype.api import get_icon_file_path, get_error_icon_file_path, \
     get_mimetype
 from converter.api import convert, cache_cleanup
@@ -134,10 +136,15 @@ class StagingFile(object):
             else:
                 raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
 
+    def get_valid_image(self, size=THUMBNAIL_SIZE, transformations=None):
+        return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
+
     def get_image(self, size, transformations):
         try:
-            return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
+            return self.get_valid_image(size=size, transformations=transformations)
+            #return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
         except UnknownFileFormat:
-            return get_icon_file_path(get_mimetype(self.filepath))
+            mimetype, encoding = get_mimetype(open(self.filepath, 'rb'), self.filepath)
+            return get_icon_file_path(mimetype)
         except UnkownConvertError:
             return get_error_icon_file_path()

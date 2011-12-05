@@ -5,6 +5,28 @@ FAQ
 Frequently asked questions and solutions
 
 
+
+_mysql_exceptions.OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  * Solution::    
+
+    $ manage.py shell
+    >>> from django.db import connection 
+    >>> cursor = connection.cursor()
+    >>> cursor.execute('SHOW TABLES')
+    >>> results=[]
+    >>> for row in cursor.fetchall(): results.append(row)
+    >>> for row in results: cursor.execute('ALTER TABLE %s CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;' % (row[0]))
+
+
+  * References:
+   
+    - http://www.djangoshmango.com/?p=99
+    - http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
+        
+        
+        
 Incorrect string value: ``'\xE2\x80\x95rs6...'`` for column ``'content'`` at row 1
 ----------------------------------------------------------------------------------
 
@@ -97,3 +119,13 @@ How to enable x-sendile support for ``Apache``
   
       XSendFile on
       XSendFileAllowAbove on
+      
+
+The included version of ``unoconv`` in my distribution is too old
+-------------------------------------------------------------
+      
+  * Only the file 'unoconv' file from https://github.com/dagwieers/unoconv is needed.  
+    Put it in a user designated directory for binaries such as /usr/local/bin and 
+    setup Mayan's configuration option in your settings_local.py file like this::
+    
+      CONVERTER_UNOCONV_PATH = '/usr/local/bin/unoconv'

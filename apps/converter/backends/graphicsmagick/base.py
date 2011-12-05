@@ -29,7 +29,7 @@ class ConverterClass(ConverterBase):
             raise IdentifyError(proc.stderr.readline())
         return proc.stdout.read()
 
-    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT, **kwargs):
         arguments = []
 
         try:

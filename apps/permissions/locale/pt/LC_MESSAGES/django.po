@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+#   <dev.emerson@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-02 04:52+0000\n"
+"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
+"team/pt/)\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:12
+msgid "View roles"
+msgstr "Ver funções"
+
+#: __init__.py:13
+msgid "Edit roles"
+msgstr "Editar funções"
+
+#: __init__.py:14
+msgid "Create roles"
+msgstr "Criar funções"
+
+#: __init__.py:15
+msgid "Delete roles"
+msgstr "Deletar funções"
+
+#: __init__.py:16
+msgid "Grant permissions"
+msgstr "Conceder permissões"
+
+#: __init__.py:17
+msgid "Revoke permissions"
+msgstr "Revogar as permissões"
+
+#: __init__.py:19 models.py:87 views.py:38
+msgid "roles"
+msgstr "funções"
+
+#: __init__.py:20
+msgid "create new role"
+msgstr "criar nova função"
+
+#: __init__.py:21
+msgid "edit"
+msgstr "editar"
+
+#: __init__.py:22
+msgid "members"
+msgstr "membros"
+
+#: __init__.py:23
+msgid "role permissions"
+msgstr "permissões de função"
+
+#: __init__.py:24
+msgid "delete"
+msgstr "excluir"
+
+#: __init__.py:26
+#, fuzzy
+msgid "grant"
+msgstr "Conceder"
+
+#: __init__.py:27
+#, fuzzy
+msgid "revoke"
+msgstr "Revogar"
+
+#: api.py:22
+msgid "Permissions"
+msgstr "Permissões"
+
+#: api.py:55
+msgid "Insufficient permissions."
+msgstr "Permissões insuficientes."
+
+#: models.py:11 views.py:58
+msgid "namespace"
+msgstr "namespace"
+
+#: models.py:12 views.py:59
+msgid "name"
+msgstr "nome"
+
+#: models.py:13 models.py:82
+msgid "label"
+msgstr "rótulo"
+
+#: models.py:20 models.py:65 views.py:145 views.py:204
+msgid "permission"
+msgstr "permissão"
+
+#: models.py:21 views.py:55 views.py:147 views.py:206
+msgid "permissions"
+msgstr "permissões"
+
+#: models.py:73
+msgid "permission holder"
+msgstr "titular de permissão"
+
+#: models.py:74
+msgid "permission holders"
+msgstr "titulares de permissões"
+
+#: models.py:86 models.py:104 views.py:74 views.py:91 views.py:115
+#: views.py:282
+msgid "role"
+msgstr "função"
+
+#: models.py:115
+msgid "role member"
+msgstr "membro da função"
+
+#: models.py:116
+msgid "role members"
+msgstr "membros da função"
+
+#: views.py:61
+#, fuzzy
+msgid "has permission"
+msgstr "permissão"
+
+#: views.py:142 views.py:201
+msgid " and "
+msgstr ""
+
+#: views.py:142 views.py:201
+#, fuzzy, python-format
+msgid "%(permissions)s to %(requester)s"
+msgstr ""
+"Permissão \"%(permission)s\" concedida para %(ct_name)s: %(requester)s."
+
+#: views.py:152
+#, fuzzy, python-format
+msgid "Permission \"%(permission)s\" granted to: %(requester)s."
+msgstr ""
+"Permissão \"%(permission)s\" concedida para %(ct_name)s: %(requester)s."
+
+#: views.py:155
+#, fuzzy, python-format
+msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+msgstr ""
+"%(ct_name)s: %(requester)s, já tem permissão \"%(permission)s\" concedida."
+
+#: views.py:167
+#, fuzzy, python-format
+msgid ""
+"Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
+msgstr ""
+"Tem certeza que deseja conceder permissão \"%(permission)s\" para "
+"%(ct_name)s: %(requester)s"
+
+#: views.py:211
+#, fuzzy, python-format
+msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
+msgstr "Permissão \"%(permission)s\"  revogada de %(ct_name)s: %(requester)s."
+
+#: views.py:214
+#, fuzzy, python-format
+msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+msgstr "%(ct_name)s: %(requester)s não tem a permissão \"%(permission)s\"."
+
+#: views.py:226
+#, fuzzy, python-format
+msgid ""
+"Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+msgstr ""
+"Tem certeza que deseja revogar a permissão \"%(permission)s\" de "
+"%(ct_name)s: %(requester)s"
+
+#: views.py:278
+#, python-format
+msgid "non members of role: %s"
+msgstr "não membros da função: %s"
+
+#: views.py:279
+#, python-format
+msgid "members of role: %s"
+msgstr "membros da função: %s"
+
+#: widgets.py:16
+msgid "Revoke"
+msgstr "Revogar"
+
+#: widgets.py:21
+msgid "Grant"
+msgstr "Conceder"
+
+#: conf/settings.py:10
+msgid ""
+"A list of existing roles that are automatically assigned to newly created "
+"users"
+msgstr ""
+"A lista de funções existentes que são automaticamente designados para "
+"usuários recém-criados"
+
+#~ msgid "state"
+#~ msgstr "estado"

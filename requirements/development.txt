@@ -1,4 +1,4 @@
-Django==1.3
+Django==1.3.1
 Werkzeug==0.6.2
 django-extensions==0.7.1
 django-pagination==1.0.7
@@ -14,7 +14,11 @@ slate==0.3
 ghostscript==0.4.1
 pdfminer==20110227
 APScheduler==2.0.2
-django-grappelli==2.3.5
 Pillow==1.7.4
 cssmin==0.1.4
-django-compressor==1.1
+django-compressor==1.1.1
+-e git://github.com/rosarior/django-sendfile.git#egg=django-sendfile
+djangorestframework==0.2.3
+South==0.7.3
+python-gnupg==0.2.8
+python-hkp==0.1.3

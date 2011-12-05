@@ -8,23 +8,31 @@ from project_tools.api import register_tool
 from main.conf.settings import SIDE_BAR_SEARCH
 from main.conf.settings import DISABLE_HOME_VIEW
 
+__author__ = 'Roberto Rosario'
+__copyright__ = 'Copyright 2011 Roberto Rosario'
+__credits__ = ['Roberto Rosario',] 
+__license__ = 'GPL'
+__maintainer__ = 'Roberto Rosario'
+__email__ = 'roberto.rosario.gonzalez@gmail.com'
+__status__ = 'Production'
+
+__version_info__ = {
+    'major': 0,
+    'minor': 10,
+    'micro': 0,
+    'releaselevel': 'hotfix',
+    'serial': 2
+}
 
 def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
 
+
 maintenance_menu = {'text': _(u'maintenance'), 'view': 'maintenance_menu', 'famfam': 'wrench', 'icon': 'wrench.png'}
 statistics = {'text': _(u'statistics'), 'view': 'statistics', 'famfam': 'table', 'icon': 'blackboard_sum.png'}
 diagnostics = {'text': _(u'diagnostics'), 'view': 'diagnostics', 'famfam': 'pill', 'icon': 'pill.png'}
-sentry = {'text': _(u'sentry'), 'url': '/sentry', 'famfam': 'bug', 'icon': 'bug.png', 'condition': is_superuser}
-admin_site = {'text': _(u'admin site'), 'url': '/admin', 'famfam': 'keyboard', 'icon': 'keyboard.png', 'condition': is_superuser}
-
-__version_info__ = {
-    'major': 0,
-    'minor': 8,
-    'micro': 3,
-    'releaselevel': 'final',
-    'serial': 0
-}
+sentry = {'text': _(u'sentry'), 'view': 'sentry', 'famfam': 'bug', 'icon': 'bug.png', 'condition': is_superuser}
+admin_site = {'text': _(u'admin site'), 'view': 'admin:index', 'famfam': 'keyboard', 'icon': 'keyboard.png', 'condition': is_superuser}
 
 if not DISABLE_HOME_VIEW:
     register_top_menu('home', link={'text': _(u'home'), 'view': 'home', 'famfam': 'house'}, position=0)
@@ -36,13 +44,14 @@ def get_version():
     """
     Return the formatted version information
     """
-    vers = ["%(major)i.%(minor)i" % __version_info__, ]
+    vers = ['%(major)i.%(minor)i' % __version_info__, ]
 
     if __version_info__['micro']:
-        vers.append(".%(micro)i" % __version_info__)
+        vers.append('.%(micro)i' % __version_info__)
     if __version_info__['releaselevel'] != 'final':
         vers.append('%(releaselevel)s%(serial)i' % __version_info__)
     return ''.join(vers)
+
 
 __version__ = get_version()
 

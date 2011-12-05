@@ -31,7 +31,7 @@ def get_language_backend():
     try:
         module = import_module(u'.'.join([u'ocr', u'lang', TESSERACT_LANGUAGE]))
     except ImportError:
-        sys.stderr.write(u'\nError: No OCR app language backend for language: %s\n\n' % TESSERACT_LANGUAGE)
+        sys.stderr.write(u'\nWarning: No OCR app language backend for language: %s\n\n' % TESSERACT_LANGUAGE)
         return None
     return module
 
@@ -57,9 +57,8 @@ def run_tesseract(input_filename, lang=None):
     ocr_output = os.extsep.join([filepath, u'txt'])
     command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(filepath)]
 
-    # TODO: Tesseract 3.0 segfaults
-    #if lang is not None:
-    #    command.extend([u'-l', lang])
+    if lang is not None:
+        command.extend([u'-l', lang])
 
     proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return_code = proc.wait()
@@ -67,7 +66,12 @@ def run_tesseract(input_filename, lang=None):
         error_text = proc.stderr.read()
         cleanup(filepath)
         cleanup(ocr_output)
-        raise TesseractError(error_text)
+        if lang:
+            # If tesseract gives an error with a language parameter
+            # re-run it with no parameter again
+            return run_tesseract(input_filename, lang=None)
+        else:
+            raise TesseractError(error_text)
 
     fd = codecs.open(ocr_output, 'r', 'utf-8')
     text = fd.read().strip()
@@ -84,7 +88,7 @@ def do_document_ocr(queue_document):
     parser, if the parser fails or if there is no parser registered for
     the document mimetype do a visual OCR by calling tesseract
     """
-    for document_page in queue_document.document.documentpage_set.all():
+    for document_page in queue_document.document.pages.all():
         try:
             # Try to extract text by means of a parser
             parse_document_page(document_page)

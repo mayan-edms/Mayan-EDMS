@@ -5,6 +5,8 @@ from navigation.api import register_links, \
 from permissions.api import register_permission, set_namespace_title
 from common.utils import encapsulate
 from project_setup.api import register_setup
+from documents.models import Document
+from documents.literals import PERMISSION_DOCUMENT_CREATE
 
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation, \
@@ -41,6 +43,8 @@ setup_source_transformation_delete = {'text': _(u'delete'), 'view': 'setup_sourc
 
 source_list = {'text': _(u'Document sources'), 'view': 'setup_web_form_list', 'famfam': 'page_add', 'children_url_regex': [r'sources/setup']}
 
+upload_version = {'text': _(u'upload new version'), 'view': 'upload_version', 'args': 'object.pk', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+
 register_links(StagingFile, [staging_file_delete])
 
 register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
@@ -60,6 +64,9 @@ register_links(StagingFolder, [setup_source_transformation_list, setup_source_ed
 
 register_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
 register_links(WatchFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+
+# Document version
+register_links(['document_version_list', 'upload_version', 'document_version_revert'], [upload_version], menu_name='sidebar')
 
 register_links(['setup_source_transformation_create', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
 

@@ -25,7 +25,7 @@ class ConverterClass(ConverterBase):
     def get_page_count(self, input_filepath):
         page_count = 1
 
-        mimetype, encoding = get_mimetype(input_filepath)
+        mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath, mimetype_only=True)
         if mimetype == 'application/pdf':
             # If file is a PDF open it with slate to determine the page
             # count
@@ -48,9 +48,12 @@ class ConverterClass(ConverterBase):
             
         return page_count
 
-    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT):
+    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT, **kwargs):
         tmpfile = None
-        mimetype, encoding = get_mimetype(input_filepath)
+        mimetype = kwargs.get('mimetype', None)
+        if not mimetype:
+            mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath, mimetype_only=True)
+
         if mimetype == 'application/pdf' and USE_GHOSTSCRIPT:
             # If file is a PDF open it with ghostscript and convert it to
             # TIFF
@@ -64,7 +67,7 @@ class ConverterClass(ConverterBase):
                 'gs', '-q', '-dQUIET', '-dSAFER', '-dBATCH',
                 '-dNOPAUSE', '-dNOPROMPT', 
                 first_page_tmpl, last_page_tmpl,
-                '-sDEVICE=jpeg', '-dJPEGQ=75',
+                '-sDEVICE=jpeg', '-dJPEGQ=95',
                 '-r150', output_file_tmpl,
                 input_file_tmpl,
                 '-c "60000000 setvmthreshold"',  # use 30MB

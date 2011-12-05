@@ -101,8 +101,8 @@ def role_create(request):
 def role_delete(request, role_id):
     check_permissions(request.user, [PERMISSION_ROLE_DELETE])
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     return delete_object(request, model=Role, object_id=role_id,
         template_name='generic_confirm.html',
@@ -121,8 +121,8 @@ def permission_grant(request):
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     items = []
     for item_properties in items_property_list:
@@ -138,7 +138,7 @@ def permission_grant(request):
     grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
     
     # Warning: trial and error black magic ahead
-    title_suffix = _(u' and ').join([_(u'%s to %s') % (', '.join(['"%s"' % unicode(ps) for ps in p]), unicode(r)) for r, p in grouped_items])
+    title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
     
     if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
         permissions_label = _(u'permission')
@@ -197,7 +197,7 @@ def permission_revoke(request):
     grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
     
     # Warning: trial and error black magic ahead
-    title_suffix = _(u' and ').join([_(u'%s from %s') % (', '.join(['"%s"' % unicode(ps) for ps in p]), unicode(r)) for r, p in grouped_items])
+    title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
     
     if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
         permissions_label = _(u'permission')

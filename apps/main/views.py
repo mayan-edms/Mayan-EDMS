@@ -24,14 +24,14 @@ def home(request):
 def maintenance_menu(request):
     user_tools = {}
     for namespace, values in tools.items():
+        user_tools[namespace] = {
+            'title': values['title']
+            }
+        user_tools[namespace].setdefault('links', [])
         for link in values['links']:
             try:
                 permissions = link.get('permissions', [])
                 check_permissions(request.user, permissions)
-                user_tools[namespace] = {
-                    'title': values['title']
-                    }
-                user_tools[namespace].setdefault('links', [])
                 user_tools[namespace]['links'].append(link)
             except PermissionDenied:
                 pass

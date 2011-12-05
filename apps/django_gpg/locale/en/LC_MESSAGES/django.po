@@ -1,0 +1,253 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-05 13:40-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: __init__.py:14
+msgid "Verify document signatures"
+msgstr ""
+
+#: __init__.py:15
+msgid "View keys"
+msgstr ""
+
+#: __init__.py:16
+msgid "Delete keys"
+msgstr ""
+
+#: __init__.py:17 __init__.py:32
+msgid "Query keyservers"
+msgstr ""
+
+#: __init__.py:18
+msgid "Import key from keyservers"
+msgstr ""
+
+#: __init__.py:21
+msgid "Signatures"
+msgstr ""
+
+#: __init__.py:29 views.py:65
+msgid "private keys"
+msgstr ""
+
+#: __init__.py:30 views.py:68
+msgid "public keys"
+msgstr ""
+
+#: __init__.py:31
+msgid "delete"
+msgstr ""
+
+#: __init__.py:33
+msgid "Import"
+msgstr ""
+
+#: __init__.py:36
+msgid "signatures"
+msgstr ""
+
+#: api.py:20
+msgid "Public"
+msgstr ""
+
+#: api.py:21
+msgid "Secret"
+msgstr ""
+
+#: api.py:29 api.py:34
+msgid "RSA"
+msgstr ""
+
+#: api.py:30
+msgid "DSA"
+msgstr ""
+
+#: api.py:35
+msgid "Elgamal"
+msgstr ""
+
+#: api.py:49
+msgid "Bad signature."
+msgstr ""
+
+#: api.py:53
+msgid "Document not signed or invalid signature."
+msgstr ""
+
+#: api.py:57
+msgid "Signature error."
+msgstr ""
+
+#: api.py:61
+msgid "Document is signed but no public key is available for verification."
+msgstr ""
+
+#: api.py:65
+msgid "Document is signed, and signature is good."
+msgstr ""
+
+#: api.py:69
+msgid "Document is signed with a valid signature."
+msgstr ""
+
+#: api.py:142
+msgid "unknown"
+msgstr ""
+
+#: forms.py:11
+msgid "Term"
+msgstr ""
+
+#: forms.py:12
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr ""
+
+#: views.py:43
+#, python-format
+msgid "Key: %s, imported successfully."
+msgstr ""
+
+#: views.py:46
+#, python-format
+msgid "Unable to import key id: %s"
+msgstr ""
+
+#: views.py:50
+msgid "Import key"
+msgstr ""
+
+#: views.py:51
+#, python-format
+msgid "Are you sure you wish to import key id: %s?"
+msgstr ""
+
+#: views.py:76
+msgid "Key ID"
+msgstr ""
+
+#: views.py:80
+msgid "Owner"
+msgstr ""
+
+#: views.py:100
+#, python-format
+msgid "Key: %s, deleted successfully."
+msgstr ""
+
+#: views.py:107
+msgid "Delete key"
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid ""
+"Are you sure you wish to delete key: %s?  If you try to delete a public key "
+"that is part of a public/private pair the private key will be deleted as "
+"well."
+msgstr ""
+
+#: views.py:127
+msgid "Query key server"
+msgstr ""
+
+#: views.py:140
+msgid "results"
+msgstr ""
+
+#: views.py:145
+msgid "ID"
+msgstr ""
+
+#: views.py:149
+msgid "type"
+msgstr ""
+
+#: views.py:153
+msgid "creation date"
+msgstr ""
+
+#: views.py:157
+msgid "disabled"
+msgstr ""
+
+#: views.py:161
+msgid "expiration date"
+msgstr ""
+
+#: views.py:165
+msgid "expired"
+msgstr ""
+
+#: views.py:169
+msgid "length"
+msgstr ""
+
+#: views.py:173
+msgid "revoked"
+msgstr ""
+
+#: views.py:178
+msgid "Identifies"
+msgstr ""
+
+#: views.py:205
+#, python-format
+msgid "Signature status: %(widget)s %(text)s"
+msgstr ""
+
+#: views.py:212
+msgid "embedded"
+msgstr ""
+
+#: views.py:214
+msgid "detached"
+msgstr ""
+
+#: views.py:219
+#, python-format
+msgid "Signature ID: %s"
+msgstr ""
+
+#: views.py:220
+#, python-format
+msgid "Signature type: %s"
+msgstr ""
+
+#: views.py:221
+#, python-format
+msgid "Key ID: %s"
+msgstr ""
+
+#: views.py:222
+#, python-format
+msgid "Timestamp: %s"
+msgstr ""
+
+#: views.py:223
+#, python-format
+msgid "Signee: %s"
+msgstr ""
+
+#: views.py:228
+#, python-format
+msgid "signature properties for: %s"
+msgstr ""
+
+#: conf/settings.py:13
+msgid "List of keyservers to be queried for unknown keys."
+msgstr ""

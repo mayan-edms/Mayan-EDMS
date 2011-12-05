@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('ocr.views',
     url(r'^document/(?P<document_id>\d+)/submit/$', 'submit_document', (), 'submit_document'),
+    url(r'^document/multiple/submit/$', 'submit_document_multiple', (), 'submit_document_multiple'),
     url(r'^queue/document/list/$', 'queue_document_list', (), 'queue_document_list'),
     url(r'^queue/document/(?P<queue_document_id>\d+)/delete/$', 'queue_document_delete', (), 'queue_document_delete'),
     url(r'^queue/document/multiple/delete/$', 'queue_document_multiple_delete', (), 'queue_document_multiple_delete'),

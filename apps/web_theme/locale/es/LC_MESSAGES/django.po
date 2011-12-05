@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-29 18:49-0400\n"
-"PO-Revision-Date: 2011-07-23 02:21\n"
-"Last-Translator: Administrador Local <rosario_r@jp.pr.gov>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-03 21:44+0000\n"
+"Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
+"mayan-edms/team/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Translated-Using: django-rosetta 0.5.6\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: conf/settings.py:10
 msgid ""
@@ -33,19 +32,19 @@ msgstr ""
 msgid "Display extra information in the login screen."
 msgstr "Mostrar información adicional en la pantalla de inicio de sesión."
 
-#: templates/web_theme_base.html:94
+#: templates/web_theme_base.html:101
 msgid "dismiss all notifications"
 msgstr "cerrar todas las notificaciones"
 
-#: templates/web_theme_base.html:94
+#: templates/web_theme_base.html:101
 msgid "close all"
 msgstr "cerrar todos"
 
-#: templates/web_theme_base.html:95
+#: templates/web_theme_base.html:102
 msgid "dismiss this notification"
 msgstr "cerrar esta notificación"
 
-#: templates/web_theme_base.html:95
+#: templates/web_theme_base.html:102
 msgid "close"
 msgstr "cerrar"
 

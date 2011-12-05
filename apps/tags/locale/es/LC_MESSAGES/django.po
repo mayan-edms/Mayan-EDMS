@@ -1,20 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-09-29 18:49-0400\n"
-"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-04 01:05+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
+"mayan-edms/team/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:13
@@ -41,7 +43,7 @@ msgstr "Editar etiquetas globales"
 msgid "View a document's tags"
 msgstr "Ver etiquetas de un documento"
 
-#: __init__.py:20 widgets.py:15
+#: __init__.py:20
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -51,7 +53,7 @@ msgstr "lista de etiquetas"
 
 #: __init__.py:29
 msgid "create new tag"
-msgstr ""
+msgstr "crear nueva etiqueta"
 
 #: __init__.py:30
 msgid "attach tag"
@@ -155,15 +157,15 @@ msgstr "propiedades de etiquetas"
 
 #: views.py:33
 msgid "Tag already exists."
-msgstr ""
+msgstr "Etiqueta ya existe."
 
 #: views.py:40
 msgid "Tag created succesfully."
-msgstr ""
+msgstr "Etiqueta creada exitosamente."
 
 #: views.py:46
 msgid "create tag"
-msgstr ""
+msgstr "crear etiquetas"
 
 #: views.py:73 views.py:112
 msgid "Must choose either a new tag or an existing one."
@@ -192,11 +194,11 @@ msgstr "Etiqueta \"%s\" adjuntada exitosamente."
 #: views.py:133
 #, python-format
 msgid "attach tag to: %s"
-msgstr ""
+msgstr "adjuntar etiqueta a: %s"
 
 #: views.py:149
 msgid "tagged items"
-msgstr ""
+msgstr "artículos etiquetados"
 
 #: views.py:166 views.py:280
 msgid "Must provide at least one tag."
@@ -253,15 +255,13 @@ msgstr "Etiqueta \"%s\" removida exitosamente."
 #: views.py:308
 #, python-format
 msgid "Are you sure you wish to remove the tag: %s?"
-msgstr ""
+msgstr "¿Está seguro que desea eliminar la etiqueta: %s?"
 
 #: views.py:310
 #, python-format
 msgid "Are you sure you wish to remove the tags: %s?"
-msgstr ""
+msgstr "¿Está seguro que desea eliminar de las etiquetas: %s?"
 
 #: templatetags/tags_tags.py:17
 msgid "Add tag to document"
 msgstr "Agregar etiqueta al documento"
-
-

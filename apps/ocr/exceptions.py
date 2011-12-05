@@ -11,3 +11,7 @@ class UnpaperError(Exception):
     Raised by unpaper
     """
     pass
+
+
+class ReQueueError(Exception):
+    pass

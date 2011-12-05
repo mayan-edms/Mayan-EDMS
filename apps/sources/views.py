@@ -8,7 +8,7 @@ from django.utils.translation import ugettext
 from django.utils.safestring import mark_safe
 
 from documents.literals import PERMISSION_DOCUMENT_CREATE
-from documents.models import DocumentType
+from documents.models import DocumentType, Document
 from documents.conf.settings import THUMBNAIL_SIZE
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.api import check_permissions
@@ -35,30 +35,34 @@ def return_function(obj):
     return lambda context: context['source'].source_type == obj.source_type and context['source'].pk == obj.pk
 
 
-def get_active_tab_links():
-    tab_links = []
+def get_tab_link_for_source(source, document=None):
+    if document:
+        view = u'upload_version'
+        args = [document.pk, u'"%s"' % source.source_type, source.pk]
+    else:
+        view = u'upload_interactive'
+        args = [u'"%s"' % source.source_type, source.pk]
+        
+    return {
+        'text': source.title,
+        'view': view,
+        'args': args,
+        'famfam': source.icon,
+        'keep_query': True,
+        'conditional_highlight': return_function(source),
+    }  
 
+
+def get_active_tab_links(document=None):
+    tab_links = []
+    
     web_forms = WebForm.objects.filter(enabled=True)
     for web_form in web_forms:
-        tab_links.append({
-            'text': web_form.title,
-            'view': 'upload_interactive',
-            'args': [u'"%s"' % web_form.source_type, web_form.pk],
-            'famfam': web_form.icon,
-            'keep_query': True,
-            'conditional_highlight': return_function(web_form),
-        })
+        tab_links.append(get_tab_link_for_source(web_form, document))
 
     staging_folders = StagingFolder.objects.filter(enabled=True)
     for staging_folder in staging_folders:
-        tab_links.append({
-            'text': staging_folder.title,
-            'view': 'upload_interactive',
-            'args': [u'"%s"' % staging_folder.source_type, staging_folder.pk],
-            'famfam': staging_folder.icon,
-            'keep_query': True,
-            'conditional_highlight': return_function(staging_folder),
-        })
+        tab_links.append(get_tab_link_for_source(staging_folder, document))        
 
     return {
         'tab_links': tab_links,
@@ -66,15 +70,19 @@ def get_active_tab_links():
         SOURCE_CHOICE_STAGING: staging_folders
     }
 
-
-def upload_interactive(request, source_type=None, source_id=None):
+def upload_interactive(request, source_type=None, source_id=None, document_pk=None):
     check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
 
     subtemplates_list = []
 
-    context = {}
+    if document_pk:
+        document = get_object_or_404(Document, pk=document_pk)
+        results = get_active_tab_links(document)
+    else:
+        document = None
+        results = get_active_tab_links()
 
-    results = get_active_tab_links()
+    context = {}
 
     if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
         source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'here')))
@@ -113,43 +121,59 @@ def upload_interactive(request, source_type=None, source_id=None):
             if request.method == 'POST':
                 form = WebFormForm(request.POST, request.FILES,
                     document_type=document_type,
-                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
-                    source=web_form
+                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
+                    source=web_form,
+                    instance=document
                 )
                 if form.is_valid():
                     try:
-                        if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                            expand = form.cleaned_data['expand']
+                        if document:
+                            expand = False
                         else:
-                            if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                                expand = True
+                            if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                                expand = form.cleaned_data.get('expand')
                             else:
-                                expand = False
+                                if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                                    expand = True
+                                else:
+                                    expand = False
 
                         new_filename = get_form_filename(form)
+                            
                         web_form.upload_file(request.FILES['file'],
-                            new_filename, document_type=document_type,
+                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
+                            document_type=document_type,
                             expand=expand,
                             metadata_dict_list=decode_metadata_from_url(request.GET),
-                            user=request.user
+                            user=request.user,
+                            document=document,
+                            new_version_data=form.cleaned_data.get('new_version_data')                         
                         )
-                        messages.success(request, _(u'Document uploaded successfully.'))
+                        if document:
+                            messages.success(request, _(u'Document version uploaded successfully.'))
+                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                        else:
+                            messages.success(request, _(u'Document uploaded successfully.'))
+                            return HttpResponseRedirect(request.get_full_path())
                     except Exception, e:
-                        messages.error(request, e)
-
-                    return HttpResponseRedirect(request.get_full_path())
+                        messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
                 form = WebFormForm(
-                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
+                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
                     document_type=document_type,
-                    source=web_form
+                    source=web_form,
+                    instance=document
                 )
-
+            if document:
+                title = _(u'upload a new version from source: %s') % web_form.title
+            else:
+                title = _(u'upload a local document from source: %s') % web_form.title
+                
             subtemplates_list.append({
                 'name': 'generic_form_subtemplate.html',
                 'context': {
                     'form': form,
-                    'title': _(u'upload a local document from source: %s') % web_form.title,
+                    'title': title,
                 },
             })
         elif source_type == SOURCE_CHOICE_STAGING:
@@ -159,41 +183,56 @@ def upload_interactive(request, source_type=None, source_id=None):
             if request.method == 'POST':
                 form = StagingDocumentForm(request.POST, request.FILES,
                     cls=StagingFile, document_type=document_type,
-                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
-                    source=staging_folder
+                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
+                    source=staging_folder,
+                    instance=document
                 )
                 if form.is_valid():
                     try:
                         staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
-                        if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                            expand = form.cleaned_data['expand']
+                        if document:
+                            expand = False
                         else:
-                            if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                                expand = True
+                            if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                                expand = form.cleaned_dataget('expand')
                             else:
-                                expand = False
+                                if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                                    expand = True
+                                else:
+                                    expand = False
+
                         new_filename = get_form_filename(form)
+                            
                         staging_folder.upload_file(staging_file.upload(),
-                            new_filename, document_type=document_type,
+                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
+                            document_type=document_type,
                             expand=expand,
                             metadata_dict_list=decode_metadata_from_url(request.GET),
-                            user=request.user
+                            user=request.user,
+                            document=document,
+                            new_version_data=form.cleaned_data.get('new_version_data')                         
                         )
-                        messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
+                        if document:
+                            messages.success(request, _(u'Document version from staging file: %s, uploaded successfully.') % staging_file.filename)
+                        else:
+                            messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
                             transformations, errors = staging_folder.get_transformation_list()
                             staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
                             messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
+                        if document:
+                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                        else:
+                            return HttpResponseRedirect(request.get_full_path())
                     except Exception, e:
-                        messages.error(request, e)
-
-                    return HttpResponseRedirect(request.get_full_path())
+                        messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
                 form = StagingDocumentForm(cls=StagingFile,
                     document_type=document_type,
-                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
-                    source=staging_folder
+                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
+                    source=staging_folder,
+                    instance=document
                 )
             try:
                 staging_filelist = StagingFile.get_all()
@@ -201,12 +240,17 @@ def upload_interactive(request, source_type=None, source_id=None):
                 messages.error(request, e)
                 staging_filelist = []
             finally:
+                if document:
+                    title = _(u'upload a new version from staging source: %s') % staging_folder.title
+                else:
+                    title = _(u'upload a document from staging source: %s') % staging_folder.title
+                                
                 subtemplates_list = [
                     {
                         'name': 'generic_form_subtemplate.html',
                         'context': {
                             'form': form,
-                            'title': _(u'upload a document from staging source: %s') % staging_folder.title,
+                            'title': title,
                         }
                     },
                     {
@@ -219,20 +263,40 @@ def upload_interactive(request, source_type=None, source_id=None):
                     },
                 ] 
 
+    if document:
+        context['object'] = document
+
     context.update({
         'document_type_id': document_type_id,
         'subtemplates_list': subtemplates_list,
-        'sidebar_subtemplates_list': [
-            {
-                'name': 'generic_subtemplate.html',
-                'context': {
-                    'title': _(u'Current metadata'),
-                    'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
-                    'side_bar': True,
-                }
-            }],
-        'temporary_navigation_links': {'form_header': {'upload_interactive': {'links': results['tab_links']}}},
+        'temporary_navigation_links': {
+            'form_header': {
+                'upload_version': {
+                    'links': results['tab_links']
+                },
+                'upload_interactive': {
+                    'links': results['tab_links']
+                }                
+            }
+        },
     })
+    
+    if not document:
+        context.update(
+            {
+                'sidebar_subtemplates_list': [
+                    {
+                        'name': 'generic_subtemplate.html',
+                        'context': {
+                            'title': _(u'Current metadata'),
+                            'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
+                            'side_bar': True,
+                        }
+                    }
+                ],
+            }
+        )
+        
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
 

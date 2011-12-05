@@ -1,0 +1,213 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-03 22:42+0000\n"
+"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
+"ru/)\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: __init__.py:12
+msgid "View document indexes"
+msgstr "Просмотр индексов документа"
+
+#: __init__.py:13
+msgid "Rebuild document indexes"
+msgstr "Восстановление индексов документа"
+
+#: __init__.py:15
+msgid "Indexing"
+msgstr "Индексирование"
+
+#: __init__.py:19
+msgid "index list"
+msgstr "список индекса"
+
+#: __init__.py:20
+msgid "go up one level"
+msgstr "перейти на уровень выше"
+
+#: __init__.py:21 __init__.py:23 models.py:26
+msgid "indexes"
+msgstr "индексы"
+
+#: __init__.py:25
+msgid "rebuild indexes"
+msgstr "восстановление индексов"
+
+#: __init__.py:25
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "Удаляет и создается с нуля, все индексы документа."
+
+#: __init__.py:27
+msgid "Indexes"
+msgstr "Индексы"
+
+#: api.py:83
+msgid "root"
+msgstr "корень"
+
+#: api.py:139
+#, python-format
+msgid "Maximum suffix (%s) count reached."
+msgstr "Достигнуто максимальное (%s) число суффиксов "
+
+#: api.py:175
+#, python-format
+msgid ""
+"Error in document indexing update expression: %(expression)s; %(exception)s"
+msgstr ""
+"Ошибка в выражении обновления индексов документа: %(expression)s; "
+"%(exception)s"
+
+#: api.py:178
+#, python-format
+msgid ""
+"Error updating document index, expression: %(expression)s; %(exception)s"
+msgstr ""
+"Ошибка при обновлении индекса документа, выражение: %(expression)s; "
+"%(exception)s"
+
+#: api.py:209
+#, python-format
+msgid "Unable to delete document indexing node; %s"
+msgstr "Не удается удалить узел индексирования документов; %s."
+
+#: filesystem.py:34
+#, python-format
+msgid "Unable to create indexing directory; %s"
+msgstr "Не удается создать индексации каталога; %s."
+
+#: filesystem.py:52
+#, python-format
+msgid ""
+"Unable to create symbolic link, file exists and could not be deleted: "
+"%(filepath)s; %(exc)s"
+msgstr ""
+"Невозможно создать символическую ссылку, файл существует и не может быть "
+"удален: %(filepath)s; %(exc)s"
+
+#: filesystem.py:54
+#, python-format
+msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
+msgstr "Невозможно создать символическую ссылку: %(filepath)s; %(exc)s"
+
+#: filesystem.py:71
+#, python-format
+msgid "Unable to delete document symbolic link; %s"
+msgstr "Не удается удалить символическую ссылку документа;%s."
+
+#: filesystem.py:83
+#, python-format
+msgid "Unable to delete indexing directory; %s"
+msgstr "Не удается удалить каталог индексации; %s."
+
+#: models.py:11
+#, python-format
+msgid "Available functions: %s"
+msgstr "Доступные функции: %s."
+
+#: models.py:16
+msgid "indexing expression"
+msgstr "выражение индексации "
+
+#: models.py:16
+msgid "Enter a python string expression to be evaluated."
+msgstr "Введите строковое выражение питона для вычисления."
+
+#: models.py:18
+msgid "enabled"
+msgstr "разрешено"
+
+#: models.py:19
+msgid "link documents"
+msgstr "связать документы"
+
+#: models.py:25 models.py:31 views.py:56
+msgid "index"
+msgstr "индекс"
+
+#: models.py:32
+msgid "value"
+msgstr "значение"
+
+#: models.py:33
+msgid "documents"
+msgstr "документы"
+
+#: models.py:46 models.py:51
+msgid "index instance"
+msgstr "экземпляр индекса"
+
+#: models.py:47
+msgid "indexes instances"
+msgstr "экземпляры индекса"
+
+#: models.py:52
+msgid "document"
+msgstr "документ"
+
+#: models.py:59
+msgid "document rename count"
+msgstr "счетчик переименования документа"
+
+#: models.py:60
+msgid "documents rename count"
+msgstr "счетчик переименования документов"
+
+#: utils.py:19
+msgid "document indexes"
+msgstr "индексы документов"
+
+#: views.py:38
+#, python-format
+msgid "contents for index: %s"
+msgstr "содержания для индекса: %s."
+
+#: views.py:60
+msgid "items"
+msgstr "членов"
+
+#: views.py:82
+msgid "Are you sure you wish to rebuild all indexes?"
+msgstr "Вы уверены, что хотите перестроить все индексы?"
+
+#: views.py:83
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+"В больших базах данных эта операция может занять некоторое время для "
+"выполнения."
+
+#: views.py:89
+msgid "Index rebuild completed successfully."
+msgstr "восстановление индекса  успешно завершено."
+
+#: views.py:94
+#, python-format
+msgid "Index rebuild error: %s"
+msgstr "Индекс восстановить ошибка: %s"
+
+#: views.py:109
+#, python-format
+msgid "indexes containing: %s"
+msgstr "индексы, содержащие: %s"
+
+#: templates/indexing_help.html:3
+msgid "What are indexes?"
+msgstr "что за индексы?"
+
+#: templates/indexing_help.html:4
+msgid "Indexes group documents into a tree like hierarchical structure."
+msgstr "Индексы группы документов в древовидной иерархической структуре."

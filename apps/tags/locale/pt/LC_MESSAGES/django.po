@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+#   <dev.emerson@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"PO-Revision-Date: 2011-11-02 01:45+0000\n"
+"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
+"team/pt/)\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:13
+msgid "Create new tags"
+msgstr "Criar novas etiquetas"
+
+#: __init__.py:14
+msgid "Attach exising tags"
+msgstr "Anexar  etiquetas existentes"
+
+#: __init__.py:15
+msgid "Remove tags from documents"
+msgstr "Remover etiquetas de documentos"
+
+#: __init__.py:16
+msgid "Delete global tags"
+msgstr "Excluir etiquetas globais"
+
+#: __init__.py:17
+msgid "Edit global tags"
+msgstr "Editar etiquetas globais"
+
+#: __init__.py:18
+msgid "View a document's tags"
+msgstr "Ver etiquetas de um documento"
+
+#: __init__.py:20
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: __init__.py:28
+msgid "tag list"
+msgstr "lista de etiquetas"
+
+#: __init__.py:29
+msgid "create new tag"
+msgstr "criar nova etiqueta"
+
+#: __init__.py:30
+msgid "attach tag"
+msgstr "anexar etiqueta"
+
+#: __init__.py:31 __init__.py:32
+msgid "remove"
+msgstr "remover"
+
+#: __init__.py:33 __init__.py:58 utils.py:14 views.py:144
+msgid "tags"
+msgstr "Etiquetas"
+
+#: __init__.py:34 __init__.py:37
+msgid "delete"
+msgstr "excluir"
+
+#: __init__.py:35
+msgid "edit"
+msgstr "editar"
+
+#: __init__.py:36
+msgid "tagged documents"
+msgstr "documentos etiquetados"
+
+#: __init__.py:41 models.py:46
+msgid "color"
+msgstr "cor"
+
+#: __init__.py:45
+msgid "color name"
+msgstr "nome da cor"
+
+#: forms.py:14
+msgid "New tag"
+msgstr "Nova etiqueta"
+
+#: forms.py:15 forms.py:24
+msgid "Color"
+msgstr "Cor"
+
+#: forms.py:16
+msgid "Existing tags"
+msgstr "Etiquetas existentes"
+
+#: forms.py:23
+msgid "Name"
+msgstr "Nome"
+
+#: models.py:18
+msgid "Blue"
+msgstr "Azul"
+
+#: models.py:19
+msgid "Cyan"
+msgstr "Ciano"
+
+#: models.py:20
+msgid "Coral"
+msgstr "Coral"
+
+#: models.py:21
+msgid "Green-Yellow"
+msgstr "Verde-Amarelo"
+
+#: models.py:22
+msgid "Khaki"
+msgstr "Caqui"
+
+#: models.py:23
+msgid "LightGrey"
+msgstr "Cinza Claro"
+
+#: models.py:24
+msgid "Magenta"
+msgstr "Magenta"
+
+#: models.py:25
+msgid "Red"
+msgstr "Vermelho"
+
+#: models.py:26
+msgid "Orange"
+msgstr "Laranja"
+
+#: models.py:27
+msgid "Yellow"
+msgstr "Amarelo"
+
+#: models.py:45 views.py:185 views.py:233 views.py:248
+msgid "tag"
+msgstr "etiqueta"
+
+#: models.py:49
+msgid "tag properties"
+msgstr "propriedades de etiqueta"
+
+#: models.py:50
+msgid "tags properties"
+msgstr "propriedades de etiquetas"
+
+#: views.py:33
+msgid "Tag already exists."
+msgstr "Etiqueta já existe."
+
+#: views.py:40
+msgid "Tag created succesfully."
+msgstr "Etiqueta criada com sucesso."
+
+#: views.py:46
+msgid "create tag"
+msgstr "criar etiqueta"
+
+#: views.py:73 views.py:112
+msgid "Must choose either a new tag or an existing one."
+msgstr "Deve optar por uma nova etiqueta ou uma já existente."
+
+#: views.py:77 views.py:116
+#, python-format
+msgid "Document is already tagged as \"%s\""
+msgstr "Documento já está marcado como \"%s\""
+
+#: views.py:86
+#, python-format
+msgid "Tag \"%s\" added successfully."
+msgstr "Etiqueta \"%s\" adicionada com sucesso."
+
+#: views.py:124
+#, python-format
+msgid "Tag \"%s\" added and attached successfully."
+msgstr "Etiqueta \"%s\", acrescentada e anexada com sucesso."
+
+#: views.py:126
+#, python-format
+msgid "Tag \"%s\" attached successfully."
+msgstr "Etiqueta \"%s\" anexada com sucesso."
+
+#: views.py:133
+#, python-format
+msgid "attach tag to: %s"
+msgstr "anexar etiqueta a: %s"
+
+#: views.py:149
+msgid "tagged items"
+msgstr "itens marcados"
+
+#: views.py:166 views.py:280
+msgid "Must provide at least one tag."
+msgstr "Deve fornecer pelo menos uma etiqueta."
+
+#: views.py:176
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "Etiqueta \"%s\" removida com sucesso."
+
+#: views.py:178 views.py:294
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "Erro ao excluir etiqueta \" %(tag)s \": %(error)s "
+
+#: views.py:193
+#, python-format
+msgid "Are you sure you wish to delete the tag: %s?"
+msgstr "Tem certeza de que deseja excluir a etiqueta: %s?"
+
+#: views.py:194 views.py:197
+msgid "Will be removed from all documents."
+msgstr "Será removido de todos os documentos."
+
+#: views.py:196
+#, python-format
+msgid "Are you sure you wish to delete the tags: %s?"
+msgstr "Você tem certeza que deseja deletar as etiquetas: %s?"
+
+#: views.py:221
+msgid "Tag updated succesfully."
+msgstr "Etiqueta atualizada com sucesso."
+
+#: views.py:230
+#, python-format
+msgid "edit tag: %s"
+msgstr "editar etiqueta: %s"
+
+#: views.py:245
+#, python-format
+msgid "documents with the tag \"%s\""
+msgstr "documentos com a etiqueta \"%s\""
+
+#: views.py:258
+#, python-format
+msgid "tags for: %s"
+msgstr "etiquetas para: %s"
+
+#: views.py:292
+#, python-format
+msgid "Tag \"%s\" removed successfully."
+msgstr "Etiqueta \"%s\" removida com sucesso."
+
+#: views.py:308
+#, python-format
+msgid "Are you sure you wish to remove the tag: %s?"
+msgstr "Tem certeza de que deseja remover a etiqueta: %s?"
+
+#: views.py:310
+#, python-format
+msgid "Are you sure you wish to remove the tags: %s?"
+msgstr "Tem certeza de que deseja remover as etiquetas: %s?"
+
+#: templatetags/tags_tags.py:17
+msgid "Add tag to document"
+msgstr "Adicionar etiquetas para o documento"

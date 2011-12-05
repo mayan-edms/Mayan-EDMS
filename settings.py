@@ -52,6 +52,7 @@ LANGUAGES = (
     ('en', ugettext('English')),
     ('es', ugettext('Spanish')),
     ('pt', ugettext('Portuguese')),
+    ('ru', ugettext('Russian')),
 )
 
 SITE_ID = 1
@@ -80,7 +81,7 @@ STATIC_URL = '/%s-static/' % PROJECT_NAME
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
@@ -116,7 +117,6 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'lock_manager',
     'web_theme',
     'common',
-    'metadata',
+    'django_gpg',
     'pagination',
     'dynamic_search',
     'filetransfers',
@@ -152,8 +152,9 @@ INSTALLED_APPS = (
     'tags',
     'document_comments',
     'user_management',
+    'metadata',
     'documents',
-    'grouping',
+    'linking',
     'mptt',
     'document_indexing',
     'document_acls',
@@ -165,6 +166,9 @@ INSTALLED_APPS = (
     'history',
     'main',
     'compressor',
+    'djangorestframework',
+    'rest_api',
+    'south',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -286,8 +290,6 @@ CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 CELERY_DISABLE_RATE_LIMITS = True
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
-#--------- Grappelli ----------------
-GRAPPELLI_ADMIN_TITLE = PROJECT_TITLE
 #--------- Django -------------------
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'

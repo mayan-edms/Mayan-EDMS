@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-29 18:49-0400\n"
+"POT-Creation-Date: 2011-11-22 11:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Document sources"
 msgstr ""
 
-#: __init__.py:69 widgets.py:33
+#: __init__.py:69 widgets.py:39
 msgid "thumbnail"
 msgstr ""
 
@@ -279,17 +279,17 @@ msgstr ""
 msgid "document source transformations"
 msgstr ""
 
-#: staging.py:40
+#: staging.py:42
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
 
-#: staging.py:125
+#: staging.py:127
 #, python-format
 msgid "Unable to upload staging file: %s"
 msgstr ""
 
-#: staging.py:135
+#: staging.py:137
 #, python-format
 msgid "Unable to delete staging file: %s"
 msgstr ""

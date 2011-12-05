@@ -1,4 +1,5 @@
 from ast import literal_eval
+from datetime import datetime
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -14,8 +15,9 @@ from sources.managers import SourceTransformationManager
 
 from ocr.literals import DOCUMENTQUEUE_STATE_STOPPED, \
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING, \
-    QUEUEDOCUMENT_STATE_CHOICES
+    QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PROCESSING
 from ocr.managers import DocumentQueueManager
+from ocr.exceptions import ReQueueError
 
 
 class DocumentQueue(models.Model):
@@ -55,6 +57,17 @@ class QueueDocument(models.Model):
 
     def get_transformation_list(self):
         return QueueTransformation.transformations.get_for_object_as_list(self)
+
+    def requeue(self):
+        if self.state == QUEUEDOCUMENT_STATE_PROCESSING:
+            raise ReQueueError
+        else:
+            self.datetime_submitted = datetime.now()
+            self.state = QUEUEDOCUMENT_STATE_PENDING
+            self.delay = False
+            self.result = None
+            self.node_name = None
+            self.save()
 
     def __unicode__(self):
         try:

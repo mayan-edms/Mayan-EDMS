@@ -9,11 +9,13 @@ from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
-from common.widgets import TextAreaDiv
+from common.widgets import TextAreaDiv 
 
-from documents.models import Document, DocumentType, \
-    DocumentPage, DocumentPageTransformation, DocumentTypeFilename
-
+from documents.models import (Document, DocumentType,
+    DocumentPage, DocumentPageTransformation, DocumentTypeFilename,
+    DocumentVersion)
+from documents.widgets import document_html_widget
+from documents.literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES)
 
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
@@ -32,22 +34,10 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         rotation = final_attrs.get('rotation', 0)
         if value:
             output = []
-            output.append('''
-                <div class="full-height scrollable" style="overflow: auto;">
-                    <div class="tc">
-                        <img class="lazy-load" data-href="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
-                        <noscript>
-                            <img src="%(img)s?page=%(page)d&zoom=%(zoom)d&rotation=%(rotation)d" alt="%(string)s" />
-                        </noscript>
-                    </div>
-                </div>''' % {
-                'img': reverse('document_display', args=[value.document.id]),
-                'page': value.page_number,
-                'zoom': zoom,
-                'rotation': rotation,
-                'static_url': settings.STATIC_URL,
-                'string': ugettext(u'page image')
-                })
+            output.append('<div class="full-height scrollable" style="overflow: auto;">')
+
+            output.append(document_html_widget(value.document, view='document_display', page=value.page_number, zoom=zoom, rotation=rotation))
+            output.append('</div>')
             return mark_safe(u''.join(output))
         else:
             return u''
@@ -112,36 +102,27 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output = []
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
-        for page in value.documentpage_set.all():
+        for page in value.pages.all():
+            
+            output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
+            output.append(u'<div class="tc">%(page_string)s %(page)s</div>' % {'page_string': ugettext(u'Page'), 'page': page.page_number})
             output.append(
-                u'''<div style="display: inline-block; margin: 5px 10px 10px 10px;">
-                        <div class="tc">%(page_string)s %(page)s</div>
-                        <div class="tc" style="border: 1px solid black; margin: 5px 0px 5px 0px;">
-                            <a rel="page_gallery" class="fancybox-noscaling" href="%(view_url)s?page=%(page)d">
-                                <img class="lazy-load" data-href="%(img)s?page=%(page)d" src="%(static_url)s/images/ajax-loader.gif" alt="%(string)s" />
-                                <noscript>
-                                    <img src="%(img)s?page=%(page)d" alt="%(string)s" />
-                                </noscript>
-                            </a>
-                        </div>
-                        <div class="tc">
-                            <a class="fancybox-iframe" href="%(url)s"><span class="famfam active famfam-page_white_go"></span>%(details_string)s</a>
-                        </div>
-                    </div>''' % {
-                    'url': reverse('document_page_view', args=[page.pk]),
-                    'img': reverse('document_preview_multipage', args=[value.pk]),
-                    'page': page.page_number,
-                    'view_url': reverse('document_display', args=[page.document.pk]),
-                    'page_string': ugettext(u'Page'),
-                    'details_string': ugettext(u'Details'),
-                    'static_url': settings.STATIC_URL,
-                    'string': _(u'document page')
-                })
+                document_html_widget(
+                    page.document,
+                    view='document_preview_multipage',
+                    click_view='document_display',
+                    page=page.page_number,
+                    gallery_name='document_pages',
+                    fancybox_class='fancybox-noscaling',
+                )
+            )
+            output.append(u'<div class="tc">')
+            output.append(u'<a class="fancybox-iframe" href="%s"><span class="famfam active famfam-page_white_go"></span>%s</a>' % (reverse('document_page_view', args=[page.pk]), ugettext(u'Details')))
+            output.append(u'</div>')
+            output.append(u'</div>')
 
         output.append(u'</div>')
-        output.append(
-            u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
-             ugettext(u'Click on the image for full size preview'))
+        output.append(u'<br /><span class="famfam active famfam-magnifier"></span>%s' % ugettext(u'Click on the image for full size preview'))
 
         return mark_safe(u''.join(output))
 
@@ -151,7 +132,7 @@ class DocumentPreviewForm(forms.Form):
         document = kwargs.pop('document', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = document
-        self.fields['preview'].label = _(u'Document pages (%s)') % document.documentpage_set.count()
+        self.fields['preview'].label = _(u'Document pages (%s)') % document.pages.count()
 
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
@@ -175,6 +156,13 @@ class DocumentForm(forms.ModelForm):
             # To allow merging with DocumentForm_edit
             self.fields['document_type'].widget = forms.HiddenInput()
 
+        if instance:
+            self.fields['use_file_name'] = forms.BooleanField(
+                label=_(u'Use the new version filename as the document filename'),
+                initial=False,
+                required=False,
+            )
+
         # Instance's document_type overrides the passed document_type
         if instance:
             if hasattr(instance, 'document_type'):
@@ -188,10 +176,50 @@ class DocumentForm(forms.ModelForm):
                     required=False,
                     label=_(u'Quick document rename'))
 
+        if instance:
+            self.version_fields(instance)
+                    
+    def version_fields(self, document):
+        self.fields['version_update'] = forms.ChoiceField(
+            label=_(u'Version update'),
+            choices=DocumentVersion.get_version_update_choices(document.latest_version)
+        )
+        
+        self.fields['release_level'] = forms.ChoiceField(
+            label=_(u'Release level'),
+            choices=RELEASE_LEVEL_CHOICES,
+            initial=RELEASE_LEVEL_FINAL,
+        )
+        
+        self.fields['serial'] = forms.IntegerField(
+            label=_(u'Release level serial'),
+            initial=0,
+            widget=forms.widgets.TextInput(
+                attrs = {'style': 'width: auto;'}
+            ),
+        )
+
+        self.fields['comment'] = forms.CharField(
+            label=_(u'Comment'),
+            required=False,
+            widget=forms.widgets.Textarea(attrs={'rows': 4}),
+        )
+
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
     )
+       
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        cleaned_data['new_version_data'] = {
+            'comment': self.cleaned_data.get('comment'),
+            'version_update': self.cleaned_data.get('version_update'),
+            'release_level': self.cleaned_data.get('release_level'),
+            'serial': self.cleaned_data.get('serial'),
+        }
 
+        # Always return the full collection of cleaned data.
+        return cleaned_data        
 
 class DocumentForm_edit(DocumentForm):
     """
@@ -200,6 +228,13 @@ class DocumentForm_edit(DocumentForm):
     class Meta:
         model = Document
         exclude = ('file', 'document_type', 'tags')
+        
+    def __init__(self, *args, **kwargs):
+        super(DocumentForm_edit, self).__init__(*args, **kwargs)
+        self.fields.pop('serial')
+        self.fields.pop('release_level')
+        self.fields.pop('version_update')
+        self.fields.pop('comment')
 
 
 class DocumentPropertiesForm(DetailForm):
@@ -221,7 +256,7 @@ class DocumentContentForm(forms.Form):
         super(DocumentContentForm, self).__init__(*args, **kwargs)
         content = []
         self.fields['contents'].initial = u''
-        for page in self.document.documentpage_set.all():
+        for page in self.document.pages.all():
             if page.content:
                 content.append(page.content)
                 content.append(u'\n\n\n - Page %s - \n\n\n' % page.page_number)
@@ -243,10 +278,10 @@ class DocumentTypeSelectForm(forms.Form):
 
 
 class PrintForm(forms.Form):
-    page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
-    custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
-    custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
-    page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
+    #page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
+    #custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
+    #custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
+    #page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
 
