@@ -10,6 +10,6 @@ register_settings(
     namespace=u'django_gpg',
     module=u'django_gpg.conf.settings',
     settings=[
-        {'name': u'KEYSERVERS', 'global_name': u'SIGNATURES_KEYSERVERS', 'default': ['keyserver.ubuntu.com'], 'description': _(u'List of keyservers to be queried for unknown keys.')},
+        {'name': u'KEYSERVERS', 'global_name': u'SIGNATURES_KEYSERVERS', 'default': ['pool.sks-keyservers.net'], 'description': _(u'List of keyservers to be queried for unknown keys.')},
     ]
 )
