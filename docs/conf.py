@@ -48,7 +48,7 @@ copyright = u'2011, Roberto Rosario'
 # built documents.
 #
 # The short X.Y version.
-version = '0.10'
+version = '0.10.1'
 
 # The full version, including alpha/beta/rc tags.
 release = '0.10'
