@@ -1,16 +1,20 @@
 import types
 from StringIO import StringIO
 from pickle import dumps
-
-import gnupg
+import logging
 
 from django.core.files.base import File
 from django.utils.translation import ugettext_lazy as _
+from django.utils.http import urlquote_plus
 
-from django_gpg.exceptions import GPGVerificationError, GPGSigningError, \
-    GPGDecryptionError, KeyDeleteError, KeyGenerationError, \
-    KeyFetchingError, KeyDoesNotExist
+from hkp import KeyServer
+import gnupg
 
+from django_gpg.exceptions import (GPGVerificationError, GPGSigningError,
+    GPGDecryptionError, KeyDeleteError, KeyGenerationError,
+    KeyFetchingError, KeyDoesNotExist, KeyImportError)
+
+logger = logging.getLogger(__name__)
 
 KEY_TYPES = {
     'pub': _(u'Public'),
@@ -30,6 +34,8 @@ KEY_SECONDARY_CLASSES = (
     ((KEY_CLASS_RSA), _(u'RSA')),
     ((KEY_CLASS_ELG), _(u'Elgamal')),
 )
+
+KEYSERVER_DEFAULT_PORT = 11371
 
 SIGNATURE_STATE_BAD = 'signature bad'
 SIGNATURE_STATE_NONE = None
@@ -300,3 +306,26 @@ class GPG(object):
                 return Key.get(self, import_result.fingerprints[0], secret=False)
 
         raise KeyFetchingError
+        
+    def query(self, term):
+        results = {}
+        for keyserver in self.keyservers:
+            url = u'http://%s' % keyserver
+            server = KeyServer(url)
+            try:
+                key_list = server.search(term)
+                for key in key_list:
+                    results[key.keyid] = key
+            except:
+                pass
+       
+        return results.values()
+    
+    def import_key(self, key_data):
+        import_result = self.gpg.import_keys(key_data)
+        logger.debug('import_result: %s' % import_result)
+       
+        if import_result:
+            return Key.get(self, import_result.fingerprints[0], secret=False)
+
+        raise KeyImportError        
