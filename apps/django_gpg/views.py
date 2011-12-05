@@ -205,7 +205,7 @@ def document_verify(request, document_pk):
         _(u'Signature status: %(widget)s %(text)s') % {
             'widget': mark_safe(widget),
             'text': signature_state['text']
-        ),
+        },
     ]
 
     if document.signature_state:
