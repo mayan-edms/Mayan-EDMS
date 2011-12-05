@@ -202,7 +202,10 @@ def document_verify(request, document_pk):
     
     widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
     paragraphs = [
-        _(u'Signature status: %s %s') % (mark_safe(widget), signature_state['text']),
+        _(u'Signature status: %(widget)s %(text)s') % {
+            'widget': mark_safe(widget),
+            'text': signature_state['text']
+        ),
     ]
 
     if document.signature_state:
