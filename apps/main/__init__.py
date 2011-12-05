@@ -21,9 +21,9 @@ admin_site = {'text': _(u'admin site'), 'view': 'admin:index', 'famfam': 'keyboa
 __version_info__ = {
     'major': 0,
     'minor': 10,
-    'micro': 1,
-    'releaselevel': 'final',
-    'serial': 0
+    'micro': 0,
+    'releaselevel': 'hotfix',
+    'serial': 2
 }
 
 if not DISABLE_HOME_VIEW:
