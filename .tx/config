@@ -148,3 +148,9 @@ trans.es = apps/web_theme/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/web_theme/locale/pt/LC_MESSAGES/django.po
 trans.ru = apps/web_theme/locale/ru/LC_MESSAGES/django.po
 
+[mayan-edms.apps-django_gpg]
+source_file = apps/django_gpg/locale/en/LC_MESSAGES/django.po
+source_lang = en
+trans.es = apps/django_gpg/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/django_gpg/locale/pt/LC_MESSAGES/django.po
+trans.ru = apps/django_gpg/locale/ru/LC_MESSAGES/django.po
