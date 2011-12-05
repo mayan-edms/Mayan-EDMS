@@ -107,3 +107,8 @@ cd $BASE/apps/web_theme
 $COMPILEMESSAGES -l pt
 $COMPILEMESSAGES -l ru
 $COMPILEMESSAGES -l es
+
+cd $BASE/apps/django_gpg
+$COMPILEMESSAGES -l pt
+$COMPILEMESSAGES -l ru
+$COMPILEMESSAGES -l es
