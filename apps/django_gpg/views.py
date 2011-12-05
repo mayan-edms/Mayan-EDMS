@@ -13,7 +13,7 @@ from django.template.defaultfilters import force_escape
 from documents.models import Document, RecentDocument
 from permissions.api import check_permissions
 
-from django_gpg.api import Key
+from django_gpg.api import Key, SIGNATURE_STATES
 from django_gpg.runtime import gpg
 from django_gpg.exceptions import GPGVerificationError
 from django_gpg import PERMISSION_DOCUMENT_VERIFY
@@ -57,48 +57,27 @@ def document_verify(request, document_pk):
 
     RecentDocument.objects.add_document_for_user(request.user, document)
     try:
-        signature = gpg.verify_w_retry(document.open())
+        signature = gpg.verify_w_retry(document.open(raw=True))
     except GPGVerificationError:
         signature = None
-
-    signature_states = {
-        'signature bad': {
-            'text': _(u'Bad signature.'),
-            'icon': 'cross.png'
-        },
-        None: {
-            'text': _(u'Document not signed or invalid signature.'),
-            'icon': 'cross.png'
-        },
-        'signature error': {
-            'text': _(u'Signature error.'),
-            'icon': 'cross.png'
-        },
-        'no public key': {
-            'text': _(u'Document is signed but no public key is available for verification.'),
-            'icon': 'user_silhouette.png'
-        },
-        'signature good': {
-            'text': _(u'Document is signed, and signature is good.'),
-            'icon': 'document_signature.png'
-        },
-        'signature valid': {
-            'text': _(u'Document is signed with a valid signature.'),
-            'icon': 'document_signature.png'
-        },
-    }    
     
-    signature_state = signature_states.get(getattr(signature, 'status', None))
+    signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
     
     widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
     paragraphs = [
         _(u'Signature status: %s %s') % (mark_safe(widget), signature_state['text']),
     ]
 
+    if document.signature_state:
+        signature_type = _(u'embedded')
+    else:
+        signature_type = _(u'detached')
+
     if signature:
         paragraphs.extend(
             [
                 _(u'Signature ID: %s') % signature.signature_id,
+                _(u'Signature type: %s') % signature_type,
                 _(u'Key ID: %s') % signature.key_id,
                 _(u'Timestamp: %s') % datetime.fromtimestamp(int(signature.sig_timestamp)),
                 _(u'Signee: %s') % force_escape(getattr(signature, 'username', u'')),

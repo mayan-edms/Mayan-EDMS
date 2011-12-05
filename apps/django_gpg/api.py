@@ -31,6 +31,41 @@ KEY_SECONDARY_CLASSES = (
     ((KEY_CLASS_ELG), _(u'Elgamal')),
 )
 
+SIGNATURE_STATE_BAD = 'signature bad'
+SIGNATURE_STATE_NONE = None
+SIGNATURE_STATE_ERROR = 'signature error'
+SIGNATURE_STATE_NO_PUBLIC_KEY = 'no public key'
+SIGNATURE_STATE_GOOD = 'signature good'
+SIGNATURE_STATE_VALID = 'signature valid'
+
+SIGNATURE_STATES = {
+    SIGNATURE_STATE_BAD: {
+        'text': _(u'Bad signature.'),
+        'icon': 'cross.png'
+    },
+    SIGNATURE_STATE_NONE: {
+        'text': _(u'Document not signed or invalid signature.'),
+        'icon': 'cross.png'
+    },
+    SIGNATURE_STATE_ERROR: {
+        'text': _(u'Signature error.'),
+        'icon': 'cross.png'
+    },
+    SIGNATURE_STATE_NO_PUBLIC_KEY: {
+        'text': _(u'Document is signed but no public key is available for verification.'),
+        'icon': 'user_silhouette.png'
+    },
+    SIGNATURE_STATE_GOOD: {
+        'text': _(u'Document is signed, and signature is good.'),
+        'icon': 'document_signature.png'
+    },
+    SIGNATURE_STATE_VALID: {
+        'text': _(u'Document is signed with a valid signature.'),
+        'icon': 'document_signature.png'
+    },
+}    
+
+
 class Key(object):
     @staticmethod
     def get_key_id(fingerprint):
@@ -163,9 +198,9 @@ class GPG(object):
         
         if verify:
             return verify
-        elif getattr(verify, 'status', None) == 'no public key':
-            # Exception to the rule, to be able to query the keyservers
-            return verify
+        #elif getattr(verify, 'status', None) == 'no public key':
+        #    # Exception to the rule, to be able to query the keyservers
+        #    return verify
         else:
             raise GPGVerificationError()
 

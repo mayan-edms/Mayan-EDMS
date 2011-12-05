@@ -21,10 +21,12 @@ from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
 from converter.api import convert
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
-from mimetype.api import get_mimetype, get_icon_file_path, \
-    get_error_icon_file_path
+from mimetype.api import (get_mimetype, get_icon_file_path,
+    get_error_icon_file_path, get_encoding)
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
+from django_gpg.runtime import gpg
+from django_gpg.exceptions import GPGVerificationError, GPGDecryptionError
 
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
@@ -209,12 +211,12 @@ class Document(models.Model):
         return new_version
 
     # Proxy methods
-    def open(self):
+    def open(self, *args, **kwargs):
         '''
         Return a file descriptor to a document's file irrespective of
         the storage backend
         '''
-        return self.latest_version.open()
+        return self.latest_version.open(*args, **kwargs)
         
     def save_to_file(self, *args, **kwargs):
         return self.latest_version.save_to_file(*args, **kwargs)
@@ -250,6 +252,10 @@ class Document(models.Model):
     @property
     def checksum(self):
         return self.latest_version.checksum
+
+    @property
+    def signature_state(self):
+        return self.latest_version.signature_state
 
     @property
     def pages(self):
@@ -309,7 +315,8 @@ class DocumentVersion(models.Model):
     encoding = models.CharField(max_length=64, default='', editable=False)
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
-
+    signature_state = models.CharField(blank=True, null=True, max_length=16, verbose_name=_(u'signature state'), editable=False)
+    
     class Meta:
         unique_together = ('document', 'major', 'minor', 'micro', 'release_level', 'serial')
         verbose_name = _(u'document version')
@@ -371,6 +378,7 @@ class DocumentVersion(models.Model):
 
         if new_document:
             #Only do this for new documents
+            self.update_signed_state(save=False)
             self.update_checksum(save=False)
             self.update_mimetype(save=False)
             self.save()
@@ -443,6 +451,18 @@ class DocumentVersion(models.Model):
         '''
         for version in self.document.versions.filter(timestamp__gt=self.timestamp):
             version.delete()
+            
+    def update_signed_state(self, save=True):
+        if self.exists():
+            try:
+                self.signature_state = gpg.verify_w_retry(self.open()).status
+                # TODO: give use choice for auto public key fetch?
+                # OR maybe new config option
+            except GPGVerificationError:
+                self.signature_state = None
+           
+            if save:
+                self.save()
 
     def update_mimetype(self, save=True):
         '''
@@ -470,12 +490,24 @@ class DocumentVersion(models.Model):
         '''
         return self.file.storage.exists(self.file.path)
             
-    def open(self):
+    def open(self, raw=False):
         '''
         Return a file descriptor to a document version's file irrespective of
         the storage backend
         '''
-        return self.file.storage.open(self.file.path)
+        if self.signature_state and not raw:
+            try:
+                result = gpg.decrypt_file(self.file.storage.open(self.file.path))
+                # gpg return a string, turn it into a file like object
+                container = StringIO()
+                container.write(result.data)
+                container.seek(0)
+                return container                
+            except GPGDecryptionError:
+                # At least return the original raw content
+                return self.file.storage.open(self.file.path)
+        else:
+            return self.file.storage.open(self.file.path)
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
         '''
