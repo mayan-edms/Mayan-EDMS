@@ -23,6 +23,7 @@ Executables:
 
 * ``tesseract-ocr`` - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 * ``unpaper`` - post-processing scanned and photocopied book pages
+* ``gpg`` - The GNU Privacy Guard
 
 Optional requirements
 =====================
