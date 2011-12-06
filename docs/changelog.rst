@@ -1,3 +1,37 @@
+Version 0.11
+------------
+* Support for signed documents verification added, embedded and detached
+  signatures are supported.  When verifying a document Mayan EDMS will
+  try to fetch the public key from the list of keyservers provided in the
+  configuration option SIGNATURES_KEYSERVERS (which defaults to
+  'pool.sks-keyservers.net').  A public key management view has been added
+  to the setup menu as well as a key query and fetching view to manually
+  import keys from a keyserver.
+* Added support for document versions.  Users can upload unlimited amount
+  of versions for a document using a very flexible document version numbering
+  system, users can also revert to a previous document version.
+* OCR queue processing improvements.
+* Office documents handling improvements.
+* Text extraction support for office documents.
+* RTF text documents are now handled as office documents.
+* Added a view to delete the document image cache, useful when switching
+  converter backends or doing diagnostics.
+* Added South to the requirements.
+* Merged documents' filename and extension database fiels into a single
+  filename field, filename are store as uploaded not manipulation is done
+  Users with existing data must install South and run the appropiate
+  migrate commands::
+    $ pip install -r requirements/production.txt
+    $ ./manager syncdb
+    $ ./manage.py migrate documents 0001 --fake
+    $ ./manage.py migrate documents
+* Added new office document mimetype
+    * application/vnd.ms-office
+* Fixed documents not saving the file encoding
+* Removed extra slash in ajax-loader.gif URL fixes #15, thanks to 
+  IHLeanne for finding this one
+
+
 Version 0.10.1
 --------------
 * Upgraded django-compressor to version 1.1.1, run::
@@ -5,6 +39,9 @@ Version 0.10.1
   $ pip install --upgrade -r requirements/production.txt
 
   to upgrade
+  
+* django-compressor is now disabled by default, users must explicitly 
+  enable it adding COMPRESS_ENABLED=True to their settings_local.py file
 
 
 Version 0.10

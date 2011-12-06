@@ -13,20 +13,23 @@ from converter.exceptions import (OfficeConversionError,
 CACHED_FILE_SUFFIX = u'_office_converter'
     
 CONVERTER_OFFICE_FILE_MIMETYPES = [
-    'application/msword',
-    'application/mswrite',
-    'application/mspowerpoint',
-    'application/msexcel',
-    'application/vnd.ms-excel',
-    'application/vnd.ms-powerpoint',    
-    'text/plain',
-    'application/vnd.oasis.opendocument.presentation',
-    'application/vnd.oasis.opendocument.text',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'application/vnd.oasis.opendocument.spreadsheet',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    'application/vnd.oasis.opendocument.graphics',
+    u'application/msword',
+    u'application/mswrite',
+    u'application/mspowerpoint',
+    u'application/msexcel',
+    u'application/vnd.ms-excel',
+    u'application/vnd.ms-powerpoint',    
+    u'application/vnd.oasis.opendocument.presentation',
+    u'application/vnd.oasis.opendocument.text',
+    u'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    u'application/vnd.oasis.opendocument.spreadsheet',
+    u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    u'application/vnd.oasis.opendocument.graphics',
+    u'application/vnd.ms-office',
+    u'text/plain',
+    u'text/rtf',
 ]
+
 
 logger = logging.getLogger(__name__)
 
@@ -94,20 +97,22 @@ class OfficeConverterBackendUnoconv(object):
             command.append(u'--pipe')
             command.append(u'mayan-%s' % id_generator())
 
-        command.append(u'--format=pdf')
-        command.append(u'--output=%s' % self.output_filepath)
+        command.append(u'--format')
+        command.append(u'pdf')
+        command.append(u'--output')
+        command.append(self.output_filepath)
         command.append(self.input_filepath)
 
         try:
-            logger.debug('prev environment: %s' % os.environ)
             proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             return_code = proc.wait()
-            logger.debug('post environment: %s' % os.environ)
+            logger.debug('return_code: %s' % return_code)
 
             readline = proc.stderr.readline()
+            logger.debug('stderr: %s' % readline)
             if return_code != 0:
-                raise OfficeBackendError(proc.stderr.readline())
+                raise OfficeBackendError(readline)
         except OSError, msg:
             raise OfficeBackendError(msg)
         except Exception, msg:
-            logger.error('Unhandled exception: %s' % msg)
+            logger.error('Unhandled exception', exc_info=msg)

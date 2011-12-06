@@ -108,10 +108,14 @@ def document_post_save(sender, instance, **kwargs):
 post_save.connect(document_post_save, sender=Document)
 
 
-@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
-def call_queue(sender, **kwargs):
-    logger.debug('got call_queue signal')
-    task_process_document_queues()
+# Disabled because it appears Django execute signals using the same
+# process effectively blocking the view until the OCR process completes
+# which could take several minutes :/
+#@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
+#def call_queue(sender, **kwargs):
+#    if kwargs.get('created', False):    
+#        logger.debug('got call_queue signal: %s' % kwargs)
+#        task_process_document_queues()
 
 
 create_default_queue()

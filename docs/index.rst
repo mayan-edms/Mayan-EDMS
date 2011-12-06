@@ -43,7 +43,6 @@ Contents
     settings
     updates
     development
-    technical
     contributors
     credits
     faq

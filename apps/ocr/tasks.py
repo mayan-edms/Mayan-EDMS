@@ -2,6 +2,7 @@ from datetime import timedelta, datetime
 import platform
 from time import sleep
 from random import random
+import logging
 
 from django.db.models import Q
 
@@ -21,10 +22,15 @@ from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
 LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
 
+logger = logging.getLogger(__name__)
+
+
 def task_process_queue_document(queue_document_id):
     lock_id = u'task_proc_queue_doc-%d' % queue_document_id
     try:
+        logger.debug('trying to acquire lock: %s' % lock_id)
         lock = Lock.acquire_lock(lock_id, LOCK_EXPIRE)
+        logger.debug('acquired lock: %s' % lock_id)
         queue_document = QueueDocument.objects.get(pk=queue_document_id)
         queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
         queue_document.node_name = platform.node()
@@ -39,6 +45,7 @@ def task_process_queue_document(queue_document_id):
         
         lock.release()
     except LockError:
+        logger.debug('unable to obtain lock')
         pass
 
 
@@ -69,6 +76,7 @@ def reset_orphans():
 
 
 def task_process_document_queues():
+    logger.debug('executed')
     # reset_orphans()
     # Causes problems with big clusters increased latency
     # Disabled until better solution
@@ -90,3 +98,10 @@ def task_process_document_queues():
             except Exception, e:
                 pass
                 #print 'DocumentQueueWatcher exception: %s' % e
+            finally:
+                # Don't process anymore from this queryset, might be stale
+                break;
+        else:
+            logger.debug('already processing maximun')
+    else:
+        logger.debug('nothing to process')

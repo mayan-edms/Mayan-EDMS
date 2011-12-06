@@ -88,6 +88,8 @@ Documents
     
     Default: ``image_cache`` (relative to the installation path)
     
+    The path where the visual representations of the documents are stored for fast display.
+    
 
 Converter
 ---------
@@ -128,18 +130,31 @@ Converter
     Graphics conversion backend to use. Options are: ``converter.backends.imagemagick``,
     ``converter.backends.graphicsmagick`` and ``converter.backends.python``.
     
+    Suggested options: ``-limit files 1 -limit memory 1GB -limit map 2GB -density 200``
+    
     
 .. data:: CONVERTER_UNOCONV_PATH    
     
     Default: ``/usr/bin/unoconv``
     
+    Path to the unoconv program.
     
-Grouping
----------
-
-.. data:: GROUPING_SHOW_EMPTY_GROUPS    
+    
+.. data:: CONVERTER_UNOCONV_USE_PIPE    
     
     Default: ``True``
+    
+    Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.    
+    
+    
+Linking
+-------
+
+.. data:: LINKING_SHOW_EMPTY_SMART_LINKS    
+    
+    Default: ``True``
+    
+    Show smart links even when they don't return any documents.
     
 
 Storage
@@ -224,7 +239,7 @@ OCR
     
 .. data:: OCR_REPLICATION_DELAY    
     
-    Default: ``10``               
+    Default: ``0``               
     
     Amount of seconds to delay OCR of documents to allow for the node's
     storage replication overhead.    
@@ -384,3 +399,13 @@ User management
     Default: ``[]`` 
     
     A list of existing roles that are automatically assigned to newly created users
+
+
+Signatures
+----------
+
+.. data:: SIGNATURES_KEYSERVERS    
+    
+    Default: ``['pool.sks-keyservers.net']`` 
+    
+    List of keyservers to be queried for unknown keys.

@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     (r'^project_setup/', include('project_setup.urls')),
     (r'^project_tools/', include('project_tools.urls')),
     (r'^api/', include('rest_api.urls')),
+    (r'^signatures/', include('django_gpg.urls')),
 )
 
 

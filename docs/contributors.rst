@@ -12,6 +12,9 @@ You can help further the development of **Mayan EDMS** by reporting bugs, submit
 Bug fixes
 ---------
 * Aziz M. Bookwala (https://github.com/azizmb)
+* IHLeanne (https://github.com/IHLeanne)
+* Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+* Meurig Freeman (https://github.com/meurig)
 
 Bug reports
 -----------
@@ -21,6 +24,7 @@ Bug reports
 * Brian Huxley
 * dAnjou (https://github.com/dAnjou)
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+* IHLeanne (https://github.com/IHLeanne)
 
 Patches
 -------

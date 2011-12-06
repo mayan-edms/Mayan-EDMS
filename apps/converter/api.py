@@ -63,7 +63,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
                 mimetype = office_converter.mimetype
 
         except OfficeConversionError:
-                raise UnknownFileFormat('office converter exception')
+            raise UnknownFileFormat('office converter exception')
 
     if size:
         transformations.append(
@@ -110,7 +110,7 @@ def get_page_count(input_filepath):
                                 
     return backend.get_page_count(input_filepath)
 
-
+'''
 def get_document_dimensions(document, *args, **kwargs):
     document_filepath = create_image_cache_filename(document.checksum, *args, **kwargs)
     if os.path.exists(document_filepath):
@@ -118,7 +118,7 @@ def get_document_dimensions(document, *args, **kwargs):
         return [int(dimension) for dimension in backend.identify_file(unicode(document_filepath), options).split()]
     else:
         return [0, 0]
-
+'''
 
 def get_available_transformations_choices():
     result = []
