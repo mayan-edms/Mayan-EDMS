@@ -2,6 +2,8 @@ import types
 from StringIO import StringIO
 from pickle import dumps
 import logging
+import tempfile
+import os
 
 from django.core.files.base import File
 from django.utils.translation import ugettext_lazy as _
@@ -164,7 +166,7 @@ class GPG(object):
 
         self.gpg = gnupg.GPG(**kwargs)
 
-    def verify_w_retry(self, file_input):
+    def verify_w_retry(self, file_input, detached_signature=None):
         if isinstance(file_input, types.StringTypes):
             input_descriptor = open(file_input, 'rb')
         elif isinstance(file_input, types.FileType) or isinstance(file_input, File):
@@ -175,12 +177,12 @@ class GPG(object):
             raise ValueError('Invalid file_input argument type')        
 
         try:
-            verify = self.verify_file(input_descriptor)
+            verify = self.verify_file(input_descriptor, detached_signature)
             if verify.status == 'no public key':
                 # Try to fetch the public key from the keyservers
                 try:
                     self.receive_key(verify.key_id)
-                    return self.verify_w_retry(file_input)
+                    return self.verify_w_retry(file_input, detached_signature)
                 except KeyFetchingError:
                     return verify
             else:
@@ -188,7 +190,7 @@ class GPG(object):
         except IOError:
             return False
 
-    def verify_file(self, file_input):
+    def verify_file(self, file_input, detached_signature=None):
         """
         Verify the signature of a file.
         """
@@ -199,7 +201,17 @@ class GPG(object):
         else:
             raise ValueError('Invalid file_input argument type')
         
-        verify = self.gpg.verify_file(descriptor)
+        if detached_signature:
+            # Save the original data and invert the argument order
+            # Signature first, file second
+            file_descriptor, filename = tempfile.mkstemp(prefix='django_gpg')
+            file_data = file_input.read()
+            file_input.close()
+            os.write(file_descriptor, file_data)
+            os.close(file_descriptor)
+            verify = self.gpg.verify_file(detached_signature, data_filename=filename)
+        else:
+            verify = self.gpg.verify_file(descriptor)
         descriptor.close()
         
         if verify:
