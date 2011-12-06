@@ -3,9 +3,13 @@ import tempfile
 import hashlib
 from ast import literal_eval
 import base64
-from StringIO import StringIO
 import datetime
 import logging
+
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO    
     
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
