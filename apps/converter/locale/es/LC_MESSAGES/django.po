@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-22 21:01+0000\n"
+"PO-Revision-Date: 2011-12-06 06:17+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -557,11 +557,11 @@ msgstr ""
 
 #: literals.py:205 literals.py:206
 msgid "Photo CD"
-msgstr ""
+msgstr "Photo CD"
 
 #: literals.py:207
 msgid "Page Control Language"
-msgstr ""
+msgstr "Page Control Language"
 
 #: literals.py:208 literals.py:221
 msgid "Apple Macintosh QuickDraw/PICT"
@@ -577,11 +577,11 @@ msgstr ""
 
 #: literals.py:211
 msgid "Portable Document Format"
-msgstr ""
+msgstr "Formato portatil de documento"
 
 #: literals.py:212
 msgid "Portable Document Archive Format"
-msgstr ""
+msgstr "Format portatil de archivo de documento"
 
 #: literals.py:213
 msgid "Pentax Electronic File"
