@@ -290,8 +290,20 @@ class Document(models.Model):
         return version.save()
 
     filename = property(_get_filename, _set_filename)
-            
+        
+    def add_detached_signature(self, *args, **kwargs):
+        return self.latest_version.add_detached_signature(*args, **kwargs)
 
+    def has_detached_signature(self):
+        return self.latest_version.has_detached_signature()
+    
+    def detached_signature(self):
+        return self.latest_version.detached_signature()
+
+    def verify_signature(self):
+        return self.latest_version.verify_signature()
+        
+        
 class DocumentVersion(models.Model):
     '''
     Model that describes a document version and its properties
@@ -320,6 +332,7 @@ class DocumentVersion(models.Model):
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
     signature_state = models.CharField(blank=True, null=True, max_length=16, verbose_name=_(u'signature state'), editable=False)
+    signature_file = models.FileField(blank=True, null=True, upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'signature file'), editable=False)
     
     class Meta:
         unique_together = ('document', 'major', 'minor', 'micro', 'release_level', 'serial')
@@ -534,7 +547,35 @@ class DocumentVersion(models.Model):
             return self.file.storage.size(self.file.path)
         else:
             return None
+   
+    def add_detached_signature(self, detached_signature):
+        if not self.signature_state:
+            self.signature_file = detached_signature
+            self.save()
+        else:
+            raise Exception('document already has an embedded signature')
+    
+    def has_detached_signature(self):
+        if self.signature_file:
+            return self.signature_file.storage.exists(self.signature_file.path)
+        else:
+            return False
+    
+    def detached_signature(self):
+        return self.signature_file.storage.open(self.signature_file.path)
+        
+    def verify_signature(self):
+        try:
+            if self.has_detached_signature():
+                logger.debug('has detached signature')
+                signature = gpg.verify_w_retry(self.open(), self.detached_signature())
+            else:
+                signature = gpg.verify_w_retry(self.open(raw=True))
+        except GPGVerificationError:
+            signature = None
             
+        return signature
+        
 
 class DocumentTypeFilename(models.Model):
     '''
