@@ -470,7 +470,7 @@ class DocumentVersion(models.Model):
     def update_signed_state(self, save=True):
         if self.exists():
             try:
-                self.signature_state = gpg.verify(self.open()).status
+                self.signature_state = gpg.verify_file(self.open()).status
                 # TODO: give use choice for auto public key fetch?
                 # OR maybe new config option
             except GPGVerificationError:
