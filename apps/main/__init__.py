@@ -19,7 +19,7 @@ __status__ = 'Production'
 __version_info__ = {
     'major': 0,
     'minor': 11,
-    'micro': 0,
+    'micro': 1,
     'releaselevel': 'final',
     'serial': 0
 }
