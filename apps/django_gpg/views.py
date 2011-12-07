@@ -19,7 +19,8 @@ from filetransfers.api import serve_file
    
 from django_gpg.api import Key, SIGNATURE_STATES
 from django_gpg.runtime import gpg
-from django_gpg.exceptions import GPGVerificationError, KeyFetchingError
+from django_gpg.exceptions import (GPGVerificationError, KeyFetchingError,
+    KeyImportError)
 from django_gpg import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_KEY_VIEW,
     PERMISSION_KEY_DELETE, PERMISSION_KEYSERVER_QUERY, 
     PERMISSION_KEY_RECEIVE, PERMISSION_SIGNATURE_UPLOAD,
@@ -44,7 +45,7 @@ def key_receive(request, key_id):
             key = gpg.import_key(keys_dict[key_id].key)
             messages.success(request, _(u'Key: %s, imported successfully.') % key)
             return HttpResponseRedirect(next)
-        except (KeyFetchingError, KeyError, TypeError):
+        except (KeyImportError, KeyError, TypeError):
             messages.error(request, _(u'Unable to import key id: %s') % key_id)
             return HttpResponseRedirect(previous)
 
