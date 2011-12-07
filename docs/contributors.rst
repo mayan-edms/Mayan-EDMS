@@ -38,6 +38,10 @@ Suggestions
 
 Translations
 ------------
-* Emerson Soares (http://emersonsoares.com)
-* Renata Oliveira (https://twitter.com/#!/rnataoliveira)
-* Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+* Portuguese
+    * Emerson Soares (http://emersonsoares.com)
+    * Renata Oliveira (https://twitter.com/#!/rnataoliveira)
+* Russian
+    * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+* Italian
+    * Pierpaolo Baldan

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-12-05 13:40-0400\n"
-"PO-Revision-Date: 2011-12-05 17:52+0000\n"
+"POT-Creation-Date: 2011-12-06 02:06-0400\n"
+"PO-Revision-Date: 2011-12-06 06:14+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Ver llaves"
 msgid "Delete keys"
 msgstr "Borrar llaves"
 
-#: __init__.py:17 __init__.py:32
+#: __init__.py:17
 msgid "Query keyservers"
 msgstr "Hacer búsquedas en servidores de llaves"
 
@@ -38,77 +38,103 @@ msgstr "Hacer búsquedas en servidores de llaves"
 msgid "Import key from keyservers"
 msgstr "Importar llaves de los servidores de llaves"
 
-#: __init__.py:21
+#: __init__.py:19
+msgid "Upload detached signatures"
+msgstr "Subir una firma a parte"
+
+#: __init__.py:20
+msgid "Download detached signatures"
+msgstr "Descargar la fima"
+
+#: __init__.py:23
 msgid "Signatures"
 msgstr "Firmas"
 
-#: __init__.py:29 views.py:65
+#: __init__.py:39 views.py:67
 msgid "private keys"
 msgstr "llaves privadas"
 
-#: __init__.py:30 views.py:68
+#: __init__.py:40 views.py:70
 msgid "public keys"
 msgstr "llaves públicas"
 
-#: __init__.py:31
+#: __init__.py:41
 msgid "delete"
 msgstr "borrar"
 
-#: __init__.py:33
-msgid "Import"
-msgstr "Importar"
+#: __init__.py:42
+msgid "query keyservers"
+msgstr "consultar servidor de llaves"
 
-#: __init__.py:36
+#: __init__.py:43
+msgid "import"
+msgstr "importar"
+
+#: __init__.py:44
+msgid "upload signature"
+msgstr "subir firma"
+
+#: __init__.py:45
+msgid "download signature"
+msgstr "descargar firma"
+
+#: __init__.py:46
+msgid "key management"
+msgstr "manejo de llaves"
+
+#: __init__.py:49
 msgid "signatures"
 msgstr "firmas"
 
-#: api.py:20
+#: api.py:22
 msgid "Public"
-msgstr ""
+msgstr "Pública"
 
-#: api.py:21
+#: api.py:23
 msgid "Secret"
-msgstr ""
+msgstr "Secreta"
 
-#: api.py:29 api.py:34
+#: api.py:31 api.py:36
 msgid "RSA"
 msgstr "RSA"
 
-#: api.py:30
+#: api.py:32
 msgid "DSA"
 msgstr "DSA"
 
-#: api.py:35
+#: api.py:37
 msgid "Elgamal"
-msgstr ""
+msgstr "Elgamal"
 
-#: api.py:49
+#: api.py:51
 msgid "Bad signature."
-msgstr ""
+msgstr "Firma invalida."
 
-#: api.py:53
+#: api.py:55
 msgid "Document not signed or invalid signature."
-msgstr ""
+msgstr "Documento no firmado o firma invalida."
 
-#: api.py:57
+#: api.py:59
 msgid "Signature error."
-msgstr ""
+msgstr "Error de firma."
 
-#: api.py:61
+#: api.py:63
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
+"El document ha sido firmado pero no hay llave pública disponible para "
+"verificación."
 
-#: api.py:65
+#: api.py:67
 msgid "Document is signed, and signature is good."
-msgstr ""
+msgstr "El document ha sido firmado y la firma esta es buen estado."
 
-#: api.py:69
+#: api.py:71
 msgid "Document is signed with a valid signature."
-msgstr ""
+msgstr "El document ha sido firmado y la firma ha sido validada."
 
-#: api.py:142
+#: api.py:144
 msgid "unknown"
-msgstr ""
+msgstr "desconocida"
 
 #: forms.py:11
 msgid "Term"
@@ -117,140 +143,160 @@ msgstr "Término"
 #: forms.py:12
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
+"Nombre, dirección de correo electrónico, identificador de llave or huella "
+"digital de llave a buscar."
 
-#: views.py:43
+#: forms.py:18
+msgid "Signature file"
+msgstr "Archivo de firma"
+
+#: views.py:45
 #, python-format
 msgid "Key: %s, imported successfully."
-msgstr ""
+msgstr "Llave: %s, importada exitosamente."
 
-#: views.py:46
+#: views.py:48
 #, python-format
 msgid "Unable to import key id: %s"
-msgstr ""
+msgstr "No se pudo importa la llave: %s"
 
-#: views.py:50
+#: views.py:52
 msgid "Import key"
-msgstr ""
+msgstr "Importar llave"
 
-#: views.py:51
+#: views.py:53
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "¿Esta seguro que desea importar la llave: %s?"
 
-#: views.py:76
+#: views.py:78
 msgid "Key ID"
-msgstr ""
+msgstr "Identificador de llave"
 
-#: views.py:80
+#: views.py:82
 msgid "Owner"
 msgstr "Dueño"
 
-#: views.py:100
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Llave: %s, borrada exitosamente."
 
-#: views.py:107
+#: views.py:109
 msgid "Delete key"
 msgstr "Borrar llave"
 
-#: views.py:109
+#: views.py:111
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
 msgstr ""
+"¿Esta seguro que desea borrar la llave: %s?  Si trata de borrar una llave "
+"pública que es parte de un par público/privado la llave privada será borrada"
+" también."
 
-#: views.py:127
+#: views.py:129
 msgid "Query key server"
-msgstr ""
+msgstr "Consultar servidor de llaves"
 
-#: views.py:140
+#: views.py:142
 msgid "results"
 msgstr "resultados"
 
-#: views.py:145
+#: views.py:147
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#: views.py:149
+#: views.py:151
 msgid "type"
 msgstr "tipo"
 
-#: views.py:153
+#: views.py:155
 msgid "creation date"
 msgstr "fecha de creación"
 
-#: views.py:157
+#: views.py:159
 msgid "disabled"
-msgstr ""
+msgstr "desactivada"
 
-#: views.py:161
+#: views.py:163
 msgid "expiration date"
-msgstr ""
+msgstr "fecha de expiración"
 
-#: views.py:165
+#: views.py:167
 msgid "expired"
-msgstr ""
+msgstr "expirada"
 
-#: views.py:169
+#: views.py:171
 msgid "length"
-msgstr ""
+msgstr "tamaño"
 
-#: views.py:173
+#: views.py:175
 msgid "revoked"
-msgstr ""
+msgstr "revocada"
 
-#: views.py:178
+#: views.py:180
 msgid "Identifies"
-msgstr ""
+msgstr "Identidades"
 
 #: views.py:205
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
-msgstr ""
+msgstr "Estado de la firma: %(widget)s %(text)s"
 
 #: views.py:212
 msgid "embedded"
-msgstr ""
+msgstr "integrada"
 
 #: views.py:214
 msgid "detached"
-msgstr ""
+msgstr "a parte"
 
 #: views.py:219
 #, python-format
 msgid "Signature ID: %s"
-msgstr ""
+msgstr "ID de la firma: %s"
 
 #: views.py:220
 #, python-format
 msgid "Signature type: %s"
-msgstr ""
+msgstr "Tipo de firma: %s"
 
 #: views.py:221
 #, python-format
 msgid "Key ID: %s"
-msgstr ""
+msgstr "ID de la llave: %s"
 
 #: views.py:222
 #, python-format
 msgid "Timestamp: %s"
-msgstr ""
+msgstr "Fecha y hora: %s"
 
 #: views.py:223
 #, python-format
 msgid "Signee: %s"
-msgstr ""
+msgstr "Firmantes: %s"
 
 #: views.py:228
 #, python-format
 msgid "signature properties for: %s"
-msgstr ""
+msgstr "propiedades de firma para: %s"
+
+#: views.py:250
+msgid "Detached signature uploaded successfully."
+msgstr "El archivo de firma fue subido exitosamente."
+
+#: views.py:259
+#, python-format
+msgid "Upload detached signature for: %s"
+msgstr "Subir firma a parte para: %s"
 
 #: conf/settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
 msgstr ""
+"Lista de servidores de llaves a ser utilizados para buscar llaves "
+"desconocidas."
 
 

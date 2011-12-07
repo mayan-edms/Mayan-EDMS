@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2011-12-06 03:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:15
+#: __init__.py:31
 msgid "maintenance"
 msgstr ""
 
-#: __init__.py:16
+#: __init__.py:32
 msgid "statistics"
 msgstr ""
 
-#: __init__.py:17
+#: __init__.py:33
 msgid "diagnostics"
 msgstr ""
 
-#: __init__.py:18
+#: __init__.py:34
 msgid "sentry"
 msgstr ""
 
-#: __init__.py:19
+#: __init__.py:35
 msgid "admin site"
 msgstr ""
 
-#: __init__.py:30
+#: __init__.py:38
 msgid "home"
 msgstr ""
 
-#: __init__.py:32
+#: __init__.py:40
 msgid "search"
 msgstr ""
 
@@ -128,6 +128,10 @@ msgstr ""
 
 #: templates/base.html:364
 msgid "Other available actions"
+msgstr ""
+
+#: templates/home.html:8
+msgid "Django based open source document management system"
 msgstr ""
 
 #: templates/project_description.html:6

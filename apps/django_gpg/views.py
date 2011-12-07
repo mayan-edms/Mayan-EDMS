@@ -15,14 +15,17 @@ from documents.models import Document, RecentDocument
 from permissions.api import check_permissions
 from common.utils import pretty_size, parse_range, urlquote, \
     return_diff, encapsulate
-    
+from filetransfers.api import serve_file
+   
 from django_gpg.api import Key, SIGNATURE_STATES
 from django_gpg.runtime import gpg
-from django_gpg.exceptions import GPGVerificationError, KeyFetchingError
+from django_gpg.exceptions import (GPGVerificationError, KeyFetchingError,
+    KeyImportError)
 from django_gpg import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_KEY_VIEW,
     PERMISSION_KEY_DELETE, PERMISSION_KEYSERVER_QUERY, 
-    PERMISSION_KEY_RECEIVE)
-from django_gpg.forms import KeySearchForm
+    PERMISSION_KEY_RECEIVE, PERMISSION_SIGNATURE_UPLOAD,
+    PERMISSION_SIGNATURE_DOWNLOAD)
+from django_gpg.forms import KeySearchForm, DetachedSignatureForm
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +45,7 @@ def key_receive(request, key_id):
             key = gpg.import_key(keys_dict[key_id].key)
             messages.success(request, _(u'Key: %s, imported successfully.') % key)
             return HttpResponseRedirect(next)
-        except (KeyFetchingError, KeyError, TypeError):
+        except (KeyImportError, KeyError, TypeError):
             messages.error(request, _(u'Unable to import key id: %s') % key_id)
             return HttpResponseRedirect(previous)
 
@@ -193,10 +196,8 @@ def document_verify(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
-    try:
-        signature = gpg.verify_w_retry(document.open(raw=True))
-    except GPGVerificationError:
-        signature = None
+   
+    signature = document.verify_signature()
     
     signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
     
@@ -230,3 +231,56 @@ def document_verify(request, document_pk):
         'document': document,
         'paragraphs': paragraphs,
     }, context_instance=RequestContext(request))
+    
+    
+def document_signature_upload(request, document_pk):
+    check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
+    document = get_object_or_404(Document, pk=document_pk)
+
+    RecentDocument.objects.add_document_for_user(request.user, document)
+        
+    post_action_redirect = None
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = DetachedSignatureForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                document.add_detached_signature(request.FILES['file'])
+                messages.success(request, _(u'Detached signature uploaded successfully.'))
+                return HttpResponseRedirect(next)
+            except Exception, msg:
+                messages.error(request, msg)
+                return HttpResponseRedirect(previous)
+    else:
+        form = DetachedSignatureForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'Upload detached signature for: %s') % document,
+        'form_icon': 'key_delete.png',
+        'next': next,
+        'form': form,
+        'previous': previous,
+        'object': document,
+    }, context_instance=RequestContext(request))
+    
+    
+def document_signature_download(request, document_pk):
+    check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
+    document = get_object_or_404(Document, pk=document_pk)
+        
+    try:
+        if document.has_detached_signature():
+            signature = document.detached_signature()
+            return serve_file(
+                request,
+                signature,
+                save_as=u'"%s.sig"' % document.filename,
+                content_type=u'application/octet-stream'
+            )
+    except Exception, e:
+        messages.error(request, e)
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])

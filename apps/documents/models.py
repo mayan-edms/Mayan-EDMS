@@ -3,9 +3,13 @@ import tempfile
 import hashlib
 from ast import literal_eval
 import base64
-from StringIO import StringIO
 import datetime
 import logging
+
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO    
     
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -172,12 +176,10 @@ class Document(models.Model):
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
      
-    # TODO: investigate if Document's save method calls all of it
-    # DocumentVersion's delete methods
-    #def delete(self, *args, **kwargs):
-    #    super(Document, self).delete(*args, **kwargs)
-    #    for version in self.documentversion_set.all():
-    #        version.file.storage.delete(version.file.path)
+    def delete(self, *args, **kwargs):
+        for version in self.versions.all():
+            version.delete()
+        return super(Document, self).delete(*args, **kwargs)
         
     @property
     def size(self):
@@ -286,8 +288,20 @@ class Document(models.Model):
         return version.save()
 
     filename = property(_get_filename, _set_filename)
-            
+        
+    def add_detached_signature(self, *args, **kwargs):
+        return self.latest_version.add_detached_signature(*args, **kwargs)
 
+    def has_detached_signature(self):
+        return self.latest_version.has_detached_signature()
+    
+    def detached_signature(self):
+        return self.latest_version.detached_signature()
+
+    def verify_signature(self):
+        return self.latest_version.verify_signature()
+        
+        
 class DocumentVersion(models.Model):
     '''
     Model that describes a document version and its properties
@@ -316,6 +330,7 @@ class DocumentVersion(models.Model):
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
     signature_state = models.CharField(blank=True, null=True, max_length=16, verbose_name=_(u'signature state'), editable=False)
+    signature_file = models.FileField(blank=True, null=True, upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'signature file'), editable=False)
     
     class Meta:
         unique_together = ('document', 'major', 'minor', 'micro', 'release_level', 'serial')
@@ -455,7 +470,7 @@ class DocumentVersion(models.Model):
     def update_signed_state(self, save=True):
         if self.exists():
             try:
-                self.signature_state = gpg.verify(self.open()).status
+                self.signature_state = gpg.verify_file(self.open()).status
                 # TODO: give use choice for auto public key fetch?
                 # OR maybe new config option
             except GPGVerificationError:
@@ -480,8 +495,8 @@ class DocumentVersion(models.Model):
                     self.save()
 
     def delete(self, *args, **kwargs):
-        super(DocumentVersion, self).delete(*args, **kwargs)
-        return self.file.storage.delete(self.file.path)
+        self.file.storage.delete(self.file.path)        
+        return super(DocumentVersion, self).delete(*args, **kwargs)
 
     def exists(self):
         '''
@@ -530,7 +545,35 @@ class DocumentVersion(models.Model):
             return self.file.storage.size(self.file.path)
         else:
             return None
+   
+    def add_detached_signature(self, detached_signature):
+        if not self.signature_state:
+            self.signature_file = detached_signature
+            self.save()
+        else:
+            raise Exception('document already has an embedded signature')
+    
+    def has_detached_signature(self):
+        if self.signature_file:
+            return self.signature_file.storage.exists(self.signature_file.path)
+        else:
+            return False
+    
+    def detached_signature(self):
+        return self.signature_file.storage.open(self.signature_file.path)
+        
+    def verify_signature(self):
+        try:
+            if self.has_detached_signature():
+                logger.debug('has detached signature')
+                signature = gpg.verify_w_retry(self.open(), self.detached_signature())
+            else:
+                signature = gpg.verify_w_retry(self.open(raw=True))
+        except GPGVerificationError:
+            signature = None
             
+        return signature
+        
 
 class DocumentTypeFilename(models.Model):
     '''

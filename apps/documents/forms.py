@@ -235,6 +235,7 @@ class DocumentForm_edit(DocumentForm):
         self.fields.pop('release_level')
         self.fields.pop('version_update')
         self.fields.pop('comment')
+        self.fields.pop('use_file_name')
 
 
 class DocumentPropertiesForm(DetailForm):

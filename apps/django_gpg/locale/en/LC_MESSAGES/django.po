@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-05 13:40-0400\n"
+"POT-Creation-Date: 2011-12-06 02:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Delete keys"
 msgstr ""
 
-#: __init__.py:17 __init__.py:32
+#: __init__.py:17
 msgid "Query keyservers"
 msgstr ""
 
@@ -37,75 +37,99 @@ msgstr ""
 msgid "Import key from keyservers"
 msgstr ""
 
-#: __init__.py:21
+#: __init__.py:19
+msgid "Upload detached signatures"
+msgstr ""
+
+#: __init__.py:20
+msgid "Download detached signatures"
+msgstr ""
+
+#: __init__.py:23
 msgid "Signatures"
 msgstr ""
 
-#: __init__.py:29 views.py:65
+#: __init__.py:39 views.py:67
 msgid "private keys"
 msgstr ""
 
-#: __init__.py:30 views.py:68
+#: __init__.py:40 views.py:70
 msgid "public keys"
 msgstr ""
 
-#: __init__.py:31
+#: __init__.py:41
 msgid "delete"
 msgstr ""
 
-#: __init__.py:33
-msgid "Import"
+#: __init__.py:42
+msgid "query keyservers"
 msgstr ""
 
-#: __init__.py:36
+#: __init__.py:43
+msgid "import"
+msgstr ""
+
+#: __init__.py:44
+msgid "upload signature"
+msgstr ""
+
+#: __init__.py:45
+msgid "download signature"
+msgstr ""
+
+#: __init__.py:46
+msgid "key management"
+msgstr ""
+
+#: __init__.py:49
 msgid "signatures"
 msgstr ""
 
-#: api.py:20
+#: api.py:22
 msgid "Public"
 msgstr ""
 
-#: api.py:21
+#: api.py:23
 msgid "Secret"
 msgstr ""
 
-#: api.py:29 api.py:34
+#: api.py:31 api.py:36
 msgid "RSA"
 msgstr ""
 
-#: api.py:30
+#: api.py:32
 msgid "DSA"
 msgstr ""
 
-#: api.py:35
+#: api.py:37
 msgid "Elgamal"
 msgstr ""
 
-#: api.py:49
+#: api.py:51
 msgid "Bad signature."
 msgstr ""
 
-#: api.py:53
+#: api.py:55
 msgid "Document not signed or invalid signature."
 msgstr ""
 
-#: api.py:57
+#: api.py:59
 msgid "Signature error."
 msgstr ""
 
-#: api.py:61
+#: api.py:63
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
 
-#: api.py:65
+#: api.py:67
 msgid "Document is signed, and signature is good."
 msgstr ""
 
-#: api.py:69
+#: api.py:71
 msgid "Document is signed with a valid signature."
 msgstr ""
 
-#: api.py:142
+#: api.py:144
 msgid "unknown"
 msgstr ""
 
@@ -117,43 +141,47 @@ msgstr ""
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 
-#: views.py:43
+#: forms.py:18
+msgid "Signature file"
+msgstr ""
+
+#: views.py:45
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr ""
 
-#: views.py:46
+#: views.py:48
 #, python-format
 msgid "Unable to import key id: %s"
 msgstr ""
 
-#: views.py:50
+#: views.py:52
 msgid "Import key"
 msgstr ""
 
-#: views.py:51
+#: views.py:53
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr ""
 
-#: views.py:76
+#: views.py:78
 msgid "Key ID"
 msgstr ""
 
-#: views.py:80
+#: views.py:82
 msgid "Owner"
 msgstr ""
 
-#: views.py:100
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr ""
 
-#: views.py:107
+#: views.py:109
 msgid "Delete key"
 msgstr ""
 
-#: views.py:109
+#: views.py:111
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -161,47 +189,47 @@ msgid ""
 "well."
 msgstr ""
 
-#: views.py:127
+#: views.py:129
 msgid "Query key server"
 msgstr ""
 
-#: views.py:140
+#: views.py:142
 msgid "results"
 msgstr ""
 
-#: views.py:145
+#: views.py:147
 msgid "ID"
 msgstr ""
 
-#: views.py:149
+#: views.py:151
 msgid "type"
 msgstr ""
 
-#: views.py:153
+#: views.py:155
 msgid "creation date"
 msgstr ""
 
-#: views.py:157
+#: views.py:159
 msgid "disabled"
 msgstr ""
 
-#: views.py:161
+#: views.py:163
 msgid "expiration date"
 msgstr ""
 
-#: views.py:165
+#: views.py:167
 msgid "expired"
 msgstr ""
 
-#: views.py:169
+#: views.py:171
 msgid "length"
 msgstr ""
 
-#: views.py:173
+#: views.py:175
 msgid "revoked"
 msgstr ""
 
-#: views.py:178
+#: views.py:180
 msgid "Identifies"
 msgstr ""
 
@@ -246,6 +274,15 @@ msgstr ""
 #: views.py:228
 #, python-format
 msgid "signature properties for: %s"
+msgstr ""
+
+#: views.py:250
+msgid "Detached signature uploaded successfully."
+msgstr ""
+
+#: views.py:259
+#, python-format
+msgid "Upload detached signature for: %s"
 msgstr ""
 
 #: conf/settings.py:13

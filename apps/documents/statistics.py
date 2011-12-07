@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from common.utils import pretty_size, pretty_size_10
 
 from documents.conf.settings import STORAGE_BACKEND
-from documents.models import Document, DocumentType, DocumentPage
+from documents.models import Document, DocumentType, DocumentPage, DocumentVersion
 from django.db.models import Avg, Count, Min, Max
 
 
@@ -54,9 +54,9 @@ def get_statistics():
     paragraphs.extend(
         [
             _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
-            _(u'Minimum amount of pages per document: %(page_count__min)d') % Document.objects.annotate(page_count=Count('documentpage')).aggregate(Min('page_count')),
-            _(u'Maximum amount of pages per document: %(page_count__max)d') % Document.objects.annotate(page_count=Count('documentpage')).aggregate(Max('page_count')),
-            _(u'Average amount of pages per document: %(page_count__avg)f') % Document.objects.annotate(page_count=Count('documentpage')).aggregate(Avg('page_count')),
+            _(u'Minimum amount of pages per document: %(page_count__min)d') % DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Min('page_count')),
+            _(u'Maximum amount of pages per document: %(page_count__max)d') % DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Max('page_count')),
+            _(u'Average amount of pages per document: %(page_count__avg)f') % DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Avg('page_count')),
         ]
     )
     #[(day_count['date_added'].strftime('%Y-%m-%d'), day_count['id__count']) for day_count in Document.objects.values('date_added').annotate(Count("id"))]

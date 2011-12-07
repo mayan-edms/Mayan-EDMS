@@ -53,6 +53,7 @@ LANGUAGES = (
     ('es', ugettext('Spanish')),
     ('pt', ugettext('Portuguese')),
     ('ru', ugettext('Russian')),
+    ('it', ugettext('Italian')),
 )
 
 SITE_ID = 1
@@ -188,6 +189,8 @@ STATICFILES_FINDERS = (
 )
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
+
+COMPRESS_ENABLED=False
 
 #===== User configuration options ===============
 #--------- Pagination ------------------

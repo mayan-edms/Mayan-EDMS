@@ -112,3 +112,13 @@ Credits
     * http://pypi.python.org/pypi/django-taggit
 
 * Image 392336_7079 (stock exchange)
+
+* djangorestframework
+
+* South
+
+* python-gnupg
+
+* python-hkp
+
+
