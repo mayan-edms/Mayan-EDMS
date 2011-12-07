@@ -176,12 +176,10 @@ class Document(models.Model):
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
      
-    # TODO: investigate if Document's save method calls all of it
-    # DocumentVersion's delete methods
-    #def delete(self, *args, **kwargs):
-    #    super(Document, self).delete(*args, **kwargs)
-    #    for version in self.documentversion_set.all():
-    #        version.file.storage.delete(version.file.path)
+    def delete(self, *args, **kwargs):
+        for version in self.versions.all():
+            version.delete()
+        return super(Document, self).delete(*args, **kwargs)
         
     @property
     def size(self):
@@ -472,7 +470,7 @@ class DocumentVersion(models.Model):
     def update_signed_state(self, save=True):
         if self.exists():
             try:
-                self.signature_state = gpg.verify(self.open()).status
+                self.signature_state = gpg.verify_file(self.open()).status
                 # TODO: give use choice for auto public key fetch?
                 # OR maybe new config option
             except GPGVerificationError:
@@ -497,8 +495,8 @@ class DocumentVersion(models.Model):
                     self.save()
 
     def delete(self, *args, **kwargs):
-        super(DocumentVersion, self).delete(*args, **kwargs)
-        return self.file.storage.delete(self.file.path)
+        self.file.storage.delete(self.file.path)        
+        return super(DocumentVersion, self).delete(*args, **kwargs)
 
     def exists(self):
         '''

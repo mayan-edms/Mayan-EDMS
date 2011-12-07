@@ -481,11 +481,12 @@ def setup_metadata_set_delete(request, metadata_set_id):
         try:
             metadata_set.delete()
             messages.success(request, _(u'Metadata set: %s deleted successfully.') % metadata_set)
+            return HttpResponseRedirect(post_action_redirect)
         except Exception, e:
             messages.error(request, _(u'Metadata set: %(metadata_set)s delete error: %(error)s') % {
                 'metadata_set': metadata_set, 'error': e})
+            return HttpResponseRedirect(previous)
 
-        return HttpResponseRedirect(next)
 
     context = {
         'object_name': _(u'metadata set'),

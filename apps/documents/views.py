@@ -198,7 +198,7 @@ def document_delete(request, document_id=None, document_id_list=None):
 
                 document.delete()
                 #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
-                messages.success(request, _(u'Document: %s deleted successfully.') % document)
+                messages.success(request, _(u'Document deleted successfully.'))
             except Exception, e:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
                     'document': document, 'error': e
