@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 from documents.models import Document
 
 from document_comments import PERMISSION_COMMENT_DELETE, \
@@ -16,7 +16,7 @@ from document_comments.forms import CommentForm
 
 
 def comment_delete(request, comment_id=None, comment_id_list=None):
-    check_permissions(request.user, [PERMISSION_COMMENT_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_DELETE])
     post_action_redirect = None
 
     if comment_id:
@@ -66,7 +66,7 @@ def comment_multiple_delete(request):
 
 
 def comment_add(request, document_id):
-    check_permissions(request.user, [PERMISSION_COMMENT_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_CREATE])
 
     document = get_object_or_404(Document, pk=document_id)
     post_action_redirect = None
@@ -100,7 +100,7 @@ def comments_for_object(request, document_id):
     """
     Show a list of all the comments related to the passed object
     """
-    check_permissions(request.user, [PERMISSION_COMMENT_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
 
