@@ -2,7 +2,7 @@ import operator
 import itertools
 
 from django.utils.translation import ugettext_lazy as _
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
@@ -22,12 +22,11 @@ from permissions.forms import RoleForm, RoleForm_view
 from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_PERMISSION_GRANT, \
     PERMISSION_PERMISSION_REVOKE
-from permissions.api import check_permissions, namespace_titles, get_permission_label, get_permission_namespace_label
 from permissions.widgets import role_permission_link
 
 
 def role_list(request):
-    check_permissions(request.user, [PERMISSION_ROLE_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_VIEW])
 
     return object_list(
         request,
@@ -41,7 +40,7 @@ def role_list(request):
 
 
 def role_permissions(request, role_id):
-    check_permissions(request.user, [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE])
 
     role = get_object_or_404(Role, pk=role_id)
     form = RoleForm_view(instance=role)
@@ -52,13 +51,13 @@ def role_permissions(request, role_id):
             'name': u'generic_list_subtemplate.html',
             'context': {
                 'title': _(u'permissions'),
-                'object_list': Permission.objects.active_only(),
+                'object_list': Permission.objects.all(),
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: get_permission_namespace_label(x))},
-                    {'name': _(u'name'), 'attribute': encapsulate(lambda x: get_permission_label(x))},
+                    {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: x.namespace)},
+                    {'name': _(u'name'), 'attribute': encapsulate(lambda x: x.label)},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda x: two_state_template(x.has_permission(role))),
+                        'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role))),
                     },
                 ],
                 'hide_link': True,
@@ -83,7 +82,7 @@ def role_permissions(request, role_id):
 
 
 def role_edit(request, role_id):
-    check_permissions(request.user, [PERMISSION_ROLE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_EDIT])
 
     return update_object(request, template_name='generic_form.html',
         form_class=RoleForm, object_id=role_id, extra_context={
@@ -91,7 +90,7 @@ def role_edit(request, role_id):
 
 
 def role_create(request):
-    check_permissions(request.user, [PERMISSION_ROLE_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_CREATE])
 
     return create_object(request, model=Role,
         template_name='generic_form.html',
@@ -99,7 +98,7 @@ def role_create(request):
 
 
 def role_delete(request, role_id):
-    check_permissions(request.user, [PERMISSION_ROLE_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_DELETE])
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
@@ -117,7 +116,7 @@ def role_delete(request, role_id):
 
 
 def permission_grant(request):
-    check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
@@ -126,7 +125,12 @@ def permission_grant(request):
 
     items = []
     for item_properties in items_property_list:
-        permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        #permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        try:
+            permission = Permission.objects.get({'pk': item_properties['permission_id']})
+        except Permission.DoesNotExist:
+            raise Http404
+            
         ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
         requester_model = ct.model_class()
         requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
@@ -176,7 +180,7 @@ def permission_grant(request):
         
 
 def permission_revoke(request):
-    check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
@@ -185,7 +189,12 @@ def permission_revoke(request):
 
     items = []
     for item_properties in items_property_list:
-        permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        #permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        try:
+            permission = Permission.objects.get({'pk': item_properties['permission_id']})
+        except Permission.DoesNotExist:
+            raise Http404
+        
         ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
         requester_model = ct.model_class()
         requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
@@ -265,7 +274,7 @@ def remove_role_member(role, selection):
 
 
 def role_members(request, role_id):
-    check_permissions(request.user, [PERMISSION_ROLE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_EDIT])
     role = get_object_or_404(Role, pk=role_id)
 
     return assign_remove(

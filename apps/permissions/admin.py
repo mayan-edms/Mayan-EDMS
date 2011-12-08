@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from permissions.models import Permission, PermissionHolder, Role, RoleMember
+from permissions.models import StoredPermission, PermissionHolder, Role, RoleMember
 
 
 class PermissionHolderInline(admin.StackedInline):
@@ -27,5 +27,5 @@ class RoleAdmin(admin.ModelAdmin):
     inlines = [RoleMemberInline]
 
 
-admin.site.register(Permission, PermissionAdmin)
+admin.site.register(StoredPermission, PermissionAdmin)
 admin.site.register(Role, RoleAdmin)

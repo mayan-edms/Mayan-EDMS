@@ -1,33 +1,140 @@
+import logging
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
+from django.core.exceptions import PermissionDenied
 
-from permissions.managers import RoleMemberManager, PermissionManager
-from permissions.runtime import namespace_titles, permission_titles
+from permissions.managers import (RoleMemberManager, StoredPermissionManager)
+    
+logger = logging.getLogger(__name__)
 
 
-class Permission(models.Model):
+class PermissionNamespace(object):
+    def __init__(self, name, label):
+        self.name = name
+        self.label = label
+        
+    def __unicode__(self):
+        return unicode(self.label)
+
+#class LazyQuerySet(list):
+#    def __init__(self, model, items):
+#        self.model = model
+#        self.items = items
+#        
+#    def get(self, *args, **kwargs):
+#        print args
+#        print kwargs
+
+class PermissionDoesNotExists(Exception):
+    pass
+
+        
+class PermissionManager(object):
+    _permissions = {}
+    DoesNotExist = PermissionDoesNotExists()
+    
+    @classmethod
+    def register(cls, namespace, name, label):
+        permission = Permission(namespace, name, label)
+        cls._permissions[permission.uuid] = permission
+        return permission
+        
+    @classmethod
+    def check_permissions(cls, requester, permission_list):
+        for permission in permission_list:
+            if permission.requester_has_this(requester):
+                return True
+
+        raise PermissionDenied(ugettext(u'Insufficient permissions.'))
+        
+    @classmethod
+    def get_for_holder(cls, holder):
+        return StoredPermission.objects.get_for_holder(holder)
+    
+    @classmethod
+    def all(cls):
+        return cls._permissions.values()
+        #return LazyQuerySet(cls, cls._permissions)
+
+    @classmethod
+    def get(cls, get_dict):
+        if 'pk' in get_dict:
+            try:
+                return cls._permissions[get_dict['pk']].get_stored_permission()
+            except KeyError:
+                raise Permission.DoesNotExist
+            
+        
+    def __init__(self, model):
+        self.model = model
+       
+
+class Permission(object):
+    DoesNotExist = PermissionDoesNotExists
+   
+    def __init__(self, namespace, name, label):
+        self.namespace = namespace
+        self.name = name
+        self.label = label
+        self.pk = self.uuid
+    
+    def __unicode__(self):
+        return unicode(self.label)
+
+    @property
+    def uuid(self):
+        return u'%s.%s' % (self.namespace.name, self.name)
+
+    def get_stored_permission(self):
+        stored_permission, created = StoredPermission.objects.get_or_create(
+            namespace=self.namespace.name,
+            name=self.name,
+            defaults={
+                'label': self.label
+            }
+        )
+        stored_permission.label = self.label
+        stored_permission.save()
+        stored_permission.volatile_permission = self
+        return stored_permission
+     
+    def requester_has_this(self, requester):
+        stored_permission = self.get_stored_permission(
+        )
+        return stored_permission.requester_has_this(requester)
+
+    def save(self, *args, **kwargs):
+        return self.get_stored_permission(
+        )
+        
+Permission.objects = PermissionManager(Permission)
+Permission._default_manager = Permission.objects
+        
+
+class StoredPermission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
     label = models.CharField(max_length=96, verbose_name=_(u'label'))
 
-    objects = PermissionManager()
+    objects = StoredPermissionManager()
 
     class Meta:
         ordering = ('namespace', 'label')
         unique_together = ('namespace', 'name')
         verbose_name = _(u'permission')
         verbose_name_plural = _(u'permissions')
-
+        
     def __unicode__(self):
-        return u'%s: %s' % (self.get_namespace_label(), self.get_label())
+        return unicode(self.volatile_permission)
 
     def get_holders(self):
         return [holder.holder_object for holder in self.permissionholder_set.all()]
 
-    def has_permission(self, requester):
+    def requester_has_this(self, requester):
         if isinstance(requester, User):
             if requester.is_superuser or requester.is_staff:
                 return True
@@ -60,16 +167,10 @@ class Permission(models.Model):
             return True
         except PermissionHolder.DoesNotExist:
             return False
-
-    def get_label(self):
-        return unicode(permission_titles.get('%s.%s' % (self.namespace, self.name), self.label))
-        
-    def get_namespace_label(self):
-        return unicode(namespace_titles[self.namespace]) if self.namespace in namespace_titles else self.namespace
         
 
 class PermissionHolder(models.Model):
-    permission = models.ForeignKey(Permission, verbose_name=_(u'permission'))
+    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
     holder_type = models.ForeignKey(ContentType,
         related_name='permission_holder',
         limit_choices_to={'model__in': ('user', 'group', 'role')})

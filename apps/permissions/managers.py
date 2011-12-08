@@ -1,7 +1,14 @@
+import logging
+
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
+from django.db import transaction
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
+from django.db.utils import IntegrityError
+from django.core.exceptions import ImproperlyConfigured
 
-from permissions.runtime import permission_titles
+logger = logging.getLogger(__name__)
 
 
 class RoleMemberManager(models.Manager):
@@ -10,19 +17,7 @@ class RoleMemberManager(models.Manager):
         return [role_member.role for role_member in self.model.objects.filter(member_type=member_type, member_id=member_obj.pk)]
 
 
-class PermissionManager(models.Manager):
+class StoredPermissionManager(models.Manager):
     def get_for_holder(self, holder):
         ct = ContentType.objects.get_for_model(holder)
-        return self.model.objects.active_only().filter(permissionholder__holder_type=ct).filter(permissionholder__holder_id=holder.pk)
-
-    def active_only(self):
-        namespaces = []
-        names = []
-        for key in permission_titles:
-            namespace, name = key.split(u'.')
-            if namespace:
-                namespaces.append(namespace)
-            if name:
-                names.append(name)
-            
-        return super(PermissionManager, self).get_query_set().filter(namespace__in=namespaces).filter(name__in=names).exclude(label=u'')
+        return self.model.objects.filter(permissionholder__holder_type=ct).filter(permissionholder__holder_id=holder.pk)

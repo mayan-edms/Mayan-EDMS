@@ -7,14 +7,16 @@ from navigation.api import register_links, register_multi_item_links
 from project_setup.api import register_setup
 
 from permissions.conf.settings import DEFAULT_ROLES
-from permissions.models import Role
+from permissions.models import Role, Permission, PermissionNamespace
 
-PERMISSION_ROLE_VIEW = {'namespace': 'permissions', 'name': 'role_view', 'label': _(u'View roles')}
-PERMISSION_ROLE_EDIT = {'namespace': 'permissions', 'name': 'role_edit', 'label': _(u'Edit roles')}
-PERMISSION_ROLE_CREATE = {'namespace': 'permissions', 'name': 'role_create', 'label': _(u'Create roles')}
-PERMISSION_ROLE_DELETE = {'namespace': 'permissions', 'name': 'role_delete', 'label': _(u'Delete roles')}
-PERMISSION_PERMISSION_GRANT = {'namespace': 'permissions', 'name': 'permission_grant', 'label': _(u'Grant permissions')}
-PERMISSION_PERMISSION_REVOKE = {'namespace': 'permissions', 'name': 'permission_revoke', 'label': _(u'Revoke permissions')}
+permissions_namespace = PermissionNamespace('permissions', _(u'Permissions'))
+
+PERMISSION_ROLE_VIEW = Permission.objects.register(permissions_namespace, 'role_view', _(u'View roles'))
+PERMISSION_ROLE_EDIT = Permission.objects.register(permissions_namespace, 'role_edit', _(u'Edit roles'))
+PERMISSION_ROLE_CREATE = Permission.objects.register(permissions_namespace, 'role_create', _(u'Create roles'))
+PERMISSION_ROLE_DELETE = Permission.objects.register(permissions_namespace, 'role_delete', _(u'Delete roles'))
+PERMISSION_PERMISSION_GRANT = Permission.objects.register(permissions_namespace, 'permission_grant', _(u'Grant permissions'))
+PERMISSION_PERMISSION_REVOKE = Permission.objects.register(permissions_namespace, 'permission_revoke', _(u'Revoke permissions'))
 
 role_list = {'text': _(u'roles'), 'view': 'role_list', 'famfam': 'medal_gold_1', 'icon': 'medal_gold_1.png', 'permissions': [PERMISSION_ROLE_VIEW]}
 role_create = {'text': _(u'create new role'), 'view': 'role_create', 'famfam': 'medal_gold_add', 'permissions': [PERMISSION_ROLE_CREATE]}
