@@ -1,21 +1,13 @@
-try:
-    from psycopg2 import OperationalError
-except ImportError:
-    class OperationalError(Exception):
-        pass
-        
 import logging
         
-from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.db.utils import DatabaseError
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from navigation.api import register_links, register_top_menu, register_multi_item_links
-from permissions.api import register_permission, set_namespace_title
+from permissions.models import Permission, PermissionNamespace
 from documents.models import Document
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
@@ -29,21 +21,13 @@ from ocr.tasks import task_process_document_queues
 
 logger = logging.getLogger(__name__)
 
-#Permissions
-PERMISSION_OCR_DOCUMENT = {'namespace': 'ocr', 'name': 'ocr_document', 'label': _(u'Submit document for OCR')}
-PERMISSION_OCR_DOCUMENT_DELETE = {'namespace': 'ocr', 'name': 'ocr_document_delete', 'label': _(u'Delete document for OCR queue')}
-PERMISSION_OCR_QUEUE_ENABLE_DISABLE = {'namespace': 'ocr', 'name': 'ocr_queue_enable_disable', 'label': _(u'Can enable/disable an OCR queue')}
-PERMISSION_OCR_CLEAN_ALL_PAGES = {'namespace': 'ocr', 'name': 'ocr_clean_all_pages', 'label': _(u'Can execute an OCR clean up on all document pages')}
-PERMISSION_OCR_QUEUE_EDIT = {'namespace': 'ocr_setup', 'name': 'ocr_queue_edit', 'label': _(u'Can edit an OCR queue properties')}
+ocr_namespace = PermissionNamespace('ocr', _(u'OCR'))
 
-set_namespace_title('ocr', _(u'OCR'))
-register_permission(PERMISSION_OCR_DOCUMENT)
-register_permission(PERMISSION_OCR_DOCUMENT_DELETE)
-register_permission(PERMISSION_OCR_QUEUE_ENABLE_DISABLE)
-register_permission(PERMISSION_OCR_CLEAN_ALL_PAGES)
-
-set_namespace_title('ocr_setup', _(u'OCR Setup'))
-register_permission(PERMISSION_OCR_QUEUE_EDIT)
+PERMISSION_OCR_DOCUMENT = Permission.objects.register(ocr_namespace, 'ocr_document', _(u'Submit documents for OCR'))
+PERMISSION_OCR_DOCUMENT_DELETE = Permission.objects.register(ocr_namespace, 'ocr_document_delete', _(u'Delete documents from OCR queue'))
+PERMISSION_OCR_QUEUE_ENABLE_DISABLE = Permission.objects.register(ocr_namespace, 'ocr_queue_enable_disable', _(u'Can enable/disable the OCR queue'))
+PERMISSION_OCR_CLEAN_ALL_PAGES = Permission.objects.register(ocr_namespace, 'ocr_clean_all_pages', _(u'Can execute the OCR clean up on all document pages'))
+PERMISSION_OCR_QUEUE_EDIT = Permission.objects.register(ocr_namespace, 'ocr_queue_edit', _(u'Can edit an OCR queue properties'))
 
 #Links
 submit_document = {'text': _('submit to OCR queue'), 'view': 'submit_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
@@ -82,23 +66,12 @@ register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_d
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
 
 
-@transaction.commit_manually
+@transaction.commit_on_success
 def create_default_queue():
-    try:
-        default_queue, created = DocumentQueue.objects.get_or_create(name='default')
-        if created:
-            default_queue.label = ugettext(u'Default')
-            default_queue.save()
-    except DatabaseError:
-        transaction.rollback()
-        # Special case for ./manage.py syncdb
-    except (OperationalError, ImproperlyConfigured):
-        transaction.rollback()
-        # Special for DjangoZoom, which executes collectstatic media
-        # doing syncdb and creating the database tables
-    else:
-        transaction.commit()
-
+    default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+    if created:
+        default_queue.label = ugettext(u'Default')
+        default_queue.save()
 
 def document_post_save(sender, instance, **kwargs):
     if kwargs.get('created', False):
