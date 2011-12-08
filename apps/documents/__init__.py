@@ -7,7 +7,6 @@ from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
 from main.api import register_diagnostic, register_maintenance_links
-from permissions.api import register_permission, set_namespace_title
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
 from metadata.api import get_metadata_string
@@ -20,9 +19,9 @@ from documents.literals import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT)
-from documents.literals import (PERMISSION_DOCUMENT_TYPE_EDIT,
-    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE)
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
+    PERMISSION_DOCUMENT_TYPE_CREATE)
 from documents.literals import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from documents.conf.settings import ZOOM_MAX_LEVEL
@@ -49,24 +48,6 @@ def is_max_zoom(context):
 
 def is_current_version(context):
     return context['object'].document.latest_version.timestamp == context['object'].timestamp
-
-# Permission setup
-set_namespace_title('documents', _(u'Documents'))
-register_permission(PERMISSION_DOCUMENT_CREATE)
-register_permission(PERMISSION_DOCUMENT_PROPERTIES_EDIT)
-register_permission(PERMISSION_DOCUMENT_EDIT)
-register_permission(PERMISSION_DOCUMENT_VIEW)
-register_permission(PERMISSION_DOCUMENT_DELETE)
-register_permission(PERMISSION_DOCUMENT_DOWNLOAD)
-register_permission(PERMISSION_DOCUMENT_TRANSFORM)
-register_permission(PERMISSION_DOCUMENT_TOOLS)
-register_permission(PERMISSION_DOCUMENT_VERSION_REVERT)
-
-# Document type permissions
-set_namespace_title('documents_setup', _(u'Documents setup'))
-register_permission(PERMISSION_DOCUMENT_TYPE_EDIT)
-register_permission(PERMISSION_DOCUMENT_TYPE_DELETE)
-register_permission(PERMISSION_DOCUMENT_TYPE_CREATE)
 
 # History setup
 register_history_type(HISTORY_DOCUMENT_CREATED)
