@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 from taggit.models import Tag
 from documents.models import Document
 from documents.views import document_list
@@ -20,7 +20,7 @@ from tags import tag_tagged_item_list as tag_tagged_item_list_link
 
 
 def tag_create(request):
-    #check_permissions(request.user, [PERMISSION_TAG_EDIT])
+    #Permission.objects.check_permissions(request.user, [PERMISSION_TAG_EDIT])
     redirect_url = reverse('tag_list')
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_url)))
 
@@ -59,14 +59,14 @@ def tag_add_sidebar(request, document_id):
         form = AddTagForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['new_tag']:
-                check_permissions(request.user, [PERMISSION_TAG_CREATE])
+                Permission.objects.check_permissions(request.user, [PERMISSION_TAG_CREATE])
                 tag_name = form.cleaned_data['new_tag']
                 if Tag.objects.filter(name=tag_name):
                     is_new = False
                 else:
                     is_new = True
             elif form.cleaned_data['existing_tags']:
-                check_permissions(request.user, [PERMISSION_TAG_ATTACH])
+                Permission.objects.check_permissions(request.user, [PERMISSION_TAG_ATTACH])
                 tag_name = form.cleaned_data['existing_tags']
                 is_new = False
             else:
@@ -98,14 +98,14 @@ def tag_add_attach(request, document_id):
         form = AddTagForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['new_tag']:
-                check_permissions(request.user, [PERMISSION_TAG_CREATE])
+                Permission.objects.check_permissions(request.user, [PERMISSION_TAG_CREATE])
                 tag_name = form.cleaned_data['new_tag']
                 if Tag.objects.filter(name=tag_name):
                     is_new = False
                 else:
                     is_new = True
             elif form.cleaned_data['existing_tags']:
-                check_permissions(request.user, [PERMISSION_TAG_ATTACH])
+                Permission.objects.check_permissions(request.user, [PERMISSION_TAG_ATTACH])
                 tag_name = form.cleaned_data['existing_tags']
                 is_new = False
             else:
@@ -154,7 +154,7 @@ def tag_list(request):
 
 
 def tag_delete(request, tag_id=None, tag_id_list=None):
-    check_permissions(request.user, [PERMISSION_TAG_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_TAG_DELETE])
     post_action_redirect = None
 
     if tag_id:
@@ -207,7 +207,7 @@ def tag_multiple_delete(request):
 
 
 def tag_edit(request, tag_id):
-    check_permissions(request.user, [PERMISSION_TAG_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_TAG_EDIT])
     tag = get_object_or_404(Tag, pk=tag_id)
 
     if request.method == 'POST':
@@ -251,7 +251,7 @@ def tag_tagged_item_list(request, tag_id):
 
 
 def document_tags(request, document_id):
-    check_permissions(request.user, [PERMISSION_TAG_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_TAG_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
     return render_to_response('generic_list.html', {
@@ -268,7 +268,7 @@ def document_tags(request, document_id):
 
 
 def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
-    check_permissions(request.user, [PERMISSION_TAG_REMOVE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_TAG_REMOVE])
 
     post_action_redirect = None
 
