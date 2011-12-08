@@ -11,7 +11,7 @@ from common.widgets import two_state_template
 from documents.models import Document
 from documents.views import document_list
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 
 from linking.models import SmartLink, SmartLinkCondition
 from linking.conf.settings import SHOW_EMPTY_SMART_LINKS
@@ -24,7 +24,7 @@ from linking import (PERMISSION_SMART_LINK_VIEW,
 
 
 def smart_link_action(request):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
     
     action = request.GET.get('action', None)
 
@@ -36,7 +36,7 @@ def smart_link_action(request):
 
 
 def smart_link_instance_view(request, document_id, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
@@ -55,7 +55,7 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
 
 
 def smart_link_instances_for_document(request, document_id):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
 
     subtemplates_list = []
     document = get_object_or_404(Document, pk=document_id)
@@ -99,7 +99,7 @@ def smart_link_instances_for_document(request, document_id):
     
     
 def smart_link_list(request):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
     
     return render_to_response('generic_list.html', {
         'title': _(u'smart links'),
@@ -115,7 +115,7 @@ def smart_link_list(request):
         
         
 def smart_link_create(request):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
 
     if request.method == 'POST':
         form = SmartLinkForm(request.POST)
@@ -133,7 +133,7 @@ def smart_link_create(request):
     
     
 def smart_link_edit(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
     
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
@@ -155,7 +155,7 @@ def smart_link_edit(request, smart_link_pk):
         
     
 def smart_link_delete(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
     
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
@@ -185,7 +185,7 @@ def smart_link_delete(request, smart_link_pk):
        
 
 def smart_link_condition_list(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
     
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
     
@@ -203,7 +203,7 @@ def smart_link_condition_list(request, smart_link_pk):
 
 
 def smart_link_condition_create(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
 
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
@@ -227,7 +227,7 @@ def smart_link_condition_create(request, smart_link_pk):
 
 
 def smart_link_condition_edit(request, smart_link_condition_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
 
     smart_link_condition = get_object_or_404(SmartLinkCondition, pk=smart_link_condition_pk)
 
@@ -261,7 +261,7 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
 
 
 def smart_link_condition_delete(request, smart_link_condition_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
 
     smart_link_condition = get_object_or_404(SmartLinkCondition, pk=smart_link_condition_pk)
 

@@ -1,23 +1,19 @@
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_sidebar_template
-from permissions.api import register_permission, set_namespace_title
+from permissions.models import PermissionNamespace, Permission
 from project_setup.api import register_setup
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 
 from linking.models import SmartLink, SmartLinkCondition
 
-PERMISSION_SMART_LINK_VIEW = {'namespace': 'linking', 'name': 'smart_link_view', 'label': _(u'View existing smart links')}
-PERMISSION_SMART_LINK_CREATE = {'namespace': 'linking', 'name': 'smart_link_create', 'label': _(u'Create new smart links')}
-PERMISSION_SMART_LINK_DELETE = {'namespace': 'linking', 'name': 'smart_link_delete', 'label': _(u'Delete smart links')}
-PERMISSION_SMART_LINK_EDIT = {'namespace': 'linking', 'name': 'smart_link_edit', 'label': _(u'Edit smart links')}
+linking_namespace = PermissionNamespace('linking', _(u'Smart links'))
 
-set_namespace_title('linking', _(u'Smart links'))
-register_permission(PERMISSION_SMART_LINK_VIEW)
-register_permission(PERMISSION_SMART_LINK_CREATE)
-register_permission(PERMISSION_SMART_LINK_DELETE)
-register_permission(PERMISSION_SMART_LINK_EDIT)
+PERMISSION_SMART_LINK_VIEW = Permission.objects.register(linking_namespace, 'smart_link_view', _(u'View existing smart links'))
+PERMISSION_SMART_LINK_CREATE = Permission.objects.register(linking_namespace, 'smart_link_create', _(u'Create new smart links'))
+PERMISSION_SMART_LINK_DELETE = Permission.objects.register(linking_namespace, 'smart_link_delete', _(u'Delete smart links'))
+PERMISSION_SMART_LINK_EDIT = Permission.objects.register(linking_namespace, 'smart_link_edit', _(u'Edit smart links'))
 
 smart_link_instance_view_link = {'text': _(u'smart links actions'), 'view': 'smart_link_instance_view', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 smart_link_instances_for_document = {'text': _(u'smart links'), 'view': 'smart_link_instances_for_document', 'args': 'object.pk', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
