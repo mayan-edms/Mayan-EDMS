@@ -2,28 +2,21 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User, Group
 
 from navigation.api import register_links, register_multi_item_links
-from permissions.api import register_permission, set_namespace_title
+from permissions.models import PermissionNamespace, Permission
+
 from project_setup.api import register_setup
 
-PERMISSION_USER_CREATE = {'namespace': 'user_management', 'name': 'user_create', 'label': _(u'Create new users')}
-PERMISSION_USER_EDIT = {'namespace': 'user_management', 'name': 'user_edit', 'label': _(u'Edit existing users')}
-PERMISSION_USER_VIEW = {'namespace': 'user_management', 'name': 'user_view', 'label': _(u'View existing users')}
-PERMISSION_USER_DELETE = {'namespace': 'user_management', 'name': 'user_delete', 'label': _(u'Delete existing users')}
+user_management_namespace = PermissionNamespace('user_management', _(u'User management'))
 
-PERMISSION_GROUP_CREATE = {'namespace': 'user_management', 'name': 'group_create', 'label': _(u'Create new groups')}
-PERMISSION_GROUP_EDIT = {'namespace': 'user_management', 'name': 'group_edit', 'label': _(u'Edit existing groups')}
-PERMISSION_GROUP_VIEW = {'namespace': 'user_management', 'name': 'group_view', 'label': _(u'View existing groups')}
-PERMISSION_GROUP_DELETE = {'namespace': 'user_management', 'name': 'group_delete', 'label': _(u'Delete existing groups')}
+PERMISSION_USER_CREATE = Permission.objects.register(user_management_namespace, 'user_create', _(u'Create new users'))
+PERMISSION_USER_EDIT = Permission.objects.register(user_management_namespace, 'user_edit', _(u'Edit existing users'))
+PERMISSION_USER_VIEW = Permission.objects.register(user_management_namespace, 'user_view', _(u'View existing users'))
+PERMISSION_USER_DELETE = Permission.objects.register(user_management_namespace, 'user_delete', _(u'Delete existing users'))
 
-set_namespace_title('user_management', _(u'User management'))
-register_permission(PERMISSION_USER_CREATE)
-register_permission(PERMISSION_USER_EDIT)
-register_permission(PERMISSION_USER_VIEW)
-register_permission(PERMISSION_USER_DELETE)
-register_permission(PERMISSION_GROUP_CREATE)
-register_permission(PERMISSION_GROUP_EDIT)
-register_permission(PERMISSION_GROUP_VIEW)
-register_permission(PERMISSION_GROUP_DELETE)
+PERMISSION_GROUP_CREATE = Permission.objects.register(user_management_namespace, 'group_create', _(u'Create new groups'))
+PERMISSION_GROUP_EDIT = Permission.objects.register(user_management_namespace, 'group_edit', _(u'Edit existing groups'))
+PERMISSION_GROUP_VIEW = Permission.objects.register(user_management_namespace, 'group_view', _(u'View existing groups'))
+PERMISSION_GROUP_DELETE = Permission.objects.register(user_management_namespace, 'group_delete', _(u'Delete existing groups'))
 
 user_list = {'text': _(u'user list'), 'view': 'user_list', 'famfam': 'user', 'permissions': [PERMISSION_USER_VIEW]}
 user_setup = {'text': _(u'users'), 'view': 'user_list', 'famfam': 'user', 'icon': 'user.png', 'permissions': [PERMISSION_USER_VIEW]}

@@ -7,7 +7,7 @@ from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User, Group
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 from common.views import assign_remove
@@ -21,7 +21,7 @@ from user_management.forms import UserForm, PasswordForm, GroupForm
 
 
 def user_list(request):
-    check_permissions(request.user, [PERMISSION_USER_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_USER_VIEW])
 
     return object_list(
         request,
@@ -51,7 +51,7 @@ def user_list(request):
 
 
 def user_edit(request, user_id):
-    check_permissions(request.user, [PERMISSION_USER_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
     user = get_object_or_404(User, pk=user_id)
 
     if user.is_superuser or user.is_staff:
@@ -77,7 +77,7 @@ def user_edit(request, user_id):
 
 
 def user_add(request):
-    check_permissions(request.user, [PERMISSION_USER_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_USER_CREATE])
 
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -96,7 +96,7 @@ def user_add(request):
 
 
 def user_delete(request, user_id=None, user_id_list=None):
-    check_permissions(request.user, [PERMISSION_USER_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_USER_DELETE])
     post_action_redirect = None
 
     if user_id:
@@ -150,7 +150,7 @@ def user_multiple_delete(request):
 
 
 def user_set_password(request, user_id=None, user_id_list=None):
-    check_permissions(request.user, [PERMISSION_USER_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
     post_action_redirect = None
 
     if user_id:
@@ -212,7 +212,7 @@ def user_multiple_set_password(request):
 
 
 def group_list(request):
-    check_permissions(request.user, [PERMISSION_GROUP_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_VIEW])
 
     return object_list(
         request,
@@ -233,7 +233,7 @@ def group_list(request):
 
 
 def group_edit(request, group_id):
-    check_permissions(request.user, [PERMISSION_GROUP_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_EDIT])
     group = get_object_or_404(Group, pk=group_id)
 
     if request.method == 'POST':
@@ -255,7 +255,7 @@ def group_edit(request, group_id):
 
 
 def group_add(request):
-    check_permissions(request.user, [PERMISSION_GROUP_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_CREATE])
 
     if request.method == 'POST':
         form = GroupForm(request.POST)
@@ -274,7 +274,7 @@ def group_add(request):
 
 
 def group_delete(request, group_id=None, group_id_list=None):
-    check_permissions(request.user, [PERMISSION_GROUP_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_DELETE])
     post_action_redirect = None
 
     if group_id:
@@ -333,7 +333,7 @@ def get_non_group_members(group):
 
 
 def group_members(request, group_id):
-    check_permissions(request.user, [PERMISSION_GROUP_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_EDIT])
     group = get_object_or_404(Group, pk=group_id)
 
     return assign_remove(
