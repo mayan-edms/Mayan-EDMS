@@ -5,13 +5,13 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import capfirst
 from django.core.exceptions import PermissionDenied
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 
 
 def button_navigation_widget(request, link):
     if 'permissions' in link:
         try:
-            check_permissions(request.user, link['permissions'])
+            Permission.objects.check_permissions(request.user, link['permissions'])
             return render_widget(link)
         except PermissionDenied:
             return u''
