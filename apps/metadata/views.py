@@ -9,7 +9,7 @@ from django.utils.http import urlencode
 
 from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT
 from documents.models import Document, RecentDocument, DocumentType
-from permissions.api import check_permissions
+from permissions.models import Permission
 from document_indexing.api import update_indexes, delete_indexes
 
 from common.utils import generate_choices_w_labels, encapsulate
@@ -30,7 +30,7 @@ from metadata.models import DocumentMetadata, MetadataType, MetadataSet, \
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
 
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
@@ -121,7 +121,7 @@ def metadata_multiple_edit(request):
 
 
 def metadata_add(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
 
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
@@ -185,7 +185,7 @@ def metadata_multiple_add(request):
 
 
 def metadata_remove(request, document_id=None, document_id_list=None):
-    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
 
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
@@ -274,7 +274,7 @@ def metadata_multiple_remove(request):
 
 
 def metadata_view(request, document_id):
-    check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])    
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])    
     document = get_object_or_404(Document, pk=document_id)
 
     return render_to_response('generic_list.html', {
@@ -287,7 +287,7 @@ def metadata_view(request, document_id):
             
 
 def setup_metadata_type_list(request):
-    check_permissions(request.user, [PERMISSION_METADATA_TYPE_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_VIEW])
 
     context = {
         'object_list': MetadataType.objects.all(),
@@ -306,7 +306,7 @@ def setup_metadata_type_list(request):
 
 
 def setup_metadata_type_edit(request, metadatatype_id):
-    check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
     
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
@@ -334,7 +334,7 @@ def setup_metadata_type_edit(request, metadatatype_id):
         
         
 def setup_metadata_type_create(request):
-    check_permissions(request.user, [PERMISSION_METADATA_TYPE_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_CREATE])
     
     if request.method == 'POST':
         form = MetadataTypeForm(request.POST)
@@ -353,7 +353,7 @@ def setup_metadata_type_create(request):
 
 
 def setup_metadata_type_delete(request, metadatatype_id):
-    check_permissions(request.user, [PERMISSION_METADATA_TYPE_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_DELETE])
     
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
@@ -387,7 +387,7 @@ def setup_metadata_type_delete(request, metadatatype_id):
 
 
 def setup_metadata_set_list(request):
-    check_permissions(request.user, [PERMISSION_METADATA_SET_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_VIEW])
 
     context = {
         'object_list': MetadataSet.objects.all(),
@@ -429,7 +429,7 @@ def remove_set_member(metadata_set, selection):
 
 
 def setup_metadata_set_edit(request, metadata_set_id):
-    check_permissions(request.user, [PERMISSION_METADATA_SET_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_EDIT])
 
     metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
 
@@ -449,7 +449,7 @@ def setup_metadata_set_edit(request, metadata_set_id):
 
 
 def setup_metadata_set_create(request):
-    check_permissions(request.user, [PERMISSION_METADATA_SET_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_CREATE])
     
     if request.method == 'POST':
         form = MetadataSetForm(request.POST)
@@ -468,7 +468,7 @@ def setup_metadata_set_create(request):
 
 
 def setup_metadata_set_delete(request, metadata_set_id):
-    check_permissions(request.user, [PERMISSION_METADATA_SET_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_DELETE])
     
     metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
 
@@ -539,7 +539,7 @@ def remove_document_type_metadata(document_type, selection):
 
 
 def setup_document_type_metadata(request, document_type_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
 
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 

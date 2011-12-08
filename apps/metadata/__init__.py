@@ -2,44 +2,29 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_multi_item_links, \
     register_sidebar_template
-from permissions.api import register_permission, set_namespace_title
+from permissions.models import Permission, PermissionNamespace
 from documents.models import Document, DocumentType
 from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
 
 from metadata.models import MetadataType, MetadataSet
 
-PERMISSION_METADATA_DOCUMENT_EDIT = {'namespace': 'metadata', 'name': u'metadata_document_edit', 'label': _(u'Edit a document\'s metadata')}
-PERMISSION_METADATA_DOCUMENT_ADD = {'namespace': 'metadata', 'name': u'metadata_document_add', 'label': _(u'Add metadata to a document')}
-PERMISSION_METADATA_DOCUMENT_REMOVE = {'namespace': 'metadata', 'name': u'metadata_document_remove', 'label': _(u'Remove metadata from a document')}
-PERMISSION_METADATA_DOCUMENT_VIEW = {'namespace': 'metadata', 'name': u'metadata_document_view', 'label': _(u'View metadata from a document')}
+metadata_namespace = PermissionNamespace('metadata', _(u'Metadata'))
+PERMISSION_METADATA_DOCUMENT_EDIT = Permission.objects.register(metadata_namespace, 'metadata_document_edit', _(u'Edit a document\'s metadata'))
+PERMISSION_METADATA_DOCUMENT_ADD = Permission.objects.register(metadata_namespace, 'metadata_document_add', _(u'Add metadata to a document'))
+PERMISSION_METADATA_DOCUMENT_REMOVE = Permission.objects.register(metadata_namespace, 'metadata_document_remove', _(u'Remove metadata from a document'))
+PERMISSION_METADATA_DOCUMENT_VIEW = Permission.objects.register(metadata_namespace, 'metadata_document_view', _(u'View metadata from a document'))
 
-PERMISSION_METADATA_TYPE_EDIT = {'namespace': 'metadata_setup', 'name': u'metadata_type_edit', 'label': _(u'Edit metadata types')}
-PERMISSION_METADATA_TYPE_CREATE = {'namespace': 'metadata_setup', 'name': u'metadata_type_create', 'label': _(u'Create new metadata types')}
-PERMISSION_METADATA_TYPE_DELETE = {'namespace': 'metadata_setup', 'name': u'metadata_type_delete', 'label': _(u'Delete metadata types')}
-PERMISSION_METADATA_TYPE_VIEW = {'namespace': 'metadata_setup', 'name': u'metadata_type_view', 'label': _(u'View metadata types')}
+metadata_setup_namespace = PermissionNamespace('metadata_setup', _(u'Metadata setup'))
+PERMISSION_METADATA_TYPE_EDIT = Permission.objects.register(metadata_setup_namespace, 'metadata_type_edit', _(u'Edit metadata types'))
+PERMISSION_METADATA_TYPE_CREATE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_create', _(u'Create new metadata types'))
+PERMISSION_METADATA_TYPE_DELETE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_delete', _(u'Delete metadata types'))
+PERMISSION_METADATA_TYPE_VIEW = Permission.objects.register(metadata_setup_namespace, 'metadata_type_view', _(u'View metadata types'))
 
-PERMISSION_METADATA_SET_EDIT = {'namespace': 'metadata_setup', 'name': u'metadata_set_edit', 'label': _(u'Edit metadata sets')}
-PERMISSION_METADATA_SET_CREATE = {'namespace': 'metadata_setup', 'name': u'metadata_set_create', 'label': _(u'Create new metadata sets')}
-PERMISSION_METADATA_SET_DELETE = {'namespace': 'metadata_setup', 'name': u'metadata_set_delete', 'label': _(u'Delete metadata sets')}
-PERMISSION_METADATA_SET_VIEW = {'namespace': 'metadata_setup', 'name': u'metadata_set_view', 'label': _(u'View metadata sets')}
-
-set_namespace_title('metadata', _(u'Metadata'))
-register_permission(PERMISSION_METADATA_DOCUMENT_EDIT)
-register_permission(PERMISSION_METADATA_DOCUMENT_ADD)
-register_permission(PERMISSION_METADATA_DOCUMENT_REMOVE)
-register_permission(PERMISSION_METADATA_DOCUMENT_VIEW)
-
-set_namespace_title('metadata_setup', _(u'Metadata setup'))
-register_permission(PERMISSION_METADATA_TYPE_EDIT)
-register_permission(PERMISSION_METADATA_TYPE_CREATE)
-register_permission(PERMISSION_METADATA_TYPE_DELETE)
-register_permission(PERMISSION_METADATA_TYPE_VIEW)
-
-register_permission(PERMISSION_METADATA_SET_EDIT)
-register_permission(PERMISSION_METADATA_SET_CREATE)
-register_permission(PERMISSION_METADATA_SET_DELETE)
-register_permission(PERMISSION_METADATA_SET_VIEW)
+PERMISSION_METADATA_SET_EDIT = Permission.objects.register(metadata_setup_namespace, 'metadata_set_edit', _(u'Edit metadata sets'))
+PERMISSION_METADATA_SET_CREATE = Permission.objects.register(metadata_setup_namespace, 'metadata_set_create', _(u'Create new metadata sets'))
+PERMISSION_METADATA_SET_DELETE = Permission.objects.register(metadata_setup_namespace, 'metadata_set_delete', _(u'Delete metadata sets'))
+PERMISSION_METADATA_SET_VIEW = Permission.objects.register(metadata_setup_namespace, 'metadata_set_view', _(u'View metadata sets'))
 
 metadata_edit = {'text': _(u'edit metadata'), 'view': 'metadata_edit', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
 metadata_view = {'text': _(u'metadata'), 'view': 'metadata_view', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT], 'children_view_regex': ['metadata']}
