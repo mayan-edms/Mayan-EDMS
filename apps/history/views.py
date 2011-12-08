@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models.loading import get_model
 from django.http import Http404
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 from common.utils import encapsulate
 
 from history.models import History
@@ -16,7 +16,7 @@ from history.widgets import history_entry_object_link, history_entry_summary
 
 
 def history_list(request):
-    check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
 
     context = {
         'object_list': History.objects.all(),
@@ -43,7 +43,7 @@ def history_list(request):
 
 
 def history_for_object(request, app_label, module_name, object_id):
-    check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
 
     model = get_model(app_label, module_name)
     if not model:
@@ -73,7 +73,7 @@ def history_for_object(request, app_label, module_name, object_id):
 
 
 def history_view(request, object_id):
-    check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
 
     history = get_object_or_404(History, pk=object_id)
 
