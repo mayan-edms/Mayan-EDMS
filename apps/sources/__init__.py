@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, \
     register_model_list_columns
-from permissions.api import register_permission, set_namespace_title
+from permissions.models import Permission, PermissionNamespace
 from common.utils import encapsulate
 from project_setup.api import register_setup
 from documents.models import Document
@@ -13,16 +13,11 @@ from sources.models import WebForm, StagingFolder, SourceTransformation, \
     WatchFolder
 from sources.widgets import staging_file_thumbnail
 
-PERMISSION_SOURCES_SETUP_VIEW = {'namespace': 'sources_setup', 'name': 'sources_setup_view', 'label': _(u'View existing document sources')}
-PERMISSION_SOURCES_SETUP_EDIT = {'namespace': 'sources_setup', 'name': 'sources_setup_edit', 'label': _(u'Edit document sources')}
-PERMISSION_SOURCES_SETUP_DELETE = {'namespace': 'sources_setup', 'name': 'sources_setup_delete', 'label': _(u'Delete document sources')}
-PERMISSION_SOURCES_SETUP_CREATE = {'namespace': 'sources_setup', 'name': 'sources_setup_create', 'label': _(u'Create new document sources')}
-
-set_namespace_title('sources_setup', _(u'Sources setup'))
-register_permission(PERMISSION_SOURCES_SETUP_VIEW)
-register_permission(PERMISSION_SOURCES_SETUP_EDIT)
-register_permission(PERMISSION_SOURCES_SETUP_DELETE)
-register_permission(PERMISSION_SOURCES_SETUP_CREATE)
+sources_namespace = PermissionNamespace('sources_setup', _(u'Sources setup'))
+PERMISSION_SOURCES_SETUP_VIEW = Permission.objects.register(sources_namespace, 'sources_setup_view', _(u'View existing document sources'))
+PERMISSION_SOURCES_SETUP_EDIT = Permission.objects.register(sources_namespace, 'sources_setup_edit', _(u'Edit document sources'))
+PERMISSION_SOURCES_SETUP_DELETE = Permission.objects.register(sources_namespace, 'sources_setup_delete', _(u'Delete document sources'))
+PERMISSION_SOURCES_SETUP_CREATE = Permission.objects.register(sources_namespace, 'sources_setup_create', _(u'Create new document sources'))
 
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
