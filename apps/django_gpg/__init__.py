@@ -5,29 +5,21 @@ from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
 from main.api import register_diagnostic, register_maintenance_links
-from permissions.api import register_permission, set_namespace_title
+from permissions.models import PermissionNamespace, Permission
 from project_setup.api import register_setup
 from hkp import Key as KeyServerKey
 
 from django_gpg.api import Key
 
-PERMISSION_DOCUMENT_VERIFY = {'namespace': 'django_gpg', 'name': 'document_verify', 'label': _(u'Verify document signatures')}
-PERMISSION_KEY_VIEW = {'namespace': 'django_gpg', 'name': 'key_view', 'label': _(u'View keys')}
-PERMISSION_KEY_DELETE = {'namespace': 'django_gpg', 'name': 'key_delete', 'label': _(u'Delete keys')}
-PERMISSION_KEYSERVER_QUERY = {'namespace': 'django_gpg', 'name': 'keyserver_query', 'label': _(u'Query keyservers')}
-PERMISSION_KEY_RECEIVE = {'namespace': 'django_gpg', 'name': 'key_receive', 'label': _(u'Import key from keyservers')}
-PERMISSION_SIGNATURE_UPLOAD = {'namespace': 'django_gpg', 'name': 'signature_upload', 'label': _(u'Upload detached signatures')}
-PERMISSION_SIGNATURE_DOWNLOAD = {'namespace': 'django_gpg', 'name': 'key_receive', 'label': _(u'Download detached signatures')}
+django_gpg_namespace = PermissionNamespace('django_gpg', _(u'Signatures'))
 
-# Permission setup
-set_namespace_title('django_gpg', _(u'Signatures'))
-register_permission(PERMISSION_DOCUMENT_VERIFY)
-register_permission(PERMISSION_KEY_VIEW)
-register_permission(PERMISSION_KEY_DELETE)
-register_permission(PERMISSION_KEYSERVER_QUERY)
-register_permission(PERMISSION_KEY_RECEIVE)
-register_permission(PERMISSION_SIGNATURE_UPLOAD)
-register_permission(PERMISSION_SIGNATURE_DOWNLOAD)
+PERMISSION_DOCUMENT_VERIFY = Permission.objects.register(django_gpg_namespace, 'document_verify', _(u'Verify document signatures'))
+PERMISSION_KEY_VIEW = Permission.objects.register(django_gpg_namespace, 'key_view', _(u'View keys'))
+PERMISSION_KEY_DELETE = Permission.objects.register(django_gpg_namespace, 'key_delete', _(u'Delete keys'))
+PERMISSION_KEYSERVER_QUERY = Permission.objects.register(django_gpg_namespace, 'keyserver_query', _(u'Query keyservers'))
+PERMISSION_KEY_RECEIVE = Permission.objects.register(django_gpg_namespace, 'key_receive', _(u'Import keys from keyservers'))
+PERMISSION_SIGNATURE_UPLOAD = Permission.objects.register(django_gpg_namespace, 'signature_upload', _(u'Upload detached signatures'))
+PERMISSION_SIGNATURE_DOWNLOAD = Permission.objects.register(django_gpg_namespace, 'signature_download', _(u'Download detached signatures'))
 
 def has_embedded_signature(context):
     return context['object'].signature_state
@@ -59,6 +51,3 @@ register_links(Key, [key_delete])
 register_links(KeyServerKey, [key_receive])
 
 register_setup(key_setup)
-
-
-

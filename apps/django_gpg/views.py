@@ -12,7 +12,7 @@ from django.conf import settings
 from django.template.defaultfilters import force_escape
 
 from documents.models import Document, RecentDocument
-from permissions.api import check_permissions
+from permissions.models import Permission
 from common.utils import pretty_size, parse_range, urlquote, \
     return_diff, encapsulate
 from filetransfers.api import serve_file
@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 
 def key_receive(request, key_id):
-    check_permissions(request.user, [PERMISSION_KEY_RECEIVE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_RECEIVE])
     
     post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
@@ -61,7 +61,7 @@ def key_receive(request, key_id):
     
 
 def key_list(request, secret=True):
-    check_permissions(request.user, [PERMISSION_KEY_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_VIEW])
     
     if secret:
         object_list = Key.get_all(gpg, secret=True)
@@ -88,7 +88,7 @@ def key_list(request, secret=True):
 
 
 def key_delete(request, fingerprint, key_type):
-    check_permissions(request.user, [PERMISSION_KEY_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_DELETE])
     
     secret = key_type == 'sec'
     key = Key.get(gpg, fingerprint, secret=secret)
@@ -117,7 +117,7 @@ def key_delete(request, fingerprint, key_type):
 
 
 def key_query(request):
-    check_permissions(request.user, [PERMISSION_KEYSERVER_QUERY])
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEYSERVER_QUERY])
     
     subtemplates_list = []
     term = request.GET.get('term')
@@ -192,7 +192,7 @@ def key_query(request):
     
 
 def document_verify(request, document_pk):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VERIFY])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VERIFY])
     document = get_object_or_404(Document, pk=document_pk)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
@@ -234,7 +234,7 @@ def document_verify(request, document_pk):
     
     
 def document_signature_upload(request, document_pk):
-    check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
     document = get_object_or_404(Document, pk=document_pk)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
@@ -267,7 +267,7 @@ def document_signature_upload(request, document_pk):
     
     
 def document_signature_download(request, document_pk):
-    check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
     document = get_object_or_404(Document, pk=document_pk)
         
     try:
