@@ -5,23 +5,23 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.utils.safestring import mark_safe
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate
 
-from document_indexing import PERMISSION_DOCUMENT_INDEXING_VIEW, \
-    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES
+from document_indexing import (PERMISSION_DOCUMENT_INDEXING_VIEW,
+    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES)
 
 from document_indexing.models import IndexInstance
-from document_indexing.api import get_breadcrumbs, get_instance_link, \
-    do_rebuild_all_indexes
+from document_indexing.api import (get_breadcrumbs, get_instance_link,
+    do_rebuild_all_indexes)
 from document_indexing.widgets import index_instance_item_link
 
 
 def index_instance_list(request, index_id=None):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
 
     if index_id:
         index_instance = get_object_or_404(IndexInstance, pk=index_id)
@@ -70,7 +70,7 @@ def index_instance_list(request, index_id=None):
 
 
 def rebuild_index_instances(request):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
@@ -97,7 +97,7 @@ def rebuild_index_instances(request):
 
 
 def document_index_list(request, document_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
     object_list = []
