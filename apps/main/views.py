@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 
 from documents.statistics import get_statistics as documents_statistics
 from ocr.statistics import get_statistics as ocr_statistics
-from permissions.api import check_permissions
+from permissions.models import Permission
 
 from main.api import diagnostics, tools
 from main.conf.settings import DISABLE_HOME_VIEW
@@ -31,7 +31,7 @@ def maintenance_menu(request):
         for link in values['links']:
             try:
                 permissions = link.get('permissions', [])
-                check_permissions(request.user, permissions)
+                Permission.objects.check_permissions(request.user, permissions)
                 user_tools[namespace]['links'].append(link)
             except PermissionDenied:
                 pass
