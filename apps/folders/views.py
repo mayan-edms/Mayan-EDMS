@@ -9,7 +9,7 @@ from django.core.exceptions import PermissionDenied
 
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
-from permissions.api import check_permissions
+from permissions.models import Permission
 from common.utils import encapsulate
 
 from folders.models import Folder, FolderDocument
@@ -136,7 +136,7 @@ def folder_view(request, folder_id):
 
 
 def folder_add_document_sidebar(request, document_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
     previous = request.META.get('HTTP_REFERER', '/')
@@ -170,7 +170,7 @@ def folder_add_document_sidebar(request, document_id):
 
 def folder_add_document(request, document_id):
     # TODO: merge with folder_add_document_sidebar
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))#reverse('document_tags', args=[document.pk]))))
@@ -213,7 +213,7 @@ def folder_add_document(request, document_id):
 
 
 def document_folder_list(request, document_id):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
     return folder_list(
