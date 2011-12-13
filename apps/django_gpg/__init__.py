@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document
+#from documents.models import Document
 from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
@@ -40,7 +40,7 @@ key_setup = {'text': _(u'key management'), 'view': 'key_public_list', 'args': 'o
 # Document views
 document_verify = {'text': _(u'signatures'), 'view': 'document_verify', 'args': 'object.pk', 'famfam': 'text_signature', 'permissions': [PERMISSION_DOCUMENT_VERIFY]}
 
-register_links(Document, [document_verify], menu_name='form_header')
+#register_links(Document, [document_verify], menu_name='form_header')
 
 register_links(['document_verify', 'document_signature_upload', 'document_signature_download'], [document_signature_upload, document_signature_download], menu_name='sidebar')
 
