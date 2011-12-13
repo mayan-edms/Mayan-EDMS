@@ -11,6 +11,7 @@ from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
 from metadata.api import get_metadata_string
 from project_setup.api import register_setup
+from acls.models import class_permissions
 
 from documents.models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
@@ -202,3 +203,13 @@ if (validate_path(document_settings.CACHE_PATH) == False) or (not document_setti
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
 register_setup(document_type_setup)
+
+class_permissions(Document, [
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT, 
+    PERMISSION_DOCUMENT_EDIT,
+    PERMISSION_DOCUMENT_VIEW,
+    PERMISSION_DOCUMENT_DELETE,
+    PERMISSION_DOCUMENT_DOWNLOAD,
+    PERMISSION_DOCUMENT_TRANSFORM,
+    PERMISSION_DOCUMENT_VERSION_REVERT
+])
