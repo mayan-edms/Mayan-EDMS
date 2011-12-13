@@ -83,7 +83,7 @@ class Document(models.Model):
     '''
     uuid = models.CharField(max_length=48, blank=True, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
-    description = models.TextField(blank=True, null=True, verbose_name=_(u'description'), db_index=True)
+    description = models.TextField(blank=True, null=True, verbose_name=_(u'description'))
     date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True, editable=False)
 
     tags = TaggableManager()
@@ -598,10 +598,10 @@ class DocumentPage(models.Model):
     Model that describes a document version page including it's content
     '''
     # New parent field
-    document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'))#, null=True, blank=True)  # TODO: Remove these after datamigration
+    document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'))
     
     # Unchanged fields
-    content = models.TextField(blank=True, null=True, verbose_name=_(u'content'), db_index=True)
+    content = models.TextField(blank=True, null=True, verbose_name=_(u'content'))
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'), db_index=True)
 
