@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#   <pierpaolo.baldan@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-09-30 04:56+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-12-13 09:10+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,171 +20,171 @@ msgstr ""
 
 #: __init__.py:12
 msgid "Edit a document's metadata"
-msgstr ""
+msgstr "Modifica i metadata dei documenti"
 
 #: __init__.py:13
 msgid "Add metadata to a document"
-msgstr ""
+msgstr "Aggiungi il metadato al documento"
 
 #: __init__.py:14
 msgid "Remove metadata from a document"
-msgstr ""
+msgstr "Revoca il metadato al documento"
 
 #: __init__.py:15
 msgid "View metadata from a document"
-msgstr ""
+msgstr "Visualizza il metadato per il documento"
 
 #: __init__.py:17
 msgid "Edit metadata types"
-msgstr ""
+msgstr "Modifica il tipo di metadato"
 
 #: __init__.py:18
 msgid "Create new metadata types"
-msgstr ""
+msgstr "Crea il nuovo tipo di metadato"
 
 #: __init__.py:19
 msgid "Delete metadata types"
-msgstr ""
+msgstr "Cancella il tipo di metadato"
 
 #: __init__.py:20
 msgid "View metadata types"
-msgstr ""
+msgstr "Visualizza il tipo di metadato"
 
 #: __init__.py:22
 msgid "Edit metadata sets"
-msgstr ""
+msgstr "Modifica il set di metadati"
 
 #: __init__.py:23
 msgid "Create new metadata sets"
-msgstr ""
+msgstr "Crea un nuovo set di metadati"
 
 #: __init__.py:24
 msgid "Delete metadata sets"
-msgstr ""
+msgstr "Cancella il set dei metadati"
 
 #: __init__.py:25
 msgid "View metadata sets"
-msgstr ""
+msgstr "Visualizza il set dei metadati"
 
 #: __init__.py:27 forms.py:94
 msgid "Metadata"
-msgstr ""
+msgstr "Metadati"
 
 #: __init__.py:33
 msgid "Metadata setup"
-msgstr ""
+msgstr "Setup metadati"
 
 #: __init__.py:44 __init__.py:46
 msgid "edit metadata"
-msgstr ""
+msgstr "modifica metadati"
 
 #: __init__.py:45
 msgid "metadata"
-msgstr ""
+msgstr "metadati"
 
 #: __init__.py:47 __init__.py:48
 msgid "add metadata"
-msgstr ""
+msgstr "aggiungi metadata"
 
 #: __init__.py:49 __init__.py:50
 msgid "remove metadata"
-msgstr ""
+msgstr "revoca metadata"
 
 #: __init__.py:52 models.py:33 views.py:294
 msgid "metadata types"
-msgstr ""
+msgstr "tipo di metadata"
 
 #: __init__.py:53 __init__.py:58
 msgid "edit"
-msgstr ""
+msgstr "modifica"
 
 #: __init__.py:54 __init__.py:59
 msgid "delete"
-msgstr ""
+msgstr "cancella"
 
 #: __init__.py:55 __init__.py:60
 msgid "create new"
-msgstr ""
+msgstr "crea nuovo"
 
 #: __init__.py:57 views.py:394
 msgid "metadata sets"
-msgstr ""
+msgstr "set di metadati"
 
 #: __init__.py:62 models.py:92
 msgid "default metadata"
-msgstr ""
+msgstr "metadati di default"
 
 #: classes.py:12
 #, python-format
 msgid "'metadata' object has no attribute '%s'"
-msgstr ""
+msgstr "'metadata' non ha gli attributi '%s'"
 
 #: forms.py:28
 msgid "required"
-msgstr ""
+msgstr "richiesto"
 
 #: forms.py:54
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: forms.py:55
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: forms.py:57
 msgid "Value"
-msgstr ""
+msgstr "Valore"
 
 #: forms.py:58
 msgid "Update"
-msgstr ""
+msgstr "Aggiurnato"
 
 #: forms.py:64
 msgid "Metadata type"
-msgstr ""
+msgstr "Tipo di metadato"
 
 #: forms.py:68
 msgid "Remove"
-msgstr ""
+msgstr "Revoca"
 
 #: forms.py:86
 msgid "Metadata sets"
-msgstr ""
+msgstr "Set di metadati"
 
 #: models.py:9
 #, python-format
 msgid " Available models: %s"
-msgstr ""
+msgstr " Modelli disponibili: %s"
 
 #: models.py:10
 #, python-format
 msgid " Available functions: %s"
-msgstr ""
+msgstr " Funzioni disponibili: %s"
 
 #: models.py:17
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: models.py:17
 msgid "Do not use python reserved words, or spaces."
-msgstr ""
+msgstr "Non usare parole riservate python, o spazi."
 
 #: models.py:18 models.py:40
 msgid "title"
-msgstr ""
+msgstr "titolo"
 
 #: models.py:20
 msgid "default"
-msgstr ""
+msgstr "default"
 
 #: models.py:21
 #, python-format
 msgid "Enter a string to be evaluated.%s"
-msgstr ""
+msgstr "Inserisci una stringa per la valutazione.%s"
 
 #: models.py:23
 msgid "lookup"
-msgstr ""
+msgstr "lookup"
 
 #: models.py:24
 #, python-format
@@ -191,96 +192,99 @@ msgid ""
 "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
 "User.objects.all()].%s"
 msgstr ""
+"Inserisci una stringa per la valutazione.  Esempio: [user.get_full_name() "
+"per l'utente User.objects.all()].%s"
 
 #: models.py:32 models.py:57 views.py:331 views.py:376
 msgid "metadata type"
-msgstr ""
+msgstr "tipo di metadata"
 
 #: models.py:47 models.py:48 models.py:56 views.py:446 views.py:491
 msgid "metadata set"
-msgstr ""
+msgstr "set di metadata"
 
 #: models.py:64
 msgid "metadata set item"
-msgstr ""
+msgstr "set di elemento per il metadata"
 
 #: models.py:65
 msgid "metadata set items"
-msgstr ""
+msgstr "set di elementi per il metadata"
 
 #: models.py:73
 msgid "document"
-msgstr ""
+msgstr "documento"
 
 #: models.py:74
 msgid "type"
-msgstr ""
+msgstr "tipo"
 
 #: models.py:75 views.py:283
 msgid "value"
-msgstr ""
+msgstr "valore"
 
 #: models.py:81 models.py:82
 msgid "document metadata"
-msgstr ""
+msgstr "metadata per il doccumento"
 
 #: models.py:90 views.py:559
 msgid "document type"
-msgstr ""
+msgstr "tipo documento"
 
 #: models.py:91
 msgid "default metadata sets"
-msgstr ""
+msgstr "set di default di metadata"
 
 #: models.py:98
 msgid "document type defaults"
-msgstr ""
+msgstr "tipo documento predefinito"
 
 #: models.py:99
 msgid "document types defaults"
-msgstr ""
+msgstr "tipi di documento predefiniti"
 
 #: views.py:38 views.py:193
 msgid "The selected document doesn't have any metadata."
-msgstr ""
+msgstr "Il documento selezionato non ha metadati."
 
 #: views.py:43 views.py:131 views.py:199
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "Devi fornire almeno un documento."
 
 #: views.py:78 views.py:234
 #, python-format
 msgid "Error deleting document indexes; %s"
-msgstr ""
+msgstr "Errore nella cancellazione degli indici di documento;%s"
 
 #: views.py:90
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
 msgstr ""
+"Errore nella modifica dei metadata per il documento %(document)s; %(error)s."
 
 #: views.py:93
 #, python-format
 msgid "Metadata for document %s edited successfully."
-msgstr ""
+msgstr "Metadata per il documento %s modificato con successo."
 
 #: views.py:98 views.py:251
 #, python-format
 msgid "Error updating document indexes; %s"
-msgstr ""
+msgstr "Errore nella'ggiornamento degli indici del documento; %s"
 
 #: views.py:100 views.py:253
 msgid "Document indexes updated successfully."
-msgstr ""
+msgstr "Indici documento aggiornati con successo."
 
 #: views.py:111
 #, python-format
 msgid "Edit metadata for document: %s"
-msgstr ""
+msgstr "Modifica metadata per il documento: %s"
 
 #: views.py:113
 #, python-format
 msgid "Edit metadata for documents: %s"
-msgstr ""
+msgstr "Modifica metadata per i documenti: %s"
 
 #: views.py:148
 #, python-format
@@ -288,22 +292,25 @@ msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
 msgstr ""
+"Tipo metadata: %(metadata_type)s aggiunto con successo al documento "
+"%(document)s."
 
 #: views.py:151
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr ""
+"Tipo Metadata: %(metadata_type)s già presente per il documento %(document)s."
 
 #: views.py:175
 #, python-format
 msgid "Add metadata type to document: %s"
-msgstr ""
+msgstr "Aggiungi tipo metadata al document: %s"
 
 #: views.py:177
 #, python-format
 msgid "Add metadata type to documents: %s"
-msgstr ""
+msgstr "Aggiungi tipo metadata ai documents: %s"
 
 #: views.py:242
 #, python-format
@@ -311,119 +318,123 @@ msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
 msgstr ""
+"Rimuovere con successo tipo di metadati: %(metadata_type)s  per il "
+"documento: %(document)s."
 
 #: views.py:245
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
 msgstr ""
+"Errore durante la rimozione dei metadati di tipo: %(metadata_type)s per il "
+"documento: %(document)s."
 
 #: views.py:264
 #, python-format
 msgid "Remove metadata types from document: %s"
-msgstr ""
+msgstr "Rimuovi il tipo metadata per il documento: %s"
 
 #: views.py:266
 #, python-format
 msgid "Remove metadata types from documents: %s"
-msgstr ""
+msgstr "Rimuovi il tipo metadata per il documenti: %s"
 
 #: views.py:281
 #, python-format
 msgid "metadata for: %s"
-msgstr ""
+msgstr "metadata per:%s"
 
 #: views.py:298
 msgid "internal name"
-msgstr ""
+msgstr "nome interno"
 
 #: views.py:319
 msgid "Metadata type edited successfully"
-msgstr ""
+msgstr "Tipo di metadata modificato con successo"
 
 #: views.py:322
 #, python-format
 msgid "Error editing metadata type; %s"
-msgstr ""
+msgstr "Errore nella modifica del tipo di metadata ; %s"
 
 #: views.py:328
 #, python-format
 msgid "edit metadata type: %s"
-msgstr ""
+msgstr "modifica tipo di metadata: %s"
 
 #: views.py:343
 msgid "Metadata type created successfully"
-msgstr ""
+msgstr "Tipo metadata creato con successo"
 
 #: views.py:349
 msgid "create metadata type"
-msgstr ""
+msgstr "create tipo di metadata"
 
 #: views.py:368
 #, python-format
 msgid "Metadata type: %s deleted successfully."
-msgstr ""
+msgstr "Tipo metadata:%s cancellato con successo."
 
 #: views.py:370
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
-msgstr ""
+msgstr "Tipo metadata: %(metadata_type)s erroce di cancellazione: %(error)s"
 
 #: views.py:381
 #, python-format
 msgid "Are you sure you wish to delete the metadata type: %s?"
-msgstr ""
+msgstr "Sei sicuro di voler cancellare il tipo di metadata: %s?"
 
 #: views.py:398
 msgid "members"
-msgstr ""
+msgstr "membri"
 
 #: views.py:442
 #, python-format
 msgid "non members of metadata set: %s"
-msgstr ""
+msgstr "non membri del set di metadata:%s"
 
 #: views.py:443
 #, python-format
 msgid "members of metadata set: %s"
-msgstr ""
+msgstr "membri del set di metadata:%s"
 
 #: views.py:458
 msgid "Metadata set created successfully"
-msgstr ""
+msgstr "Set di metadata creata con successo"
 
 #: views.py:464
 msgid "create metadata set"
-msgstr ""
+msgstr "creazione del set di metadata"
 
 #: views.py:483
 #, python-format
 msgid "Metadata set: %s deleted successfully."
-msgstr ""
+msgstr "Set di metadata: %s cancellata con successo."
 
 #: views.py:485
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
-msgstr ""
+msgstr "Set di metadata: %(metadata_set)s errore di cancellazione: %(error)s"
 
 #: views.py:496
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
-msgstr ""
+msgstr "Sei sicuro di voler eliminare il set di metadati: %s?"
 
 #: views.py:554
 #, python-format
 msgid "non members of document type: %s"
-msgstr ""
+msgstr "non membri del tipo di documento: %s"
 
 #: views.py:555
 #, python-format
 msgid "members of document type: %s"
-msgstr ""
+msgstr "membri del tipo di documento: %s"
 
 #: templates/metadata_set_help.html:3
 msgid "What are metadata sets?"
-msgstr ""
+msgstr "Cosa sono i set di metadati ?"
 
 #: templates/metadata_set_help.html:4
 msgid ""
@@ -431,10 +442,14 @@ msgid ""
 "useful when creating new documents; selecing a metadata set automatically "
 "attaches it's member metadata types to said document."
 msgstr ""
+"Un insieme di metadati è un gruppo di uno o più tipi di metadati. Set di "
+"metadati sono utili durante la creazione di nuovi documenti e, selezionando "
+"un set di metadati allega automaticamente è membro tipi di metadati per "
+"documentare detto."
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
-msgstr ""
+msgstr "Cosa sono i tipi di metadati?"
 
 #: templates/metadata_type_help.html:4
 msgid ""
@@ -448,5 +463,15 @@ msgid ""
 "of this type into a choice list which options are the result of the lookup's"
 " code execution."
 msgstr ""
+"Un tipo di metadati definisce le caratteristiche di un valore di qualche "
+"tipo che può essere collegato a un documento. Esempi di tipi di metadati: il"
+" nome del client, una data o un progetto a cui appartengono diversi "
+"documenti. Il nome di un tipo di metadati è l'identificatore interno con il "
+"quale possono essere pubblicati da altri moduli come il modulo di "
+"indicizzazione, il titolo è il valore che viene mostrato agli utenti, il "
+"valore predefinito è il valore di un'istanza di questo tipo di metadati avrà"
+" inizialmente, e il valore di ricerca si trasforma un'istanza di metadati di"
+" questo tipo in un elenco di opzioni di scelta che sono il risultato della "
+"esecuzione di codice la ricerca di."
 
 
