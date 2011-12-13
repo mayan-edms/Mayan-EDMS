@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#   <pierpaolo.baldan@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-09-30 04:42+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-12-10 07:01+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,70 +20,74 @@ msgstr ""
 
 #: __init__.py:12
 msgid "View document indexes"
-msgstr ""
+msgstr "Visualizza indici documento"
 
 #: __init__.py:13
 msgid "Rebuild document indexes"
-msgstr ""
+msgstr "Ricostruisci indici documento"
 
 #: __init__.py:15
 msgid "Indexing"
-msgstr ""
+msgstr "Indicizzazione"
 
 #: __init__.py:19
 msgid "index list"
-msgstr ""
+msgstr "lista indici"
 
 #: __init__.py:20
 msgid "go up one level"
-msgstr ""
+msgstr "sali di un livello"
 
 #: __init__.py:21 __init__.py:23 models.py:26
 msgid "indexes"
-msgstr ""
+msgstr "indici"
 
 #: __init__.py:25
 msgid "rebuild indexes"
-msgstr ""
+msgstr "ricostruisci gli indici"
 
 #: __init__.py:25
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr ""
+msgstr "Cancellazione e ricostruzione di tutti gli indici documento"
 
 #: __init__.py:27
 msgid "Indexes"
-msgstr ""
+msgstr "Indici"
 
 #: api.py:83
 msgid "root"
-msgstr ""
+msgstr "root"
 
 #: api.py:139
 #, python-format
 msgid "Maximum suffix (%s) count reached."
-msgstr ""
+msgstr "Massimo dei suffissi contati (%s) ."
 
 #: api.py:175
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
 msgstr ""
+"Errore nella creazione dell'indice per l'espressione: %(expression)s; "
+"%(exception)s"
 
 #: api.py:178
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
 msgstr ""
+"Errore nell'aggiornamento delle'indice documento per l'espressione: "
+"%(expression)s; %(exception)s"
 
 #: api.py:209
 #, python-format
 msgid "Unable to delete document indexing node; %s"
-msgstr ""
+msgstr "Impossibile cancellare l'indice del documento; %s"
 
 #: filesystem.py:34
 #, python-format
 msgid "Unable to create indexing directory; %s"
-msgstr ""
+msgstr "Impossibile creare la directory per gli indici; %s"
 
 #: filesystem.py:52
 #, python-format
@@ -90,116 +95,122 @@ msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
 msgstr ""
+"Impossibile creare un link simbolico, il file già esiste e non può essere "
+"cancellato: %(filepath)s; %(exc)s"
 
 #: filesystem.py:54
 #, python-format
 msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
-msgstr ""
+msgstr "Impossibile creare un link simbolico: %(filepath)s; %(exc)s"
 
 #: filesystem.py:71
 #, python-format
 msgid "Unable to delete document symbolic link; %s"
-msgstr ""
+msgstr "Impossibile cancellare il link simbolico al documento; %s"
 
 #: filesystem.py:83
 #, python-format
 msgid "Unable to delete indexing directory; %s"
-msgstr ""
+msgstr "Impossibile cancellare la directory degli indici; %s"
 
 #: models.py:11
 #, python-format
 msgid "Available functions: %s"
-msgstr ""
+msgstr "Funzioni disponibili: %s"
 
 #: models.py:16
 msgid "indexing expression"
-msgstr ""
+msgstr "Espressione per indice"
 
 #: models.py:16
 msgid "Enter a python string expression to be evaluated."
-msgstr ""
+msgstr "Inserisci una espressione python perchè possa essere valutata."
 
 #: models.py:18
 msgid "enabled"
-msgstr ""
+msgstr "abilitato"
 
 #: models.py:19
 msgid "link documents"
-msgstr ""
+msgstr "link al documento"
 
 #: models.py:25 models.py:31 views.py:56
 msgid "index"
-msgstr ""
+msgstr "indice"
 
 #: models.py:32
 msgid "value"
-msgstr ""
+msgstr "valore"
 
 #: models.py:33
 msgid "documents"
-msgstr ""
+msgstr "documenti"
 
 #: models.py:46 models.py:51
 msgid "index instance"
-msgstr ""
+msgstr "istanza indice"
 
 #: models.py:47
 msgid "indexes instances"
-msgstr ""
+msgstr "istanze indici"
 
 #: models.py:52
 msgid "document"
-msgstr ""
+msgstr "document"
 
 #: models.py:59
 msgid "document rename count"
-msgstr ""
+msgstr "conteggio della rinomina del documento"
 
 #: models.py:60
 msgid "documents rename count"
-msgstr ""
+msgstr "conteggio delle rinomine dei documenti"
 
 #: utils.py:19
 msgid "document indexes"
-msgstr ""
+msgstr "indici dei documenti"
 
 #: views.py:38
 #, python-format
 msgid "contents for index: %s"
-msgstr ""
+msgstr "contenuto per indice: %s"
 
 #: views.py:60
 msgid "items"
-msgstr ""
+msgstr "voci"
 
 #: views.py:82
 msgid "Are you sure you wish to rebuild all indexes?"
-msgstr ""
+msgstr "Sei sicuro di voler ricostruire l'indice ?"
 
 #: views.py:83
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
+"Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di "
+"tempo."
 
 #: views.py:89
 msgid "Index rebuild completed successfully."
-msgstr ""
+msgstr "Ricostruzione dell'indice avvenuta con successo"
 
 #: views.py:94
 #, python-format
 msgid "Index rebuild error: %s"
-msgstr ""
+msgstr "Errore nella ricostruzione dell'indice: %s"
 
 #: views.py:109
 #, python-format
 msgid "indexes containing: %s"
-msgstr ""
+msgstr "Gli indici contengono: %s"
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
-msgstr ""
+msgstr "Cosa sono gli indici ?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
 msgstr ""
+"Gli Indici dei documenti rappresentano , nella forma di albero, la struttura"
+" gerarchica dei documenti stessi.."
 
 

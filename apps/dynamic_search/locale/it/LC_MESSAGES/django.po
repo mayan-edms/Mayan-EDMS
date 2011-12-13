@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#   <pierpaolo.baldan@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-09-30 04:42+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-12-09 15:32+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,78 +20,80 @@ msgstr ""
 
 #: __init__.py:5
 msgid "search"
-msgstr ""
+msgstr "cerca"
 
 #: __init__.py:6 views.py:72
 msgid "advanced search"
-msgstr ""
+msgstr "ricerca avanzata"
 
 #: __init__.py:7
 msgid "search again"
-msgstr ""
+msgstr "cerca ancora"
 
 #: forms.py:8
 msgid "Search terms"
-msgstr ""
+msgstr "Termini di ricerca"
 
 #: models.py:20
 msgid "user"
-msgstr ""
+msgstr "utente"
 
 #: models.py:21
 msgid "query"
-msgstr ""
+msgstr "interrogazione"
 
 #: models.py:22
 msgid "datetime created"
-msgstr ""
+msgstr "orario creato"
 
 #: models.py:23
 msgid "hits"
-msgstr ""
+msgstr "visite"
 
 #: models.py:61
 msgid "recent search"
-msgstr ""
+msgstr "ricerce recenti"
 
 #: models.py:62
 msgid "recent searches"
-msgstr ""
+msgstr "risultati della ricerca"
 
 #: views.py:33
 #, python-format
 msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
+"risultati, (mostra esclusivamente %(shown_result_count)s di "
+"%(result_count)s)"
 
 #: views.py:37
 msgid "results"
-msgstr ""
+msgstr "risultati"
 
 #: views.py:56
 #, python-format
 msgid "Search error: %s"
-msgstr ""
+msgstr "Errore di ricerca:%s"
 
 #: views.py:60
 msgid "type"
-msgstr ""
+msgstr "tipo"
 
 #: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
 #: templatetags/search_tags.py:20
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: conf/settings.py:12
 msgid "Maximum amount search hits to fetch and display."
-msgstr ""
+msgstr "Ricerca importo massimo di visitatori per questa visualizzazione."
 
 #: conf/settings.py:13
 msgid "Maximum number of search queries to remember per user."
-msgstr ""
+msgstr "Numero massimo di query di ricerca da ricordare per utente."
 
 #: templates/search_help.html:3
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #: templates/search_help.html:4
 #, python-format
@@ -98,19 +101,21 @@ msgid ""
 "Enter the desired search keywords separated by space.  Only the top "
 "%(search_results_limit)s results will be available."
 msgstr ""
+"Inserisci le parole da cercare separate da spazzi. Solo i primi "
+"%(search_results_limit)s saranno disponibili."
 
 #: templates/search_results.html:3
 msgid "Search results"
-msgstr ""
+msgstr "Risultati della ricerca"
 
 #: templates/search_results.html:19
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
-msgstr ""
+msgstr "Tempo trascorso: %(time_delta)s in secondi"
 
 #: templatetags/search_tags.py:33
 #, python-format
 msgid "recent searches (maximum of %d)"
-msgstr ""
+msgstr "ricerche recenti (maximum of %d)"
 
 

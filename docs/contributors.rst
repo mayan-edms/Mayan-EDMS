@@ -44,4 +44,4 @@ Translations
 * Russian
     * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * Italian
-    * Pierpaolo Baldan
+    * SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)

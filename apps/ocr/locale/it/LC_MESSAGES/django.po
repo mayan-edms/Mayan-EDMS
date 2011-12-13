@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#   <pierpaolo.baldan@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-09-30 04:41+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-12-09 16:09+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,416 +20,426 @@ msgstr ""
 
 #: __init__.py:28
 msgid "Submit document for OCR"
-msgstr ""
+msgstr "Sottoporre documenti per l'OCR"
 
 #: __init__.py:29
 msgid "Delete document for OCR queue"
-msgstr ""
+msgstr "Cancellare i documenti dalla coda per OCR"
 
 #: __init__.py:30
 msgid "Can enable/disable an OCR queue"
-msgstr ""
+msgstr "Posso attivare/disattivare una coda per OCR"
 
 #: __init__.py:31
 msgid "Can execute an OCR clean up on all document pages"
-msgstr ""
+msgstr "Può eseguire un OCR ripulendo tutte le pagine del documento"
 
 #: __init__.py:32
 msgid "Can edit an OCR queue properties"
-msgstr ""
+msgstr "Posso modificare le proprità della coda di OCR"
 
 #: __init__.py:34 __init__.py:56 __init__.py:74
 msgid "OCR"
-msgstr ""
+msgstr "OCR"
 
 #: __init__.py:40
 msgid "OCR Setup"
-msgstr ""
+msgstr "Configurazione OCR"
 
 #: __init__.py:44
 msgid "submit to OCR queue"
-msgstr ""
+msgstr "Sottoponi una coda di OCR"
 
 #: __init__.py:45 __init__.py:46
 msgid "re-queue"
-msgstr ""
+msgstr "riaccoda"
 
 #: __init__.py:47 __init__.py:48 __init__.py:63
 msgid "delete"
-msgstr ""
+msgstr "cancella"
 
 #: __init__.py:50
 msgid "stop queue"
-msgstr ""
+msgstr "stoppa la coda"
 
 #: __init__.py:51
 msgid "activate queue"
-msgstr ""
+msgstr "attiva la coda"
 
 #: __init__.py:53
 msgid "clean up pages content"
-msgstr ""
+msgstr "ripulisci il contenuto delle pagine"
 
 #: __init__.py:53
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
 msgstr ""
+"Esegue un filtro per rimuovere i comuni errori di OCR dal contenuto del "
+"documento pagine."
 
 #: __init__.py:55
 msgid "queue document list"
-msgstr ""
+msgstr "lista dei documenti in coda"
 
 #: __init__.py:58 views.py:316
 msgid "active tasks"
-msgstr ""
+msgstr "attiva i tasks"
 
 #: __init__.py:60
 msgid "transformations"
-msgstr ""
+msgstr "transformazioni"
 
 #: __init__.py:61
 msgid "add transformation"
-msgstr ""
+msgstr "aggiungi trasformazione"
 
 #: __init__.py:62
 msgid "edit"
-msgstr ""
+msgstr "modifica"
 
 #: __init__.py:82
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 #: __init__.py:104
 msgid "Checks the OCR queue for pending documents."
-msgstr ""
+msgstr "Controlla i documenti nella coda dell'OCR"
 
 #: api.py:119
 msgid "Text from OCR"
-msgstr ""
+msgstr "testo dall'OCR"
 
 #: literals.py:8
 msgid "stopped"
-msgstr ""
+msgstr "fermato"
 
 #: literals.py:9
 msgid "active"
-msgstr ""
+msgstr "attivo"
 
 #: literals.py:18
 msgid "pending"
-msgstr ""
+msgstr "in esecuzione"
 
 #: literals.py:19
 msgid "processing"
-msgstr ""
+msgstr "in elaborazione"
 
 #: literals.py:20
 msgid "error"
-msgstr ""
+msgstr "errore"
 
 #: models.py:22
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: models.py:23
 msgid "label"
-msgstr ""
+msgstr "etichetta"
 
 #: models.py:27 models.py:47
 msgid "state"
-msgstr ""
+msgstr "stato"
 
 #: models.py:32 models.py:40 views.py:44 views.py:337 views.py:378
 #: views.py:408 views.py:444
 msgid "document queue"
-msgstr ""
+msgstr "coda del documento"
 
 #: models.py:33
 msgid "document queues"
-msgstr ""
+msgstr "code di documenti"
 
 #: models.py:41
 msgid "document"
-msgstr ""
+msgstr "documento"
 
 #: models.py:42
 msgid "date time submitted"
-msgstr ""
+msgstr "orario di esecuzione"
 
 #: models.py:43
 msgid "delay ocr"
-msgstr ""
+msgstr "proroga ocr"
 
 #: models.py:48
 msgid "result"
-msgstr ""
+msgstr "risultato"
 
 #: models.py:49
 msgid "node name"
-msgstr ""
+msgstr "nome del nodo"
 
 #: models.py:53
 msgid "queue document"
-msgstr ""
+msgstr "coda del documento"
 
 #: models.py:54
 msgid "queue documents"
-msgstr ""
+msgstr "code dei documenti"
 
 #: models.py:63 views.py:48
 msgid "Missing document."
-msgstr ""
+msgstr "Documento perso"
 
 #: models.py:67
 msgid "Enter a valid value."
-msgstr ""
+msgstr "Inserisci un valore valido"
 
 #: models.py:95 views.py:341
 msgid "order"
-msgstr ""
+msgstr "ordina"
 
 #: models.py:96 views.py:342 views.py:379 views.py:409
 msgid "transformation"
-msgstr ""
+msgstr "trasforma"
 
 #: models.py:97 views.py:343
 msgid "arguments"
-msgstr ""
+msgstr "argomenti"
 
 #: models.py:97
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
+msgstr "Usa un dizionario per identificare gli argomenti, esempio: %s"
 
 #: models.py:107
 msgid "document queue transformation"
-msgstr ""
+msgstr "coda del documento in trasformazione"
 
 #: models.py:108
 msgid "document queue transformations"
-msgstr ""
+msgstr "code dei documenti in trasformazione"
 
 #: statistics.py:8
 #, python-format
 msgid "Document queues: %d"
-msgstr ""
+msgstr "Coda documento:%d"
 
 #: statistics.py:9
 #, python-format
 msgid "Queued documents: %d"
-msgstr ""
+msgstr "Code di documenti:%d"
 
 #: statistics.py:13
 msgid "OCR statistics"
-msgstr ""
+msgstr "Statistiche OCR"
 
 #: views.py:41
 #, python-format
 msgid "documents in queue: %s"
-msgstr ""
+msgstr "documenti in coda: %s"
 
 #: views.py:49
 msgid "thumbnail"
-msgstr ""
+msgstr "thumbnail"
 
 #: views.py:62
 msgid "document queue properties"
-msgstr ""
+msgstr "proprietà della coda documenti"
 
 #: views.py:63
 #, python-format
 msgid "Current state: %s"
-msgstr ""
+msgstr "Stato corrente: %s"
 
 #: views.py:79 views.py:154
 msgid "Must provide at least one queue document."
-msgstr ""
+msgstr "Deve fornire almeno un documento di coda."
 
 #: views.py:89
 #, python-format
 msgid "Document: %s is being processed and can't be deleted."
-msgstr ""
+msgstr "Il document: %s è in elaborazione e non può essere cancellato."
 
 #: views.py:92
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
-msgstr ""
+msgstr "Coda documento: %(document)s cancellata con successo."
 
 #: views.py:96
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
-msgstr ""
+msgstr "Errore nella cancellazione del documento: %(document)s; %(error)s"
 
 #: views.py:109
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
-msgstr ""
+msgstr "Sei sicuro di voler cancellare questa coda documento: %s?"
 
 #: views.py:111
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
-msgstr ""
+msgstr "Sei sicuro di voler cancellare queste code documento: %s?"
 
 #: views.py:134
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
 msgstr ""
+"Il documento: %(document)s è stato aggiunto alla coda %(queue)s per OCR."
 
 #: views.py:137
 #, python-format
 msgid "Document: %(document)s is already queued."
-msgstr ""
+msgstr "Il documento: %(document)s è gia stato elaborato."
 
 #: views.py:165
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
-msgstr ""
+msgstr "Il documento: %s è gia stato processato non può essere riprocessato."
 
 #: views.py:173
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr ""
+msgstr "Il documento: %(document)s è stato riprocessato  %(queue)s per  OCR."
 
 #: views.py:176
 #, python-format
 msgid "Document id#: %d, no longer exists."
-msgstr ""
+msgstr "il documento id#: %d,non esiste più."
 
 #: views.py:189
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
-msgstr ""
+msgstr "Sei sicuro di volere riprocessare il documento: %s?"
 
 #: views.py:191
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
-msgstr ""
+msgstr "Sei sicuro di volere riprocessare questi documenti: %s?"
 
 #: views.py:209
 #, python-format
 msgid "Document queue: %s, already stopped."
-msgstr ""
+msgstr "Questa coda: %s, è stata appena fermata."
 
 #: views.py:215
 #, python-format
 msgid "Document queue: %s, stopped successfully."
-msgstr ""
+msgstr "Questa coda: %s,è stata fermata con successo."
 
 #: views.py:221
 #, python-format
 msgid "Are you sure you wish to disable document queue: %s"
-msgstr ""
+msgstr "Sei sicuro di voler fermare la coda per il documento: %s"
 
 #: views.py:236
 #, python-format
 msgid "Document queue: %s, already active."
-msgstr ""
+msgstr "La coda per questo documento: %s, è già attiva."
 
 #: views.py:242
 #, python-format
 msgid "Document queue: %s, activated successfully."
-msgstr ""
+msgstr "Coda documento: %s, attivata con successo."
 
 #: views.py:248
 #, python-format
 msgid "Are you sure you wish to activate document queue: %s"
-msgstr ""
+msgstr "Sei sicuro di voler attivare questa coda documento: %s"
 
 #: views.py:265
 msgid "Are you sure you wish to clean up all the pages content?"
-msgstr ""
+msgstr "Sei sicuro di voler ripulire tutto il contenuto delle pagine?"
 
 #: views.py:266
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
+msgstr "Nei database grandi questa operazione può richiedere del tempo."
 
 #: views.py:272
 msgid "Document pages content clean up complete."
-msgstr ""
+msgstr "Pulizia del contenuto delle pagine completata."
 
 #: views.py:274
 #, python-format
 msgid "Document pages content clean up error: %s"
-msgstr ""
+msgstr "Errore nella pulizia del contenuto delle pagine: %s"
 
 #: views.py:320
 msgid "node"
-msgstr ""
+msgstr "nodo"
 
 #: views.py:321
 msgid "task id"
-msgstr ""
+msgstr "task id"
 
 #: views.py:322
 msgid "task name"
-msgstr ""
+msgstr "nome task"
 
 #: views.py:323
 msgid "related object"
-msgstr ""
+msgstr "oggetto correlato"
 
 #: views.py:335
 #, python-format
 msgid "transformations for: %s"
-msgstr ""
+msgstr "trasformazione per: %s"
 
 #: views.py:365
 msgid "Queue transformation edited successfully"
-msgstr ""
+msgstr "Modifica della coda di trasformazione effettuata con successo"
 
 #: views.py:368
 #, python-format
 msgid "Error editing queue transformation; %s"
-msgstr ""
+msgstr "Errore nella modifica alla coda di trasformazione; %s"
 
 #: views.py:373
 #, python-format
 msgid "Edit transformation: %s"
-msgstr ""
+msgstr "Modifica trasformazioni:%s"
 
 #: views.py:396
 msgid "Queue transformation deleted successfully."
-msgstr ""
+msgstr "Coda di trasformazione cancellata con successo"
 
 #: views.py:398
 #, python-format
 msgid "Error deleting queue transformation; %(error)s"
-msgstr ""
+msgstr "Errore nella cancellazione della coda di trasformazione; %(error)s"
 
 #: views.py:411
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 msgstr ""
+"Sei sicuro di voler cancellare la coda di trasformazione "
+"\"%(transformation)s\""
 
 #: views.py:434
 msgid "Queue transformation created successfully"
-msgstr ""
+msgstr "Coda di trasformazione creata con successo"
 
 #: views.py:437
 #, python-format
 msgid "Error creating queue transformation; %s"
-msgstr ""
+msgstr "Errore creano la coda di trasformazione; %s"
 
 #: views.py:446
 #, python-format
 msgid "Create new transformation for queue: %s"
-msgstr ""
+msgstr "Crea una nuova coda di trasformazione:%s"
 
 #: conf/settings.py:13
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
 msgstr ""
+"Quantità di secondi di ritardo OCR di documenti per consentire lo stoccaggio"
+" nel nodo di replica."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
 msgstr ""
+"Importo massimo di documenti concorrenti per OCR che un nodo è in grado di "
+"eseguire."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
 msgstr ""
+"Automaticamente crea una coda appena si sottomone un documento ad OCR."
 
 #: conf/settings.py:17
 msgid ""
@@ -436,13 +447,16 @@ msgid ""
 " to use for locking. Multiple hosts can be specified separated by a "
 "semicolon."
 msgstr ""
+"URI in the form: \"memcached://127.0.0.1:11211/\" to specify a cache backend"
+" to use for locking. Multiple hosts can be specified separated by a "
+"semicolon."
 
 #: conf/settings.py:18
 msgid "File path to unpaper program."
-msgstr ""
+msgstr "File path per il programma unpaper"
 
 #: parsers/__init__.py:23
 msgid "Text extracted from PDF"
-msgstr ""
+msgstr "Testo estratto da PDF"
 
 
