@@ -1,3 +1,8 @@
+Version 0.12
+------------
+* Italian translation by SeeOpen.IT (www.seeopen.it, info@seeopen.it)
+
+
 Version 0.11
 ------------
 * Support for signed documents verification added, embedded and detached
