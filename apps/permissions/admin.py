@@ -12,7 +12,7 @@ class PermissionHolderInline(admin.StackedInline):
 
 class PermissionAdmin(admin.ModelAdmin):
     inlines = [PermissionHolderInline]
-    list_display = ('namespace', 'name', 'label')
+    list_display = ('namespace', 'name')
     list_display_links = list_display
 
 
