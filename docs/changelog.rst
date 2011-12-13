@@ -1,3 +1,20 @@
+Version 0.12
+------------
+* Statistics fixes
+* Italian translation by SeeOpen.IT (www.seeopen.it, info@seeopen.it)
+* Removed the 'db_index' argument from Text fields definition and 
+  migrations as it was causing error messages for MySQL users.
+
+Version 0.11.1
+--------------
+* Fixed a document deletion regression
+* Improves error detection when importing keys from a keyserver, catching
+  the exception KeyImportError and not KeyFetchingError
+* Fixes a wrong method call when verifying signatures for the first time upon document uploading
+* django-compress is now disabled by default to avoid problems when deploying with DjangoZoom
+* Improve post metadata set delete redirection
+
+
 Version 0.11
 ------------
 * Support for signed documents verification added, embedded and detached
