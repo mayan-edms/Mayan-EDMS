@@ -12,18 +12,20 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 
-from permissions.models import Permission
+from permissions.models import StoredPermission
 
 _cache = {}
 
+_class_permissions = {}
 
+
+def class_permissions(cls, permission_list):
+    stored_permissions = _class_permissions.setdefault(cls, [])
+    stored_permissions.extend(permission_list)
+            
+            
 class EncapsulatedObject(object):
     source_object_name = u'source_object'
-
-    #@classmethod
-    #def __new__(cls, *args, **kwargs):
-    #    cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
-    #    return super(EncapsulatedObject, cls).__new__(*args, **kwargs)
 
     @classmethod
     def add_to_class(cls, name, value):
@@ -73,8 +75,8 @@ class EncapsulatedObject(object):
             return cls.encapsulate(app_label=app_label, model=model, pk=pk)
                 
     def __init__(self, source_object):
-        content_type = ContentType.objects.get_for_model(source_object)
-        self.gid = '%s.%s.%s' % (content_type.app_label, content_type.name, source_object.pk)
+        self.content_type = ContentType.objects.get_for_model(source_object)
+        self.gid = '%s.%s.%s' % (self.content_type.app_label, self.content_type.name, source_object.pk)
         setattr(self, self.__class__.source_object_name, source_object)
 
     def __unicode__(self):
@@ -86,6 +88,9 @@ class EncapsulatedObject(object):
     @property
     def source_object(self):
         return getattr(self, self.__class__.source_object_name, None)
+        
+    def get_class_permissions(self):
+        return _class_permissions.get(self.content_type.model_class(), [])
         
         
 class AccessHolder(EncapsulatedObject):
@@ -131,7 +136,7 @@ class AccessEntryManager(models.Manager):
                         
         try:
             access_entry = self.model.objects.get(
-                permission=permission,
+                permission=permission.get_stored_permission(),
                 holder_type=ContentType.objects.get_for_model(requester),
                 holder_id=requester.pk,
                 content_type=ContentType.objects.get_for_model(obj),
@@ -142,7 +147,7 @@ class AccessEntryManager(models.Manager):
             return False
                 
     def check_access(self, permission, requester, obj):
-        if has_accesses(permission, requester, obj):
+        if self.has_accesses(permission, requester, obj):
             return True
         else:
             raise PermissionDenied(ugettext(u'Insufficient permissions.'))
@@ -150,6 +155,10 @@ class AccessEntryManager(models.Manager):
     def get_acl_url(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
         return reverse('acl_list', args=[content_type.app_label, content_type.model, obj.pk])
+
+    def get_new_holder_url(self, obj):
+        content_type = ContentType.objects.get_for_model(obj)
+        return reverse('acl_new_holder_for', args=[content_type.app_label, content_type.model, obj.pk])
         
     def get_holders_for(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
@@ -162,10 +171,10 @@ class AccessEntryManager(models.Manager):
         
         return holder_list
 
-    def get_permissions_for_holder(self, obj, holder):
+    def get_holder_permissions_for(self, obj, holder):
         if isinstance(holder, User):
             if holder.is_superuser or holder.is_staff:
-                return Permission.objects.active_only()
+                return Permission.objects.all()
                         
         holder_type = ContentType.objects.get_for_model(holder)
         content_type = ContentType.objects.get_for_model(obj)
@@ -173,7 +182,7 @@ class AccessEntryManager(models.Manager):
 
 
 class AccessEntry(models.Model):
-    permission = models.ForeignKey(Permission, verbose_name=_(u'permission'))
+    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
 
     holder_type = models.ForeignKey(
         ContentType,
