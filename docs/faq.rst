@@ -104,7 +104,6 @@ Site search is slow
   * Add indexes to the following fields:
   
     - ``documents_document`` - description, recommended size: 160
-    - ``documents_documentmetadata`` - value, recommended size: 80
     - ``documents_documentpage`` - content, recommended size: 3000
 
 

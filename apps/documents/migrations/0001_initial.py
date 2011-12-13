@@ -28,7 +28,7 @@ class Migration(SchemaMigration):
             ('date_added', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, db_index=True, blank=True)),
             ('date_updated', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('checksum', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(db_index=True, null=True, blank=True)),
+            ('description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
         ))
         db.send_create_signal('documents', ['Document'])
 
@@ -45,7 +45,7 @@ class Migration(SchemaMigration):
         db.create_table('documents_documentpage', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('document', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document'])),
-            ('content', self.gf('django.db.models.fields.TextField')(db_index=True, null=True, blank=True)),
+            ('content', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
             ('page_label', self.gf('django.db.models.fields.CharField')(max_length=32, null=True, blank=True)),
             ('page_number', self.gf('django.db.models.fields.PositiveIntegerField')(default=1, db_index=True)),
         ))
