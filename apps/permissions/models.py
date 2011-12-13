@@ -20,14 +20,6 @@ class PermissionNamespace(object):
     def __unicode__(self):
         return unicode(self.label)
 
-#class LazyQuerySet(list):
-#    def __init__(self, model, items):
-#        self.model = model
-#        self.items = items
-#        
-#    def get(self, *args, **kwargs):
-#        print args
-#        print kwargs
 
 class PermissionDoesNotExists(Exception):
     pass
@@ -58,13 +50,15 @@ class PermissionManager(object):
     @classmethod
     def all(cls):
         return cls._permissions.values()
-        #return LazyQuerySet(cls, cls._permissions)
 
     @classmethod
-    def get(cls, get_dict):
+    def get(cls, get_dict, proxy_only=False):
         if 'pk' in get_dict:
             try:
-                return cls._permissions[get_dict['pk']].get_stored_permission()
+                if proxy_only:
+                    return cls._permissions[get_dict['pk']]
+                else:
+                    return cls._permissions[get_dict['pk']].get_stored_permission()
             except KeyError:
                 raise Permission.DoesNotExist
             
@@ -118,18 +112,22 @@ Permission._default_manager = Permission.objects
 class StoredPermission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
-    label = models.CharField(max_length=96, verbose_name=_(u'label'))
+    #label = models.CharField(max_length=96, verbose_name=_(u'label'))
 
     objects = StoredPermissionManager()
 
     class Meta:
-        ordering = ('namespace', 'label')
+        ordering = ('namespace', ) 
         unique_together = ('namespace', 'name')
         verbose_name = _(u'permission')
         verbose_name_plural = _(u'permissions')
         
+    def __init__(self, *args, **kwargs):
+        super(StoredPermission, self).__init__(*args, **kwargs)
+        self.volatile_permission = Permission.objects.get({'pk': '%s.%s' % (self.namespace, self.name)}, proxy_only=True)
+        
     def __unicode__(self):
-        return unicode(self.volatile_permission)
+        return unicode(getattr(self, 'volatile_permission', self.name))
 
     def get_holders(self):
         return [holder.holder_object for holder in self.permissionholder_set.all()]
