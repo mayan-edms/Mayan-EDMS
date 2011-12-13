@@ -3,6 +3,16 @@ Version 0.12
 * Italian translation by SeeOpen.IT (www.seeopen.it, info@seeopen.it)
 
 
+Version 0.11.1
+--------------
+* Fixed a document deletion regression
+* Improves error detection when importing keys from a keyserver, catching
+  the exception KeyImportError and not KeyFetchingError
+* Fixes a wrong method call when verifying signatures for the first time upon document uploading
+* django-compress is now disabled by default to avoid problems when deploying with DjangoZoom
+* Improve post metadata set delete redirection
+
+
 Version 0.11
 ------------
 * Support for signed documents verification added, embedded and detached
