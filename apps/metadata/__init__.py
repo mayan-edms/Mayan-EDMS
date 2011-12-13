@@ -6,6 +6,7 @@ from permissions.models import Permission, PermissionNamespace
 from documents.models import Document, DocumentType
 from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
+from acls.models import class_permissions
 
 from metadata.models import MetadataType, MetadataSet
 
@@ -68,3 +69,10 @@ register_sidebar_template(['setup_metadata_set_list'], 'metadata_set_help.html')
 register_setup(setup_metadata_type_list)
 register_setup(setup_metadata_set_list)
 
+
+class_permissions(Document, [
+    PERMISSION_METADATA_DOCUMENT_EDIT,
+    PERMISSION_METADATA_DOCUMENT_ADD,
+    PERMISSION_METADATA_DOCUMENT_REMOVE,
+    PERMISSION_METADATA_DOCUMENT_VIEW,
+])
