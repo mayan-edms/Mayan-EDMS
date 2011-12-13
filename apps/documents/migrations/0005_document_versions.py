@@ -91,7 +91,7 @@ class Migration(DataMigration):
             'checksum': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'date_added': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
             'date_updated': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {'db_index': 'True', 'null': 'True', 'blank': 'True'}),
+            'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'document_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.DocumentType']", 'null': 'True', 'blank': 'True'}),
             'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'file_filename': ('django.db.models.fields.CharField', [], {'default': "u''", 'max_length': '255', 'db_index': 'True'}),
@@ -102,7 +102,7 @@ class Migration(DataMigration):
         },
         'documents.documentpage': {
             'Meta': {'ordering': "['page_number']", 'object_name': 'DocumentPage'},
-            'content': ('django.db.models.fields.TextField', [], {'db_index': 'True', 'null': 'True', 'blank': 'True'}),
+            'content': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'document': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.Document']"}),
             'document_version': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.DocumentVersion']", 'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
