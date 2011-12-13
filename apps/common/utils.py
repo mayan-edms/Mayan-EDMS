@@ -326,6 +326,19 @@ def generate_choices_w_labels(choices, display_object_type=True):
     return sorted(results, key=lambda x: x[1])
 
 
+def get_object_name(obj, display_object_type=True): 
+    ct_label = ContentType.objects.get_for_model(obj).name
+    label = unicode(obj)
+    if isinstance(obj, User):
+        label = obj.get_full_name() if obj.get_full_name() else obj
+
+    if display_object_type:
+        verbose_name = unicode(getattr(obj._meta, u'verbose_name', ct_label))
+        return u'%s: %s' % (verbose_name, label)
+    else:
+        return u'%s' % (label)
+
+
 def return_diff(old_obj, new_obj, attrib_list=None):
     diff_dict = {}
     if not attrib_list:
