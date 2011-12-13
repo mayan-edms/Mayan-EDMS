@@ -1,7 +1,9 @@
 Version 0.12
 ------------
+* Statistics fixes
 * Italian translation by SeeOpen.IT (www.seeopen.it, info@seeopen.it)
-
+* Removed the 'db_index' argument from Text fields definition and 
+  migrations as it was causing error messages for MySQL users.
 
 Version 0.11.1
 --------------
