@@ -11,6 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
+from django.db.models.base import ModelBase
 
 from permissions.models import StoredPermission
 
@@ -42,11 +43,14 @@ class EncapsulatedObject(object):
     def encapsulate(cls, source_object=None, app_label=None, model=None, pk=None):
         if source_object:
             content_type = ContentType.objects.get_for_model(source_object)
-        elif app_label and model and pk:
+        elif app_label and model:
             try:
                 content_type = ContentType.objects.get(app_label=app_label, model=model)
                 source_object_model_class = content_type.model_class()
-                source_object = content_type.get_object_for_this_type(pk=pk)
+                if pk:
+                    source_object = content_type.get_object_for_this_type(pk=pk)
+                else:
+                    source_object = source_object_model_class
             except ContentType.DoesNotExist:
                 #cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
                 #raise cls.DoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
@@ -56,7 +60,12 @@ class EncapsulatedObject(object):
                 #raise cls.DoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
                 raise ObjectDoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
            
-        object_key = '%s.%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model, source_object.pk)
+        if hasattr(source_object, 'pk'):
+            # Object
+            object_key = '%s.%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model, source_object.pk)
+        else:
+            # Class
+            object_key = '%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model)
 
         try:
             return _cache[object_key]
@@ -67,16 +76,33 @@ class EncapsulatedObject(object):
 
     @classmethod
     def get(cls, gid):
-        app_label, model, pk = gid.split('.')
-        object_key = '%s.%s.%s.%s' % (cls.__name__, app_label, model, pk)
+        elements = gid.split('.')
+        if len(elements) == 3:
+            app_label, model, pk = elements[0], elements[1], elements[2]
+            object_key = '%s.%s.%s.%s' % (cls.__name__, app_label, model, pk)
+        elif len(elements) == 2:
+            app_label, model = elements[0], elements[1]
+            pk = None
+            object_key = '%s.%s.%s' % (cls.__name__, app_label, model)
+            
         try:
             return _cache[object_key]
         except KeyError:
-            return cls.encapsulate(app_label=app_label, model=model, pk=pk)
+            if pk:
+                return cls.encapsulate(app_label=app_label, model=model, pk=pk)
+            else:
+                return cls.encapsulate(app_label=app_label, model=model)
                 
     def __init__(self, source_object):
+        print 'source_object', source_object.__class__
         self.content_type = ContentType.objects.get_for_model(source_object)
-        self.gid = '%s.%s.%s' % (self.content_type.app_label, self.content_type.name, source_object.pk)
+        if isinstance(source_object, ModelBase):
+            # Class
+            self.gid = '%s.%s' % (self.content_type.app_label, self.content_type.name)
+        else:
+            # Object 
+            self.gid = '%s.%s.%s' % (self.content_type.app_label, self.content_type.name, source_object.pk)
+            
         setattr(self, self.__class__.source_object_name, source_object)
 
     def __unicode__(self):
@@ -100,6 +126,10 @@ class AccessHolder(EncapsulatedObject):
 class AccessObject(EncapsulatedObject):
     source_object_name = u'obj'    
    
+
+class AccessObjectClass(EncapsulatedObject):
+    source_object_name = u'object_class'
+
 
 class AccessEntryManager(models.Manager):
     def grant(self, permission, requester, obj):
@@ -210,6 +240,54 @@ class AccessEntry(models.Model):
     class Meta:
         verbose_name = _(u'access entry')
         verbose_name_plural = _(u'access entries')
+
+    def __unicode__(self):
+        return u'%s: %s' % (self.content_type, self.content_object)
+
+
+class DefaultAccessEntryManager(models.Manager):
+    def get_holders_for(self, cls):
+        content_type = ContentType.objects.get_for_model(cls)
+        holder_list = []
+        for access_entry in self.model.objects.filter(content_type=content_type):
+            entry = AccessHolder.encapsulate(access_entry.holder_object)
+            
+            if entry not in holder_list:
+                holder_list.append(entry)
+        
+        return holder_list
+
+
+
+class DefaultAccessEntry(models.Model):
+    @classmethod
+    def get_classes(cls):
+        #return _class_permissions.keys()
+        return [AccessObjectClass.encapsulate(cls) for cls in _class_permissions.keys()]
+
+    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
+
+    holder_type = models.ForeignKey(
+        ContentType,
+        limit_choices_to={'model__in': ('user', 'group', 'role')},
+        related_name='default_access_entry_holder'
+    )
+    holder_id = models.PositiveIntegerField()
+    holder_object = generic.GenericForeignKey(
+        ct_field='holder_type',
+        fk_field='holder_id'
+    )
+
+    content_type = models.ForeignKey(
+        ContentType,
+        related_name='default_access_entry_class'
+    )
+
+    objects = DefaultAccessEntryManager()
+
+    class Meta:
+        verbose_name = _(u'default access entry')
+        verbose_name_plural = _(u'default access entries')
 
     def __unicode__(self):
         return u'%s: %s' % (self.content_type, self.content_object)
