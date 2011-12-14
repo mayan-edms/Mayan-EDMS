@@ -9,7 +9,6 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object, delete_object, update_object
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User, Group
 from django.core.exceptions import ObjectDoesNotExist
@@ -20,7 +19,8 @@ from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 
 from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
-from acls.models import AccessEntry, AccessObject, AccessHolder
+from acls.models import (AccessEntry, AccessObject, AccessHolder,
+    DefaultAccessEntry, AccessObjectClass)
 from acls.widgets import object_w_content_type_icon
 from acls.forms import HolderSelectionForm
 
@@ -44,7 +44,7 @@ def acl_list_for(request, obj, extra_context=None):
         'extra_columns': [
             {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
             {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object)))},
-            ],
+        ],
         'hide_object': True,
         'access_object': AccessObject.encapsulate(obj)
     }
@@ -264,55 +264,6 @@ def acl_revoke(request):
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
 
-'''
-def get_role_members(role):
-    user_ct = ContentType.objects.get(model='user')
-    group_ct = ContentType.objects.get(model='group')
-    return [member.member_object for member in role.rolemember_set.filter(member_type__in=[user_ct, group_ct])]
-
-
-def get_non_role_members(role):
-    #non members = all users - members - staff - super users
-    staff_users = User.objects.filter(is_staff=True)
-    super_users = User.objects.filter(is_superuser=True)
-    users = set(User.objects.exclude(pk__in=[member.pk for member in get_role_members(role)])) - set(staff_users) - set(super_users)
-    groups = set(Group.objects.exclude(pk__in=[member.pk for member in get_role_members(role)]))
-    return list(users | groups)
-
-
-def add_role_member(role, selection):
-    model, pk = selection.split(u',')
-    ct = ContentType.objects.get(model=model)
-    new_member, created = RoleMember.objects.get_or_create(role=role, member_type=ct, member_id=pk)
-    if not created:
-        raise Exception
-
-
-def remove_role_member(role, selection):
-    model, pk = selection.split(u',')
-    ct = ContentType.objects.get(model=model)
-    member = RoleMember.objects.get(role=role, member_type=ct, member_id=pk)
-    member.delete()
-
-def role_members(request, role_id):
-    check_permissions(request.user, [PERMISSION_ROLE_EDIT])
-    role = get_object_or_404(Role, pk=role_id)
-
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),
-        right_list=lambda: generate_choices_w_labels(get_role_members(role)),
-        add_method=lambda x: add_role_member(role, x),
-        remove_method=lambda x: remove_role_member(role, x),
-        left_list_title=_(u'non members of role: %s') % role,
-        right_list_title=_(u'members of role: %s') % role,
-        extra_context={
-            'object': role,
-            'object_name': _(u'role'),
-        }
-    )
-'''
-
 
 def acl_new_holder_for(request, obj, extra_context=None):
     Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
@@ -340,4 +291,45 @@ def acl_new_holder_for(request, obj, extra_context=None):
         
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))        
-        
+
+
+def acl_setup_valid_classes(request):
+    #Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+
+    logger.debug('DefaultAccessEntry.get_classes(): %s' % DefaultAccessEntry.get_classes())
+
+    context = {
+        #'object_list': [AccessObjectClass.encapsulate(cls) for cls in DefaultAccessEntry.get_classes()],
+        'object_list': DefaultAccessEntry.get_classes(),
+        'title': _(u'default access control lists'),
+        #'hide_links': True,
+        'extra_columns': [
+            {'name': _(u'class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            ],
+        'hide_object': True,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))	
+
+
+def acl_class_acl_list(request, access_object_class_gid):
+    #Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+    
+    access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
+    context = {
+        'object_list': DefaultAccessEntry.objects.get_holders_for(access_object_class.source_object),
+        'title': _(u'default access control lists for: %s' % access_object_class.source_object._meta.verbose_name_plural),
+        #'multi_select_as_buttons': True,
+        #'hide_links': True,
+        #'extra_columns': [
+            #{'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            #{'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object)))},
+        #    ],
+        #'hide_object': True,
+        #'access_object': AccessObject.encapsulate(ct)
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))	
+
