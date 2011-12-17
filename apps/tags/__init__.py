@@ -5,6 +5,7 @@ from navigation.api import register_links, register_top_menu, \
 from permissions.models import PermissionNamespace, Permission
 from common.utils import encapsulate
 from documents.models import Document
+from acls.models import class_permissions
 
 from taggit.models import Tag
 
@@ -55,3 +56,14 @@ register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['document_tags', 'tag_add_attach', 'tag_remove', 'tag_multiple_remove'], [tag_add_attach], menu_name='sidebar')
 
 register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
+
+class_permissions(Document, [
+    PERMISSION_TAG_ATTACH,
+    PERMISSION_TAG_REMOVE,
+])
+
+#class_permissions(Tag, [
+#    PERMISSION_TAG_DELETE,
+#    PERMISSION_TAG_EDIT,
+#    PERMISSION_TAG_VIEW,
+#])
