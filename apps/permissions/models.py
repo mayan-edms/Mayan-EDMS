@@ -2,6 +2,7 @@ import logging
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
@@ -151,7 +152,7 @@ class StoredPermission(models.Model):
             groups = []
 
         for membership in list(set(roles) | set(groups)):
-            if self.has_permission(membership):
+            if self.requester_has_this(membership):
                 return True
 
     def grant_to(self, requester):
