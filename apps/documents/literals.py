@@ -22,6 +22,7 @@ PERMISSION_DOCUMENT_VERSION_REVERT = Permission.objects.register(document_namesp
 
 documents_setup_namespace = PermissionNamespace('documents_setup', _(u'Documents setup'))
 
+PERMISSION_DOCUMENT_TYPE_VIEW = Permission.objects.register(documents_setup_namespace, 'document_type_view', _(u'View document types'))
 PERMISSION_DOCUMENT_TYPE_EDIT = Permission.objects.register(documents_setup_namespace, 'document_type_edit', _(u'Edit document types'))
 PERMISSION_DOCUMENT_TYPE_DELETE = Permission.objects.register(documents_setup_namespace, 'document_type_delete', _(u'Delete document types'))
 PERMISSION_DOCUMENT_TYPE_CREATE = Permission.objects.register(documents_setup_namespace, 'document_type_create', _(u'Create document types'))
