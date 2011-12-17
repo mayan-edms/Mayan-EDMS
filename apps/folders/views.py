@@ -11,9 +11,15 @@ from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from permissions.models import Permission
 from common.utils import encapsulate
+from acls.models import AccessEntry, PermissionDenied
+from acls.views import acl_list_for, acl_new_holder_for
 
 from folders.models import Folder, FolderDocument
 from folders.forms import FolderForm, AddDocumentForm
+from folders import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
+    PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE, 
+    PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
+    PERMISSION_FOLDER_ADD_DOCUMENT)
 
 
 def folder_list(request, queryset=None, extra_context=None):
@@ -27,16 +33,27 @@ def folder_list(request, queryset=None, extra_context=None):
     }
     if extra_context:
         context.update(extra_context)
+
+    queryset = queryset if not (queryset is None) else Folder.objects.all()
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
+    except PermissionDenied:
+        pass
+        #class_objects = AccessEntry.objects.get_allowed_class_objects(PERMISSION_FOLDER_VIEW, request.user, Folder)
+        #queryset = list(set(queryset) & set(class_objects))
+
+    context['object_list'] = queryset
     
-    return object_list(
-        request,
-        queryset=queryset if not (queryset is None) else Folder.objects.filter(user=request.user),
-        template_name='generic_list.html',
-        extra_context=context,
+    return render_to_response('generic_list.html', 
+        context,
+        context_instance=RequestContext(request)
     )
 
 
 def folder_create(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_CREATE])
+    
     if request.method == 'POST':
         form = FolderForm(request.POST)
         if form.is_valid():
@@ -59,8 +76,10 @@ def folder_create(request):
 def folder_edit(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
 
-    if not request.user.is_staff and not request.user.is_superuser and not request.user == folder.user:
-        raise PermissionDenied
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_FOLDER_EDIT, request.user, folder)
 
     if request.method == 'POST':
         form = FolderForm(request.POST)
@@ -87,8 +106,10 @@ def folder_edit(request, folder_id):
 def folder_delete(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
 
-    if not request.user.is_staff and not request.user.is_superuser and not request.user == folder.user:
-        raise PermissionDenied
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_DELETE])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_FOLDER_DELETE, request.user, folder)
 
     post_action_redirect = reverse('folder_list')
 
@@ -122,8 +143,10 @@ def folder_delete(request, folder_id):
 def folder_view(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
 
-    if not request.user.is_staff and not request.user.is_superuser and not request.user == folder.user:
-        raise PermissionDenied
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, request.user, folder)
 
     return render_to_response('generic_list.html', {
         'object_list': [fd.document for fd in folder.folderdocument_set.all()],
@@ -134,7 +157,7 @@ def folder_view(request, folder_id):
         'object_name': _(u'folder'),
     }, context_instance=RequestContext(request))
 
-
+'''
 def folder_add_document_sidebar(request, document_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
@@ -166,12 +189,15 @@ def folder_add_document_sidebar(request, document_id):
                     'document': document, 'folder': folder})
 
     return HttpResponseRedirect(previous)
-
+'''
 
 def folder_add_document(request, document_id):
-    # TODO: merge with folder_add_document_sidebar
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_ADD_DOCUMENT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_FOLDER_ADD_DOCUMENT, request.user, document)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))#reverse('document_tags', args=[document.pk]))))
 
@@ -213,12 +239,16 @@ def folder_add_document(request, document_id):
 
 
 def document_folder_list(request, document_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
     return folder_list(
         request,
-        queryset=Folder.objects.filter(user=request.user).filter(folderdocument__document=document),
+        queryset=Folder.objects.filter(folderdocument__document=document),
         extra_context={
             'title': _(u'folders containing: %s') % document,
             'object': document,
@@ -238,6 +268,15 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     else:
         messages.error(request, _(u'Must provide at least one folder document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
+    except PermissionDenied:
+        for document in folder_documents:
+            try:
+                AccessEntry.objects.check_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, document)
+            except PermissionDenied:
+                folder_documents.remove(document)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -274,3 +313,28 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
 
 def folder_document_multiple_remove(request, folder_id):
     return folder_document_remove(request, folder_id, document_id_list=request.GET.get('id_list', []))
+
+
+def folder_acl_list(request, folder_pk):
+	folder = get_object_or_404(Folder, pk=folder_pk)
+	return acl_list_for(
+		request,
+		folder,
+		extra_context={
+			'object': folder,
+		}
+	)
+
+
+def folder_new_holder(request, folder_pk):
+	folder = get_object_or_404(Folder, pk=folder_pk)
+	return acl_new_holder_for(
+		request,
+		folder,
+		extra_context={
+			'folder': folder,
+            'submit_label': _(u'Select'),
+            'submit_icon_famfam': 'tick',
+            'object': folder,       
+		}
+	)
