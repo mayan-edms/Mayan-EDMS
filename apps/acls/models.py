@@ -195,8 +195,21 @@ class AccessEntryManager(models.Manager):
         if self.has_accesses(permission, requester, obj):
             return True
         else:
-            raise PermissionDenied(ugettext(u'Insufficient permissions.'))
-                
+            raise PermissionDenied(ugettext(u'Insufficient access.'))
+            
+    def check_accesses(self, permission_list, requester, obj):
+        for permission in permission_list:
+            if self.has_accesses(permission, requester, obj):
+                return True
+
+        raise PermissionDenied(ugettext(u'Insufficient access.'))
+
+    def get_allowed_class_objects(self, permission, requester, cls):
+        holder_type = ContentType.objects.get_for_model(requester)
+        content_type = ContentType.objects.get_for_model(cls)
+        
+        return [obj.content_object for obj in self.model.objects.filter(holder_type=holder_type, holder_id=requester.pk, content_type=content_type, permission=permission.get_stored_permission)]
+
     def get_acl_url(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
         return reverse('acl_list', args=[content_type.app_label, content_type.model, obj.pk])
