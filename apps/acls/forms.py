@@ -10,7 +10,7 @@ from acls.models import AccessHolder
 
 class HolderSelectionForm(forms.Form):
     holder_gid = forms.ChoiceField(
-        label=_(u'Holder')
+        label=_(u'New holder')
     )
     
     def __init__(self, *args, **kwargs):
