@@ -1,9 +1,12 @@
 {% load permission_tags %}
 {% load navigation_tags %}
+{% load acl_tags %}
 
 {% with link.permissions as permissions %}
     {% check_permissions request.user permissions %}
-    {% if permission %}
+    {% check_access permissions request.user navigation_object %}
+
+    {% if permission or access %}
         {% if as_li %}
             <li class="{% if forloop.first and li_class_first %}{{ li_class_first }} {% endif %}{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
         {% endif %}
