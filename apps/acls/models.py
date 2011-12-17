@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.db.models.base import ModelBase
+from django.template.defaultfilters import capfirst
 
 from permissions.models import StoredPermission
 
@@ -94,8 +95,9 @@ class EncapsulatedObject(object):
                 return cls.encapsulate(app_label=app_label, model=model)
                 
     def __init__(self, source_object):
-        print 'source_object', source_object.__class__
         self.content_type = ContentType.objects.get_for_model(source_object)
+        self.ct_fullname = '%s.%s' % (self.content_type.app_label, self.content_type.name)
+
         if isinstance(source_object, ModelBase):
             # Class
             self.gid = '%s.%s' % (self.content_type.app_label, self.content_type.name)
@@ -106,7 +108,16 @@ class EncapsulatedObject(object):
         setattr(self, self.__class__.source_object_name, source_object)
 
     def __unicode__(self):
-        return unicode(getattr(self, self.__class__.source_object_name, None))
+        if isinstance(self.source_object, ModelBase):
+            return capfirst(unicode(self.source_object._meta.verbose_name_plural))
+            
+        elif self.ct_fullname == 'auth.user':
+            return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object.get_full_name())
+        else:
+            #label = unicode(obj)
+            return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object)
+            
+            #return unicode(getattr(self, self.__class__.source_object_name, None))
 
     def __repr__(self):
         return self.__unicode__()
@@ -128,14 +139,14 @@ class AccessObject(EncapsulatedObject):
    
 
 class AccessObjectClass(EncapsulatedObject):
-    source_object_name = u'object_class'
+    source_object_name = u'cls'
 
 
 class AccessEntryManager(models.Manager):
     def grant(self, permission, requester, obj):
-        """
+        '''
         Grant a permission (what), (to) a requester, (on) a specific object
-        """
+        '''
         access_entry, created = self.model.objects.get_or_create(
             permission=permission,
             holder_type=ContentType.objects.get_for_model(requester),
@@ -257,12 +268,52 @@ class DefaultAccessEntryManager(models.Manager):
         
         return holder_list
 
+    def has_accesses(self, permission, requester, cls):
+        if isinstance(requester, User):
+            if requester.is_superuser or requester.is_staff:
+                return True
+                        
+        try:
+            access_entry = self.model.objects.get(
+                permission=permission.get_stored_permission(),
+                holder_type=ContentType.objects.get_for_model(requester),
+                holder_id=requester.pk,
+                content_type=ContentType.objects.get_for_model(cls),
+            )
+            return True
+        except self.model.DoesNotExist:
+            return False
+
+    def grant(self, permission, requester, cls):
+        '''
+        Grant a permission (what), (to) a requester, (on) a specific class
+        '''
+        access_entry, created = self.model.objects.get_or_create(
+            permission=permission,
+            holder_type=ContentType.objects.get_for_model(requester),
+            holder_id=requester.pk,
+            content_type=ContentType.objects.get_for_model(cls),
+        )
+        return created
+
+    def revoke(self, permission, holder, cls):
+        try:
+            access_entry = self.model.objects.get(
+                permission=permission,
+                holder_type=ContentType.objects.get_for_model(holder),
+                holder_id=holder.pk,
+                content_type=ContentType.objects.get_for_model(cls),
+            )
+            access_entry.delete()
+            return True
+        except self.model.DoesNotExist:
+            return False		
+
 
 
 class DefaultAccessEntry(models.Model):
     @classmethod
     def get_classes(cls):
-        #return _class_permissions.keys()
         return [AccessObjectClass.encapsulate(cls) for cls in _class_permissions.keys()]
 
     permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
