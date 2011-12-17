@@ -18,9 +18,10 @@ from permissions.models import Permission, Role
 from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 
-from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from acls import (ACLS_EDIT_ACL, ACLS_VIEW_ACL, ACLS_CLASS_EDIT_ACL,
+    ACLS_CLASS_VIEW_ACL)
 from acls.models import (AccessEntry, AccessObject, AccessHolder,
-    DefaultAccessEntry, AccessObjectClass)
+    DefaultAccessEntry, AccessObjectClass, ClassAccessHolder)
 from acls.widgets import object_w_content_type_icon
 from acls.forms import HolderSelectionForm
 
@@ -295,15 +296,12 @@ def acl_new_holder_for(request, obj, extra_context=None):
 
 # Setup views
 def acl_setup_valid_classes(request):
-    #Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL, ACLS_CLASS_EDIT_ACL])
     logger.debug('DefaultAccessEntry.get_classes(): %s' % DefaultAccessEntry.get_classes())
 
     context = {
-        #'object_list': [AccessObjectClass.encapsulate(cls) for cls in DefaultAccessEntry.get_classes()],
         'object_list': DefaultAccessEntry.get_classes(),
-        #'title': _(u'default access control lists'),
         'title': _(u'classes'),
-        #'hide_links': True,
         'extra_columns': [
             {'name': _(u'class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
             ],
@@ -315,21 +313,18 @@ def acl_setup_valid_classes(request):
 
 
 def acl_class_acl_list(request, access_object_class_gid):
-    #Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL, ACLS_CLASS_EDIT_ACL])
     
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
     context = {
         'object_list': DefaultAccessEntry.objects.get_holders_for(access_object_class.source_object),
         'title': _(u'default access control lists for class: %s') % access_object_class,
-        #'multi_select_as_buttons': True,
-        #'hide_links': True,
-        #'extra_columns': [
-            #{'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
-            #{'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object)))},
-        #    ],
-        #'hide_object': True,
-        #'access_object': AccessObject.encapsulate(ct)
-        'object': access_object_class,
+        'extra_columns': [
+            {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(DefaultAccessEntry.objects.get_holder_permissions_for(access_object_class.source_object, x.source_object)))},
+            ],
+        'hide_object': True,
+        'access_object_class': access_object_class,
     }
 
     return render_to_response('generic_list.html', context,
@@ -337,8 +332,7 @@ def acl_class_acl_list(request, access_object_class_gid):
 
 
 def acls_class_acl_detail(request, access_object_class_gid, holder_object_gid):
-    #Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL, ACLS_EDIT_ACL])
-    
+    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL, ACLS_CLASS_EDIT_ACL])
     try:
         holder = AccessHolder.get(gid=holder_object_gid)
         access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
@@ -380,21 +374,20 @@ def acls_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         
 
 def acl_class_new_holder_for(request, access_object_class_gid):
-    #Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+    Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
 
     if request.method == 'POST':
         form = HolderSelectionForm(request.POST)
         if form.is_valid():
             try:
-                #access_object = AccessObject.encapsulate(access_object_class)
-                access_holder = AccessHolder.get(form.cleaned_data['holder_gid'])
+                access_holder = ClassAccessHolder.get(form.cleaned_data['holder_gid'])
 
                 return HttpResponseRedirect(reverse('acls_class_acl_detail', args=[access_object_class.gid, access_holder.gid]))
             except ObjectDoesNotExist:
                 raise Http404
     else:
-        form = HolderSelectionForm()
+        form = HolderSelectionForm(current_holders=DefaultAccessEntry.objects.get_holders_for(access_object_class))
 
     context = {
         'form': form,
@@ -409,7 +402,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
 
 
 def acl_class_multiple_grant(request):
-    #Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+    Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
@@ -489,7 +482,7 @@ def acl_class_multiple_grant(request):
 
 
 def acl_class_multiple_revoke(request):
-    #Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+    Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
