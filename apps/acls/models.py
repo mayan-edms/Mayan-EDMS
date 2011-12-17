@@ -142,6 +142,10 @@ class AccessObjectClass(EncapsulatedObject):
     source_object_name = u'cls'
 
 
+class ClassAccessHolder(EncapsulatedObject):
+    source_object_name = u'class_holder'
+
+
 class AccessEntryManager(models.Manager):
     def grant(self, permission, requester, obj):
         '''
@@ -258,10 +262,13 @@ class AccessEntry(models.Model):
 
 class DefaultAccessEntryManager(models.Manager):
     def get_holders_for(self, cls):
+        if isinstance(cls, EncapsulatedObject):
+            cls = cls.source_object
+
         content_type = ContentType.objects.get_for_model(cls)
         holder_list = []
         for access_entry in self.model.objects.filter(content_type=content_type):
-            entry = AccessHolder.encapsulate(access_entry.holder_object)
+            entry = ClassAccessHolder.encapsulate(access_entry.holder_object)
             
             if entry not in holder_list:
                 holder_list.append(entry)
@@ -309,6 +316,14 @@ class DefaultAccessEntryManager(models.Manager):
         except self.model.DoesNotExist:
             return False		
 
+    def get_holder_permissions_for(self, cls, holder):
+        if isinstance(holder, User):
+            if holder.is_superuser or holder.is_staff:
+                return Permission.objects.all()
+                        
+        holder_type = ContentType.objects.get_for_model(holder)
+        content_type = ContentType.objects.get_for_model(cls)
+        return [access.permission for access in self.model.objects.filter(content_type=content_type, holder_type=holder_type, holder_id=holder.pk)]
 
 
 class DefaultAccessEntry(models.Model):
