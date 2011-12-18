@@ -96,7 +96,7 @@ def do_document_ocr(queue_document):
             # Fall back to doing visual OCR
             ocr_transformations, warnings = queue_document.get_transformation_list()
 
-            document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number)
+            document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number, version=document_page.document_version.pk)
             unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
             unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
 
