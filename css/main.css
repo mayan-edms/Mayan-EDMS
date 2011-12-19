@@ -59,9 +59,9 @@ ul.piramid_bullets > li {
 	    margin-left: 20px;
 		list-style-type:square;
 	}
-ul.news > li {margin-bottom: 5em;}
-ul.support > li {margin-bottom: 4em;}
-ul.other_site > li {margin-bottom: 4em;}
+ul.news > li {margin-bottom: 4em;}
+ul.support > li {margin-bottom: 3em;}
+ul.other_site > li {margin-bottom: 3em;}
 ul {
 		list-style:circle;
 	    margin-left: 20px;
