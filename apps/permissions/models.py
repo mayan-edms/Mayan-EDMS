@@ -50,7 +50,8 @@ class PermissionManager(object):
     
     @classmethod
     def all(cls):
-        return cls._permissions.values()
+        # Return sorted permisions by namespace.name
+        return sorted(cls._permissions.values(), key=lambda x: x.namespace.name)
 
     @classmethod
     def get(cls, get_dict, proxy_only=False):
