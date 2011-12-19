@@ -60,6 +60,7 @@ ul.piramid_bullets > li {
 		list-style-type:square;
 	}
 ul.news > li {margin-bottom: 5em;}
+ul.support > li {margin-bottom: 4em;}
 ul.other_site > li {margin-bottom: 4em;}
 ul {
 		list-style:circle;
