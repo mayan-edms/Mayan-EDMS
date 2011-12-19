@@ -89,9 +89,6 @@ class Permission(object):
         stored_permission, created = StoredPermission.objects.get_or_create(
             namespace=self.namespace.name,
             name=self.name,
-            defaults={
-                'label': self.label
-            }
         )
         stored_permission.label = self.label
         stored_permission.save()
@@ -114,7 +111,6 @@ Permission._default_manager = Permission.objects
 class StoredPermission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
-    label = models.CharField(max_length=96, verbose_name=_(u'label'))  # TODO: Create migration
 
     objects = StoredPermissionManager()
 
