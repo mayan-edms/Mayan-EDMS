@@ -1,5 +1,6 @@
 import sys
 import types
+import logging
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -19,6 +20,8 @@ from permissions.models import StoredPermission
 _cache = {}
 
 _class_permissions = {}
+
+logger = logging.getLogger(__name__)
 
 
 def class_permissions(cls, permission_list):
@@ -237,6 +240,12 @@ class AccessEntryManager(models.Manager):
         holder_type = ContentType.objects.get_for_model(holder)
         content_type = ContentType.objects.get_for_model(obj)
         return [access.permission for access in self.model.objects.filter(content_type=content_type, object_id=obj.pk, holder_type=holder_type, holder_id=holder.pk)]
+
+    def filter_objects_by_access(self, permission, actor, object_list):
+        class_objects = self.get_allowed_class_objects(permission, actor, object_list[0])
+        logger.debug('class_objects: %s' % class_objects)
+        logger.debug('object_list: %s' % object_list)
+        return list(set(object_list) & set(class_objects))
 
 
 class AccessEntry(models.Model):
