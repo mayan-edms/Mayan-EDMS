@@ -1,3 +1,5 @@
+from __future__ import absolute_import 
+
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -10,14 +12,14 @@ from django.core.exceptions import PermissionDenied
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
-from permissions.models import Permission
+from permissions import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry, PermissionDenied
 from acls.views import acl_list_for, acl_new_holder_for
 
-from folders.models import Folder, FolderDocument
-from folders.forms import FolderForm, AddDocumentForm
-from folders.permissions import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
+from .models import Folder, FolderDocument
+from .forms import FolderForm, AddDocumentForm
+from .permissions import (PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
     PERMISSION_FOLDER_ADD_DOCUMENT)
@@ -40,9 +42,7 @@ def folder_list(request, queryset=None, extra_context=None):
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
     except PermissionDenied:
-        pass
-        #class_objects = AccessEntry.objects.get_allowed_class_objects(PERMISSION_FOLDER_VIEW, request.user, Folder)
-        #queryset = list(set(queryset) & set(class_objects))
+        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_VIEW, request.user, queryset)
 
     context['object_list'] = queryset
     
@@ -144,64 +144,25 @@ def folder_delete(request, folder_id):
 def folder_view(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
 
-    document_list = folder.documents
-
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, request.user, folder)
 
     context = {
-        'object_list': document_list,
         'hide_links': True,
-        'title': _(u'documents in folder: %s') % folder,
         'multi_select_as_buttons': True,
         'object': folder,
         'object_name': _(u'folder'),    
-    
     }
     
-    #document_list
-
-    return render_to_response(
-        'generic_list.html',
-        context,
-        context_instance=RequestContext(request)
+    return document_list(
+        request,
+        object_list=folder.documents,
+        title=_(u'documents in folder: %s') % folder,
+        extra_context=context
     )
 
-'''
-def folder_add_document_sidebar(request, document_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    document = get_object_or_404(Document, pk=document_id)
-
-    previous = request.META.get('HTTP_REFERER', '/')
-
-    if request.method == 'POST':
-        form = AddDocumentForm(request.POST, user=request.user)
-        if form.is_valid():
-            if form.cleaned_data['existing_folder']:
-                folder = form.cleaned_data['existing_folder']
-            elif form.cleaned_data['title']:
-                folder, created = Folder.objects.get_or_create(user=request.user, title=form.cleaned_data['title'])
-                if created:
-                    messages.success(request, _(u'Folder created successfully'))
-                else:
-                    messages.error(request, _(u'A folder named: %s, already exists.') % form.cleaned_data['title'])
-                    return HttpResponseRedirect(previous)
-            else:
-                messages.error(request, _(u'Must specify a new folder or an existing one.'))
-                return HttpResponseRedirect(previous)
-
-            folder_document, created = FolderDocument.objects.get_or_create(folder=folder, document=document)
-            if created:
-                messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
-                    'document': document, 'folder': folder})
-            else:
-                messages.warning(request, _(u'Document: %(document)s is already in folder: %(folder)s.') % {
-                    'document': document, 'folder': folder})
-
-    return HttpResponseRedirect(previous)
-'''
 
 def folder_add_document(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
@@ -255,14 +216,8 @@ def document_folder_list(request, document_id):
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-        Permission.objects.check_permissions(request.user, [PERMISSION_FODLER_VIEW])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
-    except PermissionDenied:
-        folder_documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, folder_documents)
 
     return folder_list(
         request,
