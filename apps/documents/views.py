@@ -76,12 +76,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
         # If user doesn't have global permission, get a list of document
         # for which he/she does hace access use it to filter the 
         # provided object_list
-        class_objects = AccessEntry.objects.get_allowed_class_objects(PERMISSION_DOCUMENT_VIEW, request.user, Document)
-        logger.debug('class_objects: %s' % class_objects)
-        
-        logger.debug('pre_object_list: %s' % pre_object_list)
-        
-        final_object_list = list(set(pre_object_list) & set(class_objects))
+        final_object_list = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_VIEW, request.user, pre_object_list)
     else:
         final_object_list = pre_object_list
     
