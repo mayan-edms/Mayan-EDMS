@@ -25,21 +25,25 @@ class CheckAccessNode(Node):
                 context[u'access'] = True
                 return u''
         
-        requester = Variable(self.requester).resolve(context)
-
-        if not permission_list or not obj:
+        if not permission_list:
             # There is no permissions list to check against which means
             # this link is available for all
             context[u'access'] = True
             return u''
 
-        try:
-            AccessEntry.objects.check_accesses(permission_list, requester, obj)
-        except PermissionDenied:
-            context[u'access'] = False
-            return u''
+        requester = Variable(self.requester).resolve(context)
+
+        if obj:
+            try:
+                AccessEntry.objects.check_accesses(permission_list, requester, obj)
+            except PermissionDenied:
+                context[u'access'] = False
+                return u''
+            else:
+                context[u'access'] = True
+                return u''
         else:
-            context[u'access'] = True
+            context[u'access'] = False
             return u''
 
 
