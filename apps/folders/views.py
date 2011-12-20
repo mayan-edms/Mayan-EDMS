@@ -15,9 +15,9 @@ from common.utils import encapsulate
 from acls.models import AccessEntry, PermissionDenied
 from acls.views import acl_list_for, acl_new_holder_for
 
-from .models import Folder, FolderDocument
-from .forms import FolderForm, AddDocumentForm
-from .permissions import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
+from folders.models import Folder, FolderDocument
+from folders.forms import FolderForm, AddDocumentForm
+from folders.permissions import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
     PERMISSION_FOLDER_ADD_DOCUMENT)

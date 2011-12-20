@@ -5,8 +5,8 @@ from navigation.api import (register_links, register_top_menu,
 from documents.models import Document
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 
-from .models import Folder
-from .permissions import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
+from folders.models import Folder
+from folders.permissions import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
     PERMISSION_FOLDER_ADD_DOCUMENT)
