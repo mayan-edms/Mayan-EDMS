@@ -249,7 +249,9 @@ def get_object_navigation_links(parser, token):
 
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
+    # Pass the list object to the navigation template as the navigation object
     return {
+        'navigation_object': context['object'] if 'object' in context else None,
         'request': context['request'],
         'horizontal': True,
         'object_navigation_links': _get_object_navigation_links(context)
