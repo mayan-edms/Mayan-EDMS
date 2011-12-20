@@ -1,23 +1,15 @@
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_top_menu, \
-    register_multi_item_links, register_sidebar_template
+from navigation.api import (register_links, register_top_menu,
+    register_multi_item_links, register_sidebar_template)
 from documents.models import Document
 from documents.literals import PERMISSION_DOCUMENT_VIEW
-from permissions.models import PermissionNamespace, Permission
-from acls.models import class_permissions
 
-from folders.models import Folder
-
-folder_namespace = PermissionNamespace('folders', _(u'Folders'))
-
-PERMISSION_FOLDER_LIST = Permission.objects.register(folder_namespace, 'folder_list', _(u'View all folders'))
-PERMISSION_FOLDER_CREATE = Permission.objects.register(folder_namespace, 'folder_create', _(u'Create new folders'))
-PERMISSION_FOLDER_EDIT = Permission.objects.register(folder_namespace, 'folder_edit', _(u'Edit new folders'))
-PERMISSION_FOLDER_DELETE = Permission.objects.register(folder_namespace, 'folder_delete', _(u'Delete new folders'))
-PERMISSION_FOLDER_REMOVE_DOCUMENT = Permission.objects.register(folder_namespace, 'folder_remove_document', _(u'Remove documents from folders'))
-PERMISSION_FOLDER_VIEW = Permission.objects.register(folder_namespace, 'folder_view', _(u'View existing folders'))
-PERMISSION_FOLDER_ADD_DOCUMENT = Permission.objects.register(folder_namespace, 'folder_add_document', _(u'Add documents to existing folders'))
+from .models import Folder
+from .permissions import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
+    PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
+    PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
+    PERMISSION_FOLDER_ADD_DOCUMENT)
 
 folder_list = {'text': _(u'folder list'), 'view': 'folder_list', 'famfam': 'folder_user', 'permissions': [PERMISSION_FOLDER_LIST]}
 folder_create = {'text': _('create folder'), 'view': 'folder_create', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_CREATE]}

@@ -9,15 +9,16 @@ from django.core.exceptions import PermissionDenied
 
 from documents.literals import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from documents.views import document_list
 from permissions.models import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry, PermissionDenied
 from acls.views import acl_list_for, acl_new_holder_for
 
-from folders.models import Folder, FolderDocument
-from folders.forms import FolderForm, AddDocumentForm
-from folders import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
-    PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE, 
+from .models import Folder, FolderDocument
+from .forms import FolderForm, AddDocumentForm
+from .permissions import (PERMISSION_FOLDER_LIST, PERMISSION_FOLDER_CREATE,
+    PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
     PERMISSION_FOLDER_ADD_DOCUMENT)
 
@@ -143,19 +144,30 @@ def folder_delete(request, folder_id):
 def folder_view(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
 
+    document_list = folder.documents
+
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, request.user, folder)
 
-    return render_to_response('generic_list.html', {
-        'object_list': [fd.document for fd in folder.folderdocument_set.all()],
+    context = {
+        'object_list': document_list,
         'hide_links': True,
         'title': _(u'documents in folder: %s') % folder,
         'multi_select_as_buttons': True,
         'object': folder,
-        'object_name': _(u'folder'),
-    }, context_instance=RequestContext(request))
+        'object_name': _(u'folder'),    
+    
+    }
+    
+    #document_list
+
+    return render_to_response(
+        'generic_list.html',
+        context,
+        context_instance=RequestContext(request)
+    )
 
 '''
 def folder_add_document_sidebar(request, document_id):
@@ -243,8 +255,14 @@ def document_folder_list(request, document_id):
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [PERMISSION_FODLER_VIEW])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
+    except PermissionDenied:
+        folder_documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, folder_documents)
 
     return folder_list(
         request,
@@ -272,11 +290,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
     except PermissionDenied:
-        for document in folder_documents:
-            try:
-                AccessEntry.objects.check_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, document)
-            except PermissionDenied:
-                folder_documents.remove(document)
+        folder_documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, folder_documents)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
