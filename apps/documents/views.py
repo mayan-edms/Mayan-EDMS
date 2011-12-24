@@ -535,8 +535,6 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
 
 
 def document_find_all_duplicates(request):
-    #Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-
     return _find_duplicate_list(request, include_source=True)
 
 
