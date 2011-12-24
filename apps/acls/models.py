@@ -211,7 +211,7 @@ class AccessEntryManager(models.Manager):
         holder_type = ContentType.objects.get_for_model(requester)
         content_type = ContentType.objects.get_for_model(cls)
         
-        return [obj.content_object for obj in self.model.objects.filter(holder_type=holder_type, holder_id=requester.pk, content_type=content_type, permission=permission.get_stored_permission)]
+        return (obj.content_object for obj in self.model.objects.filter(holder_type=holder_type, holder_id=requester.pk, content_type=content_type, permission=permission.get_stored_permission))
 
     def get_acl_url(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
@@ -242,10 +242,11 @@ class AccessEntryManager(models.Manager):
         return [access.permission for access in self.model.objects.filter(content_type=content_type, object_id=obj.pk, holder_type=holder_type, holder_id=holder.pk)]
 
     def filter_objects_by_access(self, permission, actor, object_list):
-        class_objects = self.get_allowed_class_objects(permission, actor, object_list[0])
-        logger.debug('class_objects: %s' % class_objects)
         logger.debug('object_list: %s' % object_list)
-        return list(set(object_list) & set(class_objects))
+        try:
+            return object_list.filter(pk__in=[obj.pk for obj in self.get_allowed_class_objects(permission, actor, object_list[0])])
+        except AttributeError:
+            return list(set(object_list) & set(self.get_allowed_class_objects(permission, actor, object_list[0])))
 
 
 class AccessEntry(models.Model):
