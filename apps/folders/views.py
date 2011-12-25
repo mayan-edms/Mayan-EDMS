@@ -1,4 +1,5 @@
 from __future__ import absolute_import 
+import logging
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
@@ -23,6 +24,8 @@ from .permissions import (PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
     PERMISSION_FOLDER_ADD_DOCUMENT)
+
+logger = logging.getLogger(__name__)
 
 
 def folder_list(request, queryset=None, extra_context=None):
@@ -245,7 +248,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
     except PermissionDenied:
-        folder_documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, folder_documents)
+        folder_documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, folder_documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -285,25 +288,27 @@ def folder_document_multiple_remove(request, folder_id):
 
 
 def folder_acl_list(request, folder_pk):
-	folder = get_object_or_404(Folder, pk=folder_pk)
-	return acl_list_for(
-		request,
-		folder,
-		extra_context={
-			'object': folder,
-		}
-	)
+    folder = get_object_or_404(Folder, pk=folder_pk)
+    logger.debug('folder: %s' % folder)
+
+    return acl_list_for(
+        request,
+        folder,
+        extra_context={
+            'object': folder,
+        }
+    )
 
 
 def folder_new_holder(request, folder_pk):
-	folder = get_object_or_404(Folder, pk=folder_pk)
-	return acl_new_holder_for(
-		request,
-		folder,
-		extra_context={
-			'folder': folder,
+    folder = get_object_or_404(Folder, pk=folder_pk)
+    return acl_new_holder_for(
+        request,
+        folder,
+        extra_context={
+            'folder': folder,
             'submit_label': _(u'Select'),
             'submit_icon_famfam': 'tick',
             'object': folder,       
-		}
-	)
+        }
+    )

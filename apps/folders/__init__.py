@@ -29,9 +29,9 @@ register_multi_item_links(['folder_view'], [folder_document_multiple_remove])
 
 register_links(Folder, [folder_view, folder_edit, folder_delete, folder_acl_list])
 
-register_links(['folder_acl_list'], [folder_new_holder], menu_name='sidebar')
+register_links(['folder_acl_list', 'folder_new_holder'], [folder_new_holder], menu_name='sidebar')
 
-register_links(['folder_edit', 'folder_delete', 'folder_list', 'folder_create', 'folder_view', 'folder_document_multiple_remove', 'folder_acl_list', 'folder_new_holder'], [folder_list, folder_create], menu_name='secondary_menu')
+register_links([Folder, 'folder_list', 'folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
 
 register_top_menu(name='folders', link={'text': _('folders'), 'famfam': 'folder_user', 'view': 'folder_list'}, children_views=['folder_list', 'folder_create', 'folder_edit', 'folder_delete', 'folder_view', 'folder_document_multiple_remove'])
 
