@@ -1,10 +1,14 @@
+import logging
+
 from django.core.exceptions import PermissionDenied
 from django.template import (TemplateSyntaxError, Library,
     Node, Variable, VariableDoesNotExist)
+    
 
 from acls.models import AccessEntry
 
 register = Library()
+logger = logging.getLogger(__name__)
 
 
 class CheckAccessNode(Node):
@@ -15,14 +19,19 @@ class CheckAccessNode(Node):
 
     def render(self, context):
         permission_list = Variable(self.permission_list).resolve(context)
+        logger.debug('permission_list: %s' % u','.join([unicode(p) for p in permission_list]))
+
         try:
             # Check access_object, useful for document_page views
             obj = Variable('access_object').resolve(context)
+            logger.debug('access_object: %s' % obj)
         except VariableDoesNotExist:
             try:
                 obj = Variable(self.obj).resolve(context)
+                logger.debug('obj: %s' % obj)
             except VariableDoesNotExist:
                 context[u'access'] = True
+                logger.debug('no obj, access True')
                 return u''
         
         if not permission_list:
@@ -32,18 +41,22 @@ class CheckAccessNode(Node):
             return u''
 
         requester = Variable(self.requester).resolve(context)
+        logger.debug('requester: %s' % requester)
 
         if obj:
             try:
                 AccessEntry.objects.check_accesses(permission_list, requester, obj)
             except PermissionDenied:
                 context[u'access'] = False
+                logger.debug('access: False')
                 return u''
             else:
                 context[u'access'] = True
+                logger.debug('access: True')
                 return u''
         else:
             context[u'access'] = False
+            logger.debug('No object, access: False')
             return u''
 
 
