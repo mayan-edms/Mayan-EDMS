@@ -192,28 +192,19 @@ def document_view(request, document_id, advanced=False):
 
 
 def document_delete(request, document_id=None, document_id_list=None):
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+        post_action_redirect = reverse('document_list')
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]            
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DELETE])
     except PermissionDenied:
-        if document_id:
-            documents = [get_object_or_404(Document, pk=document_id)]
-            post_action_redirect = reverse('document_list')
-        elif document_id_list:
-            documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]            
-        else:
-            messages.error(request, _(u'Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-            
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DELETE, request.user, documents)
-    else:
-        if document_id:
-            documents = [get_object_or_404(Document, pk=document_id)]
-            post_action_redirect = reverse('document_list')
-        elif document_id_list:
-            documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-        else:
-            messages.error(request, _(u'Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DELETE, request.user, documents, exception_on_empty=True)
 
     post_action_redirect = None
 
@@ -570,30 +561,20 @@ def document_update_page_count(request):
 
 
 def document_clear_transformations(request, document_id=None, document_id_list=None):
+    if document_id:
+        documents = [get_object_or_404(Document.objects, pk=document_id)]
+        post_redirect = reverse('document_view_simple', args=[documents[0].pk])
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        post_redirect = None
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
+
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
     except PermissionDenied:
-        if document_id:
-            documents = [get_object_or_404(Document.objects, pk=document_id)]
-            post_redirect = reverse('document_view_simple', args=[documents[0].pk])
-        elif document_id_list:
-            documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-            post_redirect = None
-        else:
-            messages.error(request, _(u'Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
-        
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, documents)
-    else:
-        if document_id:
-            documents = [get_object_or_404(Document.objects, pk=document_id)]
-            post_redirect = reverse('document_view_simple', args=[documents[0].pk])
-        elif document_id_list:
-            documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-            post_redirect = None
-        else:
-            messages.error(request, _(u'Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
@@ -1275,6 +1256,7 @@ def document_version_list(request, document_pk):
         'title': _(u'versions for document: %s') % document,
         'hide_object': True,
         'object': document,
+        'access_object': document,
         'extra_columns': [
             {
                 'name': _(u'version'),
