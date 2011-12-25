@@ -103,10 +103,10 @@ class EncapsulatedObject(object):
 
         if isinstance(source_object, ModelBase):
             # Class
-            self.gid = '%s.%s' % (self.content_type.app_label, self.content_type.name)
+            self.gid = '%s.%s' % (self.content_type.app_label, self.content_type.model)
         else:
             # Object 
-            self.gid = '%s.%s.%s' % (self.content_type.app_label, self.content_type.name, source_object.pk)
+            self.gid = '%s.%s.%s' % (self.content_type.app_label, self.content_type.model, source_object.pk)
             
         setattr(self, self.__class__.source_object_name, source_object)
 
@@ -150,25 +150,37 @@ class ClassAccessHolder(EncapsulatedObject):
 
 
 class AccessEntryManager(models.Manager):
-    def grant(self, permission, requester, obj):
+    def source_object(self, obj):
+        if isinstance(obj, EncapsulatedObject):
+            return obj.source_object
+        else:
+            return obj
+        
+    def grant(self, permission, actor, obj):
         '''
         Grant a permission (what), (to) a requester, (on) a specific object
         '''
+        obj = self.source_object(obj)
+        actor = self.source_object(actor)
+        
         access_entry, created = self.model.objects.get_or_create(
             permission=permission,
-            holder_type=ContentType.objects.get_for_model(requester),
-            holder_id=requester.pk,
+            holder_type=ContentType.objects.get_for_model(actor),
+            holder_id=actor.pk,
             content_type=ContentType.objects.get_for_model(obj),
             object_id=obj.pk
         )
         return created
 
-    def revoke(self, permission, holder, obj):
+    def revoke(self, permission, actor, obj):
+        obj = self.source_object(obj)
+        actor = self.source_object(actor)
+
         try:
             access_entry = self.model.objects.get(
                 permission=permission,
-                holder_type=ContentType.objects.get_for_model(holder),
-                holder_id=holder.pk,
+                holder_type=ContentType.objects.get_for_model(actor),
+                holder_id=actor.pk,
                 content_type=ContentType.objects.get_for_model(obj),
                 object_id=obj.pk
             )
@@ -177,16 +189,19 @@ class AccessEntryManager(models.Manager):
         except self.model.DoesNotExist:
             return False		
 
-    def has_accesses(self, permission, requester, obj):
-        if isinstance(requester, User):
-            if requester.is_superuser or requester.is_staff:
+    def has_access(self, permission, actor, obj):
+        obj = self.source_object(obj)
+        actor = self.source_object(actor)
+        
+        if isinstance(actor, User):
+            if actor.is_superuser or actor.is_staff:
                 return True
-                        
+
         try:
             access_entry = self.model.objects.get(
                 permission=permission.get_stored_permission(),
-                holder_type=ContentType.objects.get_for_model(requester),
-                holder_id=requester.pk,
+                holder_type=ContentType.objects.get_for_model(actor),
+                holder_id=actor.pk,
                 content_type=ContentType.objects.get_for_model(obj),
                 object_id=obj.pk
             )
@@ -194,24 +209,29 @@ class AccessEntryManager(models.Manager):
         except self.model.DoesNotExist:
             return False
                 
-    def check_access(self, permission, requester, obj):
-        if self.has_accesses(permission, requester, obj):
+    def check_access(self, permission, actor, obj):
+        obj = self.source_object(obj)
+        actor = self.source_object(actor)
+
+        if self.has_access(permission, actor, obj):
             return True
         else:
             raise PermissionDenied(ugettext(u'Insufficient access.'))
             
-    def check_accesses(self, permission_list, requester, obj):
+    def check_accesses(self, permission_list, actor, obj):
+        obj = self.source_object(obj)
+        actor = self.source_object(actor)
         for permission in permission_list:
-            if self.has_accesses(permission, requester, obj):
+            if self.has_access(permission, actor, obj):
                 return True
 
         raise PermissionDenied(ugettext(u'Insufficient access.'))
 
-    def get_allowed_class_objects(self, permission, requester, cls):
-        holder_type = ContentType.objects.get_for_model(requester)
+    def get_allowed_class_objects(self, permission, actor, cls):
+        actor_type = ContentType.objects.get_for_model(actor)
         content_type = ContentType.objects.get_for_model(cls)
         
-        return (obj.content_object for obj in self.model.objects.filter(holder_type=holder_type, holder_id=requester.pk, content_type=content_type, permission=permission.get_stored_permission))
+        return (obj.content_object for obj in self.model.objects.filter(holder_type=actor_type, holder_id=actor.pk, content_type=content_type, permission=permission.get_stored_permission))
 
     def get_acl_url(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
@@ -232,21 +252,42 @@ class AccessEntryManager(models.Manager):
         
         return holder_list
 
-    def get_holder_permissions_for(self, obj, holder):
-        if isinstance(holder, User):
-            if holder.is_superuser or holder.is_staff:
+    def get_holder_permissions_for(self, obj, actor):
+        logger.debug('obj: %s' % obj)
+        logger.debug('actor: %s' % actor)
+        
+        if isinstance(actor, User):
+            if actor.is_superuser or actor.is_staff:
                 return Permission.objects.all()
-                        
-        holder_type = ContentType.objects.get_for_model(holder)
-        content_type = ContentType.objects.get_for_model(obj)
-        return [access.permission for access in self.model.objects.filter(content_type=content_type, object_id=obj.pk, holder_type=holder_type, holder_id=holder.pk)]
 
-    def filter_objects_by_access(self, permission, actor, object_list):
+        actor_type = ContentType.objects.get_for_model(actor)
+        content_type = ContentType.objects.get_for_model(obj)
+        return (access.permission for access in self.model.objects.filter(content_type=content_type, object_id=obj.pk, holder_type=actor_type, holder_id=actor.pk))
+
+    def filter_objects_by_access(self, permission, actor, object_list, exception_on_empty=False):
+        logger.debug('exception_on_empty: %s' % exception_on_empty)
         logger.debug('object_list: %s' % object_list)
         try:
-            return object_list.filter(pk__in=[obj.pk for obj in self.get_allowed_class_objects(permission, actor, object_list[0])])
+            # Try to process as a QuerySet
+            qs = object_list.filter(pk__in=[obj.pk for obj in self.get_allowed_class_objects(permission, actor, object_list[0])])
+            logger.debug('qs: %s' % qs)
+            
+            if qs.count() == 0 and exception_on_empty == True:
+                raise PermissionDenied
+            
+            return qs
         except AttributeError:
-            return list(set(object_list) & set(self.get_allowed_class_objects(permission, actor, object_list[0])))
+            # Fallback to a list filtered list
+            obj_list = list(set(object_list) & set(self.get_allowed_class_objects(permission, actor, object_list[0])))
+            logger.debug('obj_list: %s' % obj_list)
+            if len(obj_list) == 0 and exception_on_empty == True:
+                raise PermissionDenied
+
+            return obj_list
+
+    def get_class_permissions_for(self, obj):
+        content_type = ContentType.objects.get_for_model(obj)
+        return _class_permissions.get(content_type.model_class(), [])
 
 
 class AccessEntry(models.Model):
@@ -298,40 +339,40 @@ class DefaultAccessEntryManager(models.Manager):
         
         return holder_list
 
-    def has_accesses(self, permission, requester, cls):
-        if isinstance(requester, User):
-            if requester.is_superuser or requester.is_staff:
+    def has_access(self, permission, actor, cls):
+        if isinstance(actor, User):
+            if actor.is_superuser or actor.is_staff:
                 return True
                         
         try:
             access_entry = self.model.objects.get(
                 permission=permission.get_stored_permission(),
-                holder_type=ContentType.objects.get_for_model(requester),
-                holder_id=requester.pk,
+                holder_type=ContentType.objects.get_for_model(actor),
+                holder_id=actor.pk,
                 content_type=ContentType.objects.get_for_model(cls),
             )
             return True
         except self.model.DoesNotExist:
             return False
 
-    def grant(self, permission, requester, cls):
+    def grant(self, permission, actor, cls):
         '''
         Grant a permission (what), (to) a requester, (on) a specific class
         '''
         access_entry, created = self.model.objects.get_or_create(
             permission=permission,
-            holder_type=ContentType.objects.get_for_model(requester),
-            holder_id=requester.pk,
+            holder_type=ContentType.objects.get_for_model(actor),
+            holder_id=actor.pk,
             content_type=ContentType.objects.get_for_model(cls),
         )
         return created
 
-    def revoke(self, permission, holder, cls):
+    def revoke(self, permission, actor, cls):
         try:
             access_entry = self.model.objects.get(
                 permission=permission,
-                holder_type=ContentType.objects.get_for_model(holder),
-                holder_id=holder.pk,
+                holder_type=ContentType.objects.get_for_model(actor),
+                holder_id=actor.pk,
                 content_type=ContentType.objects.get_for_model(cls),
             )
             access_entry.delete()
@@ -339,14 +380,14 @@ class DefaultAccessEntryManager(models.Manager):
         except self.model.DoesNotExist:
             return False		
 
-    def get_holder_permissions_for(self, cls, holder):
-        if isinstance(holder, User):
-            if holder.is_superuser or holder.is_staff:
+    def get_holder_permissions_for(self, cls, actor):
+        if isinstance(actor, User):
+            if actor.is_superuser or actor.is_staff:
                 return Permission.objects.all()
                         
-        holder_type = ContentType.objects.get_for_model(holder)
+        actor_type = ContentType.objects.get_for_model(actor)
         content_type = ContentType.objects.get_for_model(cls)
-        return [access.permission for access in self.model.objects.filter(content_type=content_type, holder_type=holder_type, holder_id=holder.pk)]
+        return [access.permission for access in self.model.objects.filter(content_type=content_type, holder_type=actor_type, holder_id=actor.pk)]
 
 
 class DefaultAccessEntry(models.Model):
