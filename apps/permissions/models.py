@@ -67,7 +67,7 @@ class PermissionManager(object):
         
     def __init__(self, model):
         self.model = model
-       
+        
 
 class Permission(object):
     DoesNotExist = PermissionDoesNotExists
@@ -81,9 +81,16 @@ class Permission(object):
     def __unicode__(self):
         return unicode(self.label)
 
+    def __str__(self):
+        return str(self.__unicode__())
+
     @property
     def uuid(self):
         return u'%s.%s' % (self.namespace.name, self.name)
+        
+    @property
+    def stored_permission(self):
+        return self.get_stored_permission()
 
     def get_stored_permission(self):
         stored_permission, created = StoredPermission.objects.get_or_create(
@@ -101,8 +108,7 @@ class Permission(object):
         return stored_permission.requester_has_this(requester)
 
     def save(self, *args, **kwargs):
-        return self.get_stored_permission(
-        )
+        return self.get_stored_permission()
         
 Permission.objects = PermissionManager(Permission)
 Permission._default_manager = Permission.objects
