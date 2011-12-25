@@ -1,3 +1,5 @@
+from __future__ import absolute_import 
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -9,7 +11,7 @@ from django.conf import settings
 from documents.widgets import document_html_widget
 from tags.widgets import get_tags_inline_widget
 
-from linking.models import SmartLink, SmartLinkCondition
+from .models import SmartLink, SmartLinkCondition
 
 
 class SmartLinkForm(forms.ModelForm):

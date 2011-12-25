@@ -1,10 +1,12 @@
+from __future__ import absolute_import 
+
 from django.db import models
 from django.db.models import Q
 
 from metadata.classes import MetadataObject
 from documents.models import Document
 
-from linking.literals import INCLUSION_AND, INCLUSION_OR
+from .literals import INCLUSION_AND, INCLUSION_OR
 
 
 class SmartLinkManager(models.Manager):
