@@ -288,7 +288,9 @@ class Document(models.Model):
         return version.save()
 
     filename = property(_get_filename, _set_filename)
-        
+    
+    #TODO: remove after migration
+    """
     def add_detached_signature(self, *args, **kwargs):
         return self.latest_version.add_detached_signature(*args, **kwargs)
 
@@ -300,12 +302,14 @@ class Document(models.Model):
 
     def verify_signature(self):
         return self.latest_version.verify_signature()
-        
+    """    
         
 class DocumentVersion(models.Model):
     '''
     Model that describes a document version and its properties
     '''
+    _pre_open_hooks = {}
+    
     @staticmethod
     def get_version_update_choices(document_version):
         return (
@@ -313,6 +317,10 @@ class DocumentVersion(models.Model):
             (VERSION_UPDATE_MINOR, _(u'Minor %(major)i.%(minor)i, (some updates)') % document_version.get_new_version_dict(VERSION_UPDATE_MINOR)),
             (VERSION_UPDATE_MICRO, _(u'Micro %(major)i.%(minor)i.%(micro)i, (fixes)') % document_version.get_new_version_dict(VERSION_UPDATE_MICRO))
         )
+    
+    @classmethod
+    def register_pre_open_hook(cls, order, func):
+        cls._pre_open_hooks[order] = func
     
     document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
     major = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1, editable=False)
@@ -329,6 +337,8 @@ class DocumentVersion(models.Model):
     encoding = models.CharField(max_length=64, default='', editable=False)
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
+    
+    #TODO: to be removed after migration
     signature_state = models.CharField(blank=True, null=True, max_length=16, verbose_name=_(u'signature state'), editable=False)
     signature_file = models.FileField(blank=True, null=True, upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'signature file'), editable=False)
     
@@ -393,7 +403,9 @@ class DocumentVersion(models.Model):
 
         if new_document:
             #Only do this for new documents
-            self.update_signed_state(save=False)
+            #Only do this for new documents
+            # TODO: remove after migration
+            #self.update_signed_state(save=False)
             self.update_checksum(save=False)
             self.update_mimetype(save=False)
             self.save()
@@ -467,6 +479,8 @@ class DocumentVersion(models.Model):
         for version in self.document.versions.filter(timestamp__gt=self.timestamp):
             version.delete()
             
+    #TODO: remove after migration
+    """       
     def update_signed_state(self, save=True):
         if self.exists():
             try:
@@ -478,7 +492,8 @@ class DocumentVersion(models.Model):
            
             if save:
                 self.save()
-
+    """
+    
     def update_mimetype(self, save=True):
         '''
         Read a document verions's file and determine the mimetype by calling the
@@ -510,6 +525,16 @@ class DocumentVersion(models.Model):
         Return a file descriptor to a document version's file irrespective of
         the storage backend
         '''
+        if raw:
+            return self.file.storage.open(self.file.path)
+        else:
+            result = self.file.storage.open(self.file.path)
+            for key in sorted(DocumentVersion._pre_open_hooks):
+                result = DocumentVersion._pre_open_hooks[key](result)
+            
+            return result
+        #TODO: remove after migration
+        """    
         if self.signature_state and not raw:
             try:
                 result = gpg.decrypt_file(self.file.storage.open(self.file.path))
@@ -520,6 +545,7 @@ class DocumentVersion(models.Model):
                 return self.file.storage.open(self.file.path)
         else:
             return self.file.storage.open(self.file.path)
+        """
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
         '''
@@ -545,7 +571,8 @@ class DocumentVersion(models.Model):
             return self.file.storage.size(self.file.path)
         else:
             return None
-   
+    #TODO: remove after migration
+    """
     def add_detached_signature(self, detached_signature):
         if not self.signature_state:
             self.signature_file = detached_signature
@@ -573,6 +600,7 @@ class DocumentVersion(models.Model):
             signature = None
             
         return signature
+    """
         
 
 class DocumentTypeFilename(models.Model):

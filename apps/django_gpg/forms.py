@@ -11,9 +11,3 @@ class KeySearchForm(forms.Form):
         label=_(u'Term'),
         help_text=_(u'Name, e-mail, key ID or key fingerprint to look for.')
     )
-
-
-class DetachedSignatureForm(forms.Form):
-    file = forms.FileField(
-        label=_(u'Signature file'),
-    )
