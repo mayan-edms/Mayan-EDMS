@@ -13,6 +13,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User, Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.simplejson import loads
+from django.core.exceptions import PermissionDenied
+from django.utils.http import urlencode
 
 from permissions.models import Permission, Role
 from common.utils import generate_choices_w_labels, encapsulate
@@ -33,10 +35,14 @@ def _permission_titles(permission_list):
     
     
 def acl_list_for(request, obj, extra_context=None):
-    Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+    try:
+        Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(ACLS_VIEW_ACL, request.user, obj)
+
+    logger.debug('obj: %s' % obj)
 
     ct = ContentType.objects.get_for_model(obj)
-
     context = {
         'object_list': AccessEntry.objects.get_holders_for(obj),
         'title': _(u'access control lists for: %s' % obj),
@@ -64,28 +70,39 @@ def acl_list(request, app_label, model_name, object_id):
 
 
 def acl_detail(request, access_object_gid, holder_object_gid):
-    Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL, ACLS_EDIT_ACL])
-    
     try:
         holder = AccessHolder.get(gid=holder_object_gid)
         access_object = AccessObject.get(gid=access_object_gid)
     except ObjectDoesNotExist:
         raise Http404
-        
-    permission_list = list(access_object.get_class_permissions())
+
+    navigation_object = request.GET.get('navigation_object')
+    logger.debug('navigation_object: %s' % navigation_object)
+    return acl_detail_for(request, holder.source_object, access_object.source_object, navigation_object)
+
+
+def acl_detail_for(request, actor, obj, navigation_object=None):
+    try:
+        Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL, ACLS_EDIT_ACL])
+    except PermissionDenied:
+        AccessEntry.objects.check_accesses([ACLS_VIEW_ACL, ACLS_EDIT_ACL], actor, obj)    
+
+    #permission_list = list(obj.get_class_permissions())
+    permission_list = AccessEntry.objects.get_class_permissions_for(obj)
+    
     #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
             'name': u'generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions available to: %s for %s' % (holder, access_object)),
+                'title': _(u'permissions available to: %s for %s' % (actor, obj)),
                 'object_list': permission_list,
                 'extra_columns': [
                     {'name': _(u'namespace'), 'attribute': 'namespace'},
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda x: two_state_template(AccessEntry.objects.has_accesses(x, holder.source_object, access_object.source_object)))
+                        'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj)))
                     },
                 ],
                 #'hide_link': True,
@@ -94,20 +111,32 @@ def acl_detail(request, access_object_gid, holder_object_gid):
         },
     ]
 
-    return render_to_response('generic_detail.html', {
-        'object': access_object.obj,
+    context = {
+        'object': obj,
         'subtemplates_list': subtemplates_list,
         'multi_select_as_buttons': True,
         'multi_select_item_properties': {
             'permission_pk': lambda x: x.pk,
-            'holder_gid': lambda x: holder.gid,
-            'object_gid': lambda x: access_object.gid,
-        },        
-    }, context_instance=RequestContext(request))
+            'holder_gid': lambda x: AccessHolder(actor).gid,
+            'object_gid': lambda x: AccessObject(obj).gid,
+        }
+    }
+    
+    if navigation_object:
+        context.update(
+            {
+                navigation_object: obj
+            }
+        )
+
+    return render_to_response(
+        'generic_detail.html',
+        context,
+        context_instance=RequestContext(request)
+    )
     
 
 def acl_grant(request):
-    Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
@@ -118,23 +147,38 @@ def acl_grant(request):
     title_suffix = []
     navigation_object = None
     navigation_object_count = 0
-
+    
     for item_properties in items_property_list:
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_pk']})
         except Permission.DoesNotExist:
             raise Http404        
+            
         try:
             requester = AccessHolder.get(gid=item_properties['holder_gid'])
             access_object = AccessObject.get(gid=item_properties['object_gid'])
         except ObjectDoesNotExist:
             raise Http404
-                
-        items.setdefault(requester, {})
-        items[requester].setdefault(access_object, [])
-        items[requester][access_object].append(permission)
-        navigation_object = access_object
-        navigation_object_count += 1
+
+        try:
+            Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+        except PermissionDenied:
+            try:
+                AccessEntry.objects.check_access(ACLS_EDIT_ACL, request.user, access_object)
+            except PermissionDenied:
+                raise
+            else:
+                items.setdefault(requester, {})
+                items[requester].setdefault(access_object, [])
+                items[requester][access_object].append(permission)
+                navigation_object = access_object
+                navigation_object_count += 1
+        else:
+            items.setdefault(requester, {})
+            items[requester].setdefault(access_object, [])
+            items[requester][access_object].append(permission)
+            navigation_object = access_object
+            navigation_object_count += 1
         
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
@@ -187,7 +231,6 @@ def acl_grant(request):
 
 
 def acl_revoke(request):
-    Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
     post_action_redirect = None
 
@@ -204,17 +247,32 @@ def acl_revoke(request):
             permission = Permission.objects.get({'pk': item_properties['permission_pk']})
         except Permission.DoesNotExist:
             raise Http404        
+
         try:
             requester = AccessHolder.get(gid=item_properties['holder_gid'])
             access_object = AccessObject.get(gid=item_properties['object_gid'])
         except ObjectDoesNotExist:
             raise Http404
-                
-        items.setdefault(requester, {})
-        items[requester].setdefault(access_object, [])
-        items[requester][access_object].append(permission)
-        navigation_object = access_object
-        navigation_object_count += 1
+        
+        try:
+            Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+        except PermissionDenied:
+            try:
+                AccessEntry.objects.check_access(ACLS_EDIT_ACL, request.user, access_object)
+            except PermissionDenied:
+                raise                
+            else:
+                items.setdefault(requester, {})
+                items[requester].setdefault(access_object, [])
+                items[requester][access_object].append(permission)
+                navigation_object = access_object
+                navigation_object_count += 1
+        else:
+            items.setdefault(requester, {})
+            items[requester].setdefault(access_object, [])
+            items[requester][access_object].append(permission)
+            navigation_object = access_object
+            navigation_object_count += 1 
         
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
@@ -266,8 +324,11 @@ def acl_revoke(request):
         context_instance=RequestContext(request))
 
 
-def acl_new_holder_for(request, obj, extra_context=None):
-    Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None):
+    try:
+        Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(ACLS_EDIT_ACL, request.user, obj)
 
     if request.method == 'POST':
         form = HolderSelectionForm(request.POST)
@@ -276,7 +337,14 @@ def acl_new_holder_for(request, obj, extra_context=None):
                 access_object = AccessObject.encapsulate(obj)
                 access_holder = AccessHolder.get(form.cleaned_data['holder_gid'])
 
-                return HttpResponseRedirect(reverse('acl_detail', args=[access_object.gid, access_holder.gid]))
+                query_string = {u'navigation_object': navigation_object}
+
+                return HttpResponseRedirect(
+                    u'%s?%s' % (
+                        reverse('acl_detail', args=[access_object.gid, access_holder.gid]),
+                        urlencode(query_string)
+                    )
+                )                        
             except ObjectDoesNotExist:
                 raise Http404
     else:
@@ -352,7 +420,7 @@ def acls_class_acl_detail(request, access_object_class_gid, holder_object_gid):
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_accesses(x, holder.source_object, access_object_class.source_object)))
+                        'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, holder.source_object, access_object_class.source_object)))
                     },
                 ],
                 #'hide_link': True,
