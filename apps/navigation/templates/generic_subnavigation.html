@@ -4,7 +4,7 @@
 
 {% with link.permissions as permissions %}
     {% check_permissions request.user permissions %}
-    {% check_access permissions request.user navigation_object %}
+    {% check_access permissions request.user object %}
 
     {% if permission or access %}
         {% if as_li %}

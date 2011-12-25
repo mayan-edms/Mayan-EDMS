@@ -249,15 +249,14 @@ def get_object_navigation_links(parser, token):
 
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
-    # Pass the list object to the navigation template as the navigation object
-    return {
-        'navigation_object': context['object'] if 'object' in context else None,
-        'request': context['request'],
+    new_context = copy.copy(context)
+    new_context.update({
         'horizontal': True,
-        'object_navigation_links': _get_object_navigation_links(context)
-    }
-
-
+        'object_navigation_links': _get_object_navigation_links(context)    
+    })
+    return new_context
+    
+    
 @register.tag
 def get_multi_item_links(parser, token):
     tag_name, arg = token.contents.split(None, 1)
