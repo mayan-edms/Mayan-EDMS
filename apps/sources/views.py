@@ -14,6 +14,7 @@ from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 from common.utils import encapsulate
 import sendfile
+from acls.models import AccessEntry, PermissionDenied
 
 from sources.models import WebForm, StagingFolder, SourceTransformation, \
     WatchFolder
@@ -26,9 +27,9 @@ from sources.forms import StagingDocumentForm, WebFormForm, \
     WatchFolderSetupForm
 from sources.forms import WebFormSetupForm, StagingFolderSetupForm
 from sources.forms import SourceTransformationForm, SourceTransformationForm_create
-from sources import PERMISSION_SOURCES_SETUP_VIEW, \
-    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE, \
-    PERMISSION_SOURCES_SETUP_CREATE
+from sources import (PERMISSION_SOURCES_SETUP_VIEW,
+    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
+    PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_DOCUMENT_NEW_VERSION)
 
 
 def return_function(obj):
@@ -71,14 +72,18 @@ def get_active_tab_links(document=None):
     }
 
 def upload_interactive(request, source_type=None, source_id=None, document_pk=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-
     subtemplates_list = []
 
     if document_pk:
         document = get_object_or_404(Document, pk=document_pk)
+        try:
+            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_NEW_VERSION])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_NEW_VERSION, request.user, document)
+        
         results = get_active_tab_links(document)
     else:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
         document = None
         results = get_active_tab_links()
 
@@ -386,6 +391,7 @@ def staging_file_delete(request, source_type, source_id, staging_file_id):
     }, context_instance=RequestContext(request))
 
 
+# Setup views
 def setup_source_list(request, source_type):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
 

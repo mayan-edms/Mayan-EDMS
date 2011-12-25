@@ -7,17 +7,21 @@ from common.utils import encapsulate
 from project_setup.api import register_setup
 from documents.models import Document
 from documents.literals import PERMISSION_DOCUMENT_CREATE
+from acls.models import class_permissions
 
 from sources.staging import StagingFile
 from sources.models import WebForm, StagingFolder, SourceTransformation, \
     WatchFolder
 from sources.widgets import staging_file_thumbnail
 
-sources_namespace = PermissionNamespace('sources_setup', _(u'Sources setup'))
-PERMISSION_SOURCES_SETUP_VIEW = Permission.objects.register(sources_namespace, 'sources_setup_view', _(u'View existing document sources'))
-PERMISSION_SOURCES_SETUP_EDIT = Permission.objects.register(sources_namespace, 'sources_setup_edit', _(u'Edit document sources'))
-PERMISSION_SOURCES_SETUP_DELETE = Permission.objects.register(sources_namespace, 'sources_setup_delete', _(u'Delete document sources'))
-PERMISSION_SOURCES_SETUP_CREATE = Permission.objects.register(sources_namespace, 'sources_setup_create', _(u'Create new document sources'))
+sources_setup_namespace = PermissionNamespace('sources_setup', _(u'Sources setup'))
+PERMISSION_SOURCES_SETUP_VIEW = Permission.objects.register(sources_setup_namespace, 'sources_setup_view', _(u'View existing document sources'))
+PERMISSION_SOURCES_SETUP_EDIT = Permission.objects.register(sources_setup_namespace, 'sources_setup_edit', _(u'Edit document sources'))
+PERMISSION_SOURCES_SETUP_DELETE = Permission.objects.register(sources_setup_namespace, 'sources_setup_delete', _(u'Delete document sources'))
+PERMISSION_SOURCES_SETUP_CREATE = Permission.objects.register(sources_setup_namespace, 'sources_setup_create', _(u'Create new document sources'))
+
+sources_namespace = PermissionNamespace('sources', _(u'Sources'))
+PERMISSION_DOCUMENT_NEW_VERSION = Permission.objects.register(sources_namespace, 'sources_document_new_version', _(u'Create new document version'))
 
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
@@ -38,7 +42,7 @@ setup_source_transformation_delete = {'text': _(u'delete'), 'view': 'setup_sourc
 
 source_list = {'text': _(u'Document sources'), 'view': 'setup_web_form_list', 'famfam': 'page_add', 'children_url_regex': [r'sources/setup']}
 
-upload_version = {'text': _(u'upload new version'), 'view': 'upload_version', 'args': 'object.pk', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+upload_version = {'text': _(u'upload new version'), 'view': 'upload_version', 'args': 'object.pk', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION]}
 
 register_links(StagingFile, [staging_file_delete])
 
@@ -75,3 +79,7 @@ register_model_list_columns(StagingFile, [
 
 
 register_setup(setup_sources)
+
+class_permissions(Document, [
+    PERMISSION_DOCUMENT_NEW_VERSION
+])
