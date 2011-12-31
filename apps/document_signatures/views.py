@@ -38,8 +38,8 @@ def document_verify(request, document_pk):
 
     RecentDocument.objects.add_document_for_user(request.user, document)
     
-    signature = document.verify_signature()
-    
+    signature = DocumentVersionSignature.objects.verify_signature(document)
+
     signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
     
     widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
@@ -50,7 +50,7 @@ def document_verify(request, document_pk):
         },
     ]
 
-    if document.signature_state:
+    if DocumentVersionSignature.objects.has_embedded_signature(document):
         signature_type = _(u'embedded')
     else:
         signature_type = _(u'detached')
@@ -88,7 +88,7 @@ def document_signature_upload(request, document_pk):
         form = DetachedSignatureForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                document.add_detached_signature(request.FILES['file'])
+                DocumentVersionSignature.objects.add_detached_signature(document, request.FILES['file'])
                 messages.success(request, _(u'Detached signature uploaded successfully.'))
                 return HttpResponseRedirect(next)
             except Exception, msg:
@@ -110,10 +110,10 @@ def document_signature_upload(request, document_pk):
 def document_signature_download(request, document_pk):
     check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
     document = get_object_or_404(Document, pk=document_pk)
-        
+
     try:
-        if document.has_detached_signature():
-            signature = document.detached_signature()
+        if DocumentVersionSignature.objects.has_detached_signature(document):
+            signature = DocumentVersionSignature.objects.detached_signature(document)
             return serve_file(
                 request,
                 signature,

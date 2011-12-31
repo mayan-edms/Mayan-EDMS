@@ -26,8 +26,6 @@ from mimetype.api import (get_mimetype, get_icon_file_path,
     get_error_icon_file_path)
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
-from django_gpg.runtime import gpg
-from django_gpg.exceptions import GPGVerificationError, GPGDecryptionError
 
 from documents.conf.settings import CHECKSUM_FUNCTION
 from documents.conf.settings import UUID_FUNCTION
