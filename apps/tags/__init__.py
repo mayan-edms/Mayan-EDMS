@@ -7,6 +7,7 @@ from common.utils import encapsulate
 from documents.models import Document
 
 from taggit.models import Tag
+from taggit.managers import TaggableManager
 
 from tags.widgets import tag_color_block
 
@@ -61,3 +62,5 @@ register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['document_tags', 'tag_add_attach', 'tag_remove', 'tag_multiple_remove'], [tag_add_attach], menu_name='sidebar')
 
 register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
+
+Document.add_to_class('tags', TaggableManager())

@@ -15,11 +15,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.auth.models import User
-from django.contrib.contenttypes import generic
-from django.contrib.comments.models import Comment
 from django.core.exceptions import ValidationError
 
-from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
@@ -85,14 +82,6 @@ class Document(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'))
     date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True, editable=False)
-
-    tags = TaggableManager()
-
-    comments = generic.GenericRelation(
-        Comment,
-        content_type_field='content_type',
-        object_id_field='object_pk'
-    )
 
     @staticmethod
     def clear_image_cache():
