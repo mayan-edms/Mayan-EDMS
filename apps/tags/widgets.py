@@ -3,9 +3,9 @@ from django.utils.safestring import mark_safe
 
 
 def get_tags_inline_widget(document):
-    """
+    '''
     A tag widget that includes the total tag count for a given document
-    """
+    '''
     tags_template = []
     tag_count = document.tags.count()
     if tag_count:
@@ -20,10 +20,10 @@ def get_tags_inline_widget(document):
 
 
 def get_tags_inline_widget_simple(document):
-    """
+    '''
     A tag widget that only displayes the rectangular colored boxes for a
     given document
-    """
+    '''
     tags_template = []
 
     tag_count = document.tags.count()
