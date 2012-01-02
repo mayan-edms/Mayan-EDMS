@@ -185,10 +185,10 @@ trans.pt = apps/document_signatures/locale/pt/LC_MESSAGES/django.po
 trans.ru = apps/document_signatures/locale/ru/LC_MESSAGES/django.po
 trans.it = apps/document_signatures/locale/it/LC_MESSAGES/django.po
 
-[mayan-edms.apps-acl]
-source_file = apps/acl/locale/en/LC_MESSAGES/django.po
+[mayan-edms.apps-acls]
+source_file = apps/acls/locale/en/LC_MESSAGES/django.po
 source_lang = en
-trans.es = apps/acl/locale/es/LC_MESSAGES/django.po
-trans.pt = apps/acl/locale/pt/LC_MESSAGES/django.po
-trans.ru = apps/acl/locale/ru/LC_MESSAGES/django.po
-trans.it = apps/acl/locale/it/LC_MESSAGES/django.po
+trans.es = apps/acls/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/acls/locale/pt/LC_MESSAGES/django.po
+trans.ru = apps/acls/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/acls/locale/it/LC_MESSAGES/django.po

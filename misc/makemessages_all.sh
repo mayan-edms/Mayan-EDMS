@@ -164,7 +164,7 @@ $MAKEMESSAGES -l ru
 $MAKEMESSAGES -l es
 $MAKEMESSAGES -l it
 
-cd $BASE/apps/acl
+cd $BASE/apps/acls
 $MAKEMESSAGES -l en
 $MAKEMESSAGES -l pt
 $MAKEMESSAGES -l ru
