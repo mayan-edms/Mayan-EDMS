@@ -8,21 +8,15 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.conf import settings
 from django.template.defaultfilters import force_escape
 
 from documents.models import Document, RecentDocument
 from permissions.api import check_permissions
-from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff, encapsulate
 from filetransfers.api import serve_file
-   
-from django_gpg.api import Key, SIGNATURE_STATES
-from django_gpg.runtime import gpg
-from django_gpg.exceptions import (GPGVerificationError, KeyFetchingError,
-    KeyImportError)
+
+from django_gpg.api import SIGNATURE_STATES
 
 from . import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
     PERMISSION_SIGNATURE_DOWNLOAD)
@@ -30,18 +24,18 @@ from .forms import DetachedSignatureForm
 from .models import DocumentVersionSignature
 
 logger = logging.getLogger(__name__)
-    
+
 
 def document_verify(request, document_pk):
     check_permissions(request.user, [PERMISSION_DOCUMENT_VERIFY])
     document = get_object_or_404(Document, pk=document_pk)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
-    
+
     signature = DocumentVersionSignature.objects.verify_signature(document)
 
     signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
-    
+
     widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
     paragraphs = [
         _(u'Signature status: %(widget)s %(text)s') % {
@@ -65,21 +59,21 @@ def document_verify(request, document_pk):
                 _(u'Signee: %s') % force_escape(getattr(signature, 'username', u'')),
             ]
         )
-    
+
     return render_to_response('generic_template.html', {
         'title': _(u'signature properties for: %s') % document,
         'object': document,
         'document': document,
         'paragraphs': paragraphs,
     }, context_instance=RequestContext(request))
-    
-    
+
+
 def document_signature_upload(request, document_pk):
     check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
     document = get_object_or_404(Document, pk=document_pk)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
-        
+
     post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -105,8 +99,8 @@ def document_signature_upload(request, document_pk):
         'previous': previous,
         'object': document,
     }, context_instance=RequestContext(request))
-    
-    
+
+
 def document_signature_download(request, document_pk):
     check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
     document = get_object_or_404(Document, pk=document_pk)

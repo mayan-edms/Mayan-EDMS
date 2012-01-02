@@ -19,9 +19,9 @@ class DocumentVersionSignature(models.Model):
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'), editable=False)
     signature_state = models.CharField(blank=True, null=True, max_length=16, verbose_name=_(u'signature state'), editable=False)
     signature_file = models.FileField(blank=True, null=True, upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'signature file'), editable=False)
-        
+
     objects = DocumentVersionSignatureManager()
 
     class Meta:
         verbose_name = _(u'document version signature')
-        verbose_name_plural = _(u'document version signatures')        
+        verbose_name_plural = _(u'document version signatures')

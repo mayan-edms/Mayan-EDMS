@@ -4,33 +4,34 @@ import logging
 try:
     from cStringIO import StringIO
 except ImportError:
-    from StringIO import StringIO   
+    from StringIO import StringIO
 
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
 
 from documents.models import Document, DocumentVersion
-from navigation.api import register_links, register_top_menu, \
-    register_model_list_columns, register_multi_item_links, \
-    register_sidebar_template
+from navigation.api import register_links
+
 from django_gpg.runtime import gpg
-from django_gpg.exceptions import GPGDecryptionError    
+from django_gpg.exceptions import GPGDecryptionError
 
 from .models import DocumentVersionSignature
 from .permissions import (
-    PERMISSION_DOCUMENT_VERIFY, 
+    PERMISSION_DOCUMENT_VERIFY,
     PERMISSION_SIGNATURE_UPLOAD,
     PERMISSION_SIGNATURE_DOWNLOAD
-    )
+)
 
 logger = logging.getLogger(__name__)
 
 
 def has_embedded_signature(context):
     return DocumentVersionSignature.objects.has_embedded_signature(context['object'])
-    
+
+
 def doesnt_have_detached_signature(context):
     return DocumentVersionSignature.objects.has_detached_signature(context['object']) == False
+
 
 def document_pre_open_hook(descriptor):
     try:
@@ -43,9 +44,10 @@ def document_pre_open_hook(descriptor):
     else:
         return StringIO(result.data)
 
+
 def document_post_save(sender, instance, **kwargs):
     if kwargs.get('created', False):
-        DocumentVersionSignature.objects.signature_state(instance.document)        
+        DocumentVersionSignature.objects.signature_state(instance.document)
 
 document_signature_upload = {'text': _(u'upload signature'), 'view': 'document_signature_upload', 'args': 'object.pk', 'famfam': 'pencil_add', 'permissions': [PERMISSION_SIGNATURE_UPLOAD], 'conditional_disable': has_embedded_signature}
 document_signature_download = {'text': _(u'download signature'), 'view': 'document_signature_download', 'args': 'object.pk', 'famfam': 'disk', 'permissions': [PERMISSION_SIGNATURE_DOWNLOAD], 'conditional_disable': doesnt_have_detached_signature}
