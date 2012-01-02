@@ -20,7 +20,7 @@ from acls.models import AccessEntry, PermissionDenied
 from acls.views import acl_list_for, acl_new_holder_for
 
 from .models import Folder, FolderDocument
-from .forms import FolderForm, AddDocumentForm
+from .forms import FolderForm, FolderListForm
 from .permissions import (PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
@@ -36,7 +36,8 @@ def folder_list(request, queryset=None, extra_context=None):
         'extra_columns': [
             {'name': _(u'created'), 'attribute': 'datetime_created'},
             {'name': _(u'documents'), 'attribute': encapsulate(lambda x: x.folderdocument_set.count())}
-        ]
+        ],
+        'hide_link': True,
     }
     if extra_context:
         context.update(extra_context)
@@ -176,26 +177,13 @@ def folder_add_document(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_FOLDER_ADD_DOCUMENT, request.user, document)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))#reverse('document_tags', args=[document.pk]))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
-        form = AddDocumentForm(request.POST, user=request.user)
+        form = FolderListForm(request.POST, user=request.user)
         if form.is_valid():
-            if form.cleaned_data['existing_folder']:
-                folder = form.cleaned_data['existing_folder']
-            elif form.cleaned_data['title']:
-                folder, created = Folder.objects.get_or_create(user=request.user, title=form.cleaned_data['title'])
-                if created:
-                    messages.success(request, _(u'Folder "%s" created successfully') % form.cleaned_data['title'])
-                else:
-                    messages.error(request, _(u'A folder named: %s, already exists.') % form.cleaned_data['title'])
-                    return HttpResponseRedirect(next)
-            else:
-                messages.error(request, _(u'Must specify a new folder or an existing one.'))
-                return HttpResponseRedirect(next)
-
-            folder_document, created = FolderDocument.objects.get_or_create(folder=folder, document=document)
-            if created:
+            folder = form.cleaned_data['folder']
+            if folder.add_document(document):
                 messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
                     'document': document, 'folder': folder})
             else:
@@ -204,7 +192,8 @@ def folder_add_document(request, document_id):
 
             return HttpResponseRedirect(next)
     else:
-        form = AddDocumentForm(user=request.user)
+        form = FolderListForm(user=request.user)
+
 
     return render_to_response('generic_form.html', {
         'title': _(u'add document "%s" to a folder') % document,
