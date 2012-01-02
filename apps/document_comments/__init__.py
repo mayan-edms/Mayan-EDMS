@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.contrib.comments.models import Comment
+from django.contrib.contenttypes import generic
 
 from navigation.api import register_links, register_model_list_columns
 from permissions.models import PermissionNamespace, Permission
@@ -41,3 +42,12 @@ register_model_list_columns(Comment, [
 register_links(['comments_for_object', 'comment_add', 'comment_delete', 'comment_multiple_delete'], [comment_add], menu_name='sidebar')
 register_links(Comment, [comment_delete])
 register_links(Document, [comments_for_object], menu_name='form_header')
+
+Document.add_to_class(
+    'comments',
+    generic.GenericRelation(
+        Comment,
+        content_type_field='content_type',
+        object_id_field='object_pk'
+    )
+)

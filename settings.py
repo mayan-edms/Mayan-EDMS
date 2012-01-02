@@ -170,6 +170,7 @@ INSTALLED_APPS = (
     'djangorestframework',
     'rest_api',
     'south',
+    'document_signatures',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

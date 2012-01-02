@@ -8,6 +8,7 @@ from documents.models import Document
 from acls.models import class_permissions
 
 from taggit.models import Tag
+from taggit.managers import TaggableManager
 
 from tags.widgets import tag_color_block
 
@@ -67,3 +68,5 @@ class_permissions(Document, [
 #    PERMISSION_TAG_EDIT,
 #    PERMISSION_TAG_VIEW,
 #])
+
+Document.add_to_class('tags', TaggableManager())

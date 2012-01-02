@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.utils.safestring import mark_safe
+from django.conf import settings
 
 from documents.literals import PERMISSION_DOCUMENT_CREATE
 from documents.models import DocumentType, Document
@@ -161,6 +162,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             messages.success(request, _(u'Document uploaded successfully.'))
                             return HttpResponseRedirect(request.get_full_path())
                     except Exception, e:
+                        if settings.DEBUG:
+                            raise
                         messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
                 form = WebFormForm(
@@ -231,6 +234,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         else:
                             return HttpResponseRedirect(request.get_full_path())
                     except Exception, e:
+                        if settings.DEBUG:
+                            raise
                         messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
                 form = StagingDocumentForm(cls=StagingFile,

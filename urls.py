@@ -30,7 +30,8 @@ urlpatterns = patterns('',
     (r'^acls/', include('acls.urls')),
     (r'^document_acls/', include('document_acls.urls')),
     (r'^api/', include('rest_api.urls')),
-    (r'^signatures/', include('django_gpg.urls')),
+    (r'^gpg/', include('django_gpg.urls')),
+    (r'^documents/signatures/', include('document_signatures.urls')),
 )
 
 

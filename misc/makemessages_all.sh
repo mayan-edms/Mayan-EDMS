@@ -156,3 +156,10 @@ $MAKEMESSAGES -l pt
 $MAKEMESSAGES -l ru
 $MAKEMESSAGES -l es
 $MAKEMESSAGES -l it
+
+cd $BASE/apps/document_signatures
+$MAKEMESSAGES -l en
+$MAKEMESSAGES -l pt
+$MAKEMESSAGES -l ru
+$MAKEMESSAGES -l es
+$MAKEMESSAGES -l it

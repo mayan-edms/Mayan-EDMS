@@ -176,3 +176,11 @@ trans.es = apps/django_gpg/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/django_gpg/locale/pt/LC_MESSAGES/django.po
 trans.ru = apps/django_gpg/locale/ru/LC_MESSAGES/django.po
 trans.it = apps/django_gpg/locale/it/LC_MESSAGES/django.po
+
+[mayan-edms.apps-document_signatures]
+source_file = apps/document_signatures/locale/en/LC_MESSAGES/django.po
+source_lang = en
+trans.es = apps/document_signatures/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/document_signatures/locale/pt/LC_MESSAGES/django.po
+trans.ru = apps/document_signatures/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/document_signatures/locale/it/LC_MESSAGES/django.po
