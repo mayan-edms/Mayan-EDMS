@@ -1,5 +1,5 @@
 import types
-from StringIO import StringIO
+
 from pickle import dumps
 import logging
 import tempfile
@@ -151,6 +151,17 @@ class Key(object):
 
 
 class GPG(object):
+    @staticmethod
+    def get_descriptor(file_input):
+        try:
+            # Is it a file like object?
+            file_input.seek(0)
+        except AttributeError:
+            # If not, try open it.
+            return open(file_input, 'rb')
+        else:
+            return file_input        
+    
     def __init__(self, binary_path=None, home=None, keyring=None, keyservers=None):
         kwargs = {}
         if binary_path:
@@ -167,52 +178,46 @@ class GPG(object):
         self.gpg = gnupg.GPG(**kwargs)
 
     def verify_w_retry(self, file_input, detached_signature=None):
-        if isinstance(file_input, types.StringTypes):
-            input_descriptor = open(file_input, 'rb')
-        elif isinstance(file_input, types.FileType) or isinstance(file_input, File):
-            input_descriptor = file_input
-        elif issubclass(file_input.__class__, StringIO):
-            input_descriptor = file_input
-        else:
-            raise ValueError('Invalid file_input argument type')        
+        logger.debug('file_input type: %s' % type(file_input))
+
+        input_descriptor = GPG.get_descriptor(file_input)
 
         try:
-            verify = self.verify_file(input_descriptor, detached_signature)
+            verify = self.verify_file(input_descriptor, detached_signature, close_descriptor=False)
             if verify.status == 'no public key':
                 # Try to fetch the public key from the keyservers
                 try:
                     self.receive_key(verify.key_id)
-                    return self.verify_w_retry(file_input, detached_signature)
+                    return self.verify_w_retry(input_descriptor, detached_signature)
                 except KeyFetchingError:
                     return verify
             else:
+                input_descriptor.close()
                 return verify
         except IOError:
             return False
 
-    def verify_file(self, file_input, detached_signature=None):
-        """
+    def verify_file(self, file_input, detached_signature=None, close_descriptor=True):
+        '''
         Verify the signature of a file.
-        """
-        if isinstance(file_input, types.StringTypes):
-            descriptor = open(file_input, 'rb')
-        elif isinstance(file_input, types.FileType) or isinstance(file_input, File) or isinstance(file_input, StringIO):
-            descriptor = file_input
-        else:
-            raise ValueError('Invalid file_input argument type')
+        '''
         
+        input_descriptor = GPG.get_descriptor(file_input)
+                    
         if detached_signature:
             # Save the original data and invert the argument order
             # Signature first, file second
             file_descriptor, filename = tempfile.mkstemp(prefix='django_gpg')
-            file_data = file_input.read()
+            file_data = input_descriptor.read()
             file_input.close()
             os.write(file_descriptor, file_data)
             os.close(file_descriptor)
             verify = self.gpg.verify_file(detached_signature, data_filename=filename)
         else:
-            verify = self.gpg.verify_file(descriptor)
-        descriptor.close()
+            verify = self.gpg.verify_file(input_descriptor)
+            
+        if close_descriptor:
+            input_descriptor.close()
         
         if verify:
             return verify
@@ -232,12 +237,13 @@ class GPG(object):
             raise GPGVerificationError(verify.status)
 
     def sign_file(self, file_input, key=None, destination=None, key_id=None, passphrase=None, clearsign=False):
-        """
+        '''
         Signs a filename, storing the signature and the original file
         in the destination filename provided (the destination file is
         overrided if it already exists), if no destination file name is
         provided the signature is returned.
-        """
+        '''
+        
         kwargs = {}
         kwargs['clearsign'] = clearsign
 
@@ -250,14 +256,7 @@ class GPG(object):
         if passphrase:
             kwargs['passphrase'] = passphrase
 
-        if isinstance(file_input, types.StringTypes):
-            input_descriptor = open(file_input, 'rb')
-        elif isinstance(file_input, types.FileType) or isinstance(file_input, File):
-            input_descriptor = file_input
-        elif issubclass(file_input.__class__, StringIO):
-            input_descriptor = file_input
-        else:
-            raise ValueError('Invalid file_input argument type')
+        input_descriptor = GPG.get_descriptor(file_input)
 
         if destination:
             output_descriptor = open(destination, 'wb')
@@ -277,16 +276,13 @@ class GPG(object):
         if not destination:
             return signed_data
 
-    def decrypt_file(self, file_input):
-        if isinstance(file_input, types.StringTypes):
-            input_descriptor = open(file_input, 'rb')
-        elif isinstance(file_input, types.FileType) or isinstance(file_input, File) or isinstance(file_input, StringIO):
-            input_descriptor = file_input
-        else:
-            raise ValueError('Invalid file_input argument type')
+    def decrypt_file(self, file_input, close_descriptor=True):
+        input_descriptor = GPG.get_descriptor(file_input)
 
         result = self.gpg.decrypt_file(input_descriptor)
-        input_descriptor.close()
+        if close_descriptor:
+            input_descriptor.close()
+            
         if not result.status:
             raise GPGDecryptionError('Unable to decrypt file')
 
