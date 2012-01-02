@@ -202,14 +202,14 @@ def acl_grant(request):
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if AccessEntry.objects.grant(permission, requester.source_object,  obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" granted to %(requester)s for %(object)s.') % {
+                        messages.success(request, _(u'Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
                             'permission': permission,
-                            'requester': requester,
+                            'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(requester)s, already had the permission "%(permission)s" granted for %(object)s.') % {
-                            'requester': requester,
+                        messages.warning(request, _(u'%(actor)s, already had the permission "%(permission)s" granted for %(object)s.') % {
+                            'actor': requester,
                             'permission': permission,
                             'object': obj,
                         })
@@ -296,14 +296,14 @@ def acl_revoke(request):
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if AccessEntry.objects.revoke(permission, requester.source_object,  obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" revoked of %(requester)s for %(object)s.') % {
+                        messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
-                            'requester': requester,
+                            'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(requester)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
-                            'requester': requester,
+                        messages.warning(request, _(u'%(actor)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
+                            'actor': requester,
                             'permission': permission,
                             'object': obj,
                         })
@@ -525,14 +525,14 @@ def acl_class_multiple_grant(request):
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if DefaultAccessEntry.objects.grant(permission, requester.source_object, obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" granted to %(requester)s for %(object)s.') % {
+                        messages.success(request, _(u'Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
                             'permission': permission,
-                            'requester': requester,
+                            'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(requester)s, already had the permission "%(permission)s" granted for %(object)s.') % {
-                            'requester': requester,
+                        messages.warning(request, _(u'%(actor)s, already had the permission "%(permission)s" granted for %(object)s.') % {
+                            'actor': requester,
                             'permission': permission,
                             'object': obj,
                         })
@@ -605,14 +605,14 @@ def acl_class_multiple_revoke(request):
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if DefaultAccessEntry.objects.revoke(permission, requester.source_object,  obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" revoked of %(requester)s for %(object)s.') % {
+                        messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
-                            'requester': requester,
+                            'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(requester)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
-                            'requester': requester,
+                        messages.warning(request, _(u'%(actor)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
+                            'actor': requester,
                             'permission': permission,
                             'object': obj,
                         })
