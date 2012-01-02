@@ -269,6 +269,11 @@ class AccessEntryManager(models.Manager):
     def filter_objects_by_access(self, permission, actor, object_list, exception_on_empty=False):
         logger.debug('exception_on_empty: %s' % exception_on_empty)
         logger.debug('object_list: %s' % object_list)
+        
+        if isinstance(actor, User):
+            if actor.is_superuser or actor.is_staff:
+                return object_list
+        
         try:
             # Try to process as a QuerySet
             qs = object_list.filter(pk__in=[obj.pk for obj in self.get_allowed_class_objects(permission, actor, object_list[0])])
