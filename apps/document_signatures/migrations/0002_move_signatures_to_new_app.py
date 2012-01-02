@@ -6,6 +6,10 @@ from django.db import models
 
 class Migration(DataMigration):
 
+    depends_on = (
+        ('documents', '0012_auto__add_field_documentversion_signature_file'),
+    )
+    
     def forwards(self, orm):
         for document_version in orm['documents.DocumentVersion'].objects.all():
             if document_version.signature_state or document_version.signature_file:
