@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from folders.models import Folder, FolderDocument
+from .models import Folder, FolderDocument
 
 
 class FolderDocumentInline(admin.StackedInline):

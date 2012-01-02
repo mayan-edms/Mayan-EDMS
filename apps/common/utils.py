@@ -110,7 +110,9 @@ def pretty_size_10(size):
 # http://www.johncardinal.com/tmgutil/capitalizenames.htm
 
 def proper_name(name):
-    """Does the work of capitalizing a name (can be a full name)."""
+    '''
+    Does the work of capitalizing a name (can be a full name).
+    '''
     mc = re.compile(r'^Mc(\w)(?=\w)', re.I)
     mac = re.compile(r'^Mac(\w)(?=\w)', re.I)
     suffixes = [

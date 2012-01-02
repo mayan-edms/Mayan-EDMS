@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 
 from django import forms
@@ -8,9 +10,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.conf import settings
 
-from common.utils import return_attrib
-from common.widgets import DetailSelectMultiple, PlainWidget, \
-    TextAreaDiv, EmailInput
+from .utils import return_attrib
+from .widgets import (DetailSelectMultiple, PlainWidget, TextAreaDiv,
+    EmailInput)
 
 
 class DetailForm(forms.ModelForm):
@@ -90,10 +92,10 @@ class FilterForm(forms.Form):
 
 
 class ChoiceForm(forms.Form):
-    """
+    '''
     Form to be used in side by side templates used to add or remove
     items from a many to many field
-    """
+    '''
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
         label = kwargs.pop('label', _(u'Selection'))
@@ -106,28 +108,28 @@ class ChoiceForm(forms.Form):
 
 
 class UserForm_view(DetailForm):
-    """
+    '''
     Form used to display an user's public details
-    """
+    '''
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'is_staff', 'is_superuser', 'last_login', 'date_joined', 'groups')
 
 
 class UserForm(forms.ModelForm):
-    """
+    '''
     Form used to edit an user's mininal fields by the user himself
-    """
+    '''
     class Meta:
         model = User
         fields = ('first_name', 'last_name')
 
 
 class EmailAuthenticationForm(AuthenticationForm):
-    """
+    '''
     Override the default authentication form to use email address
     authentication
-    """
+    '''
     email = forms.CharField(label=_(u'Email'), max_length=75,
         widget=EmailInput()
     )

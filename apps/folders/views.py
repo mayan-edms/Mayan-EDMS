@@ -1,4 +1,5 @@
 from __future__ import absolute_import 
+
 import logging
 
 from django.utils.translation import ugettext_lazy as _
@@ -10,7 +11,7 @@ from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 
-from documents.literals import PERMISSION_DOCUMENT_VIEW
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
 from permissions import Permission

@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 import subprocess
 import hashlib
@@ -7,15 +9,13 @@ from common.conf.settings import TEMPORARY_DIRECTORY
 from converter.literals import DEFAULT_PAGE_NUMBER, \
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT
 
-from converter import backend
-from converter.literals import TRANSFORMATION_CHOICES
-from converter.literals import TRANSFORMATION_RESIZE, \
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
-from converter.literals import DIMENSION_SEPARATOR
-from converter.literals import FILE_FORMATS
-from converter.utils import cleanup
-from converter.runtime import office_converter
-from converter.exceptions import OfficeConversionError
+from . import backend
+from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
+    FILE_FORMATS)
+from .utils import cleanup
+from .runtime import office_converter
+from .exceptions import OfficeConversionError
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 

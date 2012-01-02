@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -7,7 +9,7 @@ from common.utils import urlquote
 
 from metadata.forms import MetadataSelectionForm, MetadataFormSet
 
-from documents.forms import DocumentTypeSelectForm
+from .forms import DocumentTypeSelectForm
 
 
 class DocumentCreateWizard(BoundFormWizard):

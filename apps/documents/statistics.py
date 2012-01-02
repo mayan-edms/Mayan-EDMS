@@ -1,10 +1,12 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
+from django.db.models import Avg, Count, Min, Max
 
 from common.utils import pretty_size, pretty_size_10
 
-from documents.conf.settings import STORAGE_BACKEND
-from documents.models import Document, DocumentType, DocumentPage, DocumentVersion
-from django.db.models import Avg, Count, Min, Max
+from .conf.settings import STORAGE_BACKEND
+from .models import Document, DocumentType, DocumentPage, DocumentVersion
 
 
 def get_used_size(path, file_list):

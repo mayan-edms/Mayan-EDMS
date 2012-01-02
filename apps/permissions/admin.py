@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from permissions.models import StoredPermission, PermissionHolder, Role, RoleMember
+from .models import StoredPermission, PermissionHolder, Role, RoleMember
 
 
 class PermissionHolderInline(admin.StackedInline):

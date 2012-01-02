@@ -1,22 +1,14 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User, Group
 
 from navigation.api import register_links, register_multi_item_links
-from permissions.models import PermissionNamespace, Permission
-
 from project_setup.api import register_setup
 
-user_management_namespace = PermissionNamespace('user_management', _(u'User management'))
-
-PERMISSION_USER_CREATE = Permission.objects.register(user_management_namespace, 'user_create', _(u'Create new users'))
-PERMISSION_USER_EDIT = Permission.objects.register(user_management_namespace, 'user_edit', _(u'Edit existing users'))
-PERMISSION_USER_VIEW = Permission.objects.register(user_management_namespace, 'user_view', _(u'View existing users'))
-PERMISSION_USER_DELETE = Permission.objects.register(user_management_namespace, 'user_delete', _(u'Delete existing users'))
-
-PERMISSION_GROUP_CREATE = Permission.objects.register(user_management_namespace, 'group_create', _(u'Create new groups'))
-PERMISSION_GROUP_EDIT = Permission.objects.register(user_management_namespace, 'group_edit', _(u'Edit existing groups'))
-PERMISSION_GROUP_VIEW = Permission.objects.register(user_management_namespace, 'group_view', _(u'View existing groups'))
-PERMISSION_GROUP_DELETE = Permission.objects.register(user_management_namespace, 'group_delete', _(u'Delete existing groups'))
+from .permissions import (PERMISSION_USER_CREATE, PERMISSION_USER_EDIT,
+    PERMISSION_USER_VIEW, PERMISSION_USER_DELETE, PERMISSION_GROUP_CREATE,
+    PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, PERMISSION_GROUP_DELETE)
 
 user_list = {'text': _(u'user list'), 'view': 'user_list', 'famfam': 'user', 'permissions': [PERMISSION_USER_VIEW]}
 user_setup = {'text': _(u'users'), 'view': 'user_list', 'famfam': 'user', 'icon': 'user.png', 'permissions': [PERMISSION_USER_VIEW]}

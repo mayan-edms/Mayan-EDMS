@@ -1,3 +1,5 @@
+from __future__ import absolute_import 
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -7,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 
-from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT
+from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from documents.models import Document, RecentDocument, DocumentType
 from permissions.models import Permission
 from document_indexing.api import update_indexes, delete_indexes
@@ -15,18 +17,18 @@ from document_indexing.api import update_indexes, delete_indexes
 from common.utils import generate_choices_w_labels, encapsulate
 from common.views import assign_remove
 
-from metadata import PERMISSION_METADATA_DOCUMENT_VIEW, \
-    PERMISSION_METADATA_DOCUMENT_EDIT, \
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE, \
-    PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_CREATE, \
-    PERMISSION_METADATA_TYPE_DELETE, PERMISSION_METADATA_TYPE_VIEW, \
-    PERMISSION_METADATA_SET_EDIT, PERMISSION_METADATA_SET_CREATE, \
-    PERMISSION_METADATA_SET_DELETE, PERMISSION_METADATA_SET_VIEW
-from metadata.forms import MetadataFormSet, AddMetadataForm, \
-    MetadataRemoveFormSet, MetadataTypeForm, MetadataSetForm
-from metadata.api import save_metadata_list
-from metadata.models import DocumentMetadata, MetadataType, MetadataSet, \
-    MetadataSetItem, DocumentTypeDefaults
+from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
+    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
+    PERMISSION_METADATA_DOCUMENT_VIEW, PERMISSION_METADATA_TYPE_EDIT,
+    PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
+    PERMISSION_METADATA_TYPE_VIEW, PERMISSION_METADATA_SET_EDIT,
+    PERMISSION_METADATA_SET_CREATE, PERMISSION_METADATA_SET_DELETE,
+    PERMISSION_METADATA_SET_VIEW)
+from .forms import (MetadataFormSet, AddMetadataForm,
+    MetadataRemoveFormSet, MetadataTypeForm, MetadataSetForm)
+from .api import save_metadata_list
+from .models import (DocumentMetadata, MetadataType, MetadataSet,
+    MetadataSetItem, DocumentTypeDefaults)
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):

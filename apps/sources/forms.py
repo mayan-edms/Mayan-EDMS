@@ -1,13 +1,15 @@
+from __future__ import absolute_import
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 
 from documents.forms import DocumentForm
 
-from sources.models import WebForm, StagingFolder, SourceTransformation, \
-    WatchFolder
-from sources.widgets import FamFamRadioSelect
-from sources.utils import validate_whitelist_blacklist
+from .models import (WebForm, StagingFolder, SourceTransformation,
+    WatchFolder)
+from .widgets import FamFamRadioSelect
+from .utils import validate_whitelist_blacklist
 
 
 class StagingDocumentForm(DocumentForm):

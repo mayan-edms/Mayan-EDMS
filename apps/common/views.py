@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
@@ -10,26 +12,25 @@ from django.utils.http import urlencode
 from django.contrib.auth.views import login
 from django.utils.simplejson import dumps, loads
 
-from common.forms import ChoiceForm, UserForm, UserForm_view, \
-    ChangelogForm, LicenseForm
-from common.forms import EmailAuthenticationForm
-from common.conf.settings import LOGIN_METHOD
+from .forms import (ChoiceForm, UserForm, UserForm_view, ChangelogForm,
+    LicenseForm, EmailAuthenticationForm)
+from .conf.settings import LOGIN_METHOD
 
 
 def password_change_done(request):
-    """
+    '''
     View called when the new user password has been accepted
-    """
+    '''
 
     messages.success(request, _(u'Your password has been successfully changed.'))
     return redirect('home')
 
 
 def multi_object_action_view(request):
-    """
+    '''
     Proxy view called first when using a multi object action, which
     then redirects to the appropiate specialized view
-    """
+    '''
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
@@ -144,9 +145,9 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
 
 
 def current_user_details(request):
-    """
+    '''
     Display the current user's details
-    """
+    '''
     form = UserForm_view(instance=request.user)
 
     return render_to_response(
@@ -159,9 +160,9 @@ def current_user_details(request):
 
 
 def current_user_edit(request):
-    """
+    '''
     Allow an user to edit his own details
-    """
+    '''
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('current_user_details'))))
 
@@ -184,10 +185,10 @@ def current_user_edit(request):
 
 
 def login_view(request):
-    """
+    '''
     Control how the use is to be authenticated, options are 'email' and 
     'username'
-    """        
+    '''        
     kwargs = {'template_name': 'login.html'}
     
     if LOGIN_METHOD == 'email':
@@ -197,9 +198,9 @@ def login_view(request):
 
 
 def changelog_view(request):
-    """
+    '''
     Display the included Changelog.txt file from the about menu
-    """    
+    '''    
     form = ChangelogForm()
     return render_to_response(
         'generic_detail.html', {
@@ -210,9 +211,9 @@ def changelog_view(request):
 
 
 def license_view(request):
-    """
+    '''
     Display the included LICENSE file from the about menu
-    """    
+    '''    
     form = LicenseForm()
     return render_to_response(
         'generic_detail.html', {

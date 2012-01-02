@@ -1,10 +1,12 @@
+from __future__ import absolute_import
+
 import datetime
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from lock_manager.managers import LockManager
-from lock_manager.conf.settings import DEFAULT_LOCK_TIMEOUT
+from .managers import LockManager
+from .conf.settings import DEFAULT_LOCK_TIMEOUT
 
 
 class Lock(models.Model):

@@ -1,10 +1,9 @@
+from __future__ import absolute_import
+
 from django.conf.urls.defaults import patterns, url
 
-from documents.conf.settings import PREVIEW_SIZE
-from documents.conf.settings import PRINT_SIZE
-from documents.conf.settings import THUMBNAIL_SIZE
-from documents.conf.settings import DISPLAY_SIZE
-from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
+from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, THUMBNAIL_SIZE,
+    DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE)
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),

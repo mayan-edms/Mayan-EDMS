@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import logging
 
 from django.db import models
@@ -8,7 +10,7 @@ from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 
-from permissions.managers import (RoleMemberManager, StoredPermissionManager)
+from .managers import (RoleMemberManager, StoredPermissionManager)
     
 logger = logging.getLogger(__name__)
 

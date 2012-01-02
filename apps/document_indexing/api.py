@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.core.urlresolvers import reverse
@@ -7,15 +9,13 @@ from django.template.defaultfilters import slugify
 from documents.models import Document
 from metadata.classes import MetadataObject
 
-from document_indexing.models import Index, IndexInstance, \
-    DocumentRenameCount
-from document_indexing.conf.settings import AVAILABLE_INDEXING_FUNCTIONS
-from document_indexing.conf.settings import MAX_SUFFIX_COUNT
-from document_indexing.filesystem import fs_create_index_directory, \
-    fs_create_document_link, fs_delete_document_link, \
-    fs_delete_index_directory, fs_delete_directory_recusive
-from document_indexing.conf.settings import SLUGIFY_PATHS
-from document_indexing.os_specifics import assemble_suffixed_filename
+from .models import (Index, IndexInstance, DocumentRenameCount)
+from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
+    MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
+from .filesystem import (fs_create_index_directory,
+    fs_create_document_link, fs_delete_document_link,
+    fs_delete_index_directory, fs_delete_directory_recusive)
+from .os_specifics import assemble_suffixed_filename
 
 if SLUGIFY_PATHS == False:
     # Do not slugify path or filenames and extensions

@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -6,18 +8,17 @@ from django.contrib import messages
 from django.utils.safestring import mark_safe
 
 from permissions.models import Permission
-from documents.literals import PERMISSION_DOCUMENT_VIEW
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate
 
-from document_indexing import (PERMISSION_DOCUMENT_INDEXING_VIEW,
+from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES)
-
-from document_indexing.models import IndexInstance
-from document_indexing.api import (get_breadcrumbs, get_instance_link,
+from .models import IndexInstance
+from .api import (get_breadcrumbs, get_instance_link,
     do_rebuild_all_indexes)
-from document_indexing.widgets import index_instance_item_link
+from .widgets import index_instance_item_link
 
 
 def index_instance_list(request, index_id=None):

@@ -3,21 +3,16 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_sidebar_template
-from permissions.models import PermissionNamespace, Permission
 from project_setup.api import register_setup
-from documents.literals import PERMISSION_DOCUMENT_VIEW
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from acls.models import class_permissions
 from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 
 from .models import SmartLink, SmartLinkCondition
-
-linking_namespace = PermissionNamespace('linking', _(u'Smart links'))
-
-PERMISSION_SMART_LINK_VIEW = Permission.objects.register(linking_namespace, 'smart_link_view', _(u'View existing smart links'))
-PERMISSION_SMART_LINK_CREATE = Permission.objects.register(linking_namespace, 'smart_link_create', _(u'Create new smart links'))
-PERMISSION_SMART_LINK_DELETE = Permission.objects.register(linking_namespace, 'smart_link_delete', _(u'Delete smart links'))
-PERMISSION_SMART_LINK_EDIT = Permission.objects.register(linking_namespace, 'smart_link_edit', _(u'Edit smart links'))
+from .permissions import (PERMISSION_SMART_LINK_VIEW,
+    PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
+    PERMISSION_SMART_LINK_EDIT)
 
 smart_link_instance_view_link = {'text': _(u'smart links actions'), 'view': 'smart_link_instance_view', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 smart_link_instances_for_document = {'text': _(u'smart links'), 'view': 'smart_link_instances_for_document', 'args': 'object.pk', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}

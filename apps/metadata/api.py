@@ -1,14 +1,17 @@
-"""Metadata handling commonalities"""
+'''Metadata handling commonalities'''
+from __future__ import absolute_import 
 
 from urllib import unquote_plus
 
 from django.shortcuts import get_object_or_404
 
-from metadata.models import DocumentMetadata, MetadataType
+from .models import DocumentMetadata, MetadataType
 
 
 def decode_metadata_from_url(url_dict):
-    """Parse a URL query string to a list of metadata"""
+    '''
+    Parse a URL query string to a list of metadata
+    '''
     metadata_dict = {
         'id': {},
         'value': {}
@@ -32,19 +35,19 @@ def decode_metadata_from_url(url_dict):
 
 
 def save_metadata_list(metadata_list, document, create=False):
-    """
+    '''
     Take a list of metadata dictionaries and associate them to a
     document
-    """
+    '''
     for item in metadata_list:
         save_metadata(item, document, create)
 
 
 def save_metadata(metadata_dict, document, create=False):
-    """
+    '''
     Take a dictionary of metadata type & value and associate it to a
     document
-    """
+    '''
     if create:
         # Use matched metadata now to create document metadata
         document_metadata, created = DocumentMetadata.objects.get_or_create(
@@ -78,14 +81,16 @@ def save_metadata(metadata_dict, document, create=False):
 
 
 def metadata_repr(metadata_list):
-    """Return a printable representation of a metadata list"""
+    '''
+    Return a printable representation of a metadata list
+    '''
     return u', '.join(metadata_repr_as_list(metadata_list))
 
 
 def metadata_repr_as_list(metadata_list):
-    """
+    '''
     Turn a list of metadata into a list of printable representations
-    """
+    '''
     output = []
     for metadata_dict in metadata_list:
         try:
@@ -98,7 +103,7 @@ def metadata_repr_as_list(metadata_list):
 
 
 def get_metadata_string(document):
-    """
+    '''
     Return a formated representation of a document's metadata values
-    """
+    '''
     return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in DocumentMetadata.objects.filter(document=document).select_related('metadata_type')])

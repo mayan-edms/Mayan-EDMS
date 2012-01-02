@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 from django import forms
@@ -8,7 +10,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
 from django.template.defaultfilters import capfirst
 
-from acls.literals import CONTENT_TYPE_ICON_MAP
+from .literals import CONTENT_TYPE_ICON_MAP
 
 
 def content_type_icon(content_type):

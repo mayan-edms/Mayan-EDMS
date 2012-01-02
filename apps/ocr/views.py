@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import socket
 
 from django.http import HttpResponseRedirect
@@ -14,17 +16,16 @@ from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
 from common.utils import encapsulate
 
-from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
-    PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES, \
-    PERMISSION_OCR_QUEUE_EDIT
-
-from ocr.models import DocumentQueue, QueueDocument, QueueTransformation
-from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED, \
-    DOCUMENTQUEUE_STATE_ACTIVE
-from ocr.exceptions import AlreadyQueued, ReQueueError
-from ocr.api import clean_pages
-from ocr.forms import QueueTransformationForm, QueueTransformationForm_create
+from .permissions import (PERMISSION_OCR_DOCUMENT,
+    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
+    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
+from .models import DocumentQueue, QueueDocument, QueueTransformation
+from .literals import (QUEUEDOCUMENT_STATE_PENDING,
+    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED,
+    DOCUMENTQUEUE_STATE_ACTIVE)
+from .exceptions import AlreadyQueued, ReQueueError
+from .api import clean_pages
+from .forms import QueueTransformationForm, QueueTransformationForm_create
 
 
 def queue_document_list(request, queue_name='default'):

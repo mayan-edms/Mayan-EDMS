@@ -3,15 +3,15 @@ import re
 import urlparse
 
 from django.core.urlresolvers import reverse, NoReverseMatch
-from django.template import TemplateSyntaxError, Library, \
-                            VariableDoesNotExist, Node, Variable
+from django.template import (TemplateSyntaxError, Library,
+    VariableDoesNotExist, Node, Variable)
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 
 from common.utils import urlquote
 
-from navigation.api import object_navigation, multi_object_navigation, \
-    top_menu_entries, sidebar_templates
+from navigation.api import (object_navigation, multi_object_navigation,
+    top_menu_entries, sidebar_templates)
 from navigation.forms import MultiItemForm
 from navigation.utils import resolve_to_name
 

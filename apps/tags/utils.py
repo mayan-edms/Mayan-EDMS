@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 
-from tags import tag_document_remove, tag_tagged_item_list
+from . import tag_document_remove, tag_tagged_item_list
 
 
 def get_tags_subtemplate(obj):

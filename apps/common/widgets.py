@@ -10,10 +10,10 @@ from django.utils.encoding import force_unicode
 
 
 class PlainWidget(forms.widgets.Widget):
-    """
+    '''
     Class to define a form widget that effectively nulls the htmls of a
     widget and reduces the output to only it's value
-    """        
+    '''        
     def render(self, name, value, attrs=None):
         return mark_safe(u'%s' % value)
 
@@ -74,10 +74,10 @@ def two_state_template(state, famfam_ok_icon=u'tick', famfam_fail_icon=u'cross')
 
 
 class TextAreaDiv(forms.widgets.Widget):
-    """
+    '''
     Class to define a form widget that simulates the behavior of a
     Textarea widget but using a div tag instead
-    """    
+    '''    
     
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
@@ -98,10 +98,10 @@ class TextAreaDiv(forms.widgets.Widget):
 
 # From: http://www.peterbe.com/plog/emailinput-html5-django
 class EmailInput(forms.widgets.Input):
-    """
+    '''
     Class for a login form widget that accepts only well formated 
     email address
-    """    
+    '''
     input_type = 'email'
 
     def render(self, name, value, attrs=None):
@@ -114,11 +114,11 @@ class EmailInput(forms.widgets.Input):
 
 
 class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
-    """
+    '''
     Class for a form widget composed of a selection of checkboxes wrapped
     in a div tag with automatic overflow to add scrollbars when the list
     exceds the height of the div
-    """
+    '''
     def render(self, name, value, attrs=None, choices=()):
         if value is None: value = []
         has_id = attrs and 'id' in attrs

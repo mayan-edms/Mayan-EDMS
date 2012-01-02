@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import tempfile
 
 from django.utils.translation import ugettext_lazy as _
@@ -7,8 +9,8 @@ from django.db.models import signals
 
 from navigation.api import register_links, register_top_menu
 
-from common.conf import settings as common_settings
-from common.utils import validate_path
+from .conf import settings as common_settings
+from .utils import validate_path
 
 
 def has_usable_password(context):

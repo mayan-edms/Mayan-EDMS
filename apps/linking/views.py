@@ -1,4 +1,5 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
+
 import logging
 
 from django.utils.translation import ugettext_lazy as _
@@ -12,7 +13,7 @@ from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 from documents.models import Document
 from documents.views import document_list
-from documents.literals import PERMISSION_DOCUMENT_VIEW
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 from acls.views import acl_new_holder_for, acl_list_for, acl_detail_for
 from acls.models import AccessEntry, PermissionDenied
@@ -22,7 +23,7 @@ from .conf.settings import SHOW_EMPTY_SMART_LINKS
 from .forms import (SmartLinkInstanceForm, SmartLinkForm,
     SmartLinkConditionForm)
 from . import smart_link_instance_view_link
-from . import (PERMISSION_SMART_LINK_VIEW,
+from .permissions import (PERMISSION_SMART_LINK_VIEW,
     PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
     PERMISSION_SMART_LINK_EDIT)
 

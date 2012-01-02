@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.safestring import mark_safe
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
@@ -9,7 +11,7 @@ from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
 from mimetype.api import get_error_icon_url
     
-from documents.conf.settings import DISPLAY_SIZE
+from .conf.settings import DISPLAY_SIZE
 
 
 def document_thumbnail(document):

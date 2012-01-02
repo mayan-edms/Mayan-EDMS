@@ -1,11 +1,10 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 
 from project_tools.api import register_tool
-from permissions.models import PermissionNamespace, Permission
 
-history_namespace = PermissionNamespace('history', _(u'History'))
-
-PERMISSION_HISTORY_VIEW = Permission.objects.register(history_namespace, 'history_view', _(u'Access the history app'))
+from .permissions import PERMISSION_HISTORY_VIEW
 
 # TODO: support permissions AND operand
 # encapsulate into document_history_list and require DOCUMENT_VIEW and HISTORY_VIEW

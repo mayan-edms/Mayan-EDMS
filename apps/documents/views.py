@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import urlparse
 import copy
 import logging
@@ -29,40 +31,29 @@ from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
 from acls.models import AccessEntry, PermissionDenied
 
-from documents.conf.settings import PREVIEW_SIZE
-from documents.conf.settings import STORAGE_BACKEND
-from documents.conf.settings import ZOOM_PERCENT_STEP
-from documents.conf.settings import ZOOM_MAX_LEVEL
-from documents.conf.settings import ZOOM_MIN_LEVEL
-from documents.conf.settings import ROTATION_STEP
-from documents.conf.settings import PRINT_SIZE
-from documents.conf.settings import RECENT_COUNT
-
-from documents.literals import (PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-    PERMISSION_DOCUMENT_VIEW,
+from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
+    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, PRINT_SIZE,
+    RECENT_COUNT)
+from .permissions import (PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_TYPE_VIEW)
-from documents.literals import (HISTORY_DOCUMENT_CREATED,
+    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
+    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
+from .literals import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-
-from documents.forms import (DocumentTypeSelectForm,
+from .forms import (DocumentTypeSelectForm,
         DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm, 
         DocumentPageTransformationForm, DocumentContentForm, 
         DocumentPageForm_edit, DocumentPageForm_text, PrintForm, 
         DocumentTypeForm, DocumentTypeFilenameForm, 
         DocumentTypeFilenameForm_create)
-from documents.wizards import DocumentCreateWizard
-from documents.models import (Document, DocumentType, DocumentPage,
+from .wizards import DocumentCreateWizard
+from .models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
     DocumentVersion)
-
-# Document type permissions
-from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT, \
-    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE
 
 logger = logging.getLogger(__name__)
 

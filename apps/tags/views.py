@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -11,12 +13,12 @@ from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate
 
-from tags.forms import AddTagForm, TagForm
-from tags.models import TagProperties
-from tags import PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH, \
-    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, \
-    PERMISSION_TAG_VIEW
-from tags import tag_tagged_item_list as tag_tagged_item_list_link
+from .forms import AddTagForm, TagForm
+from .models import TagProperties
+from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
+    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
+    PERMISSION_TAG_VIEW)
+from . import tag_tagged_item_list as tag_tagged_item_list_link
 
 
 def tag_create(request):

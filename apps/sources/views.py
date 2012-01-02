@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -8,7 +10,7 @@ from django.utils.translation import ugettext
 from django.utils.safestring import mark_safe
 from django.conf import settings
 
-from documents.literals import PERMISSION_DOCUMENT_CREATE
+from documents.permissions import PERMISSION_DOCUMENT_CREATE
 from documents.models import DocumentType, Document
 from documents.conf.settings import THUMBNAIL_SIZE
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
@@ -17,18 +19,18 @@ from common.utils import encapsulate
 import sendfile
 from acls.models import AccessEntry, PermissionDenied
 
-from sources.models import WebForm, StagingFolder, SourceTransformation, \
-    WatchFolder
-from sources.literals import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING, \
-    SOURCE_CHOICE_WATCH
-from sources.literals import SOURCE_UNCOMPRESS_CHOICE_Y, \
-    SOURCE_UNCOMPRESS_CHOICE_ASK
+from sources.models import (WebForm, StagingFolder, SourceTransformation,
+    WatchFolder)
+from sources.literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
+    SOURCE_CHOICE_WATCH)
+from sources.literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
+    SOURCE_UNCOMPRESS_CHOICE_ASK)
 from sources.staging import create_staging_file_class, StagingFile
-from sources.forms import StagingDocumentForm, WebFormForm, \
-    WatchFolderSetupForm
+from sources.forms import (StagingDocumentForm, WebFormForm,
+    WatchFolderSetupForm)
 from sources.forms import WebFormSetupForm, StagingFolderSetupForm
 from sources.forms import SourceTransformationForm, SourceTransformationForm_create
-from sources import (PERMISSION_SOURCES_SETUP_VIEW,
+from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_DOCUMENT_NEW_VERSION)
 

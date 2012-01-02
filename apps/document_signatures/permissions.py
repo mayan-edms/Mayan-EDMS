@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.api import register_permission, set_namespace_title
 from permissions.models import PermissionNamespace, Permission
 
 document_signatures_namespace = PermissionNamespace('document_signatures', _(u'Document signatures'))

@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import tempfile
 
 from django.utils.translation import ugettext_lazy as _
@@ -13,22 +15,22 @@ from metadata.api import get_metadata_string
 from project_setup.api import register_setup
 from acls.models import class_permissions
 
-from documents.models import (Document, DocumentPage,
+from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
-from documents.literals import (PERMISSION_DOCUMENT_CREATE,
+from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
-from documents.literals import (HISTORY_DOCUMENT_CREATED,
+from .literals import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-from documents.conf.settings import ZOOM_MAX_LEVEL
-from documents.conf.settings import ZOOM_MIN_LEVEL
-from documents.conf import settings as document_settings
-from documents.widgets import document_thumbnail
+from .conf.settings import ZOOM_MAX_LEVEL
+from .conf.settings import ZOOM_MIN_LEVEL
+from .conf import settings as document_settings
+from .widgets import document_thumbnail
 
 # Document page links expressions
 def is_first_page(context):

@@ -1,10 +1,12 @@
+from __future__ import absolute_import
+
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.widgets import button_navigation_widget
 
-from project_setup.api import setup_items
+from .api import setup_items
 
 
 def setup_list(request):

@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from ast import literal_eval
 from datetime import datetime
 
@@ -13,11 +15,11 @@ from documents.models import Document
 from converter.api import get_available_transformations_choices
 from sources.managers import SourceTransformationManager
 
-from ocr.literals import DOCUMENTQUEUE_STATE_STOPPED, \
-    DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING, \
-    QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PROCESSING
-from ocr.managers import DocumentQueueManager
-from ocr.exceptions import ReQueueError
+from .literals import (DOCUMENTQUEUE_STATE_STOPPED,
+    DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING,
+    QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PROCESSING)
+from .managers import DocumentQueueManager
+from .exceptions import ReQueueError
 
 
 class DocumentQueue(models.Model):

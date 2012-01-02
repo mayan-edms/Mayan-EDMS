@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -9,10 +11,10 @@ from django.http import Http404
 from permissions.models import Permission
 from common.utils import encapsulate
 
-from history.models import History
-from history.forms import HistoryDetailForm
-from history import PERMISSION_HISTORY_VIEW
-from history.widgets import history_entry_object_link, history_entry_summary
+from .models import History
+from .forms import HistoryDetailForm
+from .permissions import PERMISSION_HISTORY_VIEW
+from .widgets import history_entry_object_link, history_entry_summary
 
 
 def history_list(request):

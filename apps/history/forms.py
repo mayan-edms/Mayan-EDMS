@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from common.forms import DetailForm
 
-from history.models import History
+from .models import History
 
 
 class HistoryDetailForm(DetailForm):

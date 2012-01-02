@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 import tempfile
 import hashlib
@@ -27,18 +29,13 @@ from mimetype.api import (get_mimetype, get_icon_file_path,
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
 
-from documents.conf.settings import CHECKSUM_FUNCTION
-from documents.conf.settings import UUID_FUNCTION
-from documents.conf.settings import STORAGE_BACKEND
-from documents.conf.settings import PREVIEW_SIZE
-from documents.conf.settings import DISPLAY_SIZE
-from documents.conf.settings import CACHE_PATH
-from documents.conf.settings import ZOOM_MAX_LEVEL
-from documents.conf.settings import ZOOM_MIN_LEVEL
-from documents.managers import RecentDocumentManager, \
-    DocumentPageTransformationManager
-from documents.utils import document_save_to_temp_dir
-from documents.literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
+from .conf.settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
+    STORAGE_BACKEND, PREVIEW_SIZE, DISPLAY_SIZE, CACHE_PATH,
+    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+from .managers import (RecentDocumentManager,
+    DocumentPageTransformationManager)
+from .utils import document_save_to_temp_dir
+from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
     VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
 
 # document image cache name hash function

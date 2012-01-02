@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import pickle
 import json
 
@@ -14,8 +16,8 @@ from django.core import serializers
 from django.shortcuts import get_object_or_404
 from django.db import models
 
-from history.models import HistoryType, History
-from history.runtime_data import history_types_dict
+from .models import HistoryType, History
+from .runtime_data import history_types_dict
 
 
 @transaction.commit_manually

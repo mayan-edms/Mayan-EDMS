@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 import subprocess
 import logging
@@ -6,8 +8,8 @@ from mimetype.api import get_mimetype
 from common.conf.settings import TEMPORARY_DIRECTORY
 from common.utils import id_generator
 
-from converter.conf.settings import UNOCONV_PATH, UNOCONV_USE_PIPE
-from converter.exceptions import (OfficeConversionError,
+from .conf.settings import UNOCONV_PATH, UNOCONV_USE_PIPE
+from .exceptions import (OfficeConversionError,
     OfficeBackendError, UnknownFileFormat)
 
 CACHED_FILE_SUFFIX = u'_office_converter'

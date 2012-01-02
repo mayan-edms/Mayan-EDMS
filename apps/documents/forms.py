@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -11,11 +13,11 @@ from common.conf.settings import DEFAULT_PAPER_SIZE
 from common.conf.settings import DEFAULT_PAGE_ORIENTATION
 from common.widgets import TextAreaDiv 
 
-from documents.models import (Document, DocumentType,
+from .models import (Document, DocumentType,
     DocumentPage, DocumentPageTransformation, DocumentTypeFilename,
     DocumentVersion)
-from documents.widgets import document_html_widget
-from documents.literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES)
+from .widgets import document_html_widget
+from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES)
 
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):

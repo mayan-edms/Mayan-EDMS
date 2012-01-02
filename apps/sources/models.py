@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from ast import literal_eval
 
 from django.db import models
@@ -16,13 +18,13 @@ from metadata.models import MetadataType
 from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
 
-from sources.managers import SourceTransformationManager
-from sources.literals import SOURCE_CHOICES, SOURCE_CHOICES_PLURAL, \
-    SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM, \
-    SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE, \
-    SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES, \
-    SOURCE_UNCOMPRESS_CHOICE_Y
-from sources.compressed_file import CompressedFile, NotACompressedFile
+from .managers import SourceTransformationManager
+from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
+    SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
+    SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
+    SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
+    SOURCE_UNCOMPRESS_CHOICE_Y)
+from .compressed_file import CompressedFile, NotACompressedFile
 
 
 class BaseModel(models.Model):

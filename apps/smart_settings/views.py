@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -6,7 +8,7 @@ from django.utils.safestring import mark_safe
 from common.utils import return_type, encapsulate
 from common.widgets import exists_with_famfam
 
-from smart_settings.api import settings
+from .api import settings
 
 
 def setting_list(request):

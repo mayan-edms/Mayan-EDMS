@@ -1,8 +1,9 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_top_menu, \
-    register_model_list_columns, register_multi_item_links
-from permissions.models import PermissionNamespace, Permission
+from navigation.api import (register_links, register_top_menu,
+    register_model_list_columns, register_multi_item_links)
 from common.utils import encapsulate
 from documents.models import Document
 from acls.models import class_permissions
@@ -10,16 +11,10 @@ from acls.models import class_permissions
 from taggit.models import Tag
 from taggit.managers import TaggableManager
 
-from tags.widgets import tag_color_block
-
-tags_namespace = PermissionNamespace('tags', _(u'Tags'))
-
-PERMISSION_TAG_CREATE = Permission.objects.register(tags_namespace, 'tag_create', _(u'Create new tags'))
-PERMISSION_TAG_ATTACH = Permission.objects.register(tags_namespace, 'tag_attach', _(u'Attach exising tags'))
-PERMISSION_TAG_REMOVE = Permission.objects.register(tags_namespace, 'tag_remove', _(u'Remove tags from documents'))
-PERMISSION_TAG_DELETE = Permission.objects.register(tags_namespace, 'tag_delete', _(u'Delete global tags'))
-PERMISSION_TAG_EDIT = Permission.objects.register(tags_namespace, 'tag_edit', _(u'Edit global tags'))
-PERMISSION_TAG_VIEW = Permission.objects.register(tags_namespace, 'tag_view', _(u'View a document\'s tags'))
+from .widgets import tag_color_block
+from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
+    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
+    PERMISSION_TAG_VIEW)
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
 tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add'}

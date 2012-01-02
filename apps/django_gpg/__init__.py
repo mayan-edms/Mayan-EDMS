@@ -1,21 +1,17 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_top_menu, \
     register_model_list_columns, register_multi_item_links, \
     register_sidebar_template
 from main.api import register_diagnostic, register_maintenance_links
-from permissions.models import PermissionNamespace, Permission
 from project_setup.api import register_setup
 from hkp import Key as KeyServerKey
 
-from django_gpg.api import Key
-
-django_gpg_namespace = PermissionNamespace('django_gpg', _(u'Key management'))
-
-PERMISSION_KEY_VIEW = Permission.objects.register(django_gpg_namespace, 'key_view', _(u'View keys'))
-PERMISSION_KEY_DELETE = Permission.objects.register(django_gpg_namespace, 'key_delete', _(u'Delete keys'))
-PERMISSION_KEYSERVER_QUERY = Permission.objects.register(django_gpg_namespace, 'keyserver_query', _(u'Query keyservers'))
-PERMISSION_KEY_RECEIVE = Permission.objects.register(django_gpg_namespace, 'key_receive', _(u'Import keys from keyservers'))
+from .api import Key
+from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
+    PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
 
 # Setup views
 private_keys = {'text': _(u'private keys'), 'view': 'key_private_list', 'args': 'object.pk', 'famfam': 'key', 'icon': 'key.png', 'permissions': [PERMISSION_KEY_VIEW]}

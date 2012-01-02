@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import operator
 import itertools
 
@@ -17,12 +19,12 @@ from common.views import assign_remove
 from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 
-from permissions.models import Role, Permission, PermissionHolder, RoleMember
-from permissions.forms import RoleForm, RoleForm_view
-from permissions import PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT, \
-    PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_PERMISSION_GRANT, \
-    PERMISSION_PERMISSION_REVOKE
-from permissions.widgets import role_permission_link
+from .models import Role, Permission, PermissionHolder, RoleMember
+from .forms import RoleForm, RoleForm_view
+from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
+    PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
+    PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)    
+from .widgets import role_permission_link
 
 
 def role_list(request):

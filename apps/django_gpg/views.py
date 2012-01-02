@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from datetime import datetime
 import logging
 
@@ -15,13 +17,13 @@ from permissions.models import Permission
 from common.utils import pretty_size, parse_range, urlquote, \
     return_diff, encapsulate
    
-from django_gpg.api import Key, SIGNATURE_STATES
-from django_gpg.runtime import gpg
-from django_gpg.exceptions import (GPGVerificationError, KeyFetchingError,
+from .api import Key, SIGNATURE_STATES
+from .runtime import gpg
+from .exceptions import (GPGVerificationError, KeyFetchingError,
     KeyImportError)
-from django_gpg import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
+from .forms import KeySearchForm
+from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
     PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
-from django_gpg.forms import KeySearchForm
 
 logger = logging.getLogger(__name__)
 

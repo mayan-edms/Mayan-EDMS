@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -9,8 +11,8 @@ from documents.statistics import get_statistics as documents_statistics
 from ocr.statistics import get_statistics as ocr_statistics
 from permissions.models import Permission
 
-from main.api import diagnostics, tools
-from main.conf.settings import DISABLE_HOME_VIEW
+from .api import diagnostics, tools
+from .conf.settings import DISABLE_HOME_VIEW
 
 
 def home(request):

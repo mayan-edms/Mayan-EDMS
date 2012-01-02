@@ -1,12 +1,13 @@
+from __future__ import absolute_import
+
 import errno
 import os
 
 from django.utils.translation import ugettext_lazy as _
 
-from document_indexing.os_specifics import (assemble_suffixed_filename,
+from .os_specifics import (assemble_suffixed_filename,
     assemble_path_from_list)
-from document_indexing.conf.settings import FILESERVING_ENABLE
-from document_indexing.conf.settings import FILESERVING_PATH
+from .conf.settings import (FILESERVING_ENABLE, FILESERVING_PATH)
 
 
 def get_instance_path(index_instance):

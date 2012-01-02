@@ -4,8 +4,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import SmartLinkManager
-from .literals import OPERATOR_CHOICES, INCLUSION_AND, \
-    INCLUSION_CHOICES
+from .literals import (OPERATOR_CHOICES, INCLUSION_AND,
+    INCLUSION_CHOICES)
 
 
 class SmartLink(models.Model):

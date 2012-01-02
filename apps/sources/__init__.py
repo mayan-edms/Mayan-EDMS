@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, \
@@ -6,22 +8,16 @@ from permissions.models import Permission, PermissionNamespace
 from common.utils import encapsulate
 from project_setup.api import register_setup
 from documents.models import Document
-from documents.literals import PERMISSION_DOCUMENT_CREATE
+from documents.permissions import PERMISSION_DOCUMENT_CREATE
 from acls.models import class_permissions
 
-from sources.staging import StagingFile
-from sources.models import WebForm, StagingFolder, SourceTransformation, \
-    WatchFolder
-from sources.widgets import staging_file_thumbnail
-
-sources_setup_namespace = PermissionNamespace('sources_setup', _(u'Sources setup'))
-PERMISSION_SOURCES_SETUP_VIEW = Permission.objects.register(sources_setup_namespace, 'sources_setup_view', _(u'View existing document sources'))
-PERMISSION_SOURCES_SETUP_EDIT = Permission.objects.register(sources_setup_namespace, 'sources_setup_edit', _(u'Edit document sources'))
-PERMISSION_SOURCES_SETUP_DELETE = Permission.objects.register(sources_setup_namespace, 'sources_setup_delete', _(u'Delete document sources'))
-PERMISSION_SOURCES_SETUP_CREATE = Permission.objects.register(sources_setup_namespace, 'sources_setup_create', _(u'Create new document sources'))
-
-sources_namespace = PermissionNamespace('sources', _(u'Sources'))
-PERMISSION_DOCUMENT_NEW_VERSION = Permission.objects.register(sources_namespace, 'sources_document_new_version', _(u'Create new document version'))
+from .staging import StagingFile
+from .models import (WebForm, StagingFolder, SourceTransformation,
+    WatchFolder)
+from .widgets import staging_file_thumbnail
+from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
+    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
+    PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_DOCUMENT_NEW_VERSION)
 
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
@@ -76,7 +72,6 @@ register_model_list_columns(StagingFile, [
             encapsulate(lambda x: staging_file_thumbnail(x))
         },
     ])
-
 
 register_setup(setup_sources)
 

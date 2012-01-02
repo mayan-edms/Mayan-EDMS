@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import types
 
 from pickle import dumps
@@ -12,7 +14,7 @@ from django.utils.http import urlquote_plus
 from hkp import KeyServer
 import gnupg
 
-from django_gpg.exceptions import (GPGVerificationError, GPGSigningError,
+from .exceptions import (GPGVerificationError, GPGSigningError,
     GPGDecryptionError, KeyDeleteError, KeyGenerationError,
     KeyFetchingError, KeyDoesNotExist, KeyImportError)
 

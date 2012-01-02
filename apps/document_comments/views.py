@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import render_to_response, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.comments.models import Comment
@@ -10,9 +12,10 @@ from django.contrib.sites.models import Site
 from permissions.models import Permission
 from documents.models import Document
 
-from document_comments import PERMISSION_COMMENT_DELETE, \
-    PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_VIEW
-from document_comments.forms import CommentForm
+from .permissions import (PERMISSION_COMMENT_CREATE,
+    PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_EDIT,
+    PERMISSION_COMMENT_VIEW)
+from .forms import CommentForm
 
 
 def comment_delete(request, comment_id=None, comment_id_list=None):
@@ -97,9 +100,9 @@ def comment_add(request, document_id):
 
 
 def comments_for_object(request, document_id):
-    """
+    '''
     Show a list of all the comments related to the passed object
-    """
+    '''
     Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_VIEW])
 
     document = get_object_or_404(Document, pk=document_id)

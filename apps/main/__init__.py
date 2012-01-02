@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_top_menu
@@ -5,8 +7,7 @@ from navigation.api import register_links
 from project_setup.api import register_setup
 from project_tools.api import register_tool
 
-from main.conf.settings import SIDE_BAR_SEARCH
-from main.conf.settings import DISABLE_HOME_VIEW
+from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
@@ -24,9 +25,9 @@ __version_info__ = {
     'serial': 0
 }
 
+
 def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
-
 
 maintenance_menu = {'text': _(u'maintenance'), 'view': 'maintenance_menu', 'famfam': 'wrench', 'icon': 'wrench.png'}
 statistics = {'text': _(u'statistics'), 'view': 'statistics', 'famfam': 'table', 'icon': 'blackboard_sum.png'}
@@ -51,7 +52,6 @@ def get_version():
     if __version_info__['releaselevel'] != 'final':
         vers.append('%(releaselevel)s%(serial)i' % __version_info__)
     return ''.join(vers)
-
 
 __version__ = get_version()
 

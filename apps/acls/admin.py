@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
-
-from acls.models import AccessEntry
-
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+
+from .models import AccessEntry
+
 
 #class PermissionHolderInline(admin.StackedInline):
 #    model = PermissionHolder

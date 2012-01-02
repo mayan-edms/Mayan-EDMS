@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -12,12 +14,10 @@ from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 from common.views import assign_remove
 
-from user_management import PERMISSION_USER_VIEW, \
-    PERMISSION_USER_EDIT, PERMISSION_USER_CREATE, \
-    PERMISSION_USER_DELETE, PERMISSION_GROUP_CREATE, \
-    PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, \
-    PERMISSION_GROUP_DELETE
-from user_management.forms import UserForm, PasswordForm, GroupForm
+from .permissions import (PERMISSION_USER_CREATE, PERMISSION_USER_EDIT,
+    PERMISSION_USER_VIEW, PERMISSION_USER_DELETE, PERMISSION_GROUP_CREATE,
+    PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, PERMISSION_GROUP_DELETE)
+from .forms import UserForm, PasswordForm, GroupForm
 
 
 def user_list(request):

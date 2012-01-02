@@ -1,8 +1,10 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
 from metadata.admin import DocumentMetadataInline
 
-from documents.models import (DocumentType, Document,
+from .models import (DocumentType, Document,
     DocumentTypeFilename, DocumentPage,
     DocumentPageTransformation, RecentDocument,
     DocumentVersion)

@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User, Group
@@ -5,7 +7,7 @@ from django.contrib.auth.models import User, Group
 from permissions.models import Permission, Role
 from common.utils import generate_choices_w_labels, encapsulate, get_object_name
 
-from acls.models import AccessHolder
+from .models import AccessHolder
 
 
 def _as_choice_list(holders):

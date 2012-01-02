@@ -1,11 +1,13 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ImproperlyConfigured
 
 from navigation.api import register_sidebar_template
 from project_tools.api import register_tool
 
-from converter.utils import load_backend
-from converter.conf.settings import GRAPHICS_BACKEND
+from .utils import load_backend
+from .conf.settings import GRAPHICS_BACKEND
 
 formats_list = {'text': _('file formats'), 'view': 'formats_list', 'famfam': 'pictures', 'icon': 'pictures.png'}
 

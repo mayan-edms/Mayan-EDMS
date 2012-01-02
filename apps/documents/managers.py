@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+
 from ast import literal_eval
 from datetime import datetime
 
 from django.db import models
 
-from documents.conf.settings import RECENT_COUNT
+from .conf.settings import RECENT_COUNT
 
 
 class RecentDocumentManager(models.Manager):

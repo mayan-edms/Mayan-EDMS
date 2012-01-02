@@ -1,31 +1,22 @@
+from __future__ import absolute_import 
+
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links, register_multi_item_links, \
     register_sidebar_template
-from permissions.models import Permission, PermissionNamespace
 from documents.models import Document, DocumentType
-from documents.literals import PERMISSION_DOCUMENT_TYPE_EDIT
+from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
 from acls.models import class_permissions
 
-from metadata.models import MetadataType, MetadataSet
-
-metadata_namespace = PermissionNamespace('metadata', _(u'Metadata'))
-PERMISSION_METADATA_DOCUMENT_EDIT = Permission.objects.register(metadata_namespace, 'metadata_document_edit', _(u'Edit a document\'s metadata'))
-PERMISSION_METADATA_DOCUMENT_ADD = Permission.objects.register(metadata_namespace, 'metadata_document_add', _(u'Add metadata to a document'))
-PERMISSION_METADATA_DOCUMENT_REMOVE = Permission.objects.register(metadata_namespace, 'metadata_document_remove', _(u'Remove metadata from a document'))
-PERMISSION_METADATA_DOCUMENT_VIEW = Permission.objects.register(metadata_namespace, 'metadata_document_view', _(u'View metadata from a document'))
-
-metadata_setup_namespace = PermissionNamespace('metadata_setup', _(u'Metadata setup'))
-PERMISSION_METADATA_TYPE_EDIT = Permission.objects.register(metadata_setup_namespace, 'metadata_type_edit', _(u'Edit metadata types'))
-PERMISSION_METADATA_TYPE_CREATE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_create', _(u'Create new metadata types'))
-PERMISSION_METADATA_TYPE_DELETE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_delete', _(u'Delete metadata types'))
-PERMISSION_METADATA_TYPE_VIEW = Permission.objects.register(metadata_setup_namespace, 'metadata_type_view', _(u'View metadata types'))
-
-PERMISSION_METADATA_SET_EDIT = Permission.objects.register(metadata_setup_namespace, 'metadata_set_edit', _(u'Edit metadata sets'))
-PERMISSION_METADATA_SET_CREATE = Permission.objects.register(metadata_setup_namespace, 'metadata_set_create', _(u'Create new metadata sets'))
-PERMISSION_METADATA_SET_DELETE = Permission.objects.register(metadata_setup_namespace, 'metadata_set_delete', _(u'Delete metadata sets'))
-PERMISSION_METADATA_SET_VIEW = Permission.objects.register(metadata_setup_namespace, 'metadata_set_view', _(u'View metadata sets'))
+from .models import MetadataType, MetadataSet
+from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
+    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
+    PERMISSION_METADATA_DOCUMENT_VIEW, PERMISSION_METADATA_TYPE_EDIT,
+    PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
+    PERMISSION_METADATA_TYPE_VIEW, PERMISSION_METADATA_SET_EDIT,
+    PERMISSION_METADATA_SET_CREATE, PERMISSION_METADATA_SET_DELETE,
+    PERMISSION_METADATA_SET_VIEW)
 
 metadata_edit = {'text': _(u'edit metadata'), 'view': 'metadata_edit', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
 metadata_view = {'text': _(u'metadata'), 'view': 'metadata_view', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT], 'children_view_regex': ['metadata']}
@@ -47,9 +38,8 @@ setup_metadata_set_create = {'text': _(u'create new'), 'view': 'setup_metadata_s
 
 setup_document_type_metadata = {'text': _(u'default metadata'), 'view': 'setup_document_type_metadata', 'args': 'document_type.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 
-#register_links(Document, [metadata_add, metadata_edit, metadata_remove])
 register_links(['metadata_add', 'metadata_edit', 'metadata_remove', 'metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
-register_links(Document, [metadata_view], menu_name='form_header')  #, metadata_edit, metadata_remove])
+register_links(Document, [metadata_view], menu_name='form_header')
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
 
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
@@ -68,7 +58,6 @@ register_sidebar_template(['setup_metadata_set_list'], 'metadata_set_help.html')
 
 register_setup(setup_metadata_type_list)
 register_setup(setup_metadata_set_list)
-
 
 class_permissions(Document, [
     PERMISSION_METADATA_DOCUMENT_EDIT,

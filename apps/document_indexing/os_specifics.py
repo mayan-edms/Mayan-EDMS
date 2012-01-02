@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 import os
 
-from document_indexing.conf.settings import SUFFIX_SEPARATOR
+from .conf.settings import SUFFIX_SEPARATOR
 
 
 def assemble_suffixed_filename(filename, suffix=0):

@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from lock_manager.models import Lock
+from .models import Lock
 
 
 class LockAdmin(admin.ModelAdmin):
