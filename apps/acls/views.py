@@ -359,6 +359,8 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
     context = {
         'form': form,
         'title': _(u'add new holder for: %s') % obj,
+        'submit_label': _(u'Select'),
+        'submit_icon_famfam': 'tick',
     }
 
     if extra_context:

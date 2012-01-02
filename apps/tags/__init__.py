@@ -7,6 +7,7 @@ from navigation.api import (register_links, register_top_menu,
 from common.utils import encapsulate
 from documents.models import Document
 from acls.models import class_permissions
+from acls.permissions import ACLS_VIEW_ACL
 
 from taggit.models import Tag
 from taggit.managers import TaggableManager
@@ -17,8 +18,8 @@ from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
     PERMISSION_TAG_VIEW)
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
-tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add'}
-tag_add_attach = {'text': _(u'attach tag'), 'view': 'tag_add_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH]}
+tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_CREATE]}
+tag_attach = {'text': _(u'attach tag'), 'view': 'tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_ATTACH]}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE], 'children_view_regex': ['tag']}
@@ -26,6 +27,8 @@ tag_delete = {'text': _(u'delete'), 'view': 'tag_delete', 'args': 'object.id', '
 tag_edit = {'text': _(u'edit'), 'view': 'tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': [PERMISSION_TAG_EDIT]}
 tag_tagged_item_list = {'text': _(u'tagged documents'), 'view': 'tag_tagged_item_list', 'args': 'object.id', 'famfam': 'page'}
 tag_multiple_delete = {'text': _(u'delete'), 'view': 'tag_multiple_delete', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
+tag_acl_list = {'text': _(u'ACLs'), 'view': 'tag_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
+tag_new_holder = {'text': _(u'New holder'), 'view': 'tag_new_holder', 'args': 'object.pk', 'famfam': 'user', 'permissions': [ACLS_VIEW_ACL]}
 
 register_model_list_columns(Tag, [
     {
@@ -35,22 +38,21 @@ register_model_list_columns(Tag, [
     {
         'name': _(u'color name'),
         'attribute': encapsulate(lambda x: x.tagproperties_set.get().get_color_display()),
+    },
+    {
+        'name': _(u'tagged items'),
+        'attribute': encapsulate(lambda x: x.taggit_taggeditem_items.count())
     }
 ])
 
-register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete])
-
+register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete, tag_acl_list])
 register_multi_item_links(['tag_list'], [tag_multiple_delete])
-
-register_links(['tag_list', 'tag_delete', 'tag_edit', 'tag_tagged_item_list', 'tag_multiple_delete', 'tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
-
-#register_sidebar_template(['document_tags'], 'tags_sidebar_template.html')
-
-register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}, children_path_regex=[r'^tags/[^d]'])
+register_links([Tag, 'tag_list', 'tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
+register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}, children_path_regex=[r'^tags/[^d]'])#TODO: change to children view regex or list
+register_links(['tag_acl_list', 'tag_new_holder'], [tag_new_holder], menu_name='sidebar')
 
 register_links(Document, [tag_document_list], menu_name='form_header')
-register_links(['document_tags', 'tag_add_attach', 'tag_remove', 'tag_multiple_remove'], [tag_add_attach], menu_name='sidebar')
-
+register_links(['document_tags', 'tag_add_attach', 'tag_remove', 'tag_multiple_remove'], [tag_attach], menu_name='sidebar')
 register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
 
 class_permissions(Document, [
