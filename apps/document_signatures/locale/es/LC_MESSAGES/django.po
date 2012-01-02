@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -12,112 +12,112 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: \n"
 
 #: __init__.py:50
 msgid "upload signature"
-msgstr ""
+msgstr "subir firma"
 
 #: __init__.py:51
 msgid "download signature"
-msgstr ""
+msgstr "descargar firma"
 
 #: __init__.py:52
 msgid "signatures"
-msgstr ""
+msgstr "firmas"
 
 #: forms.py:11
 msgid "Signature file"
-msgstr ""
+msgstr "Archivo de firma"
 
 #: models.py:19
 msgid "document version"
-msgstr ""
+msgstr "versión del documento"
 
 #: models.py:20
 msgid "signature state"
-msgstr ""
+msgstr "estado de la firma"
 
 #: models.py:21
 msgid "signature file"
-msgstr ""
+msgstr "archivo de firma"
 
 #: models.py:26
 msgid "document version signature"
-msgstr ""
+msgstr "firma de la versión de documento"
 
 #: models.py:27
 msgid "document version signatures"
-msgstr ""
+msgstr "firmas de las versiónes de documentos"
 
 #: permissions.py:7
 msgid "Verify document signatures"
-msgstr ""
+msgstr "Verificar firmas de documentos"
 
 #: permissions.py:8
 msgid "Upload detached signatures"
-msgstr ""
+msgstr "Subir firmas aparte"
 
 #: permissions.py:9
 msgid "Download detached signatures"
-msgstr ""
+msgstr "Descargar firmas aparte"
 
 #: permissions.py:12
 msgid "Document signatures"
-msgstr ""
+msgstr "Firmas de documentos"
 
 #: views.py:47
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
-msgstr ""
+msgstr "Estado de la firma: %(widget)s %(text)s"
 
 #: views.py:54
 msgid "embedded"
-msgstr ""
+msgstr "integrada"
 
 #: views.py:56
 msgid "detached"
-msgstr ""
+msgstr "aparte"
 
 #: views.py:61
 #, python-format
 msgid "Signature ID: %s"
-msgstr ""
+msgstr "ID de la firma: %s"
 
 #: views.py:62
 #, python-format
 msgid "Signature type: %s"
-msgstr ""
+msgstr "Tipo de firma: %s"
 
 #: views.py:63
 #, python-format
 msgid "Key ID: %s"
-msgstr ""
+msgstr "ID de la llave: %s"
 
 #: views.py:64
 #, python-format
 msgid "Timestamp: %s"
-msgstr ""
+msgstr "Marca de tiempo: %s"
 
 #: views.py:65
 #, python-format
 msgid "Signee: %s"
-msgstr ""
+msgstr "Firmante: %s"
 
 #: views.py:70
 #, python-format
 msgid "signature properties for: %s"
-msgstr ""
+msgstr "propiedades de la firma para: %s"
 
 #: views.py:92
 msgid "Detached signature uploaded successfully."
-msgstr ""
+msgstr "Firma aparte subida exitosamente."
 
 #: views.py:101
 #, python-format
 msgid "Upload detached signature for: %s"
-msgstr ""
+msgstr "Subir firma aparte para: %s"
+

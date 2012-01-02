@@ -1,75 +1,75 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-02 05:05+0000\n"
-"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
-"team/pt/)\n"
-"Language: pt\n"
+"PO-Revision-Date: 2012-01-02 05:40+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/team/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:11
 msgid "View existing smart links"
-msgstr ""
+msgstr "Ver os ligações inteligentes"
 
 #: __init__.py:12
 msgid "Create new smart links"
-msgstr ""
+msgstr "Criar novas ligações inteligentes"
 
 #: __init__.py:13
 msgid "Delete smart links"
-msgstr ""
+msgstr "Excluir ligações inteligentes"
 
 #: __init__.py:14
 msgid "Edit smart links"
-msgstr ""
+msgstr "Editar ligações inteligentes"
 
 #: __init__.py:16
 msgid "Smart links"
-msgstr ""
+msgstr "Ligações inteligentes"
 
 #: __init__.py:22
 msgid "smart links actions"
-msgstr ""
+msgstr "ações do ligações inteligentes"
 
 #: __init__.py:23 __init__.py:25 models.py:21 views.py:105
 msgid "smart links"
-msgstr ""
+msgstr "ligações inteligentes"
 
 #: __init__.py:26
 msgid "smart links list"
-msgstr ""
+msgstr "lista de ligações inteligentes"
 
 #: __init__.py:27
 msgid "create new smart link"
-msgstr ""
+msgstr "criar um novo ligação inteligente"
 
 #: __init__.py:28 __init__.py:33
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 #: __init__.py:29 __init__.py:34
 msgid "delete"
-msgstr ""
+msgstr "excluir"
 
 #: __init__.py:31
 msgid "conditions"
-msgstr ""
+msgstr "condições"
 
 #: __init__.py:32
 msgid "create condition"
-msgstr ""
+msgstr "criar condições"
 
 #: forms.py:48
 msgid "Pages"
@@ -175,7 +175,7 @@ msgstr "habilitado"
 
 #: models.py:20 models.py:25 views.py:256 views.py:287
 msgid "smart link"
-msgstr ""
+msgstr "ligação inteligente"
 
 #: models.py:26
 msgid "The inclusion is ignored for the first item."
@@ -211,40 +211,39 @@ msgstr "não"
 
 #: models.py:37
 msgid "link condition"
-msgstr ""
+msgstr "condição de ligação"
 
 #: models.py:38
 msgid "link conditions"
-msgstr ""
+msgstr "condições de ligação"
 
 #: views.py:32
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
 #: views.py:47
-#, fuzzy, python-format
+#, python-format
 msgid "documents in smart link: %(group)s"
-msgstr "documentos no grupo: %(group)s "
+msgstr ""
 
 #: views.py:65
-#, fuzzy, python-format
+#, python-format
 msgid "Smart link query error: %s"
-msgstr "Erro na consulta de grupo do documento: %s"
+msgstr ""
 
 #: views.py:76
 #, python-format
 msgid "smart links (%s)"
-msgstr ""
+msgstr "ligações inteligente (%s)"
 
 #: views.py:90
-#, fuzzy
 msgid "There no defined smart links for the current document."
-msgstr "Não há grupos definidos para o documento atual."
+msgstr ""
 
 #: views.py:124
 #, python-format
 msgid "Smart link: %s created successfully."
-msgstr ""
+msgstr "Ligação inteligente: %s criado com sucesso."
 
 #: views.py:131
 msgid "Create new smart link"
@@ -258,7 +257,7 @@ msgstr ""
 #: views.py:153
 #, python-format
 msgid "Edit smart link: %s"
-msgstr ""
+msgstr "Editar Ligação inteligente: %s"
 
 #: views.py:168
 #, python-format
@@ -301,7 +300,7 @@ msgstr ""
 
 #: views.py:257 views.py:288
 msgid "condition"
-msgstr ""
+msgstr "condição"
 
 #: views.py:274
 #, python-format
@@ -336,26 +335,4 @@ msgid ""
 "jump to and from linked documents very easily."
 msgstr ""
 
-#~ msgid "group actions"
-#~ msgstr "ações do grupo"
 
-#~ msgid "groups"
-#~ msgstr "grupos"
-
-#~ msgid "group document"
-#~ msgstr "agrupar documento"
-
-#~ msgid "document group"
-#~ msgstr "grupo de documentos"
-
-#~ msgid "document groups"
-#~ msgstr "grupos de documentos"
-
-#~ msgid "group item"
-#~ msgstr "item do grupo"
-
-#~ msgid "group items"
-#~ msgstr "itens do grupo"
-
-#~ msgid "document groups (%s)"
-#~ msgstr "grupos do documento (%s)"

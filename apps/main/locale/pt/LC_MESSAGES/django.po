@@ -1,49 +1,48 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-03 21:55+0000\n"
-"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
-"team/pt/)\n"
-"Language: pt\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2011-12-06 03:26-0400\n"
+"PO-Revision-Date: 2012-01-02 04:46+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/team/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:15
+#: __init__.py:31
 msgid "maintenance"
 msgstr "manutenção"
 
-#: __init__.py:16
+#: __init__.py:32
 msgid "statistics"
 msgstr "estatísticas"
 
-#: __init__.py:17
+#: __init__.py:33
 msgid "diagnostics"
 msgstr "diagnósticos"
 
-#: __init__.py:18
+#: __init__.py:34
 msgid "sentry"
 msgstr "sentinela"
 
-#: __init__.py:19
+#: __init__.py:35
 msgid "admin site"
 msgstr "site de administação"
 
-#: __init__.py:30
+#: __init__.py:38
 msgid "home"
 msgstr "inicio"
 
-#: __init__.py:32
+#: __init__.py:40
 msgid "search"
 msgstr "pesquisa"
 
@@ -61,8 +60,8 @@ msgstr "Diagnósticos"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or "
-"by a menu entry."
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
 msgstr ""
 "Controla-se a funcionalidade de pesquisa é fornecido por um widget da barra "
 "lateral ou por uma entrada de menu."
@@ -134,6 +133,10 @@ msgstr "Ações"
 msgid "Other available actions"
 msgstr "Outras ações disponíveis"
 
+#: templates/home.html:8
+msgid "Django based open source document management system"
+msgstr ""
+
 #: templates/project_description.html:6
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
@@ -146,3 +149,5 @@ msgstr ""
 #: templates/project_description.html:15
 msgid "Released under the GPL V3 License"
 msgstr "Liberado sob a licença GPL V3"
+
+
