@@ -7,7 +7,7 @@ from django.db import models
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        for document_version in orm.DocumentVersion.objects.all():
+        for document_version in orm['documents.DocumentVersion'].objects.all():
             if document_version.signature_state or document_version.signature_file:
                 document_signature = orm.DocumentVersionSignature(
                     document_version=document_version,
@@ -20,8 +20,8 @@ class Migration(DataMigration):
     def backwards(self, orm):
         for document_signature in orm.DocumentVersionSignature.objects.all():
             try:
-                document_version = orm.DocumentVersion.objects.get(document_version=document_version)
-            except orm.DocumentVersion.DoesNotExists:
+                document_version = orm['documents.DocumentVersion'].objects.get(document_version=document_version)
+            except orm['documents.DocumentVersion'].DoesNotExists:
                 pass
             else:
                 document_version.signature_state=document_signature.signature_state
