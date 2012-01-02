@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import logging
 import operator
 import itertools
@@ -20,12 +22,12 @@ from permissions.models import Permission, Role
 from common.utils import generate_choices_w_labels, encapsulate
 from common.widgets import two_state_template
 
-from acls import (ACLS_EDIT_ACL, ACLS_VIEW_ACL, ACLS_CLASS_EDIT_ACL,
-    ACLS_CLASS_VIEW_ACL)
-from acls.models import (AccessEntry, AccessObject, AccessHolder,
+from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL, 
+    ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
+from .models import (AccessEntry, AccessObject, AccessHolder,
     DefaultAccessEntry, AccessObjectClass, ClassAccessHolder)
-from acls.widgets import object_w_content_type_icon
-from acls.forms import HolderSelectionForm
+from .widgets import object_w_content_type_icon
+from .forms import HolderSelectionForm
 
 logger = logging.getLogger(__name__)
 
@@ -95,7 +97,11 @@ def acl_detail_for(request, actor, obj, navigation_object=None):
         {
             'name': u'generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions available to: %s for %s' % (actor, obj)),
+                'title': _(u'permissions available to: %(actor)s for %(obj)s' % {
+                    'actor': actor,
+                    'obj': obj
+                    }
+                ),
                 'object_list': permission_list,
                 'extra_columns': [
                     {'name': _(u'namespace'), 'attribute': 'namespace'},
@@ -402,7 +408,7 @@ def acl_class_acl_list(request, access_object_class_gid):
 def acls_class_acl_detail(request, access_object_class_gid, holder_object_gid):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL, ACLS_CLASS_EDIT_ACL])
     try:
-        holder = AccessHolder.get(gid=holder_object_gid)
+        actor = AccessHolder.get(gid=holder_object_gid)
         access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
     except ObjectDoesNotExist:
         raise Http404
@@ -413,14 +419,18 @@ def acls_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         {
             'name': u'generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions available to: %s for class %s' % (holder, access_object_class)),
+                'title': _(u'permissions available to: %(actor)s for class %(class)s' % {
+                        'actor': actor,
+                        'class': access_object_class
+                    }
+                ),
                 'object_list': permission_list,
                 'extra_columns': [
                     {'name': _(u'namespace'), 'attribute': 'namespace'},
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, holder.source_object, access_object_class.source_object)))
+                        'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, actor.source_object, access_object_class.source_object)))
                     },
                 ],
                 #'hide_link': True,
@@ -435,7 +445,7 @@ def acls_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         'multi_select_as_buttons': True,
         'multi_select_item_properties': {
             'permission_pk': lambda x: x.pk,
-            'holder_gid': lambda x: holder.gid,
+            'holder_gid': lambda x: actor.gid,
             'access_object_class_gid': lambda x: access_object_class.gid,
         },        
     }, context_instance=RequestContext(request))
