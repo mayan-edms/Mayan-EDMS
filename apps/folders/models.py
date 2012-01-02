@@ -31,6 +31,10 @@ class Folder(models.Model):
     def remove_document(self, document):
         folder_document = self.folderdocument_set.get(document=document)
         folder_document.delete()
+    
+    def add_document(self, document):
+        folder_document, created = FolderDocument.objects.get_or_create(folder=self, document=document)
+        return created
 
     class Meta:
         unique_together = ('title', 'user')
