@@ -13,7 +13,7 @@ from django.conf import settings
 from django.template.defaultfilters import force_escape
 
 from documents.models import Document, RecentDocument
-from permissions.api import check_permissions
+from permissions.models import Permission
 from filetransfers.api import serve_file
 
 from django_gpg.api import SIGNATURE_STATES
@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 def document_verify(request, document_pk):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VERIFY])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VERIFY])
     document = get_object_or_404(Document, pk=document_pk)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
@@ -69,7 +69,8 @@ def document_verify(request, document_pk):
 
 
 def document_signature_upload(request, document_pk):
-    check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
+    
     document = get_object_or_404(Document, pk=document_pk)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
@@ -102,7 +103,7 @@ def document_signature_upload(request, document_pk):
 
 
 def document_signature_download(request, document_pk):
-    check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
     document = get_object_or_404(Document, pk=document_pk)
 
     try:

@@ -3,13 +3,10 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from permissions.api import register_permission, set_namespace_title
+from permissions.models import PermissionNamespace, Permission
 
-PERMISSION_DOCUMENT_VERIFY = {'namespace': 'document_signatures', 'name': 'document_verify', 'label': _(u'Verify document signatures')}
-PERMISSION_SIGNATURE_UPLOAD = {'namespace': 'document_signatures', 'name': 'signature_upload', 'label': _(u'Upload detached signatures')}
-PERMISSION_SIGNATURE_DOWNLOAD = {'namespace': 'document_signatures', 'name': 'key_receive', 'label': _(u'Download detached signatures')}
+document_signatures_namespace = PermissionNamespace('document_signatures', _(u'Document signatures'))
 
-# Permission setup
-set_namespace_title('document_signatures', _(u'Document signatures'))
-register_permission(PERMISSION_DOCUMENT_VERIFY)
-register_permission(PERMISSION_SIGNATURE_UPLOAD)
-register_permission(PERMISSION_SIGNATURE_DOWNLOAD)
+PERMISSION_DOCUMENT_VERIFY = Permission.objects.register(document_signatures_namespace, 'document_verify', _(u'Verify document signatures'))
+PERMISSION_SIGNATURE_UPLOAD = Permission.objects.register(document_signatures_namespace, 'signature_upload', _(u'Upload detached signatures'))
+PERMISSION_SIGNATURE_DOWNLOAD = Permission.objects.register(document_signatures_namespace, 'signature_download', _(u'Download detached signatures'))
