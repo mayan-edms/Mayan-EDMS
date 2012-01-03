@@ -13,6 +13,7 @@ from permissions.models import Permission, PermissionNamespace
 from documents.models import Document
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
+from acls.api import class_permissions
 
 from scheduler.api import register_interval_job
 
@@ -92,3 +93,7 @@ create_default_queue()
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
 
 register_tool(ocr_tool_link)
+
+class_permissions(Document, [
+    PERMISSION_OCR_DOCUMENT,
+])

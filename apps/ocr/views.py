@@ -9,12 +9,14 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.core.exceptions import PermissionDenied
 
 from celery.task.control import inspect
 from permissions.models import Permission
 from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
 from common.utils import encapsulate
+from acls.models import AccessEntry
 
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
@@ -126,15 +128,21 @@ def submit_document_multiple(request):
     
 
 def submit_document(request, document_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
+            
     return submit_document_to_queue(request, document=document,
         post_submit_redirect=request.META.get('HTTP_REFERER', '/'))
 
 
 def submit_document_to_queue(request, document, post_submit_redirect=None):
-    """This view is meant to be reusable"""
+    '''
+    This view is meant to be reusable
+    '''
 
     try:
         document_queue = DocumentQueue.objects.queue_document(document)
@@ -331,6 +339,7 @@ def node_active_list(request):
     }, context_instance=RequestContext(request))
 
 
+# Setup views
 def setup_queue_transformation_list(request, document_queue_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
