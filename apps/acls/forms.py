@@ -7,7 +7,7 @@ from django.contrib.auth.models import User, Group
 from permissions.models import Permission, Role
 from common.utils import generate_choices_w_labels, encapsulate, get_object_name
 
-from .models import AccessHolder
+from .classes import AccessHolder
 
 
 def _as_choice_list(holders):

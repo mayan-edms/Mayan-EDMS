@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, register_multi_item_links
 from project_setup.api import register_setup
 
-from .models import AccessHolder, AccessObjectClass, ClassAccessHolder
+from .classes import AccessHolder, AccessObjectClass, ClassAccessHolder
 from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL, 
     ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
 

@@ -24,10 +24,12 @@ from common.widgets import two_state_template
 
 from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL, 
     ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
-from .models import (AccessEntry, AccessObject, AccessHolder,
-    DefaultAccessEntry, AccessObjectClass, ClassAccessHolder)
+from .models import AccessEntry, DefaultAccessEntry
+from .classes import (AccessHolder, AccessObject, AccessObjectClass,
+    ClassAccessHolder)
 from .widgets import object_w_content_type_icon
 from .forms import HolderSelectionForm
+from .api import get_class_permissions_for
 
 logger = logging.getLogger(__name__)
 
@@ -89,8 +91,7 @@ def acl_detail_for(request, actor, obj, navigation_object=None):
     except PermissionDenied:
         AccessEntry.objects.check_accesses([ACLS_VIEW_ACL, ACLS_EDIT_ACL], actor, obj)    
 
-    #permission_list = list(obj.get_class_permissions())
-    permission_list = AccessEntry.objects.get_class_permissions_for(obj)
+    permission_list = get_class_permissions_for(obj)
     
     #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
