@@ -6,8 +6,8 @@ from django.forms.formsets import formset_factory
 
 from common.widgets import ScrollableCheckboxSelectMultiple
 
-from .conf.settings import (AVAILABLE_MODELS, AVAILABLE_FUNCTIONS)
-from .models import (MetadataSet, MetadataType, DocumentTypeDefaults)
+from .conf.settings import AVAILABLE_MODELS, AVAILABLE_FUNCTIONS
+from .models import MetadataSet, MetadataType, DocumentTypeDefaults
 
 
 class MetadataForm(forms.Form):
