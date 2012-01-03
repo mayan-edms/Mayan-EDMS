@@ -8,7 +8,8 @@ except ImportError:
     from StringIO import StringIO
 
 from django.utils.translation import ugettext_lazy as _
-from django.db.models.signals import post_save
+#from django.db.models.signals import post_save
+#from django.dispatch import receiver
 
 from documents.models import Document, DocumentVersion
 from navigation.api import register_links
@@ -34,21 +35,50 @@ def doesnt_have_detached_signature(context):
     return DocumentVersionSignature.objects.has_detached_signature(context['object']) == False
 
 
-def document_pre_open_hook(descriptor):
-    try:
-        result = gpg.decrypt_file(descriptor, close_descriptor=False)
-        # gpg return a string, turn it into a file like object
-    except GPGDecryptionError:
-        # At least return the original raw content
-        descriptor.seek(0)
-        return descriptor
+def document_pre_open_hook(descriptor, instance):
+    if DocumentVersionSignature.objects.has_embedded_signature(instance.document):
+        # If it has an embedded signature decrypt
+        try:
+            result = gpg.decrypt_file(descriptor, close_descriptor=False)
+            # gpg return a string, turn it into a file like object
+        except GPGDecryptionError:
+            # At least return the original raw content
+            descriptor.seek(0)
+            return descriptor
+        else:
+            descriptor.close()
+            return StringIO(result.data)
     else:
-        return StringIO(result.data)
+        # It no embedded signature pass along
+        # Doing this single DB lookup avoids trying to decrypt non signed
+        # files always, which could result in slow down for big non signed
+        # files
+        #descriptor.seek(0)
+        return descriptor
+
+    #try:
+    #    result = gpg.decrypt_file(descriptor, close_descriptor=False)
+    #    # gpg return a string, turn it into a file like object
+    #except GPGDecryptionError:
+    #    # At least return the original raw content
+    #    descriptor.seek(0)
+    #    return descriptor
+    #else:
+    #    descriptor.close()
+    #    return StringIO(result.data)
 
 
-def document_post_save(sender, instance, **kwargs):
-    if kwargs.get('created', False):
-        DocumentVersionSignature.objects.signature_state(instance.document)
+def document_post_save_hook(instance):
+    if not instance.pk:
+        document_signature, created = DocumentVersionSignature.objects.get_or_create(
+            document_version=instance.latest_version,
+        )        
+        #DocumentVersionSignature.objects.update_signed_state(instance.document)
+
+#@receiver(post_save, dispatch_uid='check_document_signature_state', sender=DocumentVersion)
+#def check_document_signature_state(sender, instance, **kwargs):
+#    if kwargs.get('created', False):
+#        DocumentVersionSignature.objects.signature_state(instance.document)
 
 document_signature_upload = {'text': _(u'upload signature'), 'view': 'document_signature_upload', 'args': 'object.pk', 'famfam': 'pencil_add', 'permissions': [PERMISSION_SIGNATURE_UPLOAD], 'conditional_disable': has_embedded_signature}
 document_signature_download = {'text': _(u'download signature'), 'view': 'document_signature_download', 'args': 'object.pk', 'famfam': 'disk', 'permissions': [PERMISSION_SIGNATURE_DOWNLOAD], 'conditional_disable': doesnt_have_detached_signature}
@@ -58,8 +88,7 @@ register_links(Document, [document_verify], menu_name='form_header')
 register_links(['document_verify', 'document_signature_upload', 'document_signature_download'], [document_signature_upload, document_signature_download], menu_name='sidebar')
 
 DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
-
-post_save.connect(document_post_save, sender=DocumentVersion)
+DocumentVersion.register_post_save_hook(1, document_post_save_hook)
 
 class_permissions(Document, [
     PERMISSION_DOCUMENT_VERIFY,
