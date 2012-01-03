@@ -6,7 +6,7 @@ from navigation.api import (register_links, register_top_menu,
     register_model_list_columns, register_multi_item_links)
 from common.utils import encapsulate
 from documents.models import Document
-from acls.models import class_permissions
+from acls.api import class_permissions
 from acls.permissions import ACLS_VIEW_ACL
 
 from taggit.models import Tag

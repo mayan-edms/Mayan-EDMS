@@ -9,7 +9,7 @@ from common.utils import encapsulate
 from project_setup.api import register_setup
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_CREATE
-from acls.models import class_permissions
+from acls.api import class_permissions
 
 from .staging import StagingFile
 from .models import (WebForm, StagingFolder, SourceTransformation,

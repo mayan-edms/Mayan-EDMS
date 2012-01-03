@@ -6,7 +6,7 @@ from navigation.api import register_links, register_sidebar_template
 from project_setup.api import register_setup
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
-from acls.models import class_permissions
+from acls.api import class_permissions
 from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 
 from .models import SmartLink, SmartLinkCondition

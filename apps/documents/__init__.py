@@ -13,7 +13,7 @@ from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
 from metadata.api import get_metadata_string
 from project_setup.api import register_setup
-from acls.models import class_permissions
+from acls.api import class_permissions
 
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,

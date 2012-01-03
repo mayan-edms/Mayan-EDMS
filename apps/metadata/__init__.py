@@ -7,7 +7,7 @@ from navigation.api import register_links, register_multi_item_links, \
 from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
-from acls.models import class_permissions
+from acls.api import class_permissions
 
 from .models import MetadataType, MetadataSet
 from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,

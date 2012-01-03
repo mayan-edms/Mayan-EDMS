@@ -24,7 +24,5 @@ def document_new_holder(request, document_id):
 		document,
 		extra_context={
 			'object': document,
-            'submit_label': _(u'Select'),
-            'submit_icon_famfam': 'tick'            
 		}
 	)
