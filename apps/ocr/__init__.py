@@ -10,7 +10,7 @@ from django.dispatch import receiver
 
 from navigation.api import register_links, register_top_menu, register_multi_item_links
 from permissions.models import Permission, PermissionNamespace
-from documents.models import Document
+from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
 from acls.api import class_permissions
@@ -70,23 +70,24 @@ def create_default_queue():
         default_queue.label = ugettext(u'Default')
         default_queue.save()
 
+
+@receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
 def document_post_save(sender, instance, **kwargs):
+    logger.debug('received post save signal')
+    logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-            DocumentQueue.objects.queue_document(instance)
-
-post_save.connect(document_post_save, sender=Document)
+            DocumentQueue.objects.queue_document(instance.document)
 
 
 # Disabled because it appears Django execute signals using the same
-# process effectively blocking the view until the OCR process completes
-# which could take several minutes :/
+# process of the signal emiter effectively blocking the view until
+# the OCR process completes which could take several minutes :/
 #@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
 #def call_queue(sender, **kwargs):
 #    if kwargs.get('created', False):    
 #        logger.debug('got call_queue signal: %s' % kwargs)
 #        task_process_document_queues()
-
 
 create_default_queue()
 
