@@ -275,6 +275,14 @@ class AccessEntryManager(models.Manager):
                 return object_list
         
         try:
+            if object_list.count() == 0:
+                return object_list
+        except TypeError:
+            # object_list is not a queryset
+            if len(object_list) == 0:
+                return object_list
+        
+        try:
             # Try to process as a QuerySet
             qs = object_list.filter(pk__in=[obj.pk for obj in self.get_allowed_class_objects(permission, actor, object_list[0])])
             logger.debug('qs: %s' % qs)
