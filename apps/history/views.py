@@ -7,9 +7,11 @@ from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.loading import get_model
 from django.http import Http404
+from django.core.exceptions import PermissionDenied
 
 from permissions.models import Permission
 from common.utils import encapsulate
+from acls.models import AccessEntry
 
 from .models import History
 from .forms import HistoryDetailForm
@@ -45,13 +47,16 @@ def history_list(request):
 
 
 def history_for_object(request, app_label, module_name, object_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
-
     model = get_model(app_label, module_name)
     if not model:
         raise Http404
     content_object = get_object_or_404(model, pk=object_id)
     content_type = ContentType.objects.get_for_model(model)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_HISTORY_VIEW, request.user, content_object)
 
     context = {
         'object_list': History.objects.filter(content_type=content_type, object_id=object_id),
@@ -75,9 +80,12 @@ def history_for_object(request, app_label, module_name, object_id):
 
 
 def history_view(request, object_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
-
     history = get_object_or_404(History, pk=object_id)
+    
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_HISTORY_VIEW, request.user, history.content_object)    
 
     form = HistoryDetailForm(instance=history, extra_fields=[
         {'label': _(u'Date'), 'field':lambda x: x.datetime.date()},

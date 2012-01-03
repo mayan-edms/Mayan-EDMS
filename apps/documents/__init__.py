@@ -11,6 +11,7 @@ from navigation.api import register_links, register_top_menu, \
 from main.api import register_diagnostic, register_maintenance_links
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
+from history.permissions import PERMISSION_HISTORY_VIEW
 from metadata.api import get_metadata_string
 from project_setup.api import register_setup
 from acls.api import class_permissions
@@ -75,7 +76,7 @@ document_update_page_count = {'text': _(u'update office documents\' page count')
 document_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_multiple_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_print = {'text': _(u'print'), 'view': 'document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_history_view = {'text': _(u'history'), 'view': 'history_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_history_view = {'text': _(u'history'), 'view': 'history_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_HISTORY_VIEW]}
 document_missing_list = {'text': _(u'Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 # Tools
@@ -204,5 +205,6 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_DELETE,
     PERMISSION_DOCUMENT_DOWNLOAD,
     PERMISSION_DOCUMENT_TRANSFORM,
-    PERMISSION_DOCUMENT_VERSION_REVERT
+    PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_HISTORY_VIEW    
 ])
