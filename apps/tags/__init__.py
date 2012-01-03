@@ -22,7 +22,7 @@ tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag
 tag_attach = {'text': _(u'attach tag'), 'view': 'tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_ATTACH]}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
-tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE], 'children_view_regex': ['tag']}
+tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH], 'children_view_regex': ['tag']}
 tag_delete = {'text': _(u'delete'), 'view': 'tag_delete', 'args': 'object.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
 tag_edit = {'text': _(u'edit'), 'view': 'tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': [PERMISSION_TAG_EDIT]}
 tag_tagged_item_list = {'text': _(u'tagged documents'), 'view': 'tag_tagged_item_list', 'args': 'object.id', 'famfam': 'page'}
@@ -60,10 +60,10 @@ class_permissions(Document, [
     PERMISSION_TAG_REMOVE,
 ])
 
-#class_permissions(Tag, [
-#    PERMISSION_TAG_DELETE,
-#    PERMISSION_TAG_EDIT,
-#    PERMISSION_TAG_VIEW,
-#])
+class_permissions(Tag, [
+    PERMISSION_TAG_DELETE,
+    PERMISSION_TAG_EDIT,
+    PERMISSION_TAG_VIEW,
+])
 
 Document.add_to_class('tags', TaggableManager())
