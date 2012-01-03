@@ -279,6 +279,7 @@ class DocumentVersion(models.Model):
     Model that describes a document version and its properties
     '''
     _pre_open_hooks = {}
+    _post_save_hooks = {}
     
     @staticmethod
     def get_version_update_choices(document_version):
@@ -291,6 +292,10 @@ class DocumentVersion(models.Model):
     @classmethod
     def register_pre_open_hook(cls, order, func):
         cls._pre_open_hooks[order] = func
+
+    @classmethod
+    def register_post_save_hook(cls, order, func):
+        cls._post_save_hooks[order] = func
     
     document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
     major = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1, editable=False)
@@ -366,6 +371,9 @@ class DocumentVersion(models.Model):
         #Only do this for new documents
         transformations = kwargs.pop('transformations', None)
         super(DocumentVersion, self).save(*args, **kwargs)
+        
+        for key in sorted(DocumentVersion._post_save_hooks):
+            DocumentVersion._post_save_hooks[key](self)    
 
         if new_document:
             #Only do this for new documents
@@ -478,7 +486,7 @@ class DocumentVersion(models.Model):
         else:
             result = self.file.storage.open(self.file.path)
             for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](result)
+                result = DocumentVersion._pre_open_hooks[key](result, self)
             
             return result
 
