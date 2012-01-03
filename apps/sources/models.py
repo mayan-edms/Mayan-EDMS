@@ -220,9 +220,9 @@ class ArgumentsValidator(object):
             self.code = code
 
     def __call__(self, value):
-        """
+        '''
         Validates that the input evaluates correctly.
-        """
+        '''
         value = value.strip()
         try:
             literal_eval(value)
@@ -231,10 +231,10 @@ class ArgumentsValidator(object):
 
 
 class SourceTransformation(models.Model):
-    """
+    '''
     Model that stores the transformation and transformation arguments
     for a given document source
-    """
+    '''
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
