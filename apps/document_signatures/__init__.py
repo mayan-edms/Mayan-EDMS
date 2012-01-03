@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+
 import logging
 
 try:
@@ -11,9 +12,9 @@ from django.db.models.signals import post_save
 
 from documents.models import Document, DocumentVersion
 from navigation.api import register_links
-
 from django_gpg.runtime import gpg
 from django_gpg.exceptions import GPGDecryptionError
+from acls.api import class_permissions
 
 from .models import DocumentVersionSignature
 from .permissions import (
@@ -59,3 +60,9 @@ register_links(['document_verify', 'document_signature_upload', 'document_signat
 DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
 
 post_save.connect(document_post_save, sender=DocumentVersion)
+
+class_permissions(Document, [
+    PERMISSION_DOCUMENT_VERIFY,
+    PERMISSION_SIGNATURE_UPLOAD,
+    PERMISSION_SIGNATURE_DOWNLOAD
+])
