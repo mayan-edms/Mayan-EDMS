@@ -8,11 +8,13 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
+from django.core.exceptions import PermissionDenied
 
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from documents.models import Document, RecentDocument, DocumentType
 from permissions.models import Permission
 from document_indexing.api import update_indexes, delete_indexes
+from acls.models import AccessEntry
 
 from common.utils import generate_choices_w_labels, encapsulate
 from common.views import assign_remove
@@ -32,8 +34,6 @@ from .models import (DocumentMetadata, MetadataType, MetadataSet,
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
-
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
         if documents[0].documentmetadata_set.count() == 0:
@@ -41,9 +41,15 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
+    except PermissionDenied:
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_EDIT, request.user, documents)
+        
+    if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
 
     post_action_redirect = reverse('document_list_recent')
 
@@ -123,15 +129,19 @@ def metadata_multiple_edit(request):
 
 
 def metadata_add(request, document_id=None, document_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
-
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
+    except PermissionDenied:
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_ADD, request.user, documents)
+
+    if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
 
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
@@ -187,8 +197,6 @@ def metadata_multiple_add(request):
 
 
 def metadata_remove(request, document_id=None, document_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
-
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
         if documents[0].documentmetadata_set.count() == 0:
@@ -197,7 +205,13 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
+        
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
+    except PermissionDenied:
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_REMOVE, request.user, documents)
+        
+    if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
@@ -276,8 +290,12 @@ def metadata_multiple_remove(request):
 
 
 def metadata_view(request, document_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])    
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
 
     return render_to_response('generic_list.html', {
         'title': _(u'metadata for: %s') % document,
@@ -288,6 +306,7 @@ def metadata_view(request, document_id):
     }, context_instance=RequestContext(request))
             
 
+# Setup views
 def setup_metadata_type_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_VIEW])
 

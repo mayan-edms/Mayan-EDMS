@@ -12,9 +12,9 @@ available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()
 
 
 class MetadataType(models.Model):
-    """
+    '''
     Define a type of metadata
-    """    
+    '''    
     name = models.CharField(unique=True, max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words, or spaces.'))
     title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
@@ -35,9 +35,9 @@ class MetadataType(models.Model):
 
 
 class MetadataSet(models.Model):
-    """
+    '''
     Define a group of metadata types
-    """
+    '''
     title = models.CharField(max_length=48, verbose_name=_(u'title'))
 
     def __unicode__(self):
@@ -50,10 +50,10 @@ class MetadataSet(models.Model):
 
 
 class MetadataSetItem(models.Model):
-    """
+    '''
     Define the set of metadata that relates to a set or group of
     metadata fields
-    """
+    '''
     metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'metadata set'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
     #required = models.BooleanField(default=True, verbose_name=_(u'required'))
@@ -67,10 +67,10 @@ class MetadataSetItem(models.Model):
 
 
 class DocumentMetadata(models.Model):
-    """
+    '''
     Link a document to a specific instance of a metadata type with it's
     current value
-    """
+    '''
     document = models.ForeignKey(Document, verbose_name=_(u'document'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'type'))
     value = models.CharField(max_length=256, blank=True, verbose_name=_(u'value'), db_index=True)
@@ -84,10 +84,10 @@ class DocumentMetadata(models.Model):
 
 
 class DocumentTypeDefaults(models.Model):
-    """
+    '''
     Default preselected metadata types and metadata set per document
     type
-    """    
+    '''    
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     default_metadata_sets = models.ManyToManyField(MetadataSet, blank=True, verbose_name=_(u'default metadata sets'))
     default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'default metadata'))
