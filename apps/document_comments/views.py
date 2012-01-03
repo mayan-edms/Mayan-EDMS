@@ -8,27 +8,33 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
+from django.core.exceptions import PermissionDenied
 
+from acls.models import AccessEntry
 from permissions.models import Permission
 from documents.models import Document
 
 from .permissions import (PERMISSION_COMMENT_CREATE,
-    PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_EDIT,
-    PERMISSION_COMMENT_VIEW)
+    PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_VIEW)
 from .forms import CommentForm
 
 
 def comment_delete(request, comment_id=None, comment_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_DELETE])
     post_action_redirect = None
 
     if comment_id:
         comments = [get_object_or_404(Comment, pk=comment_id)]
     elif comment_id_list:
         comments = [get_object_or_404(Comment, pk=comment_id) for comment_id in comment_id_list.split(',')]
-    else:
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_DELETE])
+    except PermissionDenied:
+        comments = AccessEntry.objects.filter_objects_by_access(PERMISSION_COMMENT_DELETE, request.user, comments, related='content_object')
+        
+    if not comments:
         messages.error(request, _(u'Must provide at least one comment.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -69,9 +75,13 @@ def comment_multiple_delete(request):
 
 
 def comment_add(request, document_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_CREATE])
-
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_CREATE])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_COMMENT_CREATE, request.user, document)
+    
     post_action_redirect = None
 
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -99,16 +109,20 @@ def comment_add(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def comments_for_object(request, document_id):
+def comments_for_document(request, document_id):
     '''
     Show a list of all the comments related to the passed object
     '''
-    Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_VIEW])
-
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_COMMENT_VIEW, request.user, document)
 
     return render_to_response('generic_list.html', {
         'object': document,
+        'access_object': document,
         'title': _(u'comments: %s') % document,
         'object_list': Comment.objects.for_model(document).order_by('-submit_date'),
         'hide_link': True,

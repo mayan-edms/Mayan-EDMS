@@ -8,5 +8,4 @@ comments_namespace = PermissionNamespace('comments', _(u'Comments'))
 
 PERMISSION_COMMENT_CREATE = Permission.objects.register(comments_namespace, 'comment_create', _(u'Create new comments'))
 PERMISSION_COMMENT_DELETE = Permission.objects.register(comments_namespace, 'comment_delete', _(u'Delete comments'))
-PERMISSION_COMMENT_EDIT = Permission.objects.register(comments_namespace, 'comment_edit', _(u'Edit comments'))
 PERMISSION_COMMENT_VIEW = Permission.objects.register(comments_namespace, 'comment_view', _(u'View comments'))
