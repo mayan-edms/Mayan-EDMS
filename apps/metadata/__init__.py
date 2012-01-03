@@ -2,8 +2,8 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_multi_item_links, \
-    register_sidebar_template
+from navigation.api import (register_links, register_multi_item_links,
+    register_sidebar_template)
 from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
@@ -19,7 +19,7 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
     PERMISSION_METADATA_SET_VIEW)
 
 metadata_edit = {'text': _(u'edit metadata'), 'view': 'metadata_edit', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
-metadata_view = {'text': _(u'metadata'), 'view': 'metadata_view', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT], 'children_view_regex': ['metadata']}
+metadata_view = {'text': _(u'metadata'), 'view': 'metadata_view', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_VIEW], 'children_view_regex': ['metadata']}
 metadata_multiple_edit = {'text': _(u'edit metadata'), 'view': 'metadata_multiple_edit', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
 metadata_add = {'text': _(u'add metadata'), 'view': 'metadata_add', 'args': 'object.pk', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_DOCUMENT_ADD]}
 metadata_multiple_add = {'text': _(u'add metadata'), 'view': 'metadata_multiple_add', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_DOCUMENT_ADD]}
