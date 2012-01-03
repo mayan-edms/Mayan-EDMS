@@ -16,7 +16,7 @@ from documents.models import Document
 from documents.views import document_list
 from permissions import Permission
 from common.utils import encapsulate
-from acls.models import AccessEntry, PermissionDenied
+from acls.models import AccessEntry
 from acls.views import acl_list_for, acl_new_holder_for
 
 from .models import Folder, FolderDocument
