@@ -278,6 +278,14 @@ class GPG(object):
         if not destination:
             return signed_data
 
+    def has_embedded_signature(self, *args, **kwargs):
+        try:
+            self.decrypt_file(*args, **kwargs)
+        except GPGDecryptionError:
+            return False
+        else:
+            return True
+
     def decrypt_file(self, file_input, close_descriptor=True):
         input_descriptor = GPG.get_descriptor(file_input)
 
