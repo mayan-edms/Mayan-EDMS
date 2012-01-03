@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
+from django.core.exceptions import PermissionDenied
 
 import sendfile
 from common.utils import pretty_size, parse_range, urlquote, \
@@ -29,7 +30,7 @@ from navigation.utils import resolve_to_name
 from permissions.models import Permission
 from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
-from acls.models import AccessEntry, PermissionDenied
+from acls.models import AccessEntry
 
 from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, PRINT_SIZE,
