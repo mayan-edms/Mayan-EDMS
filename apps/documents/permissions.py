@@ -15,6 +15,7 @@ PERMISSION_DOCUMENT_DOWNLOAD = Permission.objects.register(document_namespace, '
 PERMISSION_DOCUMENT_TRANSFORM = Permission.objects.register(document_namespace, 'document_transform', _(u'Transform documents'))
 PERMISSION_DOCUMENT_TOOLS = Permission.objects.register(document_namespace, 'document_tools', _(u'Execute document modifying tools'))
 PERMISSION_DOCUMENT_VERSION_REVERT = Permission.objects.register(document_namespace, 'document_version_revert', _(u'Revert documents to a previous version'))
+PERMISSION_DOCUMENT_NEW_VERSION = Permission.objects.register(document_namespace, 'document_new_version', _(u'Create new document versions'))
 
 documents_setup_namespace = PermissionNamespace('documents_setup', _(u'Documents setup'))
 

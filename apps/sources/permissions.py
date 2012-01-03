@@ -9,6 +9,3 @@ PERMISSION_SOURCES_SETUP_VIEW = Permission.objects.register(sources_setup_namesp
 PERMISSION_SOURCES_SETUP_EDIT = Permission.objects.register(sources_setup_namespace, 'sources_setup_edit', _(u'Edit document sources'))
 PERMISSION_SOURCES_SETUP_DELETE = Permission.objects.register(sources_setup_namespace, 'sources_setup_delete', _(u'Delete document sources'))
 PERMISSION_SOURCES_SETUP_CREATE = Permission.objects.register(sources_setup_namespace, 'sources_setup_create', _(u'Create new document sources'))
-
-sources_namespace = PermissionNamespace('sources', _(u'Sources'))
-PERMISSION_DOCUMENT_NEW_VERSION = Permission.objects.register(sources_namespace, 'sources_document_new_version', _(u'Create new document version'))

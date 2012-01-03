@@ -10,7 +10,8 @@ from django.utils.translation import ugettext
 from django.utils.safestring import mark_safe
 from django.conf import settings
 
-from documents.permissions import PERMISSION_DOCUMENT_CREATE
+from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_NEW_VERSION)
 from documents.models import DocumentType, Document
 from documents.conf.settings import THUMBNAIL_SIZE
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
@@ -32,7 +33,7 @@ from sources.forms import WebFormSetupForm, StagingFolderSetupForm
 from sources.forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
-    PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_DOCUMENT_NEW_VERSION)
+    PERMISSION_SOURCES_SETUP_CREATE)
 
 
 def return_function(obj):

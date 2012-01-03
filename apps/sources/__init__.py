@@ -8,7 +8,8 @@ from permissions.models import Permission, PermissionNamespace
 from common.utils import encapsulate
 from project_setup.api import register_setup
 from documents.models import Document
-from documents.permissions import PERMISSION_DOCUMENT_CREATE
+from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_NEW_VERSION)
 from acls.api import class_permissions
 
 from .staging import StagingFile
@@ -17,7 +18,7 @@ from .models import (WebForm, StagingFolder, SourceTransformation,
 from .widgets import staging_file_thumbnail
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
-    PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_DOCUMENT_NEW_VERSION)
+    PERMISSION_SOURCES_SETUP_CREATE)
 
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom'}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True}
@@ -74,7 +75,3 @@ register_model_list_columns(StagingFile, [
     ])
 
 register_setup(setup_sources)
-
-class_permissions(Document, [
-    PERMISSION_DOCUMENT_NEW_VERSION
-])
