@@ -5,9 +5,9 @@ import tempfile
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import validate_path, encapsulate
-from navigation.api import register_links, register_top_menu, \
-    register_model_list_columns, register_multi_item_links, \
-    register_sidebar_template
+from navigation.api import (register_links, register_top_menu,
+    register_model_list_columns, register_multi_item_links,
+    register_sidebar_template)
 from main.api import register_diagnostic, register_maintenance_links
 from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
@@ -70,6 +70,7 @@ document_multiple_delete = {'text': _(u'delete'), 'view': 'document_multiple_del
 document_edit = {'text': _(u'edit'), 'view': 'document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
 document_preview = {'text': _(u'preview'), 'class': 'fancybox', 'view': 'document_preview', 'args': 'object.id', 'famfam': 'magnifier', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_download = {'text': _(u'download'), 'view': 'document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
+document_multiple_download = {'text': _(u'download'), 'view': 'document_multiple_download', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_version_download = {'text': _(u'download'), 'view': 'document_version_download', 'args': 'object.pk', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_white_copy', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_white_copy', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'description': _(u'Search all the documents\' checksums and return a list of the exact matches.')}
@@ -130,7 +131,7 @@ register_links(['document_type_filename_create', 'document_type_filename_list', 
 
 # Register document links
 register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download])
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
