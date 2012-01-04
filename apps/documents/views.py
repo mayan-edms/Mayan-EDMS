@@ -13,6 +13,7 @@ from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 from django.core.exceptions import PermissionDenied
+from django.conf import settings
 
 import sendfile
 from common.utils import pretty_size, parse_range, urlquote, \
@@ -31,6 +32,7 @@ from permissions.models import Permission
 from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
 from acls.models import AccessEntry
+from common.compressed_files import CompressedFile
 
 from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, PRINT_SIZE,
@@ -317,31 +319,72 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=F
         return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
         
 
-def document_download(request, document_id=None, document_version_pk=None):
-    if document_version_pk:
+def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
+    document_version = None
+    documents = []
+    
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+        post_action_redirect = reverse('document_list')
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+    elif document_version_pk:
         document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
-    else:
-        document_version = get_object_or_404(Document, pk=document_id).latest_version
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DOWNLOAD])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_DOWNLOAD, request.user, document_version.document)    
-       
-    try:
-        # Test permissions and trigger exception
-        fd = document_version.open()
-        fd.close()
-        return serve_file(
-            request,
-            document_version.file,
-            save_as=u'"%s"' % document_version.filename,
-            content_type=document_version.mimetype if document_version.mimetype else 'application/octet-stream'
-        )
-    except Exception, e:
-        messages.error(request, e)
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DOWNLOAD, request.user, documents, exception_on_empty=True)
 
+    if len(documents) == 1:
+        document_version = documents[0].latest_version
+    
+    if document_version:
+        try:
+            # Test permissions and trigger exception
+            fd = document_version.open()
+            fd.close()
+            return serve_file(
+                request,
+                document_version.file,
+                save_as=u'"%s"' % document_version.filename,
+                content_type=document_version.mimetype if document_version.mimetype else 'application/octet-stream'
+            )
+        except Exception, e:
+            if settings.DEBUG:
+                raise
+            else:
+                messages.error(request, e)
+                return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    else:
+        try:
+            compressed_file = CompressedFile()
+            for document in documents:
+                descriptor = document.open()
+                compressed_file.add_file(descriptor, arcname=document.filename)
+                descriptor.close()
+                
+            compressed_file.close()
+            
+            return serve_file(
+                request,
+                compressed_file.as_file('document_bundle.zip'),
+                save_as=u'"document_bundle.zip"',
+                content_type='application/zip'
+            )
+            # TODO: DO a redirection afterwards
+        except Exception, e:
+            if settings.DEBUG:
+                raise
+            else:
+                messages.error(request, e)
+                return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+def document_multiple_download(request):
+    return document_download(
+        request, document_id_list=request.GET.get('id_list', [])
+    )
 
 def document_page_transformation_list(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
