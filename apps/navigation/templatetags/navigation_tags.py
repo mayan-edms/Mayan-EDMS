@@ -1,3 +1,5 @@
+from __future__ import absolute_import 
+
 import copy
 import re
 import urlparse
@@ -10,10 +12,10 @@ from django.utils.translation import ugettext as _
 
 from common.utils import urlquote
 
-from navigation.api import (object_navigation, multi_object_navigation,
+from ..api import (object_navigation, multi_object_navigation,
     top_menu_entries, sidebar_templates)
-from navigation.forms import MultiItemForm
-from navigation.utils import resolve_to_name
+from ..forms import MultiItemForm
+from ..utils import resolve_to_name
 
 register = Library()
 
