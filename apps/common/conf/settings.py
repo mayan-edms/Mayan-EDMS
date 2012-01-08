@@ -71,5 +71,5 @@ register_setting(
     name=u'ALLOW_ANONYMOUS_ACCESS',
     global_name=u'COMMON_ALLOW_ANONYMOUS_ACCESS',
     default=False,
-    description=_(u'Allows non authenticated users access to all views'),
+    description=_(u'Allow non authenticated users, access to all views'),
 )
