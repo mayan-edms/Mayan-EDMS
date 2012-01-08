@@ -181,7 +181,7 @@
 
 {% block web_theme_user_navigation %}
     <li><strong>{% trans "User" %}:</strong>
-        {% if user.is_anonymous %}
+        {% if not user.is_authenticated %}
             {% trans "Anonymous" %}
         {% else %}
             {{ user.get_full_name|default:user }}
@@ -202,7 +202,7 @@
         </li>
     {% endif %}
     {% get_setting "LOGIN_URL" as login_url %}
-    <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}?next={{ login_url }}{% endif %}">{% if user.is_anonymous %}{% trans "Login" %}{% else %}{% trans "Logout" %}{% endif %}</a></li>
+    <li><a class="logout" href="{% if not user.is_authenticated %}{% url login_view %}?next=/{% else %}{% url logout_view %}{% endif %}">{% if not user.is_authenticated %}{% trans "Login" %}{% else %}{% trans "Logout" %}{% endif %}</a></li>
 {% endblock %}
 
 {% block web_theme_main_navigation %}
