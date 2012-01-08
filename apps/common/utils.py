@@ -1,4 +1,4 @@
-     # -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 import os
 import re
 import types
@@ -13,6 +13,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AnonymousUser
 
 
 def urlquote(link=None, get=None):
@@ -333,9 +334,15 @@ def get_object_name(obj, display_object_type=True):
     label = unicode(obj)
     if isinstance(obj, User):
         label = obj.get_full_name() if obj.get_full_name() else obj
+    elif isinstance(obj, AnonymousUser):
+        label = _(u'Anonymous user')
 
     if display_object_type:
-        verbose_name = unicode(getattr(obj._meta, u'verbose_name', ct_label))
+        try:
+            verbose_name = unicode(obj._meta.verbose_name)
+        except AttributeError:
+            verbose_name = ct_label
+            
         return u'%s: %s' % (verbose_name, label)
     else:
         return u'%s' % (label)
