@@ -2,7 +2,8 @@ import urlparse
 
 from django.db import models
 from django.utils.http import urlencode
-
+from django.contrib.auth.models import AnonymousUser
+        
 from dynamic_search.conf.settings import RECENT_COUNT
 
 
@@ -21,7 +22,7 @@ class RecentSearchManager(models.Manager):
                 # Cleanup query string and only store the q parameter
                 parsed_query = {'q': parsed_query['q']}
 
-        if parsed_query:
+        if parsed_query and not isinstance(user, AnonymousUser):
             # If the URL query has at least one variable with a value
             new_recent, created = self.model.objects.get_or_create(user=user, query=urlencode(parsed_query), defaults={'hits': hits})
             new_recent.hits = hits
