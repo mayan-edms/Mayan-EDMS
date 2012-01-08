@@ -9,7 +9,6 @@ from navigation.api import (register_links, register_top_menu,
     register_model_list_columns, register_multi_item_links,
     register_sidebar_template)
 from main.api import register_diagnostic, register_maintenance_links
-from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from metadata.api import get_metadata_string
@@ -167,9 +166,6 @@ register_maintenance_links([document_find_all_duplicates, document_update_page_c
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
             encapsulate(lambda x: document_thumbnail(x))
-        },
-        {'name':_(u'tags'), 'attribute':
-            encapsulate(lambda x: get_tags_inline_widget_simple(x))
         },
         {'name':_(u'metadata'), 'attribute':
             encapsulate(lambda x: get_metadata_string(x))
