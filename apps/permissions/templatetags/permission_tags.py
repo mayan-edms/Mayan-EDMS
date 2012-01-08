@@ -1,6 +1,5 @@
 from django.core.exceptions import PermissionDenied
-from django.template import TemplateSyntaxError, Library, \
-                            Node, Variable
+from django.template import TemplateSyntaxError, Library, Node, Variable
 
 from permissions.models import Permission
 
