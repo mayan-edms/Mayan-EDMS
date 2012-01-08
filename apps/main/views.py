@@ -46,15 +46,18 @@ def maintenance_menu(request):
 
 
 def statistics(request):
-    blocks = []
-    blocks.append(documents_statistics())
-    blocks.append(ocr_statistics())
+    if request.user.is_superuser or request.user.is_staff:
+        blocks = []
+        blocks.append(documents_statistics())
+        blocks.append(ocr_statistics())
 
-    return render_to_response('statistics.html', {
-        'blocks': blocks,
-        'title': _(u'Statistics')
-    },
-    context_instance=RequestContext(request))
+        return render_to_response('statistics.html', {
+            'blocks': blocks,
+            'title': _(u'Statistics')
+        },
+        context_instance=RequestContext(request))
+    else:
+        raise PermissionDenied
 
 
 def diagnostics_view(request):
