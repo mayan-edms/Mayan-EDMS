@@ -30,8 +30,8 @@ class CheckAccessNode(Node):
                 obj = Variable(self.obj).resolve(context)
                 logger.debug('obj: %s' % obj)
             except VariableDoesNotExist:
-                context[u'access'] = True
-                logger.debug('no obj, access True')
+                context[u'access'] = False
+                logger.debug('no obj, access False')
                 return u''
         
         if not permission_list:
