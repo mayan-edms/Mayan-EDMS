@@ -9,7 +9,10 @@ from project_tools.api import register_tool
 from .utils import load_backend
 from .conf.settings import GRAPHICS_BACKEND
 
-formats_list = {'text': _('file formats'), 'view': 'formats_list', 'famfam': 'pictures', 'icon': 'pictures.png'}
+def is_superuser(context):
+    return context['request'].user.is_staff or context['request'].user.is_superuser
+
+formats_list = {'text': _('file formats'), 'view': 'formats_list', 'famfam': 'pictures', 'icon': 'pictures.png', 'condition': is_superuser}
 
 register_sidebar_template(['formats_list'], 'converter_file_formats_help.html')
 
