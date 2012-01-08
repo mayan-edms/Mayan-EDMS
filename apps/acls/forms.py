@@ -40,7 +40,7 @@ class HolderSelectionForm(forms.Form):
         if roles:
             non_holder_list.append((_(u'Roles'), _as_choice_list(list(roles))))
 
-        non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.get()])))
+        non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.objects.get()])))
 
         super(HolderSelectionForm, self).__init__(*args, **kwargs)
         self.fields['holder_gid'].choices = non_holder_list
