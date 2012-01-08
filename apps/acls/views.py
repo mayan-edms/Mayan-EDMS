@@ -50,8 +50,6 @@ def acl_list_for(request, obj, extra_context=None):
     context = {
         'object_list': AccessEntry.objects.get_holders_for(obj),
         'title': _(u'access control lists for: %s' % obj),
-        #'multi_select_as_buttons': True,
-        #'hide_links': True,
         'extra_columns': [
             {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
             {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object)))},
