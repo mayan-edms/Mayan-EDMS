@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-01-08 07:39-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,45 +17,45 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:17
+#: __init__.py:21
 msgid "change password"
 msgstr ""
 
-#: __init__.py:18
+#: __init__.py:22
 msgid "user details"
 msgstr ""
 
-#: __init__.py:19
+#: __init__.py:23
 msgid "edit details"
 msgstr ""
 
-#: __init__.py:23 __init__.py:29
+#: __init__.py:27 __init__.py:33
 msgid "about"
 msgstr ""
 
-#: __init__.py:24
+#: __init__.py:28
 msgid "changelog"
 msgstr ""
 
-#: __init__.py:25
+#: __init__.py:29
 msgid "license"
 msgstr ""
 
-#: forms.py:99
+#: forms.py:101
 msgid "Selection"
 msgstr ""
 
-#: forms.py:131
+#: forms.py:133
 msgid "Email"
 msgstr ""
 
-#: forms.py:142
+#: forms.py:144
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
 msgstr ""
 
-#: forms.py:144
+#: forms.py:146
 msgid "This account is inactive."
 msgstr ""
 
@@ -99,67 +99,74 @@ msgstr ""
 msgid "Landscape"
 msgstr ""
 
-#: utils.py:291
+#: models.py:16
+msgid "lock field"
+msgstr ""
+
+#: models.py:43
+msgid "Anonymous user"
+msgstr ""
+
+#: models.py:46 models.py:47
+msgid "anonymous user"
+msgstr ""
+
+#: utils.py:295
 msgid "function found"
 msgstr ""
 
-#: utils.py:293 utils.py:295
-#, python-format
-msgid "class found: %s"
-msgstr ""
-
-#: views.py:24 templates/password_change_done.html:5
+#: views.py:25 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
 msgstr ""
 
-#: views.py:41
+#: views.py:42
 msgid "No action selected."
 msgstr ""
 
-#: views.py:45
+#: views.py:46
 msgid "Must select at least one item."
 msgstr ""
 
-#: views.py:86
+#: views.py:87
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr ""
 
-#: views.py:89 views.py:106
+#: views.py:90 views.py:107
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr ""
 
-#: views.py:103
+#: views.py:104
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr ""
 
-#: views.py:121
+#: views.py:122
 msgid "Add"
 msgstr ""
 
-#: views.py:132
+#: views.py:133
 msgid "Remove"
 msgstr ""
 
-#: views.py:155
+#: views.py:156
 msgid "current user details"
 msgstr ""
 
-#: views.py:172
+#: views.py:173
 msgid "Current user's details updated."
 msgstr ""
 
-#: views.py:181
+#: views.py:182
 msgid "edit current user details"
 msgstr ""
 
-#: views.py:207
+#: views.py:213
 msgid "Changelog"
 msgstr ""
 
-#: views.py:220
+#: views.py:226
 msgid "License"
 msgstr ""
 
@@ -178,6 +185,10 @@ msgstr ""
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
+msgstr ""
+
+#: conf/settings.py:74
+msgid "Allow non authenticated users, access to all views"
 msgstr ""
 
 #: templates/403.html:3 templates/403.html.py:7
@@ -267,7 +278,7 @@ msgstr ""
 #: templates/generic_form_subtemplate.html:76
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:178
+#: templates/generic_list_horizontal_subtemplate.html:90
 #: templates/generic_list_subtemplate.html:52
 #: templates/generic_list_subtemplate.html:178
 msgid "Save"
@@ -276,7 +287,7 @@ msgstr ""
 #: templates/generic_form_subtemplate.html:76
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:178
+#: templates/generic_list_horizontal_subtemplate.html:90
 #: templates/generic_list_subtemplate.html:52
 #: templates/generic_list_subtemplate.html:178
 msgid "Submit"

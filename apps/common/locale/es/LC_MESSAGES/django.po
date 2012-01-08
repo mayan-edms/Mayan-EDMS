@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-01-08 07:39-0400\n"
 "PO-Revision-Date: 2011-11-04 00:58+0000\n"
 "Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
@@ -19,39 +19,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:17
+#: __init__.py:21
 msgid "change password"
 msgstr "cambiar contraseña"
 
-#: __init__.py:18
+#: __init__.py:22
 msgid "user details"
 msgstr "detalles de usuario"
 
-#: __init__.py:19
+#: __init__.py:23
 msgid "edit details"
 msgstr "editar detalles"
 
-#: __init__.py:23 __init__.py:29
+#: __init__.py:27 __init__.py:33
 msgid "about"
 msgstr "sobre"
 
-#: __init__.py:24
+#: __init__.py:28
 msgid "changelog"
 msgstr "cambios"
 
-#: __init__.py:25
+#: __init__.py:29
 msgid "license"
 msgstr "licencia"
 
-#: forms.py:99
+#: forms.py:101
 msgid "Selection"
 msgstr "Selección"
 
-#: forms.py:131
+#: forms.py:133
 msgid "Email"
 msgstr "E-mail"
 
-#: forms.py:142
+#: forms.py:144
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
@@ -60,7 +60,7 @@ msgstr ""
 "correctas.  Tenga en cuenta que los campos de contraseña distingue entre "
 "mayúsculas y minúsculas."
 
-#: forms.py:144
+#: forms.py:146
 msgid "This account is inactive."
 msgstr "Esta cuenta está inactiva."
 
@@ -104,67 +104,74 @@ msgstr "Retrato"
 msgid "Landscape"
 msgstr "Paisaje"
 
-#: utils.py:291
+#: models.py:16
+msgid "lock field"
+msgstr ""
+
+#: models.py:43
+msgid "Anonymous user"
+msgstr "Usuario anónimo"
+
+#: models.py:46 models.py:47
+msgid "anonymous user"
+msgstr "usario anónimo"
+
+#: utils.py:295
 msgid "function found"
 msgstr "función encontrada"
 
-#: utils.py:293 utils.py:295
-#, python-format
-msgid "class found: %s"
-msgstr "clase encontrada: %s"
-
-#: views.py:24 templates/password_change_done.html:5
+#: views.py:25 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
 msgstr "Su contraseña se ha modificado correctamente."
 
-#: views.py:41
+#: views.py:42
 msgid "No action selected."
 msgstr "Ninguna acción seleccionada."
 
-#: views.py:45
+#: views.py:46
 msgid "Must select at least one item."
 msgstr "Debe seleccionar al menos un artículo."
 
-#: views.py:86
+#: views.py:87
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "Se agrego exitosamente %(selection)s a %(right_list_title)s."
 
-#: views.py:89 views.py:106
+#: views.py:90 views.py:107
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "No se puede agregar %(selection)s a %(right_list_title)s."
 
-#: views.py:103
+#: views.py:104
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr "Se removió exitosamente %(selection)s de %(right_list_title)s."
 
-#: views.py:121
+#: views.py:122
 msgid "Add"
 msgstr "Agregar"
 
-#: views.py:132
+#: views.py:133
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:155
+#: views.py:156
 msgid "current user details"
 msgstr "detalles del usuario corriente"
 
-#: views.py:172
+#: views.py:173
 msgid "Current user's details updated."
 msgstr "Datos del usuario corriente actualizados."
 
-#: views.py:181
+#: views.py:182
 msgid "edit current user details"
 msgstr "editar detalles del usuario corriente"
 
-#: views.py:207
+#: views.py:213
 msgid "Changelog"
 msgstr "Cambios"
 
-#: views.py:220
+#: views.py:226
 msgid "License"
 msgstr "Licencia"
 
@@ -189,6 +196,10 @@ msgid ""
 msgstr ""
 "Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
 "son: 'username' nombre de usuario, 'email' correo electrónico"
+
+#: conf/settings.py:74
+msgid "Allow non authenticated users, access to all views"
+msgstr ""
 
 #: templates/403.html:3 templates/403.html.py:7
 msgid "Insufficient permissions"
@@ -277,7 +288,7 @@ msgstr "requerido"
 #: templates/generic_form_subtemplate.html:76
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:178
+#: templates/generic_list_horizontal_subtemplate.html:90
 #: templates/generic_list_subtemplate.html:52
 #: templates/generic_list_subtemplate.html:178
 msgid "Save"
@@ -286,7 +297,7 @@ msgstr "Guardar"
 #: templates/generic_form_subtemplate.html:76
 #: templates/generic_form_subtemplate.html:78
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:178
+#: templates/generic_list_horizontal_subtemplate.html:90
 #: templates/generic_list_subtemplate.html:52
 #: templates/generic_list_subtemplate.html:178
 msgid "Submit"
@@ -330,6 +341,9 @@ msgstr "Iniciar sesión"
 #: templates/password_change_form.html:5
 msgid "Password change"
 msgstr "Cambio de contraseña"
+
+#~ msgid "class found: %s"
+#~ msgstr "clase encontrada: %s"
 
 #~ msgid "Cancel"
 #~ msgstr "Cancelar"
