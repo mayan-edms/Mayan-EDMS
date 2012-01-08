@@ -2,8 +2,11 @@ import logging
 import sys
 import types
 
+from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
+
+from common.models import AnonymousUserSingleton
 
 logger = logging.getLogger(__name__)
             
@@ -27,6 +30,7 @@ class EncapsulatedObject(object):
     @classmethod
     def encapsulate(cls, source_object=None, app_label=None, model=None, pk=None):
         if source_object:
+            source_object = AnonymousUserSingleton.objects.passthru_check(source_object)
             content_type = ContentType.objects.get_for_model(source_object)
         elif app_label and model:
             try:
