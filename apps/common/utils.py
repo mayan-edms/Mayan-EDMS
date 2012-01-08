@@ -1,4 +1,6 @@
  # -*- coding: utf-8 -*-
+from __future__ import absolute_import
+
 import os
 import re
 import types
@@ -13,7 +15,6 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
-from django.contrib.auth.models import AnonymousUser
 
 
 def urlquote(link=None, get=None):
@@ -331,11 +332,10 @@ def generate_choices_w_labels(choices, display_object_type=True):
 
 def get_object_name(obj, display_object_type=True): 
     ct_label = ContentType.objects.get_for_model(obj).name
-    label = unicode(obj)
     if isinstance(obj, User):
         label = obj.get_full_name() if obj.get_full_name() else obj
-    elif isinstance(obj, AnonymousUser):
-        label = _(u'Anonymous user')
+    else:
+        label = unicode(obj)
 
     if display_object_type:
         try:
