@@ -9,6 +9,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 
+from common.models import AnonymousUserSingleton
+
 from .classes import EncapsulatedObject, AccessHolder, ClassAccessHolder
 
 logger = logging.getLogger(__name__)
@@ -65,6 +67,8 @@ class AccessEntryManager(models.Manager):
             if actor.is_superuser or actor.is_staff:
                 return True
 
+        actor = AnonymousUserSingleton.objects.passthru_check(actor)
+
         try:
             access_entry = self.model.objects.get(
                 permission=permission.get_stored_permission(),
@@ -97,7 +101,8 @@ class AccessEntryManager(models.Manager):
 
     def get_allowed_class_objects(self, permission, actor, cls, related=None):
         logger.debug('related: %s' % related)
-
+        
+        actor = AnonymousUserSingleton.objects.passthru_check(actor)
         actor_type = ContentType.objects.get_for_model(actor)
         content_type = ContentType.objects.get_for_model(cls)
         if related:
