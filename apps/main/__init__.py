@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from navigation.api import register_top_menu
 from navigation.api import register_links
@@ -55,8 +56,12 @@ def get_version():
 
 __version__ = get_version()
 
-register_setup(admin_site)
+if 'django.contrib.admin' in settings.INSTALLED_APPS:
+    register_setup(admin_site)
+    
 register_tool(maintenance_menu)
 register_tool(statistics)
 register_tool(diagnostics)
-register_tool(sentry)
+
+if 'sentry' in settings.INSTALLED_APPS:
+    register_tool(sentry)
