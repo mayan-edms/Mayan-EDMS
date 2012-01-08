@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.contrib.auth.models import AnonymousUser
 
 SINGLETON_LOCK_ID = 1
@@ -37,6 +38,9 @@ class AnonymousUserSingletonManager(SingletonManager):
 
 class AnonymousUserSingleton(Singleton):
     objects = AnonymousUserSingletonManager()
+
+    def __unicode__(self):
+        return ugettext('Anonymous user')
     
     class Meta:
         verbose_name = _(u'anonymous user')
