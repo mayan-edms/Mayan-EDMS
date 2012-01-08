@@ -188,7 +188,7 @@ Job processor
     Default: ``None``  
     
     
-    Specified which job processing library to use, option are: None and celery.
+    Specifies which job processing library to use, option are: None and celery.
 
 
 Document indexing
@@ -230,12 +230,17 @@ OCR
 .. data:: OCR_TESSERACT_PATH    
     
     Default: ``/bin/tesseract``        
+
+    File path to the ``tesseract`` executable, used to perform OCR on document
+    page's images.
     
     
 .. data:: OCR_TESSERACT_LANGUAGE    
     
     Default: ``eng``           
-    
+
+    Language code passed to the ``tesseract`` executable.
+        
     
 .. data:: OCR_REPLICATION_DELAY    
     
@@ -256,7 +261,8 @@ OCR
     
     Default: ``False``               
     
-    Automatically queue newly created documents for OCR.
+    Automatically queue newly created documents or newly uploaded versions
+    of existing documents for OCR.
     
     
 .. data:: OCR_QUEUE_PROCESSING_INTERVAL    
@@ -277,7 +283,8 @@ OCR
     
     Default: ``/usr/bin/unpaper`` 
     
-    File path to unpaper program.
+    File path to the ``unpaper`` executable, used to clean up images before
+    doing OCR.
     
 
 Metadata
@@ -318,24 +325,39 @@ Common
 .. data:: COMMON_AUTO_CREATE_ADMIN    
     
     Default: ``True`` 
+
+    Automatically creates an administrator superuser with the username
+    specified by COMMON_AUTO_ADMIN_USERNAME and with the default password
+    specified by COMMON_AUTO_ADMIN_PASSWORD
     
     
 .. data:: COMMON_AUTO_ADMIN_USERNAME    
     
     Default: ``admin`` 
     
+    Username of the automatically created superuser
+    
     
 .. data:: COMMON_AUTO_ADMIN_PASSWORD    
     
     Default: ``admin`` 
-        
+
+    Default password of the automatically created superuser
+            
     
 .. data:: COMMON_LOGIN_METHOD    
     
     Default: ``username`` 
     
     Controls the mechanism used to authenticated user. Options are: ``username``, ``email``    
+
+
+.. data:: COMMON_ALLOW_ANONYMOUS_ACCESS
+
+    Default: ``False``
     
+    Allow non authenticated users, access to all views
+
     
 Search
 ------

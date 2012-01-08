@@ -19,7 +19,7 @@ from .managers import AccessEntryManager, DefaultAccessEntryManager
 
 logger = logging.getLogger(__name__)
 
-
+        
 class AccessEntry(models.Model):
     '''
     Model that hold the permission, object, actor relationship

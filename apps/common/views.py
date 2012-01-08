@@ -193,8 +193,13 @@ def login_view(request):
     
     if LOGIN_METHOD == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
+        
+    if not request.user.is_authenticated():
+        context = {'web_theme_view_type': 'plain'}
+    else:
+        context = {}
 
-    return login(request, **kwargs)
+    return login(request, extra_context=context, **kwargs)
 
 
 def changelog_view(request):

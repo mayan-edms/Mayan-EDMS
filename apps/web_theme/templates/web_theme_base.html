@@ -69,7 +69,7 @@
 	</head>
 	<body>
         <div id="container">
-            {% if user.is_anonymous %}
+            {% if web_theme_view_type == 'plain' %}
                 <div id="box">
                     {% block content_plain %}{% endblock %}
                 </div>

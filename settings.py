@@ -149,12 +149,12 @@ INSTALLED_APPS = (
     'sentry.client.celery',
     'storage',
     'folders',
-    'taggit',
-    'tags',
     'document_comments',
     'user_management',
     'metadata',
     'documents',
+    'taggit',
+    'tags',
     'linking',
     'mptt',
     'document_indexing',
@@ -176,10 +176,8 @@ INSTALLED_APPS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.i18n',
-    #'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.request',
-#    'django.contrib.messages.context_processors.messages',
 )
 
 STATICFILES_FINDERS = (

@@ -6,6 +6,7 @@ from django.contrib.auth.models import User, Group
 
 from permissions.models import Permission, Role
 from common.utils import generate_choices_w_labels, encapsulate, get_object_name
+from common.models import AnonymousUserSingleton
 
 from .classes import AccessHolder
 
@@ -38,6 +39,8 @@ class HolderSelectionForm(forms.Form):
             
         if roles:
             non_holder_list.append((_(u'Roles'), _as_choice_list(list(roles))))
+
+        non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.get()])))
 
         super(HolderSelectionForm, self).__init__(*args, **kwargs)
         self.fields['holder_gid'].choices = non_holder_list

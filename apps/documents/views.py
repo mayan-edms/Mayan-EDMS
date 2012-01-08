@@ -827,7 +827,7 @@ def document_page_navigation_last(request, document_page_id):
 def document_list_recent(request):
     return document_list(
         request,
-        object_list=[recent_document.document for recent_document in RecentDocument.objects.filter(user=request.user)],
+        object_list=RecentDocument.objects.get_for_user(request.user),
         title=_(u'recent documents'),
         extra_context={
             'recent_count': RECENT_COUNT

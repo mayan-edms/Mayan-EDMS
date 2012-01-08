@@ -10,6 +10,8 @@ from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 
+from common.models import AnonymousUserSingleton
+
 from .managers import (RoleMemberManager, StoredPermissionManager)
     
 logger = logging.getLogger(__name__)
@@ -43,6 +45,8 @@ class PermissionManager(object):
         for permission in permission_list:
             if permission.requester_has_this(requester):
                 return True
+
+        logger.debug('no permission')
 
         raise PermissionDenied(ugettext(u'Insufficient permissions.'))
         
@@ -105,8 +109,7 @@ class Permission(object):
         return stored_permission
      
     def requester_has_this(self, requester):
-        stored_permission = self.get_stored_permission(
-        )
+        stored_permission = self.get_stored_permission()
         return stored_permission.requester_has_this(requester)
 
     def save(self, *args, **kwargs):
@@ -139,6 +142,8 @@ class StoredPermission(models.Model):
         return [holder.holder_object for holder in self.permissionholder_set.all()]
 
     def requester_has_this(self, requester):
+        requester = AnonymousUserSingleton.objects.passthru_check(requester)
+        logger.debug('requester: %s' % requester)
         if isinstance(requester, User):
             if requester.is_superuser or requester.is_staff:
                 return True
@@ -159,12 +164,17 @@ class StoredPermission(models.Model):
         for membership in list(set(roles) | set(groups)):
             if self.requester_has_this(membership):
                 return True
+            
+        logger.debug('Fallthru')
+        return False
 
     def grant_to(self, requester):
+        requester = AnonymousUserSingleton.objects.passthru_check(requester)
         permission_holder, created = PermissionHolder.objects.get_or_create(permission=self, holder_type=ContentType.objects.get_for_model(requester), holder_id=requester.pk)
         return created
 
     def revoke_from(self, holder):
+        requester = AnonymousUserSingleton.objects.passthru_check(requester)
         try:
             permission_holder = PermissionHolder.objects.get(permission=self, holder_type=ContentType.objects.get_for_model(holder), holder_id=holder.pk)
             permission_holder.delete()
@@ -199,6 +209,7 @@ class Role(models.Model):
         verbose_name_plural = _(u'roles')
 
     def add_member(self, member):
+        member = AnonymousUserSingleton.objects.passthru_check(member)
         role_member, created = RoleMember.objects.get_or_create(
             role=self,
             member_type=ContentType.objects.get_for_model(member),

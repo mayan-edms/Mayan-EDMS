@@ -12,14 +12,15 @@ from acls.permissions import ACLS_VIEW_ACL
 from taggit.models import Tag
 from taggit.managers import TaggableManager
 
+from .widgets import get_tags_inline_widget_simple
 from .widgets import tag_color_block
 from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
     PERMISSION_TAG_VIEW)
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
-tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_CREATE]}
-tag_attach = {'text': _(u'attach tag'), 'view': 'tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permission': [PERMISSION_TAG_ATTACH]}
+tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_CREATE]}
+tag_attach = {'text': _(u'attach tag'), 'view': 'tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_ATTACH]}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH], 'children_view_regex': ['tag']}
@@ -43,6 +44,12 @@ register_model_list_columns(Tag, [
         'name': _(u'tagged items'),
         'attribute': encapsulate(lambda x: x.taggit_taggeditem_items.count())
     }
+])
+
+register_model_list_columns(Document, [
+    {'name':_(u'tags'), 'attribute':
+        encapsulate(lambda x: get_tags_inline_widget_simple(x))
+    },
 ])
 
 register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete, tag_acl_list])
