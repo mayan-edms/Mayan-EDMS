@@ -66,7 +66,7 @@ def get_obj_from_content_type_string(string):
     return ct.get_object_for_this_type(pk=pk)
 
 
-def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, decode_content_type=False, extra_context=None):
+def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, decode_content_type=False, extra_context=None, grouped=False):
     left_list_name = u'left_list'
     right_list_name = u'right_list'
 
@@ -77,7 +77,14 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 choices=left_list())
             if unselected_list.is_valid():
                 for selection in unselected_list.cleaned_data['selection']:
-                    label = dict(left_list())[selection]
+                    if grouped:
+                        flat_list = []
+                        for group in left_list():
+                            flat_list.extend(group[1])
+                    else:
+                        flat_list = left_list()
+                    
+                    label = dict(flat_list)[selection]
                     if decode_content_type:
                         selection_obj = get_obj_from_content_type_string(selection)
                     else:
@@ -96,7 +103,14 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 choices=right_list())
             if selected_list.is_valid():
                 for selection in selected_list.cleaned_data['selection']:
-                    label = dict(right_list())[selection]
+                    if grouped:
+                        flat_list = []
+                        for group in right_list():
+                            flat_list.extend(group[1])
+                    else:
+                        flat_list = right_list()
+                    
+                    label = dict(flat_list)[selection]
                     if decode_content_type:
                         selection = get_obj_from_content_type_string(selection)
                     try:
