@@ -208,19 +208,31 @@ class Role(models.Model):
         verbose_name = _(u'role')
         verbose_name_plural = _(u'roles')
 
-    def add_member(self, member):
-        member = AnonymousUserSingleton.objects.passthru_check(member)
-        role_member, created = RoleMember.objects.get_or_create(
-            role=self,
-            member_type=ContentType.objects.get_for_model(member),
-            member_id=member.pk)
-
     def __unicode__(self):
         return self.label
 
     @models.permalink
     def get_absolute_url(self):
         return ('role_list',)
+
+    def add_member(self, member):
+        member = AnonymousUserSingleton.objects.passthru_check(member)
+        role_member, created = RoleMember.objects.get_or_create(
+            role=self,
+            member_type=ContentType.objects.get_for_model(member),
+            member_id=member.pk)
+        if not created:
+            raise Exception('Unable to add member to role')
+
+    def remove_member(self, member):
+        member = AnonymousUserSingleton.objects.passthru_check(member)
+        member_type=ContentType.objects.get_for_model(member)
+        role_member = RoleMember.objects.get(role=self, member_type=member_type, member_id=member.pk)
+        role_member.delete()        
+
+    def members(self, filter_dict=None):
+        filter_dict = filter_dict or {}
+        return [member.member_object for member in self.rolemember_set.filter(**filter_dict)]
 
 
 class RoleMember(models.Model):
