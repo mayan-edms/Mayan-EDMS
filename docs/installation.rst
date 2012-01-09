@@ -100,7 +100,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 
 #. Create the database schema (during this step two errors will appears about failling to install indexes on ``documents.Document`` and ``documents.DocumentPage`` models, ignore them for now)::
 
-    $ ./manage.py syncdb
+    $ ./manage.py syncdb --migrate
 
 #. Collect the static files of the apps::
 
