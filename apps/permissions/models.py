@@ -239,7 +239,12 @@ class RoleMember(models.Model):
     role = models.ForeignKey(Role, verbose_name=_(u'role'))
     member_type = models.ForeignKey(ContentType,
         related_name='role_member',
-        limit_choices_to={'model__in': ('user', 'group')})
+        limit_choices_to={
+            'model__in': (
+                'user', 'group', 'anonymoususersingleton'
+            )
+        }
+    )
     member_id = models.PositiveIntegerField()
     member_object = generic.GenericForeignKey(ct_field='member_type', fk_field='member_id')
 
