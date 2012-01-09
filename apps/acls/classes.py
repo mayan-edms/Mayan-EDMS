@@ -5,6 +5,7 @@ import types
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
+from django.template.defaultfilters import capfirst
 
 from common.models import AnonymousUserSingleton
 
