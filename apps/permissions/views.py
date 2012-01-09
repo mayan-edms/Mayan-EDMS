@@ -16,8 +16,9 @@ from django.contrib.auth.models import User, Group
 from django.utils.simplejson import loads
 
 from common.views import assign_remove
-from common.utils import generate_choices_w_labels, encapsulate
+from common.utils import generate_choices_w_labels, encapsulate, get_object_name
 from common.widgets import two_state_template
+from acls.classes import EncapsulatedObject
 
 from .models import Role, Permission, PermissionHolder, RoleMember
 from .forms import RoleForm, RoleForm_view
@@ -244,35 +245,62 @@ def permission_revoke(request):
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
 
+class Member(EncapsulatedObject):
+    source_object_name = u'member_object'
 
-def get_role_members(role):
+def _as_choice_list(items):
+    return sorted([(Member.encapsulate(item).gid, get_object_name(item, display_object_type=False)) for item in items], key=lambda x: x[1])
+
+
+def get_role_members(role, separate=False):
     user_ct = ContentType.objects.get(model='user')
     group_ct = ContentType.objects.get(model='group')
-    return [member.member_object for member in role.rolemember_set.filter(member_type__in=[user_ct, group_ct])]
+    
+    users = role.members(filter_dict={'member_type': user_ct})
+    groups = role.members(filter_dict={'member_type': group_ct})
+
+    if separate:
+        return users, groups
+    else:
+        members = []
+        
+        if users:
+            members.append((_(u'Users'), _as_choice_list(list(users))))
+            
+        if groups:
+            members.append((_(u'Groups'), _as_choice_list(list(groups))))
+            
+        return members    
 
 
 def get_non_role_members(role):
     #non members = all users - members - staff - super users
+    member_users, member_groups = get_role_members(role, separate=True)
+    
     staff_users = User.objects.filter(is_staff=True)
     super_users = User.objects.filter(is_superuser=True)
-    users = set(User.objects.exclude(pk__in=[member.pk for member in get_role_members(role)])) - set(staff_users) - set(super_users)
-    groups = set(Group.objects.exclude(pk__in=[member.pk for member in get_role_members(role)]))
-    return list(users | groups)
+    
+    users = set(User.objects.all()) - set(member_users) - set(staff_users) - set(super_users)
+    groups = set(Group.objects.all()) - set(member_groups)
+    
+    non_members = []
+    if users:
+        non_members.append((_(u'Users'), _as_choice_list(list(users))))
+        
+    if groups:
+        non_members.append((_(u'Groups'), _as_choice_list(list(groups))))
+                
+    return non_members
 
 
 def add_role_member(role, selection):
-    model, pk = selection.split(u',')
-    ct = ContentType.objects.get(model=model)
-    new_member, created = RoleMember.objects.get_or_create(role=role, member_type=ct, member_id=pk)
-    if not created:
-        raise Exception
+    member = Member.get(selection).source_object
+    role.add_member(member)
 
 
 def remove_role_member(role, selection):
-    model, pk = selection.split(u',')
-    ct = ContentType.objects.get(model=model)
-    member = RoleMember.objects.get(role=role, member_type=ct, member_id=pk)
-    member.delete()
+    member = Member.get(selection).source_object
+    role.remove_member(member)
 
 
 def role_members(request, role_id):
@@ -281,8 +309,10 @@ def role_members(request, role_id):
 
     return assign_remove(
         request,
-        left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),
-        right_list=lambda: generate_choices_w_labels(get_role_members(role)),
+        #left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),
+        left_list=lambda: get_non_role_members(role),
+        #right_list=lambda: generate_choices_w_labels(get_role_members(role)),
+        right_list=lambda: get_role_members(role),
         add_method=lambda x: add_role_member(role, x),
         remove_method=lambda x: remove_role_member(role, x),
         left_list_title=_(u'non members of role: %s') % role,
@@ -290,5 +320,6 @@ def role_members(request, role_id):
         extra_context={
             'object': role,
             'object_name': _(u'role'),
-        }
+        },
+        grouped=True,
     )
