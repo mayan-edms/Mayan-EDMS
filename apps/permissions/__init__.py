@@ -25,7 +25,7 @@ permission_grant = {'text': _(u'grant'), 'view': 'permission_multiple_grant', 'f
 permission_revoke = {'text': _(u'revoke'), 'view': 'permission_multiple_revoke', 'famfam': 'key_delete', 'permissions': [PERMISSION_PERMISSION_REVOKE]}
 
 register_links(Role, [role_edit, role_delete, role_permissions, role_members])
-register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_list, role_create], menu_name='sidebar')
+register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_list, role_create], menu_name='secondary_menu')
 register_multi_item_links(['role_permissions'], [permission_grant, permission_revoke])
 
 permission_views = ['role_list', 'role_create', 'role_edit', 'role_members', 'role_permissions', 'role_delete']

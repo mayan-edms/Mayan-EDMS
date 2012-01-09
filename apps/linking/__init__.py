@@ -36,7 +36,7 @@ register_links(['smart_link_acl_list', 'smart_link_new_holder'], [smart_link_new
 register_links(Document, [smart_link_instances_for_document], menu_name='form_header')
 
 register_links(SmartLink, [smart_link_edit, smart_link_delete, smart_link_condition_list, smart_link_acl_list])
-register_links([SmartLink, 'smart_link_list', 'smart_link_create'], [smart_link_list, smart_link_create], menu_name='sidebar')
+register_links([SmartLink, 'smart_link_list', 'smart_link_create'], [smart_link_list, smart_link_create], menu_name='secondary_menu')
 
 register_links(SmartLinkCondition, [smart_link_condition_edit, smart_link_condition_delete])
 register_links(['smart_link_condition_list', 'smart_link_condition_create', 'smart_link_condition_edit', 'smart_link_condition_delete'], [smart_link_condition_create], menu_name='sidebar')
