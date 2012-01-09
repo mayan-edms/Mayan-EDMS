@@ -2,8 +2,6 @@ from __future__ import absolute_import
 
 from django.contrib.contenttypes.models import ContentType
 
-from .classes import AccessObjectClass
-
 _class_permissions = {}
 
 
@@ -27,4 +25,4 @@ def get_classes():
     """
     Return a list of encapsulated classes that have been registered
     """
-    return [AccessObjectClass.encapsulate(cls) for cls in _class_permissions.keys()]
+    return _class_permissions.keys()
