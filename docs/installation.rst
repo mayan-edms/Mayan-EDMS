@@ -39,7 +39,7 @@ If using the ``MySQL`` database manager, use the following commands::
 
 Populate the database with the project's schema doing::
 
-    $ ./manage.py syncdb 
+    $ ./manage.py syncdb --migrate
     
 Collect the static files of the project into the ``static`` folder for serving via a webserver::
 
