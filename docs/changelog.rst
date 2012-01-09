@@ -2,10 +2,37 @@ Version 0.12
 ------------
 * Added new configuration option COMMON_ALLOW_ANONYMOUS_ACCESS to allow
   non authenticated access.
-* Statistics fixes
+* Navigation improvements.
+* Statistics fixes.
+* ACL support for documents, folders, tags and smart links.
+* Anonymous user support for the permissions system.
+* Detached signature behavior improved, uploading a new detached signature
+  erases the previous one.
+* Usability improvement in the role member's add/removal form, by using
+  option groups
+* Fixed get_image_cache_name regression in the OCR app
 * Italian translation by SeeOpen.IT (www.seeopen.it, info@seeopen.it)
 * Removed the 'db_index' argument from Text fields definition and 
   migrations as it was causing error messages for MySQL users.
+* Big code cleanup and lots of changes 'under the hood', most of these
+  are not visible to the end user, but make the code cleaner and more
+  manageable so that more and better features can be added in future
+  releases:
+
+  * Absolute imports used throught the code
+  * All app permissions have been move to a separate permissions.py file
+    per app
+  * Complete permission system refactor.
+  * Document signining code move to it's own app
+  * Initial unit tests
+  * A lot of logging used throught the entire project.
+  * Much functionality moved to model managers.
+  * A lot of code converted into classes.
+  * Coding style improvements.
+  * Template user authentication state logic improvements, for stonger
+    prevention against intrusion or unintentional display or access
+    of restricted data.
+  * Removal of remarked code.
 
 Version 0.11.1
 --------------
