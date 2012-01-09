@@ -14,7 +14,7 @@ from .literals import CONTENT_TYPE_ICON_MAP
 
 
 def content_type_icon(content_type):
-	return mark_safe(u'<span class="famfam active famfam-%s"></span>' % CONTENT_TYPE_ICON_MAP.get('%s.%s' % (content_type.app_label, content_type.name), 'help'))
+    return mark_safe(u'<span class="famfam active famfam-%s"></span>' % CONTENT_TYPE_ICON_MAP.get('%s.%s' % (content_type.app_label, content_type.model), 'help'))
 
 
 def object_w_content_type_icon(obj):

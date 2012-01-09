@@ -59,7 +59,7 @@ register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tag_list', 'famfam'
 register_links(['tag_acl_list', 'tag_new_holder'], [tag_new_holder], menu_name='sidebar')
 
 register_links(Document, [tag_document_list], menu_name='form_header')
-register_links(['document_tags', 'tag_add_attach', 'tag_remove', 'tag_multiple_remove'], [tag_attach], menu_name='sidebar')
+register_links(['document_tags', 'tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')
 register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
 
 class_permissions(Document, [
