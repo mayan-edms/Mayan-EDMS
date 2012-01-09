@@ -359,8 +359,6 @@ def smart_link_new_holder(request, smart_link_pk):
         smart_link,
         extra_context={
             'smart_link': smart_link,
-            'submit_label': _(u'Select'),
-            'submit_icon_famfam': 'tick',
             'object': smart_link,       
         },
         navigation_object=u'smart_link',
