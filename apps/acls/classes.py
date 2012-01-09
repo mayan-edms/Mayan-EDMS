@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import logging
 import sys
 import types
@@ -16,6 +18,13 @@ _cache = {}
 
 class EncapsulatedObject(object):
     source_object_name = u'source_object'
+    
+    @classmethod
+    def object_key(cls, app_label=None, model=None, pk=None):
+        if pk:
+            return '%s.%s.%s.%s' % (cls.__name__, app_label, model, pk)
+        else:
+            return '%s.%s.%s' % (cls.__name__, app_label, model)
 
     @classmethod
     def add_to_class(cls, name, value):
@@ -28,34 +37,21 @@ class EncapsulatedObject(object):
     def set_source_object_name(cls, new_name):
         cls.source_object_name = new_name
     
+    #@classmethod
+    #def encapsulate_list(cls, source_object=None, app_label=None, model=None, pk=None):
+    
+    
     @classmethod
-    def encapsulate(cls, source_object=None, app_label=None, model=None, pk=None):
-        if source_object:
-            source_object = AnonymousUserSingleton.objects.passthru_check(source_object)
-            content_type = ContentType.objects.get_for_model(source_object)
-        elif app_label and model:
-            try:
-                content_type = ContentType.objects.get(app_label=app_label, model=model)
-                source_object_model_class = content_type.model_class()
-                if pk:
-                    source_object = content_type.get_object_for_this_type(pk=pk)
-                else:
-                    source_object = source_object_model_class
-            except ContentType.DoesNotExist:
-                #cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
-                #raise cls.DoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
-                raise ObjectDoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
-            except source_object_model_class.DoesNotExist:
-                #cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
-                #raise cls.DoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
-                raise ObjectDoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
+    def encapsulate(cls, source_object):
+        source_object = AnonymousUserSingleton.objects.passthru_check(source_object)
+        content_type = ContentType.objects.get_for_model(source_object)
            
         if hasattr(source_object, 'pk'):
             # Object
-            object_key = '%s.%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model, source_object.pk)
+            object_key = cls.object_key(content_type.app_label, content_type.model, source_object.pk)
         else:
             # Class
-            object_key = '%s.%s.%s' % (cls.__name__, content_type.app_label, content_type.model)
+            object_key = cls.object_key(content_type.app_label, content_type.model)
 
         try:
             return _cache[object_key]
@@ -69,19 +65,34 @@ class EncapsulatedObject(object):
         elements = gid.split('.')
         if len(elements) == 3:
             app_label, model, pk = elements[0], elements[1], elements[2]
-            object_key = '%s.%s.%s.%s' % (cls.__name__, app_label, model, pk)
         elif len(elements) == 2:
             app_label, model = elements[0], elements[1]
             pk = None
-            object_key = '%s.%s.%s' % (cls.__name__, app_label, model)
+        
+        object_key = cls.object_key(*elements)
             
         try:
             return _cache[object_key]
         except KeyError:
-            if pk:
-                return cls.encapsulate(app_label=app_label, model=model, pk=pk)
+            try:
+                content_type = ContentType.objects.get(app_label=app_label, model=model)
+            except ContentType.DoesNotExist:
+                #cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
+                #raise cls.DoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
+                raise ObjectDoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
             else:
-                return cls.encapsulate(app_label=app_label, model=model)
+                source_object_model_class = content_type.model_class()
+                if pk:
+                    try:
+                        source_object = content_type.get_object_for_this_type(pk=pk)
+                    except source_object_model_class.DoesNotExist:
+                        #cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
+                        #raise cls.DoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
+                        raise ObjectDoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
+                else:
+                    source_object = source_object_model_class
+            
+            return cls.encapsulate(source_object)
                 
     def __init__(self, source_object):
         self.content_type = ContentType.objects.get_for_model(source_object)
@@ -111,9 +122,6 @@ class EncapsulatedObject(object):
     @property
     def source_object(self):
         return getattr(self, self.__class__.source_object_name, None)
-        
-    def get_class_permissions(self):
-        return _class_permissions.get(self.content_type.model_class(), [])
         
         
 class AccessHolder(EncapsulatedObject):
