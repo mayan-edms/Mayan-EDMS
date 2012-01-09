@@ -245,6 +245,9 @@ def permission_revoke(request):
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
 
+from common.models import AnonymousUserSingleton
+
+
 class Member(EncapsulatedObject):
     source_object_name = u'member_object'
 
@@ -255,12 +258,14 @@ def _as_choice_list(items):
 def get_role_members(role, separate=False):
     user_ct = ContentType.objects.get(model='user')
     group_ct = ContentType.objects.get(model='group')
+    anonymous = ContentType.objects.get(model='anonymoususersingleton')
     
     users = role.members(filter_dict={'member_type': user_ct})
     groups = role.members(filter_dict={'member_type': group_ct})
+    anonymous = role.members(filter_dict={'member_type': anonymous})
 
     if separate:
-        return users, groups
+        return users, groups, anonymous
     else:
         members = []
         
@@ -269,19 +274,23 @@ def get_role_members(role, separate=False):
             
         if groups:
             members.append((_(u'Groups'), _as_choice_list(list(groups))))
-            
+
+        if anonymous:
+            members.append((_(u'Special'), _as_choice_list(list(anonymous))))
+
         return members    
 
 
 def get_non_role_members(role):
     #non members = all users - members - staff - super users
-    member_users, member_groups = get_role_members(role, separate=True)
+    member_users, member_groups, member_anonymous = get_role_members(role, separate=True)
     
     staff_users = User.objects.filter(is_staff=True)
     super_users = User.objects.filter(is_superuser=True)
     
     users = set(User.objects.all()) - set(member_users) - set(staff_users) - set(super_users)
     groups = set(Group.objects.all()) - set(member_groups)
+    anonymous = set([AnonymousUserSingleton.objects.get()]) - set(member_anonymous)
     
     non_members = []
     if users:
@@ -289,6 +298,11 @@ def get_non_role_members(role):
         
     if groups:
         non_members.append((_(u'Groups'), _as_choice_list(list(groups))))
+
+    if anonymous:
+        non_members.append((_(u'Special'), _as_choice_list(list(anonymous))))
+
+    #non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.objects.get()])))
                 
     return non_members
 
