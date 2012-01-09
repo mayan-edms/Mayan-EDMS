@@ -35,6 +35,7 @@ Suggestions
 -----------
 * Cezar Jenkins (https://twitter.com/#!/emperorcezar)
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+* Barry Rowlingson (http://geospaced.blogspot.com)
 
 Translations
 ------------
