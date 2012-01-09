@@ -29,7 +29,7 @@ from .classes import (AccessHolder, AccessObject, AccessObjectClass,
     ClassAccessHolder)
 from .widgets import object_w_content_type_icon
 from .forms import HolderSelectionForm
-from .api import get_class_permissions_for
+from .api import get_class_permissions_for, get_classes
 
 logger = logging.getLogger(__name__)
 
@@ -85,9 +85,9 @@ def acl_detail(request, access_object_gid, holder_object_gid):
 
 def acl_detail_for(request, actor, obj, navigation_object=None):
     try:
-        Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL, ACLS_EDIT_ACL])
+        Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
     except PermissionDenied:
-        AccessEntry.objects.check_accesses([ACLS_VIEW_ACL, ACLS_EDIT_ACL], actor, obj)    
+        AccessEntry.objects.check_accesses([ACLS_VIEW_ACL], actor, obj)    
 
     permission_list = get_class_permissions_for(obj)
     
@@ -371,11 +371,11 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
 
 # Setup views
 def acl_setup_valid_classes(request):
-    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL, ACLS_CLASS_EDIT_ACL])
-    logger.debug('DefaultAccessEntry.get_classes(): %s' % DefaultAccessEntry.get_classes())
+    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL])
+    logger.debug('DefaultAccessEntry.get_classes(): %s' % get_classes())
 
     context = {
-        'object_list': DefaultAccessEntry.get_classes(),
+        'object_list': get_classes(),
         'title': _(u'classes'),
         'extra_columns': [
             {'name': _(u'class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
