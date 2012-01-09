@@ -17,7 +17,7 @@ from documents.views import document_list
 from permissions import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry
-from acls.views import acl_list_for, acl_new_holder_for
+from acls.views import acl_list_for
 
 from .models import Folder, FolderDocument
 from .forms import FolderForm, FolderListForm
@@ -289,19 +289,5 @@ def folder_acl_list(request, folder_pk):
         folder,
         extra_context={
             'object': folder,
-        }
-    )
-
-
-def folder_new_holder(request, folder_pk):
-    folder = get_object_or_404(Folder, pk=folder_pk)
-    return acl_new_holder_for(
-        request,
-        folder,
-        extra_context={
-            'folder': folder,
-            'submit_label': _(u'Select'),
-            'submit_icon_famfam': 'tick',
-            'object': folder,       
         }
     )

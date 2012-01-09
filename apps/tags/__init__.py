@@ -29,7 +29,6 @@ tag_edit = {'text': _(u'edit'), 'view': 'tag_edit', 'args': 'object.id', 'famfam
 tag_tagged_item_list = {'text': _(u'tagged documents'), 'view': 'tag_tagged_item_list', 'args': 'object.id', 'famfam': 'page'}
 tag_multiple_delete = {'text': _(u'delete'), 'view': 'tag_multiple_delete', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
 tag_acl_list = {'text': _(u'ACLs'), 'view': 'tag_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
-tag_new_holder = {'text': _(u'New holder'), 'view': 'tag_new_holder', 'args': 'object.pk', 'famfam': 'user', 'permissions': [ACLS_VIEW_ACL]}
 
 register_model_list_columns(Tag, [
     {
@@ -56,7 +55,6 @@ register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete, tag_acl_list])
 register_multi_item_links(['tag_list'], [tag_multiple_delete])
 register_links([Tag, 'tag_list', 'tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
 register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tag_list', 'famfam': 'tag_blue'}, children_path_regex=[r'^tags/[^d]'])#TODO: change to children view regex or list
-register_links(['tag_acl_list', 'tag_new_holder'], [tag_new_holder], menu_name='sidebar')
 
 register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['document_tags', 'tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')

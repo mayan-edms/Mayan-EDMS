@@ -13,5 +13,4 @@ urlpatterns = patterns('folders.views',
     url(r'^document/(?P<document_id>\d+)/folder/list/$', 'document_folder_list', (), 'document_folder_list'),
     
     url(r'^(?P<folder_pk>\d+)/acl/list/$', 'folder_acl_list', (), 'folder_acl_list'),
-    url(r'^(?P<folder_pk>\d+)/acl/holder/new/$', 'folder_new_holder', (), 'folder_new_holder'),    
 )

@@ -7,11 +7,8 @@ from acls import ACLS_VIEW_ACL, ACLS_EDIT_ACL
 from acls.api import class_permissions
 
 acl_list = {'text': _(u'ACLs'), 'view': 'document_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
-document_new_holder = {'text': _(u'New holder'), 'view': 'document_new_holder', 'args': 'object.pk', 'famfam': 'user', 'permissions': [ACLS_VIEW_ACL]}
 
 register_links(Document, [acl_list], menu_name='form_header')
-
-register_links(['document_acl_list', 'document_new_holder'], [document_new_holder], menu_name='sidebar')
 
 class_permissions(Document, [
     ACLS_VIEW_ACL,

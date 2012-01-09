@@ -20,18 +20,15 @@ smart_link_instances_for_document = {'text': _(u'smart links'), 'view': 'smart_l
 smart_link_setup = {'text': _(u'smart links'), 'view': 'smart_link_list', 'icon': 'link.png', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_list = {'text': _(u'smart links list'), 'view': 'smart_link_list', 'famfam': 'link', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_create = {'text': _(u'create new smart link'), 'view': 'smart_link_create', 'famfam': 'link_add', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
-smart_link_edit = {'text': _(u'edit'), 'view': 'smart_link_edit', 'args': 'smart_link.pk', 'famfam': 'link_edit', 'permissions': [PERMISSION_SMART_LINK_EDIT]}
-smart_link_delete = {'text': _(u'delete'), 'view': 'smart_link_delete', 'args': 'smart_link.pk', 'famfam': 'link_delete', 'permissions': [PERMISSION_SMART_LINK_DELETE]}
+smart_link_edit = {'text': _(u'edit'), 'view': 'smart_link_edit', 'args': 'object.pk', 'famfam': 'link_edit', 'permissions': [PERMISSION_SMART_LINK_EDIT]}
+smart_link_delete = {'text': _(u'delete'), 'view': 'smart_link_delete', 'args': 'object.pk', 'famfam': 'link_delete', 'permissions': [PERMISSION_SMART_LINK_DELETE]}
 
-smart_link_condition_list = {'text': _(u'conditions'), 'view': 'smart_link_condition_list', 'args': 'smart_link.pk', 'famfam': 'cog', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_CREATE]}
-smart_link_condition_create = {'text': _(u'create condition'), 'view': 'smart_link_condition_create', 'args': 'smart_link.pk', 'famfam': 'cog_add', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT]}
+smart_link_condition_list = {'text': _(u'conditions'), 'view': 'smart_link_condition_list', 'args': 'object.pk', 'famfam': 'cog', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_CREATE]}
+smart_link_condition_create = {'text': _(u'create condition'), 'view': 'smart_link_condition_create', 'args': 'object.pk', 'famfam': 'cog_add', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT]}
 smart_link_condition_edit = {'text': _(u'edit'), 'view': 'smart_link_condition_edit', 'args': 'condition.pk', 'famfam': 'cog_edit', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT]}
 smart_link_condition_delete = {'text': _(u'delete'), 'view': 'smart_link_condition_delete', 'args': 'condition.pk', 'famfam': 'cog_delete', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT]}
 
-smart_link_acl_list = {'text': _(u'ACLs'), 'view': 'smart_link_acl_list', 'args': 'smart_link.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
-smart_link_new_holder = {'text': _(u'New holder'), 'view': 'smart_link_new_holder', 'args': 'smart_link.pk', 'famfam': 'user', 'permissions': [ACLS_VIEW_ACL]}
-
-register_links(['smart_link_acl_list', 'smart_link_new_holder'], [smart_link_new_holder], menu_name='sidebar')
+smart_link_acl_list = {'text': _(u'ACLs'), 'view': 'smart_link_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
 
 register_links(Document, [smart_link_instances_for_document], menu_name='form_header')
 

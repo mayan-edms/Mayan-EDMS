@@ -25,13 +25,10 @@ folder_add_document = {'text': _('add to a folder'), 'view': 'folder_add_documen
 document_folder_list = {'text': _(u'folders'), 'view': 'document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'children_view_regex': [r'folder']}
 
 folder_acl_list = {'text': _(u'ACLs'), 'view': 'folder_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
-folder_new_holder = {'text': _(u'New holder'), 'view': 'folder_new_holder', 'args': 'object.pk', 'famfam': 'user', 'permissions': [ACLS_VIEW_ACL]}
 
 register_multi_item_links(['folder_view'], [folder_document_multiple_remove])
 
 register_links(Folder, [folder_view, folder_edit, folder_delete, folder_acl_list])
-
-register_links(['folder_acl_list', 'folder_new_holder'], [folder_new_holder], menu_name='sidebar')
 
 register_links([Folder, 'folder_list', 'folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
 
