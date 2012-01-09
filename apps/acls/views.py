@@ -55,7 +55,12 @@ def acl_list_for(request, obj, extra_context=None):
             {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object)))},
         ],
         'hide_object': True,
-        'access_object': AccessObject.encapsulate(obj)
+        'access_object': AccessObject.encapsulate(obj),
+        'object': obj,
+        'navigation_object_list': [
+            {'object': 'object'},
+            {'object': 'access_object'}
+        ],        
     }
 
     if extra_context:
@@ -78,12 +83,10 @@ def acl_detail(request, access_object_gid, holder_object_gid):
     except ObjectDoesNotExist:
         raise Http404
 
-    navigation_object = request.GET.get('navigation_object')
-    logger.debug('navigation_object: %s' % navigation_object)
-    return acl_detail_for(request, holder.source_object, access_object.source_object, navigation_object)
+    return acl_detail_for(request, holder.source_object, access_object.source_object)
 
 
-def acl_detail_for(request, actor, obj, navigation_object=None):
+def acl_detail_for(request, actor, obj):
     try:
         Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
     except PermissionDenied:
@@ -123,15 +126,13 @@ def acl_detail_for(request, actor, obj, navigation_object=None):
             'permission_pk': lambda x: x.pk,
             'holder_gid': lambda x: AccessHolder(actor).gid,
             'object_gid': lambda x: AccessObject(obj).gid,
-        }
+        },
+        'access_object': AccessObject.encapsulate(obj),
+        'navigation_object_list': [
+            {'object': 'object'},
+            {'object': 'access_object'}
+        ],
     }
-    
-    if navigation_object:
-        context.update(
-            {
-                navigation_object: obj
-            }
-        )
 
     return render_to_response(
         'generic_detail.html',
@@ -359,13 +360,28 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
         'title': _(u'add new holder for: %s') % obj,
         'submit_label': _(u'Select'),
         'submit_icon_famfam': 'tick',
+        'object': obj,
+        'access_object': AccessObject.encapsulate(obj),
+        'navigation_object_list': [
+            {'object': 'object'},
+            {'object': 'access_object'},
+        ],        
     }
-
+    
     if extra_context:
         context.update(extra_context)
         
     return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))        
+        context_instance=RequestContext(request))
+
+
+def acl_holder_new(request, access_object_gid):
+    try:
+        access_object = AccessObject.get(gid=access_object_gid)
+    except ObjectDoesNotExist:
+        raise Http404
+
+    return acl_new_holder_for(request, access_object.source_object)#, extra_context={'access_object': access_object})
 
 
 # Setup views
@@ -435,7 +451,6 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
                         'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, actor.source_object, access_object_class.source_object)))
                     },
                 ],
-                #'hide_link': True,
                 'hide_object': True,
             }
         },
