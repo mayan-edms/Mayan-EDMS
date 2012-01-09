@@ -15,6 +15,8 @@ from django.shortcuts import get_object_or_404
 from permissions.models import StoredPermission
 
 from .managers import AccessEntryManager, DefaultAccessEntryManager
+from .classes import AccessObjectClass
+from .api import get_classes
 
 logger = logging.getLogger(__name__)
 
@@ -61,6 +63,10 @@ class DefaultAccessEntry(models.Model):
     Model that holds the permission, class, actor relationship, that will
     be added upon the creation of an instance of said class
     '''
+    @classmethod
+    def get_classes(cls):
+        return [AccessObjectClass.encapsulate(cls) for cls in get_classes()]
+    
     permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
 
     holder_type = models.ForeignKey(
