@@ -301,15 +301,3 @@ def tag_acl_list(request, tag_pk):
             'object': tag,
         }
     )
-
-
-def tag_new_holder(request, tag_pk):
-    tag = get_object_or_404(Tag, pk=tag_pk)
-    return acl_new_holder_for(
-        request,
-        tag,
-        extra_context={
-            #'tag': tag,
-            'object': tag,       
-        }
-    )

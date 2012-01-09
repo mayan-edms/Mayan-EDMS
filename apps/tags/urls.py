@@ -14,5 +14,4 @@ urlpatterns = patterns('tags.views',
     url(r'^document/(?P<document_id>\d+)/list/$', 'document_tags', (), 'document_tags'),
     
     url(r'^(?P<tag_pk>\d+)/acl/list/$', 'tag_acl_list', (), 'tag_acl_list'),
-    url(r'^(?P<tag_pk>\d+)/acl/holder/new/$', 'tag_new_holder', (), 'tag_new_holder'),     
 )

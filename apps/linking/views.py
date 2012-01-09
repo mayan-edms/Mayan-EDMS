@@ -15,7 +15,7 @@ from documents.models import Document
 from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
-from acls.views import acl_new_holder_for, acl_list_for, acl_detail_for
+from acls.views import acl_list_for
 from acls.models import AccessEntry, PermissionDenied
 
 from .models import SmartLink, SmartLinkCondition
@@ -176,8 +176,8 @@ def smart_link_edit(request, smart_link_pk):
         form = SmartLinkForm(instance=smart_link)
 
     return render_to_response('generic_form.html', {
-        'navigation_object_name': 'smart_link',
-        'smart_link': smart_link,
+        #'navigation_object_name': 'smart_link',
+        'object': smart_link,
         'form': form,
         'title': _(u'Edit smart link: %s') % smart_link
     }, context_instance=RequestContext(request))    
@@ -207,8 +207,7 @@ def smart_link_delete(request, smart_link_pk):
 
     return render_to_response('generic_confirm.html', {
         'delete_view': True,
-        'navigation_object_name': 'smart_link',
-        'smart_link': smart_link,
+        'object': smart_link,
         'title': _(u'Are you sure you wish to delete smart link: %s?') % smart_link,
         'next': next,
         'previous': previous,
@@ -231,8 +230,7 @@ def smart_link_condition_list(request, smart_link_pk):
             {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],        
         'hide_link': True,
-        'smart_link': smart_link,
-        'navigation_object_name': 'smart_link',
+        'object': smart_link,
         'list_object_variable_name': 'condition',        
         }, context_instance=RequestContext(request))
 
@@ -259,8 +257,7 @@ def smart_link_condition_create(request, smart_link_pk):
     return render_to_response('generic_form.html', {
         'form': form,
         'title': _(u'Add new conditions to smart link: "%s"') % smart_link,
-        'navigation_object_name': 'smart_link',
-        'smart_link': smart_link,        
+        'object': smart_link,        
     }, context_instance=RequestContext(request))    
 
 
@@ -292,9 +289,9 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
         'next': next,
         'previous': previous,
         'condition': smart_link_condition,
-        'smart_link': smart_link_condition.smart_link,
+        'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'smart_link', 'name': _(u'smart link')},
+            {'object': 'object', 'name': _(u'smart link')},
             {'object': 'condition', 'name': _(u'condition')}
         ],
         
@@ -326,9 +323,9 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
     return render_to_response('generic_confirm.html', {
         'delete_view': True,
         'condition': smart_link_condition,
-        'smart_link': smart_link_condition.smart_link,
+        'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'smart_link', 'name': _(u'smart link')},
+            {'object': 'object', 'name': _(u'smart link')},
             {'object': 'condition', 'name': _(u'condition')}
         ],
         'title': _(u'Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
@@ -349,17 +346,4 @@ def smart_link_acl_list(request, smart_link_pk):
             'object': smart_link,
             'smart_link': smart_link,
         }
-    )
-
-
-def smart_link_new_holder(request, smart_link_pk):
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
-    return acl_new_holder_for(
-        request,
-        smart_link,
-        extra_context={
-            'smart_link': smart_link,
-            'object': smart_link,       
-        },
-        navigation_object=u'smart_link',
     )

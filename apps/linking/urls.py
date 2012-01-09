@@ -16,5 +16,4 @@ urlpatterns = patterns('linking.views',
     url(r'^setup/smart_link/condition/(?P<smart_link_condition_pk>\d+)/delete/$', 'smart_link_condition_delete', (), 'smart_link_condition_delete'),
 
     url(r'^(?P<smart_link_pk>\d+)/acl/list/$', 'smart_link_acl_list', (), 'smart_link_acl_list'),
-    url(r'^(?P<smart_link_pk>\d+)/acl/holder/new/$', 'smart_link_new_holder', (), 'smart_link_new_holder'),  
 )
