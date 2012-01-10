@@ -122,7 +122,7 @@ def smart_link_create(request):
         if form.is_valid():
             document_group = form.save()
             messages.success(request, _(u'Smart link: %s created successfully.') % document_group)
-            return HttpResponseRedirect(reverse('document_group_list'))
+            return HttpResponseRedirect(reverse('smart_link_list'))
     else:
         form = SmartLinkForm()
 
@@ -142,7 +142,7 @@ def smart_link_edit(request, smart_link_pk):
         if form.is_valid():
             smart_link = form.save()
             messages.success(request, _(u'Smart link: %s edited successfully.') % smart_link)
-            return HttpResponseRedirect(reverse('document_group_list'))
+            return HttpResponseRedirect(reverse('smart_link_list'))
     else:
         form = SmartLinkForm(instance=smart_link)
 
