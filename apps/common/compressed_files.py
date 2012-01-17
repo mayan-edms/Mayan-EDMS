@@ -1,4 +1,4 @@
-import os, tempfile, zipfile
+import zipfile
 
 try:
     import zlib
@@ -54,7 +54,7 @@ class CompressedFile(object):
             file_input.seek(0)
         except AttributeError:
             # If not, keep it
-            self.zf.write(filename, arcname=arcname, compress_type=COMPRESSION)             
+            self.zf.write(file_input, arcname=arcname, compress_type=COMPRESSION)             
         else:
             self.zf.writestr(arcname, file_input.read())
 
