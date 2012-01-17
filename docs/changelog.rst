@@ -1,5 +1,24 @@
 Version 0.12
 ------------
+* Upgrade commands:
+
+    * ./manage.py syncdb
+    * ./manage.py migrate permissions 0001 --fake
+    * ./manage.py migrate permissions
+    """
+The following content types are stale and need to be deleted:
+
+    permissions | permission
+
+Any objects related to these content types by a foreign key will also
+be deleted. Are you sure you want to delete these content types?
+If you're unsure, answer 'no'.
+
+    Type 'yes' to continue, or 'no' to cancel: yes
+	"""
+	* ./manage.py migrate documents
+	
+
 * Added new configuration option COMMON_ALLOW_ANONYMOUS_ACCESS to allow
   non authenticated access.
 * Navigation improvements.
