@@ -117,7 +117,7 @@ def document_signature_download(request, document_pk):
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_SIGNATURE_DOWNLOAD, request.user, document)    
+        AccessEntry.objects.check_access(PERMISSION_SIGNATURE_DOWNLOAD, request.user, document)
 
     try:
         if DocumentVersionSignature.objects.has_detached_signature(document):

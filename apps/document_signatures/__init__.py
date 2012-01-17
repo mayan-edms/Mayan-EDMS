@@ -72,7 +72,7 @@ def document_post_save_hook(instance):
     if not instance.pk:
         document_signature, created = DocumentVersionSignature.objects.get_or_create(
             document_version=instance.latest_version,
-        )        
+        )   
         #DocumentVersionSignature.objects.update_signed_state(instance.document)
 
 #@receiver(post_save, dispatch_uid='check_document_signature_state', sender=DocumentVersion)

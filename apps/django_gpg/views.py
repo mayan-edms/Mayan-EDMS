@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-from datetime import datetime
 import logging
 
 from django.utils.translation import ugettext_lazy as _
@@ -14,8 +13,7 @@ from django.conf import settings
 from django.template.defaultfilters import force_escape
 
 from permissions.models import Permission
-from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff, encapsulate
+from common.utils import (urlquote, encapsulate)
    
 from .api import Key, SIGNATURE_STATES
 from .runtime import gpg

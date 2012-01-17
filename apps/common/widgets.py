@@ -120,7 +120,8 @@ class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
     exceds the height of the div
     '''
     def render(self, name, value, attrs=None, choices=()):
-        if value is None: value = []
+        if value is None:
+            value = []
         has_id = attrs and 'id' in attrs
         final_attrs = self.build_attrs(attrs, name=name)
         output = [u'<ul class="undecorated_list" style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px;">']

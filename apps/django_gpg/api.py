@@ -1,8 +1,5 @@
 from __future__ import absolute_import
 
-import types
-
-from pickle import dumps
 import logging
 import tempfile
 import os

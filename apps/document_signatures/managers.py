@@ -13,12 +13,12 @@ class DocumentVersionSignatureManager(models.Manager):
         document_signature, created = self.model.objects.get_or_create(
             document_version=document.latest_version,
         )
-       
+
         return document_signature
-    
+
     def add_detached_signature(self, document, detached_signature):
         document_signature = self.get_document_signature(document)
-        
+
         if document_signature.has_embedded_signature:
             raise Exception('document already has an embedded signature')
         else:
@@ -27,13 +27,13 @@ class DocumentVersionSignatureManager(models.Manager):
                 document_signature.delete_detached_signature()
                 document_signature.signature_file = None
                 document_signature.save()
-                
+
             document_signature.signature_file = detached_signature
             document_signature.save()
 
     def has_detached_signature(self, document):
         document_signature = self.get_document_signature(document)
-                    
+
         if document_signature.signature_file:
             return True
         else:
@@ -48,7 +48,7 @@ class DocumentVersionSignatureManager(models.Manager):
 
     def detached_signature(self, document):
         document_signature = self.get_document_signature(document)
-        
+
         return document_signature.signature_file.storage.open(document_signature.signature_file.path)
 
     def verify_signature(self, document):

@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 
@@ -19,7 +18,7 @@ from common.utils import encapsulate
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 
-from .models import Folder, FolderDocument
+from .models import Folder
 from .forms import FolderForm, FolderListForm
 from .permissions import (PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
