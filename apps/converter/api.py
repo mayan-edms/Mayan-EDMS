@@ -15,7 +15,7 @@ from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
     FILE_FORMATS)
 from .utils import cleanup
 from .runtime import office_converter
-from .exceptions import OfficeConversionError
+from .exceptions import OfficeConversionError, UnknownFileFormat
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
