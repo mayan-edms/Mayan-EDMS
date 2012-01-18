@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
