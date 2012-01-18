@@ -19,6 +19,10 @@ logger = logging.getLogger(__name__)
 
 
 class AccessEntryManager(models.Manager):
+    """
+    Implement a 3 tier permission system, involving a permissions, an actor
+    and an object
+    """
     def source_object(self, obj):
         if isinstance(obj, EncapsulatedObject):
             return obj.source_object
@@ -26,9 +30,9 @@ class AccessEntryManager(models.Manager):
             return obj
 
     def grant(self, permission, actor, obj):
-        '''
+        """
         Grant a permission (what), (to) an actor, (on) a specific object
-        '''
+        """
         obj = self.source_object(obj)
         actor = self.source_object(actor)
 
@@ -42,9 +46,9 @@ class AccessEntryManager(models.Manager):
         return created
 
     def revoke(self, permission, actor, obj):
-        '''
+        """
         Revoke a permission (what), (from) an actor, (on) a specific object
-        '''
+        """
         obj = self.source_object(obj)
         actor = self.source_object(actor)
 
@@ -62,6 +66,9 @@ class AccessEntryManager(models.Manager):
             return False
 
     def has_access(self, permission, actor, obj):
+        """
+        Returns whether an actor has a specific permission for an object
+        """
         obj = self.source_object(obj)
         actor = self.source_object(actor)
 
@@ -72,18 +79,20 @@ class AccessEntryManager(models.Manager):
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
 
         try:
-            access_entry = self.model.objects.get(
+            self.model.objects.get(
                 permission=permission.get_stored_permission(),
                 holder_type=ContentType.objects.get_for_model(actor),
                 holder_id=actor.pk,
                 content_type=ContentType.objects.get_for_model(obj),
                 object_id=obj.pk
             )
-            return True
         except self.model.DoesNotExist:
             return False
+        else:
+            return True
 
     def check_access(self, permission, actor, obj):
+        # TODO: Merge with has_access
         obj = self.source_object(obj)
         actor = self.source_object(actor)
 
@@ -93,6 +102,9 @@ class AccessEntryManager(models.Manager):
             raise PermissionDenied(ugettext(u'Insufficient access.'))
 
     def check_accesses(self, permission_list, actor, obj):
+        """
+        Returns whether an actor has at least one of a list of permissions for an object
+        """
         obj = self.source_object(obj)
         actor = self.source_object(actor)
         for permission in permission_list:
@@ -137,6 +149,10 @@ class AccessEntryManager(models.Manager):
         return holder_list
 
     def get_holder_permissions_for(self, obj, actor):
+        """
+        Returns a list of actors that hold at least one permission for
+        a specific object
+        """
         logger.debug('obj: %s' % obj)
         logger.debug('actor: %s' % actor)
 
@@ -149,6 +165,10 @@ class AccessEntryManager(models.Manager):
         return (access.permission for access in self.model.objects.filter(content_type=content_type, object_id=obj.pk, holder_type=actor_type, holder_id=actor.pk))
 
     def filter_objects_by_access(self, permission, actor, object_list, exception_on_empty=False, related=None):
+        """
+        Filter a list of objects or a QuerySet elements depending on
+        whether the actor holds the specified permission
+        """
         logger.debug('exception_on_empty: %s' % exception_on_empty)
         logger.debug('object_list: %s' % object_list)
 
@@ -184,6 +204,12 @@ class AccessEntryManager(models.Manager):
 
 
 class DefaultAccessEntryManager(models.Manager):
+    """
+    Implement a 3 tier permission system, involving a permission, an actor
+    and a class or content type.  This model keeps track of the access
+    control lists that will be added when an instance of the recorded
+    content type is created.
+    """
     def get_holders_for(self, cls):
         if isinstance(cls, EncapsulatedObject):
             cls = cls.source_object
@@ -204,20 +230,21 @@ class DefaultAccessEntryManager(models.Manager):
                 return True
 
         try:
-            access_entry = self.model.objects.get(
+            self.model.objects.get(
                 permission=permission.get_stored_permission(),
                 holder_type=ContentType.objects.get_for_model(actor),
                 holder_id=actor.pk,
                 content_type=ContentType.objects.get_for_model(cls),
             )
-            return True
         except self.model.DoesNotExist:
             return False
+        else:
+            return True
 
     def grant(self, permission, actor, cls):
-        '''
+        """
         Grant a permission (what), (to) an actor, (on) a specific class
-        '''
+        """
         access_entry, created = self.model.objects.get_or_create(
             permission=permission,
             holder_type=ContentType.objects.get_for_model(actor),
@@ -227,9 +254,9 @@ class DefaultAccessEntryManager(models.Manager):
         return created
 
     def revoke(self, permission, actor, cls):
-        '''
+        """
         Revoke a permission (what), (from) an actor, (on) a specific class
-        '''
+        """
         try:
             access_entry = self.model.objects.get(
                 permission=permission,
