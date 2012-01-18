@@ -1,25 +1,21 @@
 from __future__ import absolute_import
 
 import logging
-import operator
-import itertools
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import User, Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.simplejson import loads
 from django.core.exceptions import PermissionDenied
 from django.utils.http import urlencode
 
-from permissions.models import Permission, Role
-from common.utils import generate_choices_w_labels, encapsulate
+from permissions.models import Permission
+from common.utils import encapsulate
 from common.widgets import two_state_template
 
 from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL,
@@ -29,7 +25,7 @@ from .classes import (AccessHolder, AccessObject, AccessObjectClass,
     ClassAccessHolder)
 from .widgets import object_w_content_type_icon
 from .forms import HolderSelectionForm
-from .api import get_class_permissions_for, get_classes
+from .api import get_class_permissions_for
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +42,6 @@ def acl_list_for(request, obj, extra_context=None):
 
     logger.debug('obj: %s' % obj)
 
-    ct = ContentType.objects.get_for_model(obj)
     context = {
         'object_list': AccessEntry.objects.get_holders_for(obj),
         'title': _(u'access control lists for: %s' % obj),
@@ -200,7 +195,7 @@ def acl_grant(request):
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
-                    if AccessEntry.objects.grant(permission, requester.source_object,  obj.source_object):
+                    if AccessEntry.objects.grant(permission, requester.source_object, obj.source_object):
                         messages.success(request, _(u'Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
@@ -294,7 +289,7 @@ def acl_revoke(request):
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
-                    if AccessEntry.objects.revoke(permission, requester.source_object,  obj.source_object):
+                    if AccessEntry.objects.revoke(permission, requester.source_object, obj.source_object):
                         messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
@@ -381,7 +376,7 @@ def acl_holder_new(request, access_object_gid):
     except ObjectDoesNotExist:
         raise Http404
 
-    return acl_new_holder_for(request, access_object.source_object)#, extra_context={'access_object': access_object})
+    return acl_new_holder_for(request, access_object.source_object)  # , extra_context={'access_object': access_object})
 
 
 # Setup views
@@ -621,7 +616,7 @@ def acl_class_multiple_revoke(request):
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
-                    if DefaultAccessEntry.objects.revoke(permission, requester.source_object,  obj.source_object):
+                    if DefaultAccessEntry.objects.revoke(permission, requester.source_object, obj.source_object):
                         messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
