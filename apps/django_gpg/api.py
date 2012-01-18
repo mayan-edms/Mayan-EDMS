@@ -157,8 +157,8 @@ class GPG(object):
             # If not, try open it.
             return open(file_input, 'rb')
         else:
-            return file_input        
-    
+            return file_input
+
     def __init__(self, binary_path=None, home=None, keyring=None, keyservers=None):
         kwargs = {}
         if binary_path:
@@ -198,9 +198,9 @@ class GPG(object):
         '''
         Verify the signature of a file.
         '''
-        
+
         input_descriptor = GPG.get_descriptor(file_input)
-                    
+
         if detached_signature:
             # Save the original data and invert the argument order
             # Signature first, file second
@@ -212,10 +212,10 @@ class GPG(object):
             verify = self.gpg.verify_file(detached_signature, data_filename=filename)
         else:
             verify = self.gpg.verify_file(input_descriptor)
-            
+
         if close_descriptor:
             input_descriptor.close()
-        
+
         if verify:
             return verify
         #elif getattr(verify, 'status', None) == 'no public key':
@@ -240,7 +240,7 @@ class GPG(object):
         overrided if it already exists), if no destination file name is
         provided the signature is returned.
         '''
-        
+
         kwargs = {}
         kwargs['clearsign'] = clearsign
 
@@ -287,12 +287,12 @@ class GPG(object):
         result = self.gpg.decrypt_file(input_descriptor)
         if close_descriptor:
             input_descriptor.close()
-            
+
         if not result.status:
             raise GPGDecryptionError('Unable to decrypt file')
 
         return result
-       
+
     def create_key(self, *args, **kwargs):
         if kwargs.get('passphrase') == u'':
             kwargs.pop('passphrase')
@@ -319,7 +319,7 @@ class GPG(object):
                 return Key.get(self, import_result.fingerprints[0], secret=False)
 
         raise KeyFetchingError
-        
+
     def query(self, term):
         results = {}
         for keyserver in self.keyservers:
@@ -331,14 +331,14 @@ class GPG(object):
                     results[key.keyid] = key
             except:
                 pass
-       
+
         return results.values()
-    
+
     def import_key(self, key_data):
         import_result = self.gpg.import_keys(key_data)
         logger.debug('import_result: %s' % import_result)
-       
+
         if import_result:
             return Key.get(self, import_result.fingerprints[0], secret=False)
 
-        raise KeyImportError        
+        raise KeyImportError

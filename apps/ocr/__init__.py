@@ -21,7 +21,7 @@ from .models import DocumentQueue, QueueTransformation
 from .tasks import task_process_document_queues
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
+    PERMISSION_OCR_CLEAN_ALL_PAGES)
 
 logger = logging.getLogger(__name__)
 

@@ -25,8 +25,8 @@ class DocumentVersionInline(admin.StackedInline):
     #inlines = [
     #    DocumentPageInline,
     #]
-    
-    
+
+
 class DocumentTypeFilenameInline(admin.StackedInline):
     model = DocumentTypeFilename
     extra = 1

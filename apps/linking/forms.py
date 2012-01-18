@@ -1,4 +1,4 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -18,7 +18,7 @@ class SmartLinkForm(forms.ModelForm):
     class Meta:
         model = SmartLink
 
-        
+
 class SmartLinkConditionForm(forms.ModelForm):
     class Meta:
         model = SmartLinkCondition
@@ -56,7 +56,7 @@ class SmartLinkImageWidget(forms.widgets.Widget):
             output.append(u'<a href="%s"><span class="famfam active famfam-page_go"></span>%s</a>' % (reverse('document_view_simple', args=[document.pk]), ugettext(u'Select')))
             output.append(u'</div>')
             output.append(u'</div>')
-            
+
         output.append(u'</div>')
         output.append(
             u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
@@ -70,9 +70,9 @@ class SmartLinkInstanceForm(forms.Form):
         smart_link_instances = kwargs.pop('smart_link_instances', None)
         links = kwargs.pop('links', None)
         current_document = kwargs.pop('current_document', None)
-        
+
         super(SmartLinkInstanceForm, self).__init__(*args, **kwargs)
-        
+
         for smart_link_instance, data in smart_link_instances.items():
             self.fields['preview-%s' % smart_link_instance] = forms.CharField(
                 widget=SmartLinkImageWidget(),

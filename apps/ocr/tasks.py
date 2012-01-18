@@ -40,7 +40,7 @@ def task_process_queue_document(queue_document_id):
             queue_document.state = QUEUEDOCUMENT_STATE_ERROR
             queue_document.result = e
             queue_document.save()
-        
+
         lock.release()
     except LockError:
         logger.debug('unable to obtain lock')

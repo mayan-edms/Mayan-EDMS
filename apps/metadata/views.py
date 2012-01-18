@@ -1,4 +1,4 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -46,10 +46,10 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_EDIT, request.user, documents)
-        
+
     if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     post_action_redirect = reverse('document_list_recent')
 
@@ -141,7 +141,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
     if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
@@ -205,12 +205,12 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-        
+
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_REMOVE, request.user, documents)
-        
+
     if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
@@ -304,7 +304,7 @@ def metadata_view(request, document_id):
         'hide_link': True,
         'object': document,
     }, context_instance=RequestContext(request))
-            
+
 
 # Setup views
 def setup_metadata_type_list(request):
@@ -323,12 +323,12 @@ def setup_metadata_type_list(request):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def setup_metadata_type_edit(request, metadatatype_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
-    
+
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
     if request.method == 'POST':
@@ -351,12 +351,12 @@ def setup_metadata_type_edit(request, metadatatype_id):
         'object': metadata_type,
         'object_name': _(u'metadata type'),
     },
-    context_instance=RequestContext(request))    
-        
-        
+    context_instance=RequestContext(request))
+
+
 def setup_metadata_type_create(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_CREATE])
-    
+
     if request.method == 'POST':
         form = MetadataTypeForm(request.POST)
         if form.is_valid():
@@ -375,7 +375,7 @@ def setup_metadata_type_create(request):
 
 def setup_metadata_type_delete(request, metadatatype_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_DELETE])
-    
+
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
     post_action_redirect = reverse('setup_metadata_type_list')
@@ -423,7 +423,7 @@ def setup_metadata_set_list(request):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def get_set_members(metadata_set):
@@ -471,7 +471,7 @@ def setup_metadata_set_edit(request, metadata_set_id):
 
 def setup_metadata_set_create(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_CREATE])
-    
+
     if request.method == 'POST':
         form = MetadataSetForm(request.POST)
         if form.is_valid():
@@ -490,7 +490,7 @@ def setup_metadata_set_create(request):
 
 def setup_metadata_set_delete(request, metadata_set_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_DELETE])
-    
+
     metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
 
     post_action_redirect = reverse('setup_metadata_set_list')
@@ -566,7 +566,7 @@ def setup_document_type_metadata(request, document_type_id):
 
     # Initialize defaults
     DocumentTypeDefaults.objects.get_or_create(document_type=document_type)
-    
+
     return assign_remove(
         request,
         left_list=lambda: generate_choices_w_labels(get_document_type_metadata_non_members(document_type)),

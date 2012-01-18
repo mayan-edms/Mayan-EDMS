@@ -32,7 +32,7 @@ class FolderListForm(forms.Form):
             Permission.objects.check_permissions(user, [PERMISSION_FOLDER_VIEW])
         except PermissionDenied:
             queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_VIEW, user, queryset)
-            
+
         self.fields['folder'] = forms.ModelChoiceField(
             queryset=queryset,
             label=_(u'Folder'))

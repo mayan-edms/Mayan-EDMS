@@ -19,7 +19,7 @@ from .exceptions import OfficeConversionError
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
-            
+
 def cache_cleanup(input_filepath, *args, **kwargs):
     try:
         os.remove(create_image_cache_filename(input_filepath, *args, **kwargs))
@@ -42,13 +42,13 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
     page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
     transformations = kwargs.get('transformations', [])
-    
+
     if transformations is None:
         transformations = []
 
     if output_filepath is None:
         output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
-        
+
     if os.path.exists(output_filepath):
         return output_filepath
 
@@ -79,7 +79,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
                 'transformation': TRANSFORMATION_ZOOM,
                 'arguments': {'percent': zoom}
             }
-        )        
+        )
 
     if rotation != 0 and rotation != 360:
         transformations.append(
@@ -87,7 +87,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
                 'transformation': TRANSFORMATION_ROTATE,
                 'arguments': {'degrees': rotation}
             }
-        )           
+        )
 
     try:
         backend.convert_file(input_filepath=input_filepath, output_filepath=output_filepath, transformations=transformations, page=page, file_format=file_format, mimetype=mimetype)
@@ -107,7 +107,7 @@ def get_page_count(input_filepath):
 
         except OfficeConversionError:
                 raise UnknownFileFormat('office converter exception')
-                                
+
     return backend.get_page_count(input_filepath)
 
 '''
@@ -127,8 +127,7 @@ def get_available_transformations_choices():
         result.append([transformation, transformation_template])
 
     return result
-    
-    
+
+
 def get_format_list():
     return [(format, FILE_FORMATS.get(format, u'')) for format in backend.get_format_list()]
-        

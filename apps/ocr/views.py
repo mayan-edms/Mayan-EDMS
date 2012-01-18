@@ -123,9 +123,9 @@ def queue_document_multiple_delete(request):
 def submit_document_multiple(request):
     for item_id in request.GET.get('id_list', '').split(','):
         submit_document(request, item_id)
-        
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-    
+
 
 def submit_document(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
@@ -134,7 +134,7 @@ def submit_document(request, document_id):
         Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
-            
+
     return submit_document_to_queue(request, document=document,
         post_submit_redirect=request.META.get('HTTP_REFERER', '/'))
 

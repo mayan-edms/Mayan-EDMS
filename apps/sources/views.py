@@ -85,7 +85,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
             Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_NEW_VERSION])
         except PermissionDenied:
             AccessEntry.objects.check_access(PERMISSION_DOCUMENT_NEW_VERSION, request.user, document)
-        
+
         results = get_active_tab_links(document)
     else:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
@@ -149,7 +149,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                                     expand = False
 
                         new_filename = get_form_filename(form)
-                            
+
                         web_form.upload_file(request.FILES['file'],
                             new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
                             document_type=document_type,
@@ -157,7 +157,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             metadata_dict_list=decode_metadata_from_url(request.GET),
                             user=request.user,
                             document=document,
-                            new_version_data=form.cleaned_data.get('new_version_data')                         
+                            new_version_data=form.cleaned_data.get('new_version_data')
                         )
                         if document:
                             messages.success(request, _(u'Document version uploaded successfully.'))
@@ -180,7 +180,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 title = _(u'upload a new version from source: %s') % web_form.title
             else:
                 title = _(u'upload a local document from source: %s') % web_form.title
-                
+
             subtemplates_list.append({
                 'name': 'generic_form_subtemplate.html',
                 'context': {
@@ -214,7 +214,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                                     expand = False
 
                         new_filename = get_form_filename(form)
-                            
+
                         staging_folder.upload_file(staging_file.upload(),
                             new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
                             document_type=document_type,
@@ -222,7 +222,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             metadata_dict_list=decode_metadata_from_url(request.GET),
                             user=request.user,
                             document=document,
-                            new_version_data=form.cleaned_data.get('new_version_data')                         
+                            new_version_data=form.cleaned_data.get('new_version_data')
                         )
                         if document:
                             messages.success(request, _(u'Document version from staging file: %s, uploaded successfully.') % staging_file.filename)
@@ -258,7 +258,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                     title = _(u'upload a new version from staging source: %s') % staging_folder.title
                 else:
                     title = _(u'upload a document from staging source: %s') % staging_folder.title
-                                
+
                 subtemplates_list = [
                     {
                         'name': 'generic_form_subtemplate.html',
@@ -275,7 +275,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             'hide_link': True,
                         }
                     },
-                ] 
+                ]
 
     if document:
         context['object'] = document
@@ -290,11 +290,11 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 },
                 'upload_interactive': {
                     'links': results['tab_links']
-                }                
+                }
             }
         },
     })
-    
+
     if not document:
         context.update(
             {
@@ -310,7 +310,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 ],
             }
         )
-        
+
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
 
@@ -420,12 +420,12 @@ def setup_source_list(request, source_type):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def setup_source_edit(request, source_type, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-    
+
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
         form_class = WebFormSetupForm
@@ -435,7 +435,7 @@ def setup_source_edit(request, source_type, source_id):
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
         form_class = WatchFolderSetupForm
-    
+
     source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
@@ -477,12 +477,12 @@ def setup_source_delete(request, source_type, source_id):
         cls = WatchFolder
         form_icon = u'folder_delete.png'
         redirect_view = 'setup_watch_folder_list'
-        
+
     redirect_view = reverse('setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
     source = get_object_or_404(cls, pk=source_id)
-   
+
     if request.method == 'POST':
         try:
             source.delete()
@@ -511,7 +511,7 @@ def setup_source_delete(request, source_type, source_id):
 
 def setup_source_create(request, source_type):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_CREATE])
-    
+
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
         form_class = WebFormSetupForm
@@ -521,7 +521,7 @@ def setup_source_create(request, source_type):
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
         form_class = WatchFolderSetupForm
-            
+
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
@@ -545,7 +545,7 @@ def setup_source_create(request, source_type):
 
 def setup_source_transformation_list(request, source_type, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-    
+
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
     elif source_type == SOURCE_CHOICE_STAGING:
@@ -572,12 +572,12 @@ def setup_source_transformation_list(request, source_type, source_id):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))
 
 
 def setup_source_transformation_edit(request, transformation_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-    
+
     source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
     redirect_view = reverse('setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', redirect_view)))
@@ -605,7 +605,7 @@ def setup_source_transformation_edit(request, transformation_id):
         ],
         'next': next,
     },
-    context_instance=RequestContext(request))        
+    context_instance=RequestContext(request))
 
 
 def setup_source_transformation_delete(request, transformation_id):
@@ -632,14 +632,14 @@ def setup_source_transformation_delete(request, transformation_id):
         'navigation_object_list': [
             {'object': 'source', 'name': _(u'source')},
             {'object': 'transformation', 'name': _(u'transformation')}
-        ],            
+        ],
         'title': _(u'Are you sure you wish to delete source transformation "%(transformation)s"') % {
             'transformation': source_transformation.get_transformation_display(),
         },
         'previous': previous,
         'form_icon': u'shape_square_delete.png',
     },
-    context_instance=RequestContext(request))       
+    context_instance=RequestContext(request))
 
 
 def setup_source_transformation_create(request, source_type, source_id):
@@ -651,11 +651,11 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = StagingFolder
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
-        
+
     source = get_object_or_404(cls, pk=source_id)
-  
+
     redirect_view = reverse('setup_source_transformation_list', args=[source.source_type, source.pk])
-    
+
     if request.method == 'POST':
         form = SourceTransformationForm_create(request.POST)
         if form.is_valid():
@@ -669,7 +669,7 @@ def setup_source_transformation_create(request, source_type, source_id):
                 messages.error(request, _(u'Error creating source transformation; %s') % e)
     else:
         form = SourceTransformationForm_create()
-        
+
     return render_to_response('generic_form.html', {
         'form': form,
         'source': source,

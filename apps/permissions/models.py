@@ -13,7 +13,7 @@ from django.core.exceptions import PermissionDenied
 from common.models import AnonymousUserSingleton
 
 from .managers import (RoleMemberManager, StoredPermissionManager)
-    
+
 logger = logging.getLogger(__name__)
 
 
@@ -21,7 +21,7 @@ class PermissionNamespace(object):
     def __init__(self, name, label):
         self.name = name
         self.label = label
-        
+
     def __unicode__(self):
         return unicode(self.label)
 
@@ -29,17 +29,17 @@ class PermissionNamespace(object):
 class PermissionDoesNotExists(Exception):
     pass
 
-        
+
 class PermissionManager(object):
     _permissions = {}
     DoesNotExist = PermissionDoesNotExists()
-    
+
     @classmethod
     def register(cls, namespace, name, label):
         permission = Permission(namespace, name, label)
         cls._permissions[permission.uuid] = permission
         return permission
-        
+
     @classmethod
     def check_permissions(cls, requester, permission_list):
         for permission in permission_list:
@@ -49,11 +49,11 @@ class PermissionManager(object):
         logger.debug('no permission')
 
         raise PermissionDenied(ugettext(u'Insufficient permissions.'))
-        
+
     @classmethod
     def get_for_holder(cls, holder):
         return StoredPermission.objects.get_for_holder(holder)
-    
+
     @classmethod
     def all(cls):
         # Return sorted permisions by namespace.name
@@ -69,21 +69,21 @@ class PermissionManager(object):
                     return cls._permissions[get_dict['pk']].get_stored_permission()
             except KeyError:
                 raise Permission.DoesNotExist
-            
-        
+
+
     def __init__(self, model):
         self.model = model
-        
+
 
 class Permission(object):
     DoesNotExist = PermissionDoesNotExists
-   
+
     def __init__(self, namespace, name, label):
         self.namespace = namespace
         self.name = name
         self.label = label
         self.pk = self.uuid
-    
+
     def __unicode__(self):
         return unicode(self.label)
 
@@ -93,7 +93,7 @@ class Permission(object):
     @property
     def uuid(self):
         return u'%s.%s' % (self.namespace.name, self.name)
-        
+
     @property
     def stored_permission(self):
         return self.get_stored_permission()
@@ -107,17 +107,17 @@ class Permission(object):
         stored_permission.save()
         stored_permission.volatile_permission = self
         return stored_permission
-     
+
     def requester_has_this(self, requester):
         stored_permission = self.get_stored_permission()
         return stored_permission.requester_has_this(requester)
 
     def save(self, *args, **kwargs):
         return self.get_stored_permission()
-        
+
 Permission.objects = PermissionManager(Permission)
 Permission._default_manager = Permission.objects
-        
+
 
 class StoredPermission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
@@ -126,15 +126,15 @@ class StoredPermission(models.Model):
     objects = StoredPermissionManager()
 
     class Meta:
-        ordering = ('namespace', ) 
+        ordering = ('namespace', )
         unique_together = ('namespace', 'name')
         verbose_name = _(u'permission')
         verbose_name_plural = _(u'permissions')
-        
+
     def __init__(self, *args, **kwargs):
         super(StoredPermission, self).__init__(*args, **kwargs)
         self.volatile_permission = Permission.objects.get({'pk': '%s.%s' % (self.namespace, self.name)}, proxy_only=True)
-        
+
     def __unicode__(self):
         return unicode(getattr(self, 'volatile_permission', self.name))
 
@@ -164,7 +164,7 @@ class StoredPermission(models.Model):
         for membership in list(set(roles) | set(groups)):
             if self.requester_has_this(membership):
                 return True
-            
+
         logger.debug('Fallthru')
         return False
 
@@ -181,7 +181,7 @@ class StoredPermission(models.Model):
             return True
         except PermissionHolder.DoesNotExist:
             return False
-        
+
 
 class PermissionHolder(models.Model):
     permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
@@ -228,7 +228,7 @@ class Role(models.Model):
         member = AnonymousUserSingleton.objects.passthru_check(member)
         member_type=ContentType.objects.get_for_model(member)
         role_member = RoleMember.objects.get(role=self, member_type=member_type, member_id=member.pk)
-        role_member.delete()        
+        role_member.delete()
 
     def members(self, filter_dict=None):
         filter_dict = filter_dict or {}

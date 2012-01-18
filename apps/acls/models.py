@@ -18,7 +18,7 @@ from .api import get_classes
 
 logger = logging.getLogger(__name__)
 
-        
+
 class AccessEntry(models.Model):
     """
     Model that hold the permission, object, actor relationship
@@ -64,7 +64,7 @@ class DefaultAccessEntry(models.Model):
     @classmethod
     def get_classes(cls):
         return [AccessObjectClass.encapsulate(cls) for cls in get_classes()]
-    
+
     permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
 
     holder_type = models.ForeignKey(

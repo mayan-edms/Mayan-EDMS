@@ -7,7 +7,7 @@ from project_setup.api import register_setup
 
 from .classes import (AccessHolder, AccessObjectClass, ClassAccessHolder,
     AccessObject)
-from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL, 
+from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL,
     ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
 
 

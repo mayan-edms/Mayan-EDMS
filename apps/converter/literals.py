@@ -53,7 +53,7 @@ FILE_FORMATS = {
     '8BIN': _(u'Photoshop resource format'),
     '8BIMTEXT': _(u'Photoshop resource text format'),
     '8BIMWTEXT': _(u'Photoshop resource wide text format'),
-    
+
     'A': _(u'Raw alpha samples'),
     'AI': _(u'Adobe Illustrator CS2'),
     'APP1': _(u'Raw application information'),
@@ -62,7 +62,7 @@ FILE_FORMATS = {
     'ARW': _(u'Sony Alpha DSLR Raw Image Format'),
     'AVI': _(u'Microsoft Audio/Visual Interleaved'),
     'AVS': _(u'AVS X image'),
-    
+
     'B': _(u'Raw blue samples'),
     'BGR': _(u'Raw blue, green, and red samples'),
     'BGRA': _(u'Raw blue, green, red and alpha samples'),
@@ -95,7 +95,7 @@ FILE_FORMATS = {
     'DJVU': _(u'Déjà vu'),
     'DNG': _(u'Adobe Digital Negative'),
     'DOT': _(u'Graphviz'),
-    'DPX': _(u'SMPTE 268M-2003 (DPX 2.0)'),	
+    'DPX': _(u'SMPTE 268M-2003 (DPX 2.0)'),
 
     'EPDF': _(u'Encapsulated Portable Document Format'),
     'EPI': _(u'Adobe Encapsulated PostScript Interchange format'),
@@ -110,7 +110,7 @@ FILE_FORMATS = {
     'ERF': _(u'Epson RAW Format'),
     'EXIF': _(u'Exif digital camera binary data'),
     'EXR': _(u'High Dynamic-range (HDR)'),
-        
+
     'FAX': _(u'Group 3 FAX (Not TIFF Group3 FAX)'),
     'FLI': _(u'Autodesk FLI animations file'),
     'FLC': _(u'Autodesk FLC animations file'),
