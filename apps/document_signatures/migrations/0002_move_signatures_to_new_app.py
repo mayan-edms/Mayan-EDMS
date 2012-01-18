@@ -23,14 +23,10 @@ class Migration(DataMigration):
 
     def backwards(self, orm):
         for document_signature in orm.DocumentVersionSignature.objects.all():
-            try:
-                document_version = orm['documents.DocumentVersion'].objects.get(document_version=document_version)
-            except orm['documents.DocumentVersion'].DoesNotExists:
-                pass
-            else:
-                document_version.signature_state=document_signature.signature_state
-                document_version.signature_file=document_signature.signature_file
-                document_version.save()
+            document_version = document_signature.document_version
+            document_version.signature_state=document_signature.signature_state
+            document_version.signature_file=document_signature.signature_file
+            document_version.save()
 
 
     models = {
