@@ -1,8 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
-from navigation.api import register_links, register_multi_item_links
-from project_setup.api import register_setup
+from navigation.api import register_links
 from acls import ACLS_VIEW_ACL, ACLS_EDIT_ACL
 from acls.api import class_permissions
 

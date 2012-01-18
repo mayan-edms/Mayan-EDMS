@@ -59,7 +59,7 @@ def index_instance_list(request, index_id=None):
             },
             {
                 'name': _(u'items'),
-                'attribute': encapsulate(lambda x: x.documents.count() if x.index.link_documents else x.get_children().count() )
+                'attribute': encapsulate(lambda x: x.documents.count() if x.index.link_documents else x.get_children().count())
             }
         ],
         'title': title,

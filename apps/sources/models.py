@@ -9,7 +9,7 @@ from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 
 from converter.api import get_available_transformations_choices
-from converter.literals import DIMENSION_SEPARATOR    
+from converter.literals import DIMENSION_SEPARATOR
 from documents.models import DocumentType, Document
 from documents.literals import HISTORY_DOCUMENT_CREATED
 from document_indexing.api import update_indexes
@@ -33,7 +33,7 @@ class BaseModel(models.Model):
     whitelist = models.TextField(blank=True, verbose_name=_(u'whitelist'), editable=False)
     blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'), editable=False)
     #document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'), help_text=(u'Optional document type to be applied to documents uploaded from this source.'))
-    
+
     @classmethod
     def class_fullname(cls):
         return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
@@ -44,10 +44,10 @@ class BaseModel(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.title
-        
+
     def fullname(self):
         return u' '.join([self.class_fullname(), '"%s"' % self.title])
-        
+
     def internal_name(self):
         return u'%s_%d' % (self.source_type, self.pk)
 
@@ -66,15 +66,15 @@ class BaseModel(models.Model):
                 self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
         else:
             self.upload_single_file(file_object, filename, use_file_name, document_type, metadata_dict_list, user, document, new_version_data)
-           
+
         file_object.close()
-            
+
     def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         if not document:
             document = Document()
             if document_type:
                 document.document_type = document_type
-            document.save()            
+            document.save()
 
             if metadata_dict_list:
                 save_metadata_list(metadata_dict_list, document, create=True)
@@ -93,7 +93,7 @@ class BaseModel(models.Model):
 
         if not new_version_data:
             new_version_data = {}
-            
+
         new_version = document.new_version(file=file_object, **new_version_data)
         if filename:
             new_version.filename = filename
@@ -103,7 +103,7 @@ class BaseModel(models.Model):
 
         new_version.apply_default_transformations(transformations)
         #TODO: new HISTORY for version updates
-        
+
     class Meta:
         ordering = ('title',)
         abstract = True
@@ -120,12 +120,12 @@ class InteractiveBaseModel(BaseModel):
     class Meta(BaseModel.Meta):
         abstract = True
 
-        
+
 class StagingFolder(InteractiveBaseModel):
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
     default_icon = SOURCE_ICON_DRIVE
-    
+
     folder_path = models.CharField(max_length=255, verbose_name=_(u'folder path'), help_text=_(u'Server side filesystem path.'))
     preview_width = models.IntegerField(blank=True, null=True, verbose_name=_(u'preview width'), help_text=_(u'Width value to be passed to the converter backend.'))
     preview_height = models.IntegerField(blank=True, null=True, verbose_name=_(u'preview height'), help_text=_(u'Height value to be passed to the converter backend.'))
@@ -173,16 +173,16 @@ class WebForm(InteractiveBaseModel):
         verbose_name = _(u'web form')
         verbose_name_plural = _(u'web forms')
 
-    
+
 class WatchFolder(BaseModel):
     is_interactive = False
     source_type = SOURCE_CHOICE_WATCH
-    
+
     folder_path = models.CharField(max_length=255, verbose_name=_(u'folder path'), help_text=_(u'Server side filesystem path.'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
     interval = models.PositiveIntegerField(verbose_name=_(u'interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
-    
+
     def save(self, *args, **kwargs):
         if self.pk:
             remove_job(self.internal_name())
@@ -191,11 +191,11 @@ class WatchFolder(BaseModel):
 
     def schedule(self):
         if self.enabled:
-            register_interval_job(self.internal_name(), 
-                title=self.fullname(), func=self.execute, 
+            register_interval_job(self.internal_name(),
+                title=self.fullname(), func=self.execute,
                 kwargs={'source_id': self.pk}, seconds=self.interval
             )
-                        
+
     def execute(self, source_id):
         source = WatchFolder.objects.get(pk=source_id)
         if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
@@ -203,11 +203,11 @@ class WatchFolder(BaseModel):
         else:
             expand = False
         print 'execute: %s' % self.internal_name()
-            
+
     class Meta(BaseModel.Meta):
         verbose_name = _(u'watch folder')
         verbose_name_plural = _(u'watch folders')
-        
+
 
 class ArgumentsValidator(object):
     message = _(u'Enter a valid value.')

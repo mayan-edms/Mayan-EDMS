@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 
-from common.utils import generate_choices_w_labels, encapsulate
+from common.utils import encapsulate
 from common.widgets import two_state_template
 from documents.models import Document
 from documents.views import document_list

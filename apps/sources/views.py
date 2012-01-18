@@ -26,7 +26,7 @@ from sources.literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
     SOURCE_CHOICE_WATCH)
 from sources.literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_UNCOMPRESS_CHOICE_ASK)
-from sources.staging import create_staging_file_class, StagingFile
+from sources.staging import create_staging_file_class
 from sources.forms import (StagingDocumentForm, WebFormForm,
     WatchFolderSetupForm)
 from sources.forms import WebFormSetupForm, StagingFolderSetupForm
@@ -47,7 +47,7 @@ def get_tab_link_for_source(source, document=None):
     else:
         view = u'upload_interactive'
         args = [u'"%s"' % source.source_type, source.pk]
-        
+
     return {
         'text': source.title,
         'view': view,
@@ -55,25 +55,26 @@ def get_tab_link_for_source(source, document=None):
         'famfam': source.icon,
         'keep_query': True,
         'conditional_highlight': return_function(source),
-    }  
+    }
 
 
 def get_active_tab_links(document=None):
     tab_links = []
-    
+
     web_forms = WebForm.objects.filter(enabled=True)
     for web_form in web_forms:
         tab_links.append(get_tab_link_for_source(web_form, document))
 
     staging_folders = StagingFolder.objects.filter(enabled=True)
     for staging_folder in staging_folders:
-        tab_links.append(get_tab_link_for_source(staging_folder, document))        
+        tab_links.append(get_tab_link_for_source(staging_folder, document))
 
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
         SOURCE_CHOICE_STAGING: staging_folders
     }
+
 
 def upload_interactive(request, source_type=None, source_id=None, document_pk=None):
     subtemplates_list = []

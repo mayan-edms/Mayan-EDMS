@@ -4,9 +4,7 @@ import logging
 import tempfile
 import os
 
-from django.core.files.base import File
 from django.utils.translation import ugettext_lazy as _
-from django.utils.http import urlquote_plus
 
 from hkp import KeyServer
 import gnupg
@@ -70,7 +68,7 @@ SIGNATURE_STATES = {
         'text': _(u'Document is signed with a valid signature.'),
         'icon': 'document_signature.png'
     },
-}    
+}
 
 
 class Key(object):
@@ -107,7 +105,7 @@ class Key(object):
         keys = gpg.gpg.list_keys(secret=secret)
         key = next((key for key in keys if key['keyid'] == key_id), None)
         if not key:
-            if search_keyservers and secret==False:
+            if search_keyservers and secret == False:
                 try:
                     gpg.receive_key(key_id)
                     return Key(gpg, key_id)

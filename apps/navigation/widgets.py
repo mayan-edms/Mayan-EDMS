@@ -8,13 +8,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import capfirst
 from django.core.exceptions import PermissionDenied
-from django.template import RequestContext
-from django.template import (TemplateSyntaxError, Library,
-    VariableDoesNotExist, Node, Variable)
-    
+from django.template import RequestContext, Variable
+
 from permissions.models import Permission
 
-from .templatetags.navigation_tags import resolve_links, _get_object_navigation_links
+from .templatetags.navigation_tags import resolve_links
 from .utils import resolve_to_name
 
 
@@ -27,7 +25,8 @@ def button_navigation_widget(request, link):
             return u''
     else:
         return render_widget(request, link)
- 
+
+
 def render_widget(request, link):
     context = RequestContext(request)
 
@@ -37,7 +36,7 @@ def render_widget(request, link):
 
     query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
     parsed_query_string = urlparse.parse_qs(query_string)
-    
+
     links = resolve_links(context, [link], current_view, current_path, parsed_query_string)
     if links:
         link = links[0]

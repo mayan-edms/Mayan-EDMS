@@ -18,19 +18,19 @@ from .conf.settings import LOGIN_METHOD
 
 
 def password_change_done(request):
-    '''
+    """
     View called when the new user password has been accepted
-    '''
+    """
 
     messages.success(request, _(u'Your password has been successfully changed.'))
     return redirect('home')
 
 
 def multi_object_action_view(request):
-    '''
+    """
     Proxy view called first when using a multi object action, which
     then redirects to the appropiate specialized view
-    '''
+    """
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
@@ -83,7 +83,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                             flat_list.extend(group[1])
                     else:
                         flat_list = left_list()
-                    
+
                     label = dict(flat_list)[selection]
                     if decode_content_type:
                         selection_obj = get_obj_from_content_type_string(selection)
@@ -109,7 +109,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                             flat_list.extend(group[1])
                     else:
                         flat_list = right_list()
-                    
+
                     label = dict(flat_list)[selection]
                     if decode_content_type:
                         selection = get_obj_from_content_type_string(selection)
@@ -159,9 +159,9 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
 
 
 def current_user_details(request):
-    '''
+    """
     Display the current user's details
-    '''
+    """
     form = UserForm_view(instance=request.user)
 
     return render_to_response(
@@ -174,9 +174,9 @@ def current_user_details(request):
 
 
 def current_user_edit(request):
-    '''
+    """
     Allow an user to edit his own details
-    '''
+    """
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('current_user_details'))))
 
@@ -199,15 +199,15 @@ def current_user_edit(request):
 
 
 def login_view(request):
-    '''
-    Control how the use is to be authenticated, options are 'email' and 
+    """
+    Control how the use is to be authenticated, options are 'email' and
     'username'
-    '''        
+    """
     kwargs = {'template_name': 'login.html'}
-    
+
     if LOGIN_METHOD == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
-        
+
     if not request.user.is_authenticated():
         context = {'web_theme_view_type': 'plain'}
     else:
@@ -217,9 +217,9 @@ def login_view(request):
 
 
 def changelog_view(request):
-    '''
+    """
     Display the included Changelog.txt file from the about menu
-    '''    
+    """
     form = ChangelogForm()
     return render_to_response(
         'generic_detail.html', {
@@ -230,9 +230,9 @@ def changelog_view(request):
 
 
 def license_view(request):
-    '''
+    """
     Display the included LICENSE file from the about menu
-    '''    
+    """
     form = LicenseForm()
     return render_to_response(
         'generic_detail.html', {

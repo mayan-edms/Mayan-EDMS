@@ -40,7 +40,7 @@ def fs_create_document_link(index_instance, document, suffix=0):
     if FILESERVING_ENABLE:
         filename = assemble_suffixed_filename(document.file.name, suffix)
         filepath = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance), filename])
-        
+
         try:
             os.symlink(document.file.path, filepath)
         except OSError, exc:

@@ -8,9 +8,7 @@ from django.utils.translation import ugettext
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import get_object_or_404
 
 from permissions.models import StoredPermission
 
@@ -22,9 +20,9 @@ logger = logging.getLogger(__name__)
 
         
 class AccessEntry(models.Model):
-    '''
+    """
     Model that hold the permission, object, actor relationship
-    '''
+    """
     permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
 
     holder_type = models.ForeignKey(
@@ -59,10 +57,10 @@ class AccessEntry(models.Model):
 
 
 class DefaultAccessEntry(models.Model):
-    '''
+    """
     Model that holds the permission, class, actor relationship, that will
     be added upon the creation of an instance of said class
-    '''
+    """
     @classmethod
     def get_classes(cls):
         return [AccessObjectClass.encapsulate(cls) for cls in get_classes()]

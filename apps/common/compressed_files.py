@@ -24,11 +24,11 @@ class CompressedFile(object):
             self._open(file_input)
         else:
             self._create()
-        
+
     def _create(self):
         self.descriptor = StringIO()
         self.zf = zipfile.ZipFile(self.descriptor, mode='w')
-        
+
     def _open(self, file_input):
         try:
             # Is it a file like object?
@@ -37,7 +37,7 @@ class CompressedFile(object):
             # If not, try open it.
             self.descriptor = open(file_input, 'r+b')
         else:
-            self.descriptor = file_input               
+            self.descriptor = file_input
 
         try:
             test = zipfile.ZipFile(self.descriptor, mode='r')
@@ -54,23 +54,23 @@ class CompressedFile(object):
             file_input.seek(0)
         except AttributeError:
             # If not, keep it
-            self.zf.write(file_input, arcname=arcname, compress_type=COMPRESSION)             
+            self.zf.write(file_input, arcname=arcname, compress_type=COMPRESSION)
         else:
             self.zf.writestr(arcname, file_input.read())
 
     def contents(self):
         return [filename for filename in self.zf.namelist() if not filename.endswith('/')]
-        
+
     def get_content(self, filename):
         return self.zf.read(filename)
-        
+
     def write(self, filename=None):
-        # fix for Linux zip files read in Windows  
-        for file in self.zf.filelist:  
+        # fix for Linux zip files read in Windows
+        for file in self.zf.filelist:
             file.create_system = 0
 
         self.descriptor.seek(0)
-            
+
         if filename:
             descriptor = open(filename, 'w')
             descriptor.write(self.descriptor.read())

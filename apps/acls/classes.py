@@ -4,10 +4,10 @@ import logging
 import sys
 import types
 
-from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
 from django.template.defaultfilters import capfirst
+from django.core.exceptions import ObjectDoesNotExist
 
 from common.models import AnonymousUserSingleton
 
@@ -31,7 +31,7 @@ class EncapsulatedObject(object):
         if hasattr(value, 'contribute_to_class'):
             value.contribute_to_class(cls, name)
         else:
-           setattr(cls, name, value)
+            setattr(cls, name, value)
 
     @classmethod
     def set_source_object_name(cls, new_name):
@@ -39,8 +39,7 @@ class EncapsulatedObject(object):
     
     #@classmethod
     #def encapsulate_list(cls, source_object=None, app_label=None, model=None, pk=None):
-    
-    
+
     @classmethod
     def encapsulate(cls, source_object):
         source_object = AnonymousUserSingleton.objects.passthru_check(source_object)

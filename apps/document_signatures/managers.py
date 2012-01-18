@@ -43,7 +43,7 @@ class DocumentVersionSignatureManager(models.Manager):
         logger.debug('document: %s' % document)
 
         document_signature = self.get_document_signature(document)
-            
+
         return document_signature.has_embedded_signature
 
     def detached_signature(self, document):
