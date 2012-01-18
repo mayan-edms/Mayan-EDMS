@@ -2,8 +2,6 @@ from __future__ import absolute_import
 
 from datetime import timedelta, datetime
 import platform
-from time import sleep
-from random import random
 import logging
 
 from django.db.models import Q
@@ -17,7 +15,7 @@ from .literals import (QUEUEDOCUMENT_STATE_PENDING,
     QUEUEDOCUMENT_STATE_ERROR)
 from .models import QueueDocument, DocumentQueue
 from .conf.settings import (NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY,
-    CACHE_URI, QUEUE_PROCESSING_INTERVAL)
+	QUEUE_PROCESSING_INTERVAL)
 
 LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
@@ -100,7 +98,7 @@ def task_process_document_queues():
                 #print 'DocumentQueueWatcher exception: %s' % e
             finally:
                 # Don't process anymore from this queryset, might be stale
-                break;
+                break
         else:
             logger.debug('already processing maximun')
     else:
