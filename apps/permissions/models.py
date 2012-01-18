@@ -141,23 +141,23 @@ class StoredPermission(models.Model):
     def get_holders(self):
         return [holder.holder_object for holder in self.permissionholder_set.all()]
 
-    def requester_has_this(self, requester):
-        requester = AnonymousUserSingleton.objects.passthru_check(requester)
-        logger.debug('requester: %s' % requester)
-        if isinstance(requester, User):
-            if requester.is_superuser or requester.is_staff:
+    def requester_has_this(self, actor):
+        actor = AnonymousUserSingleton.objects.passthru_check(actor)
+        logger.debug('actor: %s' % actor)
+        if isinstance(actor, User):
+            if actor.is_superuser or actor.is_staff:
                 return True
 
         # Request is one of the permission's holders?
-        if requester in self.get_holders():
+        if actor in self.get_holders():
             return True
 
         # If not check if the requesters memberships objects is one of
         # the permission's holder?
-        roles = RoleMember.objects.get_roles_for_member(requester)
+        roles = RoleMember.objects.get_roles_for_member(actor)
 
-        if isinstance(requester, User):
-            groups = requester.groups.all()
+        if isinstance(actor, User):
+            groups = actor.groups.all()
         else:
             groups = []
 
@@ -168,15 +168,15 @@ class StoredPermission(models.Model):
         logger.debug('Fallthru')
         return False
 
-    def grant_to(self, requester):
-        requester = AnonymousUserSingleton.objects.passthru_check(requester)
-        permission_holder, created = PermissionHolder.objects.get_or_create(permission=self, holder_type=ContentType.objects.get_for_model(requester), holder_id=requester.pk)
+    def grant_to(self, actor):
+        actor = AnonymousUserSingleton.objects.passthru_check(actor)
+        permission_holder, created = PermissionHolder.objects.get_or_create(permission=self, holder_type=ContentType.objects.get_for_model(actor), holder_id=actor.pk)
         return created
 
-    def revoke_from(self, holder):
-        requester = AnonymousUserSingleton.objects.passthru_check(requester)
+    def revoke_from(self, actor):
+        actor = AnonymousUserSingleton.objects.passthru_check(actor)
         try:
-            permission_holder = PermissionHolder.objects.get(permission=self, holder_type=ContentType.objects.get_for_model(holder), holder_id=holder.pk)
+            permission_holder = PermissionHolder.objects.get(permission=self, holder_type=ContentType.objects.get_for_model(actor), holder_id=actor.pk)
             permission_holder.delete()
             return True
         except PermissionHolder.DoesNotExist:
