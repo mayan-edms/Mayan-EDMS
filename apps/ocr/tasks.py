@@ -15,7 +15,7 @@ from .literals import (QUEUEDOCUMENT_STATE_PENDING,
     QUEUEDOCUMENT_STATE_ERROR)
 from .models import QueueDocument, DocumentQueue
 from .conf.settings import (NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY,
-	QUEUE_PROCESSING_INTERVAL)
+    QUEUE_PROCESSING_INTERVAL)
 
 LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
@@ -47,37 +47,9 @@ def task_process_queue_document(queue_document_id):
         pass
 
 
-def reset_orphans():
-    pass
-    '''
-    i = inspect().active()
-    active_tasks = []
-    orphans = []
-
-    if i:
-        for host, instances in i.items():
-            for instance in instances:
-                active_tasks.append(instance['id'])
-
-    for document_queue in DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE):
-        orphans = document_queue.queuedocument_set.\
-            filter(state=QUEUEDOCUMENT_STATE_PROCESSING).\
-            exclude(result__in=active_tasks)
-
-    for orphan in orphans:
-        orphan.result = _(u'Orphaned')
-        orphan.state = QUEUEDOCUMENT_STATE_PENDING
-        orphan.delay = False
-        orphan.node_name = None
-        orphan.save()
-    '''
-
-
 def task_process_document_queues():
     logger.debug('executed')
-    # reset_orphans()
-    # Causes problems with big clusters increased latency
-    # Disabled until better solution
+    # TODO: reset_orphans()
     q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
     q_delayed = Q(delay=True)
     q_delay_interval = Q(datetime_submitted__lt=datetime.now() - timedelta(seconds=REPLICATION_DELAY))
