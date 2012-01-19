@@ -22,6 +22,7 @@ from .tasks import task_process_document_queues
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES)
+from .exceptions import AlreadyQueued
 
 logger = logging.getLogger(__name__)
 
@@ -76,7 +77,10 @@ def document_post_save(sender, instance, **kwargs):
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-            DocumentQueue.objects.queue_document(instance.document)
+			try:
+				DocumentQueue.objects.queue_document(instance.document)
+			except AlreadyQueued:
+				pass
 
 
 # Disabled because it appears Django execute signals using the same
