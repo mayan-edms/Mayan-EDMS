@@ -1,5 +1,6 @@
 Version 0.12
 ------------
+* Removal of the OCR_CACHE_URI configuration option
 * Upgrade commands:
 
     * ./manage.py syncdb

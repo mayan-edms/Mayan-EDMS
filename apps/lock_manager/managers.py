@@ -3,7 +3,6 @@ from __future__ import absolute_import
 import logging
 import datetime
 
-from django.db.utils import DatabaseError
 from django.db.utils import IntegrityError
 from django.db import transaction
 from django.db import models

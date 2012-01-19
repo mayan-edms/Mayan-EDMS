@@ -1,8 +1,6 @@
 from __future__ import absolute_import
 
 from django.contrib import admin
-from django.contrib.contenttypes import generic
-from django.contrib.contenttypes.models import ContentType
 
 from .models import AccessEntry
 
@@ -21,5 +19,5 @@ class AccessEntryAdmin(admin.ModelAdmin):
     list_display = ('pk', 'holder_object', 'permission', 'content_object')
     list_display_links = ('pk',)
     model = AccessEntry
-    
+
 admin.site.register(AccessEntry, AccessEntryAdmin)

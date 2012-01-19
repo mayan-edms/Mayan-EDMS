@@ -270,14 +270,6 @@ OCR
     Default: ``10``               
 
 
-.. data:: OCR_CACHE_URI    
-    
-    Default: ``None``       
-
-    URI in the form: ``"memcached://127.0.0.1:11211/"`` to specify a cache
-    backend to use for locking. Multiple hosts can be specified separated
-    by a semicolon.    
-    
 
 .. data:: OCR_UNPAPER_PATH    
     

@@ -4,9 +4,8 @@ import logging
 from django.utils.translation import ugettext as _
 
 from converter import office_converter
-from converter import office_converter
 from converter.office_converter import OfficeConverter
-from converter.exceptions import OfficeBackendError, OfficeConversionError
+from converter.exceptions import OfficeConversionError
 from documents.utils import document_save_to_temp_dir
 
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
@@ -27,7 +26,7 @@ def register_parser(function, mimetype=None, mimetypes=None):
 def pdf_parser(document_page, descriptor=None):
     if not descriptor:
         descriptor = document_page.document_version.open()
-    
+
     pdf_pages = slate.PDF(descriptor)
     descriptor.close()
 
@@ -45,7 +44,7 @@ def office_parser(document_page):
         office_converter = OfficeConverter()
         document_file = document_save_to_temp_dir(document_page.document, document_page.document.checksum)
         logger.debug('document_file: %s', document_file)
-        
+
         office_converter.convert(document_file, mimetype=document_page.document.file_mimetype)
         if office_converter.exists:
             input_filepath = office_converter.output_filepath
@@ -58,7 +57,7 @@ def office_parser(document_page):
     except OfficeConversionError, msg:
         print msg
         raise ParserError
-    
+
 
 def parse_document_page(document_page):
     logger.debug('executing')

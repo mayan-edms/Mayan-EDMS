@@ -2,15 +2,11 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, \
-    register_model_list_columns
-from permissions.models import Permission, PermissionNamespace
+from navigation.api import (register_links,
+    register_model_list_columns)
 from common.utils import encapsulate
 from project_setup.api import register_setup
-from documents.models import Document
-from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_NEW_VERSION)
-from acls.api import class_permissions
+from documents.permissions import PERMISSION_DOCUMENT_NEW_VERSION
 
 from .staging import StagingFile
 from .models import (WebForm, StagingFolder, SourceTransformation,

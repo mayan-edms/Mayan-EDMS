@@ -12,6 +12,6 @@ urlpatterns = patterns('tags.views',
     url(r'^multiple/remove_from_document/(?P<document_id>\d+)/$', 'tag_multiple_remove', (), 'tag_multiple_remove'),
     url(r'^document/(?P<document_id>\d+)/add/$', 'tag_attach', (), 'tag_attach'),
     url(r'^document/(?P<document_id>\d+)/list/$', 'document_tags', (), 'document_tags'),
-    
+
     url(r'^(?P<tag_pk>\d+)/acl/list/$', 'tag_acl_list', (), 'tag_acl_list'),
 )

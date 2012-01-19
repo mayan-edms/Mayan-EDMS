@@ -24,7 +24,7 @@ from .models import Role, Permission, PermissionHolder, RoleMember
 from .forms import RoleForm, RoleForm_view
 from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
-    PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)    
+    PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)
 from .widgets import role_permission_link
 
 
@@ -133,20 +133,20 @@ def permission_grant(request):
             permission = Permission.objects.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
             raise Http404
-            
+
         ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
         requester_model = ct.model_class()
         requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
         items.append({'requester': requester, 'permission': permission})
-        
+
     sorted_items = sorted(items, key=operator.itemgetter('requester'))
     # Group items by requester
     groups = itertools.groupby(sorted_items, key=operator.itemgetter('requester'))
     grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
-    
+
     # Warning: trial and error black magic ahead
     title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
-    
+
     if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
         permissions_label = _(u'permission')
     else:
@@ -174,13 +174,13 @@ def permission_grant(request):
         'permissions_label': permissions_label,
         'title_suffix': title_suffix,
     }
-    
+
     if len(grouped_items) == 1:
         context['object'] = grouped_items[0][0]
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
-        
+
 
 def permission_revoke(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
@@ -197,20 +197,20 @@ def permission_revoke(request):
             permission = Permission.objects.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
             raise Http404
-        
+
         ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
         requester_model = ct.model_class()
         requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
         items.append({'requester': requester, 'permission': permission})
-        
+
     sorted_items = sorted(items, key=operator.itemgetter('requester'))
     # Group items by requester
     groups = itertools.groupby(sorted_items, key=operator.itemgetter('requester'))
     grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
-    
+
     # Warning: trial and error black magic ahead
     title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
-    
+
     if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
         permissions_label = _(u'permission')
     else:
@@ -238,7 +238,7 @@ def permission_revoke(request):
         'permissions_label': permissions_label,
         'title_suffix': title_suffix,
     }
-    
+
     if len(grouped_items) == 1:
         context['object'] = grouped_items[0][0]
 
@@ -259,7 +259,7 @@ def get_role_members(role, separate=False):
     user_ct = ContentType.objects.get(model='user')
     group_ct = ContentType.objects.get(model='group')
     anonymous = ContentType.objects.get(model='anonymoususersingleton')
-    
+
     users = role.members(filter_dict={'member_type': user_ct})
     groups = role.members(filter_dict={'member_type': group_ct})
     anonymous = role.members(filter_dict={'member_type': anonymous})
@@ -268,34 +268,34 @@ def get_role_members(role, separate=False):
         return users, groups, anonymous
     else:
         members = []
-        
+
         if users:
             members.append((_(u'Users'), _as_choice_list(list(users))))
-            
+
         if groups:
             members.append((_(u'Groups'), _as_choice_list(list(groups))))
 
         if anonymous:
             members.append((_(u'Special'), _as_choice_list(list(anonymous))))
 
-        return members    
+        return members
 
 
 def get_non_role_members(role):
     #non members = all users - members - staff - super users
     member_users, member_groups, member_anonymous = get_role_members(role, separate=True)
-    
+
     staff_users = User.objects.filter(is_staff=True)
     super_users = User.objects.filter(is_superuser=True)
-    
+
     users = set(User.objects.all()) - set(member_users) - set(staff_users) - set(super_users)
     groups = set(Group.objects.all()) - set(member_groups)
     anonymous = set([AnonymousUserSingleton.objects.get()]) - set(member_anonymous)
-    
+
     non_members = []
     if users:
         non_members.append((_(u'Users'), _as_choice_list(list(users))))
-        
+
     if groups:
         non_members.append((_(u'Groups'), _as_choice_list(list(groups))))
 
@@ -303,7 +303,7 @@ def get_non_role_members(role):
         non_members.append((_(u'Special'), _as_choice_list(list(anonymous))))
 
     #non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.objects.get()])))
-                
+
     return non_members
 
 

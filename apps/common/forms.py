@@ -92,10 +92,10 @@ class FilterForm(forms.Form):
 
 
 class ChoiceForm(forms.Form):
-    '''
+    """
     Form to be used in side by side templates used to add or remove
     items from a many to many field
-    '''
+    """
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
         label = kwargs.pop('label', _(u'Selection'))
@@ -108,28 +108,28 @@ class ChoiceForm(forms.Form):
 
 
 class UserForm_view(DetailForm):
-    '''
+    """
     Form used to display an user's public details
-    '''
+    """
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'is_staff', 'is_superuser', 'last_login', 'date_joined', 'groups')
 
 
 class UserForm(forms.ModelForm):
-    '''
+    """
     Form used to edit an user's mininal fields by the user himself
-    '''
+    """
     class Meta:
         model = User
         fields = ('first_name', 'last_name')
 
 
 class EmailAuthenticationForm(AuthenticationForm):
-    '''
+    """
     Override the default authentication form to use email address
     authentication
-    '''
+    """
     email = forms.CharField(label=_(u'Email'), max_length=75,
         widget=EmailInput()
     )
@@ -153,7 +153,7 @@ EmailAuthenticationForm.base_fields.keyOrder = ['email', 'password']
 
 class FileDisplayForm(forms.Form):
     text = forms.CharField(
-        label='',#_(u'Text'),
+        label='',  # _(u'Text'),
         widget=forms.widgets.Textarea(
             attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
         )

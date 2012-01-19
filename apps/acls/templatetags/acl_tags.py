@@ -3,7 +3,7 @@ import logging
 from django.core.exceptions import PermissionDenied
 from django.template import (TemplateSyntaxError, Library,
     Node, Variable, VariableDoesNotExist)
-    
+
 
 from acls.models import AccessEntry
 
@@ -33,7 +33,7 @@ class CheckAccessNode(Node):
                 context[u'access'] = False
                 logger.debug('no obj, access False')
                 return u''
-        
+
         if not permission_list:
             # There is no permissions list to check against which means
             # this link is available for all

@@ -40,11 +40,11 @@ def tag_create(request):
             if tag_name in Tag.objects.values_list('name', flat=True):
                 messages.error(request, _(u'Tag already exists.'))
                 return HttpResponseRedirect(previous)
-                            
+
             tag = Tag(name=tag_name)
             tag.save()
             TagProperties(tag=tag, color=form.cleaned_data['color']).save()
-                                            
+
             messages.success(request, _(u'Tag created succesfully.'))
             return HttpResponseRedirect(redirect_url)
     else:
@@ -54,7 +54,7 @@ def tag_create(request):
         'title': _(u'create tag'),
         'form': form,
     },
-    context_instance=RequestContext(request))    
+    context_instance=RequestContext(request))
 
 
 def tag_attach(request, document_id):
@@ -63,7 +63,7 @@ def tag_attach(request, document_id):
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_ATTACH])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TAG_ATTACH, request.user, document)    
+        AccessEntry.objects.check_access(PERMISSION_TAG_ATTACH, request.user, document)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_tags', args=[document.pk]))))
 
@@ -108,7 +108,7 @@ def tag_list(request, queryset=None, extra_context=None):
         queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_VIEW, request.user, queryset)
 
     context['object_list'] = queryset
-    
+
     return render_to_response('generic_list.html',
         context,
         context_instance=RequestContext(request)
@@ -126,11 +126,11 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     else:
         messages.error(request, _(u'Must provide at least one tag.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-        
+
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_DELETE])
     except PermissionDenied:
-        tags = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_DELETE, request.user, tags)        
+        tags = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_DELETE, request.user, tags)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -178,7 +178,7 @@ def tag_edit(request, tag_id):
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TAG_EDIT, request.user, tag)    
+        AccessEntry.objects.check_access(PERMISSION_TAG_EDIT, request.user, tag)
 
     if request.method == 'POST':
         form = TagForm(request.POST)
@@ -227,13 +227,13 @@ def document_tags(request, document_id):
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
-    
+
     context = {
         'object': document,
         'document': document,
         'title': _(u'tags for: %s') % document,
     }
-    
+
     return tag_list(request, queryset=document.tags.all(), extra_context=context)
 
 
@@ -243,7 +243,7 @@ def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_REMOVE])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TAG_REMOVE, request.user, document)    
+        AccessEntry.objects.check_access(PERMISSION_TAG_REMOVE, request.user, document)
 
     post_action_redirect = None
 

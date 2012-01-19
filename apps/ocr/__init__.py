@@ -1,15 +1,14 @@
 from __future__ import absolute_import
 
 import logging
-        
+
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from navigation.api import register_links, register_top_menu, register_multi_item_links
-from permissions.models import Permission, PermissionNamespace
+from navigation.api import register_links, register_multi_item_links
 from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
@@ -18,11 +17,12 @@ from acls.api import class_permissions
 from scheduler.api import register_interval_job
 
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
-from .models import DocumentQueue, QueueTransformation, QueueDocument
+from .models import DocumentQueue, QueueTransformation
 from .tasks import task_process_document_queues
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
+    PERMISSION_OCR_CLEAN_ALL_PAGES)
+from .exceptions import AlreadyQueued
 
 logger = logging.getLogger(__name__)
 
@@ -77,7 +77,10 @@ def document_post_save(sender, instance, **kwargs):
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-            DocumentQueue.objects.queue_document(instance.document)
+			try:
+				DocumentQueue.objects.queue_document(instance.document)
+			except AlreadyQueued:
+				pass
 
 
 # Disabled because it appears Django execute signals using the same
@@ -85,7 +88,7 @@ def document_post_save(sender, instance, **kwargs):
 # the OCR process completes which could take several minutes :/
 #@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
 #def call_queue(sender, **kwargs):
-#    if kwargs.get('created', False):    
+#    if kwargs.get('created', False):
 #        logger.debug('got call_queue signal: %s' % kwargs)
 #        task_process_document_queues()
 

@@ -22,5 +22,5 @@ class SourceTransformationManager(models.Manager):
                 )
             except (ValueError, SyntaxError), e:
                 warnings.append(e)
-        
+
         return transformations, warnings

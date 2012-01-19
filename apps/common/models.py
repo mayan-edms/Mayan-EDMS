@@ -34,14 +34,14 @@ class AnonymousUserSingletonManager(SingletonManager):
             return self.model.objects.get()
         else:
             return user
-    
+
 
 class AnonymousUserSingleton(Singleton):
     objects = AnonymousUserSingletonManager()
 
     def __unicode__(self):
         return ugettext('Anonymous user')
-    
+
     class Meta:
         verbose_name = _(u'anonymous user')
         verbose_name_plural = _(u'anonymous user')

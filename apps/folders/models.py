@@ -23,15 +23,15 @@ class Folder(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('folder_view', [self.pk])
-        
+
     @property
     def documents(self):
         return [folder_document.document for folder_document in self.folderdocument_set.all()]
-        
+
     def remove_document(self, document):
         folder_document = self.folderdocument_set.get(document=document)
         folder_document.delete()
-    
+
     def add_document(self, document):
         folder_document, created = FolderDocument.objects.get_or_create(folder=self, document=document)
         return created

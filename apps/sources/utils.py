@@ -9,28 +9,28 @@ def accept_item(value, whitelist, blacklist, default_accept=True):
     """
     return true if this item is either whitelisted or
     not blacklisted
-    """ 
+    """
     if not whitelist:
         whitelist = []
-        
+
     if not blacklist:
         blacklist = []
 
-    # note the order  
-    for reject, item_list in ([False, whitelist], [True, blacklist]): 
+    # note the order
+    for reject, item_list in ([False, whitelist], [True, blacklist]):
         #print 'item_list: %s' % item_list
         #print 'reject: %s' % reject
         for okpattern in item_list:
             #print 'okpattern: %s' % okpattern
-            if re.findall(okpattern.replace('*', '\S+'), value, re.I): 
-                # match! 
+            if re.findall(okpattern.replace('*', '\S+'), value, re.I):
+                # match!
                 #print 'MATCH'
-                if reject: 
-                    return False 
-                else: 
+                if reject:
+                    return False
+                else:
                     return True
 
-    # default is to accept all 
+    # default is to accept all
     return default_accept
 
 

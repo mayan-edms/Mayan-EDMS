@@ -1,11 +1,6 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
-from django import forms
-from django.forms.util import flatatt
-from django.utils.html import conditional_escape
-from django.utils.encoding import force_unicode
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
 from django.template.defaultfilters import capfirst
@@ -28,5 +23,5 @@ def object_w_content_type_icon(obj):
             label = obj.get_full_name()
         else:
             label = unicode(obj)
-        
+
     return mark_safe('%s<span>%s</span>' % (content_type_icon(content_type), capfirst(label)))

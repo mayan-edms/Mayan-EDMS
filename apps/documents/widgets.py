@@ -6,12 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 
-from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_PAGE_NUMBER
-from converter.exceptions import UnknownFileFormat, UnkownConvertError
+from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
+    DEFAULT_PAGE_NUMBER)
 from mimetype.api import get_error_icon_url
-    
-from .conf.settings import DISPLAY_SIZE
 
 
 def document_thumbnail(document):
@@ -24,7 +21,7 @@ def document_link(document):
 
 def document_html_widget(document, view='document_thumbnail', click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None):
     result = []
-                       
+
     alt_text = _(u'document page image')
 
     if not version:
@@ -41,13 +38,13 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
         gallery_template = u'rel="%s"' % gallery_name
     else:
         gallery_template = u''
-    
+
     query_string = urlencode(query_dict)
     preview_view = u'%s?%s' % (reverse(view, args=[document.pk]), query_string)
-   
+
     plain_template = []
     plain_template.append(u'<img src="%s" alt="%s" />' % (preview_view, alt_text))
-    
+
     result.append(u'<div class="tc" id="document-%d-%d">' % (document.pk, page if page else 1))
 
     if click_view:
@@ -55,7 +52,7 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
     result.append(u'<img class="thin_border lazy-load" data-href="%s" src="%simages/ajax-loader.gif" alt="%s" />' % (preview_view, settings.STATIC_URL, alt_text))
     result.append(u'<noscript><img style="border: 1px solid black;" src="%s" alt="%s" /></noscript>' % (preview_view, alt_text))
 
-    if click_view:    
+    if click_view:
         result.append(u'</a>')
     result.append(u'</div>')
 

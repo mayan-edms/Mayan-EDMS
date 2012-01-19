@@ -1,43 +1,39 @@
 from __future__ import absolute_import
 
 import logging
-import operator
-import itertools
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import User, Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.simplejson import loads
 from django.core.exceptions import PermissionDenied
 from django.utils.http import urlencode
 
-from permissions.models import Permission, Role
-from common.utils import generate_choices_w_labels, encapsulate
+from permissions.models import Permission
+from common.utils import encapsulate
 from common.widgets import two_state_template
 
-from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL, 
+from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL,
     ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
 from .models import AccessEntry, DefaultAccessEntry
 from .classes import (AccessHolder, AccessObject, AccessObjectClass,
     ClassAccessHolder)
 from .widgets import object_w_content_type_icon
 from .forms import HolderSelectionForm
-from .api import get_class_permissions_for, get_classes
+from .api import get_class_permissions_for
 
 logger = logging.getLogger(__name__)
 
 
 def _permission_titles(permission_list):
     return u', '.join([unicode(permission) for permission in permission_list])
-    
-    
+
+
 def acl_list_for(request, obj, extra_context=None):
     try:
         Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
@@ -46,7 +42,6 @@ def acl_list_for(request, obj, extra_context=None):
 
     logger.debug('obj: %s' % obj)
 
-    ct = ContentType.objects.get_for_model(obj)
     context = {
         'object_list': AccessEntry.objects.get_holders_for(obj),
         'title': _(u'access control lists for: %s' % obj),
@@ -60,14 +55,14 @@ def acl_list_for(request, obj, extra_context=None):
         'navigation_object_list': [
             {'object': 'object'},
             {'object': 'access_object'}
-        ],        
+        ],
     }
 
     if extra_context:
         context.update(extra_context)
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))	
+        context_instance=RequestContext(request))
 
 
 def acl_list(request, app_label, model_name, object_id):
@@ -90,10 +85,10 @@ def acl_detail_for(request, actor, obj):
     try:
         Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
     except PermissionDenied:
-        AccessEntry.objects.check_accesses([ACLS_VIEW_ACL], actor, obj)    
+        AccessEntry.objects.check_accesses([ACLS_VIEW_ACL], actor, obj)
 
     permission_list = get_class_permissions_for(obj)
-    
+
     #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
@@ -139,7 +134,7 @@ def acl_detail_for(request, actor, obj):
         context,
         context_instance=RequestContext(request)
     )
-    
+
 
 def acl_grant(request):
     items_property_list = loads(request.GET.get('items_property_list', []))
@@ -152,13 +147,13 @@ def acl_grant(request):
     title_suffix = []
     navigation_object = None
     navigation_object_count = 0
-    
+
     for item_properties in items_property_list:
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_pk']})
         except Permission.DoesNotExist:
-            raise Http404        
-            
+            raise Http404
+
         try:
             requester = AccessHolder.get(gid=item_properties['holder_gid'])
             access_object = AccessObject.get(gid=item_properties['object_gid'])
@@ -184,13 +179,13 @@ def acl_grant(request):
             items[requester][access_object].append(permission)
             navigation_object = access_object
             navigation_object_count += 1
-        
+
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
             title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
             title_suffix.append(_(u' for %s') % obj)
         title_suffix.append(_(u' to %s') % requester)
-        
+
     if len(items_property_list) == 1:
         title_prefix = _(u'Are you sure you wish to grant the permission %(title_suffix)s?')
     else:
@@ -200,7 +195,7 @@ def acl_grant(request):
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
-                    if AccessEntry.objects.grant(permission, requester.source_object,  obj.source_object):
+                    if AccessEntry.objects.grant(permission, requester.source_object, obj.source_object):
                         messages.success(request, _(u'Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
@@ -225,7 +220,7 @@ def acl_grant(request):
     context['title'] = title_prefix % {
         'title_suffix': u''.join(title_suffix),
     }
-    
+
     logger.debug('navigation_object_count: %d' % navigation_object_count)
     logger.debug('navigation_object: %s' % navigation_object)
     if navigation_object_count == 1:
@@ -251,21 +246,21 @@ def acl_revoke(request):
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_pk']})
         except Permission.DoesNotExist:
-            raise Http404        
+            raise Http404
 
         try:
             requester = AccessHolder.get(gid=item_properties['holder_gid'])
             access_object = AccessObject.get(gid=item_properties['object_gid'])
         except ObjectDoesNotExist:
             raise Http404
-        
+
         try:
             Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
         except PermissionDenied:
             try:
                 AccessEntry.objects.check_access(ACLS_EDIT_ACL, request.user, access_object)
             except PermissionDenied:
-                raise                
+                raise
             else:
                 items.setdefault(requester, {})
                 items[requester].setdefault(access_object, [])
@@ -277,14 +272,14 @@ def acl_revoke(request):
             items[requester].setdefault(access_object, [])
             items[requester][access_object].append(permission)
             navigation_object = access_object
-            navigation_object_count += 1 
-        
+            navigation_object_count += 1
+
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
             title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
             title_suffix.append(_(u' for %s') % obj)
         title_suffix.append(_(u' from %s') % requester)
-        
+
     if len(items_property_list) == 1:
         title_prefix = _(u'Are you sure you wish to revoke the permission %(title_suffix)s?')
     else:
@@ -294,7 +289,7 @@ def acl_revoke(request):
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
-                    if AccessEntry.objects.revoke(permission, requester.source_object,  obj.source_object):
+                    if AccessEntry.objects.revoke(permission, requester.source_object, obj.source_object):
                         messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
@@ -319,7 +314,7 @@ def acl_revoke(request):
     context['title'] = title_prefix % {
         'title_suffix': u''.join(title_suffix),
     }
-    
+
     logger.debug('navigation_object_count: %d' % navigation_object_count)
     logger.debug('navigation_object: %s' % navigation_object)
     if navigation_object_count == 1:
@@ -349,7 +344,7 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
                         reverse('acl_detail', args=[access_object.gid, access_holder.gid]),
                         urlencode(query_string)
                     )
-                )                        
+                )
             except ObjectDoesNotExist:
                 raise Http404
     else:
@@ -365,12 +360,12 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
         'navigation_object_list': [
             {'object': 'object'},
             {'object': 'access_object'},
-        ],        
+        ],
     }
-    
+
     if extra_context:
         context.update(extra_context)
-        
+
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
 
@@ -381,7 +376,7 @@ def acl_holder_new(request, access_object_gid):
     except ObjectDoesNotExist:
         raise Http404
 
-    return acl_new_holder_for(request, access_object.source_object)#, extra_context={'access_object': access_object})
+    return acl_new_holder_for(request, access_object.source_object)  # , extra_context={'access_object': access_object})
 
 
 # Setup views
@@ -399,12 +394,12 @@ def acl_setup_valid_classes(request):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))	
+        context_instance=RequestContext(request))
 
 
 def acl_class_acl_list(request, access_object_class_gid):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL])
-    
+
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
     context = {
         'object_list': DefaultAccessEntry.objects.get_holders_for(access_object_class.source_object),
@@ -419,7 +414,7 @@ def acl_class_acl_list(request, access_object_class_gid):
     }
 
     return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))	
+        context_instance=RequestContext(request))
 
 
 def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
@@ -429,7 +424,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
     except ObjectDoesNotExist:
         raise Http404
-        
+
     #permission_list = list(access_object_class.get_class_permissions())
     permission_list = get_class_permissions_for(access_object_class.content_type.model_class())
     #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
@@ -464,9 +459,9 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
             'permission_pk': lambda x: x.pk,
             'holder_gid': lambda x: actor.gid,
             'access_object_class_gid': lambda x: access_object_class.gid,
-        },        
+        },
     }, context_instance=RequestContext(request))
-        
+
 
 def acl_class_new_holder_for(request, access_object_class_gid):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
@@ -489,11 +484,11 @@ def acl_class_new_holder_for(request, access_object_class_gid):
         'title': _(u'add new holder for class: %s') % unicode(access_object_class),
         'object': access_object_class,
         'submit_label': _(u'Select'),
-        'submit_icon_famfam': 'tick'            
+        'submit_icon_famfam': 'tick'
     }
-       
+
     return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))        
+        context_instance=RequestContext(request))
 
 
 def acl_class_multiple_grant(request):
@@ -513,25 +508,25 @@ def acl_class_multiple_grant(request):
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_pk']})
         except Permission.DoesNotExist:
-            raise Http404        
+            raise Http404
         try:
             requester = AccessHolder.get(gid=item_properties['holder_gid'])
             access_object_class = AccessObjectClass.get(gid=item_properties['access_object_class_gid'])
         except ObjectDoesNotExist:
             raise Http404
-                
+
         items.setdefault(requester, {})
         items[requester].setdefault(access_object_class, [])
         items[requester][access_object_class].append(permission)
         navigation_object = access_object_class
         navigation_object_count += 1
-        
+
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
             title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
             title_suffix.append(_(u' for %s') % obj)
         title_suffix.append(_(u' to %s') % requester)
-        
+
     if len(items_property_list) == 1:
         title_prefix = _(u'Are you sure you wish to grant the permission %(title_suffix)s?')
     else:
@@ -566,7 +561,7 @@ def acl_class_multiple_grant(request):
     context['title'] = title_prefix % {
         'title_suffix': u''.join(title_suffix),
     }
-    
+
     logger.debug('navigation_object_count: %d' % navigation_object_count)
     logger.debug('navigation_object: %s' % navigation_object)
     if navigation_object_count == 1:
@@ -593,25 +588,25 @@ def acl_class_multiple_revoke(request):
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_pk']})
         except Permission.DoesNotExist:
-            raise Http404        
+            raise Http404
         try:
             requester = AccessHolder.get(gid=item_properties['holder_gid'])
             access_object_class = AccessObjectClass.get(gid=item_properties['access_object_class_gid'])
         except ObjectDoesNotExist:
             raise Http404
-                
+
         items.setdefault(requester, {})
         items[requester].setdefault(access_object_class, [])
         items[requester][access_object_class].append(permission)
         navigation_object = access_object_class
         navigation_object_count += 1
-        
+
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
             title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
             title_suffix.append(_(u' for %s') % obj)
         title_suffix.append(_(u' from %s') % requester)
-        
+
     if len(items_property_list) == 1:
         title_prefix = _(u'Are you sure you wish to revoke the permission %(title_suffix)s?')
     else:
@@ -621,7 +616,7 @@ def acl_class_multiple_revoke(request):
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
-                    if DefaultAccessEntry.objects.revoke(permission, requester.source_object,  obj.source_object):
+                    if DefaultAccessEntry.objects.revoke(permission, requester.source_object, obj.source_object):
                         messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
@@ -646,7 +641,7 @@ def acl_class_multiple_revoke(request):
     context['title'] = title_prefix % {
         'title_suffix': u''.join(title_suffix),
     }
-    
+
     logger.debug('navigation_object_count: %d' % navigation_object_count)
     logger.debug('navigation_object: %s' % navigation_object)
     if navigation_object_count == 1:

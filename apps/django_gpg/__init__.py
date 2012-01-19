@@ -2,10 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (register_links, register_top_menu,
-    register_model_list_columns, register_multi_item_links,
-    register_sidebar_template)
-from main.api import register_diagnostic, register_maintenance_links
+from navigation.api import register_links
 from project_setup.api import register_setup
 from hkp import Key as KeyServerKey
 

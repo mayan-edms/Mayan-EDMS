@@ -3,9 +3,9 @@ from django.utils.safestring import mark_safe
 
 
 def get_tags_inline_widget(document):
-    '''
+    """
     A tag widget that includes the total tag count for a given document
-    '''
+    """
     tags_template = []
     tag_count = document.tags.count()
     if tag_count:
@@ -13,17 +13,17 @@ def get_tags_inline_widget(document):
 
         for tag in document.tags.all():
             tags_template.append(u'<ul class="tags"><li style="background: %s;">%s</li></ul>' % (tag.tagproperties_set.get().get_color_code(), tag.name))
-        
+
         tags_template.append(u'<div style="clear:both;"></div>')
         tags_template.append(u'</div>')
     return mark_safe(u''.join(tags_template))
 
 
 def get_tags_inline_widget_simple(document):
-    '''
+    """
     A tag widget that only displayes the rectangular colored boxes for a
     given document
-    '''
+    """
     tags_template = []
 
     tag_count = document.tags.count()

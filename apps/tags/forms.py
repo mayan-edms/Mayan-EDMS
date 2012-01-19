@@ -18,9 +18,9 @@ logger = logging.getLogger(__name__)
 
 
 class TagForm(forms.Form):
-    '''
+    """
     Form to edit an existing tag's properties
-    '''
+    """
     name = forms.CharField(label=_(u'Name'))
     color = forms.ChoiceField(choices=COLOR_CHOICES, label=_(u'Color'))
 
@@ -36,7 +36,7 @@ class TagListForm(forms.Form):
             Permission.objects.check_permissions(user, [PERMISSION_TAG_VIEW])
         except PermissionDenied:
             queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_VIEW, user, queryset)
-            
+
         self.fields['tag'] = forms.ModelChoiceField(
             queryset=queryset,
             label=_(u'Tags'))

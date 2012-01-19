@@ -1,5 +1,3 @@
-import copy
-
 object_navigation = {}
 multi_object_navigation = {}
 model_list_columns = {}
@@ -46,7 +44,7 @@ def register_links(src, links, menu_name=None, position=None):
             object_navigation[menu_name][src]['links'].extend(links)
 
 
-def register_top_menu(name, link, children_views=None, 
+def register_top_menu(name, link, children_views=None,
                       children_path_regex=None, children_view_regex=None,
                       position=None):
     """

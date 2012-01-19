@@ -13,14 +13,14 @@ from .exceptions import (OfficeConversionError,
     OfficeBackendError, UnknownFileFormat)
 
 CACHED_FILE_SUFFIX = u'_office_converter'
-    
+
 CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'application/msword',
     u'application/mswrite',
     u'application/mspowerpoint',
     u'application/msexcel',
     u'application/vnd.ms-excel',
-    u'application/vnd.ms-powerpoint',    
+    u'application/vnd.ms-powerpoint',
     u'application/vnd.oasis.opendocument.presentation',
     u'application/vnd.oasis.opendocument.text',
     u'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -43,7 +43,7 @@ class OfficeConverter(object):
         self.exists = False
         self.mimetype = None
         self.encoding = None
-    
+
     def mimetypes(self):
         return CONVERTER_OFFICE_FILE_MIMETYPES
 
@@ -51,7 +51,7 @@ class OfficeConverter(object):
         self.exists = False
         self.mimetype = None
         self.encoding = None
-        
+
         self.input_filepath = input_filepath
 
         # Make sure file is of a known office format
@@ -71,13 +71,13 @@ class OfficeConverter(object):
                 except OfficeBackendError, msg:
                     # convert exception so that at least the mime type icon is displayed
                     raise UnknownFileFormat(msg)
-        
+
     def __unicode__(self):
         return getattr(self, 'output_filepath', None)
-        
+
     def __str__(self):
         return str(self.__unicode__())
-    
+
 
 class OfficeConverterBackendUnoconv(object):
     def __init__(self):
@@ -91,7 +91,7 @@ class OfficeConverterBackendUnoconv(object):
         '''
         self.input_filepath = input_filepath
         self.output_filepath = output_filepath
-        
+
         command = []
         command.append(self.unoconv_path)
 

@@ -31,7 +31,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_DELETE])
     except PermissionDenied:
         comments = AccessEntry.objects.filter_objects_by_access(PERMISSION_COMMENT_DELETE, request.user, comments, related='content_object')
-        
+
     if not comments:
         messages.error(request, _(u'Must provide at least one comment.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
@@ -81,7 +81,7 @@ def comment_add(request, document_id):
         Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_CREATE])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_COMMENT_CREATE, request.user, document)
-    
+
     post_action_redirect = None
 
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))

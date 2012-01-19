@@ -1,4 +1,4 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 import logging
 
@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 
@@ -19,7 +18,7 @@ from common.utils import encapsulate
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 
-from .models import Folder, FolderDocument
+from .models import Folder
 from .forms import FolderForm, FolderListForm
 from .permissions import (PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
@@ -50,8 +49,8 @@ def folder_list(request, queryset=None, extra_context=None):
         queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_VIEW, request.user, queryset)
 
     context['object_list'] = queryset
-    
-    return render_to_response('generic_list.html', 
+
+    return render_to_response('generic_list.html',
         context,
         context_instance=RequestContext(request)
     )
@@ -59,7 +58,7 @@ def folder_list(request, queryset=None, extra_context=None):
 
 def folder_create(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_CREATE])
-    
+
     if request.method == 'POST':
         form = FolderForm(request.POST)
         if form.is_valid():
@@ -158,9 +157,9 @@ def folder_view(request, folder_id):
         'hide_links': True,
         'multi_select_as_buttons': True,
         'object': folder,
-        'object_name': _(u'folder'),    
+        'object_name': _(u'folder'),
     }
-    
+
     return document_list(
         request,
         object_list=folder.documents,
@@ -194,14 +193,13 @@ def folder_add_document(request, document_id):
     else:
         form = FolderListForm(user=request.user)
 
-
     return render_to_response('generic_form.html', {
         'title': _(u'add document "%s" to a folder') % document,
         'form': form,
         'object': document,
         'next': next,
     },
-    context_instance=RequestContext(request))    
+    context_instance=RequestContext(request))
 
 
 def document_folder_list(request, document_id):

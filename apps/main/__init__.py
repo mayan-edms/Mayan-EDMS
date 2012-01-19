@@ -12,7 +12,7 @@ from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
-__credits__ = ['Roberto Rosario',] 
+__credits__ = ['Roberto Rosario',]
 __license__ = 'GPL'
 __maintainer__ = 'Roberto Rosario'
 __email__ = 'roberto.rosario.gonzalez@gmail.com'
@@ -58,7 +58,7 @@ __version__ = get_version()
 
 if 'django.contrib.admin' in settings.INSTALLED_APPS:
     register_setup(admin_site)
-    
+
 register_tool(maintenance_menu)
 register_tool(statistics)
 register_tool(diagnostics)

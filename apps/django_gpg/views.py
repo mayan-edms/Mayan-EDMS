@@ -1,22 +1,16 @@
 from __future__ import absolute_import
 
-from datetime import datetime
 import logging
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.utils.safestring import mark_safe
-from django.conf import settings
-from django.template.defaultfilters import force_escape
 
 from permissions.models import Permission
-from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff, encapsulate
-   
+from common.utils import (urlquote, encapsulate)
+
 from .api import Key, SIGNATURE_STATES
 from .runtime import gpg
 from .exceptions import (GPGVerificationError, KeyFetchingError,
@@ -30,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 def key_receive(request, key_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_KEY_RECEIVE])
-    
+
     post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -54,13 +48,13 @@ def key_receive(request, key_id):
         'next': next,
         'previous': previous,
         'submit_method': 'GET',
-        
+
     }, context_instance=RequestContext(request))
-    
+
 
 def key_list(request, secret=True):
     Permission.objects.check_permissions(request.user, [PERMISSION_KEY_VIEW])
-    
+
     if secret:
         object_list = Key.get_all(gpg, secret=True)
         title = _(u'private keys')
@@ -87,7 +81,7 @@ def key_list(request, secret=True):
 
 def key_delete(request, fingerprint, key_type):
     Permission.objects.check_permissions(request.user, [PERMISSION_KEY_DELETE])
-    
+
     secret = key_type == 'sec'
     key = Key.get(gpg, fingerprint, secret=secret)
 
@@ -116,7 +110,7 @@ def key_delete(request, fingerprint, key_type):
 
 def key_query(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_KEYSERVER_QUERY])
-    
+
     subtemplates_list = []
     term = request.GET.get('term')
 
@@ -130,8 +124,8 @@ def key_query(request):
                 'submit_method': 'GET',
             },
         }
-    )        
-    
+    )
+
     if term:
         results = gpg.query(term)
         subtemplates_list.append(
@@ -153,36 +147,36 @@ def key_query(request):
                         {
                             'name': _(u'creation date'),
                             'attribute': 'creation_date',
-                        },                        
+                        },
                         {
                             'name': _(u'disabled'),
                             'attribute': 'disabled',
-                        },                        
+                        },
                         {
                             'name': _(u'expiration date'),
                             'attribute': 'expiration_date',
-                        },     
+                        },
                         {
                             'name': _(u'expired'),
                             'attribute': 'expired',
-                        },     
+                        },
                         {
                             'name': _(u'length'),
                             'attribute': 'key_length',
-                        },     
+                        },
                         {
                             'name': _(u'revoked'),
                             'attribute': 'revoked',
-                        },     
-                        
+                        },
+
                         {
                             'name': _(u'Identifies'),
                             'attribute': encapsulate(lambda x: u', '.join([identity.uid for identity in x.identities])),
                         },
-                    ]                    
+                    ]
                 },
             }
-        )  
+        )
 
     return render_to_response('generic_form.html', {
         'subtemplates_list': subtemplates_list,

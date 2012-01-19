@@ -4,21 +4,21 @@ import logging
 import sys
 import types
 
-from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
 from django.template.defaultfilters import capfirst
+from django.core.exceptions import ObjectDoesNotExist
 
 from common.models import AnonymousUserSingleton
 
 logger = logging.getLogger(__name__)
-            
+
 _cache = {}
 
 
 class EncapsulatedObject(object):
     source_object_name = u'source_object'
-    
+
     @classmethod
     def object_key(cls, app_label=None, model=None, pk=None):
         if pk:
@@ -31,21 +31,20 @@ class EncapsulatedObject(object):
         if hasattr(value, 'contribute_to_class'):
             value.contribute_to_class(cls, name)
         else:
-           setattr(cls, name, value)
+            setattr(cls, name, value)
 
     @classmethod
     def set_source_object_name(cls, new_name):
         cls.source_object_name = new_name
-    
+
     #@classmethod
     #def encapsulate_list(cls, source_object=None, app_label=None, model=None, pk=None):
-    
-    
+
     @classmethod
     def encapsulate(cls, source_object):
         source_object = AnonymousUserSingleton.objects.passthru_check(source_object)
         content_type = ContentType.objects.get_for_model(source_object)
-           
+
         if hasattr(source_object, 'pk'):
             # Object
             object_key = cls.object_key(content_type.app_label, content_type.model, source_object.pk)
@@ -68,9 +67,9 @@ class EncapsulatedObject(object):
         elif len(elements) == 2:
             app_label, model = elements[0], elements[1]
             pk = None
-        
+
         object_key = cls.object_key(*elements)
-            
+
         try:
             return _cache[object_key]
         except KeyError:
@@ -91,9 +90,9 @@ class EncapsulatedObject(object):
                         raise ObjectDoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
                 else:
                     source_object = source_object_model_class
-            
+
             return cls.encapsulate(source_object)
-                
+
     def __init__(self, source_object):
         self.content_type = ContentType.objects.get_for_model(source_object)
         self.ct_fullname = '%s.%s' % (self.content_type.app_label, self.content_type.name)
@@ -102,15 +101,15 @@ class EncapsulatedObject(object):
             # Class
             self.gid = '%s.%s' % (self.content_type.app_label, self.content_type.model)
         else:
-            # Object 
+            # Object
             self.gid = '%s.%s.%s' % (self.content_type.app_label, self.content_type.model, source_object.pk)
-            
+
         setattr(self, self.__class__.source_object_name, source_object)
 
     def __unicode__(self):
         if isinstance(self.source_object, ModelBase):
             return capfirst(unicode(self.source_object._meta.verbose_name_plural))
-            
+
         elif self.ct_fullname == 'auth.user':
             return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object.get_full_name())
         else:
@@ -118,19 +117,19 @@ class EncapsulatedObject(object):
 
     def __repr__(self):
         return self.__unicode__()
-        
+
     @property
     def source_object(self):
         return getattr(self, self.__class__.source_object_name, None)
-        
-        
+
+
 class AccessHolder(EncapsulatedObject):
     source_object_name = u'holder_object'
-    
-    
+
+
 class AccessObject(EncapsulatedObject):
-    source_object_name = u'obj'    
-   
+    source_object_name = u'obj'
+
 
 class AccessObjectClass(EncapsulatedObject):
     source_object_name = u'cls'

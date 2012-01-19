@@ -34,6 +34,8 @@ from .conf import settings as document_settings
 from .widgets import document_thumbnail
 
 # Document page links expressions
+
+
 def is_first_page(context):
     return context['page'].page_number <= 1
 
@@ -179,7 +181,7 @@ register_top_menu(
         r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents'
     ],
     #children_view_regex=[r'upload'],
-    children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version',],
+    children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version', ],
     position=1
 )
 
@@ -197,7 +199,7 @@ if (validate_path(document_settings.CACHE_PATH) == False) or (not document_setti
 register_setup(document_type_setup)
 
 class_permissions(Document, [
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, 
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT,
     PERMISSION_DOCUMENT_EDIT,
     PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE,
@@ -205,5 +207,5 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_TRANSFORM,
     PERMISSION_DOCUMENT_NEW_VERSION,
     PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_HISTORY_VIEW    
+    PERMISSION_HISTORY_VIEW
 ])

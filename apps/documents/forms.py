@@ -5,19 +5,18 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
-from django.conf import settings
 
 from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
-from common.conf.settings import DEFAULT_PAPER_SIZE
-from common.conf.settings import DEFAULT_PAGE_ORIENTATION
-from common.widgets import TextAreaDiv 
+from common.conf.settings import DEFAULT_PAPER_SIZE, DEFAULT_PAGE_ORIENTATION
+from common.widgets import TextAreaDiv
 
 from .models import (Document, DocumentType,
     DocumentPage, DocumentPageTransformation, DocumentTypeFilename,
     DocumentVersion)
 from .widgets import document_html_widget
 from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES)
+
 
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
@@ -105,7 +104,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
 
         for page in value.pages.all():
-            
+
             output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
             output.append(u'<div class="tc">%(page_string)s %(page)s</div>' % {'page_string': ugettext(u'Page'), 'page': page.page_number})
             output.append(
@@ -180,24 +179,24 @@ class DocumentForm(forms.ModelForm):
 
         if instance:
             self.version_fields(instance)
-                    
+
     def version_fields(self, document):
         self.fields['version_update'] = forms.ChoiceField(
             label=_(u'Version update'),
             choices=DocumentVersion.get_version_update_choices(document.latest_version)
         )
-        
+
         self.fields['release_level'] = forms.ChoiceField(
             label=_(u'Release level'),
             choices=RELEASE_LEVEL_CHOICES,
             initial=RELEASE_LEVEL_FINAL,
         )
-        
+
         self.fields['serial'] = forms.IntegerField(
             label=_(u'Release level serial'),
             initial=0,
             widget=forms.widgets.TextInput(
-                attrs = {'style': 'width: auto;'}
+                attrs={'style': 'width: auto;'}
             ),
         )
 
@@ -210,7 +209,7 @@ class DocumentForm(forms.ModelForm):
     new_filename = forms.CharField(
         label=_('New document filename'), required=False
     )
-       
+
     def clean(self):
         cleaned_data = self.cleaned_data
         cleaned_data['new_version_data'] = {
@@ -221,7 +220,8 @@ class DocumentForm(forms.ModelForm):
         }
 
         # Always return the full collection of cleaned data.
-        return cleaned_data        
+        return cleaned_data
+
 
 class DocumentForm_edit(DocumentForm):
     """
@@ -230,7 +230,7 @@ class DocumentForm_edit(DocumentForm):
     class Meta:
         model = Document
         exclude = ('file', 'document_type', 'tags')
-        
+
     def __init__(self, *args, **kwargs):
         super(DocumentForm_edit, self).__init__(*args, **kwargs)
         self.fields.pop('serial')
