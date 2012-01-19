@@ -211,8 +211,9 @@ class DefaultAccessEntryManager(models.Manager):
     content type is created.
     """
     def get_holders_for(self, cls):
-        if isinstance(cls, EncapsulatedObject):
-            cls = cls.source_object
+        cls = AccessEntryManager.source_object(cls)
+        #if isinstance(cls, EncapsulatedObject):
+        #    cls = cls.source_object
 
         content_type = ContentType.objects.get_for_model(cls)
         holder_list = []
