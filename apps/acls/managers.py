@@ -13,7 +13,8 @@ from django.core.urlresolvers import reverse
 from common.models import AnonymousUserSingleton
 from permissions.models import Permission
 
-from .classes import EncapsulatedObject, AccessHolder, ClassAccessHolder
+from .classes import (EncapsulatedObject, AccessHolder, ClassAccessHolder,
+    get_source_object)
 
 logger = logging.getLogger(__name__)
 
@@ -23,18 +24,12 @@ class AccessEntryManager(models.Manager):
     Implement a 3 tier permission system, involving a permissions, an actor
     and an object
     """
-    def source_object(self, obj):
-        if isinstance(obj, EncapsulatedObject):
-            return obj.source_object
-        else:
-            return obj
-
     def grant(self, permission, actor, obj):
         """
         Grant a permission (what), (to) an actor, (on) a specific object
         """
-        obj = self.source_object(obj)
-        actor = self.source_object(actor)
+        obj = get_source_object(obj)
+        actor = get_source_object(actor)
 
         access_entry, created = self.model.objects.get_or_create(
             permission=permission,
@@ -49,8 +44,8 @@ class AccessEntryManager(models.Manager):
         """
         Revoke a permission (what), (from) an actor, (on) a specific object
         """
-        obj = self.source_object(obj)
-        actor = self.source_object(actor)
+        obj = get_source_object(obj)
+        actor = get_source_object(actor)
 
         try:
             access_entry = self.model.objects.get(
@@ -60,19 +55,20 @@ class AccessEntryManager(models.Manager):
                 content_type=ContentType.objects.get_for_model(obj),
                 object_id=obj.pk
             )
-            access_entry.delete()
-            return True
         except self.model.DoesNotExist:
             return False
+        else:
+            access_entry.delete()
+            return True
 
-    def has_access(self, permission, actor, obj):
+    def has_access(self, permission, actor, obj, db_only=False):
         """
         Returns whether an actor has a specific permission for an object
         """
-        obj = self.source_object(obj)
-        actor = self.source_object(actor)
+        obj = get_source_object(obj)
+        actor = get_source_object(actor)
 
-        if isinstance(actor, User):
+        if isinstance(actor, User) and db_only == False:
             if actor.is_superuser or actor.is_staff:
                 return True
 
@@ -93,8 +89,8 @@ class AccessEntryManager(models.Manager):
 
     def check_access(self, permission, actor, obj):
         # TODO: Merge with has_access
-        obj = self.source_object(obj)
-        actor = self.source_object(actor)
+        obj = get_source_object(obj)
+        actor = get_source_object(actor)
 
         if self.has_access(permission, actor, obj):
             return True
@@ -105,8 +101,8 @@ class AccessEntryManager(models.Manager):
         """
         Returns whether an actor has at least one of a list of permissions for an object
         """
-        obj = self.source_object(obj)
-        actor = self.source_object(actor)
+        obj = get_source_object(obj)
+        actor = get_source_object(actor)
         for permission in permission_list:
             if self.has_access(permission, actor, obj):
                 return True
@@ -148,7 +144,7 @@ class AccessEntryManager(models.Manager):
 
         return holder_list
 
-    def get_holder_permissions_for(self, obj, actor):
+    def get_holder_permissions_for(self, obj, actor, db_only=False):
         """
         Returns a list of actors that hold at least one permission for
         a specific object
@@ -156,7 +152,7 @@ class AccessEntryManager(models.Manager):
         logger.debug('obj: %s' % obj)
         logger.debug('actor: %s' % actor)
 
-        if isinstance(actor, User):
+        if isinstance(actor, User) and db_only == False:
             if actor.is_superuser or actor.is_staff:
                 return Permission.objects.all()
 
@@ -211,8 +207,9 @@ class DefaultAccessEntryManager(models.Manager):
     content type is created.
     """
     def get_holders_for(self, cls):
-        if isinstance(cls, EncapsulatedObject):
-            cls = cls.source_object
+        cls = get_source_object(cls)
+        #if isinstance(cls, EncapsulatedObject):
+        #    cls = cls.source_object
 
         content_type = ContentType.objects.get_for_model(cls)
         holder_list = []

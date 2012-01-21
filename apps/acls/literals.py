@@ -9,4 +9,5 @@ CONTENT_TYPE_ICON_MAP = {
     'taggit.tag': 'tag_blue',
     'linking.smartlink': 'page_link',
     'common.anonymoususersingleton': 'user',
+    'acls.creatorsingleton': 'user',
 }

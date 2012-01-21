@@ -17,6 +17,7 @@ from permissions import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry
 from acls.views import acl_list_for
+from acls.utils import apply_default_acls
 
 from .models import Folder
 from .forms import FolderForm, FolderListForm
@@ -64,6 +65,7 @@ def folder_create(request):
         if form.is_valid():
             folder, created = Folder.objects.get_or_create(user=request.user, title=form.cleaned_data['title'])
             if created:
+                apply_default_acls(folder, request.user)
                 messages.success(request, _(u'Folder created successfully'))
                 return HttpResponseRedirect(reverse('folder_list'))
             else:
