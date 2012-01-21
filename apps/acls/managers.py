@@ -61,14 +61,14 @@ class AccessEntryManager(models.Manager):
             access_entry.delete()
             return True
 
-    def has_access(self, permission, actor, obj):
+    def has_access(self, permission, actor, obj, db_only=False):
         """
         Returns whether an actor has a specific permission for an object
         """
         obj = get_source_object(obj)
         actor = get_source_object(actor)
 
-        if isinstance(actor, User):
+        if isinstance(actor, User) and db_only == False:
             if actor.is_superuser or actor.is_staff:
                 return True
 
@@ -144,7 +144,7 @@ class AccessEntryManager(models.Manager):
 
         return holder_list
 
-    def get_holder_permissions_for(self, obj, actor):
+    def get_holder_permissions_for(self, obj, actor, db_only=False):
         """
         Returns a list of actors that hold at least one permission for
         a specific object
@@ -152,7 +152,7 @@ class AccessEntryManager(models.Manager):
         logger.debug('obj: %s' % obj)
         logger.debug('actor: %s' % actor)
 
-        if isinstance(actor, User):
+        if isinstance(actor, User) and db_only == False:
             if actor.is_superuser or actor.is_staff:
                 return Permission.objects.all()
 
