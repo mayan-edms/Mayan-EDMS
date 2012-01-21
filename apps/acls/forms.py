@@ -45,3 +45,7 @@ class HolderSelectionForm(forms.Form):
 
         super(HolderSelectionForm, self).__init__(*args, **kwargs)
         self.fields['holder_gid'].choices = non_holder_list
+
+        
+class ClassHolderSelectionForm(HolderSelectionForm):
+        pass

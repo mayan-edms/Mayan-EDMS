@@ -11,6 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.exceptions import ObjectDoesNotExist
 
 from permissions.models import StoredPermission
+from common.models import Singleton, SingletonManager
 
 from .managers import AccessEntryManager, DefaultAccessEntryManager
 from .classes import AccessObjectClass
@@ -91,3 +92,22 @@ class DefaultAccessEntry(models.Model):
 
     def __unicode__(self):
         return u'%s: %s' % (self.content_type, self.content_object)
+
+
+class CreatorSingletonManager(SingletonManager):
+    def passthru_check(self, holder, creator=None):
+        if isinstance(holder, self.model):
+            # TODO: raise explicit error if is instance and creator=None
+            return creator
+        else:
+            return holder
+
+class CreatorSingleton(Singleton):
+    objects = CreatorSingletonManager()
+
+    def __unicode__(self):
+        return ugettext('Creator')
+
+    class Meta:
+        verbose_name = _(u'creator')
+        verbose_name_plural = _(u'creator')
