@@ -24,7 +24,7 @@ from .models import AccessEntry, DefaultAccessEntry
 from .classes import (AccessHolder, AccessObject, AccessObjectClass,
     ClassAccessHolder)
 from .widgets import object_w_content_type_icon
-from .forms import HolderSelectionForm
+from .forms import HolderSelectionForm, ClassHolderSelectionForm
 from .api import get_class_permissions_for
 
 logger = logging.getLogger(__name__)
@@ -47,7 +47,7 @@ def acl_list_for(request, obj, extra_context=None):
         'title': _(u'access control lists for: %s' % obj),
         'extra_columns': [
             {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
-            {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object)))},
+            {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object, db_only=True)))},
         ],
         'hide_object': True,
         'access_object': AccessObject.encapsulate(obj),
@@ -78,7 +78,8 @@ def acl_detail(request, access_object_gid, holder_object_gid):
     except ObjectDoesNotExist:
         raise Http404
 
-    return acl_detail_for(request, holder.source_object, access_object.source_object)
+    #return acl_detail_for(request, holder.source_object, access_object.source_object)
+    return acl_detail_for(request, holder, access_object)
 
 
 def acl_detail_for(request, actor, obj):
@@ -87,8 +88,7 @@ def acl_detail_for(request, actor, obj):
     except PermissionDenied:
         AccessEntry.objects.check_accesses([ACLS_VIEW_ACL], actor, obj)
 
-    permission_list = get_class_permissions_for(obj)
-
+    permission_list = get_class_permissions_for(obj.source_object)
     #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
@@ -105,7 +105,7 @@ def acl_detail_for(request, actor, obj):
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj)))
+                        'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj, db_only=True)))
                     },
                 ],
                 'hide_object': True,
@@ -114,15 +114,15 @@ def acl_detail_for(request, actor, obj):
     ]
 
     context = {
-        'object': obj,
+        'object': obj.source_object,
         'subtemplates_list': subtemplates_list,
         'multi_select_as_buttons': True,
         'multi_select_item_properties': {
             'permission_pk': lambda x: x.pk,
-            'holder_gid': lambda x: AccessHolder(actor).gid,
-            'object_gid': lambda x: AccessObject(obj).gid,
+            'holder_gid': lambda x: actor.gid,
+            'object_gid': lambda x: obj.gid,            
         },
-        'access_object': AccessObject.encapsulate(obj),
+        'access_object': obj,
         'navigation_object_list': [
             {'object': 'object'},
             {'object': 'access_object'}
@@ -425,7 +425,6 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
     except ObjectDoesNotExist:
         raise Http404
 
-    #permission_list = list(access_object_class.get_class_permissions())
     permission_list = get_class_permissions_for(access_object_class.content_type.model_class())
     #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
@@ -468,7 +467,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
 
     if request.method == 'POST':
-        form = HolderSelectionForm(request.POST)
+        form = ClassHolderSelectionForm(request.POST)
         if form.is_valid():
             try:
                 access_holder = ClassAccessHolder.get(form.cleaned_data['holder_gid'])
@@ -477,7 +476,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
             except ObjectDoesNotExist:
                 raise Http404
     else:
-        form = HolderSelectionForm(current_holders=DefaultAccessEntry.objects.get_holders_for(access_object_class))
+        form = ClassHolderSelectionForm(current_holders=DefaultAccessEntry.objects.get_holders_for(access_object_class))
 
     context = {
         'form': form,
