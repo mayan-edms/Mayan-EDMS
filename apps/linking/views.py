@@ -17,6 +17,7 @@ from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 from acls.views import acl_list_for
 from acls.models import AccessEntry, PermissionDenied
+from acls.utils import apply_default_acls
 
 from .models import SmartLink, SmartLinkCondition
 from .conf.settings import SHOW_EMPTY_SMART_LINKS
@@ -147,6 +148,7 @@ def smart_link_create(request):
         form = SmartLinkForm(request.POST)
         if form.is_valid():
             document_group = form.save()
+            apply_default_acls(document_group, request.user)
             messages.success(request, _(u'Smart link: %s created successfully.') % document_group)
             return HttpResponseRedirect(reverse('document_group_list'))
     else:

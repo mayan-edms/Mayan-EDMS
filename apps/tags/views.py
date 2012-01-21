@@ -17,6 +17,7 @@ from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from common.utils import encapsulate
 from acls.models import AccessEntry, PermissionDenied
 from acls.views import acl_list_for, acl_new_holder_for
+from acls.utils import apply_default_acls
 
 from .forms import TagListForm, TagForm
 from .models import TagProperties
@@ -44,6 +45,7 @@ def tag_create(request):
             tag = Tag(name=tag_name)
             tag.save()
             TagProperties(tag=tag, color=form.cleaned_data['color']).save()
+            apply_default_acls(tag, request.user)
 
             messages.success(request, _(u'Tag created succesfully.'))
             return HttpResponseRedirect(redirect_url)

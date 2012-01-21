@@ -77,7 +77,7 @@ class BaseModel(models.Model):
                 document.document_type = document_type
             document.save()
 
-            apply_default_acls(document, document, user)
+            apply_default_acls(document, user)
 
             if metadata_dict_list:
                 save_metadata_list(metadata_dict_list, document, create=True)
