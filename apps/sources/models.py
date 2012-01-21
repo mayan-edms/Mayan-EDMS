@@ -17,6 +17,7 @@ from history.api import create_history
 from metadata.models import MetadataType
 from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
+from acls.utils import apply_default_acls
 
 from .managers import SourceTransformationManager
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
@@ -75,6 +76,8 @@ class BaseModel(models.Model):
             if document_type:
                 document.document_type = document_type
             document.save()
+
+            apply_default_acls(document, document, user)
 
             if metadata_dict_list:
                 save_metadata_list(metadata_dict_list, document, create=True)
