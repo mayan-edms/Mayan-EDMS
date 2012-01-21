@@ -102,7 +102,7 @@ class EncapsulatedObject(object):
 
     def __init__(self, source_object):
         self.content_type = ContentType.objects.get_for_model(source_object)
-        self.ct_fullname = '%s.%s' % (self.content_type.app_label, self.content_type.name)
+        self.ct_fullname = '%s.%s' % (self.content_type.app_label, self.content_type.model)
 
         if isinstance(source_object, ModelBase):
             # Class
@@ -116,9 +116,12 @@ class EncapsulatedObject(object):
     def __unicode__(self):
         if isinstance(self.source_object, ModelBase):
             return capfirst(unicode(self.source_object._meta.verbose_name_plural))
-
         elif self.ct_fullname == 'auth.user':
             return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object.get_full_name())
+        elif self.ct_fullname == 'common.anonymoususersingleton':
+            return unicode(self.source_object)
+        elif self.ct_fullname == 'acls.creatorsingleton':
+            return unicode(self.source_object)
         else:
             return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object)
 
