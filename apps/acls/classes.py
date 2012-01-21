@@ -16,6 +16,13 @@ logger = logging.getLogger(__name__)
 _cache = {}
 
 
+def get_source_object(obj):
+    if isinstance(obj, EncapsulatedObject):
+        return obj.source_object
+    else:
+        return obj
+
+
 class EncapsulatedObject(object):
     source_object_name = u'source_object'
 
