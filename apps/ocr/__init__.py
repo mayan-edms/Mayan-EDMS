@@ -77,10 +77,10 @@ def document_post_save(sender, instance, **kwargs):
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-			try:
-				DocumentQueue.objects.queue_document(instance.document)
-			except AlreadyQueued:
-				pass
+           try:
+	       DocumentQueue.objects.queue_document(instance.document)
+	   except AlreadyQueued:
+	       pass
 
 
 # Disabled because it appears Django execute signals using the same
