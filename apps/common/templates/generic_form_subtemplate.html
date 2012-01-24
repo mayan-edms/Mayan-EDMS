@@ -35,6 +35,10 @@
             <input name="next" type="hidden" value="{{ next }}" />
         {% endif %}          
 
+        {% if previous %}
+            <input name="previous" type="hidden" value="{{ previous }}" />
+        {% endif %}
+
         {% for hidden_field in hidden_fields %}
            {{ hidden_field.as_hidden }}
         {% endfor %}
@@ -77,6 +81,13 @@
                 {% endif %}
                 {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}{% endif %}
             </button>
+
+              {% if previous %}
+                  <a href="#header" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}' class="button">
+                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/cross.png"  alt="{% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}"/> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans "Cancel" %}{% endif %}
+                  </a>
+              {% endif %}
+
             {% comment %}
             <a href="#header" class="button">
                 <img src="{{ STATIC_URL }}web_theme_media/images/icons/cross.png" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
