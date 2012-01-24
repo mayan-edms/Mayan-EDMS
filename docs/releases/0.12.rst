@@ -1,39 +1,86 @@
 ========================
-Mayan EDMS 0.12 release notes
+Mayan EDMS v0.12 release notes
 ========================
 
 *February 2012*
 
-Welcome to Mayan EDMS 0.12!
+Welcome to Mayan EDMS v0.12!
 
 This release commemorates **Mayan EDMS** first aniversary!
 
 Overview
 ========
 
-**Mayan EDMS** focus has mostly been on improving the code quality standard
+Aside from new features, the focus of this release of **Mayan EDMS** also
+been about improving the code quality standard
 even further.  The permission system has been completely overhauled to make
 it entire class based.  The other big change is the addition of object
 level permissions, with this new system being applied to documents,
-folder, tags and smart links.
+folder, tags and smart links.  There is also a small batch of navigation
+improvements.  Big code cleanup and lots of changes 'under the hood',
+most of these are not visible to the end user, but make the code cleaner
+and more manageable so that more and better features can be added in future
+releases:
 
-What's new in Django 1.3
-========================
+* Absolute imports used throught the code
+* All app permissions have been move to a separate permissions.py file
+  per app
+* Complete permission system refactor.
+* Document signining code move to it's own app
+* Initial unit tests
+* A lot of logging used throught the entire project.
+* Much functionality moved to model managers.
+* A lot of code converted into classes.
+* Coding style improvements.
+* Template user authentication state logic improvements, for stonger
+  prevention against intrusion or unintentional display or access
+  of restricted data.
+* Removal of remarked code.
+
+
+What's new in Mayan EDMS v0.12
+==============================
 
 ACL support
 ~~~~~~~~~~~
-
+* Object level access control is now in place for documents, folders,
+  tags and smart links.  What this means is that administrators can now
+  grant permissions to users, groups or roles on for specific objects.
+* Default class ACL support.  Administrators can setup the access control
+  lists that new documents, folders and tags will automatically inheric
+  when created.  Aside from asigning permission to users, groups and roles
+  to specific objects, there is a special user called `Creator`, use to
+  allow the access control list that the actual creator of an object will
+  inherit. 
+  
 Anonymous user support
 ~~~~~~~~~~~~~~~~~~~~~~
+Anonymous user support is a two tier function, first is the addition of
+the COMMON_ALLOW_ANONYMOUS_ACCESS that allows non authenticated to browse
+all the pages of a **Mayan EDMS** installation.  The second part of this
+support is the ability to assign permissions or individual access to objects
+to anonymous users.
 
-
-Italian translation
+Translations
 ~~~~~~~~~~~~~~~~~~~
+A new Italian translation is available, provided by SeeOpen.IT
+(www.seeopen.it, info@seeopen.it) as well as complete Russian translation
+update by Сергей Глита.
 
 Usability improvements
 ~~~~~~~~~~~~~~~~~~~~~~
-
-
+* Detached signature behavior improved, uploading a new detached signature
+  erases the previous one.
+* Usability improvement in the role member's add/removal form, by using
+  HTML's option groups tag property
+  
+2 Step download process
+~~~~~~~~~~~~~~~~~~~~~~~
+The code for downloading single and multiple document and document versions
+has been merged with compression support also added.  This allows for the
+download of documents in their original format or compressed and well as
+the download of several documents in a single compressed file.   
+  
 Upgrading
 =========
 
@@ -60,7 +107,7 @@ If you're unsure, answer 'no'.
 
 ::
 
-	$ ./manage.py migrate documents
+    $ ./manage.py migrate documents
     $ ./manage.py migrate document_signatures
 
 
@@ -71,3 +118,18 @@ place where even data migration can't help and the permissions assigned
 to roles will be lost during the upgrade to version 0.12.  Users, groups
 and roles will be preserved only permissions need to be assigned again,
 so write down your role permission setup before upgrading.
+
+Bugs fixed
+==========
+* Issue #17, special thanks to Dave Herring for all the help including
+  access to a machine suffering with the issue
+* Statistics fixes.
+* Fixed get_image_cache_name regression in the OCR app
+
+Stuff removed
+=============
+* Removal of the OCR_CACHE_URI configuration option
+* Support for Celery and Sentry has been drop
+  for now.
+* Removed the 'db_index' argument from Text fields definition and 
+  migrations as it was causing error messages for MySQL users.

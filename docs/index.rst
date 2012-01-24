@@ -42,7 +42,6 @@ Contents
     installation
     releases/index    
     settings
-    updates
     development
     contributors
     credits

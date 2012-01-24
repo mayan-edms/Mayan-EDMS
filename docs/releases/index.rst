@@ -22,10 +22,7 @@ Final releases
 
    0.12
 
-0.11 release
------------
-.. toctree::
-   :maxdepth: 1
+Historic releases
+=================
 
-   0.11.1
-   0.11
+.. include:: ../changelog.rst
