@@ -1,5 +1,8 @@
 Version 0.12
 ------------
+* Fixed issue #17, special thanks to Dave Herring for all the help including
+  access to a machine suffering with the issue
+* Remove Celery and Sentry from the requirements
 * Removal of the OCR_CACHE_URI configuration option
 * Upgrade commands:
 
@@ -18,7 +21,7 @@ If you're unsure, answer 'no'.
     Type 'yes' to continue, or 'no' to cancel: yes
 	"""
 	* ./manage.py migrate documents
-	
+    * ./manage.py migrate document_signatures	
 
 * Added new configuration option COMMON_ALLOW_ANONYMOUS_ACCESS to allow
   non authenticated access.
