@@ -117,6 +117,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+#Django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -126,6 +127,17 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.comments',
     'django.contrib.staticfiles',
+# 3rd party
+# South
+    'south',
+# Others
+    'filetransfers',
+    'taggit',
+    'mptt',
+    'compressor',
+    'djangorestframework',
+    'pagination',
+# Base generic
     'permissions',
     'project_setup',
     'project_tools',
@@ -135,34 +147,28 @@ INSTALLED_APPS = (
     'web_theme',
     'common',
     'django_gpg',
-    'pagination',
     'dynamic_search',
-    'filetransfers',
     'acls',
     'converter',
+    'user_management',
+    'mimetype',
+    'scheduler',
+    'job_processor',
+# Mayan EDMS
     'storage',
     'folders',
+    'tags',
     'document_comments',
-    'user_management',
     'metadata',
     'documents',
-    'taggit',
-    'tags',
     'linking',
-    'mptt',
     'document_indexing',
     'document_acls',
     'ocr',
     'sources',
-    'mimetype',
-    'scheduler',
-    'job_processor',
     'history',
     'main',
-    'compressor',
-    'djangorestframework',
     'rest_api',
-    'south',
     'document_signatures',
 )
 
