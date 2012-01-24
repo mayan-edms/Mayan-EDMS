@@ -15,6 +15,7 @@ Bug fixes
 * IHLeanne (https://github.com/IHLeanne)
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * Meurig Freeman (https://github.com/meurig)
+* David Herring (https://github.com/abadger1406)
 
 Bug reports
 -----------
@@ -25,6 +26,8 @@ Bug reports
 * dAnjou (https://github.com/dAnjou)
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * IHLeanne (https://github.com/IHLeanne)
+* valterwill (https://github.com/valterwill)
+* David Herring (https://github.com/abadger1406)
 
 Patches
 -------
@@ -36,6 +39,7 @@ Suggestions
 * Cezar Jenkins (https://twitter.com/#!/emperorcezar)
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * Barry Rowlingson (http://geospaced.blogspot.com)
+* Gour (https://github.com/gour)
 
 Translations
 ------------
@@ -46,3 +50,12 @@ Translations
     * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * Italian
     * SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
+
+Remote access for debugging
+---------------------------
+* Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+* David Herring (https://github.com/abadger1406)
+
+Monetary donations
+------------------
+* David Herring (https://github.com/abadger1406)
