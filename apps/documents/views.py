@@ -52,7 +52,7 @@ from .forms import (DocumentTypeSelectForm,
         DocumentPageTransformationForm, DocumentContentForm,
         DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
         DocumentTypeForm, DocumentTypeFilenameForm,
-        DocumentTypeFilenameForm_create)
+        DocumentTypeFilenameForm_create, DocumentDownloadForm)
 from .wizards import DocumentCreateWizard
 from .models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
@@ -320,65 +320,105 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=F
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
-    document_version = None
-    documents = []
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
-        post_action_redirect = reverse('document_list')
+        document_versions = [get_object_or_404(Document, pk=document_id).latest_version]
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        document_versions = [get_object_or_404(Document, pk=document_id).latest_version for document_id in document_id_list.split(',')]
     elif document_version_pk:
-        document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
+        document_versions = [get_object_or_404(DocumentVersion, pk=document_version_pk)]
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DOWNLOAD])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DOWNLOAD, request.user, documents, exception_on_empty=True)
+        document_versions = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DOWNLOAD, request.user, document_versions, related='document', exception_on_empty=True)
 
-    if len(documents) == 1:
-        document_version = documents[0].latest_version
+    subtemplates_list = []
+    subtemplates_list.append(
+        {
+            'name': 'generic_list_subtemplate.html',
+            'context': {
+                'title': _(u'documents to be downloaded'),
+                'object_list': document_versions,
+                'hide_link': True,
+                'hide_object': True,
+                'hide_links': True,
+                'navigation_object_links': None,
+                'scrollable_content': True,
+                'scrollable_content_height': '200px',
+                'extra_columns': [
+                    {'name': _(u'document'), 'attribute': 'document'},
+                    {'name': _(u'version'), 'attribute': encapsulate(lambda x: x.get_formated_version())},
+                ],
+            }
+        }
+    )
 
-    if document_version:
-        try:
-            # Test permissions and trigger exception
-            fd = document_version.open()
-            fd.close()
-            return serve_file(
-                request,
-                document_version.file,
-                save_as=u'"%s"' % document_version.filename,
-                content_type=document_version.mimetype if document_version.mimetype else 'application/octet-stream'
-            )
-        except Exception, e:
-            if settings.DEBUG:
-                raise
+    if request.method == 'POST':
+        form = DocumentDownloadForm(request.POST, document_versions=document_versions)
+        if form.is_valid():
+            if form.cleaned_data['compressed'] or len(document_versions) > 1:
+                try:
+                    compressed_file = CompressedFile()
+                    for document_version in document_versions:
+                        descriptor = document_version.open()
+                        compressed_file.add_file(descriptor, arcname=document_version.filename)
+                        descriptor.close()
+
+                    compressed_file.close()
+
+                    return serve_file(
+                        request,
+                        compressed_file.as_file('document_bundle.zip'),
+                        save_as=u'"document_bundle.zip"',
+                        content_type='application/zip'
+                    )
+                    # TODO: DO a redirection afterwards
+                except Exception, e:
+                    if settings.DEBUG:
+                        raise
+                    else:
+                        messages.error(request, e)
+                        return HttpResponseRedirect(request.META['HTTP_REFERER'])
             else:
-                messages.error(request, e)
-                return HttpResponseRedirect(request.META['HTTP_REFERER'])
+                try:
+                    # Test permissions and trigger exception
+                    fd = document_versions[0].open()
+                    fd.close()
+                    return serve_file(
+                        request,
+                        document_versions[0].file,
+                        save_as=u'"%s"' % document_versions[0].filename,
+                        content_type=document_versions[0].mimetype if document_versions[0].mimetype else 'application/octet-stream'
+                    )
+                except Exception, e:
+                    if settings.DEBUG:
+                        raise
+                    else:
+                        messages.error(request, e)
+                        return HttpResponseRedirect(request.META['HTTP_REFERER'])                
+        
     else:
-        try:
-            compressed_file = CompressedFile()
-            for document in documents:
-                descriptor = document.open()
-                compressed_file.add_file(descriptor, arcname=document.filename)
-                descriptor.close()
+        form = DocumentDownloadForm(document_versions=document_versions)
 
-            compressed_file.close()
+    context = {
+        'form': form,
+        'subtemplates_list': subtemplates_list,
+        'title': _(u'Download documents'),
+        'submit_label': _(u'Download'),
+        'previous': previous,
+        'cancel_label': _(u'Return'),
+    }
 
-            return serve_file(
-                request,
-                compressed_file.as_file('document_bundle.zip'),
-                save_as=u'"document_bundle.zip"',
-                content_type='application/zip'
-            )
-            # TODO: DO a redirection afterwards
-        except Exception, e:
-            if settings.DEBUG:
-                raise
-            else:
-                messages.error(request, e)
-                return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    if len(document_versions) == 1:
+        context['object'] = document_versions[0].document
+
+    return render_to_response(
+        'generic_form.html',
+        context,
+        context_instance=RequestContext(request)
+    )
 
 
 def document_multiple_download(request):
