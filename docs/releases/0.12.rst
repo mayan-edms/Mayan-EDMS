@@ -1,0 +1,73 @@
+========================
+Mayan EDMS 0.12 release notes
+========================
+
+*February 2012*
+
+Welcome to Mayan EDMS 0.12!
+
+This release commemorates **Mayan EDMS** first aniversary!
+
+Overview
+========
+
+**Mayan EDMS** focus has mostly been on improving the code quality standard
+even further.  The permission system has been completely overhauled to make
+it entire class based.  The other big change is the addition of object
+level permissions, with this new system being applied to documents,
+folder, tags and smart links.
+
+What's new in Django 1.3
+========================
+
+ACL support
+~~~~~~~~~~~
+
+Anonymous user support
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+Italian translation
+~~~~~~~~~~~~~~~~~~~
+
+Usability improvements
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+Upgrading
+=========
+
+::
+
+    $ ./manage.py syncdb
+    $ ./manage.py migrate permissions 0001 --fake
+    $ ./manage.py migrate permissions
+
+
+When the following message appears
+
+``The following content types are stale and need to be deleted:
+
+    permissions | permission
+
+Any objects related to these content types by a foreign key will also
+be deleted. Are you sure you want to delete these content types?
+If you're unsure, answer 'no'.
+
+    Type 'yes' to continue, or 'no' to cancel:``
+    
+    Types ``yes`` and press **Enter**
+
+::
+
+	$ ./manage.py migrate documents
+    $ ./manage.py migrate document_signatures
+
+
+Backward incompatible changes
+=============================
+The permission system has been completely reworked so sadly this is a
+place where even data migration can't help and the permissions assigned
+to roles will be lost during the upgrade to version 0.12.  Users, groups
+and roles will be preserved only permissions need to be assigned again,
+so write down your role permission setup before upgrading.

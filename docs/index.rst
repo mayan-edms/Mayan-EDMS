@@ -40,6 +40,7 @@ Contents
     features
     requirements
     installation
+    releases/index    
     settings
     updates
     development
