@@ -18,7 +18,6 @@ DEVELOPMENT = False
 TEMPLATE_DEBUG = False
 
 ADMINS = ()
-SENTRY_ADMINS = ('root@localhost',)
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -141,12 +140,6 @@ INSTALLED_APPS = (
     'filetransfers',
     'acls',
     'converter',
-    'djcelery',
-    'indexer',
-    'paging',
-    'sentry',
-    'sentry.client',
-    'sentry.client.celery',
     'storage',
     'folders',
     'document_comments',
@@ -278,18 +271,7 @@ COMPRESS_ENABLED=False
 #------------ django-sendfile --------------
 # Change to xsendfile for apache if x-sendfile is enabled
 SENDFILE_BACKEND = 'sendfile.backends.simple'
-#----------- django-celery --------------
-import djcelery
-djcelery.setup_loader()
-BROKER_HOST = "localhost"
-BROKER_PORT = 5672
-BROKER_USER = "guest"
-BROKER_PASSWORD = "guest"
-BROKER_VHOST = "/"
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 #======== End of user configuration options =======
-#--------- Celery ------------------
-CELERY_DISABLE_RATE_LIMITS = True
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 #--------- Django -------------------

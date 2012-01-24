@@ -7,6 +7,7 @@ from django.db import transaction
 from django.core import serializers
 from django.shortcuts import get_object_or_404
 from django.db import models
+from django.db.utils import DatabaseError
 
 from .models import HistoryType, History
 from .runtime_data import history_types_dict
@@ -17,9 +18,13 @@ def register_history_type(history_type_dict):
     namespace = history_type_dict['namespace']
     name = history_type_dict['name']
 
-    history_type_obj, created = HistoryType.objects.get_or_create(
-        namespace=namespace, name=name)
-    history_type_obj.save()
+    try:
+        history_type_obj, created = HistoryType.objects.get_or_create(
+            namespace=namespace, name=name)
+        history_type_obj.save()
+    except DatabaseError:
+        # Special case for syncdb
+        pass
 
     # Runtime
     history_types_dict.setdefault(namespace, {})

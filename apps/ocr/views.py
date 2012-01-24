@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 
-from celery.task.control import inspect
 from permissions.models import Permission
 from documents.models import Document
 from documents.widgets import document_link, document_thumbnail

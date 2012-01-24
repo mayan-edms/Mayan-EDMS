@@ -5,7 +5,7 @@ import logging
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 
 from navigation.api import register_links, register_multi_item_links
@@ -23,6 +23,7 @@ from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES)
 from .exceptions import AlreadyQueued
+from . import models as ocr_models
 
 logger = logging.getLogger(__name__)
 
@@ -77,11 +78,10 @@ def document_post_save(sender, instance, **kwargs):
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-           try:
-	       DocumentQueue.objects.queue_document(instance.document)
-	   except AlreadyQueued:
-	       pass
-
+            try:
+                DocumentQueue.objects.queue_document(instance.document)
+            except AlreadyQueued:
+                pass
 
 # Disabled because it appears Django execute signals using the same
 # process of the signal emiter effectively blocking the view until
@@ -92,7 +92,9 @@ def document_post_save(sender, instance, **kwargs):
 #        logger.debug('got call_queue signal: %s' % kwargs)
 #        task_process_document_queues()
 
-create_default_queue()
+@receiver(post_syncdb, dispatch_uid='create_default_queue', sender=ocr_models)
+def create_default_queue_signal_handler(sender, **kwargs):
+    create_default_queue()
 
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
 
