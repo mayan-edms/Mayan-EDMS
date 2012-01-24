@@ -75,14 +75,6 @@ Credits
     * Jens Gulden 2005-2007 - unpaper@jensgulden.de.
     * http://unpaper.berlios.de/
     
-* celery - Celery is an open source asynchronous task queue/job queue based on distributed message passing. It is focused on real-time operation, but supports scheduling as well.
-    * Copyright 2009-2011, Ask Solem & contributors
-    * http://ask.github.com/celery/getting-started/introduction.html
-
-* django-celery - django-celery provides Celery integration for Django
-    * Copyright Ask Solem & contributors
-    * http://github.com/ask/django-celery/
-    
 * favicon
     * http://www.iconfinder.com/icondetails/21581/24/draw_pyramid_icon
     * Gnome Project    

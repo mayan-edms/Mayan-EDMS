@@ -179,17 +179,6 @@ Storage
     
     Default: ``document_storage``     
     
-    
-Job processor
--------------
-    
-.. data:: JOB_PROCESSING_BACKEND    
-    
-    Default: ``None``  
-    
-    
-    Specifies which job processing library to use, option are: None and celery.
-
 
 Document indexing
 -----------------
