@@ -109,6 +109,9 @@ Site search is slow
 
 How to enable x-sendile support for ``Apache``
 ----------------------------------------------
+  * If using Ubuntu execute the following::
+  
+  $ sudo apt-get install libapache2-mod-xsendfile
 
   * Add the following line to your ``settings.py`` file::
   
