@@ -412,3 +412,10 @@ Signatures
     Default: ``['pool.sks-keyservers.net']`` 
     
     List of keyservers to be queried for unknown keys.
+
+
+.. data:: SIGNATURES_GPG_HOME    
+    
+    Default: ``gpg_home``
+    
+    Home directory used to store keys as well as configuration files.

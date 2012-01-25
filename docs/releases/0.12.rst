@@ -80,7 +80,13 @@ The code for downloading single and multiple document and document versions
 has been merged with compression support also added.  This allows for the
 download of documents in their original format or compressed and well as
 the download of several documents in a single compressed file.   
-  
+
+Customizable GPG home directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Addition of the SIGNATURES_GPG_HOME configuration option to let 
+administrators set Mayan EDMS's GPG instance home directory, used to
+store keyrings and other GPG configuration files.
+
 Upgrading
 =========
 

@@ -1,4 +1,4 @@
 from django_gpg.api import GPG
-from django_gpg.conf.settings import KEYSERVERS
+from django_gpg.conf.settings import KEYSERVERS, GPG_HOME
 
-gpg = GPG(keyservers=KEYSERVERS)
+gpg = GPG(home=GPG_HOME, keyservers=KEYSERVERS)
