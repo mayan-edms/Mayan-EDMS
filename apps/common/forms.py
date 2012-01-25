@@ -167,11 +167,6 @@ class FileDisplayForm(forms.Form):
         fd.close()
 
 
-class ChangelogForm(FileDisplayForm):
-    FILENAME = u'changelog.rst'
-    DIRECTORY = u'docs'
-
-
 class LicenseForm(FileDisplayForm):
     FILENAME = u'LICENSE'
     DIRECTORY = u'docs'

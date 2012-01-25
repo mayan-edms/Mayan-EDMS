@@ -12,8 +12,8 @@ from django.utils.http import urlencode
 from django.contrib.auth.views import login
 from django.utils.simplejson import dumps, loads
 
-from .forms import (ChoiceForm, UserForm, UserForm_view, ChangelogForm,
-    LicenseForm, EmailAuthenticationForm)
+from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
+    EmailAuthenticationForm)
 from .conf.settings import LOGIN_METHOD
 
 
@@ -214,19 +214,6 @@ def login_view(request):
         context = {}
 
     return login(request, extra_context=context, **kwargs)
-
-
-def changelog_view(request):
-    """
-    Display the included Changelog.txt file from the about menu
-    """
-    form = ChangelogForm()
-    return render_to_response(
-        'generic_detail.html', {
-            'form': form,
-            'title': _(u'Changelog'),
-        },
-        context_instance=RequestContext(request))
 
 
 def license_view(request):

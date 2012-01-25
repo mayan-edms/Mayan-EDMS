@@ -24,10 +24,9 @@ current_user_edit = {'text': _(u'edit details'), 'view': 'current_user_edit', 'f
 register_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
 
 about_view = {'text': _('about'), 'view': 'about_view', 'famfam': 'information'}
-changelog_view = {'text': _('changelog'), 'view': 'changelog_view', 'famfam': 'book_open'}
 license_view = {'text': _('license'), 'view': 'license_view', 'famfam': 'script'}
 
-register_links(['about_view', 'changelog_view', 'license_view'], [about_view, changelog_view, license_view], menu_name='secondary_menu')
+register_links(['about_view', 'license_view'], [about_view, license_view], menu_name='secondary_menu')
 
 register_top_menu('about', link={'text': _(u'about'), 'view': 'about_view', 'famfam': 'information'}, position=-1)
 
