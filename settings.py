@@ -136,7 +136,6 @@ INSTALLED_APPS = (
     'mptt',
     'compressor',
     'djangorestframework',
-    'pagination',
 # Base generic
     'permissions',
     'project_setup',
@@ -145,6 +144,9 @@ INSTALLED_APPS = (
     'navigation',
     'lock_manager',
     'web_theme',
+# pagination needs to go after web_theme so that the pagination template
+# if found
+	'pagination',
     'common',
     'django_gpg',
     'dynamic_search',
@@ -170,6 +172,7 @@ INSTALLED_APPS = (
     'main',
     'rest_api',
     'document_signatures',
+
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
