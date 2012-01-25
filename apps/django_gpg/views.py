@@ -37,8 +37,15 @@ def key_receive(request, key_id):
             key = gpg.import_key(keys_dict[key_id].key)
             messages.success(request, _(u'Key: %s, imported successfully.') % key)
             return HttpResponseRedirect(next)
-        except (KeyImportError, KeyError, TypeError):
-            messages.error(request, _(u'Unable to import key id: %s') % key_id)
+        except (KeyImportError, KeyError, TypeError), e:
+            messages.error(
+                request,
+                _(u'Unable to import key id: %(key_id)s; %(error)s') % 
+                {
+                    'key_id': key_id,
+                    'error': e,
+                }
+            )
             return HttpResponseRedirect(previous)
 
     return render_to_response('generic_confirm.html', {

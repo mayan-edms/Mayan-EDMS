@@ -341,4 +341,4 @@ class GPG(object):
         if import_result:
             return Key.get(self, import_result.fingerprints[0], secret=False)
 
-        raise KeyImportError
+        raise KeyImportError(import_result.results[0].get('text', 'Unknown error'))
