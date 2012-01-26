@@ -87,8 +87,25 @@ Addition of the SIGNATURES_GPG_HOME configuration option to let
 administrators set **Mayan EDMS**'s GPG instance home directory, used to
 store keyrings and other GPG configuration files.
 
-Upgrading
-=========
+Out of process bulk uploading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A management command has been added to help upload a large number of documents
+from a compressed file.  The command line options for this feature are as
+follow::
+
+  $ ./manage.py bulk_upload --noinput --metadata '{"project": "bulk"}' --document_type "Accounting documents" compressed.zip 
+
+**Optional arguments**
+
+* The ``--noinput`` argument skips confirmation and starts the upload inmediately.
+* The ``--metadata`` argument allows specifing what metadata will be assigned
+  to the documents when uploaded.
+* And the ``--document_type`` applies a previously defined 
+  document type to the uploaded documents.
+  
+
+Upgrading from a previous version
+=================================
 
 ::
 
@@ -129,13 +146,13 @@ so write down your role permission setup before upgrading.
 Bugs fixed
 ==========
 * Issue #17, special thanks to Dave Herring for all the help including
-  access to a machine suffering with the issue
+  access to a machine suffering with the issue.
 * Statistics fixes.
-* Fixed get_image_cache_name regression in the OCR app
+* Fixed get_image_cache_name regression in the OCR app.
 
 Stuff removed
 =============
-* Removal of the OCR_CACHE_URI configuration option
+* Removal of the OCR_CACHE_URI configuration option.
 * Support for Celery and Sentry has been drop
   for now.
 * Removed the 'db_index' argument from Text fields definition and 
