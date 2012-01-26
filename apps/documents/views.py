@@ -186,9 +186,11 @@ def document_view(request, document_id, advanced=False):
 
 
 def document_delete(request, document_id=None, document_id_list=None):
+    post_action_redirect = None
+
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
-        post_action_redirect = reverse('document_list')
+        post_action_redirect = reverse('document_list_recent')
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
@@ -199,8 +201,6 @@ def document_delete(request, document_id=None, document_id_list=None):
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DELETE])
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DELETE, request.user, documents, exception_on_empty=True)
-
-    post_action_redirect = None
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
