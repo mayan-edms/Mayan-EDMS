@@ -1,12 +1,14 @@
 from __future__ import absolute_import
 
 from ast import literal_eval
+import logging
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
+from django.db import transaction
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
@@ -26,6 +28,8 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
     SOURCE_UNCOMPRESS_CHOICE_Y)
 from .compressed_file import CompressedFile, NotACompressedFile
+
+logger = logging.getLogger(__name__)
 
 
 class BaseModel(models.Model):
@@ -56,6 +60,8 @@ class BaseModel(models.Model):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
     def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, verbose=False):
+        is_compressed = None
+
         if expand:
             try:
                 cf = CompressedFile(file_object)
@@ -63,17 +69,23 @@ class BaseModel(models.Model):
                 for fp in cf.children():
                     if verbose:
                         print 'Uploading file #%d: %s' % (count, fp)
-                    self.upload_single_file(fp, None, document_type, metadata_dict_list, user)
+                    self.upload_single_file(file_object=fp, filename=None, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user)
                     fp.close()
                     count += 1
 
             except NotACompressedFile:
-                self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
+                is_compressed = False
+                logging.debug('Exception: NotACompressedFile')
+                self.upload_single_file(file_object=file_object, filename=filename, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user)
+            else:
+                is_compressed = True
         else:
             self.upload_single_file(file_object, filename, use_file_name, document_type, metadata_dict_list, user, document, new_version_data)
 
         file_object.close()
+        return {'is_compressed': is_compressed}
 
+    @transaction.commit_on_success
     def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         if not document:
             document = Document()
@@ -263,20 +275,7 @@ class SourceTransformation(models.Model):
 
 
 class OutOfProcess(BaseModel):
-    #icon = models.CharField(blank=True, null=True, max_length=24, choices=SOURCE_ICON_CHOICES, verbose_name=_(u'icon'), help_text=_(u'An icon to visually distinguish this source.'))
-
-    #def save(self, *args, **kwargs):
-    #    if not self.icon:
-    #        self.icon = self.default_icon
-    #    super(BaseModel, self).save(*args, **kwargs)
-
     is_interactive = False
-    #source_type = SOURCE_CHOICE_WEB_FORM
-    #default_icon = SOURCE_ICON_DISK
-
-    #uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
-    #Default path
-
     class Meta(BaseModel.Meta):
         verbose_name = _(u'out of process')
         verbose_name_plural = _(u'out of process')
