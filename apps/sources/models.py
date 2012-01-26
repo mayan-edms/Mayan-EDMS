@@ -94,7 +94,7 @@ class BaseModel(models.Model):
             document.save()
 
             apply_default_acls(document, user)
-
+ 
             if metadata_dict_list:
                 save_metadata_list(metadata_dict_list, document, create=True)
             warnings = update_indexes(document)
@@ -163,7 +163,7 @@ class StagingFolder(InteractiveBaseModel):
         verbose_name = _(u'staging folder')
         verbose_name_plural = _(u'staging folders')
 
-'''
+"""
 class SourceMetadata(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
@@ -177,7 +177,7 @@ class SourceMetadata(models.Model):
     class Meta:
         verbose_name = _(u'source metadata')
         verbose_name_plural = _(u'sources metadata')
-'''
+"""
 
 
 class WebForm(InteractiveBaseModel):
@@ -239,9 +239,9 @@ class ArgumentsValidator(object):
             self.code = code
 
     def __call__(self, value):
-        '''
+        """
         Validates that the input evaluates correctly.
-        '''
+        """
         value = value.strip()
         try:
             literal_eval(value)
@@ -250,10 +250,10 @@ class ArgumentsValidator(object):
 
 
 class SourceTransformation(models.Model):
-    '''
+    """
     Model that stores the transformation and transformation arguments
     for a given document source
-    '''
+    """
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
