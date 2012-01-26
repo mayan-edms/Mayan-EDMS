@@ -107,3 +107,15 @@ def get_metadata_string(document):
     Return a formated representation of a document's metadata values
     """
     return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in DocumentMetadata.objects.filter(document=document).select_related('metadata_type')])
+
+
+def convert_dict_to_dict_list(dictionary):
+    result = []
+    for key, value in dictionary.items():
+        try:
+            metadata_type = MetadataType.objects.get(name=key)
+        except MetadataType.DoesNotExist:
+            raise ValueError('Unknown metadata type name')
+        result.append({'id': metadata_type.pk, 'value': value})
+    
+    return result

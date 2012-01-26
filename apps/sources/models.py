@@ -59,15 +59,19 @@ class BaseModel(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None):
+    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, verbose=False):
         is_compressed = None
 
         if expand:
             try:
                 cf = CompressedFile(file_object)
+                count = 1
                 for fp in cf.children():
+                    if verbose:
+                        print 'Uploading file #%d: %s' % (count, fp)
                     self.upload_single_file(file_object=fp, filename=None, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user)
                     fp.close()
+                    count += 1
 
             except NotACompressedFile:
                 is_compressed = False
@@ -90,7 +94,7 @@ class BaseModel(models.Model):
             document.save()
 
             apply_default_acls(document, user)
-
+ 
             if metadata_dict_list:
                 save_metadata_list(metadata_dict_list, document, create=True)
             warnings = update_indexes(document)
@@ -159,7 +163,7 @@ class StagingFolder(InteractiveBaseModel):
         verbose_name = _(u'staging folder')
         verbose_name_plural = _(u'staging folders')
 
-'''
+"""
 class SourceMetadata(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
@@ -173,7 +177,7 @@ class SourceMetadata(models.Model):
     class Meta:
         verbose_name = _(u'source metadata')
         verbose_name_plural = _(u'sources metadata')
-'''
+"""
 
 
 class WebForm(InteractiveBaseModel):
@@ -235,9 +239,9 @@ class ArgumentsValidator(object):
             self.code = code
 
     def __call__(self, value):
-        '''
+        """
         Validates that the input evaluates correctly.
-        '''
+        """
         value = value.strip()
         try:
             literal_eval(value)
@@ -246,10 +250,10 @@ class ArgumentsValidator(object):
 
 
 class SourceTransformation(models.Model):
-    '''
+    """
     Model that stores the transformation and transformation arguments
     for a given document source
-    '''
+    """
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
@@ -268,3 +272,10 @@ class SourceTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'document source transformation')
         verbose_name_plural = _(u'document source transformations')
+
+
+class OutOfProcess(BaseModel):
+    is_interactive = False
+    class Meta(BaseModel.Meta):
+        verbose_name = _(u'out of process')
+        verbose_name_plural = _(u'out of process')
