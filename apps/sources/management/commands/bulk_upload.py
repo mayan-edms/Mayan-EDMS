@@ -60,10 +60,10 @@ class Command(LabelCommand):
             source = OutOfProcess()
             fd = open(label)
             try:
-                result = source.upload_file(fd, filename=None, use_file_name=False, document_type=document_type, expand=True, metadata_dict_list=metadata_dict_list, user=None, document=None, new_version_data=None, verbose=True)
+                result = source.upload_file(fd, filename=None, use_file_name=False, document_type=document_type, expand=True, metadata_dict_list=metadata_dict_list, user=None, document=None, new_version_data=None, command_line=True)
                 pass
             except NotACompressedFile:
-                print '%s is not a compressed file.'
+                print '%s is not a compressed file.' % label
             else:
                 print 'Finished.'
 
