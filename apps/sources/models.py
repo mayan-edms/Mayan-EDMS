@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
+from django.db import transaction
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
@@ -70,6 +71,7 @@ class BaseModel(models.Model):
 
         file_object.close()
 
+    @transaction.commit_on_success
     def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         if not document:
             document = Document()
