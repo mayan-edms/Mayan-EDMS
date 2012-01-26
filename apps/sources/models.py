@@ -55,13 +55,17 @@ class BaseModel(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None):
+    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, verbose=False):
         if expand:
             try:
                 cf = CompressedFile(file_object)
+                count = 1
                 for fp in cf.children():
+                    if verbose:
+                        print 'Uploading file #%d: %s' % (count, fp)
                     self.upload_single_file(fp, None, document_type, metadata_dict_list, user)
                     fp.close()
+                    count += 1
 
             except NotACompressedFile:
                 self.upload_single_file(file_object, filename, document_type, metadata_dict_list, user)
@@ -256,3 +260,23 @@ class SourceTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'document source transformation')
         verbose_name_plural = _(u'document source transformations')
+
+
+class OutOfProcess(BaseModel):
+    #icon = models.CharField(blank=True, null=True, max_length=24, choices=SOURCE_ICON_CHOICES, verbose_name=_(u'icon'), help_text=_(u'An icon to visually distinguish this source.'))
+
+    #def save(self, *args, **kwargs):
+    #    if not self.icon:
+    #        self.icon = self.default_icon
+    #    super(BaseModel, self).save(*args, **kwargs)
+
+    is_interactive = False
+    #source_type = SOURCE_CHOICE_WEB_FORM
+    #default_icon = SOURCE_ICON_DISK
+
+    #uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    #Default path
+
+    class Meta(BaseModel.Meta):
+        verbose_name = _(u'out of process')
+        verbose_name_plural = _(u'out of process')
