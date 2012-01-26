@@ -44,12 +44,18 @@ Suggestions
 Translations
 ------------
 * Portuguese
-    * Emerson Soares (http://emersonsoares.com)
-    * Renata Oliveira (https://twitter.com/#!/rnataoliveira)
+
+  - Emerson Soares (http://emersonsoares.com)
+  - Renata Oliveira (https://twitter.com/#!/rnataoliveira)
+
 * Russian
-    * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+
+  - Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+
 * Italian
-    * SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
+
+  - SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
+
 
 Remote access for debugging
 ---------------------------

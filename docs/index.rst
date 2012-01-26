@@ -2,16 +2,16 @@
 Overview
 ========
 
-Open source, Django_ based document manager with custom metadata indexing, file serving integration and OCR_ capabilities.
+Open source, Django_ based document manager with custom metadata indexing, file serving integration, OCR_ capabilities, document versioning and digital signature verification.
 
 .. _Django: http://www.djangoproject.com/
 
 
-:Website: http://bit.ly/mayan-edms
+:Website: http://www.mayan-edms.com
 :Source:  http://github.com/rosarior/mayan
 :Video:   http://bit.ly/pADNXv
 :Issue tracker:  http://github.com/rosarior/mayan/issues
-
+:Mailing list:  http://groups.google.com/group/mayan-edms 
 
 **Mayan EDMS** started as a simple project whose only requirement was the storage of PDF files, from there it has grown into a complete electronic document management solution.
 **Mayan EDMS** can optimize an organization's bulk upload, storage and retrieval or documents.
