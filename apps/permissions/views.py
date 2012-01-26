@@ -18,6 +18,7 @@ from django.utils.simplejson import loads
 from common.views import assign_remove
 from common.utils import generate_choices_w_labels, encapsulate, get_object_name
 from common.widgets import two_state_template
+from common.models import AnonymousUserSingleton
 from acls.classes import EncapsulatedObject
 
 from .models import Role, Permission, PermissionHolder, RoleMember
@@ -245,11 +246,10 @@ def permission_revoke(request):
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
 
-from common.models import AnonymousUserSingleton
-
 
 class Member(EncapsulatedObject):
     source_object_name = u'member_object'
+
 
 def _as_choice_list(items):
     return sorted([(Member.encapsulate(item).gid, get_object_name(item, display_object_type=False)) for item in items], key=lambda x: x[1])
