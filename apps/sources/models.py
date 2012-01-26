@@ -59,7 +59,7 @@ class BaseModel(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, verbose=False):
+    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, command_line=False):
         is_compressed = None
 
         if expand:
@@ -67,7 +67,7 @@ class BaseModel(models.Model):
                 cf = CompressedFile(file_object)
                 count = 1
                 for fp in cf.children():
-                    if verbose:
+                    if command_line:
                         print 'Uploading file #%d: %s' % (count, fp)
                     self.upload_single_file(file_object=fp, filename=None, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user)
                     fp.close()
@@ -76,6 +76,8 @@ class BaseModel(models.Model):
             except NotACompressedFile:
                 is_compressed = False
                 logging.debug('Exception: NotACompressedFile')
+                if command_line:
+                    raise
                 self.upload_single_file(file_object=file_object, filename=filename, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user)
             else:
                 is_compressed = True
@@ -112,8 +114,14 @@ class BaseModel(models.Model):
 
         if not new_version_data:
             new_version_data = {}
-
-        new_version = document.new_version(file=file_object, **new_version_data)
+        
+        try:
+            new_version = document.new_version(file=file_object, **new_version_data)
+        except Exception:
+            # Don't leave the database in a broken state
+            document.delete()
+            raise
+            
         if filename:
             new_version.filename = filename
             new_version.save()
