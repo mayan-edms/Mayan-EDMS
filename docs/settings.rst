@@ -330,7 +330,9 @@ Common
     
     Default: ``username`` 
     
-    Controls the mechanism used to authenticated user. Options are: ``username``, ``email``    
+    Controls the mechanism used to authenticated user. Options are: ``username``, ``email``
+    If using the ``email`` login method a proper email authentication backend must used
+    such as AUTHENTICATION_BACKENDS = ('common.auth.email_auth_backend.EmailAuthBackend',)
 
 
 .. data:: COMMON_ALLOW_ANONYMOUS_ACCESS
