@@ -111,6 +111,9 @@ follow::
 
   $ ./manage.py import_users --noinput --password=welcome123 --skip-repeated user_list.csv 
 
+The CSV field order must be: username, first name, last name and email, any other 
+column after those is ignored.
+
 **Optional arguments**
 
 * The ``--noinput`` argument skips confirmation and starts the import immediately.
