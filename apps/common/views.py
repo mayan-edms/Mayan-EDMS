@@ -11,19 +11,11 @@ from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 from django.contrib.auth.views import login
 from django.utils.simplejson import dumps, loads
+from django.contrib.auth.views import password_change
 
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
     EmailAuthenticationForm)
 from .conf.settings import LOGIN_METHOD
-
-
-def password_change_done(request):
-    """
-    View called when the new user password has been accepted
-    """
-
-    messages.success(request, _(u'Your password has been successfully changed.'))
-    return redirect('home')
 
 
 def multi_object_action_view(request):
@@ -227,3 +219,26 @@ def license_view(request):
             'title': _(u'License'),
         },
         context_instance=RequestContext(request))
+
+
+def password_change_view(request):
+    """
+    Password change wrapper for better control
+    """
+    context={'title': _(u'Current user password change')}
+    
+    return password_change(
+        request,
+        extra_context=context,
+        template_name='password_change_form.html',
+        post_change_redirect=reverse('password_change_done'),
+    )
+
+
+def password_change_done(request):
+    """
+    View called when the new user password has been accepted
+    """
+
+    messages.success(request, _(u'Your password has been successfully changed.'))
+    return redirect('current_user_details')

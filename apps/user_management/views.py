@@ -211,6 +211,7 @@ def user_multiple_set_password(request):
     )
 
 
+# Group views
 def group_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_VIEW])
 
