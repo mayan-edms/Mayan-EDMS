@@ -12,6 +12,7 @@ from django.utils.http import urlencode
 from django.contrib.auth.views import login
 from django.utils.simplejson import dumps, loads
 from django.contrib.auth.views import password_change
+from django.contrib.auth.models import User
 
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
     EmailAuthenticationForm)
@@ -175,9 +176,12 @@ def current_user_edit(request):
     if request.method == 'POST':
         form = UserForm(instance=request.user, data=request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, _(u'Current user\'s details updated.'))
-            return HttpResponseRedirect(next)
+            if User.objects.filter(email=form.cleaned_data['email']).exclude(pk=request.user.pk).count():
+                messages.error(request, _(u'E-mail conflict, another user has that same email.'))
+            else:
+                form.save()
+                messages.success(request, _(u'Current user\'s details updated.'))
+                return HttpResponseRedirect(next)
     else:
         form = UserForm(instance=request.user)
 
