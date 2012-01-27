@@ -42,8 +42,11 @@ def user_list(request):
                 {
                     'name': _(u'active'),
                     'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
-                }
-
+                },
+                {
+                    'name': _(u'has usable password?'),
+                    'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
+                },
             ],
             'multi_select_as_buttons': True,
         },
@@ -82,7 +85,9 @@ def user_add(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.set_unusable_password()
+            user.save()
             messages.success(request, _(u'User "%s" created successfully.') % user)
             return HttpResponseRedirect(reverse('user_set_password', args=[user.pk]))
     else:
