@@ -13,7 +13,6 @@ urlpatterns = patterns('ocr.views',
     url(r'^queue/(?P<document_queue_id>\d+)/disable/$', 'document_queue_disable', (), 'document_queue_disable'),
 
     url(r'^document/all/clean_up/$', 'all_document_ocr_cleanup', (), 'all_document_ocr_cleanup'),
-    url(r'^node/active/list/$', 'node_active_list', (), 'node_active_list'),
 
     url(r'^queue/(?P<document_queue_id>\d+)/transformation/list/$', 'setup_queue_transformation_list', (), 'setup_queue_transformation_list'),
     url(r'^queue/(?P<document_queue_id>\w+)/transformation/create/$', 'setup_queue_transformation_create', (), 'setup_queue_transformation_create'),

@@ -43,8 +43,6 @@ all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_d
 queue_document_list = {'text': _(u'queue document list'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'permissions': [PERMISSION_OCR_DOCUMENT]}
 ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}
 
-node_active_list = {'text': _(u'active tasks'), 'view': 'node_active_list', 'famfam': 'server_chart', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-
 setup_queue_transformation_list = {'text': _(u'transformations'), 'view': 'setup_queue_transformation_list', 'args': 'queue.pk', 'famfam': 'shape_move_front'}
 setup_queue_transformation_create = {'text': _(u'add transformation'), 'view': 'setup_queue_transformation_create', 'args': 'queue.pk', 'famfam': 'shape_square_add'}
 setup_queue_transformation_edit = {'text': _(u'edit'), 'view': 'setup_queue_transformation_edit', 'args': 'transformation.pk', 'famfam': 'shape_square_edit'}
@@ -58,7 +56,7 @@ register_links(QueueTransformation, [setup_queue_transformation_edit, setup_queu
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
-register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'node_active_list', 'setup_queue_transformation_list'], [queue_document_list, node_active_list], menu_name='secondary_menu')
+register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'setup_queue_transformation_list'], [queue_document_list], menu_name='secondary_menu')
 register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))

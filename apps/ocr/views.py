@@ -302,42 +302,6 @@ def display_link(obj):
         return obj
 
 
-def node_active_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
-    i = inspect()
-    active_tasks = []
-    try:
-        active_nodes = i.active()
-        if active_nodes:
-            for node, tasks in active_nodes.items():
-                for task in tasks:
-                    task_info = {
-                        'node': node,
-                        'task_name': task['name'],
-                        'task_id': task['id'],
-                        'related_object': None,
-                    }
-                    if task['name'] == u'ocr.tasks.task_process_queue_document':
-                        task_info['related_object'] = QueueDocument.objects.get(pk=eval(task['args'])[0]).document
-                    active_tasks.append(task_info)
-    except socket.error:
-        active_tasks = []
-
-    return render_to_response('generic_list.html', {
-        'object_list': active_tasks,
-        'title': _(u'active tasks'),
-        'hide_links': True,
-        'hide_object': True,
-        'extra_columns': [
-            {'name': _(u'node'), 'attribute': 'node'},
-            {'name': _(u'task id'), 'attribute': 'task_id'},
-            {'name': _(u'task name'), 'attribute': 'task_name'},
-            {'name': _(u'related object'), 'attribute': lambda x: display_link(x['related_object']) if x['related_object'] else u''}
-        ],
-    }, context_instance=RequestContext(request))
-
-
 # Setup views
 def setup_queue_transformation_list(request, document_queue_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
