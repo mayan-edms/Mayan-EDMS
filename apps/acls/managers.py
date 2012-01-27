@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 
 from common.models import AnonymousUserSingleton
-from permissions.models import Permission
+from permissions.models import Permission, RoleMember
 
 from .classes import (EncapsulatedObject, AccessHolder, ClassAccessHolder,
     get_source_object)
@@ -61,6 +61,7 @@ class AccessEntryManager(models.Manager):
             access_entry.delete()
             return True
 
+
     def has_access(self, permission, actor, obj, db_only=False):
         """
         Returns whether an actor has a specific permission for an object
@@ -69,6 +70,8 @@ class AccessEntryManager(models.Manager):
         actor = get_source_object(actor)
 
         if isinstance(actor, User) and db_only == False:
+            # db_only causes the return of only the stored permissions
+            # and not the perceived permissions for an actor
             if actor.is_superuser or actor.is_staff:
                 return True
 
@@ -83,6 +86,20 @@ class AccessEntryManager(models.Manager):
                 object_id=obj.pk
             )
         except self.model.DoesNotExist:
+            # If not check if the actor's memberships is one of
+            # the access's holder?
+            roles = RoleMember.objects.get_roles_for_member(actor)
+
+            if isinstance(actor, User):
+                groups = actor.groups.all()
+            else:
+                groups = []
+
+            for membership in list(set(roles) | set(groups)):
+                if self.has_access(permission, membership, obj, db_only):
+                    return True
+
+            logger.debug('Fallthru')
             return False
         else:
             return True
