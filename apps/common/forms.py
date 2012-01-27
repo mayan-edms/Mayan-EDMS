@@ -131,7 +131,7 @@ class EmailAuthenticationForm(AuthenticationForm):
     authentication
     """
     email = forms.CharField(label=_(u'Email'), max_length=75,
-        widget=EmailInput()
+        widget=EmailInput(attrs={'style': 'width: 100%;'})
     )
 
     def clean(self):
