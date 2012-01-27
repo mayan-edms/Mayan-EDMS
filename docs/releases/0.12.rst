@@ -97,12 +97,28 @@ follow::
 
 **Optional arguments**
 
-* The ``--noinput`` argument skips confirmation and starts the upload inmediately.
+* The ``--noinput`` argument skips confirmation and starts the upload immediately.
 * The ``--metadata`` argument allows specifing what metadata will be assigned
   to the documents when uploaded.
 * And the ``--document_type`` applies a previously defined 
   document type to the uploaded documents.
   
+Out of process user import
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+A management command has been added to import a large number users
+from a CSV file.  The command line options for this feature are as
+follow::
+
+  $ ./manage.py import_users --noinput --password=welcome123 --skip-repeated user_list.csv 
+
+**Optional arguments**
+
+* The ``--noinput`` argument skips confirmation and starts the import immediately.
+* The ``--password`` argument allows specifing what default password will be assigned
+  to all the new users that are imported.
+* The ``--skip-repeated`` tells the importedr to not stop when finding
+  that a user already exists in the database.
+
 
 Upgrading from a previous version
 =================================
