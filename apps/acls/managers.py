@@ -9,6 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 
 from common.models import AnonymousUserSingleton
 from permissions.models import Permission, RoleMember
@@ -132,15 +133,48 @@ class AccessEntryManager(models.Manager):
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
         actor_type = ContentType.objects.get_for_model(actor)
         content_type = ContentType.objects.get_for_model(cls)
+
+        # Calculate actor role membership ACL query
+        total_queries = None
+        for role in RoleMember.objects.get_roles_for_member(actor):
+            role_type = ContentType.objects.get_for_model(role)
+            if related:
+                query = Q(holder_type=role_type, holder_id=role.pk, permission=permission.get_stored_permission)
+            else:
+                query = Q(holder_type=role_type, holder_id=role.pk, content_type=content_type, permission=permission.get_stored_permission)
+            if total_queries is None:
+                total_queries = query
+            else:
+                total_queries = total_queries | query
+
+        # Calculate actor group membership ACL query
+        if isinstance(actor, User):
+            groups = actor.groups.all()
+        else:
+            groups = []
+            
+        for group in groups:
+            group_type = ContentType.objects.get_for_model(group)
+            if related:
+                query = Q(holder_type=group_type, holder_id=group.pk, permission=permission.get_stored_permission)
+            else:
+                query = Q(holder_type=group_type, holder_id=group.pk, content_type=content_type, permission=permission.get_stored_permission)
+            if total_queries is None:
+                total_queries = query
+            else:
+                total_queries = total_queries | query       
+        
         if related:
-            master_list = [obj.content_object for obj in self.model.objects.select_related().filter(holder_type=actor_type, holder_id=actor.pk, permission=permission.get_stored_permission)]
+            actor_query = Q(holder_type=actor_type, holder_id=actor.pk, permission=permission.get_stored_permission)
+            master_list = [obj.content_object for obj in self.model.objects.select_related().filter(actor_query | total_queries)]
             logger.debug('master_list: %s' % master_list)
             # TODO: update to use Q objects and check performance diff
             # kwargs = {'%s__in' % related: master_list}
             # Q(**kwargs)
             return (obj for obj in cls.objects.all() if getattr(obj, related) in master_list)
         else:
-            return (obj.content_object for obj in self.model.objects.filter(holder_type=actor_type, holder_id=actor.pk, content_type=content_type, permission=permission.get_stored_permission))
+            actor_query = Q(holder_type=actor_type, holder_id=actor.pk, content_type=content_type, permission=permission.get_stored_permission)
+            return (obj.content_object for obj in self.model.objects.filter(actor_query | total_queries))
 
     def get_acl_url(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
