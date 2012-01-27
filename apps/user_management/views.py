@@ -84,7 +84,7 @@ def user_add(request):
         if form.is_valid():
             user = form.save()
             messages.success(request, _(u'User "%s" created successfully.') % user)
-            return HttpResponseRedirect(reverse('user_list'))
+            return HttpResponseRedirect(reverse('user_set_password', args=[user.pk]))
     else:
         form = UserForm()
 
