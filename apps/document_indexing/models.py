@@ -14,8 +14,8 @@ available_indexing_functions_string = (_(u'Available functions: %s') % u','.join
 
 
 class Index(models.Model):
-    name = models.CharField(max_length=64, verbose_name=_(u'name'))
-    title = models.CharField(max_length=128, verbose_name=_(u'title'))
+    name = models.CharField(unique=True, max_length=64, verbose_name=_(u'name'), help_text=_(u'Internal name used to reference this index.'))
+    title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
     def __unicode__(self):
