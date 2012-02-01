@@ -18,7 +18,7 @@ Features
 
 * Office document format support.
 
-  * Word processing files?  Spreadsheets?  Sresentations?  They are supported too.
+  * Word processing files?  Spreadsheets?  Presentations?  They are supported too.
 
 * User defined metadata fields and meta data sets.
 

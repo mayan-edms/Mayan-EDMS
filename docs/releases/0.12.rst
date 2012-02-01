@@ -56,10 +56,10 @@ ACL support
 Anonymous user support
 ~~~~~~~~~~~~~~~~~~~~~~
 Anonymous user support is a two tier function, first is the addition of
-the COMMON_ALLOW_ANONYMOUS_ACCESS that allows non authenticated to browse
-all the pages of a **Mayan EDMS** installation.  The second part of this
-support is the ability to assign permissions or individual access to objects
-to anonymous users.
+the :setting:`COMMON_ALLOW_ANONYMOUS_ACCESS` configuration option that
+allows non authenticated user to browse all the pages of a **Mayan EDMS** installation.
+The second part of this support is the ability to assign permissions
+or individual access to objects to anonymous users.
 
 Translations
 ~~~~~~~~~~~~~~~~~~~

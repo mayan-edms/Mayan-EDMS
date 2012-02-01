@@ -5,419 +5,598 @@ Settings
 **Mayan EDMS** has many configuration options that make it very adaptable to
 different server configurations.
 
+.. contents::
+    :local:
+    :depth: 1
+
+
 Documents
----------
+=========
 
-.. data:: DOCUMENTS_CHECKSUM_FUNCTION
+.. setting:: DOCUMENTS_CHECKSUM_FUNCTION
 
-    Default: ``hashlib.sha256(x).hexdigest()``
+DOCUMENTS_CHECKSUM_FUNCTION
+---------------------------
 
-
-.. data:: DOCUMENTS_UUID_FUNCTION
-
-    Default: ``unicode(uuid.uuid4())``
+Default: ``hashlib.sha256(x).hexdigest()``
 
 
-.. data:: DOCUMENTS_STORAGE_BACKEND
+.. setting:: \DOCUMENTS_UUID_FUNCTION
 
-    Default: ``FileBasedStorage`` class
+DOCUMENTS_UUID_FUNCTION
+-----------------------
+
+Default: ``unicode(uuid.uuid4())``
 
 
-.. data:: DOCUMENTS_PREVIEW_SIZE    
+.. setting:: DOCUMENTS_STORAGE_BACKEND
+
+DOCUMENTS_STORAGE_BACKEND
+-------------------------
+
+Default: ``FileBasedStorage`` class
+
+
+.. setting:: DOCUMENTS_PREVIEW_SIZE
+
+DOCUMENTS_PREVIEW_SIZE    
+----------------------
     
-    Default: ``640x480``
+Default: ``640x480``
 
 
-.. data:: DOCUMENTS_PRINT_SIZE    
+.. setting:: DOCUMENTS_PRINT_SIZE
+
+DOCUMENTS_PRINT_SIZE    
+--------------------
     
-    Default: ``1400``
+Default: ``1400``
     
 
-.. data:: DOCUMENTS_MULTIPAGE_PREVIEW_SIZE    
-    
-    Default: ``160x120``
+.. setting:: DOCUMENTS_MULTIPAGE_PREVIEW_SIZE    
+
+DOCUMENTS_MULTIPAGE_PREVIEW_SIZE
+--------------------------------
+
+Default: ``160x120``
 
 
-.. data:: DOCUMENTS_THUMBNAIL_SIZE    
+.. setting:: DOCUMENTS_THUMBNAIL_SIZE
+
+DOCUMENTS_THUMBNAIL_SIZE   
+------------------------
     
-    Default: ``50x50``
+Default: ``50x50``
         
 
-.. data:: DOCUMENTS_DISPLAY_SIZE    
+.. setting:: DOCUMENTS_DISPLAY_SIZE    
+
+DOCUMENTS_DISPLAY_SIZE
+----------------------
     
-    Default: ``1200``
+Default: ``1200``
           
 
-.. data:: DOCUMENTS_RECENT_COUNT    
+.. setting:: DOCUMENTS_RECENT_COUNT
+
+DOCUMENTS_RECENT_COUNT
+----------------------
     
-    Default: ``40``  
+Default: ``40``  
     
-    Maximum number of recent (created, edited, viewed) documents to
-    remember per user.   
+Maximum number of recent (created, edited, viewed) documents to
+remember per user.   
     
 
-.. data:: DOCUMENTS_ZOOM_PERCENT_STEP    
+.. setting:: DOCUMENTS_ZOOM_PERCENT_STEP
+
+DOCUMENTS_ZOOM_PERCENT_STEP
+---------------------------
     
-    Default: ``50``  
+Default: ``50``  
     
-    Amount in percent zoom in or out a document page per user interaction.    
+Amount in percent zoom in or out a document page per user interaction.    
     
     
-.. data:: DOCUMENTS_ZOOM_MAX_LEVEL    
+.. setting:: DOCUMENTS_ZOOM_MAX_LEVEL    
+
+DOCUMENTS_ZOOM_MAX_LEVEL
+------------------------
     
-    Default: ``200``  
+Default: ``200``  
     
-    Maximum amount in percent (%) to allow user to zoom in a document page interactively.
+Maximum amount in percent (%) to allow user to zoom in a document page interactively.
 
     
-.. data:: DOCUMENTS_ZOOM_MIN_LEVEL    
+.. setting:: DOCUMENTS_ZOOM_MIN_LEVEL
+
+DOCUMENTS_ZOOM_MIN_LEVEL
+------------------------
     
-    Default: ``50``  
+Default: ``50``  
     
-    Minimum amount in percent (%) to allow user to zoom out a document page interactively.
+Minimum amount in percent (%) to allow user to zoom out a document page interactively.
     
 
-.. data:: DOCUMENTS_ROTATION_STEP    
+.. setting:: DOCUMENTS_ROTATION_STEP
+
+DOCUMENTS_ROTATION_STEP
+-----------------------
     
-    Default: ``90``  
+Default: ``90``  
     
-    Amount in degrees to rotate a document page per user interaction.    
+Amount in degrees to rotate a document page per user interaction.    
     
     
-.. data:: DOCUMENTS_CACHE_PATH    
+.. setting:: DOCUMENTS_CACHE_PATH
+
+DOCUMENTS_CACHE_PATH
+--------------------
     
-    Default: ``image_cache`` (relative to the installation path)
+Default: ``image_cache`` (relative to the installation path)
     
-    The path where the visual representations of the documents are stored for fast display.
+The path where the visual representations of the documents are stored for fast display.
     
 
 Converter
----------
+=========
     
-.. data:: CONVERTER_IM_CONVERT_PATH    
+.. setting:: CONVERTER_IM_CONVERT_PATH
+
+CONVERTER_IM_CONVERT_PATH
+-------------------------
     
-    Default: ``/usr/bin/convert``
+Default: ``/usr/bin/convert``
     
-    
-    File path to imagemagick's convert program.    
-    
-    
-.. data:: CONVERTER_IM_IDENTIFY_PATH    
-    
-    Default: ``/usr/bin/identify``
+File path to imagemagick's convert program.    
     
     
-    File path to imagemagick's identify program.    
+.. setting:: CONVERTER_IM_IDENTIFY_PATH    
+    
+CONVERTER_IM_IDENTIFY_PATH    
+--------------------------
+
+Default: ``/usr/bin/identify``
+
+File path to imagemagick's identify program.    
     
     
-.. data:: CONVERTER_GM_PATH    
+.. setting:: CONVERTER_GM_PATH    
+
+CONVERTER_GM_PATH
+-----------------
+
+Default: ``/usr/bin/gm``
     
-    Default: ``/usr/bin/gm``
-    
-    
-    File path to graphicsmagick's program.
+File path to graphicsmagick's program.
     
 
-.. data:: CONVERTER_GM_SETTINGS    
+.. setting:: CONVERTER_GM_SETTINGS
+
+CONVERTER_GM_SETTINGS
+---------------------
+
+Default: None
     
-    Default: None
+Suggested options: ``-limit files 1 -limit memory 1GB -limit map 2GB -density 200``
+
+
+.. setting:: CONVERTER_GRAPHICS_BACKEND
+
+CONVERTER_GRAPHICS_BACKEND
+--------------------------
+
+Default: ``converter.backends.python``    
     
+Graphics conversion backend to use. Options are:
+
+* ``converter.backends.imagemagick``
+* ``converter.backends.graphicsmagick``
+* ``converter.backends.python``
     
-.. data:: CONVERTER_GRAPHICS_BACKEND    
+.. setting:: CONVERTER_UNOCONV_PATH
+
+CONVERTER_UNOCONV_PATH 
+----------------------
     
-    Default: ``converter.backends.python``    
+Default: ``/usr/bin/unoconv``
     
-    Graphics conversion backend to use. Options are: ``converter.backends.imagemagick``,
-    ``converter.backends.graphicsmagick`` and ``converter.backends.python``.
+Path to the unoconv program.
+   
     
-    Suggested options: ``-limit files 1 -limit memory 1GB -limit map 2GB -density 200``
+.. setting:: CONVERTER_UNOCONV_USE_PIPE
+
+CONVERTER_UNOCONV_USE_PIPE  
+--------------------------
     
+Default: ``True``
     
-.. data:: CONVERTER_UNOCONV_PATH    
-    
-    Default: ``/usr/bin/unoconv``
-    
-    Path to the unoconv program.
-    
-    
-.. data:: CONVERTER_UNOCONV_USE_PIPE    
-    
-    Default: ``True``
-    
-    Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.    
+Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.    
     
     
 Linking
--------
+=======
 
-.. data:: LINKING_SHOW_EMPTY_SMART_LINKS    
+.. setting:: LINKING_SHOW_EMPTY_SMART_LINKS
+
+LINKING_SHOW_EMPTY_SMART_LINKS
+------------------------------
     
-    Default: ``True``
+Default: ``True``
     
-    Show smart links even when they don't return any documents.
+Show smart links even when they don't return any documents.
     
 
 Storage
--------
+=======
 
-.. data:: STORAGE_GRIDFS_HOST    
+.. setting:: STORAGE_GRIDFS_HOST
+
+STORAGE_GRIDFS_HOST
+-------------------
     
-    Default: ``localhost``    
+Default: ``localhost``    
     
 
-.. data:: STORAGE_GRIDFS_PORT    
+.. setting:: STORAGE_GRIDFS_PORT
+
+STORAGE_GRIDFS_PORT  
+-------------------
     
-    Default: ``27017``        
-    
-    
-.. data:: STORAGE_GRIDFS_DATABASE_NAME    
-    
-    Default: ``document_storage``     
+Default: ``27017``        
     
     
-.. data:: STORAGE_FILESTORAGE_LOCATION    
+.. setting:: STORAGE_GRIDFS_DATABASE_NAME
+
+STORAGE_GRIDFS_DATABASE_NAME   
+----------------------------
     
-    Default: ``document_storage``     
+Default: ``document_storage``     
+    
+    
+.. setting:: STORAGE_FILESTORAGE_LOCATION
+
+STORAGE_FILESTORAGE_LOCATION  
+----------------------------
+    
+Default: ``document_storage``     
     
 
 Document indexing
------------------
+=================
 
-.. data:: DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS    
+.. setting:: DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS
+
+DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS    
+----------------------------------------------
     
-    Default: ``proper_name`` 
+Default: ``proper_name`` 
 
 
-.. data:: DOCUMENT_INDEXING_SUFFIX_SEPARATOR    
+.. setting:: DOCUMENT_INDEXING_SUFFIX_SEPARATOR
+
+DOCUMENT_INDEXING_SUFFIX_SEPARATOR
+----------------------------------
     
-    Default: ``_``  (underscore)
+Default: ``_``  (underscore)
     
     
-.. data:: DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS    
+.. setting:: DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS
+
+DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS   
+------------------------------------------
     
-    Default: ``False``    
+Default: ``False``    
         
     
-.. data:: DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT    
+.. setting:: DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT
+
+DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT
+---------------------------------------------
     
-    Default: ``1000``        
-    
-    
-.. data:: DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH    
-    
-    Default: ``/tmp/mayan/documents``         
+Default: ``1000``        
     
     
-.. data:: DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE    
+.. setting:: DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH
+
+DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH 
+---------------------------------------------
     
-    Default: ``True``       
+Default: ``/tmp/mayan/documents``         
+    
+    
+.. setting:: DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE
+
+DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE    
+-----------------------------------------------
+    
+Default: ``True``       
     
     
 OCR
----
+===
     
-.. data:: OCR_TESSERACT_PATH    
-    
-    Default: ``/bin/tesseract``        
+.. setting:: OCR_TESSERACT_PATH
 
-    File path to the ``tesseract`` executable, used to perform OCR on document
-    page's images.
+OCR_TESSERACT_PATH
+------------------
     
-    
-.. data:: OCR_TESSERACT_LANGUAGE    
-    
-    Default: ``eng``           
+Default: ``/bin/tesseract``        
 
-    Language code passed to the ``tesseract`` executable.
+File path to the ``tesseract`` executable, used to perform OCR on document
+page's images.
+    
+    
+.. setting:: OCR_TESSERACT_LANGUAGE
+
+OCR_TESSERACT_LANGUAGE 
+----------------------
+    
+Default: ``eng``           
+
+Language code passed to the ``tesseract`` executable.
         
     
-.. data:: OCR_REPLICATION_DELAY    
+.. setting:: OCR_REPLICATION_DELAY
+
+OCR_REPLICATION_DELAY 
+---------------------
     
-    Default: ``0``               
+Default: ``0``              
     
-    Amount of seconds to delay OCR of documents to allow for the node's
-    storage replication overhead.    
+Amount of seconds to delay OCR of documents to allow for the node's
+storage replication overhead.    
     
     
-.. data:: OCR_NODE_CONCURRENT_EXECUTION    
+.. setting:: OCR_NODE_CONCURRENT_EXECUTION
+
+OCR_NODE_CONCURRENT_EXECUTION
+-----------------------------
     
-    Default: ``1``               
+Default: ``1``               
     
-    Maximum amount of concurrent document OCRs a node can perform.
+Maximum amount of concurrent document OCRs a node can perform.
 
 
-.. data:: OCR_AUTOMATIC_OCR    
+.. setting:: OCR_AUTOMATIC_OCR
+
+OCR_AUTOMATIC_OCR    
+-----------------
     
-    Default: ``False``               
+Default: ``False``               
     
-    Automatically queue newly created documents or newly uploaded versions
-    of existing documents for OCR.
+Automatically queue newly created documents or newly uploaded versions
+of existing documents for OCR.
     
     
-.. data:: OCR_QUEUE_PROCESSING_INTERVAL    
+.. setting:: OCR_QUEUE_PROCESSING_INTERVAL
+
+OCR_QUEUE_PROCESSING_INTERVAL
+-----------------------------
     
-    Default: ``10``               
+Default: ``10``               
 
 
+.. setting:: OCR_UNPAPER_PATH
 
-.. data:: OCR_UNPAPER_PATH    
+OCR_UNPAPER_PATH
+----------------
     
-    Default: ``/usr/bin/unpaper`` 
+Default: ``/usr/bin/unpaper`` 
     
-    File path to the ``unpaper`` executable, used to clean up images before
-    doing OCR.
+File path to the ``unpaper`` executable, used to clean up images before
+doing OCR.
     
 
 Metadata
---------
+========
 
-.. data:: METADATA_AVAILABLE_FUNCTIONS    
-    
-    Default: ``current_date`` 
-   
-   
-.. data:: METADATA_AVAILABLE_MODELS    
-    
-    Default: ``User`` 
-   
-   
+.. setting:: METADATA_AVAILABLE_FUNCTIONS
+
+METADATA_AVAILABLE_FUNCTIONS
+----------------------------
+
+Default: ``current_date`` 
+
+
+.. setting:: METADATA_AVAILABLE_MODELS
+
+METADATA_AVAILABLE_MODELS 
+-------------------------
+
+Default: ``User`` 
+
+
 Common
-------
-   
-.. data:: COMMON_TEMPORARY_DIRECTORY    
-    
-    Default: ``/tmp`` 
-    
-    Temporary directory used site wide to store thumbnails, previews
-    and temporary files. If none is specified, one will be created 
-    using tempfile.mkdtemp()
+======
+
+.. setting:: COMMON_TEMPORARY_DIRECTORY
+
+COMMON_TEMPORARY_DIRECTORY   
+--------------------------
+
+Default: ``/tmp`` 
+
+Temporary directory used site wide to store thumbnails, previews
+and temporary files. If none is specified, one will be created 
+using tempfile.mkdtemp()
 
 
-.. data:: COMMON_DEFAULT_PAPER_SIZE    
-    
-    Default: ``Letter`` 
-    
+.. setting:: COMMON_DEFAULT_PAPER_SIZE
 
-.. data:: COMMON_DEFAULT_PAGE_ORIENTATION    
-    
-    Default: ``Portrait`` 
-    
+COMMON_DEFAULT_PAPER_SIZE   
+-------------------------
 
-.. data:: COMMON_AUTO_CREATE_ADMIN    
-    
-    Default: ``True`` 
-
-    Automatically creates an administrator superuser with the username
-    specified by COMMON_AUTO_ADMIN_USERNAME and with the default password
-    specified by COMMON_AUTO_ADMIN_PASSWORD
-    
-    
-.. data:: COMMON_AUTO_ADMIN_USERNAME    
-    
-    Default: ``admin`` 
-    
-    Username of the automatically created superuser
-    
-    
-.. data:: COMMON_AUTO_ADMIN_PASSWORD    
-    
-    Default: ``admin`` 
-
-    Default password of the automatically created superuser
-            
-    
-.. data:: COMMON_LOGIN_METHOD    
-    
-    Default: ``username`` 
-    
-    Controls the mechanism used to authenticated user. Options are: ``username``, ``email``
-    If using the ``email`` login method a proper email authentication backend must used
-    such as AUTHENTICATION_BACKENDS = ('common.auth.email_auth_backend.EmailAuthBackend',)
+Default: ``Letter`` 
 
 
-.. data:: COMMON_ALLOW_ANONYMOUS_ACCESS
+.. setting:: COMMON_DEFAULT_PAGE_ORIENTATION
 
-    Default: ``False``
-    
-    Allow non authenticated users, access to all views
+COMMON_DEFAULT_PAGE_ORIENTATION    
+-------------------------------
+Default: ``Portrait`` 
 
+
+.. setting:: COMMON_AUTO_CREATE_ADMIN
+
+COMMON_AUTO_CREATE_ADMIN
+------------------------
+
+Default: ``True`` 
+
+Automatically creates an administrator superuser with the username
+specified by COMMON_AUTO_ADMIN_USERNAME and with the default password
+specified by COMMON_AUTO_ADMIN_PASSWORD
+
+
+.. setting:: COMMON_AUTO_ADMIN_USERNAME
+
+COMMON_AUTO_ADMIN_USERNAME
+--------------------------
+
+Default: ``admin`` 
+
+Username of the automatically created superuser
+
+
+.. setting:: COMMON_AUTO_ADMIN_PASSWORD
+
+COMMON_AUTO_ADMIN_PASSWORD
+--------------------------
+
+Default: ``admin`` 
+
+Default password of the automatically created superuser
     
+
+.. setting:: COMMON_LOGIN_METHOD
+
+COMMON_LOGIN_METHOD
+------------------- 
+
+Default: ``username`` 
+
+Controls the mechanism used to authenticated user. Options are: ``username``, ``email``
+If using the ``email`` login method a proper email authentication backend must used
+such as AUTHENTICATION_BACKENDS = ('common.auth.email_auth_backend.EmailAuthBackend',)
+
+
+.. setting:: COMMON_ALLOW_ANONYMOUS_ACCESS
+
+COMMON_ALLOW_ANONYMOUS_ACCESS
+-----------------------------
+
+Default: ``False``
+
+Allow non authenticated users, access to all views
+
+
 Search
-------
+======
 
-.. data:: SEARCH_LIMIT    
-    
-    Default: ``100`` 
-    
-    Maximum amount search hits to fetch and display.
-    
-    
-.. data:: SEARCH_RECENT_COUNT    
-    
-    Default: ``5`` 
-    
-    Maximum number of search queries to remember per user.    
-    
+.. setting:: SEARCH_LIMIT 
+
+SEARCH_LIMIT
+------------   
+
+Default: ``100`` 
+
+Maximum amount search hits to fetch and display.
+
+
+.. setting:: SEARCH_RECENT_COUNT
+
+SEARCH_RECENT_COUNT
+-------------------
+
+Default: ``5`` 
+
+Maximum number of search queries to remember per user.    
+
 
 Web theme
 ---------
 
-.. data:: WEB_THEME_THEME    
-    
-    Default: ``activo`` 
-    
-    CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``, ``default``, ``djime-cerulean``, ``drastic-dark``, ``kathleene``, ``olive``, ``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
-    
-    
-.. data:: WEB_THEME_VERBOSE_LOGIN    
-    
-    Default: ``True`` 
-    
-    Display extra information in the login screen.
-    
-    
+.. setting:: WEB_THEME_THEME
+
+WEB_THEME_THEME
+---------------   
+
+Default: ``activo`` 
+
+CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``, ``default``, ``djime-cerulean``, ``drastic-dark``, ``kathleene``, ``olive``, ``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
+
+
+.. setting:: WEB_THEME_VERBOSE_LOGIN
+
+WEB_THEME_VERBOSE_LOGIN
+----------------------- 
+
+Default: ``True`` 
+
+Display extra information in the login screen.
+
+
 Main
-----
+====
 
-.. data:: MAIN_SIDE_BAR_SEARCH    
-    
-    Default: ``False`` 
-    
-    Controls whether the search functionality is provided by a sidebar widget or by a menu entry.
-    
+.. setting:: MAIN_SIDE_BAR_SEARCH
 
-.. data:: MAIN_DISABLE_HOME_VIEW    
-    
-    Default: ``False`` 
+MAIN_SIDE_BAR_SEARCH
+--------------------    
+
+Default: ``False`` 
+
+Controls whether the search functionality is provided by a sidebar widget or by a menu entry.
 
 
-.. data:: MAIN_DISABLE_ICONS    
-    
-    Default: ``False`` 
-    
-    
+.. setting:: MAIN_DISABLE_HOME_VIEW
+
+MAIN_DISABLE_HOME_VIEW
+----------------------
+
+Default: ``False`` 
+
+
+.. setting:: MAIN_DISABLE_ICONS
+
+MAIN_DISABLE_ICONS
+------------------ 
+
+Default: ``False`` 
+
+
 User management
----------------
+===============
 
-.. data:: ROLES_DEFAULT_ROLES    
-    
-    Default: ``[]`` 
-    
-    A list of existing roles that are automatically assigned to newly created users
+.. setting:: ROLES_DEFAULT_ROLES
+
+ROLES_DEFAULT_ROLES
+-------------------
+
+Default: ``[]`` 
+
+A list of existing roles that are automatically assigned to newly created users
 
 
 Signatures
-----------
+==========
 
-.. data:: SIGNATURES_KEYSERVERS    
-    
-    Default: ``['pool.sks-keyservers.net']`` 
-    
-    List of keyservers to be queried for unknown keys.
+.. setting:: SIGNATURES_KEYSERVERS    
+
+SIGNATURES_KEYSERVERS
+---------------------
+
+Default: ``['pool.sks-keyservers.net']`` 
+
+List of keyservers to be queried for unknown keys.
 
 
-.. data:: SIGNATURES_GPG_HOME    
-    
-    Default: ``gpg_home``
-    
-    Home directory used to store keys as well as configuration files.
+.. setting:: SIGNATURES_GPG_HOME
+
+SIGNATURES_GPG_HOME
+-------------------    
+
+Default: ``gpg_home``
+
+Home directory used to store keys as well as configuration files.

@@ -87,6 +87,6 @@ Having trouble? We'd like to help!
 
 * Report bugs with **Mayan EDMS** using Github's `ticket tracker`_.
 
-.. _archives of the mayan-edms mailing list: http://groups.google.com/group/django-users/
+.. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
 .. _post a question: http://groups.google.com/group/mayan-edms
 .. _ticket tracker: http://github.com/rosarior/mayan/issues
