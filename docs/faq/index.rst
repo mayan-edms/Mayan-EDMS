@@ -7,7 +7,19 @@ Frequently asked questions and solutions
 Database related
 ----------------
 
-Q: _mysql_exceptions.OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+Q: PostgreSQL vs. MySQL
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Since Django abstracts database operations from a functional point of view
+**Mayan EDMS** will behave exactly the same either way.  The only concern
+would be that MySQL doesn't support transactions for schema modifying
+commands.  The only moment this could cause problems is when running
+South migrations during upgrades, if a migration fails the database
+structure is left in a transitory state and has to be reverted manually
+before trying again.
+
+
+Q: _mysql_exceptions. OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci, IMPLICIT) and (utf8_general_ci, COERCIBLE) for operation '='")
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Solution::
@@ -66,8 +78,11 @@ Q: File system links not showing when serving content with ``Samba``
   - Ref: 1- http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
 
 
+Document handling
+-----------------
+
 How to store documents outside of **Mayan EDMS's** path
--------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Sub class Django's ``FileSystemStorage`` class:
     
@@ -87,8 +102,8 @@ How to store documents outside of **Mayan EDMS's** path
       DOCUMENTS_STORAGE_BACKEND = CustomStorage
 
 
-How to enable the ``GridFS`` storage backend
---------------------------------------------
+Q: How to enable the ``GridFS`` storage backend
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Solution:
    
@@ -99,9 +114,19 @@ How to enable the ``GridFS`` storage backend
   - Filesystem metadata indexing will not work with this storage backend as
     the files are inside a ``MongoDB`` database and can't be linked (at least for now)
 
+Q: How do you upload a new version of an existing file? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Site search is slow
--------------------
+* Solution:
+
+  - Choose a document, and go to the versions tab, on the right menu at
+    the bottom under ``Other available action`` there is
+    ``Upload new version``.  Clicking it will take you to a very similar
+    view as the ``Upload new document`` but you will be able to specify
+    version number and comments for the new version being uploaded.
+
+Q: Site search is slow
+~~~~~~~~~~~~~~~~~~~
 
 * Add indexes to the following fields:
   
@@ -109,8 +134,12 @@ Site search is slow
   - ``documents_documentpage`` - content, recommended size: 3000
 
 
-How to enable x-sendile support for ``Apache``
-----------------------------------------------
+Webserver
+---------
+
+Q: How to enable x-sendile support for ``Apache``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * If using Ubuntu execute the following::
  
   $ sudo apt-get install libapache2-mod-xsendfile
@@ -125,11 +154,103 @@ How to enable x-sendile support for ``Apache``
     XSendFileAllowAbove on
       
 
-The included version of ``unoconv`` in my distribution is too old
--------------------------------------------------------------
+OCR
+---
+
+Q: The included version of ``unoconv`` in my distribution is too old
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       
 * Only the file 'unoconv' file from https://github.com/dagwieers/unoconv is needed.  
   Put it in a user designated directory for binaries such as /usr/local/bin and 
   setup Mayan's configuration option in your settings_local.py file like this::
     
     CONVERTER_UNOCONV_PATH = '/usr/local/bin/unoconv'
+    
+    
+Deployments
+-----------
+
+Q: Is virtualenv required as specified in the documentation?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* It is not necessary, it's just a strong recommendation mainly to reduce
+  dependency conflicts by isolation from the main Python system install.
+  If not using a virtualenv, pip would install Mayan's dependencies
+  globally coming in conflict with the distribution's prepackaged Python
+  libraries messing other Django projects or Python programs, or another
+  later Python/Django project dependencies coming into conflict causing
+  Mayan to stop working for no apparent reason.
+  
+  
+Q: Mayan EDMS installed correctly and works, but static files are not served
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Django's development server doesn't serve static files unless the ``DEBUG``
+option is set to ``True``, this mode of operation should only be used for 
+development or testing.  For production deployments the management command::
+
+  $ ./manage.py collectstatic
+  
+should be used and the resulting ``static`` folder served from a webserver.
+For more information, read https://docs.djangoproject.com/en/dev/howto/static-files/
+and https://docs.djangoproject.com/en/1.2/howto/static-files/ or 
+http://mayan-edms-ru.blogspot.com/2011/11/blog-post_09.html 
+
+  
+Other
+-----
+
+
+Q: How to connect Mayan EDMS to an Active Directory tree
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I used these two libraries as they seemed the most maintained from the quick search I did.
+
+* http://www.python-ldap.org/
+* http://packages.python.org/django-auth-ldap/
+
+After figuring out the corresponding OU, CN and such (which took quite a while since I'm not well versed in LDAP).  For configuration options, Mayan EDMS imports settings_local.py after importing settings.py to allow users to override the defaults without modifying any file tracked by Git, this makes upgrading by using Git's pull command extremely easy.  My settings_local.py file is as follows:
+
+::
+
+    import ldap
+    from django_auth_ldap.config import LDAPSearch
+
+    # makes sure this works in Active Directory
+    ldap.set_option(ldap.OPT_REFERRALS, 0)
+
+    AUTH_LDAP_SERVER_URI = "ldap://172.16.XX.XX:389"
+    AUTH_LDAP_BIND_DN = 'cn=Roberto Rosario Gonzalez,ou=Aguadilla,ou=XX,ou=XX,dc=XX,dc=XX,dc=XX'
+    AUTH_LDAP_BIND_PASSWORD = 'XXXXXXXXXXXXXX'
+    AUTH_LDAP_USER_SEARCH = LDAPSearch('dc=XX,dc=XX,dc=XX', ldap.SCOPE_SUBTREE, '(SAMAccountName=%(user)s)')
+
+    # Populate the Django user from the LDAP directory.
+    AUTH_LDAP_USER_ATTR_MAP = {
+        "first_name": "givenName",
+        "last_name": "sn",
+        "email": "mail"
+    }
+
+    # This is the default, but I like to be explicit.
+    AUTH_LDAP_ALWAYS_UPDATE_USER = True
+
+    AUTHENTICATION_BACKENDS = (
+        'django_auth_ldap.backend.LDAPBackend',
+        'django.contrib.auth.backends.ModelBackend',
+    )
+
+
+
+if your organization policies don't allow anonymous directory queries,
+create a dummy account and set the ``AUTH_LDAP_BIND_DN`` and
+``AUTH_LDAP_BIND_PASSWORD`` options to match the account.
+
+For a more advanced example check this StackOverflow question:
+http://stackoverflow.com/questions/6493985/django-auth-ldap
+
+
+Q:  Can you change the display order of documents...i.e can they be in alphabetical order?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A the moment no, but it is something being considered.
+
