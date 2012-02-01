@@ -126,16 +126,20 @@ column after those is ignored.
 Upgrading from a previous version
 =================================
 
-::
+Start off by creating the new database structures with::
 
     $ ./manage.py syncdb
+
+Then migrate existing database schema with::
+
     $ ./manage.py migrate permissions 0001 --fake
     $ ./manage.py migrate permissions
 
 
 When the following message appears
 
-.. epigraph::
+::
+
     The following content types are stale and need to be deleted:
 
         permissions | permission
@@ -146,13 +150,31 @@ When the following message appears
 
         Type 'yes' to continue, or 'no' to cancel:
     
-    Types ``yes`` and press **Enter**
+Type ``yes`` and press **Enter**
 
-::
+And continue migrating database schema with::
 
     $ ./manage.py migrate documents
     $ ./manage.py migrate document_signatures
+    $ ./manage.py migrate permissions 0001 --fake
+    $ ./manage.py migrate permissions
 
+Again when a similar messages appears
+::
+
+    The following content types are stale and need to be deleted:
+
+        document_indexing | indexinstance
+
+    Any objects related to these content types by a foreign key will also
+    be deleted. Are you sure you want to delete these content types?
+    If you're unsure, answer 'no'.
+
+        Type 'yes' to continue, or 'no' to cancel:
+
+Type ``yes`` and press **Enter**
+
+The upgrade procedure is complete.
 
 Backward incompatible changes
 =============================

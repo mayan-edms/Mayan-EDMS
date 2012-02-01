@@ -1,0 +1,10 @@
+Version 0.10.1
+--------------
+* Upgraded django-compressor to version 1.1.1, run::
+
+  $ pip install --upgrade -r requirements/production.txt
+
+  to upgrade
+  
+* django-compressor is now disabled by default, users must explicitly 
+  enable it adding COMPRESS_ENABLED=True to their settings_local.py file

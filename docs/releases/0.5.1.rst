@@ -1,0 +1,10 @@
+Version 0.5.1
+-------------
+* Applied initial merge of the new subtemplate renderer
+* Fixed tag removal logic
+* Initial commit to support document comments
+* Updated so that loading spinner is displayed always
+* Exclude tags from the local document upload form
+* Added document tagging support
+
+  - Requires installing ``django-taggit`` and doing a ``sync-db``

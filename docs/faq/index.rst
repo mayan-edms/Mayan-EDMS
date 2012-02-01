@@ -4,9 +4,11 @@ FAQ
 
 Frequently asked questions and solutions
 
+Database related
+----------------
 
-_mysql_exceptions.OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
-------------------------------------------------------------------------------------------------------------------------------------------------------
+Q: _mysql_exceptions.OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Solution::
 
@@ -25,8 +27,8 @@ _mysql_exceptions.OperationalError: (1267, "Illegal mix of collations (latin1_sw
   - http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
         
         
-Incorrect string value: ``'\xE2\x80\x95rs6...'`` for column ``'content'`` at row 1
-----------------------------------------------------------------------------------
+Q: Incorrect string value: ``'\xE2\x80\x95rs6...'`` for column ``'content'`` at row 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When using ``MySQL`` and doing OCR on languages other than English
     
@@ -37,8 +39,11 @@ When using ``MySQL`` and doing OCR on languages other than English
   - Ref: 2- http://markmail.org/message/bqajx2utvmtriixi
 
 
-File system links not showing when serving content with ``Samba``
------------------------------------------------------------------
+Document sharing
+----------------
+
+Q: File system links not showing when serving content with ``Samba``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Solution:
   

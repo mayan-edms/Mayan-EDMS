@@ -1,6 +1,6 @@
-=======
-Credits
-=======
+=============
+Software used
+=============
 
 * Python
     * Copyright (c) 2001-2010 Python Software Foundation.

@@ -1,0 +1,32 @@
+Version 0.8.1
+-------------
+* Tags can now also be created from the main menu
+* Added item count column to index instance list view
+* Updated document indexing widget to show different icon for indexes or
+  indexes that contain documents
+* Replaced the Textarea widget with the TextAreaDiv widget on document
+  and document page detail views
+
+  - This change will allow highlighting search terms in the future
+  
+* Unknown document file format page count now defaults to 1
+
+  - When uploading documents which the selected converted backend doesn't
+    understand, the total page count will fallback to 1 page to at least
+    show some data, and a comment will be automatically added to the 
+    document description
+    
+* Added new MAIN_DISABLE_ICONS to turn off all icons
+
+  - This options works very well when using the ``default`` theme
+  
+* The default theme is now ``activo``
+* Improved document page views and document page transformation views
+  navigation
+* Added OCR queue document transformations
+
+  - Use this for doing resizing or rotation fixes to improve OCR results
+  
+* Added reset view link to the document page view to reset the zoom 
+  level and page rotation
+* Staging files now show a thumbnail preview instead of preview link

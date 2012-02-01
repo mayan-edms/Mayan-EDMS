@@ -1,0 +1,6 @@
+Version 0.7.4
+-------------
+* Renamed 'secondary actions' to 'secondary menu' 
+* Added document type setup views to the setup menu
+* Added document type file name editing views to the setup menu
+* Fixed document queue properties sidebar template not showing

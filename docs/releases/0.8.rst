@@ -1,0 +1,62 @@
+Version 0.8
+-----------
+* Distributed OCR queue processing via celery is disabled for the time
+  being
+* Added support for local scheduling of jobs
+
+  - This addition removes celery beat requirement, and make is optional
+  
+* Improve link highlighting
+* Navigation improvements
+* Documents with an unknown file format now display a mime type place
+  holder icon instead of a error icon
+* Mayan now does pre caching of document visual representation improving
+  overall thumbnail, preview and display speed
+  
+  - Page image rotation and zooming is faster too with this update
+  
+* Removed all QUALITY related settings
+* ``COMMON_TEMPORARY_DIRECTORY`` is now validated when Mayan starts and if
+  not valid falls back to creating it's own temporary folder
+* Added PDF file support to the python converter backend via ghostscript
+
+  - This requires the installation of:
+    
+    + ghostscript python package
+    + ghostscript system binaries and libraries
+        
+* Added PDF text parsing support to the python converter backend
+
+  - This requires the installation of:
+    
+    + pdfminer python package
+        
+* Added PDF page count support to the python converter backend
+* Added python only converter backend supporting resizing, zooming and rotation
+
+  - This backend required the installation of the python image library (PIL)
+  - This backend is useful when Graphicsmagick or Imagemagick can not be installed for some reason
+  - If understand fewer file format than the other 2 backends
+    
+* Added default tranformation support to document sources
+* Removed ``DOCUMENT_DEFAULT_TRANSFORMATIONS`` setup options
+* Document sources are now defined via a series of view under the setup main menu
+* This removes all the ``DOCUMENT_STAGING`` related setup options
+  
+  - Two document source types are supported local (via a web form), 
+    and staging
+  - However multiple document sources can be defined each with their own
+    set of transformations and default metadata selection
+      
+* Use ``python-magic`` to determine a document's mimetype otherwise 
+  fallback to use python's mimetypes library
+* Remove the included sources for ``python-magic`` instead it is now fetched
+  from github by pip
+* Removed the document subtemplates and changed to a tabbed style
+* Added link to document index content view to navigate the tree upwards
+* Added new option ``MAIN_DISABLE_HOME_VIEW`` to disable the home main menu
+  tab and save some space
+* Added new option to the web theme app, ``WEB_THEME_VERBOSE_LOGIN``
+  that display a more information on the login screen
+  (version, copyright, logos)
+* Added a confirmation dialog to the document tag removal view
