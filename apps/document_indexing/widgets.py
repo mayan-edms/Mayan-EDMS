@@ -1,13 +1,15 @@
+from __future__ import absolute_import
+
 from django.utils.safestring import mark_safe
 
-from document_indexing.models import IndexInstance
+from .models import IndexInstanceNode
 
 FOLDER_W_DOCUMENTS = u'folder_page'
 FOLDER_ICON = u'folder'
 
 
 def index_instance_item_link(index_instance_item):
-    if isinstance(index_instance_item, IndexInstance):
+    if isinstance(index_instance_item, IndexInstanceNode):
         if index_instance_item.index.link_documents:
             icon = FOLDER_W_DOCUMENTS
         else:

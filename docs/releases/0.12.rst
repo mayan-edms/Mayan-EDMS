@@ -152,6 +152,19 @@ When the following message appears
 
     $ ./manage.py migrate documents
     $ ./manage.py migrate document_signatures
+    $ ./manage.py migrate permissions 0001 --fake
+    $ ./manage.py migrate permissions
+
+::
+The following content types are stale and need to be deleted:
+
+    document_indexing | indexinstance
+
+Any objects related to these content types by a foreign key will also
+be deleted. Are you sure you want to delete these content types?
+If you're unsure, answer 'no'.
+
+    Type 'yes' to continue, or 'no' to cancel: yes
 
 
 Backward incompatible changes

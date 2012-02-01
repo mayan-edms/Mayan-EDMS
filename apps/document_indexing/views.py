@@ -15,7 +15,7 @@ from common.utils import encapsulate
 
 from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES)
-from .models import IndexInstance
+from .models import (Index, IndexTemplateNode, IndexInstanceNode)
 from .api import (get_breadcrumbs, get_instance_link,
     do_rebuild_all_indexes)
 from .widgets import index_instance_item_link

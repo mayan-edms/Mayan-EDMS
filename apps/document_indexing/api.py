@@ -9,7 +9,8 @@ from django.template.defaultfilters import slugify
 from documents.models import Document
 from metadata.classes import MetadataObject
 
-from .models import (Index, IndexInstance, DocumentRenameCount)
+from .models import (Index, IndexTemplateNode, IndexInstanceNode,
+    DocumentRenameCount)
 from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
     MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
 from .filesystem import (fs_create_index_directory,
