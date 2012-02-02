@@ -16,7 +16,7 @@ from permissions.models import Permission
 from document_indexing.api import update_indexes, delete_indexes
 from acls.models import AccessEntry
 
-from common.utils import generate_choices_w_labels, encapsulate
+from common.utils import generate_choices_w_labels, encapsulate, get_object_name
 from common.views import assign_remove
 
 from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
@@ -31,6 +31,7 @@ from .forms import (MetadataFormSet, AddMetadataForm,
 from .api import save_metadata_list
 from .models import (DocumentMetadata, MetadataType, MetadataSet,
     MetadataSetItem, DocumentTypeDefaults)
+from .classes import MetadataObjectWrapper
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
@@ -523,40 +524,57 @@ def setup_metadata_set_delete(request, metadata_set_id):
         context_instance=RequestContext(request))
 
 
-def get_document_type_metadata_members(document_type):
-    metadata_types = set(document_type.documenttypedefaults_set.get().default_metadata.all())
-    metadata_sets = set(document_type.documenttypedefaults_set.get().default_metadata_sets.all())
-    return list(metadata_types | metadata_sets)
+def _as_choice_list(items):
+    return sorted([(MetadataObjectWrapper.encapsulate(item).gid, get_object_name(item, display_object_type=False)) for item in items], key=lambda x: x[1])
 
 
 def get_document_type_metadata_non_members(document_type):
-    members = set(get_document_type_metadata_members(document_type))
-    all_metadata_objects = set(MetadataType.objects.all()) | set(MetadataSet.objects.all())
-    return list(all_metadata_objects - members)
+    metadata_types, metadata_sets = get_document_type_metadata_members(document_type, separate=True)
+    metadata_types = set(MetadataType.objects.all()) - set(metadata_types)
+    metadata_sets = set(MetadataSet.objects.all()) - set(metadata_sets)
+
+    non_members = []
+    if metadata_types:
+        non_members.append((_(u'Metadata types'), _as_choice_list(list(metadata_types))))
+
+    if metadata_sets:
+        non_members.append((_(u'Metadata sets'), _as_choice_list(list(metadata_sets))))
+
+    return non_members
+
+
+def get_document_type_metadata_members(document_type, separate=False):
+    metadata_types = set(document_type.documenttypedefaults_set.get().default_metadata.all())
+    metadata_sets = set(document_type.documenttypedefaults_set.get().default_metadata_sets.all())
+
+    if separate:
+        return metadata_types, metadata_sets
+    else:
+        members = []
+
+        if metadata_types:
+            members.append((_(u'Metadata types'), _as_choice_list(list(metadata_types))))
+
+        if metadata_sets:
+            members.append((_(u'Metadata sets'), _as_choice_list(list(metadata_sets))))
+
+        return members
 
 
 def add_document_type_metadata(document_type, selection):
-    model, pk = selection.split(u',')
-    if model == 'metadata type':
-        metadata_type = get_object_or_404(MetadataType, pk=pk)
-        document_type.documenttypedefaults_set.get().default_metadata.add(metadata_type)
-    elif model == 'metadata set':
-        metadata_set = get_object_or_404(MetadataSet, pk=pk)
-        document_type.documenttypedefaults_set.get().default_metadata_sets.add(metadata_set)
-    else:
-        raise Exception
+    metadata_object = MetadataObjectWrapper.get(selection).source_object
+    try:
+        document_type.documenttypedefaults_set.get().default_metadata.add(metadata_object)
+    except TypeError:
+        document_type.documenttypedefaults_set.get().default_metadata_sets.add(metadata_object)
 
 
 def remove_document_type_metadata(document_type, selection):
-    model, pk = selection.split(u',')
-    if model == 'metadata type':
-        metadata_type = get_object_or_404(MetadataType, pk=pk)
-        document_type.documenttypedefaults_set.get().default_metadata.remove(metadata_type)
-    elif model == 'metadata set':
-        metadata_set = get_object_or_404(MetadataSet, pk=pk)
-        document_type.documenttypedefaults_set.get().default_metadata_sets.remove(metadata_set)
+    metadata_object = MetadataObjectWrapper.get(selection).source_object
+    if isinstance(metadata_object, MetadataType):
+        document_type.documenttypedefaults_set.get().default_metadata.remove(metadata_object)
     else:
-        raise Exception
+        document_type.documenttypedefaults_set.get().default_metadata_sets.remove(metadata_object)
 
 
 def setup_document_type_metadata(request, document_type_id):
@@ -569,8 +587,8 @@ def setup_document_type_metadata(request, document_type_id):
 
     return assign_remove(
         request,
-        left_list=lambda: generate_choices_w_labels(get_document_type_metadata_non_members(document_type)),
-        right_list=lambda: generate_choices_w_labels(get_document_type_metadata_members(document_type)),
+        left_list=lambda: get_document_type_metadata_non_members(document_type),
+        right_list=lambda: get_document_type_metadata_members(document_type),
         add_method=lambda x: add_document_type_metadata(document_type, x),
         remove_method=lambda x: remove_document_type_metadata(document_type, x),
         left_list_title=_(u'non members of document type: %s') % document_type,
@@ -580,4 +598,5 @@ def setup_document_type_metadata(request, document_type_id):
             'navigation_object_name': 'document_type',
             'object_name': _(u'document type'),
         },
+        grouped=True,
     )
