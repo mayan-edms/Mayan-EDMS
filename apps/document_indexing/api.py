@@ -5,7 +5,7 @@ from django.utils.translation import ugettext
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
-from metadata.classes import MetadataObject
+from metadata.classes import MetadataClass
 
 from .models import (Index, IndexTemplateNode, IndexInstanceNode,
     DocumentRenameCount)
@@ -33,7 +33,7 @@ def update_indexes(document):
     eval_dict = {}
     document_metadata_dict = dict([(metadata.metadata_type.name, metadata.value) for metadata in document.documentmetadata_set.all() if metadata.value])
     eval_dict['document'] = document
-    eval_dict['metadata'] = MetadataObject(document_metadata_dict)
+    eval_dict['metadata'] = MetadataClass(document_metadata_dict)
 
     for index in Index.objects.filter(enabled=True):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
