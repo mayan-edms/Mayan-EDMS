@@ -1,5 +1,5 @@
 #!/bin/sh
-COMPILEMESSAGES="django-admin compilemessages"
+COMPILEMESSAGES="django-admin.py compilemessages"
 PWD=`pwd`
 BASE=$PWD
 

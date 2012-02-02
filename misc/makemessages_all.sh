@@ -1,5 +1,5 @@
 #!/bin/sh
-MAKEMESSAGES="django-admin makemessages"
+MAKEMESSAGES="django-admin.py makemessages"
 PWD=`pwd`
 BASE=$PWD
 
