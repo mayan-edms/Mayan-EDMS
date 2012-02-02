@@ -26,7 +26,7 @@ class Folder(models.Model):
 
     @property
     def documents(self):
-        return [folder_document.document for folder_document in self.folderdocument_set.all()]
+        return Document.objects.filter(folderdocument__folder=self)
 
     def remove_document(self, document):
         folder_document = self.folderdocument_set.get(document=document)
