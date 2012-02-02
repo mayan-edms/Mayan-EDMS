@@ -3,7 +3,9 @@ Mayan
 
 Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities.
 
-[Website](http://bit.ly/mayan-edms)
+[Website](http://www.mayan-edms.com)
+
+[Mailing list (via Google Groups)](http://groups.google.com/group/mayan-edms)
 
 [Video demostration](http://bit.ly/pADNXv)
 
