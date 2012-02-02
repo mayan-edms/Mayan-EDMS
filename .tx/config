@@ -192,3 +192,11 @@ trans.es = apps/acls/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/acls/locale/pt/LC_MESSAGES/django.po
 trans.ru = apps/acls/locale/ru/LC_MESSAGES/django.po
 trans.it = apps/acls/locale/it/LC_MESSAGES/django.po
+
+[mayan-edms.apps-feedback]
+source_file = apps/feedback/locale/en/LC_MESSAGES/django.po
+source_lang = en
+trans.es = apps/feedback/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/feedback/locale/pt/LC_MESSAGES/django.po
+trans.ru = apps/feedback/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/feedback/locale/it/LC_MESSAGES/django.po
