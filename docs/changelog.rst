@@ -1,3 +1,8 @@
+Version 0.11.2
+--------------
+* Fix issue #17, thanks to Сергей Глита (https://github.com/gsv70) for 
+  finding this one.
+
 Version 0.11
 ------------
 * Support for signed documents verification added, embedded and detached
