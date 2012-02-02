@@ -4,10 +4,12 @@
 Contributors
 ============
 
+
 How to contribute?
 ------------------
 
 You can help further the development of **Mayan EDMS** by reporting bugs, submitting documentation, patches, with monetary or hardware donations. 
+
 
 Bug fixes
 ---------
@@ -16,6 +18,7 @@ Bug fixes
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * Meurig Freeman (https://github.com/meurig)
 * David Herring (https://github.com/abadger1406)
+
 
 Bug reports
 -----------
@@ -29,10 +32,12 @@ Bug reports
 * valterwill (https://github.com/valterwill)
 * David Herring (https://github.com/abadger1406)
 
+
 Patches
 -------
 * Meurig Freeman (https://github.com/meurig)
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
+
 
 Suggestions
 -----------
@@ -40,6 +45,7 @@ Suggestions
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * Barry Rowlingson (http://geospaced.blogspot.com)
 * Gour (https://github.com/gour)
+
 
 Translations
 ------------
@@ -62,6 +68,8 @@ Remote access for debugging
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * David Herring (https://github.com/abadger1406)
 
+
 Monetary donations
 ------------------
-* David Herring (https://github.com/abadger1406)
+* David Herring (https://github.com/abadger1406) - $100
+* David Herring (https://github.com/abadger1406) - $250
