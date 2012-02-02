@@ -255,9 +255,6 @@ def template_node_delete(request, node_pk):
         return HttpResponseRedirect(next)
 
     context = {
-        #'node': node,
-        #'object_name': _(u'index'),
-        #'navigation_object_name': 'index',          
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -276,24 +273,20 @@ def template_node_delete(request, node_pk):
         context_instance=RequestContext(request))
 
 
-# User views
-
-#from . import index_roots as index_roots_link
-
 def index_list(request):
     context = {
         'title': _(u'indexes'),
         #'hide_object': True,
         #'list_object_variable_name': 'index',
-        'extra_columns': [
-            {'name': _(u'root'), 'attribute': 'root'},
+        #'extra_columns': [
+        #    {'name': _(u'elements'), 'attribute': 'root'},
         #    {'name': _(u'name'), 'attribute': 'name'},
         #    {'name': _(u'title'), 'attribute': 'title'},
-        ],
+        #],
         'overrided_object_links': [{}],
     }
 
-    queryset = Index.objects.all()
+    queryset = Index.objects.filter(enabled=True)
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
@@ -380,13 +373,16 @@ def rebuild_index_instances(request):
 
 
 def document_index_list(request, document_id):
-    #TODO: add ACL check
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     document = get_object_or_404(Document, pk=document_id)
-
     object_list = []
 
-    for index_instance in document.indexinstancenode_set.all():
+    queryset = document.indexinstancenode_set.all()
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
+    except PermissionDenied:
+        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset)
+
+    for index_instance in queryset:
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
     return render_to_response('generic_list.html', {
