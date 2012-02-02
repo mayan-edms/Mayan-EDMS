@@ -21,9 +21,9 @@ from acls.utils import apply_default_acls
 
 from .forms import IndexForm, IndexTemplateNodeForm
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
-from .api import (get_breadcrumbs, get_instance_link,
-    do_rebuild_all_indexes)
-from .widgets import index_instance_item_link
+from .api import do_rebuild_all_indexes
+from .widgets import (index_instance_item_link, get_instance_link,
+    get_breadcrumbs)
 from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
     PERMISSION_DOCUMENT_INDEXING_SETUP,
