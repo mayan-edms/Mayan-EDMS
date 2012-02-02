@@ -42,7 +42,7 @@ Understanding Mayan EDMS
   :doc:`Permission system <topics/permissions>` |
   :doc:`Document visualization <topics/document_visualization>` |
   :doc:`OCR <topics/ocr>` |
-  :doc:`File storage <topics/file_storage>`
+  :doc:`File storage <topics/file_storage>` |
   :doc:`Transformations <topics/transformations>`
 
 
