@@ -13,6 +13,7 @@ from django.contrib.auth.views import login
 from django.utils.simplejson import dumps, loads
 from django.contrib.auth.views import password_change
 from django.contrib.auth.models import User
+from django.conf import settings
 
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
     EmailAuthenticationForm)
@@ -87,8 +88,11 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         messages.success(request, _(u'%(selection)s added successfully added to %(right_list_title)s.') % {
                             'selection': label, 'right_list_title': right_list_title})
                     except:
-                        messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
+                        if settings.DEBUG:
+                            raise
+                        else:
+                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                                'selection': label, 'right_list_title': right_list_title})
 
         elif u'%s-submit' % right_list_name in request.POST.keys():
             selected_list = ChoiceForm(request.POST,
@@ -111,8 +115,11 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         messages.success(request, _(u'%(selection)s added successfully removed from %(right_list_title)s.') % {
                             'selection': label, 'right_list_title': right_list_title})
                     except:
-                        messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
+                        if settings.DEBUG:
+                            raise
+                        else:
+                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                                'selection': label, 'right_list_title': right_list_title})
     unselected_list = ChoiceForm(prefix=left_list_name,
         choices=left_list())
     selected_list = ChoiceForm(prefix=right_list_name,
