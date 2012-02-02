@@ -18,8 +18,21 @@ class Index(models.Model):
     title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
 
+    @property
+    def template_root(self):
+        # Catch error
+        return self.indextemplatenode_set.get(parent=None)
+
+    @property
+    def instance_root(self):
+        return self.template_root.indexinstancenode_set.get()
+
     def __unicode__(self):
         return self.title
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('index_instance_node_view', [self.instance_root.pk])
 
     class Meta:
         verbose_name = _(u'index')
@@ -60,7 +73,7 @@ class IndexInstanceNode(MPTTModel):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('index_instance_list', [self.pk])
+        return ('index_instance_node_view', [self.pk])
 
     #def get_document_list_display(self):
     #    return u', '.join([d.file_filename for d in self.documents.all()])

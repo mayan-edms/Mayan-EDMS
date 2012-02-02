@@ -10,12 +10,14 @@ from django.contrib import messages
 #from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.utils.html import conditional_escape, mark_safe
+from django.core.exceptions import PermissionDenied
 
 from permissions.models import Permission
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate
+from acls.utils import apply_default_acls
 
 from .forms import IndexForm, IndexTemplateNodeForm
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
@@ -64,7 +66,7 @@ def index_setup_create(request):
         form = IndexForm(request.POST)
         if form.is_valid():
             index = form.save()
-            #apply_default_acls(folder, request.user)
+            apply_default_acls(index, request.user)
             messages.success(request, _(u'Index created successfully.'))
             return HttpResponseRedirect(reverse('index_setup_list'))
     else:
@@ -169,32 +171,6 @@ def index_setup_view(request, index_pk):
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
 
-
-def index_list(request):
-    context = {
-        'title': _(u'indexes'),
-        #'hide_object': True,
-        #'list_object_variable_name': 'index',
-        #'extra_columns': [
-        #    {'name': _(u'name'), 'attribute': 'name'},
-        #    {'name': _(u'title'), 'attribute': 'title'},
-        #]        
-        'overrided_object_links': [{}],
-    }
-
-    queryset = Index.objects.all()
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_SETUP])
-    except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, queryset)
-
-    context['object_list'] = queryset
-
-    return render_to_response('generic_list.html',
-        context,
-        context_instance=RequestContext(request)
-    )
 
 # Node views
 def template_node_create(request, parent_pk):
@@ -301,30 +277,56 @@ def template_node_delete(request, node_pk):
 
 
 # User views
-def index_instance_list(request, index_id=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
 
-    if index_id:
-        index_instance = get_object_or_404(IndexInstanceNode, pk=index_id)
-        index_instance_list = [index for index in index_instance.get_children().order_by('value')]
-        breadcrumbs = get_breadcrumbs(index_instance)
-        if index_instance.documents.count():
-            for document in index_instance.documents.all().order_by('file_filename'):
-                index_instance_list.append(document)
-    else:
-        index_instance_list = IndexInstanceNode.objects.filter(parent=None)
-        breadcrumbs = get_instance_link()
-        index_instance = None
+#from . import index_roots as index_roots_link
+
+def index_list(request):
+    context = {
+        'title': _(u'indexes'),
+        #'hide_object': True,
+        #'list_object_variable_name': 'index',
+        'extra_columns': [
+            {'name': _(u'root'), 'attribute': 'root'},
+        #    {'name': _(u'name'), 'attribute': 'name'},
+        #    {'name': _(u'title'), 'attribute': 'title'},
+        ],
+        'overrided_object_links': [{}],
+    }
+
+    queryset = Index.objects.all()
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
+    except PermissionDenied:
+        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset)
+
+    context['object_list'] = queryset
+
+    return render_to_response('generic_list.html',
+        context,
+        context_instance=RequestContext(request)
+    )
+
+
+def index_instance_node_view(request, index_instance_node_pk):
+    index_instance = get_object_or_404(IndexInstanceNode, pk=index_instance_node_pk)
+    index_instance_list = [index for index in index_instance.get_children().order_by('value')]
+    breadcrumbs = get_breadcrumbs(index_instance)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, index_instance.index)
 
     title = mark_safe(_(u'contents for index: %s') % breadcrumbs)
 
     if index_instance:
-        if index_instance.index.link_documents:
+        if index_instance.index_template_node.link_documents:
             # Document list, use the document_list view for consistency
             return document_list(
                 request,
                 title=title,
-                object_list=index_instance_list,
+                object_list=index_instance.documents.all(),
                 extra_context={
                     'object': index_instance
                 }
@@ -334,12 +336,12 @@ def index_instance_list(request, index_id=None):
         'object_list': index_instance_list,
         'extra_columns_preffixed': [
             {
-                'name': _(u'index'),
+                'name': _(u'node'),
                 'attribute': encapsulate(lambda x: index_instance_item_link(x))
             },
             {
                 'name': _(u'items'),
-                'attribute': encapsulate(lambda x: x.documents.count() if x.index.link_documents else x.get_children().count())
+                'attribute': encapsulate(lambda x: x.documents.count() if x.index_template_node.link_documents else x.get_children().count())
             }
         ],
         'title': title,
@@ -378,12 +380,13 @@ def rebuild_index_instances(request):
 
 
 def document_index_list(request, document_id):
+    #TODO: add ACL check
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     document = get_object_or_404(Document, pk=document_id)
 
     object_list = []
 
-    for index_instance in document.indexinstance_set.all():
+    for index_instance in document.indexinstancenode_set.all():
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
     return render_to_response('generic_list.html', {

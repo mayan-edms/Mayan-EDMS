@@ -12,7 +12,7 @@ def assemble_suffixed_filename(filename, suffix=0):
     """
 
     if suffix:
-        name, extension = filename.split(os.split(os.extsep))
+        name, extension = os.path.splitext(filename)
         return SUFFIX_SEPARATOR.join([name, unicode(suffix), os.extsep, extension])
     else:
         return filename
