@@ -19,3 +19,4 @@ djangorestframework==0.2.3
 South==0.7.3
 python-gnupg==0.2.8
 python-hkp==0.1.3
+kombu==1.4.2
