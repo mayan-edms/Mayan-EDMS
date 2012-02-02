@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2011-12-06 02:06-0400\n"
-"PO-Revision-Date: 2011-12-09 17:32+0000\n"
-"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
+"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"PO-Revision-Date: 2012-02-02 18:20+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,145 +18,117 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:14
-msgid "Verify document signatures"
-msgstr "Verifica la firma del documento"
-
-#: __init__.py:15
-msgid "View keys"
-msgstr "Vista delle chiavi"
-
-#: __init__.py:16
-msgid "Delete keys"
-msgstr "Cancella chiavi"
-
-#: __init__.py:17
-msgid "Query keyservers"
-msgstr "Interroga l'autorità per le chiavi"
-
-#: __init__.py:18
-msgid "Import key from keyservers"
-msgstr "Importa chiave dall'autorità"
-
-#: __init__.py:19
-msgid "Upload detached signatures"
-msgstr "Carica firme separatamente"
-
-#: __init__.py:20
-msgid "Download detached signatures"
-msgstr "Scarica firme separatamente"
-
-#: __init__.py:23
-msgid "Signatures"
-msgstr "Firma"
-
-#: __init__.py:39 views.py:67
+#: __init__.py:14 views.py:67
 msgid "private keys"
 msgstr "Chiave privata"
 
-#: __init__.py:40 views.py:70
+#: __init__.py:15 views.py:70
 msgid "public keys"
 msgstr "Chiave pubblica"
 
-#: __init__.py:41
+#: __init__.py:16
 msgid "delete"
 msgstr "cancella"
 
-#: __init__.py:42
+#: __init__.py:17
 msgid "query keyservers"
 msgstr "Interroga il server delle chiavi"
 
-#: __init__.py:43
+#: __init__.py:18
 msgid "import"
 msgstr "import"
 
-#: __init__.py:44
-msgid "upload signature"
-msgstr "aggiorna firma"
-
-#: __init__.py:45
-msgid "download signature"
-msgstr "scarica firma"
-
-#: __init__.py:46
+#: __init__.py:19
 msgid "key management"
 msgstr "gestione della firma"
 
-#: __init__.py:49
-msgid "signatures"
-msgstr "firma"
-
-#: api.py:22
+#: api.py:19
 msgid "Public"
 msgstr "Pubblica"
 
-#: api.py:23
+#: api.py:20
 msgid "Secret"
 msgstr "Segreta"
 
-#: api.py:31 api.py:36
+#: api.py:28 api.py:33
 msgid "RSA"
 msgstr "RSA"
 
-#: api.py:32
+#: api.py:29
 msgid "DSA"
 msgstr "DSA"
 
-#: api.py:37
+#: api.py:34
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: api.py:51
+#: api.py:48
 msgid "Bad signature."
 msgstr "Firma cattiva."
 
-#: api.py:55
+#: api.py:52
 msgid "Document not signed or invalid signature."
 msgstr "Documento non firmato o firma invalida."
 
-#: api.py:59
+#: api.py:56
 msgid "Signature error."
 msgstr "Errore di firma"
 
-#: api.py:63
+#: api.py:60
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
 "Il documento è stato firmato, ma la chiave pubblica non è disponibile per la"
 " verifica"
 
-#: api.py:67
+#: api.py:64
 msgid "Document is signed, and signature is good."
 msgstr "Documento firmato e firma è buona."
 
-#: api.py:71
+#: api.py:68
 msgid "Document is signed with a valid signature."
 msgstr "Il documento è firmato con una firma valida."
 
-#: api.py:144
+#: api.py:141
 msgid "unknown"
 msgstr "sconosciuto"
 
-#: forms.py:11
+#: forms.py:8
 msgid "Term"
 msgstr "Scadenza"
 
-#: forms.py:12
+#: forms.py:9
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nome, e-mail,key ID , impronte digitali per cercare"
 
-#: forms.py:18
-msgid "Signature file"
-msgstr "File della firma"
+#: permissions.py:7
+msgid "Key management"
+msgstr ""
 
-#: views.py:45
+#: permissions.py:9
+msgid "View keys"
+msgstr "Vista delle chiavi"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "Cancella chiavi"
+
+#: permissions.py:11
+msgid "Query keyservers"
+msgstr "Interroga l'autorità per le chiavi"
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
+msgstr ""
+
+#: views.py:38
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr "Chiave: %s, importata con successo."
 
-#: views.py:48
+#: views.py:43
 #, python-format
-msgid "Unable to import key id: %s"
-msgstr "Impossibile importare la chiave id: %s"
+msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgstr ""
 
 #: views.py:52
 msgid "Import key"
@@ -239,60 +211,12 @@ msgstr "revocata"
 msgid "Identifies"
 msgstr "Identifica"
 
-#: views.py:205
-#, python-format
-msgid "Signature status: %(widget)s %(text)s"
-msgstr "Status della firma: %(widget)s %(text)s"
-
-#: views.py:212
-msgid "embedded"
-msgstr "incorporato"
-
-#: views.py:214
-msgid "detached"
-msgstr "distaccato"
-
-#: views.py:219
-#, python-format
-msgid "Signature ID: %s"
-msgstr "ID Firma: %s"
-
-#: views.py:220
-#, python-format
-msgid "Signature type: %s"
-msgstr "Tipo di firma: %s"
-
-#: views.py:221
-#, python-format
-msgid "Key ID: %s"
-msgstr "Chiave ID: %s"
-
-#: views.py:222
-#, python-format
-msgid "Timestamp: %s"
-msgstr "Timestamp: %s"
-
-#: views.py:223
-#, python-format
-msgid "Signee: %s"
-msgstr "Signee: %s"
-
-#: views.py:228
-#, python-format
-msgid "signature properties for: %s"
-msgstr "Proprietà per la firma: %s"
-
-#: views.py:250
-msgid "Detached signature uploaded successfully."
-msgstr "Firma scaduta aggiornata con successo."
-
-#: views.py:259
-#, python-format
-msgid "Upload detached signature for: %s"
-msgstr "Aggiornata firma scaduta per: %s"
-
 #: conf/settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
 msgstr "Lista di server per chiavi che si possono interrogare."
+
+#: conf/settings.py:14
+msgid "Home directory used to store keys as well as configuration files."
+msgstr ""
 
 

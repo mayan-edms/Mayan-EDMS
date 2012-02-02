@@ -1,235 +1,244 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
+# Translators:
+# Sergey Glita <gsv70@mail.ru>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-02 05:42-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-02-02 14:18-0400\n"
+"PO-Revision-Date: 2012-02-02 18:20+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-
-#: __init__.py:13
-msgid "ACLs"
-msgstr ""
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:14
-msgid "details"
-msgstr ""
+msgid "ACLs"
+msgstr "Списки ACL"
 
 #: __init__.py:15 __init__.py:23
+msgid "details"
+msgstr "детали"
+
+#: __init__.py:16 __init__.py:25
 msgid "grant"
-msgstr ""
+msgstr "предоставить"
 
-#: __init__.py:16 __init__.py:24
+#: __init__.py:17 __init__.py:26
 msgid "revoke"
-msgstr ""
+msgstr "отозвать"
 
-#: __init__.py:18
-msgid "Default ACLs"
-msgstr ""
-
-#: __init__.py:19
-msgid "List of classes"
-msgstr ""
+#: __init__.py:18 __init__.py:24 forms.py:21
+msgid "New holder"
+msgstr "Новый владелец"
 
 #: __init__.py:20
-msgid "ACLs for class"
-msgstr ""
+msgid "Default ACLs"
+msgstr "ACL по умолчанию"
 
 #: __init__.py:21
-msgid "edit"
-msgstr ""
+msgid "List of classes"
+msgstr "Список классов"
 
-#: __init__.py:22 forms.py:18
-msgid "New holder"
-msgstr ""
+#: __init__.py:22
+msgid "ACLs for class"
+msgstr "ACL для класса"
 
-#: forms.py:34
+#: forms.py:38
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
-#: forms.py:37
+#: forms.py:41
 msgid "Groups"
-msgstr ""
+msgstr "Группы"
 
-#: forms.py:40
+#: forms.py:44
 msgid "Roles"
+msgstr "Роли"
+
+#: forms.py:47
+msgid "Special"
 msgstr ""
 
-#: models.py:221 models.py:230
+#: managers.py:116 managers.py:128
 msgid "Insufficient access."
-msgstr ""
+msgstr "Недостаточный доступ."
 
-#: models.py:296 models.py:400
+#: models.py:27 models.py:69
 msgid "permission"
-msgstr ""
+msgstr "разрешение"
 
-#: models.py:322
+#: models.py:53
 msgid "access entry"
-msgstr ""
+msgstr "запись доступа"
 
-#: models.py:323
+#: models.py:54
 msgid "access entries"
-msgstr ""
+msgstr "записи доступа"
 
-#: models.py:421
+#: models.py:90
 msgid "default access entry"
+msgstr "запись доступа по умолчанию"
+
+#: models.py:91
+msgid "default access entries"
+msgstr "записи доступа по умолчанию"
+
+#: models.py:109
+msgid "Creator"
 msgstr ""
 
-#: models.py:422
-msgid "default access entries"
+#: models.py:112 models.py:113
+msgid "creator"
 msgstr ""
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
-msgstr ""
+msgstr "Списки контроля доступа"
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr ""
+msgstr "Редактировать списки ACL"
 
 #: permissions.py:11
 msgid "View ACLs"
-msgstr ""
+msgstr "Просмотр списков ACL"
 
 #: permissions.py:13
 msgid "Edit class default ACLs"
-msgstr ""
+msgstr "Редактировать списки ACL класса по умолчанию"
 
 #: permissions.py:14
 msgid "View class default ACLs"
-msgstr ""
+msgstr "Просмотр списков ACL класса по умолчанию"
 
-#: views.py:50
+#: views.py:47
 #, python-format
 msgid "access control lists for: %s"
-msgstr ""
+msgstr "списки контроля доступа для %s"
 
-#: views.py:54 views.py:397
+#: views.py:49 views.py:412
 msgid "holder"
-msgstr ""
+msgstr "владелец"
 
-#: views.py:55 views.py:398
+#: views.py:50 views.py:413
 msgid "permissions"
-msgstr ""
+msgstr "разрешения"
 
-#: views.py:100
+#: views.py:97
 #, python-format
 msgid "permissions available to: %(actor)s for %(obj)s"
-msgstr ""
+msgstr "разрешения, доступные %(actor)s для %(obj)s"
 
-#: views.py:107 views.py:429
+#: views.py:104 views.py:445
 msgid "namespace"
-msgstr ""
+msgstr "пространство имен"
 
-#: views.py:108 views.py:430
+#: views.py:105 views.py:446
 msgid "label"
-msgstr ""
+msgstr "этикетка"
 
-#: views.py:110 views.py:432
+#: views.py:107 views.py:448
 msgid "has permission"
+msgstr "имеет разрешение"
+
+#: views.py:185 views.py:279 views.py:529 views.py:609
+msgid ", "
 msgstr ""
 
-#: views.py:191 views.py:285 views.py:514 views.py:594
-msgid " and "
-msgstr ""
-
-#: views.py:192 views.py:286 views.py:515 views.py:595
+#: views.py:186 views.py:280 views.py:530 views.py:610
 #, python-format
 msgid " for %s"
-msgstr ""
+msgstr "для %s"
 
-#: views.py:193 views.py:516
+#: views.py:187 views.py:531
 #, python-format
 msgid " to %s"
-msgstr ""
+msgstr "до %s"
 
-#: views.py:196 views.py:519
+#: views.py:190 views.py:534
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
+msgstr "Вы действительно хотите предоставить разрешение %(title_suffix)s?"
 
-#: views.py:198 views.py:521
+#: views.py:192 views.py:536
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
+msgstr "Вы уверены, что хотите предоставить разрешения %(title_suffix)s?"
 
-#: views.py:205 views.py:528
+#: views.py:199 views.py:543
 #, python-format
-msgid "Permission \"%(permission)s\" granted to %(requester)s for %(object)s."
+msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgstr ""
 
-#: views.py:211 views.py:534
+#: views.py:205 views.py:549
 #, python-format
 msgid ""
-"%(requester)s, already had the permission \"%(permission)s\" granted for "
+"%(actor)s, already had the permission \"%(permission)s\" granted for "
 "%(object)s."
 msgstr ""
 
-#: views.py:287 views.py:596
+#: views.py:281 views.py:611
 #, python-format
 msgid " from %s"
-msgstr ""
+msgstr "от%s"
 
-#: views.py:290 views.py:599
+#: views.py:284 views.py:614
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-msgstr ""
+msgstr "Вы уверены, что хотите отменить разрешение %(title_suffix)s?"
 
-#: views.py:292 views.py:601
+#: views.py:286 views.py:616
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr ""
+msgstr "Вы уверены, что хотите отменить разрешение %(title_suffix)s?"
 
-#: views.py:299 views.py:608
+#: views.py:293 views.py:623
 #, python-format
-msgid "Permission \"%(permission)s\" revoked of %(requester)s for %(object)s."
+msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 msgstr ""
 
-#: views.py:305 views.py:614
+#: views.py:299 views.py:629
 #, python-format
-msgid ""
-"%(requester)s, didn't had the permission \"%(permission)s\" for %(object)s."
+msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 msgstr ""
 
-#: views.py:361
+#: views.py:355
 #, python-format
 msgid "add new holder for: %s"
-msgstr ""
+msgstr "добавить нового владельца для %s"
 
-#: views.py:378
+#: views.py:356 views.py:489
+msgid "Select"
+msgstr "Выбор"
+
+#: views.py:389
 msgid "classes"
-msgstr ""
+msgstr "классы"
 
-#: views.py:380
+#: views.py:391
 msgid "class"
-msgstr ""
+msgstr "класс"
 
-#: views.py:395
+#: views.py:410
 #, python-format
 msgid "default access control lists for class: %s"
-msgstr ""
+msgstr "списки контроля доступа умолчанию для класса %s"
 
-#: views.py:422
+#: views.py:438
 #, python-format
 msgid "permissions available to: %(actor)s for class %(class)s"
-msgstr ""
+msgstr "разрешения доступные %(actor)s для класса %(class)s"
 
-#: views.py:472
+#: views.py:487
 #, python-format
 msgid "add new holder for class: %s"
-msgstr ""
+msgstr "добавить нового владельца для класса %s"
 
-#: views.py:474
-msgid "Select"
-msgstr ""
 

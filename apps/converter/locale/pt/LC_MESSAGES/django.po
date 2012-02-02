@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-04 00:24+0000\n"
-"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
+"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"PO-Revision-Date: 2011-11-22 15:26+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
 "team/pt/)\n"
 "Language: pt\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:10
+#: __init__.py:15
 msgid "file formats"
 msgstr "formatos de arquivo"
 
@@ -888,15 +888,15 @@ msgstr "Amostras Raw amarelas"
 msgid "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
 msgstr "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
 
-#: views.py:15
+#: views.py:17
 msgid "suported file formats"
 msgstr "formatos de arquivo suportados"
 
-#: views.py:20
+#: views.py:22
 msgid "name"
 msgstr "nome"
 
-#: views.py:24
+#: views.py:26
 msgid "description"
 msgstr "descrição"
 
@@ -921,9 +921,8 @@ msgstr ""
 "imagemagick, converter.backends.graphicsmagick and converter.backends.python."
 
 #: conf/settings.py:16
-#, fuzzy
 msgid "Path to the unoconv program."
-msgstr "Caminho do arquivo para o programa imagemagick converter."
+msgstr ""
 
 #: conf/settings.py:17
 msgid ""

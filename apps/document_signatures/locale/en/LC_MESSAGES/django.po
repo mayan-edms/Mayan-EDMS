@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-01 20:14-0400\n"
+"POT-Creation-Date: 2012-02-02 14:18-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:50
+#: __init__.py:83
 msgid "upload signature"
 msgstr ""
 
-#: __init__.py:51
+#: __init__.py:84
 msgid "download signature"
 msgstr ""
 
-#: __init__.py:52
+#: __init__.py:85
 msgid "signatures"
 msgstr ""
 
@@ -33,40 +33,40 @@ msgstr ""
 msgid "Signature file"
 msgstr ""
 
-#: models.py:19
-msgid "document version"
-msgstr ""
-
 #: models.py:20
-msgid "signature state"
+msgid "document version"
 msgstr ""
 
 #: models.py:21
 msgid "signature file"
 msgstr ""
 
-#: models.py:26
+#: models.py:22
+msgid "has embedded signature"
+msgstr ""
+
+#: models.py:35
 msgid "document version signature"
 msgstr ""
 
-#: models.py:27
+#: models.py:36
 msgid "document version signatures"
 msgstr ""
 
 #: permissions.py:7
-msgid "Verify document signatures"
+msgid "Document signatures"
 msgstr ""
 
 #: permissions.py:8
-msgid "Upload detached signatures"
+msgid "Verify document signatures"
 msgstr ""
 
 #: permissions.py:9
-msgid "Download detached signatures"
+msgid "Upload detached signatures"
 msgstr ""
 
-#: permissions.py:12
-msgid "Document signatures"
+#: permissions.py:10
+msgid "Download detached signatures"
 msgstr ""
 
 #: views.py:47
@@ -112,11 +112,11 @@ msgstr ""
 msgid "signature properties for: %s"
 msgstr ""
 
-#: views.py:92
+#: views.py:96
 msgid "Detached signature uploaded successfully."
 msgstr ""
 
-#: views.py:101
+#: views.py:105
 #, python-format
 msgid "Upload detached signature for: %s"
 msgstr ""

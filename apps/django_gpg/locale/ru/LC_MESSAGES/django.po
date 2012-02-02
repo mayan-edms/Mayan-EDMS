@@ -1,187 +1,158 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-06 02:06-0400\n"
-"PO-Revision-Date: 2011-12-05 17:43+0000\n"
-"Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"PO-Revision-Date: 2012-02-02 18:20+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:14
-msgid "Verify document signatures"
-msgstr ""
+#: __init__.py:14 views.py:67
+msgid "private keys"
+msgstr "секретные ключи"
 
-#: __init__.py:15
-msgid "View keys"
-msgstr ""
+#: __init__.py:15 views.py:70
+msgid "public keys"
+msgstr "открытые ключи"
 
 #: __init__.py:16
-msgid "Delete keys"
-msgstr ""
+msgid "delete"
+msgstr "удалить"
 
 #: __init__.py:17
-msgid "Query keyservers"
-msgstr ""
+msgid "query keyservers"
+msgstr "запрос ключевых серверов"
 
 #: __init__.py:18
-msgid "Import key from keyservers"
-msgstr ""
+msgid "import"
+msgstr "получить"
 
 #: __init__.py:19
-msgid "Upload detached signatures"
-msgstr ""
-
-#: __init__.py:20
-msgid "Download detached signatures"
-msgstr ""
-
-#: __init__.py:23
-msgid "Signatures"
-msgstr ""
-
-#: __init__.py:39 views.py:67
-msgid "private keys"
-msgstr ""
-
-#: __init__.py:40 views.py:70
-msgid "public keys"
-msgstr ""
-
-#: __init__.py:41
-msgid "delete"
-msgstr ""
-
-#: __init__.py:42
-msgid "query keyservers"
-msgstr ""
-
-#: __init__.py:43
-msgid "import"
-msgstr ""
-
-#: __init__.py:44
-msgid "upload signature"
-msgstr ""
-
-#: __init__.py:45
-msgid "download signature"
-msgstr ""
-
-#: __init__.py:46
 msgid "key management"
-msgstr ""
+msgstr "управление ключами"
 
-#: __init__.py:49
-msgid "signatures"
-msgstr ""
-
-#: api.py:22
+#: api.py:19
 msgid "Public"
-msgstr ""
+msgstr "Открытый"
 
-#: api.py:23
+#: api.py:20
 msgid "Secret"
-msgstr ""
+msgstr "секретный"
 
-#: api.py:31 api.py:36
+#: api.py:28 api.py:33
 msgid "RSA"
-msgstr ""
+msgstr "RSA"
 
-#: api.py:32
+#: api.py:29
 msgid "DSA"
-msgstr ""
+msgstr "DSA"
 
-#: api.py:37
+#: api.py:34
 msgid "Elgamal"
-msgstr ""
+msgstr "Elgamal"
 
-#: api.py:51
+#: api.py:48
 msgid "Bad signature."
-msgstr ""
+msgstr "Неверная подпись"
 
-#: api.py:55
+#: api.py:52
 msgid "Document not signed or invalid signature."
-msgstr ""
+msgstr "Документ не подписан, либо подпись неверна."
 
-#: api.py:59
+#: api.py:56
 msgid "Signature error."
-msgstr ""
+msgstr "Ошибка подписи."
 
-#: api.py:63
+#: api.py:60
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
+msgstr "Документ подписан, но нет открытого ключа для проверки."
 
-#: api.py:67
+#: api.py:64
 msgid "Document is signed, and signature is good."
-msgstr ""
+msgstr "Документ подписан и подпись верна."
 
-#: api.py:71
+#: api.py:68
 msgid "Document is signed with a valid signature."
-msgstr ""
+msgstr "Документ подписан допустимой подписью."
 
-#: api.py:144
+#: api.py:141
 msgid "unknown"
-msgstr ""
+msgstr "неизвестно"
 
-#: forms.py:11
+#: forms.py:8
 msgid "Term"
-msgstr ""
+msgstr "Term"
 
-#: forms.py:12
+#: forms.py:9
 msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Имя, e-mail, ID ключа или отпечаток для поиска."
+
+#: permissions.py:7
+msgid "Key management"
 msgstr ""
 
-#: forms.py:18
-msgid "Signature file"
+#: permissions.py:9
+msgid "View keys"
+msgstr "Просмотр ключей"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "Удалить ключи"
+
+#: permissions.py:11
+msgid "Query keyservers"
+msgstr "Запрос к серверам ключей"
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
 msgstr ""
 
-#: views.py:45
+#: views.py:38
 #, python-format
 msgid "Key: %s, imported successfully."
-msgstr ""
+msgstr "Ключ %s, получен."
 
-#: views.py:48
+#: views.py:43
 #, python-format
-msgid "Unable to import key id: %s"
+msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr ""
 
 #: views.py:52
 msgid "Import key"
-msgstr ""
+msgstr "Получить ключ"
 
 #: views.py:53
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
-msgstr ""
+msgstr "Хотите получить ключ id: %s?"
 
 #: views.py:78
 msgid "Key ID"
-msgstr ""
+msgstr "ID ключа"
 
 #: views.py:82
 msgid "Owner"
-msgstr ""
+msgstr "Владелец"
 
 #: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
-msgstr ""
+msgstr "Ключ %s удалён."
 
 #: views.py:109
 msgid "Delete key"
-msgstr ""
+msgstr "Удалить ключ."
 
 #: views.py:111
 #, python-format
@@ -190,103 +161,59 @@ msgid ""
 "that is part of a public/private pair the private key will be deleted as "
 "well."
 msgstr ""
+"Вы уверены, что хотите удалить ключ %s? Если вы удалите открытый ключ то "
+"соответствующий ему закрытый ключ тоже будет удалён."
 
 #: views.py:129
 msgid "Query key server"
-msgstr ""
+msgstr "Запросить сервер ключей"
 
 #: views.py:142
 msgid "results"
-msgstr ""
+msgstr "результаты"
 
 #: views.py:147
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: views.py:151
 msgid "type"
-msgstr ""
+msgstr "тип"
 
 #: views.py:155
 msgid "creation date"
-msgstr ""
+msgstr "дата создания"
 
 #: views.py:159
 msgid "disabled"
-msgstr ""
+msgstr "запрещено"
 
 #: views.py:163
 msgid "expiration date"
-msgstr ""
+msgstr "дата окончания"
 
 #: views.py:167
 msgid "expired"
-msgstr ""
+msgstr "истекло"
 
 #: views.py:171
 msgid "length"
-msgstr ""
+msgstr "длина"
 
 #: views.py:175
 msgid "revoked"
-msgstr ""
+msgstr "отозван"
 
 #: views.py:180
 msgid "Identifies"
-msgstr ""
-
-#: views.py:205
-#, python-format
-msgid "Signature status: %(widget)s %(text)s"
-msgstr ""
-
-#: views.py:212
-msgid "embedded"
-msgstr ""
-
-#: views.py:214
-msgid "detached"
-msgstr ""
-
-#: views.py:219
-#, python-format
-msgid "Signature ID: %s"
-msgstr ""
-
-#: views.py:220
-#, python-format
-msgid "Signature type: %s"
-msgstr ""
-
-#: views.py:221
-#, python-format
-msgid "Key ID: %s"
-msgstr ""
-
-#: views.py:222
-#, python-format
-msgid "Timestamp: %s"
-msgstr ""
-
-#: views.py:223
-#, python-format
-msgid "Signee: %s"
-msgstr ""
-
-#: views.py:228
-#, python-format
-msgid "signature properties for: %s"
-msgstr ""
-
-#: views.py:250
-msgid "Detached signature uploaded successfully."
-msgstr ""
-
-#: views.py:259
-#, python-format
-msgid "Upload detached signature for: %s"
-msgstr ""
+msgstr "Identifies"
 
 #: conf/settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
+msgstr "Список ключевых серверов для запроса неизвестных ключей."
+
+#: conf/settings.py:14
+msgid "Home directory used to store keys as well as configuration files."
 msgstr ""
+
+

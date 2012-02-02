@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-06 03:26-0400\n"
+"POT-Creation-Date: 2012-02-02 14:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,43 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:31
+#: __init__.py:33
 msgid "maintenance"
 msgstr ""
 
-#: __init__.py:32
+#: __init__.py:34
 msgid "statistics"
 msgstr ""
 
-#: __init__.py:33
+#: __init__.py:35
 msgid "diagnostics"
 msgstr ""
 
-#: __init__.py:34
+#: __init__.py:36
 msgid "sentry"
 msgstr ""
 
-#: __init__.py:35
+#: __init__.py:37
 msgid "admin site"
 msgstr ""
 
-#: __init__.py:38
+#: __init__.py:40
 msgid "home"
 msgstr ""
 
-#: __init__.py:40
+#: __init__.py:42
 msgid "search"
 msgstr ""
 
-#: views.py:41
+#: views.py:43
 msgid "maintenance menu"
 msgstr ""
 
-#: views.py:53
+#: views.py:56
 msgid "Statistics"
 msgstr ""
 
-#: views.py:61
+#: views.py:66
 msgid "Diagnostics"
 msgstr ""
 
@@ -99,35 +99,35 @@ msgstr ""
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/base.html:302
+#: templates/base.html:301
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:304 templates/base.html.py:336
+#: templates/base.html:303 templates/base.html.py:346
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:307
+#: templates/base.html:306
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:319 templates/base.html.py:351
+#: templates/base.html:318 templates/base.html.py:361
 msgid "Related actions"
 msgstr ""
 
-#: templates/base.html:334
+#: templates/base.html:329 templates/base.html.py:374
+msgid "Other available actions"
+msgstr ""
+
+#: templates/base.html:344
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:339
+#: templates/base.html:349
 msgid "Actions"
-msgstr ""
-
-#: templates/base.html:364
-msgid "Other available actions"
 msgstr ""
 
 #: templates/home.html:8
@@ -140,6 +140,6 @@ msgid ""
 "indexing, tagging, file serving integration and OCR capabilities"
 msgstr ""
 
-#: templates/project_description.html:15
+#: templates/project_description.html:18
 msgid "Released under the GPL V3 License"
 msgstr ""

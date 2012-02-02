@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-02-02 14:17-0400\n"
 "PO-Revision-Date: 2011-09-30 05:09+0000\n"
-"Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
 "mayan-edms/team/es/)\n"
 "Language: es\n"
@@ -18,18 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:8 views.py:26
+#: __init__.py:9 views.py:28
 msgid "settings"
 msgstr "configuración"
 
-#: views.py:31
+#: views.py:33
 msgid "name"
 msgstr "nombre"
 
-#: views.py:32
+#: views.py:34
 msgid "default"
 msgstr "por defecto"
 
-#: views.py:33
+#: views.py:35
 msgid "value"
 msgstr "valor"
