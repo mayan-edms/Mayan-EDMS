@@ -8,7 +8,7 @@ from documents.models import Document
 
 
 class Folder(models.Model):
-    title = models.CharField(max_length=32, verbose_name=_(u'title'), db_index=True)
+    title = models.CharField(max_length=128, verbose_name=_(u'title'), db_index=True)
     user = models.ForeignKey(User, verbose_name=_(u'user'))
     datetime_created = models.DateTimeField(verbose_name=_(u'datetime created'))
 
