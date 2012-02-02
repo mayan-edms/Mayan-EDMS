@@ -41,7 +41,7 @@ def update_indexes(document):
     eval_dict['document'] = document
     eval_dict['metadata'] = MetadataObject(document_metadata_dict)
 
-    for index in Index.objects.all():
+    for index in Index.objects.filter(enabled=True):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
         for template_node in index.template_root.get_children():
             index_warnings = _evaluate_index(eval_dict, document, template_node, root_instance)
@@ -179,11 +179,9 @@ def _evaluate_index(eval_dict, document, template_node, parent_index_instance=No
                     warnings.extend(children_warnings)
 
         except (NameError, AttributeError), exc:
-            raise
             warnings.append(_(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
                 'expression': template_node.expression, 'exception': exc})
         except Exception, exc:
-            raise
             warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
                 'expression': template_node.expression, 'exception': exc})
 
@@ -215,7 +213,6 @@ def _remove_document_from_index_instance(document, index_instance):
     except DocumentRenameCount.DoesNotExist:
         return warnings
     except Exception, exc:
-        raise
         warnings.append(_(u'Unable to delete document indexing node; %s') % exc)
 
     return warnings
