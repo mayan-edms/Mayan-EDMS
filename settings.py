@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     'mimetype',
     'scheduler',
     'job_processor',
+    'feedback',
 # Mayan EDMS
     'storage',
     'folders',

@@ -31,6 +31,7 @@ urlpatterns = patterns('',
     (r'^api/', include('rest_api.urls')),
     (r'^gpg/', include('django_gpg.urls')),
     (r'^documents/signatures/', include('document_signatures.urls')),
+    (r'^feedback/', include('feedback.urls')),
 )
 
 
