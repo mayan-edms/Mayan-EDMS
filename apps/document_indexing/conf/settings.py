@@ -1,5 +1,7 @@
 """Configuration options for the document_indexing app"""
 
+from django.utils.translation import ugettext_lazy as _
+
 from common.utils import proper_name
 from smart_settings.api import register_settings
 
@@ -17,7 +19,6 @@ register_settings(
         # Filesystem serving
         {'name': u'SLUGIFY_PATHS', 'global_name': u'DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS', 'default': False},
         {'name': u'MAX_SUFFIX_COUNT', 'global_name': u'DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT', 'default': 1000},
-        {'name': u'FILESERVING_PATH', 'global_name': u'DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH', 'default': u'/tmp/mayan/documents', 'exists': True},
-        {'name': u'FILESERVING_ENABLE', 'global_name': u'DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE', 'default': True}
+        {'name': u'FILESYSTEM_SERVING', 'global_name': u'DOCUMENT_INDEXING_FILESYSTEM_SERVING', 'default': {}, 'description': _(u'A dictionary that maps the index name and where on the filesystem that index will be mirrored.')}
     ]
 )
