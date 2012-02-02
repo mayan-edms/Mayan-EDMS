@@ -15,8 +15,8 @@ from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
     MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
 from .filesystem import (fs_create_index_directory,
     fs_create_document_link, fs_delete_document_link,
-    fs_delete_index_directory, fs_delete_directory_recusive)
-from .os_specifics import assemble_suffixed_filename
+    fs_delete_index_directory, fs_delete_directory_recusive,
+    assemble_suffixed_filename)
 
 if SLUGIFY_PATHS == False:
     # Do not slugify path or filenames and extensions

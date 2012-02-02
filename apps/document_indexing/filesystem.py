@@ -8,6 +8,24 @@ from django.utils.translation import ugettext_lazy as _
 from .os_specifics import (assemble_suffixed_filename,
     assemble_path_from_list)
 from .conf.settings import (FILESERVING_ENABLE, FILESERVING_PATH)
+from .conf.settings import SUFFIX_SEPARATOR
+
+
+def assemble_suffixed_filename(filename, suffix=0):
+    """
+    Split document filename, to attach suffix to the name part then
+    re attacht the extension
+    """
+
+    if suffix:
+        name, extension = os.path.splitext(filename)
+        return SUFFIX_SEPARATOR.join([name, unicode(suffix), os.extsep, extension])
+    else:
+        return filename
+
+
+def assemble_path_from_list(directory_list):
+    return os.sep.join(directory_list)
 
 
 def get_instance_path(index_instance):
