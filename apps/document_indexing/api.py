@@ -84,9 +84,6 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
         except (NameError, AttributeError), exc:
             warnings.append(_(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
                 'expression': template_node.expression, 'exception': exc})
-        except Exception, exc:
-            warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                'expression': template_node.expression, 'exception': exc})
         else:
             if result:
                 index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node)
@@ -94,7 +91,12 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                 index_instance.parent = parent_index_instance
                 index_instance.save()
                 #if created:
-                fs_create_index_directory(index_instance)
+                try:
+                    fs_create_index_directory(index_instance)
+                except Exception, exc:
+                    warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
+                        'expression': template_node.expression, 'exception': exc})                    
+
                 if template_node.link_documents:
                     suffix = find_lowest_available_suffix(index_instance, document)
                     document_count = DocumentRenameCount(
@@ -104,7 +106,12 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                     )
                     document_count.save()
 
-                    fs_create_document_link(index_instance, document, suffix)
+                    try:
+                        fs_create_document_link(index_instance, document, suffix)
+                    except Exception, exc:
+                        warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
+                            'expression': template_node.expression, 'exception': exc})                        
+
                     index_instance.documents.add(document)
 
                 for child in template_node.get_children():
