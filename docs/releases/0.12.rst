@@ -122,6 +122,19 @@ column after those is ignored.
 * The ``--skip-repeated`` tells the importedr to not stop when finding
   that a user already exists in the database.
 
+Refactored document indexing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The document indexing functionality has been improved and moved from experimental
+stage to beta stage.  Index configuration menus are now available on the
+``Setup`` menu and allows administrators to create a skeleton tree that will
+be populated with document links depending on their metadata and properties.
+This populated tree can also be mirrored on the physical filesystem and shared
+using Samba or another filesharing server giving users a structured view
+of the documents contained within **Mayan EDMS** from the ``Indexes`` tab
+or from a mirrored index shared via the network.  A new configuration option
+has been added, :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`, which maps
+the index internal name with the physical directory where such index will be
+mirrored on disk.
 
 Upgrading from a previous version
 =================================
@@ -191,15 +204,21 @@ so write down your role permission setup before upgrading.
 Bugs fixed
 ==========
 * Issue #17, special thanks to Dave Herring for all the help including
-  access to a machine suffering with the issue.
+  access to a machine suffering with the issue, and to Сергей Глита for
+  his research and eventual find of the core cause. 
 * Statistics fixes.
 * Fixed get_image_cache_name regression in the OCR app.
 
 Stuff removed
 =============
-* Removal of the OCR_CACHE_URI configuration option.
 * Support for Celery and Sentry has been drop
   for now.
 * Removed the 'db_index' argument from Text fields definition and 
   migrations as it was causing error messages for MySQL users, thanks to
   Сергей Глита for reporting this one.
+* Configuration options removed:
+  
+  * OCR_CACHE_URI
+  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH - Use the newest :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`
+  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE - Use the newest :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`
+   
