@@ -53,13 +53,6 @@ class IndexTemplateNode(MPTTModel):
     def __unicode__(self):
         return self.expression if not self.link_documents else u'%s/[document]' % self.expression
 
-    #@models.permalink
-    #def get_absolute_url(self):
-    #    return ('index_instance_list', [self.pk])
-
-    #def get_document_list_display(self):
-    #    return u', '.join([d.file_filename for d in self.documents.all()])
-
     class Meta:
         verbose_name = _(u'index template node')
         verbose_name_plural = _(u'indexes template nodes')
@@ -77,9 +70,6 @@ class IndexInstanceNode(MPTTModel):
     @models.permalink
     def get_absolute_url(self):
         return ('index_instance_node_view', [self.pk])
-
-    #def get_document_list_display(self):
-    #    return u', '.join([d.file_filename for d in self.documents.all()])
 
     class Meta:
         verbose_name = _(u'index instance node')
