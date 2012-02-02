@@ -188,10 +188,12 @@ class AccessEntryManager(models.Manager):
         content_type = ContentType.objects.get_for_model(obj)
         holder_list = []
         for access_entry in self.model.objects.filter(content_type=content_type, object_id=obj.pk):
-            entry = AccessHolder.encapsulate(access_entry.holder_object)
-
-            if entry not in holder_list:
-                holder_list.append(entry)
+            if access_entry.holder_object:
+                # Don't add references to non existant content type objects            
+                entry = AccessHolder.encapsulate(access_entry.holder_object)
+                
+                if entry not in holder_list:
+                    holder_list.append(entry)
 
         return holder_list
 
@@ -263,7 +265,7 @@ class DefaultAccessEntryManager(models.Manager):
         holder_list = []
         for access_entry in self.model.objects.filter(content_type=content_type):
             if access_entry.holder_object:
-                # Reference to a non existant content type object
+                # Don't add references to non existant content type objects
                 entry = ClassAccessHolder.encapsulate(access_entry.holder_object)
 
                 if entry not in holder_list:
