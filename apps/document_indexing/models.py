@@ -15,12 +15,11 @@ available_indexing_functions_string = (_(u'Available functions: %s') % u','.join
 
 class Index(models.Model):
     name = models.CharField(unique=True, max_length=64, verbose_name=_(u'name'), help_text=_(u'Internal name used to reference this index.'))
-    title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
+    title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'), help_text=_(u'The name that will be visible to users.'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this index to be visible and updated when document data changes.'))
 
     @property
     def template_root(self):
-        # Catch error
         return self.indextemplatenode_set.get(parent=None)
 
     @property
@@ -34,6 +33,10 @@ class Index(models.Model):
     def get_absolute_url(self):
         return ('index_instance_node_view', [self.instance_root.pk])
 
+    def save(self, *args, **kwargs):
+        super(Index, self).save(*args, **kwargs)
+        index_template_node_root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+
     class Meta:
         verbose_name = _(u'index')
         verbose_name_plural = _(u'indexes')
@@ -44,8 +47,8 @@ class IndexTemplateNode(MPTTModel):
     index = models.ForeignKey(Index, verbose_name=_(u'index'))
     expression = models.CharField(max_length=128, verbose_name=_(u'indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
         # % available_indexing_functions_string)
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-    link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
+    link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
     def __unicode__(self):
         return self.expression if not self.link_documents else u'%s/[document]' % self.expression
