@@ -273,17 +273,17 @@ def template_node_delete(request, node_pk):
         context_instance=RequestContext(request))
 
 
+# User views
 def index_list(request):
+    """
+    Show a list of enabled indexes
+    """
     context = {
         'title': _(u'indexes'),
-        #'hide_object': True,
-        #'list_object_variable_name': 'index',
-        #'extra_columns': [
-        #    {'name': _(u'elements'), 'attribute': 'root'},
-        #    {'name': _(u'name'), 'attribute': 'name'},
-        #    {'name': _(u'title'), 'attribute': 'title'},
-        #],
-        'overrided_object_links': [{}],
+        'hide_links': True,
+        'extra_columns': [
+            {'name': _(u'nodes'), 'attribute': encapsulate(lambda x: x.instance_root.get_descendant_count())},
+        ],
     }
 
     queryset = Index.objects.filter(enabled=True)
@@ -302,6 +302,10 @@ def index_list(request):
 
 
 def index_instance_node_view(request, index_instance_node_pk):
+    """
+    Show an instance node and it's content, whether is other child nodes
+    of documents
+    """
     index_instance = get_object_or_404(IndexInstanceNode, pk=index_instance_node_pk)
     index_instance_list = [index for index in index_instance.get_children().order_by('value')]
     breadcrumbs = get_breadcrumbs(index_instance)
@@ -346,6 +350,9 @@ def index_instance_node_view(request, index_instance_node_pk):
 
 
 def rebuild_index_instances(request):
+    """
+    Confirmation view to execute the tool: do_rebuild_all_indexes
+    """
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -373,6 +380,9 @@ def rebuild_index_instances(request):
 
 
 def document_index_list(request, document_id):
+    """
+    Show a list of indexes where the current document can be found
+    """
     document = get_object_or_404(Document, pk=document_id)
     object_list = []
 
