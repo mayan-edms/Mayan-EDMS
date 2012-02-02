@@ -81,6 +81,13 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
     if template_node.enabled:
         try:
             result = eval(template_node.expression, eval_dict, AVAILABLE_INDEXING_FUNCTIONS)
+        except (NameError, AttributeError), exc:
+            warnings.append(_(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
+                'expression': template_node.expression, 'exception': exc})
+        except Exception, exc:
+            warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
+                'expression': template_node.expression, 'exception': exc})
+        else:
             if result:
                 index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node)
                 index_instance.value = result
@@ -105,13 +112,6 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                         eval_dict, document, child, index_instance
                     )
                     warnings.extend(children_warnings)
-
-        except (NameError, AttributeError), exc:
-            warnings.append(_(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
-                'expression': template_node.expression, 'exception': exc})
-        except Exception, exc:
-            warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                'expression': template_node.expression, 'exception': exc})
 
     return warnings
 
