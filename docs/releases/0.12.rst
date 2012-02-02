@@ -56,10 +56,10 @@ ACL support
 Anonymous user support
 ~~~~~~~~~~~~~~~~~~~~~~
 Anonymous user support is a two tier function, first is the addition of
-the COMMON_ALLOW_ANONYMOUS_ACCESS that allows non authenticated to browse
-all the pages of a **Mayan EDMS** installation.  The second part of this
-support is the ability to assign permissions or individual access to objects
-to anonymous users.
+the :setting:`COMMON_ALLOW_ANONYMOUS_ACCESS` configuration option that
+allows non authenticated user to browse all the pages of a **Mayan EDMS** installation.
+The second part of this support is the ability to assign permissions
+or individual access to objects to anonymous users.
 
 Translations
 ~~~~~~~~~~~~~~~~~~~
@@ -126,16 +126,20 @@ column after those is ignored.
 Upgrading from a previous version
 =================================
 
-::
+Start off by creating the new database structures with::
 
     $ ./manage.py syncdb
+
+Then migrate existing database schema with::
+
     $ ./manage.py migrate permissions 0001 --fake
     $ ./manage.py migrate permissions
 
 
 When the following message appears
 
-.. epigraph::
+::
+
     The following content types are stale and need to be deleted:
 
         permissions | permission
@@ -146,26 +150,35 @@ When the following message appears
 
         Type 'yes' to continue, or 'no' to cancel:
     
-    Types ``yes`` and press **Enter**
+Type ``yes`` and press **Enter**
 
-::
+And continue migrating database schema with::
 
     $ ./manage.py migrate documents
     $ ./manage.py migrate document_signatures
     $ ./manage.py migrate permissions 0001 --fake
     $ ./manage.py migrate permissions
+    $ ./manage.py migrate folders 0001 --fake
+    $ ./manage.py migrate folders
+    $ ./manage.py migrate document_indexing 0001 --fake
+    $ ./manage.py migrate document_indexing
 
+Again when a similar messages appears
 ::
-The following content types are stale and need to be deleted:
 
-    document_indexing | indexinstance
+    The following content types are stale and need to be deleted:
 
-Any objects related to these content types by a foreign key will also
-be deleted. Are you sure you want to delete these content types?
-If you're unsure, answer 'no'.
+        document_indexing | indexinstance
 
-    Type 'yes' to continue, or 'no' to cancel: yes
+    Any objects related to these content types by a foreign key will also
+    be deleted. Are you sure you want to delete these content types?
+    If you're unsure, answer 'no'.
 
+        Type 'yes' to continue, or 'no' to cancel:
+
+Type ``yes`` and press **Enter**
+
+The upgrade procedure is now complete.
 
 Backward incompatible changes
 =============================

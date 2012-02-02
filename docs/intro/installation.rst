@@ -52,25 +52,25 @@ Webfaction
 
 To install **Mayan EDMS** on Webfaction_, follow these steps:
 
-#. Create a new database:
+1. Create a new database:
 
-    * Enter the following selections:
+  * Enter the following selections:
 
-        * Type:* ``Mysql``
-        * Name:* ``<username>_mayan``
-        * Encoding:* ``utf-8``
+    * Type:* ``Mysql``
+    * Name:* ``<username>_mayan``
+    * Encoding:* ``utf-8``
 
-    * Anotate the provided password.
+  * Anotate the provided password.
 
-#. Create a new app:
+2. Create a new app:
     
-    * Enter the following in the textbox:
+  * Enter the following in the textbox:
     
-        * Name:* ``mayan``
-        * App category:* ``mod_wsgi``
-        * App type:* ``mod_wsgi 3.3/Python 2.7``
+    * Name:* ``mayan``
+    * App category:* ``mod_wsgi``
+    * App type:* ``mod_wsgi 3.3/Python 2.7``
 
-#. Login via ssh, and execute::
+3. Login via ssh, and execute::
 
     $ easy_install-2.7 virtualenv
     $ cd ~/webapps/mayan_app
@@ -81,11 +81,11 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
     $ source ../bin/activate
     $ pip install -r requirements/production.txt
 
-#. Install the Python MySQL database driver::
+4. Install the Python MySQL database driver::
 
     $ pip install MySQL-python
 
-#. Create a settings_local.py file, and paste into it the following::
+5. Create a settings_local.py file, and paste into it the following::
 
     $ DATABASES = {
     $     'default': {
@@ -98,45 +98,45 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
     $     }
     $ }
 
-#. Create the database schema (during this step two errors will appears about failling to install indexes on ``documents.Document`` and ``documents.DocumentPage`` models, ignore them for now)::
+6. Create the database schema (during this step two errors will appears about failling to install indexes on ``documents.Document`` and ``documents.DocumentPage`` models, ignore them for now)::
 
     $ ./manage.py syncdb --migrate
 
-#. Collect the static files of the apps::
+7. Collect the static files of the apps::
 
     $ ./manage.py collectstatic -l --noinput
 
-#. Create a new app:
+8. Create a new app:
 
-    * Enter the following:
+  * Enter the following:
     
-        * Name:* ``mayan_static``
-        * App category:* ``Symbolic link``
-        * App type:* ``Symbolic link to static-only app``
-        * Extra info: ``/home/<username>/webapps/mayan_app/mayan/mayan/static``
+    * Name:* ``mayan_static``
+    * App category:* ``Symbolic link``
+    * App type:* ``Symbolic link to static-only app``
+    * Extra info: ``/home/<username>/webapps/mayan_app/mayan/mayan/static``
 
-#. Create the website:
+9. Create the website:
 
-    * Name: ``mayan_edms``
-    * Choose a subdomain
-    * Under ``Site apps:`` enter the following selections: 
+  * Name: ``mayan_edms``
+  * Choose a subdomain
+  * Under ``Site apps:`` enter the following selections: 
     
-        * App #1
+    * App #1
         
-            * App:* ``mayan_app``
-            * URL path (ex: '/' or '/blog'):* ``/``
+      * App:* ``mayan_app``
+      * URL path (ex: '/' or '/blog'):* ``/``
             
-        * App #2
+    * App #2
         
-            * App:* ``mayan_static``
-            * URL path (ex: '/' or '/blog'):* ``/mayan-static``
+      * App:* ``mayan_static``
+      * URL path (ex: '/' or '/blog'):* ``/mayan-static``
 
-#. Edit the file ``~/webapps/mayan_app/apache2/conf/httpd.conf``:
+10. Edit the file ``~/webapps/mayan_app/apache2/conf/httpd.conf``:
     
-    * Disable the ``DirectoryIndex`` line and the ``DocumentRoot`` line
-    * Add the following line::
+  * Disable the ``DirectoryIndex`` line and the ``DocumentRoot`` line
+  * Add the following line::
         
-        WSGIScriptAlias / /home/<username>/webapps/mayan_app/mayan/mayan/wsgi/dispatch.wsgi
+      WSGIScriptAlias / /home/<username>/webapps/mayan_app/mayan/mayan/wsgi/dispatch.wsgi
 
 DjangoZoom
 ----------
@@ -152,6 +152,7 @@ For instructions on how to deploy **Mayan EDMS** on DjangoZoom, watch the screen
 .. _`Open source`: https://secure.wikimedia.org/wikipedia/en/wiki/Open_source
 .. _DjangoZoom: http://djangozoom.com/
 .. _Youtube: http://bit.ly/mayan-djangozoom
+.. _Django: http://www.djangoproject.com/
 
 
 .. _Apache: https://www.apache.org/
@@ -160,5 +161,4 @@ For instructions on how to deploy **Mayan EDMS** on DjangoZoom, watch the screen
 .. _Download: https://github.com/rosarior/mayan/archives/master
 .. _Webfaction: http://www.webfaction.com
 .. _deployed: https://docs.djangoproject.com/en/1.3/howto/deployment/
-.. _Django: https://www.djangoproject.com
 .. _virtualenv: http://www.virtualenv.org/en/latest/index.html

@@ -8,7 +8,7 @@ from documents.models import Document
 
 
 class Folder(models.Model):
-    title = models.CharField(max_length=32, verbose_name=_(u'title'), db_index=True)
+    title = models.CharField(max_length=128, verbose_name=_(u'title'), db_index=True)
     user = models.ForeignKey(User, verbose_name=_(u'user'))
     datetime_created = models.DateTimeField(verbose_name=_(u'datetime created'))
 
@@ -26,7 +26,7 @@ class Folder(models.Model):
 
     @property
     def documents(self):
-        return [folder_document.document for folder_document in self.folderdocument_set.all()]
+        return Document.objects.filter(folderdocument__folder=self)
 
     def remove_document(self, document):
         folder_document = self.folderdocument_set.get(document=document)

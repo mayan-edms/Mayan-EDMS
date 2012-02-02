@@ -1,0 +1,16 @@
+Version 0.7.5
+-------------
+* Added a help messages to the sidebar of some views
+* Renamed some forms submit button to more intuitive one
+
+  - 'Search' on the submit button of the search form
+  - 'Next step' on the document creation wizard
+  
+* Added view to list supported file formats and reported by the
+  converter backend
+* Added redirection support to multi object action views
+* Renamed 'document list' link to 'all documents' and
+  'recent document list' to 'recent documents'
+* Removed 'change password' link next to the current user's name and
+  added a few views to handle the current user's password, details and
+  details editing
