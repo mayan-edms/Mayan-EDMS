@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-#from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.utils.html import conditional_escape, mark_safe
 from django.core.exceptions import PermissionDenied
@@ -18,12 +17,12 @@ from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate
 from acls.utils import apply_default_acls
+from acls.models import AccessEntry
 
 from .forms import IndexForm, IndexTemplateNodeForm
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
-from .api import do_rebuild_all_indexes
-from .widgets import (index_instance_item_link, get_instance_link,
-    get_breadcrumbs)
+from .tools import do_rebuild_all_indexes
+from .widgets import (index_instance_item_link, get_breadcrumbs)
 from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
     PERMISSION_DOCUMENT_INDEXING_SETUP,
@@ -31,6 +30,7 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_EDIT,
     PERMISSION_DOCUMENT_INDEXING_DELETE
 )
+
 
 # Setup views
 def index_setup_list(request):
@@ -41,7 +41,7 @@ def index_setup_list(request):
         'extra_columns': [
             {'name': _(u'name'), 'attribute': 'name'},
             {'name': _(u'title'), 'attribute': 'title'},
-        ]        
+        ]
     }
 
     queryset = Index.objects.all()

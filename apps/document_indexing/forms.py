@@ -22,6 +22,6 @@ class IndexTemplateNodeForm(forms.ModelForm):
         super(IndexTemplateNodeForm, self).__init__(*args, **kwargs)
         self.fields['index'].widget = forms.widgets.HiddenInput()
         self.fields['parent'].widget = forms.widgets.HiddenInput()
-    
+
     class Meta:
         model = IndexTemplateNode

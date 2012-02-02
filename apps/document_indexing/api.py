@@ -5,7 +5,6 @@ from django.utils.translation import ugettext
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
-from documents.models import Document
 from metadata.classes import MetadataObject
 
 from .models import (Index, IndexTemplateNode, IndexInstanceNode,
@@ -14,9 +13,7 @@ from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
     MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
 from .filesystem import (fs_create_index_directory,
     fs_create_document_link, fs_delete_document_link,
-    fs_delete_index_directory, fs_delete_directory_recusive,
-    assemble_suffixed_filename)
-from .widgets import get_instance_link
+    fs_delete_index_directory, assemble_suffixed_filename)
 from .exceptions import MaxSuffixCountReached
 
 if SLUGIFY_PATHS == False:
@@ -41,7 +38,7 @@ def update_indexes(document):
     for index in Index.objects.filter(enabled=True):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
         for template_node in index.template_root.get_children():
-            index_warnings = _evaluate_index(eval_dict, document, template_node, root_instance)
+            index_warnings = cascade_eval(eval_dict, document, template_node, root_instance)
             warnings.extend(index_warnings)
 
     return warnings
@@ -54,26 +51,15 @@ def delete_indexes(document):
     warnings = []
 
     for index_instance in document.indexinstancenode_set.all():
-        index_warnings = _remove_document_from_index_instance(document, index_instance)
+        index_warnings = cascade_document_remove(document, index_instance)
         warnings.extend(index_warnings)
 
     return warnings
 
 
-def do_rebuild_all_indexes():
-    fs_delete_directory_recusive()
-    IndexInstanceNone.objects.delete()
-    DocumentRenameCount.objects.delete()
-    for document in Document.objects.all():
-        update_indexes(document)
-
-    return []  # Warnings - None
-
-
 # Internal functions
 def find_lowest_available_suffix(index_instance, document):
-    # TODO: verify extension's role in query
-    index_instance_documents = DocumentRenameCount.objects.filter(index_instance_node=index_instance)#.filter(document__file_extension=document.file_extension)
+    index_instance_documents = DocumentRenameCount.objects.filter(index_instance_node=index_instance)
     files_list = []
     for index_instance_document in index_instance_documents:
         files_list.append(assemble_suffixed_filename(index_instance_document.document.file_filename, index_instance_document.suffix))
@@ -85,7 +71,7 @@ def find_lowest_available_suffix(index_instance, document):
     raise MaxSuffixCountReached(ugettext(u'Maximum suffix (%s) count reached.') % MAX_SUFFIX_COUNT)
 
 
-def _evaluate_index(eval_dict, document, template_node, parent_index_instance=None):
+def cascade_eval(eval_dict, document, template_node, parent_index_instance=None):
     """
     Evaluate an enabled index expression and update or create all the
     related index instances also recursively calling itself to evaluate
@@ -101,7 +87,7 @@ def _evaluate_index(eval_dict, document, template_node, parent_index_instance=No
                 index_instance.parent = parent_index_instance
                 index_instance.save()
                 #if created:
-                #fs_create_index_directory(index_instance)
+                fs_create_index_directory(index_instance)
                 if template_node.link_documents:
                     suffix = find_lowest_available_suffix(index_instance, document)
                     document_count = DocumentRenameCount(
@@ -111,11 +97,11 @@ def _evaluate_index(eval_dict, document, template_node, parent_index_instance=No
                     )
                     document_count.save()
 
-                    #fs_create_document_link(index_instance, document, suffix)
+                    fs_create_document_link(index_instance, document, suffix)
                     index_instance.documents.add(document)
 
                 for child in template_node.get_children():
-                    children_warnings = _evaluate_index(
+                    children_warnings = cascade_eval(
                         eval_dict, document, child, index_instance
                     )
                     warnings.extend(children_warnings)
@@ -130,7 +116,7 @@ def _evaluate_index(eval_dict, document, template_node, parent_index_instance=No
     return warnings
 
 
-def _remove_document_from_index_instance(document, index_instance):
+def cascade_document_remove(document, index_instance):
     """
     Delete a documents reference from an index instance and call itself
     recusively deleting documents and empty index instances up to the
@@ -139,16 +125,16 @@ def _remove_document_from_index_instance(document, index_instance):
     warnings = []
     try:
         document_rename_count = DocumentRenameCount.objects.get(index_instance_node=index_instance, document=document)
-        #fs_delete_document_link(index_instance, document, document_rename_count.suffix)
+        fs_delete_document_link(index_instance, document, document_rename_count.suffix)
         document_rename_count.delete()
         index_instance.documents.remove(document)
         if index_instance.documents.count() == 0 and index_instance.get_children().count() == 0:
             # if there are no more documents and no children, delete
             # node and check parent for the same conditions
             parent = index_instance.parent
-            #fs_delete_index_directory(index_instance)
+            fs_delete_index_directory(index_instance)
             index_instance.delete()
-            parent_warnings = _remove_document_from_index_instance(
+            parent_warnings = cascade_document_remove(
                 document, parent
             )
             warnings.extend(parent_warnings)
