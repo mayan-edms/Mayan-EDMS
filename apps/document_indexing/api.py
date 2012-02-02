@@ -63,7 +63,7 @@ def delete_indexes(document):
     return warnings
 
 
-def get_instance_link(index_instance_node=None, text=None, simple=False):
+def get_instance_link(index_instance_node, text=None, simple=False):
     """
     Return an HTML anchor to an index instance
     """
@@ -74,17 +74,11 @@ def get_instance_link(index_instance_node=None, text=None, simple=False):
         template = u'%(value)s'
     else:
         template = u'<a href="%(url)s">%(value)s</a>'
-    if index_instance_node:
-        return template % {
-            'url': index_instance_node.get_absolute_url(),
-            'value': text if text else (index_instance_node if index_instance_node.parent else index_instance_node.index_template_node.index)
-        }
-    else:
-        # Root node
-        return template % {
-            'url': '#',#reverse('index_instance_node_view', args=[index_instance_node.parent.pk]),
-            'value': ugettext(u'root')
-        }
+
+    return template % {
+        'url': index_instance_node.get_absolute_url(),
+        'value': text if text else (index_instance_node if index_instance_node.parent else index_instance_node.index_template_node.index)
+    }
 
 
 def get_breadcrumbs(index_instance, simple=False, single_link=False, include_count=False):
