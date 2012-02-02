@@ -456,8 +456,8 @@ def setup_metadata_set_edit(request, metadata_set_id):
 
     return assign_remove(
         request,
-        left_list=lambda: generate_choices_w_labels(get_non_set_members(metadata_set)),
-        right_list=lambda: generate_choices_w_labels(get_set_members(metadata_set)),
+        left_list=lambda: generate_choices_w_labels(get_non_set_members(metadata_set), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(get_set_members(metadata_set), display_object_type=False),
         add_method=lambda x: add_set_member(metadata_set, x),
         remove_method=lambda x: remove_set_member(metadata_set, x),
         left_list_title=_(u'non members of metadata set: %s') % metadata_set,
