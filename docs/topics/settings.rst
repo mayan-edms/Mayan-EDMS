@@ -297,21 +297,15 @@ DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT
 Default: ``1000``        
     
     
-.. setting:: DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH
+.. setting:: DOCUMENT_INDEXING_FILESYSTEM_SERVING
 
-DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH 
----------------------------------------------
-    
-Default: ``/tmp/mayan/documents``         
-    
-    
-.. setting:: DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE
+DOCUMENT_INDEXING_FILESYSTEM_SERVING
+------------------------------------
 
-DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE    
------------------------------------------------
-    
-Default: ``True``       
-    
+Default: ``{}``
+
+A dictionary that maps the index name and where on the filesystem that index will be mirrored.
+
     
 OCR
 ===
