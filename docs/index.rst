@@ -17,14 +17,12 @@ Mayan EDMS documentation
 .. _indexing: http://en.wikipedia.org/wiki/Index_card
 .. _Open source: http://en.wikipedia.org/wiki/Open_source
 
-Links of interest
-=================
+On the Web
+=====================
 
 * Website: http://www.mayan-edms.com
 * Source: http://github.com/rosarior/mayan
-* Video: http://bit.ly/pADNXv
-* Issue tracker: http://github.com/rosarior/mayan/issues
-* Mailing list: http://groups.google.com/group/mayan-edms 
+* Video: http://bit.ly/Mayan-Intro
 
 
 First steps
@@ -39,12 +37,13 @@ First steps
 Understanding Mayan EDMS
 ========================
 
-  :doc:`Transformations <topics/transformations>` |
   :doc:`Indexes <topics/indexes>` |
   :doc:`Smart links <topics/smart_links>` |
+  :doc:`Permission system <topics/permissions>` |
   :doc:`Document visualization <topics/document_visualization>` |
   :doc:`OCR <topics/ocr>` |
   :doc:`File storage <topics/file_storage>`
+  :doc:`Transformations <topics/transformations>`
 
 
 Between versions
