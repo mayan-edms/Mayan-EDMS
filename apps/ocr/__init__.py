@@ -1,9 +1,3 @@
-try:
-    from psycopg2 import OperationalError
-except ImportError:
-    class OperationalError(Exception):
-        pass
-        
 import logging
         
 from django.core.exceptions import ImproperlyConfigured
@@ -11,7 +5,7 @@ from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.utils import DatabaseError
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 
 from navigation.api import register_links, register_top_menu, register_multi_item_links
@@ -26,6 +20,7 @@ from ocr.conf.settings import AUTOMATIC_OCR
 from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
 from ocr.models import DocumentQueue, QueueTransformation, QueueDocument
 from ocr.tasks import task_process_document_queues
+from ocr import models as ocr_models
 
 logger = logging.getLogger(__name__)
 
@@ -82,22 +77,12 @@ register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_d
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
 
 
-@transaction.commit_manually
+@transaction.commit_on_success
 def create_default_queue():
-    try:
-        default_queue, created = DocumentQueue.objects.get_or_create(name='default')
-        if created:
-            default_queue.label = ugettext(u'Default')
-            default_queue.save()
-    except DatabaseError:
-        transaction.rollback()
-        # Special case for ./manage.py syncdb
-    except (OperationalError, ImproperlyConfigured):
-        transaction.rollback()
-        # Special for DjangoZoom, which executes collectstatic media
-        # doing syncdb and creating the database tables
-    else:
-        transaction.commit()
+    default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+    if created:
+        default_queue.label = ugettext(u'Default')
+        default_queue.save()
 
 
 def document_post_save(sender, instance, **kwargs):
@@ -117,8 +102,9 @@ post_save.connect(document_post_save, sender=Document)
 #        logger.debug('got call_queue signal: %s' % kwargs)
 #        task_process_document_queues()
 
-
-create_default_queue()
+@receiver(post_syncdb, dispatch_uid='create_default_queue', sender=ocr_models)
+def create_default_queue_signal_handler(sender, **kwargs):
+    create_default_queue()
 
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
 
