@@ -106,7 +106,7 @@ def get_page_count(input_filepath):
                 input_filepath = office_converter.output_filepath
 
         except OfficeConversionError:
-                raise UnknownFileFormat('office converter exception')
+            raise UnknownFileFormat('office converter exception')
 
     return backend.get_page_count(input_filepath)
 
