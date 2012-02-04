@@ -1,12 +1,6 @@
 import pickle
 import json
 
-try:
-    from psycopg2 import OperationalError
-except ImportError:
-    class OperationalError(Exception):
-        pass
-
 from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.db.utils import DatabaseError
@@ -18,7 +12,7 @@ from history.models import HistoryType, History
 from history.runtime_data import history_types_dict
 
 
-@transaction.commit_manually
+@transaction.commit_on_success
 def register_history_type(history_type_dict):
     namespace = history_type_dict['namespace']
     name = history_type_dict['name']
@@ -27,7 +21,10 @@ def register_history_type(history_type_dict):
         history_type_obj, created = HistoryType.objects.get_or_create(
             namespace=namespace, name=name)
         history_type_obj.save()
-
+    except DatabaseError:
+        # Special case for syncdb
+        pass
+    else:
         # Runtime
         history_types_dict.setdefault(namespace, {})
         history_types_dict[namespace][name] = {
@@ -36,15 +33,6 @@ def register_history_type(history_type_dict):
             'details': history_type_dict.get('details', u''),
             'expressions': history_type_dict.get('expressions', []),
         }
-    except DatabaseError:
-        transaction.rollback()
-        # Special case for ./manage.py syncdb
-    except (OperationalError, ImproperlyConfigured):
-        transaction.rollback()
-        # Special for DjangoZoom, which executes collectstatic media
-        # doing syncdb and creating the database tables
-    else:
-        transaction.commit()
 
 
 def create_history(history_type_dict, source_object=None, data=None):
