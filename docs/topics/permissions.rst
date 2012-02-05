@@ -12,6 +12,9 @@ perform.  This control is divided into two levels of operation:
   this method could be thought out as a global permission granting level.
   Example: Roles being granted the ``Document view`` permission will be able to view
   **all** documents in existance.
+
+  .. image:: permissions.png
+     :alt: 2-tier permission diagram
   
 * 3-tier access control - When more control is desired over which objects
   actors(user, groups and roles) can exercise an action this method should be
@@ -19,6 +22,9 @@ perform.  This control is divided into two levels of operation:
   permission but only in relation to a selected object.  Example: Granting user
   ``Joe`` the ``Document view`` access control for document ``Payroll``,
   would allow him to view this document only.
+
+  .. image:: ACL.png
+     :alt: 3-tier access control diagram
   
 The permission system enforces inheritance by first checking if the user
 has a global permission, is a member of a group or a role that has a global
@@ -30,3 +36,4 @@ is forbidden to perform the action and a generic message indicating this is
 displayed to avoid providing any information that could be used to sidetrack
 the permission system or obtain any kind of information about the object
 from which the user was not allowed access.
+

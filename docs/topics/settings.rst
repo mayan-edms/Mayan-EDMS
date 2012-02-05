@@ -5,82 +5,76 @@ Settings
 **Mayan EDMS** has many configuration options that make it very adaptable to
 different server configurations.
 
-.. contents::
-    :local:
-    :depth: 1
-
-
 Documents
 =========
 
 .. setting:: DOCUMENTS_CHECKSUM_FUNCTION
 
-DOCUMENTS_CHECKSUM_FUNCTION
----------------------------
+**DOCUMENTS_CHECKSUM_FUNCTION**
 
 Default: ``hashlib.sha256(x).hexdigest()``
 
+The function that will be used to calculate the hash value of each uploaded document.
 
-.. setting:: \DOCUMENTS_UUID_FUNCTION
 
-DOCUMENTS_UUID_FUNCTION
------------------------
+.. setting:: DOCUMENTS_UUID_FUNCTION
+
+**DOCUMENTS_UUID_FUNCTION**
 
 Default: ``unicode(uuid.uuid4())``
+
+The function that will be used to internally identify each uploaded document.
 
 
 .. setting:: DOCUMENTS_STORAGE_BACKEND
 
-DOCUMENTS_STORAGE_BACKEND
--------------------------
+**DOCUMENTS_STORAGE_BACKEND**
 
 Default: ``FileBasedStorage`` class
+
+The storage backend that will be used to store every document.
 
 
 .. setting:: DOCUMENTS_PREVIEW_SIZE
 
-DOCUMENTS_PREVIEW_SIZE    
-----------------------
+**DOCUMENTS_PREVIEW_SIZE**
     
 Default: ``640x480``
+
+Size of the document list and recent document list previews.
 
 
 .. setting:: DOCUMENTS_PRINT_SIZE
 
-DOCUMENTS_PRINT_SIZE    
---------------------
+**DOCUMENTS_PRINT_SIZE**
     
 Default: ``1400``
     
 
 .. setting:: DOCUMENTS_MULTIPAGE_PREVIEW_SIZE    
 
-DOCUMENTS_MULTIPAGE_PREVIEW_SIZE
---------------------------------
+**DOCUMENTS_MULTIPAGE_PREVIEW_SIZE**
 
 Default: ``160x120``
 
 
 .. setting:: DOCUMENTS_THUMBNAIL_SIZE
 
-DOCUMENTS_THUMBNAIL_SIZE   
-------------------------
+**DOCUMENTS_THUMBNAIL_SIZE**
     
 Default: ``50x50``
         
 
 .. setting:: DOCUMENTS_DISPLAY_SIZE    
 
-DOCUMENTS_DISPLAY_SIZE
-----------------------
+**DOCUMENTS_DISPLAY_SIZE**
     
 Default: ``1200``
           
 
 .. setting:: DOCUMENTS_RECENT_COUNT
 
-DOCUMENTS_RECENT_COUNT
-----------------------
+**DOCUMENTS_RECENT_COUNT**
     
 Default: ``40``  
     
@@ -90,8 +84,7 @@ remember per user.
 
 .. setting:: DOCUMENTS_ZOOM_PERCENT_STEP
 
-DOCUMENTS_ZOOM_PERCENT_STEP
----------------------------
+**DOCUMENTS_ZOOM_PERCENT_STEP**
     
 Default: ``50``  
     
@@ -100,8 +93,7 @@ Amount in percent zoom in or out a document page per user interaction.
     
 .. setting:: DOCUMENTS_ZOOM_MAX_LEVEL    
 
-DOCUMENTS_ZOOM_MAX_LEVEL
-------------------------
+**DOCUMENTS_ZOOM_MAX_LEVEL**
     
 Default: ``200``  
     
@@ -110,8 +102,7 @@ Maximum amount in percent (%) to allow user to zoom in a document page interacti
     
 .. setting:: DOCUMENTS_ZOOM_MIN_LEVEL
 
-DOCUMENTS_ZOOM_MIN_LEVEL
-------------------------
+**DOCUMENTS_ZOOM_MIN_LEVEL**
     
 Default: ``50``  
     
@@ -120,8 +111,7 @@ Minimum amount in percent (%) to allow user to zoom out a document page interact
 
 .. setting:: DOCUMENTS_ROTATION_STEP
 
-DOCUMENTS_ROTATION_STEP
------------------------
+**DOCUMENTS_ROTATION_STEP**
     
 Default: ``90``  
     
@@ -130,8 +120,7 @@ Amount in degrees to rotate a document page per user interaction.
     
 .. setting:: DOCUMENTS_CACHE_PATH
 
-DOCUMENTS_CACHE_PATH
---------------------
+**DOCUMENTS_CACHE_PATH**
     
 Default: ``image_cache`` (relative to the installation path)
     
@@ -143,8 +132,7 @@ Converter
     
 .. setting:: CONVERTER_IM_CONVERT_PATH
 
-CONVERTER_IM_CONVERT_PATH
--------------------------
+**CONVERTER_IM_CONVERT_PATH**
     
 Default: ``/usr/bin/convert``
     
@@ -153,8 +141,7 @@ File path to imagemagick's convert program.
     
 .. setting:: CONVERTER_IM_IDENTIFY_PATH    
     
-CONVERTER_IM_IDENTIFY_PATH    
---------------------------
+**CONVERTER_IM_IDENTIFY_PATH**
 
 Default: ``/usr/bin/identify``
 
@@ -163,8 +150,7 @@ File path to imagemagick's identify program.
     
 .. setting:: CONVERTER_GM_PATH    
 
-CONVERTER_GM_PATH
------------------
+**CONVERTER_GM_PATH**
 
 Default: ``/usr/bin/gm``
     
@@ -173,41 +159,44 @@ File path to graphicsmagick's program.
 
 .. setting:: CONVERTER_GM_SETTINGS
 
-CONVERTER_GM_SETTINGS
----------------------
+**CONVERTER_GM_SETTINGS**
 
 Default: None
-    
+   
 Suggested options: ``-limit files 1 -limit memory 1GB -limit map 2GB -density 200``
+
+Set of configuration options to pass to the GraphicsMagick executable to
+fine tune it's functionality as explained in the `GraphicsMagick documentation`_
+
+.. _GraphicsMagick documentation: http://www.graphicsmagick.org/convert.html#conv-opti
 
 
 .. setting:: CONVERTER_GRAPHICS_BACKEND
 
-CONVERTER_GRAPHICS_BACKEND
---------------------------
+**CONVERTER_GRAPHICS_BACKEND**
 
 Default: ``converter.backends.python``    
     
 Graphics conversion backend to use. Options are:
 
-* ``converter.backends.imagemagick``
-* ``converter.backends.graphicsmagick``
-* ``converter.backends.python``
+* ``converter.backends.imagemagick`` - Wrapper for ImageMagick
+* ``converter.backends.graphicsmagick`` - Wrapper for GraphicsMagick
+* ``converter.backends.python`` - Wrapper for Pillow and Ghostscript
     
 .. setting:: CONVERTER_UNOCONV_PATH
 
-CONVERTER_UNOCONV_PATH 
-----------------------
+
+**CONVERTER_UNOCONV_PATH**
     
 Default: ``/usr/bin/unoconv``
     
-Path to the unoconv program.
+Path to the unoconv program used to call LibreOffice for office document convertion.
    
     
 .. setting:: CONVERTER_UNOCONV_USE_PIPE
 
-CONVERTER_UNOCONV_USE_PIPE  
---------------------------
+
+**CONVERTER_UNOCONV_USE_PIPE**  
     
 Default: ``True``
     
@@ -219,8 +208,7 @@ Linking
 
 .. setting:: LINKING_SHOW_EMPTY_SMART_LINKS
 
-LINKING_SHOW_EMPTY_SMART_LINKS
-------------------------------
+**LINKING_SHOW_EMPTY_SMART_LINKS**
     
 Default: ``True``
     
@@ -232,32 +220,28 @@ Storage
 
 .. setting:: STORAGE_GRIDFS_HOST
 
-STORAGE_GRIDFS_HOST
--------------------
+**STORAGE_GRIDFS_HOST**
     
 Default: ``localhost``    
     
 
 .. setting:: STORAGE_GRIDFS_PORT
 
-STORAGE_GRIDFS_PORT  
--------------------
+**STORAGE_GRIDFS_PORT**
     
 Default: ``27017``        
     
     
 .. setting:: STORAGE_GRIDFS_DATABASE_NAME
 
-STORAGE_GRIDFS_DATABASE_NAME   
-----------------------------
+**STORAGE_GRIDFS_DATABASE_NAME**
     
 Default: ``document_storage``     
     
     
 .. setting:: STORAGE_FILESTORAGE_LOCATION
 
-STORAGE_FILESTORAGE_LOCATION  
-----------------------------
+**STORAGE_FILESTORAGE_LOCATION**
     
 Default: ``document_storage``     
     
@@ -267,40 +251,35 @@ Document indexing
 
 .. setting:: DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS
 
-DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS    
-----------------------------------------------
+**DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS**
     
 Default: ``proper_name`` 
 
 
 .. setting:: DOCUMENT_INDEXING_SUFFIX_SEPARATOR
 
-DOCUMENT_INDEXING_SUFFIX_SEPARATOR
-----------------------------------
+**DOCUMENT_INDEXING_SUFFIX_SEPARATOR**
     
 Default: ``_``  (underscore)
-    
+
     
 .. setting:: DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS
 
-DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS   
-------------------------------------------
+**DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS**
     
 Default: ``False``    
         
     
 .. setting:: DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT
 
-DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT
----------------------------------------------
+**DOCUMENT_INDEXING_FILESYSTEM_MAX_SUFFIX_COUNT**
     
 Default: ``1000``        
     
     
 .. setting:: DOCUMENT_INDEXING_FILESYSTEM_SERVING
 
-DOCUMENT_INDEXING_FILESYSTEM_SERVING
-------------------------------------
+**DOCUMENT_INDEXING_FILESYSTEM_SERVING**
 
 Default: ``{}``
 
@@ -312,8 +291,7 @@ OCR
     
 .. setting:: OCR_TESSERACT_PATH
 
-OCR_TESSERACT_PATH
-------------------
+**OCR_TESSERACT_PATH**
     
 Default: ``/bin/tesseract``        
 
@@ -323,8 +301,7 @@ page's images.
     
 .. setting:: OCR_TESSERACT_LANGUAGE
 
-OCR_TESSERACT_LANGUAGE 
-----------------------
+**OCR_TESSERACT_LANGUAGE**
     
 Default: ``eng``           
 
@@ -333,8 +310,7 @@ Language code passed to the ``tesseract`` executable.
     
 .. setting:: OCR_REPLICATION_DELAY
 
-OCR_REPLICATION_DELAY 
----------------------
+**OCR_REPLICATION_DELAY**
     
 Default: ``0``              
     
@@ -344,8 +320,7 @@ storage replication overhead.
     
 .. setting:: OCR_NODE_CONCURRENT_EXECUTION
 
-OCR_NODE_CONCURRENT_EXECUTION
------------------------------
+**OCR_NODE_CONCURRENT_EXECUTION**
     
 Default: ``1``               
     
@@ -354,8 +329,7 @@ Maximum amount of concurrent document OCRs a node can perform.
 
 .. setting:: OCR_AUTOMATIC_OCR
 
-OCR_AUTOMATIC_OCR    
------------------
+**OCR_AUTOMATIC_OCR**
     
 Default: ``False``               
     
@@ -365,16 +339,14 @@ of existing documents for OCR.
     
 .. setting:: OCR_QUEUE_PROCESSING_INTERVAL
 
-OCR_QUEUE_PROCESSING_INTERVAL
------------------------------
+**OCR_QUEUE_PROCESSING_INTERVAL**
     
 Default: ``10``               
 
 
 .. setting:: OCR_UNPAPER_PATH
 
-OCR_UNPAPER_PATH
-----------------
+**OCR_UNPAPER_PATH**
     
 Default: ``/usr/bin/unpaper`` 
     
@@ -387,16 +359,14 @@ Metadata
 
 .. setting:: METADATA_AVAILABLE_FUNCTIONS
 
-METADATA_AVAILABLE_FUNCTIONS
-----------------------------
+**METADATA_AVAILABLE_FUNCTIONS**
 
 Default: ``current_date`` 
 
 
 .. setting:: METADATA_AVAILABLE_MODELS
 
-METADATA_AVAILABLE_MODELS 
--------------------------
+**METADATA_AVAILABLE_MODELS**
 
 Default: ``User`` 
 
@@ -406,8 +376,7 @@ Common
 
 .. setting:: COMMON_TEMPORARY_DIRECTORY
 
-COMMON_TEMPORARY_DIRECTORY   
---------------------------
+**COMMON_TEMPORARY_DIRECTORY**
 
 Default: ``/tmp`` 
 
@@ -418,23 +387,21 @@ using tempfile.mkdtemp()
 
 .. setting:: COMMON_DEFAULT_PAPER_SIZE
 
-COMMON_DEFAULT_PAPER_SIZE   
--------------------------
+**COMMON_DEFAULT_PAPER_SIZE**
 
 Default: ``Letter`` 
 
 
 .. setting:: COMMON_DEFAULT_PAGE_ORIENTATION
 
-COMMON_DEFAULT_PAGE_ORIENTATION    
--------------------------------
+**COMMON_DEFAULT_PAGE_ORIENTATION**
+
 Default: ``Portrait`` 
 
 
 .. setting:: COMMON_AUTO_CREATE_ADMIN
 
-COMMON_AUTO_CREATE_ADMIN
-------------------------
+**COMMON_AUTO_CREATE_ADMIN**
 
 Default: ``True`` 
 
@@ -445,8 +412,7 @@ specified by COMMON_AUTO_ADMIN_PASSWORD
 
 .. setting:: COMMON_AUTO_ADMIN_USERNAME
 
-COMMON_AUTO_ADMIN_USERNAME
---------------------------
+**COMMON_AUTO_ADMIN_USERNAME**
 
 Default: ``admin`` 
 
@@ -455,8 +421,7 @@ Username of the automatically created superuser
 
 .. setting:: COMMON_AUTO_ADMIN_PASSWORD
 
-COMMON_AUTO_ADMIN_PASSWORD
---------------------------
+**COMMON_AUTO_ADMIN_PASSWORD**
 
 Default: ``admin`` 
 
@@ -465,8 +430,7 @@ Default password of the automatically created superuser
 
 .. setting:: COMMON_LOGIN_METHOD
 
-COMMON_LOGIN_METHOD
-------------------- 
+**COMMON_LOGIN_METHOD**
 
 Default: ``username`` 
 
@@ -477,12 +441,11 @@ such as AUTHENTICATION_BACKENDS = ('common.auth.email_auth_backend.EmailAuthBack
 
 .. setting:: COMMON_ALLOW_ANONYMOUS_ACCESS
 
-COMMON_ALLOW_ANONYMOUS_ACCESS
------------------------------
+**COMMON_ALLOW_ANONYMOUS_ACCESS**
 
 Default: ``False``
 
-Allow non authenticated users, access to all views
+Allow non authenticated users, access to all views.
 
 
 Search
@@ -490,8 +453,7 @@ Search
 
 .. setting:: SEARCH_LIMIT 
 
-SEARCH_LIMIT
-------------   
+**SEARCH_LIMIT**
 
 Default: ``100`` 
 
@@ -500,8 +462,7 @@ Maximum amount search hits to fetch and display.
 
 .. setting:: SEARCH_RECENT_COUNT
 
-SEARCH_RECENT_COUNT
--------------------
+**SEARCH_RECENT_COUNT**
 
 Default: ``5`` 
 
@@ -509,22 +470,22 @@ Maximum number of search queries to remember per user.
 
 
 Web theme
----------
+=========
 
 .. setting:: WEB_THEME_THEME
 
-WEB_THEME_THEME
----------------   
+**WEB_THEME_THEME**
 
 Default: ``activo`` 
 
-CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``, ``default``, ``djime-cerulean``, ``drastic-dark``, ``kathleene``, ``olive``, ``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
+CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``,
+``default``, ``djime-cerulean``, ``drastic-dark``, ``kathleene``, ``olive``,
+``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
 
 
 .. setting:: WEB_THEME_VERBOSE_LOGIN
 
-WEB_THEME_VERBOSE_LOGIN
------------------------ 
+**WEB_THEME_VERBOSE_LOGIN**
 
 Default: ``True`` 
 
@@ -536,8 +497,7 @@ Main
 
 .. setting:: MAIN_SIDE_BAR_SEARCH
 
-MAIN_SIDE_BAR_SEARCH
---------------------    
+**MAIN_SIDE_BAR_SEARCH**
 
 Default: ``False`` 
 
@@ -546,16 +506,14 @@ Controls whether the search functionality is provided by a sidebar widget or by 
 
 .. setting:: MAIN_DISABLE_HOME_VIEW
 
-MAIN_DISABLE_HOME_VIEW
-----------------------
+**MAIN_DISABLE_HOME_VIEW**
 
 Default: ``False`` 
 
 
 .. setting:: MAIN_DISABLE_ICONS
 
-MAIN_DISABLE_ICONS
------------------- 
+**MAIN_DISABLE_ICONS**
 
 Default: ``False`` 
 
@@ -565,8 +523,7 @@ User management
 
 .. setting:: ROLES_DEFAULT_ROLES
 
-ROLES_DEFAULT_ROLES
--------------------
+**ROLES_DEFAULT_ROLES**
 
 Default: ``[]`` 
 
@@ -578,8 +535,7 @@ Signatures
 
 .. setting:: SIGNATURES_KEYSERVERS    
 
-SIGNATURES_KEYSERVERS
----------------------
+**SIGNATURES_KEYSERVERS**
 
 Default: ``['pool.sks-keyservers.net']`` 
 
@@ -588,8 +544,7 @@ List of keyservers to be queried for unknown keys.
 
 .. setting:: SIGNATURES_GPG_HOME
 
-SIGNATURES_GPG_HOME
--------------------    
+**SIGNATURES_GPG_HOME**
 
 Default: ``gpg_home``
 

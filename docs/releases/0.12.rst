@@ -136,6 +136,15 @@ has been added, :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`, which maps
 the index internal name with the physical directory where such index will be
 mirrored on disk.
 
+Help shape Mayan EDMS's future
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Included in this version is a small feedback application, found under the 
+``About`` main menu, where users by just answering some questions can
+help determine the priority of the next planned features on the pipeline,
+or even help add new features if enough requests are received.  All questions
+are optional but answering as many as possible will help greatly understand
+the need of the **Mayan EDMS** user base.
+
 Upgrading from a previous version
 =================================
 
