@@ -173,31 +173,11 @@ class GPG(object):
         self.keyservers = keyservers
 
         self.gpg = gnupg.GPG(**kwargs)
-
-    def verify_w_retry(self, file_input, detached_signature=None):
-        logger.debug('file_input type: %s' % type(file_input))
-
-        input_descriptor = GPG.get_descriptor(file_input)
-
-        try:
-            verify = self.verify_file(input_descriptor, detached_signature, close_descriptor=False)
-            if verify.status == 'no public key':
-                # Try to fetch the public key from the keyservers
-                try:
-                    self.receive_key(verify.key_id)
-                    return self.verify_w_retry(input_descriptor, detached_signature)
-                except KeyFetchingError:
-                    return verify
-            else:
-                input_descriptor.close()
-                return verify
-        except IOError:
-            return False
-
-    def verify_file(self, file_input, detached_signature=None, close_descriptor=True):
-        '''
+        
+    def verify_file(self, file_input, detached_signature=None, close_descriptor=True, fetch_key=False):
+        """
         Verify the signature of a file.
-        '''
+        """
 
         input_descriptor = GPG.get_descriptor(file_input)
 
@@ -213,15 +193,28 @@ class GPG(object):
         else:
             verify = self.gpg.verify_file(input_descriptor)
 
-        if close_descriptor:
-            input_descriptor.close()
-
+        logger.debug('verify.status: %s' % getattr(verify, 'status', None))
         if verify:
+            logger.debug('verify ok')
+            if close_descriptor:
+                input_descriptor.close()
             return verify
-        #elif getattr(verify, 'status', None) == 'no public key':
-        #    # Exception to the rule, to be able to query the keyservers
-        #    return verify
+        elif getattr(verify, 'status', None) == 'no public key':
+            # Exception to the rule, to be able to query the keyservers
+            if fetch_key:
+                try:
+                    self.receive_key(verify.key_id)
+                    return self.verify_file(input_descriptor, detached_signature, close_descriptor, fetch_key=False)
+                except KeyFetchingError:
+                    if close_descriptor:
+                        input_descriptor.close()
+                    return verify
+            else:
+                return verify
         else:
+            logger.debug('No verify')
+            if close_descriptor:
+                input_descriptor.close()
             raise GPGVerificationError()
 
     def verify(self, data):
@@ -234,12 +227,12 @@ class GPG(object):
             raise GPGVerificationError(verify.status)
 
     def sign_file(self, file_input, key=None, destination=None, key_id=None, passphrase=None, clearsign=False):
-        '''
+        """
         Signs a filename, storing the signature and the original file
         in the destination filename provided (the destination file is
         overrided if it already exists), if no destination file name is
         provided the signature is returned.
-        '''
+        """
 
         kwargs = {}
         kwargs['clearsign'] = clearsign

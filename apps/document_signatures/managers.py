@@ -59,6 +59,6 @@ class DocumentVersionSignatureManager(models.Manager):
             args = (document.open(raw=True),)
 
         try:
-            return gpg.verify_w_retry(*args)
+            return gpg.verify_file(*args, fetch_key=True)
         except GPGVerificationError:
             return None
