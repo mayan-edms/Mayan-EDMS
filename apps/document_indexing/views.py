@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
@@ -8,7 +6,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from django.utils.html import conditional_escape, mark_safe
 from django.core.exceptions import PermissionDenied
 
 from permissions.models import Permission
@@ -22,7 +19,7 @@ from acls.models import AccessEntry
 from .forms import IndexForm, IndexTemplateNodeForm
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
 from .tools import do_rebuild_all_indexes
-from .widgets import (index_instance_item_link, get_breadcrumbs)
+from .widgets import (index_instance_item_link, get_breadcrumbs, node_level)
 from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
     PERMISSION_DOCUMENT_INDEXING_SETUP,
@@ -164,7 +161,7 @@ def index_setup_view(request, index_pk):
         'title': _(u'tree template nodes for index: %s') % index,
         'hide_object': True,
         'extra_columns': [
-            {'name': _(u'level'), 'attribute': encapsulate(lambda x: u''.join([mark_safe(conditional_escape(u'--') * (getattr(x, x._mptt_meta.level_attr) - 0)), unicode(x if x.parent else 'root') ] ))},
+            {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
         ],
     }
 
