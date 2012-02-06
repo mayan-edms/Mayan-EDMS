@@ -178,8 +178,6 @@ And continue migrating database schema with::
 
     $ ./manage.py migrate documents
     $ ./manage.py migrate document_signatures
-    $ ./manage.py migrate permissions 0001 --fake
-    $ ./manage.py migrate permissions
     $ ./manage.py migrate folders 0001 --fake
     $ ./manage.py migrate folders
     $ ./manage.py migrate document_indexing 0001 --fake
