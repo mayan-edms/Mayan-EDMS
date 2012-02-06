@@ -36,6 +36,11 @@ If using the ``MySQL`` database manager, use the following commands::
 
     $ apt-get install python-dev libmysqlclient-dev gcc -y
     $ pip install MySQL-python
+    
+If using PostgreSQL, enter the following::
+
+    $ apt-get install python-dev libpq-dev gcc-y
+    $ pip install pip install psycopg2
 
 Populate the database with the project's schema doing::
 
