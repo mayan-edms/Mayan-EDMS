@@ -200,6 +200,10 @@ Again when a similar messages appears
 
 Type ``yes`` and press **Enter**
 
+Add the new requirements::
+
+  $ pip install -r requirements/production.txt
+
 The upgrade procedure is now complete.
 
 Backward incompatible changes
