@@ -9,6 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 from django.db import transaction
+from django.db.utils import DatabaseError
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
@@ -93,7 +94,7 @@ class BaseModel(models.Model):
             document = Document()
             if document_type:
                 document.document_type = document_type
-            document.save()
+                document.save()
 
             apply_default_acls(document, user)
  
@@ -119,7 +120,8 @@ class BaseModel(models.Model):
             new_version = document.new_version(file=file_object, **new_version_data)
         except Exception:
             # Don't leave the database in a broken state
-            document.delete()
+            # document.delete()
+            transaction.rollback()
             raise
             
         if filename:

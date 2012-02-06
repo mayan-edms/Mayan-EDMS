@@ -22,6 +22,7 @@ class LockManager(models.Manager):
             logger.debug('acquired lock: %s' % name)
             return lock
         except IntegrityError, msg:
+            transaction.rollback()
             logger.debug('IntegrityError: %s', msg)
             # There is already an existing lock
             # Check it's expiration date and if expired, reset it

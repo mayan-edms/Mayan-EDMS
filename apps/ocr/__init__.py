@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
+from django.db.utils import DatabaseError
 
 from navigation.api import register_links, register_multi_item_links
 from documents.models import Document, DocumentVersion
@@ -64,10 +65,14 @@ register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(
 
 @transaction.commit_on_success
 def create_default_queue():
-    default_queue, created = DocumentQueue.objects.get_or_create(name='default')
-    if created:
-        default_queue.label = ugettext(u'Default')
-        default_queue.save()
+    try:
+        default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+    except DatabaseError:
+        transaction.rollback()
+    else:
+        if created:
+            default_queue.label = ugettext(u'Default')
+            default_queue.save()
 
 
 @receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
