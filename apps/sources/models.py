@@ -94,7 +94,7 @@ class BaseModel(models.Model):
             document = Document()
             if document_type:
                 document.document_type = document_type
-                document.save()
+            document.save()
 
             apply_default_acls(document, user)
  
