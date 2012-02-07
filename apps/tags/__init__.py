@@ -12,8 +12,7 @@ from acls.permissions import ACLS_VIEW_ACL
 from taggit.models import Tag
 from taggit.managers import TaggableManager
 
-from .widgets import get_tags_inline_widget_simple
-from .widgets import tag_color_block
+from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
     PERMISSION_TAG_VIEW)
@@ -32,12 +31,8 @@ tag_acl_list = {'text': _(u'ACLs'), 'view': 'tag_acl_list', 'args': 'object.pk',
 
 register_model_list_columns(Tag, [
     {
-        'name': _(u'color'),
-        'attribute': encapsulate(lambda x: tag_color_block(x))
-    },
-    {
-        'name': _(u'color name'),
-        'attribute': encapsulate(lambda x: x.tagproperties_set.get().get_color_display()),
+        'name': _(u'preview'),
+        'attribute': encapsulate(lambda x: single_tag_widget(x))
     },
     {
         'name': _(u'tagged items'),

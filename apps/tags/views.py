@@ -98,6 +98,7 @@ def tag_list(request, queryset=None, extra_context=None):
         'title': _(u'tags'),
         'hide_link': True,
         'multi_select_as_buttons': True,
+        'hide_object': True,
     }
     if extra_context:
         context.update(extra_context)
