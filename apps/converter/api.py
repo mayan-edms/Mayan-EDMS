@@ -4,11 +4,12 @@ import os
 import subprocess
 import hashlib
 
+from django.utils.encoding import smart_str
+
 from common.conf.settings import TEMPORARY_DIRECTORY
 
-from converter.literals import DEFAULT_PAGE_NUMBER, \
-    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT
-
+from .literals import (DEFAULT_PAGE_NUMBER,
+    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
 from . import backend
 from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
@@ -29,7 +30,7 @@ def cache_cleanup(input_filepath, *args, **kwargs):
 
 def create_image_cache_filename(input_filepath, *args, **kwargs):
     if input_filepath:
-        hash_value = HASH_FUNCTION(u''.join([input_filepath, unicode(args), unicode(kwargs)]))
+        hash_value = HASH_FUNCTION(u''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
         return os.path.join(TEMPORARY_DIRECTORY, hash_value)
     else:
         return None
