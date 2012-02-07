@@ -165,7 +165,6 @@ def permission_grant(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
         'form_icon': u'key_add.png',
@@ -229,7 +228,6 @@ def permission_revoke(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
         'form_icon': u'key_delete.png',
