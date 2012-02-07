@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
+from django.utils.html import mark_safe
 
 from permissions.models import Permission
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
