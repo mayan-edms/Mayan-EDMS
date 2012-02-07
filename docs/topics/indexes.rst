@@ -9,15 +9,15 @@ Each branch can be a pseudo folder, which can hold other child 'folders' or
 a document container which will have all the links to the documents that
 matched the path to reach the document container.
 
-  .. image:: index_template.png
-     :alt: index template
+.. image:: index_template.png
+ :alt: index template
 
 This template is the skeleton from which an instance of the index is then
 auto-populated with links to the documents depending on the rules of each
 branch of the index evaluated against the metadata and properties of the documents.
 
-  .. image:: index_instance.png
-     :alt: index instance
+.. image:: index_instance.png
+ :alt: index instance
 
 Indexes can be mirrored to the operating system filesystem
 using the configuration option
