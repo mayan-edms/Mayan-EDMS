@@ -382,7 +382,6 @@ def acl_holder_new(request, access_object_gid):
 # Setup views
 def acl_setup_valid_classes(request):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL])
-    logger.debug('DefaultAccessEntry.get_classes(): %s' % DefaultAccessEntry.get_classes())
 
     context = {
         'object_list': DefaultAccessEntry.get_classes(),
