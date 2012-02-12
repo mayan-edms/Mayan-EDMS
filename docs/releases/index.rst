@@ -15,7 +15,7 @@ Final releases
 ==============
 
 0.12 release
------------
+------------
 .. toctree::
    :maxdepth: 1
 

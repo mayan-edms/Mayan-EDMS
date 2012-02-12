@@ -24,6 +24,7 @@ On the Web
 * Source: http://github.com/rosarior/mayan
 * Video: http://bit.ly/Mayan-Intro
 
+Looking for specific information? Try the :doc:`detailed table of contents <contents>` otherwise below are the different part of the documentation.
 
 First steps
 ===========
@@ -69,9 +70,9 @@ For developers
 Credits
 =======
 
-  :doc:`Contributors <topics/contributors>` |
-  :doc:`Software used <topics/software_used>` |
-  :doc:`Licensing <license>`
+  :doc:`Contributors <credits/contributors>` |
+  :doc:`Software used <credits/software_used>` |
+  :doc:`Licensing <credits/license>`
     
 
 Getting help

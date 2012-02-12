@@ -161,7 +161,7 @@ class FileDisplayForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(FileDisplayForm, self).__init__(*args, **kwargs)
-        changelog_path = os.path.join(settings.PROJECT_ROOT, self.DIRECTORY, self.FILENAME)
+        changelog_path = os.path.join(settings.PROJECT_ROOT, os.sep.join(self.DIRECTORY), self.FILENAME)
         fd = open(changelog_path)
         self.fields['text'].initial = fd.read()
         fd.close()
@@ -169,4 +169,4 @@ class FileDisplayForm(forms.Form):
 
 class LicenseForm(FileDisplayForm):
     FILENAME = u'LICENSE'
-    DIRECTORY = u'docs'
+    DIRECTORY = [u'docs', u'credits']
