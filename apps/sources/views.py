@@ -317,6 +317,14 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                     {
                         'name': 'generic_subtemplate.html',
                         'context': {
+                            'title': _(u'Current document type'),
+                            'paragraphs': [document_type if document_type else _(u'None')],
+                            'side_bar': True,
+                        }
+                    },
+                    {
+                        'name': 'generic_subtemplate.html',
+                        'context': {
                             'title': _(u'Current metadata'),
                             'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
                             'side_bar': True,
