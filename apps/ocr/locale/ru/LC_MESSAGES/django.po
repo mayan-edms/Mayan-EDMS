@@ -1,48 +1,50 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: 2012-02-02 18:19+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
+"ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:31 __init__.py:32
+#: __init__.py:32 __init__.py:33
 msgid "submit to OCR queue"
 msgstr "отправить на распознавание"
 
-#: __init__.py:33 __init__.py:34
+#: __init__.py:34 __init__.py:35
 msgid "re-queue"
 msgstr "переотправить"
 
-#: __init__.py:35 __init__.py:36 __init__.py:49
+#: __init__.py:36 __init__.py:37 __init__.py:50
 msgid "delete"
 msgstr "удалить"
 
-#: __init__.py:38
+#: __init__.py:39
 msgid "stop queue"
 msgstr "остановка очереди"
 
-#: __init__.py:39
+#: __init__.py:40
 msgid "activate queue"
 msgstr "активировать очередь"
 
-#: __init__.py:41
+#: __init__.py:42
 msgid "clean up pages content"
 msgstr "очистка содержимого страниц"
 
-#: __init__.py:41
+#: __init__.py:42
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
@@ -50,31 +52,31 @@ msgstr ""
 "Применить языковый фильтр для удаления общих ошибок распознавания "
 "содержимого страниц документа."
 
-#: __init__.py:43
+#: __init__.py:44
 msgid "queue document list"
 msgstr "список очереди документов"
 
-#: __init__.py:44 __init__.py:62 permissions.py:7
+#: __init__.py:45 __init__.py:63 permissions.py:7
 msgid "OCR"
 msgstr "Распознавание текста"
 
-#: __init__.py:46
+#: __init__.py:47
 msgid "transformations"
 msgstr "преобразования"
 
-#: __init__.py:47
+#: __init__.py:48
 msgid "add transformation"
 msgstr "добавить преобразование"
 
-#: __init__.py:48
+#: __init__.py:49
 msgid "edit"
 msgstr "редактировать"
 
-#: __init__.py:69
+#: __init__.py:74
 msgid "Default"
 msgstr "Умолчание"
 
-#: __init__.py:97
+#: __init__.py:102
 msgid "Checks the OCR queue for pending documents."
 msgstr "Проверить очередь документов ожидающих распознавания ."
 
@@ -384,8 +386,7 @@ msgstr "Ошибка при удалении преобразования оче
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 msgstr ""
-"Вы действительно хотите удалить преобразование очереди "
-"\"%(transformation)s\""
+"Вы действительно хотите удалить преобразование очереди \"%(transformation)s\""
 
 #: views.py:412
 msgid "Queue transformation created successfully"
@@ -426,5 +427,3 @@ msgstr "Путь к программе unpaper."
 #: parsers/__init__.py:37
 msgid "Text extracted from PDF"
 msgstr "Текст, извлеченный из PDF"
-
-

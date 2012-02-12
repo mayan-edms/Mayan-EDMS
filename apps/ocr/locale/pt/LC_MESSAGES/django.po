@@ -1,49 +1,50 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Renata Oliveira <renatabels@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: 2012-02-02 18:19+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/team/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
+"team/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:31 __init__.py:32
+#: __init__.py:32 __init__.py:33
 msgid "submit to OCR queue"
 msgstr "submeter à lista de OCR"
 
-#: __init__.py:33 __init__.py:34
+#: __init__.py:34 __init__.py:35
 msgid "re-queue"
 msgstr "re-enfileirar"
 
-#: __init__.py:35 __init__.py:36 __init__.py:49
+#: __init__.py:36 __init__.py:37 __init__.py:50
 msgid "delete"
 msgstr "excluir"
 
-#: __init__.py:38
+#: __init__.py:39
 msgid "stop queue"
 msgstr "parar lista"
 
-#: __init__.py:39
+#: __init__.py:40
 msgid "activate queue"
 msgstr "ativar lista"
 
-#: __init__.py:41
+#: __init__.py:42
 msgid "clean up pages content"
 msgstr "limpar conteúdo das páginas"
 
-#: __init__.py:41
+#: __init__.py:42
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
@@ -51,31 +52,31 @@ msgstr ""
 "Executa um filtro de linguagem para remover erros comuns de OCR do conteúdo "
 "das páginas do documento."
 
-#: __init__.py:43
+#: __init__.py:44
 msgid "queue document list"
 msgstr "lista de documentos da fila"
 
-#: __init__.py:44 __init__.py:62 permissions.py:7
+#: __init__.py:45 __init__.py:63 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:46
+#: __init__.py:47
 msgid "transformations"
 msgstr "transformações"
 
-#: __init__.py:47
+#: __init__.py:48
 msgid "add transformation"
 msgstr "adicionar transformação"
 
-#: __init__.py:48
+#: __init__.py:49
 msgid "edit"
 msgstr "editar"
 
-#: __init__.py:69
+#: __init__.py:74
 msgid "Default"
 msgstr "Padrão"
 
-#: __init__.py:97
+#: __init__.py:102
 msgid "Checks the OCR queue for pending documents."
 msgstr "Verifica a lista de OCR para documentos pendentes."
 
@@ -339,8 +340,7 @@ msgstr "Tem certeza de que deseja limpar todo o conteúdo das páginas?"
 #: views.py:279
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
-"Em grandes bases de dados esta operação pode levar algum tempo para "
-"executar."
+"Em grandes bases de dados esta operação pode levar algum tempo para executar."
 
 #: views.py:285
 msgid "Document pages content clean up complete."
@@ -384,8 +384,8 @@ msgstr "Erro ao deletar transformação de lista; %(error)s "
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 msgstr ""
-"Tem certeza que deseja deletar a transformação de lista "
-"\"%(transformation)s\""
+"Tem certeza que deseja deletar a transformação de lista \"%(transformation)s"
+"\""
 
 #: views.py:412
 msgid "Queue transformation created successfully"
@@ -425,5 +425,3 @@ msgstr "Caminho do arquivo para o programa unpaper."
 #: parsers/__init__.py:37
 msgid "Text extracted from PDF"
 msgstr "Texto extraído de PDF"
-
-

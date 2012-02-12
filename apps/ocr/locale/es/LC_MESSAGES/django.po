@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-12 19:29+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,31 +18,31 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:31 __init__.py:32
+#: __init__.py:32 __init__.py:33
 msgid "submit to OCR queue"
 msgstr "enviar a lista de OCR"
 
-#: __init__.py:33 __init__.py:34
+#: __init__.py:34 __init__.py:35
 msgid "re-queue"
 msgstr "volver a la cola"
 
-#: __init__.py:35 __init__.py:36 __init__.py:49
+#: __init__.py:36 __init__.py:37 __init__.py:50
 msgid "delete"
 msgstr "eliminar"
 
-#: __init__.py:38
+#: __init__.py:39
 msgid "stop queue"
 msgstr "detener cola"
 
-#: __init__.py:39
+#: __init__.py:40
 msgid "activate queue"
 msgstr "activar cola"
 
-#: __init__.py:41
+#: __init__.py:42
 msgid "clean up pages content"
 msgstr "limpiar el contenido"
 
-#: __init__.py:41
+#: __init__.py:42
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
@@ -50,31 +50,31 @@ msgstr ""
 "Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR "
 "del contenido de las paginas del documento."
 
-#: __init__.py:43
+#: __init__.py:44
 msgid "queue document list"
 msgstr "lista de documentos en la cola"
 
-#: __init__.py:44 __init__.py:62 permissions.py:7
+#: __init__.py:45 __init__.py:63 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:46
+#: __init__.py:47
 msgid "transformations"
 msgstr "transformaciones"
 
-#: __init__.py:47
+#: __init__.py:48
 msgid "add transformation"
 msgstr "añadir transformación"
 
-#: __init__.py:48
+#: __init__.py:49
 msgid "edit"
 msgstr "editar"
 
-#: __init__.py:69
+#: __init__.py:74
 msgid "Default"
 msgstr "Por defecto"
 
-#: __init__.py:97
+#: __init__.py:102
 msgid "Checks the OCR queue for pending documents."
 msgstr "Comprueba la cola de OCR para documentos pendientes."
 
@@ -186,19 +186,19 @@ msgstr "transformaciones de cola de documentos"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
-msgstr ""
+msgstr "Enviar documentos para OCR"
 
 #: permissions.py:9
 msgid "Delete documents from OCR queue"
-msgstr ""
+msgstr "Eliminar documentos de la cola de OCR"
 
 #: permissions.py:10
 msgid "Can enable/disable the OCR queue"
-msgstr ""
+msgstr "Puede activar/desactivar la cola de OCR"
 
 #: permissions.py:11
 msgid "Can execute the OCR clean up on all document pages"
-msgstr ""
+msgstr "Se puede ejecutar limpieza de OCR en todas las páginas de documentos"
 
 #: permissions.py:12
 msgid "Can edit an OCR queue properties"

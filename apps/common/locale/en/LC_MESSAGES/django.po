@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,62 +111,62 @@ msgstr ""
 msgid "function found"
 msgstr ""
 
-#: views.py:35
+#: views.py:36
 msgid "No action selected."
 msgstr ""
 
-#: views.py:39
+#: views.py:40
 msgid "Must select at least one item."
 msgstr ""
 
-#: views.py:87
+#: views.py:88
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr ""
 
-#: views.py:90 views.py:114
+#: views.py:94 views.py:121
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr ""
 
-#: views.py:111
+#: views.py:115
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr ""
 
-#: views.py:129
+#: views.py:136
 msgid "Add"
 msgstr ""
 
-#: views.py:140
+#: views.py:147
 msgid "Remove"
 msgstr ""
 
-#: views.py:163
+#: views.py:170
 msgid "current user details"
 msgstr ""
 
-#: views.py:180
+#: views.py:187
 msgid "E-mail conflict, another user has that same email."
 msgstr ""
 
-#: views.py:183
+#: views.py:190
 msgid "Current user's details updated."
 msgstr ""
 
-#: views.py:192
+#: views.py:199
 msgid "edit current user details"
 msgstr ""
 
-#: views.py:223
+#: views.py:230
 msgid "License"
 msgstr ""
 
-#: views.py:232
+#: views.py:239
 msgid "Current user password change"
 msgstr ""
 
-#: views.py:247 templates/password_change_done.html:5
+#: views.py:254 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
 msgstr ""
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-12 19:23+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/team/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -18,51 +18,47 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:21
+#: __init__.py:20
 msgid "tag list"
 msgstr "lista de etiquetas"
 
-#: __init__.py:22
+#: __init__.py:21
 msgid "create new tag"
 msgstr "criar nova etiqueta"
 
-#: __init__.py:23
+#: __init__.py:22
 msgid "attach tag"
 msgstr "anexar etiqueta"
 
-#: __init__.py:24 __init__.py:25
+#: __init__.py:23 __init__.py:24
 msgid "remove"
 msgstr "remover"
 
-#: __init__.py:26 __init__.py:49 __init__.py:57 views.py:98
+#: __init__.py:25 __init__.py:44 __init__.py:52 views.py:98
 msgid "tags"
 msgstr "Etiquetas"
 
-#: __init__.py:27 __init__.py:30
+#: __init__.py:26 __init__.py:29
 msgid "delete"
 msgstr "excluir"
 
-#: __init__.py:28
+#: __init__.py:27
 msgid "edit"
 msgstr "editar"
 
-#: __init__.py:29
+#: __init__.py:28
 msgid "tagged documents"
 msgstr "documentos etiquetados"
 
-#: __init__.py:31
+#: __init__.py:30
 msgid "ACLs"
 msgstr ""
 
-#: __init__.py:35 models.py:13
-msgid "color"
-msgstr "cor"
+#: __init__.py:34
+msgid "preview"
+msgstr ""
 
-#: __init__.py:39
-msgid "color name"
-msgstr "nome da cor"
-
-#: __init__.py:43
+#: __init__.py:38
 msgid "tagged items"
 msgstr "itens marcados"
 
@@ -118,9 +114,13 @@ msgstr "Laranja"
 msgid "Yellow"
 msgstr "Amarelo"
 
-#: models.py:12 views.py:153 views.py:205 views.py:219
+#: models.py:12 views.py:154 views.py:206 views.py:220
 msgid "tag"
 msgstr "etiqueta"
+
+#: models.py:13
+msgid "color"
+msgstr "cor"
 
 #: models.py:16
 msgid "tag properties"
@@ -181,64 +181,64 @@ msgstr "Etiqueta \"%s\" anexada com sucesso."
 msgid "attach tag to: %s"
 msgstr "anexar etiqueta a: %s"
 
-#: views.py:129 views.py:256
+#: views.py:130 views.py:257
 msgid "Must provide at least one tag."
 msgstr "Deve fornecer pelo menos uma etiqueta."
 
-#: views.py:144
+#: views.py:145
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Etiqueta \"%s\" removida com sucesso."
 
-#: views.py:146 views.py:268
+#: views.py:147 views.py:269
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Erro ao excluir etiqueta \" %(tag)s \": %(error)s "
 
-#: views.py:161
+#: views.py:162
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
 msgstr "Tem certeza de que deseja excluir a etiqueta: %s?"
 
-#: views.py:162 views.py:165
+#: views.py:163 views.py:166
 msgid "Will be removed from all documents."
 msgstr "Será removido de todos os documentos."
 
-#: views.py:164
+#: views.py:165
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
 msgstr "Você tem certeza que deseja deletar as etiquetas: %s?"
 
-#: views.py:193
+#: views.py:194
 msgid "Tag updated succesfully."
 msgstr "Etiqueta atualizada com sucesso."
 
-#: views.py:202
+#: views.py:203
 #, python-format
 msgid "edit tag: %s"
 msgstr "editar etiqueta: %s"
 
-#: views.py:216
+#: views.py:217
 #, python-format
 msgid "documents with the tag \"%s\""
 msgstr "documentos com a etiqueta \"%s\""
 
-#: views.py:235
+#: views.py:236
 #, python-format
 msgid "tags for: %s"
 msgstr "etiquetas para: %s"
 
-#: views.py:266
+#: views.py:267
 #, python-format
 msgid "Tag \"%s\" removed successfully."
 msgstr "Etiqueta \"%s\" removida com sucesso."
 
-#: views.py:282
+#: views.py:283
 #, python-format
 msgid "Are you sure you wish to remove the tag: %s?"
 msgstr "Tem certeza de que deseja remover a etiqueta: %s?"
 
-#: views.py:284
+#: views.py:285
 #, python-format
 msgid "Are you sure you wish to remove the tags: %s?"
 msgstr "Tem certeza de que deseja remover as etiquetas: %s?"

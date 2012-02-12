@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
-"PO-Revision-Date: 2011-11-04 10:20+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-12 19:24+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:21 __init__.py:23
 msgid "edit metadata"
@@ -36,7 +34,7 @@ msgstr "добавить метаданные"
 msgid "remove metadata"
 msgstr "удалить метаданные"
 
-#: __init__.py:29 models.py:34 views.py:315
+#: __init__.py:29 models.py:34 views.py:316
 msgid "metadata types"
 msgstr "типы метаданных"
 
@@ -52,7 +50,7 @@ msgstr "удалить"
 msgid "create new"
 msgstr "создание новых"
 
-#: __init__.py:34 views.py:415
+#: __init__.py:34 views.py:416
 msgid "metadata sets"
 msgstr "наборы метаданных"
 
@@ -60,7 +58,7 @@ msgstr "наборы метаданных"
 msgid "default metadata"
 msgstr "метаданные по умолчанию"
 
-#: classes.py:12
+#: classes.py:14
 #, python-format
 msgid "'metadata' object has no attribute '%s'"
 msgstr "объект метаданных не имеет аттрибута '%s'"
@@ -93,7 +91,7 @@ msgstr "Тип метаданных"
 msgid "Remove"
 msgstr "Удалить"
 
-#: forms.py:86
+#: forms.py:86 views.py:541 views.py:559
 msgid "Metadata sets"
 msgstr "Наборы метаданных"
 
@@ -145,11 +143,11 @@ msgstr ""
 "Введите строку для вычисления. Пример: [user.get_full_name() for user in "
 "User.objects.all()].%s"
 
-#: models.py:33 models.py:58 views.py:352 views.py:397
+#: models.py:33 models.py:58 views.py:353 views.py:398
 msgid "metadata type"
 msgstr "тип метаданных"
 
-#: models.py:48 models.py:49 models.py:57 views.py:467 views.py:513
+#: models.py:48 models.py:49 models.py:57 views.py:468 views.py:514
 msgid "metadata set"
 msgstr "набор метаданных"
 
@@ -169,7 +167,7 @@ msgstr "документ"
 msgid "type"
 msgstr "тип"
 
-#: models.py:76 views.py:303
+#: models.py:76 views.py:304
 msgid "value"
 msgstr "значение"
 
@@ -177,7 +175,7 @@ msgstr "значение"
 msgid "document metadata"
 msgstr "метаданные документа"
 
-#: models.py:91 views.py:581
+#: models.py:91 views.py:599
 msgid "document type"
 msgstr "тип документа"
 
@@ -245,73 +243,75 @@ msgstr "Удаление наборов метаданных"
 msgid "View metadata sets"
 msgstr "Просмотр наборов метаданных"
 
-#: views.py:40 views.py:203
+#: views.py:41 views.py:204
 msgid "The selected document doesn't have any metadata."
 msgstr "Выбранный документ не имеет метаданных."
 
-#: views.py:51 views.py:143 views.py:215
+#: views.py:52 views.py:144 views.py:216
 msgid "Must provide at least one document."
 msgstr "Необходимо предоставить хотя бы один документ."
 
-#: views.py:86 views.py:250
+#: views.py:87 views.py:251
 #, python-format
 msgid "Error deleting document indexes; %s"
 msgstr "Ошибка при удалении индексов документа; %s"
 
-#: views.py:98
+#: views.py:99
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
 msgstr ""
 "Ошибка редактирования метаданных для документа %(document)s; %(error)s."
 
-#: views.py:101
+#: views.py:102
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Метаданные для документов %s изменены."
 
-#: views.py:106 views.py:267
+#: views.py:107 views.py:268
 #, python-format
 msgid "Error updating document indexes; %s"
 msgstr "Ошибка при обновлении индексов документа; %s"
 
-#: views.py:108 views.py:269
+#: views.py:109 views.py:270
 msgid "Document indexes updated successfully."
 msgstr "Индексы документа успешно обновлены."
 
-#: views.py:119
+#: views.py:120
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Редактировать метаданные документа:%s."
 
-#: views.py:121
+#: views.py:122
 #, python-format
 msgid "Edit metadata for documents: %s"
 msgstr "Редактирование метаданных для документов: %s"
 
-#: views.py:160
+#: views.py:161
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
-"Тип метаданных: %(metadata_type)s успешно добавлены к документу %(document)s."
+"Тип метаданных: %(metadata_type)s успешно добавлены к документу "
+"%(document)s."
 
-#: views.py:163
+#: views.py:164
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr "Тип метаданных: %(metadata_type)s уже есть в документе %(document)s."
 
-#: views.py:187
+#: views.py:188
 #, python-format
 msgid "Add metadata type to document: %s"
 msgstr "Добавить метаданные типа к документу: %s."
 
-#: views.py:189
+#: views.py:190
 #, python-format
 msgid "Add metadata type to documents: %s"
 msgstr "Добавляйте метаданные типа документов: %s"
 
-#: views.py:258
+#: views.py:259
 #, python-format
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
@@ -320,7 +320,7 @@ msgstr ""
 "Метаданные типа: %(metadata_type)s успешно удалены из документа: "
 "%(document)s."
 
-#: views.py:261
+#: views.py:262
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
@@ -328,105 +328,109 @@ msgstr ""
 "Ошибка удаления метаданных, наберите:%(metadata_type)s из документа: "
 "%(document)s ."
 
-#: views.py:280
+#: views.py:281
 #, python-format
 msgid "Remove metadata types from document: %s"
 msgstr "Удалить типы метаданных из документа: %s"
 
-#: views.py:282
+#: views.py:283
 #, python-format
 msgid "Remove metadata types from documents: %s"
 msgstr "Удалить типы метаданных из документа: %s"
 
-#: views.py:301
+#: views.py:302
 #, python-format
 msgid "metadata for: %s"
 msgstr "метаданных для: %s"
 
-#: views.py:319
+#: views.py:320
 msgid "internal name"
 msgstr "внутреннее имя"
 
-#: views.py:340
+#: views.py:341
 msgid "Metadata type edited successfully"
 msgstr "Тип метаданных отредактирован."
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "Error editing metadata type; %s"
 msgstr "Ошибка редактирования типа метаданных; %s"
 
-#: views.py:349
+#: views.py:350
 #, python-format
 msgid "edit metadata type: %s"
 msgstr "редактировать метаданные типа: %s"
 
-#: views.py:364
+#: views.py:365
 msgid "Metadata type created successfully"
 msgstr "Тип метаданных успешно создан"
 
-#: views.py:370
+#: views.py:371
 msgid "create metadata type"
 msgstr "создать тип метаданных"
 
-#: views.py:389
+#: views.py:390
 #, python-format
 msgid "Metadata type: %s deleted successfully."
 msgstr "Тип метаданных: %s успешно удален."
 
-#: views.py:391
+#: views.py:392
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
 msgstr "Метаданные типа: %(metadata_type)s ошибка удаления: %(error)s"
 
-#: views.py:402
+#: views.py:403
 #, python-format
 msgid "Are you sure you wish to delete the metadata type: %s?"
 msgstr "Вы действительно хотите удалить метаданные:%s?"
 
-#: views.py:419
+#: views.py:420
 msgid "members"
 msgstr "элементы"
 
-#: views.py:463
+#: views.py:464
 #, python-format
 msgid "non members of metadata set: %s"
 msgstr "не входят в набор метаданных: %s"
 
-#: views.py:464
+#: views.py:465
 #, python-format
 msgid "members of metadata set: %s"
 msgstr "входят в набор метаданных: %s"
 
-#: views.py:479
+#: views.py:480
 msgid "Metadata set created successfully"
 msgstr "Набор метаданных создан"
 
-#: views.py:485
+#: views.py:486
 msgid "create metadata set"
 msgstr "создать набор метаданных"
 
-#: views.py:504
+#: views.py:505
 #, python-format
 msgid "Metadata set: %s deleted successfully."
 msgstr "Набор метаданных: %s удалён."
 
-#: views.py:507
+#: views.py:508
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
 msgstr "Набор метаданных: %(metadata_set)s ошибка удаления: %(error)s"
 
-#: views.py:518
+#: views.py:519
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
 msgstr "Вы действительно хотите удалить набор метаданных: %s?"
 
-#: views.py:576
+#: views.py:538 views.py:556
+msgid "Metadata types"
+msgstr ""
+
+#: views.py:594
 #, python-format
 msgid "non members of document type: %s"
 msgstr "не относится к типу документа: %s."
 
-#: views.py:577
+#: views.py:595
 #, python-format
 msgid "members of document type: %s"
 msgstr "относится к типу документа: %s."
@@ -442,8 +446,8 @@ msgid ""
 "attaches it's member metadata types to said document."
 msgstr ""
 "Набор метаданных это группа из одного или более типов метаданных. Наборы "
-"метаданных полезны при создании новых документов; указание набора "
-"метаданных  автоматически добавляет метаданные набора к документу."
+"метаданных полезны при создании новых документов; указание набора метаданных"
+"  автоматически добавляет метаданные набора к документу."
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
@@ -451,25 +455,22 @@ msgstr "Что такое типы метаданных?"
 
 #: templates/metadata_type_help.html:4
 msgid ""
-"A metadata type defines the characteristics of a value of some kind that can "
-"be attached to a document.  Examples of metadata types are: a client name, a "
-"date, or a project to which several documents belong.  A metadata type's "
+"A metadata type defines the characteristics of a value of some kind that can"
+" be attached to a document.  Examples of metadata types are: a client name, "
+"a date, or a project to which several documents belong.  A metadata type's "
 "name is the internal identifier with which it can be referenced to by other "
-"modules such as the indexing module, the title is the value that is shown to "
-"the users, the default value is the value an instance of this metadata type "
-"will have initially, and the lookup value turns an instance of a metadata of "
-"this type into a choice list which options are the result of the lookup's "
-"code execution."
+"modules such as the indexing module, the title is the value that is shown to"
+" the users, the default value is the value an instance of this metadata type"
+" will have initially, and the lookup value turns an instance of a metadata "
+"of this type into a choice list which options are the result of the lookup's"
+" code execution."
 msgstr ""
-"Тип метаданных определяет характеристики информации которая может быть "
-"присоединена к документу. Примеры типов метаданных : имя клиента, дата или "
-"проект, к которому принадлежат несколько документов. Имя типа метаданных "
-"является внутренним идентификатором, на который могут ссылаться другие "
-"модули, такие как модуль индексирования\n"
+"Тип метаданных определяет характеристики информации которая может быть присоединена к документу. Примеры типов метаданных : имя клиента, дата или проект, к которому принадлежат несколько документов. Имя типа метаданных является внутренним идентификатором, на который могут ссылаться другие модули, такие как модуль индексирования\n"
 "\n"
 "Имя это значение, которое показано пользователям\n"
 "\n"
-"Значение по умолчанию - значение экземпляра этого типа метаданных будет на "
-"начальном этапе,\n"
+"Значение по умолчанию - значение экземпляра этого типа метаданных будет на начальном этапе,\n"
 "\n"
 "Краткое имя служит для выбора из списка значений в результатах поиска."
+
+

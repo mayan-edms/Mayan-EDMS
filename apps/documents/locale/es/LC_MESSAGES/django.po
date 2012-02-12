@@ -1,28 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
-"PO-Revision-Date: 2012-02-12 00:24+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-12 08:43+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
+"mayan-edms/team/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:63
 msgid "all documents"
 msgstr "todos los documentos"
 
-#: __init__.py:64 models.py:636 views.py:871
+#: __init__.py:64 models.py:653 views.py:871
 msgid "recent documents"
 msgstr "documentos recientes"
 
@@ -305,7 +306,8 @@ msgstr "Documento \"%(content_object)s\", creado por %(fullname)s."
 
 #: literals.py:12
 #, python-format
-msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgid ""
+"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 msgstr ""
 "Documento \"%(content_object)s\", creado en %(datetime)s  por %(fullname)s."
 
@@ -321,8 +323,8 @@ msgstr "Documento \"%(content_object)s\", editado por %(fullname)s."
 #: literals.py:20
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
-"  The following changes took place: %(changes)s."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
+"The following changes took place: %(changes)s."
 msgstr ""
 "Documento \"%(content_object)s\" fue editado en \"%(datetime)s  por "
 "%(fullname)s.  Los siguientes cambios tuvieron lugar: %(changes)s."
@@ -382,7 +384,7 @@ msgstr "descripción"
 msgid "added"
 msgstr "agregado"
 
-#: models.py:89 models.py:300 models.py:625 models.py:640 views.py:227
+#: models.py:89 models.py:300 models.py:642 models.py:657 views.py:227
 #: views.py:351
 msgid "document"
 msgstr "documento"
@@ -521,47 +523,47 @@ msgstr "transformación de página de documento"
 msgid "document page transformations"
 msgstr "transformaciones de páginas de documentos"
 
-#: models.py:624
+#: models.py:641
 msgid "user"
 msgstr "usuario"
 
-#: models.py:626
+#: models.py:643
 msgid "accessed"
 msgstr "accesado"
 
-#: models.py:635
+#: models.py:652
 msgid "recent document"
 msgstr "documento reciente"
 
-#: models.py:641
+#: models.py:658
 msgid "Document type"
 msgstr "Tipo de documento"
 
-#: models.py:642
+#: models.py:659
 msgid "MIME type"
 msgstr "Tipo MIME"
 
-#: models.py:643 views.py:132
+#: models.py:660 views.py:132
 msgid "Filename"
 msgstr "Nombre del archivo"
 
-#: models.py:644
+#: models.py:661
 msgid "Metadata value"
 msgstr "Valor de metadatos"
 
-#: models.py:645
+#: models.py:662
 msgid "Content"
 msgstr "Contenido"
 
-#: models.py:646
+#: models.py:663
 msgid "Description"
 msgstr "Descripción"
 
-#: models.py:647
+#: models.py:664
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: models.py:648
+#: models.py:665
 msgid "Comments"
 msgstr "Comentarios"
 
@@ -643,8 +645,8 @@ msgstr "Documentos en almacenamiento: %d"
 #: statistics.py:48
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
-" bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
+"bytes"
 msgstr ""
 "Espacio utilizado en el almacenamiento: %(base_2)s (base 2), %(base_10)s "
 "(base 10), %(bytes)d bytes"
@@ -816,8 +818,8 @@ msgstr "¿Está seguro que desea encontrar todos los duplicados?"
 #: views.py:575 views.py:633 views.py:701
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en"
-" ejecutarse."
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
+"ejecutarse."
 
 #: views.py:598
 msgid "duplicated documents"
@@ -835,8 +837,7 @@ msgstr ""
 #: views.py:632
 #, python-format
 msgid ""
-"Are you sure you wish to update the page count for the office documents "
-"(%d)?"
+"Are you sure you wish to update the page count for the office documents (%d)?"
 msgstr ""
 "¿Seguro que desea actualizar el número de páginas de los documentos de "
 "oficina (%d)?"
@@ -866,8 +867,7 @@ msgstr "transformación de documento"
 #: views.py:681
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: "
-"%s?"
+"Are you sure you wish to clear all the page transformations for document: %s?"
 msgstr ""
 "¿Está seguro que desea eliminar todas las transformaciones de página del "
 "documento: %s?"
@@ -999,8 +999,8 @@ msgstr "Nombre de archivo para tipo de documento: %s eliminado exitosamente."
 msgid ""
 "Document type filename: %(document_type_filename)s delete error: %(error)s"
 msgstr ""
-"Error de eliminación: %(error)s para nombre de archivo de tipo de documento:"
-" %(document_type_filename)s  "
+"Error de eliminación: %(error)s para nombre de archivo de tipo de documento: "
+"%(document_type_filename)s  "
 
 #: views.py:1257
 #, python-format
@@ -1094,8 +1094,8 @@ msgstr "Siguiente paso"
 
 #: conf/settings.py:38
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per"
-" user."
+"Maximum number of recent (created, edited, viewed) documents to remember per "
+"user."
 msgstr ""
 "El número máximo de documentos recientes (creados, editados, vistos) a "
 "recordar por usuario."
@@ -1142,8 +1142,8 @@ msgstr ""
 "Los tipos de documentos definene una clase que representa a un grupo amplio "
 "de documentos, tales como: facturas, reglamentos o manuales. La ventaja de "
 "utilizar los tipos de documentos son: la asignación de una lista de nombres "
-"de archivos típicos para el cambio de nombre rápido durante la creación, así"
-" como la asignación de tipos de metadatos y grupos por defecto."
+"de archivos típicos para el cambio de nombre rápido durante la creación, así "
+"como la asignación de tipos de metadatos y grupos por defecto."
 
 #: templates/recent_document_list_help.html:3
 msgid "What are recent documents?"
@@ -1157,5 +1157,3 @@ msgid ""
 msgstr ""
 "Aquí encontrará los últimos %(recent_count)s documentos que haya creado o "
 "editado de alguna manera."
-
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: models.py:131 models.py:187 views.py:152 views.py:216
+#: models.py:131 models.py:187 views.py:152 views.py:215
 msgid "permission"
 msgstr ""
 
-#: models.py:132 views.py:57 views.py:154 views.py:218
+#: models.py:132 views.py:57 views.py:154 views.py:217
 msgid "permissions"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgid "label"
 msgstr ""
 
 #: models.py:208 models.py:239 views.py:76 views.py:93 views.py:117
-#: views.py:336
+#: views.py:334
 msgid "role"
 msgstr ""
 
@@ -126,11 +126,11 @@ msgstr ""
 msgid "has permission"
 msgstr ""
 
-#: views.py:149 views.py:213
+#: views.py:149 views.py:212
 msgid " and "
 msgstr ""
 
-#: views.py:149 views.py:213
+#: views.py:149 views.py:212
 #, python-format
 msgid "%(permissions)s to %(requester)s"
 msgstr ""
@@ -145,46 +145,46 @@ msgstr ""
 msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
 msgstr ""
 
-#: views.py:174
+#: views.py:173
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 
-#: views.py:223
+#: views.py:222
 #, python-format
 msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 msgstr ""
 
-#: views.py:226
+#: views.py:225
 #, python-format
 msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 msgstr ""
 
-#: views.py:238
+#: views.py:236
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 
-#: views.py:273 views.py:297
+#: views.py:271 views.py:295
 msgid "Users"
 msgstr ""
 
-#: views.py:276 views.py:300
+#: views.py:274 views.py:298
 msgid "Groups"
 msgstr ""
 
-#: views.py:279 views.py:303
+#: views.py:277 views.py:301
 msgid "Special"
 msgstr ""
 
-#: views.py:332
+#: views.py:330
 #, python-format
 msgid "non members of role: %s"
 msgstr ""
 
-#: views.py:333
+#: views.py:331
 #, python-format
 msgid "members of role: %s"
 msgstr ""

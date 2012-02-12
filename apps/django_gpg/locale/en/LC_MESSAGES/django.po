@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,10 +205,10 @@ msgstr ""
 msgid "Identifies"
 msgstr ""
 
-#: conf/settings.py:13
+#: conf/settings.py:15
 msgid "List of keyservers to be queried for unknown keys."
 msgstr ""
 
-#: conf/settings.py:14
+#: conf/settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
 msgstr ""

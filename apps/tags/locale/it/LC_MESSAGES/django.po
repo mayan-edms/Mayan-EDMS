@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-02 14:17-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-12 19:23+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
 "MIME-Version: 1.0\n"
@@ -19,51 +19,47 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:21
+#: __init__.py:20
 msgid "tag list"
 msgstr "lista delle etichette"
 
-#: __init__.py:22
+#: __init__.py:21
 msgid "create new tag"
 msgstr "crea una nuova etichetta"
 
-#: __init__.py:23
+#: __init__.py:22
 msgid "attach tag"
 msgstr "allega un'etichetta"
 
-#: __init__.py:24 __init__.py:25
+#: __init__.py:23 __init__.py:24
 msgid "remove"
 msgstr "rimuovi"
 
-#: __init__.py:26 __init__.py:49 __init__.py:57 views.py:98
+#: __init__.py:25 __init__.py:44 __init__.py:52 views.py:98
 msgid "tags"
 msgstr "etichette"
 
-#: __init__.py:27 __init__.py:30
+#: __init__.py:26 __init__.py:29
 msgid "delete"
 msgstr "cancella"
 
-#: __init__.py:28
+#: __init__.py:27
 msgid "edit"
 msgstr "modifica"
 
-#: __init__.py:29
+#: __init__.py:28
 msgid "tagged documents"
 msgstr "documenti etichettati"
 
-#: __init__.py:31
+#: __init__.py:30
 msgid "ACLs"
 msgstr ""
 
-#: __init__.py:35 models.py:13
-msgid "color"
-msgstr "colore"
+#: __init__.py:34
+msgid "preview"
+msgstr ""
 
-#: __init__.py:39
-msgid "color name"
-msgstr "nome colore"
-
-#: __init__.py:43
+#: __init__.py:38
 msgid "tagged items"
 msgstr "articoli etichettati."
 
@@ -119,9 +115,13 @@ msgstr "Arancione"
 msgid "Yellow"
 msgstr "Giallo"
 
-#: models.py:12 views.py:153 views.py:205 views.py:219
+#: models.py:12 views.py:154 views.py:206 views.py:220
 msgid "tag"
 msgstr "etichetta"
+
+#: models.py:13
+msgid "color"
+msgstr "colore"
 
 #: models.py:16
 msgid "tag properties"
@@ -182,64 +182,64 @@ msgstr "Eticetta \"%s\" allegata con successo."
 msgid "attach tag to: %s"
 msgstr "allega etichetta a:%s"
 
-#: views.py:129 views.py:256
+#: views.py:130 views.py:257
 msgid "Must provide at least one tag."
 msgstr "Devi fornire almeno un'etichetta"
 
-#: views.py:144
+#: views.py:145
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Etichetta \"%s\" cancellata con successo."
 
-#: views.py:146 views.py:268
+#: views.py:147 views.py:269
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Errore nel cancellare l'etichetta \"%(tag)s\": %(error)s"
 
-#: views.py:161
+#: views.py:162
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
 msgstr "Sei sicuro di voler cancellare questa etichetta: %s?"
 
-#: views.py:162 views.py:165
+#: views.py:163 views.py:166
 msgid "Will be removed from all documents."
 msgstr "Sarà rimossa da tutti i documenti"
 
-#: views.py:164
+#: views.py:165
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
 msgstr "Sei sicuro di voler cancellare tutte queste etichette: %s?"
 
-#: views.py:193
+#: views.py:194
 msgid "Tag updated succesfully."
 msgstr "Etichetta aggiornata con successo"
 
-#: views.py:202
+#: views.py:203
 #, python-format
 msgid "edit tag: %s"
 msgstr "modifica l'etichetta:%s"
 
-#: views.py:216
+#: views.py:217
 #, python-format
 msgid "documents with the tag \"%s\""
 msgstr "documenti con l'etichetta \"%s\""
 
-#: views.py:235
+#: views.py:236
 #, python-format
 msgid "tags for: %s"
 msgstr "etichette per: %s"
 
-#: views.py:266
+#: views.py:267
 #, python-format
 msgid "Tag \"%s\" removed successfully."
 msgstr "Etichetta \"%s\" rimossa con successo."
 
-#: views.py:282
+#: views.py:283
 #, python-format
 msgid "Are you sure you wish to remove the tag: %s?"
 msgstr "Sei sicuro di voler rimuovere le etichetta: %s ?"
 
-#: views.py:284
+#: views.py:285
 #, python-format
 msgid "Are you sure you wish to remove the tags: %s?"
 msgstr "Sei sicuro di voler rimuovere le etichette: %s ?"
