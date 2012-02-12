@@ -174,6 +174,8 @@ INSTALLED_APPS = (
     'rest_api',
     'document_signatures',
 
+# Has to be last so the other apps can register it's signals
+    'signaler',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -328,19 +330,22 @@ if DEVELOPMENT:
         import rosetta
         INSTALLED_APPS += ('rosetta',)
     except ImportError:
-        sys.stderr.write('DEBUG: rosetta is not installed\n')
+        pass
+        #sys.stderr.write('DEBUG: rosetta is not installed\n')
 
     try:
         import django_extensions
         INSTALLED_APPS += ('django_extensions',)
     except ImportError:
-        sys.stderr.write('DEBUG: django_extensions is not installed\n')
+        pass
+        #sys.stderr.write('DEBUG: django_extensions is not installed\n')
 
     try:
         import debug_toolbar
         #INSTALLED_APPS +=('debug_toolbar',)
     except ImportError:
-        sys.stderr.write('DEBUG: debug_toolbar is not installed\n')
+        pass        
+        #sys.stderr.write('DEBUG: debug_toolbar is not installed\n')
 
     TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
 
