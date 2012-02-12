@@ -86,8 +86,7 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                 'expression': template_node.expression, 'exception': exc})
         else:
             if result:
-                index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node)
-                index_instance.value = result
+                index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result)
                 index_instance.parent = parent_index_instance
                 index_instance.save()
                 #if created:
