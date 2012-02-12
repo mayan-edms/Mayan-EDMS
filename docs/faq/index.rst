@@ -7,8 +7,7 @@ Frequently asked questions and solutions
 Database related
 ----------------
 
-Q: PostgreSQL vs. MySQL
-~~~~~~~~~~~~~~~~~~~~~~~
+**Q: PostgreSQL vs. MySQL**
 
 Since Django abstracts database operations from a functional point of view
 **Mayan EDMS** will behave exactly the same either way.  The only concern
@@ -19,8 +18,7 @@ structure is left in a transitory state and has to be reverted manually
 before trying again.
 
 
-Q: _mysql_exceptions. OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci, IMPLICIT) and (utf8_general_ci, COERCIBLE) for operation '='")
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: _mysql_exceptions. OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci, IMPLICIT) and (utf8_general_ci, COERCIBLE) for operation '='")**
 
 * Solution::
 
@@ -39,8 +37,7 @@ Q: _mysql_exceptions. OperationalError: (1267, "Illegal mix of collations (latin
   - http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
         
         
-Q: Incorrect string value: ``'\xE2\x80\x95rs6...'`` for column ``'content'`` at row 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: Incorrect string value: ``'\xE2\x80\x95rs6...'`` for column ``'content'`` at row 1**
 
 When using ``MySQL`` and doing OCR on languages other than English
     
@@ -54,8 +51,7 @@ When using ``MySQL`` and doing OCR on languages other than English
 Document sharing
 ----------------
 
-Q: File system links not showing when serving content with ``Samba``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: File system links not showing when serving content with ``Samba``**
 
 * Solution:
   
@@ -81,8 +77,7 @@ Q: File system links not showing when serving content with ``Samba``
 Document handling
 -----------------
 
-How to store documents outside of **Mayan EDMS's** path
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**How to store documents outside of **Mayan EDMS's** path**
 
 * Sub class Django's ``FileSystemStorage`` class:
     
@@ -102,8 +97,7 @@ How to store documents outside of **Mayan EDMS's** path
       DOCUMENTS_STORAGE_BACKEND = CustomStorage
 
 
-Q: How to enable the ``GridFS`` storage backend
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: How to enable the ``GridFS`` storage backend**
 
 * Solution:
    
@@ -114,8 +108,7 @@ Q: How to enable the ``GridFS`` storage backend
   - Filesystem metadata indexing will not work with this storage backend as
     the files are inside a ``MongoDB`` database and can't be linked (at least for now)
 
-Q: How do you upload a new version of an existing file? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: How do you upload a new version of an existing file?**
 
 * Solution:
 
@@ -125,20 +118,21 @@ Q: How do you upload a new version of an existing file?
     view as the ``Upload new document`` but you will be able to specify
     version number and comments for the new version being uploaded.
 
-Q: Site search is slow
-~~~~~~~~~~~~~~~~~~~~~~
+**Q: Site search is slow**
 
 * Add indexes to the following fields:
   
   - ``documents_document`` - description, recommended size: 160
   - ``documents_documentpage`` - content, recommended size: 3000
+  
+This is a temporary solution as **Mayan EDMS** will soon be moving to a
+specialized full text search solution.
 
 
 Webserver
 ---------
 
-Q: How to enable x-sendile support for ``Apache``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: How to enable x-sendile support for ``Apache``**
 
 * If using Ubuntu execute the following::
  
@@ -157,8 +151,7 @@ Q: How to enable x-sendile support for ``Apache``
 OCR
 ---
 
-Q: The included version of ``unoconv`` in my distribution is too old
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: The included version of ``unoconv`` in my distribution is too old**
       
 * Only the file 'unoconv' file from https://github.com/dagwieers/unoconv is needed.  
   Put it in a user designated directory for binaries such as /usr/local/bin and 
@@ -166,12 +159,16 @@ Q: The included version of ``unoconv`` in my distribution is too old
     
     CONVERTER_UNOCONV_PATH = '/usr/local/bin/unoconv'
     
-    
+If you already have office or text documents uploaded into **Mayan EDMS**,
+after setting up and testing ``unoconv`` by hand, go to 'Tools',
+'Maintenance', 'Update office documents' page count', this will force a
+re-detection and re-processing of any document found to be of office format.   
+
+
 Deployments
 -----------
 
-Q: Is virtualenv required as specified in the documentation?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: Is virtualenv required as specified in the documentation?**
 
 * It is not necessary, it's just a strong recommendation mainly to reduce
   dependency conflicts by isolation from the main Python system install.
@@ -182,8 +179,7 @@ Q: Is virtualenv required as specified in the documentation?
   Mayan to stop working for no apparent reason.
   
   
-Q: Mayan EDMS installed correctly and works, but static files are not served
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: Mayan EDMS installed correctly and works, but static files are not served**
 
 Django's development server doesn't serve static files unless the ``DEBUG``
 option is set to ``True``, this mode of operation should only be used for 
@@ -201,8 +197,7 @@ Other
 -----
 
 
-Q: How to connect Mayan EDMS to an Active Directory tree
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q: How to connect Mayan EDMS to an Active Directory tree**
 
 I used these two libraries as they seemed the most maintained from the quick search I did.
 
@@ -249,8 +244,10 @@ For a more advanced example check this StackOverflow question:
 http://stackoverflow.com/questions/6493985/django-auth-ldap
 
 
-Q:  Can you change the display order of documents...i.e can they be in alphabetical order?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Q:  Can you change the display order of documents...i.e can they be in alphabetical order?**
 
 A the moment no, but it is something being considered.
+
+
+
 

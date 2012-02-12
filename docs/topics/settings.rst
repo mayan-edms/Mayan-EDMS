@@ -129,7 +129,29 @@ The path where the visual representations of the documents are stored for fast d
 
 Converter
 =========
+.. setting:: CONVERTER_GRAPHICS_BACKEND
+
+**CONVERTER_GRAPHICS_BACKEND**
+
+Default: ``converter.backends.python``    
     
+Graphics conversion backend to use. Options are:
+
+* ``converter.backends.imagemagick`` - Wrapper for ImageMagick
+
+  * Use the :setting:`CONVERTER_IM_CONVERT_PATH` and :setting:`CONVERTER_IM_IDENTIFY_PATH` to specify the binary files locations.
+  
+* ``converter.backends.graphicsmagick`` - Wrapper for GraphicsMagick
+
+  * Use the :setting:`CONVERTER_GM_PATH` and :setting:`CONVERTER_GM_SETTINGS` to specify the binary file location and customized settings.
+
+* ``converter.backends.python`` - Wrapper for Pillow_ and Ghostscript_
+
+
+.. _Pillow: http://pypi.python.org/pypi/Pillow
+.. _Ghostscript: http://www.ghostscript.com/
+
+
 .. setting:: CONVERTER_IM_CONVERT_PATH
 
 **CONVERTER_IM_CONVERT_PATH**
@@ -170,18 +192,6 @@ fine tune it's functionality as explained in the `GraphicsMagick documentation`_
 
 .. _GraphicsMagick documentation: http://www.graphicsmagick.org/convert.html#conv-opti
 
-
-.. setting:: CONVERTER_GRAPHICS_BACKEND
-
-**CONVERTER_GRAPHICS_BACKEND**
-
-Default: ``converter.backends.python``    
-    
-Graphics conversion backend to use. Options are:
-
-* ``converter.backends.imagemagick`` - Wrapper for ImageMagick
-* ``converter.backends.graphicsmagick`` - Wrapper for GraphicsMagick
-* ``converter.backends.python`` - Wrapper for Pillow and Ghostscript
     
 .. setting:: CONVERTER_UNOCONV_PATH
 

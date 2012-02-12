@@ -7,8 +7,9 @@ The philosophy in place is to try to avoid having users download a documents and
 **Mayan EDMS** to be able to see them, so in essence making **Mayan EDMS** a
 visualization tool too.  The conversion backend is a stack of functions,
 first the mimetype is evaluated, if it is an office document it is passed
-to Libreoffice_ working in headless mode (and managed by supervisor)
-via unoconv for conversion to PDF_.  The PDF_ is stored in a temporary
+to LibreOffice_ working in headless mode (and managed by supervisor_)
+via unoconv_ (more information about ``unoconv`` can be found in the :doc:`FAQ section <../faq/index>`)
+for conversion to PDF_.  The PDF_ is stored in a temporary
 cache along side all the other files that were not office documents,
 from here they are inspected to determine the page count and the
 corresponding blank database entires are created.  After the database
@@ -17,7 +18,7 @@ option :setting:`CONVERTER_GRAPHICS_BACKEND` and a high resolution
 master preview of each file is generated and stored in the persistent
 cache.  From the master previews in the persistent cache, volatile
 previews are then created on demand for the different sizes requested
-(thumbnail, page preview, full preview) and rotate interactively
+(thumbnail, page preview, full preview) and rotated interactively
 in the details view.
 
 
@@ -31,4 +32,6 @@ before they can be previewed and text can be extracted.
 
 
 .. _PDF: http://en.wikipedia.org/wiki/Portable_Document_Format
-.. _Libreoffice: http://www.libreoffice.org/
+.. _LibreOffice: http://www.libreoffice.org/
+.. _unoconv: https://github.com/dagwieers/unoconv/
+.. _supervisor: http://supervisord.org/introduction.html

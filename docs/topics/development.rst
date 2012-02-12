@@ -51,9 +51,9 @@ To familiarize yourself with the technical details of the project read the :ref:
 
 .. _docs:
 
------------------
+-------------
 Documentation
------------------
+-------------
 
 The documentation is written in `reStructured Text`_ format.
 
@@ -74,8 +74,51 @@ You can also generate the documentation in format other than HTML.
 .. _Sphinx: http://sphinx.pocoo.org
 
 
----------------
+------------
 Translations
----------------
+------------
 
 Translations are now being handled online via the **Transifex** website: https://www.transifex.net/projects/p/mayan-edms/
+To create a translation team for a new language or contribute to an already
+existing language translation, create a **Transifex** account and contact
+the team coordinator of the respective language in which you are interested.
+
+---------
+Debugging
+---------
+
+**Mayan EDMS** makes extensive use of Django's new `logging capabilities`_.
+To enable debug logging for the documents app for example add the following
+lines to your ``settings_local.py`` file::
+
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': True,
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s %(name)s %(process)d %(thread)d %(message)s'
+            },
+            'intermediate': {
+                'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
+            },
+            'simple': {
+                'format': '%(levelname)s %(message)s'
+            },
+        },    
+        'handlers': {
+            'console':{
+                'level':'DEBUG',
+                'class':'logging.StreamHandler',
+                'formatter': 'intermediate'
+            }
+        },
+        'loggers': {
+            'documents': {
+                'handlers':['console'],
+                'propagate': True,
+                'level':'DEBUG',
+            },            
+        }
+    }
+
+.. _`logging capabilities`: https://docs.djangoproject.com/en/dev/topics/logging
