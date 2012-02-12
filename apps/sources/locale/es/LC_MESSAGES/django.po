@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-02 14:17-0400\n"
-"PO-Revision-Date: 2012-02-02 18:18+0000\n"
+"PO-Revision-Date: 2012-02-12 00:20+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "Fuentes de documentos"
 
 #: __init__.py:38
 msgid "upload new version"
-msgstr ""
+msgstr "subir nueva versión"
 
 #: __init__.py:68 widgets.py:39
 msgid "thumbnail"
@@ -85,7 +85,7 @@ msgstr "Archivo provisional"
 
 #: forms.py:50
 msgid "File"
-msgstr ""
+msgstr "Archivo"
 
 #: literals.py:8 literals.py:13
 msgid "Always"
@@ -274,7 +274,7 @@ msgstr "transformaciones de fuentes de documentos"
 
 #: models.py:288 models.py:289
 msgid "out of process"
-msgstr ""
+msgstr "fuera de proceso"
 
 #: permissions.py:7
 msgid "Sources setup"
@@ -339,29 +339,30 @@ msgstr ""
 
 #: views.py:163
 msgid "New document version uploaded successfully."
-msgstr ""
+msgstr "Nueva versión del documento subida exitosamente."
 
 #: views.py:167
 msgid "File uploaded successfully."
-msgstr ""
+msgstr "Archivo subido correctamente."
 
 #: views.py:170
 msgid "File uncompressed successfully and uploaded as individual files."
 msgstr ""
+"Archivo descomprimido exitosamente y subido como archivos individuales."
 
 #: views.py:173
 msgid "File was not a compressed file, uploaded as it was."
-msgstr ""
+msgstr "El archivo no era un archivo comprimido, cargado como estaba."
 
 #: views.py:179 views.py:258
 #, python-format
 msgid "Unhandled exception: %s"
-msgstr ""
+msgstr "Excepción sin manejar: %s"
 
 #: views.py:188
 #, python-format
 msgid "upload a new version from source: %s"
-msgstr ""
+msgstr "subir una nueva versión desde la fuente: %s"
 
 #: views.py:190
 #, python-format
@@ -372,6 +373,7 @@ msgstr "subir un documento local de la fuente: %s"
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
 msgstr ""
+"Versión de documento del archivo provisional: %s, subido exitosamente."
 
 #: views.py:239
 #, python-format
@@ -384,11 +386,14 @@ msgid ""
 "Staging file: %s, uncompressed successfully and uploaded as individual "
 "files."
 msgstr ""
+"Archivo provisional: %s, descomprido exitosamente y subido como documentos "
+"individuales."
 
 #: views.py:245
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
 msgstr ""
+"Archivo provisional: %s, no esta comprimido, subido como un solo documento."
 
 #: views.py:250
 #, python-format
@@ -398,7 +403,7 @@ msgstr "Archivo provisional: %s, borrado exitosamente."
 #: views.py:273
 #, python-format
 msgid "upload a new version from staging source: %s"
-msgstr ""
+msgstr "subir una versión nueva de la fuente de archivo provisionales: %s"
 
 #: views.py:275
 #, python-format

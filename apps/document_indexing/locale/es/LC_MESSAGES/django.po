@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-02 14:17-0400\n"
-"PO-Revision-Date: 2012-02-02 18:36+0000\n"
+"PO-Revision-Date: 2012-02-12 00:27+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -292,20 +292,20 @@ msgstr "nivel"
 
 #: views.py:188
 msgid "Index template node created successfully."
-msgstr ""
+msgstr "Nodo de plantilla de índice creado exitosamente."
 
 #: views.py:194
 msgid "create child node"
-msgstr ""
+msgstr "crear nodo hijo"
 
 #: views.py:215
 msgid "Index template node edited successfully"
-msgstr ""
+msgstr "Nodo de la plantilla de índice editado exitosamente"
 
 #: views.py:221
 #, python-format
 msgid "edit index template node: %s"
-msgstr ""
+msgstr "editar nodo de la plantilla de índice: %s"
 
 #: views.py:228 views.py:268 views.py:336
 msgid "node"
@@ -314,17 +314,17 @@ msgstr "nodo"
 #: views.py:250
 #, python-format
 msgid "Node: %s deleted successfully."
-msgstr ""
+msgstr "Nodo: %s eliminado exitosamente."
 
 #: views.py:252
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
-msgstr ""
+msgstr "Error de eliminación para nodo: %(node)s, %(error)s "
 
 #: views.py:261
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
-msgstr ""
+msgstr "¿Seguro que desea eliminar el nodo de plantilla de indice: %s?"
 
 #: views.py:285
 msgid "nodes"
@@ -368,6 +368,8 @@ msgid ""
 "A dictionary that maps the index name and where on the filesystem that index"
 " will be mirrored."
 msgstr ""
+"Un diccionario que asigna el nombre del índice y en qué parte del sistema de"
+" archivos dicho índice se va a reflejar."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"

@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-02 14:18-0400\n"
-"PO-Revision-Date: 2012-02-02 18:20+0000\n"
+"PO-Revision-Date: 2012-02-12 00:16+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +64,7 @@ msgstr "Funciones"
 
 #: forms.py:47
 msgid "Special"
-msgstr ""
+msgstr "Especial"
 
 #: managers.py:116 managers.py:128
 msgid "Insufficient access."
@@ -91,11 +92,11 @@ msgstr "entradas de acceso por defecto"
 
 #: models.py:109
 msgid "Creator"
-msgstr ""
+msgstr "Creador"
 
 #: models.py:112 models.py:113
 msgid "creator"
-msgstr ""
+msgstr "creador"
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
@@ -149,7 +150,7 @@ msgstr "tiene permiso"
 
 #: views.py:185 views.py:279 views.py:529 views.py:609
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: views.py:186 views.py:280 views.py:530 views.py:610
 #, python-format
@@ -174,7 +175,7 @@ msgstr "¿Está seguro que desea conceder los permisos de %(title_suffix)s?"
 #: views.py:199 views.py:543
 #, python-format
 msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-msgstr ""
+msgstr "Permiso \"%(permission)s\" otorgado a %(actor)s para %(object)s."
 
 #: views.py:205 views.py:549
 #, python-format
@@ -182,6 +183,7 @@ msgid ""
 "%(actor)s, already had the permission \"%(permission)s\" granted for "
 "%(object)s."
 msgstr ""
+"%(actor)s, ya tenía el permiso \"%(permission)s\", otorgado para %(object)s."
 
 #: views.py:281 views.py:611
 #, python-format
@@ -191,31 +193,31 @@ msgstr " de %s"
 #: views.py:284 views.py:614
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-msgstr ""
+msgstr "¿Está seguro que desea revocar el permiso %(title_suffix)s?"
 
 #: views.py:286 views.py:616
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr ""
+msgstr "¿Está seguro de querer revocar los permisos %(title_suffix)s?"
 
 #: views.py:293 views.py:623
 #, python-format
 msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-msgstr ""
+msgstr "Permiso \"%(permission)s\" revocado del %(actor)s para %(object)s."
 
 #: views.py:299 views.py:629
 #, python-format
 msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-msgstr ""
+msgstr "%(actor)s, no tenía el permiso \"%(permission)s\" para %(object)s."
 
 #: views.py:355
 #, python-format
 msgid "add new holder for: %s"
-msgstr ""
+msgstr "añadir nuevo titular para: %s"
 
 #: views.py:356 views.py:489
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #: views.py:389
 msgid "classes"
@@ -228,12 +230,12 @@ msgstr "clase"
 #: views.py:410
 #, python-format
 msgid "default access control lists for class: %s"
-msgstr ""
+msgstr "listas de control de acceso por defecto para la clase: %s"
 
 #: views.py:438
 #, python-format
 msgid "permissions available to: %(actor)s for class %(class)s"
-msgstr ""
+msgstr "permisos disponibles para: %(actor)s para la clase %(class)s "
 
 #: views.py:487
 #, python-format
