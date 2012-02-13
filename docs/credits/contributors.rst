@@ -67,9 +67,11 @@ Remote access for debugging
 ---------------------------
 * Сергей Глита [Sergey Glita] (s.v.glita@gmail.com)
 * David Herring (https://github.com/abadger1406)
+* Michael Terretta (terretta@gmail.com)
 
 
 Monetary donations
 ------------------
 * David Herring (https://github.com/abadger1406) - $100
 * David Herring (https://github.com/abadger1406) - $250
+* Michael Terretta (terretta@gmail.com) - $100
