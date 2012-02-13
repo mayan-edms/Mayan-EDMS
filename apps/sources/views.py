@@ -194,7 +194,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             expand = False
                         else:
                             if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                                expand = form.cleaned_dataget('expand')
+                                expand = form.cleaned_data.get('expand')
                             else:
                                 if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
                                     expand = True
