@@ -23,7 +23,7 @@ class DocumentVersionSignature(models.Model):
 
     objects = DocumentVersionSignatureManager()
 
-    def delete_detached_signature(self):
+    def delete_detached_signature_file(self):
         self.signature_file.storage.delete(self.signature_file.path)
 
     def save(self, *args, **kwargs):

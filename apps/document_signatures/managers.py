@@ -24,7 +24,7 @@ class DocumentVersionSignatureManager(models.Manager):
         else:
             if document_signature.signature_file:
                 logger.debug('Existing detached signature')
-                document_signature.delete_detached_signature()
+                document_signature.delete_detached_signature_file()
                 document_signature.signature_file = None
                 document_signature.save()
 
