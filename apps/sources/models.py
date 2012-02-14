@@ -123,8 +123,7 @@ class BaseModel(models.Model):
             raise
             
         if filename:
-            new_version.filename = filename
-            new_version.save()
+            document.rename(filename)
 
         transformations, errors = self.get_transformation_list()
 
