@@ -52,13 +52,20 @@ class DocumentVersionSignatureManager(models.Manager):
         return document_signature.signature_file.storage.open(document_signature.signature_file.path)
 
     def verify_signature(self, document):
+        document_descriptor = document.open(raw=True)
+        detached_signature = None
         if self.has_detached_signature(document):
             logger.debug('has detached signature')
-            args = (document.open(raw=True), self.detached_signature(document))
+            detached_signature = self.detached_signature(document)
+            args = (document_descriptor, detached_signature)
         else:
-            args = (document.open(raw=True),)
+            args = (document_descriptor,)
 
         try:
             return gpg.verify_file(*args, fetch_key=True)
         except GPGVerificationError:
             return None
+        finally:
+            document_descriptor.close()
+            if detached_signature:
+                detached_signature.close()
