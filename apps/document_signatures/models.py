@@ -28,7 +28,9 @@ class DocumentVersionSignature(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.has_embedded_signature = gpg.has_embedded_signature(self.document_version.open(raw=True))
+            descriptor = self.document_version.open(raw=True)
+            self.has_embedded_signature = gpg.has_embedded_signature(descriptor)
+            descriptor.close()
         super(DocumentVersionSignature, self).save(*args, **kwargs)
 
     class Meta:
