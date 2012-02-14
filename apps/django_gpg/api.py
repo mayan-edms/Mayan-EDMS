@@ -4,6 +4,11 @@ import logging
 import tempfile
 import os
 
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
 from django.utils.translation import ugettext_lazy as _
 
 from hkp import KeyServer
@@ -174,7 +179,7 @@ class GPG(object):
 
         self.gpg = gnupg.GPG(**kwargs)
         
-    def verify_file(self, file_input, detached_signature=None, close_descriptor=True, fetch_key=False):
+    def verify_file(self, file_input, detached_signature=None, fetch_key=False):
         """
         Verify the signature of a file.
         """
@@ -185,36 +190,34 @@ class GPG(object):
             # Save the original data and invert the argument order
             # Signature first, file second
             file_descriptor, filename = tempfile.mkstemp(prefix='django_gpg')
-            file_data = input_descriptor.read()
-            file_input.close()
-            os.write(file_descriptor, file_data)
+            os.write(file_descriptor, input_descriptor.read())
             os.close(file_descriptor)
-            verify = self.gpg.verify_file(detached_signature, data_filename=filename)
+
+            detached_signature = GPG.get_descriptor(detached_signature)
+            signature_file = StringIO()
+            signature_file.write(detached_signature.read())
+            signature_file.seek(0)
+            verify = self.gpg.verify_file(signature_file, data_filename=filename)
+            signature_file.close()
         else:
             verify = self.gpg.verify_file(input_descriptor)
 
         logger.debug('verify.status: %s' % getattr(verify, 'status', None))
         if verify:
             logger.debug('verify ok')
-            if close_descriptor:
-                input_descriptor.close()
             return verify
         elif getattr(verify, 'status', None) == 'no public key':
             # Exception to the rule, to be able to query the keyservers
             if fetch_key:
                 try:
                     self.receive_key(verify.key_id)
-                    return self.verify_file(input_descriptor, detached_signature, close_descriptor, fetch_key=False)
+                    return self.verify_file(input_descriptor, detached_signature, fetch_key=False)
                 except KeyFetchingError:
-                    if close_descriptor:
-                        input_descriptor.close()
                     return verify
             else:
                 return verify
         else:
             logger.debug('No verify')
-            if close_descriptor:
-                input_descriptor.close()
             raise GPGVerificationError()
 
     def verify(self, data):
