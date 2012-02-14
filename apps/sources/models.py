@@ -90,6 +90,8 @@ class BaseModel(models.Model):
 
     @transaction.commit_on_success
     def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
+        new_document = not document
+        
         if not document:
             document = Document()
             if document_type:
@@ -98,10 +100,6 @@ class BaseModel(models.Model):
 
             apply_default_acls(document, user)
  
-            if metadata_dict_list:
-                save_metadata_list(metadata_dict_list, document, create=True)
-            warnings = update_indexes(document)
-
             if user:
                 document.add_as_recent_document_for_user(user)
                 create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
@@ -132,6 +130,11 @@ class BaseModel(models.Model):
 
         new_version.apply_default_transformations(transformations)
         #TODO: new HISTORY for version updates
+        
+        if metadata_dict_list and new_document:
+            # Only do for new documents
+            save_metadata_list(metadata_dict_list, document, create=True)
+            warnings = update_indexes(document)       
 
     class Meta:
         ordering = ('title',)
