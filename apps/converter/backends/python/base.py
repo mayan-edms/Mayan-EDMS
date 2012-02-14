@@ -30,7 +30,10 @@ class ConverterClass(ConverterBase):
             # If file is a PDF open it with slate to determine the page
             # count
             with open(input_filepath) as fd:
-                pages = slate.PDF(fd)
+                try:
+                    pages = slate.PDF(fd)
+                except:
+                    return 1
             return len(pages)
             
         try:
