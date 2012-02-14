@@ -146,7 +146,7 @@ INSTALLED_APPS = (
     'web_theme',
 # pagination needs to go after web_theme so that the pagination template
 # if found
-	'pagination',
+    'pagination',
     'common',
     'django_gpg',
     'dynamic_search',
@@ -195,95 +195,7 @@ COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
 
 COMPRESS_ENABLED=False
-
-#===== User configuration options ===============
-#--------- Pagination ------------------
-#PAGINATION_DEFAULT_PAGINATION = 10
-#--------- Web theme app ---------------
-#WEB_THEME_THEME = 'default'
-#-------------- Main -----------------
-#MAIN_SIDE_BAR_SEARCH = False
-#------------ Common --------------
-# Printing
-# from common.literals import PAGE_SIZE_LETTER, PAGE_ORIENTATION_PORTRAIT
-#COMMON_DEFAULT_PAPER_SIZE = PAGE_SIZE_LETTER
-#COMMON_DEFAULT_PAGE_ORIENTATION = PAGE_ORIENTATION_PORTRAIT
-#------------ Storage --------------
-#DOCUMENTS_STORAGE_BACKEND = FileBasedStorage
-# GridFS settings
-#STORAGE_GRIDFS_HOST = 'localhost'  # or list ['host a', 'host b']
-#STORAGE_GRIDFS_PORT = 27017
-#STORAGE_GRIDFS_DATABASE_NAME = u'document_storage'
-# Filebased
-#STORAGE_FILESTORAGE_LOCATION = u'document_storage'
-#---------- Metadata -----------------
-# METADATA_AVAILABLE_FUNCTIONS = {}
-# METADATA_AVAILABLE_MODELS = {}
-#---------- Indexing -----------------
-#DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS = {}
-# Flesystem serving
-#DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE = True
-#DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH = u'/tmp/mayan/documents'
-#DOCUMENT_INDEXING_FILESYSTEM_SLUGIFY_PATHS = False
-#---------- Documents ------------------
-# Upload
-#DOCUMENTS_USE_STAGING_DIRECTORY = False
-#DOCUMENTS_STAGING_DIRECTORY = u'/tmp/mayan/staging'
-#DOCUMENTS_DELETE_STAGING_FILE_AFTER_UPLOAD = False
-#DOCUMENTS_STAGING_FILES_PREVIEW_SIZE = '640x480'
-#DOCUMENTS_ENABLE_SINGLE_DOCUMENT_UPLOAD = True
-#DOCUMENTS_UNCOMPRESS_COMPRESSED_LOCAL_FILES = True
-#DOCUMENTS_UNCOMPRESS_COMPRESSED_STAGING_FILES = True
-
-# Saving
-#DOCUMENTS_CHECKSUM_FUNCTION = lambda x: hashlib.sha256(x).hexdigest())
-#DOCUMENTS_UUID_FUNCTION = lambda:unicode(uuid.uuid4())
-#DOCUMENTS_DEFAULT_TRANSFORMATIONS = []
-
-# Usage
-#DOCUMENTS_PREVIEW_SIZE = '640x480'
-#DOCUMENTS_PRINT_SIZE = '640x480'
-#DOCUMENTS_THUMBNAIL_SIZE = '50x50'
-#DOCUMENTS_DISPLAY_SIZE = '1200'
-#DOCUMENTS_MULTIPAGE_PREVIEW_SIZE = '160x120'
-#DOCUMENTS_AVAILABLE_TRANSFORMATIONS = {}
-#example: DOCUMENTS_DEFAULT_TRANSFORMATIONS = [{'name':'rotate', 'arguments':"{'degrees':270}"}]
-#DOCUMENTS_RECENT_COUNT = 40
-#DOCUMENTS_ZOOM_PERCENT_STEP = 50
-#DOCUMENTS_ZOOM_MAX_LEVEL = 200
-#DOCUMENTS_ZOOM_MIN_LEVEL = 50
-#DOCUMENTS_ROTATION_STEP = 90
-
-#------------- Groups --------------------
-#GROUPING_SHOW_EMPTY_GROUPS = True
-#------------ Converter --------------
-#CONVERTER_DEFAULT_OPTIONS = u''
-#CONVERTER_LOW_QUALITY_OPTIONS = u''
-#CONVERTER_HIGH_QUALITY_OPTIONS =  u'-density 400'
-#CONVERTER_OCR_OPTIONS = u'-colorspace Gray -depth 8 -resample 200x200'
-#CONVERTER_IM_CONVERT_PATH = u'/usr/bin/convert'
-#CONVERTER_IM_IDENTIFY_PATH = u'/usr/bin/identify'
-#CONVERTER_UNPAPER_PATH = u'/usr/bin/unpaper'
-#CONVERTER_GRAPHICS_BACKEND = u'converter.backends.imagemagick'
-#CONVERTER_GM_PATH = u'/usr/bin/gm'
-#CONVERTER_GM_SETTINGS = u''
-#------------ OCR --------------
-#OCR_TESSERACT_PATH = u'/usr/bin/tesseract'
-#OCR_NODE_CONCURRENT_EXECUTION = 1
-#OCR_TESSERACT_LANGUAGE = u'eng'
-#OCR_REPLICATION_DELAY = 10
-#OCR_AUTOMATIC_OCR = False
-#OCR_PDFTOTEXT_PATH = u'/usr/bin/pdftotext'
-#OCR_QUEUE_PROCESSING_INTERVAL = 10  # In seconds
-#OCR_CACHE_URI = None  # Can be a single host (u'memcached://127.0.0.1:11211/'), or multiple separated by a semicolon
-#------------ Permissions --------------
-#ROLES_DEFAULT_ROLES = []
-#------------ Searching --------------
-#SEARCH_LIMIT = 100
-#------------ django-sendfile --------------
-# Change to xsendfile for apache if x-sendfile is enabled
 SENDFILE_BACKEND = 'sendfile.backends.simple'
-#======== End of user configuration options =======
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 #--------- Django -------------------
