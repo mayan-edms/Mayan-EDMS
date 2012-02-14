@@ -34,6 +34,7 @@ class ConverterClass(ConverterBase):
                     pages = slate.PDF(fd)
                 except:
                     return 1
+                    # TODO: Maybe return UnknownFileFormat to display proper unknwon file format message in document description
             return len(pages)
             
         try:
