@@ -263,6 +263,10 @@ class Document(models.Model):
     def versions(self):
         return self.documentversion_set
 
+    def rename(self, new_name):
+        version = self.latest_version
+        return version.rename(new_name)
+
     def _get_filename(self):
         return self.latest_version.filename
 
@@ -514,6 +518,11 @@ class DocumentVersion(models.Model):
             return self.file.storage.size(self.file.path)
         else:
             return None
+            
+    def rename(self, new_name):
+        name, extension = os.path.splitext(self.filename)
+        self.filename = u''.join([new_name, extension])
+        self.save()
 
 
 class DocumentTypeFilename(models.Model):
