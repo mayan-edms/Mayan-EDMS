@@ -83,10 +83,11 @@ Having trouble? We'd like to help!
 * Try the :doc:`FAQ <faq/index>` -- it's got answers to many common questions.
 
 * Search for information in the `archives of the mayan-edms mailing list`_, or
-  `post a question`_.
+  `post a question`_.  If you prefer news servers, use the gateway provided by Gname_.
 
 * Report bugs with **Mayan EDMS** using Github's `ticket tracker`_.
 
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
+.. _Gname: http://news.gmane.org/gmane.comp.python.django.mayan-edms
 .. _post a question: http://groups.google.com/group/mayan-edms
 .. _ticket tracker: http://github.com/rosarior/mayan/issues
