@@ -145,14 +145,27 @@ or even help add new features if enough requests are received.  All questions
 are optional but answering as many as possible will help greatly understand
 the need of the **Mayan EDMS** user base.
 
+Staging file previews
+~~~~~~~~~~~~~~~~~~~~~
+The staging file previews now show the filename as the title for easier
+identification and speedier upload selection.  The staging files previews
+are now treated as a gallery which means that users can preview an entire
+page of staging files without having to click and close each one
+individually.
+
+
 Upgrading from a previous version
 =================================
 
-Start off by creating the new database structures with::
+Start off by adding the new requirements::
+
+  $ pip install -r requirements/production.txt
+
+Then create the new database structures with::
 
     $ ./manage.py syncdb
 
-Then migrate existing database schema with::
+Afterwards migrate existing database schema with::
 
     $ ./manage.py migrate permissions 0001 --fake
     $ ./manage.py migrate permissions
@@ -200,11 +213,8 @@ Again when a similar messages appears
 
 Type ``yes`` and press **Enter**
 
-Add the new requirements::
-
-  $ pip install -r requirements/production.txt
-
 The upgrade procedure is now complete.
+
 
 Backward incompatible changes
 =============================
