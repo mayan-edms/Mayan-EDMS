@@ -182,6 +182,8 @@ And continue migrating database schema with::
     $ ./manage.py migrate folders
     $ ./manage.py migrate document_indexing 0001 --fake
     $ ./manage.py migrate document_indexing
+    $ ./manage.py migrate sources 0001 --fake
+    $ ./manage.py migrate sources
 
 Again when a similar messages appears
 ::
