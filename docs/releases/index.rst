@@ -11,18 +11,15 @@ all the backwards-incompatible changes and deprecated features for
 each 'final' release from the one after your current **Mayan EDMS** version,
 up to and including the new version.
 
-Final releases
-==============
-
-0.12 release
-------------
+Latest version (0.12)
+---------------------
 .. toctree::
    :maxdepth: 1
 
    0.12
 
 Historic changelogs
-===================
+-------------------
 .. toctree::
    :maxdepth: 1
 
