@@ -38,13 +38,16 @@ First steps
 Understanding Mayan EDMS
 ========================
 
+  :doc:`File storage <topics/file_storage>` |
+  :doc:`Initial data loading <topics/initial_import>` |
+  :doc:`Permission system <topics/permissions>` |
+  :doc:`Transformations <topics/transformations>` |
+  :doc:`Document visualization <topics/document_visualization>` |
+  :doc:`Document versioning <topics/versioning>` |
+  :doc:`Document signatures <topics/signatures>` |
   :doc:`Indexes <topics/indexes>` |
   :doc:`Smart links <topics/smart_links>` |
-  :doc:`Permission system <topics/permissions>` |
-  :doc:`Document visualization <topics/document_visualization>` |
-  :doc:`OCR <topics/ocr>` |
-  :doc:`File storage <topics/file_storage>` |
-  :doc:`Transformations <topics/transformations>`
+  :doc:`OCR <topics/ocr>`
 
 
 Between versions

@@ -46,6 +46,10 @@ ACL support
 * Object level access control is now in place for documents, folders,
   tags and smart links.  What this means is that administrators can now
   grant permissions to users, groups or roles on for specific objects.
+  A more in-depth explanation of how this new ACL system can be found in
+  the :doc:`3 tier access control <../topics/permissions>` section of the
+  permissions chapter.
+  
 * Default class ACL support.  Administrators can setup the access control
   lists that new documents, folders and tags will automatically inheric
   when created.  Aside from asigning permission to users, groups and roles
@@ -83,52 +87,32 @@ the download of several documents in a single compressed file.
 
 Customizable GPG home directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Addition of the SIGNATURES_GPG_HOME configuration option to let 
+Addition of the :setting:`SIGNATURES_GPG_HOME` configuration option to let 
 administrators set **Mayan EDMS**'s GPG instance home directory, used to
 store keyrings and other GPG configuration files.
 
 Out of process bulk uploading
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 A management command has been added to help upload a large number of documents
-from a compressed file.  The command line options for this feature are as
-follow::
+from a compressed file.  For information about this new feature check the 
+:doc:`Initial data loading <../topics/initial_import>` chapter.
 
-  $ ./manage.py bulk_upload --noinput --metadata '{"project": "bulk"}' --document_type "Accounting documents" compressed.zip 
-
-**Optional arguments**
-
-* The ``--noinput`` argument skips confirmation and starts the upload immediately.
-* The ``--metadata`` argument allows specifing what metadata will be assigned
-  to the documents when uploaded.
-* And the ``--document_type`` applies a previously defined 
-  document type to the uploaded documents.
   
 Out of process user import
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 A management command has been added to import a large number users
-from a CSV file.  The command line options for this feature are as
-follow::
+from a CSV file.  More information about this new feature can also be found 
+in the :doc:`Initial data loading <../topics/initial_import>` chapter.
 
-  $ ./manage.py import_users --noinput --password=welcome123 --skip-repeated user_list.csv 
-
-The CSV field order must be: username, first name, last name and email, any other 
-column after those is ignored.
-
-**Optional arguments**
-
-* The ``--noinput`` argument skips confirmation and starts the import immediately.
-* The ``--password`` argument allows specifing what default password will be assigned
-  to all the new users that are imported.
-* The ``--skip-repeated`` tells the importedr to not stop when finding
-  that a user already exists in the database.
 
 Refactored document indexing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The document indexing functionality has been improved and moved from experimental
+:doc:`The document indexing  <../topics/indexes>` functionality has been
+improved and moved from experimental
 stage to beta stage.  Index configuration menus are now available on the
-``Setup`` menu and allows administrators to create a skeleton tree that will
+``Setup`` menu and allows administrators to create skeleton trees that will
 be populated with document links depending on their metadata and properties.
-This populated tree can also be mirrored on the physical filesystem and shared
+These populated trees can also be mirrored on the physical filesystem and shared
 using Samba or another filesharing server giving users a structured view
 of the documents contained within **Mayan EDMS** from the ``Indexes`` tab
 or from a mirrored index shared via the network.  A new configuration option
@@ -147,7 +131,7 @@ the need of the **Mayan EDMS** user base.
 
 Staging file previews
 ~~~~~~~~~~~~~~~~~~~~~
-The staging file previews now show the filename as the title for easier
+The staging file previews now show the filename for easier
 identification and speedier upload selection.  The staging files previews
 are now treated as a gallery which means that users can preview an entire
 page of staging files without having to click and close each one

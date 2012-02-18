@@ -2,11 +2,11 @@
 Features
 ========
 
-* Document versioning.
+* :doc:`Document versioning <../topics/versioning>`.
 
   * Store many versions of the same document, download or revert to a previous version.
 
-* Electronic signature verification.
+* :doc:`Electronic signature verification <../topics/signatures>`.
 
   * Check the authenticity of documents by verifying their embedded
     cryptographic signatures or upload detached signatures for document
@@ -56,11 +56,11 @@ Features
     
   * Automatic linking of documents based on metadata values or document properties.
 
-* Roles support.
+* :doc:`Roles support <../topics/permissions>`.
 
   * Users can created an unlimited amount of different roles and are not restricted to the traditional admin, operator, guest paradigm.
 
-* Fine grained permissions system.
+* :doc:`Fine grained permissions system <../topics/permissions>`.
 
   * There is a permission for every atomic operation performed by users.
 
@@ -68,7 +68,7 @@ Features
 
   * Multiple page PDFs and TIFFs files supported.
 
-* Distributed OCR processing.
+* :doc:`Distributed OCR processing <../topics/ocr>`.
 
   * The task of transcribing text from documents via OCR can be distributed among several physical or virtual computers to decrease load and increase availability.
 
@@ -76,13 +76,13 @@ Features
 
   * **Mayan EDMS** is written using the Django_ framework which natively support Unicode, this coupled with the use of text templates allows **Mayan EDMS** to be translated to practically any language spoken in the world, by default four translations are provided: English, Spanish, Portuguese and Russian.
 
-* Multilingual OCR support.
+* :doc:`Multilingual OCR support <../topics/ocr>`.
 
   * As supported by the OCR engine tesseract.
 
 * Duplicated document search.
 
-* Plugable storage backends (File based and GridFS included).
+* :doc:`Plugable storage backends <../topics/file_storage>` (File based and GridFS included).
     
   * Very easy to use 3rd party plugins such as the ones available for Amazon EC2.
 
