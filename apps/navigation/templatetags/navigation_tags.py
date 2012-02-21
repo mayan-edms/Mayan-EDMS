@@ -38,7 +38,7 @@ class TopMenuNavigationNode(Node):
                     menu_links[index]['active'] = True
             
             for children_view_regex in link.get('children_view_regex', []):
-                if re.compile(children_view_regex).match(children_view_regex):
+                if re.compile(children_view_regex).match(current_view):
                     menu_links[index]['active'] = True
 
         context['menu_links'] = menu_links
