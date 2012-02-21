@@ -42,7 +42,7 @@ document_queue_enable = {'text': _(u'activate queue'), 'view': 'document_queue_e
 all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _(u'Runs a language filter to remove common OCR mistakes from document pages content.')}
 
 queue_document_list = {'text': _(u'queue document list'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT], 'children_view_regex': [r'queue_', r'document_queue']}
 
 setup_queue_transformation_list = {'text': _(u'transformations'), 'view': 'setup_queue_transformation_list', 'args': 'queue.pk', 'famfam': 'shape_move_front'}
 setup_queue_transformation_create = {'text': _(u'add transformation'), 'view': 'setup_queue_transformation_create', 'args': 'queue.pk', 'famfam': 'shape_square_add'}

@@ -7,6 +7,6 @@ from project_tools.api import register_tool
 from .permissions import PERMISSION_HISTORY_VIEW
 
 
-history_list = {'text': _(u'history'), 'view': 'history_list', 'famfam': 'book', 'icon': 'book.png', 'permissions': [PERMISSION_HISTORY_VIEW], 'children_views': ['history_view']}
+history_list = {'text': _(u'history'), 'view': 'history_list', 'famfam': 'book', 'icon': 'book.png', 'permissions': [PERMISSION_HISTORY_VIEW], 'children_view_regex': [r'history_[l,v]']}
 
 register_tool(history_list)
