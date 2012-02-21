@@ -110,7 +110,7 @@ document_version_revert = {'text': _(u'revert'), 'view': 'document_version_rever
 
 # Document type related links
 document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_setup = {'text': _(u'document types'), 'view': 'document_type_list', 'famfam': 'layout', 'icon': 'layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+document_type_setup = {'text': _(u'document types'), 'view': 'document_type_list', 'famfam': 'layout', 'icon': 'layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW], 'children_view_regex': [r'^document_type_']}
 document_type_document_list = {'text': _(u'documents of this type'), 'view': 'document_type_document_list', 'args': 'document_type.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
 document_type_edit = {'text': _(u'edit'), 'view': 'document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _(u'delete'), 'view': 'document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
@@ -178,9 +178,9 @@ register_top_menu(
     'documents',
     link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'},
     children_path_regex=[
-        r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents', r'document_acl'
+        r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents',
     ],
-    #children_view_regex=[r'upload'],
+    children_view_regex=[r'document_acl', r'smart_link_instance'],
     children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version', ],
     position=1
 )

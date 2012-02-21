@@ -17,7 +17,7 @@ from .permissions import (PERMISSION_SMART_LINK_VIEW,
 smart_link_instance_view_link = {'text': _(u'smart links actions'), 'view': 'smart_link_instance_view', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 smart_link_instances_for_document = {'text': _(u'smart links'), 'view': 'smart_link_instances_for_document', 'args': 'object.pk', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
-smart_link_setup = {'text': _(u'smart links'), 'view': 'smart_link_list', 'icon': 'link.png', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
+smart_link_setup = {'text': _(u'smart links'), 'view': 'smart_link_list', 'icon': 'link.png', 'permissions': [PERMISSION_SMART_LINK_CREATE], 'children_view_regex': [r'smart_link_list', 'smart_link_create', 'smart_link_delete', 'smart_link_edit', 'smart_link_condition_']}
 smart_link_list = {'text': _(u'smart links list'), 'view': 'smart_link_list', 'famfam': 'link', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_create = {'text': _(u'create new smart link'), 'view': 'smart_link_create', 'famfam': 'link_add', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_edit = {'text': _(u'edit'), 'view': 'smart_link_edit', 'args': 'object.pk', 'famfam': 'link_edit', 'permissions': [PERMISSION_SMART_LINK_EDIT]}
