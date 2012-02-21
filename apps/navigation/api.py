@@ -68,6 +68,8 @@ def register_top_menu(name, link, children_views=None,
         top_menu_entries.append(entry)
 
     sort_menu_entries()
+    
+    return entry
 
 
 def sort_menu_entries():
