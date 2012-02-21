@@ -28,7 +28,7 @@ def is_not_instance_root_node(context):
     return context['object'].parent is not None
 
 
-index_setup = {'text': _(u'indexes'), 'view': 'index_setup_list', 'icon': 'tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
+index_setup = {'text': _(u'indexes'), 'view': 'index_setup_list', 'icon': 'tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP], 'children_view_regex': [r'^index_setup', r'^template_node']}
 index_setup_list = {'text': _(u'index list'), 'view': 'index_setup_list', 'famfam': 'tab', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
 index_setup_create = {'text': _(u'create index'), 'view': 'index_setup_create', 'famfam': 'tab_add', 'permissions': [PERMISSION_DOCUMENT_INDEXING_CREATE]}
 index_setup_edit = {'text': _(u'edit'), 'view': 'index_setup_edit', 'args': 'index.pk', 'famfam': 'tab_edit', 'permissions': [PERMISSION_DOCUMENT_INDEXING_EDIT]}
@@ -44,7 +44,7 @@ index_list = {'text': _(u'index list'), 'view': 'index_list', 'famfam': 'tab', '
 index_parent = {'text': _(u'go up one level'), 'view': 'index_instance_node_view', 'args': 'object.parent.pk', 'famfam': 'arrow_up', 'permissions': [PERMISSION_DOCUMENT_INDEXING_VIEW], 'dont_mark_active': True, 'condition': is_not_instance_root_node}
 document_index_list = {'text': _(u'indexes'), 'view': 'document_index_list', 'args': 'object.pk', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_INDEXING_VIEW, PERMISSION_DOCUMENT_VIEW]}
 
-register_top_menu('indexes', link={'text': _('indexes'), 'famfam': 'tab', 'view': 'index_list', 'children_view_regex': [r'^index_']})
+register_top_menu('indexes', link={'text': _('indexes'), 'famfam': 'tab', 'view': 'index_list', 'children_view_regex': [r'^index_[i,l]']})
 
 rebuild_index_instances = {'text': _('rebuild indexes'), 'view': 'rebuild_index_instances', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES], 'description': _(u'Deletes and creates from scratch all the document indexes.')}
 
