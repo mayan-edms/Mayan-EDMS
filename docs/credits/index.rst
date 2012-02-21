@@ -1,7 +1,8 @@
 Credits
 =======
 
-Introductions to all the key parts of Mayan EDMS you'll need to know:
+Here we list everything and everybody that has made his/her/its part in improving
+**Mayan EDMS**
 
 .. toctree::
    :maxdepth: 1
