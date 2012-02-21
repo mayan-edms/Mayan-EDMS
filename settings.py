@@ -243,21 +243,18 @@ if DEVELOPMENT:
         INSTALLED_APPS += ('rosetta',)
     except ImportError:
         pass
-        #sys.stderr.write('DEBUG: rosetta is not installed\n')
 
     try:
         import django_extensions
         INSTALLED_APPS += ('django_extensions',)
     except ImportError:
         pass
-        #sys.stderr.write('DEBUG: django_extensions is not installed\n')
 
     try:
         import debug_toolbar
         #INSTALLED_APPS +=('debug_toolbar',)
     except ImportError:
         pass        
-        #sys.stderr.write('DEBUG: debug_toolbar is not installed\n')
 
     TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
 
