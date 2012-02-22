@@ -1,4 +1,3 @@
-from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
 
@@ -41,7 +40,7 @@ def single_tag_widget(tag):
     tags_template = []
     tags_template.append('<ul class="tags">')
     tags_template.append(get_single_tag_template(tag))
-    tags_template.append('</ul>')    
+    tags_template.append('</ul>')
     return mark_safe(u''.join(tags_template))
 
 
