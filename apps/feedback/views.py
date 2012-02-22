@@ -2,10 +2,9 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
-from django.core.urlresolvers import reverse
 
 from .forms import FeedbackForm
 from .api import submit_form
@@ -28,4 +27,4 @@ def form_view(request):
         'title': _(u'feedback form'),
         'form': form,
     },
-    context_instance=RequestContext(request))    
+    context_instance=RequestContext(request))

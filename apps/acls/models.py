@@ -7,8 +7,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.core.exceptions import PermissionDenied
-from django.core.exceptions import ObjectDoesNotExist
 
 from permissions.models import StoredPermission
 from common.models import Singleton, SingletonManager
@@ -101,6 +99,7 @@ class CreatorSingletonManager(SingletonManager):
             return creator
         else:
             return holder
+
 
 class CreatorSingleton(Singleton):
     objects = CreatorSingletonManager()

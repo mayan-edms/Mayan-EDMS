@@ -69,7 +69,7 @@ class DocumentVersionSignatureManager(models.Manager):
             document_descriptor.close()
             if detached_signature:
                 detached_signature.close()
-                
+
     def clear_detached_signature(self, document):
         document_signature = self.get_document_signature(document)
         if not document_signature.signature_file:
@@ -77,4 +77,4 @@ class DocumentVersionSignatureManager(models.Manager):
 
         document_signature.delete_detached_signature_file()
         document_signature.signature_file = None
-        document_signature.save()    
+        document_signature.save()

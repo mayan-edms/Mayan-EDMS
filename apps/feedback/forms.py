@@ -50,7 +50,7 @@ class FeedbackForm(forms.Form):
         label=_(u'Are currently providing or planning to provide paid support for Mayan EDMS?'),
         required=False
     )
-    
+
     hosted = forms.BooleanField(
         label=_(u'Would you be interested in a cloud hosted solution for Mayan EDMS?'),
         required=False
@@ -70,7 +70,7 @@ class FeedbackForm(forms.Form):
         label=_(u'Your email:'),
         required=False
     )
-    
+
     company = forms.CharField(
         label=_(u'Company name:'),
         required=False

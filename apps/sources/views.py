@@ -165,13 +165,13 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         else:
                             if result['is_compressed'] == None:
                                 messages.success(request, _(u'File uploaded successfully.'))
-                            
+
                             if result['is_compressed'] == True:
                                 messages.success(request, _(u'File uncompressed successfully and uploaded as individual files.'))
-                                                            
+
                             if result['is_compressed'] == False:
                                 messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
-                            
+
                             return HttpResponseRedirect(request.get_full_path())
                     except Exception, e:
                         if settings.DEBUG:
@@ -240,7 +240,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
                         if result['is_compressed'] == True:
                             messages.success(request, _(u'Staging file: %s, uncompressed successfully and uploaded as individual files.') % staging_file.filename)
-                        
+
                         if result['is_compressed'] == False:
                             messages.warning(request, _(u'Staging file: %s, was not compressed, uploaded as a single file.') % staging_file.filename)
 

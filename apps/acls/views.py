@@ -120,7 +120,7 @@ def acl_detail_for(request, actor, obj):
         'multi_select_item_properties': {
             'permission_pk': lambda x: x.pk,
             'holder_gid': lambda x: actor.gid,
-            'object_gid': lambda x: obj.gid,            
+            'object_gid': lambda x: obj.gid,
         },
         'access_object': obj,
         'navigation_object_list': [
@@ -138,10 +138,9 @@ def acl_detail_for(request, actor, obj):
 
 def acl_grant(request):
     items_property_list = loads(request.GET.get('items_property_list', []))
-    post_action_redirect = None
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     items = {}
     title_suffix = []
@@ -232,10 +231,9 @@ def acl_grant(request):
 
 def acl_revoke(request):
     items_property_list = loads(request.GET.get('items_property_list', []))
-    post_action_redirect = None
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     items = {}
     title_suffix = []
@@ -403,7 +401,7 @@ def acl_class_acl_list(request, access_object_class_gid):
 
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
     logger.debug('access_object_class: %s' % access_object_class)
-    
+
     context = {
         'object_list': DefaultAccessEntry.objects.get_holders_for(access_object_class.source_object),
         'title': _(u'default access control lists for class: %s') % access_object_class,
@@ -496,10 +494,9 @@ def acl_class_new_holder_for(request, access_object_class_gid):
 def acl_class_multiple_grant(request):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
-    post_action_redirect = None
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     items = {}
     title_suffix = []
@@ -576,10 +573,9 @@ def acl_class_multiple_grant(request):
 def acl_class_multiple_revoke(request):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
-    post_action_redirect = None
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     items = {}
     title_suffix = []

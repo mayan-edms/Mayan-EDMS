@@ -95,6 +95,7 @@ def document_post_save(sender, instance, **kwargs):
 #        logger.debug('got call_queue signal: %s' % kwargs)
 #        task_process_document_queues()
 
+
 @receiver(post_syncdb, dispatch_uid='create_default_queue', sender=ocr_models)
 def create_default_queue_signal_handler(sender, **kwargs):
     create_default_queue()
