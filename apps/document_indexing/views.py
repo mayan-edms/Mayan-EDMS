@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 from django.utils.html import mark_safe
+from django.conf import settings
 
 from permissions.models import Permission
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
@@ -372,6 +373,8 @@ def rebuild_index_instances(request):
                 messages.warning(request, warning)
 
         except Exception, e:
+            if settings.DEBUG:
+                raise
             messages.error(request, _(u'Index rebuild error: %s') % e)
 
         return HttpResponseRedirect(next)
