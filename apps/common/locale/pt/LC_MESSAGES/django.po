@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:18+0000\n"
+"PO-Revision-Date: 2012-02-21 15:07+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
-"team/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:20
@@ -51,9 +51,7 @@ msgstr "E-mail"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"Por favor insira o e-mail e senha corretos. Note que os campos de senha são "
-"case-sensitive."
+msgstr "Por favor insira o e-mail e senha corretos. Note que os campos de senha são case-sensitive."
 
 #: forms.py:146
 msgid "This account is inactive."
@@ -105,11 +103,11 @@ msgstr ""
 
 #: models.py:43
 msgid "Anonymous user"
-msgstr ""
+msgstr "Usuário anônimo"
 
 #: models.py:46 models.py:47
 msgid "anonymous user"
-msgstr ""
+msgstr "usuário anônimo"
 
 #: utils.py:295
 msgid "function found"
@@ -152,7 +150,7 @@ msgstr "detalhes atuais do usuário"
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
-msgstr ""
+msgstr "E-mail conflito, outro usuário que tem mesmo e-mail."
 
 #: views.py:190
 msgid "Current user's details updated."
@@ -168,7 +166,7 @@ msgstr "Licença"
 
 #: views.py:239
 msgid "Current user password change"
-msgstr ""
+msgstr "Alteração de senha do usuário atual"
 
 #: views.py:254 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
@@ -181,20 +179,15 @@ msgstr "Nenhum"
 #: conf/settings.py:15
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Diretório temporário usado para armazenar miniaturas, previews e arquivos "
-"temporários. Se nenhum for especificado, um será criado usando tempfile."
-"mkdtemp()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Diretório temporário usado para armazenar miniaturas, previews e arquivos temporários. Se nenhum for especificado, um será criado usando tempfile.mkdtemp()"
 
 #: conf/settings.py:65
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Controla o mecanismo usado para usuário autenticado. As opções são: e-mail, "
-"nome de usuário,"
+msgstr "Controla o mecanismo usado para usuário autenticado. As opções são: e-mail, nome de usuário,"
 
 #: conf/settings.py:74
 msgid "Allow non authenticated users, access to all views"
@@ -304,7 +297,7 @@ msgstr "Submeter"
 
 #: templates/generic_form_subtemplate.html:87
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
 #, python-format
@@ -317,9 +310,7 @@ msgstr "Lista de %(stripped_title)s "
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s "
-"of %(total_pages)s)"
+msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s of %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26
