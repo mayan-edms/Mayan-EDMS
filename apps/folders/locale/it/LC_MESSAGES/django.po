@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pierpaolo.baldan@gmail.com>, 2011.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"PO-Revision-Date: 2012-02-21 00:25+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:18
@@ -57,7 +57,7 @@ msgstr ""
 
 #: forms.py:38
 msgid "Folder"
-msgstr ""
+msgstr "Cartella"
 
 #: models.py:11
 msgid "title"
@@ -89,31 +89,31 @@ msgstr "cartelle documento"
 
 #: permissions.py:7
 msgid "Folders"
-msgstr ""
+msgstr "Cartelle"
 
 #: permissions.py:9
 msgid "Create new folders"
-msgstr ""
+msgstr "Creare nuove cartelle"
 
 #: permissions.py:10
 msgid "Edit new folders"
-msgstr ""
+msgstr "Modifica nuove cartelle"
 
 #: permissions.py:11
 msgid "Delete new folders"
-msgstr ""
+msgstr "Eliminare nuove cartelle"
 
 #: permissions.py:12
 msgid "Remove documents from folders"
-msgstr ""
+msgstr "Rimuovere i documenti da cartelle"
 
 #: permissions.py:13
 msgid "View existing folders"
-msgstr ""
+msgstr "Visualizza cartelle esistenti"
 
 #: permissions.py:14
 msgid "Add documents to existing folders"
-msgstr ""
+msgstr "Aggiungere documenti a cartelle esistenti"
 
 #: views.py:37
 msgid "created"
@@ -169,8 +169,7 @@ msgstr "documenti nella cartella: %s"
 #: views.py:188
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr ""
-"Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
+msgstr "Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
 
 #: views.py:191
 #, python-format
@@ -206,18 +205,14 @@ msgstr "Documento: %(document)s errore di cancellazione: %(error)s"
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr ""
-"Sei sicuro di voler rimuovere il documento: %(document)s dalla cartella "
-"\"%(folder)s\"?"
+msgstr "Sei sicuro di voler rimuovere il documento: %(document)s dalla cartella \"%(folder)s\"?"
 
 #: views.py:272
 #, python-format
 msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
-msgstr ""
-"Sei sicuro di voler rimuovere i documenti: %(documents)s dalla cartella "
-"\"%(folder)s\"?"
+"Are you sure you wish to remove the documents: %(documents)s from the folder"
+" \"%(folder)s\"?"
+msgstr "Sei sicuro di voler rimuovere i documenti: %(documents)s dalla cartella \"%(folder)s\"?"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
@@ -229,12 +224,7 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr ""
-"Queste cartelle possono anche essere considerate come cartelle utente. Sono "
-"un modo per consentire agli utenti singoli per creare i propri metodi di "
-"organizzazione dei documenti. Cartelle create da un utente e dei documenti "
-"contenuti da loro non riguardano tutte le cartelle di altri utenti o "
-"documenti."
+msgstr "Queste cartelle possono anche essere considerate come cartelle utente. Sono un modo per consentire agli utenti singoli per creare i propri metodi di organizzazione dei documenti. Cartelle create da un utente e dei documenti contenuti da loro non riguardano tutte le cartelle di altri utenti o documenti."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"

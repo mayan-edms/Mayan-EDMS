@@ -69,7 +69,8 @@ Translations
 ~~~~~~~~~~~~~~~~~~~
 A new Italian translation is available, provided by SeeOpen.IT
 (www.seeopen.it, info@seeopen.it) as well as complete Russian translation
-update by Сергей Глита.
+update by Сергей Глита.  Included in this release also the initial translation
+to Polish by mic.
 
 Usability improvements
 ~~~~~~~~~~~~~~~~~~~~~~
