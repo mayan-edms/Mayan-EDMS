@@ -22,7 +22,7 @@ def assemble_suffixed_filename(filename, suffix=0):
 
 
 def assemble_path_from_list(directory_list):
-    return os.sep.join(directory_list)
+    return os.path.normpath(os.sep.join(directory_list))
 
 
 def get_instance_path(index_instance):
