@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <winterfall24@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-21 15:36+0000\n"
+"Last-Translator: mic <winterfall24@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/language/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: __init__.py:33
+msgid "maintenance"
+msgstr "utrzymanie"
+
+#: __init__.py:34
+msgid "statistics"
+msgstr "statystyka"
+
+#: __init__.py:35
+msgid "diagnostics"
+msgstr "diagnostyka"
+
+#: __init__.py:36
+msgid "sentry"
+msgstr ""
+
+#: __init__.py:37
+msgid "admin site"
+msgstr "strona administracyjna"
+
+#: __init__.py:40
+msgid "home"
+msgstr "home"
+
+#: __init__.py:42
+msgid "search"
+msgstr "szukaj"
+
+#: views.py:43
+msgid "maintenance menu"
+msgstr ""
+
+#: views.py:56
+msgid "Statistics"
+msgstr "Statystyka"
+
+#: views.py:66
+msgid "Diagnostics"
+msgstr "Diagnostyka"
+
+#: conf/settings.py:12
+msgid ""
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr ""
+
+#: templates/about.html:5
+msgid "About this program"
+msgstr "O programie"
+
+#: templates/about.html:9 templates/verbose_login.html:4
+msgid "Version"
+msgstr "Wersja"
+
+#: templates/base.html:28
+msgid "(DEBUG)"
+msgstr "(DEBUG)"
+
+#: templates/base.html:183
+msgid "User"
+msgstr "Użytkownik"
+
+#: templates/base.html:185
+msgid "Anonymous"
+msgstr "Anonimowy"
+
+#: templates/base.html:188
+msgid "User details"
+msgstr "Dane użytkownika"
+
+#: templates/base.html:205
+msgid "Login"
+msgstr "Login"
+
+#: templates/base.html:205
+msgid "Logout"
+msgstr "Wyloguj się"
+
+#: templates/base.html:285
+msgid "Secondary menu"
+msgstr ""
+
+#: templates/base.html:301
+#, python-format
+msgid "Actions for %(name)s: %(navigation_object)s"
+msgstr ""
+
+#: templates/base.html:303 templates/base.html.py:346
+#, python-format
+msgid "Actions for: %(navigation_object)s"
+msgstr ""
+
+#: templates/base.html:306
+msgid "Available actions"
+msgstr ""
+
+#: templates/base.html:318 templates/base.html.py:361
+msgid "Related actions"
+msgstr ""
+
+#: templates/base.html:329 templates/base.html.py:374
+msgid "Other available actions"
+msgstr ""
+
+#: templates/base.html:344
+#, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr ""
+
+#: templates/base.html:349
+msgid "Actions"
+msgstr ""
+
+#: templates/home.html:8
+msgid "Django based open source document management system"
+msgstr "Django based open source document management system"
+
+#: templates/project_description.html:6
+msgid ""
+"Open source, Django based electronic document manager with custom metadata, "
+"indexing, tagging, file serving integration and OCR capabilities"
+msgstr ""
+
+#: templates/project_description.html:18
+msgid "Released under the GPL V3 License"
+msgstr "Released under the GPL V3 License"

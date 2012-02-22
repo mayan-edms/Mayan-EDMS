@@ -1,0 +1,215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <winterfall24@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-21 20:34+0000\n"
+"Last-Translator: mic <winterfall24@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/language/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: __init__.py:14 views.py:67
+msgid "private keys"
+msgstr "private keys"
+
+#: __init__.py:15 views.py:70
+msgid "public keys"
+msgstr "public keys"
+
+#: __init__.py:16
+msgid "delete"
+msgstr "usunąć"
+
+#: __init__.py:17
+msgid "query keyservers"
+msgstr "query keyservers"
+
+#: __init__.py:18
+msgid "import"
+msgstr "import"
+
+#: __init__.py:19
+msgid "key management"
+msgstr "zarządzanie kluczami"
+
+#: api.py:19
+msgid "Public"
+msgstr "Publiczny"
+
+#: api.py:20
+msgid "Secret"
+msgstr "Secret"
+
+#: api.py:28 api.py:33
+msgid "RSA"
+msgstr "RSA"
+
+#: api.py:29
+msgid "DSA"
+msgstr "DSA"
+
+#: api.py:34
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: api.py:48
+msgid "Bad signature."
+msgstr "Zły podpis."
+
+#: api.py:52
+msgid "Document not signed or invalid signature."
+msgstr "Dokumentu nie podpisany lub nieprawidłowy podpis."
+
+#: api.py:56
+msgid "Signature error."
+msgstr "Błąd podpisu."
+
+#: api.py:60
+msgid "Document is signed but no public key is available for verification."
+msgstr "Dokument został podpisany, ale klucz publiczny nie  jest dostępny do weryfikacji."
+
+#: api.py:64
+msgid "Document is signed, and signature is good."
+msgstr "Dokument został podpisany, a podpis jest dobry."
+
+#: api.py:68
+msgid "Document is signed with a valid signature."
+msgstr "Dokument podpisany za pomocą ważnego podpisu."
+
+#: api.py:141
+msgid "unknown"
+msgstr "nieznany"
+
+#: forms.py:8
+msgid "Term"
+msgstr "Term"
+
+#: forms.py:9
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Imię i nazwisko, e-mail, key ID lub key fingerprint kluc szukać."
+
+#: permissions.py:7
+msgid "Key management"
+msgstr "Zarządzanie kluczami"
+
+#: permissions.py:9
+msgid "View keys"
+msgstr "View keys"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "Delete keys"
+
+#: permissions.py:11
+msgid "Query keyservers"
+msgstr "Query keyservers"
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
+msgstr "Import keys from keyservers"
+
+#: views.py:38
+#, python-format
+msgid "Key: %s, imported successfully."
+msgstr "Klucz:%s, zaimportowany."
+
+#: views.py:43
+#, python-format
+msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgstr "Nie można zaimportować ID klucza: %(key_id)s ; %(error)s "
+
+#: views.py:52
+msgid "Import key"
+msgstr "Importuj klucz"
+
+#: views.py:53
+#, python-format
+msgid "Are you sure you wish to import key id: %s?"
+msgstr "Czy na pewno chcesz importować ID klucza:%s?"
+
+#: views.py:78
+msgid "Key ID"
+msgstr "Key ID"
+
+#: views.py:82
+msgid "Owner"
+msgstr "Właściciel"
+
+#: views.py:102
+#, python-format
+msgid "Key: %s, deleted successfully."
+msgstr "Klucz:%s, został usunięty."
+
+#: views.py:109
+msgid "Delete key"
+msgstr "Usuń klucz"
+
+#: views.py:111
+#, python-format
+msgid ""
+"Are you sure you wish to delete key: %s?  If you try to delete a public key "
+"that is part of a public/private pair the private key will be deleted as "
+"well."
+msgstr "Czy na pewno chcesz usunąć klucz:%s? Jeśli próbujesz usunąć klucza publiczny, który jest częścią pary publiczny / prywatny klucz prywatny zostanie usunięty również."
+
+#: views.py:129
+msgid "Query key server"
+msgstr "Query key server"
+
+#: views.py:142
+msgid "results"
+msgstr "wyniki"
+
+#: views.py:147
+msgid "ID"
+msgstr "ID"
+
+#: views.py:151
+msgid "type"
+msgstr "typ"
+
+#: views.py:155
+msgid "creation date"
+msgstr "creation date"
+
+#: views.py:159
+msgid "disabled"
+msgstr "wyłączone"
+
+#: views.py:163
+msgid "expiration date"
+msgstr "data ważności"
+
+#: views.py:167
+msgid "expired"
+msgstr "wygasł"
+
+#: views.py:171
+msgid "length"
+msgstr "długość"
+
+#: views.py:175
+msgid "revoked"
+msgstr "odwołany"
+
+#: views.py:180
+msgid "Identifies"
+msgstr "Identyfikuje"
+
+#: conf/settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "List of keyservers to be queried for unknown keys."
+
+#: conf/settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Katalog domowy używany do przechowywania kluczy oraz plików konfiguracyjnych."
