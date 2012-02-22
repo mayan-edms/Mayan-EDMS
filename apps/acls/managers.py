@@ -3,7 +3,6 @@ from __future__ import absolute_import
 import logging
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
@@ -14,8 +13,7 @@ from django.db.models import Q
 from common.models import AnonymousUserSingleton
 from permissions.models import Permission, RoleMember
 
-from .classes import (EncapsulatedObject, AccessHolder, ClassAccessHolder,
-    get_source_object)
+from .classes import AccessHolder, ClassAccessHolder, get_source_object
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +59,6 @@ class AccessEntryManager(models.Manager):
         else:
             access_entry.delete()
             return True
-
 
     def has_access(self, permission, actor, obj, db_only=False):
         """
@@ -152,7 +149,7 @@ class AccessEntryManager(models.Manager):
             groups = actor.groups.all()
         else:
             groups = []
-            
+
         for group in groups:
             group_type = ContentType.objects.get_for_model(group)
             if related:
@@ -162,8 +159,8 @@ class AccessEntryManager(models.Manager):
             if total_queries is None:
                 total_queries = query
             else:
-                total_queries = total_queries | query       
-        
+                total_queries = total_queries | query
+
         if related:
             actor_query = Q(holder_type=actor_type, holder_id=actor.pk, permission=permission.get_stored_permission)
             master_list = [obj.content_object for obj in self.model.objects.select_related().filter(actor_query | total_queries)]
@@ -189,9 +186,9 @@ class AccessEntryManager(models.Manager):
         holder_list = []
         for access_entry in self.model.objects.filter(content_type=content_type, object_id=obj.pk):
             if access_entry.holder_object:
-                # Don't add references to non existant content type objects            
+                # Don't add references to non existant content type objects
                 entry = AccessHolder.encapsulate(access_entry.holder_object)
-                
+
                 if entry not in holder_list:
                     holder_list.append(entry)
 

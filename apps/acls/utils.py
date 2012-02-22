@@ -7,8 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from common.models import AnonymousUserSingleton
 
 from .models import AccessEntry, DefaultAccessEntry, CreatorSingleton
-from .classes import (EncapsulatedObject, AccessHolder, ClassAccessHolder,
-    get_source_object)
+from .classes import get_source_object
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +23,7 @@ def apply_default_acls(obj, actor=None):
 
     for default_acl in DefaultAccessEntry.objects.filter(content_type=content_type):
         holder = CreatorSingleton.objects.passthru_check(default_acl.holder_object, actor)
-       
+
         if holder:
             # When the creator is admin
             access_entry = AccessEntry(
