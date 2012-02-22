@@ -8,13 +8,14 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import PermissionDenied
 
 from permissions import Permission
 from taggit.models import Tag
 from documents.models import Document
 from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
-from acls.models import AccessEntry, PermissionDenied
+from acls.models import AccessEntry
 from acls.views import acl_list_for
 from acls.utils import apply_default_acls
 

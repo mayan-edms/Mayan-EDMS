@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.core.exceptions import PermissionDenied
 
 from common.utils import encapsulate
 from common.widgets import two_state_template
@@ -16,7 +17,7 @@ from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 from acls.views import acl_list_for
-from acls.models import AccessEntry, PermissionDenied
+from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 
 from .models import SmartLink, SmartLinkCondition

@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.utils.safestring import mark_safe
 from django.conf import settings
+from django.core.exceptions import PermissionDenied
 
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_NEW_VERSION)
@@ -18,7 +19,7 @@ from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 from common.utils import encapsulate
 import sendfile
-from acls.models import AccessEntry, PermissionDenied
+from acls.models import AccessEntry
 
 from sources.models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder)
