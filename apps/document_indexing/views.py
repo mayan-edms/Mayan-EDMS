@@ -15,6 +15,7 @@ from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate
+from common.widgets import two_state_template
 from acls.utils import apply_default_acls
 from acls.models import AccessEntry
 
@@ -40,6 +41,7 @@ def index_setup_list(request):
         'extra_columns': [
             {'name': _(u'name'), 'attribute': 'name'},
             {'name': _(u'title'), 'attribute': 'title'},
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ]
     }
 
@@ -164,6 +166,7 @@ def index_setup_view(request, index_pk):
         'hide_object': True,
         'extra_columns': [
             {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],
     }
 
