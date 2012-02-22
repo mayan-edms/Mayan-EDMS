@@ -72,7 +72,7 @@ Features
 
   * The task of transcribing text from documents via OCR can be distributed among several physical or virtual computers to decrease load and increase availability.
 
-* Multilingual user interface (English, Spanish, Portuguese, Russian).
+* Multilingual user interface (English, Spanish, Portuguese, Russian, Polish).
 
   * **Mayan EDMS** is written using the Django_ framework which natively support Unicode, this coupled with the use of text templates allows **Mayan EDMS** to be translated to practically any language spoken in the world, by default four translations are provided: English, Spanish, Portuguese and Russian.
 

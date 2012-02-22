@@ -61,6 +61,10 @@ Translations
 * Italian
 
   - SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
+  
+* Polish
+
+  - mic (https://www.transifex.net/accounts/profile/mic/)
 
 
 Remote access for debugging
