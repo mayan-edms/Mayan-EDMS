@@ -9,4 +9,4 @@ TIMEOUT = 10
 
 
 def submit_form(form):
-    r = requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(form.cleaned_data)}, timeout=TIMEOUT)
+    requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(form.cleaned_data)}, timeout=TIMEOUT)
