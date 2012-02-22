@@ -9,7 +9,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from django.db.utils import DatabaseError
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
@@ -91,7 +90,7 @@ class BaseModel(models.Model):
     @transaction.commit_on_success
     def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         new_document = not document
-        
+
         if not document:
             document = Document()
             if document_type:
@@ -99,7 +98,7 @@ class BaseModel(models.Model):
             document.save()
 
             apply_default_acls(document, user)
- 
+
             if user:
                 document.add_as_recent_document_for_user(user)
                 create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
@@ -113,7 +112,7 @@ class BaseModel(models.Model):
 
         if not new_version_data:
             new_version_data = {}
-        
+
         try:
             new_version = document.new_version(file=file_object, **new_version_data)
         except Exception:
@@ -121,7 +120,7 @@ class BaseModel(models.Model):
             # document.delete()
             transaction.rollback()
             raise
-            
+
         if filename:
             document.rename(filename)
 
@@ -129,11 +128,11 @@ class BaseModel(models.Model):
 
         new_version.apply_default_transformations(transformations)
         #TODO: new HISTORY for version updates
-        
+
         if metadata_dict_list and new_document:
             # Only do for new documents
             save_metadata_list(metadata_dict_list, document, create=True)
-            warnings = update_indexes(document)       
+            warnings = update_indexes(document)
 
     class Meta:
         ordering = ('title',)
@@ -288,6 +287,7 @@ class SourceTransformation(models.Model):
 
 class OutOfProcess(BaseModel):
     is_interactive = False
+
     class Meta(BaseModel.Meta):
         verbose_name = _(u'out of process')
         verbose_name_plural = _(u'out of process')

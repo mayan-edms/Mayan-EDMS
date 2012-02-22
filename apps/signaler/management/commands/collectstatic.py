@@ -10,4 +10,4 @@ class Command(collectstatic.Command):
 
     def handle_noargs(self, *args, **kwargs):
         pre_collectstatic.send(sender=self)
-        super(Command, self).handle_noargs(*args, **kwargs)    
+        super(Command, self).handle_noargs(*args, **kwargs)

@@ -9,12 +9,11 @@ from django.template import RequestContext
 from django.contrib import messages
 
 from permissions.models import Permission
-from common.utils import (urlquote, encapsulate)
+from common.utils import encapsulate
 
-from .api import Key, SIGNATURE_STATES
+from .api import Key
 from .runtime import gpg
-from .exceptions import (GPGVerificationError, KeyFetchingError,
-    KeyImportError)
+from .exceptions import KeyFetchingError, KeyImportError
 from .forms import KeySearchForm
 from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
     PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
@@ -40,7 +39,7 @@ def key_receive(request, key_id):
         except (KeyImportError, KeyError, TypeError), e:
             messages.error(
                 request,
-                _(u'Unable to import key id: %(key_id)s; %(error)s') % 
+                _(u'Unable to import key id: %(key_id)s; %(error)s') %
                 {
                     'key_id': key_id,
                     'error': e,

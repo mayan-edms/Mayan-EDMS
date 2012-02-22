@@ -127,7 +127,6 @@ def smart_link_list(request):
     except PermissionDenied:
         qs = AccessEntry.objects.filter_objects_by_access(PERMISSION_SMART_LINK_VIEW, request.user, qs)
 
-
     return render_to_response('generic_list.html', {
         'title': _(u'smart links'),
         'object_list': qs,

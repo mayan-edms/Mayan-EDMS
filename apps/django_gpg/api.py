@@ -178,7 +178,7 @@ class GPG(object):
         self.keyservers = keyservers
 
         self.gpg = gnupg.GPG(**kwargs)
-        
+
     def verify_file(self, file_input, detached_signature=None, fetch_key=False):
         """
         Verify the signature of a file.

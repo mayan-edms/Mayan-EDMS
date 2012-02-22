@@ -1,10 +1,11 @@
 from __future__ import absolute_import
 
-import csv, os, sys
+import csv
+import os
+import sys
 from optparse import make_option
 
 from django.core.management.base import BaseCommand, CommandError, LabelCommand
-from django.utils.simplejson import loads, dumps
 from django.contrib.auth.models import User
 from django.db.utils import IntegrityError
 
@@ -17,11 +18,12 @@ def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
         # decode UTF-8 back to Unicode, cell by cell:
         yield [unicode(cell, 'utf-8') for cell in row]
 
+
 def utf_8_encoder(unicode_csv_data):
     for line in unicode_csv_data:
         yield line.encode('utf-8')
 
-        
+
 class Command(LabelCommand):
     args = '<filename>'
     help = 'Import users from a CSV file with the field order: username, firstname, lastname, email.'
@@ -34,7 +36,7 @@ class Command(LabelCommand):
         make_option('--skip-repeated', action='store_true', dest='skip_repeated',
             default=False, help='Don\'t exit if the user already exists.'),
     )
-        
+
     def handle_label(self, label, **options):
         if not os.access(label, os.R_OK):
             raise CommandError("File '%s' is not readable." % label)
@@ -68,7 +70,7 @@ class Command(LabelCommand):
                                 sys.exit()
 
                 except csv.Error, e:
-                    sys.exit('file %s, line %d: %s' % (label, reader.line_num, e))            
+                    sys.exit('file %s, line %d: %s' % (label, reader.line_num, e))
                 else:
                     print 'Finish.'
         else:

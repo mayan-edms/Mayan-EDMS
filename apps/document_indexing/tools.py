@@ -10,7 +10,7 @@ from .api import update_indexes
 def do_rebuild_all_indexes():
     for index in Index.objects.all():
         fs_delete_directory_recusive(index)
-    
+
     IndexInstanceNode.objects.all().delete()
     DocumentRenameCount.objects.all().delete()
     for document in Document.objects.all():

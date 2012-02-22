@@ -34,7 +34,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
 
     if not comments:
         messages.error(request, _(u'Must provide at least one comment.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))        
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))

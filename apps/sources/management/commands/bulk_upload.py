@@ -1,10 +1,11 @@
 from __future__ import absolute_import
 
-import os, sys
+import os
+import sys
 from optparse import make_option
 
 from django.core.management.base import BaseCommand, CommandError, LabelCommand
-from django.utils.simplejson import loads, dumps
+from django.utils.simplejson import loads
 
 from metadata.api import convert_dict_to_dict_list
 from documents.models import DocumentType
@@ -25,7 +26,7 @@ class Command(LabelCommand):
         make_option('--document_type', action='store', dest='document_type_name',
             help='The document type to apply to the uploaded documents.'),
     )
-        
+
     def handle_label(self, label, **options):
         if not os.access(label, os.R_OK):
             raise CommandError("File '%s' is not readable." % label)
@@ -53,10 +54,10 @@ class Command(LabelCommand):
                 print 'Using the metadata values:'
                 for key, value in metadata_dict.items():
                     print '%s: %s' % (key, value)
-                    
+
             if document_type:
                 print 'Uploaded document will be of type: %s' % options['document_type_name']
-                    
+
             source = OutOfProcess()
             fd = open(label)
             try:
@@ -71,7 +72,7 @@ class Command(LabelCommand):
         else:
             print 'Cancelled.'
 
-    
+
 def _confirm(interactive):
     if not interactive:
         return 'yes'

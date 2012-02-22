@@ -2,13 +2,11 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
 from metadata.classes import MetadataClass
 
-from .models import (Index, IndexTemplateNode, IndexInstanceNode,
-    DocumentRenameCount)
+from .models import Index, IndexInstanceNode, DocumentRenameCount
 from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
     MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
 from .filesystem import (fs_create_index_directory,
@@ -94,7 +92,7 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                     fs_create_index_directory(index_instance)
                 except Exception, exc:
                     warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                        'expression': template_node.expression, 'exception': exc})                    
+                        'expression': template_node.expression, 'exception': exc})
 
                 if template_node.link_documents:
                     suffix = find_lowest_available_suffix(index_instance, document)
@@ -109,7 +107,7 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                         fs_create_document_link(index_instance, document, suffix)
                     except Exception, exc:
                         warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                            'expression': template_node.expression, 'exception': exc})                        
+                            'expression': template_node.expression, 'exception': exc})
 
                     index_instance.documents.add(document)
 

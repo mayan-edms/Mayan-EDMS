@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
-#from django.utils.safestring import mark_safe
-from django.utils.html import conditional_escape, mark_safe
+from django.utils.html import mark_safe
 
 from .models import IndexInstanceNode
 
@@ -73,7 +72,7 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False, include_cou
     else:
         output.insert(0, u' / '.join(result))
         return mark_safe(u' '.join(output))
-     
+
 
 def node_level(x):
     """
