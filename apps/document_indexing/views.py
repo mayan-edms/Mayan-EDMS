@@ -153,8 +153,7 @@ def index_setup_view(request, index_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, index)
 
-    root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=index)
-    object_list = root.get_descendants(include_self=True)
+    object_list = index.template_root.get_descendants(include_self=True)
 
     context = {
         'object_list': object_list,
