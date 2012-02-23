@@ -84,9 +84,7 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                 'expression': template_node.expression, 'exception': exc})
         else:
             if result:
-                index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result)
-                index_instance.parent = parent_index_instance
-                index_instance.save()
+                index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result, parent=parent_index_instance)
                 #if created:
                 try:
                     fs_create_index_directory(index_instance)
@@ -113,7 +111,10 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
 
                 for child in template_node.get_children():
                     children_warnings = cascade_eval(
-                        eval_dict, document, child, index_instance
+                        eval_dict=eval_dict,
+                        document=document,
+                        template_node=child,
+                        parent_index_instance=index_instance
                     )
                     warnings.extend(children_warnings)
 
