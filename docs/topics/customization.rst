@@ -33,3 +33,5 @@ people without the menu icons, for this **Mayan EDMS** provides the
 
 .. image:: no-icons.png
  :alt: mayan screens with out icons
+
+.. _`Andrea Franz's excellent web app template`: https://github.com/pilu/web-app-theme
