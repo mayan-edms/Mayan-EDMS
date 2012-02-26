@@ -67,7 +67,7 @@ Customization and fine tunning
 For developers
 ==============
 
-  :doc:`Development <topics/development>`
+  :doc:`Development <topics/development>` | :doc:`Documentation <topics/documentation>` | :doc:`Translations <topics/translations>`
 
   
 Credits

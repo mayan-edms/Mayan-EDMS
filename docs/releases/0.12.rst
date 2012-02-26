@@ -12,7 +12,7 @@ Overview
 ========
 
 Aside from new features, the focus of this release of **Mayan EDMS** also
-been about improving the code quality standard
+been about improving the code and documentation quality standard
 even further.  The permission system has been completely overhauled to make
 it entire class based.  The other big change is the addition of object
 level permissions, with this new system being applied to documents,

@@ -51,37 +51,6 @@ To familiarize yourself with the technical details of the project read the :ref:
 
 .. _docs:
 
--------------
-Documentation
--------------
-
-The documentation is written in `reStructured Text`_ format.
-
-The documentation lives in the ``docs`` directory.  In order to build it, you will first need to install Sphinx_. ::
-
-	$ pip install sphinx
-
-
-Then, to build an HTML version of the documentation, simply run the following from the **docs** directory::
-
-	$ make html
-
-Your ``docs/_build/html`` directory will then contain an HTML version of the documentation, ready for publication on most web servers.
-
-You can also generate the documentation in format other than HTML.
-
-.. _`reStructured Text`: http://docutils.sourceforge.net/rst.html
-.. _Sphinx: http://sphinx.pocoo.org
-
-
-------------
-Translations
-------------
-
-Translations are now being handled online via the **Transifex** website: https://www.transifex.net/projects/p/mayan-edms/
-To create a translation team for a new language or contribute to an already
-existing language translation, create a **Transifex** account and contact
-the team coordinator of the respective language in which you are interested.
 
 ---------
 Debugging
