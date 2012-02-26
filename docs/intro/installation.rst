@@ -71,7 +71,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
     
   * Enter the following in the textbox:
     
-    * Name:* ``mayan``
+    * Name:* ``mayan_app``
     * App category:* ``mod_wsgi``
     * App type:* ``mod_wsgi 3.3/Python 2.7``
 
@@ -92,18 +92,18 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 
 5. Create a settings_local.py file, and paste into it the following::
 
-    $ DATABASES = {
-    $     'default': {
-    $         'ENGINE': 'django.db.backends.mysql', 
-    $         'NAME': '<username>_mayan',
-    $         'USER': '<username>_mayan',
-    $         'PASSWORD': '<database password from step 1>',
-    $         'HOST': '',
-    $         'PORT': '',
-    $     }
-    $ }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': '<username>_mayan',
+            'USER': '<username>_mayan',
+            'PASSWORD': '<database password from step 1>',
+            'HOST': '',
+            'PORT': '',
+        }
+    }
 
-6. Create the database schema (during this step two errors will appears about failling to install indexes on ``documents.Document`` and ``documents.DocumentPage`` models, ignore them for now)::
+6. Create the database schema::
 
     $ ./manage.py syncdb --migrate
 
@@ -138,11 +138,29 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 
 10. Edit the file ``~/webapps/mayan_app/apache2/conf/httpd.conf``:
     
-  * Disable the ``DirectoryIndex`` line and the ``DocumentRoot`` line
+  * Disable the ``DirectoryIndex`` line and the ``DocumentRoot`` line.
   * Add the following line::
         
       WSGIScriptAlias / /home/<username>/webapps/mayan_app/mayan/mayan/wsgi/dispatch.wsgi
+ 
+  * Tune your WSGI process to only use 2 workers (as explained here: `Reducing mod_wsgi Memory Consumption`_)
+    to keep the memory usage under the basic 256MB of RAM provided or upgrade your plan to 512MB,
+    the line that controls the amount of workers launched is::
+  
+      WSGIDaemonProcess mayan_app processes=5 python-path=/home/<username>/webapps/mayan_app/lib/python2.7 threads=1
+      
+    change it to::
+    
+      WSGIDaemonProcess mayan_app processes=2 python-path=/home/<username>/webapps/mayan_app/lib/python2.7 threads=1
 
+
+11. Restart your apache instance:
+
+  * Execute::
+
+     apache2/bin/restart
+
+ 
 DjangoZoom
 ----------
 For instructions on how to deploy **Mayan EDMS** on DjangoZoom, watch the screencast:
@@ -167,3 +185,4 @@ For instructions on how to deploy **Mayan EDMS** on DjangoZoom, watch the screen
 .. _Webfaction: http://www.webfaction.com
 .. _deployed: https://docs.djangoproject.com/en/1.3/howto/deployment/
 .. _virtualenv: http://www.virtualenv.org/en/latest/index.html
+.. _`Reducing mod_wsgi Memory Consumption`: http://docs.webfaction.com/software/mod-wsgi.html#mod-wsgi-reducing-memory-consumption
