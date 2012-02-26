@@ -102,9 +102,7 @@ class StagingFile(object):
         self.source = source
         self.filepath = filepath
         self.filename = os.path.basename(filepath)
-        fd = open(filepath, 'rb')
-        self._id = HASH_FUNCTION(fd.read())
-        fd.close()
+        self._id = HASH_FUNCTION(filepath)
 
     def __unicode__(self):
         return self.filename
