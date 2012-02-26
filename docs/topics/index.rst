@@ -16,3 +16,6 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    indexes
    smart_links
    ocr
+   settings
+   customization
+   development

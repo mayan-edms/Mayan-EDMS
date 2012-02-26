@@ -61,7 +61,7 @@ Between versions
 Customization and fine tunning
 ==============================
 
-  :doc:`Settings <topics/settings>`
+  :doc:`Settings <topics/settings>` | :doc:`Customization <topics/customization>`
   
 
 For developers

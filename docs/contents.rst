@@ -15,8 +15,6 @@ Mayan EDMS documentation contents
     intro/index
     topics/index
     releases/index
-    topics/settings
-    topics/development
     credits/index
     faq/index
     
