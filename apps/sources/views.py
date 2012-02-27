@@ -353,7 +353,7 @@ def get_form_filename(form):
 
 
 def staging_file_preview(request, source_type, source_id, staging_file_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
     transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
@@ -372,7 +372,7 @@ def staging_file_preview(request, source_type, source_id, staging_file_id):
 
 
 def staging_file_thumbnail(request, source_id, staging_file_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
     transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
@@ -391,7 +391,7 @@ def staging_file_thumbnail(request, source_id, staging_file_id):
 
 
 def staging_file_delete(request, source_type, source_id, staging_file_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
     staging_folder = get_object_or_404(StagingFolder, pk=source_id)
     StagingFile = create_staging_file_class(request, staging_folder.folder_path)
 
