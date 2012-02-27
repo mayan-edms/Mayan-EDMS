@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -5,18 +7,20 @@ from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.loading import get_model
 from django.http import Http404
+from django.core.exceptions import PermissionDenied
 
-from permissions.api import check_permissions
+from permissions.models import Permission
 from common.utils import encapsulate
+from acls.models import AccessEntry
 
-from history.models import History
-from history.forms import HistoryDetailForm
-from history import PERMISSION_HISTORY_VIEW
-from history.widgets import history_entry_object_link, history_entry_summary
+from .models import History
+from .forms import HistoryDetailForm
+from .permissions import PERMISSION_HISTORY_VIEW
+from .widgets import history_entry_object_link, history_entry_summary
 
 
 def history_list(request):
-    check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
 
     context = {
         'object_list': History.objects.all(),
@@ -43,13 +47,16 @@ def history_list(request):
 
 
 def history_for_object(request, app_label, module_name, object_id):
-    check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
-
     model = get_model(app_label, module_name)
     if not model:
         raise Http404
     content_object = get_object_or_404(model, pk=object_id)
     content_type = ContentType.objects.get_for_model(model)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_HISTORY_VIEW, request.user, content_object)
 
     context = {
         'object_list': History.objects.filter(content_type=content_type, object_id=object_id),
@@ -73,9 +80,12 @@ def history_for_object(request, app_label, module_name, object_id):
 
 
 def history_view(request, object_id):
-    check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
-
     history = get_object_or_404(History, pk=object_id)
+    
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_HISTORY_VIEW, request.user, history.content_object)    
 
     form = HistoryDetailForm(instance=history, extra_fields=[
         {'label': _(u'Date'), 'field':lambda x: x.datetime.date()},

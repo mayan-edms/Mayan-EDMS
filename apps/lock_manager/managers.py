@@ -1,12 +1,13 @@
+from __future__ import absolute_import
+
 import logging
 import datetime
 
-from django.db.utils import DatabaseError
 from django.db.utils import IntegrityError
 from django.db import transaction
 from django.db import models
 
-from lock_manager.exceptions import LockError
+from .exceptions import LockError
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +22,7 @@ class LockManager(models.Manager):
             logger.debug('acquired lock: %s' % name)
             return lock
         except IntegrityError, msg:
+            transaction.rollback()
             logger.debug('IntegrityError: %s', msg)
             # There is already an existing lock
             # Check it's expiration date and if expired, reset it

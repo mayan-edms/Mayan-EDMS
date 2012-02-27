@@ -1,0 +1,23 @@
+Version 0.7.6
+-------------
+* Added recent searches per user support
+
+  - The ammount of searches stored is controlled by the setup option
+    ``SEARCH_RECENT_COUNT``
+      
+* The document page zoom button are now disabled when reaching the minimum
+  or maximum zoom level
+* The document page navigation links are now disabled when view the first
+  and last page of a document
+* Document page title now displays the current page vs the total page
+  count
+* Document page title now displays the current zoom level and rotation
+  degrees
+* Added means set the expansion compressed files during document creation,
+  via web interface removing the need for the configuration options:
+  ``UNCOMPRESS_COMPRESSED_LOCAL_FILES`` and ``UNCOMPRESS_COMPRESSED_STAGING_FILES``
+* Added 'search again' button to the advances search results view
+* Implementes an advanced search feature, which allows for individual field terms
+
+  - Search fields supported: document type, MIME type, filename, 
+    extension, metadata values, content, description, tags, comments

@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
+
 import os
 import re
 import types
@@ -16,7 +18,7 @@ from django.contrib.auth.models import User
 
 
 def urlquote(link=None, get=None):
-    u'''
+    u"""
     This method does both: urlquote() and urlencode()
 
     urlqoute(): Quote special characters in 'link'
@@ -31,7 +33,7 @@ def urlquote(link=None, get=None):
       urlquote('/mypath/', {'key': 'value'})              --> '/mypath/?key=value'
       urlquote('/mypath/', {'key': ['value1', 'value2']}) --> '/mypath/?key=value1&key=value2'
       urlquote({'key': ['value1', 'value2']})             --> 'key=value1&key=value2'
-    '''
+    """
     if get is None:
         get = []
 
@@ -110,7 +112,9 @@ def pretty_size_10(size):
 # http://www.johncardinal.com/tmgutil/capitalizenames.htm
 
 def proper_name(name):
-    """Does the work of capitalizing a name (can be a full name)."""
+    """
+    Does the work of capitalizing a name (can be a full name).
+    """
     mc = re.compile(r'^Mc(\w)(?=\w)', re.I)
     mac = re.compile(r'^Mac(\w)(?=\w)', re.I)
     suffixes = [
@@ -290,11 +294,11 @@ def return_type(value):
     if isinstance(value, types.FunctionType):
         return value.__doc__ if value.__doc__ else _(u'function found')
     elif isinstance(value, types.ClassType):
-        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
+        return u'%s.%s' % (value.__class__.__module__, value.__class__.__name__)
     elif isinstance(value, types.TypeType):
-        return _(u'class found: %s') % unicode(value).split("'")[1].split('.')[-1]
+        return u'%s.%s' % (value.__module__, value.__name__)
     elif isinstance(value, types.DictType) or isinstance(value, types.DictionaryType):
-        return ','.join(list(value))
+        return u', '.join(list(value))
     else:
         return value
 
@@ -324,6 +328,24 @@ def generate_choices_w_labels(choices, display_object_type=True):
 
     #Sort results by the label not the key value
     return sorted(results, key=lambda x: x[1])
+
+
+def get_object_name(obj, display_object_type=True):
+    ct_label = ContentType.objects.get_for_model(obj).name
+    if isinstance(obj, User):
+        label = obj.get_full_name() if obj.get_full_name() else obj
+    else:
+        label = unicode(obj)
+
+    if display_object_type:
+        try:
+            verbose_name = unicode(obj._meta.verbose_name)
+        except AttributeError:
+            verbose_name = ct_label
+
+        return u'%s: %s' % (verbose_name, label)
+    else:
+        return u'%s' % (label)
 
 
 def return_diff(old_obj, new_obj, attrib_list=None):

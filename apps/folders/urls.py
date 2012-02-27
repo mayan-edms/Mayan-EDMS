@@ -9,7 +9,8 @@ urlpatterns = patterns('folders.views',
     url(r'^(?P<folder_id>\d+)/$', 'folder_view', (), 'folder_view'),
     url(r'^(?P<folder_id>\d+)/remove/document/multiple/$', 'folder_document_multiple_remove', (), 'folder_document_multiple_remove'),
 
-    url(r'^document/(?P<document_id>\d+)/folder/add/sidebar/$', 'folder_add_document_sidebar', (), 'folder_add_document_sidebar'),
     url(r'^document/(?P<document_id>\d+)/folder/add/$', 'folder_add_document', (), 'folder_add_document'),
     url(r'^document/(?P<document_id>\d+)/folder/list/$', 'document_folder_list', (), 'document_folder_list'),
+
+    url(r'^(?P<folder_pk>\d+)/acl/list/$', 'folder_acl_list', (), 'folder_acl_list'),
 )

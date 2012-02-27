@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: 2011-11-04 16:58+0000\n"
-"Last-Translator: rosarior <roberto.rosario.gonzalez@gmail.com>\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
 "mayan-edms/team/es/)\n"
 "Language: es\n"
@@ -23,10 +23,10 @@ msgstr ""
 msgid "Multi item action"
 msgstr "Acción para multiple artículos"
 
-#: widgets.py:28
+#: widgets.py:48
 msgid "icon"
 msgstr "emblema"
 
-#: templatetags/navigation_tags.py:275
+#: templatetags/navigation_tags.py:278
 msgid "Selected item actions:"
 msgstr "Acciones para el artículo seleccionado:"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,19 +44,19 @@ msgstr ""
 msgid "close"
 msgstr ""
 
-#: templates/web_theme_login.html:12 templates/web_theme_login.html.py:33
+#: templates/web_theme_login.html:12 templates/web_theme_login.html.py:34
 msgid "Login"
 msgstr ""
 
-#: templates/web_theme_login.html:17
+#: templates/web_theme_login.html:18
 msgid "You are already logged in"
 msgstr ""
 
-#: templates/web_theme_login.html:20
+#: templates/web_theme_login.html:21
 msgid "Redirecting you to the website entry point in 5 seconds."
 msgstr ""
 
-#: templates/web_theme_login.html:23
+#: templates/web_theme_login.html:24
 #, python-format
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "

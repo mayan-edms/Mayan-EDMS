@@ -1,12 +1,28 @@
+from __future__ import absolute_import
+
 import errno
 import os
 
 from django.utils.translation import ugettext_lazy as _
 
-from document_indexing.os_specifics import (assemble_suffixed_filename,
-    assemble_path_from_list)
-from document_indexing.conf.settings import FILESERVING_ENABLE
-from document_indexing.conf.settings import FILESERVING_PATH
+from .conf.settings import (FILESYSTEM_SERVING, SUFFIX_SEPARATOR)
+
+
+def assemble_suffixed_filename(filename, suffix=0):
+    """
+    Split document filename, to attach suffix to the name part then
+    re attacht the extension
+    """
+
+    if suffix:
+        name, extension = os.path.splitext(filename)
+        return SUFFIX_SEPARATOR.join([name, unicode(suffix), os.extsep, extension])
+    else:
+        return filename
+
+
+def assemble_path_from_list(directory_list):
+    return os.path.normpath(os.sep.join(directory_list))
 
 
 def get_instance_path(index_instance):
@@ -24,8 +40,8 @@ def get_instance_path(index_instance):
 
 
 def fs_create_index_directory(index_instance):
-    if FILESERVING_ENABLE:
-        target_directory = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance)])
+    if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
+        target_directory = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance)])
         try:
             os.mkdir(target_directory)
         except OSError, exc:
@@ -36,10 +52,10 @@ def fs_create_index_directory(index_instance):
 
 
 def fs_create_document_link(index_instance, document, suffix=0):
-    if FILESERVING_ENABLE:
-        filename = assemble_suffixed_filename(document.file.name, suffix)
-        filepath = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance), filename])
-        
+    if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
+        filename = assemble_suffixed_filename(document.file_filename, suffix)
+        filepath = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance), filename])
+
         try:
             os.symlink(document.file.path, filepath)
         except OSError, exc:
@@ -56,9 +72,9 @@ def fs_create_document_link(index_instance, document, suffix=0):
 
 
 def fs_delete_document_link(index_instance, document, suffix=0):
-    if FILESERVING_ENABLE:
-        filename = assemble_suffixed_filename(document.file.name, suffix)
-        filepath = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance), filename])
+    if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
+        filename = assemble_suffixed_filename(document.file_filename, suffix)
+        filepath = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance), filename])
 
         try:
             os.unlink(filepath)
@@ -69,8 +85,8 @@ def fs_delete_document_link(index_instance, document, suffix=0):
 
 
 def fs_delete_index_directory(index_instance):
-    if FILESERVING_ENABLE:
-        target_directory = assemble_path_from_list([FILESERVING_PATH, get_instance_path(index_instance)])
+    if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
+        target_directory = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance)])
         try:
             os.removedirs(target_directory)
         except OSError, exc:
@@ -80,8 +96,9 @@ def fs_delete_index_directory(index_instance):
                 raise Exception(_(u'Unable to delete indexing directory; %s') % exc)
 
 
-def fs_delete_directory_recusive(path=FILESERVING_PATH):
-    if FILESERVING_ENABLE:
+def fs_delete_directory_recusive(index):
+    if index.name in FILESYSTEM_SERVING:
+        path = FILESYSTEM_SERVING[index.name]
         for dirpath, dirnames, filenames in os.walk(path, topdown=False):
             for filename in filenames:
                 os.unlink(os.path.join(dirpath, filename))

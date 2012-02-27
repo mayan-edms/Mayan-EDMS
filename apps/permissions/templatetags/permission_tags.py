@@ -1,8 +1,7 @@
 from django.core.exceptions import PermissionDenied
-from django.template import TemplateSyntaxError, Library, \
-                            Node, Variable
+from django.template import TemplateSyntaxError, Library, Node, Variable
 
-from permissions.api import check_permissions as check_permission_function
+from permissions.models import Permission
 
 register = Library()
 
@@ -21,7 +20,7 @@ class CheckPermissionsNode(Node):
             return u''
         requester = Variable(self.requester).resolve(context)
         try:
-            check_permission_function(requester, permission_list)
+            Permission.objects.check_permissions(requester, permission_list)
             context[u'permission'] = True
             return u''
         except PermissionDenied:

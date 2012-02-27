@@ -1,25 +1,26 @@
+from __future__ import absolute_import
+
 import os
 import subprocess
 import hashlib
 
+from django.utils.encoding import smart_str
+
 from common.conf.settings import TEMPORARY_DIRECTORY
 
-from converter.literals import DEFAULT_PAGE_NUMBER, \
-    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT
-
-from converter import backend
-from converter.literals import TRANSFORMATION_CHOICES
-from converter.literals import TRANSFORMATION_RESIZE, \
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
-from converter.literals import DIMENSION_SEPARATOR
-from converter.literals import FILE_FORMATS
-from converter.utils import cleanup
-from converter.runtime import office_converter
-from converter.exceptions import OfficeConversionError
+from .literals import (DEFAULT_PAGE_NUMBER,
+    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
+from . import backend
+from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
+    FILE_FORMATS)
+from .utils import cleanup
+from .runtime import office_converter
+from .exceptions import OfficeConversionError, UnknownFileFormat
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
-            
+
 def cache_cleanup(input_filepath, *args, **kwargs):
     try:
         os.remove(create_image_cache_filename(input_filepath, *args, **kwargs))
@@ -29,7 +30,7 @@ def cache_cleanup(input_filepath, *args, **kwargs):
 
 def create_image_cache_filename(input_filepath, *args, **kwargs):
     if input_filepath:
-        hash_value = HASH_FUNCTION(u''.join([input_filepath, unicode(args), unicode(kwargs)]))
+        hash_value = HASH_FUNCTION(u''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
         return os.path.join(TEMPORARY_DIRECTORY, hash_value)
     else:
         return None
@@ -42,13 +43,13 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
     rotation = kwargs.get('rotation', DEFAULT_ROTATION)
     page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
     transformations = kwargs.get('transformations', [])
-    
+
     if transformations is None:
         transformations = []
 
     if output_filepath is None:
         output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
-        
+
     if os.path.exists(output_filepath):
         return output_filepath
 
@@ -79,7 +80,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
                 'transformation': TRANSFORMATION_ZOOM,
                 'arguments': {'percent': zoom}
             }
-        )        
+        )
 
     if rotation != 0 and rotation != 360:
         transformations.append(
@@ -87,7 +88,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
                 'transformation': TRANSFORMATION_ROTATE,
                 'arguments': {'degrees': rotation}
             }
-        )           
+        )
 
     try:
         backend.convert_file(input_filepath=input_filepath, output_filepath=output_filepath, transformations=transformations, page=page, file_format=file_format, mimetype=mimetype)
@@ -106,8 +107,8 @@ def get_page_count(input_filepath):
                 input_filepath = office_converter.output_filepath
 
         except OfficeConversionError:
-                raise UnknownFileFormat('office converter exception')
-                                
+            raise UnknownFileFormat('office converter exception')
+
     return backend.get_page_count(input_filepath)
 
 '''
@@ -127,8 +128,7 @@ def get_available_transformations_choices():
         result.append([transformation, transformation_template])
 
     return result
-    
-    
+
+
 def get_format_list():
     return [(format, FILE_FORMATS.get(format, u'')) for format in backend.get_format_list()]
-        

@@ -13,7 +13,7 @@ class PlainWidget(forms.widgets.Widget):
     """
     Class to define a form widget that effectively nulls the htmls of a
     widget and reduces the output to only it's value
-    """        
+    """
     def render(self, name, value, attrs=None):
         return mark_safe(u'%s' % value)
 
@@ -77,8 +77,8 @@ class TextAreaDiv(forms.widgets.Widget):
     """
     Class to define a form widget that simulates the behavior of a
     Textarea widget but using a div tag instead
-    """    
-    
+    """
+
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
         default_attrs = {'class': 'text_area_div'}
@@ -99,9 +99,9 @@ class TextAreaDiv(forms.widgets.Widget):
 # From: http://www.peterbe.com/plog/emailinput-html5-django
 class EmailInput(forms.widgets.Input):
     """
-    Class for a login form widget that accepts only well formated 
+    Class for a login form widget that accepts only well formated
     email address
-    """    
+    """
     input_type = 'email'
 
     def render(self, name, value, attrs=None):
@@ -120,7 +120,8 @@ class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
     exceds the height of the div
     """
     def render(self, name, value, attrs=None, choices=()):
-        if value is None: value = []
+        if value is None:
+            value = []
         has_id = attrs and 'id' in attrs
         final_attrs = self.build_attrs(attrs, name=name)
         output = [u'<ul class="undecorated_list" style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px;">']
@@ -141,5 +142,5 @@ class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
             option_label = conditional_escape(force_unicode(option_label))
             output.append(u'<li><label%s>%s %s</label></li>' % (label_for, rendered_cb, option_label))
         output.append(u'</ul>')
-       
+
         return mark_safe(u'<div class="text_area_div">%s</div>' % u'\n'.join(output))

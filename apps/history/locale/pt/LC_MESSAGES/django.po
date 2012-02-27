@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-03 03:22+0000\n"
-"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
 "team/pt/)\n"
 "Language: pt\n"
@@ -19,88 +19,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:6
-msgid "Access the history app"
-msgstr "Acessar a história do app"
-
-#: __init__.py:8
-msgid "History"
-msgstr "História"
-
-#: __init__.py:12 models.py:69
+#: __init__.py:10 models.py:71
 msgid "history"
 msgstr "história"
 
-#: models.py:16
+#: models.py:18
 msgid "namespace"
 msgstr "namespace"
 
-#: models.py:17
+#: models.py:19
 msgid "name"
 msgstr "nome"
 
-#: models.py:25 models.py:34
+#: models.py:27 models.py:36
 msgid "history type"
 msgstr "tipo de história"
 
-#: models.py:26
+#: models.py:28
 msgid "history types"
 msgstr "tipos de história"
 
-#: models.py:30
+#: models.py:32
 msgid "date time"
 msgstr "hora, data"
 
-#: models.py:35
+#: models.py:37
 msgid "dictionary"
 msgstr "dicionário"
 
-#: models.py:70
+#: models.py:72
 msgid "histories"
 msgstr "histórias"
 
-#: views.py:23
+#: permissions.py:7
+msgid "History"
+msgstr "História"
+
+#: permissions.py:8
+msgid "Access the history of an object"
+msgstr ""
+
+#: views.py:27
 msgid "history events"
 msgstr "eventos da história"
 
-#: views.py:26 views.py:60
+#: views.py:30 views.py:67
 msgid "date and time"
 msgstr "data e hora"
 
-#: views.py:30
+#: views.py:34
 msgid "object"
 msgstr "objeto"
 
-#: views.py:34 views.py:64
+#: views.py:38 views.py:71
 msgid "summary"
 msgstr "sumário"
 
-#: views.py:56
+#: views.py:63
 #, python-format
 msgid "history events for: %s"
 msgstr "eventos de história para: %s"
 
-#: views.py:81
+#: views.py:91
 msgid "Date"
 msgstr "Data"
 
-#: views.py:82
+#: views.py:92
 msgid "Time"
 msgstr "Tempo"
 
-#: views.py:83
+#: views.py:93
 msgid "Object"
 msgstr "Objeto"
 
-#: views.py:84
+#: views.py:94
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: views.py:85
+#: views.py:95
 msgid "Event details"
 msgstr "Detalhes do evento"
 
-#: views.py:89
+#: views.py:99
 #, python-format
 msgid "details for: %s"
 msgstr "detalhes para: %s"

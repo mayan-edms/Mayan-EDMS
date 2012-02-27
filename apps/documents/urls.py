@@ -1,10 +1,9 @@
+from __future__ import absolute_import
+
 from django.conf.urls.defaults import patterns, url
 
-from documents.conf.settings import PREVIEW_SIZE
-from documents.conf.settings import PRINT_SIZE
-from documents.conf.settings import THUMBNAIL_SIZE
-from documents.conf.settings import DISPLAY_SIZE
-from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
+from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, THUMBNAIL_SIZE,
+    DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE)
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),
@@ -30,10 +29,11 @@ urlpatterns = patterns('documents.views',
     url(r'^(?P<document_id>\d+)/display/thumbnail/base64/$', 'get_document_image', {'size': THUMBNAIL_SIZE, 'base64_version': True}, 'document_thumbnail_base64'),
 
     url(r'^(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
+    url(r'^multiple/download/$', 'document_multiple_download', (), 'document_multiple_download'),
     url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', (), 'document_create_siblings'),
     url(r'^(?P<document_id>\d+)/find_duplicates/$', 'document_find_duplicates', (), 'document_find_duplicates'),
     url(r'^(?P<document_id>\d+)/clear_transformations/$', 'document_clear_transformations', (), 'document_clear_transformations'),
-    
+
     url(r'^(?P<document_pk>\d+)/version/all/$', 'document_version_list', (), 'document_version_list'),
     url(r'^document/version/(?P<document_version_pk>\d+)/download/$', 'document_download', (), 'document_version_download'),
     url(r'^document/version/(?P<document_version_pk>\d+)/revert/$', 'document_version_revert', (), 'document_version_revert'),

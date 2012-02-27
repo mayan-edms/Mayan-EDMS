@@ -1,36 +1,41 @@
+from __future__ import absolute_import
+
 import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import validate_path, encapsulate
-from navigation.api import register_links, register_top_menu, \
-    register_model_list_columns, register_multi_item_links, \
-    register_sidebar_template
+from navigation.api import (register_links, register_top_menu,
+    register_model_list_columns, register_multi_item_links,
+    register_sidebar_template)
 from main.api import register_diagnostic, register_maintenance_links
-from permissions.api import register_permission, set_namespace_title
-from tags.widgets import get_tags_inline_widget_simple
 from history.api import register_history_type
+from history.permissions import PERMISSION_HISTORY_VIEW
 from metadata.api import get_metadata_string
 from project_setup.api import register_setup
+from acls.api import class_permissions
 
-from documents.models import (Document, DocumentPage,
+from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
-from documents.literals import (PERMISSION_DOCUMENT_CREATE,
+from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT)
-from documents.literals import (PERMISSION_DOCUMENT_TYPE_EDIT,
-    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE)
-from documents.literals import (HISTORY_DOCUMENT_CREATED,
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
+    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
+    PERMISSION_DOCUMENT_NEW_VERSION)
+from .literals import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-from documents.conf.settings import ZOOM_MAX_LEVEL
-from documents.conf.settings import ZOOM_MIN_LEVEL
-from documents.conf import settings as document_settings
-from documents.widgets import document_thumbnail
+from .conf.settings import ZOOM_MAX_LEVEL
+from .conf.settings import ZOOM_MIN_LEVEL
+from .conf import settings as document_settings
+from .widgets import document_thumbnail
 
 # Document page links expressions
+
+
 def is_first_page(context):
     return context['page'].page_number <= 1
 
@@ -50,31 +55,13 @@ def is_max_zoom(context):
 def is_current_version(context):
     return context['object'].document.latest_version.timestamp == context['object'].timestamp
 
-# Permission setup
-set_namespace_title('documents', _(u'Documents'))
-register_permission(PERMISSION_DOCUMENT_CREATE)
-register_permission(PERMISSION_DOCUMENT_PROPERTIES_EDIT)
-register_permission(PERMISSION_DOCUMENT_EDIT)
-register_permission(PERMISSION_DOCUMENT_VIEW)
-register_permission(PERMISSION_DOCUMENT_DELETE)
-register_permission(PERMISSION_DOCUMENT_DOWNLOAD)
-register_permission(PERMISSION_DOCUMENT_TRANSFORM)
-register_permission(PERMISSION_DOCUMENT_TOOLS)
-register_permission(PERMISSION_DOCUMENT_VERSION_REVERT)
-
-# Document type permissions
-set_namespace_title('documents_setup', _(u'Documents setup'))
-register_permission(PERMISSION_DOCUMENT_TYPE_EDIT)
-register_permission(PERMISSION_DOCUMENT_TYPE_DELETE)
-register_permission(PERMISSION_DOCUMENT_TYPE_CREATE)
-
 # History setup
 register_history_type(HISTORY_DOCUMENT_CREATED)
 register_history_type(HISTORY_DOCUMENT_EDITED)
 register_history_type(HISTORY_DOCUMENT_DELETED)
 
-document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam': 'page'}
+document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page'}
 document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
 document_create_siblings = {'text': _(u'clone metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_view_simple = {'text': _(u'details'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -84,6 +71,7 @@ document_multiple_delete = {'text': _(u'delete'), 'view': 'document_multiple_del
 document_edit = {'text': _(u'edit'), 'view': 'document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
 document_preview = {'text': _(u'preview'), 'class': 'fancybox', 'view': 'document_preview', 'args': 'object.id', 'famfam': 'magnifier', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_download = {'text': _(u'download'), 'view': 'document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
+document_multiple_download = {'text': _(u'download'), 'view': 'document_multiple_download', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_version_download = {'text': _(u'download'), 'view': 'document_version_download', 'args': 'object.pk', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_find_duplicates = {'text': _(u'find duplicates'), 'view': 'document_find_duplicates', 'args': 'object.id', 'famfam': 'page_white_copy', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_find_all_duplicates = {'text': _(u'find all duplicates'), 'view': 'document_find_all_duplicates', 'famfam': 'page_white_copy', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'description': _(u'Search all the documents\' checksums and return a list of the exact matches.')}
@@ -91,7 +79,7 @@ document_update_page_count = {'text': _(u'update office documents\' page count')
 document_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_multiple_clear_transformations = {'text': _(u'clear transformations'), 'view': 'document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_print = {'text': _(u'print'), 'view': 'document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_history_view = {'text': _(u'history'), 'view': 'history_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_history_view = {'text': _(u'history'), 'view': 'history_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_HISTORY_VIEW]}
 document_missing_list = {'text': _(u'Find missing document files'), 'view': 'document_missing_list', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 # Tools
@@ -121,14 +109,14 @@ document_version_list = {'text': _(u'versions'), 'view': 'document_version_list'
 document_version_revert = {'text': _(u'revert'), 'view': 'document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT], 'conditional_disable': is_current_version}
 
 # Document type related links
-document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_type_setup = {'text': _(u'document types'), 'view': 'document_type_list', 'famfam': 'layout', 'icon': 'layout.png', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_type_document_list = {'text': _(u'documents of this type'), 'view': 'document_type_document_list', 'args': 'document_type.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_type_list = {'text': _(u'document type list'), 'view': 'document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+document_type_setup = {'text': _(u'document types'), 'view': 'document_type_list', 'famfam': 'layout', 'icon': 'layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW], 'children_view_regex': [r'^document_type_']}
+document_type_document_list = {'text': _(u'documents of this type'), 'view': 'document_type_document_list', 'args': 'document_type.id', 'famfam': 'page_go', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
 document_type_edit = {'text': _(u'edit'), 'view': 'document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _(u'delete'), 'view': 'document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
 document_type_create = {'text': _(u'create document type'), 'view': 'document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}
 
-document_type_filename_list = {'text': _(u'filenames'), 'view': 'document_type_filename_list', 'args': 'document_type.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_type_filename_list = {'text': _(u'filenames'), 'view': 'document_type_filename_list', 'args': 'document_type.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
 document_type_filename_create = {'text': _(u'add filename to document type'), 'view': 'document_type_filename_create', 'args': 'document_type.id', 'famfam': 'database_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_filename_edit = {'text': _(u'edit'), 'view': 'document_type_filename_edit', 'args': 'filename.id', 'famfam': 'database_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_filename_delete = {'text': _(u'delete'), 'view': 'document_type_filename_delete', 'args': 'filename.id', 'famfam': 'database_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
@@ -143,8 +131,8 @@ register_links(['setup_document_type_metadata', 'document_type_filename_delete',
 register_links(['document_type_filename_create', 'document_type_filename_list', 'document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
-register_links(Document, [document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete])
+register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download])
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
@@ -177,21 +165,9 @@ register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
 register_maintenance_links([document_find_all_duplicates, document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'documents'))
 
-#def document_exists(document):
-#    try:
-#        if document.exists():
-#            return u'<span class="famfam active famfam-tick"></span>'
-#        else:
-#            return u'<span class="famfam active famfam-cross"></span>'
-#    except Exception, exc:
-#        return exc
-
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
             encapsulate(lambda x: document_thumbnail(x))
-        },
-        {'name':_(u'tags'), 'attribute':
-            encapsulate(lambda x: get_tags_inline_widget_simple(x))
         },
         {'name':_(u'metadata'), 'attribute':
             encapsulate(lambda x: get_metadata_string(x))
@@ -202,10 +178,10 @@ register_top_menu(
     'documents',
     link={'famfam': 'page', 'text': _(u'documents'), 'view': 'document_list_recent'},
     children_path_regex=[
-        r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents'
+        r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents',
     ],
-    #children_view_regex=[r'upload'],
-    children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version',],
+    children_view_regex=[r'document_acl', r'smart_link_instance'],
+    children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version', ],
     position=1
 )
 
@@ -221,3 +197,15 @@ if (validate_path(document_settings.CACHE_PATH) == False) or (not document_setti
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
 register_setup(document_type_setup)
+
+class_permissions(Document, [
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+    PERMISSION_DOCUMENT_EDIT,
+    PERMISSION_DOCUMENT_VIEW,
+    PERMISSION_DOCUMENT_DELETE,
+    PERMISSION_DOCUMENT_DOWNLOAD,
+    PERMISSION_DOCUMENT_TRANSFORM,
+    PERMISSION_DOCUMENT_NEW_VERSION,
+    PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_HISTORY_VIEW
+])

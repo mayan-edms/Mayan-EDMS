@@ -28,7 +28,7 @@ class FamFamRadioSelect(forms.widgets.RadioSelect):
 def staging_file_thumbnail(staging_file):
     try:
         staging_file.get_valid_image()
-        template = u'<a class="fancybox" href="%(url)s"><img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)simages/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>'
+        template = u'<a class="fancybox-staging" href="%(url)s" title="%(filename)s" rel="staging")><img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)simages/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>'
     except:
         template = u'<img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)simages/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript>'
 
@@ -36,5 +36,6 @@ def staging_file_thumbnail(staging_file):
         'url': reverse('staging_file_preview', args=[staging_file.source.source_type, staging_file.source.pk, staging_file.id]),
         'thumbnail': reverse('staging_file_thumbnail', args=[staging_file.source.pk, staging_file.id]),
         'static_url': settings.STATIC_URL,
-        'string': _(u'thumbnail')
+        'string': _(u'thumbnail'),
+        'filename': staging_file.filename
     })

@@ -1,4 +1,5 @@
 #Some code from http://wiki.github.com/hoffstaetter/python-tesseract
+from __future__ import absolute_import
 
 import codecs
 import os
@@ -13,14 +14,12 @@ from common.conf.settings import TEMPORARY_DIRECTORY
 from converter.api import convert
 from documents.models import DocumentPage
 
-from ocr.conf.settings import TESSERACT_PATH
-from ocr.conf.settings import TESSERACT_LANGUAGE
-from ocr.exceptions import TesseractError, UnpaperError
-from ocr.conf.settings import UNPAPER_PATH
-from ocr.parsers import parse_document_page
-from ocr.parsers.exceptions import ParserError, ParserUnknownFile
-from ocr.literals import DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT, \
-    DEFAULT_OCR_FILE_EXTENSION
+from .conf.settings import (TESSERACT_PATH, TESSERACT_LANGUAGE, UNPAPER_PATH)
+from .exceptions import TesseractError, UnpaperError
+from .parsers import parse_document_page
+from .parsers.exceptions import ParserError, ParserUnknownFile
+from .literals import (DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT,
+    DEFAULT_OCR_FILE_EXTENSION)
 
 
 def get_language_backend():

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: 2011-11-03 17:15+0000\n"
-"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
 "ru/)\n"
 "Language: ru\n"
@@ -20,18 +20,18 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:8 views.py:26
+#: __init__.py:9 views.py:28
 msgid "settings"
 msgstr "настройки"
 
-#: views.py:31
+#: views.py:33
 msgid "name"
 msgstr "имя"
 
-#: views.py:32
+#: views.py:34
 msgid "default"
 msgstr "по умолчанию"
 
-#: views.py:33
+#: views.py:35
 msgid "value"
 msgstr "значение"

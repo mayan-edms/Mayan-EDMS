@@ -1,5 +1,0 @@
-=========
-Changelog
-=========
-
-.. include:: changelog.rst

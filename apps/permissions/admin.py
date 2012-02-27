@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from permissions.models import Permission, PermissionHolder, Role, RoleMember
+from .models import StoredPermission, PermissionHolder, Role, RoleMember
 
 
 class PermissionHolderInline(admin.StackedInline):
@@ -12,7 +14,7 @@ class PermissionHolderInline(admin.StackedInline):
 
 class PermissionAdmin(admin.ModelAdmin):
     inlines = [PermissionHolderInline]
-    list_display = ('namespace', 'name', 'label')
+    list_display = ('namespace', 'name')
     list_display_links = list_display
 
 
@@ -27,5 +29,5 @@ class RoleAdmin(admin.ModelAdmin):
     inlines = [RoleMemberInline]
 
 
-admin.site.register(Permission, PermissionAdmin)
+admin.site.register(StoredPermission, PermissionAdmin)
 admin.site.register(Role, RoleAdmin)

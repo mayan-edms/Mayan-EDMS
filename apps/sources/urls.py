@@ -1,7 +1,9 @@
+from __future__ import absolute_import
+
 from django.conf.urls.defaults import patterns, url
 
-from sources.literals import SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING, \
-    SOURCE_CHOICE_WATCH
+from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
+    SOURCE_CHOICE_WATCH)
 
 urlpatterns = patterns('sources.views',
     url(r'^staging_file/type/(?P<source_type>\w+)/(?P<source_id>\d+)/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),

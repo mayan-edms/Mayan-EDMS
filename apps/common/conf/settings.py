@@ -64,3 +64,12 @@ register_setting(
     default=u'username',
     description=_(u'Controls the mechanism used to authenticated user.  Options are: username, email'),
 )
+
+register_setting(
+    namespace=u'common',
+    module=u'common.conf.settings',
+    name=u'ALLOW_ANONYMOUS_ACCESS',
+    global_name=u'COMMON_ALLOW_ANONYMOUS_ACCESS',
+    default=False,
+    description=_(u'Allow non authenticated users, access to all views'),
+)

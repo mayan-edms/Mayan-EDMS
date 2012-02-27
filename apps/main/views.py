@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -7,10 +9,10 @@ from django.core.urlresolvers import reverse
 
 from documents.statistics import get_statistics as documents_statistics
 from ocr.statistics import get_statistics as ocr_statistics
-from permissions.api import check_permissions
+from permissions.models import Permission
 
-from main.api import diagnostics, tools
-from main.conf.settings import DISABLE_HOME_VIEW
+from .api import diagnostics, tools
+from .conf.settings import DISABLE_HOME_VIEW
 
 
 def home(request):
@@ -31,7 +33,7 @@ def maintenance_menu(request):
         for link in values['links']:
             try:
                 permissions = link.get('permissions', [])
-                check_permissions(request.user, permissions)
+                Permission.objects.check_permissions(request.user, permissions)
                 user_tools[namespace]['links'].append(link)
             except PermissionDenied:
                 pass
@@ -44,15 +46,18 @@ def maintenance_menu(request):
 
 
 def statistics(request):
-    blocks = []
-    blocks.append(documents_statistics())
-    blocks.append(ocr_statistics())
+    if request.user.is_superuser or request.user.is_staff:
+        blocks = []
+        blocks.append(documents_statistics())
+        blocks.append(ocr_statistics())
 
-    return render_to_response('statistics.html', {
-        'blocks': blocks,
-        'title': _(u'Statistics')
-    },
-    context_instance=RequestContext(request))
+        return render_to_response('statistics.html', {
+            'blocks': blocks,
+            'title': _(u'Statistics')
+        },
+        context_instance=RequestContext(request))
+    else:
+        raise PermissionDenied
 
 
 def diagnostics_view(request):

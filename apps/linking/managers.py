@@ -1,10 +1,12 @@
+from __future__ import absolute_import
+
 from django.db import models
 from django.db.models import Q
 
-from metadata.classes import MetadataObject
+from metadata.classes import MetadataClass
 from documents.models import Document
 
-from linking.literals import INCLUSION_AND, INCLUSION_OR
+from .literals import INCLUSION_AND, INCLUSION_OR
 
 
 class SmartLinkManager(models.Manager):
@@ -16,7 +18,7 @@ class SmartLinkManager(models.Manager):
             metadata_dict[document_metadata.metadata_type.name] = document_metadata.value
         eval_dict = {}
         eval_dict['document'] = document
-        eval_dict['metadata'] = MetadataObject(metadata_dict)
+        eval_dict['metadata'] = MetadataClass(metadata_dict)
 
         if smart_link_obj:
             smart_link_qs = self.model.objects.filter(Q(enabled=True) & Q(pk=smart_link_obj.pk))

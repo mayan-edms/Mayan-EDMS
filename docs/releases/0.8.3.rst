@@ -1,0 +1,29 @@
+Version 0.8.3
+-------------
+* Added a Contributors file under the docs directory
+* Moved the document grouping subtemplate windows into a document
+  information tab
+* Change the mode the setup options are shown, opting to use a more of a
+  dashboard style now
+* Changed the tool menu to use the same button layout of the setup menu
+* Moved OCR related handling to the tools main menu
+* Improved the metadata type and metadata set selection widget during
+  the document upload wizard
+* Added a view to the about menu to read the LICENSE file included with
+  Mayan
+* Added converter backend agnostic image file format descriptions
+* Disable whitelist and blacklist temporarily, removed document_type
+  field from interactive sources
+* Fully disabled watch folders until they are working correctly
+* Updated the project title to 'Mayan EDMS'
+* If ghostscript is installed add PDF and PS to the list of file formats
+  by the python converter backend
+* Use Pillow (http://pypi.python.org/pypi/Pillow) instead of PIL
+
+  - Pillow is a fork of PIL with several updated including better jpeg and png library detection
+  - Users must uninstall PIL before installing Pillow
+   
+* Updated the static media url in the login excempt url list
+* Added remediatory code to sidestep issue #10 caused by DjangoZoom's deployment script executing the collectstatic command before creating the database structure with syncdb.  Thanks to Joost Cassee (https://github.com/jcassee) for reporting this one.
+* Perform extra validation of the image cache directory and fallback to creating a temporary directory on validation failure
+* Fixed a source creation bug, that caused invalid links to a non existing source transformation to appear on the sidebar

@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from linking.models import SmartLink, SmartLinkCondition
+from .models import SmartLink, SmartLinkCondition
 
 
 class SmartLinkConditionInline(admin.StackedInline):

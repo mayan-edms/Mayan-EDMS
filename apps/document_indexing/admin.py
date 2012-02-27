@@ -1,27 +1,23 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
 from mptt.admin import MPTTModelAdmin
 
-from document_indexing.models import Index, IndexInstance, \
-    DocumentRenameCount
+from .models import (Index, IndexTemplateNode, IndexInstanceNode,
+    DocumentRenameCount)
 
 
-class IndexInstanceInline(admin.StackedInline):
-    model = IndexInstance
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
-
-
-class IndexAdmin(MPTTModelAdmin):
+class IndexTemplateNodeAdmin(MPTTModelAdmin):
     list_display = ('expression', 'enabled', 'link_documents')
 
 
-class IndexInstanceAdmin(MPTTModelAdmin):
-    model = IndexInstance
-    list_display = ('value', 'index', 'get_document_list_display')
+class IndexInstanceNodeAdmin(MPTTModelAdmin):
+    model = IndexInstanceNode
+    list_display = ('value',)
 
 
-admin.site.register(Index, IndexAdmin)
-admin.site.register(IndexInstance, IndexInstanceAdmin)
+admin.site.register(Index)
+admin.site.register(IndexTemplateNode, IndexTemplateNodeAdmin)
+admin.site.register(IndexInstanceNode, IndexInstanceNodeAdmin)
 admin.site.register(DocumentRenameCount)

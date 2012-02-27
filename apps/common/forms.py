@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 
 from django import forms
@@ -8,9 +10,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.conf import settings
 
-from common.utils import return_attrib
-from common.widgets import DetailSelectMultiple, PlainWidget, \
-    TextAreaDiv, EmailInput
+from .utils import return_attrib
+from .widgets import (DetailSelectMultiple, PlainWidget, TextAreaDiv,
+    EmailInput)
 
 
 class DetailForm(forms.ModelForm):
@@ -120,7 +122,7 @@ class UserForm(forms.ModelForm):
     """
     class Meta:
         model = User
-        fields = ('first_name', 'last_name')
+        fields = ('username', 'first_name', 'last_name', 'email')
 
 
 class EmailAuthenticationForm(AuthenticationForm):
@@ -129,7 +131,7 @@ class EmailAuthenticationForm(AuthenticationForm):
     authentication
     """
     email = forms.CharField(label=_(u'Email'), max_length=75,
-        widget=EmailInput()
+        widget=EmailInput(attrs={'style': 'width: 100%;'})
     )
 
     def clean(self):
@@ -151,7 +153,7 @@ EmailAuthenticationForm.base_fields.keyOrder = ['email', 'password']
 
 class FileDisplayForm(forms.Form):
     text = forms.CharField(
-        label='',#_(u'Text'),
+        label='',  # _(u'Text'),
         widget=forms.widgets.Textarea(
             attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
         )
@@ -159,17 +161,12 @@ class FileDisplayForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(FileDisplayForm, self).__init__(*args, **kwargs)
-        changelog_path = os.path.join(settings.PROJECT_ROOT, self.DIRECTORY, self.FILENAME)
+        changelog_path = os.path.join(settings.PROJECT_ROOT, os.sep.join(self.DIRECTORY), self.FILENAME)
         fd = open(changelog_path)
         self.fields['text'].initial = fd.read()
         fd.close()
 
 
-class ChangelogForm(FileDisplayForm):
-    FILENAME = u'changelog.rst'
-    DIRECTORY = u'docs'
-
-
 class LicenseForm(FileDisplayForm):
     FILENAME = u'LICENSE'
-    DIRECTORY = u'docs'
+    DIRECTORY = [u'docs', u'credits']

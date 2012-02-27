@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import json
 import pickle
 from datetime import datetime
@@ -9,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core import serializers
 
 #from history.managers import HistoryManager
-from history.runtime_data import history_types_dict
+from .runtime_data import history_types_dict
 
 
 class HistoryType(models.Model):

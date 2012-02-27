@@ -1,10 +1,12 @@
+from __future__ import absolute_import
+
 from django.conf.urls.defaults import patterns, url
 
 from djangorestframework.views import ListModelView
 from djangorestframework.views import ListOrCreateModelView, InstanceModelView
 
-from rest_api.views import APIBase, Version_0, ReadOnlyInstanceModelView, IsZoomable
-from rest_api.resources import DocumentResourceSimple
+from .views import APIBase, Version_0, ReadOnlyInstanceModelView, IsZoomable
+from .resources import DocumentResourceSimple
 
 urlpatterns = patterns('',
     url(r'^$', APIBase.as_view(), name='api-root'),

@@ -15,7 +15,8 @@ __all__ = ('security_hash', 'BoundFormWizard')
 
 
 def security_hash_new(form, exclude=None, *args):
-    """Calculates a security hash for the given Form/FormSet instance.
+    """
+    Calculates a security hash for the given Form/FormSet instance.
 
     This creates a list of the form field names/values in a deterministic
     order, pickles the result with the SECRET_KEY setting, then takes an md5
@@ -51,19 +52,24 @@ def security_hash_new(form, exclude=None, *args):
 
 
 class BoundFormWizard(FormWizard):
-    """Render prev_fields as a list of bound form fields in the template
-    context rather than raw html."""
+    """
+    Render prev_fields as a list of bound form fields in the template
+    context rather than raw html.
+    """
+
     def security_hash(self, request, form):
-        """Calculates the security hash for the given HttpRequest and
+        """
+        Calculates the security hash for the given HttpRequest and
         Form/FormSet instances.
 
         Subclasses may want to take into account request-specific information,
         such as the IP address.
         """
+
         return security_hash_new(form)
 
     def render(self, form, request, step, context=None):
-        "Renders the given Form object, returning an HttpResponse."
+        'Renders the given Form object, returning an HttpResponse.'
         old_data = request.POST
         prev_fields = []
         if old_data:

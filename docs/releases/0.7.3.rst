@@ -1,0 +1,32 @@
+Version 0.7.3
+-------------
+* Refactored main menu navigation and converted all apps to this new
+  system
+* Multi item links are now displayed on top of generic lists as well as
+  on the bottom
+* Spanish translation updates
+* Updated requirements to use the latest development version of
+  django-mptt
+* Improved user folder document removal views
+* Added ability to specify default metadata or metadataset per
+  document type
+* Converted filename handling to use os.path library for improved 
+  portability
+* Added edit source object attribute difference detection and logging
+  to history app
+* Missing metadata type in a document during a multi document editing doesn't raise errors anymore.
+
+  - This allows for multi document heterogeneous metadata editing in a single step.
+    
+* Added document multi item links in search results
+
+  - Direct editing can be done from the search result list
+    
+* Permissions are now grouped and assigned a group name
+* Improved role management views
+* Document type is now an optional document property
+
+  - Documents can be created without an explicit document type
+    
+* Added support for per user staging directories
+* Updated logos

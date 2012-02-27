@@ -1,5 +1,7 @@
-from scheduler.runtime import scheduler
-from scheduler.exceptions import AlreadyScheduled
+from __future__ import absolute_import
+
+from .runtime import scheduler
+from .exceptions import AlreadyScheduled
 
 registered_jobs = {}
 

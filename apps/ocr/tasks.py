@@ -1,7 +1,7 @@
+from __future__ import absolute_import
+
 from datetime import timedelta, datetime
 import platform
-from time import sleep
-from random import random
 import logging
 
 from django.db.models import Q
@@ -9,15 +9,13 @@ from django.db.models import Q
 from job_processor.api import process_job
 from lock_manager import Lock, LockError
 
-from ocr.api import do_document_ocr
-from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE, \
-    QUEUEDOCUMENT_STATE_ERROR
-from ocr.models import QueueDocument, DocumentQueue
-from ocr.conf.settings import NODE_CONCURRENT_EXECUTION
-from ocr.conf.settings import REPLICATION_DELAY
-from ocr.conf.settings import CACHE_URI
-from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
+from .api import do_document_ocr
+from .literals import (QUEUEDOCUMENT_STATE_PENDING,
+    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE,
+    QUEUEDOCUMENT_STATE_ERROR)
+from .models import QueueDocument, DocumentQueue
+from .conf.settings import (NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY,
+    QUEUE_PROCESSING_INTERVAL)
 
 LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
@@ -42,44 +40,16 @@ def task_process_queue_document(queue_document_id):
             queue_document.state = QUEUEDOCUMENT_STATE_ERROR
             queue_document.result = e
             queue_document.save()
-        
+
         lock.release()
     except LockError:
         logger.debug('unable to obtain lock')
         pass
 
 
-def reset_orphans():
-    pass
-    '''
-    i = inspect().active()
-    active_tasks = []
-    orphans = []
-
-    if i:
-        for host, instances in i.items():
-            for instance in instances:
-                active_tasks.append(instance['id'])
-
-    for document_queue in DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE):
-        orphans = document_queue.queuedocument_set.\
-            filter(state=QUEUEDOCUMENT_STATE_PROCESSING).\
-            exclude(result__in=active_tasks)
-
-    for orphan in orphans:
-        orphan.result = _(u'Orphaned')
-        orphan.state = QUEUEDOCUMENT_STATE_PENDING
-        orphan.delay = False
-        orphan.node_name = None
-        orphan.save()
-    '''
-
-
 def task_process_document_queues():
     logger.debug('executed')
-    # reset_orphans()
-    # Causes problems with big clusters increased latency
-    # Disabled until better solution
+    # TODO: reset_orphans()
     q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
     q_delayed = Q(delay=True)
     q_delay_interval = Q(datetime_submitted__lt=datetime.now() - timedelta(seconds=REPLICATION_DELAY))
@@ -100,7 +70,7 @@ def task_process_document_queues():
                 #print 'DocumentQueueWatcher exception: %s' % e
             finally:
                 # Don't process anymore from this queryset, might be stale
-                break;
+                break
         else:
             logger.debug('already processing maximun')
     else:

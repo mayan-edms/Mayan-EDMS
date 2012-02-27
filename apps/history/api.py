@@ -1,38 +1,39 @@
+from __future__ import absolute_import
+
 import pickle
 import json
 
-from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
-from django.db.utils import DatabaseError
 from django.core import serializers
 from django.shortcuts import get_object_or_404
 from django.db import models
+from django.db.utils import DatabaseError
 
-from history.models import HistoryType, History
-from history.runtime_data import history_types_dict
+from .models import HistoryType, History
+from .runtime_data import history_types_dict
 
 
 @transaction.commit_on_success
 def register_history_type(history_type_dict):
     namespace = history_type_dict['namespace']
     name = history_type_dict['name']
+
     try:
-        # Permanent
         history_type_obj, created = HistoryType.objects.get_or_create(
             namespace=namespace, name=name)
         history_type_obj.save()
     except DatabaseError:
         # Special case for syncdb
-        pass
-    else:
-        # Runtime
-        history_types_dict.setdefault(namespace, {})
-        history_types_dict[namespace][name] = {
-            'label': history_type_dict['label'],
-            'summary': history_type_dict.get('summary', u''),
-            'details': history_type_dict.get('details', u''),
-            'expressions': history_type_dict.get('expressions', []),
-        }
+        transaction.rollback()
+        
+    # Runtime
+    history_types_dict.setdefault(namespace, {})
+    history_types_dict[namespace][name] = {
+        'label': history_type_dict['label'],
+        'summary': history_type_dict.get('summary', u''),
+        'details': history_type_dict.get('details', u''),
+        'expressions': history_type_dict.get('expressions', []),
+    }
 
 
 def create_history(history_type_dict, source_object=None, data=None):

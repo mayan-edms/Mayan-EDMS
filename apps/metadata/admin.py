@@ -1,7 +1,9 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from metadata.models import MetadataType, MetadataSet, MetadataSetItem, \
-    DocumentMetadata, DocumentTypeDefaults
+from .models import (MetadataType, MetadataSet, MetadataSetItem,
+    DocumentMetadata, DocumentTypeDefaults)
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):

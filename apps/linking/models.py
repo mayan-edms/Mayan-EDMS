@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from linking.managers import SmartLinkManager
-from linking.literals import OPERATOR_CHOICES, INCLUSION_AND, \
-    INCLUSION_CHOICES
+from .managers import SmartLinkManager
+from .literals import (OPERATOR_CHOICES, INCLUSION_AND,
+    INCLUSION_CHOICES)
 
 
 class SmartLink(models.Model):

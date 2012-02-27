@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 import tempfile
 import hashlib
@@ -9,17 +11,14 @@ import logging
 try:
     from cStringIO import StringIO
 except ImportError:
-    from StringIO import StringIO    
-    
+    from StringIO import StringIO
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.auth.models import User
-from django.contrib.contenttypes import generic
-from django.contrib.comments.models import Comment
 from django.core.exceptions import ValidationError
 
-from taggit.managers import TaggableManager
 from dynamic_search.api import register
 from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
@@ -29,21 +28,14 @@ from mimetype.api import (get_mimetype, get_icon_file_path,
     get_error_icon_file_path)
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
-from django_gpg.runtime import gpg
-from django_gpg.exceptions import GPGVerificationError, GPGDecryptionError
 
-from documents.conf.settings import CHECKSUM_FUNCTION
-from documents.conf.settings import UUID_FUNCTION
-from documents.conf.settings import STORAGE_BACKEND
-from documents.conf.settings import PREVIEW_SIZE
-from documents.conf.settings import DISPLAY_SIZE
-from documents.conf.settings import CACHE_PATH
-from documents.conf.settings import ZOOM_MAX_LEVEL
-from documents.conf.settings import ZOOM_MIN_LEVEL
-from documents.managers import RecentDocumentManager, \
-    DocumentPageTransformationManager
-from documents.utils import document_save_to_temp_dir
-from documents.literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
+from .conf.settings import RECENT_COUNT
+from .conf.settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
+    STORAGE_BACKEND, DISPLAY_SIZE, CACHE_PATH,
+    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+from .managers import DocumentPageTransformationManager
+from .utils import document_save_to_temp_dir
+from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
     VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
 
 # document image cache name hash function
@@ -78,21 +70,13 @@ class DocumentType(models.Model):
 
 
 class Document(models.Model):
-    '''
+    """
     Defines a single document with it's fields and properties
-    '''
+    """
     uuid = models.CharField(max_length=48, blank=True, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'))
     date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True, editable=False)
-
-    tags = TaggableManager()
-
-    comments = generic.GenericRelation(
-        Comment,
-        content_type_field='content_type',
-        object_id_field='object_pk'
-    )
 
     @staticmethod
     def clear_image_cache():
@@ -149,7 +133,7 @@ class Document(models.Model):
             zoom = ZOOM_MAX_LEVEL
 
         rotation = rotation % 360
-        
+
         try:
             file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
         except UnknownFileFormat:
@@ -158,7 +142,7 @@ class Document(models.Model):
             file_path = get_error_icon_file_path()
         except:
             file_path = get_error_icon_file_path()
-            
+
         if as_base64:
             image = open(file_path, 'r')
             out = StringIO()
@@ -175,16 +159,16 @@ class Document(models.Model):
 
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
-     
+
     def delete(self, *args, **kwargs):
         for version in self.versions.all():
             version.delete()
         return super(Document, self).delete(*args, **kwargs)
-        
+
     @property
     def size(self):
         return self.latest_version.size
-            
+
     def new_version(self, file, comment=None, version_update=None, release_level=None, serial=None):
         logger.debug('creating new document version')
         if version_update:
@@ -193,12 +177,12 @@ class Document(models.Model):
             new_version = DocumentVersion(
                 document=self,
                 file=file,
-                major = new_version_dict.get('major'),
-                minor = new_version_dict.get('minor'),
-                micro = new_version_dict.get('micro'),
-                release_level = release_level,
-                serial = serial,
-                comment = comment,
+                major=new_version_dict.get('major'),
+                minor=new_version_dict.get('minor'),
+                micro=new_version_dict.get('micro'),
+                release_level=release_level,
+                serial=serial,
+                comment=comment,
             )
             new_version.save()
         else:
@@ -214,20 +198,20 @@ class Document(models.Model):
 
     # Proxy methods
     def open(self, *args, **kwargs):
-        '''
+        """
         Return a file descriptor to a document's file irrespective of
         the storage backend
-        '''
+        """
         return self.latest_version.open(*args, **kwargs)
-        
+
     def save_to_file(self, *args, **kwargs):
         return self.latest_version.save_to_file(*args, **kwargs)
 
     def exists(self):
-        '''
-        Returns a boolean value that indicates if the document's 
+        """
+        Returns a boolean value that indicates if the document's
         latest version file exists in storage
-        '''
+        """
         return self.latest_version.exists()
 
     # Compatibility methods
@@ -242,7 +226,7 @@ class Document(models.Model):
     @property
     def file_mime_encoding(self):
         return self.latest_version.encoding
-     
+
     @property
     def file_filename(self):
         return self.latest_version.filename
@@ -279,6 +263,10 @@ class Document(models.Model):
     def versions(self):
         return self.documentversion_set
 
+    def rename(self, new_name):
+        version = self.latest_version
+        return version.rename(new_name)
+
     def _get_filename(self):
         return self.latest_version.filename
 
@@ -288,24 +276,15 @@ class Document(models.Model):
         return version.save()
 
     filename = property(_get_filename, _set_filename)
-        
-    def add_detached_signature(self, *args, **kwargs):
-        return self.latest_version.add_detached_signature(*args, **kwargs)
 
-    def has_detached_signature(self):
-        return self.latest_version.has_detached_signature()
-    
-    def detached_signature(self):
-        return self.latest_version.detached_signature()
 
-    def verify_signature(self):
-        return self.latest_version.verify_signature()
-        
-        
 class DocumentVersion(models.Model):
-    '''
+    """
     Model that describes a document version and its properties
-    '''
+    """
+    _pre_open_hooks = {}
+    _post_save_hooks = {}
+
     @staticmethod
     def get_version_update_choices(document_version):
         return (
@@ -313,7 +292,15 @@ class DocumentVersion(models.Model):
             (VERSION_UPDATE_MINOR, _(u'Minor %(major)i.%(minor)i, (some updates)') % document_version.get_new_version_dict(VERSION_UPDATE_MINOR)),
             (VERSION_UPDATE_MICRO, _(u'Micro %(major)i.%(minor)i.%(micro)i, (fixes)') % document_version.get_new_version_dict(VERSION_UPDATE_MICRO))
         )
-    
+
+    @classmethod
+    def register_pre_open_hook(cls, order, func):
+        cls._pre_open_hooks[order] = func
+
+    @classmethod
+    def register_post_save_hook(cls, order, func):
+        cls._post_save_hooks[order] = func
+
     document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
     major = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1, editable=False)
     minor = models.PositiveIntegerField(verbose_name=_(u'minor'), default=0, editable=False)
@@ -322,16 +309,14 @@ class DocumentVersion(models.Model):
     serial = models.PositiveIntegerField(verbose_name=_(u'serial'), default=0, editable=False)
     timestamp = models.DateTimeField(verbose_name=_(u'timestamp'), editable=False)
     comment = models.TextField(blank=True, verbose_name=_(u'comment'))
-    
+
     # File related fields
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
     mimetype = models.CharField(max_length=64, default='', editable=False)
     encoding = models.CharField(max_length=64, default='', editable=False)
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
-    signature_state = models.CharField(blank=True, null=True, max_length=16, verbose_name=_(u'signature state'), editable=False)
-    signature_file = models.FileField(blank=True, null=True, upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'signature file'), editable=False)
-    
+
     class Meta:
         unique_together = ('document', 'major', 'minor', 'micro', 'release_level', 'serial')
         verbose_name = _(u'document version')
@@ -361,11 +346,11 @@ class DocumentVersion(models.Model):
                 'minor': self.minor,
                 'micro': self.micro + 1,
             }
-            
+
     def get_formated_version(self):
-        '''
+        """
         Return the formatted version information
-        '''
+        """
         vers = [u'%i.%i' % (self.major, self.minor), ]
 
         if self.micro:
@@ -379,10 +364,10 @@ class DocumentVersion(models.Model):
         return self.documentpage_set
 
     def save(self, *args, **kwargs):
-        '''
+        """
         Overloaded save method that updates the document version's checksum,
         mimetype, page count and transformation when created
-        '''
+        """
         new_document = not self.pk
         if not self.pk:
             self.timestamp = datetime.datetime.now()
@@ -391,9 +376,11 @@ class DocumentVersion(models.Model):
         transformations = kwargs.pop('transformations', None)
         super(DocumentVersion, self).save(*args, **kwargs)
 
+        for key in sorted(DocumentVersion._post_save_hooks):
+            DocumentVersion._post_save_hooks[key](self)
+
         if new_document:
             #Only do this for new documents
-            self.update_signed_state(save=False)
             self.update_checksum(save=False)
             self.update_mimetype(save=False)
             self.save()
@@ -402,10 +389,10 @@ class DocumentVersion(models.Model):
                 self.apply_default_transformations(transformations)
 
     def update_checksum(self, save=True):
-        '''
+        """
         Open a document version's file and update the checksum field using the
         user provided checksum function
-        '''
+        """
         if self.exists():
             source = self.open()
             self.checksum = unicode(CHECKSUM_FUNCTION(source.read()))
@@ -461,29 +448,17 @@ class DocumentVersion(models.Model):
                     page_transformation.save()
 
     def revert(self):
-        '''
+        """
         Delete the subsequent versions after this one
-        '''
+        """
         for version in self.document.versions.filter(timestamp__gt=self.timestamp):
             version.delete()
-            
-    def update_signed_state(self, save=True):
-        if self.exists():
-            try:
-                self.signature_state = gpg.verify_file(self.open()).status
-                # TODO: give use choice for auto public key fetch?
-                # OR maybe new config option
-            except GPGVerificationError:
-                self.signature_state = None
-           
-            if save:
-                self.save()
 
     def update_mimetype(self, save=True):
-        '''
+        """
         Read a document verions's file and determine the mimetype by calling the
         get_mimetype wrapper
-        '''
+        """
         if self.exists():
             try:
                 self.mimetype, self.encoding = get_mimetype(self.open(), self.filename)
@@ -495,37 +470,35 @@ class DocumentVersion(models.Model):
                     self.save()
 
     def delete(self, *args, **kwargs):
-        self.file.storage.delete(self.file.path)        
+        self.file.storage.delete(self.file.path)
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
     def exists(self):
-        '''
+        """
         Returns a boolean value that indicates if the document's file
         exists in storage
-        '''
+        """
         return self.file.storage.exists(self.file.path)
-            
+
     def open(self, raw=False):
-        '''
+        """
         Return a file descriptor to a document version's file irrespective of
         the storage backend
-        '''
-        if self.signature_state and not raw:
-            try:
-                result = gpg.decrypt_file(self.file.storage.open(self.file.path))
-                # gpg return a string, turn it into a file like object
-                return StringIO(result.data)
-            except GPGDecryptionError:
-                # At least return the original raw content
-                return self.file.storage.open(self.file.path)
-        else:
+        """
+        if raw:
             return self.file.storage.open(self.file.path)
+        else:
+            result = self.file.storage.open(self.file.path)
+            for key in sorted(DocumentVersion._pre_open_hooks):
+                result = DocumentVersion._pre_open_hooks[key](result, self)
+
+            return result
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
-        '''
+        """
         Save a copy of the document from the document storage backend
         to the local filesystem
-        '''
+        """
         input_descriptor = self.open()
         output_descriptor = open(filepath, 'wb')
         while True:
@@ -538,48 +511,25 @@ class DocumentVersion(models.Model):
         output_descriptor.close()
         input_descriptor.close()
         return filepath
-        
+
     @property
     def size(self):
         if self.exists():
             return self.file.storage.size(self.file.path)
         else:
             return None
-   
-    def add_detached_signature(self, detached_signature):
-        if not self.signature_state:
-            self.signature_file = detached_signature
-            self.save()
-        else:
-            raise Exception('document already has an embedded signature')
-    
-    def has_detached_signature(self):
-        if self.signature_file:
-            return self.signature_file.storage.exists(self.signature_file.path)
-        else:
-            return False
-    
-    def detached_signature(self):
-        return self.signature_file.storage.open(self.signature_file.path)
-        
-    def verify_signature(self):
-        try:
-            if self.has_detached_signature():
-                logger.debug('has detached signature')
-                signature = gpg.verify_w_retry(self.open(), self.detached_signature())
-            else:
-                signature = gpg.verify_w_retry(self.open(raw=True))
-        except GPGVerificationError:
-            signature = None
             
-        return signature
-        
+    def rename(self, new_name):
+        name, extension = os.path.splitext(self.filename)
+        self.filename = u''.join([new_name, extension])
+        self.save()
+
 
 class DocumentTypeFilename(models.Model):
-    '''
+    """
     List of filenames available to a specific document type for the
     quick rename functionality
-    '''
+    """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     filename = models.CharField(max_length=128, verbose_name=_(u'filename'), db_index=True)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
@@ -594,13 +544,10 @@ class DocumentTypeFilename(models.Model):
 
 
 class DocumentPage(models.Model):
-    '''
+    """
     Model that describes a document version page including it's content
-    '''
-    # New parent field
+    """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'))
-    
-    # Unchanged fields
     content = models.TextField(blank=True, null=True, verbose_name=_(u'content'))
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'), db_index=True)
@@ -627,7 +574,7 @@ class DocumentPage(models.Model):
     @property
     def siblings(self):
         return DocumentPage.objects.filter(document_version=self.document_version)
-        
+
     # Compatibility methods
     @property
     def document(self):
@@ -673,6 +620,23 @@ class DocumentPageTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'document page transformation')
         verbose_name_plural = _(u'document page transformations')
+
+
+class RecentDocumentManager(models.Manager):
+    def add_document_for_user(self, user, document):
+        if user.is_authenticated():
+            self.model.objects.filter(user=user, document=document).delete()
+            new_recent = self.model(user=user, document=document, datetime_accessed=datetime.datetime.now())
+            new_recent.save()
+            to_delete = self.model.objects.filter(user=user)[RECENT_COUNT:]
+            for recent_to_delete in to_delete:
+                recent_to_delete.delete()
+
+    def get_for_user(self, user):
+        if user.is_authenticated():
+            return Document.objects.filter(recentdocument__user=user)
+        else:
+            return []
 
 
 class RecentDocument(models.Model):

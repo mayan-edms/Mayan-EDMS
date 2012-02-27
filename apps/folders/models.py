@@ -8,7 +8,7 @@ from documents.models import Document
 
 
 class Folder(models.Model):
-    title = models.CharField(max_length=32, verbose_name=_(u'title'), db_index=True)
+    title = models.CharField(max_length=128, verbose_name=_(u'title'), db_index=True)
     user = models.ForeignKey(User, verbose_name=_(u'user'))
     datetime_created = models.DateTimeField(verbose_name=_(u'datetime created'))
 
@@ -23,6 +23,18 @@ class Folder(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('folder_view', [self.pk])
+
+    @property
+    def documents(self):
+        return Document.objects.filter(folderdocument__folder=self)
+
+    def remove_document(self, document):
+        folder_document = self.folderdocument_set.get(document=document)
+        folder_document.delete()
+
+    def add_document(self, document):
+        folder_document, created = FolderDocument.objects.get_or_create(folder=self, document=document)
+        return created
 
     class Meta:
         unique_together = ('title', 'user')

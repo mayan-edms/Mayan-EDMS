@@ -1,38 +1,29 @@
-from datetime import datetime
+from __future__ import absolute_import
+
 import logging
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.utils.safestring import mark_safe
-from django.conf import settings
-from django.template.defaultfilters import force_escape
 
-from documents.models import Document, RecentDocument
-from permissions.api import check_permissions
-from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff, encapsulate
-from filetransfers.api import serve_file
-   
-from django_gpg.api import Key, SIGNATURE_STATES
-from django_gpg.runtime import gpg
-from django_gpg.exceptions import (GPGVerificationError, KeyFetchingError,
-    KeyImportError)
-from django_gpg import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_KEY_VIEW,
-    PERMISSION_KEY_DELETE, PERMISSION_KEYSERVER_QUERY, 
-    PERMISSION_KEY_RECEIVE, PERMISSION_SIGNATURE_UPLOAD,
-    PERMISSION_SIGNATURE_DOWNLOAD)
-from django_gpg.forms import KeySearchForm, DetachedSignatureForm
+from permissions.models import Permission
+from common.utils import encapsulate
+
+from .api import Key
+from .runtime import gpg
+from .exceptions import KeyFetchingError, KeyImportError
+from .forms import KeySearchForm
+from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
+    PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
 
 logger = logging.getLogger(__name__)
 
 
 def key_receive(request, key_id):
-    check_permissions(request.user, [PERMISSION_KEY_RECEIVE])
-    
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_RECEIVE])
+
     post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -45,8 +36,15 @@ def key_receive(request, key_id):
             key = gpg.import_key(keys_dict[key_id].key)
             messages.success(request, _(u'Key: %s, imported successfully.') % key)
             return HttpResponseRedirect(next)
-        except (KeyImportError, KeyError, TypeError):
-            messages.error(request, _(u'Unable to import key id: %s') % key_id)
+        except (KeyImportError, KeyError, TypeError), e:
+            messages.error(
+                request,
+                _(u'Unable to import key id: %(key_id)s; %(error)s') %
+                {
+                    'key_id': key_id,
+                    'error': e,
+                }
+            )
             return HttpResponseRedirect(previous)
 
     return render_to_response('generic_confirm.html', {
@@ -56,13 +54,13 @@ def key_receive(request, key_id):
         'next': next,
         'previous': previous,
         'submit_method': 'GET',
-        
+
     }, context_instance=RequestContext(request))
-    
+
 
 def key_list(request, secret=True):
-    check_permissions(request.user, [PERMISSION_KEY_VIEW])
-    
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_VIEW])
+
     if secret:
         object_list = Key.get_all(gpg, secret=True)
         title = _(u'private keys')
@@ -88,8 +86,8 @@ def key_list(request, secret=True):
 
 
 def key_delete(request, fingerprint, key_type):
-    check_permissions(request.user, [PERMISSION_KEY_DELETE])
-    
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_DELETE])
+
     secret = key_type == 'sec'
     key = Key.get(gpg, fingerprint, secret=secret)
 
@@ -117,8 +115,8 @@ def key_delete(request, fingerprint, key_type):
 
 
 def key_query(request):
-    check_permissions(request.user, [PERMISSION_KEYSERVER_QUERY])
-    
+    Permission.objects.check_permissions(request.user, [PERMISSION_KEYSERVER_QUERY])
+
     subtemplates_list = []
     term = request.GET.get('term')
 
@@ -132,8 +130,8 @@ def key_query(request):
                 'submit_method': 'GET',
             },
         }
-    )        
-    
+    )
+
     if term:
         results = gpg.query(term)
         subtemplates_list.append(
@@ -155,132 +153,37 @@ def key_query(request):
                         {
                             'name': _(u'creation date'),
                             'attribute': 'creation_date',
-                        },                        
+                        },
                         {
                             'name': _(u'disabled'),
                             'attribute': 'disabled',
-                        },                        
+                        },
                         {
                             'name': _(u'expiration date'),
                             'attribute': 'expiration_date',
-                        },     
+                        },
                         {
                             'name': _(u'expired'),
                             'attribute': 'expired',
-                        },     
+                        },
                         {
                             'name': _(u'length'),
                             'attribute': 'key_length',
-                        },     
+                        },
                         {
                             'name': _(u'revoked'),
                             'attribute': 'revoked',
-                        },     
-                        
+                        },
+
                         {
                             'name': _(u'Identifies'),
                             'attribute': encapsulate(lambda x: u', '.join([identity.uid for identity in x.identities])),
                         },
-                    ]                    
+                    ]
                 },
             }
-        )  
+        )
 
     return render_to_response('generic_form.html', {
         'subtemplates_list': subtemplates_list,
     }, context_instance=RequestContext(request))
-    
-
-def document_verify(request, document_pk):
-    check_permissions(request.user, [PERMISSION_DOCUMENT_VERIFY])
-    document = get_object_or_404(Document, pk=document_pk)
-
-    RecentDocument.objects.add_document_for_user(request.user, document)
-   
-    signature = document.verify_signature()
-    
-    signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
-    
-    widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
-    paragraphs = [
-        _(u'Signature status: %(widget)s %(text)s') % {
-            'widget': mark_safe(widget),
-            'text': signature_state['text']
-        },
-    ]
-
-    if document.signature_state:
-        signature_type = _(u'embedded')
-    else:
-        signature_type = _(u'detached')
-
-    if signature:
-        paragraphs.extend(
-            [
-                _(u'Signature ID: %s') % signature.signature_id,
-                _(u'Signature type: %s') % signature_type,
-                _(u'Key ID: %s') % signature.key_id,
-                _(u'Timestamp: %s') % datetime.fromtimestamp(int(signature.sig_timestamp)),
-                _(u'Signee: %s') % force_escape(getattr(signature, 'username', u'')),
-            ]
-        )
-    
-    return render_to_response('generic_template.html', {
-        'title': _(u'signature properties for: %s') % document,
-        'object': document,
-        'document': document,
-        'paragraphs': paragraphs,
-    }, context_instance=RequestContext(request))
-    
-    
-def document_signature_upload(request, document_pk):
-    check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
-    document = get_object_or_404(Document, pk=document_pk)
-
-    RecentDocument.objects.add_document_for_user(request.user, document)
-        
-    post_action_redirect = None
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
-
-    if request.method == 'POST':
-        form = DetachedSignatureForm(request.POST, request.FILES)
-        if form.is_valid():
-            try:
-                document.add_detached_signature(request.FILES['file'])
-                messages.success(request, _(u'Detached signature uploaded successfully.'))
-                return HttpResponseRedirect(next)
-            except Exception, msg:
-                messages.error(request, msg)
-                return HttpResponseRedirect(previous)
-    else:
-        form = DetachedSignatureForm()
-
-    return render_to_response('generic_form.html', {
-        'title': _(u'Upload detached signature for: %s') % document,
-        'form_icon': 'key_delete.png',
-        'next': next,
-        'form': form,
-        'previous': previous,
-        'object': document,
-    }, context_instance=RequestContext(request))
-    
-    
-def document_signature_download(request, document_pk):
-    check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
-    document = get_object_or_404(Document, pk=document_pk)
-        
-    try:
-        if document.has_detached_signature():
-            signature = document.detached_signature()
-            return serve_file(
-                request,
-                signature,
-                save_as=u'"%s.sig"' % document.filename,
-                content_type=u'application/octet-stream'
-            )
-    except Exception, e:
-        messages.error(request, e)
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])

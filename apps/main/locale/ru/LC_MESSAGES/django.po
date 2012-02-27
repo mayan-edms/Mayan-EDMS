@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2011.
+# Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-19 21:04+0000\n"
-"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-01-17 10:58+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
 "ru/)\n"
 "Language: ru\n"
@@ -20,43 +20,43 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:15
+#: __init__.py:33
 msgid "maintenance"
 msgstr "техническое обслуживание"
 
-#: __init__.py:16
+#: __init__.py:34
 msgid "statistics"
 msgstr "статистика"
 
-#: __init__.py:17
+#: __init__.py:35
 msgid "diagnostics"
 msgstr "диагностика"
 
-#: __init__.py:18
+#: __init__.py:36
 msgid "sentry"
 msgstr "sentry"
 
-#: __init__.py:19
+#: __init__.py:37
 msgid "admin site"
 msgstr "админка"
 
-#: __init__.py:30
+#: __init__.py:40
 msgid "home"
 msgstr "Начало"
 
-#: __init__.py:32
+#: __init__.py:42
 msgid "search"
 msgstr "поиск"
 
-#: views.py:41
+#: views.py:43
 msgid "maintenance menu"
 msgstr "меню техобслуживания"
 
-#: views.py:53
+#: views.py:56
 msgid "Statistics"
 msgstr "Статистика"
 
-#: views.py:61
+#: views.py:66
 msgid "Diagnostics"
 msgstr "Диагностика"
 
@@ -104,36 +104,40 @@ msgstr "Выход"
 msgid "Secondary menu"
 msgstr "Вторичное меню"
 
-#: templates/base.html:302
+#: templates/base.html:301
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Действия для %(name)s: %(navigation_object)s"
 
-#: templates/base.html:304 templates/base.html.py:336
+#: templates/base.html:303 templates/base.html.py:346
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Действия для: %(navigation_object)s"
 
-#: templates/base.html:307
+#: templates/base.html:306
 msgid "Available actions"
 msgstr "Доступные действия"
 
-#: templates/base.html:319 templates/base.html.py:351
+#: templates/base.html:318 templates/base.html.py:361
 msgid "Related actions"
 msgstr "Связанные действия"
 
-#: templates/base.html:334
+#: templates/base.html:329 templates/base.html.py:374
+msgid "Other available actions"
+msgstr "Другие возможные действия"
+
+#: templates/base.html:344
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Действия для %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:339
+#: templates/base.html:349
 msgid "Actions"
 msgstr "Действия"
 
-#: templates/base.html:364
-msgid "Other available actions"
-msgstr "Другие возможные действия"
+#: templates/home.html:8
+msgid "Django based open source document management system"
+msgstr "Система управления электронными документами на основе Django"
 
 #: templates/project_description.html:6
 msgid ""
@@ -144,6 +148,6 @@ msgstr ""
 "управления электронными документами с метаданными, индексами, тегами, "
 "интеграцией с файл-сервером и возможностью оптического распознавания текста."
 
-#: templates/project_description.html:15
+#: templates/project_description.html:18
 msgid "Released under the GPL V3 License"
 msgstr "Выпущено под лицензией GPL V3"

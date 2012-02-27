@@ -1,0 +1,13 @@
+Version 0.7
+-----------
+* Added confirmation dialogs icons
+* Added comment app with support for adding and deleting comments to 
+  and from documents
+* Updated requirements files as per issue #9
+* Show tagged item count in the tag list view
+* Show tagget document link in the tags subtemplate of documents
+* Made comment sorted by oldest first, made comment subtemplate
+  scrollable
+* Rename comments app to document_comment to avoid conflict with 
+  Django's comment app
+* Made document comments searchable

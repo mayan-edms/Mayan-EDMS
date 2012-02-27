@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,10 +21,10 @@ msgstr ""
 msgid "Multi item action"
 msgstr ""
 
-#: widgets.py:28
+#: widgets.py:48
 msgid "icon"
 msgstr ""
 
-#: templatetags/navigation_tags.py:275
+#: templatetags/navigation_tags.py:278
 msgid "Selected item actions:"
 msgstr ""

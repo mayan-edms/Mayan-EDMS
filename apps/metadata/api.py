@@ -1,14 +1,17 @@
 """Metadata handling commonalities"""
+from __future__ import absolute_import
 
 from urllib import unquote_plus
 
 from django.shortcuts import get_object_or_404
 
-from metadata.models import DocumentMetadata, MetadataType
+from .models import DocumentMetadata, MetadataType
 
 
 def decode_metadata_from_url(url_dict):
-    """Parse a URL query string to a list of metadata"""
+    """
+    Parse a URL query string to a list of metadata
+    """
     metadata_dict = {
         'id': {},
         'value': {}
@@ -78,7 +81,9 @@ def save_metadata(metadata_dict, document, create=False):
 
 
 def metadata_repr(metadata_list):
-    """Return a printable representation of a metadata list"""
+    """
+    Return a printable representation of a metadata list
+    """
     return u', '.join(metadata_repr_as_list(metadata_list))
 
 
@@ -102,3 +107,15 @@ def get_metadata_string(document):
     Return a formated representation of a document's metadata values
     """
     return u', '.join([u'%s - %s' % (metadata.metadata_type, metadata.value) for metadata in DocumentMetadata.objects.filter(document=document).select_related('metadata_type')])
+
+
+def convert_dict_to_dict_list(dictionary):
+    result = []
+    for key, value in dictionary.items():
+        try:
+            metadata_type = MetadataType.objects.get(name=key)
+        except MetadataType.DoesNotExist:
+            raise ValueError('Unknown metadata type name')
+        result.append({'id': metadata_type.pk, 'value': value})
+    
+    return result

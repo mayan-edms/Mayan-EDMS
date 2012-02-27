@@ -1,6 +1,7 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from tags.models import TagProperties
-
+from .models import TagProperties
 
 admin.site.register(TagProperties)

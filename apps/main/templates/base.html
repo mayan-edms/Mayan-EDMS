@@ -139,6 +139,16 @@
             'type'          : 'image',
             'autoScale'     : true
             });
+
+            $("a.fancybox-staging").fancybox({
+            'titleShow'     : true,
+            'transitionIn'  : 'elastic',
+            'transitionOut' : 'elastic',
+            'easingIn'      : 'easeOutBack',
+            'easingOut'     : 'easeInBack',
+            'type'          : 'image',
+            'autoScale'     : true
+            });
             
             $("a.fancybox-noscaling").fancybox({
             'titleShow'     : false,
@@ -181,7 +191,7 @@
 
 {% block web_theme_user_navigation %}
     <li><strong>{% trans "User" %}:</strong>
-        {% if user.is_anonymous %}
+        {% if not user.is_authenticated %}
             {% trans "Anonymous" %}
         {% else %}
             {{ user.get_full_name|default:user }}
@@ -202,7 +212,7 @@
         </li>
     {% endif %}
     {% get_setting "LOGIN_URL" as login_url %}
-    <li><a class="logout" href="{% if user.is_anonymous %}{% url login_view %}?next=/{% else %}{% url logout_view %}?next={{ login_url }}{% endif %}">{% if user.is_anonymous %}{% trans "Login" %}{% else %}{% trans "Logout" %}{% endif %}</a></li>
+    <li><a class="logout" href="{% if not user.is_authenticated %}{% url login_view %}?next=/{% else %}{% url logout_view %}{% endif %}">{% if not user.is_authenticated %}{% trans "Login" %}{% else %}{% trans "Logout" %}{% endif %}</a></li>
 {% endblock %}
 
 {% block web_theme_main_navigation %}
@@ -278,7 +288,7 @@
         {% endwith %}
         {% endwith %}
     {% endif %}
-
+    
     {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
         {% if object_navigation_links %}
         <div class="block">
@@ -290,7 +300,6 @@
             </ul>
         </div>
     {% endif %}
-    
     {% if navigation_object_list %}
         {% for navigation_object_dict in navigation_object_list %}
             {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
@@ -324,6 +333,17 @@
                     </ul>
                 </div>
             {% endif %}    
+            {% get_object_navigation_links "sidebar" as object_navigation_links %}
+            {% if object_navigation_links %}
+            <div class="block">
+                <h3>{% trans "Other available actions" %}</h3>
+                <ul class="navigation">
+                    {% with "true" as as_li %}
+                        {% include "generic_navigation.html" %}
+                    {% endwith %}
+                </ul>
+            </div>
+            {% endif %}
         {% endfor %}
     {% else %}
         {% get_object_navigation_links as object_navigation_links %}

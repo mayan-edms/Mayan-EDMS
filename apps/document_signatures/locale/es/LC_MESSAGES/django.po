@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-02 18:30+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
+"mayan-edms/team/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:83
+msgid "upload signature"
+msgstr "subir firma"
+
+#: __init__.py:84
+msgid "download signature"
+msgstr "descargar firma"
+
+#: __init__.py:85
+msgid "signatures"
+msgstr "firmas"
+
+#: forms.py:11
+msgid "Signature file"
+msgstr "Archivo de firma"
+
+#: models.py:20
+msgid "document version"
+msgstr "versión del documento"
+
+#: models.py:21
+msgid "signature file"
+msgstr "archivo de firma"
+
+#: models.py:22
+msgid "has embedded signature"
+msgstr "tiene firma integrada"
+
+#: models.py:35
+msgid "document version signature"
+msgstr "firma de la versión de documento"
+
+#: models.py:36
+msgid "document version signatures"
+msgstr "firmas de las versiónes de documentos"
+
+#: permissions.py:7
+msgid "Document signatures"
+msgstr "Firmas de documentos"
+
+#: permissions.py:8
+msgid "Verify document signatures"
+msgstr "Verificar firmas de documentos"
+
+#: permissions.py:9
+msgid "Upload detached signatures"
+msgstr "Subir firmas aparte"
+
+#: permissions.py:10
+msgid "Download detached signatures"
+msgstr "Descargar firmas aparte"
+
+#: views.py:47
+#, python-format
+msgid "Signature status: %(widget)s %(text)s"
+msgstr "Estado de la firma: %(widget)s %(text)s"
+
+#: views.py:54
+msgid "embedded"
+msgstr "integrada"
+
+#: views.py:56
+msgid "detached"
+msgstr "aparte"
+
+#: views.py:61
+#, python-format
+msgid "Signature ID: %s"
+msgstr "ID de la firma: %s"
+
+#: views.py:62
+#, python-format
+msgid "Signature type: %s"
+msgstr "Tipo de firma: %s"
+
+#: views.py:63
+#, python-format
+msgid "Key ID: %s"
+msgstr "ID de la llave: %s"
+
+#: views.py:64
+#, python-format
+msgid "Timestamp: %s"
+msgstr "Marca de tiempo: %s"
+
+#: views.py:65
+#, python-format
+msgid "Signee: %s"
+msgstr "Firmante: %s"
+
+#: views.py:70
+#, python-format
+msgid "signature properties for: %s"
+msgstr "propiedades de la firma para: %s"
+
+#: views.py:96
+msgid "Detached signature uploaded successfully."
+msgstr "Firma aparte subida exitosamente."
+
+#: views.py:105
+#, python-format
+msgid "Upload detached signature for: %s"
+msgstr "Subir firma aparte para: %s"

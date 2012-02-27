@@ -1,5 +1,7 @@
-from converter.office_converter import OfficeConverter
-from converter.exceptions import OfficeBackendError
+from __future__ import absolute_import
+
+from .office_converter import OfficeConverter
+from .exceptions import OfficeBackendError
 
 
 try:

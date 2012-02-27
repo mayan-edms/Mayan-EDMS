@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import errno
 import os
 import hashlib
@@ -39,7 +41,7 @@ def get_all_files(path):
     try:
         return sorted([os.path.normcase(f) for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))])
     except OSError, exc:
-        raise OSError(ugettext(u'Unable get list of staging files: %s') % exc)
+        raise Exception(ugettext(u'Unable get list of staging files: %s') % exc)
 
 
 def _return_new_class():
@@ -100,9 +102,7 @@ class StagingFile(object):
         self.source = source
         self.filepath = filepath
         self.filename = os.path.basename(filepath)
-        fd = open(filepath, 'rb')
-        self._id = HASH_FUNCTION(fd.read())
-        fd.close()
+        self._id = HASH_FUNCTION(filepath)
 
     def __unicode__(self):
         return self.filename
@@ -134,7 +134,7 @@ class StagingFile(object):
             if exc.errno == errno.ENOENT:
                 pass
             else:
-                raise OSError(ugettext(u'Unable to delete staging file: %s') % exc)
+                raise Exception(ugettext(u'Unable to delete staging file: %s') % exc)
 
     def get_valid_image(self, size=THUMBNAIL_SIZE, transformations=None):
         return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)

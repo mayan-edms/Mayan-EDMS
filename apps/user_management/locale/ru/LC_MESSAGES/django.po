@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
-"PO-Revision-Date: 2011-11-19 21:07+0000\n"
-"Last-Translator: gsv70 <gsv70@mail.ru>\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"PO-Revision-Date: 2012-02-02 18:18+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
 "ru/)\n"
 "Language: ru\n"
@@ -19,79 +19,43 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:8
-msgid "Create new users"
-msgstr "Создание новых пользователей"
-
-#: __init__.py:9
-msgid "Edit existing users"
-msgstr "Редактирование существующих пользователей"
-
-#: __init__.py:10
-msgid "View existing users"
-msgstr "Просмотр существующих пользователей"
-
-#: __init__.py:11
-msgid "Delete existing users"
-msgstr "Удаление существующих пользователей"
-
 #: __init__.py:13
-msgid "Create new groups"
-msgstr "Создание новых групп"
-
-#: __init__.py:14
-msgid "Edit existing groups"
-msgstr "Редактирование существующих групп"
-
-#: __init__.py:15
-msgid "View existing groups"
-msgstr "Просмотр существующих групп"
-
-#: __init__.py:16
-msgid "Delete existing groups"
-msgstr "Удалить существующие группы"
-
-#: __init__.py:18
-msgid "User management"
-msgstr "Управление пользователями"
-
-#: __init__.py:28
 msgid "user list"
 msgstr "список пользователей"
 
-#: __init__.py:29 views.py:31
+#: __init__.py:14 views.py:31
 msgid "users"
 msgstr "пользователи"
 
-#: __init__.py:30 __init__.py:39
+#: __init__.py:15 __init__.py:24
 msgid "edit"
 msgstr "редактировать"
 
-#: __init__.py:31 views.py:92
+#: __init__.py:16 views.py:97
 msgid "create new user"
 msgstr "создать нового пользователя"
 
-#: __init__.py:32 __init__.py:33 __init__.py:41 __init__.py:42
+#: __init__.py:17 __init__.py:18 __init__.py:26 __init__.py:27
 msgid "delete"
 msgstr "удалить"
 
-#: __init__.py:34 __init__.py:35
+#: __init__.py:19 __init__.py:20
 msgid "reset password"
 msgstr "сброс пароля"
 
-#: __init__.py:37
+#: __init__.py:22
 msgid "group list"
 msgstr "список групп"
 
-#: __init__.py:38 views.py:222
+#: __init__.py:23 views.py:228
 msgid "groups"
 msgstr "группы"
 
-#: __init__.py:40 views.py:270
+#: __init__.py:25 views.py:276
 msgid "create new group"
 msgstr "создать новую группу"
 
-#: __init__.py:43 views.py:226
+#: __init__.py:28 views.py:232
 msgid "members"
 msgstr "Участники"
 
@@ -102,6 +66,42 @@ msgstr "Новый пароль"
 #: forms.py:14
 msgid "Confirm password"
 msgstr "Подтвердите пароль"
+
+#: permissions.py:7
+msgid "User management"
+msgstr "Управление пользователями"
+
+#: permissions.py:9
+msgid "Create new users"
+msgstr "Создание новых пользователей"
+
+#: permissions.py:10
+msgid "Edit existing users"
+msgstr "Редактирование существующих пользователей"
+
+#: permissions.py:11
+msgid "View existing users"
+msgstr "Просмотр существующих пользователей"
+
+#: permissions.py:12
+msgid "Delete existing users"
+msgstr "Удаление существующих пользователей"
+
+#: permissions.py:14
+msgid "Create new groups"
+msgstr "Создание новых групп"
+
+#: permissions.py:15
+msgid "Edit existing groups"
+msgstr "Редактирование существующих групп"
+
+#: permissions.py:16
+msgid "View existing groups"
+msgstr "Просмотр существующих групп"
+
+#: permissions.py:17
+msgid "Delete existing groups"
+msgstr "Удалить существующие группы"
 
 #: views.py:35
 msgid "full name"
@@ -115,7 +115,11 @@ msgstr "электронная почта"
 msgid "active"
 msgstr "активно"
 
-#: views.py:58
+#: views.py:47
+msgid "has usable password?"
+msgstr ""
+
+#: views.py:61
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
@@ -123,30 +127,30 @@ msgstr ""
 "Редактирование суперпользователя и персонала не допускается, используйте для "
 "этого интерфейс администратора."
 
-#: views.py:65
+#: views.py:68
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "Пользователь \"%s\"обновлён"
 
-#: views.py:71
+#: views.py:74
 #, python-format
 msgid "edit user: %s"
 msgstr "редактировать пользователя: %s."
 
-#: views.py:74 views.py:130 views.py:193
+#: views.py:77 views.py:135 views.py:198
 msgid "user"
 msgstr "пользователь"
 
-#: views.py:86
+#: views.py:91
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Пользователь \"%s\" создан."
 
-#: views.py:108 views.py:162
+#: views.py:113 views.py:167
 msgid "Must provide at least one user."
 msgstr "Должен быть хотя бы один пользователь."
 
-#: views.py:118
+#: views.py:123
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
@@ -154,31 +158,31 @@ msgstr ""
 "Удаление суперпользователя и  персонала не допускается, используйте "
 "интерфейс администратора для этих случаев."
 
-#: views.py:121
+#: views.py:126
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Пользователь \"%s\" удален."
 
-#: views.py:123
+#: views.py:128
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Ошибка при удалении пользователя \"%(user)s\": %(error)s"
 
-#: views.py:138
+#: views.py:143
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "Вы действительно хотите удалить пользователя:%s?"
 
-#: views.py:140
+#: views.py:145
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "Вы действительно хотите удалить пользователей:%s?"
 
-#: views.py:173
+#: views.py:178
 msgid "Passwords do not match, try again."
 msgstr "Пароли не совпадают, попробуйте еще раз."
 
-#: views.py:178
+#: views.py:183
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
@@ -186,75 +190,75 @@ msgstr ""
 "Сброс паролей суперпользователя и персонала не допускается, используйте "
 "интерфейс администратора для этих случаев."
 
-#: views.py:182
+#: views.py:187
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Пароль пользователя %s сброшен."
 
-#: views.py:184
+#: views.py:189
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Ошибка сброса пароля для пользователя \"%(user)s\": %(error)s"
 
-#: views.py:200
+#: views.py:205
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Сброс пароля пользователя: %s"
 
-#: views.py:202
+#: views.py:207
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Сброс пароля для пользователей: %s"
 
-#: views.py:243
+#: views.py:249
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr "Группа \"%s\" обновлены."
 
-#: views.py:249
+#: views.py:255
 #, python-format
 msgid "edit group: %s"
 msgstr "редактировать группу: %s"
 
-#: views.py:252 views.py:305 views.py:350
+#: views.py:258 views.py:311 views.py:356
 msgid "group"
 msgstr "группа"
 
-#: views.py:264
+#: views.py:270
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr "Группа \"%s\"создана."
 
-#: views.py:286
+#: views.py:292
 msgid "Must provide at least one group."
 msgstr "Должна быть хотя бы одна группа."
 
-#: views.py:296
+#: views.py:302
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "Группа \"%s\" удалена."
 
-#: views.py:298
+#: views.py:304
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "Ошибка при удалении группы \"%(group)s\": %(error)s"
 
-#: views.py:313
+#: views.py:319
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "Вы действительно хотите удалить группу: %s?"
 
-#: views.py:315
+#: views.py:321
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "Вы действительно хотите удалить группы: %s?"
 
-#: views.py:345
+#: views.py:351
 #, python-format
 msgid "non members of group: %s"
 msgstr "не входят в группу: %s"
 
-#: views.py:346
+#: views.py:352
 #, python-format
 msgid "members of group: %s"
 msgstr "входят в группу: %s"

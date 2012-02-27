@@ -1,4 +1,4 @@
-import socket
+from __future__ import absolute_import
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -7,28 +7,28 @@ from django.contrib import messages
 from django.views.generic.list_detail import object_list
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.core.exceptions import PermissionDenied
 
-from celery.task.control import inspect
-from permissions.api import check_permissions
+from permissions.models import Permission
 from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
 from common.utils import encapsulate
+from acls.models import AccessEntry
 
-from ocr import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE, \
-    PERMISSION_OCR_QUEUE_ENABLE_DISABLE, PERMISSION_OCR_CLEAN_ALL_PAGES, \
-    PERMISSION_OCR_QUEUE_EDIT
-
-from ocr.models import DocumentQueue, QueueDocument, QueueTransformation
-from ocr.literals import QUEUEDOCUMENT_STATE_PENDING, \
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED, \
-    DOCUMENTQUEUE_STATE_ACTIVE
-from ocr.exceptions import AlreadyQueued, ReQueueError
-from ocr.api import clean_pages
-from ocr.forms import QueueTransformationForm, QueueTransformationForm_create
+from .permissions import (PERMISSION_OCR_DOCUMENT,
+    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
+    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
+from .models import DocumentQueue, QueueDocument, QueueTransformation
+from .literals import (QUEUEDOCUMENT_STATE_PENDING,
+    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED,
+    DOCUMENTQUEUE_STATE_ACTIVE)
+from .exceptions import AlreadyQueued, ReQueueError
+from .api import clean_pages
+from .forms import QueueTransformationForm, QueueTransformationForm_create
 
 
 def queue_document_list(request, queue_name='default'):
-    check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
 
     document_queue = get_object_or_404(DocumentQueue, name=queue_name)
 
@@ -68,7 +68,7 @@ def queue_document_list(request, queue_name='default'):
 
 
 def queue_document_delete(request, queue_document_id=None, queue_document_id_list=None):
-    check_permissions(request.user, [PERMISSION_OCR_DOCUMENT_DELETE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT_DELETE])
 
     if queue_document_id:
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
@@ -120,20 +120,26 @@ def queue_document_multiple_delete(request):
 def submit_document_multiple(request):
     for item_id in request.GET.get('id_list', '').split(','):
         submit_document(request, item_id)
-        
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-    
+
 
 def submit_document(request, document_id):
-    check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
+
     return submit_document_to_queue(request, document=document,
         post_submit_redirect=request.META.get('HTTP_REFERER', '/'))
 
 
 def submit_document_to_queue(request, document, post_submit_redirect=None):
-    """This view is meant to be reusable"""
+    '''
+    This view is meant to be reusable
+    '''
 
     try:
         document_queue = DocumentQueue.objects.queue_document(document)
@@ -150,7 +156,7 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
 
 
 def re_queue_document(request, queue_document_id=None, queue_document_id_list=None):
-    check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
 
     if queue_document_id:
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
@@ -204,7 +210,7 @@ def re_queue_multiple_document(request):
 
 
 def document_queue_disable(request, document_queue_id):
-    check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -231,7 +237,7 @@ def document_queue_disable(request, document_queue_id):
 
 
 def document_queue_enable(request, document_queue_id):
-    check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -258,7 +264,7 @@ def document_queue_enable(request, document_queue_id):
 
 
 def all_document_ocr_cleanup(request):
-    check_permissions(request.user, [PERMISSION_OCR_CLEAN_ALL_PAGES])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_CLEAN_ALL_PAGES])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
@@ -294,44 +300,9 @@ def display_link(obj):
         return obj
 
 
-def node_active_list(request):
-    check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
-    i = inspect()
-    active_tasks = []
-    try:
-        active_nodes = i.active()
-        if active_nodes:
-            for node, tasks in active_nodes.items():
-                for task in tasks:
-                    task_info = {
-                        'node': node,
-                        'task_name': task['name'],
-                        'task_id': task['id'],
-                        'related_object': None,
-                    }
-                    if task['name'] == u'ocr.tasks.task_process_queue_document':
-                        task_info['related_object'] = QueueDocument.objects.get(pk=eval(task['args'])[0]).document
-                    active_tasks.append(task_info)
-    except socket.error:
-        active_tasks = []
-
-    return render_to_response('generic_list.html', {
-        'object_list': active_tasks,
-        'title': _(u'active tasks'),
-        'hide_links': True,
-        'hide_object': True,
-        'extra_columns': [
-            {'name': _(u'node'), 'attribute': 'node'},
-            {'name': _(u'task id'), 'attribute': 'task_id'},
-            {'name': _(u'task name'), 'attribute': 'task_name'},
-            {'name': _(u'related object'), 'attribute': lambda x: display_link(x['related_object']) if x['related_object'] else u''}
-        ],
-    }, context_instance=RequestContext(request))
-
-
+# Setup views
 def setup_queue_transformation_list(request, document_queue_id):
-    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
 
@@ -356,7 +327,7 @@ def setup_queue_transformation_list(request, document_queue_id):
 
 
 def setup_queue_transformation_edit(request, transformation_id):
-    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
     redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
@@ -389,7 +360,7 @@ def setup_queue_transformation_edit(request, transformation_id):
 
 
 def setup_queue_transformation_delete(request, transformation_id):
-    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
     redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
@@ -423,7 +394,7 @@ def setup_queue_transformation_delete(request, transformation_id):
 
 
 def setup_queue_transformation_create(request, document_queue_id):
-    check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
 
     document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
 

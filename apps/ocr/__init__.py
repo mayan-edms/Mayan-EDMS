@@ -1,44 +1,32 @@
+from __future__ import absolute_import
+
 import logging
-        
-from django.core.exceptions import ImproperlyConfigured
+
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.db.utils import DatabaseError
 from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
+from django.db.utils import DatabaseError
 
-from navigation.api import register_links, register_top_menu, register_multi_item_links
-from permissions.api import register_permission, set_namespace_title
-from documents.models import Document
+from navigation.api import register_links, register_multi_item_links
+from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
+from acls.api import class_permissions
 
 from scheduler.api import register_interval_job
 
-from ocr.conf.settings import AUTOMATIC_OCR
-from ocr.conf.settings import QUEUE_PROCESSING_INTERVAL
-from ocr.models import DocumentQueue, QueueTransformation, QueueDocument
-from ocr.tasks import task_process_document_queues
-from ocr import models as ocr_models
+from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
+from .models import DocumentQueue, QueueTransformation
+from .tasks import task_process_document_queues
+from .permissions import (PERMISSION_OCR_DOCUMENT,
+    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
+    PERMISSION_OCR_CLEAN_ALL_PAGES)
+from .exceptions import AlreadyQueued
+from . import models as ocr_models
 
 logger = logging.getLogger(__name__)
-
-#Permissions
-PERMISSION_OCR_DOCUMENT = {'namespace': 'ocr', 'name': 'ocr_document', 'label': _(u'Submit document for OCR')}
-PERMISSION_OCR_DOCUMENT_DELETE = {'namespace': 'ocr', 'name': 'ocr_document_delete', 'label': _(u'Delete document for OCR queue')}
-PERMISSION_OCR_QUEUE_ENABLE_DISABLE = {'namespace': 'ocr', 'name': 'ocr_queue_enable_disable', 'label': _(u'Can enable/disable an OCR queue')}
-PERMISSION_OCR_CLEAN_ALL_PAGES = {'namespace': 'ocr', 'name': 'ocr_clean_all_pages', 'label': _(u'Can execute an OCR clean up on all document pages')}
-PERMISSION_OCR_QUEUE_EDIT = {'namespace': 'ocr_setup', 'name': 'ocr_queue_edit', 'label': _(u'Can edit an OCR queue properties')}
-
-set_namespace_title('ocr', _(u'OCR'))
-register_permission(PERMISSION_OCR_DOCUMENT)
-register_permission(PERMISSION_OCR_DOCUMENT_DELETE)
-register_permission(PERMISSION_OCR_QUEUE_ENABLE_DISABLE)
-register_permission(PERMISSION_OCR_CLEAN_ALL_PAGES)
-
-set_namespace_title('ocr_setup', _(u'OCR Setup'))
-register_permission(PERMISSION_OCR_QUEUE_EDIT)
 
 #Links
 submit_document = {'text': _('submit to OCR queue'), 'view': 'submit_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
@@ -54,9 +42,7 @@ document_queue_enable = {'text': _(u'activate queue'), 'view': 'document_queue_e
 all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _(u'Runs a language filter to remove common OCR mistakes from document pages content.')}
 
 queue_document_list = {'text': _(u'queue document list'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-
-node_active_list = {'text': _(u'active tasks'), 'view': 'node_active_list', 'famfam': 'server_chart', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT], 'children_view_regex': [r'queue_', r'document_queue']}
 
 setup_queue_transformation_list = {'text': _(u'transformations'), 'view': 'setup_queue_transformation_list', 'args': 'queue.pk', 'famfam': 'shape_move_front'}
 setup_queue_transformation_create = {'text': _(u'add transformation'), 'view': 'setup_queue_transformation_create', 'args': 'queue.pk', 'famfam': 'shape_square_add'}
@@ -71,7 +57,7 @@ register_links(QueueTransformation, [setup_queue_transformation_edit, setup_queu
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
-register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'node_active_list', 'setup_queue_transformation_list'], [queue_document_list, node_active_list], menu_name='secondary_menu')
+register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'setup_queue_transformation_list'], [queue_document_list], menu_name='secondary_menu')
 register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
@@ -79,26 +65,33 @@ register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(
 
 @transaction.commit_on_success
 def create_default_queue():
-    default_queue, created = DocumentQueue.objects.get_or_create(name='default')
-    if created:
-        default_queue.label = ugettext(u'Default')
-        default_queue.save()
+    try:
+        default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+    except DatabaseError:
+        transaction.rollback()
+    else:
+        if created:
+            default_queue.label = ugettext(u'Default')
+            default_queue.save()
 
 
+@receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
 def document_post_save(sender, instance, **kwargs):
+    logger.debug('received post save signal')
+    logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-            DocumentQueue.objects.queue_document(instance)
-
-post_save.connect(document_post_save, sender=Document)
-
+            try:
+                DocumentQueue.objects.queue_document(instance.document)
+            except AlreadyQueued:
+                pass
 
 # Disabled because it appears Django execute signals using the same
-# process effectively blocking the view until the OCR process completes
-# which could take several minutes :/
+# process of the signal emiter effectively blocking the view until
+# the OCR process completes which could take several minutes :/
 #@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
 #def call_queue(sender, **kwargs):
-#    if kwargs.get('created', False):    
+#    if kwargs.get('created', False):
 #        logger.debug('got call_queue signal: %s' % kwargs)
 #        task_process_document_queues()
 
@@ -109,3 +102,7 @@ def create_default_queue_signal_handler(sender, **kwargs):
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
 
 register_tool(ocr_tool_link)
+
+class_permissions(Document, [
+    PERMISSION_OCR_DOCUMENT,
+])

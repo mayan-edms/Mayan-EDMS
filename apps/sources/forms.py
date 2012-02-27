@@ -1,13 +1,15 @@
+from __future__ import absolute_import
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 
 from documents.forms import DocumentForm
 
-from sources.models import WebForm, StagingFolder, SourceTransformation, \
-    WatchFolder
-from sources.widgets import FamFamRadioSelect
-from sources.utils import validate_whitelist_blacklist
+from .models import (WebForm, StagingFolder, SourceTransformation,
+    WatchFolder)
+from .widgets import FamFamRadioSelect
+from .utils import validate_whitelist_blacklist
 
 
 class StagingDocumentForm(DocumentForm):
@@ -37,7 +39,7 @@ class StagingDocumentForm(DocumentForm):
         staging_list_index = self.fields.keyOrder.index('staging_file_id')
         staging_list = self.fields.keyOrder.pop(staging_list_index)
         self.fields.keyOrder.insert(0, staging_list)
-        
+
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
 
     class Meta(DocumentForm.Meta):
@@ -61,7 +63,7 @@ class WebFormForm(DocumentForm):
         # Move the file filed to the top
         self.fields.keyOrder.remove('file')
         self.fields.keyOrder.insert(0, 'file')
-        
+
     def clean_file(self):
         data = self.cleaned_data['file']
         validate_whitelist_blacklist(data.name, self.source.whitelist.split(','), self.source.blacklist.split(','))

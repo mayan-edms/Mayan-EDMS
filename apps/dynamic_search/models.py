@@ -14,9 +14,9 @@ from dynamic_search.api import registered_search_dict
 
 
 class RecentSearch(models.Model):
-    """
+    '''
     Keeps a list of the n most recent search keywords for a given user
-    """
+    '''
     user = models.ForeignKey(User, verbose_name=_(u'user'), editable=False)
     query = models.TextField(verbose_name=_(u'query'), editable=False)
     datetime_created = models.DateTimeField(verbose_name=_(u'datetime created'), editable=False)

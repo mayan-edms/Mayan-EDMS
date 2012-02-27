@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.core.exceptions import ObjectDoesNotExist
@@ -6,17 +8,13 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import register_links, register_multi_item_links
 from project_setup.api import register_setup
 
-from permissions.conf.settings import DEFAULT_ROLES
-from permissions.models import Role
+from .conf.settings import DEFAULT_ROLES
+from .models import Role, Permission, PermissionNamespace
+from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
+    PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
+    PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)
 
-PERMISSION_ROLE_VIEW = {'namespace': 'permissions', 'name': 'role_view', 'label': _(u'View roles')}
-PERMISSION_ROLE_EDIT = {'namespace': 'permissions', 'name': 'role_edit', 'label': _(u'Edit roles')}
-PERMISSION_ROLE_CREATE = {'namespace': 'permissions', 'name': 'role_create', 'label': _(u'Create roles')}
-PERMISSION_ROLE_DELETE = {'namespace': 'permissions', 'name': 'role_delete', 'label': _(u'Delete roles')}
-PERMISSION_PERMISSION_GRANT = {'namespace': 'permissions', 'name': 'permission_grant', 'label': _(u'Grant permissions')}
-PERMISSION_PERMISSION_REVOKE = {'namespace': 'permissions', 'name': 'permission_revoke', 'label': _(u'Revoke permissions')}
-
-role_list = {'text': _(u'roles'), 'view': 'role_list', 'famfam': 'medal_gold_1', 'icon': 'medal_gold_1.png', 'permissions': [PERMISSION_ROLE_VIEW]}
+role_list = {'text': _(u'roles'), 'view': 'role_list', 'famfam': 'medal_gold_1', 'icon': 'medal_gold_1.png', 'permissions': [PERMISSION_ROLE_VIEW], 'children_view_regex': [r'^permission_', r'^role_']}
 role_create = {'text': _(u'create new role'), 'view': 'role_create', 'famfam': 'medal_gold_add', 'permissions': [PERMISSION_ROLE_CREATE]}
 role_edit = {'text': _(u'edit'), 'view': 'role_edit', 'args': 'object.id', 'famfam': 'medal_gold_1', 'permissions': [PERMISSION_ROLE_EDIT]}
 role_members = {'text': _(u'members'), 'view': 'role_members', 'args': 'object.id', 'famfam': 'group_key', 'permissions': [PERMISSION_ROLE_EDIT]}
@@ -27,7 +25,7 @@ permission_grant = {'text': _(u'grant'), 'view': 'permission_multiple_grant', 'f
 permission_revoke = {'text': _(u'revoke'), 'view': 'permission_multiple_revoke', 'famfam': 'key_delete', 'permissions': [PERMISSION_PERMISSION_REVOKE]}
 
 register_links(Role, [role_edit, role_delete, role_permissions, role_members])
-register_links(['role_members', 'role_list', 'role_view', 'role_create', 'role_edit', 'role_permissions', 'role_delete'], [role_list, role_create], menu_name='sidebar')
+register_links([Role, 'role_list', 'role_create'], [role_list, role_create], menu_name='secondary_menu')
 register_multi_item_links(['role_permissions'], [permission_grant, permission_revoke])
 
 permission_views = ['role_list', 'role_create', 'role_edit', 'role_members', 'role_permissions', 'role_delete']

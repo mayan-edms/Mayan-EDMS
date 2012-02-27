@@ -1,31 +1,40 @@
+from __future__ import absolute_import
+
+import logging
+
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.core.exceptions import PermissionDenied
 
-from common.utils import generate_choices_w_labels, encapsulate
+from common.utils import encapsulate
 from common.widgets import two_state_template
-
 from documents.models import Document
 from documents.views import document_list
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from permissions.models import Permission
+from acls.views import acl_list_for
+from acls.models import AccessEntry
+from acls.utils import apply_default_acls
 
-from permissions.api import check_permissions
-
-from linking.models import SmartLink, SmartLinkCondition
-from linking.conf.settings import SHOW_EMPTY_SMART_LINKS
-from linking.forms import (SmartLinkInstanceForm, SmartLinkForm,
+from .models import SmartLink, SmartLinkCondition
+from .conf.settings import SHOW_EMPTY_SMART_LINKS
+from .forms import (SmartLinkInstanceForm, SmartLinkForm,
     SmartLinkConditionForm)
-from linking import smart_link_instance_view_link
-from linking import (PERMISSION_SMART_LINK_VIEW,
+from . import smart_link_instance_view_link
+from .permissions import (PERMISSION_SMART_LINK_VIEW,
     PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
     PERMISSION_SMART_LINK_EDIT)
 
+logger = logging.getLogger(__name__)
+
 
 def smart_link_action(request):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
-    
+    #Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+
     action = request.GET.get('action', None)
 
     if not action:
@@ -36,10 +45,14 @@ def smart_link_action(request):
 
 
 def smart_link_instance_view(request, document_id, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
-
     document = get_object_or_404(Document, pk=document_id)
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_SMART_LINK_VIEW, request.user, smart_link)
+
     object_list, errors = SmartLink.objects.get_smart_link_instances_for(document, smart_link)
 
     return document_list(
@@ -55,8 +68,6 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
 
 
 def smart_link_instances_for_document(request, document_id):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
-
     subtemplates_list = []
     document = get_object_or_404(Document, pk=document_id)
     smart_link_instances, errors = SmartLink.objects.get_smart_link_instances_for(document)
@@ -68,6 +79,17 @@ def smart_link_instances_for_document(request, document_id):
         #If SHOW_EMPTY_SMART_LINKS is False, remove empty groups from
         #dictionary
         smart_link_instances = dict([(group, data) for group, data in smart_link_instances.items() if data['documents']])
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    except PermissionDenied:
+        smart_link_instances_keys_filtered = AccessEntry.objects.filter_objects_by_access(PERMISSION_SMART_LINK_VIEW, request.user, smart_link_instances.keys())
+        # Remove smart link instances not found in the new filtered key list
+        for key, value in smart_link_instances.items():
+            if key not in smart_link_instances_keys_filtered:
+                smart_link_instances.pop(key)
+
+            value['documents'] = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_VIEW, request.user, value['documents'])
 
     if smart_link_instances:
         subtemplates_list = [{
@@ -96,31 +118,37 @@ def smart_link_instances_for_document(request, document_id):
         'document': document,
         'subtemplates_list': subtemplates_list,
     }, context_instance=RequestContext(request))
-    
-    
+
+
 def smart_link_list(request):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
-    
+    qs = SmartLink.objects.all()
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    except PermissionDenied:
+        qs = AccessEntry.objects.filter_objects_by_access(PERMISSION_SMART_LINK_VIEW, request.user, qs)
+
     return render_to_response('generic_list.html', {
         'title': _(u'smart links'),
-        'object_list': SmartLink.objects.all(),
+        'object_list': qs,
         'extra_columns': [
             {'name': _(u'dynamic title'), 'attribute': 'dynamic_title'},
             {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-        ],        
+        ],
         'hide_link': True,
         'list_object_variable_name': 'smart_link',
 
         }, context_instance=RequestContext(request))
-        
-        
+
+
 def smart_link_create(request):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE])
 
     if request.method == 'POST':
         form = SmartLinkForm(request.POST)
         if form.is_valid():
             document_group = form.save()
+            apply_default_acls(document_group, request.user)
             messages.success(request, _(u'Smart link: %s created successfully.') % document_group)
             return HttpResponseRedirect(reverse('smart_link_list'))
     else:
@@ -129,13 +157,16 @@ def smart_link_create(request):
     return render_to_response('generic_form.html', {
         'form': form,
         'title': _(u'Create new smart link')
-    }, context_instance=RequestContext(request))    
-    
-    
+    }, context_instance=RequestContext(request))
+
+
 def smart_link_edit(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
-    
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_SMART_LINK_EDIT, request.user, smart_link)
 
     if request.method == 'POST':
         form = SmartLinkForm(request.POST, instance=smart_link)
@@ -147,17 +178,20 @@ def smart_link_edit(request, smart_link_pk):
         form = SmartLinkForm(instance=smart_link)
 
     return render_to_response('generic_form.html', {
-        'navigation_object_name': 'smart_link',
-        'smart_link': smart_link,
+        #'navigation_object_name': 'smart_link',
+        'object': smart_link,
         'form': form,
         'title': _(u'Edit smart link: %s') % smart_link
-    }, context_instance=RequestContext(request))    
-        
-    
+    }, context_instance=RequestContext(request))
+
+
 def smart_link_delete(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
-    
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_DELETE])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_SMART_LINK_DELETE, request.user, smart_link)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
@@ -175,44 +209,48 @@ def smart_link_delete(request, smart_link_pk):
 
     return render_to_response('generic_confirm.html', {
         'delete_view': True,
-        'navigation_object_name': 'smart_link',
-        'smart_link': smart_link,
+        'object': smart_link,
         'title': _(u'Are you sure you wish to delete smart link: %s?') % smart_link,
         'next': next,
         'previous': previous,
         'form_icon': u'link_delete.png',
-    }, context_instance=RequestContext(request))    
-       
+    }, context_instance=RequestContext(request))
+
 
 def smart_link_condition_list(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
-    
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
-    
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link)
+
     return render_to_response('generic_list.html', {
         'title': _(u'conditions for smart link: %s') % smart_link,
         'object_list': smart_link.smartlinkcondition_set.all(),
         'extra_columns': [
             {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-        ],        
+        ],
         'hide_link': True,
-        'smart_link': smart_link,
-        'navigation_object_name': 'smart_link',
-        'list_object_variable_name': 'condition',        
+        'object': smart_link,
+        'list_object_variable_name': 'condition',
         }, context_instance=RequestContext(request))
 
 
 def smart_link_condition_create(request, smart_link_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
-
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link)
 
     if request.method == 'POST':
         form = SmartLinkConditionForm(request.POST)
         if form.is_valid():
             new_smart_link_condition = form.save(commit=False)
             new_smart_link_condition.smart_link = smart_link
-            new_smart_link_condition.save()            
+            new_smart_link_condition.save()
             messages.success(request, _(u'Smart link condition: "%s" created successfully.') % new_smart_link_condition)
             return HttpResponseRedirect(reverse('smart_link_condition_list', args=[smart_link.pk]))
     else:
@@ -221,15 +259,17 @@ def smart_link_condition_create(request, smart_link_pk):
     return render_to_response('generic_form.html', {
         'form': form,
         'title': _(u'Add new conditions to smart link: "%s"') % smart_link,
-        'navigation_object_name': 'smart_link',
-        'smart_link': smart_link,        
-    }, context_instance=RequestContext(request))    
+        'object': smart_link,
+    }, context_instance=RequestContext(request))
 
 
 def smart_link_condition_edit(request, smart_link_condition_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
-
     smart_link_condition = get_object_or_404(SmartLinkCondition, pk=smart_link_condition_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link_condition.smart_link)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
@@ -251,19 +291,22 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
         'next': next,
         'previous': previous,
         'condition': smart_link_condition,
-        'smart_link': smart_link_condition.smart_link,
+        'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'smart_link', 'name': _(u'smart link')},
+            {'object': 'object', 'name': _(u'smart link')},
             {'object': 'condition', 'name': _(u'condition')}
         ],
-        
-    }, context_instance=RequestContext(request))    
+
+    }, context_instance=RequestContext(request))
 
 
 def smart_link_condition_delete(request, smart_link_condition_pk):
-    check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
-
     smart_link_condition = get_object_or_404(SmartLinkCondition, pk=smart_link_condition_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link_condition.smart_link)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
@@ -282,13 +325,27 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
     return render_to_response('generic_confirm.html', {
         'delete_view': True,
         'condition': smart_link_condition,
-        'smart_link': smart_link_condition.smart_link,
+        'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'smart_link', 'name': _(u'smart link')},
+            {'object': 'object', 'name': _(u'smart link')},
             {'object': 'condition', 'name': _(u'condition')}
         ],
         'title': _(u'Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
         'next': next,
         'previous': previous,
         'form_icon': u'cog_delete.png',
-    }, context_instance=RequestContext(request))    
+    }, context_instance=RequestContext(request))
+
+
+def smart_link_acl_list(request, smart_link_pk):
+    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+    logger.debug('smart_link: %s' % smart_link)
+
+    return acl_list_for(
+        request,
+        smart_link,
+        extra_context={
+            'object': smart_link,
+            'smart_link': smart_link,
+        }
+    )

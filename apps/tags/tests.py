@@ -1,23 +1,16 @@
-"""
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
+from django.utils import unittest
 
-Replace these with more appropriate tests for your application.
-"""
+from .models import Tag, TagProperties
+from .literals import COLOR_RED
 
-from django.test import TestCase
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
+class TagTestCase(unittest.TestCase):
+    def setUp(self):
+        self.tag = Tag(name='test')
+        self.tag.save()
+        self.tp = TagProperties(tag=self.tag, color=COLOR_RED)
+        self.tp.save()
 
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
-
->>> 1 + 1 == 2
-True
-"""}
-
+    def runTest(self):
+        self.failUnlessEqual(self.tag.name, 'test')
+        self.failUnlessEqual(self.tp.get_color_code(), 'red')

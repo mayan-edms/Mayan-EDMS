@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-22 11:26-0400\n"
+"POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:10
+#: __init__.py:15
 msgid "file formats"
 msgstr ""
 
@@ -879,15 +879,15 @@ msgstr ""
 msgid "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
 msgstr ""
 
-#: views.py:15
+#: views.py:17
 msgid "suported file formats"
 msgstr ""
 
-#: views.py:20
+#: views.py:22
 msgid "name"
 msgstr ""
 
-#: views.py:24
+#: views.py:26
 msgid "description"
 msgstr ""
 

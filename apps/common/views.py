@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
@@ -9,20 +11,13 @@ from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 from django.contrib.auth.views import login
 from django.utils.simplejson import dumps, loads
+from django.contrib.auth.views import password_change
+from django.contrib.auth.models import User
+from django.conf import settings
 
-from common.forms import ChoiceForm, UserForm, UserForm_view, \
-    ChangelogForm, LicenseForm
-from common.forms import EmailAuthenticationForm
-from common.conf.settings import LOGIN_METHOD
-
-
-def password_change_done(request):
-    """
-    View called when the new user password has been accepted
-    """
-
-    messages.success(request, _(u'Your password has been successfully changed.'))
-    return redirect('home')
+from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
+    EmailAuthenticationForm)
+from .conf.settings import LOGIN_METHOD
 
 
 def multi_object_action_view(request):
@@ -65,7 +60,7 @@ def get_obj_from_content_type_string(string):
     return ct.get_object_for_this_type(pk=pk)
 
 
-def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, decode_content_type=False, extra_context=None):
+def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, decode_content_type=False, extra_context=None, grouped=False):
     left_list_name = u'left_list'
     right_list_name = u'right_list'
 
@@ -76,7 +71,14 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 choices=left_list())
             if unselected_list.is_valid():
                 for selection in unselected_list.cleaned_data['selection']:
-                    label = dict(left_list())[selection]
+                    if grouped:
+                        flat_list = []
+                        for group in left_list():
+                            flat_list.extend(group[1])
+                    else:
+                        flat_list = left_list()
+
+                    label = dict(flat_list)[selection]
                     if decode_content_type:
                         selection_obj = get_obj_from_content_type_string(selection)
                     else:
@@ -86,8 +88,11 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         messages.success(request, _(u'%(selection)s added successfully added to %(right_list_title)s.') % {
                             'selection': label, 'right_list_title': right_list_title})
                     except:
-                        messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
+                        if settings.DEBUG:
+                            raise
+                        else:
+                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                                'selection': label, 'right_list_title': right_list_title})
 
         elif u'%s-submit' % right_list_name in request.POST.keys():
             selected_list = ChoiceForm(request.POST,
@@ -95,7 +100,14 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 choices=right_list())
             if selected_list.is_valid():
                 for selection in selected_list.cleaned_data['selection']:
-                    label = dict(right_list())[selection]
+                    if grouped:
+                        flat_list = []
+                        for group in right_list():
+                            flat_list.extend(group[1])
+                    else:
+                        flat_list = right_list()
+
+                    label = dict(flat_list)[selection]
                     if decode_content_type:
                         selection = get_obj_from_content_type_string(selection)
                     try:
@@ -103,8 +115,11 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         messages.success(request, _(u'%(selection)s added successfully removed from %(right_list_title)s.') % {
                             'selection': label, 'right_list_title': right_list_title})
                     except:
-                        messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
+                        if settings.DEBUG:
+                            raise
+                        else:
+                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                                'selection': label, 'right_list_title': right_list_title})
     unselected_list = ChoiceForm(prefix=left_list_name,
         choices=left_list())
     selected_list = ChoiceForm(prefix=right_list_name,
@@ -168,9 +183,12 @@ def current_user_edit(request):
     if request.method == 'POST':
         form = UserForm(instance=request.user, data=request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, _(u'Current user\'s details updated.'))
-            return HttpResponseRedirect(next)
+            if User.objects.filter(email=form.cleaned_data['email']).exclude(pk=request.user.pk).count():
+                messages.error(request, _(u'E-mail conflict, another user has that same email.'))
+            else:
+                form.save()
+                messages.success(request, _(u'Current user\'s details updated.'))
+                return HttpResponseRedirect(next)
     else:
         form = UserForm(instance=request.user)
 
@@ -185,34 +203,26 @@ def current_user_edit(request):
 
 def login_view(request):
     """
-    Control how the use is to be authenticated, options are 'email' and 
+    Control how the use is to be authenticated, options are 'email' and
     'username'
-    """        
+    """
     kwargs = {'template_name': 'login.html'}
-    
+
     if LOGIN_METHOD == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
 
-    return login(request, **kwargs)
+    if not request.user.is_authenticated():
+        context = {'web_theme_view_type': 'plain'}
+    else:
+        context = {}
 
-
-def changelog_view(request):
-    """
-    Display the included Changelog.txt file from the about menu
-    """    
-    form = ChangelogForm()
-    return render_to_response(
-        'generic_detail.html', {
-            'form': form,
-            'title': _(u'Changelog'),
-        },
-        context_instance=RequestContext(request))
+    return login(request, extra_context=context, **kwargs)
 
 
 def license_view(request):
     """
     Display the included LICENSE file from the about menu
-    """    
+    """
     form = LicenseForm()
     return render_to_response(
         'generic_detail.html', {
@@ -220,3 +230,26 @@ def license_view(request):
             'title': _(u'License'),
         },
         context_instance=RequestContext(request))
+
+
+def password_change_view(request):
+    """
+    Password change wrapper for better control
+    """
+    context={'title': _(u'Current user password change')}
+    
+    return password_change(
+        request,
+        extra_context=context,
+        template_name='password_change_form.html',
+        post_change_redirect=reverse('password_change_done'),
+    )
+
+
+def password_change_done(request):
+    """
+    View called when the new user password has been accepted
+    """
+
+    messages.success(request, _(u'Your password has been successfully changed.'))
+    return redirect('current_user_details')

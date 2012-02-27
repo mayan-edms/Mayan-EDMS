@@ -1,10 +1,11 @@
+from __future__ import absolute_import
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
 
-from metadata.conf.settings import AVAILABLE_MODELS
-from metadata.conf.settings import AVAILABLE_FUNCTIONS
+from .conf.settings import (AVAILABLE_MODELS, AVAILABLE_FUNCTIONS)
 
 available_models_string = (_(u' Available models: %s') % u','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else u''
 available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else u''
@@ -13,7 +14,7 @@ available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()
 class MetadataType(models.Model):
     """
     Define a type of metadata
-    """    
+    """
     name = models.CharField(unique=True, max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words, or spaces.'))
     title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
@@ -86,7 +87,7 @@ class DocumentTypeDefaults(models.Model):
     """
     Default preselected metadata types and metadata set per document
     type
-    """    
+    """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
     default_metadata_sets = models.ManyToManyField(MetadataSet, blank=True, verbose_name=_(u'default metadata sets'))
     default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'default metadata'))
