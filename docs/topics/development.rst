@@ -57,7 +57,7 @@ Debugging
 ---------
 
 **Mayan EDMS** makes extensive use of Django's new `logging capabilities`_.
-To enable debug logging for the documents app for example add the following
+To enable debug logging for the ``documents`` app for example add the following
 lines to your ``settings_local.py`` file::
 
     LOGGING = {
@@ -89,5 +89,16 @@ lines to your ``settings_local.py`` file::
             },            
         }
     }
+
+
+Likewise, to see the debug output of the ``tags`` app, just add the following inside the ``loggers`` block::
+
+
+    'tags': {
+        'handlers':['console'],
+        'propagate': True,
+        'level':'DEBUG',
+    },            
+
 
 .. _`logging capabilities`: https://docs.djangoproject.com/en/dev/topics/logging
