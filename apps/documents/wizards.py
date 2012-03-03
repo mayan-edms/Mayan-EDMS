@@ -3,9 +3,9 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
+from django.utils.http import urlencode
 
 from common.wizard import BoundFormWizard
-from common.utils import urlquote
 
 from metadata.forms import MetadataSelectionForm, MetadataFormSet
 
@@ -79,5 +79,5 @@ class DocumentCreateWizard(BoundFormWizard):
         if self.document_type:
             self.query_dict['document_type_id'] = self.document_type.pk
 
-        url = urlquote(reverse('upload_interactive'), self.query_dict)
+        url = '?'.join([reverse('upload_interactive'), urlencode(self.query_dict, doseq=True)])
         return HttpResponseRedirect(url)
