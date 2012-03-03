@@ -7,11 +7,12 @@ import hashlib
 from django.core.files.base import File
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext
+from django.utils.encoding import smart_str
 
 from documents.conf.settings import THUMBNAIL_SIZE
 
-from mimetype.api import get_icon_file_path, get_error_icon_file_path, \
-    get_mimetype
+from mimetype.api import (get_icon_file_path, get_error_icon_file_path,
+    get_mimetype)
 from converter.api import convert, cache_cleanup
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
 
@@ -102,7 +103,7 @@ class StagingFile(object):
         self.source = source
         self.filepath = filepath
         self.filename = os.path.basename(filepath)
-        self._id = HASH_FUNCTION(filepath)
+        self._id = HASH_FUNCTION(smart_str(filepath))
 
     def __unicode__(self):
         return self.filename
