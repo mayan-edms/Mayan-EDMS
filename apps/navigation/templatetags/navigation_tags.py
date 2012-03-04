@@ -3,12 +3,14 @@ from __future__ import absolute_import
 import copy
 import re
 import urlparse
+import urllib
 
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
+from django.utils.encoding import smart_str, force_unicode, smart_unicode
 
 from common.utils import urlquote
 
@@ -101,6 +103,7 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                     else:
                         new_link['url'] = reverse(link['view'], args=args)
                         if link.get('keep_query', False):
+                            print 'parsed_query_string', parsed_query_string
                             new_link['url'] = urlquote(new_link['url'], parsed_query_string)
                 except NoReverseMatch, err:
                     new_link['url'] = '#'
@@ -169,7 +172,9 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     # Don't fudge with the original global dictionary
     links_dict = links_dict.copy()
 
-    query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
+    # Preserve unicode data in URL query
+    previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
+    query_string = urlparse.urlparse(previous_path).query
     parsed_query_string = urlparse.parse_qs(query_string)
 
     try:
