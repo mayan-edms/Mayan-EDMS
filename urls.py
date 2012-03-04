@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     (r'^gpg/', include('django_gpg.urls')),
     (r'^documents/signatures/', include('document_signatures.urls')),
     (r'^feedback/', include('feedback.urls')),
+    (r'^mailer/', include('mailer.urls')),
 )
 
 

@@ -165,6 +165,7 @@ INSTALLED_APPS = (
     'document_comments',
     'metadata',
     'documents',
+    'mailer',
     'linking',
     'document_indexing',
     'document_acls',
