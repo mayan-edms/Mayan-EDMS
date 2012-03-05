@@ -1,9 +1,7 @@
-from django.core.urlresolvers import reverse
-from django.utils.functional import lazy
+from common.utils import reverse_lazy
 
 diagnostics = {}
 tools = {}
-reverse_lazy = lazy(reverse, str)
 
 
 def register_diagnostic(namespace, title, link):
