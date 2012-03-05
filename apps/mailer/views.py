@@ -93,6 +93,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
         'form': form,
         'next': next,
         'submit_label': _(u'Send'),
+        'submit_icon_famfam': 'email_go'
     }
     if len(documents) == 1:
         context['object'] = documents[0]
