@@ -17,19 +17,3 @@ class_permissions(Document, [
     PERMISSION_MAILING_LINK,
     PERMISSION_MAILING_SEND_DOCUMENT
 ])
-
-
-from django.utils.translation import ugettext_lazy as _
-
-from smart_settings.api import register_settings, Setting, SettingNamespace
-
-mailer_namespace = SettingNamespace('mailer', _(u'Mailer'))
-
-Setting(
-    namespace=mailer_namespace,
-    module='mailer.conf.settings',
-    name='LINK_SUBJECT_TEMPLATE',
-    global_name='MAILER_LINK_SUBJECT_TEMPLATE',
-    default='Link for document: {{ document }}',
-    description=_(u'Template for the document link email form subject line.')
-)

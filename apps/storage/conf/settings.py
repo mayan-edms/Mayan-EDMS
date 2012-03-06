@@ -4,15 +4,35 @@ import os
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from smart_settings.api import register_settings
+from smart_settings.api import Setting, SettingNamespace
 
-register_settings(
-    namespace=u'storage',
-    module=u'storage.conf.settings',
-    settings=[
-        {'name': u'GRIDFS_HOST', 'global_name': u'STORAGE_GRIDFS_HOST', 'default': u'localhost'},
-        {'name': u'GRIDFS_PORT', 'global_name': u'STORAGE_GRIDFS_PORT', 'default': 27017},
-        {'name': u'GRIDFS_DATABASE_NAME', 'global_name': u'STORAGE_GRIDFS_DATABASE_NAME', 'default': u'document_storage'},
-        {'name': u'FILESTORAGE_LOCATION', 'global_name': u'STORAGE_FILESTORAGE_LOCATION', 'default': os.path.join(settings.PROJECT_ROOT, u'document_storage'), 'exists': True},
-    ]
+namespace = SettingNamespace('storage', _(u'Storage'), module='storage.conf.settings')
+
+Setting(
+    namespace=namespace,
+    name='GRIDFS_HOST',
+    global_name='STORAGE_GRIDFS_HOST',
+    default=u'localhost',
+)
+
+Setting(
+    namespace=namespace,
+    name='GRIDFS_PORT',
+    global_name='STORAGE_GRIDFS_PORT',
+    default=27017,
+)
+
+Setting(
+    namespace=namespace,
+    name='GRIDFS_DATABASE_NAME',
+    global_name='STORAGE_GRIDFS_DATABASE_NAME',
+    default='document_storage',
+)
+
+Setting(
+    namespace=namespace,
+    name='FILESTORAGE_LOCATION',
+    global_name='STORAGE_FILESTORAGE_LOCATION',
+    default=os.path.join(settings.PROJECT_ROOT, u'document_storage'),
+    exists=True
 )
