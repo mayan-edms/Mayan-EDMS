@@ -1,5 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 
+POP3_PORT = 110
+POP3_SSL_PORT = 995
+
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
 SOURCE_UNCOMPRESS_CHOICE_N = 'n'
 SOURCE_UNCOMPRESS_CHOICE_ASK = 'a'

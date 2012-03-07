@@ -26,7 +26,7 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICE_Y)
+    SOURCE_UNCOMPRESS_CHOICE_Y, POP3_PORT, POP3_SSL_PORT)
 from .compressed_file import CompressedFile, NotACompressedFile
 
 logger = logging.getLogger(__name__)
@@ -150,6 +150,36 @@ class InteractiveBaseModel(BaseModel):
     class Meta(BaseModel.Meta):
         abstract = True
 
+
+class POP3Email(BaseModel):
+    #is_interactive = False    
+    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    ssl = models.BooleanField(verbose_name=_(u'SSL'))
+    port = models.PositiveIntegerField(blank=True, verbose_name=_(u'port'))
+    host = models.CharField(max_length=32, verbose_name=_(u'host'))
+    username = models.CharField(max_length=64, verbose_name=_(u'username'))
+    password = models.CharField(max_length=64, verbose_name=_(u'password'))
+    delete = models.BooleanField(verbose_name=_(u'delete messages'))
+
+    def fetch_mail(self):
+        if ssl:
+            port = self.port or POP3_PORT
+            mailbox = poplib.POP3_SSL(self.host, port) 
+        else:
+            port = self.port or POP3_SSL_PORT
+            mailbox = poplib.POP3(self.host, port) 
+        
+        mailbox.user(self.username)
+        mailbox.pass_(self.password)
+        message_count = len(mailbox.list()[1]) 
+        for message_list in range(message_count): 
+            for message in mailbox.retr(message_list+1)[1]: 
+                mail = email.message_from_string(''.join(message))
+    
+    class Meta(BaseModel.Meta):
+        verbose_name = _(u'POP email')
+        verbose_name_plural = _(u'POP email')
+        
 
 class StagingFolder(InteractiveBaseModel):
     is_interactive = True
