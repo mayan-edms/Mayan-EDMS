@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+import logging
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -21,20 +23,22 @@ from common.utils import encapsulate
 import sendfile
 from acls.models import AccessEntry
 
-from sources.models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder)
-from sources.literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH)
-from sources.literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
+from .models import (WebForm, StagingFolder, SourceTransformation,
+    WatchFolder, POP3Email)
+from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
+    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL)
+from .literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_UNCOMPRESS_CHOICE_ASK)
-from sources.staging import create_staging_file_class
-from sources.forms import (StagingDocumentForm, WebFormForm,
+from .staging import create_staging_file_class
+from .forms import (StagingDocumentForm, WebFormForm,
     WatchFolderSetupForm)
-from sources.forms import WebFormSetupForm, StagingFolderSetupForm
-from sources.forms import SourceTransformationForm, SourceTransformationForm_create
+from .forms import WebFormSetupForm, StagingFolderSetupForm, POP3EmailSetupForm
+from .forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
+
+logger = logging.getLogger(__name__)
 
 
 def return_function(obj):
@@ -69,11 +73,11 @@ def get_active_tab_links(document=None):
     staging_folders = StagingFolder.objects.filter(enabled=True)
     for staging_folder in staging_folders:
         tab_links.append(get_tab_link_for_source(staging_folder, document))
-
+        
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
-        SOURCE_CHOICE_STAGING: staging_folders
+        SOURCE_CHOICE_STAGING: staging_folders,
     }
 
 
@@ -434,6 +438,8 @@ def setup_source_list(request, source_type):
         cls = StagingFolder
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
+    elif source_type == SOURCE_CHOICE_POP3_EMAIL:
+        cls = POP3Email
 
     context = {
         'object_list': cls.objects.all(),
@@ -459,7 +465,10 @@ def setup_source_edit(request, source_type, source_id):
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
         form_class = WatchFolderSetupForm
-
+    elif source_type == SOURCE_CHOICE_POP3_EMAIL:
+        cls = POP3Email
+        form_class = POP3EmailSetupForm
+        
     source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
@@ -501,6 +510,10 @@ def setup_source_delete(request, source_type, source_id):
         cls = WatchFolder
         form_icon = u'folder_delete.png'
         redirect_view = 'setup_watch_folder_list'
+    elif source_type == SOURCE_CHOICE_POP3_EMAIL:
+        cls = POP3Email
+        form_icon = u'email_delete.png'
+        redirect_view = 'setup_pop3_email_list'
 
     redirect_view = reverse('setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
@@ -512,9 +525,12 @@ def setup_source_delete(request, source_type, source_id):
             source.delete()
             messages.success(request, _(u'Source "%s" deleted successfully.') % source)
         except Exception, e:
-            messages.error(request, _(u'Error deleting source "%(source)s": %(error)s') % {
-                'source': source, 'error': e
-            })
+            if settings.DEBUG:
+                raise
+            else:
+                messages.error(request, _(u'Error deleting source "%(source)s": %(error)s') % {
+                    'source': source, 'error': e
+                })
 
         return HttpResponseRedirect(redirect_view)
 
@@ -539,12 +555,19 @@ def setup_source_create(request, source_type):
     if source_type == SOURCE_CHOICE_WEB_FORM:
         cls = WebForm
         form_class = WebFormSetupForm
+        redirect_view = 'setup_web_form_list'
     elif source_type == SOURCE_CHOICE_STAGING:
         cls = StagingFolder
         form_class = StagingFolderSetupForm
+        redirect_view = 'setup_staging_folder_list'
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
         form_class = WatchFolderSetupForm
+        redirect_view = 'setup_watch_folder_list'
+    elif source_type == SOURCE_CHOICE_POP3_EMAIL:
+        cls = POP3Email
+        form_class = POP3EmailSetupForm
+        redirect_view = 'setup_pop3_email_list'
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
@@ -552,7 +575,7 @@ def setup_source_create(request, source_type):
             try:
                 form.save()
                 messages.success(request, _(u'Source created successfully'))
-                return HttpResponseRedirect(reverse('setup_web_form_list'))
+                return HttpResponseRedirect(reverse(redirect_view))
             except Exception, e:
                 messages.error(request, _(u'Error creating source; %s') % e)
     else:
@@ -576,7 +599,9 @@ def setup_source_transformation_list(request, source_type, source_id):
         cls = StagingFolder
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
-
+    elif source_type == SOURCE_CHOICE_POP3_EMAIL:
+        cls = POP3Email
+        
     source = get_object_or_404(cls, pk=source_id)
 
     context = {
@@ -675,7 +700,9 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = StagingFolder
     elif source_type == SOURCE_CHOICE_WATCH:
         cls = WatchFolder
-
+    elif source_type == SOURCE_CHOICE_POP3_EMAIL:
+        cls = POP3Email
+        
     source = get_object_or_404(cls, pk=source_id)
 
     redirect_view = reverse('setup_source_transformation_list', args=[source.source_type, source.pk])

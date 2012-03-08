@@ -26,7 +26,7 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICE_Y, POP3_PORT, POP3_SSL_PORT)
+    SOURCE_UNCOMPRESS_CHOICE_Y, POP3_PORT, POP3_SSL_PORT, SOURCE_CHOICE_POP3_EMAIL)
 from .compressed_file import CompressedFile, NotACompressedFile
 
 logger = logging.getLogger(__name__)
@@ -152,14 +152,16 @@ class InteractiveBaseModel(BaseModel):
 
 
 class POP3Email(BaseModel):
-    #is_interactive = False    
-    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    is_interactive = False   
+    source_type = SOURCE_CHOICE_POP3_EMAIL
+    
+    host = models.CharField(max_length=64, verbose_name=_(u'host'))
     ssl = models.BooleanField(verbose_name=_(u'SSL'))
-    port = models.PositiveIntegerField(blank=True, verbose_name=_(u'port'))
-    host = models.CharField(max_length=32, verbose_name=_(u'host'))
+    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'))
     username = models.CharField(max_length=64, verbose_name=_(u'username'))
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
-    delete = models.BooleanField(verbose_name=_(u'delete messages'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    delete_messages = models.BooleanField(verbose_name=_(u'delete messages'), help_text=_(u'Delete messages after downloading their respective attached documents.'))
 
     def fetch_mail(self):
         if ssl:
@@ -172,10 +174,14 @@ class POP3Email(BaseModel):
         mailbox.user(self.username)
         mailbox.pass_(self.password)
         message_count = len(mailbox.list()[1]) 
-        for message_list in range(message_count): 
+        logger.debug('message_count: %n' % message_count)
+        for message_list in range(message_count):
             for message in mailbox.retr(message_list+1)[1]: 
                 mail = email.message_from_string(''.join(message))
-    
+                for part in mail.walk():
+                    logger.debug(part)
+                    #f.write(part.get_payload(decode=True))
+            
     class Meta(BaseModel.Meta):
         verbose_name = _(u'POP email')
         verbose_name_plural = _(u'POP email')

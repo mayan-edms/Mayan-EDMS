@@ -11,7 +11,7 @@ from documents.permissions import (PERMISSION_DOCUMENT_NEW_VERSION,
 
 from .staging import StagingFile
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder)
+    WatchFolder, POP3Email)
 from .widgets import staging_file_thumbnail
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
@@ -24,6 +24,7 @@ setup_sources = {'text': _(u'sources'), 'view': 'setup_web_form_list', 'famfam':
 setup_web_form_list = {'text': _(u'web forms'), 'view': 'setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebForm], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 setup_staging_folder_list = {'text': _(u'staging folders'), 'view': 'setup_staging_folder_list', 'famfam': 'folder_camera', 'children_classes': [StagingFolder], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 setup_watch_folder_list = {'text': _(u'watch folders'), 'view': 'setup_watch_folder_list', 'famfam': 'folder_magnify', 'children_classes': [WatchFolder], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
+setup_pop3_email_list = {'text': _(u'POP3 email'), 'view': 'setup_pop3_email_list', 'famfam': 'email', 'children_classes': [POP3Email], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 
 setup_source_edit = {'text': _(u'edit'), 'view': 'setup_source_edit', 'args': ['source.source_type', 'source.pk'], 'famfam': 'application_form_edit', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
 setup_source_delete = {'text': _(u'delete'), 'view': 'setup_source_delete', 'args': ['source.source_type', 'source.pk'], 'famfam': 'application_form_delete', 'permissions': [PERMISSION_SOURCES_SETUP_DELETE]}
@@ -43,17 +44,20 @@ register_links(StagingFile, [staging_file_delete])
 register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
 
 #register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
-register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
+register_links(['setup_pop3_email_list', 'setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list], menu_name='form_header')
 
 #register_links(WebForm, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
-register_links(WebForm, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
+register_links(WebForm, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list], menu_name='form_header')
 register_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
-register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create'], [setup_sources, setup_source_create], menu_name='sidebar')
+register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create', 'setup_pop3_email_list'], [setup_sources, setup_source_create], menu_name='sidebar')
 
 #register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
-register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
+register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list], menu_name='form_header')
 register_links(StagingFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+
+register_links(POP3Email, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list], menu_name='form_header')
+register_links(POP3Email, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 register_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
 register_links(WatchFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
