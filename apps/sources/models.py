@@ -2,6 +2,13 @@ from __future__ import absolute_import
 
 from ast import literal_eval
 import logging
+import poplib
+import email
+
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -31,6 +38,7 @@ from .compressed_file import CompressedFile, NotACompressedFile
 
 logger = logging.getLogger(__name__)
 
+POP3_TIMEOUT = 30
 
 class BaseModel(models.Model):
     title = models.CharField(max_length=64, verbose_name=_(u'title'))
@@ -157,30 +165,43 @@ class POP3Email(BaseModel):
     
     host = models.CharField(max_length=64, verbose_name=_(u'host'))
     ssl = models.BooleanField(verbose_name=_(u'SSL'))
-    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'))
+    port = models.PositiveIntegerField(default=POP3_PORT, blank=True, null=True, verbose_name=_(u'port'), help_text=_(u'Typical values are: %d and %d for SSL.  These are the defaults if no port is specified.') % (POP3_PORT, POP3_SSL_PORT))
     username = models.CharField(max_length=64, verbose_name=_(u'username'))
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     delete_messages = models.BooleanField(verbose_name=_(u'delete messages'), help_text=_(u'Delete messages after downloading their respective attached documents.'))
 
     def fetch_mail(self):
-        if ssl:
-            port = self.port or POP3_PORT
-            mailbox = poplib.POP3_SSL(self.host, port) 
-        else:
+        logger.debug('Starting POP3 email fetch')
+        logger.debug('host: %s' % self.host)
+        logger.debug('ssl: %s' % self.ssl)
+        if self.ssl:
             port = self.port or POP3_SSL_PORT
-            mailbox = poplib.POP3(self.host, port) 
-        
+            logger.debug('port: %d' % port)
+            mailbox = poplib.POP3_SSL(self.host, port)#, POP3_TIMEOUT)
+        else:
+            port = self.port or POP3_PORT
+            logger.debug('port: %d' % port)
+            mailbox = poplib.POP3(self.host, port)#, timeout=POP3_TIMEOUT) 
+
         mailbox.user(self.username)
         mailbox.pass_(self.password)
         message_count = len(mailbox.list()[1]) 
-        logger.debug('message_count: %n' % message_count)
+        logger.debug('message_count: %d' % message_count)
         for message_list in range(message_count):
             for message in mailbox.retr(message_list+1)[1]: 
                 mail = email.message_from_string(''.join(message))
                 for part in mail.walk():
-                    logger.debug(part)
+                    #logger.debug('part: %s' % part)
                     #f.write(part.get_payload(decode=True))
+                    container = StringIO()
+                    attachment_name = part.get_filename()
+                    container.write(part.get_payload(decode=True))
+                    container.seek(0)
+                    f = file('tmp/attach','wb')
+                    f.write(container.read())
+                    f.close()
+
             
     class Meta(BaseModel.Meta):
         verbose_name = _(u'POP email')
