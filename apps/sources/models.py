@@ -171,6 +171,23 @@ class POP3Email(BaseModel):
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     delete_messages = models.BooleanField(verbose_name=_(u'delete messages'), help_text=_(u'Delete messages after downloading their respective attached documents.'))
 
+    @staticmethod
+    def process_message(message):
+        pass
+        #for part in message.walk():
+            #logger.debug('part: %s' % part)
+        #    #f.write(part.get_payload(decode=True))
+        #    logger.debug('payload: %s' % message.get_payload(decode=True)
+        #    container = StringIO()
+        #    attachment_name = part.get_filename()
+        #    container.write(part.get_payload(decode=True))
+        #    container.seek(0)
+        #    f = file('tmp/attach','wb')
+        #    f.write(container.read())
+        #    f.close()
+    
+    
+
     def fetch_mail(self):
         logger.debug('Starting POP3 email fetch')
         logger.debug('host: %s' % self.host)
@@ -178,29 +195,42 @@ class POP3Email(BaseModel):
         if self.ssl:
             port = self.port or POP3_SSL_PORT
             logger.debug('port: %d' % port)
-            mailbox = poplib.POP3_SSL(self.host, port)#, POP3_TIMEOUT)
+            mailbox = poplib.POP3_SSL(self.host, int(port))#, POP3_TIMEOUT)
         else:
             port = self.port or POP3_PORT
             logger.debug('port: %d' % port)
-            mailbox = poplib.POP3(self.host, port)#, timeout=POP3_TIMEOUT) 
+            mailbox = poplib.POP3(self.host, int(port))#, timeout=POP3_TIMEOUT) 
 
+        mailbox.getwelcome()
         mailbox.user(self.username)
         mailbox.pass_(self.password)
-        message_count = len(mailbox.list()[1]) 
-        logger.debug('message_count: %d' % message_count)
-        for message_list in range(message_count):
-            for message in mailbox.retr(message_list+1)[1]: 
-                mail = email.message_from_string(''.join(message))
-                for part in mail.walk():
-                    #logger.debug('part: %s' % part)
-                    #f.write(part.get_payload(decode=True))
-                    container = StringIO()
-                    attachment_name = part.get_filename()
-                    container.write(part.get_payload(decode=True))
-                    container.seek(0)
-                    f = file('tmp/attach','wb')
-                    f.write(container.read())
-                    f.close()
+        messages_info = mailbox.list()
+        
+        logger.debug('messages_info:')
+        logger.debug(messages_info)
+        logger.debug('messages count: %s' % len(messages_info[1]))
+        
+        for message_info in messages_info[1]:
+            message_number, message_size = message_info.split()
+            logger.debug('message_number: %s' % message_number)
+
+            #message_size = message.split(' ')[1]
+            logger.debug('message_size: %s' % message_size)
+            
+            complete_message = '\n'.join(mailbox.retr(message_number)[1])
+            logger.debug('complete_message: %s' % complete_message)
+
+            POP3Email.process_message(complete_message)
+
+        #for messages in server.list()[1]:
+        #logger.debug('message_count: %d' % message_count)
+        #for message_number in range(message_count):
+        #    #message = '\n'.join(mailbox.retr(message_number)[1])
+        #    message = '\n'.join(mailbox.retr(message_number+1)[1])
+        #    #message = email.message_from_string('\n'.join(mailbox.retr(message_list+1)[1]))
+
+        #    #for message in mailbox.retr(message_list+1)[1]: 
+        #    #    mail = email.message_from_string(''.join(message))
 
             
     class Meta(BaseModel.Meta):
