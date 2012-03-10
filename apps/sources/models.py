@@ -3,7 +3,9 @@ from __future__ import absolute_import
 from ast import literal_eval
 import logging
 import poplib
-import email
+from email.Utils import collapse_rfc2231_value
+from email import message_from_string
+import os
 
 try:
     from cStringIO import StringIO
@@ -16,6 +18,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 from django.db import transaction
+from django.core.files import File
+from django.core.files.base import ContentFile
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
@@ -35,10 +39,10 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
     SOURCE_UNCOMPRESS_CHOICE_Y, POP3_PORT, POP3_SSL_PORT, SOURCE_CHOICE_POP3_EMAIL)
 from .compressed_file import CompressedFile, NotACompressedFile
+from .conf.settings import POP3_TIMEOUT
 
 logger = logging.getLogger(__name__)
 
-POP3_TIMEOUT = 30
 
 class BaseModel(models.Model):
     title = models.CharField(max_length=64, verbose_name=_(u'title'))
@@ -157,6 +161,21 @@ class InteractiveBaseModel(BaseModel):
 
     class Meta(BaseModel.Meta):
         abstract = True
+        
+        
+class PseudoFile(File):
+    def __init__(self, file, name):
+        self.name = name
+        self.file = file
+        self.file.seek(0, os.SEEK_END)
+        self.size = self.file.tell()
+        self.file.seek(0)
+    
+        
+class Attachment(File):
+    def __init__(self, part, name):
+        self.name = name
+        self.file = PseudoFile(StringIO(part.get_payload(decode=True)), name=name)
 
 
 class POP3Email(BaseModel):
@@ -171,22 +190,30 @@ class POP3Email(BaseModel):
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     delete_messages = models.BooleanField(verbose_name=_(u'delete messages'), help_text=_(u'Delete messages after downloading their respective attached documents.'))
 
+    # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
     @staticmethod
-    def process_message(message):
-        pass
-        #for part in message.walk():
-            #logger.debug('part: %s' % part)
-        #    #f.write(part.get_payload(decode=True))
-        #    logger.debug('payload: %s' % message.get_payload(decode=True)
-        #    container = StringIO()
-        #    attachment_name = part.get_filename()
-        #    container.write(part.get_payload(decode=True))
-        #    container.seek(0)
-        #    f = file('tmp/attach','wb')
-        #    f.write(container.read())
-        #    f.close()
-    
-    
+    def process_message(source, message):
+        email = message_from_string(message)
+        counter = 1
+
+        for part in email.walk():
+            disposition = part.get('Content-Disposition')
+            logger.debug('Disposition: %s' % disposition)
+
+            if disposition.startswith('attachment'):
+                raw_filename = part.get_filename()
+
+                if raw_filename:
+                    filename = collapse_rfc2231_value(raw_filename)
+                else:
+                    filename = _(u'attachment-%i') % counter
+                    counter += 1
+
+                logger.debug('filename: %s' % filename)
+               
+                document_file = Attachment(part, name=filename)
+                source.upload_file(document_file, filename=filename)
+
 
     def fetch_mail(self):
         logger.debug('Starting POP3 email fetch')
@@ -199,7 +226,7 @@ class POP3Email(BaseModel):
         else:
             port = self.port or POP3_PORT
             logger.debug('port: %d' % port)
-            mailbox = poplib.POP3(self.host, int(port))#, timeout=POP3_TIMEOUT) 
+            mailbox = poplib.POP3(self.host, int(port), timeout=POP3_TIMEOUT) 
 
         mailbox.getwelcome()
         mailbox.user(self.username)
@@ -213,26 +240,15 @@ class POP3Email(BaseModel):
         for message_info in messages_info[1]:
             message_number, message_size = message_info.split()
             logger.debug('message_number: %s' % message_number)
-
-            #message_size = message.split(' ')[1]
             logger.debug('message_size: %s' % message_size)
-            
+           
             complete_message = '\n'.join(mailbox.retr(message_number)[1])
-            logger.debug('complete_message: %s' % complete_message)
 
-            POP3Email.process_message(complete_message)
-
-        #for messages in server.list()[1]:
-        #logger.debug('message_count: %d' % message_count)
-        #for message_number in range(message_count):
-        #    #message = '\n'.join(mailbox.retr(message_number)[1])
-        #    message = '\n'.join(mailbox.retr(message_number+1)[1])
-        #    #message = email.message_from_string('\n'.join(mailbox.retr(message_list+1)[1]))
-
-        #    #for message in mailbox.retr(message_list+1)[1]: 
-        #    #    mail = email.message_from_string(''.join(message))
-
+            POP3Email.process_message(self, complete_message)
+            mailbox.dele(message_number)
             
+        mailbox.quit()
+        
     class Meta(BaseModel.Meta):
         verbose_name = _(u'POP email')
         verbose_name_plural = _(u'POP email')
