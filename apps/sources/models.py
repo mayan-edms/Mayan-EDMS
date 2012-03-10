@@ -188,7 +188,6 @@ class POP3Email(BaseModel):
     username = models.CharField(max_length=64, verbose_name=_(u'username'))
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
-    delete_messages = models.BooleanField(default=True, verbose_name=_(u'delete messages'), help_text=_(u'Delete messages after downloading their respective attached documents.'))
 
     # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
     @staticmethod
@@ -197,7 +196,7 @@ class POP3Email(BaseModel):
         counter = 1
 
         for part in email.walk():
-            disposition = part.get('Content-Disposition', 'attachment')
+            disposition = part.get('Content-Disposition', 'none')
             logger.debug('Disposition: %s' % disposition)
 
             if disposition.startswith('attachment'):
@@ -245,8 +244,7 @@ class POP3Email(BaseModel):
             complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
             POP3Email.process_message(source=self, message=complete_message, expand=self.uncompress)
-            if self.delete_messages:
-                mailbox.dele(message_number)
+            mailbox.dele(message_number)
             
         mailbox.quit()
         
