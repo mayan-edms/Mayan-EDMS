@@ -188,16 +188,16 @@ class POP3Email(BaseModel):
     username = models.CharField(max_length=64, verbose_name=_(u'username'))
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
-    delete_messages = models.BooleanField(verbose_name=_(u'delete messages'), help_text=_(u'Delete messages after downloading their respective attached documents.'))
+    delete_messages = models.BooleanField(default=True, verbose_name=_(u'delete messages'), help_text=_(u'Delete messages after downloading their respective attached documents.'))
 
     # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
     @staticmethod
-    def process_message(source, message):
+    def process_message(source, message, expand=False):
         email = message_from_string(message)
         counter = 1
 
         for part in email.walk():
-            disposition = part.get('Content-Disposition')
+            disposition = part.get('Content-Disposition', 'attachment')
             logger.debug('Disposition: %s' % disposition)
 
             if disposition.startswith('attachment'):
@@ -212,7 +212,7 @@ class POP3Email(BaseModel):
                 logger.debug('filename: %s' % filename)
                
                 document_file = Attachment(part, name=filename)
-                source.upload_file(document_file, filename=filename)
+                source.upload_file(document_file, filename=filename, expand=expand)
 
 
     def fetch_mail(self):
@@ -222,7 +222,7 @@ class POP3Email(BaseModel):
         if self.ssl:
             port = self.port or POP3_SSL_PORT
             logger.debug('port: %d' % port)
-            mailbox = poplib.POP3_SSL(self.host, int(port))#, POP3_TIMEOUT)
+            mailbox = poplib.POP3_SSL(self.host, int(port))
         else:
             port = self.port or POP3_PORT
             logger.debug('port: %d' % port)
@@ -244,8 +244,9 @@ class POP3Email(BaseModel):
            
             complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
-            POP3Email.process_message(self, complete_message)
-            mailbox.dele(message_number)
+            POP3Email.process_message(source=self, message=complete_message, expand=self.uncompress)
+            if self.delete_messages:
+                mailbox.dele(message_number)
             
         mailbox.quit()
         
