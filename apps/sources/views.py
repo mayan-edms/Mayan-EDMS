@@ -20,6 +20,7 @@ from documents.conf.settings import THUMBNAIL_SIZE
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 from common.utils import encapsulate
+from common.widgets import two_state_template
 import sendfile
 from acls.models import AccessEntry
 
@@ -447,6 +448,9 @@ def setup_source_list(request, source_type):
         'hide_link': True,
         'list_object_variable_name': 'source',
         'source_type': source_type,
+        'extra_columns': [
+            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda source: two_state_template(source.enabled))},
+        ],
     }
 
     return render_to_response('generic_list.html', context,
