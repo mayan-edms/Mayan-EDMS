@@ -2,6 +2,16 @@ from __future__ import absolute_import
 
 from ast import literal_eval
 import logging
+import poplib
+from email.Utils import collapse_rfc2231_value
+from email import message_from_string
+import os
+import datetime
+
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -9,6 +19,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 from django.db import transaction
+from django.core.files import File
+from django.core.files.base import ContentFile
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
@@ -21,13 +33,15 @@ from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
 from acls.utils import apply_default_acls
 
-from .managers import SourceTransformationManager
+from .managers import SourceTransformationManager, POP3EmailLogManager
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICE_Y)
+    SOURCE_UNCOMPRESS_CHOICE_Y, POP3_PORT, POP3_SSL_PORT,
+    SOURCE_CHOICE_POP3_EMAIL, DEFAULT_POP3_INTERVAL)
 from .compressed_file import CompressedFile, NotACompressedFile
+from .conf.settings import POP3_TIMEOUT
 
 logger = logging.getLogger(__name__)
 
@@ -149,6 +163,133 @@ class InteractiveBaseModel(BaseModel):
 
     class Meta(BaseModel.Meta):
         abstract = True
+        
+        
+class PseudoFile(File):
+    def __init__(self, file, name):
+        self.name = name
+        self.file = file
+        self.file.seek(0, os.SEEK_END)
+        self.size = self.file.tell()
+        self.file.seek(0)
+    
+        
+class Attachment(File):
+    def __init__(self, part, name):
+        self.name = name
+        self.file = PseudoFile(StringIO(part.get_payload(decode=True)), name=name)
+
+
+class POP3Email(BaseModel):
+    is_interactive = False   
+    source_type = SOURCE_CHOICE_POP3_EMAIL
+    
+    host = models.CharField(max_length=64, verbose_name=_(u'host'))
+    ssl = models.BooleanField(verbose_name=_(u'SSL'))
+    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'), help_text=_(u'Typical values are: %d and %d for SSL.  These are the defaults if no port is specified.') % (POP3_PORT, POP3_SSL_PORT))
+    username = models.CharField(max_length=64, verbose_name=_(u'username'))
+    password = models.CharField(max_length=64, verbose_name=_(u'password'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    interval = models.PositiveIntegerField(default=DEFAULT_POP3_INTERVAL, verbose_name=_(u'interval'), help_text=_(u'Interval in seconds between document downloads from this account.'))
+
+    # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
+    @staticmethod
+    def process_message(source, message, expand=False):
+        email = message_from_string(message)
+        counter = 1
+
+        for part in email.walk():
+            disposition = part.get('Content-Disposition', 'none')
+            logger.debug('Disposition: %s' % disposition)
+
+            if disposition.startswith('attachment'):
+                raw_filename = part.get_filename()
+
+                if raw_filename:
+                    filename = collapse_rfc2231_value(raw_filename)
+                else:
+                    filename = _(u'attachment-%i') % counter
+                    counter += 1
+
+                logger.debug('filename: %s' % filename)
+               
+                document_file = Attachment(part, name=filename)
+                source.upload_file(document_file, filename=filename, expand=expand)
+
+
+    def fetch_mail(self):
+        try:
+            last_check = self.pop3emaillog_set.latest().creation_datetime
+        except POP3EmailLog.DoesNotExist:
+            # Trigger email fetch when there are no previous logs
+            initial_trigger = True
+            difference = datetime.timedelta(seconds=0)
+        else:
+            difference = datetime.datetime.now() - last_check
+            initial_trigger = False
+        
+        if difference >= datetime.timedelta(seconds=self.interval) or initial_trigger:
+            try:
+                logger.debug('Starting POP3 email fetch')
+                logger.debug('host: %s' % self.host)
+                logger.debug('ssl: %s' % self.ssl)
+                if self.ssl:
+                    port = self.port or POP3_SSL_PORT
+                    logger.debug('port: %d' % port)
+                    mailbox = poplib.POP3_SSL(self.host, int(port))
+                else:
+                    port = self.port or POP3_PORT
+                    logger.debug('port: %d' % port)
+                    mailbox = poplib.POP3(self.host, int(port), timeout=POP3_TIMEOUT) 
+
+                mailbox.getwelcome()
+                mailbox.user(self.username)
+                mailbox.pass_(self.password)
+                messages_info = mailbox.list()
+                
+                logger.debug('messages_info:')
+                logger.debug(messages_info)
+                logger.debug('messages count: %s' % len(messages_info[1]))
+                
+                for message_info in messages_info[1]:
+                    message_number, message_size = message_info.split()
+                    logger.debug('message_number: %s' % message_number)
+                    logger.debug('message_size: %s' % message_size)
+                   
+                    complete_message = '\n'.join(mailbox.retr(message_number)[1])
+
+                    POP3Email.process_message(source=self, message=complete_message, expand=self.uncompress)
+                    mailbox.dele(message_number)
+                    
+                mailbox.quit()
+                POP3EmailLog.objects.save_status(pop3_email=self, status='Successful connection.')
+
+            except Exception, exc:
+                logger.error('Unhandled exception: %s' % exc)
+                POP3EmailLog.objects.save_status(pop3_email=self, status='Error: %s' % exc)
+        
+    class Meta(BaseModel.Meta):
+        verbose_name = _(u'POP email')
+        verbose_name_plural = _(u'POP email')
+
+
+class POP3EmailLog(models.Model):
+    pop3_email = models.ForeignKey(POP3Email, verbose_name=_(u'POP3 email'))
+    creation_datetime = models.DateTimeField(verbose_name=_(u'date time'))
+    status = models.TextField(verbose_name=_(u'status'))
+    
+    objects = POP3EmailLogManager()
+    
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.creation_datetime = datetime.datetime.now()
+        return super(POP3EmailLog, self).save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = _(u'POP3 email log')
+        verbose_name_plural = _(u'POP3 emails logs')
+        get_latest_by = 'creation_datetime'
+        ordering = ('creation_datetime',)
 
 
 class StagingFolder(InteractiveBaseModel):

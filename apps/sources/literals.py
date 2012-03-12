@@ -1,5 +1,9 @@
 from django.utils.translation import ugettext_lazy as _
 
+POP3_PORT = 110
+POP3_SSL_PORT = 995
+DEFAULT_POP3_INTERVAL = 15 * 60 # 15 minutes in seconds
+
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
 SOURCE_UNCOMPRESS_CHOICE_N = 'n'
 SOURCE_UNCOMPRESS_CHOICE_ASK = 'a'
@@ -42,15 +46,18 @@ SOURCE_ICON_CHOICES = (
 SOURCE_CHOICE_WEB_FORM = 'webform'
 SOURCE_CHOICE_STAGING = 'staging'
 SOURCE_CHOICE_WATCH = 'watch'
+SOURCE_CHOICE_POP3_EMAIL = 'pop3'
 
 SOURCE_CHOICES = (
     (SOURCE_CHOICE_WEB_FORM, _(u'web form')),
     (SOURCE_CHOICE_STAGING, _(u'server staging folder')),
     (SOURCE_CHOICE_WATCH, _(u'server watch folder')),
+    (SOURCE_CHOICE_POP3_EMAIL, _(u'pop3 email')),
 )
 
 SOURCE_CHOICES_PLURAL = (
     (SOURCE_CHOICE_WEB_FORM, _(u'web forms')),
     (SOURCE_CHOICE_STAGING, _(u'server staging folders')),
     (SOURCE_CHOICE_WATCH, _(u'server watch folders')),
+    (SOURCE_CHOICE_POP3_EMAIL, _(u'pop3 emails')),
 )
