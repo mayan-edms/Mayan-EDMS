@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 
 POP3_PORT = 110
 POP3_SSL_PORT = 995
+DEFAULT_POP3_INTERVAL = 15 * 60 # 15 minutes in seconds
 
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
 SOURCE_UNCOMPRESS_CHOICE_N = 'n'

@@ -32,4 +32,6 @@ urlpatterns = patterns('sources.views',
     url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/transformation/create/$', 'setup_source_transformation_create', (), 'setup_source_transformation_create'),
     url(r'^setup/interactive/source/transformation/(?P<transformation_id>\d+)/edit/$', 'setup_source_transformation_edit', (), 'setup_source_transformation_edit'),
     url(r'^setup/interactive/source/transformation/(?P<transformation_id>\d+)/delete/$', 'setup_source_transformation_delete', (), 'setup_source_transformation_delete'),
+    
+    url(r'^setup/source/(?P<source_type>\w+)/(?P<source_pk>\d+)/log/list/$', 'setup_source_log_list', (), 'setup_source_log_list'),    
 )

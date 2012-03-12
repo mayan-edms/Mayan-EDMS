@@ -24,7 +24,7 @@ import sendfile
 from acls.models import AccessEntry
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder, POP3Email)
+    WatchFolder, POP3Email, POP3EmailLog)
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
     SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL)
 from .literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
@@ -590,6 +590,40 @@ def setup_source_create(request, source_type):
     context_instance=RequestContext(request))
 
 
+def setup_source_log_list(request, source_type, source_pk):
+    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        cls = WebForm
+    elif source_type == SOURCE_CHOICE_STAGING:
+        cls = StagingFolder
+    elif source_type == SOURCE_CHOICE_WATCH:
+        cls = WatchFolder
+    elif source_type == SOURCE_CHOICE_POP3_EMAIL:
+        cls = POP3Email
+        
+    source = get_object_or_404(cls, pk=source_pk)
+
+    context = {
+        'object_list': POP3EmailLog.objects.filter(pop3_email=source).order_by('-creation_datetime'),
+        'title': _(u'logs for: %s') % source.fullname(),
+        'source': source,
+        'object_name': _(u'source'),
+        'navigation_object_name': 'source',
+        'source_type': source_type,
+        'extra_columns': [
+            {'name': _(u'Date time'), 'attribute': 'creation_datetime'},
+            {'name': _(u'Status'), 'attribute': 'status'},
+            ],
+        'hide_link': True,
+        'hide_object': True,
+        'hide_links': True,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
+
 def setup_source_transformation_list(request, source_type, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
@@ -609,6 +643,7 @@ def setup_source_transformation_list(request, source_type, source_id):
         'title': _(u'transformations for: %s') % source.fullname(),
         'source': source,
         'object_name': _(u'source'),
+        'source_type': source_type,
         'navigation_object_name': 'source',
         'list_object_variable_name': 'transformation',
         'extra_columns': [
@@ -724,6 +759,7 @@ def setup_source_transformation_create(request, source_type, source_id):
     return render_to_response('generic_form.html', {
         'form': form,
         'source': source,
+        'source_type': source_type,
         'object_name': _(u'source'),
         'navigation_object_name': 'source',
         'title': _(u'Create new transformation for source: %s') % source,
