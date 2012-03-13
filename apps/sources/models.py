@@ -129,10 +129,19 @@ class BaseModel(models.Model):
 
         try:
             new_version = document.new_version(file=file_object, **new_version_data)
-        except Exception:
+        except Exception, exc:
+            logger.error('Unhandled exception: %s' % exc)
             # Don't leave the database in a broken state
-            # document.delete()
+            # Delete invalid documents with no version child
+            # For databases that doesn't support transactions, delete the document
+            if document.version_set.count() == 0:
+                logger.debug('Empty document with no previous versions, deleting.')
+                document.delete()
+            # Rollback everything in case the database DOES support
+            # transactions
             transaction.rollback()
+            # Re-raise the error so that the view can capture
+            # and display it
             raise
 
         if filename:
