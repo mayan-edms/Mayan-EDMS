@@ -224,8 +224,7 @@ class POP3Email(BaseModel):
                 logger.debug('filename: %s' % filename)
                
                 document_file = Attachment(part, name=filename)
-                source.upload_file(document_file, expand=source.uncompress, document_type=source.document_type)
-
+                source.upload_file(document_file, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
 
     def fetch_mail(self):
         try:
