@@ -9,7 +9,7 @@ from smart_settings.api import Setting, SettingNamespace
 namespace = SettingNamespace('sources', _(u'Sources'), module='sources.conf.settings')
 
 POP3_DEFAULT_TIMEOUT = 10 # for POP3 only not POP3_SSL
-POP3_DEFAULT_EMAIL_PROCESSING_INTERVAL = 5
+POP3_DEFAULT_EMAIL_PROCESSING_INTERVAL = 60
 DEFAULT_POP3_EMAIL_LOG_COUNT = 10 # Max log entries to store
 
 Setting(
