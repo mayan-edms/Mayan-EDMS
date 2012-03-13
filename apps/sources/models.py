@@ -200,10 +200,11 @@ class POP3Email(BaseModel):
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     interval = models.PositiveIntegerField(default=DEFAULT_POP3_INTERVAL, verbose_name=_(u'interval'), help_text=_(u'Interval in seconds between document downloads from this account.'))
+    document_type = models.ForeignKey(DocumentType, null=True, blank=True, verbose_name=_(u'document type'), help_text=_(u'Assign a document type to documents uploaded from this source.'))
 
     # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
     @staticmethod
-    def process_message(source, message, expand=False):
+    def process_message(source, message):
         email = message_from_string(message)
         counter = 1
 
@@ -223,7 +224,7 @@ class POP3Email(BaseModel):
                 logger.debug('filename: %s' % filename)
                
                 document_file = Attachment(part, name=filename)
-                source.upload_file(document_file, expand=expand)
+                source.upload_file(document_file, expand=source.uncompress, document_type=source.document_type)
 
 
     def fetch_mail(self):
@@ -267,7 +268,7 @@ class POP3Email(BaseModel):
                    
                     complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
-                    POP3Email.process_message(source=self, message=complete_message, expand=self.uncompress)
+                    POP3Email.process_message(source=self, message=complete_message)
                     mailbox.dele(message_number)
                     
                 mailbox.quit()
