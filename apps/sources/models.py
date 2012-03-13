@@ -195,10 +195,10 @@ class POP3Email(BaseModel):
     
     host = models.CharField(max_length=64, verbose_name=_(u'host'))
     ssl = models.BooleanField(verbose_name=_(u'SSL'))
-    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'), help_text=_(u'Typical values are: %d and %d for SSL.  These are the defaults if no port is specified.') % (POP3_PORT, POP3_SSL_PORT))
+    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'), help_text=_(u'Override the defaults values of %d and %d for SSL, can be left blank otherwise.') % (POP3_PORT, POP3_SSL_PORT))
     username = models.CharField(max_length=64, verbose_name=_(u'username'))
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not, compressed archives.'))
     interval = models.PositiveIntegerField(default=DEFAULT_POP3_INTERVAL, verbose_name=_(u'interval'), help_text=_(u'Interval in seconds between document downloads from this account.'))
     document_type = models.ForeignKey(DocumentType, null=True, blank=True, verbose_name=_(u'document type'), help_text=_(u'Assign a document type to documents uploaded from this source.'))
 

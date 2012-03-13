@@ -119,3 +119,6 @@ class SourceTransformationForm_create(forms.ModelForm):
 class POP3EmailSetupForm(forms.ModelForm):
     class Meta:
         model = POP3Email
+        widgets = {
+            'password': forms.widgets.PasswordInput,
+        }
