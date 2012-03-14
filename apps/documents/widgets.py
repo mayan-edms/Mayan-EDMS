@@ -11,15 +11,15 @@ from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
 from mimetype.api import get_error_icon_url
 
 
-def document_thumbnail(document):
-    return document_html_widget(document, click_view='document_preview')
+def document_thumbnail(document, **kwargs):
+    return document_html_widget(document, click_view='document_preview', **kwargs)
 
 
 def document_link(document):
     return mark_safe(u'<a href="%s">%s</a>' % (reverse('document_view_simple', args=[document.pk]), document))
 
 
-def document_html_widget(document, view='document_thumbnail', click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None):
+def document_html_widget(document, view='document_thumbnail', click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None, title=None):
     result = []
 
     alt_text = _(u'document page image')
@@ -47,8 +47,13 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
 
     result.append(u'<div class="tc" id="document-%d-%d">' % (document.pk, page if page else 1))
 
+    if title:
+        title_template = u'title="%s"' % title
+    else:
+        title_template = u''
+
     if click_view:
-        result.append(u'<a %s class="%s" href="%s">' % (gallery_template, fancybox_class, u'%s?%s' % (reverse(click_view, args=[document.pk]), query_string)))
+        result.append(u'<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, u'%s?%s' % (reverse(click_view, args=[document.pk]), query_string), title_template))
     result.append(u'<img class="thin_border lazy-load" data-href="%s" src="%simages/ajax-loader.gif" alt="%s" />' % (preview_view, settings.STATIC_URL, alt_text))
     result.append(u'<noscript><img style="border: 1px solid black;" src="%s" alt="%s" /></noscript>' % (preview_view, alt_text))
 
