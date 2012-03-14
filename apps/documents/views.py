@@ -29,7 +29,6 @@ from filetransfers.api import serve_file
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
-from document_indexing.api import update_indexes, delete_indexes
 from history.api import create_history
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
@@ -208,11 +207,6 @@ def document_delete(request, document_id=None, document_id_list=None):
     if request.method == 'POST':
         for document in documents:
             try:
-                warnings = delete_indexes(document)
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, warning)
-
                 document.delete()
                 #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
                 messages.success(request, _(u'Document deleted successfully.'))
@@ -257,28 +251,24 @@ def document_edit(request, document_id):
         old_document = copy.copy(document)
         form = DocumentForm_edit(request.POST, instance=document)
         if form.is_valid():
-            warnings = delete_indexes(document)
-            if request.user.is_staff or request.user.is_superuser:
-                for warning in warnings:
-                    messages.warning(request, warning)
-
-            document.filename = form.cleaned_data['new_filename']
-            document.description = form.cleaned_data['description']
-
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
-                    document.filename = form.cleaned_data['document_type_available_filenames'].filename
+                    new_filename = form.cleaned_data['document_type_available_filenames'].filename
+                else:
+                    new_filename = form.cleaned_data['new_filename']
+            else:
+                new_filename = form.cleaned_data['new_filename']
 
+            print 'new_filename', new_filename
+
+            document.filename = new_filename
+            document.description = form.cleaned_data['description']
             document.save()
+            
             create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['filename', 'description'])})
             RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
-
-            warnings = update_indexes(document)
-            if request.user.is_staff or request.user.is_superuser:
-                for warning in warnings:
-                    messages.warning(request, warning)
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:

@@ -1,13 +1,18 @@
 from __future__ import absolute_import
 
+import logging
+
 from django.utils.translation import ugettext_lazy as _
+from django.db.models.signals import pre_save, post_save
+from django.dispatch import receiver
 
 from navigation.api import (register_top_menu, register_sidebar_template,
     register_links)
 
 from main.api import register_maintenance_links
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
-from documents.models import Document
+from documents.models import Document, DocumentVersion
+from metadata.models import DocumentMetadata
 from project_setup.api import register_setup
 
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
@@ -18,7 +23,7 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_EDIT,
     PERMISSION_DOCUMENT_INDEXING_DELETE
 )
-
+from .api import update_indexes, delete_indexes
 
 def is_root_node(context):
     return context['node'].parent is None
@@ -27,6 +32,7 @@ def is_root_node(context):
 def is_not_instance_root_node(context):
     return context['object'].parent is not None
 
+logger = logging.getLogger(__name__)
 
 index_setup = {'text': _(u'indexes'), 'view': 'index_setup_list', 'icon': 'tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP], 'children_view_regex': [r'^index_setup', r'^template_node']}
 index_setup_list = {'text': _(u'index list'), 'view': 'index_setup_list', 'famfam': 'tab', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
@@ -63,3 +69,26 @@ register_links([Index, 'index_setup_list', 'index_setup_create', 'template_node_
 register_links(Index, [index_setup_edit, index_setup_delete, index_setup_view])
 
 register_links(IndexTemplateNode, [template_node_create, template_node_edit, template_node_delete])
+
+@receiver(pre_save, dispatch_uid='delete_indexes_handler')
+def delete_indexes_handler(sender, instance, **kwargs):
+    if isinstance(instance, DocumentVersion):
+        logger.debug('received pre save signal - document version')
+        logger.debug('instance: %s' % instance)
+        delete_indexes(instance.document)
+    elif isinstance(instance, DocumentMetadata):
+        logger.debug('received pre save signal - document metadata')
+        logger.debug('instance: %s' % instance)
+        delete_indexes(instance.document)
+
+
+@receiver(post_save, dispatch_uid='update_indexes_handler')
+def update_indexes_handler(sender, instance, **kwargs):
+    if isinstance(instance, DocumentVersion):
+        logger.debug('received post save signal - document version')
+        logger.debug('instance: %s' % instance)
+        update_indexes(instance.document)
+    elif isinstance(instance, DocumentMetadata):
+        logger.debug('received post save signal - document metadata')
+        logger.debug('instance: %s' % instance)
+        update_indexes(instance.document)
