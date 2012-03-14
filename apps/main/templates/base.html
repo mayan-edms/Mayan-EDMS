@@ -131,33 +131,42 @@
             });        
 
             $("a.fancybox").fancybox({
-            'titleShow'     : false,
-            'transitionIn'  : 'elastic',
-            'transitionOut' : 'elastic',
-            'easingIn'      : 'easeOutBack',
-            'easingOut'     : 'easeInBack',
-            'type'          : 'image',
-            'autoScale'     : true
+                'titleShow'     : true,
+                'transitionIn'  : 'elastic',
+                'transitionOut' : 'elastic',
+                'easingIn'      : 'easeOutBack',
+                'easingOut'     : 'easeInBack',
+                'type'          : 'image',
+                'autoScale'     : true,
+                'onComplete': function() {
+                    $("#fancybox-title").css({'top':'0px', 'bottom':'auto'});
+                }
             });
 
             $("a.fancybox-staging").fancybox({
-            'titleShow'     : true,
-            'transitionIn'  : 'elastic',
-            'transitionOut' : 'elastic',
-            'easingIn'      : 'easeOutBack',
-            'easingOut'     : 'easeInBack',
-            'type'          : 'image',
-            'autoScale'     : true
+                'titleShow'     : true,
+                'transitionIn'  : 'elastic',
+                'transitionOut' : 'elastic',
+                'easingIn'      : 'easeOutBack',
+                'easingOut'     : 'easeInBack',
+                'type'          : 'image',
+                'autoScale'     : true,
+                'onComplete': function() {
+                    $("#fancybox-title").css({'top':'0px', 'bottom':'auto'});
+                }
             });
             
             $("a.fancybox-noscaling").fancybox({
-            'titleShow'     : false,
-            'transitionIn'  : 'elastic',
-            'transitionOut' : 'elastic',
-            'easingIn'      : 'easeOutBack',
-            'easingOut'     : 'easeInBack',
-            'type'          : 'image',
-            'autoScale'     : false
+                'titleShow'     : true,
+                'transitionIn'  : 'elastic',
+                'transitionOut' : 'elastic',
+                'easingIn'      : 'easeOutBack',
+                'easingOut'     : 'easeInBack',
+                'type'          : 'image',
+                'autoScale'     : false,
+                'onComplete': function() {
+                    $("#fancybox-title").css({'top':'0px', 'bottom':'auto'});
+                }
             });
             
             $("a.fancybox-iframe").fancybox({
