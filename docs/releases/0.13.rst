@@ -9,7 +9,8 @@ Welcome to Mayan EDMS v0.13!
 Overview
 ========
 
-* POP3 email document source
+* IMAP and POP3 email document source
+* Send document or document links via E-mail
 
 
 What's new in Mayan EDMS v0.13
@@ -17,6 +18,7 @@ What's new in Mayan EDMS v0.13
 
 E-mail document source
 ~~~~~~~~~~~~~~~~~~~~~~
+POP3 and IMAP
 
 
 Send document or document links via E-mail
