@@ -25,15 +25,16 @@ import sendfile
 from acls.models import AccessEntry
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder, POP3Email, POP3EmailLog)
+    WatchFolder, POP3Email, SourceLog, IMAPEmail)
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL)
+    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL, SOURCE_CHOICE_IMAP_EMAIL)
 from .literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_UNCOMPRESS_CHOICE_ASK)
 from .staging import create_staging_file_class
 from .forms import (StagingDocumentForm, WebFormForm,
     WatchFolderSetupForm)
-from .forms import WebFormSetupForm, StagingFolderSetupForm, POP3EmailSetupForm
+from .forms import (WebFormSetupForm, StagingFolderSetupForm,
+    POP3EmailSetupForm, IMAPEmailSetupForm)
 from .forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
@@ -441,6 +442,8 @@ def setup_source_list(request, source_type):
         cls = WatchFolder
     elif source_type == SOURCE_CHOICE_POP3_EMAIL:
         cls = POP3Email
+    elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
+        cls = IMAPEmail
 
     context = {
         'object_list': cls.objects.all(),
@@ -472,6 +475,9 @@ def setup_source_edit(request, source_type, source_id):
     elif source_type == SOURCE_CHOICE_POP3_EMAIL:
         cls = POP3Email
         form_class = POP3EmailSetupForm
+    elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
+        cls = IMAPEmail
+        form_class = IMAPEmailSetupForm
         
     source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
@@ -518,6 +524,10 @@ def setup_source_delete(request, source_type, source_id):
         cls = POP3Email
         form_icon = u'email_delete.png'
         redirect_view = 'setup_pop3_email_list'
+    elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
+        cls = IMAPEmail
+        form_icon = u'email_delete.png'
+        redirect_view = 'setup_imap_email_list'
 
     redirect_view = reverse('setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
@@ -572,6 +582,10 @@ def setup_source_create(request, source_type):
         cls = POP3Email
         form_class = POP3EmailSetupForm
         redirect_view = 'setup_pop3_email_list'
+    elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
+        cls = IMAPEmail
+        form_class = IMAPEmailSetupForm
+        redirect_view = 'setup_imap_email_list'
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
@@ -605,11 +619,13 @@ def setup_source_log_list(request, source_type, source_pk):
         cls = WatchFolder
     elif source_type == SOURCE_CHOICE_POP3_EMAIL:
         cls = POP3Email
+    elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
+        cls = IMAPEmail
         
     source = get_object_or_404(cls, pk=source_pk)
 
     context = {
-        'object_list': POP3EmailLog.objects.filter(pop3_email=source).order_by('-creation_datetime'),
+        'object_list': SourceLog.objects.get_for_source(source),
         'title': _(u'logs for: %s') % source.fullname(),
         'source': source,
         'object_name': _(u'source'),
@@ -639,6 +655,8 @@ def setup_source_transformation_list(request, source_type, source_id):
         cls = WatchFolder
     elif source_type == SOURCE_CHOICE_POP3_EMAIL:
         cls = POP3Email
+    elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
+        cls = IMAPEmail
         
     source = get_object_or_404(cls, pk=source_id)
 
@@ -741,7 +759,9 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = WatchFolder
     elif source_type == SOURCE_CHOICE_POP3_EMAIL:
         cls = POP3Email
-        
+    elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
+        cls = IMAPEmail
+                
     source = get_object_or_404(cls, pk=source_id)
 
     redirect_view = reverse('setup_source_transformation_list', args=[source.source_type, source.pk])

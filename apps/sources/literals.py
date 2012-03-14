@@ -4,6 +4,12 @@ POP3_PORT = 110
 POP3_SSL_PORT = 995
 DEFAULT_POP3_INTERVAL = 15 * 60 # 15 minutes in seconds
 
+IMAP_PORT = 143
+IMAP_SSL_PORT = 993
+DEFAULT_IMAP_INTERVAL = 15 * 60 # 15 minutes in seconds
+IMAP_LOCK_TIMEOUT = 60
+IMAP_DEFAULT_MAILBOX = 'INBOX'
+
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
 SOURCE_UNCOMPRESS_CHOICE_N = 'n'
 SOURCE_UNCOMPRESS_CHOICE_ASK = 'a'
@@ -47,17 +53,20 @@ SOURCE_CHOICE_WEB_FORM = 'webform'
 SOURCE_CHOICE_STAGING = 'staging'
 SOURCE_CHOICE_WATCH = 'watch'
 SOURCE_CHOICE_POP3_EMAIL = 'pop3'
+SOURCE_CHOICE_IMAP_EMAIL = 'imap'
 
 SOURCE_CHOICES = (
     (SOURCE_CHOICE_WEB_FORM, _(u'web form')),
     (SOURCE_CHOICE_STAGING, _(u'server staging folder')),
     (SOURCE_CHOICE_WATCH, _(u'server watch folder')),
-    (SOURCE_CHOICE_POP3_EMAIL, _(u'pop3 email')),
+    (SOURCE_CHOICE_POP3_EMAIL, _(u'POP3 email')),
+    (SOURCE_CHOICE_IMAP_EMAIL, _(u'IMAP email')),
 )
 
 SOURCE_CHOICES_PLURAL = (
     (SOURCE_CHOICE_WEB_FORM, _(u'web forms')),
     (SOURCE_CHOICE_STAGING, _(u'server staging folders')),
     (SOURCE_CHOICE_WATCH, _(u'server watch folders')),
-    (SOURCE_CHOICE_POP3_EMAIL, _(u'pop3 emails')),
+    (SOURCE_CHOICE_POP3_EMAIL, _(u'POP3 emails')),
+    (SOURCE_CHOICE_IMAP_EMAIL, _(u'IMAP emails')),
 )

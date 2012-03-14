@@ -5,7 +5,7 @@ from ast import literal_eval
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 
-from .conf.settings import POP3_EMAIL_LOG_SIZE
+from .conf.settings import LOG_SIZE
 
 
 class SourceTransformationManager(models.Manager):
@@ -30,10 +30,19 @@ class SourceTransformationManager(models.Manager):
         return transformations, warnings
 
 
-class POP3EmailLogManager(models.Manager):
-    def save_status(self, pop3_email, status):
-        new_recent = self.model(pop3_email=pop3_email, status=status)
+class SourceLogManager(models.Manager):
+    def save_status(self, source, status):
+        new_recent = self.model(source=source, status=status)
         new_recent.save()
-        to_delete = self.model.objects.filter(pop3_email=pop3_email).order_by('-creation_datetime')[POP3_EMAIL_LOG_SIZE:]
+        content_type = ContentType.objects.get_for_model(source)
+        to_delete = self.model.objects.filter(content_type=content_type, object_id=source.pk).order_by('-creation_datetime')[LOG_SIZE:]
         for recent_to_delete in to_delete:
             recent_to_delete.delete()
+            
+    def get_for_source(self, source):
+        content_type = ContentType.objects.get_for_model(source)
+        return self.model.objects.filter(content_type=content_type, object_id=source.pk).order_by('-creation_datetime')
+        
+    def get_latest_for(self, source):
+        content_type = ContentType.objects.get_for_model(source)
+        return self.model.objects.filter(content_type=content_type, object_id=source.pk).latest().creation_datetime

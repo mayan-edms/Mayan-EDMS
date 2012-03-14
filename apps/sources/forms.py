@@ -7,7 +7,7 @@ from django.utils.translation import ugettext
 from documents.forms import DocumentForm
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder, POP3Email)
+    WatchFolder, POP3Email, IMAPEmail)
 from .widgets import FamFamRadioSelect
 from .utils import validate_whitelist_blacklist
 
@@ -116,9 +116,18 @@ class SourceTransformationForm_create(forms.ModelForm):
         exclude = ('content_type', 'object_id')
 
 
-class POP3EmailSetupForm(forms.ModelForm):
+class EmailSetupForm(forms.ModelForm):
     class Meta:
-        model = POP3Email
         widgets = {
             'password': forms.widgets.PasswordInput,
         }
+
+
+class POP3EmailSetupForm(EmailSetupForm):
+    class Meta(EmailSetupForm.Meta):
+        model = POP3Email
+
+
+class IMAPEmailSetupForm(EmailSetupForm):
+    class Meta(EmailSetupForm.Meta):
+        model = IMAPEmail

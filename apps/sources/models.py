@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from ast import literal_eval
 import logging
 import poplib
+import imaplib
 from email.Utils import collapse_rfc2231_value
 from email import message_from_string
 import os
@@ -33,13 +34,17 @@ from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
 from acls.utils import apply_default_acls
 
-from .managers import SourceTransformationManager, POP3EmailLogManager
+from .managers import SourceTransformationManager, SourceLogManager
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICE_Y, POP3_PORT, POP3_SSL_PORT,
-    SOURCE_CHOICE_POP3_EMAIL, DEFAULT_POP3_INTERVAL)
+    SOURCE_UNCOMPRESS_CHOICE_Y,
+    POP3_PORT, POP3_SSL_PORT,
+    SOURCE_CHOICE_POP3_EMAIL, DEFAULT_POP3_INTERVAL, 
+    IMAP_PORT, IMAP_SSL_PORT,
+    SOURCE_CHOICE_IMAP_EMAIL, DEFAULT_IMAP_INTERVAL, 
+    IMAP_DEFAULT_MAILBOX)
 from .compressed_file import CompressedFile, NotACompressedFile
 from .conf.settings import POP3_TIMEOUT
 
@@ -162,6 +167,27 @@ class BaseModel(models.Model):
         abstract = True
 
 
+class SourceLog(models.Model):
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    source = generic.GenericForeignKey('content_type', 'object_id')
+    creation_datetime = models.DateTimeField(verbose_name=_(u'date time'))
+    status = models.TextField(verbose_name=_(u'status'))
+    
+    objects = SourceLogManager()
+    
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.creation_datetime = datetime.datetime.now()
+        return super(SourceLog, self).save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = _(u'source log')
+        verbose_name_plural = _(u'sources logs')
+        get_latest_by = 'creation_datetime'
+        ordering = ('creation_datetime',)
+
+
 class InteractiveBaseModel(BaseModel):
     icon = models.CharField(blank=True, null=True, max_length=24, choices=SOURCE_ICON_CHOICES, verbose_name=_(u'icon'), help_text=_(u'An icon to visually distinguish this source.'))
 
@@ -189,18 +215,25 @@ class Attachment(File):
         self.file = PseudoFile(StringIO(part.get_payload(decode=True)), name=name)
 
 
-class POP3Email(BaseModel):
+class IntervalBaseModel(BaseModel):
     is_interactive = False   
-    source_type = SOURCE_CHOICE_POP3_EMAIL
-    
+
+    interval = models.PositiveIntegerField(default=DEFAULT_POP3_INTERVAL, verbose_name=_(u'interval'), help_text=_(u'Interval in seconds between document downloads from this source.'))
+    document_type = models.ForeignKey(DocumentType, null=True, blank=True, verbose_name=_(u'document type'), help_text=_(u'Assign a document type to documents uploaded from this source.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not, compressed archives.'))
+
+    class Meta(BaseModel.Meta):
+        verbose_name = _(u'interval source')
+        verbose_name_plural = _(u'interval sources')
+        abstract = True
+
+
+class EmailBaseModel(IntervalBaseModel):
     host = models.CharField(max_length=64, verbose_name=_(u'host'))
     ssl = models.BooleanField(verbose_name=_(u'SSL'))
     port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'), help_text=_(u'Override the defaults values of %d and %d for SSL, can be left blank otherwise.') % (POP3_PORT, POP3_SSL_PORT))
     username = models.CharField(max_length=64, verbose_name=_(u'username'))
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not, compressed archives.'))
-    interval = models.PositiveIntegerField(default=DEFAULT_POP3_INTERVAL, verbose_name=_(u'interval'), help_text=_(u'Interval in seconds between document downloads from this account.'))
-    document_type = models.ForeignKey(DocumentType, null=True, blank=True, verbose_name=_(u'document type'), help_text=_(u'Assign a document type to documents uploaded from this source.'))
 
     # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
     @staticmethod
@@ -226,10 +259,19 @@ class POP3Email(BaseModel):
                 document_file = Attachment(part, name=filename)
                 source.upload_file(document_file, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
 
+    class Meta(IntervalBaseModel.Meta):
+        verbose_name = _(u'email source')
+        verbose_name_plural = _(u'email sources')
+        abstract = True
+
+
+class POP3Email(EmailBaseModel):
+    source_type = SOURCE_CHOICE_POP3_EMAIL
+
     def fetch_mail(self):
         try:
-            last_check = self.pop3emaillog_set.latest().creation_datetime
-        except POP3EmailLog.DoesNotExist:
+            last_check = SourceLog.objects.get_latest_for(self)
+        except SourceLog.DoesNotExist:
             # Trigger email fetch when there are no previous logs
             initial_trigger = True
             difference = datetime.timedelta(seconds=0)
@@ -267,38 +309,78 @@ class POP3Email(BaseModel):
                    
                     complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
-                    POP3Email.process_message(source=self, message=complete_message)
+                    EmailBaseModel.process_message(source=self, message=complete_message)
                     mailbox.dele(message_number)
                     
                 mailbox.quit()
-                POP3EmailLog.objects.save_status(pop3_email=self, status='Successful connection.')
+                SourceLog.objects.save_status(source=self, status='Successful connection.')
 
             except Exception, exc:
                 logger.error('Unhandled exception: %s' % exc)
-                POP3EmailLog.objects.save_status(pop3_email=self, status='Error: %s' % exc)
+                SourceLog.objects.save_status(source=self, status='Error: %s' % exc)
         
-    class Meta(BaseModel.Meta):
+    class Meta(EmailBaseModel.Meta):
         verbose_name = _(u'POP email')
         verbose_name_plural = _(u'POP email')
 
 
-class POP3EmailLog(models.Model):
-    pop3_email = models.ForeignKey(POP3Email, verbose_name=_(u'POP3 email'))
-    creation_datetime = models.DateTimeField(verbose_name=_(u'date time'))
-    status = models.TextField(verbose_name=_(u'status'))
-    
-    objects = POP3EmailLogManager()
-    
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.creation_datetime = datetime.datetime.now()
-        return super(POP3EmailLog, self).save(*args, **kwargs)
-    
-    class Meta:
-        verbose_name = _(u'POP3 email log')
-        verbose_name_plural = _(u'POP3 emails logs')
-        get_latest_by = 'creation_datetime'
-        ordering = ('creation_datetime',)
+class IMAPEmail(EmailBaseModel):
+    source_type = SOURCE_CHOICE_IMAP_EMAIL
+   
+    mailbox = models.CharField(max_length=64, blank=True, verbose_name=_(u'mailbox'), help_text=_(u'Mail from which to check for messages with attached documents.  If none is specified, the default mailbox is %s') % IMAP_DEFAULT_MAILBOX)
+
+    # http://www.doughellmann.com/PyMOTW/imaplib/
+    def fetch_mail(self):
+        try:
+            last_check = SourceLog.objects.get_latest_for(self)
+        except SourceLog.DoesNotExist:
+            # Trigger email fetch when there are no previous logs
+            initial_trigger = True
+            difference = datetime.timedelta(seconds=0)
+        else:
+            difference = datetime.datetime.now() - last_check
+            initial_trigger = False
+      
+        if difference >= datetime.timedelta(seconds=self.interval) or initial_trigger:
+            try:
+                logger.debug('Starting IMAP email fetch')
+                logger.debug('host: %s' % self.host)
+                logger.debug('ssl: %s' % self.ssl)
+                if self.ssl:
+                    port = self.port or IMAP_SSL_PORT
+                    logger.debug('port: %d' % port)
+                    mailbox = imaplib.IMAP4_SSL(self.host, int(port))
+                else:
+                    port = self.port or IMAP_PORT
+                    logger.debug('port: %d' % port)
+                    mailbox = imaplib.IMAP4(self.host, int(port))
+
+                mailbox.login(self.username, self.password)
+                mailbox.select(self.mailbox or IMAP_DEFAULT_MAILBOX)
+                   
+                status, data = mailbox.search(None, 'NOT', 'DELETED')
+                if data:
+                    messages_info = data[0].split()
+                    logger.debug('messages count: %s' % len(messages_info))
+
+                    for message_number in messages_info:
+                        logger.debug('message_number: %s' % message_number)
+                        status, data = mailbox.fetch(message_number, '(RFC822)')
+                        EmailBaseModel.process_message(source=self, message=data[0][1])
+                        mailbox.store(message_number, '+FLAGS', '\\Deleted')
+
+                mailbox.expunge()
+                mailbox.close()
+                mailbox.logout()
+                SourceLog.objects.save_status(source=self, status='Successful connection.')
+                
+            except Exception, exc:
+                logger.error('Unhandled exception: %s' % exc)
+                SourceLog.objects.save_status(source=self, status='Error: %s' % exc)                
+
+    class Meta(EmailBaseModel.Meta):
+        verbose_name = _(u'IMAP email')
+        verbose_name_plural = _(u'IMAP email')
 
 
 class StagingFolder(InteractiveBaseModel):
