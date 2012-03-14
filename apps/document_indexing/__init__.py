@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import logging
 
 from django.utils.translation import ugettext_lazy as _
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 
 from navigation.api import (register_top_menu, register_sidebar_template,
@@ -70,7 +70,7 @@ register_links(Index, [index_setup_edit, index_setup_delete, index_setup_view])
 
 register_links(IndexTemplateNode, [template_node_create, template_node_edit, template_node_delete])
 
-@receiver(pre_save, dispatch_uid='delete_indexes_handler')
+
 def delete_indexes_handler(sender, instance, **kwargs):
     if isinstance(instance, DocumentVersion):
         logger.debug('received pre save signal - document version')
@@ -92,3 +92,6 @@ def update_indexes_handler(sender, instance, **kwargs):
         logger.debug('received post save signal - document metadata')
         logger.debug('instance: %s' % instance)
         update_indexes(instance.document)
+        
+pre_save.connect(delete_indexes_handler, dispatch_uid='delete_indexes_handler_on_update')
+pre_delete.connect(delete_indexes_handler, dispatch_uid='delete_indexes_handler_on_delete')
