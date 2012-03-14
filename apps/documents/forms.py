@@ -97,7 +97,7 @@ class DocumentPageForm_edit(forms.ModelForm):
 # Document forms
 class DocumentPagesCarouselWidget(forms.widgets.Widget):
     """
-    Display many small representations of a document pages
+    Display many small representations of document pages
     """
     def render(self, name, value, attrs=None):
         output = []
@@ -115,6 +115,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     page=page.page_number,
                     gallery_name='document_pages',
                     fancybox_class='fancybox-noscaling',
+                    title=ugettext(u'Page %d of %d') % (page.page_number, len(value.pages.all()))
                 )
             )
             output.append(u'<div class="tc">')

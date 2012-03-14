@@ -13,7 +13,6 @@ from django.core.exceptions import PermissionDenied
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from documents.models import Document, RecentDocument, DocumentType
 from permissions.models import Permission
-from document_indexing.api import update_indexes, delete_indexes
 from acls.models import AccessEntry
 
 from common.utils import generate_choices_w_labels, encapsulate, get_object_name
@@ -80,12 +79,6 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         formset = MetadataFormSet(request.POST)
         if formset.is_valid():
             for document in documents:
-
-                warnings = delete_indexes(document)
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)
-
                 errors = []
                 for form in formset.forms:
                     if form.cleaned_data['update']:
@@ -100,13 +93,6 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                         'document': document, 'error': error})
                 else:
                     messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
-
-                warnings = update_indexes(document)
-                if warnings and (request.user.is_staff or request.user.is_superuser):
-                    for warning in warnings:
-                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)
-                else:
-                    messages.success(request, _(u'Document indexes updated successfully.'))
 
             return HttpResponseRedirect(next)
 
@@ -244,12 +230,6 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         formset = MetadataRemoveFormSet(request.POST)
         if formset.is_valid():
             for document in documents:
-
-                warnings = delete_indexes(document)
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, _(u'Error deleting document indexes; %s') % warning)
-
                 for form in formset.forms:
                     if form.cleaned_data['update']:
                         metadata_type = get_object_or_404(MetadataType, pk=form.cleaned_data['id'])
@@ -261,13 +241,6 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                         except:
                             messages.error(request, _(u'Error removing metadata type: %(metadata_type)s from document: %(document)s.') % {
                                 'metadata_type': metadata_type, 'document': document})
-
-                warnings = update_indexes(document)
-                if warnings and (request.user.is_staff or request.user.is_superuser):
-                    for warning in warnings:
-                        messages.warning(request, _(u'Error updating document indexes; %s') % warning)
-                else:
-                    messages.success(request, _(u'Document indexes updated successfully.'))
 
             return HttpResponseRedirect(next)
 
