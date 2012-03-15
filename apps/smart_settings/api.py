@@ -4,7 +4,6 @@ from django.conf import settings as django_settings
 from django.utils.importlib import import_module
 
 from django.utils.translation import ugettext_lazy as _
-from navigation.api import register_links
 
 settings = {}
 settings_list = []
@@ -20,9 +19,6 @@ class SettingNamespace(object):
         self.name = name
         self.label = label
         self.module = module
-        link = {'text': 'LINK', 'view': 'settings_list', 'args': name, 'famfam': 'pencil_add'}#, 'permissions': [PERMISSION_SIGNATURE_UPLOAD], 'conditional_disable': has_embedded_signature}
-        register_links(['about_view'], [link], menu_name='sidebar')
-
         namespace_list.append(self)
 
     def __unicode__(self):
