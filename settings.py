@@ -175,7 +175,7 @@ INSTALLED_APPS = (
     'main',
     'rest_api',
     'document_signatures',
-
+    'workflows',
 # Has to be last so the other apps can register it's signals
     'signaler',
 )
