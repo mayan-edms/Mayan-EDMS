@@ -2,7 +2,7 @@
 Mayan EDMS v0.13 release notes
 ==============================
 
-*2012*
+April 2012
 
 Welcome to Mayan EDMS v0.13!
 
@@ -11,6 +11,8 @@ Overview
 
 * IMAP and POP3 email document source
 * Send document or document links via E-mail
+* Document previews and page previews navigation improvements
+* Ability to delete detached signatures
 
 
 What's new in Mayan EDMS v0.13
@@ -51,6 +53,8 @@ None so far
 Bugs fixed
 ==========
 * Metadata unicode fixes, while creating new documents.
+* Update indexes when renaming document
+
 
 Stuff removed
 =============
