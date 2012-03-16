@@ -18,13 +18,14 @@ setup_workflow_list_link = {'text': _(u'workflow list'), 'view': 'setup_workflow
 setup_workflow_create_link = {'text': _(u'create new'), 'view': 'setup_workflow_create', 'famfam': 'chart_organisation_add', 'permissions': [PERMISSION_WORKFLOW_SETUP_CREATE]}
 setup_workflow_edit_link = {'text': _(u'edit'), 'view': 'setup_workflow_edit', 'args': 'object.pk', 'famfam': 'chart_organisation', 'permissions': [PERMISSION_WORKFLOW_SETUP_EDIT]}
 setup_workflow_delete_link = {'text': _(u'delete'), 'view': 'setup_workflow_delete', 'args': 'object.pk', 'famfam': 'chart_organisation_delete', 'permissions': [PERMISSION_WORKFLOW_SETUP_DELETE]}
+setup_workflow_states_list_link = {'text': _(u'states'), 'view': 'setup_workflow_states_list', 'args': 'object.pk', 'famfam': 'transmit_go', 'permissions': [PERMISSION_WORKFLOW_SETUP_EDIT]}
 
 setup_state_list_link = {'text': _(u'state list'), 'view': 'setup_state_list', 'famfam': 'transmit', 'permissions': [PERMISSION_STATE_SETUP_VIEW]}
 setup_state_create_link = {'text': _(u'create new'), 'view': 'setup_state_create', 'famfam': 'transmit_add', 'permissions': [PERMISSION_STATE_SETUP_CREATE]}
 setup_state_edit_link = {'text': _(u'edit'), 'view': 'setup_state_edit', 'args': 'object.pk', 'famfam': 'transmit_edit', 'permissions': [PERMISSION_STATE_SETUP_EDIT]}
 setup_state_delete_link = {'text': _(u'delete'), 'view': 'setup_state_delete', 'args': 'object.pk', 'famfam': 'transmit_delete', 'permissions': [PERMISSION_STATE_SETUP_DELETE]}
 
-register_links(Workflow, [setup_workflow_edit_link, setup_workflow_delete_link])
+register_links(Workflow, [setup_workflow_states_list_link, setup_workflow_edit_link, setup_workflow_delete_link])
 register_links([Workflow, State, 'setup_workflow_list', 'setup_workflow_create', 'setup_state_list'], [setup_workflow_list_link], menu_name=u'form_header')
 register_links([Workflow, 'setup_workflow_list', 'setup_workflow_create'], [setup_workflow_create_link], menu_name=u'secondary_menu')
 

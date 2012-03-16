@@ -62,8 +62,8 @@ class Transition(models.Model):
     
     
 class WorkflowState(models.Model):
-    workflow = models.ForeignKey(Workflow, related_name='workflow_state_workflow', verbose_name=_(u'workflow'))
-    state = models.ForeignKey(State, related_name='workflow_state_state', verbose_name=_(u'state'))
+    workflow = models.ForeignKey(Workflow, verbose_name=_(u'workflow'))
+    state = models.ForeignKey(State, verbose_name=_(u'state'))
     description = models.TextField(blank=True, verbose_name=_(u'description'))
         
     def __unicode__(self):

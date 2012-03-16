@@ -38,8 +38,6 @@ def setup_workflow_list(request):
         'object_list': Workflow.objects.all(),
         'title': _(u'workflows'),
         'hide_link': True,
-        #'list_object_variable_name': 'source',
-        #'source_type': source_type,
         'extra_columns': [
             {'name': _(u'Initial state'), 'attribute': encapsulate(lambda workflow: workflow.initial_state or _(u'None'))},
         ],
@@ -52,7 +50,6 @@ def setup_workflow_list(request):
 def setup_workflow_create(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_CREATE])
     redirect_url = reverse('setup_workflow_list')
-    #previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_url)))
 
     if request.method == 'POST':
         form = WorkflowSetupForm(request.POST)
@@ -141,6 +138,22 @@ def setup_workflow_delete(request, workflow_pk=None, workflow_pk_list=None):
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))    
+
+
+def setup_workflow_states_list(request, workflow_pk):
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
+    workflow = get_object_or_404(Workflow, pk=workflow_pk)
+
+    context = {
+        'object_list': workflow.workflowstate_set.all(),
+        'title': _(u'workflows'),
+        'hide_link': True,
+        'object': workflow,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
 
 # States
 def setup_state_list(request):
