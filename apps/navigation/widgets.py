@@ -42,7 +42,7 @@ def render_widget(request, link):
         link = links[0]
         return mark_safe(u'<a style="text-decoration:none; margin-right: 10px;" href="%(url)s"><button style="vertical-align: top; padding: 1px; width: 110px; height: 100px; margin: 10px;"><img src="%(static_url)simages/icons/%(icon)s" alt="%(image_alt)s" /><p style="margin: 0px 0px 0px 0px;">%(string)s</p></button></a>' % {
             'url': reverse(link['view']) if 'view' in link else link['url'],
-            'icon': link.get('icon', 'link_button.png'),
+            'icon': link.getattr('icon', 'link_button.png'),
             'static_url': settings.STATIC_URL,
             'string': capfirst(link['text']),
             'image_alt': _(u'icon'),

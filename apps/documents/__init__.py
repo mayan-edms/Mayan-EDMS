@@ -121,7 +121,8 @@ document_type_filename_create = Link(text=_(u'add filename to document type'), v
 document_type_filename_edit = Link(text=_(u'edit'), view='document_type_filename_edit', args='filename.id', sprite='database_edit', permissions=[PERMISSION_DOCUMENT_TYPE_EDIT])
 document_type_filename_delete = Link(text=_(u'delete'), view='document_type_filename_delete', args='filename.id', sprite='database_delete', permissions=[PERMISSION_DOCUMENT_TYPE_EDIT])
 
-document_type_views =['setup_document_type_metadata', document_type_list', document_type_document_list', document_type_edit', document_type_delete', document_type_create', document_type_filename_list', document_type_filename_create', document_type_filename_edit', document_type_filename_delete']
+# TODO: remove this
+document_type_views=['setup_document_type_metadata', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete', 'document_type_create', 'document_type_filename_list', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_delete']
 
 # Register document type links
 bind_links([DocumentType], [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
@@ -188,10 +189,10 @@ register_top_menu(
 register_sidebar_template(['document_list_recent'], 'recent_document_list_help.html')
 register_sidebar_template(['document_type_list'], 'document_types_help.html')
 
-bind_links(Document, [document_view_simple], menu_name='form_header', position=0)
-bind_links(Document, [document_view_advanced], menu_name='form_header', position=1)
-bind_links(Document, [document_history_view], menu_name='form_header')
-bind_links(Document, [document_version_list], menu_name='form_header')
+bind_links([Document], [document_view_simple], menu_name='form_header', position=0)
+bind_links([Document], [document_view_advanced], menu_name='form_header', position=1)
+bind_links([Document], [document_history_view], menu_name='form_header')
+bind_links([Document], [document_version_list], menu_name='form_header')
 
 if (validate_path(document_settings.CACHE_PATH) == False) or (not document_settings.CACHE_PATH):
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())

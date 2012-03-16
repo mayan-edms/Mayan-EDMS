@@ -1,7 +1,12 @@
 from __future__ import absolute_import 
 
+import urlparse
+import urllib
+import logging
+
 from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
+from django.utils.encoding import smart_str, force_unicode, smart_unicode
 
 from common.utils import urlquote
 
@@ -16,21 +21,28 @@ top_menu_entries = []
 
 link_binding = {}
 
+logger = logging.getLogger(__name__)
+
 
 class ResolvedLink(object):
     active = False
     
-
 class Link(object):
-    def __init__(self, text, view, args=None, kwargs=None, sprite=None, icon=None, permissions=None, condition=None):
+    def __init__(self, text, view, klass=None, args=None, sprite=None, icon=None, permissions=None, condition=None, conditional_disable=None, description=None, dont_mark_active=False, children_view_regex=None, keep_query=False):
         self.text = text
         self.view = view
-        self.args = args or []
-        self.kwargs = kwargs or {}
+        self.args = args or {}
+        #self.kwargs = kwargs or {}
         self.sprite = sprite
         self.icon = icon
         self.permissions = permissions or []
         self.condition = condition
+        self.conditional_disable = conditional_disable
+        self.description = description
+        self.dont_mark_active = dont_mark_active
+        self.children_view_regex = children_view_regex
+        self.klass = klass
+        self.keep_query = keep_query
 
     def resolve(self, context):
         request = Variable('request').resolve(context)
@@ -52,62 +64,63 @@ class Link(object):
             #new_link = {}#copy.copy(link)
             resolved_link = ResolvedLink()
             try:
-                args, kwargs = resolve_arguments(context, link.get('args', {}))
+                #args, kwargs = resolve_arguments(context, self.get('args', {}))
+                args, kwargs = resolve_arguments(context, self.args)
             except VariableDoesNotExist:
                 args = []
                 kwargs = {}
 
-            if 'view' in link:
-                if not link.get('dont_mark_active', False):
+            if self.view:
+                if not self.dont_mark_active:
                     #new_link['active'] = link['view'] == current_view
-                    resolved_link.active = link['view'] == current_view
+                    resolved_link.active = self.view == current_view
 
                 try:
                     if kwargs:
                         #new_link['url'] = reverse(link['view'], kwargs=kwargs)
-                        resolved_link.url = reverse(link['view'], kwargs=kwargs)
+                        resolved_link.url = reverse(self.view, kwargs=kwargs)
                     else:
 #                        new_link['url'] = reverse(link['view'], args=args)
-                        resolved_link.url = reverse(link['view'], args=args)
-                        if link.get('keep_query', False):
+                        resolved_link.url = reverse(self.view, args=args)
+                        if self.keep_query:
                             #print 'parsed_query_string', parsed_query_string
                             #new_link['url'] = urlquote(new_link['url'], parsed_query_string)
-                            resolved_link.url = urlquote(new_link['url'], parsed_query_string)
+                            resolved_link.url = urlquote(resolved_link.url, parsed_query_string)
                 except NoReverseMatch, exc:
                     #new_link['url'] = '#'
                     resolved_link.url = '#'
                     #new_link['error'] = err
                     resolved_link.error = exc
-            elif 'url' in link:
-                if not link.get('dont_mark_active', False):
+            elif self.url:
+                if not self.dont_mark_active:
                     #new_link['active'] = link['url'] == current_path
-                    resolved_link.url.active = link['url'] == current_path
+                    resolved_link.url.active = self.url == current_path
                     
                 if kwargs:
                     #new_link['url'] = link['url'] % kwargs
-                    resolved_link.url = link['url'] % kwargs
+                    resolved_link.url = self.url % kwargs
                 else:
                     #new_link['url'] = link['url'] % args
-                    resolved_link.url = link['url'] % args
-                    if link.get('keep_query', False):
+                    resolved_link.url = self.url % args
+                    if link.keep_query:
                         #new_link['url'] = urlquote(new_link['url'], parsed_query_string)
-                        resolved_link.url = urlquote(new_link['url'], parsed_query_string)
+                        resolved_link.url = urlquote(resolved_link.url, parsed_query_string)
             else:
                 #new_link['active'] = False
                 resolved_link.active = False
 
-            if 'conditional_highlight' in link:
+            if self.conditional_highlight:
                 #new_link['active'] = link['conditional_highlight'](context)
-                resolved_link.active = link['conditional_highlight'](context)
+                resolved_link.active = self.conditional_highlight(context)
 
-            if 'conditional_disable' in link:
+            if self.conditional_disable:
                 #new_link['disabled'] = link['conditional_disable'](context)
-                resolved_link.disabled = link['conditional_disable'](context)
+                resolved_link.disabled = self.conditional_disable(context)
             else:
                 #new_link['disabled'] = False
                 resolved_link.disabled = False
 
-            if current_view in link.get('children_views', []):
+            if current_view in self.children_views:
                 #new_link['active'] = True
                 resolved_link.active = True
 
@@ -121,7 +134,7 @@ class Link(object):
             #        #new_link['active'] = True
             #        resolved_link.active = True
 
-            for cls in link.get('children_classes', []):
+            for cls in self.children_classes:
                 object_list = get_navigation_objects(context)
                 if object_list:
                     if type(object_list[0]['object']) == cls or object_list[0]['object'] == cls:
@@ -132,7 +145,7 @@ class Link(object):
             #context_links.append(new_link)
 
 
-def bind_links(sources, links, menu_name=None):
+def bind_links(sources, links, menu_name=None, position=0):
     """
     Associate a link to a model, a view, or an url
     """
@@ -207,7 +220,7 @@ def register_sidebar_template(source_list, template_name):
         sidebar_templates[source].append(template_name)
 
 
-def get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
+def get_context_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
@@ -226,9 +239,10 @@ def get_object_navigation_links(context, menu_name=None, links_dict=object_navig
         Override the navigation links dictionary with the provided
         link list
         """
-        navigation_object_links = Variable('overrided_object_links').resolve(context)
-        if navigation_object_links:
-            return [link for link in resolve_links(context, navigation_object_links, current_view, current_path, parsed_query_string)]
+        #navigation_object_links = Variable('overrided_object_links').resolve(context)
+        return Variable('overrided_object_links').resolve(context)
+        #if navigation_object_links:
+        #    return [link for link in resolve_links(context, navigation_object_links, current_view, current_path, parsed_query_string)]
     except VariableDoesNotExist:
         pass
 
@@ -244,16 +258,18 @@ def get_object_navigation_links(context, menu_name=None, links_dict=object_navig
 
     try:
         links = links_dict[menu_name][current_view]['links']
-        for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
-            context_links.append(link)
+        #for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
+        #    context_links.append(link)
+        context_links.extend(links)
     except KeyError:
         pass
 
     for resolved_object in get_navigation_objects(context):
         try:
             links = links_dict[menu_name][type(resolved_object['object'])]['links']
-            for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
-                context_links.append(link)
+            #for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
+            #    context_links.append(link)
+            context_links.extend(links)
         except KeyError:
             pass
 

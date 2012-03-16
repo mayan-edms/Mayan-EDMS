@@ -32,7 +32,7 @@ def maintenance_menu(request):
         user_tools[namespace].setdefault('links', [])
         for link in values['links']:
             try:
-                permissions = link.get('permissions', [])
+                permissions = link.permissions
                 Permission.objects.check_permissions(request.user, permissions)
                 user_tools[namespace]['links'].append(link)
             except PermissionDenied:
