@@ -7,8 +7,10 @@ from project_setup.api import register_setup
 
 from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,
-    PERMISSION_WORKFLOW_SETUP_DELETE)
-from .models import Workflow
+    PERMISSION_WORKFLOW_SETUP_DELETE, PERMISSION_STATE_SETUP_VIEW,
+    PERMISSION_STATE_SETUP_CREATE, PERMISSION_STATE_SETUP_EDIT,
+    PERMISSION_STATE_SETUP_DELETE)
+from .models import Workflow, State, Transition
 
 setup_workflow_link = {'text': _(u'workflows'), 'view': 'setup_workflow_list', 'icon': 'chart_organisation.png', 'permissions': [PERMISSION_WORKFLOW_SETUP_VIEW]}
 
@@ -17,9 +19,18 @@ setup_workflow_create_link = {'text': _(u'create new'), 'view': 'setup_workflow_
 setup_workflow_edit_link = {'text': _(u'edit'), 'view': 'setup_workflow_edit', 'args': 'object.pk', 'famfam': 'chart_organisation', 'permissions': [PERMISSION_WORKFLOW_SETUP_EDIT]}
 setup_workflow_delete_link = {'text': _(u'delete'), 'view': 'setup_workflow_delete', 'args': 'object.pk', 'famfam': 'chart_organisation_delete', 'permissions': [PERMISSION_WORKFLOW_SETUP_DELETE]}
 
+setup_state_list_link = {'text': _(u'state list'), 'view': 'setup_state_list', 'famfam': 'transmit', 'permissions': [PERMISSION_STATE_SETUP_VIEW]}
+setup_state_create_link = {'text': _(u'create new'), 'view': 'setup_state_create', 'famfam': 'transmit_add', 'permissions': [PERMISSION_STATE_SETUP_CREATE]}
+setup_state_edit_link = {'text': _(u'edit'), 'view': 'setup_state_edit', 'args': 'object.pk', 'famfam': 'transmit_edit', 'permissions': [PERMISSION_STATE_SETUP_EDIT]}
+setup_state_delete_link = {'text': _(u'delete'), 'view': 'setup_state_delete', 'args': 'object.pk', 'famfam': 'transmit_delete', 'permissions': [PERMISSION_STATE_SETUP_DELETE]}
+
 register_links(Workflow, [setup_workflow_edit_link, setup_workflow_delete_link])
-register_links([Workflow, 'setup_workflow_list', 'setup_workflow_create'], [setup_workflow_list_link], menu_name=u'form_header')
+register_links([Workflow, State, 'setup_workflow_list', 'setup_workflow_create', 'setup_state_list'], [setup_workflow_list_link], menu_name=u'form_header')
 register_links([Workflow, 'setup_workflow_list', 'setup_workflow_create'], [setup_workflow_create_link], menu_name=u'secondary_menu')
-#register_multi_item_links(['user_list'], [user_multiple_set_password, user_multiple_delete])
+
+register_links(State, [setup_state_edit_link, setup_state_delete_link])
+register_links([State, Workflow, 'setup_state_list', 'setup_workflow_list', 'setup_workflow_create'], [setup_state_list_link], menu_name=u'form_header')
+register_links([State, 'setup_state_list', 'setup_state_create'], [setup_state_create_link], menu_name=u'secondary_menu')
+
 
 register_setup(setup_workflow_link)
