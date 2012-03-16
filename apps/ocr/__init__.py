@@ -9,7 +9,7 @@ from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 from django.db.utils import DatabaseError
 
-from navigation.api import register_links, register_multi_item_links
+from navigation.api import bind_links, register_multi_item_links
 from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
@@ -49,16 +49,16 @@ setup_queue_transformation_create = {'text': _(u'add transformation'), 'view': '
 setup_queue_transformation_edit = {'text': _(u'edit'), 'view': 'setup_queue_transformation_edit', 'args': 'transformation.pk', 'famfam': 'shape_square_edit'}
 setup_queue_transformation_delete = {'text': _(u'delete'), 'view': 'setup_queue_transformation_delete', 'args': 'transformation.pk', 'famfam': 'shape_square_delete'}
 
-register_links(Document, [submit_document])
+bind_links(Document, [submit_document])
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
-register_links(DocumentQueue, [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
-register_links(QueueTransformation, [setup_queue_transformation_edit, setup_queue_transformation_delete])
+bind_links(DocumentQueue, [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
+bind_links(QueueTransformation, [setup_queue_transformation_edit, setup_queue_transformation_delete])
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
-register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'setup_queue_transformation_list'], [queue_document_list], menu_name='secondary_menu')
-register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
+bind_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'setup_queue_transformation_list'], [queue_document_list], menu_name='secondary_menu')
+bind_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
 

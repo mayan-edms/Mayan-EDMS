@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes import generic
 
-from navigation.api import register_links, register_model_list_columns
+from navigation.api import bind_links, register_model_list_columns
 from common.utils import encapsulate
 from acls.api import class_permissions
 from documents.models import Document
@@ -36,9 +36,9 @@ register_model_list_columns(Comment, [
     }
 ])
 
-register_links(['comments_for_document', 'comment_add', 'comment_delete', 'comment_multiple_delete'], [comment_add], menu_name='sidebar')
-register_links(Comment, [comment_delete])
-register_links(Document, [comments_for_document], menu_name='form_header')
+bind_links(['comments_for_document', 'comment_add', 'comment_delete', 'comment_multiple_delete'], [comment_add], menu_name='sidebar')
+bind_links(Comment, [comment_delete])
+bind_links(Document, [comments_for_document], menu_name='form_header')
 
 Document.add_to_class(
     'comments',

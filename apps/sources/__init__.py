@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (register_links,
+from navigation.api import (bind_links,
     register_model_list_columns)
 from common.utils import encapsulate
 from project_setup.api import register_setup
@@ -44,34 +44,34 @@ source_list = {'text': _(u'Document sources'), 'view': 'setup_web_form_list', 'f
 
 upload_version = {'text': _(u'upload new version'), 'view': 'upload_version', 'args': 'object.pk', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION]}
 
-register_links(StagingFile, [staging_file_delete])
+bind_links(StagingFile, [staging_file_delete])
 
-register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
+bind_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
 
-register_links(['setup_imap_email_list', 'setup_pop3_email_list', 'setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links([WebForm, StagingFolder, POP3Email, IMAPEmail, 'setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create', 'setup_pop3_email_list', 'setup_imap_email_list'], [setup_source_create], menu_name='secondary_menu')
+bind_links(['setup_imap_email_list', 'setup_pop3_email_list', 'setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
+bind_links([WebForm, StagingFolder, POP3Email, IMAPEmail, 'setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create', 'setup_pop3_email_list', 'setup_imap_email_list'], [setup_source_create], menu_name='secondary_menu')
 
-register_links(WebForm, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+bind_links(WebForm, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
+bind_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
-register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(StagingFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+bind_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
+bind_links(StagingFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
-register_links(POP3Email, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(POP3Email, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
-register_links(POP3Email, [setup_source_log_list])
+bind_links(POP3Email, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
+bind_links(POP3Email, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+bind_links(POP3Email, [setup_source_log_list])
 
-register_links(IMAPEmail, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(IMAPEmail, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
-register_links(IMAPEmail, [setup_source_log_list])
+bind_links(IMAPEmail, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
+bind_links(IMAPEmail, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+bind_links(IMAPEmail, [setup_source_log_list])
 
-register_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list, setup_imap_email_list], menu_name='form_header')
-register_links(WatchFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+bind_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list, setup_imap_email_list], menu_name='form_header')
+bind_links(WatchFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 # Document version
-register_links(['document_version_list', 'upload_version', 'document_version_revert'], [upload_version], menu_name='sidebar')
+bind_links(['document_version_list', 'upload_version', 'document_version_revert'], [upload_version], menu_name='sidebar')
 
-register_links(['setup_source_transformation_create', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
+bind_links(['setup_source_transformation_create', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
 
 source_views = ['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create', 'setup_source_transformation_list', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_create']
 

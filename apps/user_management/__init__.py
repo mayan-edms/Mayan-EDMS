@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User, Group
 
-from navigation.api import register_links, register_multi_item_links
+from navigation.api import bind_links, register_multi_item_links
 from project_setup.api import register_setup
 
 from .permissions import (PERMISSION_USER_CREATE, PERMISSION_USER_EDIT,
@@ -27,12 +27,12 @@ group_delete = {u'text': _('delete'), 'view': 'group_delete', 'args': 'object.id
 group_multiple_delete = {u'text': _('delete'), 'view': 'group_multiple_delete', 'famfam': 'group_delete', 'permissions': [PERMISSION_GROUP_DELETE]}
 group_members = {'text': _(u'members'), 'view': 'group_members', 'args': 'object.id', 'famfam': 'group_link', 'permissions': [PERMISSION_GROUP_EDIT]}
 
-register_links(User, [user_edit, user_set_password, user_delete])
-register_links(['user_multiple_set_password', 'user_set_password', 'user_multiple_delete', 'user_delete', 'user_edit', 'user_list', 'user_add'], [user_list, user_add], menu_name=u'secondary_menu')
+bind_links([User], [user_edit, user_set_password, user_delete])
+bind_links(['user_multiple_set_password', 'user_set_password', 'user_multiple_delete', 'user_delete', 'user_edit', 'user_list', 'user_add'], [user_list, user_add], menu_name=u'secondary_menu')
 register_multi_item_links(['user_list'], [user_multiple_set_password, user_multiple_delete])
 
-register_links(Group, [group_edit, group_members, group_delete])
-register_links(['group_multiple_delete', 'group_delete', 'group_edit', 'group_list', 'group_add', 'group_members'], [group_list, group_add], menu_name=u'secondary_menu')
+bind_links([Group], [group_edit, group_members, group_delete])
+bind_links(['group_multiple_delete', 'group_delete', 'group_edit', 'group_list', 'group_add', 'group_members'], [group_list, group_add], menu_name=u'secondary_menu')
 register_multi_item_links(['group_list'], [group_multiple_delete])
 
 user_management_views = [

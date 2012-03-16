@@ -7,7 +7,7 @@ from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 
 from navigation.api import (register_top_menu, register_sidebar_template,
-    register_links)
+    bind_links)
 
 from main.api import register_maintenance_links
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
@@ -58,17 +58,17 @@ register_maintenance_links([rebuild_index_instances], namespace='document_indexi
 
 register_sidebar_template(['index_instance_list'], 'indexing_help.html')
 
-register_links(IndexInstanceNode, [index_parent])
+bind_links(IndexInstanceNode, [index_parent])
 
-register_links(Document, [document_index_list], menu_name='form_header')
+bind_links(Document, [document_index_list], menu_name='form_header')
 
 register_setup(index_setup)
 
-register_links([Index, 'index_setup_list', 'index_setup_create', 'template_node_edit', 'template_node_delete'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
+bind_links([Index, 'index_setup_list', 'index_setup_create', 'template_node_edit', 'template_node_delete'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
 
-register_links(Index, [index_setup_edit, index_setup_delete, index_setup_view])
+bind_links(Index, [index_setup_edit, index_setup_delete, index_setup_view])
 
-register_links(IndexTemplateNode, [template_node_create, template_node_edit, template_node_delete])
+bind_links(IndexTemplateNode, [template_node_create, template_node_edit, template_node_delete])
 
 
 def delete_indexes_handler(sender, instance, **kwargs):

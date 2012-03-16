@@ -4,11 +4,11 @@ import copy
 import re
 import urlparse
 import urllib
+import logging
 
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
-from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
 from django.utils.encoding import smart_str, force_unicode, smart_unicode
 
@@ -17,9 +17,11 @@ from common.utils import urlquote
 from ..api import (object_navigation, multi_object_navigation,
     top_menu_entries, sidebar_templates)
 from ..forms import MultiItemForm
-from ..utils import resolve_to_name
+from ..utils import (resolve_to_name, resolve_arguments, resolve_template_variable,
+    get_navigation_objects, get_object_navigation_links)
 
 register = Library()
+logger = logging.getLogger(__name__)
 
 
 class TopMenuNavigationNode(Node):
@@ -51,28 +53,7 @@ class TopMenuNavigationNode(Node):
 def get_top_menu_links(parser, token):
     return TopMenuNavigationNode()
 
-
-def resolve_arguments(context, src_args):
-    args = []
-    kwargs = {}
-    if type(src_args) == type([]):
-        for i in src_args:
-            val = resolve_template_variable(context, i)
-            if val:
-                args.append(val)
-    elif type(src_args) == type({}):
-        for key, value in src_args.items():
-            val = resolve_template_variable(context, value)
-            if val:
-                kwargs[key] = val
-    else:
-        val = resolve_template_variable(context, src_args)
-        if val:
-            args.append(val)
-
-    return args, kwargs
-
-
+"""
 def resolve_links(context, links, current_view, current_path, parsed_query_string=None):
     """
     Express a list of links from definition to final values
@@ -141,92 +122,14 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                     new_link['active'] = True
 
             for cls in link.get('children_classes', []):
-                obj, object_name = get_navigation_object(context)
-                if type(obj) == cls or obj == cls:
-                    new_link['active'] = True
+                object_list = get_navigation_objects(context)
+                if object_list:
+                    if type(object_list[0]['object']) == cls or object_list[0]['object'] == cls:
+                        new_link['active'] = True
 
             context_links.append(new_link)
     return context_links
-
-
-def get_navigation_object(context):
-    try:
-        object_name = Variable('navigation_object_name').resolve(context)
-    except VariableDoesNotExist:
-        object_name = 'object'
-
-    try:
-        obj = Variable(object_name).resolve(context)
-    except VariableDoesNotExist:
-        obj = None
-
-    return obj, object_name
-
-
-def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
-    request = Variable('request').resolve(context)
-    current_path = request.META['PATH_INFO']
-    current_view = resolve_to_name(current_path)
-    context_links = []
-
-    # Don't fudge with the original global dictionary
-    links_dict = links_dict.copy()
-
-    # Preserve unicode data in URL query
-    previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
-    query_string = urlparse.urlparse(previous_path).query
-    parsed_query_string = urlparse.parse_qs(query_string)
-
-    try:
-        """
-        Override the navigation links dictionary with the provided
-        link list
-        """
-        navigation_object_links = Variable('overrided_object_links').resolve(context)
-        if navigation_object_links:
-            return [link for link in resolve_links(context, navigation_object_links, current_view, current_path, parsed_query_string)]
-    except VariableDoesNotExist:
-        pass
-
-    try:
-        """
-        Check for and inject a temporary navigation dictionary
-        """
-        temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
-        if temp_navigation_links:
-            links_dict.update(temp_navigation_links)
-    except VariableDoesNotExist:
-        pass
-
-    try:
-        links = links_dict[menu_name][current_view]['links']
-        for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
-            context_links.append(link)
-    except KeyError:
-        pass
-
-    obj, object_name = get_navigation_object(context)
-
-    try:
-        links = links_dict[menu_name][type(obj)]['links']
-        for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
-            context_links.append(link)
-    except KeyError:
-        pass
-
-    return context_links
-
-
-def resolve_template_variable(context, name):
-    try:
-        return unescape_string_literal(name)
-    except ValueError:
-        #return Variable(name).resolve(context)
-        #TODO: Research if should return always as a str
-        return str(Variable(name).resolve(context))
-    except TypeError:
-        return name
-
+"""
 
 class GetNavigationLinks(Node):
     def __init__(self, menu_name=None, links_dict=object_navigation, var_name='object_navigation_links'):
@@ -236,9 +139,10 @@ class GetNavigationLinks(Node):
 
     def render(self, context):
         menu_name = resolve_template_variable(context, self.menu_name)
-        context[self.var_name] = _get_object_navigation_links(context, menu_name, links_dict=self.links_dict)
-        obj, object_name = get_navigation_object(context)
-        context['navigation_object'] = obj
+        context[self.var_name] = get_object_navigation_links(context, menu_name, links_dict=self.links_dict)
+        object_list = get_navigation_objects(context)
+        if object_list:
+            context['navigation_object'] = object_list[0]['object']
         return ''
 
 

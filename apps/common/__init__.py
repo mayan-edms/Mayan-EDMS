@@ -8,7 +8,7 @@ from django.contrib.auth.management import create_superuser
 from django.dispatch import receiver
 from django.db.models.signals import post_syncdb
 
-from navigation.api import register_links, register_top_menu
+from navigation.api import bind_links, register_top_menu
 
 from .conf import settings as common_settings
 from .utils import validate_path
@@ -21,12 +21,12 @@ password_change_view = {'text': _(u'change password'), 'view': 'password_change_
 current_user_details = {'text': _(u'user details'), 'view': 'current_user_details', 'famfam': 'vcard'}
 current_user_edit = {'text': _(u'edit details'), 'view': 'current_user_edit', 'famfam': 'vcard_edit'}
 
-register_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
+bind_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
 
 about_view = {'text': _('about'), 'view': 'about_view', 'famfam': 'information'}
 license_view = {'text': _('license'), 'view': 'license_view', 'famfam': 'script'}
 
-register_links(['about_view', 'license_view'], [about_view, license_view], menu_name='secondary_menu')
+bind_links(['about_view', 'license_view'], [about_view, license_view], menu_name='secondary_menu')
 
 register_top_menu('about', link={'text': _(u'about'), 'view': 'about_view', 'famfam': 'information'}, position=-1)
 
