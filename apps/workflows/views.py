@@ -18,8 +18,8 @@ from common.utils import encapsulate
 #from common.widgets import two_state_template
 #from acls.models import AccessEntry
 
-from .models import Workflow, State, Transition
-from .forms import WorkflowSetupForm, StateSetupForm
+from .models import Workflow, State, Transition, WorkflowState
+from .forms import WorkflowSetupForm, StateSetupForm, WorkflowStateSetupForm
 from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,
     PERMISSION_WORKFLOW_SETUP_DELETE, PERMISSION_STATE_SETUP_VIEW,
@@ -41,6 +41,7 @@ def setup_workflow_list(request):
         'extra_columns': [
             {'name': _(u'Initial state'), 'attribute': encapsulate(lambda workflow: workflow.initial_state or _(u'None'))},
         ],
+        'list_object_variable_name': 'workflow',
     }
 
     return render_to_response('generic_list.html', context,
@@ -83,8 +84,10 @@ def setup_workflow_edit(request, workflow_pk):
     return render_to_response('generic_form.html', {
         'title': _(u'edit workflow: %s') % workflow,
         'form': form,
-        'object': workflow,
-        'object_name': _(u'workflow'),
+        'workflow': workflow,
+        'navigation_object_list': [
+            {'object': 'workflow', 'name': _(u'workflow')},
+        ],
     },
     context_instance=RequestContext(request))
     
@@ -122,14 +125,16 @@ def setup_workflow_delete(request, workflow_pk=None, workflow_pk_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'workflow'),
         'delete_view': True,
         'previous': previous,
         'next': next,
         'form_icon': u'chart_organisation_delete.png',
+        'navigation_object_list': [
+            {'object': 'workflow', 'name': _(u'workflow')},
+        ],
     }
     if len(workflows) == 1:
-        context['object'] = workflows[0]
+        context['workflow'] = workflows[0]
         context['title'] = _(u'Are you sure you wish to delete the workflow: %s?') % ', '.join([unicode(d) for d in workflows])
         context['message'] = _('Will be removed from all documents.')
     elif len(workflows) > 1:
@@ -146,14 +151,67 @@ def setup_workflow_states_list(request, workflow_pk):
 
     context = {
         'object_list': workflow.workflowstate_set.all(),
-        'title': _(u'workflows'),
+        'title': _(u'states for workflow: %s') % workflow,
         'hide_link': True,
-        'object': workflow,
+        'workflow': workflow,
+        'navigation_object_list': [
+            {'object': 'workflow', 'name': _(u'workflow')},
+        ],
+        'list_object_variable_name': 'workflow_state',
     }
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
 
+
+def setup_workflow_state_add(request, workflow_pk):
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
+    redirect_url = reverse('setup_workflow_states_list', args=[workflow_pk])
+    workflow = get_object_or_404(Workflow, pk=workflow_pk)
+
+    if request.method == 'POST':
+        form = WorkflowStateSetupForm(request.POST)
+        if form.is_valid():
+            state = form.save()
+            messages.success(request, _(u'worflow state created succesfully.'))
+            return HttpResponseRedirect(redirect_url)
+    else:
+        form = WorkflowStateSetupForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'add worflow state'),
+        'form': form,
+        'workflow': workflow,
+        'navigation_object_list': [
+            {'object': 'workflow', 'name': _(u'workflow')},
+        ],
+    }, context_instance=RequestContext(request))
+
+
+def setup_workflow_state_edit(request, workflow_state_pk):
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
+    workflow_state = get_object_or_404(WorkflowState, pk=workflow_state_pk)
+    redirect_url = reverse('setup_workflow_states_list', args=[workflow_state.workflow.pk])
+
+    if request.method == 'POST':
+        form = WorkflowStateSetupForm(instance=workflow_state, data=request.POST)
+        if form.is_valid():
+            state = form.save()
+            messages.success(request, _(u'worflow state edited succesfully.'))
+            return HttpResponseRedirect(redirect_url)
+    else:
+        form = WorkflowStateSetupForm(instance=workflow_state)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit worflow state'),
+        'form': form,
+        'workflow': workflow_state.workflow,
+        'workflow_state': workflow_state,
+        'navigation_object_list': [
+            {'object': 'workflow', 'name': _(u'workflow')},
+            {'object': 'workflow_state', 'name': _(u'workflow state')}
+        ],
+    }, context_instance=RequestContext(request))
 
 # States
 def setup_state_list(request):
