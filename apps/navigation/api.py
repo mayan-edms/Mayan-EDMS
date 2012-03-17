@@ -3,11 +3,14 @@ from __future__ import absolute_import
 import urlparse
 import urllib
 import logging
+import re
 
 from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
 from django.utils.encoding import smart_str, force_unicode, smart_unicode
 from django.core.urlresolvers import reverse, NoReverseMatch
+from django.utils.http import urlquote
+from django.utils.http import urlencode
 
 from elementtree.ElementTree import Element, SubElement
 
@@ -33,7 +36,12 @@ class ResolvedLink(object):
    
     
 class Link(object):
-    def __init__(self, text, view, klass=None, args=None, sprite=None, icon=None, permissions=None, condition=None, conditional_disable=None, description=None, dont_mark_active=False, children_view_regex=None, keep_query=False, children_classes=None, children_url_regex=None, children_views=None):
+    def __init__(self, text, view, klass=None, args=None, sprite=None,
+        icon=None, permissions=None, condition=None, conditional_disable=None,
+        description=None, dont_mark_active=False, children_view_regex=None,
+        keep_query=False, children_classes=None, children_url_regex=None,
+        children_views=None, conditional_highlight=None):
+            
         self.text = text
         self.view = view
         self.args = args or {}
@@ -45,14 +53,12 @@ class Link(object):
         self.conditional_disable = conditional_disable
         self.description = description
         self.dont_mark_active = dont_mark_active
-        self.children_view_regex = children_view_regex
+        self.children_view_regex = children_view_regex or []
         self.klass = klass
         self.keep_query = keep_query
-        
-        #
-        self.conditional_highlight = None
-        self.children_views = []
-        self.children_classes = []
+        self.conditional_highlight = conditional_highlight  # Used by dynamic sources
+        self.children_views = children_views or []
+        self.children_classes = children_classes or []
 
     def resolve(self, context):
         request = Variable('request').resolve(context)
@@ -71,7 +77,6 @@ class Link(object):
             condition_result = True
 
         if condition_result:
-            #new_link = {}#copy.copy(link)
             resolved_link = ResolvedLink()
             resolved_link.text = self.text
             resolved_link.sprite = self.sprite
@@ -92,19 +97,14 @@ class Link(object):
 
                 try:
                     if kwargs:
-                        #new_link['url'] = reverse(link['view'], kwargs=kwargs)
                         resolved_link.url = reverse(self.view, kwargs=kwargs)
                     else:
-#                        new_link['url'] = reverse(link['view'], args=args)
                         resolved_link.url = reverse(self.view, args=args)
                         if self.keep_query:
-                            #print 'parsed_query_string', parsed_query_string
-                            #new_link['url'] = urlquote(new_link['url'], parsed_query_string)
-                            resolved_link.url = urlquote(resolved_link.url, parsed_query_string)
+                            resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))  
+
                 except NoReverseMatch, exc:
-                    #new_link['url'] = '#'
                     resolved_link.url = '#'
-                    #new_link['error'] = err
                     resolved_link.error = exc
             elif self.url:
                 if not self.dont_mark_active:
@@ -144,10 +144,9 @@ class Link(object):
             #        #new_link['active'] = True
             #        resolved_link.active = True
 
-            #for children_view_regex in link.get('children_view_regex', []):
-            #    if re.compile(children_view_regex).match(current_view):
-            #        #new_link['active'] = True
-            #        resolved_link.active = True
+            for children_view_regex in self.children_view_regex:
+                if re.compile(children_view_regex).match(current_view):
+                    resolved_link.active = True
 
             for cls in self.children_classes:
                 object_list = get_navigation_objects(context)
@@ -239,13 +238,12 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=link
         link list
         """
         navigation_object_links = Variable('overrided_object_links').resolve(context)
-        #return Variable('overrided_object_links').resolve(context)
         if navigation_object_links:
             return [link.resolve(context) for link in navigation_object_links]
     except VariableDoesNotExist:
         pass
 
-    # TODO: who uses this?  Remove is no one.
+    # TODO: who uses this?  Remove if no one.
     try:
         """
         Check for and inject a temporary navigation dictionary
