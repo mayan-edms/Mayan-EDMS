@@ -75,6 +75,9 @@ class Link(object):
             resolved_link = ResolvedLink()
             resolved_link.text = self.text
             resolved_link.sprite = self.sprite
+            resolved_link.icon = self.icon
+            resolved_link.permissions = self.permissions
+            
             try:
                 #args, kwargs = resolve_arguments(context, self.get('args', {}))
                 args, kwargs = resolve_arguments(context, self.args)
@@ -167,24 +170,7 @@ def bind_links(sources, links, menu_name=None, position=0):
         link_binding[menu_name][source]['links'].extend(links)
 
 
-def register_multi_item_links(src, links, menu_name=None):
-    """
-    Register a multiple item action action to be displayed in the
-    generic list template
-    """
-    # TODO: simplify by removing __iter__ support
-    multi_object_navigation.setdefault(menu_name, {})
-    if hasattr(src, '__iter__'):
-        for one_src in src:
-            multi_object_navigation[menu_name].setdefault(one_src, {'links': []})
-            multi_object_navigation[menu_name][one_src]['links'].extend(links)
-    else:
-        multi_object_navigation[menu_name].setdefault(src, {'links': []})
-        multi_object_navigation[menu_name][src]['links'].extend(links)
-
-
-#def register_top_menu(name, link, children_views=None, children_path_regex=None, children_view_regex=None, position=None):
-def register_top_menu(name, link, children_view_regex=None, position=None):
+def register_top_menu(name, link, position=None):
     """
     Register a new menu entry for the main menu displayed at the top
     of the page
@@ -214,6 +200,23 @@ def register_sidebar_template(source_list, template_name):
     for source in source_list:
         sidebar_templates.setdefault(source, [])
         sidebar_templates[source].append(template_name)
+
+
+# TODO
+def register_multi_item_links(src, links, menu_name=None):
+    """
+    Register a multiple item action action to be displayed in the
+    generic list template
+    """
+    # TODO: simplify by removing __iter__ support
+    multi_object_navigation.setdefault(menu_name, {})
+    if hasattr(src, '__iter__'):
+        for one_src in src:
+            multi_object_navigation[menu_name].setdefault(one_src, {'links': []})
+            multi_object_navigation[menu_name][one_src]['links'].extend(links)
+    else:
+        multi_object_navigation[menu_name].setdefault(src, {'links': []})
+        multi_object_navigation[menu_name][src]['links'].extend(links)
 
 
 def get_context_object_navigation_links(context, menu_name=None, links_dict=object_navigation):

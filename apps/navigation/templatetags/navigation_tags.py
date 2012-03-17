@@ -27,24 +27,6 @@ logger = logging.getLogger(__name__)
 
 class TopMenuNavigationNode(Node):
     def render(self, context):
-        #request = Variable('request').resolve(context)
-        #current_path = request.META['PATH_INFO']
-        #current_view = resolve_to_name(current_path)
-            
-        #all_menu_links = []#[entry.get('link', {}) for entry in top_menu_entries]
-        #menu_links = resolve_links(context, all_menu_links, current_view, current_path)
-
-        #for index, link in enumerate(top_menu_entries):
-        #    #if current_view in link.get('children_views', []):
-        #    #    menu_links[index]['active'] = True
-        #    #for child_path_regex in link.get('children_path_regex', []):
-        #    #    if re.compile(child_path_regex).match(current_path.lstrip('/')):
-        #    #        menu_links[index]['active'] = True
-        #    #for children_view_regex in link.get('children_view_regex', []):
-        #    #    if re.compile(children_view_regex).match(current_view):
-        #    #        menu_links[index]['active'] = True
-        #    pass
-        #context['menu_links'] = []#menu_links
         context['menu_links'] = [menu.get('link').resolve(context) for menu in main_menu.getchildren()]
         return ''
 
@@ -84,10 +66,10 @@ def get_object_navigation_links(parser, token):
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
     new_context = copy.copy(context)
-    #new_context.update({
-    #    'horizontal': True,
-    #    'object_navigation_links': get_object_navigation_links(context)    
-    #})
+    new_context.update({
+        'horizontal': True,
+        'object_navigation_links': get_context_object_navigation_links(context)    
+    })
     return new_context
     
     
@@ -106,7 +88,7 @@ def get_multi_item_links(parser, token):
 def get_multi_item_links_form(context):
     new_context = copy.copy(context)
     new_context.update({
-        'form': MultiItemForm(actions=[(link['url'], link['text']) for link in get_context_object_navigation_links(context, links_dict=multi_object_navigation)]),
+        'form': MultiItemForm(actions=[(link.url, link.text) for link in get_context_object_navigation_links(context, links_dict=multi_object_navigation)]),
         'title': _(u'Selected item actions:'),
         'form_action': reverse('multi_object_action_view'),
         'submit_method': 'get',
