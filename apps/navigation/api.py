@@ -219,7 +219,7 @@ def register_multi_item_links(src, links, menu_name=None):
         multi_object_navigation[menu_name][src]['links'].extend(links)
 
 
-def get_context_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
+def get_context_object_navigation_links(context, menu_name=None, links_dict=link_binding):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
@@ -229,22 +229,23 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=obje
     links_dict = links_dict.copy()
 
     # Preserve unicode data in URL query
-    previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
-    query_string = urlparse.urlparse(previous_path).query
-    parsed_query_string = urlparse.parse_qs(query_string)
+    #previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
+    #query_string = urlparse.urlparse(previous_path).query
+    #parsed_query_string = urlparse.parse_qs(query_string)
 
     try:
         """
         Override the navigation links dictionary with the provided
         link list
         """
-        #navigation_object_links = Variable('overrided_object_links').resolve(context)
-        return Variable('overrided_object_links').resolve(context)
-        #if navigation_object_links:
-        #    return [link for link in resolve_links(context, navigation_object_links, current_view, current_path, parsed_query_string)]
+        navigation_object_links = Variable('overrided_object_links').resolve(context)
+        #return Variable('overrided_object_links').resolve(context)
+        if navigation_object_links:
+            return [link.resolve(context) for link in navigation_object_links]
     except VariableDoesNotExist:
         pass
 
+    # TODO: who uses this?  Remove is no one.
     try:
         """
         Check for and inject a temporary navigation dictionary
@@ -256,19 +257,15 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=obje
         pass
 
     try:
-        links = links_dict[menu_name][current_view]['links']
-        #for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
-        #    context_links.append(link)
-        context_links.extend(links)
+        for link in links_dict[menu_name][current_view]['links']:
+            context_links.append(link.resolve(context))
     except KeyError:
         pass
 
     for resolved_object in get_navigation_objects(context):
         try:
-            links = links_dict[menu_name][type(resolved_object['object'])]['links']
-            #for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
-            #    context_links.append(link)
-            context_links.extend(links)
+            for link in links_dict[menu_name][type(resolved_object['object'])]['links']:
+                context_links.append(link.resolve(context))
         except KeyError:
             pass
 
