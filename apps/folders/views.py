@@ -32,7 +32,6 @@ logger = logging.getLogger(__name__)
 def folder_list(request, queryset=None, extra_context=None):
     context = {
         'title': _(u'folders'),
-        'multi_select_as_buttons': True,
         'extra_columns': [
             {'name': _(u'created'), 'attribute': 'datetime_created'},
             {'name': _(u'documents'), 'attribute': encapsulate(lambda x: x.folderdocument_set.count())}
