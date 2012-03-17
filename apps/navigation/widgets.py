@@ -12,7 +12,7 @@ from django.template import RequestContext, Variable
 
 from permissions.models import Permission
 
-from .templatetags.navigation_tags import resolve_links
+#from .templatetags.navigation_tags import resolve_links
 from .utils import resolve_to_name
 
 
@@ -37,7 +37,7 @@ def render_widget(request, link):
     query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
     parsed_query_string = urlparse.parse_qs(query_string)
 
-    links = resolve_links(context, [link], current_view, current_path, parsed_query_string)
+    links = []#resolve_links(context, [link], current_view, current_path, parsed_query_string)
     if links:
         link = links[0]
         return mark_safe(u'<a style="text-decoration:none; margin-right: 10px;" href="%(url)s"><button style="vertical-align: top; padding: 1px; width: 110px; height: 100px; margin: 10px;"><img src="%(static_url)simages/icons/%(icon)s" alt="%(image_alt)s" /><p style="margin: 0px 0px 0px 0px;">%(string)s</p></button></a>' % {

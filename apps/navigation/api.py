@@ -8,7 +8,7 @@ from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
 from django.utils.encoding import smart_str, force_unicode, smart_unicode
 
-from common.utils import urlquote
+#from common.utils import urlquote
 
 from .utils import (resolve_to_name, resolve_arguments,
     resolve_template_variable, get_navigation_objects)

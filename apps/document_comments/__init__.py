@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes import generic
 
-from navigation.api import bind_links, register_model_list_columns
+from navigation.api import bind_links, register_model_list_columns, Link
 from common.utils import encapsulate
 from acls.api import class_permissions
 from documents.models import Document
@@ -16,10 +16,10 @@ if 'django.contrib.comments' not in settings.INSTALLED_APPS:
 from .permissions import (PERMISSION_COMMENT_CREATE,
     PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_VIEW)
 
-comment_delete = {'text': _('delete'), 'view': 'comment_delete', 'args': 'object.pk', 'famfam': 'comment_delete', 'permissions': [PERMISSION_COMMENT_DELETE]}
-comment_multiple_delete = {'text': _('delete'), 'view': 'comment_multiple_delete', 'args': 'object.pk', 'famfam': 'comments_delete', 'permissions': [PERMISSION_COMMENT_DELETE]}
-comment_add = {'text': _('add comment'), 'view': 'comment_add', 'args': 'object.pk', 'famfam': 'comment_add', 'permissions': [PERMISSION_COMMENT_CREATE]}
-comments_for_document = {'text': _('comments'), 'view': 'comments_for_document', 'args': 'object.pk', 'famfam': 'comments', 'permissions': [PERMISSION_COMMENT_VIEW], 'children_view_regex': ['comment']}
+comment_delete = Link(text=_('delete'), view='comment_delete', args='object.pk', sprite='comment_delete', permissions=[PERMISSION_COMMENT_DELETE])
+comment_multiple_delete = Link(text=_('delete'), view='comment_multiple_delete', args='object.pk', sprite='comments_delete', permissions=[PERMISSION_COMMENT_DELETE])
+comment_add = Link(text=_('add comment'), view='comment_add', args='object.pk', sprite='comment_add', permissions=[PERMISSION_COMMENT_CREATE])
+comments_for_document = Link(text=_('comments'), view='comments_for_document', args='object.pk', sprite='comments', permissions=[PERMISSION_COMMENT_VIEW], children_view_regex=['comment'])
 
 register_model_list_columns(Comment, [
     {
@@ -37,8 +37,8 @@ register_model_list_columns(Comment, [
 ])
 
 bind_links(['comments_for_document', 'comment_add', 'comment_delete', 'comment_multiple_delete'], [comment_add], menu_name='sidebar')
-bind_links(Comment, [comment_delete])
-bind_links(Document, [comments_for_document], menu_name='form_header')
+bind_links([Comment], [comment_delete])
+bind_links([Document], [comments_for_document], menu_name='form_header')
 
 Document.add_to_class(
     'comments',
