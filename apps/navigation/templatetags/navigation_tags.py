@@ -14,7 +14,7 @@ from django.utils.encoding import smart_str, force_unicode, smart_unicode
 
 from common.utils import urlquote
 
-from ..api import (object_navigation, multi_object_navigation,
+from ..api import (link_binding, multi_object_navigation,
     top_menu_entries, sidebar_templates, get_context_object_navigation_links)
 from ..forms import MultiItemForm
 from ..utils import (resolve_to_name, resolve_arguments, resolve_template_variable,
@@ -37,15 +37,20 @@ def get_top_menu_links(parser, token):
 
 
 class GetNavigationLinks(Node):
-    def __init__(self, menu_name=None, links_dict=object_navigation, var_name='object_navigation_links'):
+    def __init__(self, menu_name=None, links_dict=link_binding, var_name='object_navigation_links'):
         self.menu_name = menu_name
         self.links_dict = links_dict
         self.var_name = var_name
+        logger.debug('menu_name: %s' % menu_name)
 
     def render(self, context):
         menu_name = resolve_template_variable(context, self.menu_name)
         context[self.var_name] = get_context_object_navigation_links(context, menu_name, links_dict=self.links_dict)
+        logger.debug('link_list: %s' % get_context_object_navigation_links(context, menu_name, links_dict=self.links_dict))
         object_list = get_navigation_objects(context)
+        logger.debug('object_list: %s' % object_list)
+
+        # TODO: why only one navigation_object
         if object_list:
             context['navigation_object'] = object_list[0]['object']
         return ''
@@ -53,6 +58,7 @@ class GetNavigationLinks(Node):
 
 @register.tag
 def get_object_navigation_links(parser, token):
+    logger.debug('getting links')
     tag_name, arg = token.contents.split(None, 1)
 
     m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
