@@ -2,9 +2,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_sidebar_template, bind_links, Link
 
-search = {'text': _(u'search'), 'view': 'search', 'famfam': 'zoom'}
-search_advanced = {'text': _(u'advanced search'), 'view': 'search_advanced', 'famfam': 'zoom_in'}
-search_again = {'text': _(u'search again'), 'view': 'search_again', 'famfam': 'arrow_undo'}
+search = Link(text=_(u'search'), view='search', sprite='zoom')
+search_advanced = Link(text=_(u'advanced search'), view='search_advanced', sprite='zoom_in')
+search_again = Link(text=_(u'search again'), view='search_again', sprite='arrow_undo')
 
 register_sidebar_template(['search', 'search_advanced'], 'search_help.html')
 
