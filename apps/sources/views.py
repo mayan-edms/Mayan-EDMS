@@ -23,6 +23,7 @@ from common.utils import encapsulate
 from common.widgets import two_state_template
 import sendfile
 from acls.models import AccessEntry
+from navigation.api import Link
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder, POP3Email, SourceLog, IMAPEmail)
@@ -55,14 +56,7 @@ def get_tab_link_for_source(source, document=None):
         view = u'upload_interactive'
         args = [u'"%s"' % source.source_type, source.pk]
 
-    return {
-        'text': source.title,
-        'view': view,
-        'args': args,
-        'famfam': source.icon,
-        'keep_query': True,
-        'conditional_highlight': return_function(source),
-    }
+    return Link(text=source.title, view=view, args=args, sprite=source.icon, keep_query=True, conditional_highlight=return_function(source))
 
 
 def get_active_tab_links(document=None):
