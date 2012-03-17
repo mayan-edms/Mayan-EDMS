@@ -14,17 +14,13 @@ from django.utils.http import urlencode
 
 from elementtree.ElementTree import Element, SubElement
 
-#from common.utils import urlquote
-
 from .utils import (resolve_to_name, resolve_arguments,
     resolve_template_variable, get_navigation_objects)
 from . import main_menu
 
-object_navigation = {}
 multi_object_navigation = {}
 model_list_columns = {}
 sidebar_templates = {}
-top_menu_entries = []
 
 link_binding = {}
 
@@ -156,7 +152,6 @@ class Link(object):
                         resolved_link.active = True
 
             return resolved_link
-            #context_links.append(new_link)
 
 
 def bind_links(sources, links, menu_name=None, position=0):
@@ -201,21 +196,15 @@ def register_sidebar_template(source_list, template_name):
         sidebar_templates[source].append(template_name)
 
 
-# TODO
-def register_multi_item_links(src, links, menu_name=None):
+def register_multi_item_links(sources, links, menu_name=None):
     """
     Register a multiple item action action to be displayed in the
     generic list template
     """
-    # TODO: simplify by removing __iter__ support
     multi_object_navigation.setdefault(menu_name, {})
-    if hasattr(src, '__iter__'):
-        for one_src in src:
-            multi_object_navigation[menu_name].setdefault(one_src, {'links': []})
-            multi_object_navigation[menu_name][one_src]['links'].extend(links)
-    else:
-        multi_object_navigation[menu_name].setdefault(src, {'links': []})
-        multi_object_navigation[menu_name][src]['links'].extend(links)
+    for source in sources:
+        multi_object_navigation[menu_name].setdefault(source, {'links': []})
+        multi_object_navigation[menu_name][source]['links'].extend(links)
 
 
 def get_context_object_navigation_links(context, menu_name=None, links_dict=link_binding):
@@ -226,11 +215,6 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=link
 
     # Don't fudge with the original global dictionary
     links_dict = links_dict.copy()
-
-    # Preserve unicode data in URL query
-    #previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
-    #query_string = urlparse.urlparse(previous_path).query
-    #parsed_query_string = urlparse.parse_qs(query_string)
 
     try:
         """

@@ -15,7 +15,7 @@ from django.utils.encoding import smart_str, force_unicode, smart_unicode
 from common.utils import urlquote
 
 from ..api import (link_binding, multi_object_navigation,
-    top_menu_entries, sidebar_templates, get_context_object_navigation_links)
+    sidebar_templates, get_context_object_navigation_links)
 from ..forms import MultiItemForm
 from ..utils import (resolve_to_name, resolve_arguments, resolve_template_variable,
     get_navigation_objects)
