@@ -177,12 +177,10 @@ register_model_list_columns(Document, [
 
 register_top_menu(
     'documents',
-    link=Link(sprite='page', text=_(u'documents'), view='document_list_recent'),
-    children_path_regex=[
-        r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents',
-    ],
+    link=Link(sprite='page', text=_(u'documents'), view='document_list_recent',
+    children_url_regex=[r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents'],
     children_view_regex=[r'document_acl', r'smart_link_instance'],
-    children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version', ],
+    children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version', ]),
     position=1
 )
 

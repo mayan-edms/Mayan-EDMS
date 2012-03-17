@@ -33,7 +33,7 @@ class ResolvedLink(object):
    
     
 class Link(object):
-    def __init__(self, text, view, klass=None, args=None, sprite=None, icon=None, permissions=None, condition=None, conditional_disable=None, description=None, dont_mark_active=False, children_view_regex=None, keep_query=False):
+    def __init__(self, text, view, klass=None, args=None, sprite=None, icon=None, permissions=None, condition=None, conditional_disable=None, description=None, dont_mark_active=False, children_view_regex=None, keep_query=False, children_classes=None, children_url_regex=None, children_views=None):
         self.text = text
         self.view = view
         self.args = args or {}
@@ -172,7 +172,7 @@ def register_multi_item_links(src, links, menu_name=None):
     Register a multiple item action action to be displayed in the
     generic list template
     """
-
+    # TODO: simplify by removing __iter__ support
     multi_object_navigation.setdefault(menu_name, {})
     if hasattr(src, '__iter__'):
         for one_src in src:
@@ -183,36 +183,21 @@ def register_multi_item_links(src, links, menu_name=None):
         multi_object_navigation[menu_name][src]['links'].extend(links)
 
 
-def register_top_menu(name, link, children_views=None, children_path_regex=None, children_view_regex=None, position=None):
+#def register_top_menu(name, link, children_views=None, children_path_regex=None, children_view_regex=None, position=None):
+def register_top_menu(name, link, children_view_regex=None, position=None):
     """
     Register a new menu entry for the main menu displayed at the top
     of the page
     """
-    menu = SubElement(main_menu, name, link=link)
-    #entry = {'link': link, 'name': name}
-    #if children_views:
-    #    entry['children_views'] = children_views
-    #if children_path_regex:
-    #    entry['children_path_regex'] = children_path_regex
-    #if children_view_regex:
-    #    entry['children_view_regex'] = children_view_regex
-    #if position is not None:
-    #    entry['position'] = position
-    #    top_menu_entries.insert(position, entry)
-    #else:
-    #    length = len(top_menu_entries)
-    #    entry['position'] = length
-    #    top_menu_entries.append(entry)
+    new_menu = SubElement(main_menu, name, link=link, position=position)
+    
+    sorted_menus = sorted(main_menu.getchildren(), key=lambda k: (k.get('position') < 0, k.get('position')))
+    main_menu.clear()
 
-    #sort_menu_entries()
-    # 
-    #return entry
-    return menu
-
-
-#def sort_menu_entries():
-#    global top_menu_entries
-#    top_menu_entries = sorted(top_menu_entries, key=lambda k: (k['position'] < 0, k['position']))
+    for menu in sorted_menus:
+        main_menu.append(menu)
+        
+    return new_menu
 
 
 def register_model_list_columns(model, columns):

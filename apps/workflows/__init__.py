@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-#from navigation.api import bind_links, register_multi_item_links
 from project_setup.api import register_setup
 from navigation.api import Link, bind_links
 
@@ -41,4 +40,4 @@ bind_links([Workflow, 'setup_workflow_list', 'setup_workflow_create'], [setup_wo
 
 #bind_links([WorkflowState], [setup_workflow_states_edit_link])
 
-register_setup({'text': _(u'workflows'), 'view': 'setup_workflow_list', 'icon': 'chart_organisation.png', 'permissions': [PERMISSION_WORKFLOW_SETUP_VIEW]})
+register_setup(Link(text=_(u'workflows'), view='setup_workflow_list', icon='chart_organisation.png', permissions=[PERMISSION_WORKFLOW_SETUP_VIEW]))

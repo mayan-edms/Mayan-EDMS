@@ -38,7 +38,7 @@ admin_site = Link(text=_(u'admin site'), view='admin:index', sprite='keyboard', 
 if not DISABLE_HOME_VIEW:
     register_top_menu('home', link=Link(text=_(u'home'), view='home', sprite='house'), position=0)
 if not SIDE_BAR_SEARCH:
-    register_top_menu('search', link=Link(text=_(u'search'), view='search', sprite='zoom'), children_path_regex=[r'^search/'])
+    register_top_menu('search', link=Link(text=_(u'search'), view='search', sprite='zoom', children_url_regex=[r'^search/']))
 
 
 def get_version():
