@@ -52,7 +52,7 @@ document_index_list = Link(text= _(u'indexes'), view='document_index_list', args
 
 rebuild_index_instances = Link(text=_('rebuild indexes'), view='rebuild_index_instances', sprite='folder_page', permissions=[PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES], description=_(u'Deletes and creates from scratch all the document indexes.'))
 
-register_top_menu('indexes', link={'text': _('indexes'), 'sprite': 'tab', 'view': 'index_list', 'children_view_regex': [r'^index_[i,l]']})
+register_top_menu('indexes', link=Link(text=_('indexes'), sprite='tab', view='index_list', children_view_regex=[r'^index_[i,l]']))
 register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_(u'Indexes'))
 register_sidebar_template(['index_instance_list'], 'indexing_help.html')
 

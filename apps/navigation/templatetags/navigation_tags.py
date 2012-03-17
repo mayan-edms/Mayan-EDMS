@@ -19,6 +19,7 @@ from ..api import (object_navigation, multi_object_navigation,
 from ..forms import MultiItemForm
 from ..utils import (resolve_to_name, resolve_arguments, resolve_template_variable,
     get_navigation_objects)
+from .. import main_menu
 
 register = Library()
 logger = logging.getLogger(__name__)
@@ -26,27 +27,25 @@ logger = logging.getLogger(__name__)
 
 class TopMenuNavigationNode(Node):
     def render(self, context):
-        request = Variable('request').resolve(context)
-        current_path = request.META['PATH_INFO']
-        current_view = resolve_to_name(current_path)
-
+        #request = Variable('request').resolve(context)
+        #current_path = request.META['PATH_INFO']
+        #current_view = resolve_to_name(current_path)
+            
         #all_menu_links = []#[entry.get('link', {}) for entry in top_menu_entries]
         #menu_links = resolve_links(context, all_menu_links, current_view, current_path)
 
-        for index, link in enumerate(top_menu_entries):
-            #if current_view in link.get('children_views', []):
-            #    menu_links[index]['active'] = True
-
-            #for child_path_regex in link.get('children_path_regex', []):
-            #    if re.compile(child_path_regex).match(current_path.lstrip('/')):
-            #        menu_links[index]['active'] = True
-            
-            #for children_view_regex in link.get('children_view_regex', []):
-            #    if re.compile(children_view_regex).match(current_view):
-            #        menu_links[index]['active'] = True
-            pass
-
-        context['menu_links'] = []#menu_links
+        #for index, link in enumerate(top_menu_entries):
+        #    #if current_view in link.get('children_views', []):
+        #    #    menu_links[index]['active'] = True
+        #    #for child_path_regex in link.get('children_path_regex', []):
+        #    #    if re.compile(child_path_regex).match(current_path.lstrip('/')):
+        #    #        menu_links[index]['active'] = True
+        #    #for children_view_regex in link.get('children_view_regex', []):
+        #    #    if re.compile(children_view_regex).match(current_view):
+        #    #        menu_links[index]['active'] = True
+        #    pass
+        #context['menu_links'] = []#menu_links
+        context['menu_links'] = [menu.get('link').resolve(context) for menu in main_menu.getchildren()]
         return ''
 
 

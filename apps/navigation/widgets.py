@@ -17,9 +17,9 @@ from .utils import resolve_to_name
 
 
 def button_navigation_widget(request, link):
-    if 'permissions' in link:
+    if link.permissions:
         try:
-            Permission.objects.check_permissions(request.user, link['permissions'])
+            Permission.objects.check_permissions(request.user, link.permissions)
             return render_widget(request, link)
         except PermissionDenied:
             return u''

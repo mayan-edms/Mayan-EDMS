@@ -32,7 +32,7 @@ bind_links([Folder], [folder_view, folder_edit, folder_delete, folder_acl_list])
 
 bind_links([Folder, 'folder_list', 'folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
 
-register_top_menu(name='folders', link={'text': _('folders'), 'famfam': 'folder_user', 'view': 'folder_list'}, children_views=['folder_list', 'folder_create', 'folder_edit', 'folder_delete', 'folder_view', 'folder_document_multiple_remove'])
+register_top_menu(name='folders', link=Link(text=_('folders'), sprite='folder_user', view='folder_list'), children_views=['folder_list', 'folder_create', 'folder_edit', 'folder_delete', 'folder_view', 'folder_document_multiple_remove'])
 
 bind_links([Document], [document_folder_list], menu_name='form_header')
 

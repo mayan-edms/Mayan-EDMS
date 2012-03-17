@@ -6,12 +6,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.widgets import button_navigation_widget
 
-from .api import setup_items
+#from .api import setup_items
+from . import setup_menu
 
 
 def setup_list(request):
     context = {
-        'object_list': [button_navigation_widget(request, item) for item in setup_items],
+        #'object_list': [button_navigation_widget(request, item) for item in setup_items],
+        'object_list': [button_navigation_widget(request, item.get('link')) for item in setup_menu.getchildren()],
         'title': _(u'setup items'),
     }
 

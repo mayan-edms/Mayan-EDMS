@@ -1,5 +1,7 @@
 from __future__ import absolute_import 
 
+import logging
+
 from django.core.urlresolvers import RegexURLResolver, RegexURLPattern, Resolver404, get_resolver
 
 from django.template import (TemplateSyntaxError, Library,
@@ -7,6 +9,8 @@ from django.template import (TemplateSyntaxError, Library,
 from django.utils.text import unescape_string_literal
 
 #__all__ = ('resolve_to_name',)    
+logger = logging.getLogger(__name__)
+
 
 def get_navigation_objects(context):
     object_list = []
