@@ -1,11 +1,10 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 import logging
 
 from django.core.urlresolvers import RegexURLResolver, RegexURLPattern, Resolver404, get_resolver
 
-from django.template import (TemplateSyntaxError, Library,
-    VariableDoesNotExist, Node, Variable)
+from django.template import (VariableDoesNotExist, Variable)
 from django.utils.text import unescape_string_literal
 
 logger = logging.getLogger(__name__)
@@ -13,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 def get_navigation_objects(context):
     objects = {}
-    
+
     try:
         indirect_reference_list = Variable('navigation_object_list').resolve(context)
     except VariableDoesNotExist:
@@ -38,13 +37,13 @@ def get_navigation_objects(context):
         try:
             object_label = Variable('object_name').resolve(context)
         except VariableDoesNotExist:
-            object_label = None     
+            object_label = None
         finally:
             try:
                 resolved_object = Variable(indirect_reference).resolve(context)
             except VariableDoesNotExist:
                 resolved_object = None
-                
+
             objects.setdefault(resolved_object, {})
             objects[resolved_object]['label'] = object_label
 
@@ -57,7 +56,7 @@ def get_navigation_objects(context):
         try:
             object_label = Variable('object_name').resolve(context)
         except VariableDoesNotExist:
-            object_label = None     
+            object_label = None
         finally:
             try:
                 resolved_object = Variable(indirect_reference).resolve(context)
@@ -94,7 +93,7 @@ def resolve_template_variable(context, name):
         return str(Variable(name).resolve(context))
     except TypeError:
         return name
-        
+
 
 def resolve_arguments(context, src_args):
     args = []
@@ -151,6 +150,7 @@ def _resolver_resolve_to_name(self, path):
 # here goes monkeypatching
 RegexURLPattern.resolve_to_name = _pattern_resolve_to_name
 RegexURLResolver.resolve_to_name = _resolver_resolve_to_name
+
 
 def resolve_to_name(path, urlconf=None):
     return get_resolver(urlconf).resolve_to_name(path)

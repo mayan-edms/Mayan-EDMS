@@ -1,21 +1,20 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 import urlparse
 import urllib
 import logging
 import re
 
-from django.template import (TemplateSyntaxError, Library,
-    VariableDoesNotExist, Node, Variable)
-from django.utils.encoding import smart_str, force_unicode, smart_unicode
+from django.template import (VariableDoesNotExist, Variable)
+from django.utils.encoding import smart_str, smart_unicode
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.utils.http import urlquote
 from django.utils.http import urlencode
 
-from elementtree.ElementTree import Element, SubElement
+from elementtree.ElementTree import SubElement
 
 from .utils import (resolve_to_name, resolve_arguments,
-    resolve_template_variable, get_navigation_objects)
+    get_navigation_objects)
 from . import main_menu
 
 multi_object_navigation = {}
@@ -29,15 +28,15 @@ logger = logging.getLogger(__name__)
 
 class ResolvedLink(object):
     active = False
-   
-    
+
+
 class Link(object):
     def __init__(self, text, view, klass=None, args=None, sprite=None,
         icon=None, permissions=None, condition=None, conditional_disable=None,
         description=None, dont_mark_active=False, children_view_regex=None,
         keep_query=False, children_classes=None, children_url_regex=None,
         children_views=None, conditional_highlight=None):
-            
+
         self.text = text
         self.view = view
         self.args = args or {}
@@ -62,12 +61,12 @@ class Link(object):
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
         current_view = resolve_to_name(current_path)
-        
+
         # Preserve unicode data in URL query
         previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
         query_string = urlparse.urlparse(previous_path).query
         parsed_query_string = urlparse.parse_qs(query_string)
-            
+
         # Check to see if link has conditional display
         if self.condition:
             condition_result = self.condition(context)
@@ -80,7 +79,7 @@ class Link(object):
             resolved_link.sprite = self.sprite
             resolved_link.icon = self.icon
             resolved_link.permissions = self.permissions
-            
+
             try:
                 #args, kwargs = resolve_arguments(context, self.get('args', {}))
                 args, kwargs = resolve_arguments(context, self.args)
@@ -98,7 +97,7 @@ class Link(object):
                     else:
                         resolved_link.url = reverse(self.view, args=args)
                         if self.keep_query:
-                            resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))  
+                            resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
 
                 except NoReverseMatch, exc:
                     resolved_link.url = '#'
@@ -106,13 +105,13 @@ class Link(object):
             elif self.url:
                 if not self.dont_mark_active:
                     resolved_link.url.active = self.url == current_path
-                    
+
                 if kwargs:
                     resolved_link.url = self.url % kwargs
                 else:
                     resolved_link.url = self.url % args
-                    if link.keep_query:
-                        resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))  
+                    if self.keep_query:
+                        resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
             else:
                 resolved_link.active = False
 
@@ -162,13 +161,13 @@ def register_top_menu(name, link, position=None):
     of the page
     """
     new_menu = SubElement(main_menu, name, link=link, position=position)
-    
+
     sorted_menus = sorted(main_menu.getchildren(), key=lambda k: (k.get('position') < 0, k.get('position')))
     main_menu.clear()
 
     for menu in sorted_menus:
         main_menu.append(menu)
-        
+
     return new_menu
 
 
@@ -198,8 +197,9 @@ def register_multi_item_links(sources, links, menu_name=None):
         multi_object_navigation[menu_name].setdefault(source, {'links': []})
         multi_object_navigation[menu_name][source]['links'].extend(links)
 
+
 #TODO: new name: get_context_navigation_links, get_navigation_links_for_context
-def get_context_object_navigation_links(context, menu_name=None, links_dict=link_binding):#, object_variable_name=None):
+def get_context_object_navigation_links(context, menu_name=None, links_dict=link_binding):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
@@ -238,8 +238,8 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=link
     try:
         view_links = links_dict[menu_name][current_view]['links']
         if view_links:
-            context_links.setdefault(None, []) 
-            
+            context_links.setdefault(None, [])
+
         for link in view_links:
             context_links[None].append(link.resolve(context))
     except KeyError:
@@ -251,7 +251,7 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=link
             object_links = links_dict[menu_name][type(resolved_object_reference)]['links']
             if object_links:
                 context_links.setdefault(resolved_object_reference, [])
-            
+
             for link in object_links:
                 context_links[resolved_object_reference].append(link.resolve(context))
         except KeyError:

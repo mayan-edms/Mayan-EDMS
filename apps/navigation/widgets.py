@@ -1,18 +1,13 @@
-from __future__ import absolute_import 
-
-import urlparse
+from __future__ import absolute_import
 
 from django.utils.safestring import mark_safe
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
 from django.template.defaultfilters import capfirst
 from django.core.exceptions import PermissionDenied
-from django.template import RequestContext, Variable
+from django.template import RequestContext
 
 from permissions.models import Permission
-
-from .utils import resolve_to_name
 
 
 def button_navigation_widget(request, link):

@@ -1,24 +1,18 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 import copy
 import re
-import urlparse
-import urllib
 import logging
 
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.core.urlresolvers import reverse
 from django.template import (TemplateSyntaxError, Library,
-    VariableDoesNotExist, Node, Variable)
+    Node, Variable)
 from django.utils.translation import ugettext as _
-from django.utils.encoding import smart_str, force_unicode, smart_unicode
-
-from common.utils import urlquote
 
 from ..api import (link_binding, multi_object_navigation,
     sidebar_templates, get_context_object_navigation_links)
 from ..forms import MultiItemForm
-from ..utils import (resolve_to_name, resolve_arguments, resolve_template_variable,
-    get_navigation_objects)
+from ..utils import resolve_to_name, resolve_template_variable
 from .. import main_menu
 
 register = Library()
@@ -65,14 +59,15 @@ def get_object_navigation_links(parser, token):
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
     new_context = copy.copy(context)
-    
+
     for object_reference, object_links in get_context_object_navigation_links(context).items():
         new_context.update({
             'horizontal': True,
-            'links': object_links  
+            'links': object_links
         })
 
     return new_context
+
 
 @register.tag
 def get_multi_item_links(parser, token):
