@@ -37,10 +37,12 @@
                     {% if multi_select_as_buttons %}
                         {% get_multi_item_links as multi_item_links %}
                         <div class="group navform wat-cf">
-                        {% for link in multi_item_links %}
-                            <button class="button" type="submit" name="action" value="{{ link.url }}">
-                               {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
-                            </button>
+                        {% for object_reference, object_links in multi_item_links.items %}
+                            {% for link in object_links %}
+                                <button class="button" type="submit" name="action" value="{{ link.url }}">
+                                   {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                                </button>
+                            {% endfor %}
                         {% endfor %}
                         </div>
                     {% else %}
@@ -163,10 +165,12 @@
                     {% if multi_select_as_buttons %}
                         {% get_multi_item_links as multi_item_links %}
                         <div class="group navform wat-cf">
-                        {% for link in multi_item_links %}
-                            <button class="button" type="submit" name="action" value="{{ link.url }}">
-                               {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
-                            </button>
+                        {% for object_reference, object_links in multi_item_links.items %}
+                            {% for link in object_links %}
+                                <button class="button" type="submit" name="action" value="{{ link.url }}">
+                                   {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                                </button>
+                            {% endfor %}
                         {% endfor %}
                         </div>
                     {% else %}
