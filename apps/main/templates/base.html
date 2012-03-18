@@ -240,47 +240,27 @@
 {% endblock %}
 
 {% block web_theme_secondary_navigation %}
-    {% if navigation_object_list %}
-        {% for navigation_object_dict in navigation_object_list %}
-            {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-            {% get_object_navigation_links "form_header" as form_navigation_links %}
-                {% if form_navigation_links %}
-                    <div class="secondary-navigation">
-                        <ul class="wat-cf">
-                                {% with form_navigation_links as object_navigation_links %}
-                                {% with "true" as as_li %}
-                                {% with "true" as hide_active_anchor %}
-                                {% with "active" as li_class_active %}
-                                {% with "first" as li_class_first %}
-                                    {% include "generic_navigation.html" %}
-                                {% endwith %}
-                                {% endwith %}
-                                {% endwith %}
-                                {% endwith %}
-                                {% endwith %}
-                        </ul>
-                    </div>    
-                {% endif %}
-        {% endfor %}
-    {% else %}
-        {% get_object_navigation_links "form_header" as form_navigation_links %}
-            {% if form_navigation_links %}
+    {% get_object_navigation_links "form_header" as form_header_navigation_links %}
+    {% if form_header_navigation_links %}
+        <div class="secondary-navigation">
+            {% for object_reference, object_links in form_header_navigation_links.items %}
                 <div class="secondary-navigation">
                     <ul class="wat-cf">
-                            {% with form_navigation_links as object_navigation_links %}
-                            {% with "true" as as_li %}
-                            {% with "true" as hide_active_anchor %}
-                            {% with "active" as li_class_active %}
-                            {% with "first" as li_class_first %}
-                                {% include "generic_navigation.html" %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
+                        {% with object_links as links %}
+                        {% with "true" as as_li %}
+                        {% with "true" as hide_active_anchor %}
+                        {% with "active" as li_class_active %}
+                        {% with "first" as li_class_first %}
+                            {% include "generic_navigation.html" %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
                     </ul>
-                </div>    
-            {% endif %}
+                </div>                     
+            {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}
 
@@ -298,83 +278,61 @@
         {% endwith %}
     {% endif %}
     
-    {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
-    {% if object_navigation_links %}
+    {% get_object_navigation_links "secondary_menu" as secondary_menu_navigation_links %}
+    {% if secondary_menu_navigation_links %}
         <div class="block">
             <h3>{% trans "Secondary menu" %}</h3>
             <ul class="navigation">
-                {% with "true" as as_li %}
-                    {% include "generic_navigation.html" %}
-                {% endwith %}
+                {% for object_reference, object_links in secondary_menu_navigation_links.items %}
+                    {% with "true" as as_li %}
+                    {% with object_links as links %}
+                        {% include "generic_navigation.html" %}
+                    {% endwith %}
+                    {% endwith %}
+                {% endfor %}
             </ul>
         </div>
     {% endif %}
-    {% if navigation_object_list %}
-        {% for navigation_object_dict in navigation_object_list %}
-            {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-            {% get_object_navigation_links as object_navigation_links %}
-            {% if object_navigation_links %}
-                <div class="block">
-                    {% if navigation_object %}
-                        {% if navigation_object_dict.name %}
-                            <h3>{% blocktrans with navigation_object_dict.name as name %}Actions for {{ name }}: {{ navigation_object }}{% endblocktrans %}</h3>
-                        {% else %}
-                            <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
-                        {% endif %}
+
+    {% get_object_navigation_links as secondary_menu_navigation_links %}
+    {% if secondary_menu_navigation_links %}
+        <div class="block">
+            {% for object_reference, object_links in secondary_menu_navigation_links.items %}
+                {% if object_reference %}
+                    {% if navigation_object_dict.name %}
+                        <h3>{% blocktrans with navigation_object_dict.name as name %}Actions for {{ name }}: {{ object_reference }}{% endblocktrans %}</h3>
                     {% else %}
-                        <h3>{% trans "Available actions" %}</h3>
-                    {% endif %}
-                    <ul class="navigation">
-                        {% with "true" as as_li %}
-                            {% include "generic_navigation.html" %}
-                        {% endwith %}
-                    </ul>
-                </div>
-            {% endif %}       
-            {% get_object_navigation_links "sidebar" as object_navigation_links %}
-            {% if object_navigation_links %}
-            <div class="block">
-                <h3>{% trans "Other available actions" %}</h3>
-                <ul class="navigation">
-                    {% with "true" as as_li %}
-                        {% include "generic_navigation.html" %}
-                    {% endwith %}
-                </ul>
-            </div>
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        {% get_object_navigation_links as object_navigation_links %}
-        {% if object_navigation_links %}
-            <div class="block">
-                {% if navigation_object %}
-                    {% if object_name %}
-                        <h3>{% blocktrans %}Actions for {{ object_name }}: {{ navigation_object }}{% endblocktrans %}</h3>
-                    {% else %}
-                        <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
+                        <h3>{% blocktrans %}Actions for: {{ object_reference }}{% endblocktrans %}</h3>
                     {% endif %}
                 {% else %}
-                    <h3>{% trans "Actions" %}</h3>
-                {% endif %}
+                    <h3>{% trans "Available actions" %}</h3>
+                {% endif %}            
                 <ul class="navigation">
-                    {% with "true" as as_li %}
-                        {% include "generic_navigation.html" %}
-                    {% endwith %}
+                        {% with "true" as as_li %}
+                        {% with object_links as links %}
+                            {% include "generic_navigation.html" %}
+                        {% endwith %}
+                        {% endwith %}
                 </ul>
-            </div>
-        {% endif %}
-        {% get_object_navigation_links "sidebar" as object_navigation_links %}
-        {% if object_navigation_links %}
-            <div class="block">
-                <h3>{% trans "Other available actions" %}</h3>
-                <ul class="navigation">
-                    {% with "true" as as_li %}
-                        {% include "generic_navigation.html" %}
-                    {% endwith %}
-                </ul>
-            </div>
-        {% endif %} 
+            {% endfor %}
+        </div>
     {% endif %}
+
+    {% get_object_navigation_links "sidebar" as sidebar_navigation_links %}
+    {% if sidebar_navigation_links %}
+        <div class="block">
+            <h3>{% trans "Other available actions" %}</h3>
+            <ul class="navigation">
+                {% for object_reference, object_links in sidebar_navigation_links.items %}
+                    {% with "true" as as_li %}
+                    {% with object_links as links %}
+                        {% include "generic_navigation.html" %}
+                    {% endwith %}
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}    
 
     {% get_sidebar_templates as sidebar_templates %}
     {% for template in sidebar_templates %}
