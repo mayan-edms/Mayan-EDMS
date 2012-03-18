@@ -697,6 +697,7 @@ def setup_source_transformation_edit(request, transformation_id):
     return render_to_response('generic_form.html', {
         'title': _(u'Edit transformation: %s') % source_transformation,
         'form': form,
+        'source_type': source_transformation.content_object.source_type,
         'source': source_transformation.content_object,
         'transformation': source_transformation,
         'navigation_object_list': [
@@ -729,6 +730,7 @@ def setup_source_transformation_delete(request, transformation_id):
         'delete_view': True,
         'transformation': source_transformation,
         'source': source_transformation.content_object,
+        'source_type': source_transformation.content_object.source_type,
         'navigation_object_list': [
             {'object': 'source', 'name': _(u'source')},
             {'object': 'transformation', 'name': _(u'transformation')}
