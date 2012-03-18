@@ -49,14 +49,16 @@ class Link(object):
         self.conditional_disable = conditional_disable
         self.description = description
         self.dont_mark_active = dont_mark_active
-        self.children_view_regex = children_view_regex or []
         self.klass = klass
         self.keep_query = keep_query
         self.conditional_highlight = conditional_highlight  # Used by dynamic sources
         self.children_views = children_views or []
         self.children_classes = children_classes or []
+        self.children_url_regex = children_url_regex or []
+        self.children_view_regex = children_view_regex or []
 
     def resolve(self, context):
+        # TODO: don't calculate these if passed in an argument
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
         current_view = resolve_to_name(current_path)
@@ -88,7 +90,6 @@ class Link(object):
 
             if self.view:
                 if not self.dont_mark_active:
-                    #new_link['active'] = link['view'] == current_view
                     resolved_link.active = self.view == current_view
 
                 try:
@@ -104,41 +105,32 @@ class Link(object):
                     resolved_link.error = exc
             elif self.url:
                 if not self.dont_mark_active:
-                    #new_link['active'] = link['url'] == current_path
                     resolved_link.url.active = self.url == current_path
                     
                 if kwargs:
-                    #new_link['url'] = link['url'] % kwargs
                     resolved_link.url = self.url % kwargs
                 else:
-                    #new_link['url'] = link['url'] % args
                     resolved_link.url = self.url % args
                     if link.keep_query:
-                        #new_link['url'] = urlquote(new_link['url'], parsed_query_string)
-                        resolved_link.url = urlquote(resolved_link.url, parsed_query_string)
+                        resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))  
             else:
-                #new_link['active'] = False
                 resolved_link.active = False
 
             if self.conditional_highlight:
-                #new_link['active'] = link['conditional_highlight'](context)
                 resolved_link.active = self.conditional_highlight(context)
 
             if self.conditional_disable:
-                #new_link['disabled'] = link['conditional_disable'](context)
                 resolved_link.disabled = self.conditional_disable(context)
             else:
-                #new_link['disabled'] = False
                 resolved_link.disabled = False
 
             if current_view in self.children_views:
-                #new_link['active'] = True
                 resolved_link.active = True
 
-            #for child_url_regex in link.get('children_url_regex', []):
-            #    if re.compile(child_url_regex).match(current_path.lstrip('/')):
-            #        #new_link['active'] = True
-            #        resolved_link.active = True
+            # TODO: eliminate url_regexes and use new tree base main menu
+            for child_url_regex in self.children_url_regex:
+                if re.compile(child_url_regex).match(current_path.lstrip('/')):
+                    resolved_link.active = True
 
             for children_view_regex in self.children_view_regex:
                 if re.compile(children_view_regex).match(current_view):
@@ -206,16 +198,19 @@ def register_multi_item_links(sources, links, menu_name=None):
         multi_object_navigation[menu_name].setdefault(source, {'links': []})
         multi_object_navigation[menu_name][source]['links'].extend(links)
 
-
-def get_context_object_navigation_links(context, menu_name=None, links_dict=link_binding):
+#TODO: new name: get_context_navigation_links, get_navigation_links_for_context
+def get_context_object_navigation_links(context, menu_name=None, links_dict=link_binding):#, object_variable_name=None):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
-    context_links = []
+    context_links = {}
 
     # Don't fudge with the original global dictionary
+    # TODO: fix this
     links_dict = links_dict.copy()
 
+    # TODO: doesn't appear to be used
+    '''
     try:
         """
         Override the navigation links dictionary with the provided
@@ -226,8 +221,10 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=link
             return [link.resolve(context) for link in navigation_object_links]
     except VariableDoesNotExist:
         pass
-
+    '''
     # TODO: who uses this?  Remove if no one.
+    # Dynamic sources
+    # TODO: improve name to 'injected...'
     try:
         """
         Check for and inject a temporary navigation dictionary
@@ -239,15 +236,24 @@ def get_context_object_navigation_links(context, menu_name=None, links_dict=link
         pass
 
     try:
-        for link in links_dict[menu_name][current_view]['links']:
-            context_links.append(link.resolve(context))
+        view_links = links_dict[menu_name][current_view]['links']
+        if view_links:
+            context_links.setdefault(None, []) 
+            
+        for link in view_links:
+            context_links[None].append(link.resolve(context))
     except KeyError:
         pass
 
-    for resolved_object in get_navigation_objects(context):
+    for resolved_object, object_properties in get_navigation_objects(context).items():
         try:
-            for link in links_dict[menu_name][type(resolved_object['object'])]['links']:
-                context_links.append(link.resolve(context))
+            resolved_object_reference = resolved_object
+            object_links = links_dict[menu_name][type(resolved_object_reference)]['links']
+            if object_links:
+                context_links.setdefault(resolved_object_reference, [])
+            
+            for link in object_links:
+                context_links[resolved_object_reference].append(link.resolve(context))
         except KeyError:
             pass
 

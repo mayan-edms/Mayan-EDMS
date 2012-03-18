@@ -46,13 +46,6 @@ class GetNavigationLinks(Node):
     def render(self, context):
         menu_name = resolve_template_variable(context, self.menu_name)
         context[self.var_name] = get_context_object_navigation_links(context, menu_name, links_dict=self.links_dict)
-        logger.debug('link_list: %s' % get_context_object_navigation_links(context, menu_name, links_dict=self.links_dict))
-        object_list = get_navigation_objects(context)
-        logger.debug('object_list: %s' % object_list)
-
-        # TODO: why only one navigation_object
-        if object_list:
-            context['navigation_object'] = object_list[0]['object']
         return ''
 
 
@@ -72,13 +65,15 @@ def get_object_navigation_links(parser, token):
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
     new_context = copy.copy(context)
-    new_context.update({
-        'horizontal': True,
-        'object_navigation_links': get_context_object_navigation_links(context)    
-    })
+    
+    for object_reference, object_links in get_context_object_navigation_links(context).items():
+        new_context.update({
+            'horizontal': True,
+            'links': object_links  
+        })
+
     return new_context
-    
-    
+
 @register.tag
 def get_multi_item_links(parser, token):
     tag_name, arg = token.contents.split(None, 1)
@@ -92,9 +87,14 @@ def get_multi_item_links(parser, token):
 
 @register.inclusion_tag('generic_form_instance.html', takes_context=True)
 def get_multi_item_links_form(context):
+    logger.debug('starting')
+    links = []
+    for object_reference, object_links in get_context_object_navigation_links(context, links_dict=multi_object_navigation).items():
+        links.extend(object_links)
+
     new_context = copy.copy(context)
     new_context.update({
-        'form': MultiItemForm(actions=[(link.url, link.text) for link in get_context_object_navigation_links(context, links_dict=multi_object_navigation)]),
+        'form': MultiItemForm(actions=[(link.url, link.text) for link in links]),
         'title': _(u'Selected item actions:'),
         'form_action': reverse('multi_object_action_view'),
         'submit_method': 'get',

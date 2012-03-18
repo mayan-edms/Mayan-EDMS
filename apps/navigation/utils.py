@@ -8,51 +8,81 @@ from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
 from django.utils.text import unescape_string_literal
 
-#__all__ = ('resolve_to_name',)    
 logger = logging.getLogger(__name__)
 
 
 def get_navigation_objects(context):
-    object_list = []
+    objects = {}
+    
+    try:
+        indirect_reference_list = Variable('navigation_object_list').resolve(context)
+    except VariableDoesNotExist:
+        pass
+    else:
+        logger.debug('found: navigation_object_list')
+        for indirect_reference in indirect_reference_list:
+            try:
+                resolved_object = Variable(indirect_reference['object']).resolve(context)
+            except VariableDoesNotExist:
+                resolved_object = None
+            else:
+                objects.setdefault(resolved_object, {})
+                objects[resolved_object]['label'] = indirect_reference.get('object_name')
 
-    # Try a simple 'object' search first, for lists templates
+    try:
+        indirect_reference = Variable('navigation_object_name').resolve(context)
+    except VariableDoesNotExist:
+        pass
+    else:
+        logger.debug('found: navigation_object_name')
+        try:
+            object_label = Variable('object_name').resolve(context)
+        except VariableDoesNotExist:
+            object_label = None     
+        finally:
+            try:
+                resolved_object = Variable(indirect_reference).resolve(context)
+            except VariableDoesNotExist:
+                resolved_object = None
+                
+            objects.setdefault(resolved_object, {})
+            objects[resolved_object]['label'] = object_label
+
+    try:
+        indirect_reference = Variable('list_object_variable_name').resolve(context)
+    except VariableDoesNotExist:
+        pass
+    else:
+        logger.debug('found renamed list object')
+        try:
+            object_label = Variable('object_name').resolve(context)
+        except VariableDoesNotExist:
+            object_label = None     
+        finally:
+            try:
+                resolved_object = Variable(indirect_reference).resolve(context)
+            except VariableDoesNotExist:
+                resolved_object = None
+            else:
+                objects.setdefault(resolved_object, {})
+                objects[resolved_object]['label'] = object_label
+
     try:
         resolved_object = Variable('object').resolve(context)
     except VariableDoesNotExist:
-        try:
-            object_name_list = Variable('navigation_object_list').resolve(context)
-        except VariableDoesNotExist:
-            try:
-                object_name_list = [{'object': Variable('navigation_object_name').resolve(context)}]
-            except VariableDoesNotExist:
-                #try:
-                #    object_name_list = [{'object': Variable('list_object_variable_name').resolve(context)}]
-                #except VariableDoesNotExist:
-                return []
-                    #object_name_list = [{'object': 'object'}]
-                    #logger.debug('none found, falling back to "object"')
-                #else:
-                #    logger.debug('found: list_object_variable_name')
-            else:
-                logger.debug('found: navigation_object_name')
-        else:
-            logger.debug('found: navigation_object_list')
+        pass
     else:
         logger.debug('found single object')
-        return [{'object': resolved_object}]#, 'object_name': 'object'}]
-
-    logger.debug('object_name_list: %s' % object_name_list)
-
-    for object_name in object_name_list:
         try:
-            resolved_object = Variable(object_name['object']).resolve(context)
+            object_label = Variable('object_name').resolve(context)
         except VariableDoesNotExist:
-            resolved_object = None
-        
-        object_list.append({'object': resolved_object})#, 'object_name': 'qwe'})
+            object_label = None
+        finally:
+            objects.setdefault(resolved_object, {})
+            objects[resolved_object]['label'] = object_label
 
-    logger.debug('object_list: %s' % object_list)
-    return object_list
+    logger.debug('objects: %s' % objects)
+    return objects
 
 
 def resolve_template_variable(context, name):
