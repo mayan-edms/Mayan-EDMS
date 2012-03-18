@@ -49,8 +49,15 @@ Populate the database with the project's schema doing::
 Collect the static files of the project into the ``static`` folder for serving via a webserver::
 
     $ ./manage.py collectstatic
+    
+To test your installation, create a file called settings_local.py with the following content::
 
-After that deploy it using the webserver of your preference.  If your are using Apache_, a sample site file is included under the contrib directory.
+    DEBUG = True
+    DEVELOPMENT = True
+    
+Execute Django's runserver command to launch a local instance of **Mayan EDMS** and point your browser to the URL: 127:0.0.1:8000, if everything was installed correctly you should see the login screen.
+After making sure everything is running correctly, stop the runserver command, delete the settings_local.py and deploy **Mayan EDMS** using the webserver of your preference.  If your are using Apache_, a sample site file is included under the contrib directory.
+
 
 Webfaction
 ----------
