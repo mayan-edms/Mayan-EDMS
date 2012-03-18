@@ -10,7 +10,4 @@ def document_acl_list(request, document_id):
     return acl_list_for(
         request,
         document,
-        extra_context={
-            'object': document,
-        }
     )
