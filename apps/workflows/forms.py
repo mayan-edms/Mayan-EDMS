@@ -17,5 +17,16 @@ class StateSetupForm(forms.ModelForm):
 
 
 class WorkflowStateSetupForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        workflow = kwargs.pop('workflow')
+        super(WorkflowStateSetupForm, self).__init__(*args, **kwargs)
+        self.fields['workflow'].initial = workflow
+        self.fields['workflow'].widget = forms.widgets.HiddenInput()
+    
     class Meta:
         model = WorkflowState
+
+
+class TransitionSetupForm(forms.ModelForm):
+    class Meta:
+        model = Transition
