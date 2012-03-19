@@ -13,6 +13,7 @@ urlpatterns = patterns('workflows.views',
 
     url(r'^setup/workflow/state/(?P<workflow_state_pk>\d+)/transition/list/$', 'setup_workflow_state_transitions_list', (), 'setup_workflow_state_transitions_list'),
     url(r'^setup/workflow/state/(?P<workflow_state_pk>\d+)/transition/add/$', 'setup_workflow_state_transition_add', (), 'setup_workflow_state_transition_add'),
+    url(r'^setup/workflow/state/transition/(?P<workflow_state_transition_pk>\d+)/edit/$', 'setup_workflow_state_transition_edit', (), 'setup_workflow_state_transition_edit'),
 
     url(r'^setup/state/list/$', 'setup_state_list', (), 'setup_state_list'),
     url(r'^setup/state/create/$', 'setup_state_create', (), 'setup_state_create'),

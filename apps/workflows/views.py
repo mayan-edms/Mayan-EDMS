@@ -525,6 +525,9 @@ def setup_workflow_state_transitions_list(request, workflow_state_pk):
             {'object': 'workflow_state', 'name': _(u'state')},
         ],
         'list_object_variable_name': 'state_transition',
+        'extra_columns': [
+            {'name': _(u'Destination'), 'attribute': 'workflow_state_destination'},
+        ],
     }
 
     return render_to_response('generic_list.html', context,
@@ -556,33 +559,36 @@ def setup_workflow_state_transition_add(request, workflow_state_pk):
         ],
     }, context_instance=RequestContext(request))
 
-"""
-def setup_state_transition_edit(request, state_transition_pk):
+
+def setup_workflow_state_transition_edit(request, work_state_transition_pk):
     Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
-    state_transition = get_object_or_404(WorkflowState, pk=state_transition_pk)
-    redirect_url = reverse('setup_state_transitions_list', args=[state_transition.state.pk])
+    workflow_state_transition = get_object_or_404(WorkflowStateTransition, pk=work_state_transition_pk)
+    redirect_url = reverse('setup_workflow_state_transitions_list', args=[workflow_state_transition.workflow_state_source.pk])
 
     if request.method == 'POST':
-        form = WorkflowStateSetupForm(state=state_transition.state, instance=state_transition, data=request.POST)
+        form = WorkflowStateTransitionSetupForm(workflow_state=workflow_state_transition.workflow_state_source, instance=workflow_state_transition, data=request.POST)
         if form.is_valid():
-            state = form.save()
-            messages.success(request, _(u'worflow state edited succesfully.'))
+            workflow_state_transition = form.save()
+            messages.success(request, _(u'worflow state transition edited succesfully.'))
             return HttpResponseRedirect(redirect_url)
     else:
-        form = WorkflowStateSetupForm(state=state_transition.state, instance=state_transition)
+        form = WorkflowStateSetupForm(workflow_state=workflow_state_transition.workflow_state_source, instance=workflow_state_transition)
 
     return render_to_response('generic_form.html', {
-        'title': _(u'edit worflow state'),
+        'title': _(u'edit worflow state transition: %s') % workflow_state_transition,
         'form': form,
-        'state': state_transition.state,
-        'state_transition': state_transition,
+        'workflow_state': workflow_state_transition.workflow_state_source,
+        'workflow': workflow_state_transition.workflow_state_source.workflow,
+        'workflow_state_transition': workflow_state_transition,
         'navigation_object_list': [
-            {'object': 'state', 'name': _(u'state')},
-            {'object': 'state_transition', 'name': _(u'state state')}
+            {'object': 'workflow', 'name': _(u'workflow')},
+            {'object': 'workflow_state', 'name': _(u'state')},
+            {'object': 'workflow_state_transition', 'name': _(u'transition')},
         ],
+        'list_object_variable_name': 'workflow_state_transition',
     }, context_instance=RequestContext(request))
     
-
+"""
 def setup_state_transition_remove(request, state_transition_pk=None, state_transition_pk_list=None):
     post_action_redirect = None
 

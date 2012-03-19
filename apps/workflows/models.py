@@ -67,7 +67,6 @@ class WorkflowState(models.Model):
     description = models.TextField(blank=True, verbose_name=_(u'description'))
         
     def __unicode__(self):
-        #return '%s (%s)' % (self.label, self.workflow.label)
         return unicode(self.state)
 
     @property
@@ -75,6 +74,7 @@ class WorkflowState(models.Model):
         return self.workflowstatetransition_set
 
     class Meta:
+        #unique_together = ('workflow', 'state')
         verbose_name = _(u'workflow state')
         verbose_name_plural = _(u'workflows states')
 
