@@ -25,7 +25,9 @@ from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,
     PERMISSION_WORKFLOW_SETUP_DELETE, PERMISSION_STATE_SETUP_VIEW,
     PERMISSION_STATE_SETUP_CREATE, PERMISSION_STATE_SETUP_EDIT,
-    PERMISSION_STATE_SETUP_DELETE)
+    PERMISSION_STATE_SETUP_DELETE, PERMISSION_TRANSITION_SETUP_VIEW,
+    PERMISSION_TRANSITION_SETUP_CREATE, PERMISSION_TRANSITION_SETUP_EDIT,
+    PERMISSION_TRANSITION_SETUP_DELETE)
 
 
 logger = logging.getLogger(__name__)
@@ -294,11 +296,6 @@ def setup_state_list(request):
         'object_list': State.objects.all(),
         'title': _(u'states'),
         'hide_link': True,
-        #'list_object_variable_name': 'source',
-        #'source_type': source_type,
-        #'extra_columns': [
-        #    {'name': _(u'Initial state'), 'attribute': encapsulate(lambda workflow: workflow.initial_state or _(u'None'))},
-        #],
     }
 
     return render_to_response('generic_list.html', context,
@@ -400,7 +397,7 @@ def setup_state_delete(request, state_pk=None, state_pk_list=None):
 
 # Transitions
 def setup_transition_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_TRANSITION_SETUP_VIEW])
 
     context = {
         'object_list': Transition.objects.all(),
@@ -417,7 +414,7 @@ def setup_transition_list(request):
 
 
 def setup_transition_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_TRANSITION_SETUP_CREATE])
     redirect_url = reverse('setup_transition_list')
 
     if request.method == 'POST':
@@ -437,7 +434,7 @@ def setup_transition_create(request):
 
 
 def setup_transition_edit(request, transition_pk):
-    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_TRANSITION_SETUP_EDIT])
     transition = get_object_or_404(Transition, pk=transition_pk)
 
     if request.method == 'POST':
@@ -458,3 +455,57 @@ def setup_transition_edit(request, transition_pk):
         ],
     },
     context_instance=RequestContext(request))
+
+
+def setup_transition_delete(request, transition_pk=None, transition_pk_list=None):
+    post_action_redirect = None
+
+    if transition_pk:
+        transitions = [get_object_or_404(Transition, pk=transition_pk)]
+        post_action_redirect = reverse('setup_transition_list')
+    elif transition_pk_list:
+        transitions = [get_object_or_404(Transition, pk=transition_pk) for transition_pk in transition_pk_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one transition.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_TRANSITION_SETUP_DELETE])
+    except PermissionDenied:
+        transitions = AccessEntry.objects.filter_objects_by_access(PERMISSION_TRANSITION_SETUP_DELETE, request.user, transitions)
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        for transition in transitions:
+            try:
+                transition.delete()
+                messages.success(request, _(u'Transitions "%s" deleted successfully.') % transition)
+            except Exception, e:
+                messages.error(request, _(u'Error deleting transition "%(transition)s": %(error)s') % {
+                    'transition': transition, 'error': e
+                })
+
+        return HttpResponseRedirect(next)
+
+    context = {
+        'object_name': _(u'transition'),
+        'delete_view': True,
+        'previous': previous,
+        'next': next,
+        'form_icon': u'transmit_delete.png',
+        'navigation_object_list': [
+            {'object': 'transition', 'name': _(u'transition')},
+        ],        
+    }
+    if len(transitions) == 1:
+        context['transition'] = transitions[0]
+        context['title'] = _(u'Are you sure you wish to delete the transition: %s?') % ', '.join([unicode(d) for d in transitions])
+        context['message'] = _('Will be removed from all documents.')
+    elif len(transitions) > 1:
+        context['title'] = _(u'Are you sure you wish to delete the transitions: %s?') % ', '.join([unicode(d) for d in transitions])
+        context['message'] = _('Will be removed from all documents.')
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))

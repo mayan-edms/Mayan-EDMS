@@ -16,3 +16,8 @@ PERMISSION_STATE_SETUP_CREATE = Permission.objects.register(namespace, 'state_se
 PERMISSION_STATE_SETUP_EDIT = Permission.objects.register(namespace, 'state_setup_edit', _(u'Edit existing state templates'))
 PERMISSION_STATE_SETUP_DELETE = Permission.objects.register(namespace, 'state_setup_delete', _(u'Delete existing state templates'))
 
+PERMISSION_TRANSITION_SETUP_VIEW = Permission.objects.register(namespace, 'transition_setup_view', _(u'View existing transition templates'))
+PERMISSION_TRANSITION_SETUP_CREATE = Permission.objects.register(namespace, 'transition_setup_create', _(u'Create new transition templates'))
+PERMISSION_TRANSITION_SETUP_EDIT = Permission.objects.register(namespace, 'transition_setup_edit', _(u'Edit existing transition templates'))
+PERMISSION_TRANSITION_SETUP_DELETE = Permission.objects.register(namespace, 'transition_setup_delete', _(u'Delete existing transition templates'))
+

@@ -9,7 +9,9 @@ from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,
     PERMISSION_WORKFLOW_SETUP_DELETE, PERMISSION_STATE_SETUP_VIEW,
     PERMISSION_STATE_SETUP_CREATE, PERMISSION_STATE_SETUP_EDIT,
-    PERMISSION_STATE_SETUP_DELETE)
+    PERMISSION_STATE_SETUP_DELETE, PERMISSION_TRANSITION_SETUP_VIEW,
+    PERMISSION_TRANSITION_SETUP_CREATE, PERMISSION_TRANSITION_SETUP_EDIT,
+    PERMISSION_TRANSITION_SETUP_DELETE)
 from .models import Workflow, State, Transition, WorkflowState
 
 
@@ -27,10 +29,10 @@ setup_state_create_link = Link(text=_(u'create new state'), view='setup_state_cr
 setup_state_edit_link = Link(text=_(u'edit'), view='setup_state_edit', args='object.pk', sprite='transmit_edit', permissions=[PERMISSION_STATE_SETUP_EDIT])
 setup_state_delete_link = Link(text=_(u'delete'), view='setup_state_delete', args='object.pk', sprite='transmit_delete', permissions=[PERMISSION_STATE_SETUP_DELETE])
 
-setup_transition_list_link = Link(text=_(u'transition list'), view='setup_transition_list', sprite='chart_line', permissions=[PERMISSION_WORKFLOW_SETUP_VIEW])
-setup_transition_create_link = Link(text=_(u'create new transition'), view='setup_transition_create', sprite='chart_line_add', permissions=[PERMISSION_WORKFLOW_SETUP_CREATE])
-setup_transition_edit_link = Link(text=_(u'edit'), view='setup_transition_edit', args='transition.pk', sprite='chart_line', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
-setup_transition_delete_link = Link(text=_(u'delete'), view='setup_transition_delete', args='transition.pk', sprite='chart_line_delete', permissions=[PERMISSION_WORKFLOW_SETUP_DELETE])
+setup_transition_list_link = Link(text=_(u'transition list'), view='setup_transition_list', sprite='chart_line', permissions=[PERMISSION_TRANSITION_SETUP_VIEW])
+setup_transition_create_link = Link(text=_(u'create new transition'), view='setup_transition_create', sprite='chart_line_add', permissions=[PERMISSION_TRANSITION_SETUP_CREATE])
+setup_transition_edit_link = Link(text=_(u'edit'), view='setup_transition_edit', args='transition.pk', sprite='chart_line', permissions=[PERMISSION_TRANSITION_SETUP_EDIT])
+setup_transition_delete_link = Link(text=_(u'delete'), view='setup_transition_delete', args='transition.pk', sprite='chart_line_delete', permissions=[PERMISSION_TRANSITION_SETUP_DELETE])
 
 bind_links(
     [

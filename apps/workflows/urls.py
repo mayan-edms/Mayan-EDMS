@@ -18,6 +18,6 @@ urlpatterns = patterns('workflows.views',
     url(r'^setup/transition/list/$', 'setup_transition_list', (), 'setup_transition_list'),
     url(r'^setup/transition/create/$', 'setup_transition_create', (), 'setup_transition_create'),
     url(r'^setup/transition/(?P<transition_pk>\d+)/edit/$', 'setup_transition_edit', (), 'setup_transition_edit'),
-    #url(r'^setup/transition/(?P<transition_pk>\d+)/delete/$', 'setup_transition_delete', (), 'setup_transition_delete'),
+    url(r'^setup/transition/(?P<transition_pk>\d+)/delete/$', 'setup_transition_delete', (), 'setup_transition_delete'),
     
 )
