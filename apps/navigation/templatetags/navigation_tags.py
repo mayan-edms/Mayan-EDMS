@@ -6,11 +6,11 @@ import logging
 
 from django.core.urlresolvers import reverse
 from django.template import (TemplateSyntaxError, Library,
-    Node, Variable)
+    Node, Variable, VariableDoesNotExist)
 from django.utils.translation import ugettext as _
 
 from ..api import (link_binding, multi_object_navigation,
-    sidebar_templates, get_context_object_navigation_links)
+    sidebar_templates, get_context_navigation_links)
 from ..forms import MultiItemForm
 from ..utils import resolve_to_name, resolve_template_variable
 from .. import main_menu
@@ -39,12 +39,12 @@ class GetNavigationLinks(Node):
 
     def render(self, context):
         menu_name = resolve_template_variable(context, self.menu_name)
-        context[self.var_name] = get_context_object_navigation_links(context, menu_name, links_dict=self.links_dict)
+        context[self.var_name] = get_context_navigation_links(context, menu_name, links_dict=self.links_dict)
         return ''
 
 
-@register.tag
-def get_object_navigation_links(parser, token):
+@register.tag(name='get_object_navigation_links')
+def get_context_navigation_links_tag(parser, token):
     logger.debug('getting links')
     tag_name, arg = token.contents.split(None, 1)
 
@@ -58,13 +58,24 @@ def get_object_navigation_links(parser, token):
 
 @register.inclusion_tag('generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
+    # Used by list subtemplate
     new_context = copy.copy(context)
-
-    for object_reference, object_links in get_context_object_navigation_links(context).items():
-        new_context.update({
-            'horizontal': True,
-            'links': object_links
-        })
+    try:
+        object_variable_name = Variable('navigation_object_name').resolve(context)
+    except VariableDoesNotExist:
+        object_variable_name = 'object'
+    finally:
+        logger.debug('object_variable_name: %s' % object_variable_name)
+            
+        try:
+            object_reference = Variable(object_variable_name).resolve(context)
+        except VariableDoesNotExist:
+            pass
+        else:
+            new_context.update({
+                'horizontal': True,
+                'links': get_context_navigation_links(context).get(object_reference)
+            })
 
     return new_context
 

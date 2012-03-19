@@ -198,8 +198,7 @@ def register_multi_item_links(sources, links, menu_name=None):
         multi_object_navigation[menu_name][source]['links'].extend(links)
 
 
-#TODO: new name: get_context_navigation_links, get_navigation_links_for_context
-def get_context_object_navigation_links(context, menu_name=None, links_dict=link_binding):
+def get_context_navigation_links(context, menu_name=None, links_dict=link_binding):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
