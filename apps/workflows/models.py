@@ -70,6 +70,10 @@ class WorkflowState(models.Model):
         #return '%s (%s)' % (self.label, self.workflow.label)
         return unicode(self.state)
 
+    @property
+    def transitions(self):
+        return self.workflowstatetransition_set
+
     class Meta:
         verbose_name = _(u'workflow state')
         verbose_name_plural = _(u'workflows states')
@@ -102,7 +106,7 @@ class WorkflowStateAbilityGrant(models.Model):
 
         
 class WorkflowStateTransition(models.Model):
-    workflow_state_source = models.ForeignKey(WorkflowState, related_name='workflow_state_transition_source', verbose_name=_(u'workflow state source'))
+    workflow_state_source = models.ForeignKey(WorkflowState, verbose_name=_(u'workflow state source'))
     transition = models.ForeignKey(Transition, related_name='workflow_state_transition', verbose_name=_(u'transition'))
     workflow_state_destination = models.ForeignKey(WorkflowState, related_name='workflow_state_transition_destination', verbose_name=_(u'workflow state destination'))
     description = models.TextField(blank=True, verbose_name=_(u'description'))
