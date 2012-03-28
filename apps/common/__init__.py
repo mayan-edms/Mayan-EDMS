@@ -10,6 +10,8 @@ from django.db.models.signals import post_syncdb
 
 from navigation.api import bind_links, register_top_menu, Link
 
+from .conf.settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
+    AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
 from .conf import settings as common_settings
 from .utils import validate_path
 
@@ -42,18 +44,16 @@ def create_superuser(sender, **kwargs):
     Create our own admin super user automatically.
     """
 
-    if common_settings.AUTO_CREATE_ADMIN:
-        USERNAME = common_settings.AUTO_ADMIN_USERNAME
-        PASSWORD = common_settings.AUTO_ADMIN_PASSWORD
+    if AUTO_CREATE_ADMIN:
         try:
-            auth_models.User.objects.get(username=USERNAME)
+            auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
         except auth_models.User.DoesNotExist:
             print '*' * 80
-            print 'Creating super admin user -- login: %s, password: %s' % (USERNAME, PASSWORD)
+            print 'Creating super admin user -- login: %s, password: %s' % (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD)
             print '*' * 80
-            assert auth_models.User.objects.create_superuser(USERNAME, 'x@x.com', PASSWORD)
+            assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'x@x.com', AUTO_ADMIN_PASSWORD)
         else:
-            print 'Super admin user already exists. -- login: %s, password: %s' % (USERNAME, PASSWORD)
+            print 'Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME
 
-if (validate_path(common_settings.TEMPORARY_DIRECTORY) == False) or (not common_settings.TEMPORARY_DIRECTORY):
+if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
     setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())
