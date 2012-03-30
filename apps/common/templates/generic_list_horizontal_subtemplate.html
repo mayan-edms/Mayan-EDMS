@@ -62,7 +62,11 @@
 
             <div class="group navform wat-cf">
                 {% for object in object_list %}
-                    {{ object }}
+                    {% if object %}
+                        {{ object }}
+                    {% endif %}
+                {% empty %}
+                    {% blocktrans with title|striptags as stripped_title %}There are no {{ stripped_title }}{% endblocktrans %}
                 {% endfor %}
             </div>
             
