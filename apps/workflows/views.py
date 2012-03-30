@@ -18,18 +18,14 @@ from common.utils import encapsulate
 #from common.widgets import two_state_template
 #from acls.models import AccessEntry
 
-from .models import Workflow, State, Transition, WorkflowState
+from .models import Workflow, State, WorkflowState, WorkflowNode
 from .forms import (WorkflowSetupForm, StateSetupForm, 
-    WorkflowStateSetupForm, TransitionSetupForm,
-    WorkflowStateTransitionSetupForm)
+    WorkflowStateSetupForm, WorkflowNodeSetupForm)
 from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,
     PERMISSION_WORKFLOW_SETUP_DELETE, PERMISSION_STATE_SETUP_VIEW,
     PERMISSION_STATE_SETUP_CREATE, PERMISSION_STATE_SETUP_EDIT,
-    PERMISSION_STATE_SETUP_DELETE, PERMISSION_TRANSITION_SETUP_VIEW,
-    PERMISSION_TRANSITION_SETUP_CREATE, PERMISSION_TRANSITION_SETUP_EDIT,
-    PERMISSION_TRANSITION_SETUP_DELETE)
-
+    PERMISSION_STATE_SETUP_DELETE)
 
 logger = logging.getLogger(__name__)
 
@@ -207,7 +203,7 @@ def setup_workflow_state_edit(request, workflow_state_pk):
         form = WorkflowStateSetupForm(workflow=workflow_state.workflow, instance=workflow_state)
 
     return render_to_response('generic_form.html', {
-        'title': _(u'edit worflow state'),
+        'title': _(u'edit worflow state: %s') % workflow_state,
         'form': form,
         'workflow': workflow_state.workflow,
         'workflow_state': workflow_state,
@@ -272,6 +268,54 @@ def setup_workflow_state_remove(request, workflow_state_pk=None, workflow_state_
         context_instance=RequestContext(request))    
 
 
+# Nodes
+def setup_workflow_node_list(request, workflow_pk):
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
+    workflow = get_object_or_404(Workflow, pk=workflow_pk)
+
+    context = {
+        'object_list': workflow.workflow_nodes.all(),
+        'extra_columns': [
+            {'name': _(u'Posible next nodes'), 'attribute': encapsulate(lambda workflow_node: workflow_node.node.possible_next_nodes() or _(u'None'))},
+        ],        
+        'title': _(u'nodes of workflow: %s') % workflow,
+        'hide_link': True,
+        'workflow': workflow,
+        'navigation_object_list': [
+            {'object': 'workflow', 'name': _(u'workflow')},
+        ],
+        'list_object_variable_name': 'workflow_node',
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
+
+def setup_workflow_node_edit(request, workflow_node_pk):
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
+    workflow_node = get_object_or_404(WorkflowNode, pk=workflow_node_pk)
+    redirect_url = reverse('setup_workflow_node_list', args=[workflow_node.workflow.pk])
+
+    if request.method == 'POST':
+        form = WorkflowNodeSetupForm(workflow=workflow_node.workflow, instance=workflow_node, data=request.POST)
+        if form.is_valid():
+            state = form.save()
+            messages.success(request, _(u'worflow node edited succesfully.'))
+            return HttpResponseRedirect(redirect_url)
+    else:
+        form = WorkflowNodeSetupForm(workflow=workflow_node.workflow, instance=workflow_node)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit worflow node: %s') % workflow_node,
+        'form': form,
+        'workflow': workflow_node.workflow,
+        'workflow_node': workflow_node,
+        'navigation_object_list': [
+            {'object': 'workflow', 'name': _(u'workflow')},
+            {'object': 'workflow_node', 'name': _(u'workflow node')}
+        ],
+    }, context_instance=RequestContext(request))
+"""
 def setup_workflow_transition_list(request, state_workflow_pk):
     Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
     workflow = get_object_or_404(Workflow, pk=workflow_pk)
@@ -289,6 +333,7 @@ def setup_workflow_transition_list(request, state_workflow_pk):
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
+"""
 # States
 def setup_state_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_STATE_SETUP_VIEW])
@@ -395,7 +440,7 @@ def setup_state_delete(request, state_pk=None, state_pk_list=None):
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
 
-
+"""
 # Transitions
 def setup_transition_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_TRANSITION_SETUP_VIEW])
@@ -507,8 +552,8 @@ def setup_transition_delete(request, transition_pk=None, transition_pk_list=None
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
-
-
+"""
+"""
 # State transitions
 def setup_workflow_state_transitions_list(request, workflow_state_pk):
     Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
@@ -587,7 +632,7 @@ def setup_workflow_state_transition_edit(request, work_state_transition_pk):
         ],
         'list_object_variable_name': 'workflow_state_transition',
     }, context_instance=RequestContext(request))
-    
+"""    
 """
 def setup_state_transition_remove(request, state_transition_pk=None, state_transition_pk_list=None):
     post_action_redirect = None
