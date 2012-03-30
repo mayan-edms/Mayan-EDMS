@@ -15,5 +15,8 @@ def setup_list(request):
         'title': _(u'setup items'),
     }
 
+    # Remove unresolved links form list
+    context['object_list'] = [obj for obj in context['object_list'] if obj]
+
     return render_to_response('generic_list_horizontal.html', context,
         context_instance=RequestContext(request))
