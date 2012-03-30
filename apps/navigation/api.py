@@ -8,8 +8,8 @@ import re
 from django.template import (VariableDoesNotExist, Variable)
 from django.utils.encoding import smart_str, smart_unicode
 from django.core.urlresolvers import reverse, NoReverseMatch
-from django.utils.http import urlquote
-from django.utils.http import urlencode
+from django.utils.http import urlquote, urlencode
+from django.utils.translation import ugettext_lazy as _
 
 from elementtree.ElementTree import SubElement
 
@@ -28,6 +28,8 @@ logger = logging.getLogger(__name__)
 
 class ResolvedLink(object):
     active = False
+    url = '#'
+    text = _('Unnamed link')
 
 
 class Link(object):
@@ -67,11 +69,15 @@ class Link(object):
         query_string = urlparse.urlparse(previous_path).query
         parsed_query_string = urlparse.parse_qs(query_string)
 
+        logger.debug('condition: %s', self.condition)
+
         # Check to see if link has conditional display
         if self.condition:
             condition_result = self.condition(context)
         else:
             condition_result = True
+
+        logger.debug('condition_result: %s', condition_result)
 
         if condition_result:
             resolved_link = ResolvedLink()
