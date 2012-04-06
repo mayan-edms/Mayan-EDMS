@@ -46,7 +46,7 @@ South==0.7.3
 
 # Keys and signing
 
-python-gnupg==0.2.8
+https://github.com/rosarior/python-gnupg/zipball/0.2.8
 python-hkp==0.1.3
 
 # Feedback
