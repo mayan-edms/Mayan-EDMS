@@ -275,6 +275,10 @@ class Document(models.Model):
         version.filename = value
         return version.save()
 
+    @property
+    def content(self):
+        return self.latest_version.content
+
     filename = property(_get_filename, _set_filename)
 
 
@@ -523,6 +527,15 @@ class DocumentVersion(models.Model):
         name, extension = os.path.splitext(self.filename)
         self.filename = u''.join([new_name, extension])
         self.save()
+
+    @property
+    def content(self):
+        content = []
+        for page in self.document.pages.all():
+            if page.content:
+                content.append(page.content)
+
+        return u''.join(content)
 
 
 class DocumentTypeFilename(models.Model):
