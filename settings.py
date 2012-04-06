@@ -131,6 +131,7 @@ INSTALLED_APPS = (
 # 3rd party
 # South
     'south',
+	'haystack',
 # Others
     'filetransfers',
     'taggit',
@@ -198,6 +199,13 @@ COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'com
 
 COMPRESS_ENABLED=False
 SENDFILE_BACKEND = 'sendfile.backends.simple'
+#--------- Haystack -----------
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 #--------- Django -------------------
