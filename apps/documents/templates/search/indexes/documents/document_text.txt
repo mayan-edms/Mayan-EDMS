@@ -1,3 +1,0 @@
-{{ object.filename }}
-{{ object.description }}
-{{ object.latest_version.content }}

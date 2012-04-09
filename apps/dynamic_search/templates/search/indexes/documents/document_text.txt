@@ -1,0 +1,11 @@
+{{ object.content }}
+{{ object.metadata_values_string }}
+{{ object.cleaned_filename }}
+{{ object.filename }}
+{{ object.extension_split.1 }}
+{{ object.document_type }}
+{{ object.file_mimetype }}
+{{ object.description|default:' ' }}
+{{ object.flat_comments }}
+{{ object.flat_tags }}
+{{ object.uuid }}
