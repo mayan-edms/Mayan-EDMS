@@ -40,6 +40,11 @@ register_links(['comments_for_document', 'comment_add', 'comment_delete', 'comme
 register_links(Comment, [comment_delete])
 register_links(Document, [comments_for_document], menu_name='form_header')
 
+
+def flat_comments(document):
+    return u' '.join(document.comments.values_list('comment', flat=True))
+
+
 Document.add_to_class(
     'comments',
     generic.GenericRelation(
@@ -48,6 +53,8 @@ Document.add_to_class(
         object_id_field='object_pk'
     )
 )
+
+Document.add_to_class('flat_comments', flat_comments)
 
 class_permissions(Document, [
     PERMISSION_COMMENT_CREATE,
