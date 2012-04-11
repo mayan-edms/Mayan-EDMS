@@ -6,6 +6,7 @@
 {% load variable_tags %}
 {% load main_settings_tags %}
 {% load multiselect_tags %}
+{% load subtemplates_tags %}
 
 {% get_main_setting "DISABLE_ICONS" as disable_icons %}
 
@@ -76,7 +77,9 @@
                                 <th>{{ column.name|capfirst }}</th>
                             {% endfor %}
 
-                            {% for column in object_list.0|get_model_list_columns %}
+                            {% get_object_list_object_name object_list.0 %}
+
+                            {% for column in object|get_model_list_columns %}
                                 <th>{{ column.name|capfirst }}</th>
                             {% endfor %}            
 
@@ -89,15 +92,17 @@
                             {% endif %}
                         </tr>
                     {% endif %}
+
                     {% for object in object_list %}
+                        {% get_object_list_object_name object %}
                         <tr class="{% cycle 'odd' 'even2' %}">
                         {% if multi_select or multi_select_as_buttons %}    
                             <td>
-                            {% if multi_select_item_properties %}
-                                <input type="checkbox" class="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" value="" />
-                            {% else %}
-                                <input type="checkbox" class="checkbox" name="pk_{{ object.pk }}" value="" />
-                            {% endif %}
+                                {% if multi_select_item_properties %}
+                                    <input type="checkbox" class="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" value="" />
+                                {% else %}
+                                    <input type="checkbox" class="checkbox" name="pk_{{ object.pk }}" value="" />
+                                {% endif %}
                             </td>
                         {% endif %}
                         {% if not hide_object %}

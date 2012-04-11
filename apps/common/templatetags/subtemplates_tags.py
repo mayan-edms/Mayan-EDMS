@@ -1,8 +1,10 @@
 import re
 
-from django.template import Node, TemplateSyntaxError, Library, \
-    Variable, Context
+from django.template import (Node, TemplateSyntaxError, Library,
+    Variable, Context)
 from django.template.loader import get_template
+
+from common.utils import return_attrib
 
 register = Library()
 
@@ -49,3 +51,15 @@ def render_subtemplate(parser, token):
 
     return RenderSubtemplateNode(template_name, template_context, var_name)
     #format_string[1:-1]
+
+
+@register.simple_tag(takes_context=True)
+def get_object_list_object_name(context, source_object):
+    object_list_object_name = context.get('object_list_object_name')
+    if object_list_object_name:
+        context['object'] = return_attrib(source_object, object_list_object_name)
+    else:
+        context['object'] = source_object
+    
+    return ''
+        
