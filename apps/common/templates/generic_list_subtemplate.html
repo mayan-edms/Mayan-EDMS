@@ -77,11 +77,13 @@
                                 <th>{{ column.name|capfirst }}</th>
                             {% endfor %}
 
-                            {% get_object_list_object_name object_list.0 %}
+                            {% if object_list %}
+                                {% get_object_list_object_name object_list.0 %}
 
-                            {% for column in object|get_model_list_columns %}
-                                <th>{{ column.name|capfirst }}</th>
-                            {% endfor %}            
+                                {% for column in object|get_model_list_columns %}
+                                    <th>{{ column.name|capfirst }}</th>
+                                {% endfor %}            
+                            {% endif %}
 
                             {% for column in extra_columns %}
                                 <th>{{ column.name|capfirst }}</th>
