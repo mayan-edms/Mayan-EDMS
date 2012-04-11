@@ -12,6 +12,8 @@ from django.utils.http import urlencode
 
 from haystack.views import SearchView
 
+from common.utils import encapsulate
+
 from dynamic_search.models import RecentSearch
 from dynamic_search.api import perform_search
 from dynamic_search.forms import SearchForm, AdvancedSearchForm
@@ -24,19 +26,16 @@ class CustomSearchView(SearchView):
         self.start_time = datetime.datetime.now()
 
         return super(CustomSearchView, self).__call__(*args, **kwargs)
-        
+
     def create_response(self):
         """
         Generates the actual HttpResponse to send back to the user.
         """
-        #(paginator, page) = self.build_page()
-
         context = {
             'query': self.query,
             'form': self.form,
-            'object_list': [result.object for result in self.results],
-            #'page': page,
-            #'paginator': paginator,
+            'results': self.results,
+            'object_list': self.results,
             'suggestion': None,
             'submit_label': _(u'Search'),
             'submit_icon_famfam': 'zoom',
@@ -45,12 +44,9 @@ class CustomSearchView(SearchView):
             'list_title': _(u'results for: %s') % self.query,
             'hide_links': True,
             'multi_select_as_buttons': True,
-            'elapsed_time': unicode(datetime.datetime.now() - self.start_time).split(':')[2]
-
+            'elapsed_time': unicode(datetime.datetime.now() - self.start_time).split(':')[2],
+            'object_list_object_name': 'object',
         }
-
-        #if self.results and hasattr(self.results, 'query') and self.results.query.backend.include_spelling:
-        #    context['suggestion'] = self.form.get_suggestion()
 
         context.update(self.extra_context())
         return render_to_response(self.template, context, context_instance=self.context_class(self.request))
