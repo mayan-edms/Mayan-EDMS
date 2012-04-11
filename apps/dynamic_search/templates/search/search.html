@@ -15,19 +15,6 @@
     {% if not form and not query %}
         {% include "generic_list_subtemplate.html" %}
     {% endif %}
-
-{% comment %}
-
-{% for result in page.object_list %}
-    {% with result|search_include as fragment %}
-    {% include fragment %}
-    {% endwith %}
-{% empty %}
-    <p>No results found.</p>
-{% endfor %}
-
-{% endcomment %}
-
 {% endblock %}
 
 {% block footer %}
