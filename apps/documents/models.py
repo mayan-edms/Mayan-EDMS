@@ -13,6 +13,8 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+from unidecode import unidecode
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -280,6 +282,16 @@ class Document(models.Model):
         return self.latest_version.content
 
     filename = property(_get_filename, _set_filename)
+
+    @property
+    def cleaned_filename(self):
+        return unidecode(self.extension_split()[0])
+
+    @property
+    def extension_split(self):
+        filename, extension = os.path.splitext(self.filename)
+        return filename, extension[1:]
+        
 
 
 class DocumentVersion(models.Model):
