@@ -103,7 +103,7 @@ class Document(models.Model):
             self.uuid = UUID_FUNCTION()
             self.date_added = datetime.datetime.now()
         super(Document, self).save(*args, **kwargs)
-        self.mark_dirty()
+        self.mark_indexable()
 
     def get_cached_image_name(self, page, version):
         document_version = DocumentVersion.objects.get(pk=version)

@@ -78,7 +78,7 @@ def tag_attach(request, document_id):
                 return HttpResponseRedirect(next)
 
             document.tags.add(tag)
-
+            document.mark_indexable()
             messages.success(request, _(u'Tag "%s" attached successfully.') % tag)
             return HttpResponseRedirect(next)
     else:
@@ -141,6 +141,8 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     if request.method == 'POST':
         for tag in tags:
             try:
+                for document in Document.objects.filter(tags__in=[tag]):
+                    document.mark_indexable() 
                 tag.delete()
                 messages.success(request, _(u'Tag "%s" deleted successfully.') % tag)
             except Exception, e:
@@ -188,6 +190,8 @@ def tag_edit(request, tag_id):
         if form.is_valid():
             tag.name = form.cleaned_data['name']
             tag.save()
+            for document in Document.objects.filter(tags__in=[tag]):
+                document.mark_indexable() 
             tag_properties = tag.tagproperties_set.get()
             tag_properties.color = form.cleaned_data['color']
             tag_properties.save()
@@ -264,6 +268,7 @@ def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
         for tag in tags:
             try:
                 document.tags.remove(tag)
+                document.mark_indexable()
                 messages.success(request, _(u'Tag "%s" removed successfully.') % tag)
             except Exception, e:
                 messages.error(request, _(u'Error deleting tag "%(tag)s": %(error)s') % {

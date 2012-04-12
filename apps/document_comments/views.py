@@ -43,6 +43,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         for comment in comments:
             try:
                 comment.delete()
+                comment.content_object.mark_indexable()
                 messages.success(request, _(u'Comment "%s" deleted successfully.') % comment)
             except Exception, e:
                 messages.error(request, _(u'Error deleting comment "%(comment)s": %(error)s') % {
@@ -95,7 +96,8 @@ def comment_add(request, document_id):
             comment.object_pk = document.pk
             comment.site = Site.objects.get_current()
             comment.save()
-
+            document.mark_indexable()
+            
             messages.success(request, _(u'Comment added successfully.'))
             return HttpResponseRedirect(next)
     else:
@@ -110,9 +112,9 @@ def comment_add(request, document_id):
 
 
 def comments_for_document(request, document_id):
-    '''
+    """
     Show a list of all the comments related to the passed object
-    '''
+    """
     document = get_object_or_404(Document, pk=document_id)
 
     try:

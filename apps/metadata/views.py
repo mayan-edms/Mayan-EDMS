@@ -92,6 +92,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                         messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
                         'document': document, 'error': error})
                 else:
+                    document.mark_indexable()
                     messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
 
             return HttpResponseRedirect(next)
@@ -149,6 +150,8 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 else:
                     messages.warning(request, _(u'Metadata type: %(metadata_type)s already present in document %(document)s.') % {
                         'metadata_type': metadata_type, 'document': document})
+                        
+                document.mark_indexable()
 
             if len(documents) == 1:
                 return HttpResponseRedirect(u'%s?%s' % (
@@ -236,6 +239,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                         try:
                             document_metadata = DocumentMetadata.objects.get(document=document, metadata_type=metadata_type)
                             document_metadata.delete()
+                            document.mark_indexable()
                             messages.success(request, _(u'Successfully remove metadata type: %(metadata_type)s from document: %(document)s.') % {
                                 'metadata_type': metadata_type, 'document': document})
                         except:
