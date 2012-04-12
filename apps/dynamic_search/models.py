@@ -13,6 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils.simplejson import loads
+from django.utils.http import urlencode
 
 from .managers import RecentSearchManager, IndexableObjectManager
 from .api import registered_search_dict
@@ -30,27 +31,30 @@ class RecentSearch(models.Model):
     objects = RecentSearchManager()
 
     def __unicode__(self):
+        return self.form_string()
+
+    def form_string(self):
+        query = self.get_query()
         if self.is_advanced():
             return u'%s (%s)' % (self.get_query(), self.hits)
         else:
-            return u'%s (%s)' % (self.get_query().get('q'), self.hits)
+            return u'%s (%s)' % (u' '.join(self.get_query().get('q')), self.hits)
 
     def save(self, *args, **kwargs):
         self.datetime_created = datetime.datetime.now()
         super(RecentSearch, self).save(*args, **kwargs)
 
-    #def readable_query(self):
-    #    return self.
-
-    #def url(self):
-    #    view = 'results' if self.is_advanced() else 'search'
-    #    return '%s?%s' % (reverse(view), self.query)
-
     def get_query(self):
-        return loads(self.query)
+        try:
+            return loads(self.query)
+        except ValueError:
+            return {}
 
     def is_advanced(self):
         return 'q' not in self.get_query()
+
+    def get_absolute_url(self):
+        return '?'.join([reverse('search'), urlencode(self.get_query(), doseq=True)])
 
     class Meta:
         ordering = ('-datetime_created',)

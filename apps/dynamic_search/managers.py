@@ -15,21 +15,6 @@ from dynamic_search.conf.settings import RECENT_COUNT
 class RecentSearchManager(Manager):
     def add_query_for_user(self, search_view):#user, url, hits):
         query_dict = parse_qs(unquote_plus(smart_str(urlparse(search_view.request.get_full_path()).query)))
-        print 'query_dict', query_dict
-        print 'serial', dumps(query_dict)
-        
-        #parsed_query = urlparse.parse_qs(query)
-        #for key, value in parsed_query.items():
-        #    parsed_query[key] = ' '.join(value)#
-
-        #if 'q=' in query:
-        #    # Is a simple query
-        #    if not parsed_query.get('q'):
-        #        # Don't store empty simple searches
-        #        return
-        #    else:
-        #        # Cleanup query string and only store the q parameter
-        #        parsed_query = {'q': parsed_query['q']}
 
         if query_dict and not isinstance(search_view.request.user, AnonymousUser):
             # If the URL query has at least one variable with a value
@@ -39,6 +24,9 @@ class RecentSearchManager(Manager):
             to_delete = self.model.objects.filter(user=search_view.request.user)[RECENT_COUNT:]
             for recent_to_delete in to_delete:
                 recent_to_delete.delete()
+
+    def get_for_user(self, user):
+        return [entry for entry in self.model.objects.filter(user=user) if entry.get_query()]
 
 
 class IndexableObjectManager(Manager):
