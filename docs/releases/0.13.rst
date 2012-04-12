@@ -60,4 +60,5 @@ Bugs fixed
 
 Stuff removed
 =============
-None so far
+Removal of the internal SEARCH_SHOW_OBJECT_TYPE option
+Removal of the SEARCH_LIMIT configuration option

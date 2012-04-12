@@ -8,22 +8,6 @@ namespace = SettingNamespace('dynamic_search', _(u'Searching'), module='dynamic_
 
 Setting(
     namespace=namespace,
-    name='SHOW_OBJECT_TYPE',
-    global_name='SEARCH_SHOW_OBJECT_TYPE',
-    default=True,
-    hidden=True
-)
-
-Setting(
-    namespace=namespace,
-    name='LIMIT',
-    global_name='SEARCH_LIMIT',
-    default=100,
-    description=_(u'Maximum amount search hits to fetch and display.')
-)
-
-Setting(
-    namespace=namespace,
     name='RECENT_COUNT',
     global_name='SEARCH_RECENT_COUNT',
     default=5,

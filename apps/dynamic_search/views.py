@@ -4,11 +4,11 @@ import urlparse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.utils.http import urlencode
 from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.utils.http import urlencode
 
 from haystack.views import SearchView
 
@@ -16,12 +16,6 @@ from common.utils import encapsulate
 
 from dynamic_search.models import RecentSearch
 from dynamic_search.api import perform_search
-
-#TODO: DEPRECATED
-from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
-
-#TODO: DEPRECATED?
-from dynamic_search.conf.settings import LIMIT
 
 
 class CustomSearchView(SearchView):
