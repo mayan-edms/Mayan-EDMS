@@ -43,6 +43,8 @@ Afterwards migrate existing database schema with::
     $ ./manage.py migrate sources 0001 --fake
     $ ./manage.py migrate sources
 
+#Haystack - build index
+
 The upgrade procedure is now complete.
 
 
