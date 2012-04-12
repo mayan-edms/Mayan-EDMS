@@ -1,19 +1,14 @@
+from __future__ import absolute_import
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from dynamic_search.api import registered_search_dict
+from haystack.forms import SearchForm
+
+from .api import registered_search_dict
 
 
-class SearchForm(forms.Form):
-    q = forms.CharField(max_length=128, label=_(u'Search terms'))
-    source = forms.CharField(
-        max_length=32,
-        required=False,
-        widget=forms.widgets.HiddenInput()
-    )
-
-
-class AdvancedSearchForm(forms.Form):
+class AdvancedSearchForm(SearchForm):
     def __init__(self, *args, **kwargs):
         super(AdvancedSearchForm, self).__init__(*args, **kwargs)
 
@@ -23,3 +18,22 @@ class AdvancedSearchForm(forms.Form):
                     label=field['title'],
                     required=False
                 )
+
+    def search(self):
+        if not self.is_valid():
+            return self.no_query_found()
+
+        #if not self.cleaned_data.get('q'):
+        #    return self.no_query_found()
+        for field in self.fields:
+            print 'field', field
+        #sqs = self.searchqueryset.auto_query(self.cleaned_data['q'])
+
+        if self.load_all:
+            sqs = sqs.load_all()
+
+        return sqs
+
+    def search(self):
+        sqs = super(ModelSearchForm, self).search()
+        return sqs.models(*self.get_models())
