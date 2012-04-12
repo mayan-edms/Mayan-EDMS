@@ -4,7 +4,8 @@ from django.core.urlresolvers import reverse
 from django.template import Library
 from django.utils.translation import ugettext as _
 
-from ..forms import SearchForm
+from haystack.forms import SearchForm
+
 from ..models import RecentSearch
 from ..conf.settings import RECENT_COUNT
 
@@ -27,21 +28,18 @@ def search_form(context):
 
 @register.inclusion_tag('generic_subtemplate.html', takes_context=True)
 def recent_searches_template(context):
-    try:
-        recent_searches = RecentSearch.objects.get_for_user(user=context['user'])
-        context.update({
-            'request': context['request'],
-            'STATIC_URL': context['STATIC_URL'],
-            'side_bar': True,
-            'title': _(u'recent searches (maximum of %d)') % RECENT_COUNT,
-            'paragraphs': [
-                u'<a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a>' % {
-                    'text': recent_search,
-                    'url': recent_search.get_absolute_url(),
-                    'icon': 'zoom_in' if recent_search.is_advanced() else 'zoom',
-                } for recent_search in recent_searches
-            ]
-        })
-        return context
-    except Exception, e:
-        print 'EEEEEEEEEEEE', e
+    recent_searches = RecentSearch.objects.get_for_user(user=context['user'])
+    context.update({
+        'request': context['request'],
+        'STATIC_URL': context['STATIC_URL'],
+        'side_bar': True,
+        'title': _(u'recent searches (maximum of %d)') % RECENT_COUNT,
+        'paragraphs': [
+            u'<a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a>' % {
+                'text': recent_search,
+                'url': recent_search.get_absolute_url(),
+                'icon': 'zoom_in' if recent_search.is_advanced() else 'zoom',
+            } for recent_search in recent_searches
+        ]
+    })
+    return context

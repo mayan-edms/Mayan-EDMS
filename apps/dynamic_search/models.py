@@ -1,14 +1,10 @@
 from __future__ import absolute_import
 
-import urlparse
-import urllib
 import datetime
 
 from django.db import models
-from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.utils.encoding import smart_unicode, smart_str
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
@@ -16,7 +12,6 @@ from django.utils.simplejson import loads
 from django.utils.http import urlencode
 
 from .managers import RecentSearchManager, IndexableObjectManager
-from .api import registered_search_dict
 
 
 class RecentSearch(models.Model):
@@ -34,7 +29,6 @@ class RecentSearch(models.Model):
         return self.form_string()
 
     def form_string(self):
-        query = self.get_query()
         if self.is_advanced():
             return u'%s (%s)' % (self.get_query(), self.hits)
         else:
@@ -64,16 +58,16 @@ class RecentSearch(models.Model):
 
 class IndexableObject(models.Model):
     """
-    Store a list of object links that have been modified and are 
-    meant to be indexed in the next search index update 
+    Store a list of object links that have been modified and are
+    meant to be indexed in the next search index update
     """
     datetime = models.DateTimeField(verbose_name=_(u'date time'))
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
-    
+
     objects = IndexableObjectManager()
-    
+
     def __unicode__(self):
         return unicode(self.content_object)
 
