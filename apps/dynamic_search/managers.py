@@ -1,32 +1,59 @@
-import urlparse
+from urlparse import urlparse, parse_qs
+from urllib import unquote_plus
 
-from django.db import models
+from django.utils.simplejson import dumps, loads, JSONEncoder
+from django.db.models import Manager
 from django.utils.http import urlencode
 from django.contrib.auth.models import AnonymousUser
-        
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+from django.utils.encoding import smart_unicode, smart_str
+
 from dynamic_search.conf.settings import RECENT_COUNT
 
 
-class RecentSearchManager(models.Manager):
-    def add_query_for_user(self, user, query, hits):
-        parsed_query = urlparse.parse_qs(query)
-        for key, value in parsed_query.items():
-            parsed_query[key] = ' '.join(value)
+class RecentSearchManager(Manager):
+    def add_query_for_user(self, search_view):#user, url, hits):
+        query_dict = parse_qs(unquote_plus(smart_str(urlparse(search_view.request.get_full_path()).query)))
+        print 'query_dict', query_dict
+        print 'serial', dumps(query_dict)
+        
+        #parsed_query = urlparse.parse_qs(query)
+        #for key, value in parsed_query.items():
+        #    parsed_query[key] = ' '.join(value)#
 
-        if 'q=' in query:
-            # Is a simple query
-            if not parsed_query.get('q'):
-                # Don't store empty simple searches
-                return
-            else:
-                # Cleanup query string and only store the q parameter
-                parsed_query = {'q': parsed_query['q']}
+        #if 'q=' in query:
+        #    # Is a simple query
+        #    if not parsed_query.get('q'):
+        #        # Don't store empty simple searches
+        #        return
+        #    else:
+        #        # Cleanup query string and only store the q parameter
+        #        parsed_query = {'q': parsed_query['q']}
 
-        if parsed_query and not isinstance(user, AnonymousUser):
+        if query_dict and not isinstance(search_view.request.user, AnonymousUser):
             # If the URL query has at least one variable with a value
-            new_recent, created = self.model.objects.get_or_create(user=user, query=urlencode(parsed_query), defaults={'hits': hits})
-            new_recent.hits = hits
+            new_recent, created = self.model.objects.get_or_create(user=search_view.request.user, query=dumps(query_dict), defaults={'hits': 0})
+            new_recent.hits = search_view.results.count()
             new_recent.save()
-            to_delete = self.model.objects.filter(user=user)[RECENT_COUNT:]
+            to_delete = self.model.objects.filter(user=search_view.request.user)[RECENT_COUNT:]
             for recent_to_delete in to_delete:
                 recent_to_delete.delete()
+
+
+class IndexableObjectManager(Manager):
+    def get_indexables(self, datetime=None):
+        if datetime:
+            return self.model.objects.filter(datetime__gte=datetime)
+        else:
+            return self.model.objects.all()
+            
+    def get_indexables_pk_list(self, datetime=None):
+        return self.get_indexables(datetime).values_list('object_id', flat=True)
+
+    def mark_indexable(self, obj):
+        content_type = ContentType.objects.get_for_model(obj)
+        self.model.objects.get_or_create(content_type=content_type, object_id=obj.pk)
+        
+    def clear_all(self):
+        self.model.objects.all().delete()

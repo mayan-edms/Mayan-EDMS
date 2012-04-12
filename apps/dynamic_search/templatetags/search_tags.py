@@ -20,7 +20,7 @@ def search_form(context):
         'submit_label': _(u'Search'),
         'submit_icon_famfam': 'zoom',
     })
-    return context
+    return ''
 
 
 @register.inclusion_tag('generic_subtemplate.html', takes_context=True)
@@ -34,7 +34,7 @@ def recent_searches_template(context):
         'paragraphs': [
             u'<a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a>' % {
                 'text': rs,
-                'url': rs.url(),
+                'url': reverse('search'),
                 'icon': 'zoom_in' if rs.is_advanced() else 'zoom',
             } for rs in recent_searches
         ]

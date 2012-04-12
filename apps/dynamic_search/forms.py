@@ -3,11 +3,16 @@ from __future__ import absolute_import
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from haystack.forms import SearchForm
+from haystack.forms import SearchForm as BasicSearchForm
 
 from .api import registered_search_dict
 
 
+class SearchForm(BasicSearchForm):
+    pass
+
+
+"""
 class AdvancedSearchForm(SearchForm):
     def __init__(self, *args, **kwargs):
         super(AdvancedSearchForm, self).__init__(*args, **kwargs)
@@ -37,3 +42,4 @@ class AdvancedSearchForm(SearchForm):
     def search(self):
         sqs = super(ModelSearchForm, self).search()
         return sqs.models(*self.get_models())
+"""

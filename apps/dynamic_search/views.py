@@ -16,8 +16,11 @@ from common.utils import encapsulate
 
 from dynamic_search.models import RecentSearch
 from dynamic_search.api import perform_search
-from dynamic_search.forms import SearchForm, AdvancedSearchForm
+
+#TODO: DEPRECATED
 from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
+
+#TODO: DEPRECATED?
 from dynamic_search.conf.settings import LIMIT
 
 
@@ -47,11 +50,13 @@ class CustomSearchView(SearchView):
             'elapsed_time': unicode(datetime.datetime.now() - self.start_time).split(':')[2],
             'object_list_object_name': 'object',
         }
+        
+        RecentSearch.objects.add_query_for_user(self)
 
         context.update(self.extra_context())
         return render_to_response(self.template, context, context_instance=self.context_class(self.request))
    
-
+"""
 def results(request, extra_context=None):
     context = {}
 
@@ -141,3 +146,4 @@ def search(request, advanced=False):
 def search_again(request):
     query = urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
     return HttpResponseRedirect('%s?%s' % (reverse('search_advanced'), query))
+"""

@@ -15,25 +15,24 @@ from .models import IndexableObject
 logger = logging.getLogger(__name__)
 
 search = {'text': _(u'search'), 'view': 'search', 'famfam': 'zoom'}
-search_advanced = {'text': _(u'advanced search'), 'view': 'search_advanced', 'famfam': 'zoom_in'}
-search_again = {'text': _(u'search again'), 'view': 'search_again', 'famfam': 'arrow_undo'}
+#search_advanced = {'text': _(u'advanced search'), 'view': 'search_advanced', 'famfam': 'zoom_in'}
+#search_again = {'text': _(u'search again'), 'view': 'search_again', 'famfam': 'arrow_undo'}
 
-register_sidebar_template(['search', 'search_advanced'], 'search_help.html')
+#register_sidebar_template(['search', 'search_advanced'], 'search_help.html')
+register_sidebar_template(['search'], 'search_help.html')
 
-register_links(['search', 'search_advanced', 'results'], [search, search_advanced], menu_name='form_header')
-register_links(['results'], [search_again], menu_name='sidebar')
+#register_links(['search', 'search_advanced', 'results'], [search, search_advanced], menu_name='form_header')
+register_links(['search'], [search], menu_name='form_header')
+#register_links(['results'], [search_again], menu_name='sidebar')
 
-register_sidebar_template(['search', 'search_advanced', 'results'], 'recent_searches.html')
+#register_sidebar_template(['search', 'search_advanced', 'results'], 'recent_searches.html')
+register_sidebar_template(['search'], 'recent_searches.html')
 
-
-def mark_dirty(obj):
-    IndexableObject.objects.mark_dirty(content_object=obj)
-
-Document.add_to_class('mark_dirty', lambda obj: IndexableObject.objects.mark_dirty(obj))
+Document.add_to_class('mark_indexable', lambda obj: IndexableObject.objects.mark_indexable(obj))
 
 
-@receiver(post_update_index, dispatch_uid='clear_dirty_indexables')
-def clear_dirty_indexables(sender, **kwargs):
+@receiver(post_update_index, dispatch_uid='clear_pending_indexables')
+def clear_pending_indexables(sender, **kwargs):
     logger.debug('Clearing all indexable flags post update index signal')
     IndexableObject.objects.clear_all()
 

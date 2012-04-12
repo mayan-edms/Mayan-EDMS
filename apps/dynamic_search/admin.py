@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from dynamic_search.models import RecentSearch, IndexableObject
+from .models import RecentSearch, IndexableObject
 
 
 class RecentSearchAdmin(admin.ModelAdmin):
