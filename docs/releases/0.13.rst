@@ -26,6 +26,8 @@ POP3 and IMAP
 Send document or document links via E-mail
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Haystack
+~~~~~~~~
 
 Upgrading from a previous version
 =================================
@@ -43,9 +45,12 @@ Afterwards migrate existing database schema with::
     $ ./manage.py migrate sources 0001 --fake
     $ ./manage.py migrate sources
 
-#Haystack - build index
+Issue the following command to index existing documents in the new full text search database::
 
-The upgrade procedure is now complete.
+    $ ./manage.py rebuild_index --noinput
+    
+Depending on the existing size of you current document base this make take from a few minutes up to an hour.
+Once the full text initial indexing ends, the upgrade procedure is complete.
 
 
 Backward incompatible changes

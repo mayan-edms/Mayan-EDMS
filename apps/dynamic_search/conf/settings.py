@@ -13,3 +13,11 @@ Setting(
     default=5,
     description=_(u'Maximum number of search queries to remember per user.')
 )
+
+Setting(
+    namespace=namespace,
+    name='INDEX_UPDATE_INTERVAL',
+    global_name='SEARCH_INDEX_UPDATE_INTERVAL',
+    default=1800,
+    description=_(u'Interval in second on which to trigger the search index update.')
+)
