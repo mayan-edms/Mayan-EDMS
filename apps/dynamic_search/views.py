@@ -4,8 +4,13 @@ import datetime
 
 from django.shortcuts import render_to_response
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import PermissionDenied
 
 from haystack.views import SearchView
+
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from permissions import Permission
+from acls.models import AccessEntry
 
 from .models import RecentSearch
 
@@ -20,11 +25,18 @@ class CustomSearchView(SearchView):
         """
         Generates the actual HttpResponse to send back to the user.
         """
+        object_list = self.results.values_list('object', flat=True)
+        
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_VIEW])
+        except PermissionDenied:
+            if self.query:
+                object_list = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_VIEW, self.request.user, object_list)
+
         context = {
             'query': self.query,
             'form': self.form,
-            'results': self.results,
-            'object_list': self.results,
+            'object_list': object_list,
             'suggestion': None,
             'submit_label': _(u'Search'),
             'submit_icon_famfam': 'zoom',
@@ -34,7 +46,6 @@ class CustomSearchView(SearchView):
             'hide_links': True,
             'multi_select_as_buttons': True,
             'elapsed_time': unicode(datetime.datetime.now() - self.start_time).split(':')[2],
-            'object_list_object_name': 'object',
         }
 
         RecentSearch.objects.add_query_for_user(self)
