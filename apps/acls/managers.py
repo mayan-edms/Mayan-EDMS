@@ -137,14 +137,14 @@ class AccessEntryManager(models.Manager):
         content_type = ContentType.objects.get_for_model(cls)
 
         # Calculate actor role membership ACL query
-        total_queries = None
+        total_queries = Q()
         for role in RoleMember.objects.get_roles_for_member(actor):
             role_type = ContentType.objects.get_for_model(role)
             if related:
                 query = Q(holder_type=role_type, holder_id=role.pk, permission=permission.get_stored_permission)
             else:
                 query = Q(holder_type=role_type, holder_id=role.pk, content_type=content_type, permission=permission.get_stored_permission)
-            if total_queries is None:
+            if not total_queries:
                 total_queries = query
             else:
                 total_queries = total_queries | query
@@ -161,7 +161,7 @@ class AccessEntryManager(models.Manager):
                 query = Q(holder_type=group_type, holder_id=group.pk, permission=permission.get_stored_permission)
             else:
                 query = Q(holder_type=group_type, holder_id=group.pk, content_type=content_type, permission=permission.get_stored_permission)
-            if total_queries is None:
+            if not total_queries:
                 total_queries = query
             else:
                 total_queries = total_queries | query
