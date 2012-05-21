@@ -285,7 +285,7 @@ class Document(models.Model):
 
     @property
     def cleaned_filename(self):
-        return unidecode(self.extension_split()[0])
+        return unidecode(self.extension_split[0])
 
     @property
     def extension_split(self):
