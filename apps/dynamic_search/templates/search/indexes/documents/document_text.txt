@@ -1,5 +1,9 @@
 {{ object.content }}
-{{ object.metadata_values_string }}
+
+{% for document_metadata in object.documentmetadata_set.all %}
+    {{ document_metadata.value }}
+{% endfor %} 
+
 {{ object.cleaned_filename }}
 {{ object.filename }}
 {{ object.extension_split.1 }}

@@ -98,18 +98,3 @@ class DocumentTypeDefaults(models.Model):
     class Meta:
         verbose_name = _(u'document type defaults')
         verbose_name_plural = _(u'document types defaults')
-
-
-def document_metadata_values(document):
-    return DocumentMetadata.objects.filter(document=document).values_list('value', flat=True)
-
-
-def document_metadata_values_string(document):
-    return u' '.join(document_metadata_values(document))
-
-
-def document_metadata_dict_list(document):
-    return [{name: value} for name, value in DocumentMetadata.objects.filter(document=document).values_list('metadata_type__name', 'value')]
-
-
-Document.add_to_class('metadata_values_string', document_metadata_values_string)
