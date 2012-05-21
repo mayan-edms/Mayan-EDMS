@@ -5,7 +5,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
 
-from haystack.management.commands.update_index import Command
+from django.core.management import call_command
 
 from navigation.api import register_sidebar_template, register_links
 from documents.models import Document
@@ -37,9 +37,13 @@ def clear_pending_indexables(sender, **kwargs):
 
 
 @receiver(pre_update_index, dispatch_uid='scheduler_shutdown_pre_update_index')
-def scheduler_shutdown_pre_update_index(sender, **kwargs):
+def scheduler_shutdown_pre_update_index(sender, mayan_runtime, **kwargs):
     logger.debug('Scheduler shut down on pre update index signal')
-    scheduler.shutdown()
+    logger.debug('Runtime variable: %s' % mayan_runtime)
+    # Only shutdown the scheduler if the command is called from the command
+    # line
+    if not mayan_runtime:
+        scheduler.shutdown()
 
 
 def search_index_update():
@@ -50,15 +54,18 @@ def search_index_update():
         logger.debug('acquired lock: %s' % lock_id)
 
         logger.debug('Executing haystack\'s index update command')
-        command = Command()
-        command.handle()
+        call_command('update_index --mayan_runtime')
 
         lock.release()
     except LockError:
         logger.debug('unable to obtain lock')
         pass
-    
-    
+    except Exception, instance:
+        logger.debug('Unhandled exception: %s' % instance)
+        lock.release()
+        pass
+
+
 register_interval_job('search_index_update', _(u'Update the search index with the most recent modified documents.'), search_index_update, seconds=INDEX_UPDATE_INTERVAL)
 
 
