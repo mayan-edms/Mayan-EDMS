@@ -11,5 +11,9 @@
 {{ object.file_mimetype }}
 {{ object.description|default:' ' }}
 {{ object.flat_comments }}
-{{ object.flat_tags }}
+
+{% for tag in object.tags.all %}
+    {{ tag }}
+{% endfor %}
+
 {{ object.uuid }}

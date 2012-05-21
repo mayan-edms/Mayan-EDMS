@@ -66,11 +66,4 @@ class_permissions(Tag, [
     PERMISSION_TAG_VIEW,
 ])
 
-
-def flat_tags(document):
-    return u' '.join(document.tags.values_list('name', flat=True))
-
-
 Document.add_to_class('tags', TaggableManager())
-Document.add_to_class('flat_tags', flat_tags)
-
