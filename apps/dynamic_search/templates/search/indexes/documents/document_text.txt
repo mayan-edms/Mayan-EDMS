@@ -10,7 +10,10 @@
 {{ object.document_type }}
 {{ object.file_mimetype }}
 {{ object.description|default:' ' }}
-{{ object.flat_comments }}
+
+{% for comment in object.comments.all %}
+    {{ comment.comment }}
+{% endfor %}
 
 {% for tag in object.tags.all %}
     {{ tag }}
