@@ -30,12 +30,6 @@ register_sidebar_template(['search'], 'recent_searches.html')
 Document.add_to_class('mark_indexable', lambda obj: IndexableObject.objects.mark_indexable(obj))
 
 
-@receiver(post_update_index, dispatch_uid='clear_pending_indexables')
-def clear_pending_indexables(sender, **kwargs):
-    logger.debug('Clearing all indexable flags post update index signal')
-    IndexableObject.objects.clear_all()
-
-
 @receiver(pre_update_index, dispatch_uid='scheduler_shutdown_pre_update_index')
 def scheduler_shutdown_pre_update_index(sender, mayan_runtime, **kwargs):
     logger.debug('Scheduler shut down on pre update index signal')
@@ -67,7 +61,3 @@ def search_index_update():
 
 
 register_interval_job('search_index_update', _(u'Update the search index with the most recent modified documents.'), search_index_update, seconds=INDEX_UPDATE_INTERVAL)
-
-
-
-
