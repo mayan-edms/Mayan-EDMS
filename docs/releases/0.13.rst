@@ -13,10 +13,15 @@ Overview
 * Send document or document links via E-mail
 * Document previews and page previews navigation improvements
 * Ability to delete detached signatures
+* Specialized search via Haystack
+
+  * Haystack is setup to use Whoosh by default but user can choose to use
+    any of the other search backends supported by Haystack.
 
 
 What's new in Mayan EDMS v0.13
 ==============================
+
 
 E-mail document source
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -26,8 +31,10 @@ POP3 and IMAP
 Send document or document links via E-mail
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 Haystack
 ~~~~~~~~
+
 
 Upgrading from a previous version
 =================================
@@ -44,6 +51,8 @@ Afterwards migrate existing database schema with::
 
     $ ./manage.py migrate sources 0001 --fake
     $ ./manage.py migrate sources
+    $ ./manage.py migrate dynamic_search 0001 --fake
+    $ ./manage.py migrate dynamic_search
 
 Issue the following command to index existing documents in the new full text search database::
 
@@ -55,12 +64,13 @@ Once the full text initial indexing ends, the upgrade procedure is complete.
 
 Backward incompatible changes
 =============================
-None so far
+None
+
 
 Bugs fixed
 ==========
-* Metadata unicode fixes, while creating new documents.
-* Update indexes when renaming document
+* Metadata unicode fixes while creating new documents.
+* Fixed document index link filename when renaming document the source document.
 
 
 Stuff removed
