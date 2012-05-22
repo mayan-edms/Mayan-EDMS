@@ -42,7 +42,7 @@ djangorestframework==0.2.3
 
 # Migrations
 
-South==0.7.3
+South==0.7.5
 
 # Keys and signing
 
