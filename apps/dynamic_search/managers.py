@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from urlparse import urlparse, parse_qs
 from urllib import unquote_plus
+import copy
 
 from django.utils.simplejson import dumps
 from django.db.models import Manager
@@ -36,8 +37,12 @@ class IndexableObjectManager(Manager):
         else:
             return self.model.objects.all()
 
-    def get_indexables_pk_list(self, datetime=None):
-        return self.get_indexables(datetime).values_list('object_id', flat=True)
+    def get_indexables_pk_list(self, datetime=None, clear_indexable=False):
+        indexable_query_set = self.get_indexables(datetime)
+        indexable_value_list = copy.copy(indexable_query_set.values_list('object_id', flat=True))
+        if clear_indexable:
+            indexable_query_set.delete()
+        return indexable_value_list
 
     def mark_indexable(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
