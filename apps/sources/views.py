@@ -23,6 +23,7 @@ from common.utils import encapsulate
 from common.widgets import two_state_template
 import sendfile
 from acls.models import AccessEntry
+from navigation.api import Link
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder, POP3Email, SourceLog, IMAPEmail)
@@ -55,14 +56,7 @@ def get_tab_link_for_source(source, document=None):
         view = u'upload_interactive'
         args = [u'"%s"' % source.source_type, source.pk]
 
-    return {
-        'text': source.title,
-        'view': view,
-        'args': args,
-        'famfam': source.icon,
-        'keep_query': True,
-        'conditional_highlight': return_function(source),
-    }
+    return Link(text=source.title, view=view, args=args, sprite=source.icon, keep_query=True, conditional_highlight=return_function(source))
 
 
 def get_active_tab_links(document=None):
@@ -703,6 +697,7 @@ def setup_source_transformation_edit(request, transformation_id):
     return render_to_response('generic_form.html', {
         'title': _(u'Edit transformation: %s') % source_transformation,
         'form': form,
+        'source_type': source_transformation.content_object.source_type,
         'source': source_transformation.content_object,
         'transformation': source_transformation,
         'navigation_object_list': [
@@ -735,6 +730,7 @@ def setup_source_transformation_delete(request, transformation_id):
         'delete_view': True,
         'transformation': source_transformation,
         'source': source_transformation.content_object,
+        'source_type': source_transformation.content_object.source_type,
         'navigation_object_list': [
             {'object': 'source', 'name': _(u'source')},
             {'object': 'transformation', 'name': _(u'transformation')}

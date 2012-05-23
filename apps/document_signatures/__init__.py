@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 #from django.dispatch import receiver
 
 from documents.models import Document, DocumentVersion
-from navigation.api import register_links
+from navigation.api import bind_links, Link
 from django_gpg.runtime import gpg
 from django_gpg.exceptions import GPGDecryptionError
 from acls.api import class_permissions
@@ -79,13 +79,13 @@ def document_post_save_hook(instance):
 #    if kwargs.get('created', False):
 #        DocumentVersionSignature.objects.signature_state(instance.document)
 
-document_signature_upload = {'text': _(u'upload signature'), 'view': 'document_signature_upload', 'args': 'object.pk', 'famfam': 'pencil_add', 'permissions': [PERMISSION_SIGNATURE_UPLOAD], 'conditional_disable': has_embedded_signature}
-document_signature_download = {'text': _(u'download signature'), 'view': 'document_signature_download', 'args': 'object.pk', 'famfam': 'disk', 'permissions': [PERMISSION_SIGNATURE_DOWNLOAD], 'conditional_disable': doesnt_have_detached_signature}
-document_signature_delete = {'text': _(u'delete signature'), 'view': 'document_signature_delete', 'args': 'object.pk', 'famfam': 'pencil_delete', 'permissions': [PERMISSION_SIGNATURE_DELETE], 'conditional_disable': doesnt_have_detached_signature}
-document_verify = {'text': _(u'signatures'), 'view': 'document_verify', 'args': 'object.pk', 'famfam': 'text_signature', 'permissions': [PERMISSION_DOCUMENT_VERIFY]}
+document_signature_upload = Link(text=_(u'upload signature'), view='document_signature_upload', args='object.pk', sprite='pencil_add', permissions=[PERMISSION_SIGNATURE_UPLOAD], conditional_disable=has_embedded_signature)
+document_signature_download = Link(text=_(u'download signature'), view='document_signature_download', args='object.pk', sprite='disk', permissions=[PERMISSION_SIGNATURE_DOWNLOAD], conditional_disable=doesnt_have_detached_signature)
+document_signature_delete = Link(text=_(u'delete signature'), view='document_signature_delete', args='object.pk', sprite='pencil_delete', permissions=[PERMISSION_SIGNATURE_DELETE], conditional_disable=doesnt_have_detached_signature)
+document_verify = Link(text=_(u'signatures'), view='document_verify', args='object.pk', sprite='text_signature', permissions=[PERMISSION_DOCUMENT_VERIFY])
 
-register_links(Document, [document_verify], menu_name='form_header')
-register_links(['document_verify', 'document_signature_upload', 'document_signature_download', 'document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
+bind_links([Document], [document_verify], menu_name='form_header')
+bind_links(['document_verify', 'document_signature_upload', 'document_signature_download', 'document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
 
 DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
 DocumentVersion.register_post_save_hook(1, document_post_save_hook)

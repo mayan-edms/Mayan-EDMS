@@ -232,7 +232,7 @@ class Role(models.Model):
 
     def members(self, filter_dict=None):
         filter_dict = filter_dict or {}
-        return [member.member_object for member in self.rolemember_set.filter(**filter_dict)]
+        return [member.member_object for member in self.rolemember_set.filter(**filter_dict) if member is None]
 
 
 class RoleMember(models.Model):

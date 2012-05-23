@@ -259,8 +259,6 @@ def document_edit(request, document_id):
             else:
                 new_filename = form.cleaned_data['new_filename']
 
-            print 'new_filename', new_filename
-
             document.filename = new_filename
             document.description = form.cleaned_data['description']
             document.save()

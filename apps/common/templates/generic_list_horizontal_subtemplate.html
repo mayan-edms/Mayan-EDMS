@@ -38,7 +38,7 @@
                         <div class="group navform wat-cf">
                         {% for link in multi_item_links %}
                             <button class="button" type="submit" name="action" value="{{ link.url }}">
-                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                               {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
                             </button>
                         {% endfor %}
                         </div>
@@ -62,7 +62,11 @@
 
             <div class="group navform wat-cf">
                 {% for object in object_list %}
-                    {{ object }}
+                    {% if object %}
+                        {{ object }}
+                    {% endif %}
+                {% empty %}
+                    {% blocktrans with title|striptags as stripped_title %}There are no {{ stripped_title }}{% endblocktrans %}
                 {% endfor %}
             </div>
             
@@ -77,7 +81,7 @@
                         <div class="group navform wat-cf">
                         {% for link in multi_item_links %}
                             <button class="button" type="submit" name="action" value="{{ link.url }}">
-                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                               {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
                             </button>
                         {% endfor %}
                         </div>

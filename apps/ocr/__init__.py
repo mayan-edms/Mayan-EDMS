@@ -9,7 +9,7 @@ from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 from django.db.utils import DatabaseError
 
-from navigation.api import register_links, register_multi_item_links
+from navigation.api import bind_links, register_multi_item_links, Link
 from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
@@ -29,36 +29,36 @@ from . import models as ocr_models
 logger = logging.getLogger(__name__)
 
 #Links
-submit_document = {'text': _('submit to OCR queue'), 'view': 'submit_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-submit_document_multiple = {'text': _('submit to OCR queue'), 'view': 'submit_document_multiple', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-re_queue_document = {'text': _('re-queue'), 'view': 're_queue_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-re_queue_multiple_document = {'text': _('re-queue'), 'view': 're_queue_multiple_document', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-queue_document_delete = {'text': _(u'delete'), 'view': 'queue_document_delete', 'args': 'object.id', 'famfam': 'hourglass_delete', 'permissions': [PERMISSION_OCR_DOCUMENT_DELETE]}
-queue_document_multiple_delete = {'text': _(u'delete'), 'view': 'queue_document_multiple_delete', 'famfam': 'hourglass_delete', 'permissions': [PERMISSION_OCR_DOCUMENT_DELETE]}
+submit_document = Link(text=_('submit to OCR queue'),view='submit_document',args='object.id',sprite='hourglass_add',permissions=[PERMISSION_OCR_DOCUMENT])
+submit_document_multiple = Link(text=_('submit to OCR queue'),view='submit_document_multiple',sprite='hourglass_add',permissions=[PERMISSION_OCR_DOCUMENT])
+re_queue_document = Link(text=_('re-queue'),view='re_queue_document',args='object.id',sprite='hourglass_add',permissions=[PERMISSION_OCR_DOCUMENT])
+re_queue_multiple_document = Link(text=_('re-queue'),view='re_queue_multiple_document',sprite='hourglass_add',permissions=[PERMISSION_OCR_DOCUMENT])
+queue_document_delete = Link(text=_(u'delete'),view='queue_document_delete',args='object.id',sprite='hourglass_delete',permissions=[PERMISSION_OCR_DOCUMENT_DELETE])
+queue_document_multiple_delete = Link(text=_(u'delete'),view='queue_document_multiple_delete',sprite='hourglass_delete',permissions=[PERMISSION_OCR_DOCUMENT_DELETE])
 
-document_queue_disable = {'text': _(u'stop queue'), 'view': 'document_queue_disable', 'args': 'queue.id', 'famfam': 'control_stop_blue', 'permissions': [PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}
-document_queue_enable = {'text': _(u'activate queue'), 'view': 'document_queue_enable', 'args': 'queue.id', 'famfam': 'control_play_blue', 'permissions': [PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}
+document_queue_disable = Link(text=_(u'stop queue'),view='document_queue_disable',args='queue.id',sprite='control_stop_blue',permissions=[PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
+document_queue_enable = Link(text=_(u'activate queue'),view='document_queue_enable',args='queue.id',sprite='control_play_blue',permissions=[PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
 
-all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _(u'Runs a language filter to remove common OCR mistakes from document pages content.')}
+all_document_ocr_cleanup = Link(text=_(u'clean up pages content'),view='all_document_ocr_cleanup',sprite='text_strikethrough',permissions=[PERMISSION_OCR_CLEAN_ALL_PAGES],description=_(u'Runs a language filter to remove common OCR mistakes from document pages content.'))
 
-queue_document_list = {'text': _(u'queue document list'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT], 'children_view_regex': [r'queue_', r'document_queue']}
+queue_document_list = Link(text=_(u'queue document list'),view='queue_document_list',sprite='hourglass',permissions=[PERMISSION_OCR_DOCUMENT])
+ocr_tool_link = Link(text=_(u'OCR'),view='queue_document_list',sprite='hourglass',icon='text.png',permissions=[PERMISSION_OCR_DOCUMENT],children_view_regex=[r'queue_', r'document_queue'])
 
-setup_queue_transformation_list = {'text': _(u'transformations'), 'view': 'setup_queue_transformation_list', 'args': 'queue.pk', 'famfam': 'shape_move_front'}
-setup_queue_transformation_create = {'text': _(u'add transformation'), 'view': 'setup_queue_transformation_create', 'args': 'queue.pk', 'famfam': 'shape_square_add'}
-setup_queue_transformation_edit = {'text': _(u'edit'), 'view': 'setup_queue_transformation_edit', 'args': 'transformation.pk', 'famfam': 'shape_square_edit'}
-setup_queue_transformation_delete = {'text': _(u'delete'), 'view': 'setup_queue_transformation_delete', 'args': 'transformation.pk', 'famfam': 'shape_square_delete'}
+setup_queue_transformation_list = Link(text=_(u'transformations'),view='setup_queue_transformation_list',args='queue.pk',sprite='shape_move_front')
+setup_queue_transformation_create = Link(text=_(u'add transformation'),view='setup_queue_transformation_create',args='queue.pk',sprite='shape_square_add')
+setup_queue_transformation_edit = Link(text=_(u'edit'),view='setup_queue_transformation_edit',args='transformation.pk',sprite='shape_square_edit')
+setup_queue_transformation_delete = Link(text=_(u'delete'),view='setup_queue_transformation_delete',args='transformation.pk',sprite='shape_square_delete')
 
-register_links(Document, [submit_document])
+bind_links([Document], [submit_document])
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
-register_links(DocumentQueue, [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
-register_links(QueueTransformation, [setup_queue_transformation_edit, setup_queue_transformation_delete])
+bind_links([DocumentQueue], [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
+bind_links([QueueTransformation], [setup_queue_transformation_edit, setup_queue_transformation_delete])
 
 register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
-register_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'setup_queue_transformation_list'], [queue_document_list], menu_name='secondary_menu')
-register_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
+bind_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'setup_queue_transformation_list'], [queue_document_list], menu_name='secondary_menu')
+bind_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
 

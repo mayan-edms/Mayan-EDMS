@@ -35,9 +35,9 @@ class SmartLinkImageWidget(forms.widgets.Widget):
                         <span class="famfam active famfam-%(famfam)s"></span>%(text)s
                     </button>
                 ''' % {
-                    'famfam': link.get('famfam', u'link'),
-                    'text': capfirst(link['text']),
-                    'action': reverse(link.get('view'), args=[value['current_document'].pk, value['smart_link_instance'].pk])
+                    'famfam': getattr(link, 'famfam', u'link'),
+                    'text': capfirst(link.text),
+                    'action': reverse(link.view, args=[value['current_document'].pk, value['smart_link_instance'].pk])
                 })
             output.append(u'</div>')
 

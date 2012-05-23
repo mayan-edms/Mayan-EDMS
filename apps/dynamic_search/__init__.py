@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 from django.core.management import call_command
 
-from navigation.api import register_sidebar_template, register_links
+from navigation.api import register_sidebar_template, bind_links, Link
 from documents.models import Document
 from scheduler.runtime import scheduler
 from signaler.signals import post_update_index, pre_update_index
@@ -19,7 +19,9 @@ from .conf.settings import INDEX_UPDATE_INTERVAL
 
 logger = logging.getLogger(__name__)
 
-search = {'text': _(u'search'), 'view': 'search', 'famfam': 'zoom'}
+search = Link(text=_(u'search'), view='search', sprite='zoom')
+search_advanced = Link(text=_(u'advanced search'), view='search_advanced', sprite='zoom_in')
+search_again = Link(text=_(u'search again'), view='search_again', sprite='arrow_undo')
 
 register_sidebar_template(['search'], 'search_help.html')
 
@@ -59,5 +61,7 @@ def search_index_update():
         lock.release()
         pass
 
+bind_links(['search', 'search_advanced', 'results'], [search, search_advanced], menu_name='form_header')
+bind_links(['results'], [search_again], menu_name='sidebar')
 
 register_interval_job('search_index_update', _(u'Update the search index with the most recent modified documents.'), search_index_update, seconds=INDEX_UPDATE_INTERVAL)
