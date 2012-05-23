@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import logging
+import copy
 
 from haystack import indexes
 
@@ -18,6 +19,9 @@ class DocumentIndex(indexes.SearchIndex, indexes.Indexable):
         return Document
 
     def build_queryset(self, start_date=None, end_date=None):
-        indexable_list = IndexableObject.objects.get_indexables_pk_list()
-        logger.debug('indexable list: %s' % indexable_list)
-        return self.get_model().objects.filter(pk__in=indexable_list)
+        indexable_query_set = IndexableObject.objects.get_indexables()
+        logger.debug('indexable_query_set: %s' % indexable_query_set)
+        object_list = copy.copy(self.get_model().objects.filter(pk__in=indexable_query_set.values_list('object_id', flat=True)))
+        logger.debug('object_list: %s' % object_list)
+        indexable_query_set.delete()
+        return object_list
