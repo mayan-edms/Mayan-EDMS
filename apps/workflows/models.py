@@ -125,14 +125,14 @@ class Start(Node):
         return self.next_node
 
     class Meta(Node.Meta):
-        verbose_name = _(u'start')
-        verbose_name_plural = _(u'starts')
+        verbose_name = _(u'start node')
+        verbose_name_plural = _(u'start nodes')
         
 
 class End(Node):
     class Meta(Node.Meta):
-        verbose_name = _(u'start')
-        verbose_name_plural = _(u'starts')
+        verbose_name = _(u'end node')
+        verbose_name_plural = _(u'end nodes')
     
 
 '''
@@ -308,7 +308,7 @@ class WorkflowInstanceActiveNode(models.Model):
         verbose_name_plural = _(u'workflow instances active nodes')
 
 
-class WorkflowInstanceActiveState(models.Model):
+class WorkflowInstanceState(models.Model):
     """
     This class holds the active state for the workflow instance
     """
