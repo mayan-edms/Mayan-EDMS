@@ -50,7 +50,6 @@ setup_queue_transformation_edit = Link(text=_(u'edit'),view='setup_queue_transfo
 setup_queue_transformation_delete = Link(text=_(u'delete'),view='setup_queue_transformation_delete',args='transformation.pk',sprite='shape_square_delete')
 
 bind_links([Document], [submit_document])
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
 bind_links([DocumentQueue], [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
 bind_links([QueueTransformation], [setup_queue_transformation_edit, setup_queue_transformation_delete])

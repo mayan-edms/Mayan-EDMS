@@ -8,6 +8,7 @@ from project_setup.api import register_setup
 from project_tools.api import register_tool
 
 from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
+from .utils import register_multi_items_links
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
@@ -64,3 +65,5 @@ register_tool(diagnostics)
 
 if 'sentry' in settings.INSTALLED_APPS:
     register_tool(sentry)
+    
+register_multi_items_links()
