@@ -152,5 +152,9 @@ Software used
   * Copyright Dmitry Gladkov
   * https://github.com/dgladkov/python-hkp
 
+* Haystack - Find the needle you're looking for.
+
+  * Copyright © 2009-2011 - Daniel Lindsley
+  * http://haystacksearch.org/
 
 
