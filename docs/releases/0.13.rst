@@ -13,10 +13,12 @@ Overview
 * Send document or document links via E-mail
 * Document previews and page previews navigation improvements
 * Ability to delete detached signatures
+* Specialized search via Haystack
 
 
 What's new in Mayan EDMS v0.13
 ==============================
+
 
 E-mail document source
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -25,6 +27,14 @@ POP3 and IMAP
 
 Send document or document links via E-mail
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Haystack
+~~~~~~~~
+Haystack is setup to use Whoosh by default but user can choose to use
+any of the other search backends supported by Haystack.  The interval
+between search index updates is controlled with the new :setting:`SEARCH_INDEX_UPDATE_INTERVAL` 
+configuration option.  This addition closes issues #20 and #12.
 
 
 Upgrading from a previous version
@@ -42,20 +52,31 @@ Afterwards migrate existing database schema with::
 
     $ ./manage.py migrate sources 0001 --fake
     $ ./manage.py migrate sources
+    $ ./manage.py migrate dynamic_search 0001 --fake
+    $ ./manage.py migrate dynamic_search
 
-The upgrade procedure is now complete.
+Issue the following command to index existing documents in the new full text search database::
+
+    $ ./manage.py rebuild_index --noinput
+    
+Depending on the existing size of you current document base this make take from a few minutes up to an hour.
+Once the full text initial indexing ends, the upgrade procedure is complete.
 
 
 Backward incompatible changes
 =============================
-None so far
+None
+
 
 Bugs fixed
 ==========
-* Metadata unicode fixes, while creating new documents.
-* Update indexes when renaming document
+* Metadata unicode fixes while creating new documents.
+* Fixed document index link filename when renaming document the source document.
+* Issues #20 and #12 with the addition of a dedicated search solution and
+  not rely on SQL based searches.
 
 
 Stuff removed
 =============
-None so far
+Removal of the internal SEARCH_SHOW_OBJECT_TYPE option
+Removal of the SEARCH_LIMIT configuration option

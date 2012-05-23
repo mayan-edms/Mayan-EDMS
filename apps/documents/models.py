@@ -13,13 +13,14 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+from unidecode import unidecode
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from dynamic_search.api import register
 from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
 from converter.api import convert
@@ -102,6 +103,7 @@ class Document(models.Model):
             self.uuid = UUID_FUNCTION()
             self.date_added = datetime.datetime.now()
         super(Document, self).save(*args, **kwargs)
+        self.mark_indexable()
 
     def get_cached_image_name(self, page, version):
         document_version = DocumentVersion.objects.get(pk=version)
@@ -275,7 +277,21 @@ class Document(models.Model):
         version.filename = value
         return version.save()
 
+    @property
+    def content(self):
+        return self.latest_version.content
+
     filename = property(_get_filename, _set_filename)
+
+    @property
+    def cleaned_filename(self):
+        return unidecode(self.extension_split[0])
+
+    @property
+    def extension_split(self):
+        filename, extension = os.path.splitext(self.filename)
+        return filename, extension[1:]
+        
 
 
 class DocumentVersion(models.Model):
@@ -524,6 +540,15 @@ class DocumentVersion(models.Model):
         self.filename = u''.join([new_name, extension])
         self.save()
 
+    @property
+    def content(self):
+        content = []
+        for page in self.document.pages.all():
+            if page.content:
+                content.append(page.content)
+
+        return u''.join(content)
+
 
 class DocumentTypeFilename(models.Model):
     """
@@ -657,18 +682,3 @@ class RecentDocument(models.Model):
         ordering = ('-datetime_accessed',)
         verbose_name = _(u'recent document')
         verbose_name_plural = _(u'recent documents')
-
-
-# Register the fields that will be searchable
-register('document', Document, _(u'document'), [
-    {'name': u'document_type__name', 'title': _(u'Document type')},
-    {'name': u'documentversion__mimetype', 'title': _(u'MIME type')},
-    {'name': u'documentversion__filename', 'title': _(u'Filename')},
-    {'name': u'documentmetadata__value', 'title': _(u'Metadata value')},
-    {'name': u'documentversion__documentpage__content', 'title': _(u'Content')},
-    {'name': u'description', 'title': _(u'Description')},
-    {'name': u'tags__name', 'title': _(u'Tags')},
-    {'name': u'comments__comment', 'title': _(u'Comments')},
-    ]
-)
-#register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])

@@ -1,0 +1,22 @@
+{{ object.content }}
+
+{% for document_metadata in object.documentmetadata_set.all %}
+    {{ document_metadata.value }}
+{% endfor %} 
+
+{{ object.cleaned_filename }}
+{{ object.filename }}
+{{ object.extension_split.1 }}
+{{ object.document_type }}
+{{ object.file_mimetype }}
+{{ object.description|default:' ' }}
+
+{% for comment in object.comments.all %}
+    {{ comment.comment }}
+{% endfor %}
+
+{% for tag in object.tags.all %}
+    {{ tag }}
+{% endfor %}
+
+{{ object.uuid }}

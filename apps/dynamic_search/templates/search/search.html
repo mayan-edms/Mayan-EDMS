@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load search_tags %}
+{% block title %} :: {% trans "Search results" %}{% endblock %}
+
+{% block content %}
+    {% if form %}
+        {% include "search_results_subtemplate.html" %}
+    {% endif %}
+    {% if query %}
+        {% with list_title as title %}
+            {% include "generic_list_subtemplate.html" %}
+        {% endwith %}
+    {% endif %}
+    {% if not form and not query %}
+        {% include "generic_list_subtemplate.html" %}
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {% if query %}
+        {% blocktrans %}Elapsed time: {{ elapsed_time }} seconds{% endblocktrans %}
+    {% endif %}
+{% endblock %}
+

@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
-from dynamic_search.models import RecentSearch
+from .models import RecentSearch, IndexableObject
 
 
 class RecentSearchAdmin(admin.ModelAdmin):
@@ -9,3 +11,4 @@ class RecentSearchAdmin(admin.ModelAdmin):
     readonly_fields = ('user', 'query', 'datetime_created', 'hits')
 
 admin.site.register(RecentSearch, RecentSearchAdmin)
+admin.site.register(IndexableObject)

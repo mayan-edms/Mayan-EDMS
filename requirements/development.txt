@@ -1,4 +1,4 @@
-Werkzeug==0.6.2
-django-extensions==0.7.1
-django-rosetta==0.6.2
-transifex-client==0.6.1
+Werkzeug==0.8.3
+django-extensions==0.8
+django-rosetta==0.6.6
+transifex-client==0.7.2
