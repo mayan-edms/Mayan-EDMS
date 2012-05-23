@@ -24,9 +24,6 @@ search_advanced = Link(text=_(u'advanced search'), view='search_advanced', sprit
 search_again = Link(text=_(u'search again'), view='search_again', sprite='arrow_undo')
 
 register_sidebar_template(['search'], 'search_help.html')
-
-register_links(['search'], [search], menu_name='form_header')
-
 register_sidebar_template(['search'], 'recent_searches.html')
 
 Document.add_to_class('mark_indexable', lambda obj: IndexableObject.objects.mark_indexable(obj))
@@ -61,7 +58,7 @@ def search_index_update():
         lock.release()
         pass
 
-bind_links(['search', 'search_advanced', 'results'], [search, search_advanced], menu_name='form_header')
+bind_links(['search', 'search_advanced', 'results'], [search], menu_name='form_header')
 bind_links(['results'], [search_again], menu_name='sidebar')
 
 register_interval_job('search_index_update', _(u'Update the search index with the most recent modified documents.'), search_index_update, seconds=INDEX_UPDATE_INTERVAL)
