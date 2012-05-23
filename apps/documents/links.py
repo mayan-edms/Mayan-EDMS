@@ -15,9 +15,9 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
     PERMISSION_DOCUMENT_NEW_VERSION)
+from .conf.settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
 # Document page links expressions
-
 
 def is_first_page(context):
     return context['page'].page_number <= 1
