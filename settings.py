@@ -2,6 +2,11 @@
 import os
 import sys
 
+from django.core.urlresolvers import reverse
+from django.utils.functional import lazy
+
+reverse_lazy = lazy(reverse, str)
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), './'))
 
 sys.path.append(os.path.join(PROJECT_ROOT, 'modules'))
@@ -209,8 +214,8 @@ HAYSTACK_CONNECTIONS = {
 #--------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 #--------- Django -------------------
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_URL = reverse_lazy('login_view')
 #-------- LoginRequiredMiddleware ----------
 LOGIN_EXEMPT_URLS = (
     r'^favicon\.ico$',
