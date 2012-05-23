@@ -11,10 +11,12 @@ PERMISSION_WORKFLOW_SETUP_CREATE = Permission.objects.register(namespace, 'workf
 PERMISSION_WORKFLOW_SETUP_EDIT = Permission.objects.register(namespace, 'workflow_setup_edit', _(u'Edit existing workflow templates'))
 PERMISSION_WORKFLOW_SETUP_DELETE = Permission.objects.register(namespace, 'workflow_setup_delete', _(u'Delete existing workflow templates'))
 
-PERMISSION_STATE_SETUP_VIEW = Permission.objects.register(namespace, 'state_setup_view', _(u'View existing states'))
-PERMISSION_STATE_SETUP_CREATE = Permission.objects.register(namespace, 'state_setup_create', _(u'Create new state templates'))
-PERMISSION_STATE_SETUP_EDIT = Permission.objects.register(namespace, 'state_setup_edit', _(u'Edit existing state templates'))
-PERMISSION_STATE_SETUP_DELETE = Permission.objects.register(namespace, 'state_setup_delete', _(u'Delete existing state templates'))
+PERMISSION_WORKFLOW_RUN = Permission.objects.register(namespace, 'workflow_setup_run', _(u'Execute a workflow'))
+
+#PERMISSION_STATE_SETUP_VIEW = Permission.objects.register(namespace, 'state_setup_view', _(u'View existing states'))
+#PERMISSION_STATE_SETUP_CREATE = Permission.objects.register(namespace, 'state_setup_create', _(u'Create new state templates'))
+#PERMISSION_STATE_SETUP_EDIT = Permission.objects.register(namespace, 'state_setup_edit', _(u'Edit existing state templates'))
+#PERMISSION_STATE_SETUP_DELETE = Permission.objects.register(namespace, 'state_setup_delete', _(u'Delete existing state templates'))
 
 #PERMISSION_TRANSITION_SETUP_VIEW = Permission.objects.register(namespace, 'transition_setup_view', _(u'View existing transition templates'))
 #PERMISSION_TRANSITION_SETUP_CREATE = Permission.objects.register(namespace, 'transition_setup_create', _(u'Create new transition templates'))
