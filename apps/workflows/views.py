@@ -23,9 +23,7 @@ from .forms import (WorkflowSetupForm, StateSetupForm,
     WorkflowStateSetupForm, WorkflowNodeSetupForm)
 from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,
-    PERMISSION_WORKFLOW_SETUP_DELETE, PERMISSION_STATE_SETUP_VIEW,
-    PERMISSION_STATE_SETUP_CREATE, PERMISSION_STATE_SETUP_EDIT,
-    PERMISSION_STATE_SETUP_DELETE)
+    PERMISSION_WORKFLOW_SETUP_DELETE)
 
 logger = logging.getLogger(__name__)
 
@@ -336,7 +334,7 @@ def setup_workflow_transition_list(request, state_workflow_pk):
 """
 # States
 def setup_state_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_STATE_SETUP_VIEW])
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
 
     context = {
         'object_list': State.objects.all(),
@@ -349,7 +347,7 @@ def setup_state_list(request):
 
 
 def setup_state_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_STATE_SETUP_CREATE])
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
     redirect_url = reverse('setup_state_list')
 
     if request.method == 'POST':
@@ -369,7 +367,7 @@ def setup_state_create(request):
 
 
 def setup_state_edit(request, state_pk):
-    Permission.objects.check_permissions(request.user, [PERMISSION_STATE_SETUP_EDIT])
+    Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
     state = get_object_or_404(State, pk=state_pk)
 
     if request.method == 'POST':
@@ -403,9 +401,9 @@ def setup_state_delete(request, state_pk=None, state_pk_list=None):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_STATE_SETUP_DELETE])
+        Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_SETUP_EDIT])
     except PermissionDenied:
-        states = AccessEntry.objects.filter_objects_by_access(PERMISSION_STATE_SETUP_DELETE, request.user, states)
+        states = AccessEntry.objects.filter_objects_by_access(PERMISSION_WORKFLOW_SETUP_EDIT, request.user, states)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))

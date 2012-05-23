@@ -7,9 +7,7 @@ from navigation.api import Link, bind_links
 
 from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,
-    PERMISSION_WORKFLOW_SETUP_DELETE, PERMISSION_STATE_SETUP_VIEW,
-    PERMISSION_STATE_SETUP_CREATE, PERMISSION_STATE_SETUP_EDIT,
-    PERMISSION_STATE_SETUP_DELETE)
+    PERMISSION_WORKFLOW_SETUP_DELETE)
     
 from .models import (Workflow, State, WorkflowState, WorkflowNode)
 
@@ -26,10 +24,10 @@ setup_workflow_state_transitions_list_link = Link(text=_(u'workflow state transi
 setup_workflow_state_transition_add_link = Link(text=_(u'add workflow state transition'), view='setup_workflow_state_transition_add', args='workflow_state.pk', sprite='chart_line_add', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
 setup_workflow_state_transition_edit_link = Link(text=_(u'edit workflow state transition'), view='setup_workflow_state_transition_edit', args='workflow_state_transition.pk', sprite='chart_line_edit', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
 
-setup_state_list_link = Link(text=_(u'state list'), view='setup_state_list', sprite='transmit', permissions=[PERMISSION_STATE_SETUP_VIEW])
-setup_state_create_link = Link(text=_(u'create new state'), view='setup_state_create', sprite='transmit_add', permissions=[PERMISSION_STATE_SETUP_CREATE])
-setup_state_edit_link = Link(text=_(u'edit'), view='setup_state_edit', args='object.pk', sprite='transmit_edit', permissions=[PERMISSION_STATE_SETUP_EDIT])
-setup_state_delete_link = Link(text=_(u'delete'), view='setup_state_delete', args='object.pk', sprite='transmit_delete', permissions=[PERMISSION_STATE_SETUP_DELETE])
+setup_state_list_link = Link(text=_(u'state list'), view='setup_state_list', sprite='transmit', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
+setup_state_create_link = Link(text=_(u'create new state'), view='setup_state_create', sprite='transmit_add', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
+setup_state_edit_link = Link(text=_(u'edit'), view='setup_state_edit', args='object.pk', sprite='transmit_edit', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
+setup_state_delete_link = Link(text=_(u'delete'), view='setup_state_delete', args='object.pk', sprite='transmit_delete', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
 
 setup_workflow_node_list_link = Link(text=_(u'node list'), view='setup_workflow_node_list', args='workflow.pk', sprite='chart_line', permissions=[PERMISSION_WORKFLOW_SETUP_EDIT])
 #setup_workflow_node_create_link = Link(text=_(u'create new transition'), view='setup_transition_create', sprite='chart_line_add', permissions=[PERMISSION_TRANSITION_SETUP_CREATE])
