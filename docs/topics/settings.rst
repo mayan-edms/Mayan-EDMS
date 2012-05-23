@@ -461,13 +461,13 @@ Allow non authenticated users, access to all views.
 Search
 ======
 
-.. setting:: SEARCH_LIMIT 
+.. setting:: SEARCH_INDEX_UPDATE_INTERVAL 
 
-**SEARCH_LIMIT**
+**SEARCH_INDEX_UPDATE_INTERVAL**
 
-Default: ``100`` 
+Default: ``1800`` 
 
-Maximum amount search hits to fetch and display.
+Interval in second on which to trigger the search index update.
 
 
 .. setting:: SEARCH_RECENT_COUNT

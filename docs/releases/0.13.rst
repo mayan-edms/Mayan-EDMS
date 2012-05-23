@@ -15,9 +15,6 @@ Overview
 * Ability to delete detached signatures
 * Specialized search via Haystack
 
-  * Haystack is setup to use Whoosh by default but user can choose to use
-    any of the other search backends supported by Haystack.
-
 
 What's new in Mayan EDMS v0.13
 ==============================
@@ -34,6 +31,10 @@ Send document or document links via E-mail
 
 Haystack
 ~~~~~~~~
+Haystack is setup to use Whoosh by default but user can choose to use
+any of the other search backends supported by Haystack.  The interval
+between search index updates is controlled with the new :setting:`SEARCH_INDEX_UPDATE_INTERVAL` 
+configuration option.  This addition closes issues #20 and #12.
 
 
 Upgrading from a previous version
@@ -71,6 +72,8 @@ Bugs fixed
 ==========
 * Metadata unicode fixes while creating new documents.
 * Fixed document index link filename when renaming document the source document.
+* Issues #20 and #12 with the addition of a dedicated search solution and
+  not rely on SQL based searches.
 
 
 Stuff removed
