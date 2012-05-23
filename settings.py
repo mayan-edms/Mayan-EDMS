@@ -131,7 +131,7 @@ INSTALLED_APPS = (
 # 3rd party
 # South
     'south',
-	'haystack',
+    'haystack',
 # Others
     'filetransfers',
     'taggit',
