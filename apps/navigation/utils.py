@@ -80,7 +80,7 @@ def get_navigation_objects(context):
             objects.setdefault(resolved_object, {})
             objects[resolved_object]['label'] = object_label
 
-    logger.debug('objects: %s' % objects)
+    #logger.debug('objects: %s' % objects)
     return objects
 
 
