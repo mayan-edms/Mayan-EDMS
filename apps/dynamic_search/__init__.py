@@ -48,7 +48,7 @@ def search_index_update():
         logger.debug('acquired lock: %s' % lock_id)
 
         logger.debug('Executing haystack\'s index update command')
-        call_command('update_index --mayan_runtime')
+        call_command('update_index', '--mayan_runtime')
 
         lock.release()
     except LockError:
