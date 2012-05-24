@@ -37,6 +37,7 @@ setup_metadata_set_list = Link(text=_(u'metadata sets'), view='setup_metadata_se
 setup_metadata_set_edit = Link(text=_(u'edit'), view='setup_metadata_set_edit', args='object.pk', sprite='table_edit', permissions=[PERMISSION_METADATA_SET_EDIT])
 setup_metadata_set_delete = Link(text=_(u'delete'), view='setup_metadata_set_delete', args='object.pk', sprite='table_delete', permissions=[PERMISSION_METADATA_SET_DELETE])
 setup_metadata_set_create = Link(text=_(u'create new'), view='setup_metadata_set_create', sprite='table_add', permissions=[PERMISSION_METADATA_SET_CREATE])
+setup_metadata_set_members = Link(text=_(u'members'), view='setup_metadata_set_members', args='object.pk', sprite='table_refresh', permissions=[PERMISSION_METADATA_SET_EDIT])
 
 setup_document_type_metadata = Link(text=_(u'default metadata'), view='setup_document_type_metadata', args='document_type.pk', sprite='xhtml', permissions=[PERMISSION_DOCUMENT_TYPE_EDIT])
 
@@ -46,13 +47,13 @@ bind_links([Document], [metadata_view], menu_name='form_header')
 bind_links([MetadataType], [setup_metadata_type_edit, setup_metadata_type_delete])
 bind_links([MetadataType, 'setup_metadata_type_list', 'setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
 
-bind_links([MetadataSet], [setup_metadata_set_edit, setup_metadata_set_delete])
+bind_links([MetadataSet], [setup_metadata_set_edit, setup_metadata_set_members, setup_metadata_set_delete])
 bind_links([MetadataSet, 'setup_metadata_set_list', 'setup_metadata_set_create'], [setup_metadata_set_list, setup_metadata_set_create], menu_name='secondary_menu')
 
 bind_links([DocumentType], [setup_document_type_metadata])
 
 metadata_type_setup_views = ['setup_metadata_type_list', 'setup_metadata_type_edit', 'setup_metadata_type_delete', 'setup_metadata_type_create']
-metadata_set_setup_views = ['setup_metadata_set_list', 'setup_metadata_set_edit', 'setup_metadata_set_delete', 'setup_metadata_set_create']
+metadata_set_setup_views = ['setup_metadata_set_list', 'setup_metadata_set_edit', 'setup_metadata_set_members', 'setup_metadata_set_delete', 'setup_metadata_set_create']
 
 register_sidebar_template(['setup_metadata_type_list'], 'metadata_type_help.html')
 register_sidebar_template(['setup_metadata_set_list'], 'metadata_set_help.html')
