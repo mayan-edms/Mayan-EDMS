@@ -280,6 +280,9 @@ class Document(models.Model):
     @property
     def content(self):
         return self.latest_version.content
+        
+    def get_content(self, *args, **kwargs):
+        return self.latest_version.get_content(*args, **kwargs)
 
     filename = property(_get_filename, _set_filename)
 
@@ -542,10 +545,15 @@ class DocumentVersion(models.Model):
 
     @property
     def content(self):
+        return self.get_content()
+
+    def get_content(self, add_page_number=False):
         content = []
         for page in self.document.pages.all():
             if page.content:
                 content.append(page.content)
+                if add_page_number:
+                    content.append(u'\n\n\n - Page %s - \n\n\n' % page.page_number)
 
         return u''.join(content)
 
