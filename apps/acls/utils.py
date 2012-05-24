@@ -4,10 +4,10 @@ import logging
 
 from django.contrib.contenttypes.models import ContentType
 
+from common.classes import get_source_object
 from common.models import AnonymousUserSingleton
 
 from .models import AccessEntry, DefaultAccessEntry, CreatorSingleton
-from .classes import get_source_object
 
 logger = logging.getLogger(__name__)
 

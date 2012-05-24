@@ -11,9 +11,10 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 
 from common.models import AnonymousUserSingleton
+from common.classes import get_source_object
 from permissions.models import Permission, RoleMember
 
-from .classes import AccessHolder, ClassAccessHolder, get_source_object
+from .classes import AccessHolder, ClassAccessHolder
 
 logger = logging.getLogger(__name__)
 
