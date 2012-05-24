@@ -145,7 +145,8 @@ class DocumentForm(forms.ModelForm):
     """
     class Meta:
         model = Document
-        exclude = ('description', 'tags', 'document_type')
+        #exclude = ('description', 'tags', 'document_type')
+        exclude = ('tags', 'document_type')
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
@@ -158,14 +159,14 @@ class DocumentForm(forms.ModelForm):
             self.fields['document_type'].widget = forms.HiddenInput()
 
         if instance:
+            self.fields['description'].initial = instance.description
             self.fields['use_file_name'] = forms.BooleanField(
                 label=_(u'Use the new version filename as the document filename'),
                 initial=False,
                 required=False,
             )
-
-        # Instance's document_type overrides the passed document_type
-        if instance:
+            
+            # Instance's document_type overrides the passed document_type
             if hasattr(instance, 'document_type'):
                 document_type = instance.document_type
 
@@ -178,9 +179,9 @@ class DocumentForm(forms.ModelForm):
                     label=_(u'Quick document rename'))
 
         if instance:
-            self.version_fields(instance)
+            self.add_version_fields(instance)
 
-    def version_fields(self, document):
+    def add_version_fields(self, document):
         self.fields['version_update'] = forms.ChoiceField(
             label=_(u'Version update'),
             choices=DocumentVersion.get_version_update_choices(document.latest_version)
