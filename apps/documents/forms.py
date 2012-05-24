@@ -258,14 +258,7 @@ class DocumentContentForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('document', None)
         super(DocumentContentForm, self).__init__(*args, **kwargs)
-        content = []
-        self.fields['contents'].initial = u''
-        for page in self.document.pages.all():
-            if page.content:
-                content.append(page.content)
-                content.append(u'\n\n\n - Page %s - \n\n\n' % page.page_number)
-
-        self.fields['contents'].initial = u''.join(content)
+        self.fields['contents'].initial = self.document.get_content(add_page_number=True)
 
     contents = forms.CharField(
         label=_(u'Contents'),
