@@ -68,3 +68,11 @@ ul {
 	}
 
 .gplus { margin-left: 10px; }
+
+
+.horizontal li
+{
+display: inline;
+list-style-type: none;
+padding-right: 20px;
+}
