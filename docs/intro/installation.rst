@@ -50,7 +50,17 @@ Collect the static files of the project into the ``static`` folder for serving v
 
     $ ./manage.py collectstatic
 
-After that deploy it using the webserver of your preference.  If your are using Apache_, a sample site file is included under the contrib directory.
+To test your installation, create a file called settings_local.py with the following content::
+
+    DEBUG=True
+    DEVELOPMENT=True
+
+Execute Django’s development server using the ``runserver`` command to launch a local instance of Mayan EDMS::
+
+    $ ./manager.py runserver
+
+Point your browser to http://127:0.0.1:8000, if everything was installed correctly you should see the login screen.  After making sure everything is running correctly, stop the runserver command, delete the settings_local.py and deploy Mayan EDMS using the webserver of your preference. If your are using Apache_, a sample site file is included under the contrib directory.
+
 
 Webfaction
 ----------
