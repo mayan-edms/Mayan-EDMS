@@ -15,6 +15,7 @@ register_settings(
         {'name': u'GRAPHICS_BACKEND', 'global_name': u'CONVERTER_GRAPHICS_BACKEND', 'default': u'converter.backends.python', 'description': _(u'Graphics conversion backend to use.  Options are: converter.backends.imagemagick, converter.backends.graphicsmagick and converter.backends.python.')},
         {'name': u'UNOCONV_PATH', 'global_name': u'CONVERTER_UNOCONV_PATH', 'default': u'/usr/bin/unoconv', 'exists': True, 'description': _(u'Path to the unoconv program.')},
         {'name': u'UNOCONV_USE_PIPE', 'global_name': u'CONVERTER_UNOCONV_USE_PIPE', 'default': True, 'description': _(u'Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.')},
+        {'name': u'LIBREOFFICE_PATH', 'global_name': u'CONVERTER_LIBREOFFICE_PATH', 'default': u'/usr/bin/libreoffice', 'exists': True, 'description': _(u'Path to the libreoffice program.')},
         
         #{'name': u'OCR_OPTIONS', 'global_name': u'CONVERTER_OCR_OPTIONS', 'default': u'-colorspace Gray -depth 8 -resample 200x200'},
         #{'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},
