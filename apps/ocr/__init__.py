@@ -50,7 +50,7 @@ setup_queue_transformation_edit = {'text': _(u'edit'), 'view': 'setup_queue_tran
 setup_queue_transformation_delete = {'text': _(u'delete'), 'view': 'setup_queue_transformation_delete', 'args': 'transformation.pk', 'famfam': 'shape_square_delete'}
 
 register_links(Document, [submit_document])
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_list', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
 register_links(DocumentQueue, [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
 register_links(QueueTransformation, [setup_queue_transformation_edit, setup_queue_transformation_delete])
