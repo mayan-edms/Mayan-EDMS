@@ -21,16 +21,20 @@ def get_used_size(path, file_list):
 
 
 def storage_count(path=u'.'):
-    directories, files = STORAGE_BACKEND().listdir(path)
-    total_count = len(files)
-    total_size = get_used_size(path, files)
+    try:
+        directories, files = STORAGE_BACKEND().listdir(path)
+    except OSError:
+        return 0, 0
+    else:
+        total_count = len(files)
+        total_size = get_used_size(path, files)
 
-    for directory in directories:
-        file_count, files_size = storage_count(directory)
-        total_count += file_count
-        total_size += files_size
+        for directory in directories:
+            file_count, files_size = storage_count(directory)
+            total_count += file_count
+            total_size += files_size
 
-    return total_count, total_size
+        return total_count, total_size
 
 
 def get_statistics():
