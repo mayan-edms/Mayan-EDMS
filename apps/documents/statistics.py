@@ -53,15 +53,15 @@ def get_statistics():
     except NotImplementedError:
         pass
 
+    document_stats = DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
     paragraphs.extend(
         [
             _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
-            _(u'Minimum amount of pages per document: %(page_count__min)d') % DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Min('page_count')),
-            _(u'Maximum amount of pages per document: %(page_count__max)d') % DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Max('page_count')),
-            _(u'Average amount of pages per document: %(page_count__avg)f') % DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Avg('page_count')),
+            _(u'Minimum amount of pages per document: %d') % (document_stats['page_count__max'] or 0),
+            _(u'Maximum amount of pages per document: %d') % (document_stats['page_count__max'] or 0),
+            _(u'Average amount of pages per document: %f') % (document_stats['page_count__avg'] or 0),
         ]
     )
-    #[(day_count['date_added'].strftime('%Y-%m-%d'), day_count['id__count']) for day_count in Document.objects.values('date_added').annotate(Count("id"))]
 
     return {
         'title': _(u'Document statistics'),
