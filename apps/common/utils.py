@@ -392,3 +392,38 @@ def encapsulate(function):
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for x in range(size))
+
+
+def get_descriptor(file_input, read=True):
+    try:
+        # Is it a file like object?
+        file_input.seek(0)
+    except AttributeError:
+        # If not, try open it.
+        if read:
+            return open(file_input, 'rb')
+        else:
+            return open(file_input, 'wb')
+    else:
+        return file_input
+
+
+#http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
+def copyfile(source, destination, buffer_size=1024 * 1024):
+    """
+    Copy a file from source to dest. source and dest
+    can either be strings or any object with a read or
+    write method, like StringIO for example.
+    """
+    source_descriptor = get_descriptor(source)
+    destination_descriptor = get_descriptor(destination, read=False)
+
+    while True:
+        copy_buffer = source_descriptor.read(buffer_size)
+        if copy_buffer:
+            destination_descriptor.write(copy_buffer)
+        else:
+            break
+
+    source_descriptor.close()
+    destination_descriptor.close()
