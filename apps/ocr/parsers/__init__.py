@@ -1,6 +1,8 @@
+import os
 import slate
 import logging
 import tempfile
+import subprocess
 
 from django.utils.translation import ugettext as _
 
@@ -12,6 +14,7 @@ from common.utils import copyfile
 from common.conf.settings import TEMPORARY_DIRECTORY
 
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
+from ocr.conf.settings import PDFTOTEXT_PATH
 
 
 mimetype_registry = {}
@@ -30,15 +33,18 @@ def register_parser(mimetypes, parsers):
                 mimetype_registry.setdefault(mimetype, []).append(parser_instance)
 
 
-def parse_document_page(document_page):
+def parse_document_page(document_page, descriptor=None, mimetype=None):
     logger.debug('executing')
     logger.debug('document_page: %s' % document_page)
     logger.debug('mimetype: %s' % document_page.document.file_mimetype)
 
+    if not mimetype:
+        mimetype = document_page.document.file_mimetype
+
     try:
-        for parser in mimetype_registry[document_page.document.file_mimetype]['function']:
+        for parser in mimetype_registry[mimetype]:
             try:
-                parser.parse(document_page)
+                parser.parse(document_page, descriptor)
             except ParserError:
                 # If parser raises error, try next parser in the list
                 pass
@@ -55,7 +61,7 @@ class Parser(object):
     Parser base class
     """
 
-    def parse(self, document_page):
+    def parse(self, document_page, descriptor=None):
         raise NotImplementedError("Your %s class has not defined a parse() method, which is required." % self.__class__.__name__)
 
 
@@ -63,7 +69,7 @@ class SlateParser(Parser):
     """
     Parser for PDF files using the slate library for Python
     """
-    def parse(document_page, descriptor=None):
+    def parse(self, document_page, descriptor=None):
         if not descriptor:
             descriptor = document_page.document_version.open()
 
@@ -82,7 +88,7 @@ class OfficeParser(Parser):
     """
     Parser for office document formats
     """
-    def parse(document_page):
+    def parse(self, document_page, descriptor=None):
         logger.debug('executing')
         try:
             office_converter = OfficeConverter()
@@ -96,7 +102,7 @@ class OfficeParser(Parser):
 
                 # Now that the office document has been converted to PDF
                 # call the coresponding PDF parser in this new file
-                parse_document_page(document_page, descriptor=open(input_filepath))
+                parse_document_page(document_page, descriptor=open(input_filepath), mimetype=u'application/pdf')
             else:
                 raise ParserError
 
@@ -115,13 +121,13 @@ class PopplerParser(Parser):
             raise ParserError('cannot find pdftotext executable')
         logger.debug('self.pdftotext_path: %s' % self.pdftotext_path)        
     
-    def parse(document_page, descriptor=None): 
+    def parse(self, document_page, descriptor=None): 
         logger.debug('parsing PDF') 
         pagenum = str(document_page.page_number) 
 
         if descriptor:
             destination_descriptor, temp_filepath = tempfile.mkstemp(dir=TEMPORARY_DIRECTORY)
-            copyfile(descriptor, destination_descriptor)
+            copyfile(descriptor, temp_filepath)
             document_file = temp_filepath
         else:
             document_file = document_save_to_temp_dir(document_page.document, document_page.document.checksum)
@@ -146,14 +152,6 @@ class PopplerParser(Parser):
             raise ParserError
 
         output = proc.stdout.read() 
-        numalpha = len(filter(str.isalpha, output)) 
-        numother = len(filter(notalphaorspace, output)) 
-
-        logger.debug("Numalpha = %d  Numother = %d" % (numalpha, numother)) 
-
-        if numother > numalpha: 
-            logger.debug("parser error... probably scanned pdf.") 
-            raise ParserError 
 
         document_page.content = output 
         document_page.page_label = _(u'Text extracted from PDF') 
