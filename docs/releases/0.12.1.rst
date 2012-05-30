@@ -25,8 +25,9 @@ What's new in Mayan EDMS v0.12.1
 Documentation update
 ~~~~~~~~~~~~~~~~~~~~
 The installation instructions were updated to include the installation of
-the libpng-dev and libjpeg-dev libraries.  An additional step to help
-users test their new installation of *Mayan EDMS* was also added.
+the libpng-dev and libjpeg-dev libraries as well as the installation of 
+the poppler-utils package.  An additional step to help users test their
+new installation of *Mayan EDMS* was also added.
   
 Translations
 ~~~~~~~~~~~~
