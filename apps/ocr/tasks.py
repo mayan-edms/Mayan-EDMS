@@ -66,8 +66,7 @@ def task_process_document_queues():
                     oldest_queued_document = oldest_queued_document_qs.order_by('datetime_submitted')[0]
                     process_job(task_process_queue_document, oldest_queued_document.pk)
             except Exception, e:
-                pass
-                #print 'DocumentQueueWatcher exception: %s' % e
+                logger.error('unhandled exception: %s' % e)
             finally:
                 # Don't process anymore from this queryset, might be stale
                 break
