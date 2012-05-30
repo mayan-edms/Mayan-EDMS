@@ -4,14 +4,15 @@
 # 
 # Translators:
 #   <pierpaolo.baldan@gmail.com>, 2011.
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-21 00:37+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2012-03-21 13:44+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,13 +103,13 @@ msgstr "Trovare i file di documenti mancanti"
 
 #: __init__.py:86
 msgid "Clear the document image cache"
-msgstr ""
+msgstr "Svuota la cache immagine del documento"
 
 #: __init__.py:86
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
+msgstr "Cancella le rappresentazioni grafiche utilizzate per accellerare la visualizzazione dei documenti e dei risultati interattivi trasformazioni."
 
 #: __init__.py:89
 msgid "page transformations"
@@ -241,7 +242,7 @@ msgstr "Pagine nel documento  (%s)"
 
 #: forms.py:162
 msgid "Use the new version filename as the document filename"
-msgstr ""
+msgstr "Utilizza il nuovo nome di versione il nome del documento"
 
 #: forms.py:178
 msgid "Quick document rename"
@@ -253,11 +254,11 @@ msgstr "Versione aggiornamento"
 
 #: forms.py:190
 msgid "Release level"
-msgstr ""
+msgstr "Livello di versione"
 
 #: forms.py:196
 msgid "Release level serial"
-msgstr ""
+msgstr "Livello di versione sequenziale"
 
 #: forms.py:204
 msgid "Comment"
@@ -280,7 +281,7 @@ msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
+msgstr "Scarica il documento nel formato originale o in modo compresso. Questa opzione è selezionabile solo quando il download di un documento, per i documenti multipli, il bundle sarà sempre download come un file compresso."
 
 #: literals.py:10
 msgid "Document creation"
@@ -328,23 +329,23 @@ msgstr "Documento \"%(document)s\" cancellato il %(datetime)s da %(fullname)s."
 
 #: literals.py:42
 msgid "final"
-msgstr ""
+msgstr "finale"
 
 #: literals.py:43
 msgid "alpha"
-msgstr ""
+msgstr "alfa"
 
 #: literals.py:44
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 #: literals.py:45
 msgid "release candidate"
-msgstr ""
+msgstr "Release Candidate"
 
 #: literals.py:46
 msgid "hotfix"
-msgstr ""
+msgstr "hotfix"
 
 #: models.py:61
 msgid "name"
@@ -375,37 +376,37 @@ msgstr "documento"
 #: models.py:287
 #, python-format
 msgid "Major %(major)i.%(minor)i, (new release)"
-msgstr ""
+msgstr "Magiore %(major)i.%(minor)i, (new release)"
 
 #: models.py:288
 #, python-format
 msgid "Minor %(major)i.%(minor)i, (some updates)"
-msgstr ""
+msgstr "Minore %(major)i.%(minor)i, (some updates)"
 
 #: models.py:289
 #, python-format
 msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
-msgstr ""
+msgstr "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
 
 #: models.py:301
 msgid "mayor"
-msgstr ""
+msgstr "maggiore"
 
 #: models.py:302
 msgid "minor"
-msgstr ""
+msgstr "minore"
 
 #: models.py:303
 msgid "micro"
-msgstr ""
+msgstr "micro"
 
 #: models.py:304
 msgid "release level"
-msgstr ""
+msgstr "Livello di release"
 
 #: models.py:305
 msgid "serial"
-msgstr ""
+msgstr "sequenziale"
 
 #: models.py:306
 msgid "timestamp"
@@ -732,7 +733,7 @@ msgstr "Il documento \"%s\" è ancora in modifica"
 
 #: views.py:342
 msgid "documents to be downloaded"
-msgstr ""
+msgstr "documenti da scaricare"
 
 #: views.py:352 views.py:1337
 msgid "version"
@@ -740,11 +741,11 @@ msgstr "versione"
 
 #: views.py:409
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
 
 #: views.py:411
 msgid "Return"
-msgstr ""
+msgstr "Ritorno"
 
 #: views.py:445
 #, python-format
@@ -980,16 +981,16 @@ msgstr "crea il nome file per i documenti di tipo:%s"
 
 #: views.py:1306
 msgid "Document image cache cleared successfully"
-msgstr ""
+msgstr "Cancellata con successo la cache delle immagini dei documenti"
 
 #: views.py:1308
 #, python-format
 msgid "Error clearing document image cache; %s"
-msgstr ""
+msgstr "Errore nella pulizia della cache del documento; %s"
 
 #: views.py:1314
 msgid "Are you sure you wish to clear the document image cache?"
-msgstr ""
+msgstr "Sei sicuro di voler cancellare la cache delle immagini del documento?"
 
 #: views.py:1331
 #, python-format
@@ -998,15 +999,15 @@ msgstr "versioni per documento: %s"
 
 #: views.py:1341
 msgid "time and date"
-msgstr ""
+msgstr "data e ora"
 
 #: views.py:1345
 msgid "mimetype"
-msgstr ""
+msgstr "mimetype"
 
 #: views.py:1349
 msgid "encoding"
-msgstr ""
+msgstr "codifica"
 
 #: views.py:1380
 msgid "Document version reverted successfully"
