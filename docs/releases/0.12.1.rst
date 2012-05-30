@@ -1,0 +1,70 @@
+================================
+Mayan EDMS v0.12.1 release notes
+================================
+
+*May 2012*
+
+This is the first maintenance release of the 0.12 series.
+
+Overview
+========
+
+While bug fixes and minor feature were the focus for this release, some
+bigger changes were included becuase of their importance.  The parsing of
+document saw a complety rewrite being now class based and allows for more
+than one parser per mimetype with sequencial fallback.  This provides the
+best text extraction on deployments where users have control over the 
+installation and basic extraction when deploying on the cloud or other
+environments where users don't have the ability to install OS level
+binaries.
+
+
+What's new in Mayan EDMS v0.12.1
+================================
+
+Documentation update
+~~~~~~~~~~~~~~~~~~~~
+  
+New configuration options
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Translations
+~~~~~~~~~~~~~~~~~~~
+
+Usability improvements
+~~~~~~~~~~~~~~~~~~~~~~
+  
+Better office document conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Better PDF text parsing
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Upgrading from a previous version
+=================================
+
+Start off by adding the new requirements::
+
+  $ pip install -r requirements/production.txt
+
+Then create the new database structures with::
+
+    $ ./manage.py syncdb
+
+Afterwards migrate existing database schema with::
+
+    $ ./manage.py migrate documents
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+Bugs fixed
+==========
+
+Stuff removed
+=============  
