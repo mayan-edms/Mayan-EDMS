@@ -9,7 +9,7 @@ Local or managed server
 
 If using a Debian_ or Ubuntu_ based Linux distribution getting the executable requirements is as easy as::
 
-	$ apt-get install tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev -y
+	$ apt-get install tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils -y
     
 To initialize a ``virtualenv`` to deploy the project do::
 

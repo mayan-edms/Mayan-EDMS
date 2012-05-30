@@ -373,7 +373,17 @@ Default: ``/usr/bin/unpaper``
     
 File path to the ``unpaper`` executable, used to clean up images before
 doing OCR.
+
     
+.. setting:: OCR_PDFTOTEXT_PATH
+
+**OCR_PDFTOTEXT_PATH**
+    
+Default: ``/usr/bin/pdftotext`` 
+    
+File path to ``poppler's`` ``pdftotext`` program used to extract text
+from PDF files.
+
 
 Metadata
 ========

@@ -24,22 +24,38 @@ What's new in Mayan EDMS v0.12.1
 
 Documentation update
 ~~~~~~~~~~~~~~~~~~~~
+The installation instructions were updated to include the installation of
+the libpng-dev and libjpeg-dev libraries.  An additional step to help
+users test their new installation of *Mayan EDMS* was also added.
   
-New configuration options
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Translations
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+The Italian translation has been synchronized with the source files at
+Transifex and finished to %100 completion.
 
 Usability improvements
 ~~~~~~~~~~~~~~~~~~~~~~
+The index instance view now feature the same multi document action
+buttons (Submit to OCR, delete, download, etc) as the mail and recent
+document views.
   
 Better office document conversion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A new method of converting office document has been implemented, this
+new method doesn't require the use of the command line utility ``UNOCONV``.
+If this new method proves to work better than previous solutions the use
+of ``UNOCONV`` may be deprecated in the future.  The conversion method
+adds just one new configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
+which defaults to '/usr/bin/libreoffice'.
 
 Better PDF text parsing
 ~~~~~~~~~~~~~~~~~~~~~~~
-
+Brian E submitted a patch to use the Poppler package pdftotext utility to
+extract text from PDF files.  This is now the default method Mayan EDMS
+will execute to try to extract text from a PDF and failing that will 
+fallback to the previous method.  This change add a new configuration
+option: :setting:`OCR_PDFTOTEXT_PATH` to specify the location of the ``pdftotext``
+executable, it defaults to '/usr/bin/pdftotext'
 
 
 Upgrading from a previous version
@@ -62,9 +78,12 @@ The upgrade procedure is now complete.
 
 Backward incompatible changes
 =============================
+* None
 
 Bugs fixed
 ==========
+* Issue #25 "Office document conversion error"
 
 Stuff removed
 =============  
+* None
