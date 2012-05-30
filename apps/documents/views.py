@@ -130,8 +130,8 @@ def document_view(request, document_id, advanced=False):
     if advanced:
         document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
             {'label': _(u'Filename'), 'field': 'filename'},
-            {'label': _(u'File mimetype'), 'field': 'file_mimetype'},
-            {'label': _(u'File mime encoding'), 'field': 'file_mime_encoding'},
+            {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
+            {'label': _(u'File mime encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
             {'label': _(u'File size'), 'field':lambda x: pretty_size(x.size) if x.size else '-'},
             {'label': _(u'Exists in storage'), 'field': 'exists'},
             {'label': _(u'File path in storage'), 'field': 'file'},
