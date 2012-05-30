@@ -352,7 +352,7 @@ Maximum amount of concurrent document OCRs a node can perform.
 
 **OCR_AUTOMATIC_OCR**
     
-Default: ``False``               
+Default: ``True``               
     
 Automatically queue newly created documents or newly uploaded versions
 of existing documents for OCR.
