@@ -27,7 +27,7 @@ class DocumentQueue(models.Model):
     label = models.CharField(max_length=64, verbose_name=_(u'label'))
     state = models.CharField(max_length=4,
         choices=DOCUMENTQUEUE_STATE_CHOICES,
-        default=DOCUMENTQUEUE_STATE_STOPPED,
+        default=DOCUMENTQUEUE_STATE_ACTIVE,
         verbose_name=_(u'state'))
 
     objects = DocumentQueueManager()
