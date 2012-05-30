@@ -15,5 +15,6 @@ register_settings(
         {'name': u'AUTOMATIC_OCR', 'global_name': u'OCR_AUTOMATIC_OCR', 'default': False, 'description': _(u'Automatically queue newly created documents for OCR.')},
         {'name': u'QUEUE_PROCESSING_INTERVAL', 'global_name': u'OCR_QUEUE_PROCESSING_INTERVAL', 'default': 10},
         {'name': u'UNPAPER_PATH', 'global_name': u'OCR_UNPAPER_PATH', 'default': u'/usr/bin/unpaper', 'description': _(u'File path to unpaper program.'), 'exists': True},
+        {'name': u'PDFTOTEXT_PATH', 'global_name': u'OCR_PDFTOTEXT_PATH', 'default': u'/usr/bin/pdftotext', 'description': _(u'File path to poppler\'s pdftotext program.'), 'exists': True},
     ]
 )
