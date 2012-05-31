@@ -147,6 +147,7 @@ class OfficeConverterBackendDirect(object):
         logger.debug('command: %s' % command)
 
         try:
+            os.environ['HOME'] = TEMPORARY_DIRECTORY
             proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             return_code = proc.wait()
             logger.debug('return_code: %s' % return_code)
