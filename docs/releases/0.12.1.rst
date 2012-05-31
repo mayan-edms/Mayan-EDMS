@@ -58,6 +58,11 @@ fallback to the previous method.  This change add a new configuration
 option: :setting:`OCR_PDFTOTEXT_PATH` to specify the location of the ``pdftotext``
 executable, it defaults to '/usr/bin/pdftotext'
 
+Changed defaults
+~~~~~~~~~~~~~~~~
+OCR_AUTOMATIC_OCR = True
+OCR queue started by default
+
 
 Upgrading from a previous version
 =================================
