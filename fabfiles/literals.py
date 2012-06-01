@@ -1,0 +1,15 @@
+OS_UBUNTU = 'ubuntu'
+
+DEFAULT_INSTALL_PATH = {
+    OS_UBUNTU: '/usr/share'
+}
+
+DEFAULT_VIRTUALENV_NAME = {
+    OS_UBUNTU: 'mayan'
+}
+
+DEFAULT_REPOSITORY_NAME = {
+    OS_UBUNTU: 'mayan'
+}
+
+DEFAULT_OS = OS_UBUNTU
