@@ -1,4 +1,5 @@
 from fabric.api import task
+from fabric.colors import white
 
 import databases as database
 import webservers as webserver
@@ -9,6 +10,22 @@ from conf import setup_environment
 setup_environment()
 
 
+print(white('\n\n          ########          ', bold=True))
+print(white('          ########          ', bold=True))
+print(white('          ###  ###          ', bold=True))
+print(white('        #####  #####        ', bold=True))
+print(white('       ##############       ', bold=True))
+print(white('      #######  #######      ', bold=True))
+print(white('     ##################     ', bold=True))
+print(white('    #########  #########    ', bold=True))
+print(white('   ######################   ', bold=True))
+print(white('  ###########  ###########  ', bold=True))
+print(white(' ########################## ', bold=True))
+print(white('#############  #############', bold=True))
+
+print(white('\nMayan EDMS Fabric installation file\n\n', bold=True))
+
+
 @task(default=True)
 def install():
     platform.install_dependencies()
@@ -17,6 +34,7 @@ def install():
     database.create_database()
     django.database_config()
     django.syncdb()
+    django.collectstatic()
     platform.fix_permissions()
     platform.install_webserver()
     webserver.install_site()

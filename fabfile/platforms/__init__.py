@@ -1,4 +1,5 @@
 from fabric.api import run, sudo, cd, env, task
+from fabric.colors import green
 
 from ..literals import OS_UBUNTU
 import ubuntu
@@ -9,8 +10,7 @@ def install_dependencies():
     """
     Install OS dependencies
     """
-    
-    print('Installing dependencies for %s' % env.os_name)
+    print(green('Installing dependencies for %s' % env.os_name, bold=True))
     
     if env.os == OS_UBUNTU:
         ubuntu.install_dependencies()
@@ -22,7 +22,7 @@ def install_mayan():
     Install Mayan EDMS
     """
     
-    print('Installing Mayan EDMS from git repository')
+    print(green('Installing Mayan EDMS from git repository', bold=True))
 
     if env.os == OS_UBUNTU:
         ubuntu.install_mayan()
@@ -34,7 +34,7 @@ def install_database_manager():
     Install the selected database manager
     """
     
-    print('Installing database manager: %s' % env.database_manager_name)
+    print(green('Installing database manager: %s' % env.database_manager_name, bold=True))
     
     if env.os == OS_UBUNTU:
         ubuntu.install_database_manager()
@@ -46,7 +46,7 @@ def fix_permissions():
     Fix installation files' permissions
     """
 
-    print('Fixing installation files\' permissions')
+    print(green('Fixing installation files\' permissions', bold=True))
 
     if env.os == OS_UBUNTU:
         ubuntu.fix_permissions()    
@@ -58,7 +58,7 @@ def install_webserver():
     Installing the OS packages for the webserver
     """
     
-    print('Installing webserver: %s' % env.webserver_name)
+    print(green('Installing webserver: %s' % env.webserver_name, bold=True))
     
     if env.os == OS_UBUNTU:
         ubuntu.install_webserver()
