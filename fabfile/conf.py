@@ -1,4 +1,6 @@
 import os
+import string
+import random
 
 from fabric.api import env
 
@@ -6,13 +8,15 @@ from literals import (DEFAULT_INSTALL_PATH, DEFAULT_VIRTUALENV_NAME,
     DEFAULT_REPOSITORY_NAME, DEFAULT_OS, OS_CHOICES, 
     DEFAULT_DATABASE_MANAGER, DB_CHOICES, DEFAULT_DATABASE_NAME,
     DEFAULT_WEBSERVER, WEB_CHOICES, DEFAULT_DATABASE_USERNAME,
-    DJANGO_DB_DRIVERS, DEFAULT_DATABASE_HOST)
+    DJANGO_DB_DRIVERS, DEFAULT_DATABASE_HOST, DEFAULT_PASSWORD_LENGTH)
 
 
 def password_generator():
-    return 'password'
+    # http://snipplr.com/view/63223/python-password-generator/
+    chars = string.ascii_letters + string.digits
+    return ''.join(random.choice(chars) for x in range(DEFAULT_PASSWORD_LENGTH))
 
-
+        
 def setup_environment():
     env['os'] = getattr(env, 'os', DEFAULT_OS)
     env['os_name'] = OS_CHOICES[env.os]
