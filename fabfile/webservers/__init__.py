@@ -22,7 +22,7 @@ def remove_site():
     """
     Install Mayan EDMS's site file from the webserver's configuration
     """    
-    print(green('Removing Mayan EDMS\s site file from %s configuration' % env.webserver_name, bold=True))
+    print(green('Removing Mayan EDMS\'s site file from %s configuration' % env.webserver_name, bold=True))
 
     if env.webserver == WEB_APACHE:
         apache.remove_site()

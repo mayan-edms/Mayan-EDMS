@@ -32,6 +32,7 @@ def setup_environment():
     env['database_username'] = getattr(env, 'database_username', DEFAULT_DATABASE_USERNAME)
     env['database_password'] = getattr(env, 'database_password', password_generator())
     env['database_host'] = getattr(env, 'database_host', DEFAULT_DATABASE_HOST)
+    env['drop_database'] = getattr(env, 'drop_database', False)
     
     if not getattr(env, 'database_manager_admin_password', None):
         print('Must set the database_manager_admin_password entry in the fabric settings file (~/.fabricrc by default)')

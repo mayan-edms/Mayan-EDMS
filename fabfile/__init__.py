@@ -1,4 +1,4 @@
-from fabric.api import task
+from fabric.api import task, env
 from fabric.colors import white
 
 import databases as database
@@ -43,10 +43,11 @@ def install():
 
 @task
 def uninstall():
-    platform.uninstall()
+    platform.delete_mayan()
     webserver.remove_site()
+    webserver.restart()
 
     if env.drop_database:
-        database.drop()
+        database.drop_database()
 
 

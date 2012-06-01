@@ -62,3 +62,15 @@ def install_webserver():
     
     if env.os == OS_UBUNTU:
         ubuntu.install_webserver()
+
+        
+@task
+def delete_mayan():
+    """
+    Delete Mayan EDMS from the OS
+    """
+    
+    print(green('Deleting Mayan EDMS files', bold=True))
+
+    if env.os == OS_UBUNTU:
+        ubuntu.delete_mayan()

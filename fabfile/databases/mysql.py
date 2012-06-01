@@ -1,4 +1,4 @@
-from fabric.api import run, sudo, cd, env, task
+from fabric.api import run, env, task, settings
 
 
 def create_database():
@@ -14,5 +14,6 @@ def drop_database():
     """
     Drop MySQL's Mayan EDMS's database
     """
-    run('echo "drop database %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
+    with settings(warn_only=True):
+        run('echo "drop database %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
 

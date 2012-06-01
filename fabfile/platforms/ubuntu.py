@@ -10,9 +10,9 @@ def install_dependencies():
     sudo('apt-get install -y git-core gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils')
 
 
-def uninstall():
+def delete_mayan():
     """
-    Uninstall Mayan EDMS from an Ubuntu system
+    Delete Mayan EDMS files from an Ubuntu system
     """
     sudo('rm %s -Rf' % env.virtualenv_path)
     
