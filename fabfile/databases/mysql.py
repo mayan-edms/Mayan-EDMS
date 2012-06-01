@@ -5,9 +5,9 @@ def create_database():
     """
     Create the MySQL Mayan EDMS database
     """
-    run('echo "create database %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
-    #TODO: create DB and mayan user
-    #TODO: custom settings_local
+    run('echo "CREATE DATABASE %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
+    run('echo "CREATE USER \'%(database_username)s\'@\'localhost\' IDENTIFIED BY \'%(database_password)s\';" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
+    run('echo "GRANT ALL PRIVILEGES ON %(database_name)s.* TO \'%(database_username)s\'@\'localhost\' WITH GRANT OPTION; |  mysql -u root --password=%(database_manager_admin_password)s' % env)
 
 
 def drop_database():

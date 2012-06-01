@@ -1,4 +1,4 @@
-from fabric.api import run, sudo, cd, env, task
+from fabric.api import env, task
 
 from ..literals import DB_MYSQL
 import mysql

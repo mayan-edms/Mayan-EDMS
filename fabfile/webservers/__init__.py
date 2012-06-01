@@ -10,9 +10,9 @@ def install_site():
     Install Mayan EDMS site in the webserver configuration files
     """
     
-    print('Adding Mayan EDMS\'s site files to: %s' % os.webserver_name)
+    print('Adding Mayan EDMS\'s site files to: %s' % env.webserver_name)
 
-    if os.webserver == WEB_APACHE:
+    if env.webserver == WEB_APACHE:
         apache.install_site()
 
 
@@ -21,9 +21,9 @@ def remove_site():
     """
     Install Mayan EDMS's site file from the webserver's configuration
     """    
-    print('Removing Mayan EDMS\s site file from %s configuration' % os.webserver_name)
+    print('Removing Mayan EDMS\s site file from %s configuration' % env.webserver_name)
 
-    if os.webserver == WEB_APACHE:
+    if env.webserver == WEB_APACHE:
         apache.remove_site()
 
 
@@ -32,9 +32,9 @@ def restart():
     """
     Restart the webserver
     """    
-    print('Restarting the web server: %s' % os.webserver_name)
+    print('Restarting the web server: %s' % env.webserver_name)
 
-    if os.webserver == WEB_APACHE:
+    if env.webserver == WEB_APACHE:
         apache.restart()
 
 
@@ -45,5 +45,5 @@ def reload():
     """    
     print('Reloading the web server configuration files')
 
-    if os.webserver == WEB_APACHE:
+    if env.webserver == WEB_APACHE:
         apache.reload()

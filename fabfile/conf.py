@@ -5,7 +5,12 @@ from fabric.api import env
 from literals import (DEFAULT_INSTALL_PATH, DEFAULT_VIRTUALENV_NAME, 
     DEFAULT_REPOSITORY_NAME, DEFAULT_OS, OS_CHOICES, 
     DEFAULT_DATABASE_MANAGER, DB_CHOICES, DEFAULT_DATABASE_NAME,
-    DEFAULT_WEBSERVER, WEB_CHOICES)
+    DEFAULT_WEBSERVER, WEB_CHOICES, DEFAULT_DATABASE_USERNAME,
+    DJANGO_DB_DRIVERS, DEFAULT_DATABASE_HOST)
+
+
+def password_generator():
+    return 'password'
 
 
 def setup_environment():
@@ -20,6 +25,9 @@ def setup_environment():
     
     env['database_manager'] = getattr(env, 'database_manager', DEFAULT_DATABASE_MANAGER)
     env['database_manager_name'] = DB_CHOICES[env.database_manager]
+    env['database_username'] = getattr(env, 'database_username', DEFAULT_DATABASE_USERNAME)
+    env['database_password'] = getattr(env, 'database_password', password_generator())
+    env['database_host'] = getattr(env, 'database_host', DEFAULT_DATABASE_HOST)
     
     if not getattr(env, 'database_manager_admin_password', None):
         print('Must set the database_manager_admin_password entry in the fabric settings file (~/.fabricrc by default)')
@@ -29,3 +37,5 @@ def setup_environment():
 
     env['webserver'] = getattr(env, 'webserver', DEFAULT_WEBSERVER)
     env['webserver_name'] = WEB_CHOICES[env.webserver]
+
+    env['django_database_driver'] = DJANGO_DB_DRIVERS[env.database_manager]

@@ -1,12 +1,9 @@
-import sys
-import os
+from fabric.api import task
 
-from fabric.api import run, sudo, cd, env, task
-from fabric.main import load_settings
-
-import databases
-import webservers
-import platforms
+import databases as database
+import webservers as webserver
+import platforms as platform
+import django
 from conf import setup_environment
 
 setup_environment()
@@ -14,22 +11,24 @@ setup_environment()
 
 @task(default=True)
 def install():
-    platforms.install_dependencies()
-    platforms.install_mayan()
+    platform.install_dependencies()
+    platform.install_mayan()
     platform.install_database_manager()
-    databases.create_database()
-    platforms.fix_permissions()
-    platforms.install_webserver()
-    webservers.install_site()
-    webservers.restart()
+    database.create_database()
+    django.database_config()
+    django.syncdb()
+    platform.fix_permissions()
+    platform.install_webserver()
+    webserver.install_site()
+    webserver.restart()
     
 
 @task
 def uninstall():
-    platforms.uninstall()
-    webservers.remove_site()
+    platform.uninstall()
+    webserver.remove_site()
 
     if env.drop_database:
-        databases.drop()
+        database.drop()
 
 

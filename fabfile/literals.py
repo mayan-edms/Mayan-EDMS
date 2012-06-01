@@ -29,11 +29,20 @@ DEFAULT_REPOSITORY_NAME = {
 DB_MYSQL = 'mysql'
 DB_PGSQL = 'pgsql'
 DB_SQLITE = 'sqlite'
+DB_ORACLE = 'oracle'
 
 DB_CHOICES = {
     DB_MYSQL: 'MySQL',
     DB_PGSQL: 'PostgreSQL',
-    DB_SQLITE: 'SQLite'
+    DB_SQLITE: 'SQLite',
+    DB_ORACLE: 'ORACLE'
+}
+
+DJANGO_DB_DRIVERS = {
+    DB_MYSQL: 'mysql',
+    DB_PGSQL: 'postgresql_psycopg2',
+    DB_SQLITE: 'sqlite3',
+    DB_ORACLE: 'oracle',
 }
 
 WEB_APACHE = 'apache'
@@ -48,3 +57,5 @@ DEFAULT_OS = OS_UBUNTU
 DEFAULT_DATABASE_MANAGER = DB_MYSQL
 DEFAULT_DATABASE_NAME = 'mayan'
 DEFAULT_WEBSERVER = WEB_APACHE
+DEFAULT_DATABASE_USERNAME = 'mayan'
+DEFAULT_DATABASE_HOST = '127.0.0.1'

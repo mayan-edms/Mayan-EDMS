@@ -37,11 +37,6 @@ def install_mayan():
         sudo('source bin/activate; pip install -r %s/requirements/production.txt' % env.repository_name)
 
 
-def syncdb():
-    with cd(env.virtualenv_path):
-        sudo('source bin/activate; %(repository_name)s/manage.py syncdb --noinput; %(repository_name)s/manage.py migrate' % (env))
-
-
 def install_database_manager():
     """
     Install the database manager on an Ubuntu system
