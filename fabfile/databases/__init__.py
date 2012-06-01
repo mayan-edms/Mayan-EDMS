@@ -27,3 +27,13 @@ def drop_database():
     if env.database_manager == DB_MYSQL:
         mysql.drop_database()
 
+
+@task
+def drop_username():
+    """
+    Drop Mayan EDMS's username
+    """
+    print(green('Droping Mayan EDMS username', bold=True))
+
+    if env.database_manager == DB_MYSQL:
+        mysql.drop_username()

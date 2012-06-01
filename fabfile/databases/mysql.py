@@ -15,5 +15,13 @@ def drop_database():
     Drop MySQL's Mayan EDMS's database
     """
     with settings(warn_only=True):
-        run('echo "drop database %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
+        run('echo "DROP DATABASE %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
+
+
+def drop_username():
+    """
+    Drop MySQL's Mayan EDMS's username
+    """
+    with settings(warn_only=True):
+        run('echo "DROP USER \'%(database_username)s\'@\'%(database_host)s\';" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
 

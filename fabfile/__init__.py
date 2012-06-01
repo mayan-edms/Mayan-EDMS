@@ -49,5 +49,6 @@ def uninstall():
 
     if env.drop_database:
         database.drop_database()
+        database.drop_username()
 
 
