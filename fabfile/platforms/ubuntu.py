@@ -49,7 +49,6 @@ def install_database_manager():
             sudo('source bin/activate; pip install MySQL-python')
 
 
-@task
 def install_webserver():
     """
     Installing the Ubuntu packages for the webserver
