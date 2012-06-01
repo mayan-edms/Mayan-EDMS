@@ -12,3 +12,9 @@ def syncdb():
 @task
 def database_config():
     upload_template(filename=os.path.join('fabfile', 'templates', 'settings_local.py'), destination=env.repository_path, context=env, use_sudo=True)
+
+
+@task
+def collectstatic():
+    with cd(env.virtualenv_path):
+        sudo('source bin/activate; %(repository_name)s/manage.py collectstatic --noinput' % (env))
