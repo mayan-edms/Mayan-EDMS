@@ -1,7 +1,9 @@
 import os
 
-from fabric.api import run, sudo, cd, env, task
+from fabric.api import run, sudo, cd, env, task, settings
 from fabric.contrib.files import upload_template
+
+from ..literals import OS_UBUNTU, OS_FEDORA
 
 
 def install_site():
@@ -9,26 +11,39 @@ def install_site():
     Install Mayan EDMS's site file in Apache configuration
     """
     #  TODO: configurable site name
-    upload_template(filename=os.path.join('fabfile', 'templates', 'apache_site'), destination='/etc/apache2/sites-available/mayan', context=env, use_sudo=True)
-    sudo('a2ensite mayan') 
+    if env.os == OS_UBUNTU:
+        upload_template(filename=os.path.join('fabfile', 'templates', 'apache_site'), destination='/etc/apache2/sites-available/mayan', context=env, use_sudo=True)
+        sudo('a2ensite mayan') 
+    elif env.os == OS_FEDORA:
+        upload_template(filename=os.path.join('fabfile', 'templates', 'apache_site'), destination='/etc/httpd/conf.d/mayan.conf', context=env, use_sudo=True)
 
 
 def remove_site():
     """
     Install Mayan EDMS's site file from Apache's configuration
     """
-    sudo('a2dissite mayan')
+    if env.os == OS_UBUNTU:
+        sudo('a2dissite mayan')
+    elif env.os == OS_FEDORA:
+        with settings(warn_only=True):
+            sudo('rm /etc/httpd/conf.d/mayan.conf')
 
 
 def restart():
     """
     Restart Apache
     """
-    sudo('/etc/init.d/apache2 restart')
+    if env.os == OS_UBUNTU:
+        sudo('/etc/init.d/apache2 restart')
+    elif env.os == OS_FEDORA:
+        sudo('systemctl restart httpd.service')
 
 
 def reload():
     """
     Reload Apache configuration files
     """
-    sudo('/etc/init.d/apache2 reload')
+    if env.os == OS_UBUNTU:
+        sudo('/etc/init.d/apache2 reload')
+    elif env.os == OS_FEDORA:
+        sudo('systemctl reload httpd.service')

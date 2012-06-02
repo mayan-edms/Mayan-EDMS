@@ -39,6 +39,7 @@ def install():
     platform.install_webserver()
     webserver.install_site()
     webserver.restart()
+    platform.post_install()
     
 
 @task

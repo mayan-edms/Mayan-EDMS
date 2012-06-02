@@ -9,9 +9,9 @@
         Order deny,allow
         Allow from all
     </Directory>
-    ErrorLog /var/log/apache2/mayan_error.log
+    #ErrorLog /var/log/apache2/mayan_error.log
     LogLevel warn
-    CustomLog /var/log/apache2/mayan_access.log combined
+    #CustomLog /var/log/apache2/mayan_access.log combined
 
     Alias /mayan-static "%(repository_path)s/static/"
     <Location "/static">

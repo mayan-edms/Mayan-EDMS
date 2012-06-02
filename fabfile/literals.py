@@ -15,15 +15,18 @@ OS_CHOICES = {
 }
 
 DEFAULT_INSTALL_PATH = {
-    OS_UBUNTU: '/usr/share'
+    OS_UBUNTU: '/usr/share',
+    OS_FEDORA: '/usr/share'
 }
 
 DEFAULT_VIRTUALENV_NAME = {
-    OS_UBUNTU: 'mayan'
+    OS_UBUNTU: 'mayan',
+    OS_FEDORA: 'mayan'
 }
 
 DEFAULT_REPOSITORY_NAME = {
-    OS_UBUNTU: 'mayan'
+    OS_UBUNTU: 'mayan',
+    OS_FEDORA: 'mayan'
 }
 
 DB_MYSQL = 'mysql'

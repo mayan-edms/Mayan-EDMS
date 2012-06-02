@@ -10,33 +10,6 @@ def install_dependencies():
     sudo('apt-get install -y git-core gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils')
 
 
-def delete_mayan():
-    """
-    Delete Mayan EDMS files from an Ubuntu system
-    """
-    sudo('rm %s -Rf' % env.virtualenv_path)
-    
-
-def fix_permissions():
-    """
-    Fix installation files' permissions on an Ubuntu system
-    """
-    sudo('chmod 777 %s -R' % env.virtualenv_path)
-    sudo('chgrp www-data %s -R' % env.virtualenv_path)
-
-
-def install_mayan():
-    """
-    Install Mayan EDMS on an Ubuntu system
-    """
-    with cd(env.install_path):
-        sudo('virtualenv --no-site-packages %s' % env.virtualenv_name)
-    
-    with cd(env.virtualenv_path):
-        sudo('git clone http://www.github.com/rosarior/mayan %s' % env.repository_name)
-        sudo('source bin/activate; pip install -r %s/requirements/production.txt' % env.repository_name)
-
-
 def install_database_manager():
     """
     Install the database manager on an Ubuntu system
@@ -60,3 +33,18 @@ def install_webserver():
         with settings(warn_only=True):
             # Get rid of Apache's default site
             sudo('a2dissite default')
+
+
+def fix_permissions():
+    """
+    Fix installation files' permissions on an Ubuntu system
+    """
+    sudo('chmod 770 %s -R' % env.virtualenv_path)
+    sudo('chgrp www-data %s -R' % env.virtualenv_path)
+
+
+def post_install():
+    """
+    Post install operations on an Ubuntu system
+    """    
+    pass
