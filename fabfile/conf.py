@@ -44,3 +44,10 @@ def setup_environment():
     env['webserver_name'] = WEB_CHOICES[env.webserver]
 
     env['django_database_driver'] = DJANGO_DB_DRIVERS[env.database_manager]
+
+
+def print_supported_configs():
+    print('Supported operating systems (os=): %s' % dict(OS_CHOICES).keys())
+    print('Supported database managers (database_manager=): %s' % dict(DB_CHOICES).keys())
+    print('Supported webservers (webserver=): %s' % dict(WEB_CHOICES).keys())
+    print('\n')

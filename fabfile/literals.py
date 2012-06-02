@@ -3,15 +3,15 @@ OS_REDHAT = 'redhat'
 OS_CENTOS = 'centos'
 OS_FEDORA = 'fedora'
 OS_WINDOWS = 'windows'
-OS_FREEBSD = 'freebds',
+OS_FREEBSD = 'freebds'
 
 OS_CHOICES = {
     OS_UBUNTU: 'Ubuntu',
-    OS_REDHAT: 'RedHat',
-    OS_CENTOS: 'CentOS',
     OS_FEDORA: 'Fedora',
-    OS_WINDOWS: 'MS Windows',
-    OS_FREEBSD: 'FreeBSD',
+    #OS_REDHAT: 'RedHat',
+    #OS_CENTOS: 'CentOS',
+    #OS_WINDOWS: 'MS Windows',
+    #OS_FREEBSD: 'FreeBSD',
 }
 
 DEFAULT_INSTALL_PATH = {
@@ -36,9 +36,9 @@ DB_ORACLE = 'oracle'
 
 DB_CHOICES = {
     DB_MYSQL: 'MySQL',
-    DB_PGSQL: 'PostgreSQL',
-    DB_SQLITE: 'SQLite',
-    DB_ORACLE: 'ORACLE'
+    #DB_PGSQL: 'PostgreSQL',
+    #DB_SQLITE: 'SQLite',
+    #DB_ORACLE: 'ORACLE'
 }
 
 DJANGO_DB_DRIVERS = {
@@ -53,7 +53,7 @@ WEB_NGINX = 'nginx'
 
 WEB_CHOICES = {
     WEB_APACHE: 'Apache',
-    WEB_NGINX: 'Nginx',
+    #WEB_NGINX: 'Nginx',
 }
 
 DEFAULT_OS = OS_UBUNTU

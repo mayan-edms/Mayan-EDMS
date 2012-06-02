@@ -5,10 +5,9 @@ import databases as database
 import webservers as webserver
 import platforms as platform
 import django
-from conf import setup_environment
+from conf import setup_environment, print_supported_configs
 
 setup_environment()
-
 
 print(white('\n\n          ########          ', bold=True))
 print(white('          ########          ', bold=True))
@@ -24,6 +23,8 @@ print(white(' ########################## ', bold=True))
 print(white('#############  #############', bold=True))
 
 print(white('\nMayan EDMS Fabric installation file\n\n', bold=True))
+
+print_supported_configs()
 
 
 @task(default=True)
