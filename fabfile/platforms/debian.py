@@ -7,7 +7,7 @@ def install_dependencies():
     """
     Install Debian dependencies
     """
-    sudo('apt-get install -y git-core gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils')
+    sudo('apt-get install -y git-core gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils python-dev')
 
 
 def install_database_manager():
