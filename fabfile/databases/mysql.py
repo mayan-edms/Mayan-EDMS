@@ -1,4 +1,5 @@
 from fabric.api import run, env, task, settings
+from fabric.colors import green
 
 
 def create_database():
@@ -8,6 +9,8 @@ def create_database():
     run('echo "CREATE DATABASE %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
     run('echo "CREATE USER \'%(database_username)s\'@\'%(database_host)s\' IDENTIFIED BY \'%(database_password)s\';" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
     run('echo "GRANT ALL PRIVILEGES ON %(database_name)s.* TO \'%(database_username)s\'@\'%(database_host)s\' WITH GRANT OPTION;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
+
+    print(green('Password used for Mayan EDMS database account: %s' % env.database_password, bold=True))
 
 
 def drop_database():
