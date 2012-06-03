@@ -1,8 +1,8 @@
 from fabric.api import run, sudo, cd, env, task
 from fabric.colors import green
 
-from ..literals import OS_UBUNTU, OS_FEDORA
-import linux, ubuntu, fedora
+from ..literals import OS_UBUNTU, OS_FEDORA, OS_DEBIAN
+import linux, ubuntu, fedora, debian
 
 
 @task
@@ -10,10 +10,11 @@ def install_dependencies():
     """
     Install OS dependencies
     """
+
     print(green('Installing dependencies for %s' % env.os_name, bold=True))
     
-    if env.os == OS_UBUNTU:
-        ubuntu.install_dependencies()
+    if env.os in [OS_UBUNTU, OS_DEBIAN]:
+        debian.install_dependencies()
     elif env.os == OS_FEDORA:
         fedora.install_dependencies()
 
@@ -26,7 +27,7 @@ def install_mayan():
     
     print(green('Installing Mayan EDMS from git repository', bold=True))
 
-    if env.os in [OS_UBUNTU, OS_FEDORA]:
+    if env.os in [OS_UBUNTU, OS_FEDORA, OS_DEBIAN]:
         linux.install_mayan()
 
 
@@ -38,8 +39,8 @@ def install_database_manager():
     
     print(green('Installing database manager: %s' % env.database_manager_name, bold=True))
     
-    if env.os == OS_UBUNTU:
-        ubuntu.install_database_manager()
+    if env.os in [OS_UBUNTU, OS_DEBIAN]:
+        debian.install_database_manager()
     elif env.os == OS_FEDORA:
         fedora.install_database_manager()
 
@@ -52,8 +53,8 @@ def fix_permissions():
 
     print(green('Fixing installation files\' permissions', bold=True))
 
-    if env.os == OS_UBUNTU:
-        ubuntu.fix_permissions()
+    if env.os in [OS_UBUNTU, OS_DEBIAN]:
+        debian.fix_permissions()
     elif env.os == OS_FEDORA:
         fedora.fix_permissions()
 
@@ -66,8 +67,8 @@ def install_webserver():
     
     print(green('Installing webserver: %s' % env.webserver_name, bold=True))
     
-    if env.os == OS_UBUNTU:
-        ubuntu.install_webserver()
+    if env.os in [OS_UBUNTU, OS_DEBIAN]:
+        debian.install_webserver()
     elif env.os == OS_FEDORA:
         fedora.install_webserver()
 
@@ -80,7 +81,7 @@ def delete_mayan():
     
     print(green('Deleting Mayan EDMS files', bold=True))
 
-    if env.os in [OS_UBUNTU, OS_FEDORA]:
+    if env.os in [OS_UBUNTU, OS_FEDORA, OS_DEBIAN]:
         linux.delete_mayan()
         
 
@@ -93,3 +94,5 @@ def post_install():
         ubuntu.post_install()
     elif env.os == OS_FEDORA:
         fedora.post_install()
+    elif env.os == OS_DEBIAN:
+        debian.post_install()

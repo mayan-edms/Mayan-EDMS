@@ -4,10 +4,12 @@ OS_CENTOS = 'centos'
 OS_FEDORA = 'fedora'
 OS_WINDOWS = 'windows'
 OS_FREEBSD = 'freebds'
+OS_DEBIAN = 'debian'
 
 OS_CHOICES = {
     OS_UBUNTU: 'Ubuntu',
     OS_FEDORA: 'Fedora',
+    OS_DEBIAN: 'Debian',
     #OS_REDHAT: 'RedHat',
     #OS_CENTOS: 'CentOS',
     #OS_WINDOWS: 'MS Windows',
@@ -16,17 +18,20 @@ OS_CHOICES = {
 
 DEFAULT_INSTALL_PATH = {
     OS_UBUNTU: '/usr/share',
-    OS_FEDORA: '/usr/share'
+    OS_FEDORA: '/usr/share',
+    OS_DEBIAN: '/usr/share',
 }
 
 DEFAULT_VIRTUALENV_NAME = {
     OS_UBUNTU: 'mayan',
-    OS_FEDORA: 'mayan'
+    OS_FEDORA: 'mayan',
+    OS_DEBIAN: 'mayan',
 }
 
 DEFAULT_REPOSITORY_NAME = {
     OS_UBUNTU: 'mayan',
-    OS_FEDORA: 'mayan'
+    OS_FEDORA: 'mayan',
+    OS_DEBIAN: 'mayan',
 }
 
 DB_MYSQL = 'mysql'
