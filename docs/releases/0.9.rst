@@ -16,11 +16,11 @@ Version 0.9
 
 * Changed to Semantic Versioning (http://semver.org/), with 
   recommendations 7, 8 and 9 causing the most effect in the versioning number.
-* Added Russian locale post OCR cleanup backend (Сергей Глита [Sergei Glita])
+* Added Russian locale post OCR cleanup backend Sergei Glita
 * Reduced severity of the messages displayed when no OCR cleanup backend 
   is found for a language
 * Complete Portuguese translation (Emerson Soares and Renata Oliveira)
-* Complete Russian translation (Сергей Глита [Sergei Glita])
+* Complete Russian translation Sergei Glita)
 * Added animate.css to use CSS to animate flash messages with better 
   fallback on non JS browsers
 * The admin and sentry links are no longer hard-coded (Meurig Freeman)

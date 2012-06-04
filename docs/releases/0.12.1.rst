@@ -1,0 +1,116 @@
+================================
+Mayan EDMS v0.12.1 release notes
+================================
+
+*May 2012*
+
+This is the first maintenance release of the 0.12 series.
+
+Overview
+========
+
+While bug fixes and minor feature were the focus for this release, some
+bigger changes were included because of their importance.  The parsing of
+documents saw a complete rewrite being now class based and allows for more
+than one parser per mimetype with sequencial fallback.  This provides the
+best text extraction on deployments where users have control over the 
+installation and basic extraction when deploying on the cloud or other
+environments where users don't have the ability to install OS level
+binaries.
+
+
+What's new in Mayan EDMS v0.12.1
+================================
+
+Fabric file (fabfile)
+~~~~~~~~~~~~~~~~~~~~~
+A Fabric file is included to help users not very familiar with Ubuntu, 
+Python and Django install **Mayan EDMS**, or for system administrators
+looking to automate the install whether in local or remote systems.
+At the moment the fabfile will install **Mayan EDMS** in the same configurations
+listed in this documentation, that is:  (Ubuntu/Debian/Fedora) + virtualenv + Apache + MySQL.
+Feel free to submit your configuration settings and files for different databases,
+webserver or Linux distribution.  More configurations will be added to
+the fabfile as more are tested.
+
+Documentation update
+~~~~~~~~~~~~~~~~~~~~
+The installation instructions were updated to include the installation of
+the libpng-dev and libjpeg-dev libraries as well as the installation of 
+the poppler-utils package.  An additional step to help users test their
+new installation of **Mayan EDMS** was also added.
+  
+Translations
+~~~~~~~~~~~~
+The Italian translation has been synchronized with the source files at
+Transifex and finished to %100 completion.
+
+Usability improvements
+~~~~~~~~~~~~~~~~~~~~~~
+The index instance view now feature the same multi document action
+buttons (Submit to OCR, delete, download, etc) as the mail and recent
+document views.
+  
+Better office document conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A new method of converting office documents has been implemented, this
+new method doesn't require the use of the command line utility ``UNOCONV``.
+If this new method proves to work better than previous solutions the use
+of ``UNOCONV`` may be deprecated in the future.  The conversion method
+adds just one new configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
+which defaults to '/usr/bin/libreoffice'.
+
+Better PDF text parsing
+~~~~~~~~~~~~~~~~~~~~~~~
+Brian E. submitted a patch to use the Poppler package pdftotext utility to
+extract text from PDF files.  This is now the default method Mayan EDMS
+will execute to try to extract text from a PDF and failing that will 
+fallback to the previous method.  This change add a new configuration
+option: :setting:`OCR_PDFTOTEXT_PATH` to specify the location of the ``pdftotext``
+executable, it defaults to '/usr/bin/pdftotext'.  Be sure to install the
+``poppler-utils`` os package to take advantage of this new parser.
+
+Changed defaults
+~~~~~~~~~~~~~~~~
+The OCR queue is now active by default when first created during the 
+``syncdb`` phase and the :setting:`OCR_AUTOMATIC_OCR` option now defaults
+to ``True``.  These two changes are made to reduce the steps required for
+new users to start enjoying the benefits of automatic text extraction from
+uploaded documents without having to read the documentation and have a more
+functional default install.
+
+Upgrading from a previous version
+=================================
+
+Start off by adding the new requirements::
+
+    $ pip install -r requirements/production.txt
+
+Migrate existing database schema with::
+
+    $ ./manage.py migrate documents
+
+Install the ``poppler-utils`` package:
+
+* Ubuntu, Debian::
+
+    $ apt-get install -y poppler-utils
+    
+* Fedora::
+
+    $ yum install -y poppler-utils
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+* None
+
+Bugs fixed
+==========
+* Issue #25 "Office document conversion error"
+
+Stuff removed
+=============  
+* None

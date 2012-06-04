@@ -17,7 +17,8 @@ from sources.managers import SourceTransformationManager
 
 from .literals import (DOCUMENTQUEUE_STATE_STOPPED,
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING,
-    QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PROCESSING)
+    QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PROCESSING,
+    DOCUMENTQUEUE_STATE_ACTIVE)
 from .managers import DocumentQueueManager
 from .exceptions import ReQueueError
 
@@ -27,7 +28,7 @@ class DocumentQueue(models.Model):
     label = models.CharField(max_length=64, verbose_name=_(u'label'))
     state = models.CharField(max_length=4,
         choices=DOCUMENTQUEUE_STATE_CHOICES,
-        default=DOCUMENTQUEUE_STATE_STOPPED,
+        default=DOCUMENTQUEUE_STATE_ACTIVE,
         verbose_name=_(u'state'))
 
     objects = DocumentQueueManager()

@@ -8,7 +8,7 @@ from mimetype.api import get_mimetype
 from common.conf.settings import TEMPORARY_DIRECTORY
 from common.utils import id_generator
 
-from .conf.settings import UNOCONV_PATH, UNOCONV_USE_PIPE
+from .conf.settings import UNOCONV_PATH, UNOCONV_USE_PIPE, LIBREOFFICE_PATH
 from .exceptions import (OfficeConversionError,
     OfficeBackendError, UnknownFileFormat)
 
@@ -38,7 +38,7 @@ logger = logging.getLogger(__name__)
 
 class OfficeConverter(object):
     def __init__(self):
-        self.backend_class = OfficeConverterBackendUnoconv
+        self.backend_class = OfficeConverterBackendDirect
         self.backend = self.backend_class()
         self.exists = False
         self.mimetype = None
@@ -86,9 +86,9 @@ class OfficeConverterBackendUnoconv(object):
             raise OfficeBackendError('cannot find unoconv executable')
 
     def convert(self, input_filepath, output_filepath):
-        '''
+        """
         Executes the program unoconv using subprocess's Popen
-        '''
+        """
         self.input_filepath = input_filepath
         self.output_filepath = output_filepath
 
@@ -118,3 +118,54 @@ class OfficeConverterBackendUnoconv(object):
             raise OfficeBackendError(msg)
         except Exception, msg:
             logger.error('Unhandled exception', exc_info=msg)
+
+
+class OfficeConverterBackendDirect(object):
+    def __init__(self):
+        self.libreoffice_path = LIBREOFFICE_PATH if LIBREOFFICE_PATH else u'/usr/bin/libreoffice'
+        if not os.path.exists(self.libreoffice_path):
+            raise OfficeBackendError('cannot find LibreOffice executable')
+        logger.debug('self.libreoffice_path: %s' % self.libreoffice_path)
+
+    def convert(self, input_filepath, output_filepath):
+        """
+        Executes libreoffice using subprocess's Popen
+        """
+        self.input_filepath = input_filepath
+        self.output_filepath = output_filepath
+
+        command = []
+        command.append(self.libreoffice_path)
+
+        command.append(u'--headless')
+        command.append(u'--convert-to')
+        command.append(u'pdf')
+        command.append(self.input_filepath)
+        command.append(u'--outdir')
+        command.append(TEMPORARY_DIRECTORY)
+
+        logger.debug('command: %s' % command)
+
+        try:
+            os.environ['HOME'] = TEMPORARY_DIRECTORY
+            proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+            return_code = proc.wait()
+            logger.debug('return_code: %s' % return_code)
+
+            readline = proc.stderr.readline()
+            logger.debug('stderr: %s' % readline)
+            if return_code != 0:
+                raise OfficeBackendError(readline)
+            filename, extension = os.path.splitext(os.path.basename(self.input_filepath))
+            logger.debug('filename: %s' % filename)
+            logger.debug('extension: %s' % extension)
+
+            converted_output = os.path.join(TEMPORARY_DIRECTORY, os.path.extsep.join([filename, 'pdf']))
+            logger.debug('converted_output: %s' % converted_output)
+         
+            os.rename(converted_output, self.output_filepath)      
+        except OSError, msg:
+            raise OfficeBackendError(msg)
+        except Exception, msg:
+            logger.error('Unhandled exception', exc_info=msg)
+

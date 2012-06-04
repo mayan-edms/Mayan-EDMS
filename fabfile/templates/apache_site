@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+    # Uncomment if libapache2-mod-xsendfile is installed
+    # XSendFile On
+    # XSendFileAllowAbove On
+
+    WSGIScriptAlias / %(repository_path)s/wsgi/dispatch.wsgi
+    
+    <Directory %(repository_path)s>
+        Order deny,allow
+        Allow from all
+    </Directory>
+    #ErrorLog /var/log/apache2/mayan_error.log
+    LogLevel warn
+    #CustomLog /var/log/apache2/mayan_access.log combined
+
+    Alias /mayan-static "%(repository_path)s/static/"
+    <Location "/static">
+        SetHandler None
+    </Location>
+</VirtualHost>

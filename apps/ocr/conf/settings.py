@@ -2,6 +2,7 @@
 
 from django.utils.translation import ugettext_lazy as _
 
+<<<<<<< HEAD
 from smart_settings.api import Setting, SettingNamespace
 
 namespace = SettingNamespace('ocr', _(u'OCR'), module='ocr.conf.settings')
@@ -59,5 +60,14 @@ Setting(
     global_name='OCR_UNPAPER_PATH',
     default=u'/usr/bin/unpaper',
     description=_(u'File path to unpaper program.'),
+    exists=True
+)
+
+Setting(
+    namespace=namespace,
+    name='PDFTOTEXT_PATH',
+    global_name='OCR_PDFTOTEXT_PATH',
+    default=u'/usr/bin/pdftotext',
+    description=_(u'File path to poppler\'s pdftotext program used to extract text from PDF files.'),
     exists=True
 )

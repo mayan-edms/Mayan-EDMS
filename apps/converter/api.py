@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import os
 import subprocess
 import hashlib
+import logging
 
 from django.utils.encoding import smart_str
 
@@ -19,6 +20,8 @@ from .runtime import office_converter
 from .exceptions import OfficeConversionError, UnknownFileFormat
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
+
+logger = logging.getLogger(__name__)
 
 
 def cache_cleanup(input_filepath, *args, **kwargs):
@@ -100,9 +103,11 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
 
 
 def get_page_count(input_filepath):
+    logger.debug('office_converter: %s' % office_converter)
     if office_converter:
         try:
             office_converter.convert(input_filepath)
+            logger.debug('office_converter.exists: %s' % office_converter.exists)
             if office_converter.exists:
                 input_filepath = office_converter.output_filepath
 

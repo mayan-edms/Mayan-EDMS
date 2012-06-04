@@ -17,15 +17,6 @@ Setting(
 
 Setting(
     namespace=namespace,
-    name='IM_CONVERT_PATH',
-    global_name='CONVERTER_IM_CONVERT_PATH',
-    default=u'/usr/bin/convert',
-    description=_(u'File path to imagemagick\'s convert program.'),
-    exists=True,
-)
-
-Setting(
-    namespace=namespace,
     name='IM_IDENTIFY_PATH',
     global_name='CONVERTER_IM_IDENTIFY_PATH',
     default=u'/usr/bin/identify',
@@ -74,6 +65,16 @@ Setting(
     default=True,
     description=_(u'Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.'),
 )
+
+Setting(
+    namespace=namespace,
+    name='LIBREOFFICE_PATH',
+    global_name='CONVERTER_LIBREOFFICE_PATH',
+    default=u'/usr/bin/libreoffice',
+    description=_(u'Path to the libreoffice program.'),
+    exists=True
+)
+
 
 #{'name': u'OCR_OPTIONS', 'global_name': u'CONVERTER_OCR_OPTIONS', 'default': u'-colorspace Gray -depth 8 -resample 200x200'},
 #{'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},
