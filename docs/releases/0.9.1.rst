@@ -1,7 +1,7 @@
 Version 0.9.1
 -------------
 * Added handling percent encoded unicode query strings in search URL,
-  thanks to (Сергей Глита [Sergei Glita]) for reporting.
+  thanks to Sergei Glita for reporting.
 * Added a FAQ explaing how to fix MySQL collation related error when
-  doing searches also thanks to (Сергей Глита [Sergei Glita]) for
+  doing searches also thanks to Sergei Glita for
   reporting this one.
