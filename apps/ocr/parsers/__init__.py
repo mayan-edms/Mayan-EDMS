@@ -51,7 +51,9 @@ def parse_document_page(document_page, descriptor=None, mimetype=None):
             else:
                 # If parser was successfull there is no need to try
                 # others in the list for this mimetype
-                break;
+                return
+                
+        raise ParserError('Parser list exhausted')
     except KeyError:
         raise ParserUnknownFile
 
@@ -70,6 +72,8 @@ class SlateParser(Parser):
     Parser for PDF files using the slate library for Python
     """
     def parse(self, document_page, descriptor=None):
+        logger.debug('Starting SlateParser')
+
         if not descriptor:
             descriptor = document_page.document_version.open()
 
@@ -122,7 +126,7 @@ class PopplerParser(Parser):
         logger.debug('self.pdftotext_path: %s' % self.pdftotext_path)        
     
     def parse(self, document_page, descriptor=None): 
-        logger.debug('parsing PDF') 
+        logger.debug('parsing PDF with PopplerParser') 
         pagenum = str(document_page.page_number) 
 
         if descriptor:
@@ -151,7 +155,10 @@ class PopplerParser(Parser):
             logger.error(proc.stderr.readline())
             raise ParserError
 
-        output = proc.stdout.read() 
+        output = proc.stdout.read()
+        if output == '\x0c':
+            logger.debug('Parser didn\'t any output')
+            raise ParserError('No output')
 
         document_page.content = output 
         document_page.page_label = _(u'Text extracted from PDF') 
