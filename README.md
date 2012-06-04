@@ -1,5 +1,5 @@
 Mayan
-=============
+=====
 
 Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities.
 
@@ -13,6 +13,24 @@ Open source, Django based document manager with custom metadata indexing, file s
 
 [Mailing list (via Google Groups)](http://groups.google.com/group/mayan-edms)
 
+
+Quick install
+-------------
+To bootstrap **Mayan EDMS** via the fabfile without having to clone the
+entire repository, run the following command, replacing the part that
+reads: <Your MySQL root password> with your current MySQL root password
+or the MySQL root password you plan to assign to it, during the MySQL
+installation when executing the fabfile.
+
+* Debian or Ubuntu::
+
+    $ cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://raw.github.com/rosarior/mayan/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+    
+* Fedora::
+
+    $ cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://raw.github.com/rosarior/mayan/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+
+
 License
 -------
 This project is open sourced under [GNU GPL Version 3](http://www.gnu.org/licenses/gpl-3.0.html).
@@ -20,7 +38,7 @@ This project is open sourced under [GNU GPL Version 3](http://www.gnu.org/licens
 
 Author
 ------
-Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](mailto://roberto.rosario.gonzalez_at_gmail)
+Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](mailto://roberto.rosario_at_gmail)
 
 
 Donations
