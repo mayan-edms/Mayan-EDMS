@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pierpaolo.baldan@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-12 15:20-0400\n"
 "PO-Revision-Date: 2011-12-09 14:53+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:15
@@ -474,8 +473,7 @@ msgstr "Magick Image File Format"
 #: literals.py:177
 msgid ""
 "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
-msgstr ""
-"Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:178
 msgid "Raw Bi-level bitmap in least-significant-byte first order"
@@ -636,24 +634,19 @@ msgstr "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #: literals.py:227
 msgid ""
 "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
-msgstr ""
-"24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:228
 msgid ""
 "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
 "1.2.3.3,1.2.3.4)"
-msgstr ""
-"32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
-"1.2.3.3,1.2.3.4)"
+msgstr "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:229
 msgid ""
 "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
 "1.2.3.3,1.2.3.4)"
-msgstr ""
-"8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
-"1.2.3.3,1.2.3.4)"
+msgstr "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:230
 msgid "Portable anymap"
@@ -913,12 +906,10 @@ msgstr "File path per il progarmma "
 
 #: conf/settings.py:15
 msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick, converter.backends.graphicsmagick and converter.backends.python."
-msgstr ""
-"Backend da usare per la conversione grafica. Le opzioni sono: converter."
-"backends.imagemagick, converter.backends.graphicsmagick e converter.backends."
-"python."
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick, converter.backends.graphicsmagick and "
+"converter.backends.python."
+msgstr "Backend da usare per la conversione grafica. Le opzioni sono: converter.backends.imagemagick, converter.backends.graphicsmagick e converter.backends.python."
 
 #: conf/settings.py:16
 msgid "Path to the unoconv program."
@@ -926,11 +917,9 @@ msgstr "Path per il programma unoconv"
 
 #: conf/settings.py:17
 msgid ""
-"Use alternate method of connection to LibreOffice using a pipe, it is slower "
-"but less prone to segmentation faults."
-msgstr ""
-"Utilizzare il metodo alternativo di collegamento a LibreOffice utilizzando "
-"questo collegamento, è più lento ma meno soggetto a errori di segmentazione."
+"Use alternate method of connection to LibreOffice using a pipe, it is slower"
+" but less prone to segmentation faults."
+msgstr "Utilizzare il metodo alternativo di collegamento a LibreOffice utilizzando questo collegamento, è più lento ma meno soggetto a errori di segmentazione."
 
 #: templates/converter_file_formats_help.html:3
 msgid "Help"
@@ -941,6 +930,4 @@ msgstr "Aiuto"
 msgid ""
 "These are the file formats supported by the currently selected converter "
 "backend.  In this case: '%(backend)s'"
-msgstr ""
-"Questi sono il formati file supportati dal backend selezionato.In questo "
-"caso : '%(backend)s'"
+msgstr "Questi sono il formati file supportati dal backend selezionato.In questo caso : '%(backend)s'"

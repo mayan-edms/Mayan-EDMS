@@ -39,7 +39,7 @@ Version 0.10
 * Document image serving response now specifies a MIME type for increased 
   browser compatibility.
 * Small change in the scheduler that increases stability.
-* Russian translation updates (Сергей Глита [Sergey Glita])
+* Russian translation updates Sergey Glita
 * Improved and generalized the OCR queue locking mechanism, this should 
   eliminate any posibility of race conditions between Mayan EDMS OCR nodes.
 * Added support for signals to the OCR queue, this results in instant OCR

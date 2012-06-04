@@ -200,7 +200,7 @@ fine tune it's functionality as explained in the `GraphicsMagick documentation`_
     
 Default: ``/usr/bin/unoconv``
     
-Path to the unoconv program used to call LibreOffice for office document convertion.
+Path to the unoconv program used to call LibreOffice for office document conversion.
    
     
 .. setting:: CONVERTER_UNOCONV_USE_PIPE
@@ -211,8 +211,19 @@ Path to the unoconv program used to call LibreOffice for office document convert
 Default: ``True``
     
 Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.    
+
+
+.. setting:: CONVERTER_LIBREOFFICE_PATH
+
+
+**CONVERTER_LIBREOFFICE_PATH**
+
+Default: ``/usr/bin/libreoffice``
+
+Path to the libreoffice binary used to call LibreOffice for office document conversion.
     
-    
+
+   
 Linking
 =======
 
@@ -341,7 +352,7 @@ Maximum amount of concurrent document OCRs a node can perform.
 
 **OCR_AUTOMATIC_OCR**
     
-Default: ``False``               
+Default: ``True``               
     
 Automatically queue newly created documents or newly uploaded versions
 of existing documents for OCR.
@@ -362,7 +373,17 @@ Default: ``/usr/bin/unpaper``
     
 File path to the ``unpaper`` executable, used to clean up images before
 doing OCR.
+
     
+.. setting:: OCR_PDFTOTEXT_PATH
+
+**OCR_PDFTOTEXT_PATH**
+    
+Default: ``/usr/bin/pdftotext`` 
+    
+File path to ``poppler's`` ``pdftotext`` program used to extract text
+from PDF files.
+
 
 Metadata
 ========

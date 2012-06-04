@@ -4,14 +4,15 @@
 # 
 # Translators:
 #   <pierpaolo.baldan@gmail.com>, 2011.
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-12 19:23+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
+"PO-Revision-Date: 2012-03-21 14:07+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,7 +65,7 @@ msgstr "Sorgente del documento"
 
 #: __init__.py:38
 msgid "upload new version"
-msgstr ""
+msgstr "Carica nuova versione"
 
 #: __init__.py:68 widgets.py:39
 msgid "thumbnail"
@@ -84,7 +85,7 @@ msgstr "Mostra file"
 
 #: forms.py:50
 msgid "File"
-msgstr ""
+msgstr "File"
 
 #: literals.py:8 literals.py:13
 msgid "Always"
@@ -196,9 +197,7 @@ msgstr "anteprima larghezza"
 
 #: models.py:159
 msgid "Width value to be passed to the converter backend."
-msgstr ""
-"valore della larghezza da passare per le operazioni di conversione in "
-"backend"
+msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
 
 #: models.py:160
 msgid "preview height"
@@ -206,8 +205,7 @@ msgstr "anteprima altezza"
 
 #: models.py:160
 msgid "Height value to be passed to the converter backend."
-msgstr ""
-"valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
 
 #: models.py:161 models.py:198 models.py:211
 msgid "uncompress"
@@ -237,9 +235,7 @@ msgstr "intervallo"
 msgid ""
 "Inverval in seconds where the watch folder path is checked for new "
 "documents."
-msgstr ""
-"Invervallo di pochi secondi in cui viene controllato il percorso cartella di"
-" controllo per i nuovi documenti."
+msgstr "Invervallo di pochi secondi in cui viene controllato il percorso cartella di controllo per i nuovi documenti."
 
 #: models.py:237
 msgid "watch folder"
@@ -276,7 +272,7 @@ msgstr "trasformazioni dei documenti sorgente"
 
 #: models.py:290 models.py:291
 msgid "out of process"
-msgstr ""
+msgstr "fuori del processo"
 
 #: permissions.py:7
 msgid "Sources setup"
@@ -328,41 +324,38 @@ msgstr "Sorgenti caricamento"
 #: views.py:105
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
-"Nessuna fonte interattiva dei documenti sono state definite o non ne sono "
-"state attivate."
+msgstr "Nessuna fonte interattiva dei documenti sono state definite o non ne sono state attivate."
 
 #: views.py:106
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
-"Click %(setup_link)s per aggiungere o abilitare una sorgente documenti."
+msgstr "Click %(setup_link)s per aggiungere o abilitare una sorgente documenti."
 
 #: views.py:163
 msgid "New document version uploaded successfully."
-msgstr ""
+msgstr "Nuova versione del documento caricata con successo."
 
 #: views.py:167
 msgid "File uploaded successfully."
-msgstr ""
+msgstr "File caricato con successo."
 
 #: views.py:170
 msgid "File uncompressed successfully and uploaded as individual files."
-msgstr ""
+msgstr "File non compresso e caricato con successo come singolo file."
 
 #: views.py:173
 msgid "File was not a compressed file, uploaded as it was."
-msgstr ""
+msgstr "Il file non era un file compresso,è stato caricato così com'era."
 
 #: views.py:179 views.py:258
 #, python-format
 msgid "Unhandled exception: %s"
-msgstr ""
+msgstr "Eccezione non gestita: %s"
 
 #: views.py:188
 #, python-format
 msgid "upload a new version from source: %s"
-msgstr ""
+msgstr "caricata una nuova versione da: %s"
 
 #: views.py:190
 #, python-format
@@ -372,7 +365,7 @@ msgstr "carica un documento in locale dalla sorgente: %s"
 #: views.py:236
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
-msgstr ""
+msgstr "Versione documento da gestione temporanea file: %s,caricata con successo"
 
 #: views.py:239
 #, python-format
@@ -384,12 +377,12 @@ msgstr "File in allestimento:%s, caricato con successo."
 msgid ""
 "Staging file: %s, uncompressed successfully and uploaded as individual "
 "files."
-msgstr ""
+msgstr "file temporaneo: %s, non compresso e caricato come file singolo"
 
 #: views.py:245
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
-msgstr ""
+msgstr "file temporaneo: %s, non è stato compresso, caricato come file singolo."
 
 #: views.py:250
 #, python-format
@@ -399,7 +392,7 @@ msgstr "File in allestimento:%s, cancellato con successo."
 #: views.py:273
 #, python-format
 msgid "upload a new version from staging source: %s"
-msgstr ""
+msgstr "caricata una nuova versione da file temporaneo: %s"
 
 #: views.py:275
 #, python-format
@@ -412,11 +405,11 @@ msgstr "path dei file in allestimento"
 
 #: views.py:320
 msgid "Current document type"
-msgstr ""
+msgstr "Tipo di documento corrente"
 
 #: views.py:321
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 #: views.py:328
 msgid "Current metadata"
@@ -510,16 +503,13 @@ msgstr "Sorgente per la trasformazione cancellata con successo."
 #: views.py:646
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr ""
-"Erroro nella cancellazione della sorgente per la trasformazione; %(error)s"
+msgstr "Erroro nella cancellazione della sorgente per la trasformazione; %(error)s"
 
 #: views.py:659
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Sei sicuro di voler cancellare la sorgente di trasformazione "
-"\"%(transformation)s\""
+msgstr "Sei sicuro di voler cancellare la sorgente di trasformazione \"%(transformation)s\""
 
 #: views.py:689
 msgid "Source transformation created successfully"
@@ -534,5 +524,3 @@ msgstr "Errore nella creazione della sorgente di trasformazione; %s"
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "Crea una nuova sorgente per la trasformazione:%s"
-
-

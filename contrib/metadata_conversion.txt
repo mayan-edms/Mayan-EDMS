@@ -1,7 +1,0 @@
-mysqldump mayan documents_metadatatype -u root -p | replace 'documents_metadatatype' 'metadata_metadatatype' > new_types.mysql
-cat new_types.mysql | mysql -u root -p mayan
-
-mysqldump mayan documents_documentmetadata -u root -p | replace 'documents_documentmetadata' 'metadata_documentmetadata' > new_metadata.mysql
-cat new_metadata.mysql | mysql -u root -p mayan
-
-

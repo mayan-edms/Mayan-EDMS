@@ -94,8 +94,8 @@ def get_mimetype(file_description, filepath, mimetype_only=False):
     library via python-magic or fallback to use python's mimetypes
     library
     """
-    file_mimetype = u''
-    file_mime_encoding = u''
+    file_mimetype = None
+    file_mime_encoding = None
     if USE_PYTHON_MAGIC:
         mime = magic.Magic(mime=True)
         file_mimetype = mime.from_buffer(file_description.read())

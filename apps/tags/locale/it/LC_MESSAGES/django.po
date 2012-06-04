@@ -4,15 +4,16 @@
 # 
 # Translators:
 #   <pierpaolo.baldan@gmail.com>, 2011.
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-12 19:23+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/team/it/)\n"
+"PO-Revision-Date: 2012-03-21 13:46+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -53,11 +54,11 @@ msgstr "documenti etichettati"
 
 #: __init__.py:30
 msgid "ACLs"
-msgstr ""
+msgstr "ACLs"
 
 #: __init__.py:34
 msgid "preview"
-msgstr ""
+msgstr "anteprima"
 
 #: __init__.py:38
 msgid "tagged items"
@@ -137,19 +138,19 @@ msgstr "Crea un nuova etichetta"
 
 #: permissions.py:10
 msgid "Delete tags"
-msgstr ""
+msgstr "Eliminare i tag"
 
 #: permissions.py:11
 msgid "Edit tags"
-msgstr ""
+msgstr "Modificare i tag"
 
 #: permissions.py:12
 msgid "View tags"
-msgstr ""
+msgstr "Visualizzare i tag"
 
 #: permissions.py:13
 msgid "Attach tags to documents"
-msgstr ""
+msgstr "Applicare i tag ai documenti"
 
 #: permissions.py:14
 msgid "Remove tags from documents"
@@ -247,5 +248,3 @@ msgstr "Sei sicuro di voler rimuovere le etichette: %s ?"
 #: templatetags/tags_tags.py:17
 msgid "Add tag to document"
 msgstr "Aggiungi l'etichetta al documento"
-
-

@@ -9,13 +9,14 @@ changes made in that version.
 For those upgrading to a new version of **Mayan EDMS**, you will need to check
 all the backwards-incompatible changes and deprecated features for
 each 'final' release from the one after your current **Mayan EDMS** version,
-up to and including the new version.
+up to and including the latest version.
 
-Latest version (0.12)
----------------------
+Latest version (0.12.1)
+-----------------------
 .. toctree::
    :maxdepth: 1
 
+   0.12.1
    0.12
 
 Historic changelogs
