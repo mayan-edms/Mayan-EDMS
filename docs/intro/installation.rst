@@ -16,11 +16,11 @@ installation when executing the fabfile.
 
 * Debian or Ubuntu::
 
-    $ cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://raw.github.com/rosarior/mayan/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+    $ cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
     
 * Fedora::
 
-    $ cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://raw.github.com/rosarior/mayan/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+    $ cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
 
 
 The ``fabfile`` also supports deploying to more than one server whether
