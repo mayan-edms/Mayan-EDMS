@@ -95,6 +95,11 @@
 	<div class="wrap">
 		<ul class="piramid_bullets news">
 			<li>
+				<a href="#20120604"><h3><span class="red">June 04, 2012</span></h3></a>
+				<h4>Mayan 0.12.1 released</h4>
+				<p>Mostly a bug fix release, but three very important improvements made into this version.  The document text parsing subsystem has been re-factored to allow several parsers per file type, a new PDF parser based on poppler-utils's pdftotext utility submited by Brian E. was also added.  This is now the default method Mayan EDMS will execute to try to extract text from a PDF file and failing that will fallback to the previous method.  Be sure to install the poppler-utils OS package to take advantage of this new parser.  Also added is an improved office document conversion method that doesn't rely on unoconv to work, aside from this mayor improvements other changes made it into this release:  complete Italian translation, an automated install method using a Fabric file (fabfile) that supports single, multiple and heterogeneous deployments, the installation documentation was also updated.  The OCR queue is now active by default when first created during the syncdb phase and the OCR_AUTOMATIC_OCR option now defaults to True. These two changes are made to reduce the steps required for new users to start enjoying the benefits of automatic text extraction from uploaded documents without having to read the documentation and have a more functional default install.  Full release notes here: http://mayan.readthedocs.org/en/latest/releases/0.12.1.html</p>
+			</li>	
+			<li>
 				<a href="#20120524"><h3><span class="red">May 24, 2012</span></h3></a>
 				<h4>Statistics gathering</h4>
 				<p>With the recent removal of Mayan EDMS's article from Wikipedia, because of a lack of notability according to the editors that tagged it, a renewed effort to gather statistics in underway. If you are using, planning to use or just interested in Mayan EDMS please take a moment to fill out this simple <a href="https://docs.google.com/spreadsheet/viewform?formkey=dHVSTld2M2tkR3BfUFFfWm1PM1hQaXc6MQ">survey</a>.</p>
