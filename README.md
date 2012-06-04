@@ -24,11 +24,11 @@ installation when executing the fabfile.
 
 - Debian or Ubuntu:
 
-    cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+    cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=&lt;Your MySQL root password&gt;" > ~/.fabricrc && fab -H localhost install
     
 - Fedora:
 
-    cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+    cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=&lt;Your MySQL root password&gt;" > ~/.fabricrc && fab -H localhost install
 
 
 License
