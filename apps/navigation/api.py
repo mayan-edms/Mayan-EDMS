@@ -58,11 +58,11 @@ class Link(object):
         self.children_url_regex = children_url_regex or []
         self.children_view_regex = children_view_regex or []
 
-    def resolve(self, context):
+    def resolve(self, context, request=None, current_path=None, current_view=None):
         # TODO: don't calculate these if passed in an argument
-        request = Variable('request').resolve(context)
-        current_path = request.META['PATH_INFO']
-        current_view = resolve_to_name(current_path)
+        request = request or Variable('request').resolve(context)
+        current_path = current_path or request.META['PATH_INFO']
+        current_view = current_view or resolve_to_name(current_path)
 
         # Preserve unicode data in URL query
         previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
