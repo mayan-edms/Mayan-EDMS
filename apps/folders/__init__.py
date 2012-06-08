@@ -7,7 +7,7 @@ from navigation.api import (bind_links, register_top_menu,
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from acls.api import class_permissions
-from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 
 from .models import Folder
 from .permissions import (PERMISSION_FOLDER_CREATE,
