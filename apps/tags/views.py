@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import PermissionDenied
 
-from permissions import Permission
+from permissions.models import Permission
 from taggit.models import Tag
 from documents.models import Document
 from documents.views import document_list

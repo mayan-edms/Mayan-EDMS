@@ -10,7 +10,6 @@ from project_setup.api import register_setup
 
 from .conf.settings import DEFAULT_ROLES
 from .models import Role
-
 from .links import (role_list, role_create, role_edit, role_members,
     role_permissions, role_delete, permission_grant, permission_revoke)
 

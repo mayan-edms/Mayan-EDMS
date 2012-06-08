@@ -9,7 +9,7 @@ from django.core.exceptions import PermissionDenied
 from haystack.views import SearchView
 
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
-from permissions import Permission
+from permissions.models import Permission
 from acls.models import AccessEntry
 
 from .models import RecentSearch

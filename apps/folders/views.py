@@ -13,7 +13,7 @@ from django.core.exceptions import PermissionDenied
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
-from permissions import Permission
+from permissions.models import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry
 from acls.views import acl_list_for
