@@ -21,7 +21,7 @@ multi_object_navigation = {}
 model_list_columns = {}
 sidebar_templates = {}
 
-link_binding = {}
+bound_links = {}
 
 logger = logging.getLogger(__name__)
 
@@ -155,10 +155,10 @@ def bind_links(sources, links, menu_name=None, position=0):
     """
     Associate a link to a model, a view, or an url
     """
-    link_binding.setdefault(menu_name, {})
+    bound_links.setdefault(menu_name, {})
     for source in sources:
-        link_binding[menu_name].setdefault(source, {'links': []})
-        link_binding[menu_name][source]['links'].extend(links)
+        bound_links[menu_name].setdefault(source, {'links': []})
+        bound_links[menu_name][source]['links'].extend(links)
 
 
 def register_top_menu(name, link, position=None):
@@ -204,7 +204,7 @@ def register_multi_item_links(sources, links, menu_name=None):
         multi_object_navigation[menu_name][source]['links'].extend(links)
 
 
-def get_context_navigation_links(context, menu_name=None, links_dict=link_binding):
+def get_context_navigation_links(context, menu_name=None, links_dict=bound_links):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
