@@ -9,7 +9,7 @@ from project_tools.api import register_tool
 
 from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
 from .utils import register_multi_items_links
-from .links import maintenance_menu, statistics, diagnostics, sentry, admin_site
+from .links import maintenance_menu, statistics, diagnostics
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
@@ -47,14 +47,9 @@ def get_version():
 
 __version__ = get_version()
 
-if 'django.contrib.admin' in settings.INSTALLED_APPS:
-    register_setup(admin_site)
 
 register_tool(maintenance_menu)
 register_tool(statistics)
 register_tool(diagnostics)
-
-if 'sentry' in settings.INSTALLED_APPS:
-    register_tool(sentry)
 
 register_multi_items_links()
