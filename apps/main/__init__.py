@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from navigation.api import bind_links, Link, register_top_menu
+from navigation.api import Link, register_top_menu
 from project_setup.api import register_setup
 from project_tools.api import register_tool
 
@@ -12,7 +12,7 @@ from .utils import register_multi_items_links
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
-__credits__ = ['Roberto Rosario',]
+__credits__ = ['Roberto Rosario', ]
 __license__ = 'GPL'
 __maintainer__ = 'Roberto Rosario'
 __email__ = 'roberto.rosario.gonzalez@gmail.com'
@@ -65,5 +65,5 @@ register_tool(diagnostics)
 
 if 'sentry' in settings.INSTALLED_APPS:
     register_tool(sentry)
-    
+
 register_multi_items_links()

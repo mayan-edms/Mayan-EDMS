@@ -56,7 +56,7 @@ class IndexTemplateNode(MPTTModel):
     class Meta:
         verbose_name = _(u'index template node')
         verbose_name_plural = _(u'indexes template nodes')
-    
+
 
 class IndexInstanceNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='index_instance_node')

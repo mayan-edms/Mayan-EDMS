@@ -19,9 +19,8 @@ from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
 from .models import DocumentQueue, QueueDocument, QueueTransformation
-from .literals import (QUEUEDOCUMENT_STATE_PENDING,
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED,
-    DOCUMENTQUEUE_STATE_ACTIVE)
+from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
+    DOCUMENTQUEUE_STATE_ACTIVE, DOCUMENTQUEUE_STATE_STOPPED)
 from .exceptions import AlreadyQueued, ReQueueError
 from .api import clean_pages
 from .forms import QueueTransformationForm, QueueTransformationForm_create

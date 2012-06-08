@@ -280,7 +280,7 @@ class Document(models.Model):
     @property
     def content(self):
         return self.latest_version.content
-        
+
     def get_content(self, *args, **kwargs):
         return self.latest_version.get_content(*args, **kwargs)
 
@@ -294,7 +294,6 @@ class Document(models.Model):
     def extension_split(self):
         filename, extension = os.path.splitext(self.filename)
         return filename, extension[1:]
-        
 
 
 class DocumentVersion(models.Model):
@@ -537,7 +536,7 @@ class DocumentVersion(models.Model):
             return self.file.storage.size(self.file.path)
         else:
             return None
-            
+
     def rename(self, new_name):
         name, extension = os.path.splitext(self.filename)
         self.filename = u''.join([new_name, extension])

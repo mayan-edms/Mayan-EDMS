@@ -67,4 +67,3 @@ Setting(
     default=False,
     description=_(u'Allow non authenticated users, access to all views'),
 )
-

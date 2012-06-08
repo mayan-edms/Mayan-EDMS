@@ -14,8 +14,7 @@ from .literals import (QUEUEDOCUMENT_STATE_PENDING,
     QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE,
     QUEUEDOCUMENT_STATE_ERROR)
 from .models import QueueDocument, DocumentQueue
-from .conf.settings import (NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY,
-    QUEUE_PROCESSING_INTERVAL)
+from .conf.settings import NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY
 
 LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout

@@ -97,7 +97,7 @@ def comment_add(request, document_id):
             comment.site = Site.objects.get_current()
             comment.save()
             document.mark_indexable()
-            
+
             messages.success(request, _(u'Comment added successfully.'))
             return HttpResponseRedirect(next)
     else:

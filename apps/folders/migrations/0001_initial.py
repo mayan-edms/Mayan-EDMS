@@ -1,16 +1,15 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+
 
 class Migration(SchemaMigration):
     depends_on = (
         ('documents', '0001_initial'),
     )
-    
+
     def forwards(self, orm):
-        
         # Adding model 'Folder'
         db.create_table('folders_folder', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -31,9 +30,7 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('folders', ['FolderDocument'])
 
-
     def backwards(self, orm):
-        
         # Removing unique constraint on 'Folder', fields ['title', 'user']
         db.delete_unique('folders_folder', ['title', 'user_id'])
 
@@ -42,7 +39,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'FolderDocument'
         db.delete_table('folders_folderdocument')
-
 
     models = {
         'auth.group': {

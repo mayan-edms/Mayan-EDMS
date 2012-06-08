@@ -10,6 +10,7 @@ from django.conf import settings
 from storage.backends.filebasedstorage import FileBasedStorage
 from smart_settings.api import Setting, SettingNamespace
 
+
 def default_checksum(x):
     """hashlib.sha256(x).hexdigest()"""
     return hashlib.sha256(x).hexdigest()

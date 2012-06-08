@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.utils import validate_path, encapsulate
 from navigation.api import (bind_links, register_top_menu,
-    register_model_list_columns, register_multi_item_links,
+    register_model_list_columns,
     register_sidebar_template, Link)
 from main.api import register_diagnostic, register_maintenance_links
 from history.api import register_history_type
@@ -17,32 +17,26 @@ from acls.api import class_permissions
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
-from .permissions import (PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
+from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+    PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_DELETE,
+    PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
     PERMISSION_DOCUMENT_NEW_VERSION)
 from .literals import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-from .conf.settings import ZOOM_MAX_LEVEL
-from .conf.settings import ZOOM_MIN_LEVEL
 from .conf import settings as document_settings
 from .widgets import document_thumbnail
 from .links import (document_list, document_list_recent, document_create_multiple,
     document_create_siblings, document_view_simple, document_view_advanced,
-    document_delete, document_multiple_delete, document_edit, document_preview,
-    document_download, document_multiple_download, document_version_download,
+    document_delete, document_edit, document_download, document_version_download,
     document_find_duplicates, document_find_all_duplicates,
     document_update_page_count, document_clear_transformations,
-    document_multiple_clear_transformations, document_print, document_history_view,
+    document_print, document_history_view,
     document_missing_list)
 from .links import (document_type_list, document_type_setup, document_type_document_list,
     document_type_edit, document_type_delete, document_type_create, document_type_filename_list,
     document_type_filename_create, document_type_filename_edit, document_type_filename_delete)
-from .links import document_version_list, document_version_revert 
+from .links import document_version_list, document_version_revert
 from .links import (document_page_transformation_list, document_page_transformation_create,
     document_page_transformation_edit, document_page_transformation_delete,
     document_page_view, document_page_text, document_page_edit, document_page_navigation_next,

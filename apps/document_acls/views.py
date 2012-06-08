@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 from acls.views import acl_list_for

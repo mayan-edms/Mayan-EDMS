@@ -2,9 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (bind_links, register_top_menu,
-    register_model_list_columns, register_multi_item_links,
-    register_sidebar_template, Link)
+from navigation.api import Link
 from history.permissions import PERMISSION_HISTORY_VIEW
 
 from .permissions import (PERMISSION_DOCUMENT_CREATE,
@@ -13,12 +11,12 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
-    PERMISSION_DOCUMENT_NEW_VERSION)
+    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
+
 from .conf.settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
-# Document page links expressions
 
+# Document page links expressions
 def is_first_page(context):
     return context['page'].page_number <= 1
 
@@ -101,4 +99,4 @@ document_type_filename_edit = Link(text=_(u'edit'), view='document_type_filename
 document_type_filename_delete = Link(text=_(u'delete'), view='document_type_filename_delete', args='filename.id', sprite='database_delete', permissions=[PERMISSION_DOCUMENT_TYPE_EDIT])
 
 # TODO: remove this
-document_type_views=['setup_document_type_metadata', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete', 'document_type_create', 'document_type_filename_list', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_delete']
+document_type_views = ['setup_document_type_metadata', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete', 'document_type_create', 'document_type_filename_list', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_delete']

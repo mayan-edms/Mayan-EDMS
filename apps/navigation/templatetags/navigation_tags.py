@@ -10,7 +10,6 @@ from django.core.urlresolvers import reverse
 from django.template import (TemplateSyntaxError, Library,
     Node, Variable, VariableDoesNotExist)
 from django.utils.translation import ugettext as _
-from django.utils.encoding import smart_str, force_unicode, smart_unicode
 
 from ..api import (link_binding, multi_object_navigation,
     sidebar_templates, get_context_navigation_links)
@@ -211,6 +210,7 @@ def resolve_template_variable(context, name):
 
 
 '''
+
 class GetNavigationLinks(Node):
     def __init__(self, menu_name=None, links_dict=link_binding, var_name='object_navigation_links'):
         self.menu_name = menu_name
@@ -247,7 +247,7 @@ def object_navigation_template(context):
         object_variable_name = 'object'
     finally:
         logger.debug('object_variable_name: %s' % object_variable_name)
-            
+
         try:
             object_reference = Variable(object_variable_name).resolve(context)
         except VariableDoesNotExist:

@@ -262,7 +262,7 @@ def document_edit(request, document_id):
             document.filename = new_filename
             document.description = form.cleaned_data['description']
             document.save()
-            
+
             create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['filename', 'description'])})
             RecentDocument.objects.add_document_for_user(request.user, document)
 
@@ -385,8 +385,8 @@ def document_download(request, document_id=None, document_id_list=None, document
                         raise
                     else:
                         messages.error(request, e)
-                        return HttpResponseRedirect(request.META['HTTP_REFERER'])                
-        
+                        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
     else:
         form = DocumentDownloadForm(document_versions=document_versions)
 

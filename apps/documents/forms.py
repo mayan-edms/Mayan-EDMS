@@ -166,7 +166,7 @@ class DocumentForm(forms.ModelForm):
                 initial=False,
                 required=False,
             )
-            
+
             # Instance's document_type overrides the passed document_type
             if hasattr(instance, 'document_type'):
                 document_type = instance.document_type
@@ -308,15 +308,13 @@ class DocumentTypeFilenameForm_create(forms.ModelForm):
         model = DocumentTypeFilename
         fields = ('filename',)
 
-        
+
 class DocumentDownloadForm(forms.Form):
     compressed = forms.BooleanField(label=_(u'Compress'), required=False, help_text=_(u'Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.'))
-        
+
     def __init__(self, *args, **kwargs):
         self.document_versions = kwargs.pop('document_versions', None)
         super(DocumentDownloadForm, self).__init__(*args, **kwargs)
         if len(self.document_versions) > 1:
             self.fields['compressed'].initial = True
-            self.fields['compressed'].widget.attrs.update({'disabled': True})   
-    
-    
+            self.fields['compressed'].widget.attrs.update({'disabled': True})

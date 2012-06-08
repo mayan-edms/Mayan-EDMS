@@ -25,6 +25,7 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
 )
 from .api import update_indexes, delete_indexes
 
+
 def is_root_node(context):
     return context['node'].parent is None
 
@@ -34,7 +35,7 @@ def is_not_instance_root_node(context):
 
 logger = logging.getLogger(__name__)
 
-index_setup = Link(text=_(u'indexes'), view='index_setup_list', icon='tab.png', permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP])#, children_view_regex=[r'^index_setup', r'^template_node'])
+index_setup = Link(text=_(u'indexes'), view='index_setup_list', icon='tab.png', permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP])  # children_view_regex=[r'^index_setup', r'^template_node'])
 index_setup_list = Link(text=_(u'index list'), view='index_setup_list', sprite='tab', permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP])
 index_setup_create = Link(text=_(u'create index'), view='index_setup_create', sprite='tab_add', permissions=[PERMISSION_DOCUMENT_INDEXING_CREATE])
 index_setup_edit = Link(text=_(u'edit'), view='index_setup_edit', args='index.pk', sprite='tab_edit', permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT])
@@ -48,7 +49,7 @@ template_node_delete = Link(text=_(u'delete'), view='template_node_delete', args
 index_list = Link(text=_(u'index list'), view='index_list', sprite='tab', permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW])
 
 index_parent = Link(text=_(u'go up one level'), view='index_instance_node_view', args='object.parent.pk', sprite='arrow_up', permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW], dont_mark_active=True, condition=is_not_instance_root_node)
-document_index_list = Link(text= _(u'indexes'), view='document_index_list', args='object.pk', sprite='folder_page', permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW, PERMISSION_DOCUMENT_VIEW])
+document_index_list = Link(text=_(u'indexes'), view='document_index_list', args='object.pk', sprite='folder_page', permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW, PERMISSION_DOCUMENT_VIEW])
 
 rebuild_index_instances = Link(text=_('rebuild indexes'), view='rebuild_index_instances', sprite='folder_page', permissions=[PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES], description=_(u'Deletes and creates from scratch all the document indexes.'))
 
@@ -86,6 +87,6 @@ def update_indexes_handler(sender, instance, **kwargs):
         logger.debug('received post save signal - document metadata')
         logger.debug('instance: %s' % instance)
         update_indexes(instance.document)
-        
+
 pre_save.connect(delete_indexes_handler, dispatch_uid='delete_indexes_handler_on_update')
 pre_delete.connect(delete_indexes_handler, dispatch_uid='delete_indexes_handler_on_delete')

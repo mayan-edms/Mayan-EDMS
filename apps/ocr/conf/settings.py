@@ -2,7 +2,6 @@
 
 from django.utils.translation import ugettext_lazy as _
 
-<<<<<<< HEAD
 from smart_settings.api import Setting, SettingNamespace
 
 namespace = SettingNamespace('ocr', _(u'OCR'), module='ocr.conf.settings')

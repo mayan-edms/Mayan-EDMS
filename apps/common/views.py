@@ -236,8 +236,8 @@ def password_change_view(request):
     """
     Password change wrapper for better control
     """
-    context={'title': _(u'Current user password change')}
-    
+    context = {'title': _(u'Current user password change')}
+
     return password_change(
         request,
         extra_context=context,

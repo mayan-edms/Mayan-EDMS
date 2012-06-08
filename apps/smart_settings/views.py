@@ -8,13 +8,13 @@ from django.utils.safestring import mark_safe
 from common.utils import return_type, encapsulate
 from common.widgets import exists_with_famfam
 
-from .api import settings, settings_list, namespace_list
+from .api import settings_list
 
 
 def setting_list(request):
     context = {
         'title': _(u'settings'),
-        'object_list': [setting for setting in settings_list if setting.hidden==False],
+        'object_list': [setting for setting in settings_list if setting.hidden == False],
         'hide_link': True,
         'hide_object': True,
         'extra_columns': [
@@ -26,14 +26,6 @@ def setting_list(request):
                 )))
             },
         ],
-        #'temporary_navigation_links': {
-        #    'sidebar': {
-        #        'links': links,
-        #        'upload_interactive': {
-        #            'links': links
-        #        }
-        #    }
-        #},        
     }
 
     return render_to_response('generic_list.html', context,

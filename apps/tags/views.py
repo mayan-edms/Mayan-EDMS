@@ -142,7 +142,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         for tag in tags:
             try:
                 for document in Document.objects.filter(tags__in=[tag]):
-                    document.mark_indexable() 
+                    document.mark_indexable()
                 tag.delete()
                 messages.success(request, _(u'Tag "%s" deleted successfully.') % tag)
             except Exception, e:
@@ -191,7 +191,7 @@ def tag_edit(request, tag_id):
             tag.name = form.cleaned_data['name']
             tag.save()
             for document in Document.objects.filter(tags__in=[tag]):
-                document.mark_indexable() 
+                document.mark_indexable()
             tag_properties = tag.tagproperties_set.get()
             tag_properties.color = form.cleaned_data['color']
             tag_properties.save()

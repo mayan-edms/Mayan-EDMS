@@ -31,8 +31,8 @@ bind_links(['current_user_details', 'current_user_edit', 'password_change_view']
 register_top_menu('about', link=Link(text=_(u'about'), view='about_view', sprite='information'), position=-1)
 
 
-@receiver(post_syncdb, dispatch_uid='create_superuser', sender=auth_models)
-def create_superuser(sender, **kwargs):
+@receiver(post_syncdb, dispatch_uid='create_superuser_processor', sender=auth_models)
+def create_superuser_processor(sender, **kwargs):
     """
     From https://github.com/lambdalisue/django-qwert/blob/master/qwert/autoscript/__init__.py
     From http://stackoverflow.com/questions/1466827/ --
