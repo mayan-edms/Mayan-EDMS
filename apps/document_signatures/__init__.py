@@ -22,16 +22,10 @@ from .permissions import (
     PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
     PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE
 )
+from .links import (document_signature_upload, document_signature_download,
+    document_signature_delete, document_verify)
 
 logger = logging.getLogger(__name__)
-
-
-def has_embedded_signature(context):
-    return DocumentVersionSignature.objects.has_embedded_signature(context['object'])
-
-
-def doesnt_have_detached_signature(context):
-    return DocumentVersionSignature.objects.has_detached_signature(context['object']) == False
 
 
 def document_pre_open_hook(descriptor, instance):
@@ -79,10 +73,6 @@ def document_post_save_hook(instance):
 #    if kwargs.get('created', False):
 #        DocumentVersionSignature.objects.signature_state(instance.document)
 
-document_signature_upload = Link(text=_(u'upload signature'), view='document_signature_upload', args='object.pk', sprite='pencil_add', permissions=[PERMISSION_SIGNATURE_UPLOAD], conditional_disable=has_embedded_signature)
-document_signature_download = Link(text=_(u'download signature'), view='document_signature_download', args='object.pk', sprite='disk', permissions=[PERMISSION_SIGNATURE_DOWNLOAD], conditional_disable=doesnt_have_detached_signature)
-document_signature_delete = Link(text=_(u'delete signature'), view='document_signature_delete', args='object.pk', sprite='pencil_delete', permissions=[PERMISSION_SIGNATURE_DELETE], conditional_disable=doesnt_have_detached_signature)
-document_verify = Link(text=_(u'signatures'), view='document_verify', args='object.pk', sprite='text_signature', permissions=[PERMISSION_DOCUMENT_VERIFY])
 
 bind_links([Document], [document_verify], menu_name='form_header')
 bind_links(['document_verify', 'document_signature_upload', 'document_signature_download', 'document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
