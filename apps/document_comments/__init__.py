@@ -15,11 +15,8 @@ if 'django.contrib.comments' not in settings.INSTALLED_APPS:
 
 from .permissions import (PERMISSION_COMMENT_CREATE,
     PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_VIEW)
-
-comment_delete = Link(text=_('delete'), view='comment_delete', args='object.pk', sprite='comment_delete', permissions=[PERMISSION_COMMENT_DELETE])
-comment_multiple_delete = Link(text=_('delete'), view='comment_multiple_delete', args='object.pk', sprite='comments_delete', permissions=[PERMISSION_COMMENT_DELETE])
-comment_add = Link(text=_('add comment'), view='comment_add', args='object.pk', sprite='comment_add', permissions=[PERMISSION_COMMENT_CREATE])
-comments_for_document = Link(text=_('comments'), view='comments_for_document', args='object.pk', sprite='comments', permissions=[PERMISSION_COMMENT_VIEW], children_view_regex=['comment'])
+from .links import (comment_delete, comment_multiple_delete, comment_add,
+    comments_for_document)
 
 register_model_list_columns(Comment, [
     {
