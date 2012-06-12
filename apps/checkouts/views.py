@@ -36,11 +36,6 @@ def checkout_info(request, document_pk):
         content = 'checkedout'
     else:
         content = _(u'Document has not been checked out.')
-    #<p>{{ content|safe }}</p>
-    #{% endif %}
-
-    #{% for paragraph in paragraphs %}
-    #<p>{{ paragraph|safe }}</p>#
         
     return render_to_response('generic_template.html', {
         'content': content,
@@ -57,10 +52,12 @@ def checkout_document(request, document_pk):
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKOUT, request.user, document)
 
     if request.method == 'POST':
-        form = DocumentCheckoutForm(request.POST)
+        form = DocumentCheckoutForm(data=request.POST)
         if form.is_valid():
             try:
-                document_checkout = form.save()
+                document_checkout = form.save(commit=False)
+                document_checkout.document = document
+                document_checkout.save()
             except DocumentAlreadyCheckedOut:
                 messages.error(request, _(u'Document already checked out.'))
             except Exception, exc:
@@ -69,8 +66,7 @@ def checkout_document(request, document_pk):
                 messages.success(request, _(u'Document "%s" checked out successfully.') % document)
                 return HttpResponseRedirect(document_checkout.get_absolute_url())
     else:
-        form = DocumentCheckoutForm()#document=document, initial={
-            #'new_filename': document.filename})
+        form = DocumentCheckoutForm()
 
     return render_to_response('generic_form.html', {
         'form': form,
