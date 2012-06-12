@@ -18,9 +18,9 @@ class DocumentCheckout(models.Model):
     """
     Model to store the state and information of a document checkout
     """
-    document = models.ForeignKey(Document, verbose_name=_(u'document'), unique=True, editable=False)
-    checkout_datetime = models.DateTimeField(verbose_name=_(u'checkout date and time'), editable=False)
-    expiration_datetime = models.DateTimeField(verbose_name=_(u'checkout expiration date and time'))
+    document = models.ForeignKey(Document, verbose_name=_(u'document'), unique=True)
+    checkout_datetime = models.DateTimeField(verbose_name=_(u'checkout date and time'), editable=False, default=datetime.datetime.now())
+    expiration_datetime = models.DateTimeField(verbose_name=_(u'checkout expiration date and time'), default=datetime.datetime.now())
     block_new_version = models.BooleanField(verbose_name=_(u'block new version upload'), help_text=_(u'Do not allow new version of this document to be uploaded.'))
     #block_metadata
     #block_editing
@@ -36,8 +36,11 @@ class DocumentCheckout(models.Model):
             self.checkout_date = datetime.datetime.now()
         try:
             return super(DocumentCheckout, self).save(*args, **kwargs)
-        except IntegrityError:
-            raise DocumentAlreadyCheckedOut
+        except IntegrityError, exc:
+            #if exc[1] == 'Column \'checkout_datetime\' cannot be null':
+            #    raise DocumentAlreadyCheckedOut
+            #else:
+            raise
     
     @models.permalink
     def get_absolute_url(self):
