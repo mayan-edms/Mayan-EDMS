@@ -1,11 +1,13 @@
-![screenshot](https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo_landscape_black.jpg)
+![Logo](https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo_landscape_black.jpg)
 
-Mayan
-=====
+Mayan EDMS
+==========
 
-Open source, Django based document manager with custom metadata indexing, file serving integration and OCR capabilities.
+Open source, Django based document management system with custom metadata
+indexing, file serving integration, tagging, digital signature verification,
+text parsing and OCR capabilities.
 
-[Website](http://bit.ly/mayan-edms)
+[Website](http://www.mayan-edms.com)
 
 [Video demostration](http://bit.ly/pADNXv)
 
@@ -40,7 +42,7 @@ This project is open sourced under [GNU GPL Version 3](http://www.gnu.org/licens
 
 Author
 ------
-Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](mailto://roberto.rosario_at_gmail)
+Roberto Rosario - [Twitter](http://twitter.com/#siloraptor) [E-mail](mailto://roberto.rosario@mayan-edms.com)
 
 
 Donations
