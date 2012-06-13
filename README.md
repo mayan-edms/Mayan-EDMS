@@ -1,3 +1,5 @@
+![screenshot](https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo_landscape_black.jpg)
+
 Mayan
 =====
 
