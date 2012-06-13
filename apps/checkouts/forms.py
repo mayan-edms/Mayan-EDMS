@@ -4,85 +4,100 @@ import datetime
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.core import validators
 
 from .models import DocumentCheckout
 
 
-class SplitDateTimeWidget(forms.widgets.MultiWidget):
+class SplitDeltaWidget(forms.widgets.MultiWidget):
     """
-    A Widget that splits datetime input into two <input type="text"> boxes.
+    A Widget that splits a timedelta input into three <input type="text"> boxes.
     """
-    date_format = forms.widgets.DateInput.format
-    time_format = forms.widgets.TimeInput.format
-
-    def __init__(self, attrs=None, date_format=None, time_format=None):
-        widgets = (forms.widgets.DateInput(attrs=attrs, format=date_format),
-                   forms.widgets.TimeInput(attrs=attrs, format=time_format))
-        super(SplitDateTimeWidget, self).__init__(widgets, attrs)
+    def __init__(self, attrs=None):
+        widgets = (
+            forms.widgets.TextInput(attrs={'maxlength': 3, 'style':'width: 5em;', 'placeholder': _(u'Days')}),
+            forms.widgets.TextInput(attrs={'maxlength': 4, 'style':'width: 5em;', 'placeholder': _(u'Hours')}),
+            forms.widgets.TextInput(attrs={'maxlength': 5, 'style':'width: 5em;', 'placeholder': _(u'Minutes')}),
+        )
+        super(SplitDeltaWidget, self).__init__(widgets, attrs)
 
     def decompress(self, value):
         if value:
-            return [value.date(), value.time().replace(microsecond=0)]
-        return [None, None]
+            return [value.days, value.seconds / 3600, (value.seconds / 60) % 60]
+        return [None, None, None]
 
-class SplitHiddenDateTimeWidget(forms.widgets.SplitDateTimeWidget):
+    def value_from_datadict(self, data, files, name):
+        return [data.get('expiration_datetime_0', 0) or 0, data.get('expiration_datetime_1', 0) or 0, data.get('expiration_datetime_2', 0) or 0]
+
+
+class SplitHiddenDeltaWidget(forms.widgets.SplitDateTimeWidget):
     """
-    A Widget that splits datetime input into two <input type="hidden"> inputs.
+    A Widget that splits a timedelta input into three <input type="hidden"> inputs.
     """
     is_hidden = True
 
-    def __init__(self, attrs=None, date_format=None, time_format=None):
-        super(SplitHiddenDateTimeWidget, self).__init__(attrs, date_format, time_format)
+    def __init__(self, attrs=None):
+        super(SplitHiddenDeltaWidget, self).__init__(attrs, date_format, time_format)
         for widget in self.widgets:
             widget.input_type = 'hidden'
             widget.is_hidden = True
 
 
 class SplitTimeDeltaField(forms.MultiValueField):
-    widget = SplitDateTimeWidget
-    hidden_widget = SplitHiddenDateTimeWidget
+    widget = SplitDeltaWidget
+    hidden_widget = SplitHiddenDeltaWidget
     default_error_messages = {
-        'invalid_date': _(u'Enter a valid date.'),
-        'invalid_time': _(u'Enter a valid time.'),
+        'invalid_days': _(u'Enter a valid number of days.'),
+        'invalid_hours': _(u'Enter a valid number of hours.'),
+        'invalid_minutes': _(u'Enter a valid number of minutes.'),
     }
 
-    def __init__(self, input_date_formats=None, input_time_formats=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         errors = self.default_error_messages.copy()
         if 'error_messages' in kwargs:
             errors.update(kwargs['error_messages'])
         localize = kwargs.get('localize', False)
         fields = (
-            forms.DateField(input_formats=input_date_formats,
-                      error_messages={'invalid': errors['invalid_date']},
-                      localize=localize),
-            forms.TimeField(input_formats=input_time_formats,
-                      error_messages={'invalid': errors['invalid_time']},
-                      localize=localize),
+            forms.IntegerField(min_value=0,
+                error_messages={'invalid': errors['invalid_days']},
+                localize=localize                
+            ),
+            forms.IntegerField(min_value=0,
+                error_messages={'invalid': errors['invalid_hours']},
+                localize=localize                
+            ),
+            forms.IntegerField(min_value=0,
+                error_messages={'invalid': errors['invalid_minutes']},
+                localize=localize                
+            ),
         )
         super(SplitTimeDeltaField, self).__init__(fields, *args, **kwargs)
+        self.help_text = _(u'Amount of time to hold the document in the checked out state in days, hours and/or minutes.')
+        self.label = _('Check out expiration date and time')
 
     def compress(self, data_list):
         if data_list:
             # Raise a validation error if time or date is empty
             # (possible if SplitDateTimeField has required=False).
             if data_list[0] in validators.EMPTY_VALUES:
-                raise ValidationError(self.error_messages['invalid_date'])
+                raise ValidationError(self.error_messages['invalid_days'])
             if data_list[1] in validators.EMPTY_VALUES:
-                raise ValidationError(self.error_messages['invalid_time'])
-            return datetime.datetime.combine(*data_list)
+                raise ValidationError(self.error_messages['invalid_hours'])
+            if data_list[2] in validators.EMPTY_VALUES:
+                raise ValidationError(self.error_messages['invalid_minutes'])       
+                
+            timedelta = datetime.timedelta(days=data_list[0], hours=data_list[1], minutes=data_list[2])
+            return datetime.datetime.now() + timedelta
         return None
 
 
 class DocumentCheckoutForm(forms.ModelForm):
-    days = forms.IntegerField(min_value=0, label=_(u'Days'), help_text=_(u'Amount of time to hold the document checked out in days.'), required=False, widget=forms.widgets.TextInput(attrs={'maxlength': 3, 'style':'width: 5em;'}))
-    hours = forms.IntegerField(min_value=0, label=_(u'Hours'), help_text=_(u'Amount of time to hold the document checked out in hours.'), required=False, widget=forms.widgets.TextInput(attrs={'maxlength': 4, 'style':'width: 5em;'}))
-    minutes = forms.IntegerField(min_value=0, label=_(u'Minutes'), help_text=_(u'Amount of time to hold the document checked out in minutes.'), required=False, widget=forms.widgets.TextInput(attrs={'maxlength': 5, 'style':'width: 5em;'}))
-
     expiration_datetime = SplitTimeDeltaField()
+
     class Meta:
         model = DocumentCheckout
+        exclude = ('checkout_datetime', 'user_content_type', 'user_object_id', 'block_new_version')
+
         widgets = {
             'document': forms.widgets.HiddenInput(),
-        }
-
-       
+        }     
