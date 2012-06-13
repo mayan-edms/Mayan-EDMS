@@ -8,14 +8,30 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding unique constraint on 'DocumentCheckout', fields ['document']
-        db.create_unique('checkouts_documentcheckout', ['document_id'])
+        # Adding field 'DocumentCheckout.user_content_type'
+        db.add_column('checkouts_documentcheckout', 'user_content_type',
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'], null=True, blank=True),
+                      keep_default=False)
 
+        # Adding field 'DocumentCheckout.user_object_id'
+        db.add_column('checkouts_documentcheckout', 'user_object_id',
+                      self.gf('django.db.models.fields.PositiveIntegerField')(null=True, blank=True),
+                      keep_default=False)
+
+
+        # Changing field 'DocumentCheckout.checkout_datetime'
+        db.alter_column('checkouts_documentcheckout', 'checkout_datetime', self.gf('django.db.models.fields.DateTimeField')(null=True))
 
     def backwards(self, orm):
-        # Removing unique constraint on 'DocumentCheckout', fields ['document']
-        db.delete_unique('checkouts_documentcheckout', ['document_id'])
+        # Deleting field 'DocumentCheckout.user_content_type'
+        db.delete_column('checkouts_documentcheckout', 'user_content_type_id')
 
+        # Deleting field 'DocumentCheckout.user_object_id'
+        db.delete_column('checkouts_documentcheckout', 'user_object_id')
+
+
+        # Changing field 'DocumentCheckout.checkout_datetime'
+        db.alter_column('checkouts_documentcheckout', 'checkout_datetime', self.gf('django.db.models.fields.DateTimeField')())
 
     models = {
         'auth.group': {
@@ -50,10 +66,12 @@ class Migration(SchemaMigration):
         'checkouts.documentcheckout': {
             'Meta': {'object_name': 'DocumentCheckout'},
             'block_new_version': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'checkout_datetime': ('django.db.models.fields.DateTimeField', [], {}),
+            'checkout_datetime': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'document': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.Document']", 'unique': 'True'}),
             'expiration_datetime': ('django.db.models.fields.DateTimeField', [], {}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'user_content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']", 'null': 'True', 'blank': 'True'}),
+            'user_object_id': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'})
         },
         'comments.comment': {
             'Meta': {'ordering': "('submit_date',)", 'object_name': 'Comment', 'db_table': "'django_comments'"},

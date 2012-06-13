@@ -11,8 +11,8 @@ class Migration(SchemaMigration):
         # Adding model 'DocumentCheckout'
         db.create_table('checkouts_documentcheckout', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('document', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document'])),
-            ('checkout_datetime', self.gf('django.db.models.fields.DateTimeField')()),
+            ('document', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document'], unique=True)),
+            ('checkout_datetime', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 6, 13, 0, 0))),
             ('expiration_datetime', self.gf('django.db.models.fields.DateTimeField')()),
             ('block_new_version', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
@@ -57,8 +57,8 @@ class Migration(SchemaMigration):
         'checkouts.documentcheckout': {
             'Meta': {'object_name': 'DocumentCheckout'},
             'block_new_version': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'checkout_datetime': ('django.db.models.fields.DateTimeField', [], {}),
-            'document': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.Document']"}),
+            'checkout_datetime': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 6, 13, 0, 0)'}),
+            'document': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.Document']", 'unique': 'True'}),
             'expiration_datetime': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         },
