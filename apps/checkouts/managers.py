@@ -5,10 +5,13 @@ from django.db import models
 from documents.models import Document
 
 from .exceptions import DocumentNotCheckedOut
+from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 
 
 class DocumentCheckoutManager(models.Manager):
-    def checked_out(self):
+    #TODO: 'check_expiration' method
+    
+    def checked_out_documents(self):
         return Document.objects.filter(pk__in=self.model.objects.all().values_list('pk', flat=True))
 
     def is_document_checked_out(self, document):
@@ -24,3 +27,14 @@ class DocumentCheckoutManager(models.Manager):
             raise DocumentNotCheckedOut
         else:
             document_checkout.delete()
+            
+    def document_checkout_info(self, document):
+        return self.model.objects.get(document=document)
+
+    def document_checkout_state(self, document):
+        if self.is_document_checked_out(document):
+            return STATE_CHECKED_OUT
+        else:
+            return STATE_CHECKED_IN
+
+        
