@@ -5,6 +5,8 @@ import datetime
 
 from django.db import models, IntegrityError
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 
 from documents.models import Document
 
@@ -19,9 +21,13 @@ class DocumentCheckout(models.Model):
     Model to store the state and information of a document checkout
     """
     document = models.ForeignKey(Document, verbose_name=_(u'document'), unique=True)
-    checkout_datetime = models.DateTimeField(verbose_name=_(u'checkout date and time'), default=datetime.datetime.now())
-    expiration_datetime = models.DateTimeField(verbose_name=_(u'checkout expiration date and time'))
+    checkout_datetime = models.DateTimeField(verbose_name=_(u'check out date and time'), blank=True, null=True)
+    expiration_datetime = models.DateTimeField(verbose_name=_(u'check out expiration date and time'), help_text=_(u'Amount of time to hold the document checked out in minutes.'))
     block_new_version = models.BooleanField(verbose_name=_(u'block new version upload'), help_text=_(u'Do not allow new version of this document to be uploaded.'))
+    user_content_type = models.ForeignKey(ContentType, null=True, blank=True)  # blank and null added for ease of db migration
+    user_object_id = models.PositiveIntegerField(null=True, blank=True)
+    user_object = generic.GenericForeignKey(ct_field='user_content_type', fk_field='user_object_id')
+
     #block_metadata
     #block_editing
     #block tag add/remove
@@ -33,7 +39,7 @@ class DocumentCheckout(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.checkout_date = datetime.datetime.now()
+            self.checkout_datetime = datetime.datetime.now()
         try:
             return super(DocumentCheckout, self).save(*args, **kwargs)
         except IntegrityError, exc:
@@ -41,6 +47,8 @@ class DocumentCheckout(models.Model):
             #    raise DocumentAlreadyCheckedOut
             #else:
             raise
+    
+    #TODO: clean method that raises DocumentAlreadyCheckedOut
     
     @models.permalink
     def get_absolute_url(self):
