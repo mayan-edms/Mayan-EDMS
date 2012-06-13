@@ -6,7 +6,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-#from django.utils.html import mark_safe
 from django.conf import settings
 
 from documents.views import document_list
@@ -50,23 +49,21 @@ def checkout_document(request, document_pk):
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKOUT])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKOUT, request.user, document)
-
+        
     if request.method == 'POST':
-        form = DocumentCheckoutForm(data=request.POST)
+        form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
         if form.is_valid():
             try:
-                document_checkout = form.save(commit=False)
-                document_checkout.document = document
-                document_checkout.save()
+                document_checkout = form.save()
             except DocumentAlreadyCheckedOut:
                 messages.error(request, _(u'Document already checked out.'))
             except Exception, exc:
                 messages.error(request, _(u'Error trying to check out document; %s') % exc)
             else:
                 messages.success(request, _(u'Document "%s" checked out successfully.') % document)
-                return HttpResponseRedirect(document_checkout.get_absolute_url())
+                return HttpResponseRedirect(reverse('checkout_info', args=[document.pk]))
     else:
-        form = DocumentCheckoutForm()
+        form = DocumentCheckoutForm(initial={'document': document})
 
     return render_to_response('generic_form.html', {
         'form': form,
