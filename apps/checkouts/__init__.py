@@ -19,6 +19,7 @@ def initialize_document_checkout_extra_methods():
     Document.add_to_class('check_in', lambda document: DocumentCheckout.objects.check_in_document(document))
     Document.add_to_class('checkout_info', lambda document: DocumentCheckout.objects.document_checkout_info(document))
     Document.add_to_class('checkout_state', lambda document: DocumentCheckout.objects.document_checkout_state(document))
+    Document.add_to_class('is_new_versions_allowed', lambda document: DocumentCheckout.objects.is_document_new_versions_allowed(document))
 
 register_top_menu(name='checkouts', link=checkout_list)
 register_links(Document, [checkout_info], menu_name='form_header')
@@ -37,3 +38,4 @@ initialize_document_checkout_extra_methods()
 #TODO: forcefull check in
 #TODO: specify checkout option check (document.allows_new_versions())
 #TODO: out check in after expiration datetime
+#TODO: add checkin out history

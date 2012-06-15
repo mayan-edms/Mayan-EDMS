@@ -26,10 +26,14 @@ class DocumentCheckoutManager(models.Manager):
         except self.model.DoesNotExist:
             raise DocumentNotCheckedOut
         else:
+            #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
             document_checkout.delete()
             
     def document_checkout_info(self, document):
-        return self.model.objects.get(document=document)
+        try:
+            return self.model.objects.get(document=document)
+        except self.model.DoesNotExist:
+            raise DocumentNotCheckedOut
 
     def document_checkout_state(self, document):
         if self.is_document_checked_out(document):
@@ -37,4 +41,8 @@ class DocumentCheckoutManager(models.Manager):
         else:
             return STATE_CHECKED_IN
 
-        
+    def is_document_new_versions_allowed(self, document):
+        try:
+            return not self.document_checkout_info(document).block_new_version
+        except DocumentNotCheckedOut:
+            return True

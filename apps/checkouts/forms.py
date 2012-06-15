@@ -96,7 +96,7 @@ class DocumentCheckoutForm(forms.ModelForm):
 
     class Meta:
         model = DocumentCheckout
-        exclude = ('checkout_datetime', 'user_content_type', 'user_object_id', 'block_new_version')
+        exclude = ('checkout_datetime', 'user_content_type', 'user_object_id')
 
         widgets = {
             'document': forms.widgets.HiddenInput(),

@@ -23,10 +23,11 @@ class DocumentCheckout(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'document'), unique=True)
     checkout_datetime = models.DateTimeField(verbose_name=_(u'check out date and time'), blank=True, null=True)
     expiration_datetime = models.DateTimeField(verbose_name=_(u'check out expiration date and time'), help_text=_(u'Amount of time to hold the document checked out in minutes.'))
-    block_new_version = models.BooleanField(verbose_name=_(u'block new version upload'), help_text=_(u'Do not allow new version of this document to be uploaded.'))
     user_content_type = models.ForeignKey(ContentType, null=True, blank=True)  # blank and null added for ease of db migration
     user_object_id = models.PositiveIntegerField(null=True, blank=True)
     user_object = generic.GenericForeignKey(ct_field='user_content_type', fk_field='user_object_id')
+
+    block_new_version = models.BooleanField(default=True, verbose_name=_(u'block new version upload'), help_text=_(u'Do not allow new version of this document to be uploaded.'))
 
     #block_metadata
     #block_editing
@@ -47,6 +48,10 @@ class DocumentCheckout(models.Model):
             #    raise DocumentAlreadyCheckedOut
             #else:
             raise
+        else:
+            #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
+            pass
+            
     
     #TODO: clean method that raises DocumentAlreadyCheckedOut
     
