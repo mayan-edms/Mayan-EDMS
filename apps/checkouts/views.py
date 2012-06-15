@@ -6,14 +6,15 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.core.exceptions import PermissionDenied
 
 from documents.views import document_list
 from documents.models import Document
-from django.core.exceptions import PermissionDenied
 
 from permissions.models import Permission
 from acls.models import AccessEntry
 from common.utils import get_object_name
+from common.utils import encapsulate
 
 from .models import DocumentCheckout
 from .permissions import PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN
@@ -22,8 +23,21 @@ from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN, STATE_ICONS, STATE_LABELS
 from .widgets import checkout_widget
 
+
 def checkout_list(request):
-    return document_list(request, object_list=DocumentCheckout.objects.checked_out_documents(), title=_(u'checked out documents'))
+
+    return document_list(
+        request,
+        object_list=DocumentCheckout.objects.checked_out_documents(),
+        title=_(u'checked out documents'),
+        extra_context={
+                'extra_columns': [
+                    {'name': _(u'checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
+                    {'name': _(u'checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
+                    {'name': _(u'checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
+                ],
+        }
+    )
 
 
 def checkout_info(request, document_pk):
@@ -38,8 +52,10 @@ def checkout_info(request, document_pk):
     if document.is_checked_out():
         checkout_info = document.checkout_info()
         paragraphs.append(_(u'User: %s') % get_object_name(checkout_info.user_object, display_object_type=False))
-        paragraphs.append(_(u'Checkout time: %s') % checkout_info.checkout_datetime)
-        paragraphs.append(_(u'Checkout expiration: %s') % checkout_info.expiration_datetime)
+        paragraphs.append(_(u'Check out time: %s') % checkout_info.checkout_datetime)
+        paragraphs.append(_(u'Check out expiration: %s') % checkout_info.expiration_datetime)
+        paragraphs.append(_(u'Check out expiration: %s') % checkout_info.expiration_datetime)
+        paragraphs.append(_(u'New versions allowed: %s') % (_(u'yes') if not checkout_info.block_new_version else _(u'no')))
         
     return render_to_response('generic_template.html', {
         'paragraphs': paragraphs,
@@ -116,58 +132,3 @@ def checkin_document(request, document_pk):
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
-
-
-def document_delete(request, document_id=None, document_id_list=None):
-    post_action_redirect = None
-
-    if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
-        post_action_redirect = reverse('document_list_recent')
-    elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
-        messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DELETE])
-    except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DELETE, request.user, documents, exception_on_empty=True)
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
-
-    if request.method == 'POST':
-        for document in documents:
-            try:
-                warnings = delete_indexes(document)
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, warning)
-
-                document.delete()
-                #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
-                messages.success(request, _(u'Document deleted successfully.'))
-            except Exception, e:
-                messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
-                    'document': document, 'error': e
-                })
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'object_name': _(u'document'),
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-        'form_icon': u'page_delete.png',
-    }
-    if len(documents) == 1:
-        context['object'] = documents[0]
-        context['title'] = _(u'Are you sure you wish to delete the document: %s?') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _(u'Are you sure you wish to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
-
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))    
