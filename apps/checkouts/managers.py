@@ -12,7 +12,7 @@ class DocumentCheckoutManager(models.Manager):
     #TODO: 'check_expiration' method
     
     def checked_out_documents(self):
-        return Document.objects.filter(pk__in=self.model.objects.all().values_list('pk', flat=True))
+        return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
 
     def is_document_checked_out(self, document):
         if self.model.objects.filter(document=document):
