@@ -37,6 +37,7 @@ from .managers import DocumentPageTransformationManager
 from .utils import document_save_to_temp_dir
 from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
     VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
+from .exceptions import NewDocumentVersionNotAllowed
 
 # document image cache name hash function
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
@@ -171,6 +172,9 @@ class Document(models.Model):
 
     def new_version(self, file, comment=None, version_update=None, release_level=None, serial=None):
         logger.debug('creating new document version')
+        if not self.is_new_versions_allowed():
+            raise NewDocumentVersionNotAllowed
+
         if version_update:
             new_version_dict = self.latest_version.get_new_version_dict(version_update)
             logger.debug('new_version_dict: %s' % new_version_dict)
