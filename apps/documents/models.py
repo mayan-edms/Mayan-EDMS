@@ -524,8 +524,14 @@ class DocumentVersion(models.Model):
             return None
             
     def rename(self, new_name):
+        new_filename, new_extension = os.path.splitext(new_name)
         name, extension = os.path.splitext(self.filename)
-        self.filename = u''.join([new_name, extension])
+        
+        # Preserve existing extension if new name doesn't has one
+        if new_extension:
+            extension = new_extension
+
+        self.filename = u''.join([new_filename, extension])
         self.save()
 
 
