@@ -41,19 +41,9 @@ class DocumentCheckout(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.checkout_datetime = datetime.datetime.now()
-        try:
-            return super(DocumentCheckout, self).save(*args, **kwargs)
-        except IntegrityError, exc:
-            #if exc[1] == 'Column \'checkout_datetime\' cannot be null':
-            #    raise DocumentAlreadyCheckedOut
-            #else:
-            raise
-        else:
-            #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
-            pass
-            
-    
-    #TODO: clean method that raises DocumentAlreadyCheckedOut
+        result = super(DocumentCheckout, self).save(*args, **kwargs)
+        #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
+        return result
     
     @models.permalink
     def get_absolute_url(self):
