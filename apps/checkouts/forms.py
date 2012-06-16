@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core import validators
 
 from .models import DocumentCheckout
+from .exceptions import DocumentAlreadyCheckedOut
 
 
 class SplitDeltaWidget(forms.widgets.MultiWidget):
@@ -101,3 +102,9 @@ class DocumentCheckoutForm(forms.ModelForm):
         widgets = {
             'document': forms.widgets.HiddenInput(),
         }     
+
+    def clean_document(self):
+        document = self.cleaned_data['document']
+        if document.is_checked_out():
+            raise DocumentAlreadyCheckedOut
+        return document    
