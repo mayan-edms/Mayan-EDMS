@@ -73,19 +73,19 @@ def checkout_document(request, document_pk):
         
     if request.method == 'POST':
         form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
-        if form.is_valid():
-            try:
-                document_checkout = form.save(commit=False)
-                document_checkout.user_object = request.user
-                #document_checkout.clean()
-                document_checkout.save()
-            except DocumentAlreadyCheckedOut:
-                messages.error(request, _(u'Document already checked out.'))
-            except Exception, exc:
-                messages.error(request, _(u'Error trying to check out document; %s') % exc)
-            else:
-                messages.success(request, _(u'Document "%s" checked out successfully.') % document)
-                return HttpResponseRedirect(reverse('checkout_info', args=[document.pk]))
+        try:
+            if form.is_valid():
+                try:
+                    document_checkout = form.save(commit=False)
+                    document_checkout.user_object = request.user
+                    document_checkout.save()
+                except Exception, exc:
+                    messages.error(request, _(u'Error trying to check out document; %s') % exc)
+                else:
+                    messages.success(request, _(u'Document "%s" checked out successfully.') % document)
+                    return HttpResponseRedirect(reverse('checkout_info', args=[document.pk]))
+        except DocumentAlreadyCheckedOut:
+            messages.error(request, _(u'Document already checked out.'))
     else:
         form = DocumentCheckoutForm(initial={'document': document})
 
