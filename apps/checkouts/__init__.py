@@ -39,3 +39,4 @@ initialize_document_checkout_extra_methods()
 #TODO: specify checkout option check (document.allows_new_versions())
 #TODO: out check in after expiration datetime
 #TODO: add checkin out history
+#TODO: limit restrictions to non checkout user and admins?
