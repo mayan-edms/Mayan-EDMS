@@ -157,7 +157,7 @@ INSTALLED_APPS = (
     'mimetype',
     'scheduler',
     'job_processor',
-    'feedback',
+    'installation',
 # Mayan EDMS
     'storage',
     'folders',
@@ -175,7 +175,6 @@ INSTALLED_APPS = (
     'rest_api',
     'document_signatures',
     'checkouts',
-    'installation',
 
 # Has to be last so the other apps can register it's signals
     'signaler',
