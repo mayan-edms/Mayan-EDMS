@@ -13,8 +13,12 @@ Overview
 As with the previous release bug fixes and minor feature were the focus
 for this release too.  Long standing `issue #24`_ has been fixed and document
 check outs have been added too as per the feature request posted as `issue #26`_.
+The way the history events for a document are presented has been improved and
+it is now more usefull are it provides filtering by event type.  To improve
+the diagnosis of installation of runtime error a simple view showing the
+number of internal interval jobs being used by Mayan EDMS as well as a 
+new app which shows a detail of the current installation enviroment.
 
-#TODO: add improvements to history app info
 
 What's new in Mayan EDMS v0.12.2
 ================================
@@ -25,6 +29,11 @@ Document check outs
 
 Installation environment app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+German translation
+~~~~~~~~~~~~~~~~~~
+A German language translation has been added thanks to Tetja Rediske
+and Tilmann Sittig.
 
 
 Upgrading from a previous version
@@ -52,7 +61,7 @@ Bugs fixed
 
 Stuff removed
 =============  
-* None
+* Feedback app
 
 
 
