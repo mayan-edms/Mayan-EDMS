@@ -3,7 +3,14 @@ from __future__ import absolute_import
 import sys
 import platform
 
-from pbs import lsb_release, uname
+from pbs import CommandNotFound
+
+try:
+    from pbs import lsb_release, uname
+except CommandNotFound:
+    POSIX = False
+else:
+    POSIX = True
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -23,11 +30,14 @@ def installation_details(request):
 
     paragraphs = []
     
-    paragraphs.append(_(u'Distributor ID: %s') % lsb_release('-i','-s'))
-    paragraphs.append(_(u'Description: %s') % lsb_release('-d','-s'))
-    paragraphs.append(_(u'Release: %s') % lsb_release('-r','-s'))
-    paragraphs.append(_(u'Codename: %s') % lsb_release('-c','-s'))
-    paragraphs.append(_(u'System info: %s') % uname('-a'))
+    if POSIX:
+        paragraphs.append(_(u'POSIX OS'))
+        paragraphs.append(_(u'Distributor ID: %s') % lsb_release('-i','-s'))
+        paragraphs.append(_(u'Description: %s') % lsb_release('-d','-s'))
+        paragraphs.append(_(u'Release: %s') % lsb_release('-r','-s'))
+        paragraphs.append(_(u'Codename: %s') % lsb_release('-c','-s'))
+        paragraphs.append(_(u'System info: %s') % uname('-a'))
+        
     paragraphs.append(_(u'Platform: %s') % sys.platform)
     paragraphs.append(_(u'Processor: %s') % platform.processor())
         
