@@ -9,16 +9,18 @@ from scheduler.api import register_interval_job
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from acls.api import class_permissions
+from history.api import register_history_type
 
 from .permissions import (PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE)
 from .links import checkout_list, checkout_document, checkout_info, checkin_document
 from .models import DocumentCheckout
 from .tasks import task_check_expired_check_outs
+from .events import HISTORY_DOCUMENT_CHECKED_OUT, HISTORY_DOCUMENT_CHECKED_IN
 
 
 def initialize_document_checkout_extra_methods():
     Document.add_to_class('is_checked_out', lambda document: DocumentCheckout.objects.is_document_checked_out(document))
-    Document.add_to_class('check_in', lambda document: DocumentCheckout.objects.check_in_document(document))
+    Document.add_to_class('check_in', lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user))
     Document.add_to_class('checkout_info', lambda document: DocumentCheckout.objects.document_checkout_info(document))
     Document.add_to_class('checkout_state', lambda document: DocumentCheckout.objects.document_checkout_state(document))
     Document.add_to_class('is_new_versions_allowed', lambda document: DocumentCheckout.objects.is_document_new_versions_allowed(document))
@@ -34,15 +36,11 @@ class_permissions(Document, [
 ])
 
 CHECK_EXPIRED_CHECK_OUTS_INTERVAL=60  # Lowest check out expiration allowed
-register_interval_job('task_check_expired_check_outs', _(u'Checks the OCR queue for pending documents.'), task_check_expired_check_outs, seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL)
-
+register_interval_job('task_check_expired_check_outs', _(u'Check expired check out documents and checks them in.'), task_check_expired_check_outs, seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL)
 initialize_document_checkout_extra_methods()
+register_history_type(HISTORY_DOCUMENT_CHECKED_OUT)
+register_history_type(HISTORY_DOCUMENT_CHECKED_IN)
 
-#TODO: default checkout time
 #TODO: forcefull check in
-#TODO: specify checkout option check (document.allows_new_versions())
-#TODO: out check in after expiration datetime
 #TODO: add checkin out history
 #TODO: limit restrictions to non checkout user and admins?
-
-

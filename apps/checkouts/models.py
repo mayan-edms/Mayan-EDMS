@@ -9,9 +9,11 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from documents.models import Document
+from history.api import create_history
 
 from .managers import DocumentCheckoutManager
 from .exceptions import DocumentAlreadyCheckedOut
+from .events import HISTORY_DOCUMENT_CHECKED_OUT
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +44,7 @@ class DocumentCheckout(models.Model):
         if not self.pk:
             self.checkout_datetime = datetime.datetime.now()
         result = super(DocumentCheckout, self).save(*args, **kwargs)
-        #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
+        create_history(HISTORY_DOCUMENT_CHECKED_OUT, source_object=self.document, data={'user': self.user_object, 'document': self.document})
         return result
     
     @models.permalink

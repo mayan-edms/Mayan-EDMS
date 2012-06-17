@@ -111,7 +111,7 @@ def checkin_document(request, document_pk):
 
     if request.method == 'POST':
         try:
-            document.check_in()
+            document.check_in(user=request.user)
         except DocumentNotCheckedOut:
             messages.error(request, _(u'Document has not been checked out.'))
         except Exception, exc:
