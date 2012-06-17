@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <tetja.rediske@googlemail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-04-20 11:40+0000\n"
+"Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: conf/settings.py:10
+msgid ""
+"CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
+"cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
+"warehouse."
+msgstr "Anzuwendendes CSS Theme, Optionen sind: amro, bec, bec-green, blue, default, djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and warehouse."
+
+#: conf/settings.py:12
+msgid "Display extra information in the login screen."
+msgstr "Zeige extra Informationen auf dem Login-Bildschirm"
+
+#: templates/web_theme_base.html:101
+msgid "dismiss all notifications"
+msgstr "Bestätige alle Benachrichtigungen"
+
+#: templates/web_theme_base.html:101
+msgid "close all"
+msgstr "Schließe Alle"
+
+#: templates/web_theme_base.html:102
+msgid "dismiss this notification"
+msgstr "Bestätige diese Benachrichtigung"
+
+#: templates/web_theme_base.html:102
+msgid "close"
+msgstr "Schließen"
+
+#: templates/web_theme_login.html:12 templates/web_theme_login.html.py:34
+msgid "Login"
+msgstr "Login"
+
+#: templates/web_theme_login.html:18
+msgid "You are already logged in"
+msgstr "Sind sind bereits angemeldet"
+
+#: templates/web_theme_login.html:21
+msgid "Redirecting you to the website entry point in 5 seconds."
+msgstr "Umleitung zur Startseite in 5 Sekunden."
+
+#: templates/web_theme_login.html:24
+#, python-format
+msgid ""
+"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
+"work."
+msgstr "Oder klicken  <a href=\"%(LOGIN_REDIRECT_URL)s\">hier</a>, wenn die Umleitung nicht funktioniert."
+
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
+msgid "Previous"
+msgstr "Zurück"
+
+#: templates/pagination/pagination.html:26
+#: templates/pagination/pagination.html:28
+msgid "Next"
+msgstr "Weiter"
