@@ -176,10 +176,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
                             return HttpResponseRedirect(request.get_full_path())
                     except NewDocumentVersionNotAllowed:
-                        if not document.is_new_versions_allowed():
-                            messages.error(request, _(u'The check out options for document currently don\'t allow new version uploads.'))
-                        else:
-                            messages.error(request, _(u'This document currently don\'t allow new version uploads.'))
+                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
                     except Exception, e:
                         if settings.DEBUG:
                             raise
@@ -260,10 +257,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         else:
                             return HttpResponseRedirect(request.get_full_path())
                     except NewDocumentVersionNotAllowed:
-                        if not document.is_new_versions_allowed:
-                            messages.error(request, _(u'The check out options for document currently don\'t allow new version uploads.'))
-                        else:
-                            messages.error(request, _(u'This document currently don\'t allow new version uploads.'))                            
+                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
                     except Exception, e:
                         if settings.DEBUG:
                             raise

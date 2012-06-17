@@ -11,7 +11,9 @@ from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from acls.api import class_permissions
 from history.api import register_history_type
 
-from .permissions import (PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE)
+from .permissions import (PERMISSION_DOCUMENT_CHECKOUT,
+    PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
+    PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE)
 from .links import checkout_list, checkout_document, checkout_info, checkin_document
 from .models import DocumentCheckout
 from .tasks import task_check_expired_check_outs
@@ -23,7 +25,7 @@ def initialize_document_checkout_extra_methods():
     Document.add_to_class('check_in', lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user))
     Document.add_to_class('checkout_info', lambda document: DocumentCheckout.objects.document_checkout_info(document))
     Document.add_to_class('checkout_state', lambda document: DocumentCheckout.objects.document_checkout_state(document))
-    Document.add_to_class('is_new_versions_allowed', lambda document: DocumentCheckout.objects.is_document_new_versions_allowed(document))
+    Document.add_to_class('is_new_versions_allowed', lambda document, user=None: DocumentCheckout.objects.is_document_new_versions_allowed(document, user))
 
 register_top_menu(name='checkouts', link=checkout_list)
 register_links(Document, [checkout_info], menu_name='form_header')
@@ -32,7 +34,8 @@ register_links(['checkout_info', 'checkout_document', 'checkin_document'], [chec
 class_permissions(Document, [
     PERMISSION_DOCUMENT_CHECKOUT,
     PERMISSION_DOCUMENT_CHECKIN,
-    PERMISSION_DOCUMENT_CHECKIN_OVERRIDE
+    PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
+    PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
 ])
 
 CHECK_EXPIRED_CHECK_OUTS_INTERVAL=60  # Lowest check out expiration allowed
@@ -42,5 +45,3 @@ register_history_type(HISTORY_DOCUMENT_CHECKED_OUT)
 register_history_type(HISTORY_DOCUMENT_CHECKED_IN)
 
 #TODO: forcefull check in
-#TODO: add checkin out history
-#TODO: limit restrictions to non checkout user and admins?

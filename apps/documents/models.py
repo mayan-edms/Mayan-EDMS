@@ -170,9 +170,9 @@ class Document(models.Model):
     def size(self):
         return self.latest_version.size
 
-    def new_version(self, file, comment=None, version_update=None, release_level=None, serial=None):
+    def new_version(self, file, user=None, comment=None, version_update=None, release_level=None, serial=None):
         logger.debug('creating new document version')
-        if not self.is_new_versions_allowed():
+        if not self.is_new_versions_allowed(user=user):
             raise NewDocumentVersionNotAllowed
 
         if version_update:

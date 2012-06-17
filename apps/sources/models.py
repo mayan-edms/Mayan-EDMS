@@ -114,7 +114,7 @@ class BaseModel(models.Model):
             new_version_data = {}
 
         try:
-            new_version = document.new_version(file=file_object, **new_version_data)
+            new_version = document.new_version(file=file_object, user=user, **new_version_data)
         except Exception:
             # Don't leave the database in a broken state
             # document.delete()

@@ -4,13 +4,17 @@ import datetime
 import logging
 
 from django.db import models
+from django.core.exceptions import PermissionDenied
 
 from documents.models import Document
 from history.api import create_history
+from permissions.models import Permission
+from acls.models import AccessEntry
 
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 from .events import HISTORY_DOCUMENT_CHECKED_IN
+from .permissions import PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
 
 logger = logging.getLogger(__name__)
 
@@ -56,8 +60,34 @@ class DocumentCheckoutManager(models.Manager):
         else:
             return STATE_CHECKED_IN
 
-    def is_document_new_versions_allowed(self, document):
+    def is_document_new_versions_allowed(self, document, user=None):
         try:
-            return not self.document_checkout_info(document).block_new_version
+            checkout_info = self.document_checkout_info(document)
         except DocumentNotCheckedOut:
             return True
+        else:
+            if not user:
+                return not checkout_info.block_new_version
+            else:
+                if user.is_staff or user.is_superuser:
+                    # Allow anything to superusers and staff
+                    return True
+
+                if user == checkout_info.user_object:
+                    # Allow anything to the user who checked out this document
+                    True
+                else:
+                    # If not original user check to see if user has global or this document's PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE permission
+                    try:
+                        Permission.objects.check_permissions(user, [PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE])
+                    except PermissionDenied:
+                        try:
+                            AccessEntry.objects.check_accesses([PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE], user, document)
+                        except PermissionDenied:
+                            # Last resort check if original user enabled restriction
+                            return not checkout_info.block_new_version
+                        else:
+                            return True                        
+                    else:
+                        return True                    
+            
