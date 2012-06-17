@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import (register_links, register_top_menu,
     register_multi_item_links, register_sidebar_template)
+from scheduler.api import register_interval_job
 
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
@@ -12,6 +13,7 @@ from acls.api import class_permissions
 from .permissions import (PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE)
 from .links import checkout_list, checkout_document, checkout_info, checkin_document
 from .models import DocumentCheckout
+from .tasks import task_check_expired_check_outs
 
 
 def initialize_document_checkout_extra_methods():
@@ -31,8 +33,10 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_CHECKIN_OVERRIDE
 ])
 
-initialize_document_checkout_extra_methods()
+CHECK_EXPIRED_CHECK_OUTS_INTERVAL=60  # Lowest check out expiration allowed
+register_interval_job('task_check_expired_check_outs', _(u'Checks the OCR queue for pending documents.'), task_check_expired_check_outs, seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL)
 
+initialize_document_checkout_extra_methods()
 
 #TODO: default checkout time
 #TODO: forcefull check in
@@ -40,3 +44,5 @@ initialize_document_checkout_extra_methods()
 #TODO: out check in after expiration datetime
 #TODO: add checkin out history
 #TODO: limit restrictions to non checkout user and admins?
+
+

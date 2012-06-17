@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import datetime
 from django.db import models
 
 from documents.models import Document
@@ -13,6 +14,13 @@ class DocumentCheckoutManager(models.Manager):
     
     def checked_out_documents(self):
         return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
+        
+    def expired_check_outs(self):
+        return Document.objects.filter(pk__in=self.model.objects.filter(expiration_datetime__gt=datetime.datetime.now()).values_list('document__pk', flat=True))
+
+    def check_in_expired_check_outs(self):
+        for document in self.expired_check_outs():
+            document.check_in()
 
     def is_document_checked_out(self, document):
         if self.model.objects.filter(document=document):
