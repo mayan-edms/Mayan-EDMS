@@ -195,7 +195,15 @@ $MAKEMESSAGES -l es
 $MAKEMESSAGES -l it
 $MAKEMESSAGES -l pl
 
-cd $BASE/apps/feedback
+cd $BASE/apps/installation
+$MAKEMESSAGES -l en
+$MAKEMESSAGES -l pt
+$MAKEMESSAGES -l ru
+$MAKEMESSAGES -l es
+$MAKEMESSAGES -l it
+$MAKEMESSAGES -l pl
+
+cd $BASE/apps/scheduler
 $MAKEMESSAGES -l en
 $MAKEMESSAGES -l pt
 $MAKEMESSAGES -l ru
