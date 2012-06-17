@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # mic <diveaway12@gmail.com>, 2012.
 # <winterfall24@gmail.com>, 2012.
@@ -9,18 +9,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-06-17 18:08-0400\n"
-"PO-Revision-Date: 2012-02-21 21:09+0000\n"
-"Last-Translator: mic <winterfall24@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/"
-"language/pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2012-06-17 22:12+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:63
 msgid "all documents"
@@ -74,8 +72,7 @@ msgstr "znaleźć wszystkie duplikaty"
 #: __init__.py:77
 msgid ""
 "Search all the documents' checksums and return a list of the exact matches."
-msgstr ""
-"Search all the documents' checksums and return a list of the exact matches."
+msgstr "Search all the documents' checksums and return a list of the exact matches."
 
 #: __init__.py:78
 msgid "update office documents' page count"
@@ -297,8 +294,7 @@ msgstr ""
 
 #: literals.py:12
 #, python-format
-msgid ""
-"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 msgstr ""
 
 #: literals.py:18
@@ -313,8 +309,8 @@ msgstr ""
 #: literals.py:20
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
-"The following changes took place: %(changes)s."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
 msgstr ""
 
 #: literals.py:29
@@ -630,8 +626,8 @@ msgstr ""
 #: statistics.py:52
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
 msgstr ""
 
 #: statistics.py:63
@@ -816,7 +812,8 @@ msgstr ""
 #: views.py:632
 #, python-format
 msgid ""
-"Are you sure you wish to update the page count for the office documents (%d)?"
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
 msgstr ""
 
 #: views.py:664
@@ -840,7 +837,8 @@ msgstr ""
 #: views.py:681
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
 msgstr ""
 
 #: views.py:683
@@ -1054,8 +1052,8 @@ msgstr ""
 
 #: conf/settings.py:38
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
 msgstr ""
 
 #: conf/settings.py:39
