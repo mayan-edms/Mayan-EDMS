@@ -13,7 +13,7 @@ from permissions.models import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry
 
-from .models import History
+from .models import History, HistoryType
 from .forms import HistoryDetailForm
 from .permissions import PERMISSION_HISTORY_VIEW
 from .widgets import history_entry_object_link, history_entry_summary
@@ -37,17 +37,9 @@ def history_list(request, object_list=None, title=None, extra_context=None):
         'title': title if title else _(u'history events'),
         'extra_columns': [
             {
-                'name': _(u'date and time'),
-                'attribute': 'datetime'
-            },
-            {
-                'name': _(u'object'),
+                'name': _(u'object link'),
                 'attribute': encapsulate(lambda x: history_entry_object_link(x))
             },
-            {
-                'name': _(u'summary'),
-                'attribute': encapsulate(lambda x: history_entry_summary(x))
-            }
         ],
         'hide_object': True,
     }
@@ -75,16 +67,6 @@ def history_for_object(request, app_label, module_name, object_id):
         'object_list': History.objects.filter(content_type=content_type, object_id=object_id),
         'title': _(u'history events for: %s') % content_object,
         'object': content_object,
-        'extra_columns': [
-            {
-                'name': _(u'date and time'),
-                'attribute': 'datetime'
-            },
-            {
-                'name': _(u'summary'),
-                'attribute': encapsulate(lambda x: history_entry_summary(x))
-            }
-        ],
         'hide_object': True,
     }
 
@@ -113,3 +95,13 @@ def history_view(request, object_id):
         'form': form,
     },
     context_instance=RequestContext(request))
+
+
+def history_type_list(request, history_type_pk):
+    history_type = get_object_or_404(HistoryType, pk=history_type_pk)
+    
+    return history_list(
+        request,
+        object_list=History.objects.filter(history_type=history_type),
+        title=_(u'history events of type: %s') % history_type,
+    )
