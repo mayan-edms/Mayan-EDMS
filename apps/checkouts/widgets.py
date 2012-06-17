@@ -62,6 +62,7 @@ class SplitTimeDeltaField(forms.MultiValueField):
         'invalid_days': _(u'Enter a valid number of days.'),
         'invalid_hours': _(u'Enter a valid number of hours.'),
         'invalid_minutes': _(u'Enter a valid number of minutes.'),
+        'invalid_timedelta': _(u'Enter a valid time difference.'),
     }
 
     def __init__(self, *args, **kwargs):
@@ -88,15 +89,18 @@ class SplitTimeDeltaField(forms.MultiValueField):
         self.label = _('Check out expiration date and time')
 
     def compress(self, data_list):
+        if data_list == [0, 0, 0]:
+            raise forms.ValidationError(self.error_messages['invalid_timedelta'])
+            
         if data_list:
             # Raise a validation error if time or date is empty
             # (possible if SplitDateTimeField has required=False).
             if data_list[0] in validators.EMPTY_VALUES:
-                raise ValidationError(self.error_messages['invalid_days'])
+                raise forms.ValidationError(self.error_messages['invalid_days'])
             if data_list[1] in validators.EMPTY_VALUES:
-                raise ValidationError(self.error_messages['invalid_hours'])
+                raise forms.ValidationError(self.error_messages['invalid_hours'])
             if data_list[2] in validators.EMPTY_VALUES:
-                raise ValidationError(self.error_messages['invalid_minutes'])       
+                raise forms.ValidationError(self.error_messages['invalid_minutes'])       
                 
             timedelta = datetime.timedelta(days=data_list[0], hours=data_list[1], minutes=data_list[2])
             return datetime.datetime.now() + timedelta

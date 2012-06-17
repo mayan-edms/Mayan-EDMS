@@ -23,4 +23,4 @@ class DocumentCheckoutForm(forms.ModelForm):
         document = self.cleaned_data['document']
         if document.is_checked_out():
             raise DocumentAlreadyCheckedOut
-        return document    
+        return document
