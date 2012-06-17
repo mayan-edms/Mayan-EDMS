@@ -1,0 +1,50 @@
+================================
+Mayan EDMS v0.12.2 release notes
+================================
+
+*June 2012*
+
+This is the second maintenance release of the 0.12 series.
+
+Overview
+========
+
+
+As with the previous release bug fixes and minor feature were the focus
+for this release too.  Long standing `issue #24`_ has been fixed and document
+check outs have been added too as per the feature request posted as `issue #26`_.
+
+What's new in Mayan EDMS v0.12.2
+================================
+
+Document check outs
+~~~~~~~~~~~~~~~~~~~~~
+
+
+Upgrading from a previous version
+=================================
+
+Migrate existing database schema with::
+
+    $ ./manage.py migrate checkouts
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+* None
+
+Bugs fixed
+==========
+* `issue #24`_ "Duplicated filename extension when uploading a new version of a document"
+* `issue #26`_ "checkout feature request"
+
+Stuff removed
+=============  
+* None
+
+
+
+.. _issue #24: https://github.com/rosarior/mayan/issues/24
+.. _issue #26: https://github.com/rosarior/mayan/issues/26

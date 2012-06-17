@@ -15,6 +15,7 @@ from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_NEW_VERSION)
 from documents.models import DocumentType, Document
 from documents.conf.settings import THUMBNAIL_SIZE
+from documents.exceptions import NewDocumentVersionNotAllowed
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 from common.utils import encapsulate
@@ -174,6 +175,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                                 messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
 
                             return HttpResponseRedirect(request.get_full_path())
+                    except NewDocumentVersionNotAllowed:
+                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
                     except Exception, e:
                         if settings.DEBUG:
                             raise
@@ -253,6 +256,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
                         else:
                             return HttpResponseRedirect(request.get_full_path())
+                    except NewDocumentVersionNotAllowed:
+                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
                     except Exception, e:
                         if settings.DEBUG:
                             raise
