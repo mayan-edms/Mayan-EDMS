@@ -14,16 +14,26 @@ As with the previous release bug fixes and minor feature were the focus
 for this release too.  Long standing `issue #24`_ has been fixed and document
 check outs have been added too as per the feature request posted as `issue #26`_.
 
+#TODO: add improvements to history app info
+
 What's new in Mayan EDMS v0.12.2
 ================================
 
 Document check outs
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+
+
+Installation environment app
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Upgrading from a previous version
 =================================
 
+Start off by adding the new requirements::
+
+    $ pip install -r requirements/production.txt
+    
 Migrate existing database schema with::
 
     $ ./manage.py migrate checkouts

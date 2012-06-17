@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     (r'^documents/signatures/', include('document_signatures.urls')),
     (r'^feedback/', include('feedback.urls')),
     (r'^checkouts/', include('checkouts.urls')),
+    (r'^installation/', include('installation.urls')),
 )
 
 

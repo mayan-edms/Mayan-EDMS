@@ -175,6 +175,7 @@ INSTALLED_APPS = (
     'rest_api',
     'document_signatures',
     'checkouts',
+    'installation',
 
 # Has to be last so the other apps can register it's signals
     'signaler',
