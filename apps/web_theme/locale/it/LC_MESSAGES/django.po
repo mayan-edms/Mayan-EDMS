@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Carlo Zanatto <>, 2012.
 #   <pierpaolo.baldan@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2011-12-09 18:07+0000\n"
-"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2012-06-08 07:17+0000\n"
+"Last-Translator: Carlo Zanatto <>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: conf/settings.py:10
@@ -24,10 +24,7 @@ msgid ""
 "CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
 "cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
 "warehouse."
-msgstr ""
-"Tema CSS da applicare, le opzioni sono: ABN AMRO, bec, bec-verde, blu, di "
-"default, djime-ceruleo, drastica-scuro, kathleene, oliva, arancio, rosso, "
-"reidb-verdastro e magazzino."
+msgstr "Tema CSS da applicare, le opzioni sono: ABN AMRO, bec, bec-verde, blu, di default, djime-ceruleo, drastica-scuro, kathleene, oliva, arancio, rosso, reidb-verdastro e magazzino."
 
 #: conf/settings.py:12
 msgid "Display extra information in the login screen."
@@ -39,7 +36,7 @@ msgstr "Smetti tutte le notifiche"
 
 #: templates/web_theme_base.html:101
 msgid "close all"
-msgstr "ciudi tutto"
+msgstr "chiudi tutto"
 
 #: templates/web_theme_base.html:102
 msgid "dismiss this notification"
@@ -55,7 +52,7 @@ msgstr "Login"
 
 #: templates/web_theme_login.html:18
 msgid "You are already logged in"
-msgstr "Sei pronto per entrare"
+msgstr "Sei già loggato"
 
 #: templates/web_theme_login.html:21
 msgid "Redirecting you to the website entry point in 5 seconds."
@@ -66,9 +63,7 @@ msgstr "Reindirizzamento al tuo punto di ingresso al sito in 5 secondi."
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr ""
-"Oppure click <a href=\"%(LOGIN_REDIRECT_URL)s\">qui</a> if per essere "
-"rimandato al tuo sito nel caso non funzioni."
+msgstr "Oppure click <a href=\"%(LOGIN_REDIRECT_URL)s\">qui</a> if per essere rimandato al tuo sito nel caso non funzioni."
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Carlo Zanatto <>, 2012.
 #   <pierpaolo.baldan@gmail.com>, 2011.
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-06-17 18:08-0400\n"
-"PO-Revision-Date: 2012-03-21 13:21+0000\n"
-"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2012-06-08 07:46+0000\n"
+"Last-Translator: Carlo Zanatto <>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:22
@@ -35,7 +35,7 @@ msgstr "modifica dettagli"
 
 #: __init__.py:28 __init__.py:33
 msgid "about"
-msgstr "a rigurdo"
+msgstr "informazioni"
 
 #: __init__.py:29
 msgid "license"
@@ -53,9 +53,7 @@ msgstr "Email"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"Inserisci un'indirizzo mail valido e una password. Ricorda che il campo "
-"password è case-sensitive"
+msgstr "Inserisci un'indirizzo mail valido e una password. Ricorda che il campo password è case-sensitive"
 
 #: forms.py:146
 msgid "This account is inactive."
@@ -123,7 +121,7 @@ msgstr "Nessuna azione selezionata"
 
 #: views.py:40
 msgid "Must select at least one item."
-msgstr "Devi selezionare un item"
+msgstr "Devi selezionare un elemento"
 
 #: views.py:88
 #, python-format
@@ -183,20 +181,15 @@ msgstr "Nessuno"
 #: conf/settings.py:15
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Directory temporanea utilizzata a livello di sito per thumbnails, anteprime "
-"e file temporanei. Se non viene specificato, ne verrà creata utilizzando "
+"temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
+msgstr "Directory temporanea utilizzata a livello di sito per thumbnails, anteprime e file temporanei. Se non viene specificato, ne verrà creata utilizzando tempfile.mkdtemp()"
 
 #: conf/settings.py:65
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Controllo del meccanismo di autenticazione. Le opzioni possibili sono:"
-"username,email"
+msgstr "Controllo del meccanismo di autenticazione. Le opzioni possibili sono:username,email"
 
 #: conf/settings.py:74
 msgid "Allow non authenticated users, access to all views"
@@ -302,7 +295,7 @@ msgstr "Salva"
 #: templates/generic_list_subtemplate.html:52
 #: templates/generic_list_subtemplate.html:178
 msgid "Submit"
-msgstr "Sottometti"
+msgstr "Conferma"
 
 #: templates/generic_form_subtemplate.html:87
 msgid "Cancel"
@@ -319,9 +312,7 @@ msgstr "Lista di %(stripped_title)s"
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Lista di %(title)s (%(start)s - %(end)s fuori %(total)s) (Page "
-"%(page_number)s of %(total_pages)s)"
+msgstr "Lista di %(title)s (%(start)s - %(end)s fuori %(total)s) (Page %(page_number)s of %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26
