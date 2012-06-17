@@ -217,11 +217,20 @@ trans.ru = apps/acls/locale/ru/LC_MESSAGES/django.po
 trans.it = apps/acls/locale/it/LC_MESSAGES/django.po
 trans.pl = apps/acls/locale/pl/LC_MESSAGES/django.po
 
-[mayan-edms.apps-feedback]
-source_file = apps/feedback/locale/en/LC_MESSAGES/django.po
+[mayan-edms.apps-installation]
+source_file = apps/installation/locale/en/LC_MESSAGES/django.po
 source_lang = en
-trans.es = apps/feedback/locale/es/LC_MESSAGES/django.po
-trans.pt = apps/feedback/locale/pt/LC_MESSAGES/django.po
-trans.ru = apps/feedback/locale/ru/LC_MESSAGES/django.po
-trans.it = apps/feedback/locale/it/LC_MESSAGES/django.po
-trans.pl = apps/feedback/locale/pl/LC_MESSAGES/django.po
+trans.es = apps/installation/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/installation/locale/pt/LC_MESSAGES/django.po
+trans.ru = apps/installation/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/installation/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/installation/locale/pl/LC_MESSAGES/django.po
+
+[mayan-edms.apps-scheduler]
+source_file = apps/scheduler/locale/en/LC_MESSAGES/django.po
+source_lang = en
+trans.es = apps/scheduler/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/scheduler/locale/pt/LC_MESSAGES/django.po
+trans.ru = apps/scheduler/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/scheduler/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/scheduler/locale/pl/LC_MESSAGES/django.po
