@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
 "PO-Revision-Date: 2011-11-22 19:01+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
@@ -931,6 +931,11 @@ msgid ""
 msgstr ""
 "Использовать альтернативный способ подключения к LibreOffice использованием "
 "конвейера pipe, это медленнее, но менее опасно ошибкой сегментации."
+
+#: conf/settings.py:18
+#, fuzzy
+msgid "Path to the libreoffice program."
+msgstr "Путь к программе unoconv."
 
 #: templates/converter_file_formats_help.html:3
 msgid "Help"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
 "PO-Revision-Date: 2011-11-22 15:26+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
@@ -928,6 +928,10 @@ msgstr ""
 msgid ""
 "Use alternate method of connection to LibreOffice using a pipe, it is slower "
 "but less prone to segmentation faults."
+msgstr ""
+
+#: conf/settings.py:18
+msgid "Path to the libreoffice program."
 msgstr ""
 
 #: templates/converter_file_formats_help.html:3

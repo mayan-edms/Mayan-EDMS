@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-01-17 10:58+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
@@ -80,58 +80,58 @@ msgstr "Версия"
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:183
+#: templates/base.html:193
 msgid "User"
 msgstr "Пользователь"
 
-#: templates/base.html:185
+#: templates/base.html:195
 msgid "Anonymous"
 msgstr "Анонимно"
 
-#: templates/base.html:188
+#: templates/base.html:198
 msgid "User details"
 msgstr "сведения о пользователе"
 
-#: templates/base.html:205
+#: templates/base.html:215
 msgid "Login"
 msgstr "Войти"
 
-#: templates/base.html:205
+#: templates/base.html:215
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:285
+#: templates/base.html:295
 msgid "Secondary menu"
 msgstr "Вторичное меню"
 
-#: templates/base.html:301
+#: templates/base.html:311
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Действия для %(name)s: %(navigation_object)s"
 
-#: templates/base.html:303 templates/base.html.py:346
+#: templates/base.html:313 templates/base.html.py:356
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Действия для: %(navigation_object)s"
 
-#: templates/base.html:306
+#: templates/base.html:316
 msgid "Available actions"
 msgstr "Доступные действия"
 
-#: templates/base.html:318 templates/base.html.py:361
+#: templates/base.html:328 templates/base.html.py:371
 msgid "Related actions"
 msgstr "Связанные действия"
 
-#: templates/base.html:329 templates/base.html.py:374
+#: templates/base.html:339 templates/base.html.py:384
 msgid "Other available actions"
 msgstr "Другие возможные действия"
 
-#: templates/base.html:344
+#: templates/base.html:354
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Действия для %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:349
+#: templates/base.html:359
 msgid "Actions"
 msgstr "Действия"
 

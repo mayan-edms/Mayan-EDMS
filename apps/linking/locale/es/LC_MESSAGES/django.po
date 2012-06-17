@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-02-02 18:29+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
@@ -55,15 +55,15 @@ msgstr "crear condicion"
 msgid "ACLs"
 msgstr "LCAs"
 
-#: forms.py:50
+#: forms.py:48
 msgid "Pages"
 msgstr "Páginas"
 
-#: forms.py:56
+#: forms.py:54
 msgid "Select"
 msgstr "Seleccionar"
 
-#: forms.py:63
+#: forms.py:61
 msgid "Click on the image for full size view of the first page."
 msgstr ""
 "Haga clic en la imagen para ver el tamaño completo de la primera página."
@@ -223,26 +223,26 @@ msgstr "Eliminar enlaces inteligentes"
 msgid "Edit smart links"
 msgstr "Editar enlaces inteligentes"
 
-#: views.py:40
+#: views.py:41
 msgid "No action selected."
 msgstr "Ninguna acción seleccionada."
 
-#: views.py:59
+#: views.py:60
 #, python-format
 msgid "documents in smart link: %(group)s"
 msgstr "documentos en el enlace inteligente: %(group)s"
 
-#: views.py:75
+#: views.py:76
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Error en consulta de enlace inteligente: %s"
 
-#: views.py:97
+#: views.py:98
 #, python-format
 msgid "smart links (%s)"
 msgstr "enlaces inteligentes (%s)"
 
-#: views.py:111
+#: views.py:112
 msgid "There no defined smart links for the current document."
 msgstr "No hay enlaces inteligentes definidos para el documento actual."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-02-02 18:19+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
@@ -56,15 +56,15 @@ msgstr "создать условие"
 msgid "ACLs"
 msgstr ""
 
-#: forms.py:50
+#: forms.py:48
 msgid "Pages"
 msgstr "Страницы"
 
-#: forms.py:56
+#: forms.py:54
 msgid "Select"
 msgstr "Выбрать"
 
-#: forms.py:63
+#: forms.py:61
 msgid "Click on the image for full size view of the first page."
 msgstr ""
 "Нажмите на изображение для просмотра  первой страницы в полном размере."
@@ -223,26 +223,26 @@ msgstr "Удалить отношения"
 msgid "Edit smart links"
 msgstr "Редактировать отношения"
 
-#: views.py:40
+#: views.py:41
 msgid "No action selected."
 msgstr "Никаких действий не выбрано."
 
-#: views.py:59
+#: views.py:60
 #, python-format
 msgid "documents in smart link: %(group)s"
 msgstr "документы в отношении %(group)s"
 
-#: views.py:75
+#: views.py:76
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Ошибка запроса в отношении %s"
 
-#: views.py:97
+#: views.py:98
 #, python-format
 msgid "smart links (%s)"
 msgstr "отношения (%s)"
 
-#: views.py:111
+#: views.py:112
 msgid "There no defined smart links for the current document."
 msgstr "Для этого документа отношения не определены."
 

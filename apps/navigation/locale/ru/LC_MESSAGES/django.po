@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2011-11-19 21:05+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
@@ -28,6 +28,6 @@ msgstr "Массовое действие"
 msgid "icon"
 msgstr "значок"
 
-#: templatetags/navigation_tags.py:278
+#: templatetags/navigation_tags.py:283
 msgid "Selected item actions:"
 msgstr "Действия с выбранными пунктами: "
