@@ -19,12 +19,22 @@ from .permissions import PERMISSION_HISTORY_VIEW
 from .widgets import history_entry_object_link, history_entry_summary
 
 
-def history_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+def history_list(request, object_list=None, title=None, extra_context=None):
+    pre_object_list = object_list if not (object_list is None) else History.objects.all()
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
+    except PermissionDenied:
+        # If user doesn't have global permission, get a list of document
+        # for which he/she does hace access use it to filter the
+        # provided object_list
+        final_object_list = AccessEntry.objects.filter_objects_by_access(PERMISSION_HISTORY_VIEW, request.user, pre_object_list, related='content_object')
+    else:
+        final_object_list = pre_object_list
 
     context = {
-        'object_list': History.objects.all(),
-        'title': _(u'history events'),
+        'object_list': final_object_list,
+        'title': title if title else _(u'history events'),
         'extra_columns': [
             {
                 'name': _(u'date and time'),
@@ -41,6 +51,9 @@ def history_list(request):
         ],
         'hide_object': True,
     }
+
+    if extra_context:
+        context.update(extra_context)
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
