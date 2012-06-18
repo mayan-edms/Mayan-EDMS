@@ -4,9 +4,10 @@ import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import models as auth_models
+from django.contrib.auth.models import User
 from django.contrib.auth.management import create_superuser
 from django.dispatch import receiver
-from django.db.models.signals import post_syncdb
+from django.db.models.signals import post_syncdb, post_save
 
 from navigation.api import register_links, register_top_menu
 
@@ -14,6 +15,7 @@ from .conf.settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
 from .conf import settings as common_settings
 from .utils import validate_path
+from .models import AutoAdminSingleton
 
 
 def has_usable_password(context):
@@ -53,9 +55,22 @@ def create_superuser(sender, **kwargs):
             print '*' * 80
             print 'Creating super admin user -- login: %s, password: %s' % (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD)
             print '*' * 80
-            assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'x@x.com', AUTO_ADMIN_PASSWORD)
+            assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
+            admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
+            auto_admin_properties = AutoAdminSingleton.objects.get()
+            auto_admin_properties.auto_admin_account = admin
+            auto_admin_properties.auto_admin_password = AUTO_ADMIN_PASSWORD
+            auto_admin_properties.save()
         else:
             print 'Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME
+
+
+@receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
+def auto_admin_account_passwd_change(sender, instance, **kwargs):
+    auto_admin_properties = AutoAdminSingleton.objects.get()
+    if instance == auto_admin_properties.auto_admin_account:
+        auto_admin_properties.delete(force=True)
+
 
 if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
     setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())

@@ -19,6 +19,9 @@ the diagnosis of installation of runtime error a simple view showing the
 number of internal interval jobs being used by Mayan EDMS as well as a 
 new app which shows a detail of the current installation enviroment.
 
+#TODO: Add auto admin random password
+#TODO: auto admin first run login display
+
 
 What's new in Mayan EDMS v0.12.2
 ================================
@@ -42,9 +45,11 @@ Upgrading from a previous version
 Start off by adding the new requirements::
 
     $ pip install -r requirements/production.txt
-    
+
 Migrate existing database schema with::
 
+    $ ./manage.py migrate common 0001 --fake
+    $ ./manage.py migrate common
     $ ./manage.py migrate checkouts
 
 The upgrade procedure is now complete.
