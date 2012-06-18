@@ -44,4 +44,5 @@ initialize_document_checkout_extra_methods()
 register_history_type(HISTORY_DOCUMENT_CHECKED_OUT)
 register_history_type(HISTORY_DOCUMENT_CHECKED_IN)
 
-#TODO: forcefull check in
+#TODO: forcefull check in  & history
+#TODO: history for auto check in
