@@ -456,7 +456,7 @@ Username of the automatically created superuser
 
 Default: Random generated password
 
-Default password of the automatically created superuser
+The password of the automatically created superuser
     
 
 .. setting:: COMMON_LOGIN_METHOD
