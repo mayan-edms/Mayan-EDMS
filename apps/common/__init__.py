@@ -59,6 +59,7 @@ def create_superuser(sender, **kwargs):
             print '*' * 80
             assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
             admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
+            # Store the auto admin password properties to display the first login message
             auto_admin_properties = AutoAdminSingleton.objects.get()
             auto_admin_properties.account = admin
             auto_admin_properties.password = AUTO_ADMIN_PASSWORD
@@ -72,6 +73,7 @@ def create_superuser(sender, **kwargs):
 def auto_admin_account_passwd_change(sender, instance, **kwargs):
     auto_admin_properties = AutoAdminSingleton.objects.get()
     if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
+        # Only delete the auto admin properties when the password has been changed
         auto_admin_properties.delete(force=True)
 
 
