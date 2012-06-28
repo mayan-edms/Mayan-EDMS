@@ -17,7 +17,8 @@ from common.utils import get_object_name
 from common.utils import encapsulate
 
 from .models import DocumentCheckout
-from .permissions import PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN
+from .permissions import (PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN,
+    PERMISSION_DOCUMENT_CHECKIN_OVERRIDE)
 from .forms import DocumentCheckoutForm
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN, STATE_ICONS, STATE_LABELS
@@ -99,13 +100,21 @@ def checkout_document(request, document_pk):
 def checkin_document(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     post_action_redirect = reverse('checkout_info', args=[document.pk])
-    # TODO: add forcefull checkin
-    # TODO: check user
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN, request.user, document)
 
+    # If the user trying to check in the document is the same as the check out
+    # user just check for the normal permission otherwise check for the forceful
+    # checkin permission
+    if document.checkout_info().user_object == request.user:
+        try:
+            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN, request.user, document)
+    else:
+        try:
+            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN_OVERRIDE])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN_OVERRIDE, request.user, document)
+        
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
 
@@ -127,8 +136,12 @@ def checkin_document(request, document_pk):
         'next': next,
         'form_icon': u'basket_remove.png',
         'object': document,
-        'title': _(u'Are you sure you wish to check in document: %s') % document
     }
+
+    if document.checkout_info().user_object != request.user:
+        context['title'] = _(u'You didn\'t originally checked out this document.  Are you sure you wish to forcefully check in document: %s?') % document
+    else:
+        context['title'] = _(u'Are you sure you wish to check in document: %s?') % document
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
