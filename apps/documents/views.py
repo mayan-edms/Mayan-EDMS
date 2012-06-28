@@ -370,8 +370,8 @@ def document_download(request, document_id=None, document_id_list=None, document
 
                     return serve_file(
                         request,
-                        compressed_file.as_file('document_bundle.zip'),
-                        save_as=u'"document_bundle.zip"',
+                        compressed_file.as_file(form.cleaned_data['zip_filename']),
+                        save_as=u'"%s"' % form.cleaned_data['zip_filename'],
                         content_type='application/zip'
                     )
                     # TODO: DO a redirection afterwards
@@ -409,6 +409,7 @@ def document_download(request, document_id=None, document_id_list=None, document
         'submit_label': _(u'Download'),
         'previous': previous,
         'cancel_label': _(u'Return'),
+        'disable_auto_focus': True,
     }
 
     if len(document_versions) == 1:
