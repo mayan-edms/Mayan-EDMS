@@ -46,6 +46,3 @@ register_history_type(HISTORY_DOCUMENT_CHECKED_OUT)
 register_history_type(HISTORY_DOCUMENT_CHECKED_IN)
 register_history_type(HISTORY_DOCUMENT_AUTO_CHECKED_IN)
 register_history_type(HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
-
-#TODO: forcefull check in  & history
-#TODO: history for auto check in
