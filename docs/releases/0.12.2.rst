@@ -11,32 +11,67 @@ Overview
 
 
 As with the previous release bug fixes and minor feature were the focus
-for this release too.  Long standing `issue #24`_ has been fixed and document
+for this release too.  `issue #24`_ has been fixed and document
 check outs have been added too as per the feature request posted as `issue #26`_.
 The way the history events for a document are presented has been improved and
-it is now more usefull are it provides filtering by event type.  To improve
+it is now more useful as it provides filtering by event type.  To improve
 the diagnosis of installation of runtime error a simple view showing the
 number of internal interval jobs being used by Mayan EDMS as well as a 
-new app which shows a detail of the current installation enviroment.
-
-#TODO: Add auto admin random password
-#TODO: auto admin first run login display
-
+new app which shows a detail of the current installation enviroment were added.
 
 What's new in Mayan EDMS v0.12.2
 ================================
 
+Smarter auto admin creation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Mayan EDMS** creates a administrator user during the
+database creation phase to reduce the amount of steps required for a
+functional install.  The creation of this account is controlled by the configuration
+option :setting:`COMMON_AUTO_CREATE_ADMIN`, the username of the account is
+specified with the configuration option :setting:`COMMON_AUTO_ADMIN_USERNAME`
+and the password of this account by the option :setting:`COMMON_AUTO_ADMIN_PASSWORD`.
+Previously the :setting:`COMMON_AUTO_ADMIN_PASSWORD` defaulted to 'admin' which
+created an administrator account of username 'admin' with a password of
+'admin'.  The new default is to randomize an initial password and show this password
+at the login screen until the administrator password is changed.
+
+.. image:: mayan_first_login.png
+ :alt: First login dialog
+
 Document check outs
 ~~~~~~~~~~~~~~~~~~~
-
+As per the feature request filed under `issue #26`_, a new document
+check out and check in functionality has been added.  Users can now
+check out a document and lock new version of it from being uploaded to avoid
+editing conflicts.  Document check outs have an expiration period after which
+**Mayan EDMS** will automatically check them back in to avoid a permanent
+document lockout.  Only the user who has checked out a document can upload
+new versions of it or check the document back in before the expiration period,
+unless being granted the ``Allow overriding check out restrictions`` or 
+``Forcefully check in documents`` permission respectively.
 
 Installation environment app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Diagnosting remote installations of web based applications without access to the
+command line can be a bit hard, to alleviate this situation a new installation
+environment details app has been added.  The purpose of this app is to provide
+support staff information about the physical environment where **Mayan EDMS** has
+been installed.  To avoid possible security compromises only administrators
+can access this app.
+
+Editable compressed documents filename
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Previously when downloading more than one document in a compressed manner,
+**Mayan EDMS** would produce a file with the name ``document_bundle.zip`` for
+download.  A different filename can now be specified at the same download dialog.
 
 German translation
 ~~~~~~~~~~~~~~~~~~
 A German language translation has been added thanks to Tetja Rediske
 and Tilmann Sittig.
+
+Statistics gathering
+~~~~~~~~~~~~~~~~~~~~
 
 
 Upgrading from a previous version
