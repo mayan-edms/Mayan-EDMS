@@ -22,7 +22,7 @@ HISTORY_DOCUMENT_AUTO_CHECKED_IN = {
 
 HISTORY_DOCUMENT_FORCEFUL_CHECK_IN = {
     'namespace': 'checkouts', 'name': 'document_forefull_check_in',
-    'label': _(u'Document forefully checked in'),
-    'summary': _(u'Document "%(document)s" forcefully checked in.'),
+    'label': _(u'Document forcefully checked in'),
+    'summary': _(u'Document "%(document)s" forcefully checked in by %(fullname)s.'),
     'expressions': {'fullname': 'user.get_full_name() if user.get_full_name() else user'}
 }
