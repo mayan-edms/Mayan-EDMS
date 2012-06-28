@@ -17,7 +17,8 @@ from .permissions import (PERMISSION_DOCUMENT_CHECKOUT,
 from .links import checkout_list, checkout_document, checkout_info, checkin_document
 from .models import DocumentCheckout
 from .tasks import task_check_expired_check_outs
-from .events import HISTORY_DOCUMENT_CHECKED_OUT, HISTORY_DOCUMENT_CHECKED_IN
+from .events import (HISTORY_DOCUMENT_CHECKED_OUT, HISTORY_DOCUMENT_CHECKED_IN,
+    HISTORY_DOCUMENT_AUTO_CHECKED_IN, HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
 
 
 def initialize_document_checkout_extra_methods():
@@ -43,6 +44,8 @@ register_interval_job('task_check_expired_check_outs', _(u'Check expired check o
 initialize_document_checkout_extra_methods()
 register_history_type(HISTORY_DOCUMENT_CHECKED_OUT)
 register_history_type(HISTORY_DOCUMENT_CHECKED_IN)
+register_history_type(HISTORY_DOCUMENT_AUTO_CHECKED_IN)
+register_history_type(HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
 
 #TODO: forcefull check in  & history
 #TODO: history for auto check in
