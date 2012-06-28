@@ -32,7 +32,7 @@ def register_history_type(history_type_dict):
         'label': history_type_dict['label'],
         'summary': history_type_dict.get('summary', u''),
         'details': history_type_dict.get('details', u''),
-        'expressions': history_type_dict.get('expressions', []),
+        'expressions': history_type_dict.get('expressions', {}),
     }
 
 
