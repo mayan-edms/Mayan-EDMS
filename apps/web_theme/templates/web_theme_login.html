@@ -30,15 +30,15 @@
     {% else %}
         {% block content_plain %}
             {% auto_admin_properties %}
-            {% if auto_admin_properties.auto_admin_account %}
+            {% if auto_admin_properties.account %}
                 <div id="box">
                     <div class="block" id="block-login">
                         <h2>{% trans "First time login" %}</h2>
                         <div class="content login">
                             <p>{% trans "You have just finished installing <strong>Mayan EDMS</strong>, congratulations!" %}</p>
                             <p>{% trans "Login using the following credentials:" %}</p>
-                            <p>{% blocktrans with auto_admin_properties.auto_admin_account as auto_admin_account %}Username: <strong>{{ auto_admin_account }}</strong>{% endblocktrans %}</p> 
-                            <p>{% blocktrans with auto_admin_properties.auto_admin_password as auto_admin_password %}Password: <strong>{{ auto_admin_password }}</strong>{% endblocktrans %}</p>
+                            <p>{% blocktrans with auto_admin_properties.account as account %}Username: <strong>{{ account }}</strong>{% endblocktrans %}</p> 
+                            <p>{% blocktrans with auto_admin_properties.password as password %}Password: <strong>{{ password }}</strong>{% endblocktrans %}</p>
                             <p>{% trans "Be sure to change the password to increase security and to disable this message." %}</p>
                         </div>
                     </div>
