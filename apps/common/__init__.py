@@ -37,7 +37,7 @@ register_links(['about_view', 'license_view'], [about_view, license_view], menu_
 register_top_menu('about', link={'text': _(u'about'), 'view': 'about_view', 'famfam': 'information'}, position=-1)
 
 
-@receiver(post_migrate, dispatch_uid='create_superuser')#, sender=auth_models)
+@receiver(post_migrate, dispatch_uid='create_superuser')
 def create_superuser(sender, **kwargs):
     """
     From https://github.com/lambdalisue/django-qwert/blob/master/qwert/autoscript/__init__.py
