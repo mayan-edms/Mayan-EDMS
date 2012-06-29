@@ -72,6 +72,10 @@ and Tilmann Sittig.
 
 Statistics gathering
 ~~~~~~~~~~~~~~~~~~~~
+Previous attempts at gathering usage statistics have been met with deficient results.
+User participation in surveys as well as the quality of the data entered by users
+was disappointing.  That is why this version of **Mayan EDMS** features an
+anonymous statistics gathering functionality.
 
 
 Upgrading from a previous version
@@ -86,6 +90,7 @@ Migrate existing database schema with::
     $ ./manage.py migrate common 0001 --fake
     $ ./manage.py migrate common
     $ ./manage.py migrate checkouts
+    $ ./manage.py migrate installation
 
 The upgrade procedure is now complete.
 
