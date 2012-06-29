@@ -1,5 +1,6 @@
 import sys
 import platform
+import uuid
 
 import pbs
 import psutil
@@ -43,7 +44,7 @@ class Installation(Singleton):
     _properties = SortedDict()
 
     is_first_run = models.BooleanField(default=False)
-    uuid = models.CharField(max_length=48, blank=True)
+    uuid = models.CharField(max_length=48, blank=True, default=lambda: unicode(uuid.uuid4()))
 
     def add_property(self, property_instance):
         self._properties[property_instance.name] = property_instance

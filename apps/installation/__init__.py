@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import uuid
-
 from south.signals import post_migrate
 
 from project_tools.api import register_tool
@@ -16,10 +14,10 @@ from .models import Installation
 
 @receiver(post_migrate, dispatch_uid='trigger_first_time')
 def trigger_first_time(sender, **kwargs):
-    details = Installation.objects.get()
-    details.is_first_run = True
-    details.uuid = unicode(uuid.uuid4())
-    details.save()
+    if kwargs['app'] == 'installation':
+        details = Installation.objects.get()
+        details.is_first_run = True
+        details.save()
 
 
 def check_first_run():
