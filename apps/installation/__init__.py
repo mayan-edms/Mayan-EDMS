@@ -26,11 +26,11 @@ def check_first_run():
     try:
         details = Installation.objects.get()
     except DatabaseError:
+        # Avoid database errors when the app tables haven't been created yet
         pass
     else:
         if details.is_first_run:
-            details.is_first_run = False
-            #details.save()
+            details.submit()
 
 
 register_tool(installation_details)

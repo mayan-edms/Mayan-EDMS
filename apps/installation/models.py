@@ -3,6 +3,7 @@ import platform
 
 import pbs
 import psutil
+import requests
 
 try:
     from pbs import lsb_release, uname
@@ -14,9 +15,15 @@ else:
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.datastructures import SortedDict
+from django.utils.simplejson import dumps
 
 from common.models import Singleton
 from common.utils import pretty_size
+
+FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
+FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
+FORM_RECEIVER_FIELD = 'entry.0.single'
+TIMEOUT = 5
 
 
 class Property(object):
@@ -30,7 +37,7 @@ class Property(object):
 
     def __str__(self):
         return str(self.value)
-    
+        
 
 class Installation(Singleton):
     _properties = SortedDict()
@@ -83,6 +90,41 @@ class Installation(Singleton):
             return self._properties[name]
         except KeyError:
             raise AttributeError, name
+
+    def submit(self):
+        try:
+            dictionary = {}
+            if self.is_lsb:
+                dictionary.update(
+                    {
+                        'is_lsb': unicode(self.is_lsb),
+                        'distributor_id': unicode(self.distributor_id),
+                        'description': unicode(self.description),
+                        'release': unicode(self.release),
+                        'codename': unicode(self.codename),
+                        'sysinfo': unicode(self.sysinfo),
+                    }
+                )
+
+            dictionary.update(
+                {
+                    'uuid': self.uuid,
+                    'architecture': unicode(self.architecture),
+                    'python_version': unicode(self.python_version),
+                    'platform': unicode(self.platform),
+                    'machine': unicode(self.machine),
+                    'processor': unicode(self.processor),
+                    'cpus': unicode(self.cpus),
+                    'total_phymem': unicode(self.total_phymem),
+                }
+            )
+            
+            requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(dictionary)}, timeout=TIMEOUT)
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
+            pass
+        else:
+            self.is_first_run = False
+            self.save()
 
     class Meta:
         verbose_name = verbose_name_plural = _(u'installation details')
