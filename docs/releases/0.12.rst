@@ -69,7 +69,7 @@ Translations
 ~~~~~~~~~~~~~~~~~~~
 A new Italian translation is available, provided by SeeOpen.IT
 (www.seeopen.it, info@seeopen.it) as well as complete Russian translation
-update by Сергей Глита.  Included in this release also the initial translation
+update by Sergei Glita.  Included in this release also the initial translation
 to Polish by mic.
 
 Usability improvements
@@ -212,7 +212,7 @@ so write down your role permission setup before upgrading.
 Bugs fixed
 ==========
 * Issue #17, special thanks to Dave Herring for all the help including
-  access to a machine suffering with the issue, and to Сергей Глита for
+  access to a machine suffering with the issue, and to Sergei Glita for
   his research and eventual find of the core cause. 
 * Statistics fixes.
 * Fixed get_image_cache_name regression in the OCR app.
@@ -223,7 +223,7 @@ Stuff removed
   for now.
 * Removed the 'db_index' argument from Text fields definition and 
   migrations as it was causing error messages for MySQL users, thanks to
-  Сергей Глита for reporting this one.
+  Sergei Glita for reporting this one.
 * Configuration options removed:
   
   * OCR_CACHE_URI
