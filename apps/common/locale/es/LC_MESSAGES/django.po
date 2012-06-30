@@ -1,41 +1,40 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
 "PO-Revision-Date: 2012-02-02 18:39+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:20
+#: __init__.py:22
 msgid "change password"
 msgstr "cambiar contraseña"
 
-#: __init__.py:21
+#: __init__.py:23
 msgid "user details"
 msgstr "detalles de usuario"
 
-#: __init__.py:22
+#: __init__.py:24
 msgid "edit details"
 msgstr "editar detalles"
 
-#: __init__.py:26 __init__.py:31
+#: __init__.py:28 __init__.py:33
 msgid "about"
 msgstr "sobre"
 
-#: __init__.py:27
+#: __init__.py:29
 msgid "license"
 msgstr "licencia"
 
@@ -51,10 +50,7 @@ msgstr "E-mail"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"Por favor entre la dirección de correo electrónico y la contraseña "
-"correctas.  Tenga en cuenta que los campos de contraseña distingue entre "
-"mayúsculas y minúsculas."
+msgstr "Por favor entre la dirección de correo electrónico y la contraseña correctas.  Tenga en cuenta que los campos de contraseña distingue entre mayúsculas y minúsculas."
 
 #: forms.py:146
 msgid "This account is inactive."
@@ -153,9 +149,7 @@ msgstr "detalles del usuario corriente"
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
-msgstr ""
-"Conflicto de correo electrónica, otro usuario tiene ese mismo correo "
-"electrónico."
+msgstr "Conflicto de correo electrónica, otro usuario tiene ese mismo correo electrónico."
 
 #: views.py:190
 msgid "Current user's details updated."
@@ -184,25 +178,19 @@ msgstr "Ninguno"
 #: conf/settings.py:15
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Directorio temporal utilizado por todo el sitio para almacenar imágenes en "
-"miniatura, vistas previas y los archivos temporales. Si no se especifica "
-"ninguno, se creará utilizando tempfile.mkdtemp ()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Directorio temporal utilizado por todo el sitio para almacenar imágenes en miniatura, vistas previas y los archivos temporales. Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp ()"
 
 #: conf/settings.py:65
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
-"son: 'username' nombre de usuario, 'email' correo electrónico"
+msgstr "Controla el mecanismo utilizado para el usuario autenticado. Las opciones son: 'username' nombre de usuario, 'email' correo electrónico"
 
 #: conf/settings.py:74
 msgid "Allow non authenticated users, access to all views"
-msgstr ""
-"Permita a los usuarios no autenticados, el acceso a todas las pantallas"
+msgstr "Permita a los usuarios no autenticados, el acceso a todas las pantallas"
 
 #: templates/403.html:3 templates/403.html.py:7
 msgid "Insufficient permissions"
@@ -321,9 +309,7 @@ msgstr "Lista de %(stripped_title)s "
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página "
-"%(page_number)s de %(total_pages)s)"
+msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26

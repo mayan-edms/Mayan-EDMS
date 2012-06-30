@@ -1,0 +1,242 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <tilmann.sittig@web.de>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-06-10 13:06+0000\n"
+"Last-Translator: tilmannsittig <tilmann.sittig@web.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:14
+msgid "ACLs"
+msgstr "ACLs"
+
+#: __init__.py:15 __init__.py:23
+msgid "details"
+msgstr "Details"
+
+#: __init__.py:16 __init__.py:25
+msgid "grant"
+msgstr "Erlauben"
+
+#: __init__.py:17 __init__.py:26
+msgid "revoke"
+msgstr "Entziehen"
+
+#: __init__.py:18 __init__.py:24 forms.py:21
+msgid "New holder"
+msgstr "Neuer Berechtigter"
+
+#: __init__.py:20
+msgid "Default ACLs"
+msgstr "Standard-ACLs"
+
+#: __init__.py:21
+msgid "List of classes"
+msgstr "Liste der Klassen"
+
+#: __init__.py:22
+msgid "ACLs for class"
+msgstr "ACLs für Klasse"
+
+#: forms.py:38
+msgid "Users"
+msgstr "Benutzer"
+
+#: forms.py:41
+msgid "Groups"
+msgstr "Gruppen"
+
+#: forms.py:44
+msgid "Roles"
+msgstr "Rollen"
+
+#: forms.py:47
+msgid "Special"
+msgstr ""
+
+#: managers.py:118 managers.py:130
+msgid "Insufficient access."
+msgstr "Unzureichender Zugriff."
+
+#: models.py:25 models.py:67
+msgid "permission"
+msgstr "Berechtigung"
+
+#: models.py:51
+msgid "access entry"
+msgstr "Zugriffsberechtigungseintrag"
+
+#: models.py:52
+msgid "access entries"
+msgstr "Zugriffsberechtigungseinträge"
+
+#: models.py:88
+msgid "default access entry"
+msgstr "Standard-Zugriffsberechtigungseintrag"
+
+#: models.py:89
+msgid "default access entries"
+msgstr "Standard-Zugriffsberechtigungseinträge"
+
+#: models.py:108
+msgid "Creator"
+msgstr ""
+
+#: models.py:111 models.py:112
+msgid "creator"
+msgstr ""
+
+#: permissions.py:7 permissions.py:8
+msgid "Access control lists"
+msgstr "Zugriffs-Berechtigungs-Listen (ACLs)"
+
+#: permissions.py:10
+msgid "Edit ACLs"
+msgstr "ACLs bearbeiten"
+
+#: permissions.py:11
+msgid "View ACLs"
+msgstr "ACLs anzeigen"
+
+#: permissions.py:13
+msgid "Edit class default ACLs"
+msgstr "Standard-ACLs für Klasse bearbeiten"
+
+#: permissions.py:14
+msgid "View class default ACLs"
+msgstr "Standard-ACLs für Klasse anzeigen"
+
+#: views.py:47
+#, python-format
+msgid "access control lists for: %s"
+msgstr "Standard-ACLs für: %s"
+
+#: views.py:49 views.py:409
+msgid "holder"
+msgstr "Berechtigter"
+
+#: views.py:50 views.py:410
+msgid "permissions"
+msgstr "Berechtigungen"
+
+#: views.py:97
+#, python-format
+msgid "permissions available to: %(actor)s for %(obj)s"
+msgstr "verfügbare Berechtigungen: %(actor)s für %(obj)s "
+
+#: views.py:104 views.py:442
+msgid "namespace"
+msgstr "Namensraum"
+
+#: views.py:105 views.py:443
+msgid "label"
+msgstr "Bezeichner"
+
+#: views.py:107 views.py:445
+msgid "has permission"
+msgstr "hat die Berechtigung"
+
+#: views.py:184 views.py:277 views.py:525 views.py:604
+msgid ", "
+msgstr ""
+
+#: views.py:185 views.py:278 views.py:526 views.py:605
+#, python-format
+msgid " for %s"
+msgstr "für %s"
+
+#: views.py:186 views.py:527
+#, python-format
+msgid " to %s"
+msgstr "zu %s"
+
+#: views.py:189 views.py:530
+#, python-format
+msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
+msgstr "Sind Sie sicher, dass Sie Berechtigung %(title_suffix)s  erteilen möchten?"
+
+#: views.py:191 views.py:532
+#, python-format
+msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
+msgstr "Sind Sie sicher, dass Sie Berechtigungen %(title_suffix)s  erteilen möchten?"
+
+#: views.py:198 views.py:539
+#, python-format
+msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
+msgstr ""
+
+#: views.py:204 views.py:545
+#, python-format
+msgid ""
+"%(actor)s, already had the permission \"%(permission)s\" granted for "
+"%(object)s."
+msgstr ""
+
+#: views.py:279 views.py:606
+#, python-format
+msgid " from %s"
+msgstr "von %s"
+
+#: views.py:282 views.py:609
+#, python-format
+msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
+msgstr "Sind Sie sicher, dass Sie Berechtigung %(title_suffix)s  enziehen möchten?"
+
+#: views.py:284 views.py:611
+#, python-format
+msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
+msgstr "Sind Sie sicher, dass Sie Berechtigungen %(title_suffix)s  enziehen möchten?"
+
+#: views.py:291 views.py:618
+#, python-format
+msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
+msgstr ""
+
+#: views.py:297 views.py:624
+#, python-format
+msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+msgstr ""
+
+#: views.py:353
+#, python-format
+msgid "add new holder for: %s"
+msgstr "neuen Berechtigten für %s hinzufügen"
+
+#: views.py:354 views.py:486
+msgid "Select"
+msgstr ""
+
+#: views.py:386
+msgid "classes"
+msgstr "Klassen"
+
+#: views.py:388
+msgid "class"
+msgstr "Klasse"
+
+#: views.py:407
+#, python-format
+msgid "default access control lists for class: %s"
+msgstr ""
+
+#: views.py:435
+#, python-format
+msgid "permissions available to: %(actor)s for class %(class)s"
+msgstr ""
+
+#: views.py:484
+#, python-format
+msgid "add new holder for class: %s"
+msgstr ""

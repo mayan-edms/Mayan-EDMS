@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-02-03 06:38+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:18
 msgid "folder list"
@@ -53,11 +52,11 @@ msgstr "папки"
 
 #: __init__.py:27
 msgid "ACLs"
-msgstr ""
+msgstr "ACLs"
 
 #: forms.py:38
 msgid "Folder"
-msgstr ""
+msgstr "Папка"
 
 #: models.py:11
 msgid "title"
@@ -89,31 +88,31 @@ msgstr "документы из папок"
 
 #: permissions.py:7
 msgid "Folders"
-msgstr ""
+msgstr "Папки"
 
 #: permissions.py:9
 msgid "Create new folders"
-msgstr ""
+msgstr "Создание новых папок"
 
 #: permissions.py:10
 msgid "Edit new folders"
-msgstr ""
+msgstr "Изменить новые папки"
 
 #: permissions.py:11
 msgid "Delete new folders"
-msgstr ""
+msgstr "Удалить новые папки"
 
 #: permissions.py:12
 msgid "Remove documents from folders"
-msgstr ""
+msgstr "Удаление документов из папок"
 
 #: permissions.py:13
 msgid "View existing folders"
-msgstr ""
+msgstr "Просмотр существующих папок"
 
 #: permissions.py:14
 msgid "Add documents to existing folders"
-msgstr ""
+msgstr "Добавление документов в существующие папки"
 
 #: views.py:37
 msgid "created"
@@ -205,18 +204,14 @@ msgstr "Документ:%(document)s ошибка удаления: %(error)s"
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr ""
-"Вы действительно хотите удалить документ: %(document)s из папки \"%(folder)s "
-"\"?"
+msgstr "Вы действительно хотите удалить документ: %(document)s из папки \"%(folder)s \"?"
 
 #: views.py:272
 #, python-format
 msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
-msgstr ""
-"Вы действительно хотите удалить документы: %(documents)s из папки "
-"\"%(folder)s\"?"
+"Are you sure you wish to remove the documents: %(documents)s from the folder"
+" \"%(folder)s\"?"
+msgstr "Вы действительно хотите удалить документы: %(documents)s из папки \"%(folder)s\"?"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
@@ -228,10 +223,7 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr ""
-"Эти папки можно описать как пользовательские папки. Они позволяют отдельным "
-"пользователям хранить папки ао своему. Папки, созданные одним пользователем "
-"и документы, содержащиеся в них, не влияют других пользователей."
+msgstr "Эти папки можно описать как пользовательские папки. Они позволяют отдельным пользователям хранить папки ао своему. Папки, созданные одним пользователем и документы, содержащиеся в них, не влияют других пользователей."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"

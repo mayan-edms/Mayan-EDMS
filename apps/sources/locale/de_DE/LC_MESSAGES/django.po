@@ -1,0 +1,530 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <tetja.rediske@googlemail.com>, 2012.
+#   <tilmann.sittig@web.de>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-06-17 22:11+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:20
+msgid "preview"
+msgstr "Vorschau"
+
+#: __init__.py:21 __init__.py:29 __init__.py:35
+msgid "delete"
+msgstr "Löschen"
+
+#: __init__.py:23
+msgid "sources"
+msgstr "Quellen"
+
+#: __init__.py:24 literals.py:53 models.py:204
+msgid "web forms"
+msgstr "Web-Formulare"
+
+#: __init__.py:25 models.py:175
+msgid "staging folders"
+msgstr "Arbeitsordner"
+
+#: __init__.py:26 models.py:239
+msgid "watch folders"
+msgstr "Ordner überwachen"
+
+#: __init__.py:28 __init__.py:34
+msgid "edit"
+msgstr "Bearbeiten"
+
+#: __init__.py:30
+msgid "add new source"
+msgstr "füg Quelle hinzu"
+
+#: __init__.py:32
+msgid "transformations"
+msgstr "Transformationen"
+
+#: __init__.py:33
+msgid "add transformation"
+msgstr "Transformation hinzufügen"
+
+#: __init__.py:37
+msgid "Document sources"
+msgstr "Dokumenten Quelle"
+
+#: __init__.py:39
+msgid "upload new version"
+msgstr "Neue Version Hochladen"
+
+#: __init__.py:69 widgets.py:39
+msgid "thumbnail"
+msgstr "Thumbnail"
+
+#: forms.py:34 forms.py:59
+msgid "Expand compressed files"
+msgstr "Entpacke komprimierte Dateien"
+
+#: forms.py:35 forms.py:60
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr "Lade ein Archiv von Dateien als einzelne Dokumente"
+
+#: forms.py:43
+msgid "Staging file"
+msgstr "Arbeitsdatei"
+
+#: forms.py:50
+msgid "File"
+msgstr "Datei"
+
+#: literals.py:8 literals.py:13
+msgid "Always"
+msgstr "Immer"
+
+#: literals.py:9 literals.py:14
+msgid "Never"
+msgstr "Niemals"
+
+#: literals.py:15
+msgid "Ask user"
+msgstr "Frage Benutzer"
+
+#: literals.py:30
+msgid "Disk"
+msgstr "Disk"
+
+#: literals.py:31
+msgid "Database"
+msgstr "Datenbank"
+
+#: literals.py:32
+msgid "Drive"
+msgstr "Laufwerk"
+
+#: literals.py:33
+msgid "Network drive"
+msgstr "Netzwerk Laufwerk"
+
+#: literals.py:34
+msgid "User drive"
+msgstr "Benutzer Laufwerk"
+
+#: literals.py:35
+msgid "Envelope"
+msgstr "Umschlag"
+
+#: literals.py:36
+msgid "Folder"
+msgstr "Ordner"
+
+#: literals.py:37
+msgid "World"
+msgstr "Welt"
+
+#: literals.py:38
+msgid "Printer"
+msgstr "Drucker"
+
+#: literals.py:39
+msgid "Empty printer"
+msgstr "Leerer Drucker"
+
+#: literals.py:47 models.py:203
+msgid "web form"
+msgstr "Web-Formular"
+
+#: literals.py:48
+msgid "server staging folder"
+msgstr "Server Arbeitsordner"
+
+#: literals.py:49
+msgid "server watch folder"
+msgstr "Server Überwachungsordner"
+
+#: literals.py:54
+msgid "server staging folders"
+msgstr "Server Arbeitsordner"
+
+#: literals.py:55
+msgid "server watch folders"
+msgstr "Server Überwachungsordner"
+
+#: models.py:36
+msgid "title"
+msgstr "Titel"
+
+#: models.py:37
+msgid "enabled"
+msgstr "Aktiviert"
+
+#: models.py:38
+msgid "whitelist"
+msgstr "Whitelist"
+
+#: models.py:39
+msgid "blacklist"
+msgstr "Blacklist"
+
+#: models.py:143
+msgid "icon"
+msgstr "Symbol"
+
+#: models.py:143
+msgid "An icon to visually distinguish this source."
+msgstr "Ein Symbol um die Quelle von anderen zu unterscheiden"
+
+#: models.py:159 models.py:211
+msgid "folder path"
+msgstr "Ordner Pfad"
+
+#: models.py:159 models.py:211
+msgid "Server side filesystem path."
+msgstr "Pfad auf dem Server"
+
+#: models.py:160
+msgid "preview width"
+msgstr "Vorschau Breite"
+
+#: models.py:160
+msgid "Width value to be passed to the converter backend."
+msgstr "Breite die zum Konverter übergeben wird"
+
+#: models.py:161
+msgid "preview height"
+msgstr "Vorschau Höhe"
+
+#: models.py:161
+msgid "Height value to be passed to the converter backend."
+msgstr "Höhe die zum Konverter übergeben wird"
+
+#: models.py:162 models.py:199 models.py:212
+msgid "uncompress"
+msgstr "dekomprimieren"
+
+#: models.py:162 models.py:199 models.py:212
+msgid "Whether to expand or not compressed archives."
+msgstr "Sollen komprimierte Archive entpackt werden?"
+
+#: models.py:163 models.py:213
+msgid "delete after upload"
+msgstr "löschen nach hochladen"
+
+#: models.py:163 models.py:213
+msgid "Delete the file after is has been successfully uploaded."
+msgstr "Lösche die Datei nach erfolgreichem hochladen."
+
+#: models.py:174
+msgid "staging folder"
+msgstr "Arbeitsordner"
+
+#: models.py:214
+msgid "interval"
+msgstr "Intervall"
+
+#: models.py:214
+msgid ""
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr "Intervall in Sekunden"
+
+#: models.py:238
+msgid "watch folder"
+msgstr "Überwachungsordner"
+
+#: models.py:243
+msgid "Enter a valid value."
+msgstr "Geben Sie eine gültigen Wert an."
+
+#: models.py:271 views.py:595
+msgid "order"
+msgstr "Reihenfolge"
+
+#: models.py:272 views.py:596 views.py:633 views.py:663
+msgid "transformation"
+msgstr "Transformation"
+
+#: models.py:273 views.py:597
+msgid "arguments"
+msgstr "Parameter"
+
+#: models.py:273
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr "Wörterbücher zum Identifizieren von Parametern nutzen, Beispiel: %s"
+
+#: models.py:284
+msgid "document source transformation"
+msgstr "Quelldatei-Transformation"
+
+#: models.py:285
+msgid "document source transformations"
+msgstr "Quelldatei-Transformationen"
+
+#: models.py:292 models.py:293
+msgid "out of process"
+msgstr "aus dem Vorgang heraus"
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr "Quellen Einrichtung"
+
+#: permissions.py:8
+msgid "View existing document sources"
+msgstr "Zeige existierende Dokumenten Quellen"
+
+#: permissions.py:9
+msgid "Edit document sources"
+msgstr "Bearbeite Dokumenten Quellen"
+
+#: permissions.py:10
+msgid "Delete document sources"
+msgstr "Lösche Dokumenten Quellen"
+
+#: permissions.py:11
+msgid "Create new document sources"
+msgstr "Erstelle neue Dokumenten Quelle"
+
+#: staging.py:45
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr "Die Liste der Arbeitsdateien kann nicht ermittelt werden: %s"
+
+#: staging.py:128
+#, python-format
+msgid "Unable to upload staging file: %s"
+msgstr "Die Arbeitsdatei konnte nicht hochgeladen werden: %s"
+
+#: staging.py:138
+#, python-format
+msgid "Unable to delete staging file: %s"
+msgstr "Die Arbeitsdatei konnte nicht gelöscht werden: %s"
+
+#: utils.py:40
+msgid "Whitelist Blacklist validation error."
+msgstr "Whitelist Blacklist Überprüfungsfehler."
+
+#: views.py:100
+msgid "here"
+msgstr "hier"
+
+#: views.py:105
+msgid "Upload sources"
+msgstr "Quellen hochladen"
+
+#: views.py:107
+msgid ""
+"No interactive document sources have been defined or none have been enabled."
+msgstr "Es wurden keine interaktiven Dokumentenquellen definiert oder sie sind nicht aktiviert."
+
+#: views.py:108
+#, python-format
+msgid "Click %(setup_link)s to add or enable some document sources."
+msgstr "Klicken Sie %(setup_link)s um Dokumentenquellen hinzuzufügen oder zu aktivieren."
+
+#: views.py:165
+msgid "New document version uploaded successfully."
+msgstr "Neue Dokumenten Version erfolgreich hochgeladen."
+
+#: views.py:169
+msgid "File uploaded successfully."
+msgstr "Date erfolgreich Hochgeladen."
+
+#: views.py:172
+msgid "File uncompressed successfully and uploaded as individual files."
+msgstr "Datei erfolgreich dekomprimiert und als einzelne Dateien hochgeladen."
+
+#: views.py:175
+msgid "File was not a compressed file, uploaded as it was."
+msgstr "Datei war nicht komprimiert, hochgeladen wie Sie war."
+
+#: views.py:179 views.py:260
+msgid "New version uploads are not allowed for this document."
+msgstr ""
+
+#: views.py:183 views.py:264
+#, python-format
+msgid "Unhandled exception: %s"
+msgstr "Unbehandelte Ausnahme: %s"
+
+#: views.py:192
+#, python-format
+msgid "upload a new version from source: %s"
+msgstr "Lade neue Version von Quelle hoch: %s"
+
+#: views.py:194
+#, python-format
+msgid "upload a local document from source: %s"
+msgstr "Laden Sie eine lokale Datei hoch aus folgender Quelle: %s"
+
+#: views.py:240
+#, python-format
+msgid "Document version from staging file: %s, uploaded successfully."
+msgstr "Dokumenten-Version der Arbeitsdatei %s erfolgreich hochgeladen."
+
+#: views.py:243
+#, python-format
+msgid "Staging file: %s, uploaded successfully."
+msgstr "Arbeitsdatei: %s erfolgreich hochgeladen."
+
+#: views.py:246
+#, python-format
+msgid ""
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
+msgstr "Arbeitsdatei %s erfolgreich entpackt und als einzelne Dateien hochgeladen."
+
+#: views.py:249
+#, python-format
+msgid "Staging file: %s, was not compressed, uploaded as a single file."
+msgstr "Arbeitsdatei %s war kein Archiv, wurde als einzelne Datei hochgeladen."
+
+#: views.py:254
+#, python-format
+msgid "Staging file: %s, deleted successfully."
+msgstr "Arbeitsdatei: %s erfolgreich gelöscht."
+
+#: views.py:279
+#, python-format
+msgid "upload a new version from staging source: %s"
+msgstr "Eine neue Version aus Arbeitsquelle hochladen: %s"
+
+#: views.py:281
+#, python-format
+msgid "upload a document from staging source: %s"
+msgstr "Laden Sie ein Dokument aus der Arbeitsquelle: %s"
+
+#: views.py:294
+msgid "files in staging path"
+msgstr "Dateien im Arbeitspfad"
+
+#: views.py:326
+msgid "Current document type"
+msgstr "Aktueller Dokumenten Typ"
+
+#: views.py:327
+msgid "None"
+msgstr "Nichts"
+
+#: views.py:334
+msgid "Current metadata"
+msgstr "Aktuelle Meta-Daten"
+
+#: views.py:372 views.py:391
+#, python-format
+msgid "Staging file transformation error: %(error)s"
+msgstr "Fehler bei Transformation der Arbeitsdatei: %(error)s"
+
+#: views.py:414
+msgid "Staging file delete successfully."
+msgstr "Arbeitsdatei erfolgreich gelöscht."
+
+#: views.py:416
+#, python-format
+msgid "Staging file delete error; %s."
+msgstr "Arbeitsdatei konnte nicht gelöscht werden: %s."
+
+#: views.py:476
+msgid "Source edited successfully"
+msgstr "Quelle erfolgreich editiert."
+
+#: views.py:479
+#, python-format
+msgid "Error editing source; %s"
+msgstr "Fehler beim Editieren der Quelle: %s"
+
+#: views.py:484
+#, python-format
+msgid "edit source: %s"
+msgstr "Quelle bearbeiten: %s"
+
+#: views.py:489 views.py:529 views.py:591 views.py:632 views.py:662
+#: views.py:705
+msgid "source"
+msgstr "Quelle"
+
+#: views.py:518
+#, python-format
+msgid "Source \"%s\" deleted successfully."
+msgstr "Quelle \"%s\" erfolgreich gelöscht."
+
+#: views.py:520
+#, python-format
+msgid "Error deleting source \"%(source)s\": %(error)s"
+msgstr "Fehler beim Löschen der Quelle \"%(source)s\": %(error)s"
+
+#: views.py:527
+#, python-format
+msgid "Are you sure you wish to delete the source: %s?"
+msgstr "Sind Sie sicher, dass Sie diese Quelle löschen möchten: %s?"
+
+#: views.py:559
+msgid "Source created successfully"
+msgstr "Quelle erfolgreich angelegt"
+
+#: views.py:562
+#, python-format
+msgid "Error creating source; %s"
+msgstr "Fehler beim Anlegen der Quelle: %s"
+
+#: views.py:567
+#, python-format
+msgid "Create new source of type: %s"
+msgstr "Erstelle neue Quelle des Typs: %s"
+
+#: views.py:589
+#, python-format
+msgid "transformations for: %s"
+msgstr "Transformationen für: %s"
+
+#: views.py:619
+msgid "Source transformation edited successfully"
+msgstr "Quellen-Transformation erfolgreich bearbeitet"
+
+#: views.py:622
+#, python-format
+msgid "Error editing source transformation; %s"
+msgstr "Fehler beim Bearbeiten der Quellen-Transformation: %s"
+
+#: views.py:627
+#, python-format
+msgid "Edit transformation: %s"
+msgstr "Transformation bearbeiten: %s"
+
+#: views.py:650
+msgid "Source transformation deleted successfully."
+msgstr "Quellen-Transformation erfolgreich gelöscht."
+
+#: views.py:652
+#, python-format
+msgid "Error deleting source transformation; %(error)s"
+msgstr "Fehler beim Löschen der Quellen-Transformation: %(error)s"
+
+#: views.py:665
+#, python-format
+msgid ""
+"Are you sure you wish to delete source transformation \"%(transformation)s\""
+msgstr "Sind Sie sicher, dass Sie die Quellen-Transformation \"%(transformation)s\" löschen möchten"
+
+#: views.py:695
+msgid "Source transformation created successfully"
+msgstr "Quellen-Transformation erfolgreich erstellt"
+
+#: views.py:698
+#, python-format
+msgid "Error creating source transformation; %s"
+msgstr "Fehler beim Erstellen der Quellen-Transformation: %s"
+
+#: views.py:707
+#, python-format
+msgid "Create new transformation for source: %s"
+msgstr "Neue Transformation aus Quelle erstellen: %s"

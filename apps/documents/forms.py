@@ -15,7 +15,7 @@ from .models import (Document, DocumentType,
     DocumentPage, DocumentPageTransformation, DocumentTypeFilename,
     DocumentVersion)
 from .widgets import document_html_widget
-from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES)
+from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES, DEFAULT_ZIP_FILENAME)
 
 
 # Document page forms
@@ -316,7 +316,8 @@ class DocumentTypeFilenameForm_create(forms.ModelForm):
         
 class DocumentDownloadForm(forms.Form):
     compressed = forms.BooleanField(label=_(u'Compress'), required=False, help_text=_(u'Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.'))
-        
+    zip_filename = forms.CharField(initial=DEFAULT_ZIP_FILENAME, label=_(u'Compressed filename'), required=False, help_text=_(u'The filename of the compressed file that will contain the documents to be downloaded, if the previous option is selected.'))
+    
     def __init__(self, *args, **kwargs):
         self.document_versions = kwargs.pop('document_versions', None)
         super(DocumentDownloadForm, self).__init__(*args, **kwargs)

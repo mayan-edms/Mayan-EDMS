@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-21 21:09+0000\n"
-"Last-Translator: mic <winterfall24@gmail.com>\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
+"PO-Revision-Date: 2012-06-17 22:12+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "all documents"
 msgstr "wszystkie dokumenty"
 
-#: __init__.py:64 models.py:653 views.py:871
+#: __init__.py:64 models.py:669 views.py:871
 msgid "recent documents"
 msgstr "ostatnie dokumenty"
 
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: __init__.py:166 __init__.py:179 models.py:90 views.py:79
+#: __init__.py:166 __init__.py:179 models.py:91 views.py:79
 msgid "documents"
 msgstr "dokumenty"
 
@@ -347,204 +347,204 @@ msgstr "release candidate"
 msgid "hotfix"
 msgstr "hotfix"
 
-#: models.py:61
+#: models.py:62
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:67 models.py:77 models.py:524 views.py:1068 views.py:1097
+#: models.py:68 models.py:78 models.py:543 views.py:1068 views.py:1097
 #: views.py:1126 views.py:1131 views.py:1174 views.py:1220 views.py:1254
 msgid "document type"
 msgstr "typ dokumentu"
 
-#: models.py:68
+#: models.py:69
 msgid "documents types"
 msgstr "typy dokumentów"
 
-#: models.py:78
+#: models.py:79
 msgid "description"
 msgstr "opis"
 
-#: models.py:79
+#: models.py:80
 msgid "added"
 msgstr "dodana"
 
-#: models.py:89 models.py:300 models.py:642 models.py:657 views.py:227
+#: models.py:90 models.py:308 models.py:658 models.py:673 views.py:227
 #: views.py:351
 msgid "document"
 msgstr "dokument"
 
-#: models.py:287
+#: models.py:295
 #, python-format
 msgid "Major %(major)i.%(minor)i, (new release)"
 msgstr "Major %(major)i.%(minor)i, (new release)"
 
-#: models.py:288
+#: models.py:296
 #, python-format
 msgid "Minor %(major)i.%(minor)i, (some updates)"
 msgstr "Minor %(major)i.%(minor)i, (some updates)"
 
-#: models.py:289
+#: models.py:297
 #, python-format
 msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
 msgstr "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
 
-#: models.py:301
+#: models.py:309
 msgid "mayor"
 msgstr "mayor"
 
-#: models.py:302
+#: models.py:310
 msgid "minor"
 msgstr "minor"
 
-#: models.py:303
+#: models.py:311
 msgid "micro"
 msgstr "micro"
 
-#: models.py:304
+#: models.py:312
 msgid "release level"
 msgstr "release level"
 
-#: models.py:305
+#: models.py:313
 msgid "serial"
 msgstr "serial"
 
-#: models.py:306
+#: models.py:314
 msgid "timestamp"
 msgstr "timestamp"
 
-#: models.py:307 views.py:1357
+#: models.py:315 views.py:1357
 msgid "comment"
 msgstr "komentarz"
 
-#: models.py:310
+#: models.py:318
 msgid "file"
 msgstr "plik"
 
-#: models.py:314
+#: models.py:322
 msgid "checksum"
 msgstr "suma kontrolna"
 
-#: models.py:318 models.py:319 models.py:542
+#: models.py:326 models.py:327 models.py:560
 msgid "document version"
 msgstr "wersja dokumentu"
 
-#: models.py:411
+#: models.py:419
 msgid ""
 "This document's file format is not known, the page count has therefore "
 "defaulted to 1."
 msgstr ""
 
-#: models.py:525 views.py:1353
+#: models.py:544 views.py:1353
 msgid "filename"
 msgstr "nazwa_pliku"
 
-#: models.py:526 views.py:1181
+#: models.py:545 views.py:1181
 msgid "enabled"
 msgstr "włączony"
 
-#: models.py:533
+#: models.py:552
 msgid "document type quick rename filename"
 msgstr ""
 
-#: models.py:534
+#: models.py:553
 msgid "document types quick rename filenames"
 msgstr ""
 
-#: models.py:545
+#: models.py:561
 msgid "content"
 msgstr "zawartość"
 
-#: models.py:546
+#: models.py:562
 msgid "page label"
 msgstr "etykieta strony"
 
-#: models.py:547
+#: models.py:563
 msgid "page number"
 msgstr "numer strony"
 
-#: models.py:550
+#: models.py:566
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr ""
 
-#: models.py:558 models.py:604
+#: models.py:574 models.py:620
 msgid "document page"
 msgstr ""
 
-#: models.py:559
+#: models.py:575
 msgid "document pages"
 msgstr ""
 
-#: models.py:579
+#: models.py:595
 msgid "Enter a valid value."
 msgstr "Wprowadź poprawną wartość."
 
-#: models.py:605 views.py:449
+#: models.py:621 views.py:449
 msgid "order"
 msgstr "kolejność"
 
-#: models.py:606 views.py:450 views.py:511 views.py:542
+#: models.py:622 views.py:450 views.py:511 views.py:542
 msgid "transformation"
 msgstr "transformacja"
 
-#: models.py:607 views.py:451
+#: models.py:623 views.py:451
 msgid "arguments"
 msgstr "argumenty"
 
-#: models.py:607
+#: models.py:623
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr ""
 
-#: models.py:615
+#: models.py:631
 msgid "document page transformation"
 msgstr ""
 
-#: models.py:616
+#: models.py:632
 msgid "document page transformations"
 msgstr ""
 
-#: models.py:641
+#: models.py:657
 msgid "user"
 msgstr "użytkownik"
 
-#: models.py:643
+#: models.py:659
 msgid "accessed"
 msgstr "dostępne"
 
-#: models.py:652
+#: models.py:668
 msgid "recent document"
 msgstr "ostatni dokument"
 
-#: models.py:658
+#: models.py:674
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:659
+#: models.py:675
 msgid "MIME type"
 msgstr "typ MIME"
 
-#: models.py:660 views.py:132
+#: models.py:676 views.py:132
 msgid "Filename"
 msgstr "Nazwa pliku"
 
-#: models.py:661
+#: models.py:677
 msgid "Metadata value"
 msgstr ""
 
-#: models.py:662
+#: models.py:678
 msgid "Content"
 msgstr "Zawartość"
 
-#: models.py:663
+#: models.py:679
 msgid "Description"
 msgstr "Opis"
 
-#: models.py:664
+#: models.py:680
 msgid "Tags"
 msgstr "Tagi"
 
-#: models.py:665
+#: models.py:681
 msgid "Comments"
 msgstr "Komentarze"
 
@@ -608,54 +608,58 @@ msgstr "Usuń typy dokumentów"
 msgid "Create document types"
 msgstr "Tworzenie typów dokumentu"
 
-#: statistics.py:40
+#: statistics.py:44
 #, python-format
 msgid "Document types: %d"
 msgstr ""
 
-#: statistics.py:41
+#: statistics.py:45
 #, python-format
 msgid "Documents in database: %d"
 msgstr ""
 
-#: statistics.py:46
+#: statistics.py:50
 #, python-format
 msgid "Documents in storage: %d"
 msgstr ""
 
-#: statistics.py:48
+#: statistics.py:52
 #, python-format
 msgid ""
 "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
 " bytes"
 msgstr ""
 
-#: statistics.py:58
+#: statistics.py:63
 #, python-format
 msgid "Document pages in database: %d"
 msgstr ""
 
-#: statistics.py:59
+#: statistics.py:64
 #, python-format
-msgid "Minimum amount of pages per document: %(page_count__min)d"
+msgid "Minimum amount of pages per document: %d"
 msgstr ""
 
-#: statistics.py:60
+#: statistics.py:65
 #, python-format
-msgid "Maximum amount of pages per document: %(page_count__max)d"
+msgid "Maximum amount of pages per document: %d"
 msgstr ""
 
-#: statistics.py:61
+#: statistics.py:66
 #, python-format
-msgid "Average amount of pages per document: %(page_count__avg)f"
+msgid "Average amount of pages per document: %f"
 msgstr ""
 
-#: statistics.py:67
+#: statistics.py:71
 msgid "Document statistics"
 msgstr ""
 
 #: views.py:133
 msgid "File mimetype"
+msgstr ""
+
+#: views.py:133 views.py:134
+msgid "None"
 msgstr ""
 
 #: views.py:134

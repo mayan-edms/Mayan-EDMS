@@ -1,27 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
-"team/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:10 models.py:71
+#: __init__.py:17
+msgid "date and time"
+msgstr "data e hora"
+
+#: __init__.py:21
+msgid "type"
+msgstr ""
+
+#: __init__.py:25
+msgid "summary"
+msgstr "sumário"
+
+#: links.py:7 models.py:78
 msgid "history"
 msgstr "história"
+
+#: links.py:8
+msgid "details"
+msgstr ""
 
 #: models.py:18
 msgid "namespace"
@@ -31,23 +46,23 @@ msgstr "namespace"
 msgid "name"
 msgstr "nome"
 
-#: models.py:27 models.py:36
+#: models.py:34 models.py:43
 msgid "history type"
 msgstr "tipo de história"
 
-#: models.py:28
+#: models.py:35
 msgid "history types"
 msgstr "tipos de história"
 
-#: models.py:32
+#: models.py:39
 msgid "date time"
 msgstr "hora, data"
 
-#: models.py:37
+#: models.py:44
 msgid "dictionary"
 msgstr "dicionário"
 
-#: models.py:72
+#: models.py:79
 msgid "histories"
 msgstr "histórias"
 
@@ -59,48 +74,49 @@ msgstr "História"
 msgid "Access the history of an object"
 msgstr ""
 
-#: views.py:27
+#: views.py:37
 msgid "history events"
 msgstr "eventos da história"
 
-#: views.py:30 views.py:67
-msgid "date and time"
-msgstr "data e hora"
+#: views.py:40
+msgid "object link"
+msgstr ""
 
-#: views.py:34
-msgid "object"
-msgstr "objeto"
-
-#: views.py:38 views.py:71
-msgid "summary"
-msgstr "sumário"
-
-#: views.py:63
+#: views.py:68
 #, python-format
 msgid "history events for: %s"
 msgstr "eventos de história para: %s"
 
-#: views.py:91
+#: views.py:86
 msgid "Date"
 msgstr "Data"
 
-#: views.py:92
+#: views.py:87
 msgid "Time"
 msgstr "Tempo"
 
-#: views.py:93
+#: views.py:88
 msgid "Object"
 msgstr "Objeto"
 
-#: views.py:94
+#: views.py:89
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: views.py:95
-msgid "Event details"
-msgstr "Detalhes do evento"
+#: views.py:90
+msgid "Additional details"
+msgstr ""
 
-#: views.py:99
+#: views.py:90
+msgid "None"
+msgstr ""
+
+#: views.py:94
 #, python-format
 msgid "details for: %s"
 msgstr "detalhes para: %s"
+
+#: views.py:106
+#, python-format
+msgid "history events of type: %s"
+msgstr ""

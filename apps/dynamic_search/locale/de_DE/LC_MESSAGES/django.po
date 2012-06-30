@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <tetja.rediske@googlemail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
+"PO-Revision-Date: 2012-04-20 18:24+0000\n"
+"Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:5
+msgid "search"
+msgstr "suchen"
+
+#: __init__.py:6 views.py:72
+msgid "advanced search"
+msgstr "Erweiterte Suche"
+
+#: __init__.py:7
+msgid "search again"
+msgstr "Erneut suchen"
+
+#: forms.py:8
+msgid "Search terms"
+msgstr "Suchbegriffe"
+
+#: models.py:20
+msgid "user"
+msgstr "Benutzer"
+
+#: models.py:21
+msgid "query"
+msgstr "Abfrage"
+
+#: models.py:22
+msgid "datetime created"
+msgstr "Erstellungsdatum"
+
+#: models.py:23
+msgid "hits"
+msgstr "Treffer"
+
+#: models.py:61
+msgid "recent search"
+msgstr "letzte Suche"
+
+#: models.py:62
+msgid "recent searches"
+msgstr "letzte Suchen"
+
+#: views.py:33
+#, python-format
+msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+msgstr "Erebnis:  (Zeige nur %(shown_result_count)s von %(result_count)s) "
+
+#: views.py:37
+msgid "results"
+msgstr "Ergebnis"
+
+#: views.py:56
+#, python-format
+msgid "Search error: %s"
+msgstr "Fehler bei Suche: %s"
+
+#: views.py:60
+msgid "type"
+msgstr "Typ"
+
+#: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
+#: templatetags/search_tags.py:20
+msgid "Search"
+msgstr "Suche"
+
+#: conf/settings.py:12
+msgid "Maximum amount search hits to fetch and display."
+msgstr "Maximale Anzahl von Treffern die gehohlt und angezeigt werden."
+
+#: conf/settings.py:13
+msgid "Maximum number of search queries to remember per user."
+msgstr "Maximale Anzahl von Suchanfrage die pro Benutzer gespeichert werden."
+
+#: templates/search_help.html:3
+msgid "Help"
+msgstr "Hilfe"
+
+#: templates/search_help.html:4
+#, python-format
+msgid ""
+"Enter the desired search keywords separated by space.  Only the top "
+"%(search_results_limit)s results will be available."
+msgstr "Die gesuchten Wörter mit Leerzeichen getrennt eingeben.   Nur die %(search_results_limit)s Ergebnisse werden angezeigt."
+
+#: templates/search_results.html:3
+msgid "Search results"
+msgstr "Such-Ergebnisse"
+
+#: templates/search_results.html:19
+#, python-format
+msgid "Elapsed time: %(time_delta)s seconds"
+msgstr "Verstrichene Zeit: %(time_delta)s Sekunden"
+
+#: templatetags/search_tags.py:33
+#, python-format
+msgid "recent searches (maximum of %d)"
+msgstr "Letzte Suchvorgänge (Maximal %d)"

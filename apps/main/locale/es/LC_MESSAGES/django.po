@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-01-02 05:42+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:33
@@ -61,11 +60,9 @@ msgstr "Diagnósticos"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or "
-"by a menu entry."
-msgstr ""
-"Controla si la funcionalidad de búsqueda es proporcionada por una barra "
-"lateral o por una entrada de menú."
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr "Controla si la funcionalidad de búsqueda es proporcionada por una barra lateral o por una entrada de menú."
 
 #: templates/about.html:5
 msgid "About this program"
@@ -79,58 +76,58 @@ msgstr "Versión"
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:183
+#: templates/base.html:193
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:185
+#: templates/base.html:195
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:188
+#: templates/base.html:198
 msgid "User details"
 msgstr "Detalles de usuario"
 
-#: templates/base.html:205
+#: templates/base.html:215
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:205
+#: templates/base.html:215
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:285
+#: templates/base.html:295
 msgid "Secondary menu"
 msgstr "Menú secundario"
 
-#: templates/base.html:301
+#: templates/base.html:311
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Acciones para %(name)s: %(navigation_object)s "
 
-#: templates/base.html:303 templates/base.html.py:346
+#: templates/base.html:313 templates/base.html.py:356
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Acciones para: %(navigation_object)s "
 
-#: templates/base.html:306
+#: templates/base.html:316
 msgid "Available actions"
 msgstr "Acciones disponibles"
 
-#: templates/base.html:318 templates/base.html.py:361
+#: templates/base.html:328 templates/base.html.py:371
 msgid "Related actions"
 msgstr "Acciones relacionadas"
 
-#: templates/base.html:329 templates/base.html.py:374
+#: templates/base.html:339 templates/base.html.py:384
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
 
-#: templates/base.html:344
+#: templates/base.html:354
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Acciones para %(object_name)s: %(navigation_object)s "
 
-#: templates/base.html:349
+#: templates/base.html:359
 msgid "Actions"
 msgstr "Acciones"
 
@@ -142,10 +139,7 @@ msgstr "Sistema de manejo de documentos de código abierto basado en Django"
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration and OCR capabilities"
-msgstr ""
-"Gestor documental de código abierto, basado en Django con metadatos "
-"personaliables, indexación, etiquedado de documentos, integración de "
-"servicio de archivos y capacidades de OCR"
+msgstr "Gestor documental de código abierto, basado en Django con metadatos personaliables, indexación, etiquedado de documentos, integración de servicio de archivos y capacidades de OCR"
 
 #: templates/project_description.html:18
 msgid "Released under the GPL V3 License"

@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2011.
+# Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:18+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-02-03 05:06+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:17 models.py:209 views.py:40
 msgid "roles"
@@ -172,15 +170,15 @@ msgstr "Вы хотите отозвать %(permissions_label)s %(title_suffix)
 
 #: views.py:271 views.py:295
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: views.py:274 views.py:298
 msgid "Groups"
-msgstr ""
+msgstr "Группы"
 
 #: views.py:277 views.py:301
 msgid "Special"
-msgstr ""
+msgstr "Особо"
 
 #: views.py:330
 #, python-format
@@ -204,6 +202,4 @@ msgstr "Предоставить"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr ""
-"Список существующих ролей, которые автоматически назначаются вновь "
-"создаваемым пользователям"
+msgstr "Список существующих ролей, которые автоматически назначаются вновь создаваемым пользователям"

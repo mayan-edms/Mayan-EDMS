@@ -13,7 +13,7 @@ from django.db import transaction
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from documents.models import DocumentType, Document
-from documents.literals import HISTORY_DOCUMENT_CREATED
+from documents.events import HISTORY_DOCUMENT_CREATED
 from document_indexing.api import update_indexes
 from history.api import create_history
 from metadata.models import MetadataType
@@ -114,7 +114,7 @@ class BaseModel(models.Model):
             new_version_data = {}
 
         try:
-            new_version = document.new_version(file=file_object, **new_version_data)
+            new_version = document.new_version(file=file_object, user=user, **new_version_data)
         except Exception:
             # Don't leave the database in a broken state
             # document.delete()

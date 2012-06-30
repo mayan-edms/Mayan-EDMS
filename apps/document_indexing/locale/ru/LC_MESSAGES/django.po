@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
 "PO-Revision-Date: 2012-02-27 04:22+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:36
-#: views.py:280
+#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
+#: views.py:283
 msgid "indexes"
 msgstr "индексы"
 
@@ -27,7 +27,7 @@ msgstr "индексы"
 msgid "index list"
 msgstr "список индекса"
 
-#: __init__.py:33 views.py:74
+#: __init__.py:33 views.py:77
 msgid "create index"
 msgstr "создать индекс"
 
@@ -63,24 +63,24 @@ msgstr "Удаляет и создается с нуля, все индексы 
 msgid "Indexes"
 msgstr "Индексы"
 
-#: api.py:71
+#: api.py:69
 #, python-format
 msgid "Maximum suffix (%s) count reached."
 msgstr "Достигнуто максимальное (%s) число суффиксов "
 
-#: api.py:85
+#: api.py:83
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
 msgstr "Ошибка в выражении обновления индексов документа: %(expression)s; %(exception)s"
 
-#: api.py:96 api.py:111
+#: api.py:92 api.py:107
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
 msgstr "Ошибка при обновлении индекса документа, выражение: %(expression)s; %(exception)s"
 
-#: api.py:150
+#: api.py:149
 #, python-format
 msgid "Unable to delete document indexing node; %s"
 msgstr "Не удается удалить узел индексирования документов; %s."
@@ -117,7 +117,7 @@ msgstr "Не удается удалить каталог индексации; 
 msgid "Available functions: %s"
 msgstr "Доступные функции: %s."
 
-#: models.py:17 views.py:40
+#: models.py:17 views.py:42
 msgid "name"
 msgstr "имя"
 
@@ -125,7 +125,7 @@ msgstr "имя"
 msgid "Internal name used to reference this index."
 msgstr "внутреннее имя, используемое для ссылки на этот индекс."
 
-#: models.py:18 views.py:41
+#: models.py:18 views.py:43
 msgid "title"
 msgstr "название"
 
@@ -133,7 +133,7 @@ msgstr "название"
 msgid "The name that will be visible to users."
 msgstr "Имя, которое будет видно пользователям."
 
-#: models.py:19 models.py:50
+#: models.py:19 models.py:50 views.py:44 views.py:168
 msgid "enabled"
 msgstr "разрешено"
 
@@ -142,8 +142,8 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Этот индекс должен быть видимым и обновляться при изменении данных документа."
 
-#: models.py:41 models.py:47 views.py:101 views.py:132 views.py:159
-#: views.py:195 views.py:225 views.py:265
+#: models.py:41 models.py:47 views.py:104 views.py:135 views.py:161
+#: views.py:198 views.py:228 views.py:268
 msgid "index"
 msgstr "индекс"
 
@@ -241,110 +241,110 @@ msgstr "Восстановление индексов документа"
 msgid "document indexes"
 msgstr "индексы документов"
 
-#: views.py:68
+#: views.py:71
 msgid "Index created successfully."
 msgstr "Индекс создан."
 
-#: views.py:92
+#: views.py:95
 msgid "Index edited successfully"
 msgstr "Индекс изменен"
 
-#: views.py:98
+#: views.py:101
 #, python-format
 msgid "edit index: %s"
 msgstr "редактировать индекс %s"
 
-#: views.py:123
+#: views.py:126
 #, python-format
 msgid "Index: %s deleted successfully."
 msgstr "Индекс %s удален."
 
-#: views.py:125
+#: views.py:128
 #, python-format
 msgid "Index: %(index)s delete error: %(error)s"
 msgstr "Индекс %(index)s - ошибка удаления %(error)s"
 
-#: views.py:137
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the index: %s?"
 msgstr "Удалить индекс %s?"
 
-#: views.py:162
+#: views.py:164
 #, python-format
 msgid "tree template nodes for index: %s"
 msgstr "дерево шаблонных узлов для индекса %s"
 
-#: views.py:165
+#: views.py:167
 msgid "level"
 msgstr "уровень"
 
-#: views.py:186
+#: views.py:189
 msgid "Index template node created successfully."
 msgstr "узел шаблона индексирования создан"
 
-#: views.py:192
+#: views.py:195
 msgid "create child node"
 msgstr "создать дочерний узел"
 
-#: views.py:213
+#: views.py:216
 msgid "Index template node edited successfully"
 msgstr "узел шаблона индексирования изменён"
 
-#: views.py:219
+#: views.py:222
 #, python-format
 msgid "edit index template node: %s"
 msgstr "изменить узел шаблона индексирования %s"
 
-#: views.py:226 views.py:266 views.py:334
+#: views.py:229 views.py:269 views.py:337
 msgid "node"
 msgstr "узел"
 
-#: views.py:248
+#: views.py:251
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr "Узел %s удален."
 
-#: views.py:250
+#: views.py:253
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr "Узел %(node)s - ошибка удаления %(error)s"
 
-#: views.py:259
+#: views.py:262
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr "Вы уверены, что нужно удалить узел шаблона индексирования %s?"
 
-#: views.py:283
+#: views.py:286
 msgid "nodes"
 msgstr "узлы"
 
-#: views.py:316
+#: views.py:319
 #, python-format
 msgid "contents for index: %s"
 msgstr "содержания для индекса: %s."
 
-#: views.py:338
+#: views.py:341
 msgid "items"
 msgstr "членов"
 
-#: views.py:363
+#: views.py:366
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr "Вы уверены, что хотите перестроить все индексы?"
 
-#: views.py:364
+#: views.py:367
 msgid "On large databases this operation may take some time to execute."
 msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
 
-#: views.py:370
+#: views.py:373
 msgid "Index rebuild completed successfully."
 msgstr "восстановление индекса  успешно завершено."
 
-#: views.py:375
+#: views.py:380
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr "Индекс восстановить ошибка: %s"
 
-#: views.py:397
+#: views.py:402
 #, python-format
 msgid "indexes containing: %s"
 msgstr "индексы, содержащие: %s"

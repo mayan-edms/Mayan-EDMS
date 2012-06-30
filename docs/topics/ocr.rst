@@ -10,9 +10,12 @@ processing by settings this options to 0, with other machines or cloud
 instances then connected to the same database doing the OCR processing.
 The document is checked to see if there are text parsers available, is
 no parser is available for that file type then the document is passed
-to tesseract page by page and the results stored per page, this is to
+to Tesseract_ page by page and the results stored per page, this is to
 keep the page image in sync with the transcribed text.  However when
 viewing the document in the details tab all the pages text are
-concatenated and shown to the user. Setting the :setting:`OCR_AUTOMATIC_OCR`
-option to ``True`` would cause all newly uploaded documents to be
-queued automatically for OCR.
+concatenated and shown to the user.  All newly uploaded documents will be
+queued automatically for OCR, if this is not desired setting the :setting:`OCR_AUTOMATIC_OCR`
+option to ``False`` would stop this behavior.
+
+
+.. _Tesseract: http://code.google.com/p/tesseract-ocr/

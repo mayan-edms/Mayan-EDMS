@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 19:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:14 views.py:67
+#: __init__.py:14 views.py:66
 msgid "private keys"
 msgstr ""
 
-#: __init__.py:15 views.py:70
+#: __init__.py:15 views.py:69
 msgid "public keys"
 msgstr ""
 
@@ -41,59 +41,59 @@ msgstr ""
 msgid "key management"
 msgstr ""
 
-#: api.py:19
+#: api.py:24
 msgid "Public"
 msgstr ""
 
-#: api.py:20
+#: api.py:25
 msgid "Secret"
 msgstr ""
 
-#: api.py:28 api.py:33
+#: api.py:33 api.py:38
 msgid "RSA"
 msgstr ""
 
-#: api.py:29
+#: api.py:34
 msgid "DSA"
 msgstr ""
 
-#: api.py:34
+#: api.py:39
 msgid "Elgamal"
 msgstr ""
 
-#: api.py:48
+#: api.py:53
 msgid "Bad signature."
 msgstr ""
 
-#: api.py:52
+#: api.py:57
 msgid "Document not signed or invalid signature."
 msgstr ""
 
-#: api.py:56
+#: api.py:61
 msgid "Signature error."
 msgstr ""
 
-#: api.py:60
+#: api.py:65
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
 
-#: api.py:64
+#: api.py:69
 msgid "Document is signed, and signature is good."
 msgstr ""
 
-#: api.py:68
+#: api.py:73
 msgid "Document is signed with a valid signature."
 msgstr ""
 
-#: api.py:141
+#: api.py:146
 msgid "unknown"
 msgstr ""
 
-#: forms.py:8
+#: forms.py:7
 msgid "Term"
 msgstr ""
 
-#: forms.py:9
+#: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 
@@ -117,43 +117,43 @@ msgstr ""
 msgid "Import keys from keyservers"
 msgstr ""
 
-#: views.py:38
+#: views.py:37
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr ""
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:52
+#: views.py:51
 msgid "Import key"
 msgstr ""
 
-#: views.py:53
+#: views.py:52
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr ""
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr ""
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr ""
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr ""
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr ""
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -161,47 +161,47 @@ msgid ""
 "well."
 msgstr ""
 
-#: views.py:129
+#: views.py:128
 msgid "Query key server"
 msgstr ""
 
-#: views.py:142
+#: views.py:141
 msgid "results"
 msgstr ""
 
-#: views.py:147
+#: views.py:146
 msgid "ID"
 msgstr ""
 
-#: views.py:151
+#: views.py:150
 msgid "type"
 msgstr ""
 
-#: views.py:155
+#: views.py:154
 msgid "creation date"
 msgstr ""
 
-#: views.py:159
+#: views.py:158
 msgid "disabled"
 msgstr ""
 
-#: views.py:163
+#: views.py:162
 msgid "expiration date"
 msgstr ""
 
-#: views.py:167
+#: views.py:166
 msgid "expired"
 msgstr ""
 
-#: views.py:171
+#: views.py:170
 msgid "length"
 msgstr ""
 
-#: views.py:175
+#: views.py:174
 msgid "revoked"
 msgstr ""
 
-#: views.py:180
+#: views.py:179
 msgid "Identifies"
 msgstr ""
 

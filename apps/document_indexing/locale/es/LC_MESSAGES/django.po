@@ -8,18 +8,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
 "PO-Revision-Date: 2012-02-12 19:28+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:36
-#: views.py:280
+#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
+#: views.py:283
 msgid "indexes"
 msgstr "índices"
 
@@ -27,7 +27,7 @@ msgstr "índices"
 msgid "index list"
 msgstr "lista de indices"
 
-#: __init__.py:33 views.py:74
+#: __init__.py:33 views.py:77
 msgid "create index"
 msgstr "crear índice"
 
@@ -63,28 +63,24 @@ msgstr "Borra y crea de la nada todos los índices de documentos."
 msgid "Indexes"
 msgstr "Índices"
 
-#: api.py:71
+#: api.py:69
 #, python-format
 msgid "Maximum suffix (%s) count reached."
 msgstr "Cuenta máxima de sufijo (%s) alcanzada."
 
-#: api.py:85
+#: api.py:83
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error en la expresión de actualización de indexación: %(expression)s; "
-"%(exception)s "
+msgstr "Error en la expresión de actualización de indexación: %(expression)s; %(exception)s "
 
-#: api.py:96 api.py:111
+#: api.py:92 api.py:107
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error actualizando el indice de documento, expresión: %(expression)s; "
-"%(exception)s "
+msgstr "Error actualizando el indice de documento, expresión: %(expression)s; %(exception)s "
 
-#: api.py:150
+#: api.py:149
 #, python-format
 msgid "Unable to delete document indexing node; %s"
 msgstr "No se puede eliminar el nodo de indexación de documento; %s"
@@ -99,9 +95,7 @@ msgstr "No se puede crear el directorio de indexación; %s"
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
-msgstr ""
-"No se puede crear un enlace simbólico, el archivo existe y no puede "
-"eliminarse: %(filepath)s; %(exc)s "
+msgstr "No se puede crear un enlace simbólico, el archivo existe y no puede eliminarse: %(filepath)s; %(exc)s "
 
 #: filesystem.py:71
 #, python-format
@@ -123,7 +117,7 @@ msgstr "No se puede eliminar el directorio de indexación; %s"
 msgid "Available functions: %s"
 msgstr "Funciones disponibles: %s"
 
-#: models.py:17 views.py:40
+#: models.py:17 views.py:42
 msgid "name"
 msgstr "nombre"
 
@@ -131,7 +125,7 @@ msgstr "nombre"
 msgid "Internal name used to reference this index."
 msgstr "Nombre interno que se utiliza para hacer referencia a este índice."
 
-#: models.py:18 views.py:41
+#: models.py:18 views.py:43
 msgid "title"
 msgstr "título"
 
@@ -139,19 +133,17 @@ msgstr "título"
 msgid "The name that will be visible to users."
 msgstr "El nombre que será visible para los usuarios."
 
-#: models.py:19 models.py:50
+#: models.py:19 models.py:50 views.py:44 views.py:168
 msgid "enabled"
 msgstr "habilitado"
 
 #: models.py:19
 msgid ""
 "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Hace que este índice sea visible y actualizado cuando los datos de "
-"documentos cambien."
+msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
 
-#: models.py:41 models.py:47 views.py:101 views.py:132 views.py:159
-#: views.py:195 views.py:225 views.py:265
+#: models.py:41 models.py:47 views.py:104 views.py:135 views.py:161
+#: views.py:198 views.py:228 views.py:268
 msgid "index"
 msgstr "índice"
 
@@ -165,9 +157,7 @@ msgstr "Introduzca una expresión de python para ser evaluada."
 
 #: models.py:50
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Causa que este nodo sea visible y actualizado cuando los datos de los "
-"documentos son cambiados."
+msgstr "Causa que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
 
 #: models.py:51
 msgid "link documents"
@@ -177,9 +167,7 @@ msgstr "enlace de documentos"
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
-msgstr ""
-"Marque esta opción para que el nodo actue como un contenedor de documentos y"
-" no como un padre para mas nodos secundarios."
+msgstr "Marque esta opción para que el nodo actue como un contenedor de documentos y no como un padre para mas nodos secundarios."
 
 #: models.py:57 models.py:63
 msgid "index template node"
@@ -253,112 +241,110 @@ msgstr "Generar índices de documentos"
 msgid "document indexes"
 msgstr "indices de documentos"
 
-#: views.py:68
+#: views.py:71
 msgid "Index created successfully."
 msgstr "Índice creado con exitosamente."
 
-#: views.py:92
+#: views.py:95
 msgid "Index edited successfully"
 msgstr "Índice editado con exitosamente."
 
-#: views.py:98
+#: views.py:101
 #, python-format
 msgid "edit index: %s"
 msgstr "editar Índice: %s"
 
-#: views.py:123
+#: views.py:126
 #, python-format
 msgid "Index: %s deleted successfully."
 msgstr "Índice: %s eliminado exitosamente."
 
-#: views.py:125
+#: views.py:128
 #, python-format
 msgid "Index: %(index)s delete error: %(error)s"
 msgstr "Error al borrar índice: %(index)s, error: %(error)s "
 
-#: views.py:137
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the index: %s?"
 msgstr "¿Seguro que desea eliminar el índice: %s?"
 
-#: views.py:162
+#: views.py:164
 #, python-format
 msgid "tree template nodes for index: %s"
 msgstr "nodos de la plantilla del árbol del índice: %s"
 
-#: views.py:165
+#: views.py:167
 msgid "level"
 msgstr "nivel"
 
-#: views.py:186
+#: views.py:189
 msgid "Index template node created successfully."
 msgstr "Nodo de plantilla de índice creado exitosamente."
 
-#: views.py:192
+#: views.py:195
 msgid "create child node"
 msgstr "crear nodo hijo"
 
-#: views.py:213
+#: views.py:216
 msgid "Index template node edited successfully"
 msgstr "Nodo de la plantilla de índice editado exitosamente"
 
-#: views.py:219
+#: views.py:222
 #, python-format
 msgid "edit index template node: %s"
 msgstr "editar nodo de la plantilla de índice: %s"
 
-#: views.py:226 views.py:266 views.py:334
+#: views.py:229 views.py:269 views.py:337
 msgid "node"
 msgstr "nodo"
 
-#: views.py:248
+#: views.py:251
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr "Nodo: %s eliminado exitosamente."
 
-#: views.py:250
+#: views.py:253
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr "Error de eliminación para nodo: %(node)s, %(error)s "
 
-#: views.py:259
+#: views.py:262
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr "¿Seguro que desea eliminar el nodo de plantilla de indice: %s?"
 
-#: views.py:283
+#: views.py:286
 msgid "nodes"
 msgstr "nodos"
 
-#: views.py:316
+#: views.py:319
 #, python-format
 msgid "contents for index: %s"
 msgstr "contenido del indice: %s"
 
-#: views.py:338
+#: views.py:341
 msgid "items"
 msgstr "artículos"
 
-#: views.py:363
+#: views.py:366
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr "¿Está seguro que desea reconstruir todos los índices?"
 
-#: views.py:364
+#: views.py:367
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en"
-" ejecutarse."
+msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
-#: views.py:370
+#: views.py:373
 msgid "Index rebuild completed successfully."
 msgstr "Reconstrucción de Índices completada exitosamente."
 
-#: views.py:375
+#: views.py:380
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr "Error de reconstrucción de índices: %s"
 
-#: views.py:397
+#: views.py:402
 #, python-format
 msgid "indexes containing: %s"
 msgstr "índices que contienen: %s"
@@ -367,9 +353,7 @@ msgstr "índices que contienen: %s"
 msgid ""
 "A dictionary that maps the index name and where on the filesystem that index"
 " will be mirrored."
-msgstr ""
-"Un diccionario que asigna el nombre del índice y en qué parte del sistema de"
-" archivos dicho índice se va a reflejar."
+msgstr "Un diccionario que asigna el nombre del índice y en qué parte del sistema de archivos dicho índice se va a reflejar."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
@@ -377,7 +361,4 @@ msgstr "¿Que son los índices?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr ""
-"Los índices agrupan documentos en una estructura jerárquica tipo árbol. "
-
-
+msgstr "Los índices agrupan documentos en una estructura jerárquica tipo árbol. "

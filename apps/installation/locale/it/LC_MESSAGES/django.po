@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-06-17 22:19+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: links.py:7
+msgid "installation details"
+msgstr ""
+
+#: permissions.py:7
+msgid "Installation"
+msgstr ""
+
+#: permissions.py:8
+msgid "View installation environment details"
+msgstr ""
+
+#: views.py:26
+#, python-format
+msgid "Distributor ID: %s"
+msgstr ""
+
+#: views.py:27
+#, python-format
+msgid "Description: %s"
+msgstr ""
+
+#: views.py:28
+#, python-format
+msgid "Release: %s"
+msgstr ""
+
+#: views.py:29
+#, python-format
+msgid "Codename: %s"
+msgstr ""
+
+#: views.py:30
+#, python-format
+msgid "System info: %s"
+msgstr ""
+
+#: views.py:31
+#, python-format
+msgid "Platform: %s"
+msgstr ""
+
+#: views.py:32
+#, python-format
+msgid "Processor: %s"
+msgstr ""
+
+#: views.py:36
+msgid "Installation environment details"
+msgstr ""

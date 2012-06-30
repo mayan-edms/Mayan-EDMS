@@ -22,3 +22,11 @@ functionality in the ``Setup menu``
 From this menu, key servers can be queried 
 and the results imported.  Public keys no longer needed can also be deleted 
 from this menu.
+
+Only `GNU Privacy Guard`_ signatures are support at the moment.  In case 
+your installation of GnuPG is non-standard, you can use the :setting:`SIGNATURES_GPG_HOME`
+configuration option to let **Mayan EDMS** find your GPG instance's home directory, used to
+store keyrings and other GPG configuration files.
+
+
+.. _`GNU Privacy Guard`: www.gnupg.org/

@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2011-11-22 19:01+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
+"PO-Revision-Date: 2012-06-17 22:11+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:15
 msgid "file formats"
@@ -475,8 +473,7 @@ msgstr "Magick Image File Format"
 #: literals.py:177
 msgid ""
 "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
-msgstr ""
-"Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:178
 msgid "Raw Bi-level bitmap in least-significant-byte first order"
@@ -637,24 +634,19 @@ msgstr "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #: literals.py:227
 msgid ""
 "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
-msgstr ""
-"24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:228
 msgid ""
 "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
 "1.2.3.3,1.2.3.4)"
-msgstr ""
-"32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
-"1.2.3.3,1.2.3.4)"
+msgstr "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:229
 msgid ""
 "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
 "1.2.3.3,1.2.3.4)"
-msgstr ""
-"8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
-"1.2.3.3,1.2.3.4)"
+msgstr "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:230
 msgid "Portable anymap"
@@ -914,11 +906,10 @@ msgstr "Путь к файлу программs GraphicsMagick."
 
 #: conf/settings.py:15
 msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick, converter.backends.graphicsmagick and converter.backends.python."
-msgstr ""
-"Конвертер графических файлов. Возможные варианты: converter.backends."
-"imagemagick, converter.backends.graphicsmagick и converter.backends.python."
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick, converter.backends.graphicsmagick and "
+"converter.backends.python."
+msgstr "Конвертер графических файлов. Возможные варианты: converter.backends.imagemagick, converter.backends.graphicsmagick и converter.backends.python."
 
 #: conf/settings.py:16
 msgid "Path to the unoconv program."
@@ -926,11 +917,13 @@ msgstr "Путь к программе unoconv."
 
 #: conf/settings.py:17
 msgid ""
-"Use alternate method of connection to LibreOffice using a pipe, it is slower "
-"but less prone to segmentation faults."
+"Use alternate method of connection to LibreOffice using a pipe, it is slower"
+" but less prone to segmentation faults."
+msgstr "Использовать альтернативный способ подключения к LibreOffice использованием конвейера pipe, это медленнее, но менее опасно ошибкой сегментации."
+
+#: conf/settings.py:18
+msgid "Path to the libreoffice program."
 msgstr ""
-"Использовать альтернативный способ подключения к LibreOffice использованием "
-"конвейера pipe, это медленнее, но менее опасно ошибкой сегментации."
 
 #: templates/converter_file_formats_help.html:3
 msgid "Help"
@@ -941,5 +934,4 @@ msgstr "Помощь"
 msgid ""
 "These are the file formats supported by the currently selected converter "
 "backend.  In this case: '%(backend)s'"
-msgstr ""
-"Эти форматы поддерживают выбранный конвертер. Сейчас это: '%(backend)s'"
+msgstr "Эти форматы поддерживают выбранный конвертер. Сейчас это: '%(backend)s'"

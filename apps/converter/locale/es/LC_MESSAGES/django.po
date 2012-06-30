@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2011-12-14 14:37+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
+"PO-Revision-Date: 2012-06-17 22:21+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:15
@@ -474,8 +473,7 @@ msgstr "Magick Image File Format"
 #: literals.py:177
 msgid ""
 "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
-msgstr ""
-"Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:178
 msgid "Raw Bi-level bitmap in least-significant-byte first order"
@@ -636,24 +634,19 @@ msgstr "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #: literals.py:227
 msgid ""
 "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
-msgstr ""
-"24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:228
 msgid ""
 "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
 "1.2.3.3,1.2.3.4)"
-msgstr ""
-"32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
-"1.2.3.3,1.2.3.4)"
+msgstr "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:229
 msgid ""
 "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
 "1.2.3.3,1.2.3.4)"
-msgstr ""
-"8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
-"1.2.3.3,1.2.3.4)"
+msgstr "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:230
 msgid "Portable anymap"
@@ -913,11 +906,10 @@ msgstr "Ruta de archivo al programa imagemagick."
 
 #: conf/settings.py:15
 msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick, converter.backends.graphicsmagick and converter.backends.python."
-msgstr ""
-"Manejador de conversión a usarse.  Opciones son: converter.backends."
-"imagemagick, converter.backends.graphicsmagick y converter.backends.python."
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick, converter.backends.graphicsmagick and "
+"converter.backends.python."
+msgstr "Manejador de conversión a usarse.  Opciones son: converter.backends.imagemagick, converter.backends.graphicsmagick y converter.backends.python."
 
 #: conf/settings.py:16
 msgid "Path to the unoconv program."
@@ -925,11 +917,13 @@ msgstr "Ruta de acceso al programa de unoconv."
 
 #: conf/settings.py:17
 msgid ""
-"Use alternate method of connection to LibreOffice using a pipe, it is slower "
-"but less prone to segmentation faults."
-msgstr ""
-"Utilizar el método alternativo de conexión a LibreOffice con un tubo, es más "
-"lento pero menos propensos a fallos de segmentación."
+"Use alternate method of connection to LibreOffice using a pipe, it is slower"
+" but less prone to segmentation faults."
+msgstr "Utilizar el método alternativo de conexión a LibreOffice con un tubo, es más lento pero menos propensos a fallos de segmentación."
+
+#: conf/settings.py:18
+msgid "Path to the libreoffice program."
+msgstr "Ruta de acceso al programa LibreOffice."
 
 #: templates/converter_file_formats_help.html:3
 msgid "Help"
@@ -940,6 +934,4 @@ msgstr "Ayuda"
 msgid ""
 "These are the file formats supported by the currently selected converter "
 "backend.  In this case: '%(backend)s'"
-msgstr ""
-"Estos son los formatos de archivo apoyados por el servidor del convertidor "
-"seleccionado.  En este caso: '%(backend)s'"
+msgstr "Estos son los formatos de archivo apoyados por el servidor del convertidor seleccionado.  En este caso: '%(backend)s'"

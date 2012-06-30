@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2011-11-04 00:46+0000\n"
 "Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
-"team/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: conf/settings.py:10
@@ -24,10 +23,7 @@ msgid ""
 "CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
 "cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
 "warehouse."
-msgstr ""
-"Tema CSS a ser aplicado, as opções são: amro, bec, bec-green, blue, default, "
-"djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish "
-"and warehouse."
+msgstr "Tema CSS a ser aplicado, as opções são: amro, bec, bec-green, blue, default, djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and warehouse."
 
 #: conf/settings.py:12
 msgid "Display extra information in the login screen."
@@ -66,9 +62,7 @@ msgstr "Redirecionando você para o ponto de entrada do site em 5 segundos."
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr ""
-"Ou clique <a href=\"%(LOGIN_REDIRECT_URL)s\">aqui</a> se o redirecionamento "
-"não funcionar."
+msgstr "Ou clique <a href=\"%(LOGIN_REDIRECT_URL)s\">aqui</a> se o redirecionamento não funcionar."
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8

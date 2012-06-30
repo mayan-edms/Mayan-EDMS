@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
 "PO-Revision-Date: 2012-02-21 20:50+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/language/pl/)\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:36
-#: views.py:280
+#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
+#: views.py:283
 msgid "indexes"
 msgstr "indeksy"
 
@@ -27,7 +27,7 @@ msgstr "indeksy"
 msgid "index list"
 msgstr "Lista główna"
 
-#: __init__.py:33 views.py:74
+#: __init__.py:33 views.py:77
 msgid "create index"
 msgstr "tworzenie indeksu"
 
@@ -63,24 +63,24 @@ msgstr "Usuwa i tworzy od podstaw wszystkie indeksy dokumentów."
 msgid "Indexes"
 msgstr "Indeksy"
 
-#: api.py:71
+#: api.py:69
 #, python-format
 msgid "Maximum suffix (%s) count reached."
 msgstr "Maximum suffix (%s) count reached."
 
-#: api.py:85
+#: api.py:83
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
 msgstr "Error in document indexing update expression: %(expression)s; %(exception)s"
 
-#: api.py:96 api.py:111
+#: api.py:92 api.py:107
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
 msgstr "Error updating document index, expression: %(expression)s; %(exception)s"
 
-#: api.py:150
+#: api.py:149
 #, python-format
 msgid "Unable to delete document indexing node; %s"
 msgstr "Unable to delete document indexing node; %s"
@@ -117,7 +117,7 @@ msgstr "Nie można usunąć katalogu indeksowania;%s"
 msgid "Available functions: %s"
 msgstr "Dostępne funkcje:%s"
 
-#: models.py:17 views.py:40
+#: models.py:17 views.py:42
 msgid "name"
 msgstr "nazwa"
 
@@ -125,7 +125,7 @@ msgstr "nazwa"
 msgid "Internal name used to reference this index."
 msgstr "Wewnętrzna nazwa używana do odniesienia tego indeksu."
 
-#: models.py:18 views.py:41
+#: models.py:18 views.py:43
 msgid "title"
 msgstr "tytuł"
 
@@ -133,7 +133,7 @@ msgstr "tytuł"
 msgid "The name that will be visible to users."
 msgstr "Nazwa, która będzie widoczna dla użytkowników."
 
-#: models.py:19 models.py:50
+#: models.py:19 models.py:50 views.py:44 views.py:168
 msgid "enabled"
 msgstr "włączony"
 
@@ -142,8 +142,8 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany danych dokumentów."
 
-#: models.py:41 models.py:47 views.py:101 views.py:132 views.py:159
-#: views.py:195 views.py:225 views.py:265
+#: models.py:41 models.py:47 views.py:104 views.py:135 views.py:161
+#: views.py:198 views.py:228 views.py:268
 msgid "index"
 msgstr "index"
 
@@ -241,110 +241,110 @@ msgstr "Odbuduj indeksy dokumentów"
 msgid "document indexes"
 msgstr "Indeksy dokumentów"
 
-#: views.py:68
+#: views.py:71
 msgid "Index created successfully."
 msgstr "Indeks został utworzony pomyślnie."
 
-#: views.py:92
+#: views.py:95
 msgid "Index edited successfully"
 msgstr "Index edited successfully"
 
-#: views.py:98
+#: views.py:101
 #, python-format
 msgid "edit index: %s"
 msgstr "edycja indeksu:%s"
 
-#: views.py:123
+#: views.py:126
 #, python-format
 msgid "Index: %s deleted successfully."
 msgstr "Index:%s został usunięty."
 
-#: views.py:125
+#: views.py:128
 #, python-format
 msgid "Index: %(index)s delete error: %(error)s"
 msgstr "Index: %(index)s  błąd usuwania: %(error)s "
 
-#: views.py:137
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the index: %s?"
 msgstr "Czy na pewno usunąć indeks:%s ?"
 
-#: views.py:162
+#: views.py:164
 #, python-format
 msgid "tree template nodes for index: %s"
 msgstr "tree template nodes for index: %s"
 
-#: views.py:165
+#: views.py:167
 msgid "level"
 msgstr "level"
 
-#: views.py:186
+#: views.py:189
 msgid "Index template node created successfully."
 msgstr "Index template node created successfully."
 
-#: views.py:192
+#: views.py:195
 msgid "create child node"
 msgstr "create child node"
 
-#: views.py:213
+#: views.py:216
 msgid "Index template node edited successfully"
 msgstr "Index template node edited successfully"
 
-#: views.py:219
+#: views.py:222
 #, python-format
 msgid "edit index template node: %s"
 msgstr ""
 
-#: views.py:226 views.py:266 views.py:334
+#: views.py:229 views.py:269 views.py:337
 msgid "node"
 msgstr "node"
 
-#: views.py:248
+#: views.py:251
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr ""
 
-#: views.py:250
+#: views.py:253
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:259
+#: views.py:262
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr ""
 
-#: views.py:283
+#: views.py:286
 msgid "nodes"
 msgstr ""
 
-#: views.py:316
+#: views.py:319
 #, python-format
 msgid "contents for index: %s"
 msgstr "Zawartość dla indeksu:%s"
 
-#: views.py:338
+#: views.py:341
 msgid "items"
 msgstr "pozycji"
 
-#: views.py:363
+#: views.py:366
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr "Czy na pewno chcesz odbudować wszystkie indeksy?"
 
-#: views.py:364
+#: views.py:367
 msgid "On large databases this operation may take some time to execute."
 msgstr "Na dużych bazach danych operacja może chwilę potrwać."
 
-#: views.py:370
+#: views.py:373
 msgid "Index rebuild completed successfully."
 msgstr "Główna odbudowa zakończyła się pomyślnie."
 
-#: views.py:375
+#: views.py:380
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr "Index rebuild error: %s"
 
-#: views.py:397
+#: views.py:402
 #, python-format
 msgid "indexes containing: %s"
 msgstr "indeksy zawierające:%s"

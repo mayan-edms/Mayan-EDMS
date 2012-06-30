@@ -21,7 +21,6 @@ previews are then created on demand for the different sizes requested
 (thumbnail, page preview, full preview) and rotated interactively
 in the details view.
 
-
 Office document conversion however won't always work as expected because
 LibreOffice_ do not provide proper API's, so subprocess calling,
 temporary files and other black magic needs to be invoked to get it
@@ -29,6 +28,13 @@ properly integrated.  **Mayan EDMS** treats documents as collections of pages
 or frames, and text extraction and OCR is done per page not per document,
 thats why even text documents need to be rendered by LibreOffice_
 before they can be previewed and text can be extracted.
+
+Version 0.12.1 introduced a new method of converting office documents, this
+new method doesn't require the use of the command line utility ``UNOCONV``.
+If this new method proves to continue working better than previous solutions the use
+of ``UNOCONV`` may be deprecated in the future.  The new conversion method
+adds just one new configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
+which defaults to '/usr/bin/libreoffice'.
 
 
 .. _PDF: http://en.wikipedia.org/wiki/Portable_Document_Format

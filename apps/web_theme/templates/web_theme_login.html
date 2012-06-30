@@ -1,6 +1,7 @@
 {% extends "web_theme_base.html" %}
 {% load i18n %}
 {% load theme_tags %}
+{% load autoadmin_tags %}
 
 {% block web_theme_head %}
     {% if user.is_authenticated %}
@@ -28,27 +29,42 @@
         {% endblock %}
     {% else %}
         {% block content_plain %}
+            {% auto_admin_properties %}
+            {% if auto_admin_properties.account %}
                 <div id="box">
-                    <h1>{% block project_name %}{% endblock %}</h1>
                     <div class="block" id="block-login">
-                        <h2>{% trans "Login" %}</h2>
+                        <h2>{% trans "First time login" %}</h2>
                         <div class="content login">
-                            <form action="." method="post" class="form login">{% csrf_token %}
-                                <div class="group wat-cf">
-                                    {% include "generic_form_instance.html" %}
-                                    <input type="hidden" name="next" value="{{ next|escape }}" />
-                                    <div class="group navform wat-cf">
-                                    <button class="button" type="submit">
-                                        <img src="{{ STATIC_URL }}web_theme_media/images/icons/key.png" alt="Save" /> Login
-                                    </button>
-                                </div>
-                            </form>
+                            <p>{% trans "You have just finished installing <strong>Mayan EDMS</strong>, congratulations!" %}</p>
+                            <p>{% trans "Login using the following credentials:" %}</p>
+                            <p>{% blocktrans with auto_admin_properties.account as account %}Username: <strong>{{ account }}</strong>{% endblocktrans %}</p> 
+                            <p>{% blocktrans with auto_admin_properties.password as password %}Password: <strong>{{ password }}</strong>{% endblocktrans %}</p>
+                            <p>{% trans "Be sure to change the password to increase security and to disable this message." %}</p>
                         </div>
                     </div>
                 </div>
-                {% get_web_theme_setting "VERBOSE_LOGIN" as verbose_login %}
-                {% if verbose_login %}
-                    {% include "verbose_login.html" %}
-                {% endif %}
+            {% endif %}
+            <div id="box">
+                <h1>{% block project_name %}{% endblock %}</h1>
+                <div class="block" id="block-login">
+                    <h2>{% trans "Login" %}</h2>
+                    <div class="content login">
+                        <form action="." method="post" class="form login">{% csrf_token %}
+                            <div class="group wat-cf">
+                                {% include "generic_form_instance.html" %}
+                                <input type="hidden" name="next" value="{{ next|escape }}" />
+                                <div class="group navform wat-cf">
+                                <button class="button" type="submit">
+                                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/key.png" alt="Save" /> Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% get_web_theme_setting "VERBOSE_LOGIN" as verbose_login %}
+            {% if verbose_login %}
+                {% include "verbose_login.html" %}
+            {% endif %}
         {% endblock %}
     {% endif %}

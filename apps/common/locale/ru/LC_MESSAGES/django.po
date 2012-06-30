@@ -1,42 +1,40 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2011.
+# Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:18+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
+"PO-Revision-Date: 2012-02-03 06:36+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:20
+#: __init__.py:22
 msgid "change password"
 msgstr "Изменение пароля"
 
-#: __init__.py:21
+#: __init__.py:23
 msgid "user details"
 msgstr "сведения о пользователе"
 
-#: __init__.py:22
+#: __init__.py:24
 msgid "edit details"
 msgstr "изменение сведений"
 
-#: __init__.py:26 __init__.py:31
+#: __init__.py:28 __init__.py:33
 msgid "about"
 msgstr "инфо"
 
-#: __init__.py:27
+#: __init__.py:29
 msgid "license"
 msgstr "лицензия"
 
@@ -52,9 +50,7 @@ msgstr "Email"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"Пожалуйста, введите правильный адрес электронной почты и пароль с учетом "
-"регистра."
+msgstr "Пожалуйста, введите правильный адрес электронной почты и пароль с учетом регистра."
 
 #: forms.py:146
 msgid "This account is inactive."
@@ -102,15 +98,15 @@ msgstr "Пейзаж"
 
 #: models.py:16
 msgid "lock field"
-msgstr ""
+msgstr "блокировка поля"
 
 #: models.py:43
 msgid "Anonymous user"
-msgstr ""
+msgstr "Анонимный пользователь"
 
 #: models.py:46 models.py:47
 msgid "anonymous user"
-msgstr ""
+msgstr "анонимный пользователь"
 
 #: utils.py:295
 msgid "function found"
@@ -153,7 +149,7 @@ msgstr "данные пользователя"
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
-msgstr ""
+msgstr "Другой пользователь укеазал тот же е-мейл."
 
 #: views.py:190
 msgid "Current user's details updated."
@@ -169,7 +165,7 @@ msgstr "Лицензия"
 
 #: views.py:239
 msgid "Current user password change"
-msgstr ""
+msgstr "Изменить пароль пользователя"
 
 #: views.py:254 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
@@ -182,24 +178,19 @@ msgstr "Ни один"
 #: conf/settings.py:15
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Временный каталог, используемый сайтом для хранения миниатюр, превью и "
-"временных файлов. Если он не указан, он будет создан с использованием "
-"tempfile.mkdtemp ()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Временный каталог, используемый сайтом для хранения миниатюр, превью и временных файлов. Если он не указан, он будет создан с использованием tempfile.mkdtemp ()"
 
 #: conf/settings.py:65
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Управление механизмом, используемым для аутентификации пользователя. "
-"Возможные варианты: имя пользователя, адрес электронной почты"
+msgstr "Управление механизмом, используемым для аутентификации пользователя. Возможные варианты: имя пользователя, адрес электронной почты"
 
 #: conf/settings.py:74
 msgid "Allow non authenticated users, access to all views"
-msgstr ""
+msgstr "Разрешить, не прошедшим проверку, пользователям доступ ко всем представлениям"
 
 #: templates/403.html:3 templates/403.html.py:7
 msgid "Insufficient permissions"
@@ -305,7 +296,7 @@ msgstr "Выполнить"
 
 #: templates/generic_form_subtemplate.html:87
 msgid "Cancel"
-msgstr ""
+msgstr "Отменить"
 
 #: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
 #, python-format
@@ -318,9 +309,7 @@ msgstr "Список \"%(stripped_title)s\""
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Список %(title)s (%(start)s - %(end)s из %(total)s) (Page %(page_number)s из "
-"%(total_pages)s)"
+msgstr "Список %(title)s (%(start)s - %(end)s из %(total)s) (Page %(page_number)s из %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26

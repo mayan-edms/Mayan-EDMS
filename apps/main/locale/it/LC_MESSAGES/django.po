@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Carlo Zanatto <>, 2012.
 #   <pierpaolo.baldan@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-21 16:42+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-06-08 07:41+0000\n"
+"Last-Translator: Carlo Zanatto <>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,7 +68,7 @@ msgstr "Controlla se la funzionalità di ricerca è fornita da un widget sidebar
 
 #: templates/about.html:5
 msgid "About this program"
-msgstr "Rigurdo a questo programma"
+msgstr "Info su questo programma"
 
 #: templates/about.html:9 templates/verbose_login.html:4
 msgid "Version"
@@ -77,58 +78,58 @@ msgstr "Versione"
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:183
+#: templates/base.html:193
 msgid "User"
 msgstr "Utente"
 
-#: templates/base.html:185
+#: templates/base.html:195
 msgid "Anonymous"
 msgstr "Anonimo"
 
-#: templates/base.html:188
+#: templates/base.html:198
 msgid "User details"
 msgstr "Dettagli utente"
 
-#: templates/base.html:205
+#: templates/base.html:215
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:205
+#: templates/base.html:215
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:285
+#: templates/base.html:295
 msgid "Secondary menu"
 msgstr "Menu secondario"
 
-#: templates/base.html:301
+#: templates/base.html:311
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Azione per %(name)s: %(navigation_object)s"
 
-#: templates/base.html:303 templates/base.html.py:346
+#: templates/base.html:313 templates/base.html.py:356
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Azione per : %(navigation_object)s"
 
-#: templates/base.html:306
+#: templates/base.html:316
 msgid "Available actions"
 msgstr "Azioni disponibili"
 
-#: templates/base.html:318 templates/base.html.py:361
+#: templates/base.html:328 templates/base.html.py:371
 msgid "Related actions"
 msgstr "Azioni relative"
 
-#: templates/base.html:329 templates/base.html.py:374
+#: templates/base.html:339 templates/base.html.py:384
 msgid "Other available actions"
 msgstr "Altre azioni disponibili"
 
-#: templates/base.html:344
+#: templates/base.html:354
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Azioni per %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:349
+#: templates/base.html:359
 msgid "Actions"
 msgstr "Azioni"
 

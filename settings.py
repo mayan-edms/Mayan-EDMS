@@ -2,6 +2,8 @@
 import os
 import sys
 
+ugettext = lambda s: s
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), './'))
 
 sys.path.append(os.path.join(PROJECT_ROOT, 'modules'))
@@ -42,10 +44,7 @@ TIME_ZONE = 'America/Puerto_Rico'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-#LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'en'
-
-ugettext = lambda s: s
 
 LANGUAGES = (
     ('en', ugettext('English')),
@@ -54,6 +53,7 @@ LANGUAGES = (
     ('ru', ugettext('Russian')),
     ('it', ugettext('Italian')),
     ('pl', ugettext('Polish')),
+    ('de', ugettext('German')),
 )
 
 SITE_ID = 1
@@ -157,7 +157,7 @@ INSTALLED_APPS = (
     'mimetype',
     'scheduler',
     'job_processor',
-    'feedback',
+    'installation',
 # Mayan EDMS
     'storage',
     'folders',
@@ -174,6 +174,7 @@ INSTALLED_APPS = (
     'main',
     'rest_api',
     'document_signatures',
+    'checkouts',
 
 # Has to be last so the other apps can register it's signals
     'signaler',

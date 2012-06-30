@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-02-02 18:29+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:17
@@ -55,18 +54,17 @@ msgstr "crear condicion"
 msgid "ACLs"
 msgstr "LCAs"
 
-#: forms.py:50
+#: forms.py:48
 msgid "Pages"
 msgstr "Páginas"
 
-#: forms.py:56
+#: forms.py:54
 msgid "Select"
 msgstr "Seleccionar"
 
-#: forms.py:63
+#: forms.py:61
 msgid "Click on the image for full size view of the first page."
-msgstr ""
-"Haga clic en la imagen para ver el tamaño completo de la primera página."
+msgstr "Haga clic en la imagen para ver el tamaño completo de la primera página."
 
 #: literals.py:7
 msgid "and"
@@ -149,10 +147,7 @@ msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
-msgstr ""
-"Esta expresión sera evaluada con respecto al documento seleccionado actual.  "
-"Los metadatos del documento están disponible como variables `metadata` y las "
-"propiedades del documento en la variable `document`."
+msgstr "Esta expresión sera evaluada con respecto al documento seleccionado actual.  Los metadatos del documento están disponible como variables `metadata` y las propiedades del documento en la variable `document`."
 
 #: models.py:14 models.py:33 views.py:136 views.py:232
 msgid "enabled"
@@ -174,10 +169,7 @@ msgstr "datos de documento foráneo"
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
-msgstr ""
-"Esto representa los metadatos de todos los demás documentos.  Objetos "
-"disponibles: `document.<attributo>` y `metadata.<nombre de tipo de "
-"metadata>`."
+msgstr "Esto representa los metadatos de todos los demás documentos.  Objetos disponibles: `document.<attributo>` y `metadata.<nombre de tipo de metadata>`."
 
 #: models.py:31
 msgid "expression"
@@ -223,26 +215,26 @@ msgstr "Eliminar enlaces inteligentes"
 msgid "Edit smart links"
 msgstr "Editar enlaces inteligentes"
 
-#: views.py:40
+#: views.py:41
 msgid "No action selected."
 msgstr "Ninguna acción seleccionada."
 
-#: views.py:59
+#: views.py:60
 #, python-format
 msgid "documents in smart link: %(group)s"
 msgstr "documentos en el enlace inteligente: %(group)s"
 
-#: views.py:75
+#: views.py:76
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Error en consulta de enlace inteligente: %s"
 
-#: views.py:97
+#: views.py:98
 #, python-format
 msgid "smart links (%s)"
 msgstr "enlaces inteligentes (%s)"
 
-#: views.py:111
+#: views.py:112
 msgid "There no defined smart links for the current document."
 msgstr "No hay enlaces inteligentes definidos para el documento actual."
 
@@ -273,8 +265,7 @@ msgstr "Enlace inteligente: %s eliminado exitosamente."
 #: views.py:204
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(error)s."
-msgstr ""
-"Error al tratar de eliminar enlace inteligente: %(smart_link)s; %(error)s."
+msgstr "Error al tratar de eliminar enlace inteligente: %(smart_link)s; %(error)s."
 
 #: views.py:213
 #, python-format
@@ -318,20 +309,16 @@ msgstr "Condición de enlace inteligente: \"%s\" ha eliminada exitosamente."
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
-msgstr ""
-"Error al tratar de eliminar la condición de enlace inteligente: "
-"%(smart_link_condition)s; %(error)s."
+msgstr "Error al tratar de eliminar la condición de enlace inteligente: %(smart_link_condition)s; %(error)s."
 
 #: views.py:333
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
-"¿Está seguro que desea eliminar la condición de enlace inteligente: \"%s\"?"
+msgstr "¿Está seguro que desea eliminar la condición de enlace inteligente: \"%s\"?"
 
 #: conf/settings.py:11
 msgid "Show smart link that don't return any documents."
-msgstr ""
-"Mostrar enlace inteligente que no devuelven ningun documentos como resultado."
+msgstr "Mostrar enlace inteligente que no devuelven ningun documentos como resultado."
 
 #: templates/smart_links_help.html:3
 msgid "What are smart links?"
@@ -344,10 +331,4 @@ msgid ""
 "source, the results of these queries are a list of documents that relate in "
 "some manner to the document being displayed and allow users the ability to "
 "jump to and from linked documents very easily."
-msgstr ""
-"Enlaces inteligentes son un conjunto de condiciones que se utilizan para "
-"consultar la base de datos en relacion al documento actual que el usuario "
-"está accediendo, los resultados de estas consultas son una lista de "
-"documentos que se relacionan de alguna manera al documento que se muestra y "
-"permite a los usuarios la capacidad de navegar entre los documentos "
-"vinculados con mucha facilidad."
+msgstr "Enlaces inteligentes son un conjunto de condiciones que se utilizan para consultar la base de datos en relacion al documento actual que el usuario está accediendo, los resultados de estas consultas son una lista de documentos que se relacionan de alguna manera al documento que se muestra y permite a los usuarios la capacidad de navegar entre los documentos vinculados con mucha facilidad."

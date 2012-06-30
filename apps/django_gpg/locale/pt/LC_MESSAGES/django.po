@@ -1,29 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-02-02 18:20+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
-"team/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:14 views.py:67
+#: __init__.py:14 views.py:66
 msgid "private keys"
 msgstr "chaves privadas"
 
-#: __init__.py:15 views.py:70
+#: __init__.py:15 views.py:69
 msgid "public keys"
 msgstr "chaves públicas"
 
@@ -43,59 +42,59 @@ msgstr ""
 msgid "key management"
 msgstr ""
 
-#: api.py:19
+#: api.py:24
 msgid "Public"
 msgstr "Público"
 
-#: api.py:20
+#: api.py:25
 msgid "Secret"
 msgstr "Segredo"
 
-#: api.py:28 api.py:33
+#: api.py:33 api.py:38
 msgid "RSA"
 msgstr "RSA"
 
-#: api.py:29
+#: api.py:34
 msgid "DSA"
 msgstr "DSA"
 
-#: api.py:34
+#: api.py:39
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: api.py:48
+#: api.py:53
 msgid "Bad signature."
 msgstr "Assinatura ruim."
 
-#: api.py:52
+#: api.py:57
 msgid "Document not signed or invalid signature."
 msgstr "Documento não assinado ou inválido assinatura."
 
-#: api.py:56
+#: api.py:61
 msgid "Signature error."
 msgstr "Erro de assinatura."
 
-#: api.py:60
+#: api.py:65
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
 
-#: api.py:64
+#: api.py:69
 msgid "Document is signed, and signature is good."
 msgstr ""
 
-#: api.py:68
+#: api.py:73
 msgid "Document is signed with a valid signature."
 msgstr ""
 
-#: api.py:141
+#: api.py:146
 msgid "unknown"
 msgstr "desconhecido"
 
-#: forms.py:8
+#: forms.py:7
 msgid "Term"
 msgstr ""
 
-#: forms.py:9
+#: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 
@@ -119,43 +118,43 @@ msgstr "Consulta servidores de chaves"
 msgid "Import keys from keyservers"
 msgstr ""
 
-#: views.py:38
+#: views.py:37
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr ""
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:52
+#: views.py:51
 msgid "Import key"
 msgstr "Importar chave"
 
-#: views.py:53
+#: views.py:52
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Você tem certeza que deseja importar chave: %s?"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "ID da chave"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "Proprietário"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Chave: %s, apagado com sucesso."
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr "Excluir chave"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -163,47 +162,47 @@ msgid ""
 "well."
 msgstr ""
 
-#: views.py:129
+#: views.py:128
 msgid "Query key server"
 msgstr "Consultar servidor de chaves"
 
-#: views.py:142
+#: views.py:141
 msgid "results"
 msgstr "resultados"
 
-#: views.py:147
+#: views.py:146
 msgid "ID"
 msgstr "ID"
 
-#: views.py:151
+#: views.py:150
 msgid "type"
 msgstr "tipo"
 
-#: views.py:155
+#: views.py:154
 msgid "creation date"
 msgstr "data de criação"
 
-#: views.py:159
+#: views.py:158
 msgid "disabled"
 msgstr "desativada"
 
-#: views.py:163
+#: views.py:162
 msgid "expiration date"
 msgstr "data de validade"
 
-#: views.py:167
+#: views.py:166
 msgid "expired"
 msgstr "expirado"
 
-#: views.py:171
+#: views.py:170
 msgid "length"
 msgstr "comprimento"
 
-#: views.py:175
+#: views.py:174
 msgid "revoked"
 msgstr ""
 
-#: views.py:180
+#: views.py:179
 msgid "Identifies"
 msgstr ""
 
