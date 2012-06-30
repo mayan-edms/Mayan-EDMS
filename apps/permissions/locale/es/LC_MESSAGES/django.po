@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-02-12 00:25+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:17 models.py:209 views.py:40
@@ -151,8 +150,7 @@ msgstr "%(requester)s, ya tenía el permiso \"%(permission)s\" concedido."
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"¿Está seguro que desea otorgar el %(permissions_label)s %(title_suffix)s?"
+msgstr "¿Está seguro que desea otorgar el %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:222
 #, python-format
@@ -168,8 +166,7 @@ msgstr "%(requester)s, no tiene el permiso \"%(permission)s\" concedido."
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"¿Estás seguro que quiere revocar el %(permissions_label)s %(title_suffix)s?"
+msgstr "¿Estás seguro que quiere revocar el %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:271 views.py:295
 msgid "Users"
@@ -205,6 +202,4 @@ msgstr "Otorgar"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr ""
-"Una lista de funciones existentes que se asignan automáticamente a los "
-"usuarios nuevos"
+msgstr "Una lista de funciones existentes que se asignan automáticamente a los usuarios nuevos"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 19:02-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:20
+#: __init__.py:22
 msgid "change password"
 msgstr ""
 
-#: __init__.py:21
+#: __init__.py:23
 msgid "user details"
 msgstr ""
 
-#: __init__.py:22
+#: __init__.py:24
 msgid "edit details"
 msgstr ""
 
-#: __init__.py:26 __init__.py:31
+#: __init__.py:28 __init__.py:33
 msgid "about"
 msgstr ""
 
-#: __init__.py:27
+#: __init__.py:29
 msgid "license"
 msgstr ""
 

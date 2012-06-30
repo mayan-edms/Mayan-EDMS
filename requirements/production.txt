@@ -58,4 +58,15 @@ requests==0.13.1
 -e git+https://github.com/toastdriven/django-haystack.git@c6fd81d4163eb816476a853d416b68757e0c7ca4#egg=django_haystack-dev
 Whoosh==2.3.2
 Unidecode==0.04.9
+
+# Navigation
+
+pbs==0.105
+
+# Installation
+
+psutil==0.5.0
+
+# Misc
+
 elementtree==1.2.7-20070827-preview

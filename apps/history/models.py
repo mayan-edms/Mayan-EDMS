@@ -19,7 +19,14 @@ class HistoryType(models.Model):
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
 
     def __unicode__(self):
-        return u'%s - %s' % (self.namespace, self.name)
+        try:
+            return unicode(history_types_dict[self.namespace][self.name]['label'])
+        except KeyError:
+            return u'obsolete history type: %s - %s' % (self.namespace, self.name)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('history_type_list', [self.pk])
 
     class Meta:
         ordering = ('namespace', 'name')

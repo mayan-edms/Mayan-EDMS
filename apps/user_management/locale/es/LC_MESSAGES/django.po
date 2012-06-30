@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-02-02 18:30+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"mayan-edms/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:13
@@ -123,9 +122,7 @@ msgstr "¿Tiene contraseña utilizable?"
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite editar el super usuario y usuario de personal, use la interfaz "
-"de administración para estos casos."
+msgstr "No se permite editar el super usuario y usuario de personal, use la interfaz de administración para estos casos."
 
 #: views.py:68
 #, python-format
@@ -154,9 +151,7 @@ msgstr "Debe proveer al menos un usuario."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite eliminar el super usuario y usuario de personal, use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite eliminar el super usuario y usuario de personal, use la interfaz de administración para estos casos."
 
 #: views.py:126
 #, python-format
@@ -186,9 +181,7 @@ msgstr "Las contraseñas no coinciden, vuelva a intentarlo."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"No se permite cambiar la contraseña del super usuario y usuarios de "
-"personal, use la interfaz de administración para estos casos."
+msgstr "No se permite cambiar la contraseña del super usuario y usuarios de personal, use la interfaz de administración para estos casos."
 
 #: views.py:187
 #, python-format
@@ -198,8 +191,7 @@ msgstr "Restablecimiento exitoso de contraseña para el usuario: %s."
 #: views.py:189
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Error de restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
+msgstr "Error de restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
 
 #: views.py:205
 #, python-format

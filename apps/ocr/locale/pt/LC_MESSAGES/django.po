@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Renata Oliveira <renatabels@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/"
-"team/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:32 __init__.py:33
@@ -48,9 +47,7 @@ msgstr "limpar conteúdo das páginas"
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr ""
-"Executa um filtro de linguagem para remover erros comuns de OCR do conteúdo "
-"das páginas do documento."
+msgstr "Executa um filtro de linguagem para remover erros comuns de OCR do conteúdo das páginas do documento."
 
 #: __init__.py:44
 msgid "queue document list"
@@ -104,85 +101,85 @@ msgstr "processamento"
 msgid "error"
 msgstr "erro"
 
-#: models.py:26
+#: models.py:27
 msgid "name"
 msgstr "nome"
 
-#: models.py:27
+#: models.py:28
 msgid "label"
 msgstr "rótulo"
 
-#: models.py:31 models.py:51
+#: models.py:32 models.py:52
 msgid "state"
 msgstr "estado"
 
-#: models.py:36 models.py:44 views.py:45 views.py:315 views.py:356
-#: views.py:386 views.py:422
+#: models.py:37 models.py:45 views.py:43 views.py:313 views.py:354
+#: views.py:384 views.py:420
 msgid "document queue"
 msgstr "lista de documento"
 
-#: models.py:37
+#: models.py:38
 msgid "document queues"
 msgstr "listas de documento"
 
-#: models.py:45
+#: models.py:46
 msgid "document"
 msgstr "documento"
 
-#: models.py:46
+#: models.py:47
 msgid "date time submitted"
 msgstr "data e hora submetido"
 
-#: models.py:47
+#: models.py:48
 msgid "delay ocr"
 msgstr "atraso ocr"
 
-#: models.py:52
+#: models.py:53
 msgid "result"
 msgstr "resultado"
 
-#: models.py:53
+#: models.py:54
 msgid "node name"
 msgstr "nome do nó"
 
-#: models.py:57
+#: models.py:58
 msgid "queue document"
 msgstr "enfileirar documento"
 
-#: models.py:58
+#: models.py:59
 msgid "queue documents"
 msgstr "enfileirar documentos"
 
-#: models.py:78 views.py:49
+#: models.py:79 views.py:47
 msgid "Missing document."
 msgstr "Falta de documento."
 
-#: models.py:82
+#: models.py:83
 msgid "Enter a valid value."
 msgstr "Digite um valor válido."
 
-#: models.py:110 views.py:319
+#: models.py:111 views.py:317
 msgid "order"
 msgstr "ordem"
 
-#: models.py:111 views.py:320 views.py:357 views.py:387
+#: models.py:112 views.py:318 views.py:355 views.py:385
 msgid "transformation"
 msgstr "transformação"
 
-#: models.py:112 views.py:321
+#: models.py:113 views.py:319
 msgid "arguments"
 msgstr "argumentos"
 
-#: models.py:112
+#: models.py:113
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Use dicionários para identificar argumentos, exemplo: %s"
 
-#: models.py:122
+#: models.py:123
 msgid "document queue transformation"
 msgstr "transformação de lista de documento ocr"
 
-#: models.py:123
+#: models.py:124
 msgid "document queue transformations"
 msgstr "transformações de listas de documentos"
 
@@ -220,183 +217,179 @@ msgstr "Documentos na lista: %d"
 msgid "OCR statistics"
 msgstr "estatísticas de OCR"
 
-#: views.py:42
+#: views.py:40
 #, python-format
 msgid "documents in queue: %s"
 msgstr "documentos na lista: %s"
 
-#: views.py:50
+#: views.py:48
 msgid "thumbnail"
 msgstr "miniatura"
 
-#: views.py:63
+#: views.py:61
 msgid "document queue properties"
 msgstr "propriedades da lista de documento"
 
-#: views.py:64
+#: views.py:62
 #, python-format
 msgid "Current state: %s"
 msgstr "Estado atual: %s"
 
-#: views.py:80 views.py:168
+#: views.py:78 views.py:166
 msgid "Must provide at least one queue document."
 msgstr "Deve fornecer pelo menos um documento da lista."
 
-#: views.py:90
+#: views.py:88
 #, python-format
 msgid "Document: %s is being processed and can't be deleted."
 msgstr "Documento: %s está sendo processado e não pode ser excluído."
 
-#: views.py:93
+#: views.py:91
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr "Lista de documento: %(document)s  removido com sucesso."
 
-#: views.py:97
+#: views.py:95
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Erro ao excluir documento: %(document)s; %(error)s "
 
-#: views.py:110
+#: views.py:108
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Você tem certeza que deseja deletar o documento da lista: %s?"
 
-#: views.py:112
+#: views.py:110
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Tem certeza de que deseja excluir  os documentos da lista: %s?"
 
-#: views.py:148
+#: views.py:146
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
 msgstr "Documento: %(document)s  foi adicionado à lista de OCR: %(queue)s ."
 
-#: views.py:151
+#: views.py:149
 #, python-format
 msgid "Document: %(document)s is already queued."
 msgstr "Documento: %(document)s  já está na lista."
 
-#: views.py:180
+#: views.py:178
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr ""
-"Documento: %(document)s  foi re-enfileirado para a lista de OCR: %(queue)s "
+msgstr "Documento: %(document)s  foi re-enfileirado para a lista de OCR: %(queue)s "
 
-#: views.py:186
+#: views.py:184
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "#ID do documento: %d, não existe mais."
 
-#: views.py:190
+#: views.py:188
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
 msgstr "Documento: %s já está sendo processado e não pode ser re-enfileirado."
 
-#: views.py:202
+#: views.py:200
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Tem certeza de que deseja re-enfileirar o documento: %s?"
 
-#: views.py:204
+#: views.py:202
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Tem certeza de que deseja voltar a lista de documentos: %s?"
 
-#: views.py:222
+#: views.py:220
 #, python-format
 msgid "Document queue: %s, already stopped."
 msgstr "Lista de documento: %s, já está parado."
 
-#: views.py:228
+#: views.py:226
 #, python-format
 msgid "Document queue: %s, stopped successfully."
 msgstr "Lista de documento: %s, parada com êxito."
 
-#: views.py:234
+#: views.py:232
 #, python-format
 msgid "Are you sure you wish to disable document queue: %s"
 msgstr "Tem certeza de que deseja desativar a lista de documento: %s"
 
-#: views.py:249
+#: views.py:247
 #, python-format
 msgid "Document queue: %s, already active."
 msgstr "Lista de documento: %s, já está ativa."
 
-#: views.py:255
+#: views.py:253
 #, python-format
 msgid "Document queue: %s, activated successfully."
 msgstr "Lista de documento: %s, ativada com sucesso."
 
-#: views.py:261
+#: views.py:259
 #, python-format
 msgid "Are you sure you wish to activate document queue: %s"
 msgstr "Tem certeza de que deseja ativar a lista de documento: %s"
 
-#: views.py:278
+#: views.py:276
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Tem certeza de que deseja limpar todo o conteúdo das páginas?"
 
-#: views.py:279
+#: views.py:277
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Em grandes bases de dados esta operação pode levar algum tempo para executar."
+msgstr "Em grandes bases de dados esta operação pode levar algum tempo para executar."
 
-#: views.py:285
+#: views.py:283
 msgid "Document pages content clean up complete."
 msgstr "Limpeza do conteúdo das páginas do documento completa."
 
-#: views.py:287
+#: views.py:285
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Erro ao limpar o conteúdo das páginas do documento: %s"
 
-#: views.py:313
+#: views.py:311
 #, python-format
 msgid "transformations for: %s"
 msgstr "transformações para: %s"
 
-#: views.py:343
+#: views.py:341
 msgid "Queue transformation edited successfully"
 msgstr "Transformação da lista editada com sucesso"
 
-#: views.py:346
+#: views.py:344
 #, python-format
 msgid "Error editing queue transformation; %s"
 msgstr "Erro ao editar transformação da lista; %s"
 
-#: views.py:351
+#: views.py:349
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "Editar Transformação: %s"
 
-#: views.py:374
+#: views.py:372
 msgid "Queue transformation deleted successfully."
 msgstr "Transformação de lista apagada com sucesso."
 
-#: views.py:376
+#: views.py:374
 #, python-format
 msgid "Error deleting queue transformation; %(error)s"
 msgstr "Erro ao deletar transformação de lista; %(error)s "
 
-#: views.py:389
+#: views.py:387
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr ""
-"Tem certeza que deseja deletar a transformação de lista \"%(transformation)s"
-"\""
+msgstr "Tem certeza que deseja deletar a transformação de lista \"%(transformation)s\""
 
-#: views.py:412
+#: views.py:410
 msgid "Queue transformation created successfully"
 msgstr "Transformação de lista criada com sucesso"
 
-#: views.py:415
+#: views.py:413
 #, python-format
 msgid "Error creating queue transformation; %s"
 msgstr "Erro ao criar a transformação de lista; %s"
 
-#: views.py:424
+#: views.py:422
 #, python-format
 msgid "Create new transformation for queue: %s"
 msgstr "Criar nova transformação para a lista: %s"
@@ -405,14 +398,11 @@ msgstr "Criar nova transformação para a lista: %s"
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr ""
-"Quantidade de segundos de atraso OCR de documentos para permitir o nó da "
-"sobrecarga de replicação de armazenamento."
+msgstr "Quantidade de segundos de atraso OCR de documentos para permitir o nó da sobrecarga de replicação de armazenamento."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr ""
-"Quantidade máxima de documentos simultâneos OCRs que um nó pode executar."
+msgstr "Quantidade máxima de documentos simultâneos OCRs que um nó pode executar."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
@@ -422,6 +412,12 @@ msgstr "Listar automaticamente os novos documentos criados para OCR "
 msgid "File path to unpaper program."
 msgstr "Caminho do arquivo para o programa unpaper."
 
-#: parsers/__init__.py:37
+#: conf/settings.py:18
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr ""
+
+#: parsers/__init__.py:87 parsers/__init__.py:164
 msgid "Text extracted from PDF"
 msgstr "Texto extraído de PDF"

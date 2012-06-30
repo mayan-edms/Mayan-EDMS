@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <tetja.rediske@googlemail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-04-20 11:39+0000\n"
+"Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:20
+msgid "tag list"
+msgstr "Tag-Liste"
+
+#: __init__.py:21
+msgid "create new tag"
+msgstr "Erstelle neuen Tag"
+
+#: __init__.py:22
+msgid "attach tag"
+msgstr "Tag anhängen"
+
+#: __init__.py:23 __init__.py:24
+msgid "remove"
+msgstr "Entfernen"
+
+#: __init__.py:25 __init__.py:44 __init__.py:52 views.py:98
+msgid "tags"
+msgstr "Tags"
+
+#: __init__.py:26 __init__.py:29
+msgid "delete"
+msgstr "Löschen"
+
+#: __init__.py:27
+msgid "edit"
+msgstr "Bearbeiten"
+
+#: __init__.py:28
+msgid "tagged documents"
+msgstr "Getaggte Dokumente"
+
+#: __init__.py:30
+msgid "ACLs"
+msgstr "ACLs"
+
+#: __init__.py:34
+msgid "preview"
+msgstr "Vorschau"
+
+#: __init__.py:38
+msgid "tagged items"
+msgstr "Getagte Dokumente"
+
+#: forms.py:24
+msgid "Name"
+msgstr "Name"
+
+#: forms.py:25
+msgid "Color"
+msgstr "Farbe"
+
+#: forms.py:42 permissions.py:7
+msgid "Tags"
+msgstr "Tags"
+
+#: literals.py:18
+msgid "Blue"
+msgstr "Blau"
+
+#: literals.py:19
+msgid "Cyan"
+msgstr "Cyan"
+
+#: literals.py:20
+msgid "Coral"
+msgstr "Koralle"
+
+#: literals.py:21
+msgid "Green-Yellow"
+msgstr "Grün-Gelb"
+
+#: literals.py:22
+msgid "Khaki"
+msgstr "Khaki"
+
+#: literals.py:23
+msgid "LightGrey"
+msgstr "Hellgrau"
+
+#: literals.py:24
+msgid "Magenta"
+msgstr "Magenta"
+
+#: literals.py:25
+msgid "Red"
+msgstr "Rot"
+
+#: literals.py:26
+msgid "Orange"
+msgstr "Orange"
+
+#: literals.py:27
+msgid "Yellow"
+msgstr "Gelb"
+
+#: models.py:12 views.py:154 views.py:206 views.py:220
+msgid "tag"
+msgstr "Markierung"
+
+#: models.py:13
+msgid "color"
+msgstr "Farbe"
+
+#: models.py:16
+msgid "tag properties"
+msgstr "Tag Eigenschaften"
+
+#: models.py:17
+msgid "tags properties"
+msgstr "Tags Eigenschaften"
+
+#: permissions.py:9
+msgid "Create new tags"
+msgstr "Neuen Tag anlegen"
+
+#: permissions.py:10
+msgid "Delete tags"
+msgstr "Lösche Tags"
+
+#: permissions.py:11
+msgid "Edit tags"
+msgstr "Bearbeite Tags"
+
+#: permissions.py:12
+msgid "View tags"
+msgstr "Zeige Tags"
+
+#: permissions.py:13
+msgid "Attach tags to documents"
+msgstr "Füge Tags zu Dokument hinzu"
+
+#: permissions.py:14
+msgid "Remove tags from documents"
+msgstr "Entferne Tags vom Dokument"
+
+#: views.py:42
+msgid "Tag already exists."
+msgstr "Tag existiert bereits."
+
+#: views.py:50
+msgid "Tag created succesfully."
+msgstr "Tag erfolgreich angelegt."
+
+#: views.py:56
+msgid "create tag"
+msgstr "Tag anlegen"
+
+#: views.py:77
+#, python-format
+msgid "Document is already tagged as \"%s\""
+msgstr "Dokument ist bereits mit \"%s\" getagt"
+
+#: views.py:82
+#, python-format
+msgid "Tag \"%s\" attached successfully."
+msgstr "Tag \"%s\" erfolgreich hinzugefügt."
+
+#: views.py:88
+#, python-format
+msgid "attach tag to: %s"
+msgstr "Füge Tag zu \"%s\" hinzu"
+
+#: views.py:130 views.py:257
+msgid "Must provide at least one tag."
+msgstr "Mindestens einen Tag angeben."
+
+#: views.py:145
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "Tag \"%s\" erfolgreich gelöscht"
+
+#: views.py:147 views.py:269
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "Fehler beim Lösche des Tags \"%(tag)s\": %(error)s"
+
+#: views.py:162
+#, python-format
+msgid "Are you sure you wish to delete the tag: %s?"
+msgstr "Soll der Tag \"%s\" wirklich gelöscht werden?"
+
+#: views.py:163 views.py:166
+msgid "Will be removed from all documents."
+msgstr "Wird von allen Dokumenten entfernt."
+
+#: views.py:165
+#, python-format
+msgid "Are you sure you wish to delete the tags: %s?"
+msgstr "Sollen der Tag \"%s\" wirklich gelöscht werden?"
+
+#: views.py:194
+msgid "Tag updated succesfully."
+msgstr "Tag erfolgreich aktualisiert."
+
+#: views.py:203
+#, python-format
+msgid "edit tag: %s"
+msgstr "Bearbeite Tag: %s"
+
+#: views.py:217
+#, python-format
+msgid "documents with the tag \"%s\""
+msgstr "Dokumente getagt als \"%s\""
+
+#: views.py:236
+#, python-format
+msgid "tags for: %s"
+msgstr "Tag für: %s"
+
+#: views.py:267
+#, python-format
+msgid "Tag \"%s\" removed successfully."
+msgstr "Tag \"%s\" wurde erfolgreich entfernt."
+
+#: views.py:283
+#, python-format
+msgid "Are you sure you wish to remove the tag: %s?"
+msgstr "Wollen Sie den Tag %s wirklich entfernen?"
+
+#: views.py:285
+#, python-format
+msgid "Are you sure you wish to remove the tags: %s?"
+msgstr "Wollen Sie die Tags %s wirklich entfernen?"
+
+#: templatetags/tags_tags.py:17
+msgid "Add tag to document"
+msgstr "Füge Tag zu Dokument hinzu"

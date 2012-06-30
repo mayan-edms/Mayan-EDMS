@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
 "PO-Revision-Date: 2012-02-12 19:27+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/team/es/)\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,9 +139,7 @@ msgstr "búsqueda"
 msgid ""
 "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
 "User.objects.all()].%s"
-msgstr ""
-"Introduzca una cadena para ser evaluada.  Ejemplo: [user.get_full_name() for"
-" user in User.objects.all ()].%s"
+msgstr "Introduzca una cadena para ser evaluada.  Ejemplo: [user.get_full_name() for user in User.objects.all ()].%s"
 
 #: models.py:33 models.py:58 views.py:353 views.py:398
 msgid "metadata type"
@@ -290,17 +288,13 @@ msgstr "Editar metadatos para documentos: %s"
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
-msgstr ""
-"Typo de metadatos: %(metadata_type)s agregado exitosamente al documento "
-"%(document)s."
+msgstr "Typo de metadatos: %(metadata_type)s agregado exitosamente al documento %(document)s."
 
 #: views.py:164
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
-"Typo de metadatos: %(metadata_type)s ya esta presente en el documento "
-"%(document)s."
+msgstr "Typo de metadatos: %(metadata_type)s ya esta presente en el documento %(document)s."
 
 #: views.py:188
 #, python-format
@@ -317,17 +311,13 @@ msgstr "Agregar tipo de metadato a los documentos: %s"
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
-msgstr ""
-"Se elimino exitosamente el tipo de metadatos: %(metadata_type)s del "
-"documento: %(document)s."
+msgstr "Se elimino exitosamente el tipo de metadatos: %(metadata_type)s del documento: %(document)s."
 
 #: views.py:262
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
-msgstr ""
-"Se elimino exitosamente el tipo de metadatos: %(metadata_type)s de los "
-"documentos: %(document)s."
+msgstr "Se elimino exitosamente el tipo de metadatos: %(metadata_type)s de los documentos: %(document)s."
 
 #: views.py:281
 #, python-format
@@ -415,8 +405,7 @@ msgstr "Conjunto de metadatos: %s eliminado exitosamente."
 #: views.py:508
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
-msgstr ""
-"Error: %(error)s, eliminando el conjunto de metadatos: %(metadata_set)s"
+msgstr "Error: %(error)s, eliminando el conjunto de metadatos: %(metadata_set)s"
 
 #: views.py:519
 #, python-format
@@ -446,11 +435,7 @@ msgid ""
 "A metadata set is a group of one or more metadata types.  Metadata sets are "
 "useful when creating new documents; selecing a metadata set automatically "
 "attaches it's member metadata types to said document."
-msgstr ""
-"Un conjunto de metadatos es un grupo de uno o más tipos de metadatos.  Los "
-"conjuntos de metadatos son útiles cuando se crean nuevos documentos; "
-"seleccionar un conjunto de metadatos, automáticamente asocia los tipos de "
-"metadatos que contenga a dicho documento."
+msgstr "Un conjunto de metadatos es un grupo de uno o más tipos de metadatos.  Los conjuntos de metadatos son útiles cuando se crean nuevos documentos; seleccionar un conjunto de metadatos, automáticamente asocia los tipos de metadatos que contenga a dicho documento."
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
@@ -467,16 +452,4 @@ msgid ""
 " will have initially, and the lookup value turns an instance of a metadata "
 "of this type into a choice list which options are the result of the lookup's"
 " code execution."
-msgstr ""
-"Un tipo de metadatos define las características de un valor de algún tipo "
-"que se puede conectar a un documento.  Ejemplos de tipos de metadatos son: "
-"un nombre de cliente, una fecha o un proyecto al que pertenecen varios "
-"documentos.  El nombre de un tipo de metadatos es el identificador interno "
-"con el que se puede hacer referencia en otros módulos como el módulo de "
-"indexación, el título es el valor que se muestra a los usuarios, el valor "
-"por defecto es el valor que una instancia de este tipo de metadatos tendrá "
-"inicialmente, y el valor de búsqueda vuelve a una instancia de metadatos de "
-"este tipo en una lista de opciones donde las opciones son el resultado de la"
-" ejecución del valor de búsqueda."
-
-
+msgstr "Un tipo de metadatos define las características de un valor de algún tipo que se puede conectar a un documento.  Ejemplos de tipos de metadatos son: un nombre de cliente, una fecha o un proyecto al que pertenecen varios documentos.  El nombre de un tipo de metadatos es el identificador interno con el que se puede hacer referencia en otros módulos como el módulo de indexación, el título es el valor que se muestra a los usuarios, el valor por defecto es el valor que una instancia de este tipo de metadatos tendrá inicialmente, y el valor de búsqueda vuelve a una instancia de metadatos de este tipo en una lista de opciones donde las opciones son el resultado de la ejecución del valor de búsqueda."

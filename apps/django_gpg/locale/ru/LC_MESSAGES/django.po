@@ -1,30 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2011.
+# Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:20+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-02-03 05:10+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:14 views.py:67
+#: __init__.py:14 views.py:66
 msgid "private keys"
 msgstr "секретные ключи"
 
-#: __init__.py:15 views.py:70
+#: __init__.py:15 views.py:69
 msgid "public keys"
 msgstr "открытые ключи"
 
@@ -44,65 +42,65 @@ msgstr "получить"
 msgid "key management"
 msgstr "управление ключами"
 
-#: api.py:19
+#: api.py:24
 msgid "Public"
 msgstr "Открытый"
 
-#: api.py:20
+#: api.py:25
 msgid "Secret"
 msgstr "секретный"
 
-#: api.py:28 api.py:33
+#: api.py:33 api.py:38
 msgid "RSA"
 msgstr "RSA"
 
-#: api.py:29
+#: api.py:34
 msgid "DSA"
 msgstr "DSA"
 
-#: api.py:34
+#: api.py:39
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: api.py:48
+#: api.py:53
 msgid "Bad signature."
 msgstr "Неверная подпись"
 
-#: api.py:52
+#: api.py:57
 msgid "Document not signed or invalid signature."
 msgstr "Документ не подписан, либо подпись неверна."
 
-#: api.py:56
+#: api.py:61
 msgid "Signature error."
 msgstr "Ошибка подписи."
 
-#: api.py:60
+#: api.py:65
 msgid "Document is signed but no public key is available for verification."
 msgstr "Документ подписан, но нет открытого ключа для проверки."
 
-#: api.py:64
+#: api.py:69
 msgid "Document is signed, and signature is good."
 msgstr "Документ подписан и подпись верна."
 
-#: api.py:68
+#: api.py:73
 msgid "Document is signed with a valid signature."
 msgstr "Документ подписан допустимой подписью."
 
-#: api.py:141
+#: api.py:146
 msgid "unknown"
 msgstr "неизвестно"
 
-#: forms.py:8
+#: forms.py:7
 msgid "Term"
 msgstr "Term"
 
-#: forms.py:9
+#: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Имя, e-mail, ID ключа или отпечаток для поиска."
 
 #: permissions.py:7
 msgid "Key management"
-msgstr ""
+msgstr "Управление ключами"
 
 #: permissions.py:9
 msgid "View keys"
@@ -118,95 +116,93 @@ msgstr "Запрос к серверам ключей"
 
 #: permissions.py:12
 msgid "Import keys from keyservers"
-msgstr ""
+msgstr "Импортировать ключи с серверов ключей "
 
-#: views.py:38
+#: views.py:37
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr "Ключ %s, получен."
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "Невозможно импортировать ключ %(key_id)s; %(error)s"
 
-#: views.py:52
+#: views.py:51
 msgid "Import key"
 msgstr "Получить ключ"
 
-#: views.py:53
+#: views.py:52
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Хотите получить ключ id: %s?"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "ID ключа"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "Владелец"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Ключ %s удалён."
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr "Удалить ключ."
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
-"Вы уверены, что хотите удалить ключ %s? Если вы удалите открытый ключ то "
-"соответствующий ему закрытый ключ тоже будет удалён."
+msgstr "Вы уверены, что хотите удалить ключ %s? Если вы удалите открытый ключ то соответствующий ему закрытый ключ тоже будет удалён."
 
-#: views.py:129
+#: views.py:128
 msgid "Query key server"
 msgstr "Запросить сервер ключей"
 
-#: views.py:142
+#: views.py:141
 msgid "results"
 msgstr "результаты"
 
-#: views.py:147
+#: views.py:146
 msgid "ID"
 msgstr "ID"
 
-#: views.py:151
+#: views.py:150
 msgid "type"
 msgstr "тип"
 
-#: views.py:155
+#: views.py:154
 msgid "creation date"
 msgstr "дата создания"
 
-#: views.py:159
+#: views.py:158
 msgid "disabled"
 msgstr "запрещено"
 
-#: views.py:163
+#: views.py:162
 msgid "expiration date"
 msgstr "дата окончания"
 
-#: views.py:167
+#: views.py:166
 msgid "expired"
 msgstr "истекло"
 
-#: views.py:171
+#: views.py:170
 msgid "length"
 msgstr "длина"
 
-#: views.py:175
+#: views.py:174
 msgid "revoked"
 msgstr "отозван"
 
-#: views.py:180
+#: views.py:179
 msgid "Identifies"
 msgstr "Identifies"
 
@@ -216,4 +212,4 @@ msgstr "Список ключевых серверов для запроса н�
 
 #: conf/settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
+msgstr "Домашний каталог, используемый для хранения ключей, а также файлов конфигурации."

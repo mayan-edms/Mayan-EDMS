@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.utils.functional import lazy
 
 reverse_lazy = lazy(reverse, str)
+ugettext = lambda s: s
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), './'))
 
@@ -47,10 +48,7 @@ TIME_ZONE = 'America/Puerto_Rico'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-#LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'en'
-
-ugettext = lambda s: s
 
 LANGUAGES = (
     ('en', ugettext('English')),
@@ -59,6 +57,7 @@ LANGUAGES = (
     ('ru', ugettext('Russian')),
     ('it', ugettext('Italian')),
     ('pl', ugettext('Polish')),
+    ('de', ugettext('German')),
 )
 
 SITE_ID = 1
@@ -123,7 +122,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-#Django
+    #Django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -133,17 +132,17 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.comments',
     'django.contrib.staticfiles',
-# 3rd party
-# South
+    # 3rd party
+    # South
     'south',
     'haystack',
-# Others
+    # Others
     'filetransfers',
     'taggit',
     'mptt',
     'compressor',
     'djangorestframework',
-# Base generic
+    # Base generic
     'permissions',
     'project_setup',
     'project_tools',
@@ -151,8 +150,7 @@ INSTALLED_APPS = (
     'navigation',
     'lock_manager',
     'web_theme',
-# pagination needs to go after web_theme so that the pagination template
-# if found
+    # pagination needs to go after web_theme so that the pagination template is found
     'pagination',
     'common',
     'django_gpg',
@@ -163,8 +161,8 @@ INSTALLED_APPS = (
     'mimetype',
     'scheduler',
     'job_processor',
-    'feedback',
-# Mayan EDMS
+    'installation',
+    # Mayan EDMS
     'storage',
     'folders',
     'tags',
@@ -182,7 +180,8 @@ INSTALLED_APPS = (
     'rest_api',
     'document_signatures',
     'workflows',
-# Has to be last so the other apps can register it's signals
+    'checkouts',
+    # Has to be last so the other apps can register it's signals
     'signaler',
 )
 

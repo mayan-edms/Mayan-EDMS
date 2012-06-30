@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 19:02-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:10 models.py:71
+#: __init__.py:17
+msgid "date and time"
+msgstr ""
+
+#: __init__.py:21
+msgid "type"
+msgstr ""
+
+#: __init__.py:25
+msgid "summary"
+msgstr ""
+
+#: links.py:7 models.py:78
 msgid "history"
+msgstr ""
+
+#: links.py:8
+msgid "details"
 msgstr ""
 
 #: models.py:18
@@ -29,23 +45,23 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: models.py:27 models.py:36
+#: models.py:34 models.py:43
 msgid "history type"
 msgstr ""
 
-#: models.py:28
+#: models.py:35
 msgid "history types"
 msgstr ""
 
-#: models.py:32
+#: models.py:39
 msgid "date time"
 msgstr ""
 
-#: models.py:37
+#: models.py:44
 msgid "dictionary"
 msgstr ""
 
-#: models.py:72
+#: models.py:79
 msgid "histories"
 msgstr ""
 
@@ -57,48 +73,49 @@ msgstr ""
 msgid "Access the history of an object"
 msgstr ""
 
-#: views.py:27
+#: views.py:37
 msgid "history events"
 msgstr ""
 
-#: views.py:30 views.py:67
-msgid "date and time"
+#: views.py:40
+msgid "object link"
 msgstr ""
 
-#: views.py:34
-msgid "object"
-msgstr ""
-
-#: views.py:38 views.py:71
-msgid "summary"
-msgstr ""
-
-#: views.py:63
+#: views.py:68
 #, python-format
 msgid "history events for: %s"
 msgstr ""
 
-#: views.py:91
+#: views.py:86
 msgid "Date"
 msgstr ""
 
-#: views.py:92
+#: views.py:87
 msgid "Time"
 msgstr ""
 
-#: views.py:93
+#: views.py:88
 msgid "Object"
 msgstr ""
 
-#: views.py:94
+#: views.py:89
 msgid "Event type"
 msgstr ""
 
-#: views.py:95
-msgid "Event details"
+#: views.py:90
+msgid "Additional details"
 msgstr ""
 
-#: views.py:99
+#: views.py:90
+msgid "None"
+msgstr ""
+
+#: views.py:94
 #, python-format
 msgid "details for: %s"
+msgstr ""
+
+#: views.py:106
+#, python-format
+msgid "history events of type: %s"
 msgstr ""

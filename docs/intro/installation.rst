@@ -120,7 +120,7 @@ If using ``PostgreSQL``, enter the following::
 
 Populate the database with the project's schema doing::
 
-    $ ./manage.py syncdb --migrate
+    $ ./manage.py syncdb --migrate --noinput
     
 To test your installation, create a file called settings_local.py with the following content::
 
@@ -193,7 +193,7 @@ If using ``PostgreSQL``, enter the following::
 
 Populate the database with the project's schema doing::
 
-    $ ./manage.py syncdb --migrate
+    $ ./manage.py syncdb --migrate --noinput
     
 To test your installation, create a file called settings_local.py with the following content::
 
@@ -283,7 +283,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 
 6. Create the database schema::
 
-    $ ./manage.py syncdb --migrate
+    $ ./manage.py syncdb --migrate --noinput
 
 7. Collect the static files of the apps::
 

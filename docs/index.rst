@@ -6,7 +6,7 @@ Mayan EDMS documentation
 ========================
 
 .. rubric:: `Open source`_, Django_ based document manager with custom
-            metadata_ indexing_, file serving integration, OCR_ capabilities,
+            metadata_ indexing_, file serving integration, `checking out and in`_, OCR_ capabilities,
             document versioning_ and `digital signature verification`_.
 
 .. _Django: http://www.djangoproject.com/
@@ -16,6 +16,7 @@ Mayan EDMS documentation
 .. _metadata: http://en.wikipedia.org/wiki/Metadata
 .. _indexing: http://en.wikipedia.org/wiki/Index_card
 .. _Open source: http://en.wikipedia.org/wiki/Open_source
+.. _checking out and in: http://en.wikipedia.org/wiki/Revision_control
 
 On the Web
 =====================
@@ -54,7 +55,7 @@ Understanding Mayan EDMS
 Between versions
 ================
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     
     releases/index 
     

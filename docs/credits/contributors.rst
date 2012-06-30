@@ -69,6 +69,11 @@ Translations
 
   - mic (https://www.transifex.net/accounts/profile/mic/)
 
+* German
+
+  - Tetja Rediske
+  - Tilmann Sittig
+  
 
 Remote access for debugging
 ---------------------------

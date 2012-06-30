@@ -1,27 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
-"PO-Revision-Date: 2012-02-02 18:19+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/team/"
-"ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:10 models.py:71
+#: __init__.py:17
+msgid "date and time"
+msgstr "дата и время"
+
+#: __init__.py:21
+msgid "type"
+msgstr ""
+
+#: __init__.py:25
+msgid "summary"
+msgstr "итого"
+
+#: links.py:7 models.py:78
 msgid "history"
 msgstr "история"
+
+#: links.py:8
+msgid "details"
+msgstr ""
 
 #: models.py:18
 msgid "namespace"
@@ -31,23 +46,23 @@ msgstr "пространство имен"
 msgid "name"
 msgstr "имя"
 
-#: models.py:27 models.py:36
+#: models.py:34 models.py:43
 msgid "history type"
 msgstr "тип истории"
 
-#: models.py:28
+#: models.py:35
 msgid "history types"
 msgstr "типы истории"
 
-#: models.py:32
+#: models.py:39
 msgid "date time"
 msgstr "дата и время"
 
-#: models.py:37
+#: models.py:44
 msgid "dictionary"
 msgstr "словарь"
 
-#: models.py:72
+#: models.py:79
 msgid "histories"
 msgstr "истории"
 
@@ -57,50 +72,51 @@ msgstr "История"
 
 #: permissions.py:8
 msgid "Access the history of an object"
-msgstr ""
+msgstr "История объекта"
 
-#: views.py:27
+#: views.py:37
 msgid "history events"
 msgstr "события"
 
-#: views.py:30 views.py:67
-msgid "date and time"
-msgstr "дата и время"
+#: views.py:40
+msgid "object link"
+msgstr ""
 
-#: views.py:34
-msgid "object"
-msgstr "объект"
-
-#: views.py:38 views.py:71
-msgid "summary"
-msgstr "итого"
-
-#: views.py:63
+#: views.py:68
 #, python-format
 msgid "history events for: %s"
 msgstr "события для: %s"
 
-#: views.py:91
+#: views.py:86
 msgid "Date"
 msgstr "Дата"
 
-#: views.py:92
+#: views.py:87
 msgid "Time"
 msgstr "Время"
 
-#: views.py:93
+#: views.py:88
 msgid "Object"
 msgstr "Объект"
 
-#: views.py:94
+#: views.py:89
 msgid "Event type"
 msgstr "Тип события"
 
-#: views.py:95
-msgid "Event details"
-msgstr "Подробности события"
+#: views.py:90
+msgid "Additional details"
+msgstr ""
 
-#: views.py:99
+#: views.py:90
+msgid "None"
+msgstr ""
+
+#: views.py:94
 #, python-format
 msgid "details for: %s"
 msgstr "подробности: %s"
+
+#: views.py:106
+#, python-format
+msgid "history events of type: %s"
+msgstr ""

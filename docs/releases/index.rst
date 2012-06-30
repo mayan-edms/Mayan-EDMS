@@ -17,6 +17,7 @@ Latest version (0.13)
    :maxdepth: 1
 
    0.13
+   0.12.2
    0.12.1
    0.12
 

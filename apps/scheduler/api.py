@@ -24,3 +24,7 @@ def remove_job(name):
     if name in registered_jobs:
         scheduler.unschedule_job(registered_jobs[name]['job'])
         registered_jobs.pop(name)
+
+
+def get_job_list():
+    return registered_jobs.values()

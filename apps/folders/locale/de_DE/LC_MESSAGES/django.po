@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"PO-Revision-Date: 2011-09-30 04:55+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:18
+msgid "folder list"
+msgstr ""
+
+#: __init__.py:19 views.py:77
+msgid "create folder"
+msgstr ""
+
+#: __init__.py:20
+msgid "edit"
+msgstr ""
+
+#: __init__.py:21
+msgid "delete"
+msgstr ""
+
+#: __init__.py:22
+msgid "remove from folder"
+msgstr ""
+
+#: __init__.py:23
+msgid "folder documents"
+msgstr ""
+
+#: __init__.py:24
+msgid "add to a folder"
+msgstr ""
+
+#: __init__.py:25 __init__.py:35 models.py:43 views.py:34
+msgid "folders"
+msgstr ""
+
+#: __init__.py:27
+msgid "ACLs"
+msgstr ""
+
+#: forms.py:38
+msgid "Folder"
+msgstr ""
+
+#: models.py:11
+msgid "title"
+msgstr ""
+
+#: models.py:12
+msgid "user"
+msgstr ""
+
+#: models.py:13
+msgid "datetime created"
+msgstr ""
+
+#: models.py:42 models.py:47 views.py:108 views.py:137 views.py:162
+msgid "folder"
+msgstr ""
+
+#: models.py:48
+msgid "document"
+msgstr ""
+
+#: models.py:54 views.py:261
+msgid "folder document"
+msgstr ""
+
+#: models.py:55
+msgid "folders documents"
+msgstr ""
+
+#: permissions.py:7
+msgid "Folders"
+msgstr ""
+
+#: permissions.py:9
+msgid "Create new folders"
+msgstr ""
+
+#: permissions.py:10
+msgid "Edit new folders"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete new folders"
+msgstr ""
+
+#: permissions.py:12
+msgid "Remove documents from folders"
+msgstr ""
+
+#: permissions.py:13
+msgid "View existing folders"
+msgstr ""
+
+#: permissions.py:14
+msgid "Add documents to existing folders"
+msgstr ""
+
+#: views.py:37
+msgid "created"
+msgstr ""
+
+#: views.py:38
+msgid "documents"
+msgstr ""
+
+#: views.py:69
+msgid "Folder created successfully"
+msgstr ""
+
+#: views.py:72
+#, python-format
+msgid "A folder named: %s, already exists."
+msgstr ""
+
+#: views.py:97
+msgid "Folder edited successfully"
+msgstr ""
+
+#: views.py:100
+#, python-format
+msgid "Error editing folder; %s"
+msgstr ""
+
+#: views.py:105
+#, python-format
+msgid "edit folder: %s"
+msgstr ""
+
+#: views.py:129
+#, python-format
+msgid "Folder: %s deleted successfully."
+msgstr ""
+
+#: views.py:131
+#, python-format
+msgid "Folder: %(folder)s delete error: %(error)s"
+msgstr ""
+
+#: views.py:142
+#, python-format
+msgid "Are you sure you with to delete the folder: %s?"
+msgstr ""
+
+#: views.py:168
+#, python-format
+msgid "documents in folder: %s"
+msgstr ""
+
+#: views.py:188
+#, python-format
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgstr ""
+
+#: views.py:191
+#, python-format
+msgid "Document: %(document)s is already in folder: %(folder)s."
+msgstr ""
+
+#: views.py:199
+#, python-format
+msgid "add document \"%s\" to a folder"
+msgstr ""
+
+#: views.py:219
+#, python-format
+msgid "folders containing: %s"
+msgstr ""
+
+#: views.py:235
+msgid "Must provide at least one folder document."
+msgstr ""
+
+#: views.py:253
+#, python-format
+msgid "Document: %s removed successfully."
+msgstr ""
+
+#: views.py:255
+#, python-format
+msgid "Document: %(document)s delete error: %(error)s"
+msgstr ""
+
+#: views.py:269
+#, python-format
+msgid ""
+"Are you sure you wish to remove the document: %(document)s from the folder "
+"\"%(folder)s\"?"
+msgstr ""
+
+#: views.py:272
+#, python-format
+msgid ""
+"Are you sure you wish to remove the documents: %(documents)s from the folder"
+" \"%(folder)s\"?"
+msgstr ""
+
+#: templates/folders_help.html:3
+msgid "What are folders?"
+msgstr ""
+
+#: templates/folders_help.html:4
+msgid ""
+"These folders can also be described as user folders.  They are a way to let "
+"individual users create their own document organization methods.  Folders "
+"created by one user and the documents contained by them don't affect any "
+"other user folders or documents."
+msgstr ""
+
+#: templatetags/folder_tags.py:17
+msgid "Add document to a folder"
+msgstr ""

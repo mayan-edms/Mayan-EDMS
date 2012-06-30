@@ -43,7 +43,7 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
-from .literals import (HISTORY_DOCUMENT_CREATED,
+from .events import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .forms import (DocumentTypeSelectForm,
         DocumentForm_edit, DocumentPropertiesForm,
@@ -358,8 +358,8 @@ def document_download(request, document_id=None, document_id_list=None, document
 
                     return serve_file(
                         request,
-                        compressed_file.as_file('document_bundle.zip'),
-                        save_as=u'"document_bundle.zip"',
+                        compressed_file.as_file(form.cleaned_data['zip_filename']),
+                        save_as=u'"%s"' % form.cleaned_data['zip_filename'],
                         content_type='application/zip'
                     )
                     # TODO: DO a redirection afterwards
@@ -397,6 +397,7 @@ def document_download(request, document_id=None, document_id_list=None, document
         'submit_label': _(u'Download'),
         'previous': previous,
         'cancel_label': _(u'Return'),
+        'disable_auto_focus': True,
     }
 
     if len(document_versions) == 1:

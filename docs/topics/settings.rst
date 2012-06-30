@@ -454,9 +454,9 @@ Username of the automatically created superuser
 
 **COMMON_AUTO_ADMIN_PASSWORD**
 
-Default: ``admin`` 
+Default: Random generated password
 
-Default password of the automatically created superuser
+The password of the automatically created superuser
     
 
 .. setting:: COMMON_LOGIN_METHOD

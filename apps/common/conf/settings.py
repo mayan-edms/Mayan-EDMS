@@ -1,6 +1,7 @@
 """Configuration options for the common app"""
 
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
 from smart_settings.api import Setting, SettingNamespace
 
@@ -49,7 +50,7 @@ Setting(
     namespace=namespace,
     name=u'AUTO_ADMIN_PASSWORD',
     global_name=u'COMMON_AUTO_ADMIN_PASSWORD',
-    default=u'admin',
+    default=User.objects.make_random_password(),
 )
 
 Setting(

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-02-12 15:20-0400\n"
+"POT-Creation-Date: 2012-06-17 18:08-0400\n"
 "PO-Revision-Date: 2012-02-21 15:17+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/language/pl/)\n"
@@ -21,23 +21,23 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:20
+#: __init__.py:22
 msgid "change password"
 msgstr "zmień hasło"
 
-#: __init__.py:21
+#: __init__.py:23
 msgid "user details"
 msgstr "szczegóły konta użytkownika"
 
-#: __init__.py:22
+#: __init__.py:24
 msgid "edit details"
 msgstr "edytuj szczegóły"
 
-#: __init__.py:26 __init__.py:31
+#: __init__.py:28 __init__.py:33
 msgid "about"
 msgstr "informacje o"
 
-#: __init__.py:27
+#: __init__.py:29
 msgid "license"
 msgstr "licencja"
 
