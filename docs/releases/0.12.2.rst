@@ -92,6 +92,10 @@ Migrate existing database schema with::
     $ ./manage.py migrate checkouts
     $ ./manage.py migrate installation
 
+Add new static media::
+
+    $ ./manage.py collectstatic --noinput
+
 The upgrade procedure is now complete.
 
 
