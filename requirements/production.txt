@@ -65,7 +65,7 @@ pbs==0.105
 
 # Installation
 
-psutil==0.5.0
+psutil==0.5.1
 
 # Misc
 
