@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-17 19:03-0400\n"
+"POT-Creation-Date: 2012-07-01 23:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,84 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: links.py:7
+#: links.py:7 models.py:131
 msgid "installation details"
+msgstr ""
+
+#: models.py:59
+msgid "LSB OS"
+msgstr ""
+
+#: models.py:60
+msgid "Distributor ID"
+msgstr ""
+
+#: models.py:61
+msgid "Description"
+msgstr ""
+
+#: models.py:62
+msgid "Release"
+msgstr ""
+
+#: models.py:63
+msgid "Codename"
+msgstr ""
+
+#: models.py:64
+msgid "System info"
+msgstr ""
+
+#: models.py:66
+msgid "POSIX OS"
+msgstr ""
+
+#: models.py:68
+msgid "OS architecture"
+msgstr ""
+
+#: models.py:69
+msgid "Python version"
+msgstr ""
+
+#: models.py:70
+msgid "Hostname"
+msgstr ""
+
+#: models.py:71
+msgid "Platform"
+msgstr ""
+
+#: models.py:72
+msgid "Machine"
+msgstr ""
+
+#: models.py:73
+msgid "Processor"
+msgstr ""
+
+#: models.py:74
+msgid "Number of CPUs"
+msgstr ""
+
+#: models.py:75
+msgid "Total physical memory"
+msgstr ""
+
+#: models.py:76
+msgid "Disk partitions"
+msgstr ""
+
+#: models.py:79 models.py:81
+msgid "tesseract version"
+msgstr ""
+
+#: models.py:81 models.py:86
+msgid "not found"
+msgstr ""
+
+#: models.py:84 models.py:86
+msgid "unpaper version"
 msgstr ""
 
 #: permissions.py:7
@@ -29,41 +105,6 @@ msgstr ""
 msgid "View installation environment details"
 msgstr ""
 
-#: views.py:26
-#, python-format
-msgid "Distributor ID: %s"
-msgstr ""
-
-#: views.py:27
-#, python-format
-msgid "Description: %s"
-msgstr ""
-
-#: views.py:28
-#, python-format
-msgid "Release: %s"
-msgstr ""
-
-#: views.py:29
-#, python-format
-msgid "Codename: %s"
-msgstr ""
-
-#: views.py:30
-#, python-format
-msgid "System info: %s"
-msgstr ""
-
-#: views.py:31
-#, python-format
-msgid "Platform: %s"
-msgstr ""
-
-#: views.py:32
-#, python-format
-msgid "Processor: %s"
-msgstr ""
-
-#: views.py:36
+#: views.py:25
 msgid "Installation environment details"
 msgstr ""

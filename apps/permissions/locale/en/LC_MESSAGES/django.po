@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-17 19:03-0400\n"
+"POT-Creation-Date: 2012-07-01 23:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:17 models.py:209 views.py:40
+#: links.py:11 models.py:209 views.py:40
 msgid "roles"
 msgstr ""
 
-#: __init__.py:18
+#: links.py:12
 msgid "create new role"
 msgstr ""
 
-#: __init__.py:19
+#: links.py:13
 msgid "edit"
 msgstr ""
 
-#: __init__.py:20
+#: links.py:14
 msgid "members"
 msgstr ""
 
-#: __init__.py:21
+#: links.py:15
 msgid "role permissions"
 msgstr ""
 
-#: __init__.py:22
+#: links.py:16
 msgid "delete"
 msgstr ""
 
-#: __init__.py:24
+#: links.py:18
 msgid "grant"
 msgstr ""
 
-#: __init__.py:25
+#: links.py:19
 msgid "revoke"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr ""
 msgid "role members"
 msgstr ""
 
-#: permissions.py:7
+#: permissions.py:7 conf/settings.py:6
 msgid "Permissions"
 msgstr ""
 
@@ -197,7 +197,7 @@ msgstr ""
 msgid "Grant"
 msgstr ""
 
-#: conf/settings.py:10
+#: conf/settings.py:13
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
