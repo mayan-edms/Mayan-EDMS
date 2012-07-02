@@ -33,6 +33,7 @@ def job_list(request):
             },
         ],
         'hide_object': True,
+        'hide_links': True,
     }
 
     return render_to_response('generic_list.html', context,

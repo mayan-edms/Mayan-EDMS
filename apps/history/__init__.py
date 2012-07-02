@@ -3,7 +3,9 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from project_tools.api import register_tool
-from navigation.api import register_model_list_columns, register_links
+from navigation.api import (bind_links, register_top_menu,
+    register_model_list_columns,
+    register_sidebar_template, Link)
 from common.utils import encapsulate
 
 from .models import History
@@ -27,4 +29,4 @@ register_model_list_columns(History, [
     }    
 ])
 
-register_links(History, [history_details])
+bind_links([History], [history_details])
