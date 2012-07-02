@@ -19,7 +19,6 @@ def installation_details(request):
     for name, instance in Installation().get_properties().items():
         paragraphs.append('%s: %s' % (unicode(instance.label), instance.value))
         
-    print Installation().architecture
     return render_to_response('generic_template.html', {
         'paragraphs': paragraphs,
         'title': _(u'Installation environment details')
