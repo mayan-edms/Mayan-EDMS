@@ -50,6 +50,7 @@ LANGUAGES = (
     ('en', ugettext('English')),
     ('es', ugettext('Spanish')),
     ('pt', ugettext('Portuguese')),
+    ('pt-br', ugettext('Portuguese (Brazil)')),
     ('ru', ugettext('Russian')),
     ('it', ugettext('Italian')),
     ('pl', ugettext('Polish')),

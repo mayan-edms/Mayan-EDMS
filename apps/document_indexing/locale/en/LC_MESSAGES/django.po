@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-17 19:02-0400\n"
+"POT-Creation-Date: 2012-07-01 23:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,48 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
+#: __init__.py:26 links.py:24 links.py:38 models.py:42 views.py:38
 #: views.py:283
 msgid "indexes"
 msgstr ""
 
-#: __init__.py:32 __init__.py:42
-msgid "index list"
-msgstr ""
-
-#: __init__.py:33 views.py:77
-msgid "create index"
-msgstr ""
-
-#: __init__.py:34 __init__.py:39
-msgid "edit"
-msgstr ""
-
-#: __init__.py:35 __init__.py:40
-msgid "delete"
-msgstr ""
-
-#: __init__.py:36
-msgid "tree template"
-msgstr ""
-
-#: __init__.py:38
-msgid "new child node"
-msgstr ""
-
-#: __init__.py:44
-msgid "go up one level"
-msgstr ""
-
-#: __init__.py:49
-msgid "rebuild indexes"
-msgstr ""
-
-#: __init__.py:49
-msgid "Deletes and creates from scratch all the document indexes."
-msgstr ""
-
-#: __init__.py:51
+#: __init__.py:27
 msgid "Indexes"
 msgstr ""
 
@@ -109,6 +73,42 @@ msgstr ""
 #: filesystem.py:96
 #, python-format
 msgid "Unable to delete indexing directory; %s"
+msgstr ""
+
+#: links.py:25 links.py:35
+msgid "index list"
+msgstr ""
+
+#: links.py:26 views.py:77
+msgid "create index"
+msgstr ""
+
+#: links.py:27 links.py:32
+msgid "edit"
+msgstr ""
+
+#: links.py:28 links.py:33
+msgid "delete"
+msgstr ""
+
+#: links.py:29
+msgid "tree template"
+msgstr ""
+
+#: links.py:31
+msgid "new child node"
+msgstr ""
+
+#: links.py:37
+msgid "go up one level"
+msgstr ""
+
+#: links.py:40
+msgid "rebuild indexes"
+msgstr ""
+
+#: links.py:40
+msgid "Deletes and creates from scratch all the document indexes."
 msgstr ""
 
 #: models.py:13
@@ -207,7 +207,7 @@ msgstr ""
 msgid "documents rename count"
 msgstr ""
 
-#: permissions.py:7
+#: permissions.py:7 conf/settings.py:12
 msgid "Indexing"
 msgstr ""
 
@@ -347,7 +347,7 @@ msgstr ""
 msgid "indexes containing: %s"
 msgstr ""
 
-#: conf/settings.py:22
+#: conf/settings.py:51
 msgid ""
 "A dictionary that maps the index name and where on the filesystem that index "
 "will be mirrored."

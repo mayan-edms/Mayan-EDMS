@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-17 19:03-0400\n"
+"POT-Creation-Date: 2012-07-01 23:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,52 +17,52 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:13
-msgid "user list"
-msgstr ""
-
-#: __init__.py:14 views.py:31
-msgid "users"
-msgstr ""
-
-#: __init__.py:15 __init__.py:24
-msgid "edit"
-msgstr ""
-
-#: __init__.py:16 views.py:97
-msgid "create new user"
-msgstr ""
-
-#: __init__.py:17 __init__.py:18 __init__.py:26 __init__.py:27
-msgid "delete"
-msgstr ""
-
-#: __init__.py:19 __init__.py:20
-msgid "reset password"
-msgstr ""
-
-#: __init__.py:22
-msgid "group list"
-msgstr ""
-
-#: __init__.py:23 views.py:228
-msgid "groups"
-msgstr ""
-
-#: __init__.py:25 views.py:276
-msgid "create new group"
-msgstr ""
-
-#: __init__.py:28 views.py:232
-msgid "members"
-msgstr ""
-
 #: forms.py:13
 msgid "New password"
 msgstr ""
 
 #: forms.py:14
 msgid "Confirm password"
+msgstr ""
+
+#: links.py:11
+msgid "user list"
+msgstr ""
+
+#: links.py:12 views.py:31
+msgid "users"
+msgstr ""
+
+#: links.py:13 links.py:22
+msgid "edit"
+msgstr ""
+
+#: links.py:14 views.py:97
+msgid "create new user"
+msgstr ""
+
+#: links.py:15 links.py:16 links.py:24 links.py:25
+msgid "delete"
+msgstr ""
+
+#: links.py:17 links.py:18
+msgid "reset password"
+msgstr ""
+
+#: links.py:20
+msgid "group list"
+msgstr ""
+
+#: links.py:21 views.py:228
+msgid "groups"
+msgstr ""
+
+#: links.py:23 views.py:276
+msgid "create new group"
+msgstr ""
+
+#: links.py:26 views.py:232
+msgid "members"
 msgstr ""
 
 #: permissions.py:7
