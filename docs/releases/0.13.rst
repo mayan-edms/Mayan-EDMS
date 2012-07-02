@@ -15,6 +15,8 @@ Overview
 * Ability to delete detached signatures
 * Specialized search via Haystack
 
+#TODO: add Djano 1.4
+
 
 What's new in Mayan EDMS v0.13
 ==============================
@@ -40,7 +42,14 @@ configuration option.  This addition closes issues #20 and #12.
 Upgrading from a previous version
 =================================
 
-Start off by adding the new requirements::
+If you installed **Mayan EDMS** by cloning the git repository issue::
+
+  $ git reset --hard HEAD
+  $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the existing installation.
+
+After updating the installtion files, start off by adding the new requirements::
 
   $ pip install -r requirements/production.txt
 
