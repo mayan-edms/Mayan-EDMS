@@ -8,7 +8,7 @@ from django.conf import settings
 
 from smart_settings.api import Setting, SettingNamespace
 
-namespace = SettingNamespace('django_gpg', _(u'Signatures'), module='django_gpg.conf.settings')
+namespace = SettingNamespace('django_gpg', _(u'Signatures'), module='django_gpg.conf.settings', sprite='text_signature')
 
 Setting(
     namespace=namespace,
