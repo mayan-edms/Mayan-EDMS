@@ -5,6 +5,7 @@ from django.utils.importlib import import_module
 
 settings = {}
 settings_list = []
+namespaces = {}
 namespace_list = []
 
 
@@ -13,11 +14,13 @@ def is_superuser(context):
 
 
 class SettingNamespace(object):
-    def __init__(self, name, label, module):
+    def __init__(self, name, label, module, sprite=None):
         self.name = name
         self.label = label
         self.module = module
+        self.sprite = sprite
         namespace_list.append(self)
+        namespaces[self.name] = self
 
     def __unicode__(self):
         return unicode(self.label)
@@ -48,3 +51,5 @@ class Setting(object):
             setattr(self.module, name, value)
 
         settings_list.append(self)
+        settings.setdefault(self.namespace.name, [])
+        settings[self.namespace.name].append(self)
