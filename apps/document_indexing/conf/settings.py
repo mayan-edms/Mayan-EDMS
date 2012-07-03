@@ -9,7 +9,7 @@ available_indexing_functions = {
     'proper_name': proper_name
 }
 
-namespace = SettingNamespace('document_indexing', _(u'Indexing'), module='document_indexing.conf.settings')
+namespace = SettingNamespace('document_indexing', _(u'Indexing'), module='document_indexing.conf.settings', sprite='tab')
 
 # Definition
 

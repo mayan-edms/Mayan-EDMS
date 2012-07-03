@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings.api import Setting, SettingNamespace
 
-namespace = SettingNamespace('permissions', _(u'Permissions'), module='permissions.conf.settings')
+namespace = SettingNamespace('permissions', _(u'Permissions'), module='permissions.conf.settings', sprite='key')
 
 Setting(
     namespace=namespace,

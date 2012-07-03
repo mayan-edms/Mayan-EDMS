@@ -15,7 +15,7 @@ default_available_models = {
     'User': User
 }
 
-namespace = SettingNamespace('metadata', _(u'Metadata'), module='metadata.conf.settings')
+namespace = SettingNamespace('metadata', _(u'Metadata'), module='metadata.conf.settings', sprite='xhtml')
 
 Setting(
     namespace=namespace,

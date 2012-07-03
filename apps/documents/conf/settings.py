@@ -21,7 +21,7 @@ def default_uuid():
     return unicode(uuid.uuid4())
 
 
-namespace = SettingNamespace('documents', _(u'Documents'), module='documents.conf.settings')
+namespace = SettingNamespace('documents', _(u'Documents'), module='documents.conf.settings', sprite='page')
 
 # Saving
 

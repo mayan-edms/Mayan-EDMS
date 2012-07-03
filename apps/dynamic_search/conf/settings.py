@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings.api import Setting, SettingNamespace
 
-namespace = SettingNamespace('dynamic_search', _(u'Searching'), module='dynamic_search.conf.settings')
+namespace = SettingNamespace('dynamic_search', _(u'Searching'), module='dynamic_search.conf.settings', sprite='zoom')
 
 Setting(
     namespace=namespace,

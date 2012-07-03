@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings.api import Setting, SettingNamespace
 
-namespace = SettingNamespace('ocr', _(u'OCR'), module='ocr.conf.settings')
+namespace = SettingNamespace('ocr', _(u'OCR'), module='ocr.conf.settings', sprite='spellcheck')
 
 Setting(
     namespace=namespace,

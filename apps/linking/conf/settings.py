@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings.api import Setting, SettingNamespace
 
-namespace = SettingNamespace('linking', _(u'Linking'), module='linking.conf.settings')
+namespace = SettingNamespace('linking', _(u'Linking'), module='linking.conf.settings', sprite='link')
 
 Setting(
     namespace=namespace,
