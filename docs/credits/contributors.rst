@@ -40,7 +40,6 @@ Patches
 * Sergey Glita (s.v.glita@gmail.com)
 * Brian E (brian@realize.org)
 
-
 Suggestions
 -----------
 * Cezar Jenkins (https://twitter.com/#!/emperorcezar)
@@ -52,7 +51,7 @@ Suggestions
 
 Translations
 ------------
-* Portuguese
+* Portuguese (Brazil)
 
   - Emerson Soares (http://emersonsoares.com)
   - Renata Oliveira (https://twitter.com/#!/rnataoliveira)
@@ -73,7 +72,11 @@ Translations
 
   - Tetja Rediske
   - Tilmann Sittig
-  
+
+* Portuguese
+
+  - Vítor Figueiró (vfigueiro@gmail.com)
+
 
 Remote access for debugging
 ---------------------------
