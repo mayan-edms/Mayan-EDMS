@@ -20,6 +20,7 @@ from django.utils.simplejson import dumps
 
 from common.models import Singleton
 from common.utils import pretty_size
+from main import __version__ as mayan_version
 
 FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
 FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
@@ -84,7 +85,9 @@ class Installation(Singleton):
             self.add_property(Property('unpaper', _(u'unpaper version'), pbs.unpaper('-V').stdout))
         except pbs.CommandNotFound:
             self.add_property(Property('unpaper', _(u'unpaper version'), _(u'not found')))
-            
+
+        self.add_property(Property('mayan_version', _(u'Mayan EDMS version'), mayan_version))
+           
     def __getattr__(self, name):
         self.set_properties()
         try:
@@ -117,6 +120,7 @@ class Installation(Singleton):
                     'processor': unicode(self.processor),
                     'cpus': unicode(self.cpus),
                     'total_phymem': unicode(self.total_phymem),
+                    'mayan_version': unicode(self.mayan_version),
                 }
             )
             
