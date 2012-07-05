@@ -1,3 +1,4 @@
+import os
 import sys
 import platform
 import uuid
@@ -17,6 +18,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.datastructures import SortedDict
 from django.utils.simplejson import dumps
+from django.conf import settings
 
 from common.models import Singleton
 from common.utils import pretty_size
@@ -26,7 +28,7 @@ FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
 FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
 FORM_RECEIVER_FIELD = 'entry.0.single'
 TIMEOUT = 5
-
+FABFILE_MARKER = os.path.join(settings.PROJECT_ROOT, 'fabfile_install')
 
 class Property(object):
     def __init__(self, name, label, value):
@@ -87,6 +89,7 @@ class Installation(Singleton):
             self.add_property(Property('unpaper', _(u'unpaper version'), _(u'not found')))
 
         self.add_property(Property('mayan_version', _(u'Mayan EDMS version'), mayan_version))
+        self.add_property(Property('fabfile', _(u'Installed via fabfile'), os.path.exists(FABFILE_MARKER)))
            
     def __getattr__(self, name):
         self.set_properties()
@@ -121,6 +124,7 @@ class Installation(Singleton):
                     'cpus': unicode(self.cpus),
                     'total_phymem': unicode(self.total_phymem),
                     'mayan_version': unicode(self.mayan_version),
+                    'fabfile': unicode(self.fabfile),
                 }
             )
             
