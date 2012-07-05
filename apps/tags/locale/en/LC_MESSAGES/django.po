@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:40-0400\n"
+"POT-Creation-Date: 2012-07-05 10:30-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,48 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:25
+#: __init__.py:20
+msgid "tag list"
+msgstr ""
+
+#: __init__.py:21
+msgid "create new tag"
+msgstr ""
+
+#: __init__.py:22
+msgid "attach tag"
+msgstr ""
+
+#: __init__.py:23 __init__.py:24
+msgid "remove"
+msgstr ""
+
+#: __init__.py:25 __init__.py:44 __init__.py:52 views.py:98
+msgid "tags"
+msgstr ""
+
+#: __init__.py:26 __init__.py:29
+msgid "delete"
+msgstr ""
+
+#: __init__.py:27
+msgid "edit"
+msgstr ""
+
+#: __init__.py:28
+msgid "tagged documents"
+msgstr ""
+
+#: __init__.py:30
+msgid "ACLs"
+msgstr ""
+
+#: __init__.py:34
 msgid "preview"
 msgstr ""
 
-#: __init__.py:29
+#: __init__.py:38
 msgid "tagged items"
-msgstr ""
-
-#: __init__.py:35 __init__.py:43 links.py:17 views.py:98
-msgid "tags"
 msgstr ""
 
 #: forms.py:24
@@ -39,38 +71,6 @@ msgstr ""
 
 #: forms.py:42 permissions.py:7
 msgid "Tags"
-msgstr ""
-
-#: links.py:12
-msgid "tag list"
-msgstr ""
-
-#: links.py:13
-msgid "create new tag"
-msgstr ""
-
-#: links.py:14
-msgid "attach tag"
-msgstr ""
-
-#: links.py:15 links.py:16
-msgid "remove"
-msgstr ""
-
-#: links.py:18 links.py:21
-msgid "delete"
-msgstr ""
-
-#: links.py:19
-msgid "edit"
-msgstr ""
-
-#: links.py:20
-msgid "tagged documents"
-msgstr ""
-
-#: links.py:22
-msgid "ACLs"
 msgstr ""
 
 #: literals.py:18
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Yellow"
 msgstr ""
 
-#: models.py:12 views.py:156 views.py:210 views.py:224
+#: models.py:12 views.py:154 views.py:206 views.py:220
 msgid "tag"
 msgstr ""
 
@@ -180,64 +180,64 @@ msgstr ""
 msgid "attach tag to: %s"
 msgstr ""
 
-#: views.py:130 views.py:261
+#: views.py:130 views.py:257
 msgid "Must provide at least one tag."
 msgstr ""
 
-#: views.py:147
+#: views.py:145
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:149 views.py:274
+#: views.py:147 views.py:269
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr ""
 
-#: views.py:164
+#: views.py:162
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
 msgstr ""
 
-#: views.py:165 views.py:168
+#: views.py:163 views.py:166
 msgid "Will be removed from all documents."
 msgstr ""
 
-#: views.py:167
+#: views.py:165
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
 msgstr ""
 
-#: views.py:198
+#: views.py:194
 msgid "Tag updated succesfully."
 msgstr ""
 
-#: views.py:207
+#: views.py:203
 #, python-format
 msgid "edit tag: %s"
 msgstr ""
 
-#: views.py:221
+#: views.py:217
 #, python-format
 msgid "documents with the tag \"%s\""
 msgstr ""
 
-#: views.py:240
+#: views.py:236
 #, python-format
 msgid "tags for: %s"
 msgstr ""
 
-#: views.py:272
+#: views.py:267
 #, python-format
 msgid "Tag \"%s\" removed successfully."
 msgstr ""
 
-#: views.py:288
+#: views.py:283
 #, python-format
 msgid "Are you sure you wish to remove the tag: %s?"
 msgstr ""
 
-#: views.py:290
+#: views.py:285
 #, python-format
 msgid "Are you sure you wish to remove the tags: %s?"
 msgstr ""

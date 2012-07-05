@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-02-02 18:20+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2012-07-03 18:16+0000\n"
+"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,19 +33,19 @@ msgstr "excluir"
 
 #: __init__.py:17
 msgid "query keyservers"
-msgstr ""
+msgstr "consultar servidores de chaves"
 
 #: __init__.py:18
 msgid "import"
-msgstr ""
+msgstr "importar"
 
 #: __init__.py:19
 msgid "key management"
-msgstr ""
+msgstr "gestão de chaves"
 
 #: api.py:24
 msgid "Public"
-msgstr "Público"
+msgstr "Pública"
 
 #: api.py:25
 msgid "Secret"
@@ -64,11 +65,11 @@ msgstr "Elgamal"
 
 #: api.py:53
 msgid "Bad signature."
-msgstr "Assinatura ruim."
+msgstr "Assinatura inválida."
 
 #: api.py:57
 msgid "Document not signed or invalid signature."
-msgstr "Documento não assinado ou inválido assinatura."
+msgstr "Documento não assinado ou assinatura inválida."
 
 #: api.py:61
 msgid "Signature error."
@@ -76,31 +77,31 @@ msgstr "Erro de assinatura."
 
 #: api.py:65
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
+msgstr "O documento está assinado, mas não está disponível uma chave pública para verificação."
 
 #: api.py:69
 msgid "Document is signed, and signature is good."
-msgstr ""
+msgstr "O documento está assinado e a assinatura é válida."
 
 #: api.py:73
 msgid "Document is signed with a valid signature."
-msgstr ""
+msgstr "O documento está assinado com uma assinatura válida."
 
 #: api.py:146
 msgid "unknown"
-msgstr "desconhecido"
+msgstr "desconhecida"
 
 #: forms.py:7
 msgid "Term"
-msgstr ""
+msgstr "Termo"
 
 #: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
+msgstr "Nome, e-mail, ID da chave ou impressão digital da chave a procurar."
 
 #: permissions.py:7
 msgid "Key management"
-msgstr ""
+msgstr "Gestão de chaves"
 
 #: permissions.py:9
 msgid "View keys"
@@ -112,21 +113,21 @@ msgstr "Excluir chaves"
 
 #: permissions.py:11
 msgid "Query keyservers"
-msgstr "Consulta servidores de chaves"
+msgstr "Consultar servidores de chaves"
 
 #: permissions.py:12
 msgid "Import keys from keyservers"
-msgstr ""
+msgstr "Importar chaves de servidores de chaves"
 
 #: views.py:37
 #, python-format
 msgid "Key: %s, imported successfully."
-msgstr ""
+msgstr "Chave: %s, importada com sucesso."
 
 #: views.py:42
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "Incapaz de importar a chave com o id: %(key_id)s; %(error)s"
 
 #: views.py:51
 msgid "Import key"
@@ -135,7 +136,7 @@ msgstr "Importar chave"
 #: views.py:52
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
-msgstr "Você tem certeza que deseja importar chave: %s?"
+msgstr "Tem a certeza de que deseja importar a chave com o id: %s?"
 
 #: views.py:77
 msgid "Key ID"
@@ -148,7 +149,7 @@ msgstr "Proprietário"
 #: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
-msgstr "Chave: %s, apagado com sucesso."
+msgstr "Chave: %s, excluída com sucesso."
 
 #: views.py:108
 msgid "Delete key"
@@ -160,7 +161,7 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
+msgstr "Tem a certeza de que pretende excluir a chave: %s?  Se tentar excluir uma chave pública que faça parte de um par chave pública / chave privada, a chave privada também será excluída."
 
 #: views.py:128
 msgid "Query key server"
@@ -192,7 +193,7 @@ msgstr "data de validade"
 
 #: views.py:166
 msgid "expired"
-msgstr "expirado"
+msgstr "expirada"
 
 #: views.py:170
 msgid "length"
@@ -200,16 +201,16 @@ msgstr "comprimento"
 
 #: views.py:174
 msgid "revoked"
-msgstr ""
+msgstr "revogada"
 
 #: views.py:179
 msgid "Identifies"
-msgstr ""
+msgstr "Identifica"
 
 #: conf/settings.py:15
 msgid "List of keyservers to be queried for unknown keys."
-msgstr ""
+msgstr "Lista de servidores de chaves a consultar para chaves desconhecidas."
 
 #: conf/settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
+msgstr "Diretório usado para guardar as chaves e os ficheiros de configuração."

@@ -5,13 +5,14 @@
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-02-21 16:45+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2012-07-03 10:12+0000\n"
+"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +38,7 @@ msgstr "remover"
 
 #: __init__.py:25 __init__.py:44 __init__.py:52 views.py:98
 msgid "tags"
-msgstr "Etiquetas"
+msgstr "etiquetas"
 
 #: __init__.py:26 __init__.py:29
 msgid "delete"
@@ -53,15 +54,15 @@ msgstr "documentos etiquetados"
 
 #: __init__.py:30
 msgid "ACLs"
-msgstr ""
+msgstr "ACL's"
 
 #: __init__.py:34
 msgid "preview"
-msgstr ""
+msgstr "visualização"
 
 #: __init__.py:38
 msgid "tagged items"
-msgstr "itens marcados"
+msgstr "itens com etiqueta"
 
 #: forms.py:24
 msgid "Name"
@@ -97,7 +98,7 @@ msgstr "Caqui"
 
 #: literals.py:23
 msgid "LightGrey"
-msgstr "Cinza Claro"
+msgstr "CinzentoClaro"
 
 #: literals.py:24
 msgid "Magenta"
@@ -125,11 +126,11 @@ msgstr "cor"
 
 #: models.py:16
 msgid "tag properties"
-msgstr "propriedades de etiqueta"
+msgstr "propriedades da etiqueta"
 
 #: models.py:17
 msgid "tags properties"
-msgstr "propriedades de etiquetas"
+msgstr "propriedades das etiquetas"
 
 #: permissions.py:9
 msgid "Create new tags"
@@ -141,7 +142,7 @@ msgstr "Excluir etiquetas"
 
 #: permissions.py:11
 msgid "Edit tags"
-msgstr "Editar as etiquetas"
+msgstr "Editar etiquetas"
 
 #: permissions.py:12
 msgid "View tags"
@@ -149,7 +150,7 @@ msgstr "Ver etiquetas"
 
 #: permissions.py:13
 msgid "Attach tags to documents"
-msgstr "Anexar etiquetas para documentos"
+msgstr "Atribuir etiquetas aos documentos"
 
 #: permissions.py:14
 msgid "Remove tags from documents"
@@ -157,7 +158,7 @@ msgstr "Remover etiquetas de documentos"
 
 #: views.py:42
 msgid "Tag already exists."
-msgstr "Etiqueta já existe."
+msgstr "A etiqueta já existe."
 
 #: views.py:50
 msgid "Tag created succesfully."
@@ -170,17 +171,17 @@ msgstr "criar etiqueta"
 #: views.py:77
 #, python-format
 msgid "Document is already tagged as \"%s\""
-msgstr "Documento já está marcado como \"%s\""
+msgstr "O documento já tem a etiqueta \"%s\""
 
 #: views.py:82
 #, python-format
 msgid "Tag \"%s\" attached successfully."
-msgstr "Etiqueta \"%s\" anexada com sucesso."
+msgstr "Etiqueta \"%s\" atribuída  com sucesso."
 
 #: views.py:88
 #, python-format
 msgid "attach tag to: %s"
-msgstr "anexar etiqueta a: %s"
+msgstr "atribuir etiqueta a: %s"
 
 #: views.py:130 views.py:257
 msgid "Must provide at least one tag."
@@ -199,16 +200,16 @@ msgstr "Erro ao excluir etiqueta \" %(tag)s \": %(error)s "
 #: views.py:162
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
-msgstr "Tem certeza de que deseja excluir a etiqueta: %s?"
+msgstr "Tem a certeza de que deseja excluir a etiqueta: %s?"
 
 #: views.py:163 views.py:166
 msgid "Will be removed from all documents."
-msgstr "Será removido de todos os documentos."
+msgstr "Será removida de todos os documentos."
 
 #: views.py:165
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
-msgstr "Você tem certeza que deseja deletar as etiquetas: %s?"
+msgstr "Tem a certeza de que deseja eliminar as etiquetas: %s?"
 
 #: views.py:194
 msgid "Tag updated succesfully."
@@ -237,13 +238,13 @@ msgstr "Etiqueta \"%s\" removida com sucesso."
 #: views.py:283
 #, python-format
 msgid "Are you sure you wish to remove the tag: %s?"
-msgstr "Tem certeza de que deseja remover a etiqueta: %s?"
+msgstr "Tem a certeza de que deseja remover a etiqueta: %s?"
 
 #: views.py:285
 #, python-format
 msgid "Are you sure you wish to remove the tags: %s?"
-msgstr "Tem certeza de que deseja remover as etiquetas: %s?"
+msgstr "Tem a certeza de que deseja remover as etiquetas: %s?"
 
 #: templatetags/tags_tags.py:17
 msgid "Add tag to document"
-msgstr "Adicionar etiquetas para o documento"
+msgstr "Adicionar a etiqueta ao documento"

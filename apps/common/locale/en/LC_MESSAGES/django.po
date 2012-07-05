@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:39-0400\n"
+"POT-Creation-Date: 2012-07-05 10:29-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:30 links.py:17
+#: __init__.py:26
+msgid "change password"
+msgstr ""
+
+#: __init__.py:27
+msgid "user details"
+msgstr ""
+
+#: __init__.py:28
+msgid "edit details"
+msgstr ""
+
+#: __init__.py:32 __init__.py:37
 msgid "about"
+msgstr ""
+
+#: __init__.py:33
+msgid "license"
 msgstr ""
 
 #: forms.py:101
@@ -37,30 +53,6 @@ msgstr ""
 
 #: forms.py:146
 msgid "This account is inactive."
-msgstr ""
-
-#: links.py:14
-msgid "change password"
-msgstr ""
-
-#: links.py:15
-msgid "user details"
-msgstr ""
-
-#: links.py:16
-msgid "edit details"
-msgstr ""
-
-#: links.py:18
-msgid "license"
-msgstr ""
-
-#: links.py:19
-msgid "sentry"
-msgstr ""
-
-#: links.py:20
-msgid "admin site"
 msgstr ""
 
 #: literals.py:24
@@ -131,7 +123,7 @@ msgstr ""
 msgid "auto admin properties"
 msgstr ""
 
-#: utils.py:299
+#: utils.py:295
 msgid "function found"
 msgstr ""
 
@@ -198,24 +190,20 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: conf/settings.py:10
-msgid "Common"
-msgstr ""
-
-#: conf/settings.py:17
+#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()."
+"mkdtemp()"
 msgstr ""
 
-#: conf/settings.py:61
+#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
 msgstr ""
 
-#: conf/settings.py:69
+#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
 msgstr ""
 
@@ -306,18 +294,18 @@ msgstr ""
 #: templates/generic_form_subtemplate.html:80
 #: templates/generic_form_subtemplate.html:82
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:94
-#: templates/generic_list_subtemplate.html:55
-#: templates/generic_list_subtemplate.html:189
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Save"
 msgstr ""
 
 #: templates/generic_form_subtemplate.html:80
 #: templates/generic_form_subtemplate.html:82
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:94
-#: templates/generic_list_subtemplate.html:55
-#: templates/generic_list_subtemplate.html:189
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Submit"
 msgstr ""
 
@@ -331,7 +319,7 @@ msgid "List of %(stripped_title)s"
 msgstr ""
 
 #: templates/generic_list_horizontal_subtemplate.html:23
-#: templates/generic_list_subtemplate.html:25
+#: templates/generic_list_subtemplate.html:24
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
@@ -339,19 +327,18 @@ msgid ""
 msgstr ""
 
 #: templates/generic_list_horizontal_subtemplate.html:25
-#: templates/generic_list_subtemplate.html:27
+#: templates/generic_list_subtemplate.html:26
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr ""
 
-#: templates/generic_list_horizontal_subtemplate.html:69
-#: templates/generic_list_subtemplate.html:161
-#, python-format
-msgid "There are no %(stripped_title)s"
+#: templates/generic_list_subtemplate.html:72
+msgid "Identifier"
 msgstr ""
 
-#: templates/generic_list_subtemplate.html:75
-msgid "Identifier"
+#: templates/generic_list_subtemplate.html:152
+#, python-format
+msgid "There are no %(stripped_title)s"
 msgstr ""
 
 #: templates/login.html:5

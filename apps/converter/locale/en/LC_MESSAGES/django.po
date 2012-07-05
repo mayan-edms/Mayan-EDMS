@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:39-0400\n"
+"POT-Creation-Date: 2012-07-05 10:29-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: links.py:9
+#: __init__.py:15
 msgid "file formats"
 msgstr ""
 
@@ -891,46 +891,35 @@ msgstr ""
 msgid "description"
 msgstr ""
 
-#: conf/settings.py:7
-msgid "Converter"
-msgstr ""
-
-#: conf/settings.py:14
+#: conf/settings.py:11
 msgid "File path to imagemagick's convert program."
 msgstr ""
 
-#: conf/settings.py:23
+#: conf/settings.py:12
 msgid "File path to imagemagick's identify program."
 msgstr ""
 
-#: conf/settings.py:32
+#: conf/settings.py:13
 msgid "File path to graphicsmagick's program."
 msgstr ""
 
-#: conf/settings.py:41
-msgid ""
-"Set of configuration options to pass to the GraphicsMagick executable to "
-"fine tune it's functionality as explained in the GraphicsMagick "
-"documentation."
-msgstr ""
-
-#: conf/settings.py:49
+#: conf/settings.py:15
 msgid ""
 "Graphics conversion backend to use.  Options are: converter.backends."
 "imagemagick, converter.backends.graphicsmagick and converter.backends.python."
 msgstr ""
 
-#: conf/settings.py:57
+#: conf/settings.py:16
 msgid "Path to the unoconv program."
 msgstr ""
 
-#: conf/settings.py:66
+#: conf/settings.py:17
 msgid ""
 "Use alternate method of connection to LibreOffice using a pipe, it is slower "
 "but less prone to segmentation faults."
 msgstr ""
 
-#: conf/settings.py:74
+#: conf/settings.py:18
 msgid "Path to the libreoffice program."
 msgstr ""
 

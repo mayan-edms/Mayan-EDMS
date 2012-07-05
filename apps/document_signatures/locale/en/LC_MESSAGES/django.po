@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:40-0400\n"
+"POT-Creation-Date: 2012-07-05 10:30-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:11
-msgid "Signature file"
-msgstr ""
-
-#: links.py:22
+#: __init__.py:83
 msgid "upload signature"
 msgstr ""
 
-#: links.py:23
+#: __init__.py:84
 msgid "download signature"
 msgstr ""
 
-#: links.py:24
-msgid "delete signature"
+#: __init__.py:85
+msgid "signatures"
 msgstr ""
 
-#: links.py:25
-msgid "signatures"
+#: forms.py:11
+msgid "Signature file"
 msgstr ""
 
 #: models.py:20
@@ -71,10 +67,6 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Download detached signatures"
-msgstr ""
-
-#: permissions.py:11
-msgid "Delete detached signatures"
 msgstr ""
 
 #: views.py:47
@@ -127,23 +119,4 @@ msgstr ""
 #: views.py:105
 #, python-format
 msgid "Upload detached signature for: %s"
-msgstr ""
-
-#: views.py:106
-msgid "Submit"
-msgstr ""
-
-#: views.py:155
-msgid "Detached signature deleted successfully."
-msgstr ""
-
-#: views.py:158
-#, python-format
-msgid "Error while deleting the detached signature; %s"
-msgstr ""
-
-#: views.py:162
-#, python-format
-msgid ""
-"Are you sure you wish to delete the detached signature from document: %s"
 msgstr ""

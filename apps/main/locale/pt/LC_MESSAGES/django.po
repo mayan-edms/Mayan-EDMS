@@ -5,13 +5,14 @@
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-02-21 16:38+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2012-07-02 13:35+0000\n"
+"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,15 +38,15 @@ msgstr "sentinela"
 
 #: __init__.py:37
 msgid "admin site"
-msgstr "site de administação"
+msgstr "site de administração"
 
 #: __init__.py:40
 msgid "home"
-msgstr "inicio"
+msgstr "início"
 
 #: __init__.py:42
 msgid "search"
-msgstr "pesquisa"
+msgstr "procurar"
 
 #: views.py:43
 msgid "maintenance menu"
@@ -63,7 +64,7 @@ msgstr "Diagnósticos"
 msgid ""
 "Controls whether the search functionality is provided by a sidebar widget or"
 " by a menu entry."
-msgstr "Controla-se a funcionalidade de pesquisa é fornecido por um widget da barra lateral ou por uma entrada de menu."
+msgstr "Controla se a funcionalidade de procura é fornecida por um widget da barra lateral ou por uma entrada de menu."
 
 #: templates/about.html:5
 msgid "About this program"
@@ -79,15 +80,15 @@ msgstr "(DEBUG)"
 
 #: templates/base.html:193
 msgid "User"
-msgstr "Usuário"
+msgstr "Utilizador"
 
 #: templates/base.html:195
 msgid "Anonymous"
-msgstr "Anônimo"
+msgstr "Anónimo"
 
 #: templates/base.html:198
 msgid "User details"
-msgstr "Detalhes do usuário"
+msgstr "Detalhes do utilizador"
 
 #: templates/base.html:215
 msgid "Login"
@@ -134,14 +135,14 @@ msgstr "Ações"
 
 #: templates/home.html:8
 msgid "Django based open source document management system"
-msgstr "Sistema aberto de gerenciamento de documentos baseado em Django "
+msgstr "Sistema de gestão documental baseado em Django de código livre"
 
 #: templates/project_description.html:6
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration and OCR capabilities"
-msgstr "Código Aberto, Django gestão de documentos eletrônicos com metadados personalizados, indexação, etiquetagem, a integração do serviço de arquivos e recursos de OCR"
+msgstr "Sistema de gestão documental de código livre e baseado em Django, com metadados personalizados, indexação, etiquetagem, integração de servidor de ficheiros e OCR"
 
 #: templates/project_description.html:18
 msgid "Released under the GPL V3 License"
-msgstr "Liberado sob a licença GPL V3"
+msgstr "Publicado sob a licença GPL V3"

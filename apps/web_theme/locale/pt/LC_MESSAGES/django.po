@@ -4,13 +4,14 @@
 # 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2011-11-04 00:46+0000\n"
-"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
+"PO-Revision-Date: 2012-07-02 11:53+0000\n"
+"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,11 +28,11 @@ msgstr "Tema CSS a ser aplicado, as opções são: amro, bec, bec-green, blue, d
 
 #: conf/settings.py:12
 msgid "Display extra information in the login screen."
-msgstr "Exibir informações extras na tela de login."
+msgstr "Exibir informações extras no ecrã de login."
 
 #: templates/web_theme_base.html:101
 msgid "dismiss all notifications"
-msgstr "rejeitar todas as notificações"
+msgstr "descartar todas as notificações"
 
 #: templates/web_theme_base.html:101
 msgid "close all"
@@ -39,7 +40,7 @@ msgstr "fechar todos"
 
 #: templates/web_theme_base.html:102
 msgid "dismiss this notification"
-msgstr "descartar essa notificação"
+msgstr "descartar esta notificação"
 
 #: templates/web_theme_base.html:102
 msgid "close"
@@ -51,11 +52,11 @@ msgstr "Login"
 
 #: templates/web_theme_login.html:18
 msgid "You are already logged in"
-msgstr "Você já está logado"
+msgstr "Já se encontra autenticado"
 
 #: templates/web_theme_login.html:21
 msgid "Redirecting you to the website entry point in 5 seconds."
-msgstr "Redirecionando você para o ponto de entrada do site em 5 segundos."
+msgstr "Redirecionando-o para o ponto de entrada do site em 5 segundos."
 
 #: templates/web_theme_login.html:24
 #, python-format

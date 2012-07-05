@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:40-0400\n"
+"POT-Creation-Date: 2012-07-05 10:29-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:31
-msgid "home"
-msgstr ""
-
 #: __init__.py:33
-msgid "search"
-msgstr ""
-
-#: links.py:11
 msgid "maintenance"
 msgstr ""
 
-#: links.py:12
+#: __init__.py:34
 msgid "statistics"
 msgstr ""
 
-#: links.py:13
+#: __init__.py:35
 msgid "diagnostics"
 msgstr ""
 
-#: links.py:14
+#: __init__.py:36
 msgid "sentry"
 msgstr ""
 
-#: links.py:15
+#: __init__.py:37
 msgid "admin site"
+msgstr ""
+
+#: __init__.py:40
+msgid "home"
+msgstr ""
+
+#: __init__.py:42
+msgid "search"
 msgstr ""
 
 #: views.py:43
@@ -57,11 +57,7 @@ msgstr ""
 msgid "Diagnostics"
 msgstr ""
 
-#: conf/settings.py:6
-msgid "Main"
-msgstr ""
-
-#: conf/settings.py:13
+#: conf/settings.py:12
 msgid ""
 "Controls whether the search functionality is provided by a sidebar widget or "
 "by a menu entry."
@@ -79,46 +75,59 @@ msgstr ""
 msgid "(DEBUG)"
 msgstr ""
 
-#: templates/base.html:202
+#: templates/base.html:193
 msgid "User"
 msgstr ""
 
-#: templates/base.html:204
+#: templates/base.html:195
 msgid "Anonymous"
 msgstr ""
 
-#: templates/base.html:207
+#: templates/base.html:198
 msgid "User details"
 msgstr ""
 
-#: templates/base.html:224
+#: templates/base.html:215
 msgid "Login"
 msgstr ""
 
-#: templates/base.html:224
+#: templates/base.html:215
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:284
+#: templates/base.html:295
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/base.html:303
+#: templates/base.html:311
 #, python-format
-msgid "Actions for %(name)s: %(object_reference)s"
+msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:305
+#: templates/base.html:313 templates/base.html.py:356
 #, python-format
-msgid "Actions for: %(object_reference)s"
+msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:308
+#: templates/base.html:316
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:324
+#: templates/base.html:328 templates/base.html.py:371
+msgid "Related actions"
+msgstr ""
+
+#: templates/base.html:339 templates/base.html.py:384
 msgid "Other available actions"
+msgstr ""
+
+#: templates/base.html:354
+#, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr ""
+
+#: templates/base.html:359
+msgid "Actions"
 msgstr ""
 
 #: templates/home.html:8
