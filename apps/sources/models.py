@@ -13,9 +13,8 @@ from django.db import transaction
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from documents.models import DocumentType, Document
-from documents.events import HISTORY_DOCUMENT_CREATED
+from documents.events import history_document_created
 from document_indexing.api import update_indexes
-from history.api import create_history
 from metadata.models import MetadataType
 from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
@@ -101,9 +100,9 @@ class BaseModel(models.Model):
 
             if user:
                 document.add_as_recent_document_for_user(user)
-                create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
+                history_document_created.commit(source_object=document, data={'user': user})
             else:
-                create_history(HISTORY_DOCUMENT_CREATED, document)
+                history_document_created.commit(source_object=document)
         else:
             if use_file_name:
                 filename = None

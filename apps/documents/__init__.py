@@ -9,7 +9,6 @@ from navigation.api import (register_links, register_top_menu,
     register_model_list_columns, register_multi_item_links,
     register_sidebar_template)
 from main.api import register_diagnostic, register_maintenance_links
-from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from metadata.api import get_metadata_string
 from project_setup.api import register_setup
@@ -26,8 +25,6 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
     PERMISSION_DOCUMENT_NEW_VERSION)
-from .events import (HISTORY_DOCUMENT_CREATED,
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .conf.settings import ZOOM_MAX_LEVEL
 from .conf.settings import ZOOM_MIN_LEVEL
 from .conf import settings as document_settings
@@ -54,11 +51,6 @@ def is_max_zoom(context):
 
 def is_current_version(context):
     return context['object'].document.latest_version.timestamp == context['object'].timestamp
-
-# History setup
-register_history_type(HISTORY_DOCUMENT_CREATED)
-register_history_type(HISTORY_DOCUMENT_EDITED)
-register_history_type(HISTORY_DOCUMENT_DELETED)
 
 document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam': 'page'}
 document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page'}
