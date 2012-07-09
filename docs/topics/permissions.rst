@@ -47,13 +47,11 @@ from which the user was not allowed access.
 Default Access Control Lists (Default ACLs)
 -------------------------------------------
 
-One of the specifics of the 3 tier access control in contrast with the 2 tier access control are so called Default Access Control Lists.They allow assigment to Users an access to a particular object - the class or instance of the class. The document ``Payroll`` is example of instance of class ``Documents``. A user can be granted with access to only one instance of the class ``Documents`` or to the whole class ``Documents``. 
-
-And not only that but Default ACLs give the possibility to give access to class before it is instantiated. It will be explained with the following example.
+One of the specifics of the 3 tier access control in contrast with the 2 tier access control are so called Default Access Control Lists.They allow assigment to Users an access to a particular object - the class or instance of the class. The document ``Payroll`` is example of instance of class ``Documents``. A user can be granted with access to only one instance of the class ``Documents`` or to the whole class ``Documents``. And not only that but Default ACLs give the possibility to grant access to class before it is instantiated. It will be explained with the following example.
 
 **Example 1.** Each user have to access only the documents that he uploads
 
-The example will show how to restrict a user in order not to view documents uploaded by other users, but only by himself. For that purpose we have to restrict the access to something that does not exist yet. The system must know that before the actual upload in order to act accordingly. This is where Default ACLs come in place. 
+The example will show how to restrict a user in order not to view documents uploaded by other users, but only by himself. For that purpose we have to restrict the access to something that does not exist yet. The system must know that before the actual upload in order to act accordingly. This is where Default ACLs comes in place. 
 
 Follow the steps:
     1. Enter **Mayan EDMS** with user that has administrative rights.
