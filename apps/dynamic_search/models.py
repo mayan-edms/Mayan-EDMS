@@ -3,6 +3,7 @@ import urllib
 
 from datetime import datetime
 
+from django.db import connection 
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
@@ -60,3 +61,14 @@ class RecentSearch(models.Model):
         ordering = ('-datetime_created',)
         verbose_name = _(u'recent search')
         verbose_name_plural = _(u'recent searches')
+
+
+if connection.vendor == 'postgresql': 
+    from django.db.models.sql.compiler import SQLCompiler 
+    orig_get_from_clause = SQLCompiler.get_from_clause 
+    def get_from_clause(self): 
+        result, extra = orig_get_from_clause(self) 
+        result = map(lambda s: s.replace('"django_comments"."object_pk"', 
+                        '"django_comments"."object_pk"::integer'), result) 
+        return result, extra 
+    SQLCompiler.get_from_clause = get_from_clause
