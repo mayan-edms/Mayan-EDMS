@@ -59,7 +59,7 @@ Follow the steps:
     3. Click ``New holder`` next to the class Documents. From the list of users choose the special user Creator. Give the permission ``View Documents`` to the Creator.
     4. Go back to Setup menu. Go to Users and create the users ``Pedro`` and ``Sancho``. 
     5. Go back to Setup menu. Go to Groups and create the group ``Employees``. Click to members of the groups and add ``Pedro`` and ``Sancho`` to that group.
-    6. Go back to Setup menu. Go to Roles submenu. Create the role ``Uploaders``. Give the permission ``Create documents`` to the role. Add the group ``Employess`` as a member to that role.
+    6. Go back to Setup menu. Go to Roles submenu. Create the role ``Uploaders``. Give the permission ``Create documents`` to the role. Add the group ``Employees`` as a member to that role.
     7. Now enter **Mayan EDMS** with ``Pedro`` and ``Sancho`` one after another and upload documents. Pedro should not see the documents that ``Sancho`` uploaded and vice versa. He should see only documents uploaded by himself.
 
 The above example will work only for documents that are uploaded after the activation of the restriction. It will not work for documents prior to the activation of the restriction.
