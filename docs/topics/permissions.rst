@@ -47,13 +47,13 @@ from which the user was not allowed access.
 Default Access Control Lists (Default ACLs)
 -------------------------------------------
 
-**Mayan EDMS** allows assigment of permissions to Users to access objects after their instantiation from the class. This is implemented with so called Access Control List. The document ``Payroll`` is example of instance of class ``Documents``. A user can be granted with access to only one instance of the class ``Documents`` - the document ``Payroll``. 
+One of the specifics of the 3 tier access control in contrast with the 2 tier access control are so called Default Access Control Lists.They allow assigment to Users an access to a particular object - the class or instance of the class. The document ``Payroll`` is example of instance of class ``Documents``. A user can be granted with access to only one instance of the class ``Documents`` or to the whole class ``Documents``. 
 
-Along with Access Control Lists there are Default Access Control Lists.They provide additional functionality. It allows assigment of permissions to Users directly to the class before the instantiation. It will be explained with the following example:
+And not only that but Default ACLs give the possibility to give access to class before it is instantiated. It will be explained with the following example.
 
-**Example 1.** Each user can access only the documents that he uploads
+**Example 1.** Each user have to access only the documents that he uploads
 
-This example will show how to restrict a user in order not to view documents uploaded by other users. The user will view only the documents that he uploades. It will work only for documents that are uploaded after the activation of the restriction. It will not work for documents prior to the activation of the restriction.
+The example will show how to restrict a user in order not to view documents uploaded by other users, but only by himself. For that purpose we have to restrict the access to something that does not exist yet. The system must know that before the actual upload in order to act accordingly. This is where Default ACLs come in place. 
 
 Follow the steps:
     1. Enter **Mayan EDMS** with user that has administrative rights.
@@ -63,3 +63,5 @@ Follow the steps:
     5. Go back to Setup menu. Go to Groups and create the group ``Employees``. Click to members of the groups and add ``Pedro`` and ``Sancho`` to that group.
     6. Go back to Setup menu. Go to Roles submenu. Create the role ``Uploaders``. Give the permission ``Create documents`` to the role. Add the group ``Employess`` as a member to that role.
     7. Now enter **Mayan EDMS** with ``Pedro`` and ``Sancho`` one after another and upload documents. Pedro should not see the documents that ``Sancho`` uploaded and vice versa. He should see only documents uploaded by himself.
+
+The above example will work only for documents that are uploaded after the activation of the restriction. It will not work for documents prior to the activation of the restriction.
