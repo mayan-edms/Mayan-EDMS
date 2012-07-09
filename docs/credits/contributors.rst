@@ -39,6 +39,9 @@ Patches
 * Meurig Freeman (https://github.com/meurig)
 * Sergey Glita (s.v.glita@gmail.com)
 * Brian E (brian@realize.org)
+* Iliya Georgiev (ikgeorgiev@gmail.com)
+* Vítor Figueiró (vfigueiro@gmail.com)
+
 
 Suggestions
 -----------
