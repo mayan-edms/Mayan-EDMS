@@ -1,41 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 19:02-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-10 11:11-0400\n"
 "PO-Revision-Date: 2012-07-02 03:30+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
+"mayan-edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: __init__.py:22
+#: __init__.py:26
 msgid "change password"
 msgstr "alterar a senha"
 
-#: __init__.py:23
+#: __init__.py:27
 msgid "user details"
 msgstr "detalhes do usuário"
 
-#: __init__.py:24
+#: __init__.py:28
 msgid "edit details"
 msgstr "editar detalhes"
 
-#: __init__.py:28 __init__.py:33
+#: __init__.py:32 __init__.py:37
 msgid "about"
 msgstr "sobre"
 
-#: __init__.py:29
+#: __init__.py:33
 msgid "license"
 msgstr "licença"
 
@@ -51,7 +52,9 @@ msgstr "E-mail"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr "Por favor insira o e-mail e senha corretos. Note que os campos de senha são case-sensitive."
+msgstr ""
+"Por favor insira o e-mail e senha corretos. Note que os campos de senha são "
+"case-sensitive."
 
 #: forms.py:146
 msgid "This account is inactive."
@@ -97,17 +100,35 @@ msgstr "Retrato"
 msgid "Landscape"
 msgstr "Paisagem"
 
-#: models.py:16
+#: models.py:17
 msgid "lock field"
 msgstr ""
 
-#: models.py:43
+#: models.py:45
 msgid "Anonymous user"
 msgstr "Usuário anônimo"
 
-#: models.py:46 models.py:47
+#: models.py:48 models.py:49
 msgid "anonymous user"
 msgstr "usuário anônimo"
+
+#: models.py:53
+msgid "account"
+msgstr ""
+
+#: models.py:54
+#, fuzzy
+msgid "password"
+msgstr "alterar a senha"
+
+#: models.py:55
+#, fuzzy
+msgid "password hash"
+msgstr "Alterar a senha"
+
+#: models.py:58
+msgid "auto admin properties"
+msgstr ""
 
 #: utils.py:295
 msgid "function found"
@@ -176,20 +197,25 @@ msgstr "Sua senha foi alterada com êxito."
 msgid "None"
 msgstr "Nenhum"
 
-#: conf/settings.py:15
+#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()"
-msgstr "Diretório temporário usado para armazenar miniaturas, previews e arquivos temporários. Se nenhum for especificado, um será criado usando tempfile.mkdtemp()"
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"Diretório temporário usado para armazenar miniaturas, previews e arquivos "
+"temporários. Se nenhum for especificado, um será criado usando tempfile."
+"mkdtemp()"
 
-#: conf/settings.py:65
+#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr "Controla o mecanismo usado para usuário autenticado. As opções são: e-mail, nome de usuário,"
+msgstr ""
+"Controla o mecanismo usado para usuário autenticado. As opções são: e-mail, "
+"nome de usuário,"
 
-#: conf/settings.py:74
+#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
 msgstr ""
 
@@ -310,7 +336,9 @@ msgstr "Lista de %(stripped_title)s "
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s of %(total_pages)s)"
+msgstr ""
+"Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s "
+"of %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26

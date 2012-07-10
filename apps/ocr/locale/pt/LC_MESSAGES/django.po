@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Renata Oliveira <renatabels@gmail.com>, 2011.
@@ -9,15 +9,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-10 11:12-0400\n"
 "PO-Revision-Date: 2012-07-02 21:27+0000\n"
 "Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:32 __init__.py:33
@@ -48,7 +49,9 @@ msgstr "limpar o conteúdo das páginas"
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr "Corre um filtro de linguagem para remover erros comuns de OCR do conteúdo das páginas do documento."
+msgstr ""
+"Corre um filtro de linguagem para remover erros comuns de OCR do conteúdo "
+"das páginas do documento."
 
 #: __init__.py:44
 msgid "queue document list"
@@ -278,7 +281,8 @@ msgstr "O documento: %(document)s  já está na fila."
 #: views.py:178
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr "O documento: %(document)s  foi reenviado para a fila de OCR: %(queue)s "
+msgstr ""
+"O documento: %(document)s  foi reenviado para a fila de OCR: %(queue)s "
 
 #: views.py:184
 #, python-format
@@ -288,7 +292,9 @@ msgstr "O documento com id nº: %d, já não existe."
 #: views.py:188
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
-msgstr "O documento: %s já está a ser processado e não pode ser reenviado para a fila."
+msgstr ""
+"O documento: %s já está a ser processado e não pode ser reenviado para a "
+"fila."
 
 #: views.py:200
 #, python-format
@@ -336,7 +342,8 @@ msgstr "Tem a certeza de que deseja limpar todo o conteúdo das páginas?"
 
 #: views.py:277
 msgid "On large databases this operation may take some time to execute."
-msgstr "Esta operação pode levar algum tempo a executar em bases de dados grandes ."
+msgstr ""
+"Esta operação pode levar algum tempo a executar em bases de dados grandes ."
 
 #: views.py:283
 msgid "Document pages content clean up complete."
@@ -379,7 +386,9 @@ msgstr "Erro ao excluir transformação da fila; %(error)s "
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr "Tem a certeza de que deseja excluir a transformação da fila \"%(transformation)s\""
+msgstr ""
+"Tem a certeza de que deseja excluir a transformação da fila "
+"\"%(transformation)s\""
 
 #: views.py:410
 msgid "Queue transformation created successfully"
@@ -399,11 +408,15 @@ msgstr "Criar nova transformação para a fila: %s"
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr "Número de segundos de atraso para o OCR de documentos para permitir a replicação de armazenamento do nó."
+msgstr ""
+"Número de segundos de atraso para o OCR de documentos para permitir a "
+"replicação de armazenamento do nó."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr "Quantidade máxima de OCR's de documentos que um nó pode executar em simultâneo."
+msgstr ""
+"Quantidade máxima de OCR's de documentos que um nó pode executar em "
+"simultâneo."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
@@ -415,9 +428,10 @@ msgstr "Caminho para o programa unpaper."
 
 #: conf/settings.py:18
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
-msgstr "Caminho para o programa pdftotext de poppler, usado para extrair texto de ficheiros PDF."
+"File path to poppler's pdftotext program used to extract text from PDF files."
+msgstr ""
+"Caminho para o programa pdftotext de poppler, usado para extrair texto de "
+"ficheiros PDF."
 
 #: parsers/__init__.py:87 parsers/__init__.py:164
 msgid "Text extracted from PDF"

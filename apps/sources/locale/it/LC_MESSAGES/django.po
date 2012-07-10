@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <pierpaolo.baldan@gmail.com>, 2011.
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 19:03-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-10 11:12-0400\n"
 "PO-Revision-Date: 2012-06-17 22:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:20
@@ -31,15 +32,15 @@ msgstr "cancella"
 msgid "sources"
 msgstr "sorgenti"
 
-#: __init__.py:24 literals.py:53 models.py:204
+#: __init__.py:24 literals.py:53 models.py:203
 msgid "web forms"
 msgstr "web forms"
 
-#: __init__.py:25 models.py:175
+#: __init__.py:25 models.py:174
 msgid "staging folders"
 msgstr "cartelle per la gestione temporanea"
 
-#: __init__.py:26 models.py:239
+#: __init__.py:26 models.py:238
 msgid "watch folders"
 msgstr "cartelle di"
 
@@ -139,7 +140,7 @@ msgstr "Stampante"
 msgid "Empty printer"
 msgstr "Stampante vuota"
 
-#: literals.py:47 models.py:203
+#: literals.py:47 models.py:202
 msgid "web form"
 msgstr "web form"
 
@@ -159,118 +160,121 @@ msgstr "server per la gestione temporanea delle cartelle"
 msgid "server watch folders"
 msgstr "server di salvataggio delle cartelle"
 
-#: models.py:36
+#: models.py:35
 msgid "title"
 msgstr "titolo"
 
-#: models.py:37
+#: models.py:36
 msgid "enabled"
 msgstr "abilitato"
 
-#: models.py:38
+#: models.py:37
 msgid "whitelist"
 msgstr "whitelist"
 
-#: models.py:39
+#: models.py:38
 msgid "blacklist"
 msgstr "blacklist"
 
-#: models.py:143
+#: models.py:142
 msgid "icon"
 msgstr "icona"
 
-#: models.py:143
+#: models.py:142
 msgid "An icon to visually distinguish this source."
 msgstr "Un'icona per distinguere visivamente questa fonte."
 
-#: models.py:159 models.py:211
+#: models.py:158 models.py:210
 msgid "folder path"
 msgstr "path della cartella"
 
-#: models.py:159 models.py:211
+#: models.py:158 models.py:210
 msgid "Server side filesystem path."
 msgstr "Path del server di filesystem"
 
-#: models.py:160
+#: models.py:159
 msgid "preview width"
 msgstr "anteprima larghezza"
 
-#: models.py:160
+#: models.py:159
 msgid "Width value to be passed to the converter backend."
-msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore della larghezza da passare per le operazioni di conversione in backend"
 
-#: models.py:161
+#: models.py:160
 msgid "preview height"
 msgstr "anteprima altezza"
 
-#: models.py:161
+#: models.py:160
 msgid "Height value to be passed to the converter backend."
-msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore dell'altezza da passare per le operazioni di conversione in backend"
 
-#: models.py:162 models.py:199 models.py:212
+#: models.py:161 models.py:198 models.py:211
 msgid "uncompress"
 msgstr "decomprimere"
 
-#: models.py:162 models.py:199 models.py:212
+#: models.py:161 models.py:198 models.py:211
 msgid "Whether to expand or not compressed archives."
 msgstr "Se espandere o meno degli archivi compressi."
 
-#: models.py:163 models.py:213
+#: models.py:162 models.py:212
 msgid "delete after upload"
 msgstr "cancella dopo il caricamento"
 
-#: models.py:163 models.py:213
+#: models.py:162 models.py:212
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Cancella il file dopo essere stato caricato"
 
-#: models.py:174
+#: models.py:173
 msgid "staging folder"
 msgstr "Cartella di conservazione"
 
-#: models.py:214
+#: models.py:213
 msgid "interval"
 msgstr "intervallo"
 
-#: models.py:214
+#: models.py:213
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new "
-"documents."
-msgstr "Invervallo di pochi secondi in cui viene controllato il percorso cartella di controllo per i nuovi documenti."
+"Inverval in seconds where the watch folder path is checked for new documents."
+msgstr ""
+"Invervallo di pochi secondi in cui viene controllato il percorso cartella di "
+"controllo per i nuovi documenti."
 
-#: models.py:238
+#: models.py:237
 msgid "watch folder"
 msgstr "controlla cartella"
 
-#: models.py:243
+#: models.py:242
 msgid "Enter a valid value."
 msgstr "Inserisci un valore valido"
 
-#: models.py:271 views.py:595
+#: models.py:270 views.py:595
 msgid "order"
 msgstr "ordine"
 
-#: models.py:272 views.py:596 views.py:633 views.py:663
+#: models.py:271 views.py:596 views.py:633 views.py:663
 msgid "transformation"
 msgstr "trasformazione"
 
-#: models.py:273 views.py:597
+#: models.py:272 views.py:597
 msgid "arguments"
 msgstr "argomenti"
 
-#: models.py:273
+#: models.py:272
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Usa dei dizionari per identificare gli argomenti , esempio: %s"
 
-#: models.py:284
+#: models.py:283
 msgid "document source transformation"
 msgstr "trasformazione del documento sorgente"
 
-#: models.py:285
+#: models.py:284
 msgid "document source transformations"
 msgstr "trasformazioni dei documenti sorgente"
 
-#: models.py:292 models.py:293
+#: models.py:291 models.py:292
 msgid "out of process"
 msgstr "fuori del processo"
 
@@ -324,12 +328,15 @@ msgstr "Sorgenti caricamento"
 #: views.py:107
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr "Nessuna fonte interattiva dei documenti sono state definite o non ne sono state attivate."
+msgstr ""
+"Nessuna fonte interattiva dei documenti sono state definite o non ne sono "
+"state attivate."
 
 #: views.py:108
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr "Click %(setup_link)s per aggiungere o abilitare una sorgente documenti."
+msgstr ""
+"Click %(setup_link)s per aggiungere o abilitare una sorgente documenti."
 
 #: views.py:165
 msgid "New document version uploaded successfully."
@@ -369,7 +376,8 @@ msgstr "carica un documento in locale dalla sorgente: %s"
 #: views.py:240
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
-msgstr "Versione documento da gestione temporanea file: %s,caricata con successo"
+msgstr ""
+"Versione documento da gestione temporanea file: %s,caricata con successo"
 
 #: views.py:243
 #, python-format
@@ -379,14 +387,14 @@ msgstr "File in allestimento:%s, caricato con successo."
 #: views.py:246
 #, python-format
 msgid ""
-"Staging file: %s, uncompressed successfully and uploaded as individual "
-"files."
+"Staging file: %s, uncompressed successfully and uploaded as individual files."
 msgstr "file temporaneo: %s, non compresso e caricato come file singolo"
 
 #: views.py:249
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
-msgstr "file temporaneo: %s, non è stato compresso, caricato come file singolo."
+msgstr ""
+"file temporaneo: %s, non è stato compresso, caricato come file singolo."
 
 #: views.py:254
 #, python-format
@@ -507,13 +515,16 @@ msgstr "Sorgente per la trasformazione cancellata con successo."
 #: views.py:652
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr "Erroro nella cancellazione della sorgente per la trasformazione; %(error)s"
+msgstr ""
+"Erroro nella cancellazione della sorgente per la trasformazione; %(error)s"
 
 #: views.py:665
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr "Sei sicuro di voler cancellare la sorgente di trasformazione \"%(transformation)s\""
+msgstr ""
+"Sei sicuro di voler cancellare la sorgente di trasformazione "
+"\"%(transformation)s\""
 
 #: views.py:695
 msgid "Source transformation created successfully"

@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <winterfall24@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-10 11:12-0400\n"
 "PO-Revision-Date: 2012-03-02 22:04+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:33
 msgid "maintenance"
@@ -60,8 +62,8 @@ msgstr "Diagnostyka"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or"
-" by a menu entry."
+"Controls whether the search functionality is provided by a sidebar widget or "
+"by a menu entry."
 msgstr ""
 
 #: templates/about.html:5
@@ -84,50 +86,50 @@ msgstr "Użytkownik"
 msgid "Anonymous"
 msgstr "Anonimowy"
 
-#: templates/base.html:198
+#: templates/base.html:197
 msgid "User details"
 msgstr "Dane użytkownika"
 
-#: templates/base.html:215
+#: templates/base.html:214
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:215
+#: templates/base.html:214
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base.html:295
+#: templates/base.html:294
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/base.html:311
+#: templates/base.html:310
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:313 templates/base.html.py:356
+#: templates/base.html:312 templates/base.html.py:355
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:316
+#: templates/base.html:315
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:328 templates/base.html.py:371
+#: templates/base.html:327 templates/base.html.py:370
 msgid "Related actions"
 msgstr ""
 
-#: templates/base.html:339 templates/base.html.py:384
+#: templates/base.html:338 templates/base.html.py:383
 msgid "Other available actions"
 msgstr ""
 
-#: templates/base.html:354
+#: templates/base.html:353
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:359
+#: templates/base.html:358
 msgid "Actions"
 msgstr ""
 
@@ -138,7 +140,8 @@ msgstr "Django based open source document management system"
 #: templates/project_description.html:6
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
-"indexing, tagging, file serving integration and OCR capabilities"
+"indexing, tagging, file serving integration, digital signature support and "
+"OCR capabilities"
 msgstr ""
 
 #: templates/project_description.html:18
