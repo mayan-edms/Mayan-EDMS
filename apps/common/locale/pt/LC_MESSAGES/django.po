@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
@@ -9,16 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-07-10 11:11-0400\n"
-"PO-Revision-Date: 2012-07-03 10:18+0000\n"
-"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"PO-Revision-Date: 2012-07-10 15:16+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:26
@@ -53,9 +52,7 @@ msgstr "E-mail"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"Insira um e-mail e senha corretos, por favor. Note que o campo da senha é "
-"sensível a minúsculas e maiúsculas."
+msgstr "Insira um e-mail e senha corretos, por favor. Note que o campo da senha é sensível a minúsculas e maiúsculas."
 
 #: forms.py:146
 msgid "This account is inactive."
@@ -118,14 +115,12 @@ msgid "account"
 msgstr ""
 
 #: models.py:54
-#, fuzzy
 msgid "password"
-msgstr "alterar a senha"
+msgstr ""
 
 #: models.py:55
-#, fuzzy
 msgid "password hash"
-msgstr "Alteração da senha"
+msgstr ""
 
 #: models.py:58
 msgid "auto admin properties"
@@ -201,20 +196,15 @@ msgstr "Nenhum"
 #: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Diretório temporário usado para armazenar miniaturas, pré-visualização e "
-"ficheiros temporários. Se nenhum for especificado, será criado um usando "
+"temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
+msgstr "Diretório temporário usado para armazenar miniaturas, pré-visualização e ficheiros temporários. Se nenhum for especificado, será criado um usando tempfile.mkdtemp()"
 
 #: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Controla o mecanismo usado para autenticar o utilizador. As opções são: nome "
-"de utilizador, e-mail"
+msgstr "Controla o mecanismo usado para autenticar o utilizador. As opções são: username, email"
 
 #: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
@@ -337,9 +327,7 @@ msgstr "Lista de %(stripped_title)s "
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página "
-"%(page_number)s de %(total_pages)s)"
+msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26
