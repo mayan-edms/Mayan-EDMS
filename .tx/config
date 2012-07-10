@@ -102,6 +102,7 @@ host = https://www.transifex.net
 
 [mayan-edms.apps-folders]
 source_file = apps/folders/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/folders/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/folders/locale/pt/LC_MESSAGES/django.po
@@ -113,6 +114,7 @@ trans.de_DE = apps/folders/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-history]
 source_file = apps/history/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/history/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/history/locale/pt/LC_MESSAGES/django.po
@@ -124,6 +126,7 @@ trans.de_DE = apps/history/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-dynamic_search]
 source_file = apps/dynamic_search/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/dynamic_search/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/dynamic_search/locale/pt/LC_MESSAGES/django.po
@@ -135,6 +138,7 @@ trans.de_DE = apps/dynamic_search/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-smart_settings]
 source_file = apps/smart_settings/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/smart_settings/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/smart_settings/locale/pt/LC_MESSAGES/django.po
@@ -146,6 +150,7 @@ trans.de_DE = apps/smart_settings/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-navigation]
 source_file = apps/navigation/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/navigation/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/navigation/locale/pt/LC_MESSAGES/django.po
@@ -157,6 +162,7 @@ trans.de_DE = apps/navigation/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-tags]
 source_file = apps/tags/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/tags/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/tags/locale/pt/LC_MESSAGES/django.po
@@ -168,6 +174,7 @@ trans.de_DE = apps/tags/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-documents]
 source_file = apps/documents/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/documents/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/documents/locale/pt/LC_MESSAGES/django.po
@@ -179,6 +186,7 @@ trans.de_DE = apps/documents/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-project_tools]
 source_file = apps/project_tools/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/project_tools/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/project_tools/locale/pt/LC_MESSAGES/django.po
@@ -190,6 +198,7 @@ trans.de_DE = apps/project_tools/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-linking]
 source_file = apps/linking/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/linking/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/linking/locale/pt/LC_MESSAGES/django.po
@@ -201,6 +210,7 @@ trans.de_DE = apps/linking/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-document_comments]
 source_file = apps/document_comments/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/document_comments/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/document_comments/locale/pt/LC_MESSAGES/django.po
@@ -212,6 +222,7 @@ trans.de_DE = apps/document_comments/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-metadata]
 source_file = apps/metadata/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/metadata/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/metadata/locale/pt/LC_MESSAGES/django.po
@@ -223,6 +234,7 @@ trans.de_DE = apps/metadata/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-web_theme]
 source_file = apps/web_theme/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/web_theme/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/web_theme/locale/pt/LC_MESSAGES/django.po
@@ -234,6 +246,7 @@ trans.de_DE = apps/web_theme/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-django_gpg]
 source_file = apps/django_gpg/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/django_gpg/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/django_gpg/locale/pt/LC_MESSAGES/django.po
@@ -245,6 +258,7 @@ trans.de_DE = apps/django_gpg/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-document_signatures]
 source_file = apps/document_signatures/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/document_signatures/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/document_signatures/locale/pt/LC_MESSAGES/django.po
@@ -256,6 +270,7 @@ trans.de_DE = apps/document_signatures/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-acls]
 source_file = apps/acls/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/acls/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/acls/locale/pt/LC_MESSAGES/django.po
@@ -267,6 +282,7 @@ trans.de_DE = apps/acls/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-installation]
 source_file = apps/installation/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/installation/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/installation/locale/pt/LC_MESSAGES/django.po
@@ -278,6 +294,7 @@ trans.de_DE = apps/installation/locale/de_DE/LC_MESSAGES/django.po
 
 [mayan-edms.apps-scheduler]
 source_file = apps/scheduler/locale/en/LC_MESSAGES/django.po
+type = PO
 source_lang = en
 trans.es = apps/scheduler/locale/es/LC_MESSAGES/django.po
 trans.pt = apps/scheduler/locale/pt/LC_MESSAGES/django.po
@@ -286,3 +303,15 @@ trans.ru = apps/scheduler/locale/ru/LC_MESSAGES/django.po
 trans.it = apps/scheduler/locale/it/LC_MESSAGES/django.po
 trans.pl = apps/scheduler/locale/pl/LC_MESSAGES/django.po
 trans.de_DE = apps/scheduler/locale/de_DE/LC_MESSAGES/django.po
+
+[mayan-edms.apps-checkouts]
+source_file = apps/checkouts/locale/en/LC_MESSAGES/django.po
+type = PO
+source_lang = en
+trans.es = apps/checkouts/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/checkouts/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/checkouts/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/checkouts/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/checkouts/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/checkouts/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/checkouts/locale/de_DE/LC_MESSAGES/django.po
