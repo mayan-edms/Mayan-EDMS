@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 10:29-0400\n"
+"POT-Creation-Date: 2012-07-10 11:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,50 +83,50 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
-#: templates/base.html:198
+#: templates/base.html:197
 msgid "User details"
 msgstr ""
 
-#: templates/base.html:215
+#: templates/base.html:214
 msgid "Login"
 msgstr ""
 
-#: templates/base.html:215
+#: templates/base.html:214
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:295
+#: templates/base.html:294
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/base.html:311
+#: templates/base.html:310
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:313 templates/base.html.py:356
+#: templates/base.html:312 templates/base.html.py:355
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:316
+#: templates/base.html:315
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:328 templates/base.html.py:371
+#: templates/base.html:327 templates/base.html.py:370
 msgid "Related actions"
 msgstr ""
 
-#: templates/base.html:339 templates/base.html.py:384
+#: templates/base.html:338 templates/base.html.py:383
 msgid "Other available actions"
 msgstr ""
 
-#: templates/base.html:354
+#: templates/base.html:353
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:359
+#: templates/base.html:358
 msgid "Actions"
 msgstr ""
 

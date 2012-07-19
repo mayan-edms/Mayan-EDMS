@@ -66,6 +66,7 @@ Translations
 * Italian
 
   - SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
+  - Carlos Zanatto (https://www.transifex.com/accounts/profile/zarloc_/)
   
 * Polish
 
@@ -73,8 +74,8 @@ Translations
 
 * German
 
-  - Tetja Rediske
-  - Tilmann Sittig
+  - Tetja Rediske (https://www.transifex.com/accounts/profile/tetjarediske/)
+  - Tilmann Sittig (https://www.transifex.com/accounts/profile/tilmannsittig/)
 
 * Portuguese
 

@@ -41,7 +41,6 @@ class Event(object):
 
 
     def commit(self, source_object=None, data=None):
-        print 'OBJ', self.history_type_obj
         new_history = History(history_type=self.history_type_obj)
         if source_object:
             new_history.content_object = source_object
