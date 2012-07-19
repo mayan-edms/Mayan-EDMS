@@ -166,6 +166,7 @@ def index_setup_view(request, index_pk):
         'extra_columns': [
             {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
             {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
         ],
     }
 
