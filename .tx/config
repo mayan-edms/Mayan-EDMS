@@ -1,3 +1,14 @@
+[mayan-edms.apps-bootstrap]
+source_file = apps/bootstrap/locale/en/LC_MESSAGES/django.po
+source_lang = en
+trans.es = apps/bootstrap/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/bootstrap/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/bootstrap/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/bootstrap/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/bootstrap/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/bootstrap/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/bootstrap/locale/de_DE/LC_MESSAGES/django.po
+
 [mayan-edms.apps-converter]
 source_file = apps/converter/locale/en/LC_MESSAGES/django.po
 source_lang = en
