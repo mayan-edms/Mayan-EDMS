@@ -168,6 +168,7 @@ INSTALLED_APPS = (
     'documents',
     'linking',
     'document_indexing',
+    'bootstrap',
     'document_acls',
     'ocr',
     'sources',
