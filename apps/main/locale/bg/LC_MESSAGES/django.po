@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <pkoldamov@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"PO-Revision-Date: 2012-07-10 15:16+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:33
+msgid "maintenance"
+msgstr "поддръжка"
+
+#: __init__.py:34
+msgid "statistics"
+msgstr "статистика"
+
+#: __init__.py:35
+msgid "diagnostics"
+msgstr "диагностика"
+
+#: __init__.py:36
+msgid "sentry"
+msgstr ""
+
+#: __init__.py:37
+msgid "admin site"
+msgstr "административен сайт"
+
+#: __init__.py:40
+msgid "home"
+msgstr "начало"
+
+#: __init__.py:42
+msgid "search"
+msgstr "търсене"
+
+#: views.py:43
+msgid "maintenance menu"
+msgstr "меню поддръжка"
+
+#: views.py:56
+msgid "Statistics"
+msgstr "Статистика"
+
+#: views.py:66
+msgid "Diagnostics"
+msgstr "Диагностика"
+
+#: conf/settings.py:12
+msgid ""
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr "Контрол дали възможността за търсене да се предлага в страничен бар или от меню."
+
+#: templates/about.html:5
+msgid "About this program"
+msgstr "Относно програмата"
+
+#: templates/about.html:9 templates/verbose_login.html:4
+msgid "Version"
+msgstr "Версия"
+
+#: templates/base.html:28
+msgid "(DEBUG)"
+msgstr "(DEBUG)"
+
+#: templates/base.html:193
+msgid "User"
+msgstr "Потребител"
+
+#: templates/base.html:195
+msgid "Anonymous"
+msgstr "Анонимен"
+
+#: templates/base.html:197
+msgid "User details"
+msgstr "Данни за потребител"
+
+#: templates/base.html:214
+msgid "Login"
+msgstr "Вход"
+
+#: templates/base.html:214
+msgid "Logout"
+msgstr "Изход"
+
+#: templates/base.html:294
+msgid "Secondary menu"
+msgstr "Вторично меню"
+
+#: templates/base.html:310
+#, python-format
+msgid "Actions for %(name)s: %(navigation_object)s"
+msgstr "Действия за %(name)s: %(navigation_object)s"
+
+#: templates/base.html:312 templates/base.html.py:355
+#, python-format
+msgid "Actions for: %(navigation_object)s"
+msgstr "Действия за: %(navigation_object)s"
+
+#: templates/base.html:315
+msgid "Available actions"
+msgstr "Възможни действия"
+
+#: templates/base.html:327 templates/base.html.py:370
+msgid "Related actions"
+msgstr "Подобни действия"
+
+#: templates/base.html:338 templates/base.html.py:383
+msgid "Other available actions"
+msgstr "Други възможни действия"
+
+#: templates/base.html:353
+#, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr "Действия за %(object_name)s: %(navigation_object)s"
+
+#: templates/base.html:358
+msgid "Actions"
+msgstr "Действия"
+
+#: templates/home.html:8
+msgid "Django based open source document management system"
+msgstr "Django базирана система за управление на електронни документи, с отворен код"
+
+#: templates/project_description.html:6
+msgid ""
+"Open source, Django based electronic document manager with custom metadata, "
+"indexing, tagging, file serving integration, digital signature support and "
+"OCR capabilities"
+msgstr ""
+
+#: templates/project_description.html:18
+msgid "Released under the GPL V3 License"
+msgstr "Реализирано по GPL V3 лиценз"
