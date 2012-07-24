@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Lucas Weel <ljj.weel@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"PO-Revision-Date: 2012-07-19 15:26+0000\n"
+"Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:20
+msgid "tag list"
+msgstr "Lijst met labels"
+
+#: __init__.py:21
+msgid "create new tag"
+msgstr "aanmaken nieuw label"
+
+#: __init__.py:22
+msgid "attach tag"
+msgstr "Label toevoegen"
+
+#: __init__.py:23 __init__.py:24
+msgid "remove"
+msgstr "los halen"
+
+#: __init__.py:25 __init__.py:44 __init__.py:52 views.py:98
+msgid "tags"
+msgstr "labels"
+
+#: __init__.py:26 __init__.py:29
+msgid "delete"
+msgstr "verwijderen"
+
+#: __init__.py:27
+msgid "edit"
+msgstr "bewerk"
+
+#: __init__.py:28
+msgid "tagged documents"
+msgstr "gelabelde documenten"
+
+#: __init__.py:30
+msgid "ACLs"
+msgstr "ACLs"
+
+#: __init__.py:34
+msgid "preview"
+msgstr "'preview'"
+
+#: __init__.py:38
+msgid "tagged items"
+msgstr "gelabelde items"
+
+#: forms.py:24
+msgid "Name"
+msgstr "Naam"
+
+#: forms.py:25
+msgid "Color"
+msgstr "Kleur"
+
+#: forms.py:42 permissions.py:7
+msgid "Tags"
+msgstr "Labels"
+
+#: literals.py:18
+msgid "Blue"
+msgstr "Blauw"
+
+#: literals.py:19
+msgid "Cyan"
+msgstr "Lila"
+
+#: literals.py:20
+msgid "Coral"
+msgstr "Licht blauw"
+
+#: literals.py:21
+msgid "Green-Yellow"
+msgstr "Licht groen"
+
+#: literals.py:22
+msgid "Khaki"
+msgstr "Khaki"
+
+#: literals.py:23
+msgid "LightGrey"
+msgstr "Licht grijs"
+
+#: literals.py:24
+msgid "Magenta"
+msgstr "Magenta"
+
+#: literals.py:25
+msgid "Red"
+msgstr "Rood"
+
+#: literals.py:26
+msgid "Orange"
+msgstr "Oranje"
+
+#: literals.py:27
+msgid "Yellow"
+msgstr "Geel"
+
+#: models.py:12 views.py:154 views.py:206 views.py:220
+msgid "tag"
+msgstr "label"
+
+#: models.py:13
+msgid "color"
+msgstr "kleur"
+
+#: models.py:16
+msgid "tag properties"
+msgstr "eigenschappen label"
+
+#: models.py:17
+msgid "tags properties"
+msgstr "eigenschappen labels"
+
+#: permissions.py:9
+msgid "Create new tags"
+msgstr "Aanmaken van nieuwe labels"
+
+#: permissions.py:10
+msgid "Delete tags"
+msgstr "Verwijder labels"
+
+#: permissions.py:11
+msgid "Edit tags"
+msgstr "Bewerken labels"
+
+#: permissions.py:12
+msgid "View tags"
+msgstr "Bekijken labels"
+
+#: permissions.py:13
+msgid "Attach tags to documents"
+msgstr "Label documenten"
+
+#: permissions.py:14
+msgid "Remove tags from documents"
+msgstr "Labels van documenten verwijderen"
+
+#: views.py:42
+msgid "Tag already exists."
+msgstr "Dit label bestaat al."
+
+#: views.py:50
+msgid "Tag created succesfully."
+msgstr "Label aangemaakt"
+
+#: views.py:56
+msgid "create tag"
+msgstr "aanmaken label"
+
+#: views.py:77
+#, python-format
+msgid "Document is already tagged as \"%s\""
+msgstr "Document is momenteel al gelabeld als: \"%s\""
+
+#: views.py:82
+#, python-format
+msgid "Tag \"%s\" attached successfully."
+msgstr "Label \"%s\" aangebracht."
+
+#: views.py:88
+#, python-format
+msgid "attach tag to: %s"
+msgstr "aanbrengen van label aan: %s"
+
+#: views.py:130 views.py:257
+msgid "Must provide at least one tag."
+msgstr "U moet minimaal een label aanbrengen."
+
+#: views.py:145
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "Label \"%s\" verwijderd."
+
+#: views.py:147 views.py:269
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+
+#: views.py:162
+#, python-format
+msgid "Are you sure you wish to delete the tag: %s?"
+msgstr "Bent u er zeker van om label: \"%s\" te verwijderen?"
+
+#: views.py:163 views.py:166
+msgid "Will be removed from all documents."
+msgstr "Zal van alle documenten worden verwijderd."
+
+#: views.py:165
+#, python-format
+msgid "Are you sure you wish to delete the tags: %s?"
+msgstr "Bent u er zeker van om de volgende labels te verwijderen? Labels: %s."
+
+#: views.py:194
+msgid "Tag updated succesfully."
+msgstr "Label aangepast."
+
+#: views.py:203
+#, python-format
+msgid "edit tag: %s"
+msgstr "bewerken label: %s"
+
+#: views.py:217
+#, python-format
+msgid "documents with the tag \"%s\""
+msgstr "documenten met label: \"%s\""
+
+#: views.py:236
+#, python-format
+msgid "tags for: %s"
+msgstr "labels voor: %s"
+
+#: views.py:267
+#, python-format
+msgid "Tag \"%s\" removed successfully."
+msgstr "Label \"%s\" verwijderd."
+
+#: views.py:283
+#, python-format
+msgid "Are you sure you wish to remove the tag: %s?"
+msgstr "Bent u er zeker van om label: \"%s\", te verwijderen?"
+
+#: views.py:285
+#, python-format
+msgid "Are you sure you wish to remove the tags: %s?"
+msgstr "Bent u er zeker van om de volgende labels te verwijderen? Labels: %s"
+
+#: templatetags/tags_tags.py:17
+msgid "Add tag to document"
+msgstr "Label document"
