@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-10 11:11-0400\n"
-"PO-Revision-Date: 2012-07-10 15:17+0000\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"PO-Revision-Date: 2012-07-23 19:51+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -263,7 +263,7 @@ msgstr "Documento \"%(document)s\" deletado em %(datetime)s por %(fullname)s."
 msgid "Page image"
 msgstr "Imagem da página"
 
-#: forms.py:73 forms.py:270
+#: forms.py:73 forms.py:271
 msgid "Contents"
 msgstr "Conteúdos"
 
@@ -284,54 +284,54 @@ msgstr "Clique na imagem para visualizar em tamanho completo"
 msgid "Document pages (%s)"
 msgstr "Páginas do documento (%s)"
 
-#: forms.py:162
+#: forms.py:164
 msgid "Use the new version filename as the document filename"
 msgstr ""
 
-#: forms.py:178
+#: forms.py:179
 msgid "Quick document rename"
 msgstr "Renomear documento rápido"
 
-#: forms.py:185
+#: forms.py:186
 msgid "Version update"
 msgstr "Versão de atualização"
 
-#: forms.py:190
+#: forms.py:191
 msgid "Release level"
 msgstr ""
 
-#: forms.py:196
+#: forms.py:197
 msgid "Release level serial"
 msgstr ""
 
-#: forms.py:204
+#: forms.py:205
 msgid "Comment"
 msgstr "Comentário"
 
-#: forms.py:210
+#: forms.py:211
 msgid "New document filename"
 msgstr "Novo nome de arquivo"
 
-#: forms.py:288
+#: forms.py:289
 msgid "Page range"
 msgstr "Intervalo de páginas"
 
-#: forms.py:318
+#: forms.py:319
 msgid "Compress"
 msgstr ""
 
-#: forms.py:318
+#: forms.py:319
 msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
-#: forms.py:319
+#: forms.py:320
 msgid "Compressed filename"
 msgstr ""
 
-#: forms.py:319
+#: forms.py:320
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."

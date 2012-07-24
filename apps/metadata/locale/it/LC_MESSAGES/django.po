@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pierpaolo.baldan@gmail.com>, 2011.
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 11:12-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: 2012-03-21 13:22+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: __init__.py:21 __init__.py:23
@@ -141,9 +140,7 @@ msgstr "lookup"
 msgid ""
 "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
 "User.objects.all()].%s"
-msgstr ""
-"Inserisci una stringa per la valutazione.  Esempio: [user.get_full_name() "
-"per l'utente User.objects.all()].%s"
+msgstr "Inserisci una stringa per la valutazione.  Esempio: [user.get_full_name() per l'utente User.objects.all()].%s"
 
 #: models.py:33 models.py:58 views.py:353 views.py:398
 msgid "metadata type"
@@ -261,8 +258,7 @@ msgstr "Errore nella cancellazione degli indici di documento;%s"
 #: views.py:99
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
-msgstr ""
-"Errore nella modifica dei metadata per il documento %(document)s; %(error)s."
+msgstr "Errore nella modifica dei metadata per il documento %(document)s; %(error)s."
 
 #: views.py:102
 #, python-format
@@ -291,17 +287,15 @@ msgstr "Modifica metadata per i documenti: %s"
 #: views.py:161
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
-"Tipo metadata: %(metadata_type)s aggiunto con successo al documento "
+"Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
+msgstr "Tipo metadata: %(metadata_type)s aggiunto con successo al documento %(document)s."
 
 #: views.py:164
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
-"Tipo Metadata: %(metadata_type)s già presente per il documento %(document)s."
+msgstr "Tipo Metadata: %(metadata_type)s già presente per il documento %(document)s."
 
 #: views.py:188
 #, python-format
@@ -318,17 +312,13 @@ msgstr "Aggiungi tipo metadata ai documents: %s"
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
-msgstr ""
-"Rimuovere con successo tipo di metadati: %(metadata_type)s  per il "
-"documento: %(document)s."
+msgstr "Rimuovere con successo tipo di metadati: %(metadata_type)s  per il documento: %(document)s."
 
 #: views.py:262
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
-msgstr ""
-"Errore durante la rimozione dei metadati di tipo: %(metadata_type)s per il "
-"documento: %(document)s."
+msgstr "Errore durante la rimozione dei metadati di tipo: %(metadata_type)s per il documento: %(document)s."
 
 #: views.py:281
 #, python-format
@@ -446,11 +436,7 @@ msgid ""
 "A metadata set is a group of one or more metadata types.  Metadata sets are "
 "useful when creating new documents; selecing a metadata set automatically "
 "attaches it's member metadata types to said document."
-msgstr ""
-"Un insieme di metadati è un gruppo di uno o più tipi di metadati. Set di "
-"metadati sono utili durante la creazione di nuovi documenti e, selezionando "
-"un set di metadati allega automaticamente è membro tipi di metadati per "
-"documentare detto."
+msgstr "Un insieme di metadati è un gruppo di uno o più tipi di metadati. Set di metadati sono utili durante la creazione di nuovi documenti e, selezionando un set di metadati allega automaticamente è membro tipi di metadati per documentare detto."
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
@@ -458,23 +444,13 @@ msgstr "Cosa sono i tipi di metadati?"
 
 #: templates/metadata_type_help.html:4
 msgid ""
-"A metadata type defines the characteristics of a value of some kind that can "
-"be attached to a document.  Examples of metadata types are: a client name, a "
-"date, or a project to which several documents belong.  A metadata type's "
+"A metadata type defines the characteristics of a value of some kind that can"
+" be attached to a document.  Examples of metadata types are: a client name, "
+"a date, or a project to which several documents belong.  A metadata type's "
 "name is the internal identifier with which it can be referenced to by other "
-"modules such as the indexing module, the title is the value that is shown to "
-"the users, the default value is the value an instance of this metadata type "
-"will have initially, and the lookup value turns an instance of a metadata of "
-"this type into a choice list which options are the result of the lookup's "
-"code execution."
-msgstr ""
-"Un tipo di metadati definisce le caratteristiche di un valore di qualche "
-"tipo che può essere collegato a un documento. Esempi di tipi di metadati: il "
-"nome del client, una data o un progetto a cui appartengono diversi "
-"documenti. Il nome di un tipo di metadati è l'identificatore interno con il "
-"quale possono essere pubblicati da altri moduli come il modulo di "
-"indicizzazione, il titolo è il valore che viene mostrato agli utenti, il "
-"valore predefinito è il valore di un'istanza di questo tipo di metadati avrà "
-"inizialmente, e il valore di ricerca si trasforma un'istanza di metadati di "
-"questo tipo in un elenco di opzioni di scelta che sono il risultato della "
-"esecuzione di codice la ricerca di."
+"modules such as the indexing module, the title is the value that is shown to"
+" the users, the default value is the value an instance of this metadata type"
+" will have initially, and the lookup value turns an instance of a metadata "
+"of this type into a choice list which options are the result of the lookup's"
+" code execution."
+msgstr "Un tipo di metadati definisce le caratteristiche di un valore di qualche tipo che può essere collegato a un documento. Esempi di tipi di metadati: il nome del client, una data o un progetto a cui appartengono diversi documenti. Il nome di un tipo di metadati è l'identificatore interno con il quale possono essere pubblicati da altri moduli come il modulo di indicizzazione, il titolo è il valore che viene mostrato agli utenti, il valore predefinito è il valore di un'istanza di questo tipo di metadati avrà inizialmente, e il valore di ricerca si trasforma un'istanza di metadati di questo tipo in un elenco di opzioni di scelta che sono il risultato della esecuzione di codice la ricerca di."

@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 11:12-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:32 __init__.py:33
 msgid "submit to OCR queue"
@@ -48,9 +46,7 @@ msgstr "очистка содержимого страниц"
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr ""
-"Применить языковый фильтр для удаления общих ошибок распознавания "
-"содержимого страниц документа."
+msgstr "Применить языковый фильтр для удаления общих ошибок распознавания содержимого страниц документа."
 
 #: __init__.py:44
 msgid "queue document list"
@@ -270,8 +266,7 @@ msgstr "Вы действительно хотите удалить очеред
 #: views.py:146
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-msgstr ""
-"Документ: %(document)s добавлен для распознавания в очередь: %(queue)s."
+msgstr "Документ: %(document)s добавлен для распознавания в очередь: %(queue)s."
 
 #: views.py:149
 #, python-format
@@ -291,8 +286,7 @@ msgstr "Документ №: %d больше не существует."
 #: views.py:188
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
-msgstr ""
-"Документ: %s уже обработан и не может быть повторно добавлен в очередь."
+msgstr "Документ: %s уже обработан и не может быть повторно добавлен в очередь."
 
 #: views.py:200
 #, python-format
@@ -340,9 +334,7 @@ msgstr "Вы уверены, что хотите очистить все сод�
 
 #: views.py:277
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"В больших базах данных эта операция может занять некоторое время для "
-"выполнения."
+msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
 
 #: views.py:283
 msgid "Document pages content clean up complete."
@@ -385,8 +377,7 @@ msgstr "Ошибка при удалении преобразования оче
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr ""
-"Вы действительно хотите удалить преобразование очереди \"%(transformation)s\""
+msgstr "Вы действительно хотите удалить преобразование очереди \"%(transformation)s\""
 
 #: views.py:410
 msgid "Queue transformation created successfully"
@@ -406,19 +397,15 @@ msgstr "Создать новое преобразование для очере
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr ""
-"Количество секунд задержки оптического распознавания документов для "
-"завершения репликации узла."
+msgstr "Количество секунд задержки оптического распознавания документов для завершения репликации узла."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr ""
-"Максимальное количество одновременно распознаваемых документов для узла."
+msgstr "Максимальное количество одновременно распознаваемых документов для узла."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
-msgstr ""
-"Автоматически ставить в очередь новые документы для распознавания текста."
+msgstr "Автоматически ставить в очередь новые документы для распознавания текста."
 
 #: conf/settings.py:17
 msgid "File path to unpaper program."
@@ -426,7 +413,8 @@ msgstr "Путь к программе unpaper."
 
 #: conf/settings.py:18
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 
 #: parsers/__init__.py:87 parsers/__init__.py:164

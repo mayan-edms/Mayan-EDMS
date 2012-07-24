@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 11:12-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
 "PO-Revision-Date: 2012-06-17 22:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: __init__.py:20
 msgid "preview"
@@ -234,9 +232,9 @@ msgstr "интервал"
 
 #: models.py:213
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
-msgstr ""
-"Интервал в секундах, между проверками папки на появление новых документов."
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr "Интервал в секундах, между проверками папки на появление новых документов."
 
 #: models.py:237
 msgid "watch folder"
@@ -330,9 +328,7 @@ msgstr "Интерактивные источники документов не 
 #: views.py:108
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
-"Нажмите %(setup_link)s, чтобы добавить или включить какой-нибудь документ "
-"источников."
+msgstr "Нажмите %(setup_link)s, чтобы добавить или включить какой-нибудь документ источников."
 
 #: views.py:165
 msgid "New document version uploaded successfully."
@@ -382,7 +378,8 @@ msgstr "Промежуточный файл %s загружен."
 #: views.py:246
 #, python-format
 msgid ""
-"Staging file: %s, uncompressed successfully and uploaded as individual files."
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
 msgstr "Транспортный файл %s распакован и загружен в виде отдельных файлов."
 
 #: views.py:249
@@ -515,8 +512,7 @@ msgstr "Ошибка при удалении преобразования ист
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Вы действительно хотите удалить источник трансформации \"%(transformation)s\""
+msgstr "Вы действительно хотите удалить источник трансформации \"%(transformation)s\""
 
 #: views.py:695
 msgid "Source transformation created successfully"
