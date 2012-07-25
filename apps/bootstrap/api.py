@@ -64,21 +64,21 @@ class BootstrapPermit(BootstrapBase):
         index = Index.objects.create(name='main_index', title=ugettext(u'Permit index'), enabled=True)
         
         # Create index template
-        per_permit = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression=ugettext(u'Per permit'), enabled=True, link_documents=False)
+        per_permit = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression='\'%s\'' % ugettext(u'Per permit'), enabled=True, link_documents=False)
         per_permit_child = IndexTemplateNode.objects.create(parent=per_permit, index=index, expression='metadata.permit', enabled=True, link_documents=True)
 
-        per_project = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression=ugettext(u'Per project'), enabled=True, link_documents=False)
+        per_project = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression='\'%s\'' % ugettext(u'Per project'), enabled=True, link_documents=False)
         per_project_child = IndexTemplateNode.objects.create(parent=per_project, index=index, expression='metadata.project', enabled=True, link_documents=False)
-        per_permit = IndexTemplateNode.objects.create(parent=per_project_child, index=index, expression=ugettext(u'Per permit'), enabled=True, link_documents=False)
+        per_permit = IndexTemplateNode.objects.create(parent=per_project_child, index=index, expression='\'%s\'' % ugettext(u'Per permit'), enabled=True, link_documents=False)
         per_permit_child = IndexTemplateNode.objects.create(parent=per_permit, index=index, expression='metadata.permit', enabled=True, link_documents=True)
 
-        per_date = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression=ugettext(u'Per date'), enabled=True, link_documents=False)
+        per_date = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression='\'%s\'' % ugettext(u'Per date'), enabled=True, link_documents=False)
         per_date_child = IndexTemplateNode.objects.create(parent=per_date, index=index, expression='metadata.date', enabled=True, link_documents=True)
 
-        per_user = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression=ugettext(u'Per user'), enabled=True, link_documents=False)
+        per_user = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression='\'%s\'' % ugettext(u'Per user'), enabled=True, link_documents=False)
         per_user_child = IndexTemplateNode.objects.create(parent=per_user, index=index, expression='metadata.user', enabled=True, link_documents=True)
 
-        per_client = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression=ugettext(u'Per client'), enabled=True, link_documents=False)
+        per_client = IndexTemplateNode.objects.create(parent=index.template_root, index=index, expression='\'%s\'' % ugettext(u'Per client'), enabled=True, link_documents=False)
         per_client_child = IndexTemplateNode.objects.create(parent=per_client, index=index, expression='metadata.client', enabled=True, link_documents=True)
        
 
