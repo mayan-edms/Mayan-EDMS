@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 11:12-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
 "PO-Revision-Date: 2012-07-02 03:31+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: __init__.py:20
@@ -77,8 +76,7 @@ msgstr "Expandir arquivos compactados"
 
 #: forms.py:35 forms.py:60
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Upload de um arquivo compactado contendo arquivos como documentos individuais"
+msgstr "Upload de um arquivo compactado contendo arquivos como documentos individuais"
 
 #: forms.py:43
 msgid "Staging file"
@@ -234,10 +232,9 @@ msgstr "intervalo"
 
 #: models.py:213
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
-msgstr ""
-"Invervalo em segundos, onde o caminho da pasta assistida está marcada para "
-"novos documentos."
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr "Invervalo em segundos, onde o caminho da pasta assistida está marcada para novos documentos."
 
 #: models.py:237
 msgid "watch folder"
@@ -326,16 +323,12 @@ msgstr "Carregar fontes"
 #: views.py:107
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
-"Nenhuma fonte de documento interativo foi definido ou nenhuma delas foi "
-"ativada."
+msgstr "Nenhuma fonte de documento interativo foi definido ou nenhuma delas foi ativada."
 
 #: views.py:108
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
-"Clique %(setup_link)s para adicionar ou permitir algumas fontes de "
-"documentos."
+msgstr "Clique %(setup_link)s para adicionar ou permitir algumas fontes de documentos."
 
 #: views.py:165
 msgid "New document version uploaded successfully."
@@ -385,7 +378,8 @@ msgstr "Staging file: %s, uploaded successfully."
 #: views.py:246
 #, python-format
 msgid ""
-"Staging file: %s, uncompressed successfully and uploaded as individual files."
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
 msgstr ""
 
 #: views.py:249
@@ -518,9 +512,7 @@ msgstr "Erro ao deletar transformação de fonte; %(error)s "
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Tem certeza de que deseja deletar a transformação de fonte \" "
-"%(transformation)s \""
+msgstr "Tem certeza de que deseja deletar a transformação de fonte \" %(transformation)s \""
 
 #: views.py:695
 msgid "Source transformation created successfully"

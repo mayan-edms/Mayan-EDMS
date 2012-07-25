@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-10 11:13-0400\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
 "PO-Revision-Date: 2012-07-10 15:47+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
@@ -81,7 +81,7 @@ msgstr ""
 msgid "checked in/available"
 msgstr ""
 
-#: models.py:24 views.py:133
+#: models.py:24 views.py:137
 msgid "document"
 msgstr ""
 
@@ -201,28 +201,28 @@ msgstr ""
 msgid "Check out document: %s"
 msgstr ""
 
-#: views.py:125
+#: views.py:122 views.py:129
 msgid "Document has not been checked out."
 msgstr ""
 
-#: views.py:127
+#: views.py:131
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr ""
 
-#: views.py:129
+#: views.py:133
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr ""
 
-#: views.py:142
+#: views.py:146
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
 msgstr ""
 
-#: views.py:144
+#: views.py:148
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr ""

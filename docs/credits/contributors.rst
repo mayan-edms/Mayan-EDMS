@@ -81,6 +81,19 @@ Translations
 
   - Vítor Figueiró (vfigueiro@gmail.com)
 
+* Dutch (Netherands) 
+
+  - Lucas Weel (https://www.transifex.com/accounts/profile/l.weel/)
+  
+* Bulgarian
+
+  - Iliya Georgiev (ikgeorgiev@gmail.com)
+  - koldo (https://www.transifex.com/accounts/profile/koldo/)
+
+* French
+
+  - Pierre Lhoste (https://www.transifex.com/accounts/profile/peterhost/)
+
 
 Remote access for debugging
 ---------------------------

@@ -11,7 +11,7 @@ APP_LIST = ('common', 'converter', 'documents', 'document_comments',
     'project_setup', 'project_tools', 'smart_settings', 'sources',
     'tags', 'user_management', 'web_theme', 'django_gpg', 'document_signatures',
     'acls', 'installation', 'scheduler', 'checkouts', 'bootstrap')
-LANGUAGE_LIST = ('en', 'pt', 'pt_BR', 'ru', 'es', 'it', 'pl', 'de_DE')
+LANGUAGE_LIST = ('en', 'pt', 'pt_BR', 'ru', 'es', 'it', 'pl', 'de_DE', 'fr', 'nl_NL', 'bg')
 
 makemessages = pbs.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')

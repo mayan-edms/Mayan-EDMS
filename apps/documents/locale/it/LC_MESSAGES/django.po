@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-10 11:11-0400\n"
-"PO-Revision-Date: 2012-07-10 15:17+0000\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"PO-Revision-Date: 2012-07-23 19:51+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -264,7 +264,7 @@ msgstr "Documento \"%(document)s\" cancellato il %(datetime)s da %(fullname)s."
 msgid "Page image"
 msgstr "Immagine della pagina"
 
-#: forms.py:73 forms.py:270
+#: forms.py:73 forms.py:271
 msgid "Contents"
 msgstr "Contenuti"
 
@@ -285,54 +285,54 @@ msgstr "Click sull'immagine per l'anteprima"
 msgid "Document pages (%s)"
 msgstr "Pagine nel documento  (%s)"
 
-#: forms.py:162
+#: forms.py:164
 msgid "Use the new version filename as the document filename"
 msgstr "Utilizza il nuovo nome di versione il nome del documento"
 
-#: forms.py:178
+#: forms.py:179
 msgid "Quick document rename"
 msgstr "Rinomina del documento veloce"
 
-#: forms.py:185
+#: forms.py:186
 msgid "Version update"
 msgstr "Versione aggiornamento"
 
-#: forms.py:190
+#: forms.py:191
 msgid "Release level"
 msgstr "Livello di versione"
 
-#: forms.py:196
+#: forms.py:197
 msgid "Release level serial"
 msgstr "Livello di versione sequenziale"
 
-#: forms.py:204
+#: forms.py:205
 msgid "Comment"
 msgstr "Commento"
 
-#: forms.py:210
+#: forms.py:211
 msgid "New document filename"
 msgstr "Nuovo nome documento"
 
-#: forms.py:288
+#: forms.py:289
 msgid "Page range"
 msgstr "Intervallo pagina"
 
-#: forms.py:318
+#: forms.py:319
 msgid "Compress"
 msgstr "Comprimere"
 
-#: forms.py:318
+#: forms.py:319
 msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr "Scarica il documento nel formato originale o in modo compresso. Questa opzione è selezionabile solo quando il download di un documento, per i documenti multipli, il bundle sarà sempre download come un file compresso."
 
-#: forms.py:319
+#: forms.py:320
 msgid "Compressed filename"
 msgstr ""
 
-#: forms.py:319
+#: forms.py:320
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."

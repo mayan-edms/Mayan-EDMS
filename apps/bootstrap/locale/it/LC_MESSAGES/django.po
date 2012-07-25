@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"PO-Revision-Date: 2012-07-23 19:40+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: api.py:24
+msgid "Simple"
+msgstr ""
+
+#: api.py:25
+msgid ""
+"A simple setup providing an uploaded date metadata and index plus an "
+"alphabetic index based on document filenames."
+msgstr ""
+
+#: api.py:29
+msgid "Upload date"
+msgstr ""
+
+#: api.py:32
+msgid "Segmented date index"
+msgstr ""
+
+#: api.py:43
+msgid "Permits"
+msgstr ""
+
+#: api.py:44
+msgid "A setup for handling permits and related documents."
+msgstr ""
+
+#: api.py:48
+msgid "Form"
+msgstr ""
+
+#: api.py:49
+msgid "Building construction form"
+msgstr ""
+
+#: api.py:50
+msgid "Building usage form"
+msgstr ""
+
+#: api.py:52
+msgid "Blueprint"
+msgstr ""
+
+#: api.py:53
+msgid "Floorplan"
+msgstr ""
+
+#: api.py:54
+msgid "Plot plan"
+msgstr ""
+
+#: api.py:57
+msgid "Date"
+msgstr ""
+
+#: api.py:58
+msgid "Client"
+msgstr ""
+
+#: api.py:59
+msgid "Permit number"
+msgstr ""
+
+#: api.py:60
+msgid "Project"
+msgstr ""
+
+#: api.py:61
+msgid "User"
+msgstr ""
+
+#: api.py:64
+msgid "Permit index"
+msgstr ""
+
+#: api.py:67 api.py:72
+msgid "Per permit"
+msgstr ""
+
+#: api.py:70
+msgid "Per project"
+msgstr ""
+
+#: api.py:75
+msgid "Per date"
+msgstr ""
+
+#: api.py:78
+msgid "Per user"
+msgstr ""
+
+#: api.py:81
+msgid "Per client"
+msgstr ""
+
+#: links.py:8
+msgid "bootstrap database"
+msgstr ""
+
+#: links.py:9
+msgid "execute"
+msgstr ""
+
+#: views.py:18
+msgid "database bootstrap setups"
+msgstr ""
+
+#: views.py:21
+msgid "description"
+msgstr ""
+
+#: views.py:42
+#, python-format
+msgid "Error executing bootstrap setup; %s"
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Bootstrap setup \"%s\" executed successfully."
+msgstr ""
+
+#: views.py:48
+msgid "bootstrap setup"
+msgstr ""
+
+#: views.py:56
+#, python-format
+msgid "Are you sure you wish to execute the database bootstrap named: %s?"
+msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 11:11-0400\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Page image"
 msgstr ""
 
-#: forms.py:73 forms.py:270
+#: forms.py:73 forms.py:271
 msgid "Contents"
 msgstr ""
 
@@ -282,54 +282,54 @@ msgstr ""
 msgid "Document pages (%s)"
 msgstr ""
 
-#: forms.py:162
+#: forms.py:164
 msgid "Use the new version filename as the document filename"
 msgstr ""
 
-#: forms.py:178
+#: forms.py:179
 msgid "Quick document rename"
 msgstr ""
 
-#: forms.py:185
+#: forms.py:186
 msgid "Version update"
 msgstr ""
 
-#: forms.py:190
+#: forms.py:191
 msgid "Release level"
 msgstr ""
 
-#: forms.py:196
+#: forms.py:197
 msgid "Release level serial"
 msgstr ""
 
-#: forms.py:204
+#: forms.py:205
 msgid "Comment"
 msgstr ""
 
-#: forms.py:210
+#: forms.py:211
 msgid "New document filename"
 msgstr ""
 
-#: forms.py:288
+#: forms.py:289
 msgid "Page range"
 msgstr ""
 
-#: forms.py:318
+#: forms.py:319
 msgid "Compress"
 msgstr ""
 
-#: forms.py:318
+#: forms.py:319
 msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
-#: forms.py:319
+#: forms.py:320
 msgid "Compressed filename"
 msgstr ""
 
-#: forms.py:319
+#: forms.py:320
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
