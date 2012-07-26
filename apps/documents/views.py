@@ -26,7 +26,6 @@ from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE
 from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
-from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
 from document_indexing.api import update_indexes, delete_indexes
@@ -44,14 +43,12 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
 from .events import history_document_edited
-from .forms import (DocumentTypeSelectForm,
-        DocumentForm_edit, DocumentPropertiesForm,
+from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
         DocumentPageTransformationForm, DocumentContentForm,
         DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
         DocumentTypeForm, DocumentTypeFilenameForm,
         DocumentTypeFilenameForm_create, DocumentDownloadForm)
-from .wizards import DocumentCreateWizard
 from .models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
     DocumentVersion)
@@ -83,14 +80,6 @@ def document_list(request, object_list=None, title=None, extra_context=None):
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
-
-
-def document_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-
-    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
-
-    return wizard(request)
 
 
 def document_create_siblings(request, document_id):

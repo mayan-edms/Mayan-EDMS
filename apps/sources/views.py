@@ -16,26 +16,29 @@ from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
 from documents.models import DocumentType, Document
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.exceptions import NewDocumentVersionNotAllowed
+from documents.forms import DocumentTypeSelectForm
+from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 from common.utils import encapsulate
 import sendfile
 from acls.models import AccessEntry
 
-from sources.models import (WebForm, StagingFolder, SourceTransformation,
+from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder)
-from sources.literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
+from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
     SOURCE_CHOICE_WATCH)
-from sources.literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
+from .literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_UNCOMPRESS_CHOICE_ASK)
 from sources.staging import create_staging_file_class
-from sources.forms import (StagingDocumentForm, WebFormForm,
+from .forms import (StagingDocumentForm, WebFormForm,
     WatchFolderSetupForm)
-from sources.forms import WebFormSetupForm, StagingFolderSetupForm
-from sources.forms import SourceTransformationForm, SourceTransformationForm_create
+from .forms import WebFormSetupForm, StagingFolderSetupForm
+from .forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
+from .wizards import DocumentCreateWizard
 
 
 def return_function(obj):
@@ -706,3 +709,11 @@ def setup_source_transformation_create(request, source_type, source_id):
         'navigation_object_name': 'source',
         'title': _(u'Create new transformation for source: %s') % source,
     }, context_instance=RequestContext(request))
+
+
+def document_create(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+
+    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
+
+    return wizard(request)

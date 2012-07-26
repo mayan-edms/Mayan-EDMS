@@ -6,10 +6,8 @@ from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
 
 from common.wizard import BoundFormWizard
-
 from metadata.forms import MetadataSelectionForm, MetadataFormSet
-
-from .forms import DocumentTypeSelectForm
+from documents.forms import DocumentTypeSelectForm
 
 
 class DocumentCreateWizard(BoundFormWizard):

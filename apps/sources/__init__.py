@@ -8,6 +8,7 @@ from common.utils import encapsulate
 from project_setup.api import register_setup
 from documents.permissions import (PERMISSION_DOCUMENT_NEW_VERSION, 
     PERMISSION_DOCUMENT_CREATE)
+from documents.models import Document
 
 from .staging import StagingFile
 from .models import (WebForm, StagingFolder, SourceTransformation,
@@ -16,6 +17,8 @@ from .widgets import staging_file_thumbnail
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
+
+document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
 
 staging_file_preview = {'text': _(u'preview'), 'class': 'fancybox-noscaling', 'view': 'staging_file_preview', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'zoom', 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
 staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.source_type', 'source.pk', 'object.id'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
@@ -72,3 +75,5 @@ register_model_list_columns(StagingFile, [
     ])
 
 register_setup(setup_sources)
+register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
+register_links(Document, [document_create_multiple], menu_name='secondary_menu')

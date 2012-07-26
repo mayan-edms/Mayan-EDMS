@@ -53,7 +53,6 @@ def is_current_version(context):
 
 document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam': 'page'}
 document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page'}
-document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
 document_create_siblings = {'text': _(u'clone metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_view_simple = {'text': _(u'details'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_view_advanced = {'text': _(u'properties'), 'view': 'document_view_advanced', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -128,9 +127,9 @@ register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_ins
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
 
-secondary_menu_links = [document_list_recent, document_list, document_create_multiple]
+secondary_menu_links = [document_list_recent, document_list]
 
-register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
+register_links(['document_list_recent', 'document_list', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
 register_links(Document, secondary_menu_links, menu_name='secondary_menu')
 
 # Document page links
