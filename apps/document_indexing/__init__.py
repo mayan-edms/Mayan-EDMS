@@ -1,6 +1,8 @@
 from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
+from django.dispatch import receiver
+from django.db.models.signals import post_save, pre_delete
 
 from navigation.api import (register_top_menu, register_sidebar_template,
     register_links)
@@ -18,6 +20,7 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_EDIT,
     PERMISSION_DOCUMENT_INDEXING_DELETE
 )
+from .api import update_indexes, delete_indexes
 
 
 def is_root_node(context):
@@ -63,3 +66,16 @@ register_links([Index, 'index_setup_list', 'index_setup_create', 'template_node_
 register_links(Index, [index_setup_edit, index_setup_delete, index_setup_view])
 
 register_links(IndexTemplateNode, [template_node_create, template_node_edit, template_node_delete])
+
+
+@receiver(post_save, dispatch_uid='document_index_update', sender=Document)
+def document_index_update(sender, **kwargs):
+    # TODO: save result in user msg queue
+    delete_indexes(kwargs['instance'])
+    update_indexes(kwargs['instance'])
+
+
+@receiver(pre_delete, dispatch_uid='document_index_delete', sender=Document)
+def document_index_delete(sender, **kwargs):
+    # TODO: save result in user msg queue    
+    delete_indexes(kwargs['instance'])

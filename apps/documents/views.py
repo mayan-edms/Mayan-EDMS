@@ -28,7 +28,6 @@ from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
-from document_indexing.api import update_indexes, delete_indexes
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
 
@@ -195,11 +194,6 @@ def document_delete(request, document_id=None, document_id_list=None):
     if request.method == 'POST':
         for document in documents:
             try:
-                warnings = delete_indexes(document)
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, warning)
-
                 document.delete()
                 #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
                 messages.success(request, _(u'Document deleted successfully.'))
@@ -244,11 +238,6 @@ def document_edit(request, document_id):
         old_document = copy.copy(document)
         form = DocumentForm_edit(request.POST, instance=document)
         if form.is_valid():
-            warnings = delete_indexes(document)
-            if request.user.is_staff or request.user.is_superuser:
-                for warning in warnings:
-                    messages.warning(request, warning)
-
             document.filename = form.cleaned_data['new_filename']
             document.description = form.cleaned_data['description']
 
@@ -261,12 +250,6 @@ def document_edit(request, document_id):
             RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
-
-            warnings = update_indexes(document)
-            if request.user.is_staff or request.user.is_superuser:
-                for warning in warnings:
-                    messages.warning(request, warning)
-
             return HttpResponseRedirect(document.get_absolute_url())
     else:
         form = DocumentForm_edit(instance=document, initial={
