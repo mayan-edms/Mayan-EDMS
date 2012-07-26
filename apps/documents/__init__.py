@@ -10,7 +10,6 @@ from navigation.api import (register_links, register_top_menu,
     register_sidebar_template)
 from main.api import register_diagnostic, register_maintenance_links
 from history.permissions import PERMISSION_HISTORY_VIEW
-from metadata.api import get_metadata_string
 from project_setup.api import register_setup
 from acls.api import class_permissions
 
@@ -160,9 +159,6 @@ register_maintenance_links([document_find_all_duplicates, document_update_page_c
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
             encapsulate(lambda x: document_thumbnail(x))
-        },
-        {'name':_(u'metadata'), 'attribute':
-            encapsulate(lambda x: get_metadata_string(x))
         },
     ])
 

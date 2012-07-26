@@ -3,12 +3,14 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import (register_links, register_multi_item_links,
-    register_sidebar_template)
+    register_sidebar_template, register_model_list_columns)
+from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
 from acls.api import class_permissions
 
+from .api import get_metadata_string
 from .models import MetadataType, MetadataSet
 from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
@@ -65,3 +67,9 @@ class_permissions(Document, [
     PERMISSION_METADATA_DOCUMENT_REMOVE,
     PERMISSION_METADATA_DOCUMENT_VIEW,
 ])
+
+register_model_list_columns(Document, [
+        {'name':_(u'metadata'), 'attribute':
+            encapsulate(lambda x: get_metadata_string(x))
+        },
+    ])
