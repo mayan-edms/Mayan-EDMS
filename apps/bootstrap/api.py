@@ -10,43 +10,95 @@ from metadata.models import MetadataType, MetadataSet
 from metadata.api import save_metadata_list
 from document_indexing.models import Index, IndexTemplateNode
 from sources.models import WebForm, StagingFolder
+from ocr.models import QueueDocument, QueueTransformation, DocumentQueue
+from history.models import History
+from taggit.models import Tag
+from tags.models import TagProperties
+from folders.models import Folder
+from dynamic_search.models import RecentSearch
+from django_gpg.runtime import gpg
 
 bootstrap_options = {}
 
 
 def nuke_database():
+    # Delete all document types
     for obj in DocumentType.objects.all():
         obj.delete()
 
+    # Delete all documents one by one to trigger the document file delete method
+    # Should also get rid of document metadata
     for obj in Document.objects.all():
         obj.delete()
-        
+
+    # Delete all metadata types
     for obj in MetadataType.objects.all():
         obj.delete()
 
+    # Delete all metadata sets
     for obj in MetadataSet.objects.all():
         obj.delete()
 
+    # Delete all indexes types, should also delete index nodes
     for obj in Index.objects.all():
         obj.delete()
 
+    # Delete all webforms sources
     for obj in WebForm.objects.all():
         obj.delete()
 
+    # Delete all staging folder sources
     for obj in StagingFolder.objects.all():
         obj.delete()
 
+    # Delete all user groups
     for obj in Group.objects.all():
         obj.delete()
 
+    # Delete all users except superadmins and staff
     for obj in User.objects.all():
         if not obj.is_superuser and not obj.is_staff:
             obj.delete()
-            
+
+    # Delete all user roles
     for obj in Role.objects.all():
         obj.delete()
 
-    # TODO: Add history, ocr logs
+    # Delete all document in the ocr queue
+    for obj in QueueDocument.objects.all():
+        obj.delete()
+
+    # Delete all the transformations for a queue
+    for obj in QueueTransformation.objects.all():
+        obj.delete()
+
+    # Delete all the ocr document queues
+    for obj in DocumentQueue.objects.all():
+        obj.delete()
+
+    # Delete all the remaining history events
+    for obj in History.objects.all():
+        obj.delete()
+
+    # Delete all tags
+    for obj in Tag.objects.all():
+        obj.delete()
+
+    # Delete any remaining tag property
+    for obj in TagProperties.objects.all():
+        obj.delete()
+
+    # Delete all foders
+    for obj in Folder.objects.all():
+        obj.delete()                 
+
+    # Delete all recent searches
+    for obj in RecentSearch.objects.all():
+        obj.delete()     
+
+    # Clear the entire key ring (public and private keys)
+    gpg.delete_all_keys()
+
 
 class BootstrapBase(object):
     name = None
