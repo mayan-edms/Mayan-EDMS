@@ -2,8 +2,6 @@ from __future__ import absolute_import
 
 from django.contrib import admin
 
-from metadata.admin import DocumentMetadataInline
-
 from .models import (DocumentType, Document,
     DocumentTypeFilename, DocumentPage,
     DocumentPageTransformation, RecentDocument,
@@ -46,7 +44,7 @@ class DocumentPageTransformationAdmin(admin.ModelAdmin):
 
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [
-        DocumentMetadataInline, DocumentVersionInline
+        DocumentVersionInline
     ]
     list_display = ('uuid', 'file_filename',)
 
