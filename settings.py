@@ -170,7 +170,6 @@ INSTALLED_APPS = (
     'metadata',
     'documents',
     'linking',
-    'document_indexing',
     'bootstrap',
     'document_acls',
     'ocr',
@@ -180,6 +179,7 @@ INSTALLED_APPS = (
     'rest_api',
     'document_signatures',
     'checkouts',
+    'document_indexing',
 
 # Has to be last so the other apps can register it's signals
     'signaler',

@@ -14,7 +14,6 @@ from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from documents.models import Document
 from documents.events import history_document_created
-from document_indexing.api import update_indexes
 from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
 from acls.utils import apply_default_acls
@@ -130,7 +129,6 @@ class BaseModel(models.Model):
         if metadata_dict_list and new_document:
             # Only do for new documents
             save_metadata_list(metadata_dict_list, document, create=True)
-            warnings = update_indexes(document)
 
     class Meta:
         ordering = ('title',)

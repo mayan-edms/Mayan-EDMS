@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import post_save, pre_delete, post_delete
 
 from navigation.api import (register_top_menu, register_sidebar_template,
     register_links)
@@ -10,6 +10,7 @@ from navigation.api import (register_top_menu, register_sidebar_template,
 from main.api import register_maintenance_links
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from metadata.models import DocumentMetadata
 from project_setup.api import register_setup
 
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
@@ -70,12 +71,31 @@ register_links(IndexTemplateNode, [template_node_create, template_node_edit, tem
 
 @receiver(post_save, dispatch_uid='document_index_update', sender=Document)
 def document_index_update(sender, **kwargs):
-    # TODO: save result in user msg queue
+    # TODO: save result in index log
     delete_indexes(kwargs['instance'])
     update_indexes(kwargs['instance'])
 
 
 @receiver(pre_delete, dispatch_uid='document_index_delete', sender=Document)
 def document_index_delete(sender, **kwargs):
-    # TODO: save result in user msg queue    
+    # TODO: save result in index log
     delete_indexes(kwargs['instance'])
+
+
+@receiver(post_save, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
+def document_metadata_index_update(sender, **kwargs):
+    # TODO: save result in index log
+    delete_indexes(kwargs['instance'].document)
+    update_indexes(kwargs['instance'].document)
+
+
+@receiver(pre_delete, dispatch_uid='document_metadata_index_delete', sender=DocumentMetadata)
+def document_metadata_index_delete(sender, **kwargs):
+    # TODO: save result in index log
+    delete_indexes(kwargs['instance'].document)
+    
+
+@receiver(post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
+def document_metadata_index_post_delete(sender, **kwargs):
+    # TODO: save result in index log
+    update_indexes(kwargs['instance'].document)
