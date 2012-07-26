@@ -83,6 +83,9 @@ class Key(object):
 
     @classmethod
     def get_all(cls, gpg, secret=False, exclude=None):
+        """
+        Return a list of Key objects from the specified GPG instance
+        """
         result = []
         keys = gpg.gpg.list_keys(secret=secret)
         if exclude:
@@ -103,6 +106,9 @@ class Key(object):
 
     @classmethod
     def get(cls, gpg, key_id, secret=False, search_keyservers=False):
+        """
+        Return a single instance of a Key object from the specified GPG instance
+        """
         if len(key_id) > 16:
             # key_id is a fingerprint
             key_id = Key.get_key_id(key_id)
@@ -270,6 +276,10 @@ class GPG(object):
             return signed_data
 
     def has_embedded_signature(self, *args, **kwargs):
+        """
+        Return a boolean result to specify if a passed file has or not
+        an embedded signature
+        """
         try:
             self.decrypt_file(*args, **kwargs)
         except GPGDecryptionError:
@@ -307,6 +317,18 @@ class GPG(object):
             self.delete_key(key)
         elif status != 'ok':
             raise KeyDeleteError('Unable to delete key')
+
+    def delete_all_keys(self):
+        """
+        Method for clearing the entire key ring
+        """
+        # Delete secret keys first
+        for key in Key.get_all(self, secret=True):
+            self.delete_key(key)
+        
+        # Delete public keys
+        for key in Key.get_all(self, secret=False):
+            self.delete_key(key)
 
     def receive_key(self, key_id):
         for keyserver in self.keyservers:
