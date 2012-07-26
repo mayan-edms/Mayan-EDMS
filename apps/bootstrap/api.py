@@ -4,17 +4,20 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.auth.models import User, Group
 
-from metadata.models import MetadataType, MetadataSet
-from document_indexing.models import Index, IndexTemplateNode
-from documents.models import DocumentType, DocumentTypeFilename, Document
 from permissions.models import Role
+from documents.models import DocumentType, DocumentTypeFilename, Document
+from metadata.models import MetadataType, MetadataSet
 from metadata.api import save_metadata_list
-#from sources.models import WebForm, StagingFolder
+from document_indexing.models import Index, IndexTemplateNode
+from sources.models import WebForm, StagingFolder
 
 bootstrap_options = {}
 
 
 def nuke_database():
+    for obj in DocumentType.objects.all():
+        obj.delete()
+
     for obj in Document.objects.all():
         obj.delete()
         
@@ -27,14 +30,11 @@ def nuke_database():
     for obj in Index.objects.all():
         obj.delete()
 
-    for obj in DocumentType.objects.all():
+    for obj in WebForm.objects.all():
         obj.delete()
 
-    #for obj in WebForm.objects.all():
-    #    obj.delete()
-
-    #for obj in StagingFolder.objects.all():
-    #    obj.delete()
+    for obj in StagingFolder.objects.all():
+        obj.delete()
 
     for obj in Group.objects.all():
         obj.delete()
@@ -42,7 +42,11 @@ def nuke_database():
     for obj in User.objects.all():
         if not obj.is_superuser and not obj.is_staff:
             obj.delete()
+            
+    for obj in Role.objects.all():
+        obj.delete()
 
+    # TODO: Add history, ocr logs
 
 class BootstrapBase(object):
     name = None

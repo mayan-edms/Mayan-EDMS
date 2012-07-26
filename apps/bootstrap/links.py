@@ -1,10 +1,9 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
 
+from .permissions import PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE 
 
-def is_superuser(context):
-    return context['request'].user.is_staff or context['request'].user.is_superuser
-
-
-database_bootstrap = {'text': _(u'bootstrap database'), 'view': 'bootstrap_type_list', 'icon': 'database_lightning.png', 'condition': is_superuser}#, 'children_view_regex': [r'statistics']}
-bootstrap_execute = {'text': _(u'execute'), 'view': 'bootstrap_execute', 'args': 'object.name', 'sprite': 'database_lightning.png', 'condition': is_superuser}#, 'children_view_regex': [r'statistics']}
-erase_database_link = {'text': _(u'erase database'), 'view': 'erase_database_view', 'icon': 'radioactivity.png', 'condition': is_superuser}#, 'children_view_regex': [r'statistics']}
+database_bootstrap = {'text': _(u'bootstrap database'), 'view': 'bootstrap_type_list', 'icon': 'database_lightning.png', 'permissions': [PERMISSION_BOOTSTRAP_EXECUTE]}
+bootstrap_execute = {'text': _(u'execute'), 'view': 'bootstrap_execute', 'args': 'object.name', 'sprite': 'database_lightning.png', 'permissions': [PERMISSION_BOOTSTRAP_EXECUTE]}
+erase_database_link = {'text': _(u'erase database'), 'view': 'erase_database_view', 'icon': 'radioactivity.png', 'permissions': [PERMISSION_NUKE_DATABASE]}
