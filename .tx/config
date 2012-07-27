@@ -411,3 +411,48 @@ trans.de_DE = apps/checkouts/locale/de_DE/LC_MESSAGES/django.po
 trans.fr = apps/checkouts/locale/fr/LC_MESSAGES/django.po
 trans.bg = apps/checkouts/locale/bg/LC_MESSAGES/django.po
 trans.nl_NL = apps/checkouts/locale/nl_NL/LC_MESSAGES/django.po
+
+[mayan-edms.apps-maintenance]
+source_file = apps/maintenance/locale/en/LC_MESSAGES/django.po
+type = PO
+source_lang = en
+trans.es = apps/maintenance/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/maintenance/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/maintenance/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/maintenance/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/maintenance/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/maintenance/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/maintenance/locale/de_DE/LC_MESSAGES/django.po
+trans.fr = apps/maintenance/locale/fr/LC_MESSAGES/django.po
+trans.bg = apps/maintenance/locale/bg/LC_MESSAGES/django.po
+trans.nl_NL = apps/maintenance/locale/nl_NL/LC_MESSAGES/django.po
+
+[mayan-edms.apps-diagnostics]
+source_file = apps/diagnostics/locale/en/LC_MESSAGES/django.po
+type = PO
+source_lang = en
+trans.es = apps/diagnostics/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/diagnostics/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/diagnostics/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/diagnostics/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/diagnostics/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/diagnostics/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/diagnostics/locale/de_DE/LC_MESSAGES/django.po
+trans.fr = apps/diagnostics/locale/fr/LC_MESSAGES/django.po
+trans.bg = apps/diagnostics/locale/bg/LC_MESSAGES/django.po
+trans.nl_NL = apps/diagnostics/locale/nl_NL/LC_MESSAGES/django.po
+
+[mayan-edms.apps-statistics]
+source_file = apps/statistics/locale/en/LC_MESSAGES/django.po
+type = PO
+source_lang = en
+trans.es = apps/statistics/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/statistics/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/statistics/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/statistics/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/statistics/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/statistics/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/statistics/locale/de_DE/LC_MESSAGES/django.po
+trans.fr = apps/statistics/locale/fr/LC_MESSAGES/django.po
+trans.bg = apps/statistics/locale/bg/LC_MESSAGES/django.po
+trans.nl_NL = apps/statistics/locale/nl_NL/LC_MESSAGES/django.po
