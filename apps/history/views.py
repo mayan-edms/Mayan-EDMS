@@ -16,7 +16,7 @@ from acls.models import AccessEntry
 from .models import History, HistoryType
 from .forms import HistoryDetailForm
 from .permissions import PERMISSION_HISTORY_VIEW
-from .widgets import history_entry_object_link, history_entry_summary
+from .widgets import history_entry_object_link
 
 
 def history_list(request, object_list=None, title=None, extra_context=None):
@@ -76,11 +76,11 @@ def history_for_object(request, app_label, module_name, object_id):
 
 def history_view(request, object_id):
     history = get_object_or_404(History, pk=object_id)
-    
+
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_HISTORY_VIEW])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_HISTORY_VIEW, request.user, history.content_object)    
+        AccessEntry.objects.check_access(PERMISSION_HISTORY_VIEW, request.user, history.content_object)
 
     form = HistoryDetailForm(instance=history, extra_fields=[
         {'label': _(u'Date'), 'field': lambda x: x.datetime.date()},
@@ -99,7 +99,7 @@ def history_view(request, object_id):
 
 def history_type_list(request, history_type_pk):
     history_type = get_object_or_404(HistoryType, pk=history_type_pk)
-    
+
     return history_list(
         request,
         object_list=History.objects.filter(history_type=history_type),

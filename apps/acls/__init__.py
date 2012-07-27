@@ -6,7 +6,7 @@ from project_setup.api import register_setup
 from .classes import (AccessHolder, AccessObjectClass, ClassAccessHolder,
     AccessObject)
 
-from .links import (acl_list, acl_detail, acl_grant, acl_revoke,
+from .links import (acl_detail, acl_grant, acl_revoke,
     acl_holder_new, acl_setup_valid_classes, acl_class_list,
     acl_class_acl_list, acl_class_acl_detail, acl_class_new_holder_for,
     acl_class_grant, acl_class_revoke)

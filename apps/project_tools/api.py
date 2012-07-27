@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from elementtree.ElementTree import Element, SubElement
+from elementtree.ElementTree import SubElement
 
 from . import tool_menu
 

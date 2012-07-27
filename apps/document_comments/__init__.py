@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes import generic
 
-from navigation.api import bind_links, register_model_list_columns, Link
+from navigation.api import bind_links, register_model_list_columns
 from common.utils import encapsulate
 from acls.api import class_permissions
 from documents.models import Document
@@ -15,8 +15,7 @@ if 'django.contrib.comments' not in settings.INSTALLED_APPS:
 
 from .permissions import (PERMISSION_COMMENT_CREATE,
     PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_VIEW)
-from .links import (comment_delete, comment_multiple_delete, comment_add,
-    comments_for_document)
+from .links import (comment_delete, comment_add, comments_for_document)
 
 register_model_list_columns(Comment, [
     {

@@ -76,7 +76,7 @@ class AccessEntryManager(models.Manager):
 
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
         try:
-            content_type=ContentType.objects.get_for_model(obj)
+            content_type = ContentType.objects.get_for_model(obj)
         except AttributeError:
             # Object doesn't have a content type, therefore allow access
             return True

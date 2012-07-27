@@ -1,8 +1,8 @@
 from navigation.api import register_multi_item_links
 
 from documents.links import document_multiple_clear_transformations, document_multiple_delete, document_multiple_download
-from metadata import metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove
-from ocr import submit_document_multiple
+from metadata.links import metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove
+from ocr.links import submit_document_multiple
 
 
 def register_multi_items_links():

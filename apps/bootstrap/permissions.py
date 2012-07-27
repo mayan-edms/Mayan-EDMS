@@ -8,4 +8,3 @@ namespace = PermissionNamespace('bootstrap', _(u'Database bootstrap'))
 
 PERMISSION_BOOTSTRAP_EXECUTE = Permission.objects.register(namespace, 'bootstrap_execute', _(u'Execute document bootstraps'))
 PERMISSION_NUKE_DATABASE = Permission.objects.register(namespace, 'nuke_database', _(u'Erase the entire database and document storage'))
-

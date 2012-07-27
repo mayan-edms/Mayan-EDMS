@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
@@ -10,12 +10,12 @@ from django.core.urlresolvers import reverse
 from permissions.models import Permission
 
 from .api import bootstrap_options, nuke_database
-from .permissions import PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE 
+from .permissions import PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE
 
 
 def bootstrap_type_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_EXECUTE])
-    
+
     context = {
         'object_list': bootstrap_options.values(),
         'title': _(u'database bootstrap setups'),
@@ -32,7 +32,7 @@ def bootstrap_type_list(request):
 def bootstrap_execute(request, bootstrap_name):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_EXECUTE])
     bootstrap = bootstrap_options[bootstrap_name]
-    
+
     post_action_redirect = reverse('bootstrap_type_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
@@ -90,4 +90,4 @@ def erase_database_view(request):
     context['message'] = _(u'All documents, sources, metadata, metadata types, set, tags, indexes and logs will be lost irreversibly!')
 
     return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))    
+        context_instance=RequestContext(request))

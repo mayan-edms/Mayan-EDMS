@@ -79,7 +79,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
                 else:
                     messages.error(request, _(u'Error sending document link for document %(document)s; %(error)s.') % {
                         'document': document, 'error': exc})
-                    
+
             else:
                 if as_attachment:
                     messages.success(request, _(u'Successfully sent document via email.'))

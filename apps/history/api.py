@@ -5,7 +5,6 @@ import json
 
 from django.db import transaction
 from django.core import serializers
-from django.shortcuts import get_object_or_404
 from django.db import models
 from django.db.utils import DatabaseError
 
@@ -17,7 +16,7 @@ class EventNamespace(object):
     def __init__(self, name, label):
         self.name = name
         self.label = label
-        
+
 
 class Event(object):
     @transaction.commit_on_success
@@ -37,8 +36,7 @@ class Event(object):
             history_types_dict[self.namespace.name][self.name] = self
         except DatabaseError:
             # Special case for syncdb
-            transaction.rollback()        
-
+            transaction.rollback()
 
     def commit(self, source_object=None, data=None):
         new_history = History(history_type=self.history_type_obj)

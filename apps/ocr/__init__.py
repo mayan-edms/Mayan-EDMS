@@ -9,7 +9,7 @@ from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 from django.db.utils import DatabaseError
 
-from navigation.api import bind_links, register_multi_item_links, Link
+from navigation.api import bind_links, register_multi_item_links
 from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from project_tools.api import register_tool
@@ -26,8 +26,7 @@ from . import models as ocr_models
 
 logger = logging.getLogger(__name__)
 
-from .links import (submit_document, submit_document_multiple,
-    re_queue_document, re_queue_multiple_document, queue_document_delete,
+from .links import (submit_document, re_queue_multiple_document,
     queue_document_multiple_delete, document_queue_disable,
     document_queue_enable, all_document_ocr_cleanup, queue_document_list,
     ocr_tool_link, setup_queue_transformation_list,

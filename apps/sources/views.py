@@ -73,7 +73,7 @@ def get_active_tab_links(document=None):
     staging_folders = StagingFolder.objects.filter(enabled=True)
     for staging_folder in staging_folders:
         tab_links.append(get_tab_link_for_source(staging_folder, document))
-        
+
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
@@ -480,7 +480,7 @@ def setup_source_edit(request, source_type, source_id):
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
         form_class = IMAPEmailSetupForm
-        
+
     source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
 
@@ -623,7 +623,7 @@ def setup_source_log_list(request, source_type, source_pk):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
-        
+
     source = get_object_or_404(cls, pk=source_pk)
 
     context = {
@@ -659,7 +659,7 @@ def setup_source_transformation_list(request, source_type, source_id):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
-        
+
     source = get_object_or_404(cls, pk=source_id)
 
     context = {
@@ -765,7 +765,7 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
-                
+
     source = get_object_or_404(cls, pk=source_id)
 
     redirect_view = reverse('setup_source_transformation_list', args=[source.source_type, source.pk])

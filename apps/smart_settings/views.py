@@ -20,11 +20,11 @@ def setting_list(request, namespace_name=None, object_list=None, title=None, ext
         namespace_links.append(
             Link(text=namespace.label, view='setting_list', args=[u'"%s"' % namespace.name], sprite=getattr(namespace, 'sprite') or 'cog', condition=is_superuser, children_view_regex=[r'^setting_'])
         )
-    
+
     if namespace_name:
         object_list = [setting for setting in settings[namespace_name] if setting.hidden == False]
         title = _(u'settings for the %s module') % namespaces[namespace_name]
-        
+
     context = {
         'title': title if title else _(u'settings'),
         'object_list': object_list if not (object_list is None) else [setting for setting in settings_list if setting.hidden == False],
@@ -47,7 +47,7 @@ def setting_list(request, namespace_name=None, object_list=None, title=None, ext
             }
         }
     }
-    
+
     if extra_context:
         context.update(extra_context)
 

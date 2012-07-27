@@ -325,7 +325,7 @@ class GPG(object):
         # Delete secret keys first
         for key in Key.get_all(self, secret=True):
             self.delete_key(key)
-        
+
         # Delete public keys
         for key in Key.get_all(self, secret=False):
             self.delete_key(key)

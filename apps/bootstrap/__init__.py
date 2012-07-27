@@ -1,8 +1,8 @@
 from __future__ import absolute_import
 
 from project_setup.api import register_setup
-from navigation.api import bind_links#, register_sidebar_template
-    
+from navigation.api import bind_links
+
 from .links import database_bootstrap, bootstrap_execute, erase_database_link
 from .api import BootstrapSimple, BootstrapPermit
 

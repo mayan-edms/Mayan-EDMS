@@ -3,11 +3,9 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import (bind_links,
-    register_model_list_columns, Link)
+    register_model_list_columns)
 from common.utils import encapsulate
 from project_setup.api import register_setup
-from documents.permissions import (PERMISSION_DOCUMENT_NEW_VERSION, 
-    PERMISSION_DOCUMENT_CREATE)
 from scheduler.api import register_interval_job
 from documents.models import Document
 
@@ -15,18 +13,15 @@ from .staging import StagingFile
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder, POP3Email, IMAPEmail)
 from .widgets import staging_file_thumbnail
-from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
-    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
-    PERMISSION_SOURCES_SETUP_CREATE)
 from .tasks import task_fetch_pop3_emails, task_fetch_imap_emails
 from .conf.settings import EMAIL_PROCESSING_INTERVAL
-from .links import (staging_file_preview, staging_file_delete, setup_sources,
+from .links import (staging_file_delete, setup_sources,
     setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list,
     setup_pop3_email_list, setup_imap_email_list, setup_source_edit,
     setup_source_delete, setup_source_create, setup_source_log_list,
     setup_source_transformation_list, setup_source_transformation_create,
     setup_source_transformation_edit, setup_source_transformation_delete,
-    source_list, upload_version, document_create_multiple)
+    upload_version, document_create_multiple)
 
 bind_links([StagingFile], [staging_file_delete])
 

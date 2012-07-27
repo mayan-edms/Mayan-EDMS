@@ -7,7 +7,6 @@ from south.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import models as auth_models
 from django.contrib.auth.models import User
-from django.contrib.auth.management import create_superuser
 from django.dispatch import receiver
 from django.conf import settings
 from django.db.models.signals import post_save

@@ -7,12 +7,11 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-from django.utils.translation import ugettext_lazy as _
 #from django.db.models.signals import post_save
 #from django.dispatch import receiver
 
 from documents.models import Document, DocumentVersion
-from navigation.api import bind_links, Link
+from navigation.api import bind_links
 from django_gpg.runtime import gpg
 from django_gpg.exceptions import GPGDecryptionError
 from acls.api import class_permissions

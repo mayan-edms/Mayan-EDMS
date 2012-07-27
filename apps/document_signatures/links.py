@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document, DocumentVersion
 from navigation.api import Link
 
 from .models import DocumentVersionSignature

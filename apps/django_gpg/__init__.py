@@ -1,14 +1,10 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
-
-from navigation.api import bind_links, Link
+from navigation.api import bind_links
 from project_setup.api import register_setup
 from hkp import Key as KeyServerKey
 
 from .api import Key
-from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
-    PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
 from .links import (private_keys, public_keys, key_delete, key_query,
     key_receive, key_setup)
 

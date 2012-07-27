@@ -38,11 +38,11 @@ class SourceLogManager(models.Manager):
         to_delete = self.model.objects.filter(content_type=content_type, object_id=source.pk).order_by('-creation_datetime')[LOG_SIZE:]
         for recent_to_delete in to_delete:
             recent_to_delete.delete()
-            
+
     def get_for_source(self, source):
         content_type = ContentType.objects.get_for_model(source)
         return self.model.objects.filter(content_type=content_type, object_id=source.pk).order_by('-creation_datetime')
-        
+
     def get_latest_for(self, source):
         content_type = ContentType.objects.get_for_model(source)
         return self.model.objects.filter(content_type=content_type, object_id=source.pk).latest().creation_datetime

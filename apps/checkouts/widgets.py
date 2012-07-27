@@ -8,7 +8,7 @@ from django.utils.safestring import mark_safe
 from django.conf import settings
 from django.core import validators
 
-from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN, STATE_ICONS, STATE_LABELS
+from .literals import STATE_ICONS, STATE_LABELS
 
 
 def checkout_widget(document):
@@ -27,9 +27,9 @@ class SplitDeltaWidget(forms.widgets.MultiWidget):
     """
     def __init__(self, attrs=None):
         widgets = (
-            forms.widgets.TextInput(attrs={'maxlength': 3, 'style':'width: 5em;', 'placeholder': _(u'Days')}),
-            forms.widgets.TextInput(attrs={'maxlength': 4, 'style':'width: 5em;', 'placeholder': _(u'Hours')}),
-            forms.widgets.TextInput(attrs={'maxlength': 5, 'style':'width: 5em;', 'placeholder': _(u'Minutes')}),
+            forms.widgets.TextInput(attrs={'maxlength': 3, 'style': 'width: 5em;', 'placeholder': _(u'Days')}),
+            forms.widgets.TextInput(attrs={'maxlength': 4, 'style': 'width: 5em;', 'placeholder': _(u'Hours')}),
+            forms.widgets.TextInput(attrs={'maxlength': 5, 'style': 'width: 5em;', 'placeholder': _(u'Minutes')}),
         )
         super(SplitDeltaWidget, self).__init__(widgets, attrs)
 
@@ -49,7 +49,7 @@ class SplitHiddenDeltaWidget(forms.widgets.SplitDateTimeWidget):
     is_hidden = True
 
     def __init__(self, attrs=None):
-        super(SplitHiddenDeltaWidget, self).__init__(attrs, date_format, time_format)
+        super(SplitHiddenDeltaWidget, self).__init__(attrs)
         for widget in self.widgets:
             widget.input_type = 'hidden'
             widget.is_hidden = True
@@ -73,15 +73,15 @@ class SplitTimeDeltaField(forms.MultiValueField):
         fields = (
             forms.IntegerField(min_value=0,
                 error_messages={'invalid': errors['invalid_days']},
-                localize=localize                
+                localize=localize
             ),
             forms.IntegerField(min_value=0,
                 error_messages={'invalid': errors['invalid_hours']},
-                localize=localize                
+                localize=localize
             ),
             forms.IntegerField(min_value=0,
                 error_messages={'invalid': errors['invalid_minutes']},
-                localize=localize                
+                localize=localize
             ),
         )
         super(SplitTimeDeltaField, self).__init__(fields, *args, **kwargs)
@@ -91,7 +91,7 @@ class SplitTimeDeltaField(forms.MultiValueField):
     def compress(self, data_list):
         if data_list == [0, 0, 0]:
             raise forms.ValidationError(self.error_messages['invalid_timedelta'])
-            
+
         if data_list:
             # Raise a validation error if time or date is empty
             # (possible if SplitDateTimeField has required=False).
@@ -100,8 +100,8 @@ class SplitTimeDeltaField(forms.MultiValueField):
             if data_list[1] in validators.EMPTY_VALUES:
                 raise forms.ValidationError(self.error_messages['invalid_hours'])
             if data_list[2] in validators.EMPTY_VALUES:
-                raise forms.ValidationError(self.error_messages['invalid_minutes'])       
-                
+                raise forms.ValidationError(self.error_messages['invalid_minutes'])
+
             timedelta = datetime.timedelta(days=data_list[0], hours=data_list[1], minutes=data_list[2])
             return datetime.datetime.now() + timedelta
         return None

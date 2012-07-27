@@ -1,10 +1,8 @@
 from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
-from django.conf import settings
 
 from navigation.api import Link, register_top_menu
-from project_setup.api import register_setup
 from project_tools.api import register_tool
 
 from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW

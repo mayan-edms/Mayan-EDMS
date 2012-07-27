@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User, Group
 
 from navigation.api import bind_links, register_multi_item_links

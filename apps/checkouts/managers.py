@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 class DocumentCheckoutManager(models.Manager):
     def checked_out_documents(self):
         return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
-        
+
     def expired_check_outs(self):
         expired_list = Document.objects.filter(pk__in=self.model.objects.filter(expiration_datetime__lte=datetime.datetime.now()).values_list('document__pk', flat=True))
         logger.debug('expired_list: %s' % expired_list)
@@ -37,7 +37,7 @@ class DocumentCheckoutManager(models.Manager):
             return True
         else:
             return False
-            
+
     def check_in_document(self, document, user=None):
         try:
             document_checkout = self.model.objects.get(document=document)
@@ -51,9 +51,9 @@ class DocumentCheckoutManager(models.Manager):
                     history_document_checked_in.commit(source_object=document, data={'user': user, 'document': document})
             else:
                 history_document_auto_checked_in.commit(source_object=document, data={'document': document})
-                
+
             document_checkout.delete()
-            
+
     def document_checkout_info(self, document):
         try:
             return self.model.objects.get(document=document)
@@ -93,7 +93,6 @@ class DocumentCheckoutManager(models.Manager):
                             # Last resort check if original user enabled restriction
                             return not checkout_info.block_new_version
                         else:
-                            return True                        
+                            return True
                     else:
-                        return True                    
-            
+                        return True

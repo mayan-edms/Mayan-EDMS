@@ -2,11 +2,10 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (bind_links, register_multi_item_links,
-    register_sidebar_template, Link, register_model_list_columns)
+from navigation.api import (bind_links, register_sidebar_template,
+    register_model_list_columns)
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
-from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
 from acls.api import class_permissions
 
@@ -15,8 +14,7 @@ from .models import MetadataType, MetadataSet
 from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
     PERMISSION_METADATA_DOCUMENT_VIEW)
-from .links import (metadata_edit, metadata_view, metadata_multiple_edit,
-    metadata_add, metadata_multiple_add, metadata_remove, metadata_multiple_remove,
+from .links import (metadata_edit, metadata_view, metadata_add, metadata_remove,
     setup_metadata_type_list, setup_metadata_type_edit, setup_metadata_type_delete,
     setup_metadata_type_create, setup_metadata_set_list, setup_metadata_set_edit,
     setup_metadata_set_delete, setup_metadata_set_create, setup_metadata_set_members,

@@ -20,10 +20,7 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
     PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_DELETE,
     PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_TOOLS)
-from .conf.settings import ZOOM_MAX_LEVEL
-from .conf.settings import ZOOM_MIN_LEVEL
+    PERMISSION_DOCUMENT_NEW_VERSION)
 from .conf import settings as document_settings
 from .widgets import document_thumbnail
 from .links import (document_list, document_list_recent,

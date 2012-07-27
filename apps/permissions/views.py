@@ -16,17 +16,16 @@ from django.contrib.auth.models import User, Group
 from django.utils.simplejson import loads
 
 from common.views import assign_remove
-from common.utils import generate_choices_w_labels, encapsulate, get_object_name
+from common.utils import encapsulate, get_object_name
 from common.widgets import two_state_template
 from common.models import AnonymousUserSingleton
 from acls.classes import EncapsulatedObject
 
-from .models import Role, Permission, PermissionHolder, RoleMember
+from .models import Role, Permission
 from .forms import RoleForm, RoleForm_view
 from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
     PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)
-from .widgets import role_permission_link
 
 
 def role_list(request):

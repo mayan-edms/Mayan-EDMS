@@ -165,7 +165,6 @@ INSTALLED_APPS = (
     'mimetype',
     'scheduler',
     'job_processor',
-    'installation',
     # Mayan EDMS
     'storage',
     'documents',
@@ -180,12 +179,13 @@ INSTALLED_APPS = (
     'document_acls',
     'ocr',
     'history',
-    'main',
     'rest_api',
     'document_signatures',
     #'workflows',
     'checkouts',
-    'bootstrap',
+    #'bootstrap',
+    'main',
+    'installation',
 
     # Has to be last so the other apps can register it's signals
     'signaler',

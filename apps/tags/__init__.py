@@ -7,16 +7,15 @@ from navigation.api import (bind_links, register_top_menu,
 from common.utils import encapsulate
 from documents.models import Document
 from acls.api import class_permissions
-from acls.permissions import ACLS_VIEW_ACL
 
 from taggit.models import Tag
 from taggit.managers import TaggableManager
 
 from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
-from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
+from .permissions import (PERMISSION_TAG_ATTACH,
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
     PERMISSION_TAG_VIEW)
-from .links import (tag_list, tag_create, tag_attach, tag_document_remove,
+from .links import (tag_list, tag_create, tag_attach,
     tag_document_remove_multiple, tag_document_list, tag_delete, tag_edit,
     tag_tagged_item_list, tag_multiple_delete, tag_acl_list)
 

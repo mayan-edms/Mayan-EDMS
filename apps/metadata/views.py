@@ -150,7 +150,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 else:
                     messages.warning(request, _(u'Metadata type: %(metadata_type)s already present in document %(document)s.') % {
                         'metadata_type': metadata_type, 'document': document})
-                        
+
                 document.mark_indexable()
 
             if len(documents) == 1:
@@ -512,7 +512,6 @@ def setup_metadata_set_delete(request, metadata_set_id):
             messages.error(request, _(u'Metadata set: %(metadata_set)s delete error: %(error)s') % {
                 'metadata_set': metadata_set, 'error': e})
             return HttpResponseRedirect(previous)
-
 
     context = {
         'object_name': _(u'metadata set'),

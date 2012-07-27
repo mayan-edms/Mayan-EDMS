@@ -91,6 +91,7 @@ def get_multi_item_links(parser, token):
     return GetNavigationLinks(menu_name=menu_name, links_dict=multi_object_navigation, var_name=var_name)
 
 
+# TODO: Fix flake8 warning apps/navigation/templatetags/navigation_tags.py:98: W802 undefined name 'get_context_object_navigation_links'
 @register.inclusion_tag('generic_form_instance.html', takes_context=True)
 def get_multi_item_links_form(context):
     logger.debug('starting')

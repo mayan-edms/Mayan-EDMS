@@ -6,8 +6,7 @@ from navigation.api import Link
 from acls.permissions import ACLS_VIEW_ACL
 
 from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
-    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
-    PERMISSION_TAG_VIEW)
+    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT)
 
 tag_list = Link(text=_(u'tag list'), view='tag_list', sprite='tag_blue')
 tag_create = Link(text=_(u'create new tag'), view='tag_create', sprite='tag_blue_add', permissions=[PERMISSION_TAG_CREATE])

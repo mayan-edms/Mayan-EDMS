@@ -21,7 +21,6 @@ from .permissions import (PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHEC
     PERMISSION_DOCUMENT_CHECKIN_OVERRIDE)
 from .forms import DocumentCheckoutForm
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
-from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN, STATE_ICONS, STATE_LABELS
 from .widgets import checkout_widget
 
 
@@ -56,12 +55,12 @@ def checkout_info(request, document_pk):
         paragraphs.append(_(u'Check out time: %s') % checkout_info.checkout_datetime)
         paragraphs.append(_(u'Check out expiration: %s') % checkout_info.expiration_datetime)
         paragraphs.append(_(u'New versions allowed: %s') % (_(u'yes') if not checkout_info.block_new_version else _(u'no')))
-        
+
     return render_to_response('generic_template.html', {
         'paragraphs': paragraphs,
         'object': document,
         'title': _(u'Check out details for document: %s') % document
-    }, context_instance=RequestContext(request))    
+    }, context_instance=RequestContext(request))
 
 
 def checkout_document(request, document_pk):
@@ -70,7 +69,7 @@ def checkout_document(request, document_pk):
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKOUT])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKOUT, request.user, document)
-        
+
     if request.method == 'POST':
         form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
         try:
@@ -94,7 +93,7 @@ def checkout_document(request, document_pk):
         'form': form,
         'object': document,
         'title': _(u'Check out document: %s') % document
-    }, context_instance=RequestContext(request))    
+    }, context_instance=RequestContext(request))
 
 
 def checkin_document(request, document_pk):

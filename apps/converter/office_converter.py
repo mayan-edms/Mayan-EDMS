@@ -6,11 +6,9 @@ import logging
 
 from mimetype.api import get_mimetype
 from common.conf.settings import TEMPORARY_DIRECTORY
-from common.utils import id_generator
 
 from .conf.settings import LIBREOFFICE_PATH
-from .exceptions import (OfficeConversionError,
-    OfficeBackendError, UnknownFileFormat)
+from .exceptions import OfficeBackendError, UnknownFileFormat
 
 CACHED_FILE_SUFFIX = u'_office_converter'
 

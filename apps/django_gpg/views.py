@@ -13,7 +13,7 @@ from common.utils import encapsulate
 
 from .api import Key
 from .runtime import gpg
-from .exceptions import KeyFetchingError, KeyImportError
+from .exceptions import KeyImportError
 from .forms import KeySearchForm
 from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
     PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)

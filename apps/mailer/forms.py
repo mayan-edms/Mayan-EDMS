@@ -16,8 +16,7 @@ class DocumentMailForm(forms.Form):
         else:
             self.fields['subject'].initial = settings.LINK_SUBJECT_TEMPLATE
             self.fields['body'].initial = settings.LINK_BODY_TEMPLATE
-            
-    
+
     email = forms.EmailField(label=_(u'Email address'))
-    subject = forms.CharField(label=_(u'Subject'), required=False)#, initial=_(u'Link for document: {{ document }}'))
-    body = forms.CharField(label=_(u'Body'), widget=forms.widgets.Textarea(), required=False)#, initial=_(u'To access this document click on the following link: <a href="{{ link }}">{{ link }}</a>'))
+    subject = forms.CharField(label=_(u'Subject'), required=False)
+    body = forms.CharField(label=_(u'Body'), widget=forms.widgets.Textarea(), required=False)

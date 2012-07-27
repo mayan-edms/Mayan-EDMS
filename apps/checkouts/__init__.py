@@ -2,13 +2,10 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (bind_links, register_top_menu,
-    register_model_list_columns,
-    register_sidebar_template, Link)
+from navigation.api import bind_links, register_top_menu
 from scheduler.api import register_interval_job
 
 from documents.models import Document
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from acls.api import class_permissions
 
 from .permissions import (PERMISSION_DOCUMENT_CHECKOUT,
@@ -37,6 +34,6 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
 ])
 
-CHECK_EXPIRED_CHECK_OUTS_INTERVAL=60  # Lowest check out expiration allowed
+CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
 register_interval_job('task_check_expired_check_outs', _(u'Check expired check out documents and checks them in.'), task_check_expired_check_outs, seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL)
 initialize_document_checkout_extra_methods()

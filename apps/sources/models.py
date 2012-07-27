@@ -21,7 +21,6 @@ from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.core.files import File
-from django.core.files.base import ContentFile
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
@@ -38,9 +37,9 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
     SOURCE_UNCOMPRESS_CHOICE_Y,
     POP3_PORT, POP3_SSL_PORT,
-    SOURCE_CHOICE_POP3_EMAIL, DEFAULT_POP3_INTERVAL, 
+    SOURCE_CHOICE_POP3_EMAIL, DEFAULT_POP3_INTERVAL,
     IMAP_PORT, IMAP_SSL_PORT,
-    SOURCE_CHOICE_IMAP_EMAIL, DEFAULT_IMAP_INTERVAL, 
+    SOURCE_CHOICE_IMAP_EMAIL, DEFAULT_IMAP_INTERVAL,
     IMAP_DEFAULT_MAILBOX)
 from .compressed_file import CompressedFile, NotACompressedFile
 from .conf.settings import POP3_TIMEOUT
@@ -169,14 +168,14 @@ class SourceLog(models.Model):
     source = generic.GenericForeignKey('content_type', 'object_id')
     creation_datetime = models.DateTimeField(verbose_name=_(u'date time'))
     status = models.TextField(verbose_name=_(u'status'))
-    
+
     objects = SourceLogManager()
-    
+
     def save(self, *args, **kwargs):
         if not self.pk:
             self.creation_datetime = datetime.datetime.now()
         return super(SourceLog, self).save(*args, **kwargs)
-    
+
     class Meta:
         verbose_name = _(u'source log')
         verbose_name_plural = _(u'sources logs')
@@ -194,8 +193,8 @@ class InteractiveBaseModel(BaseModel):
 
     class Meta(BaseModel.Meta):
         abstract = True
-        
-        
+
+
 class PseudoFile(File):
     def __init__(self, file, name):
         self.name = name
@@ -203,8 +202,8 @@ class PseudoFile(File):
         self.file.seek(0, os.SEEK_END)
         self.size = self.file.tell()
         self.file.seek(0)
-    
-        
+
+
 class Attachment(File):
     def __init__(self, part, name):
         self.name = name
@@ -251,7 +250,7 @@ class EmailBaseModel(IntervalBaseModel):
                     counter += 1
 
                 logger.debug('filename: %s' % filename)
-               
+
                 document_file = Attachment(part, name=filename)
                 source.upload_file(document_file, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
 
@@ -274,7 +273,7 @@ class POP3Email(EmailBaseModel):
         else:
             difference = datetime.datetime.now() - last_check
             initial_trigger = False
-        
+
         if difference >= datetime.timedelta(seconds=self.interval) or initial_trigger:
             try:
                 logger.debug('Starting POP3 email fetch')
@@ -293,28 +292,28 @@ class POP3Email(EmailBaseModel):
                 mailbox.user(self.username)
                 mailbox.pass_(self.password)
                 messages_info = mailbox.list()
-                
+
                 logger.debug('messages_info:')
                 logger.debug(messages_info)
                 logger.debug('messages count: %s' % len(messages_info[1]))
-                
+
                 for message_info in messages_info[1]:
                     message_number, message_size = message_info.split()
                     logger.debug('message_number: %s' % message_number)
                     logger.debug('message_size: %s' % message_size)
-                   
+
                     complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
                     EmailBaseModel.process_message(source=self, message=complete_message)
                     mailbox.dele(message_number)
-                    
+
                 mailbox.quit()
                 SourceLog.objects.save_status(source=self, status='Successful connection.')
 
             except Exception, exc:
                 logger.error('Unhandled exception: %s' % exc)
                 SourceLog.objects.save_status(source=self, status='Error: %s' % exc)
-        
+
     class Meta(EmailBaseModel.Meta):
         verbose_name = _(u'POP email')
         verbose_name_plural = _(u'POP email')
@@ -322,7 +321,7 @@ class POP3Email(EmailBaseModel):
 
 class IMAPEmail(EmailBaseModel):
     source_type = SOURCE_CHOICE_IMAP_EMAIL
-   
+
     mailbox = models.CharField(max_length=64, blank=True, verbose_name=_(u'mailbox'), help_text=_(u'Mail from which to check for messages with attached documents.  If none is specified, the default mailbox is %s') % IMAP_DEFAULT_MAILBOX)
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
@@ -336,7 +335,7 @@ class IMAPEmail(EmailBaseModel):
         else:
             difference = datetime.datetime.now() - last_check
             initial_trigger = False
-      
+
         if difference >= datetime.timedelta(seconds=self.interval) or initial_trigger:
             try:
                 logger.debug('Starting IMAP email fetch')
@@ -353,7 +352,7 @@ class IMAPEmail(EmailBaseModel):
 
                 mailbox.login(self.username, self.password)
                 mailbox.select(self.mailbox or IMAP_DEFAULT_MAILBOX)
-                   
+
                 status, data = mailbox.search(None, 'NOT', 'DELETED')
                 if data:
                     messages_info = data[0].split()
@@ -369,7 +368,7 @@ class IMAPEmail(EmailBaseModel):
                 mailbox.close()
                 mailbox.logout()
                 SourceLog.objects.save_status(source=self, status='Successful connection.')
-                
+
             except Exception, exc:
                 logger.error('Unhandled exception: %s' % exc)
                 SourceLog.objects.save_status(source=self, status='Error: %s' % exc)                
