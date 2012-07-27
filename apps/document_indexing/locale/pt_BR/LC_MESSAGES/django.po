@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 19:02-0400\n"
-"PO-Revision-Date: 2012-07-02 03:31+0000\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"PO-Revision-Date: 2012-07-23 19:51+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,7 @@ msgstr ""
 
 #: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
 #: views.py:283
+#: views.py:284
 msgid "indexes"
 msgstr "índices"
 
@@ -144,6 +145,7 @@ msgstr ""
 
 #: models.py:41 models.py:47 views.py:104 views.py:135 views.py:161
 #: views.py:198 views.py:228 views.py:268
+#: views.py:199 views.py:229 views.py:269
 msgid "index"
 msgstr "índice"
 
@@ -291,6 +293,23 @@ msgid "Index template node edited successfully"
 msgstr ""
 
 #: views.py:222
+#: views.py:169
+msgid "has document links?"
+msgstr ""
+
+#: views.py:190
+msgid "Index template node created successfully."
+msgstr ""
+
+#: views.py:196
+msgid "create child node"
+msgstr ""
+
+#: views.py:217
+msgid "Index template node edited successfully"
+msgstr ""
+
+#: views.py:223
 #, python-format
 msgid "edit index template node: %s"
 msgstr ""
@@ -300,16 +319,23 @@ msgid "node"
 msgstr ""
 
 #: views.py:251
+#: views.py:230 views.py:270 views.py:338
+msgid "node"
+msgstr ""
+
+#: views.py:252
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr ""
 
 #: views.py:253
+#: views.py:254
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr ""
 
 #: views.py:262
+#: views.py:263
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr ""
@@ -319,6 +345,11 @@ msgid "nodes"
 msgstr ""
 
 #: views.py:319
+#: views.py:287
+msgid "nodes"
+msgstr ""
+
+#: views.py:320
 #, python-format
 msgid "contents for index: %s"
 msgstr "conteúdos para o índice: %s"
@@ -340,11 +371,29 @@ msgid "Index rebuild completed successfully."
 msgstr "Reconstrução de índice concluída com êxito."
 
 #: views.py:380
+#: views.py:342
+msgid "items"
+msgstr "itens"
+
+#: views.py:367
+msgid "Are you sure you wish to rebuild all indexes?"
+msgstr "Tem certeza de que deseja reconstruir todos os índices?"
+
+#: views.py:368
+msgid "On large databases this operation may take some time to execute."
+msgstr "Em grandes bases de dados esta operação pode levar algum tempo para executar."
+
+#: views.py:374
+msgid "Index rebuild completed successfully."
+msgstr "Reconstrução de índice concluída com êxito."
+
+#: views.py:381
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr "Reconstrução de índice de erro: %s"
 
 #: views.py:402
+#: views.py:403
 #, python-format
 msgid "indexes containing: %s"
 msgstr "índices contendo: %s"

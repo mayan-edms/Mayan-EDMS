@@ -5,12 +5,13 @@
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 19:02-0400\n"
-"PO-Revision-Date: 2012-02-21 15:07+0000\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"PO-Revision-Date: 2012-07-10 15:16+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -19,23 +20,23 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:22
+#: __init__.py:26
 msgid "change password"
 msgstr "alterar a senha"
 
-#: __init__.py:23
+#: __init__.py:27
 msgid "user details"
-msgstr "detalhes do usuário"
+msgstr "detalhes do utilizador"
 
-#: __init__.py:24
+#: __init__.py:28
 msgid "edit details"
 msgstr "editar detalhes"
 
-#: __init__.py:28 __init__.py:33
+#: __init__.py:32 __init__.py:37
 msgid "about"
 msgstr "sobre"
 
-#: __init__.py:29
+#: __init__.py:33
 msgid "license"
 msgstr "licença"
 
@@ -51,7 +52,7 @@ msgstr "E-mail"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr "Por favor insira o e-mail e senha corretos. Note que os campos de senha são case-sensitive."
+msgstr "Insira um e-mail e senha corretos, por favor. Note que o campo da senha é sensível a minúsculas e maiúsculas."
 
 #: forms.py:146
 msgid "This account is inactive."
@@ -79,7 +80,7 @@ msgstr "B4"
 
 #: literals.py:29
 msgid "Letter"
-msgstr "Carta"
+msgstr "Letter"
 
 #: literals.py:30
 msgid "Legal"
@@ -97,17 +98,33 @@ msgstr "Retrato"
 msgid "Landscape"
 msgstr "Paisagem"
 
-#: models.py:16
+#: models.py:17
 msgid "lock field"
+msgstr "campo de bloqueio"
+
+#: models.py:45
+msgid "Anonymous user"
+msgstr "Utilizador anónimo"
+
+#: models.py:48 models.py:49
+msgid "anonymous user"
+msgstr "utilizador anónimo"
+
+#: models.py:53
+msgid "account"
 msgstr ""
 
-#: models.py:43
-msgid "Anonymous user"
-msgstr "Usuário anônimo"
+#: models.py:54
+msgid "password"
+msgstr ""
 
-#: models.py:46 models.py:47
-msgid "anonymous user"
-msgstr "usuário anônimo"
+#: models.py:55
+msgid "password hash"
+msgstr ""
+
+#: models.py:58
+msgid "auto admin properties"
+msgstr ""
 
 #: utils.py:295
 msgid "function found"
@@ -129,12 +146,12 @@ msgstr "%(selection)s adicionadas com sucesso a %(right_list_title)s ."
 #: views.py:94 views.py:121
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
-msgstr "Não foi possível adicionar %(selection)s  para %(right_list_title)s ."
+msgstr "Não foi possível adicionar %(selection)s  a %(right_list_title)s ."
 
 #: views.py:115
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
-msgstr " %(selection)s  adicionado com sucesso removidos %(right_list_title)s."
+msgstr " %(selection)s  removido com sucesso de %(right_list_title)s."
 
 #: views.py:136
 msgid "Add"
@@ -146,19 +163,19 @@ msgstr "Remover"
 
 #: views.py:170
 msgid "current user details"
-msgstr "detalhes atuais do usuário"
+msgstr "detalhes do utilizador atual"
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
-msgstr "E-mail conflito, outro usuário que tem mesmo e-mail."
+msgstr "Conflito de E-mail; outro utilizador tem o mesmo e-mail."
 
 #: views.py:190
 msgid "Current user's details updated."
-msgstr "Detalhes do usuário atual atualizados."
+msgstr "Detalhes do utilizador atual atualizados."
 
 #: views.py:199
 msgid "edit current user details"
-msgstr "editar os detalhes do usuário atual"
+msgstr "editar os detalhes do utilizador atual"
 
 #: views.py:230
 msgid "License"
@@ -166,32 +183,32 @@ msgstr "Licença"
 
 #: views.py:239
 msgid "Current user password change"
-msgstr "Alteração de senha do usuário atual"
+msgstr "Alteração da senha do utilizador atual"
 
 #: views.py:254 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
-msgstr "Sua senha foi alterada com êxito."
+msgstr "A sua senha foi alterada com êxito."
 
 #: widgets.py:58
 msgid "None"
 msgstr "Nenhum"
 
-#: conf/settings.py:15
+#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
-msgstr "Diretório temporário usado para armazenar miniaturas, previews e arquivos temporários. Se nenhum for especificado, um será criado usando tempfile.mkdtemp()"
+msgstr "Diretório temporário usado para armazenar miniaturas, pré-visualização e ficheiros temporários. Se nenhum for especificado, será criado um usando tempfile.mkdtemp()"
 
-#: conf/settings.py:65
+#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr "Controla o mecanismo usado para usuário autenticado. As opções são: e-mail, nome de usuário,"
+msgstr "Controla o mecanismo usado para autenticar o utilizador. As opções são: username, email"
 
-#: conf/settings.py:74
+#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
-msgstr ""
+msgstr "Permitir acesso a todas as vistas aos utilizadores não autenticados"
 
 #: templates/403.html:3 templates/403.html.py:7
 msgid "Insufficient permissions"
@@ -199,7 +216,7 @@ msgstr "Permissões insuficientes"
 
 #: templates/403.html:9
 msgid "You don't have enough permissions for this operation."
-msgstr "Você não tem permissões suficientes para esta operação."
+msgstr "Não possui permissões suficientes para esta operação."
 
 #: templates/404.html:3 templates/404.html.py:7
 msgid "Page not found"
@@ -207,7 +224,7 @@ msgstr "Página não encontrada"
 
 #: templates/404.html:9
 msgid "Sorry, but the requested page could not be found."
-msgstr "Desculpe, mas a página solicitada não pôde ser encontrada."
+msgstr "Desculpe, mas a página solicitada não foi encontrada."
 
 #: templates/calculate_form_title.html:11
 #, python-format
@@ -231,7 +248,7 @@ msgstr "Editar"
 #: templates/calculate_form_title.html:24
 #, python-format
 msgid "Create new %(object_name)s"
-msgstr "Criar novas %(object_name)s "
+msgstr "Criar novo %(object_name)s "
 
 #: templates/calculate_form_title.html:26
 msgid "Create"
@@ -262,7 +279,7 @@ msgstr "Tem certeza de que deseja excluir %(object_name)s: %(object)s ?"
 #: templates/generic_confirm.html:42
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
-msgstr "Tem certeza de que deseja excluir: %(object)s ?"
+msgstr "Tem a certeza de que deseja excluir: %(object)s ?"
 
 #: templates/generic_confirm.html:50
 msgid "Yes"
@@ -310,7 +327,7 @@ msgstr "Lista de %(stripped_title)s "
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s of %(total_pages)s)"
+msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26
@@ -334,4 +351,4 @@ msgstr "Login"
 #: templates/password_change_done.html:3 templates/password_change_form.html:3
 #: templates/password_change_form.html:5
 msgid "Password change"
-msgstr "Alterar a senha"
+msgstr "Alteração da senha"

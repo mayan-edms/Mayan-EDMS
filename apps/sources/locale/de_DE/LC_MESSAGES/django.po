@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 19:03-0400\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
 "PO-Revision-Date: 2012-06-17 22:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
@@ -31,15 +31,15 @@ msgstr "Löschen"
 msgid "sources"
 msgstr "Quellen"
 
-#: __init__.py:24 literals.py:53 models.py:204
+#: __init__.py:24 literals.py:53 models.py:203
 msgid "web forms"
 msgstr "Web-Formulare"
 
-#: __init__.py:25 models.py:175
+#: __init__.py:25 models.py:174
 msgid "staging folders"
 msgstr "Arbeitsordner"
 
-#: __init__.py:26 models.py:239
+#: __init__.py:26 models.py:238
 msgid "watch folders"
 msgstr "Ordner überwachen"
 
@@ -139,7 +139,7 @@ msgstr "Drucker"
 msgid "Empty printer"
 msgstr "Leerer Drucker"
 
-#: literals.py:47 models.py:203
+#: literals.py:47 models.py:202
 msgid "web form"
 msgstr "Web-Formular"
 
@@ -159,118 +159,118 @@ msgstr "Server Arbeitsordner"
 msgid "server watch folders"
 msgstr "Server Überwachungsordner"
 
-#: models.py:36
+#: models.py:35
 msgid "title"
 msgstr "Titel"
 
-#: models.py:37
+#: models.py:36
 msgid "enabled"
 msgstr "Aktiviert"
 
-#: models.py:38
+#: models.py:37
 msgid "whitelist"
 msgstr "Whitelist"
 
-#: models.py:39
+#: models.py:38
 msgid "blacklist"
 msgstr "Blacklist"
 
-#: models.py:143
+#: models.py:142
 msgid "icon"
 msgstr "Symbol"
 
-#: models.py:143
+#: models.py:142
 msgid "An icon to visually distinguish this source."
 msgstr "Ein Symbol um die Quelle von anderen zu unterscheiden"
 
-#: models.py:159 models.py:211
+#: models.py:158 models.py:210
 msgid "folder path"
 msgstr "Ordner Pfad"
 
-#: models.py:159 models.py:211
+#: models.py:158 models.py:210
 msgid "Server side filesystem path."
 msgstr "Pfad auf dem Server"
 
-#: models.py:160
+#: models.py:159
 msgid "preview width"
 msgstr "Vorschau Breite"
 
-#: models.py:160
+#: models.py:159
 msgid "Width value to be passed to the converter backend."
 msgstr "Breite die zum Konverter übergeben wird"
 
-#: models.py:161
+#: models.py:160
 msgid "preview height"
 msgstr "Vorschau Höhe"
 
-#: models.py:161
+#: models.py:160
 msgid "Height value to be passed to the converter backend."
 msgstr "Höhe die zum Konverter übergeben wird"
 
-#: models.py:162 models.py:199 models.py:212
+#: models.py:161 models.py:198 models.py:211
 msgid "uncompress"
 msgstr "dekomprimieren"
 
-#: models.py:162 models.py:199 models.py:212
+#: models.py:161 models.py:198 models.py:211
 msgid "Whether to expand or not compressed archives."
 msgstr "Sollen komprimierte Archive entpackt werden?"
 
-#: models.py:163 models.py:213
+#: models.py:162 models.py:212
 msgid "delete after upload"
 msgstr "löschen nach hochladen"
 
-#: models.py:163 models.py:213
+#: models.py:162 models.py:212
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Lösche die Datei nach erfolgreichem hochladen."
 
-#: models.py:174
+#: models.py:173
 msgid "staging folder"
 msgstr "Arbeitsordner"
 
-#: models.py:214
+#: models.py:213
 msgid "interval"
 msgstr "Intervall"
 
-#: models.py:214
+#: models.py:213
 msgid ""
 "Inverval in seconds where the watch folder path is checked for new "
 "documents."
 msgstr "Intervall in Sekunden"
 
-#: models.py:238
+#: models.py:237
 msgid "watch folder"
 msgstr "Überwachungsordner"
 
-#: models.py:243
+#: models.py:242
 msgid "Enter a valid value."
 msgstr "Geben Sie eine gültigen Wert an."
 
-#: models.py:271 views.py:595
+#: models.py:270 views.py:595
 msgid "order"
 msgstr "Reihenfolge"
 
-#: models.py:272 views.py:596 views.py:633 views.py:663
+#: models.py:271 views.py:596 views.py:633 views.py:663
 msgid "transformation"
 msgstr "Transformation"
 
-#: models.py:273 views.py:597
+#: models.py:272 views.py:597
 msgid "arguments"
 msgstr "Parameter"
 
-#: models.py:273
+#: models.py:272
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Wörterbücher zum Identifizieren von Parametern nutzen, Beispiel: %s"
 
-#: models.py:284
+#: models.py:283
 msgid "document source transformation"
 msgstr "Quelldatei-Transformation"
 
-#: models.py:285
+#: models.py:284
 msgid "document source transformations"
 msgstr "Quelldatei-Transformationen"
 
-#: models.py:292 models.py:293
+#: models.py:291 models.py:292
 msgid "out of process"
 msgstr "aus dem Vorgang heraus"
 

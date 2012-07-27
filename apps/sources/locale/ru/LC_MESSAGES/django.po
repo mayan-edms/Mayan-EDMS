@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 19:03-0400\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
 "PO-Revision-Date: 2012-06-17 22:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
@@ -30,15 +30,15 @@ msgstr "удалить"
 msgid "sources"
 msgstr "источники"
 
-#: __init__.py:24 literals.py:53 models.py:204
+#: __init__.py:24 literals.py:53 models.py:203
 msgid "web forms"
 msgstr "web-формы"
 
-#: __init__.py:25 models.py:175
+#: __init__.py:25 models.py:174
 msgid "staging folders"
 msgstr "транспортные папки"
 
-#: __init__.py:26 models.py:239
+#: __init__.py:26 models.py:238
 msgid "watch folders"
 msgstr "наблюдаемые папки"
 
@@ -138,7 +138,7 @@ msgstr "Принтер"
 msgid "Empty printer"
 msgstr "Пустой принтер"
 
-#: literals.py:47 models.py:203
+#: literals.py:47 models.py:202
 msgid "web form"
 msgstr "веб-формы"
 
@@ -158,118 +158,118 @@ msgstr "папки на промежуточном сервере"
 msgid "server watch folders"
 msgstr "наблюдаемые папки"
 
-#: models.py:36
+#: models.py:35
 msgid "title"
 msgstr "название"
 
-#: models.py:37
+#: models.py:36
 msgid "enabled"
 msgstr "разрешено"
 
-#: models.py:38
+#: models.py:37
 msgid "whitelist"
 msgstr "белый список"
 
-#: models.py:39
+#: models.py:38
 msgid "blacklist"
 msgstr "черный список"
 
-#: models.py:143
+#: models.py:142
 msgid "icon"
 msgstr "иконка"
 
-#: models.py:143
+#: models.py:142
 msgid "An icon to visually distinguish this source."
 msgstr "Значок, чтобы визуально отличать этот источник."
 
-#: models.py:159 models.py:211
+#: models.py:158 models.py:210
 msgid "folder path"
 msgstr "путь к папке"
 
-#: models.py:159 models.py:211
+#: models.py:158 models.py:210
 msgid "Server side filesystem path."
 msgstr "Путь на сервере"
 
-#: models.py:160
+#: models.py:159
 msgid "preview width"
 msgstr "ширина предпросмотра"
 
-#: models.py:160
+#: models.py:159
 msgid "Width value to be passed to the converter backend."
 msgstr "Ширина после обработки."
 
-#: models.py:161
+#: models.py:160
 msgid "preview height"
 msgstr "Предварительный просмотр высоты"
 
-#: models.py:161
+#: models.py:160
 msgid "Height value to be passed to the converter backend."
 msgstr "Высота после обработки."
 
-#: models.py:162 models.py:199 models.py:212
+#: models.py:161 models.py:198 models.py:211
 msgid "uncompress"
 msgstr "распаковать"
 
-#: models.py:162 models.py:199 models.py:212
+#: models.py:161 models.py:198 models.py:211
 msgid "Whether to expand or not compressed archives."
 msgstr "Независимо от того распакованы или нет архивы."
 
-#: models.py:163 models.py:213
+#: models.py:162 models.py:212
 msgid "delete after upload"
 msgstr "удалить после загрузки"
 
-#: models.py:163 models.py:213
+#: models.py:162 models.py:212
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Удалить файл после загрузки."
 
-#: models.py:174
+#: models.py:173
 msgid "staging folder"
 msgstr "промежуточная папка"
 
-#: models.py:214
+#: models.py:213
 msgid "interval"
 msgstr "интервал"
 
-#: models.py:214
+#: models.py:213
 msgid ""
 "Inverval in seconds where the watch folder path is checked for new "
 "documents."
 msgstr "Интервал в секундах, между проверками папки на появление новых документов."
 
-#: models.py:238
+#: models.py:237
 msgid "watch folder"
 msgstr "просматривать папку"
 
-#: models.py:243
+#: models.py:242
 msgid "Enter a valid value."
 msgstr "Введите допустимое значение."
 
-#: models.py:271 views.py:595
+#: models.py:270 views.py:595
 msgid "order"
 msgstr "порядок"
 
-#: models.py:272 views.py:596 views.py:633 views.py:663
+#: models.py:271 views.py:596 views.py:633 views.py:663
 msgid "transformation"
 msgstr "преобразование"
 
-#: models.py:273 views.py:597
+#: models.py:272 views.py:597
 msgid "arguments"
 msgstr "аргументы"
 
-#: models.py:273
+#: models.py:272
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Использование словарей для определения аргументов, например: %s"
 
-#: models.py:284
+#: models.py:283
 msgid "document source transformation"
 msgstr "преобразования источника документов"
 
-#: models.py:285
+#: models.py:284
 msgid "document source transformations"
 msgstr "преобразования источника документов"
 
-#: models.py:292 models.py:293
+#: models.py:291 models.py:292
 msgid "out of process"
 msgstr "из процесса"
 

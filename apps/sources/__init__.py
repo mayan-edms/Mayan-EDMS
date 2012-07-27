@@ -9,6 +9,7 @@ from project_setup.api import register_setup
 from documents.permissions import (PERMISSION_DOCUMENT_NEW_VERSION, 
     PERMISSION_DOCUMENT_CREATE)
 from scheduler.api import register_interval_job
+from documents.models import Document
 
 from .staging import StagingFile
 from .models import (WebForm, StagingFolder, SourceTransformation,
@@ -25,7 +26,7 @@ from .links import (staging_file_preview, staging_file_delete, setup_sources,
     setup_source_delete, setup_source_create, setup_source_log_list,
     setup_source_transformation_list, setup_source_transformation_create,
     setup_source_transformation_edit, setup_source_transformation_delete,
-    source_list, upload_version)
+    source_list, upload_version, document_create_multiple)
 
 bind_links([StagingFile], [staging_file_delete])
 
@@ -68,3 +69,6 @@ register_setup(setup_sources)
 
 register_interval_job('task_fetch_pop3_emails', _(u'Connects to the POP3 email sources and fetches the attached documents.'), task_fetch_pop3_emails, seconds=EMAIL_PROCESSING_INTERVAL)
 register_interval_job('task_fetch_imap_emails', _(u'Connects to the IMAP email sources and fetches the attached documents.'), task_fetch_imap_emails, seconds=EMAIL_PROCESSING_INTERVAL)
+
+bind_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
+bind_links([Document], [document_create_multiple], menu_name='secondary_menu')

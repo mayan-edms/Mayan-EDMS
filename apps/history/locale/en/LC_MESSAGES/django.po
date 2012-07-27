@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:40-0400\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,7 @@ msgid "summary"
 msgstr ""
 
 #: links.py:9 models.py:78
+#: links.py:7 models.py:73
 msgid "history"
 msgstr ""
 
@@ -61,7 +62,7 @@ msgstr ""
 msgid "dictionary"
 msgstr ""
 
-#: models.py:79
+#: models.py:74
 msgid "histories"
 msgstr ""
 

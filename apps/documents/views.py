@@ -26,10 +26,8 @@ from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
     DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE
 from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
-from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
-from history.api import create_history
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
 
@@ -43,16 +41,13 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
-from .events import (HISTORY_DOCUMENT_CREATED,
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-from .forms import (DocumentTypeSelectForm,
-        DocumentForm_edit, DocumentPropertiesForm,
+from .events import history_document_edited
+from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
         DocumentPageTransformationForm, DocumentContentForm,
         DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
         DocumentTypeForm, DocumentTypeFilenameForm,
         DocumentTypeFilenameForm_create, DocumentDownloadForm)
-from .wizards import DocumentCreateWizard
 from .models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
     DocumentVersion)
@@ -84,14 +79,6 @@ def document_list(request, object_list=None, title=None, extra_context=None):
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
-
-
-def document_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-
-    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
-
-    return wizard(request)
 
 
 def document_create_siblings(request, document_id):
@@ -262,12 +249,10 @@ def document_edit(request, document_id):
             document.filename = new_filename
             document.description = form.cleaned_data['description']
             document.save()
-
-            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['filename', 'description'])})
+            history_document_edited.commit(source_object=document, data={'user': request.user, 'diff': return_diff(old_document, document, ['filename', 'description'])})
             RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
-
             return HttpResponseRedirect(document.get_absolute_url())
     else:
         form = DocumentForm_edit(instance=document, initial={

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:40-0400\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,8 @@ msgstr ""
 
 #: __init__.py:26 links.py:24 links.py:38 models.py:42 views.py:38
 #: views.py:283
+#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
+#: views.py:284
 msgid "indexes"
 msgstr ""
 
@@ -141,7 +143,7 @@ msgid "Causes this index to be visible and updated when document data changes."
 msgstr ""
 
 #: models.py:41 models.py:47 views.py:104 views.py:135 views.py:161
-#: views.py:198 views.py:228 views.py:268
+#: views.py:199 views.py:229 views.py:269
 msgid "index"
 msgstr ""
 
@@ -276,73 +278,77 @@ msgstr ""
 msgid "level"
 msgstr ""
 
-#: views.py:189
+#: views.py:169
+msgid "has document links?"
+msgstr ""
+
+#: views.py:190
 msgid "Index template node created successfully."
 msgstr ""
 
-#: views.py:195
+#: views.py:196
 msgid "create child node"
 msgstr ""
 
-#: views.py:216
+#: views.py:217
 msgid "Index template node edited successfully"
 msgstr ""
 
-#: views.py:222
+#: views.py:223
 #, python-format
 msgid "edit index template node: %s"
 msgstr ""
 
-#: views.py:229 views.py:269 views.py:337
+#: views.py:230 views.py:270 views.py:338
 msgid "node"
 msgstr ""
 
-#: views.py:251
+#: views.py:252
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr ""
 
-#: views.py:253
+#: views.py:254
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:262
+#: views.py:263
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr ""
 
-#: views.py:286
+#: views.py:287
 msgid "nodes"
 msgstr ""
 
-#: views.py:319
+#: views.py:320
 #, python-format
 msgid "contents for index: %s"
 msgstr ""
 
-#: views.py:341
+#: views.py:342
 msgid "items"
 msgstr ""
 
-#: views.py:366
+#: views.py:367
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr ""
 
-#: views.py:367
+#: views.py:368
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 
-#: views.py:373
+#: views.py:374
 msgid "Index rebuild completed successfully."
 msgstr ""
 
-#: views.py:380
+#: views.py:381
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr ""
 
-#: views.py:402
+#: views.py:403
 #, python-format
 msgid "indexes containing: %s"
 msgstr ""

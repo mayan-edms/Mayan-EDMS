@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:08-0400\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: 2012-06-08 07:42+0000\n"
 "Last-Translator: Carlo Zanatto <>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
@@ -35,27 +35,27 @@ msgstr "cerca ancora"
 msgid "Search terms"
 msgstr "Termini di ricerca"
 
-#: models.py:20
+#: models.py:21
 msgid "user"
 msgstr "utente"
 
-#: models.py:21
+#: models.py:22
 msgid "query"
 msgstr "interrogazione"
 
-#: models.py:22
+#: models.py:23
 msgid "datetime created"
 msgstr "orario creato"
 
-#: models.py:23
+#: models.py:24
 msgid "hits"
 msgstr "visite"
 
-#: models.py:61
+#: models.py:62
 msgid "recent search"
 msgstr "ricerce recenti"
 
-#: models.py:62
+#: models.py:63
 msgid "recent searches"
 msgstr "risultati della ricerca"
 

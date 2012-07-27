@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-07-02 03:32+0000\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"PO-Revision-Date: 2012-07-10 15:17+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -58,11 +58,54 @@ msgid "Redirecting you to the website entry point in 5 seconds."
 msgstr "Redirecionando você para o ponto de entrada do site em 5 segundos."
 
 #: templates/web_theme_login.html:24
+#: templates/web_theme_login.html:13 templates/web_theme_login.html.py:50
+msgid "Login"
+msgstr "Login"
+
+#: templates/web_theme_login.html:19
+msgid "You are already logged in"
+msgstr "Você já está logado"
+
+#: templates/web_theme_login.html:22
+msgid "Redirecting you to the website entry point in 5 seconds."
+msgstr "Redirecionando você para o ponto de entrada do site em 5 segundos."
+
+#: templates/web_theme_login.html:25
 #, python-format
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
 msgstr "Ou clique <a href=\"%(LOGIN_REDIRECT_URL)s\">aqui</a> se o redirecionamento não funcionar."
+
+#: templates/web_theme_login.html:36
+msgid "First time login"
+msgstr ""
+
+#: templates/web_theme_login.html:38
+msgid ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
+msgstr ""
+
+#: templates/web_theme_login.html:39
+msgid "Login using the following credentials:"
+msgstr ""
+
+#: templates/web_theme_login.html:40
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr ""
+
+#: templates/web_theme_login.html:41
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/web_theme_login.html:42
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8

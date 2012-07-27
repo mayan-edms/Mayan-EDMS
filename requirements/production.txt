@@ -20,7 +20,7 @@ pdfminer==20110227
 
 # Scheduler
 
-APScheduler==2.0.2
+APScheduler==2.0.3
 
 # Python converter backend
 
@@ -66,6 +66,7 @@ pbs==0.105
 # Installation
 
 psutil==0.5.1
+GitPython==0.3.2.RC1
 
 # Misc
 

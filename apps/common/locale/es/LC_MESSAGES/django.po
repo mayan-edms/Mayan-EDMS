@@ -8,33 +8,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 19:02-0400\n"
-"PO-Revision-Date: 2012-02-02 18:39+0000\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"PO-Revision-Date: 2012-07-10 15:23+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:22
+#: __init__.py:26
 msgid "change password"
 msgstr "cambiar contraseña"
 
-#: __init__.py:23
+#: __init__.py:27
 msgid "user details"
 msgstr "detalles de usuario"
 
-#: __init__.py:24
+#: __init__.py:28
 msgid "edit details"
 msgstr "editar detalles"
 
-#: __init__.py:28 __init__.py:33
+#: __init__.py:32 __init__.py:37
 msgid "about"
 msgstr "sobre"
 
-#: __init__.py:29
+#: __init__.py:33
 msgid "license"
 msgstr "licencia"
 
@@ -96,17 +96,33 @@ msgstr "Retrato"
 msgid "Landscape"
 msgstr "Paisaje"
 
-#: models.py:16
+#: models.py:17
 msgid "lock field"
 msgstr "campo de bloqueo"
 
-#: models.py:43
+#: models.py:45
 msgid "Anonymous user"
 msgstr "Usuario anónimo"
 
-#: models.py:46 models.py:47
+#: models.py:48 models.py:49
 msgid "anonymous user"
 msgstr "usuario anónimo"
+
+#: models.py:53
+msgid "account"
+msgstr "cuenta"
+
+#: models.py:54
+msgid "password"
+msgstr "contraseña"
+
+#: models.py:55
+msgid "password hash"
+msgstr "huella de la contraseña"
+
+#: models.py:58
+msgid "auto admin properties"
+msgstr "propiedades de administrador automático"
 
 #: utils.py:295
 msgid "function found"
@@ -175,20 +191,20 @@ msgstr "Su contraseña se ha modificado correctamente."
 msgid "None"
 msgstr "Ninguno"
 
-#: conf/settings.py:15
+#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
 msgstr "Directorio temporal utilizado por todo el sitio para almacenar imágenes en miniatura, vistas previas y los archivos temporales. Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp ()"
 
-#: conf/settings.py:65
+#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
 msgstr "Controla el mecanismo utilizado para el usuario autenticado. Las opciones son: 'username' nombre de usuario, 'email' correo electrónico"
 
-#: conf/settings.py:74
+#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
 msgstr "Permita a los usuarios no autenticados, el acceso a todas las pantallas"
 

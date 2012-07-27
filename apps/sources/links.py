@@ -34,3 +34,4 @@ setup_source_transformation_delete = Link(text=_(u'delete'), view='setup_source_
 source_list = Link(text=_(u'Document sources'), view='setup_web_form_list', sprite='page_add', children_url_regex=[r'sources/setup'], permissions=[PERMISSION_SOURCES_SETUP_VIEW])
 
 upload_version = Link(text=_(u'upload new version'), view='upload_version', args='object.pk', sprite='page_add', permissions=[PERMISSION_DOCUMENT_NEW_VERSION])
+document_create_multiple = Link(text=_(u'upload new documents'), view='document_create_multiple', sprite='page_add', permissions=[PERMISSION_DOCUMENT_CREATE], children_view_regex=[r'upload_interactive'])

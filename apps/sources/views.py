@@ -18,6 +18,8 @@ from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
 from documents.models import DocumentType, Document
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.exceptions import NewDocumentVersionNotAllowed
+from documents.forms import DocumentTypeSelectForm
+from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 from common.utils import encapsulate
@@ -41,6 +43,7 @@ from .forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
+from .wizards import DocumentCreateWizard
 
 logger = logging.getLogger(__name__)
 
@@ -789,3 +792,11 @@ def setup_source_transformation_create(request, source_type, source_id):
         'navigation_object_name': 'source',
         'title': _(u'Create new transformation for source: %s') % source,
     }, context_instance=RequestContext(request))
+
+
+def document_create(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+
+    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
+
+    return wizard(request)

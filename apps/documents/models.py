@@ -259,6 +259,9 @@ class Document(models.Model):
 
     @property
     def latest_version(self):
+        # TODO: an IndexError exception here is indicative of a corrupted
+        # database, find out how to handle (display empty doc or automatically
+        # delete with msg to user)
         return self.documentversion_set.order_by('-timestamp')[0]
 
     @property

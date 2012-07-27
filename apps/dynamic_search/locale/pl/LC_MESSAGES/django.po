@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:08-0400\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: 2012-02-21 15:21+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
@@ -36,27 +36,27 @@ msgstr "wyszukaj ponownie"
 msgid "Search terms"
 msgstr "Słowa do wyszukania"
 
-#: models.py:20
+#: models.py:21
 msgid "user"
 msgstr "użytkownik"
 
-#: models.py:21
+#: models.py:22
 msgid "query"
 msgstr "zapytanie"
 
-#: models.py:22
+#: models.py:23
 msgid "datetime created"
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "hits"
 msgstr "trafienia"
 
-#: models.py:61
+#: models.py:62
 msgid "recent search"
 msgstr "ostatnie wyszukiwanie"
 
-#: models.py:62
+#: models.py:63
 msgid "recent searches"
 msgstr "ostatnie wyszukiwania"
 

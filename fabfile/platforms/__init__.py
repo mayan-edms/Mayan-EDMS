@@ -1,9 +1,15 @@
+import os
+
 from fabric.api import run, sudo, cd, env, task
 from fabric.colors import green
 
 from ..literals import OS_UBUNTU, OS_FEDORA, OS_DEBIAN
 from ..conf import setup_environment
 import linux, ubuntu, fedora, debian
+
+def touch(fname, times = None):
+    with file(fname, 'a'):
+        os.utime(fname, times)
 
 
 @task
@@ -98,3 +104,6 @@ def post_install():
         fedora.post_install()
     elif env.os == OS_DEBIAN:
         debian.post_install()
+
+    fabfile_marker = os.path.join(env.repository_path, 'fabfile_install')
+    touch(fabfile_marker)

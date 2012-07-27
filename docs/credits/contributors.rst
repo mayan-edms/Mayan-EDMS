@@ -39,6 +39,8 @@ Patches
 * Meurig Freeman (https://github.com/meurig)
 * Sergey Glita (s.v.glita@gmail.com)
 * Brian E (brian@realize.org)
+* Iliya Georgiev (ikgeorgiev@gmail.com)
+* Vítor Figueiró (vfigueiro@gmail.com)
 
 
 Suggestions
@@ -52,7 +54,7 @@ Suggestions
 
 Translations
 ------------
-* Portuguese
+* Portuguese (Brazil)
 
   - Emerson Soares (http://emersonsoares.com)
   - Renata Oliveira (https://twitter.com/#!/rnataoliveira)
@@ -64,6 +66,7 @@ Translations
 * Italian
 
   - SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
+  - Carlos Zanatto (https://www.transifex.com/accounts/profile/zarloc_/)
   
 * Polish
 
@@ -71,9 +74,26 @@ Translations
 
 * German
 
-  - Tetja Rediske
-  - Tilmann Sittig
+  - Tetja Rediske (https://www.transifex.com/accounts/profile/tetjarediske/)
+  - Tilmann Sittig (https://www.transifex.com/accounts/profile/tilmannsittig/)
+
+* Portuguese
+
+  - Vítor Figueiró (vfigueiro@gmail.com)
+
+* Dutch (Netherands) 
+
+  - Lucas Weel (https://www.transifex.com/accounts/profile/l.weel/)
   
+* Bulgarian
+
+  - Iliya Georgiev (ikgeorgiev@gmail.com)
+  - koldo (https://www.transifex.com/accounts/profile/koldo/)
+
+* French
+
+  - Pierre Lhoste (https://www.transifex.com/accounts/profile/peterhost/)
+
 
 Remote access for debugging
 ---------------------------

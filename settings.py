@@ -58,7 +58,10 @@ LANGUAGES = (
     ('ru', ugettext('Russian')),
     ('it', ugettext('Italian')),
     ('pl', ugettext('Polish')),
-    ('de', ugettext('German')),
+    ('de', ugettext('German (Germany)')),
+    ('fr', ugettext('French')),
+    ('bg', ugettext('Bulgarian')),
+    ('nl', ugettext('Dutch')),
 )
 
 SITE_ID = 1
@@ -165,23 +168,25 @@ INSTALLED_APPS = (
     'installation',
     # Mayan EDMS
     'storage',
+    'documents',
+    'metadata',
     'folders',
     'tags',
     'document_comments',
-    'metadata',
-    'documents',
     'mailer',
     'linking',
     'document_indexing',
+    'sources',
     'document_acls',
     'ocr',
-    'sources',
     'history',
     'main',
     'rest_api',
     'document_signatures',
-    'workflows',
+    #'workflows',
     'checkouts',
+    'bootstrap',
+
     # Has to be last so the other apps can register it's signals
     'signaler',
 )

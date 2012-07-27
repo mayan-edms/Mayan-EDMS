@@ -51,30 +51,12 @@ Setting(
 
 Setting(
     namespace=namespace,
-    name='UNOCONV_PATH',
-    global_name='CONVERTER_UNOCONV_PATH',
-    default=u'/usr/bin/unoconv',
-    description=_(u'Path to the unoconv program.'),
-    exists=True
-)
-
-Setting(
-    namespace=namespace,
-    name='UNOCONV_USE_PIPE',
-    global_name='CONVERTER_UNOCONV_USE_PIPE',
-    default=True,
-    description=_(u'Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.'),
-)
-
-Setting(
-    namespace=namespace,
     name='LIBREOFFICE_PATH',
     global_name='CONVERTER_LIBREOFFICE_PATH',
     default=u'/usr/bin/libreoffice',
     description=_(u'Path to the libreoffice program.'),
     exists=True
 )
-
 
 #{'name': u'OCR_OPTIONS', 'global_name': u'CONVERTER_OCR_OPTIONS', 'default': u'-colorspace Gray -depth 8 -resample 200x200'},
 #{'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},

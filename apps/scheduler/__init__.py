@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import logging
+import atexit
 
 from .runtime import scheduler
 
@@ -34,4 +35,10 @@ def sheduler_shutdown_pre_migrate(sender, **kwargs):
     scheduler.shutdown()
 
 
+def schedule_shutdown_on_exit():
+    logger.debug('Scheduler shut down on exit')
+    scheduler.shutdown()
+
+
 register_tool(job_list)
+atexit.register(schedule_shutdown_on_exit)

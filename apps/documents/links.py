@@ -39,7 +39,6 @@ def is_current_version(context):
 
 document_list = Link(text=_(u'all documents'), view='document_list', sprite='page')
 document_list_recent = Link(text=_(u'recent documents'), view='document_list_recent', sprite='page')
-document_create_multiple = Link(text=_(u'upload new documents'), view='document_create_multiple', sprite='page_add', permissions=[PERMISSION_DOCUMENT_CREATE], children_view_regex=[r'upload_interactive'])
 document_create_siblings = Link(text=_(u'clone metadata'), view='document_create_siblings', args='object.id', sprite='page_copy', permissions=[PERMISSION_DOCUMENT_CREATE])
 document_view_simple = Link(text=_(u'details'), view='document_view_simple', args='object.id', sprite='page', permissions=[PERMISSION_DOCUMENT_VIEW])
 document_view_advanced = Link(text=_(u'properties'), view='document_view_advanced', args='object.id', sprite='page_gear', permissions=[PERMISSION_DOCUMENT_VIEW])

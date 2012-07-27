@@ -20,7 +20,7 @@ class HistoryType(models.Model):
 
     def __unicode__(self):
         try:
-            return unicode(history_types_dict[self.namespace][self.name]['label'])
+            return unicode(history_types_dict[self.namespace][self.name].label)
         except KeyError:
             return u'obsolete history type: %s - %s' % (self.namespace, self.name)
 
@@ -36,7 +36,7 @@ class HistoryType(models.Model):
 
 
 class History(models.Model):
-    datetime = models.DateTimeField(verbose_name=_(u'date time'))
+    datetime = models.DateTimeField(verbose_name=_(u'date time'), default=lambda: datetime.now())
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=True, null=True)
     content_object = generic.GenericForeignKey('content_type', 'object_id')
@@ -46,22 +46,17 @@ class History(models.Model):
     def __unicode__(self):
         return u'%s - %s - %s' % (self.datetime, self.content_object, self.history_type)
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.datetime = datetime.now()
-        super(History, self).save(*args, **kwargs)
-
     def get_label(self):
-        return history_types_dict[self.history_type.namespace][self.history_type.name]['label']
+        return history_types_dict[self.history_type.namespace][self.history_type.name].label
 
     def get_summary(self):
-        return history_types_dict[self.history_type.namespace][self.history_type.name].get('summary', u'')
+        return history_types_dict[self.history_type.namespace][self.history_type.name].summary
 
     def get_details(self):
-        return history_types_dict[self.history_type.namespace][self.history_type.name].get('details', u'')
+        return history_types_dict[self.history_type.namespace][self.history_type.name].details
 
     def get_expressions(self):
-        return history_types_dict[self.history_type.namespace][self.history_type.name].get('expressions', {})
+        return history_types_dict[self.history_type.namespace][self.history_type.name].expressions
 
     def get_processed_summary(self):
         return _process_history_text(self, self.get_summary())
@@ -86,10 +81,12 @@ def _process_history_text(history, text):
     }
 
     loaded_dictionary = json.loads(history.dictionary)
+    print 'loaded_dictionary', loaded_dictionary
 
     new_dict = {}
     for key, values in loaded_dictionary.items():
         value_type = pickle.loads(str(values['type']))
+        print 'value_type', value_type
         if isinstance(value_type, models.base.ModelBase):
             for deserialized in serializers.deserialize('json', values['value']):
                 new_dict[key] = deserialized.object
@@ -102,6 +99,7 @@ def _process_history_text(history, text):
             new_dict[key] = json.loads(values['value'])
 
     key_values.update(new_dict)
+    print 'key_values', key_values
     expressions_dict = {}
 
     for key, value in history.get_expressions().items():

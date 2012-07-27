@@ -5,12 +5,15 @@ import logging
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
+from django.dispatch import receiver
+from django.db.models.signals import post_save, pre_delete, post_delete
 
 from navigation.api import (register_top_menu, register_sidebar_template,
     bind_links, Link)
 
 from main.api import register_maintenance_links
 from documents.models import Document, DocumentVersion
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from metadata.models import DocumentMetadata
 from project_setup.api import register_setup
 
@@ -20,6 +23,13 @@ from .links import (index_setup, index_setup_list, index_setup_create,
     index_setup_edit, index_setup_delete, index_setup_view,
     template_node_create, template_node_edit, template_node_delete,
     index_list, index_parent, document_index_list, rebuild_index_instances)
+from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
+    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
+    PERMISSION_DOCUMENT_INDEXING_SETUP,
+    PERMISSION_DOCUMENT_INDEXING_CREATE,
+    PERMISSION_DOCUMENT_INDEXING_EDIT,
+    PERMISSION_DOCUMENT_INDEXING_DELETE
+)
 
 logger = logging.getLogger(__name__)
 
@@ -36,27 +46,33 @@ bind_links([IndexTemplateNode], [template_node_create, template_node_edit, templ
 register_setup(index_setup)
 
 
-def delete_indexes_handler(sender, instance, **kwargs):
-    if isinstance(instance, DocumentVersion):
-        logger.debug('received pre save signal - document version')
-        logger.debug('instance: %s' % instance)
-        delete_indexes(instance.document)
-    elif isinstance(instance, DocumentMetadata):
-        logger.debug('received pre save signal - document metadata')
-        logger.debug('instance: %s' % instance)
-        delete_indexes(instance.document)
+@receiver(post_save, dispatch_uid='document_index_update', sender=Document)
+def document_index_update(sender, **kwargs):
+    # TODO: save result in index log
+    delete_indexes(kwargs['instance'])
+    update_indexes(kwargs['instance'])
 
 
-@receiver(post_save, dispatch_uid='update_indexes_handler')
-def update_indexes_handler(sender, instance, **kwargs):
-    if isinstance(instance, DocumentVersion):
-        logger.debug('received post save signal - document version')
-        logger.debug('instance: %s' % instance)
-        update_indexes(instance.document)
-    elif isinstance(instance, DocumentMetadata):
-        logger.debug('received post save signal - document metadata')
-        logger.debug('instance: %s' % instance)
-        update_indexes(instance.document)
+@receiver(pre_delete, dispatch_uid='document_index_delete', sender=Document)
+def document_index_delete(sender, **kwargs):
+    # TODO: save result in index log
+    delete_indexes(kwargs['instance'])
 
-pre_save.connect(delete_indexes_handler, dispatch_uid='delete_indexes_handler_on_update')
-pre_delete.connect(delete_indexes_handler, dispatch_uid='delete_indexes_handler_on_delete')
+
+@receiver(post_save, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
+def document_metadata_index_update(sender, **kwargs):
+    # TODO: save result in index log
+    delete_indexes(kwargs['instance'].document)
+    update_indexes(kwargs['instance'].document)
+
+
+@receiver(pre_delete, dispatch_uid='document_metadata_index_delete', sender=DocumentMetadata)
+def document_metadata_index_delete(sender, **kwargs):
+    # TODO: save result in index log
+    delete_indexes(kwargs['instance'].document)
+    
+
+@receiver(post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
+def document_metadata_index_post_delete(sender, **kwargs):
+    # TODO: save result in index log
+    update_indexes(kwargs['instance'].document)

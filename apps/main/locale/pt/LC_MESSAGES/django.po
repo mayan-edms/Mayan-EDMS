@@ -5,12 +5,13 @@
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-02-21 16:38+0000\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"PO-Revision-Date: 2012-07-10 15:16+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -37,15 +38,15 @@ msgstr "sentinela"
 
 #: __init__.py:37
 msgid "admin site"
-msgstr "site de administação"
+msgstr "site de administração"
 
 #: __init__.py:40
 msgid "home"
-msgstr "inicio"
+msgstr "início"
 
 #: __init__.py:42
 msgid "search"
-msgstr "pesquisa"
+msgstr "procurar"
 
 #: views.py:43
 msgid "maintenance menu"
@@ -63,7 +64,7 @@ msgstr "Diagnósticos"
 msgid ""
 "Controls whether the search functionality is provided by a sidebar widget or"
 " by a menu entry."
-msgstr "Controla-se a funcionalidade de pesquisa é fornecido por um widget da barra lateral ou por uma entrada de menu."
+msgstr "Controla se a funcionalidade de procura é fornecida por um widget da barra lateral ou por uma entrada de menu."
 
 #: templates/about.html:5
 msgid "About this program"
@@ -79,69 +80,70 @@ msgstr "(DEBUG)"
 
 #: templates/base.html:193
 msgid "User"
-msgstr "Usuário"
+msgstr "Utilizador"
 
 #: templates/base.html:195
 msgid "Anonymous"
-msgstr "Anônimo"
+msgstr "Anónimo"
 
-#: templates/base.html:198
+#: templates/base.html:197
 msgid "User details"
-msgstr "Detalhes do usuário"
+msgstr "Detalhes do utilizador"
 
-#: templates/base.html:215
+#: templates/base.html:214
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:215
+#: templates/base.html:214
 msgid "Logout"
 msgstr "Sair"
 
-#: templates/base.html:295
+#: templates/base.html:294
 msgid "Secondary menu"
 msgstr "Menu secundário"
 
-#: templates/base.html:311
+#: templates/base.html:310
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Ações para %(name)s: %(navigation_object)s "
 
-#: templates/base.html:313 templates/base.html.py:356
+#: templates/base.html:312 templates/base.html.py:355
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Ações para: %(navigation_object)s "
 
-#: templates/base.html:316
+#: templates/base.html:315
 msgid "Available actions"
 msgstr "Ações disponíveis"
 
-#: templates/base.html:328 templates/base.html.py:371
+#: templates/base.html:327 templates/base.html.py:370
 msgid "Related actions"
 msgstr "Ações relacionadas"
 
-#: templates/base.html:339 templates/base.html.py:384
+#: templates/base.html:338 templates/base.html.py:383
 msgid "Other available actions"
 msgstr "Outras ações disponíveis"
 
-#: templates/base.html:354
+#: templates/base.html:353
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Ações para %(object_name)s : %(navigation_object)s "
 
-#: templates/base.html:359
+#: templates/base.html:358
 msgid "Actions"
 msgstr "Ações"
 
 #: templates/home.html:8
 msgid "Django based open source document management system"
-msgstr "Sistema aberto de gerenciamento de documentos baseado em Django "
+msgstr "Sistema de gestão documental baseado em Django de código livre"
 
 #: templates/project_description.html:6
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
-"indexing, tagging, file serving integration and OCR capabilities"
-msgstr "Código Aberto, Django gestão de documentos eletrônicos com metadados personalizados, indexação, etiquetagem, a integração do serviço de arquivos e recursos de OCR"
+"indexing, tagging, file serving integration, digital signature support and "
+"OCR capabilities"
+msgstr ""
 
 #: templates/project_description.html:18
 msgid "Released under the GPL V3 License"
-msgstr "Liberado sob a licença GPL V3"
+msgstr "Publicado sob a licença GPL V3"

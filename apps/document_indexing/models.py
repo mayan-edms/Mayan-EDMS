@@ -51,7 +51,7 @@ class IndexTemplateNode(MPTTModel):
     link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
     def __unicode__(self):
-        return self.expression if not self.link_documents else u'%s/[document]' % self.expression
+        return self.expression
 
     class Meta:
         verbose_name = _(u'index template node')

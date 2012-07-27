@@ -101,22 +101,26 @@ def checkin_document(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     post_action_redirect = reverse('checkout_info', args=[document.pk])
 
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
     # If the user trying to check in the document is the same as the check out
     # user just check for the normal permission otherwise check for the forceful
     # checkin permission
-    if document.checkout_info().user_object == request.user:
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN, request.user, document)
-    else:
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN_OVERRIDE])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN_OVERRIDE, request.user, document)
-        
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    try:
+        if document.checkout_info().user_object == request.user:
+            try:
+                Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN])
+            except PermissionDenied:
+                AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN, request.user, document)
+        else:
+            try:
+                Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN_OVERRIDE])
+            except PermissionDenied:
+                AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN_OVERRIDE, request.user, document)
+    except DocumentNotCheckedOut:
+        messages.error(request, _(u'Document has not been checked out.'))
+        return HttpResponseRedirect(previous)
 
     if request.method == 'POST':
         try:

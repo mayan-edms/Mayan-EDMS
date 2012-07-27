@@ -4,11 +4,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import (bind_links, register_multi_item_links,
     register_sidebar_template, Link, register_model_list_columns)
+from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from project_setup.api import register_setup
 from acls.api import class_permissions
-from common.utils import encapsulate
 
 from .api import get_metadata_string
 from .models import MetadataType, MetadataSet

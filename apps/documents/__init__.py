@@ -9,7 +9,6 @@ from navigation.api import (bind_links, register_top_menu,
     register_model_list_columns,
     register_sidebar_template, Link)
 from main.api import register_diagnostic, register_maintenance_links
-from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
 from acls.api import class_permissions
@@ -21,12 +20,13 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
     PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_DELETE,
     PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_NEW_VERSION)
-from .events import (HISTORY_DOCUMENT_CREATED,
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
+    PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_TOOLS)
+from .conf.settings import ZOOM_MAX_LEVEL
+from .conf.settings import ZOOM_MIN_LEVEL
 from .conf import settings as document_settings
 from .widgets import document_thumbnail
-from .links import (document_list, document_list_recent, document_create_multiple,
+from .links import (document_list, document_list_recent,
     document_create_siblings, document_view_simple, document_view_advanced,
     document_delete, document_edit, document_download, document_version_download,
     document_find_duplicates, document_find_all_duplicates,
@@ -45,10 +45,6 @@ from .links import (document_page_transformation_list, document_page_transformat
     document_page_rotate_right, document_page_rotate_left, document_page_view_reset)
 from .links import document_clear_image_cache
 
-# History setup
-register_history_type(HISTORY_DOCUMENT_CREATED)
-register_history_type(HISTORY_DOCUMENT_EDITED)
-register_history_type(HISTORY_DOCUMENT_DELETED)
 
 # Register document type links
 bind_links([DocumentType], [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
@@ -63,9 +59,9 @@ bind_links([Document], [document_view_simple, document_edit, document_print, doc
 # Document Version links
 bind_links([DocumentVersion], [document_version_revert, document_version_download])
 
-secondary_menu_links = [document_list_recent, document_list, document_create_multiple]
+secondary_menu_links = [document_list_recent, document_list]
 
-bind_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
+bind_links(['document_list_recent', 'document_list', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
 bind_links([Document], secondary_menu_links, menu_name='secondary_menu')
 
 # Document page links

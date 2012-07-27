@@ -77,26 +77,6 @@ Document sharing
 Document handling
 -----------------
 
-**How to store documents outside of **Mayan EDMS's** path**
-
-* Sub class Django's ``FileSystemStorage`` class:
-    
-  - Create a file called ``customstorage.py``::
-      
-      from django.core.files.storage import FileSystemStorage
-
-      class CustomStorage(FileSystemStorage):
-          def __init__(self, *args, **kwargs):
-              super(CustomStorage, self).__init__(*args, **kwargs)
-              self.location='/new/path/to/documents/'
-              self.base_url='document_storage'
-
-  - In the ``settings.py`` add::
-    
-      from customstorage import CustomStorage
-      DOCUMENTS_STORAGE_BACKEND = CustomStorage
-
-
 **Q: How to enable the ``GridFS`` storage backend**
 
 * Solution:
@@ -147,23 +127,6 @@ Webserver
     XSendFile on
     XSendFileAllowAbove on
       
-
-OCR
----
-
-**Q: The included version of ``unoconv`` in my distribution is too old**
-      
-* Only the file 'unoconv' file from https://github.com/dagwieers/unoconv is needed.  
-  Put it in a user designated directory for binaries such as /usr/local/bin and 
-  setup Mayan's configuration option in your settings_local.py file like this::
-    
-    CONVERTER_UNOCONV_PATH = '/usr/local/bin/unoconv'
-    
-If you already have office or text documents uploaded into **Mayan EDMS**,
-after setting up and testing ``unoconv`` by hand, go to 'Tools',
-'Maintenance', 'Update office documents' page count', this will force a
-re-detection and re-processing of any document found to be of office format.   
-
 
 Deployments
 -----------

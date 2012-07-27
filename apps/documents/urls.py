@@ -8,7 +8,6 @@ from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, THUMBNAIL_SIZE,
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),
     url(r'^list/recent/$', 'document_list_recent', (), 'document_list_recent'),
-    url(r'^create/from/local/multiple/$', 'document_create', (), 'document_create_multiple'),
 
     url(r'^(?P<document_id>\d+)/view/$', 'document_view', (), 'document_view_simple'),
     url(r'^(?P<document_id>\d+)/view/advanced/$', 'document_view', {'advanced': True}, 'document_view_advanced'),

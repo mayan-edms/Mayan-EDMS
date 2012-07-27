@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 23:40-0400\n"
+"POT-Creation-Date: 2012-07-23 15:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,6 +97,94 @@ msgstr ""
 msgid "unpaper version"
 msgstr ""
 
+#: links.py:7 models.py:148
+msgid "installation details"
+msgstr ""
+
+#: models.py:63
+msgid "LSB OS"
+msgstr ""
+
+#: models.py:64
+msgid "Distributor ID"
+msgstr ""
+
+#: models.py:65
+msgid "Description"
+msgstr ""
+
+#: models.py:66
+msgid "Release"
+msgstr ""
+
+#: models.py:67
+msgid "Codename"
+msgstr ""
+
+#: models.py:68
+msgid "System info"
+msgstr ""
+
+#: models.py:70
+msgid "POSIX OS"
+msgstr ""
+
+#: models.py:72
+msgid "OS architecture"
+msgstr ""
+
+#: models.py:73
+msgid "Python version"
+msgstr ""
+
+#: models.py:74
+msgid "Hostname"
+msgstr ""
+
+#: models.py:75
+msgid "Platform"
+msgstr ""
+
+#: models.py:76
+msgid "Machine"
+msgstr ""
+
+#: models.py:77
+msgid "Processor"
+msgstr ""
+
+#: models.py:78
+msgid "Number of CPUs"
+msgstr ""
+
+#: models.py:79
+msgid "Total physical memory"
+msgstr ""
+
+#: models.py:80
+msgid "Disk partitions"
+msgstr ""
+
+#: models.py:83 models.py:85
+msgid "tesseract version"
+msgstr ""
+
+#: models.py:85 models.py:90
+msgid "not found"
+msgstr ""
+
+#: models.py:88 models.py:90
+msgid "unpaper version"
+msgstr ""
+
+#: models.py:92
+msgid "Mayan EDMS version"
+msgstr ""
+
+#: models.py:93
+msgid "Installed via fabfile"
+msgstr ""
+
 #: permissions.py:7
 msgid "Installation"
 msgstr ""
@@ -106,5 +194,6 @@ msgid "View installation environment details"
 msgstr ""
 
 #: views.py:25
+#: views.py:24
 msgid "Installation environment details"
 msgstr ""

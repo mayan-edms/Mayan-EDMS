@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"POT-Creation-Date: 2012-07-23 15:36-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "summary"
 msgstr "sommario"
 
-#: links.py:7 models.py:78
+#: links.py:7 models.py:73
 msgid "history"
 msgstr "versioni"
 
@@ -63,7 +63,7 @@ msgstr "data"
 msgid "dictionary"
 msgstr "dizionario"
 
-#: models.py:79
+#: models.py:74
 msgid "histories"
 msgstr "cronologie"
 
