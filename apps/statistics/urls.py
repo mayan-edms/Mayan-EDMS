@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('statistics.views',
-    url(r'^$', 'statistics', (), 'statistics'),
+    url(r'^$', 'statistics_view', (), 'statistics'),
 )

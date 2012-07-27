@@ -7,10 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 from documents.statistics import get_statistics as documents_statistics
 from ocr.statistics import get_statistics as ocr_statistics
 
-from .api import diagnostics, tools
 
-
-def statistics(request):
+def statistics_view(request):
     if request.user.is_superuser or request.user.is_staff:
         blocks = []
         blocks.append(documents_statistics())
