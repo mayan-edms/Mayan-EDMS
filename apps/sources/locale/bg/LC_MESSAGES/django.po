@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Iliya Georgiev <ikgeorgiev@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2011-09-30 04:41+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:09+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/bg/)\n"
 "Language: bg\n"
@@ -44,23 +45,23 @@ msgstr ""
 
 #: forms.py:50
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: links.py:14
 msgid "preview"
-msgstr ""
+msgstr "предварителен преглед"
 
 #: links.py:15 links.py:25 links.py:32
 msgid "delete"
-msgstr ""
+msgstr "изтриване"
 
 #: links.py:17
 msgid "sources"
-msgstr ""
+msgstr "източници"
 
 #: links.py:18 literals.py:67 models.py:431
 msgid "web forms"
-msgstr ""
+msgstr "уеб формуляри"
 
 #: links.py:19 models.py:402
 msgid "staging folders"
@@ -80,11 +81,11 @@ msgstr ""
 
 #: links.py:24 links.py:31
 msgid "edit"
-msgstr ""
+msgstr "редактиране"
 
 #: links.py:26
 msgid "add new source"
-msgstr ""
+msgstr "добавяне на нов източник"
 
 #: links.py:27
 msgid "logs"
@@ -92,19 +93,19 @@ msgstr ""
 
 #: links.py:29
 msgid "transformations"
-msgstr ""
+msgstr "преобразувания"
 
 #: links.py:30
 msgid "add transformation"
-msgstr ""
+msgstr "добавяне на преобразувания"
 
 #: links.py:34
 msgid "Document sources"
-msgstr ""
+msgstr "Източници на документи"
 
 #: links.py:36
 msgid "upload new version"
-msgstr ""
+msgstr "добавяне на нова версия"
 
 #: links.py:37
 msgid "upload new documents"
@@ -112,59 +113,59 @@ msgstr ""
 
 #: literals.py:18 literals.py:23
 msgid "Always"
-msgstr ""
+msgstr "Винаги"
 
 #: literals.py:19 literals.py:24
 msgid "Never"
-msgstr ""
+msgstr "Никога"
 
 #: literals.py:25
 msgid "Ask user"
-msgstr ""
+msgstr "Питане на потребителя"
 
 #: literals.py:40
 msgid "Disk"
-msgstr ""
+msgstr "Диск"
 
 #: literals.py:41
 msgid "Database"
-msgstr ""
+msgstr "База данни"
 
 #: literals.py:42
 msgid "Drive"
-msgstr ""
+msgstr "Устройство"
 
 #: literals.py:43
 msgid "Network drive"
-msgstr ""
+msgstr "Мрежово устройство"
 
 #: literals.py:44
 msgid "User drive"
-msgstr ""
+msgstr "Потребителско устройство"
 
 #: literals.py:45
 msgid "Envelope"
-msgstr ""
+msgstr "Плик"
 
 #: literals.py:46
 msgid "Folder"
-msgstr ""
+msgstr "Папка"
 
 #: literals.py:47
 msgid "World"
-msgstr ""
+msgstr "Свят"
 
 #: literals.py:48
 msgid "Printer"
-msgstr ""
+msgstr "Принтер"
 
 #: literals.py:49
 msgid "Empty printer"
-msgstr ""
+msgstr "Празен принтер"
 
 #: literals.py:59 models.py:430
 msgid "web form"
-msgstr ""
+msgstr "уеб формуляр"
 
 #: literals.py:60
 msgid "server staging folder"
@@ -192,19 +193,19 @@ msgstr ""
 
 #: models.py:51
 msgid "title"
-msgstr ""
+msgstr "заглавие"
 
 #: models.py:52
 msgid "enabled"
-msgstr ""
+msgstr "включен"
 
 #: models.py:53
 msgid "whitelist"
-msgstr ""
+msgstr "разрешен списък"
 
 #: models.py:54
 msgid "blacklist"
-msgstr ""
+msgstr "забранителен списък"
 
 #: models.py:169
 msgid "date time"
@@ -224,11 +225,11 @@ msgstr ""
 
 #: models.py:187
 msgid "icon"
-msgstr ""
+msgstr "икона"
 
 #: models.py:187
 msgid "An icon to visually distinguish this source."
-msgstr ""
+msgstr "икона за визуално различаване на източника"
 
 #: models.py:216 models.py:441
 msgid "interval"
@@ -319,7 +320,7 @@ msgstr ""
 
 #: models.py:386 models.py:438
 msgid "folder path"
-msgstr ""
+msgstr "път към папката"
 
 #: models.py:386 models.py:438
 msgid "Server side filesystem path."
@@ -401,23 +402,23 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Sources setup"
-msgstr ""
+msgstr "Настройка на източници"
 
 #: permissions.py:8
 msgid "View existing document sources"
-msgstr ""
+msgstr "Преглед на съществуващи източници на документи"
 
 #: permissions.py:9
 msgid "Edit document sources"
-msgstr ""
+msgstr "Редактиране на източници на документи"
 
 #: permissions.py:10
 msgid "Delete document sources"
-msgstr ""
+msgstr "Изтриване на източници на документи"
 
 #: permissions.py:11
 msgid "Create new document sources"
-msgstr ""
+msgstr "Създаване на източници на документи"
 
 #: staging.py:45
 #, python-format
@@ -458,23 +459,23 @@ msgstr ""
 
 #: views.py:168
 msgid "New document version uploaded successfully."
-msgstr ""
+msgstr "Нова версия на документа е добавена успешно."
 
 #: views.py:172
 msgid "File uploaded successfully."
-msgstr ""
+msgstr "Файлът е добавен успешно"
 
 #: views.py:175
 msgid "File uncompressed successfully and uploaded as individual files."
-msgstr ""
+msgstr "Файлът е разархивиран успешно и добавен като отделни файлове"
 
 #: views.py:178
 msgid "File was not a compressed file, uploaded as it was."
-msgstr ""
+msgstr "Файлът не беше архив и затова е добавен направо."
 
 #: views.py:182 views.py:263
 msgid "New version uploads are not allowed for this document."
-msgstr ""
+msgstr "Нови версии на този документ не са разрешени за добавяне"
 
 #: views.py:186 views.py:267
 #, python-format
@@ -533,7 +534,7 @@ msgstr ""
 
 #: views.py:329
 msgid "Current document type"
-msgstr ""
+msgstr "Текущ тип на документа"
 
 #: views.py:330
 msgid "None"
@@ -578,12 +579,12 @@ msgstr ""
 #: views.py:505 views.py:556 views.py:633 views.py:669 views.py:712
 #: views.py:743 views.py:791
 msgid "source"
-msgstr ""
+msgstr "източник"
 
 #: views.py:542
 #, python-format
 msgid "Source \"%s\" deleted successfully."
-msgstr ""
+msgstr "Източник \"%s\" е изтрит успешно"
 
 #: views.py:547
 #, python-format
@@ -597,7 +598,7 @@ msgstr ""
 
 #: views.py:597
 msgid "Source created successfully"
-msgstr ""
+msgstr "Източникът е създаден успешно"
 
 #: views.py:600
 #, python-format
@@ -629,7 +630,7 @@ msgstr ""
 
 #: views.py:698
 msgid "Source transformation edited successfully"
-msgstr ""
+msgstr "Редактирането на преобразуването на източника е успешно"
 
 #: views.py:701
 #, python-format
@@ -643,7 +644,7 @@ msgstr ""
 
 #: views.py:730
 msgid "Source transformation deleted successfully."
-msgstr ""
+msgstr "Изтриването на преобразуването на източника е успешно"
 
 #: views.py:732
 #, python-format
@@ -658,7 +659,7 @@ msgstr ""
 
 #: views.py:780
 msgid "Source transformation created successfully"
-msgstr ""
+msgstr "Създаването на преобразуването на източника е успешно"
 
 #: views.py:783
 #, python-format

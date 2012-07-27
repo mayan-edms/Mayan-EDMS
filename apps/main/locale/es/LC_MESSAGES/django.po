@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-10 15:22+0000\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -61,7 +61,7 @@ msgstr "Diagnósticos"
 
 #: conf/settings.py:6
 msgid "Main"
-msgstr ""
+msgstr "Principal"
 
 #: conf/settings.py:13
 msgid ""
@@ -108,14 +108,14 @@ msgid "Secondary menu"
 msgstr "Menú secundario"
 
 #: templates/base.html:302
-#, fuzzy, python-format
+#, python-format
 msgid "Actions for %(name)s: %(object_reference)s"
-msgstr "Acciones para %(name)s: %(navigation_object)s "
+msgstr "Acciones para %(name)s: %(object_reference)s "
 
 #: templates/base.html:304
-#, fuzzy, python-format
+#, python-format
 msgid "Actions for: %(object_reference)s"
-msgstr "Acciones para: %(navigation_object)s "
+msgstr "Acciones para: %(object_reference)s "
 
 #: templates/base.html:307
 msgid "Available actions"
@@ -142,12 +142,3 @@ msgstr ""
 #: templates/project_description.html:18
 msgid "Released under the GPL V3 License"
 msgstr "Publicado bajo la licencia GPL v3"
-
-#~ msgid "Related actions"
-#~ msgstr "Acciones relacionadas"
-
-#~ msgid "Actions for %(object_name)s: %(navigation_object)s"
-#~ msgstr "Acciones para %(object_name)s: %(navigation_object)s "
-
-#~ msgid "Actions"
-#~ msgstr "Acciones"

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-23 19:51+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
 "language/pt/)\n"
@@ -94,9 +94,9 @@ msgid "Page"
 msgstr "Página"
 
 #: forms.py:118
-#, fuzzy, python-format
+#, python-format
 msgid "Page %(page_num)d of %(total_pages)d"
-msgstr "Página %(page_num)d de %(total_pages)d de %(document)s"
+msgstr ""
 
 #: forms.py:122
 msgid "Details"
@@ -1115,42 +1115,3 @@ msgid ""
 msgstr ""
 "Aqui encontrará os últimos %(recent_count)s documentos que tenha criado ou "
 "editado de alguma forma."
-
-#~ msgid "upload new documents"
-#~ msgstr "envio de novos documentos"
-
-#~ msgid "metadata"
-#~ msgstr "metadado"
-
-#~ msgid "Document type"
-#~ msgstr "Tipo de documento"
-
-#~ msgid "MIME type"
-#~ msgstr "Tipo MIME"
-
-#~ msgid "Metadata value"
-#~ msgstr "Valor de metadados"
-
-#~ msgid "Content"
-#~ msgstr "Conteúdo"
-
-#~ msgid "Description"
-#~ msgstr "Descrição"
-
-#~ msgid "Tags"
-#~ msgstr "Etiquetas"
-
-#~ msgid "Comments"
-#~ msgstr "Comentários"
-
-#~ msgid "step 1 of 3: Document type"
-#~ msgstr "passo 1 de 3: Tipo de documento"
-
-#~ msgid "step 2 of 3: Metadata selection"
-#~ msgstr "passo 2 de 3: Seleção de metadados"
-
-#~ msgid "step 3 of 3: Document metadata"
-#~ msgstr "passo 3 de 3: Metadados do documento"
-
-#~ msgid "Next step"
-#~ msgstr "Próximo passo"

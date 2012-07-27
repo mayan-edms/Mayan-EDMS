@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-23 19:51+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:15+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -92,9 +92,9 @@ msgid "Page"
 msgstr "Página"
 
 #: forms.py:118
-#, fuzzy, python-format
+#, python-format
 msgid "Page %(page_num)d of %(total_pages)d"
-msgstr "Pagína %(page_num)d de %(total_pages)d de %(document)s "
+msgstr "Página %(page_num)d de %(total_pages)d"
 
 #: forms.py:122
 msgid "Details"
@@ -159,13 +159,15 @@ msgstr ""
 
 #: forms.py:314
 msgid "Compressed filename"
-msgstr ""
+msgstr "Nombre de archivo comprimido"
 
 #: forms.py:314
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
 msgstr ""
+"El nombre del archivo comprimido que va a contener los documentos a "
+"descargar, si la opción anterior está activada."
 
 #: links.py:40
 msgid "all documents"
@@ -632,17 +634,17 @@ msgstr "Páginas de documentos en la base de datos: %d"
 #: statistics.py:64
 #, python-format
 msgid "Minimum amount of pages per document: %d"
-msgstr ""
+msgstr "Cantidad mínima de páginas por documento: %d"
 
 #: statistics.py:65
 #, python-format
 msgid "Maximum amount of pages per document: %d"
-msgstr ""
+msgstr "Cantidad máxima de páginas por documento: %d"
 
 #: statistics.py:66
 #, python-format
 msgid "Average amount of pages per document: %f"
-msgstr ""
+msgstr "Cantidad de páginas promedio por documento: %f"
 
 #: statistics.py:71
 msgid "Document statistics"
@@ -658,7 +660,7 @@ msgstr "Tipo MIME del archivo"
 
 #: views.py:119 views.py:120
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #: views.py:120
 msgid "File mime encoding"
@@ -1122,42 +1124,3 @@ msgid ""
 msgstr ""
 "Aquí encontrará los últimos %(recent_count)s documentos que haya creado o "
 "editado de alguna manera."
-
-#~ msgid "upload new documents"
-#~ msgstr "subir nuevos documentos"
-
-#~ msgid "metadata"
-#~ msgstr "metadatos"
-
-#~ msgid "Document type"
-#~ msgstr "Tipo de documento"
-
-#~ msgid "MIME type"
-#~ msgstr "Tipo MIME"
-
-#~ msgid "Metadata value"
-#~ msgstr "Valor de metadatos"
-
-#~ msgid "Content"
-#~ msgstr "Contenido"
-
-#~ msgid "Description"
-#~ msgstr "Descripción"
-
-#~ msgid "Tags"
-#~ msgstr "Etiquetas"
-
-#~ msgid "Comments"
-#~ msgstr "Comentarios"
-
-#~ msgid "step 1 of 3: Document type"
-#~ msgstr "paso 1 de 3: Tipo de documento"
-
-#~ msgid "step 2 of 3: Metadata selection"
-#~ msgstr "paso 2 de 3: Selección de metadatos"
-
-#~ msgid "step 3 of 3: Document metadata"
-#~ msgstr "paso 3 de 3: Metadatos de documento"
-
-#~ msgid "Next step"
-#~ msgstr "Siguiente paso"

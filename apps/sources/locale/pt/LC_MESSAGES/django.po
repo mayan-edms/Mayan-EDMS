@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-03 10:11+0000\n"
-"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:09+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
 "language/pt/)\n"
 "Language: pt\n"
@@ -111,9 +111,8 @@ msgid "upload new version"
 msgstr "enviar nova versão"
 
 #: links.py:37
-#, fuzzy
 msgid "upload new documents"
-msgstr "enviar nova versão"
+msgstr ""
 
 #: literals.py:18 literals.py:23
 msgid "Always"
@@ -220,14 +219,12 @@ msgid "status"
 msgstr ""
 
 #: models.py:180
-#, fuzzy
 msgid "source log"
-msgstr "fonte"
+msgstr ""
 
 #: models.py:181
-#, fuzzy
 msgid "sources logs"
-msgstr "fontes"
+msgstr ""
 
 #: models.py:187
 msgid "icon"
@@ -246,9 +243,8 @@ msgid "Interval in seconds between document downloads from this source."
 msgstr ""
 
 #: models.py:217
-#, fuzzy
 msgid "document type"
-msgstr "Tipo de documento atual"
+msgstr ""
 
 #: models.py:217
 msgid "Assign a document type to documents uploaded from this source."
@@ -259,19 +255,16 @@ msgid "uncompress"
 msgstr "descomprimir"
 
 #: models.py:218
-#, fuzzy
 msgid "Whether to expand or not, compressed archives."
-msgstr "Se os ficheiros comprimidos devem ser descomprimidos ou não."
+msgstr ""
 
 #: models.py:221
-#, fuzzy
 msgid "interval source"
-msgstr "intervalo"
+msgstr ""
 
 #: models.py:222
-#, fuzzy
 msgid "interval sources"
-msgstr "intervalo"
+msgstr ""
 
 #: models.py:227
 msgid "host"
@@ -306,14 +299,12 @@ msgid "attachment-%i"
 msgstr ""
 
 #: models.py:258
-#, fuzzy
 msgid "email source"
-msgstr "editar fonte: %s"
+msgstr ""
 
 #: models.py:259
-#, fuzzy
 msgid "email sources"
-msgstr "editar fonte: %s"
+msgstr ""
 
 #: models.py:318 models.py:319
 msgid "POP email"
@@ -584,9 +575,8 @@ msgid "Staging file delete error; %s."
 msgstr "Erro ao eliminar ficheiro em preparação; %s."
 
 #: views.py:457
-#, fuzzy
 msgid "Enabled"
-msgstr "habilitado"
+msgstr ""
 
 #: views.py:492
 msgid "Source edited successfully"
@@ -716,6 +706,5 @@ msgid "Next step"
 msgstr ""
 
 #: conf/settings.py:7
-#, fuzzy
 msgid "Sources"
-msgstr "fontes"
+msgstr ""

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-06-17 22:21+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:14+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -901,7 +901,7 @@ msgstr "descripción"
 
 #: conf/settings.py:7
 msgid "Converter"
-msgstr ""
+msgstr "Convertidor"
 
 #: conf/settings.py:14
 msgid "File path to imagemagick's convert program."
@@ -921,6 +921,9 @@ msgid ""
 "fine tune it's functionality as explained in the GraphicsMagick "
 "documentation."
 msgstr ""
+"Conjunto de opciones de configuración para pasar al ejecutable "
+"GraphicsMagick para afinar su funcionalidad, como se explica en la "
+"documentación GraphicsMagick."
 
 #: conf/settings.py:49
 msgid ""
@@ -946,13 +949,3 @@ msgid ""
 msgstr ""
 "Estos son los formatos de archivo apoyados por el servidor del convertidor "
 "seleccionado.  En este caso: '%(backend)s'"
-
-#~ msgid "Path to the unoconv program."
-#~ msgstr "Ruta de acceso al programa de unoconv."
-
-#~ msgid ""
-#~ "Use alternate method of connection to LibreOffice using a pipe, it is "
-#~ "slower but less prone to segmentation faults."
-#~ msgstr ""
-#~ "Utilizar el método alternativo de conexión a LibreOffice con un tubo, es "
-#~ "más lento pero menos propensos a fallos de segmentación."

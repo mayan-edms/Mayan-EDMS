@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-10 15:23+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:13+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -62,11 +62,11 @@ msgstr "licencia"
 
 #: links.py:19
 msgid "sentry"
-msgstr ""
+msgstr "sentry"
 
 #: links.py:20
 msgid "admin site"
-msgstr ""
+msgstr "sitio administrativo"
 
 #: literals.py:24
 msgid "A5"
@@ -207,18 +207,17 @@ msgstr "Ninguno"
 
 #: conf/settings.py:10
 msgid "Common"
-msgstr ""
+msgstr "Común"
 
 #: conf/settings.py:17
-#, fuzzy
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
 "mkdtemp()."
 msgstr ""
-"Directorio temporal utilizado por todo el sitio para almacenar imágenes en "
-"miniatura, vistas previas y los archivos temporales. Si no se especifica "
-"ninguno, se creará utilizando tempfile.mkdtemp ()"
+"El directorio temporaro es el utilizado por todo el proyecto para almacenar "
+"miniaturas, previsualizaciones y los archivos temporales. Si no se "
+"especifica ninguno, se creará utilizando tempfile.mkdtemp ()."
 
 #: conf/settings.py:61
 msgid ""

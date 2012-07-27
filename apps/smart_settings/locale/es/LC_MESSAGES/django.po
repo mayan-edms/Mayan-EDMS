@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2011-09-30 05:09+0000\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:26+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -23,9 +24,9 @@ msgid "settings"
 msgstr "configuración"
 
 #: views.py:26
-#, python-format
-msgid "settings for the %s module"
-msgstr ""
+#, fuzzy, python-format
+msgid "settings for the module: %s"
+msgstr "opciones de configuarción para el módulo: %s"
 
 #: views.py:34
 msgid "name"

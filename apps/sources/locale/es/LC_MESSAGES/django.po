@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-06-17 22:22+0000\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:28+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -109,9 +109,8 @@ msgid "upload new version"
 msgstr "subir nueva versión"
 
 #: links.py:37
-#, fuzzy
 msgid "upload new documents"
-msgstr "subir nueva versión"
+msgstr ""
 
 #: literals.py:18 literals.py:23
 msgid "Always"
@@ -211,21 +210,19 @@ msgstr "lista negra"
 
 #: models.py:169
 msgid "date time"
-msgstr ""
+msgstr "fecha y hora"
 
 #: models.py:170
 msgid "status"
-msgstr ""
+msgstr "estado"
 
 #: models.py:180
-#, fuzzy
 msgid "source log"
-msgstr "fuente"
+msgstr ""
 
 #: models.py:181
-#, fuzzy
 msgid "sources logs"
-msgstr "fuentes"
+msgstr ""
 
 #: models.py:187
 msgid "icon"
@@ -244,9 +241,8 @@ msgid "Interval in seconds between document downloads from this source."
 msgstr ""
 
 #: models.py:217
-#, fuzzy
 msgid "document type"
-msgstr "Tipo de documento actual"
+msgstr ""
 
 #: models.py:217
 msgid "Assign a document type to documents uploaded from this source."
@@ -257,19 +253,16 @@ msgid "uncompress"
 msgstr "descomprimir"
 
 #: models.py:218
-#, fuzzy
 msgid "Whether to expand or not, compressed archives."
-msgstr "La posibilidad de ampliar o no archivos comprimidos."
+msgstr ""
 
 #: models.py:221
-#, fuzzy
 msgid "interval source"
-msgstr "intervalo"
+msgstr ""
 
 #: models.py:222
-#, fuzzy
 msgid "interval sources"
-msgstr "intervalo"
+msgstr ""
 
 #: models.py:227
 msgid "host"
@@ -281,7 +274,7 @@ msgstr ""
 
 #: models.py:229
 msgid "port"
-msgstr ""
+msgstr "puerto"
 
 #: models.py:229
 #, python-format
@@ -292,11 +285,11 @@ msgstr ""
 
 #: models.py:230
 msgid "username"
-msgstr ""
+msgstr "Nombre de usuario"
 
 #: models.py:231
 msgid "password"
-msgstr ""
+msgstr "contraseña"
 
 #: models.py:249
 #, python-format
@@ -304,14 +297,12 @@ msgid "attachment-%i"
 msgstr ""
 
 #: models.py:258
-#, fuzzy
 msgid "email source"
-msgstr "editar fuente: %s"
+msgstr ""
 
 #: models.py:259
-#, fuzzy
 msgid "email sources"
-msgstr "editar fuente: %s"
+msgstr ""
 
 #: models.py:318 models.py:319
 msgid "POP email"
@@ -579,9 +570,8 @@ msgid "Staging file delete error; %s."
 msgstr "Error al borrar archivo provisional; %s."
 
 #: views.py:457
-#, fuzzy
 msgid "Enabled"
-msgstr "activado"
+msgstr "Habilitado"
 
 #: views.py:492
 msgid "Source edited successfully"
@@ -638,11 +628,11 @@ msgstr ""
 
 #: views.py:637
 msgid "Date time"
-msgstr ""
+msgstr "Fecha y hora"
 
 #: views.py:638
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: views.py:667
 #, python-format
@@ -696,21 +686,20 @@ msgstr "Crear una nueva transformación para la fuente: %s"
 
 #: wizards.py:34
 msgid "step 1 of 3: Document type"
-msgstr ""
+msgstr "Paso 1 de 3: Tipo de documento"
 
 #: wizards.py:35
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "paso 2 de 3: Selección de metadatos"
 
 #: wizards.py:36
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "paso 3 de 3: Metadatos de documento"
 
 #: wizards.py:44
 msgid "Next step"
-msgstr ""
+msgstr "Siguiente paso"
 
 #: conf/settings.py:7
-#, fuzzy
 msgid "Sources"
-msgstr "fuentes"
+msgstr "Fuentes"

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-03-21 13:33+0000\n"
-"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:11+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/it/)\n"
 "Language: it\n"
@@ -214,9 +214,8 @@ msgid "Identifies"
 msgstr "Identifica"
 
 #: conf/settings.py:11
-#, fuzzy
 msgid "Signatures"
-msgstr "Errore di firma"
+msgstr ""
 
 #: conf/settings.py:18
 msgid "List of keyservers to be queried for unknown keys."

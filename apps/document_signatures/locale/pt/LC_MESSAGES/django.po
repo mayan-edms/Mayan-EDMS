@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-02 20:53+0000\n"
-"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:11+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
 "language/pt/)\n"
 "Language: pt\n"
@@ -32,9 +32,8 @@ msgid "download signature"
 msgstr "descarregar assinatura"
 
 #: links.py:23
-#, fuzzy
 msgid "delete signature"
-msgstr "descarregar assinatura"
+msgstr ""
 
 #: links.py:24
 msgid "signatures"
@@ -77,9 +76,8 @@ msgid "Download detached signatures"
 msgstr "Descarregar assinaturas avulsas"
 
 #: permissions.py:11
-#, fuzzy
 msgid "Delete detached signatures"
-msgstr "Descarregar assinaturas avulsas"
+msgstr ""
 
 #: views.py:47
 #, python-format
@@ -138,17 +136,16 @@ msgid "Submit"
 msgstr ""
 
 #: views.py:155
-#, fuzzy
 msgid "Detached signature deleted successfully."
-msgstr "Assinatura avulsa enviada com sucesso."
+msgstr ""
 
 #: views.py:158
-#, fuzzy, python-format
+#, python-format
 msgid "Error while deleting the detached signature; %s"
-msgstr "Descarregar assinaturas avulsas"
+msgstr ""
 
 #: views.py:162
 #, python-format
 msgid ""
-"Are you sure you wish to delete the detached signature from document: %s"
+"Are you sure you wish to delete the detached signature from document: %s?"
 msgstr ""

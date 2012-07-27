@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-23 19:51+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "mayan-edms/language/pt_BR/)\n"
@@ -94,9 +94,9 @@ msgid "Page"
 msgstr "Página"
 
 #: forms.py:118
-#, fuzzy, python-format
+#, python-format
 msgid "Page %(page_num)d of %(total_pages)d"
-msgstr "Pagina %(page_num)d de %(total_pages)d em %(document)s"
+msgstr ""
 
 #: forms.py:122
 msgid "Details"
@@ -169,9 +169,8 @@ msgid "all documents"
 msgstr "todos os documentos"
 
 #: links.py:41 models.py:704 views.py:845
-#, fuzzy
 msgid "recent documents"
-msgstr "documento recente"
+msgstr "documentos recentes"
 
 #: links.py:42
 msgid "clone metadata"
@@ -458,9 +457,8 @@ msgid "enabled"
 msgstr "habilitado"
 
 #: models.py:587
-#, fuzzy
 msgid "document type quick rename filename"
-msgstr "tipos de documentos renomear rápido"
+msgstr "tipo de documento renomear rápido"
 
 #: models.py:588
 msgid "document types quick rename filenames"
@@ -694,9 +692,8 @@ msgid "document properties for: %s"
 msgstr "propriedades de documento para: %s"
 
 #: views.py:159
-#, fuzzy
 msgid "document data"
-msgstr "tipo de documento"
+msgstr "dados do documento"
 
 #: views.py:183 views.py:620
 msgid "Must provide at least one document."
@@ -712,9 +709,9 @@ msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Erro ao excluir documento %(document)s: %(error)s"
 
 #: views.py:216
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you wish to delete the document: %s?"
-msgstr "Tem certeza de que deseja excluir os documentos: %s?"
+msgstr "Tem certeza de que deseja excluir o documento: %s?"
 
 #: views.py:218
 #, python-format
@@ -841,13 +838,13 @@ msgstr ""
 "documento: %s?"
 
 #: views.py:657
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to clear all the page transformations for documents: "
 "%s?"
 msgstr ""
-"Tem certeza de que deseja limpar todas as transformações de página para o "
-"documento: %s?"
+"Tem certeza de que deseja limpar todas as transformações de página para os "
+"documentos: %s?"
 
 #: views.py:685
 msgid "missing documents"
@@ -1107,42 +1104,3 @@ msgid ""
 msgstr ""
 "Aqui você encontrará os últimos %(recent_count)s documentos que você tenha "
 "criado ou editado de alguma maneira."
-
-#~ msgid "upload new documents"
-#~ msgstr "upload de novos documentos"
-
-#~ msgid "metadata"
-#~ msgstr "metadado"
-
-#~ msgid "Document type"
-#~ msgstr "Tipo de documento"
-
-#~ msgid "MIME type"
-#~ msgstr "Tipo MIME"
-
-#~ msgid "Metadata value"
-#~ msgstr "Valor de metadados"
-
-#~ msgid "Content"
-#~ msgstr "Conteúdo"
-
-#~ msgid "Description"
-#~ msgstr "Descrição"
-
-#~ msgid "Tags"
-#~ msgstr "Tags"
-
-#~ msgid "Comments"
-#~ msgstr "Comentários"
-
-#~ msgid "step 1 of 3: Document type"
-#~ msgstr "passo 1 de 3: Tipo de documento"
-
-#~ msgid "step 2 of 3: Metadata selection"
-#~ msgstr "passo 2 de 3: seleção de Metadados"
-
-#~ msgid "step 3 of 3: Document metadata"
-#~ msgstr "passo 3 de 3: Metadados do documento"
-
-#~ msgid "Next step"
-#~ msgstr "Próximo passo"

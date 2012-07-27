@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-10 15:42+0000\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:29+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -105,23 +105,23 @@ msgstr "Instalado a través de fabfile"
 
 #: models.py:102 models.py:106
 msgid "Running from a Git repository"
-msgstr ""
+msgstr "Ejecutado desde un repositorio Git"
 
 #: models.py:107
 msgid "Repository remotes"
-msgstr ""
+msgstr "Remotos del repositorio"
 
 #: models.py:108
 msgid "Branch"
-msgstr ""
+msgstr "Rama"
 
 #: models.py:109
 msgid "HEAD commit hex SHA"
-msgstr ""
+msgstr "SHA hex del commit HEAD"
 
 #: models.py:110
 msgid "HEAD commit author"
-msgstr ""
+msgstr "Auto del commit HEAD"
 
 #: models.py:111
 msgid "HEAD commit authored date"
@@ -150,6 +150,3 @@ msgstr "Ver detalles del ambiente de instalación"
 #: views.py:23
 msgid "Installation environment details"
 msgstr "Detalles del ambiente de instalación"
-
-#~ msgid "POSIX OS"
-#~ msgstr "S.O. POSIX"

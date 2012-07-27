@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-02 03:32+0000\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "mayan-edms/language/pt_BR/)\n"
@@ -208,9 +208,8 @@ msgid "Identifies"
 msgstr ""
 
 #: conf/settings.py:11
-#, fuzzy
 msgid "Signatures"
-msgstr "Erro de assinatura."
+msgstr ""
 
 #: conf/settings.py:18
 msgid "List of keyservers to be queried for unknown keys."

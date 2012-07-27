@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-04 17:47+0000\n"
-"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
+"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"PO-Revision-Date: 2012-07-27 04:11+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
 "language/pt/)\n"
 "Language: pt\n"
@@ -388,19 +388,18 @@ msgid "members of metadata set: %s"
 msgstr "membros do conjunto de metadados: %s"
 
 #: views.py:460
-#, fuzzy
 msgid "Metadata set edited successfully"
-msgstr "Tipo de metadados editado com sucesso"
+msgstr ""
 
 #: views.py:463
-#, fuzzy, python-format
+#, python-format
 msgid "Error editing metadata set; %s"
-msgstr "Erro ao editar tipo de metadados; %s"
+msgstr ""
 
 #: views.py:469
-#, fuzzy, python-format
+#, python-format
 msgid "edit metadata set: %s"
-msgstr "editar tipo de metadados: %s"
+msgstr ""
 
 #: views.py:484
 msgid "Metadata set created successfully"
@@ -479,12 +478,3 @@ msgstr ""
 "valor que uma instância desse tipo de metadados terá inicialmente, e o valor "
 "de escolhas torna uma instância de um metadado deste tipo numa lista de "
 "opções, cujos componentes são o resultado da execução do código da pesquisa."
-
-#~ msgid "Error deleting document indexes; %s"
-#~ msgstr "Erro ao eliminar os índices de documentos; %s"
-
-#~ msgid "Error updating document indexes; %s"
-#~ msgstr "Erro ao atualizar os índices de documentos; %s"
-
-#~ msgid "Document indexes updated successfully."
-#~ msgstr "Índices de documentos atualizados com sucesso. "

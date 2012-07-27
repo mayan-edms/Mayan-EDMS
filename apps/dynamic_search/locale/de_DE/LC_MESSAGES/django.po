@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-04-20 18:24+0000\n"
-"Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
 "edms/language/de_DE/)\n"
 "Language: de_DE\n"
@@ -60,9 +60,8 @@ msgid "recent searches"
 msgstr "letzte Suchen"
 
 #: models.py:65
-#, fuzzy
 msgid "date time"
-msgstr "Erstellungsdatum"
+msgstr ""
 
 #: models.py:80
 msgid "indexable object"
@@ -78,14 +77,13 @@ msgid "Search"
 msgstr "Suche"
 
 #: views.py:45
-#, fuzzy, python-format
+#, python-format
 msgid "results for: %s"
-msgstr "Ergebnis"
+msgstr ""
 
 #: conf/settings.py:7
-#, fuzzy
 msgid "Searching"
-msgstr "Suche"
+msgstr ""
 
 #: conf/settings.py:14
 msgid "Maximum number of search queries to remember per user."
@@ -118,27 +116,11 @@ msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Verstrichene Zeit: %(time_delta)s Sekunden"
 
 #: templates/search/search.html:22
-#, fuzzy, python-format
+#, python-format
 msgid "Elapsed time: %(elapsed_time)s seconds"
-msgstr "Verstrichene Zeit: %(time_delta)s Sekunden"
+msgstr ""
 
 #: templatetags/search_tags.py:36
 #, python-format
 msgid "recent searches (maximum of %d)"
 msgstr "Letzte Suchvorgänge (Maximal %d)"
-
-#~ msgid "Search terms"
-#~ msgstr "Suchbegriffe"
-
-#~ msgid ""
-#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-#~ msgstr "Erebnis:  (Zeige nur %(shown_result_count)s von %(result_count)s) "
-
-#~ msgid "Search error: %s"
-#~ msgstr "Fehler bei Suche: %s"
-
-#~ msgid "type"
-#~ msgstr "Typ"
-
-#~ msgid "Maximum amount search hits to fetch and display."
-#~ msgstr "Maximale Anzahl von Treffern die gehohlt und angezeigt werden."

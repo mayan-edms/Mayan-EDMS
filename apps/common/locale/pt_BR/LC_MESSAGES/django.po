@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-10 15:16+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:09+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "mayan-edms/language/pt_BR/)\n"
@@ -117,9 +117,8 @@ msgid "Anonymous user"
 msgstr "Usuário anônimo"
 
 #: models.py:48 models.py:49
-#, fuzzy
 msgid "anonymous user"
-msgstr "Usuário anônimo"
+msgstr "usuário anônimo"
 
 #: models.py:53
 msgid "account"
@@ -209,15 +208,11 @@ msgid "Common"
 msgstr ""
 
 #: conf/settings.py:17
-#, fuzzy
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
 "mkdtemp()."
 msgstr ""
-"Diretório temporário usado para armazenar miniaturas, previews e arquivos "
-"temporários. Se nenhum for especificado, um será criado usando tempfile."
-"mkdtemp()"
 
 #: conf/settings.py:61
 msgid ""

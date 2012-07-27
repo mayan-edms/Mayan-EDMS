@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-23 19:51+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/pl/)\n"
@@ -1061,27 +1061,3 @@ msgid ""
 "Here you will find the latest %(recent_count)s documents you have either "
 "created or edited in any way."
 msgstr ""
-
-#~ msgid "upload new documents"
-#~ msgstr "wgrać nowe dokumenty"
-
-#~ msgid "metadata"
-#~ msgstr "metadane"
-
-#~ msgid "Document type"
-#~ msgstr "Typ dokumentu"
-
-#~ msgid "MIME type"
-#~ msgstr "typ MIME"
-
-#~ msgid "Content"
-#~ msgstr "Zawartość"
-
-#~ msgid "Description"
-#~ msgstr "Opis"
-
-#~ msgid "Tags"
-#~ msgstr "Tagi"
-
-#~ msgid "Comments"
-#~ msgstr "Komentarze"

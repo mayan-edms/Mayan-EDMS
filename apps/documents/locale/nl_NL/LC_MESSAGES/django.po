@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-23 19:51+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
 "mayan-edms/language/nl_NL/)\n"
@@ -93,9 +93,9 @@ msgid "Page"
 msgstr "Pagina"
 
 #: forms.py:118
-#, fuzzy, python-format
+#, python-format
 msgid "Page %(page_num)d of %(total_pages)d"
-msgstr "Pagina %(page_num)d van %(total_pages)d in %(document)s "
+msgstr ""
 
 #: forms.py:122
 msgid "Details"
@@ -1113,42 +1113,3 @@ msgid ""
 msgstr ""
 "Hier vindt u de laatse %(recent_count)s documenten, die u heeft of heeft "
 "aangemaakt of heeft bewerkt."
-
-#~ msgid "upload new documents"
-#~ msgstr "nieuwe documenten uploaden"
-
-#~ msgid "metadata"
-#~ msgstr "metadata"
-
-#~ msgid "Document type"
-#~ msgstr "Documentsoort"
-
-#~ msgid "MIME type"
-#~ msgstr "MIME type"
-
-#~ msgid "Metadata value"
-#~ msgstr "Waarde metadata"
-
-#~ msgid "Content"
-#~ msgstr "Inhoud"
-
-#~ msgid "Description"
-#~ msgstr "Omschrijving"
-
-#~ msgid "Tags"
-#~ msgstr "Label"
-
-#~ msgid "Comments"
-#~ msgstr "Commentaar"
-
-#~ msgid "step 1 of 3: Document type"
-#~ msgstr "stap 1 van 3: Documentsoort"
-
-#~ msgid "step 2 of 3: Metadata selection"
-#~ msgstr "stap 2 van 3: Selecteren metadata"
-
-#~ msgid "step 3 of 3: Document metadata"
-#~ msgstr "stap 3 van 3: Document metadata"
-
-#~ msgid "Next step"
-#~ msgstr "Volgende stap"

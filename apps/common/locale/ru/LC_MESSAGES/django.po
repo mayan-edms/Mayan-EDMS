@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-10 15:16+0000\n"
+"POT-Creation-Date: 2012-07-27 00:44-0400\n"
+"PO-Revision-Date: 2012-07-27 04:09+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/ru/)\n"
@@ -208,15 +208,11 @@ msgid "Common"
 msgstr ""
 
 #: conf/settings.py:17
-#, fuzzy
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
 "mkdtemp()."
 msgstr ""
-"Временный каталог, используемый сайтом для хранения миниатюр, превью и "
-"временных файлов. Если он не указан, он будет создан с использованием "
-"tempfile.mkdtemp ()"
 
 #: conf/settings.py:61
 msgid ""
