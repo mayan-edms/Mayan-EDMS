@@ -8,5 +8,5 @@ from .api import BootstrapSimple, BootstrapPermit
 
 register_setup(database_bootstrap)
 register_setup(erase_database_link)
-bind_links(BootstrapSimple, [bootstrap_execute])
-bind_links(BootstrapPermit, [bootstrap_execute])
+bind_links([BootstrapSimple], [bootstrap_execute])
+bind_links([BootstrapPermit], [bootstrap_execute])
