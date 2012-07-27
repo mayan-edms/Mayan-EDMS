@@ -168,6 +168,8 @@ INSTALLED_APPS = (
     # Mayan EDMS
     'main',
     'installation',
+    'diagnostics',
+    'maintenance',
     'storage',
     'folders',
     'tags',
@@ -186,6 +188,7 @@ INSTALLED_APPS = (
     'checkouts',
     'rest_api',
     'bootstrap',
+    'statistics',
 
     # Has to be last so the other apps can register it's signals
     'signaler',

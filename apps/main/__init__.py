@@ -3,11 +3,9 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import Link, register_top_menu
-from project_tools.api import register_tool
 
 from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
 from .utils import register_multi_items_links
-from .links import maintenance_menu, statistics, diagnostics
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
@@ -45,9 +43,5 @@ def get_version():
 
 __version__ = get_version()
 
-
-register_tool(maintenance_menu)
-register_tool(statistics)
-register_tool(diagnostics)
 
 register_multi_items_links()
