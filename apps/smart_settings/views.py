@@ -23,7 +23,7 @@ def setting_list(request, namespace_name=None, object_list=None, title=None, ext
 
     if namespace_name:
         object_list = [setting for setting in settings[namespace_name] if setting.hidden == False]
-        title = _(u'settings for the %s module') % namespaces[namespace_name]
+        title = _(u'settings for the module: %s') % namespaces[namespace_name]
 
     context = {
         'title': title if title else _(u'settings'),

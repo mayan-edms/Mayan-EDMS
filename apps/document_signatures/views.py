@@ -159,7 +159,7 @@ def document_signature_delete(request, document_pk):
             return HttpResponseRedirect(previous)
 
     return render_to_response('generic_confirm.html', {
-        'title': _(u'Are you sure you wish to delete the detached signature from document: %s') % document,
+        'title': _(u'Are you sure you wish to delete the detached signature from document: %s?') % document,
         'form_icon': 'pencil_delete.png',
         'next': next,
         'previous': previous,
