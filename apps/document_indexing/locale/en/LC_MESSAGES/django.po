@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"POT-Creation-Date: 2012-07-26 23:53-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: __init__.py:26 links.py:24 links.py:38 models.py:42 views.py:38
-#: views.py:283
-#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
 #: views.py:284
 msgid "indexes"
 msgstr ""
@@ -235,10 +233,6 @@ msgstr ""
 
 #: permissions.py:15
 msgid "Rebuild document indexes"
-msgstr ""
-
-#: utils.py:19
-msgid "document indexes"
 msgstr ""
 
 #: views.py:71

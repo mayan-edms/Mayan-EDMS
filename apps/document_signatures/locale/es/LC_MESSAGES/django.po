@@ -1,38 +1,44 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: 2012-02-02 18:30+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-
-#: __init__.py:83
-msgid "upload signature"
-msgstr "subir firma"
-
-#: __init__.py:84
-msgid "download signature"
-msgstr "descargar firma"
-
-#: __init__.py:85
-msgid "signatures"
-msgstr "firmas"
 
 #: forms.py:11
 msgid "Signature file"
 msgstr "Archivo de firma"
+
+#: links.py:21
+msgid "upload signature"
+msgstr "subir firma"
+
+#: links.py:22
+msgid "download signature"
+msgstr "descargar firma"
+
+#: links.py:23
+#, fuzzy
+msgid "delete signature"
+msgstr "descargar firma"
+
+#: links.py:24
+msgid "signatures"
+msgstr "firmas"
 
 #: models.py:20
 msgid "document version"
@@ -68,6 +74,11 @@ msgstr "Subir firmas aparte"
 
 #: permissions.py:10
 msgid "Download detached signatures"
+msgstr "Descargar firmas aparte"
+
+#: permissions.py:11
+#, fuzzy
+msgid "Delete detached signatures"
 msgstr "Descargar firmas aparte"
 
 #: views.py:47
@@ -121,3 +132,23 @@ msgstr "Firma aparte subida exitosamente."
 #, python-format
 msgid "Upload detached signature for: %s"
 msgstr "Subir firma aparte para: %s"
+
+#: views.py:106
+msgid "Submit"
+msgstr ""
+
+#: views.py:155
+#, fuzzy
+msgid "Detached signature deleted successfully."
+msgstr "Firma aparte subida exitosamente."
+
+#: views.py:158
+#, fuzzy, python-format
+msgid "Error while deleting the detached signature; %s"
+msgstr "Descargar firmas aparte"
+
+#: views.py:162
+#, python-format
+msgid ""
+"Are you sure you wish to delete the detached signature from document: %s"
+msgstr ""

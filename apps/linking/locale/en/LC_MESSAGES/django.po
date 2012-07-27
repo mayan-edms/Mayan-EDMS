@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,39 +29,39 @@ msgstr ""
 msgid "Click on the image for full size view of the first page."
 msgstr ""
 
-#: links.py:13
+#: links.py:12
 msgid "smart links actions"
 msgstr ""
 
-#: links.py:14 links.py:16 models.py:23 views.py:132
+#: links.py:13 links.py:15 models.py:23 views.py:132
 msgid "smart links"
 msgstr ""
 
-#: links.py:17
+#: links.py:16
 msgid "smart links list"
 msgstr ""
 
-#: links.py:18
+#: links.py:17
 msgid "create new smart link"
 msgstr ""
 
-#: links.py:19 links.py:24
+#: links.py:18 links.py:23
 msgid "edit"
 msgstr ""
 
-#: links.py:20 links.py:25
+#: links.py:19 links.py:24
 msgid "delete"
 msgstr ""
 
-#: links.py:22
+#: links.py:21
 msgid "conditions"
 msgstr ""
 
-#: links.py:23
+#: links.py:22
 msgid "create condition"
 msgstr ""
 
-#: links.py:27
+#: links.py:26
 msgid "ACLs"
 msgstr ""
 

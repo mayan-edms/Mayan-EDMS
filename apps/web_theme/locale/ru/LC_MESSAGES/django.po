@@ -1,30 +1,39 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: 2012-07-10 15:17+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: conf/settings.py:10
+#: conf/settings.py:6
+msgid "Interface"
+msgstr ""
+
+#: conf/settings.py:13
 msgid ""
 "CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
 "cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
 "warehouse."
-msgstr "CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and warehouse."
+msgstr ""
+"CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
+"cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
+"warehouse."
 
-#: conf/settings.py:12
+#: conf/settings.py:29
 msgid "Display extra information in the login screen."
 msgstr "Показать дополнительную информацию в при входе."
 
@@ -61,7 +70,9 @@ msgstr "Перенаправит вас на вход веб-сайта чере
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr "Или нажмите <a href=\"%(LOGIN_REDIRECT_URL)s\">здесь</a> , если перенаправление не работает."
+msgstr ""
+"Или нажмите <a href=\"%(LOGIN_REDIRECT_URL)s\">здесь</a> , если "
+"перенаправление не работает."
 
 #: templates/web_theme_login.html:36
 msgid "First time login"

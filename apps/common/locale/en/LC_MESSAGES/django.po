@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"POT-Creation-Date: 2012-07-26 23:53-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:30 links.py:17
+#: __init__.py:29 links.py:17
 msgid "about"
-msgstr ""
-
-#: __init__.py:26
-msgid "change password"
-msgstr ""
-
-#: __init__.py:27
-msgid "user details"
-msgstr ""
-
-#: __init__.py:28
-msgid "edit details"
-msgstr ""
-
-#: __init__.py:32 __init__.py:37
-msgid "about"
-msgstr ""
-
-#: __init__.py:33
-msgid "license"
 msgstr ""
 
 #: forms.py:101
@@ -152,7 +132,6 @@ msgid "auto admin properties"
 msgstr ""
 
 #: utils.py:299
-#: utils.py:295
 msgid "function found"
 msgstr ""
 
@@ -224,7 +203,6 @@ msgid "Common"
 msgstr ""
 
 #: conf/settings.py:17
-#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
@@ -232,14 +210,12 @@ msgid ""
 msgstr ""
 
 #: conf/settings.py:61
-#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
 msgstr ""
 
 #: conf/settings.py:69
-#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
 msgstr ""
 

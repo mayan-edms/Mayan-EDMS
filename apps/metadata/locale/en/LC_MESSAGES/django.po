@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:53 links.py:18
+#: __init__.py:51 links.py:18
 msgid "metadata"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: forms.py:86 views.py:545 views.py:563
+#: forms.py:86 views.py:544 views.py:562
 msgid "Metadata sets"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgid "metadata type"
 msgstr ""
 
 #: models.py:48 models.py:49 models.py:57 views.py:445 views.py:472
-#: views.py:518
+#: views.py:517
 msgid "metadata set"
 msgstr ""
 
@@ -177,7 +177,7 @@ msgstr ""
 msgid "document metadata"
 msgstr ""
 
-#: models.py:91 views.py:603
+#: models.py:91 views.py:602
 msgid "document type"
 msgstr ""
 
@@ -406,21 +406,21 @@ msgstr ""
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:523
+#: views.py:522
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
 msgstr ""
 
-#: views.py:542 views.py:560
+#: views.py:541 views.py:559
 msgid "Metadata types"
 msgstr ""
 
-#: views.py:598
+#: views.py:597
 #, python-format
 msgid "non members of document type: %s"
 msgstr ""
 
-#: views.py:599
+#: views.py:598
 #, python-format
 msgid "members of document type: %s"
 msgstr ""

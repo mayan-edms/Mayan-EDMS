@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: links.py:9 views.py:16
+#: links.py:9 views.py:29
 msgid "settings"
 msgstr ""
 
-#: views.py:21
+#: views.py:26
+#, python-format
+msgid "settings for the %s module"
+msgstr ""
+
+#: views.py:34
 msgid "name"
 msgstr ""
 
-#: views.py:22
+#: views.py:35
 msgid "default"
 msgstr ""
 
-#: views.py:23
+#: views.py:36
 msgid "value"
 msgstr ""

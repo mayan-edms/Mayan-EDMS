@@ -1,62 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <tetja.rediske@googlemail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: 2012-05-05 10:48+0000\n"
 "Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-
-#: __init__.py:13
-msgid "user list"
-msgstr "Benutzerliste"
-
-#: __init__.py:14 views.py:31
-msgid "users"
-msgstr "Benutzer"
-
-#: __init__.py:15 __init__.py:24
-msgid "edit"
-msgstr "Bearbeite"
-
-#: __init__.py:16 views.py:97
-msgid "create new user"
-msgstr "lege neuen Benutzer an"
-
-#: __init__.py:17 __init__.py:18 __init__.py:26 __init__.py:27
-msgid "delete"
-msgstr "lösche"
-
-#: __init__.py:19 __init__.py:20
-msgid "reset password"
-msgstr "Setze Passwort zurück"
-
-#: __init__.py:22
-msgid "group list"
-msgstr "Gruppenliste"
-
-#: __init__.py:23 views.py:228
-msgid "groups"
-msgstr "Gruppen"
-
-#: __init__.py:25 views.py:276
-msgid "create new group"
-msgstr "lege neue Gruppe an"
-
-#: __init__.py:28 views.py:232
-msgid "members"
-msgstr "Mitglieder"
 
 #: forms.py:13
 msgid "New password"
@@ -65,6 +26,46 @@ msgstr "Neues Passwort"
 #: forms.py:14
 msgid "Confirm password"
 msgstr "Bestätige Passwort"
+
+#: links.py:11
+msgid "user list"
+msgstr "Benutzerliste"
+
+#: links.py:12 views.py:31
+msgid "users"
+msgstr "Benutzer"
+
+#: links.py:13 links.py:22
+msgid "edit"
+msgstr "Bearbeite"
+
+#: links.py:14 views.py:97
+msgid "create new user"
+msgstr "lege neuen Benutzer an"
+
+#: links.py:15 links.py:16 links.py:24 links.py:25
+msgid "delete"
+msgstr "lösche"
+
+#: links.py:17 links.py:18
+msgid "reset password"
+msgstr "Setze Passwort zurück"
+
+#: links.py:20
+msgid "group list"
+msgstr "Gruppenliste"
+
+#: links.py:21 views.py:228
+msgid "groups"
+msgstr "Gruppen"
+
+#: links.py:23 views.py:276
+msgid "create new group"
+msgstr "lege neue Gruppe an"
+
+#: links.py:26 views.py:232
+msgid "members"
+msgstr "Mitglieder"
 
 #: permissions.py:7
 msgid "User management"
@@ -122,7 +123,9 @@ msgstr "Hat ein benutzbares Passwort?"
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super User und Staff Benutzer bearbeiten ist nicht erlaubt, benutzen Sie das Administrator Interface dafür."
+msgstr ""
+"Super User und Staff Benutzer bearbeiten ist nicht erlaubt, benutzen Sie das "
+"Administrator Interface dafür."
 
 #: views.py:68
 #, python-format
@@ -151,7 +154,9 @@ msgstr "Bitte mindestens einen Benutzer angeben."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie das Administrator Interface dafür."
+msgstr ""
+"Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie das "
+"Administrator Interface dafür."
 
 #: views.py:126
 #, python-format
@@ -181,7 +186,9 @@ msgstr "Passwörter stimmen nicht überein, bitte noch einmal versuchen."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super User und Staff Benutzer zurücksetzen ist nicht erlaubt, benutzen Sie das Administrator Interface dafür."
+msgstr ""
+"Super User und Staff Benutzer zurücksetzen ist nicht erlaubt, benutzen Sie "
+"das Administrator Interface dafür."
 
 #: views.py:187
 #, python-format
@@ -191,7 +198,9 @@ msgstr "Passwort wurde erfolgreich zurückgesetzt: %s."
 #: views.py:189
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Fehler beim zurücksetzen des Passworts für den Benutzer  \"%(user)s\": %(error)s"
+msgstr ""
+"Fehler beim zurücksetzen des Passworts für den Benutzer  \"%(user)s\": "
+"%(error)s"
 
 #: views.py:205
 #, python-format

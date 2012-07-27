@@ -1,38 +1,39 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <tetja.rediske@googlemail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-26 23:53-0400\n"
 "PO-Revision-Date: 2012-04-20 18:24+0000\n"
 "Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:5
+#: __init__.py:22
 msgid "search"
 msgstr "suchen"
 
-#: __init__.py:6 views.py:72
+#: __init__.py:23
 msgid "advanced search"
 msgstr "Erweiterte Suche"
 
-#: __init__.py:7
+#: __init__.py:24
 msgid "search again"
 msgstr "Erneut suchen"
 
-#: forms.py:8
-msgid "Search terms"
-msgstr "Suchbegriffe"
+#: __init__.py:64
+msgid "Update the search index with the most recent modified documents."
+msgstr ""
 
 #: models.py:21
 msgid "user"
@@ -50,44 +51,49 @@ msgstr "Erstellungsdatum"
 msgid "hits"
 msgstr "Treffer"
 
-#: models.py:62
+#: models.py:55
 msgid "recent search"
 msgstr "letzte Suche"
 
-#: models.py:63
+#: models.py:56
 msgid "recent searches"
 msgstr "letzte Suchen"
 
-#: views.py:33
-#, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr "Erebnis:  (Zeige nur %(shown_result_count)s von %(result_count)s) "
+#: models.py:65
+#, fuzzy
+msgid "date time"
+msgstr "Erstellungsdatum"
 
-#: views.py:37
-msgid "results"
-msgstr "Ergebnis"
+#: models.py:80
+msgid "indexable object"
+msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "Search error: %s"
-msgstr "Fehler bei Suche: %s"
+#: models.py:81
+msgid "indexable objects"
+msgstr ""
 
-#: views.py:60
-msgid "type"
-msgstr "Typ"
-
-#: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
+#: views.py:41 views.py:43 templatetags/search_tags.py:22
+#: templatetags/search_tags.py:23
 msgid "Search"
 msgstr "Suche"
 
-#: conf/settings.py:12
-msgid "Maximum amount search hits to fetch and display."
-msgstr "Maximale Anzahl von Treffern die gehohlt und angezeigt werden."
+#: views.py:45
+#, fuzzy, python-format
+msgid "results for: %s"
+msgstr "Ergebnis"
 
-#: conf/settings.py:13
+#: conf/settings.py:7
+#, fuzzy
+msgid "Searching"
+msgstr "Suche"
+
+#: conf/settings.py:14
 msgid "Maximum number of search queries to remember per user."
 msgstr "Maximale Anzahl von Suchanfrage die pro Benutzer gespeichert werden."
+
+#: conf/settings.py:22
+msgid "Interval in second on which to trigger the search index update."
+msgstr ""
 
 #: templates/search_help.html:3
 msgid "Help"
@@ -98,18 +104,41 @@ msgstr "Hilfe"
 msgid ""
 "Enter the desired search keywords separated by space.  Only the top "
 "%(search_results_limit)s results will be available."
-msgstr "Die gesuchten Wörter mit Leerzeichen getrennt eingeben.   Nur die %(search_results_limit)s Ergebnisse werden angezeigt."
+msgstr ""
+"Die gesuchten Wörter mit Leerzeichen getrennt eingeben.   Nur die "
+"%(search_results_limit)s Ergebnisse werden angezeigt."
 
-#: templates/search_results.html:3
+#: templates/search_results.html:3 templates/search/search.html:4
 msgid "Search results"
 msgstr "Such-Ergebnisse"
 
-#: templates/search_results.html:19
+#: templates/search_results.html:20
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Verstrichene Zeit: %(time_delta)s Sekunden"
 
-#: templatetags/search_tags.py:33
+#: templates/search/search.html:22
+#, fuzzy, python-format
+msgid "Elapsed time: %(elapsed_time)s seconds"
+msgstr "Verstrichene Zeit: %(time_delta)s Sekunden"
+
+#: templatetags/search_tags.py:36
 #, python-format
 msgid "recent searches (maximum of %d)"
 msgstr "Letzte Suchvorgänge (Maximal %d)"
+
+#~ msgid "Search terms"
+#~ msgstr "Suchbegriffe"
+
+#~ msgid ""
+#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgstr "Erebnis:  (Zeige nur %(shown_result_count)s von %(result_count)s) "
+
+#~ msgid "Search error: %s"
+#~ msgstr "Fehler bei Suche: %s"
+
+#~ msgid "type"
+#~ msgstr "Typ"
+
+#~ msgid "Maximum amount search hits to fetch and display."
+#~ msgstr "Maximale Anzahl von Treffern die gehohlt und angezeigt werden."

@@ -1,64 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-26 23:53-0400\n"
 "PO-Revision-Date: 2012-07-23 19:51+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:31 __init__.py:45 __init__.py:47 models.py:42 views.py:38
+#: __init__.py:26 links.py:24 links.py:38 models.py:42 views.py:38
 #: views.py:284
 msgid "indexes"
 msgstr ""
 
-#: __init__.py:32 __init__.py:42
-msgid "index list"
-msgstr ""
-
-#: __init__.py:33 views.py:77
-msgid "create index"
-msgstr ""
-
-#: __init__.py:34 __init__.py:39
-msgid "edit"
-msgstr ""
-
-#: __init__.py:35 __init__.py:40
-msgid "delete"
-msgstr ""
-
-#: __init__.py:36
-msgid "tree template"
-msgstr ""
-
-#: __init__.py:38
-msgid "new child node"
-msgstr ""
-
-#: __init__.py:44
-msgid "go up one level"
-msgstr ""
-
-#: __init__.py:49
-msgid "rebuild indexes"
-msgstr ""
-
-#: __init__.py:49
-msgid "Deletes and creates from scratch all the document indexes."
-msgstr ""
-
-#: __init__.py:51
+#: __init__.py:27
 msgid "Indexes"
 msgstr ""
 
@@ -111,6 +76,42 @@ msgstr ""
 msgid "Unable to delete indexing directory; %s"
 msgstr ""
 
+#: links.py:25 links.py:35
+msgid "index list"
+msgstr ""
+
+#: links.py:26 views.py:77
+msgid "create index"
+msgstr ""
+
+#: links.py:27 links.py:32
+msgid "edit"
+msgstr ""
+
+#: links.py:28 links.py:33
+msgid "delete"
+msgstr ""
+
+#: links.py:29
+msgid "tree template"
+msgstr ""
+
+#: links.py:31
+msgid "new child node"
+msgstr ""
+
+#: links.py:37
+msgid "go up one level"
+msgstr ""
+
+#: links.py:40
+msgid "rebuild indexes"
+msgstr ""
+
+#: links.py:40
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr ""
+
 #: models.py:13
 #, python-format
 msgid "Available functions: %s"
@@ -137,8 +138,7 @@ msgid "enabled"
 msgstr ""
 
 #: models.py:19
-msgid ""
-"Causes this index to be visible and updated when document data changes."
+msgid "Causes this index to be visible and updated when document data changes."
 msgstr ""
 
 #: models.py:41 models.py:47 views.py:104 views.py:135 views.py:161
@@ -164,8 +164,8 @@ msgstr ""
 
 #: models.py:51
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 msgstr ""
 
 #: models.py:57 models.py:63
@@ -208,7 +208,7 @@ msgstr ""
 msgid "documents rename count"
 msgstr ""
 
-#: permissions.py:7
+#: permissions.py:7 conf/settings.py:12
 msgid "Indexing"
 msgstr ""
 
@@ -234,10 +234,6 @@ msgstr ""
 
 #: permissions.py:15
 msgid "Rebuild document indexes"
-msgstr ""
-
-#: utils.py:19
-msgid "document indexes"
 msgstr ""
 
 #: views.py:71
@@ -352,10 +348,10 @@ msgstr ""
 msgid "indexes containing: %s"
 msgstr ""
 
-#: conf/settings.py:22
+#: conf/settings.py:51
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index"
-" will be mirrored."
+"A dictionary that maps the index name and where on the filesystem that index "
+"will be mirrored."
 msgstr ""
 
 #: templates/indexing_help.html:3

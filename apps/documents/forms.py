@@ -115,7 +115,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     page=page.page_number,
                     gallery_name='document_pages',
                     fancybox_class='fancybox-noscaling',
-                    title=ugettext(u'Page %d of %d') % (page.page_number, len(value.pages.all()))
+                    title=ugettext(u'Page %(page_num)d of %(total_pages)d') % {'page_num': page.page_number, 'total_pages': len(value.pages.all()))}
                 )
             )
             output.append(u'<div class="tc">')

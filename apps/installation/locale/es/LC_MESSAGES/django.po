@@ -1,110 +1,143 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: 2012-07-10 15:42+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: links.py:7 models.py:148
+#: links.py:9 models.py:179
 msgid "installation details"
 msgstr "detalles de la instalación"
 
-#: models.py:63
+#: models.py:67 models.py:74
 msgid "LSB OS"
 msgstr "S.O. LSB"
 
-#: models.py:64
+#: models.py:68
 msgid "Distributor ID"
 msgstr "ID de distribuidor"
 
-#: models.py:65
+#: models.py:69
 msgid "Description"
 msgstr "Descripción"
 
-#: models.py:66
+#: models.py:70
 msgid "Release"
 msgstr "Versión"
 
-#: models.py:67
+#: models.py:71
 msgid "Codename"
 msgstr "Nombre clave"
 
-#: models.py:68
+#: models.py:72
 msgid "System info"
 msgstr "Información de sistema"
 
-#: models.py:70
-msgid "POSIX OS"
-msgstr "S.O. POSIX"
-
-#: models.py:72
+#: models.py:76
 msgid "OS architecture"
 msgstr "Arquitectura de S.O."
 
-#: models.py:73
+#: models.py:77
 msgid "Python version"
 msgstr "Versión de Python"
 
-#: models.py:74
+#: models.py:78
 msgid "Hostname"
 msgstr "Nombre de la máquina"
 
-#: models.py:75
+#: models.py:79
 msgid "Platform"
 msgstr "Plataforma"
 
-#: models.py:76
+#: models.py:80
 msgid "Machine"
 msgstr "Máquina"
 
-#: models.py:77
+#: models.py:81
 msgid "Processor"
 msgstr "Procesador"
 
-#: models.py:78
+#: models.py:82
 msgid "Number of CPUs"
 msgstr "Número de CPUs"
 
-#: models.py:79
+#: models.py:83
 msgid "Total physical memory"
 msgstr "Memoria física total"
 
-#: models.py:80
+#: models.py:84
 msgid "Disk partitions"
 msgstr "Particiones de disco"
 
-#: models.py:83 models.py:85
+#: models.py:87 models.py:89
 msgid "tesseract version"
 msgstr "Versión de tesseract"
 
-#: models.py:85 models.py:90
+#: models.py:89 models.py:94
 msgid "not found"
 msgstr "No se encontró"
 
-#: models.py:88 models.py:90
+#: models.py:92 models.py:94
 msgid "unpaper version"
 msgstr "Versión de unpaper"
 
-#: models.py:92
+#: models.py:96
 msgid "Mayan EDMS version"
 msgstr "Versión de Mayan EDMS"
 
-#: models.py:93
+#: models.py:97
 msgid "Installed via fabfile"
 msgstr "Instalado a través de fabfile"
+
+#: models.py:102 models.py:106
+msgid "Running from a Git repository"
+msgstr ""
+
+#: models.py:107
+msgid "Repository remotes"
+msgstr ""
+
+#: models.py:108
+msgid "Branch"
+msgstr ""
+
+#: models.py:109
+msgid "HEAD commit hex SHA"
+msgstr ""
+
+#: models.py:110
+msgid "HEAD commit author"
+msgstr ""
+
+#: models.py:111
+msgid "HEAD commit authored date"
+msgstr ""
+
+#: models.py:112
+msgid "HEAD commit committer"
+msgstr ""
+
+#: models.py:113
+msgid "HEAD commit committed date"
+msgstr ""
+
+#: models.py:114
+msgid "HEAD commit message"
+msgstr ""
 
 #: permissions.py:7
 msgid "Installation"
@@ -114,6 +147,9 @@ msgstr "Instalación"
 msgid "View installation environment details"
 msgstr "Ver detalles del ambiente de instalación"
 
-#: views.py:24
+#: views.py:23
 msgid "Installation environment details"
 msgstr "Detalles del ambiente de instalación"
+
+#~ msgid "POSIX OS"
+#~ msgstr "S.O. POSIX"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:37-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:25
+#: __init__.py:24
 msgid "preview"
 msgstr ""
 
-#: __init__.py:29
+#: __init__.py:28
 msgid "tagged items"
 msgstr ""
 
-#: __init__.py:35 __init__.py:43 links.py:17 views.py:98
+#: __init__.py:34 __init__.py:42 links.py:16 views.py:98
 msgid "tags"
 msgstr ""
 
@@ -41,35 +41,35 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: links.py:12
+#: links.py:11
 msgid "tag list"
 msgstr ""
 
-#: links.py:13
+#: links.py:12
 msgid "create new tag"
 msgstr ""
 
-#: links.py:14
+#: links.py:13
 msgid "attach tag"
 msgstr ""
 
-#: links.py:15 links.py:16
+#: links.py:14 links.py:15
 msgid "remove"
 msgstr ""
 
-#: links.py:18 links.py:21
+#: links.py:17 links.py:20
 msgid "delete"
 msgstr ""
 
-#: links.py:19
+#: links.py:18
 msgid "edit"
 msgstr ""
 
-#: links.py:20
+#: links.py:19
 msgid "tagged documents"
 msgstr ""
 
-#: links.py:22
+#: links.py:21
 msgid "ACLs"
 msgstr ""
 

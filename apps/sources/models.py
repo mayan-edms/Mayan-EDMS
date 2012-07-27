@@ -226,7 +226,7 @@ class IntervalBaseModel(BaseModel):
 class EmailBaseModel(IntervalBaseModel):
     host = models.CharField(max_length=64, verbose_name=_(u'host'))
     ssl = models.BooleanField(verbose_name=_(u'SSL'))
-    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'), help_text=_(u'Override the defaults values of %d and %d for SSL, can be left blank otherwise.') % (POP3_PORT, POP3_SSL_PORT))
+    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_(u'port'), help_text=_(u'Override the defaults values of %(normal_port)d and %(ssl_port)d for SSL, can be left blank otherwise.') % {'normal_port': POP3_PORT, 'ssl_port': POP3_SSL_PORT})
     username = models.CharField(max_length=64, verbose_name=_(u'username'))
     password = models.CharField(max_length=64, verbose_name=_(u'password'))
 

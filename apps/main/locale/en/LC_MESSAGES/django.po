@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:36-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:31
+#: __init__.py:29
 msgid "home"
 msgstr ""
 
-#: __init__.py:33
+#: __init__.py:31
 msgid "search"
 msgstr ""
 
@@ -87,77 +87,38 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
-#: templates/base.html:207
+#: templates/base.html:206
 msgid "User details"
 msgstr ""
 
-#: templates/base.html:224
+#: templates/base.html:223
 msgid "Login"
 msgstr ""
 
-#: templates/base.html:224
+#: templates/base.html:223
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:284
+#: templates/base.html:283
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/base.html:303
-#: templates/base.html:197
-msgid "User details"
-msgstr ""
-
-#: templates/base.html:214
-msgid "Login"
-msgstr ""
-
-#: templates/base.html:214
-msgid "Logout"
-msgstr ""
-
-#: templates/base.html:294
-msgid "Secondary menu"
-msgstr ""
-
-#: templates/base.html:310
+#: templates/base.html:302
 #, python-format
 msgid "Actions for %(name)s: %(object_reference)s"
 msgstr ""
 
-#: templates/base.html:305
-#: templates/base.html:312 templates/base.html.py:355
+#: templates/base.html:304
 #, python-format
 msgid "Actions for: %(object_reference)s"
 msgstr ""
 
-#: templates/base.html:308
+#: templates/base.html:307
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:324
+#: templates/base.html:323
 msgid "Other available actions"
-msgstr ""
-
-#: templates/base.html:315
-msgid "Available actions"
-msgstr ""
-
-#: templates/base.html:327 templates/base.html.py:370
-msgid "Related actions"
-msgstr ""
-
-#: templates/base.html:338 templates/base.html.py:383
-msgid "Other available actions"
-msgstr ""
-
-#: templates/base.html:353
-#, python-format
-msgid "Actions for %(object_name)s: %(navigation_object)s"
-msgstr ""
-
-#: templates/base.html:358
-msgid "Actions"
 msgstr ""
 
 #: templates/home.html:8
