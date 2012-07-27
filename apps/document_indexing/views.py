@@ -205,9 +205,9 @@ def template_node_create(request, parent_pk):
     parent_node = get_object_or_404(IndexTemplateNode, pk=parent_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_SETUP])
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, parent_node.index)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, parent_node.index)
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST)
@@ -232,9 +232,9 @@ def template_node_edit(request, node_pk):
     node = get_object_or_404(IndexTemplateNode, pk=node_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_SETUP])
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, node.index)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, node.index)
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST, instance=node)
@@ -263,9 +263,9 @@ def template_node_delete(request, node_pk):
     node = get_object_or_404(IndexTemplateNode, pk=node_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_SETUP])
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, node.index)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, node.index)
 
     post_action_redirect = reverse('index_setup_view', args=[node.index.pk])
 
