@@ -32,11 +32,11 @@ urlpatterns = patterns('',
     (r'^gpg/', include('django_gpg.urls')),
     (r'^documents/signatures/', include('document_signatures.urls')),
     (r'^mailer/', include('mailer.urls')),
-    #(r'^workflows/', include('workflows.urls')),
+    (r'^workflows/', include('workflows.urls')),
     (r'^checkouts/', include('checkouts.urls')),
     (r'^installation/', include('installation.urls')),
     (r'^scheduler/', include('scheduler.urls')),
-    #(r'^bootstrap/', include('bootstrap.urls')),
+    (r'^bootstrap/', include('bootstrap.urls')),
 )
 
 
