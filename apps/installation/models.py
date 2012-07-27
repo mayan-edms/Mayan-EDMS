@@ -27,6 +27,7 @@ from common.models import Singleton
 from common.utils import pretty_size
 from main import __version__ as mayan_version
 from lock_manager import Lock, LockError
+from ocr.conf.settings import TESSERACT_PATH, UNPAPER_PATH, PDFTOTEXT_PATH
 
 FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
 FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
@@ -83,15 +84,29 @@ class Installation(Singleton):
         self.add_property(Property('total_phymem', _(u'Total physical memory'), pretty_size(psutil.TOTAL_PHYMEM)))
         self.add_property(Property('disk_partitions', _(u'Disk partitions'), '; '.join(['%s %s %s %s' % (partition.device, partition.mountpoint, partition.fstype, partition.opts) for partition in psutil.disk_partitions()])))
 
+        tesseract = pbs.Command(TESSERACT_PATH)
         try:
-            self.add_property(Property('tesseract', _(u'tesseract version'), pbs.tesseract('-v').stderr))
+            self.add_property(Property('tesseract', _(u'tesseract version'), tesseract('-v').stderr))
         except pbs.CommandNotFound:
             self.add_property(Property('tesseract', _(u'tesseract version'), _(u'not found')))
+        except Exception:
+            self.add_property(Property('tesseract', _(u'tesseract version'), _(u'error getting version')))
 
+        unpaper = pbs.Command(UNPAPER_PATH)
         try:
-            self.add_property(Property('unpaper', _(u'unpaper version'), pbs.unpaper('-V').stdout))
+            self.add_property(Property('unpaper', _(u'unpaper version'), unpaper('-V').stdout))
         except pbs.CommandNotFound:
             self.add_property(Property('unpaper', _(u'unpaper version'), _(u'not found')))
+        except Exception:
+            self.add_property(Property('unpaper', _(u'unpaper version'), _(u'error getting version')))
+
+        pdftotext = pbs.Command(PDFTOTEXT_PATH)
+        try:
+            self.add_property(Property('pdftotext', _(u'pdftotext version'), pdftotext('-v').stderr))
+        except pbs.CommandNotFound:
+            self.add_property(Property('pdftotext', _(u'pdftotext version'), _(u'not found')))
+        except Exception:
+            self.add_property(Property('pdftotext', _(u'pdftotext version'), _(u'error getting version')))
 
         self.add_property(Property('mayan_version', _(u'Mayan EDMS version'), mayan_version))
         self.add_property(Property('fabfile', _(u'Installed via fabfile'), os.path.exists(FABFILE_MARKER)))
