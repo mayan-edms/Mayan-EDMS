@@ -2,7 +2,7 @@
 Mayan EDMS v0.13 release notes
 ==============================
 
-April 2012
+August 2012
 
 Welcome to Mayan EDMS v0.13!
 
@@ -16,7 +16,10 @@ Overview
 * Specialized search via Haystack
 
 #TODO: add Djano 1.4
-
+#TODO: add maintenance, diagnostics and statistics app
+#TODO: add bootstrap app and database nuking
+#TODO: add translation and PT translation split
+#TODO: removal of unoconv
 
 What's new in Mayan EDMS v0.13
 ==============================
