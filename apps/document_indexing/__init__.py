@@ -9,7 +9,7 @@ from django.db.models.signals import post_save, pre_delete, post_delete
 from navigation.api import (register_top_menu, register_sidebar_template,
     bind_links, Link)
 
-from main.api import register_maintenance_links
+from maintenance.api import register_maintenance_links
 from documents.models import Document
 from metadata.models import DocumentMetadata
 from project_setup.api import register_setup

@@ -11,7 +11,7 @@ from django.db.utils import DatabaseError
 
 from navigation.api import bind_links, register_multi_item_links
 from documents.models import Document, DocumentVersion
-from main.api import register_maintenance_links
+from maintenance.api import register_maintenance_links
 from project_tools.api import register_tool
 from acls.api import class_permissions
 

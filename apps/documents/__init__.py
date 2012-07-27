@@ -8,7 +8,8 @@ from common.utils import validate_path, encapsulate
 from navigation.api import (bind_links, register_top_menu,
     register_model_list_columns,
     register_sidebar_template, Link)
-from main.api import register_diagnostic, register_maintenance_links
+from diagnostics.api import register_diagnostic
+from maintenance.api import register_maintenance_links
 from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
 from acls.api import class_permissions
