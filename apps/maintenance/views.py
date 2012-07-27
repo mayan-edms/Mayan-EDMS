@@ -3,6 +3,9 @@ from __future__ import absolute_import
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import PermissionDenied
+
+from permissions.models import Permission
 
 from .api import tools
 
