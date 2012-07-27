@@ -21,7 +21,7 @@ Execute pip install -r requirements/production.txt to install the python/django 
 
 Executables:
 
-* ``tesseract-ocr`` - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
+* ``tesseract-ocr`` - Version >= 3.0, An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
 * ``unpaper`` - post-processing scanned and photocopied book pages
 * ``gpg`` - The GNU Privacy Guard
 
@@ -50,3 +50,10 @@ Image conversion backends
 * Python only - Relies on ``PIL`` to support a limited set of the most common graphics formats.
 
 By default the python backend is used.
+
+Text parsers
+------------
+When checking queued documents for OCR processing, **Mayan EDMS** will
+first try to extract text using one of the registered parsers.
+
+* ``pdftotext`` - Portable Document Format (PDF) to text converter

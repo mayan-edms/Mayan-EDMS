@@ -17,5 +17,15 @@ concatenated and shown to the user.  All newly uploaded documents will be
 queued automatically for OCR, if this is not desired setting the :setting:`OCR_AUTOMATIC_OCR`
 option to ``False`` would stop this behavior.
 
+---------------------
+Document text parsers
+---------------------
+When checking queued documents, **Mayan EDMS** will first try to extract
+text using one of the registered parsers corresponding to the document 
+MIME type.  Only when failing to extract any text using a parser,
+**Mayan EDMS** will fallback to process the document's image representation
+using the OCR engine Tesseract_ and the OCR preprosessor unpaper_.
+
 
 .. _Tesseract: http://code.google.com/p/tesseract-ocr/
+.. _unpaper: http://unpaper.berlios.de/
