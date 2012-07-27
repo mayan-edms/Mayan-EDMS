@@ -218,6 +218,9 @@ def user_multiple_set_password(request):
 
 # Group views
 def group_list(request):
+    """
+    Show a list of existing user groups
+    """
     Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_VIEW])
 
     return object_list(
@@ -239,6 +242,9 @@ def group_list(request):
 
 
 def group_edit(request, group_id):
+    """
+    Edit an existing user group
+    """
     Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_EDIT])
     group = get_object_or_404(Group, pk=group_id)
 
@@ -261,6 +267,9 @@ def group_edit(request, group_id):
 
 
 def group_add(request):
+    """
+    Add a new user group
+    """
     Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_CREATE])
 
     if request.method == 'POST':
@@ -280,6 +289,9 @@ def group_add(request):
 
 
 def group_delete(request, group_id=None, group_id_list=None):
+    """
+    Delete one or more existing user groups
+    """
     Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_DELETE])
     post_action_redirect = None
 

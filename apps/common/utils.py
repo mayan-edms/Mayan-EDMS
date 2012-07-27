@@ -319,16 +319,18 @@ def parse_range(astr):
 def generate_choices_w_labels(choices, display_object_type=True):
     results = []
     for choice in choices:
-        ct_label = ContentType.objects.get_for_model(choice).name
+        ct = ContentType.objects.get_for_model(choice)
+        ct_label = ct.name
+        ct_model_name = ct.model
         label = unicode(choice)
         if isinstance(choice, User):
             label = choice.get_full_name() if choice.get_full_name() else choice
 
         if display_object_type:
             verbose_name = unicode(getattr(choice._meta, u'verbose_name', ct_label))
-            results.append((u'%s,%s' % (ct_label, choice.pk), u'%s: %s' % (verbose_name, label)))
+            results.append((u'%s,%s' % (ct_model_name, choice.pk), u'%s: %s' % (verbose_name, label)))
         else:
-            results.append((u'%s,%s' % (ct_label, choice.pk), u'%s' % (label)))
+            results.append((u'%s,%s' % (ct_model_name, choice.pk), u'%s' % (label)))
 
     #Sort results by the label not the key value
     return sorted(results, key=lambda x: x[1])
