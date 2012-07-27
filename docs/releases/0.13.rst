@@ -21,6 +21,8 @@ Overview
 #TODO: add translation and PT translation split
 #TODO: removal of unoconv
 #TODO: tesseract > 3.0
+#TODO: preview navigation (fancybox)
+#TODO: document indexing document type filtering
 
 What's new in Mayan EDMS v0.13
 ==============================
