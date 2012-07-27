@@ -3,9 +3,10 @@ Document visualization
 ======================
 
 
-The philosophy in place is to try to avoid having users download a documents and leave
-**Mayan EDMS** to be able to see them, so in essence making **Mayan EDMS** a
-visualization tool too.  The conversion backend is a stack of functions,
+On of the design philosophies of **Mayan EDMS** is avoid having users
+download a documents and leave **Mayan EDMS** to be able to see them,
+so in essence making **Mayan EDMS** a visualization tool too.
+The conversion backend is a stack of functions,
 first the mimetype is evaluated, if it is an office document it is passed
 to LibreOffice_ working in headless mode (and managed by supervisor_)
 via unoconv_ (more information about ``unoconv`` can be found in the :doc:`FAQ section <../faq/index>`)

@@ -57,3 +57,10 @@ When checking queued documents for OCR processing, **Mayan EDMS** will
 first try to extract text using one of the registered parsers.
 
 * ``pdftotext`` - Portable Document Format (PDF) to text converter
+
+Office document support
+-----------------------
+Spreadsheets, presentation, letters, all are supported if LibreOffice is
+installed.
+
+* ``LibreOffice`` - LibreOffice Productivity Suite
