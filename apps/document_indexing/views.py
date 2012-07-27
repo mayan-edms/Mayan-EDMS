@@ -12,10 +12,11 @@ from django.conf import settings
 
 from permissions.models import Permission
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
-from documents.models import Document
+from documents.models import Document, DocumentType
 from documents.views import document_list
-from common.utils import encapsulate
+from common.utils import encapsulate, generate_choices_w_labels
 from common.widgets import two_state_template
+from common.views import assign_remove
 from acls.utils import apply_default_acls
 from acls.models import AccessEntry
 
@@ -174,6 +175,31 @@ def index_setup_view(request, index_pk):
         context_instance=RequestContext(request))
 
 
+def index_setup_document_types(request, index_pk):
+    index = get_object_or_404(Index, pk=index_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, index)
+        
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(index.get_document_types_not_in_index(), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(index.get_index_document_types(), display_object_type=False),
+        add_method=lambda x: index.document_types.add(x),
+        remove_method=lambda x: index.document_types.remove(x),
+        left_list_title=_(u'document types not in index: %s') % index,
+        right_list_title=_(u'document types for index: %s') % index,
+        decode_content_type=True,
+        extra_context={
+            'navigation_object_name': 'index',
+            'index': index,
+            'object_name': _(u'index'),
+        }
+    )
+
+        
 # Node views
 def template_node_create(request, parent_pk):
     parent_node = get_object_or_404(IndexTemplateNode, pk=parent_pk)
