@@ -23,12 +23,7 @@ Software used
 
   * Copyright Andrea Franz (http://gravityblast.com)
   * git://github.com/pilu/web-app-theme.git
-
-* Imagemagick - Convert, Edit, Or Compose Bitmap Images
-
-  * Copyright 1999-2011 ImageMagick Studio LLC
-  * http://www.imagemagick.org/script/index.php
-    
+  
 * FAMFAMFAM Silk icons
 
   * Copyright Mark James (http://www.twitter.com/markjames)
@@ -39,21 +34,6 @@ Software used
   * Copyright Sky Sanders
   * skysanders.net/subtext
 
-* django-extensions - Extensions for Django
-
-  * Copyright Bas van Oostveen (v.oostveen@gmail.com)
-  * http://code.google.com/p/django-command-extensions/
-
-* django-rosetta - A Django application that eases the translation of Django projects
-
-  * Copyright Marco Bonetti (mbonetti@gmail.com)
-  * http://code.google.com/p/django-rosetta/
-
-* Werkzeug - The Swiss Army knife of Python web development
-
-  * Copyright Armin Ronacher (armin.ronacher@active-4.com)
-  * http://werkzeug.pocoo.org/
-
 * BoundFormWizard - A subclass of Django's FormWizard that handled FormSets.
 
   * Matthew Flanagan (http://www.blogger.com/profile/15093905875465763876)
@@ -63,10 +43,6 @@ Software used
 
   * Waldemar Kornewald
   * http://www.allbuttonspressed.com/projects/django-filetransfers
-
-* tesseract - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
-
-  * http://code.google.com/p/tesseract-ocr/
 
 * Image file 1068504_92921456 "Mayan piramid" (Stock Exchange)
 
@@ -89,22 +65,7 @@ Software used
 * Fancybox - FancyBox is a tool for displaying images, html content and multi-media in a Mac-style "lightbox" that floats overtop of web page. 
 
   * http://fancybox.net
-
-* unpaper - post-processing scanned and photocopied book pages
-
-  * Jens Gulden 2005-2007 - unpaper@jensgulden.de.
-  * http://unpaper.berlios.de/
-    
-* favicon
-
-  * http://www.iconfinder.com/icondetails/21581/24/draw_pyramid_icon
-  * Gnome Project    
-
-* MongoDB - (from "humongous") is a scalable, high-performance, open source, document-oriented database.
-
-  * Copyright 10gen
-  * http://www.mongodb.org/
-
+  
 * PyMongo - is a Python distribution containing tools for working with MongoDB, and is the recommended way to work with MongoDB from Python.
 
   * Copyright 2009, Michael Dirolf
@@ -157,4 +118,12 @@ Software used
   * Copyright © 2009-2011 - Daniel Lindsley
   * http://haystacksearch.org/
 
+* pbs - PBS is a unique subprocess wrapper that maps your system programs to Python functions dynamically
 
+  * Copyright Andrew Moffat
+  * https://github.com/amoffat/pbs/
+  
+* python-requests - Requests is an ISC Licensed HTTP library, written in Python, for human beings.
+
+  * Copyright Kenneth Reitz
+  * http://docs.python-requests.org/en/latest/index.html
