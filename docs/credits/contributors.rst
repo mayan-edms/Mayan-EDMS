@@ -92,7 +92,8 @@ Translations
 
 * French
 
-  - Pierre Lhoste (https://www.transifex.com/accounts/profile/peterhost/)
+  - Pierre Lhoste (peter.cathbad.host@gmail.com)
+  - Patrick Hetu (https://www.transifex.com/accounts/profile/PatrickHetu/)
 
 
 Remote access for debugging
