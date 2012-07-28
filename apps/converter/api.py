@@ -7,6 +7,8 @@ import logging
 from django.utils.encoding import smart_str
 
 from common.conf.settings import TEMPORARY_DIRECTORY
+from common.textparser import TextParser, TEXT_PARSER_MIMETYPES
+from mimetype.api import get_mimetype
 
 from .literals import (DEFAULT_PAGE_NUMBER,
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
@@ -21,6 +23,8 @@ from .exceptions import OfficeConversionError, UnknownFileFormat
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
 logger = logging.getLogger(__name__)
+text_parser = TextParser()
+TEXT_PARSER_FILE_SUFFIX = '_text_parser'
 
 
 def cache_cleanup(input_filepath, *args, **kwargs):
@@ -55,7 +59,22 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
     if os.path.exists(output_filepath):
         return output_filepath
 
-    if office_converter:
+    if not mimetype:
+        with open(input_filepath, 'rb') as descriptor:
+            mimetype2, encoding = get_mimetype(descriptor, input_filepath, mimetype_only=True)
+    
+    logger.debug('mimetype: %s' % mimetype)
+    
+    if mimetype in TEXT_PARSER_MIMETYPES:
+        logger.debug('creating page image with TextParser')
+        parser_output_filepath = os.path.join(TEMPORARY_DIRECTORY, u''.join([input_filepath, str(page), TEXT_PARSER_FILE_SUFFIX]))
+        logger.debug('parser_output_filepath: %s', parser_output_filepath)
+        with open(parser_output_filepath, 'wb') as descriptor:
+            descriptor.write(text_parser.render_to_image(input_filepath, page_number=page))
+        
+        input_filepath = parser_output_filepath
+        mimetype = 'image/png'
+    elif office_converter:
         try:
             office_converter.convert(input_filepath, mimetype=mimetype)
             if office_converter.exists:
@@ -102,6 +121,15 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
 
 
 def get_page_count(input_filepath):
+    # Try to determine the page count first with the TextParser
+    with open(input_filepath, 'rb') as descriptor:
+        mimetype, encoding = get_mimetype(descriptor, input_filepath, mimetype_only=True)
+        logger.debug('mimetype: %s' % mimetype)
+        if mimetype in TEXT_PARSER_MIMETYPES:
+            logger.debug('getting page count with text parser')
+            parser = TextParser()
+            return len(parser.render_to_viewport(input_filepath))
+  
     logger.debug('office_converter: %s' % office_converter)
     if office_converter:
         try:
