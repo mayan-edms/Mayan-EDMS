@@ -12,7 +12,7 @@ from converter.exceptions import OfficeConversionError
 from documents.utils import document_save_to_temp_dir
 from common.utils import copyfile
 from common.conf.settings import TEMPORARY_DIRECTORY
-from common.textparser import TextParser as OriginalTextParser
+from common.textparser import TextParser as OriginalTextParser, TEXT_PARSER_MIMETYPES
 
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
 from ocr.conf.settings import PDFTOTEXT_PATH
@@ -190,5 +190,5 @@ class TextParser(Parser):
         
 
 register_parser(mimetypes=[u'application/pdf'], parsers=[PopplerParser, SlateParser])
-register_parser(mimetypes=[u'text/plain'], parsers=[TextParser])
+register_parser(mimetypes=TEXT_PARSER_MIMETYPES, parsers=[TextParser])
 register_parser(mimetypes=office_converter.CONVERTER_OFFICE_FILE_MIMETYPES, parsers=[OfficeParser])
