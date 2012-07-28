@@ -1,3 +1,5 @@
+import codecs
+
 from pygments import highlight
 from pygments.lexers import TextLexer, guess_lexer, get_lexer_for_filename, ClassNotFound
 from pygments.formatters import ImageFormatter
@@ -6,10 +8,10 @@ DEFAULT_PAGE_WIDTH = 70
 DEFAULT_PAGE_HEIGHT = 57
 DEFAULT_LINE_NUMBER_PAD = 19
 CHUNKSIZE = 1024
-NEWLINE = '\n'
-SPACE = ' '
+NEWLINE = u'\n'
+SPACE = u' '
 
-TEXT_PARSER_MIMETYPES = ['text/plain']
+TEXT_PARSER_MIMETYPES = ['text/plain' ,'text/x-python', 'text/html', 'text/x-shellscript']
 
 
 class TextParser(object):
@@ -19,7 +21,7 @@ class TextParser(object):
         returning a list of pages which are themselves a list of lines
         """
         pages = []
-        with open(filename, 'rU') as descriptor:
+        with codecs.open(filename, 'rU', 'utf-8') as descriptor:
             width = 0
             height = 0
             line = []
@@ -32,7 +34,7 @@ class TextParser(object):
                         
                     width = width + 1
                     if width >= page_width or letter == NEWLINE:
-                        page.append(''.join(line))
+                        page.append(u''.join(line))
                         line = []
                         width = 0
                         height = height + 1
@@ -63,7 +65,7 @@ class TextParser(object):
 
         if not lexer:
             # Read entire file to guess the lexer
-            with open(filename, 'rb') as descriptor:
+            with codecs.open(filename, 'r', 'utf-8') as descriptor:                
                 file_data = descriptor.read()
                 if not lexer:
                     try:
@@ -73,26 +75,15 @@ class TextParser(object):
                             lexer = guess_lexer(file_data)
                         except ClassNotFound:
                             lexer = TextLexer()
-        
+       
         if page_number:
             # Render a single page into image
-            return highlight('\n'.join(pages[page_number - 1]), lexer, ImageFormatter(line_number_start=(page_number - 1) * page_height + 1, line_numbers=line_numbers, line_number_pad=line_number_pad))
+            return highlight(u'\n'.join(pages[page_number - 1]), lexer, ImageFormatter(line_number_start=(page_number - 1) * page_height + 1, line_numbers=line_numbers, line_number_pad=line_number_pad))
         else:
             # Render all pages into image
             output = []
         
             for page, page_number in zip(pages, xrange(len(pages))):
-                output.append(highlight('\n'.join(page), lexer, ImageFormatter(line_number_start=page_number * page_height + 1, line_numbers=line_numbers, line_number_pad=line_number_pad)))
+                output.append(highlight(u'\n'.join(page), lexer, ImageFormatter(line_number_start=page_number * page_height + 1, line_numbers=line_numbers, line_number_pad=line_number_pad)))
                 
             return output
-
-            
-#    parser = TextParser()
-#    page_num = 1
-#    #for result in parser.render('docwrap.py'):#, 80):
-#    #for result in parser.render_to_image('input.txt'):#, 80):
-#    for result in parser.render_to_image('../apps/documents/views.py'):#, 80):
-#        FILE = open('page%d' % page_num, 'wb')
-#        FILE.write(result)
-#        FILE.close()
-#        page_num += 1 
