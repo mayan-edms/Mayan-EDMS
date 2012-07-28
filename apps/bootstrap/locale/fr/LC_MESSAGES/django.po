@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-28 19:21+0000\n"
+"PO-Revision-Date: 2012-07-28 19:41+0000\n"
 "Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -51,35 +51,35 @@ msgstr "Fomulaire"
 
 #: api.py:138
 msgid "Building construction form"
-msgstr "Construction"
+msgstr "Formulaire de construction"
 
 #: api.py:139
 msgid "Building usage form"
-msgstr ""
+msgstr "Formulaire d'utilisation"
 
 #: api.py:141
 msgid "Blueprint"
-msgstr ""
+msgstr "Plan général"
 
 #: api.py:142
 msgid "Floorplan"
-msgstr ""
+msgstr "Plan d'étage"
 
 #: api.py:143
 msgid "Plot plan"
-msgstr ""
+msgstr "Plan de parcelle"
 
 #: api.py:146
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: api.py:147
 msgid "Client"
-msgstr ""
+msgstr "Client"
 
 #: api.py:148
 msgid "Permit number"
-msgstr ""
+msgstr "Numéro de permis/autorisation"
 
 #: api.py:149
 msgid "Project"
@@ -91,35 +91,35 @@ msgstr "Utilisateur"
 
 #: api.py:153
 msgid "Permit index"
-msgstr ""
+msgstr "Index des permis"
 
 #: api.py:156 api.py:161
 msgid "Per permit"
-msgstr ""
+msgstr "Par permis/autorisation"
 
 #: api.py:159
 msgid "Per project"
-msgstr ""
+msgstr "Par projet"
 
 #: api.py:164
 msgid "Per date"
-msgstr ""
+msgstr "Par date"
 
 #: api.py:167
 msgid "Per user"
-msgstr ""
+msgstr "Par utilisateur"
 
 #: api.py:170
 msgid "Per client"
-msgstr ""
+msgstr "Par client"
 
 #: links.py:9
 msgid "bootstrap database"
-msgstr ""
+msgstr "pré-configurer la base de données"
 
 #: links.py:10
 msgid "execute"
-msgstr ""
+msgstr "exécuter"
 
 #: links.py:11
 msgid "erase database"
@@ -127,19 +127,19 @@ msgstr "Supprimer la base de données"
 
 #: permissions.py:7
 msgid "Database bootstrap"
-msgstr ""
+msgstr "Pré-configuration de base de données"
 
 #: permissions.py:9
 msgid "Execute document bootstraps"
-msgstr ""
+msgstr "Exécuter la pré-configuration de documents"
 
 #: permissions.py:10
 msgid "Erase the entire database and document storage"
-msgstr ""
+msgstr "Effacer l'ensemble de la base de donnée et tous les documents stockés"
 
 #: views.py:21
 msgid "database bootstrap setups"
-msgstr ""
+msgstr "bases de données pré-configurées"
 
 #: views.py:24
 msgid "description"
@@ -148,38 +148,38 @@ msgstr "description"
 #: views.py:45
 #, python-format
 msgid "Error executing bootstrap setup; %s"
-msgstr ""
+msgstr "Erreur lors de l'exécution de la pré-configuration; %s"
 
 #: views.py:47
 #, python-format
 msgid "Bootstrap setup \"%s\" executed successfully."
-msgstr ""
+msgstr "Pré-configuration \"%s\" effectuée avec succès."
 
 #: views.py:51
 msgid "bootstrap setup"
-msgstr ""
+msgstr "pré-configuration"
 
 #: views.py:59
 #, python-format
 msgid "Are you sure you wish to execute the database bootstrap named: %s?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir exécuter la précofiguration de base de données nommée: %s?"
 
 #: views.py:77
 #, python-format
 msgid "Error erasing database; %s"
-msgstr ""
+msgstr "Erreur lors de l'effacement de la base de données; %s"
 
 #: views.py:79
 msgid "Database erased successfully."
-msgstr ""
+msgstr "Base de Données effacée avec succès."
 
 #: views.py:89
 msgid ""
 "Are you sure you wish to erase the entire database and document storage?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir effacer l'intégralité de la base de données et des documents stockés?"
 
 #: views.py:90
 msgid ""
 "All documents, sources, metadata, metadata types, set, tags, indexes and "
 "logs will be lost irreversibly!"
-msgstr ""
+msgstr "Tous les documents, sources, métadonnées, types de métadonnées, jeux, étiquettes, indexes et logs seron définitivement perdus!"

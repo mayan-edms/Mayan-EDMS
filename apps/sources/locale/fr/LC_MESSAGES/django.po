@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-27 21:33+0000\n"
+"PO-Revision-Date: 2012-07-28 20:37+0000\n"
 "Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -216,11 +216,11 @@ msgstr "statut"
 
 #: models.py:180
 msgid "source log"
-msgstr ""
+msgstr "log d'une source"
 
 #: models.py:181
 msgid "sources logs"
-msgstr ""
+msgstr "logs des sources"
 
 #: models.py:187
 msgid "icon"
@@ -256,11 +256,11 @@ msgstr "Choisir de décompresser ou pas les archives compressées"
 
 #: models.py:221
 msgid "interval source"
-msgstr ""
+msgstr "intervalle pour la source"
 
 #: models.py:222
 msgid "interval sources"
-msgstr ""
+msgstr "intervalle pour les sources"
 
 #: models.py:227
 msgid "host"
@@ -296,26 +296,26 @@ msgstr "pièce jointe-%i"
 
 #: models.py:258
 msgid "email source"
-msgstr ""
+msgstr "email de la source"
 
 #: models.py:259
 msgid "email sources"
-msgstr ""
+msgstr "email des sources"
 
 #: models.py:318 models.py:319
 msgid "POP email"
-msgstr ""
+msgstr "email POP"
 
 #: models.py:325
 msgid "mailbox"
-msgstr ""
+msgstr "boite email"
 
 #: models.py:325
 #, python-format
 msgid ""
 "Mail from which to check for messages with attached documents.  If none is "
 "specified, the default mailbox is %s"
-msgstr ""
+msgstr "Compte email dont il faut surveiller les messages avec pièces jointes. Si aucun n'est spécifié, le comte email par défaut est: %s"
 
 #: models.py:386 models.py:438
 msgid "folder path"
@@ -561,7 +561,7 @@ msgstr "Erreur de suppression du fichier en cours de modificiation;%s."
 
 #: views.py:457
 msgid "Enabled"
-msgstr ""
+msgstr "Activé"
 
 #: views.py:492
 msgid "Source edited successfully"
@@ -614,15 +614,15 @@ msgstr "Créer une nouvelle source de type:%s"
 #: views.py:631
 #, python-format
 msgid "logs for: %s"
-msgstr ""
+msgstr "logs pour: %s"
 
 #: views.py:637
 msgid "Date time"
-msgstr ""
+msgstr "Date et heure"
 
 #: views.py:638
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #: views.py:667
 #, python-format
@@ -665,7 +665,7 @@ msgstr "Transformation de source crée avec succès"
 #: views.py:783
 #, python-format
 msgid "Error creating source transformation; %s"
-msgstr "Erreur lors de la création de la transformation de osurce;%s"
+msgstr "Erreur lors de la création de la transformation de source;%s"
 
 #: views.py:793
 #, python-format
@@ -674,20 +674,20 @@ msgstr "Créer une nouvelle transformation pour la source:%s"
 
 #: wizards.py:34
 msgid "step 1 of 3: Document type"
-msgstr ""
+msgstr "étape 1 sur 3 : Type de document"
 
 #: wizards.py:35
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "étape 2 sur 3 : Sélection des métadonnées"
 
 #: wizards.py:36
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "étape 3 sur 3: Métadonnées du document"
 
 #: wizards.py:44
 msgid "Next step"
-msgstr ""
+msgstr "Etape suivante"
 
 #: conf/settings.py:7
 msgid "Sources"
-msgstr ""
+msgstr "Sources"

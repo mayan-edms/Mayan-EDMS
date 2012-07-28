@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2012-07-28 16:02+0000\n"
+"PO-Revision-Date: 2012-07-28 20:39+0000\n"
 "Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,7 @@ msgstr "Êtes vous certain de vouloir supprimer le document: %(document)s du  r�
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder"
 " \"%(folder)s\"?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir retirer les documents: %(documents)s du répertoire \"%(folder)s\"?"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
