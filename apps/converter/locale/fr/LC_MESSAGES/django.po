@@ -1,418 +1,418 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:44-0400\n"
-"PO-Revision-Date: 2012-07-27 04:09+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-26 23:53-0400\n"
+"PO-Revision-Date: 2012-07-28 17:45+0000\n"
+"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: links.py:9
 msgid "file formats"
-msgstr ""
+msgstr "formats de fichiers"
 
 #: literals.py:19
 msgid "Resize"
-msgstr ""
+msgstr "Redimensionner"
 
 #: literals.py:20
 msgid "Resize."
-msgstr ""
+msgstr "Redimensionner."
 
 #: literals.py:22 literals.py:37
 msgid "width"
-msgstr ""
+msgstr "largeur"
 
 #: literals.py:23 literals.py:38
 msgid "height"
-msgstr ""
+msgstr "hauteur"
 
 #: literals.py:27
 msgid "Rotate"
-msgstr ""
+msgstr "Rotation"
 
 #: literals.py:28
 msgid "Rotate by n degress."
-msgstr ""
+msgstr "Rotation de n degrés"
 
 #: literals.py:30
 msgid "degrees"
-msgstr ""
+msgstr "degrés"
 
 #: literals.py:34
 msgid "Density"
-msgstr ""
+msgstr "Densité"
 
 #: literals.py:35
 msgid "Change the resolution (ie: DPI) without resizing."
-msgstr ""
+msgstr "Changer la résolution (ie: DPI) sans redimensionner."
 
 #: literals.py:42
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 #: literals.py:43
 msgid "Zoom by n percent."
-msgstr ""
+msgstr "Zoom de n pourcents."
 
 #: literals.py:45
 msgid "percent"
-msgstr ""
+msgstr "pourcent"
 
 #: literals.py:51
 msgid "Hasselblad Photo RAW, CFV/H3D39II"
-msgstr ""
+msgstr "Hasselblad Photo RAW, CFV/H3D39II"
 
 #: literals.py:52 literals.py:53
 msgid "Photoshop resource format"
-msgstr ""
+msgstr "Photoshop resource format"
 
 #: literals.py:54
 msgid "Photoshop resource text format"
-msgstr ""
+msgstr "Photoshop resource text format"
 
 #: literals.py:55
 msgid "Photoshop resource wide text format"
-msgstr ""
+msgstr "Photoshop resource wide text format"
 
 #: literals.py:57
 msgid "Raw alpha samples"
-msgstr ""
+msgstr "Raw alpha samples"
 
 #: literals.py:58
 msgid "Adobe Illustrator CS2"
-msgstr ""
+msgstr "Adobe Illustrator CS2"
 
 #: literals.py:59
 msgid "Raw application information"
-msgstr ""
+msgstr "Raw application information"
 
 #: literals.py:60
 msgid "Raw JPEG binary data"
-msgstr ""
+msgstr "Raw JPEG binary data"
 
 #: literals.py:61
 msgid "PFS: 1st Publisher Clip Art"
-msgstr ""
+msgstr "PFS: 1st Publisher Clip Art"
 
 #: literals.py:62
 msgid "Sony Alpha DSLR Raw Image Format"
-msgstr ""
+msgstr "Sony Alpha DSLR Raw Image Format"
 
 #: literals.py:63
 msgid "Microsoft Audio/Visual Interleaved"
-msgstr ""
+msgstr "Microsoft Audio/Visual Interleaved"
 
 #: literals.py:64
 msgid "AVS X image"
-msgstr ""
+msgstr "AVS X image"
 
 #: literals.py:66
 msgid "Raw blue samples"
-msgstr ""
+msgstr "Raw blue samples"
 
 #: literals.py:67
 msgid "Raw blue, green, and red samples"
-msgstr ""
+msgstr "Raw blue, green, and red samples"
 
 #: literals.py:68
 msgid "Raw blue, green, red and alpha samples"
-msgstr ""
+msgstr "Raw blue, green, red and alpha samples"
 
 #: literals.py:69
 msgid "Microsoft Windows bitmap image"
-msgstr ""
+msgstr "Microsoft Windows bitmap image"
 
 #: literals.py:70
 msgid "Microsoft Windows bitmap image version 2"
-msgstr ""
+msgstr "Microsoft Windows bitmap image version 2"
 
 #: literals.py:71
 msgid "Microsoft Windows bitmap image version 3"
-msgstr ""
+msgstr "Microsoft Windows bitmap image version 3"
 
 #: literals.py:72
 msgid "BRF ASCII Braille format"
-msgstr ""
+msgstr "BRF ASCII Braille format"
 
 #: literals.py:73
 msgid "Raw blue, red, and green samples"
-msgstr ""
+msgstr "Raw blue, red, and green samples"
 
 #: literals.py:75
 msgid "Raw cyan samples"
-msgstr ""
+msgstr "Raw cyan samples"
 
 #: literals.py:76 literals.py:181
 msgid "Magick Persistent Cache image format"
-msgstr ""
+msgstr "Magick Persistent Cache image format"
 
 #: literals.py:77 literals.py:78
 msgid "Continuous Acquisition and Life-cycle Support Type 1 image"
-msgstr ""
+msgstr "Continuous Acquisition and Life-cycle Support Type 1 image"
 
 #: literals.py:79
 msgid "Image caption"
-msgstr ""
+msgstr "Image caption"
 
 #: literals.py:80
 msgid "Cineon Image File"
-msgstr ""
+msgstr "Cineon Image File"
 
 #: literals.py:81
 msgid "Cisco IP phone image format"
-msgstr ""
+msgstr "Cisco IP phone image format"
 
 #: literals.py:82
 msgid "Image Clip Mask"
-msgstr ""
+msgstr "Image Clip Mask"
 
 #: literals.py:83
 msgid "Raw cyan, magenta, yellow, and black samples"
-msgstr ""
+msgstr "Raw cyan, magenta, yellow, and black samples"
 
 #: literals.py:84
 msgid "Raw cyan, magenta, yellow, black, and opacity samples"
-msgstr ""
+msgstr "Raw cyan, magenta, yellow, black, and opacity samples"
 
 #: literals.py:85 literals.py:86
 msgid "Canon Digital Camera Raw Image Format"
-msgstr ""
+msgstr "Canon Digital Camera Raw Image Format"
 
 #: literals.py:87
 msgid "Microsoft Cursor Icon"
-msgstr ""
+msgstr "Microsoft Cursor Icon"
 
 #: literals.py:88
 msgid "DR Halo"
-msgstr ""
+msgstr "DR Halo"
 
 #: literals.py:90
 msgid "Digital Imaging and Communications in Medicine image"
-msgstr ""
+msgstr "Digital Imaging and Communications in Medicine image"
 
 #: literals.py:91
 msgid "Kodak Digital Camera Raw Image File"
-msgstr ""
+msgstr "Kodak Digital Camera Raw Image File"
 
 #: literals.py:92
 msgid "ZSoft IBM PC multi-page Paintbrush"
-msgstr ""
+msgstr "ZSoft IBM PC multi-page Paintbrush"
 
 #: literals.py:93
 msgid "Microsoft DirectDraw Surface"
-msgstr ""
+msgstr "Microsoft DirectDraw Surface"
 
 #: literals.py:94
 msgid "Multi-face font package (Freetype 2.4.2)"
-msgstr ""
+msgstr "Multi-face font package (Freetype 2.4.2)"
 
 #: literals.py:95
 msgid "Déjà vu"
-msgstr ""
+msgstr "Déjà vu"
 
 #: literals.py:96
 msgid "Adobe Digital Negative"
-msgstr ""
+msgstr "Adobe Digital Negative"
 
 #: literals.py:97
 msgid "Graphviz"
-msgstr ""
+msgstr "Graphviz"
 
 #: literals.py:98
 msgid "SMPTE 268M-2003 (DPX 2.0)"
-msgstr ""
+msgstr "SMPTE 268M-2003 (DPX 2.0)"
 
 #: literals.py:100
 msgid "Encapsulated Portable Document Format"
-msgstr ""
+msgstr "Encapsulated Portable Document Format"
 
 #: literals.py:101 literals.py:106
 msgid "Adobe Encapsulated PostScript Interchange format"
-msgstr ""
+msgstr "Adobe Encapsulated PostScript Interchange format"
 
 #: literals.py:102 literals.py:105
 msgid "Adobe Encapsulated PostScript"
-msgstr ""
+msgstr "Adobe Encapsulated PostScript"
 
 #: literals.py:103
 msgid "Adobe Level II Encapsulated PostScript"
-msgstr ""
+msgstr "Adobe Level II Encapsulated PostScript"
 
 #: literals.py:104
 msgid "Adobe Level III Encapsulated PostScript"
-msgstr ""
+msgstr "Adobe Level III Encapsulated PostScript"
 
 #: literals.py:107
 msgid "Adobe Encapsulated PostScript with TIFF preview"
-msgstr ""
+msgstr "Adobe Encapsulated PostScript with TIFF preview"
 
 #: literals.py:108
 msgid "Adobe Level II Encapsulated PostScript with TIFF preview"
-msgstr ""
+msgstr "Adobe Level II Encapsulated PostScript with TIFF preview"
 
 #: literals.py:109
 msgid "Adobe Level III Encapsulated PostScript with TIFF preview"
-msgstr ""
+msgstr "Adobe Level III Encapsulated PostScript with TIFF preview"
 
 #: literals.py:110
 msgid "Epson RAW Format"
-msgstr ""
+msgstr "Epson RAW Format"
 
 #: literals.py:111
 msgid "Exif digital camera binary data"
-msgstr ""
+msgstr "Exif digital camera binary data"
 
 #: literals.py:112
 msgid "High Dynamic-range (HDR)"
-msgstr ""
+msgstr "High Dynamic-range (HDR)"
 
 #: literals.py:114
 msgid "Group 3 FAX (Not TIFF Group3 FAX)"
-msgstr ""
+msgstr "Group 3 FAX (Not TIFF Group3 FAX)"
 
 #: literals.py:115
 msgid "Autodesk FLI animations file"
-msgstr ""
+msgstr "Autodesk FLI animations file"
 
 #: literals.py:116
 msgid "Autodesk FLC animations file"
-msgstr ""
+msgstr "Autodesk FLC animations file"
 
 #: literals.py:117 literals.py:120
 msgid "Flexible Image Transport System"
-msgstr ""
+msgstr "Flexible Image Transport System"
 
 #: literals.py:118
 msgid "Kodak FlashPix file"
-msgstr ""
+msgstr "Kodak FlashPix file"
 
 #: literals.py:119 literals.py:225
 msgid "Plasma fractal image"
-msgstr ""
+msgstr "Plasma fractal image"
 
 #: literals.py:122
 msgid "Raw green samples"
-msgstr ""
+msgstr "Raw green samples"
 
 #: literals.py:123
 msgid "Group 3 FAX"
-msgstr ""
+msgstr "Group 3 FAX"
 
 #: literals.py:124
 msgid "Raw green, blue, and red samples"
-msgstr ""
+msgstr "Raw green, blue, and red samples"
 
 #: literals.py:125
 msgid "GIMP brush file"
-msgstr ""
+msgstr "GIMP brush file"
 
 #: literals.py:126
 msgid "CompuServe graphics interchange format (version 89a)"
-msgstr ""
+msgstr "CompuServe graphics interchange format (version 89a)"
 
 #: literals.py:127
 msgid "CompuServe graphics interchange format (version 87a)"
-msgstr ""
+msgstr "CompuServe graphics interchange format (version 87a)"
 
 #: literals.py:128
 msgid "Gradual passing from one shade to another"
-msgstr ""
+msgstr "Gradual passing from one shade to another"
 
 #: literals.py:129
 msgid "Raw gray samples"
-msgstr ""
+msgstr "Raw gray samples"
 
 #: literals.py:130
 msgid "Raw green, red, and blue samples"
-msgstr ""
+msgstr "Raw green, red, and blue samples"
 
 #: literals.py:131
 msgid "Raw CCITT Group4"
-msgstr ""
+msgstr "Raw CCITT Group4"
 
 #: literals.py:133
 msgid "Histogram of the image"
-msgstr ""
+msgstr "Histograme de l'image"
 
 #: literals.py:134
 msgid "HRZ: Slow scan TV"
-msgstr ""
+msgstr "HRZ: Slow scan TV"
 
 #: literals.py:135 literals.py:136 literals.py:255
 msgid "Hypertext Markup Language and a client-side image map"
-msgstr ""
+msgstr "Hypertext Markup Language and a client-side image map"
 
 #: literals.py:138 literals.py:264 literals.py:279 literals.py:283
 msgid "Truevision Targa image"
-msgstr ""
+msgstr "Truevision Targa image"
 
 #: literals.py:139 literals.py:140
 msgid "ICC Color Profile"
-msgstr ""
+msgstr "ICC Color Profile"
 
 #: literals.py:141 literals.py:142
 msgid "Microsoft Icon"
-msgstr ""
+msgstr "Microsoft Icon"
 
 #: literals.py:143
 msgid "Hald CLUT identity image"
-msgstr ""
+msgstr "Hald CLUT identity image"
 
 #: literals.py:144
 msgid "LabEye image format"
-msgstr ""
+msgstr "LabEye image format"
 
 #: literals.py:145
 msgid "GraphicsMagick Embedded Image"
-msgstr ""
+msgstr "GraphicsMagick Embedded Image"
 
 #: literals.py:146
 msgid "The image format and characteristics"
-msgstr ""
+msgstr "Formats et caractéristiques de l'image"
 
 #: literals.py:147
 msgid "Base64-encoded inline images"
-msgstr ""
+msgstr "Base64-encoded inline images"
 
 #: literals.py:148
 msgid "IPL Image Sequence"
-msgstr ""
+msgstr "IPL Image Sequence"
 
 #: literals.py:149
 msgid "IPTC Newsphoto"
-msgstr ""
+msgstr "IPTC Newsphoto"
 
 #: literals.py:150 literals.py:151
 msgid "IPTC Newsphoto text format"
-msgstr ""
+msgstr "IPTC Newsphoto text format"
 
 #: literals.py:152
 msgid "ISO/TR 11548-1 format"
-msgstr ""
+msgstr "ISO/TR 11548-1 format"
 
 #: literals.py:154 literals.py:157
 msgid "JPEG-2000 Code Stream Syntax"
-msgstr ""
+msgstr "JPEG-2000 Code Stream Syntax"
 
 #: literals.py:155
 msgid "JPEG Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
-msgstr ""
+msgstr "JPEG Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #: literals.py:156
 msgid "JPEG-2000 JP2 File Format Syntax"
-msgstr ""
+msgstr "JPEG-2000 JP2 File Format Syntax"
 
 #: literals.py:158 literals.py:159
 msgid "Joint Photographic Experts Group JFIF format (IJG JPEG 62)"
@@ -822,116 +822,117 @@ msgstr ""
 
 #: literals.py:287
 msgid "Word Perfect Graphics"
-msgstr ""
+msgstr "Word Perfect Graphics"
 
 #: literals.py:288
 msgid "Windows Media Video"
-msgstr ""
+msgstr "Windows Media Video"
 
 #: literals.py:289
 msgid "Compressed Windows Meta File"
-msgstr ""
+msgstr "Compressed Windows Meta File"
 
 #: literals.py:291
 msgid "X Window System"
-msgstr ""
+msgstr "X Window System"
 
 #: literals.py:292
 msgid "Foveon X3 (Sigma/Polaroid) Raw picture file"
-msgstr ""
+msgstr "Foveon X3 (Sigma/Polaroid) Raw picture file"
 
 #: literals.py:293
 msgid "X Windows system bitmap (black and white)"
-msgstr ""
+msgstr "X Windows system bitmap (black and white)"
 
 #: literals.py:294
 msgid "Constant image uniform color"
-msgstr ""
+msgstr "Constant image uniform color"
 
 #: literals.py:295
 msgid "GIMP image"
-msgstr ""
+msgstr "GIMP image"
 
 #: literals.py:296
 msgid "Adobe XML metadata"
-msgstr ""
+msgstr "Adobe XML metadata"
 
 #: literals.py:297
 msgid "X Windows system pixmap (color)"
-msgstr ""
+msgstr "X Windows system pixmap (color)"
 
 #: literals.py:298
 msgid "Microsoft XML Paper Specification"
-msgstr ""
+msgstr "Microsoft XML Paper Specification"
 
 #: literals.py:300
 msgid "XV thumbnail file"
-msgstr ""
+msgstr "XV thumbnail file"
 
 #: literals.py:301
 msgid "X Windows system window dump (color)"
-msgstr ""
+msgstr "X Windows system window dump (color)"
 
 #: literals.py:303
 msgid "Raw yellow samples"
-msgstr ""
+msgstr "Raw yellow samples"
 
 #: literals.py:304
 msgid "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
-msgstr ""
+msgstr "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
 
 #: views.py:17
 msgid "suported file formats"
-msgstr ""
+msgstr "formats de fichiers reconnus"
 
 #: views.py:22
 msgid "name"
-msgstr ""
+msgstr "nom"
 
 #: views.py:26
 msgid "description"
-msgstr ""
+msgstr "description"
 
 #: conf/settings.py:7
 msgid "Converter"
-msgstr ""
+msgstr "Convertisseur"
 
 #: conf/settings.py:14
 msgid "File path to imagemagick's convert program."
-msgstr ""
+msgstr "Chemin vers le programme de conversion d'image d'imagemagick."
 
 #: conf/settings.py:23
 msgid "File path to imagemagick's identify program."
-msgstr ""
+msgstr "Chemin vers le programme de vérification/identification d'image d'imagemagick."
 
 #: conf/settings.py:32
 msgid "File path to graphicsmagick's program."
-msgstr ""
+msgstr "Chemin vers le programme graphicsmagick."
 
 #: conf/settings.py:41
 msgid ""
 "Set of configuration options to pass to the GraphicsMagick executable to "
 "fine tune it's functionality as explained in the GraphicsMagick "
 "documentation."
-msgstr ""
+msgstr "Arguments à fournir en ligne de commande au programme GraphicsMagick si vous désirez affiner son mode de fonctionnement, tel que décrit dans la documentation de GraphicsMagick."
 
 #: conf/settings.py:49
 msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick, converter.backends.graphicsmagick and converter.backends.python."
-msgstr ""
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick, converter.backends.graphicsmagick and "
+"converter.backends.python."
+msgstr "Outils de conversion d'images à utiliser. Les options sont: converter.backends.imagemagick, converter.backends.graphicsmagick and converter.backends.python."
 
 #: conf/settings.py:57
 msgid "Path to the libreoffice program."
-msgstr ""
+msgstr "Chemin vers le programme libreoffice"
 
 #: templates/converter_file_formats_help.html:3
 msgid "Help"
-msgstr ""
+msgstr "Aide"
 
 #: templates/converter_file_formats_help.html:4
 #, python-format
 msgid ""
 "These are the file formats supported by the currently selected converter "
 "backend.  In this case: '%(backend)s'"
-msgstr ""
+msgstr "Voici les formats d'images pris en charge par le convertisseur d'image sélectionné. Dans le cas présent: '%(backend)s'"

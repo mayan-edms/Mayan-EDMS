@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:45-0400\n"
-"PO-Revision-Date: 2012-07-27 04:09+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"PO-Revision-Date: 2012-07-27 21:33+0000\n"
+"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: __init__.py:58 widgets.py:39
@@ -25,11 +24,11 @@ msgstr "aperçu"
 
 #: __init__.py:65
 msgid "Connects to the POP3 email sources and fetches the attached documents."
-msgstr ""
+msgstr "Se connecte aux comptes email POP3 et rapatrie les pièces jointes"
 
 #: __init__.py:66
 msgid "Connects to the IMAP email sources and fetches the attached documents."
-msgstr ""
+msgstr "Se connecte aux comptes email IMAP et rapatrie les pièces jointes"
 
 #: forms.py:34 forms.py:59
 msgid "Expand compressed files"
@@ -37,9 +36,7 @@ msgstr "Décompresser les fichiers"
 
 #: forms.py:35 forms.py:60
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Importer le contenu d'un ensemble de fichiers compressés comme fichiers "
-"individuels"
+msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
 #: forms.py:43
 msgid "Staging file"
@@ -75,11 +72,11 @@ msgstr "répertoires surveillés"
 
 #: links.py:21 literals.py:62
 msgid "POP3 email"
-msgstr ""
+msgstr "email POP3"
 
 #: links.py:22 literals.py:63 models.py:377 models.py:378
 msgid "IMAP email"
-msgstr ""
+msgstr "email IMAP"
 
 #: links.py:24 links.py:31
 msgid "edit"
@@ -91,7 +88,7 @@ msgstr "ajout d'une nouvelle source"
 
 #: links.py:27
 msgid "logs"
-msgstr ""
+msgstr "logs"
 
 #: links.py:29
 msgid "transformations"
@@ -111,7 +108,7 @@ msgstr "importer une nouvelle version"
 
 #: links.py:37
 msgid "upload new documents"
-msgstr ""
+msgstr "importer de nouveaux documents"
 
 #: literals.py:18 literals.py:23
 msgid "Always"
@@ -187,11 +184,11 @@ msgstr "répertoires surveillés du serveur"
 
 #: literals.py:70
 msgid "POP3 emails"
-msgstr ""
+msgstr "emails POP3"
 
 #: literals.py:71
 msgid "IMAP emails"
-msgstr ""
+msgstr "emails IMAP"
 
 #: models.py:51
 msgid "title"
@@ -211,11 +208,11 @@ msgstr "liste noire"
 
 #: models.py:169
 msgid "date time"
-msgstr ""
+msgstr "date et heure"
 
 #: models.py:170
 msgid "status"
-msgstr ""
+msgstr "statut"
 
 #: models.py:180
 msgid "source log"
@@ -239,15 +236,15 @@ msgstr "intervalle"
 
 #: models.py:216
 msgid "Interval in seconds between document downloads from this source."
-msgstr ""
+msgstr "Intervalle en secondes entre deux importations de documents à partir de cette source."
 
 #: models.py:217
 msgid "document type"
-msgstr ""
+msgstr "type de document"
 
 #: models.py:217
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
+msgstr "Assigner un type de document aux documents importés à partir de cette source"
 
 #: models.py:218 models.py:389 models.py:426 models.py:439
 msgid "uncompress"
@@ -255,7 +252,7 @@ msgstr "décompresser"
 
 #: models.py:218
 msgid "Whether to expand or not, compressed archives."
-msgstr ""
+msgstr "Choisir de décompresser ou pas les archives compressées"
 
 #: models.py:221
 msgid "interval source"
@@ -267,35 +264,35 @@ msgstr ""
 
 #: models.py:227
 msgid "host"
-msgstr ""
+msgstr "hote"
 
 #: models.py:228
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: models.py:229
 msgid "port"
-msgstr ""
+msgstr "port"
 
 #: models.py:229
 #, python-format
 msgid ""
 "Override the defaults values of %(normal_port)d and %(ssl_port)d for SSL, "
 "can be left blank otherwise."
-msgstr ""
+msgstr "Remplacer les valeurs par défaut de %(normal_port)d et %(ssl_port)d pour le  SSL, ou laisser vide sinon."
 
 #: models.py:230
 msgid "username"
-msgstr ""
+msgstr "utilisateur"
 
 #: models.py:231
 msgid "password"
-msgstr ""
+msgstr "mot de passe"
 
 #: models.py:249
 #, python-format
 msgid "attachment-%i"
-msgstr ""
+msgstr "pièce jointe-%i"
 
 #: models.py:258
 msgid "email source"
@@ -362,10 +359,9 @@ msgstr "répertoire dit d'index, modifications en cours"
 
 #: models.py:441
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
-msgstr ""
-"Intervalle en secondes entre deux vérifications du répertoire sous "
-"surveillance pour détecter l'ajout de nouveaux documents"
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr "Intervalle en secondes entre deux vérifications du répertoire sous surveillance pour détecter l'ajout de nouveaux documents"
 
 #: models.py:465
 msgid "watch folder"
@@ -459,8 +455,7 @@ msgstr "Aucune source de document interactifs n'a été définie ou/ni activée"
 #: views.py:111
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
-"Cliquez %(setup_link)s pour ajouter ou activer des sources de documents. "
+msgstr "Cliquez %(setup_link)s pour ajouter ou activer des sources de documents. "
 
 #: views.py:168
 msgid "New document version uploaded successfully."
@@ -500,9 +495,7 @@ msgstr "importer un document local à partir de la source:%s"
 #: views.py:243
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
-msgstr ""
-"Import de la version de document à partir du document en cours de "
-"modification: %s,réalisé avec succès"
+msgstr "Import de la version de document à partir du document en cours de modification: %s,réalisé avec succès"
 
 #: views.py:246
 #, python-format
@@ -512,17 +505,14 @@ msgstr "fichier en cours de modification:%s importé avec succès"
 #: views.py:249
 #, python-format
 msgid ""
-"Staging file: %s, uncompressed successfully and uploaded as individual files."
-msgstr ""
-"Document en cours de modification:%s, décompressé et importé en tant que "
-"fichiers individuels, avec succès."
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
+msgstr "Document en cours de modification:%s, décompressé et importé en tant que fichiers individuels, avec succès."
 
 #: views.py:252
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
-msgstr ""
-"Document en cours de modification:%s, n'était pas un fichier compressé, "
-"importé comme fichier unique."
+msgstr "Document en cours de modification:%s, n'était pas un fichier compressé, importé comme fichier unique."
 
 #: views.py:257
 #, python-format
@@ -532,9 +522,7 @@ msgstr "fichier en cours de modification:%s supprimé avec succès"
 #: views.py:282
 #, python-format
 msgid "upload a new version from staging source: %s"
-msgstr ""
-"importer une nouvelle version à partir de la source en cours de modification:"
-"%s"
+msgstr "importer une nouvelle version à partir de la source en cours de modification:%s"
 
 #: views.py:284
 #, python-format
@@ -662,16 +650,13 @@ msgstr "Transformation de source supprimée avec succès."
 #: views.py:732
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr ""
-"Erreur lors de la suppression de la transformation de source; %(error)s"
+msgstr "Erreur lors de la suppression de la transformation de source; %(error)s"
 
 #: views.py:746
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Êtes vous certain de vouloir supprimer la transformation de source "
-"\"%(transformation)s\""
+msgstr "Êtes vous certain de vouloir supprimer la transformation de source \"%(transformation)s\""
 
 #: views.py:780
 msgid "Source transformation created successfully"
