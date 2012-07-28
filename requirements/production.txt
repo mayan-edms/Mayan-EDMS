@@ -71,3 +71,4 @@ GitPython==0.3.2.RC1
 # Misc
 
 elementtree==1.2.7-20070827-preview
+Pygments==1.5

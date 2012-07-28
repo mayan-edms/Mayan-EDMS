@@ -12,6 +12,7 @@ from converter.exceptions import OfficeConversionError
 from documents.utils import document_save_to_temp_dir
 from common.utils import copyfile
 from common.conf.settings import TEMPORARY_DIRECTORY
+from common.textparser import TextParser as OriginalTextParser
 
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
 from ocr.conf.settings import PDFTOTEXT_PATH
@@ -165,5 +166,29 @@ class PopplerParser(Parser):
         document_page.save()
 
 
+class TextParser(Parser):
+    def parse(self, document_page, descriptor=None):
+        logger.debug('parsing with TextParser')
+        pagenum = str(document_page.page_number)
+
+        if descriptor:
+            destination_descriptor, temp_filepath = tempfile.mkstemp(dir=TEMPORARY_DIRECTORY)
+            copyfile(descriptor, temp_filepath)
+            document_file = temp_filepath
+        else:
+            document_file = document_save_to_temp_dir(document_page.document, document_page.document.checksum)
+
+        logger.debug('document_file: %s', document_file)
+
+        logger.debug('parsing text page %s' % pagenum)
+
+        parser = OriginalTextParser()
+
+        document_page.content = '\n'.join(parser.render_to_viewport(filename=document_file)[int(pagenum) - 1])
+        document_page.page_label = _(u'Text extracted from file')
+        document_page.save()
+        
+
 register_parser(mimetypes=[u'application/pdf'], parsers=[PopplerParser, SlateParser])
+register_parser(mimetypes=[u'text/plain'], parsers=[TextParser])
 register_parser(mimetypes=office_converter.CONVERTER_OFFICE_FILE_MIMETYPES, parsers=[OfficeParser])
