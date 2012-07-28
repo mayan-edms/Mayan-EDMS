@@ -89,6 +89,8 @@ class DocumentPageForm_edit(forms.ModelForm):
             'page_label',
             'content',
         ]
+        self.fields['content'].widget.attrs.update({'class': 'text_area_div'})
+        
     page_image = forms.CharField(
         required=False, widget=DocumentPageImageWidget()
     )
