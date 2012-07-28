@@ -41,7 +41,7 @@ Setting(
     namespace=namespace,
     name='AUTOMATIC_OCR',
     global_name='OCR_AUTOMATIC_OCR',
-    default=False,
+    default=True,
     description=_(u'Automatically queue newly created documents for OCR.')
 )
 
