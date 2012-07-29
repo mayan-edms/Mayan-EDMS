@@ -17,7 +17,11 @@ class Singleton(models.Model):
     lock_id = models.CharField(max_length=1, default=SINGLETON_LOCK_ID, editable=False, verbose_name=_(u'lock field'), unique=True)
 
     objects = SingletonManager()
-
+    
+    @classmethod
+    def get(cls):
+        return cls.objects.get()
+        
     def save(self, *args, **kwargs):
         self.id = 1
         super(Singleton, self).save(*args, **kwargs)
