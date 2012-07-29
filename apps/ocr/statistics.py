@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext as _
 
-from ocr.models import DocumentQueue, QueueDocument
+from .models import DocumentQueue, QueueDocument
 
 
 def get_statistics():
