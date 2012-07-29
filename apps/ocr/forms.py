@@ -1,3 +1,4 @@
+"""
 from __future__ import absolute_import
 
 from django import forms
@@ -19,3 +20,4 @@ class QueueTransformationForm_create(forms.ModelForm):
     class Meta:
         model = QueueTransformation
         exclude = ('content_type', 'object_id')
+"""

@@ -1,3 +1,4 @@
+"""
 from __future__ import absolute_import
 
 from django.contrib import admin
@@ -18,3 +19,4 @@ class DocumentQueueAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DocumentQueue, DocumentQueueAdmin)
+"""

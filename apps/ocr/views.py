@@ -18,52 +18,111 @@ from acls.models import AccessEntry
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
-from .models import DocumentQueue, QueueDocument, QueueTransformation
-from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
-    DOCUMENTQUEUE_STATE_ACTIVE, DOCUMENTQUEUE_STATE_STOPPED)
-from .exceptions import AlreadyQueued, ReQueueError
+from .models import OCRProcessingSingleton
+#from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
+#    DOCUMENTQUEUE_STATE_ACTIVE, DOCUMENTQUEUE_STATE_STOPPED)
+from .exceptions import (AlreadyQueued, ReQueueError, OCRProcessingAlreadyDisabled,
+    OCRProcessingAlreadyEnabled)
 from .api import clean_pages
-from .forms import QueueTransformationForm, QueueTransformationForm_create
+#from .forms import QueueTransformationForm, QueueTransformationForm_create
 
 
-def queue_document_list(request, queue_name='default'):
+def ocr_log(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
 
-    document_queue = get_object_or_404(DocumentQueue, name=queue_name)
-
-    return object_list(
-        request,
-        queryset=document_queue.queuedocument_set.all(),
-        template_name='generic_list.html',
-        extra_context={
-            'title': _(u'documents in queue: %s') % document_queue,
-            'hide_object': True,
-            'queue': document_queue,
-            'object_name': _(u'document queue'),
-            'navigation_object_name': 'queue',
-            'list_object_variable_name': 'queue_document',
-            'extra_columns': [
-                {'name': 'document', 'attribute': encapsulate(lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.'))},
-                {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document))},
-                {'name': 'submitted', 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
-                {'name': 'delay', 'attribute': 'delay'},
-                {'name': 'state', 'attribute': encapsulate(lambda x: x.get_state_display())},
-                {'name': 'node', 'attribute': 'node_name'},
-                {'name': 'result', 'attribute': 'result'},
-            ],
-            'multi_select_as_buttons': True,
-            'sidebar_subtemplates_list': [
-                {
-                    'name': 'generic_subtemplate.html',
-                    'context': {
-                        'side_bar': True,
-                        'title': _(u'document queue properties'),
-                        'content': _(u'Current state: %s') % document_queue.get_state_display(),
-                    }
+    context = {
+        'queue': OCRProcessingSingleton.get(),
+        'object_name': _(u'OCR processing'),  # TODO fix, not working
+        'navigation_object_name': 'queue',
+        'object_list': [],
+        'title': _(u'OCR log items'),
+        #'hide_object': True,
+        #'hide_link': True,
+        'extra_columns': [
+            {'name': _(u'document'), 'attribute': encapsulate(lambda x: document_link(x.document_version.document) if hasattr(x, 'document_version') else _(u'Missing document.'))},
+            {'name': _(u'version'), 'attribute': 'document_version'},
+            {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document_version.document))},
+            {'name': _('submitted'), 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
+            #{'name': _('delay'), 'attribute': 'delay'},
+            #{'name': _('state'), 'attribute': encapsulate(lambda x: x.get_state_display())},
+            #{'name': _('node'), 'attribute': 'node_name'},
+            {'name': _('result'), 'attribute': 'result'},
+        ],
+        'multi_select_as_buttons': True,
+        'sidebar_subtemplates_list': [
+            {
+                'name': 'generic_subtemplate.html',
+                'context': {
+                    'side_bar': True,
+                    'title': _(u'OCR processing properties'),
+                    'content': _(u'Current state: %s') % OCRProcessingSingleton.get().get_state_display(),
                 }
-            ]
-        },
-    )
+            }
+        ]
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
+    #        'queue': document_queue,
+    #        'object_name': _(u'document queue'),
+    #        'navigation_object_name': 'queue',
+    #        'list_object_variable_name': 'queue_document',
+    #    },
+    #)
+
+
+def ocr_disable(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            OCRProcessingSingleton.get().disable()
+        except OCRProcessingAlreadyDisabled:
+            messages.warning(request, _(u'OCR processing already disabled.'))
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'OCR processing disabled successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'queue': OCRProcessingSingleton.get(),
+        'navigation_object_name': 'queue',
+        'title': _(u'Are you sure you wish to disable OCR processing?'),
+        'next': next,
+        'previous': previous,
+        'form_icon': u'control_stop_blue.png',
+    }, context_instance=RequestContext(request))
+
+
+def ocr_enable(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            OCRProcessingSingleton.get().enable()
+        except OCRProcessingAlreadyDisabled:
+            messages.warning(request, _(u'OCR processing already enabled.'))
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'OCR processing enabled successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'queue': OCRProcessingSingleton.get(),
+        'navigation_object_name': 'queue',
+        'title': _(u'Are you sure you wish to enable OCR processing?'),
+        'next': next,
+        'previous': previous,
+        'form_icon': u'control_play_blue.png',
+    }, context_instance=RequestContext(request))
+
 
 
 def queue_document_delete(request, queue_document_id=None, queue_document_id_list=None):
@@ -175,12 +234,12 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
                 messages.success(
                     request,
                     _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
-                        'document': queue_document.document,
+                        'document': queue_document.document_version.document,
                         'queue': queue_document.document_queue.label
                     }
                 )
             except Document.DoesNotExist:
-                messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
+                messages.error(request, _(u'Document no longer in queue.'))
             except ReQueueError:
                 messages.warning(
                     request,
@@ -206,60 +265,6 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
 
 def re_queue_multiple_document(request):
     return re_queue_document(request, queue_document_id_list=request.GET.get('id_list', []))
-
-
-def document_queue_disable(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    if document_queue.state == DOCUMENTQUEUE_STATE_STOPPED:
-        messages.warning(request, _(u'Document queue: %s, already stopped.') % document_queue)
-        return HttpResponseRedirect(previous)
-
-    if request.method == 'POST':
-        document_queue.state = DOCUMENTQUEUE_STATE_STOPPED
-        document_queue.save()
-        messages.success(request, _(u'Document queue: %s, stopped successfully.') % document_queue)
-        return HttpResponseRedirect(next)
-
-    return render_to_response('generic_confirm.html', {
-        'queue': document_queue,
-        'navigation_object_name': 'queue',
-        'title': _(u'Are you sure you wish to disable document queue: %s') % document_queue,
-        'next': next,
-        'previous': previous,
-        'form_icon': u'control_stop_blue.png',
-    }, context_instance=RequestContext(request))
-
-
-def document_queue_enable(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    if document_queue.state == DOCUMENTQUEUE_STATE_ACTIVE:
-        messages.warning(request, _(u'Document queue: %s, already active.') % document_queue)
-        return HttpResponseRedirect(previous)
-
-    if request.method == 'POST':
-        document_queue.state = DOCUMENTQUEUE_STATE_ACTIVE
-        document_queue.save()
-        messages.success(request, _(u'Document queue: %s, activated successfully.') % document_queue)
-        return HttpResponseRedirect(next)
-
-    return render_to_response('generic_confirm.html', {
-        'queue': document_queue,
-        'navigation_object_name': 'queue',
-        'title': _(u'Are you sure you wish to activate document queue: %s') % document_queue,
-        'next': next,
-        'previous': previous,
-        'form_icon': u'control_play_blue.png',
-    }, context_instance=RequestContext(request))
 
 
 def all_document_ocr_cleanup(request):

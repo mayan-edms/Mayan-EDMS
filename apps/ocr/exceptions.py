@@ -21,3 +21,11 @@ class UnpaperError(Exception):
 
 class ReQueueError(Exception):
     pass
+
+
+class OCRProcessingAlreadyDisabled(Exception):
+    pass
+    
+    
+class OCRProcessingAlreadyEnabled(Exception):
+    pass
