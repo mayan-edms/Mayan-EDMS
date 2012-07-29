@@ -4,15 +4,12 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from documents.statistics import get_statistics as documents_statistics
-from ocr.statistics import get_statistics as ocr_statistics
+from .api import statistics_functions
 
 
 def statistics_view(request):
     if request.user.is_superuser or request.user.is_staff:
-        blocks = []
-        blocks.append(documents_statistics())
-        blocks.append(ocr_statistics())
+        blocks = [function() for function in statistics_functions]
 
         return render_to_response('statistics.html', {
             'blocks': blocks,
