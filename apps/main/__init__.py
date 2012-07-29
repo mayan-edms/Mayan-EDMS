@@ -5,7 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 from navigation.api import Link, register_top_menu
 
 from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
-from .utils import register_multi_items_links
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
@@ -42,6 +41,3 @@ def get_version():
     return ''.join(vers)
 
 __version__ = get_version()
-
-
-register_multi_items_links()

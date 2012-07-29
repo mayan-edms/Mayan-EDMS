@@ -9,7 +9,8 @@ from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 from django.db.utils import DatabaseError
 
-from navigation.api import bind_links, register_multi_item_links
+from navigation.api import (bind_links, register_multi_item_links,
+    register_multi_item_links)
 from documents.models import Document, DocumentVersion
 from maintenance.api import register_maintenance_links
 from project_tools.api import register_tool
@@ -31,7 +32,7 @@ from .links import (submit_document, re_queue_multiple_document,
     document_queue_enable, all_document_ocr_cleanup, queue_document_list,
     ocr_tool_link, setup_queue_transformation_list,
     setup_queue_transformation_create, setup_queue_transformation_edit,
-    setup_queue_transformation_delete)
+    setup_queue_transformation_delete, submit_document_multiple)
 
 bind_links([Document], [submit_document])
 bind_links([DocumentQueue], [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
@@ -43,6 +44,7 @@ bind_links(['setup_queue_transformation_create', 'setup_queue_transformation_edi
 bind_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
 
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
+register_multi_item_links(['folder_view', 'search', 'results', 'index_instance_node_view', 'document_find_duplicates', 'document_type_document_list', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
 
 @transaction.commit_on_success

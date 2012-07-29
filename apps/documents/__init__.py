@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from common.utils import validate_path, encapsulate
 from navigation.api import (bind_links, register_top_menu,
     register_model_list_columns,
-    register_sidebar_template, Link)
+    register_sidebar_template, Link, register_multi_item_links)
 from diagnostics.api import register_diagnostic
 from maintenance.api import register_maintenance_links
 from history.permissions import PERMISSION_HISTORY_VIEW
@@ -40,9 +40,10 @@ from .links import (document_page_transformation_list, document_page_transformat
     document_page_view, document_page_text, document_page_edit, document_page_navigation_next,
     document_page_navigation_previous, document_page_navigation_first,
     document_page_navigation_last, document_page_zoom_in, document_page_zoom_out,
-    document_page_rotate_right, document_page_rotate_left, document_page_view_reset)
+    document_page_rotate_right, document_page_rotate_left, document_page_view_reset,
+    document_multiple_clear_transformations, document_multiple_delete,
+    document_multiple_download)
 from .links import document_clear_image_cache
-
 
 # Register document type links
 bind_links([DocumentType], [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
@@ -84,6 +85,8 @@ bind_links(['document_page_transformation_edit', 'document_page_transformation_d
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
 
 register_maintenance_links([document_find_all_duplicates, document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'documents'))
+
+register_multi_item_links(['folder_view', 'search', 'results', 'index_instance_node_view', 'document_find_duplicates', 'document_type_document_list', 'document_group_view', 'document_list', 'document_list_recent'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download])
 
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
