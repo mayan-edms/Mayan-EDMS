@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'navigation',
     'lock_manager',
     'web_theme',
+    'queue_manager',
     # pagination needs to go after web_theme so that the pagination template is found
     'pagination',
     'common',
