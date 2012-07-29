@@ -212,5 +212,14 @@ http://stackoverflow.com/questions/6493985/django-auth-ldap
 A the moment no, but it is something being considered.
 
 
+**Q:  How to set the default language and have users not be able to change it?
 
+Add the following to ``settings_local.py``:::
 
+    LANGUAGE_CODE = 'es'
+
+    MIDDLEWARE_CLASSES = (
+        
+        -- Copy all the classes from MIDDLEWARE_CLASSES in ``settings.py`` except for 'django.middleware.locale.LocaleMiddleware'
+        
+    )
