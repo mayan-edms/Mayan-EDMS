@@ -73,6 +73,7 @@ Afterwards migrate existing database schema with::
     $ ./manage.py migrate metadata 0001 --fake
     $ ./manage.py migrate acls 0001 --fake
     $ ./manage.py migrate ocr 0001 --fake
+    $ ./manage.py migrate ocr
     $ ./manage.py migrate history 0001 --fake
     $ ./manage.py migrate tags 0001 --fake
     $ ./manage.py migrate linking 0001 --fake
