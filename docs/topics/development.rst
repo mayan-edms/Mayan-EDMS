@@ -101,4 +101,14 @@ Likewise, to see the debug output of the ``tags`` app, just add the following in
     },            
 
 
+--------------------------
+Automatic PDB on exception
+--------------------------
+For an additional tool for debugging problems in **Mayan EDMS**, set the 
+configuration option ``DEBUG_ON_EXCEPTION`` to True and whenever an
+exception occurs, the `Python Debugger`_ will launch automatically at
+the exception point.
+
+
 .. _`logging capabilities`: https://docs.djangoproject.com/en/dev/topics/logging
+.. _`Python Debugger`: http://docs.python.org/library/pdb.html

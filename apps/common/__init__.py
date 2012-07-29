@@ -25,7 +25,7 @@ from .models import AutoAdminSingleton
 from .debug import insert_pdb_exception_hook
 
 if getattr(settings, 'DEBUG_ON_EXCEPTION', False):
-    insert_import_hook()
+    insert_pdb_exception_hook()
 
 bind_links(['about_view', 'license_view'], [about_view, license_view], menu_name='secondary_menu')
 bind_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
