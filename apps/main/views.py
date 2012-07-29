@@ -5,8 +5,6 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from permissions.models import Permission
-
 from .conf.settings import DISABLE_HOME_VIEW
 
 

@@ -12,7 +12,7 @@ from django.conf import settings
 
 from permissions.models import Permission
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
-from documents.models import Document, DocumentType
+from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate, generate_choices_w_labels
 from common.widgets import two_state_template
@@ -182,7 +182,7 @@ def index_setup_document_types(request, index_pk):
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, index)
-        
+
     return assign_remove(
         request,
         left_list=lambda: generate_choices_w_labels(index.get_document_types_not_in_index(), display_object_type=False),
@@ -199,7 +199,7 @@ def index_setup_document_types(request, index_pk):
         }
     )
 
-        
+
 # Node views
 def template_node_create(request, parent_pk):
     parent_node = get_object_or_404(IndexTemplateNode, pk=parent_pk)

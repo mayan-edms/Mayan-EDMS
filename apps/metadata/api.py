@@ -117,5 +117,5 @@ def convert_dict_to_dict_list(dictionary):
         except MetadataType.DoesNotExist:
             raise ValueError('Unknown metadata type name')
         result.append({'id': metadata_type.pk, 'value': value})
-    
+
     return result
