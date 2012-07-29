@@ -15,8 +15,8 @@ from documents.models import Document, DocumentVersion
 from maintenance.api import register_maintenance_links
 from project_tools.api import register_tool
 from acls.api import class_permissions
-
 from scheduler.api import register_interval_job
+from statistics.api import register_statistics
 
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
 from .models import DocumentQueue, QueueTransformation
@@ -24,6 +24,7 @@ from .tasks import task_process_document_queues
 from .permissions import PERMISSION_OCR_DOCUMENT
 from .exceptions import AlreadyQueued
 from . import models as ocr_models
+from .statistics import get_statistics
 
 logger = logging.getLogger(__name__)
 
@@ -91,3 +92,5 @@ register_tool(ocr_tool_link)
 class_permissions(Document, [
     PERMISSION_OCR_DOCUMENT,
 ])
+
+register_statistics(get_statistics)

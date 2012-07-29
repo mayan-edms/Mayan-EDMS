@@ -13,6 +13,7 @@ from maintenance.api import register_maintenance_links
 from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
 from acls.api import class_permissions
+from statistics.api import register_statistics
 
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
@@ -44,6 +45,7 @@ from .links import (document_page_transformation_list, document_page_transformat
     document_multiple_clear_transformations, document_multiple_delete,
     document_multiple_download)
 from .links import document_clear_image_cache
+from .statistics import get_statistics
 
 # Register document type links
 bind_links([DocumentType], [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
@@ -127,3 +129,5 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_HISTORY_VIEW
 ])
+
+register_statistics(get_statistics)
