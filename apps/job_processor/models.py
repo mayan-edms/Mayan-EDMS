@@ -30,7 +30,7 @@ class Job(object):
         close_connection()
         # Run sync or launch async subprocess
         # OR launch 2 processes: monitor & actual process
-        node = Node.objects.get_myself()
+        node = Node.objects.myself()
         worker = Worker.objects.create(node=node, name=u'%s-%d' % (node.hostname, os.getpid()))
         try:
             close_connection()
@@ -63,12 +63,12 @@ class JobType(object):
         job_queue_item.save()
         p = Process(target=Job, args=(self.function, job_queue_item,))
         p.start()
-        #p.join()            
 
 
 class NodeManager(models.Manager):
-    def get_myself(self):
-        return self.model.objects.get(hostname=platform.node())
+    def myself(self):
+        node = self.model.objects.get_or_create(hostname=platform.node(), defaults={'memory_usage': 100})
+        node.refresh()
 
 
 class Node(models.Model):
@@ -81,6 +81,11 @@ class Node(models.Model):
 
     def __unicode__(self):
         return self.hostname
+        
+    def refresh(self):
+        node.cpuload = psutil.cpu_percent()
+        node.memory_usage = psutil.phymem_usage().percent
+        node.save()
        
     def save(self, *args, **kwargs):
         self.heartbeat = datetime.datetime.now()
