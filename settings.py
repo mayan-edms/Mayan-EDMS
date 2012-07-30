@@ -162,6 +162,7 @@ INSTALLED_APPS = (
     'converter',
     'user_management',
     'mimetype',
+    'clustering',
     'scheduler',
     'job_processor',
     # Mayan EDMS
