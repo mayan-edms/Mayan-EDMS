@@ -2,7 +2,8 @@ from __future__ import absolute_import
 
 import datetime
 
-from django.db import models
+from django.db import close_connection
+from django.db import models, transaction
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import LockManager
@@ -26,13 +27,17 @@ class Lock(models.Model):
 
         super(Lock, self).save(*args, **kwargs)
 
+    @transaction.commit_on_success
     def release(self):
+        close_connection()
         try:
             lock = Lock.objects.get(name=self.name, creation_datetime=self.creation_datetime)
             lock.delete()
         except Lock.DoesNotExist:
             # Out lock expired and was reassigned
             pass
+        except DatabaseError:
+            transaction.rollback()
 
     class Meta:
         verbose_name = _(u'lock')

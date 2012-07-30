@@ -154,7 +154,6 @@ INSTALLED_APPS = (
     'navigation',
     'lock_manager',
     'web_theme',
-    'queue_manager',
     # pagination needs to go after web_theme so that the pagination template is found
     'pagination',
     'common',
@@ -188,7 +187,7 @@ INSTALLED_APPS = (
     'workflows',
     'checkouts',
     'rest_api',
-    'bootstrap',
+    #'bootstrap',
     'statistics',
 
     # Has to be last so the other apps can register it's signals

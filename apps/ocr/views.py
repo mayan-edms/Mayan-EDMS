@@ -14,17 +14,16 @@ from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
 from common.utils import encapsulate
 from acls.models import AccessEntry
+from job_processor.exceptions import JobQueuePushError
 
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
 from .models import OCRProcessingSingleton
-#from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
-#    DOCUMENTQUEUE_STATE_ACTIVE, DOCUMENTQUEUE_STATE_STOPPED)
 from .exceptions import (AlreadyQueued, ReQueueError, OCRProcessingAlreadyDisabled,
     OCRProcessingAlreadyEnabled)
 from .api import clean_pages
-#from .forms import QueueTransformationForm, QueueTransformationForm_create
+from . import ocr_job_queue, ocr_job_type
 
 
 def ocr_log(request):
@@ -195,15 +194,15 @@ def submit_document(request, document_id):
 
 
 def submit_document_to_queue(request, document, post_submit_redirect=None):
-    '''
+    """
     This view is meant to be reusable
-    '''
+    """
 
     try:
-        document_queue = DocumentQueue.objects.queue_document(document)
-        messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-            'document': document, 'queue': document_queue.label})
-    except AlreadyQueued:
+        ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk)
+        messages.success(request, _(u'Document: %(document)s was added to the OCR queue sucessfully.') % {
+            'document': document})
+    except JobQueuePushError:
         messages.warning(request, _(u'Document: %(document)s is already queued.') % {
         'document': document})
     except Exception, e:

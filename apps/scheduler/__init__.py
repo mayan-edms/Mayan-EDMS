@@ -17,6 +17,9 @@ from .links import job_list
     
 logger = logging.getLogger(__name__)
 
+
+# TODO: shutdown scheduler on pre_syncdb to avoid accessing non existing models
+
 @receiver(post_syncdb, dispatch_uid='scheduler_shutdown_post_syncdb')
 def scheduler_shutdown_post_syncdb(sender, **kwargs):
     logger.debug('Scheduler shut down on post syncdb signal')

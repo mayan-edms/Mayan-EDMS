@@ -9,13 +9,13 @@ from documents.models import DocumentType, DocumentTypeFilename, Document
 from metadata.models import MetadataType, MetadataSet
 from document_indexing.models import Index, IndexTemplateNode
 from sources.models import WebForm, StagingFolder
-from ocr.models import QueueDocument, QueueTransformation, DocumentQueue
 from history.models import History
 from taggit.models import Tag
 from tags.models import TagProperties
 from folders.models import Folder
 from dynamic_search.models import RecentSearch
 from django_gpg.runtime import gpg
+# TODO: clear the job queues
 
 bootstrap_options = {}
 
@@ -61,18 +61,6 @@ def nuke_database():
 
     # Delete all user roles
     for obj in Role.objects.all():
-        obj.delete()
-
-    # Delete all document in the ocr queue
-    for obj in QueueDocument.objects.all():
-        obj.delete()
-
-    # Delete all the transformations for a queue
-    for obj in QueueTransformation.objects.all():
-        obj.delete()
-
-    # Delete all the ocr document queues
-    for obj in DocumentQueue.objects.all():
         obj.delete()
 
     # Delete all the remaining history events
