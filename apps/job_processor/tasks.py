@@ -9,8 +9,8 @@ from .models import JobQueue
 from .exceptions import JobQueueNoPendingJobs
 
 LOCK_EXPIRE = 10
-MAX_CPU_LOAD = 90
-MAX_MEMORY_USAGE = 90
+MAX_CPU_LOAD = 90.0
+MAX_MEMORY_USAGE = 90.0
 
 logger = logging.getLogger(__name__)
 
