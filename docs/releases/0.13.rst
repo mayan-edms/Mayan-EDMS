@@ -78,6 +78,7 @@ Afterwards migrate existing database schema with::
     $ ./manage.py migrate tags 0001 --fake
     $ ./manage.py migrate linking 0001 --fake
     $ ./manage.py migrate lock_manager 0001 --fake
+    $ ./manage.py migrate job_processor
 
 Issue the following command to index existing documents in the new full text search database::
 
