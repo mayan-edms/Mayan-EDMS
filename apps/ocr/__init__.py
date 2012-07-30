@@ -18,6 +18,7 @@ from acls.api import class_permissions
 from scheduler.api import register_interval_job
 from statistics.api import register_statistics
 from job_processor.models import JobQueue, JobType
+from job_processor.exceptions import JobQueuePushError
 
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
 from .models import OCRProcessingSingleton
@@ -60,8 +61,8 @@ def document_post_save(sender, instance, **kwargs):
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
             try:
-                DocumentQueue.objects.queue_document(instance.document)
-            except AlreadyQueued:
+                instance.submit_for_ocr()
+            except JobQueuePushError:
                 pass
 
 # Disabled because it appears Django execute signals using the same
@@ -82,3 +83,6 @@ class_permissions(Document, [
 #register_statistics(get_statistics)
 create_ocr_job_queue()
 ocr_job_type = JobType('ocr', _(u'OCR'), do_document_ocr)
+
+Document.add_to_class('submit_for_ocr', lambda document: ocr_job_queue.push(ocr_job_type, document_version_pk=document.pk))
+DocumentVersion.add_to_class('submit_for_ocr', lambda document_version: ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk))
