@@ -24,10 +24,7 @@ def refresh_node():
         logger.debug('trying to acquire lock: %s' % lock_id)
         lock = Lock.acquire_lock(lock_id, LOCK_EXPIRE)
         logger.debug('acquired lock: %s' % lock_id)
-        node, created = Node.objects.get_or_create(hostname=platform.node(), defaults={'memory_usage': 0.0})
-        node.cpuload = psutil.cpu_percent()
-        node.memory_usage = psutil.phymem_usage().percent
-        node.save()
+        node = Node.objects.myself()  # Automatically calls the refresh() method too
         lock.release()
     except LockError:
         logger.debug('unable to obtain lock')
