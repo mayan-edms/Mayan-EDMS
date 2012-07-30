@@ -28,8 +28,40 @@ def node_workers(request, node_pk):
         'object_list': node.workers().all(),
         'title': _(u'workers for node: %s') % node,
         'object': node,
-        #'hide_object': True,
+        'hide_links': True,
+        'extra_columns': [
+            {
+                'name': _(u'created'),
+                'attribute': 'creation_datetime',
+            },
+            {
+                'name': _(u'heartbeat'),
+                'attribute': 'heartbeat',
+            },
+            {
+                'name': _(u'state'),
+                'attribute': 'get_state_display',
+            },
+            {
+                'name': _(u'job queue item'),
+                'attribute': 'job_queue_item',
+            },
+            {
+                'name': _(u'job type'),
+                'attribute': 'job_queue_item.job_type',
+            },
+        ],
     }
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
+
+
+    node = models.ForeignKey(Node, verbose_name=_(u'node'))
+    name = models.CharField(max_length=255, verbose_name=_(u'name'))
+    creation_datetime = models.DateTimeField(verbose_name=_(u'creation datetime'), default=lambda: datetime.datetime.now(), editable=False)
+    heartbeat = models.DateTimeField(blank=True, default=datetime.datetime.now(), verbose_name=_(u'heartbeat check'))
+    stat#e = models.CharField(max_length=4,
+        #choices=WORKER_STATE_CHOICES,
+        #default=WORKER_STATE_RUNNING,
+        #verbose_name=_(u'state'))

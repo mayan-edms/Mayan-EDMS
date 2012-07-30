@@ -35,7 +35,7 @@ class Job(object):
         # Run sync or launch async subprocess
         # OR launch 2 processes: monitor & actual process
         node = Node.objects.myself()
-        worker = Worker.objects.create(node=node, name=os.getpid())
+        worker = Worker.objects.create(node=node, name=os.getpid(), job_queue_item=job_queue_item)
         try:
             close_connection()
             transaction.commit_on_success(function)(**loads(job_queue_item.kwargs))
@@ -180,6 +180,7 @@ class Worker(models.Model):
         choices=WORKER_STATE_CHOICES,
         default=WORKER_STATE_RUNNING,
         verbose_name=_(u'state'))
+    job_queue_item = models.ForeignKey(JobQueueItem, verbose_name=_(u'job queue item'))
 
     def __unicode__(self):
         return u'%s-%s' % (self.node.hostname, self.name)
