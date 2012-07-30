@@ -28,7 +28,7 @@ def node_workers(request, node_pk):
         'object_list': node.workers().all(),
         'title': _(u'workers for node: %s') % node,
         'object': node,
-        'hide_object': True,
+        #'hide_object': True,
     }
 
     return render_to_response('generic_list.html', context,
