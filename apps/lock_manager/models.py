@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import datetime
 
 from django.db import close_connection
-from django.db import models, transaction
+from django.db import (models, transaction, DatabaseError)
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import LockManager
@@ -34,7 +34,7 @@ class Lock(models.Model):
             lock = Lock.objects.get(name=self.name, creation_datetime=self.creation_datetime)
             lock.delete()
         except Lock.DoesNotExist:
-            # Out lock expired and was reassigned
+            # Lock expired and was reassigned
             pass
         except DatabaseError:
             transaction.rollback()
