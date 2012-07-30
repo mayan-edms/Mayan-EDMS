@@ -84,5 +84,5 @@ class_permissions(Document, [
 create_ocr_job_queue()
 ocr_job_type = JobType('ocr', _(u'OCR'), do_document_ocr)
 
-Document.add_to_class('submit_for_ocr', lambda document: ocr_job_queue.push(ocr_job_type, document_version_pk=document.pk))
-DocumentVersion.add_to_class('submit_for_ocr', lambda document_version: ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk))
+Document.add_to_class('submit_for_ocr', lambda document: ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk))
+DocumentVersion.add_to_class('submit_for_ocr', lambda document_version: ocr_job_queue.push(ocr_job_type, document_version_pk=document_version.pk))
