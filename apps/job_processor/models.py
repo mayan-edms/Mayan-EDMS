@@ -17,6 +17,8 @@ from django.utils.translation import ugettext
 from django.utils.simplejson import loads, dumps
 
 from common.models import Singleton
+from clustering.models import Node
+
 from .literals import (JOB_STATE_CHOICES, JOB_STATE_PENDING,
     JOB_STATE_PROCESSING, JOB_STATE_ERROR, WORKER_STATE_CHOICES,
     WORKER_STATE_RUNNING)
@@ -65,38 +67,6 @@ class JobType(object):
         job_queue_item.save()
         p = Process(target=Job, args=(self.function, job_queue_item,))
         p.start()
-
-
-class NodeManager(models.Manager):
-    def myself(self):
-        node, created = self.model.objects.get_or_create(hostname=platform.node(), defaults={'memory_usage': 100})
-        node.refresh()
-        return node
-
-
-class Node(models.Model):
-    hostname = models.CharField(max_length=255, verbose_name=_(u'hostname'))
-    cpuload = models.PositiveIntegerField(blank=True, default=0, verbose_name=_(u'cpu load'))
-    heartbeat = models.DateTimeField(blank=True, default=datetime.datetime.now(), verbose_name=_(u'last heartbeat check'))
-    memory_usage = models.FloatField(blank=True, verbose_name=_(u'memory usage'))
-    
-    objects = NodeManager()
-
-    def __unicode__(self):
-        return self.hostname
-        
-    def refresh(self):
-        self.cpuload = psutil.cpu_percent()
-        self.memory_usage = psutil.phymem_usage().percent
-        self.save()
-       
-    def save(self, *args, **kwargs):
-        self.heartbeat = datetime.datetime.now()
-        return super(Node, self).save(*args, **kwargs)
-
-    class Meta:
-        verbose_name = _(u'node')
-        verbose_name_plural = _(u'nodes')
 
 
 class JobQueueManager(models.Manager):

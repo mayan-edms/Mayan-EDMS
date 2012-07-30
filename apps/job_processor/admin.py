@@ -3,17 +3,7 @@ from __future__ import absolute_import
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Node, JobQueue, JobQueueItem, Worker
-
-
-class WorkerInline(admin.StackedInline):
-    list_display = ('name', 'creation_datetime', 'state')
-    model = Worker
-
-    
-class NodeAdmin(admin.ModelAdmin):
-    list_display = ('hostname', 'cpuload', 'heartbeat', 'memory_usage')
-    inlines = [WorkerInline]
+from .models import JobQueue, JobQueueItem
 
 
 class JobQueueItemInline(admin.StackedInline):
@@ -30,5 +20,4 @@ class JobQueueAdmin(admin.ModelAdmin):
     total_items.short_description = _(u'total items')
 
 
-admin.site.register(Node, NodeAdmin)
 admin.site.register(JobQueue, JobQueueAdmin)
