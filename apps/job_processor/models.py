@@ -7,6 +7,8 @@ import hashlib
 import platform
 from multiprocessing import Process
 
+import psutil
+
 from django.db import models, IntegrityError, transaction
 from django.db import close_connection
 from django.contrib.contenttypes import generic
@@ -67,8 +69,9 @@ class JobType(object):
 
 class NodeManager(models.Manager):
     def myself(self):
-        node = self.model.objects.get_or_create(hostname=platform.node(), defaults={'memory_usage': 100})
+        node, created = self.model.objects.get_or_create(hostname=platform.node(), defaults={'memory_usage': 100})
         node.refresh()
+        return node
 
 
 class Node(models.Model):
@@ -83,9 +86,9 @@ class Node(models.Model):
         return self.hostname
         
     def refresh(self):
-        node.cpuload = psutil.cpu_percent()
-        node.memory_usage = psutil.phymem_usage().percent
-        node.save()
+        self.cpuload = psutil.cpu_percent()
+        self.memory_usage = psutil.phymem_usage().percent
+        self.save()
        
     def save(self, *args, **kwargs):
         self.heartbeat = datetime.datetime.now()
