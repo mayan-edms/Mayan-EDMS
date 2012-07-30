@@ -23,7 +23,7 @@ Node.add_to_class('workers', lambda node: node.worker_set)
 
 register_model_list_columns(Node, [
     {
-        'name': _(u'total workers'),
+        'name': _(u'active workers'),
         'attribute': encapsulate(lambda x: x.workers().all().count())
     },
 ])
