@@ -5,4 +5,4 @@ from django.utils.translation import ugettext_lazy as _
 from permissions.models import PermissionNamespace, Permission
 
 namespace = PermissionNamespace('job_processor', _(u'Job processor'))
-#PERMISSION_NODES_VIEW = Permission.objects.register(namespace, 'nodes_view', _(u'View the registeres nodes in a Mayan cluster'))
+PERMISSION_JOB_QUEUE_VIEW = Permission.objects.register(namespace, 'job_queue_view', _(u'View the job queues in a Mayan cluster'))

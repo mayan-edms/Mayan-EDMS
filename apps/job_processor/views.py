@@ -8,12 +8,14 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models.loading import get_model
 from django.http import Http404
 from django.core.exceptions import PermissionDenied
-
 from permissions.models import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry
 from clustering.permissions import PERMISSION_NODES_VIEW
 from clustering.models import Node
+
+from .models import JobQueue
+from .permissions import PERMISSION_JOB_QUEUE_VIEW
 
 
 def node_workers(request, node_pk):
@@ -28,7 +30,7 @@ def node_workers(request, node_pk):
         'object_list': node.workers().all(),
         'title': _(u'workers for node: %s') % node,
         'object': node,
-        'hide_links': True,
+        'hide_link': True,
         'extra_columns': [
             {
                 'name': _(u'created'),
@@ -48,7 +50,11 @@ def node_workers(request, node_pk):
             },
             {
                 'name': _(u'job type'),
-                'attribute': 'job_queue_item.job_type',
+                'attribute': 'job_queue_item.get_job_type',
+            },
+            {
+                'name': _(u'job queue'),
+                'attribute': 'job_queue_item.job_queue',
             },
         ],
     }
@@ -57,11 +63,91 @@ def node_workers(request, node_pk):
         context_instance=RequestContext(request))
 
 
-    node = models.ForeignKey(Node, verbose_name=_(u'node'))
-    name = models.CharField(max_length=255, verbose_name=_(u'name'))
-    creation_datetime = models.DateTimeField(verbose_name=_(u'creation datetime'), default=lambda: datetime.datetime.now(), editable=False)
-    heartbeat = models.DateTimeField(blank=True, default=datetime.datetime.now(), verbose_name=_(u'heartbeat check'))
-    stat#e = models.CharField(max_length=4,
-        #choices=WORKER_STATE_CHOICES,
-        #default=WORKER_STATE_RUNNING,
-        #verbose_name=_(u'state'))
+def job_queues(request):
+    # TODO: permissiong list filtering
+    Permission.objects.check_permissions(request.user, [PERMISSION_JOB_QUEUE_VIEW])
+
+    context = {
+        'object_list': JobQueue.objects.all(),
+        'title': _(u'job queue'),
+        'hide_link': True,
+        'extra_columns': [
+            {
+                'name': _(u'pending jobs'),
+                'attribute': 'pending_jobs.count',
+            },
+            {
+                'name': _(u'active jobs'),
+                'attribute': 'active_jobs.count',
+            },
+            {
+                'name': _(u'error jobs'),
+                'attribute': 'error_jobs.count',
+            },
+        ],
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
+
+def job_queue_items(request, job_queue_pk, pending_jobs=False, error_jobs=False, active_jobs=False):
+    job_queue = get_object_or_404(JobQueue, pk=job_queue_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_JOB_QUEUE_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_JOB_QUEUE_VIEW, request.user, job_queue)
+
+    jobs = set()
+    if pending_jobs:
+        jobs = job_queue.pending_jobs.all()
+        title = _(u'pending jobs for queue: %s') % job_queue
+        
+    if error_jobs:
+        jobs = job_queue.error_jobs.all()
+        title = _(u'error jobs for queue: %s') % job_queue
+
+    if active_jobs:
+        jobs = job_queue.active_jobs.all()
+        title = _(u'active jobs for queue: %s') % job_queue
+
+    context = {
+        'object_list': jobs,
+        'title': title,
+        'object': job_queue,
+        'hide_link': True,
+        'extra_columns': [
+            {
+                'name': _(u'created'),
+                'attribute': 'creation_datetime',
+            },
+            {
+                'name': _(u'job type'),
+                'attribute': 'get_job_type',
+            },
+            {
+                'name': _(u'arguments'),
+                'attribute': 'kwargs',
+            },
+        ],
+    }
+
+    if active_jobs:
+        context['extra_columns'].append(
+            {
+                'name': _(u'worker'),
+                'attribute': encapsulate(lambda x: x.worker or _(u'Unknown')),
+            }
+        )
+    
+    if error_jobs:
+        context['extra_columns'].append(
+            {
+                'name': _(u'result'),
+                'attribute': 'result',
+            }
+        )
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))

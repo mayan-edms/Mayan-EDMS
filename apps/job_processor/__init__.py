@@ -7,16 +7,21 @@ from navigation.api import bind_links, register_model_list_columns
 from project_tools.api import register_tool
 from common.utils import encapsulate
 
-from .tasks import job_queue_poll
-from .links import node_workers
 from clustering.models import Node
+
+from .models import JobQueue
+from .tasks import job_queue_poll
+from .links import (node_workers, job_queues, tool_link,
+    job_queue_items_pending, job_queue_items_error, job_queue_items_active)
 
 JOB_QUEUE_POLL_INTERVAL = 1
 
 register_interval_job('job_queue_poll', _(u'Poll a job queue for pending jobs.'), job_queue_poll, seconds=JOB_QUEUE_POLL_INTERVAL)
 
-#register_tool(tool_link)
-#bind_links([Node, 'node_list'], [node_list], menu_name='secondary_menu')
+register_tool(tool_link)
+bind_links([JobQueue, 'job_queues'], [job_queues], menu_name='secondary_menu')
+bind_links([JobQueue], [job_queue_items_pending, job_queue_items_active, job_queue_items_error])
+
 bind_links([Node], [node_workers])
 
 Node.add_to_class('workers', lambda node: node.worker_set)

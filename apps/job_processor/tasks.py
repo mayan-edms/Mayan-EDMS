@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 def job_queue_poll():
     logger.debug('starting')
 
-    node = Node.objects.myself()  # Automatically calls the refresh() method too
+    node = Node.objects.myself()
     if node.cpuload < MAX_CPU_LOAD and node.memory_usage < MAX_MEMORY_USAGE:
         # Poll job queues if node is not overloaded
         lock_id = u'job_queue_poll'
@@ -37,4 +37,7 @@ def job_queue_poll():
                 except JobQueueNoPendingJobs:
                     logger.debug('no pending jobs for job queue: %s' % job_queue)
             lock.release()
+    else:
+        logger.debug('CPU load or memory usage over limit')
+
             

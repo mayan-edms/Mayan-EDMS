@@ -35,7 +35,7 @@ class Job(object):
         # Run sync or launch async subprocess
         # OR launch 2 processes: monitor & actual process
         node = Node.objects.myself()
-        worker = Worker.objects.create(node=node, name=os.getpid(), job_queue_item=job_queue_item)
+        worker = Worker.objects.create(node=node, pid=os.getpid(), job_queue_item=job_queue_item)
         try:
             close_connection()
             transaction.commit_on_success(function)(**loads(job_queue_item.kwargs))
@@ -62,6 +62,9 @@ class JobType(object):
         self.function = function
         job_types_registry[self.name] = self
         
+    def __unicode__(self):
+        return unicode(self.label)
+       
     def run(self, job_queue_item, **kwargs):
         job_queue_item.state = JOB_STATE_PROCESSING
         job_queue_item.save()
@@ -111,6 +114,14 @@ class JobQueue(models.Model):
     @property
     def pending_jobs(self):
         return self.items.filter(state=JOB_STATE_PENDING)
+    
+    @property
+    def error_jobs(self):
+        return self.items.filter(state=JOB_STATE_ERROR)
+
+    @property
+    def active_jobs(self):
+        return self.items.filter(state=JOB_STATE_PROCESSING)
         
     @property
     def items(self):
@@ -161,9 +172,19 @@ class JobQueueItem(models.Model):
             # TODO: Maybe replace instead of rasining exception w/ replace flag
             raise JobQueuePushError
             
+    def get_job_type(self):
+        return job_types_registry.get(self.job_type)
+            
     def run(self):
-        job_type_instance = job_types_registry.get(self.job_type)
+        job_type_instance = self.get_job_type()
         job_type_instance.run(self)
+        
+    @property
+    def worker(self):
+        try:
+            return self.worker_set.get()
+        except Worker.DoesNotExist:
+            return None
     
     class Meta:
         ordering = ('creation_datetime',)
@@ -173,7 +194,7 @@ class JobQueueItem(models.Model):
 
 class Worker(models.Model):
     node = models.ForeignKey(Node, verbose_name=_(u'node'))
-    name = models.CharField(max_length=255, verbose_name=_(u'name'))
+    pid = models.PositiveIntegerField(max_length=255, verbose_name=_(u'name'))
     creation_datetime = models.DateTimeField(verbose_name=_(u'creation datetime'), default=lambda: datetime.datetime.now(), editable=False)
     heartbeat = models.DateTimeField(blank=True, default=datetime.datetime.now(), verbose_name=_(u'heartbeat check'))
     state = models.CharField(max_length=4,
@@ -183,7 +204,7 @@ class Worker(models.Model):
     job_queue_item = models.ForeignKey(JobQueueItem, verbose_name=_(u'job queue item'))
 
     def __unicode__(self):
-        return u'%s-%s' % (self.node.hostname, self.name)
+        return u'%s-%s' % (self.node.hostname, self.pid)
 
     #def disable(self):
     #    if self.state == WORKER_STATE_DISABLED:
@@ -211,7 +232,6 @@ class Worker(models.Model):
 class JobProcessingConfig(Singleton):
     worker_time_to_live = models.PositiveInteger(verbose_name=(u'time to live (in seconds)') #  After this time a worker is considered dead
     worker_heartbeat_interval = models.PositiveInteger(verbose_name=(u'heartbeat interval')
-    node_heartbeat_interval = models.PositiveInteger(verbose_name=(u'heartbeat interval')
 
     def __unicode__(self):
         return ugettext('Workers configuration')
