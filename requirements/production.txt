@@ -24,7 +24,7 @@ APScheduler==2.0.3
 
 # Python converter backend
 
-Pillow==1.7.4
+Pillow==1.7.7
 ghostscript==0.4.1
 
 # Asset compression
