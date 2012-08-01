@@ -6,15 +6,14 @@ import platform
 
 import psutil
 
-from django.db import models, IntegrityError, transaction
-from django.db import close_connection
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
+from django.core.exceptions import ValidationError
+from django.db import models
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from common.models import Singleton
 
-DEFAULT_NODE_TTL = 5
-DEFAULT_NODE_HEARTBEAT_INTERVAL = 1
+from .literals import (DEFAULT_NODE_HEARTBEAT_INTERVAL, DEFAULT_NODE_HEARTBEAT_TIMEOUT,
+    DEFAULT_DEAD_NODE_REMOVAL_INTERVAL)
 
 
 class NodeManager(models.Manager):
@@ -63,7 +62,7 @@ class Node(models.Model):
 
 class ClusteringConfigManager(models.Manager):
     def dead_nodes(self):
-        return Node.objects.filter(heartbeat__lt=datetime.datetime.now() - datetime.timedelta(seconds=self.model.get().node_time_to_live))
+        return Node.objects.filter(heartbeat__lt=datetime.datetime.now() - datetime.timedelta(seconds=self.model.get().node_heartbeat_timeout))
 
     def delete_dead_nodes(self):
         self.dead_nodes().delete()
@@ -76,14 +75,18 @@ class ClusteringConfigManager(models.Manager):
 
 
 class ClusteringConfig(Singleton):
-    node_time_to_live = models.PositiveIntegerField(verbose_name=(u'time to live (in seconds)'), default=DEFAULT_NODE_TTL) #  After this time a worker is considered dead
-    node_heartbeat_interval = models.PositiveIntegerField(verbose_name=(u'heartbeat interval'), default=DEFAULT_NODE_HEARTBEAT_INTERVAL)
-    # TODO: add validation, interval cannot be greater than TTL
+    node_heartbeat_interval = models.PositiveIntegerField(verbose_name=(u'node heartbeat interval (in seconds)'), help_text=_(u'Interval of time for the node\'s heartbeat update to the cluster.'), default=DEFAULT_NODE_HEARTBEAT_INTERVAL)
+    node_heartbeat_timeout = models.PositiveIntegerField(verbose_name=(u'node heartbeat timeout (in seconds)'), help_text=_(u'After this amount of time a node without heartbeat updates is considered dead and removed from the cluster node list.'), default=DEFAULT_NODE_HEARTBEAT_TIMEOUT)
+    dead_node_removal_interval = models.PositiveIntegerField(verbose_name=(u'dead node check and removal interval (in seconds)'), help_text=_(u'Interval of time to check the cluster for unresponsive nodes and remove them from the cluster.'), default=DEFAULT_DEAD_NODE_REMOVAL_INTERVAL)
 
     objects = ClusteringConfigManager()
 
     def __unicode__(self):
         return ugettext('clustering config')
+
+    def clean(self):
+        if self.node_heartbeat_interval > self.node_heartbeat_timeout:
+            raise ValidationError(_(u'Heartbeat interval cannot be greater than heartbeat timeout or else nodes will always be rated as "dead"'))
 
     class Meta:
         verbose_name = verbose_name_plural = _(u'clustering config')
