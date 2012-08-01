@@ -22,7 +22,7 @@ def node_list(request):
     context = {
         'object_list': Node.objects.all(),
         'title': _(u'nodes'),
-        'extra_columns': [
+        'extra_columns_preffixed': [
             {
                 'name': _(u'hostname'),
                 'attribute': 'hostname',
