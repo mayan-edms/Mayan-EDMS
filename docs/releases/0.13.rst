@@ -61,6 +61,9 @@ If you installed **Mayan EDMS** by cloning the git repository issue::
 otherwise download the compressed archived and uncompress it overriding the existing installation.
 
 After updating the installtion files, start off by adding the new requirements::
+#TODO: libfreetype6-dev,  ttf-bitstream-vera
+
+
 
   $ pip install -r requirements/production.txt
 
