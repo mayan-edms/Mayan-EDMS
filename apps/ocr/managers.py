@@ -2,19 +2,19 @@ from __future__ import absolute_import
 
 from django.db import models
 
-from .exceptions import AlreadyQueued
+#from .exceptions import AlreadyQueued
 
 
-class DocumentQueueManager(models.Manager):
-    '''
-    Module manager class to handle adding documents to an OCR document
-    queue
-    '''
-    def queue_document(self, document, queue_name='default'):
-        document_queue = self.model.objects.get(name=queue_name)
-        if document_queue.queuedocument_set.filter(document=document):
-            raise AlreadyQueued
+class OCRProcessingManager(models.Manager):
+    """
+    Module manager class to handle adding documents to an OCR queue
+    """
+    def queue_document(self, document):
+        pass
+        #document_queue = self.model.objects.get(name=queue_name)
+        #if document_queue.queuedocument_set.filter(document_version=document.latest_version):
+        #    raise AlreadyQueued
 
-        document_queue.queuedocument_set.create(document=document, delay=True)
+        #document_queue.queuedocument_set.create(document_version=document.latest_version, delay=True)
 
-        return document_queue
+        #return document_queue

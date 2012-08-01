@@ -15,49 +15,42 @@ from documents.models import Document, DocumentVersion
 from maintenance.api import register_maintenance_links
 from project_tools.api import register_tool
 from acls.api import class_permissions
-from scheduler.api import register_interval_job
 from statistics.api import register_statistics
+from job_processor.models import JobQueue, JobType
+from job_processor.exceptions import JobQueuePushError
 
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
-from .models import DocumentQueue, QueueTransformation
-from .tasks import task_process_document_queues
+from .models import OCRProcessingSingleton
+from .api import do_document_ocr
 from .permissions import PERMISSION_OCR_DOCUMENT
 from .exceptions import AlreadyQueued
 from . import models as ocr_models
 from .statistics import get_statistics
+from .literals import OCR_QUEUE_NAME
 
 logger = logging.getLogger(__name__)
+ocr_job_queue = None
 
 from .links import (submit_document, re_queue_multiple_document,
-    queue_document_multiple_delete, document_queue_disable,
-    document_queue_enable, all_document_ocr_cleanup, queue_document_list,
-    ocr_tool_link, setup_queue_transformation_list,
-    setup_queue_transformation_create, setup_queue_transformation_edit,
-    setup_queue_transformation_delete, submit_document_multiple)
+    queue_document_multiple_delete, ocr_disable,
+    ocr_enable, all_document_ocr_cleanup, ocr_log,
+    ocr_tool_link, submit_document_multiple)
 
 bind_links([Document], [submit_document])
-bind_links([DocumentQueue], [document_queue_disable, document_queue_enable, setup_queue_transformation_list])
-bind_links([QueueTransformation], [setup_queue_transformation_edit, setup_queue_transformation_delete])
-
-register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
-
-bind_links(['setup_queue_transformation_create', 'setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'document_queue_disable', 'document_queue_enable', 'queue_document_list', 'setup_queue_transformation_list'], [queue_document_list], menu_name='secondary_menu')
-bind_links(['setup_queue_transformation_edit', 'setup_queue_transformation_delete', 'setup_queue_transformation_list', 'setup_queue_transformation_create'], [setup_queue_transformation_create], menu_name='sidebar')
+bind_links([OCRProcessingSingleton], [ocr_disable, ocr_enable])
+#register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
 register_multi_item_links(['folder_view', 'search', 'results', 'index_instance_node_view', 'document_find_duplicates', 'document_type_document_list', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
 
 @transaction.commit_on_success
-def create_default_queue():
+def create_ocr_job_queue():
+    global ocr_job_queue
     try:
-        default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+        ocr_job_queue, created = JobQueue.objects.get_or_create(name=OCR_QUEUE_NAME, defaults={'label': _('OCR'), 'unique_jobs': True})
     except DatabaseError:
         transaction.rollback()
-    else:
-        if created:
-            default_queue.label = ugettext(u'Default')
-            default_queue.save()
 
 
 @receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
@@ -67,8 +60,8 @@ def document_post_save(sender, instance, **kwargs):
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
             try:
-                DocumentQueue.objects.queue_document(instance.document)
-            except AlreadyQueued:
+                instance.submit_for_ocr()
+            except JobQueuePushError:
                 pass
 
 # Disabled because it appears Django execute signals using the same
@@ -80,17 +73,15 @@ def document_post_save(sender, instance, **kwargs):
 #        logger.debug('got call_queue signal: %s' % kwargs)
 #        task_process_document_queues()
 
-
-@receiver(post_syncdb, dispatch_uid='create_default_queue', sender=ocr_models)
-def create_default_queue_signal_handler(sender, **kwargs):
-    create_default_queue()
-
-register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
-
 register_tool(ocr_tool_link)
 
 class_permissions(Document, [
     PERMISSION_OCR_DOCUMENT,
 ])
 
-register_statistics(get_statistics)
+#register_statistics(get_statistics)
+create_ocr_job_queue()
+ocr_job_type = JobType('ocr', _(u'OCR'), do_document_ocr)
+
+Document.add_to_class('submit_for_ocr', lambda document: ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk))
+DocumentVersion.add_to_class('submit_for_ocr', lambda document_version: ocr_job_queue.push(ocr_job_type, document_version_pk=document_version.pk))

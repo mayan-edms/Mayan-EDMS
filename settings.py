@@ -162,6 +162,7 @@ INSTALLED_APPS = (
     'converter',
     'user_management',
     'mimetype',
+    'clustering',
     'scheduler',
     'job_processor',
     # Mayan EDMS
@@ -187,7 +188,7 @@ INSTALLED_APPS = (
     'workflows',
     'checkouts',
     'rest_api',
-    'bootstrap',
+    #'bootstrap',
     'statistics',
 
     # Has to be last so the other apps can register it's signals

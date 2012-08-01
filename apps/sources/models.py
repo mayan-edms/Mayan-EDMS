@@ -27,7 +27,6 @@ from converter.literals import DIMENSION_SEPARATOR
 from documents.models import Document, DocumentType
 from documents.events import history_document_created
 from metadata.api import save_metadata_list
-from scheduler.api import register_interval_job, remove_job
 from acls.utils import apply_default_acls
 
 from .managers import SourceTransformationManager, SourceLogManager
@@ -43,6 +42,7 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     IMAP_DEFAULT_MAILBOX)
 from .compressed_file import CompressedFile, NotACompressedFile
 from .conf.settings import POP3_TIMEOUT
+#from . import sources_scheduler
 
 logger = logging.getLogger(__name__)
 
@@ -441,17 +441,18 @@ class WatchFolder(BaseModel):
     interval = models.PositiveIntegerField(verbose_name=_(u'interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
 
     def save(self, *args, **kwargs):
-        if self.pk:
-            remove_job(self.internal_name())
+        #if self.pk:
+        #    remove_job(self.internal_name())
         super(WatchFolder, self).save(*args, **kwargs)
         self.schedule()
 
     def schedule(self):
-        if self.enabled:
-            register_interval_job(self.internal_name(),
-                title=self.fullname(), func=self.execute,
-                kwargs={'source_id': self.pk}, seconds=self.interval
-            )
+        pass
+        #if self.enabled:
+        #    sources_scheduler.add_interval_job(self.internal_name(),
+        #        title=self.fullname(), function=self.execute,
+        #        seconds=self.interval, kwargs={'source_id': self.pk}
+        #    )
 
     def execute(self, source_id):
         source = WatchFolder.objects.get(pk=source_id)

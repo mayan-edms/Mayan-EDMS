@@ -9,9 +9,8 @@ from django.core.management import call_command
 
 from navigation.api import register_sidebar_template, bind_links, Link
 from documents.models import Document
-from scheduler.runtime import scheduler
+from scheduler.api import LocalScheduler
 from signaler.signals import post_update_index, pre_update_index
-from scheduler.api import register_interval_job
 from lock_manager import Lock, LockError
 
 from .models import IndexableObject
@@ -36,7 +35,7 @@ def scheduler_shutdown_pre_update_index(sender, mayan_runtime, **kwargs):
     # Only shutdown the scheduler if the command is called from the command
     # line
     if not mayan_runtime:
-        scheduler.shutdown()
+        LocalScheduler.shutdown_all()
 
 
 def search_index_update():
@@ -61,4 +60,6 @@ def search_index_update():
 bind_links(['search', 'search_advanced', 'results'], [search], menu_name='form_header')
 bind_links(['results'], [search_again], menu_name='sidebar')
 
-register_interval_job('search_index_update', _(u'Update the search index with the most recent modified documents.'), search_index_update, seconds=INDEX_UPDATE_INTERVAL)
+dynamic_search_scheduler = LocalScheduler('search', _(u'Search'))
+dynamic_search_scheduler.add_interval_job('search_index_update', _(u'Update the search index with the most recent modified documents.'), search_index_update, seconds=INDEX_UPDATE_INTERVAL)
+dynamic_search_scheduler.start()

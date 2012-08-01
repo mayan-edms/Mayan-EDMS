@@ -14,56 +14,114 @@ from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
 from common.utils import encapsulate
 from acls.models import AccessEntry
+from job_processor.exceptions import JobQueuePushError
 
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
-from .models import DocumentQueue, QueueDocument, QueueTransformation
-from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
-    DOCUMENTQUEUE_STATE_ACTIVE, DOCUMENTQUEUE_STATE_STOPPED)
-from .exceptions import AlreadyQueued, ReQueueError
+from .models import OCRProcessingSingleton
+from .exceptions import (AlreadyQueued, ReQueueError, OCRProcessingAlreadyDisabled,
+    OCRProcessingAlreadyEnabled)
 from .api import clean_pages
-from .forms import QueueTransformationForm, QueueTransformationForm_create
+from . import ocr_job_queue, ocr_job_type
 
 
-def queue_document_list(request, queue_name='default'):
+def ocr_log(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
 
-    document_queue = get_object_or_404(DocumentQueue, name=queue_name)
-
-    return object_list(
-        request,
-        queryset=document_queue.queuedocument_set.all(),
-        template_name='generic_list.html',
-        extra_context={
-            'title': _(u'documents in queue: %s') % document_queue,
-            'hide_object': True,
-            'queue': document_queue,
-            'object_name': _(u'document queue'),
-            'navigation_object_name': 'queue',
-            'list_object_variable_name': 'queue_document',
-            'extra_columns': [
-                {'name': 'document', 'attribute': encapsulate(lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.'))},
-                {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document))},
-                {'name': 'submitted', 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
-                {'name': 'delay', 'attribute': 'delay'},
-                {'name': 'state', 'attribute': encapsulate(lambda x: x.get_state_display())},
-                {'name': 'node', 'attribute': 'node_name'},
-                {'name': 'result', 'attribute': 'result'},
-            ],
-            'multi_select_as_buttons': True,
-            'sidebar_subtemplates_list': [
-                {
-                    'name': 'generic_subtemplate.html',
-                    'context': {
-                        'side_bar': True,
-                        'title': _(u'document queue properties'),
-                        'content': _(u'Current state: %s') % document_queue.get_state_display(),
-                    }
+    context = {
+        'queue': OCRProcessingSingleton.get(),
+        'object_name': _(u'OCR processing'),  # TODO fix, not working
+        'navigation_object_name': 'queue',
+        'object_list': [],
+        'title': _(u'OCR log items'),
+        #'hide_object': True,
+        #'hide_link': True,
+        'extra_columns': [
+            {'name': _(u'document'), 'attribute': encapsulate(lambda x: document_link(x.document_version.document) if hasattr(x, 'document_version') else _(u'Missing document.'))},
+            {'name': _(u'version'), 'attribute': 'document_version'},
+            {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document_version.document))},
+            {'name': _('submitted'), 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
+            #{'name': _('delay'), 'attribute': 'delay'},
+            #{'name': _('state'), 'attribute': encapsulate(lambda x: x.get_state_display())},
+            #{'name': _('node'), 'attribute': 'node_name'},
+            {'name': _('result'), 'attribute': 'result'},
+        ],
+        'multi_select_as_buttons': True,
+        'sidebar_subtemplates_list': [
+            {
+                'name': 'generic_subtemplate.html',
+                'context': {
+                    'side_bar': True,
+                    'title': _(u'OCR processing properties'),
+                    'content': _(u'Current state: %s') % OCRProcessingSingleton.get().get_state_display(),
                 }
-            ]
-        },
-    )
+            }
+        ]
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
+    #        'queue': document_queue,
+    #        'object_name': _(u'document queue'),
+    #        'navigation_object_name': 'queue',
+    #        'list_object_variable_name': 'queue_document',
+    #    },
+    #)
+
+
+def ocr_disable(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            OCRProcessingSingleton.get().disable()
+        except OCRProcessingAlreadyDisabled:
+            messages.warning(request, _(u'OCR processing already disabled.'))
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'OCR processing disabled successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'queue': OCRProcessingSingleton.get(),
+        'navigation_object_name': 'queue',
+        'title': _(u'Are you sure you wish to disable OCR processing?'),
+        'next': next,
+        'previous': previous,
+        'form_icon': u'control_stop_blue.png',
+    }, context_instance=RequestContext(request))
+
+
+def ocr_enable(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            OCRProcessingSingleton.get().enable()
+        except OCRProcessingAlreadyDisabled:
+            messages.warning(request, _(u'OCR processing already enabled.'))
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'OCR processing enabled successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'queue': OCRProcessingSingleton.get(),
+        'navigation_object_name': 'queue',
+        'title': _(u'Are you sure you wish to enable OCR processing?'),
+        'next': next,
+        'previous': previous,
+        'form_icon': u'control_play_blue.png',
+    }, context_instance=RequestContext(request))
+
 
 
 def queue_document_delete(request, queue_document_id=None, queue_document_id_list=None):
@@ -136,15 +194,16 @@ def submit_document(request, document_id):
 
 
 def submit_document_to_queue(request, document, post_submit_redirect=None):
-    '''
+    """
     This view is meant to be reusable
-    '''
+    """
 
     try:
-        document_queue = DocumentQueue.objects.queue_document(document)
-        messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-            'document': document, 'queue': document_queue.label})
-    except AlreadyQueued:
+        document.submit_for_ocr()
+        #ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk)
+        messages.success(request, _(u'Document: %(document)s was added to the OCR queue sucessfully.') % {
+            'document': document})
+    except JobQueuePushError:
         messages.warning(request, _(u'Document: %(document)s is already queued.') % {
         'document': document})
     except Exception, e:
@@ -175,12 +234,12 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
                 messages.success(
                     request,
                     _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
-                        'document': queue_document.document,
+                        'document': queue_document.document_version.document,
                         'queue': queue_document.document_queue.label
                     }
                 )
             except Document.DoesNotExist:
-                messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
+                messages.error(request, _(u'Document no longer in queue.'))
             except ReQueueError:
                 messages.warning(
                     request,
@@ -206,60 +265,6 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
 
 def re_queue_multiple_document(request):
     return re_queue_document(request, queue_document_id_list=request.GET.get('id_list', []))
-
-
-def document_queue_disable(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    if document_queue.state == DOCUMENTQUEUE_STATE_STOPPED:
-        messages.warning(request, _(u'Document queue: %s, already stopped.') % document_queue)
-        return HttpResponseRedirect(previous)
-
-    if request.method == 'POST':
-        document_queue.state = DOCUMENTQUEUE_STATE_STOPPED
-        document_queue.save()
-        messages.success(request, _(u'Document queue: %s, stopped successfully.') % document_queue)
-        return HttpResponseRedirect(next)
-
-    return render_to_response('generic_confirm.html', {
-        'queue': document_queue,
-        'navigation_object_name': 'queue',
-        'title': _(u'Are you sure you wish to disable document queue: %s') % document_queue,
-        'next': next,
-        'previous': previous,
-        'form_icon': u'control_stop_blue.png',
-    }, context_instance=RequestContext(request))
-
-
-def document_queue_enable(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    if document_queue.state == DOCUMENTQUEUE_STATE_ACTIVE:
-        messages.warning(request, _(u'Document queue: %s, already active.') % document_queue)
-        return HttpResponseRedirect(previous)
-
-    if request.method == 'POST':
-        document_queue.state = DOCUMENTQUEUE_STATE_ACTIVE
-        document_queue.save()
-        messages.success(request, _(u'Document queue: %s, activated successfully.') % document_queue)
-        return HttpResponseRedirect(next)
-
-    return render_to_response('generic_confirm.html', {
-        'queue': document_queue,
-        'navigation_object_name': 'queue',
-        'title': _(u'Are you sure you wish to activate document queue: %s') % document_queue,
-        'next': next,
-        'previous': previous,
-        'form_icon': u'control_play_blue.png',
-    }, context_instance=RequestContext(request))
 
 
 def all_document_ocr_cleanup(request):
@@ -297,126 +302,3 @@ def display_link(obj):
         return u''.join(output)
     else:
         return obj
-
-
-# Setup views
-def setup_queue_transformation_list(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    context = {
-        'object_list': QueueTransformation.transformations.get_for_object(document_queue),
-        'title': _(u'transformations for: %s') % document_queue,
-        'queue': document_queue,
-        'object_name': _(u'document queue'),
-        'navigation_object_name': 'queue',
-        'list_object_variable_name': 'transformation',
-        'extra_columns': [
-            {'name': _(u'order'), 'attribute': 'order'},
-            {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
-            {'name': _(u'arguments'), 'attribute': 'arguments'}
-            ],
-        'hide_link': True,
-        'hide_object': True,
-    }
-
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
-
-
-def setup_queue_transformation_edit(request, transformation_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
-    redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        form = QueueTransformationForm(instance=transformation, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _(u'Queue transformation edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing queue transformation; %s') % e)
-    else:
-        form = QueueTransformationForm(instance=transformation)
-
-    return render_to_response('generic_form.html', {
-        'title': _(u'Edit transformation: %s') % transformation,
-        'form': form,
-        'queue': transformation.content_object,
-        'transformation': transformation,
-        'navigation_object_list': [
-            {'object': 'queue', 'name': _(u'document queue')},
-            {'object': 'transformation', 'name': _(u'transformation')}
-        ],
-        'next': next,
-    },
-    context_instance=RequestContext(request))
-
-
-def setup_queue_transformation_delete(request, transformation_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
-    redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        try:
-            transformation.delete()
-            messages.success(request, _(u'Queue transformation deleted successfully.'))
-        except Exception, e:
-            messages.error(request, _(u'Error deleting queue transformation; %(error)s') % {
-                'error': e}
-            )
-        return HttpResponseRedirect(redirect_view)
-
-    return render_to_response('generic_confirm.html', {
-        'delete_view': True,
-        'transformation': transformation,
-        'queue': transformation.content_object,
-        'navigation_object_list': [
-            {'object': 'queue', 'name': _(u'document queue')},
-            {'object': 'transformation', 'name': _(u'transformation')}
-        ],
-        'title': _(u'Are you sure you wish to delete queue transformation "%(transformation)s"') % {
-            'transformation': transformation.get_transformation_display(),
-        },
-        'previous': previous,
-        'form_icon': u'shape_square_delete.png',
-    },
-    context_instance=RequestContext(request))
-
-
-def setup_queue_transformation_create(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    redirect_view = reverse('setup_queue_transformation_list', args=[document_queue.pk])
-
-    if request.method == 'POST':
-        form = QueueTransformationForm_create(request.POST)
-        if form.is_valid():
-            try:
-                queue_tranformation = form.save(commit=False)
-                queue_tranformation.content_object = document_queue
-                queue_tranformation.save()
-                messages.success(request, _(u'Queue transformation created successfully'))
-                return HttpResponseRedirect(redirect_view)
-            except Exception, e:
-                messages.error(request, _(u'Error creating queue transformation; %s') % e)
-    else:
-        form = QueueTransformationForm_create()
-
-    return render_to_response('generic_form.html', {
-        'form': form,
-        'queue': document_queue,
-        'object_name': _(u'document queue'),
-        'navigation_object_name': 'queue',
-        'title': _(u'Create new transformation for queue: %s') % document_queue,
-    }, context_instance=RequestContext(request))

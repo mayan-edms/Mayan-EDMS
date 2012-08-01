@@ -158,7 +158,11 @@ def bind_links(sources, links, menu_name=None, position=0):
     bound_links.setdefault(menu_name, {})
     for source in sources:
         bound_links[menu_name].setdefault(source, {'links': []})
-        bound_links[menu_name][source]['links'].extend(links)
+        try:
+            bound_links[menu_name][source]['links'].extend(links)
+        except TypeError:
+            # Try to see if links is a single link
+            bound_links[menu_name][source]['links'].append(links)
 
 
 def register_top_menu(name, link, position=None):

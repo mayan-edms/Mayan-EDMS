@@ -12,7 +12,7 @@ from django.utils.importlib import import_module
 
 from common.conf.settings import TEMPORARY_DIRECTORY
 from converter.api import convert
-from documents.models import DocumentPage
+from documents.models import DocumentPage, DocumentVersion
 
 from .conf.settings import (TESSERACT_PATH, TESSERACT_LANGUAGE, UNPAPER_PATH)
 from .exceptions import TesseractError, UnpaperError
@@ -81,25 +81,25 @@ def run_tesseract(input_filename, lang=None):
     return text
 
 
-def do_document_ocr(queue_document):
+def do_document_ocr(document_version_pk):
     """
     Try first to extract text from document pages using the registered
     parser, if the parser fails or if there is no parser registered for
     the document mimetype do a visual OCR by calling tesseract
     """
-    for document_page in queue_document.document.pages.all():
+    document_version = DocumentVersion.objects.get(pk=document_version_pk)
+    for document_page in document_version.pages.all():
         try:
             # Try to extract text by means of a parser
             parse_document_page(document_page)
         except (ParserError, ParserUnknownFile):
             # Fall back to doing visual OCR
-            ocr_transformations, warnings = queue_document.get_transformation_list()
 
             document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number, version=document_page.document_version.pk)
             unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
             unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
 
-            unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT, transformations=ocr_transformations)
+            unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
             execute_unpaper(input_filepath=unpaper_input, output_filepath=unpaper_output_filepath)
 
             #from PIL import Image, ImageOps

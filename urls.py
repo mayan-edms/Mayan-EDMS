@@ -36,10 +36,12 @@ urlpatterns = patterns('',
     (r'^checkouts/', include('checkouts.urls')),
     (r'^installation/', include('installation.urls')),
     (r'^scheduler/', include('scheduler.urls')),
+    (r'^job_processing/', include('job_processor.urls')),
     (r'^bootstrap/', include('bootstrap.urls')),
     (r'^diagnostics/', include('diagnostics.urls')),
     (r'^maintenance/', include('maintenance.urls')),
     (r'^statistics/', include('statistics.urls')),
+    (r'^clustering/', include('clustering.urls')),
 )
 
 

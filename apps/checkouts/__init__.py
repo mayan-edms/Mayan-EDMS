@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import bind_links, register_top_menu
-from scheduler.api import register_interval_job
+from scheduler.api import LocalScheduler
 
 from documents.models import Document
 from acls.api import class_permissions
@@ -14,6 +14,7 @@ from .permissions import (PERMISSION_DOCUMENT_CHECKOUT,
 from .links import checkout_list, checkout_document, checkout_info, checkin_document
 from .models import DocumentCheckout
 from .tasks import task_check_expired_check_outs
+from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
 
 
 def initialize_document_checkout_extra_methods():
@@ -34,6 +35,8 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
 ])
 
-CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
-register_interval_job('task_check_expired_check_outs', _(u'Check expired check out documents and checks them in.'), task_check_expired_check_outs, seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL)
+checkouts_scheduler = LocalScheduler('checkouts', _(u'Document checkouts'))
+checkouts_scheduler.add_interval_job('task_check_expired_check_outs', _(u'Check expired check out documents and checks them in.'), task_check_expired_check_outs, seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL)
+checkouts_scheduler.start()
+
 initialize_document_checkout_extra_methods()

@@ -31,7 +31,7 @@ class LockManager(models.Manager):
             except self.model.DoesNotExist:
                 # Table based locking
                 logger.debug('lock: %s does not exist' % name)
-                raise LockError('Unable to acquire lock')
+                raise LockError('unable to acquire lock: %s' % name)
 
             if datetime.datetime.now() > lock.creation_datetime + datetime.timedelta(seconds=lock.timeout):
                 logger.debug('reseting deleting stale lock: %s' % name)
