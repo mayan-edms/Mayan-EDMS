@@ -73,18 +73,19 @@ class Link(object):
 
         # Check to see if link has conditional display
         if self.condition:
-            condition_result = self.condition(context)
+            self.condition_result = self.condition(context)
         else:
-            condition_result = True
+            self.condition_result = True
 
-        logger.debug('condition_result: %s', condition_result)
+        logger.debug('self.condition_result: %s', self.condition_result)
 
-        if condition_result:
+        if self.condition_result:
             resolved_link = ResolvedLink()
             resolved_link.text = self.text
             resolved_link.sprite = self.sprite
             resolved_link.icon = self.icon
             resolved_link.permissions = self.permissions
+            resolved_link.condition_result = self.condition_result
 
             try:
                 #args, kwargs = resolve_arguments(context, self.get('args', {}))
