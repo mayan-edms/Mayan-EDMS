@@ -72,6 +72,11 @@ class LocalScheduler(object):
     def lockdown(cls):
         cls._lockdown = True
 
+    @classmethod
+    def clear_all(cls):
+        for scheduler in cls.scheduler_registry.values():
+            scheduler.clear()
+
     def __init__(self, name, label=None):
         self.scheduled_jobs = {}
         self._scheduler = None
@@ -108,7 +113,9 @@ class LocalScheduler(object):
             self.stop_job(job)
 
     def stop_job(self, job):
-        self._scheduler.unschedule_job(job._job)
+        if self.running:
+            self._scheduler.unschedule_job(job._job)
+
         del(self.scheduled_jobs[job.name])
         job.scheduler = None
 
