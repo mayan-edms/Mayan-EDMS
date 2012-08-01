@@ -78,6 +78,7 @@ class ClusteringConfigManager(models.Manager):
 class ClusteringConfig(Singleton):
     node_time_to_live = models.PositiveIntegerField(verbose_name=(u'time to live (in seconds)'), default=DEFAULT_NODE_TTL) #  After this time a worker is considered dead
     node_heartbeat_interval = models.PositiveIntegerField(verbose_name=(u'heartbeat interval'), default=DEFAULT_NODE_HEARTBEAT_INTERVAL)
+    # TODO: add validation, interval cannot be greater than TTL
 
     objects = ClusteringConfigManager()
 
