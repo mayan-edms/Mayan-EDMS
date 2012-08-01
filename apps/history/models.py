@@ -81,12 +81,10 @@ def _process_history_text(history, text):
     }
 
     loaded_dictionary = json.loads(history.dictionary)
-    print 'loaded_dictionary', loaded_dictionary
 
     new_dict = {}
     for key, values in loaded_dictionary.items():
         value_type = pickle.loads(str(values['type']))
-        print 'value_type', value_type
         if isinstance(value_type, models.base.ModelBase):
             for deserialized in serializers.deserialize('json', values['value']):
                 new_dict[key] = deserialized.object
@@ -99,7 +97,6 @@ def _process_history_text(history, text):
             new_dict[key] = json.loads(values['value'])
 
     key_values.update(new_dict)
-    print 'key_values', key_values
     expressions_dict = {}
 
     for key, value in history.get_expressions().items():
