@@ -13,3 +13,4 @@ _build/
 /static/
 /whoosh_index/
 /fabfile_install
+/server_config.yaml
