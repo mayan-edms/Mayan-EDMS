@@ -53,7 +53,7 @@ class DateJob(SchedulerJobBase):
 
 class LocalScheduler(object):
     scheduler_registry = {}
-    lockdown = False
+    _lockdown = False
 
     @classmethod
     def get(cls, name):
@@ -70,7 +70,7 @@ class LocalScheduler(object):
 
     @classmethod
     def lockdown(cls):
-        cls.lockdown = True
+        cls._lockdown = True
 
     def __init__(self, name, label=None):
         self.scheduled_jobs = {}
@@ -81,7 +81,7 @@ class LocalScheduler(object):
 
     def start(self):
         logger.debug('starting scheduler: %s' % self.name)
-        if not self.__class__.lockdown:
+        if not self.__class__._lockdown:
             self._scheduler = OriginalScheduler()
             for job in self.scheduled_jobs.values():
                 self._schedule_job(job)
