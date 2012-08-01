@@ -24,6 +24,10 @@ Overview
 #TODO: preview navigation (fancybox)
 #TODO: document indexing document type filtering
 #TODO: all remaining apps migrated to South
+#TODO: add scheduling
+#TODO: add clustering
+#TODO: add local jobs & distributed job processing
+
 
 What's new in Mayan EDMS v0.13
 ==============================
