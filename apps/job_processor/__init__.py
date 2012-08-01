@@ -15,7 +15,7 @@ from .models import JobQueue, JobProcessingConfig
 from .tasks import job_queue_poll
 from .links import (node_workers, job_queues, tool_link,
     job_queue_items_pending, job_queue_items_error, job_queue_items_active,
-    job_queue_config_edit, setup_link)
+    job_queue_config_edit, setup_link, job_queue_start, job_queue_stop)
 
 
 @transaction.commit_on_success
@@ -33,7 +33,7 @@ add_job_queue_jobs()
 register_tool(tool_link)
 register_setup(setup_link)
 bind_links([JobQueue, 'job_queues'], [job_queues], menu_name='secondary_menu')
-bind_links([JobQueue], [job_queue_items_pending, job_queue_items_active, job_queue_items_error])
+bind_links([JobQueue], [job_queue_start, job_queue_stop, job_queue_items_pending, job_queue_items_active, job_queue_items_error])
 bind_links([Node], [node_workers])
 bind_links(['job_queue_config_edit'], [job_queue_config_edit], menu_name='secondary_menu')
 

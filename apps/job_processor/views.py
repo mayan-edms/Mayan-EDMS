@@ -1,22 +1,23 @@
 from __future__ import absolute_import
 
-from django.shortcuts import render_to_response
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
-from django.shortcuts import get_object_or_404
-from django.contrib.contenttypes.models import ContentType
-from django.db.models.loading import get_model
-from django.http import Http404
-from django.core.exceptions import PermissionDenied
-from permissions.models import Permission
-from common.utils import encapsulate
+
 from acls.models import AccessEntry
+from common.utils import encapsulate
 from clustering.permissions import PERMISSION_NODES_VIEW
 from clustering.models import Node
+from permissions.models import Permission
 
+from .exceptions import JobQueueAlreadyStopped, JobQueueAlreadyStarted
 from .forms import JobProcessingConfigForm
 from .models import JobQueue, JobProcessingConfig
-from .permissions import PERMISSION_JOB_QUEUE_VIEW, PERMISSION_JOB_PROCESSING_CONFIGURATION
+from .permissions import (PERMISSION_JOB_QUEUE_VIEW,
+    PERMISSION_JOB_PROCESSING_CONFIGURATION, PERMISSION_JOB_QUEUE_START_STOP)
 
 
 def node_workers(request, node_pk):
@@ -73,6 +74,10 @@ def job_queues(request):
         'title': _(u'job queue'),
         'hide_link': True,
         'extra_columns': [
+            {
+                'name': _(u'state'),
+                'attribute': 'get_state_display',
+            },
             {
                 'name': _(u'pending jobs'),
                 'attribute': 'pending_jobs.count',
@@ -182,4 +187,66 @@ def job_queue_config_edit(request):
         'form': form,
         'object': job_processing_config,
         'title': _(u'Edit job processing configuration')
-    }, context_instance=RequestContext(request))        
+    }, context_instance=RequestContext(request))
+    
+    
+def job_queue_stop(request, job_queue_pk):
+    job_queue = get_object_or_404(JobQueue, pk=job_queue_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_JOB_QUEUE_START_STOP])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_JOB_QUEUE_START_STOP, request.user, job_queue)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            job_queue.stop()
+        except JobQueueAlreadyStopped:
+            messages.warning(request, _(u'job queue already stopped.'))
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'Job queue stopped successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'object': job_queue,
+        'object_name': _(u'job queue'),
+        'title': _(u'Are you sure you wish to stop job queue: %s?') % job_queue,
+        'next': next,
+        'previous': previous,
+        'form_icon': u'control_stop_blue.png',
+    }, context_instance=RequestContext(request))
+
+
+def job_queue_start(request, job_queue_pk):
+    job_queue = get_object_or_404(JobQueue, pk=job_queue_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_JOB_QUEUE_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_JOB_QUEUE_VIEW, request.user, job_queue)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            job_queue.start()
+        except JobQueueAlreadyStarted:
+            messages.warning(request, _(u'job queue already started.'))
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'Job queue started successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'object': job_queue,
+        'object_name': _(u'job queue'),
+        'title': _(u'Are you sure you wish to start job queue: %s?') % job_queue,
+        'next': next,
+        'previous': previous,
+        'form_icon': u'control_play_blue.png',
+    }, context_instance=RequestContext(request))

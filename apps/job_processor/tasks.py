@@ -7,6 +7,7 @@ from clustering.models import Node
 
 from .models import JobQueue
 from .exceptions import JobQueueNoPendingJobs
+from .literals import JOB_QUEUE_STATE_STARTED
 
 LOCK_EXPIRE = 10
 MAX_CPU_LOAD = 90.0
@@ -30,7 +31,7 @@ def job_queue_poll():
             lock.release()
             raise
         else:
-            for job_queue in JobQueue.objects.all():
+            for job_queue in JobQueue.objects.filter(state=JOB_QUEUE_STATE_STARTED):
                 try:
                     job_item = job_queue.get_oldest_pending_job()
                     job_item.run()

@@ -21,9 +21,11 @@ from clustering.models import Node
 
 from .literals import (JOB_STATE_CHOICES, JOB_STATE_PENDING,
     JOB_STATE_PROCESSING, JOB_STATE_ERROR, WORKER_STATE_CHOICES,
-    WORKER_STATE_RUNNING, DEFAULT_JOB_QUEUE_POLL_INTERVAL)
-from .exceptions import JobQueuePushError, JobQueueNoPendingJobs
-#from .exceptions import (WorkerAlreadyDisabled, WorkerAlreadyEnabled)
+    WORKER_STATE_RUNNING, DEFAULT_JOB_QUEUE_POLL_INTERVAL,
+    JOB_QUEUE_STATE_STOPPED, JOB_QUEUE_STATE_STARTED,
+    JOB_QUEUE_STATE_CHOICES)
+from .exceptions import (JobQueuePushError, JobQueueNoPendingJobs,
+    JobQueueAlreadyStarted, JobQueueAlreadyStopped)
 
 job_queue_labels = {}
 job_types_registry = {}
@@ -83,7 +85,11 @@ class JobQueue(models.Model):
     # Internal name
     name = models.CharField(max_length=32, verbose_name=_(u'name'), unique=True)
     unique_jobs = models.BooleanField(verbose_name=_(u'unique jobs'), default=True)
-
+    state = models.CharField(max_length=4,
+        choices=JOB_QUEUE_STATE_CHOICES,
+        default=JOB_QUEUE_STATE_STARTED,
+        verbose_name=_(u'state'))
+        
     objects = JobQueueManager()
 
     def __unicode__(self):
@@ -136,22 +142,22 @@ class JobQueue(models.Model):
             job_queue_labels[self.name] = label
         return super(JobQueue, self).save(*args, **kwargs)
 
-    #def disable(self):
-    #    if self.state == WORKER_STATE_DISABLED:
-    #        raise WorkerAlreadyDisabled
-    #    
-    #    self.state = WORKER_STATE_DISABLED
-    #    self.save()
-    #
-    #def enable(self):
-    #    if self.state == WORKER_STATE_ENABLED:
-    #        raise WorkerAlreadyEnabled
-    #    
-    #    self.state = WORKER_STATE_ENABLED
-    #    self.save()
-    #    
-    #def is_enabled(self):
-    #    return self.state == WORKER_STATE_ENABLED
+    def stop(self):
+        if self.state == JOB_QUEUE_STATE_STOPPED:
+            raise JobQueueAlreadyStopped
+        
+        self.state = JOB_QUEUE_STATE_STOPPED
+        self.save()
+    
+    def start(self):
+        if self.state == JOB_QUEUE_STATE_STARTED:
+            raise JobQueueAlreadyStarted
+        
+        self.state = JOB_QUEUE_STATE_STARTED
+        self.save()
+        
+    def is_running(self):
+        return self.state == JOB_QUEUE_STATE_STARTED
         
     # TODO: custom runtime methods
         
