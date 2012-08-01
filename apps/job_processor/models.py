@@ -21,7 +21,7 @@ from clustering.models import Node
 
 from .literals import (JOB_STATE_CHOICES, JOB_STATE_PENDING,
     JOB_STATE_PROCESSING, JOB_STATE_ERROR, WORKER_STATE_CHOICES,
-    WORKER_STATE_RUNNING)
+    WORKER_STATE_RUNNING, DEFAULT_JOB_QUEUE_POLL_INTERVAL)
 from .exceptions import JobQueuePushError, JobQueueNoPendingJobs
 #from .exceptions import (WorkerAlreadyDisabled, WorkerAlreadyEnabled)
 
@@ -135,6 +135,23 @@ class JobQueue(models.Model):
         if label:
             job_queue_labels[self.name] = label
         return super(JobQueue, self).save(*args, **kwargs)
+
+    #def disable(self):
+    #    if self.state == WORKER_STATE_DISABLED:
+    #        raise WorkerAlreadyDisabled
+    #    
+    #    self.state = WORKER_STATE_DISABLED
+    #    self.save()
+    #
+    #def enable(self):
+    #    if self.state == WORKER_STATE_ENABLED:
+    #        raise WorkerAlreadyEnabled
+    #    
+    #    self.state = WORKER_STATE_ENABLED
+    #    self.save()
+    #    
+    #def is_enabled(self):
+    #    return self.state == WORKER_STATE_ENABLED
         
     # TODO: custom runtime methods
         
@@ -206,36 +223,17 @@ class Worker(models.Model):
     def __unicode__(self):
         return u'%s-%s' % (self.node.hostname, self.pid)
 
-    #def disable(self):
-    #    if self.state == WORKER_STATE_DISABLED:
-    #        raise WorkerAlreadyDisabled
-    #    
-    #    self.state = WORKER_STATE_DISABLED
-    #    self.save()
-    #
-    #def enable(self):
-    #    if self.state == WORKER_STATE_ENABLED:
-    #        raise WorkerAlreadyEnabled
-    #    
-    #    self.state = WORKER_STATE_ENABLED
-    #    self.save()
-    #    
-    #def is_enabled(self):
-    #    return self.state == WORKER_STATE_ENABLED
-
     class Meta:
         ordering = ('creation_datetime',)
         verbose_name = _(u'worker')
         verbose_name_plural = _(u'workers')
 
-"""
+
 class JobProcessingConfig(Singleton):
-    worker_time_to_live = models.PositiveInteger(verbose_name=(u'time to live (in seconds)') #  After this time a worker is considered dead
-    worker_heartbeat_interval = models.PositiveInteger(verbose_name=(u'heartbeat interval')
+    job_queue_poll_interval = models.PositiveIntegerField(verbose_name=(u'job queue poll interval (in seconds)'), default=DEFAULT_JOB_QUEUE_POLL_INTERVAL)
 
     def __unicode__(self):
-        return ugettext('Workers configuration')
+        return ugettext(u'Job queues configuration')
 
     class Meta:
-        verbose_name = verbose_name_plural = _(u'Workers configuration')
-"""
+        verbose_name = verbose_name_plural = _(u'job queues configuration')

@@ -17,3 +17,5 @@ JOB_STATE_CHOICES = (
     (JOB_STATE_PROCESSING, _(u'processing')),
     (JOB_STATE_ERROR, _(u'error')),
 )
+
+DEFAULT_JOB_QUEUE_POLL_INTERVAL = 2
