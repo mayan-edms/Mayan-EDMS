@@ -3,32 +3,67 @@ from __future__ import absolute_import
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.http import Http404
 
 from permissions.models import Permission
-from common.utils import encapsulate
 
-from .permissions import PERMISSION_VIEW_JOB_LIST
-from .api import get_job_list
+from .permissions import PERMISSION_VIEW_SCHEDULER_LIST, PERMISSION_VIEW_JOB_LIST
+from .api import LocalScheduler
 
 
-def job_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_VIEW_JOB_LIST])
+def scheduler_list(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_VIEW_SCHEDULER_LIST])
 
     context = {
-        'object_list': get_job_list(),
-        'title': _(u'interval jobs'),
+        'object_list': LocalScheduler.get_all(),
+        'title': _(u'local schedulers'),
         'extra_columns': [
             {
+                'name': _(u'name'),
+                'attribute': 'name'
+            },
+            {
                 'name': _(u'label'),
-                'attribute': encapsulate(lambda job: job['title'])
+                'attribute': 'label'
+            },
+            {
+                'name': _(u'running'),
+                'attribute': 'running'
+            },
+        ],
+        'hide_object': True,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
+
+
+def job_list(request, scheduler_name):
+    Permission.objects.check_permissions(request.user, [PERMISSION_VIEW_JOB_LIST])
+    try:
+        scheduler = LocalScheduler.get(scheduler_name)
+    except:
+        raise Http404
+
+    context = {
+        'object_list': scheduler.get_job_list(),
+        'title': _(u'local jobs in scheduler: %s') % scheduler,
+        'extra_columns': [
+            {
+                'name': _(u'name'),
+                'attribute': 'name'
+            },
+            {
+                'name': _(u'label'),
+                'attribute': 'label'
             },
             {
                 'name': _(u'start date time'),
-                'attribute': encapsulate(lambda job: job['job'].trigger.start_date)
+                'attribute': 'start_date'
             },
             {
-                'name': _(u'interval'),
-                'attribute': encapsulate(lambda job: job['job'].trigger.interval)
+                'name': _(u'type'),
+                'attribute': 'job_type'
             },
         ],
         'hide_object': True,
