@@ -14,3 +14,5 @@ STATE_LABELS = {
     STATE_CHECKED_OUT: _(u'checked out'),
     STATE_CHECKED_IN: _(u'checked in/available'),
 }
+
+CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed

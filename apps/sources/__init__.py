@@ -6,7 +6,7 @@ from navigation.api import (bind_links,
     register_model_list_columns)
 from common.utils import encapsulate
 from project_setup.api import register_setup
-from scheduler.api import register_interval_job
+from scheduler.api import LocalScheduler
 from documents.models import Document
 
 from .staging import StagingFile
@@ -62,8 +62,10 @@ register_model_list_columns(StagingFile, [
 
 register_setup(setup_sources)
 
-register_interval_job('task_fetch_pop3_emails', _(u'Connects to the POP3 email sources and fetches the attached documents.'), task_fetch_pop3_emails, seconds=EMAIL_PROCESSING_INTERVAL)
-register_interval_job('task_fetch_imap_emails', _(u'Connects to the IMAP email sources and fetches the attached documents.'), task_fetch_imap_emails, seconds=EMAIL_PROCESSING_INTERVAL)
+sources_scheduler = LocalScheduler('sources', _(u'Document sources'))
+sources_scheduler.add_interval_job('task_fetch_pop3_emails', _(u'Connects to the POP3 email sources and fetches the attached documents.'), task_fetch_pop3_emails, seconds=EMAIL_PROCESSING_INTERVAL)
+sources_scheduler.add_interval_job('task_fetch_imap_emails', _(u'Connects to the IMAP email sources and fetches the attached documents.'), task_fetch_imap_emails, seconds=EMAIL_PROCESSING_INTERVAL)
+sources_scheduler.start()
 
 bind_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
 bind_links([Document], [document_create_multiple], menu_name='secondary_menu')

@@ -15,7 +15,6 @@ from documents.models import Document, DocumentVersion
 from maintenance.api import register_maintenance_links
 from project_tools.api import register_tool
 from acls.api import class_permissions
-from scheduler.api import register_interval_job
 from statistics.api import register_statistics
 from job_processor.models import JobQueue, JobType
 from job_processor.exceptions import JobQueuePushError
