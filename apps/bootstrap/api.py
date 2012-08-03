@@ -4,12 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.auth.models import User, Group
 
-from permissions.models import Role
-from documents.models import DocumentType, DocumentTypeFilename, Document
-from metadata.models import MetadataType, MetadataSet
-from document_indexing.models import Index, IndexTemplateNode
 from sources.models import WebForm, StagingFolder
 from history.models import History
+from permissions.models import Role
+from metadata.models import MetadataType, MetadataSet
+from documents.models import DocumentType, DocumentTypeFilename, Document
+from document_indexing.models import Index, IndexTemplateNode
 from taggit.models import Tag
 from tags.models import TagProperties
 from folders.models import Folder
