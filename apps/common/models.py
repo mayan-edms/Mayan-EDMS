@@ -9,18 +9,18 @@ SINGLETON_LOCK_ID = 1
 
 class SingletonManager(models.Manager):
     def get(self, **kwargs):
-        instance, created = self.model.objects.get_or_create(lock_id=SINGLETON_LOCK_ID, **kwargs)
+        instance, created = self.model.singleton.get_or_create(lock_id=SINGLETON_LOCK_ID, **kwargs)
         return instance
 
 
 class Singleton(models.Model):
     lock_id = models.CharField(max_length=1, default=SINGLETON_LOCK_ID, editable=False, verbose_name=_(u'lock field'), unique=True)
 
-    objects = SingletonManager()
+    singleton = SingletonManager()
     
     @classmethod
     def get(cls):
-        return cls.objects.get()
+        return cls.singleton.get()
         
     def save(self, *args, **kwargs):
         self.id = 1
