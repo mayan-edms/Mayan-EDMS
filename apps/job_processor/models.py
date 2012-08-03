@@ -33,19 +33,15 @@ job_types_registry = {}
 
 class Job(object):
     def __init__(self, function, job_queue_item):
-        close_connection()
         # Run sync or launch async subprocess
         # OR launch 2 processes: monitor & actual process
         node = Node.objects.myself()
         worker = Worker.objects.create(node=node, pid=os.getpid(), job_queue_item=job_queue_item)
         try:
-            close_connection()
             transaction.commit_on_success(function)(**loads(job_queue_item.kwargs))
             #function(**loads(job_queue_item.kwargs))
         except Exception, exc:
-            close_connection()
             transaction.rollback()
-            close_connection()
             def set_state_error():
                 job_queue_item.result = exc
                 job_queue_item.state = JOB_STATE_ERROR
@@ -55,7 +51,8 @@ class Job(object):
             job_queue_item.delete()
         finally:
             worker.delete()
-            
+            close_connection()
+
 
 class JobType(object):
     def __init__(self, name, label, function):
