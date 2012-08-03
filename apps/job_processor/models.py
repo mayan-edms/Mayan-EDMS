@@ -180,12 +180,13 @@ class JobQueueItem(models.Model):
         return self.unique_id
     
     def save(self, *args, **kwargs):
-        self.creation_datetime = datetime.datetime.now()
+        if not self.pk:
+            self.creation_datetime = datetime.datetime.now()
+            if self.job_queue.unique_jobs:
+                self.unique_id = hashlib.sha256(u'%s-%s' % (self.job_type, self.kwargs)).hexdigest()
+            else:
+                self.unique_id = unicode(uuid.uuid4())
 
-        if self.job_queue.unique_jobs:
-            self.unique_id = hashlib.sha256(u'%s-%s' % (self.job_type, self.kwargs)).hexdigest()
-        else:
-            self.unique_id = unicode(uuid.uuid4())
         try:
             super(JobQueueItem, self).save(*args, **kwargs)
         except IntegrityError:
@@ -206,6 +207,20 @@ class JobQueueItem(models.Model):
         except Worker.DoesNotExist:
             return None
     
+    @property
+    def is_in_error_state(self):
+        return self.state == JOB_STATE_ERROR
+
+    @property
+    def is_in_pending_state(self):
+        return self.state == JOB_STATE_PENDING
+
+    def requeue(self):
+        if self.is_in_error_state:
+            self.state = JOB_STATE_PENDING
+            self.creation_datetime = datetime.datetime.now()
+            self.save()
+
     class Meta:
         ordering = ('creation_datetime',)
         verbose_name = _(u'job queue item')

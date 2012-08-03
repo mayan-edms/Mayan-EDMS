@@ -11,4 +11,7 @@ urlpatterns = patterns('job_processor.views',
     url(r'^queue/(?P<job_queue_pk>\d+)/stop/$', 'job_queue_stop', (), 'job_queue_stop'),
 
     url(r'^config/edit/$', 'job_queue_config_edit', (), 'job_queue_config_edit'),
+    
+    url(r'^job/(?P<job_item_pk>\d+)/requeue/$', 'job_requeue', (), 'job_requeue'),
+    url(r'^job/(?P<job_item_pk>\d+)/delete/$', 'job_delete', (), 'job_delete'),
 )

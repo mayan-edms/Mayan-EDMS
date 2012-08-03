@@ -15,11 +15,12 @@ from common.utils import encapsulate
 from clustering.models import Node
 from clustering.signals import node_died
 
-from .models import JobQueue, JobProcessingConfig
+from .models import JobQueue, JobProcessingConfig, JobQueueItem
 from .tasks import job_queue_poll
 from .links import (node_workers, job_queues, tool_link,
     job_queue_items_pending, job_queue_items_error, job_queue_items_active,
-    job_queue_config_edit, setup_link, job_queue_start, job_queue_stop)
+    job_queue_config_edit, setup_link, job_queue_start, job_queue_stop,
+    job_requeue, job_delete)
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +43,7 @@ bind_links([JobQueue, 'job_queues'], [job_queues], menu_name='secondary_menu')
 bind_links([JobQueue], [job_queue_start, job_queue_stop, job_queue_items_pending, job_queue_items_active, job_queue_items_error])
 bind_links([Node], [node_workers])
 bind_links(['job_queue_config_edit'], [job_queue_config_edit], menu_name='secondary_menu')
+bind_links([JobQueueItem], [job_requeue, job_delete])
 
 Node.add_to_class('workers', lambda node: node.worker_set)
 

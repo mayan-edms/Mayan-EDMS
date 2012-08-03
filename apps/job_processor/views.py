@@ -15,9 +15,10 @@ from permissions.models import Permission
 
 from .exceptions import JobQueueAlreadyStopped, JobQueueAlreadyStarted
 from .forms import JobProcessingConfigForm
-from .models import JobQueue, JobProcessingConfig
+from .models import JobQueue, JobProcessingConfig, JobQueueItem
 from .permissions import (PERMISSION_JOB_QUEUE_VIEW,
-    PERMISSION_JOB_PROCESSING_CONFIGURATION, PERMISSION_JOB_QUEUE_START_STOP)
+    PERMISSION_JOB_PROCESSING_CONFIGURATION, PERMISSION_JOB_QUEUE_START_STOP,
+    PERMISSION_JOB_REQUEUE)
 
 
 def node_workers(request, node_pk):
@@ -249,4 +250,66 @@ def job_queue_start(request, job_queue_pk):
         'next': next,
         'previous': previous,
         'form_icon': u'control_play_blue.png',
+    }, context_instance=RequestContext(request))
+
+
+def job_requeue(request, job_item_pk):
+    job = get_object_or_404(JobQueueItem, pk=job_item_pk)
+
+    #try:
+    #    Permission.objects.check_permissions(request.user, [PERMISSION_JOB_REQUEUE])
+    #except PermissionDenied:
+    #    AccessEntry.objects.check_access(PERMISSION_JOB_REQUEUE, request.user, job_queue)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        #try:
+        job.requeue()
+        #except JobQueueAlreadyStarted:
+        #    messages.warning(request, _(u'job ueue already started.'))
+        #    return HttpResponseRedirect(previous)            
+        #else:
+        messages.success(request, _(u'Job requeue successfully.'))
+        return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'object': job,
+        'object_name': _(u'job'),
+        'title': _(u'Are you sure you wish to requeue job: %s?') % job,
+        'next': next,
+        'previous': previous,
+        'form_icon': u'cog_add.png',
+    }, context_instance=RequestContext(request))
+
+
+def job_delete(request, job_item_pk):
+    job = get_object_or_404(JobQueueItem, pk=job_item_pk)
+
+    #try:
+    #    Permission.objects.check_permissions(request.user, [PERMISSION_JOB_REQUEUE])
+    #except PermissionDenied:
+    #    AccessEntry.objects.check_access(PERMISSION_JOB_REQUEUE, request.user, job_queue)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            job.delete()
+        except Exception, exc:
+            messages.warning(request, _(u'Error deleting job; %s.') % exc)
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'Job deleted successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'object': job,
+        'object_name': _(u'job'),
+        'title': _(u'Are you sure you wish to delete job: %s?') % job,
+        'next': next,
+        'previous': previous,
+        'form_icon': u'cog_delete.png',
     }, context_instance=RequestContext(request))
