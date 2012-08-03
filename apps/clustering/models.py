@@ -29,7 +29,7 @@ class NodeManager(models.Manager):
 
 
 class Node(models.Model):
-    hostname = models.CharField(max_length=255, verbose_name=_(u'hostname'))
+    hostname = models.CharField(max_length=255, verbose_name=_(u'hostname'), unique=True)
     cpuload = models.FloatField(blank=True, default=DEFAULT_NODE_CPU_LOAD, verbose_name=_(u'cpu load'))
     heartbeat = models.DateTimeField(blank=True, default=datetime.datetime.now(), verbose_name=_(u'last heartbeat check'))
     memory_usage = models.FloatField(blank=True, default=DEFAULT_NODE_MEMORY_USAGE, verbose_name=_(u'memory usage'))
