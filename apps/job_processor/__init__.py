@@ -1,6 +1,8 @@
 from __future__ import absolute_import
 
+import atexit
 import logging
+from multiprocessing import active_children
 
 from django.db import transaction, DatabaseError
 from django.dispatch import receiver
@@ -13,7 +15,7 @@ from project_setup.api import register_setup
 from common.utils import encapsulate
 
 from clustering.models import Node
-from clustering.signals import node_died
+from clustering.signals import node_died, node_heartbeat
 
 from .models import JobQueue, JobProcessingConfig, JobQueueItem
 from .tasks import job_queue_poll
@@ -59,3 +61,22 @@ register_model_list_columns(Node, [
 def process_dead_workers(sender, **kwargs):
     logger.debug('kwargs')
     logger.debug(kwargs)
+
+
+@receiver(node_heartbeat, dispatch_uid='node_processes')
+def node_processes(sender, **kwargs):
+    logger.debug('kwargs')
+    logger.debug(kwargs)
+    print "PROCS"
+    for process in active_children():
+        print process.pid
+
+
+def kill_all_node_processes():
+    logger.debug('terminating this node\'s all processes')
+    for process in active_children():
+        process.terminate()
+        process.join()
+
+
+atexit.register(kill_all_node_processes)
