@@ -23,7 +23,7 @@ from .tasks import job_queue_poll, house_keeping
 from .links import (node_workers, job_queues, tool_link,
     job_queue_items_pending, job_queue_items_error, job_queue_items_active,
     job_queue_config_edit, setup_link, job_queue_start, job_queue_stop,
-    job_requeue, job_delete)
+    job_requeue, job_delete, worker_terminate)
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +48,7 @@ bind_links([JobQueue], [job_queue_start, job_queue_stop, job_queue_items_pending
 bind_links([Node], [node_workers])
 bind_links(['job_queue_config_edit'], [job_queue_config_edit], menu_name='secondary_menu')
 bind_links([JobQueueItem], [job_requeue, job_delete])
+bind_links([Worker], [worker_terminate])
 
 Node.add_to_class('workers', lambda node: node.worker_set)
 

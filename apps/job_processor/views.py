@@ -15,7 +15,7 @@ from permissions.models import Permission
 
 from .exceptions import JobQueueAlreadyStopped, JobQueueAlreadyStarted
 from .forms import JobProcessingConfigForm
-from .models import JobQueue, JobProcessingConfig, JobQueueItem
+from .models import JobQueue, JobProcessingConfig, JobQueueItem, Worker
 from .permissions import (PERMISSION_JOB_QUEUE_VIEW,
     PERMISSION_JOB_PROCESSING_CONFIGURATION, PERMISSION_JOB_QUEUE_START_STOP,
     PERMISSION_JOB_REQUEUE)
@@ -312,4 +312,35 @@ def job_delete(request, job_item_pk):
         'next': next,
         'previous': previous,
         'form_icon': u'cog_delete.png',
+    }, context_instance=RequestContext(request))
+
+
+def worker_terminate(request, worker_pk):
+    worker = get_object_or_404(Worker, pk=worker_pk)
+
+    #try:
+    #    Permission.objects.check_permissions(request.user, [PERMISSION_JOB_REQUEUE])
+    #except PermissionDenied:
+    #    AccessEntry.objects.check_access(PERMISSION_JOB_REQUEUE, request.user, job_queue)
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        try:
+            worker.terminate()
+        except Exception, exc:
+            messages.warning(request, _(u'Error terminating worker; %s.') % exc)
+            return HttpResponseRedirect(previous)            
+        else:
+            messages.success(request, _(u'Worker terminated successfully.'))
+            return HttpResponseRedirect(next)
+
+    return render_to_response('generic_confirm.html', {
+        'object': worker,
+        'object_name': _(u'worker'),
+        'title': _(u'Are you sure you wish to terminate worker: %s?') % worker,
+        'next': next,
+        'previous': previous,
+        'form_icon': u'lorry_delete.png',
     }, context_instance=RequestContext(request))

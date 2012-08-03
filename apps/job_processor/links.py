@@ -8,7 +8,7 @@ from clustering.permissions import PERMISSION_NODES_VIEW
 
 from .permissions import (PERMISSION_JOB_QUEUE_VIEW,
     PERMISSION_JOB_PROCESSING_CONFIGURATION, PERMISSION_JOB_QUEUE_START_STOP,
-    PERMISSION_JOB_REQUEUE, PERMISSION_JOB_DELETE)
+    PERMISSION_JOB_REQUEUE, PERMISSION_JOB_DELETE, PERMISSION_WORKER_TERMINATE)
 
 
 def is_running(context):
@@ -42,3 +42,5 @@ setup_link = Link(text=_(u'job processing configuration'), view='job_queue_confi
 
 job_requeue = Link(text=_(u'requeue job'), view='job_requeue', args='object.pk', sprite='cog_add', permissions=[PERMISSION_JOB_REQUEUE], condition=is_in_error_state)
 job_delete = Link(text=_(u'delete job'), view='job_delete', args='object.pk', sprite='cog_delete', permissions=[PERMISSION_JOB_DELETE], condition=is_in_pending_state)
+
+worker_terminate = Link(text=_(u'terminate worker'), view='worker_terminate', args='object.pk', sprite='lorry_delete', permissions=[PERMISSION_WORKER_TERMINATE])

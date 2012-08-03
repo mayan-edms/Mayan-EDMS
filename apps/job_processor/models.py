@@ -262,6 +262,15 @@ class Worker(models.Model):
     def __unicode__(self):
         return u'%s-%s' % (self.node.hostname, self.pid)
 
+    def terminate(self):
+        try:
+            process = psutil.Process(int(self.pid))
+        except psutil.error.NoSuchProcess:
+            # Process must have finished before reaching this point
+            return
+        else:
+            process.terminate()
+
     class Meta:
         ordering = ('creation_datetime',)
         verbose_name = _(u'worker')
