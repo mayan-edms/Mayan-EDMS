@@ -4,17 +4,17 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.contrib.auth.models import User, Group
 
-from sources.models import WebForm, StagingFolder
-from history.models import History
 from permissions.models import Role
-from metadata.models import MetadataType, MetadataSet
+from history.models import History
+from django_gpg.runtime import gpg
 from documents.models import DocumentType, DocumentTypeFilename, Document
-from document_indexing.models import Index, IndexTemplateNode
+from folders.models import Folder
 from taggit.models import Tag
 from tags.models import TagProperties
-from folders.models import Folder
+from metadata.models import MetadataType, MetadataSet
+from sources.models import WebForm, StagingFolder
+from document_indexing.models import Index, IndexTemplateNode
 from dynamic_search.models import RecentSearch
-from django_gpg.runtime import gpg
 # TODO: clear the job queues
 
 bootstrap_options = {}
