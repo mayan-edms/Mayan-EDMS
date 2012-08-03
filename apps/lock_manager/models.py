@@ -29,7 +29,6 @@ class Lock(models.Model):
 
     @transaction.commit_on_success
     def release(self):
-        close_connection()
         try:
             lock = Lock.objects.get(name=self.name, creation_datetime=self.creation_datetime)
             lock.delete()
@@ -38,6 +37,8 @@ class Lock(models.Model):
             pass
         except DatabaseError:
             transaction.rollback()
+        finally:
+            close_connection()
 
     class Meta:
         verbose_name = _(u'lock')

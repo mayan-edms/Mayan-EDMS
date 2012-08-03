@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import logging
 import datetime
 
+from django.db import close_connection
 from django.db.utils import IntegrityError
 from django.db import transaction
 from django.db import models
@@ -43,3 +44,5 @@ class LockManager(models.Manager):
             else:
                 logger.debug('unable to acquire lock: %s' % name)
                 raise LockError('Unable to acquire lock')
+        finally:
+            close_connection()
