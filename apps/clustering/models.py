@@ -13,7 +13,9 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from common.models import Singleton
 
 from .literals import (DEFAULT_NODE_HEARTBEAT_INTERVAL, DEFAULT_NODE_HEARTBEAT_TIMEOUT,
-    DEFAULT_DEAD_NODE_REMOVAL_INTERVAL, NODE_STATE_HEALTHY, NODE_STATE_CHOICES, NODE_STATE_DEAD)
+    DEFAULT_DEAD_NODE_REMOVAL_INTERVAL, NODE_STATE_HEALTHY, NODE_STATE_CHOICES, NODE_STATE_DEAD,
+    DEFAULT_NODE_CPU_LOAD, DEFAULT_NODE_MEMORY_USAGE)
+from .signals import node_died
 
 
 class NodeManager(models.Manager):
@@ -28,12 +30,12 @@ class NodeManager(models.Manager):
 
 class Node(models.Model):
     hostname = models.CharField(max_length=255, verbose_name=_(u'hostname'))
-    cpuload = models.FloatField(blank=True, default=0.0, verbose_name=_(u'cpu load'))
+    cpuload = models.FloatField(blank=True, default=DEFAULT_NODE_CPU_LOAD, verbose_name=_(u'cpu load'))
     heartbeat = models.DateTimeField(blank=True, default=datetime.datetime.now(), verbose_name=_(u'last heartbeat check'))
-    memory_usage = models.FloatField(blank=True, default=0.0, verbose_name=_(u'memory usage'))
+    memory_usage = models.FloatField(blank=True, default=DEFAULT_NODE_MEMORY_USAGE, verbose_name=_(u'memory usage'))
     state = models.CharField(max_length=4,
         choices=NODE_STATE_CHOICES,
-        default=NODE_STATE_HEALTHY,
+        default=NODE_STATE_DEAD,
         verbose_name=_(u'state'))
         
     objects = NodeManager()
@@ -50,17 +52,24 @@ class Node(models.Model):
         
     def refresh(self):
         if self.hostname == platform.node():
-            # Make we can only update ourselves
+            # Make sure we can only update ourselves
             info = Node.platform_info()
             self.cpuload = info['cpuload']
             self.memory_usage = info['memory_usage']
 
-    def if_healthy(self):
-        return self.health == NODE_STATE_HEALTHY
-
-    def save(self, *args, **kwargs):
+    def is_healthy(self):
+        return self.state == NODE_STATE_HEALTHY
+        
+    def mark_as_dead(self):
+        self.state=NODE_STATE_DEAD
+        node_died.send(sender=self)
+        self.save()
+        
+    def send_heartbeat(self):
+        self.refresh()
+        self.state=NODE_STATE_HEALTHY
         self.heartbeat = datetime.datetime.now()
-        return super(Node, self).save(*args, **kwargs)
+        self.save()
 
     class Meta:
         verbose_name = _(u'node')
@@ -69,10 +78,11 @@ class Node(models.Model):
 
 class ClusteringConfigManager(models.Manager):
     def dead_nodes(self):
-        return self.model.objects.filter(heartbeat__lt=datetime.datetime.now() - datetime.timedelta(seconds=self.model.get().node_heartbeat_timeout))
+        return Node.objects.filter(state=NODE_STATE_HEALTHY).filter(heartbeat__lt=datetime.datetime.now() - datetime.timedelta(seconds=self.model.get().node_heartbeat_timeout))
 
     def check_dead_nodes(self):
-        self.dead_nodes().update(healty=NODE_STATE_DEAD)
+        for node in self.dead_nodes():
+            node.mark_as_dead()
 
     def zombiest_node(self):
         try:
@@ -86,7 +96,7 @@ class ClusteringConfig(Singleton):
     node_heartbeat_timeout = models.PositiveIntegerField(verbose_name=(u'node heartbeat timeout (in seconds)'), help_text=_(u'After this amount of time a node without heartbeat updates is considered dead and removed from the cluster node list.'), default=DEFAULT_NODE_HEARTBEAT_TIMEOUT)
     dead_node_removal_interval = models.PositiveIntegerField(verbose_name=(u'dead node check and removal interval (in seconds)'), help_text=_(u'Interval of time to check the cluster for unresponsive nodes and remove them from the cluster.'), default=DEFAULT_DEAD_NODE_REMOVAL_INTERVAL)
 
-    objects = ClusteringConfigManager()
+    cluster = ClusteringConfigManager()
 
     def __unicode__(self):
         return ugettext('clustering config')
