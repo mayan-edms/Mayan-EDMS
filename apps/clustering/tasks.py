@@ -21,5 +21,5 @@ def node_heartbeat():
 @simple_locking('house_keeping', 10)
 def house_keeping():
     logger.debug('starting')
-    ClusteringConfig.objects.delete_dead_nodes()
+    ClusteringConfig.objects.check_dead_nodes()
     

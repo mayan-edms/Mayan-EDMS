@@ -13,7 +13,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from common.models import Singleton
 
 from .literals import (DEFAULT_NODE_HEARTBEAT_INTERVAL, DEFAULT_NODE_HEARTBEAT_TIMEOUT,
-    DEFAULT_DEAD_NODE_REMOVAL_INTERVAL)
+    DEFAULT_DEAD_NODE_REMOVAL_INTERVAL, NODE_STATE_HEALTHY, NODE_STATE_CHOICES, NODE_STATE_DEAD)
 
 
 class NodeManager(models.Manager):
@@ -31,7 +31,11 @@ class Node(models.Model):
     cpuload = models.FloatField(blank=True, default=0.0, verbose_name=_(u'cpu load'))
     heartbeat = models.DateTimeField(blank=True, default=datetime.datetime.now(), verbose_name=_(u'last heartbeat check'))
     memory_usage = models.FloatField(blank=True, default=0.0, verbose_name=_(u'memory usage'))
-
+    state = models.CharField(max_length=4,
+        choices=NODE_STATE_CHOICES,
+        default=NODE_STATE_HEALTHY,
+        verbose_name=_(u'state'))
+        
     objects = NodeManager()
     
     @classmethod
@@ -50,7 +54,10 @@ class Node(models.Model):
             info = Node.platform_info()
             self.cpuload = info['cpuload']
             self.memory_usage = info['memory_usage']
-        
+
+    def if_healthy(self):
+        return self.health == NODE_STATE_HEALTHY
+
     def save(self, *args, **kwargs):
         self.heartbeat = datetime.datetime.now()
         return super(Node, self).save(*args, **kwargs)
@@ -62,10 +69,10 @@ class Node(models.Model):
 
 class ClusteringConfigManager(models.Manager):
     def dead_nodes(self):
-        return Node.objects.filter(heartbeat__lt=datetime.datetime.now() - datetime.timedelta(seconds=self.model.get().node_heartbeat_timeout))
+        return self.model.objects.filter(heartbeat__lt=datetime.datetime.now() - datetime.timedelta(seconds=self.model.get().node_heartbeat_timeout))
 
-    def delete_dead_nodes(self):
-        self.dead_nodes().delete()
+    def check_dead_nodes(self):
+        self.dead_nodes().update(healty=NODE_STATE_DEAD)
 
     def zombiest_node(self):
         try:

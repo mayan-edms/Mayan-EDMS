@@ -41,7 +41,10 @@ def node_list(request):
                 'name': _(u'memory usage'),
                 'attribute': 'memory_usage',
             },
-
+            {
+                'name': _(u'state'),
+                'attribute': 'get_state_display',
+            },
         ],
         'hide_object': True,
     }
