@@ -33,6 +33,7 @@ job_types_registry = {}
 
 class Job(object):
     def __init__(self, function, job_queue_item):
+        close_connection()
         # Run sync or launch async subprocess
         # OR launch 2 processes: monitor & actual process
         node = Node.objects.myself()
@@ -51,8 +52,7 @@ class Job(object):
             job_queue_item.delete()
         finally:
             worker.delete()
-            close_connection()
-
+            
 
 class JobType(object):
     def __init__(self, name, label, function):

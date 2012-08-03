@@ -30,6 +30,7 @@ class Lock(models.Model):
     @transaction.commit_on_success
     def release(self):
         try:
+            close_connection()
             lock = Lock.objects.get(name=self.name, creation_datetime=self.creation_datetime)
             lock.delete()
         except Lock.DoesNotExist:
