@@ -62,7 +62,7 @@ class Node(models.Model):
         
     def mark_as_dead(self):
         self.state=NODE_STATE_DEAD
-        node_died.send(sender=self)
+        node_died.send(sender=self, node=self)
         self.save()
         
     def send_heartbeat(self):
@@ -101,9 +101,9 @@ class ClusteringConfig(Singleton):
     def __unicode__(self):
         return ugettext('clustering config')
 
-    def clean(self):
-        if self.node_heartbeat_interval > self.node_heartbeat_timeout:
-            raise ValidationError(_(u'Heartbeat interval cannot be greater than heartbeat timeout or else nodes will always be rated as "dead"'))
+    #def clean(self):
+    #    if self.node_heartbeat_interval > self.node_heartbeat_timeout:
+    #        raise ValidationError(_(u'Heartbeat interval cannot be greater than heartbeat timeout or else nodes will always be rated as "dead"'))
 
     class Meta:
         verbose_name = verbose_name_plural = _(u'clustering config')
