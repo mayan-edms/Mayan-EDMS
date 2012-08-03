@@ -12,13 +12,13 @@ from .tasks import node_heartbeat, house_keeping
 from .links import tool_link, node_list, clustering_config_edit, setup_link
 from .models import Node, ClusteringConfig
 
-
+ClusteringConfig()
 @transaction.commit_on_success
 def add_clustering_jobs():
     clustering_scheduler = LocalScheduler('clustering', _(u'Clustering'))
     try:
         clustering_scheduler.add_interval_job('node_heartbeat', _(u'Update a node\'s properties.'), node_heartbeat, seconds=ClusteringConfig.get().node_heartbeat_interval)
-        clustering_scheduler.add_interval_job('house_keeping', _(u'Check for unresponsive nodes in the cluster list.'), house_keeping, seconds=1)
+        clustering_scheduler.add_interval_job('house_keeping', _(u'Check for unresponsive nodes in the cluster list.'), house_keeping, seconds=ClusteringConfig.get().dead_node_removal_interval)
     except DatabaseError:
         transaction.rollback()
     clustering_scheduler.start()
