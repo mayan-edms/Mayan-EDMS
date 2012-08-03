@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import atexit
 import logging
+import psutil
 from multiprocessing import active_children
 
 from django.db import transaction, DatabaseError
@@ -17,8 +18,8 @@ from common.utils import encapsulate
 from clustering.models import Node
 from clustering.signals import node_died, node_heartbeat
 
-from .models import JobQueue, JobProcessingConfig, JobQueueItem
-from .tasks import job_queue_poll
+from .models import JobQueue, JobProcessingConfig, JobQueueItem, Worker
+from .tasks import job_queue_poll, house_keeping
 from .links import (node_workers, job_queues, tool_link,
     job_queue_items_pending, job_queue_items_error, job_queue_items_active,
     job_queue_config_edit, setup_link, job_queue_start, job_queue_stop,
@@ -32,6 +33,7 @@ def add_job_queue_jobs():
     job_processor_scheduler = LocalScheduler('job_processor', _(u'Job processor'))
     try:
         job_processor_scheduler.add_interval_job('job_queue_poll', _(u'Poll a job queue for pending jobs.'), job_queue_poll, seconds=JobProcessingConfig.get().job_queue_poll_interval)
+        job_processor_scheduler.add_interval_job('house_keeping', _(u'Poll a job queue for pending jobs.'), house_keeping, seconds=JobProcessingConfig.get().dead_job_removal_interval)
     except DatabaseError:
         transaction.rollback()
 
@@ -61,15 +63,25 @@ register_model_list_columns(Node, [
 def process_dead_workers(sender, **kwargs):
     logger.debug('kwargs')
     logger.debug(kwargs)
+    #TODO: delete all of the dying node workers and requeue their jobs
 
 
 @receiver(node_heartbeat, dispatch_uid='node_processes')
-def node_processes(sender, **kwargs):
-    logger.debug('kwargs')
-    logger.debug(kwargs)
-    print "PROCS"
+def node_processes(sender, node, **kwargs):
+    logger.debug('update current node\'s processes')
+    pids = [process.pid for process in active_children()]
+    logger.debug('pids: %s' % pids)
+    # Create empty entry for a new unknown worker
     for process in active_children():
-        print process.pid
+        worker = Worker.objects.get_or_create(
+            node=node, pid=process.pid)
+
+    all_active_pids = psutil.get_pid_list()
+    # Remove stale workers based on current child pids
+    #for dead_worker in Worker.objects.filter(node=node).exclude(pid__in=all_active_pids):
+    for dead_worker in Worker.objects.exclude(pid__in=all_active_pids):
+        dead_worker.delete()
+        # TODO: requeue worker job or delete job?
 
 
 def kill_all_node_processes():

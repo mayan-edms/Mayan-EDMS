@@ -200,7 +200,6 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
 
     try:
         document.submit_for_ocr()
-        #ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk)
         messages.success(request, _(u'Document: %(document)s was added to the OCR queue sucessfully.') % {
             'document': document})
     except JobQueuePushError:

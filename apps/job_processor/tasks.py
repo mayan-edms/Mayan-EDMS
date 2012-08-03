@@ -3,9 +3,10 @@ from __future__ import absolute_import
 import logging
 
 from lock_manager import Lock, LockError
+from lock_manager.decorators import simple_locking
 from clustering.models import Node
 
-from .models import JobQueue
+from .models import JobQueue, JobQueueItem
 from .exceptions import JobQueueNoPendingJobs
 from .literals import JOB_QUEUE_STATE_STARTED
 
@@ -41,4 +42,8 @@ def job_queue_poll():
     else:
         logger.debug('CPU load or memory usage over limit')
 
-            
+
+@simple_locking('house_keeping', 10)
+def house_keeping():
+    logger.debug('starting')
+    JobQueueItem.objects.check_dead_job_queue_items()

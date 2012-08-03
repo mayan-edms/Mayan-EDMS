@@ -23,7 +23,7 @@ from .literals import (JOB_STATE_CHOICES, JOB_STATE_PENDING,
     JOB_STATE_PROCESSING, JOB_STATE_ERROR, WORKER_STATE_CHOICES,
     WORKER_STATE_RUNNING, DEFAULT_JOB_QUEUE_POLL_INTERVAL,
     JOB_QUEUE_STATE_STOPPED, JOB_QUEUE_STATE_STARTED,
-    JOB_QUEUE_STATE_CHOICES)
+    JOB_QUEUE_STATE_CHOICES, DEFAULT_DEAD_JOB_REMOVAL_INTERVAL)
 from .exceptions import (JobQueuePushError, JobQueueNoPendingJobs,
     JobQueueAlreadyStarted, JobQueueAlreadyStopped)
 
@@ -37,7 +37,9 @@ class Job(object):
         # Run sync or launch async subprocess
         # OR launch 2 processes: monitor & actual process
         node = Node.objects.myself()
-        worker = Worker.objects.create(node=node, pid=os.getpid(), job_queue_item=job_queue_item)
+        worker, created = Worker.objects.get_or_create(node=node, pid=os.getpid())
+        worker.job_queue_item=job_queue_item
+        worker.save()
         try:
             transaction.commit_on_success(function)(**loads(job_queue_item.kwargs))
             #function(**loads(job_queue_item.kwargs))
@@ -163,6 +165,15 @@ class JobQueue(models.Model):
         verbose_name_plural = _(u'job queues')
 
 
+class JobQueueItemManager(models.Manager):
+    def dead_job_queue_items(self):
+        return self.model.objects.filter(state=JOB_STATE_PROCESSING).filter(worker__isnull=True)
+
+    def check_dead_job_queue_items(self):
+        for job_item in self.dead_job_queue_items():
+            job_item.requeue(force=True, at_top=True)
+
+
 class JobQueueItem(models.Model):
     # TODO: add re-queue
     job_queue = models.ForeignKey(JobQueue, verbose_name=_(u'job queue'))
@@ -175,7 +186,9 @@ class JobQueueItem(models.Model):
         default=JOB_STATE_PENDING,
         verbose_name=_(u'state'))
     result = models.TextField(blank=True, verbose_name=_(u'result'))
-    
+
+    objects = JobQueueItemManager()
+
     def __unicode__(self):
         return self.unique_id
     
@@ -215,10 +228,18 @@ class JobQueueItem(models.Model):
     def is_in_pending_state(self):
         return self.state == JOB_STATE_PENDING
 
-    def requeue(self):
-        if self.is_in_error_state:
+    def requeue(self, force=False, at_top=False):
+        """
+        Requeue a job so that it is executed again
+        force: requeue even if job is not in error state
+        at_top: requeue at the top of the file usually for jobs that
+            die and shouldn't be placed at the bottom of the queue
+        """
+        if self.is_in_error_state or force==True:
+            # TODO: raise exception if not in error state
             self.state = JOB_STATE_PENDING
-            self.creation_datetime = datetime.datetime.now()
+            if not at_top:
+                self.creation_datetime = datetime.datetime.now()
             self.save()
 
     class Meta:
@@ -236,7 +257,7 @@ class Worker(models.Model):
         choices=WORKER_STATE_CHOICES,
         default=WORKER_STATE_RUNNING,
         verbose_name=_(u'state'))
-    job_queue_item = models.ForeignKey(JobQueueItem, verbose_name=_(u'job queue item'))
+    job_queue_item = models.ForeignKey(JobQueueItem, blank=True, null=True, verbose_name=_(u'job queue item'))
 
     def __unicode__(self):
         return u'%s-%s' % (self.node.hostname, self.pid)
@@ -245,10 +266,12 @@ class Worker(models.Model):
         ordering = ('creation_datetime',)
         verbose_name = _(u'worker')
         verbose_name_plural = _(u'workers')
+        unique_together = ('node', 'pid')
 
 
 class JobProcessingConfig(Singleton):
     job_queue_poll_interval = models.PositiveIntegerField(verbose_name=(u'job queue poll interval (in seconds)'), default=DEFAULT_JOB_QUEUE_POLL_INTERVAL)
+    dead_job_removal_interval = models.PositiveIntegerField(verbose_name=(u'dead job check and removal interval (in seconds)'), help_text=_(u'Interval of time to check the cluster for and remove unresponsive jobs.'), default=DEFAULT_DEAD_JOB_REMOVAL_INTERVAL)
 
     def __unicode__(self):
         return ugettext(u'Job queues configuration')
