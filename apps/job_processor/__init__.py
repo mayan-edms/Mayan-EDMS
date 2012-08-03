@@ -1,6 +1,9 @@
 from __future__ import absolute_import
 
+import logging
+
 from django.db import transaction, DatabaseError
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 from scheduler.api import LocalScheduler
@@ -10,12 +13,15 @@ from project_setup.api import register_setup
 from common.utils import encapsulate
 
 from clustering.models import Node
+from clustering.signals import node_died
 
 from .models import JobQueue, JobProcessingConfig
 from .tasks import job_queue_poll
 from .links import (node_workers, job_queues, tool_link,
     job_queue_items_pending, job_queue_items_error, job_queue_items_active,
     job_queue_config_edit, setup_link, job_queue_start, job_queue_stop)
+
+logger = logging.getLogger(__name__)
 
 
 @transaction.commit_on_success
@@ -45,3 +51,9 @@ register_model_list_columns(Node, [
         'attribute': encapsulate(lambda x: x.workers().all().count())
     },
 ])
+
+
+@receiver(node_died, dispatch_uid='process_dead_workers')
+def process_dead_workers(sender, **kwargs):
+    logger.debug('kwargs')
+    logger.debug(kwargs)

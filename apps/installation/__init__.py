@@ -23,7 +23,7 @@ def trigger_first_time(sender, **kwargs):
 @transaction.commit_on_success
 def check_first_run():
     try:
-        details = Installation.objects.get()
+        details = Installation.get()
     except DatabaseError:
         # Avoid database errors when the app tables haven't been created yet
         transaction.rollback()
