@@ -59,7 +59,7 @@ class Link(object):
         self.children_view_regex = children_view_regex or []
 
     def resolve(self, context, request=None, current_path=None, current_view=None):
-        # TODO: don't calculate these if passed in an argument
+        # Don't calculate these if passed in an argument
         request = request or Variable('request').resolve(context)
         current_path = current_path or request.META['PATH_INFO']
         current_view = current_view or resolve_to_name(current_path)
@@ -214,7 +214,7 @@ def get_context_navigation_links(context, menu_name=None, links_dict=bound_links
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
     context_links = {}
-
+    
     # Don't fudge with the original global dictionary
     # TODO: fix this
     links_dict = links_dict.copy()
@@ -251,7 +251,7 @@ def get_context_navigation_links(context, menu_name=None, links_dict=bound_links
             context_links.setdefault(None, [])
 
         for link in view_links:
-            context_links[None].append(link.resolve(context))
+            context_links[None].append(link.resolve(context, request=request, current_path=current_path, current_view=current_view))
     except KeyError:
         pass
 
@@ -263,7 +263,7 @@ def get_context_navigation_links(context, menu_name=None, links_dict=bound_links
                 context_links.setdefault(resolved_object_reference, [])
 
             for link in object_links:
-                context_links[resolved_object_reference].append(link.resolve(context))
+                context_links[resolved_object_reference].append(link.resolve(context, request=request, current_path=current_path, current_view=current_view))
         except KeyError:
             pass
 
