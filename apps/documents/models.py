@@ -561,7 +561,7 @@ class DocumentVersion(models.Model):
 
     def get_content(self, add_page_number=False):
         content = []
-        for page in self.document.pages.all():
+        for page in self.pages.all():
             if page.content:
                 content.append(page.content)
                 if add_page_number:
