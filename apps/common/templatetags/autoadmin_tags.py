@@ -7,5 +7,5 @@ register = Library()
 
 @register.simple_tag(takes_context=True)
 def auto_admin_properties(context):
-    context['auto_admin_properties'] = AutoAdminSingleton.objects.get()
+    context['auto_admin_properties'] = AutoAdminSingleton.singleton.get()
     return u''
