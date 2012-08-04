@@ -48,7 +48,7 @@ bind_links([WatchFolder], [setup_web_form_list, setup_staging_folder_list, setup
 bind_links([WatchFolder], [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 # Document version
-bind_links(['document_version_list', 'upload_version', 'document_version_revert'], [upload_version], menu_name='sidebar')
+bind_links(['document_version_list', 'upload_version', 'document_version_revert', 'document_version_text_compare', 'document_version_show_diff_text'], [upload_version], menu_name='sidebar')
 
 bind_links(['setup_source_transformation_create', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
 

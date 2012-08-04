@@ -23,3 +23,5 @@ PERMISSION_DOCUMENT_TYPE_VIEW = Permission.objects.register(documents_setup_name
 PERMISSION_DOCUMENT_TYPE_EDIT = Permission.objects.register(documents_setup_namespace, 'document_type_edit', _(u'Edit document types'))
 PERMISSION_DOCUMENT_TYPE_DELETE = Permission.objects.register(documents_setup_namespace, 'document_type_delete', _(u'Delete document types'))
 PERMISSION_DOCUMENT_TYPE_CREATE = Permission.objects.register(documents_setup_namespace, 'document_type_create', _(u'Create document types'))
+
+PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE = Permission.objects.register(documents_setup_namespace, 'document_versions_text_compare', _(u'Compare document version textually'))

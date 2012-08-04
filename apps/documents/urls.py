@@ -36,6 +36,8 @@ urlpatterns = patterns('documents.views',
     url(r'^(?P<document_pk>\d+)/version/all/$', 'document_version_list', (), 'document_version_list'),
     url(r'^document/version/(?P<document_version_pk>\d+)/download/$', 'document_download', (), 'document_version_download'),
     url(r'^document/version/(?P<document_version_pk>\d+)/revert/$', 'document_version_revert', (), 'document_version_revert'),
+    url(r'^document/(?P<document_pk>\d+)/version_compare/text/$', 'document_version_text_compare', (), 'document_version_text_compare'),
+    url(r'^document/version/show/text/diff/(?P<left_document_version_pk>\d+)/vs/(?P<right_document_version_pk>\d+)/$', 'document_version_show_diff_text', (), 'document_version_show_diff_text'),
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^duplicates/list/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
