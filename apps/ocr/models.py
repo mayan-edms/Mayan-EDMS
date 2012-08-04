@@ -18,7 +18,6 @@ from sources.managers import SourceTransformationManager
 
 from .literals import (OCR_STATE_CHOICES, OCR_STATE_ENABLED,
     OCR_STATE_DISABLED)
-from .managers import OCRProcessingManager
 from .exceptions import (ReQueueError, OCRProcessingAlreadyDisabled,
     OCRProcessingAlreadyEnabled)
 
