@@ -348,6 +348,6 @@ class DocumentVersionDiffForm(forms.Form):
         self.fields['contents'].initial = contents
 
     contents = forms.CharField(
-        label=_(u'Contents'),
+        label=_(u'Differences'),
         widget=TextAreaDiv()
     )
