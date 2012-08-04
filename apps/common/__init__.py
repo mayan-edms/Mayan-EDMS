@@ -67,7 +67,7 @@ def create_superuser(sender, **kwargs):
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
 def auto_admin_account_passwd_change(sender, instance, **kwargs):
-    auto_admin_properties = AutoAdminSingleton.objects.get()
+    auto_admin_properties = AutoAdminSingleton.singleton.get()
     if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
         # Only delete the auto admin properties when the password has been changed
         auto_admin_properties.delete(force=True)
