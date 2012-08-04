@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+import diff_match_patch
+
 from django.utils.safestring import mark_safe
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
@@ -85,3 +87,18 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
     )
 
     return mark_safe(u''.join(result))
+
+
+def diff_widget(version1, version2):
+    
+    dmp = diff_match_patch.diff_match_patch()
+    dmp.Diff_Timeout = 1  # Don't spend more than 1 seconds on a diff.
+
+    differences = dmp.diff_main(version1, version2)
+    dmp.diff_cleanupSemantic(differences)
+    pretty = dmp.diff_prettyHtml(differences)
+    #patch=dmp.patch_make(differences)
+    #text = dmp.patch_toText(patch)
+    return mark_safe(dmp.diff_prettyHtml(differences))
+    
+    

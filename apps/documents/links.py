@@ -11,7 +11,8 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
+    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
+    PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE)
 
 from .conf.settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
@@ -83,6 +84,7 @@ document_page_view_reset = Link(text=_(u'reset view'), klass='no-parent-history'
 # Document versions
 document_version_list = Link(text=_(u'versions'), view='document_version_list', args='object.pk', sprite='page_world', permissions=[PERMISSION_DOCUMENT_VIEW])
 document_version_revert = Link(text=_(u'revert'), view='document_version_revert', args='object.pk', sprite='page_refresh', permissions=[PERMISSION_DOCUMENT_VERSION_REVERT], conditional_disable=is_current_version)
+document_version_text_compare = Link(text=_(u'compare (text)'), view='document_version_text_compare', args='object.pk', sprite='table_relationship', permissions=[PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE])
 
 # Document type related links
 document_type_list = Link(text=_(u'document type list'), view='document_type_list', sprite='layout', permissions=[PERMISSION_DOCUMENT_TYPE_VIEW])

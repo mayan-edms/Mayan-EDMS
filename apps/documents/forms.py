@@ -321,3 +321,33 @@ class DocumentDownloadForm(forms.Form):
         if len(self.document_versions) > 1:
             self.fields['compressed'].initial = True
             self.fields['compressed'].widget.attrs.update({'disabled': True})
+
+
+class DocumentVersionCompareForm(forms.Form):
+    left_version = forms.ChoiceField(label=_(u'Source version'), required=True)
+    right_version = forms.ChoiceField(label=_(u'Destination version'), required=True)
+    
+    def make_choices(self):
+        return [(version.pk, unicode(version)) for version in self.document.versions.all()]
+    
+    def __init__(self, *args, **kwargs):
+        self.document = kwargs.pop('document')
+        super(DocumentVersionCompareForm, self).__init__(*args, **kwargs)
+        choices = self.make_choices()
+        self.fields['left_version'].choices = choices
+        self.fields['left_version'].initial = choices[-2][0] if len(choices) > 1 else choices[-1][0]
+        
+        self.fields['right_version'].choices = choices
+        self.fields['right_version'].initial = choices[-1][0]
+
+
+class DocumentVersionDiffForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        contents = kwargs.pop('contents', None)
+        super(DocumentVersionDiffForm, self).__init__(*args, **kwargs)
+        self.fields['contents'].initial = contents
+
+    contents = forms.CharField(
+        label=_(u'Contents'),
+        widget=TextAreaDiv()
+    )

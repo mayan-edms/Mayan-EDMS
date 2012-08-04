@@ -43,7 +43,7 @@ from .links import (document_page_transformation_list, document_page_transformat
     document_page_navigation_last, document_page_zoom_in, document_page_zoom_out,
     document_page_rotate_right, document_page_rotate_left, document_page_view_reset,
     document_multiple_clear_transformations, document_multiple_delete,
-    document_multiple_download)
+    document_multiple_download, document_version_text_compare)
 from .links import document_clear_image_cache
 from .statistics import get_statistics
 
@@ -59,6 +59,7 @@ bind_links([Document], [document_view_simple, document_edit, document_print, doc
 
 # Document Version links
 bind_links([DocumentVersion], [document_version_revert, document_version_download])
+bind_links(['document_version_list', 'upload_version', 'document_version_revert', 'document_version_text_compare', 'document_version_show_diff_text'], [document_version_text_compare], menu_name='sidebar')
 
 secondary_menu_links = [document_list_recent, document_list]
 

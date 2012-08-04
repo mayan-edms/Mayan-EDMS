@@ -72,3 +72,4 @@ GitPython==0.3.2.RC1
 
 elementtree==1.2.7-20070827-preview
 Pygments==1.5
+diff-match-patch==20120106

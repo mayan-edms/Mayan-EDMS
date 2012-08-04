@@ -40,17 +40,20 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
+    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
+    PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE)
 from .events import history_document_edited
 from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
         DocumentPageTransformationForm, DocumentContentForm,
         DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
         DocumentTypeForm, DocumentTypeFilenameForm,
-        DocumentTypeFilenameForm_create, DocumentDownloadForm)
+        DocumentTypeFilenameForm_create, DocumentDownloadForm,
+        DocumentVersionCompareForm, DocumentVersionDiffForm)
 from .models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
     DocumentVersion)
+from .widgets import diff_widget
 
 logger = logging.getLogger(__name__)
 
@@ -1364,3 +1367,60 @@ def document_version_revert(request, document_version_pk):
         'message': _(u'All later version after this one will be deleted too.'),
         'form_icon': u'page_refresh.png',
     }, context_instance=RequestContext(request))
+
+
+def document_version_text_compare(request, document_pk):
+    document = get_object_or_404(Document, pk=document_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE, request.user, document)
+
+    RecentDocument.objects.add_document_for_user(request.user, document)
+
+    if request.method == 'POST':
+        form = DocumentVersionCompareForm(document=document, data=request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect(reverse('document_version_show_diff_text', args=[form.cleaned_data['left_version'], form.cleaned_data['right_version']]))
+    else:
+        form = DocumentVersionCompareForm(document=document)
+
+    return render_to_response('generic_form.html', {
+        'object': document,
+        'title': _(u'Textually compare versions of document: %s') % document,
+        'form': form,
+        'submit_label': _(u'Compare'),
+        'submit_icon_famfam': 'table_relationship',
+    },
+    context_instance=RequestContext(request))
+
+
+def document_version_show_diff_text(request, left_document_version_pk, right_document_version_pk):
+    left_document_version = get_object_or_404(DocumentVersion, pk=left_document_version_pk)
+    right_document_version = get_object_or_404(DocumentVersion, pk=right_document_version_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE])
+    except PermissionDenied:
+        # Make sure user has the compare permission for both document
+        # versions' root documents
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE, request.user, left_document_version.document)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE, request.user, right_document_version.document)
+
+    context = {
+        'form': DocumentVersionDiffForm(contents=diff_widget(left_document_version.content, right_document_version.content)),
+        'read_only': True
+    }
+
+    if left_document_version.document == right_document_version.document:
+        context['object'] = left_document_version.document
+        context['title'] = _(u'Textual difference between version %(version1)s and %(version2)s of document: %(document)s') % {
+            'version1': left_document_version, 'version2': right_document_version,
+            'document': left_document_version.document}
+    else:
+        context['title'] = _(u'Textual difference between document: %(document1)s and %(document2)s.') % {
+            'document1': left_document_version.document, 'document2': right_document_version.document}
+
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))
