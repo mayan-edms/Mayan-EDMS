@@ -22,7 +22,7 @@ def node_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_NODES_VIEW])
 
     context = {
-        'object_list': Node.objects.all(),
+        'object_list': Node.objects.live_nodes(),
         'title': _(u'nodes'),
         'extra_columns_preffixed': [
             {

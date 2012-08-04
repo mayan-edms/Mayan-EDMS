@@ -27,6 +27,9 @@ class NodeManager(models.Manager):
             node.save()
         return node
 
+    def live_nodes(self):
+        return self.model.objects.filter(state=NODE_STATE_HEALTHY)
+
 
 class Node(models.Model):
     hostname = models.CharField(max_length=255, verbose_name=_(u'hostname'), unique=True)
@@ -83,12 +86,6 @@ class ClusteringConfigManager(models.Manager):
     def check_dead_nodes(self):
         for node in self.dead_nodes():
             node.mark_as_dead()
-
-    def zombiest_node(self):
-        try:
-            return self.dead_nodes().order_by('-heartbeat')[0]
-        except IndexError:
-            return None
 
 
 class ClusteringConfig(Singleton):
