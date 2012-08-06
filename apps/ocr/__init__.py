@@ -24,7 +24,6 @@ from .api import do_document_ocr
 from .permissions import PERMISSION_OCR_DOCUMENT
 from .exceptions import AlreadyQueued
 from . import models as ocr_models
-from .statistics import get_statistics
 from .literals import OCR_QUEUE_NAME
 
 logger = logging.getLogger(__name__)
