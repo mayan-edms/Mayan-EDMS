@@ -1,8 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('ocr.views',
-    url(r'^log/$', 'ocr_log', (), 'ocr_log'),
-
     url(r'^processing/enable/$', 'ocr_enable', (), 'ocr_enable'),
     url(r'^processing/disable/$', 'ocr_disable', (), 'ocr_disable'),
     
