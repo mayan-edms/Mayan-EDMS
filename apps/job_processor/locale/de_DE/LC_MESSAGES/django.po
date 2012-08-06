@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-05 22:43-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: __init__.py:33 permissions.py:7
+msgid "Job processor"
+msgstr ""
+
+#: __init__.py:35 __init__.py:36
+msgid "Poll a job queue for pending jobs."
+msgstr ""
+
+#: __init__.py:57
+msgid "active workers"
+msgstr ""
+
+#: admin.py:20
+msgid "total items"
+msgstr ""
+
+#: links.py:30 models.py:292
+msgid "workers"
+msgstr ""
+
+#: links.py:31 models.py:171
+msgid "job queues"
+msgstr ""
+
+#: links.py:32
+msgid "job queue list"
+msgstr ""
+
+#: links.py:33 views.py:83
+msgid "pending jobs"
+msgstr ""
+
+#: links.py:34 views.py:91
+msgid "error jobs"
+msgstr ""
+
+#: links.py:35 views.py:87
+msgid "active jobs"
+msgstr ""
+
+#: links.py:37
+msgid "start"
+msgstr ""
+
+#: links.py:38
+msgid "stop"
+msgstr ""
+
+#: links.py:40
+msgid "edit job processing configuration"
+msgstr ""
+
+#: links.py:41
+msgid "job processing configuration"
+msgstr ""
+
+#: links.py:43
+msgid "requeue job"
+msgstr ""
+
+#: links.py:44
+msgid "delete job"
+msgstr ""
+
+#: links.py:46
+msgid "terminate worker"
+msgstr ""
+
+#: literals.py:7
+msgid "running"
+msgstr ""
+
+#: literals.py:8
+msgid "dead"
+msgstr ""
+
+#: literals.py:16
+msgid "pending"
+msgstr ""
+
+#: literals.py:17
+msgid "processing"
+msgstr ""
+
+#: literals.py:18
+msgid "error"
+msgstr ""
+
+#: literals.py:25
+msgid "stopped"
+msgstr ""
+
+#: literals.py:26
+msgid "started"
+msgstr ""
+
+#: models.py:90 models.py:265
+msgid "name"
+msgstr ""
+
+#: models.py:91
+msgid "unique jobs"
+msgstr ""
+
+#: models.py:95 models.py:194 models.py:271 views.py:47 views.py:79
+msgid "state"
+msgstr ""
+
+#: models.py:96 views.py:95
+msgid "priority"
+msgstr ""
+
+#: models.py:170 models.py:186 views.py:59 views.py:75 views.py:221
+#: views.py:252
+msgid "job queue"
+msgstr ""
+
+#: models.py:187 models.py:266
+msgid "creation datetime"
+msgstr ""
+
+#: models.py:188
+msgid "id"
+msgstr ""
+
+#: models.py:189 views.py:55 views.py:137
+msgid "job type"
+msgstr ""
+
+#: models.py:190
+msgid "keyword arguments"
+msgstr ""
+
+#: models.py:195 views.py:158
+msgid "result"
+msgstr ""
+
+#: models.py:259 models.py:272 views.py:51
+msgid "job queue item"
+msgstr ""
+
+#: models.py:260
+msgid "job queue items"
+msgstr ""
+
+#: models.py:264
+msgid "node"
+msgstr ""
+
+#: models.py:267
+msgid "heartbeat check"
+msgstr ""
+
+#: models.py:291 views.py:150 views.py:345
+msgid "worker"
+msgstr ""
+
+#: models.py:298
+msgid "Interval of time to check the cluster for and remove unresponsive jobs."
+msgstr ""
+
+#: models.py:301
+msgid "Job queues configuration"
+msgstr ""
+
+#: models.py:304
+msgid "job queues configuration"
+msgstr ""
+
+#: permissions.py:8
+msgid "View the job queues in a Mayan cluster"
+msgstr ""
+
+#: permissions.py:9
+msgid "Edit the the job processing configuration in a Mayan cluster"
+msgstr ""
+
+#: permissions.py:10
+msgid "Can start and stop a job queue in a Mayan cluster"
+msgstr ""
+
+#: permissions.py:11
+msgid "Requeue a job in a Mayan cluster"
+msgstr ""
+
+#: permissions.py:12
+msgid "Delete a pending job in a Mayan cluster"
+msgstr ""
+
+#: permissions.py:13
+msgid "Terminate a worker processing a job in a Mayan cluster"
+msgstr ""
+
+#: views.py:34
+#, python-format
+msgid "workers for node: %s"
+msgstr ""
+
+#: views.py:39 views.py:133
+msgid "created"
+msgstr ""
+
+#: views.py:43
+msgid "heartbeat"
+msgstr ""
+
+#: views.py:116
+#, python-format
+msgid "pending jobs for queue: %s"
+msgstr ""
+
+#: views.py:120
+#, python-format
+msgid "error jobs for queue: %s"
+msgstr ""
+
+#: views.py:124
+#, python-format
+msgid "active jobs for queue: %s"
+msgstr ""
+
+#: views.py:141
+msgid "arguments"
+msgstr ""
+
+#: views.py:151
+msgid "Unknown"
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "Error trying to edit job processing configuration; %s"
+msgstr ""
+
+#: views.py:186
+msgid "Job processing configuration edited successfully."
+msgstr ""
+
+#: views.py:194
+msgid "Edit job processing configuration"
+msgstr ""
+
+#: views.py:213
+msgid "job queue already stopped."
+msgstr ""
+
+#: views.py:216
+msgid "Job queue stopped successfully."
+msgstr ""
+
+#: views.py:222
+#, python-format
+msgid "Are you sure you wish to stop job queue: %s?"
+msgstr ""
+
+#: views.py:244
+msgid "job queue already started."
+msgstr ""
+
+#: views.py:247
+msgid "Job queue started successfully."
+msgstr ""
+
+#: views.py:253
+#, python-format
+msgid "Are you sure you wish to start job queue: %s?"
+msgstr ""
+
+#: views.py:278
+msgid "Job requeue successfully."
+msgstr ""
+
+#: views.py:283 views.py:314
+msgid "job"
+msgstr ""
+
+#: views.py:284
+#, python-format
+msgid "Are you sure you wish to requeue job: %s?"
+msgstr ""
+
+#: views.py:306
+#, python-format
+msgid "Error deleting job; %s."
+msgstr ""
+
+#: views.py:309
+msgid "Job deleted successfully."
+msgstr ""
+
+#: views.py:315
+#, python-format
+msgid "Are you sure you wish to delete job: %s?"
+msgstr ""
+
+#: views.py:337
+#, python-format
+msgid "Error terminating worker; %s."
+msgstr ""
+
+#: views.py:340
+msgid "Worker terminated successfully."
+msgstr ""
+
+#: views.py:346
+#, python-format
+msgid "Are you sure you wish to terminate worker: %s?"
+msgstr ""
