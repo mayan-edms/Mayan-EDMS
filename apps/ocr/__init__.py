@@ -15,7 +15,6 @@ from documents.models import Document, DocumentVersion
 from maintenance.api import MaintenanceNamespace
 from project_tools.api import register_tool
 from acls.api import class_permissions
-from statistics.api import register_statistics
 from job_processor.models import JobQueue, JobType
 from job_processor.exceptions import JobQueuePushError
 
@@ -31,14 +30,12 @@ from .literals import OCR_QUEUE_NAME
 logger = logging.getLogger(__name__)
 ocr_job_queue = None
 
-from .links import (submit_document, re_queue_multiple_document,
-    queue_document_multiple_delete, ocr_disable,
+from .links import (submit_document, ocr_disable,
     ocr_enable, all_document_ocr_cleanup, ocr_log,
     ocr_tool_link, submit_document_multiple)
 
 bind_links([Document], [submit_document])
 bind_links([OCRProcessingSingleton], [ocr_disable, ocr_enable])
-#register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
 namespace = MaintenanceNamespace(label=_(u'OCR'))
 namespace.create_tool(all_document_ocr_cleanup)
@@ -65,14 +62,6 @@ def document_post_save(sender, instance, **kwargs):
             except JobQueuePushError:
                 pass
 
-# Disabled because it appears Django execute signals using the same
-# process of the signal emiter effectively blocking the view until
-# the OCR process completes which could take several minutes :/
-#@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
-#def call_queue(sender, **kwargs):
-#    if kwargs.get('created', False):
-#        logger.debug('got call_queue signal: %s' % kwargs)
-#        task_process_document_queues()
 
 register_tool(ocr_tool_link)
 
@@ -80,7 +69,6 @@ class_permissions(Document, [
     PERMISSION_OCR_DOCUMENT,
 ])
 
-#register_statistics(get_statistics)
 create_ocr_job_queue()
 ocr_job_type = JobType('ocr', _(u'OCR'), do_document_ocr)
 

@@ -348,3 +348,58 @@ def worker_terminate(request, worker_pk):
         'previous': previous,
         'form_icon': u'lorry_delete.png',
     }, context_instance=RequestContext(request))
+
+'''
+def re_queue_document(request, queue_document_id=None, queue_document_id_list=None):
+    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+
+    if queue_document_id:
+        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
+    elif queue_document_id_list:
+        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one queue document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+
+    if request.method == 'POST':
+        for queue_document in queue_documents:
+            try:
+                queue_document.requeue()
+                messages.success(
+                    request,
+                    _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
+                        'document': queue_document.document_version.document,
+                        'queue': queue_document.document_queue.label
+                    }
+                )
+            except Document.DoesNotExist:
+                messages.error(request, _(u'Document no longer in queue.'))
+            except ReQueueError:
+                messages.warning(
+                    request,
+                    _(u'Document: %s is already being processed and can\'t be re-queded.') % queue_document
+                )
+        return HttpResponseRedirect(next)
+
+    context = {
+        'next': next,
+        'previous': previous,
+        'form_icon': u'hourglass_add.png',
+    }
+
+    if len(queue_documents) == 1:
+        context['object'] = queue_documents[0]
+        context['title'] = _(u'Are you sure you wish to re-queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
+    elif len(queue_documents) > 1:
+        context['title'] = _(u'Are you sure you wish to re-queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def re_queue_multiple_document(request):
+    return re_queue_document(request, queue_document_id_list=request.GET.get('id_list', []))
+'''

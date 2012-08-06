@@ -26,49 +26,10 @@ from .api import clean_pages
 from . import ocr_job_queue, ocr_job_type
 
 
-def ocr_log(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
-    context = {
-        'queue': OCRProcessingSingleton.get(),
-        'object_name': _(u'OCR processing'),  # TODO fix, not working
-        'navigation_object_name': 'queue',
-        'object_list': [],
-        'title': _(u'OCR log items'),
-        #'hide_object': True,
-        #'hide_link': True,
-        'extra_columns': [
-            {'name': _(u'document'), 'attribute': encapsulate(lambda x: document_link(x.document_version.document) if hasattr(x, 'document_version') else _(u'Missing document.'))},
-            {'name': _(u'version'), 'attribute': 'document_version'},
-            {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document_version.document))},
-            {'name': _('submitted'), 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
-            #{'name': _('delay'), 'attribute': 'delay'},
-            #{'name': _('state'), 'attribute': encapsulate(lambda x: x.get_state_display())},
-            #{'name': _('node'), 'attribute': 'node_name'},
-            {'name': _('result'), 'attribute': 'result'},
-        ],
-        'multi_select_as_buttons': True,
-        'sidebar_subtemplates_list': [
-            {
-                'name': 'generic_subtemplate.html',
-                'context': {
-                    'side_bar': True,
-                    'title': _(u'OCR processing properties'),
-                    'content': _(u'Current state: %s') % OCRProcessingSingleton.get().get_state_display(),
-                }
-            }
-        ]
-    }
-
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
-
-    #        'queue': document_queue,
-    #        'object_name': _(u'document queue'),
-    #        'navigation_object_name': 'queue',
-    #        'list_object_variable_name': 'queue_document',
-    #    },
-    #)
+#            {'name': _(u'document'), 'attribute': encapsulate(lambda x: document_link(x.document_version.document) if hasattr(x, 'document_version') else _(u'Missing document.'))},
+#            {'name': _(u'version'), 'attribute': 'document_version'},
+#            {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document_version.document))},
+#            {'name': _('submitted'), 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
 
 
 def ocr_disable(request):
@@ -123,57 +84,6 @@ def ocr_enable(request):
     }, context_instance=RequestContext(request))
 
 
-
-def queue_document_delete(request, queue_document_id=None, queue_document_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT_DELETE])
-
-    if queue_document_id:
-        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
-    elif queue_document_id_list:
-        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
-    else:
-        messages.error(request, _(u'Must provide at least one queue document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method == 'POST':
-        for queue_document in queue_documents:
-            try:
-                if queue_document.state == QUEUEDOCUMENT_STATE_PROCESSING:
-                    messages.error(request, _(u'Document: %s is being processed and can\'t be deleted.') % queue_document)
-                else:
-                    queue_document.delete()
-                    messages.success(request, _(u'Queue document: %(document)s deleted successfully.') % {
-                        'document': queue_document.document})
-
-            except Exception, e:
-                messages.error(request, _(u'Error deleting document: %(document)s; %(error)s') % {
-                    'document': queue_document, 'error': e})
-        return HttpResponseRedirect(next)
-
-    context = {
-        'next': next,
-        'previous': previous,
-        'delete_view': True,
-        'form_icon': u'hourglass_delete.png',
-    }
-
-    if len(queue_documents) == 1:
-        context['object'] = queue_documents[0]
-        context['title'] = _(u'Are you sure you wish to delete queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
-    elif len(queue_documents) > 1:
-        context['title'] = _(u'Are you sure you wish to delete queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
-
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
-
-
-def queue_document_multiple_delete(request):
-    return queue_document_delete(request, queue_document_id_list=request.GET.get('id_list', ''))
-
-
 def submit_document_multiple(request):
     for item_id in request.GET.get('id_list', '').split(','):
         submit_document(request, item_id)
@@ -210,60 +120,6 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
 
     if post_submit_redirect:
         return HttpResponseRedirect(post_submit_redirect)
-
-
-def re_queue_document(request, queue_document_id=None, queue_document_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
-    if queue_document_id:
-        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id)]
-    elif queue_document_id_list:
-        queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
-    else:
-        messages.error(request, _(u'Must provide at least one queue document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method == 'POST':
-        for queue_document in queue_documents:
-            try:
-                queue_document.requeue()
-                messages.success(
-                    request,
-                    _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
-                        'document': queue_document.document_version.document,
-                        'queue': queue_document.document_queue.label
-                    }
-                )
-            except Document.DoesNotExist:
-                messages.error(request, _(u'Document no longer in queue.'))
-            except ReQueueError:
-                messages.warning(
-                    request,
-                    _(u'Document: %s is already being processed and can\'t be re-queded.') % queue_document
-                )
-        return HttpResponseRedirect(next)
-
-    context = {
-        'next': next,
-        'previous': previous,
-        'form_icon': u'hourglass_add.png',
-    }
-
-    if len(queue_documents) == 1:
-        context['object'] = queue_documents[0]
-        context['title'] = _(u'Are you sure you wish to re-queue document: %s?') % ', '.join([unicode(d) for d in queue_documents])
-    elif len(queue_documents) > 1:
-        context['title'] = _(u'Are you sure you wish to re-queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
-
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
-
-
-def re_queue_multiple_document(request):
-    return re_queue_document(request, queue_document_id_list=request.GET.get('id_list', []))
 
 
 def all_document_ocr_cleanup(request):

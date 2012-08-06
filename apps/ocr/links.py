@@ -21,11 +21,6 @@ ocr_disable = Link(text=_(u'disable OCR processing'), view='ocr_disable', sprite
 ocr_enable = Link(text=_(u'enable OCR processing'), view='ocr_enable', sprite='control_play_blue', permissions=[PERMISSION_OCR_QUEUE_ENABLE_DISABLE], conditional_disable=is_enabled)
 submit_document = Link(text=_('submit to OCR queue'), view='submit_document', args='object.id', sprite='text_dropcaps', permissions=[PERMISSION_OCR_DOCUMENT])
 submit_document_multiple = Link(text=_('submit to OCR queue'), view='submit_document_multiple', sprite='text_dropcaps', permissions=[PERMISSION_OCR_DOCUMENT])
-re_queue_document = Link(text=_('re-queue'), view='re_queue_document', args='object.id', sprite='hourglass_add', permissions=[PERMISSION_OCR_DOCUMENT])
-re_queue_multiple_document = Link(text=_('re-queue'), view='re_queue_multiple_document', sprite='hourglass_add', permissions=[PERMISSION_OCR_DOCUMENT])
-queue_document_delete = Link(text=_(u'delete'), view='queue_document_delete', args='object.id', sprite='hourglass_delete', permissions=[PERMISSION_OCR_DOCUMENT_DELETE])
-queue_document_multiple_delete = Link(text=_(u'delete'), view='queue_document_multiple_delete', sprite='hourglass_delete', permissions=[PERMISSION_OCR_DOCUMENT_DELETE])
-
 
 all_document_ocr_cleanup = Link(text=_(u'clean up pages content'), view='all_document_ocr_cleanup', sprite='text_strikethrough', permissions=[PERMISSION_OCR_CLEAN_ALL_PAGES], description=_(u'Runs a language filter to remove common OCR mistakes from document pages content.'))
 
