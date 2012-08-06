@@ -70,7 +70,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
         parser_output_filepath = os.path.join(TEMPORARY_DIRECTORY, u''.join([input_filepath, str(page), TEXT_PARSER_FILE_SUFFIX]))
         logger.debug('parser_output_filepath: %s', parser_output_filepath)
         with open(parser_output_filepath, 'wb') as descriptor:
-            descriptor.write(text_parser.render_to_image(input_filepath, page_number=page))
+            descriptor.write(text_parser.render_to_image(input_filepath, mimetype=mimetype, page_number=page))
         
         input_filepath = parser_output_filepath
         mimetype = 'image/png'
