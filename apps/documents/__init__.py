@@ -8,7 +8,7 @@ from common.utils import validate_path, encapsulate
 from navigation.api import (bind_links, register_top_menu,
     register_model_list_columns,
     register_sidebar_template, Link, register_multi_item_links)
-from diagnostics.api import register_diagnostic
+from diagnostics.api import DiagnosticNamespace
 from maintenance.api import MaintenanceNamespace
 from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
@@ -85,7 +85,8 @@ bind_links('document_page_transformation_list', [document_page_transformation_cr
 bind_links('document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
 bind_links(['document_page_transformation_edit', 'document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
 
-register_diagnostic('documents', _(u'Documents'), document_missing_list)
+namespace = DiagnosticNamespace(_(u'documents'))
+namespace.create_tool(document_missing_list)
 
 namespace = MaintenanceNamespace(_(u'documents'))
 namespace.create_tool(document_find_all_duplicates)

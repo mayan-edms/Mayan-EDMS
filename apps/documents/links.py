@@ -57,7 +57,7 @@ document_clear_transformations = Link(text=_(u'clear transformations'), view='do
 document_multiple_clear_transformations = Link(text=_(u'clear transformations'), view='document_multiple_clear_transformations', sprite='page_paintbrush', permissions=[PERMISSION_DOCUMENT_TRANSFORM])
 document_print = Link(text=_(u'print'), view='document_print', args='object.id', sprite='printer', permissions=[PERMISSION_DOCUMENT_VIEW])
 document_history_view = Link(text=_(u'history'), view='history_for_object', args=['"documents"', '"document"', 'object.pk'], sprite='book_go', permissions=[PERMISSION_HISTORY_VIEW])
-document_missing_list = Link(text=_(u'Find missing document files'), view='document_missing_list', sprite='folder_page', permissions=[PERMISSION_DOCUMENT_VIEW])
+document_missing_list = Link(text=_(u'Find missing document files'), view='document_missing_list', sprite='page_find', description=_(u'Return a list of documents found on the database but that don\'t physically exist in the document storage.'), permissions=[PERMISSION_DOCUMENT_VIEW])
 
 # Tools
 document_clear_image_cache = Link(text=_(u'Clear the document image cache'), view='document_clear_image_cache', sprite='camera_delete', permissions=[PERMISSION_DOCUMENT_TOOLS], description=_(u'Clear the graphics representations used to speed up the documents\' display and interactive transformations results.'))

@@ -4,4 +4,5 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import Link
 
-diagnostics = Link(text=_(u'diagnostics'), view='diagnostics', sprite='pill', icon='pill.png')
+diagnostic_list = Link(text=_(u'diagnostics'), view='diagnostic_list', icon='pill.png', sprite='pill')
+diagnostic_execute = Link(text=_(u'execute'), view='diagnostic_execute', args='object.id', sprite='lightning')

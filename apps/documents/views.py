@@ -676,6 +676,7 @@ def document_missing_list(request):
         return render_to_response('generic_confirm.html', {
             'previous': previous,
             'message': _(u'On large databases this operation may take some time to execute.'),
+            'form_icon': 'page_find.png',
         }, context_instance=RequestContext(request))
     else:
         missing_id_list = []
