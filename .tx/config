@@ -456,3 +456,48 @@ trans.de_DE = apps/statistics/locale/de_DE/LC_MESSAGES/django.po
 trans.fr = apps/statistics/locale/fr/LC_MESSAGES/django.po
 trans.bg = apps/statistics/locale/bg/LC_MESSAGES/django.po
 trans.nl_NL = apps/statistics/locale/nl_NL/LC_MESSAGES/django.po
+
+[mayan-edms.apps-clustering]
+source_file = apps/clustering/locale/en/LC_MESSAGES/django.po
+type = PO
+source_lang = en
+trans.es = apps/clustering/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/clustering/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/clustering/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/clustering/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/clustering/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/clustering/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/clustering/locale/de_DE/LC_MESSAGES/django.po
+trans.fr = apps/clustering/locale/fr/LC_MESSAGES/django.po
+trans.bg = apps/clustering/locale/bg/LC_MESSAGES/django.po
+trans.nl_NL = apps/clustering/locale/nl_NL/LC_MESSAGES/django.po
+
+[mayan-edms.apps-job_processor]
+source_file = apps/job_processor/locale/en/LC_MESSAGES/django.po
+type = PO
+source_lang = en
+trans.es = apps/job_processor/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/job_processor/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/job_processor/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/job_processor/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/job_processor/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/job_processor/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/job_processor/locale/de_DE/LC_MESSAGES/django.po
+trans.fr = apps/job_processor/locale/fr/LC_MESSAGES/django.po
+trans.bg = apps/job_processor/locale/bg/LC_MESSAGES/django.po
+trans.nl_NL = apps/job_processor/locale/nl_NL/LC_MESSAGES/django.po
+
+[mayan-edms.apps-lock_manager]
+source_file = apps/lock_manager/locale/en/LC_MESSAGES/django.po
+type = PO
+source_lang = en
+trans.es = apps/lock_manager/locale/es/LC_MESSAGES/django.po
+trans.pt = apps/lock_manager/locale/pt/LC_MESSAGES/django.po
+trans.pt_BR = apps/lock_manager/locale/pt_BR/LC_MESSAGES/django.po
+trans.ru = apps/lock_manager/locale/ru/LC_MESSAGES/django.po
+trans.it = apps/lock_manager/locale/it/LC_MESSAGES/django.po
+trans.pl = apps/lock_manager/locale/pl/LC_MESSAGES/django.po
+trans.de_DE = apps/lock_manager/locale/de_DE/LC_MESSAGES/django.po
+trans.fr = apps/lock_manager/locale/fr/LC_MESSAGES/django.po
+trans.bg = apps/lock_manager/locale/bg/LC_MESSAGES/django.po
+trans.nl_NL = apps/lock_manager/locale/nl_NL/LC_MESSAGES/django.po
