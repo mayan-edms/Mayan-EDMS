@@ -91,6 +91,10 @@ def job_queues(request):
                 'name': _(u'error jobs'),
                 'attribute': 'error_jobs.count',
             },
+            {
+                'name': _(u'priority'),
+                'attribute': 'priority',
+            },
         ],
     }
 
