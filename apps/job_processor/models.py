@@ -23,7 +23,8 @@ from .literals import (JOB_STATE_CHOICES, JOB_STATE_PENDING,
     JOB_STATE_PROCESSING, JOB_STATE_ERROR, WORKER_STATE_CHOICES,
     WORKER_STATE_RUNNING, DEFAULT_JOB_QUEUE_POLL_INTERVAL,
     JOB_QUEUE_STATE_STOPPED, JOB_QUEUE_STATE_STARTED,
-    JOB_QUEUE_STATE_CHOICES, DEFAULT_DEAD_JOB_REMOVAL_INTERVAL)
+    JOB_QUEUE_STATE_CHOICES, DEFAULT_DEAD_JOB_REMOVAL_INTERVAL,
+    DEFAULT_JOB_QUEUE_PRIORITY)
 from .exceptions import (JobQueuePushError, JobQueueNoPendingJobs,
     JobQueueAlreadyStarted, JobQueueAlreadyStopped)
 
@@ -85,7 +86,6 @@ class JobQueueManager(models.Manager):
 
 
 class JobQueue(models.Model):
-    # TODO: support for stopping and starting job queues
     # Internal name
     name = models.CharField(max_length=32, verbose_name=_(u'name'), unique=True)
     unique_jobs = models.BooleanField(verbose_name=_(u'unique jobs'), default=True)
@@ -93,6 +93,7 @@ class JobQueue(models.Model):
         choices=JOB_QUEUE_STATE_CHOICES,
         default=JOB_QUEUE_STATE_STARTED,
         verbose_name=_(u'state'))
+    priority = models.IntegerField(default=DEFAULT_JOB_QUEUE_PRIORITY, verbose_name=_(u'priority'))
         
     objects = JobQueueManager()
 
@@ -168,6 +169,7 @@ class JobQueue(models.Model):
     class Meta:
         verbose_name = _(u'job queue')
         verbose_name_plural = _(u'job queues')
+        ordering = ('priority',)
 
 
 class JobQueueItemManager(models.Manager):

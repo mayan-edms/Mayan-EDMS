@@ -19,15 +19,13 @@ def simple_locking(lock_id, expiration=None):
             except LockError:
                 # Unable to acquire lock
                 pass
-            except Exception:
-                # Unhandled error, release lock
-                lock.release()
-                raise
             else:
                 # Lock acquired, proceed normally, release lock afterwards
                 logger.debug('acquired lock: %s' % lock_id)
                 result = function(*args, **kwargs)
                 lock.release()
                 return result
+            finally:
+                lock.release()
         return wraps(function)(wrapper)
     return inner_decorator
