@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 
 from permissions.models import Permission
+from common.utils import encapsulate
 
 from .permissions import PERMISSION_VIEW_SCHEDULER_LIST, PERMISSION_VIEW_JOB_LIST
 from .api import LocalScheduler
@@ -29,6 +30,10 @@ def scheduler_list(request):
             {
                 'name': _(u'running'),
                 'attribute': 'running'
+            },
+            {
+                'name': _(u'jobs'),
+                'attribute': encapsulate(lambda x: len(x.get_job_list()))
             },
         ],
         'hide_object': True,
