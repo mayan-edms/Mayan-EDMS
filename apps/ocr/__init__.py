@@ -12,7 +12,7 @@ from django.db.utils import DatabaseError
 from navigation.api import (bind_links, register_multi_item_links,
     register_multi_item_links)
 from documents.models import Document, DocumentVersion
-from maintenance.api import register_maintenance_links
+from maintenance.api import MaintenanceNamespace
 from project_tools.api import register_tool
 from acls.api import class_permissions
 from statistics.api import register_statistics
@@ -40,7 +40,8 @@ bind_links([Document], [submit_document])
 bind_links([OCRProcessingSingleton], [ocr_disable, ocr_enable])
 #register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 
-register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
+namespace = MaintenanceNamespace(label=_(u'OCR'))
+namespace.create_tool(all_document_ocr_cleanup)
 register_multi_item_links(['folder_view', 'search', 'results', 'index_instance_node_view', 'document_find_duplicates', 'document_type_document_list', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
 

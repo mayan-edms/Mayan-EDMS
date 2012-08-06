@@ -9,7 +9,7 @@ from django.db.models.signals import post_save, pre_delete, post_delete
 from navigation.api import (register_top_menu, register_sidebar_template,
     bind_links, Link)
 
-from maintenance.api import register_maintenance_links
+from maintenance.api import MaintenanceNamespace
 from documents.models import Document
 from metadata.models import DocumentMetadata
 from project_setup.api import register_setup
@@ -25,7 +25,10 @@ from .links import (index_setup, index_setup_list, index_setup_create,
 logger = logging.getLogger(__name__)
 
 register_top_menu('indexes', link=Link(text=_('indexes'), sprite='tab', view='index_list', children_view_regex=[r'^index_[i,l]']))
-register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_(u'Indexes'))
+
+namespace = MaintenanceNamespace(_(u'indexes'))
+namespace.create_tool(rebuild_index_instances)
+
 register_sidebar_template(['index_instance_list'], 'indexing_help.html')
 
 bind_links([IndexInstanceNode], [index_parent])
