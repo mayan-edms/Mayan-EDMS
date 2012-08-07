@@ -160,6 +160,7 @@ INSTALLED_APPS = (
     'django_gpg',
     'acls',
     'converter',
+    'trash',
     'user_management',
     'mimetype',
     'clustering',
