@@ -160,6 +160,7 @@ INSTALLED_APPS = (
     'django_gpg',
     'acls',
     'converter',
+    'trash',
     'user_management',
     'mimetype',
     'clustering',
@@ -190,7 +191,6 @@ INSTALLED_APPS = (
     'rest_api',
     'bootstrap',
     'statistics',
-    'trash',
 
     # Has to be last so the other apps can register it's signals
     'signaler',
