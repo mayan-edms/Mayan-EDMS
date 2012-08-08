@@ -9,7 +9,7 @@ from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder, POP3Email, IMAPEmail)
+    WatchFolder, POP3Email, IMAPEmail, LocalScanner)
     
 staging_file_preview = Link(text=_(u'preview'), klass='fancybox-noscaling', view='staging_file_preview', args=['source.source_type', 'source.pk', 'object.pk'], sprite='zoom', permissions=[PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE])
 staging_file_delete = Link(text=_(u'delete'), view='staging_file_delete', args=['source.source_type', 'source.pk', 'object.pk'], sprite='delete', keep_query=True, permissions=[PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE])
@@ -20,6 +20,7 @@ setup_staging_folder_list = Link(text=_(u'staging folders'), view='setup_staging
 setup_watch_folder_list = Link(text=_(u'watch folders'), view='setup_watch_folder_list', sprite='folder_magnify', children_classes=[WatchFolder], permissions=[PERMISSION_SOURCES_SETUP_VIEW])
 setup_pop3_email_list = Link(text=_(u'POP3 email'), view='setup_pop3_email_list', sprite='email', children_classes=[POP3Email], permissions=[PERMISSION_SOURCES_SETUP_VIEW])
 setup_imap_email_list = Link(text=_(u'IMAP email'), view='setup_imap_email_list', sprite='email', children_classes=[IMAPEmail], permissions=[PERMISSION_SOURCES_SETUP_VIEW])
+setup_local_scanner_list = Link(text=_(u'Local scanner'), view='setup_local_scanner_list', sprite='images', children_classes=[LocalScanner], permissions=[PERMISSION_SOURCES_SETUP_VIEW])
 
 setup_source_edit = Link(text=_(u'edit'), view='setup_source_edit', args=['source.source_type', 'source.pk'], sprite='application_form_edit', permissions=[PERMISSION_SOURCES_SETUP_EDIT])
 setup_source_delete = Link(text=_(u'delete'), view='setup_source_delete', args=['source.source_type', 'source.pk'], sprite='application_form_delete', permissions=[PERMISSION_SOURCES_SETUP_DELETE])

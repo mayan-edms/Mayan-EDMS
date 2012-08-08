@@ -14,6 +14,8 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+import imagescanner
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
@@ -39,7 +41,8 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_CHOICE_POP3_EMAIL, DEFAULT_POP3_INTERVAL,
     IMAP_PORT, IMAP_SSL_PORT,
     SOURCE_CHOICE_IMAP_EMAIL, DEFAULT_IMAP_INTERVAL,
-    IMAP_DEFAULT_MAILBOX)
+    IMAP_DEFAULT_MAILBOX,
+    SOURCE_CHOICE_LOCAL_SCANNER, SOURCE_ICON_IMAGES)
 from .compressed_file import CompressedFile, NotACompressedFile
 from .conf.settings import POP3_TIMEOUT
 #from . import sources_scheduler
@@ -376,6 +379,28 @@ class IMAPEmail(EmailBaseModel):
     class Meta(EmailBaseModel.Meta):
         verbose_name = _(u'IMAP email')
         verbose_name_plural = _(u'IMAP email')
+
+
+class LocalScanner(InteractiveBaseModel):
+    is_interactive = True
+    source_type = SOURCE_CHOICE_LOCAL_SCANNER
+    default_icon = SOURCE_ICON_IMAGES
+
+    scanner_device = models.CharField(max_length=255, verbose_name=_(u'scanner device'))
+    scanner_description = models.CharField(max_length=255, verbose_name=_(u'scanner description'))
+
+    @classmethod
+    def get_scanner_choices(cls):
+        imagescanner.settings.ENABLE_NET_BACKEND = False
+        imagescanner.settings.ENABLE_TEST_BACKEND = False
+    
+        iscanner = imagescanner.ImageScanner(remote_search=False)
+        scanners = iscanner.list_scanners()
+        return [(scanner._device, u'%s: %s - %s - %s <%s>' % (scanner.id, scanner.manufacturer, scanner.name, scanner.description, scanner._device)) for scanner in scanners]
+
+    class Meta(InteractiveBaseModel.Meta):
+        verbose_name = _(u'local scanner')
+        verbose_name_plural = _(u'local scanners')
 
 
 class StagingFolder(InteractiveBaseModel):

@@ -7,7 +7,7 @@ from django.utils.translation import ugettext
 from documents.forms import DocumentForm
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder, POP3Email, IMAPEmail)
+    WatchFolder, POP3Email, IMAPEmail, LocalScanner)
 from .widgets import FamFamRadioSelect
 from .utils import validate_whitelist_blacklist
 
@@ -99,6 +99,21 @@ class WatchFolderSetupForm(forms.ModelForm):
     class Meta:
         model = WatchFolder
 
+
+class LocalScannerSetupForm(forms.ModelForm):
+    class Meta:
+        model = LocalScanner
+
+    scanner = forms.ChoiceField(required=False, label=_(u'Active scanners'), help_text=_(u'List of scanners found connected to this node.  Choose one to have its device and description automatically saved in the fields above.'))
+        
+    def __init__(self, *args, **kwargs):
+        super(LocalScannerSetupForm, self).__init__(*args, **kwargs)
+        self.fields['icon'].widget = FamFamRadioSelect(
+            attrs=self.fields['icon'].widget.attrs,
+            choices=self.fields['icon'].widget.choices,
+        )
+        self.fields['scanner'].choices = LocalScanner.get_scanner_choices()
+        
 
 class SourceTransformationForm(forms.ModelForm):
     class Meta:

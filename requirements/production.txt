@@ -68,6 +68,10 @@ pbs==0.105
 psutil==0.5.1
 GitPython==0.3.2.RC1
 
+# Sources
+
+-e git+https://github.com/rosarior/imagescanner.git#egg=imagescanner
+
 # Misc
 
 elementtree==1.2.7-20070827-preview

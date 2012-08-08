@@ -29,16 +29,16 @@ from acls.models import AccessEntry
 from navigation.api import Link
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder, POP3Email, SourceLog, IMAPEmail)
+    WatchFolder, POP3Email, SourceLog, IMAPEmail, LocalScanner)
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL, SOURCE_CHOICE_IMAP_EMAIL)
+    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL, SOURCE_CHOICE_IMAP_EMAIL,
+    SOURCE_CHOICE_LOCAL_SCANNER)
 from .literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_UNCOMPRESS_CHOICE_ASK)
 from .staging import create_staging_file_class
 from .forms import (StagingDocumentForm, WebFormForm,
-    WatchFolderSetupForm)
-from .forms import (WebFormSetupForm, StagingFolderSetupForm,
-    POP3EmailSetupForm, IMAPEmailSetupForm)
+    WatchFolderSetupForm, WebFormSetupForm, StagingFolderSetupForm,
+    POP3EmailSetupForm, IMAPEmailSetupForm, LocalScannerSetupForm)
 from .forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
@@ -446,6 +446,8 @@ def setup_source_list(request, source_type):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     context = {
         'object_list': cls.objects.all(),
@@ -480,6 +482,9 @@ def setup_source_edit(request, source_type, source_id):
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
         form_class = IMAPEmailSetupForm
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
+        form_class = LocalScannerSetupForm
 
     source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
@@ -530,6 +535,10 @@ def setup_source_delete(request, source_type, source_id):
         cls = IMAPEmail
         form_icon = u'email_delete.png'
         redirect_view = 'setup_imap_email_list'
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
+        form_icon = u'image_delete.png'
+        redirect_view = 'setup_local_scanner_list'
 
     redirect_view = reverse('setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
@@ -588,7 +597,11 @@ def setup_source_create(request, source_type):
         cls = IMAPEmail
         form_class = IMAPEmailSetupForm
         redirect_view = 'setup_imap_email_list'
-
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
+        form_class = LocalScannerSetupForm
+        redirect_view = 'setup_local_scanner_list'
+        
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
@@ -623,6 +636,8 @@ def setup_source_log_list(request, source_type, source_pk):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     source = get_object_or_404(cls, pk=source_pk)
 
@@ -659,6 +674,8 @@ def setup_source_transformation_list(request, source_type, source_id):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     source = get_object_or_404(cls, pk=source_id)
 
@@ -765,6 +782,8 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     source = get_object_or_404(cls, pk=source_id)
 
