@@ -24,7 +24,7 @@ from .literals import (JOB_STATE_CHOICES, JOB_STATE_PENDING,
     WORKER_STATE_RUNNING, DEFAULT_JOB_QUEUE_POLL_INTERVAL,
     JOB_QUEUE_STATE_STOPPED, JOB_QUEUE_STATE_STARTED,
     JOB_QUEUE_STATE_CHOICES, DEFAULT_DEAD_JOB_REMOVAL_INTERVAL,
-    DEFAULT_JOB_QUEUE_PRIORITY)
+    DEFAULT_JOB_QUEUE_PRIORITY, JOB_QUEUE_ITEM_UNIQUE_ID_TRUNCATE_LENGTH)
 from .exceptions import (JobQueuePushError, JobQueueNoPendingJobs,
     JobQueueAlreadyStarted, JobQueueAlreadyStopped)
 
@@ -182,7 +182,6 @@ class JobQueueItemManager(models.Manager):
 
 
 class JobQueueItem(models.Model):
-    # TODO: add re-queue
     job_queue = models.ForeignKey(JobQueue, verbose_name=_(u'job queue'))
     creation_datetime = models.DateTimeField(verbose_name=_(u'creation datetime'), editable=False)
     unique_id = models.CharField(blank=True, max_length=64, verbose_name=_(u'id'), unique=True, editable=False)
@@ -197,7 +196,10 @@ class JobQueueItem(models.Model):
     objects = JobQueueItemManager()
 
     def __unicode__(self):
-        return self.unique_id
+        if JOB_QUEUE_ITEM_UNIQUE_ID_TRUNCATE_LENGTH:
+            return u'%s...' % self.unique_id[:JOB_QUEUE_ITEM_UNIQUE_ID_TRUNCATE_LENGTH]
+        else:
+            return self.unique_id
     
     def save(self, *args, **kwargs):
         if not self.pk:
