@@ -8,13 +8,13 @@ from navigation.api import bind_links
 from project_tools.api import register_tool
 
 from .api import make_trashable
-from .links import trash_can_list, trash_can_items, trash_can_item_restore
+from .links import trash_can_list, trash_can_items, trash_can_item_restore, trash_can_item_delete
 from .models import TrashCan, TrashCanItem
 
 register_tool(trash_can_list)
-bind_links(['trash_can_list', TrashCan, TrashCanItem], trash_can_list, menu_name='secondary_menu')
+bind_links(['trash_can_list', TrashCan], trash_can_list, menu_name='secondary_menu')
 bind_links([TrashCan], trash_can_items)
-bind_links([TrashCanItem], trash_can_item_restore)
+bind_links([TrashCanItem], [trash_can_item_restore, trash_can_item_delete])
 
 @transaction.commit_on_success
 def create_trash_cans():

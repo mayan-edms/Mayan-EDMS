@@ -10,7 +10,6 @@ from common.managers import CustomizableQuerySetManager
 
 class TrashCanManager(models.Manager):
     def get_or_create(self, *args, **kwargs):
-        #job_queue_labels[kwargs.get('name')] = kwargs.get('defaults', {}).get('label')
         instance, created = super(TrashCanManager, self).get_or_create(*args, **kwargs)
         instance.label = kwargs.get('defaults', {}).get('label')
         instance.save()
@@ -84,6 +83,10 @@ class TrashCanItem(models.Model):
         return unicode(self.content_object)
 
     def restore(self):
+        self.delete()
+        
+    def purge(self):
+        self.content_object.delete(trash=False)
         self.delete()
 
     def save(self, *args, **kwargs):
