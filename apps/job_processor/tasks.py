@@ -12,8 +12,8 @@ from .exceptions import JobQueueNoPendingJobs
 from .literals import JOB_QUEUE_STATE_STARTED
 
 LOCK_EXPIRE = 10
-MAX_CPU_LOAD = 90.0
-MAX_MEMORY_USAGE = 90.0
+MAX_CPU_LOAD = 60.0
+MAX_MEMORY_USAGE = 60.0
 NODE_MAX_WORKERS = len(psutil.cpu_percent(interval=0.1, percpu=True))  # Get CPU/cores count
 
 logger = logging.getLogger(__name__)
