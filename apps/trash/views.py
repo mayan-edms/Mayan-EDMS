@@ -24,10 +24,6 @@ def trash_can_list(request):
         'title': _(u'trash cans'),
         'extra_columns': [
             {
-                'name': _(u'name'),
-                'attribute': 'name'
-            },
-            {
                 'name': _(u'label'),
                 'attribute': 'label'
             },
