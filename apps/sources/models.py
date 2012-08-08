@@ -382,6 +382,8 @@ class IMAPEmail(EmailBaseModel):
 
 
 class LocalScanner(InteractiveBaseModel):
+    _scanner_cache = {}
+
     is_interactive = True
     source_type = SOURCE_CHOICE_LOCAL_SCANNER
     default_icon = SOURCE_ICON_IMAGES
@@ -390,13 +392,34 @@ class LocalScanner(InteractiveBaseModel):
     scanner_description = models.CharField(max_length=255, verbose_name=_(u'scanner description'))
 
     @classmethod
-    def get_scanner_choices(cls):
+    def get_scanners(cls):
         imagescanner.settings.ENABLE_NET_BACKEND = False
         imagescanner.settings.ENABLE_TEST_BACKEND = False
-    
+
         iscanner = imagescanner.ImageScanner(remote_search=False)
         scanners = iscanner.list_scanners()
+        
+        for scanner in scanners:
+            LocalScanner._scanner_cache[scanner._device] = scanner
+        
+        return scanners
+
+    @classmethod
+    def get_scanner_choices(cls):
+        scanners = cls.get_scanners()
+
         return [(scanner._device, u'%s: %s - %s - %s <%s>' % (scanner.id, scanner.manufacturer, scanner.name, scanner.description, scanner._device)) for scanner in scanners]
+
+    def get_scanner(self, fail=False):
+        try:
+            return LocalScanner._scanner_cache[self.device]
+        except IndexError:
+            if fail==False:
+                LocalScanner.get_scanners()
+                return self.get_scanner(fail=True)
+            else:
+                # TODO: raise specialized exception
+                raise Exception('Error getting scanner')
 
     class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'local scanner')
