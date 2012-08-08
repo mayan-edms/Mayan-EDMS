@@ -550,7 +550,7 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
             'previous': previous,
             'title': _(u'Are you sure you wish to find all duplicates?'),
             'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'page_refresh.png',
+            'form_icon': u'page_white_copy.png',
         }, context_instance=RequestContext(request))
     else:
         duplicated = []
