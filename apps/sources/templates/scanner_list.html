@@ -1,0 +1,10 @@
+{% load i18n %}
+{% load scanner_tags %}
+{% trans 'Scanner list' as title %}
+
+{% scanner_list as paragraphs %}
+
+{% with 'true' as side_bar %}
+    {% include 'generic_subtemplate.html' %}
+{% endwith %}
+

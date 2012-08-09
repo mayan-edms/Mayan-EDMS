@@ -3,7 +3,8 @@ from __future__ import absolute_import
 from django.conf.urls.defaults import patterns, url
 
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL, SOURCE_CHOICE_IMAP_EMAIL)
+    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL, SOURCE_CHOICE_IMAP_EMAIL,
+    SOURCE_CHOICE_LOCAL_SCANNER)
 
 urlpatterns = patterns('sources.views',
     url(r'^create/from/local/multiple/$', 'document_create', (), 'document_create_multiple'),
@@ -25,6 +26,8 @@ urlpatterns = patterns('sources.views',
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_WATCH, 'setup_source_list', {'source_type': SOURCE_CHOICE_WATCH}, 'setup_watch_folder_list'),
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_POP3_EMAIL, 'setup_source_list', {'source_type': SOURCE_CHOICE_POP3_EMAIL}, 'setup_pop3_email_list'),
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_IMAP_EMAIL, 'setup_source_list', {'source_type': SOURCE_CHOICE_IMAP_EMAIL}, 'setup_imap_email_list'),
+    url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_LOCAL_SCANNER, 'setup_source_list', {'source_type': SOURCE_CHOICE_LOCAL_SCANNER}, 'setup_local_scanner_list'),
+    url(r'^setup/interactive/%s/refresh/$' % SOURCE_CHOICE_LOCAL_SCANNER, 'scanners_refresh', (), 'scanners_refresh'),
 
     url(r'^setup/interactive/(?P<source_type>\w+)/list/$', 'setup_source_list', (), 'setup_source_list'),
     url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/edit/$', 'setup_source_edit', (), 'setup_source_edit'),

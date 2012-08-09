@@ -88,6 +88,7 @@ Afterwards migrate existing database schema with::
     $ ./manage.py migrate job_processor
     $ ./manage.py migrate clustering
     $ ./manage.py migrate trash
+    $ ./manage.py migrate sources
 
 Issue the following command to index existing documents in the new full text search database::
 

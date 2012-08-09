@@ -14,6 +14,8 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+import imagescanner
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
@@ -39,7 +41,9 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_CHOICE_POP3_EMAIL, DEFAULT_POP3_INTERVAL,
     IMAP_PORT, IMAP_SSL_PORT,
     SOURCE_CHOICE_IMAP_EMAIL, DEFAULT_IMAP_INTERVAL,
-    IMAP_DEFAULT_MAILBOX)
+    IMAP_DEFAULT_MAILBOX,
+    SOURCE_CHOICE_LOCAL_SCANNER, SOURCE_ICON_IMAGES,
+    DEFAULT_LOCAL_SCANNER_FILE_FORMAT)
 from .compressed_file import CompressedFile, NotACompressedFile
 from .conf.settings import POP3_TIMEOUT
 #from . import sources_scheduler
@@ -376,6 +380,83 @@ class IMAPEmail(EmailBaseModel):
     class Meta(EmailBaseModel.Meta):
         verbose_name = _(u'IMAP email')
         verbose_name_plural = _(u'IMAP email')
+
+
+class LocalScanner(InteractiveBaseModel):
+    # scanner device string to scanner instance cache dict
+    _scanner_cache = {}
+
+    class NoSuchScanner(Exception):
+        pass
+
+    is_interactive = True
+    source_type = SOURCE_CHOICE_LOCAL_SCANNER
+    default_icon = SOURCE_ICON_IMAGES
+
+    scanner_device = models.CharField(max_length=255, verbose_name=_(u'scanner device'))
+    scanner_description = models.CharField(max_length=255, verbose_name=_(u'scanner description'))
+
+    @classmethod
+    def get_scanners(cls):
+        iscanner = imagescanner.ImageScanner(remote_search=False)
+        scanners = iscanner.list_scanners()
+        imagescanner.settings.LOGGING_LEVEL = logging.FATAL
+        imagescanner.settings.ENABLE_NET_BACKEND = False
+        imagescanner.settings.ENABLE_TEST_BACKEND = False
+        
+        for scanner in scanners:
+            LocalScanner._scanner_cache[unicode(scanner._device)] = {
+                'scanner': scanner,
+                'description': u'%s: %s - %s - %s <%s>' % (scanner.id, scanner.manufacturer, scanner.name, scanner.description, scanner._device)
+            }
+        
+        return scanners
+        
+    @classmethod
+    def get_scanner(cls, device):
+        try:
+            return cls._scanner_cache[device]
+        except KeyError:
+            raise cls.NoSuchScanner
+
+    @classmethod
+    def get_scanner_choices(cls, description_only=False):
+        if description_only:
+            template_func = lambda scanner: (scanner['description'])
+        else:
+            template_func = lambda scanner: (scanner['scanner']._device, scanner['description'])
+
+        return [template_func(scanner) for scanner in LocalScanner._scanner_cache.values()]
+
+    def scanner(self, _fail=False):
+        try:
+            return LocalScanner._scanner_cache[self.scanner_device]['scanner']
+        except KeyError:
+            if _fail == False:
+                # Refresh the cache before trying one last time
+                LocalScanner.get_scanners()
+                return self.scanner(_fail=True)
+            else:
+                raise self.__class__.NoSuchScanner
+                
+    def scan(self, as_image=False):
+        image = self.scanner().scan()
+        if as_image:
+            return image
+        else:
+            buf = StringIO()
+            image.save(buf, DEFAULT_LOCAL_SCANNER_FILE_FORMAT)
+            return PseudoFile(buf, name=unicode(datetime.datetime.now()).replace(u'.', u'_').replace(u' ', u'_'))
+
+            # This code make new_version upload fail, use it for debugging
+            #buf = StringIO()
+            #buf.write(image.tostring())
+            #buf.seek(0)
+            #return buf
+
+    class Meta(InteractiveBaseModel.Meta):
+        verbose_name = _(u'local scanner')
+        verbose_name_plural = _(u'local scanners')
 
 
 class StagingFolder(InteractiveBaseModel):

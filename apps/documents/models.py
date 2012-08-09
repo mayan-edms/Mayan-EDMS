@@ -190,14 +190,18 @@ class Document(models.Model):
                 serial=serial,
                 comment=comment,
             )
+            logger.debug('pre new_version.save() in version_update')
             new_version.save()
+            logger.debug('post new_version.save() in version_update')
         else:
             new_version_dict = {}
             new_version = DocumentVersion(
                 document=self,
                 file=file,
             )
+            logger.debug('pre new_version.save() not in version_update')
             new_version.save()
+            logger.debug('post new_version.save() not in version_update')
 
         logger.debug('new_version saved')
         return new_version
@@ -399,7 +403,9 @@ class DocumentVersion(models.Model):
 
         #Only do this for new documents
         transformations = kwargs.pop('transformations', None)
+        logger.debug('pre save in DocumentVersion.save()')
         super(DocumentVersion, self).save(*args, **kwargs)
+        logger.debug('post save in DocumentVersion.save()')
 
         for key in sorted(DocumentVersion._post_save_hooks):
             DocumentVersion._post_save_hooks[key](self)

@@ -29,16 +29,17 @@ from acls.models import AccessEntry
 from navigation.api import Link
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder, POP3Email, SourceLog, IMAPEmail)
+    WatchFolder, POP3Email, SourceLog, IMAPEmail, LocalScanner)
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL, SOURCE_CHOICE_IMAP_EMAIL)
+    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_POP3_EMAIL, SOURCE_CHOICE_IMAP_EMAIL,
+    SOURCE_CHOICE_LOCAL_SCANNER)
 from .literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_UNCOMPRESS_CHOICE_ASK)
 from .staging import create_staging_file_class
 from .forms import (StagingDocumentForm, WebFormForm,
-    WatchFolderSetupForm)
-from .forms import (WebFormSetupForm, StagingFolderSetupForm,
-    POP3EmailSetupForm, IMAPEmailSetupForm)
+    WatchFolderSetupForm, WebFormSetupForm, StagingFolderSetupForm,
+    POP3EmailSetupForm, IMAPEmailSetupForm, LocalScannerSetupForm,
+    LocalScannerForm)
 from .forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
@@ -74,10 +75,15 @@ def get_active_tab_links(document=None):
     for staging_folder in staging_folders:
         tab_links.append(get_tab_link_for_source(staging_folder, document))
 
+    local_scanners = LocalScanner.objects.filter(enabled=True)
+    for local_scanner in local_scanners:
+        tab_links.append(get_tab_link_for_source(local_scanner, document))
+
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
         SOURCE_CHOICE_STAGING: staging_folders,
+        SOURCE_CHOICE_LOCAL_SCANNER: local_scanners,
     }
 
 
@@ -99,7 +105,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
     context = {}
 
-    if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
+    if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0 and results[SOURCE_CHOICE_LOCAL_SCANNER].count() == 0:
         source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'here')))
         subtemplates_list.append(
             {
@@ -128,6 +134,9 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
         elif results[SOURCE_CHOICE_STAGING].count():
             source_type = results[SOURCE_CHOICE_STAGING][0].source_type
             source_id = results[SOURCE_CHOICE_STAGING][0].pk
+        elif results[SOURCE_CHOICE_LOCAL_SCANNER].count():
+            source_type = results[SOURCE_CHOICE_LOCAL_SCANNER][0].source_type
+            source_id = results[SOURCE_CHOICE_LOCAL_SCANNER][0].pk
 
     if source_type and source_id:
         if source_type == SOURCE_CHOICE_WEB_FORM:
@@ -300,6 +309,65 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         }
                     },
                 ]
+        elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+            local_scanner = get_object_or_404(LocalScanner, pk=source_id)
+            context['source'] = local_scanner
+            if request.method == 'POST':
+                form = LocalScannerForm(request.POST, request.FILES,
+                    document_type=document_type,
+                    source=local_scanner,
+                    instance=document
+                )
+                if form.is_valid():
+                    try:
+                        expand = False
+
+                        new_filename = get_form_filename(form)
+
+                        image = local_scanner.scan()
+
+                        result = local_scanner.upload_file(image,
+                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
+                            document_type=document_type,
+                            expand=expand,
+                            metadata_dict_list=decode_metadata_from_url(request.GET),
+                            user=request.user,
+                            document=document,
+                            new_version_data=form.cleaned_data.get('new_version_data')
+                        )
+                        if document:
+                            messages.success(request, _(u'New document version uploaded successfully.'))
+                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                        else:
+                            messages.success(request, _(u'File uploaded successfully.'))
+
+                            return HttpResponseRedirect(request.get_full_path())
+                    except NewDocumentVersionNotAllowed:
+                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
+                    except Exception, e:
+                        if settings.DEBUG:
+                            raise
+                        messages.error(request, _(u'Unhandled exception: %s') % e)
+            else:
+                form = LocalScannerForm(
+                    document_type=document_type,
+                    source=local_scanner,
+                    instance=document
+                )
+            if document:
+                title = _(u'upload a new version scanned from source: %s') % local_scanner.title
+            else:
+                title = _(u'upload a document scanned from source: %s') % local_scanner.title
+
+            subtemplates_list.append({
+                'name': 'generic_form_subtemplate.html',
+                'context': {
+                    'form': form,
+                    'title': title,
+                    'submit_label': _(u'Scan'),
+                    'submit_icon_famfam': 'image',
+                },
+            })
 
     if document:
         context['object'] = document
@@ -446,6 +514,8 @@ def setup_source_list(request, source_type):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     context = {
         'object_list': cls.objects.all(),
@@ -480,6 +550,9 @@ def setup_source_edit(request, source_type, source_id):
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
         form_class = IMAPEmailSetupForm
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
+        form_class = LocalScannerSetupForm
 
     source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
@@ -530,6 +603,10 @@ def setup_source_delete(request, source_type, source_id):
         cls = IMAPEmail
         form_icon = u'email_delete.png'
         redirect_view = 'setup_imap_email_list'
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
+        form_icon = u'image_delete.png'
+        redirect_view = 'setup_local_scanner_list'
 
     redirect_view = reverse('setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
@@ -588,7 +665,11 @@ def setup_source_create(request, source_type):
         cls = IMAPEmail
         form_class = IMAPEmailSetupForm
         redirect_view = 'setup_imap_email_list'
-
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
+        form_class = LocalScannerSetupForm
+        redirect_view = 'setup_local_scanner_list'
+        
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
@@ -623,6 +704,8 @@ def setup_source_log_list(request, source_type, source_pk):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     source = get_object_or_404(cls, pk=source_pk)
 
@@ -659,6 +742,8 @@ def setup_source_transformation_list(request, source_type, source_id):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     source = get_object_or_404(cls, pk=source_id)
 
@@ -765,6 +850,8 @@ def setup_source_transformation_create(request, source_type, source_id):
         cls = POP3Email
     elif source_type == SOURCE_CHOICE_IMAP_EMAIL:
         cls = IMAPEmail
+    elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+        cls = LocalScanner
 
     source = get_object_or_404(cls, pk=source_id)
 
@@ -800,3 +887,15 @@ def document_create(request):
     wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
 
     return wizard(request)
+
+
+def scanners_refresh(request):
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    try:
+        LocalScanner.get_scanners()
+        messages.success(request, _(u'Scanner list refreshed successfully.'))
+    except:
+        messages.error(request, _(u'Scanner list refreshed error.'))
+        
+    return HttpResponseRedirect(previous)
+
