@@ -64,7 +64,7 @@ SOURCE_CHOICES = (
     (SOURCE_CHOICE_WATCH, _(u'server watch folder')),
     (SOURCE_CHOICE_POP3_EMAIL, _(u'POP3 email')),
     (SOURCE_CHOICE_IMAP_EMAIL, _(u'IMAP email')),
-    (SOURCE_CHOICE_LOCAL_SCANNER, _(u'Local scanner')),
+    (SOURCE_CHOICE_LOCAL_SCANNER, _(u'local scanner')),
 )
 
 SOURCE_CHOICES_PLURAL = (
@@ -73,5 +73,7 @@ SOURCE_CHOICES_PLURAL = (
     (SOURCE_CHOICE_WATCH, _(u'server watch folders')),
     (SOURCE_CHOICE_POP3_EMAIL, _(u'POP3 emails')),
     (SOURCE_CHOICE_IMAP_EMAIL, _(u'IMAP emails')),
-    (SOURCE_CHOICE_LOCAL_SCANNER, _(u'Local scanners')),
+    (SOURCE_CHOICE_LOCAL_SCANNER, _(u'local scanners')),
 )
+
+DEFAULT_LOCAL_SCANNER_FILE_FORMAT = 'JPEG'

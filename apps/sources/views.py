@@ -38,7 +38,8 @@ from .literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
 from .staging import create_staging_file_class
 from .forms import (StagingDocumentForm, WebFormForm,
     WatchFolderSetupForm, WebFormSetupForm, StagingFolderSetupForm,
-    POP3EmailSetupForm, IMAPEmailSetupForm, LocalScannerSetupForm)
+    POP3EmailSetupForm, IMAPEmailSetupForm, LocalScannerSetupForm,
+    LocalScannerForm)
 from .forms import SourceTransformationForm, SourceTransformationForm_create
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
@@ -74,10 +75,15 @@ def get_active_tab_links(document=None):
     for staging_folder in staging_folders:
         tab_links.append(get_tab_link_for_source(staging_folder, document))
 
+    local_scanners = LocalScanner.objects.filter(enabled=True)
+    for local_scanner in local_scanners:
+        tab_links.append(get_tab_link_for_source(local_scanner, document))
+
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
         SOURCE_CHOICE_STAGING: staging_folders,
+        SOURCE_CHOICE_LOCAL_SCANNER: local_scanners,
     }
 
 
@@ -99,7 +105,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
     context = {}
 
-    if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
+    if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0 and results[SOURCE_CHOICE_LOCAL_SCANNER].count() == 0:
         source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'here')))
         subtemplates_list.append(
             {
@@ -128,6 +134,9 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
         elif results[SOURCE_CHOICE_STAGING].count():
             source_type = results[SOURCE_CHOICE_STAGING][0].source_type
             source_id = results[SOURCE_CHOICE_STAGING][0].pk
+        elif results[SOURCE_CHOICE_LOCAL_SCANNER].count():
+            source_type = results[SOURCE_CHOICE_LOCAL_SCANNER][0].source_type
+            source_id = results[SOURCE_CHOICE_LOCAL_SCANNER][0].pk
 
     if source_type and source_id:
         if source_type == SOURCE_CHOICE_WEB_FORM:
@@ -300,6 +309,65 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         }
                     },
                 ]
+        elif source_type == SOURCE_CHOICE_LOCAL_SCANNER:
+            local_scanner = get_object_or_404(LocalScanner, pk=source_id)
+            context['source'] = local_scanner
+            if request.method == 'POST':
+                form = LocalScannerForm(request.POST, request.FILES,
+                    document_type=document_type,
+                    source=local_scanner,
+                    instance=document
+                )
+                if form.is_valid():
+                    try:
+                        expand = False
+
+                        new_filename = get_form_filename(form)
+
+                        image = local_scanner.scan()
+
+                        result = local_scanner.upload_file(image,
+                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
+                            document_type=document_type,
+                            expand=expand,
+                            metadata_dict_list=decode_metadata_from_url(request.GET),
+                            user=request.user,
+                            document=document,
+                            new_version_data=form.cleaned_data.get('new_version_data')
+                        )
+                        if document:
+                            messages.success(request, _(u'New document version uploaded successfully.'))
+                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                        else:
+                            messages.success(request, _(u'File uploaded successfully.'))
+
+                            return HttpResponseRedirect(request.get_full_path())
+                    except NewDocumentVersionNotAllowed:
+                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
+                    except Exception, e:
+                        if settings.DEBUG:
+                            raise
+                        messages.error(request, _(u'Unhandled exception: %s') % e)
+            else:
+                form = LocalScannerForm(
+                    document_type=document_type,
+                    source=local_scanner,
+                    instance=document
+                )
+            if document:
+                title = _(u'upload a new version scanned from source: %s') % local_scanner.title
+            else:
+                title = _(u'upload a document scanned from source: %s') % local_scanner.title
+
+            subtemplates_list.append({
+                'name': 'generic_form_subtemplate.html',
+                'context': {
+                    'form': form,
+                    'title': title,
+                    'submit_label': _(u'Scan'),
+                    'submit_icon_famfam': 'image',
+                },
+            })
 
     if document:
         context['object'] = document
@@ -819,3 +887,15 @@ def document_create(request):
     wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
 
     return wizard(request)
+
+
+def scanners_refresh(request):
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    try:
+        LocalScanner.get_scanners()
+        messages.success(request, _(u'Scanner list refreshed successfully.'))
+    except:
+        messages.error(request, _(u'Scanner list refreshed error.'))
+        
+    return HttpResponseRedirect(previous)
+

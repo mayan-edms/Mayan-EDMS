@@ -105,14 +105,45 @@ class LocalScannerSetupForm(forms.ModelForm):
         model = LocalScanner
 
     scanner = forms.ChoiceField(required=False, label=_(u'Active scanners'), help_text=_(u'List of scanners found connected to this node.  Choose one to have its device and description automatically saved in the fields above.'))
-        
+    scanner_device = forms.CharField(required=False, label=_(u'Scanner device'))
+    scanner_description = forms.CharField(required=False, label=_(u'Scanner description'))
+            
     def __init__(self, *args, **kwargs):
         super(LocalScannerSetupForm, self).__init__(*args, **kwargs)
         self.fields['icon'].widget = FamFamRadioSelect(
             attrs=self.fields['icon'].widget.attrs,
             choices=self.fields['icon'].widget.choices,
         )
-        self.fields['scanner'].choices = LocalScanner.get_scanner_choices()
+        self.scanner_choices = LocalScanner.get_scanner_choices()
+        self.fields['scanner'].choices = self.scanner_choices
+
+    def clean(self):
+        try:
+            scanner = LocalScanner.get_scanner(self.cleaned_data.get('scanner'))
+        except LocalScanner.NoSuchScanner:
+            device_name = u''
+            description = u''
+        else:
+            device_name = scanner['scanner']._device
+            description = scanner['description']
+            
+        self.cleaned_data['scanner_device'] = device_name
+        self.cleaned_data['scanner_description'] = description
+        return self.cleaned_data
+
+
+class LocalScannerForm(DocumentForm):
+    def __init__(self, *args, **kwargs):
+        show_expand = kwargs.pop('show_expand', False)
+        self.source = kwargs.pop('source')
+        super(LocalScannerForm, self).__init__(*args, **kwargs)
+        self.fields['new_filename'].help_text=_(u'If left blank a date time stamp will be used.')
+
+    def clean_file(self):
+        data = self.cleaned_data['file']
+        validate_whitelist_blacklist(data.name, self.source.whitelist.split(','), self.source.blacklist.split(','))
+
+        return data
         
 
 class SourceTransformationForm(forms.ModelForm):

@@ -27,6 +27,7 @@ urlpatterns = patterns('sources.views',
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_POP3_EMAIL, 'setup_source_list', {'source_type': SOURCE_CHOICE_POP3_EMAIL}, 'setup_pop3_email_list'),
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_IMAP_EMAIL, 'setup_source_list', {'source_type': SOURCE_CHOICE_IMAP_EMAIL}, 'setup_imap_email_list'),
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_LOCAL_SCANNER, 'setup_source_list', {'source_type': SOURCE_CHOICE_LOCAL_SCANNER}, 'setup_local_scanner_list'),
+    url(r'^setup/interactive/%s/refresh/$' % SOURCE_CHOICE_LOCAL_SCANNER, 'scanners_refresh', (), 'scanners_refresh'),
 
     url(r'^setup/interactive/(?P<source_type>\w+)/list/$', 'setup_source_list', (), 'setup_source_list'),
     url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/edit/$', 'setup_source_edit', (), 'setup_source_edit'),

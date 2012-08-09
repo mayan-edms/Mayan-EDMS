@@ -2,8 +2,8 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (bind_links,
-    register_model_list_columns)
+from navigation.api import (bind_links, register_model_list_columns,
+    register_sidebar_template)
 from common.utils import encapsulate
 from project_setup.api import register_setup
 from scheduler.api import LocalScheduler
@@ -21,12 +21,15 @@ from .links import (staging_file_delete, setup_sources,
     setup_source_delete, setup_source_create, setup_source_log_list,
     setup_source_transformation_list, setup_source_transformation_create,
     setup_source_transformation_edit, setup_source_transformation_delete,
-    upload_version, document_create_multiple, setup_local_scanner_list)
+    upload_version, document_create_multiple, setup_local_scanner_list,
+    setup_local_scanners_refresh)
 
 bind_links([StagingFile], [staging_file_delete])
 
 bind_links([SourceTransformation], [setup_source_transformation_edit, setup_source_transformation_delete])
 
+bind_links([LocalScanner, 'setup_local_scanner_list'], [setup_local_scanners_refresh], menu_name='secondary_menu')
+register_sidebar_template([LocalScanner, 'setup_local_scanner_list'], 'scanner_list.html')
 bind_links(['setup_imap_email_list', 'setup_pop3_email_list', 'setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create', 'setup_local_scanner_list'], [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list, setup_local_scanner_list], menu_name='form_header')
 bind_links([WebForm, StagingFolder, POP3Email, IMAPEmail, LocalScanner, 'setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create', 'setup_pop3_email_list', 'setup_imap_email_list', 'setup_local_scanner_list'], [setup_source_create], menu_name='secondary_menu')
 
