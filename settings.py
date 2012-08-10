@@ -166,6 +166,7 @@ INSTALLED_APPS = (
     'clustering',
     'scheduler',
     'job_processor',
+    'backups',
     # Mayan EDMS
     'diagnostics',
     'maintenance',
