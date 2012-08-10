@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 
 from permissions.models import Permission
 
-from .api import ModuleBackup
+from .api import AppBackup
 #from .permissions import 
 
 
@@ -17,12 +17,12 @@ def backup_view(request):
     #Permission.objects.check_permissions(request.user, [])
 
     context = {
-        'object_list': ModuleBackup.get_all(),
-        'title': _(u'apps registered for backup'),
+        'object_list': AppBackup.get_all(),
+        'title': _(u'registered apps for backup'),
         'hide_link': True,
-        #'extra_columns': [
-        #    {'name': _(u'description'), 'attribute': 'description'},
-        #],
+        'extra_columns': [
+            {'name': _(u'info'), 'attribute': 'info'},
+        ],
     }
 
     return render_to_response('generic_list.html', context,
