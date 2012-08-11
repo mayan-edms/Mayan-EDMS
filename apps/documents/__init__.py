@@ -14,7 +14,7 @@ from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
 from acls.api import class_permissions
 from statistics.api import register_statistics
-from backups.api import AppBackup, ElementBackupModel, ElementBackupFile
+from backups.api import AppBackup, ModelBackup, FileBackup
 
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
@@ -137,4 +137,4 @@ class_permissions(Document, [
 ])
 
 register_statistics(get_statistics)
-AppBackup('documents', _(u'Documents'), [ElementBackupModel(), ElementBackupFile(document_settings.STORAGE_BACKEND)])
+AppBackup('documents', _(u'Documents'), [ModelBackup(), FileBackup(document_settings.STORAGE_BACKEND)])
