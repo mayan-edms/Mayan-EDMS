@@ -53,12 +53,12 @@ class ElementBackupModel(ElementBackupBase):
 class ElementBackupFile(ElementBackupBase):
     label = _(u'File copy')
 
-    def __init__(self, storage_class, filepath):
+    def __init__(self, storage_class, filepath=None):
         self.storage_class = storage_class
         self.filepath = filepath
     
     def info(self):
-        return _(u'%s from %s') % (self.filepath, self.storage_class)
+        return _(u'%s from %s') % (self.filepath or _(u'all files'), self.storage_class)
 
     def backup(self):
         """
@@ -166,7 +166,7 @@ class TestStorageModule(StorageModuleBase):
         print data 
         print '***** saving to path: %s' % self.backup_path
     
-    def restore(self):-
+    def restore(self):
         print 'restore from path: %s' % self.restore_path
         return 'sample_data'
 

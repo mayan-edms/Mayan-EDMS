@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 
 from permissions.models import Permission
 
-from .api import AppBackup
+from .api import AppBackup, TestStorageModule
 #from .permissions import 
 
 
@@ -24,6 +24,7 @@ def backup_view(request):
             {'name': _(u'info'), 'attribute': 'info'},
         ],
     }
-
+    #ab = AppBackup.get_all()[0]
+    #ab.backup(TestStorageModule(backup_path = '/tmp'))
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
