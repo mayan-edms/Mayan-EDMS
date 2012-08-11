@@ -120,10 +120,14 @@ class AppBackup(object):
 
 
 class StorageModuleBase(object):
-    #_registry = {}
     _registry = []
     
+    # Local modules depend on hardware on a node and execute in the Scheduler
+    # of a particular node
     REALM_LOCAL = 'local'
+    
+    # Remote modules can be execute by any node in a cluster and are placed
+    # in the JobQueue
     REALM_REMOTE = 'remote'
     
     REALM_CHOICES = (
@@ -131,18 +135,23 @@ class StorageModuleBase(object):
         (REALM_REMOTE, _(u'remote')),
     )
     
-    # TODO: register subclasses of StorageModuleBase
-    # do not register instances
-    #def __new__(cls, *args, **kwargs):
-    #    print "NEW"
-
     @classmethod
     def register(cls, klass):
+        """
+        Register a subclass of StorageModuleBase to make it available to the
+        UI
+        """
         cls._registry.append(klass)
 
     def __init__(self, *args, **kwargs):
         pass
-       
+
+    def is_local_realm(self):
+        return self.realm == REALM_LOCAL
+
+    def is_remote_realm(self):
+        return self.realm == REALM_REMOTE
+
     def backup(self, data):
         raise NotImplemented
         
@@ -155,6 +164,7 @@ class StorageModuleBase(object):
 
 class TestStorageModule(StorageModuleBase):
     label = _(u'Test storage module')
+    realm = StorageModuleBase.REALM_LOCAL
 
     def __init__(self, *args, **kwargs):
         self.backup_path = kwargs.pop('backup_path', None)
@@ -170,5 +180,5 @@ class TestStorageModule(StorageModuleBase):
         print 'restore from path: %s' % self.restore_path
         return 'sample_data'
 
-# TODO: get rid of register and try to register on subclassing
+
 StorageModuleBase.register(TestStorageModule)

@@ -24,6 +24,7 @@ def backup_view(request):
             {'name': _(u'info'), 'attribute': 'info'},
         ],
     }
+    # TODO: move to test.py
     #ab = AppBackup.get_all()[0]
     #ab.backup(TestStorageModule(backup_path = '/tmp'))
     return render_to_response('generic_list.html', context,
