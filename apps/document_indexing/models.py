@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mptt.models import MPTTModel
 from mptt.fields import TreeForeignKey
 
-from documents.models import Document
+from documents.models import Document, DocumentType
 
 from .conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
@@ -17,6 +17,7 @@ class Index(models.Model):
     name = models.CharField(unique=True, max_length=64, verbose_name=_(u'name'), help_text=_(u'Internal name used to reference this index.'))
     title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'), help_text=_(u'The name that will be visible to users.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this index to be visible and updated when document data changes.'))
+    document_types = models.ManyToManyField(DocumentType, verbose_name=_(u'document types'))
 
     @property
     def template_root(self):
@@ -32,6 +33,12 @@ class Index(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('index_instance_node_view', [self.instance_root.pk])
+
+    def get_index_document_types(self):
+        return self.document_types.all()
+
+    def get_document_types_not_in_index(self):
+        return DocumentType.objects.exclude(pk__in=self.get_index_document_types())
 
     def save(self, *args, **kwargs):
         super(Index, self).save(*args, **kwargs)
@@ -51,7 +58,7 @@ class IndexTemplateNode(MPTTModel):
     link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
     def __unicode__(self):
-        return self.expression if not self.link_documents else u'%s/[document]' % self.expression
+        return self.expression
 
     class Meta:
         verbose_name = _(u'index template node')
