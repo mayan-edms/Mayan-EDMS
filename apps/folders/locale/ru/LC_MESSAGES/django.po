@@ -8,55 +8,55 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"POT-Creation-Date: 2012-07-26 23:53-0400\n"
 "PO-Revision-Date: 2012-02-03 06:38+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:18
-msgid "folder list"
-msgstr "список папок"
-
-#: __init__.py:19 views.py:77
-msgid "create folder"
-msgstr "создать папку"
-
-#: __init__.py:20
-msgid "edit"
-msgstr "редактировать"
-
-#: __init__.py:21
-msgid "delete"
-msgstr "удалить"
-
-#: __init__.py:22
-msgid "remove from folder"
-msgstr "удалить из папки"
-
-#: __init__.py:23
-msgid "folder documents"
-msgstr "документы папки"
-
-#: __init__.py:24
-msgid "add to a folder"
-msgstr "добавить в папку"
-
-#: __init__.py:25 __init__.py:35 models.py:43 views.py:34
+#: __init__.py:25 links.py:21 models.py:43 views.py:34
 msgid "folders"
 msgstr "папки"
-
-#: __init__.py:27
-msgid "ACLs"
-msgstr "ACLs"
 
 #: forms.py:38
 msgid "Folder"
 msgstr "Папка"
+
+#: links.py:14
+msgid "folder list"
+msgstr "список папок"
+
+#: links.py:15 views.py:76
+msgid "create folder"
+msgstr "создать папку"
+
+#: links.py:16
+msgid "edit"
+msgstr "редактировать"
+
+#: links.py:17
+msgid "delete"
+msgstr "удалить"
+
+#: links.py:18
+msgid "remove from folder"
+msgstr "удалить из папки"
+
+#: links.py:19
+msgid "folder documents"
+msgstr "документы папки"
+
+#: links.py:20
+msgid "add to a folder"
+msgstr "добавить в папку"
+
+#: links.py:23
+msgid "ACLs"
+msgstr "ACLs"
 
 #: models.py:11
 msgid "title"
@@ -70,7 +70,7 @@ msgstr "пользователь"
 msgid "datetime created"
 msgstr "даты и время создания"
 
-#: models.py:42 models.py:47 views.py:108 views.py:137 views.py:162
+#: models.py:42 models.py:47 views.py:107 views.py:136 views.py:161
 msgid "folder"
 msgstr "папка"
 
@@ -78,7 +78,7 @@ msgstr "папка"
 msgid "document"
 msgstr "документ"
 
-#: models.py:54 views.py:261
+#: models.py:54 views.py:260
 msgid "folder document"
 msgstr "документ папки"
 
@@ -114,99 +114,99 @@ msgstr "Просмотр существующих папок"
 msgid "Add documents to existing folders"
 msgstr "Добавление документов в существующие папки"
 
-#: views.py:37
+#: views.py:36
 msgid "created"
 msgstr "создано"
 
-#: views.py:38
+#: views.py:37
 msgid "documents"
 msgstr "документы"
 
-#: views.py:69
+#: views.py:68
 msgid "Folder created successfully"
 msgstr "Папка успешно создана"
 
-#: views.py:72
+#: views.py:71
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Папку с именем %s уже существует."
 
-#: views.py:97
+#: views.py:96
 msgid "Folder edited successfully"
 msgstr "Папка успешно изменена"
 
-#: views.py:100
+#: views.py:99
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Ошибка редактирования папки; %s."
 
-#: views.py:105
+#: views.py:104
 #, python-format
 msgid "edit folder: %s"
 msgstr "редактировать папку %s"
 
-#: views.py:129
+#: views.py:128
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Папка %s успешно удалена."
 
-#: views.py:131
+#: views.py:130
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "При удалении папки %(folder)s произошла ошибка: %(error)s"
 
-#: views.py:142
+#: views.py:141
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Вы хотите удалить папку %s?"
 
-#: views.py:168
+#: views.py:167
 #, python-format
 msgid "documents in folder: %s"
 msgstr "документы в папке: %s"
 
-#: views.py:188
+#: views.py:187
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Документ: %(document)s добавлен в папку: %(folder)s успешно."
 
-#: views.py:191
+#: views.py:190
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Документ: %(document)s is already in folder: %(folder)s."
 
-#: views.py:199
+#: views.py:198
 #, python-format
 msgid "add document \"%s\" to a folder"
 msgstr "добавить документ \"%s\" в папку"
 
-#: views.py:219
+#: views.py:218
 #, python-format
 msgid "folders containing: %s"
 msgstr "папки, содержащие %s"
 
-#: views.py:235
+#: views.py:234
 msgid "Must provide at least one folder document."
 msgstr "Должна быть хотя бы одна папка документов."
 
-#: views.py:253
+#: views.py:252
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Документ: %s успешно удален."
 
-#: views.py:255
+#: views.py:254
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Документ:%(document)s ошибка удаления: %(error)s"
 
-#: views.py:269
+#: views.py:268
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
 msgstr "Вы действительно хотите удалить документ: %(document)s из папки \"%(folder)s \"?"
 
-#: views.py:272
+#: views.py:271
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder"

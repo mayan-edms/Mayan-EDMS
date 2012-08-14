@@ -10,28 +10,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-02-20 21:27+0000\n"
-"Last-Translator: mic <winterfall24@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.net/projects/p/mayan-edms/language/pl/)\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: __init__.py:9 views.py:28
+#: links.py:9 views.py:29
 msgid "settings"
 msgstr "ustawienia"
 
-#: views.py:33
+#: views.py:26
+#, python-format
+msgid "settings for the %s module"
+msgstr ""
+
+#: views.py:34
 msgid "name"
 msgstr "nazwa"
 
-#: views.py:34
+#: views.py:35
 msgid "default"
 msgstr "domyślny"
 
-#: views.py:35
+#: views.py:36
 msgid "value"
 msgstr "wartość"

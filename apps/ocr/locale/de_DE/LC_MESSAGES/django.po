@@ -8,77 +8,77 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:32 __init__.py:33
-msgid "submit to OCR queue"
-msgstr "In die OCR-Warteschlagen einreihen"
-
-#: __init__.py:34 __init__.py:35
-msgid "re-queue"
-msgstr "erneut einreihen"
-
-#: __init__.py:36 __init__.py:37 __init__.py:50
-msgid "delete"
-msgstr "löschen"
-
-#: __init__.py:39
-msgid "stop queue"
-msgstr "Warteschlange anhalten"
-
-#: __init__.py:40
-msgid "activate queue"
-msgstr "Warteschlange aktivieren"
-
-#: __init__.py:42
-msgid "clean up pages content"
-msgstr "Seiteninhalt aufräumen"
-
-#: __init__.py:42
-msgid ""
-"Runs a language filter to remove common OCR mistakes from document pages "
-"content."
-msgstr "Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige Erkennungsfehler zu beseitigen."
-
-#: __init__.py:44
-msgid "queue document list"
-msgstr "Liste der Dokumente in der Warteschlange"
-
-#: __init__.py:45 __init__.py:63 permissions.py:7
+#: __init__.py:45 links.py:24 permissions.py:7 conf/settings.py:7
 msgid "OCR"
 msgstr "OCR-Schrifterkennung"
 
-#: __init__.py:47
-msgid "transformations"
-msgstr "Transformationen"
-
-#: __init__.py:48
-msgid "add transformation"
-msgstr "Transformation hinzufügen"
-
-#: __init__.py:49
-msgid "edit"
-msgstr "bearbeiten"
-
-#: __init__.py:74
+#: __init__.py:56
 msgid "Default"
 msgstr "Standard"
 
-#: __init__.py:102
+#: __init__.py:85
 msgid "Checks the OCR queue for pending documents."
 msgstr "Prüft die OCR-Warteschlange auf ausstehende Dokumenten."
 
 #: api.py:122
 msgid "Text from OCR"
 msgstr "Text aus der OCR Schrifterkennung"
+
+#: links.py:11 links.py:12
+msgid "submit to OCR queue"
+msgstr "In die OCR-Warteschlagen einreihen"
+
+#: links.py:13 links.py:14
+msgid "re-queue"
+msgstr "erneut einreihen"
+
+#: links.py:15 links.py:16 links.py:29
+msgid "delete"
+msgstr "löschen"
+
+#: links.py:18
+msgid "stop queue"
+msgstr "Warteschlange anhalten"
+
+#: links.py:19
+msgid "activate queue"
+msgstr "Warteschlange aktivieren"
+
+#: links.py:21
+msgid "clean up pages content"
+msgstr "Seiteninhalt aufräumen"
+
+#: links.py:21
+msgid ""
+"Runs a language filter to remove common OCR mistakes from document pages "
+"content."
+msgstr "Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige Erkennungsfehler zu beseitigen."
+
+#: links.py:23
+msgid "queue document list"
+msgstr "Liste der Dokumente in der Warteschlange"
+
+#: links.py:26
+msgid "transformations"
+msgstr "Transformationen"
+
+#: links.py:27
+msgid "add transformation"
+msgstr "Transformation hinzufügen"
+
+#: links.py:28
+msgid "edit"
+msgstr "bearbeiten"
 
 #: literals.py:8
 msgid "stopped"
@@ -100,85 +100,85 @@ msgstr "in Bearbeitung"
 msgid "error"
 msgstr "Fehler"
 
-#: models.py:27
+#: models.py:26
 msgid "name"
 msgstr "Name"
 
-#: models.py:28
+#: models.py:27
 msgid "label"
 msgstr "Bezeichner"
 
-#: models.py:32 models.py:52
+#: models.py:31 models.py:51
 msgid "state"
 msgstr "Status"
 
-#: models.py:37 models.py:45 views.py:43 views.py:313 views.py:354
-#: views.py:384 views.py:420
+#: models.py:36 models.py:44 views.py:42 views.py:312 views.py:353
+#: views.py:383 views.py:419
 msgid "document queue"
 msgstr "Dokumenten-Warteschlange"
 
-#: models.py:38
+#: models.py:37
 msgid "document queues"
 msgstr "Dokumenten-Warteschlangen"
 
-#: models.py:46
+#: models.py:45
 msgid "document"
 msgstr "Dokument"
 
-#: models.py:47
+#: models.py:46
 msgid "date time submitted"
 msgstr "Zeitpunkt des Einstellens"
 
-#: models.py:48
+#: models.py:47
 msgid "delay ocr"
 msgstr "OCR verzögern"
 
-#: models.py:53
+#: models.py:52
 msgid "result"
 msgstr "Ergebnis"
 
-#: models.py:54
+#: models.py:53
 msgid "node name"
 msgstr "Knotenpunkt-Name"
 
-#: models.py:58
+#: models.py:57
 msgid "queue document"
 msgstr "Dokument einreihen"
 
-#: models.py:59
+#: models.py:58
 msgid "queue documents"
 msgstr "Dokumente einreihen"
 
-#: models.py:79 views.py:47
+#: models.py:78 views.py:46
 msgid "Missing document."
 msgstr "Dokument fehlt."
 
-#: models.py:83
+#: models.py:82
 msgid "Enter a valid value."
 msgstr "Geben Sie einen gültigen Wert ein."
 
-#: models.py:111 views.py:317
+#: models.py:110 views.py:316
 msgid "order"
 msgstr "Reihenfolge"
 
-#: models.py:112 views.py:318 views.py:355 views.py:385
+#: models.py:111 views.py:317 views.py:354 views.py:384
 msgid "transformation"
 msgstr "Transformation"
 
-#: models.py:113 views.py:319
+#: models.py:112 views.py:318
 msgid "arguments"
 msgstr "Parameter"
 
-#: models.py:113
+#: models.py:112
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Wörterbucher verwenden, um Parameter zu identifizieren, Beispiel: %s"
 
-#: models.py:123
+#: models.py:122
 msgid "document queue transformation"
 msgstr "Dokumenten-Warteschlangen-Transformation"
 
-#: models.py:124
+#: models.py:123
 msgid "document queue transformations"
 msgstr "Dokumenten-Warteschlangen-Transformationen"
 
@@ -216,202 +216,202 @@ msgstr "Eingereihte Dokumente: %d"
 msgid "OCR statistics"
 msgstr "OCR-Statistiken"
 
-#: views.py:40
+#: views.py:39
 #, python-format
 msgid "documents in queue: %s"
 msgstr "Dokumente in der Warteschlange: %s"
 
-#: views.py:48
+#: views.py:47
 msgid "thumbnail"
 msgstr "Miniaturansicht"
 
-#: views.py:61
+#: views.py:60
 msgid "document queue properties"
 msgstr "Eigenschaften der Dokumenten-Warteschlange"
 
-#: views.py:62
+#: views.py:61
 #, python-format
 msgid "Current state: %s"
 msgstr "Aktueller Status: %s"
 
-#: views.py:78 views.py:166
+#: views.py:77 views.py:165
 msgid "Must provide at least one queue document."
 msgstr "Sie müssen zumindest ein Dokument aus der Warteschlange bereitstellen."
 
-#: views.py:88
+#: views.py:87
 #, python-format
 msgid "Document: %s is being processed and can't be deleted."
 msgstr "Dokument %s wird gerade verarbeitet und kann nicht gelöscht werden."
 
-#: views.py:91
+#: views.py:90
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr "Warteschlangen-Dokumente %(document)s erfolgreich gelöscht."
 
-#: views.py:95
+#: views.py:94
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Fehler beim Löschen der Warteschlangen-Dokumente %(document)s; %(error)s"
 
-#: views.py:108
+#: views.py:107
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Sind Sie sicher, dass das Warteschlangen-Dokument %s löschen möchten?"
 
-#: views.py:110
+#: views.py:109
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Sind Sie sicher, dass die Warteschlangen-Dokumente %s löschen möchten?"
 
-#: views.py:146
+#: views.py:145
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
 msgstr "Dokument %(document)s wurde zu OCR-Warteschlange %(queue)s hinzugefügt."
 
-#: views.py:149
+#: views.py:148
 #, python-format
 msgid "Document: %(document)s is already queued."
 msgstr "Dokument: %(document)s ist bereits in der Warteschlange."
 
-#: views.py:178
+#: views.py:177
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 msgstr "Das Dokument %(document)s wurde erneut in die OCR-Warteschlange: %(queue)s eingestellt."
 
-#: views.py:184
+#: views.py:183
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "Das Dokument mit id#: %d existiert nicht mehr."
 
-#: views.py:188
+#: views.py:187
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
 msgstr "Das Dokument %s wird bereits verarbeitet und kann nicht erneut eingestellt werden."
 
-#: views.py:200
+#: views.py:199
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Sind Sie sicher, dass Sie das Dokument %s erneut einstellen möchten?"
 
-#: views.py:202
+#: views.py:201
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Sind Sie sicher, dass Sie die Dokumente %s erneut einstellen möchten?"
 
-#: views.py:220
+#: views.py:219
 #, python-format
 msgid "Document queue: %s, already stopped."
 msgstr "Dokumenten-Warteschlange %s bereits angehalten."
 
-#: views.py:226
+#: views.py:225
 #, python-format
 msgid "Document queue: %s, stopped successfully."
 msgstr "Dokumenten-Warteschlange %s wurde angehalten."
 
-#: views.py:232
+#: views.py:231
 #, python-format
 msgid "Are you sure you wish to disable document queue: %s"
 msgstr "Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s deaktivieren möchten?"
 
-#: views.py:247
+#: views.py:246
 #, python-format
 msgid "Document queue: %s, already active."
 msgstr "Sind Sie sicher, dass Sie die Dokumente %s erneut einstellen möchten?"
 
-#: views.py:253
+#: views.py:252
 #, python-format
 msgid "Document queue: %s, activated successfully."
 msgstr "Dokumenten-Warteschlange %s wurde erfolgreich aktiviert."
 
-#: views.py:259
+#: views.py:258
 #, python-format
 msgid "Are you sure you wish to activate document queue: %s"
 msgstr "Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s aktivieren möchten?"
 
-#: views.py:276
+#: views.py:275
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Sind Sie sicher, dass Sie den gesamten erkannten Seiteninhalt bereinigen möchten?"
 
-#: views.py:277
+#: views.py:276
 msgid "On large databases this operation may take some time to execute."
 msgstr "Auf großen Datenbanken kann diese Operation einige Zeit in Anspruch nehmen."
 
-#: views.py:283
+#: views.py:282
 msgid "Document pages content clean up complete."
 msgstr "Bereinigung des erkannten Dokumenten-Seiteninhalts wurde abgeschlossen."
 
-#: views.py:285
+#: views.py:284
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Fehler bei Bereinigung des erkannten Dokumenten-Seiteninhalts: %s"
 
-#: views.py:311
+#: views.py:310
 #, python-format
 msgid "transformations for: %s"
 msgstr "Transformationen für: %s"
 
-#: views.py:341
+#: views.py:340
 msgid "Queue transformation edited successfully"
 msgstr "Warteschlangen-Transformation erfolgreich bearbeitet"
 
-#: views.py:344
+#: views.py:343
 #, python-format
 msgid "Error editing queue transformation; %s"
 msgstr "Fehler beim Bearbeiten der Warteschlangen-Transformation: %s"
 
-#: views.py:349
+#: views.py:348
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "Transformationen bearbeiten: %s"
 
-#: views.py:372
+#: views.py:371
 msgid "Queue transformation deleted successfully."
 msgstr "Warteschlangen-Transformation erfolgreich gelöscht."
 
-#: views.py:374
+#: views.py:373
 #, python-format
 msgid "Error deleting queue transformation; %(error)s"
 msgstr "Fehler beim Löschen der Warteschlangen-Transformation: %(error)s"
 
-#: views.py:387
+#: views.py:386
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 msgstr "Sind Sie sicher, dass Sie die Warteschlangen-Transformationen löschen möchten: \"%(transformation)s\""
 
-#: views.py:410
+#: views.py:409
 msgid "Queue transformation created successfully"
 msgstr "Warteschlangen-Transformation erfolgreich erstellt"
 
-#: views.py:413
+#: views.py:412
 #, python-format
 msgid "Error creating queue transformation; %s"
 msgstr "Fehler beim Erzeugen der Warteschlangen-Transformation: %s"
 
-#: views.py:422
+#: views.py:421
 #, python-format
 msgid "Create new transformation for queue: %s"
 msgstr "Neue Transformation für Warteschlange erzeugen: %s"
 
-#: conf/settings.py:13
+#: conf/settings.py:29
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
 msgstr "Verzögerung in Sekunden bevor die OCR-Texterkennung eines Dokuments beginnt, um die Dateiübertragung abzuschließen."
 
-#: conf/settings.py:14
+#: conf/settings.py:37
 msgid "Maximum amount of concurrent document OCRs a node can perform."
 msgstr "Maximale Anzahl an gleichzeitigen OCR-Texterkennungs-Vorgängen die eine Serverinstanz ausführen darf."
 
-#: conf/settings.py:15
+#: conf/settings.py:45 conf/settings.py:53
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Neue Dokumente automatisch in die OCR-Warteschlange einstellen."
 
-#: conf/settings.py:17
+#: conf/settings.py:61
 msgid "File path to unpaper program."
 msgstr "Dateipfad zum 'unpaper'-Programm"
 
-#: conf/settings.py:18
+#: conf/settings.py:70
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."

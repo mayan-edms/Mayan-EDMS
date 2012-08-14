@@ -9,45 +9,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: 2012-03-21 13:31+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:17 models.py:209 views.py:40
+#: links.py:11 models.py:209 views.py:39
 msgid "roles"
 msgstr "ruoli"
 
-#: __init__.py:18
+#: links.py:12
 msgid "create new role"
 msgstr "crea nuovo ruolo"
 
-#: __init__.py:19
+#: links.py:13
 msgid "edit"
 msgstr "modifica"
 
-#: __init__.py:20
+#: links.py:14
 msgid "members"
 msgstr "membri"
 
-#: __init__.py:21
+#: links.py:15
 msgid "role permissions"
 msgstr "permessi dei ruoli"
 
-#: __init__.py:22
+#: links.py:16
 msgid "delete"
 msgstr "cancella"
 
-#: __init__.py:24
+#: links.py:18
 msgid "grant"
 msgstr "concessione"
 
-#: __init__.py:25
+#: links.py:19
 msgid "revoke"
 msgstr "revoca"
 
@@ -55,19 +55,19 @@ msgstr "revoca"
 msgid "Insufficient permissions."
 msgstr "Permessi insufficienti"
 
-#: models.py:123 views.py:60
+#: models.py:123 views.py:59
 msgid "namespace"
 msgstr "namespace"
 
-#: models.py:124 views.py:61
+#: models.py:124 views.py:60
 msgid "name"
 msgstr "nome"
 
-#: models.py:131 models.py:187 views.py:152 views.py:215
+#: models.py:131 models.py:187 views.py:151 views.py:214
 msgid "permission"
 msgstr "permesso"
 
-#: models.py:132 views.py:57 views.py:154 views.py:217
+#: models.py:132 views.py:56 views.py:153 views.py:216
 msgid "permissions"
 msgstr "permessi"
 
@@ -83,8 +83,8 @@ msgstr "titolari dei permessi"
 msgid "label"
 msgstr "etichetta"
 
-#: models.py:208 models.py:239 views.py:76 views.py:93 views.py:117
-#: views.py:334
+#: models.py:208 models.py:239 views.py:75 views.py:92 views.py:116
+#: views.py:333
 msgid "role"
 msgstr "ruolo"
 
@@ -96,7 +96,7 @@ msgstr "membro del ruolo"
 msgid "role members"
 msgstr "membri del ruolo"
 
-#: permissions.py:7
+#: permissions.py:7 conf/settings.py:6
 msgid "Permissions"
 msgstr "Permessi"
 
@@ -124,69 +124,69 @@ msgstr "Concedere le autorizzazioni"
 msgid "Revoke permissions"
 msgstr "Revoca le autorizzazioni"
 
-#: views.py:63
+#: views.py:62
 msgid "has permission"
 msgstr "ha il permesso"
 
-#: views.py:149 views.py:212
+#: views.py:148 views.py:211
 msgid " and "
 msgstr " and "
 
-#: views.py:149 views.py:212
+#: views.py:148 views.py:211
 #, python-format
 msgid "%(permissions)s to %(requester)s"
 msgstr "%(permissions)s a %(requester)s"
 
-#: views.py:159
+#: views.py:158
 #, python-format
 msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 msgstr "Permesso \"%(permission)s\" concesso a: %(requester)s."
 
-#: views.py:162
+#: views.py:161
 #, python-format
 msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
 msgstr "%(requester)s, ha già il permesso \"%(permission)s\" concesso."
 
-#: views.py:173
+#: views.py:172
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 msgstr "Sei sicuro che tu voglia concedere questo permesso %(permissions_label)s %(title_suffix)s?"
 
-#: views.py:222
+#: views.py:221
 #, python-format
 msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 msgstr "Permesso \"%(permission)s\" revocato per: %(requester)s."
 
-#: views.py:225
+#: views.py:224
 #, python-format
 msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 msgstr "%(requester)s, non ha i permessi \"%(permission)s\" consentiti."
 
-#: views.py:236
+#: views.py:235
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 msgstr "Sei sicuro di voler revocare questo permesso %(permissions_label)s %(title_suffix)s?"
 
-#: views.py:271 views.py:295
+#: views.py:270 views.py:294
 msgid "Users"
 msgstr "Utenti"
 
-#: views.py:274 views.py:298
+#: views.py:273 views.py:297
 msgid "Groups"
 msgstr "Gruppi"
 
-#: views.py:277 views.py:301
+#: views.py:276 views.py:300
 msgid "Special"
 msgstr "Speciale"
 
-#: views.py:330
+#: views.py:329
 #, python-format
 msgid "non members of role: %s"
 msgstr "nessun menbro per il ruolo:%s"
 
-#: views.py:331
+#: views.py:330
 #, python-format
 msgid "members of role: %s"
 msgstr "membri per il ruolo:%s"
@@ -199,7 +199,7 @@ msgstr "Revoca"
 msgid "Grant"
 msgstr "Concessione"
 
-#: conf/settings.py:10
+#: conf/settings.py:13
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"

@@ -8,86 +8,89 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:08-0400\n"
-"PO-Revision-Date: 2011-11-04 17:06+0000\n"
+"POT-Creation-Date: 2012-07-26 23:53-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:5
+#: __init__.py:22
 msgid "search"
 msgstr "búsqueda"
 
-#: __init__.py:6 views.py:72
+#: __init__.py:23
 msgid "advanced search"
 msgstr "búsqueda avanzada"
 
-#: __init__.py:7
+#: __init__.py:24
 msgid "search again"
 msgstr "buscar de nuevo"
 
-#: forms.py:8
-msgid "Search terms"
-msgstr "Términos de búsqueda"
+#: __init__.py:64
+msgid "Update the search index with the most recent modified documents."
+msgstr ""
 
-#: models.py:20
+#: models.py:21
 msgid "user"
 msgstr "usuario"
 
-#: models.py:21
+#: models.py:22
 msgid "query"
 msgstr "pregunta"
 
-#: models.py:22
+#: models.py:23
 msgid "datetime created"
 msgstr "fecha y hora creados"
 
-#: models.py:23
+#: models.py:24
 msgid "hits"
 msgstr "accesos"
 
-#: models.py:61
+#: models.py:55
 msgid "recent search"
 msgstr "búsqueda reciente"
 
-#: models.py:62
+#: models.py:56
 msgid "recent searches"
 msgstr "búsquedas recientes"
 
-#: views.py:33
-#, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr "resultados, (mostrando solamente %(shown_result_count)s de %(result_count)s)"
+#: models.py:65
+msgid "date time"
+msgstr ""
 
-#: views.py:37
-msgid "results"
-msgstr "resultados"
+#: models.py:80
+msgid "indexable object"
+msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "Search error: %s"
-msgstr "Error de búsqueda: %s"
+#: models.py:81
+msgid "indexable objects"
+msgstr ""
 
-#: views.py:60
-msgid "type"
-msgstr "tipo"
-
-#: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
+#: views.py:41 views.py:43 templatetags/search_tags.py:22
+#: templatetags/search_tags.py:23
 msgid "Search"
 msgstr "Búsqueda"
 
-#: conf/settings.py:12
-msgid "Maximum amount search hits to fetch and display."
-msgstr "La cantidad máxima de resultados de búsqueda a buscar y mostrar."
+#: views.py:45
+#, python-format
+msgid "results for: %s"
+msgstr ""
 
-#: conf/settings.py:13
+#: conf/settings.py:7
+msgid "Searching"
+msgstr ""
+
+#: conf/settings.py:14
 msgid "Maximum number of search queries to remember per user."
 msgstr "El número máximo de consultas de búsqueda para recordar por usuario."
+
+#: conf/settings.py:22
+msgid "Interval in second on which to trigger the search index update."
+msgstr ""
 
 #: templates/search_help.html:3
 msgid "Help"
@@ -100,16 +103,21 @@ msgid ""
 "%(search_results_limit)s results will be available."
 msgstr "Introduzca las palabras clave de búsqueda que desee separadas por un espacio.  Sólo los primeros %(search_results_limit)s resultados estarán disponibles."
 
-#: templates/search_results.html:3
+#: templates/search_results.html:3 templates/search/search.html:4
 msgid "Search results"
 msgstr "Resultados de la búsqueda"
 
-#: templates/search_results.html:19
+#: templates/search_results.html:20
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Tiempo transcurrido: %(time_delta)s segundos"
 
-#: templatetags/search_tags.py:33
+#: templates/search/search.html:22
+#, python-format
+msgid "Elapsed time: %(elapsed_time)s seconds"
+msgstr ""
+
+#: templatetags/search_tags.py:36
 #, python-format
 msgid "recent searches (maximum of %d)"
 msgstr "búsquedas recientes (máximo de %d)"

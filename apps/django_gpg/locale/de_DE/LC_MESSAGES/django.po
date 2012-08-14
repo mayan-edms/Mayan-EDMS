@@ -8,39 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-04-20 11:04+0000\n"
-"Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"PO-Revision-Date: 2012-07-27 04:11+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-
-#: __init__.py:14 views.py:66
-msgid "private keys"
-msgstr "Private Schlüssel"
-
-#: __init__.py:15 views.py:69
-msgid "public keys"
-msgstr "Öffentliche Schlüssel"
-
-#: __init__.py:16
-msgid "delete"
-msgstr "Löschen"
-
-#: __init__.py:17
-msgid "query keyservers"
-msgstr "Schlüsselserver abfragen"
-
-#: __init__.py:18
-msgid "import"
-msgstr "Importieren"
-
-#: __init__.py:19
-msgid "key management"
-msgstr "Schlüssel-Management"
 
 #: api.py:24
 msgid "Public"
@@ -86,7 +62,7 @@ msgstr "Dokument ist signiert, und die Unterschrift ist gültig."
 msgid "Document is signed with a valid signature."
 msgstr "Das Dokument ist mit einer gültigen Signatur signiert."
 
-#: api.py:146
+#: api.py:152
 msgid "unknown"
 msgstr "Unbekannt"
 
@@ -97,6 +73,30 @@ msgstr "Begriff"
 #: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Name, E-Mail-, Schlüssel-ID oder Fingerabdruck des Schlüssels der gesucht wird."
+
+#: links.py:10 views.py:66
+msgid "private keys"
+msgstr "Private Schlüssel"
+
+#: links.py:11 views.py:69
+msgid "public keys"
+msgstr "Öffentliche Schlüssel"
+
+#: links.py:12
+msgid "delete"
+msgstr "Löschen"
+
+#: links.py:13
+msgid "query keyservers"
+msgstr "Schlüsselserver abfragen"
+
+#: links.py:14
+msgid "import"
+msgstr "Importieren"
+
+#: links.py:15
+msgid "key management"
+msgstr "Schlüssel-Management"
 
 #: permissions.py:7
 msgid "Key management"
@@ -206,10 +206,14 @@ msgstr "Zurückgezogen"
 msgid "Identifies"
 msgstr "Identifiziert"
 
-#: conf/settings.py:15
+#: conf/settings.py:11
+msgid "Signatures"
+msgstr ""
+
+#: conf/settings.py:18
 msgid "List of keyservers to be queried for unknown keys."
 msgstr "Liste der Server, die nach unbekannten Schlüsseln durchsucht werden."
 
-#: conf/settings.py:16
+#: conf/settings.py:26
 msgid "Home directory used to store keys as well as configuration files."
 msgstr "Verzeichnis zum speichern von Schlüsseln und Konfigurations-Dateien"

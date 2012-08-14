@@ -8,47 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
 "PO-Revision-Date: 2012-02-12 00:16+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: __init__.py:14
-msgid "ACLs"
-msgstr "LCA"
-
-#: __init__.py:15 __init__.py:23
-msgid "details"
-msgstr "detalles"
-
-#: __init__.py:16 __init__.py:25
-msgid "grant"
-msgstr "otorgar"
-
-#: __init__.py:17 __init__.py:26
-msgid "revoke"
-msgstr "revocar"
-
-#: __init__.py:18 __init__.py:24 forms.py:21
+#: forms.py:21 links.py:14 links.py:20
 msgid "New holder"
 msgstr "Nuevo titular"
-
-#: __init__.py:20
-msgid "Default ACLs"
-msgstr "LCA por defecto"
-
-#: __init__.py:21
-msgid "List of classes"
-msgstr "Lista de clases"
-
-#: __init__.py:22
-msgid "ACLs for class"
-msgstr "LCA para la clase"
 
 #: forms.py:38
 msgid "Users"
@@ -66,7 +38,35 @@ msgstr "Funciones"
 msgid "Special"
 msgstr "Especial"
 
-#: managers.py:118 managers.py:130
+#: links.py:10
+msgid "ACLs"
+msgstr "LCA"
+
+#: links.py:11 links.py:19
+msgid "details"
+msgstr "detalles"
+
+#: links.py:12 links.py:21
+msgid "grant"
+msgstr "otorgar"
+
+#: links.py:13 links.py:22
+msgid "revoke"
+msgstr "revocar"
+
+#: links.py:16
+msgid "Default ACLs"
+msgstr "LCA por defecto"
+
+#: links.py:17
+msgid "List of classes"
+msgstr "Lista de clases"
+
+#: links.py:18
+msgid "ACLs for class"
+msgstr "LCA para la clase"
+
+#: managers.py:119 managers.py:131
 msgid "Insufficient access."
 msgstr "Acceso insuficiente."
 
