@@ -8,6 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+from app_registry.models import App
+
 from .api import AppBackup, StorageModuleBase
 
 logger = logging.getLogger(__name__)
@@ -16,6 +18,7 @@ logger = logging.getLogger(__name__)
 class BackupJob(models.Model):
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
+    apps = models.ManyToManyField(App)
     begin_datetime = models.DateTimeField(verbose_name=_(u'begin date and time'), default=lambda: datetime.datetime.now())
 
     # * repetition = 
@@ -34,9 +37,9 @@ class BackupJob(models.Model):
     storage_module_name = models.CharField(max_length=16, choices=StorageModuleBase.get_as_choices(), verbose_name=_(u'storage module'))
     storage_arguments_json = models.TextField(verbose_name=_(u'storage module arguments (in JSON)'), blank=True)
 
-    @property
-    def apps(self):
-        return self.backupjobapp_set
+    #@property
+    #def apps(self):
+    #    return self.backupjobapp_set
 
     def __unicode__(self):
         return self.name
@@ -51,7 +54,8 @@ class BackupJob(models.Model):
         storage_module = self.storage_module
         #TODO: loads
         for app in self.apps.all():
-            app.backup(storage_module(backup_path='/tmp', dry_run=dry_run), dry_run=dry_run)
+            app_backup = AppBackup.get(app.name)
+            app_backup.backup(storage_module(backup_path='/tmp', dry_run=dry_run), dry_run=dry_run)
 
     def save(self, *args, **kwargs):
         #dump
@@ -66,9 +70,9 @@ class BackupJob(models.Model):
         verbose_name_plural = _(u'document checkouts')
 
 
-class BackupJobApp(models.Model):
-    backup_job = models.ForeignKey(BackupJob)
-    app_backup = models.CharField(max_length=64, choices=AppBackup.get_as_choices())
+#class BackupJobApp(models.Model):
+#    backup_job = models.ForeignKey(BackupJob)
+#    app_backup = models.CharField(max_length=64, choices=AppBackup.get_as_choices())
 
 
 #class BackupJobLog

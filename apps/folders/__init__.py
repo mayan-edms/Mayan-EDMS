@@ -7,7 +7,8 @@ from navigation.api import (bind_links, register_top_menu,
 from documents.models import Document
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
-from backups.api import AppBackup, ElementBackupModel
+from backups.api import AppBackup, ModelBackup
+from app_registry.api import register_app
 
 from .models import Folder
 from .links import (folder_list, folder_create, folder_edit,
@@ -44,4 +45,6 @@ class_permissions(Document, [
     PERMISSION_FOLDER_REMOVE_DOCUMENT,
 ])
 
-AppBackup('folders', _(u'Folders'), [ElementBackupModel()])
+app = register_app('folders', _(u'Folders'))
+AppBackup('folders', app.label, [ModelBackup()])
+

@@ -8,6 +8,7 @@ from job_processor.exceptions import JobQueuePushError
 from navigation.api import bind_links, register_model_list_columns
 from project_tools.api import register_tool
 from project_setup.api import register_setup
+from app_registry.api import register_app
 
 from .links import backup_tool_link, restore_tool_link, backup_job_list, backup_job_create, backup_job_edit, backup_job_test
 from .models import BackupJob
@@ -38,3 +39,5 @@ register_model_list_columns(BackupJob, [
     {'name':_(u'begin date time'), 'attribute': 'begin_datetime'},
     {'name':_(u'storage module'), 'attribute': 'storage_module'},
 ])
+
+register_app('backups', _(u'Backups'))

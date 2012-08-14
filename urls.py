@@ -44,6 +44,7 @@ urlpatterns = patterns('',
     (r'^clustering/', include('clustering.urls')),
     (r'^trash/', include('trash.urls')),
     (r'^backups/', include('backups.urls')),
+    (r'^apps/', include('app_registry.urls')),
 )
 
 
