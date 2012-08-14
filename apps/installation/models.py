@@ -20,6 +20,7 @@ from django.utils.simplejson import dumps
 
 from common.models import Singleton
 from common.utils import pretty_size
+from lock_manager import Lock, LockError
 
 FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
 FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
@@ -94,38 +95,45 @@ class Installation(Singleton):
 
     def submit(self):
         try:
-            dictionary = {}
-            if self.is_lsb:
+            lock = Lock.acquire_lock('upload_stats')
+        except LockError:
+            pass
+        else:         
+            try:
+                dictionary = {}
+                if self.is_lsb:
+                    dictionary.update(
+                        {
+                            'is_lsb': unicode(self.is_lsb),
+                            'distributor_id': unicode(self.distributor_id),
+                            'description': unicode(self.description),
+                            'release': unicode(self.release),
+                            'codename': unicode(self.codename),
+                            'sysinfo': unicode(self.sysinfo),
+                        }
+                    )
+
                 dictionary.update(
                     {
-                        'is_lsb': unicode(self.is_lsb),
-                        'distributor_id': unicode(self.distributor_id),
-                        'description': unicode(self.description),
-                        'release': unicode(self.release),
-                        'codename': unicode(self.codename),
-                        'sysinfo': unicode(self.sysinfo),
+                        'uuid': self.uuid,
+                        'architecture': unicode(self.architecture),
+                        'python_version': unicode(self.python_version),
+                        'platform': unicode(self.platform),
+                        'machine': unicode(self.machine),
+                        'processor': unicode(self.processor),
+                        'cpus': unicode(self.cpus),
+                        'total_phymem': unicode(self.total_phymem),
                     }
                 )
-
-            dictionary.update(
-                {
-                    'uuid': self.uuid,
-                    'architecture': unicode(self.architecture),
-                    'python_version': unicode(self.python_version),
-                    'platform': unicode(self.platform),
-                    'machine': unicode(self.machine),
-                    'processor': unicode(self.processor),
-                    'cpus': unicode(self.cpus),
-                    'total_phymem': unicode(self.total_phymem),
-                }
-            )
-            
-            requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(dictionary)}, timeout=TIMEOUT)
-        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
-            pass
-        else:
-            self.is_first_run = False
-            self.save()
+                
+                requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(dictionary)}, timeout=TIMEOUT)
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
+                pass
+            else:
+                self.is_first_run = False
+                self.save()
+            finally:
+                lock.release()
 
     class Meta:
         verbose_name = verbose_name_plural = _(u'installation details')
