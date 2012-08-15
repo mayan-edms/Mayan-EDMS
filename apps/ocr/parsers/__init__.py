@@ -184,7 +184,7 @@ class TextParser(Parser):
 
         parser = OriginalTextParser()
 
-        document_page.content = '\n'.join(parser.render_to_viewport(filename=document_file, mimetype=document_page.document_version.mimetype)[int(pagenum) - 1])
+        document_page.content = u'\n'.join(parser.render_to_viewport(filename=document_file)[int(pagenum) - 1])
         document_page.page_label = _(u'Text extracted from file')
         document_page.save()
         
