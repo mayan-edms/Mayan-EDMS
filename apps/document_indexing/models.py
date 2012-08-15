@@ -25,7 +25,7 @@ class Index(models.Model):
 
     @property
     def instance_root(self):
-        return self.template_root.indexinstancenode_set.get()
+        return self.template_root.node_instance
 
     def __unicode__(self):
         return self.title
@@ -44,6 +44,9 @@ class Index(models.Model):
         super(Index, self).save(*args, **kwargs)
         index_template_node_root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
+    def get_document_types_names(self):
+        return u', '.join([unicode(document_type) for document_type in self.document_types.all()] or [u'All'])
+
     class Meta:
         verbose_name = _(u'index')
         verbose_name_plural = _(u'indexes')
@@ -59,6 +62,10 @@ class IndexTemplateNode(MPTTModel):
 
     def __unicode__(self):
         return self.expression
+
+    @property
+    def node_instance(self):
+        return self.indexinstancenode_set.get()
 
     class Meta:
         verbose_name = _(u'index template node')
