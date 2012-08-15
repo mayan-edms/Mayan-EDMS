@@ -61,6 +61,6 @@ register_setup(index_setup)
 
 register_links([Index, 'index_setup_list', 'index_setup_create', 'template_node_edit', 'template_node_delete'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
 
-register_links(Index, [index_setup_edit, index_setup_document_types, index_setup_delete, index_setup_view])
+register_links(Index, [index_setup_edit, index_setup_delete, index_setup_view, index_setup_document_types])
 
 register_links(IndexTemplateNode, [template_node_create, template_node_edit, template_node_delete])
