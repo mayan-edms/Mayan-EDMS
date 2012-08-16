@@ -1,0 +1,2 @@
+class UnableToRegister(Exception):
+    pass

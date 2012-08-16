@@ -4,6 +4,7 @@ from django.db import DatabaseError, transaction
 
 from .models import App
 from .links import app_registry_tool_link
+from .exceptions import UnableToRegister
 
 
 @transaction.commit_on_success
@@ -12,7 +13,7 @@ def register_app(name, label, icon=None):
         app, created = App.objects.get_or_create(name=name)
     except DatabaseError:
         transaction.rollback()
-        return None
+        raise UnableToRegister
     else:
         app.label = label
         if icon:
