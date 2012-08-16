@@ -10,8 +10,8 @@ from django.core.urlresolvers import reverse
 from permissions.models import Permission
 
 from .api import AppBackup, TestStorageModule
-from .models import BackupJob
 from .forms import BackupJobForm
+from .models import BackupJob
 from .permissions import PERMISSION_BACKUP_JOB_VIEW, PERMISSION_BACKUP_JOB_CREATE, PERMISSION_BACKUP_JOB_EDIT
 
 
