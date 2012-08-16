@@ -3,12 +3,12 @@ from __future__ import absolute_import
 from django.db import transaction, DatabaseError
 from django.utils.translation import ugettext_lazy as _
 
-from job_processor.models import JobQueue, JobType
+from app_registry import register_app, UnableToRegister
 from job_processor.exceptions import JobQueuePushError
+from job_processor.models import JobQueue, JobType
 from navigation.api import bind_links, register_model_list_columns
-from project_tools.api import register_tool
 from project_setup.api import register_setup
-from app_registry.api import register_app
+from project_tools.api import register_tool
 
 from .links import backup_tool_link, restore_tool_link, backup_job_list, backup_job_create, backup_job_edit, backup_job_test
 from .models import BackupJob
@@ -40,4 +40,7 @@ register_model_list_columns(BackupJob, [
     {'name':_(u'storage module'), 'attribute': 'storage_module'},
 ])
 
-register_app('backups', _(u'Backups'))
+try:
+    register_app('backups', _(u'Backups'))
+except UnableToRegister:
+    pass

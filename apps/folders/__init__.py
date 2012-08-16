@@ -8,7 +8,7 @@ from documents.models import Document
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 from backups.api import AppBackup, ModelBackup
-from app_registry.api import register_app
+from app_registry import register_app, UnableToRegister
 
 from .models import Folder
 from .links import (folder_list, folder_create, folder_edit,
@@ -47,8 +47,8 @@ class_permissions(Document, [
 
 try:
     app = register_app('folders', _(u'Folders'))
-except Exception:
+except UnableToRegister:
     pass
 else:
-    AppBackup('folders', app.label, [ModelBackup()])
+    AppBackup(app, [ModelBackup()])
 
