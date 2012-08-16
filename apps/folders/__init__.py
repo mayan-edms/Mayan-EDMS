@@ -45,6 +45,10 @@ class_permissions(Document, [
     PERMISSION_FOLDER_REMOVE_DOCUMENT,
 ])
 
-app = register_app('folders', _(u'Folders'))
-AppBackup('folders', app.label, [ModelBackup()])
+try:
+    app = register_app('folders', _(u'Folders'))
+except Exception:
+    pass
+else:
+    AppBackup('folders', app.label, [ModelBackup()])
 
