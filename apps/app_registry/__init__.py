@@ -10,7 +10,12 @@ from project_setup.api import register_setup
 from .models import App
 from .links import app_registry_tool_link, app_list
 from .api import register_app
+from .exceptions import UnableToRegister
 
 register_tool(app_registry_tool_link)
-register_app('app_registry', label=_(u'App registry'), icon=APP)
 bind_links(['app_list'], [app_list], menu_name='secondary_menu')
+
+try:
+    app = register_app('app_registry', label=_(u'App registry'), icon=APP)
+except UnableToRegister:
+    pass
