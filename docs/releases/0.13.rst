@@ -89,6 +89,9 @@ Afterwards migrate existing database schema with::
     $ ./manage.py migrate clustering
     $ ./manage.py migrate trash
     $ ./manage.py migrate sources
+    $ ./manage.py migrate app_regq
+    qistry
+    $ ./manage.py migrate backups
 
 Issue the following command to index existing documents in the new full text search database::
 
