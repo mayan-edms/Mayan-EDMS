@@ -1,4 +1,5 @@
 import logging
+import os
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -35,8 +36,12 @@ class Fixture(ElementDataBase):
         self.model_backup = model_backup
         self.content = content
     
+    @property
+    def filename(self):
+        return '%s_%s' % (self.__class__.name, self.model_backup.app_backup.app)
+    
     def save(self):
-        return ContentFile(name='%s_%s' % (self.__class__.__name__, self.model_backup.app_backup.name), content=self.content)
+        return ContentFile(name=self.filename, content=self.content)
 
     #def load(self):
 
@@ -82,11 +87,12 @@ class ModelBackup(ElementBackupBase):
 
         command = Command()
         if not self.model_list:
-            result = [self.app_backup.name]
+            result = [self.app_backup.app.name]
         else:
-            result = [u'%s.%s' (self.app_backup.name, model) for model in self.model_list]
+            result = [u'%s.%s' (self.app_backup.app.name, model) for model in self.model_list]
         
         #TODO: a single Fixture or a list of Fixtures for each model?
+        #Can't return multiple Fixture until a way to find all of an app's models is found
         return Fixture(
             model_backup=self,
             content=command.handle(u' '.join(result), format='json', indent=4, using=DEFAULT_DB_ALIAS, exclude=[], user_base_manager=False, use_natural_keys=False)
@@ -133,16 +139,12 @@ class AppBackup(object):
     def get_all(cls):
         return cls._registry.values()
 
-    @classmethod
-    def get_as_choices(cls):
-        return [(key, key.label) for key, values in cls._registry.items()]
-
-    def __init__(self, name, label, backup_managers):
-        self.label = label
-        self.name = name
+    def __init__(self, app, backup_managers):
+        # app = App instance from app_registry app
+        self.app = app
         self.backup_managers = [manager.link(self) for manager in backup_managers]
         self.state = self.__class__.STATE_IDLE
-        self.__class__._registry[name] = self
+        self.__class__._registry[app] = self
 
     def info(self):
         results = []
@@ -167,7 +169,7 @@ class AppBackup(object):
         self.state = self.__class__.STATE_IDLE
 
     def __unicode__(self):
-        return unicode(self.label)
+        return unicode(self.app)
 
 
 #Storage
@@ -249,8 +251,12 @@ class TestStorageModule(StorageModuleBase):
     
     def backup(self, data, dry_run):
         print '***** received data'
-        print data 
+        #print data.content
+        #print 'name', data.filename
         print '***** saving to path: %s' % self.backup_path
+        result = data.save()
+        with open(os.path.join(self.backup_path, result.name), 'w') as descriptor:
+            descriptor.write(result.read())
     
     def restore(self):
         print 'restore from path: %s' % self.restore_path

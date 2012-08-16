@@ -37,10 +37,6 @@ class BackupJob(models.Model):
     storage_module_name = models.CharField(max_length=16, choices=StorageModuleBase.get_as_choices(), verbose_name=_(u'storage module'))
     storage_arguments_json = models.TextField(verbose_name=_(u'storage module arguments (in JSON)'), blank=True)
 
-    #@property
-    #def apps(self):
-    #    return self.backupjobapp_set
-
     def __unicode__(self):
         return self.name
 
@@ -54,7 +50,7 @@ class BackupJob(models.Model):
         storage_module = self.storage_module
         #TODO: loads
         for app in self.apps.all():
-            app_backup = AppBackup.get(app.name)
+            app_backup = AppBackup.get(app)
             app_backup.backup(storage_module(backup_path='/tmp', dry_run=dry_run), dry_run=dry_run)
 
     def save(self, *args, **kwargs):
@@ -68,11 +64,6 @@ class BackupJob(models.Model):
     class Meta:
         verbose_name = _(u'document checkout')
         verbose_name_plural = _(u'document checkouts')
-
-
-#class BackupJobApp(models.Model):
-#    backup_job = models.ForeignKey(BackupJob)
-#    app_backup = models.CharField(max_length=64, choices=AppBackup.get_as_choices())
 
 
 #class BackupJobLog
