@@ -17,6 +17,9 @@ class ElementDataBase(object):
     The basic unit of a backup, a data type
     it is produced or consumed by the ElementBackup classes
     """
+    def make_filename(self, id):
+        return '%s-%s' % (self.model_backup.app_backup.app.name, id)
+    
     def save(self):
         """
         Must return a file like object
@@ -39,7 +42,7 @@ class Fixture(ElementDataBase):
     
     @property
     def filename(self):
-        return '%s_%s' % (self.model_backup.app_backup.app, self.__class__.name)
+        return self.make_filename(self.__class__.name)
     
     def save(self):
         return ContentFile(name=self.filename, content=self.content)
@@ -171,7 +174,7 @@ class AppBackup(object):
 
     def __unicode__(self):
         return unicode(self.app)
-
+        
 
 #Storage
 class StorageModuleBase(object):
@@ -214,7 +217,7 @@ class StorageModuleBase(object):
 
     @classmethod
     def get_as_choices(cls):
-        return cls._registry.items()
+        return [(name, unicode(klass.label)) for name, klass in cls._registry.items()]
 
     def get_arguments(self):
         return []
@@ -236,9 +239,6 @@ class StorageModuleBase(object):
     
     def __unicode__(self):
         return unicode(self.label)
-
-    #def __init__(self, *args, **kwargs):
-    #    self.dry_run = kwargs.pop('dry_run', False)
 
 
 class TestStorage(StorageModuleBase):
