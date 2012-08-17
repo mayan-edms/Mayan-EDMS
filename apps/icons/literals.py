@@ -1,1 +1,2 @@
 APP = 'app'
+BACKUPS = 'backups'

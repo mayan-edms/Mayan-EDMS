@@ -7,4 +7,5 @@ LABEL = _(u'Fat cow')
 
 DICTIONARY = {
     APP: 'plugin.png',
+    BACKUPS: 'cd_burn.png',
 }

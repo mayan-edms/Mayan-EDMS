@@ -7,6 +7,7 @@ from app_registry import register_app, UnableToRegister
 from common.utils import encapsulate
 from job_processor.exceptions import JobQueuePushError
 from job_processor.models import JobQueue, JobType
+from icons.literals import BACKUPS
 from navigation.api import bind_links, register_model_list_columns
 from project_setup.api import register_setup
 from project_tools.api import register_tool
@@ -44,7 +45,7 @@ register_model_list_columns(BackupJob, [
 ])
 
 try:
-    app = register_app('backups', _(u'Backups'))
+    app = register_app('backups', _(u'Backups'), icon=BACKUPS)
 except UnableToRegister:
     pass
 else:

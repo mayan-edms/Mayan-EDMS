@@ -7,4 +7,5 @@ LABEL = _(u'FamFamFam')
 
 DICTIONARY = {
     APP: 'plugin',
+    BACKUPS: 'cd_burn',
 }
