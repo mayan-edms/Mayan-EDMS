@@ -2,25 +2,26 @@ from __future__ import absolute_import
 
 import logging
 
+from django.db.models.signals import post_save, pre_delete, post_delete
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
-from django.db.models.signals import post_save, pre_delete, post_delete
 
+from backups.api import AppBackup, ModelBackup
+from app_registry import register_app, UnableToRegister
+from documents.models import Document
+from maintenance.api import MaintenanceNamespace
+from metadata.models import DocumentMetadata
 from navigation.api import (register_top_menu, register_sidebar_template,
     bind_links, Link)
-
-from maintenance.api import MaintenanceNamespace
-from documents.models import Document
-from metadata.models import DocumentMetadata
 from project_setup.api import register_setup
 
-from .models import (Index, IndexTemplateNode, IndexInstanceNode)
 from .api import update_indexes, delete_indexes
 from .links import (index_setup, index_setup_list, index_setup_create,
     index_setup_edit, index_setup_delete, index_setup_view,
     template_node_create, template_node_edit, template_node_delete,
     index_parent, document_index_list, rebuild_index_instances,
     index_setup_document_types)
+from .models import (Index, IndexTemplateNode, IndexInstanceNode)
 
 logger = logging.getLogger(__name__)
 
@@ -70,3 +71,10 @@ def document_metadata_index_delete(sender, **kwargs):
 def document_metadata_index_post_delete(sender, **kwargs):
     # TODO: save result in index log
     update_indexes(kwargs['instance'].document)
+
+try:
+    app = register_app('document_indexing', _(u'Document indexing'))
+except UnableToRegister:
+    pass
+else:
+    AppBackup(app, [ModelBackup()])

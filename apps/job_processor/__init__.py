@@ -9,6 +9,8 @@ from django.db import transaction, DatabaseError
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
+from backups.api import AppBackup, ModelBackup
+from app_registry import register_app, UnableToRegister
 from scheduler.api import LocalScheduler
 from navigation.api import bind_links, register_model_list_columns
 from project_tools.api import register_tool
@@ -88,3 +90,10 @@ def kill_all_node_processes():
 
 
 atexit.register(kill_all_node_processes)
+
+try:
+    app = register_app('job_processor', _(u'Job processor'))
+except UnableToRegister:
+    pass
+else:
+    AppBackup(app, [ModelBackup()])

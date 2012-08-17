@@ -4,12 +4,14 @@ from django.db import transaction, DatabaseError
 from django.utils.translation import ugettext_lazy as _
 
 from app_registry import register_app, UnableToRegister
+from common.utils import encapsulate
 from job_processor.exceptions import JobQueuePushError
 from job_processor.models import JobQueue, JobType
 from navigation.api import bind_links, register_model_list_columns
 from project_setup.api import register_setup
 from project_tools.api import register_tool
 
+from .api import AppBackup, ModelBackup
 from .links import backup_tool_link, restore_tool_link, backup_job_list, backup_job_create, backup_job_edit, backup_job_test
 from .models import BackupJob
 
@@ -37,10 +39,14 @@ bind_links([BackupJob], [backup_job_edit, backup_job_test])
 
 register_model_list_columns(BackupJob, [
     {'name':_(u'begin date time'), 'attribute': 'begin_datetime'},
-    {'name':_(u'storage module'), 'attribute': 'storage_module'},
+    {'name':_(u'storage module'), 'attribute': 'storage_module.label'},
+    {'name':_(u'apps'), 'attribute': encapsulate(lambda x: u', '.join([unicode(app) for app in x.apps.all()]))},
 ])
 
 try:
-    register_app('backups', _(u'Backups'))
+    app = register_app('backups', _(u'Backups'))
 except UnableToRegister:
     pass
+else:
+    AppBackup(app, [ModelBackup()])    
+#        'attribute': encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user)

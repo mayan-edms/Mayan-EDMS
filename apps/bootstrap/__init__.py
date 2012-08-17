@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from app_registry import register_app, UnableToRegister
+#from app_registry import register_app, UnableToRegister
 from navigation.api import bind_links
 from project_setup.api import register_setup
 
@@ -14,7 +14,7 @@ register_setup(erase_database_link)
 bind_links([BootstrapSimple], [bootstrap_execute])
 bind_links([BootstrapPermit], [bootstrap_execute])
 
-try:
-    register_app('bootstrap', _(u'Database bootstrap'))
-except UnableToRegister:
-    pass
+#try:
+#    register_app('bootstrap', _(u'Database bootstrap'))
+#except UnableToRegister:
+#    pass

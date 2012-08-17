@@ -1,7 +1,10 @@
 from __future__ import absolute_import
 
 from django.contrib.auth.models import User, Group
+from django.utils.translation import ugettext_lazy as _
 
+from backups.api import AppBackup, ModelBackup
+from app_registry import register_app, UnableToRegister
 from navigation.api import bind_links, register_multi_item_links
 from project_setup.api import register_setup
 
@@ -27,3 +30,10 @@ user_management_views = [
 
 register_setup(user_setup)
 register_setup(group_setup)
+
+try:
+    app = register_app('user_management', _(u'User management'))
+except UnableToRegister:
+    pass
+else:
+    AppBackup(app, [ModelBackup()])

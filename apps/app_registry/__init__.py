@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
+from backups.api import AppBackup, ModelBackup
 from icons.literals import APP
 from navigation.api import bind_links
 from project_tools.api import register_tool
@@ -19,3 +20,6 @@ try:
     app = register_app('app_registry', label=_(u'App registry'), icon=APP)
 except UnableToRegister:
     pass
+else:
+    AppBackup(app, [ModelBackup()])    
+

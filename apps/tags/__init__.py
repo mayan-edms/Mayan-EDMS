@@ -2,22 +2,24 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (bind_links, register_top_menu,
-    register_model_list_columns, register_multi_item_links, Link)
+from acls.api import class_permissions
+from backups.api import AppBackup, ModelBackup
+from app_registry import register_app, UnableToRegister
 from common.utils import encapsulate
 from documents.models import Document
-from acls.api import class_permissions
+from navigation.api import (bind_links, register_top_menu,
+    register_model_list_columns, register_multi_item_links, Link)
 
 from taggit.models import Tag
 from taggit.managers import TaggableManager
 
-from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
-from .permissions import (PERMISSION_TAG_ATTACH,
-    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
-    PERMISSION_TAG_VIEW)
 from .links import (tag_list, tag_create, tag_attach,
     tag_document_remove_multiple, tag_document_list, tag_delete, tag_edit,
     tag_tagged_item_list, tag_multiple_delete, tag_acl_list)
+from .permissions import (PERMISSION_TAG_ATTACH,
+    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
+    PERMISSION_TAG_VIEW)
+from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 
 register_model_list_columns(Tag, [
     {
@@ -57,3 +59,10 @@ class_permissions(Tag, [
 ])
 
 Document.add_to_class('tags', TaggableManager())
+
+try:
+    app = register_app('tags', _(u'Tags'))
+except UnableToRegister:
+    pass
+else:
+    AppBackup(app, [ModelBackup()])
