@@ -6,10 +6,11 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 from permissions.models import Permission
 
-from .api import AppBackup, TestStorageModule
+from .api import AppBackup
 from .forms import BackupJobForm
 from .models import BackupJob
 from .permissions import PERMISSION_BACKUP_JOB_VIEW, PERMISSION_BACKUP_JOB_CREATE, PERMISSION_BACKUP_JOB_EDIT
@@ -99,8 +100,11 @@ def backup_job_test(request, backup_job_pk):
     try:
         backup_job.backup(dry_run=True)
     except Exception, exc:
-        messages.error(request, _(u'Error testing backup job; %s') % exc)
-        return HttpResponseRedirect(reverse('backup_job_list'))
+        if settings.DEBUG:
+            raise
+        else:
+            messages.error(request, _(u'Error testing backup job; %s') % exc)
+            return HttpResponseRedirect(reverse('backup_job_list'))
     else:
         messages.success(request, _(u'Test for backup job "%s" finished successfully.') % backup_job)
         return HttpResponseRedirect(reverse('backup_job_list'))
@@ -117,8 +121,5 @@ def backup_view(request):
             {'name': _(u'info'), 'attribute': 'info'},
         ],
     }
-    # TODO: move to test.py
-    #ab = AppBackup.get_all()[0]
-    #ab.backup(TestStorageModule(backup_path = '/tmp'))
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))

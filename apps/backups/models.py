@@ -34,7 +34,7 @@ class BackupJob(models.Model):
     # * type
     #    - Full
     #    - Incremental
-    storage_module_name = models.CharField(max_length=16, choices=StorageModuleBase.get_as_choices(), verbose_name=_(u'storage module'))
+    storage_module_name = models.CharField(max_length=32, choices=StorageModuleBase.get_as_choices(), verbose_name=_(u'storage module'))
     storage_arguments_json = models.TextField(verbose_name=_(u'storage module arguments (in JSON)'), blank=True)
 
     def __unicode__(self):
@@ -51,7 +51,7 @@ class BackupJob(models.Model):
         #TODO: loads
         for app in self.apps.all():
             app_backup = AppBackup.get(app)
-            app_backup.backup(storage_module(backup_path='/tmp', dry_run=dry_run), dry_run=dry_run)
+            app_backup.backup(storage_module(backup_path='/tmp'), dry_run=dry_run)
 
     def save(self, *args, **kwargs):
         #dump

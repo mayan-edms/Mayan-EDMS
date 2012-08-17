@@ -1,11 +1,12 @@
 import logging
 import os
 
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
 from django.core.files.base import ContentFile
+from django.core.files.storage import FileSystemStorage
 from django.core.management.commands.dumpdata import Command
 from django.db import router, DEFAULT_DB_ALIAS
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +39,7 @@ class Fixture(ElementDataBase):
     
     @property
     def filename(self):
-        return '%s_%s' % (self.__class__.name, self.model_backup.app_backup.app)
+        return '%s_%s' % (self.model_backup.app_backup.app, self.__class__.name)
     
     def save(self):
         return ContentFile(name=self.filename, content=self.content)
@@ -93,10 +94,10 @@ class ModelBackup(ElementBackupBase):
         
         #TODO: a single Fixture or a list of Fixtures for each model?
         #Can't return multiple Fixture until a way to find all of an app's models is found
-        return Fixture(
+        return [Fixture(
             model_backup=self,
             content=command.handle(u' '.join(result), format='json', indent=4, using=DEFAULT_DB_ALIAS, exclude=[], user_base_manager=False, use_natural_keys=False)
-        )
+        )]
 
 
 class FileBackup(ElementBackupBase):
@@ -236,8 +237,11 @@ class StorageModuleBase(object):
     def __unicode__(self):
         return unicode(self.label)
 
+    #def __init__(self, *args, **kwargs):
+    #    self.dry_run = kwargs.pop('dry_run', False)
 
-class TestStorageModule(StorageModuleBase):
+
+class TestStorage(StorageModuleBase):
     name = 'test_storage'
     label = _(u'Test storage module')
     realm = StorageModuleBase.REALM_LOCAL
@@ -249,18 +253,48 @@ class TestStorageModule(StorageModuleBase):
     def get_arguments(self):
         return ['backup_path', 'restore_path']
     
-    def backup(self, data, dry_run):
-        print '***** received data'
-        #print data.content
-        #print 'name', data.filename
-        print '***** saving to path: %s' % self.backup_path
-        result = data.save()
-        with open(os.path.join(self.backup_path, result.name), 'w') as descriptor:
-            descriptor.write(result.read())
+    def backup(self, elements, dry_run):
+        logger.debug('self.backup_path: %s' % self.backup_path)
+
+        for element in elements:
+            content_file = element.save()
+            logger.debug('element.filename: %s' % element.filename)
+            logger.debug('element.content: %s' % element.content)
     
     def restore(self):
         print 'restore from path: %s' % self.restore_path
         return 'sample_data'
 
 
-StorageModuleBase.register(TestStorageModule)
+class LocalFileSystemStorage(FileSystemStorage):
+    """
+    Simple wrapper for the stock Django FileSystemStorage class
+    """
+    name = 'local_filesystem_storage'
+    label = _(u'Local filesystem')
+    realm = StorageModuleBase.REALM_LOCAL
+
+    separator = os.path.sep
+
+    def get_arguments(self):
+        return ['backup_path', 'restore_path']
+    
+    def backup(self, elements, dry_run):
+        logger.debug('self.backup_path: %s' % self.backup_path)
+        for element in elements:
+            content_file = element.save()
+            path = self.storage.save(content_file.name, content_file)
+            logger.debug('element.filename: %s' % element.filename)
+            logger.debug('element.content: %s' % element.content)
+
+    def restore(self):
+        print 'restore from path: %s' % self.restore_path
+        return 'sample_data'
+
+    def __init__(self, *args, **kwargs):
+        self.backup_path = kwargs.pop('backup_path', None)
+        self.storage = FileSystemStorage(location=self.backup_path)
+
+
+StorageModuleBase.register(LocalFileSystemStorage)
+StorageModuleBase.register(TestStorage)
