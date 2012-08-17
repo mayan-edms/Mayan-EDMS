@@ -35,5 +35,5 @@ try:
     app = register_app('user_management', _(u'User management'))
 except UnableToRegister:
     pass
-else:
-    AppBackup(app, [ModelBackup()])
+#else:
+#    AppBackup(app, [ModelBackup()])
