@@ -1,7 +1,8 @@
 *.orig
 *.pyc
 *.pyo
-/*.sqlite
+*.sql
+*.sqlite
 /settings_local.py
 /celerybeat-schedule
 /document_storage/
