@@ -18,5 +18,6 @@ def app_list(request):
         'extra_columns': [
             {'name': _(u'name'), 'attribute': 'name'},
             {'name': _(u'label'), 'attribute': 'label'},
+            {'name': _(u'icon'), 'attribute': 'icon'},
         ],
     }, context_instance=RequestContext(request))
