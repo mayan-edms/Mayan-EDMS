@@ -1,55 +1,19 @@
 from __future__ import absolute_import
 
+import datetime
 import logging
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+
+from common.models import TranslatableLabelMixin, LiveObjectMixin
+
+from .classes import AppBackup, StorageModuleBase
 
 logger = logging.getLogger(__name__)
-
-
-class TranslatableLabelMixin(models.Model):
-    _labels = {}
-    
-    @property
-    def label(self):
-        try:
-            return self.__class__._labels[self.pk]
-        except KeyError:
-            return unicode(self.__class__)
-
-    def __setattr__(self, attr, value):
-        if attr == 'label':
-            self.__class__._labels[self.pk] = value
-        else:
-            return super(TranslatableLabelMixin, self).__setattr__(attr, value)
-    
-    def __unicode__(self):
-        return unicode(self.label)
-
-    class Meta:
-        abstract = True
-
-
-class LiveObjectsManager(models.Manager):
-    def get_query_set(self):
-        return super(LiveObjectsManager, self).get_query_set().filter(pk__in=(entry.pk for entry in self.model._registry))
-
-
-class LiveObjectMixin(models.Model):
-    _registry = []
-   
-    def save(self, *args, **kwargs):
-        super(LiveObjectMixin, self).save(*args, **kwargs)
-        self.__class__._registry.append(self)
-        return self
-
-    live = LiveObjectsManager()
-    objects = models.Manager()
-    
-    class Meta:
-        abstract = True
 
 
 class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
@@ -60,3 +24,57 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
         ordering = ('name', )
         verbose_name = _(u'app')
         verbose_name_plural = _(u'apps')
+
+
+class BackupJob(models.Model):
+    name = models.CharField(max_length=64, verbose_name=_(u'name'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
+    apps = models.ManyToManyField(App)
+    begin_datetime = models.DateTimeField(verbose_name=_(u'begin date and time'), default=lambda: datetime.datetime.now())
+
+    # * repetition = 
+    #   day - 1 days
+    #    weekly - days of week checkbox
+    #   month - day of month, day of week
+    # * repetition option field
+    # * ends
+    #   - never
+    #   - After # ocurrences
+    #   - On date
+    # * end option field
+    # * type
+    #    - Full
+    #    - Incremental
+    storage_module_name = models.CharField(max_length=32, choices=StorageModuleBase.get_as_choices(), verbose_name=_(u'storage module'))
+    storage_arguments_json = models.TextField(verbose_name=_(u'storage module arguments (in JSON)'), blank=True)
+
+    def __unicode__(self):
+        return self.name
+
+    @property
+    def storage_module(self):
+        return StorageModuleBase.get(self.storage_module_name)
+
+    def backup(self, dry_run=False):
+        logger.debug('starting: %s', self)
+        logger.debug('dry_run: %s' % dry_run)
+        storage_module = self.storage_module
+        #TODO: loads
+        for app in self.apps.all():
+            app_backup = AppBackup.get(app)
+            app_backup.backup(storage_module(backup_path='/tmp'), dry_run=dry_run)
+
+    def save(self, *args, **kwargs):
+        #dump
+        super(BackupJob, self).save(*args, **kwargs)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('checkout_info', [self.document.pk])
+
+    class Meta:
+        verbose_name = _(u'document checkout')
+        verbose_name_plural = _(u'document checkouts')
+
+
+#class BackupJobLog

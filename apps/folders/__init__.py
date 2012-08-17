@@ -4,8 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
-from app_registry import register_app, UnableToRegister
-from backups.api import AppBackup, ModelBackup
+#from app_registry import register_app, UnableToRegister
+#from backups.api import AppBackup, ModelBackup
 from documents.models import Document
 from navigation.api import (bind_links, register_top_menu,
     register_multi_item_links, register_sidebar_template, Link)
@@ -39,9 +39,9 @@ class_permissions(Document, [
     PERMISSION_FOLDER_REMOVE_DOCUMENT,
 ])
 
-try:
-    app = register_app('folders', _(u'Folders'))
-except UnableToRegister:
-    pass
-else:
-    AppBackup(app, [ModelBackup()])
+#try:
+#    app = register_app('folders', _(u'Folders'))
+#except UnableToRegister:
+#    pass
+#else:
+#    AppBackup(app, [ModelBackup()])

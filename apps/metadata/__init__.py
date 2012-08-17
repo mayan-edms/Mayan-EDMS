@@ -3,8 +3,8 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from backups.api import AppBackup, ModelBackup
-from app_registry import register_app, UnableToRegister
+#from backups.api import AppBackup, ModelBackup
+#from app_registry import register_app, UnableToRegister
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from navigation.api import (bind_links, register_sidebar_template,
@@ -59,9 +59,9 @@ register_model_list_columns(Document, [
     ])
 
 
-try:
-    app = register_app('metadata', _(u'Metadata'))
-except UnableToRegister:
-    pass
-else:
-    AppBackup(app, [ModelBackup()])
+#try:
+#    app = register_app('metadata', _(u'Metadata'))
+#except UnableToRegister:
+#    pass
+#else:
+#a    AppBackup(app, [ModelBackup()])

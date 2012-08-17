@@ -7,8 +7,8 @@ from django.db.utils import DatabaseError
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
 
-from backups.api import AppBackup, ModelBackup
-from app_registry import register_app, UnableToRegister
+#from backups.api import AppBackup, ModelBackup
+#from app_registry import register_app, UnableToRegister
 from project_tools.api import register_tool
 
 from .links import installation_details
@@ -39,9 +39,9 @@ register_tool(installation_details)
 
 check_first_run()
 
-try:
-    app = register_app('installation', _(u'Installation'))
-except UnableToRegister:
-    pass
-else:
-    AppBackup(app, [ModelBackup()])
+#try:
+#    app = register_app('installation', _(u'Installation'))
+#except UnableToRegister:
+#    pass
+#else:
+#    AppBackup(app, [ModelBackup()])

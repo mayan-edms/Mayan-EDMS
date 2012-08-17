@@ -5,8 +5,8 @@ from django.db.models.signals import post_save
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
 
-from backups.api import AppBackup, ModelBackup
-from app_registry import register_app, UnableToRegister
+#from backups.api import AppBackup, ModelBackup
+#from app_registry import register_app, UnableToRegister
 from navigation.api import bind_links, register_multi_item_links
 from project_setup.api import register_setup
 
@@ -41,9 +41,9 @@ post_save.connect(user_post_save, sender=User)
 
 register_setup(role_list)
 
-try:
-    app = register_app('permissions', _(u'Permissions'))
-except UnableToRegister:
-    pass
-else:
-    AppBackup(app, [ModelBackup()])
+#try:
+#    app = register_app('permissions', _(u'Permissions'))
+#except UnableToRegister:
+#    pass
+#else:
+#    AppBackup(app, [ModelBackup()])

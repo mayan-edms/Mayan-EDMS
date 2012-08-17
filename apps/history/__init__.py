@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from backups.api import AppBackup, ModelBackup
+#from backups.api import AppBackup, ModelBackup
 from app_registry import register_app, UnableToRegister
 from common.utils import encapsulate
 from navigation.api import bind_links, register_model_list_columns
@@ -35,5 +35,5 @@ try:
     app = register_app('history', _(u'History'))
 except UnableToRegister:
     pass
-else:
-    AppBackup(app, [ModelBackup()])
+#else:
+#    AppBackup(app, [ModelBackup()])

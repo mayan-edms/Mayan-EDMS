@@ -6,8 +6,8 @@ from django.db.models.signals import post_save, pre_delete, post_delete
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
-from backups.api import AppBackup, ModelBackup
-from app_registry import register_app, UnableToRegister
+#from backups.api import AppBackup, ModelBackup
+#from app_registry import register_app, UnableToRegister
 from documents.models import Document
 from maintenance.api import MaintenanceNamespace
 from metadata.models import DocumentMetadata
@@ -72,9 +72,9 @@ def document_metadata_index_post_delete(sender, **kwargs):
     # TODO: save result in index log
     update_indexes(kwargs['instance'].document)
 
-try:
-    app = register_app('document_indexing', _(u'Document indexing'))
-except UnableToRegister:
-    pass
-else:
-    AppBackup(app, [ModelBackup()])
+#try:
+#    app = register_app('document_indexing', _(u'Document indexing'))
+#except UnableToRegister:
+#    pass
+#aelse:
+#    AppBackup(app, [ModelBackup()])

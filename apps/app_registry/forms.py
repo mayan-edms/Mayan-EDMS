@@ -2,11 +2,10 @@ from __future__ import absolute_import
 
 from django import forms
 
-from app_registry.models import App
 from common.widgets import ScrollableCheckboxSelectMultiple
 
-from .models import BackupJob
-from .api import AppBackup
+from .classes import AppBackup
+from .models import App, BackupJob
 
 
 def valid_app_choices():

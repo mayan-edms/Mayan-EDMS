@@ -5,8 +5,8 @@ import tempfile
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from backups.api import AppBackup, ModelBackup, FileBackup
-from app_registry import register_app, UnableToRegister
+#from backups.api import AppBackup, ModelBackup, FileBackup
+#from app_registry import register_app, UnableToRegister
 from common.utils import validate_path, encapsulate
 from diagnostics.api import DiagnosticNamespace
 from history.permissions import PERMISSION_HISTORY_VIEW
@@ -139,9 +139,9 @@ class_permissions(Document, [
 
 register_statistics(get_statistics)
 
-try:
-    app = register_app('documents', _(u'Documents'))
-except UnableToRegister:
-    pass
-else:
-    AppBackup(app, [ModelBackup(), FileBackup(document_settings.STORAGE_BACKEND)])
+#try:
+#    app = register_app('documents', _(u'Documents'))
+#except UnableToRegister:
+#    pass
+#else:
+#    AppBackup(app, [ModelBackup(), FileBackup(document_settings.STORAGE_BACKEND)])

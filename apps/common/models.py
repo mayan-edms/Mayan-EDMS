@@ -60,3 +60,46 @@ class AutoAdminSingleton(Singleton):
 
     class Meta:
         verbose_name = verbose_name_plural = _(u'auto admin properties')
+
+
+class TranslatableLabelMixin(models.Model):
+    _labels = {}
+    
+    @property
+    def label(self):
+        try:
+            return self.__class__._labels[self.pk]
+        except KeyError:
+            return unicode(self.__class__)
+
+    def __setattr__(self, attr, value):
+        if attr == 'label':
+            self.__class__._labels[self.pk] = value
+        else:
+            return super(TranslatableLabelMixin, self).__setattr__(attr, value)
+    
+    def __unicode__(self):
+        return unicode(self.label)
+
+    class Meta:
+        abstract = True
+
+
+class LiveObjectsManager(models.Manager):
+    def get_query_set(self):
+        return super(LiveObjectsManager, self).get_query_set().filter(pk__in=(entry.pk for entry in self.model._registry))
+
+
+class LiveObjectMixin(models.Model):
+    _registry = []
+   
+    def save(self, *args, **kwargs):
+        super(LiveObjectMixin, self).save(*args, **kwargs)
+        self.__class__._registry.append(self)
+        return self
+
+    live = LiveObjectsManager()
+    objects = models.Manager()
+    
+    class Meta:
+        abstract = True
