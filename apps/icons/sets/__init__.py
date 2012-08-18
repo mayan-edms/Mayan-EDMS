@@ -4,6 +4,19 @@ from django.utils.translation import ugettext_lazy as _
 
 from icons.sets import fat_cow, famfamfam
 
+
+SET_CHOICES = (
+    (fat_cow.ID, fat_cow.LABEL),
+    (famfamfam.ID, famfamfam.LABEL),
+)
+
+ICON_THEMES: {
+    fat_cow.ID: fat_cow.DICTIONARY,
+    famfamfam.ID: famfamfam.DICTIONARY
+}
+
+
+"""
 THEME_DEFAULT = 'default'
 
 SET_CHOICES = (
@@ -23,3 +36,4 @@ THEMES_CHOICES = {
 }
 
 DEFAULT_THEME = THEME_DEFAULT
+"""
