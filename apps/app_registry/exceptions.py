@@ -1,2 +1,0 @@
-class UnableToRegister(Exception):
-    pass

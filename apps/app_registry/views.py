@@ -8,6 +8,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
 
+from common.utils import encapsulate
+from icons.widgets import icon_widget
+from icons.literals import APP
 from permissions.models import Permission
 
 from .classes import AppBackup
@@ -23,9 +26,11 @@ def app_list(request):
         'object_list' : App.live.all(),
         'hide_object': True,
         'extra_columns': [
-            {'name': _(u'name'), 'attribute': 'name'},
-            {'name': _(u'label'), 'attribute': 'label'},
             {'name': _(u'icon'), 'attribute': 'icon'},
+            {'name':_(u'icon'), 'attribute': encapsulate(lambda x: icon_widget(x.icon or APP))},
+            {'name': _(u'label'), 'attribute': 'label'},
+            {'name':_(u'description'), 'attribute': 'description'},
+            {'name':_(u'dependencies'), 'attribute': encapsulate(lambda x: u', '.join([unicode(dependency) for dependency in x.dependencies.all()]))},
         ],
     }, context_instance=RequestContext(request))
 

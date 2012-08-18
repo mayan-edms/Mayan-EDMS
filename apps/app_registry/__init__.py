@@ -11,26 +11,13 @@ from project_tools.api import register_tool
 from project_setup.api import register_setup
 from navigation.api import bind_links, register_model_list_columns
 
-from .api import register_app
 from .classes import AppBackup, ModelBackup
 from .exceptions import UnableToRegister
 from .links import (app_registry_tool_link, app_list, backup_tool_link, 
     restore_tool_link, backup_job_list, backup_job_create, backup_job_edit,
     backup_job_test)
+from .literals import BACKUP_JOB_QUEUE_NAME
 from .models import App, BackupJob
-
-register_tool(app_registry_tool_link)
-bind_links(['app_list'], [app_list], menu_name='secondary_menu')
-
-try:
-    app = register_app('app_registry', label=_(u'App registry'), icon=APP)
-except UnableToRegister:
-    pass
-#else:
-#    AppBackup(app, [ModelBackup()])    
-
-# TODO: move to literals
-BACKUP_JOB_QUEUE_NAME = 'backups_queue'
 
 
 @transaction.commit_on_success
@@ -41,6 +28,9 @@ def create_backups_job_queue():
     except DatabaseError:
         transaction.rollback()
 
+
+register_tool(app_registry_tool_link)
+bind_links(['app_list'], [app_list], menu_name='secondary_menu')
 
 create_backups_job_queue()
 #backup_job_type = JobType('remote_backup', _(u'Remove backup'), do_backup)
@@ -56,3 +46,10 @@ register_model_list_columns(BackupJob, [
     {'name':_(u'storage module'), 'attribute': 'storage_module.label'},
     {'name':_(u'apps'), 'attribute': encapsulate(lambda x: u', '.join([unicode(app) for app in x.apps.all()]))},
 ])
+
+try:
+    app = App.register('app_registry', label=_(u'App registry'), icon=APP, description=_(u'Holds the app registry and backups functions.'))
+except App.UnableToRegister:
+    pass
+else:
+    app.set_backup([ModelBackup()])
