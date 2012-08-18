@@ -3,8 +3,7 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-#from app_registry import register_app, UnableToRegister
-#from backups.api import AppBackup, ModelBackup
+from app_registry.models import App
 from documents.models import Document
 from navigation.api import bind_links, register_top_menu
 from scheduler.api import LocalScheduler
@@ -42,9 +41,10 @@ checkouts_scheduler.start()
 
 initialize_document_checkout_extra_methods()
 
-#try:
-#    app = register_app('checkouts', _(u'Checkouts'))
-#except UnableToRegister:
-#    pass
-#else:
+try:
+    app = App.register('checkouts', _(u'Checkouts'))
+except App.UnableToRegister:
+    pass
+else:
+    app.set_dependencies(['app_registry'])
 #    AppBackup(app, [ModelBackup()])    
