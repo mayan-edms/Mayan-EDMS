@@ -63,24 +63,33 @@ class AutoAdminSingleton(Singleton):
 
 
 class TranslatableLabelMixin(models.Model):
-    _labels = {}
+    _translatable_registry = {}
     
-    @property
-    def label(self):
-        try:
-            return self.__class__._labels[self.pk]
-        except KeyError:
-            return unicode(self.__class__)
+    class NotConfigured(Exception):
+        pass
+    
+    def __getattr__(self, attr):
+        if attr in self.__class__.translatables:
+            try:
+                return self.__class__._translatable_registry[self.pk][attr]
+            except KeyError:
+                return u''
+        else:
+            raise AttributeError('\'%s\' object has no attribute \'%s\'' % (self.__class__, attr))
 
     def __setattr__(self, attr, value):
-        if attr == 'label':
-            self.__class__._labels[self.pk] = value
+        if not hasattr(self.__class__, 'translatables'):
+            raise self.__class__.NotConfigured('Must specify a list of translatable class attributes')
+            
+        if attr in self.__class__.translatables:
+            self.__class__._translatable_registry[self.pk][attr] = value
         else:
             return super(TranslatableLabelMixin, self).__setattr__(attr, value)
-    
-    def __unicode__(self):
-        return unicode(self.label)
 
+    def __init__(self, *args, **kwargs):
+        super(TranslatableLabelMixin, self).__init__(*args, **kwargs)
+        self.__class__._translatable_registry.setdefault(self.pk, {})
+        
     class Meta:
         abstract = True
 
