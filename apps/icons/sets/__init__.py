@@ -10,7 +10,7 @@ SET_CHOICES = (
     (famfamfam.ID, famfamfam.LABEL),
 )
 
-ICON_THEMES: {
+ICON_THEMES = {
     fat_cow.ID: fat_cow.DICTIONARY,
     famfamfam.ID: famfamfam.DICTIONARY
 }
