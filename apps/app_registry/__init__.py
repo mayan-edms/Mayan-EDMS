@@ -12,7 +12,6 @@ from project_setup.api import register_setup
 from navigation.api import bind_links, register_model_list_columns
 
 from .classes import AppBackup, ModelBackup
-from .exceptions import UnableToRegister
 from .links import (app_registry_tool_link, app_list, backup_tool_link, 
     restore_tool_link, backup_job_list, backup_job_create, backup_job_edit,
     backup_job_test)
