@@ -37,7 +37,7 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
             app, created = App.objects.get_or_create(name=name)
         except DatabaseError:
             transaction.rollback()
-            raise UnableToRegister
+            raise cls.UnableToRegister
         else:
             app.label = label
             if icon:
