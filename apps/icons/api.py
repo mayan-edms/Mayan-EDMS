@@ -1,16 +1,22 @@
 from __future__ import absolute_import
 
 from .conf import settings
-from .sets import THEME_ICONSETS, DEFAULT_THEME
+from .sets import ICON_THEMES
 from .literals import ERROR
 
 
 def get_icon_name(icon):
     try:
-        return THEME_ICONSETS[settings.ICON_SET][icon]
+        return ICON_THEMES[settings.ICON_SET][icon]
     except KeyError:
-        return THEME_ICONSETS[settings.ICON_SET][ERROR]
+        return ICON_THEMES[settings.ICON_SET][ERROR]
+    except AttributeError:
+        pass
 
-
-def get_sprite_name(icon):
-    return THEME_ICONSETS[DEFAULT_THEME]['sprites'][icon]
+def get_sprite_name(sprite):
+    try:
+        return ICON_THEMES[settings.ICON_SET][sprite]
+    except KeyError:
+        return ICON_THEMES[settings.ICON_SET][ERROR]
+    except AttributeError:
+        pass
