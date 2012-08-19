@@ -140,7 +140,7 @@ register_statistics(get_statistics)
 
 try:
     app = App.register('documents', _(u'Documents'))
-except UnableToRegister:
+except App.UnableToRegister:
     pass
 else:
     app.set_dependencies(['app_registry'])
