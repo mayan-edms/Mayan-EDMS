@@ -674,6 +674,7 @@ register('document', Document, _(u'document'), [
     {'name': u'document_type__name', 'title': _(u'Document type')},
     {'name': u'documentversion__mimetype', 'title': _(u'MIME type')},
     {'name': u'documentversion__filename', 'title': _(u'Filename')},
+    {'name': u'documentmetadata__metadata_type__name', 'title': _(u'Metadata type')},
     {'name': u'documentmetadata__value', 'title': _(u'Metadata value')},
     {'name': u'documentversion__documentpage__content', 'title': _(u'Content')},
     {'name': u'description', 'title': _(u'Description')},
