@@ -82,6 +82,7 @@ class TranslatableLabelMixin(models.Model):
             raise self.__class__.NotConfigured('Must specify a list of translatable class attributes')
             
         if attr in self.__class__.translatables:
+            self.__class__._translatable_registry.setdefault(self.pk, {})
             self.__class__._translatable_registry[self.pk][attr] = value
         else:
             return super(TranslatableLabelMixin, self).__setattr__(attr, value)
