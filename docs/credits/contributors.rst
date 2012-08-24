@@ -48,6 +48,7 @@ Suggestions
 * Barry Rowlingson (http://geospaced.blogspot.com)
 * Gour (https://github.com/gour)
 * Alexandru Kiss (usurel@gmail.com)
+* Stephen Knox
 
 
 Translations
