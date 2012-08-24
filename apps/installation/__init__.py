@@ -2,11 +2,14 @@ from __future__ import absolute_import
 
 from south.signals import post_migrate
 
-from project_tools.api import register_tool
-
 from django.dispatch import receiver
 from django.db.utils import DatabaseError
 from django.db import transaction
+from django.utils.translation import ugettext_lazy as _
+
+#from backups.api import AppBackup, ModelBackup
+#from app_registry import register_app, UnableToRegister
+from project_tools.api import register_tool
 
 from .links import installation_details
 from .models import Installation
@@ -35,3 +38,10 @@ def check_first_run():
 register_tool(installation_details)
 
 check_first_run()
+
+#try:
+#    app = register_app('installation', _(u'Installation'))
+#except UnableToRegister:
+#    pass
+#else:
+#    AppBackup(app, [ModelBackup()])

@@ -11,6 +11,7 @@ class IndexForm(forms.ModelForm):
     """
     class Meta:
         model = Index
+        exclude = ('document_types',)
 
 
 class IndexTemplateNodeForm(forms.ModelForm):

@@ -1,6 +1,6 @@
 # Base
 
-Django==1.4
+Django==1.4.1
 django-pagination==1.0.7
 
 # Tags

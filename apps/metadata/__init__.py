@@ -2,24 +2,26 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import (bind_links, register_sidebar_template,
-    register_model_list_columns, register_multi_item_links)
+from acls.api import class_permissions
+#from backups.api import AppBackup, ModelBackup
+#from app_registry import register_app, UnableToRegister
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
+from navigation.api import (bind_links, register_sidebar_template,
+    register_model_list_columns, register_multi_item_links)
 from project_setup.api import register_setup
-from acls.api import class_permissions
 
 from .api import get_metadata_string
-from .models import MetadataType, MetadataSet
-from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
-    PERMISSION_METADATA_DOCUMENT_VIEW)
 from .links import (metadata_edit, metadata_view, metadata_add, metadata_remove,
     setup_metadata_type_list, setup_metadata_type_edit, setup_metadata_type_delete,
     setup_metadata_type_create, setup_metadata_set_list, setup_metadata_set_edit,
     setup_metadata_set_delete, setup_metadata_set_create, setup_metadata_set_members,
     setup_document_type_metadata, metadata_multiple_add, metadata_multiple_edit,
     metadata_multiple_remove)
+from .models import MetadataType, MetadataSet
+from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
+    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
+    PERMISSION_METADATA_DOCUMENT_VIEW)
 
 bind_links(['metadata_add', 'metadata_edit', 'metadata_remove', 'metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
 bind_links([Document], [metadata_view], menu_name='form_header')
@@ -55,3 +57,11 @@ register_model_list_columns(Document, [
             encapsulate(lambda x: get_metadata_string(x))
         },
     ])
+
+
+#try:
+#    app = register_app('metadata', _(u'Metadata'))
+#except UnableToRegister:
+#    pass
+#else:
+#a    AppBackup(app, [ModelBackup()])

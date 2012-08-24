@@ -2,11 +2,11 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
+from acls.api import class_permissions
+from app_registry.models import App
+from documents.models import Document
 from navigation.api import bind_links, register_top_menu
 from scheduler.api import LocalScheduler
-
-from documents.models import Document
-from acls.api import class_permissions
 
 from .permissions import (PERMISSION_DOCUMENT_CHECKOUT,
     PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
@@ -40,3 +40,11 @@ checkouts_scheduler.add_interval_job('task_check_expired_check_outs', _(u'Check 
 checkouts_scheduler.start()
 
 initialize_document_checkout_extra_methods()
+
+try:
+    app = App.register('checkouts', _(u'Checkouts'))
+except App.UnableToRegister:
+    pass
+else:
+    app.set_dependencies(['app_registry'])
+#    AppBackup(app, [ModelBackup()])    

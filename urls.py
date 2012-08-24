@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     (r'^statistics/', include('statistics.urls')),
     (r'^clustering/', include('clustering.urls')),
     (r'^trash/', include('trash.urls')),
+    (r'^apps/', include('app_registry.urls')),#, namespace='user_blogs')),
 )
 
 

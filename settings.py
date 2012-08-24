@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'compressor',
     'djangorestframework',
     # Base generic
+    'app_registry',
     'permissions',
     'project_setup',
     'project_tools',
@@ -166,6 +167,7 @@ INSTALLED_APPS = (
     'clustering',
     'scheduler',
     'job_processor',
+    'icons',
     # Mayan EDMS
     'diagnostics',
     'maintenance',

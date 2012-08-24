@@ -61,7 +61,7 @@ def get_statistics():
     paragraphs.extend(
         [
             _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
-            _(u'Minimum amount of pages per document: %d') % (document_stats['page_count__max'] or 0),
+            _(u'Minimum amount of pages per document: %d') % (document_stats['page_count__min'] or 0),
             _(u'Maximum amount of pages per document: %d') % (document_stats['page_count__max'] or 0),
             _(u'Average amount of pages per document: %f') % (document_stats['page_count__avg'] or 0),
         ]

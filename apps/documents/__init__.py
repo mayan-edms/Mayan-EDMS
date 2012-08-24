@@ -4,15 +4,16 @@ import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 
+from acls.api import class_permissions
+from app_registry.models import App
 from common.utils import validate_path, encapsulate
+from diagnostics.api import DiagnosticNamespace
+from history.permissions import PERMISSION_HISTORY_VIEW
+from maintenance.api import MaintenanceNamespace
 from navigation.api import (bind_links, register_top_menu,
     register_model_list_columns,
     register_sidebar_template, Link, register_multi_item_links)
-from diagnostics.api import DiagnosticNamespace
-from maintenance.api import MaintenanceNamespace
-from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
-from acls.api import class_permissions
 from statistics.api import register_statistics
 
 from .models import (Document, DocumentPage,
@@ -136,3 +137,11 @@ class_permissions(Document, [
 ])
 
 register_statistics(get_statistics)
+
+try:
+    app = App.register('documents', _(u'Documents'))
+except App.UnableToRegister:
+    pass
+else:
+    app.set_dependencies(['app_registry'])
+    #AppBackup(app, [ModelBackup(), FileBackup(document_settings.STORAGE_BACKEND)])
