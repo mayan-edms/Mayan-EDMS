@@ -7,7 +7,7 @@ from project_tools.api import register_tool
 
 from .utils import load_backend
 from .links import formats_list
-from .conf.settings import GRAPHICS_BACKEND
+from .settings import GRAPHICS_BACKEND
 
 register_sidebar_template(['formats_list'], 'converter_file_formats_help.html')
 

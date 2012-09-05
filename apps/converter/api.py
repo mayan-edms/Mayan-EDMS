@@ -6,7 +6,7 @@ import logging
 
 from django.utils.encoding import smart_str
 
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common.settings import TEMPORARY_DIRECTORY
 from common.textparser import TextParser, TEXT_PARSER_MIMETYPES
 from mimetype.api import get_mimetype
 
