@@ -1,10 +1,8 @@
-import os
-
 from django.utils.translation import ugettext_lazy as _
 
 from icons.literals import *
 
-PATH = os.path.join('fat_cow')
+PATH = 'fat_cow'
 ID = 'fat_cow'
 LABEL = _(u'Fat cow')
 
@@ -20,5 +18,6 @@ DICTIONARY = {
     MEDAL_GOLD: 'medal_gold_1.png',
     MEDAL_GOLD_ADD: 'medal_gold_add.png',
     MEDAL_GOLD_DELETE: 'medal_gold_delete.png',  
+    PICTURES: 'pictures.png',
     PLUGIN: 'plugin.png',
 }

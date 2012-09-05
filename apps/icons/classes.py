@@ -22,14 +22,14 @@ class Icon(object):
         # TODO: Move name + size resolution to sets to support size/name and
         # name_size filename conventions
         try:
-            return '%s/%s/%s' % (ICON_THEMES[ICON_SET].path, size, ICON_THEMES[ICON_SET].dictionary[self.literal])
+            return '%s/%s/%s' % (ICON_THEMES[ICON_SET].PATH, size, ICON_THEMES[ICON_SET].DICTIONARY[self.literal])
         except KeyError:
-            return '%s/%s/%s' % (ICON_THEMES[ICON_SET].path, size, ICON_THEMES[ICON_SET].dictionary[ERROR])
+            return '%s/%s/%s' % (ICON_THEMES[ICON_SET].PATH, size, ICON_THEMES[ICON_SET].DICTIONARY[ERROR])
         except AttributeError:
             pass
 
     def display(self, size): # TODO: move to widgets?
-        return mark_safe(u'<img src="%sicons/%s" />' % (settings.STATIC_URL, self.get_file_name(self.literal)))
+        return mark_safe(u'<img src="%s/icons/%s" />' % (settings.STATIC_URL, self.get_file_name(size)))
 
     def display_small(self):
         return self.display(SIZE_SMALL)
