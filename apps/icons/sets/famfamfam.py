@@ -6,6 +6,6 @@ ID = 'famfamfam'
 LABEL = _(u'FamFamFam')
 
 DICTIONARY = {
-    APP: 'plugin',
-    BACKUPS: 'cd_burn',
+    PLUGIN: 'plugin',
+    CD_BURN: 'cd_burn',
 }

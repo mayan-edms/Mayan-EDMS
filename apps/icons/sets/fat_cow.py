@@ -4,13 +4,21 @@ from django.utils.translation import ugettext_lazy as _
 
 from icons.literals import *
 
-PATH = os.path.join('Fat Cow', '32x32')
+PATH = os.path.join('fat_cow')
 ID = 'fat_cow'
 LABEL = _(u'Fat cow')
 
 DICTIONARY = {
-    APP: 'plugin.png',
-    BACKUPS: 'cd_burn.png',
+    APPLICATION_VIEW_ICONS: 'application_view_icons.png',
+    CD_BURN: 'cd_burn.png',
+    COG: 'cog.png',
     ERROR: 'error.png',
-    ICONS: 'application_view_icons.png',
+    GROUP: 'group.png',
+    GROUP_ADD: 'group_add.png',
+    GROUP_EDIT: 'group_edit.png',
+    GROUP_DELETE: 'group_delete.png',
+    MEDAL_GOLD: 'medal_gold_1.png',
+    MEDAL_GOLD_ADD: 'medal_gold_add.png',
+    MEDAL_GOLD_DELETE: 'medal_gold_delete.png',  
+    PLUGIN: 'plugin.png',
 }

@@ -11,8 +11,8 @@ SET_CHOICES = (
 )
 
 ICON_THEMES = {
-    fat_cow.ID: fat_cow.DICTIONARY,
-    famfamfam.ID: famfamfam.DICTIONARY
+    fat_cow.ID: fat_cow,
+    famfamfam.ID: famfamfam,
 }
 
 
