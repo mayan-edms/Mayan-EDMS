@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 from itertools import chain
 
@@ -7,6 +9,8 @@ from django import forms
 from django.forms.util import flatatt
 from django.utils.html import conditional_escape
 from django.utils.encoding import force_unicode
+
+from .icons import icon_cross, icon_tick
 
 
 class PlainWidget(forms.widgets.Widget):
@@ -66,11 +70,11 @@ def exists_with_famfam(path):
         return exc
 
 
-def two_state_template(state, famfam_ok_icon=u'tick', famfam_fail_icon=u'cross'):
+def two_state_template(state, ok_icon=icon_tick, fail_icon=icon_cross):
     if state:
-        return mark_safe(u'<span class="famfam active famfam-%s"></span>' % famfam_ok_icon)
+        return ok_icon
     else:
-        return mark_safe(u'<span class="famfam active famfam-%s"></span>' % famfam_fail_icon)
+        return fail_icon
 
 
 class TextAreaDiv(forms.widgets.Widget):
