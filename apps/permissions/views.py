@@ -26,6 +26,7 @@ from .forms import RoleForm, RoleForm_view
 from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
     PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)
+from .icons import icon_permission_grant
 
 
 def role_list(request):
@@ -60,7 +61,7 @@ def role_permissions(request, role_id):
                     {'name': _(u'name'), 'attribute': encapsulate(lambda x: x.label)},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role))),
+                        'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role)).display_small()),
                     },
                 ],
                 'hide_link': True,
@@ -166,7 +167,7 @@ def permission_grant(request):
     context = {
         'previous': previous,
         'next': next,
-        'form_icon': u'key_add.png',
+        'form_icon': icon_permission_grant,
     }
 
     context['title'] = _(u'Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?') % {
