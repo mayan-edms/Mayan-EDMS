@@ -1,9 +1,7 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
+from navigation.api import register_top_menu
 
-from navigation.api import register_top_menu, Link
+from .links import link_setup
 
-from .icons import icon_setup
-
-setup_menu = register_top_menu('setup_menu', link=Link(text=_(u'setup'), view='setup_list', icon=icon_setup), position=-2)
+setup_menu = register_top_menu('setup_menu', link_setup, position=-2)
