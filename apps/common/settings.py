@@ -1,70 +1,65 @@
-"""Configuration options for the common app"""
+"""
+Configuration options for the common app
+"""
+from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
-from smart_settings.api import Setting, SettingNamespace
+from smart_settings import SettingsNamespace, LocalScope
 
-from common.literals import PAGE_SIZE_LETTER, PAGE_ORIENTATION_PORTRAIT
+from .literals import DEFAULT_PAGE_SIZE, DEFAULT_PAGE_ORIENTATION
 
-namespace = SettingNamespace('common', _(u'Common'), module=u'common.conf.settings')
+namespace = SettingsNamespace(name='common', label=_(u'common'), module='common.settings')
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name='TEMPORARY_DIRECTORY',
-    global_name='COMMON_TEMPORARY_DIRECTORY',
     default=u'/tmp',
     description=_(u'Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp().'),
-    exists=True
+    exists=True,
+    scopes=[LocalScope()]
 )
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name=u'DEFAULT_PAPER_SIZE',
-    global_name=u'COMMON_DEFAULT_PAPER_SIZE',
-    default=PAGE_SIZE_LETTER,
+    default=DEFAULT_PAGE_SIZE,
+    scopes=[LocalScope()]
 )
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name=u'DEFAULT_PAGE_ORIENTATION',
-    global_name=u'COMMON_DEFAULT_PAGE_ORIENTATION',
-    default=PAGE_ORIENTATION_PORTRAIT,
+    default=DEFAULT_PAGE_ORIENTATION,
+    scopes=[LocalScope()]
 )
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name=u'AUTO_CREATE_ADMIN',
-    global_name=u'COMMON_AUTO_CREATE_ADMIN',
     default=True,
+    scopes=[LocalScope()]
 )
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name=u'AUTO_ADMIN_USERNAME',
-    global_name=u'COMMON_AUTO_ADMIN_USERNAME',
     default=u'admin',
+    scopes=[LocalScope()]
 )
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name=u'AUTO_ADMIN_PASSWORD',
-    global_name=u'COMMON_AUTO_ADMIN_PASSWORD',
     default=User.objects.make_random_password(),
+    scopes=[LocalScope()]
 )
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name=u'LOGIN_METHOD',
-    global_name=u'COMMON_LOGIN_METHOD',
     default=u'username',
     description=_(u'Controls the mechanism used to authenticated user.  Options are: username, email'),
+    scopes=[LocalScope()]
 )
 
-Setting(
-    namespace=namespace,
+namespace.add_setting(
     name=u'ALLOW_ANONYMOUS_ACCESS',
-    global_name=u'COMMON_ALLOW_ANONYMOUS_ACCESS',
     default=False,
     description=_(u'Allow non authenticated users, access to all views'),
+    scopes=[LocalScope()]
 )

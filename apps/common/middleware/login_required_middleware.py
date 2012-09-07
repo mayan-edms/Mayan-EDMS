@@ -5,7 +5,8 @@ import re
 from django.http import HttpResponseRedirect
 from django.conf import settings
 
-from ..conf.settings import ALLOW_ANONYMOUS_ACCESS
+#from ..conf.settings import ALLOW_ANONYMOUS_ACCESS
+from .. import ALLOW_ANONYMOUS_ACCESS
 
 EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
 if hasattr(settings, 'LOGIN_EXEMPT_URLS'):

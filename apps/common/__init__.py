@@ -10,28 +10,27 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.conf import settings
 from django.db.models.signals import post_save
+from django.contrib.auth.models import User
 
 from navigation.api import bind_links, register_top_menu, Link
 from project_setup.api import register_setup
-from project_tools.api import register_tool
+#from project_tools.api import register_tool
 
-from .conf.settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
+from .settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
-from .conf import settings as common_settings
 from .utils import validate_path
-from .links import (password_change_view, current_user_details,
-    current_user_edit, about_view, license_view, admin_site, sentry)
+from .links import (link_password_change, link_current_user_details,
+    link_current_user_edit, link_about, link_license, link_admin_site)
 from .models import AutoAdminSingleton
 from .debug import insert_pdb_exception_hook
-
+from .literals import PAGE_SIZE_LETTER, PAGE_ORIENTATION_PORTRAIT
 if getattr(settings, 'DEBUG_ON_EXCEPTION', False):
     insert_pdb_exception_hook()
 
-bind_links(['about_view', 'license_view'], [about_view, license_view], menu_name='secondary_menu')
-bind_links(['current_user_details', 'current_user_edit', 'password_change_view'], [current_user_details, current_user_edit, password_change_view], menu_name='secondary_menu')
+bind_links(['about_view', 'license_view'], [link_about, link_license], menu_name='secondary_menu')
+bind_links(['current_user_details', 'current_user_edit', 'password_change_view'], [link_current_user_details, link_current_user_edit, link_password_change], menu_name='secondary_menu')
 
-register_top_menu('about', link=Link(text=_(u'about'), view='about_view', sprite='information'), position=-1)
-
+register_top_menu('about', link=link_about, position=-1)
 
 @receiver(post_migrate, dispatch_uid='create_superuser')
 def create_superuser(sender, **kwargs):
@@ -63,7 +62,7 @@ def create_superuser(sender, **kwargs):
             auto_admin_properties.save()
         else:
             print 'Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME
-
+    
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
 def auto_admin_account_passwd_change(sender, instance, **kwargs):
@@ -72,12 +71,11 @@ def auto_admin_account_passwd_change(sender, instance, **kwargs):
         # Only delete the auto admin properties when the password has been changed
         auto_admin_properties.delete(force=True)
 
+# TODO: Fix
+#if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
+#    setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())
 
-if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
-    setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())
+#if 'django.contrib.admin' in settings.INSTALLED_APPS:
+#    register_setup(admin_site)
 
-if 'django.contrib.admin' in settings.INSTALLED_APPS:
-    register_setup(admin_site)
-
-if 'sentry' in settings.INSTALLED_APPS:
-    register_tool(sentry)
+#app.set_backup([ModelBackup()])
