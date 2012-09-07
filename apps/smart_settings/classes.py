@@ -2,15 +2,21 @@ from __future__ import absolute_import
 
 from django.conf import settings
 from django.utils.importlib import import_module
+from django.utils.translation import ugettext_lazy as _
 
 
 # Namespace
 class SettingsNamespace(object):
     _registry = {}
+    _settings = {}
 
     @classmethod
     def get_all(cls):
         return cls._registry.values()
+    
+    @classmethod
+    def get(cls, name):
+        return cls._registry.get(name)
 
     def __init__(self, name, label, module):
         self.name = name
@@ -21,15 +27,19 @@ class SettingsNamespace(object):
 
     def __unicode__(self):
         return unicode(self.label)
-
-    def settings(self):
-        #return [setting for setting in settings_list if setting.namespace == self]
-        return (setting for setting in Setting.get_all() if setting.namespace == self)
+        
+    def register(self, setting):
+        self.__class__._settings.setdefault(self.name, {})
+        self.__class__._settings[self.name][setting.name] = setting
 
     def add_setting(self, *args, **kwargs):
         return Setting(namespace=self, *args, **kwargs)
 
-# Realms
+    def get_settings(self):
+        return self.__class__._settings[self.name].values()
+
+
+# Scopes
 class SettingScope(object):
     def get_value(self):
         raise NotImplemented
@@ -39,8 +49,16 @@ class LocalScope(SettingScope):
     """
     Return the value of a config value from the local settings.py file
     """
+    label = _(u'Local')
+
     def __init__(self, global_name=None):
         self.global_name = global_name
+    
+    def __unicode__(self):
+        return u'%s: %s' % (self.__class__.label, self.global_name)
+        
+    def __repr__(self):
+        return unicode(self.__unicode__())
 
     def get_value(self):
         if not self.global_name:
@@ -55,12 +73,6 @@ class LocalScope(SettingScope):
 
 # Settings
 class Setting(object):
-    _registry = {}
-
-    @classmethod
-    def get_all(cls):
-        return cls._registry.values()
-
     def register_scope(self, scope):
         """
         Store this setting's instance into the scope instance and append
@@ -73,7 +85,7 @@ class Setting(object):
         self.namespace = namespace
         self.name = name
         self.default = default
-        self.description = description or u''
+        self.description = description
         self.hidden = hidden
         self.exists = exists
         self.scopes = []
@@ -105,11 +117,8 @@ class Setting(object):
             self.module = import_module(namespace.module)
             setattr(self.module, name, self.get_value())
 
-        self.__class__._registry.setdefault(self.namespace.name, {})
-        self.__class__._registry[self.namespace.name][self.name] = self
-        #settings_list.append(self)
-        #settings.setdefault(self.namespace.name, [])
-        #settings[self.namespace.name].append(self)
+        # Register with the namespace
+        self.namespace.register(self)
 
     def get_value(self):
         value = self.default
@@ -120,3 +129,6 @@ class Setting(object):
                 pass
 
         return value
+
+    def get_scopes_display(self):
+        return u', '.join([unicode(scope) for scope in self.scopes])
