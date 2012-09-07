@@ -9,14 +9,13 @@ from django.template import RequestContext
 from django.utils.translation import ugettext as _
 
 from common.utils import encapsulate
-from icons.widgets import icon_widget
-from icons.literals import APP
 from permissions.models import Permission
 
-from .classes import AppBackup
-from .forms import BackupJobForm
-from .models import App, BackupJob
+#from .classes import AppBackup
+#from .forms import BackupJobForm
+from .models import App#, BackupJob
 from .permissions import PERMISSION_BACKUP_JOB_VIEW, PERMISSION_BACKUP_JOB_CREATE, PERMISSION_BACKUP_JOB_EDIT
+from .icons import icon_app
 
 
 def app_list(request):
@@ -25,16 +24,16 @@ def app_list(request):
     return render_to_response('generic_list.html', {
         'object_list' : App.live.all(),
         'hide_object': True,
+        'title': _(u'registered apps'),
         'extra_columns': [
-            {'name': _(u'icon'), 'attribute': 'icon'},
-            {'name':_(u'icon'), 'attribute': encapsulate(lambda x: icon_widget(x.icon or APP))},
             {'name': _(u'label'), 'attribute': 'label'},
+            {'name':_(u'icon'), 'attribute': encapsulate(lambda x: getattr(x, 'icon', icon_app).display_big())},
             {'name':_(u'description'), 'attribute': 'description'},
             {'name':_(u'dependencies'), 'attribute': encapsulate(lambda x: u', '.join([unicode(dependency) for dependency in x.dependencies.all()]))},
         ],
     }, context_instance=RequestContext(request))
 
-
+"""
 def backup_job_list(request):
     pre_object_list = BackupJob.objects.all()
 
@@ -142,3 +141,4 @@ def backup_view(request):
     }
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
+"""
