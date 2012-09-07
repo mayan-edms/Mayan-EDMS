@@ -2,7 +2,7 @@ import re
 
 from django.template import Node
 from django.template import TemplateSyntaxError, Library
-from main.conf import settings
+#from main.conf import settings
 
 register = Library()
 
@@ -13,7 +13,7 @@ class SettingsNode(Node):
         self.var_name = var_name
 
     def render(self, context):
-        context[self.var_name] = getattr(settings, self.format_string, '')
+        context[self.var_name] = ''#getattr(settings, self.format_string, '')
         return ''
 
 

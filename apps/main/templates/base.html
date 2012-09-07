@@ -3,7 +3,6 @@
 {% load project_tags %}
 {% load navigation_tags %}
 {% load settings %}
-{% load search_tags %}
 {% load main_settings_tags %}
 {% load variable_tags %}
 
@@ -24,7 +23,7 @@
 
 {% block html_title %}{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}{% endblock %}
 
-{% get_main_setting "SIDE_BAR_SEARCH" as debug %}
+{#{% get_main_setting "SIDE_BAR_SEARCH" as debug %}#}
 {% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %} {% endif %}{% endblock %}
 
 {% block web_theme_stylesheets %}
@@ -264,6 +263,7 @@
 {% endblock %}
 
 {% block web_theme_sidebar %}
+{% comment %}
     {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
     {% if side_bar_search and not web_theme_hide_menus %}
         {% with "true" as side_bar %}
@@ -276,7 +276,7 @@
         {% endwith %}
         {% endwith %}
     {% endif %}
-    
+{% endcomment %}
     {% get_object_navigation_links "secondary_menu" as secondary_menu_navigation_links %}
     {% if secondary_menu_navigation_links %}
         <div class="block">
