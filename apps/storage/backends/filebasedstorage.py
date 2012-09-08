@@ -2,12 +2,13 @@ import os
 
 from django.core.files.storage import FileSystemStorage
 
-from storage.conf.settings import FILESTORAGE_LOCATION
+from storage import FILESTORAGE_LOCATION
 
 
 class FileBasedStorage(FileSystemStorage):
-    '''Simple wrapper for the stock Django FileSystemStorage class
-    '''
+    """
+    Simple wrapper for the stock Django FileSystemStorage class
+    """
     separator = os.path.sep
 
     def __init__(self, *args, **kwargs):

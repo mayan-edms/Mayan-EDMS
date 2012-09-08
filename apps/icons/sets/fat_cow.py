@@ -37,6 +37,7 @@ DICTIONARY = {
     PLUGIN: 'plugin.png',
     RAINBOW: 'rainbow.png',
     SCRIPT: 'script.png',
+    STORAGE: 'storage.png',
     TABLE: 'table.png',
     TICK: 'tick.png',
     USER: 'user.png',
