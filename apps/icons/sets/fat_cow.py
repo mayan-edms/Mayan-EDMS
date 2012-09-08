@@ -9,6 +9,8 @@ LABEL = _(u'Fat cow')
 DICTIONARY = {
     APPLICATION_VIEW_ICONS: 'application_view_icons.png',
     BLACKBOARD_SUM: 'blackboard_sum.png',
+    BOOK: 'book.png',
+    BOOK_OPEN: 'book_open.png',
     CD_BURN: 'cd_burn.png',
     COG: 'cog.png',
     COMPUTER_KEY: 'computer_key.png',

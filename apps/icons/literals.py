@@ -6,6 +6,8 @@ DEFAULT_ICON_SET = 'fat_cow'
    
 APPLICATION_VIEW_ICONS = 'application_view_icons'
 BLACKBOARD_SUM = 'blackboard_sum'
+BOOK = 'book'
+BOOK_OPEN = 'book_open'
 CD_BURN = 'cd_burn'
 COG = 'cog'
 COMPUTER_KEY = 'computer_key'
