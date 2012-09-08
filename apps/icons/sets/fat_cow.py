@@ -16,6 +16,7 @@ DICTIONARY = {
     COMPUTER_KEY: 'computer_key.png',
     CROSS: 'cross.png',
     DRAW_AIRBRUSH: 'draw_airbrush.png',
+    DOCUMENT_SIGNATURE: 'document_signature.png',
     ERROR: 'error.png',
     GROUP: 'group.png',
     GROUP_ADD: 'group_add.png',
@@ -36,6 +37,7 @@ DICTIONARY = {
     PILL: 'pill.png',
     PLUGIN: 'plugin.png',
     RAINBOW: 'rainbow.png',
+    ROUTING_TURNAROUND_RIGHT: 'routing_turnaround_right.png',
     SCRIPT: 'script.png',
     STORAGE: 'storage.png',
     TABLE: 'table.png',
@@ -47,4 +49,5 @@ DICTIONARY = {
     VCARD: 'vcard.png',
     VCARD_EDIT: 'vcard_edit.png',  
     WRENCH: 'wrench.png',
+    ZOOM: 'zoom.png',
 }

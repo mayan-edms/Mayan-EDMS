@@ -160,7 +160,7 @@ INSTALLED_APPS = (
     'common',
     # pagination needs to go after web_theme so that the pagination template is found
     'pagination',
-    #'django_gpg',
+    'django_gpg',
     'converter',
     #'trash',
     'user_management',
