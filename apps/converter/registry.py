@@ -14,7 +14,6 @@ icon = icon_format_list
 dependencies = ['app_registry']
 tool_links = [formats_list]
 
-
 settings = [
     {
         'name': 'IM_CONVERT_PATH',

@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 from navigation.api import bind_links, register_multi_item_links
-from project_setup.api import register_setup
 
 from .classes import (AccessHolder, AccessObjectClass, ClassAccessHolder,
     AccessObject)
@@ -17,4 +16,3 @@ bind_links(['acl_setup_valid_classes', 'acl_class_acl_list', 'acl_class_new_hold
 bind_links([ClassAccessHolder], [acl_class_acl_detail])
 bind_links([AccessObjectClass], [acl_class_acl_list, acl_class_new_holder_for])
 register_multi_item_links(['acl_class_acl_detail'], [acl_class_grant, acl_class_revoke])
-register_setup(acl_setup_valid_classes)
