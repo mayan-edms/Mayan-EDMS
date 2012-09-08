@@ -2,17 +2,12 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-#from app_registry.models import App
-#from app_registry.classes import ModelBackup
 from common.utils import encapsulate
 from navigation.api import bind_links, register_model_list_columns
-from project_tools.api import register_tool
 
 from .models import History
 from .widgets import history_entry_type_link
-from .links import history_list, history_details
-
-register_tool(history_list)
+from .links import history_details
 
 register_model_list_columns(History, [
     {
@@ -30,11 +25,3 @@ register_model_list_columns(History, [
 ])
 
 bind_links([History], [history_details])
-
-#try:
-#    app = App.register('history', _(u'History'))
-#except App.UnableToRegister:
-#    pass
-#else:
-#    app.set_backup([ModelBackup()])
-#    app.set_dependencies(['app_registry'])
