@@ -24,7 +24,7 @@ def app_list(request):
         'title': _(u'registered apps'),
         'extra_columns': [
             {'name': _(u'label'), 'attribute': 'label'},
-            {'name':_(u'icon'), 'attribute': encapsulate(lambda x: getattr(x, 'icon', icon_app).display_big())},
+            {'name':_(u'icon'), 'attribute': encapsulate(lambda x: (getattr(x, 'icon') or icon_app).display_big())},
             {'name':_(u'description'), 'attribute': 'description'},
             {'name':_(u'dependencies'), 'attribute': encapsulate(lambda x: u', '.join([unicode(dependency) for dependency in x.dependencies.all()]))},
         ],
