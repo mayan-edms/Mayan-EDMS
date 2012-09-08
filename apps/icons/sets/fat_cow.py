@@ -30,6 +30,7 @@ DICTIONARY = {
     KEY_DELETE: 'key_delete.png',
     KEYBOARD: 'keyboard.png',
     LIGHTNING: 'lightning.png',
+    LOCK: 'lock.png',
     MEDAL_GOLD: 'medal_gold_1.png',
     MEDAL_GOLD_ADD: 'medal_gold_add.png',
     MEDAL_GOLD_DELETE: 'medal_gold_delete.png',  
