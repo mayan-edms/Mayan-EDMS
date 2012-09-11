@@ -96,19 +96,6 @@ class Setting(object):
         #else:
         #    self.scopes = []  #Local('GLOBAL_%s' % self.app.name)]
 
-        # Get the global value
-        #value = getattr(django_settings, global_name, default)
-        # Create the local entity
-        #try:
-        #    #self.module = namespace.module
-        #    setattr('%s.settings' % self.app.name, self.name, value)
-        #except AttributeError:
-        #module = import_module(self.app.name)
-        #print module
-        #setattr(module, 'conf.settings.%s'  % self.name, value)
-        #setattr(module, 'conf.%s'  % self.name, value)
-        #setattr(module, self.name, value)
-
         # Create the local entity
         try:
             self.module = namespace.module
