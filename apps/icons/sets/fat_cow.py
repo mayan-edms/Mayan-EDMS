@@ -56,6 +56,8 @@ DICTIONARY = {
     STORAGE: 'storage.png',
     TABLE: 'table.png',
     TABLE_RELATIONSHIP: 'table_relationship.png',
+    TEXT_DROPCAPS: 'text_dropcaps.png',
+    TEXT_STRIKETHROUGH: 'text_strikethrough.png',
     TICK: 'tick.png',
     USER: 'user.png',
     USER_ADD:'user_add.png',
