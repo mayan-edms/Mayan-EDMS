@@ -12,7 +12,6 @@ class NodeForm(forms.Form):
         super(WorkflowStateSetupForm, self).__init__(*args, **kwargs)
         #self.fields['workflow'].initial = workflow
         #self.fields['workflow'].widget = forms.widgets.HiddenInput()
-        print self.instance
 
     #def choices(self, workflow):
     #    return {
