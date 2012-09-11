@@ -4,7 +4,6 @@ import logging
 import atexit
 import sys
 
-from project_tools.api import register_tool
 from navigation.api import bind_links
 
 from .links import scheduler_tool_link, scheduler_list, job_list
@@ -28,7 +27,6 @@ if any([command in sys.argv for command in SHUTDOWN_COMMANDS]):
     # Prevent any new scheduler afterwards to start
     LocalScheduler.lockdown()
 
-register_tool(scheduler_tool_link)
 atexit.register(schedule_shutdown_on_exit)
 bind_links([LocalScheduler, 'scheduler_list', 'job_list'], scheduler_list, menu_name='secondary_menu')
 bind_links([LocalScheduler], job_list)
