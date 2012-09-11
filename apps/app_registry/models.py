@@ -17,6 +17,7 @@ from common.models import TranslatableLabelMixin, LiveObjectMixin
 from smart_settings import SettingsNamespace
 from project_setup.api import register_setup
 from project_tools.api import register_tool
+from statistics.api import register_statistics
 
 #from .classes import AppBackup, StorageModuleBase, Setting
 
@@ -38,57 +39,59 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
     @classmethod
     @transaction.commit_on_success
     def register(cls, app_name):
+        logger.debug('Trying to import: %s' % app_name)
         try:
             app_module = import_module(app_name)
         except ImportError:
             transaction.rollback
+            logger.debug('import failed')
         else:
+            logger.debug('Trying to import app\'s registry')
             try:
                 registration = import_module('%s.registry' % app_name)
-            except ImportError:
+            except ImportError as exception:
                 transaction.rollback
+                logger.debug('import failed; %s' % exception)
             else:
-                disabled = getattr(registration, 'disabled', False)
-                name = getattr(registration, 'name')
-                label = getattr(registration, 'label')
-                icon = getattr(registration, 'icon', None)
-                description = getattr(registration, 'description', None)
-                dependencies = getattr(registration, 'dependencies', [])
-                settings = getattr(registration, 'settings', None)
-                setup_links = getattr(registration, 'setup_links', [])
-                tool_links = getattr(registration, 'tool_links', [])
-
-                if not disabled:
+                if not getattr(registration, 'disabled', False):
                     try:
-                        app, created = App.objects.get_or_create(name=name)
+                        app, created = App.objects.get_or_create(name=app_name)
                     except DatabaseError:
                         transaction.rollback()
                         raise cls.UnableToRegister
                     else:
-                        app.label = label
-                        if description:
-                            app.description = description
+                        app.label = getattr(registration, 'label', app_name)
+                        app.description = getattr(registration, 'description', u'')
                         app.dependencies.clear()
                         app.save()
-                        app.icon = icon
+                        app.icon = getattr(registration, 'icon', None)
 
-                        for app_name in dependencies:
-                            dependency = App.objects.get(name=app_name)
+                        for dependency_name in getattr(registration, 'dependencies', []):
+                            dependency = App.objects.get(name=dependency_name)
                             app.dependencies.add(dependency)
 
+                        settings = getattr(registration, 'settings', None)
+
                         if settings:
+                            logger.debug('settings: %s' % settings)
                             settings_module = imp.new_module('settings')
                             setattr(app_module, 'settings', settings_module)
-                            sys.modules['%s.settings' % name] = settings_module 
-                            settings_namespace = SettingsNamespace(name, label, '%s.settings' % name)
+                            sys.modules['%s.settings' % app_name] = settings_module 
+                            settings_namespace = SettingsNamespace(app_name, app.label, '%s.settings' % app_name)
                             for setting in settings:
                                 settings_namespace.add_setting(**setting)
-                        
-                        for link in setup_links:
+                              
+                        for link in getattr(registration, 'setup_links', []):
+                            logger.debug('setup link: %s' % link)
                             register_setup(link) 
 
-                        for link in tool_links:
+                        for link in getattr(registration, 'tool_links', []):
+                            logger.debug('tool link: %s' % link)
                             register_tool(link)
+                            
+                        for statistic in getattr(registration, 'statistics', []):
+                            logger.debug('stattistic: %s' % statistic)
+                            register_statistics(statistic)
            
     #def set_backup(self, *args, **kwargs):
     #    return AppBackup(self, *args, **kwargs)
