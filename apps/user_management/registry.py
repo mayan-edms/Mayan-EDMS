@@ -4,8 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .icons import icon_user
 
-name = 'user_management'
 label = _(u'User management')
-description = _(u'Handles the registration of apps in a project.')
+description = _(u'Handles user accounts and groups.')
 icon = icon_user
-dependencies = ['app_registry']
+dependencies = ['app_registry', 'icons', 'navigation', 'permissions']
