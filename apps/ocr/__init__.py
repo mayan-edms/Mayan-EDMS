@@ -9,18 +9,18 @@ from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 from django.db.utils import DatabaseError
 
-from navigation.api import (bind_links, register_multi_item_links,
-    register_multi_item_links)
-from documents.models import Document, DocumentVersion
+#from navigation.api import (bind_links, register_multi_item_links,
+#    register_multi_item_links)
+#from documents.models import Document, DocumentVersion
 from maintenance.api import MaintenanceNamespace
 from project_tools.api import register_tool
 from acls.api import class_permissions
 from job_processor.models import JobQueue, JobType
 from job_processor.exceptions import JobQueuePushError
 
-from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
-from .models import OCRProcessingSingleton
-from .api import do_document_ocr
+#from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
+#from .models import OCRProcessingSingleton
+#from .api import do_document_ocr
 from .permissions import PERMISSION_OCR_DOCUMENT
 from .exceptions import AlreadyQueued
 from . import models as ocr_models
@@ -55,11 +55,11 @@ def document_post_save(sender, instance, **kwargs):
     logger.debug('received post save signal')
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
-        if AUTOMATIC_OCR:
-            try:
-                instance.submit_for_ocr()
-            except JobQueuePushError:
-                pass
+        #if AUTOMATIC_OCR:
+        try:
+            instance.submit_for_ocr()
+        except JobQueuePushError:
+            pass
 
 
 register_tool(ocr_tool_link)
