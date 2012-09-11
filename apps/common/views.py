@@ -17,7 +17,7 @@ from django.conf import settings
 
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
     EmailAuthenticationForm)
-from .conf.settings import LOGIN_METHOD
+from .settings import LOGIN_METHOD
 
 
 def multi_object_action_view(request):

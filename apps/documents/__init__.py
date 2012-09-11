@@ -1,21 +1,17 @@
 from __future__ import absolute_import
 
-import tempfile
-
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from app_registry.models import App
-from common.utils import validate_path, encapsulate
-from diagnostics.api import DiagnosticNamespace
+from common.utils import encapsulate
+#from diagnostics.api import DiagnosticNamespace
 from history.permissions import PERMISSION_HISTORY_VIEW
 from maintenance.api import MaintenanceNamespace
 from navigation.api import (bind_links, register_top_menu,
     register_model_list_columns,
     register_sidebar_template, Link, register_multi_item_links)
-from project_setup.api import register_setup
-from statistics.api import register_statistics
 
+# Register document type links
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
@@ -24,7 +20,6 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
     PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_NEW_VERSION)
-from .conf import settings as document_settings
 from .widgets import document_thumbnail
 from .links import (document_list, document_list_recent,
     document_create_siblings, document_view_simple, document_view_advanced,
@@ -35,7 +30,8 @@ from .links import (document_list, document_list_recent,
     document_missing_list)
 from .links import (document_type_list, document_type_setup, document_type_document_list,
     document_type_edit, document_type_delete, document_type_create, document_type_filename_list,
-    document_type_filename_create, document_type_filename_edit, document_type_filename_delete)
+    document_type_filename_create, document_type_filename_edit, document_type_filename_delete,
+    link_documents_menu)
 from .links import document_version_list, document_version_revert
 from .links import (document_page_transformation_list, document_page_transformation_create,
     document_page_transformation_edit, document_page_transformation_delete,
@@ -46,9 +42,7 @@ from .links import (document_page_transformation_list, document_page_transformat
     document_multiple_clear_transformations, document_multiple_delete,
     document_multiple_download, document_version_text_compare)
 from .links import document_clear_image_cache
-from .statistics import get_statistics
 
-# Register document type links
 bind_links([DocumentType], [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
 bind_links([DocumentTypeFilename], [document_type_filename_edit, document_type_filename_delete])
 
@@ -86,8 +80,8 @@ bind_links('document_page_transformation_list', [document_page_transformation_cr
 bind_links('document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
 bind_links(['document_page_transformation_edit', 'document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
 
-namespace = DiagnosticNamespace(_(u'documents'))
-namespace.create_tool(document_missing_list)
+#namespace = DiagnosticNamespace(_(u'documents'))
+#namespace.create_tool(document_missing_list)
 
 namespace = MaintenanceNamespace(_(u'documents'))
 namespace.create_tool(document_find_all_duplicates)
@@ -104,10 +98,7 @@ register_model_list_columns(Document, [
 
 register_top_menu(
     'documents',
-    link=Link(sprite='page', text=_(u'documents'), view='document_list_recent',
-    children_url_regex=[r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents'],
-    children_view_regex=[r'document_acl', r'smart_link_instance'],
-    children_views=['document_folder_list', 'folder_add_document', 'document_index_list', 'upload_version', ]),
+    link=link_documents_menu,
     position=1
 )
 
@@ -118,11 +109,6 @@ bind_links([Document], [document_view_simple], menu_name='form_header', position
 bind_links([Document], [document_view_advanced], menu_name='form_header', position=1)
 bind_links([Document], [document_history_view], menu_name='form_header')
 bind_links([Document], [document_version_list], menu_name='form_header')
-
-if (validate_path(document_settings.CACHE_PATH) == False) or (not document_settings.CACHE_PATH):
-    setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
-
-register_setup(document_type_setup)
 
 class_permissions(Document, [
     PERMISSION_DOCUMENT_PROPERTIES_EDIT,
@@ -136,12 +122,3 @@ class_permissions(Document, [
     PERMISSION_HISTORY_VIEW
 ])
 
-register_statistics(get_statistics)
-
-try:
-    app = App.register('documents', _(u'Documents'))
-except App.UnableToRegister:
-    pass
-else:
-    app.set_dependencies(['app_registry'])
-    #AppBackup(app, [ModelBackup(), FileBackup(document_settings.STORAGE_BACKEND)])

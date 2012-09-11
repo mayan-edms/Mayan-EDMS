@@ -5,9 +5,8 @@ import subprocess
 import logging
 
 from mimetype.api import get_mimetype
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common.settings import TEMPORARY_DIRECTORY
 
-from .conf.settings import LIBREOFFICE_PATH
 from .exceptions import OfficeBackendError, UnknownFileFormat
 
 CACHED_FILE_SUFFIX = u'_office_converter'
@@ -79,7 +78,9 @@ class OfficeConverter(object):
 
 class OfficeConverterBackendDirect(object):
     def __init__(self):
-        self.libreoffice_path = LIBREOFFICE_PATH if LIBREOFFICE_PATH else u'/usr/bin/libreoffice'
+        from .settings import LIBREOFFICE_PATH
+
+        self.libreoffice_path = LIBREOFFICE_PATH
         if not os.path.exists(self.libreoffice_path):
             raise OfficeBackendError('cannot find LibreOffice executable')
         logger.debug('self.libreoffice_path: %s' % self.libreoffice_path)

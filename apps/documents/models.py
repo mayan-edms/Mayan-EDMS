@@ -21,20 +21,24 @@ from django.utils.translation import ugettext
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from converter.api import get_page_count
-from converter.api import get_available_transformations_choices
-from converter.api import convert
-from converter.exceptions import UnknownFileFormat, UnkownConvertError
-from mimetype.api import (get_mimetype, get_icon_file_path,
-    get_error_icon_file_path)
+import converter
+#from converter import api as converter_api
+#from converter.api import get_page_count
+#from converter.api import get_available_transformations_choices
+#from converter.api import convert
+#from converter.exceptions import UnknownFileFormat, UnkownConvertError
+#from mimetype.api import (get_mimetype, get_icon_file_path,
+#    get_error_icon_file_path)
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
 
-from .conf.settings import RECENT_COUNT
-from .conf.settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
-    STORAGE_BACKEND, DISPLAY_SIZE, CACHE_PATH,
-    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
-from .managers import DocumentPageTransformationManager
+from mimetype.icons import icon_file_extension_error
+
+#from .settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
+#    STORAGE_BACKEND, DISPLAY_SIZE, CACHE_PATH,
+#    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+
+from .managers import DocumentPageTransformationManager, RecentDocumentManager
 from .utils import document_save_to_temp_dir
 from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
     VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
@@ -51,6 +55,8 @@ def get_filename_from_uuid(instance, filename):
     Store the orignal filename of the uploaded file and replace it with
     a UUID
     """
+    from .settings import UUID_FUNCTION
+    
     instance.filename = filename
     return UUID_FUNCTION()
 
@@ -82,6 +88,8 @@ class Document(models.Model):
 
     @staticmethod
     def clear_image_cache():
+        from .settings import CACHE_PATH
+    
         for the_file in os.listdir(CACHE_PATH):
             file_path = os.path.join(CACHE_PATH, the_file)
             if os.path.isfile(file_path):
@@ -100,6 +108,8 @@ class Document(models.Model):
         return ('document_view_simple', [self.pk])
 
     def save(self, *args, **kwargs):
+        from .settings import UUID_FUNCTION
+
         if not self.pk:
             self.uuid = UUID_FUNCTION()
             self.date_added = datetime.datetime.now()
@@ -107,6 +117,8 @@ class Document(models.Model):
         self.mark_indexable()
 
     def get_cached_image_name(self, page, version):
+        from .settings import CACHE_PATH
+
         document_version = DocumentVersion.objects.get(pk=version)
         document_page = document_version.documentpage_set.get(page_number=page)
         transformations, warnings = document_page.get_transformation_list()
@@ -114,6 +126,7 @@ class Document(models.Model):
         return os.path.join(CACHE_PATH, hash_value), transformations
 
     def get_image_cache_name(self, page, version):
+        from converter.api import convert
         cache_file_path, transformations = self.get_cached_image_name(page, version)
         if os.path.exists(cache_file_path):
             return cache_file_path
@@ -122,13 +135,22 @@ class Document(models.Model):
             document_file = document_save_to_temp_dir(document_version, document_version.checksum)
             return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
 
-    def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
+    def get_valid_image(self, size=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
+        from converter.api import convert
+        
+        if not size:
+            size = DISPLAY_SIZE
+        
         if not version:
             version = self.latest_version.pk
         image_cache_name = self.get_image_cache_name(page=page, version=version)
         return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
 
-    def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
+    def get_image(self, size=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
+        from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+        if not size:
+            size = DISPLAY_SIZE
+
         if zoom < ZOOM_MIN_LEVEL:
             zoom = ZOOM_MIN_LEVEL
 
@@ -139,12 +161,12 @@ class Document(models.Model):
 
         try:
             file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
-        except UnknownFileFormat:
+        except converter.UnknownFileFormat:
             file_path = get_icon_file_path(self.file_mimetype)
-        except UnkownConvertError:
-            file_path = get_error_icon_file_path()
+        except converter.UnkownConvertError:
+            file_path = icon_file_extension_error.get_filepath()
         except:
-            file_path = get_error_icon_file_path()
+            file_path = icon_file_extension_error.get_filepath()
 
         if as_base64:
             image = open(file_path, 'r')
@@ -340,7 +362,7 @@ class DocumentVersion(models.Model):
     comment = models.TextField(blank=True, verbose_name=_(u'comment'))
 
     # File related fields
-    file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
+    file = models.FileField(upload_to=get_filename_from_uuid, verbose_name=_(u'file'))
     mimetype = models.CharField(max_length=64, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
@@ -424,6 +446,8 @@ class DocumentVersion(models.Model):
         Open a document version's file and update the checksum field using the
         user provided checksum function
         """
+        from .settings import CHECKSUM_FUNCTION
+
         if self.exists():
             source = self.open()
             self.checksum = unicode(CHECKSUM_FUNCTION(source.read()))
@@ -432,6 +456,7 @@ class DocumentVersion(models.Model):
                 self.save()
 
     def update_page_count(self, save=True):
+        from coverter.api import get_page_count
         handle, filepath = tempfile.mkstemp()
         # Just need the filepath, close the file description
         os.close(handle)
@@ -439,7 +464,7 @@ class DocumentVersion(models.Model):
         self.save_to_file(filepath)
         try:
             detected_pages = get_page_count(filepath)
-        except UnknownFileFormat:
+        except converter.UnknownFileFormat:
             # If converter backend doesn't understand the format,
             # use 1 as the total page count
             detected_pages = 1
@@ -660,7 +685,8 @@ class DocumentPageTransformation(models.Model):
     """
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
-    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
+    #transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
+    transformation = models.CharField(max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
     objects = DocumentPageTransformationManager()
 
@@ -671,23 +697,6 @@ class DocumentPageTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'document page transformation')
         verbose_name_plural = _(u'document page transformations')
-
-
-class RecentDocumentManager(models.Manager):
-    def add_document_for_user(self, user, document):
-        if user.is_authenticated():
-            self.model.objects.filter(user=user, document=document).delete()
-            new_recent = self.model(user=user, document=document, datetime_accessed=datetime.datetime.now())
-            new_recent.save()
-            to_delete = self.model.objects.filter(user=user)[RECENT_COUNT:]
-            for recent_to_delete in to_delete:
-                recent_to_delete.delete()
-
-    def get_for_user(self, user):
-        if user.is_authenticated():
-            return Document.objects.filter(recentdocument__user=user)
-        else:
-            return []
 
 
 class RecentDocument(models.Model):

@@ -5,7 +5,6 @@ from django.contrib.contenttypes.models import ContentType
 
 from common.models import AnonymousUserSingleton
 
-
 logger = logging.getLogger(__name__)
 
 

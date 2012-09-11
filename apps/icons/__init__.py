@@ -1,10 +1,8 @@
-from django.utils.translation import ugettext_lazy as _
+from __future__ import absolute_import
 
-from app_registry.models import App
+#from django.utils.translation import ugettext_lazy as _
+#from django.conf import settings
 
-try:
-    app = App.register('icons', _(u'Icons'))
-except App.UnableToRegister:
-    pass
-else:
-    app.set_dependencies(['app_registry'])
+from .classes import Icon
+#from storage.backends.filebasedstorage import FileBasedStorage
+#afrom app_registry.models import App

@@ -30,7 +30,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': os.path.join(PROJECT_ROOT, '%s.sqlite' % PROJECT_NAME),     # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
+        'GROUP': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -104,15 +104,15 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
+    #'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'common.middleware.login_required_middleware.LoginRequiredMiddleware',
-    'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
+    #'common.middleware.login_required_middleware.LoginRequiredMiddleware',
+    #'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
     'pagination.middleware.PaginationMiddleware',
 )
 
@@ -147,55 +147,55 @@ INSTALLED_APPS = (
     'compressor',
     'djangorestframework',
     # Base generic
-    'app_registry',
     'permissions',
+    'acls',
+    'navigation',
+    'icons',
     'project_setup',
     'project_tools',
-    'smart_settings',
-    'navigation',
     'lock_manager',
+    'app_registry',
+    'smart_settings',
     'web_theme',
+    'common',
     # pagination needs to go after web_theme so that the pagination template is found
     'pagination',
-    'common',
     'django_gpg',
-    'acls',
     'converter',
-    'trash',
+    #'trash',
     'user_management',
     'mimetype',
-    'clustering',
-    'scheduler',
-    'job_processor',
-    'icons',
+    #'clustering',
+    #'scheduler',
+    #'job_processor',
     # Mayan EDMS
     'diagnostics',
     'maintenance',
     'storage',
     'documents',
-    'tags',
-    'folders',
-    'dynamic_search',
-    'document_comments',
-    'document_signatures',
-    'linking',
-    'metadata',
-    'ocr',
+    #'tags',
+    #'folders',
+    #'dynamic_search',
+    #'document_comments',
+    #'document_signatures',
+    #'linking',
+    #'metadata',
+    #'ocr',
     'main',
-    'installation',
-    'document_indexing',
-    'sources',
-    'mailer',
-    'document_acls',
+    #'installation',
+    #'document_indexing',
+    #'sources',
+    #'mailer',
+    #'document_acls',
     'history',
-    'workflows',
-    'checkouts',
+    #'workflows',
+    #'checkouts',
     'rest_api',
-    'bootstrap',
+    #'bootstrap',
     'statistics',
 
     # Has to be last so the other apps can register it's signals
-    'signaler',
+    #'signaler',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

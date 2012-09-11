@@ -7,9 +7,9 @@ from django.template.defaultfilters import capfirst
 from django.core.exceptions import PermissionDenied
 from django.template import RequestContext
 
-from icons.api import get_icon_name, get_sprite_name
-from icons.literals import ERROR
 from permissions.models import Permission
+
+from .icons import icon_error
 
 
 def button_navigation_widget(request, link):
@@ -27,9 +27,9 @@ def render_widget(request, link):
     context = RequestContext(request)
     resolved_link = link.resolve(context)
     if resolved_link:
-        return mark_safe(u'<a style="text-decoration:none; margin-right: 10px;" href="%(url)s"><button style="vertical-align: top; padding: 1px; width: 110px; height: 100px; margin: 10px;"><img src="%(static_url)simages/icons/%(icon)s" alt="%(image_alt)s" /><p style="margin: 0px 0px 0px 0px;">%(string)s</p></button></a>' % {
+        return mark_safe(u'<a style="text-decoration:none; margin-right: 10px;" href="%(url)s"><button style="vertical-align: top; padding: 1px; width: 110px; height: 100px; margin: 10px;">%(icon)s<p style="margin: 0px 0px 0px 0px;">%(string)s</p></button></a>' % {
             'url': resolved_link.url,
-            'icon': get_icon_name(getattr(resolved_link, 'icon', ERROR)),
+            'icon': getattr(resolved_link, 'icon', icon_error).display_big(),
             'static_url': settings.STATIC_URL,
             'string': capfirst(resolved_link.text),
             'image_alt': _(u'icon'),

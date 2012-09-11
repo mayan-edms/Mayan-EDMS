@@ -2,17 +2,19 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from icons.sets import fat_cow, famfamfam
+from icons.sets import fat_cow, famfamfam, custom
 
 
 SET_CHOICES = (
     (fat_cow.ID, fat_cow.LABEL),
     (famfamfam.ID, famfamfam.LABEL),
+    (custom.ID, custom.LABEL),
 )
 
 ICON_THEMES = {
-    fat_cow.ID: fat_cow.DICTIONARY,
-    famfamfam.ID: famfamfam.DICTIONARY
+    fat_cow.ID: fat_cow,
+    famfamfam.ID: famfamfam,
+    custom.ID: custom,
 }
 
 

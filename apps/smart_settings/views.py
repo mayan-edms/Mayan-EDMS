@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
@@ -8,30 +8,37 @@ from django.utils.safestring import mark_safe
 from common.utils import return_type, encapsulate
 from common.widgets import exists_with_famfam
 from navigation.api import Link
+from app_registry.models import App
 
-from .api import settings_list, namespace_list, settings, namespaces
+from .classes import SettingsNamespace
 from .links import is_superuser
 
 
-def setting_list(request, namespace_name=None, object_list=None, title=None, extra_context=None):
+def setting_list(request, app_name=None, object_list=None, title=None, extra_context=None):
     #TODO: check user is super user
     namespace_links = []
-    for namespace in namespace_list:
+
+    for app in App.live.filter(name__in=[namespace.name for namespace in SettingsNamespace.get_all()]):
         namespace_links.append(
-            Link(text=namespace.label, view='setting_list', args=[u'"%s"' % namespace.name], sprite=getattr(namespace, 'sprite') or 'cog', condition=is_superuser, children_view_regex=[r'^setting_'])
+            Link(text=app.label, view='setting_list', args=[u'"%s"' % app.name], icon=getattr(app, 'icon') or icon_settings, condition=is_superuser, children_view_regex=[r'^setting_'])
         )
 
-    if namespace_name:
-        object_list = [setting for setting in settings[namespace_name] if setting.hidden == False]
-        title = _(u'settings for the module: %s') % namespaces[namespace_name]
+    if app_name:
+        app = get_object_or_404(App, name=app_name)
+        selected_namespace = SettingsNamespace.get(app_name)
+        app_settings = selected_namespace.get_settings()
+        title = _(u'settings for the app: %s') % app_name
+    else:
+        object_list = []
 
     context = {
         'title': title if title else _(u'settings'),
-        'object_list': object_list if not (object_list is None) else [setting for setting in settings_list if setting.hidden == False],
+        'object_list': object_list if not (object_list is None) else [setting for setting in selected_namespace.get_settings() if setting.hidden == False],
         'hide_link': True,
         'hide_object': True,
         'extra_columns': [
-            {'name': _(u'name'), 'attribute': encapsulate(lambda x: mark_safe(u'<span style="font-weight: bold;">%s</span><br />%s' % (x.global_name, x.description)))},
+            {'name': _(u'name'), 'attribute': encapsulate(lambda x: mark_safe(u'<span style="font-weight: bold;">%s</span><br />%s' % (x.name, x.description or u'')))},
+            {'name': _(u'scopes'), 'attribute': 'get_scopes_display'},
             {'name': _(u'default'), 'attribute': encapsulate(lambda x: return_type(x.default))},
             {'name': _(u'value'), 'attribute': encapsulate(lambda x: mark_safe(u'<div class="nowrap">%s&nbsp;%s</div>' % (
                     return_type(getattr(x.module, x.name)),

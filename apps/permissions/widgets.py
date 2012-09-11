@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 def role_permission_link(requester, permission, permission_list):
     ct = ContentType.objects.get_for_model(requester)
 
-    template = u'<span class="nowrap"><a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a></span>'
+    template = u'<span class="nowrap"><a href="%(url)s">{{ icon.display_small }}%(text)s</a></span>'
 
     if permission in permission_list:
         return mark_safe(template % {

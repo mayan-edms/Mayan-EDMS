@@ -21,7 +21,7 @@ from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 
 from .models import SmartLink, SmartLinkCondition
-from .conf.settings import SHOW_EMPTY_SMART_LINKS
+from .settings import SHOW_EMPTY_SMART_LINKS
 from .forms import (SmartLinkInstanceForm, SmartLinkForm,
     SmartLinkConditionForm)
 from .links import smart_link_instance_view_link

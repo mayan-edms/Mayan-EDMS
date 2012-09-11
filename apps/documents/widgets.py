@@ -8,9 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 
+from mimetype.icons import icon_file_extension_error
+
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
-from mimetype.api import get_error_icon_url
 
 
 def document_thumbnail(document, **kwargs):
@@ -73,7 +74,7 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
                     }
                 })
                 .error(function(data) {
-                    $('#document-%(pk)d-%(page)d').html('<img src="%(error_image)s" />');
+                    $('#document-%(pk)d-%(page)d').html('%(error_image)s');
                 });
         });
         </script>
@@ -82,7 +83,7 @@ def document_html_widget(document, view='document_thumbnail', click_view=None, p
             'pk': document.pk,
             'page': page if page else 1,
             'plain_template': mark_safe(u''.join(plain_template)),
-            'error_image': u''.join([settings.STATIC_URL, get_error_icon_url()]),
+            'error_image': icon_file_extension_error.display_big(),
         }
     )
 

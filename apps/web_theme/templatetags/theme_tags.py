@@ -4,7 +4,7 @@ from django.conf import settings
 from django.template import Library, Node, TemplateSyntaxError
 from django.utils.safestring import mark_safe
 
-from web_theme.conf import settings as web_theme_settings
+from web_theme.settings import THEME, ENABLE_SCROLL_JS
 
 register = Library()
 
@@ -14,8 +14,8 @@ class GetThemeNode(Node):
         self.var_name = var_name
 
     def render(self, context):
-        context['web_theme'] = web_theme_settings.THEME
-        context['enable_scroll_js'] = web_theme_settings.ENABLE_SCROLL_JS
+        context['web_theme'] = THEME
+        context['enable_scroll_js'] = ENABLE_SCROLL_JS
         return ''
 
 
@@ -56,7 +56,12 @@ class SettingsNode(Node):
         self.var_name = var_name
 
     def render(self, context):
-        context[self.var_name] = getattr(web_theme_settings, self.format_string, '')
+        #TODO: fix properly
+        if self.format_string == 'THEME':
+            context[self.var_name] = THEME
+        else:
+            context[self.var_name] = ENABLE_SCROLL_JS
+        #context[self.var_name] = getattr(web_theme_settings, self.format_string, '')
         return ''
 
 

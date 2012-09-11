@@ -41,7 +41,7 @@
                         {% for object_reference, object_links in multi_item_links.items %}
                             {% for link in object_links %}
                                 <button class="button" type="submit" name="action" value="{{ link.url }}">
-                                   {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                                    {{ link.icon.display_small }}{{ link.text|capfirst }}
                                 </button>
                             {% endfor %}
                         {% endfor %}
@@ -175,7 +175,7 @@
                         {% for object_reference, object_links in multi_item_links.items %}
                             {% for link in object_links %}
                                 <button class="button" type="submit" name="action" value="{{ link.url }}">
-                                   {% if link.sprite and not disable_icons %}<span class="famfam active famfam-{{ link.sprite|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                                   {{ link.icon.display_small }}{{ link.text|capfirst }}
                                 </button>
                             {% endfor %}
                         {% endfor %}

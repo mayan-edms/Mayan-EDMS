@@ -5,11 +5,12 @@ from django.db.models import Avg, Count, Min, Max
 
 from common.utils import pretty_size, pretty_size_10
 
-from .conf.settings import STORAGE_BACKEND
 from .models import Document, DocumentType, DocumentPage, DocumentVersion
 
 
 def get_used_size(path, file_list):
+    from .settings import STORAGE_BACKEND
+
     total_size = 0
     for filename in file_list:
         try:
@@ -21,6 +22,8 @@ def get_used_size(path, file_list):
 
 
 def storage_count(path=u'.'):
+    from .settings import STORAGE_BACKEND
+
     try:
         directories, files = STORAGE_BACKEND().listdir(path)
     except OSError:

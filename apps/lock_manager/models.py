@@ -7,8 +7,8 @@ from django.db import (models, transaction, DatabaseError)
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import LockManager
-from .conf.settings import DEFAULT_LOCK_TIMEOUT
-
+#from .settings import DEFAULT_LOCK_TIMEOUT
+DEFAULT_LOCK_TIMEOUT = 60
 
 class Lock(models.Model):
     creation_datetime = models.DateTimeField(verbose_name=_(u'creation datetime'))

@@ -44,7 +44,10 @@ class History(models.Model):
     dictionary = models.TextField(verbose_name=_(u'dictionary'), blank=True)
 
     def __unicode__(self):
-        return u'%s - %s - %s' % (self.datetime, self.content_object, self.history_type)
+        try:
+            return u'%s - %s - %s' % (self.datetime, self.content_object, self.history_type)
+        except AttributeError:
+            return u'%s - %s - %s' % (self.datetime, _(u'unknown object'), self.history_type)
 
     def get_label(self):
         return history_types_dict[self.history_type.namespace][self.history_type.name].label

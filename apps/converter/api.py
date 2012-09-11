@@ -6,13 +6,12 @@ import logging
 
 from django.utils.encoding import smart_str
 
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common.settings import TEMPORARY_DIRECTORY
 from common.textparser import TextParser, TEXT_PARSER_MIMETYPES
 from mimetype.api import get_mimetype
 
 from .literals import (DEFAULT_PAGE_NUMBER,
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
-from . import backend
 from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
     FILE_FORMATS)
@@ -43,6 +42,8 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
 
 
 def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=None, *args, **kwargs):
+    from .runtime import backend
+
     size = kwargs.get('size')
     file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
     zoom = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
@@ -121,6 +122,8 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
 
 
 def get_page_count(input_filepath):
+    from .runtime import backend
+
     # Try to determine the page count first with the TextParser
     with open(input_filepath, 'rb') as descriptor:
         mimetype, encoding = get_mimetype(descriptor, input_filepath, mimetype_only=True)
