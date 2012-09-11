@@ -1,7 +1,7 @@
-"""Configuration options for the main app"""
-
-from django.utils.translation import ugettext_lazy as _
-
+#"""Configuration options for the main app"""
+#
+#from django.utils.translation import ugettext_lazy as _
+#
 #Setting(
 #    namespace=namespace,
 #    name=u'SIDE_BAR_SEARCH',
@@ -17,6 +17,8 @@ from django.utils.translation import ugettext_lazy as _
 #    default=False,
 #)
 #
+
+# TODO: move this setting to the icon app
 #Setting(
 #    namespace=namespace,
 #    name=u'DISABLE_ICONS',
