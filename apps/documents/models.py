@@ -456,7 +456,7 @@ class DocumentVersion(models.Model):
                 self.save()
 
     def update_page_count(self, save=True):
-        from coverter.api import get_page_count
+        from converter.api import get_page_count
         handle, filepath = tempfile.mkstemp()
         # Just need the filepath, close the file description
         os.close(handle)
