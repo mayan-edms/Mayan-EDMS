@@ -21,14 +21,11 @@ from .models import App
 
 for app_name in settings.INSTALLED_APPS:
     App.register(app_name)
-    print 'registry', app_name
-        
     try:
         post_init = import_module('%s.post_init' % app_name)
     except ImportError:
         pass
     else:
-        print 'post', post_init
         if post_init:
             for name, value in inspect.getmembers(post_init):
                 if hasattr(value, '__call__') and name.startswith('init'):
