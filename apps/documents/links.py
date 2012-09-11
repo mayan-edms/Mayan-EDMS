@@ -18,7 +18,6 @@ from .icons import (icon_documents, icon_create_siblings, icon_document_delete,
     icon_document_properties, icon_document_edit, icon_document_preview,
     icon_document_download, icon_find_duplicates, icon_print, icon_version_revert,
     icon_version_compare, icon_versions, icon_document_types)
-#from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
 # Document page links expressions
 def is_first_page(context):
@@ -30,10 +29,12 @@ def is_last_page(context):
 
 
 def is_min_zoom(context):
+    from .settings import ZOOM_MIN_LEVEL
     return context['zoom'] <= ZOOM_MIN_LEVEL
 
 
 def is_max_zoom(context):
+    from .settings import ZOOM_MAX_LEVEL
     return context['zoom'] >= ZOOM_MAX_LEVEL
 
 

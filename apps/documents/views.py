@@ -16,14 +16,14 @@ from django.core.exceptions import PermissionDenied
 from django.conf import settings
 
 import sendfile
-from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff, encapsulate
+from common.utils import (pretty_size, parse_range, urlquote,
+    return_diff, encapsulate)
 from common.widgets import two_state_template
-from common.literals import PAGE_SIZE_DIMENSIONS, \
-    PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
-from common.conf.settings import DEFAULT_PAPER_SIZE
-from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE
+from common.literals import (PAGE_SIZE_DIMENSIONS,
+    PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE)
+from common.settings import DEFAULT_PAPER_SIZE
+from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
+    DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
 from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
 from navigation.utils import resolve_to_name
@@ -31,9 +31,10 @@ from permissions.models import Permission
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
 
-from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
+from .settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, PRINT_SIZE,
     RECENT_COUNT)
+
 from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
