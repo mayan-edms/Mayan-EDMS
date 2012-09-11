@@ -17,7 +17,9 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
 from .icons import (icon_documents, icon_create_siblings, icon_document_delete,
     icon_document_properties, icon_document_edit, icon_document_preview,
     icon_document_download, icon_find_duplicates, icon_print, icon_version_revert,
-    icon_version_compare, icon_versions, icon_document_types)
+    icon_version_compare, icon_versions, icon_document_types,
+    icon_document_type_document_list, icon_document_update_page_count,
+    icon_document_clear_image_cache)
 
 # Document page links expressions
 def is_first_page(context):
@@ -56,7 +58,7 @@ document_multiple_download = Link(text=_(u'download'), view='document_multiple_d
 document_version_download = Link(text=_(u'download'), view='document_version_download', args='object.pk', icon=icon_document_download, permissions=[PERMISSION_DOCUMENT_DOWNLOAD])
 document_find_duplicates = Link(text=_(u'find duplicates'), view='document_find_duplicates', args='object.id', icon=icon_find_duplicates, permissions=[PERMISSION_DOCUMENT_VIEW])
 document_find_all_duplicates = Link(text=_(u'find all duplicates'), view='document_find_all_duplicates', icon=icon_find_duplicates, permissions=[PERMISSION_DOCUMENT_VIEW], description=_(u'Search all the documents\' checksums and return a list of the exact matches.'))
-document_update_page_count = Link(text=_(u'update office documents\' page count'), view='document_update_page_count', sprite='page_white_csharp', permissions=[PERMISSION_DOCUMENT_TOOLS], description=_(u'Update the page count of the office type documents.  This is useful when enabling office document support after there were already office type documents in the database.'))
+document_update_page_count = Link(text=_(u'update office documents\' page count'), view='document_update_page_count', icon=icon_document_update_page_count, permissions=[PERMISSION_DOCUMENT_TOOLS], description=_(u'Update the page count of the office type documents.  This is useful when enabling office document support after there were already office type documents in the database.'))
 document_clear_transformations = Link(text=_(u'clear transformations'), view='document_clear_transformations', args='object.id', sprite='page_paintbrush', permissions=[PERMISSION_DOCUMENT_TRANSFORM])
 document_multiple_clear_transformations = Link(text=_(u'clear transformations'), view='document_multiple_clear_transformations', sprite='page_paintbrush', permissions=[PERMISSION_DOCUMENT_TRANSFORM])
 document_print = Link(text=_(u'print'), view='document_print', args='object.id', icon=icon_print, permissions=[PERMISSION_DOCUMENT_VIEW])
@@ -64,7 +66,7 @@ document_history_view = Link(text=_(u'history'), view='history_for_object', args
 document_missing_list = Link(text=_(u'Find missing document files'), view='document_missing_list', sprite='page_find', description=_(u'Return a list of documents found on the database but that don\'t physically exist in the document storage.'), permissions=[PERMISSION_DOCUMENT_VIEW])
 
 # Tools
-document_clear_image_cache = Link(text=_(u'Clear the document image cache'), view='document_clear_image_cache', sprite='camera_delete', permissions=[PERMISSION_DOCUMENT_TOOLS], description=_(u'Clear the graphics representations used to speed up the documents\' display and interactive transformations results.'))
+document_clear_image_cache = Link(text=_(u'Clear the document image cache'), view='document_clear_image_cache', icon=icon_document_clear_image_cache, permissions=[PERMISSION_DOCUMENT_TOOLS], description=_(u'Clear the graphics representations used to speed up the documents\' display and interactive transformations results.'))
 
 # Document pages
 document_page_transformation_list = Link(text=_(u'page transformations'), klass='no-parent-history', view='document_page_transformation_list', args='page.pk', sprite='pencil_go', permissions=[PERMISSION_DOCUMENT_TRANSFORM])
@@ -90,10 +92,11 @@ document_version_list = Link(text=_(u'versions'), view='document_version_list', 
 document_version_revert = Link(text=_(u'revert'), view='document_version_revert', args='object.pk', icon=icon_version_revert, permissions=[PERMISSION_DOCUMENT_VERSION_REVERT], conditional_disable=is_current_version)
 document_version_text_compare = Link(text=_(u'compare (text)'), view='document_version_text_compare', args='object.pk', icon=icon_version_compare, permissions=[PERMISSION_DOCUMENT_VERSIONS_TEXT_COMPARE])
 
+icon_document_type_document_list
 # Document type related links
 document_type_list = Link(text=_(u'document type list'), view='document_type_list', icon=icon_document_types, permissions=[PERMISSION_DOCUMENT_TYPE_VIEW])
 document_type_setup = Link(text=_(u'document types'), view='document_type_list', sprite='layout', icon=icon_document_types, permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], children_view_regex=[r'^document_type_'])
-document_type_document_list = Link(text=_(u'documents of this type'), view='document_type_document_list', args='document_type.id', sprite='page_go', permissions=[PERMISSION_DOCUMENT_TYPE_VIEW])
+document_type_document_list = Link(text=_(u'documents of this type'), view='document_type_document_list', args='document_type.id', icon=icon_document_type_document_list, permissions=[PERMISSION_DOCUMENT_TYPE_VIEW])
 document_type_edit = Link(text=_(u'edit'), view='document_type_edit', args='document_type.id', sprite='layout_edit', permissions=[PERMISSION_DOCUMENT_TYPE_EDIT])
 document_type_delete = Link(text=_(u'delete'), view='document_type_delete', args='document_type.id', sprite='layout_delete', permissions=[PERMISSION_DOCUMENT_TYPE_DELETE])
 document_type_create = Link(text=_(u'create document type'), view='document_type_create', sprite='layout_add', permissions=[PERMISSION_DOCUMENT_TYPE_CREATE])
