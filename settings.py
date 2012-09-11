@@ -179,7 +179,7 @@ INSTALLED_APPS = (
     #'document_comments',
     #'document_signatures',
     #'linking',
-    #'metadata',
+    'metadata',
     #'ocr',
     'main',
     #'installation',

@@ -1,4 +1,7 @@
-"""Metadata handling commonalities"""
+"""
+Metadata handling commonalities
+"""
+
 from __future__ import absolute_import
 
 from urllib import unquote_plus

@@ -7,7 +7,6 @@ from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from navigation.api import (bind_links, register_sidebar_template,
     register_model_list_columns, register_multi_item_links)
-from project_setup.api import register_setup
 
 from .api import get_metadata_string
 from .links import (metadata_edit, metadata_view, metadata_add, metadata_remove,
@@ -39,9 +38,6 @@ metadata_set_setup_views = ['setup_metadata_set_list', 'setup_metadata_set_edit'
 
 register_sidebar_template(['setup_metadata_type_list'], 'metadata_type_help.html')
 register_sidebar_template(['setup_metadata_set_list'], 'metadata_set_help.html')
-
-register_setup(setup_metadata_type_list)
-register_setup(setup_metadata_set_list)
 
 class_permissions(Document, [
     PERMISSION_METADATA_DOCUMENT_EDIT,
