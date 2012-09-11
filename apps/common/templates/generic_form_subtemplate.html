@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load default_icons %}
+{% default_icons %}
                 
 {% if side_bar %}
     <div class="block">
@@ -74,11 +76,12 @@
         {% if not read_only %}
         <div class="group navform wat-cf">
             <button class="button" type="submit" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}">
-                {% if submit_icon_famfam %}
-                    <span class="famfam active famfam-{{ submit_icon_famfam|default:'tick' }}"></span>
+                {% if submit_icon %}
+                    {{ submit_icon.display_small }}
                 {% else %}
-                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/tick.png" alt="{% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}" />
+                    {{ submit_icon_default.display_small }}
                 {% endif %}
+
                 {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}{% endif %}
             </button>
 
