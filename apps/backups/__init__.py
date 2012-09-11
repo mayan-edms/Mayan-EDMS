@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 import inspect
-#import runpy
 
 from django.conf import settings
 from django.db import transaction, DatabaseError
@@ -11,7 +10,7 @@ from django.utils.importlib import import_module
 #from common.utils import encapsulate
 #from job_processor.exceptions import JobQueuePushError
 #from job_processor.models import JobQueue, JobType
-from project_tools.api import register_tool
+#from project_tools.api import register_tool
 #from project_setup.api import register_setup
 #from navigation.api import bind_links, register_model_list_columns
 
@@ -21,7 +20,7 @@ from project_tools.api import register_tool
 #    restore_tool_link, backup_job_list, backup_job_create, backup_job_edit,
 #    backup_job_test)
 #from .literals import BACKUP_JOB_QUEUE_NAME
-from .models import App
+#from .models import App
 #from . import models
 
 #class UnableToRegister(Exception):
@@ -62,19 +61,3 @@ from .models import App
 #])
 
 ###app.set_backup([ModelBackup()])
-
-
-for app_name in settings.INSTALLED_APPS:
-    App.register(app_name)
-    print 'registry', app_name
-        
-    try:
-        post_init = import_module('%s.post_init' % app_name)
-    except ImportError:
-        pass
-    else:
-        print 'post', post_init
-        if post_init:
-            for name, value in inspect.getmembers(post_init):
-                if hasattr(value, '__call__') and name.startswith('init'):
-                    value()
