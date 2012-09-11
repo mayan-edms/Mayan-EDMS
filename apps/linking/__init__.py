@@ -4,8 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
-#from backups.api import AppBackup, ModelBackup
-#from app_registry import register_app, UnableToRegister
 from documents.models import Document
 from navigation.api import bind_links, register_sidebar_template
 from project_setup.api import register_setup
@@ -35,10 +33,3 @@ class_permissions(SmartLink, [
     ACLS_EDIT_ACL,
     ACLS_VIEW_ACL
 ])
-
-#try:
-#    app = register_app('linking', _(u'Document linking'))
-#except UnableToRegister:
-#    pass
-#else:
-#    AppBackup(app, [ModelBackup()])

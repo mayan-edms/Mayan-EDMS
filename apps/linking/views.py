@@ -133,7 +133,7 @@ def smart_link_list(request):
         'object_list': qs,
         'extra_columns': [
             {'name': _(u'dynamic title'), 'attribute': 'dynamic_title'},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled).display_small())},
         ],
         'hide_link': True,
         'list_object_variable_name': 'smart_link',
@@ -229,7 +229,7 @@ def smart_link_condition_list(request, smart_link_pk):
         'title': _(u'conditions for smart link: %s') % smart_link,
         'object_list': smart_link.smartlinkcondition_set.all(),
         'extra_columns': [
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled).display_small())},
         ],
         'hide_link': True,
         'object': smart_link,
