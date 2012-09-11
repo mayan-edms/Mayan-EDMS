@@ -165,8 +165,8 @@ INSTALLED_APPS = (
     #'trash',
     'user_management',
     'mimetype',
-    #'clustering',
-    #'scheduler',
+    'clustering',
+    'scheduler',
     #'job_processor',
     # Mayan EDMS
     'diagnostics',
