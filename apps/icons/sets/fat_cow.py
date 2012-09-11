@@ -33,6 +33,7 @@ DICTIONARY = {
     LAYOUT: 'layout.png',
     LIGHTNING: 'lightning.png',
     LOCK: 'lock.png',
+    LOCK_EDIT: 'lock_edit.png',
     MAGNIFIER: 'magnifier.png',
     MEDAL_GOLD: 'medal_gold_1.png',
     MEDAL_GOLD_ADD: 'medal_gold_add.png',
