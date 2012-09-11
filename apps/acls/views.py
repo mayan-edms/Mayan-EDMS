@@ -105,7 +105,7 @@ def acl_detail_for(request, actor, obj):
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj, db_only=True)))
+                        'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj, db_only=True)).display_small())
                     },
                 ],
                 'hide_object': True,
