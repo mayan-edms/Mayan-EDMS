@@ -5,7 +5,8 @@ ICON_SET_FAT_COW = 'fat_cow'
 ICON_SET_CUSTOM = 'custom'
 
 DEFAULT_ICON_SET = 'fat_cow'
-   
+
+ADD = 'add'
 APPLICATION_VIEW_ICONS = 'application_view_icons'
 BLACKBOARD_SUM = 'blackboard_sum'
 BOOK = 'book'
@@ -15,6 +16,7 @@ CD_BURN = 'cd_burn'
 COG = 'cog'
 COMPUTER_KEY = 'computer_key'
 CROSS = 'cross'
+DELETE = 'delete'
 DRAW_AIRBRUSH = 'draw_airbrush'
 DOCUMENT_SIGNATURE = 'document_signature'
 ERROR = 'error'

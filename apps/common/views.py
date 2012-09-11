@@ -18,6 +18,7 @@ from django.conf import settings
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
     EmailAuthenticationForm)
 from .settings import LOGIN_METHOD
+from .icons import icon_add, icon_delete
 
 
 def multi_object_action_view(request):
@@ -134,7 +135,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'form': unselected_list,
                     'title': left_list_title,
                     'submit_label': _(u'Add'),
-                    'submit_icon_famfam': 'add'
+                    'submit_icon': icon_add
                 }
             },
             {
@@ -145,7 +146,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'form': selected_list,
                     'title': right_list_title,
                     'submit_label': _(u'Remove'),
-                    'submit_icon_famfam': 'delete'
+                    'submit_icon': icon_delete
                 }
             },
 

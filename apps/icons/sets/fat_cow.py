@@ -7,6 +7,7 @@ ID = 'fat_cow'
 LABEL = _(u'Fat cow')
 
 DICTIONARY = {
+    ADD: 'add.png',
     APPLICATION_VIEW_ICONS: 'application_view_icons.png',
     BLACKBOARD_SUM: 'blackboard_sum.png',
     BOOK: 'book.png',
@@ -16,6 +17,7 @@ DICTIONARY = {
     COG: 'cog.png',
     COMPUTER_KEY: 'computer_key.png',
     CROSS: 'cross.png',
+    DELETE: 'delete.png',
     DRAW_AIRBRUSH: 'draw_airbrush.png',
     DOCUMENT_SIGNATURE: 'document_signature.png',
     ERROR: 'error.png',
