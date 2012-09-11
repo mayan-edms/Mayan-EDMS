@@ -14,7 +14,6 @@ from signaler.signals import post_update_index, pre_update_index
 from lock_manager import Lock, LockError
 
 from .models import IndexableObject
-from .conf.settings import INDEX_UPDATE_INTERVAL
 
 logger = logging.getLogger(__name__)
 
@@ -63,3 +62,5 @@ bind_links(['results'], [search_again], menu_name='sidebar')
 dynamic_search_scheduler = LocalScheduler('search', _(u'Search'))
 dynamic_search_scheduler.add_interval_job('search_index_update', _(u'Update the search index with the most recent modified documents.'), search_index_update, seconds=INDEX_UPDATE_INTERVAL)
 dynamic_search_scheduler.start()
+
+#    register_top_menu('search', link=Link(text=_(u'search'), view='search', sprite='zoom', children_url_regex=[r'^search/']))
