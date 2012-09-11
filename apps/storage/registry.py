@@ -3,13 +3,12 @@ from __future__ import absolute_import
 import os
 
 from django.utils.translation import ugettext_lazy as _
-from django.conf import settings
+from django.conf import settings as django_settings
 
 from smart_settings import LocalScope
 
 from .icons import icon_storage
 
-name = 'storage'
 label = _(u'Storage')
 description = _(u'Handles actual storage of files by means of specialized backends.')
 icon = icon_storage
@@ -32,7 +31,7 @@ settings = [
     },
     {
         'name': 'FILESTORAGE_LOCATION',
-        'default': os.path.join(settings.PROJECT_ROOT, u'document_storage'),
+        'default': os.path.join(django_settings.PROJECT_ROOT, u'document_storage'),
         'exists': True,
         'scopes': [LocalScope()]
     },
