@@ -16,7 +16,4 @@ def init_validate_cache_path():
         setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
 def init_set_storage_backend():
-    # Monkey patch the file field until this is resolved: AttributeError: 
-    # The 'file' attribute can only be accessed from DocumentVersion instances.
-    #DocumentVersion.file.storage = STORAGE_BACKEND()
-    DocumentVersion.add_to_class('file', models.FileField(upload_to=get_filename_from_uuid, verbose_name=_(u'file'), storage=STORAGE_BACKEND()))
+    DocumentVersion._meta.get_field('file').storage=STORAGE_BACKEND()
