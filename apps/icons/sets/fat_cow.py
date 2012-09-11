@@ -24,6 +24,7 @@ DICTIONARY = {
     GROUP_EDIT: 'group_edit.png',
     GROUP_DELETE: 'group_delete.png',
     GROUP_KEY: 'group_key.png',
+    GROUP_LINK: 'group_link.png',
     INFORMATION: 'information.png',
     KEY: 'key.png',
     KEY_GO: 'key_go.png',

@@ -8,7 +8,8 @@ from .permissions import (PERMISSION_GROUP_CREATE, PERMISSION_GROUP_EDIT,
     PERMISSION_GROUP_VIEW, PERMISSION_GROUP_DELETE, PERMISSION_GROUP_CREATE,
     PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, PERMISSION_GROUP_DELETE)
 from .icons import (icon_user, icon_user_add, icon_user_edit, icon_user_delete,
-    icon_group, icon_group_add, icon_group_edit, icon_group_delete, icon_set_password)
+    icon_group, icon_group_add, icon_group_edit, icon_group_delete, icon_set_password,
+    icon_group_members)
 
 user_list = Link(text=_(u'user list'), view='user_list', icon=icon_user, permissions=[PERMISSION_GROUP_VIEW])
 user_setup = Link(text=_(u'users'), view='user_list', icon=icon_user, permissions=[PERMISSION_GROUP_VIEW], children_view_regex=[r'^user_'])
@@ -25,4 +26,4 @@ group_add = Link(text=_(u'create new group'), view='group_add', icon=icon_group_
 group_edit = Link(text=_(u'edit'), view='group_edit', args='object.id', icon=icon_group_edit, permissions=[PERMISSION_GROUP_EDIT])
 group_delete = Link(text=_('delete'), view='group_delete', args='object.id', icon=icon_group_delete, permissions=[PERMISSION_GROUP_DELETE])
 group_multiple_delete = Link(text=_('delete'), view='group_multiple_delete', icon=icon_group_delete, permissions=[PERMISSION_GROUP_DELETE])
-group_members = Link(text=_(u'members'), view='group_members', args='object.id', sprite='group_link', permissions=[PERMISSION_GROUP_EDIT])
+group_members = Link(text=_(u'members'), view='group_members', args='object.id', icon=icon_group_members, permissions=[PERMISSION_GROUP_EDIT])
