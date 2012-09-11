@@ -166,4 +166,6 @@ def get_available_transformations_choices():
 
 
 def get_format_list():
+    from .runtime import backend
+    
     return [(format, FILE_FORMATS.get(format, u'')) for format in backend.get_format_list()]
