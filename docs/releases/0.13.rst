@@ -27,7 +27,7 @@ Overview
 #TODO: add scheduling
 #TODO: add clustering
 #TODO: add local jobs & distributed job processing
-
+#TODO: removal of DISABLE_HOME_VIEW
 
 What's new in Mayan EDMS v0.13
 ==============================
