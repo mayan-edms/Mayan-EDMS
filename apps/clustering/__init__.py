@@ -26,6 +26,6 @@ def add_clustering_jobs():
 
 add_clustering_jobs()
 register_tool(tool_link)
-register_setup(setup_link)
+#register_setup(setup_link)
 bind_links([Node, 'node_list'], [node_list], menu_name='secondary_menu')
 bind_links(['clustering_config_edit'], [clustering_config_edit], menu_name='secondary_menu')
