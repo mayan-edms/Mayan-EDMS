@@ -41,11 +41,11 @@ def user_list(request):
                 },
                 {
                     'name': _(u'active'),
-                    'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
+                    'attribute': encapsulate(lambda x: two_state_template(x.is_active).display_small()),
                 },
                 {
                     'name': _(u'has usable password?'),
-                    'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
+                    'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password()).display_small()),
                 },
             ],
             'multi_select_as_buttons': True,
