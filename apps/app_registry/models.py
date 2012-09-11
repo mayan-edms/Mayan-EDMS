@@ -46,7 +46,7 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
             transaction.rollback
             logger.debug('import failed')
         else:
-            logger.debug('Trying to import app\'s registry')
+            logger.debug('Trying to import registry from: %s' % app_name)
             try:
                 registration = import_module('%s.registry' % app_name)
             except ImportError as exception:
@@ -67,7 +67,7 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
                         app.icon = getattr(registration, 'icon', None)
 
                         for dependency_name in getattr(registration, 'dependencies', []):
-                            dependency = App.objects.get(name=dependency_name)
+                            dependency, created = App.objects.get_or_create(name=dependency_name)
                             app.dependencies.add(dependency)
 
                         settings = getattr(registration, 'settings', None)
