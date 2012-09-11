@@ -3,8 +3,6 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-#afrom backups.api import AppBackup, ModelBackup
-#from app_registry import register_app, UnableToRegister
 from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import (bind_links, register_top_menu,
@@ -15,7 +13,7 @@ from taggit.managers import TaggableManager
 
 from .links import (tag_list, tag_create, tag_attach,
     tag_document_remove_multiple, tag_document_list, tag_delete, tag_edit,
-    tag_tagged_item_list, tag_multiple_delete, tag_acl_list)
+    tag_tagged_item_list, tag_multiple_delete, tag_acl_list, tag_menu_link)
 from .permissions import (PERMISSION_TAG_ATTACH,
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
     PERMISSION_TAG_VIEW)
@@ -41,7 +39,7 @@ register_model_list_columns(Document, [
 bind_links([Tag], [tag_tagged_item_list, tag_edit, tag_delete, tag_acl_list])
 register_multi_item_links(['tag_list'], [tag_multiple_delete])
 bind_links([Tag, 'tag_list', 'tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
-register_top_menu('tags', link=Link(text=_(u'tags'), view='tag_list', sprite='tag_blue', children_view_regex=[r'^tag_(list|create|delete|edit|tagged|acl)']))
+register_top_menu('tags', link=tag_menu_link)
 
 bind_links([Document], [tag_document_list], menu_name='form_header')
 bind_links(['document_tags', 'tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')
@@ -59,10 +57,3 @@ class_permissions(Tag, [
 ])
 
 Document.add_to_class('tags', TaggableManager())
-
-#try:
-#    app = register_app('tags', _(u'Tags'))
-#except UnableToRegister:
-#    pass
-#else:
-#    AppBackup(app, [ModelBackup()])
