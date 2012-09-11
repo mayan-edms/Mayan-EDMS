@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils.importlib import import_module
 from django.utils.translation import ugettext_lazy as _
 
+from .models import ClusterSetting
 
 # Namespace
 class SettingsNamespace(object):
@@ -43,6 +44,15 @@ class SettingsNamespace(object):
 class SettingScope(object):
     def get_value(self):
         raise NotImplemented
+        
+    def set_value(self):
+        raise NotImplemented
+        
+    def register_setting(self, setting):
+        self.setting = self
+
+    def get_full_name(self):
+        return '%s_%s' % (self.setting.namespace.name, self.setting.name)
 
 
 class LocalScope(SettingScope):
@@ -62,12 +72,39 @@ class LocalScope(SettingScope):
 
     def get_value(self):
         if not self.global_name:
-            self.global_name = '%s_%s' % (self.setting.namespace.name.upper(), self.setting.name)
-            
+            #self.global_name = '%s_%s' % (self.setting.namespace.name.upper(), self.setting.name)
+            self.global_name = self.get_full_name().upper()
+
+        return getattr(settings, self.global_name)
+    
+
+class ClusterScope(SettingScope):
+    """
+    Return the value of a config value from the local settings.py file
+    """
+    label = _(u'Cluster')
+
+    #def __init__(self):
+    #    self.global_name = global_name
+    
+    def __unicode__(self):
+        return unicode(self.__class__.label)
+        
+    def __repr__(self):
+        return unicode(self.__unicode__())
+
+    def get_value(self):
+        #if not self.global_name:
+        #    self.global_name = '%s_%s' % (self.setting.namespace.name.upper(), self.setting.name)
+        #ClusterSetting.objects.
+        return None
         return getattr(settings, self.global_name)
 
+    def register_setting(self, *args, **kwargs):
+        super(ClusterScope, self).register_setting(*args, **kwargs)
+        cluster_settings = ClusterSetting.objects.get_or_create(name=self.get_full_name(), defaults={'value': getattr(self.setting, 'default', None)})
 
-# TODO: Cluster - Cluster wide setting
+
 # TODO: Organization - Organizaition wide preferences
 # TODO: User - user preferences
 
@@ -78,7 +115,7 @@ class Setting(object):
         Store this setting's instance into the scope instance and append
         the scope to this setting's scope list
         """
-        scope.setting = self
+        scope.register_setting(self)
         self.scopes.append(scope)
 
     def __init__(self, namespace, name, default, description=None, hidden=False, exists=False, scopes=None):
@@ -93,8 +130,6 @@ class Setting(object):
         if scopes:
             for scope in scopes:
                 self.register_scope(scope)
-        #else:
-        #    self.scopes = []  #Local('GLOBAL_%s' % self.app.name)]
 
         # Create the local entity
         try:
