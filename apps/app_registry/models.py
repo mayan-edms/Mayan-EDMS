@@ -18,6 +18,7 @@ from smart_settings import SettingsNamespace
 from project_setup.api import register_setup
 from project_tools.api import register_tool
 from statistics.api import register_statistics
+from navigation.api import register_top_menu
 
 #from .classes import AppBackup, StorageModuleBase, Setting
 
@@ -90,8 +91,13 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
                             register_tool(link)
                             
                         for statistic in getattr(registration, 'statistics', []):
-                            logger.debug('stattistic: %s' % statistic)
+                            logger.debug('statistic: %s' % statistic)
                             register_statistics(statistic)
+                        
+                        for index, link in enumerate(getattr(registration, 'menu_links', [])):
+                            logger.debug('menu_link: %s' % link)
+                            register_top_menu(name='%s.%s' % (app_name, index), link=link)
+
            
     #def set_backup(self, *args, **kwargs):
     #    return AppBackup(self, *args, **kwargs)
