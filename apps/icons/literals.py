@@ -1,8 +1,5 @@
-#from icons.sets import fat_cow, famfamfam
-
-#DEFAULT_ICON_SET = fat_cow.ID
-ICON_SET_FAT_COW = 'fat_cow'
-ICON_SET_CUSTOM = 'custom'
+SIZE_SMALL = '16x16'
+SIZE_BIG = '32x32'
 
 DEFAULT_ICON_SET = 'fat_cow'
 
@@ -26,7 +23,14 @@ DOCUMENT_SIGNATURE = 'document_signature'
 ERROR = 'error'
 FILE_EXTENSION_ERROR = 'file_extension_error'
 FILE_EXTENSION_UNKNOWN = 'file_extension_unknown'
-GROUP = 'user',
+FOLDER = 'folder'
+FOLDERS = 'folders'
+FOLDER_ADD = 'folder_add'
+FOLDER_EDIT = 'folder_edit'
+FOLDER_DELETE = 'folder_delete'
+FOLDER_GO = 'folder_go'
+FOLDER_USER = 'folder_user'
+GROUP = 'user'
 GROUP_ADD = 'group_add'
 GROUP_EDIT = 'group_edit'
 GROUP_DELETE = 'group_delete'
