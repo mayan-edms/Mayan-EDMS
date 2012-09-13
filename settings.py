@@ -174,7 +174,7 @@ INSTALLED_APPS = (
     'storage',
     'documents',
     'tags',
-    #'folders',
+    'folders',
     #'dynamic_search',
     #'document_comments',
     #'document_signatures',
