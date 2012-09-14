@@ -137,7 +137,6 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.staticfiles',
     # 3rd party
-    # South
     'south',
     'haystack',
     # Others
@@ -175,7 +174,7 @@ INSTALLED_APPS = (
     'documents',
     'tags',
     'folders',
-    #'dynamic_search',
+    'dynamic_search',
     'document_comments',
     #'document_signatures',
     'linking',
