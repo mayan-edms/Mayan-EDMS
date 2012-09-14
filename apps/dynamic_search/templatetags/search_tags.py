@@ -7,7 +7,7 @@ from django.utils.translation import ugettext as _
 from haystack.forms import SearchForm
 
 from ..models import RecentSearch
-from ..conf.settings import RECENT_COUNT
+from ..settings import RECENT_COUNT
 from ..icons import icon_search
 
 register = Library()

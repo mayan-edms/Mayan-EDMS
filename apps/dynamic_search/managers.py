@@ -9,11 +9,11 @@ from django.contrib.auth.models import AnonymousUser
 from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import smart_str
 
-from .conf.settings import RECENT_COUNT
-
 
 class RecentSearchManager(Manager):
     def add_query_for_user(self, search_view):
+        from .settings import RECENT_COUNT
+
         query_dict = parse_qs(unquote_plus(smart_str(urlparse(search_view.request.get_full_path()).query)))
 
         if query_dict and not isinstance(search_view.request.user, AnonymousUser):
