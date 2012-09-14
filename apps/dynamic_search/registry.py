@@ -18,5 +18,11 @@ settings = [
         'default': 1800,
         'description': _(u'Interval in second on which to trigger the search index update.'),
         'scopes': [LocalScope()]
-    }
+    },
+    {
+        'name': 'RECENT_COUNT',
+        'default': 5,
+        'description': _(u'Maximum number of search queries to remember per user.'),
+        'scopes': [LocalScope()]
+    },
 ]
