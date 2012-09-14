@@ -11,7 +11,7 @@ from documents.models import Document
 from signaler.signals import post_update_index, pre_update_index
 
 from .models import IndexableObject
-from .links import search, search_advanced, search_again
+from .links import search#, search_advanced, search_again
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ def scheduler_shutdown_pre_update_index(sender, mayan_runtime, **kwargs):
 
 
 bind_links(['search', 'search_advanced', 'results'], [search], menu_name='form_header')
-bind_links(['results'], [search_again], menu_name='sidebar')
+#bind_links(['results'], [search_again], menu_name='sidebar')
 
 register_sidebar_template(['search'], 'search_help.html')
 register_sidebar_template(['search'], 'recent_searches.html')

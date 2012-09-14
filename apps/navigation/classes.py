@@ -23,8 +23,8 @@ class ResolvedLink(object):
 
 
 class Link(object):
-    def __init__(self, text, view, klass=None, args=None, sprite=None,
-        icon=None, permissions=None, condition=None, conditional_disable=None,
+    def __init__(self, text, view, klass=None, args=None, icon=None,
+        permissions=None, condition=None, conditional_disable=None,
         description=None, dont_mark_active=False, children_view_regex=None,
         keep_query=False, children_classes=None, children_url_regex=None,
         children_views=None, conditional_highlight=None):
@@ -33,7 +33,6 @@ class Link(object):
         self.view = view
         self.args = args or {}
         #self.kwargs = kwargs or {}
-        self.sprite = sprite
         self.icon = icon
         self.permissions = permissions or []
         self.condition = condition
@@ -72,7 +71,6 @@ class Link(object):
         if self.condition_result:
             resolved_link = ResolvedLink()
             resolved_link.text = self.text
-            resolved_link.sprite = self.sprite
             resolved_link.icon = self.icon
             resolved_link.permissions = self.permissions
             resolved_link.condition_result = self.condition_result

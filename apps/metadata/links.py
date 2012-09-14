@@ -30,7 +30,7 @@ setup_metadata_type_edit = Link(text=_(u'edit'), view='setup_metadata_type_edit'
 setup_metadata_type_delete = Link(text=_(u'delete'), view='setup_metadata_type_delete', args='object.pk', icon=icon_metadata_remove, permissions=[PERMISSION_METADATA_TYPE_DELETE])
 setup_metadata_type_create = Link(text=_(u'create new'), view='setup_metadata_type_create', icon=icon_metadata_add, permissions=[PERMISSION_METADATA_TYPE_CREATE])
 
-setup_metadata_set_list = Link(text=_(u'metadata sets'), view='setup_metadata_set_list', sprite='table', icon=icon_metadata_sets, permissions=[PERMISSION_METADATA_SET_VIEW])  # children_view_regex=[r'setup_metadata_set'])
+setup_metadata_set_list = Link(text=_(u'metadata sets'), view='setup_metadata_set_list', icon=icon_metadata_sets, permissions=[PERMISSION_METADATA_SET_VIEW])  # children_view_regex=[r'setup_metadata_set'])
 setup_metadata_set_edit = Link(text=_(u'edit'), view='setup_metadata_set_edit', args='object.pk', icon=icon_metadata_set_edit, permissions=[PERMISSION_METADATA_SET_EDIT])
 setup_metadata_set_delete = Link(text=_(u'delete'), view='setup_metadata_set_delete', args='object.pk', icon=icon_metadata_set_delete, permissions=[PERMISSION_METADATA_SET_DELETE])
 setup_metadata_set_create = Link(text=_(u'create new'), view='setup_metadata_set_create', icon=icon_metadata_set_create, permissions=[PERMISSION_METADATA_SET_CREATE])
