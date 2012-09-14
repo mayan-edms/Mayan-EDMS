@@ -11,6 +11,9 @@ class IconSet(IconSetBase):
     dictionary={
         ADD: 'add.png',
         APPLICATION_VIEW_ICONS: 'application_view_icons.png',
+        BIN_CLOSED: 'bin_closed.png',
+        BIN: 'bin.png',
+        BIN_EMPTY: 'bin_empty.png',
         BLACKBOARD_SUM: 'blackboard_sum.png',
         BOOK: 'book.png',
         BOOK_GO: 'book_go.png',

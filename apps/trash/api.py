@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from common.querysets import  CustomizableQuerySet
+from common.querysets import CustomizableQuerySet
 
 from .models import new_delete_method, TrashableQuerySetManager
 
