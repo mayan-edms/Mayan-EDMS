@@ -13,6 +13,7 @@ from permissions.models import Permission
 from acls.models import AccessEntry
 
 from .models import RecentSearch
+from .icons import icon_search
 
 
 class CustomSearchView(SearchView):
@@ -39,7 +40,7 @@ class CustomSearchView(SearchView):
             'object_list': object_list,
             'suggestion': None,
             'submit_label': _(u'Search'),
-            'submit_icon_famfam': 'zoom',
+            'submit_icon': icon_search,
             'form_title': _(u'Search'),
             'form_hide_required_text': True,
             'list_title': _(u'results for: %s') % self.query,
