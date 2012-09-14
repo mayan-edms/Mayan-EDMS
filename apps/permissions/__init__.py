@@ -4,7 +4,6 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import bind_links, register_multi_item_links
-#from project_setup.api import register_setup
 
 from .links import (role_list, role_create, role_edit, role_members,
     role_permissions, role_delete, permission_grant, permission_revoke)
@@ -16,13 +15,3 @@ register_multi_item_links(['role_permissions'], [permission_grant, permission_re
 
 # TODO: eliminate this
 permission_views = ['role_list', 'role_create', 'role_edit', 'role_members', 'role_permissions', 'role_delete']
-
-
-
-
-#register_setup(role_list)
-
-
-#    app.set_backup([app_registry.classes.ModelBackup()])
-#
-
