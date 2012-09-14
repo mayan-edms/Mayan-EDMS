@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import Link
+from navigation import Link
 
 from .icons import (icon_private_keys, icon_public_keys, icon_key_delete,
     icon_key_query, icon_key_receive, icon_key_setup)

@@ -26,7 +26,7 @@ from common.utils import encapsulate
 from common.widgets import two_state_template
 import sendfile
 from acls.models import AccessEntry
-from navigation.api import Link
+from navigation import Link
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder, POP3Email, SourceLog, IMAPEmail, LocalScanner)

@@ -3,7 +3,8 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from project_setup.api import register_setup
-from navigation.api import Link, bind_links
+from navigation import Link
+from navigation.api import bind_links
 
 from .permissions import (PERMISSION_WORKFLOW_SETUP_VIEW,
     PERMISSION_WORKFLOW_SETUP_CREATE, PERMISSION_WORKFLOW_SETUP_EDIT,

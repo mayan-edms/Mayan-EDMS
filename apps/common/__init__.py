@@ -12,9 +12,9 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
-from navigation.api import bind_links, register_top_menu, Link
+from navigation import Link
+from navigation.api import bind_links, register_top_menu
 from project_setup.api import register_setup
-#from project_tools.api import register_tool
 
 from .settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)

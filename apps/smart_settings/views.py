@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 
 from common.utils import return_type, encapsulate
 from common.widgets import exists_with_famfam
-from navigation.api import Link
+from navigation import Link
 from app_registry.models import App
 
 from .classes import SettingsNamespace

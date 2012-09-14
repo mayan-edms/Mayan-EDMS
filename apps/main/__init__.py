@@ -2,7 +2,9 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import Link, register_top_menu
+from navigation.api import register_top_menu
+
+from .links import link_home
 
 __author__ = 'Roberto Rosario'
 __copyright__ = 'Copyright 2011 Roberto Rosario'
@@ -37,4 +39,4 @@ def get_version():
 __version__ = get_version()
 
 
-register_top_menu('home', link=Link(text=_(u'home'), view='home', sprite='house'), position=0)
+register_top_menu('home', link=link_home, position=0)

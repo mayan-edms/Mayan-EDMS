@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import Link
+from navigation import Link
 
 from .icons import (icon_password_change, icon_current_user_details, icon_current_user_edit,
     icon_about, icon_license, icon_admin_site)

@@ -6,7 +6,7 @@ from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import (bind_links, register_top_menu,
-    register_model_list_columns, register_multi_item_links, Link)
+    register_model_list_columns, register_multi_item_links)
 
 from taggit.models import Tag
 from taggit.managers import TaggableManager

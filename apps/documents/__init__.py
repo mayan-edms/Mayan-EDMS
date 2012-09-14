@@ -9,7 +9,7 @@ from history.permissions import PERMISSION_HISTORY_VIEW
 from maintenance.api import MaintenanceNamespace
 from navigation.api import (bind_links, register_top_menu,
     register_model_list_columns,
-    register_sidebar_template, Link, register_multi_item_links)
+    register_sidebar_template, register_multi_item_links)
 
 # Register document type links
 from .models import (Document, DocumentPage,

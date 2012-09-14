@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import Link
+from navigation import Link
 
 from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,

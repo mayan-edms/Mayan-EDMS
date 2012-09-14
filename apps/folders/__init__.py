@@ -6,7 +6,7 @@ from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 from documents.models import Document
 from navigation.api import (bind_links, register_multi_item_links,
-    register_sidebar_template, Link)
+    register_sidebar_template)
 
 from .links import (folder_list, folder_create, folder_edit,
     folder_delete, folder_document_multiple_remove, folder_view,

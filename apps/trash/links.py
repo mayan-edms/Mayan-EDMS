@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import Link
+from navigation import Link
 
 from .icons import (icon_trash_cans, icon_trash_can_items, icon_trash_can_item_restore,
     icon_trash_can_item_delete)

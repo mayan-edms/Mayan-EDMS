@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import Link
+from navigation import Link
 from acls.permissions import ACLS_VIEW_ACL
 
 from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,

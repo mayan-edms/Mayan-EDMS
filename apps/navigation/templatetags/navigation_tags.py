@@ -13,7 +13,7 @@ from ..api import (bound_links, multi_object_navigation,
     sidebar_templates, get_context_navigation_links)
 from ..forms import MultiItemForm
 from ..utils import resolve_to_name, resolve_template_variable
-from .. import main_menu
+from ..api import main_menu
 
 register = Library()
 logger = logging.getLogger(__name__)

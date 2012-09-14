@@ -146,9 +146,9 @@ INSTALLED_APPS = (
     'compressor',
     'djangorestframework',
     # Base generic
+    'navigation',
     'permissions',
     'acls',
-    'navigation',
     'icons',
     'project_setup',
     'project_tools',
