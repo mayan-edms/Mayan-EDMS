@@ -5,7 +5,8 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
 
-from navigation.api import register_sidebar_template, bind_links, Link
+from navigation.api import register_sidebar_template, bind_links
+from navigation import Link
 from documents.models import Document
 from signaler.signals import post_update_index, pre_update_index
 
