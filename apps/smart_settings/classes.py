@@ -49,7 +49,7 @@ class SettingScope(object):
         raise NotImplemented
         
     def register_setting(self, setting):
-        self.setting = self
+        self.setting = setting
 
     def get_full_name(self):
         return '%s_%s' % (self.setting.namespace.name, self.setting.name)
@@ -72,7 +72,6 @@ class LocalScope(SettingScope):
 
     def get_value(self):
         if not self.global_name:
-            #self.global_name = '%s_%s' % (self.setting.namespace.name.upper(), self.setting.name)
             self.global_name = self.get_full_name().upper()
 
         return getattr(settings, self.global_name)
