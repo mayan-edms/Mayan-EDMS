@@ -21,7 +21,7 @@ class Icon(object):
         return IconSetBase.get_by_name(self.icon_set or ICON_SET).get_url(self, size)
 
     def display(self, size): # TODO: move to widgets?
-        return mark_safe(u'<img src="%s/icons/%s" />' % (settings.STATIC_URL, self.get_url(size)))
+        return mark_safe('<img src="%sicons/%s" />' % (settings.STATIC_URL, self.get_url(size)))
 
     def display_small(self):
         return self.display(SIZE_SMALL)
