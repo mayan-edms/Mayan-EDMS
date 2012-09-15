@@ -41,7 +41,7 @@ class SettingsNamespace(object):
 
 
 # Scopes
-class SettingScope(object):
+class ScopeBase(object):
     def get_value(self):
         raise NotImplemented
         
@@ -52,10 +52,10 @@ class SettingScope(object):
         self.setting = setting
 
     def get_full_name(self):
-        return '%s_%s' % (self.setting.namespace.name, self.setting.name)
+        return ('%s_%s' % (self.setting.namespace.name, self.setting.name)).upper()
 
 
-class LocalScope(SettingScope):
+class LocalScope(ScopeBase):
     """
     Return the value of a config value from the local settings.py file
     """
@@ -72,12 +72,12 @@ class LocalScope(SettingScope):
 
     def get_value(self):
         if not self.global_name:
-            self.global_name = self.get_full_name().upper()
+            self.global_name = self.get_full_name()
 
         return getattr(settings, self.global_name)
     
 
-class ClusterScope(SettingScope):
+class ClusterScope(ScopeBase):
     """
     Return the value of a config value from the local settings.py file
     """
@@ -93,11 +93,7 @@ class ClusterScope(SettingScope):
         return unicode(self.__unicode__())
 
     def get_value(self):
-        #if not self.global_name:
-        #    self.global_name = '%s_%s' % (self.setting.namespace.name.upper(), self.setting.name)
-        #ClusterSetting.objects.
-        return None
-        return getattr(settings, self.global_name)
+        return ClusterSetting.objects.get(name=self.get_full_name()).value
 
     def register_setting(self, *args, **kwargs):
         super(ClusterScope, self).register_setting(*args, **kwargs)
