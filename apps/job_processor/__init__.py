@@ -9,11 +9,8 @@ from django.db import transaction, DatabaseError
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
-#from backups.api import AppBackup, ModelBackup
-#from app_registry import register_app, UnableToRegister
 from scheduler.api import LocalScheduler
 from navigation.api import bind_links, register_model_list_columns
-from project_tools.api import register_tool
 from project_setup.api import register_setup
 from common.utils import encapsulate
 
@@ -43,7 +40,6 @@ def add_job_queue_jobs():
 
 
 add_job_queue_jobs()
-register_tool(tool_link)
 register_setup(setup_link)
 bind_links([JobQueue, 'job_queues'], [job_queues], menu_name='secondary_menu')
 bind_links([JobQueue], [job_queue_start, job_queue_stop, job_queue_items_pending, job_queue_items_active, job_queue_items_error])
@@ -90,10 +86,3 @@ def kill_all_node_processes():
 
 
 atexit.register(kill_all_node_processes)
-
-#try:
-#    app = register_app('job_processor', _(u'Job processor'))
-#except UnableToRegister:
-#    pass
-#else:
-#    AppBackup(app, [ModelBackup()])

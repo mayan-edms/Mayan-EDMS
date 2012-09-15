@@ -165,7 +165,7 @@ INSTALLED_APPS = (
     'mimetype',
     'clustering',
     'scheduler',
-    #'job_processor',
+    'job_processor',
     # Mayan EDMS
     'diagnostics',
     'maintenance',
