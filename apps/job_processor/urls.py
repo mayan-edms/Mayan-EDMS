@@ -9,8 +9,6 @@ urlpatterns = patterns('job_processor.views',
     url(r'^queue/(?P<job_queue_pk>\d+)/items/active/$', 'job_queue_items', {'active_jobs' :True}, 'job_queue_items_active'),
     url(r'^queue/(?P<job_queue_pk>\d+)/start/$', 'job_queue_start', (), 'job_queue_start'),
     url(r'^queue/(?P<job_queue_pk>\d+)/stop/$', 'job_queue_stop', (), 'job_queue_stop'),
-
-    url(r'^config/edit/$', 'job_queue_config_edit', (), 'job_queue_config_edit'),
     
     url(r'^job/(?P<job_item_pk>\d+)/requeue/$', 'job_requeue', (), 'job_requeue'),
     url(r'^job/(?P<job_item_pk>\d+)/delete/$', 'job_delete', (), 'job_delete'),

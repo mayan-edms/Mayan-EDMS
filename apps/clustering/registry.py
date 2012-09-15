@@ -7,11 +7,13 @@ from smart_settings import ClusterScope
 from .icons import icon_tool_link
 from .literals import (DEFAULT_NODE_HEARTBEAT_INTERVAL, DEFAULT_NODE_HEARTBEAT_TIMEOUT,
     DEFAULT_DEAD_NODE_REMOVAL_INTERVAL)
+from .links import tool_link
 
 label = _(u'Clustering')
 description = _(u'Registers nodes into a Citadel (Mayan EDMS cluster).')
 dependencies = ['app_registry', 'icons', 'navigation', 'scheduler']
 icon = icon_tool_link
+tool_links = [tool_link]
 settings = [
     {
         'name': 'NODE_HEARTBEAT_INTERVAL',
@@ -32,3 +34,8 @@ settings = [
         'scopes': [ClusterScope()]
     },
 ]
+
+# TODO: implement settings post edit clean like method for sanity checks
+#def clean(self):
+#    if self.node_heartbeat_interval > self.node_heartbeat_timeout:
+#        raise ValidationError(_(u'Heartbeat interval cannot be greater than heartbeat timeout or else nodes will always be rated as "dead"'))

@@ -14,8 +14,7 @@ from clustering.models import Node
 from permissions.models import Permission
 
 from .exceptions import JobQueueAlreadyStopped, JobQueueAlreadyStarted
-from .forms import JobProcessingConfigForm
-from .models import JobQueue, JobProcessingConfig, JobQueueItem, Worker
+from .models import JobQueue, JobQueueItem, Worker
 from .permissions import (PERMISSION_JOB_QUEUE_VIEW,
     PERMISSION_JOB_PROCESSING_CONFIGURATION, PERMISSION_JOB_QUEUE_START_STOP,
     PERMISSION_JOB_REQUEUE)
@@ -163,38 +162,7 @@ def job_queue_items(request, job_queue_pk, pending_jobs=False, error_jobs=False,
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
 
-
-def job_queue_config_edit(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_JOB_PROCESSING_CONFIGURATION])
-
-    job_processing_config = JobProcessingConfig.get()
-    
-    post_action_redirect = None
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
-    
-
-    if request.method == 'POST':
-        form = JobProcessingConfigForm(data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-            except Exception, exc:
-                messages.error(request, _(u'Error trying to edit job processing configuration; %s') % exc)
-            else:
-                messages.success(request, _(u'Job processing configuration edited successfully.'))
-                return HttpResponseRedirect(next)
-    else:
-        form = JobProcessingConfigForm(instance=job_processing_config)
-
-    return render_to_response('generic_form.html', {
-        'form': form,
-        'object': job_processing_config,
-        'title': _(u'Edit job processing configuration')
-    }, context_instance=RequestContext(request))
-    
-    
+   
 def job_queue_stop(request, job_queue_pk):
     job_queue = get_object_or_404(JobQueue, pk=job_queue_pk)
 

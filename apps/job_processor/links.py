@@ -45,9 +45,6 @@ job_queue_items_active = Link(text=_(u'active jobs'), view='job_queue_items_acti
 job_queue_start = Link(text=_(u'start'), view='job_queue_start', args='object.pk', icon=icon_job_queue_start, permissions=[PERMISSION_JOB_QUEUE_START_STOP], condition=is_not_running)
 job_queue_stop = Link(text=_(u'stop'), view='job_queue_stop', args='object.pk', icon=icon_job_queue_stop, permissions=[PERMISSION_JOB_QUEUE_START_STOP], condition=is_running)
 
-job_queue_config_edit = Link(text=_(u'edit job processing configuration'), view='job_queue_config_edit', permissions=[PERMISSION_JOB_PROCESSING_CONFIGURATION])
-setup_link = Link(text=_(u'job processing configuration'), view='job_queue_config_edit', permissions=[PERMISSION_JOB_PROCESSING_CONFIGURATION])
-
 job_requeue = Link(text=_(u'requeue job'), view='job_requeue', args='object.pk', icon=icon_job_requeue, permissions=[PERMISSION_JOB_REQUEUE], condition=is_in_error_state)
 job_delete = Link(text=_(u'delete job'), view='job_delete', args='object.pk', icon=icon_job_delete, permissions=[PERMISSION_JOB_DELETE], condition=is_in_pending_state)
 

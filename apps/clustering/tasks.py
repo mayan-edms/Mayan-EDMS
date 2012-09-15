@@ -4,7 +4,7 @@ import logging
 
 from lock_manager.decorators import simple_locking
 
-from .models import Node, ClusteringConfig
+from .models import Node
 from .signals import node_heartbeat
 
 LOCK_EXPIRE = 10
@@ -23,5 +23,5 @@ def send_heartbeat():
 @simple_locking('house_keeping', 10)
 def house_keeping():
     logger.debug('starting')
-    ClusteringConfig.cluster.check_dead_nodes()
+    Node.objects.check_dead_nodes()
     

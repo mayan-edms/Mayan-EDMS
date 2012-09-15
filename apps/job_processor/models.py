@@ -16,7 +16,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.utils.simplejson import loads, dumps
 
-from common.models import Singleton
 from clustering.models import Node
 
 from .literals import (JOB_STATE_CHOICES, JOB_STATE_PENDING,
@@ -293,14 +292,3 @@ class Worker(models.Model):
         verbose_name = _(u'worker')
         verbose_name_plural = _(u'workers')
         unique_together = ('node', 'pid')
-
-
-class JobProcessingConfig(Singleton):
-    job_queue_poll_interval = models.PositiveIntegerField(verbose_name=(u'job queue poll interval (in seconds)'), default=DEFAULT_JOB_QUEUE_POLL_INTERVAL)
-    dead_job_removal_interval = models.PositiveIntegerField(verbose_name=(u'dead job check and removal interval (in seconds)'), help_text=_(u'Interval of time to check the cluster for and remove unresponsive jobs.'), default=DEFAULT_DEAD_JOB_REMOVAL_INTERVAL)
-
-    def __unicode__(self):
-        return ugettext(u'Job queues configuration')
-
-    class Meta:
-        verbose_name = verbose_name_plural = _(u'job queues configuration')

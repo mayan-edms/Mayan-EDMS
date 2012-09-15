@@ -13,8 +13,7 @@ from permissions.models import Permission
 from common.utils import encapsulate
 from acls.models import AccessEntry
 
-from .forms import ClusteringConfigForm
-from .models import Node, ClusteringConfig
+from .models import Node
 from .permissions import PERMISSION_NODES_VIEW, PERMISSION_EDIT_CLUSTER_CONFIGURATION
 
 
@@ -70,34 +69,3 @@ def node_workers(request, node_pk):
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
-
-
-def clustering_config_edit(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_EDIT_CLUSTER_CONFIGURATION])
-
-    cluster_config = ClusteringConfig.get()
-    
-    post_action_redirect = None
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
-    
-
-    if request.method == 'POST':
-        form = ClusteringConfigForm(data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-            except Exception, exc:
-                messages.error(request, _(u'Error trying to edit cluster configuration; %s') % exc)
-            else:
-                messages.success(request, _(u'Cluster configuration edited successfully.'))
-                return HttpResponseRedirect(next)
-    else:
-        form = ClusteringConfigForm(instance=cluster_config)
-
-    return render_to_response('generic_form.html', {
-        'form': form,
-        'object': cluster_config,
-        'title': _(u'Edit cluster configuration')
-    }, context_instance=RequestContext(request))
