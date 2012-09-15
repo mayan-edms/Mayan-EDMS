@@ -42,8 +42,8 @@ urlpatterns = patterns('',
     (r'^statistics/', include('statistics.urls')),
     (r'^clustering/', include('clustering.urls')),
     (r'^trash/', include('trash.urls')),
-    #(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    #(r'^admin/', include(admin.site.urls)),
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^admin/', include(admin.site.urls)),
 )
 
 
