@@ -19,69 +19,13 @@ from job_processor.exceptions import JobQueuePushError
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
-from .models import OCRProcessingSingleton
-from .exceptions import (AlreadyQueued, ReQueueError, OCRProcessingAlreadyDisabled,
-    OCRProcessingAlreadyEnabled)
 from .api import clean_pages
-from . import ocr_job_queue, ocr_job_type
 
 
 #            {'name': _(u'document'), 'attribute': encapsulate(lambda x: document_link(x.document_version.document) if hasattr(x, 'document_version') else _(u'Missing document.'))},
 #            {'name': _(u'version'), 'attribute': 'document_version'},
 #            {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document_version.document))},
 #            {'name': _('submitted'), 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
-
-
-def ocr_disable(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method == 'POST':
-        try:
-            OCRProcessingSingleton.get().disable()
-        except OCRProcessingAlreadyDisabled:
-            messages.warning(request, _(u'OCR processing already disabled.'))
-            return HttpResponseRedirect(previous)            
-        else:
-            messages.success(request, _(u'OCR processing disabled successfully.'))
-            return HttpResponseRedirect(next)
-
-    return render_to_response('generic_confirm.html', {
-        'queue': OCRProcessingSingleton.get(),
-        'navigation_object_name': 'queue',
-        'title': _(u'Are you sure you wish to disable OCR processing?'),
-        'next': next,
-        'previous': previous,
-        'form_icon': u'control_stop_blue.png',
-    }, context_instance=RequestContext(request))
-
-
-def ocr_enable(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_ENABLE_DISABLE])
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method == 'POST':
-        try:
-            OCRProcessingSingleton.get().enable()
-        except OCRProcessingAlreadyDisabled:
-            messages.warning(request, _(u'OCR processing already enabled.'))
-            return HttpResponseRedirect(previous)            
-        else:
-            messages.success(request, _(u'OCR processing enabled successfully.'))
-            return HttpResponseRedirect(next)
-
-    return render_to_response('generic_confirm.html', {
-        'queue': OCRProcessingSingleton.get(),
-        'navigation_object_name': 'queue',
-        'title': _(u'Are you sure you wish to enable OCR processing?'),
-        'next': next,
-        'previous': previous,
-        'form_icon': u'control_play_blue.png',
-    }, context_instance=RequestContext(request))
 
 
 def submit_document_multiple(request):

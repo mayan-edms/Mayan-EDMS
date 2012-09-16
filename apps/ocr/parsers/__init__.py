@@ -6,16 +6,16 @@ import subprocess
 
 from django.utils.translation import ugettext as _
 
-#from converter import office_converter
-#from converter.office_converter import OfficeConverter
-#from converter.exceptions import OfficeConversionError
-#from documents.utils import document_save_to_temp_dir
-#from common.utils import copyfile
-#from common.settings import TEMPORARY_DIRECTORY
-#from common.textparser import TextParser as OriginalTextParser, TEXT_PARSER_MIMETYPES
+from converter import office_converter
+from converter.office_converter import OfficeConverter
+from converter.exceptions import OfficeConversionError
+from documents.utils import document_save_to_temp_dir
+from common.utils import copyfile
+from common.settings import TEMPORARY_DIRECTORY
+from common.textparser import TextParser as OriginalTextParser, TEXT_PARSER_MIMETYPES
 
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
-#from ocr.settings import PDFTOTEXT_PATH
+from ocr.settings import PDFTOTEXT_PATH
 
 
 mimetype_registry = {}

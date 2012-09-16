@@ -178,7 +178,7 @@ INSTALLED_APPS = (
     #'document_signatures',
     'linking',
     'metadata',
-    #'ocr',
+    'ocr',
     'main',
     #'installation',
     #'document_indexing',

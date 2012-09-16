@@ -28,6 +28,7 @@ Overview
 #TODO: add clustering
 #TODO: add local jobs & distributed job processing
 #TODO: removal of DISABLE_HOME_VIEW
+#TODO: removal of OCR_DEFAULT_NODE_CONCURRENT_EXECUTION, OCR_QUEUE_PROCESSING_INTERVAL
 
 What's new in Mayan EDMS v0.13
 ==============================
