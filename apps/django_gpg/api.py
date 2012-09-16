@@ -17,6 +17,8 @@ import gnupg
 from .exceptions import (GPGVerificationError, GPGSigningError,
     GPGDecryptionError, KeyDeleteError, KeyGenerationError,
     KeyFetchingError, KeyDoesNotExist, KeyImportError)
+from .icons import (icon_bad_signature, icon_no_signature, icon_signature_error,
+    icon_no_public_key, icon_good_signature, icon_valid_signature)
 
 logger = logging.getLogger(__name__)
 
@@ -51,27 +53,27 @@ SIGNATURE_STATE_VALID = 'signature valid'
 SIGNATURE_STATES = {
     SIGNATURE_STATE_BAD: {
         'text': _(u'Bad signature.'),
-        'icon': 'cross.png'
+        'icon': icon_bad_signature
     },
     SIGNATURE_STATE_NONE: {
         'text': _(u'Document not signed or invalid signature.'),
-        'icon': 'cross.png'
+        'icon': icon_no_signature
     },
     SIGNATURE_STATE_ERROR: {
         'text': _(u'Signature error.'),
-        'icon': 'cross.png'
+        'icon': icon_signature_error
     },
     SIGNATURE_STATE_NO_PUBLIC_KEY: {
         'text': _(u'Document is signed but no public key is available for verification.'),
-        'icon': 'user_silhouette.png'
+        'icon': icon_no_public_key
     },
     SIGNATURE_STATE_GOOD: {
         'text': _(u'Document is signed, and signature is good.'),
-        'icon': 'document_signature.png'
+        'icon': icon_good_signature
     },
     SIGNATURE_STATE_VALID: {
         'text': _(u'Document is signed with a valid signature.'),
-        'icon': 'document_signature.png'
+        'icon': icon_valid_signature
     },
 }
 
