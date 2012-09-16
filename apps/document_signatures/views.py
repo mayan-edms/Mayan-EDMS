@@ -20,7 +20,7 @@ from acls.models import AccessEntry
 
 from django_gpg.api import SIGNATURE_STATES
 
-from . import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
+from .permissions import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
     PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE)
 from .forms import DetachedSignatureForm
 from .models import DocumentVersionSignature
@@ -42,10 +42,9 @@ def document_verify(request, document_pk):
 
     signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
 
-    widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
     paragraphs = [
-        _(u'Signature status: %(widget)s %(text)s') % {
-            'widget': mark_safe(widget),
+        _(u'Signature status: %(icon)s %(text)s') % {
+            'icon': signature_state['icon'].display_big(),
             'text': signature_state['text']
         },
     ]

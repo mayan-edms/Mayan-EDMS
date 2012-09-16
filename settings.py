@@ -175,7 +175,7 @@ INSTALLED_APPS = (
     'folders',
     'dynamic_search',
     'document_comments',
-    #'document_signatures',
+    'document_signatures',
     'linking',
     'metadata',
     'ocr',

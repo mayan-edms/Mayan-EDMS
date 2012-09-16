@@ -2,7 +2,6 @@ import logging
 
 from django.db import models
 
-from django_gpg.runtime import gpg
 from django_gpg.exceptions import GPGVerificationError
 
 logger = logging.getLogger(__name__)
@@ -52,6 +51,8 @@ class DocumentVersionSignatureManager(models.Manager):
         return document_signature.signature_file.storage.open(document_signature.signature_file.path)
 
     def verify_signature(self, document):
+        from django_gpg.runtime import gpg
+
         document_descriptor = document.open(raw=True)
         detached_signature = None
         if self.has_detached_signature(document):
