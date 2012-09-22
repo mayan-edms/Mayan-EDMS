@@ -58,7 +58,7 @@ document_list = Link(text=_(u'all documents'), view='document_list', icon=icon_d
 document_list_recent = Link(text=_(u'recent documents'), view='document_list_recent', icon=icon_documents)
 document_create_siblings = Link(text=_(u'clone metadata'), view='document_create_siblings', args='object.id', icon=icon_create_siblings, permissions=[PERMISSION_DOCUMENT_CREATE])
 document_view_simple = Link(text=_(u'details'), view='document_view_simple', args='object.id', icon=icon_documents, permissions=[PERMISSION_DOCUMENT_VIEW])
-document_view_advanced = Link(text=_(u'properties'), view='document_view_advanced', args='object.id', icon=icon_document_properties, permissions=[PERMISSION_DOCUMENT_VIEW])
+document_info = Link(text=_(u'info'), view='document_view_advanced', args='object.id', icon=icon_document_properties, permissions=[PERMISSION_DOCUMENT_VIEW])
 document_delete = Link(text=_(u'delete'), view='document_delete', args='object.id', icon=icon_document_delete, permissions=[PERMISSION_DOCUMENT_DELETE])
 document_multiple_delete = Link(text=_(u'delete'), view='document_multiple_delete', icon=icon_document_delete, permissions=[PERMISSION_DOCUMENT_DELETE])
 document_edit = Link(text=_(u'edit'), view='document_edit', args='object.id', icon=icon_document_edit, permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT])

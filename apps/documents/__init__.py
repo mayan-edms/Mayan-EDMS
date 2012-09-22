@@ -22,7 +22,7 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
     PERMISSION_DOCUMENT_NEW_VERSION)
 from .widgets import document_thumbnail
 from .links import (document_list, document_list_recent,
-    document_create_siblings, document_view_simple, document_view_advanced,
+    document_create_siblings, document_view_simple, document_info,
     document_delete, document_edit, document_download, document_version_download,
     document_find_duplicates, document_find_all_duplicates,
     document_update_page_count, document_clear_transformations,
@@ -106,7 +106,7 @@ register_sidebar_template(['document_list_recent'], 'recent_document_list_help.h
 register_sidebar_template(['document_type_list'], 'document_types_help.html')
 
 bind_links([Document], [document_view_simple], menu_name='form_header', position=0)
-bind_links([Document], [document_view_advanced], menu_name='form_header', position=1)
+bind_links([Document], [document_info], menu_name='form_header', position=1)
 bind_links([Document], [document_history_view], menu_name='form_header')
 bind_links([Document], [document_version_list], menu_name='form_header')
 
