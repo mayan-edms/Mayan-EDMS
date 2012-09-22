@@ -2,22 +2,24 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 
 from permissions.models import Permission
 
-from .api import bootstrap_options, nuke_database
+from .models import BootstrapSetup
+from .classes import Cleanup
 from .permissions import PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE
+from .icons import icon_bootstrap_execute, icon_nuke_database
 
 
 def bootstrap_type_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_EXECUTE])
 
     context = {
-        'object_list': bootstrap_options.values(),
+        'object_list': BootstrapSetup.objects.all(),
         'title': _(u'database bootstrap setups'),
         'hide_link': True,
         'extra_columns': [
@@ -29,9 +31,9 @@ def bootstrap_type_list(request):
         context_instance=RequestContext(request))
 
 
-def bootstrap_execute(request, bootstrap_name):
+def bootstrap_execute(request, bootstrap_setup_pk):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_EXECUTE])
-    bootstrap = bootstrap_options[bootstrap_name]
+    bootstrap_setup = get_object_or_404(BootstrapSetup, pk=bootstrap_setup_pk)
 
     post_action_redirect = reverse('bootstrap_type_list')
 
@@ -40,7 +42,7 @@ def bootstrap_execute(request, bootstrap_name):
 
     if request.method == 'POST':
         try:
-            bootstrap.execute()
+            bootstrap_setup.execute()
         except Exception, exc:
             messages.error(request, _(u'Error executing bootstrap setup; %s') % exc)
         else:
@@ -52,7 +54,7 @@ def bootstrap_execute(request, bootstrap_name):
         'delete_view': False,
         'previous': previous,
         'next': next,
-        'form_icon': u'database_lightning.png',
+        'form_icon': icon_bootstrap_execute,
         'object': bootstrap,
     }
 
@@ -72,7 +74,7 @@ def erase_database_view(request):
 
     if request.method == 'POST':
         try:
-            nuke_database()
+            Cleanup.execute_all()
         except Exception, exc:
             messages.error(request, _(u'Error erasing database; %s') % exc)
         else:
@@ -83,7 +85,7 @@ def erase_database_view(request):
         'delete_view': False,
         'previous': previous,
         'next': next,
-        'form_icon': u'radioactivity.png',
+        'form_icon': icon_nuke_database,
     }
 
     context['title'] = _(u'Are you sure you wish to erase the entire database and document storage?')
