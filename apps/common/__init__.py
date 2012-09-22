@@ -14,7 +14,6 @@ from django.contrib.auth.models import User
 
 from navigation import Link
 from navigation.api import bind_links, register_top_menu
-from project_setup.api import register_setup
 
 from .settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
@@ -74,8 +73,3 @@ def auto_admin_account_passwd_change(sender, instance, **kwargs):
 # TODO: Fix
 #if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
 #    setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())
-
-#if 'django.contrib.admin' in settings.INSTALLED_APPS:
-#    register_setup(admin_site)
-
-#app.set_backup([ModelBackup()])
