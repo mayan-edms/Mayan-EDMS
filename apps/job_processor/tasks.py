@@ -10,11 +10,7 @@ from clustering.models import Node
 from .models import JobQueue, JobQueueItem
 from .exceptions import JobQueueNoPendingJobs
 from .literals import JOB_QUEUE_STATE_STARTED
-
-LOCK_EXPIRE = 10
-MAX_CPU_LOAD = 60.0
-MAX_MEMORY_USAGE = 60.0
-NODE_MAX_WORKERS = len(psutil.cpu_percent(interval=0.1, percpu=True))  # Get CPU/cores count
+from .settings import MAX_CPU_LOAD, MAX_MEMORY_USAGE, NODE_MAX_WORKERS
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +21,7 @@ def job_queue_poll():
     # Poll job queues if node is not overloaded
     lock_id = u'job_queue_poll'
     try:
-        lock = Lock.acquire_lock(lock_id, LOCK_EXPIRE)
+        lock = Lock.acquire_lock(lock_id)
     except LockError:
         pass
     else:
