@@ -92,6 +92,7 @@ Afterwards migrate existing database schema with::
     $ ./manage.py migrate sources
     $ ./manage.py migrate app_registry
     $ ./manage.py migrate backups
+    $ ./manage.py migrate smart_settings
 
 Issue the following command to index existing documents in the new full text search database::
 
