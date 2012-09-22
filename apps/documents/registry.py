@@ -27,7 +27,6 @@ def default_uuid():
     return unicode(uuid.uuid4())
 
 
-name = 'documents'
 label = _(u'Documents')
 description = _(u'Base app that handles documents instances.')
 icon = icon_documents
