@@ -17,7 +17,6 @@ from navigation.api import bind_links, register_top_menu
 
 from .settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
-from .utils import validate_path
 from .links import (link_password_change, link_current_user_details,
     link_current_user_edit, link_about, link_license, link_admin_site)
 from .models import AutoAdminSingleton
@@ -69,7 +68,3 @@ def auto_admin_account_passwd_change(sender, instance, **kwargs):
     if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
         # Only delete the auto admin properties when the password has been changed
         auto_admin_properties.delete(force=True)
-
-# TODO: Fix
-#if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
-#    setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())
