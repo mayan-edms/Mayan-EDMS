@@ -1,18 +1,19 @@
 {% load i18n %}
+{% load icon_tags %}
+
 <link rel="stylesheet" href="{{ STATIC_URL }}css/override.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{{ STATIC_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />
     
 <p class="tc">
     {% trans 'Free Open Source, Django based electronic document management system' %}
 </p>
 <p class="tc">
-    <span class="famfam active famfam-world_go"></span><a href="http://www.mayan-edms.com">http://www.mayan-edms.com</a>
+    {% icon_small 'world_go' %}<a href="http://www.mayan-edms.com">http://www.mayan-edms.com</a>
 </p>
 <p class="tc">
-    <span class="famfam active famfam-book_open"></span><a href="http://readthedocs.org/docs/mayan/en/latest/">http://mayan.readthedocs.org/</a>
+    {% icon_small 'book_open' %}<a href="http://readthedocs.org/docs/mayan/en/latest/">http://mayan.readthedocs.org/</a>
 </p>
 <p class="tc">
-    <span class="famfam active famfam-wrench"></span><a href="http://www.github.com/rosarior/mayan/">http://www.github.com/rosarior/mayan/</a>
+    {% icon_small 'wrench' %}<a href="http://www.github.com/rosarior/mayan/">http://www.github.com/rosarior/mayan/</a>
 </p>
 <p class="tc">
     {% trans "Released under the GPL V3 License" %}
