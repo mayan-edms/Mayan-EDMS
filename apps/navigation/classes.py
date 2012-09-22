@@ -23,6 +23,55 @@ class ResolvedLink(object):
 
 
 class Link(object):
+    link_bindings = {}
+
+    @classmethod
+    def get_context_navigation_links(cls, context, menu_name=None, links_dict=link_bindings):
+        request = Variable('request').resolve(context)
+        current_path = request.META['PATH_INFO']
+        current_view = resolve_to_name(current_path)
+        context_links = {}
+        
+        # Don't fudge with the original global dictionary
+        # TODO: fix this
+        links_dict = links_dict.copy()
+
+        # Dynamic sources
+        # TODO: improve name to 'injected...'
+        try:
+            """
+            Check for and inject a temporary navigation dictionary
+            """
+            temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
+            if temp_navigation_links:
+                links_dict.update(temp_navigation_links)
+        except VariableDoesNotExist:
+            pass
+
+        try:
+            view_links = links_dict[menu_name][current_view]['links']
+            if view_links:
+                context_links.setdefault(None, [])
+
+            for link in view_links:
+                context_links[None].append(link.resolve(context, request=request, current_path=current_path, current_view=current_view))
+        except KeyError:
+            pass
+
+        for resolved_object, object_properties in get_navigation_objects(context).items():
+            try:
+                resolved_object_reference = resolved_object
+                object_links = links_dict[menu_name][type(resolved_object_reference)]['links']
+                if object_links:
+                    context_links.setdefault(resolved_object_reference, [])
+
+                for link in object_links:
+                    context_links[resolved_object_reference].append(link.resolve(context, request=request, current_path=current_path, current_view=current_view))
+            except KeyError:
+                pass
+
+        return context_links
+
     def __init__(self, text, view, klass=None, args=None, icon=None,
         permissions=None, condition=None, conditional_disable=None,
         description=None, dont_mark_active=False, children_view_regex=None,
@@ -138,3 +187,34 @@ class Link(object):
                         resolved_link.active = True
 
             return resolved_link
+'''
+    def bind(self, sources, menu_name=None, position=0):
+        """
+        Associate a link to a model, a view, or an url
+        """
+        self.__class__.link_bindings.setdefault(menu_name, {})
+        for source in sources:
+            self.__class__.link_bindings[menu_name].setdefault(source, {'links': []})
+            try:
+                self.__class__.link_bindings[menu_name][source]['links'].extend(links)
+            except TypeError:
+                # Try to see if links is a single link
+                self.__class__.link_bindings[menu_name][source]['links'].append(links)
+'''
+"""
+register_model_list_columns(Document, [
+        {'name':_(u'thumbnail'), 'attribute':
+            encapsulate(lambda x: document_thumbnail(x, gallery_name='document_list', title=x.filename))
+        },
+    ])
+"""
+class ModelListColumn(object):
+    _model_list_columns = {}
+
+    @classmethod
+    def get_model(cls, model):
+        return cls._model_list_columns.get(model)
+
+    def __init__(self, model, name, attribute):
+        self.__class__._model_list_columns.setdefault(model, [])
+        self.__class__._model_list_columns[model].extend(columns)
