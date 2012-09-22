@@ -238,6 +238,8 @@ def document_edit(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, document)
 
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
     if request.method == 'POST':
         old_document = copy.copy(document)
         form = DocumentForm_edit(request.POST, instance=document)
@@ -257,7 +259,7 @@ def document_edit(request, document_id):
             RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
-            return HttpResponseRedirect(document.get_absolute_url())
+            return HttpResponseRedirect(previous)
     else:
         form = DocumentForm_edit(instance=document, initial={
             'new_filename': document.filename})
@@ -265,6 +267,7 @@ def document_edit(request, document_id):
     return render_to_response('generic_form.html', {
         'form': form,
         'object': document,
+        'previous': previous,
     }, context_instance=RequestContext(request))
 
 
