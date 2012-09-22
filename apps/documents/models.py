@@ -22,21 +22,10 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 import converter
-#from converter import api as converter_api
-#from converter.api import get_page_count
-#from converter.api import get_available_transformations_choices
-#from converter.api import convert
-#from converter.exceptions import UnknownFileFormat, UnkownConvertError
-#from mimetype.api import (get_mimetype, get_icon_file_path,
-#    get_error_icon_file_path)
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
 
 from mimetype.icons import icon_file_extension_error
-
-#from .settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
-#    STORAGE_BACKEND, DISPLAY_SIZE, CACHE_PATH,
-#    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 
 from .managers import DocumentPageTransformationManager, RecentDocumentManager
 from .utils import document_save_to_temp_dir
@@ -137,6 +126,7 @@ class Document(models.Model):
 
     def get_valid_image(self, size=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
         from converter.api import convert
+        from .settings import DISPLAY_SIZE
         
         if not size:
             size = DISPLAY_SIZE
@@ -147,7 +137,7 @@ class Document(models.Model):
         return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
 
     def get_image(self, size=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
-        from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+        from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, DISPLAY_SIZE
         if not size:
             size = DISPLAY_SIZE
 
