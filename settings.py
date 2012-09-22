@@ -189,7 +189,7 @@ INSTALLED_APPS = (
     #'workflows',
     #'checkouts',
     'rest_api',
-    #'bootstrap',
+    'bootstrap',
     'statistics',
     'trash',
 
