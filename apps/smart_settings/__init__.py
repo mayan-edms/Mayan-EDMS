@@ -1,8 +1,4 @@
 from __future__ import absolute_import
 
-from project_setup.api import register_setup
-
+# Import these here to make them more easily available
 from .classes import SettingsNamespace, LocalScope, ClusterScope
-from .links import link_settings
-
-register_setup(link_settings)
