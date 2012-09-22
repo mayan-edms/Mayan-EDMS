@@ -19,6 +19,7 @@ from project_setup.api import register_setup
 from project_tools.api import register_tool
 from statistics.api import register_statistics
 from navigation.api import register_top_menu
+from bootstrap.classes import Cleanup
 
 #from .classes import AppBackup, StorageModuleBase, Setting
 
@@ -97,6 +98,10 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
                         for index, link in enumerate(getattr(registration, 'menu_links', [])):
                             logger.debug('menu_link: %s' % link)
                             register_top_menu(name='%s.%s' % (app_name, index), link=link)
+
+                        for cleanup_function in getattr(registration, 'cleanup_functions', []):
+                            logger.debug('cleanup_function: %s' % cleanup_function)
+                            Cleanup(cleanup_function)
 
            
     #def set_backup(self, *args, **kwargs):
