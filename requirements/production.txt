@@ -13,8 +13,9 @@ django-taggit==0.9.3
 
 # Mimetypes
 
--e git://github.com/ahupp/python-magic.git@a75cf0a4a7790eb106155c947af9612f15693b6e#egg=python-magic
+python-magic==0.4.3
 
+# PDF
 slate==0.3
 pdfminer==20110227
 
