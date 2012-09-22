@@ -87,15 +87,15 @@
 
               {% if previous %}
                   <a href="#header" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}' class="button">
-                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/cross.png"  alt="{% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}"/> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans "Cancel" %}{% endif %}
+                    {% if cancel_icon %}
+                        {{ cancel_icon.display_small }}
+                    {% else %}
+                        {{ cancel_icon_default.display_small }}
+                    {% endif %}
+                      
+                    {% if cancel_label %}{{ cancel_label }}{% else %}{% trans "Cancel" %}{% endif %}
                   </a>
               {% endif %}
-
-            {% comment %}
-            <a href="#header" class="button">
-                <img src="{{ STATIC_URL }}web_theme_media/images/icons/cross.png" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
-            </a>
-            {% endcomment %}
         </div>
         {% endif %}
     </form>
