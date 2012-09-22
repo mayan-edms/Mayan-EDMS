@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from django.conf import settings
 from django.utils.importlib import import_module
 from django.utils.translation import ugettext_lazy as _
+from django.db import transaction, DatabaseError
 
 from .models import ClusterSetting
 
@@ -95,10 +96,13 @@ class ClusterScope(ScopeBase):
     def get_value(self):
         return ClusterSetting.objects.get(name=self.get_full_name()).value
 
+    @transaction.commit_on_success
     def register_setting(self, *args, **kwargs):
         super(ClusterScope, self).register_setting(*args, **kwargs)
-        cluster_settings = ClusterSetting.objects.get_or_create(name=self.get_full_name(), defaults={'value': getattr(self.setting, 'default', None)})
-
+        try:
+            cluster_settings = ClusterSetting.objects.get_or_create(name=self.get_full_name(), defaults={'value': getattr(self.setting, 'default', None)})
+        except DatabaseError:
+            transaction.rollback()
 
 # TODO: Organization - Organizaition wide preferences
 # TODO: User - user preferences
