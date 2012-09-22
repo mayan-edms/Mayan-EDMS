@@ -140,6 +140,7 @@ class IconSet(IconSetBase):
         VCARD: 'vcard.png',
         VCARD_EDIT: 'vcard_edit.png',  
         WRENCH: 'wrench.png',
+        WORLD_GO: 'world_go.png',
         XHTML: 'xhtml.png',
         XHTML_GO: 'xhtml_go.png',
         XHTML_ADD: 'xhtml_add.png',
