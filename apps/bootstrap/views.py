@@ -46,7 +46,7 @@ def bootstrap_execute(request, bootstrap_setup_pk):
         except Exception, exc:
             messages.error(request, _(u'Error executing bootstrap setup; %s') % exc)
         else:
-            messages.success(request, _(u'Bootstrap setup "%s" executed successfully.') % bootstrap)
+            messages.success(request, _(u'Bootstrap setup "%s" executed successfully.') % bootstrap_setup)
             return HttpResponseRedirect(next)
 
     context = {
@@ -55,10 +55,10 @@ def bootstrap_execute(request, bootstrap_setup_pk):
         'previous': previous,
         'next': next,
         'form_icon': icon_bootstrap_execute,
-        'object': bootstrap,
+        'object': bootstrap_setup,
     }
 
-    context['title'] = _(u'Are you sure you wish to execute the database bootstrap named: %s?') % bootstrap.label
+    context['title'] = _(u'Are you sure you wish to execute the database bootstrap named: %s?') % bootstrap_setup
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
