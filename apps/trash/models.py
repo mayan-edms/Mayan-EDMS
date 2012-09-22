@@ -4,19 +4,36 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.db import transaction, DatabaseError
 
 from common.managers import CustomizableQuerySetManager
+from common.querysets import CustomizableQuerySet
+from common.models import TranslatableLabelMixin
 
 
 class TrashCanManager(models.Manager):
-    def get_or_create(self, *args, **kwargs):
-        instance, created = super(TrashCanManager, self).get_or_create(*args, **kwargs)
-        instance.label = kwargs.get('defaults', {}).get('label')
-        instance.save()
-        return instance, created
+    @transaction.commit_on_success
+    def make_trashable(self, full_model_name, label=None):
+        app_name, model_name = full_model_name.split('.')
+        model = models.get_model(app_name, model_name)
+        if model:
+            try:
+                trash_can, created = self.model.objects.get_or_create(name=app_name)
+            except DatabaseError:
+                transaction.rollback()
+            else:
+                trash_can.label = label or model._meta.verbose_name_plural
+                old_manager = getattr(model, '_default_manager')
+                model.add_to_class('objects', CustomizableQuerySet.as_manager(TrashableQuerySetManager))
+                model._default_manager = model.objects
+                model.add_to_class('trash_passthru', old_manager)
+
+                old_delete_method = model.delete
+                model.delete = new_delete_method(trash_can, old_delete_method)
+
         
-        
-class TrashCan(models.Model):
+class TrashCan(TranslatableLabelMixin, models.Model):
+    translatables = ['label']
     trash_can_labels = {}
     
     name = models.CharField(max_length=32, verbose_name=_(u'name'), unique=True)
@@ -24,15 +41,7 @@ class TrashCan(models.Model):
     objects = TrashCanManager()
 
     def __unicode__(self):
-        return unicode(self.label) or self.names
-
-    def _get_label(self):
-        return TrashCan.trash_can_labels.get(self.name)
-
-    def _set_label(self, value):
-        TrashCan.trash_can_labels[self.name] = value
-
-    label = property(_get_label, _set_label)
+        return unicode(self.label) or self.name
 
     def put(self, obj):
         # TODO: check if obj is trashable model
