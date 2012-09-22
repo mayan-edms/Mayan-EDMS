@@ -45,3 +45,8 @@ class RecentDocumentManager(models.Manager):
             return document_model.objects.filter(recentdocument__user=user)
         else:
             return []
+
+
+class DocumentTypeManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)

@@ -27,7 +27,8 @@ from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
 
 from mimetype.icons import icon_file_extension_error
 
-from .managers import DocumentPageTransformationManager, RecentDocumentManager
+from .managers import (DocumentPageTransformationManager, RecentDocumentManager,
+    DocumentTypeManager)
 from .utils import document_save_to_temp_dir
 from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
     VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
@@ -55,10 +56,16 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
+    # TODO: make unique
     name = models.CharField(max_length=32, verbose_name=_(u'name'))
+
+    objects = DocumentTypeManager()
 
     def __unicode__(self):
         return self.name
+
+    def natural_key(self):
+        return (self.name)
 
     class Meta:
         verbose_name = _(u'document type')
