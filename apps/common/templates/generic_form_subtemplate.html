@@ -79,7 +79,7 @@
                 {% if submit_icon %}
                     {{ submit_icon.display_small }}
                 {% else %}
-                    {{ submit_icon_default.display_small }}
+                    {{ icon_submit_default.display_small }}
                 {% endif %}
 
                 {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}{% endif %}
@@ -90,7 +90,7 @@
                     {% if cancel_icon %}
                         {{ cancel_icon.display_small }}
                     {% else %}
-                        {{ cancel_icon_default.display_small }}
+                        {{ icon_cancel_default.display_small }}
                     {% endif %}
                       
                     {% if cancel_label %}{{ cancel_label }}{% else %}{% trans "Cancel" %}{% endif %}
