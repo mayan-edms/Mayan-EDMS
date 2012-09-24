@@ -19,7 +19,7 @@ from project_setup.api import register_setup
 from project_tools.api import register_tool
 from statistics.api import register_statistics
 from navigation.api import register_top_menu
-from bootstrap.classes import Cleanup
+from bootstrap.classes import Cleanup, BootstrapModel
 
 #from .classes import AppBackup, StorageModuleBase, Setting
 
@@ -103,7 +103,11 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
                             logger.debug('cleanup_function: %s' % cleanup_function)
                             Cleanup(cleanup_function)
 
-           
+                        for bootstrap_model in getattr(registration, 'bootstrap_models', []):
+                            logger.debug('bootstrap_model: %s' % bootstrap_model)
+                            BootstrapModel(model_name=bootstrap_model, app_name=app_name)
+
+
     #def set_backup(self, *args, **kwargs):
     #    return AppBackup(self, *args, **kwargs)
        
