@@ -26,3 +26,6 @@ FIXTURE_TYPE_PK_NULLIFIER = {
     FIXTURE_TYPE_YAML: lambda x: re.sub('pk: [0-9]{1,5}', 'pk: null', x),
     FIXTURE_TYPE_XML: lambda x: re.sub('pk="[0-9]{1,5}"', 'pk=null', x),
 }
+
+COMMAND_LOADDATA = 'loaddata'
+COMMAND_DUMPDATA = 'dumpdata'

@@ -16,3 +16,29 @@ class Cleanup(object):
         self.name = name
         self.function = function
         self.__class__._registry[self.name] = self
+
+
+class BootstrapModel(object):
+    """
+    Class used to keep track of all the models to be dumped to create a
+    bootstrap setup from the current setup in use
+    """
+    _registry = {}
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry.values()
+
+    def get_fullname(self):
+        return '.'.join([self.app_name, self.model_name])
+
+    def __init__(self, model_name, app_name=None):
+        app_name_splitted = None
+        if '.' in model_name:
+            app_name_splitted, model_name = model_name.split('.')
+        
+        self.app_name = app_name_splitted or app_name
+        if not self.app_name:
+            raise Exception('Pass either a dotted app plus model name or a model name and a separate app name')
+        self.model_name = model_name
+        self.__class__._registry[self.get_fullname()] = self

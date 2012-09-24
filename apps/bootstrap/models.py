@@ -7,17 +7,21 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core import management
 
-from .literals import FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE
+from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE,
+    FIXTURE_TYPE_PK_NULLIFIER, COMMAND_LOADDATA)
+from .managers import BootstrapSetupManager
 
 
 class BootstrapSetup(models.Model):
     """
-    Model to store the fixture for a pre configured setup
+    Model to store the fixture for a pre configured setup.
     """
     name = models.CharField(max_length=128, verbose_name=_(u'name'), unique=True)
     description = models.TextField(verbose_name=_(u'description'), blank=True)
-    fixture = models.TextField(verbose_name=_(u'fixture'))
+    fixture = models.TextField(verbose_name=_(u'fixture'), help_text=_(u'These are the actual database structure creation instructions.'))
     type = models.CharField(max_length=16, verbose_name=_(u'type'), choices=FIXTURE_TYPES_CHOICES)
+
+    objects = BootstrapSetupManager()
 
     def __unicode__(self):
         return self.name
@@ -35,9 +39,27 @@ class BootstrapSetup(models.Model):
         with open(filepath, 'w') as file_handle:
             file_handle.write(self.fixture)
 
-        management.call_command('loaddata', filepath, verbosity=0)
+        management.call_command(COMMAND_LOADDATA, filepath, verbosity=0)
         os.unlink(filepath)
+
+    def compress(self):
+        """
+        Return a compacted and compressed version of the BootstrapSetup
+        instance, meant for download.
+        """
+        return ''
+
+    def sanitize(self):
+        """
+        Remove pk values
+        """
+        self.fixture = FIXTURE_TYPE_PK_NULLIFIER[self.type](self.fixture)
+
+    def save(self, *args, **kwargs):
+        self.sanitize()
+        return super(BootstrapSetup, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _(u'bootstrap setup')
         verbose_name_plural = _(u'bootstrap setups')
+        ordering = ['name']

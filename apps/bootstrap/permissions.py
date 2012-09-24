@@ -6,5 +6,10 @@ from permissions.models import PermissionNamespace, Permission
 
 namespace = PermissionNamespace('bootstrap', _(u'Database bootstrap'))
 
-PERMISSION_BOOTSTRAP_EXECUTE = Permission.objects.register(namespace, 'bootstrap_execute', _(u'Execute document bootstraps'))
+PERMISSION_BOOTSTRAP_VIEW = Permission.objects.register(namespace, 'bootstrap_view', _(u'View bootstrap setups'))
+PERMISSION_BOOTSTRAP_CREATE = Permission.objects.register(namespace, 'bootstrap_create', _(u'Create bootstrap setups'))
+PERMISSION_BOOTSTRAP_EDIT = Permission.objects.register(namespace, 'bootstrap_edit', _(u'Edit bootstrap setups'))
+PERMISSION_BOOTSTRAP_DELETE = Permission.objects.register(namespace, 'bootstrap_delete', _(u'Delete bootstrap setups'))
+PERMISSION_BOOTSTRAP_EXECUTE = Permission.objects.register(namespace, 'bootstrap_execute', _(u'Execute bootstrap setups'))
+PERMISSION_BOOTSTRAP_DUMP = Permission.objects.register(namespace, 'bootstrap_dump', _(u'Dump the current project\s setup into a bootstrap setup'))
 PERMISSION_NUKE_DATABASE = Permission.objects.register(namespace, 'nuke_database', _(u'Erase the entire database and document storage'))
