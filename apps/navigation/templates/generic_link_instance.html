@@ -1,7 +1,9 @@
 {% load main_settings_tags %}
+{% load default_icons %}
+{% default_icons %}
 
 {% if link.disabled %}
-    <a class="{{ link.class }}" style="cursor: default;" href="#">{{ link.icon.display_small }}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
+    <a class="{{ link.class }}" style="cursor: default;" href="#">{{ link.icon.display_small }}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}{{ icon_current_link.display_small }}{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
 {% else %}
-    {% if link.condition_result %}<a class="{{ link.class }}" href="{{ link.url }}">{{ link.icon.display_small }}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}{% endif %}
+    {% if link.condition_result %}<a class="{{ link.class }}" href="{{ link.url }}">{{ link.icon.display_small }}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}{{ icon_current_link.display_small }}{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}{% endif %}
 {% endif %}
