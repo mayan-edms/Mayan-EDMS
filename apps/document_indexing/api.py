@@ -8,18 +8,18 @@ from django.db.models import Q
 from metadata.classes import MetadataClass
 
 from .models import Index, IndexInstanceNode, DocumentRenameCount
-from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
-    MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
+#from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
+ #   MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
 from .filesystem import (fs_create_index_directory,
     fs_create_document_link, fs_delete_document_link,
     fs_delete_index_directory, assemble_suffixed_filename)
 from .exceptions import MaxSuffixCountReached
 
-if SLUGIFY_PATHS == False:
-    # Do not slugify path or filenames and extensions
-    SLUGIFY_FUNCTION = lambda x: x
-else:
-    SLUGIFY_FUNCTION = slugify
+#if SLUGIFY_PATHS == False:
+#    # Do not slugify path or filenames and extensions
+#    SLUGIFY_FUNCTION = lambda x: x
+#else:
+SLUGIFY_FUNCTION = slugify
 
 
 # External functions

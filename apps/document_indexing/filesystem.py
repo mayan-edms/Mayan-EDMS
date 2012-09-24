@@ -5,7 +5,7 @@ import os
 
 from django.utils.translation import ugettext_lazy as _
 
-from .conf.settings import (FILESYSTEM_SERVING, SUFFIX_SEPARATOR)
+#from .conf.settings import (FILESYSTEM_SERVING, SUFFIX_SEPARATOR)
 
 
 def assemble_suffixed_filename(filename, suffix=0):

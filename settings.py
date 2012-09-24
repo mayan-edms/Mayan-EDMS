@@ -181,7 +181,7 @@ INSTALLED_APPS = (
     'ocr',
     'main',
     #'installation',
-    #'document_indexing',
+    'document_indexing',
     #'sources',
     #'mailer',
     #'document_acls',
