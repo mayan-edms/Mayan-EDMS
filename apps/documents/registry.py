@@ -32,6 +32,7 @@ description = _(u'Base app that handles documents instances.')
 icon = icon_documents
 dependencies = ['app_registry', 'icons', 'storage', 'permissions', 'navigation']
 setup_links = [document_type_setup]
+bootstrap_models = ['documenttype', 'documenttypefilename']
 #AppBackup(app, [ModelBackup(), FileBackup(document_settings.STORAGE_BACKEND)])
 
 settings = [
