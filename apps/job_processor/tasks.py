@@ -36,8 +36,7 @@ def job_queue_poll():
                     logger.debug('no pending jobs for job queue: %s' % job_queue)
         else:
             logger.debug('CPU load or memory usage over limit')
-    finally:
-        lock.release()
+            lock.release()
 
 
 @simple_locking('house_keeping', 10)
