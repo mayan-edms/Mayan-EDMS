@@ -51,21 +51,20 @@ def document_post_save(sender, instance, **kwargs):
                 pass
 
 
-def init_ocr_app():
-    bind_links([Document], [submit_document])
-    bind_links([OCRProcessingSingleton], [ocr_disable, ocr_enable])
+bind_links([Document], [submit_document])
+bind_links([OCRProcessingSingleton], [ocr_disable, ocr_enable])
 
-    #namespace = MaintenanceNamespace(label=_(u'OCR'))
-    #namespace.create_tool(all_document_ocr_cleanup)
+#namespace = MaintenanceNamespace(label=_(u'OCR'))
+#namespace.create_tool(all_document_ocr_cleanup)
 
-    register_multi_item_links(['folder_view', 'search', 'results', 'index_instance_node_view', 'document_find_duplicates', 'document_type_document_list', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
+register_multi_item_links(['folder_view', 'search', 'results', 'index_instance_node_view', 'document_find_duplicates', 'document_type_document_list', 'document_group_view', 'document_list', 'document_list_recent'], [submit_document_multiple])
 
-    class_permissions(Document, [
-        PERMISSION_OCR_DOCUMENT,
-    ])
+class_permissions(Document, [
+    PERMISSION_OCR_DOCUMENT,
+])
 
-    create_ocr_job_queue()
-    ocr_job_type = JobType('ocr', _(u'OCR'), do_document_ocr)
+create_ocr_job_queue()
+ocr_job_type = JobType('ocr', _(u'OCR'), do_document_ocr)
 
-    Document.add_to_class('submit_for_ocr', lambda document: ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk))
-    DocumentVersion.add_to_class('submit_for_ocr', lambda document_version: ocr_job_queue.push(ocr_job_type, document_version_pk=document_version.pk))
+Document.add_to_class('submit_for_ocr', lambda document: ocr_job_queue.push(ocr_job_type, document_version_pk=document.latest_version.pk))
+DocumentVersion.add_to_class('submit_for_ocr', lambda document_version: ocr_job_queue.push(ocr_job_type, document_version_pk=document_version.pk))
