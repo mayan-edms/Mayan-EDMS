@@ -5,7 +5,6 @@ import os
 
 from django.utils.translation import ugettext_lazy as _
 
-#from .conf.settings import (FILESYSTEM_SERVING, SUFFIX_SEPARATOR)
 
 
 def assemble_suffixed_filename(filename, suffix=0):
@@ -13,6 +12,7 @@ def assemble_suffixed_filename(filename, suffix=0):
     Split document filename, to attach suffix to the name part then
     re attacht the extension
     """
+    from .settings import SUFFIX_SEPARATOR
 
     if suffix:
         name, extension = os.path.splitext(filename)
@@ -40,6 +40,8 @@ def get_instance_path(index_instance):
 
 
 def fs_create_index_directory(index_instance):
+    from .settings import FILESYSTEM_SERVING
+
     if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
         target_directory = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance)])
         try:
@@ -52,6 +54,8 @@ def fs_create_index_directory(index_instance):
 
 
 def fs_create_document_link(index_instance, document, suffix=0):
+    from .settings import FILESYSTEM_SERVING
+
     if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
         filename = assemble_suffixed_filename(document.file_filename, suffix)
         filepath = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance), filename])
@@ -72,6 +76,8 @@ def fs_create_document_link(index_instance, document, suffix=0):
 
 
 def fs_delete_document_link(index_instance, document, suffix=0):
+    from .settings import FILESYSTEM_SERVING
+
     if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
         filename = assemble_suffixed_filename(document.file_filename, suffix)
         filepath = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance), filename])
@@ -85,6 +91,8 @@ def fs_delete_document_link(index_instance, document, suffix=0):
 
 
 def fs_delete_index_directory(index_instance):
+    from .settings import FILESYSTEM_SERVING
+
     if index_instance.index_template_node.index.name in FILESYSTEM_SERVING:
         target_directory = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance)])
         try:
@@ -97,6 +105,8 @@ def fs_delete_index_directory(index_instance):
 
 
 def fs_delete_directory_recusive(index):
+    from .settings import FILESYSTEM_SERVING
+
     if index.name in FILESYSTEM_SERVING:
         path = FILESYSTEM_SERVING[index.name]
         for dirpath, dirnames, filenames in os.walk(path, topdown=False):
