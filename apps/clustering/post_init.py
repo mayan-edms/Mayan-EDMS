@@ -11,6 +11,7 @@ from .links import tool_link, node_list
 from .models import Node
 from .settings import NODE_HEARTBEAT_INTERVAL, DEAD_NODE_REMOVAL_INTERVAL
 
+
 @transaction.commit_on_success
 def add_clustering_jobs():
     clustering_scheduler = LocalScheduler('clustering', _(u'Clustering'))
@@ -23,6 +24,5 @@ def add_clustering_jobs():
     clustering_scheduler.start()
 
 
-def init_clustering():
-    add_clustering_jobs()
-    bind_links([Node, 'node_list'], [node_list], menu_name='secondary_menu')
+add_clustering_jobs()
+bind_links([Node, 'node_list'], [node_list], menu_name='secondary_menu')

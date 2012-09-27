@@ -3,24 +3,18 @@ from __future__ import absolute_import
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.core.exceptions import ObjectDoesNotExist
+from django.dispatch import receiver
+
+from .settings import DEFAULT_ROLES
 
 
-def user_post_save(sender, instance, **kwargs):
-    from .settings import DEFAULT_ROLES
+@receiver(post_save, dispatch_uid='set_default_roles', sender=User)
+def set_default_roles(sender, instance, **kwargs):
 
     if kwargs.get('created', False):
-        for default_role in SETTING_DEFAULT_ROLES:
-            if isinstance(default_role, Role):
-                #If a model is passed, execute method
-                default_role.add_member(instance)
-            else:
-                #If a role name is passed, lookup the corresponding model
-                try:
-                    role = Role.objects.get(name=default_role)
-                    role.add_member(instance)
-                except ObjectDoesNotExist:
-                    pass
-
-
-def init_signal_handler():
-    post_save.connect(user_post_save, sender=User)
+        for default_role in DEFAULT_ROLES:
+            try:
+                role = Role.objects.get(name=default_role)
+                role.add_member(instance)
+            except ObjectDoesNotExist:
+                pass

@@ -73,17 +73,15 @@ def document_post_save_hook(instance):
 #    if kwargs.get('created', False):
 #        DocumentVersionSignature.objects.signature_state(instance.document)
 
-def init_app():
-    bind_links([Document], [document_verify], menu_name='form_header')
-    bind_links(['document_verify', 'document_signature_upload', 'document_signature_download', 'document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
+bind_links([Document], [document_verify], menu_name='form_header')
+bind_links(['document_verify', 'document_signature_upload', 'document_signature_download', 'document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
 
-    DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
-    DocumentVersion.register_post_save_hook(1, document_post_save_hook)
+DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
+DocumentVersion.register_post_save_hook(1, document_post_save_hook)
 
-    class_permissions(Document, [
-        PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
-        PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE
-    ])
-    
-    DocumentVersionSignature._meta.get_field('signature_file').storage=STORAGE_BACKEND()
+class_permissions(Document, [
+    PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
+    PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE
+])
 
+DocumentVersionSignature._meta.get_field('signature_file').storage=STORAGE_BACKEND()

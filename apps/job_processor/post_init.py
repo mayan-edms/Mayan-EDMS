@@ -65,22 +65,17 @@ def kill_all_node_processes():
         process.join()
 
 
-def init_job_processor():
-    atexit.register(kill_all_node_processes)
-
-    add_job_queue_jobs()
-    bind_links([JobQueue, 'job_queues'], [job_queues], menu_name='secondary_menu')
-    bind_links([JobQueue], [job_queue_start, job_queue_stop, job_queue_items_pending, job_queue_items_active, job_queue_items_error])
-    bind_links([Node], [node_workers])
-    bind_links([JobQueueItem], [job_requeue, job_delete])
-    bind_links([Worker], [worker_terminate])
-
-    Node.add_to_class('workers', lambda node: node.worker_set)
-
-    register_model_list_columns(Node, [
-        {
-            'name': _(u'active workers'),
-            'attribute': encapsulate(lambda x: x.workers().all().count())
-        },
-    ])
-
+#atexit.register(kill_all_node_processes)
+add_job_queue_jobs()
+Node.add_to_class('workers', lambda node: node.worker_set)
+register_model_list_columns(Node, [
+    {
+        'name': _(u'active workers'),
+        'attribute': encapsulate(lambda x: x.workers().all().count())
+    },
+])
+bind_links([JobQueue, 'job_queues'], [job_queues], menu_name='secondary_menu')
+bind_links([JobQueue], [job_queue_start, job_queue_stop, job_queue_items_pending, job_queue_items_active, job_queue_items_error])
+bind_links([Node], [node_workers])
+bind_links([JobQueueItem], [job_requeue, job_delete])
+bind_links([Worker], [worker_terminate])

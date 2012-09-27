@@ -60,52 +60,56 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
                         app, created = App.objects.get_or_create(name=app_name)
                     except DatabaseError:
                         transaction.rollback()
-                        raise cls.UnableToRegister
+                        # If database is not ready create a memory only app instance
+                        app = App()
+                        app.label = getattr(registration, 'label', app_name)
+                        app.description = getattr(registration, 'description', u'')
                     else:
+                        # If there are not error go ahead with the stored app instance
                         app.label = getattr(registration, 'label', app_name)
                         app.description = getattr(registration, 'description', u'')
                         app.dependencies.clear()
                         app.save()
-                        app.icon = getattr(registration, 'icon', None)
-
                         for dependency_name in getattr(registration, 'dependencies', []):
                             dependency, created = App.objects.get_or_create(name=dependency_name)
                             app.dependencies.add(dependency)
-
-                        settings = getattr(registration, 'settings', None)
-
-                        if settings:
-                            logger.debug('settings: %s' % settings)
-                            settings_module = imp.new_module('settings')
-                            setattr(app_module, 'settings', settings_module)
-                            sys.modules['%s.settings' % app_name] = settings_module 
-                            settings_namespace = SettingsNamespace(app_name, app.label, '%s.settings' % app_name)
-                            for setting in settings:
-                                settings_namespace.add_setting(**setting)
-                              
-                        for link in getattr(registration, 'setup_links', []):
-                            logger.debug('setup link: %s' % link)
-                            register_setup(link) 
-
-                        for link in getattr(registration, 'tool_links', []):
-                            logger.debug('tool link: %s' % link)
-                            register_tool(link)
-                            
-                        for statistic in getattr(registration, 'statistics', []):
-                            logger.debug('statistic: %s' % statistic)
-                            register_statistics(statistic)
                         
-                        for index, link in enumerate(getattr(registration, 'menu_links', [])):
-                            logger.debug('menu_link: %s' % link)
-                            register_top_menu(name='%s.%s' % (app_name, index), link=link)
 
-                        for cleanup_function in getattr(registration, 'cleanup_functions', []):
-                            logger.debug('cleanup_function: %s' % cleanup_function)
-                            Cleanup(cleanup_function)
+                    app.icon = getattr(registration, 'icon', None)
+                    settings = getattr(registration, 'settings', None)
 
-                        for bootstrap_model in getattr(registration, 'bootstrap_models', []):
-                            logger.debug('bootstrap_model: %s' % bootstrap_model)
-                            BootstrapModel(model_name=bootstrap_model, app_name=app_name)
+                    if settings:
+                        logger.debug('settings: %s' % settings)
+                        settings_module = imp.new_module('settings')
+                        setattr(app_module, 'settings', settings_module)
+                        sys.modules['%s.settings' % app_name] = settings_module 
+                        settings_namespace = SettingsNamespace(app_name, app.label, '%s.settings' % app_name)
+                        for setting in settings:
+                            settings_namespace.add_setting(**setting)
+                          
+                    for link in getattr(registration, 'setup_links', []):
+                        logger.debug('setup link: %s' % link)
+                        register_setup(link) 
+
+                    for link in getattr(registration, 'tool_links', []):
+                        logger.debug('tool link: %s' % link)
+                        register_tool(link)
+                        
+                    for statistic in getattr(registration, 'statistics', []):
+                        logger.debug('statistic: %s' % statistic)
+                        register_statistics(statistic)
+                    
+                    for index, link in enumerate(getattr(registration, 'menu_links', [])):
+                        logger.debug('menu_link: %s' % link)
+                        register_top_menu(name='%s.%s' % (app_name, index), link=link)
+
+                    for cleanup_function in getattr(registration, 'cleanup_functions', []):
+                        logger.debug('cleanup_function: %s' % cleanup_function)
+                        Cleanup(cleanup_function)
+
+                    for bootstrap_model in getattr(registration, 'bootstrap_models', []):
+                        logger.debug('bootstrap_model: %s' % bootstrap_model)
+                        BootstrapModel(model_name=bootstrap_model, app_name=app_name)
 
 
     #def set_backup(self, *args, **kwargs):

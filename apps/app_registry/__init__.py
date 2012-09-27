@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import inspect
-
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.utils.importlib import import_module
@@ -14,13 +12,8 @@ def register_apps():
         App.register(app_name)
         try:
             post_init = import_module('%s.post_init' % app_name)
-        except ImportError:
+        except ImportError as exception:
             pass
-        else:
-            if post_init:
-                for name, value in inspect.getmembers(post_init):
-                    if hasattr(value, '__call__') and name.startswith('init'):
-                        value()
 
 
 register_apps()
