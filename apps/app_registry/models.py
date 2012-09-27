@@ -46,14 +46,14 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
             app_module = import_module(app_name)
         except ImportError:
             transaction.rollback
-            logger.debug('import failed')
+            logger.error('Unable to import app: %s' % app_name)
         else:
             logger.debug('Trying to import registry from: %s' % app_name)
             try:
                 registration = import_module('%s.registry' % app_name)
-            except ImportError as exception:
+            except ImportError:
                 transaction.rollback
-                logger.debug('import failed; %s' % exception)
+                logger.error('Unable to import registry for app: %s' % app_name)
             else:
                 if not getattr(registration, 'disabled', False):
                     try:
