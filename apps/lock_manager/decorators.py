@@ -17,15 +17,18 @@ def simple_locking(lock_id, expiration=None):
                 # Trying to acquire lock
                 lock = Lock.acquire_lock(lock_id, expiration)
             except LockError:
-                # Unable to acquire lock
+                # Unable to acquire lock - non fatal
                 pass
             else:
                 # Lock acquired, proceed normally, release lock afterwards
                 logger.debug('acquired lock: %s' % lock_id)
-                result = function(*args, **kwargs)
-                lock.release()
-                return result
-            finally:
-                lock.release()
+                try:
+                    return function(*args, **kwargs)
+                except:
+                    # Re raise any exception that occured when calling wrapped
+                    # function
+                    raise
+                finally:
+                    lock.release()
         return wraps(function)(wrapper)
     return inner_decorator
