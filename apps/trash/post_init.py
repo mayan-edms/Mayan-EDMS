@@ -8,7 +8,7 @@ from .links import trash_can_list, trash_can_items, trash_can_item_restore, tras
 from .models import TrashCan, TrashCanItem
 
 
-def init_create_trash_cans():
+def create_trash_cans():
     model_set = [('documents.Document', _(u'Documents')), ('folders.Folder', _(u'Folders')), ('taggit.Tag', _(u'Tags'))]
     for model_info in model_set:
         TrashCan.objects.make_trashable(*model_info)
@@ -17,3 +17,4 @@ def init_create_trash_cans():
 bind_links(['trash_can_list', TrashCan], trash_can_list, menu_name='secondary_menu')
 bind_links([TrashCan], trash_can_items)
 bind_links([TrashCanItem], [trash_can_item_restore, trash_can_item_delete])
+create_trash_cans()
