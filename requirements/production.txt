@@ -9,7 +9,7 @@ django-taggit==0.9.3
 
 # Indexes
 
--e git://github.com/django-mptt/django-mptt.git@0af02a95877041b2fd6d458bd95413dc1666c321#egg=django-mptt
+django-mptt==0.5.4
 
 # Mimetypes
 
