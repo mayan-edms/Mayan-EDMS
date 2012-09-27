@@ -5,7 +5,6 @@ import subprocess
 import logging
 
 from mimetype.api import get_mimetype
-from common.settings import TEMPORARY_DIRECTORY
 
 from .exceptions import OfficeBackendError, UnknownFileFormat
 
@@ -45,6 +44,8 @@ class OfficeConverter(object):
         return CONVERTER_OFFICE_FILE_MIMETYPES
 
     def convert(self, input_filepath, mimetype=None):
+        from common.settings import TEMPORARY_DIRECTORY
+
         self.exists = False
         self.mimetype = None
         self.encoding = None
@@ -89,6 +90,8 @@ class OfficeConverterBackendDirect(object):
         """
         Executes libreoffice using subprocess's Popen
         """
+        from common.settings import TEMPORARY_DIRECTORY
+
         self.input_filepath = input_filepath
         self.output_filepath = output_filepath
 

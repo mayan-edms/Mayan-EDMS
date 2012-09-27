@@ -11,7 +11,6 @@ from converter.office_converter import OfficeConverter
 from converter.exceptions import OfficeConversionError
 from documents.utils import document_save_to_temp_dir
 from common.utils import copyfile
-from common.settings import TEMPORARY_DIRECTORY
 from common.textparser import TextParser as OriginalTextParser, TEXT_PARSER_MIMETYPES
 
 from ocr.parsers.exceptions import ParserError, ParserUnknownFile
@@ -127,6 +126,8 @@ class PopplerParser(Parser):
         logger.debug('self.pdftotext_path: %s' % self.pdftotext_path)
 
     def parse(self, document_page, descriptor=None):
+        from common.settings import TEMPORARY_DIRECTORY
+
         logger.debug('parsing PDF with PopplerParser')
         pagenum = str(document_page.page_number)
 
@@ -168,6 +169,8 @@ class PopplerParser(Parser):
 
 class TextParser(Parser):
     def parse(self, document_page, descriptor=None):
+        from common.settings import TEMPORARY_DIRECTORY
+
         logger.debug('parsing with TextParser')
         pagenum = str(document_page.page_number)
 

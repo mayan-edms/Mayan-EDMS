@@ -6,7 +6,6 @@ import logging
 
 from django.utils.encoding import smart_str
 
-from common.settings import TEMPORARY_DIRECTORY
 from common.textparser import TextParser, TEXT_PARSER_MIMETYPES
 from mimetype.api import get_mimetype
 
@@ -34,6 +33,8 @@ def cache_cleanup(input_filepath, *args, **kwargs):
 
 
 def create_image_cache_filename(input_filepath, *args, **kwargs):
+    from common.settings import TEMPORARY_DIRECTORY
+
     if input_filepath:
         hash_value = HASH_FUNCTION(u''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
         return os.path.join(TEMPORARY_DIRECTORY, hash_value)
@@ -43,6 +44,7 @@ def create_image_cache_filename(input_filepath, *args, **kwargs):
 
 def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=None, *args, **kwargs):
     from .runtime import backend
+    from common.settings import TEMPORARY_DIRECTORY
 
     size = kwargs.get('size')
     file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
