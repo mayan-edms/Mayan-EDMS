@@ -8,6 +8,7 @@ from mptt.fields import TreeForeignKey
 
 from documents.models import Document, DocumentType
 
+from .managers import IndexManager
 #from .conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
 #available_indexing_functions_string = (_(u'Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
@@ -20,6 +21,8 @@ class Index(models.Model):
     title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'), help_text=_(u'The name that will be visible to users.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this index to be visible and updated when document data changes.'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_(u'document types'))
+
+    objects = IndexManager()
 
     @property
     def template_root(self):
@@ -45,6 +48,9 @@ class Index(models.Model):
     def save(self, *args, **kwargs):
         super(Index, self).save(*args, **kwargs)
         index_template_node_root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+
+    def natural_key(self):
+        return (self.name)
 
     class Meta:
         verbose_name = _(u'index')
