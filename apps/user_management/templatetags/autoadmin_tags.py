@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django.template import Library
 
-from common.models import AutoAdminSingleton
+from ..models import AutoAdminSingleton
 
 register = Library()
 
