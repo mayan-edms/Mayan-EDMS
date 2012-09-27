@@ -10,6 +10,7 @@ from django.core import management
 from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE,
     FIXTURE_TYPE_PK_NULLIFIER, COMMAND_LOADDATA)
 from .managers import BootstrapSetupManager
+from .classes import BootstrapModel
 
 
 class BootstrapSetup(models.Model):
@@ -30,6 +31,7 @@ class BootstrapSetup(models.Model):
         return FIXTURE_FILE_TYPE[self.type]
 
     def execute(self):
+        BootstrapModel.check_for_data()
         handle, filepath = tempfile.mkstemp()
         # Just need the filepath, close the file description
         os.close(handle)

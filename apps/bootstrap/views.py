@@ -16,6 +16,7 @@ from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE
     PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP)
 from .icons import icon_bootstrap_setup_execute, icon_nuke_database, icon_bootstrap_setup_delete
 from .forms import BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump
+from .exceptions import ExistingData
 
 
 def bootstrap_setup_list(request):
@@ -155,6 +156,8 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
     if request.method == 'POST':
         try:
             bootstrap_setup.execute()
+        except ExistingData:
+            messages.error(request, _(u'Cannot execute bootstrap setup, there is existing data.  Erase database and try again.'))
         except Exception, exc:
             messages.error(request, _(u'Error executing bootstrap setup; %s') % exc)
         else:

@@ -1,5 +1,9 @@
 from __future__ import absolute_import
 
+from django.db import models
+
+from .exceptions import ExistingData
+
 
 class Cleanup(object):
     """
@@ -24,6 +28,13 @@ class BootstrapModel(object):
     bootstrap setup from the current setup in use
     """
     _registry = {}
+
+    @classmethod
+    def check_for_data(cls):
+        for model in cls.get_all():
+            model_instance = models.get_model(model.app_name, model.model_name)
+            if model_instance.objects.all().count():
+                raise ExistingData
 
     @classmethod
     def get_all(cls):
