@@ -5,11 +5,11 @@ from icons.classes import IconSetBase
 
 
 class IconSet(IconSetBase):
-    name='fat_cow'
-    label=_(u'Fat cow')
-    directory='fat_cow'
-    available_sizes=['32x32', '16x16']
-    dictionary={
+    name = 'fat_cow'
+    label = _(u'Fat cow')
+    directory = 'fat_cow'
+    available_sizes = ['32x32', '16x16']
+    dictionary = {
         ADD: 'add.png',
         APPLICATION_VIEW_ICONS: 'application_view_icons.png',
         ARROW_TURN_RIGHT: 'arrow_turn_right.png',
@@ -101,7 +101,7 @@ class IconSet(IconSetBase):
         PACKAGE: 'package.png',
         PAGE: 'page.png',
         PAGE_COPY: 'page_copy.png',
-        PAGE_GEAR:'page_gear.png',
+        PAGE_GEAR: 'page_gear.png',
         PAGE_GO: 'page_go.png',
         PAGE_DELETE: 'page_delete.png',
         PAGE_EDIT: 'page_edit.png',

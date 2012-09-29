@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-import inspect
 import os
 import glob
 
@@ -15,7 +14,7 @@ for app_name in django_settings.INSTALLED_APPS:
     except ImportError:
         pass
     else:
-        for icon_set_name in [os.path.basename(f)[:-3] for f in glob.glob(os.path.dirname(sets_top.__file__)+"/*.py")][1:]:
+        for icon_set_name in [os.path.basename(f)[:-3] for f in glob.glob(os.path.dirname(sets_top.__file__) + "/*.py")][1:]:
             icon_set_module = import_module('%s.iconsets.%s' % (app_name, icon_set_name))
             klass = getattr(icon_set_module, 'IconSet', None)
             if klass:

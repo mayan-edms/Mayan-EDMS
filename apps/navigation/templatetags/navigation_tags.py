@@ -24,9 +24,10 @@ class TopMenuNavigationNode(Node):
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
         current_view = resolve_to_name(current_path)
-        
+
         context['menu_links'] = [menu.get('link').resolve(context, request=request, current_path=current_path, current_view=current_view) for menu in main_menu.getchildren()]
         return ''
+
 
 @register.tag
 def get_top_menu_links(parser, token):

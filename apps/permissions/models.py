@@ -70,7 +70,6 @@ class PermissionManager(object):
             except KeyError:
                 raise Permission.DoesNotExist
 
-
     def __init__(self, model):
         self.model = model
 
@@ -226,7 +225,7 @@ class Role(models.Model):
 
     def remove_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)
-        member_type=ContentType.objects.get_for_model(member)
+        member_type = ContentType.objects.get_for_model(member)
         role_member = RoleMember.objects.get(role=self, member_type=member_type, member_id=member.pk)
         role_member.delete()
 

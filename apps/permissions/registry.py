@@ -13,7 +13,7 @@ description = _(u'Handles the permissions in a project.')
 icon = icon_permissions
 dependencies = ['app_registry', 'smart_settings']
 
-settings=[
+settings = [
     {
         'name': 'DEFAULT_ROLES',
         'default': [],
@@ -22,4 +22,4 @@ settings=[
     }
 ]
 
-setup_links=[role_list]
+setup_links = [role_list]

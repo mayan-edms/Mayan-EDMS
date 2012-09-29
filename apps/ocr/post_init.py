@@ -52,7 +52,6 @@ def document_post_save(sender, instance, **kwargs):
 
 
 bind_links([Document], [submit_document])
-bind_links([OCRProcessingSingleton], [ocr_disable, ocr_enable])
 
 #namespace = MaintenanceNamespace(label=_(u'OCR'))
 #namespace.create_tool(all_document_ocr_cleanup)

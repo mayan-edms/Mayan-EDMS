@@ -72,13 +72,13 @@ class Node(models.Model):
         return self.state == NODE_STATE_HEALTHY
         
     def mark_as_dead(self):
-        self.state=NODE_STATE_DEAD
+        self.state = NODE_STATE_DEAD
         node_died.send(sender=self, node=self)
         self.save()
         
     def send_heartbeat(self):
         self.refresh()
-        self.state=NODE_STATE_HEALTHY
+        self.state = NODE_STATE_HEALTHY
         self.heartbeat = datetime.datetime.now()
         self.save()
 

@@ -31,6 +31,7 @@ from .icons import (icon_documents, icon_create_siblings, icon_document_delete,
     icon_document_type_filename_edit, icon_document_type_filename_delete,
     icon_document_missing_list)
 
+
 # Document page links expressions
 def is_first_page(context):
     return context['page'].page_number <= 1

@@ -7,7 +7,7 @@ from django.db import transaction, DatabaseError
 
 from .models import ClusterSetting
 
-# Namespace
+
 class SettingsNamespace(object):
     _registry = {}
     _settings = {}
@@ -41,7 +41,6 @@ class SettingsNamespace(object):
         return self.__class__._settings[self.name].values()
 
 
-# Scopes
 class ScopeBase(object):
     def get_value(self):
         raise NotImplemented

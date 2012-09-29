@@ -2,14 +2,9 @@ from __future__ import absolute_import
 
 import logging
 
-from elementtree.ElementTree import Element
+from elementtree.ElementTree import Element, SubElement
 
 from django.template import (VariableDoesNotExist, Variable)
-from django.utils.encoding import smart_str, smart_unicode
-from django.core.urlresolvers import reverse, NoReverseMatch
-from django.utils.http import urlquote, urlencode
-
-from elementtree.ElementTree import SubElement
 
 from .utils import resolve_to_name, get_navigation_objects
 
@@ -83,7 +78,7 @@ def get_context_navigation_links(context, menu_name=None, links_dict=bound_links
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
     context_links = {}
-    
+
     # Don't fudge with the original global dictionary
     # TODO: fix this
     links_dict = links_dict.copy()

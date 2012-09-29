@@ -6,6 +6,7 @@ from navigation import Link
 
 from .icons import icon_settings
 
+
 def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
 

@@ -6,7 +6,6 @@ import os
 from django.utils.translation import ugettext_lazy as _
 
 
-
 def assemble_suffixed_filename(filename, suffix=0):
     """
     Split document filename, to attach suffix to the name part then

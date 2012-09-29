@@ -100,7 +100,7 @@ class TrashCanItem(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.trashed_at=datetime.datetime.now()
+            self.trashed_at = datetime.datetime.now()
         return super(TrashCanItem, self).save(*args, **kwargs)
         
     class Meta:
@@ -118,7 +118,7 @@ def new_delete_method(trash_can, old_delete_method):
     def delete(self, *args, **kwargs):
         trash = kwargs.pop('trash', True)
 
-        if trash==False:
+        if trash == False:
             return old_delete_method(self, *args, **kwargs)
         else:
             #trashed_item = TrashedItem.objects.create(trash_can=trash_can, content_object=self, trashed_at=datetime.datetime.now())

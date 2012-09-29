@@ -28,7 +28,7 @@ from .links import (document_list, document_list_recent,
     document_update_page_count, document_clear_transformations,
     document_print, document_history_view,
     document_missing_list)
-from .links import (document_type_list, document_type_setup, document_type_document_list,
+from .links import (document_type_list, document_type_document_list,
     document_type_edit, document_type_delete, document_type_create, document_type_filename_list,
     document_type_filename_create, document_type_filename_edit, document_type_filename_delete,
     link_documents_menu)
@@ -121,4 +121,3 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_HISTORY_VIEW
 ])
-

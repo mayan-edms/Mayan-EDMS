@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.dispatch import receiver
 
 from .settings import DEFAULT_ROLES
+from .models import Role
 
 
 @receiver(post_save, dispatch_uid='set_default_roles', sender=User)

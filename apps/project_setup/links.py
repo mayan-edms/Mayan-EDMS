@@ -6,4 +6,4 @@ from navigation import Link
 
 from .icons import icon_setup
 
-link_setup=Link(text=_(u'setup'), view='setup_list', icon=icon_setup)
+link_setup = Link(text=_(u'setup'), view='setup_list', icon=icon_setup)

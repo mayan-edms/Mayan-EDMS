@@ -12,6 +12,7 @@ from app_registry.models import App
 
 from .classes import SettingsNamespace
 from .links import is_superuser
+from .icons import icon_settings
 
 
 def setting_list(request, app_name=None, object_list=None, title=None, extra_context=None):

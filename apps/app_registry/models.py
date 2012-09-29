@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-import datetime
 import logging
 import imp
 import sys
@@ -8,9 +7,6 @@ import sys
 from django.db import models
 from django.db import DatabaseError, transaction
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
 from django.utils.importlib import import_module
 
 from common.models import TranslatableLabelMixin, LiveObjectMixin
@@ -73,7 +69,6 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
                         for dependency_name in getattr(registration, 'dependencies', []):
                             dependency, created = App.objects.get_or_create(name=dependency_name)
                             app.dependencies.add(dependency)
-                        
 
                     app.icon = getattr(registration, 'icon', None)
                     settings = getattr(registration, 'settings', None)
@@ -111,10 +106,6 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
                         logger.debug('bootstrap_model: %s' % bootstrap_model)
                         BootstrapModel(model_name=bootstrap_model.get('name'), app_name=app_name, sanitize=bootstrap_model.get('sanitize', True))
 
-
-    #def set_backup(self, *args, **kwargs):
-    #    return AppBackup(self, *args, **kwargs)
-       
     def __unicode__(self):
         return unicode(self.label)
 

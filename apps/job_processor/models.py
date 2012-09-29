@@ -38,7 +38,7 @@ class Job(object):
         # OR launch 2 processes: monitor & actual process
         node = Node.objects.myself()
         worker, created = Worker.objects.get_or_create(node=node, pid=os.getpid())
-        worker.job_queue_item=job_queue_item
+        worker.job_queue_item = job_queue_item
         worker.save()
         try:
             transaction.commit_on_success(function)(**loads(job_queue_item.kwargs))
@@ -248,7 +248,7 @@ class JobQueueItem(models.Model):
         at_top: requeue at the top of the file usually for jobs that
             die and shouldn't be placed at the bottom of the queue
         """
-        if self.is_in_error_state or force==True:
+        if self.is_in_error_state or force == True:
             # TODO: raise exception if not in error state
             self.state = JOB_STATE_PENDING
             if not at_top:
