@@ -33,6 +33,7 @@ class IconSet(IconSetBase):
         COG_EDIT: 'cog_edit.png',
         COG_ERROR: 'cog_error.png',
         COG_DELETE: 'cog_delete.png',
+        COG_HOURGLASS: ['cog.png', 'hourglass.png'],
         COMMENTS: 'comments.png',
         COMMENT_ADD: 'comment_add.png',
         COMMENT_DELETE: 'comment_delete.png',
