@@ -19,7 +19,15 @@ dependencies = ['app_registry', 'icons', 'navigation', 'metadata']
 icon = icon_index_setup
 setup_links = [index_setup]
 menu_links = [link_menu]
-bootstrap_models = ['index', 'indextemplatenode']
+bootstrap_models = [
+    {
+        'name': 'index',
+    },
+    {
+        'name': 'indextemplatenode',
+        'sanitize': False,
+    }
+]
 
 settings = [
     {
