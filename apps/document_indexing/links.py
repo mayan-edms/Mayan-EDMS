@@ -19,8 +19,8 @@ from .icons import (icon_index_setup, icon_index_setup_list, icon_index_setup_cr
     icon_index_parent, icon_document_index_list, icon_rebuild_index_instances)
 
 
-def is_root_node(context):
-    return context['node'].parent is None
+def is_not_root_node(context):
+    return context['node'].parent is not None
 
 
 def is_not_instance_root_node(context):
@@ -37,8 +37,8 @@ index_setup_view = Link(text=_(u'tree template'), view='index_setup_view', args=
 index_setup_document_types = Link(text=_(u'document types'), view='index_setup_document_types', args='index.pk', icon=icon_index_setup_document_types, permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT])  # children_view_regex=[r'^index_setup', r'^template_node'])
 
 template_node_create = Link(text=_(u'new child node'), view='template_node_create', args='node.pk', icon=icon_template_node_create, permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT])
-template_node_edit = Link(text=_(u'edit'), view='template_node_edit', args='node.pk', icon=icon_template_node_edit, permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT], conditional_disable=is_root_node)
-template_node_delete = Link(text=_(u'delete'), view='template_node_delete', args='node.pk', icon=icon_template_node_delete, permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT], conditional_disable=is_root_node)
+template_node_edit = Link(text=_(u'edit'), view='template_node_edit', args='node.pk', icon=icon_template_node_edit, permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT], condition=is_not_root_node)
+template_node_delete = Link(text=_(u'delete'), view='template_node_delete', args='node.pk', icon=icon_template_node_delete, permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT], condition=is_not_root_node)
 
 index_list = Link(text=_(u'index list'), view='index_list', icon=icon_index_list, permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW])
 
