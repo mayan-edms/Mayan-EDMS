@@ -56,8 +56,7 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
-    # TODO: make unique
-    name = models.CharField(max_length=32, verbose_name=_(u'name'))
+    name = models.CharField(max_length=32, verbose_name=_(u'name'), unique=True)
 
     objects = DocumentTypeManager()
 
@@ -65,7 +64,7 @@ class DocumentType(models.Model):
         return self.name
 
     def natural_key(self):
-        return (self.name)
+        return (self.name,)
 
     class Meta:
         verbose_name = _(u'document type')
