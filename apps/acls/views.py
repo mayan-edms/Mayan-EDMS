@@ -443,7 +443,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
                         'name':_(u'has permission'),
-                        'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, actor.source_object, access_object_class.source_object)))
+                        'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, actor.source_object, access_object_class.source_object)).display_small())
                     },
                 ],
                 'hide_object': True,
