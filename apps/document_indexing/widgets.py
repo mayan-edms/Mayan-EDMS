@@ -1,23 +1,20 @@
-# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 from django.utils.html import mark_safe
 
 from .models import IndexInstanceNode
-
-FOLDER_W_DOCUMENTS = u'folder_page'
-FOLDER_ICON = u'folder'
+from .icons import icon_folder, icon_folder_with_document, icon_next_level
 
 
 def index_instance_item_link(index_instance_item):
     if isinstance(index_instance_item, IndexInstanceNode):
         if index_instance_item.index_template_node.link_documents:
-            icon = FOLDER_W_DOCUMENTS
+            icon = icon_folder_with_document
         else:
-            icon = FOLDER_ICON
+            icon = icon_folder
     else:
-        icon = u''
-    icon_template = u'<span class="famfam active famfam-%s"></span>' % icon if icon else u''
+        icon = None
+    icon_template = icon.display_small() if icon else u''
     return mark_safe('%(icon_template)s<a href="%(url)s">%(text)s</a>' % {
         'url': index_instance_item.get_absolute_url(),
         'icon_template': icon_template,
@@ -82,7 +79,7 @@ def node_level(x):
         u''.join(
             [
                 u'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(x, x._mptt_meta.level_attr) - 1),
-                u'' if x.parent else u'',
+                icon_next_level.display_small() if x.parent else u'',
                 unicode(x if x.parent else 'root')
             ]
         )
