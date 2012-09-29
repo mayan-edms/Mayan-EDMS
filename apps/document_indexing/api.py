@@ -8,7 +8,7 @@ from django.db.models import Q
 from metadata.classes import MetadataClass
 
 from .models import Index, IndexInstanceNode, DocumentRenameCount
-#from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
+#from .conf.settings import (,
  #   MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
 from .filesystem import (fs_create_index_directory,
     fs_create_document_link, fs_delete_document_link,
@@ -59,6 +59,8 @@ def delete_indexes(document):
 
 # Internal functions
 def find_lowest_available_suffix(index_instance, document):
+    from .settings import MAX_SUFFIX_COUNT
+    
     index_instance_documents = DocumentRenameCount.objects.filter(index_instance_node=index_instance)
     files_list = []
     for index_instance_document in index_instance_documents:
