@@ -109,7 +109,7 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
 
                     for bootstrap_model in getattr(registration, 'bootstrap_models', []):
                         logger.debug('bootstrap_model: %s' % bootstrap_model)
-                        BootstrapModel(model_name=bootstrap_model, app_name=app_name)
+                        BootstrapModel(model_name=bootstrap_model.get('name'), app_name=app_name, sanitize=bootstrap_model.get('sanitize', True))
 
 
     #def set_backup(self, *args, **kwargs):

@@ -187,9 +187,10 @@ def bootstrap_setup_dump(request):
         if form.is_valid():
             bootstrap = form.save(commit=False)
             try:
-                bootstrap.fixture = BootstrapSetup.objects.dump(format=bootstrap.type)
+                bootstrap.fixture = BootstrapSetup.objects.dump(serialization_format=bootstrap.type)
             except Exception as exception:
                 messages.error(request, _(u'Error dumping bootstrap setup; %s') % exception)
+                raise
             else:
                 bootstrap.save()
                 messages.success(request, _(u'Bootstrap created successfully.'))

@@ -7,8 +7,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core import management
 
-from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE,
-    FIXTURE_TYPE_PK_NULLIFIER, COMMAND_LOADDATA)
+from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE, COMMAND_LOADDATA)
 from .managers import BootstrapSetupManager
 from .classes import BootstrapModel
 
@@ -51,14 +50,7 @@ class BootstrapSetup(models.Model):
         """
         return ''
 
-    def sanitize(self):
-        """
-        Remove pk values
-        """
-        self.fixture = FIXTURE_TYPE_PK_NULLIFIER[self.type](self.fixture)
-
     def save(self, *args, **kwargs):
-        self.sanitize()
         return super(BootstrapSetup, self).save(*args, **kwargs)
 
     class Meta:
