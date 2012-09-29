@@ -5,6 +5,7 @@
 {% load settings %}
 {% load main_settings_tags %}
 {% load variable_tags %}
+{% load default_icons %}
 
 {% block web_theme_head %}
     {% if new_window_url %}
@@ -26,7 +27,6 @@
 {% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %} {% endif %}{% endblock %}
 
 {% block web_theme_stylesheets %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/960-fluid.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/override.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
@@ -197,11 +197,12 @@
 {% endblock %}
 
 {% block web_theme_user_navigation %}
+    {% default_icons %}
     <li><strong>{% trans "User" %}:</strong>
         {% if not user.is_authenticated %}
             {% trans "Anonymous" %}
         {% else %}
-                <a href="{% url current_user_details %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }}<span class="famfam active famfam-vcard"></span></a>
+                <a href="{% url current_user_details %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }}{{ icon_current_user_details.display_small }}</a>
         {% endif %}
     </li>
 
