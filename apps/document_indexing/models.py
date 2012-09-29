@@ -9,12 +9,7 @@ from mptt.fields import TreeForeignKey
 from documents.models import Document, DocumentType
 
 from .managers import IndexManager
-#from .conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 
-#available_indexing_functions_string = (_(u'Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
-
-#TODO: fix settings
-#TODO: add natural key support
 
 class Index(models.Model):
     name = models.CharField(unique=True, max_length=64, verbose_name=_(u'name'), help_text=_(u'Internal name used to reference this index.'))
@@ -50,7 +45,7 @@ class Index(models.Model):
         index_template_node_root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
     def natural_key(self):
-        return (self.name)
+        return (self.name,)
 
     class Meta:
         verbose_name = _(u'index')
@@ -61,7 +56,6 @@ class IndexTemplateNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='index_template_node')
     index = models.ForeignKey(Index, verbose_name=_(u'index'))
     expression = models.CharField(max_length=128, verbose_name=_(u'indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
-        # % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
     link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
