@@ -19,6 +19,7 @@ from .links import (index_setup_list, index_setup_create,
     index_parent, document_index_list, rebuild_index_instances,
     index_setup_document_types)
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
+from .settings import AVAILABLE_INDEXING_FUNCTIONS
 
 logger = logging.getLogger(__name__)
 
@@ -58,10 +59,13 @@ def document_metadata_index_post_delete(sender, **kwargs):
     update_indexes(kwargs['instance'].document)
 
 
+available_indexing_functions_string = (_(u'Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
+IndexTemplateNode._meta.get_field('expression').help_text=_(u'Enter a python string expression to be evaluated.%s') % available_indexing_functions_string
+
 register_sidebar_template(['index_instance_list'], 'indexing_help.html')
 
 bind_links([IndexInstanceNode], [index_parent])
 bind_links([Document], [document_index_list], menu_name='form_header')
-bind_links([Index, 'index_setup_list', 'index_setup_create', 'template_node_edit', 'template_node_delete'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
+bind_links([Index, 'index_setup_list', 'index_setup_create'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
 bind_links([Index], [index_setup_edit, index_setup_delete, index_setup_view, index_setup_document_types])
 bind_links([IndexTemplateNode], [template_node_create, template_node_edit, template_node_delete])
