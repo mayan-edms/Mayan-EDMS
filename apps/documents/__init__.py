@@ -46,7 +46,7 @@ from .links import document_clear_image_cache
 bind_links([DocumentType], [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
 bind_links([DocumentTypeFilename], [document_type_filename_edit, document_type_filename_delete])
 
-bind_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='sidebar')
+bind_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='secondary_menu')
 bind_links(['document_type_filename_create', 'document_type_filename_list', 'document_type_filename_edit', 'document_type_filename_delete'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
