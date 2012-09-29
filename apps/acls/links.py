@@ -17,7 +17,7 @@ acl_grant = Link(text=_(u'grant'), view='acl_multiple_grant', icon=icon_acl_gran
 acl_revoke = Link(text=_(u'revoke'), view='acl_multiple_revoke', icon=icon_acl_revoke, permissions=[ACLS_EDIT_ACL])
 acl_holder_new = Link(text=_(u'New holder'), view='acl_holder_new', args='access_object.gid', icon=icon_acl_holder_new, permissions=[ACLS_EDIT_ACL])
 
-acl_setup_valid_classes = Link(text=_(u'Default ACLs'), view='acl_setup_valid_classes', icon=icon_acls, permissions=[ACLS_CLASS_VIEW_ACL])  # 'children_view_regex=[r'^acl_class', r'^acl_setup']}
+acl_setup_valid_classes = Link(text=_(u'Default ACLs'), view='acl_setup_valid_classes', icon=icon_acl_class_list, permissions=[ACLS_CLASS_VIEW_ACL])  # 'children_view_regex=[r'^acl_class', r'^acl_setup']}
 acl_class_list = Link(text=_(u'List of classes'), view='acl_setup_valid_classes', icon=icon_acl_class_list, permissions=[ACLS_CLASS_VIEW_ACL])
 acl_class_acl_list = Link(text=_(u'ACLs for class'), view='acl_class_acl_list', args='object.gid', icon=icon_acl_class_acl_list, permissions=[ACLS_CLASS_VIEW_ACL])
 acl_class_acl_detail = Link(text=_(u'details'), view='acl_class_acl_detail', args=['access_object_class.gid', 'object.gid'], icon=icon_acl_class_acl_detail, permissions=[ACLS_CLASS_VIEW_ACL])
