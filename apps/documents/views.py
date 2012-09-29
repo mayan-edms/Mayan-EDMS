@@ -1161,7 +1161,7 @@ def document_type_filename_list(request, document_type_id):
         'extra_columns': [
             {
                 'name': _(u'enabled'),
-                'attribute': encapsulate(lambda x: two_state_template(x.enabled)),
+                'attribute': encapsulate(lambda x: two_state_template(x.enabled).display_small()),
             }
         ]
     }
