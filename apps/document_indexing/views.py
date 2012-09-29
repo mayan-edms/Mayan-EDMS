@@ -42,7 +42,7 @@ def index_setup_list(request):
         'extra_columns': [
             {'name': _(u'name'), 'attribute': 'name'},
             {'name': _(u'title'), 'attribute': 'title'},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled).display_small())},
         ]
     }
 
@@ -166,8 +166,8 @@ def index_setup_view(request, index_pk):
         'hide_object': True,
         'extra_columns': [
             {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
+            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled).display_small())},
+            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents).display_small())},
         ],
     }
 
@@ -372,7 +372,8 @@ def index_instance_node_view(request, index_instance_node_pk):
         'title': title,
         'hide_links': True,
         'hide_object': True,
-        'object': index_instance
+        # Don't display navigation links for root nodes
+        'object': None if index_instance.is_root_node() else index_instance,
 
     }, context_instance=RequestContext(request))
 
