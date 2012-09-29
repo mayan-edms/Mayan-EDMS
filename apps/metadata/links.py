@@ -26,7 +26,7 @@ metadata_remove = Link(text=_(u'remove metadata'), view='metadata_remove', args=
 metadata_multiple_remove = Link(text=_(u'remove metadata'), view='metadata_multiple_remove', icon=icon_metadata_remove, permissions=[PERMISSION_METADATA_DOCUMENT_REMOVE])
 
 setup_metadata_type_list = Link(text=_(u'metadata types'), view='setup_metadata_type_list', icon=icon_metadata_view, permissions=[PERMISSION_METADATA_TYPE_VIEW])  # children_view_regex=[r'setup_metadata_type'])
-setup_metadata_type_edit = Link(text=_(u'edit'), view='setup_metadata_type_edit', args='object.pk', icon=icon_metadata_view, permissions=[PERMISSION_METADATA_TYPE_EDIT])
+setup_metadata_type_edit = Link(text=_(u'edit'), view='setup_metadata_type_edit', args='object.pk', icon=icon_metadata_edit, permissions=[PERMISSION_METADATA_TYPE_EDIT])
 setup_metadata_type_delete = Link(text=_(u'delete'), view='setup_metadata_type_delete', args='object.pk', icon=icon_metadata_remove, permissions=[PERMISSION_METADATA_TYPE_DELETE])
 setup_metadata_type_create = Link(text=_(u'create new'), view='setup_metadata_type_create', icon=icon_metadata_add, permissions=[PERMISSION_METADATA_TYPE_CREATE])
 
