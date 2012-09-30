@@ -1,4 +1,9 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
+
+from icons.literals import (DISK, DATABASE, DRIVE, DRIVE_NETWORK, DRIVE_USER,
+    EMAIL, FOLDER, WORLD, PRINTER, PRINTER_EMPTY, IMAGES)
 
 POP3_PORT = 110
 POP3_SSL_PORT = 995
@@ -25,30 +30,18 @@ SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES = (
     (SOURCE_UNCOMPRESS_CHOICE_ASK, _(u'Ask user'))
 )
 
-SOURCE_ICON_DISK = 'disk'
-SOURCE_ICON_DATABASE = 'database'
-SOURCE_ICON_DRIVE = 'drive'
-SOURCE_ICON_DRIVE_NETWORK = 'drive_network'
-SOURCE_ICON_DRIVE_USER = 'drive_user'
-SOURCE_ICON_EMAIL = 'email'
-SOURCE_ICON_FOLDER = 'folder'
-SOURCE_ICON_WORLD = 'world'
-SOURCE_ICON_PRINTER = 'printer'
-SOURCE_ICON_PRINTER_EMPTY = 'printer_empty'
-SOURCE_ICON_IMAGES = 'images'
-
 SOURCE_ICON_CHOICES = (
-    (SOURCE_ICON_DISK, _(u'Disk')),
-    (SOURCE_ICON_DATABASE, _(u'Database')),
-    (SOURCE_ICON_DRIVE, _(u'Drive')),
-    (SOURCE_ICON_DRIVE_NETWORK, _(u'Network drive')),
-    (SOURCE_ICON_DRIVE_USER, _(u'User drive')),
-    (SOURCE_ICON_EMAIL, _(u'Envelope')),
-    (SOURCE_ICON_FOLDER, _(u'Folder')),
-    (SOURCE_ICON_IMAGES, _(u'Images')),
-    (SOURCE_ICON_WORLD, _(u'World')),
-    (SOURCE_ICON_PRINTER, _(u'Printer')),
-    (SOURCE_ICON_PRINTER_EMPTY, _(u'Empty printer')),
+    (DISK, _(u'Disk')),
+    (DATABASE, _(u'Database')),
+    (DRIVE, _(u'Drive')),
+    (DRIVE_NETWORK, _(u'Network drive')),
+    (DRIVE_USER, _(u'User drive')),
+    (EMAIL, _(u'Envelope')),
+    (FOLDER, _(u'Folder')),
+    (IMAGES, _(u'Images')),
+    (WORLD, _(u'World')),
+    (PRINTER, _(u'Printer')),
+    (PRINTER_EMPTY, _(u'Empty printer')),
 )
 
 SOURCE_CHOICE_WEB_FORM = 'webform'
@@ -77,3 +70,6 @@ SOURCE_CHOICES_PLURAL = (
 )
 
 DEFAULT_LOCAL_SCANNER_FILE_FORMAT = 'JPEG'
+DEFAULT_POP3_DEFAULT_TIMEOUT = 10  # for POP3 only not POP3_SSL
+DEFAULT_EMAIL_PROCESSING_INTERVAL = 60
+DEFAULT_POP3_EMAIL_LOG_COUNT = 10  # Max log entries to store

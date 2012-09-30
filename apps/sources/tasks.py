@@ -5,7 +5,7 @@ import logging
 from lock_manager import Lock, LockError
 
 from .models import POP3Email, IMAPEmail
-from .conf.settings import POP3_TIMEOUT
+#from .settings import POP3_TIMEOUT
 from .literals import IMAP_LOCK_TIMEOUT
 
 logger = logging.getLogger(__name__)

@@ -1,15 +1,17 @@
-"""Configuration options for the sources app"""
+from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings.api import Setting, SettingNamespace
+from .icons import icon_source_list
+from .links import setup_sources
 
-namespace = SettingNamespace('sources', _(u'Sources'), module='sources.conf.settings')
+label = _(u'Sources')
+description = _(u'Provides source from where to add documents.')
+dependencies = ['app_registry', 'icons', 'navigation', 'documents']
+icon = icon_source_list
+setup_links = [setup_sources]
 
-POP3_DEFAULT_TIMEOUT = 10  # for POP3 only not POP3_SSL
-DEFAULT_EMAIL_PROCESSING_INTERVAL = 60
-DEFAULT_POP3_EMAIL_LOG_COUNT = 10  # Max log entries to store
-
+'''
 Setting(
     namespace=namespace,
     name='POP3_TIMEOUT',
@@ -30,3 +32,4 @@ Setting(
     global_name='SOURCES_LOG_SIZE',
     default=DEFAULT_POP3_EMAIL_LOG_COUNT,
 )
+'''

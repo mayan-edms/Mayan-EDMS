@@ -24,7 +24,7 @@ from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.core.files import File
 
-from converter.api import get_available_transformations_choices
+#from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from documents.models import Document, DocumentType
 from documents.events import history_document_created
@@ -34,7 +34,7 @@ from acls.utils import apply_default_acls
 from .managers import SourceTransformationManager, SourceLogManager
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
-    SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
+    SOURCE_CHOICE_STAGING, DISK, DRIVE,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
     SOURCE_UNCOMPRESS_CHOICE_Y,
     POP3_PORT, POP3_SSL_PORT,
@@ -42,11 +42,10 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     IMAP_PORT, IMAP_SSL_PORT,
     SOURCE_CHOICE_IMAP_EMAIL, DEFAULT_IMAP_INTERVAL,
     IMAP_DEFAULT_MAILBOX,
-    SOURCE_CHOICE_LOCAL_SCANNER, SOURCE_ICON_IMAGES,
+    SOURCE_CHOICE_LOCAL_SCANNER, IMAGES,
     DEFAULT_LOCAL_SCANNER_FILE_FORMAT)
 from .compressed_file import CompressedFile, NotACompressedFile
-from .conf.settings import POP3_TIMEOUT
-#from . import sources_scheduler
+#from .post_init import sources_scheduler
 
 logger = logging.getLogger(__name__)
 
@@ -268,6 +267,8 @@ class POP3Email(EmailBaseModel):
     source_type = SOURCE_CHOICE_POP3_EMAIL
 
     def fetch_mail(self):
+        from .settings import POP3_TIMEOUT
+
         try:
             last_check = SourceLog.objects.get_latest_for(self)
         except SourceLog.DoesNotExist:
@@ -391,7 +392,7 @@ class LocalScanner(InteractiveBaseModel):
 
     is_interactive = True
     source_type = SOURCE_CHOICE_LOCAL_SCANNER
-    default_icon = SOURCE_ICON_IMAGES
+    default_icon = IMAGES
 
     scanner_device = models.CharField(max_length=255, verbose_name=_(u'scanner device'))
     scanner_description = models.CharField(max_length=255, verbose_name=_(u'scanner description'))
@@ -462,7 +463,7 @@ class LocalScanner(InteractiveBaseModel):
 class StagingFolder(InteractiveBaseModel):
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
-    default_icon = SOURCE_ICON_DRIVE
+    default_icon = DRIVE
 
     folder_path = models.CharField(max_length=255, verbose_name=_(u'folder path'), help_text=_(u'Server side filesystem path.'))
     preview_width = models.IntegerField(verbose_name=_(u'preview width'), help_text=_(u'Width value to be passed to the converter backend.'))
@@ -502,7 +503,7 @@ class SourceMetadata(models.Model):
 class WebForm(InteractiveBaseModel):
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
-    default_icon = SOURCE_ICON_DISK
+    default_icon = DISK
 
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     #Default path
@@ -578,7 +579,8 @@ class SourceTransformation(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
-    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
+    #transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
+    transformation = models.CharField(max_length=128, verbose_name=_(u'transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
 
     objects = models.Manager()

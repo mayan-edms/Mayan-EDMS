@@ -9,10 +9,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext
 from django.utils.encoding import smart_str
 
-from documents.conf.settings import THUMBNAIL_SIZE
+from documents.settings import THUMBNAIL_SIZE
 
-from mimetype.api import (get_icon_file_path, get_error_icon_file_path,
-    get_mimetype)
+#from mimetype.api import (get_icon_file_path, get_error_icon_file_path,
+from mimetype.api import get_mimetype
 from converter.api import convert, cache_cleanup
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
 
@@ -146,6 +146,7 @@ class StagingFile(object):
             #return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
         except UnknownFileFormat:
             mimetype, encoding = get_mimetype(open(self.filepath, 'rb'), self.filepath)
-            return get_icon_file_path(mimetype)
+            # TODO: Fix
+            return ''#get_icon_file_path(mimetype)
         except UnkownConvertError:
             return get_error_icon_file_path()

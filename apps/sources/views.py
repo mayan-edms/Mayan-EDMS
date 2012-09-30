@@ -16,7 +16,7 @@ from django.core.exceptions import PermissionDenied
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_NEW_VERSION)
 from documents.models import DocumentType, Document
-from documents.conf.settings import THUMBNAIL_SIZE
+from documents.settings import THUMBNAIL_SIZE
 from documents.exceptions import NewDocumentVersionNotAllowed
 from documents.forms import DocumentTypeSelectForm
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
@@ -27,6 +27,7 @@ from common.widgets import two_state_template
 import sendfile
 from acls.models import AccessEntry
 from navigation import Link
+from icons import Icon
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder, POP3Email, SourceLog, IMAPEmail, LocalScanner)
@@ -61,7 +62,7 @@ def get_tab_link_for_source(source, document=None):
         view = u'upload_interactive'
         args = [u'"%s"' % source.source_type, source.pk]
 
-    return Link(text=source.title, view=view, args=args, sprite=source.icon, keep_query=True, conditional_highlight=return_function(source))
+    return Link(text=source.title, view=view, args=args, icon=Icon(source.icon), keep_query=True, conditional_highlight=return_function(source))
 
 
 def get_active_tab_links(document=None):
@@ -524,7 +525,7 @@ def setup_source_list(request, source_type):
         'list_object_variable_name': 'source',
         'source_type': source_type,
         'extra_columns': [
-            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda source: two_state_template(source.enabled))},
+            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda source: two_state_template(source.enabled).display_small())},
         ],
     }
 

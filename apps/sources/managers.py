@@ -5,7 +5,7 @@ from ast import literal_eval
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 
-from .conf.settings import LOG_SIZE
+#from .settings import LOG_SIZE
 
 
 class SourceTransformationManager(models.Manager):

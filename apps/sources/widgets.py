@@ -5,6 +5,10 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
+from icons import Icon
+
+from .icons import icon_cross
+
 
 class FamFamRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
     def render(self):
@@ -21,8 +25,23 @@ class FamFamRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
         return mark_safe(u'\n'.join(results))
 
 
-class FamFamRadioSelect(forms.widgets.RadioSelect):
-    renderer = FamFamRadioFieldRenderer
+class IconRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
+    def render(self):
+        results = []
+        results.append(u'<ul>\n')
+        for w in self:
+            if w.choice_value:
+                icon_template = Icon(w.choice_value).display_small()
+            else:
+                icon_template = icon_cross.display_small()
+            results.append(u'<li class="undecorated_list">%s%s</li>' % (icon_template, force_unicode(w)))
+
+        results.append(u'\n</ul>')
+        return mark_safe(u'\n'.join(results))
+
+
+class IconRadioSelect(forms.widgets.RadioSelect):
+    renderer = IconRadioFieldRenderer
 
 
 def staging_file_thumbnail(staging_file):

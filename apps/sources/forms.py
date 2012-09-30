@@ -8,7 +8,7 @@ from documents.forms import DocumentForm
 
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder, POP3Email, IMAPEmail, LocalScanner)
-from .widgets import FamFamRadioSelect
+from .widgets import IconRadioSelect
 from .utils import validate_whitelist_blacklist
 
 
@@ -74,7 +74,7 @@ class WebFormForm(DocumentForm):
 class WebFormSetupForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(WebFormSetupForm, self).__init__(*args, **kwargs)
-        self.fields['icon'].widget = FamFamRadioSelect(
+        self.fields['icon'].widget = IconRadioSelect(
             attrs=self.fields['icon'].widget.attrs,
             choices=self.fields['icon'].widget.choices,
         )
@@ -86,7 +86,7 @@ class WebFormSetupForm(forms.ModelForm):
 class StagingFolderSetupForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(StagingFolderSetupForm, self).__init__(*args, **kwargs)
-        self.fields['icon'].widget = FamFamRadioSelect(
+        self.fields['icon'].widget = IconRadioSelect(
             attrs=self.fields['icon'].widget.attrs,
             choices=self.fields['icon'].widget.choices,
         )
@@ -110,7 +110,7 @@ class LocalScannerSetupForm(forms.ModelForm):
             
     def __init__(self, *args, **kwargs):
         super(LocalScannerSetupForm, self).__init__(*args, **kwargs)
-        self.fields['icon'].widget = FamFamRadioSelect(
+        self.fields['icon'].widget = IconRadioSelect(
             attrs=self.fields['icon'].widget.attrs,
             choices=self.fields['icon'].widget.choices,
         )

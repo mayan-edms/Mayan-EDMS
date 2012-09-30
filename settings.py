@@ -182,7 +182,7 @@ INSTALLED_APPS = (
     'main',
     #'installation',
     'document_indexing',
-    #'sources',
+    'sources',
     #'mailer',
     #'document_acls',
     'history',
