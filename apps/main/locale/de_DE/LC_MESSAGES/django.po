@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#   <sl@suchreflex.de>, 2012.
 #   <tetja.rediske@googlemail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-27 04:10+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2012-09-20 07:53+0000\n"
+"Last-Translator: Manticor <sl@suchreflex.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:29
 msgid "home"
@@ -60,7 +61,7 @@ msgstr "Diagnosen"
 
 #: conf/settings.py:6
 msgid "Main"
-msgstr ""
+msgstr "Haupt"
 
 #: conf/settings.py:13
 msgid ""
@@ -107,12 +108,12 @@ msgstr "Zweites Menü"
 #: templates/base.html:302
 #, python-format
 msgid "Actions for %(name)s: %(object_reference)s"
-msgstr ""
+msgstr "Aktionen für %(name)s : %(object_reference)s "
 
 #: templates/base.html:304
 #, python-format
 msgid "Actions for: %(object_reference)s"
-msgstr ""
+msgstr "Aktionen für %(object_reference)s"
 
 #: templates/base.html:307
 msgid "Available actions"
@@ -131,7 +132,7 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
+msgstr "Open Source, auf Django basierender elektronischer Dokumentenmanager mit anpassbaren Metadaten, Indizierung, Tagging, Dateiserverintegration, Unterstützung digitaler Unterschriften und OCR-Fähigkeiten."
 
 #: templates/project_description.html:18
 msgid "Released under the GPL V3 License"

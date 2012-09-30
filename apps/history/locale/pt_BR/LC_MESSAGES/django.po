@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <dev.emerson@gmail.com>, 2011.
+# Emerson Soares <dev.emerson@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:17
 msgid "date and time"
