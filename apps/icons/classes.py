@@ -94,7 +94,7 @@ class IconSetBase(object):
     #    return '%s%s/%s/%s/%s' % (settings.STATIC_URL, ICONSETS_STATIC_DIRECTORY, self.directory, size, self.dictionary.get(icon.id, ERROR))
 
     def get_major_minor(self, icon):
-        return self.dictionary.get(icon.id, ERROR)
+        return self.dictionary.get(icon.id, self.dictionary.get(ERROR))
 
     def compose(self, icon, size):
         try:
