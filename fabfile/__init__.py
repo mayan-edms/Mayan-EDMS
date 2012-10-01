@@ -37,6 +37,7 @@ def install():
     platform.install_mayan()
     platform.install_database_manager()
     database.create_database()
+    database.create_user()
     django.database_config()
     django.syncdb()
     django.collectstatic()
