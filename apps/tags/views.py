@@ -59,38 +59,64 @@ def tag_create(request):
     context_instance=RequestContext(request))
 
 
-def tag_attach(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+def tag_attach(request, document_id=None, document_id_list=None):
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+        post_action_redirect = reverse('tag_list')
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_ATTACH])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TAG_ATTACH, request.user, document)
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_ATTACH, request.user, documents)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_tags', args=[document.pk]))))
+    post_action_redirect = None
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
         form = TagListForm(request.POST, user=request.user)
         if form.is_valid():
             tag = form.cleaned_data['tag']
-            if tag in document.tags.all():
-                messages.warning(request, _(u'Document is already tagged as "%s"') % tag)
-                return HttpResponseRedirect(next)
-
-            document.tags.add(tag)
-
-            messages.success(request, _(u'Tag "%s" attached successfully.') % tag)
+            for document in documents:
+                if tag in document.tags.all():
+                    messages.warning(request, _(u'Document "%(document)s" is already tagged as "%(tag)s"') % {
+                        'document': document, 'tag': tag}
+                    )
+                else:
+                    document.tags.add(tag)
+                    messages.success(request, _(u'Tag "%(tag)s" attached successfully to document "%(document)s".') % {
+                        'document': document, 'tag': tag}
+                    )
             return HttpResponseRedirect(next)
     else:
         form = TagListForm(user=request.user)
 
-    return render_to_response('generic_form.html', {
-        'title': _(u'attach tag to: %s') % document,
+    context = {
+        'object_name': _(u'document'),
         'form': form,
-        'object': document,
+        'previous': previous,
         'next': next,
-    },
-    context_instance=RequestContext(request))
+    }
+    
+    if len(documents) == 1:
+        context['object'] = documents[0]
+        context['title'] = _(u'Attach tag to document: %s.') % ', '.join([unicode(d) for d in documents])
+    elif len(documents) > 1:
+        context['title'] = _(u'Attach tag to documents: %s.') % ', '.join([unicode(d) for d in documents])
+
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))
+        
+
+def tag_multiple_attach(request):
+    return tag_attach(
+        request, document_id_list=request.GET.get('id_list', [])
+    )
 
 
 def tag_list(request, queryset=None, extra_context=None):

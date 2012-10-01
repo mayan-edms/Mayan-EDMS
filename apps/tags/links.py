@@ -11,6 +11,7 @@ from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
 tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_CREATE]}
 tag_attach = {'text': _(u'attach tag'), 'view': 'tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_ATTACH]}
+tag_multiple_attach = {'text': _(u'attach tag'), 'view': 'tag_multiple_attach', 'famfam': 'tag_blue_add'}
 tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH], 'children_view_regex': ['tag']}
