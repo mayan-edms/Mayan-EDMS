@@ -21,9 +21,9 @@ def drop_database():
         run('echo "DROP DATABASE %(database_name)s;" |  mysql -u root --password=%(database_manager_admin_password)s' % env)
 
 
-def drop_username():
+def drop_user():
     """
-    Drop MySQL's Mayan EDMS's username
+    Drop MySQL's Mayan EDMS's user
     """
     with settings(warn_only=True):
         run('echo "DROP USER \'%(database_username)s\'@\'%(database_host)s\';" |  mysql -u root --password=%(database_manager_admin_password)s' % env)

@@ -31,12 +31,12 @@ def drop_database():
 
 
 @task
-def drop_username():
+def drop_user():
     """
-    Drop Mayan EDMS's username
+    Drop Mayan EDMS's user
     """
     setup_environment()
-    print(green('Droping Mayan EDMS username', bold=True))
+    print(green('Droping Mayan EDMS user', bold=True))
 
     if env.database_manager == DB_MYSQL:
-        mysql.drop_username()
+        mysql.drop_user()
