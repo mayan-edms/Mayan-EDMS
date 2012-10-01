@@ -19,23 +19,24 @@ msgstr ""
 
 #: forms.py:48
 msgid "Pages"
-msgstr ""
+msgstr "Pagina's"
 
 #: forms.py:54
 msgid "Select"
-msgstr ""
+msgstr "Selecteer"
 
 #: forms.py:61
 msgid "Click on the image for full size view of the first page."
-msgstr ""
+msgstr "Klik op de afbeelding om de eerste pagina op ware grootte " 
+"te kunnen inzien."
 
 #: links.py:12
 msgid "smart links actions"
-msgstr ""
+msgstr "'smartlink' acties"
 
 #: links.py:13 links.py:15 models.py:23 views.py:132
 msgid "smart links"
-msgstr ""
+msgstr "smartlinks"
 
 #: links.py:16
 msgid "smart links list"
@@ -43,289 +44,295 @@ msgstr ""
 
 #: links.py:17
 msgid "create new smart link"
-msgstr ""
+msgstr "lijst met 'smartlinks'"
 
 #: links.py:18 links.py:23
 msgid "edit"
-msgstr ""
+msgstr "wijzigen"
 
 #: links.py:19 links.py:24
 msgid "delete"
-msgstr ""
+msgstr "verwijderen"
 
 #: links.py:21
 msgid "conditions"
-msgstr ""
+msgstr "condities"
 
 #: links.py:22
 msgid "create condition"
-msgstr ""
+msgstr "conditie aanmaken"
 
 #: links.py:26
 msgid "ACLs"
-msgstr ""
+msgstr "ACLs"
 
 #: literals.py:7
 msgid "and"
-msgstr ""
+msgstr "en"
 
 #: literals.py:8
 msgid "or"
-msgstr ""
+msgstr "of"
 
 #: literals.py:12
 msgid "is equal to"
-msgstr ""
+msgstr "is geleik aan"
 
 #: literals.py:13
 msgid "is equal to (case insensitive)"
-msgstr ""
+msgstr "is geleik aan (hoofdletter ongevoelig)"
 
 #: literals.py:14
 msgid "contains"
-msgstr ""
+msgstr "bevat"
 
 #: literals.py:15
 msgid "contains (case insensitive)"
-msgstr ""
+msgstr "bevat (hoofdletter ongevoelig)"
 
 #: literals.py:16
 msgid "is in"
-msgstr ""
+msgstr "is in"
 
 #: literals.py:17
 msgid "is greater than"
-msgstr ""
+msgstr "is groter dan"
 
 #: literals.py:18
 msgid "is greater than or equal to"
-msgstr ""
+msgstr "is groter dan of is geleik aan"
 
 #: literals.py:19
 msgid "is less than"
-msgstr ""
+msgstr "is kleiner dan"
 
 #: literals.py:20
 msgid "is less than or equal to"
-msgstr ""
+msgstr "is kleiner dan of is geleik aan"
 
 #: literals.py:21
 msgid "starts with"
-msgstr ""
+msgstr "begint met"
 
 #: literals.py:22
 msgid "starts with (case insensitive)"
-msgstr ""
+msgstr "begint met (hoofdletter ongevoelig)"
 
 #: literals.py:23
 msgid "ends with"
-msgstr ""
+msgstr "eindigd met"
 
 #: literals.py:24
 msgid "ends with (case insensitive)"
-msgstr ""
+msgstr "eindigd met (hoofdletter ongevoelig)"
 
 #: literals.py:25
 msgid "is in regular expression"
-msgstr ""
+msgstr "komt overeen met 'reguliere expressie'"
 
 #: literals.py:26
 msgid "is in regular expression (case insensitive)"
-msgstr ""
+msgstr "komt overeen met 'reguliere expressie (hoofdletter ongevoelig)"
 
 #: models.py:12
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 #: models.py:13 views.py:135
 msgid "dynamic title"
-msgstr ""
+msgstr "dynamische titel"
 
 #: models.py:13 models.py:31
 msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
-msgstr ""
+msgstr "Deze expressie zal worden geevalueerd tegen het huidige geselecteerde " 
+"document. De metadata van het document is beschikbaar onder variabelen: " 
+"'metadata' en document eigenschappen onder de variabele 'document'."
 
 #: models.py:14 models.py:33 views.py:136 views.py:232
 msgid "enabled"
-msgstr ""
+msgstr "ingeschakeld"
 
 #: models.py:22 models.py:27 views.py:296 views.py:330
 msgid "smart link"
-msgstr ""
+msgstr "'smartlink'"
 
 #: models.py:28
 msgid "The inclusion is ignored for the first item."
-msgstr ""
+msgstr "De berekening is genegeerd voor het eerste item"
 
 #: models.py:29
 msgid "foreign document data"
-msgstr ""
+msgstr "vreemde document data"
 
 #: models.py:29
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
-msgstr ""
+msgstr "Dit representeerd de metadata van alle andere documenten. Beschikbare " 
+"objecten: 'document.<attribute>' and 'metadata.<metadata_type_name>'."
 
 #: models.py:31
 msgid "expression"
-msgstr ""
+msgstr "expressie"
 
 #: models.py:32
 msgid "negated"
-msgstr ""
+msgstr "ontkennent"
 
 #: models.py:32
 msgid "Inverts the logic of the operator."
-msgstr ""
+msgstr "Inverteerd de operatorlogica"
 
 #: models.py:36
 msgid "not"
-msgstr ""
+msgstr "niet"
 
 #: models.py:39
 msgid "link condition"
-msgstr ""
+msgstr "koppelconditie"
 
 #: models.py:40
 msgid "link conditions"
-msgstr ""
+msgstr "koppelcondities"
 
 #: permissions.py:7
 msgid "Smart links"
-msgstr ""
+msgstr "'Smartlinks'"
 
 #: permissions.py:9
 msgid "View existing smart links"
-msgstr ""
+msgstr "Bekijk bestaande 'smartlinks'"
 
 #: permissions.py:10
 msgid "Create new smart links"
-msgstr ""
+msgstr "Aanmaken van een nieuwe 'smartlink'"
 
 #: permissions.py:11
 msgid "Delete smart links"
-msgstr ""
+msgstr "Verwijderen 'smartlinks'"
 
 #: permissions.py:12
 msgid "Edit smart links"
-msgstr ""
+msgstr "Verwijderen 'smartlinks'"
 
 #: views.py:41
 msgid "No action selected."
-msgstr ""
+msgstr "Geen actie geselecteerd"
 
 #: views.py:60
 #, python-format
 msgid "documents in smart link: %(group)s"
-msgstr ""
+msgstr "documenten in 'smartlink': %(group)s"
 
 #: views.py:76
 #, python-format
 msgid "Smart link query error: %s"
-msgstr ""
+msgstr "'smartlink' zoek fout: %s" 
 
 #: views.py:98
 #, python-format
 msgid "smart links (%s)"
-msgstr ""
+msgstr "'smartlinks' (%s)" 
 
 #: views.py:112
 msgid "There no defined smart links for the current document."
-msgstr ""
+msgstr "Er zijn geen gedefinieerde 'smartlinks' voor het huidige document" 
 
 #: views.py:152
 #, python-format
 msgid "Smart link: %s created successfully."
-msgstr ""
+msgstr "'smartlink: %s succesvol aangemaakt." 
 
 #: views.py:159
 msgid "Create new smart link"
-msgstr ""
+msgstr "Nieuwe 'smartlink' aanmaken"
 
 #: views.py:175
 #, python-format
 msgid "Smart link: %s edited successfully."
-msgstr ""
+msgstr "'smartlink': %s aangepast"
 
 #: views.py:184
 #, python-format
 msgid "Edit smart link: %s"
-msgstr ""
+msgstr "'smartlink': %s bewerken."
 
 #: views.py:202
 #, python-format
 msgid "Smart link: %s deleted successfully."
-msgstr ""
+msgstr "'smartlink': %s verwijdert."
 
 #: views.py:204
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(error)s."
-msgstr ""
+msgstr "Fout bij het verwijderen van 'smartlink': %(smart_link)s. Foutmelding: " 
+"%(error)s."
 
 #: views.py:213
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
-msgstr ""
+msgstr "Bent u er zeker van dat u 'smartlink': %s wilt verwijderen?"
 
 #: views.py:229
 #, python-format
 msgid "conditions for smart link: %s"
-msgstr ""
+msgstr "condities voor 'smartlink': %s"
 
 #: views.py:254
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
-msgstr ""
+msgstr "'smartlink' conditie: \"%s\" aangemaakt."
 
 #: views.py:261
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr ""
+msgstr "Nieuwe condities aan 'smartlink': \"%s\" toevoegen."
 
 #: views.py:283
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
-msgstr ""
+msgstr "'smartlink' conditie: \"%s\" aangepast."
 
 #: views.py:290
 msgid "Edit smart link condition"
-msgstr ""
+msgstr "Bewerk 'smartlink' conditie."
 
 #: views.py:297 views.py:331
 msgid "condition"
-msgstr ""
+msgstr "conditie"
 
 #: views.py:317
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
-msgstr ""
+msgstr "'smartlink' conditie: \"%s\" verwijdert"
 
 #: views.py:319
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
-msgstr ""
+msgstr "Fout bij het verwijderen van 'smartlink' conditie: %(smart_link_condition)s." 
+" Foutmelding: %(error)s."
 
 #: views.py:333
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
+msgstr "Bent u er zeker van dat u 'smartlink'-conditie: \"%s\" wilt " 
+"verwijderen?"
 
 #: conf/settings.py:7
 msgid "Linking"
-msgstr ""
+msgstr "Koppeling"
 
 #: conf/settings.py:14
 msgid "Show smart link that don't return any documents."
-msgstr ""
+msgstr "Geef 'smartlinks' die niet naar documenten verwijzen."
 
 #: templates/smart_links_help.html:3
 msgid "What are smart links?"
-msgstr ""
+msgstr "Wat zijn 'smartlinks'"
 
 #: templates/smart_links_help.html:4
 msgid ""
@@ -334,4 +341,8 @@ msgid ""
 "source, the results of these queries are a list of documents that relate in "
 "some manner to the document being displayed and allow users the ability to "
 "jump to and from linked documents very easily."
-msgstr ""
+msgstr "'smartlinks' zijn een verzameling condities die gebruikt worden om de " 
+"database te doorzoeken. Hierbij wordt het huidige document wat de gebruiker " 
+"inziet als bron genomen. Het zoek resultaat maakt documentverwijzingen " 
+"zichtbaar naar documenten die gerelateerd zijn aan het huidige document." 
+"Deze gerelateerde documenten zijn dan eenvoudig te bereiken via hyperlinks"
