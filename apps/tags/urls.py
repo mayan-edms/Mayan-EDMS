@@ -9,6 +9,7 @@ urlpatterns = patterns('tags.views',
     url(r'^multiple/delete/$', 'tag_multiple_delete', (), 'tag_multiple_delete'),
 
     url(r'^(?P<tag_id>\d+)/remove_from_document/(?P<document_id>\d+)/$', 'tag_remove', (), 'tag_remove'),
+    url(r'^(?P<tag_id>\d+)/remove_from_document/multiple/$', 'multiple_document_tag_remove', (), 'multiple_document_tag_remove'),
     url(r'^multiple/remove_from_document/(?P<document_id>\d+)/$', 'tag_multiple_remove', (), 'tag_multiple_remove'),
     url(r'^document/(?P<document_id>\d+)/add/$', 'tag_attach', (), 'tag_attach'),
     url(r'^document/multiple/add/$', 'tag_multiple_attach', (), 'tag_multiple_attach'),

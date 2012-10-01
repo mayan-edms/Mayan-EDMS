@@ -265,15 +265,19 @@ def document_tags(request, document_id):
     return tag_list(request, queryset=document.tags.all(), extra_context=context)
 
 
-def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
-    document = get_object_or_404(Document, pk=document_id)
+def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, tag_id_list=None):
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one tagged document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_REMOVE])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TAG_REMOVE, request.user, document)
-
-    post_action_redirect = None
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_REMOVE, request.user, documents, exception_on_empty=True)
 
     if tag_id:
         tags = [get_object_or_404(Tag, pk=tag_id)]
@@ -283,18 +287,23 @@ def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
         messages.error(request, _(u'Must provide at least one tag.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+    post_action_redirect = None
+
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
-        for tag in tags:
-            try:
-                document.tags.remove(tag)
-                messages.success(request, _(u'Tag "%s" removed successfully.') % tag)
-            except Exception, e:
-                messages.error(request, _(u'Error deleting tag "%(tag)s": %(error)s') % {
-                    'tag': tag, 'error': e
-                })
+        for document in documents:
+            for tag in tags:
+                try:
+                    document.tags.remove(tag)
+                    messages.success(request, _(u'Tag "%(tag)s" removed successfully from document: %(document)s.') % {
+                        'tag': tag, 'document': document}
+                    )
+                except Exception, e:
+                    messages.error(request, _(u'Error deleting tag "%(tag)s" from document "%(document)s"; %(error)s') % {
+                        'tag': tag, 'error': e, 'document': document
+                    })
 
         return HttpResponseRedirect(next)
 
@@ -302,13 +311,25 @@ def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
         'previous': previous,
         'next': next,
         'form_icon': u'tag_blue_delete.png',
-        'object': document,
     }
 
     if len(tags) == 1:
-        context['title'] = _(u'Are you sure you wish to remove the tag: %s?') % ', '.join([unicode(d) for d in tags])
+        if len(documents) == 1:
+            context['object'] = documents[0]
+            context['title'] = _(u'Are you sure you wish to remove the tag "%(tag)s" from the document: %(document)s?') % {
+                'tag': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
+        else:
+            context['title'] = _(u'Are you sure you wish to remove the tag "%(tag)s" from the documents: %(documents)s?') % {
+                'tag': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
     elif len(tags) > 1:
-        context['title'] = _(u'Are you sure you wish to remove the tags: %s?') % ', '.join([unicode(d) for d in tags])
+        if len(documents) == 1:
+            context['object'] = documents[0]
+            context['title'] = _(u'Are you sure you wish to remove the taqs: %(tags)s from the document: %(document)s?') % {
+                'tags': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
+        else:
+            context['title'] = _(u'Are you sure you wish to remove the tags %(tag)s from the documents: %(documents)s?') % {
+                'tags': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
+        #context['title'] = _(u'Are you sure you wish to remove the tags: %s?') % ', '.join([unicode(d) for d in tags])
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
@@ -316,6 +337,10 @@ def tag_remove(request, document_id, tag_id=None, tag_id_list=None):
 
 def tag_multiple_remove(request, document_id):
     return tag_remove(request, document_id=document_id, tag_id_list=request.GET.get('id_list', []))
+
+
+def multiple_document_tag_remove(request, tag_id):
+    return tag_remove(request, tag_id=tag_id, document_id_list=request.GET.get('id_list', []))
 
 
 def tag_acl_list(request, tag_pk):

@@ -14,8 +14,7 @@ from taggit.managers import TaggableManager
 from .links import (tag_list, tag_create, tag_attach, tag_document_remove,
     tag_document_remove_multiple, tag_document_list, tag_delete,
     tag_edit, tag_tagged_item_list, tag_multiple_delete, tag_acl_list,
-    tag_multiple_attach)
-
+    tag_multiple_attach, multiple_document_tag_remove)
 from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
     PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW)
@@ -48,6 +47,7 @@ register_links(['document_tags', 'tag_remove', 'tag_multiple_remove', 'tag_attac
 register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
 
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [tag_multiple_attach])
+register_multi_item_links(['tag_tagged_item_list'], [multiple_document_tag_remove])
 
 class_permissions(Document, [
     PERMISSION_TAG_ATTACH,
