@@ -47,7 +47,7 @@ register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['document_tags', 'tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')
 register_multi_item_links(['document_tags'], [tag_document_remove_multiple])
 
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent'], [tag_multiple_attach])
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [tag_multiple_attach])
 
 class_permissions(Document, [
     PERMISSION_TAG_ATTACH,
