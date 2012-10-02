@@ -143,7 +143,9 @@ class Installation(Singleton):
         else:
             try:
                 dictionary = {}
-                if self.is_lsb:
+                if self.is_lsb == True:
+                    # Explicit True test, if self.is_lsb alone would always
+                    # return True as it exists as a Property instance
                     dictionary.update(
                         {
                             'is_lsb': unicode(self.is_lsb),
@@ -169,7 +171,8 @@ class Installation(Singleton):
                         'fabfile': unicode(self.fabfile),
                     }
                 )
-                if self.is_git_repo:
+                if self.is_git_repo == True:
+                    # Same as above is_lsb test
                     dictionary.update(
                         {
                             'repo_remotes': unicode(self.repo_remotes),
