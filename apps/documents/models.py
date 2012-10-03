@@ -29,11 +29,10 @@ from mimetype.api import (get_mimetype, get_icon_file_path,
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
 
-from .conf.settings import RECENT_COUNT
 from .conf.settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
     STORAGE_BACKEND, DISPLAY_SIZE, CACHE_PATH,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
-from .managers import DocumentPageTransformationManager
+from .managers import DocumentPageTransformationManager, RecentDocumentManager
 from .utils import document_save_to_temp_dir
 from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
     VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
@@ -632,23 +631,6 @@ class DocumentPageTransformation(models.Model):
         verbose_name_plural = _(u'document page transformations')
 
 
-class RecentDocumentManager(models.Manager):
-    def add_document_for_user(self, user, document):
-        if user.is_authenticated():
-            self.model.objects.filter(user=user, document=document).delete()
-            new_recent = self.model(user=user, document=document, datetime_accessed=datetime.datetime.now())
-            new_recent.save()
-            to_delete = self.model.objects.filter(user=user)[RECENT_COUNT:]
-            for recent_to_delete in to_delete:
-                recent_to_delete.delete()
-
-    def get_for_user(self, user):
-        if user.is_authenticated():
-            return Document.objects.filter(recentdocument__user=user)
-        else:
-            return []
-
-
 class RecentDocument(models.Model):
     """
     Keeps a list of the n most recent accessed or created document for
@@ -656,7 +638,7 @@ class RecentDocument(models.Model):
     """
     user = models.ForeignKey(User, verbose_name=_(u'user'), editable=False)
     document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
-    datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), db_index=True)
+    datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), default=lambda: datetime.datetime.now(), db_index=True)
 
     objects = RecentDocumentManager()
 
