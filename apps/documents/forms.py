@@ -5,7 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
-
+from django.utils.html import conditional_escape
+from django.utils.encoding import force_unicode
+        
 from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
 from common.conf.settings import DEFAULT_PAPER_SIZE, DEFAULT_PAGE_ORIENTATION
@@ -261,10 +263,10 @@ class DocumentContentForm(forms.Form):
         self.fields['contents'].initial = u''
         for page in self.document.pages.all():
             if page.content:
-                content.append(page.content)
-                content.append(u'\n\n\n - Page %s - \n\n\n' % page.page_number)
+                content.append(conditional_escape(force_unicode(page.content)))
+                content.append(u'\n\n\n<hr/><div style="text-align: center;">- %s %s -</div><hr/>\n\n\n' % (ugettext(u'Page'), page.page_number))
 
-        self.fields['contents'].initial = u''.join(content)
+        self.fields['contents'].initial = mark_safe(u''.join(content))
 
     contents = forms.CharField(
         label=_(u'Contents'),
