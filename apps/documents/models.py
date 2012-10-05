@@ -58,7 +58,7 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
-    name = models.CharField(max_length=32, verbose_name=_(u'name'))
+    name = models.CharField(max_length=32, verbose_name=_(u'name'), unique=True)
 
     def __unicode__(self):
         return self.name
