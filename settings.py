@@ -103,6 +103,7 @@ MIDDLEWARE_CLASSES = (
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -164,6 +165,7 @@ INSTALLED_APPS = (
     'installation',
 # Mayan EDMS
     'storage',
+    'app_registry',
     'folders',
     'tags',
     'document_comments',
@@ -179,7 +181,7 @@ INSTALLED_APPS = (
     'rest_api',
     'document_signatures',
     'checkouts',
-
+    'bootstrap',
 # Has to be last so the other apps can register it's signals
     'signaler',
 )

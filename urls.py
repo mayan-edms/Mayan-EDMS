@@ -34,6 +34,7 @@ urlpatterns = patterns('',
     (r'^checkouts/', include('checkouts.urls')),
     (r'^installation/', include('installation.urls')),
     (r'^scheduler/', include('scheduler.urls')),
+    (r'^bootstrap/', include('bootstrap.urls')),
 )
 
 
