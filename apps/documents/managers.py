@@ -47,3 +47,8 @@ class RecentDocumentManager(models.Manager):
             return document_model.objects.filter(recentdocument__user=user).order_by('-recentdocument__datetime_accessed')
         else:
             return document_model.objects.none()
+
+
+class DocumentTypeManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
