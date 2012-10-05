@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.models import Document, DocumentType
 
 from .conf.settings import (AVAILABLE_MODELS, AVAILABLE_FUNCTIONS)
+from .managers import MetadataTypeManager, MetadataSetManager
 
 available_models_string = (_(u' Available models: %s') % u','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else u''
 available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else u''
@@ -25,8 +26,13 @@ class MetadataType(models.Model):
         help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
     #TODO: datatype?
 
+    objects = MetadataTypeManager()
+
     def __unicode__(self):
         return self.title if self.title else self.name
+
+    def natural_key(self):
+        return (self.name,)
 
     class Meta:
         ordering = ('title',)
@@ -38,10 +44,15 @@ class MetadataSet(models.Model):
     """
     Define a group of metadata types
     """
-    title = models.CharField(max_length=48, verbose_name=_(u'title'))
+    title = models.CharField(max_length=48, verbose_name=_(u'title'), unique=True)
+
+    objects = MetadataSetManager()
 
     def __unicode__(self):
         return self.title
+
+    def natural_key(self):
+        return (self.title,)
 
     class Meta:
         ordering = ('title',)
