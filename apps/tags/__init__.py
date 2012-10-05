@@ -18,6 +18,7 @@ from .links import (tag_list, tag_create, tag_attach, tag_document_remove,
 from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
     PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW)
+from .managers import TagManager
 
 
 register_model_list_columns(Tag, [
@@ -61,3 +62,14 @@ class_permissions(Tag, [
 ])
 
 Document.add_to_class('tags', TaggableManager())
+
+def natural_key(self):
+    return (self.name,)
+      
+Tag.add_to_class('natural_key', natural_key)
+
+class NewTagManager(Tag._default_manager.__class__):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
+
+Tag.default_manager = NewTagManager()
