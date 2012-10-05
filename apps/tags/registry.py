@@ -1,0 +1,15 @@
+from __future__ import absolute_import
+
+from .cleanup import cleanup
+
+
+bootstrap_models = [
+    {
+        'name': 'taggit.tag',
+        'sanitize': False,
+    },
+    {
+        'name': 'tagproperties',
+    }
+]
+cleanup_functions = [cleanup]
