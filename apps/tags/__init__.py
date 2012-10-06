@@ -18,7 +18,6 @@ from .links import (tag_list, tag_create, tag_attach, tag_document_remove,
 from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
     PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW)
-from .managers import TagManager
 
 
 register_model_list_columns(Tag, [
