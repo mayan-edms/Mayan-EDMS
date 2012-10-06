@@ -78,6 +78,7 @@ Migrate existing database schema with::
     $ ./manage.py migrate document_indexing
     $ ./manage.py migrate metadata 0001 --fake
     $ ./manage.py migrate metadata
+    $ ./manage.py migrate bootstrap
     $ ./manage.py migrate documents
 
 Add new static media::
