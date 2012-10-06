@@ -20,3 +20,4 @@ requests==0.13.1
 pbs==0.105
 psutil==0.5.1
 GitPython==0.3.2.RC1
+PyYAML==3.10
