@@ -21,5 +21,7 @@ class BootstrapSetupManager(models.Manager):
     def dump(self, serialization_format):
         result = []
         for bootstrap_model in BootstrapModel.get_all():
-            result.append(bootstrap_model.dump(serialization_format))
+            model_fixture = bootstrap_model.dump(serialization_format)
+            if '[]' not in model_fixture and '{}' not in model_fixture:
+                result.append(model_fixture)
         return '\n'.join(result)
