@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.management import create_superuser
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.db import transaction, DatabaseError
 
 from navigation.api import register_links, register_top_menu
 
@@ -71,10 +72,14 @@ def create_superuser(sender, **kwargs):
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
 def auto_admin_account_passwd_change(sender, instance, **kwargs):
-    auto_admin_properties = AutoAdminSingleton.objects.get()
-    if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
-        # Only delete the auto admin properties when the password has been changed
-        auto_admin_properties.delete(force=True)
+    with transaction.commit_on_success():
+        try:
+            auto_admin_properties = AutoAdminSingleton.objects.get()
+            if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
+                # Only delete the auto admin properties when the password has been changed
+                auto_admin_properties.delete(force=True)
+        except DatabaseError:
+            transaction.rollback()
 
 
 if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
