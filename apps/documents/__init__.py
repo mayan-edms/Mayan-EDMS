@@ -11,7 +11,6 @@ from navigation.api import (register_links, register_top_menu,
 from main.api import register_diagnostic, register_maintenance_links
 from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
-from metadata.api import get_metadata_string
 from project_setup.api import register_setup
 from acls.api import class_permissions
 
@@ -122,11 +121,11 @@ document_type_filename_edit = {'text': _(u'edit'), 'view': 'document_type_filena
 document_type_filename_delete = {'text': _(u'delete'), 'view': 'document_type_filename_delete', 'args': 'filename.id', 'famfam': 'database_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 
 # Register document type links
-register_links(DocumentType, [document_type_document_list, document_type_filename_list, document_type_edit, document_type_delete])
+register_links(DocumentType, [document_type_edit, document_type_delete, document_type_document_list, document_type_filename_list])
 register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
 
 register_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='secondary_menu')
-register_links([DocumentType], [document_type_filename_create], menu_name='sidebar')
+register_links([DocumentTypeFilename, 'document_type_filename_list', 'document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
 register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
@@ -166,9 +165,6 @@ register_maintenance_links([document_find_all_duplicates, document_update_page_c
 register_model_list_columns(Document, [
         {'name':_(u'thumbnail'), 'attribute':
             encapsulate(lambda x: document_thumbnail(x))
-        },
-        {'name':_(u'metadata'), 'attribute':
-            encapsulate(lambda x: get_metadata_string(x))
         },
     ])
 
