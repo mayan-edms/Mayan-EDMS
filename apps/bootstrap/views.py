@@ -117,7 +117,7 @@ def bootstrap_setup_delete(request, bootstrap_setup_pk):
         'next': next,
         'object': bootstrap,
         'title': _(u'Are you sure you with to delete the bootstrap setup: %s?') % bootstrap,
-        'form_icon': icon_bootstrap_setup_delete,
+        'form_icon': 'lightning_delete.png',
     }
 
     return render_to_response('generic_confirm.html', context,
