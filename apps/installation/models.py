@@ -60,7 +60,7 @@ class Installation(Singleton):
 
     def get_properties(self):
         self.set_properties()
-        return self._properties
+        return self._properties.values()
 
     def set_properties(self):
         self._properties = SortedDict()
