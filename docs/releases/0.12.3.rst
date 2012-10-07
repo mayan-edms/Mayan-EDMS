@@ -94,9 +94,11 @@ Backward incompatible changes
 
 Bugs fixed
 ==========
+* `issue #28`_ "Document indexing based on filesystem problem"
 * `issue #31`_ "Bulk add tags Feature request"
 * `issue #32`_ "Error run $python manage.py syncdb"
 
 
+.. _issue #28: https://github.com/rosarior/mayan/issues/28
 .. _issue #31: https://github.com/rosarior/mayan/issues/31
 .. _issue #32: https://github.com/rosarior/mayan/issues/32
