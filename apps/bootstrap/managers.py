@@ -6,6 +6,7 @@ from django.db import models
 from django.core import serializers
 
 from .classes import BootstrapModel
+from .literals import FIXTURE_TYPE_FIXTURE_PROCESS, FIXTURE_TYPE_EMPTY_FIXTURE
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +23,7 @@ class BootstrapSetupManager(models.Manager):
         result = []
         for bootstrap_model in BootstrapModel.get_all():
             model_fixture = bootstrap_model.dump(serialization_format)
-            if '[]' not in model_fixture and '{}' not in model_fixture:
+            # Only add non empty model fixtures
+            if not FIXTURE_TYPE_EMPTY_FIXTURE[serialization_format](model_fixture):
                 result.append(model_fixture)
-        return '\n'.join(result)
+        return FIXTURE_TYPE_FIXTURE_PROCESS[serialization_format]('\n'.join(result))

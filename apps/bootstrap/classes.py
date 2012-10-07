@@ -7,7 +7,7 @@ from django.core import serializers
 from django.utils.datastructures import SortedDict
 
 from .exceptions import ExistingData
-from .literals import FIXTURE_TYPE_PK_NULLIFIER
+from .literals import FIXTURE_TYPE_PK_NULLIFIER, FIXTURE_TYPE_MODEL_PROCESS
 
 logger = logging.getLogger(__name__)
 
@@ -70,4 +70,6 @@ class BootstrapModel(object):
         if self.sanitize:
             # Remove primary key values
             result = FIXTURE_TYPE_PK_NULLIFIER[serialization_format](result)
+        # Do any clean up required on the fixture
+        result = FIXTURE_TYPE_MODEL_PROCESS[serialization_format](result)
         return result
