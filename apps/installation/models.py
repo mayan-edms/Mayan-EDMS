@@ -120,6 +120,7 @@ class Installation(Singleton):
             headcommit = repo.head.commit
             self.add_property(Property('is_git_repo', _(u'Running from a Git repository'), True))
             self.add_property(Property('repo_remotes', _(u'Repository remotes'), ', '.join([unicode(remote) for remote in repo.remotes])))
+            self.add_property(Property('repo_remotes_urls', _(u'Repository remotes URLs'), ', '.join([unicode(remote.url) for remote in repo.remotes])))
             self.add_property(Property('repo_head_reference', _(u'Branch'), repo.head.reference))
             self.add_property(Property('headcommit_hexsha', _(u'HEAD commit hex SHA'), headcommit.hexsha))
             self.add_property(Property('headcommit_author', _(u'HEAD commit author'), headcommit.author))
