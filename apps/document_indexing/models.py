@@ -53,6 +53,12 @@ class Index(models.Model):
     def natural_key(self):
         return (self.name,)
 
+    def get_instance_node_count(self):
+        try:
+            return self.instance_root.get_descendant_count()
+        except IndexInstanceNode.DoesNotExist:
+            return 0
+
     class Meta:
         verbose_name = _(u'index')
         verbose_name_plural = _(u'indexes')

@@ -310,7 +310,7 @@ def index_list(request):
         'title': _(u'indexes'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _(u'nodes'), 'attribute': encapsulate(lambda x: x.instance_root.get_descendant_count())},
+            {'name': _(u'nodes'), 'attribute': 'get_instance_node_count'},
             {'name': _(u'document types'), 'attribute': 'get_document_types_names'},
         ],
     }
