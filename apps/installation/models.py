@@ -131,7 +131,7 @@ class Installation(Singleton):
     def __getattr__(self, name):
         self.set_properties()
         try:
-            return self._properties[name]
+            return self._properties[name].value
         except KeyError:
             raise AttributeError
 
@@ -143,9 +143,7 @@ class Installation(Singleton):
         else:
             try:
                 dictionary = {}
-                if self.is_lsb == True:
-                    # Explicit True test, if self.is_lsb alone would always
-                    # return True as it exists as a Property instance
+                if self.is_lsb:
                     dictionary.update(
                         {
                             'is_lsb': unicode(self.is_lsb),
@@ -171,8 +169,7 @@ class Installation(Singleton):
                         'fabfile': unicode(self.fabfile),
                     }
                 )
-                if self.is_git_repo == True:
-                    # Same as above is_lsb test
+                if self.is_git_repo:
                     dictionary.update(
                         {
                             'repo_remotes': unicode(self.repo_remotes),
@@ -183,7 +180,6 @@ class Installation(Singleton):
                             'headcommit_message': unicode(self.headcommit_message),
                         }
                 )
-
                 requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(dictionary)}, timeout=TIMEOUT)
             except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
                 pass
