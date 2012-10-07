@@ -1,8 +1,8 @@
 from __future__ import absolute_import
 
-from .models import MetadataType, MetadataSet
-
 
 def cleanup():
+    from .models import MetadataType, MetadataSet
+
     MetadataType.objects.all().delete()
     MetadataSet.objects.all().delete()
