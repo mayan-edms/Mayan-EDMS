@@ -61,14 +61,3 @@ class_permissions(Tag, [
 ])
 
 Document.add_to_class('tags', TaggableManager())
-
-def natural_key(self):
-    return (self.name,)
-      
-Tag.add_to_class('natural_key', natural_key)
-
-class NewTagManager(Tag._default_manager.__class__):
-    def get_by_natural_key(self, name):
-        return self.get(name=name)
-
-Tag.default_manager = NewTagManager()
