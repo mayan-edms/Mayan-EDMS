@@ -233,6 +233,10 @@ PAGINATION_INVALID_PAGE_RAISES_404 = True
 #---------- Search ------------------
 SEARCH_SHOW_OBJECT_TYPE = False
 
+SERIALIZATION_MODULES = {
+    'better_yaml': 'common.serializers.better_yaml',
+}
+
 try:
     from settings_local import *
 except ImportError:
