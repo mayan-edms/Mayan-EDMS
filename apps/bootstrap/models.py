@@ -3,6 +3,11 @@ from __future__ import absolute_import
 import os
 import tempfile
 
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core import management
@@ -38,9 +43,19 @@ class BootstrapSetup(models.Model):
         filepath = os.path.extsep.join([filepath, self.get_extension()])
 
         with open(filepath, 'w') as file_handle:
-            file_handle.write(self.fixture)
+            for line in self.fixture.splitlines(True):
+                if line.startswith('#'):
+                    pass
+                else:
+                    file_handle.write(line)
+        
+        content = StringIO()
+        management.call_command(COMMAND_LOADDATA, filepath, verbosity=0, stderr=content)
+        content.seek(0, os.SEEK_END)
+        if content.tell():
+            content.seek(0)
+            raise Exception(content.readlines()[-2])
 
-        management.call_command(COMMAND_LOADDATA, filepath, verbosity=0)
         os.unlink(filepath)
 
     def compress(self):
