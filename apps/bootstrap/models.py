@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import os
 import tempfile
 import re
+import datetime
 
 try:
     from cStringIO import StringIO
@@ -26,6 +27,7 @@ class BootstrapSetup(models.Model):
     description = models.TextField(verbose_name=_(u'description'), blank=True)
     fixture = models.TextField(verbose_name=_(u'fixture'), help_text=_(u'These are the actual database structure creation instructions.'))
     type = models.CharField(max_length=16, verbose_name=_(u'type'), choices=FIXTURE_TYPES_CHOICES)
+    created = models.DateTimeField(verbose_name=_('creation date and time'), default=lambda: datetime.datetime.now(), editable=False)
 
     objects = BootstrapSetupManager()
 
