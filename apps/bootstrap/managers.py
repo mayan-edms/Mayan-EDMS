@@ -5,7 +5,7 @@ import logging
 from django.db import models
 from django.core import serializers
 
-from .classes import BootstrapModel, FixtureMetadata
+from .classes import BootstrapModel
 from .literals import FIXTURE_TYPE_FIXTURE_PROCESS, FIXTURE_TYPE_EMPTY_FIXTURE
 
 logger = logging.getLogger(__name__)
@@ -19,19 +19,14 @@ class BootstrapSetupManager(models.Manager):
         """
         pass
 
-    def dump(self, serialization_format, instance):
-        metadata_text = []
-        # Add fixture metadata
-        metadata_text.append(FixtureMetadata.generate_all(instance))
-        metadata_text.append('\n')
-
+    def dump(self, serialization_format):
+        """
+        Get the current setup of Mayan in bootstrap format fixture
+        """
         result = []
         for bootstrap_model in BootstrapModel.get_all():
             model_fixture = bootstrap_model.dump(serialization_format)
             # Only add non empty model fixtures
             if not FIXTURE_TYPE_EMPTY_FIXTURE[serialization_format](model_fixture):
                 result.append(model_fixture)
-        return '%s\n%s' % (
-            '\n'.join(metadata_text),
-            FIXTURE_TYPE_FIXTURE_PROCESS[serialization_format]('\n'.join(result))
-        )
+        return FIXTURE_TYPE_FIXTURE_PROCESS[serialization_format]('\n'.join(result))

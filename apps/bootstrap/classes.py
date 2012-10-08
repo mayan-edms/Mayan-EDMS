@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 class Cleanup(object):
     """
-    Class to store all the registered cleanup functions in one place
+    Class to store all the registered cleanup functions in one place.
     """
     _registry = {}
 
@@ -31,7 +31,7 @@ class Cleanup(object):
 class BootstrapModel(object):
     """
     Class used to keep track of all the models to be dumped to create a
-    bootstrap setup from the current setup in use
+    bootstrap setup from the current setup in use.
     """
     _registry = SortedDict()
 
@@ -76,6 +76,11 @@ class BootstrapModel(object):
 
 
 class FixtureMetadata(object):
+    """
+    Class to automatically create and extract metadata from a bootstrap
+    fixture.
+    """
+
     _registry = {}
 
     @classmethod
