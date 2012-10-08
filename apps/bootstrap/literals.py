@@ -61,7 +61,8 @@ COMMAND_LOADDATA = 'loaddata'
 
 if YAML_AVAILABLE:
     FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_YAML, _(u'YAML')),
-    FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_BETTER_YAML, _(u'Better YAML')),
+    # FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_BETTER_YAML, _(u'Better YAML')),
+    # better_yaml is not working with natural keys
 
 DATETIME_STRING_FORMAT = '%a, %d %b %Y %H:%M:%S +0000'
 FIXTURE_METADATA_CREATED = 'created'
