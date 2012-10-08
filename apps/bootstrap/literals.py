@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import re
+
 try:
     import yaml
 except ImportError:
@@ -61,3 +62,9 @@ COMMAND_LOADDATA = 'loaddata'
 if YAML_AVAILABLE:
     FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_YAML, _(u'YAML')),
     FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_BETTER_YAML, _(u'Better YAML')),
+
+FIXTURE_METADATA_EDITED = 'edited'
+FIXTURE_METADATA_MAYAN_VERSION = 'mayan_edms_version'
+FIXTURE_METADATA_FORMAT = 'format'
+FIXTURE_METADATA_NAME = 'name'
+FIXTURE_METADATA_DESCRIPTION = 'description'

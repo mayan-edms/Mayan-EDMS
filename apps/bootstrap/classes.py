@@ -73,3 +73,30 @@ class BootstrapModel(object):
         # Do any clean up required on the fixture
         result = FIXTURE_TYPE_MODEL_PROCESS[serialization_format](result)
         return result
+
+
+class FixtureMetadata(object):
+    _registry = {}
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry.values()
+
+    @classmethod
+    def generate_all(cls, fixture_instance):
+        result = []
+        for fixture_metadata in cls.get_all():
+            result.append(fixture_metadata.generate(fixture_instance))
+
+        return '\n'.join(result)
+
+    def __init__(self, literal, generate_function):
+        self.literal = literal
+        self.generate_function = generate_function
+        self.__class__._registry[id(self)] = self
+
+    def generate(self, fixture_instance):
+        return '# %s: %s' % (self.literal, self.generate_function(fixture_instance))
+
+    def read_value(self, fixture_data):
+        return [line[line.find(self.literal) + len(self.literal) + 2:] for line in fixture_data.splitlines(False) if line.find(self.literal)]
