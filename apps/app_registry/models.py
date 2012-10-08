@@ -56,7 +56,7 @@ class App(object):
 
                     for bootstrap_model in getattr(registration, 'bootstrap_models', []):
                         logger.debug('bootstrap_model: %s' % bootstrap_model)
-                        BootstrapModel(model_name=bootstrap_model.get('name'), app_name=app_name, sanitize=bootstrap_model.get('sanitize', True))
+                        BootstrapModel(model_name=bootstrap_model.get('name'), app_name=app_name, sanitize=bootstrap_model.get('sanitize', True), dependencies=bootstrap_model.get('dependencies'))
 
     def __unicode__(self):
         return unicode(self.label)

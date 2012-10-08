@@ -10,6 +10,7 @@ bootstrap_models = [
     },
     {
         'name': 'tagproperties',
+        'dependencies': ['taggit.tag']
     }
 ]
 cleanup_functions = [cleanup]

@@ -8,6 +8,7 @@ bootstrap_models = [
     },
     {
         'name': 'documenttypefilename',
+        'dependencies': ['documents.documenttype']
     }
 ]
 cleanup_functions = [cleanup]

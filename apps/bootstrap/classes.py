@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import logging
+from itertools import chain
 
 from django.db import models
 from django.core import serializers
@@ -8,6 +9,7 @@ from django.utils.datastructures import SortedDict
 
 from .exceptions import ExistingData
 from .literals import FIXTURE_TYPE_PK_NULLIFIER, FIXTURE_TYPE_MODEL_PROCESS
+from .utils import toposort2
 
 logger = logging.getLogger(__name__)
 
@@ -43,16 +45,49 @@ class BootstrapModel(object):
                 raise ExistingData
 
     @classmethod
-    def get_all(cls):
-        return cls._registry.values()
+    def get_all(cls, sort_by_dependencies=False):
+        """
+        Return all boostrap models, sorted by dependencies optionally.
+        """
+        if not sort_by_dependencies:
+            return cls._registry.values()
+        else:
+            return (cls.get_by_name(name) for name in list(chain.from_iterable(toposort2(cls.get_dependency_dict()))))
+
+    @classmethod
+    def get_dependency_dict(cls):
+        """
+        Return a dictionary where the key is the model name and it's value
+        is a list of models upon which it depends.
+        """
+        result = {}
+        for instance in cls.get_all():
+            result[instance.get_fullname()] = set(instance.dependencies)
+
+        return result
+
+    @classmethod
+    def get_by_name(cls, name):
+        """
+        Return a BootstrapModel instance by the fullname of the model it
+        represents.
+        """
+        return cls._registry[name]
 
     def get_fullname(self):
+        """
+        Return a the full app name + model name of the model represented
+        by the instance.
+        """
         return '.'.join([self.app_name, self.model_name])
 
     def get_model_instance(self):
+        """
+        Returns an actual Model class instance of the model.
+        """
         return models.get_model(self.app_name, self.model_name)
 
-    def __init__(self, model_name, app_name=None, sanitize=True):
+    def __init__(self, model_name, app_name=None, sanitize=True, dependencies=None):
         app_name_splitted = None
         if '.' in model_name:
             app_name_splitted, model_name = model_name.split('.')
@@ -61,8 +96,9 @@ class BootstrapModel(object):
         if not self.app_name:
             raise Exception('Pass either a dotted app plus model name or a model name and a separate app name')
         self.model_name = model_name
-        self.__class__._registry[self.get_fullname()] = self
         self.sanitize = sanitize
+        self.dependencies = dependencies if dependencies else []
+        self.__class__._registry[self.get_fullname()] = self
 
     def dump(self, serialization_format):
         result = serializers.serialize(serialization_format, self.get_model_instance().objects.all(), indent=4, use_natural_keys=True)
@@ -80,7 +116,6 @@ class FixtureMetadata(object):
     Class to automatically create and extract metadata from a bootstrap
     fixture.
     """
-
     _registry = SortedDict()
 
     @classmethod
