@@ -81,7 +81,7 @@ class FixtureMetadata(object):
     fixture.
     """
 
-    _registry = {}
+    _registry = SortedDict()
 
     @classmethod
     def get_all(cls):
