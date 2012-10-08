@@ -14,7 +14,8 @@ from .classes import Cleanup, BootstrapModel
 from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE,
     PERMISSION_BOOTSTRAP_EDIT, PERMISSION_BOOTSTRAP_DELETE,
     PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP)
-from .forms import BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump
+from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
+    BootstrapSetupForm_edit)
 from .exceptions import ExistingData
 
 
@@ -67,7 +68,7 @@ def bootstrap_setup_edit(request, bootstrap_setup_pk):
         AccessEntry.objects.check_access(PERMISSION_BOOTSTRAP_EDIT, request.user, bootstrap)
 
     if request.method == 'POST':
-        form = BootstrapSetupForm(instance=bootstrap, data=request.POST)
+        form = BootstrapSetupForm_edit(instance=bootstrap, data=request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, _(u'Bootstrap setup edited successfully'))
@@ -75,7 +76,7 @@ def bootstrap_setup_edit(request, bootstrap_setup_pk):
         else:
             messages.error(request, _(u'Error editing bootstrap setup.'))
     else:
-        form = BootstrapSetupForm(instance=bootstrap)
+        form = BootstrapSetupForm_edit(instance=bootstrap)
 
     return render_to_response('generic_form.html', {
         'title': _(u'edit bootstrap setup: %s') % bootstrap,

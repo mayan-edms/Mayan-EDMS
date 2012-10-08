@@ -22,6 +22,12 @@ class BootstrapSetupForm_view(DetailForm):
         model = BootstrapSetup
 
 
+class BootstrapSetupForm_edit(forms.ModelForm):
+    class Meta:
+        model = BootstrapSetup
+        exclude = ('type',)
+
+
 class BootstrapSetupForm_dump(forms.ModelForm):
     class Meta:
         model = BootstrapSetup
