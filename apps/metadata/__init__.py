@@ -35,6 +35,7 @@ setup_metadata_type_create = {'text': _(u'create new'), 'view': 'setup_metadata_
 
 setup_metadata_set_list = {'text': _(u'metadata sets'), 'view': 'setup_metadata_set_list', 'famfam': 'table', 'icon': 'table.png', 'permissions': [PERMISSION_METADATA_SET_VIEW]}
 setup_metadata_set_edit = {'text': _(u'edit'), 'view': 'setup_metadata_set_edit', 'args': 'object.pk', 'famfam': 'table_edit', 'permissions': [PERMISSION_METADATA_SET_EDIT]}
+setup_metadata_set_members = {'text': _(u'members'), 'view': 'setup_metadata_set_members', 'args': 'object.pk', 'famfam': 'table_link', 'permissions': [PERMISSION_METADATA_SET_EDIT]}
 setup_metadata_set_delete = {'text': _(u'delete'), 'view': 'setup_metadata_set_delete', 'args': 'object.pk', 'famfam': 'table_delete', 'permissions': [PERMISSION_METADATA_SET_DELETE]}
 setup_metadata_set_create = {'text': _(u'create new'), 'view': 'setup_metadata_set_create', 'famfam': 'table_add', 'permissions': [PERMISSION_METADATA_SET_CREATE]}
 
@@ -47,13 +48,10 @@ register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_ins
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links([MetadataType, 'setup_metadata_type_list', 'setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
 
-register_links(MetadataSet, [setup_metadata_set_edit, setup_metadata_set_delete])
+register_links(MetadataSet, [setup_metadata_set_edit, setup_metadata_set_members, setup_metadata_set_delete])
 register_links([MetadataSet, 'setup_metadata_set_list', 'setup_metadata_set_create'], [setup_metadata_set_list, setup_metadata_set_create], menu_name='secondary_menu')
 
 register_links(DocumentType, [setup_document_type_metadata])
-
-metadata_type_setup_views = ['setup_metadata_type_list', 'setup_metadata_type_edit', 'setup_metadata_type_delete', 'setup_metadata_type_create']
-metadata_set_setup_views = ['setup_metadata_set_list', 'setup_metadata_set_edit', 'setup_metadata_set_delete', 'setup_metadata_set_create']
 
 register_sidebar_template(['setup_metadata_type_list'], 'metadata_type_help.html')
 register_sidebar_template(['setup_metadata_set_list'], 'metadata_set_help.html')
