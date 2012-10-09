@@ -32,14 +32,14 @@ FIXTURE_FILE_TYPE = {
 FIXTURE_TYPE_PK_NULLIFIER = {
     FIXTURE_TYPE_JSON: lambda x: re.sub('"pk": [0-9]{1,5}', '"pk": null', x),
     FIXTURE_TYPE_YAML: lambda x: re.sub('pk: [0-9]{1,5}', 'pk: null', x),
-    FIXTURE_TYPE_BETTER_YAML: lambda x: re.sub('pk: [0-9]{1,5}', 'pk: null', x),
+    FIXTURE_TYPE_BETTER_YAML: lambda x: re.sub('[0-9]{1,5}:', 'null:', x),
     FIXTURE_TYPE_XML: lambda x: re.sub('pk="[0-9]{1,5}"', 'pk=null', x),
 }
 
 FIXTURE_TYPE_EMPTY_FIXTURE = {
-    FIXTURE_TYPE_JSON: lambda x: '[]' in x or x == ',',
-    FIXTURE_TYPE_YAML: lambda x: '[]' in x,
-    FIXTURE_TYPE_BETTER_YAML: lambda x: '{}' in x,
+    FIXTURE_TYPE_JSON: lambda x: x.startswith('[]') or x == ',',
+    FIXTURE_TYPE_YAML: lambda x: x.startswith('[]'),
+    FIXTURE_TYPE_BETTER_YAML: lambda x: x.startswith('{}'),
     FIXTURE_TYPE_XML: lambda x: x,
 }
 
@@ -61,7 +61,7 @@ COMMAND_LOADDATA = 'loaddata'
 
 if YAML_AVAILABLE:
     FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_YAML, _(u'YAML')),
-    # FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_BETTER_YAML, _(u'Better YAML')),
+    FIXTURE_TYPES_CHOICES += (FIXTURE_TYPE_BETTER_YAML, _(u'Better YAML')),
     # better_yaml is not working with natural keys
 
 DATETIME_STRING_FORMAT = '%a, %d %b %Y %H:%M:%S +0000'
