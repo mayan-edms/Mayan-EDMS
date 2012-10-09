@@ -64,6 +64,7 @@ class BootstrapModel(object):
         for instance in cls.get_all():
             result[instance.get_fullname()] = set(instance.dependencies)
 
+        logger.debug('result: %s' % result)
         return result
 
     @classmethod
@@ -102,7 +103,7 @@ class BootstrapModel(object):
 
     def dump(self, serialization_format):
         result = serializers.serialize(serialization_format, self.get_model_instance().objects.all(), indent=4, use_natural_keys=True)
-        logger.debug('result: %s' % result)
+        logger.debug('result: "%s"' % result)
         if self.sanitize:
             # Remove primary key values
             result = FIXTURE_TYPE_PK_NULLIFIER[serialization_format](result)
