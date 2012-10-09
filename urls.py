@@ -35,6 +35,7 @@ urlpatterns = patterns('',
     (r'^installation/', include('installation.urls')),
     (r'^scheduler/', include('scheduler.urls')),
     (r'^bootstrap/', include('bootstrap.urls')),
+    (r'^registration/', include('registration.urls')),
 )
 
 

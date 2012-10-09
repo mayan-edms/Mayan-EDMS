@@ -80,6 +80,7 @@ Migrate existing database schema with::
     $ ./manage.py migrate metadata
     $ ./manage.py migrate bootstrap
     $ ./manage.py migrate documents
+    $ ./manage.py migrate registration
 
 Add new static media::
 

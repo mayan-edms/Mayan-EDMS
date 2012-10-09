@@ -182,6 +182,7 @@ INSTALLED_APPS = (
     'document_signatures',
     'checkouts',
     'bootstrap',
+    'registration',
 # Has to be last so the other apps can register it's signals
     'signaler',
 )

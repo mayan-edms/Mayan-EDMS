@@ -6,6 +6,7 @@
 {% load search_tags %}
 {% load main_settings_tags %}
 {% load variable_tags %}
+{% load registration_tags %}
 
 {% block web_theme_head %}
     {% if new_window_url %}
@@ -25,7 +26,7 @@
 {% block html_title %}{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}{% endblock %}
 
 {% get_main_setting "SIDE_BAR_SEARCH" as debug %}
-{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %} {% endif %}{% endblock %}
+{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %}  - {% registered_name %}{% endif %}{% endblock %}
 
 {% block web_theme_stylesheets %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />
