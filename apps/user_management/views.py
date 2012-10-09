@@ -216,6 +216,35 @@ def user_multiple_set_password(request):
     )
 
 
+def get_user_groups(user):
+    #return user.group_set.all()
+    return Group.objects.filter(user=user)
+
+
+def get_user_non_groups(user):
+    return Group.objects.exclude(user=user)
+
+
+def user_groups(request, user_id):
+    Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
+    user = get_object_or_404(User, pk=user_id)
+
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(get_user_non_groups(user), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(get_user_groups(user), display_object_type=False),
+        add_method=lambda x: x.user_set.add(user),
+        remove_method=lambda x: x.user_set.remove(user),
+        left_list_title=_(u'non groups of user: %s') % user,
+        right_list_title=_(u'groups of user: %s') % user,
+        decode_content_type=True,
+        extra_context={
+            'object': user,
+            'object_name': _(u'user'),
+        }
+    )
+
+
 # Group views
 def group_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_VIEW])
