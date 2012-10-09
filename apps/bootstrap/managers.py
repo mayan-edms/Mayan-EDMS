@@ -24,7 +24,9 @@ class BootstrapSetupManager(models.Manager):
         Get the current setup of Mayan in bootstrap format fixture
         """
         result = []
+        logger.debug('start dumping data')
         for bootstrap_model in BootstrapModel.get_all(sort_by_dependencies=True):
+            logger.debug('dumping model: %s' % bootstrap_model.get_fullname())
             model_fixture = bootstrap_model.dump(serialization_format)
             # Only add non empty model fixtures
             if not FIXTURE_TYPE_EMPTY_FIXTURE[serialization_format](model_fixture):
