@@ -51,7 +51,7 @@ FIXTURE_TYPE_MODEL_PROCESS = {
 }
 
 FIXTURE_TYPE_FIXTURE_PROCESS = {
-    FIXTURE_TYPE_JSON: lambda x: '[\n%s\n]' % x,
+    FIXTURE_TYPE_JSON: lambda x: '[\n%s\n]' % x[:-1],  # Enclose in [], remove last comma
     FIXTURE_TYPE_YAML: lambda x: x,
     FIXTURE_TYPE_BETTER_YAML: lambda x: x,
     FIXTURE_TYPE_XML: lambda x: x,
