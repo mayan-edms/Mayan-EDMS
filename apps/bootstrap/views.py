@@ -29,7 +29,6 @@ def bootstrap_setup_list(request):
         'extra_columns': [
             {'name': _(u'description'), 'attribute': 'description'},
             {'name': _(u'type'), 'attribute': 'get_type_display'},
-            {'name': _(u'created'), 'attribute': 'created'},
         ],
     }
 
