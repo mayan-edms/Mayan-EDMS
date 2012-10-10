@@ -10,11 +10,14 @@ from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
 
 tag_list = {'text': _(u'tag list'), 'view': 'tag_list', 'famfam': 'tag_blue'}
 tag_create = {'text': _(u'create new tag'), 'view': 'tag_create', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_CREATE]}
+
 tag_attach = {'text': _(u'attach tag'), 'view': 'tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_ATTACH]}
 tag_multiple_attach = {'text': _(u'attach tag'), 'view': 'tag_multiple_attach', 'famfam': 'tag_blue_add'}
-tag_document_remove = {'text': _(u'remove'), 'view': 'tag_remove', 'args': ['object.id', 'document.id'], 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
-multiple_document_tag_remove = {'text': _(u'remove tag'), 'view': 'multiple_document_tag_remove', 'args': 'object.id', 'famfam': 'tag_blue_delete'}
-tag_document_remove_multiple = {'text': _(u'remove'), 'view': 'tag_multiple_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
+
+#tag_remove = {'text': _(u'remove tag'), 'view': 'tag_remove', 'args': 'object.pk', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
+multiple_documents_selection_tag_remove = {'text': _(u'remove tag'), 'view': 'multiple_documents_selection_tag_remove', 'famfam': 'tag_blue_delete'}
+single_document_multiple_tag_remove = {'text': _(u'remove tags'), 'view': 'single_document_multiple_tag_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
+
 tag_document_list = {'text': _(u'tags'), 'view': 'document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH], 'children_view_regex': ['tag']}
 tag_delete = {'text': _(u'delete'), 'view': 'tag_delete', 'args': 'object.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
 tag_edit = {'text': _(u'edit'), 'view': 'tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': [PERMISSION_TAG_EDIT]}
