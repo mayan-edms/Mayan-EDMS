@@ -15,20 +15,31 @@ logger = logging.getLogger(__name__)
 class BootstrapSetupForm(forms.ModelForm):
     class Meta:
         model = BootstrapSetup
+        widgets = {
+            'description': forms.widgets.Textarea(attrs={
+                'rows': 5, 'cols': 80,
+                }
+            )
+        }
 
 
 class BootstrapSetupForm_view(DetailForm):
     class Meta:
         model = BootstrapSetup
+        widgets = {
+            'description': forms.widgets.Textarea(attrs={
+                'rows': 5, 'cols': 80,
+                }
+            )
+        }
 
-
-class BootstrapSetupForm_edit(forms.ModelForm):
-    class Meta:
+class BootstrapSetupForm_edit(BootstrapSetupForm):
+    class Meta(BootstrapSetupForm.Meta):
         model = BootstrapSetup
         exclude = ('type',)
 
 
-class BootstrapSetupForm_dump(forms.ModelForm):
-    class Meta:
+class BootstrapSetupForm_dump(BootstrapSetupForm):
+    class Meta(BootstrapSetupForm.Meta):
         model = BootstrapSetup
-        exclude = ['fixture']
+        exclude = ('fixture',)
