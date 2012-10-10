@@ -11,59 +11,72 @@ Overview
 
 
 Once again the focus for this release in the 0.12 series is including
-bug fixes and minor feature.  `issue #31`_ has been implemented adding bulk
-document tagging and untagging.
-
+bug fixes and minor feature.
 
 What's new in Mayan EDMS v0.12.3
 ================================
 
 Django 1.3.3
 ~~~~~~~~~~~~
+This release updates the required version of Django to 1.3.3 to take advantage
+of the security fixes done to that version of the framework.
+
+Bulk document tagging and untagging
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+As requested by issue #`issue #31`_ this feature has been implemented has enabled in this version.
+Attaching or removing tag from a large number of documents is now much easier.
+
+Registration
+~~~~~~~~~~~~
+Based on requests made by the community for greater commercial support and services for
+**Mayan EDMS**, a new feature has been added that allows users to register their
+copies of **Mayan EDMS** and better help users with commercial support packages.
+Registration for non commercial users is voluntary and optional, and in no way
+affects the functionality of **Mayan EDMS**.  Even for non commercial users
+registration offers the advantage of automatically branding the user's copy
+of **Mayan EDMS** with their name or the company name in the title area.
 
 Per document type indexing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-**Mayan EDMS** creates a administrator user during the
-database creation phase to reduce the amount of steps required for a
-functional install.  The creation of this account is controlled by the configuration
-option :setting:`COMMON_AUTO_CREATE_ADMIN`, the username of the account is
-specified with the configuration option :setting:`COMMON_AUTO_ADMIN_USERNAME`
-and the password of this account by the option :setting:`COMMON_AUTO_ADMIN_PASSWORD`.
-Previously the :setting:`COMMON_AUTO_ADMIN_PASSWORD` defaulted to 'admin' which
-created an administrator account of username 'admin' with a password of
-'admin'.  The new default is to randomize an initial password and show this password
-at the login screen until the administrator password is changed.
+Index can now be restricted to update only on specific document types, this
+greatly increases the usefulness of indexes, and prevents unwanted index
+updates. 
 
-.. image:: mayan_first_login.png
- :alt: First login dialog
-
-Document check outs
-~~~~~~~~~~~~~~~~~~~
-As per the feature request filed under `issue #26`_, a new document
-check out and check in functionality has been added.  Users can now
-check out a document and lock new version of it from being uploaded to avoid
-editing conflicts.  Document check outs have an expiration period after which
-**Mayan EDMS** will automatically check them back in to avoid a permanent
-document lockout.  Only the user who has checked out a document can upload
-new versions of it or check the document back in before the expiration period,
-unless being granted the ``Allow overriding check out restrictions`` or 
-``Forcefully check in documents`` permission respectively.
-
-Installation environment app improvements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Diagnosting remote installations of web based applications without access to the
-command line can be a bit hard, to alleviate this situation a new installation
-environment details app has been added.  The purpose of this app is to provide
-support staff information about the physical environment where **Mayan EDMS** has
-been installed.  To avoid possible security compromises only administrators
-can access this app.
+Bootstrap
+~~~~~~~~~
+Setting up **Mayan EDMS** after installation has been indetified by users as the
+main difficulty when knowledge about **Mayan EDMS** is relatively low.  To
+address this situation a new feature that provides preconfigured setups has been
+added.  Aside from including preconfigured setups, the new bootstrap apps
+has the ability of dumping an users current setup into a serialized text file
+which can be tweaked by hand and sent via email to other users.  The possibilities
+enabled by this range from company wide defaults setups to consultants providing
+their clients with customized setups without having to access their clients'
+**Mayan EDMS** instances.  JSON, YAML and a custom YAML format
+(http://djangosnippets.org/snippets/2461/) are supported by this new app.
 
 Translation updates
 ~~~~~~~~~~~~~~~~~~~
+The translation for all the current languages were synchronized to the
+latest transifex project sources.
 
-General fixes
+Model updates
 ~~~~~~~~~~~~~
-Unique fields in the DocumentType model, MetadataSet label
+Several small fixes to the behavior of some model were added, namely that
+the names of some models should be unique.  The document type name as well
+as the metadata set name were two models that were updated to behave this way.
+
+Navigation updates
+~~~~~~~~~~~~~~~~~~
+There were some additions and changes to the navigation to make it more intuitive
+or to add an alternate way to access the same information better.  The bulk
+attachment of tags was one of these.  Previously users were added or removed from groups,
+now users can be assigned to groups without leaving the user view.  The name of an
+existing metadata set can now be edited and what was previously called metadata set edit
+is now more aptly named metadata members which adds or removes metadata types into a
+single organizational unit.  An error that caused a duplicate menu link in the
+document type filename view was also fixed.
+Metadata set edit
 
 
 Upgrading from a previous version
