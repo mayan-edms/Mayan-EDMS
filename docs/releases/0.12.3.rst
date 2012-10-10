@@ -19,12 +19,12 @@ What's new in Mayan EDMS v0.12.3
 Django 1.3.3
 ~~~~~~~~~~~~
 This release updates the required version of Django to 1.3.3 to take advantage
-of the security fixes done to that version of the framework.
+of the security fixes added to that version of the framework.
 
 Bulk document tagging and untagging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-As requested by issue #`issue #31`_ this feature has been implemented has enabled in this version.
-Attaching or removing tag from a large number of documents is now much easier.
+As requested by issue `issue #31`_ this feature has been implemented and enabled in this version.
+Attaching or removing tags from a large number of documents is now much easier.
 
 Registration
 ~~~~~~~~~~~~
@@ -32,7 +32,7 @@ Based on requests made by the community for greater commercial support and servi
 **Mayan EDMS**, a new feature has been added that allows users to register their
 copies of **Mayan EDMS** and better help users with commercial support packages.
 Registration for non commercial users is voluntary and optional, and in no way
-affects the functionality of **Mayan EDMS**.  Even for non commercial users
+affects the functionality of **Mayan EDMS**.  However even for non commercial users
 registration offers the advantage of automatically branding the user's copy
 of **Mayan EDMS** with their name or the company name in the title area.
 
@@ -52,7 +52,7 @@ has the ability of dumping an users current setup into a serialized text file
 which can be tweaked by hand and sent via email to other users.  The possibilities
 enabled by this range from company wide defaults setups to consultants providing
 their clients with customized setups without having to access their clients'
-**Mayan EDMS** instances.  JSON, YAML and a custom YAML format
+**Mayan EDMS** instances.  ``JSON``, ``YAML`` and a custom ``YAML`` format
 (http://djangosnippets.org/snippets/2461/) are supported by this new app.
 
 Translation updates
@@ -76,7 +76,6 @@ existing metadata set can now be edited and what was previously called metadata 
 is now more aptly named metadata members which adds or removes metadata types into a
 single organizational unit.  An error that caused a duplicate menu link in the
 document type filename view was also fixed.
-Metadata set edit
 
 
 Upgrading from a previous version

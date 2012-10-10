@@ -34,7 +34,8 @@ First steps
   :doc:`Overview <intro/overview>` |
   :doc:`Features <intro/features>` |
   :doc:`Requirements <intro/requirements>` |
-  :doc:`Installation <intro/installation>`
+  :doc:`Installation <intro/installation>` |
+  :doc:`Getting started <intro/getting_started>`
 
 
 Understanding Mayan EDMS
@@ -57,8 +58,7 @@ Between versions
 .. toctree::
     :maxdepth: 1
     
-    releases/index 
-    
+    releases/0.12.3.rst
     
 Customization and fine tunning
 ==============================
