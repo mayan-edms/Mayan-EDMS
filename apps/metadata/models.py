@@ -21,7 +21,7 @@ class MetadataType(models.Model):
     default = models.CharField(max_length=128, blank=True, null=True,
         verbose_name=_(u'default'),
         help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
-    lookup = models.CharField(max_length=128, blank=True, null=True,
+    lookup = models.TextField(blank=True, null=True,
         verbose_name=_(u'lookup'),
         help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
     #TODO: datatype?
