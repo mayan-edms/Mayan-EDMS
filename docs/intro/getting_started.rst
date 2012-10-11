@@ -89,6 +89,9 @@ lastly ``Default metadata``.  Choose the desired metadata for the document type
 currently selected and press ``Add``.  From now on whenever you upload a document of
 this type, the related metadata types for this document type will be preselected.
 
+After defining all your metadata types you can also define your indexes to
+let **Mayan EDMS** automatically categorize your documents based on their metadata.
+Refer to the chapter named :doc:`Indexes </topics/indexes>` for examples on how to use the document indexes. 
 
 
 .. |Setup tab| image:: /_static/setup_tab.png
