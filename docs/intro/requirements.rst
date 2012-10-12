@@ -21,7 +21,7 @@ Execute pip install -r requirements/production.txt to install the python/django 
 
 Executables:
 
-* ``tesseract-ocr`` - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.
+* ``tesseract-ocr`` - An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.  Version 3.x or greater required.
 * ``unpaper`` - post-processing scanned and photocopied book pages
 * ``gpg`` - The GNU Privacy Guard
 
