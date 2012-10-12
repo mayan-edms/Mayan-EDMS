@@ -81,7 +81,11 @@ document type filename view was also fixed.
 Upgrading from a previous version
 =================================
 
-Start off by adding the new requirements::
+Start off reseting any local changes if installed from Git::
+
+    $ git reset HEAD --hard
+
+Next add the new requirements::
 
     $ pip install -r requirements/production.txt
 
