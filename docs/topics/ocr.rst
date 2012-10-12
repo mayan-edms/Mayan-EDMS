@@ -1,6 +1,7 @@
 ===
 OCR
 ===
+To use: |Tools tab| |Right arrow| |OCR button|
 
 Because OCR is an intensive operation, documents are queued for OCR for
 later handling, the amount of documents processed in parallel is
@@ -19,3 +20,15 @@ option to ``False`` would stop this behavior.
 
 
 .. _Tesseract: http://code.google.com/p/tesseract-ocr/
+
+.. |Tools tab| image:: /_static/tools_tab.png
+ :alt: Tags tab
+ :align: middle
+
+.. |Right arrow| image:: /_static/arrow_right.png
+ :alt: Right arrow
+ :align: middle
+
+.. |OCR button| image:: /_static/ocr_button.png
+ :alt: OCR button
+ :align: middle
