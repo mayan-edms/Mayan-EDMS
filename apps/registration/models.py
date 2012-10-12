@@ -27,7 +27,7 @@ class RegistrationSingleton(Singleton):
 
     @classmethod
     def registration_state(cls):
-        if cls._registered:
+        if cls._registered is not None:
             return cls._registered
         else:
             instance = cls.objects.get()
