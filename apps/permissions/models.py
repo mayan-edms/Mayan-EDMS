@@ -108,8 +108,6 @@ class Permission(object):
                 namespace=self.namespace.name,
                 name=self.name,
             )
-            stored_permission.label = self.label
-            stored_permission.save()
             stored_permission.volatile_permission = self
             self.__class__._stored_permissions_cache[self] = stored_permission
             return stored_permission
@@ -241,12 +239,15 @@ class Role(models.Model):
             member_id=member.pk)
         if not created:
             raise Exception('Unable to add member to role')
+        else:
+            RoleMember._member_roles_cache = None
 
     def remove_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)
         member_type=ContentType.objects.get_for_model(member)
         role_member = RoleMember.objects.get(role=self, member_type=member_type, member_id=member.pk)
         role_member.delete()
+        RoleMember._member_roles_cache = None
 
     def members(self, filter_dict=None):
         filter_dict = filter_dict or {}
@@ -254,6 +255,8 @@ class Role(models.Model):
 
 
 class RoleMember(models.Model):
+    _member_roles_cache = {}
+
     role = models.ForeignKey(Role, verbose_name=_(u'role'))
     member_type = models.ForeignKey(ContentType,
         related_name='role_member',
