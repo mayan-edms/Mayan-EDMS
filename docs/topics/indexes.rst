@@ -1,8 +1,9 @@
 =======
 Indexes
 =======
-|Setup tab| |Right arrow| |Indexes button|
+To configure: |Setup tab| |Right arrow| |Indexes button| |Right arrow| |Tree template link|
 
+To use: |Index tab|
 
 Indexes are an automatic method to hierarchically organize documents in relation to their metadata and to each other.
 
@@ -70,4 +71,12 @@ curated.
 
 .. |Indexes button| image:: /_static/indexes_button.png
  :alt: Indexes button
+ :align: middle
+
+.. |Tree template link| image:: /_static/tree_template_link.png
+ :alt: Tree template link
+ :align: middle
+
+.. |Index tab| image:: /_static/index_tab.png
+ :alt: Index tab
  :align: middle
