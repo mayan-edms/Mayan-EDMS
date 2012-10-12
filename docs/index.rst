@@ -50,6 +50,7 @@ Understanding Mayan EDMS
   :doc:`Document signatures <topics/signatures>` |
   :doc:`Indexes <topics/indexes>` |
   :doc:`Smart links <topics/smart_links>` |
+  :doc:`Tags <topics/tags>` |
   :doc:`OCR <topics/ocr>`
 
 
