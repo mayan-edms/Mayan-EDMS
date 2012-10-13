@@ -19,14 +19,9 @@ class RoleMemberManager(models.Manager):
         """
         Return the roles to which a member_obj belongs to.
         """
-        try:
-            return self.model._member_roles_cache[member_obj]
-        except KeyError:
-            member_obj = AnonymousUserSingleton.objects.passthru_check(member_obj)
-            member_type = ContentType.objects.get_for_model(member_obj)
-            roles = [role_member.role for role_member in self.model.objects.filter(member_type=member_type, member_id=member_obj.pk)]
-            self.model._member_roles_cache[member_obj] = roles
-            return roles
+        member_obj = AnonymousUserSingleton.objects.passthru_check(member_obj)
+        member_type = ContentType.objects.get_for_model(member_obj)
+        return (role_member.role for role_member in self.model.objects.filter(member_type=member_type, member_id=member_obj.pk))
 
 
 class StoredPermissionManager(models.Manager):

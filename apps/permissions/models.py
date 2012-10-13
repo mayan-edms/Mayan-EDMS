@@ -124,8 +124,6 @@ Permission._default_manager = Permission.objects
 
 
 class StoredPermission(models.Model):
-    _holders_cache = {}
-    
     namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
     name = models.CharField(max_length=64, verbose_name=_(u'name'))
 
@@ -145,13 +143,7 @@ class StoredPermission(models.Model):
         return unicode(getattr(self, 'volatile_permission', self.name))
 
     def get_holders(self):
-        self.__class__._holders_cache.setdefault(self, None)
-        if self.__class__._holders_cache[self] is not None:
-            return self.__class__._holders_cache[self]
-        else:
-            holders = [holder.holder_object for holder in self.permissionholder_set.all()]
-            self.__class__._holders_cache[self] = holders
-        return holders
+        return (holder.holder_object for holder in self.permissionholder_set.all())
 
     def requester_has_this(self, actor):
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
@@ -183,8 +175,6 @@ class StoredPermission(models.Model):
     def grant_to(self, actor):
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
         permission_holder, created = PermissionHolder.objects.get_or_create(permission=self, holder_type=ContentType.objects.get_for_model(actor), holder_id=actor.pk)
-        if created:
-            self.__class__._holders_cache[self] = None
         return created
 
     def revoke_from(self, actor):
@@ -195,7 +185,6 @@ class StoredPermission(models.Model):
         except PermissionHolder.DoesNotExist:
             return False
         else:
-            self.__class__._holders_cache[self] = None
             return True
 
 
@@ -239,15 +228,12 @@ class Role(models.Model):
             member_id=member.pk)
         if not created:
             raise Exception('Unable to add member to role')
-        else:
-            RoleMember._member_roles_cache = None
 
     def remove_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)
         member_type=ContentType.objects.get_for_model(member)
         role_member = RoleMember.objects.get(role=self, member_type=member_type, member_id=member.pk)
         role_member.delete()
-        RoleMember._member_roles_cache = None
 
     def members(self, filter_dict=None):
         filter_dict = filter_dict or {}
@@ -255,8 +241,6 @@ class Role(models.Model):
 
 
 class RoleMember(models.Model):
-    _member_roles_cache = {}
-
     role = models.ForeignKey(Role, verbose_name=_(u'role'))
     member_type = models.ForeignKey(ContentType,
         related_name='role_member',
