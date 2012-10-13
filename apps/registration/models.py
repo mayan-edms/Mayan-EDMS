@@ -21,18 +21,14 @@ class RegistrationSingleton(Singleton):
     registration_data = models.TextField(verbose_name=_(u'registration data'), blank=True)
 
     @classmethod
-    def purge_cache(cls):
-        cls._cached_name = None
-        cls._registered = None
-
-    @classmethod
     def registration_state(cls):
-        if cls._registered is not None:
+        if cls._registered:
             return cls._registered
         else:
             instance = cls.objects.get()
-            cls._registered = instance.is_registered
-            return cls._registered
+            if instance.is_registered:
+                cls._registered = instance.is_registered
+            return instance.is_registered
 
     @classmethod
     def registered_name(cls):
@@ -44,11 +40,11 @@ class RegistrationSingleton(Singleton):
                 dictionary = loads(instance.registration_data)
             except ValueError:
                 dictionary = {}
-            company = dictionary.get('company')
-            name = dictionary.get('name')
-            cls._cached_name = company or name or _(u'No name')
+            name_value = dictionary.get('company') or dictionary.get('name')
+            if name_value:
+                cls._cached_name = name_value
         
-            return cls._cached_name
+            return name_value or _(u'No name')
 
     @property
     def is_registered(self):
@@ -57,8 +53,8 @@ class RegistrationSingleton(Singleton):
     def register(self, form):
         from installation.models import Installation
 
-        #if self.is_registered:
-        #    raise AlreadyRegistered
+        if self.is_registered:
+            raise AlreadyRegistered
 
         installation = Installation.objects.get()
         dictionary = {}
@@ -82,7 +78,6 @@ class RegistrationSingleton(Singleton):
                 pass
             else:
                 self.registered = True
-                self.__class__.purge_cache()
                 self.save()
             finally:
                 lock.release()
