@@ -25,7 +25,6 @@
 
 {% block html_title %}{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}{% endblock %}
 
-{% get_main_setting "SIDE_BAR_SEARCH" as debug %}
 {% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %}{% endif %} - {% registered_name %}{% endblock %}
 
 {% block web_theme_stylesheets %}
