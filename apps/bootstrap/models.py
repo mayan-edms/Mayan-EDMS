@@ -13,8 +13,10 @@ except ImportError:
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core import management
+from django.core.files.uploadedfile import SimpleUploadedFile
 
-from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE, COMMAND_LOADDATA)
+from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE, COMMAND_LOADDATA,
+    BOOTSTRAP_EXTENSION)
 from .managers import BootstrapSetupManager
 from .classes import BootstrapModel, FixtureMetadata
 
@@ -83,6 +85,12 @@ class BootstrapSetup(models.Model):
         Return all the metadata for the current bootstrap fixture.
         """
         return FixtureMetadata.generate_all(self)
+
+    def get_filename(self):
+        return os.extsep.join([self.name, BOOTSTRAP_EXTENSION])
+
+    def as_file(self):
+        return SimpleUploadedFile(name=self.get_filename(), content=self.fixture)
 
     def save(self, *args, **kwargs):
         self.fixture = '%s\n\n%s' % (

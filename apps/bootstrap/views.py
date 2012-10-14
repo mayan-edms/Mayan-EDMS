@@ -6,6 +6,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.core.files import File
+
+from filetransfers.api import serve_file
 
 from permissions.models import Permission
 
@@ -13,7 +16,8 @@ from .models import BootstrapSetup
 from .classes import Cleanup, BootstrapModel
 from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE,
     PERMISSION_BOOTSTRAP_EDIT, PERMISSION_BOOTSTRAP_DELETE,
-    PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP)
+    PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP,
+    PERMISSION_BOOTSTRAP_EXPORT)
 from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
     BootstrapSetupForm_edit)
 from .exceptions import ExistingData
@@ -203,6 +207,24 @@ def bootstrap_setup_dump(request):
         'form': form,
     },
     context_instance=RequestContext(request))
+
+
+def bootstrap_setup_export(request, bootstrap_setup_pk):
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    bootstrap = get_object_or_404(BootstrapSetup, pk=bootstrap_setup_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_EXPORT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_BOOTSTRAP_EXPORT, request.user, bootstrap)
+       
+    return serve_file(
+        request,
+        bootstrap.as_file(),
+        save_as=u'"%s"' % bootstrap.get_filename(),
+        content_type='text/plain; charset=us-ascii'
+    )
 
 
 def erase_database_view(request):
