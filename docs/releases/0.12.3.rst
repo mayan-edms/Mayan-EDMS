@@ -77,13 +77,25 @@ is now more aptly named metadata members which adds or removes metadata types in
 single organizational unit.  An error that caused a duplicate menu link in the
 document type filename view was also fixed.
 
+Optimizations
+~~~~~~~~~~~~~
+Inspired by the idea of getting **Mayan EDMS** running effectively on low power hardware such as
+the Raspberry Pi several rounds or profiling and optimization were done.
+
+Some caching optimization were introduced to the permission model, resulting in
+a speed increase of 33% in rendering time on views with heavy permission checking
+and a 18% query reduction on cache hits.
 
 Upgrading from a previous version
 =================================
+If you installed **Mayan EDMS** by cloning the Git repository issue the commands::
 
-Start off reseting any local changes if installed from Git::
+    $ git reset --hard HEAD
+    $ git pull
 
-    $ git reset HEAD --hard
+otherwise download the compressed archived and uncompress it overriding the existing installation.
+
+    #TODO: add wget and curl get instructions
 
 Next add the new requirements::
 
