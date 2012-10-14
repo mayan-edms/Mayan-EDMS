@@ -16,7 +16,7 @@ from django.core import management
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE, COMMAND_LOADDATA,
-    BOOTSTRAP_EXTENSION)
+    BOOTSTRAP_EXTENSION, FIXTURE_METADATA_REMARK_CHARACTER)
 from .managers import BootstrapSetupManager
 from .classes import BootstrapModel, FixtureMetadata
 
@@ -78,7 +78,7 @@ class BootstrapSetup(models.Model):
         """
         Return the bootstrap setup's fixture without comments.
         """
-        return re.sub(re.compile('#.*?\n'), '', self.fixture)
+        return re.sub(re.compile('%s.*?\n' % FIXTURE_METADATA_REMARK_CHARACTER), '', self.fixture)
 
     def get_metadata_string(self):
         """
@@ -93,10 +93,12 @@ class BootstrapSetup(models.Model):
         return SimpleUploadedFile(name=self.get_filename(), content=self.fixture)
 
     def save(self, *args, **kwargs):
-        self.fixture = '%s\n\n%s' % (
-            self.get_metadata_string(),
-            self.cleaned_fixture
-        )
+        update_metadata = kwargs.pop('update_metadata', True)
+        if update_metadata:
+            self.fixture = '%s\n%s' % (
+                self.get_metadata_string(),
+                self.cleaned_fixture
+            )
         return super(BootstrapSetup, self).save(*args, **kwargs)
 
     class Meta:

@@ -43,3 +43,9 @@ class BootstrapSetupForm_dump(BootstrapSetupForm):
     class Meta(BootstrapSetupForm.Meta):
         model = BootstrapSetup
         exclude = ('fixture',)
+
+
+class BootstrapUploadForm(forms.Form):
+    file = forms.FileField(
+        label=_(u'Bootstrap setup file'),
+    )

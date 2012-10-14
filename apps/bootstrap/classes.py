@@ -8,7 +8,8 @@ from django.core import serializers
 from django.utils.datastructures import SortedDict
 
 from .exceptions import ExistingData
-from .literals import FIXTURE_TYPE_PK_NULLIFIER, FIXTURE_TYPE_MODEL_PROCESS
+from .literals import (FIXTURE_TYPE_PK_NULLIFIER, FIXTURE_TYPE_MODEL_PROCESS,
+    FIXTURE_METADATA_REMARK_CHARACTER)
 from .utils import toposort2
 
 logger = logging.getLogger(__name__)
@@ -131,13 +132,32 @@ class FixtureMetadata(object):
 
         return '\n'.join(result)
 
-    def __init__(self, literal, generate_function):
+    @classmethod
+    def read_all(cls, data):
+        result = {}
+        for instance in cls.get_all():
+            single_result = instance.read_value(data)
+            if single_result:
+                result[instance.property_name] = single_result
+        
+        return result
+
+    def __init__(self, literal, generate_function, read_function=None, property_name=None):
         self.literal = literal
         self.generate_function = generate_function
+        self.property_name = property_name
+        self.read_function = read_function or (lambda x: x)
         self.__class__._registry[id(self)] = self
+        
+    def get_with_remark(self):
+        return '%s %s' % (FIXTURE_METADATA_REMARK_CHARACTER, self.literal)
 
     def generate(self, fixture_instance):
-        return '# %s: %s' % (self.literal, self.generate_function(fixture_instance))
+        return '%s: %s' % (self.get_with_remark(), self.generate_function(fixture_instance))
 
     def read_value(self, fixture_data):
-        return [line[line.find(self.literal) + len(self.literal) + 2:] for line in fixture_data.splitlines(False) if line.find(self.literal)]
+        if self.property_name:
+            for line in fixture_data.splitlines(False):
+                if line.startswith(self.get_with_remark()):
+                    # TODO: replace the "+ 4" with a space and next character finding algo
+                    return self.read_function(line[len(self.literal) + 4:])                     

@@ -9,5 +9,6 @@ urlpatterns = patterns('bootstrap.views',
     url(r'^setup/(?P<bootstrap_setup_pk>\d+)/execute/$', 'bootstrap_setup_execute', (), 'bootstrap_setup_execute'),
     url(r'^setup/(?P<bootstrap_setup_pk>\d+)/export/$', 'bootstrap_setup_export', (), 'bootstrap_setup_export'),
     url(r'^setup/dump/$', 'bootstrap_setup_dump', (), 'bootstrap_setup_dump'),
+    url(r'^setup/import/$', 'bootstrap_setup_import', (), 'bootstrap_setup_import'),
     url(r'^nuke/$', 'erase_database_view', (), 'erase_database_view'),
 )

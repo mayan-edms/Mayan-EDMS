@@ -17,9 +17,9 @@ from .classes import Cleanup, BootstrapModel
 from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE,
     PERMISSION_BOOTSTRAP_EDIT, PERMISSION_BOOTSTRAP_DELETE,
     PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP,
-    PERMISSION_BOOTSTRAP_EXPORT)
+    PERMISSION_BOOTSTRAP_EXPORT, PERMISSION_BOOTSTRAP_IMPORT)
 from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
-    BootstrapSetupForm_edit)
+    BootstrapSetupForm_edit, BootstrapUploadForm)
 from .exceptions import ExistingData
 
 
@@ -226,6 +226,59 @@ def bootstrap_setup_export(request, bootstrap_setup_pk):
         content_type='text/plain; charset=us-ascii'
     )
 
+
+def bootstrap_setup_import(request):
+
+    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_IMPORT])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = BootstrapUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                BootstrapSetup.objects.import_setup(request.FILES['file'])
+                messages.success(request, _(u'Bootstrap setup imported successfully.'))
+                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+            except Exception as exception:
+                messages.error(request, exception)
+                return HttpResponseRedirect(previous)
+    else:
+        form = BootstrapUploadForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'Import bootstrap setup'),
+        'form_icon': 'folder.png',
+        'form': form,
+        'previous': previous,
+    }, context_instance=RequestContext(request))
+
+
+def bootstrap_setup_dump(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_DUMP])
+
+    if request.method == 'POST':
+        form = BootstrapSetupForm_dump(request.POST)
+        if form.is_valid():
+            bootstrap = form.save(commit=False)
+            try:
+                bootstrap.fixture = BootstrapSetup.objects.dump(serialization_format=bootstrap.type)
+            except Exception as exception:
+                messages.error(request, _(u'Error dumping bootstrap setup; %s') % exception)
+                raise
+            else:
+                bootstrap.save()
+                messages.success(request, _(u'Bootstrap created successfully.'))
+                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+    else:
+        form = BootstrapSetupForm_dump()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'dump current setup into a bootstrap setup'),
+        'form': form,
+    },
+    context_instance=RequestContext(request))
+    
 
 def erase_database_view(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_NUKE_DATABASE])
