@@ -19,7 +19,7 @@ from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE
     PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP,
     PERMISSION_BOOTSTRAP_EXPORT, PERMISSION_BOOTSTRAP_IMPORT)
 from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
-    BootstrapSetupForm_edit, BootstrapUploadForm)
+    BootstrapSetupForm_edit, BootstrapFileImportForm, BootstrapURLImportForm)
 from .exceptions import ExistingData
 
 
@@ -227,32 +227,57 @@ def bootstrap_setup_export(request, bootstrap_setup_pk):
     )
 
 
-def bootstrap_setup_import(request):
-
+def bootstrap_setup_import_from_file(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_IMPORT])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
-        form = BootstrapUploadForm(request.POST, request.FILES)
+        form = BootstrapFileImportForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                BootstrapSetup.objects.import_setup(request.FILES['file'])
+                BootstrapSetup.objects.import_from_file(request.FILES['file'])
                 messages.success(request, _(u'Bootstrap setup imported successfully.'))
                 return HttpResponseRedirect(reverse('bootstrap_setup_list'))
             except Exception as exception:
                 messages.error(request, exception)
                 return HttpResponseRedirect(previous)
     else:
-        form = BootstrapUploadForm()
+        form = BootstrapFileImportForm()
 
     return render_to_response('generic_form.html', {
-        'title': _(u'Import bootstrap setup'),
+        'title': _(u'Import bootstrap setup from file'),
         'form_icon': 'folder.png',
         'form': form,
         'previous': previous,
     }, context_instance=RequestContext(request))
-    
+
+
+def bootstrap_setup_import_from_url(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_IMPORT])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = BootstrapURLImportForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                BootstrapSetup.objects.import_from_url(form.cleaned_data['url'])
+                messages.success(request, _(u'Bootstrap setup imported successfully.'))
+                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+            except Exception as exception:
+                messages.error(request, exception)
+                return HttpResponseRedirect(previous)
+    else:
+        form = BootstrapURLImportForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'Import bootstrap setup from URL'),
+        'form_icon': 'folder.png',
+        'form': form,
+        'previous': previous,
+    }, context_instance=RequestContext(request))
+
 
 def erase_database_view(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_NUKE_DATABASE])

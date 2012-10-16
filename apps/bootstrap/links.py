@@ -17,5 +17,6 @@ link_bootstrap_setup_view = {'text': _(u'details'), 'view': 'bootstrap_setup_vie
 link_bootstrap_setup_execute = {'text': _(u'execute'), 'view': 'bootstrap_setup_execute', 'args': 'object.pk', 'famfam': 'lightning_go', 'permissions': [PERMISSION_BOOTSTRAP_EXECUTE]}
 link_bootstrap_setup_dump = {'text': _(u'dump current setup'), 'view': 'bootstrap_setup_dump', 'famfam': 'arrow_down', 'permissions': [PERMISSION_BOOTSTRAP_DUMP]}
 link_bootstrap_setup_export = {'text': _(u'export'), 'view': 'bootstrap_setup_export', 'args': 'object.pk', 'famfam': 'disk', 'permissions': [PERMISSION_BOOTSTRAP_EXPORT]}
-link_bootstrap_setup_import = {'text': _(u'import'), 'view': 'bootstrap_setup_import', 'famfam': 'folder', 'permissions': [PERMISSION_BOOTSTRAP_IMPORT]}
+link_bootstrap_setup_import_from_file = {'text': _(u'import from file'), 'view': 'bootstrap_setup_import_from_file', 'famfam': 'folder', 'permissions': [PERMISSION_BOOTSTRAP_IMPORT]}
+link_bootstrap_setup_import_from_url = {'text': _(u'import from URL'), 'view': 'bootstrap_setup_import_from_url', 'famfam': 'world', 'permissions': [PERMISSION_BOOTSTRAP_IMPORT]}
 link_erase_database = {'text': _(u'erase database'), 'view': 'erase_database_view', 'icon': 'radioactivity.png', 'permissions': [PERMISSION_NUKE_DATABASE]}

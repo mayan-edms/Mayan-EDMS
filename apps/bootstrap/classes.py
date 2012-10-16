@@ -139,7 +139,7 @@ class FixtureMetadata(object):
             single_result = instance.read_value(data)
             if single_result:
                 result[instance.property_name] = single_result
-        
+
         return result
 
     def __init__(self, literal, generate_function, read_function=None, property_name=None):
@@ -160,4 +160,4 @@ class FixtureMetadata(object):
             for line in fixture_data.splitlines(False):
                 if line.startswith(self.get_with_remark()):
                     # TODO: replace the "+ 4" with a space and next character finding algo
-                    return self.read_function(line[len(self.literal) + 4:])                     
+                    return self.read_function(line[len(self.literal) + 4:])             

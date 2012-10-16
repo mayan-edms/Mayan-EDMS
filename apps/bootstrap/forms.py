@@ -45,7 +45,13 @@ class BootstrapSetupForm_dump(BootstrapSetupForm):
         exclude = ('fixture',)
 
 
-class BootstrapUploadForm(forms.Form):
+class BootstrapFileImportForm(forms.Form):
     file = forms.FileField(
         label=_(u'Bootstrap setup file'),
+    )
+
+
+class BootstrapURLImportForm(forms.Form):
+    url = forms.URLField(
+        label=_(u'Bootstrap setup URL'),
     )
