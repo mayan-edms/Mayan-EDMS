@@ -13,7 +13,7 @@ from .models import BootstrapSetup
 from .classes import FixtureMetadata
 from .literals import (FIXTURE_METADATA_CREATED, FIXTURE_METADATA_EDITED,
     FIXTURE_METADATA_MAYAN_VERSION, FIXTURE_METADATA_FORMAT, FIXTURE_METADATA_NAME,
-    FIXTURE_METADATA_DESCRIPTION, DATETIME_STRING_FORMAT)
+    FIXTURE_METADATA_DESCRIPTION, DATETIME_STRING_FORMAT, FIXTURE_METADATA_SLUG)
 
 register_links([BootstrapSetup], [link_bootstrap_setup_view, link_bootstrap_setup_edit, link_bootstrap_setup_delete, link_bootstrap_setup_execute, link_bootstrap_setup_export])
 register_links([BootstrapSetup], [link_bootstrap_setup_list, link_bootstrap_setup_create, link_bootstrap_setup_dump, link_bootstrap_setup_import], menu_name='secondary_menu')
@@ -24,4 +24,5 @@ FixtureMetadata(FIXTURE_METADATA_EDITED, generate_function=lambda fixture_instan
 FixtureMetadata(FIXTURE_METADATA_MAYAN_VERSION, generate_function=lambda fixture_instance: __version__)
 FixtureMetadata(FIXTURE_METADATA_FORMAT, generate_function=lambda fixture_instance: fixture_instance.type, property_name='type')
 FixtureMetadata(FIXTURE_METADATA_NAME, generate_function=lambda fixture_instance: fixture_instance.name, property_name='name')
+FixtureMetadata(FIXTURE_METADATA_SLUG, generate_function=lambda fixture_instance: fixture_instance.slug, property_name='slug')
 FixtureMetadata(FIXTURE_METADATA_DESCRIPTION, generate_function=lambda fixture_instance: fixture_instance.description, property_name='description')

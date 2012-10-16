@@ -5,6 +5,8 @@ import tempfile
 import re
 import datetime
 
+import slugify
+
 try:
     from cStringIO import StringIO
 except ImportError:
@@ -26,6 +28,7 @@ class BootstrapSetup(models.Model):
     Model to store the fixture for a pre configured setup.
     """
     name = models.CharField(max_length=128, verbose_name=_(u'name'), unique=True)
+    slug = models.SlugField(max_length=128, verbose_name=_(u'slug'), unique=True, blank=True)
     description = models.TextField(verbose_name=_(u'description'), blank=True)
     fixture = models.TextField(verbose_name=_(u'fixture'), help_text=_(u'These are the actual database structure creation instructions.'))
     type = models.CharField(max_length=16, verbose_name=_(u'type'), choices=FIXTURE_TYPES_CHOICES)
@@ -92,6 +95,8 @@ class BootstrapSetup(models.Model):
                 self.get_metadata_string(),
                 self.cleaned_fixture
             )
+        if not self.slug:
+            self.slug = slugify.slugify(self.name)
         return super(BootstrapSetup, self).save(*args, **kwargs)
 
     class Meta:
