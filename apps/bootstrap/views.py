@@ -47,7 +47,7 @@ def bootstrap_setup_create(request):
         form = BootstrapSetupForm(request.POST)
         if form.is_valid():
             bootstrap = form.save()
-            messages.success(request, _(u'Bootstrap created successfully'))
+            messages.success(request, _(u'Bootstrap setup created successfully'))
             return HttpResponseRedirect(reverse('bootstrap_setup_list'))
         else:
             messages.error(request, _(u'Error creating bootstrap setup.'))
@@ -110,7 +110,7 @@ def bootstrap_setup_delete(request, bootstrap_setup_pk):
             bootstrap.delete()
             messages.success(request, _(u'Bootstrap setup: %s deleted successfully.') % bootstrap)
         except Exception, e:
-            messages.error(request, _(u'Bootstrap setup: %(bootstrap)s delete error: %(error)s') % {
+            messages.error(request, _(u'Bootstrap setup: %(bootstrap)s, delete error: %(error)s') % {
                 'bootstrap': bootstrap, 'error': e})
 
         return HttpResponseRedirect(reverse('bootstrap_setup_list'))
@@ -161,7 +161,7 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
         try:
             bootstrap_setup.execute()
         except ExistingData:
-            messages.error(request, _(u'Cannot execute bootstrap setup, there is existing data.  Erase database and try again.'))
+            messages.error(request, _(u'Cannot execute bootstrap setup, there is existing data.  Erase all data and try again.'))
         except Exception, exc:
             messages.error(request, _(u'Error executing bootstrap setup; %s') % exc)
         else:
@@ -177,7 +177,7 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
         'object': bootstrap_setup,
     }
 
-    context['title'] = _(u'Are you sure you wish to execute the database bootstrap named: %s?') % bootstrap_setup
+    context['title'] = _(u'Are you sure you wish to execute the database bootstrap setup named: %s?') % bootstrap_setup
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
@@ -193,17 +193,17 @@ def bootstrap_setup_dump(request):
             try:
                 bootstrap.fixture = BootstrapSetup.objects.dump(serialization_format=bootstrap.type)
             except Exception as exception:
-                messages.error(request, _(u'Error dumping bootstrap setup; %s') % exception)
+                messages.error(request, _(u'Error dumping configuration into a bootstrap setup; %s') % exception)
                 raise
             else:
                 bootstrap.save()
-                messages.success(request, _(u'Bootstrap created successfully.'))
+                messages.success(request, _(u'Bootstrap setup created successfully.'))
                 return HttpResponseRedirect(reverse('bootstrap_setup_list'))
     else:
         form = BootstrapSetupForm_dump()
 
     return render_to_response('generic_form.html', {
-        'title': _(u'dump current setup into a bootstrap setup'),
+        'title': _(u'dump current configuration into a bootstrap setup'),
         'form': form,
     },
     context_instance=RequestContext(request))
@@ -252,32 +252,6 @@ def bootstrap_setup_import(request):
         'form': form,
         'previous': previous,
     }, context_instance=RequestContext(request))
-
-
-def bootstrap_setup_dump(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_DUMP])
-
-    if request.method == 'POST':
-        form = BootstrapSetupForm_dump(request.POST)
-        if form.is_valid():
-            bootstrap = form.save(commit=False)
-            try:
-                bootstrap.fixture = BootstrapSetup.objects.dump(serialization_format=bootstrap.type)
-            except Exception as exception:
-                messages.error(request, _(u'Error dumping bootstrap setup; %s') % exception)
-                raise
-            else:
-                bootstrap.save()
-                messages.success(request, _(u'Bootstrap created successfully.'))
-                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
-    else:
-        form = BootstrapSetupForm_dump()
-
-    return render_to_response('generic_form.html', {
-        'title': _(u'dump current setup into a bootstrap setup'),
-        'form': form,
-    },
-    context_instance=RequestContext(request))
     
 
 def erase_database_view(request):
