@@ -8,3 +8,11 @@ class ExistingData(Exception):
     bootstrap's fixture.
     """
     pass
+
+
+class NotABootstrapSetup(Exception):
+    """
+    Raised when an attempting to import a bootstrap setup without a proper
+    magic number metadata
+    """
+    pass

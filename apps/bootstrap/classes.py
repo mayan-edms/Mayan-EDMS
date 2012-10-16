@@ -7,9 +7,9 @@ from django.db import models
 from django.core import serializers
 from django.utils.datastructures import SortedDict
 
-from .exceptions import ExistingData
+from .exceptions import ExistingData, NotABootstrapSetup
 from .literals import (FIXTURE_TYPE_PK_NULLIFIER, FIXTURE_TYPE_MODEL_PROCESS,
-    FIXTURE_METADATA_REMARK_CHARACTER)
+    FIXTURE_METADATA_REMARK_CHARACTER, BOOTSTRAP_SETUP_MAGIC_NUMBER)
 from .utils import toposort2
 
 logger = logging.getLogger(__name__)
@@ -37,6 +37,15 @@ class BootstrapModel(object):
     bootstrap setup from the current setup in use.
     """
     _registry = SortedDict()
+
+    @classmethod
+    def get_magic_number(cls):
+        return '%s %s' % (FIXTURE_METADATA_REMARK_CHARACTER, BOOTSTRAP_SETUP_MAGIC_NUMBER) 
+
+    @classmethod
+    def check_magic_number(cls, data):
+        if not data.startswith(cls.get_magic_number()):
+            raise NotABootstrapSetup
 
     @classmethod
     def check_for_data(cls):

@@ -91,7 +91,8 @@ class BootstrapSetup(models.Model):
     def save(self, *args, **kwargs):
         update_metadata = kwargs.pop('update_metadata', True)
         if update_metadata:
-            self.fixture = '%s\n%s' % (
+            self.fixture = '%s\n%s\n%s' % (
+                BootstrapModel.get_magic_number(),
                 self.get_metadata_string(),
                 self.cleaned_fixture
             )

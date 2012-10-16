@@ -20,7 +20,7 @@ from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE
     PERMISSION_BOOTSTRAP_EXPORT, PERMISSION_BOOTSTRAP_IMPORT)
 from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
     BootstrapSetupForm_edit, BootstrapFileImportForm, BootstrapURLImportForm)
-from .exceptions import ExistingData
+from .exceptions import ExistingData, NotABootstrapSetup
 
 
 def bootstrap_setup_list(request):
@@ -239,6 +239,8 @@ def bootstrap_setup_import_from_file(request):
                 BootstrapSetup.objects.import_from_file(request.FILES['file'])
                 messages.success(request, _(u'Bootstrap setup imported successfully.'))
                 return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+            except NotABootstrapSetup:
+                messages.error(request, _(u'File is not a bootstrap setup.'))
             except Exception as exception:
                 messages.error(request, exception)
                 return HttpResponseRedirect(previous)
@@ -265,6 +267,8 @@ def bootstrap_setup_import_from_url(request):
                 BootstrapSetup.objects.import_from_url(form.cleaned_data['url'])
                 messages.success(request, _(u'Bootstrap setup imported successfully.'))
                 return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+            except NotABootstrapSetup:
+                messages.error(request, _(u'Data from URL is not a bootstrap setup.'))
             except Exception as exception:
                 messages.error(request, exception)
                 return HttpResponseRedirect(previous)
