@@ -12,13 +12,6 @@ logger = logging.getLogger(__name__)
 
 
 class BootstrapSetupManager(models.Manager):
-    def explode(self, data):
-        """
-        Gets a compressed and compacted bootstrap setup and creates a new
-        database BootstrapSetup instance
-        """
-        pass
-
     def dump(self, serialization_format):
         """
         Get the current setup of Mayan in bootstrap format fixture

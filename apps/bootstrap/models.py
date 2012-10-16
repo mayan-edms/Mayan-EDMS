@@ -66,13 +66,6 @@ class BootstrapSetup(models.Model):
 
         os.unlink(filepath)
 
-    def compress(self):
-        """
-        Return a compacted and compressed version of the BootstrapSetup
-        instance, meant for download.
-        """
-        return ''
-
     @property
     def cleaned_fixture(self):
         """
