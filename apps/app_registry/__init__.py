@@ -17,7 +17,7 @@ def register_apps():
         try:
             post_init = import_module('%s.post_init' % app_name)
         except ImportError:
-            logger.error('Unable to import post_init module from: %s' % app_name)
+            logger.debug('Unable to import post_init module from: %s' % app_name)
 
 
 register_apps()
