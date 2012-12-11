@@ -17,7 +17,7 @@ from .classes import Cleanup, BootstrapModel
 from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE,
     PERMISSION_BOOTSTRAP_EDIT, PERMISSION_BOOTSTRAP_DELETE,
     PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP,
-    PERMISSION_BOOTSTRAP_EXPORT, PERMISSION_BOOTSTRAP_IMPORT)
+    PERMISSION_BOOTSTRAP_EXPORT, PERMISSION_BOOTSTRAP_IMPORT, PERMISSION_BOOTSTRAP_REPOSITORY_SYNC)
 from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
     BootstrapSetupForm_edit, BootstrapFileImportForm, BootstrapURLImportForm)
 from .exceptions import ExistingData, NotABootstrapSetup
@@ -242,7 +242,7 @@ def bootstrap_setup_import_from_file(request):
             except NotABootstrapSetup:
                 messages.error(request, _(u'File is not a bootstrap setup.'))
             except Exception as exception:
-                messages.error(request, exception)
+                messages.error(request, _(u'Error importing bootstrap setup from file; %s.') % exception)
                 return HttpResponseRedirect(previous)
     else:
         form = BootstrapFileImportForm()
@@ -270,7 +270,7 @@ def bootstrap_setup_import_from_url(request):
             except NotABootstrapSetup:
                 messages.error(request, _(u'Data from URL is not a bootstrap setup.'))
             except Exception as exception:
-                messages.error(request, exception)
+                messages.error(request, _(u'Error importing bootstrap setup from URL; %s.') % exception)
                 return HttpResponseRedirect(previous)
     else:
         form = BootstrapURLImportForm()
@@ -309,6 +309,34 @@ def erase_database_view(request):
 
     context['title'] = _(u'Are you sure you wish to erase the entire database and document storage?')
     context['message'] = _(u'All documents, sources, metadata, metadata types, set, tags, indexes and logs will be lost irreversibly!')
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def bootstrap_setup_repository_sync(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_REPOSITORY_SYNC])
+    
+    post_action_redirect = reverse('bootstrap_setup_list')
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            BootstrapSetup.objects.repository_sync()
+            messages.success(request, _(u'Bootstrap repository successfully synchronized.'))
+        except Exception, e:
+            messages.error(request, _(u'Bootstrap repository synchronization error: %(error)s') % {'error': e})
+
+        return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+
+    context = {
+        'previous': previous,
+        'next': next,
+        'title': _(u'Are you sure you wish to synchronize with the bootstrap repository?'),
+        'form_icon': 'world.png',
+    }
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))

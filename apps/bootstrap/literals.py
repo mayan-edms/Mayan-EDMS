@@ -76,3 +76,6 @@ FIXTURE_METADATA_DESCRIPTION = 'description'
 BOOTSTRAP_EXTENSION = 'txt'
 
 BOOTSTRAP_SETUP_MAGIC_NUMBER = 'bootstrap setup'
+
+BOOTSTRAP_REPOSITORY_URL = 'http://bootstrap.mayan-edms.com'
+BOOTSTRAP_REPOSITORY_INDEX_FILE = '_repo_index.txt'

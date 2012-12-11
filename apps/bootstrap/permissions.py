@@ -14,4 +14,5 @@ PERMISSION_BOOTSTRAP_EXECUTE = Permission.objects.register(namespace, 'bootstrap
 PERMISSION_BOOTSTRAP_DUMP = Permission.objects.register(namespace, 'bootstrap_dump', _(u'Dump the current project\s setup into a bootstrap setup'))
 PERMISSION_BOOTSTRAP_EXPORT = Permission.objects.register(namespace, 'bootstrap_export', _(u'Export bootstrap setups as files'))
 PERMISSION_BOOTSTRAP_IMPORT = Permission.objects.register(namespace, 'bootstrap_import', _(u'Import new bootstrap setups'))
+PERMISSION_BOOTSTRAP_REPOSITORY_SYNC = Permission.objects.register(namespace, 'bootstrap_repo_sync', _(u'Sync the local bootstrap setups with a published repository'))
 PERMISSION_NUKE_DATABASE = Permission.objects.register(namespace, 'nuke_database', _(u'Erase the entire database and document storage'))

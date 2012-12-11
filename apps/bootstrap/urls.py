@@ -11,5 +11,6 @@ urlpatterns = patterns('bootstrap.views',
     url(r'^setup/dump/$', 'bootstrap_setup_dump', (), 'bootstrap_setup_dump'),
     url(r'^setup/import/file/$', 'bootstrap_setup_import_from_file', (), 'bootstrap_setup_import_from_file'),
     url(r'^setup/import/url/$', 'bootstrap_setup_import_from_url', (), 'bootstrap_setup_import_from_url'),
+    url(r'^setup/repository/sync/$', 'bootstrap_setup_repository_sync', (), 'bootstrap_setup_repository_sync'),
     url(r'^nuke/$', 'erase_database_view', (), 'erase_database_view'),
 )
