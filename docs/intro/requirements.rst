@@ -10,12 +10,6 @@ Basic requirements
 Python:
 
 * ``Django`` - A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
-* ``django-pagination``
-* ``django-filetransfers`` - File upload/download abstraction
-* ``django-mptt`` - Utilities for implementing a modified pre-order traversal tree in django
-* ``django-taggit`` - Simple tagging for django
-* ``slate`` - The simplest way to extract text from PDFs in Python
-
 
 Execute pip install -r requirements/production.txt to install the python/django dependencies automatically.
 
