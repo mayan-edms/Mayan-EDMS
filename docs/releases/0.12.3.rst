@@ -2,7 +2,7 @@
 Mayan EDMS v0.12.3 release notes
 ================================
 
-*October 2012*
+*December 2012*
 
 This is the third maintenance release of the 0.12 series.
 
@@ -55,6 +55,8 @@ their clients with customized setups without having to access their clients'
 **Mayan EDMS** instances.  ``JSON``, ``YAML`` and a custom ``YAML`` format
 (http://djangosnippets.org/snippets/2461/) are supported by this new app.
 
+#TODO: Add repository sync
+
 Translation updates
 ~~~~~~~~~~~~~~~~~~~
 The translation for all the current languages were synchronized to the
@@ -76,6 +78,8 @@ existing metadata set can now be edited and what was previously called metadata 
 is now more aptly named metadata members which adds or removes metadata types into a
 single organizational unit.  An error that caused a duplicate menu link in the
 document type filename view was also fixed.
+
+#TODO: Add removal of UNOCONV
 
 Optimizations
 ~~~~~~~~~~~~~

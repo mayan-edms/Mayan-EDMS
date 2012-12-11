@@ -192,26 +192,6 @@ fine tune it's functionality as explained in the `GraphicsMagick documentation`_
 
 .. _GraphicsMagick documentation: http://www.graphicsmagick.org/convert.html#conv-opti
 
-    
-.. setting:: CONVERTER_UNOCONV_PATH
-
-
-**CONVERTER_UNOCONV_PATH**
-    
-Default: ``/usr/bin/unoconv``
-    
-Path to the unoconv program used to call LibreOffice for office document conversion.
-   
-    
-.. setting:: CONVERTER_UNOCONV_USE_PIPE
-
-
-**CONVERTER_UNOCONV_USE_PIPE**  
-    
-Default: ``True``
-    
-Use alternate method of connection to LibreOffice using a pipe, it is slower but less prone to segmentation faults.    
-
 
 .. setting:: CONVERTER_LIBREOFFICE_PATH
 
