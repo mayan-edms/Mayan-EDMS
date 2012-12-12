@@ -59,7 +59,7 @@ Between versions
 .. toctree::
     :maxdepth: 1
     
-    releases/0.12.3.rst
+    releases/0.13.rst
     
 Customization and fine tunning
 ==============================
