@@ -329,7 +329,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
                 context['title'] = _(u'Are you sure you wish to remove the tags: %(tags)s from the document: %(document)s?') % {
                     'tags': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
             else:
-                context['title'] = _(u'Are you sure you wish to remove the tags %(tag)s from the documents: %(documents)s?') % {
+                context['title'] = _(u'Are you sure you wish to remove the tags %(tags)s from the documents: %(documents)s?') % {
                     'tags': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
 
     if request.method == 'POST':
