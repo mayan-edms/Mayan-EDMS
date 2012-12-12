@@ -88,12 +88,12 @@ class TextAreaDiv(forms.widgets.Widget):
 
     def render(self, name, value, attrs=None):
         if value is None:
-            value = ''
-        final_attrs = self.build_attrs(attrs, name=name)
-        result = mark_safe(u'<div%s>%s</div>' % (flatatt(final_attrs),
-            conditional_escape(force_unicode(value))))
+            value = u''
 
-        return mark_safe(result.replace('\n', '<br>'))
+        flat_attrs = flatatt(self.build_attrs(attrs, name=name))
+        content = conditional_escape(force_unicode(value))
+        result = u'<pre%s>%s</pre>' % (flat_attrs, content)
+        return mark_safe(result)
 
 
 # From: http://www.peterbe.com/plog/emailinput-html5-django

@@ -17,6 +17,7 @@ urlpatterns = patterns('metadata.views',
     url(r'^setup/set/list/$', 'setup_metadata_set_list', (), 'setup_metadata_set_list'),
     url(r'^setup/set/create/$', 'setup_metadata_set_create', (), 'setup_metadata_set_create'),
     url(r'^setup/set/(?P<metadata_set_id>\d+)/edit/$', 'setup_metadata_set_edit', (), 'setup_metadata_set_edit'),
+    url(r'^setup/set/(?P<metadata_set_id>\d+)/members/$', 'setup_metadata_set_members', (), 'setup_metadata_set_members'),
     url(r'^setup/set/(?P<metadata_set_id>\d+)/delete/$', 'setup_metadata_set_delete', (), 'setup_metadata_set_delete'),
 
     url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/default/edit/$', 'setup_document_type_metadata', (), 'setup_document_type_metadata'),

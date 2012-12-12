@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <tetja.rediske@googlemail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
 "PO-Revision-Date: 2012-04-20 11:13+0000\n"
 "Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:17 models.py:209 views.py:40
+#: __init__.py:17 models.py:214 views.py:40
 msgid "roles"
 msgstr "Rollen"
 
@@ -54,44 +55,44 @@ msgstr "widerrufen"
 msgid "Insufficient permissions."
 msgstr "Unzureichende Rechte"
 
-#: models.py:123 views.py:60
+#: models.py:127 views.py:60
 msgid "namespace"
 msgstr "Namensraum"
 
-#: models.py:124 views.py:61
+#: models.py:128 views.py:61
 msgid "name"
 msgstr "Name"
 
-#: models.py:131 models.py:187 views.py:152 views.py:215
+#: models.py:135 models.py:192 views.py:152 views.py:215
 msgid "permission"
 msgstr "Recht"
 
-#: models.py:132 views.py:57 views.py:154 views.py:217
+#: models.py:136 views.py:57 views.py:154 views.py:217
 msgid "permissions"
 msgstr "Rechte"
 
-#: models.py:195
+#: models.py:200
 msgid "permission holder"
 msgstr "Rechte Inhaber"
 
-#: models.py:196
+#: models.py:201
 msgid "permission holders"
 msgstr "Rechte Inhaber"
 
-#: models.py:204
+#: models.py:209
 msgid "label"
 msgstr "Bezeichner"
 
-#: models.py:208 models.py:239 views.py:76 views.py:93 views.py:117
+#: models.py:213 models.py:244 views.py:76 views.py:93 views.py:117
 #: views.py:334
 msgid "role"
 msgstr "Rolle"
 
-#: models.py:255
+#: models.py:260
 msgid "role member"
 msgstr "Rollen-Mitglied"
 
-#: models.py:256
+#: models.py:261
 msgid "role members"
 msgstr "Rollen-Mitglieder"
 
@@ -150,7 +151,9 @@ msgstr "%(requester)s hat das Recht \"%(permission)s bereits."
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr "Sind Sie sicher, dass Sie folgende Rechte gewähren wollen: %(permissions_label)s  %(title_suffix)s"
+msgstr ""
+"Sind Sie sicher, dass Sie folgende Rechte gewähren wollen: "
+"%(permissions_label)s  %(title_suffix)s"
 
 #: views.py:222
 #, python-format
@@ -166,7 +169,9 @@ msgstr "%(requester)s hat nicht das Recht \"%(permission)s\"  zugeteilt."
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr "Sind Sie sicher, dass Sie folgende Rechte widerrufen wollen: %(permissions_label)s  %(title_suffix)s"
+msgstr ""
+"Sind Sie sicher, dass Sie folgende Rechte widerrufen wollen: "
+"%(permissions_label)s  %(title_suffix)s"
 
 #: views.py:271 views.py:295
 msgid "Users"
@@ -202,4 +207,6 @@ msgstr "Gewähre"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr "Eine Liste der existierenden Rollen, welche automatisch neuen Benutzern zugewiesen werden"
+msgstr ""
+"Eine Liste der existierenden Rollen, welche automatisch neuen Benutzern "
+"zugewiesen werden"

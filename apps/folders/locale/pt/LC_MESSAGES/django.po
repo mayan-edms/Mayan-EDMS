@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Renata Oliveira <renatabels@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-02-21 16:47+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/mayan-edms/language/pt/)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-07-02 16:37+0000\n"
+"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:18
 msgid "folder list"
@@ -41,19 +43,24 @@ msgstr "remover da pasta"
 
 #: __init__.py:23
 msgid "folder documents"
-msgstr "pasta de documentos"
+msgstr "documentos da pasta"
 
 #: __init__.py:24
 msgid "add to a folder"
 msgstr "adicionar a uma pasta"
 
-#: __init__.py:25 __init__.py:35 models.py:43 views.py:34
+#: __init__.py:25
+#, fuzzy
+msgid "add to folder"
+msgstr "adicionar a uma pasta"
+
+#: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
 msgstr "pastas"
 
-#: __init__.py:27
+#: __init__.py:28
 msgid "ACLs"
-msgstr ""
+msgstr "ACL's"
 
 #: forms.py:38
 msgid "Folder"
@@ -65,7 +72,7 @@ msgstr "título"
 
 #: models.py:12
 msgid "user"
-msgstr "usuário"
+msgstr "utilizador"
 
 #: models.py:13
 msgid "datetime created"
@@ -75,17 +82,17 @@ msgstr "data e hora da criação"
 msgid "folder"
 msgstr "pasta"
 
-#: models.py:48
+#: models.py:48 views.py:209
 msgid "document"
 msgstr "documento"
 
-#: models.py:54 views.py:261
+#: models.py:54 views.py:279
 msgid "folder document"
-msgstr "pasta de documento"
+msgstr "documento da pasta"
 
 #: models.py:55
 msgid "folders documents"
-msgstr "pastas de documentos"
+msgstr "documentos das pastas"
 
 #: permissions.py:7
 msgid "Folders"
@@ -93,7 +100,7 @@ msgstr "Pastas"
 
 #: permissions.py:9
 msgid "Create new folders"
-msgstr "Crie novas pastas"
+msgstr "Criar novas pastas"
 
 #: permissions.py:10
 msgid "Edit new folders"
@@ -113,7 +120,7 @@ msgstr "Ver as pastas existentes"
 
 #: permissions.py:14
 msgid "Add documents to existing folders"
-msgstr "Adicionar documentos para as pastas existentes"
+msgstr "Adicionar documentos a pastas existentes"
 
 #: views.py:37
 msgid "created"
@@ -130,7 +137,7 @@ msgstr "Pasta criada com sucesso"
 #: views.py:72
 #, python-format
 msgid "A folder named: %s, already exists."
-msgstr "A pasta com o nome: %s, já existe."
+msgstr "Já existe uma pasta com o nome %s."
 
 #: views.py:97
 msgid "Folder edited successfully"
@@ -149,74 +156,88 @@ msgstr "editar pasta: %s"
 #: views.py:129
 #, python-format
 msgid "Folder: %s deleted successfully."
-msgstr "Pasta: %s removido com sucesso."
+msgstr "Pasta: %s removida com sucesso."
 
 #: views.py:131
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
-msgstr "Pasta: %(folder)s erro ao deletar: %(error)s "
+msgstr "Pasta: %(folder)s erro ao eliminar: %(error)s "
 
 #: views.py:142
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
-msgstr "Tem certeza de que deseja excluir a pasta: %s?"
+msgstr "Tem a certeza de que deseja excluir a pasta: %s?"
 
 #: views.py:168
 #, python-format
 msgid "documents in folder: %s"
 msgstr "documentos na pasta: %s"
 
-#: views.py:188
+#: views.py:180
+#, fuzzy
+msgid "Must provide at least one document."
+msgstr "Deve fornecer pelo menos um documento da pasta."
+
+#: views.py:198
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Documento: %(document)s  adicionados à pasta: %(folder)s com sucesso."
 
-#: views.py:191
+#: views.py:201
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s  já está na pasta: %(folder)s ."
 
-#: views.py:199
-#, python-format
-msgid "add document \"%s\" to a folder"
-msgstr "adicionar documento \"%s\" à uma pasta"
+#: views.py:217
+#, fuzzy, python-format
+msgid "Add document: %s to folder."
+msgstr "Adicionar documento a uma pasta"
 
 #: views.py:219
+#, fuzzy, python-format
+msgid "Add documents: %s to folder."
+msgstr "Adicionar documento a uma pasta"
+
+#: views.py:237
 #, python-format
 msgid "folders containing: %s"
 msgstr "pastas contendo: %s"
 
-#: views.py:235
+#: views.py:253
 msgid "Must provide at least one folder document."
 msgstr "Deve fornecer pelo menos um documento da pasta."
 
-#: views.py:253
+#: views.py:271
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s removido com sucesso."
 
-#: views.py:255
+#: views.py:273
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
-msgstr "Documento: %(document)s erro ao deletar: %(error)s "
+msgstr "Documento: %(document)s erro ao eliminar: %(error)s "
 
-#: views.py:269
+#: views.py:287
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr "Tem certeza de que deseja remover o documento: %(document)s  da pasta \"%(folder)s\"?"
+msgstr ""
+"Tem a certeza de que deseja remover o documento: %(document)s  da pasta "
+"\"%(folder)s\"?"
 
-#: views.py:272
+#: views.py:290
 #, python-format
 msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder"
-" \"%(folder)s\"?"
-msgstr "Tem certeza de que deseja remover os documentos: %(documents)s  da pasta \"%(folder)s\"?"
+"Are you sure you wish to remove the documents: %(documents)s from the folder "
+"\"%(folder)s\"?"
+msgstr ""
+"Tem a certeza de que deseja remover os documentos: %(documents)s  da pasta "
+"\"%(folder)s\"?"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
-msgstr "Quais são as pastas?"
+msgstr "O que são pastas?"
 
 #: templates/folders_help.html:4
 msgid ""
@@ -224,8 +245,16 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr "Estas pastas também podem ser descritas como pastas de usuário. Elas são uma maneira de permitir que os usuários individuais criem os seus próprios métodos de organização do documento. Pastas criadas por um usuário e os documentos contidos nelas não afetam todas as pastas de outros usuários ou documentos."
+msgstr ""
+"Estas pastas também podem ser descritas como pastas de utilizador. Elas "
+"permitem que utilizadores individuais criem os seus próprios métodos de "
+"organização de documentos. Pastas criadas por um utilizador e os documentos "
+"nelas contidos não afetam quaisquer pastas ou documentos de outros "
+"utilizadores."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
-msgstr "Adicionar documento à uma pasta"
+msgstr "Adicionar documento a uma pasta"
+
+#~ msgid "add document \"%s\" to a folder"
+#~ msgstr "adicionar documento \"%s\" a uma pasta"

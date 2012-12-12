@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-02-03 05:10+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-07-27 04:11+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:14 views.py:66
 msgid "private keys"
@@ -160,7 +162,9 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr "Вы уверены, что хотите удалить ключ %s? Если вы удалите открытый ключ то соответствующий ему закрытый ключ тоже будет удалён."
+msgstr ""
+"Вы уверены, что хотите удалить ключ %s? Если вы удалите открытый ключ то "
+"соответствующий ему закрытый ключ тоже будет удалён."
 
 #: views.py:128
 msgid "Query key server"
@@ -212,4 +216,6 @@ msgstr "Список ключевых серверов для запроса н�
 
 #: conf/settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Домашний каталог, используемый для хранения ключей, а также файлов конфигурации."
+msgstr ""
+"Домашний каталог, используемый для хранения ключей, а также файлов "
+"конфигурации."

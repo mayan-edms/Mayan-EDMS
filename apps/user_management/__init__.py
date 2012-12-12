@@ -18,6 +18,7 @@ user_delete = {u'text': _('delete'), 'view': 'user_delete', 'args': 'object.id',
 user_multiple_delete = {u'text': _('delete'), 'view': 'user_multiple_delete', 'famfam': 'user_delete', 'permissions': [PERMISSION_USER_DELETE]}
 user_set_password = {u'text': _('reset password'), 'view': 'user_set_password', 'args': 'object.id', 'famfam': 'lock_edit', 'permissions': [PERMISSION_USER_EDIT]}
 user_multiple_set_password = {u'text': _('reset password'), 'view': 'user_multiple_set_password', 'famfam': 'lock_edit', 'permissions': [PERMISSION_USER_EDIT]}
+user_groups = {'text': _(u'groups'), 'view': 'user_groups', 'args': 'object.id', 'famfam': 'group_link', 'permissions': [PERMISSION_USER_EDIT]}
 
 group_list = {'text': _(u'group list'), 'view': 'group_list', 'famfam': 'group', 'permissions': [PERMISSION_GROUP_VIEW]}
 group_setup = {'text': _(u'groups'), 'view': 'group_list', 'famfam': 'group', 'icon': 'group.png', 'permissions': [PERMISSION_GROUP_VIEW], 'children_view_regex': [r'^group_']}
@@ -27,8 +28,8 @@ group_delete = {u'text': _('delete'), 'view': 'group_delete', 'args': 'object.id
 group_multiple_delete = {u'text': _('delete'), 'view': 'group_multiple_delete', 'famfam': 'group_delete', 'permissions': [PERMISSION_GROUP_DELETE]}
 group_members = {'text': _(u'members'), 'view': 'group_members', 'args': 'object.id', 'famfam': 'group_link', 'permissions': [PERMISSION_GROUP_EDIT]}
 
-register_links(User, [user_edit, user_set_password, user_delete])
-register_links(['user_multiple_set_password', 'user_set_password', 'user_multiple_delete', 'user_delete', 'user_edit', 'user_list', 'user_add'], [user_list, user_add], menu_name=u'secondary_menu')
+register_links(User, [user_edit, user_set_password, user_groups, user_delete])
+register_links([User, 'user_multiple_set_password', 'user_multiple_delete', 'user_list', 'user_add'], [user_list, user_add], menu_name=u'secondary_menu')
 register_multi_item_links(['user_list'], [user_multiple_set_password, user_multiple_delete])
 
 register_links(Group, [group_edit, group_members, group_delete])

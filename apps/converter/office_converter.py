@@ -8,7 +8,7 @@ from mimetype.api import get_mimetype
 from common.conf.settings import TEMPORARY_DIRECTORY
 from common.utils import id_generator
 
-from .conf.settings import UNOCONV_PATH, UNOCONV_USE_PIPE, LIBREOFFICE_PATH
+from .conf.settings import LIBREOFFICE_PATH
 from .exceptions import (OfficeConversionError,
     OfficeBackendError, UnknownFileFormat)
 
@@ -77,47 +77,6 @@ class OfficeConverter(object):
 
     def __str__(self):
         return str(self.__unicode__())
-
-
-class OfficeConverterBackendUnoconv(object):
-    def __init__(self):
-        self.unoconv_path = UNOCONV_PATH if UNOCONV_PATH else u'/usr/bin/unoconv'
-        if not os.path.exists(self.unoconv_path):
-            raise OfficeBackendError('cannot find unoconv executable')
-
-    def convert(self, input_filepath, output_filepath):
-        """
-        Executes the program unoconv using subprocess's Popen
-        """
-        self.input_filepath = input_filepath
-        self.output_filepath = output_filepath
-
-        command = []
-        command.append(self.unoconv_path)
-
-        if UNOCONV_USE_PIPE:
-            command.append(u'--pipe')
-            command.append(u'mayan-%s' % id_generator())
-
-        command.append(u'--format')
-        command.append(u'pdf')
-        command.append(u'--output')
-        command.append(self.output_filepath)
-        command.append(self.input_filepath)
-
-        try:
-            proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-            return_code = proc.wait()
-            logger.debug('return_code: %s' % return_code)
-
-            readline = proc.stderr.readline()
-            logger.debug('stderr: %s' % readline)
-            if return_code != 0:
-                raise OfficeBackendError(readline)
-        except OSError, msg:
-            raise OfficeBackendError(msg)
-        except Exception, msg:
-            logger.error('Unhandled exception', exc_info=msg)
 
 
 class OfficeConverterBackendDirect(object):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-17 19:03-0400\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:17 models.py:209 views.py:40
+#: __init__.py:17 models.py:214 views.py:40
 msgid "roles"
 msgstr ""
 
@@ -53,44 +53,44 @@ msgstr ""
 msgid "Insufficient permissions."
 msgstr ""
 
-#: models.py:123 views.py:60
+#: models.py:127 views.py:60
 msgid "namespace"
 msgstr ""
 
-#: models.py:124 views.py:61
+#: models.py:128 views.py:61
 msgid "name"
 msgstr ""
 
-#: models.py:131 models.py:187 views.py:152 views.py:215
+#: models.py:135 models.py:192 views.py:152 views.py:215
 msgid "permission"
 msgstr ""
 
-#: models.py:132 views.py:57 views.py:154 views.py:217
+#: models.py:136 views.py:57 views.py:154 views.py:217
 msgid "permissions"
 msgstr ""
 
-#: models.py:195
+#: models.py:200
 msgid "permission holder"
 msgstr ""
 
-#: models.py:196
+#: models.py:201
 msgid "permission holders"
 msgstr ""
 
-#: models.py:204
+#: models.py:209
 msgid "label"
 msgstr ""
 
-#: models.py:208 models.py:239 views.py:76 views.py:93 views.py:117
+#: models.py:213 models.py:244 views.py:76 views.py:93 views.py:117
 #: views.py:334
 msgid "role"
 msgstr ""
 
-#: models.py:255
+#: models.py:260
 msgid "role member"
 msgstr ""
 
-#: models.py:256
+#: models.py:261
 msgid "role members"
 msgstr ""
 

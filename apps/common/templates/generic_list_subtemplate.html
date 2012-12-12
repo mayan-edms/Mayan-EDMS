@@ -30,15 +30,15 @@
     <div class="inner">
 {% endif %}
 
-        <form action="{% url multi_object_action_view %}" class="form" method="get">
+        <form action="{% url multi_object_action_view %}" class="form multi_select" method="get">
 
             {% if object_list %}
                 {% if multi_select or multi_select_as_buttons %}
                     {% if multi_select_as_buttons %}
                         {% get_multi_item_links as multi_item_links %}
-                        <div class="group navform wat-cf">
+                        <div class="group navform wat-cf" style="margin-bottom: 0px;">
                         {% for link in multi_item_links %}
-                            <button class="button" type="submit" name="action" value="{{ link.url }}">
+                            <button class="button" type="submit" name="action" value="{{ link.url }}" style="margin-bottom: 8px;">
                                {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
                             </button>
                         {% endfor %}
@@ -162,9 +162,9 @@
                 {% if multi_select or multi_select_as_buttons %}
                     {% if multi_select_as_buttons %}
                         {% get_multi_item_links as multi_item_links %}
-                        <div class="group navform wat-cf">
+                        <div class="group navform wat-cf" style="margin-bottom: 0px;">
                         {% for link in multi_item_links %}
-                            <button class="button" type="submit" name="action" value="{{ link.url }}">
+                            <button class="button" type="submit" name="action" value="{{ link.url }}" style="margin-bottom: 8px;">
                                {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
                             </button>
                         {% endfor %}

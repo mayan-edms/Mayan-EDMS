@@ -1,0 +1,678 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Lucas Weel <ljj.weel@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-09-28 19:31+0000\n"
+"Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
+"mayan-edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:20
+msgid "preview"
+msgstr "preview"
+
+#: __init__.py:21 __init__.py:29 __init__.py:35
+msgid "delete"
+msgstr "verwijder"
+
+#: __init__.py:23
+msgid "sources"
+msgstr "bronnen"
+
+#: __init__.py:24 literals.py:53 models.py:204
+msgid "web forms"
+msgstr "webformulieren"
+
+#: __init__.py:25 models.py:175
+msgid "staging folders"
+msgstr "tijdelijke mappen"
+
+#: __init__.py:26 models.py:239
+msgid "watch folders"
+msgstr "controlemappen"
+
+#: __init__.py:28 __init__.py:34
+msgid "edit"
+msgstr "bewerk"
+
+#: __init__.py:30
+msgid "add new source"
+msgstr "toevoegen van nieuwe bron"
+
+#: __init__.py:32
+msgid "transformations"
+msgstr "transformaties"
+
+#: __init__.py:33
+msgid "add transformation"
+msgstr "toevoegen transformatie"
+
+#: __init__.py:37
+msgid "Document sources"
+msgstr "Documentbronnen"
+
+#: __init__.py:39
+msgid "upload new version"
+msgstr "'upload' nieuwe versie"
+
+#: __init__.py:69 widgets.py:39
+msgid "thumbnail"
+msgstr "thumbnail"
+
+#: forms.py:34 forms.py:59
+msgid "Expand compressed files"
+msgstr "Uitpakken gecomprimeerde bestanden"
+
+#: forms.py:35 forms.py:60
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr ""
+"Upload een gecomprimeerd archief van bestanden als individuele documenten"
+
+#: forms.py:43
+msgid "Staging file"
+msgstr "Tijdelijk bestand"
+
+#: forms.py:50
+msgid "File"
+msgstr "Bestand"
+
+#: literals.py:8 literals.py:13
+msgid "Always"
+msgstr "Altijd"
+
+#: literals.py:9 literals.py:14
+msgid "Never"
+msgstr "Nooit"
+
+#: literals.py:15
+msgid "Ask user"
+msgstr "Vraag gebruiker"
+
+#: literals.py:30
+msgid "Disk"
+msgstr "Floppy"
+
+#: literals.py:31
+msgid "Database"
+msgstr "Database"
+
+#: literals.py:32
+msgid "Drive"
+msgstr "Schijf"
+
+#: literals.py:33
+msgid "Network drive"
+msgstr "Netwerkschijf"
+
+#: literals.py:34
+msgid "User drive"
+msgstr "Schijf van gebruiker"
+
+#: literals.py:35
+msgid "Envelope"
+msgstr "Envelop"
+
+#: literals.py:36
+msgid "Folder"
+msgstr "Map"
+
+#: literals.py:37
+msgid "World"
+msgstr "Wereld"
+
+#: literals.py:38
+msgid "Printer"
+msgstr "Printer"
+
+#: literals.py:39
+msgid "Empty printer"
+msgstr "Leeg printer"
+
+#: literals.py:47 models.py:203
+msgid "web form"
+msgstr "webformulier"
+
+#: literals.py:48
+msgid "server staging folder"
+msgstr "server voor tijdelijke mappen"
+
+#: literals.py:49
+msgid "server watch folder"
+msgstr "server voor controlemap"
+
+#: literals.py:54
+msgid "server staging folders"
+msgstr "server tijdelijke mappen"
+
+#: literals.py:55
+msgid "server watch folders"
+msgstr "server voor controlemappen"
+
+#: models.py:36
+msgid "title"
+msgstr "titel"
+
+#: models.py:37
+msgid "enabled"
+msgstr "ingeschakeld"
+
+#: models.py:38
+msgid "whitelist"
+msgstr "whitelist"
+
+#: models.py:39
+msgid "blacklist"
+msgstr "blacklist"
+
+#: models.py:143
+msgid "icon"
+msgstr "icon"
+
+#: models.py:143
+msgid "An icon to visually distinguish this source."
+msgstr "Een icoon om deze bron visueel te onderscheiden."
+
+#: models.py:159 models.py:211
+msgid "folder path"
+msgstr "pad naar map"
+
+#: models.py:159 models.py:211
+msgid "Server side filesystem path."
+msgstr "pad naar filesysteem server"
+
+#: models.py:160
+msgid "preview width"
+msgstr "breedte van preview afbeelding"
+
+#: models.py:160
+msgid "Width value to be passed to the converter backend."
+msgstr "Breedte waarde die moet worden doorgegeven aan de converter backend."
+
+#: models.py:161
+msgid "preview height"
+msgstr "hoogte van preview afbeelding"
+
+#: models.py:161
+msgid "Height value to be passed to the converter backend."
+msgstr "Hoogte waarde die moet worden doorgegeven aan de converter backend."
+
+#: models.py:162 models.py:199 models.py:212
+msgid "uncompress"
+msgstr "uitpakken"
+
+#: models.py:162 models.py:199 models.py:212
+msgid "Whether to expand or not compressed archives."
+msgstr "Keuze om te expanderen of uitpakken van archief. (TODO: review this)"
+
+#: models.py:163 models.py:213
+msgid "delete after upload"
+msgstr "verwijderen na 'upload'"
+
+#: models.py:163 models.py:213
+msgid "Delete the file after is has been successfully uploaded."
+msgstr "Verwijder het bestand nadat de 'upload' succesvol is voltooid."
+
+#: models.py:174
+msgid "staging folder"
+msgstr "tijdelijke map"
+
+#: models.py:214
+msgid "interval"
+msgstr "interval"
+
+#: models.py:214
+msgid ""
+"Inverval in seconds where the watch folder path is checked for new documents."
+msgstr ""
+"Controle periode (in seconden) waarop in het controle pad wordt "
+"gecontroleerd op nieuwe documenten."
+
+#: models.py:238
+msgid "watch folder"
+msgstr "controle folder"
+
+#: models.py:243
+msgid "Enter a valid value."
+msgstr "Voer een valide waarde in."
+
+#: models.py:271 views.py:595
+msgid "order"
+msgstr "volgorde"
+
+#: models.py:272 views.py:596 views.py:633 views.py:663
+msgid "transformation"
+msgstr "transformeren"
+
+#: models.py:273 views.py:597
+msgid "arguments"
+msgstr "argumenten"
+
+#: models.py:273
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr "Gebruik woordenboeken om argumenten te identificeren. Bijvoorbeeld: %s"
+
+#: models.py:284
+msgid "document source transformation"
+msgstr "transformatie van het bron document"
+
+#: models.py:285
+msgid "document source transformations"
+msgstr "transformaties van het bron document"
+
+#: models.py:292 models.py:293
+msgid "out of process"
+msgstr "'out of process'"
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr "Bron instellen"
+
+#: permissions.py:8
+msgid "View existing document sources"
+msgstr "Bekijk bestaande documentbronnen"
+
+#: permissions.py:9
+msgid "Edit document sources"
+msgstr "Bewerk documentbronnen"
+
+#: permissions.py:10
+msgid "Delete document sources"
+msgstr "Verwijder documentbronnen"
+
+#: permissions.py:11
+msgid "Create new document sources"
+msgstr "Aanmaken van een nieuwe documentbron"
+
+#: staging.py:45
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr ""
+"Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. "
+"Foutmelding: %s"
+
+#: staging.py:128
+#, python-format
+msgid "Unable to upload staging file: %s"
+msgstr "Niet mogelijk om tijdelijk bestand te 'uploaden'. Foutmelding: %s"
+
+#: staging.py:138
+#, python-format
+msgid "Unable to delete staging file: %s"
+msgstr "Niet mogelijk om tijdelijk bestand te verwijderen. Foutmelding: %s"
+
+#: utils.py:40
+msgid "Whitelist Blacklist validation error."
+msgstr "'Whitelist', 'Blacklist' validatie fout."
+
+#: views.py:100
+msgid "here"
+msgstr "hier"
+
+#: views.py:105
+msgid "Upload sources"
+msgstr "'Upload' bronnen"
+
+#: views.py:107
+msgid ""
+"No interactive document sources have been defined or none have been enabled."
+msgstr "Er zijn geen documentbronnen gedefinieerd of ingeschakeld."
+
+#: views.py:108
+#, python-format
+msgid "Click %(setup_link)s to add or enable some document sources."
+msgstr ""
+"Selecteer %(setup_link)s om documentbronnen toe te voegen of in te schakelen."
+
+#: views.py:165
+msgid "New document version uploaded successfully."
+msgstr "'Upload' van nieuwe document versie succesvol."
+
+#: views.py:169
+msgid "File uploaded successfully."
+msgstr "'Upload' van bestand succesvol."
+
+#: views.py:172
+msgid "File uncompressed successfully and uploaded as individual files."
+msgstr ""
+"Bestands-archief succesvol uitgepakt en ge-upload als afzonderlijke besanden."
+
+#: views.py:175
+msgid "File was not a compressed file, uploaded as it was."
+msgstr ""
+"Bestand was geen gecomprimeerd archief. Bestand is in orginele formaat ge-"
+"upload."
+
+#: views.py:179 views.py:260
+msgid "New version uploads are not allowed for this document."
+msgstr "'uploads' van nieuwe versies voor dit document, zijn niet toegestaan."
+
+#: views.py:183 views.py:264
+#, python-format
+msgid "Unhandled exception: %s"
+msgstr "Unhandled exception: %s"
+
+#: views.py:192
+#, python-format
+msgid "upload a new version from source: %s"
+msgstr "'upload' een nieuwe versie van bestandbron: %s"
+
+#: views.py:194
+#, python-format
+msgid "upload a local document from source: %s"
+msgstr "'upload' een locaal document van documentbron: %s"
+
+#: views.py:240
+#, python-format
+msgid "Document version from staging file: %s, uploaded successfully."
+msgstr "Documentversie van tijdelijk bestand: %s, succesvol ge-'upload'."
+
+#: views.py:243
+#, python-format
+msgid "Staging file: %s, uploaded successfully."
+msgstr "'Upload' van tijdelijk bestand: %s, is succesvol."
+
+#: views.py:246
+#, python-format
+msgid ""
+"Staging file: %s, uncompressed successfully and uploaded as individual files."
+msgstr ""
+"Tijdelijk archiefbestand: %s, succesvol ge-'upload, uitgepakt en opgeslagen "
+"als individuele files."
+
+#: views.py:249
+#, python-format
+msgid "Staging file: %s, was not compressed, uploaded as a single file."
+msgstr ""
+"Tijdelijk archiefbestand: %s, was geen gecomprimeerd archief. Opgeslagen als "
+"een enkelvoudig bestand."
+
+#: views.py:254
+#, python-format
+msgid "Staging file: %s, deleted successfully."
+msgstr "Tijdelijke bestand: %s, succesvol verwijderd."
+
+#: views.py:279
+#, python-format
+msgid "upload a new version from staging source: %s"
+msgstr "'upload' een nieuwe versie van tijdelijke bestandsbron: %s"
+
+#: views.py:281
+#, python-format
+msgid "upload a document from staging source: %s"
+msgstr "'upload' een document van tijdelijke bron: %s"
+
+#: views.py:294
+msgid "files in staging path"
+msgstr "bestanden in tijdelijk pad"
+
+#: views.py:326
+msgid "Current document type"
+msgstr "Huidige documentsoort"
+
+#: views.py:327
+msgid "None"
+msgstr "Niets"
+
+#: views.py:334
+msgid "Current metadata"
+msgstr "Huidige 'metadata'"
+
+#: views.py:372 views.py:391
+#, python-format
+msgid "Staging file transformation error: %(error)s"
+msgstr "Transformatie fout in tijdelijk bestand. Foutmelding: %(error)s"
+
+#: views.py:414
+msgid "Staging file delete successfully."
+msgstr "Tijdelijk bestand succesvol verwijderd."
+
+#: views.py:416
+#, python-format
+msgid "Staging file delete error; %s."
+msgstr "Fout bij het verwijderen van tijdelijk bestand. Foutmelding: %s."
+
+#: views.py:476
+msgid "Source edited successfully"
+msgstr "Documentbron succesvol bewerkt"
+
+#: views.py:479
+#, python-format
+msgid "Error editing source; %s"
+msgstr "Fout bij bewerken van documentbron. Foutmelding: %s"
+
+#: views.py:484
+#, python-format
+msgid "edit source: %s"
+msgstr "bewerk documentbron: %s"
+
+#: views.py:489 views.py:529 views.py:591 views.py:632 views.py:662
+#: views.py:705
+msgid "source"
+msgstr "documentbron"
+
+#: views.py:518
+#, python-format
+msgid "Source \"%s\" deleted successfully."
+msgstr "Documentbron \"%s\" succesvol verwijderd."
+
+#: views.py:520
+#, python-format
+msgid "Error deleting source \"%(source)s\": %(error)s"
+msgstr ""
+"Fout bij verwijderen documentbron \"%(source)s\". Foutmelding: %(error)s"
+
+#: views.py:527
+#, python-format
+msgid "Are you sure you wish to delete the source: %s?"
+msgstr "Bent u er zeker van dat u documentbron: %s, wenst te verwijderen?"
+
+#: views.py:559
+msgid "Source created successfully"
+msgstr "Documentbron succesvol aangemaakt"
+
+#: views.py:562
+#, python-format
+msgid "Error creating source; %s"
+msgstr "Fout bij het aanmaken van documentbron. Foutmelding: %s."
+
+#: views.py:567
+#, python-format
+msgid "Create new source of type: %s"
+msgstr "Aanmaken van nieuw documentbron van type: %s"
+
+#: views.py:589
+#, python-format
+msgid "transformations for: %s"
+msgstr "transformaties voor: %s"
+
+#: views.py:619
+msgid "Source transformation edited successfully"
+msgstr "Documentbron transformatie succesvol bewerkt."
+
+#: views.py:622
+#, python-format
+msgid "Error editing source transformation; %s"
+msgstr "Fout bij het bewerken van documentbron transformatie. Foutmelding: %s"
+
+#: views.py:627
+#, python-format
+msgid "Edit transformation: %s"
+msgstr "Bewerk transformatie: %s"
+
+#: views.py:650
+msgid "Source transformation deleted successfully."
+msgstr "Documentbron transformatie succesvol verwijderd."
+
+#: views.py:652
+#, python-format
+msgid "Error deleting source transformation; %(error)s"
+msgstr ""
+"Fout bij verwijderen van documentbron transformatie. Foutmelding: %(error)s"
+
+#: views.py:665
+#, python-format
+msgid ""
+"Are you sure you wish to delete source transformation \"%(transformation)s\""
+msgstr ""
+"Bent u er zeker van dat u de documentbron transformatie: , "
+"\"%(transformation)s\" wenst te verwijderen."
+
+#: views.py:695
+msgid "Source transformation created successfully"
+msgstr "Documentbron transformatie succesvol aangemaakt."
+
+#: views.py:698
+#, python-format
+msgid "Error creating source transformation; %s"
+msgstr "Fout bij het aanmaken van document transformatie: %s"
+
+#: views.py:707
+#, python-format
+msgid "Create new transformation for source: %s"
+msgstr "Aanmaken van een nieuwe transformatie voor documentbron: %s"
+
+#~ msgid ""
+#~ "Connects to the POP3 email sources and fetches the attached documents."
+#~ msgstr ""
+#~ "Maakt verbinding met de POP3 e-mail bronnen en haalt de bijgevoegde "
+#~ "documenten op."
+
+#~ msgid ""
+#~ "Connects to the IMAP email sources and fetches the attached documents."
+#~ msgstr ""
+#~ "Maakt verbinding met de IMAP e-mail bronnen en haalt de bijgevoegde "
+#~ "documenten op."
+
+#~ msgid "POP3 email"
+#~ msgstr "POP3 e-mail"
+
+#~ msgid "IMAP email"
+#~ msgstr "IMAP e-mail"
+
+#~ msgid "logs"
+#~ msgstr "logs"
+
+#~ msgid "upload new documents"
+#~ msgstr "uploaden van nieuwe documenten"
+
+#~ msgid "POP3 emails"
+#~ msgstr "POP3 e-mails"
+
+#~ msgid "IMAP emails"
+#~ msgstr "IMAP e-mails"
+
+#~ msgid "date time"
+#~ msgstr "datum en tijd"
+
+#~ msgid "status"
+#~ msgstr "status"
+
+#~ msgid "source log"
+#~ msgstr "bronlog"
+
+#~ msgid "sources logs"
+#~ msgstr "bronnen logs"
+
+#~ msgid "Interval in seconds between document downloads from this source."
+#~ msgstr "Interval in seconden tussen document downloads uit deze bron."
+
+#~ msgid "document type"
+#~ msgstr "documentsoort"
+
+#~ msgid "Assign a document type to documents uploaded from this source."
+#~ msgstr ""
+#~ "Wijs een documentsoort toe voor documenten die worden geüpload van deze "
+#~ "bron."
+
+#~ msgid "Whether to expand or not, compressed archives."
+#~ msgstr "Al of niet uitpakken van gecomprimeerde archieven."
+
+#~ msgid "interval source"
+#~ msgstr "interval bron"
+
+#~ msgid "interval sources"
+#~ msgstr "interval bronnen"
+
+#~ msgid "host"
+#~ msgstr "host"
+
+#~ msgid "SSL"
+#~ msgstr "SSL"
+
+#~ msgid "port"
+#~ msgstr "port"
+
+#~ msgid ""
+#~ "Override the defaults values of %(normal_port)d and %(ssl_port)d for SSL, "
+#~ "can be left blank otherwise."
+#~ msgstr ""
+#~ "Vervang de verstekwaarden van %(normal_port)d en %(ssl_port)d voor SSL, "
+#~ "kan anders leeg gelaten worden."
+
+#~ msgid "username"
+#~ msgstr "gebruikersnaam"
+
+#~ msgid "password"
+#~ msgstr "wachtwoord"
+
+#~ msgid "attachment-%i"
+#~ msgstr "attachment-%i"
+
+#~ msgid "email source"
+#~ msgstr "e-mail bron"
+
+#~ msgid "email sources"
+#~ msgstr "e-mail bronnen"
+
+#~ msgid "POP email"
+#~ msgstr "POP e-mail"
+
+#~ msgid "mailbox"
+#~ msgstr "brievenbus"
+
+#~ msgid ""
+#~ "Mail from which to check for messages with attached documents.  If none "
+#~ "is specified, the default mailbox is %s"
+#~ msgstr ""
+#~ "Mail-adres voor het controleren naar berichten met bijgevoegde "
+#~ "documenten. Wanneer hier niets is ingevuld is het standaard mailadres: %s"
+
+#~ msgid "Enabled"
+#~ msgstr "Ingeschakeld"
+
+#~ msgid "logs for: %s"
+#~ msgstr "logs voor: %s"
+
+#~ msgid "Date time"
+#~ msgstr "Datum en tijd"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "step 1 of 3: Document type"
+#~ msgstr "stap 1 van 3: Documentsoort"
+
+#~ msgid "step 2 of 3: Metadata selection"
+#~ msgstr "stap 2 van 3: Metadata selectie"
+
+#~ msgid "step 3 of 3: Document metadata"
+#~ msgstr "stap 3 van 3: Document metadata"
+
+#~ msgid "Next step"
+#~ msgstr "Volgende stap"
+
+#~ msgid "Sources"
+#~ msgstr "Bronnen"

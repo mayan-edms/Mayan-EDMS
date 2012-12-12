@@ -14,7 +14,8 @@ from permissions.models import Permission
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
-from common.utils import encapsulate
+from common.utils import encapsulate, generate_choices_w_labels
+from common.views import assign_remove
 from common.widgets import two_state_template
 from acls.utils import apply_default_acls
 from acls.models import AccessEntry
@@ -166,6 +167,7 @@ def index_setup_view(request, index_pk):
         'extra_columns': [
             {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
             {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},            
         ],
     }
 
@@ -173,14 +175,39 @@ def index_setup_view(request, index_pk):
         context_instance=RequestContext(request))
 
 
+def index_setup_document_types(request, index_pk):
+    index = get_object_or_404(Index, pk=index_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, index)
+
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(index.get_document_types_not_in_index(), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(index.get_index_document_types(), display_object_type=False),
+        add_method=lambda x: index.document_types.add(x),
+        remove_method=lambda x: index.document_types.remove(x),
+        left_list_title=_(u'document types not in index: %s') % index,
+        right_list_title=_(u'document types for index: %s') % index,
+        decode_content_type=True,
+        extra_context={
+            'navigation_object_name': 'index',
+            'index': index,
+            'object_name': _(u'index'),
+        }
+    )
+
+
 # Node views
 def template_node_create(request, parent_pk):
     parent_node = get_object_or_404(IndexTemplateNode, pk=parent_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_SETUP])
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, parent_node.index)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, parent_node.index)
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST)
@@ -205,9 +232,9 @@ def template_node_edit(request, node_pk):
     node = get_object_or_404(IndexTemplateNode, pk=node_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_SETUP])
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, node.index)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, node.index)
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST, instance=node)
@@ -236,9 +263,9 @@ def template_node_delete(request, node_pk):
     node = get_object_or_404(IndexTemplateNode, pk=node_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_SETUP])
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_SETUP, request.user, node.index)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, node.index)
 
     post_action_redirect = reverse('index_setup_view', args=[node.index.pk])
 
@@ -283,7 +310,8 @@ def index_list(request):
         'title': _(u'indexes'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _(u'nodes'), 'attribute': encapsulate(lambda x: x.instance_root.get_descendant_count())},
+            {'name': _(u'nodes'), 'attribute': 'get_instance_node_count'},
+            {'name': _(u'document types'), 'attribute': 'get_document_types_names'},
         ],
     }
 
@@ -391,6 +419,7 @@ def document_index_list(request, document_id):
 
     queryset = document.indexinstancenode_set.all()
     try:
+        # TODO: should be AND not OR
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     except PermissionDenied:
         queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset)

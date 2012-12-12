@@ -7,6 +7,7 @@ import databases as database
 import platforms as platform
 import webservers as webserver
 import django
+import mayan_edms
 from conf import print_supported_configs
 from server_config import servers
 
@@ -37,6 +38,7 @@ def install():
     platform.install_mayan()
     platform.install_database_manager()
     database.create_database()
+    database.create_user()
     django.database_config()
     django.syncdb()
     django.collectstatic()
@@ -45,7 +47,16 @@ def install():
     webserver.install_site()
     webserver.restart()
     platform.post_install()
-    
+
+'''
+# Disabled until properly implemented
+@task
+def upgrade():
+    """
+    Perform a Mayan EDMS installation upgrade
+    """
+    mayan_edms.upgrade()
+'''
 
 @task
 def uninstall():
@@ -58,4 +69,4 @@ def uninstall():
 
     if env.drop_database:
         database.drop_database()
-        database.drop_username()
+        database.drop_user()

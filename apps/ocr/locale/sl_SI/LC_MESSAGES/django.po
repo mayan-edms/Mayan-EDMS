@@ -1,0 +1,421 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"PO-Revision-Date: 2011-09-30 04:41+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/mayan-edms/language/sl_SI/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: __init__.py:45 links.py:24 permissions.py:7 conf/settings.py:7
+msgid "OCR"
+msgstr ""
+
+#: __init__.py:56
+msgid "Default"
+msgstr ""
+
+#: __init__.py:85
+msgid "Checks the OCR queue for pending documents."
+msgstr ""
+
+#: api.py:122
+msgid "Text from OCR"
+msgstr ""
+
+#: links.py:11 links.py:12
+msgid "submit to OCR queue"
+msgstr ""
+
+#: links.py:13 links.py:14
+msgid "re-queue"
+msgstr ""
+
+#: links.py:15 links.py:16 links.py:29
+msgid "delete"
+msgstr ""
+
+#: links.py:18
+msgid "stop queue"
+msgstr ""
+
+#: links.py:19
+msgid "activate queue"
+msgstr ""
+
+#: links.py:21
+msgid "clean up pages content"
+msgstr ""
+
+#: links.py:21
+msgid ""
+"Runs a language filter to remove common OCR mistakes from document pages "
+"content."
+msgstr ""
+
+#: links.py:23
+msgid "queue document list"
+msgstr ""
+
+#: links.py:26
+msgid "transformations"
+msgstr ""
+
+#: links.py:27
+msgid "add transformation"
+msgstr ""
+
+#: links.py:28
+msgid "edit"
+msgstr ""
+
+#: literals.py:8
+msgid "stopped"
+msgstr ""
+
+#: literals.py:9
+msgid "active"
+msgstr ""
+
+#: literals.py:18
+msgid "pending"
+msgstr ""
+
+#: literals.py:19
+msgid "processing"
+msgstr ""
+
+#: literals.py:20
+msgid "error"
+msgstr ""
+
+#: models.py:26
+msgid "name"
+msgstr ""
+
+#: models.py:27
+msgid "label"
+msgstr ""
+
+#: models.py:31 models.py:51
+msgid "state"
+msgstr ""
+
+#: models.py:36 models.py:44 views.py:42 views.py:312 views.py:353
+#: views.py:383 views.py:419
+msgid "document queue"
+msgstr ""
+
+#: models.py:37
+msgid "document queues"
+msgstr ""
+
+#: models.py:45
+msgid "document"
+msgstr ""
+
+#: models.py:46
+msgid "date time submitted"
+msgstr ""
+
+#: models.py:47
+msgid "delay ocr"
+msgstr ""
+
+#: models.py:52
+msgid "result"
+msgstr ""
+
+#: models.py:53
+msgid "node name"
+msgstr ""
+
+#: models.py:57
+msgid "queue document"
+msgstr ""
+
+#: models.py:58
+msgid "queue documents"
+msgstr ""
+
+#: models.py:78 views.py:46
+msgid "Missing document."
+msgstr ""
+
+#: models.py:82
+msgid "Enter a valid value."
+msgstr ""
+
+#: models.py:110 views.py:316
+msgid "order"
+msgstr ""
+
+#: models.py:111 views.py:317 views.py:354 views.py:384
+msgid "transformation"
+msgstr ""
+
+#: models.py:112 views.py:318
+msgid "arguments"
+msgstr ""
+
+#: models.py:112
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr ""
+
+#: models.py:122
+msgid "document queue transformation"
+msgstr ""
+
+#: models.py:123
+msgid "document queue transformations"
+msgstr ""
+
+#: permissions.py:8
+msgid "Submit documents for OCR"
+msgstr ""
+
+#: permissions.py:9
+msgid "Delete documents from OCR queue"
+msgstr ""
+
+#: permissions.py:10
+msgid "Can enable/disable the OCR queue"
+msgstr ""
+
+#: permissions.py:11
+msgid "Can execute the OCR clean up on all document pages"
+msgstr ""
+
+#: permissions.py:12
+msgid "Can edit an OCR queue properties"
+msgstr ""
+
+#: statistics.py:8
+#, python-format
+msgid "Document queues: %d"
+msgstr ""
+
+#: statistics.py:9
+#, python-format
+msgid "Queued documents: %d"
+msgstr ""
+
+#: statistics.py:13
+msgid "OCR statistics"
+msgstr ""
+
+#: views.py:39
+#, python-format
+msgid "documents in queue: %s"
+msgstr ""
+
+#: views.py:47
+msgid "thumbnail"
+msgstr ""
+
+#: views.py:60
+msgid "document queue properties"
+msgstr ""
+
+#: views.py:61
+#, python-format
+msgid "Current state: %s"
+msgstr ""
+
+#: views.py:77 views.py:165
+msgid "Must provide at least one queue document."
+msgstr ""
+
+#: views.py:87
+#, python-format
+msgid "Document: %s is being processed and can't be deleted."
+msgstr ""
+
+#: views.py:90
+#, python-format
+msgid "Queue document: %(document)s deleted successfully."
+msgstr ""
+
+#: views.py:94
+#, python-format
+msgid "Error deleting document: %(document)s; %(error)s"
+msgstr ""
+
+#: views.py:107
+#, python-format
+msgid "Are you sure you wish to delete queue document: %s?"
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid "Are you sure you wish to delete queue documents: %s?"
+msgstr ""
+
+#: views.py:145
+#, python-format
+msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
+msgstr ""
+
+#: views.py:148
+#, python-format
+msgid "Document: %(document)s is already queued."
+msgstr ""
+
+#: views.py:177
+#, python-format
+msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+msgstr ""
+
+#: views.py:183
+#, python-format
+msgid "Document id#: %d, no longer exists."
+msgstr ""
+
+#: views.py:187
+#, python-format
+msgid "Document: %s is already being processed and can't be re-queded."
+msgstr ""
+
+#: views.py:199
+#, python-format
+msgid "Are you sure you wish to re-queue document: %s?"
+msgstr ""
+
+#: views.py:201
+#, python-format
+msgid "Are you sure you wish to re-queue documents: %s?"
+msgstr ""
+
+#: views.py:219
+#, python-format
+msgid "Document queue: %s, already stopped."
+msgstr ""
+
+#: views.py:225
+#, python-format
+msgid "Document queue: %s, stopped successfully."
+msgstr ""
+
+#: views.py:231
+#, python-format
+msgid "Are you sure you wish to disable document queue: %s"
+msgstr ""
+
+#: views.py:246
+#, python-format
+msgid "Document queue: %s, already active."
+msgstr ""
+
+#: views.py:252
+#, python-format
+msgid "Document queue: %s, activated successfully."
+msgstr ""
+
+#: views.py:258
+#, python-format
+msgid "Are you sure you wish to activate document queue: %s"
+msgstr ""
+
+#: views.py:275
+msgid "Are you sure you wish to clean up all the pages content?"
+msgstr ""
+
+#: views.py:276
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+
+#: views.py:282
+msgid "Document pages content clean up complete."
+msgstr ""
+
+#: views.py:284
+#, python-format
+msgid "Document pages content clean up error: %s"
+msgstr ""
+
+#: views.py:310
+#, python-format
+msgid "transformations for: %s"
+msgstr ""
+
+#: views.py:340
+msgid "Queue transformation edited successfully"
+msgstr ""
+
+#: views.py:343
+#, python-format
+msgid "Error editing queue transformation; %s"
+msgstr ""
+
+#: views.py:348
+#, python-format
+msgid "Edit transformation: %s"
+msgstr ""
+
+#: views.py:371
+msgid "Queue transformation deleted successfully."
+msgstr ""
+
+#: views.py:373
+#, python-format
+msgid "Error deleting queue transformation; %(error)s"
+msgstr ""
+
+#: views.py:386
+#, python-format
+msgid ""
+"Are you sure you wish to delete queue transformation \"%(transformation)s\""
+msgstr ""
+
+#: views.py:409
+msgid "Queue transformation created successfully"
+msgstr ""
+
+#: views.py:412
+#, python-format
+msgid "Error creating queue transformation; %s"
+msgstr ""
+
+#: views.py:421
+#, python-format
+msgid "Create new transformation for queue: %s"
+msgstr ""
+
+#: conf/settings.py:29
+msgid ""
+"Amount of seconds to delay OCR of documents to allow for the node's storage "
+"replication overhead."
+msgstr ""
+
+#: conf/settings.py:37
+msgid "Maximum amount of concurrent document OCRs a node can perform."
+msgstr ""
+
+#: conf/settings.py:45 conf/settings.py:53
+msgid "Automatically queue newly created documents for OCR."
+msgstr ""
+
+#: conf/settings.py:61
+msgid "File path to unpaper program."
+msgstr ""
+
+#: conf/settings.py:70
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr ""
+
+#: parsers/__init__.py:87 parsers/__init__.py:164
+msgid "Text extracted from PDF"
+msgstr ""

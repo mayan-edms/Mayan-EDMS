@@ -13,11 +13,17 @@ class StylingNode(Node):
         for field_name, field in form.fields.items():
 
             if isinstance(field.widget, forms.widgets.TextInput):
-                field.widget.attrs['class'] = u'text_field'
+                # Don't overwrite any existing CSS class, append
+                css_class = field.widget.attrs.get('class', u'text_field')
+                field.widget.attrs['class'] = u' '.join([css_class, 'text_field'])
             elif isinstance(field.widget, forms.widgets.PasswordInput):
-                field.widget.attrs['class'] = u'text_field'
+                # Don't overwrite any existing CSS class, append
+                css_class = field.widget.attrs.get('class', u'text_field')
+                field.widget.attrs['class'] = u' '.join([css_class, 'text_field'])
             elif isinstance(field.widget, forms.widgets.Textarea):
-                field.widget.attrs['class'] = u'text_area'
+                # Don't overwrite any existing CSS class, append
+                css_class = field.widget.attrs.get('class', u'text_area')
+                field.widget.attrs['class'] = u' '.join([css_class, 'text_area'])
 
         context[self.form_name] = form
         return ''

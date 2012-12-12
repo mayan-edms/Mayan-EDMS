@@ -103,7 +103,6 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                     else:
                         new_link['url'] = reverse(link['view'], args=args)
                         if link.get('keep_query', False):
-                            print 'parsed_query_string', parsed_query_string
                             new_link['url'] = urlquote(new_link['url'], parsed_query_string)
                 except NoReverseMatch, err:
                     new_link['url'] = '#'

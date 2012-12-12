@@ -1,29 +1,34 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
+#   <sl@suchreflex.de>, 2012.
 #   <tetja.rediske@googlemail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-04-20 11:40+0000\n"
-"Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:20-0400\n"
+"PO-Revision-Date: 2012-09-19 21:36+0000\n"
+"Last-Translator: Manticor <sl@suchreflex.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: conf/settings.py:10
 msgid ""
 "CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
 "cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
 "warehouse."
-msgstr "Anzuwendendes CSS Theme, Optionen sind: amro, bec, bec-green, blue, default, djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and warehouse."
+msgstr ""
+"Anzuwendendes CSS Theme, Optionen sind: amro, bec, bec-green, blue, default, "
+"djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish "
+"and warehouse."
 
 #: conf/settings.py:12
 msgid "Display extra information in the login screen."
@@ -45,24 +50,60 @@ msgstr "Bestätige diese Benachrichtigung"
 msgid "close"
 msgstr "Schließen"
 
-#: templates/web_theme_login.html:12 templates/web_theme_login.html.py:34
+#: templates/web_theme_login.html:13 templates/web_theme_login.html.py:50
 msgid "Login"
 msgstr "Login"
 
-#: templates/web_theme_login.html:18
+#: templates/web_theme_login.html:19
 msgid "You are already logged in"
 msgstr "Sind sind bereits angemeldet"
 
-#: templates/web_theme_login.html:21
+#: templates/web_theme_login.html:22
 msgid "Redirecting you to the website entry point in 5 seconds."
 msgstr "Umleitung zur Startseite in 5 Sekunden."
 
-#: templates/web_theme_login.html:24
+#: templates/web_theme_login.html:25
 #, python-format
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr "Oder klicken  <a href=\"%(LOGIN_REDIRECT_URL)s\">hier</a>, wenn die Umleitung nicht funktioniert."
+msgstr ""
+"Oder klicken  <a href=\"%(LOGIN_REDIRECT_URL)s\">hier</a>, wenn die "
+"Umleitung nicht funktioniert."
+
+#: templates/web_theme_login.html:36
+msgid "First time login"
+msgstr "Erster Login"
+
+#: templates/web_theme_login.html:38
+msgid ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
+msgstr ""
+"Sie haben gerade die Installation des <strong>Mayan EDMS</strong> beendet. "
+"Herzlichen Glückwunsch!"
+
+#: templates/web_theme_login.html:39
+msgid "Login using the following credentials:"
+msgstr "Einloggen mit folgende Zugangsdaten:"
+
+#: templates/web_theme_login.html:40
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "Benutzername: <strong>%(account)s</strong>"
+
+#: templates/web_theme_login.html:41
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "Passwort: <strong>%(password)s</strong>"
+
+#: templates/web_theme_login.html:42
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+"Ändern Sie das Passwort unbedingt, um die Sicherheit zu erhöhen und diese "
+"Nachricht abzuschalten."
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8
@@ -73,3 +114,6 @@ msgstr "Zurück"
 #: templates/pagination/pagination.html:28
 msgid "Next"
 msgstr "Weiter"
+
+#~ msgid "Interface"
+#~ msgstr "Interface"

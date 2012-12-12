@@ -6,9 +6,10 @@ from django.utils.translation import ugettext_lazy as _
 from mptt.models import MPTTModel
 from mptt.fields import TreeForeignKey
 
-from documents.models import Document
+from documents.models import Document, DocumentType
 
 from .conf.settings import AVAILABLE_INDEXING_FUNCTIONS
+from .managers import IndexManager
 
 available_indexing_functions_string = (_(u'Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
 
@@ -17,6 +18,9 @@ class Index(models.Model):
     name = models.CharField(unique=True, max_length=64, verbose_name=_(u'name'), help_text=_(u'Internal name used to reference this index.'))
     title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'), help_text=_(u'The name that will be visible to users.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this index to be visible and updated when document data changes.'))
+    document_types = models.ManyToManyField(DocumentType, verbose_name=_(u'document types'))
+
+    objects = IndexManager()
 
     @property
     def template_root(self):
@@ -24,7 +28,7 @@ class Index(models.Model):
 
     @property
     def instance_root(self):
-        return self.template_root.indexinstancenode_set.get()
+        return self.template_root.node_instance
 
     def __unicode__(self):
         return self.title
@@ -33,9 +37,27 @@ class Index(models.Model):
     def get_absolute_url(self):
         return ('index_instance_node_view', [self.instance_root.pk])
 
+    def get_index_document_types(self):
+        return self.document_types.all()
+
+    def get_document_types_not_in_index(self):
+        return DocumentType.objects.exclude(pk__in=self.get_index_document_types())
+
     def save(self, *args, **kwargs):
         super(Index, self).save(*args, **kwargs)
         index_template_node_root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+
+    def get_document_types_names(self):
+        return u', '.join([unicode(document_type) for document_type in self.document_types.all()] or [u'All'])
+
+    def natural_key(self):
+        return (self.name,)
+
+    def get_instance_node_count(self):
+        try:
+            return self.instance_root.get_descendant_count()
+        except IndexInstanceNode.DoesNotExist:
+            return 0
 
     class Meta:
         verbose_name = _(u'index')
@@ -51,7 +73,11 @@ class IndexTemplateNode(MPTTModel):
     link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
     def __unicode__(self):
-        return self.expression if not self.link_documents else u'%s/[document]' % self.expression
+        return self.expression
+
+    @property
+    def node_instance(self):
+        return self.indexinstancenode_set.get()
 
     class Meta:
         verbose_name = _(u'index template node')

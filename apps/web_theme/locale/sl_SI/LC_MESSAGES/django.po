@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2012-12-12 06:07+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/mayan-edms/language/sl_SI/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: conf/settings.py:10
+msgid ""
+"CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
+"cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
+"warehouse."
+msgstr ""
+
+#: conf/settings.py:12
+msgid "Display extra information in the login screen."
+msgstr ""
+
+#: templates/web_theme_base.html:101
+msgid "dismiss all notifications"
+msgstr ""
+
+#: templates/web_theme_base.html:101
+msgid "close all"
+msgstr ""
+
+#: templates/web_theme_base.html:102
+msgid "dismiss this notification"
+msgstr ""
+
+#: templates/web_theme_base.html:102
+msgid "close"
+msgstr ""
+
+#: templates/web_theme_login.html:13 templates/web_theme_login.html.py:50
+msgid "Login"
+msgstr ""
+
+#: templates/web_theme_login.html:19
+msgid "You are already logged in"
+msgstr ""
+
+#: templates/web_theme_login.html:22
+msgid "Redirecting you to the website entry point in 5 seconds."
+msgstr ""
+
+#: templates/web_theme_login.html:25
+#, python-format
+msgid ""
+"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
+"work."
+msgstr ""
+
+#: templates/web_theme_login.html:36
+msgid "First time login"
+msgstr ""
+
+#: templates/web_theme_login.html:38
+msgid ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
+msgstr ""
+
+#: templates/web_theme_login.html:39
+msgid "Login using the following credentials:"
+msgstr ""
+
+#: templates/web_theme_login.html:40
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr ""
+
+#: templates/web_theme_login.html:41
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/web_theme_login.html:42
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
+msgid "Previous"
+msgstr ""
+
+#: templates/pagination/pagination.html:26
+#: templates/pagination/pagination.html:28
+msgid "Next"
+msgstr ""

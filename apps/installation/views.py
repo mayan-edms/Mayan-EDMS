@@ -16,7 +16,7 @@ def installation_details(request):
 
     paragraphs = []
     
-    for name, instance in Installation().get_properties().items():
+    for instance in Installation().get_properties():
         paragraphs.append('%s: %s' % (unicode(instance.label), instance.value))
         
     return render_to_response('generic_template.html', {

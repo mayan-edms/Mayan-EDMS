@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.template.defaultfilters import slugify
@@ -33,7 +34,8 @@ def update_indexes(document):
     eval_dict['document'] = document
     eval_dict['metadata'] = MetadataClass(document_metadata_dict)
 
-    for index in Index.objects.filter(enabled=True):
+    # Only update indexes where the document type is found or that do not have any document type specified
+    for index in Index.objects.filter(Q(enabled=True) & (Q(document_types=None) | Q(document_types=document.document_type))):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
         for template_node in index.template_root.get_children():
             index_warnings = cascade_eval(eval_dict, document, template_node, root_instance)

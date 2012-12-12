@@ -1292,6 +1292,9 @@ def document_type_filename_create(request, document_type_id):
         'title': _(u'create filename for document type: %s') % document_type,
         'form': form,
         'document_type': document_type,
+        'navigation_object_list': [
+            {'object': 'document_type', 'name': _(u'document type')},
+        ],        
     },
     context_instance=RequestContext(request))
 

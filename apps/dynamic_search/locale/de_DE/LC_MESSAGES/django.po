@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <tetja.rediske@googlemail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:08-0400\n"
-"PO-Revision-Date: 2012-04-20 18:24+0000\n"
-"Last-Translator: tetjarediske <tetja.rediske@googlemail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-07-27 04:10+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:5
 msgid "search"
@@ -31,8 +32,9 @@ msgid "search again"
 msgstr "Erneut suchen"
 
 #: forms.py:8
+#, fuzzy
 msgid "Search terms"
-msgstr "Suchbegriffe"
+msgstr "Such-Ergebnisse"
 
 #: models.py:20
 msgid "user"
@@ -61,20 +63,21 @@ msgstr "letzte Suchen"
 #: views.py:33
 #, python-format
 msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr "Erebnis:  (Zeige nur %(shown_result_count)s von %(result_count)s) "
+msgstr ""
 
 #: views.py:37
+#, fuzzy
 msgid "results"
-msgstr "Ergebnis"
+msgstr "Such-Ergebnisse"
 
 #: views.py:56
-#, python-format
+#, fuzzy, python-format
 msgid "Search error: %s"
-msgstr "Fehler bei Suche: %s"
+msgstr "Such-Ergebnisse"
 
 #: views.py:60
 msgid "type"
-msgstr "Typ"
+msgstr ""
 
 #: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
 #: templatetags/search_tags.py:20
@@ -83,7 +86,7 @@ msgstr "Suche"
 
 #: conf/settings.py:12
 msgid "Maximum amount search hits to fetch and display."
-msgstr "Maximale Anzahl von Treffern die gehohlt und angezeigt werden."
+msgstr ""
 
 #: conf/settings.py:13
 msgid "Maximum number of search queries to remember per user."
@@ -98,7 +101,9 @@ msgstr "Hilfe"
 msgid ""
 "Enter the desired search keywords separated by space.  Only the top "
 "%(search_results_limit)s results will be available."
-msgstr "Die gesuchten Wörter mit Leerzeichen getrennt eingeben.   Nur die %(search_results_limit)s Ergebnisse werden angezeigt."
+msgstr ""
+"Die gesuchten Wörter mit Leerzeichen getrennt eingeben.   Nur die "
+"%(search_results_limit)s Ergebnisse werden angezeigt."
 
 #: templates/search_results.html:3
 msgid "Search results"

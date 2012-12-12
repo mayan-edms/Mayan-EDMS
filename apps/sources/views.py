@@ -114,7 +114,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
     document_type_id = request.GET.get('document_type_id', None)
     if document_type_id:
-        document_type = get_object_or_404(DocumentType, pk=document_type_id[0])
+        document_type = get_object_or_404(DocumentType, pk=document_type_id)
     else:
         document_type = None
 

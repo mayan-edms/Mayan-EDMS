@@ -427,6 +427,33 @@ def setup_metadata_set_list(request):
         context_instance=RequestContext(request))
 
 
+def setup_metadata_set_edit(request, metadata_set_id):
+    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
+
+    metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
+
+    if request.method == 'POST':
+        form = MetadataSetForm(instance=metadata_set, data=request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, _(u'Metadata set edited successfully'))
+                return HttpResponseRedirect(reverse('setup_metadata_set_list'))
+            except Exception, e:
+                messages.error(request, _(u'Error editing metadata set; %s') % e)
+            pass
+    else:
+        form = MetadataSetForm(instance=metadata_set)
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'edit metadata set: %s') % metadata_set,
+        'form': form,
+        'object': metadata_set,
+        'object_name': _(u'metadata set'),
+    },
+    context_instance=RequestContext(request))
+
+
 def get_set_members(metadata_set):
     return [item.metadata_type for item in metadata_set.metadatasetitem_set.all()]
 
@@ -450,7 +477,7 @@ def remove_set_member(metadata_set, selection):
     member.delete()
 
 
-def setup_metadata_set_edit(request, metadata_set_id):
+def setup_metadata_set_members(request, metadata_set_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_EDIT])
 
     metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)

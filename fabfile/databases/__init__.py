@@ -19,6 +19,18 @@ def create_database():
 
 
 @task
+def create_user():
+    """
+    Create the Mayan EDMS user
+    """
+    setup_environment()
+    print(green('Creating Mayan EDMS user', bold=True))
+    
+    if env.database_manager == DB_MYSQL:
+        mysql.create_user()
+
+
+@task
 def drop_database():
     """
     Drop Mayan EDMS's database
@@ -31,12 +43,12 @@ def drop_database():
 
 
 @task
-def drop_username():
+def drop_user():
     """
-    Drop Mayan EDMS's username
+    Drop Mayan EDMS's user
     """
     setup_environment()
-    print(green('Droping Mayan EDMS username', bold=True))
+    print(green('Droping Mayan EDMS user', bold=True))
 
     if env.database_manager == DB_MYSQL:
-        mysql.drop_username()
+        mysql.drop_user()

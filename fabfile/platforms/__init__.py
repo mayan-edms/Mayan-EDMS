@@ -94,7 +94,10 @@ def post_install():
     setup_environment()
     if env.os == OS_UBUNTU:
         ubuntu.post_install()
+        linux.post_install()
     elif env.os == OS_FEDORA:
         fedora.post_install()
+        linux.post_install()
     elif env.os == OS_DEBIAN:
         debian.post_install()
+        linux.post_install()

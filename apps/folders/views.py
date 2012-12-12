@@ -170,38 +170,56 @@ def folder_view(request, folder_id):
     )
 
 
-def folder_add_document(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+def folder_add_document(request, document_id=None, document_id_list=None):
+
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_ADD_DOCUMENT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_FOLDER_ADD_DOCUMENT, request.user, document)
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_ADD_DOCUMENT, request.user, documents)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    post_action_redirect = None
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
         form = FolderListForm(request.POST, user=request.user)
         if form.is_valid():
             folder = form.cleaned_data['folder']
-            if folder.add_document(document):
-                messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
-                    'document': document, 'folder': folder})
-            else:
-                messages.warning(request, _(u'Document: %(document)s is already in folder: %(folder)s.') % {
-                    'document': document, 'folder': folder})
+            for document in documents:
+                if folder.add_document(document):
+                    messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
+                        'document': document, 'folder': folder})
+                else:
+                    messages.warning(request, _(u'Document: %(document)s is already in folder: %(folder)s.') % {
+                        'document': document, 'folder': folder})
 
             return HttpResponseRedirect(next)
     else:
         form = FolderListForm(user=request.user)
 
-    return render_to_response('generic_form.html', {
-        'title': _(u'add document "%s" to a folder') % document,
+    context = {
+        'object_name': _(u'document'),
         'form': form,
-        'object': document,
+        'previous': previous,
         'next': next,
-    },
-    context_instance=RequestContext(request))
+    }
+
+    if len(documents) == 1:
+        context['object'] = documents[0]
+        context['title'] = _(u'Add document: %s to folder.') % documents[0]
+    elif len(documents) > 1:
+        context['title'] = _(u'Add documents: %s to folder.') % ', '.join([unicode(d) for d in documents])
+
+    return render_to_response('generic_form.html', context,
+        context_instance=RequestContext(request))
 
 
 def document_folder_list(request, document_id):
@@ -291,3 +309,9 @@ def folder_acl_list(request, folder_pk):
             'object': folder,
         }
     )
+
+
+def folder_add_multiple_documents(request):
+    return folder_add_document(
+        request, document_id_list=request.GET.get('id_list', [])
+    )    

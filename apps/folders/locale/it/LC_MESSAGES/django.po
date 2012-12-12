@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Carlo Zanatto <>, 2012.
 #   <pierpaolo.baldan@gmail.com>, 2011.
@@ -10,16 +10,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
 "PO-Revision-Date: 2012-06-08 07:45+0000\n"
 "Last-Translator: Carlo Zanatto <>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:18
 msgid "folder list"
@@ -49,11 +50,16 @@ msgstr "cartella documenti"
 msgid "add to a folder"
 msgstr "aggiungi alla cartella"
 
-#: __init__.py:25 __init__.py:35 models.py:43 views.py:34
+#: __init__.py:25
+#, fuzzy
+msgid "add to folder"
+msgstr "aggiungi alla cartella"
+
+#: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
 msgstr "cartelle"
 
-#: __init__.py:27
+#: __init__.py:28
 msgid "ACLs"
 msgstr "ACL"
 
@@ -77,11 +83,11 @@ msgstr "data di creazione"
 msgid "folder"
 msgstr "cartella"
 
-#: models.py:48
+#: models.py:48 views.py:209
 msgid "document"
 msgstr "documento"
 
-#: models.py:54 views.py:261
+#: models.py:54 views.py:279
 msgid "folder document"
 msgstr "cartella documento"
 
@@ -168,53 +174,68 @@ msgstr "Sei sicuro di voler cancellare la cartella: %s?"
 msgid "documents in folder: %s"
 msgstr "documenti nella cartella: %s"
 
-#: views.py:188
+#: views.py:180
+#, fuzzy
+msgid "Must provide at least one document."
+msgstr "Devi almeno indicare una cartella documenti."
+
+#: views.py:198
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr "Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
+msgstr ""
+"Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
 
-#: views.py:191
+#: views.py:201
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s è già nella cartella: %(folder)s."
 
-#: views.py:199
-#, python-format
-msgid "add document \"%s\" to a folder"
-msgstr "aggiungo il dcumento\"%s\" alla cartella"
+#: views.py:217
+#, fuzzy, python-format
+msgid "Add document: %s to folder."
+msgstr "Aggiungi documento alla cartella"
 
 #: views.py:219
+#, fuzzy, python-format
+msgid "Add documents: %s to folder."
+msgstr "Aggiungi documento alla cartella"
+
+#: views.py:237
 #, python-format
 msgid "folders containing: %s"
 msgstr "le cartelle contengono: %s"
 
-#: views.py:235
+#: views.py:253
 msgid "Must provide at least one folder document."
 msgstr "Devi almeno indicare una cartella documenti."
 
-#: views.py:253
+#: views.py:271
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s cancellato con successo."
 
-#: views.py:255
+#: views.py:273
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s errore di cancellazione: %(error)s"
 
-#: views.py:269
+#: views.py:287
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr "Sei sicuro di voler rimuovere il documento: %(document)s dalla cartella \"%(folder)s\"?"
+msgstr ""
+"Sei sicuro di voler rimuovere il documento: %(document)s dalla cartella "
+"\"%(folder)s\"?"
 
-#: views.py:272
+#: views.py:290
 #, python-format
 msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder"
-" \"%(folder)s\"?"
-msgstr "Sei sicuro di voler rimuovere i documenti: %(documents)s dalla cartella \"%(folder)s\"?"
+"Are you sure you wish to remove the documents: %(documents)s from the folder "
+"\"%(folder)s\"?"
+msgstr ""
+"Sei sicuro di voler rimuovere i documenti: %(documents)s dalla cartella "
+"\"%(folder)s\"?"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
@@ -226,8 +247,16 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr "Queste cartelle possono anche essere considerate come cartelle utente. Sono un modo per consentire agli utenti singoli per creare i propri metodi di organizzazione dei documenti. Cartelle create da un utente e dei documenti contenuti da loro non riguardano tutte le cartelle di altri utenti o documenti."
+msgstr ""
+"Queste cartelle possono anche essere considerate come cartelle utente. Sono "
+"un modo per consentire agli utenti singoli per creare i propri metodi di "
+"organizzazione dei documenti. Cartelle create da un utente e dei documenti "
+"contenuti da loro non riguardano tutte le cartelle di altri utenti o "
+"documenti."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
 msgstr "Aggiungi documento alla cartella"
+
+#~ msgid "add document \"%s\" to a folder"
+#~ msgstr "aggiungo il dcumento\"%s\" alla cartella"

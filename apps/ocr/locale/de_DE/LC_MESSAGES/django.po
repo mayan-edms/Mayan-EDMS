@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
+#   <sl@suchreflex.de>, 2012.
 #   <tilmann.sittig@web.de>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
-"PO-Revision-Date: 2012-06-17 22:12+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.net/projects/p/mayan-edms/language/de_DE/)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-09-20 07:52+0000\n"
+"Last-Translator: Manticor <sl@suchreflex.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:32 __init__.py:33
 msgid "submit to OCR queue"
@@ -46,7 +48,9 @@ msgstr "Seiteninhalt aufräumen"
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr "Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige Erkennungsfehler zu beseitigen."
+msgstr ""
+"Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige "
+"Erkennungsfehler zu beseitigen."
 
 #: __init__.py:44
 msgid "queue document list"
@@ -251,7 +255,8 @@ msgstr "Warteschlangen-Dokumente %(document)s erfolgreich gelöscht."
 #: views.py:95
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
-msgstr "Fehler beim Löschen der Warteschlangen-Dokumente %(document)s; %(error)s"
+msgstr ""
+"Fehler beim Löschen der Warteschlangen-Dokumente %(document)s; %(error)s"
 
 #: views.py:108
 #, python-format
@@ -266,7 +271,8 @@ msgstr "Sind Sie sicher, dass die Warteschlangen-Dokumente %s löschen möchten?
 #: views.py:146
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-msgstr "Dokument %(document)s wurde zu OCR-Warteschlange %(queue)s hinzugefügt."
+msgstr ""
+"Dokument %(document)s wurde zu OCR-Warteschlange %(queue)s hinzugefügt."
 
 #: views.py:149
 #, python-format
@@ -276,7 +282,9 @@ msgstr "Dokument: %(document)s ist bereits in der Warteschlange."
 #: views.py:178
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr "Das Dokument %(document)s wurde erneut in die OCR-Warteschlange: %(queue)s eingestellt."
+msgstr ""
+"Das Dokument %(document)s wurde erneut in die OCR-Warteschlange: %(queue)s "
+"eingestellt."
 
 #: views.py:184
 #, python-format
@@ -286,7 +294,9 @@ msgstr "Das Dokument mit id#: %d existiert nicht mehr."
 #: views.py:188
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
-msgstr "Das Dokument %s wird bereits verarbeitet und kann nicht erneut eingestellt werden."
+msgstr ""
+"Das Dokument %s wird bereits verarbeitet und kann nicht erneut eingestellt "
+"werden."
 
 #: views.py:200
 #, python-format
@@ -311,7 +321,9 @@ msgstr "Dokumenten-Warteschlange %s wurde angehalten."
 #: views.py:232
 #, python-format
 msgid "Are you sure you wish to disable document queue: %s"
-msgstr "Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s deaktivieren möchten?"
+msgstr ""
+"Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s deaktivieren "
+"möchten?"
 
 #: views.py:247
 #, python-format
@@ -326,19 +338,24 @@ msgstr "Dokumenten-Warteschlange %s wurde erfolgreich aktiviert."
 #: views.py:259
 #, python-format
 msgid "Are you sure you wish to activate document queue: %s"
-msgstr "Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s aktivieren möchten?"
+msgstr ""
+"Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s aktivieren möchten?"
 
 #: views.py:276
 msgid "Are you sure you wish to clean up all the pages content?"
-msgstr "Sind Sie sicher, dass Sie den gesamten erkannten Seiteninhalt bereinigen möchten?"
+msgstr ""
+"Sind Sie sicher, dass Sie den gesamten erkannten Seiteninhalt bereinigen "
+"möchten?"
 
 #: views.py:277
 msgid "On large databases this operation may take some time to execute."
-msgstr "Auf großen Datenbanken kann diese Operation einige Zeit in Anspruch nehmen."
+msgstr ""
+"Auf großen Datenbanken kann diese Operation einige Zeit in Anspruch nehmen."
 
 #: views.py:283
 msgid "Document pages content clean up complete."
-msgstr "Bereinigung des erkannten Dokumenten-Seiteninhalts wurde abgeschlossen."
+msgstr ""
+"Bereinigung des erkannten Dokumenten-Seiteninhalts wurde abgeschlossen."
 
 #: views.py:285
 #, python-format
@@ -377,7 +394,9 @@ msgstr "Fehler beim Löschen der Warteschlangen-Transformation: %(error)s"
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr "Sind Sie sicher, dass Sie die Warteschlangen-Transformationen löschen möchten: \"%(transformation)s\""
+msgstr ""
+"Sind Sie sicher, dass Sie die Warteschlangen-Transformationen löschen "
+"möchten: \"%(transformation)s\""
 
 #: views.py:410
 msgid "Queue transformation created successfully"
@@ -397,11 +416,15 @@ msgstr "Neue Transformation für Warteschlange erzeugen: %s"
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr "Verzögerung in Sekunden bevor die OCR-Texterkennung eines Dokuments beginnt, um die Dateiübertragung abzuschließen."
+msgstr ""
+"Verzögerung in Sekunden bevor die OCR-Texterkennung eines Dokuments beginnt, "
+"um die Dateiübertragung abzuschließen."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr "Maximale Anzahl an gleichzeitigen OCR-Texterkennungs-Vorgängen die eine Serverinstanz ausführen darf."
+msgstr ""
+"Maximale Anzahl an gleichzeitigen OCR-Texterkennungs-Vorgängen die eine "
+"Serverinstanz ausführen darf."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
@@ -413,9 +436,10 @@ msgstr "Dateipfad zum 'unpaper'-Programm"
 
 #: conf/settings.py:18
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
+"Pfad zu \"Poppler pdftotext\", das benutzt wird, um Text aus PDF-Dateien zu "
+"extrahieren."
 
 #: parsers/__init__.py:87 parsers/__init__.py:164
 msgid "Text extracted from PDF"

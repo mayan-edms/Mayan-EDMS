@@ -8,7 +8,6 @@ The philosophy in place is to try to avoid having users download a documents and
 visualization tool too.  The conversion backend is a stack of functions,
 first the mimetype is evaluated, if it is an office document it is passed
 to LibreOffice_ working in headless mode (and managed by supervisor_)
-via unoconv_ (more information about ``unoconv`` can be found in the :doc:`FAQ section <../faq/index>`)
 for conversion to PDF_.  The PDF_ is stored in a temporary
 cache along side all the other files that were not office documents,
 from here they are inspected to determine the page count and the
@@ -31,13 +30,12 @@ before they can be previewed and text can be extracted.
 
 Version 0.12.1 introduced a new method of converting office documents, this
 new method doesn't require the use of the command line utility ``UNOCONV``.
-If this new method proves to continue working better than previous solutions the use
-of ``UNOCONV`` may be deprecated in the future.  The new conversion method
-adds just one new configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
+This new method proved to continue working better than previous solution
+and the use of ``UNOCONV`` have been removed.  Existing conversion method
+uses just one configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
 which defaults to '/usr/bin/libreoffice'.
 
 
 .. _PDF: http://en.wikipedia.org/wiki/Portable_Document_Format
 .. _LibreOffice: http://www.libreoffice.org/
-.. _unoconv: https://github.com/dagwieers/unoconv/
 .. _supervisor: http://supervisord.org/introduction.html

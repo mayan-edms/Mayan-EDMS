@@ -1,4 +1,5 @@
-Werkzeug==0.6.2
-django-extensions==0.7.1
-django-rosetta==0.6.2
-transifex-client==0.6.1
+Werkzeug==0.8.3
+django-extensions==0.9
+django-rosetta==0.6.8
+transifex-client==0.8
+django-debug-toolbar==0.9.4

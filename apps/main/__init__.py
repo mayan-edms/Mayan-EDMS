@@ -11,7 +11,7 @@ from project_tools.api import register_tool
 from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
 
 __author__ = 'Roberto Rosario'
-__copyright__ = 'Copyright 2011 Roberto Rosario'
+__copyright__ = 'Copyright 2012 Roberto Rosario'
 __credits__ = ['Roberto Rosario',]
 __license__ = 'GPL'
 __maintainer__ = 'Roberto Rosario'
@@ -20,8 +20,8 @@ __status__ = 'Production'
 
 __version_info__ = {
     'major': 0,
-    'minor': 12,
-    'micro': 2,
+    'minor': 13,
+    'micro': 0,
     'releaselevel': 'final',
     'serial': 0
 }

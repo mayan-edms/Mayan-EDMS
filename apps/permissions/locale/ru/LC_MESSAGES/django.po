@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-06-17 18:09-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
 "PO-Revision-Date: 2012-02-03 05:06+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:17 models.py:209 views.py:40
+#: __init__.py:17 models.py:214 views.py:40
 msgid "roles"
 msgstr "роли"
 
@@ -54,44 +56,44 @@ msgstr "отозвать"
 msgid "Insufficient permissions."
 msgstr "Недостаточно разрешений."
 
-#: models.py:123 views.py:60
+#: models.py:127 views.py:60
 msgid "namespace"
 msgstr "пространство имен"
 
-#: models.py:124 views.py:61
+#: models.py:128 views.py:61
 msgid "name"
 msgstr "имя"
 
-#: models.py:131 models.py:187 views.py:152 views.py:215
+#: models.py:135 models.py:192 views.py:152 views.py:215
 msgid "permission"
 msgstr "разрешение"
 
-#: models.py:132 views.py:57 views.py:154 views.py:217
+#: models.py:136 views.py:57 views.py:154 views.py:217
 msgid "permissions"
 msgstr "разрешения"
 
-#: models.py:195
+#: models.py:200
 msgid "permission holder"
 msgstr "владелец разрешения"
 
-#: models.py:196
+#: models.py:201
 msgid "permission holders"
 msgstr "владельцы разрешения "
 
-#: models.py:204
+#: models.py:209
 msgid "label"
 msgstr "надпись"
 
-#: models.py:208 models.py:239 views.py:76 views.py:93 views.py:117
+#: models.py:213 models.py:244 views.py:76 views.py:93 views.py:117
 #: views.py:334
 msgid "role"
 msgstr "роль"
 
-#: models.py:255
+#: models.py:260
 msgid "role member"
 msgstr "участник"
 
-#: models.py:256
+#: models.py:261
 msgid "role members"
 msgstr "участники"
 
@@ -202,4 +204,6 @@ msgstr "Предоставить"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr "Список существующих ролей, которые автоматически назначаются вновь создаваемым пользователям"
+msgstr ""
+"Список существующих ролей, которые автоматически назначаются вновь "
+"создаваемым пользователям"

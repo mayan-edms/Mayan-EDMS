@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-17 19:02-0400\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,15 @@ msgstr ""
 msgid "add to a folder"
 msgstr ""
 
-#: __init__.py:25 __init__.py:35 models.py:43 views.py:34
+#: __init__.py:25
+msgid "add to folder"
+msgstr ""
+
+#: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
 msgstr ""
 
-#: __init__.py:27
+#: __init__.py:28
 msgid "ACLs"
 msgstr ""
 
@@ -73,11 +77,11 @@ msgstr ""
 msgid "folder"
 msgstr ""
 
-#: models.py:48
+#: models.py:48 views.py:209
 msgid "document"
 msgstr ""
 
-#: models.py:54 views.py:261
+#: models.py:54 views.py:279
 msgid "folder document"
 msgstr ""
 
@@ -164,48 +168,57 @@ msgstr ""
 msgid "documents in folder: %s"
 msgstr ""
 
-#: views.py:188
+#: views.py:180
+msgid "Must provide at least one document."
+msgstr ""
+
+#: views.py:198
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 
-#: views.py:191
+#: views.py:201
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr ""
 
-#: views.py:199
+#: views.py:217
 #, python-format
-msgid "add document \"%s\" to a folder"
+msgid "Add document: %s to folder."
 msgstr ""
 
 #: views.py:219
 #, python-format
+msgid "Add documents: %s to folder."
+msgstr ""
+
+#: views.py:237
+#, python-format
 msgid "folders containing: %s"
 msgstr ""
 
-#: views.py:235
+#: views.py:253
 msgid "Must provide at least one folder document."
 msgstr ""
 
-#: views.py:253
+#: views.py:271
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr ""
 
-#: views.py:255
+#: views.py:273
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:269
+#: views.py:287
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
 msgstr ""
 
-#: views.py:272
+#: views.py:290
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

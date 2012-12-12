@@ -1,0 +1,222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+#   <pkoldamov@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-10-17 10:02+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:14 views.py:66
+msgid "private keys"
+msgstr "частни ключове"
+
+#: __init__.py:15 views.py:69
+msgid "public keys"
+msgstr "публични ключове"
+
+#: __init__.py:16
+msgid "delete"
+msgstr "изтриване"
+
+#: __init__.py:17
+msgid "query keyservers"
+msgstr "запитване сървъри за ключове"
+
+#: __init__.py:18
+msgid "import"
+msgstr "внос"
+
+#: __init__.py:19
+msgid "key management"
+msgstr "управление на ключове"
+
+#: api.py:24
+msgid "Public"
+msgstr "Публични"
+
+#: api.py:25
+msgid "Secret"
+msgstr "Тайна"
+
+#: api.py:33 api.py:38
+msgid "RSA"
+msgstr "RSA"
+
+#: api.py:34
+msgid "DSA"
+msgstr "DSA"
+
+#: api.py:39
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: api.py:53
+msgid "Bad signature."
+msgstr "Лоша сигнатура."
+
+#: api.py:57
+msgid "Document not signed or invalid signature."
+msgstr "Документът не е подписан или подписа е невалиден."
+
+#: api.py:61
+msgid "Signature error."
+msgstr "Подпис грешка."
+
+#: api.py:65
+msgid "Document is signed but no public key is available for verification."
+msgstr "Документът е подписан, но не е наличен публичен ключ за удостоверение."
+
+#: api.py:69
+msgid "Document is signed, and signature is good."
+msgstr "Документът е подписан и подписа е валиден."
+
+#: api.py:73
+msgid "Document is signed with a valid signature."
+msgstr "Документът е подписан с валиден подпис."
+
+#: api.py:146
+msgid "unknown"
+msgstr "неизвестен"
+
+#: forms.py:7
+msgid "Term"
+msgstr "Условие"
+
+#: forms.py:8
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Име, е-мейл, ключ ID или отпечатък от ключ, за преглед."
+
+#: permissions.py:7
+msgid "Key management"
+msgstr "Управление на ключове"
+
+#: permissions.py:9
+msgid "View keys"
+msgstr "Виж ключове"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "Изтриване на ключове"
+
+#: permissions.py:11
+msgid "Query keyservers"
+msgstr "Запитване към сървъри за ключове"
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
+msgstr "Внос ключове от сървъри за ключове"
+
+#: views.py:37
+#, python-format
+msgid "Key: %s, imported successfully."
+msgstr "Ключ: %s, внесен успешно."
+
+#: views.py:42
+#, python-format
+msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgstr "Неуспешно внасяна на ключ с id: %(key_id)s; %(error)s"
+
+#: views.py:51
+msgid "Import key"
+msgstr "Внасяне на ключ"
+
+#: views.py:52
+#, python-format
+msgid "Are you sure you wish to import key id: %s?"
+msgstr "Сигурни ли сте, че искате да внесете ключ с id: %s?"
+
+#: views.py:77
+msgid "Key ID"
+msgstr "Ключ ID"
+
+#: views.py:81
+msgid "Owner"
+msgstr "Собственик"
+
+#: views.py:101
+#, python-format
+msgid "Key: %s, deleted successfully."
+msgstr "Ключ: %s, е изтрит успешно."
+
+#: views.py:108
+msgid "Delete key"
+msgstr "Изтриване на ключ"
+
+#: views.py:110
+#, python-format
+msgid ""
+"Are you sure you wish to delete key: %s?  If you try to delete a public key "
+"that is part of a public/private pair the private key will be deleted as "
+"well."
+msgstr ""
+"Сигурни ли сте, че искате да изтриевте ключ: %s?  Ако се опитвате да "
+"изтриете публичен ключ, който е част от двойка ключове публичен/частен, "
+"частния ключ също ще бъде изтрит."
+
+#: views.py:128
+msgid "Query key server"
+msgstr "Запитване към сървър за ключове"
+
+#: views.py:141
+msgid "results"
+msgstr "резултати"
+
+#: views.py:146
+msgid "ID"
+msgstr "ID"
+
+#: views.py:150
+msgid "type"
+msgstr "тип"
+
+#: views.py:154
+msgid "creation date"
+msgstr "дата на създаване"
+
+#: views.py:158
+msgid "disabled"
+msgstr "деактивиран"
+
+#: views.py:162
+msgid "expiration date"
+msgstr "дата на изтичане"
+
+#: views.py:166
+msgid "expired"
+msgstr "изтекъл"
+
+#: views.py:170
+msgid "length"
+msgstr "дължина"
+
+#: views.py:174
+msgid "revoked"
+msgstr "отменен"
+
+#: views.py:179
+msgid "Identifies"
+msgstr "Идентифицира"
+
+#: conf/settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "Списък на сървъри за ключове, за запитвания по неизвестни ключове."
+
+#: conf/settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Директория за съхранение на ключове, както и конфигурационни файлове."
+
+#~ msgid "Signatures"
+#~ msgstr "Подписи"
