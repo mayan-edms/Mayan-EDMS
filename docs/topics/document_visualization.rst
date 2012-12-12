@@ -30,9 +30,9 @@ before they can be previewed and text can be extracted.
 
 Version 0.12.1 introduced a new method of converting office documents, this
 new method doesn't require the use of the command line utility ``UNOCONV``.
-If this new method proves to continue working better than previous solutions the use
-of ``UNOCONV`` may be deprecated in the future.  The new conversion method
-adds just one new configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
+This new method proved to continue working better than previous solution
+and the use of ``UNOCONV`` have been removed.  Existing conversion method
+uses just one configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
 which defaults to '/usr/bin/libreoffice'.
 
 

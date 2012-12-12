@@ -136,17 +136,27 @@ Backward incompatible changes
 =============================
 * None
 
-Bugs fixed
-==========
+Bugs fixed or issues closed
+===========================
 * `issue #28`_ "Document indexing based on filesystem problem"
+* `issue #29`_ Default ACL documentation
+* `issue #30`_ "Ubuntu 12.0.4 LTS complaining about mising 'fabfile/templates/settings_local.py' (master branch)"
 * `issue #31`_ "Bulk add tags Feature request"
 * `issue #32`_ "Error run $python manage.py syncdb"
+* `issue #33`_ "Fetches translations from Transifex. "
+* `issue #34`_ "Initial syncdb fails because of import time database access"
+* `issue #35`_ "Fix first install syncdb on Postgres"
 * `issue #37`_ "When 19 >= &document_type_id >= 10 in url, error page not found"
 * `issue #39`_ Feature request "Bulk move folders"
 
 
 .. _issue #28: https://github.com/rosarior/mayan/issues/28
+.. _issue #29: https://github.com/rosarior/mayan/issues/29
+.. _issue #30: https://github.com/rosarior/mayan/issues/30
 .. _issue #31: https://github.com/rosarior/mayan/issues/31
 .. _issue #32: https://github.com/rosarior/mayan/issues/32
+.. _issue #33: https://github.com/rosarior/mayan/issues/33
+.. _issue #34: https://github.com/rosarior/mayan/issues/34
+.. _issue #35: https://github.com/rosarior/mayan/issues/35
 .. _issue #37: https://github.com/rosarior/mayan/issues/37
-.. _issue #33: https://github.com/rosarior/mayan/issues/39
+.. _issue #39: https://github.com/rosarior/mayan/issues/39
