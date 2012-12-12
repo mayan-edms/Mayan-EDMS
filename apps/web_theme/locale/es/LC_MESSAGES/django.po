@@ -1,35 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-07-27 04:23+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: conf/settings.py:6
-msgid "Interface"
-msgstr "Interfaz"
-
-#: conf/settings.py:13
+#: conf/settings.py:10
 msgid ""
 "CSS theme to apply, options are: amro, bec, bec-green, blue, default, djime-"
 "cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish and "
 "warehouse."
-msgstr "Tema CSS para aplicar, las opciones son: amro, bec, bec-green, blue, default, djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-greenish y warehouse."
+msgstr ""
+"Tema CSS para aplicar, las opciones son: amro, bec, bec-green, blue, "
+"default, djime-cerulean, drastic-dark, kathleene, olive, orange, red, reidb-"
+"greenish y warehouse."
 
-#: conf/settings.py:29
+#: conf/settings.py:12
 msgid "Display extra information in the login screen."
 msgstr "Mostrar información adicional en la pantalla de inicio de sesión."
 
@@ -66,7 +66,9 @@ msgstr "Se va a redirigir al punto de entrada al sitio web en 5 segundos."
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr "O haga clic <a href=\"%(LOGIN_REDIRECT_URL)s\">aquí</a> si la redirección no funciona."
+msgstr ""
+"O haga clic <a href=\"%(LOGIN_REDIRECT_URL)s\">aquí</a> si la redirección no "
+"funciona."
 
 #: templates/web_theme_login.html:36
 msgid "First time login"
@@ -76,7 +78,9 @@ msgstr "Primer inicio de sesión"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "¡Felicitaciones!  Usted acaba de terminar de instalar <strong>Mayan EDMS</strong>."
+msgstr ""
+"¡Felicitaciones!  Usted acaba de terminar de instalar <strong>Mayan EDMS</"
+"strong>."
 
 #: templates/web_theme_login.html:39
 msgid "Login using the following credentials:"
@@ -96,7 +100,9 @@ msgstr "Contraseña: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Asegúrese de cambiar la contraseña para aumentar la seguridad y para deshabilitar este mensaje."
+msgstr ""
+"Asegúrese de cambiar la contraseña para aumentar la seguridad y para "
+"deshabilitar este mensaje."
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8
@@ -107,3 +113,6 @@ msgstr "Anterior"
 #: templates/pagination/pagination.html:28
 msgid "Next"
 msgstr "Siguiente"
+
+#~ msgid "Interface"
+#~ msgstr "Interfaz"

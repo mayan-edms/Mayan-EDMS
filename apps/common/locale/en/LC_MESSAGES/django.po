@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 16:06-0400\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,41 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:26
+#: __init__.py:27
 msgid "change password"
 msgstr ""
 
-#: __init__.py:27
+#: __init__.py:28
 msgid "user details"
 msgstr ""
 
-#: __init__.py:28
+#: __init__.py:29
 msgid "edit details"
 msgstr ""
 
-#: __init__.py:32 __init__.py:37
+#: __init__.py:33 __init__.py:38
 msgid "about"
 msgstr ""
 
-#: __init__.py:33
+#: __init__.py:34
 msgid "license"
 msgstr ""
 
-#: forms.py:101
+#: forms.py:97
 msgid "Selection"
 msgstr ""
 
-#: forms.py:133
+#: forms.py:129
 msgid "Email"
 msgstr ""
 
-#: forms.py:144
+#: forms.py:140
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
 msgstr ""
 
-#: forms.py:146
+#: forms.py:142
 msgid "This account is inactive."
 msgstr ""
 

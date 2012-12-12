@@ -1,92 +1,63 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <sl@suchreflex.de>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: 2012-09-19 22:03+0000\n"
 "Last-Translator: Manticor <sl@suchreflex.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:29 links.py:17
-msgid "about"
-msgstr "Über"
-
-#: forms.py:101
-msgid "Selection"
-msgstr "Auswahl"
-
-#: forms.py:133
-msgid "Email"
-msgstr "E-Mail"
-
-#: forms.py:144
-msgid ""
-"Please enter a correct email and password. Note that the password fields is "
-"case-sensitive."
-msgstr "Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass die Passwortfelder Groß- und Kleinschreibung unterscheiden."
-
-#: forms.py:146
-msgid "This account is inactive."
-msgstr "Dieser Account ist inaktiv."
-
-#: links.py:14
+#: __init__.py:27
 msgid "change password"
 msgstr "Ändere Passwort"
 
-#: links.py:15
+#: __init__.py:28
 msgid "user details"
 msgstr "Benutzerdetails"
 
-#: links.py:16
+#: __init__.py:29
 msgid "edit details"
 msgstr "Bearbeite Details"
 
-#: links.py:18
+#: __init__.py:33 __init__.py:38
+msgid "about"
+msgstr "Über"
+
+#: __init__.py:34
 msgid "license"
 msgstr "Lizenz"
 
-#: links.py:19
-msgid "sentry"
-msgstr ""
+#: forms.py:97
+msgid "Selection"
+msgstr "Auswahl"
 
-#: links.py:20
-msgid "admin site"
-msgstr ""
+#: forms.py:129
+msgid "Email"
+msgstr "E-Mail"
 
-#: links.py:14
-msgid "change password"
+#: forms.py:140
+msgid ""
+"Please enter a correct email and password. Note that the password fields is "
+"case-sensitive."
 msgstr ""
+"Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass "
+"die Passwortfelder Groß- und Kleinschreibung unterscheiden."
 
-#: links.py:15
-msgid "user details"
-msgstr ""
-
-#: links.py:16
-msgid "edit details"
-msgstr ""
-
-#: links.py:18
-msgid "license"
-msgstr ""
-
-#: links.py:19
-msgid "sentry"
-msgstr ""
-
-#: links.py:20
-msgid "admin site"
-msgstr ""
+#: forms.py:142
+msgid "This account is inactive."
+msgstr "Dieser Account ist inaktiv."
 
 #: literals.py:24
 msgid "A5"
@@ -156,23 +127,7 @@ msgstr "Passworthash"
 msgid "auto admin properties"
 msgstr ""
 
-#: models.py:53
-msgid "account"
-msgstr ""
-
-#: models.py:54
-msgid "password"
-msgstr ""
-
-#: models.py:55
-msgid "password hash"
-msgstr ""
-
-#: models.py:58
-msgid "auto admin properties"
-msgstr ""
-
-#: utils.py:299
+#: utils.py:295
 msgid "function found"
 msgstr ""
 
@@ -239,24 +194,20 @@ msgstr "Das Passwort wurde erfolgreich geändert."
 msgid "None"
 msgstr ""
 
-#: conf/settings.py:10
-msgid "Common"
-msgstr ""
-
-#: conf/settings.py:17
+#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()."
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
 msgstr ""
 
-#: conf/settings.py:61
+#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
 msgstr ""
 
-#: conf/settings.py:69
+#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
 msgstr "Gestatte nicht authentifizierten Nutzern Zugriff auf alle Ansichten"
 
@@ -274,7 +225,8 @@ msgstr "Seite nicht gefunden"
 
 #: templates/404.html:9
 msgid "Sorry, but the requested page could not be found."
-msgstr "Tut mir Leid, aber die angeforderte Seite konnte nicht gefunden werden."
+msgstr ""
+"Tut mir Leid, aber die angeforderte Seite konnte nicht gefunden werden."
 
 #: templates/calculate_form_title.html:11
 #, python-format
@@ -347,18 +299,18 @@ msgstr "erforderlich"
 #: templates/generic_form_subtemplate.html:80
 #: templates/generic_form_subtemplate.html:82
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:94
-#: templates/generic_list_subtemplate.html:55
-#: templates/generic_list_subtemplate.html:189
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Save"
 msgstr "Speichern"
 
 #: templates/generic_form_subtemplate.html:80
 #: templates/generic_form_subtemplate.html:82
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:94
-#: templates/generic_list_subtemplate.html:55
-#: templates/generic_list_subtemplate.html:189
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Submit"
 msgstr "Übertragen"
 
@@ -372,7 +324,7 @@ msgid "List of %(stripped_title)s"
 msgstr ""
 
 #: templates/generic_list_horizontal_subtemplate.html:23
-#: templates/generic_list_subtemplate.html:25
+#: templates/generic_list_subtemplate.html:24
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
@@ -380,19 +332,18 @@ msgid ""
 msgstr ""
 
 #: templates/generic_list_horizontal_subtemplate.html:25
-#: templates/generic_list_subtemplate.html:27
+#: templates/generic_list_subtemplate.html:26
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr ""
 
-#: templates/generic_list_horizontal_subtemplate.html:69
-#: templates/generic_list_subtemplate.html:161
-#, python-format
-msgid "There are no %(stripped_title)s"
+#: templates/generic_list_subtemplate.html:72
+msgid "Identifier"
 msgstr ""
 
-#: templates/generic_list_subtemplate.html:75
-msgid "Identifier"
+#: templates/generic_list_subtemplate.html:152
+#, python-format
+msgid "There are no %(stripped_title)s"
 msgstr ""
 
 #: templates/login.html:5

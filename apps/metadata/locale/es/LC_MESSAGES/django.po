@@ -1,26 +1,67 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-07-27 04:22+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:51 links.py:18
+#: __init__.py:23 __init__.py:25
+msgid "edit metadata"
+msgstr "editar metadatos"
+
+#: __init__.py:24 __init__.py:70
 msgid "metadata"
 msgstr "metadatos"
+
+#: __init__.py:26 __init__.py:27
+msgid "add metadata"
+msgstr "añadir metadatos"
+
+#: __init__.py:28 __init__.py:29
+msgid "remove metadata"
+msgstr "eliminar los metadatos"
+
+#: __init__.py:31 models.py:40 views.py:316
+msgid "metadata types"
+msgstr "tipos de metadatos"
+
+#: __init__.py:32 __init__.py:37
+msgid "edit"
+msgstr "editar"
+
+#: __init__.py:33 __init__.py:39
+msgid "delete"
+msgstr "borrar"
+
+#: __init__.py:34 __init__.py:40
+msgid "create new"
+msgstr "crear nuevo"
+
+#: __init__.py:36 views.py:416
+msgid "metadata sets"
+msgstr "conjuntos de metadatos"
+
+#: __init__.py:38 views.py:420
+msgid "members"
+msgstr "miembros"
+
+#: __init__.py:42 models.py:104
+msgid "default metadata"
+msgstr "metadatos predeterminados"
 
 #: classes.py:14
 #, python-format
@@ -55,142 +96,104 @@ msgstr "Tipo de metadato"
 msgid "Remove"
 msgstr "Eliminar"
 
-#: forms.py:86 views.py:544 views.py:562
+#: forms.py:86 views.py:568 views.py:586
 msgid "Metadata sets"
 msgstr "Conjunto de metadatos"
 
-#: forms.py:94 permissions.py:7 conf/settings.py:18
+#: forms.py:94 permissions.py:7
 msgid "Metadata"
 msgstr "Metadatos"
 
-#: links.py:17 links.py:19
-msgid "edit metadata"
-msgstr "editar metadatos"
-
-#: links.py:20 links.py:21
-msgid "add metadata"
-msgstr "añadir metadatos"
-
-#: links.py:22 links.py:23
-msgid "remove metadata"
-msgstr "eliminar los metadatos"
-
-#: links.py:25 models.py:34 views.py:293
-msgid "metadata types"
-msgstr "tipos de metadatos"
-
-#: links.py:26 links.py:31
-msgid "edit"
-msgstr "editar"
-
-#: links.py:27 links.py:32
-msgid "delete"
-msgstr "borrar"
-
-#: links.py:28 links.py:33
-msgid "create new"
-msgstr "crear nuevo"
-
-#: links.py:30 views.py:393
-msgid "metadata sets"
-msgstr "conjuntos de metadatos"
-
-#: links.py:34 views.py:397
-msgid "members"
-msgstr "miembros"
-
-#: links.py:36 models.py:93
-msgid "default metadata"
-msgstr "metadatos predeterminados"
-
-#: models.py:10
+#: models.py:11
 #, python-format
 msgid " Available models: %s"
 msgstr "Modelos disponibles: %s"
 
-#: models.py:11
+#: models.py:12
 #, python-format
 msgid " Available functions: %s"
 msgstr "Funciones disponibles: %s"
 
-#: models.py:18
+#: models.py:19
 msgid "name"
 msgstr "nombre"
 
-#: models.py:18
+#: models.py:19
 msgid "Do not use python reserved words, or spaces."
 msgstr "No utilice palabras reservadas de Python, o espacios."
 
-#: models.py:19 models.py:41
+#: models.py:20 models.py:47
 msgid "title"
 msgstr "título"
 
-#: models.py:21
+#: models.py:22
 msgid "default"
 msgstr "por defecto"
 
-#: models.py:22
+#: models.py:23
 #, python-format
 msgid "Enter a string to be evaluated.%s"
 msgstr "Introduzca una cadena para ser evaluada. %s"
 
-#: models.py:24
+#: models.py:25
 msgid "lookup"
 msgstr "búsqueda"
 
-#: models.py:25
+#: models.py:26
 #, python-format
 msgid ""
 "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
 "User.objects.all()].%s"
-msgstr "Introduzca una cadena para ser evaluada.  Ejemplo: [user.get_full_name() for user in User.objects.all ()].%s"
+msgstr ""
+"Introduzca una cadena para ser evaluada.  Ejemplo: [user.get_full_name() for "
+"user in User.objects.all ()].%s"
 
-#: models.py:33 models.py:58 views.py:330 views.py:375
+#: models.py:39 models.py:69 views.py:353 views.py:398
 msgid "metadata type"
 msgstr "tipos de metadatos"
 
-#: models.py:48 models.py:49 models.py:57 views.py:445 views.py:472
-#: views.py:517
+#: models.py:59 models.py:60 models.py:68 views.py:452 views.py:495
+#: views.py:541
 msgid "metadata set"
 msgstr "conjunto de metadatos"
 
-#: models.py:65
+#: models.py:76
 msgid "metadata set item"
 msgstr "artículo de conjunto de metadatos"
 
-#: models.py:66
+#: models.py:77
 msgid "metadata set items"
 msgstr "artículos de conjuntos de metadatos"
 
-#: models.py:74
+#: models.py:85
 msgid "document"
 msgstr "documento"
 
-#: models.py:75
+#: models.py:86
 msgid "type"
 msgstr "tipo"
 
-#: models.py:76 views.py:281
+#: models.py:87 views.py:304
 msgid "value"
 msgstr "valor"
 
-#: models.py:82 models.py:83
+#: models.py:93 models.py:94
 msgid "document metadata"
 msgstr "metadatos de documento"
 
-#: models.py:91 views.py:602
+#: models.py:102 views.py:626
 msgid "document type"
 msgstr "tipo de documento"
 
-#: models.py:92
+#: models.py:103
 msgid "default metadata sets"
 msgstr "conjuntos de metadatos predeterminados "
 
-#: models.py:99
+#: models.py:110
 msgid "document type defaults"
 msgstr "predeterminados de tipo de documento"
 
-#: models.py:100
+#: models.py:111
 msgid "document types defaults"
 msgstr "predeterminados de tipos de documentos"
 
@@ -246,183 +249,206 @@ msgstr "Eliminar conjuntos de metadatos"
 msgid "View metadata sets"
 msgstr "Ver los conjuntos de metadatos"
 
-#: views.py:40 views.py:193
+#: views.py:41 views.py:204
 msgid "The selected document doesn't have any metadata."
 msgstr "El documento seleccionado no tiene ningún tipo de metadatos."
 
-#: views.py:51 views.py:131 views.py:205
+#: views.py:52 views.py:144 views.py:216
 msgid "Must provide at least one document."
 msgstr "Debe proveer al menos un documento."
 
-#: views.py:92
+#: views.py:87 views.py:251
+#, fuzzy, python-format
+msgid "Error deleting document indexes; %s"
+msgstr "Error al editando conjunto de metadatos; %s"
+
+#: views.py:99
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
 msgstr "Error editando metadatos para documento %(document)s; %(error)s."
 
-#: views.py:96
+#: views.py:102
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadatos para documento %s editados exitosamente."
 
-#: views.py:107
+#: views.py:107 views.py:268
+#, fuzzy, python-format
+msgid "Error updating document indexes; %s"
+msgstr "Error al editando conjunto de metadatos; %s"
+
+#: views.py:109 views.py:270
+#, fuzzy
+msgid "Document indexes updated successfully."
+msgstr "Metadatos para documento %s editados exitosamente."
+
+#: views.py:120
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Editar metadatos para documento: %s"
 
-#: views.py:109
+#: views.py:122
 #, python-format
 msgid "Edit metadata for documents: %s"
 msgstr "Editar metadatos para documentos: %s"
 
-#: views.py:148
+#: views.py:161
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+msgstr ""
+"Typo de metadatos: %(metadata_type)s agregado exitosamente al documento "
 "%(document)s."
-msgstr "Typo de metadatos: %(metadata_type)s agregado exitosamente al documento %(document)s."
 
-#: views.py:151
+#: views.py:164
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr "Typo de metadatos: %(metadata_type)s ya esta presente en el documento %(document)s."
+msgstr ""
+"Typo de metadatos: %(metadata_type)s ya esta presente en el documento "
+"%(document)s."
 
-#: views.py:177
+#: views.py:188
 #, python-format
 msgid "Add metadata type to document: %s"
 msgstr "Agregar tipo de metadato al documento: %s"
 
-#: views.py:179
+#: views.py:190
 #, python-format
 msgid "Add metadata type to documents: %s"
 msgstr "Agregar tipo de metadato a los documentos: %s"
 
-#: views.py:243
+#: views.py:259
 #, python-format
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
-msgstr "Se elimino exitosamente el tipo de metadatos: %(metadata_type)s del documento: %(document)s."
+msgstr ""
+"Se elimino exitosamente el tipo de metadatos: %(metadata_type)s del "
+"documento: %(document)s."
 
-#: views.py:246
+#: views.py:262
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
-msgstr "Se elimino exitosamente el tipo de metadatos: %(metadata_type)s de los documentos: %(document)s."
+msgstr ""
+"Se elimino exitosamente el tipo de metadatos: %(metadata_type)s de los "
+"documentos: %(document)s."
 
-#: views.py:258
+#: views.py:281
 #, python-format
 msgid "Remove metadata types from document: %s"
 msgstr "Eliminar tipos de metadatos del documento: %s"
 
-#: views.py:260
+#: views.py:283
 #, python-format
 msgid "Remove metadata types from documents: %s"
 msgstr "Eliminar tipos de metadatos de los documentos: %s"
 
-#: views.py:279
+#: views.py:302
 #, python-format
 msgid "metadata for: %s"
 msgstr "metadatos para: %s"
 
-#: views.py:297
+#: views.py:320
 msgid "internal name"
 msgstr "nombre interno"
 
-#: views.py:318
+#: views.py:341
 msgid "Metadata type edited successfully"
 msgstr "Tipo de metadatos editado exitosamente."
 
-#: views.py:321
+#: views.py:344
 #, python-format
 msgid "Error editing metadata type; %s"
 msgstr "Error editando tipo de metadatos; %s"
 
-#: views.py:327
+#: views.py:350
 #, python-format
 msgid "edit metadata type: %s"
 msgstr "editar tipo de metadatos: %s"
 
-#: views.py:342
+#: views.py:365
 msgid "Metadata type created successfully"
 msgstr "Tipo de metadatos creado exitosamente"
 
-#: views.py:348
+#: views.py:371
 msgid "create metadata type"
 msgstr "crear tipo de metadatos"
 
-#: views.py:367
+#: views.py:390
 #, python-format
 msgid "Metadata type: %s deleted successfully."
 msgstr "Tipos de metadatos: %s eliminado exitosamente."
 
-#: views.py:369
+#: views.py:392
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
 msgstr "Error: %(error)s, eliminando tipos de metadatos: %(metadata_type)s"
 
-#: views.py:380
+#: views.py:403
 #, python-format
 msgid "Are you sure you wish to delete the metadata type: %s?"
 msgstr "¿Está seguro que desea eliminar el tipo de metadatos: %s?"
 
-#: views.py:441
-#, python-format
-msgid "non members of metadata set: %s"
-msgstr "no miembros del conjunto de metadatos: %s"
-
-#: views.py:442
-#, python-format
-msgid "members of metadata set: %s"
-msgstr "miembros del conjunto de metadatos: %s"
-
-#: views.py:460
+#: views.py:440
 msgid "Metadata set edited successfully"
 msgstr "Conjunto de metadatos editado exitosamente"
 
-#: views.py:463
+#: views.py:443
 #, python-format
 msgid "Error editing metadata set; %s"
 msgstr "Error al editando conjunto de metadatos; %s"
 
-#: views.py:469
+#: views.py:449
 #, python-format
 msgid "edit metadata set: %s"
 msgstr "Editar conjunto de metadatos: %s"
 
-#: views.py:484
+#: views.py:491
+#, python-format
+msgid "non members of metadata set: %s"
+msgstr "no miembros del conjunto de metadatos: %s"
+
+#: views.py:492
+#, python-format
+msgid "members of metadata set: %s"
+msgstr "miembros del conjunto de metadatos: %s"
+
+#: views.py:507
 msgid "Metadata set created successfully"
 msgstr "Conjunto de metadatos creados exitosamente"
 
-#: views.py:490
+#: views.py:513
 msgid "create metadata set"
 msgstr "crear conjunto de metadatos"
 
-#: views.py:509
+#: views.py:532
 #, python-format
 msgid "Metadata set: %s deleted successfully."
 msgstr "Conjunto de metadatos: %s eliminado exitosamente."
 
-#: views.py:512
+#: views.py:535
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
-msgstr "Error: %(error)s, eliminando el conjunto de metadatos: %(metadata_set)s"
+msgstr ""
+"Error: %(error)s, eliminando el conjunto de metadatos: %(metadata_set)s"
 
-#: views.py:522
+#: views.py:546
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
 msgstr "¿Está seguro que desea eliminar el conjunto de metadatos: %s?"
 
-#: views.py:541 views.py:559
+#: views.py:565 views.py:583
 msgid "Metadata types"
 msgstr "Tipos de metadatos"
 
-#: views.py:597
+#: views.py:621
 #, python-format
 msgid "non members of document type: %s"
 msgstr "no miembros del tipo de documento: %s"
 
-#: views.py:598
+#: views.py:622
 #, python-format
 msgid "members of document type: %s"
 msgstr "miembros del tipo de documento: %s"
@@ -436,7 +462,11 @@ msgid ""
 "A metadata set is a group of one or more metadata types.  Metadata sets are "
 "useful when creating new documents; selecing a metadata set automatically "
 "attaches it's member metadata types to said document."
-msgstr "Un conjunto de metadatos es un grupo de uno o más tipos de metadatos.  Los conjuntos de metadatos son útiles cuando se crean nuevos documentos; seleccionar un conjunto de metadatos, automáticamente asocia los tipos de metadatos que contenga a dicho documento."
+msgstr ""
+"Un conjunto de metadatos es un grupo de uno o más tipos de metadatos.  Los "
+"conjuntos de metadatos son útiles cuando se crean nuevos documentos; "
+"seleccionar un conjunto de metadatos, automáticamente asocia los tipos de "
+"metadatos que contenga a dicho documento."
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
@@ -444,13 +474,23 @@ msgstr "¿Cuáles son los tipos de metadatos?"
 
 #: templates/metadata_type_help.html:4
 msgid ""
-"A metadata type defines the characteristics of a value of some kind that can"
-" be attached to a document.  Examples of metadata types are: a client name, "
-"a date, or a project to which several documents belong.  A metadata type's "
+"A metadata type defines the characteristics of a value of some kind that can "
+"be attached to a document.  Examples of metadata types are: a client name, a "
+"date, or a project to which several documents belong.  A metadata type's "
 "name is the internal identifier with which it can be referenced to by other "
-"modules such as the indexing module, the title is the value that is shown to"
-" the users, the default value is the value an instance of this metadata type"
-" will have initially, and the lookup value turns an instance of a metadata "
-"of this type into a choice list which options are the result of the lookup's"
-" code execution."
-msgstr "Un tipo de metadatos define las características de un valor de algún tipo que se puede conectar a un documento.  Ejemplos de tipos de metadatos son: un nombre de cliente, una fecha o un proyecto al que pertenecen varios documentos.  El nombre de un tipo de metadatos es el identificador interno con el que se puede hacer referencia en otros módulos como el módulo de indexación, el título es el valor que se muestra a los usuarios, el valor por defecto es el valor que una instancia de este tipo de metadatos tendrá inicialmente, y el valor de búsqueda vuelve a una instancia de metadatos de este tipo en una lista de opciones donde las opciones son el resultado de la ejecución del valor de búsqueda."
+"modules such as the indexing module, the title is the value that is shown to "
+"the users, the default value is the value an instance of this metadata type "
+"will have initially, and the lookup value turns an instance of a metadata of "
+"this type into a choice list which options are the result of the lookup's "
+"code execution."
+msgstr ""
+"Un tipo de metadatos define las características de un valor de algún tipo "
+"que se puede conectar a un documento.  Ejemplos de tipos de metadatos son: "
+"un nombre de cliente, una fecha o un proyecto al que pertenecen varios "
+"documentos.  El nombre de un tipo de metadatos es el identificador interno "
+"con el que se puede hacer referencia en otros módulos como el módulo de "
+"indexación, el título es el valor que se muestra a los usuarios, el valor "
+"por defecto es el valor que una instancia de este tipo de metadatos tendrá "
+"inicialmente, y el valor de búsqueda vuelve a una instancia de metadatos de "
+"este tipo en una lista de opciones donde las opciones son el resultado de la "
+"ejecución del valor de búsqueda."

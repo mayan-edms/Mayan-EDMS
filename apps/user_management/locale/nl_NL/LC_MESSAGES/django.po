@@ -1,21 +1,62 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2011-09-30 04:55+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
+"mayan-edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:13
+msgid "user list"
+msgstr ""
+
+#: __init__.py:14 views.py:31
+msgid "users"
+msgstr ""
+
+#: __init__.py:15 __init__.py:25
+msgid "edit"
+msgstr ""
+
+#: __init__.py:16 views.py:97
+msgid "create new user"
+msgstr ""
+
+#: __init__.py:17 __init__.py:18 __init__.py:27 __init__.py:28
+msgid "delete"
+msgstr ""
+
+#: __init__.py:19 __init__.py:20
+msgid "reset password"
+msgstr ""
+
+#: __init__.py:21 __init__.py:24 views.py:257
+msgid "groups"
+msgstr ""
+
+#: __init__.py:23
+msgid "group list"
+msgstr ""
+
+#: __init__.py:26 views.py:305
+msgid "create new group"
+msgstr ""
+
+#: __init__.py:29 views.py:261
+msgid "members"
+msgstr ""
 
 #: forms.py:13
 msgid "New password"
@@ -23,46 +64,6 @@ msgstr ""
 
 #: forms.py:14
 msgid "Confirm password"
-msgstr ""
-
-#: links.py:11
-msgid "user list"
-msgstr ""
-
-#: links.py:12 views.py:31
-msgid "users"
-msgstr ""
-
-#: links.py:13 links.py:22
-msgid "edit"
-msgstr ""
-
-#: links.py:14 views.py:97
-msgid "create new user"
-msgstr ""
-
-#: links.py:15 links.py:16 links.py:24 links.py:25
-msgid "delete"
-msgstr ""
-
-#: links.py:17 links.py:18
-msgid "reset password"
-msgstr ""
-
-#: links.py:20
-msgid "group list"
-msgstr ""
-
-#: links.py:21 views.py:228
-msgid "groups"
-msgstr ""
-
-#: links.py:23 views.py:276
-msgid "create new group"
-msgstr ""
-
-#: links.py:26 views.py:232
-msgid "members"
 msgstr ""
 
 #: permissions.py:7
@@ -133,7 +134,7 @@ msgstr ""
 msgid "edit user: %s"
 msgstr ""
 
-#: views.py:77 views.py:135 views.py:198
+#: views.py:77 views.py:135 views.py:198 views.py:243
 msgid "user"
 msgstr ""
 
@@ -202,55 +203,65 @@ msgstr ""
 msgid "Reseting password for users: %s"
 msgstr ""
 
-#: views.py:249
+#: views.py:238
+#, python-format
+msgid "non groups of user: %s"
+msgstr ""
+
+#: views.py:239
+#, python-format
+msgid "groups of user: %s"
+msgstr ""
+
+#: views.py:278
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr ""
 
-#: views.py:255
+#: views.py:284
 #, python-format
 msgid "edit group: %s"
 msgstr ""
 
-#: views.py:258 views.py:311 views.py:356
+#: views.py:287 views.py:340 views.py:385
 msgid "group"
 msgstr ""
 
-#: views.py:270
+#: views.py:299
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr ""
 
-#: views.py:292
+#: views.py:321
 msgid "Must provide at least one group."
 msgstr ""
 
-#: views.py:302
+#: views.py:331
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:304
+#: views.py:333
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr ""
 
-#: views.py:319
+#: views.py:348
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr ""
 
-#: views.py:321
+#: views.py:350
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr ""
 
-#: views.py:351
+#: views.py:380
 #, python-format
 msgid "non members of group: %s"
 msgstr ""
 
-#: views.py:352
+#: views.py:381
 #, python-format
 msgid "members of group: %s"
 msgstr ""

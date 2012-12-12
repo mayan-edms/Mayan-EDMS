@@ -1,41 +1,40 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <sl@suchreflex.de>, 2012.
 #   <tetja.rediske@googlemail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-09-19 21:25+0000\n"
 "Last-Translator: Manticor <sl@suchreflex.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: links.py:9 views.py:29
+#: __init__.py:9 views.py:28
 msgid "settings"
 msgstr "Einstellungen"
 
-#: views.py:26
-#, python-format
-msgid "settings for the %s module"
-msgstr "Einstellungen für das Modul %s"
-
-#: views.py:34
+#: views.py:33
 msgid "name"
 msgstr "Name"
 
-#: views.py:35
+#: views.py:34
 msgid "default"
 msgstr "Standard"
 
-#: views.py:36
+#: views.py:35
 msgid "value"
 msgstr "Wert"
+
+#~ msgid "settings for the %s module"
+#~ msgstr "Einstellungen für das Modul %s"

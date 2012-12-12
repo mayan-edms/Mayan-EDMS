@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 16:08-0400\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "users"
 msgstr ""
 
-#: __init__.py:15 __init__.py:24
+#: __init__.py:15 __init__.py:25
 msgid "edit"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "create new user"
 msgstr ""
 
-#: __init__.py:17 __init__.py:18 __init__.py:26 __init__.py:27
+#: __init__.py:17 __init__.py:18 __init__.py:27 __init__.py:28
 msgid "delete"
 msgstr ""
 
@@ -41,19 +41,19 @@ msgstr ""
 msgid "reset password"
 msgstr ""
 
-#: __init__.py:22
-msgid "group list"
-msgstr ""
-
-#: __init__.py:23 views.py:228
+#: __init__.py:21 __init__.py:24 views.py:257
 msgid "groups"
 msgstr ""
 
-#: __init__.py:25 views.py:276
+#: __init__.py:23
+msgid "group list"
+msgstr ""
+
+#: __init__.py:26 views.py:305
 msgid "create new group"
 msgstr ""
 
-#: __init__.py:28 views.py:232
+#: __init__.py:29 views.py:261
 msgid "members"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr ""
 msgid "edit user: %s"
 msgstr ""
 
-#: views.py:77 views.py:135 views.py:198
+#: views.py:77 views.py:135 views.py:198 views.py:243
 msgid "user"
 msgstr ""
 
@@ -202,55 +202,65 @@ msgstr ""
 msgid "Reseting password for users: %s"
 msgstr ""
 
-#: views.py:249
+#: views.py:238
+#, python-format
+msgid "non groups of user: %s"
+msgstr ""
+
+#: views.py:239
+#, python-format
+msgid "groups of user: %s"
+msgstr ""
+
+#: views.py:278
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr ""
 
-#: views.py:255
+#: views.py:284
 #, python-format
 msgid "edit group: %s"
 msgstr ""
 
-#: views.py:258 views.py:311 views.py:356
+#: views.py:287 views.py:340 views.py:385
 msgid "group"
 msgstr ""
 
-#: views.py:270
+#: views.py:299
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr ""
 
-#: views.py:292
+#: views.py:321
 msgid "Must provide at least one group."
 msgstr ""
 
-#: views.py:302
+#: views.py:331
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:304
+#: views.py:333
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr ""
 
-#: views.py:319
+#: views.py:348
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr ""
 
-#: views.py:321
+#: views.py:350
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr ""
 
-#: views.py:351
+#: views.py:380
 #, python-format
 msgid "non members of group: %s"
 msgstr ""
 
-#: views.py:352
+#: views.py:381
 #, python-format
 msgid "members of group: %s"
 msgstr ""

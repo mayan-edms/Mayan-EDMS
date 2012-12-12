@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 16:07-0400\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -910,16 +910,6 @@ msgid ""
 msgstr ""
 
 #: conf/settings.py:16
-msgid "Path to the unoconv program."
-msgstr ""
-
-#: conf/settings.py:17
-msgid ""
-"Use alternate method of connection to LibreOffice using a pipe, it is slower "
-"but less prone to segmentation faults."
-msgstr ""
-
-#: conf/settings.py:18
 msgid "Path to the libreoffice program."
 msgstr ""
 

@@ -1,36 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: 2012-07-28 14:44+0000\n"
 "Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: __init__.py:38
+#: __init__.py:43
 msgid "Check expired check out documents and checks them in."
-msgstr "Vérifier les documents retirés aux modifications, dont la période de verrou expiré, et les remettre dans l'état modifiable."
+msgstr ""
+"Vérifier les documents retirés aux modifications, dont la période de verrou "
+"expiré, et les remettre dans l'état modifiable."
 
-#: events.py:5 links.py:18
-msgid "checkouts"
-msgstr "Verrous"
-
-#: events.py:7
+#: events.py:5
 msgid "Document checked out"
 msgstr "Documents verrouillés"
 
-#: events.py:8
+#: events.py:6
 #, python-format
 msgid "Document \"%(document)s\" checked out by %(fullname)s."
 msgstr "Document \"%(document)s\" verrouillé par %(fullname)s."
@@ -44,23 +43,27 @@ msgstr "Document déverrouillé"
 msgid "Document \"%(document)s\" checked in by %(fullname)s."
 msgstr "Documents \"%(document)s\" déverrouillés par %(fullname)s."
 
-#: events.py:17
+#: events.py:19
 msgid "Document automatically checked in"
 msgstr "Document déverrouillé automatiquement"
 
-#: events.py:18
+#: events.py:20
 #, python-format
 msgid "Document \"%(document)s\" automatically checked in."
 msgstr "Document \"%(document)s\" déverrouillé automatiquement."
 
-#: events.py:21
+#: events.py:25
 msgid "Document forcefully checked in"
 msgstr "Document déverrouillé de force"
 
-#: events.py:22
+#: events.py:26
 #, python-format
 msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 msgstr "Document \"%(document)s\" dévérouillé de force par %(fullname)s."
+
+#: links.py:18
+msgid "checkouts"
+msgstr "Verrous"
 
 #: links.py:19
 msgid "check out document"
@@ -82,35 +85,35 @@ msgstr "verrouillé"
 msgid "checked in/available"
 msgstr "déverrouillé/disponible"
 
-#: models.py:23 views.py:136
+#: models.py:25 views.py:133
 msgid "document"
 msgstr "document"
 
-#: models.py:24
+#: models.py:26
 msgid "check out date and time"
 msgstr "date et heure du verrouillage"
 
-#: models.py:25
+#: models.py:27
 msgid "check out expiration date and time"
 msgstr "date d'expiration du verrouillage"
 
-#: models.py:25
+#: models.py:27
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Durée en minutes pendant laquelle le document doit être verrouillé"
 
-#: models.py:30
+#: models.py:32
 msgid "block new version upload"
 msgstr "empêcher import nouvelle version"
 
-#: models.py:30
+#: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Ne pas autoriser l'importation d'une nouvelle version de ce document"
 
-#: models.py:53
+#: models.py:55
 msgid "document checkout"
 msgstr "verrouillage du document"
 
-#: models.py:54
+#: models.py:56
 msgid "document checkouts"
 msgstr "verrouillages du document"
 
@@ -134,96 +137,98 @@ msgstr "Déverrouiller de force les documents"
 msgid "Allow overriding check out restrictions"
 msgstr "Permettre de révoquer le verrouillage"
 
-#: views.py:32
+#: views.py:33
 msgid "checked out documents"
 msgstr "documents verrouillés"
 
-#: views.py:35
+#: views.py:36
 msgid "checkout user"
 msgstr "utilisateur ayant verrouillé"
 
-#: views.py:36
+#: views.py:37
 msgid "checkout time and date"
 msgstr "date et heure du verrou"
 
-#: views.py:37
+#: views.py:38
 msgid "checkout expiration"
 msgstr "expiration du verrou"
 
-#: views.py:54
+#: views.py:55
 #, python-format
 msgid "User: %s"
 msgstr "Utilisateur: %s"
 
-#: views.py:55
+#: views.py:56
 #, python-format
 msgid "Check out time: %s"
 msgstr "Heure du verrou: %s"
 
-#: views.py:56
+#: views.py:57
 #, python-format
 msgid "Check out expiration: %s"
 msgstr "Expiration du verrou: %s"
 
-#: views.py:57
+#: views.py:58
 #, python-format
 msgid "New versions allowed: %s"
 msgstr "Nouvelles versions autorisées: %s"
 
-#: views.py:57
+#: views.py:58
 msgid "yes"
 msgstr "oui"
 
-#: views.py:57
+#: views.py:58
 msgid "no"
 msgstr "non"
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Détails du verrou pour le document; %s"
 
-#: views.py:82
+#: views.py:83
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Erreur lors de l'essai de verrouillage du document; %s"
 
-#: views.py:84
+#: views.py:85
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Document \"%s\" verouillé avec succès."
 
-#: views.py:87
+#: views.py:88
 msgid "Document already checked out."
 msgstr "Document déjà verrouillé."
 
-#: views.py:95
+#: views.py:96
 #, python-format
 msgid "Check out document: %s"
 msgstr "Verrouiller le document: %s"
 
-#: views.py:121 views.py:128
+#: views.py:125
 msgid "Document has not been checked out."
 msgstr "Ce document n'a pas été verrouillé."
 
-#: views.py:130
+#: views.py:127
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Erreur lors de la tentative de déverrouillage du document; %s  "
 
-#: views.py:132
+#: views.py:129
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Document \"%s\" déverrouillé avec succès."
 
-#: views.py:145
+#: views.py:142
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr "Ce n'est pas vous qui avec posé le verrou sur ce document. Êtes vous certain de vouloir forcer le déverrouillage de: %s?"
+msgstr ""
+"Ce n'est pas vous qui avec posé le verrou sur ce document. Êtes vous certain "
+"de vouloir forcer le déverrouillage de: %s?"
 
-#: views.py:147
+#: views.py:144
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Êtes vous certain de vouloir verrouiller le document: %s?"
@@ -265,7 +270,9 @@ msgstr "Saisissez un intervalle de temps valide."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr "Durée pendant laquelle conserver le verrou sur le document en jours, heures et/ou minutes."
+msgstr ""
+"Durée pendant laquelle conserver le verrou sur le document en jours, heures "
+"et/ou minutes."
 
 #: widgets.py:89
 msgid "Check out expiration date and time"

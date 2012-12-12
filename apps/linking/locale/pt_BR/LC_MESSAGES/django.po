@@ -1,23 +1,60 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-07-27 04:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
+"mayan-edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: __init__.py:17
+msgid "smart links actions"
+msgstr "ações do ligações inteligentes"
+
+#: __init__.py:18 __init__.py:20 models.py:23 views.py:132
+msgid "smart links"
+msgstr "ligações inteligentes"
+
+#: __init__.py:21
+msgid "smart links list"
+msgstr "lista de ligações inteligentes"
+
+#: __init__.py:22
+msgid "create new smart link"
+msgstr "criar um novo ligação inteligente"
+
+#: __init__.py:23 __init__.py:28
+msgid "edit"
+msgstr "editar"
+
+#: __init__.py:24 __init__.py:29
+msgid "delete"
+msgstr "excluir"
+
+#: __init__.py:26
+msgid "conditions"
+msgstr "condições"
+
+#: __init__.py:27
+msgid "create condition"
+msgstr "criar condições"
+
+#: __init__.py:31
+msgid "ACLs"
+msgstr ""
 
 #: forms.py:48
 msgid "Pages"
@@ -30,42 +67,6 @@ msgstr "Selecionar"
 #: forms.py:61
 msgid "Click on the image for full size view of the first page."
 msgstr "Clique na imagem para ver em tamanho grande a primeira página."
-
-#: links.py:12
-msgid "smart links actions"
-msgstr "ações do ligações inteligentes"
-
-#: links.py:13 links.py:15 models.py:23 views.py:132
-msgid "smart links"
-msgstr "ligações inteligentes"
-
-#: links.py:16
-msgid "smart links list"
-msgstr "lista de ligações inteligentes"
-
-#: links.py:17
-msgid "create new smart link"
-msgstr "criar um novo ligação inteligente"
-
-#: links.py:18 links.py:23
-msgid "edit"
-msgstr "editar"
-
-#: links.py:19 links.py:24
-msgid "delete"
-msgstr "excluir"
-
-#: links.py:21
-msgid "conditions"
-msgstr "condições"
-
-#: links.py:22
-msgid "create condition"
-msgstr "criar condições"
-
-#: links.py:26
-msgid "ACLs"
-msgstr ""
 
 #: literals.py:7
 msgid "and"
@@ -148,7 +149,10 @@ msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
-msgstr "Esta expressão será avaliada em relação ao documento atual selecionado. Os metadados do documento estão disponíveis como variáveis \"​metadados \" e propriedades do documento em  variáveis `documento`."
+msgstr ""
+"Esta expressão será avaliada em relação ao documento atual selecionado. Os "
+"metadados do documento estão disponíveis como variáveis \"​metadados \" e "
+"propriedades do documento em  variáveis `documento`."
 
 #: models.py:14 models.py:33 views.py:136 views.py:232
 msgid "enabled"
@@ -170,7 +174,9 @@ msgstr "dados de documentos estrangeiros"
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
-msgstr "Isto representa os metadados de todos os outros documentos. Objetos disponíveis: `document. <attribute> ` e ` metadata. <metadata_type_name> `."
+msgstr ""
+"Isto representa os metadados de todos os outros documentos. Objetos "
+"disponíveis: `document. <attribute> ` e ` metadata. <metadata_type_name> `."
 
 #: models.py:31
 msgid "expression"
@@ -317,11 +323,7 @@ msgstr ""
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr ""
 
-#: conf/settings.py:7
-msgid "Linking"
-msgstr ""
-
-#: conf/settings.py:14
+#: conf/settings.py:11
 msgid "Show smart link that don't return any documents."
 msgstr ""
 

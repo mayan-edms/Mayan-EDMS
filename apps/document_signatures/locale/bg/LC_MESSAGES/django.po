@@ -1,149 +1,145 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
+#   <pkoldamov@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-07-27 04:11+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-10-17 08:56+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:83
+msgid "upload signature"
+msgstr "качете сигнатура"
+
+#: __init__.py:84
+msgid "download signature"
+msgstr "изтеглете сигнатура"
+
+#: __init__.py:85
+msgid "signatures"
+msgstr "сигнатура"
 
 #: forms.py:11
 msgid "Signature file"
-msgstr ""
-
-#: links.py:21
-msgid "upload signature"
-msgstr ""
-
-#: links.py:22
-msgid "download signature"
-msgstr ""
-
-#: links.py:23
-msgid "delete signature"
-msgstr ""
-
-#: links.py:24
-msgid "signatures"
-msgstr ""
+msgstr "Файл със сигнатура"
 
 #: models.py:20
 msgid "document version"
-msgstr ""
+msgstr "версия на документа"
 
 #: models.py:21
 msgid "signature file"
-msgstr ""
+msgstr "файл със сигнатура"
 
 #: models.py:22
 msgid "has embedded signature"
-msgstr ""
+msgstr "има вградена сигнатура"
 
 #: models.py:37
 msgid "document version signature"
-msgstr ""
+msgstr "сигнатура за версията на документа"
 
 #: models.py:38
 msgid "document version signatures"
-msgstr ""
+msgstr "сигнатури за версията на документа"
 
 #: permissions.py:7
 msgid "Document signatures"
-msgstr ""
+msgstr "Сигнатури на документа"
 
 #: permissions.py:8
 msgid "Verify document signatures"
-msgstr ""
+msgstr "Проверете сигнатурите на документа"
 
 #: permissions.py:9
 msgid "Upload detached signatures"
-msgstr ""
+msgstr "Качете несвързаните сигнатури"
 
 #: permissions.py:10
 msgid "Download detached signatures"
-msgstr ""
-
-#: permissions.py:11
-msgid "Delete detached signatures"
-msgstr ""
+msgstr "Свалете несвързаните сигнатури"
 
 #: views.py:47
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
-msgstr ""
+msgstr "Състояние на сигнатура: %(widget)s %(text)s"
 
 #: views.py:54
 msgid "embedded"
-msgstr ""
+msgstr "вградено"
 
 #: views.py:56
 msgid "detached"
-msgstr ""
+msgstr "несвързано"
 
 #: views.py:61
 #, python-format
 msgid "Signature ID: %s"
-msgstr ""
+msgstr "Номер на сигнатура: %s"
 
 #: views.py:62
 #, python-format
 msgid "Signature type: %s"
-msgstr ""
+msgstr "Вид сигнатура: %s"
 
 #: views.py:63
 #, python-format
 msgid "Key ID: %s"
-msgstr ""
+msgstr "Номер на ключ: %s"
 
 #: views.py:64
 #, python-format
 msgid "Timestamp: %s"
-msgstr ""
+msgstr "Време: %s"
 
 #: views.py:65
 #, python-format
 msgid "Signee: %s"
-msgstr ""
+msgstr "Подписал: %s"
 
 #: views.py:70
 #, python-format
 msgid "signature properties for: %s"
-msgstr ""
+msgstr "опции на сигнатурата за: %s"
 
 #: views.py:96
 msgid "Detached signature uploaded successfully."
-msgstr ""
+msgstr "Несвързаните сигнатури са качени успешно."
 
 #: views.py:105
 #, python-format
 msgid "Upload detached signature for: %s"
-msgstr ""
+msgstr "Качване на несвързани сигнатури за: %s"
 
-#: views.py:106
-msgid "Submit"
-msgstr ""
+#~ msgid "delete signature"
+#~ msgstr "изтриване на сигнатура"
 
-#: views.py:155
-msgid "Detached signature deleted successfully."
-msgstr ""
+#~ msgid "Delete detached signatures"
+#~ msgstr "Изтриване на несвързани сигнатури"
 
-#: views.py:158
-#, python-format
-msgid "Error while deleting the detached signature; %s"
-msgstr ""
+#~ msgid "Submit"
+#~ msgstr "Подаване"
 
-#: views.py:162
-#, python-format
-msgid ""
-"Are you sure you wish to delete the detached signature from document: %s"
-msgstr ""
+#~ msgid "Detached signature deleted successfully."
+#~ msgstr "Несвързаните сигнатури са изтрити успешно."
+
+#~ msgid "Error while deleting the detached signature; %s"
+#~ msgstr "Грешка при изтриване на несвързана сигнатура; %s"
+
+#~ msgid ""
+#~ "Are you sure you wish to delete the detached signature from document: %s"
+#~ msgstr ""
+#~ "Сигурни ли сте, че искате да изтриете несвързаната сигнатура от "
+#~ "документа: %s"

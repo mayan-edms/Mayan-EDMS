@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 16:08-0400\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,30 +118,34 @@ msgid "Repository remotes"
 msgstr ""
 
 #: models.py:123
-msgid "Branch"
+msgid "Repository remotes URLs"
 msgstr ""
 
 #: models.py:124
-msgid "HEAD commit hex SHA"
+msgid "Branch"
 msgstr ""
 
 #: models.py:125
-msgid "HEAD commit author"
+msgid "HEAD commit hex SHA"
 msgstr ""
 
 #: models.py:126
-msgid "HEAD commit authored date"
+msgid "HEAD commit author"
 msgstr ""
 
 #: models.py:127
-msgid "HEAD commit committer"
+msgid "HEAD commit authored date"
 msgstr ""
 
 #: models.py:128
-msgid "HEAD commit committed date"
+msgid "HEAD commit committer"
 msgstr ""
 
 #: models.py:129
+msgid "HEAD commit committed date"
+msgstr ""
+
+#: models.py:130
 msgid "HEAD commit message"
 msgstr ""
 

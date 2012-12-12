@@ -1,26 +1,56 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: 2012-02-27 04:26+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:21 links.py:14 links.py:20
+#: __init__.py:14
+msgid "ACLs"
+msgstr "Списки ACL"
+
+#: __init__.py:15 __init__.py:23
+msgid "details"
+msgstr "детали"
+
+#: __init__.py:16 __init__.py:25
+msgid "grant"
+msgstr "предоставить"
+
+#: __init__.py:17 __init__.py:26
+msgid "revoke"
+msgstr "отозвать"
+
+#: __init__.py:18 __init__.py:24 forms.py:21
 msgid "New holder"
 msgstr "Новый владелец"
+
+#: __init__.py:20
+msgid "Default ACLs"
+msgstr "ACL по умолчанию"
+
+#: __init__.py:21
+msgid "List of classes"
+msgstr "Список классов"
+
+#: __init__.py:22
+msgid "ACLs for class"
+msgstr "ACL для класса"
 
 #: forms.py:38
 msgid "Users"
@@ -38,35 +68,7 @@ msgstr "Роли"
 msgid "Special"
 msgstr "Специальный"
 
-#: links.py:10
-msgid "ACLs"
-msgstr "Списки ACL"
-
-#: links.py:11 links.py:19
-msgid "details"
-msgstr "детали"
-
-#: links.py:12 links.py:21
-msgid "grant"
-msgstr "предоставить"
-
-#: links.py:13 links.py:22
-msgid "revoke"
-msgstr "отозвать"
-
-#: links.py:16
-msgid "Default ACLs"
-msgstr "ACL по умолчанию"
-
-#: links.py:17
-msgid "List of classes"
-msgstr "Список классов"
-
-#: links.py:18
-msgid "ACLs for class"
-msgstr "ACL для класса"
-
-#: managers.py:119 managers.py:131
+#: managers.py:118 managers.py:130
 msgid "Insufficient access."
 msgstr "Недостаточный доступ."
 

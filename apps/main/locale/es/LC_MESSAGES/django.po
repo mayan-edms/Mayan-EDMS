@@ -1,50 +1,51 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-07-27 04:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:29
-msgid "home"
-msgstr "inicio"
-
-#: __init__.py:31
-msgid "search"
-msgstr "búsqueda"
-
-#: links.py:11
+#: __init__.py:33
 msgid "maintenance"
 msgstr "mantenimiento"
 
-#: links.py:12
+#: __init__.py:34
 msgid "statistics"
 msgstr "estadísticas"
 
-#: links.py:13
+#: __init__.py:35
 msgid "diagnostics"
 msgstr "diagnósticos"
 
-#: links.py:14
+#: __init__.py:36
 msgid "sentry"
 msgstr "sentry"
 
-#: links.py:15
+#: __init__.py:37
 msgid "admin site"
 msgstr "sitio administrativo"
+
+#: __init__.py:40
+msgid "home"
+msgstr "inicio"
+
+#: __init__.py:42
+msgid "search"
+msgstr "búsqueda"
 
 #: views.py:43
 msgid "maintenance menu"
@@ -58,15 +59,13 @@ msgstr "Estadísticas"
 msgid "Diagnostics"
 msgstr "Diagnósticos"
 
-#: conf/settings.py:6
-msgid "Main"
-msgstr "Principal"
-
-#: conf/settings.py:13
+#: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or"
-" by a menu entry."
-msgstr "Controla si la funcionalidad de búsqueda es proporcionada por una barra lateral o por una entrada de menú."
+"Controls whether the search functionality is provided by a sidebar widget or "
+"by a menu entry."
+msgstr ""
+"Controla si la funcionalidad de búsqueda es proporcionada por una barra "
+"lateral o por una entrada de menú."
 
 #: templates/about.html:5
 msgid "About this program"
@@ -80,45 +79,59 @@ msgstr "Versión"
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:202
+#: templates/base.html:193
 msgid "User"
 msgstr "Usuario"
 
-#: templates/base.html:204
+#: templates/base.html:195
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:206
+#: templates/base.html:198
 msgid "User details"
 msgstr "Detalles de usuario"
 
-#: templates/base.html:223
+#: templates/base.html:215
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:223
+#: templates/base.html:215
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/base.html:283
+#: templates/base.html:295
 msgid "Secondary menu"
 msgstr "Menú secundario"
 
-#: templates/base.html:302
-#, python-format
-msgid "Actions for %(name)s: %(object_reference)s"
+#: templates/base.html:311
+#, fuzzy, python-format
+msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Acciones para %(name)s: %(object_reference)s "
 
-#: templates/base.html:304
-#, python-format
-msgid "Actions for: %(object_reference)s"
+#: templates/base.html:313 templates/base.html.py:345
+#, fuzzy, python-format
+msgid "Actions for: %(navigation_object)s"
 msgstr "Acciones para: %(object_reference)s "
 
-#: templates/base.html:307
+#: templates/base.html:316
 msgid "Available actions"
 msgstr "Acciones disponibles"
 
-#: templates/base.html:323
+#: templates/base.html:328 templates/base.html.py:360
+#, fuzzy
+msgid "Related actions"
+msgstr "Acciones disponibles"
+
+#: templates/base.html:343
+#, fuzzy, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr "Acciones para %(name)s: %(object_reference)s "
+
+#: templates/base.html:348
+msgid "Actions"
+msgstr ""
+
+#: templates/base.html:373
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
 
@@ -131,8 +144,14 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr "Gestor documental libre y de código abierto, basado en Django con metadatos personalizados, indexación, etiquetado, integración de servicio de archivos, apoyo de firmas digitales y capacidades de OCR"
+msgstr ""
+"Gestor documental libre y de código abierto, basado en Django con metadatos "
+"personalizados, indexación, etiquetado, integración de servicio de archivos, "
+"apoyo de firmas digitales y capacidades de OCR"
 
-#: templates/project_description.html:18
+#: templates/project_description.html:21
 msgid "Released under the GPL V3 License"
 msgstr "Publicado bajo la licencia GPL v3"
+
+#~ msgid "Main"
+#~ msgstr "Principal"

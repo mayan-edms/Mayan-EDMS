@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 16:07-0400\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:313 templates/base.html.py:356
+#: templates/base.html:313 templates/base.html.py:345
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
@@ -113,21 +113,21 @@ msgstr ""
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:328 templates/base.html.py:371
+#: templates/base.html:328 templates/base.html.py:360
 msgid "Related actions"
 msgstr ""
 
-#: templates/base.html:339 templates/base.html.py:384
-msgid "Other available actions"
-msgstr ""
-
-#: templates/base.html:354
+#: templates/base.html:343
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:359
+#: templates/base.html:348
 msgid "Actions"
+msgstr ""
+
+#: templates/base.html:373
+msgid "Other available actions"
 msgstr ""
 
 #: templates/home.html:8
@@ -141,6 +141,6 @@ msgid ""
 "OCR capabilities"
 msgstr ""
 
-#: templates/project_description.html:18
+#: templates/project_description.html:21
 msgid "Released under the GPL V3 License"
 msgstr ""
