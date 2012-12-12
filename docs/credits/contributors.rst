@@ -18,7 +18,9 @@ Bug fixes
 * Sergey Glita (s.v.glita@gmail.com)
 * Meurig Freeman (https://github.com/meurig)
 * David Herring (https://github.com/abadger1406)
-
+* Webfaction (https://www.webfaction.com)
+* Kolmar Kafran
+* Nate Aune (nate@appsembler.com)
 
 Bug reports
 -----------
@@ -32,7 +34,8 @@ Bug reports
 * valterwill (https://github.com/valterwill)
 * David Herring (https://github.com/abadger1406)
 * Alexandru Kiss (usurel@gmail.com)
-
+* Nate Aune (nate@appsembler.com)
+* Fabio Duran Verdugo (fabiognome@gmail.com)
 
 Patches
 -------
@@ -40,7 +43,7 @@ Patches
 * Sergey Glita (s.v.glita@gmail.com)
 * Brian E (brian@realize.org)
 * Bertrand Bordage (https://github.com/BertrandBordage)
-
+* Iliya Georgiev (ikgeorgiev@gmail.com)
 
 Suggestions
 -----------
@@ -50,6 +53,7 @@ Suggestions
 * Gour (https://github.com/gour)
 * Alexandru Kiss (usurel@gmail.com)
 * Stephen Knox
+* Nate Aune (nate@appsembler.com)
 
 
 Translations
