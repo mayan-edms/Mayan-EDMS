@@ -48,14 +48,15 @@ def install():
     webserver.restart()
     platform.post_install()
 
-
+'''
+# Disabled until properly implemented
 @task
 def upgrade():
     """
     Perform a Mayan EDMS installation upgrade
     """
     mayan_edms.upgrade()
-
+'''
 
 @task
 def uninstall():
