@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-07-27 04:10+0000\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -32,9 +32,8 @@ msgid "search again"
 msgstr "buscar de nuevo"
 
 #: forms.py:8
-#, fuzzy
 msgid "Search terms"
-msgstr "Resultados de la búsqueda"
+msgstr ""
 
 #: models.py:20
 msgid "user"
@@ -66,14 +65,13 @@ msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
 
 #: views.py:37
-#, fuzzy
 msgid "results"
-msgstr "Resultados de la búsqueda"
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
+#, python-format
 msgid "Search error: %s"
-msgstr "Resultados de la búsqueda"
+msgstr ""
 
 #: views.py:60
 msgid "type"

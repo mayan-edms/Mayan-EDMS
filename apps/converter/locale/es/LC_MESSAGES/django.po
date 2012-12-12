@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-07-27 04:14+0000\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -935,15 +935,3 @@ msgid ""
 msgstr ""
 "Estos son los formatos de archivo apoyados por el servidor del convertidor "
 "seleccionado.  En este caso: '%(backend)s'"
-
-#~ msgid "Converter"
-#~ msgstr "Convertidor"
-
-#~ msgid ""
-#~ "Set of configuration options to pass to the GraphicsMagick executable to "
-#~ "fine tune it's functionality as explained in the GraphicsMagick "
-#~ "documentation."
-#~ msgstr ""
-#~ "Conjunto de opciones de configuración para pasar al ejecutable "
-#~ "GraphicsMagick para afinar su funcionalidad, como se explica en la "
-#~ "documentación GraphicsMagick."

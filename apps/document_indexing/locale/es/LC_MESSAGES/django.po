@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-07-27 04:22+0000\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-12-12 06:14+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -45,9 +45,8 @@ msgid "tree template"
 msgstr "plantilla de árbol "
 
 #: __init__.py:37 models.py:21 views.py:314
-#, fuzzy
 msgid "document types"
-msgstr "documentos"
+msgstr "tipos de documentos"
 
 #: __init__.py:39
 msgid "new child node"
@@ -255,9 +254,8 @@ msgid "Rebuild document indexes"
 msgstr "Generar índices de documentos"
 
 #: utils.py:19
-#, fuzzy
 msgid "document indexes"
-msgstr "Editar los índices de documentos"
+msgstr "índices de documentos"
 
 #: views.py:72
 msgid "Index created successfully."
@@ -301,14 +299,14 @@ msgid "has document links?"
 msgstr "¿tiene vínculos de documentos?"
 
 #: views.py:192
-#, fuzzy, python-format
+#, python-format
 msgid "document types not in index: %s"
-msgstr "contenido del indice: %s"
+msgstr "tipos de documentos no en el índice: %s"
 
 #: views.py:193
-#, fuzzy, python-format
+#, python-format
 msgid "document types for index: %s"
-msgstr "contenido del indice: %s"
+msgstr "tipos de documentos para el índice: %s"
 
 #: views.py:216
 msgid "Index template node created successfully."

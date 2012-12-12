@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
-"PO-Revision-Date: 2012-07-27 04:28+0000\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -539,42 +539,3 @@ msgstr "Error al crear la transformación de la fuente; %s"
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "Crear una nueva transformación para la fuente: %s"
-
-#~ msgid "date time"
-#~ msgstr "fecha y hora"
-
-#~ msgid "status"
-#~ msgstr "estado"
-
-#~ msgid "port"
-#~ msgstr "puerto"
-
-#~ msgid "username"
-#~ msgstr "Nombre de usuario"
-
-#~ msgid "password"
-#~ msgstr "contraseña"
-
-#~ msgid "Enabled"
-#~ msgstr "Habilitado"
-
-#~ msgid "Date time"
-#~ msgstr "Fecha y hora"
-
-#~ msgid "Status"
-#~ msgstr "Estado"
-
-#~ msgid "step 1 of 3: Document type"
-#~ msgstr "Paso 1 de 3: Tipo de documento"
-
-#~ msgid "step 2 of 3: Metadata selection"
-#~ msgstr "paso 2 de 3: Selección de metadatos"
-
-#~ msgid "step 3 of 3: Document metadata"
-#~ msgstr "paso 3 de 3: Metadatos de documento"
-
-#~ msgid "Next step"
-#~ msgstr "Siguiente paso"
-
-#~ msgid "Sources"
-#~ msgstr "Fuentes"

@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-07-27 04:15+0000\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-12-12 06:11+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -28,9 +28,8 @@ msgid "recent documents"
 msgstr "documentos recientes"
 
 #: __init__.py:64
-#, fuzzy
 msgid "upload new documents"
-msgstr "documentos duplicados"
+msgstr "subir nuevos documentos"
 
 #: __init__.py:65
 msgid "clone metadata"
@@ -546,13 +545,12 @@ msgid "recent document"
 msgstr "documento reciente"
 
 #: models.py:662
-#, fuzzy
 msgid "Document type"
-msgstr "tipo de documento"
+msgstr "Tipo de documento"
 
 #: models.py:663
 msgid "MIME type"
-msgstr ""
+msgstr "Tipo MIME"
 
 #: models.py:664 views.py:132
 msgid "Filename"
@@ -560,30 +558,27 @@ msgstr "Nombre del archivo"
 
 #: models.py:665
 msgid "Metadata type"
-msgstr ""
+msgstr "Tipo de metadato"
 
 #: models.py:666
 msgid "Metadata value"
-msgstr ""
+msgstr "Valor de metadato"
 
 #: models.py:667
-#, fuzzy
 msgid "Content"
 msgstr "Contenido"
 
 #: models.py:668
-#, fuzzy
 msgid "Description"
-msgstr "descripción"
+msgstr "Descripción"
 
 #: models.py:669
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: models.py:670
-#, fuzzy
 msgid "Comments"
-msgstr "Comentario"
+msgstr "Comentarios"
 
 #: permissions.py:9
 msgid "Create documents"
@@ -1099,21 +1094,20 @@ msgid "document page image"
 msgstr "imagen de página de documento"
 
 #: wizards.py:36
-#, fuzzy
 msgid "step 1 of 3: Document type"
-msgstr "crear tipo de documento"
+msgstr "Paso 1 de 3: Tipo de documento"
 
 #: wizards.py:37
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "Paso 2 de 3: Selección de metadatos"
 
 #: wizards.py:38
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "Paso 3 de 3: Metadatos de documento"
 
 #: wizards.py:46
 msgid "Next step"
-msgstr ""
+msgstr "Siguiente paso"
 
 #: conf/settings.py:38
 msgid ""
@@ -1180,6 +1174,3 @@ msgid ""
 msgstr ""
 "Aquí encontrará los últimos %(recent_count)s documentos que haya creado o "
 "editado de alguna manera."
-
-#~ msgid "Page %(page_num)d of %(total_pages)d"
-#~ msgstr "Página %(page_num)d de %(total_pages)d"

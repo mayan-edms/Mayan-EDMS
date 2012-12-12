@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-02-04 02:35+0000\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-12-12 06:09+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -48,9 +48,8 @@ msgid "add to a folder"
 msgstr "Añadir a una carpeta"
 
 #: __init__.py:25
-#, fuzzy
 msgid "add to folder"
-msgstr "Añadir a una carpeta"
+msgstr "Agregar a la carpeta"
 
 #: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
@@ -172,9 +171,8 @@ msgid "documents in folder: %s"
 msgstr "documentos en la carpeta: %s"
 
 #: views.py:180
-#, fuzzy
 msgid "Must provide at least one document."
-msgstr "Debe proveer al menos un documento de carpeta."
+msgstr "Debe proporcionar al menos un documento."
 
 #: views.py:198
 #, python-format
@@ -188,14 +186,14 @@ msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s ya está en la carpeta: %(folder)s."
 
 #: views.py:217
-#, fuzzy, python-format
+#, python-format
 msgid "Add document: %s to folder."
-msgstr "Agregar documento a una carpeta"
+msgstr "Agregar documento: %s a la carpeta."
 
 #: views.py:219
-#, fuzzy, python-format
+#, python-format
 msgid "Add documents: %s to folder."
-msgstr "Agregar documento a una carpeta"
+msgstr "Agregar documentos: %s a la carpeta."
 
 #: views.py:237
 #, python-format
@@ -254,6 +252,3 @@ msgstr ""
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
 msgstr "Agregar documento a una carpeta"
-
-#~ msgid "add document \"%s\" to a folder"
-#~ msgstr "Agregar documento \"%s\" a una carpeta"

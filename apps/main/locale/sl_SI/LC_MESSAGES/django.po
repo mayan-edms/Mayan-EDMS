@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2011-09-30 04:41+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2012-12-12 06:06+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Language: sl_SI\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: __init__.py:29
-msgid "home"
-msgstr ""
-
-#: __init__.py:31
-msgid "search"
-msgstr ""
-
-#: links.py:11
+#: __init__.py:33
 msgid "maintenance"
 msgstr ""
 
-#: links.py:12
+#: __init__.py:34
 msgid "statistics"
 msgstr ""
 
-#: links.py:13
+#: __init__.py:35
 msgid "diagnostics"
 msgstr ""
 
-#: links.py:14
+#: __init__.py:36
 msgid "sentry"
 msgstr ""
 
-#: links.py:15
+#: __init__.py:37
 msgid "admin site"
+msgstr ""
+
+#: __init__.py:40
+msgid "home"
+msgstr ""
+
+#: __init__.py:42
+msgid "search"
 msgstr ""
 
 #: views.py:43
@@ -57,11 +57,7 @@ msgstr ""
 msgid "Diagnostics"
 msgstr ""
 
-#: conf/settings.py:6
-msgid "Main"
-msgstr ""
-
-#: conf/settings.py:13
+#: conf/settings.py:12
 msgid ""
 "Controls whether the search functionality is provided by a sidebar widget or"
 " by a menu entry."
@@ -79,45 +75,58 @@ msgstr ""
 msgid "(DEBUG)"
 msgstr ""
 
-#: templates/base.html:202
+#: templates/base.html:193
 msgid "User"
 msgstr ""
 
-#: templates/base.html:204
+#: templates/base.html:195
 msgid "Anonymous"
 msgstr ""
 
-#: templates/base.html:206
+#: templates/base.html:198
 msgid "User details"
 msgstr ""
 
-#: templates/base.html:223
+#: templates/base.html:215
 msgid "Login"
 msgstr ""
 
-#: templates/base.html:223
+#: templates/base.html:215
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:283
+#: templates/base.html:295
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/base.html:302
+#: templates/base.html:311
 #, python-format
-msgid "Actions for %(name)s: %(object_reference)s"
+msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:304
+#: templates/base.html:313 templates/base.html.py:345
 #, python-format
-msgid "Actions for: %(object_reference)s"
+msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:307
+#: templates/base.html:316
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:323
+#: templates/base.html:328 templates/base.html.py:360
+msgid "Related actions"
+msgstr ""
+
+#: templates/base.html:343
+#, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr ""
+
+#: templates/base.html:348
+msgid "Actions"
+msgstr ""
+
+#: templates/base.html:373
 msgid "Other available actions"
 msgstr ""
 
@@ -132,6 +141,6 @@ msgid ""
 "OCR capabilities"
 msgstr ""
 
-#: templates/project_description.html:18
+#: templates/project_description.html:21
 msgid "Released under the GPL V3 License"
 msgstr ""

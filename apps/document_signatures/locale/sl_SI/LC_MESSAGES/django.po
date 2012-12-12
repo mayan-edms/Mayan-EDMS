@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:54-0400\n"
-"PO-Revision-Date: 2012-01-02 04:45+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,24 +17,20 @@ msgstr ""
 "Language: sl_SI\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: forms.py:11
-msgid "Signature file"
-msgstr ""
-
-#: links.py:21
+#: __init__.py:83
 msgid "upload signature"
 msgstr ""
 
-#: links.py:22
+#: __init__.py:84
 msgid "download signature"
 msgstr ""
 
-#: links.py:23
-msgid "delete signature"
+#: __init__.py:85
+msgid "signatures"
 msgstr ""
 
-#: links.py:24
-msgid "signatures"
+#: forms.py:11
+msgid "Signature file"
 msgstr ""
 
 #: models.py:20
@@ -71,10 +67,6 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Download detached signatures"
-msgstr ""
-
-#: permissions.py:11
-msgid "Delete detached signatures"
 msgstr ""
 
 #: views.py:47
@@ -127,23 +119,4 @@ msgstr ""
 #: views.py:105
 #, python-format
 msgid "Upload detached signature for: %s"
-msgstr ""
-
-#: views.py:106
-msgid "Submit"
-msgstr ""
-
-#: views.py:155
-msgid "Detached signature deleted successfully."
-msgstr ""
-
-#: views.py:158
-#, python-format
-msgid "Error while deleting the detached signature; %s"
-msgstr ""
-
-#: views.py:162
-#, python-format
-msgid ""
-"Are you sure you wish to delete the detached signature from document: %s"
 msgstr ""

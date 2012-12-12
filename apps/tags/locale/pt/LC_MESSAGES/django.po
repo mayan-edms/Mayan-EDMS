@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"POT-Creation-Date: 2012-12-12 03:20-0400\n"
 "PO-Revision-Date: 2012-07-03 10:12+0000\n"
 "Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
@@ -291,7 +291,7 @@ msgstr "Tem a certeza de que deseja remover as etiquetas: %s?"
 #: views.py:332
 #, fuzzy, python-format
 msgid ""
-"Are you sure you wish to remove the tags %(tag)s from the documents: "
+"Are you sure you wish to remove the tags %(tags)s from the documents: "
 "%(documents)s?"
 msgstr "Tem a certeza de que deseja remover as etiquetas: %s?"
 

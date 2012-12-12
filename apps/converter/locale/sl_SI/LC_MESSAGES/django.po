@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
-"POT-Creation-Date: 2012-07-26 23:53-0400\n"
-"PO-Revision-Date: 2011-09-30 04:55+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: sl_SI\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: links.py:9
+#: __init__.py:15
 msgid "file formats"
 msgstr ""
 
@@ -891,37 +891,26 @@ msgstr ""
 msgid "description"
 msgstr ""
 
-#: conf/settings.py:7
-msgid "Converter"
-msgstr ""
-
-#: conf/settings.py:14
+#: conf/settings.py:11
 msgid "File path to imagemagick's convert program."
 msgstr ""
 
-#: conf/settings.py:23
+#: conf/settings.py:12
 msgid "File path to imagemagick's identify program."
 msgstr ""
 
-#: conf/settings.py:32
+#: conf/settings.py:13
 msgid "File path to graphicsmagick's program."
 msgstr ""
 
-#: conf/settings.py:41
-msgid ""
-"Set of configuration options to pass to the GraphicsMagick executable to "
-"fine tune it's functionality as explained in the GraphicsMagick "
-"documentation."
-msgstr ""
-
-#: conf/settings.py:49
+#: conf/settings.py:15
 msgid ""
 "Graphics conversion backend to use.  Options are: "
 "converter.backends.imagemagick, converter.backends.graphicsmagick and "
 "converter.backends.python."
 msgstr ""
 
-#: conf/settings.py:57
+#: conf/settings.py:16
 msgid "Path to the libreoffice program."
 msgstr ""
 

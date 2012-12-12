@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
-"PO-Revision-Date: 2012-07-27 04:22+0000\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2012-12-12 06:13+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -258,9 +258,9 @@ msgid "Must provide at least one document."
 msgstr "Debe proveer al menos un documento."
 
 #: views.py:87 views.py:251
-#, fuzzy, python-format
+#, python-format
 msgid "Error deleting document indexes; %s"
-msgstr "Error al editando conjunto de metadatos; %s"
+msgstr "Error al eliminar índices de documentos; %s"
 
 #: views.py:99
 #, python-format
@@ -273,14 +273,13 @@ msgid "Metadata for document %s edited successfully."
 msgstr "Metadatos para documento %s editados exitosamente."
 
 #: views.py:107 views.py:268
-#, fuzzy, python-format
+#, python-format
 msgid "Error updating document indexes; %s"
-msgstr "Error al editando conjunto de metadatos; %s"
+msgstr "Error al actualizar los índices de documentos; %s"
 
 #: views.py:109 views.py:270
-#, fuzzy
 msgid "Document indexes updated successfully."
-msgstr "Metadatos para documento %s editados exitosamente."
+msgstr "Índices de documento actualizado correctamente."
 
 #: views.py:120
 #, python-format

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
-"PO-Revision-Date: 2012-02-02 18:30+0000\n"
+"POT-Creation-Date: 2012-12-12 03:20-0400\n"
+"PO-Revision-Date: 2012-12-12 06:12+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
@@ -212,14 +212,14 @@ msgid "Reseting password for users: %s"
 msgstr "Restaurando la contraseña de los usuarios: %s"
 
 #: views.py:238
-#, fuzzy, python-format
+#, python-format
 msgid "non groups of user: %s"
-msgstr "no miembros del grupo: %s"
+msgstr "Grupos donde no esta el usuario: %s"
 
 #: views.py:239
 #, python-format
 msgid "groups of user: %s"
-msgstr ""
+msgstr "grupos de usuario: %s"
 
 #: views.py:278
 #, python-format
