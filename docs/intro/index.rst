@@ -10,6 +10,7 @@ New to Mayan EDMS?  Read this material to quickly get up and running.
    features
    requirements
    installation
+   getting_started
    
    
 .. seealso::

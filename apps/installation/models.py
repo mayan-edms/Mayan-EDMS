@@ -60,7 +60,7 @@ class Installation(Singleton):
 
     def get_properties(self):
         self.set_properties()
-        return self._properties
+        return self._properties.values()
 
     def set_properties(self):
         self._properties = SortedDict()
@@ -120,6 +120,7 @@ class Installation(Singleton):
             headcommit = repo.head.commit
             self.add_property(Property('is_git_repo', _(u'Running from a Git repository'), True))
             self.add_property(Property('repo_remotes', _(u'Repository remotes'), ', '.join([unicode(remote) for remote in repo.remotes])))
+            self.add_property(Property('repo_remotes_urls', _(u'Repository remotes URLs'), ', '.join([unicode(remote.url) for remote in repo.remotes])))
             self.add_property(Property('repo_head_reference', _(u'Branch'), repo.head.reference))
             self.add_property(Property('headcommit_hexsha', _(u'HEAD commit hex SHA'), headcommit.hexsha))
             self.add_property(Property('headcommit_author', _(u'HEAD commit author'), headcommit.author))
@@ -131,7 +132,7 @@ class Installation(Singleton):
     def __getattr__(self, name):
         self.set_properties()
         try:
-            return self._properties[name]
+            return self._properties[name].value
         except KeyError:
             raise AttributeError
 
@@ -180,7 +181,6 @@ class Installation(Singleton):
                             'headcommit_message': unicode(self.headcommit_message),
                         }
                 )
-
                 requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(dictionary)}, timeout=TIMEOUT)
             except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
                 pass

@@ -153,7 +153,7 @@ class Migration(SchemaMigration):
         'documents.documenttype': {
             'Meta': {'ordering': "['name']", 'object_name': 'DocumentType'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '32'})
         },
         'metadata.documentmetadata': {
             'Meta': {'object_name': 'DocumentMetadata'},

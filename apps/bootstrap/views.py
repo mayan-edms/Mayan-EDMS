@@ -6,6 +6,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.core.files import File
+
+from filetransfers.api import serve_file
 
 from permissions.models import Permission
 
@@ -13,10 +16,12 @@ from .models import BootstrapSetup
 from .classes import Cleanup, BootstrapModel
 from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE,
     PERMISSION_BOOTSTRAP_EDIT, PERMISSION_BOOTSTRAP_DELETE,
-    PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP)
+    PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP,
+    PERMISSION_BOOTSTRAP_EXPORT, PERMISSION_BOOTSTRAP_IMPORT, PERMISSION_BOOTSTRAP_REPOSITORY_SYNC)
 from .icons import icon_bootstrap_setup_execute, icon_nuke_database, icon_bootstrap_setup_delete
-from .forms import BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump
-from .exceptions import ExistingData
+from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
+    BootstrapSetupForm_edit, BootstrapFileImportForm, BootstrapURLImportForm)
+from .exceptions import ExistingData, NotABootstrapSetup
 
 
 def bootstrap_setup_list(request):
@@ -43,7 +48,7 @@ def bootstrap_setup_create(request):
         form = BootstrapSetupForm(request.POST)
         if form.is_valid():
             bootstrap = form.save()
-            messages.success(request, _(u'Bootstrap created successfully'))
+            messages.success(request, _(u'Bootstrap setup created successfully'))
             return HttpResponseRedirect(reverse('bootstrap_setup_list'))
         else:
             messages.error(request, _(u'Error creating bootstrap setup.'))
@@ -68,7 +73,7 @@ def bootstrap_setup_edit(request, bootstrap_setup_pk):
         AccessEntry.objects.check_access(PERMISSION_BOOTSTRAP_EDIT, request.user, bootstrap)
 
     if request.method == 'POST':
-        form = BootstrapSetupForm(instance=bootstrap, data=request.POST)
+        form = BootstrapSetupForm_edit(instance=bootstrap, data=request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, _(u'Bootstrap setup edited successfully'))
@@ -76,7 +81,7 @@ def bootstrap_setup_edit(request, bootstrap_setup_pk):
         else:
             messages.error(request, _(u'Error editing bootstrap setup.'))
     else:
-        form = BootstrapSetupForm(instance=bootstrap)
+        form = BootstrapSetupForm_edit(instance=bootstrap)
 
     return render_to_response('generic_form.html', {
         'title': _(u'edit bootstrap setup: %s') % bootstrap,
@@ -106,7 +111,7 @@ def bootstrap_setup_delete(request, bootstrap_setup_pk):
             bootstrap.delete()
             messages.success(request, _(u'Bootstrap setup: %s deleted successfully.') % bootstrap)
         except Exception, e:
-            messages.error(request, _(u'Bootstrap setup: %(bootstrap)s delete error: %(error)s') % {
+            messages.error(request, _(u'Bootstrap setup: %(bootstrap)s, delete error: %(error)s') % {
                 'bootstrap': bootstrap, 'error': e})
 
         return HttpResponseRedirect(reverse('bootstrap_setup_list'))
@@ -157,7 +162,7 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
         try:
             bootstrap_setup.execute()
         except ExistingData:
-            messages.error(request, _(u'Cannot execute bootstrap setup, there is existing data.  Erase database and try again.'))
+            messages.error(request, _(u'Cannot execute bootstrap setup, there is existing data.  Erase all data and try again.'))
         except Exception, exc:
             messages.error(request, _(u'Error executing bootstrap setup; %s') % exc)
         else:
@@ -173,7 +178,7 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
         'object': bootstrap_setup,
     }
 
-    context['title'] = _(u'Are you sure you wish to execute the database bootstrap named: %s?') % bootstrap_setup
+    context['title'] = _(u'Are you sure you wish to execute the database bootstrap setup named: %s?') % bootstrap_setup
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))
@@ -189,11 +194,11 @@ def bootstrap_setup_dump(request):
             try:
                 bootstrap.fixture = BootstrapSetup.objects.dump(serialization_format=bootstrap.type)
             except Exception as exception:
-                messages.error(request, _(u'Error dumping bootstrap setup; %s') % exception)
+                messages.error(request, _(u'Error dumping configuration into a bootstrap setup; %s') % exception)
                 raise
             else:
                 bootstrap.save()
-                messages.success(request, _(u'Bootstrap created successfully.'))
+                messages.success(request, _(u'Bootstrap setup created successfully.'))
                 return HttpResponseRedirect(reverse('bootstrap_setup_list'))
     else:
         form = BootstrapSetupForm_dump()
@@ -203,6 +208,80 @@ def bootstrap_setup_dump(request):
         'form': form,
     },
     context_instance=RequestContext(request))
+
+
+def bootstrap_setup_export(request, bootstrap_setup_pk):
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    bootstrap = get_object_or_404(BootstrapSetup, pk=bootstrap_setup_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_EXPORT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_BOOTSTRAP_EXPORT, request.user, bootstrap)
+       
+    return serve_file(
+        request,
+        bootstrap.as_file(),
+        save_as=u'"%s"' % bootstrap.get_filename(),
+        content_type='text/plain; charset=us-ascii'
+    )
+
+
+def bootstrap_setup_import_from_file(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_IMPORT])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = BootstrapFileImportForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                BootstrapSetup.objects.import_from_file(request.FILES['file'])
+                messages.success(request, _(u'Bootstrap setup imported successfully.'))
+                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+            except NotABootstrapSetup:
+                messages.error(request, _(u'File is not a bootstrap setup.'))
+            except Exception as exception:
+                messages.error(request, _(u'Error importing bootstrap setup from file; %s.') % exception)
+                return HttpResponseRedirect(previous)
+    else:
+        form = BootstrapFileImportForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'Import bootstrap setup from file'),
+        'form_icon': 'folder.png',
+        'form': form,
+        'previous': previous,
+    }, context_instance=RequestContext(request))
+
+
+def bootstrap_setup_import_from_url(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_IMPORT])
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        form = BootstrapURLImportForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                BootstrapSetup.objects.import_from_url(form.cleaned_data['url'])
+                messages.success(request, _(u'Bootstrap setup imported successfully.'))
+                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+            except NotABootstrapSetup:
+                messages.error(request, _(u'Data from URL is not a bootstrap setup.'))
+            except Exception as exception:
+                messages.error(request, _(u'Error importing bootstrap setup from URL; %s.') % exception)
+                return HttpResponseRedirect(previous)
+    else:
+        form = BootstrapURLImportForm()
+
+    return render_to_response('generic_form.html', {
+        'title': _(u'Import bootstrap setup from URL'),
+        'form_icon': 'folder.png',
+        'form': form,
+        'previous': previous,
+    }, context_instance=RequestContext(request))
 
 
 def erase_database_view(request):
@@ -231,6 +310,34 @@ def erase_database_view(request):
 
     context['title'] = _(u'Are you sure you wish to erase the entire database and document storage?')
     context['message'] = _(u'All documents, sources, metadata, metadata types, set, tags, indexes and logs will be lost irreversibly!')
+
+    return render_to_response('generic_confirm.html', context,
+        context_instance=RequestContext(request))
+
+
+def bootstrap_setup_repository_sync(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_REPOSITORY_SYNC])
+    
+    post_action_redirect = reverse('bootstrap_setup_list')
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+
+    if request.method == 'POST':
+        try:
+            BootstrapSetup.objects.repository_sync()
+            messages.success(request, _(u'Bootstrap repository successfully synchronized.'))
+        except Exception, e:
+            messages.error(request, _(u'Bootstrap repository synchronization error: %(error)s') % {'error': e})
+
+        return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+
+    context = {
+        'previous': previous,
+        'next': next,
+        'title': _(u'Are you sure you wish to synchronize with the bootstrap repository?'),
+        'form_icon': 'world.png',
+    }
 
     return render_to_response('generic_confirm.html', context,
         context_instance=RequestContext(request))

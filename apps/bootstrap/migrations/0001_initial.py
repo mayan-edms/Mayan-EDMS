@@ -14,6 +14,7 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=128)),
             ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('fixture', self.gf('django.db.models.fields.TextField')()),
+            ('type', self.gf('django.db.models.fields.CharField')(max_length=16)),
         ))
         db.send_create_signal('bootstrap', ['BootstrapSetup'])
 
@@ -25,11 +26,12 @@ class Migration(SchemaMigration):
 
     models = {
         'bootstrap.bootstrapsetup': {
-            'Meta': {'object_name': 'BootstrapSetup'},
+            'Meta': {'ordering': "['name']", 'object_name': 'BootstrapSetup'},
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'fixture': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'})
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'}),
+            'type': ('django.db.models.fields.CharField', [], {'max_length': '16'})
         }
     }
 

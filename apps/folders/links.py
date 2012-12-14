@@ -21,6 +21,7 @@ folder_delete = Link(text=_('delete'), view='folder_delete', args='object.pk', i
 folder_document_multiple_remove = Link(text=_('remove from folder'), view='folder_document_multiple_remove', args='object.pk', icon=icon_folder_delete, permissions=[PERMISSION_FOLDER_REMOVE_DOCUMENT])
 folder_view = Link(text=_(u'folder documents'), view='folder_view', args='object.pk', icon=icon_folder_view, permissions=[PERMISSION_FOLDER_VIEW])
 folder_add_document = Link(text=_('add to a folder'), view='folder_add_document', args='object.pk', icon=icon_folder_add_document, permissions=[PERMISSION_FOLDER_ADD_DOCUMENT])
+folder_add_multiple_documents = Link(text=_('add to folder'), view='folder_add_multiple_documents', icon=icon_folder_add_document)
 document_folder_list = Link(text=_(u'folders'), view='document_folder_list', args='object.pk', icon=icon_document_folder_list, permissions=[PERMISSION_DOCUMENT_VIEW], children_view_regex=[r'folder'])
 
 folder_acl_list = Link(text=_(u'ACLs'), view='folder_acl_list', args='object.pk', icon=icon_folder_acls, permissions=[ACLS_VIEW_ACL])

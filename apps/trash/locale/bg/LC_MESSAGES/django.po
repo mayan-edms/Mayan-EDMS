@@ -1,101 +1,101 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+#   <pkoldamov@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-08-08 03:00-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-10-15 08:48+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:22
 msgid "documents"
-msgstr ""
+msgstr "документи"
 
 #: links.py:8 models.py:56 views.py:24
 msgid "trash cans"
-msgstr ""
+msgstr "кошчета"
 
 #: links.py:9 views.py:35
 msgid "items"
-msgstr ""
+msgstr "неща"
 
 #: links.py:10
 msgid "restore"
-msgstr ""
+msgstr "възстановяване"
 
 #: links.py:11
 msgid "delete"
-msgstr ""
+msgstr "изтриване"
 
 #: models.py:22 views.py:27
 msgid "name"
-msgstr ""
+msgstr "име"
 
 #: models.py:55 models.py:74 views.py:91 views.py:121
 msgid "trash can"
-msgstr ""
+msgstr "кошче"
 
 #: models.py:75
 msgid "trashed at"
-msgstr ""
+msgstr "изхвърлено в кошчето на"
 
 #: models.py:98 views.py:92 views.py:122
 msgid "trash can item"
-msgstr ""
+msgstr "елемент за кошчето"
 
 #: models.py:99
 msgid "trash can items"
-msgstr ""
+msgstr "елементи за кошчето"
 
 #: views.py:31
 msgid "label"
-msgstr ""
+msgstr "етикет"
 
 #: views.py:56
 #, python-format
 msgid "items in trash can: %s"
-msgstr ""
+msgstr "съдържание в кошчето: %s"
 
 #: views.py:59
 msgid "date time"
-msgstr ""
+msgstr "дата час"
 
 #: views.py:81
 #, python-format
 msgid "Error restoring trash can item; %s"
-msgstr ""
+msgstr "Грешка при възстановяване от кошчето; %s"
 
 #: views.py:84
 #, python-format
 msgid "Trash can item \"%s\" restored successfully."
-msgstr ""
+msgstr "\"%s\" успешно възстановено от кошчето."
 
 #: views.py:94
 #, python-format
 msgid "Are you sure you wish to restore trash can item: %s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да възстановите от кошчето: %s?"
 
 #: views.py:111
 #, python-format
 msgid "Error deleting trash can item; %s"
-msgstr ""
+msgstr "Грешка при изтриване от кошчето; %s"
 
 #: views.py:114
 msgid "Trash can item deleted successfully."
-msgstr ""
+msgstr "Успешно изтрито от кошчето."
 
 #: views.py:124
 #, python-format
 msgid "Are you sure you wish to delete trash can item: %s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да изтриете от кошчето:  %s?"

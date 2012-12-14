@@ -18,7 +18,9 @@ Bug fixes
 * Sergey Glita (s.v.glita@gmail.com)
 * Meurig Freeman (https://github.com/meurig)
 * David Herring (https://github.com/abadger1406)
-
+* Webfaction (https://www.webfaction.com)
+* Kolmar Kafran
+* Nate Aune (nate@appsembler.com)
 
 Bug reports
 -----------
@@ -32,7 +34,8 @@ Bug reports
 * valterwill (https://github.com/valterwill)
 * David Herring (https://github.com/abadger1406)
 * Alexandru Kiss (usurel@gmail.com)
-
+* Nate Aune (nate@appsembler.com)
+* Fabio Duran Verdugo (fabiognome@gmail.com)
 
 Patches
 -------
@@ -41,7 +44,8 @@ Patches
 * Brian E (brian@realize.org)
 * Iliya Georgiev (ikgeorgiev@gmail.com)
 * Vítor Figueiró (vfigueiro@gmail.com)
-
+* Bertrand Bordage (https://github.com/BertrandBordage)
+* Iliya Georgiev (ikgeorgiev@gmail.com)
 
 Suggestions
 -----------
@@ -50,50 +54,65 @@ Suggestions
 * Barry Rowlingson (http://geospaced.blogspot.com)
 * Gour (https://github.com/gour)
 * Alexandru Kiss (usurel@gmail.com)
+* Stephen Knox
+* Nate Aune (nate@appsembler.com)
 
 
 Translations
 ------------
-* Portuguese (Brazil)
 
-  - Emerson Soares (http://emersonsoares.com)
-  - Renata Oliveira (https://twitter.com/#!/rnataoliveira)
+* Bulgarian
 
-* Russian
+  - Iliya Georgiev (ikgeorgiev@gmail.com)
+  - Pavlin Koldamov (pkoldamov@gmail.com)
+  - koldo (https://www.transifex.com/accounts/profile/koldo/)
 
-  - Sergey Glita (s.v.glita@gmail.com)
+* Dutch (Netherlands)
+
+  - Lucas Weel (ljj.weel@gmail.com)
+
+* French
+
+  - Pierre Lhoste (peter.cathbad.host@gmail.com)
+  - Patrick Hetu (patrick.hetu@gmail.com)
+
+* German (Germany)
+
+  - Tetja Rediske (tetja.rediske@googlemail.com)
+  - Tilmann Sittig (tilmann.sittig@web.de)
+  - Manticor (sl@suchreflex.de)
 
 * Italian
 
+  - Pierpaolo Baldan (pierpaolo.baldan@gmail.com)
   - SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
   - Carlos Zanatto (https://www.transifex.com/accounts/profile/zarloc_/)
   
 * Polish
 
-  - mic (https://www.transifex.net/accounts/profile/mic/)
-
-* German
-
-  - Tetja Rediske (https://www.transifex.com/accounts/profile/tetjarediske/)
-  - Tilmann Sittig (https://www.transifex.com/accounts/profile/tilmannsittig/)
+  - mic (diveaway12@gmail.com, winterfall24@gmail.com)
 
 * Portuguese
 
   - Vítor Figueiró (vfigueiro@gmail.com)
 
-* Dutch (Netherands) 
+* Portuguese (Brazil)
 
-  - Lucas Weel (https://www.transifex.com/accounts/profile/l.weel/)
-  
-* Bulgarian
+  - Emerson Soares (dev.emerson@gmail.com)
+  - Renata Oliveira (renatabels@gmail.com)
+  - Fábio (bnafta@gmail.com)
 
-  - Iliya Georgiev (ikgeorgiev@gmail.com)
-  - koldo (https://www.transifex.com/accounts/profile/koldo/)
+* Russian
 
-* French
+  - Sergey Glita (s.v.glita@gmail.com)
 
-  - Pierre Lhoste (peter.cathbad.host@gmail.com)
-  - Patrick Hetu (https://www.transifex.com/accounts/profile/PatrickHetu/)
+* Slovenian (Slovenia)
+
+  - kontrabant (kontrabant@gmail.com)
+
+* Spanish
+
+  - Roberto Rosario
 
 
 Remote access for debugging

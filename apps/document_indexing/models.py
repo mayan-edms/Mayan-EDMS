@@ -25,7 +25,7 @@ class Index(models.Model):
 
     @property
     def instance_root(self):
-        return self.template_root.indexinstancenode_set.get()
+        return self.template_root.node_instance
 
     def __unicode__(self):
         return self.title
@@ -47,6 +47,15 @@ class Index(models.Model):
     def natural_key(self):
         return (self.name,)
 
+    def get_document_types_names(self):
+        return u', '.join([unicode(document_type) for document_type in self.document_types.all()] or [u'All'])
+
+    def get_instance_node_count(self):
+        try:
+            return self.instance_root.get_descendant_count()
+        except IndexInstanceNode.DoesNotExist:
+            return 0
+
     class Meta:
         verbose_name = _(u'index')
         verbose_name_plural = _(u'indexes')
@@ -61,6 +70,10 @@ class IndexTemplateNode(MPTTModel):
 
     def __unicode__(self):
         return self.expression
+
+    @property
+    def node_instance(self):
+        return self.indexinstancenode_set.get()
 
     class Meta:
         verbose_name = _(u'index template node')

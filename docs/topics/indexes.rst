@@ -1,6 +1,9 @@
 =======
 Indexes
 =======
+To configure: |Setup tab| |Right arrow| |Indexes button| |Right arrow| |Tree template link|
+
+To use: |Index tab|
 
 Indexes are an automatic method to hierarchically organize documents in relation to their metadata and to each other.
 
@@ -57,3 +60,23 @@ their structure is however flat, and they have to be manually updated and
 curated. 
 
 .. _Samba: http://www.samba.org/
+
+.. |Setup tab| image:: /_static/setup_tab.png
+ :alt: Setup tab
+ :align: middle
+
+.. |Right arrow| image:: /_static/arrow_right.png
+ :alt: Right arrow
+ :align: middle
+
+.. |Indexes button| image:: /_static/indexes_button.png
+ :alt: Indexes button
+ :align: middle
+
+.. |Tree template link| image:: /_static/tree_template_link.png
+ :alt: Tree template link
+ :align: middle
+
+.. |Index tab| image:: /_static/index_tab.png
+ :alt: Index tab
+ :align: middle

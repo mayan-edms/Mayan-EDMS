@@ -4,12 +4,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from .icons import icon_source_list
 from .links import setup_sources
+from .cleanup import cleanup
 
 label = _(u'Sources')
 description = _(u'Provides source from where to add documents.')
 dependencies = ['app_registry', 'icons', 'navigation', 'documents']
 icon = icon_source_list
 setup_links = [setup_sources]
+cleanup_functions = [cleanup]
 
 '''
 Setting(

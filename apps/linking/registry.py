@@ -6,6 +6,8 @@ from smart_settings import LocalScope
 
 from .icons import icon_smart_link_setup
 from .links import smart_link_setup
+from .cleanup import cleanup
+
 
 label = _(u'Document linking')
 description = _(u'Links documents together using a rule based system.')
@@ -20,3 +22,13 @@ settings = [
         'scopes': [LocalScope()]
     }
 ]
+bootstrap_models = [
+    {
+        'name': 'smartlink',
+    },
+    {
+        'name': 'smartlinkcondition',
+    }
+]
+
+cleanup_functions = [cleanup]

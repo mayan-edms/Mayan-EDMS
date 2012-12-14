@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:06+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/mayan-edms/language/sl_SI/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: links.py:7 models.py:194
+msgid "installation details"
+msgstr ""
+
+#: models.py:68 models.py:75
+msgid "LSB OS"
+msgstr ""
+
+#: models.py:69
+msgid "Distributor ID"
+msgstr ""
+
+#: models.py:70
+msgid "Description"
+msgstr ""
+
+#: models.py:71
+msgid "Release"
+msgstr ""
+
+#: models.py:72
+msgid "Codename"
+msgstr ""
+
+#: models.py:73
+msgid "System info"
+msgstr ""
+
+#: models.py:77
+msgid "OS architecture"
+msgstr ""
+
+#: models.py:78
+msgid "Python version"
+msgstr ""
+
+#: models.py:79
+msgid "Hostname"
+msgstr ""
+
+#: models.py:80
+msgid "Platform"
+msgstr ""
+
+#: models.py:81
+msgid "Machine"
+msgstr ""
+
+#: models.py:82
+msgid "Processor"
+msgstr ""
+
+#: models.py:83
+msgid "Number of CPUs"
+msgstr ""
+
+#: models.py:84
+msgid "Total physical memory"
+msgstr ""
+
+#: models.py:85
+msgid "Disk partitions"
+msgstr ""
+
+#: models.py:89 models.py:91 models.py:93
+msgid "tesseract version"
+msgstr ""
+
+#: models.py:91 models.py:99 models.py:107
+msgid "not found"
+msgstr ""
+
+#: models.py:93 models.py:101 models.py:109
+msgid "error getting version"
+msgstr ""
+
+#: models.py:97 models.py:99 models.py:101
+msgid "unpaper version"
+msgstr ""
+
+#: models.py:105 models.py:107 models.py:109
+msgid "pdftotext version"
+msgstr ""
+
+#: models.py:111
+msgid "Mayan EDMS version"
+msgstr ""
+
+#: models.py:112
+msgid "Installed via fabfile"
+msgstr ""
+
+#: models.py:117 models.py:121
+msgid "Running from a Git repository"
+msgstr ""
+
+#: models.py:122
+msgid "Repository remotes"
+msgstr ""
+
+#: models.py:123
+msgid "Repository remotes URLs"
+msgstr ""
+
+#: models.py:124
+msgid "Branch"
+msgstr ""
+
+#: models.py:125
+msgid "HEAD commit hex SHA"
+msgstr ""
+
+#: models.py:126
+msgid "HEAD commit author"
+msgstr ""
+
+#: models.py:127
+msgid "HEAD commit authored date"
+msgstr ""
+
+#: models.py:128
+msgid "HEAD commit committer"
+msgstr ""
+
+#: models.py:129
+msgid "HEAD commit committed date"
+msgstr ""
+
+#: models.py:130
+msgid "HEAD commit message"
+msgstr ""
+
+#: permissions.py:7
+msgid "Installation"
+msgstr ""
+
+#: permissions.py:8
+msgid "View installation environment details"
+msgstr ""
+
+#: views.py:24
+msgid "Installation environment details"
+msgstr ""

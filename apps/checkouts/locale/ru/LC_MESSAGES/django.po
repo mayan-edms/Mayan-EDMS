@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:45-0400\n"
-"PO-Revision-Date: 2012-07-10 15:47+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-12-14 04:18-0400\n"
+"PO-Revision-Date: 2012-10-10 07:30+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/ru/)\n"
 "Language: ru\n"
@@ -17,55 +18,60 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: __init__.py:37
+#, fuzzy
+msgid "Document checkouts"
+msgstr "Документ забронирован"
 
 #: __init__.py:38
 msgid "Check expired check out documents and checks them in."
-msgstr ""
+msgstr "Проверка истечения бронирования документов"
 
 #: events.py:5 links.py:18
 msgid "checkouts"
-msgstr ""
+msgstr "бронирование"
 
 #: events.py:7
 msgid "Document checked out"
-msgstr ""
+msgstr "Документ забронирован"
 
 #: events.py:8
 #, python-format
 msgid "Document \"%(document)s\" checked out by %(fullname)s."
-msgstr ""
+msgstr "Документ \"%(document)s\" забронировал %(fullname)s."
 
 #: events.py:12
 msgid "Document checked in"
-msgstr ""
+msgstr "Документ проверен"
 
 #: events.py:13
 #, python-format
 msgid "Document \"%(document)s\" checked in by %(fullname)s."
-msgstr ""
+msgstr "Документ \"%(document)s\" проверил %(fullname)s."
 
 #: events.py:17
 msgid "Document automatically checked in"
-msgstr ""
+msgstr "Документ проверен автоматически"
 
 #: events.py:18
 #, python-format
 msgid "Document \"%(document)s\" automatically checked in."
-msgstr ""
+msgstr "Документ \"%(document)s\" проверен автоматически"
 
 #: events.py:21
 msgid "Document forcefully checked in"
-msgstr ""
+msgstr "Документ проверен по требованию"
 
 #: events.py:22
 #, python-format
 msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr ""
+msgstr "Документ \"%(document)s\" проверен %(fullname)s."
 
 #: links.py:19
 msgid "check out document"
-msgstr ""
+msgstr "бронирование документа"
 
 #: links.py:20
 msgid "check in document"
@@ -85,7 +91,7 @@ msgstr ""
 
 #: models.py:23 views.py:136
 msgid "document"
-msgstr ""
+msgstr "документ"
 
 #: models.py:24
 msgid "check out date and time"

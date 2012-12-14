@@ -10,7 +10,8 @@ from navigation.api import (bind_links, register_multi_item_links,
 
 from .links import (folder_list, folder_create, folder_edit,
     folder_delete, folder_document_multiple_remove, folder_view,
-    folder_add_document, document_folder_list, folder_acl_list)
+    folder_add_document, document_folder_list, folder_acl_list,
+    folder_add_multiple_documents)
 from .models import Folder
 from .permissions import (PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
@@ -22,6 +23,7 @@ bind_links([Folder, 'folder_list', 'folder_create'], [folder_list, folder_create
 bind_links([Document], [document_folder_list], menu_name='form_header')
 bind_links(['document_folder_list', 'folder_add_document'], [folder_add_document], menu_name="sidebar")
 register_sidebar_template(['folder_list'], 'folders_help.html')
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [folder_add_multiple_documents])
 
 class_permissions(Folder, [
     PERMISSION_FOLDER_EDIT,

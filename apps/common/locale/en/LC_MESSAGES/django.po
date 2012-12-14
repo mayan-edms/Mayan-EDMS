@@ -17,25 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:29 links.py:17
+#: __init__.py:27
+msgid "change password"
+msgstr ""
+
+#: __init__.py:28
+msgid "user details"
+msgstr ""
+
+#: __init__.py:29
+msgid "edit details"
+msgstr ""
+
+#: __init__.py:33 __init__.py:38
 msgid "about"
 msgstr ""
 
-#: forms.py:101
+#: __init__.py:34
+msgid "license"
+msgstr ""
+
+#: forms.py:97
 msgid "Selection"
 msgstr ""
 
-#: forms.py:133
+#: forms.py:129
 msgid "Email"
 msgstr ""
 
-#: forms.py:144
+#: forms.py:140
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
 msgstr ""
 
-#: forms.py:146
+#: forms.py:142
 msgid "This account is inactive."
 msgstr ""
 
@@ -131,7 +147,7 @@ msgstr ""
 msgid "auto admin properties"
 msgstr ""
 
-#: utils.py:299
+#: utils.py:295
 msgid "function found"
 msgstr ""
 
@@ -198,24 +214,20 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: conf/settings.py:10
-msgid "Common"
-msgstr ""
-
-#: conf/settings.py:17
+#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
 "mkdtemp()."
 msgstr ""
 
-#: conf/settings.py:61
+#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
 msgstr ""
 
-#: conf/settings.py:69
+#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
 msgstr ""
 

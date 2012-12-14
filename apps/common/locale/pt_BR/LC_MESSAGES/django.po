@@ -1,72 +1,61 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:44-0400\n"
-"PO-Revision-Date: 2012-07-27 04:09+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: __init__.py:29 links.py:17
-msgid "about"
-msgstr "sobre"
-
-#: forms.py:101
-msgid "Selection"
-msgstr "Seleção"
-
-#: forms.py:133
-msgid "Email"
-msgstr "E-mail"
-
-#: forms.py:144
-msgid ""
-"Please enter a correct email and password. Note that the password fields is "
-"case-sensitive."
-msgstr ""
-"Por favor insira o e-mail e senha corretos. Note que os campos de senha são "
-"case-sensitive."
-
-#: forms.py:146
-msgid "This account is inactive."
-msgstr "Esta conta está inativa."
-
-#: links.py:14
+#: __init__.py:27
 msgid "change password"
 msgstr "alterar a senha"
 
-#: links.py:15
+#: __init__.py:28
 msgid "user details"
 msgstr "detalhes do usuário"
 
-#: links.py:16
+#: __init__.py:29
 msgid "edit details"
 msgstr "editar detalhes"
 
-#: links.py:18
+#: __init__.py:33 __init__.py:38
+msgid "about"
+msgstr "sobre"
+
+#: __init__.py:34
 msgid "license"
 msgstr "licença"
 
-#: links.py:19
-msgid "sentry"
-msgstr ""
+#: forms.py:97
+msgid "Selection"
+msgstr "Seleção"
 
-#: links.py:20
-msgid "admin site"
-msgstr ""
+#: forms.py:129
+msgid "Email"
+msgstr "E-mail"
+
+#: forms.py:140
+msgid ""
+"Please enter a correct email and password. Note that the password fields is "
+"case-sensitive."
+msgstr "Por favor insira o e-mail e senha corretos. Note que os campos de senha são case-sensitive."
+
+#: forms.py:142
+msgid "This account is inactive."
+msgstr "Esta conta está inativa."
 
 #: literals.py:24
 msgid "A5"
@@ -136,7 +125,7 @@ msgstr ""
 msgid "auto admin properties"
 msgstr ""
 
-#: utils.py:299
+#: utils.py:295
 msgid "function found"
 msgstr "função encontrada"
 
@@ -203,26 +192,20 @@ msgstr "Sua senha foi alterada com êxito."
 msgid "None"
 msgstr "Nenhum"
 
-#: conf/settings.py:10
-msgid "Common"
-msgstr ""
-
-#: conf/settings.py:17
+#: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
 msgstr ""
 
-#: conf/settings.py:61
+#: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Controla o mecanismo usado para usuário autenticado. As opções são: e-mail, "
-"nome de usuário,"
+msgstr "Controla o mecanismo usado para usuário autenticado. As opções são: e-mail, nome de usuário,"
 
-#: conf/settings.py:69
+#: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
 msgstr ""
 
@@ -313,18 +296,18 @@ msgstr "exigido"
 #: templates/generic_form_subtemplate.html:80
 #: templates/generic_form_subtemplate.html:82
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:94
-#: templates/generic_list_subtemplate.html:55
-#: templates/generic_list_subtemplate.html:189
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Save"
 msgstr "Salvar"
 
 #: templates/generic_form_subtemplate.html:80
 #: templates/generic_form_subtemplate.html:82
 #: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:94
-#: templates/generic_list_subtemplate.html:55
-#: templates/generic_list_subtemplate.html:189
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
 msgid "Submit"
 msgstr "Submeter"
 
@@ -338,30 +321,27 @@ msgid "List of %(stripped_title)s"
 msgstr "Lista de %(stripped_title)s "
 
 #: templates/generic_list_horizontal_subtemplate.html:23
-#: templates/generic_list_subtemplate.html:25
+#: templates/generic_list_subtemplate.html:24
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s "
-"of %(total_pages)s)"
+msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s of %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
-#: templates/generic_list_subtemplate.html:27
+#: templates/generic_list_subtemplate.html:26
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr "Lista de %(title)s  (%(total)s)"
 
-#: templates/generic_list_horizontal_subtemplate.html:69
-#: templates/generic_list_subtemplate.html:161
+#: templates/generic_list_subtemplate.html:72
+msgid "Identifier"
+msgstr "Identificador"
+
+#: templates/generic_list_subtemplate.html:152
 #, python-format
 msgid "There are no %(stripped_title)s"
 msgstr "Não há %(stripped_title)s "
-
-#: templates/generic_list_subtemplate.html:75
-msgid "Identifier"
-msgstr "Identificador"
 
 #: templates/login.html:5
 msgid "Login"

@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2012-07-27 00:45-0400\n"
+=======
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+>>>>>>> hotfix/v0.12.3
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,7 +112,11 @@ msgstr ""
 msgid "Actions for %(name)s: %(object_reference)s"
 msgstr ""
 
+<<<<<<< HEAD
 #: templates/base.html:304
+=======
+#: templates/base.html:313 templates/base.html.py:345
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "Actions for: %(object_reference)s"
 msgstr ""
@@ -117,7 +125,24 @@ msgstr ""
 msgid "Available actions"
 msgstr ""
 
+<<<<<<< HEAD
 #: templates/base.html:323
+=======
+#: templates/base.html:328 templates/base.html.py:360
+msgid "Related actions"
+msgstr ""
+
+#: templates/base.html:343
+#, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr ""
+
+#: templates/base.html:348
+msgid "Actions"
+msgstr ""
+
+#: templates/base.html:373
+>>>>>>> hotfix/v0.12.3
 msgid "Other available actions"
 msgstr ""
 
@@ -132,6 +157,6 @@ msgid ""
 "OCR capabilities"
 msgstr ""
 
-#: templates/project_description.html:18
+#: templates/project_description.html:21
 msgid "Released under the GPL V3 License"
 msgstr ""

@@ -107,6 +107,7 @@ MIDDLEWARE_CLASSES = (
     #'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -192,9 +193,11 @@ INSTALLED_APPS = (
     'bootstrap',
     'statistics',
     'trash',
+    'registration',
 
     # Has to be last so the other apps can register it's signals
     #'signaler',
+    'signaler',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -251,6 +254,10 @@ LOGIN_EXEMPT_URLS = (
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 #---------- Search ------------------
 SEARCH_SHOW_OBJECT_TYPE = False
+
+SERIALIZATION_MODULES = {
+    'better_yaml': 'common.serializers.better_yaml',
+}
 
 try:
     from settings_local import *

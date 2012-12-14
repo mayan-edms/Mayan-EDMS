@@ -6,6 +6,7 @@
 {% load main_settings_tags %}
 {% load variable_tags %}
 {% load default_icons %}
+{% load registration_tags %}
 
 {% block web_theme_head %}
     {% if new_window_url %}
@@ -24,7 +25,7 @@
 
 {% block html_title %}{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}{% endblock %}
 
-{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %} {% endif %}{% endblock %}
+{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %}{% endif %} - {% registered_name %}{% endblock %}
 
 {% block web_theme_stylesheets %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/960-fluid.css" type="text/css" media="screen" />

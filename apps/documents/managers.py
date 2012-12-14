@@ -5,6 +5,8 @@ from datetime import datetime
 
 from django.db import models
 
+from .conf.settings import RECENT_COUNT
+
 
 class DocumentPageTransformationManager(models.Manager):
     def get_for_document_page(self, document_page):
@@ -32,19 +34,21 @@ class RecentDocumentManager(models.Manager):
         from .settings import RECENT_COUNT
 
         if user.is_authenticated():
-            self.model.objects.filter(user=user, document=document).delete()
-            new_recent = self.model(user=user, document=document, datetime_accessed=datetime.now())
-            new_recent.save()
-            to_delete = self.model.objects.filter(user=user)[RECENT_COUNT:]
-            for recent_to_delete in to_delete:
+            new_recent, created = self.model.objects.get_or_create(user=user, document=document)
+            if not created:
+                # document already in the recent list, just update the accessed date and time
+                new_recent.datetime_accessed = datetime.datetime.now()
+                new_recent.save()
+            for recent_to_delete in self.model.objects.filter(user=user)[RECENT_COUNT:]:
                 recent_to_delete.delete()
 
     def get_for_user(self, user):
-        document_model = models.get_model('documents', 'Document')
+        #document_model = models.get_model('documents', 'Document')
+        document_model = models.get_model('documents', 'document')
         if user.is_authenticated():
-            return document_model.objects.filter(recentdocument__user=user)
+            return document_model.objects.filter(recentdocument__user=user).order_by('-recentdocument__datetime_accessed')
         else:
-            return []
+            return document_model.objects.none()
 
 
 class DocumentTypeManager(models.Manager):

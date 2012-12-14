@@ -7,8 +7,8 @@ from navigation.api import register_top_menu
 from .links import link_home
 
 __author__ = 'Roberto Rosario'
-__copyright__ = 'Copyright 2011 Roberto Rosario'
-__credits__ = ['Roberto Rosario', ]
+__copyright__ = 'Copyright 2012 Roberto Rosario'
+__credits__ = ['Roberto Rosario',]
 __license__ = 'GPL'
 __maintainer__ = 'Roberto Rosario'
 __email__ = 'roberto.rosario.gonzalez@gmail.com'

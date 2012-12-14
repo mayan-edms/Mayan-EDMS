@@ -28,7 +28,6 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'text/rtf',
 ]
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -129,4 +128,3 @@ class OfficeConverterBackendDirect(object):
             raise OfficeBackendError(msg)
         except Exception, msg:
             logger.error('Unhandled exception', exc_info=msg)
-

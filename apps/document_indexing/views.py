@@ -310,7 +310,8 @@ def index_list(request):
         'title': _(u'indexes'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _(u'nodes'), 'attribute': encapsulate(lambda x: x.instance_root.get_descendant_count())},
+            {'name': _(u'nodes'), 'attribute': 'get_instance_node_count'},
+            {'name': _(u'document types'), 'attribute': 'get_document_types_names'},
         ],
     }
 
@@ -419,6 +420,7 @@ def document_index_list(request, document_id):
 
     queryset = document.indexinstancenode_set.all()
     try:
+        # TODO: should be AND not OR
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     except PermissionDenied:
         queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset)

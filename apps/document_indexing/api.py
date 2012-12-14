@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.template.defaultfilters import slugify

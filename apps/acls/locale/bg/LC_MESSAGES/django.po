@@ -3,84 +3,86 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Iliya Georgiev <ikgeorgiev@gmail.com>, 2012.
+#   <pkoldamov@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:45-0400\n"
-"PO-Revision-Date: 2012-01-02 09:45+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-12-14 04:18-0400\n"
+"PO-Revision-Date: 2012-10-15 10:27+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/bg/)\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:21 links.py:14 links.py:20
+#: forms.py:21 links.py:18 links.py:24
 msgid "New holder"
-msgstr ""
+msgstr "Нов притежател"
 
 #: forms.py:38
 msgid "Users"
-msgstr ""
+msgstr "Потребители"
 
 #: forms.py:41
 msgid "Groups"
-msgstr ""
+msgstr "Групи"
 
 #: forms.py:44
 msgid "Roles"
-msgstr ""
+msgstr "Роли"
 
 #: forms.py:47
 msgid "Special"
 msgstr ""
 
-#: links.py:10
+#: links.py:14
 msgid "ACLs"
-msgstr ""
+msgstr "Контролни списъци за достъп"
 
-#: links.py:11 links.py:19
+#: links.py:15 links.py:23
 msgid "details"
-msgstr ""
+msgstr "детайли"
 
-#: links.py:12 links.py:21
+#: links.py:16 links.py:25
 msgid "grant"
-msgstr ""
+msgstr "предоставяне"
 
-#: links.py:13 links.py:22
+#: links.py:17 links.py:26
 msgid "revoke"
-msgstr ""
+msgstr "отменя"
 
-#: links.py:16
+#: links.py:20
 msgid "Default ACLs"
-msgstr ""
+msgstr "Контролни списъци за достъп по подразбиране"
 
-#: links.py:17
+#: links.py:21
 msgid "List of classes"
-msgstr ""
+msgstr "Списък на класовете"
 
-#: links.py:18
+#: links.py:22
 msgid "ACLs for class"
-msgstr ""
+msgstr "Контролни списъци за клас"
 
 #: managers.py:119 managers.py:131
 msgid "Insufficient access."
-msgstr ""
+msgstr "Недостатъчен достъп."
 
 #: models.py:25 models.py:67
 msgid "permission"
-msgstr ""
+msgstr "разрешение"
 
 #: models.py:51
 msgid "access entry"
-msgstr ""
+msgstr "достъп за влизане"
 
 #: models.py:52
 msgid "access entries"
-msgstr ""
+msgstr "достъп вписвания"
 
 #: models.py:88
 msgid "default access entry"
@@ -100,7 +102,7 @@ msgstr ""
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
-msgstr ""
+msgstr "Контролни списъци за достъп"
 
 #: permissions.py:10
 msgid "Edit ACLs"
@@ -118,6 +120,15 @@ msgstr ""
 msgid "View class default ACLs"
 msgstr ""
 
+#: registry.py:10
+#, fuzzy
+msgid "ACL"
+msgstr "Контролни списъци за достъп"
+
+#: registry.py:11
+msgid "Handles object level access control."
+msgstr ""
+
 #: views.py:47
 #, python-format
 msgid "access control lists for: %s"
@@ -129,7 +140,7 @@ msgstr ""
 
 #: views.py:50 views.py:410
 msgid "permissions"
-msgstr ""
+msgstr "разрешения"
 
 #: views.py:97
 #, python-format
@@ -155,22 +166,22 @@ msgstr ""
 #: views.py:185 views.py:278 views.py:526 views.py:605
 #, python-format
 msgid " for %s"
-msgstr ""
+msgstr " за %s"
 
 #: views.py:186 views.py:527
 #, python-format
 msgid " to %s"
-msgstr ""
+msgstr " към %s"
 
 #: views.py:189 views.py:530
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да дадете разрешение за %(title_suffix)s?"
 
 #: views.py:191 views.py:532
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да дадете разрешения за %(title_suffix)s?"
 
 #: views.py:198 views.py:539
 #, python-format
@@ -187,17 +198,19 @@ msgstr ""
 #: views.py:279 views.py:606
 #, python-format
 msgid " from %s"
-msgstr ""
+msgstr " от %s"
 
 #: views.py:282 views.py:609
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
 msgstr ""
+"Сигурни ли сте, че искате да отнемете разрешението за %(title_suffix)s?"
 
 #: views.py:284 views.py:611
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
 msgstr ""
+"Сигурни ли сте, че искате да отнемете разрешенията за %(title_suffix)s?"
 
 #: views.py:291 views.py:618
 #, python-format
@@ -220,16 +233,16 @@ msgstr ""
 
 #: views.py:386
 msgid "classes"
-msgstr ""
+msgstr "класове"
 
 #: views.py:388
 msgid "class"
-msgstr ""
+msgstr "клас"
 
 #: views.py:407
 #, python-format
 msgid "default access control lists for class: %s"
-msgstr ""
+msgstr "правила за достъп по подразбиране за клас: %s"
 
 #: views.py:435
 #, python-format

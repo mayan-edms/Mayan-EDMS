@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
-import logging
 import atexit
+import logging
 import sys
 
 from navigation.api import bind_links
@@ -9,12 +9,13 @@ from navigation.api import bind_links
 from .links import scheduler_tool_link, scheduler_list, job_list
 from .literals import SHUTDOWN_COMMANDS
 from .api import LocalScheduler
+from .runtime import scheduler, lockdown
 
 logger = logging.getLogger(__name__)
 
 
 def schedule_shutdown_on_exit():
-    logger.debug('Schedulers shut down on exit')
+    logger.debug('Scheduler shut down on exit')
     LocalScheduler.shutdown_all()
     LocalScheduler.clear_all()
 

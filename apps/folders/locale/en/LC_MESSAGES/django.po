@@ -53,7 +53,15 @@ msgstr ""
 msgid "add to a folder"
 msgstr ""
 
-#: links.py:23
+#: __init__.py:25
+msgid "add to folder"
+msgstr ""
+
+#: __init__.py:26 __init__.py:36 models.py:43 views.py:34
+msgid "folders"
+msgstr ""
+
+#: __init__.py:28
 msgid "ACLs"
 msgstr ""
 
@@ -73,11 +81,11 @@ msgstr ""
 msgid "folder"
 msgstr ""
 
-#: models.py:48
+#: models.py:48 views.py:209
 msgid "document"
 msgstr ""
 
-#: models.py:54 views.py:260
+#: models.py:54 views.py:279
 msgid "folder document"
 msgstr ""
 
@@ -164,48 +172,57 @@ msgstr ""
 msgid "documents in folder: %s"
 msgstr ""
 
-#: views.py:187
-#, python-format
-msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr ""
-
-#: views.py:190
-#, python-format
-msgid "Document: %(document)s is already in folder: %(folder)s."
+#: views.py:180
+msgid "Must provide at least one document."
 msgstr ""
 
 #: views.py:198
 #, python-format
-msgid "add document \"%s\" to a folder"
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgstr ""
+
+#: views.py:201
+#, python-format
+msgid "Document: %(document)s is already in folder: %(folder)s."
+msgstr ""
+
+#: views.py:217
+#, python-format
+msgid "Add document: %s to folder."
 msgstr ""
 
 #: views.py:218
 #, python-format
+msgid "Add documents: %s to folder."
+msgstr ""
+
+#: views.py:237
+#, python-format
 msgid "folders containing: %s"
 msgstr ""
 
-#: views.py:234
+#: views.py:253
 msgid "Must provide at least one folder document."
 msgstr ""
 
-#: views.py:252
+#: views.py:271
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr ""
 
-#: views.py:254
+#: views.py:273
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:268
+#: views.py:287
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
 msgstr ""
 
-#: views.py:271
+#: views.py:290
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

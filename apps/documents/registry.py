@@ -16,6 +16,7 @@ from smart_settings import LocalScope
 from .icons import icon_documents
 from .links import document_type_setup
 from .statistics import get_statistics
+from .cleanup import cleanup
 
 def default_checksum(x):
     """hashlib.sha256(x).hexdigest()"""
@@ -38,10 +39,10 @@ bootstrap_models = [
     },
     {
         'name': 'documenttypefilename',
+        'dependencies': ['documents.documenttype']
     }
 ]
-#AppBackup(app, [ModelBackup(), FileBackup(document_settings.STORAGE_BACKEND)])
-
+cleanup_functions = [cleanup]
 settings = [
     {
         'name': 'IM_CONVERT_PATH',

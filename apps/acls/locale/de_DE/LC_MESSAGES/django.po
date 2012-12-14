@@ -3,23 +3,24 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+#   <sl@suchreflex.de>, 2012.
 #   <tilmann.sittig@web.de>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:45-0400\n"
-"PO-Revision-Date: 2012-06-10 13:06+0000\n"
-"Last-Translator: tilmannsittig <tilmann.sittig@web.de>\n"
+"POT-Creation-Date: 2012-12-14 04:18-0400\n"
+"PO-Revision-Date: 2012-09-20 07:40+0000\n"
+"Last-Translator: Manticor <sl@suchreflex.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
 "edms/language/de_DE/)\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:21 links.py:14 links.py:20
+#: forms.py:21 links.py:18 links.py:24
 msgid "New holder"
 msgstr "Neuer Berechtigter"
 
@@ -39,31 +40,31 @@ msgstr "Rollen"
 msgid "Special"
 msgstr ""
 
-#: links.py:10
+#: links.py:14
 msgid "ACLs"
 msgstr "ACLs"
 
-#: links.py:11 links.py:19
+#: links.py:15 links.py:23
 msgid "details"
 msgstr "Details"
 
-#: links.py:12 links.py:21
+#: links.py:16 links.py:25
 msgid "grant"
 msgstr "Erlauben"
 
-#: links.py:13 links.py:22
+#: links.py:17 links.py:26
 msgid "revoke"
 msgstr "Entziehen"
 
-#: links.py:16
+#: links.py:20
 msgid "Default ACLs"
 msgstr "Standard-ACLs"
 
-#: links.py:17
+#: links.py:21
 msgid "List of classes"
 msgstr "Liste der Klassen"
 
-#: links.py:18
+#: links.py:22
 msgid "ACLs for class"
 msgstr "ACLs für Klasse"
 
@@ -101,7 +102,7 @@ msgstr ""
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
-msgstr "Zugriffs-Berechtigungs-Listen (ACLs)"
+msgstr "Zugriffsberechtigungslisten (ACLs)"
 
 #: permissions.py:10
 msgid "Edit ACLs"
@@ -119,10 +120,19 @@ msgstr "Standard-ACLs für Klasse bearbeiten"
 msgid "View class default ACLs"
 msgstr "Standard-ACLs für Klasse anzeigen"
 
+#: registry.py:10
+#, fuzzy
+msgid "ACL"
+msgstr "ACLs"
+
+#: registry.py:11
+msgid "Handles object level access control."
+msgstr ""
+
 #: views.py:47
 #, python-format
 msgid "access control lists for: %s"
-msgstr "Standard-ACLs für: %s"
+msgstr "Zugriffberechtigungsliste für: %s"
 
 #: views.py:49 views.py:409
 msgid "holder"
@@ -167,13 +177,15 @@ msgstr "zu %s"
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
 msgstr ""
-"Sind Sie sicher, dass Sie Berechtigung %(title_suffix)s  erteilen möchten?"
+"Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  erteilen "
+"möchten?"
 
 #: views.py:191 views.py:532
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
 msgstr ""
-"Sind Sie sicher, dass Sie Berechtigungen %(title_suffix)s  erteilen möchten?"
+"Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  erteilen "
+"möchten?"
 
 #: views.py:198 views.py:539
 #, python-format
@@ -196,13 +208,15 @@ msgstr "von %s"
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
 msgstr ""
-"Sind Sie sicher, dass Sie Berechtigung %(title_suffix)s  enziehen möchten?"
+"Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  enziehen "
+"möchten?"
 
 #: views.py:284 views.py:611
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
 msgstr ""
-"Sind Sie sicher, dass Sie Berechtigungen %(title_suffix)s  enziehen möchten?"
+"Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  enziehen "
+"möchten?"
 
 #: views.py:291 views.py:618
 #, python-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:45-0400\n"
+"POT-Creation-Date: 2012-12-14 04:18-0400\n"
 "PO-Revision-Date: 2012-01-02 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:21 links.py:14 links.py:20
+#: forms.py:21 links.py:18 links.py:24
 msgid "New holder"
 msgstr ""
 
@@ -39,31 +39,31 @@ msgstr ""
 msgid "Special"
 msgstr ""
 
-#: links.py:10
+#: links.py:14
 msgid "ACLs"
 msgstr ""
 
-#: links.py:11 links.py:19
+#: links.py:15 links.py:23
 msgid "details"
 msgstr ""
 
-#: links.py:12 links.py:21
+#: links.py:16 links.py:25
 msgid "grant"
 msgstr ""
 
-#: links.py:13 links.py:22
+#: links.py:17 links.py:26
 msgid "revoke"
 msgstr ""
 
-#: links.py:16
+#: links.py:20
 msgid "Default ACLs"
 msgstr ""
 
-#: links.py:17
+#: links.py:21
 msgid "List of classes"
 msgstr ""
 
-#: links.py:18
+#: links.py:22
 msgid "ACLs for class"
 msgstr ""
 
@@ -117,6 +117,14 @@ msgstr ""
 
 #: permissions.py:14
 msgid "View class default ACLs"
+msgstr ""
+
+#: registry.py:10
+msgid "ACL"
+msgstr ""
+
+#: registry.py:11
+msgid "Handles object level access control."
 msgstr ""
 
 #: views.py:47

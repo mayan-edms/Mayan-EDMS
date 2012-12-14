@@ -38,10 +38,3 @@ def check_first_run():
 register_tool(installation_details)
 
 check_first_run()
-
-#try:
-#    app = register_app('installation', _(u'Installation'))
-#except UnableToRegister:
-#    pass
-#else:
-#    AppBackup(app, [ModelBackup()])

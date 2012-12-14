@@ -1,0 +1,162 @@
+================================
+Mayan EDMS v0.13 release notes
+================================
+
+*December 2012*
+
+Welcome to Mayan EDMS v0.13!
+
+Overview
+========
+
+Initially this version was meant as a the third maintenance release of
+the 0.12 series, but with the amount of changes and updates that were included
+it was obvious this was not just a bug fix version anymore hence the version
+jump to 0.13 instead of 0.12.3
+
+
+What's new in Mayan EDMS v0.13
+================================
+
+Django 1.3.5
+~~~~~~~~~~~~
+This release updates the required version of Django to 1.3.5 to take advantage
+of the security fixes added to that version of the framework.
+
+Bulk document tagging and untagging
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+As requested by issue `issue #31`_ this feature has been implemented and enabled in this version.
+Attaching or removing tags from a large number of documents is now much easier.
+
+Registration
+~~~~~~~~~~~~
+Based on requests made by the community for greater commercial support and services for
+**Mayan EDMS**, a new feature has been added that allows users to register their
+copies of **Mayan EDMS** and better help users with commercial support packages.
+Registration for non commercial users is voluntary and optional, and in no way
+affects the functionality of **Mayan EDMS**.  However even for non commercial users
+registration offers the advantage of automatically branding the user's copy
+of **Mayan EDMS** with their name or the company name in the title area.
+
+Per document type indexing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Index can now be restricted to update only on specific document types, this
+greatly increases the usefulness of indexes, and prevents unwanted index
+updates. 
+
+Bootstrap
+~~~~~~~~~
+Setting up **Mayan EDMS** after installation has been indetified by users as the
+main difficulty when knowledge about **Mayan EDMS** is relatively low.  To
+address this situation a new feature that provides preconfigured setups has been
+added.  These preconfigured setups are published in the **Mayan EDMS** website and
+upon synchonization are available to users, this gives users access and integrators
+access to new setups without having to wait for new versions of **Mayan EDMS**.
+Aside from including preconfigured setups, the new bootstrap app
+has the ability of dumping an user's current setup into a serialized text file
+which can be tweaked by hand and sent via email to other users.  The possibilities
+enabled by this range from company wide defaults setups to consultants providing
+their clients with customized setups without having to access their clients'
+**Mayan EDMS** instances.  ``JSON``, ``YAML`` and a custom ``YAML`` format
+(http://djangosnippets.org/snippets/2461/) are supported by this new app.
+
+Add documents to folders in bulk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+As requested, the ability to add more than one document at a time to a selected
+folder has been added. 
+
+Translation updates
+~~~~~~~~~~~~~~~~~~~
+The translation for all the current languages were synchronized to the
+latest transifex project sources.
+
+Model updates
+~~~~~~~~~~~~~
+Several small fixes to the behavior of some model were added, namely that
+the names of some models should be unique.  The document type name as well
+as the metadata set name were two models that were updated to behave this way.
+
+Navigation updates
+~~~~~~~~~~~~~~~~~~
+There were some additions and changes to the navigation to make it more intuitive
+or to add an alternate way to access the same information better.  The bulk
+attachment of tags was one of these.  Previously users were added or removed from groups,
+now users can be assigned to groups without leaving the user view.  The name of an
+existing metadata set can now be edited and what was previously called metadata set edit
+is now more aptly named metadata members which adds or removes metadata types into a
+single organizational unit.  An error that caused a duplicate menu link in the
+document type filename view was also fixed.
+
+Support for UNOCONV dropped
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Support for converting office documents by calling LibreOffice via UNOCONV
+has been disabled for a while ever since LibreOffice start including
+document conversion support from the command line.  This version completly
+removes any traces of code and configuration options related to UNOCONV.
+
+Optimizations
+~~~~~~~~~~~~~
+Inspired by the idea of getting **Mayan EDMS** running effectively on low power hardware such as
+the Raspberry Pi, several rounds or profiling and optimization were done.
+
+Some caching optimization were introduced to the permission model, resulting in
+a speed increase of 33% in rendering time on views with heavy permission checking
+and a 18% query reduction on cache hits.
+
+Upgrading from a previous version
+=================================
+If you installed **Mayan EDMS** by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the existing installation.
+    
+Next add the new requirements::
+
+    $ pip install -r requirements/production.txt
+
+Migrate existing database schema with::
+
+    $ ./manage.py migrate document_indexing
+    $ ./manage.py migrate metadata 0001 --fake
+    $ ./manage.py migrate metadata
+    $ ./manage.py migrate bootstrap
+    $ ./manage.py migrate documents
+    $ ./manage.py migrate registration
+
+Add new static media::
+
+    $ ./manage.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+* None
+
+Bugs fixed or issues closed
+===========================
+* `issue #28`_ "Document indexing based on filesystem problem"
+* `issue #29`_ Default ACL documentation
+* `issue #30`_ "Ubuntu 12.0.4 LTS complaining about mising 'fabfile/templates/settings_local.py' (master branch)"
+* `issue #31`_ "Bulk add tags Feature request"
+* `issue #32`_ "Error run $python manage.py syncdb"
+* `issue #33`_ "Fetches translations from Transifex. "
+* `issue #34`_ "Initial syncdb fails because of import time database access"
+* `issue #35`_ "Fix first install syncdb on Postgres"
+* `issue #37`_ "When 19 >= &document_type_id >= 10 in url, error page not found"
+* `issue #39`_ Feature request "Bulk move folders"
+
+
+.. _issue #28: https://github.com/rosarior/mayan/issues/28
+.. _issue #29: https://github.com/rosarior/mayan/issues/29
+.. _issue #30: https://github.com/rosarior/mayan/issues/30
+.. _issue #31: https://github.com/rosarior/mayan/issues/31
+.. _issue #32: https://github.com/rosarior/mayan/issues/32
+.. _issue #33: https://github.com/rosarior/mayan/issues/33
+.. _issue #34: https://github.com/rosarior/mayan/issues/34
+.. _issue #35: https://github.com/rosarior/mayan/issues/35
+.. _issue #37: https://github.com/rosarior/mayan/issues/37
+.. _issue #39: https://github.com/rosarior/mayan/issues/39

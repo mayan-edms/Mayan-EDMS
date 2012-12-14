@@ -125,7 +125,7 @@ class Migration(SchemaMigration):
         },
         'documents.recentdocument': {
             'Meta': {'ordering': "('-datetime_accessed',)", 'object_name': 'RecentDocument'},
-            'datetime_accessed': ('django.db.models.fields.DateTimeField', [], {'db_index': 'True'}),
+            'datetime_accessed': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 10, 5, 0, 0)', 'db_index': 'True'}),
             'document': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.Document']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})

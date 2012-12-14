@@ -6,12 +6,15 @@ from smart_settings import LocalScope
 
 from .icons import icon_search
 from .links import menu_link
+from .cleanup import cleanup
+
 
 label = _(u'Search')
 description = _(u'Handles document search and search indexing.')
 dependencies = ['app_registry', 'icons', 'navigation']
 icon = icon_search
 menu_links = [menu_link]
+cleanup_functions = [cleanup]
 settings = [
     {
         'name': 'INDEX_UPDATE_INTERVAL',

@@ -75,6 +75,8 @@ class PermissionManager(object):
 
 
 class Permission(object):
+    _stored_permissions_cache = {}
+    
     DoesNotExist = PermissionDoesNotExists
 
     def __init__(self, namespace, name, label):
@@ -98,14 +100,16 @@ class Permission(object):
         return self.get_stored_permission()
 
     def get_stored_permission(self):
-        stored_permission, created = StoredPermission.objects.get_or_create(
-            namespace=self.namespace.name,
-            name=self.name,
-        )
-        stored_permission.label = self.label
-        stored_permission.save()
-        stored_permission.volatile_permission = self
-        return stored_permission
+        try:
+            return self.__class__._stored_permissions_cache[self]
+        except KeyError:
+            stored_permission, created = StoredPermission.objects.get_or_create(
+                namespace=self.namespace.name,
+                name=self.name,
+            )
+            stored_permission.volatile_permission = self
+            self.__class__._stored_permissions_cache[self] = stored_permission
+            return stored_permission
 
     def requester_has_this(self, requester):
         stored_permission = self.get_stored_permission()
@@ -138,7 +142,7 @@ class StoredPermission(models.Model):
         return unicode(getattr(self, 'volatile_permission', self.name))
 
     def get_holders(self):
-        return [holder.holder_object for holder in self.permissionholder_set.all()]
+        return (holder.holder_object for holder in self.permissionholder_set.all())
 
     def requester_has_this(self, actor):
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
@@ -177,9 +181,10 @@ class StoredPermission(models.Model):
         try:
             permission_holder = PermissionHolder.objects.get(permission=self, holder_type=ContentType.objects.get_for_model(actor), holder_id=actor.pk)
             permission_holder.delete()
-            return True
         except PermissionHolder.DoesNotExist:
             return False
+        else:
+            return True
 
 
 class PermissionHolder(models.Model):
@@ -231,7 +236,8 @@ class Role(models.Model):
 
     def members(self, filter_dict=None):
         filter_dict = filter_dict or {}
-        return [member.member_object for member in self.rolemember_set.filter(**filter_dict) if member is None]
+        return (member.member_object for member in self.rolemember_set.filter(**filter_dict) if member is None)
+        # return (member.member_object for member in self.rolemember_set.filter(**filter_dict))  >>>>>> hotfix/v0.12.3
 
 
 class RoleMember(models.Model):

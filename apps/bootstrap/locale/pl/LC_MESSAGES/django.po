@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 00:45-0400\n"
-"PO-Revision-Date: 2012-07-27 04:09+0000\n"
+"POT-Creation-Date: 2012-12-14 04:18-0400\n"
+"PO-Revision-Date: 2012-12-12 06:04+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/pl/)\n"
@@ -17,112 +17,114 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: api.py:113
-msgid "Simple"
+#: forms.py:50
+msgid "Bootstrap setup file"
 msgstr ""
 
-#: api.py:114
-msgid ""
-"A simple setup providing an uploaded date metadata and index plus an "
-"alphabetic index based on document filenames."
+#: forms.py:56
+msgid "Bootstrap setup URL"
 msgstr ""
 
-#: api.py:118
-msgid "Upload date"
+#: links.py:16
+msgid "bootstrap"
 msgstr ""
 
-#: api.py:121
-msgid "Segmented date index"
+#: links.py:17
+msgid "bootstrap setup list"
 msgstr ""
 
-#: api.py:132
-msgid "Permits"
+#: links.py:18
+msgid "create new bootstrap setup"
 msgstr ""
 
-#: api.py:133
-msgid "A setup for handling permits and related documents."
+#: links.py:19
+msgid "edit"
 msgstr ""
 
-#: api.py:137
-msgid "Form"
+#: links.py:20
+msgid "delete"
 msgstr ""
 
-#: api.py:138
-msgid "Building construction form"
+#: links.py:21
+msgid "details"
 msgstr ""
 
-#: api.py:139
-msgid "Building usage form"
-msgstr ""
-
-#: api.py:141
-msgid "Blueprint"
-msgstr ""
-
-#: api.py:142
-msgid "Floorplan"
-msgstr ""
-
-#: api.py:143
-msgid "Plot plan"
-msgstr ""
-
-#: api.py:146
-msgid "Date"
-msgstr ""
-
-#: api.py:147
-msgid "Client"
-msgstr ""
-
-#: api.py:148
-msgid "Permit number"
-msgstr ""
-
-#: api.py:149
-msgid "Project"
-msgstr ""
-
-#: api.py:150
-msgid "User"
-msgstr ""
-
-#: api.py:153
-msgid "Permit index"
-msgstr ""
-
-#: api.py:156 api.py:161
-msgid "Per permit"
-msgstr ""
-
-#: api.py:159
-msgid "Per project"
-msgstr ""
-
-#: api.py:164
-msgid "Per date"
-msgstr ""
-
-#: api.py:167
-msgid "Per user"
-msgstr ""
-
-#: api.py:170
-msgid "Per client"
-msgstr ""
-
-#: links.py:9
-msgid "bootstrap database"
-msgstr ""
-
-#: links.py:10
+#: links.py:22
 msgid "execute"
 msgstr ""
 
-#: links.py:11
+#: links.py:23
+msgid "dump current setup"
+msgstr ""
+
+#: links.py:24
 msgid "erase database"
+msgstr ""
+
+#: links.py:27
+msgid "export"
+msgstr ""
+
+#: links.py:28
+msgid "import from file"
+msgstr ""
+
+#: links.py:29
+msgid "import from URL"
+msgstr ""
+
+#: links.py:30
+msgid "sync with repository"
+msgstr ""
+
+#: literals.py:20
+msgid "JSON"
+msgstr ""
+
+#: literals.py:63
+msgid "YAML"
+msgstr ""
+
+#: literals.py:64
+msgid "Better YAML"
+msgstr ""
+
+#: models.py:30
+msgid "name"
+msgstr ""
+
+#: models.py:31
+msgid "slug"
+msgstr ""
+
+#: models.py:32 views.py:35
+msgid "description"
+msgstr ""
+
+#: models.py:33
+msgid "fixture"
+msgstr ""
+
+#: models.py:33
+msgid "These are the actual database structure creation instructions."
+msgstr ""
+
+#: models.py:34 views.py:36
+msgid "type"
+msgstr ""
+
+#: models.py:35
+msgid "creation date and time"
+msgstr ""
+
+#: models.py:104 views.py:91 views.py:120 views.py:145 views.py:173
+msgid "bootstrap setup"
+msgstr ""
+
+#: models.py:105 views.py:32
+msgid "bootstrap setups"
 msgstr ""
 
 #: permissions.py:7
@@ -130,56 +132,187 @@ msgid "Database bootstrap"
 msgstr ""
 
 #: permissions.py:9
-msgid "Execute document bootstraps"
+msgid "View bootstrap setups"
 msgstr ""
 
 #: permissions.py:10
+msgid "Create bootstrap setups"
+msgstr ""
+
+#: permissions.py:11
+msgid "Edit bootstrap setups"
+msgstr ""
+
+#: permissions.py:12
+msgid "Delete bootstrap setups"
+msgstr ""
+
+#: permissions.py:13
+msgid "Execute bootstrap setups"
+msgstr ""
+
+#: permissions.py:14
+msgid "Dump the current project\\s setup into a bootstrap setup"
+msgstr ""
+
+#: permissions.py:15
+msgid "Export bootstrap setups as files"
+msgstr ""
+
+#: permissions.py:16
+msgid "Import new bootstrap setups"
+msgstr ""
+
+#: permissions.py:17
+msgid "Sync the local bootstrap setups with a published repository"
+msgstr ""
+
+#: permissions.py:18
 msgid "Erase the entire database and document storage"
 msgstr ""
 
-#: views.py:21
-msgid "database bootstrap setups"
+#: registry.py:8
+msgid "Bootstrap"
 msgstr ""
 
-#: views.py:24
-msgid "description"
+#: registry.py:9
+msgid "Provides pre configured setups for indexes, document types, tags, etc."
 msgstr ""
 
-#: views.py:45
+#: views.py:51
+msgid "Bootstrap setup created successfully"
+msgstr ""
+
+#: views.py:54
+msgid "Error creating bootstrap setup."
+msgstr ""
+
+#: views.py:59
+msgid "create bootstrap"
+msgstr ""
+
+#: views.py:79
+msgid "Bootstrap setup edited successfully"
+msgstr ""
+
+#: views.py:82
+msgid "Error editing bootstrap setup."
+msgstr ""
+
+#: views.py:87
+#, python-format
+msgid "edit bootstrap setup: %s"
+msgstr ""
+
+#: views.py:112
+#, python-format
+msgid "Bootstrap setup: %s deleted successfully."
+msgstr ""
+
+#: views.py:114
+#, python-format
+msgid "Bootstrap setup: %(bootstrap)s, delete error: %(error)s"
+msgstr ""
+
+#: views.py:125
+#, python-format
+msgid "Are you sure you with to delete the bootstrap setup: %s?"
+msgstr ""
+
+#: views.py:165
+msgid ""
+"Cannot execute bootstrap setup, there is existing data.  Erase all data and "
+"try again."
+msgstr ""
+
+#: views.py:167
 #, python-format
 msgid "Error executing bootstrap setup; %s"
 msgstr ""
 
-#: views.py:47
+#: views.py:169
 #, python-format
 msgid "Bootstrap setup \"%s\" executed successfully."
 msgstr ""
 
-#: views.py:51
-msgid "bootstrap setup"
-msgstr ""
-
-#: views.py:59
+#: views.py:181
 #, python-format
-msgid "Are you sure you wish to execute the database bootstrap named: %s?"
+msgid ""
+"Are you sure you wish to execute the database bootstrap setup named: %s?"
 msgstr ""
 
-#: views.py:77
+#: views.py:197
+#, python-format
+msgid "Error dumping configuration into a bootstrap setup; %s"
+msgstr ""
+
+#: views.py:201
+msgid "Bootstrap setup created successfully."
+msgstr ""
+
+#: views.py:207
+msgid "dump current setup into a bootstrap setup"
+msgstr ""
+
+#: views.py:241 views.py:269
+msgid "Bootstrap setup imported successfully."
+msgstr ""
+
+#: views.py:244
+msgid "File is not a bootstrap setup."
+msgstr ""
+
+#: views.py:246
+#, python-format
+msgid "Error importing bootstrap setup from file; %s."
+msgstr ""
+
+#: views.py:252
+msgid "Import bootstrap setup from file"
+msgstr ""
+
+#: views.py:272
+msgid "Data from URL is not a bootstrap setup."
+msgstr ""
+
+#: views.py:274
+#, python-format
+msgid "Error importing bootstrap setup from URL; %s."
+msgstr ""
+
+#: views.py:280
+msgid "Import bootstrap setup from URL"
+msgstr ""
+
+#: views.py:299
 #, python-format
 msgid "Error erasing database; %s"
 msgstr ""
 
-#: views.py:79
+#: views.py:301
 msgid "Database erased successfully."
 msgstr ""
 
-#: views.py:89
+#: views.py:311
 msgid ""
 "Are you sure you wish to erase the entire database and document storage?"
 msgstr ""
 
-#: views.py:90
+#: views.py:312
 msgid ""
 "All documents, sources, metadata, metadata types, set, tags, indexes and "
 "logs will be lost irreversibly!"
+msgstr ""
+
+#: views.py:329
+msgid "Bootstrap repository successfully synchronized."
+msgstr ""
+
+#: views.py:331
+#, python-format
+msgid "Bootstrap repository synchronization error: %(error)s"
+msgstr ""
+
+#: views.py:338
+msgid "Are you sure you wish to synchronize with the bootstrap repository?"
 msgstr ""

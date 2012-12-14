@@ -1,328 +1,329 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-08-05 22:43-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-08-07 13:41+0000\n"
+"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:33 permissions.py:7
 msgid "Job processor"
-msgstr ""
+msgstr "Processeur de tâches"
 
 #: __init__.py:35 __init__.py:36
 msgid "Poll a job queue for pending jobs."
-msgstr ""
+msgstr "Interroger une liste de tâche pour tâches en attente."
 
 #: __init__.py:57
 msgid "active workers"
-msgstr ""
+msgstr "workers actifs"
 
 #: admin.py:20
 msgid "total items"
-msgstr ""
+msgstr "total d'éléments"
 
 #: links.py:30 models.py:292
 msgid "workers"
-msgstr ""
+msgstr "workers"
 
 #: links.py:31 models.py:171
 msgid "job queues"
-msgstr ""
+msgstr "pile de tâches"
 
 #: links.py:32
 msgid "job queue list"
-msgstr ""
+msgstr "liste des piles de tâches"
 
 #: links.py:33 views.py:83
 msgid "pending jobs"
-msgstr ""
+msgstr "tâches en attente"
 
 #: links.py:34 views.py:91
 msgid "error jobs"
-msgstr ""
+msgstr "tâches avec erreur"
 
 #: links.py:35 views.py:87
 msgid "active jobs"
-msgstr ""
+msgstr "tâches actives"
 
 #: links.py:37
 msgid "start"
-msgstr ""
+msgstr "démarrer"
 
 #: links.py:38
 msgid "stop"
-msgstr ""
+msgstr "arrêter"
 
 #: links.py:40
 msgid "edit job processing configuration"
-msgstr ""
+msgstr "modifier la configuration d'exécution de tâches"
 
 #: links.py:41
 msgid "job processing configuration"
-msgstr ""
+msgstr "configuration d'exécution de tâches"
 
 #: links.py:43
 msgid "requeue job"
-msgstr ""
+msgstr "rajouter la tâche à la pile"
 
 #: links.py:44
 msgid "delete job"
-msgstr ""
+msgstr "supprimer la tâche"
 
 #: links.py:46
 msgid "terminate worker"
-msgstr ""
+msgstr "arrêter le worker"
 
 #: literals.py:7
 msgid "running"
-msgstr ""
+msgstr "en cours d'exécution"
 
 #: literals.py:8
 msgid "dead"
-msgstr ""
+msgstr "mort"
 
 #: literals.py:16
 msgid "pending"
-msgstr ""
+msgstr "en attente"
 
 #: literals.py:17
 msgid "processing"
-msgstr ""
+msgstr "en cours de calcul"
 
 #: literals.py:18
 msgid "error"
-msgstr ""
+msgstr "erreur"
 
 #: literals.py:25
 msgid "stopped"
-msgstr ""
+msgstr "arrêté"
 
 #: literals.py:26
 msgid "started"
-msgstr ""
+msgstr "lancé"
 
 #: models.py:90 models.py:265
 msgid "name"
-msgstr ""
+msgstr "nom"
 
 #: models.py:91
 msgid "unique jobs"
-msgstr ""
+msgstr "tâches uniques"
 
 #: models.py:95 models.py:194 models.py:271 views.py:47 views.py:79
 msgid "state"
-msgstr ""
+msgstr "état"
 
 #: models.py:96 views.py:95
 msgid "priority"
-msgstr ""
+msgstr "priorité"
 
 #: models.py:170 models.py:186 views.py:59 views.py:75 views.py:221
 #: views.py:252
 msgid "job queue"
-msgstr ""
+msgstr "pile des tâches"
 
 #: models.py:187 models.py:266
 msgid "creation datetime"
-msgstr ""
+msgstr "date et heure de création"
 
 #: models.py:188
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: models.py:189 views.py:55 views.py:137
 msgid "job type"
-msgstr ""
+msgstr "type de tâche"
 
 #: models.py:190
 msgid "keyword arguments"
-msgstr ""
+msgstr "arguments mots-clés"
 
 #: models.py:195 views.py:158
 msgid "result"
-msgstr ""
+msgstr "résultat"
 
 #: models.py:259 models.py:272 views.py:51
 msgid "job queue item"
-msgstr ""
+msgstr "élément de la pile"
 
 #: models.py:260
 msgid "job queue items"
-msgstr ""
+msgstr "éléments de la pile"
 
 #: models.py:264
 msgid "node"
-msgstr ""
+msgstr "noeud"
 
 #: models.py:267
 msgid "heartbeat check"
-msgstr ""
+msgstr "vérification de santé"
 
 #: models.py:291 views.py:150 views.py:345
 msgid "worker"
-msgstr ""
+msgstr "worker"
 
 #: models.py:298
-msgid "Interval of time to check the cluster for and remove unresponsive jobs."
-msgstr ""
+msgid ""
+"Interval of time to check the cluster for and remove unresponsive jobs."
+msgstr "Intervalle de temps entre deux vérifications du cluster et suppression des tâches qui ne répondent plus"
 
 #: models.py:301
 msgid "Job queues configuration"
-msgstr ""
+msgstr "Configuration des piles de tâches"
 
 #: models.py:304
 msgid "job queues configuration"
-msgstr ""
+msgstr "configuration des piles de tâches"
 
 #: permissions.py:8
 msgid "View the job queues in a Mayan cluster"
-msgstr ""
+msgstr "Afficher les piles de tâches dans le cluster Mayan"
 
 #: permissions.py:9
 msgid "Edit the the job processing configuration in a Mayan cluster"
-msgstr ""
+msgstr "Modifier la configuration d'exécution des tâches dans le cluster Mayan"
 
 #: permissions.py:10
 msgid "Can start and stop a job queue in a Mayan cluster"
-msgstr ""
+msgstr "Peut démarrer et arrêter une pile de tâches dans un cluster Mayan"
 
 #: permissions.py:11
 msgid "Requeue a job in a Mayan cluster"
-msgstr ""
+msgstr "Remettre une tâche sur la pile dans un cluster Mayan"
 
 #: permissions.py:12
 msgid "Delete a pending job in a Mayan cluster"
-msgstr ""
+msgstr "Suppression d'une tâche en attente dans un cluster Mayan"
 
 #: permissions.py:13
 msgid "Terminate a worker processing a job in a Mayan cluster"
-msgstr ""
+msgstr "Terminer un worker en cours d'exécution d'une tâche dans un cluster Mayan"
 
 #: views.py:34
 #, python-format
 msgid "workers for node: %s"
-msgstr ""
+msgstr "workers pour le noeud: %s"
 
 #: views.py:39 views.py:133
 msgid "created"
-msgstr ""
+msgstr "créé"
 
 #: views.py:43
 msgid "heartbeat"
-msgstr ""
+msgstr "santé"
 
 #: views.py:116
 #, python-format
 msgid "pending jobs for queue: %s"
-msgstr ""
+msgstr "tâches en attente pour la pile: %s"
 
 #: views.py:120
 #, python-format
 msgid "error jobs for queue: %s"
-msgstr ""
+msgstr "tâches avec erreurs pour la pile: %s"
 
 #: views.py:124
 #, python-format
 msgid "active jobs for queue: %s"
-msgstr ""
+msgstr "taches actives pour la pile: %s"
 
 #: views.py:141
 msgid "arguments"
-msgstr ""
+msgstr "arguments"
 
 #: views.py:151
 msgid "Unknown"
-msgstr ""
+msgstr "Inconnu"
 
 #: views.py:184
 #, python-format
 msgid "Error trying to edit job processing configuration; %s"
-msgstr ""
+msgstr "Erreur lors de la modification de la configuration d'exécution des tâches; %s"
 
 #: views.py:186
 msgid "Job processing configuration edited successfully."
-msgstr ""
+msgstr "Configuration d'exécution des tâches modifiée avec succès."
 
 #: views.py:194
 msgid "Edit job processing configuration"
-msgstr ""
+msgstr "Modifier la configuration d'exécution des tâches"
 
 #: views.py:213
 msgid "job queue already stopped."
-msgstr ""
+msgstr "Pile de tâches déjà arrêtée."
 
 #: views.py:216
 msgid "Job queue stopped successfully."
-msgstr ""
+msgstr "Pile de tâches arrêtée avec succès."
 
 #: views.py:222
 #, python-format
 msgid "Are you sure you wish to stop job queue: %s?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir arrêter la pile de tâches: %s?"
 
 #: views.py:244
 msgid "job queue already started."
-msgstr ""
+msgstr "Pile de tâches déjà démarrée."
 
 #: views.py:247
 msgid "Job queue started successfully."
-msgstr ""
+msgstr "Pile de tâches démarrée avec succès."
 
 #: views.py:253
 #, python-format
 msgid "Are you sure you wish to start job queue: %s?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir démarrer la pile de tâches: %s?"
 
 #: views.py:278
 msgid "Job requeue successfully."
-msgstr ""
+msgstr "Ré-ajout de tache à la pile effectué."
 
 #: views.py:283 views.py:314
 msgid "job"
-msgstr ""
+msgstr "tâche"
 
 #: views.py:284
 #, python-format
 msgid "Are you sure you wish to requeue job: %s?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir ré-ajouter la tâche: %s?"
 
 #: views.py:306
 #, python-format
 msgid "Error deleting job; %s."
-msgstr ""
+msgstr "Erreur de suppression de tâche;%s."
 
 #: views.py:309
 msgid "Job deleted successfully."
-msgstr ""
+msgstr "Tâche supprimée avec succès"
 
 #: views.py:315
 #, python-format
 msgid "Are you sure you wish to delete job: %s?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir supprimer la tâche:%s?"
 
 #: views.py:337
 #, python-format
 msgid "Error terminating worker; %s."
-msgstr ""
+msgstr "Erreur lors de l'interruption du worker;%s."
 
 #: views.py:340
 msgid "Worker terminated successfully."
-msgstr ""
+msgstr "Worker interrompu avec succès."
 
 #: views.py:346
 #, python-format
 msgid "Are you sure you wish to terminate worker: %s?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir interrompre le worker: %s?"

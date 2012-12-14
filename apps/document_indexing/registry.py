@@ -1,10 +1,12 @@
 from __future__ import absolute_import
 
+
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import proper_name
 from smart_settings import LocalScope
 
+from .cleanup import cleanup
 from .icons import icon_index_setup
 from .links import index_setup, link_menu
 from .literals import DEFAULT_SUFFIX_SEPARATOR, DEFAULT_MAX_SUFFIX_COUNT
@@ -22,10 +24,12 @@ menu_links = [link_menu]
 bootstrap_models = [
     {
         'name': 'index',
+        'dependencies': ['documents.documenttype']
     },
     {
         'name': 'indextemplatenode',
         'sanitize': False,
+        'dependencies': ['document_indexing.index']
     }
 ]
 
@@ -57,3 +61,6 @@ settings = [
         'scopes': [LocalScope()],
     }, 
 ]
+    }
+]
+cleanup_functions = [cleanup]

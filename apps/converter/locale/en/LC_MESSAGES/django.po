@@ -914,13 +914,7 @@ msgid ""
 "documentation."
 msgstr ""
 
-#: conf/settings.py:49
-msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick, converter.backends.graphicsmagick and converter.backends.python."
-msgstr ""
-
-#: conf/settings.py:57
+#: conf/settings.py:16
 msgid "Path to the libreoffice program."
 msgstr ""
 

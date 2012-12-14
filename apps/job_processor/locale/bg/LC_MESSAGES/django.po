@@ -1,328 +1,329 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+#   <pkoldamov@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-08-05 22:43-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-10-17 10:52+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:33 permissions.py:7
 msgid "Job processor"
-msgstr ""
+msgstr "процесор на задачи"
 
 #: __init__.py:35 __init__.py:36
 msgid "Poll a job queue for pending jobs."
-msgstr ""
+msgstr "показване на опашка с чакащи задачи"
 
 #: __init__.py:57
 msgid "active workers"
-msgstr ""
+msgstr "активни процеси"
 
 #: admin.py:20
 msgid "total items"
-msgstr ""
+msgstr "всички елементи"
 
 #: links.py:30 models.py:292
 msgid "workers"
-msgstr ""
+msgstr "процеси"
 
 #: links.py:31 models.py:171
 msgid "job queues"
-msgstr ""
+msgstr "опашки със задачи"
 
 #: links.py:32
 msgid "job queue list"
-msgstr ""
+msgstr "списък на опашки със задачи"
 
 #: links.py:33 views.py:83
 msgid "pending jobs"
-msgstr ""
+msgstr "чакащи задачи"
 
 #: links.py:34 views.py:91
 msgid "error jobs"
-msgstr ""
+msgstr "задачи с грешки"
 
 #: links.py:35 views.py:87
 msgid "active jobs"
-msgstr ""
+msgstr "активни задачи"
 
 #: links.py:37
 msgid "start"
-msgstr ""
+msgstr "начало"
 
 #: links.py:38
 msgid "stop"
-msgstr ""
+msgstr "спиране"
 
 #: links.py:40
 msgid "edit job processing configuration"
-msgstr ""
+msgstr "редактиране на конфигурацията за изпълнение на задачи"
 
 #: links.py:41
 msgid "job processing configuration"
-msgstr ""
+msgstr "конфигурация за изпълнение на задачи"
 
 #: links.py:43
 msgid "requeue job"
-msgstr ""
+msgstr "пренареждане на задача"
 
 #: links.py:44
 msgid "delete job"
-msgstr ""
+msgstr "изтриване на задача"
 
 #: links.py:46
 msgid "terminate worker"
-msgstr ""
+msgstr "прекратяване на процес"
 
 #: literals.py:7
 msgid "running"
-msgstr ""
+msgstr "работещи"
 
 #: literals.py:8
 msgid "dead"
-msgstr ""
+msgstr "неработещи"
 
 #: literals.py:16
 msgid "pending"
-msgstr ""
+msgstr "чакащи"
 
 #: literals.py:17
 msgid "processing"
-msgstr ""
+msgstr "обработващи"
 
 #: literals.py:18
 msgid "error"
-msgstr ""
+msgstr "грешка"
 
 #: literals.py:25
 msgid "stopped"
-msgstr ""
+msgstr "спрели"
 
 #: literals.py:26
 msgid "started"
-msgstr ""
+msgstr "стартирани"
 
 #: models.py:90 models.py:265
 msgid "name"
-msgstr ""
+msgstr "име"
 
 #: models.py:91
 msgid "unique jobs"
-msgstr ""
+msgstr "уникални задачи"
 
 #: models.py:95 models.py:194 models.py:271 views.py:47 views.py:79
 msgid "state"
-msgstr ""
+msgstr "статус"
 
 #: models.py:96 views.py:95
 msgid "priority"
-msgstr ""
+msgstr "приоритет"
 
 #: models.py:170 models.py:186 views.py:59 views.py:75 views.py:221
 #: views.py:252
 msgid "job queue"
-msgstr ""
+msgstr "опашка със задачи"
 
 #: models.py:187 models.py:266
 msgid "creation datetime"
-msgstr ""
+msgstr "дата и време на създаване"
 
 #: models.py:188
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: models.py:189 views.py:55 views.py:137
 msgid "job type"
-msgstr ""
+msgstr "тип задача"
 
 #: models.py:190
 msgid "keyword arguments"
-msgstr ""
+msgstr "аргументи ключови думи"
 
 #: models.py:195 views.py:158
 msgid "result"
-msgstr ""
+msgstr "резултат"
 
 #: models.py:259 models.py:272 views.py:51
 msgid "job queue item"
-msgstr ""
+msgstr "елемент от списък със задачи"
 
 #: models.py:260
 msgid "job queue items"
-msgstr ""
+msgstr "елементи от списък със задачи"
 
 #: models.py:264
 msgid "node"
-msgstr ""
+msgstr "нод"
 
 #: models.py:267
 msgid "heartbeat check"
-msgstr ""
+msgstr "проверка пулс"
 
 #: models.py:291 views.py:150 views.py:345
 msgid "worker"
-msgstr ""
+msgstr "процес"
 
 #: models.py:298
-msgid "Interval of time to check the cluster for and remove unresponsive jobs."
-msgstr ""
+msgid ""
+"Interval of time to check the cluster for and remove unresponsive jobs."
+msgstr "Интервал на проверка на клъстера за неработещи задачи и премахването им."
 
 #: models.py:301
 msgid "Job queues configuration"
-msgstr ""
+msgstr "Конфигурация на опашка със задачи"
 
 #: models.py:304
 msgid "job queues configuration"
-msgstr ""
+msgstr "конфигурация на опашка със задачи"
 
 #: permissions.py:8
 msgid "View the job queues in a Mayan cluster"
-msgstr ""
+msgstr "Преглеждане на опашки със задачи в Mayan клъстер"
 
 #: permissions.py:9
 msgid "Edit the the job processing configuration in a Mayan cluster"
-msgstr ""
+msgstr "Редактиране на конфигурацията за изпълнение на задачи в Mayan клъстер"
 
 #: permissions.py:10
 msgid "Can start and stop a job queue in a Mayan cluster"
-msgstr ""
+msgstr "Възможност за стартиране и спиране на опашка със задачи в Mayan клъстер"
 
 #: permissions.py:11
 msgid "Requeue a job in a Mayan cluster"
-msgstr ""
+msgstr "Пренареждане на задача в Mayan клъстер"
 
 #: permissions.py:12
 msgid "Delete a pending job in a Mayan cluster"
-msgstr ""
+msgstr "Изтриване на чакаща задача в Mayan клъстер"
 
 #: permissions.py:13
 msgid "Terminate a worker processing a job in a Mayan cluster"
-msgstr ""
+msgstr "Прекратяване на процес обработващ задача в Mayan клъстер"
 
 #: views.py:34
 #, python-format
 msgid "workers for node: %s"
-msgstr ""
+msgstr "процеси за нод: %s"
 
 #: views.py:39 views.py:133
 msgid "created"
-msgstr ""
+msgstr "създаден"
 
 #: views.py:43
 msgid "heartbeat"
-msgstr ""
+msgstr "пулс"
 
 #: views.py:116
 #, python-format
 msgid "pending jobs for queue: %s"
-msgstr ""
+msgstr "чакаща задача за опашка: %s"
 
 #: views.py:120
 #, python-format
 msgid "error jobs for queue: %s"
-msgstr ""
+msgstr "задачи с грешки за опашка: %s"
 
 #: views.py:124
 #, python-format
 msgid "active jobs for queue: %s"
-msgstr ""
+msgstr "активни задачи за опашка: %s"
 
 #: views.py:141
 msgid "arguments"
-msgstr ""
+msgstr "аргументи"
 
 #: views.py:151
 msgid "Unknown"
-msgstr ""
+msgstr "Неизвестен"
 
 #: views.py:184
 #, python-format
 msgid "Error trying to edit job processing configuration; %s"
-msgstr ""
+msgstr "Грешка при редактиране на конфигурацията за обработка на задачи; %s"
 
 #: views.py:186
 msgid "Job processing configuration edited successfully."
-msgstr ""
+msgstr "Конфигурацията за обработка на задачи е редактирана успешно."
 
 #: views.py:194
 msgid "Edit job processing configuration"
-msgstr ""
+msgstr "Редактиране на конфигурацията за обработка на задачи"
 
 #: views.py:213
 msgid "job queue already stopped."
-msgstr ""
+msgstr "Опашката със задачи вече е спряна."
 
 #: views.py:216
 msgid "Job queue stopped successfully."
-msgstr ""
+msgstr "Опашката със задачи е спряна успешно."
 
 #: views.py:222
 #, python-format
 msgid "Are you sure you wish to stop job queue: %s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да спрете опашка със задачи: %s?"
 
 #: views.py:244
 msgid "job queue already started."
-msgstr ""
+msgstr "Опашката със задачи вече е стартирана."
 
 #: views.py:247
 msgid "Job queue started successfully."
-msgstr ""
+msgstr "Опашката със задачи е стартирана успешно."
 
 #: views.py:253
 #, python-format
 msgid "Are you sure you wish to start job queue: %s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да стартирате опашка със задачи: %s?"
 
 #: views.py:278
 msgid "Job requeue successfully."
-msgstr ""
+msgstr "Задачата е пренаредена успешно."
 
 #: views.py:283 views.py:314
 msgid "job"
-msgstr ""
+msgstr "задача"
 
 #: views.py:284
 #, python-format
 msgid "Are you sure you wish to requeue job: %s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да пренаредите задача: %s?"
 
 #: views.py:306
 #, python-format
 msgid "Error deleting job; %s."
-msgstr ""
+msgstr "Грешка при изтриване на задача; %s."
 
 #: views.py:309
 msgid "Job deleted successfully."
-msgstr ""
+msgstr "Задачата е изтрита успешно."
 
 #: views.py:315
 #, python-format
 msgid "Are you sure you wish to delete job: %s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да изтриете задача: %s?"
 
 #: views.py:337
 #, python-format
 msgid "Error terminating worker; %s."
-msgstr ""
+msgstr "Грешка при прекратяване на процес; %s."
 
 #: views.py:340
 msgid "Worker terminated successfully."
-msgstr ""
+msgstr "Порцесът е прекратен успешно."
 
 #: views.py:346
 #, python-format
 msgid "Are you sure you wish to terminate worker: %s?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да прекратите процес: %s?"

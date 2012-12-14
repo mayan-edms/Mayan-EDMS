@@ -30,5 +30,3 @@ def post_install():
     """
     fabfile_marker = os.path.join(env.repository_path, FABFILE_MARKER)
     sudo('touch %s' % fabfile_marker)
-    
-    

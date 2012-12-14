@@ -5,15 +5,12 @@ import optparse
 
 import pbs
 
-APP_LIST = ('common', 'converter', 'documents', 'document_comments',
-    'document_indexing', 'dynamic_search', 'folders', 'history',
-    'linking', 'main', 'metadata', 'navigation', 'ocr', 'permissions',
-    'project_setup', 'project_tools', 'smart_settings', 'sources',
-    'tags', 'user_management', 'web_theme', 'django_gpg', 'document_signatures',
-    'acls', 'installation', 'scheduler', 'checkouts', 'bootstrap',
-    'maintenance', 'diagnostics', 'statistics', 'clustering', 'job_processor',
-    'lock_manager', 'trash')
-LANGUAGE_LIST = ('en', 'pt', 'pt_BR', 'ru', 'es', 'it', 'pl', 'de_DE', 'fr', 'nl_NL', 'bg')
+APP_LIST = ('acls', 'bootstrap', 'checkouts', 'clustering', 'common', 'converter', 'django_gpg', 'documents',
+    'document_comments', 'document_indexing', 'document_signatures', 'diagnostics', 'dynamic_search',
+    'folders', 'history', 'installation', 'job_processor', 'linking', 'lock_manager', 'main', 'maintenance', 'metadata', 'navigation',
+    'ocr', 'permissions', 'project_setup', 'project_tools', 'scheduler', 'smart_settings',
+    'sources', 'statistics', 'tags', 'trash', 'user_management', 'web_theme', 'bootstrap', 'registration')
+LANGUAGE_LIST = ('bg', 'de_DE', 'en', 'es', 'fr', 'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ru')
 
 makemessages = pbs.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')

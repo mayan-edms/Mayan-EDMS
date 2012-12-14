@@ -26,7 +26,6 @@ from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
 
 from mimetype.icons import icon_file_extension_error
-
 from .managers import (DocumentPageTransformationManager, RecentDocumentManager,
     DocumentTypeManager)
 from .utils import document_save_to_temp_dir
@@ -702,7 +701,7 @@ class RecentDocument(models.Model):
     """
     user = models.ForeignKey(User, verbose_name=_(u'user'), editable=False)
     document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
-    datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), db_index=True)
+    datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), default=lambda: datetime.datetime.now(), db_index=True)
 
     objects = RecentDocumentManager()
 

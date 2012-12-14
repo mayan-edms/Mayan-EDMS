@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2012-07-27 00:45-0400\n"
+=======
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+>>>>>>> hotfix/v0.12.3
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +29,11 @@ msgstr ""
 msgid "tagged items"
 msgstr ""
 
+<<<<<<< HEAD
 #: __init__.py:34 __init__.py:42 links.py:16 views.py:98
+=======
+#: __init__.py:34 __init__.py:42 links.py:21 views.py:124
+>>>>>>> hotfix/v0.12.3
 msgid "tags"
 msgstr ""
 
@@ -49,6 +57,7 @@ msgstr ""
 msgid "create new tag"
 msgstr ""
 
+<<<<<<< HEAD
 #: links.py:13
 msgid "attach tag"
 msgstr ""
@@ -70,6 +79,33 @@ msgid "tagged documents"
 msgstr ""
 
 #: links.py:21
+=======
+#: links.py:14 links.py:15
+msgid "attach tag"
+msgstr ""
+
+#: links.py:18
+msgid "remove tag"
+msgstr ""
+
+#: links.py:19
+msgid "remove tags"
+msgstr ""
+
+#: links.py:22 links.py:25
+msgid "delete"
+msgstr ""
+
+#: links.py:23
+msgid "edit"
+msgstr ""
+
+#: links.py:24
+msgid "tagged documents"
+msgstr ""
+
+#: links.py:26
+>>>>>>> hotfix/v0.12.3
 msgid "ACLs"
 msgstr ""
 
@@ -113,7 +149,11 @@ msgstr ""
 msgid "Yellow"
 msgstr ""
 
+<<<<<<< HEAD
 #: models.py:12 views.py:156 views.py:210 views.py:224
+=======
+#: models.py:12 views.py:180 views.py:232 views.py:246
+>>>>>>> hotfix/v0.12.3
 msgid "tag"
 msgstr ""
 
@@ -165,81 +205,183 @@ msgstr ""
 msgid "create tag"
 msgstr ""
 
-#: views.py:77
-#, python-format
-msgid "Document is already tagged as \"%s\""
+#: views.py:69
+msgid "Must provide at least one document."
 msgstr ""
 
-#: views.py:82
+#: views.py:87
 #, python-format
-msgid "Tag \"%s\" attached successfully."
+msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:88
+#: views.py:92
 #, python-format
-msgid "attach tag to: %s"
+msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr ""
 
+#: views.py:100
+msgid "document"
+msgstr ""
+
+#: views.py:108
+#, python-format
+msgid "Attach tag to document: %s."
+msgstr ""
+
+#: views.py:110
+#, python-format
+msgid "Attach tag to documents: %s."
+msgstr ""
+
+<<<<<<< HEAD
 #: views.py:130 views.py:261
 msgid "Must provide at least one tag."
 msgstr ""
 
 #: views.py:147
+=======
+#: views.py:156
+msgid "Must provide at least one tag."
+msgstr ""
+
+#: views.py:171
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:149 views.py:274
+=======
+#: views.py:173
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:164
+=======
+#: views.py:188
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:165 views.py:168
 msgid "Will be removed from all documents."
 msgstr ""
 
 #: views.py:167
+=======
+#: views.py:189 views.py:192
+msgid "Will be removed from all documents."
+msgstr ""
+
+#: views.py:191
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:198
 msgid "Tag updated succesfully."
 msgstr ""
 
 #: views.py:207
+=======
+#: views.py:220
+msgid "Tag updated succesfully."
+msgstr ""
+
+#: views.py:229
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "edit tag: %s"
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:221
+=======
+#: views.py:243
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "documents with the tag \"%s\""
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:240
+=======
+#: views.py:262
+>>>>>>> hotfix/v0.12.3
 #, python-format
 msgid "tags for: %s"
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:272
-#, python-format
-msgid "Tag \"%s\" removed successfully."
+=======
+#: views.py:274
+msgid "Must provide at least one tagged document."
 msgstr ""
 
+#: views.py:313
+#, python-format
+msgid "Remove tag from document: %s."
+msgstr ""
+
+#: views.py:315
+>>>>>>> hotfix/v0.12.3
+#, python-format
+msgid "Remove tag from documents: %s."
+msgstr ""
+
+#: views.py:321
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
+"%(document)s?"
+msgstr ""
+
+#: views.py:324
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
+"%(documents)s?"
+msgstr ""
+
+#: views.py:329
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tags: %(tags)s from the document: "
+"%(document)s?"
+msgstr ""
+
+#: views.py:332
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tags %(tags)s from the documents: "
+"%(documents)s?"
+msgstr ""
+
+<<<<<<< HEAD
 #: views.py:288
+=======
+#: views.py:339
+>>>>>>> hotfix/v0.12.3
 #, python-format
-msgid "Are you sure you wish to remove the tag: %s?"
+msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr ""
 
+<<<<<<< HEAD
 #: views.py:290
+=======
+#: views.py:344
+>>>>>>> hotfix/v0.12.3
 #, python-format
-msgid "Are you sure you wish to remove the tags: %s?"
+msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""
 
 #: templatetags/tags_tags.py:17

@@ -19,7 +19,7 @@ history_document_edited = Event(namespace=namespace, name='document_edited', lab
     }
 )
 
-history_document_deleted = HISTORY_DOCUMENT_DELETED = Event(namespace=namespace, name='document_deleted', label=_(u'Document deleted'),
+history_document_deleted = Event(namespace=namespace, name='document_deleted', label=_(u'Document deleted'),
     summary=_(u'Document "%(document)s" deleted by %(fullname)s.'),
     details=_(u'Document "%(document)s" deleted on %(datetime)s by %(fullname)s.'),
     expressions={'fullname': 'user.get_full_name() if user.get_full_name() else user.username'}

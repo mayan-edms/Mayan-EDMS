@@ -42,14 +42,14 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
             app_module = import_module(app_name)
         except ImportError:
             transaction.rollback
-            logger.error('Unable to import app: %s' % app_name)
+            logger.debug('Unable to import app: %s' % app_name)
         else:
             logger.debug('Trying to import registry from: %s' % app_name)
             try:
                 registration = import_module('%s.registry' % app_name)
             except ImportError:
                 transaction.rollback
-                logger.error('Unable to import registry for app: %s' % app_name)
+                logger.debug('Unable to import registry for app: %s' % app_name)
             else:
                 if not getattr(registration, 'disabled', False):
                     try:
@@ -104,7 +104,7 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
 
                     for bootstrap_model in getattr(registration, 'bootstrap_models', []):
                         logger.debug('bootstrap_model: %s' % bootstrap_model)
-                        BootstrapModel(model_name=bootstrap_model.get('name'), app_name=app_name, sanitize=bootstrap_model.get('sanitize', True))
+                        BootstrapModel(model_name=bootstrap_model.get('name'), app_name=app_name, sanitize=bootstrap_model.get('sanitize', True), dependencies=bootstrap_model.get('dependencies'))
 
     def __unicode__(self):
         return unicode(self.label)
@@ -113,5 +113,3 @@ class App(TranslatableLabelMixin, LiveObjectMixin, models.Model):
         ordering = ('name', )
         verbose_name = _(u'app')
         verbose_name_plural = _(u'apps')
-
-
