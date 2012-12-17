@@ -22,7 +22,7 @@ folder_delete = {'text': _('delete'), 'view': 'folder_delete', 'args': 'object.p
 folder_document_multiple_remove = {'text': _('remove from folder'), 'view': 'folder_document_multiple_remove', 'args': 'object.pk', 'famfam': 'folder_delete', 'permissions': [PERMISSION_FOLDER_REMOVE_DOCUMENT]}
 folder_view = {'text': _(u'folder documents'), 'view': 'folder_view', 'args': 'object.pk', 'famfam': 'folder_go', 'permissions': [PERMISSION_FOLDER_VIEW]}
 folder_add_document = {'text': _('add to a folder'), 'view': 'folder_add_document', 'args': 'object.pk', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_ADD_DOCUMENT]}
-folder_add_multiple_documents = {'text': _('add to folder'), 'view': 'folder_add_multiple_documents', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_ADD_DOCUMENT]}
+folder_add_multiple_documents = {'text': _('add to folder'), 'view': 'folder_add_multiple_documents', 'famfam': 'folder_add'}
 document_folder_list = {'text': _(u'folders'), 'view': 'document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'children_view_regex': [r'folder']}
 
 folder_acl_list = {'text': _(u'ACLs'), 'view': 'folder_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
