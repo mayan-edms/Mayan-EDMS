@@ -20,13 +20,20 @@ class SearchModel(object):
     def get_all(cls):
         return cls.registry.values()
 
+    @classmethod
+    def get(cls, full_name):
+        return cls.registry[full_name]
+
     def __init__(self, app_label, model_name, label=None):
         self.app_label = app_label
         self.model_name = model_name
         self.search_fields = {}
         self.model = get_model(app_label, model_name)
         self.label = label or self.model._meta.verbose_name
-        self.__class__.registry[id(self)] = self
+        self.__class__.registry[self.get_full_name()] = self
+
+    def get_full_name(self):
+        return '%s.%s' % (self.app_label, self.model_name)
 
     def get_all_search_fields(self):
         return self.search_fields.values()
