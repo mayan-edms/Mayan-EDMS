@@ -23,17 +23,23 @@ class SearchModel(object):
     def __init__(self, app_label, model_name, label=None):
         self.app_label = app_label
         self.model_name = model_name
-        self.search_fields = []
+        self.search_fields = {}
         self.model = get_model(app_label, model_name)
         self.label = label or self.model._meta.verbose_name
         self.__class__.registry[id(self)] = self
+
+    def get_all_search_fields(self):
+        return self.search_fields.values()
+        
+    def get_search_field(self, full_name):
+        return self.search_fields[full_name]
 
     def get_fields_simple_list(self):
         """
         Returns a list of the fields for the SearchModel
         """
         result = []
-        for search_field in self.search_fields:
+        for search_field in self.get_all_search_fields():
             result.append((search_field.get_full_name(), search_field.label))
 
         return result
@@ -42,14 +48,16 @@ class SearchModel(object):
         """
         Add a search field that directly belongs to the parent SearchModel
         """
-        self.search_fields.append(SearchField(self, *args, **kwargs))
+        search_field = SearchField(self, *args, **kwargs)
+        self.search_fields[search_field.get_full_name()] = search_field
     
     def add_related_field(self, *args, **kwargs):
         """
         Add a search field that will search content in a related field in
         a separate model
         """
-        self.search_fields.append(RelatedSearchField(self, *args, **kwargs))
+        search_field = RelatedSearchField(self, *args, **kwargs)
+        self.search_fields[search_field.get_full_name()] = search_field
 
     def normalize_query(self, query_string,
                         findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
@@ -65,14 +73,8 @@ class SearchModel(object):
 
     def simple_search(self, query_string):
         search_dict = {}
-        model_list = {}
-        flat_list = []
-        result_count = 0
-        shown_result_count = 0
-        elapsed_time = 0
-        start_time = datetime.datetime.now()
 
-        for search_field in self.search_fields:
+        for search_field in self.get_all_search_fields():
             search_dict.setdefault(search_field.get_model(), {
                 'searches': [],
                 'label': search_field.label,
@@ -86,6 +88,43 @@ class SearchModel(object):
             )        
         
         logger.debug('search_dict: %s' % search_dict)
+
+        return self.execute_search(search_dict, global_and_search=False)
+
+    def advanced_search(self, dictionary):
+        search_dict = {}
+        
+        for key, value in dictionary.items():
+            logger.debug('key: %s' % key)
+            logger.debug('value: %s' % value)
+
+            if value:
+                search_field = self.get_search_field(key)
+                logger.debug('search_field: %s' % search_field)
+                search_dict.setdefault(search_field.get_model(), {
+                    'searches': [],
+                    'label': search_field.label,
+                    'return_value': search_field.return_value
+                })
+                search_dict[search_field.get_model()]['searches'].append(
+                    {
+                        'field_name': [search_field.field],
+                        'terms': self.normalize_query(value)
+                    }
+                )  
+
+
+        logger.debug('search_dict: %s' % search_dict)
+
+        return self.execute_search(search_dict, global_and_search=True)
+
+    def execute_search(self, search_dict, global_and_search=False):
+        model_list = {}
+        flat_list = []
+        result_count = 0
+        shown_result_count = 0
+        elapsed_time = 0
+        start_time = datetime.datetime.now()
 
         for model, data in search_dict.items():
             logger.debug('model: %s' % model)
@@ -121,7 +160,14 @@ class SearchModel(object):
                     logger.debug('term_query_result_set: %s' % term_query_result_set)
                     logger.debug('field_result_set: %s' % field_result_set)
 
-                model_result_set |= field_result_set
+                if global_and_search:
+                    if not model_result_set:
+                        model_result_set = field_result_set
+                    else:
+                        model_result_set &= field_result_set
+                else:
+                    model_result_set |= field_result_set
+                    
                 logger.debug('model_result_set: %s' % model_result_set)
 
             # Update the search result total count
@@ -129,6 +175,7 @@ class SearchModel(object):
 
             # Search the field results return values (PK) in the SearchModel's model
             results = self.model.objects.in_bulk(list(model_result_set)[: LIMIT]).values()
+            logger.debug('query model_result_set: %s' % model_result_set)
 
             # Update the search result visible count (limited by LIMIT config option)
             shown_result_count += len(results)
@@ -145,24 +192,6 @@ class SearchModel(object):
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
         return model_list, flat_list, shown_result_count, result_count, elapsed_time
-                
-    def advanced_search(self, dictionary):
-        for key, value in dictionary.items():
-            try:
-                model, field_name = key.split('__', 1)
-                model_entry = registered_search_dict.get(model, {})
-                if model_entry:
-                    for model_field in model_entry.get('fields', [{}]):
-                        if model_field.get('name') == field_name:
-                            search_dict.setdefault(model_entry['model'], {'query_entries': [], 'label': model_entry['label']})
-                            search_dict[model_entry['model']]['query_entries'].append(
-                                {
-                                    'field_name': [field_name],
-                                    'terms': normalize_query(value.strip())
-                                }
-                            )
-            except ValueError:
-                pass
 
     def assemble_query(self, terms, search_fields):
         """
