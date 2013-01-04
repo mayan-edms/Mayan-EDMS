@@ -1,7 +1,7 @@
+from __future__ import absolute_import
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-
-from dynamic_search.api import registered_search_dict
 
 
 class SearchForm(forms.Form):
@@ -15,11 +15,11 @@ class SearchForm(forms.Form):
 
 class AdvancedSearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
+        self.search_model = kwargs.pop('search_model')
         super(AdvancedSearchForm, self).__init__(*args, **kwargs)
 
-        for model_name, values in registered_search_dict.items():
-            for field in values['fields']:
-                self.fields['%s__%s' % (model_name, field['name'])] = forms.CharField(
-                    label=field['title'],
-                    required=False
-                )
+        for name, label in self.search_model.get_fields_simple_list():
+            self.fields[name] = forms.CharField(
+                label=label,
+                required=False
+            )

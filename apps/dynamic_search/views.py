@@ -1,4 +1,7 @@
+from __future__ import absolute_import
+
 import urlparse
+import logging
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -9,51 +12,64 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 
-from dynamic_search.models import RecentSearch
-from dynamic_search.api import perform_search
-from dynamic_search.forms import SearchForm, AdvancedSearchForm
-from dynamic_search.conf.settings import SHOW_OBJECT_TYPE
-from dynamic_search.conf.settings import LIMIT
+from .classes import SearchModel
+from .conf.settings import SHOW_OBJECT_TYPE
+from .conf.settings import LIMIT
+from .forms import SearchForm, AdvancedSearchForm
+from .models import RecentSearch
+
+logger = logging.getLogger(__name__)
+
+# HACK: since we will only be doing search for Documents (for now)
+document_search = SearchModel.get_all()[0]
 
 
 def results(request, extra_context=None):
-    context = {}
-
-    context.update({
+    context = {
         'query_string': request.GET,
         #'hide_header': True,
         'hide_links': True,
         'multi_select_as_buttons': True,
         'search_results_limit': LIMIT,
-    })
+    }
 
-    try:
-        response = perform_search(request.GET)
-        if response['shown_result_count'] != response['result_count']:
+    if request.GET:
+        # Only do search if there is user input, otherwise just render
+        # the template with the extra_context
+
+        if 'q' in request.GET:
+            # Simple query
+            logger.debug('simple search')
+            query_string = request.GET.get('q', u'').strip()
+            model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.simple_search(query_string)
+        else:
+            # Advanced search
+            logger.debug('advanced search')
+            model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search(request.GET)
+            
+        if shown_result_count != result_count:
             title = _(u'results, (showing only %(shown_result_count)s out of %(result_count)s)') % {
-                'shown_result_count': response['shown_result_count'],
-                'result_count': response['result_count']}
+                'shown_result_count': shown_result_count,
+                'result_count': result_count}
+                
         else:
             title = _(u'results')
-
-        if extra_context:
-            context.update(extra_context)
+        
+        # Update the context with the search results
+        context.update({
+            'found_entries': model_list,
+            'object_list': flat_list,
+            'title': title,
+            'time_delta': elapsed_time,
+        })            
+        
         query = urlencode(dict(request.GET.items()))
 
         if query:
-            RecentSearch.objects.add_query_for_user(request.user, query, response['result_count'])
+            RecentSearch.objects.add_query_for_user(request.user, query, result_count)
 
-        context.update({
-            'found_entries': response['model_list'],
-            'object_list': response['flat_list'],
-            'title': title,
-            'time_delta': response['elapsed_time'],
-        })
-    except Exception, e:
-        if settings.DEBUG:
-            raise
-        elif request.user.is_staff or request.user.is_superuser:
-            messages.error(request, _(u'Search error: %s') % e)
+    if extra_context:
+        context.update(extra_context)
 
     if SHOW_OBJECT_TYPE:
         context.update({'extra_columns':
@@ -65,7 +81,7 @@ def results(request, extra_context=None):
 
 def search(request, advanced=False):
     if advanced:
-        form = AdvancedSearchForm(data=request.GET)
+        form = AdvancedSearchForm(data=request.GET, search_model=document_search)
         return render_to_response('generic_form.html',
             {
                 'form': form,
