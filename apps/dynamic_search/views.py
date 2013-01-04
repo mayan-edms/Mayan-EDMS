@@ -12,16 +12,14 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
 
-from .classes import SearchModel
 from .conf.settings import SHOW_OBJECT_TYPE
 from .conf.settings import LIMIT
 from .forms import SearchForm, AdvancedSearchForm
 from .models import RecentSearch
+from .classes import SearchModel
 
 logger = logging.getLogger(__name__)
-
-# HACK: since we will only be doing search for Documents (for now)
-document_search = SearchModel.get_all()[0]
+document_search = SearchModel.get('documents.Document')
 
 
 def results(request, extra_context=None):
@@ -62,11 +60,8 @@ def results(request, extra_context=None):
             'title': title,
             'time_delta': elapsed_time,
         })            
-        
-        query = urlencode(dict(request.GET.items()))
 
-        if query:
-            RecentSearch.objects.add_query_for_user(request.user, query, result_count)
+        RecentSearch.objects.add_query_for_user(request.user, request.GET, result_count)
 
     if extra_context:
         context.update(extra_context)
