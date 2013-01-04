@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import urlparse
 import urllib
 
@@ -9,8 +11,8 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.utils.encoding import smart_unicode, smart_str
 
-from dynamic_search.managers import RecentSearchManager
-from dynamic_search.api import registered_search_dict
+from .managers import RecentSearchManager
+from .classes import SearchModel
 
 
 class RecentSearch(models.Model):
@@ -25,24 +27,22 @@ class RecentSearch(models.Model):
     objects = RecentSearchManager()
 
     def __unicode__(self):
+        document_search = SearchModel.get('documents.Document')
+        
         query_dict = urlparse.parse_qs(urllib.unquote_plus(smart_str(self.query)))
-        if 'q' in query_dict:
-            # Is a simple search
-            display_string = smart_unicode(' '.join(query_dict['q']))
-        else:
+
+        if self.is_advanced():
             # Advanced search
             advanced_string = []
             for key, value in query_dict.items():
-                # Get model name
-                model, field_name = key.split('__', 1)
-                model_entry = registered_search_dict.get(model, {})
-                if model_entry:
-                    # Find the field name title
-                    for model_field in model_entry.get('fields', [{}]):
-                        if model_field.get('name') == field_name:
-                            advanced_string.append(u'%s: %s' % (model_field.get('title', model_field['name']), smart_unicode(' '.join(value))))
+                search_field = document_search.get_search_field(key)
+                advanced_string.append(u'%s: %s' % (search_field.label, smart_unicode(' '.join(value))))
 
             display_string = u', '.join(advanced_string)
+        else:
+            # Is a simple search
+            display_string = smart_unicode(' '.join(query_dict['q']))
+
         return u'%s (%s)' % (display_string, self.hits)
 
     def save(self, *args, **kwargs):
