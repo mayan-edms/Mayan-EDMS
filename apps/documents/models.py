@@ -19,7 +19,6 @@ from django.utils.translation import ugettext
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from dynamic_search.api import register
 from converter.api import get_page_count
 from converter.api import get_available_transformations_choices
 from converter.api import convert
@@ -655,19 +654,3 @@ class RecentDocument(models.Model):
         ordering = ('-datetime_accessed',)
         verbose_name = _(u'recent document')
         verbose_name_plural = _(u'recent documents')
-
-
-# Register the fields that will be searchable
-register('document', Document, _(u'document'), [
-    {'name': u'document_type__name', 'title': _(u'Document type')},
-    {'name': u'documentversion__mimetype', 'title': _(u'MIME type')},
-    {'name': u'documentversion__filename', 'title': _(u'Filename')},
-    {'name': u'documentmetadata__metadata_type__name', 'title': _(u'Metadata type')},
-    {'name': u'documentmetadata__value', 'title': _(u'Metadata value')},
-    {'name': u'documentversion__documentpage__content', 'title': _(u'Content')},
-    {'name': u'description', 'title': _(u'Description')},
-    {'name': u'tags__name', 'title': _(u'Tags')},
-    {'name': u'comments__comment', 'title': _(u'Comments')},
-    ]
-)
-#register(Document, _(u'document'), ['document_type__name', 'file_mimetype', 'documentmetadata__value', 'documentpage__content', 'description', {'field_name':'file_filename', 'comparison':'iexact'}])

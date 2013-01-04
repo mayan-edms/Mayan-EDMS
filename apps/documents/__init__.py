@@ -13,6 +13,7 @@ from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
 from acls.api import class_permissions
+from dynamic_search.classes import SearchModel
 
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
@@ -203,3 +204,14 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_HISTORY_VIEW
 ])
+
+document_search = SearchModel('documents', 'Document')
+document_search.add_model_field('document_type__name', label=_(u'Document type'))
+document_search.add_model_field('documentversion__mimetype', label=_(u'MIME type'))
+document_search.add_model_field('documentversion__filename', label=_(u'Filename'))
+document_search.add_model_field('documentmetadata__metadata_type__name', label=_(u'Metadata type'))
+document_search.add_model_field('documentmetadata__value', label=_(u'Metadata value'))
+document_search.add_model_field('documentversion__documentpage__content', label=_(u'Content'))
+document_search.add_model_field('description', label=_(u'Description'))
+document_search.add_model_field('tags__name', label=_(u'Tags'))
+document_search.add_related_field('comments', 'Comment', 'comment', 'object_pk', label=_(u'Comments'))
