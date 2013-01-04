@@ -74,11 +74,11 @@ class SearchModel(object):
 
         for search_field in self.search_fields:
             search_dict.setdefault(search_field.get_model(), {
-                'query_entries': [],
+                'searches': [],
                 'label': search_field.label,
                 'return_value': search_field.return_value
             })
-            search_dict[search_field.get_model()]['query_entries'].append(
+            search_dict[search_field.get_model()]['searches'].append(
                 {
                     'field_name': [search_field.field],
                     'terms': self.normalize_query(query_string)
@@ -88,46 +88,53 @@ class SearchModel(object):
         logger.debug('search_dict: %s' % search_dict)
 
         for model, data in search_dict.items():
-            label = data['label']
-            queries = []
+            logger.debug('model: %s' % model)
 
-            for query_entry in data['query_entries']:
-                queries.extend(self.assemble_query(query_entry['terms'], query_entry['field_name']))
+            # Initialize per model result set
+            model_result_set = set()
 
-            # Initialize per SearchFiel model id result list
-            model_result_ids = set()
-        
-            for query in queries:
-                logger.debug('query: %s' % query)
-                
+            for query_entry in data['searches']:
+                # Fashion a list of queries for a field for each term
+                field_query_list = self.assemble_query(query_entry['terms'], query_entry['field_name'])
+
+                logger.debug('field_query_list: %s' % field_query_list)
+
+                # Initialize per field result set
+                field_result_set = set()
+               
                 # Get results per search field
-                field_result_ids = set(model.objects.filter(query).values_list(data['return_value'], flat=True))
+                for query in field_query_list:
+                    logger.debug('query: %s' % query)
+                    term_query_result_set = set(model.objects.filter(query).values_list(data['return_value'], flat=True))
                 
-                # Convert the QuerySet to a Python set and perform the
-                # AND operation on the program and not as a query.
-                # This operation ANDs all the SearchField results
-                # belonging to a single model, making sure to only include
-                # results in the model result variable if all the terms
-                # are found in a single field
-                if not model_result_ids:
-                    model_result_ids = field_result_ids
-                else:
-                    model_result_ids &= field_result_ids
+                    # Convert the QuerySet to a Python set and perform the
+                    # AND operation on the program and not as a query.
+                    # This operation ANDs all the field term results
+                    # belonging to a single model, making sure to only include
+                    # results in the final field result variable if all the terms
+                    # are found in a single field.
+                    if not field_result_set:
+                        field_result_set = term_query_result_set
+                    else:
+                        field_result_set &= term_query_result_set
 
-                logger.debug('field_result_ids: %s' % field_result_ids)
-                logger.debug('model_result_ids: %s' % model_result_ids)
+                    logger.debug('term_query_result_set: %s' % term_query_result_set)
+                    logger.debug('field_result_set: %s' % field_result_set)
+
+                model_result_set |= field_result_set
+                logger.debug('model_result_set: %s' % model_result_set)
 
             # Update the search result total count
-            result_count += len(model_result_ids)
+            result_count += len(model_result_set)
 
             # Search the field results return values (PK) in the SearchModel's model
-            results = self.model.objects.in_bulk(list(model_result_ids)[: LIMIT]).values()
+            results = self.model.objects.in_bulk(list(model_result_set)[: LIMIT]).values()
 
             # Update the search result visible count (limited by LIMIT config option)
             shown_result_count += len(results)
 
             if results:
-                model_list[label] = results
+                model_list[data['label']] = results
                 for result in results:
                     if result not in flat_list:
                         flat_list.append(result)
@@ -166,19 +173,11 @@ class SearchModel(object):
         for term in terms:
             or_query = None
             for field in search_fields:
-                if isinstance(field, types.StringTypes):
-                    comparison = u'icontains'
-                    field_name = field
-                elif isinstance(field, types.DictType):
-                    comparison = field.get('comparison', u'icontains')
-                    field_name = field.get('field_name', u'')
-
-                if field_name:
-                    q = Q(**{'%s__%s' % (field_name, comparison): term})
-                    if or_query is None:
-                        or_query = q
-                    else:
-                        or_query = or_query | q
+                q = Q(**{'%s__%s' % (field, 'icontains'): term})
+                if or_query is None:
+                    or_query = q
+                else:
+                    or_query = or_query | q
 
             queries.append(or_query)
         return queries
