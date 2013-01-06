@@ -174,6 +174,7 @@ class Installation(Singleton):
                     dictionary.update(
                         {
                             'repo_remotes': unicode(self.repo_remotes),
+                            'repo_remotes_urls': unicode(self.repo_remotes_urls),
                             'repo_head_reference': unicode(self.repo_head_reference),
                             'headcommit_hexsha': unicode(self.headcommit_hexsha),
                             'headcommit_authored_date': unicode(self.headcommit_authored_date),
