@@ -129,7 +129,7 @@ To test your installation, create a file called settings_local.py with the follo
 
 Execute Django’s development server using the ``runserver`` command to launch a local instance of Mayan EDMS::
 
-    $ ./manager.py runserver
+    $ ./manage.py runserver
 
 Point your browser to http://127:0.0.1:8000, if everything was installed
 correctly you should see the login screen.  After making sure everything
