@@ -27,14 +27,16 @@ items in the preceeding sets.
     # Find all items that don't depend on anything.
     extra_items_in_deps = reduce(set.union, data.itervalues()) - set(data.iterkeys())
     # Add empty dependences where needed
-    data.update({item:set() for item in extra_items_in_deps})
+    for item in extra_items_in_deps:
+        data[item] = set()
     while True:
         ordered = set(item for item, dep in data.iteritems() if not dep)
         if not ordered:
             break
         yield ordered
-        data = {item: (dep - ordered)
-                for item, dep in data.iteritems()
-                    if item not in ordered}
+        data = {}
+        for item, dep in data.iteritems():
+            if item not in ordered:
+                data[item] = dep - ordered
     assert not data, "Cyclic dependencies exist among these items:\n%s" % '\n'.join(repr(x) for x in data.iteritems())
 ## end of http://code.activestate.com/recipes/578272/ }}}
