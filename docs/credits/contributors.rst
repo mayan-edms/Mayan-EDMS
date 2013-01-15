@@ -36,6 +36,7 @@ Bug reports
 * Alexandru Kiss (usurel@gmail.com)
 * Nate Aune (nate@appsembler.com)
 * Fabio Duran Verdugo (fabiognome@gmail.com)
+* Ed Schipul (eschipul@schipul.com)
 
 Patches
 -------
@@ -44,6 +45,7 @@ Patches
 * Brian E (brian@realize.org)
 * Bertrand Bordage (https://github.com/BertrandBordage)
 * Iliya Georgiev (ikgeorgiev@gmail.com)
+* Lars Kruse (devel@sumpfralle.de)
 
 Suggestions
 -----------
@@ -54,6 +56,7 @@ Suggestions
 * Alexandru Kiss (usurel@gmail.com)
 * Stephen Knox
 * Nate Aune (nate@appsembler.com)
+* Ed Schipul (eschipul@schipul.com)
 
 
 Translations
@@ -123,3 +126,4 @@ Monetary donations
 * David Herring (https://github.com/abadger1406) - $100
 * David Herring (https://github.com/abadger1406) - $250
 * Michael Terretta (terretta@gmail.com) - $100
+* Ed Schipul (eschipul@schipul.com, http://www.schipul.com) - $100
