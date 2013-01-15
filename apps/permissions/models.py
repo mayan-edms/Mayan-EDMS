@@ -137,7 +137,12 @@ class StoredPermission(models.Model):
 
     def __init__(self, *args, **kwargs):
         super(StoredPermission, self).__init__(*args, **kwargs)
-        self.volatile_permission = Permission.objects.get({'pk': '%s.%s' % (self.namespace, self.name)}, proxy_only=True)
+        try:
+            self.volatile_permission = Permission.objects.get({'pk': '%s.%s' % (self.namespace, self.name)}, proxy_only=True)
+        except Permission.DoesNotExist:
+            # Must be a deprecated permission in the database that is no
+            # longer used in the current code
+            pass
 
     def __unicode__(self):
         return unicode(getattr(self, 'volatile_permission', self.name))
