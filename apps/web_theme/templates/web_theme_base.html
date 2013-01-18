@@ -77,14 +77,14 @@
                 {% if not web_theme_hide_menus %}
                     <div id="header">
                         <h1><a href="{% url home %}">{% block web_theme_project_name %}{% endblock %}</a></h1>
-                            <div id="user-navigation">
-                                <ul class="wat-cf">
-                                    {% block web_theme_user_navigation %}{% endblock %}
-                                </ul>
-                            </div>
                         <div id="main-navigation">
-                            <ul class="wat-cf">
+                            <ul class="wat-cf" style="width: 73%;">
                                 {% block web_theme_main_navigation %}{% endblock %}
+                            </ul>
+                        </div>
+                        <div id="user-navigation">
+                            <ul class="wat-cf">
+                                {% block web_theme_user_navigation %}{% endblock %}
                             </ul>
                         </div>
                     </div>
