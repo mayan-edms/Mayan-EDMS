@@ -21,6 +21,7 @@ def install_mayan():
     
     with cd(env.virtualenv_path):
         sudo('git clone git://github.com/rosarior/mayan.git %(repository_name)s' % env)
+        sudo('source bin/activate; pip install --upgrade distribute')
         sudo('source bin/activate; pip install -r %(repository_name)s/requirements/production.txt' % env)
 
 
