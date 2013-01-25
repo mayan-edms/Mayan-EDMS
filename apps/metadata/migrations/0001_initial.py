@@ -38,7 +38,7 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('document', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document'])),
             ('metadata_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['metadata.MetadataType'])),
-            ('value', self.gf('django.db.models.fields.CharField')(db_index=True, max_length=256, blank=True)),
+            ('value', self.gf('django.db.models.fields.CharField')(db_index=True, max_length=255, blank=True)),
         ))
         db.send_create_signal('metadata', ['DocumentMetadata'])
 
