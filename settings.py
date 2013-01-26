@@ -52,17 +52,19 @@ TIME_ZONE = 'America/Puerto_Rico'
 LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
+    ('ar', ugettext('Arabic')),
+    ('bg', ugettext('Bulgarian')),
+    ('de', ugettext('German (Germany)')),
     ('en', ugettext('English')),
     ('es', ugettext('Spanish')),
+    ('fr', ugettext('French')),
+    ('it', ugettext('Italian')),
+    ('nl', ugettext('Dutch')),
+    ('pl', ugettext('Polish')),
     ('pt', ugettext('Portuguese')),
     ('pt-br', ugettext('Portuguese (Brazil)')),
     ('ru', ugettext('Russian')),
-    ('it', ugettext('Italian')),
-    ('pl', ugettext('Polish')),
-    ('de', ugettext('German (Germany)')),
-    ('fr', ugettext('French')),
-    ('bg', ugettext('Bulgarian')),
-    ('nl', ugettext('Dutch')),
+    ('vi', ugettext('Vietnamese (Viet Nam)')),
 )
 
 SITE_ID = 1
