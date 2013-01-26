@@ -30,7 +30,7 @@ from main import __version__ as mayan_version
 from lock_manager import Lock, LockError
 from ocr.conf.settings import TESSERACT_PATH, UNPAPER_PATH, PDFTOTEXT_PATH
 
-from .classes import Property, PropertyNamespace
+from .classes import Property, PropertyNamespace, VirtualEnv, PIPNotFound
 
 FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
 FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
@@ -129,12 +129,23 @@ class Installation(Singleton):
             namespace.add_property('headcommit_committed_date', _(u'HEAD commit committed date'), time.asctime(time.gmtime(headcommit.committed_date)), report=True)
             namespace.add_property('headcommit_message', _(u'HEAD commit message'), headcommit.message, report=True)
 
+    def virtualenv_properties(self):
+        namespace = PropertyNamespace('venv', _(u'VirtuanEnv'))
+        try:
+            venv = VirtualEnv()
+        except PIPNotFound:
+            namespace.add_property('pip', 'pip', _(u'pip not found.'), report=True)
+        else:
+            for item, version, result in venv.get_results():
+                namespace.add_property(item, '%s (%s)' % (item, version), result, report=True)
+
     def set_properties(self):
         self._properties = SortedDict()
         self.os_properties()
         self.binary_dependencies()
         self.mayan_properties()
         self.git_properties()
+        self.virtualenv_properties()
 
     def __getattr__(self, name):
         self.set_properties()
