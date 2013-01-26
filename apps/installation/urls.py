@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('installation.views',
-    url(r'^details/$', 'installation_details', (), 'installation_details'),
+    url(r'^$', 'namespace_list', (), 'namespace_list'),
+    url(r'^(?P<namespace_id>\w+)/details/$', 'namespace_details', (), 'namespace_details'),
 )
