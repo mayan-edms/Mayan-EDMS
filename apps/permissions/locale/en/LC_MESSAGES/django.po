@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"POT-Creation-Date: 2013-01-25 20:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:17 models.py:214 views.py:40
+#: __init__.py:17 models.py:219 views.py:40
 msgid "roles"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: models.py:135 models.py:192 views.py:152 views.py:215
+#: models.py:135 models.py:197 views.py:152 views.py:215
 msgid "permission"
 msgstr ""
 
@@ -69,28 +69,28 @@ msgstr ""
 msgid "permissions"
 msgstr ""
 
-#: models.py:200
+#: models.py:205
 msgid "permission holder"
 msgstr ""
 
-#: models.py:201
+#: models.py:206
 msgid "permission holders"
 msgstr ""
 
-#: models.py:209
+#: models.py:214
 msgid "label"
 msgstr ""
 
-#: models.py:213 models.py:244 views.py:76 views.py:93 views.py:117
+#: models.py:218 models.py:249 views.py:76 views.py:93 views.py:117
 #: views.py:334
 msgid "role"
 msgstr ""
 
-#: models.py:260
+#: models.py:265
 msgid "role member"
 msgstr ""
 
-#: models.py:261
+#: models.py:266
 msgid "role members"
 msgstr ""
 

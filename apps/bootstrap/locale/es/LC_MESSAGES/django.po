@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:20-0400\n"
-"PO-Revision-Date: 2012-12-12 06:04+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2012-12-12 07:20+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:50
@@ -61,19 +60,19 @@ msgstr "grabar la configuración actual"
 
 #: links.py:19
 msgid "export"
-msgstr ""
+msgstr "exportar"
 
 #: links.py:20
 msgid "import from file"
-msgstr ""
+msgstr "importar desde el archivo"
 
 #: links.py:21
 msgid "import from URL"
-msgstr ""
+msgstr "importar desde URL"
 
 #: links.py:22
 msgid "sync with repository"
-msgstr ""
+msgstr "sincronizar con el repositorio"
 
 #: links.py:23
 msgid "erase database"
@@ -97,7 +96,7 @@ msgstr "nombre"
 
 #: models.py:31
 msgid "slug"
-msgstr ""
+msgstr "identificador"
 
 #: models.py:32 views.py:34
 msgid "description"
@@ -109,9 +108,7 @@ msgstr "código"
 
 #: models.py:33
 msgid "These are the actual database structure creation instructions."
-msgstr ""
-"Estas son la instrucciones reales para la creación de las estructuras de la "
-"base de datos."
+msgstr "Estas son la instrucciones reales para la creación de las estructuras de la base de datos."
 
 #: models.py:34 views.py:35
 msgid "type"
@@ -155,8 +152,7 @@ msgstr "Ejecutar configuraciones de arranque"
 
 #: permissions.py:14
 msgid "Dump the current project\\s setup into a bootstrap setup"
-msgstr ""
-"Grabar la configuración actual del projecto en una configuración de arranque"
+msgstr "Grabar la configuración actual del projecto en una configuración de arranque"
 
 #: permissions.py:15
 msgid "Export bootstrap setups as files"
@@ -180,9 +176,7 @@ msgstr "Arranque"
 
 #: registry.py:8
 msgid "Provides pre configured setups for indexes, document types, tags, etc."
-msgstr ""
-"Proporciona configuraciones pre ajustadas para los índices, tipos de "
-"documentos, etiquetas, etc"
+msgstr "Proporciona configuraciones pre ajustadas para los índices, tipos de documentos, etiquetas, etc"
 
 #: views.py:50
 msgid "Bootstrap setup created successfully"
@@ -301,18 +295,13 @@ msgstr "Base de datos borrada exitosamente."
 #: views.py:310
 msgid ""
 "Are you sure you wish to erase the entire database and document storage?"
-msgstr ""
-"¿Está seguro que desea borrar de la base de datos completamente y el "
-"almacenamiento de documentos?"
+msgstr "¿Está seguro que desea borrar de la base de datos completamente y el almacenamiento de documentos?"
 
 #: views.py:311
 msgid ""
 "All documents, sources, metadata, metadata types, set, tags, indexes and "
 "logs will be lost irreversibly!"
-msgstr ""
-"¡Todos los documentos, las fuentes, los metadatos, los tipos de metadatos, "
-"los conjuntos de metadatos, las etiquetas, los índices y vitacoras se "
-"perderán irreversiblemente!"
+msgstr "¡Todos los documentos, las fuentes, los metadatos, los tipos de metadatos, los conjuntos de metadatos, las etiquetas, los índices y vitacoras se perderán irreversiblemente!"
 
 #: views.py:328
 msgid "Bootstrap repository successfully synchronized."

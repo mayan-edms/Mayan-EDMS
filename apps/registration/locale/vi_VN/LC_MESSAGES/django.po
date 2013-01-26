@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Trung Phan Minh <navmobile@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-01-24 08:37+0000\n"
+"Last-Translator: trungpm <navmobile@gmail.com>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/mayan-edms/language/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:15
+msgid "Registration"
+msgstr "Đăng ký"
+
+#: forms.py:13
+msgid "Your name:"
+msgstr "Họ Tên:"
+
+#: forms.py:18
+msgid "Your email:"
+msgstr "Email:"
+
+#: forms.py:23
+msgid "Company name:"
+msgstr "Công ty:"
+
+#: forms.py:28
+msgid "Industry:"
+msgstr "Lĩnh vực công nghiệp:"
+
+#: forms.py:33
+msgid "Company website:"
+msgstr "website công ty:"
+
+#: forms.py:38
+msgid "Country:"
+msgstr "Nước:"
+
+#: forms.py:46
+msgid "Other information:"
+msgstr "Thông tin khác"
+
+#: models.py:20
+msgid "registered"
+msgstr "đã đăng ký"
+
+#: models.py:21
+msgid "registration data"
+msgstr "dữ liệu đăng ký"
+
+#: models.py:47
+msgid "No name"
+msgstr "Không tên"
+
+#: models.py:86
+msgid "registration properties"
+msgstr "Các đặc điểm đăng ký"
+
+#: views.py:22
+msgid "Thank you for registering."
+msgstr "Cám ơn đã đăng ký."
+
+#: views.py:25
+msgid "Your copy is already registered."
+msgstr "Bản sao của bạn đã được đăng ký."
+
+#: views.py:28
+#, python-format
+msgid "Error submiting form; %s."
+msgstr "Lỗi cập nhật form; %s"
+
+#: views.py:33
+msgid "registration form"
+msgstr "form đăng ký"
+
+#: templatetags/registration_tags.py:18
+msgid "Unregistered"
+msgstr "Hủy đăng ký"

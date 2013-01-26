@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"POT-Creation-Date: 2013-01-25 20:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,195 +17,231 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: __init__.py:62
+#: __init__.py:63
 msgid "all documents"
 msgstr ""
 
-#: __init__.py:63 models.py:657 views.py:872
+#: __init__.py:64 models.py:656 views.py:872
 msgid "recent documents"
 msgstr ""
 
-#: __init__.py:64
+#: __init__.py:65
 msgid "upload new documents"
 msgstr ""
 
-#: __init__.py:65
+#: __init__.py:66
 msgid "clone metadata"
 msgstr ""
 
-#: __init__.py:66
+#: __init__.py:67
 msgid "details"
 msgstr ""
 
-#: __init__.py:67
+#: __init__.py:68
 msgid "properties"
 msgstr ""
 
-#: __init__.py:68 __init__.py:69 __init__.py:91 __init__.py:115
-#: __init__.py:121
+#: __init__.py:69 __init__.py:70 __init__.py:92 __init__.py:116
+#: __init__.py:122
 msgid "delete"
 msgstr ""
 
-#: __init__.py:70 __init__.py:90 __init__.py:114 __init__.py:120
+#: __init__.py:71 __init__.py:91 __init__.py:115 __init__.py:121
 msgid "edit"
 msgstr ""
 
-#: __init__.py:71
+#: __init__.py:72
 msgid "preview"
 msgstr ""
 
-#: __init__.py:72 __init__.py:73 __init__.py:74
+#: __init__.py:73 __init__.py:74 __init__.py:75
 msgid "download"
 msgstr ""
 
-#: __init__.py:75
+#: __init__.py:76
 msgid "find duplicates"
 msgstr ""
 
-#: __init__.py:76
+#: __init__.py:77
 msgid "find all duplicates"
 msgstr ""
 
-#: __init__.py:76
+#: __init__.py:77
 msgid ""
 "Search all the documents' checksums and return a list of the exact matches."
 msgstr ""
 
-#: __init__.py:77
+#: __init__.py:78
 msgid "update office documents' page count"
 msgstr ""
 
-#: __init__.py:77
+#: __init__.py:78
 msgid ""
 "Update the page count of the office type documents.  This is useful when "
 "enabling office document support after there were already office type "
 "documents in the database."
 msgstr ""
 
-#: __init__.py:78 __init__.py:79
+#: __init__.py:79 __init__.py:80
 msgid "clear transformations"
 msgstr ""
 
-#: __init__.py:80
+#: __init__.py:81
 msgid "print"
 msgstr ""
 
-#: __init__.py:81
+#: __init__.py:82
 msgid "history"
 msgstr ""
 
-#: __init__.py:82
+#: __init__.py:83
 msgid "Find missing document files"
 msgstr ""
 
-#: __init__.py:85
+#: __init__.py:86
 msgid "Clear the document image cache"
 msgstr ""
 
-#: __init__.py:85
+#: __init__.py:86
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
 msgstr ""
 
-#: __init__.py:88
+#: __init__.py:89
 msgid "page transformations"
 msgstr ""
 
-#: __init__.py:89
+#: __init__.py:90
 msgid "create new transformation"
 msgstr ""
 
-#: __init__.py:93
+#: __init__.py:94
 msgid "page image"
 msgstr ""
 
-#: __init__.py:94
+#: __init__.py:95
 msgid "page text"
 msgstr ""
 
-#: __init__.py:95
+#: __init__.py:96
 msgid "edit page text"
 msgstr ""
 
-#: __init__.py:96
+#: __init__.py:97
 msgid "next page"
 msgstr ""
 
-#: __init__.py:97
+#: __init__.py:98
 msgid "previous page"
 msgstr ""
 
-#: __init__.py:98
+#: __init__.py:99
 msgid "first page"
 msgstr ""
 
-#: __init__.py:99
+#: __init__.py:100
 msgid "last page"
 msgstr ""
 
-#: __init__.py:100
+#: __init__.py:101
 msgid "zoom in"
 msgstr ""
 
-#: __init__.py:101
+#: __init__.py:102
 msgid "zoom out"
 msgstr ""
 
-#: __init__.py:102
+#: __init__.py:103
 msgid "rotate right"
 msgstr ""
 
-#: __init__.py:103
+#: __init__.py:104
 msgid "rotate left"
 msgstr ""
 
-#: __init__.py:104
+#: __init__.py:105
 msgid "reset view"
 msgstr ""
 
-#: __init__.py:107
+#: __init__.py:108
 msgid "versions"
 msgstr ""
 
-#: __init__.py:108
+#: __init__.py:109
 msgid "revert"
 msgstr ""
 
-#: __init__.py:111
+#: __init__.py:112
 msgid "document type list"
 msgstr ""
 
-#: __init__.py:112 views.py:1051
+#: __init__.py:113 views.py:1051
 msgid "document types"
 msgstr ""
 
-#: __init__.py:113
+#: __init__.py:114
 msgid "documents of this type"
 msgstr ""
 
-#: __init__.py:116 views.py:1162
+#: __init__.py:117 views.py:1162
 msgid "create document type"
 msgstr ""
 
-#: __init__.py:118
+#: __init__.py:119
 msgid "filenames"
 msgstr ""
 
-#: __init__.py:119
+#: __init__.py:120
 msgid "add filename to document type"
 msgstr ""
 
-#: __init__.py:161 permissions.py:7
+#: __init__.py:162 permissions.py:7
 msgid "Documents"
 msgstr ""
 
-#: __init__.py:163 __init__.py:173 models.py:96 views.py:79
+#: __init__.py:164 __init__.py:174 models.py:95 views.py:79
 msgid "documents"
 msgstr ""
 
-#: __init__.py:166
+#: __init__.py:167
 msgid "thumbnail"
+msgstr ""
+
+#: __init__.py:209
+msgid "Document type"
+msgstr ""
+
+#: __init__.py:210
+msgid "MIME type"
+msgstr ""
+
+#: __init__.py:211 views.py:132
+msgid "Filename"
+msgstr ""
+
+#: __init__.py:212
+msgid "Metadata type"
+msgstr ""
+
+#: __init__.py:213
+msgid "Metadata value"
+msgstr ""
+
+#: __init__.py:214
+msgid "Content"
+msgstr ""
+
+#: __init__.py:215
+msgid "Description"
+msgstr ""
+
+#: __init__.py:216
+msgid "Tags"
+msgstr ""
+
+#: __init__.py:217
+msgid "Comments"
 msgstr ""
 
 #: events.py:5
@@ -351,210 +387,173 @@ msgstr ""
 msgid "hotfix"
 msgstr ""
 
-#: models.py:62
+#: models.py:61
 msgid "name"
 msgstr ""
 
-#: models.py:73 models.py:83 models.py:548 views.py:1069 views.py:1098
+#: models.py:72 models.py:82 models.py:547 views.py:1069 views.py:1098
 #: views.py:1127 views.py:1132 views.py:1175 views.py:1221 views.py:1255
 #: views.py:1296
 msgid "document type"
 msgstr ""
 
-#: models.py:74
+#: models.py:73
 msgid "documents types"
 msgstr ""
 
-#: models.py:84
+#: models.py:83
 msgid "description"
 msgstr ""
 
-#: models.py:85
+#: models.py:84
 msgid "added"
 msgstr ""
 
-#: models.py:95 models.py:313 models.py:646 models.py:661 views.py:227
-#: views.py:351
+#: models.py:94 models.py:312 models.py:645 views.py:227 views.py:351
 msgid "document"
 msgstr ""
 
-#: models.py:300
+#: models.py:299
 #, python-format
 msgid "Major %(major)i.%(minor)i, (new release)"
 msgstr ""
 
-#: models.py:301
+#: models.py:300
 #, python-format
 msgid "Minor %(major)i.%(minor)i, (some updates)"
 msgstr ""
 
-#: models.py:302
+#: models.py:301
 #, python-format
 msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
 msgstr ""
 
-#: models.py:314
+#: models.py:313
 msgid "mayor"
 msgstr ""
 
-#: models.py:315
+#: models.py:314
 msgid "minor"
 msgstr ""
 
-#: models.py:316
+#: models.py:315
 msgid "micro"
 msgstr ""
 
-#: models.py:317
+#: models.py:316
 msgid "release level"
 msgstr ""
 
-#: models.py:318
+#: models.py:317
 msgid "serial"
 msgstr ""
 
-#: models.py:319
+#: models.py:318
 msgid "timestamp"
 msgstr ""
 
-#: models.py:320 views.py:1361
+#: models.py:319 views.py:1361
 msgid "comment"
 msgstr ""
 
-#: models.py:323
+#: models.py:322
 msgid "file"
 msgstr ""
 
-#: models.py:327
+#: models.py:326
 msgid "checksum"
 msgstr ""
 
-#: models.py:331 models.py:332 models.py:565
+#: models.py:330 models.py:331 models.py:564
 msgid "document version"
 msgstr ""
 
-#: models.py:424
+#: models.py:423
 msgid ""
 "This document's file format is not known, the page count has therefore "
 "defaulted to 1."
 msgstr ""
 
-#: models.py:549 views.py:1357
+#: models.py:548 views.py:1357
 msgid "filename"
 msgstr ""
 
-#: models.py:550 views.py:1182
+#: models.py:549 views.py:1182
 msgid "enabled"
 msgstr ""
 
-#: models.py:557
+#: models.py:556
 msgid "document type quick rename filename"
 msgstr ""
 
-#: models.py:558
+#: models.py:557
 msgid "document types quick rename filenames"
 msgstr ""
 
-#: models.py:566
+#: models.py:565
 msgid "content"
 msgstr ""
 
-#: models.py:567
+#: models.py:566
 msgid "page label"
 msgstr ""
 
-#: models.py:568
+#: models.py:567
 msgid "page number"
 msgstr ""
 
-#: models.py:571
+#: models.py:570
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr ""
 
-#: models.py:579 models.py:625
+#: models.py:578 models.py:624
 msgid "document page"
 msgstr ""
 
-#: models.py:580
+#: models.py:579
 msgid "document pages"
 msgstr ""
 
-#: models.py:600
+#: models.py:599
 msgid "Enter a valid value."
 msgstr ""
 
-#: models.py:626 views.py:450
+#: models.py:625 views.py:450
 msgid "order"
 msgstr ""
 
-#: models.py:627 views.py:451 views.py:512 views.py:543
+#: models.py:626 views.py:451 views.py:512 views.py:543
 msgid "transformation"
 msgstr ""
 
-#: models.py:628 views.py:452
+#: models.py:627 views.py:452
 msgid "arguments"
 msgstr ""
 
-#: models.py:628
+#: models.py:627
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr ""
 
-#: models.py:636
+#: models.py:635
 msgid "document page transformation"
 msgstr ""
 
-#: models.py:637
+#: models.py:636
 msgid "document page transformations"
 msgstr ""
 
-#: models.py:645
+#: models.py:644
 msgid "user"
 msgstr ""
 
-#: models.py:647
+#: models.py:646
 msgid "accessed"
 msgstr ""
 
-#: models.py:656
+#: models.py:655
 msgid "recent document"
-msgstr ""
-
-#: models.py:662
-msgid "Document type"
-msgstr ""
-
-#: models.py:663
-msgid "MIME type"
-msgstr ""
-
-#: models.py:664 views.py:132
-msgid "Filename"
-msgstr ""
-
-#: models.py:665
-msgid "Metadata type"
-msgstr ""
-
-#: models.py:666
-msgid "Metadata value"
-msgstr ""
-
-#: models.py:667
-msgid "Content"
-msgstr ""
-
-#: models.py:668
-msgid "Description"
-msgstr ""
-
-#: models.py:669
-msgid "Tags"
-msgstr ""
-
-#: models.py:670
-msgid "Comments"
 msgstr ""
 
 #: permissions.py:9

@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: 2012-12-12 06:14+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:31 __init__.py:46 __init__.py:48 models.py:64 views.py:39
@@ -77,17 +76,13 @@ msgstr "Cuenta máxima de sufijo (%s) alcanzada."
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error en la expresión de actualización de indexación: %(expression)s; "
-"%(exception)s "
+msgstr "Error en la expresión de actualización de indexación: %(expression)s; %(exception)s "
 
 #: api.py:94 api.py:109
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error actualizando el indice de documento, expresión: %(expression)s; "
-"%(exception)s "
+msgstr "Error actualizando el indice de documento, expresión: %(expression)s; %(exception)s "
 
 #: api.py:151
 #, python-format
@@ -104,9 +99,7 @@ msgstr "No se puede crear el directorio de indexación; %s"
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
-msgstr ""
-"No se puede crear un enlace simbólico, el archivo existe y no puede "
-"eliminarse: %(filepath)s; %(exc)s "
+msgstr "No se puede crear un enlace simbólico, el archivo existe y no puede eliminarse: %(filepath)s; %(exc)s "
 
 #: filesystem.py:71
 #, python-format
@@ -149,10 +142,9 @@ msgid "enabled"
 msgstr "habilitado"
 
 #: models.py:20
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Hace que este índice sea visible y actualizado cuando los datos de "
-"documentos cambien."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
 
 #: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
 #: views.py:198 views.py:225 views.py:255 views.py:295
@@ -169,9 +161,7 @@ msgstr "Introduzca una expresión de python para ser evaluada."
 
 #: models.py:72
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Causa que este nodo sea visible y actualizado cuando los datos de los "
-"documentos son cambiados."
+msgstr "Causa que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
 
 #: models.py:73
 msgid "link documents"
@@ -179,11 +169,9 @@ msgstr "enlace de documentos"
 
 #: models.py:73
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Marque esta opción para que el nodo actue como un contenedor de documentos y "
-"no como un padre para mas nodos secundarios."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Marque esta opción para que el nodo actue como un contenedor de documentos y no como un padre para mas nodos secundarios."
 
 #: models.py:83 models.py:89
 msgid "index template node"
@@ -363,9 +351,7 @@ msgstr "¿Está seguro que desea reconstruir todos los índices?"
 
 #: views.py:395
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
-"ejecutarse."
+msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:401
 msgid "Index rebuild completed successfully."
@@ -383,11 +369,9 @@ msgstr "índices que contienen: %s"
 
 #: conf/settings.py:22
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
-msgstr ""
-"Un diccionario que asigna el nombre del índice y en qué parte del sistema de "
-"archivos dicho índice se va a reflejar."
+"A dictionary that maps the index name and where on the filesystem that index"
+" will be mirrored."
+msgstr "Un diccionario que asigna el nombre del índice y en qué parte del sistema de archivos dicho índice se va a reflejar."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
@@ -395,5 +379,4 @@ msgstr "¿Que son los índices?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr ""
-"Los índices agrupan documentos en una estructura jerárquica tipo árbol. "
+msgstr "Los índices agrupan documentos en una estructura jerárquica tipo árbol. "

@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+#   <patrick.hetu@gmail.com>, 2012.
+# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:20-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2012-12-12 06:04+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: forms.py:50
 msgid "Bootstrap setup file"
@@ -52,7 +53,7 @@ msgstr ""
 
 #: links.py:17
 msgid "execute"
-msgstr ""
+msgstr "exécuter"
 
 #: links.py:18
 msgid "dump current setup"
@@ -76,7 +77,7 @@ msgstr ""
 
 #: links.py:23
 msgid "erase database"
-msgstr ""
+msgstr "Supprimer la base de données"
 
 #: literals.py:20
 msgid "JSON"
@@ -100,7 +101,7 @@ msgstr ""
 
 #: models.py:32 views.py:34
 msgid "description"
-msgstr ""
+msgstr "description"
 
 #: models.py:33
 msgid "fixture"
@@ -120,7 +121,7 @@ msgstr ""
 
 #: models.py:104 views.py:90 views.py:119 views.py:144 views.py:172
 msgid "bootstrap setup"
-msgstr ""
+msgstr "pré-configuration"
 
 #: models.py:105 views.py:31
 msgid "bootstrap setups"
@@ -128,7 +129,7 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Database bootstrap"
-msgstr ""
+msgstr "Pré-configuration de base de données"
 
 #: permissions.py:9
 msgid "View bootstrap setups"
@@ -168,7 +169,7 @@ msgstr ""
 
 #: permissions.py:18
 msgid "Erase the entire database and document storage"
-msgstr ""
+msgstr "Effacer l'ensemble de la base de donnée et tous les documents stockés"
 
 #: registry.py:7
 msgid "Bootstrap"
@@ -227,12 +228,12 @@ msgstr ""
 #: views.py:166
 #, python-format
 msgid "Error executing bootstrap setup; %s"
-msgstr ""
+msgstr "Erreur lors de l'exécution de la pré-configuration; %s"
 
 #: views.py:168
 #, python-format
 msgid "Bootstrap setup \"%s\" executed successfully."
-msgstr ""
+msgstr "Pré-configuration \"%s\" effectuée avec succès."
 
 #: views.py:180
 #, python-format
@@ -286,22 +287,22 @@ msgstr ""
 #: views.py:298
 #, python-format
 msgid "Error erasing database; %s"
-msgstr ""
+msgstr "Erreur lors de l'effacement de la base de données; %s"
 
 #: views.py:300
 msgid "Database erased successfully."
-msgstr ""
+msgstr "Base de Données effacée avec succès."
 
 #: views.py:310
 msgid ""
 "Are you sure you wish to erase the entire database and document storage?"
-msgstr ""
+msgstr "Êtes vous certain de vouloir effacer l'intégralité de la base de données et des documents stockés?"
 
 #: views.py:311
 msgid ""
 "All documents, sources, metadata, metadata types, set, tags, indexes and "
 "logs will be lost irreversibly!"
-msgstr ""
+msgstr "Tous les documents, sources, métadonnées, types de métadonnées, jeux, étiquettes, indexes et logs seron définitivement perdus!"
 
 #: views.py:328
 msgid "Bootstrap repository successfully synchronized."

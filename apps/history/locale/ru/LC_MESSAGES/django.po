@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-06-17 22:12+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-10-09 11:53+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:17
 msgid "date and time"
@@ -26,7 +24,7 @@ msgstr "дата и время"
 
 #: __init__.py:21
 msgid "type"
-msgstr ""
+msgstr "тип"
 
 #: __init__.py:25
 msgid "summary"
@@ -38,7 +36,7 @@ msgstr "история"
 
 #: links.py:8
 msgid "details"
-msgstr ""
+msgstr "детали"
 
 #: models.py:18
 msgid "namespace"
@@ -82,7 +80,7 @@ msgstr "события"
 
 #: views.py:40
 msgid "object link"
-msgstr ""
+msgstr "ссылка на объект"
 
 #: views.py:68
 #, python-format
@@ -107,11 +105,11 @@ msgstr "Тип события"
 
 #: views.py:90
 msgid "Additional details"
-msgstr ""
+msgstr "Дополнительная информация"
 
 #: views.py:90
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: views.py:94
 #, python-format
@@ -121,4 +119,4 @@ msgstr "подробности: %s"
 #: views.py:106
 #, python-format
 msgid "history events of type: %s"
-msgstr ""
+msgstr "История событий типа %s"

@@ -1,87 +1,88 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Lucas Weel <ljj.weel@gmail.com>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:20-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-01-14 14:17+0000\n"
+"Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:15
 msgid "Registration"
-msgstr ""
+msgstr "Registratie"
 
 #: forms.py:13
 msgid "Your name:"
-msgstr ""
+msgstr "Uw naam:"
 
 #: forms.py:18
 msgid "Your email:"
-msgstr ""
+msgstr "Uw email-adres:"
 
 #: forms.py:23
 msgid "Company name:"
-msgstr ""
+msgstr "Bedrijfsnaam:"
 
 #: forms.py:28
 msgid "Industry:"
-msgstr ""
+msgstr "Branche:"
 
 #: forms.py:33
 msgid "Company website:"
-msgstr ""
+msgstr "Bedrijfswebsite"
 
 #: forms.py:38
 msgid "Country:"
-msgstr ""
+msgstr "Land:"
 
 #: forms.py:46
 msgid "Other information:"
-msgstr ""
+msgstr "Verdere informatie:"
 
 #: models.py:20
 msgid "registered"
-msgstr ""
+msgstr "geregistreerd"
 
 #: models.py:21
 msgid "registration data"
-msgstr ""
+msgstr "registratiegegevens"
 
 #: models.py:47
 msgid "No name"
-msgstr ""
+msgstr "Geen naam"
 
 #: models.py:86
 msgid "registration properties"
-msgstr ""
+msgstr "registratie eigenschappen"
 
 #: views.py:22
 msgid "Thank you for registering."
-msgstr ""
+msgstr "Dank voor uw registratie"
 
 #: views.py:25
 msgid "Your copy is already registered."
-msgstr ""
+msgstr "Uw sofware installatie is reeds geregistreerd"
 
 #: views.py:28
 #, python-format
 msgid "Error submiting form; %s."
-msgstr ""
+msgstr "Fout bij bevestiging. Foutmelding: %s"
 
 #: views.py:33
 msgid "registration form"
-msgstr ""
+msgstr "registratieformulier"
 
 #: templatetags/registration_tags.py:18
 msgid "Unregistered"
-msgstr ""
+msgstr "Niet geregistreerd"

@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-01-25 23:57+0000\n"
+"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: __init__.py:18
+msgid "folder list"
+msgstr "قائمة المجلدات"
+
+#: __init__.py:19 views.py:77
+msgid "create folder"
+msgstr "إنشاء مجلد"
+
+#: __init__.py:20
+msgid "edit"
+msgstr "تحرير"
+
+#: __init__.py:21
+msgid "delete"
+msgstr "حذف"
+
+#: __init__.py:22
+msgid "remove from folder"
+msgstr "إزالة من المجلد"
+
+#: __init__.py:23
+msgid "folder documents"
+msgstr "وثائق المجلد"
+
+#: __init__.py:24
+msgid "add to a folder"
+msgstr "إضافة إلى مجلد"
+
+#: __init__.py:25
+msgid "add to folder"
+msgstr ""
+
+#: __init__.py:26 __init__.py:36 models.py:43 views.py:34
+msgid "folders"
+msgstr "المجلدات"
+
+#: __init__.py:28
+msgid "ACLs"
+msgstr ""
+
+#: forms.py:38
+msgid "Folder"
+msgstr ""
+
+#: models.py:11
+msgid "title"
+msgstr "عنوان"
+
+#: models.py:12
+msgid "user"
+msgstr "مستخدم"
+
+#: models.py:13
+msgid "datetime created"
+msgstr "تاريخ و وقت الانشاء"
+
+#: models.py:42 models.py:47 views.py:108 views.py:137 views.py:162
+msgid "folder"
+msgstr "ملف"
+
+#: models.py:48 views.py:209
+msgid "document"
+msgstr "وثيقة"
+
+#: models.py:54 views.py:279
+msgid "folder document"
+msgstr "مجلد الوثيقة"
+
+#: models.py:55
+msgid "folders documents"
+msgstr "مجلد الوثائق"
+
+#: permissions.py:7
+msgid "Folders"
+msgstr ""
+
+#: permissions.py:9
+msgid "Create new folders"
+msgstr ""
+
+#: permissions.py:10
+msgid "Edit new folders"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete new folders"
+msgstr ""
+
+#: permissions.py:12
+msgid "Remove documents from folders"
+msgstr ""
+
+#: permissions.py:13
+msgid "View existing folders"
+msgstr ""
+
+#: permissions.py:14
+msgid "Add documents to existing folders"
+msgstr ""
+
+#: views.py:37
+msgid "created"
+msgstr "أنشئت"
+
+#: views.py:38
+msgid "documents"
+msgstr "وثائق"
+
+#: views.py:69
+msgid "Folder created successfully"
+msgstr "تم انشاء المجلد بنجاح"
+
+#: views.py:72
+#, python-format
+msgid "A folder named: %s, already exists."
+msgstr "مجلد باسم: %s ، موجود مسبقا."
+
+#: views.py:97
+msgid "Folder edited successfully"
+msgstr "المجلد تم تتعديله بنجاح"
+
+#: views.py:100
+#, python-format
+msgid "Error editing folder; %s"
+msgstr "خطأ بتعديل المجلد %s"
+
+#: views.py:105
+#, python-format
+msgid "edit folder: %s"
+msgstr "تعديل المجلد %s"
+
+#: views.py:129
+#, python-format
+msgid "Folder: %s deleted successfully."
+msgstr "تم مسح المجلد %s بنجاح"
+
+#: views.py:131
+#, python-format
+msgid "Folder: %(folder)s delete error: %(error)s"
+msgstr "خطأ بمسح المجلد %(folder)s  : %(error)s"
+
+#: views.py:142
+#, python-format
+msgid "Are you sure you with to delete the folder: %s?"
+msgstr "هل أنت متأكد من حذف المجلد: %s ؟"
+
+#: views.py:168
+#, python-format
+msgid "documents in folder: %s"
+msgstr "الوثائق بالمجلد: %s"
+
+#: views.py:180
+msgid "Must provide at least one document."
+msgstr ""
+
+#: views.py:198
+#, python-format
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgstr "الوثيقة %(document)s  تم اضافتها للمجلد %(folder)s بنجاح"
+
+#: views.py:201
+#, python-format
+msgid "Document: %(document)s is already in folder: %(folder)s."
+msgstr "الوثيقة %(document)s  موجودة بالمجلد %(folder)s مسبقاً"
+
+#: views.py:217
+#, python-format
+msgid "Add document: %s to folder."
+msgstr ""
+
+#: views.py:219
+#, python-format
+msgid "Add documents: %s to folder."
+msgstr ""
+
+#: views.py:237
+#, python-format
+msgid "folders containing: %s"
+msgstr "المجلد يحتوي: %s"
+
+#: views.py:253
+msgid "Must provide at least one folder document."
+msgstr "يجب أن توفر ما لا يقل عن مجلد واحد."
+
+#: views.py:271
+#, python-format
+msgid "Document: %s removed successfully."
+msgstr "الوثيقة %s أزيلت بنجاح"
+
+#: views.py:273
+#, python-format
+msgid "Document: %(document)s delete error: %(error)s"
+msgstr "خطأ بمسح الوثيقة %(document)s  : %(error)s"
+
+#: views.py:287
+#, python-format
+msgid ""
+"Are you sure you wish to remove the document: %(document)s from the folder "
+"\"%(folder)s\"?"
+msgstr "هل أنت متأكد أنك ترغب في إزالة الوثيقة %(document)s من المجلد \"%(folder)s\"؟"
+
+#: views.py:290
+#, python-format
+msgid ""
+"Are you sure you wish to remove the documents: %(documents)s from the folder"
+" \"%(folder)s\"?"
+msgstr "هل أنت متأكد أنك ترغب في إزالة الوثائق%(documents)s من المجلد \"%(folder)s\"؟"
+
+#: templates/folders_help.html:3
+msgid "What are folders?"
+msgstr "What are folders?"
+
+#: templates/folders_help.html:4
+msgid ""
+"These folders can also be described as user folders.  They are a way to let "
+"individual users create their own document organization methods.  Folders "
+"created by one user and the documents contained by them don't affect any "
+"other user folders or documents."
+msgstr ""
+
+#: templatetags/folder_tags.py:17
+msgid "Add document to a folder"
+msgstr ""

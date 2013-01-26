@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Lucas Weel <ljj.weel@gmail.com>, 2012.
+# Lucas Weel <ljj.weel@gmail.com>, 2012-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-09-22 12:50+0000\n"
+"PO-Revision-Date: 2013-01-12 11:01+0000\n"
 "Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:62
@@ -28,9 +27,8 @@ msgid "recent documents"
 msgstr "recente documenten"
 
 #: __init__.py:64
-#, fuzzy
 msgid "upload new documents"
-msgstr "document duplicaten"
+msgstr "upload nieuwe documenten"
 
 #: __init__.py:65
 msgid "clone metadata"
@@ -72,9 +70,7 @@ msgstr "vind alle duplicaten"
 #: __init__.py:76
 msgid ""
 "Search all the documents' checksums and return a list of the exact matches."
-msgstr ""
-"Doorzoek door alle documenten op checksum, geeft een lijst met exacte "
-"overeenkomenden "
+msgstr "Doorzoek door alle documenten op checksum, geeft een lijst met exacte overeenkomenden "
 
 #: __init__.py:77
 msgid "update office documents' page count"
@@ -85,11 +81,7 @@ msgid ""
 "Update the page count of the office type documents.  This is useful when "
 "enabling office document support after there were already office type "
 "documents in the database."
-msgstr ""
-"Verversen van de paginanummering voor Office-documenten. Dit is handig "
-"wanneer u de ondersteuning voor Office-documenten heeft ingeschakeld en de "
-"paginanummering van de al aanwezige Office-documenten automatisch wilt "
-"bijwerken."
+msgstr "Verversen van de paginanummering voor Office-documenten. Dit is handig wanneer u de ondersteuning voor Office-documenten heeft ingeschakeld en de paginanummering van de al aanwezige Office-documenten automatisch wilt bijwerken."
 
 #: __init__.py:78 __init__.py:79
 msgid "clear transformations"
@@ -115,9 +107,7 @@ msgstr "Opschonen van documentafbeeldingen voorraad."
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Opschonen van de grafische afbeeldingen, die gebuikt worden bij het "
-"versnellen van de documentweergave en interactive transformatie resultaten."
+msgstr "Opschonen van de grafische afbeeldingen, die gebuikt worden bij het versnellen van de documentweergave en interactive transformatie resultaten."
 
 #: __init__.py:88
 msgid "page transformations"
@@ -230,10 +220,8 @@ msgstr "Document \"%(content_object)s\" aangemaakt door %(fullname)s."
 
 #: events.py:7
 #, python-format
-msgid ""
-"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
-msgstr ""
-"Document \"%(content_object)s\" aangemaakt op %(datetime)s door %(fullname)s."
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgstr "Document \"%(content_object)s\" aangemaakt op %(datetime)s door %(fullname)s."
 
 #: events.py:13
 msgid "Document edited"
@@ -247,11 +235,9 @@ msgstr "Document \"%(content_object)s\" is bewerkt door %(fullname)s"
 #: events.py:15
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
-"The following changes took place: %(changes)s."
-msgstr ""
-"Document \" %(content_object)s \" is bewerkt op %(datetime)s  door "
-"%(fullname)s . De volgende wijzigingen hebben plaatsgevonden: %(changes)s ."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
+msgstr "Document \" %(content_object)s \" is bewerkt op %(datetime)s  door %(fullname)s . De volgende wijzigingen hebben plaatsgevonden: %(changes)s ."
 
 #: events.py:24
 msgid "Document deleted"
@@ -265,8 +251,7 @@ msgstr "Document \" %(document)s \" verwijderd door %(fullname)s ."
 #: events.py:26
 #, python-format
 msgid "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
-msgstr ""
-"Document \" %(document)s \" verwijderd op %(datetime)s  door %(fullname)s ."
+msgstr "Document \" %(document)s \" verwijderd op %(datetime)s  door %(fullname)s ."
 
 #: forms.py:65
 msgid "Page image"
@@ -334,11 +319,7 @@ msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Het document downloaden in het orginele formaat of in een gecomprimeerd "
-"formaat. Deze optie zowel te selecteren voor een document als voor meerdere "
-"documenten. Een bundel van meerdere documenten zal altijd worden ge download "
-"als een gecomprimeerd bestand."
+msgstr "Het document downloaden in het orginele formaat of in een gecomprimeerd formaat. Deze optie zowel te selecteren voor een document als voor meerdere documenten. Een bundel van meerdere documenten zal altijd worden ge download als een gecomprimeerd bestand."
 
 #: forms.py:321
 msgid "Compressed filename"
@@ -348,10 +329,7 @@ msgstr "Bestandsnaam gecomprimeerde archiefbestand"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten "
-"bevat die dienen te worden gedownload, als de voorgaande optie is "
-"geselecteerd."
+msgstr "De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten bevat die dienen te worden gedownload, als de voorgaande optie is geselecteerd."
 
 #: literals.py:15
 msgid "final"
@@ -459,9 +437,7 @@ msgstr "documentversie"
 msgid ""
 "This document's file format is not known, the page count has therefore "
 "defaulted to 1."
-msgstr ""
-"Het bestandformaat voor dit document is onbekent, de pagina teller staat "
-"daarom standaard op 1."
+msgstr "Het bestandformaat voor dit document is onbekent, de pagina teller staat daarom standaard op 1."
 
 #: models.py:549 views.py:1357
 msgid "filename"
@@ -523,8 +499,7 @@ msgstr "argumenten"
 #: models.py:628
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
-"Gebruik woordenboeken voor het identificeren van argumenten. Bijvoorbeeld: %s"
+msgstr "Gebruik woordenboeken voor het identificeren van argumenten. Bijvoorbeeld: %s"
 
 #: models.py:636
 msgid "document page transformation"
@@ -547,13 +522,12 @@ msgid "recent document"
 msgstr "recent document"
 
 #: models.py:662
-#, fuzzy
 msgid "Document type"
-msgstr "documentsoort"
+msgstr "Documentsoort"
 
 #: models.py:663
 msgid "MIME type"
-msgstr ""
+msgstr "MIME type"
 
 #: models.py:664 views.py:132
 msgid "Filename"
@@ -561,28 +535,25 @@ msgstr "Bestandsnaam"
 
 #: models.py:665
 msgid "Metadata type"
-msgstr ""
+msgstr "Metadata type"
 
 #: models.py:666
 msgid "Metadata value"
-msgstr ""
+msgstr "Metadata waarde"
 
 #: models.py:667
-#, fuzzy
 msgid "Content"
 msgstr "Inhoud"
 
 #: models.py:668
-#, fuzzy
 msgid "Description"
-msgstr "omschrijving"
+msgstr "Omschrijving"
 
 #: models.py:669
 msgid "Tags"
-msgstr ""
+msgstr "Labels"
 
 #: models.py:670
-#, fuzzy
 msgid "Comments"
 msgstr "Commentaar"
 
@@ -664,11 +635,9 @@ msgstr "Aantal documenten in opslag: %d"
 #: statistics.py:52
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
-msgstr ""
-"Ruimte ingebruik door opslag: %(base_2)s (base 2), %(base_10)s (base 10), "
-"%(bytes)d bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
+msgstr "Ruimte ingebruik door opslag: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
 
 #: statistics.py:63
 #, python-format
@@ -803,8 +772,7 @@ msgstr "Transformatie voor documentpagina is aangemaakt"
 #: views.py:482
 #, python-format
 msgid "Create new transformation for page: %(page)s of document: %(document)s"
-msgstr ""
-"Aanmaken van transformatie voor pagina: %(page)s in document: %(document)s"
+msgstr "Aanmaken van transformatie voor pagina: %(page)s in document: %(document)s"
 
 #: views.py:501
 msgid "Document page transformation edited successfully."
@@ -824,9 +792,7 @@ msgstr "Transformatie documentpagina verwijdert"
 msgid ""
 "Are you sure you wish to delete transformation \"%(transformation)s\" for: "
 "%(document_page)s"
-msgstr ""
-"Weet u zeker dat u deze transformatie wenst te verwijderen: "
-"\"%(transformation)s\" for: %(document_page)s"
+msgstr "Weet u zeker dat u deze transformatie wenst te verwijderen: \"%(transformation)s\" for: %(document_page)s"
 
 #: views.py:563
 #, python-format
@@ -850,34 +816,28 @@ msgstr "document duplicaten"
 msgid ""
 "Page count update complete.  Documents processed: %(total)d, documents with "
 "changed page count: %(change)d"
-msgstr ""
-"paginanummering is voltooid. Documenten afgehandeld: %(total)d / %(change)d "
-"documenten bijgewerkt."
+msgstr "paginanummering is voltooid. Documenten afgehandeld: %(total)d / %(change)d documenten bijgewerkt."
 
 #: views.py:633
 #, python-format
 msgid ""
-"Are you sure you wish to update the page count for the office documents (%d)?"
-msgstr ""
-"Bent u zeker van dat u de paginanummering voor Office-documenten (%d) wenst "
-"bij te werken?"
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
+msgstr "Bent u zeker van dat u de paginanummering voor Office-documenten (%d) wenst bij te werken?"
 
 #: views.py:665
 #, python-format
 msgid ""
 "All the page transformations for document: %s, have been deleted "
 "successfully."
-msgstr ""
-"Al de pagina transformaties voor document: %s, zijn succesvol verwijdert."
+msgstr "Al de pagina transformaties voor document: %s, zijn succesvol verwijdert."
 
 #: views.py:667
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Fout bij verwijderen van de pagina transformaties voor document: "
-"%(document)s ; %(error)s ."
+msgstr "Fout bij verwijderen van de pagina transformaties voor document: %(document)s ; %(error)s ."
 
 #: views.py:673
 msgid "document transformation"
@@ -886,19 +846,16 @@ msgstr "document transformatie"
 #: views.py:682
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
-msgstr ""
-"Weet u zeker dat u alle pagina transformaties voor document: %s, wenst te "
-"verwijderen?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
+msgstr "Weet u zeker dat u alle pagina transformaties voor document: %s, wenst te verwijderen?"
 
 #: views.py:684
 #, python-format
 msgid ""
 "Are you sure you wish to clear all the page transformations for documents: "
 "%s?"
-msgstr ""
-"Weet u zeker dat u alle pagina transformaties voor de documenten: %s, wenst "
-"te verwijderen?"
+msgstr "Weet u zeker dat u alle pagina transformaties voor de documenten: %s, wenst te verwijderen?"
 
 #: views.py:712
 msgid "missing documents"
@@ -958,8 +915,7 @@ msgstr "Documentsoort: %s, succesvol verwijdert"
 #: views.py:1121
 #, python-format
 msgid "Document type: %(document_type)s delete error: %(error)s"
-msgstr ""
-"Fout bij verwijderen Documentsoort: %(document_type)s. Foutmelding: %(error)s"
+msgstr "Fout bij verwijderen Documentsoort: %(document_type)s. Foutmelding: %(error)s"
 
 #: views.py:1136
 #, python-format
@@ -970,9 +926,7 @@ msgstr "Bent u zeker dat u het document wilt verwijderen: %s?"
 msgid ""
 "The document type of all documents using this document type will be set to "
 "none."
-msgstr ""
-"Het documentsoort van alle documenten van deze soort zal op none worden "
-"gezet."
+msgstr "Het documentsoort van alle documenten van deze soort zal op none worden gezet."
 
 #: views.py:1153
 msgid "Document type created successfully"
@@ -1000,8 +954,7 @@ msgstr "Fout bij bewerken bestandnaam voor documentsoort. Foutmelding: %s"
 #: views.py:1213
 #, python-format
 msgid "edit filename \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"bewerk bestandsnaam \"%(filename)s\" van documentsoort \"%(document_type)s\""
+msgstr "bewerk bestandsnaam \"%(filename)s\" van documentsoort \"%(document_type)s\""
 
 #: views.py:1222 views.py:1248 views.py:1256
 msgid "document type filename"
@@ -1016,18 +969,14 @@ msgstr "documentsoort bestandsnaam: %s succesvol verwijdert"
 #, python-format
 msgid ""
 "Document type filename: %(document_type_filename)s delete error: %(error)s"
-msgstr ""
-"Fout bij verwijderen documentsoort bestandsnaam: %(document_type_filename)s. "
-"Foutmelding: %(error)s"
+msgstr "Fout bij verwijderen documentsoort bestandsnaam: %(document_type_filename)s. Foutmelding: %(error)s"
 
 #: views.py:1258
 #, python-format
 msgid ""
 "Are you sure you wish to delete the filename: %(filename)s, from document "
 "type \"%(document_type)s\"?"
-msgstr ""
-"Bent u zeker dat u de bestandsnaam: %(filename)s , van documentsoort: \" "
-"%(document_type)s \", wenst te verwijderen?"
+msgstr "Bent u zeker dat u de bestandsnaam: %(filename)s , van documentsoort: \" %(document_type)s \", wenst te verwijderen?"
 
 #: views.py:1283
 msgid "Document type filename created successfully"
@@ -1036,8 +985,7 @@ msgstr "Documentsoort bestandsnaam succesvol aangemaakt"
 #: views.py:1286
 #, python-format
 msgid "Error creating document type filename; %(error)s"
-msgstr ""
-"Fout bij het aanmaken van documentsoort bestandsnaam. Foutmelding: %(error)s"
+msgstr "Fout bij het aanmaken van documentsoort bestandsnaam. Foutmelding: %(error)s"
 
 #: views.py:1292
 #, python-format
@@ -1055,8 +1003,7 @@ msgstr "Fout bij het opschonen van pagina afbeeldingen buffer. Foutmelding: %s"
 
 #: views.py:1318
 msgid "Are you sure you wish to clear the document image cache?"
-msgstr ""
-"Bent u zeker dat u het buffer met pagina afbeeldingen wenst op te schonen?"
+msgstr "Bent u zeker dat u het buffer met pagina afbeeldingen wenst op te schonen?"
 
 #: views.py:1335
 #, python-format
@@ -1097,29 +1044,26 @@ msgid "document page image"
 msgstr "documentpagina afbeelding"
 
 #: wizards.py:36
-#, fuzzy
 msgid "step 1 of 3: Document type"
-msgstr "aanmaken documentsoort"
+msgstr "stap 1 van 3: Documentsoort"
 
 #: wizards.py:37
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "stap 2 van 3: Metadata selectie"
 
 #: wizards.py:38
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "stap 3 van 3: Document Metadata"
 
 #: wizards.py:46
 msgid "Next step"
-msgstr ""
+msgstr "Volgende stap"
 
 #: conf/settings.py:38
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
-msgstr ""
-"Maximum aantal recente docmenten (aangemaakt, bewerkt, bekeken), te "
-"onthouden per gebruiker."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "Maximum aantal recente docmenten (aangemaakt, bewerkt, bekeken), te onthouden per gebruiker."
 
 #: conf/settings.py:39
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -1129,15 +1073,13 @@ msgstr "Percentage in- of uitzoomen voor documentpagina per gebruikeractie."
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
+msgstr "Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
 
 #: conf/settings.py:41
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
+msgstr "Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
 
 #: conf/settings.py:42
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -1153,12 +1095,7 @@ msgid ""
 "such as: invoices, regulations or manuals.  The advantage of using document "
 "types are: assigning a list of typical filenames for quick renaming during "
 "creation, as well as assigning default metadata types and sets to it."
-msgstr ""
-"Documentsoorten defineren een groep documenten met een gelijkwaardig doel of "
-"functie. Bijvoorbeeld: facturen, polissen, handleidingen. Het voordeel bij "
-"het gebruik van documentsoorten ligt in de mogelijkheid om acties uit te "
-"voeren op de gehele verzameling documenten van dezelfde soort. Bijvoorbeeld: "
-"acties tijdens het aanmaken, toekennen van standaard metadata."
+msgstr "Documentsoorten defineren een groep documenten met een gelijkwaardig doel of functie. Bijvoorbeeld: facturen, polissen, handleidingen. Het voordeel bij het gebruik van documentsoorten ligt in de mogelijkheid om acties uit te voeren op de gehele verzameling documenten van dezelfde soort. Bijvoorbeeld: acties tijdens het aanmaken, toekennen van standaard metadata."
 
 #: templates/recent_document_list_help.html:3
 msgid "What are recent documents?"
@@ -1169,9 +1106,4 @@ msgstr "Wat zijn recente documenten?"
 msgid ""
 "Here you will find the latest %(recent_count)s documents you have either "
 "created or edited in any way."
-msgstr ""
-"Hier vindt u de laatse %(recent_count)s documenten, die u heeft of heeft "
-"aangemaakt of heeft bewerkt."
-
-#~ msgid "Page %(page_num)d of %(total_pages)d"
-#~ msgstr "Pagina %(page_num)d van %(total_pages)d"
+msgstr "Hier vindt u de laatse %(recent_count)s documenten, die u heeft of heeft aangemaakt of heeft bewerkt."

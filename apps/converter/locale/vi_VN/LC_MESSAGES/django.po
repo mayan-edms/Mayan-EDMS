@@ -1,0 +1,926 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2011-09-30 04:55+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/mayan-edms/language/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:15
+msgid "file formats"
+msgstr ""
+
+#: literals.py:19
+msgid "Resize"
+msgstr ""
+
+#: literals.py:20
+msgid "Resize."
+msgstr ""
+
+#: literals.py:22 literals.py:37
+msgid "width"
+msgstr ""
+
+#: literals.py:23 literals.py:38
+msgid "height"
+msgstr ""
+
+#: literals.py:27
+msgid "Rotate"
+msgstr ""
+
+#: literals.py:28
+msgid "Rotate by n degress."
+msgstr ""
+
+#: literals.py:30
+msgid "degrees"
+msgstr ""
+
+#: literals.py:34
+msgid "Density"
+msgstr ""
+
+#: literals.py:35
+msgid "Change the resolution (ie: DPI) without resizing."
+msgstr ""
+
+#: literals.py:42
+msgid "Zoom"
+msgstr ""
+
+#: literals.py:43
+msgid "Zoom by n percent."
+msgstr ""
+
+#: literals.py:45
+msgid "percent"
+msgstr ""
+
+#: literals.py:51
+msgid "Hasselblad Photo RAW, CFV/H3D39II"
+msgstr ""
+
+#: literals.py:52 literals.py:53
+msgid "Photoshop resource format"
+msgstr ""
+
+#: literals.py:54
+msgid "Photoshop resource text format"
+msgstr ""
+
+#: literals.py:55
+msgid "Photoshop resource wide text format"
+msgstr ""
+
+#: literals.py:57
+msgid "Raw alpha samples"
+msgstr ""
+
+#: literals.py:58
+msgid "Adobe Illustrator CS2"
+msgstr ""
+
+#: literals.py:59
+msgid "Raw application information"
+msgstr ""
+
+#: literals.py:60
+msgid "Raw JPEG binary data"
+msgstr ""
+
+#: literals.py:61
+msgid "PFS: 1st Publisher Clip Art"
+msgstr ""
+
+#: literals.py:62
+msgid "Sony Alpha DSLR Raw Image Format"
+msgstr ""
+
+#: literals.py:63
+msgid "Microsoft Audio/Visual Interleaved"
+msgstr ""
+
+#: literals.py:64
+msgid "AVS X image"
+msgstr ""
+
+#: literals.py:66
+msgid "Raw blue samples"
+msgstr ""
+
+#: literals.py:67
+msgid "Raw blue, green, and red samples"
+msgstr ""
+
+#: literals.py:68
+msgid "Raw blue, green, red and alpha samples"
+msgstr ""
+
+#: literals.py:69
+msgid "Microsoft Windows bitmap image"
+msgstr ""
+
+#: literals.py:70
+msgid "Microsoft Windows bitmap image version 2"
+msgstr ""
+
+#: literals.py:71
+msgid "Microsoft Windows bitmap image version 3"
+msgstr ""
+
+#: literals.py:72
+msgid "BRF ASCII Braille format"
+msgstr ""
+
+#: literals.py:73
+msgid "Raw blue, red, and green samples"
+msgstr ""
+
+#: literals.py:75
+msgid "Raw cyan samples"
+msgstr ""
+
+#: literals.py:76 literals.py:181
+msgid "Magick Persistent Cache image format"
+msgstr ""
+
+#: literals.py:77 literals.py:78
+msgid "Continuous Acquisition and Life-cycle Support Type 1 image"
+msgstr ""
+
+#: literals.py:79
+msgid "Image caption"
+msgstr ""
+
+#: literals.py:80
+msgid "Cineon Image File"
+msgstr ""
+
+#: literals.py:81
+msgid "Cisco IP phone image format"
+msgstr ""
+
+#: literals.py:82
+msgid "Image Clip Mask"
+msgstr ""
+
+#: literals.py:83
+msgid "Raw cyan, magenta, yellow, and black samples"
+msgstr ""
+
+#: literals.py:84
+msgid "Raw cyan, magenta, yellow, black, and opacity samples"
+msgstr ""
+
+#: literals.py:85 literals.py:86
+msgid "Canon Digital Camera Raw Image Format"
+msgstr ""
+
+#: literals.py:87
+msgid "Microsoft Cursor Icon"
+msgstr ""
+
+#: literals.py:88
+msgid "DR Halo"
+msgstr ""
+
+#: literals.py:90
+msgid "Digital Imaging and Communications in Medicine image"
+msgstr ""
+
+#: literals.py:91
+msgid "Kodak Digital Camera Raw Image File"
+msgstr ""
+
+#: literals.py:92
+msgid "ZSoft IBM PC multi-page Paintbrush"
+msgstr ""
+
+#: literals.py:93
+msgid "Microsoft DirectDraw Surface"
+msgstr ""
+
+#: literals.py:94
+msgid "Multi-face font package (Freetype 2.4.2)"
+msgstr ""
+
+#: literals.py:95
+msgid "Déjà vu"
+msgstr ""
+
+#: literals.py:96
+msgid "Adobe Digital Negative"
+msgstr ""
+
+#: literals.py:97
+msgid "Graphviz"
+msgstr ""
+
+#: literals.py:98
+msgid "SMPTE 268M-2003 (DPX 2.0)"
+msgstr ""
+
+#: literals.py:100
+msgid "Encapsulated Portable Document Format"
+msgstr ""
+
+#: literals.py:101 literals.py:106
+msgid "Adobe Encapsulated PostScript Interchange format"
+msgstr ""
+
+#: literals.py:102 literals.py:105
+msgid "Adobe Encapsulated PostScript"
+msgstr ""
+
+#: literals.py:103
+msgid "Adobe Level II Encapsulated PostScript"
+msgstr ""
+
+#: literals.py:104
+msgid "Adobe Level III Encapsulated PostScript"
+msgstr ""
+
+#: literals.py:107
+msgid "Adobe Encapsulated PostScript with TIFF preview"
+msgstr ""
+
+#: literals.py:108
+msgid "Adobe Level II Encapsulated PostScript with TIFF preview"
+msgstr ""
+
+#: literals.py:109
+msgid "Adobe Level III Encapsulated PostScript with TIFF preview"
+msgstr ""
+
+#: literals.py:110
+msgid "Epson RAW Format"
+msgstr ""
+
+#: literals.py:111
+msgid "Exif digital camera binary data"
+msgstr ""
+
+#: literals.py:112
+msgid "High Dynamic-range (HDR)"
+msgstr ""
+
+#: literals.py:114
+msgid "Group 3 FAX (Not TIFF Group3 FAX)"
+msgstr ""
+
+#: literals.py:115
+msgid "Autodesk FLI animations file"
+msgstr ""
+
+#: literals.py:116
+msgid "Autodesk FLC animations file"
+msgstr ""
+
+#: literals.py:117 literals.py:120
+msgid "Flexible Image Transport System"
+msgstr ""
+
+#: literals.py:118
+msgid "Kodak FlashPix file"
+msgstr ""
+
+#: literals.py:119 literals.py:225
+msgid "Plasma fractal image"
+msgstr ""
+
+#: literals.py:122
+msgid "Raw green samples"
+msgstr ""
+
+#: literals.py:123
+msgid "Group 3 FAX"
+msgstr ""
+
+#: literals.py:124
+msgid "Raw green, blue, and red samples"
+msgstr ""
+
+#: literals.py:125
+msgid "GIMP brush file"
+msgstr ""
+
+#: literals.py:126
+msgid "CompuServe graphics interchange format (version 89a)"
+msgstr ""
+
+#: literals.py:127
+msgid "CompuServe graphics interchange format (version 87a)"
+msgstr ""
+
+#: literals.py:128
+msgid "Gradual passing from one shade to another"
+msgstr ""
+
+#: literals.py:129
+msgid "Raw gray samples"
+msgstr ""
+
+#: literals.py:130
+msgid "Raw green, red, and blue samples"
+msgstr ""
+
+#: literals.py:131
+msgid "Raw CCITT Group4"
+msgstr ""
+
+#: literals.py:133
+msgid "Histogram of the image"
+msgstr ""
+
+#: literals.py:134
+msgid "HRZ: Slow scan TV"
+msgstr ""
+
+#: literals.py:135 literals.py:136 literals.py:255
+msgid "Hypertext Markup Language and a client-side image map"
+msgstr ""
+
+#: literals.py:138 literals.py:264 literals.py:279 literals.py:283
+msgid "Truevision Targa image"
+msgstr ""
+
+#: literals.py:139 literals.py:140
+msgid "ICC Color Profile"
+msgstr ""
+
+#: literals.py:141 literals.py:142
+msgid "Microsoft Icon"
+msgstr ""
+
+#: literals.py:143
+msgid "Hald CLUT identity image"
+msgstr ""
+
+#: literals.py:144
+msgid "LabEye image format"
+msgstr ""
+
+#: literals.py:145
+msgid "GraphicsMagick Embedded Image"
+msgstr ""
+
+#: literals.py:146
+msgid "The image format and characteristics"
+msgstr ""
+
+#: literals.py:147
+msgid "Base64-encoded inline images"
+msgstr ""
+
+#: literals.py:148
+msgid "IPL Image Sequence"
+msgstr ""
+
+#: literals.py:149
+msgid "IPTC Newsphoto"
+msgstr ""
+
+#: literals.py:150 literals.py:151
+msgid "IPTC Newsphoto text format"
+msgstr ""
+
+#: literals.py:152
+msgid "ISO/TR 11548-1 format"
+msgstr ""
+
+#: literals.py:154 literals.py:157
+msgid "JPEG-2000 Code Stream Syntax"
+msgstr ""
+
+#: literals.py:155
+msgid "JPEG Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr ""
+
+#: literals.py:156
+msgid "JPEG-2000 JP2 File Format Syntax"
+msgstr ""
+
+#: literals.py:158 literals.py:159
+msgid "Joint Photographic Experts Group JFIF format (IJG JPEG 62)"
+msgstr ""
+
+#: literals.py:160
+msgid "JPEG-2000 File Format Syntax"
+msgstr ""
+
+#: literals.py:162
+msgid "Raw black samples"
+msgstr ""
+
+#: literals.py:163 literals.py:164
+msgid "Kodak Digital Camera Raw Image Format"
+msgstr ""
+
+#: literals.py:166
+msgid "Image label"
+msgstr ""
+
+#: literals.py:168
+msgid "Raw magenta samples"
+msgstr ""
+
+#: literals.py:169 literals.py:179 literals.py:182 literals.py:183
+msgid "MPEG Video Stream"
+msgstr ""
+
+#: literals.py:170
+msgid "Raw MPEG-4 Video"
+msgstr ""
+
+#: literals.py:171
+msgid "Colormap intensities and indices"
+msgstr ""
+
+#: literals.py:172
+msgid "MATLAB image format"
+msgstr ""
+
+#: literals.py:173
+msgid "MATTE raw opacity format"
+msgstr ""
+
+#: literals.py:174
+msgid "8-bit McIdas area file"
+msgstr ""
+
+#: literals.py:175
+msgid "Microsoft Image Composer (MIC) file"
+msgstr ""
+
+#: literals.py:176
+msgid "Magick Image File Format"
+msgstr ""
+
+#: literals.py:177
+msgid ""
+"Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr ""
+
+#: literals.py:178
+msgid "Raw Bi-level bitmap in least-significant-byte first order"
+msgstr ""
+
+#: literals.py:180
+msgid "MPEG-4 Video Stream"
+msgstr ""
+
+#: literals.py:184
+msgid "Sony (Minolta) Raw Image File"
+msgstr ""
+
+#: literals.py:185
+msgid "Magick Scripting Language"
+msgstr ""
+
+#: literals.py:186
+msgid "Windows 1 and 2 MSP file format"
+msgstr ""
+
+#: literals.py:187
+msgid "ImageMagick's own SVG internal renderer"
+msgstr ""
+
+#: literals.py:188
+msgid "MTV Raytracing image format"
+msgstr ""
+
+#: literals.py:189
+msgid "Magick Vector Graphics"
+msgstr ""
+
+#: literals.py:191
+msgid "Nikon Digital SLR Camera Raw Image File"
+msgstr ""
+
+#: literals.py:192
+msgid "Constant image of uniform color"
+msgstr ""
+
+#: literals.py:194
+msgid "Raw opacity samples"
+msgstr ""
+
+#: literals.py:195
+msgid "Olympus Digital Camera Raw Image File"
+msgstr ""
+
+#: literals.py:196
+msgid "On-the-air bitmap"
+msgstr ""
+
+#: literals.py:197
+msgid "Open Type font (Freetype 2.4.2)"
+msgstr ""
+
+#: literals.py:199
+msgid "Xv thumbnail format"
+msgstr ""
+
+#: literals.py:200 literals.py:277
+msgid "16bit/pixel interleaved YUV"
+msgstr ""
+
+#: literals.py:201
+msgid "Palm pixmap"
+msgstr ""
+
+#: literals.py:202
+msgid "Common 2-dimensional bitmap format"
+msgstr ""
+
+#: literals.py:203
+msgid "Predefined pattern"
+msgstr ""
+
+#: literals.py:204
+msgid "Portable bitmap format (black and white)"
+msgstr ""
+
+#: literals.py:205 literals.py:206
+msgid "Photo CD"
+msgstr ""
+
+#: literals.py:207
+msgid "Page Control Language"
+msgstr ""
+
+#: literals.py:208 literals.py:221
+msgid "Apple Macintosh QuickDraw/PICT"
+msgstr ""
+
+#: literals.py:209
+msgid "ZSoft IBM PC Paintbrush"
+msgstr ""
+
+#: literals.py:210
+msgid "Palm Database ImageViewer Format"
+msgstr ""
+
+#: literals.py:211
+msgid "Portable Document Format"
+msgstr ""
+
+#: literals.py:212
+msgid "Portable Document Archive Format"
+msgstr ""
+
+#: literals.py:213
+msgid "Pentax Electronic File"
+msgstr ""
+
+#: literals.py:214
+msgid "Embrid Embroidery Format"
+msgstr ""
+
+#: literals.py:215
+msgid "Postscript Type 1 font (ASCII) (Freetype 2.4.2)"
+msgstr ""
+
+#: literals.py:216
+msgid "Postscript Type 1 font (binary) (Freetype 2.4.2)"
+msgstr ""
+
+#: literals.py:217
+msgid "Portable float format"
+msgstr ""
+
+#: literals.py:218
+msgid "Portable graymap format (gray scale)"
+msgstr ""
+
+#: literals.py:219
+msgid "JPEG-2000 VM Format"
+msgstr ""
+
+#: literals.py:220
+msgid "Personal Icon"
+msgstr ""
+
+#: literals.py:222
+msgid "Alias/Wavefront RLE image format"
+msgstr ""
+
+#: literals.py:223
+msgid "PIXAR raster file"
+msgstr ""
+
+#: literals.py:224
+msgid "Joint Photographic Experts Group JFIF format (62)"
+msgstr ""
+
+#: literals.py:226
+msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr ""
+
+#: literals.py:227
+msgid ""
+"24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+msgstr ""
+
+#: literals.py:228
+msgid ""
+"32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
+"1.2.3.3,1.2.3.4)"
+msgstr ""
+
+#: literals.py:229
+msgid ""
+"8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
+"1.2.3.3,1.2.3.4)"
+msgstr ""
+
+#: literals.py:230
+msgid "Portable anymap"
+msgstr ""
+
+#: literals.py:231
+msgid "Portable pixmap format (color)"
+msgstr ""
+
+#: literals.py:232
+msgid "Show a preview an image enhancement, effect, or f/x"
+msgstr ""
+
+#: literals.py:233
+msgid "Adobe PostScript"
+msgstr ""
+
+#: literals.py:234
+msgid "Adobe Level II PostScript"
+msgstr ""
+
+#: literals.py:235
+msgid "Adobe Level III PostScript"
+msgstr ""
+
+#: literals.py:236
+msgid "Adobe Large Document Format"
+msgstr ""
+
+#: literals.py:237
+msgid "Adobe Photoshop bitmap"
+msgstr ""
+
+#: literals.py:238
+msgid "Pyramid encoded TIFF"
+msgstr ""
+
+#: literals.py:239 literals.py:253
+msgid "Seattle Film Works"
+msgstr ""
+
+#: literals.py:241
+msgid "Raw red samples"
+msgstr ""
+
+#: literals.py:242
+msgid "Fuji CCD-RAW Graphic File"
+msgstr ""
+
+#: literals.py:243 literals.py:259
+msgid "SUN Rasterfile"
+msgstr ""
+
+#: literals.py:244
+msgid "Raw red, blue, and green samples"
+msgstr ""
+
+#: literals.py:245
+msgid "Raw red, green, and blue samples"
+msgstr ""
+
+#: literals.py:246
+msgid "Raw red, green, blue, and matte samples"
+msgstr ""
+
+#: literals.py:247
+msgid "Raw red, green, blue, and opacity samples"
+msgstr ""
+
+#: literals.py:248
+msgid "Alias/Wavefront image"
+msgstr ""
+
+#: literals.py:249
+msgid "Utah Run length encoded image"
+msgstr ""
+
+#: literals.py:251
+msgid "ZX-Spectrum SCREEN$"
+msgstr ""
+
+#: literals.py:252
+msgid "Scitex HandShake"
+msgstr ""
+
+#: literals.py:254
+msgid "Irix RGB image"
+msgstr ""
+
+#: literals.py:256
+msgid "Sony Raw Format 2"
+msgstr ""
+
+#: literals.py:257
+msgid "Sony Raw Format"
+msgstr ""
+
+#: literals.py:258
+msgid "Steganographic image"
+msgstr ""
+
+#: literals.py:260
+msgid "Scalable Vector Graphics (XML 2.7.6, RSVG 2.32.0)"
+msgstr ""
+
+#: literals.py:261
+msgid "Scalable Vector Graphics (ZIP compressed) (XML 2.7.6, RSVG 2.32.0)"
+msgstr ""
+
+#: literals.py:263 literals.py:273
+msgid "Text"
+msgstr ""
+
+#: literals.py:265
+msgid "EXIF Profile Thumbnail"
+msgstr ""
+
+#: literals.py:266
+msgid "Tagged Image File Format (LIBTIFF, Version 3.9.4)"
+msgstr ""
+
+#: literals.py:267
+msgid "Tagged Image File Format (64-bit) (LIBTIFF, Version 3.9.4)"
+msgstr ""
+
+#: literals.py:268
+msgid "Tile image with a texture"
+msgstr ""
+
+#: literals.py:269
+msgid "PSX TIM"
+msgstr ""
+
+#: literals.py:270
+msgid "TOPOL X Image"
+msgstr ""
+
+#: literals.py:271
+msgid "TrueType font collection (Freetype 2.4.2)"
+msgstr ""
+
+#: literals.py:272
+msgid "TrueType font (Freetype 2.4.2)"
+msgstr ""
+
+#: literals.py:275
+msgid "Unicode Text format"
+msgstr ""
+
+#: literals.py:276
+msgid "X-Motif UIL table"
+msgstr ""
+
+#: literals.py:280
+msgid "VICAR rasterfile format"
+msgstr ""
+
+#: literals.py:281
+msgid "Visual Image Directory"
+msgstr ""
+
+#: literals.py:282 literals.py:299
+msgid "Khoros Visualization image"
+msgstr ""
+
+#: literals.py:285
+msgid "Wireless Bitmap (level 0) image"
+msgstr ""
+
+#: literals.py:286
+msgid "Windows Meta File"
+msgstr ""
+
+#: literals.py:287
+msgid "Word Perfect Graphics"
+msgstr ""
+
+#: literals.py:288
+msgid "Windows Media Video"
+msgstr ""
+
+#: literals.py:289
+msgid "Compressed Windows Meta File"
+msgstr ""
+
+#: literals.py:291
+msgid "X Window System"
+msgstr ""
+
+#: literals.py:292
+msgid "Foveon X3 (Sigma/Polaroid) Raw picture file"
+msgstr ""
+
+#: literals.py:293
+msgid "X Windows system bitmap (black and white)"
+msgstr ""
+
+#: literals.py:294
+msgid "Constant image uniform color"
+msgstr ""
+
+#: literals.py:295
+msgid "GIMP image"
+msgstr ""
+
+#: literals.py:296
+msgid "Adobe XML metadata"
+msgstr ""
+
+#: literals.py:297
+msgid "X Windows system pixmap (color)"
+msgstr ""
+
+#: literals.py:298
+msgid "Microsoft XML Paper Specification"
+msgstr ""
+
+#: literals.py:300
+msgid "XV thumbnail file"
+msgstr ""
+
+#: literals.py:301
+msgid "X Windows system window dump (color)"
+msgstr ""
+
+#: literals.py:303
+msgid "Raw yellow samples"
+msgstr ""
+
+#: literals.py:304
+msgid "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
+msgstr ""
+
+#: views.py:17
+msgid "suported file formats"
+msgstr ""
+
+#: views.py:22
+msgid "name"
+msgstr ""
+
+#: views.py:26
+msgid "description"
+msgstr ""
+
+#: conf/settings.py:11
+msgid "File path to imagemagick's convert program."
+msgstr ""
+
+#: conf/settings.py:12
+msgid "File path to imagemagick's identify program."
+msgstr ""
+
+#: conf/settings.py:13
+msgid "File path to graphicsmagick's program."
+msgstr ""
+
+#: conf/settings.py:15
+msgid ""
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick, converter.backends.graphicsmagick and "
+"converter.backends.python."
+msgstr ""
+
+#: conf/settings.py:16
+msgid "Path to the libreoffice program."
+msgstr ""
+
+#: templates/converter_file_formats_help.html:3
+msgid "Help"
+msgstr ""
+
+#: templates/converter_file_formats_help.html:4
+#, python-format
+msgid ""
+"These are the file formats supported by the currently selected converter "
+"backend.  In this case: '%(backend)s'"
+msgstr ""

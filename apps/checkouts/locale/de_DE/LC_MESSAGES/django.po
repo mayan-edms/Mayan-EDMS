@@ -1,62 +1,62 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+#   <sl@suchreflex.de>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-10 15:47+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-09-20 07:45+0000\n"
+"Last-Translator: Manticor <sl@suchreflex.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:43
 msgid "Check expired check out documents and checks them in."
-msgstr ""
+msgstr "Überprüfe, ob die Frist für ausgecheckte Dokumente abgelaufen ist. "
 
 #: events.py:5
 msgid "Document checked out"
-msgstr ""
+msgstr "Dokument wurde ausgecheckt"
 
 #: events.py:6
 #, python-format
 msgid "Document \"%(document)s\" checked out by %(fullname)s."
-msgstr ""
+msgstr "Dokument \"%(document)s\" wurde von %(fullname)s ausgecheckt."
 
 #: events.py:12
 msgid "Document checked in"
-msgstr ""
+msgstr "Dokument wurde eingecheckt"
 
 #: events.py:13
 #, python-format
 msgid "Document \"%(document)s\" checked in by %(fullname)s."
-msgstr ""
+msgstr "Dokument \"%(document)s\" wude von %(fullname)s eingecheckt."
 
 #: events.py:19
 msgid "Document automatically checked in"
-msgstr ""
+msgstr "Dokument automatisch eingecheckt"
 
 #: events.py:20
 #, python-format
 msgid "Document \"%(document)s\" automatically checked in."
-msgstr ""
+msgstr "Dokument \"%(document)s\" automatisch eingecheckt."
 
 #: events.py:25
 msgid "Document forcefully checked in"
-msgstr ""
+msgstr "Dokument \"gewaltsam\" eingecheckt"
 
 #: events.py:26
 #, python-format
 msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr ""
+msgstr "Dokument \" %(document)s \" \"gewaltsam\" durch %(fullname)s  eingecheckt."
 
 #: links.py:18
 msgid "checkouts"

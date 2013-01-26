@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # mic <diveaway12@gmail.com>, 2012.
 # <winterfall24@gmail.com>, 2012.
@@ -9,18 +9,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-27 04:10+0000\n"
+"PO-Revision-Date: 2012-12-27 08:29+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:62
 msgid "all documents"
@@ -31,9 +29,8 @@ msgid "recent documents"
 msgstr "ostatnie dokumenty"
 
 #: __init__.py:64
-#, fuzzy
 msgid "upload new documents"
-msgstr "Pobierz dokumenty"
+msgstr ""
 
 #: __init__.py:65
 msgid "clone metadata"
@@ -75,8 +72,7 @@ msgstr "znaleźć wszystkie duplikaty"
 #: __init__.py:76
 msgid ""
 "Search all the documents' checksums and return a list of the exact matches."
-msgstr ""
-"Search all the documents' checksums and return a list of the exact matches."
+msgstr "Search all the documents' checksums and return a list of the exact matches."
 
 #: __init__.py:77
 msgid "update office documents' page count"
@@ -226,8 +222,7 @@ msgstr ""
 
 #: events.py:7
 #, python-format
-msgid ""
-"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 msgstr ""
 
 #: events.py:13
@@ -242,8 +237,8 @@ msgstr ""
 #: events.py:15
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
-"The following changes took place: %(changes)s."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
 msgstr ""
 
 #: events.py:24
@@ -529,9 +524,8 @@ msgid "recent document"
 msgstr "ostatni dokument"
 
 #: models.py:662
-#, fuzzy
 msgid "Document type"
-msgstr "typ dokumentu"
+msgstr ""
 
 #: models.py:663
 msgid "MIME type"
@@ -550,23 +544,20 @@ msgid "Metadata value"
 msgstr ""
 
 #: models.py:667
-#, fuzzy
 msgid "Content"
-msgstr "Zawartość"
+msgstr ""
 
 #: models.py:668
-#, fuzzy
 msgid "Description"
-msgstr "opis"
+msgstr ""
 
 #: models.py:669
 msgid "Tags"
 msgstr ""
 
 #: models.py:670
-#, fuzzy
 msgid "Comments"
-msgstr "Komentarz"
+msgstr ""
 
 #: permissions.py:9
 msgid "Create documents"
@@ -646,8 +637,8 @@ msgstr ""
 #: statistics.py:52
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
 msgstr ""
 
 #: statistics.py:63
@@ -832,7 +823,8 @@ msgstr ""
 #: views.py:633
 #, python-format
 msgid ""
-"Are you sure you wish to update the page count for the office documents (%d)?"
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
 msgstr ""
 
 #: views.py:665
@@ -856,7 +848,8 @@ msgstr ""
 #: views.py:682
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
 msgstr ""
 
 #: views.py:684
@@ -1053,9 +1046,8 @@ msgid "document page image"
 msgstr ""
 
 #: wizards.py:36
-#, fuzzy
 msgid "step 1 of 3: Document type"
-msgstr "Usuń typy dokumentów"
+msgstr ""
 
 #: wizards.py:37
 msgid "step 2 of 3: Metadata selection"
@@ -1071,8 +1063,8 @@ msgstr ""
 
 #: conf/settings.py:38
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
 msgstr ""
 
 #: conf/settings.py:39

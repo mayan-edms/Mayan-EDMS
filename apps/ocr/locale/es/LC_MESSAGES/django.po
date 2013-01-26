@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011, 2012.
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-06-17 22:27+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:32 __init__.py:33
@@ -47,9 +46,7 @@ msgstr "limpiar el contenido"
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr ""
-"Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR "
-"del contenido de las paginas del documento."
+msgstr "Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR del contenido de las paginas del documento."
 
 #: __init__.py:44
 msgid "queue document list"
@@ -269,9 +266,7 @@ msgstr "¿Está seguro que desea eliminar de la cola los documentos: %s?"
 #: views.py:146
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-msgstr ""
-"Documento: %(document)s ha sido añadido a la cola de reconocimiento óptico "
-"de caracteres: %(queue)s."
+msgstr "Documento: %(document)s ha sido añadido a la cola de reconocimiento óptico de caracteres: %(queue)s."
 
 #: views.py:149
 #, python-format
@@ -281,9 +276,7 @@ msgstr "Documento: %(document)s ya está en cola."
 #: views.py:178
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr ""
-"Documento: %(document)s fue puesto de vuelta en la cola de reconocimiento "
-"óptico de caracteres: %(queue)s "
+msgstr "Documento: %(document)s fue puesto de vuelta en la cola de reconocimiento óptico de caracteres: %(queue)s "
 
 #: views.py:184
 #, python-format
@@ -293,8 +286,7 @@ msgstr "Documento de #: %d, ya no existe."
 #: views.py:188
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
-msgstr ""
-"El documento: %s ya está en proceso y no se puede volver a agregar a la cola."
+msgstr "El documento: %s ya está en proceso y no se puede volver a agregar a la cola."
 
 #: views.py:200
 #, python-format
@@ -342,9 +334,7 @@ msgstr "¿Está seguro que desea limpiar el contenido de todas las páginas?"
 
 #: views.py:277
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En grandes bases de datos esta operación puede tardar algún tiempo en "
-"ejecutarse."
+msgstr "En grandes bases de datos esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:283
 msgid "Document pages content clean up complete."
@@ -387,9 +377,7 @@ msgstr "Error al tratar de borrar la transformación de cola; %(error)s "
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr ""
-"¿Está seguro que desea borrar la transformación de cola \"%(transformation)s"
-"\""
+msgstr "¿Está seguro que desea borrar la transformación de cola \"%(transformation)s\""
 
 #: views.py:410
 msgid "Queue transformation created successfully"
@@ -409,15 +397,11 @@ msgstr "Crear nueva transformación para la cola: %s"
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr ""
-"Cantidad de segundos a demorar OCR de documentos para por ajustar por el "
-"tiempo de replicación de almacenamiento de los nodos."
+msgstr "Cantidad de segundos a demorar OCR de documentos para por ajustar por el tiempo de replicación de almacenamiento de los nodos."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr ""
-"La cantidad máxima concurrentes de OCR de documentos que un nodo puede "
-"realizar."
+msgstr "La cantidad máxima concurrentes de OCR de documentos que un nodo puede realizar."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
@@ -429,10 +413,9 @@ msgstr "La ruta de archivo del programa unpaper."
 
 #: conf/settings.py:18
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
-"extraer texto de archivos PDF."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Ruta de acceso al programa de poppler llamado pdftotext utilizado para extraer texto de archivos PDF."
 
 #: parsers/__init__.py:87 parsers/__init__.py:164
 msgid "Text extracted from PDF"

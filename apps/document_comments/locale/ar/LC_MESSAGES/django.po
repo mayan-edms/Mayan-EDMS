@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-01-25 16:58+0000\n"
+"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: __init__.py:19 __init__.py:20
+msgid "delete"
+msgstr "حذف"
+
+#: __init__.py:21
+msgid "add comment"
+msgstr "إضافة تعليق"
+
+#: __init__.py:22
+msgid "comments"
+msgstr "تعليقات"
+
+#: __init__.py:26
+msgid "date"
+msgstr "تاريخ"
+
+#: __init__.py:30
+msgid "user"
+msgstr "مستخدم"
+
+#: __init__.py:34
+msgid "comment"
+msgstr "تعليق"
+
+#: permissions.py:7
+msgid "Comments"
+msgstr "التعليقات"
+
+#: permissions.py:9
+msgid "Create new comments"
+msgstr "إنشاء تعليقات جديدة"
+
+#: permissions.py:10
+msgid "Delete comments"
+msgstr "حذف التعليقات"
+
+#: permissions.py:11
+msgid "View comments"
+msgstr "عرض التعليقات"
+
+#: views.py:36
+msgid "Must provide at least one comment."
+msgstr "يجب إضافة تعليق واحد على الأقل."
+
+#: views.py:46
+#, python-format
+msgid "Comment \"%s\" deleted successfully."
+msgstr "التعليق \"%s\" حذف بنجاح."
+
+#: views.py:48
+#, python-format
+msgid "Error deleting comment \"%(comment)s\": %(error)s"
+msgstr "خطأ أثناء حذف التعليق \"%(comment)s\": %(error)s"
+
+#: views.py:63
+#, python-format
+msgid "Are you sure you wish to delete the comment: %s?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا التعليق: %s ؟"
+
+#: views.py:65
+#, python-format
+msgid "Are you sure you wish to delete the comments: %s?"
+msgstr "هل أنت متأكد أنك ترغب في حذف التعليقات: %s ؟"
+
+#: views.py:99
+msgid "Comment added successfully."
+msgstr "تمت إضافة التعليق بنجاح."
+
+#: views.py:106
+#, python-format
+msgid "Add comment to document: %s"
+msgstr "إضافة تعليق على الوثيقة: %s"
+
+#: views.py:126
+#, python-format
+msgid "comments: %s"
+msgstr "التعليقات: %s"

@@ -1,0 +1,302 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Trung Phan Minh <navmobile@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-01-22 07:31+0000\n"
+"Last-Translator: trungpm <navmobile@gmail.com>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/mayan-edms/language/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:24
+msgid "preview"
+msgstr "xem trước"
+
+#: __init__.py:28
+msgid "tagged items"
+msgstr "các phần tử được tag"
+
+#: __init__.py:34 __init__.py:42 links.py:21 views.py:124
+msgid "tags"
+msgstr "tags"
+
+#: forms.py:24
+msgid "Name"
+msgstr "Tên"
+
+#: forms.py:25
+msgid "Color"
+msgstr "Màu"
+
+#: forms.py:42 permissions.py:7
+msgid "Tags"
+msgstr "Tags"
+
+#: links.py:11
+msgid "tag list"
+msgstr "danh sách tag"
+
+#: links.py:12
+msgid "create new tag"
+msgstr "tạo tag mới"
+
+#: links.py:14 links.py:15
+msgid "attach tag"
+msgstr "đính tag"
+
+#: links.py:18
+msgid "remove tag"
+msgstr "xóa tag"
+
+#: links.py:19
+msgid "remove tags"
+msgstr "xóa tags"
+
+#: links.py:22 links.py:25
+msgid "delete"
+msgstr "xóa"
+
+#: links.py:23
+msgid "edit"
+msgstr "sửa"
+
+#: links.py:24
+msgid "tagged documents"
+msgstr "các tài liệu được tag"
+
+#: links.py:26
+msgid "ACLs"
+msgstr "ACLs"
+
+#: literals.py:18
+msgid "Blue"
+msgstr "Blue"
+
+#: literals.py:19
+msgid "Cyan"
+msgstr "Cyan"
+
+#: literals.py:20
+msgid "Coral"
+msgstr "Coral"
+
+#: literals.py:21
+msgid "Green-Yellow"
+msgstr "Green-Yellow"
+
+#: literals.py:22
+msgid "Khaki"
+msgstr "Khaki"
+
+#: literals.py:23
+msgid "LightGrey"
+msgstr "LightGrey"
+
+#: literals.py:24
+msgid "Magenta"
+msgstr "Magenta"
+
+#: literals.py:25
+msgid "Red"
+msgstr "Red"
+
+#: literals.py:26
+msgid "Orange"
+msgstr "Orange"
+
+#: literals.py:27
+msgid "Yellow"
+msgstr "Yellow"
+
+#: models.py:12 views.py:180 views.py:232 views.py:246
+msgid "tag"
+msgstr "tag"
+
+#: models.py:13
+msgid "color"
+msgstr "màu"
+
+#: models.py:16
+msgid "tag properties"
+msgstr "tag properties"
+
+#: models.py:17
+msgid "tags properties"
+msgstr "tags properties"
+
+#: permissions.py:9
+msgid "Create new tags"
+msgstr "Tạo tag mới"
+
+#: permissions.py:10
+msgid "Delete tags"
+msgstr "Xóa tags"
+
+#: permissions.py:11
+msgid "Edit tags"
+msgstr "Sửa tags"
+
+#: permissions.py:12
+msgid "View tags"
+msgstr "Xem tags"
+
+#: permissions.py:13
+msgid "Attach tags to documents"
+msgstr "Gắn tag cho tài liệu"
+
+#: permissions.py:14
+msgid "Remove tags from documents"
+msgstr "Xóa tag từ tài liệu"
+
+#: views.py:42
+msgid "Tag already exists."
+msgstr "Tag đã tồn tại."
+
+#: views.py:50
+msgid "Tag created succesfully."
+msgstr "Tag được tạo thành công."
+
+#: views.py:56
+msgid "create tag"
+msgstr "tạo tag"
+
+#: views.py:69
+msgid "Must provide at least one document."
+msgstr "Cần cung cấp ít nhất một tài liệu"
+
+#: views.py:87
+#, python-format
+msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
+msgstr "Tài liệu \"%(document)s\" đã được tag  \"%(tag)s\""
+
+#: views.py:92
+#, python-format
+msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
+msgstr "Tag \"%(tag)s\" được gắn thành công cho tài liệu \"%(document)s\"."
+
+#: views.py:100
+msgid "document"
+msgstr "tài liệu"
+
+#: views.py:108
+#, python-format
+msgid "Attach tag to document: %s."
+msgstr "Gắn tag cho tài liệu: %s"
+
+#: views.py:110
+#, python-format
+msgid "Attach tag to documents: %s."
+msgstr "Gắn tag cho các tài liệu: %s"
+
+#: views.py:156
+msgid "Must provide at least one tag."
+msgstr "Cần cung cấp ít nhất một tag"
+
+#: views.py:171
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "Tag \"%s\" xóa thành công."
+
+#: views.py:173
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "Lỗi xóa tag  \"%(tag)s\": %(error)s"
+
+#: views.py:188
+#, python-format
+msgid "Are you sure you wish to delete the tag: %s?"
+msgstr "Bạn chắc chắn muốn xóa tag: %s?"
+
+#: views.py:189 views.py:192
+msgid "Will be removed from all documents."
+msgstr "Sẽ được xóa trong tất cả tài liệu."
+
+#: views.py:191
+#, python-format
+msgid "Are you sure you wish to delete the tags: %s?"
+msgstr "Bạn chắc chắn muốn xóa tag: %s?"
+
+#: views.py:220
+msgid "Tag updated succesfully."
+msgstr "Tag cập nhật thành công."
+
+#: views.py:229
+#, python-format
+msgid "edit tag: %s"
+msgstr "sửa tag: %s"
+
+#: views.py:243
+#, python-format
+msgid "documents with the tag \"%s\""
+msgstr "Các tài liệu được gắn tag  \"%s\""
+
+#: views.py:262
+#, python-format
+msgid "tags for: %s"
+msgstr "tags cho: %s"
+
+#: views.py:274
+msgid "Must provide at least one tagged document."
+msgstr "Cần cung cấp ít nhất một tài liệu đã được tag"
+
+#: views.py:313
+#, python-format
+msgid "Remove tag from document: %s."
+msgstr "Xóa tag từ tài liệu: %s"
+
+#: views.py:315
+#, python-format
+msgid "Remove tag from documents: %s."
+msgstr "Xóa tag từ các tài liệu: %s"
+
+#: views.py:321
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
+"%(document)s?"
+msgstr "Bạn chắc chắn muốn xóa tag \"%(tag)s\" từ tài liệu: %(document)s?"
+
+#: views.py:324
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
+"%(documents)s?"
+msgstr "Bạn chắc chắn muốn xóa tag \"%(tag)s\" từ những tài liệu: %(documents)s?"
+
+#: views.py:329
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tags: %(tags)s from the document: "
+"%(document)s?"
+msgstr "Bạn chắc chắn muốn xóa các tag \"%(tags)s\" từ tài liệu: %(document)s?"
+
+#: views.py:332
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tags %(tag)s from the documents: "
+"%(documents)s?"
+msgstr "Bạn chắc chắn muốn xóa các tag \"%(tag)s\" từ các tài liệu: %(documents)s?"
+
+#: views.py:339
+#, python-format
+msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
+msgstr "Tài liệu  \"%(document)s\" không thể được tag như là \"%(tag)s\""
+
+#: views.py:344
+#, python-format
+msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+msgstr "Tag \"%(tag)s\" đã được xóa thành công từ tài liệu \"%(document)s\"."
+
+#: templatetags/tags_tags.py:17
+msgid "Add tag to document"
+msgstr "Gắn tag cho tài liệu"

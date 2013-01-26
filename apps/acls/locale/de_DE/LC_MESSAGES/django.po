@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <sl@suchreflex.de>, 2012.
 #   <tilmann.sittig@web.de>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: 2012-09-20 07:40+0000\n"
 "Last-Translator: Manticor <sl@suchreflex.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:14
@@ -167,16 +166,12 @@ msgstr "zu %s"
 #: views.py:189 views.py:530
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  erteilen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  erteilen möchten?"
 
 #: views.py:191 views.py:532
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  erteilen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  erteilen möchten?"
 
 #: views.py:198 views.py:539
 #, python-format
@@ -198,16 +193,12 @@ msgstr "von %s"
 #: views.py:282 views.py:609
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  enziehen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  enziehen möchten?"
 
 #: views.py:284 views.py:611
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  enziehen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  enziehen möchten?"
 
 #: views.py:291 views.py:618
 #, python-format

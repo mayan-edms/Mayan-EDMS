@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-09-28 19:58+0000\n"
 "Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:32 __init__.py:33
@@ -252,8 +251,7 @@ msgstr "Document: %(document)s uit rij verwijderd."
 #: views.py:95
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
-msgstr ""
-"Fout bij het verwijderen van document: %(document)s. Foutmelding: %(error)s"
+msgstr "Fout bij het verwijderen van document: %(document)s. Foutmelding: %(error)s"
 
 #: views.py:108
 #, python-format
@@ -263,8 +261,7 @@ msgstr "Bent u er zeker van dat u document-rij: %s, wilt verwijderen?"
 #: views.py:110
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
-msgstr ""
-"Bent u er zeker van dat u de volgende document-rijen wilt verwijderen? %s."
+msgstr "Bent u er zeker van dat u de volgende document-rijen wilt verwijderen? %s."
 
 #: views.py:146
 #, python-format
@@ -279,8 +276,7 @@ msgstr "Document: %(document)s staat al in OCR-rij."
 #: views.py:178
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr ""
-"Document: %(document)s is opnieuw in de OCR-rij: %(queue)s ingeplanned."
+msgstr "Document: %(document)s is opnieuw in de OCR-rij: %(queue)s ingeplanned."
 
 #: views.py:184
 #, python-format
@@ -290,21 +286,17 @@ msgstr "Document id#: %d, niet langer aanwezig"
 #: views.py:188
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
-msgstr ""
-"Document: %s is al afgehandeld en kan niet meer in de rij geplaatst worden."
+msgstr "Document: %s is al afgehandeld en kan niet meer in de rij geplaatst worden."
 
 #: views.py:200
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
-msgstr ""
-"Bent u er zeker van om document: %s, opnieuw toe te voegen aan OCR-rij."
+msgstr "Bent u er zeker van om document: %s, opnieuw toe te voegen aan OCR-rij."
 
 #: views.py:202
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
-msgstr ""
-"Bent u er zeker van om de volgende documenten, opnieuw toe te voegen aan OCR-"
-"rij? Documenten: %s."
+msgstr "Bent u er zeker van om de volgende documenten, opnieuw toe te voegen aan OCR-rij? Documenten: %s."
 
 #: views.py:220
 #, python-format
@@ -379,16 +371,13 @@ msgstr "transformatie wachtrij verwijdert."
 #: views.py:374
 #, python-format
 msgid "Error deleting queue transformation; %(error)s"
-msgstr ""
-"Fout bij het verwijderen van transformatie wachtrij. Foutmelding: %(error)s"
+msgstr "Fout bij het verwijderen van transformatie wachtrij. Foutmelding: %(error)s"
 
 #: views.py:387
 #, python-format
 msgid ""
 "Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr ""
-"Bent u er zeker van om de transformatie wachtrij: \"%(transformation)s\" te "
-"verwijderen."
+msgstr "Bent u er zeker van om de transformatie wachtrij: \"%(transformation)s\" te verwijderen."
 
 #: views.py:410
 msgid "Queue transformation created successfully"
@@ -408,15 +397,11 @@ msgstr "Aanmaken van een nieuwe transformatie voor wachtrij: %s"
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr ""
-"Aantal seconden OCR vertragen voor het toestaan van node storage replicatie "
-"overhead."
+msgstr "Aantal seconden OCR vertragen voor het toestaan van node storage replicatie overhead."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr ""
-"Maximum aantal documenten dat tegelijkertijd door een OCR node kan worden "
-"verwerkt."
+msgstr "Maximum aantal documenten dat tegelijkertijd door een OCR node kan worden verwerkt."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
@@ -428,10 +413,9 @@ msgstr "Bestandspad naar unpaper programma."
 
 #: conf/settings.py:18
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Bestandspad naar 'poppler's' pdftotext programma voor het extraheren van PDF "
+"File path to poppler's pdftotext program used to extract text from PDF "
 "files."
+msgstr "Bestandspad naar 'poppler's' pdftotext programma voor het extraheren van PDF files."
 
 #: parsers/__init__.py:87 parsers/__init__.py:164
 msgid "Text extracted from PDF"

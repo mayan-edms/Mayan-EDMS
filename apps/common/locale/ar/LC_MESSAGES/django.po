@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-01-25 21:06+0000\n"
+"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: __init__.py:27
+msgid "change password"
+msgstr "تغيير كلمة المرور"
+
+#: __init__.py:28
+msgid "user details"
+msgstr "تفاصيل المستخدم"
+
+#: __init__.py:29
+msgid "edit details"
+msgstr "تحرير التفاصيل"
+
+#: __init__.py:33 __init__.py:38
+msgid "about"
+msgstr "حول"
+
+#: __init__.py:34
+msgid "license"
+msgstr "license"
+
+#: forms.py:97
+msgid "Selection"
+msgstr "الاختيار"
+
+#: forms.py:129
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: forms.py:140
+msgid ""
+"Please enter a correct email and password. Note that the password fields is "
+"case-sensitive."
+msgstr "يرجى إدخال البريد الإلكتروني وكلمة المرور الصحيحين. "
+
+#: forms.py:142
+msgid "This account is inactive."
+msgstr "هذا الحساب غير نشط."
+
+#: literals.py:24
+msgid "A5"
+msgstr "A5"
+
+#: literals.py:25
+msgid "A4"
+msgstr "A4"
+
+#: literals.py:26
+msgid "A3"
+msgstr "A3"
+
+#: literals.py:27
+msgid "B5"
+msgstr "B5"
+
+#: literals.py:28
+msgid "B4"
+msgstr "B4"
+
+#: literals.py:29
+msgid "Letter"
+msgstr "Letter"
+
+#: literals.py:30
+msgid "Legal"
+msgstr "Legal"
+
+#: literals.py:31
+msgid "Ledger"
+msgstr "Ledger"
+
+#: literals.py:38
+msgid "Portrait"
+msgstr "Portrait"
+
+#: literals.py:39
+msgid "Landscape"
+msgstr "Landscape"
+
+#: models.py:17
+msgid "lock field"
+msgstr "قفل الحقل"
+
+#: models.py:45
+msgid "Anonymous user"
+msgstr "مستخدم مجهول"
+
+#: models.py:48 models.py:49
+msgid "anonymous user"
+msgstr "مستخدم مجهول"
+
+#: models.py:53
+msgid "account"
+msgstr "حساب"
+
+#: models.py:54
+msgid "password"
+msgstr "كلمة السر"
+
+#: models.py:55
+msgid "password hash"
+msgstr "password hash"
+
+#: models.py:58
+msgid "auto admin properties"
+msgstr "auto admin properties"
+
+#: utils.py:295
+msgid "function found"
+msgstr "function found"
+
+#: views.py:36
+msgid "No action selected."
+msgstr "لم يتم اختيار اجراء."
+
+#: views.py:40
+msgid "Must select at least one item."
+msgstr "يجب اختيار غرض واحد عالأقل."
+
+#: views.py:88
+#, python-format
+msgid "%(selection)s added successfully added to %(right_list_title)s."
+msgstr "%(selection)s تم الادخال بنجاح إلى %(right_list_title)s."
+
+#: views.py:94 views.py:121
+#, python-format
+msgid "Unable to add %(selection)s to %(right_list_title)s."
+msgstr "غير قادر على ادخال %(selection)s إلى %(right_list_title)s."
+
+#: views.py:115
+#, python-format
+msgid "%(selection)s added successfully removed from %(right_list_title)s."
+msgstr "%(selection)s تمت الإزالة بنجاح من %(right_list_title)s."
+
+#: views.py:136
+msgid "Add"
+msgstr "إضافة"
+
+#: views.py:147
+msgid "Remove"
+msgstr "إزالة"
+
+#: views.py:170
+msgid "current user details"
+msgstr "تفاصيل المستخدم الحالي"
+
+#: views.py:187
+msgid "E-mail conflict, another user has that same email."
+msgstr "تضارب في البريد الإلكتروني ، لدى مستخدم آخر نفس البريد الإلكتروني."
+
+#: views.py:190
+msgid "Current user's details updated."
+msgstr "تفاصيل المستخدم الحالي تم تحديثها."
+
+#: views.py:199
+msgid "edit current user details"
+msgstr "تعديل تفاصيل المستخدم الحالي"
+
+#: views.py:230
+msgid "License"
+msgstr "License"
+
+#: views.py:239
+msgid "Current user password change"
+msgstr "تغيير كلمة السر للمستخدم الحالي"
+
+#: views.py:254 templates/password_change_done.html:5
+msgid "Your password has been successfully changed."
+msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح."
+
+#: widgets.py:58
+msgid "None"
+msgstr "لا شيء"
+
+#: conf/settings.py:16
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp()"
+
+#: conf/settings.py:66
+msgid ""
+"Controls the mechanism used to authenticated user.  Options are: username, "
+"email"
+msgstr "التحكم في آلية التحقق من هوية المستخدم. الخيارات المتاحة هي: اسم المستخدم أو البريد الإلكتروني"
+
+#: conf/settings.py:75
+msgid "Allow non authenticated users, access to all views"
+msgstr "السماح للمستخدمين المجهولين الوصول إلى جميع صفحات العرض"
+
+#: templates/403.html:3 templates/403.html.py:7
+msgid "Insufficient permissions"
+msgstr "صلاحيات غير كافية"
+
+#: templates/403.html:9
+msgid "You don't have enough permissions for this operation."
+msgstr "ليس لديك صلاحيات كافية لهذه العملية."
+
+#: templates/404.html:3 templates/404.html.py:7
+msgid "Page not found"
+msgstr "لم يتم العثور على الصفحة"
+
+#: templates/404.html:9
+msgid "Sorry, but the requested page could not be found."
+msgstr "عفواً، لا يمكن العثور على الصفحة المطلوبة."
+
+#: templates/calculate_form_title.html:11
+#, python-format
+msgid "Details for %(object_name)s: %(object)s"
+msgstr "تفاصيل ل %(object_name)s: %(object)s"
+
+#: templates/calculate_form_title.html:13
+#, python-format
+msgid "Details for: %(object)s"
+msgstr "تفاصيل عن %(object)s"
+
+#: templates/calculate_form_title.html:18
+#, python-format
+msgid "Edit %(object_name)s:"
+msgstr "تحرير %(object_name)s:"
+
+#: templates/calculate_form_title.html:20
+msgid "Edit"
+msgstr "تحرير"
+
+#: templates/calculate_form_title.html:24
+#, python-format
+msgid "Create new %(object_name)s"
+msgstr "انشاء %(object_name)s جديد"
+
+#: templates/calculate_form_title.html:26
+msgid "Create"
+msgstr "انشاء"
+
+#: templates/generic_assign_remove.html:3
+#, python-format
+msgid "Assign %(title)s %(object)s"
+msgstr "تعيين %(title)s %(object)s"
+
+#: templates/generic_confirm.html:3 templates/generic_confirm.html.py:18
+msgid "Confirm"
+msgstr "تأكيد"
+
+#: templates/generic_confirm.html:16
+msgid "Confirm delete"
+msgstr "تأكيد حذف"
+
+#: templates/generic_confirm.html:32
+msgid "form icon"
+msgstr "أيقونة النموذج"
+
+#: templates/generic_confirm.html:40
+#, python-format
+msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+msgstr "هل أنت متأكد أنك تريد حذف %(object_name)s: %(object)s ؟"
+
+#: templates/generic_confirm.html:42
+#, python-format
+msgid "Are you sure you wish to delete: %(object)s?"
+msgstr "هل أنت متأكد أنك تريد حذف %(object)s ؟"
+
+#: templates/generic_confirm.html:50
+msgid "Yes"
+msgstr "نعم"
+
+#: templates/generic_confirm.html:54
+msgid "No"
+msgstr "لا"
+
+#: templates/generic_form_instance.html:37
+#: templates/generic_form_subtemplate.html:56
+msgid "required"
+msgstr "مطلوب"
+
+#: templates/generic_form_subtemplate.html:80
+#: templates/generic_form_subtemplate.html:82
+#: templates/generic_list_horizontal_subtemplate.html:51
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
+msgid "Save"
+msgstr "حفظ"
+
+#: templates/generic_form_subtemplate.html:80
+#: templates/generic_form_subtemplate.html:82
+#: templates/generic_list_horizontal_subtemplate.html:51
+#: templates/generic_list_horizontal_subtemplate.html:90
+#: templates/generic_list_subtemplate.html:52
+#: templates/generic_list_subtemplate.html:178
+msgid "Submit"
+msgstr "ارسال"
+
+#: templates/generic_form_subtemplate.html:87
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
+#, python-format
+msgid "List of %(stripped_title)s"
+msgstr "قائمة ل: %(stripped_title)s"
+
+#: templates/generic_list_horizontal_subtemplate.html:23
+#: templates/generic_list_subtemplate.html:24
+#, python-format
+msgid ""
+"List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
+"%(page_number)s of %(total_pages)s)"
+msgstr "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of %(total_pages)s)"
+
+#: templates/generic_list_horizontal_subtemplate.html:25
+#: templates/generic_list_subtemplate.html:26
+#, python-format
+msgid "List of %(title)s (%(total)s)"
+msgstr "قائمة ل: %(title)s (%(total)s)"
+
+#: templates/generic_list_subtemplate.html:72
+msgid "Identifier"
+msgstr "معرف"
+
+#: templates/generic_list_subtemplate.html:152
+#, python-format
+msgid "There are no %(stripped_title)s"
+msgstr "لا توجد أي %(stripped_title)s"
+
+#: templates/login.html:5
+msgid "Login"
+msgstr "دخول"
+
+#: templates/password_change_done.html:3 templates/password_change_form.html:3
+#: templates/password_change_form.html:5
+msgid "Password change"
+msgstr "تغيير كلمة المرور"

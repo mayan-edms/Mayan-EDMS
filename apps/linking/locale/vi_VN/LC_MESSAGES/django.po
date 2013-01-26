@@ -1,0 +1,334 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Trung Phan Minh <navmobile@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-01-24 07:39+0000\n"
+"Last-Translator: trungpm <navmobile@gmail.com>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/mayan-edms/language/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:17
+msgid "smart links actions"
+msgstr "Các thao tác liên kết thông minh"
+
+#: __init__.py:18 __init__.py:20 models.py:23 views.py:132
+msgid "smart links"
+msgstr "liên kết thông minh"
+
+#: __init__.py:21
+msgid "smart links list"
+msgstr "danh sách liên kết thông minh"
+
+#: __init__.py:22
+msgid "create new smart link"
+msgstr "tạo liên kết thông minh mới"
+
+#: __init__.py:23 __init__.py:28
+msgid "edit"
+msgstr "sửa"
+
+#: __init__.py:24 __init__.py:29
+msgid "delete"
+msgstr "xóa"
+
+#: __init__.py:26
+msgid "conditions"
+msgstr "các điều kiện"
+
+#: __init__.py:27
+msgid "create condition"
+msgstr "tạo điều kiện"
+
+#: __init__.py:31
+msgid "ACLs"
+msgstr ""
+
+#: forms.py:48
+msgid "Pages"
+msgstr "Trang"
+
+#: forms.py:54
+msgid "Select"
+msgstr "Chọn"
+
+#: forms.py:61
+msgid "Click on the image for full size view of the first page."
+msgstr "Click lên ảnh để xem kích thước đầy đủ của trang đầu"
+
+#: literals.py:7
+msgid "and"
+msgstr "và"
+
+#: literals.py:8
+msgid "or"
+msgstr "hoặc"
+
+#: literals.py:12
+msgid "is equal to"
+msgstr "bằng với"
+
+#: literals.py:13
+msgid "is equal to (case insensitive)"
+msgstr "bằng với (CHỮ HOA)"
+
+#: literals.py:14
+msgid "contains"
+msgstr "chứa"
+
+#: literals.py:15
+msgid "contains (case insensitive)"
+msgstr "chứa (CHỮ HOA)"
+
+#: literals.py:16
+msgid "is in"
+msgstr "trong"
+
+#: literals.py:17
+msgid "is greater than"
+msgstr "lớn hơn"
+
+#: literals.py:18
+msgid "is greater than or equal to"
+msgstr "lớn hơn hoặc bằng"
+
+#: literals.py:19
+msgid "is less than"
+msgstr "nhỏ hơn"
+
+#: literals.py:20
+msgid "is less than or equal to"
+msgstr "nhỏ hơn hoặc bằng"
+
+#: literals.py:21
+msgid "starts with"
+msgstr "bắt đầu với"
+
+#: literals.py:22
+msgid "starts with (case insensitive)"
+msgstr "bắt đầu với (CHỮ HOA)"
+
+#: literals.py:23
+msgid "ends with"
+msgstr "kết thúc với"
+
+#: literals.py:24
+msgid "ends with (case insensitive)"
+msgstr "kết thúc với (CHỮ HOA)"
+
+#: literals.py:25
+msgid "is in regular expression"
+msgstr ""
+
+#: literals.py:26
+msgid "is in regular expression (case insensitive)"
+msgstr ""
+
+#: models.py:12
+msgid "title"
+msgstr "tiêu đề"
+
+#: models.py:13 views.py:135
+msgid "dynamic title"
+msgstr "tiêu đề động"
+
+#: models.py:13 models.py:31
+msgid ""
+"This expression will be evaluated against the current selected document.  "
+"The document metadata is available as variables `metadata` and document "
+"properties under the variable `document`."
+msgstr ""
+
+#: models.py:14 models.py:33 views.py:136 views.py:232
+msgid "enabled"
+msgstr "đã kích hoạt"
+
+#: models.py:22 models.py:27 views.py:296 views.py:330
+msgid "smart link"
+msgstr "liên kết thông minh"
+
+#: models.py:28
+msgid "The inclusion is ignored for the first item."
+msgstr ""
+
+#: models.py:29
+msgid "foreign document data"
+msgstr ""
+
+#: models.py:29
+msgid ""
+"This represents the metadata of all other documents.  Available objects: "
+"`document.<attribute>` and `metadata.<metadata_type_name>`."
+msgstr ""
+
+#: models.py:31
+msgid "expression"
+msgstr "biểu thức"
+
+#: models.py:32
+msgid "negated"
+msgstr ""
+
+#: models.py:32
+msgid "Inverts the logic of the operator."
+msgstr ""
+
+#: models.py:36
+msgid "not"
+msgstr ""
+
+#: models.py:39
+msgid "link condition"
+msgstr "điều kiện liên kết"
+
+#: models.py:40
+msgid "link conditions"
+msgstr "các điều kiện liên kết"
+
+#: permissions.py:7
+msgid "Smart links"
+msgstr "Liên kết thông minh"
+
+#: permissions.py:9
+msgid "View existing smart links"
+msgstr "Xem các liên kết thông minh tồn tại"
+
+#: permissions.py:10
+msgid "Create new smart links"
+msgstr "Tạo liên kết thông minh mới"
+
+#: permissions.py:11
+msgid "Delete smart links"
+msgstr "Xóa liên kết thông minh"
+
+#: permissions.py:12
+msgid "Edit smart links"
+msgstr "Sửa liên kết thông minh"
+
+#: views.py:41
+msgid "No action selected."
+msgstr "Không có thao tác nào được chọn"
+
+#: views.py:60
+#, python-format
+msgid "documents in smart link: %(group)s"
+msgstr "các tài liệu trong liên kết thông minh: %(group)s"
+
+#: views.py:76
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "Lỗi truy vấn liên kết thông minh: %s"
+
+#: views.py:98
+#, python-format
+msgid "smart links (%s)"
+msgstr ""
+
+#: views.py:112
+msgid "There no defined smart links for the current document."
+msgstr ""
+
+#: views.py:152
+#, python-format
+msgid "Smart link: %s created successfully."
+msgstr ""
+
+#: views.py:159
+msgid "Create new smart link"
+msgstr ""
+
+#: views.py:175
+#, python-format
+msgid "Smart link: %s edited successfully."
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Sửa liên kết thông minh: %s"
+
+#: views.py:202
+#, python-format
+msgid "Smart link: %s deleted successfully."
+msgstr "Liên kết thông minh: %s xóa thành công."
+
+#: views.py:204
+#, python-format
+msgid "Error deleting smart link: %(smart_link)s; %(error)s."
+msgstr "Lỗi xóa liên kết thông minh: %(smart_link)s; %(error)s."
+
+#: views.py:213
+#, python-format
+msgid "Are you sure you wish to delete smart link: %s?"
+msgstr "Bạn có chắc chắn muốn xóa liên kết thông minh: %s"
+
+#: views.py:229
+#, python-format
+msgid "conditions for smart link: %s"
+msgstr "các điều kiện cho liên kết thông minh: %s"
+
+#: views.py:254
+#, python-format
+msgid "Smart link condition: \"%s\" created successfully."
+msgstr "điều kiện liên kết thông minh: %s tạo thành công."
+
+#: views.py:261
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr ""
+
+#: views.py:283
+#, python-format
+msgid "Smart link condition: \"%s\" edited successfully."
+msgstr ""
+
+#: views.py:290
+msgid "Edit smart link condition"
+msgstr ""
+
+#: views.py:297 views.py:331
+msgid "condition"
+msgstr ""
+
+#: views.py:317
+#, python-format
+msgid "Smart link condition: \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:319
+#, python-format
+msgid ""
+"Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
+msgstr ""
+
+#: views.py:333
+#, python-format
+msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
+msgstr ""
+
+#: conf/settings.py:11
+msgid "Show smart link that don't return any documents."
+msgstr ""
+
+#: templates/smart_links_help.html:3
+msgid "What are smart links?"
+msgstr ""
+
+#: templates/smart_links_help.html:4
+msgid ""
+"Smart links are a set of conditional statements that are used to query the "
+"database using the current document the user is accessing as the data "
+"source, the results of these queries are a list of documents that relate in "
+"some manner to the document being displayed and allow users the ability to "
+"jump to and from linked documents very easily."
+msgstr ""

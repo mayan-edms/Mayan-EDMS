@@ -1,0 +1,1109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2013-01-25 16:54+0000\n"
+"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: __init__.py:62
+msgid "all documents"
+msgstr "كل الوثائق"
+
+#: __init__.py:63 models.py:657 views.py:872
+msgid "recent documents"
+msgstr "الوثائق الحديثة"
+
+#: __init__.py:64
+msgid "upload new documents"
+msgstr "رفع وثائق جديدة"
+
+#: __init__.py:65
+msgid "clone metadata"
+msgstr "انسخ البيانات الوصفية"
+
+#: __init__.py:66
+msgid "details"
+msgstr "التفاصيل"
+
+#: __init__.py:67
+msgid "properties"
+msgstr "الخصائص"
+
+#: __init__.py:68 __init__.py:69 __init__.py:91 __init__.py:115
+#: __init__.py:121
+msgid "delete"
+msgstr "مسح"
+
+#: __init__.py:70 __init__.py:90 __init__.py:114 __init__.py:120
+msgid "edit"
+msgstr "تعديل"
+
+#: __init__.py:71
+msgid "preview"
+msgstr "مشاهدة"
+
+#: __init__.py:72 __init__.py:73 __init__.py:74
+msgid "download"
+msgstr "تحميل"
+
+#: __init__.py:75
+msgid "find duplicates"
+msgstr "ابحث عن النسخ المتطابقة"
+
+#: __init__.py:76
+msgid "find all duplicates"
+msgstr "ابحث عن كل النسخ المتطابقة"
+
+#: __init__.py:76
+msgid ""
+"Search all the documents' checksums and return a list of the exact matches."
+msgstr "ابحث في كل الوثائق عن النسخ المتطابقة تماماً"
+
+#: __init__.py:77
+msgid "update office documents' page count"
+msgstr "تحديث عدد صفحات وثائق أوفيس office"
+
+#: __init__.py:77
+msgid ""
+"Update the page count of the office type documents.  This is useful when "
+"enabling office document support after there were already office type "
+"documents in the database."
+msgstr "تحديث عدد صفحات وثائق أوفيس office. الفائدة هنا هي توفير الدعم لوثائق أوفيس الموجودة مسبقاً في قاعدة البيانات."
+
+#: __init__.py:78 __init__.py:79
+msgid "clear transformations"
+msgstr "امسح التحويلات"
+
+#: __init__.py:80
+msgid "print"
+msgstr "طباعة"
+
+#: __init__.py:81
+msgid "history"
+msgstr "التاريخ"
+
+#: __init__.py:82
+msgid "Find missing document files"
+msgstr "ابحث عن الوثائق المفقودة"
+
+#: __init__.py:85
+msgid "Clear the document image cache"
+msgstr "مسح ذاكرة التخزين المؤقت لصورة الوثيقة"
+
+#: __init__.py:85
+msgid ""
+"Clear the graphics representations used to speed up the documents' display "
+"and interactive transformations results."
+msgstr "مسح بيانات الرسومات المستخدمة لتسريع عرض الوثائق و نتائج التحويلات."
+
+#: __init__.py:88
+msgid "page transformations"
+msgstr "تحويلات الصفحة"
+
+#: __init__.py:89
+msgid "create new transformation"
+msgstr "أنشأ تحويل جديد"
+
+#: __init__.py:93
+msgid "page image"
+msgstr "صورة الصفحة"
+
+#: __init__.py:94
+msgid "page text"
+msgstr "صورة النص"
+
+#: __init__.py:95
+msgid "edit page text"
+msgstr "تعديل نص الصفحة"
+
+#: __init__.py:96
+msgid "next page"
+msgstr "الصفحة التالية"
+
+#: __init__.py:97
+msgid "previous page"
+msgstr "الصفحة السابقة"
+
+#: __init__.py:98
+msgid "first page"
+msgstr "الصفحة الأولى"
+
+#: __init__.py:99
+msgid "last page"
+msgstr "الصفحة الأخيرة"
+
+#: __init__.py:100
+msgid "zoom in"
+msgstr "تكبير"
+
+#: __init__.py:101
+msgid "zoom out"
+msgstr "تصغير"
+
+#: __init__.py:102
+msgid "rotate right"
+msgstr "تدوير لليمين"
+
+#: __init__.py:103
+msgid "rotate left"
+msgstr "تدوير لليسار"
+
+#: __init__.py:104
+msgid "reset view"
+msgstr "إعادة عرض"
+
+#: __init__.py:107
+msgid "versions"
+msgstr "الاصدارات"
+
+#: __init__.py:108
+msgid "revert"
+msgstr "إرجاع"
+
+#: __init__.py:111
+msgid "document type list"
+msgstr "قائمة أنواع الوثائق"
+
+#: __init__.py:112 views.py:1051
+msgid "document types"
+msgstr "أنواع الوثائق"
+
+#: __init__.py:113
+msgid "documents of this type"
+msgstr "الوثائق من نفس هذا النوع"
+
+#: __init__.py:116 views.py:1162
+msgid "create document type"
+msgstr "أنشأ نوع من الوثائق"
+
+#: __init__.py:118
+msgid "filenames"
+msgstr "أسماء الملفات"
+
+#: __init__.py:119
+msgid "add filename to document type"
+msgstr "أضف اسم ملف لنوع من الوثائق"
+
+#: __init__.py:161 permissions.py:7
+msgid "Documents"
+msgstr "الوثائق"
+
+#: __init__.py:163 __init__.py:173 models.py:96 views.py:79
+msgid "documents"
+msgstr "الوثائق"
+
+#: __init__.py:166
+msgid "thumbnail"
+msgstr "صورة مصغرة"
+
+#: events.py:5
+msgid "Document creation"
+msgstr "إنشاء وثيقة"
+
+#: events.py:6
+#, python-format
+msgid "Document \"%(content_object)s\" created by %(fullname)s."
+msgstr "الوثيقة:  \"%(content_object)s\" تم انشائها من قبل: %(fullname)s"
+
+#: events.py:7
+#, python-format
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgstr "الوثيقة:  \"%(content_object)s\" تم انشائها بتاريخ:  %(datetime)s من قبل:  %(fullname)s."
+
+#: events.py:13
+msgid "Document edited"
+msgstr "تم تعديل الوثيقة"
+
+#: events.py:14
+#, python-format
+msgid "Document \"%(content_object)s\" edited by %(fullname)s."
+msgstr "الوثيقة:  \"%(content_object)s\" تم تعديلها من قبل:  %(fullname)s."
+
+#: events.py:15
+#, python-format
+msgid ""
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
+msgstr "الوثيقة:  \"%(content_object)s\" تم تعديلها بتاريخ:  %(datetime)s by %(fullname)s.  التغييرات هي: %(changes)s."
+
+#: events.py:24
+msgid "Document deleted"
+msgstr "تم مسح الوثيقة"
+
+#: events.py:25
+#, python-format
+msgid "Document \"%(document)s\" deleted by %(fullname)s."
+msgstr "الوثيقة:  \"%(document)s\" تم مسحها من قبل: %(fullname)s."
+
+#: events.py:26
+#, python-format
+msgid "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
+msgstr "الوثيقة:  \"%(document)s\" تم مسحها بتاريخ:  %(datetime)s من قبل:  %(fullname)s."
+
+#: forms.py:65
+msgid "Page image"
+msgstr "صورة الصفحة"
+
+#: forms.py:75 forms.py:272
+msgid "Contents"
+msgstr "المحتويات"
+
+#: forms.py:111 forms.py:267
+msgid "Page"
+msgstr "الصفحة"
+
+#: forms.py:123
+msgid "Details"
+msgstr "التفاصيل"
+
+#: forms.py:128
+msgid "Click on the image for full size preview"
+msgstr "اضغط على الصورة للتكبير"
+
+#: forms.py:138
+#, python-format
+msgid "Document pages (%s)"
+msgstr "صفحات الوثيقة (%s)"
+
+#: forms.py:164
+msgid "Use the new version filename as the document filename"
+msgstr "استخدم اسم الملف للاصدار الجديد كإسم الملف لنوع الوثيقة"
+
+#: forms.py:180
+msgid "Quick document rename"
+msgstr "إعادة تسمية الوثيقة بسرعة"
+
+#: forms.py:187
+msgid "Version update"
+msgstr "تحديث الاصدار"
+
+#: forms.py:192
+msgid "Release level"
+msgstr "Release level"
+
+#: forms.py:198
+msgid "Release level serial"
+msgstr "Release level serial"
+
+#: forms.py:206
+msgid "Comment"
+msgstr "تعليق"
+
+#: forms.py:212
+msgid "New document filename"
+msgstr "اسم ملف جديد للوثائق"
+
+#: forms.py:290
+msgid "Page range"
+msgstr "نطاق الصفحات"
+
+#: forms.py:320
+msgid "Compress"
+msgstr "ضغط"
+
+#: forms.py:320
+msgid ""
+"Download the document in the original format or in a compressed manner.  "
+"This option is selectable only when downloading one document, for multiple "
+"documents, the bundle will always be downloads as a compressed file."
+msgstr "تحميل الوثيقة في الشكل الأصلي أو بطريقة مضغوطة. هذا الخيار قابل للاختيار فقط عند تنزيل وثيقة واحدة أو وثائق متعددة، وسوف يكون التحميل دائما على شكل ملف مضغوط."
+
+#: forms.py:321
+msgid "Compressed filename"
+msgstr "اسم الملف المضغوط"
+
+#: forms.py:321
+msgid ""
+"The filename of the compressed file that will contain the documents to be "
+"downloaded, if the previous option is selected."
+msgstr "اسم الملف المضغوط سيحتوي الوثائق التي سيتم تحويلها، اذا تم اختيار الخيار السابق"
+
+#: literals.py:15
+msgid "final"
+msgstr "نهائي"
+
+#: literals.py:16
+msgid "alpha"
+msgstr "نسخة أولية"
+
+#: literals.py:17
+msgid "beta"
+msgstr "نسخة تجريبية"
+
+#: literals.py:18
+msgid "release candidate"
+msgstr "نسخة شبه نهائية"
+
+#: literals.py:19
+msgid "hotfix"
+msgstr "تحديث سريع"
+
+#: models.py:62
+msgid "name"
+msgstr "الاسم"
+
+#: models.py:73 models.py:83 models.py:548 views.py:1069 views.py:1098
+#: views.py:1127 views.py:1132 views.py:1175 views.py:1221 views.py:1255
+#: views.py:1296
+msgid "document type"
+msgstr "نوع الوثيقة"
+
+#: models.py:74
+msgid "documents types"
+msgstr "أنواع الوثائق "
+
+#: models.py:84
+msgid "description"
+msgstr "الوصف"
+
+#: models.py:85
+msgid "added"
+msgstr "تمت الاضافة"
+
+#: models.py:95 models.py:313 models.py:646 models.py:661 views.py:227
+#: views.py:351
+msgid "document"
+msgstr "وثيقة"
+
+#: models.py:300
+#, python-format
+msgid "Major %(major)i.%(minor)i, (new release)"
+msgstr "Major %(major)i.%(minor)i, (new release)"
+
+#: models.py:301
+#, python-format
+msgid "Minor %(major)i.%(minor)i, (some updates)"
+msgstr "Minor %(major)i.%(minor)i, (some updates)"
+
+#: models.py:302
+#, python-format
+msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
+msgstr "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
+
+#: models.py:314
+msgid "mayor"
+msgstr "major"
+
+#: models.py:315
+msgid "minor"
+msgstr "minor"
+
+#: models.py:316
+msgid "micro"
+msgstr "micro"
+
+#: models.py:317
+msgid "release level"
+msgstr "مستوى الاصدار"
+
+#: models.py:318
+msgid "serial"
+msgstr "رقم مسلسل"
+
+#: models.py:319
+msgid "timestamp"
+msgstr "الوقت والتاريخ"
+
+#: models.py:320 views.py:1361
+msgid "comment"
+msgstr "تعليق"
+
+#: models.py:323
+msgid "file"
+msgstr "ملف"
+
+#: models.py:327
+msgid "checksum"
+msgstr "checksum"
+
+#: models.py:331 models.py:332 models.py:565
+msgid "document version"
+msgstr "اصدار الوثيقة"
+
+#: models.py:424
+msgid ""
+"This document's file format is not known, the page count has therefore "
+"defaulted to 1."
+msgstr "لا يعرف نوع هذه الوثيقة ، و بالتالي تم اعتبار عدد الصفحات ١."
+
+#: models.py:549 views.py:1357
+msgid "filename"
+msgstr "اسم الملف"
+
+#: models.py:550 views.py:1182
+msgid "enabled"
+msgstr "مشغل"
+
+#: models.py:557
+msgid "document type quick rename filename"
+msgstr "تغيير اسم الملف لنوع الوثيقة"
+
+#: models.py:558
+msgid "document types quick rename filenames"
+msgstr "تغيير سريع لاسم الملف الخاص بنوعية الوثيقة"
+
+#: models.py:566
+msgid "content"
+msgstr "محتوى"
+
+#: models.py:567
+msgid "page label"
+msgstr "عنوان الصفحة"
+
+#: models.py:568
+msgid "page number"
+msgstr "رقم الصفحة"
+
+#: models.py:571
+#, python-format
+msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+msgstr "صفحة %(page_num)d من أصل %(total_pages)d للوثيقة %(document)s"
+
+#: models.py:579 models.py:625
+msgid "document page"
+msgstr "صفحة الوثيقة"
+
+#: models.py:580
+msgid "document pages"
+msgstr "صفحات الوثيقة"
+
+#: models.py:600
+msgid "Enter a valid value."
+msgstr "أدخل قيمة صالحة"
+
+#: models.py:626 views.py:450
+msgid "order"
+msgstr "ترتيب"
+
+#: models.py:627 views.py:451 views.py:512 views.py:543
+msgid "transformation"
+msgstr "تحويل"
+
+#: models.py:628 views.py:452
+msgid "arguments"
+msgstr "مدخلات"
+
+#: models.py:628
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr "استخدم مصدر لتحديد المدخلات، مثلاً : %s"
+
+#: models.py:636
+msgid "document page transformation"
+msgstr "تحويل صفحات الوثيقة"
+
+#: models.py:637
+msgid "document page transformations"
+msgstr "تحويلات صفحات الوثيقة"
+
+#: models.py:645
+msgid "user"
+msgstr "المستخدم"
+
+#: models.py:647
+msgid "accessed"
+msgstr "الدخول"
+
+#: models.py:656
+msgid "recent document"
+msgstr "الوثائق الحديثة"
+
+#: models.py:662
+msgid "Document type"
+msgstr "نوع الوثيقة"
+
+#: models.py:663
+msgid "MIME type"
+msgstr "نوع الملف"
+
+#: models.py:664 views.py:132
+msgid "Filename"
+msgstr "اسم الملف"
+
+#: models.py:665
+msgid "Metadata type"
+msgstr "نوع البيانات الوصفية"
+
+#: models.py:666
+msgid "Metadata value"
+msgstr "قيمة البيانات الوصفية"
+
+#: models.py:667
+msgid "Content"
+msgstr "المحتوى"
+
+#: models.py:668
+msgid "Description"
+msgstr "الوصف"
+
+#: models.py:669
+msgid "Tags"
+msgstr "العلامات الاستدلالية"
+
+#: models.py:670
+msgid "Comments"
+msgstr "تعليقات"
+
+#: permissions.py:9
+msgid "Create documents"
+msgstr "إنشاء وثائق"
+
+#: permissions.py:10
+msgid "Edit document properties"
+msgstr "تحرير خصائص الوثيقة"
+
+#: permissions.py:11
+msgid "Edit documents"
+msgstr "تحرير الوثائق"
+
+#: permissions.py:12
+msgid "View documents"
+msgstr "عرض الوثائق"
+
+#: permissions.py:13
+msgid "Delete documents"
+msgstr "حذف الوثائق"
+
+#: permissions.py:14 views.py:408
+msgid "Download documents"
+msgstr "تحميل الوثائق"
+
+#: permissions.py:15
+msgid "Transform documents"
+msgstr "تحويل الوثائق"
+
+#: permissions.py:16
+msgid "Execute document modifying tools"
+msgstr "تشغيل أدوات تعديل الوثيقة"
+
+#: permissions.py:17
+msgid "Revert documents to a previous version"
+msgstr "أعد الوثيقة لإصدار قديم"
+
+#: permissions.py:18
+msgid "Create new document versions"
+msgstr "انشأ اصدارات جديدة للوثيقة"
+
+#: permissions.py:20
+msgid "Documents setup"
+msgstr "ضبط الوثائق"
+
+#: permissions.py:22
+msgid "View document types"
+msgstr "عرض أنواع الوثائق"
+
+#: permissions.py:23
+msgid "Edit document types"
+msgstr "تحرير أنواع الوثائق"
+
+#: permissions.py:24
+msgid "Delete document types"
+msgstr "حذف أنواع الوثائق"
+
+#: permissions.py:25
+msgid "Create document types"
+msgstr "إنشاء أنواع الوثائق"
+
+#: statistics.py:44
+#, python-format
+msgid "Document types: %d"
+msgstr "أنواع الوثائق: %d"
+
+#: statistics.py:45
+#, python-format
+msgid "Documents in database: %d"
+msgstr "الوثائق في قاعدة البيانات: %d"
+
+#: statistics.py:50
+#, python-format
+msgid "Documents in storage: %d"
+msgstr "الوثائق في التخزين: %d"
+
+#: statistics.py:52
+#, python-format
+msgid ""
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
+msgstr "المساحة المستخدمة في التخزين: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
+
+#: statistics.py:63
+#, python-format
+msgid "Document pages in database: %d"
+msgstr "صفحات الوثائق في قاعدة البيانات: %d"
+
+#: statistics.py:64
+#, python-format
+msgid "Minimum amount of pages per document: %d"
+msgstr "أقل عدد للصفحات بكل وثيقة: %d"
+
+#: statistics.py:65
+#, python-format
+msgid "Maximum amount of pages per document: %d"
+msgstr "أكثر عدد للصفحات بكل وثيقة: %d"
+
+#: statistics.py:66
+#, python-format
+msgid "Average amount of pages per document: %f"
+msgstr "معدل عدد للصفحات بكل وثيقة: %f"
+
+#: statistics.py:71
+msgid "Document statistics"
+msgstr "احصائيات الوثائق"
+
+#: views.py:133
+msgid "File mimetype"
+msgstr "نوع الملف"
+
+#: views.py:133 views.py:134
+msgid "None"
+msgstr "لا شيء"
+
+#: views.py:134
+msgid "File mime encoding"
+msgstr "ترميز نوع الملف"
+
+#: views.py:135
+msgid "File size"
+msgstr "حجم الملف"
+
+#: views.py:136
+msgid "Exists in storage"
+msgstr "موجود في التخزين"
+
+#: views.py:137
+msgid "File path in storage"
+msgstr "مسار الملف في التخزين"
+
+#: views.py:138
+msgid "Date added"
+msgstr "تاريخ الاضافة"
+
+#: views.py:139
+msgid "Time added"
+msgstr "وقت الاضافة"
+
+#: views.py:140
+msgid "Checksum"
+msgstr "Checksum"
+
+#: views.py:141
+msgid "UUID"
+msgstr "UUID"
+
+#: views.py:142
+msgid "Pages"
+msgstr "الصفحات"
+
+#: views.py:151
+#, python-format
+msgid "document properties for: %s"
+msgstr "خصائص الوثيقة ل: %s"
+
+#: views.py:173
+msgid "document data"
+msgstr "بيانات الوثيقة"
+
+#: views.py:197 views.py:647
+msgid "Must provide at least one document."
+msgstr "يجب تقديم وثيقة واحدة على الأقل."
+
+#: views.py:218
+msgid "Document deleted successfully."
+msgstr "تم مسح الوثيقة بنجاح."
+
+#: views.py:220
+#, python-format
+msgid "Document: %(document)s delete error: %(error)s"
+msgstr "الوثيقة: %(document)s خطأ بالحذف: %(error)s"
+
+#: views.py:235
+#, python-format
+msgid "Are you sure you wish to delete the document: %s?"
+msgstr "هل أنت متأكد من حذف الوثيقة:%s؟"
+
+#: views.py:237
+#, python-format
+msgid "Are you sure you wish to delete the documents: %s?"
+msgstr "هل أنت متأكد من حذف الوثائق: %s؟"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%s\" edited successfully."
+msgstr "تم تحرير الوثيقة بنجاح: \"%s\" ."
+
+#: views.py:342
+msgid "documents to be downloaded"
+msgstr "وثائق ليتم تحميلها"
+
+#: views.py:352 views.py:1341
+msgid "version"
+msgstr "اصدار"
+
+#: views.py:409
+msgid "Download"
+msgstr "تحميل"
+
+#: views.py:411
+msgid "Return"
+msgstr "عودة"
+
+#: views.py:446
+#, python-format
+msgid "transformations for: %s"
+msgstr "التحويلات ل: %s"
+
+#: views.py:473
+msgid "Document page transformation created successfully."
+msgstr "تم انشاء تحويلات صفحات الوثيقة بنجاح."
+
+#: views.py:482
+#, python-format
+msgid "Create new transformation for page: %(page)s of document: %(document)s"
+msgstr "انشاء تحويلات جديدة للصفحة: %(page)s في الوثيقة: %(document)s"
+
+#: views.py:501
+msgid "Document page transformation edited successfully."
+msgstr "تحويلات صفحات الوثيقة تمت بنجاح"
+
+#: views.py:514
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(document_page)s"
+msgstr "تحرير التحويلات \"%(transformation)s\" للوثيقة: %(document_page)s"
+
+#: views.py:534
+msgid "Document page transformation deleted successfully."
+msgstr "تحويلات صفحات الوثيقة مسحت بنجاح"
+
+#: views.py:545
+#, python-format
+msgid ""
+"Are you sure you wish to delete transformation \"%(transformation)s\" for: "
+"%(document_page)s"
+msgstr "هل أنت متأكد من مسح التحويل \"%(transformation)s\" التابع ل: %(document_page)s"
+
+#: views.py:563
+#, python-format
+msgid "duplicates of: %s"
+msgstr "نسخ متكررة من: %s"
+
+#: views.py:575
+msgid "Are you sure you wish to find all duplicates?"
+msgstr "هل أنت متأكد من العثور على كافة النسخ المتكررة؟"
+
+#: views.py:576 views.py:634 views.py:702
+msgid "On large databases this operation may take some time to execute."
+msgstr "على قواعد البيانات الكبيرة قد تستغرق هذه العملية بعض الوقت لتنفيذه."
+
+#: views.py:599
+msgid "duplicated documents"
+msgstr "الوثائق المتكررة"
+
+#: views.py:625
+#, python-format
+msgid ""
+"Page count update complete.  Documents processed: %(total)d, documents with "
+"changed page count: %(change)d"
+msgstr "تحديث عدد الصفحات انتهى بنجاح. الوثائق التي تم معالجتها %(total)d ، الوثائق التي تم تحديث عدد صفحاتها: %(change)d"
+
+#: views.py:633
+#, python-format
+msgid ""
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
+msgstr "هل انت متأكد من تحديث عدد الصفحات لوثائق أوفيس office (%d) ؟ "
+
+#: views.py:665
+#, python-format
+msgid ""
+"All the page transformations for document: %s, have been deleted "
+"successfully."
+msgstr "كل التحويلات الخاصة بالوثيقة: %s, تم مسحها بنجاح."
+
+#: views.py:667
+#, python-format
+msgid ""
+"Error deleting the page transformations for document: %(document)s; "
+"%(error)s."
+msgstr "خطأ بمسح التحويلات الخاصة بالوثيقة: %(document)s; %(error)s."
+
+#: views.py:673
+msgid "document transformation"
+msgstr "تحويل الوثيقة"
+
+#: views.py:682
+#, python-format
+msgid ""
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
+msgstr "هل أنت متأكد من مسح كل التحويلات للوثيقة: %s ؟"
+
+#: views.py:684
+#, python-format
+msgid ""
+"Are you sure you wish to clear all the page transformations for documents: "
+"%s?"
+msgstr "هل أنت متأكد من مسح كل التحويلات للوثيقة: %s ؟"
+
+#: views.py:712
+msgid "missing documents"
+msgstr "وثائق مفقودة"
+
+#: views.py:728 views.py:770
+#, python-format
+msgid "details for: %s"
+msgstr "التفاصيل ل: %s"
+
+#: views.py:789
+msgid "Document page edited successfully."
+msgstr "تم تعديل صفحة الوثيقة بنجاح"
+
+#: views.py:798
+#, python-format
+msgid "edit: %s"
+msgstr "تعديل: %s"
+
+#: views.py:815
+msgid "There are no more pages in this document"
+msgstr "لا توجد صفحات أخرى بهذه الوثيقة"
+
+#: views.py:833
+msgid "You are already at the first page of this document"
+msgstr "أنت بالفعل في الصفحة الأولى من هذه الوثيقة"
+
+#: views.py:994
+#, python-format
+msgid "print: %s"
+msgstr "اطبع :%s"
+
+#: views.py:1067
+#, python-format
+msgid "documents of type \"%s\""
+msgstr "الوثائق من نوع: \"%s\""
+
+#: views.py:1087
+msgid "Document type edited successfully"
+msgstr "تم تعديل نوع الوثيقة بنجاح"
+
+#: views.py:1090
+#, python-format
+msgid "Error editing document type; %s"
+msgstr "خطأ بتعديل نوع الوثيقة: %s"
+
+#: views.py:1095
+#, python-format
+msgid "edit document type: %s"
+msgstr "تعديل نوع الوثيقة: %s"
+
+#: views.py:1119
+#, python-format
+msgid "Document type: %s deleted successfully."
+msgstr "تم مسح نوع الوثيقة: %s بنجاح"
+
+#: views.py:1121
+#, python-format
+msgid "Document type: %(document_type)s delete error: %(error)s"
+msgstr " حصل لنوع الوثيقة: %(document_type)s خطأ بالمسح: %(error)s"
+
+#: views.py:1136
+#, python-format
+msgid "Are you sure you wish to delete the document type: %s?"
+msgstr "هل أنت متأكد أنك ترغب في حذف نوع الوثيقة: %s؟"
+
+#: views.py:1137
+msgid ""
+"The document type of all documents using this document type will be set to "
+"none."
+msgstr "نوع الوثيقة لكل الوثائق المطابقة لهذا النوع سيتم جعله من نوع: لا شيء"
+
+#: views.py:1153
+msgid "Document type created successfully"
+msgstr "تم انشاء نوع الوثيقة بنجاح"
+
+#: views.py:1156
+#, python-format
+msgid "Error creating document type; %(error)s"
+msgstr "خطأ في إنشاء نوع الوثيقة: %(error)s"
+
+#: views.py:1174
+#, python-format
+msgid "filenames for document type: %s"
+msgstr "أسماء لنوع الوثيقة:%s"
+
+#: views.py:1205
+msgid "Document type filename edited successfully"
+msgstr "تم تحرير اسم الملف لنوع الوثيقة  بنجاح"
+
+#: views.py:1208
+#, python-format
+msgid "Error editing document type filename; %s"
+msgstr "خطأ بتحرير اسم الملف لنوع الوثيقة : %s"
+
+#: views.py:1213
+#, python-format
+msgid "edit filename \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "تعديل اسم الملف \"%(filename)s\" لنوع الوثيقة \"%(document_type)s\""
+
+#: views.py:1222 views.py:1248 views.py:1256
+msgid "document type filename"
+msgstr "اسم الملف لنوع الوثيقة"
+
+#: views.py:1240
+#, python-format
+msgid "Document type filename: %s deleted successfully."
+msgstr "اسم الملف لنوع الوثيقة: %s تم مسحه بنجاح."
+
+#: views.py:1242
+#, python-format
+msgid ""
+"Document type filename: %(document_type_filename)s delete error: %(error)s"
+msgstr "اسم الملف لنوع الوثيقة: %(document_type_filename)s حصل له خطأ عند المسح: %(error)s"
+
+#: views.py:1258
+#, python-format
+msgid ""
+"Are you sure you wish to delete the filename: %(filename)s, from document "
+"type \"%(document_type)s\"?"
+msgstr "هل أنت متأكد من مسح اسم الملف %(filename)s من نوع الوثيقة \"%(document_type)s\" ؟"
+
+#: views.py:1283
+msgid "Document type filename created successfully"
+msgstr "إنشاء اسم الملف لنوع الوثيقة بنجاح"
+
+#: views.py:1286
+#, python-format
+msgid "Error creating document type filename; %(error)s"
+msgstr "خطأ بإنشاء اسم ملف لنوع الوثيقة: %(error)s"
+
+#: views.py:1292
+#, python-format
+msgid "create filename for document type: %s"
+msgstr "إنشاء اسم ملف لنوع الوثيقة: %s"
+
+#: views.py:1310
+msgid "Document image cache cleared successfully"
+msgstr "مسح ذاكرة التخزين المؤقت للوثيقة بنجاح"
+
+#: views.py:1312
+#, python-format
+msgid "Error clearing document image cache; %s"
+msgstr "الخطأ بمسح ذاكرة التخزين المؤقت للوثيقة: %s"
+
+#: views.py:1318
+msgid "Are you sure you wish to clear the document image cache?"
+msgstr "هل أنت متأكد أنك ترغب بمسح ذاكرة التخزين المؤقت للوثيقة؟"
+
+#: views.py:1335
+#, python-format
+msgid "versions for document: %s"
+msgstr "الاصدارات للوثيقة: %s"
+
+#: views.py:1345
+msgid "time and date"
+msgstr "الوقت و التاريخ"
+
+#: views.py:1349
+msgid "mimetype"
+msgstr "نوع الملف"
+
+#: views.py:1353
+msgid "encoding"
+msgstr "الترميز"
+
+#: views.py:1384
+msgid "Document version reverted successfully"
+msgstr "تم ارجاع اصدار الوثيقة بنجاح"
+
+#: views.py:1386
+#, python-format
+msgid "Error reverting document version; %s"
+msgstr "خطأ بارجاع اصدار الوثيقة %s"
+
+#: views.py:1393
+msgid "Are you sure you wish to revert to this version?"
+msgstr "هل أنت متأكد أنك ترغب في العودة إلى هذا الإصدار؟"
+
+#: views.py:1394
+msgid "All later version after this one will be deleted too."
+msgstr "سيتم حذف جميع الإصدارات اللاحقة بعد هذا الإصدار أيضا."
+
+#: widgets.py:25
+msgid "document page image"
+msgstr "صورة صفحة الوثيقة"
+
+#: wizards.py:36
+msgid "step 1 of 3: Document type"
+msgstr "الخطوة 1 من 3: نوع الوثيقة"
+
+#: wizards.py:37
+msgid "step 2 of 3: Metadata selection"
+msgstr "الخطوة 2 من 3: اختيار البيانات الوصفية"
+
+#: wizards.py:38
+msgid "step 3 of 3: Document metadata"
+msgstr "الخطوة 3 من 3: البيانات الوصفية للوثيقة"
+
+#: wizards.py:46
+msgid "Next step"
+msgstr "الخطوة التالية"
+
+#: conf/settings.py:38
+msgid ""
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "أكبر عدد من الوثائق الحديثة للتذكر لكل مستخدم."
+
+#: conf/settings.py:39
+msgid "Amount in percent zoom in or out a document page per user interaction."
+msgstr "النسبة المئوية لتكبير أو تصغير في صفحة الوثيقة لكل مستخدم."
+
+#: conf/settings.py:40
+msgid ""
+"Maximum amount in percent (%) to allow user to zoom in a document page "
+"interactively."
+msgstr "أكبر نسبة مئوية (%) للسماح بالتكبير داخل الوثيقة لكل مستخدم."
+
+#: conf/settings.py:41
+msgid ""
+"Minimum amount in percent (%) to allow user to zoom out a document page "
+"interactively."
+msgstr "أقل نسبة مئوية (%) للسماح بالتكبير داخل الوثيقة لكل مستخدم."
+
+#: conf/settings.py:42
+msgid "Amount in degrees to rotate a document page per user interaction."
+msgstr "الدرجة المسموح بها لتدوير الوثيقة لكل مستخدم."
+
+#: templates/document_types_help.html:3
+msgid "What are document types?"
+msgstr "ما هي أنواع الوثائق؟"
+
+#: templates/document_types_help.html:4
+msgid ""
+"Document types define a class that represents a broard group of documents, "
+"such as: invoices, regulations or manuals.  The advantage of using document "
+"types are: assigning a list of typical filenames for quick renaming during "
+"creation, as well as assigning default metadata types and sets to it."
+msgstr "أنواع الوثائق هي طريقة لتصنيف الوثائق مثل: الفواتير، التعاميم، التعليمات. الفائدة باستخدام أنواع الوثائق هي سهولة التعامل معها مثل وضع البيانات التوصيفية أو تحديد أنواع الملفات المتعلقة بها."
+
+#: templates/recent_document_list_help.html:3
+msgid "What are recent documents?"
+msgstr "ماهي الوثائق الحديثة؟"
+
+#: templates/recent_document_list_help.html:4
+#, python-format
+msgid ""
+"Here you will find the latest %(recent_count)s documents you have either "
+"created or edited in any way."
+msgstr "هنا ستجد آخر %(recent_count)s وثائق قمت بانشائها أو تعديلها بأي طريقة."

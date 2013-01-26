@@ -1,0 +1,1109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Trung Phan Minh <navmobile@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"PO-Revision-Date: 2013-01-22 07:14+0000\n"
+"Last-Translator: trungpm <navmobile@gmail.com>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/mayan-edms/language/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:62
+msgid "all documents"
+msgstr "Tất cả tài liệu"
+
+#: __init__.py:63 models.py:657 views.py:872
+msgid "recent documents"
+msgstr "Tài liệu gần đây"
+
+#: __init__.py:64
+msgid "upload new documents"
+msgstr "upload tài liệu mới"
+
+#: __init__.py:65
+msgid "clone metadata"
+msgstr "Nhân bản metadata"
+
+#: __init__.py:66
+msgid "details"
+msgstr "Chi tiết"
+
+#: __init__.py:67
+msgid "properties"
+msgstr "Tính chất"
+
+#: __init__.py:68 __init__.py:69 __init__.py:91 __init__.py:115
+#: __init__.py:121
+msgid "delete"
+msgstr "Xóa"
+
+#: __init__.py:70 __init__.py:90 __init__.py:114 __init__.py:120
+msgid "edit"
+msgstr "Sửa"
+
+#: __init__.py:71
+msgid "preview"
+msgstr "Xem trước"
+
+#: __init__.py:72 __init__.py:73 __init__.py:74
+msgid "download"
+msgstr "Tải xuống"
+
+#: __init__.py:75
+msgid "find duplicates"
+msgstr "Tìm sự trùng lặp"
+
+#: __init__.py:76
+msgid "find all duplicates"
+msgstr "Tìm tất cả trùng lặp"
+
+#: __init__.py:76
+msgid ""
+"Search all the documents' checksums and return a list of the exact matches."
+msgstr ""
+
+#: __init__.py:77
+msgid "update office documents' page count"
+msgstr ""
+
+#: __init__.py:77
+msgid ""
+"Update the page count of the office type documents.  This is useful when "
+"enabling office document support after there were already office type "
+"documents in the database."
+msgstr ""
+
+#: __init__.py:78 __init__.py:79
+msgid "clear transformations"
+msgstr ""
+
+#: __init__.py:80
+msgid "print"
+msgstr "In"
+
+#: __init__.py:81
+msgid "history"
+msgstr "Quá khứ"
+
+#: __init__.py:82
+msgid "Find missing document files"
+msgstr "Tìm các file tài liệu bị mất"
+
+#: __init__.py:85
+msgid "Clear the document image cache"
+msgstr "Xóa bộ nhớ tạm ảnh tài liệu"
+
+#: __init__.py:85
+msgid ""
+"Clear the graphics representations used to speed up the documents' display "
+"and interactive transformations results."
+msgstr ""
+
+#: __init__.py:88
+msgid "page transformations"
+msgstr ""
+
+#: __init__.py:89
+msgid "create new transformation"
+msgstr ""
+
+#: __init__.py:93
+msgid "page image"
+msgstr ""
+
+#: __init__.py:94
+msgid "page text"
+msgstr ""
+
+#: __init__.py:95
+msgid "edit page text"
+msgstr ""
+
+#: __init__.py:96
+msgid "next page"
+msgstr "Trang tiếp"
+
+#: __init__.py:97
+msgid "previous page"
+msgstr "Trang trước"
+
+#: __init__.py:98
+msgid "first page"
+msgstr "Trang đầu"
+
+#: __init__.py:99
+msgid "last page"
+msgstr "Trang cuối"
+
+#: __init__.py:100
+msgid "zoom in"
+msgstr "Phóng to"
+
+#: __init__.py:101
+msgid "zoom out"
+msgstr "Thu nhỏ"
+
+#: __init__.py:102
+msgid "rotate right"
+msgstr "Quay phải"
+
+#: __init__.py:103
+msgid "rotate left"
+msgstr "Quay trái"
+
+#: __init__.py:104
+msgid "reset view"
+msgstr ""
+
+#: __init__.py:107
+msgid "versions"
+msgstr "các phiên bản"
+
+#: __init__.py:108
+msgid "revert"
+msgstr ""
+
+#: __init__.py:111
+msgid "document type list"
+msgstr "dDanh sách kiểu tài liệu"
+
+#: __init__.py:112 views.py:1051
+msgid "document types"
+msgstr "kiểu tài liệu"
+
+#: __init__.py:113
+msgid "documents of this type"
+msgstr "Ccác tài liệu có kiểu này"
+
+#: __init__.py:116 views.py:1162
+msgid "create document type"
+msgstr "tTạo kiểu tài liệu"
+
+#: __init__.py:118
+msgid "filenames"
+msgstr "tên file"
+
+#: __init__.py:119
+msgid "add filename to document type"
+msgstr ""
+
+#: __init__.py:161 permissions.py:7
+msgid "Documents"
+msgstr "Tài liệu"
+
+#: __init__.py:163 __init__.py:173 models.py:96 views.py:79
+msgid "documents"
+msgstr "Tài liệu"
+
+#: __init__.py:166
+msgid "thumbnail"
+msgstr ""
+
+#: events.py:5
+msgid "Document creation"
+msgstr "Tạo tài liệu"
+
+#: events.py:6
+#, python-format
+msgid "Document \"%(content_object)s\" created by %(fullname)s."
+msgstr "Tài liệu \"%(content_object)s\" được tạo bởi %(fullname)s."
+
+#: events.py:7
+#, python-format
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgstr "Tài liệu \"%(content_object)s\" được tạo ngày %(datetime)s bởi %(fullname)s."
+
+#: events.py:13
+msgid "Document edited"
+msgstr "Tài liệu được chỉnh sửa"
+
+#: events.py:14
+#, python-format
+msgid "Document \"%(content_object)s\" edited by %(fullname)s."
+msgstr "Tài liệu \"%(content_object)s\" được chỉnh sửa bởi %(fullname)s."
+
+#: events.py:15
+#, python-format
+msgid ""
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
+msgstr "Tài liệu \"%(content_object)s\"được chỉnh sửa ngày %(datetime)s bởi %(fullname)s. Các thay đổi được thực hiện: %(changes)s."
+
+#: events.py:24
+msgid "Document deleted"
+msgstr "Tài liệu đã được xóa"
+
+#: events.py:25
+#, python-format
+msgid "Document \"%(document)s\" deleted by %(fullname)s."
+msgstr "Tài liệu \"%(document)s\" được xóa bởi %(fullname)s."
+
+#: events.py:26
+#, python-format
+msgid "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
+msgstr "Tài liệu \"%(document)s\" được xóa ngày %(datetime)s bởi %(fullname)s."
+
+#: forms.py:65
+msgid "Page image"
+msgstr ""
+
+#: forms.py:75 forms.py:272
+msgid "Contents"
+msgstr "Nội dung"
+
+#: forms.py:111 forms.py:267
+msgid "Page"
+msgstr "Trang"
+
+#: forms.py:123
+msgid "Details"
+msgstr "Chi tiết"
+
+#: forms.py:128
+msgid "Click on the image for full size preview"
+msgstr "Click lên ảnh để xem kích thước đầy đủ"
+
+#: forms.py:138
+#, python-format
+msgid "Document pages (%s)"
+msgstr "Trang (%s)"
+
+#: forms.py:164
+msgid "Use the new version filename as the document filename"
+msgstr ""
+
+#: forms.py:180
+msgid "Quick document rename"
+msgstr "Sửa nhanh tên tài liệu"
+
+#: forms.py:187
+msgid "Version update"
+msgstr "Cập nhật phiên bản"
+
+#: forms.py:192
+msgid "Release level"
+msgstr ""
+
+#: forms.py:198
+msgid "Release level serial"
+msgstr ""
+
+#: forms.py:206
+msgid "Comment"
+msgstr "Chú thích"
+
+#: forms.py:212
+msgid "New document filename"
+msgstr "Tên file tài liệu mới"
+
+#: forms.py:290
+msgid "Page range"
+msgstr "Dãy trang"
+
+#: forms.py:320
+msgid "Compress"
+msgstr "Nén"
+
+#: forms.py:320
+msgid ""
+"Download the document in the original format or in a compressed manner.  "
+"This option is selectable only when downloading one document, for multiple "
+"documents, the bundle will always be downloads as a compressed file."
+msgstr ""
+
+#: forms.py:321
+msgid "Compressed filename"
+msgstr ""
+
+#: forms.py:321
+msgid ""
+"The filename of the compressed file that will contain the documents to be "
+"downloaded, if the previous option is selected."
+msgstr ""
+
+#: literals.py:15
+msgid "final"
+msgstr "final"
+
+#: literals.py:16
+msgid "alpha"
+msgstr "alpha"
+
+#: literals.py:17
+msgid "beta"
+msgstr "beta"
+
+#: literals.py:18
+msgid "release candidate"
+msgstr ""
+
+#: literals.py:19
+msgid "hotfix"
+msgstr ""
+
+#: models.py:62
+msgid "name"
+msgstr "tên"
+
+#: models.py:73 models.py:83 models.py:548 views.py:1069 views.py:1098
+#: views.py:1127 views.py:1132 views.py:1175 views.py:1221 views.py:1255
+#: views.py:1296
+msgid "document type"
+msgstr "kiểu tài liệu"
+
+#: models.py:74
+msgid "documents types"
+msgstr "các kiểu tài liệu"
+
+#: models.py:84
+msgid "description"
+msgstr "mô tả"
+
+#: models.py:85
+msgid "added"
+msgstr "đã thêm vào"
+
+#: models.py:95 models.py:313 models.py:646 models.py:661 views.py:227
+#: views.py:351
+msgid "document"
+msgstr "tài liệu"
+
+#: models.py:300
+#, python-format
+msgid "Major %(major)i.%(minor)i, (new release)"
+msgstr ""
+
+#: models.py:301
+#, python-format
+msgid "Minor %(major)i.%(minor)i, (some updates)"
+msgstr ""
+
+#: models.py:302
+#, python-format
+msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
+msgstr ""
+
+#: models.py:314
+msgid "mayor"
+msgstr ""
+
+#: models.py:315
+msgid "minor"
+msgstr ""
+
+#: models.py:316
+msgid "micro"
+msgstr ""
+
+#: models.py:317
+msgid "release level"
+msgstr ""
+
+#: models.py:318
+msgid "serial"
+msgstr ""
+
+#: models.py:319
+msgid "timestamp"
+msgstr ""
+
+#: models.py:320 views.py:1361
+msgid "comment"
+msgstr ""
+
+#: models.py:323
+msgid "file"
+msgstr "file"
+
+#: models.py:327
+msgid "checksum"
+msgstr "checksum"
+
+#: models.py:331 models.py:332 models.py:565
+msgid "document version"
+msgstr ""
+
+#: models.py:424
+msgid ""
+"This document's file format is not known, the page count has therefore "
+"defaulted to 1."
+msgstr "định dạng file tài liệu này không xác định, vì vậy số trang được cho mặc định là 1."
+
+#: models.py:549 views.py:1357
+msgid "filename"
+msgstr "tên file"
+
+#: models.py:550 views.py:1182
+msgid "enabled"
+msgstr "đã kích hoạt"
+
+#: models.py:557
+msgid "document type quick rename filename"
+msgstr "sửa tên file kiểu tài liệu"
+
+#: models.py:558
+msgid "document types quick rename filenames"
+msgstr "sửa tên file kiểu tài liệu"
+
+#: models.py:566
+msgid "content"
+msgstr "nội dung"
+
+#: models.py:567
+msgid "page label"
+msgstr "nhãn trang"
+
+#: models.py:568
+msgid "page number"
+msgstr "số trang"
+
+#: models.py:571
+#, python-format
+msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+msgstr "Trang %(page_num)d ngoài phạm vi của %(total_pages)d của %(document)s"
+
+#: models.py:579 models.py:625
+msgid "document page"
+msgstr "trang tài liệu"
+
+#: models.py:580
+msgid "document pages"
+msgstr "các trang tài liệu"
+
+#: models.py:600
+msgid "Enter a valid value."
+msgstr "Nhập giá trị hợp lệ"
+
+#: models.py:626 views.py:450
+msgid "order"
+msgstr "thứ tự"
+
+#: models.py:627 views.py:451 views.py:512 views.py:543
+msgid "transformation"
+msgstr ""
+
+#: models.py:628 views.py:452
+msgid "arguments"
+msgstr ""
+
+#: models.py:628
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr ""
+
+#: models.py:636
+msgid "document page transformation"
+msgstr ""
+
+#: models.py:637
+msgid "document page transformations"
+msgstr ""
+
+#: models.py:645
+msgid "user"
+msgstr "người dùng"
+
+#: models.py:647
+msgid "accessed"
+msgstr "đã truy cập"
+
+#: models.py:656
+msgid "recent document"
+msgstr "tài liệu gần đây"
+
+#: models.py:662
+msgid "Document type"
+msgstr "Kiểu tài liệu"
+
+#: models.py:663
+msgid "MIME type"
+msgstr "MIME type"
+
+#: models.py:664 views.py:132
+msgid "Filename"
+msgstr "Tên file"
+
+#: models.py:665
+msgid "Metadata type"
+msgstr "Metadata type"
+
+#: models.py:666
+msgid "Metadata value"
+msgstr ""
+
+#: models.py:667
+msgid "Content"
+msgstr "Nội dung"
+
+#: models.py:668
+msgid "Description"
+msgstr "Mô tả"
+
+#: models.py:669
+msgid "Tags"
+msgstr "Tags"
+
+#: models.py:670
+msgid "Comments"
+msgstr "Chú thích"
+
+#: permissions.py:9
+msgid "Create documents"
+msgstr "Tạo tài liệu"
+
+#: permissions.py:10
+msgid "Edit document properties"
+msgstr ""
+
+#: permissions.py:11
+msgid "Edit documents"
+msgstr "Sửa tài liệu"
+
+#: permissions.py:12
+msgid "View documents"
+msgstr "Xem tài liệu"
+
+#: permissions.py:13
+msgid "Delete documents"
+msgstr "Xóa tài liệu"
+
+#: permissions.py:14 views.py:408
+msgid "Download documents"
+msgstr "Tải xuống tài liệu"
+
+#: permissions.py:15
+msgid "Transform documents"
+msgstr ""
+
+#: permissions.py:16
+msgid "Execute document modifying tools"
+msgstr ""
+
+#: permissions.py:17
+msgid "Revert documents to a previous version"
+msgstr ""
+
+#: permissions.py:18
+msgid "Create new document versions"
+msgstr ""
+
+#: permissions.py:20
+msgid "Documents setup"
+msgstr "Cài đặt tài liệu"
+
+#: permissions.py:22
+msgid "View document types"
+msgstr ""
+
+#: permissions.py:23
+msgid "Edit document types"
+msgstr "Sửa kiểu tài liệu"
+
+#: permissions.py:24
+msgid "Delete document types"
+msgstr "Xóa kiểu tài liệu"
+
+#: permissions.py:25
+msgid "Create document types"
+msgstr "Tạo kiểu tài liệu"
+
+#: statistics.py:44
+#, python-format
+msgid "Document types: %d"
+msgstr "Số kiểu tài liệu: %d"
+
+#: statistics.py:45
+#, python-format
+msgid "Documents in database: %d"
+msgstr "Số tài liệu trong cơ sở dữ liệu: %d"
+
+#: statistics.py:50
+#, python-format
+msgid "Documents in storage: %d"
+msgstr ""
+
+#: statistics.py:52
+#, python-format
+msgid ""
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
+msgstr ""
+
+#: statistics.py:63
+#, python-format
+msgid "Document pages in database: %d"
+msgstr "Số trang tài liệu trong cơ sở dữ liệu: %d"
+
+#: statistics.py:64
+#, python-format
+msgid "Minimum amount of pages per document: %d"
+msgstr ""
+
+#: statistics.py:65
+#, python-format
+msgid "Maximum amount of pages per document: %d"
+msgstr ""
+
+#: statistics.py:66
+#, python-format
+msgid "Average amount of pages per document: %f"
+msgstr ""
+
+#: statistics.py:71
+msgid "Document statistics"
+msgstr "Thống kê tài liệu"
+
+#: views.py:133
+msgid "File mimetype"
+msgstr "Kiểu file"
+
+#: views.py:133 views.py:134
+msgid "None"
+msgstr ""
+
+#: views.py:134
+msgid "File mime encoding"
+msgstr "Kiểu mã hóa file"
+
+#: views.py:135
+msgid "File size"
+msgstr "Kích thước file"
+
+#: views.py:136
+msgid "Exists in storage"
+msgstr ""
+
+#: views.py:137
+msgid "File path in storage"
+msgstr ""
+
+#: views.py:138
+msgid "Date added"
+msgstr "Ngày thêm vào"
+
+#: views.py:139
+msgid "Time added"
+msgstr "Thời gian thêm vào"
+
+#: views.py:140
+msgid "Checksum"
+msgstr ""
+
+#: views.py:141
+msgid "UUID"
+msgstr ""
+
+#: views.py:142
+msgid "Pages"
+msgstr "Trang"
+
+#: views.py:151
+#, python-format
+msgid "document properties for: %s"
+msgstr ""
+
+#: views.py:173
+msgid "document data"
+msgstr ""
+
+#: views.py:197 views.py:647
+msgid "Must provide at least one document."
+msgstr "Cần cung cấp ít nhất một tài liệu."
+
+#: views.py:218
+msgid "Document deleted successfully."
+msgstr ""
+
+#: views.py:220
+#, python-format
+msgid "Document: %(document)s delete error: %(error)s"
+msgstr ""
+
+#: views.py:235
+#, python-format
+msgid "Are you sure you wish to delete the document: %s?"
+msgstr "Bạn có chắc muốn xóa tài liệu: %s?"
+
+#: views.py:237
+#, python-format
+msgid "Are you sure you wish to delete the documents: %s?"
+msgstr "Bạn có chắc muốn xóa tài liệu: %s?"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%s\" edited successfully."
+msgstr "Tài liệu \"%s\" đã được sửa thành công."
+
+#: views.py:342
+msgid "documents to be downloaded"
+msgstr ""
+
+#: views.py:352 views.py:1341
+msgid "version"
+msgstr ""
+
+#: views.py:409
+msgid "Download"
+msgstr ""
+
+#: views.py:411
+msgid "Return"
+msgstr ""
+
+#: views.py:446
+#, python-format
+msgid "transformations for: %s"
+msgstr ""
+
+#: views.py:473
+msgid "Document page transformation created successfully."
+msgstr ""
+
+#: views.py:482
+#, python-format
+msgid "Create new transformation for page: %(page)s of document: %(document)s"
+msgstr ""
+
+#: views.py:501
+msgid "Document page transformation edited successfully."
+msgstr ""
+
+#: views.py:514
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(document_page)s"
+msgstr ""
+
+#: views.py:534
+msgid "Document page transformation deleted successfully."
+msgstr ""
+
+#: views.py:545
+#, python-format
+msgid ""
+"Are you sure you wish to delete transformation \"%(transformation)s\" for: "
+"%(document_page)s"
+msgstr ""
+
+#: views.py:563
+#, python-format
+msgid "duplicates of: %s"
+msgstr ""
+
+#: views.py:575
+msgid "Are you sure you wish to find all duplicates?"
+msgstr ""
+
+#: views.py:576 views.py:634 views.py:702
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+
+#: views.py:599
+msgid "duplicated documents"
+msgstr ""
+
+#: views.py:625
+#, python-format
+msgid ""
+"Page count update complete.  Documents processed: %(total)d, documents with "
+"changed page count: %(change)d"
+msgstr ""
+
+#: views.py:633
+#, python-format
+msgid ""
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
+msgstr ""
+
+#: views.py:665
+#, python-format
+msgid ""
+"All the page transformations for document: %s, have been deleted "
+"successfully."
+msgstr ""
+
+#: views.py:667
+#, python-format
+msgid ""
+"Error deleting the page transformations for document: %(document)s; "
+"%(error)s."
+msgstr ""
+
+#: views.py:673
+msgid "document transformation"
+msgstr ""
+
+#: views.py:682
+#, python-format
+msgid ""
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
+msgstr ""
+
+#: views.py:684
+#, python-format
+msgid ""
+"Are you sure you wish to clear all the page transformations for documents: "
+"%s?"
+msgstr ""
+
+#: views.py:712
+msgid "missing documents"
+msgstr "các tài liệu bị mất"
+
+#: views.py:728 views.py:770
+#, python-format
+msgid "details for: %s"
+msgstr "chi tiết của: %s"
+
+#: views.py:789
+msgid "Document page edited successfully."
+msgstr ""
+
+#: views.py:798
+#, python-format
+msgid "edit: %s"
+msgstr ""
+
+#: views.py:815
+msgid "There are no more pages in this document"
+msgstr ""
+
+#: views.py:833
+msgid "You are already at the first page of this document"
+msgstr ""
+
+#: views.py:994
+#, python-format
+msgid "print: %s"
+msgstr ""
+
+#: views.py:1067
+#, python-format
+msgid "documents of type \"%s\""
+msgstr ""
+
+#: views.py:1087
+msgid "Document type edited successfully"
+msgstr "Kiểu tài liệu sửa thành công"
+
+#: views.py:1090
+#, python-format
+msgid "Error editing document type; %s"
+msgstr "Lỗi sửa kiểu tài liệu; %s"
+
+#: views.py:1095
+#, python-format
+msgid "edit document type: %s"
+msgstr "sửa kiểu tài liệu: %s"
+
+#: views.py:1119
+#, python-format
+msgid "Document type: %s deleted successfully."
+msgstr "Kiểu tài liệu: %s xóa thành công."
+
+#: views.py:1121
+#, python-format
+msgid "Document type: %(document_type)s delete error: %(error)s"
+msgstr "Kiểu tài liệu:  %(document_type)s lỗi xóa: %(error)s"
+
+#: views.py:1136
+#, python-format
+msgid "Are you sure you wish to delete the document type: %s?"
+msgstr "Bạn có chắc chắn muốn xóa kiểu tài liệu: %s?"
+
+#: views.py:1137
+msgid ""
+"The document type of all documents using this document type will be set to "
+"none."
+msgstr "Kiểu tài liệu của tất cả các tài liệu đang sử dụng kiểu tài liệu này sẽ được gán bằng none."
+
+#: views.py:1153
+msgid "Document type created successfully"
+msgstr "Kiểu tài liệu được tạo thành công."
+
+#: views.py:1156
+#, python-format
+msgid "Error creating document type; %(error)s"
+msgstr "Lỗi tạo kiểu tài liệu; %(error)s"
+
+#: views.py:1174
+#, python-format
+msgid "filenames for document type: %s"
+msgstr "các tên file cho kiểu tài liệu: %s"
+
+#: views.py:1205
+msgid "Document type filename edited successfully"
+msgstr "Tên file kiểu tài liệu sửa thành công"
+
+#: views.py:1208
+#, python-format
+msgid "Error editing document type filename; %s"
+msgstr "Lỗi chỉnh sửa tên file kiểu tài liệu: %s"
+
+#: views.py:1213
+#, python-format
+msgid "edit filename \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "sửa tên file  \"%(filename)s\" từ kiểu tài liệu \"%(document_type)s\""
+
+#: views.py:1222 views.py:1248 views.py:1256
+msgid "document type filename"
+msgstr "tên file kiểu tài liệu"
+
+#: views.py:1240
+#, python-format
+msgid "Document type filename: %s deleted successfully."
+msgstr "Tên file kiểu tài liệu: %s xóa thành công."
+
+#: views.py:1242
+#, python-format
+msgid ""
+"Document type filename: %(document_type_filename)s delete error: %(error)s"
+msgstr "tên file kiểu tài liệu: %(document_type_filename)s lỗi xóa: %(error)s"
+
+#: views.py:1258
+#, python-format
+msgid ""
+"Are you sure you wish to delete the filename: %(filename)s, from document "
+"type \"%(document_type)s\"?"
+msgstr "Bạn có chắc chắn muốn xóa tên file: %(filename)s, từ kiểu tài liệu \"%(document_type)s\"?"
+
+#: views.py:1283
+msgid "Document type filename created successfully"
+msgstr "Tên file kiểu tài liệu được tạo thành công"
+
+#: views.py:1286
+#, python-format
+msgid "Error creating document type filename; %(error)s"
+msgstr "Lỗi tạo tên file kiểu tài liệu: %(error)s"
+
+#: views.py:1292
+#, python-format
+msgid "create filename for document type: %s"
+msgstr "tạo tên file cho kiểu tài liệu: %s"
+
+#: views.py:1310
+msgid "Document image cache cleared successfully"
+msgstr ""
+
+#: views.py:1312
+#, python-format
+msgid "Error clearing document image cache; %s"
+msgstr ""
+
+#: views.py:1318
+msgid "Are you sure you wish to clear the document image cache?"
+msgstr ""
+
+#: views.py:1335
+#, python-format
+msgid "versions for document: %s"
+msgstr ""
+
+#: views.py:1345
+msgid "time and date"
+msgstr ""
+
+#: views.py:1349
+msgid "mimetype"
+msgstr ""
+
+#: views.py:1353
+msgid "encoding"
+msgstr ""
+
+#: views.py:1384
+msgid "Document version reverted successfully"
+msgstr ""
+
+#: views.py:1386
+#, python-format
+msgid "Error reverting document version; %s"
+msgstr ""
+
+#: views.py:1393
+msgid "Are you sure you wish to revert to this version?"
+msgstr ""
+
+#: views.py:1394
+msgid "All later version after this one will be deleted too."
+msgstr ""
+
+#: widgets.py:25
+msgid "document page image"
+msgstr ""
+
+#: wizards.py:36
+msgid "step 1 of 3: Document type"
+msgstr "bước 1/3: Kiểu tài liệu"
+
+#: wizards.py:37
+msgid "step 2 of 3: Metadata selection"
+msgstr "bước 2/3: chọn Metadata"
+
+#: wizards.py:38
+msgid "step 3 of 3: Document metadata"
+msgstr "bước 3/3:  metadata của Tài liệu"
+
+#: wizards.py:46
+msgid "Next step"
+msgstr "Bước tiếp theo"
+
+#: conf/settings.py:38
+msgid ""
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "Số lượng lớn nhất gần nhất (tạo, sửa, xem) số tài liệu để nhớ mỗi người dùng."
+
+#: conf/settings.py:39
+msgid "Amount in percent zoom in or out a document page per user interaction."
+msgstr "Số phần trăm phóng to hoặc thu nhỏ một trang tài liệu mỗi tác động của người dùng."
+
+#: conf/settings.py:40
+msgid ""
+"Maximum amount in percent (%) to allow user to zoom in a document page "
+"interactively."
+msgstr "Số phần trăm lớn nhất (%) cho phép người dùng phóng to một trang tài liệu."
+
+#: conf/settings.py:41
+msgid ""
+"Minimum amount in percent (%) to allow user to zoom out a document page "
+"interactively."
+msgstr "Số phần trăm nhỏ nhất (%) cho phép người dùng thu nhỏ trang tài liệu."
+
+#: conf/settings.py:42
+msgid "Amount in degrees to rotate a document page per user interaction."
+msgstr "Gái trị góc quay trang tài liệu mỗi lần tác động."
+
+#: templates/document_types_help.html:3
+msgid "What are document types?"
+msgstr "Các kiểu tài liệu nào?"
+
+#: templates/document_types_help.html:4
+msgid ""
+"Document types define a class that represents a broard group of documents, "
+"such as: invoices, regulations or manuals.  The advantage of using document "
+"types are: assigning a list of typical filenames for quick renaming during "
+"creation, as well as assigning default metadata types and sets to it."
+msgstr ""
+
+#: templates/recent_document_list_help.html:3
+msgid "What are recent documents?"
+msgstr "Những tài liệu gần đây?"
+
+#: templates/recent_document_list_help.html:4
+#, python-format
+msgid ""
+"Here you will find the latest %(recent_count)s documents you have either "
+"created or edited in any way."
+msgstr "Ở đây bạn sẽ tìm thấy  %(recent_count)s tài liệu gần nhất mà bạn đã tạo hoặc sửa."

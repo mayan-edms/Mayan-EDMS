@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <patrick.hetu@gmail.com>, 2012.
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-28 13:49+0000\n"
-"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:27
@@ -52,9 +51,7 @@ msgstr "adresse électronique"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"S'il vous plaît veuillez entrer une adresse électronique et un mot de passe. "
-"Notez que les champs de mot de passe sont sensibles à la casse."
+msgstr "S'il vous plaît veuillez entrer une adresse électronique et un mot de passe. Notez que les champs de mot de passe sont sensibles à la casse."
 
 #: forms.py:142
 msgid "This account is inactive."
@@ -196,22 +193,17 @@ msgid "None"
 msgstr "Aucun"
 
 #: conf/settings.py:16
-#, fuzzy
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
 msgstr ""
-"Le répertoire temporaire utilisé pour stocker les miniatures, des "
-"prévisualisation ainsi que les fichiers temporaires. Si aucun n'est "
-"spécifié, celui-ci sera créé à l'aide de la fonction tempfile.mkdtemp()."
 
 #: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Mécanisme utilisé pour l'authentification. Les options sont: username, email"
+msgstr "Mécanisme utilisé pour l'authentification. Les options sont: username, email"
 
 #: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
@@ -281,9 +273,7 @@ msgstr "icône du formulaire"
 #: templates/generic_confirm.html:40
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
-msgstr ""
-"Etes-vous certain de vouloir supprimer l'élément %(object_name)s : "
-"%(object)s ?"
+msgstr "Etes-vous certain de vouloir supprimer l'élément %(object_name)s : %(object)s ?"
 
 #: templates/generic_confirm.html:42
 #, python-format
@@ -336,9 +326,7 @@ msgstr "Liste des %(stripped_title)s "
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Liste des %(title)s (%(start)s - %(end)s sur %(total)s) (Page "
-"%(page_number)s de %(total_pages)s)"
+msgstr "Liste des %(title)s (%(start)s - %(end)s sur %(total)s) (Page %(page_number)s de %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26
@@ -363,12 +351,3 @@ msgstr "Connexion"
 #: templates/password_change_form.html:5
 msgid "Password change"
 msgstr "Modifier le mot de passe"
-
-#~ msgid "sentry"
-#~ msgstr "sentinelle"
-
-#~ msgid "admin site"
-#~ msgstr "site d'admin"
-
-#~ msgid "Common"
-#~ msgstr "Commun"

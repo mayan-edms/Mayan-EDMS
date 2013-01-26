@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-27 21:19+0000\n"
-"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:31 __init__.py:46 __init__.py:48 models.py:64 views.py:39
@@ -45,9 +44,8 @@ msgid "tree template"
 msgstr "modèle d'arborescence"
 
 #: __init__.py:37 models.py:21 views.py:314
-#, fuzzy
 msgid "document types"
-msgstr "documents"
+msgstr ""
 
 #: __init__.py:39
 msgid "new child node"
@@ -63,8 +61,7 @@ msgstr "reconstruire les indexes"
 
 #: __init__.py:50
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr ""
-"Supprimer et reconstruire les indexes des documents en partant de zéro."
+msgstr "Supprimer et reconstruire les indexes des documents en partant de zéro."
 
 #: __init__.py:52
 msgid "Indexes"
@@ -79,17 +76,13 @@ msgstr "Le nombre maximal de suffixes (%s) est atteint."
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Erreur dans l'expression de mise à jour d'indexation du document: "
-"%(expression)s; %(exception)s"
+msgstr "Erreur dans l'expression de mise à jour d'indexation du document: %(expression)s; %(exception)s"
 
 #: api.py:94 api.py:109
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr ""
-"Erreur lors de la mise à jour de l'index des documents, expression: "
-"%(expression)s; %(exception)s"
+msgstr "Erreur lors de la mise à jour de l'index des documents, expression: %(expression)s; %(exception)s"
 
 #: api.py:151
 #, python-format
@@ -106,9 +99,7 @@ msgstr "Impossible de créer le répertoire d'indexation;%s"
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
-msgstr ""
-"Impossible de créer le lien symbolique, le fichier existe déjà et ne peut "
-"être effacé: %(filepath)s; %(exc)s"
+msgstr "Impossible de créer le lien symbolique, le fichier existe déjà et ne peut être effacé: %(filepath)s; %(exc)s"
 
 #: filesystem.py:71
 #, python-format
@@ -151,10 +142,9 @@ msgid "enabled"
 msgstr "activé"
 
 #: models.py:20
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Permet à cet index d'être à la fois visible et mis à jour quand le contenu "
-"d'un document est modifié."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Permet à cet index d'être à la fois visible et mis à jour quand le contenu d'un document est modifié."
 
 #: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
 #: views.py:198 views.py:225 views.py:255 views.py:295
@@ -171,9 +161,7 @@ msgstr "Entrez une commande python à exécuter."
 
 #: models.py:72
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Permet à ce noeud d'être visible et mis à jour quand le contenu d'un "
-"document est modifié."
+msgstr "Permet à ce noeud d'être visible et mis à jour quand le contenu d'un document est modifié."
 
 #: models.py:73
 msgid "link documents"
@@ -181,11 +169,9 @@ msgstr "documents de lien"
 
 #: models.py:73
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Cochez cette option pour permettre à ce noeud d'être un conteneur de "
-"documents et pas seulement un noeud parent d'autres noeuds enfants."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Cochez cette option pour permettre à ce noeud d'être un conteneur de documents et pas seulement un noeud parent d'autres noeuds enfants."
 
 #: models.py:83 models.py:89
 msgid "index template node"
@@ -256,9 +242,8 @@ msgid "Rebuild document indexes"
 msgstr "Reconstruire les indexes des documents"
 
 #: utils.py:19
-#, fuzzy
 msgid "document indexes"
-msgstr "Modifier les indexes de documents"
+msgstr ""
 
 #: views.py:72
 msgid "Index created successfully."
@@ -302,14 +287,14 @@ msgid "has document links?"
 msgstr "est lié à d'autres documents ?"
 
 #: views.py:192
-#, fuzzy, python-format
+#, python-format
 msgid "document types not in index: %s"
-msgstr "contenu de l'index:%s"
+msgstr ""
 
 #: views.py:193
-#, fuzzy, python-format
+#, python-format
 msgid "document types for index: %s"
-msgstr "contenu de l'index:%s"
+msgstr ""
 
 #: views.py:216
 msgid "Index template node created successfully."
@@ -366,9 +351,7 @@ msgstr "Êtes vous certain de vouloir reconstruire tous les indexes ?"
 
 #: views.py:395
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Sur de grosses bases de données, cette opération peut prendre un certain "
-"temps."
+msgstr "Sur de grosses bases de données, cette opération peut prendre un certain temps."
 
 #: views.py:401
 msgid "Index rebuild completed successfully."
@@ -386,11 +369,9 @@ msgstr "indexes contenant:%s"
 
 #: conf/settings.py:22
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
-msgstr ""
-"Un dictionnaire qui référence nom d'un index et indique l'emplacement où cet "
-"index sera dupliqué dans l'arborescence du système de fichiers."
+"A dictionary that maps the index name and where on the filesystem that index"
+" will be mirrored."
+msgstr "Un dictionnaire qui référence nom d'un index et indique l'emplacement où cet index sera dupliqué dans l'arborescence du système de fichiers."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
@@ -398,6 +379,4 @@ msgstr "Que sont les indexes?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr ""
-"Les indexes regoupent les documents dans une structure hiérarchique "
-"arborescente."
+msgstr "Les indexes regoupent les documents dans une structure hiérarchique arborescente."

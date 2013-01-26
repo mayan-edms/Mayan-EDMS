@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011-2012.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:20-0400\n"
-"PO-Revision-Date: 2012-11-29 14:51+0000\n"
-"Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2012-12-12 06:07+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:24
@@ -57,14 +56,12 @@ msgid "attach tag"
 msgstr "anexar etiqueta"
 
 #: links.py:18
-#, fuzzy
 msgid "remove tag"
-msgstr "remover"
+msgstr ""
 
 #: links.py:19
-#, fuzzy
 msgid "remove tags"
-msgstr "remover"
+msgstr ""
 
 #: links.py:22 links.py:25
 msgid "delete"
@@ -175,34 +172,32 @@ msgid "create tag"
 msgstr "criar etiqueta"
 
 #: views.py:69
-#, fuzzy
 msgid "Must provide at least one document."
-msgstr "Deve fornecer pelo menos uma etiqueta."
+msgstr ""
 
 #: views.py:87
-#, fuzzy, python-format
+#, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr "Documento já está marcado como \"%s\""
+msgstr ""
 
 #: views.py:92
-#, fuzzy, python-format
+#, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "Etiqueta \"%s\" anexada com sucesso."
+msgstr ""
 
 #: views.py:100
-#, fuzzy
 msgid "document"
-msgstr "documentos etiquetados"
+msgstr ""
 
 #: views.py:108
-#, fuzzy, python-format
+#, python-format
 msgid "Attach tag to document: %s."
-msgstr "Anexar etiquetas para documentos"
+msgstr ""
 
 #: views.py:110
-#, fuzzy, python-format
+#, python-format
 msgid "Attach tag to documents: %s."
-msgstr "Anexar etiquetas para documentos"
+msgstr ""
 
 #: views.py:156
 msgid "Must provide at least one tag."
@@ -252,64 +247,57 @@ msgid "tags for: %s"
 msgstr "etiquetas para: %s"
 
 #: views.py:274
-#, fuzzy
 msgid "Must provide at least one tagged document."
-msgstr "Deve fornecer pelo menos uma etiqueta."
+msgstr ""
 
 #: views.py:313
-#, fuzzy, python-format
+#, python-format
 msgid "Remove tag from document: %s."
-msgstr "Remover etiquetas de documentos"
+msgstr ""
 
 #: views.py:315
-#, fuzzy, python-format
+#, python-format
 msgid "Remove tag from documents: %s."
-msgstr "Remover etiquetas de documentos"
+msgstr ""
 
 #: views.py:321
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
-msgstr "Tem certeza de que deseja remover as etiquetas: %s?"
+msgstr ""
 
 #: views.py:324
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
-msgstr "Tem certeza de que deseja remover as etiquetas: %s?"
+msgstr ""
 
 #: views.py:329
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
-msgstr "Tem certeza de que deseja remover as etiquetas: %s?"
+msgstr ""
 
 #: views.py:332
-#, fuzzy, python-format
+#, python-format
 msgid ""
-"Are you sure you wish to remove the tags %(tags)s from the documents: "
+"Are you sure you wish to remove the tags %(tag)s from the documents: "
 "%(documents)s?"
-msgstr "Tem certeza de que deseja remover as etiquetas: %s?"
+msgstr ""
 
 #: views.py:339
-#, fuzzy, python-format
+#, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
-msgstr "Documento já está marcado como \"%s\""
+msgstr ""
 
 #: views.py:344
-#, fuzzy, python-format
+#, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Etiqueta \"%s\" removida com sucesso."
+msgstr ""
 
 #: templatetags/tags_tags.py:17
 msgid "Add tag to document"
 msgstr "Adicionar etiquetas para o documento"
-
-#~ msgid "attach tag to: %s"
-#~ msgstr "anexar etiqueta a: %s"
-
-#~ msgid "Are you sure you wish to remove the tag: %s?"
-#~ msgstr "Tem certeza de que deseja remover a etiqueta: %s?"

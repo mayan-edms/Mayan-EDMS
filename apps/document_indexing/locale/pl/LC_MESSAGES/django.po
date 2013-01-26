@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <winterfall24@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-27 04:09+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:31 __init__.py:46 __init__.py:48 models.py:64 views.py:39
 #: views.py:310
@@ -46,9 +44,8 @@ msgid "tree template"
 msgstr "szablon drzewo"
 
 #: __init__.py:37 models.py:21 views.py:314
-#, fuzzy
 msgid "document types"
-msgstr "dokumenty"
+msgstr ""
 
 #: __init__.py:39
 msgid "new child node"
@@ -79,15 +76,13 @@ msgstr "Maximum suffix (%s) count reached."
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error in document indexing update expression: %(expression)s; %(exception)s"
+msgstr "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #: api.py:94 api.py:109
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error updating document index, expression: %(expression)s; %(exception)s"
+msgstr "Error updating document index, expression: %(expression)s; %(exception)s"
 
 #: api.py:151
 #, python-format
@@ -104,9 +99,7 @@ msgstr "Nie można utworzyć katalogu indeksowania;%s"
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
-msgstr ""
-"Nie można utworzyć dowiązania symbolicznego, plik istnieje i nie może zostać "
-"usunięty: %(filepath)s ; %(exc)s "
+msgstr "Nie można utworzyć dowiązania symbolicznego, plik istnieje i nie może zostać usunięty: %(filepath)s ; %(exc)s "
 
 #: filesystem.py:71
 #, python-format
@@ -149,10 +142,9 @@ msgid "enabled"
 msgstr "włączony"
 
 #: models.py:20
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany "
-"danych dokumentów."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany danych dokumentów."
 
 #: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
 #: views.py:198 views.py:225 views.py:255 views.py:295
@@ -177,11 +169,9 @@ msgstr "link documents"
 
 #: models.py:73
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
 
 #: models.py:83 models.py:89
 msgid "index template node"
@@ -252,9 +242,8 @@ msgid "Rebuild document indexes"
 msgstr "Odbuduj indeksy dokumentów"
 
 #: utils.py:19
-#, fuzzy
 msgid "document indexes"
-msgstr "Edytuj indeksy dokumentów"
+msgstr ""
 
 #: views.py:72
 msgid "Index created successfully."
@@ -298,14 +287,14 @@ msgid "has document links?"
 msgstr ""
 
 #: views.py:192
-#, fuzzy, python-format
+#, python-format
 msgid "document types not in index: %s"
-msgstr "Zawartość dla indeksu:%s"
+msgstr ""
 
 #: views.py:193
-#, fuzzy, python-format
+#, python-format
 msgid "document types for index: %s"
-msgstr "Zawartość dla indeksu:%s"
+msgstr ""
 
 #: views.py:216
 msgid "Index template node created successfully."
@@ -380,8 +369,8 @@ msgstr "indeksy zawierające:%s"
 
 #: conf/settings.py:22
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
+"A dictionary that maps the index name and where on the filesystem that index"
+" will be mirrored."
 msgstr ""
 
 #: templates/indexing_help.html:3

@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011.
-# Sergey Glita <gsv70@mail.ru>, 2011, 2012.
+# Sergey Glita <gsv70@mail.ru>, 2011-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-27 04:10+0000\n"
+"PO-Revision-Date: 2012-12-27 08:29+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:62
 msgid "all documents"
@@ -30,9 +28,8 @@ msgid "recent documents"
 msgstr "последние документы"
 
 #: __init__.py:64
-#, fuzzy
 msgid "upload new documents"
-msgstr "дубликаты документов"
+msgstr ""
 
 #: __init__.py:65
 msgid "clone metadata"
@@ -74,8 +71,7 @@ msgstr "найти все дубликаты"
 #: __init__.py:76
 msgid ""
 "Search all the documents' checksums and return a list of the exact matches."
-msgstr ""
-"Искать все контрольные суммы документов  и вернуть список точных совпадений."
+msgstr "Искать все контрольные суммы документов  и вернуть список точных совпадений."
 
 #: __init__.py:77
 msgid "update office documents' page count"
@@ -86,9 +82,7 @@ msgid ""
 "Update the page count of the office type documents.  This is useful when "
 "enabling office document support after there were already office type "
 "documents in the database."
-msgstr ""
-"Пересчитать количество страниц.  Это полезно для включения поддержки уже "
-"существующих офисных документов."
+msgstr "Пересчитать количество страниц.  Это полезно для включения поддержки уже существующих офисных документов."
 
 #: __init__.py:78 __init__.py:79
 msgid "clear transformations"
@@ -114,9 +108,7 @@ msgstr "Очистить кэш изображения документа"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Очистить графику для ускорения отображения документов и интерактивных "
-"преобразований."
+msgstr "Очистить графику для ускорения отображения документов и интерактивных преобразований."
 
 #: __init__.py:88
 msgid "page transformations"
@@ -229,11 +221,8 @@ msgstr "Документ \"%(content_object)s\", создан %(fullname)s ."
 
 #: events.py:7
 #, python-format
-msgid ""
-"Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
-msgstr ""
-"Документ \"%(content_object)s\" создан %(datetime)s пользователем "
-"%(fullname)s."
+msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+msgstr "Документ \"%(content_object)s\" создан %(datetime)s пользователем %(fullname)s."
 
 #: events.py:13
 msgid "Document edited"
@@ -247,11 +236,9 @@ msgstr "Документ \"%(content_object)s\" редактировал %(fulln
 #: events.py:15
 #, python-format
 msgid ""
-"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s.  "
-"The following changes took place: %(changes)s."
-msgstr ""
-"Документ \"%(content_object)s\" был изменён %(datetime)s  %(fullname)s. Были "
-"внесены изменения: %(changes)s."
+"Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+"  The following changes took place: %(changes)s."
+msgstr "Документ \"%(content_object)s\" был изменён %(datetime)s  %(fullname)s. Были внесены изменения: %(changes)s."
 
 #: events.py:24
 msgid "Document deleted"
@@ -333,20 +320,17 @@ msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Скачать документ в исходном формате или сжатым. Этот вариант доступен только "
-"при загрузке одного документа, для нескольких документов будет использован "
-"сжатый файл."
+msgstr "Скачать документ в исходном формате или сжатым. Этот вариант доступен только при загрузке одного документа, для нескольких документов будет использован сжатый файл."
 
 #: forms.py:321
 msgid "Compressed filename"
-msgstr ""
+msgstr "Имя сжатого файла"
 
 #: forms.py:321
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
+msgstr "Имя файла сжатого файла, который будет содержать загружаемые документы, если выбран предыдущий параметр."
 
 #: literals.py:15
 msgid "final"
@@ -539,9 +523,8 @@ msgid "recent document"
 msgstr "недавний документ"
 
 #: models.py:662
-#, fuzzy
 msgid "Document type"
-msgstr "тип документа"
+msgstr ""
 
 #: models.py:663
 msgid "MIME type"
@@ -560,23 +543,20 @@ msgid "Metadata value"
 msgstr ""
 
 #: models.py:667
-#, fuzzy
 msgid "Content"
-msgstr "Содержание"
+msgstr ""
 
 #: models.py:668
-#, fuzzy
 msgid "Description"
-msgstr "описание"
+msgstr ""
 
 #: models.py:669
 msgid "Tags"
 msgstr ""
 
 #: models.py:670
-#, fuzzy
 msgid "Comments"
-msgstr "Комментарий"
+msgstr ""
 
 #: permissions.py:9
 msgid "Create documents"
@@ -656,10 +636,9 @@ msgstr "Документы в хранилище: %d."
 #: statistics.py:52
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
-msgstr ""
-"Использовано:%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
+msgstr "Использовано:%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
 
 #: statistics.py:63
 #, python-format
@@ -669,17 +648,17 @@ msgstr "Страниц документов в базе данных: %d."
 #: statistics.py:64
 #, python-format
 msgid "Minimum amount of pages per document: %d"
-msgstr ""
+msgstr "Минимальное количество страниц в документе %d"
 
 #: statistics.py:65
 #, python-format
 msgid "Maximum amount of pages per document: %d"
-msgstr ""
+msgstr "Максимальное количество страниц в документе: %d"
 
 #: statistics.py:66
 #, python-format
 msgid "Average amount of pages per document: %f"
-msgstr ""
+msgstr "Среднее количество страниц в документе: %f"
 
 #: statistics.py:71
 msgid "Document statistics"
@@ -691,7 +670,7 @@ msgstr "Mime тип файла"
 
 #: views.py:133 views.py:134
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: views.py:134
 msgid "File mime encoding"
@@ -794,8 +773,7 @@ msgstr "Преобразование страницы документа соз�
 #: views.py:482
 #, python-format
 msgid "Create new transformation for page: %(page)s of document: %(document)s"
-msgstr ""
-"Создать новое преобразование для страницы: %(page)s документа: %(document)s"
+msgstr "Создать новое преобразование для страницы: %(page)s документа: %(document)s"
 
 #: views.py:501
 msgid "Document page transformation edited successfully."
@@ -815,9 +793,7 @@ msgstr "Преобразование страницы успешно удале�
 msgid ""
 "Are you sure you wish to delete transformation \"%(transformation)s\" for: "
 "%(document_page)s"
-msgstr ""
-"Вы действительно хотите удалить преобразования  \"%(transformation)s\" for: "
-"%(document_page)s\""
+msgstr "Вы действительно хотите удалить преобразования  \"%(transformation)s\" for: %(document_page)s\""
 
 #: views.py:563
 #, python-format
@@ -830,9 +806,7 @@ msgstr "Вы действительно хотите найти все дубл�
 
 #: views.py:576 views.py:634 views.py:702
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"В больших базах данных эта операция может занять некоторое время для "
-"выполнения."
+msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
 
 #: views.py:599
 msgid "duplicated documents"
@@ -843,17 +817,14 @@ msgstr "дубликаты документов"
 msgid ""
 "Page count update complete.  Documents processed: %(total)d, documents with "
 "changed page count: %(change)d"
-msgstr ""
-"Страницы посчитаны. Всего обработано %(total)d документов, из них количество "
-"страниц изменилось у %(change)d"
+msgstr "Страницы посчитаны. Всего обработано %(total)d документов, из них количество страниц изменилось у %(change)d"
 
 #: views.py:633
 #, python-format
 msgid ""
-"Are you sure you wish to update the page count for the office documents (%d)?"
-msgstr ""
-"Вы действительно хотите пересчитать количество страниц для офисных "
-"документов (%d)?"
+"Are you sure you wish to update the page count for the office documents "
+"(%d)?"
+msgstr "Вы действительно хотите пересчитать количество страниц для офисных документов (%d)?"
 
 #: views.py:665
 #, python-format
@@ -867,9 +838,7 @@ msgstr "Все преобразования  страницы для докум�
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Ошибка при удалении страницы для преобразования документов: %(document)s; "
-"%(error)s."
+msgstr "Ошибка при удалении страницы для преобразования документов: %(document)s; %(error)s."
 
 #: views.py:673
 msgid "document transformation"
@@ -878,18 +847,16 @@ msgstr "преобразование документа"
 #: views.py:682
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
-msgstr ""
-"Вы действительно хотите удалить все преобразования странице документа: %s?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
+msgstr "Вы действительно хотите удалить все преобразования странице документа: %s?"
 
 #: views.py:684
 #, python-format
 msgid ""
 "Are you sure you wish to clear all the page transformations for documents: "
 "%s?"
-msgstr ""
-"Вы действительно хотите удалить все преобразования страницы для документов: "
-"%s?"
+msgstr "Вы действительно хотите удалить все преобразования страницы для документов: %s?"
 
 #: views.py:712
 msgid "missing documents"
@@ -988,8 +955,7 @@ msgstr "Ошибка редактирования документа введи�
 #: views.py:1213
 #, python-format
 msgid "edit filename \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"редактирование файла \"%(filename)s из типа документа \"%(document_type)s\""
+msgstr "редактирование файла \"%(filename)s из типа документа \"%(document_type)s\""
 
 #: views.py:1222 views.py:1248 views.py:1256
 msgid "document type filename"
@@ -1004,18 +970,14 @@ msgstr "Имя файла для типа документа: %s успешно 
 #, python-format
 msgid ""
 "Document type filename: %(document_type_filename)s delete error: %(error)s"
-msgstr ""
-"При удалении имени файла для типа документа %(document_type_filename)s "
-"произошла ошибка %(error)s"
+msgstr "При удалении имени файла для типа документа %(document_type_filename)s произошла ошибка %(error)s"
 
 #: views.py:1258
 #, python-format
 msgid ""
 "Are you sure you wish to delete the filename: %(filename)s, from document "
 "type \"%(document_type)s\"?"
-msgstr ""
-"Вы действительно хотите удалить имя файла: %(filename)s из  типа документа  "
-"\"%(document_type)s\"?"
+msgstr "Вы действительно хотите удалить имя файла: %(filename)s из  типа документа  \"%(document_type)s\"?"
 
 #: views.py:1283
 msgid "Document type filename created successfully"
@@ -1083,9 +1045,8 @@ msgid "document page image"
 msgstr "изображение страницы"
 
 #: wizards.py:36
-#, fuzzy
 msgid "step 1 of 3: Document type"
-msgstr "создать тип документа"
+msgstr ""
 
 #: wizards.py:37
 msgid "step 2 of 3: Metadata selection"
@@ -1101,11 +1062,9 @@ msgstr ""
 
 #: conf/settings.py:38
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
-msgstr ""
-"Максимальное количество последних (созданных, измененных, просмотренных) "
-"документов, запоминаемых для каждого пользователя."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "Максимальное количество последних (созданных, измененных, просмотренных) документов, запоминаемых для каждого пользователя."
 
 #: conf/settings.py:39
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -1137,12 +1096,7 @@ msgid ""
 "such as: invoices, regulations or manuals.  The advantage of using document "
 "types are: assigning a list of typical filenames for quick renaming during "
 "creation, as well as assigning default metadata types and sets to it."
-msgstr ""
-"Типы документов определяют класс, который представляет группы документов, "
-"таких как: счета-фактуры, правила или инструкции. Преимуществами "
-"использования типов документов являются: назначение списка типичных имен "
-"файлов для быстрого переименования в процессе создания, а также присвоения "
-"метаданных по умолчанию и их установки."
+msgstr "Типы документов определяют класс, который представляет группы документов, таких как: счета-фактуры, правила или инструкции. Преимуществами использования типов документов являются: назначение списка типичных имен файлов для быстрого переименования в процессе создания, а также присвоения метаданных по умолчанию и их установки."
 
 #: templates/recent_document_list_help.html:3
 msgid "What are recent documents?"
@@ -1153,6 +1107,4 @@ msgstr "Что такое последние документы?"
 msgid ""
 "Here you will find the latest %(recent_count)s documents you have either "
 "created or edited in any way."
-msgstr ""
-"Здесь вы найдете последние %(recent_count)s документов  созданные или "
-"отредактированные вами."
+msgstr "Здесь вы найдете последние %(recent_count)s документов  созданные или отредактированные вами."

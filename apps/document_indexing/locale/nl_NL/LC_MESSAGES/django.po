@@ -1,31 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Lucas Weel <ljj.weel@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-27 04:09+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-01-21 10:57+0000\n"
+"Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:31 __init__.py:46 __init__.py:48 models.py:64 views.py:39
 #: views.py:310
 msgid "indexes"
-msgstr ""
+msgstr "indexeringen"
 
 #: __init__.py:32 __init__.py:43
 msgid "index list"
-msgstr ""
+msgstr "indexeringslijst"
 
 #: __init__.py:33 views.py:78
 msgid "create index"
@@ -53,53 +53,53 @@ msgstr ""
 
 #: __init__.py:45
 msgid "go up one level"
-msgstr ""
+msgstr "een niveau omhoog"
 
 #: __init__.py:50
 msgid "rebuild indexes"
-msgstr ""
+msgstr "opnieuw indexeren"
 
 #: __init__.py:50
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr ""
+msgstr "document indexeringen vernieuwen"
 
 #: __init__.py:52
 msgid "Indexes"
-msgstr ""
+msgstr "Indexeringen"
 
 #: api.py:71
 #, python-format
 msgid "Maximum suffix (%s) count reached."
-msgstr ""
+msgstr "Maximal aantal achtervoegsels (%s) bereikt"
 
 #: api.py:85
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
+msgstr "Fout in de expressie voor document indexering. Expressie: %(expression)s. Foutmelding: %(exception)s"
 
 #: api.py:94 api.py:109
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr ""
+msgstr "Fout bij vernieuwen document index, expressie:  %(expression)s. Foutmelding: %(exception)s"
 
 #: api.py:151
 #, python-format
 msgid "Unable to delete document indexing node; %s"
-msgstr ""
+msgstr "Niet mogelijk om de documentindexeringsknoop te verwijderen. Foutmelding: %s"
 
 #: filesystem.py:51
 #, python-format
 msgid "Unable to create indexing directory; %s"
-msgstr ""
+msgstr "Niet mogelijk om een indexeringfolder aan te maken. Foutmelding: %s"
 
 #: filesystem.py:69
 #, python-format
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
-msgstr ""
+msgstr "Niet mogelijke om een 'symbolic link' aan te maken. Bestand bestaat reeds en kan niet worden verwijdert. Foutmelding: %(filepath)s; %(exc)s"
 
 #: filesystem.py:71
 #, python-format
@@ -142,7 +142,8 @@ msgid "enabled"
 msgstr ""
 
 #: models.py:20
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 
 #: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
@@ -168,8 +169,8 @@ msgstr ""
 
 #: models.py:73
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 
 #: models.py:83 models.py:89
@@ -214,7 +215,7 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Indexing"
-msgstr ""
+msgstr "Indexering bezig"
 
 #: permissions.py:9
 msgid "Configure document indexes"
@@ -234,11 +235,11 @@ msgstr ""
 
 #: permissions.py:14
 msgid "View document indexes"
-msgstr ""
+msgstr "Bekijk document-indexeringen"
 
 #: permissions.py:15
 msgid "Rebuild document indexes"
-msgstr ""
+msgstr "documenten opnieuw indexeren"
 
 #: utils.py:19
 msgid "document indexes"
@@ -368,8 +369,8 @@ msgstr ""
 
 #: conf/settings.py:22
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
+"A dictionary that maps the index name and where on the filesystem that index"
+" will be mirrored."
 msgstr ""
 
 #: templates/indexing_help.html:3

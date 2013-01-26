@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-27 21:25+0000\n"
-"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:5
@@ -32,9 +31,8 @@ msgid "search again"
 msgstr "rechercher à nouveau"
 
 #: forms.py:8
-#, fuzzy
 msgid "Search terms"
-msgstr "Résultats de la recherche"
+msgstr ""
 
 #: models.py:20
 msgid "user"
@@ -66,14 +64,13 @@ msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
 
 #: views.py:37
-#, fuzzy
 msgid "results"
-msgstr "Résultats de la recherche"
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
+#, python-format
 msgid "Search error: %s"
-msgstr "Résultats de la recherche"
+msgstr ""
 
 #: views.py:60
 msgid "type"
@@ -101,10 +98,7 @@ msgstr "Aide"
 msgid ""
 "Enter the desired search keywords separated by space.  Only the top "
 "%(search_results_limit)s results will be available."
-msgstr ""
-"Saisissez les mots sur lesquels vous souhaitez faire une recherche, séparés "
-"par des espaces.  Seuls les %(search_results_limit)s premiers résultats "
-"seront disponilbes."
+msgstr "Saisissez les mots sur lesquels vous souhaitez faire une recherche, séparés par des espaces.  Seuls les %(search_results_limit)s premiers résultats seront disponilbes."
 
 #: templates/search_results.html:3
 msgid "Search results"
@@ -119,31 +113,3 @@ msgstr "Temps écoulé: %(time_delta)s secondes"
 #, python-format
 msgid "recent searches (maximum of %d)"
 msgstr "recherches récentes (maximum de %d)"
-
-#~ msgid "Update the search index with the most recent modified documents."
-#~ msgstr ""
-#~ "Metter à jour l'index de recherche avec les documents modifiées le plus "
-#~ "récemment."
-
-#~ msgid "date time"
-#~ msgstr "date et heure"
-
-#~ msgid "indexable object"
-#~ msgstr "objet indexable"
-
-#~ msgid "indexable objects"
-#~ msgstr "objets indexables"
-
-#~ msgid "results for: %s"
-#~ msgstr "résultats pour: %s"
-
-#~ msgid "Searching"
-#~ msgstr "Recherche"
-
-#~ msgid "Interval in second on which to trigger the search index update."
-#~ msgstr ""
-#~ "Intervalle de déclenchement des mises à jour de l'index de recherche, en "
-#~ "secondes"
-
-#~ msgid "Elapsed time: %(elapsed_time)s seconds"
-#~ msgstr "Temps écoulé: %(elapsed_time)s secondes"

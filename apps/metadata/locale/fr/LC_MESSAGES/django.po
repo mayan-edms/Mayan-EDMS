@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+#   <patrick.hetu@gmail.com>, 2012.
 # PatrickHetu  <patrick.hetu@gmail.com>, 2012.
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-28 20:31+0000\n"
-"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2012-12-12 06:06+0000\n"
+"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:23 __init__.py:25
@@ -145,9 +145,7 @@ msgstr "recherche"
 msgid ""
 "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
 "User.objects.all()].%s"
-msgstr ""
-"Entrez une chaîne à évaluer. Exemple:. [User.get_full_name() pour "
-"l'utilisateur dans User.objects.all()]. %s"
+msgstr "Entrez une chaîne à évaluer. Exemple:. [User.get_full_name() pour l'utilisateur dans User.objects.all()]. %s"
 
 #: models.py:39 models.py:69 views.py:353 views.py:398
 msgid "metadata type"
@@ -259,16 +257,14 @@ msgid "Must provide at least one document."
 msgstr "Vous devez fournir au moins un document."
 
 #: views.py:87 views.py:251
-#, fuzzy, python-format
+#, python-format
 msgid "Error deleting document indexes; %s"
-msgstr "Erreur lors de la modification du jeu de métadonnées; %s"
+msgstr ""
 
 #: views.py:99
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
-msgstr ""
-"Erreur lors de la modification des métadonnées pour le document "
-"%(document)s; %(error)s."
+msgstr "Erreur lors de la modification des métadonnées pour le document %(document)s; %(error)s."
 
 #: views.py:102
 #, python-format
@@ -276,14 +272,13 @@ msgid "Metadata for document %s edited successfully."
 msgstr "Métadonnées pour le document %s modifiées avec succès."
 
 #: views.py:107 views.py:268
-#, fuzzy, python-format
+#, python-format
 msgid "Error updating document indexes; %s"
-msgstr "Erreur lors de la modification du jeu de métadonnées; %s"
+msgstr ""
 
 #: views.py:109 views.py:270
-#, fuzzy
 msgid "Document indexes updated successfully."
-msgstr "Métadonnées pour le document %s modifiées avec succès."
+msgstr ""
 
 #: views.py:120
 #, python-format
@@ -298,18 +293,15 @@ msgstr "Modifier les métadonnées pour les documents: %s"
 #: views.py:161
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
-"Type de métadonnées:  %(metadata_type)s ajouté avec succès au document "
+"Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
+msgstr "Type de métadonnées:  %(metadata_type)s ajouté avec succès au document %(document)s."
 
 #: views.py:164
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
-"Type de métadonnées:  %(metadata_type)s déjà présent dans le document "
-"%(document)s."
+msgstr "Type de métadonnées:  %(metadata_type)s déjà présent dans le document %(document)s."
 
 #: views.py:188
 #, python-format
@@ -326,17 +318,13 @@ msgstr "Ajouter un type de métadonnées aux documentx: %s"
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
-msgstr ""
-"Type de métadonnées: %(metadata_type)s effacé avec succès du document: "
-"%(document)s."
+msgstr "Type de métadonnées: %(metadata_type)s effacé avec succès du document: %(document)s."
 
 #: views.py:262
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
-msgstr ""
-"Erreur lors de la suppression du type de métadonnées: %(metadata_type)s sur "
-"le document: %(document)s."
+msgstr "Erreur lors de la suppression du type de métadonnées: %(metadata_type)s sur le document: %(document)s."
 
 #: views.py:281
 #, python-format
@@ -387,8 +375,7 @@ msgstr "Type de métadonnées: %s supprimé avec succès"
 #: views.py:392
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
-msgstr ""
-"Type de métadonnées: %(metadata_type)s erreur de suppression: %(error)s"
+msgstr "Type de métadonnées: %(metadata_type)s erreur de suppression: %(error)s"
 
 #: views.py:403
 #, python-format
@@ -465,11 +452,7 @@ msgid ""
 "A metadata set is a group of one or more metadata types.  Metadata sets are "
 "useful when creating new documents; selecing a metadata set automatically "
 "attaches it's member metadata types to said document."
-msgstr ""
-"Un jeu de métadonnées est un groupe contenant un type de métadonnées,  ou "
-"plus. Les jeux de métadonnées sont utiles lors de la création de nouveaux "
-"documents; la sélection d'un jeu de métadonnées rattache automatiquement "
-"l'ensemble de ses types de métadonnées au document en question."
+msgstr "Un jeu de métadonnées est un groupe contenant un type de métadonnées,  ou plus. Les jeux de métadonnées sont utiles lors de la création de nouveaux documents; la sélection d'un jeu de métadonnées rattache automatiquement l'ensemble de ses types de métadonnées au document en question."
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
@@ -477,23 +460,13 @@ msgstr "Que sont les types de métadonnées?"
 
 #: templates/metadata_type_help.html:4
 msgid ""
-"A metadata type defines the characteristics of a value of some kind that can "
-"be attached to a document.  Examples of metadata types are: a client name, a "
-"date, or a project to which several documents belong.  A metadata type's "
+"A metadata type defines the characteristics of a value of some kind that can"
+" be attached to a document.  Examples of metadata types are: a client name, "
+"a date, or a project to which several documents belong.  A metadata type's "
 "name is the internal identifier with which it can be referenced to by other "
-"modules such as the indexing module, the title is the value that is shown to "
-"the users, the default value is the value an instance of this metadata type "
-"will have initially, and the lookup value turns an instance of a metadata of "
-"this type into a choice list which options are the result of the lookup's "
-"code execution."
-msgstr ""
-"Un type de métadonnées définit les caractéristiques d'une valeur d'un "
-"certain type qui peut être rattachée à un document. Des exemples de types de "
-"métadonnées : un nom de client, une date, ou le projet auquel un certain "
-"nombre de documents appartiennent. Le nom d'un type de métadonnées est "
-"l'identifiant interne à partir duquel d'autres modules comme le module "
-"d'index peuvent se référer et établir des liaisons, le titre ce qui est "
-"affiché à l'écran, la valeur par défaut est la valeur initiale qu'aura une "
-"instance de ce type de métadonnées, et la valeur de recherche permet de "
-"transformer une instance de métadonnées de ce type en une liste de choix "
-"dont les éléments sont le résultat de l'exécution du code de recherche."
+"modules such as the indexing module, the title is the value that is shown to"
+" the users, the default value is the value an instance of this metadata type"
+" will have initially, and the lookup value turns an instance of a metadata "
+"of this type into a choice list which options are the result of the lookup's"
+" code execution."
+msgstr "Un type de métadonnées définit les caractéristiques d'une valeur d'un certain type qui peut être rattachée à un document. Des exemples de types de métadonnées : un nom de client, une date, ou le projet auquel un certain nombre de documents appartiennent. Le nom d'un type de métadonnées est l'identifiant interne à partir duquel d'autres modules comme le module d'index peuvent se référer et établir des liaisons, le titre ce qui est affiché à l'écran, la valeur par défaut est la valeur initiale qu'aura une instance de ce type de métadonnées, et la valeur de recherche permet de transformer une instance de métadonnées de ce type en une liste de choix dont les éléments sont le résultat de l'exécution du code de recherche."

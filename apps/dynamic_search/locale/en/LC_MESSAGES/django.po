@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
+"POT-Creation-Date: 2013-01-25 20:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "search"
 msgstr ""
 
-#: __init__.py:6 views.py:72
+#: __init__.py:6 views.py:83
 msgid "advanced search"
 msgstr ""
 
@@ -33,19 +33,19 @@ msgstr ""
 msgid "Search terms"
 msgstr ""
 
-#: models.py:20
+#: models.py:22
 msgid "user"
 msgstr ""
 
-#: models.py:21
+#: models.py:23
 msgid "query"
 msgstr ""
 
-#: models.py:22
+#: models.py:24
 msgid "datetime created"
 msgstr ""
 
-#: models.py:23
+#: models.py:25
 msgid "hits"
 msgstr ""
 
@@ -57,25 +57,20 @@ msgstr ""
 msgid "recent searches"
 msgstr ""
 
-#: views.py:33
+#: views.py:49
 #, python-format
 msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
 
-#: views.py:37
+#: views.py:54
 msgid "results"
 msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "Search error: %s"
-msgstr ""
-
-#: views.py:60
+#: views.py:71
 msgid "type"
 msgstr ""
 
-#: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
+#: views.py:87 views.py:97 views.py:99 templatetags/search_tags.py:19
 #: templatetags/search_tags.py:20
 msgid "Search"
 msgstr ""

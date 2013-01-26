@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-01-25 20:01+0000\n"
+"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: __init__.py:33
+msgid "maintenance"
+msgstr "صيانة"
+
+#: __init__.py:34
+msgid "statistics"
+msgstr "إحصائيات"
+
+#: __init__.py:35
+msgid "diagnostics"
+msgstr "التشخيص"
+
+#: __init__.py:36
+msgid "sentry"
+msgstr "sentry"
+
+#: __init__.py:37
+msgid "admin site"
+msgstr "صفحة التحكم"
+
+#: __init__.py:40
+msgid "home"
+msgstr "البداية"
+
+#: __init__.py:42
+msgid "search"
+msgstr "البحث"
+
+#: views.py:43
+msgid "maintenance menu"
+msgstr "قائمة الصيانة"
+
+#: views.py:56
+msgid "Statistics"
+msgstr "إحصائيات"
+
+#: views.py:66
+msgid "Diagnostics"
+msgstr "التشخيص"
+
+#: conf/settings.py:12
+msgid ""
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr "توفير وظيفة البحث عن طريق الشريط الجانبي أو عن طريق خيار من القائمة."
+
+#: templates/about.html:5
+msgid "About this program"
+msgstr "عن هذا البرنامج"
+
+#: templates/about.html:9 templates/verbose_login.html:4
+msgid "Version"
+msgstr "الاصدار"
+
+#: templates/base.html:28
+msgid "(DEBUG)"
+msgstr "(DEBUG)"
+
+#: templates/base.html:193
+msgid "User"
+msgstr "مستخدم"
+
+#: templates/base.html:195
+msgid "Anonymous"
+msgstr "مجهول"
+
+#: templates/base.html:198
+msgid "User details"
+msgstr "تفاصيل المستخدم"
+
+#: templates/base.html:215
+msgid "Login"
+msgstr "دخول"
+
+#: templates/base.html:215
+msgid "Logout"
+msgstr "خروج"
+
+#: templates/base.html:295
+msgid "Secondary menu"
+msgstr "القائمة الثانوية"
+
+#: templates/base.html:311
+#, python-format
+msgid "Actions for %(name)s: %(navigation_object)s"
+msgstr "إجراءات ل %(name)s: %(navigation_object)s"
+
+#: templates/base.html:313 templates/base.html.py:345
+#, python-format
+msgid "Actions for: %(navigation_object)s"
+msgstr "إجراءات ل %(navigation_object)s"
+
+#: templates/base.html:316
+msgid "Available actions"
+msgstr "الإجراءات المتاحة"
+
+#: templates/base.html:328 templates/base.html.py:360
+msgid "Related actions"
+msgstr "الإجراءات ذات الصلة"
+
+#: templates/base.html:343
+#, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr "إجراءات ل %(object_name)s: %(navigation_object)s"
+
+#: templates/base.html:348
+msgid "Actions"
+msgstr "الإجراءات"
+
+#: templates/base.html:373
+msgid "Other available actions"
+msgstr "الإجراءات الأخرى المتاحة"
+
+#: templates/home.html:8
+msgid "Django based open source document management system"
+msgstr "Django based open source document management system"
+
+#: templates/project_description.html:6
+msgid ""
+"Open source, Django based electronic document manager with custom metadata, "
+"indexing, tagging, file serving integration, digital signature support and "
+"OCR capabilities"
+msgstr "Open source, Django based electronic document manager with custom metadata, indexing, tagging, file serving integration, digital signature support and OCR capabilities"
+
+#: templates/project_description.html:21
+msgid "Released under the GPL V3 License"
+msgstr "Released under the GPL V3 License"

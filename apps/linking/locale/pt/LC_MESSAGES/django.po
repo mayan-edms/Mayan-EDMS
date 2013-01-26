@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <dev.emerson@gmail.com>, 2011.
 # Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
@@ -9,16 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-07-27 04:11+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:17
@@ -150,10 +149,7 @@ msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
-msgstr ""
-"Esta expressão será avaliada em relação ao documento atualmente selecionado. "
-"Os metadados do documento estão disponíveis como variável `metadata` e as "
-"propriedades do documento como  variável `document`."
+msgstr "Esta expressão será avaliada em relação ao documento atualmente selecionado. Os metadados do documento estão disponíveis como variável `metadata` e as propriedades do documento como  variável `document`."
 
 #: models.py:14 models.py:33 views.py:136 views.py:232
 msgid "enabled"
@@ -175,9 +171,7 @@ msgstr "dados de documentos externos"
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
-msgstr ""
-"Isto representa os metadados de todos os outros documentos.  Objetos "
-"disponíveis: `document. <attribute> ` e ` metadata. <metadata_type_name> `."
+msgstr "Isto representa os metadados de todos os outros documentos.  Objetos disponíveis: `document. <attribute> ` e ` metadata. <metadata_type_name> `."
 
 #: models.py:31
 msgid "expression"
@@ -317,16 +311,12 @@ msgstr "Condição de ligação inteligente: \"%s\" excluída com sucesso."
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
-msgstr ""
-"Erro ao excluir a condição de ligação inteligente: %(smart_link_condition)s; "
-"%(error)s."
+msgstr "Erro ao excluir a condição de ligação inteligente: %(smart_link_condition)s; %(error)s."
 
 #: views.py:333
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
-"Tem a certeza de que pretende eliminar a condição de ligação inteligente: "
-"\"%s\"?"
+msgstr "Tem a certeza de que pretende eliminar a condição de ligação inteligente: \"%s\"?"
 
 #: conf/settings.py:11
 msgid "Show smart link that don't return any documents."
@@ -343,9 +333,4 @@ msgid ""
 "source, the results of these queries are a list of documents that relate in "
 "some manner to the document being displayed and allow users the ability to "
 "jump to and from linked documents very easily."
-msgstr ""
-"Ligações condicionais são conjuntos de declarações condicionais que são "
-"usados para consultar a base de dados usando o documento atual como fonte de "
-"dados. O resultado desta consulta é uma lista de documentos relacionados de "
-"alguma forma com o documento atual, que permite ao utilizador saltar para e "
-"de documentos ligados facilmente."
+msgstr "Ligações condicionais são conjuntos de declarações condicionais que são usados para consultar a base de dados usando o documento atual como fonte de dados. O resultado desta consulta é uma lista de documentos relacionados de alguma forma com o documento atual, que permite ao utilizador saltar para e de documentos ligados facilmente."

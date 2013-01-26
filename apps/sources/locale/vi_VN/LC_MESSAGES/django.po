@@ -1,0 +1,529 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Trung Phan Minh <navmobile@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-01-24 00:57+0000\n"
+"Last-Translator: trungpm <navmobile@gmail.com>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/mayan-edms/language/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:20
+msgid "preview"
+msgstr "xem trước"
+
+#: __init__.py:21 __init__.py:29 __init__.py:35
+msgid "delete"
+msgstr "xóa"
+
+#: __init__.py:23
+msgid "sources"
+msgstr "các nguồn"
+
+#: __init__.py:24 literals.py:53 models.py:204
+msgid "web forms"
+msgstr "web forms"
+
+#: __init__.py:25 models.py:175
+msgid "staging folders"
+msgstr "staging folders"
+
+#: __init__.py:26 models.py:239
+msgid "watch folders"
+msgstr "watch folders"
+
+#: __init__.py:28 __init__.py:34
+msgid "edit"
+msgstr "sửa"
+
+#: __init__.py:30
+msgid "add new source"
+msgstr "thêm nguồn mới"
+
+#: __init__.py:32
+msgid "transformations"
+msgstr "chuyển đổi"
+
+#: __init__.py:33
+msgid "add transformation"
+msgstr "thêm chuyển đổi"
+
+#: __init__.py:37
+msgid "Document sources"
+msgstr "Các nguồn tài liệu"
+
+#: __init__.py:39
+msgid "upload new version"
+msgstr "upload phiên bản mới"
+
+#: __init__.py:69 widgets.py:39
+msgid "thumbnail"
+msgstr "thumbnail"
+
+#: forms.py:34 forms.py:59
+msgid "Expand compressed files"
+msgstr "Giải nén"
+
+#: forms.py:35 forms.py:60
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr "Upload một file nén chứa các file tài liệu riêng biệt"
+
+#: forms.py:43
+msgid "Staging file"
+msgstr ""
+
+#: forms.py:50
+msgid "File"
+msgstr "File"
+
+#: literals.py:8 literals.py:13
+msgid "Always"
+msgstr "Luôn luôn"
+
+#: literals.py:9 literals.py:14
+msgid "Never"
+msgstr "Không bao giờ"
+
+#: literals.py:15
+msgid "Ask user"
+msgstr "Hỏi người dùng"
+
+#: literals.py:30
+msgid "Disk"
+msgstr "Đĩa"
+
+#: literals.py:31
+msgid "Database"
+msgstr "Cơ sở dữ liệu"
+
+#: literals.py:32
+msgid "Drive"
+msgstr "Ổ đĩa"
+
+#: literals.py:33
+msgid "Network drive"
+msgstr "Ổ đĩa mạng"
+
+#: literals.py:34
+msgid "User drive"
+msgstr "ổ đĩa người dùng"
+
+#: literals.py:35
+msgid "Envelope"
+msgstr "Phong thư"
+
+#: literals.py:36
+msgid "Folder"
+msgstr "Thư mục"
+
+#: literals.py:37
+msgid "World"
+msgstr "Quốc tế"
+
+#: literals.py:38
+msgid "Printer"
+msgstr "Máy in"
+
+#: literals.py:39
+msgid "Empty printer"
+msgstr "Máy in rỗng"
+
+#: literals.py:47 models.py:203
+msgid "web form"
+msgstr "web form"
+
+#: literals.py:48
+msgid "server staging folder"
+msgstr ""
+
+#: literals.py:49
+msgid "server watch folder"
+msgstr ""
+
+#: literals.py:54
+msgid "server staging folders"
+msgstr ""
+
+#: literals.py:55
+msgid "server watch folders"
+msgstr ""
+
+#: models.py:36
+msgid "title"
+msgstr "tiêu đề"
+
+#: models.py:37
+msgid "enabled"
+msgstr "đã kích hoạt"
+
+#: models.py:38
+msgid "whitelist"
+msgstr "danh sách trắng"
+
+#: models.py:39
+msgid "blacklist"
+msgstr "danh sách đen"
+
+#: models.py:143
+msgid "icon"
+msgstr "biểu tượng"
+
+#: models.py:143
+msgid "An icon to visually distinguish this source."
+msgstr "Biểu tượng để phân biệt nguồn này"
+
+#: models.py:159 models.py:211
+msgid "folder path"
+msgstr "đường dẫn thư mục"
+
+#: models.py:159 models.py:211
+msgid "Server side filesystem path."
+msgstr "đường dẫn hệ thống phía Server"
+
+#: models.py:160
+msgid "preview width"
+msgstr "bề rộng của xem trước"
+
+#: models.py:160
+msgid "Width value to be passed to the converter backend."
+msgstr ""
+
+#: models.py:161
+msgid "preview height"
+msgstr "bề cao của xem trước"
+
+#: models.py:161
+msgid "Height value to be passed to the converter backend."
+msgstr ""
+
+#: models.py:162 models.py:199 models.py:212
+msgid "uncompress"
+msgstr ""
+
+#: models.py:162 models.py:199 models.py:212
+msgid "Whether to expand or not compressed archives."
+msgstr ""
+
+#: models.py:163 models.py:213
+msgid "delete after upload"
+msgstr ""
+
+#: models.py:163 models.py:213
+msgid "Delete the file after is has been successfully uploaded."
+msgstr ""
+
+#: models.py:174
+msgid "staging folder"
+msgstr ""
+
+#: models.py:214
+msgid "interval"
+msgstr ""
+
+#: models.py:214
+msgid ""
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr ""
+
+#: models.py:238
+msgid "watch folder"
+msgstr ""
+
+#: models.py:243
+msgid "Enter a valid value."
+msgstr ""
+
+#: models.py:271 views.py:595
+msgid "order"
+msgstr ""
+
+#: models.py:272 views.py:596 views.py:633 views.py:663
+msgid "transformation"
+msgstr ""
+
+#: models.py:273 views.py:597
+msgid "arguments"
+msgstr ""
+
+#: models.py:273
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr ""
+
+#: models.py:284
+msgid "document source transformation"
+msgstr ""
+
+#: models.py:285
+msgid "document source transformations"
+msgstr ""
+
+#: models.py:292 models.py:293
+msgid "out of process"
+msgstr "Ngoài phạm vi xử lý"
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr "Thiết lập nguồn tài liệu"
+
+#: permissions.py:8
+msgid "View existing document sources"
+msgstr "Xem các nguồn tài liệu đang tồn tại"
+
+#: permissions.py:9
+msgid "Edit document sources"
+msgstr "Sửa các nguồn tài liệu"
+
+#: permissions.py:10
+msgid "Delete document sources"
+msgstr "Xóa các nguồn tài liệu"
+
+#: permissions.py:11
+msgid "Create new document sources"
+msgstr "Tạo các nguồn tài liệu"
+
+#: staging.py:45
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr ""
+
+#: staging.py:128
+#, python-format
+msgid "Unable to upload staging file: %s"
+msgstr ""
+
+#: staging.py:138
+#, python-format
+msgid "Unable to delete staging file: %s"
+msgstr ""
+
+#: utils.py:40
+msgid "Whitelist Blacklist validation error."
+msgstr ""
+
+#: views.py:100
+msgid "here"
+msgstr ""
+
+#: views.py:105
+msgid "Upload sources"
+msgstr ""
+
+#: views.py:107
+msgid ""
+"No interactive document sources have been defined or none have been enabled."
+msgstr ""
+
+#: views.py:108
+#, python-format
+msgid "Click %(setup_link)s to add or enable some document sources."
+msgstr ""
+
+#: views.py:165
+msgid "New document version uploaded successfully."
+msgstr "Phiên bản mới được upload thành công."
+
+#: views.py:169
+msgid "File uploaded successfully."
+msgstr "File upload thành công."
+
+#: views.py:172
+msgid "File uncompressed successfully and uploaded as individual files."
+msgstr "File giải nén thành công và đã upload các file riêng biệt"
+
+#: views.py:175
+msgid "File was not a compressed file, uploaded as it was."
+msgstr "File này không phải là file nén, đã upload."
+
+#: views.py:179 views.py:260
+msgid "New version uploads are not allowed for this document."
+msgstr ""
+
+#: views.py:183 views.py:264
+#, python-format
+msgid "Unhandled exception: %s"
+msgstr "Ngoại lệ: %s"
+
+#: views.py:192
+#, python-format
+msgid "upload a new version from source: %s"
+msgstr "upload phiên bản mới từ nguồn: %s"
+
+#: views.py:194
+#, python-format
+msgid "upload a local document from source: %s"
+msgstr ""
+
+#: views.py:240
+#, python-format
+msgid "Document version from staging file: %s, uploaded successfully."
+msgstr ""
+
+#: views.py:243
+#, python-format
+msgid "Staging file: %s, uploaded successfully."
+msgstr ""
+
+#: views.py:246
+#, python-format
+msgid ""
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
+msgstr ""
+
+#: views.py:249
+#, python-format
+msgid "Staging file: %s, was not compressed, uploaded as a single file."
+msgstr ""
+
+#: views.py:254
+#, python-format
+msgid "Staging file: %s, deleted successfully."
+msgstr ""
+
+#: views.py:279
+#, python-format
+msgid "upload a new version from staging source: %s"
+msgstr ""
+
+#: views.py:281
+#, python-format
+msgid "upload a document from staging source: %s"
+msgstr ""
+
+#: views.py:294
+msgid "files in staging path"
+msgstr ""
+
+#: views.py:326
+msgid "Current document type"
+msgstr "Kiểu tài liệu hiện tại"
+
+#: views.py:327
+msgid "None"
+msgstr "Không có gì"
+
+#: views.py:334
+msgid "Current metadata"
+msgstr ""
+
+#: views.py:372 views.py:391
+#, python-format
+msgid "Staging file transformation error: %(error)s"
+msgstr ""
+
+#: views.py:414
+msgid "Staging file delete successfully."
+msgstr ""
+
+#: views.py:416
+#, python-format
+msgid "Staging file delete error; %s."
+msgstr ""
+
+#: views.py:476
+msgid "Source edited successfully"
+msgstr ""
+
+#: views.py:479
+#, python-format
+msgid "Error editing source; %s"
+msgstr ""
+
+#: views.py:484
+#, python-format
+msgid "edit source: %s"
+msgstr ""
+
+#: views.py:489 views.py:529 views.py:591 views.py:632 views.py:662
+#: views.py:705
+msgid "source"
+msgstr ""
+
+#: views.py:518
+#, python-format
+msgid "Source \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:520
+#, python-format
+msgid "Error deleting source \"%(source)s\": %(error)s"
+msgstr ""
+
+#: views.py:527
+#, python-format
+msgid "Are you sure you wish to delete the source: %s?"
+msgstr ""
+
+#: views.py:559
+msgid "Source created successfully"
+msgstr ""
+
+#: views.py:562
+#, python-format
+msgid "Error creating source; %s"
+msgstr ""
+
+#: views.py:567
+#, python-format
+msgid "Create new source of type: %s"
+msgstr ""
+
+#: views.py:589
+#, python-format
+msgid "transformations for: %s"
+msgstr ""
+
+#: views.py:619
+msgid "Source transformation edited successfully"
+msgstr "Chuyển đổi nguồn được sửa thành công"
+
+#: views.py:622
+#, python-format
+msgid "Error editing source transformation; %s"
+msgstr "Lỗi sửa chuyển đổi nguồn; %s"
+
+#: views.py:627
+#, python-format
+msgid "Edit transformation: %s"
+msgstr "Sửa chuyển đổi: %s"
+
+#: views.py:650
+msgid "Source transformation deleted successfully."
+msgstr "Chuyển đổi nguồn xóa thành công"
+
+#: views.py:652
+#, python-format
+msgid "Error deleting source transformation; %(error)s"
+msgstr "Lỗi xóa chuyển đổi nguồn: %(error)s"
+
+#: views.py:665
+#, python-format
+msgid ""
+"Are you sure you wish to delete source transformation \"%(transformation)s\""
+msgstr "Bạn có chắc chắn muốn xóa chuyển đổi nguồn \"%(transformation)s\""
+
+#: views.py:695
+msgid "Source transformation created successfully"
+msgstr "Chuyển đổi nguồn được tạo thành công"
+
+#: views.py:698
+#, python-format
+msgid "Error creating source transformation; %s"
+msgstr "Lỗi tạo chuyển đổi nguồn: %s"
+
+#: views.py:707
+#, python-format
+msgid "Create new transformation for source: %s"
+msgstr "Tạo chuyển đổi nguồn mới: %s"

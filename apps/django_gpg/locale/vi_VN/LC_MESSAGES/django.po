@@ -1,0 +1,215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Trung Phan Minh <navmobile@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-01-25 08:34+0000\n"
+"Last-Translator: trungpm <navmobile@gmail.com>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/mayan-edms/language/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:14 views.py:66
+msgid "private keys"
+msgstr "khóa riêng"
+
+#: __init__.py:15 views.py:69
+msgid "public keys"
+msgstr "khóa công cộng"
+
+#: __init__.py:16
+msgid "delete"
+msgstr "xóa"
+
+#: __init__.py:17
+msgid "query keyservers"
+msgstr "query keyservers"
+
+#: __init__.py:18
+msgid "import"
+msgstr "import"
+
+#: __init__.py:19
+msgid "key management"
+msgstr "quản lý khóa"
+
+#: api.py:24
+msgid "Public"
+msgstr "Công cộng"
+
+#: api.py:25
+msgid "Secret"
+msgstr "Bí mật"
+
+#: api.py:33 api.py:38
+msgid "RSA"
+msgstr "RSA"
+
+#: api.py:34
+msgid "DSA"
+msgstr "DSA"
+
+#: api.py:39
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: api.py:53
+msgid "Bad signature."
+msgstr "Bad signature."
+
+#: api.py:57
+msgid "Document not signed or invalid signature."
+msgstr "Tài liệu không được kí hoặc chữ kí không hợp lệ."
+
+#: api.py:61
+msgid "Signature error."
+msgstr "Signature error."
+
+#: api.py:65
+msgid "Document is signed but no public key is available for verification."
+msgstr "Document is signed but no public key is available for verification."
+
+#: api.py:69
+msgid "Document is signed, and signature is good."
+msgstr "Document is signed, and signature is good."
+
+#: api.py:73
+msgid "Document is signed with a valid signature."
+msgstr "Document is signed, and signature is good."
+
+#: api.py:146
+msgid "unknown"
+msgstr "không biết"
+
+#: forms.py:7
+msgid "Term"
+msgstr "Term"
+
+#: forms.py:8
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Name, e-mail, key ID or key fingerprint to look for."
+
+#: permissions.py:7
+msgid "Key management"
+msgstr "Quản lý khóa"
+
+#: permissions.py:9
+msgid "View keys"
+msgstr "Xem các khóa"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "Xóa khóa"
+
+#: permissions.py:11
+msgid "Query keyservers"
+msgstr "Truy vấn keyservers"
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
+msgstr "Import keys from keyservers"
+
+#: views.py:37
+#, python-format
+msgid "Key: %s, imported successfully."
+msgstr "Key: %s, imported successfully."
+
+#: views.py:42
+#, python-format
+msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgstr "Unable to import key id: %(key_id)s; %(error)s"
+
+#: views.py:51
+msgid "Import key"
+msgstr "Import key"
+
+#: views.py:52
+#, python-format
+msgid "Are you sure you wish to import key id: %s?"
+msgstr "Are you sure you wish to import key id: %s?"
+
+#: views.py:77
+msgid "Key ID"
+msgstr "Key ID"
+
+#: views.py:81
+msgid "Owner"
+msgstr "Nhười sở hữu"
+
+#: views.py:101
+#, python-format
+msgid "Key: %s, deleted successfully."
+msgstr "Khóa: %s, đã xóa thành công."
+
+#: views.py:108
+msgid "Delete key"
+msgstr " Xóa khóa"
+
+#: views.py:110
+#, python-format
+msgid ""
+"Are you sure you wish to delete key: %s?  If you try to delete a public key "
+"that is part of a public/private pair the private key will be deleted as "
+"well."
+msgstr "Are you sure you wish to delete key: %s? If you try to delete a public key that is part of a public/private pair the private key will be deleted as well."
+
+#: views.py:128
+msgid "Query key server"
+msgstr "Query key server"
+
+#: views.py:141
+msgid "results"
+msgstr "Kết quả"
+
+#: views.py:146
+msgid "ID"
+msgstr "ID"
+
+#: views.py:150
+msgid "type"
+msgstr "type"
+
+#: views.py:154
+msgid "creation date"
+msgstr "ngày tạo"
+
+#: views.py:158
+msgid "disabled"
+msgstr "vô hiệu hóa"
+
+#: views.py:162
+msgid "expiration date"
+msgstr "ngày hết hạn"
+
+#: views.py:166
+msgid "expired"
+msgstr "đã hết hạn"
+
+#: views.py:170
+msgid "length"
+msgstr "chiều dài"
+
+#: views.py:174
+msgid "revoked"
+msgstr "bị thu hồi"
+
+#: views.py:179
+msgid "Identifies"
+msgstr "Identifies"
+
+#: conf/settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "List of keyservers to be queried for unknown keys."
+
+#: conf/settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Home directory used to store keys as well as configuration files."
