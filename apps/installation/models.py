@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import os
 import sys
 import platform
@@ -20,7 +22,6 @@ else:
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.datastructures import SortedDict
-from django.utils.simplejson import dumps
 from django.conf import settings
 
 from common.models import Singleton
@@ -29,24 +30,13 @@ from main import __version__ as mayan_version
 from lock_manager import Lock, LockError
 from ocr.conf.settings import TESSERACT_PATH, UNPAPER_PATH, PDFTOTEXT_PATH
 
+from .classes import Property, PropertyNamespace, VirtualEnv, PIPNotFound
+
 FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
 FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
 FORM_RECEIVER_FIELD = 'entry.0.single'
 TIMEOUT = 5
 FABFILE_MARKER = os.path.join(settings.PROJECT_ROOT, 'fabfile_install')
-
-
-class Property(object):
-    def __init__(self, name, label, value):
-        self.name = name
-        self.label = label
-        self.value = value
-
-    def __unicode__(self):
-        return unicode(self.value)
-
-    def __str__(self):
-        return str(self.value)
 
 
 class Installation(Singleton):
@@ -62,72 +52,100 @@ class Installation(Singleton):
         self.set_properties()
         return self._properties.values()
 
-    def set_properties(self):
-        self._properties = SortedDict()
+    def os_properties(self):
+        namespace = PropertyNamespace('os', _(u'Operating system'))
         if LSB:
-            self.add_property(Property('is_lsb', _(u'LSB OS'), True))
-            self.add_property(Property('distributor_id', _(u'Distributor ID'), lsb_release('-i', '-s')))
-            self.add_property(Property('description', _(u'Description'), lsb_release('-d', '-s')))
-            self.add_property(Property('release', _(u'Release'), lsb_release('-r', '-s')))
-            self.add_property(Property('codename', _(u'Codename'), lsb_release('-c', '-s')))
-            self.add_property(Property('sysinfo', _(u'System info'), uname('-a')))
+            namespace.add_property('is_lsb', _(u'LSB OS'), True, True)
+            namespace.add_property('distributor_id', _(u'Distributor ID'), lsb_release('-i', '-s'), True)
+            namespace.add_property('description', _(u'Description'), lsb_release('-d', '-s'), True)
+            namespace.add_property('release', _(u'Release'), lsb_release('-r', '-s'), True)
+            namespace.add_property('codename', _(u'Codename'), lsb_release('-c', '-s'), True)
+            namespace.add_property('sysinfo', _(u'System info'), uname('-a'), True)
         else:
-            self.add_property(Property('is_lsb', _(u'LSB OS'), False))
+            namespace.add_property('is_lsb', _(u'LSB OS'), False)
+                            
+        namespace.add_property('architecture', _(u'OS architecture'), platform.architecture(), report=True)
+        namespace.add_property('python_version', _(u'Python version'), platform.python_version(), report=True)
+        namespace.add_property('hostname', _(u'Hostname'), platform.node())
+        namespace.add_property('platform', _(u'Platform'), sys.platform, report=True)
+        namespace.add_property('machine', _(u'Machine'), platform.machine(), report=True)
+        namespace.add_property('processor', _(u'Processor'), platform.processor(), report=True)
+        namespace.add_property('cpus', _(u'Number of CPUs'), psutil.NUM_CPUS, report=True)
+        namespace.add_property('total_phymem', _(u'Total physical memory'), pretty_size(psutil.TOTAL_PHYMEM), report=True)
+        namespace.add_property('disk_partitions', _(u'Disk partitions'), '; '.join(['%s %s %s %s' % (partition.device, partition.mountpoint, partition.fstype, partition.opts) for partition in psutil.disk_partitions()]))
 
-        self.add_property(Property('architecture', _(u'OS architecture'), platform.architecture()))
-        self.add_property(Property('python_version', _(u'Python version'), platform.python_version()))
-        self.add_property(Property('hostname', _(u'Hostname'), platform.node()))
-        self.add_property(Property('platform', _(u'Platform'), sys.platform))
-        self.add_property(Property('machine', _(u'Machine'), platform.machine()))
-        self.add_property(Property('processor', _(u'Processor'), platform.processor()))
-        self.add_property(Property('cpus', _(u'Number of CPUs'), psutil.NUM_CPUS))
-        self.add_property(Property('total_phymem', _(u'Total physical memory'), pretty_size(psutil.TOTAL_PHYMEM)))
-        self.add_property(Property('disk_partitions', _(u'Disk partitions'), '; '.join(['%s %s %s %s' % (partition.device, partition.mountpoint, partition.fstype, partition.opts) for partition in psutil.disk_partitions()])))
+    def binary_dependencies(self):
+        namespace = PropertyNamespace('bins', _(u'Binary dependencies'))
 
         tesseract = pbs.Command(TESSERACT_PATH)
         try:
-            self.add_property(Property('tesseract', _(u'tesseract version'), tesseract('-v').stderr))
+            namespace.add_property('tesseract', _(u'tesseract version'), tesseract('-v').stderr, report=True)
         except pbs.CommandNotFound:
-            self.add_property(Property('tesseract', _(u'tesseract version'), _(u'not found')))
+            namespace.add_property('tesseract', _(u'tesseract version'), _(u'not found'), report=True)
         except Exception:
-            self.add_property(Property('tesseract', _(u'tesseract version'), _(u'error getting version')))
+            namespace.add_property('tesseract', _(u'tesseract version'), _(u'error getting version'), report=True)
 
         unpaper = pbs.Command(UNPAPER_PATH)
         try:
-            self.add_property(Property('unpaper', _(u'unpaper version'), unpaper('-V').stdout))
+            namespace.add_property('unpaper', _(u'unpaper version'), unpaper('-V').stdout, report=True)
         except pbs.CommandNotFound:
-            self.add_property(Property('unpaper', _(u'unpaper version'), _(u'not found')))
+            namespace.add_property('unpaper', _(u'unpaper version'), _(u'not found'), report=True)
         except Exception:
-            self.add_property(Property('unpaper', _(u'unpaper version'), _(u'error getting version')))
+            namespace.add_property('unpaper', _(u'unpaper version'), _(u'error getting version'), report=True)
 
         pdftotext = pbs.Command(PDFTOTEXT_PATH)
         try:
-            self.add_property(Property('pdftotext', _(u'pdftotext version'), pdftotext('-v').stderr))
+            namespace.add_property('pdftotext', _(u'pdftotext version'), pdftotext('-v').stderr, report=True)
         except pbs.CommandNotFound:
-            self.add_property(Property('pdftotext', _(u'pdftotext version'), _(u'not found')))
+            namespace.add_property('pdftotext', _(u'pdftotext version'), _(u'not found'), report=True)
         except Exception:
-            self.add_property(Property('pdftotext', _(u'pdftotext version'), _(u'error getting version')))
+            namespace.add_property('pdftotext', _(u'pdftotext version'), _(u'error getting version'), report=True)
 
-        self.add_property(Property('mayan_version', _(u'Mayan EDMS version'), mayan_version))
-        self.add_property(Property('fabfile', _(u'Installed via fabfile'), os.path.exists(FABFILE_MARKER)))
+    def mayan_properties(self):
+        namespace = PropertyNamespace('mayan', _(u'Mayan EDMS'))
+
+        namespace.add_property('uuid', _(u'UUID'), self.uuid, report=True)
+        namespace.add_property('mayan_version', _(u'Mayan EDMS version'), mayan_version, report=True)
+        namespace.add_property('fabfile', _(u'Installed via fabfile'), os.path.exists(FABFILE_MARKER), report=True)
+
+    def git_properties(self):
+        namespace = PropertyNamespace('git', _(u'Git repository'))
 
         try:
             repo = Repo(settings.PROJECT_ROOT)
         except:
-            self.add_property(Property('is_git_repo', _(u'Running from a Git repository'), False))
+            namespace.add_property(Property('is_git_repo', _(u'Running from a Git repository'), False))
         else:
             repo.config_reader()
             headcommit = repo.head.commit
-            self.add_property(Property('is_git_repo', _(u'Running from a Git repository'), True))
-            self.add_property(Property('repo_remotes', _(u'Repository remotes'), ', '.join([unicode(remote) for remote in repo.remotes])))
-            self.add_property(Property('repo_remotes_urls', _(u'Repository remotes URLs'), ', '.join([unicode(remote.url) for remote in repo.remotes])))
-            self.add_property(Property('repo_head_reference', _(u'Branch'), repo.head.reference))
-            self.add_property(Property('headcommit_hexsha', _(u'HEAD commit hex SHA'), headcommit.hexsha))
-            self.add_property(Property('headcommit_author', _(u'HEAD commit author'), headcommit.author))
-            self.add_property(Property('headcommit_authored_date', _(u'HEAD commit authored date'), time.asctime(time.gmtime(headcommit.authored_date))))
-            self.add_property(Property('headcommit_committer', _(u'HEAD commit committer'), headcommit.committer))
-            self.add_property(Property('headcommit_committed_date', _(u'HEAD commit committed date'), time.asctime(time.gmtime(headcommit.committed_date))))
-            self.add_property(Property('headcommit_message', _(u'HEAD commit message'), headcommit.message))
+            namespace.add_property('is_git_repo', _(u'Running from a Git repository'), True)
+            namespace.add_property('repo_remotes', _(u'Repository remotes'), ', '.join([unicode(remote) for remote in repo.remotes]), report=True)
+            namespace.add_property('repo_remotes_urls', _(u'Repository remotes URLs'), ', '.join([unicode(remote.url) for remote in repo.remotes]), report=True)
+            namespace.add_property('repo_head_reference', _(u'Branch'), repo.head.reference, report=True)
+            namespace.add_property('headcommit_hexsha', _(u'HEAD commit hex SHA'), headcommit.hexsha, report=True)
+            namespace.add_property('headcommit_author', _(u'HEAD commit author'), headcommit.author)
+            namespace.add_property('headcommit_authored_date', _(u'HEAD commit authored date'), time.asctime(time.gmtime(headcommit.authored_date)), report=True)
+            namespace.add_property('headcommit_committer', _(u'HEAD commit committer'), headcommit.committer)
+            namespace.add_property('headcommit_committed_date', _(u'HEAD commit committed date'), time.asctime(time.gmtime(headcommit.committed_date)), report=True)
+            namespace.add_property('headcommit_message', _(u'HEAD commit message'), headcommit.message, report=True)
+
+    def virtualenv_properties(self):
+        namespace = PropertyNamespace('venv', _(u'VirtuanEnv'))
+        try:
+            venv = VirtualEnv()
+        except PIPNotFound:
+            namespace.add_property('pip', 'pip', _(u'pip not found.'), report=True)
+        else:
+            for item, version, result in venv.get_results():
+                namespace.add_property(item, '%s (%s)' % (item, version), result, report=True)
+
+    def set_properties(self):
+        self._properties = SortedDict()
+        self.os_properties()
+        self.binary_dependencies()
+        self.mayan_properties()
+        self.git_properties()
+        self.virtualenv_properties()
 
     def __getattr__(self, name):
         self.set_properties()
@@ -142,47 +160,10 @@ class Installation(Singleton):
         except LockError:
             pass
         else:
-            try:
-                dictionary = {}
-                if self.is_lsb:
-                    dictionary.update(
-                        {
-                            'is_lsb': unicode(self.is_lsb),
-                            'distributor_id': unicode(self.distributor_id),
-                            'description': unicode(self.description),
-                            'release': unicode(self.release),
-                            'codename': unicode(self.codename),
-                            'sysinfo': unicode(self.sysinfo),
-                        }
-                    )
+            self.set_properties()
 
-                dictionary.update(
-                    {
-                        'uuid': self.uuid,
-                        'architecture': unicode(self.architecture),
-                        'python_version': unicode(self.python_version),
-                        'platform': unicode(self.platform),
-                        'machine': unicode(self.machine),
-                        'processor': unicode(self.processor),
-                        'cpus': unicode(self.cpus),
-                        'total_phymem': unicode(self.total_phymem),
-                        'mayan_version': unicode(self.mayan_version),
-                        'fabfile': unicode(self.fabfile),
-                    }
-                )
-                if self.is_git_repo:
-                    dictionary.update(
-                        {
-                            'repo_remotes': unicode(self.repo_remotes),
-                            'repo_remotes_urls': unicode(self.repo_remotes_urls),
-                            'repo_head_reference': unicode(self.repo_head_reference),
-                            'headcommit_hexsha': unicode(self.headcommit_hexsha),
-                            'headcommit_authored_date': unicode(self.headcommit_authored_date),
-                            'headcommit_committed_date': unicode(self.headcommit_committed_date),
-                            'headcommit_message': unicode(self.headcommit_message),
-                        }
-                )
-                requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: dumps(dictionary)}, timeout=TIMEOUT)
+            try:
+                requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: Property.get_reportable(as_json=True)}, timeout=TIMEOUT)
             except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
                 pass
             else:
