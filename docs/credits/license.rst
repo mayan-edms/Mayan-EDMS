@@ -11,4 +11,4 @@ The complete license terms are included below.
 License terms
 =============
 
-.. include:: LICENSE
+.. include:: ../../LICENSE
