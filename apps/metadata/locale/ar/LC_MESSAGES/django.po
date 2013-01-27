@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-12-12 01:49-0400\n"
-"PO-Revision-Date: 2011-09-30 04:56+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-01-26 08:46+0000\n"
+"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,441 +20,441 @@ msgstr ""
 
 #: __init__.py:23 __init__.py:25
 msgid "edit metadata"
-msgstr ""
+msgstr "تعديل البيانات الوصفية"
 
 #: __init__.py:24 __init__.py:70
 msgid "metadata"
-msgstr ""
+msgstr "البيانات الوصفية"
 
 #: __init__.py:26 __init__.py:27
 msgid "add metadata"
-msgstr ""
+msgstr "إضافة البيانات الوصفية"
 
 #: __init__.py:28 __init__.py:29
 msgid "remove metadata"
-msgstr ""
+msgstr "إزالة البيانات الوصفية"
 
 #: __init__.py:31 models.py:40 views.py:316
 msgid "metadata types"
-msgstr ""
+msgstr "أنواع البيانات الوصفية"
 
 #: __init__.py:32 __init__.py:37
 msgid "edit"
-msgstr ""
+msgstr "تحرير"
 
 #: __init__.py:33 __init__.py:39
 msgid "delete"
-msgstr ""
+msgstr "حذف"
 
 #: __init__.py:34 __init__.py:40
 msgid "create new"
-msgstr ""
+msgstr "انشاء جديد"
 
 #: __init__.py:36 views.py:416
 msgid "metadata sets"
-msgstr ""
+msgstr "مجموعات البيانات الوصفية"
 
 #: __init__.py:38 views.py:420
 msgid "members"
-msgstr ""
+msgstr "الأعضاء"
 
 #: __init__.py:42 models.py:104
 msgid "default metadata"
-msgstr ""
+msgstr "البيانات الوصفية الافتراضية"
 
 #: classes.py:14
 #, python-format
 msgid "'metadata' object has no attribute '%s'"
-msgstr ""
+msgstr "'metadata' object has no attribute '%s'"
 
 #: forms.py:28
 msgid "required"
-msgstr ""
+msgstr "مطلوب"
 
 #: forms.py:54
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: forms.py:55
 msgid "Name"
-msgstr ""
+msgstr "اسم"
 
 #: forms.py:57
 msgid "Value"
-msgstr ""
+msgstr "قيمة"
 
 #: forms.py:58
 msgid "Update"
-msgstr ""
+msgstr "تحديث"
 
 #: forms.py:64
 msgid "Metadata type"
-msgstr ""
+msgstr "نوع البيانات الوصفية"
 
 #: forms.py:68
 msgid "Remove"
-msgstr ""
+msgstr "إزالة"
 
 #: forms.py:86 views.py:568 views.py:586
 msgid "Metadata sets"
-msgstr ""
+msgstr "مجموعات البيانات الوصفية"
 
 #: forms.py:94 permissions.py:7
 msgid "Metadata"
-msgstr ""
+msgstr "البيانات الوصفية"
 
 #: models.py:11
 #, python-format
 msgid " Available models: %s"
-msgstr ""
+msgstr " Available models: %s"
 
 #: models.py:12
 #, python-format
 msgid " Available functions: %s"
-msgstr ""
+msgstr " Available functions: %s"
 
 #: models.py:19
 msgid "name"
-msgstr ""
+msgstr "اسم"
 
 #: models.py:19
 msgid "Do not use python reserved words, or spaces."
-msgstr ""
+msgstr "Do not use python reserved words, or spaces."
 
 #: models.py:20 models.py:47
 msgid "title"
-msgstr ""
+msgstr "عنوان"
 
 #: models.py:22
 msgid "default"
-msgstr ""
+msgstr "default"
 
 #: models.py:23
 #, python-format
 msgid "Enter a string to be evaluated.%s"
-msgstr ""
+msgstr "Enter a string to be evaluated.%s"
 
 #: models.py:25
 msgid "lookup"
-msgstr ""
+msgstr "بحث"
 
 #: models.py:26
 #, python-format
 msgid ""
 "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
 "User.objects.all()].%s"
-msgstr ""
+msgstr "Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s"
 
 #: models.py:39 models.py:69 views.py:353 views.py:398
 msgid "metadata type"
-msgstr ""
+msgstr "نوع البيانات الوصفية"
 
 #: models.py:59 models.py:60 models.py:68 views.py:452 views.py:495
 #: views.py:541
 msgid "metadata set"
-msgstr ""
+msgstr "مجموعة البيانات الوصفية"
 
 #: models.py:76
 msgid "metadata set item"
-msgstr ""
+msgstr "عنصر من مجموعة البيانات الوصفية"
 
 #: models.py:77
 msgid "metadata set items"
-msgstr ""
+msgstr "عناصر مجموعة البيانات الوصفية"
 
 #: models.py:85
 msgid "document"
-msgstr ""
+msgstr "وثيقة"
 
 #: models.py:86
 msgid "type"
-msgstr ""
+msgstr "نوع"
 
 #: models.py:87 views.py:304
 msgid "value"
-msgstr ""
+msgstr "قيمة"
 
 #: models.py:93 models.py:94
 msgid "document metadata"
-msgstr ""
+msgstr "البيانات الوصفية للوثيقة"
 
 #: models.py:102 views.py:626
 msgid "document type"
-msgstr ""
+msgstr "نوع الوثيقة"
 
 #: models.py:103
 msgid "default metadata sets"
-msgstr ""
+msgstr "مجموعات البيانات الوصفية الافتراضية"
 
 #: models.py:110
 msgid "document type defaults"
-msgstr ""
+msgstr "أنواع الوثيقة الافتراضية"
 
 #: models.py:111
 msgid "document types defaults"
-msgstr ""
+msgstr "أنواع الوثائق الافتراضية"
 
 #: permissions.py:8
 msgid "Edit a document's metadata"
-msgstr ""
+msgstr "قم بتعديل البيانات الوصفية لوثيقة"
 
 #: permissions.py:9
 msgid "Add metadata to a document"
-msgstr ""
+msgstr "إضافة بيانات وصفية إلى وثيقة"
 
 #: permissions.py:10
 msgid "Remove metadata from a document"
-msgstr ""
+msgstr "إزالة بيانات وصفية من وثيقة"
 
 #: permissions.py:11
 msgid "View metadata from a document"
-msgstr ""
+msgstr "عرض البيانات الوصفية من وثيقة"
 
 #: permissions.py:13
 msgid "Metadata setup"
-msgstr ""
+msgstr "اعداد البيانات الوصفية"
 
 #: permissions.py:14
 msgid "Edit metadata types"
-msgstr ""
+msgstr "تحرير أنواع البيانات الوصفية"
 
 #: permissions.py:15
 msgid "Create new metadata types"
-msgstr ""
+msgstr "إنشاء أنواع جديدة من البيانات الوصفية"
 
 #: permissions.py:16
 msgid "Delete metadata types"
-msgstr ""
+msgstr "حذف نوع من البيانات الوصفية"
 
 #: permissions.py:17
 msgid "View metadata types"
-msgstr ""
+msgstr "عرض أنواع البيانات الوصفية"
 
 #: permissions.py:19
 msgid "Edit metadata sets"
-msgstr ""
+msgstr "تحرير مجموعات البيانات الوصفية"
 
 #: permissions.py:20
 msgid "Create new metadata sets"
-msgstr ""
+msgstr "إنشاء مجموعات جديدة من البيانات الوصفية"
 
 #: permissions.py:21
 msgid "Delete metadata sets"
-msgstr ""
+msgstr "حذف مجموعات البيانات الوصفية"
 
 #: permissions.py:22
 msgid "View metadata sets"
-msgstr ""
+msgstr "عرض مجموعات البيانات الوصفية"
 
 #: views.py:41 views.py:204
 msgid "The selected document doesn't have any metadata."
-msgstr ""
+msgstr "الوثيقة المختارة ليس لها بيانات وصفية  "
 
 #: views.py:52 views.py:144 views.py:216
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "يجب أن توفر ما لا يقل عن وثيقة واحدة."
 
 #: views.py:87 views.py:251
 #, python-format
 msgid "Error deleting document indexes; %s"
-msgstr ""
+msgstr "Error deleting document indexes; %s"
 
 #: views.py:99
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
-msgstr ""
+msgstr "Error editing metadata for document %(document)s; %(error)s."
 
 #: views.py:102
 #, python-format
 msgid "Metadata for document %s edited successfully."
-msgstr ""
+msgstr "تم تعديل البيانات الوصفية للوثيقة %s بنجاح"
 
 #: views.py:107 views.py:268
 #, python-format
 msgid "Error updating document indexes; %s"
-msgstr ""
+msgstr "Error updating document indexes; %s"
 
 #: views.py:109 views.py:270
 msgid "Document indexes updated successfully."
-msgstr ""
+msgstr "Document indexes updated successfully."
 
 #: views.py:120
 #, python-format
 msgid "Edit metadata for document: %s"
-msgstr ""
+msgstr "قم بتعديل البيانات الوصفية للوثيقة: %s"
 
 #: views.py:122
 #, python-format
 msgid "Edit metadata for documents: %s"
-msgstr ""
+msgstr "قم بتعديل البيانات الوصفية للوثائق: %s"
 
 #: views.py:161
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
-msgstr ""
+msgstr "تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."
 
 #: views.py:164
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
+msgstr "نوع البيانات الوصفية %(metadata_type)s موجود مسبقا للوثيقة %(document)s ."
 
 #: views.py:188
 #, python-format
 msgid "Add metadata type to document: %s"
-msgstr ""
+msgstr "إضافة نوع البيانات الوصفية للوثيقة:  %s"
 
 #: views.py:190
 #, python-format
 msgid "Add metadata type to documents: %s"
-msgstr ""
+msgstr "إضافة نوع البيانات الوصفية إلى الوثائق : %s"
 
 #: views.py:259
 #, python-format
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
-msgstr ""
+msgstr "تم حذف نوع البيانات الوصفية %(metadata_type)s بنجاح من الوثيقة %(document)s ."
 
 #: views.py:262
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
-msgstr ""
+msgstr "خطأ أثناء حذف نوع البيانات الوصفية %(metadata_type)s  من الوثيقة %(document)s ."
 
 #: views.py:281
 #, python-format
 msgid "Remove metadata types from document: %s"
-msgstr ""
+msgstr "إزالة أنواع البيانات الوصفية من الوثيقة: %s"
 
 #: views.py:283
 #, python-format
 msgid "Remove metadata types from documents: %s"
-msgstr ""
+msgstr "إزالة أنواع البيانات الوصفية من الوثائق: %s"
 
 #: views.py:302
 #, python-format
 msgid "metadata for: %s"
-msgstr ""
+msgstr "البيانات الوصفية ل: %s"
 
 #: views.py:320
 msgid "internal name"
-msgstr ""
+msgstr "الاسم الداخلي"
 
 #: views.py:341
 msgid "Metadata type edited successfully"
-msgstr ""
+msgstr "تم تعديل نوع البيانات الوصفية بنجاح"
 
 #: views.py:344
 #, python-format
 msgid "Error editing metadata type; %s"
-msgstr ""
+msgstr "خطأ أثناء تحرير نوع البيانات الوصفية: %s"
 
 #: views.py:350
 #, python-format
 msgid "edit metadata type: %s"
-msgstr ""
+msgstr "تحرير نوع البيانات الوصفية : %s"
 
 #: views.py:365
 msgid "Metadata type created successfully"
-msgstr ""
+msgstr "تم انشاء نوع البيانات الوصفية بنجاح"
 
 #: views.py:371
 msgid "create metadata type"
-msgstr ""
+msgstr "انشاء نوع من البيانات الوصفية"
 
 #: views.py:390
 #, python-format
 msgid "Metadata type: %s deleted successfully."
-msgstr ""
+msgstr "نوع البيانات الوصفية: %s تم حذفه بنجاح."
 
 #: views.py:392
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
-msgstr ""
+msgstr "خطأ أثناء حذف البيانات الوصفية: %(metadata_type)s نوع الخطأ : %(error)s"
 
 #: views.py:403
 #, python-format
 msgid "Are you sure you wish to delete the metadata type: %s?"
-msgstr ""
+msgstr "هل أنت متأكد أنك ترغب في حذف نوع البيانات الوصفية: %s ؟"
 
 #: views.py:440
 msgid "Metadata set edited successfully"
-msgstr ""
+msgstr "مجموعة البيانات الوصفية تم تحريرها بنجاح"
 
 #: views.py:443
 #, python-format
 msgid "Error editing metadata set; %s"
-msgstr ""
+msgstr "Error editing metadata set; %s"
 
 #: views.py:449
 #, python-format
 msgid "edit metadata set: %s"
-msgstr ""
+msgstr "تحرير مجموعة البيانات الوصفية: %s"
 
 #: views.py:491
 #, python-format
 msgid "non members of metadata set: %s"
-msgstr ""
+msgstr "non members of metadata set: %s"
 
 #: views.py:492
 #, python-format
 msgid "members of metadata set: %s"
-msgstr ""
+msgstr "أعضاء مجموعة البيانات الوصفية: %s"
 
 #: views.py:507
 msgid "Metadata set created successfully"
-msgstr ""
+msgstr "مجموعة البيانات الوصفية تم انشائها بنجاح"
 
 #: views.py:513
 msgid "create metadata set"
-msgstr ""
+msgstr "إنشاء مجموعة البيانات الوصفية"
 
 #: views.py:532
 #, python-format
 msgid "Metadata set: %s deleted successfully."
-msgstr ""
+msgstr "مجموعة البيانات الوصفية:%s تم حذفها بنجاح."
 
 #: views.py:535
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
-msgstr ""
+msgstr "خطأ أثناء حذف البيانات الوصفية: %(metadata_set)s نوع الخطأ : %(error)s"
 
 #: views.py:546
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
-msgstr ""
+msgstr "هل أنت متأكد أنك ترغب في حذف مجموعة البيانات الوصفية: %s ؟"
 
 #: views.py:565 views.py:583
 msgid "Metadata types"
-msgstr ""
+msgstr "أنواع البيانات الوصفية"
 
 #: views.py:621
 #, python-format
 msgid "non members of document type: %s"
-msgstr ""
+msgstr "non members of document type: %s"
 
 #: views.py:622
 #, python-format
 msgid "members of document type: %s"
-msgstr ""
+msgstr "members of document type: %s"
 
 #: templates/metadata_set_help.html:3
 msgid "What are metadata sets?"
-msgstr ""
+msgstr "ماهي مجموعات البيانات الوصفية؟"
 
 #: templates/metadata_set_help.html:4
 msgid ""
 "A metadata set is a group of one or more metadata types.  Metadata sets are "
 "useful when creating new documents; selecing a metadata set automatically "
 "attaches it's member metadata types to said document."
-msgstr ""
+msgstr "مجموعة البيانات الوصفية هي مجموعة من أنواع البيانات الوصفية. المجموعات تسهل إضافة البيانات الوصفية المختلفة لأي وثيقة جديدة"
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
-msgstr ""
+msgstr "ماهي أنواع البيانات الوصفية؟"
 
 #: templates/metadata_type_help.html:4
 msgid ""
@@ -466,4 +467,4 @@ msgid ""
 " will have initially, and the lookup value turns an instance of a metadata "
 "of this type into a choice list which options are the result of the lookup's"
 " code execution."
-msgstr ""
+msgstr "نوع البيانات الوصفية هو طريقة لتحديد خواص الوثيقة، مثل: اسم الكاتب، التاريخ، مشروع تنتمي له الوثائق. نوع البيانات الوصفية هي معرف يستخدم لتقسيم الوثائق حسب نوعها، مثلاً حسب الكاتب أو التاريخ. "

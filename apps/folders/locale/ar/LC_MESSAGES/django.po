@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2013-01-25 23:57+0000\n"
+"PO-Revision-Date: 2013-01-26 08:08+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "إضافة إلى مجلد"
 
 #: __init__.py:25
 msgid "add to folder"
-msgstr ""
+msgstr "إضافة إلى مجلد"
 
 #: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
@@ -56,11 +56,11 @@ msgstr "المجلدات"
 
 #: __init__.py:28
 msgid "ACLs"
-msgstr ""
+msgstr "قائمة الصلاحيات"
 
 #: forms.py:38
 msgid "Folder"
-msgstr ""
+msgstr "مجلد"
 
 #: models.py:11
 msgid "title"
@@ -92,31 +92,31 @@ msgstr "مجلد الوثائق"
 
 #: permissions.py:7
 msgid "Folders"
-msgstr ""
+msgstr "المجلدات"
 
 #: permissions.py:9
 msgid "Create new folders"
-msgstr ""
+msgstr "إنشاء مجلدات جديدة"
 
 #: permissions.py:10
 msgid "Edit new folders"
-msgstr ""
+msgstr "تعديل مجلدات جديدة"
 
 #: permissions.py:11
 msgid "Delete new folders"
-msgstr ""
+msgstr "حذف مجلدات جديدة"
 
 #: permissions.py:12
 msgid "Remove documents from folders"
-msgstr ""
+msgstr "إزالة وثائق من المجلدات"
 
 #: permissions.py:13
 msgid "View existing folders"
-msgstr ""
+msgstr "عرض المجلدات الموجودة"
 
 #: permissions.py:14
 msgid "Add documents to existing folders"
-msgstr ""
+msgstr "إضافة وثائق إلى المجلدات الموجودة"
 
 #: views.py:37
 msgid "created"
@@ -171,7 +171,7 @@ msgstr "الوثائق بالمجلد: %s"
 
 #: views.py:180
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "يجب أن توفر ما لا يقل عن وثيقة واحدة."
 
 #: views.py:198
 #, python-format
@@ -186,12 +186,12 @@ msgstr "الوثيقة %(document)s  موجودة بالمجلد %(folder)s مس
 #: views.py:217
 #, python-format
 msgid "Add document: %s to folder."
-msgstr ""
+msgstr "إضافة الوثيقة: %s إلى المجلد."
 
 #: views.py:219
 #, python-format
 msgid "Add documents: %s to folder."
-msgstr ""
+msgstr "إضافة الوثائق: %s  إلى مجلد."
 
 #: views.py:237
 #, python-format
@@ -228,7 +228,7 @@ msgstr "هل أنت متأكد أنك ترغب في إزالة الوثائق%(d
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
-msgstr "What are folders?"
+msgstr "ما هي المجلدات؟"
 
 #: templates/folders_help.html:4
 msgid ""
@@ -236,8 +236,8 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr ""
+msgstr "المجلدات هي طريقة لتنظيم وترتيب الوثائق. يمكن لأي مستخدم رفع ملفاته بمجلدات دون التأثير على ملفات غيره من المستخدمين."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
-msgstr ""
+msgstr "إضافة وثيقة إلى مجلد"
