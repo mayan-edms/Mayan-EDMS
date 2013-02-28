@@ -32,11 +32,6 @@ class MetadataForm(forms.Form):
 
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
             self.fields['id'].initial = self.metadata_type.pk
-            if self.metadata_type.default:
-                try:
-                    self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
-                except Exception, err:
-                    self.fields['value'].initial = err
 
             if self.metadata_type.lookup:
                 try:
@@ -50,6 +45,12 @@ class MetadataForm(forms.Form):
                 except Exception, err:
                     self.fields['value'].initial = err
                     self.fields['value'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
+
+            if self.metadata_type.default:
+                try:
+                    self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
+                except Exception, err:
+                    self.fields['value'].initial = err
 
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
     name = forms.CharField(label=_(u'Name'),
