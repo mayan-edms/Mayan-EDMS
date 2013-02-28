@@ -72,7 +72,7 @@ class SmartLinkInstanceForm(forms.Form):
         super(SmartLinkInstanceForm, self).__init__(*args, **kwargs)
 
         for smart_link_instance, data in smart_link_instances.items():
-            self.fields['preview-%s' % smart_link_instance] = forms.CharField(
+            self.fields['preview-%s' % smart_link_instance.pk] = forms.CharField(
                 widget=SmartLinkImageWidget(),
                 label=u'%s (%d)' % (unicode(data['title']), len(data['documents'])),
                 required=False,
