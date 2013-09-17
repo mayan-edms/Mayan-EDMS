@@ -49,3 +49,7 @@ Donations
 ---------
 Please [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W6LMMZHTNUJ6L) if you are willing to support the further development of this project.
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rosarior/mayan/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
