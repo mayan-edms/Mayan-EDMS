@@ -12,7 +12,7 @@ def install_site():
     """
     #  TODO: configurable site name
     if env.os in [OS_UBUNTU, OS_DEBIAN]:
-        upload_template(filename=os.path.join('fabfile', 'templates', 'apache_site'), destination='/etc/apache2/sites-available/mayan', context=env, use_sudo=True)
+        upload_template(filename=os.path.join('fabfile', 'templates', 'apache_site'), destination='/etc/apache2/sites-available/mayan.conf', context=env, use_sudo=True)
         sudo('a2ensite mayan') 
     elif env.os == OS_FEDORA:
         upload_template(filename=os.path.join('fabfile', 'templates', 'apache_site'), destination='/etc/httpd/conf.d/mayan.conf', context=env, use_sudo=True)
