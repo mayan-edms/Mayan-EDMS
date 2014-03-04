@@ -1,5 +1,5 @@
 [main]
-host = https://www.transifex.net
+host = https://www.transifex.com
 
 [mayan-edms.apps-acls]
 file_filter = apps/acls/locale/<lang>/LC_MESSAGES/django.po
