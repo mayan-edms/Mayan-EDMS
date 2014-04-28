@@ -320,7 +320,7 @@ class DocumentVersion(models.Model):
 
     # File related fields
     file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
-    mimetype = models.CharField(max_length=64, null=True, blank=True, editable=False)
+    mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'checksum'), editable=False)
@@ -526,11 +526,11 @@ class DocumentVersion(models.Model):
             return self.file.storage.size(self.file.path)
         else:
             return None
-            
+
     def rename(self, new_name):
         new_filename, new_extension = os.path.splitext(new_name)
         name, extension = os.path.splitext(self.filename)
-        
+
         # Preserve existing extension if new name doesn't has one
         if new_extension:
             extension = new_extension

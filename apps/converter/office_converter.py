@@ -21,12 +21,24 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'application/msexcel',
     u'application/vnd.ms-excel',
     u'application/vnd.ms-powerpoint',
+    u'application/vnd.oasis.opendocument.chart',
+    u'application/vnd.oasis.opendocument.chart-template',
+    u'application/vnd.oasis.opendocument.formula',
+    u'application/vnd.oasis.opendocument.formula-template',
+    u'application/vnd.oasis.opendocument.graphics',
+    u'application/vnd.oasis.opendocument.graphics-template',
+    u'application/vnd.oasis.opendocument.image',
+    u'application/vnd.oasis.opendocument.image-template',
     u'application/vnd.oasis.opendocument.presentation',
-    u'application/vnd.oasis.opendocument.text',
+    u'application/vnd.oasis.opendocument.presentation-template',
     u'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     u'application/vnd.oasis.opendocument.spreadsheet',
+    u'application/vnd.oasis.opendocument.spreadsheet-template',
+    u'application/vnd.oasis.opendocument.text',
+    u'application/vnd.oasis.opendocument.text-master',
+    u'application/vnd.oasis.opendocument.text-template',
+    u'application/vnd.oasis.opendocument.text-web',
     u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    u'application/vnd.oasis.opendocument.graphics',
     u'application/vnd.ms-office',
     u'text/plain',
     u'text/rtf',
@@ -121,8 +133,8 @@ class OfficeConverterBackendDirect(object):
 
             converted_output = os.path.join(TEMPORARY_DIRECTORY, os.path.extsep.join([filename, 'pdf']))
             logger.debug('converted_output: %s' % converted_output)
-         
-            os.rename(converted_output, self.output_filepath)      
+
+            os.rename(converted_output, self.output_filepath)
         except OSError, msg:
             raise OfficeBackendError(msg)
         except Exception, msg:
