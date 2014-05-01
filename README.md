@@ -1,3 +1,5 @@
+Development of this project has now moved to (https://github.com/mayan-edms/mayan-edms/), please update your git remotes accordingly and post future issues on this new location, thanks!
+
 ![Logo](https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo_landscape_black.jpg)
 
 Mayan EDMS
