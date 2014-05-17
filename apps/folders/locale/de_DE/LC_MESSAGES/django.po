@@ -3,16 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Manticor <sl@suchreflex.de>, 2012.
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
-#   <sl@suchreflex.de>, 2012.
+# Manticor <sl@suchreflex.de>, 2012
+# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012
+# Manticor <sl@suchreflex.de>, 2012
+# Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2014-03-12 16:11+0000\n"
+"Last-Translator: yangoon <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,23 +23,23 @@ msgstr ""
 
 #: __init__.py:18
 msgid "folder list"
-msgstr "Ordner-Liste"
+msgstr "Ordnerliste"
 
 #: __init__.py:19 views.py:77
 msgid "create folder"
-msgstr "Erstelle Ordner"
+msgstr "Ordner erstellen"
 
 #: __init__.py:20
 msgid "edit"
-msgstr "Bearbeite"
+msgstr "Bearbeiten"
 
 #: __init__.py:21
 msgid "delete"
-msgstr "Lösche"
+msgstr "Löschen"
 
 #: __init__.py:22
 msgid "remove from folder"
-msgstr "Entferne aus Ordner"
+msgstr "Aus Ordner entfernen"
 
 #: __init__.py:23
 msgid "folder documents"
@@ -46,11 +47,11 @@ msgstr "Dokumente des Ordners"
 
 #: __init__.py:24
 msgid "add to a folder"
-msgstr "Füge zu Ordner hinzu"
+msgstr "Zu Ordner hinzufügen"
 
 #: __init__.py:25
 msgid "add to folder"
-msgstr ""
+msgstr "Zu Ordner hinzufügen"
 
 #: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
@@ -58,7 +59,7 @@ msgstr "Ordner"
 
 #: __init__.py:28
 msgid "ACLs"
-msgstr ""
+msgstr "Zugriffsberechtigungen"
 
 #: forms.py:38
 msgid "Folder"
@@ -74,7 +75,7 @@ msgstr "Benutzer"
 
 #: models.py:13
 msgid "datetime created"
-msgstr ""
+msgstr "Erstellt am"
 
 #: models.py:42 models.py:47 views.py:108 views.py:137 views.py:162
 msgid "folder"
@@ -98,27 +99,27 @@ msgstr "Ordner"
 
 #: permissions.py:9
 msgid "Create new folders"
-msgstr "Erstelle neue Ordner"
+msgstr "Ordner erstellen"
 
 #: permissions.py:10
 msgid "Edit new folders"
-msgstr "Bearbeite neue Ordner"
+msgstr "Ordner bearbeiten"
 
 #: permissions.py:11
 msgid "Delete new folders"
-msgstr "Lösche neue Ordner"
+msgstr "Ordner löschen"
 
 #: permissions.py:12
 msgid "Remove documents from folders"
-msgstr "Entferne Dokumente aus Ordnern"
+msgstr "Dokumente aus Ordnern entfernen"
 
 #: permissions.py:13
 msgid "View existing folders"
-msgstr "Siehe vorhandene Ordner an"
+msgstr "Vorhandene Ordner anzeigen"
 
 #: permissions.py:14
 msgid "Add documents to existing folders"
-msgstr "Füge Dokumente zu existierenden Ordnern hinzu"
+msgstr "Dokumente zu existierenden Ordnern hinzufügen"
 
 #: views.py:37
 msgid "created"
@@ -149,17 +150,17 @@ msgstr "Fehler beim Bearbeiten von Ordner \"%s\""
 #: views.py:105
 #, python-format
 msgid "edit folder: %s"
-msgstr "Bearbeite Ordner \"%s\""
+msgstr "Ordner \"%s\" bearbeiten"
 
 #: views.py:129
 #, python-format
 msgid "Folder: %s deleted successfully."
-msgstr "Ordner \"%s\" erfolgreich gelöscht."
+msgstr "Ordner \"%s\" erfolgreich gelöscht"
 
 #: views.py:131
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
-msgstr ""
+msgstr "Fehler beim Löschen von Ordner %(folder)s: %(error)s"
 
 #: views.py:142
 #, python-format
@@ -173,36 +174,36 @@ msgstr "Dokumente im Ordner: %s"
 
 #: views.py:180
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "Es muss mindestens ein Dokument angegeben werden."
 
 #: views.py:198
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr ""
+msgstr "Dokument %(document)s zum Ordner %(folder)s erfolgreich hinzugefügt."
 
 #: views.py:201
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
-msgstr ""
+msgstr "Dokument %(document)s ist bereits im Ordner %(folder)s."
 
 #: views.py:217
 #, python-format
 msgid "Add document: %s to folder."
-msgstr ""
+msgstr "Dokument %s dem Ordner hinzufügen."
 
 #: views.py:219
 #, python-format
 msgid "Add documents: %s to folder."
-msgstr ""
+msgstr "Dokument %s dem Ordner hinzufügen."
 
 #: views.py:237
 #, python-format
 msgid "folders containing: %s"
-msgstr ""
+msgstr "Ordner enthalten: %s"
 
 #: views.py:253
 msgid "Must provide at least one folder document."
-msgstr ""
+msgstr "Es muss mindestens ein Ordnerdokument angegeben werden"
 
 #: views.py:271
 #, python-format
@@ -212,21 +213,21 @@ msgstr "Dokument \"%s\" erfolgreich entfernt."
 #: views.py:273
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
-msgstr ""
+msgstr "Fehler beim Löschen von Dokument %(document)s: %(error)s"
 
 #: views.py:287
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr ""
+msgstr "Sind sie sicher, dass Sie das Dokument %(document)s aus Ordner %(folder)s entfernen möchten?"
 
 #: views.py:290
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder"
 " \"%(folder)s\"?"
-msgstr ""
+msgstr "Sind sie sicher, dass Sie die Dokumente %(documents)s aus Ordner %(folder)s entfernen möchten?"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
@@ -238,8 +239,8 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr ""
+msgstr "Diese Ordner können auch als Benutzerordner bezeichnet werden. Sie sind eine Möglichkeit um einzelnen Benutzern die Anlage ihrer eigenen Dokumentenstruktur zu ermöglichen. Ordner und deren Dokumente, die durch einen einzelnen Benutzer erstellt wurden, beeinflussen nicht die Ordner oder Dokumente anderer Benutzer."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
-msgstr "Füge Dokument einem Ordner hinzu"
+msgstr "Dokument einem Ordner hinzufügen"

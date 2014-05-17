@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <sl@suchreflex.de>, 2012.
+# Manticor <sl@suchreflex.de>, 2012
+# Manticor <sl@suchreflex.de>, 2012
+# Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2014-03-12 16:11+0000\n"
+"Last-Translator: yangoon <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +22,7 @@ msgstr ""
 
 #: __init__.py:27
 msgid "change password"
-msgstr "Ändere Passwort"
+msgstr "Passwort ändern"
 
 #: __init__.py:28
 msgid "user details"
@@ -54,7 +56,7 @@ msgstr "Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, da
 
 #: forms.py:142
 msgid "This account is inactive."
-msgstr "Dieser Account ist inaktiv."
+msgstr "Dieses Konto ist inaktiv."
 
 #: literals.py:24
 msgid "A5"
@@ -78,15 +80,15 @@ msgstr "B4"
 
 #: literals.py:29
 msgid "Letter"
-msgstr ""
+msgstr "Letter"
 
 #: literals.py:30
 msgid "Legal"
-msgstr ""
+msgstr "Legal"
 
 #: literals.py:31
 msgid "Ledger"
-msgstr ""
+msgstr "Ledger"
 
 #: literals.py:38
 msgid "Portrait"
@@ -98,19 +100,19 @@ msgstr "Querformat"
 
 #: models.py:17
 msgid "lock field"
-msgstr ""
+msgstr "Feld sperren"
 
 #: models.py:45
 msgid "Anonymous user"
-msgstr "Anonymer Nutzer"
+msgstr "Anonymer Benutzer"
 
 #: models.py:48 models.py:49
 msgid "anonymous user"
-msgstr "anonymer Nutzer"
+msgstr "Anonymer Benutzer"
 
 #: models.py:53
 msgid "account"
-msgstr "Account"
+msgstr "Konto"
 
 #: models.py:54
 msgid "password"
@@ -122,11 +124,11 @@ msgstr "Passworthash"
 
 #: models.py:58
 msgid "auto admin properties"
-msgstr ""
+msgstr "Auto-Admin Eigenschaften"
 
 #: utils.py:295
 msgid "function found"
-msgstr ""
+msgstr "Funktion gefunden"
 
 #: views.py:36
 msgid "No action selected."
@@ -134,22 +136,22 @@ msgstr "Keine Aktion ausgewählt."
 
 #: views.py:40
 msgid "Must select at least one item."
-msgstr "Mindestens ein Item auswählen."
+msgstr "Es muss mindestens ein Element ausgewählt werden."
 
 #: views.py:88
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
-msgstr "%(selection)s erfolgreich zu %(right_list_title)s hinzugefügt."
+msgstr "%(selection)s erfolgreich hinzugefügt zu %(right_list_title)s."
 
 #: views.py:94 views.py:121
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
-msgstr ""
+msgstr "%(selection)s konnte nicht zu %(right_list_title)s hinzuzugefügt werden."
 
 #: views.py:115
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
-msgstr ""
+msgstr "%(selection)s erfolgreich entfernt von %(right_list_title)s."
 
 #: views.py:136
 msgid "Add"
@@ -165,15 +167,15 @@ msgstr "Details des aktuellen Nutzers"
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
-msgstr "E-Mail-Konflikt! Ein anderer Nutzer hat die selbe E-Mailadresse."
+msgstr "E-Mail-Konflikt: Diese E-Mailadresse wird bereits im System verwendet."
 
 #: views.py:190
 msgid "Current user's details updated."
-msgstr "Details des aktuellen Nutzers aktualisiert."
+msgstr "Details des aktuellen Benutzers aktualisiert."
 
 #: views.py:199
 msgid "edit current user details"
-msgstr "BEarbeite Details des aktuellen Nutzers"
+msgstr "Details des aktuellen Nutzers bearbeiten"
 
 #: views.py:230
 msgid "License"
@@ -181,7 +183,7 @@ msgstr "Lizenz"
 
 #: views.py:239
 msgid "Current user password change"
-msgstr ""
+msgstr "Passwort des aktuellen Benutzers ändern"
 
 #: views.py:254 templates/password_change_done.html:5
 msgid "Your password has been successfully changed."
@@ -189,32 +191,32 @@ msgstr "Das Passwort wurde erfolgreich geändert."
 
 #: widgets.py:58
 msgid "None"
-msgstr ""
+msgstr "Kein(e)"
 
 #: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
-msgstr ""
+msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschau und temporären Dateien. Falls keines angegeben wurde, wird es mit tempfile.mkdtemp() erzeugt."
 
 #: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
+msgstr "Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-Mailadresse"
 
 #: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
-msgstr "Gestatte nicht authentifizierten Nutzern Zugriff auf alle Ansichten"
+msgstr "Nicht authentifizierten Benutzern Zugriff auf alle Ansichten gestatten"
 
 #: templates/403.html:3 templates/403.html.py:7
 msgid "Insufficient permissions"
-msgstr "Berechtigung reicht nicht aus."
+msgstr "Unzureichende Berechtigungen"
 
 #: templates/403.html:9
 msgid "You don't have enough permissions for this operation."
-msgstr "Sie haben keine Berechtigung für diesen Vorgang."
+msgstr "Sie haben unzureichende Berechtigungen für diesen Vorgang."
 
 #: templates/404.html:3 templates/404.html.py:7
 msgid "Page not found"
@@ -222,22 +224,22 @@ msgstr "Seite nicht gefunden"
 
 #: templates/404.html:9
 msgid "Sorry, but the requested page could not be found."
-msgstr "Tut mir Leid, aber die angeforderte Seite konnte nicht gefunden werden."
+msgstr "Die angeforderte Seite konnte nicht gefunden werden."
 
 #: templates/calculate_form_title.html:11
 #, python-format
 msgid "Details for %(object_name)s: %(object)s"
-msgstr ""
+msgstr "Details für %(object_name)s %(object)s"
 
 #: templates/calculate_form_title.html:13
 #, python-format
 msgid "Details for: %(object)s"
-msgstr ""
+msgstr "Details für %(object)s"
 
 #: templates/calculate_form_title.html:18
 #, python-format
 msgid "Edit %(object_name)s:"
-msgstr ""
+msgstr "%(object_name)s bearbeiten"
 
 #: templates/calculate_form_title.html:20
 msgid "Edit"
@@ -246,38 +248,38 @@ msgstr "Bearbeiten"
 #: templates/calculate_form_title.html:24
 #, python-format
 msgid "Create new %(object_name)s"
-msgstr "Erstelle neu %(object_name)s"
+msgstr "%(object_name)s erstellen"
 
 #: templates/calculate_form_title.html:26
 msgid "Create"
-msgstr "Erstelle"
+msgstr "Erstellen"
 
 #: templates/generic_assign_remove.html:3
 #, python-format
 msgid "Assign %(title)s %(object)s"
-msgstr ""
+msgstr "%(title)s %(object)s zuordnen "
 
 #: templates/generic_confirm.html:3 templates/generic_confirm.html.py:18
 msgid "Confirm"
-msgstr "Bestätige"
+msgstr "Bestätigen"
 
 #: templates/generic_confirm.html:16
 msgid "Confirm delete"
-msgstr "Bestätige Löschen"
+msgstr "Löschen bestätigen"
 
 #: templates/generic_confirm.html:32
 msgid "form icon"
-msgstr ""
+msgstr "Formular Icon"
 
 #: templates/generic_confirm.html:40
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie %(object_name)s %(object)s löschen möchten?"
 
 #: templates/generic_confirm.html:42
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
-msgstr ""
+msgstr "Soll %(object)s wirklich gelöscht werden?"
 
 #: templates/generic_confirm.html:50
 msgid "Yes"
@@ -290,7 +292,7 @@ msgstr "Nein"
 #: templates/generic_form_instance.html:37
 #: templates/generic_form_subtemplate.html:56
 msgid "required"
-msgstr "erforderlich"
+msgstr "Erforderlich"
 
 #: templates/generic_form_subtemplate.html:80
 #: templates/generic_form_subtemplate.html:82
@@ -308,7 +310,7 @@ msgstr "Speichern"
 #: templates/generic_list_subtemplate.html:52
 #: templates/generic_list_subtemplate.html:178
 msgid "Submit"
-msgstr "Übertragen"
+msgstr "Senden"
 
 #: templates/generic_form_subtemplate.html:87
 msgid "Cancel"
@@ -317,7 +319,7 @@ msgstr "Abbrechen"
 #: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
 #, python-format
 msgid "List of %(stripped_title)s"
-msgstr ""
+msgstr "%(stripped_title)s"
 
 #: templates/generic_list_horizontal_subtemplate.html:23
 #: templates/generic_list_subtemplate.html:24
@@ -325,22 +327,22 @@ msgstr ""
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
+msgstr "%(title)s (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:25
 #: templates/generic_list_subtemplate.html:26
 #, python-format
 msgid "List of %(title)s (%(total)s)"
-msgstr ""
+msgstr "%(title)s (%(total)s)"
 
 #: templates/generic_list_subtemplate.html:72
 msgid "Identifier"
-msgstr ""
+msgstr "Bezeichner"
 
 #: templates/generic_list_subtemplate.html:152
 #, python-format
 msgid "There are no %(stripped_title)s"
-msgstr ""
+msgstr "%(stripped_title)s leer"
 
 #: templates/login.html:5
 msgid "Login"
