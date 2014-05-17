@@ -32,7 +32,6 @@ def register_parser(mimetypes, parsers):
                 pass
             else:
                 mimetype_registry.setdefault(mimetype, []).append(parser_instance)
-    print mimetype_registry
 
 
 def parse_document_page(document_page, descriptor=None, mimetype=None):
