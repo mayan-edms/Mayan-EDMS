@@ -8,6 +8,7 @@ from django.utils.translation import ugettext as _
 
 from converter import office_converter
 from converter.office_converter import OfficeConverter
+from converter.office_converter import CONVERTER_OFFICE_FILE_MIMETYPES
 from converter.exceptions import OfficeConversionError
 from documents.utils import document_save_to_temp_dir
 from common.utils import copyfile
@@ -31,15 +32,21 @@ def register_parser(mimetypes, parsers):
                 pass
             else:
                 mimetype_registry.setdefault(mimetype, []).append(parser_instance)
+    print mimetype_registry
 
 
 def parse_document_page(document_page, descriptor=None, mimetype=None):
     logger.debug('executing')
     logger.debug('document_page: %s' % document_page)
-    logger.debug('mimetype: %s' % document_page.document.file_mimetype)
+    logger.debug('document mimetype: %s' % document_page.document.file_mimetype)
 
     if not mimetype:
         mimetype = document_page.document.file_mimetype
+    if mimetype.startswith('text/'):
+        if mimetype not in CONVERTER_OFFICE_FILE_MIMETYPES:
+            mimetype = 'text/plain'
+            logger.debug('fallback to mimetype text/plain')
+    logger.debug('used mimetype: %s' % mimetype)
 
     try:
         for parser in mimetype_registry[mimetype]:
@@ -52,7 +59,7 @@ def parse_document_page(document_page, descriptor=None, mimetype=None):
                 # If parser was successfull there is no need to try
                 # others in the list for this mimetype
                 return
-                
+
         raise ParserError('Parser list exhausted')
     except KeyError:
         raise ParserUnknownFile
@@ -113,7 +120,7 @@ class OfficeParser(Parser):
         except OfficeConversionError, msg:
             logger.error(msg)
             raise ParserError
-            
+
 
 class PopplerParser(Parser):
     """
@@ -123,11 +130,11 @@ class PopplerParser(Parser):
         self.pdftotext_path = PDFTOTEXT_PATH if PDFTOTEXT_PATH else u'/usr/bin/pdftotext'
         if not os.path.exists(self.pdftotext_path):
             raise ParserError('cannot find pdftotext executable')
-        logger.debug('self.pdftotext_path: %s' % self.pdftotext_path)        
-    
-    def parse(self, document_page, descriptor=None): 
-        logger.debug('parsing PDF with PopplerParser') 
-        pagenum = str(document_page.page_number) 
+        logger.debug('self.pdftotext_path: %s' % self.pdftotext_path)
+
+    def parse(self, document_page, descriptor=None):
+        logger.debug('parsing PDF with PopplerParser')
+        pagenum = str(document_page.page_number)
 
         if descriptor:
             destination_descriptor, temp_filepath = tempfile.mkstemp(dir=TEMPORARY_DIRECTORY)
@@ -135,23 +142,23 @@ class PopplerParser(Parser):
             document_file = temp_filepath
         else:
             document_file = document_save_to_temp_dir(document_page.document, document_page.document.checksum)
-        
+
         logger.debug('document_file: %s', document_file)
 
-        logger.debug('parsing PDF page %s' % pagenum) 
+        logger.debug('parsing PDF page %s' % pagenum)
 
-        command = [] 
-        command.append(self.pdftotext_path) 
-        command.append('-f') 
-        command.append(pagenum) 
-        command.append('-l') 
-        command.append(pagenum) 
-        command.append(document_file) 
-        command.append('-') 
+        command = []
+        command.append(self.pdftotext_path)
+        command.append('-f')
+        command.append(pagenum)
+        command.append('-l')
+        command.append(pagenum)
+        command.append(document_file)
+        command.append('-')
 
-        proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE) 
-        return_code = proc.wait() 
-        if return_code != 0: 
+        proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        return_code = proc.wait()
+        if return_code != 0:
             logger.error(proc.stderr.readline())
             raise ParserError
 
@@ -160,9 +167,9 @@ class PopplerParser(Parser):
             logger.debug('Parser didn\'t any output')
             raise ParserError('No output')
 
-        document_page.content = output 
-        document_page.page_label = _(u'Text extracted from PDF') 
-        document_page.save() 
+        document_page.content = output
+        document_page.page_label = _(u'Text extracted from PDF')
+        document_page.save()
 
 
 register_parser(mimetypes=[u'application/pdf'], parsers=[PopplerParser, SlateParser])

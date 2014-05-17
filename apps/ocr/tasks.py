@@ -71,6 +71,6 @@ def task_process_document_queues():
                 # Don't process anymore from this queryset, might be stale
                 break
         else:
-            logger.debug('already processing maximun')
+            logger.debug('already processing maximum')
     else:
         logger.debug('nothing to process')
