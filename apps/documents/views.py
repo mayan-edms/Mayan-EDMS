@@ -1,37 +1,38 @@
 from __future__ import absolute_import
 
-import urlparse
 import copy
 import logging
+import urlparse
 
-from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.views.generic.list_detail import object_list
-from django.core.urlresolvers import reverse
 from django.utils.http import urlencode
-from django.core.exceptions import PermissionDenied
-from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
+from django.views.generic.list_detail import object_list
 
 import sendfile
 
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
-from common.utils import (pretty_size, parse_range, urlquote,
-    return_diff, encapsulate)
 from common.literals import (PAGE_SIZE_DIMENSIONS,
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE)
+from common.utils import (pretty_size, parse_range, urlquote,
+    return_diff, encapsulate)
 from common.widgets import two_state_template
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
 from converter.office_converter import OfficeConverter
+# TODO: do not import from document_indexing, update document_indexing to
+# catch Document model after save and after delete signals
 from document_indexing.api import update_indexes, delete_indexes
 from filetransfers.api import serve_file
 from history.api import create_history
-from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
@@ -57,7 +58,6 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
-from .wizards import DocumentCreateWizard
 
 logger = logging.getLogger(__name__)
 
@@ -86,30 +86,6 @@ def document_list(request, object_list=None, title=None, extra_context=None):
 
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
-
-
-def document_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-
-    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
-
-    return wizard(request)
-
-
-def document_create_siblings(request, document_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-
-    document = get_object_or_404(Document, pk=document_id)
-    query_dict = {}
-    for pk, metadata in enumerate(document.documentmetadata_set.all()):
-        query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
-        query_dict['metadata%s_value' % pk] = metadata.value
-
-    if document.document_type_id:
-        query_dict['document_type_id'] = document.document_type_id
-
-    url = reverse('upload_interactive')
-    return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
 
 def document_view(request, document_id, advanced=False):

@@ -20,8 +20,8 @@ from .conf.settings import ZOOM_MIN_LEVEL
 from .conf import settings as document_settings
 from .events import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-from .links import (document_list, document_list_recent, document_create_multiple,
-    document_create_siblings, document_view_simple, document_view_advanced,
+from .links import (document_list, document_list_recent,
+    document_view_simple, document_view_advanced,
     document_delete, document_multiple_delete, document_edit, document_preview,
     document_download, document_multiple_download, document_version_download,
     document_find_duplicates, document_find_all_duplicates, document_update_page_count,
@@ -62,13 +62,13 @@ register_links(['setup_document_type_metadata', 'document_type_filename_delete',
 register_links([DocumentTypeFilename, 'document_type_filename_list', 'document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
-register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations, document_create_siblings])
+register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
 register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download])
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
 
-secondary_menu_links = [document_list_recent, document_list, document_create_multiple]
+secondary_menu_links = [document_list_recent, document_list]
 
 register_links(['document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
 register_links(Document, secondary_menu_links, menu_name='secondary_menu')

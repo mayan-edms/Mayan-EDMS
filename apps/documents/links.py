@@ -38,8 +38,6 @@ def is_current_version(context):
 
 document_list = {'text': _(u'all documents'), 'view': 'document_list', 'famfam': 'page'}
 document_list_recent = {'text': _(u'recent documents'), 'view': 'document_list_recent', 'famfam': 'page'}
-document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
-document_create_siblings = {'text': _(u'clone metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_view_simple = {'text': _(u'details'), 'view': 'document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_view_advanced = {'text': _(u'properties'), 'view': 'document_view_advanced', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_delete = {'text': _(u'delete'), 'view': 'document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}

@@ -1,41 +1,67 @@
 from __future__ import absolute_import
 
+from django.conf import settings
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
+from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
-from django.conf import settings
-from django.core.exceptions import PermissionDenied
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
-from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_NEW_VERSION)
-from documents.models import DocumentType, Document
+import sendfile
+
+from acls.models import AccessEntry
+from common.utils import encapsulate
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.exceptions import NewDocumentVersionNotAllowed
+from documents.forms import DocumentTypeSelectForm
+from documents.models import DocumentType, Document
+from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_NEW_VERSION)
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
+from metadata.forms import MetadataSelectionForm, MetadataFormSet
 from permissions.models import Permission
-from common.utils import encapsulate
-import sendfile
-from acls.models import AccessEntry
 
-from sources.models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder)
-from sources.literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH)
-from sources.literals import (SOURCE_UNCOMPRESS_CHOICE_Y,
-    SOURCE_UNCOMPRESS_CHOICE_ASK)
-from sources.staging import create_staging_file_class
-from sources.forms import (StagingDocumentForm, WebFormForm,
+from .forms import (SourceTransformationForm, SourceTransformationForm_create,
+    WebFormSetupForm, StagingFolderSetupForm, StagingDocumentForm, WebFormForm,
     WatchFolderSetupForm)
-from sources.forms import WebFormSetupForm, StagingFolderSetupForm
-from sources.forms import SourceTransformationForm, SourceTransformationForm_create
+from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
+    SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICE_Y, SOURCE_UNCOMPRESS_CHOICE_ASK)
+from .models import (WebForm, StagingFolder, SourceTransformation,
+    WatchFolder)
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
+from .staging import create_staging_file_class
+from .wizards import DocumentCreateWizard
+
+
+def document_create(request):
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+
+    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
+
+    return wizard(request)
+
+
+def document_create_siblings(request, document_id):
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+
+    document = get_object_or_404(Document, pk=document_id)
+    query_dict = {}
+    for pk, metadata in enumerate(document.documentmetadata_set.all()):
+        query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
+        query_dict['metadata%s_value' % pk] = metadata.value
+
+    if document.document_type_id:
+        query_dict['document_type_id'] = document.document_type_id
+
+    url = reverse('upload_interactive')
+    return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
 
 def return_function(obj):

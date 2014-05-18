@@ -1,15 +1,14 @@
+# DEPRECATION: This module is scheduled to be delete once the update to Django 1.6.X is complete
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
+from django.utils.translation import ugettext_lazy as _
 
 from common.wizard import BoundFormWizard
-
+from documents.forms import DocumentTypeSelectForm
 from metadata.forms import MetadataSelectionForm, MetadataFormSet
-
-from .forms import DocumentTypeSelectForm
 
 
 class DocumentCreateWizard(BoundFormWizard):

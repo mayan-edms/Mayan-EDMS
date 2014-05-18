@@ -16,7 +16,7 @@ urlpatterns = patterns('sources.views',
     url(r'^upload/document/(?P<document_pk>\d+)/version/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/$', 'upload_interactive', (), 'upload_version'),
     url(r'^upload/document/(?P<document_pk>\d+)/version/interactive/$', 'upload_interactive', (), 'upload_version'),
 
-    #Setup views
+    # Setup views
 
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_WEB_FORM, 'setup_source_list', {'source_type': SOURCE_CHOICE_WEB_FORM}, 'setup_web_form_list'),
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_STAGING, 'setup_source_list', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_list'),
@@ -31,4 +31,9 @@ urlpatterns = patterns('sources.views',
     url(r'^setup/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/transformation/create/$', 'setup_source_transformation_create', (), 'setup_source_transformation_create'),
     url(r'^setup/interactive/source/transformation/(?P<transformation_id>\d+)/edit/$', 'setup_source_transformation_edit', (), 'setup_source_transformation_edit'),
     url(r'^setup/interactive/source/transformation/(?P<transformation_id>\d+)/delete/$', 'setup_source_transformation_delete', (), 'setup_source_transformation_delete'),
+
+    # Document create views
+
+    url(r'^create/from/local/multiple/$', 'document_create', (), 'document_create_multiple'),
+    url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', (), 'document_create_siblings'),
 )
