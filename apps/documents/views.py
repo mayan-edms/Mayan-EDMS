@@ -16,36 +16,30 @@ from django.core.exceptions import PermissionDenied
 from django.conf import settings
 
 import sendfile
-from common.utils import pretty_size, parse_range, urlquote, \
-    return_diff, encapsulate
+
+from acls.models import AccessEntry
+from common.compressed_files import CompressedFile
+from common.utils import (pretty_size, parse_range, urlquote,
+    return_diff, encapsulate)
+from common.literals import (PAGE_SIZE_DIMENSIONS,
+    PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE)
 from common.widgets import two_state_template
-from common.literals import PAGE_SIZE_DIMENSIONS, \
-    PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE
 from common.conf.settings import DEFAULT_PAPER_SIZE
-from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, \
-    DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE
+from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
+    DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
 from converter.office_converter import OfficeConverter
+from document_indexing.api import update_indexes, delete_indexes
 from filetransfers.api import serve_file
+from history.api import create_history
 from metadata.forms import MetadataFormSet, MetadataSelectionForm
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
-from document_indexing.api import update_indexes, delete_indexes
-from history.api import create_history
-from acls.models import AccessEntry
-from common.compressed_files import CompressedFile
 
+from .events import (HISTORY_DOCUMENT_CREATED,
+    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, PRINT_SIZE,
     RECENT_COUNT)
-from .permissions import (PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
-from .events import (HISTORY_DOCUMENT_CREATED,
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .forms import (DocumentTypeSelectForm,
         DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
@@ -53,10 +47,17 @@ from .forms import (DocumentTypeSelectForm,
         DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
         DocumentTypeForm, DocumentTypeFilenameForm,
         DocumentTypeFilenameForm_create, DocumentDownloadForm)
-from .wizards import DocumentCreateWizard
 from .models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
     DocumentVersion)
+from .permissions import (PERMISSION_DOCUMENT_CREATE,
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
+    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
+    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
+    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
+from .wizards import DocumentCreateWizard
 
 logger = logging.getLogger(__name__)
 
@@ -397,8 +398,8 @@ def document_download(request, document_id=None, document_id_list=None, document
                         raise
                     else:
                         messages.error(request, e)
-                        return HttpResponseRedirect(request.META['HTTP_REFERER'])                
-        
+                        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
     else:
         form = DocumentDownloadForm(document_versions=document_versions)
 
@@ -1294,7 +1295,7 @@ def document_type_filename_create(request, document_type_id):
         'document_type': document_type,
         'navigation_object_list': [
             {'object': 'document_type', 'name': _(u'document type')},
-        ],        
+        ],
     },
     context_instance=RequestContext(request))
 

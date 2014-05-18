@@ -4,17 +4,22 @@ import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 
+from acls.api import class_permissions
 from common.utils import validate_path, encapsulate
+from dynamic_search.classes import SearchModel
+from history.api import register_history_type
+from history.permissions import PERMISSION_HISTORY_VIEW
+from main.api import register_diagnostic, register_maintenance_links
 from navigation.api import (register_links, register_top_menu,
     register_model_list_columns, register_multi_item_links,
     register_sidebar_template)
-from main.api import register_diagnostic, register_maintenance_links
-from history.api import register_history_type
-from history.permissions import PERMISSION_HISTORY_VIEW
 from project_setup.api import register_setup
-from acls.api import class_permissions
-from dynamic_search.classes import SearchModel
 
+from .conf.settings import ZOOM_MAX_LEVEL
+from .conf.settings import ZOOM_MIN_LEVEL
+from .conf import settings as document_settings
+from .events import (HISTORY_DOCUMENT_CREATED,
+    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
@@ -26,11 +31,6 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
     PERMISSION_DOCUMENT_NEW_VERSION)
-from .events import (HISTORY_DOCUMENT_CREATED,
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-from .conf.settings import ZOOM_MAX_LEVEL
-from .conf.settings import ZOOM_MIN_LEVEL
-from .conf import settings as document_settings
 from .widgets import document_thumbnail
 
 # Document page links expressions
