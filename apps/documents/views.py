@@ -429,129 +429,6 @@ def document_multiple_download(request):
     )
 
 
-def document_page_transformation_list(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page.document)
-
-    return object_list(
-        request,
-        queryset=document_page.documentpagetransformation_set.all(),
-        template_name='generic_list.html',
-        extra_context={
-            'page': document_page,
-            'navigation_object_name': 'page',
-            'title': _(u'transformations for: %s') % document_page,
-            'web_theme_hide_menus': True,
-            'list_object_variable_name': 'transformation',
-            'extra_columns': [
-                {'name': _(u'order'), 'attribute': 'order'},
-                {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
-                {'name': _(u'arguments'), 'attribute': 'arguments'}
-                ],
-            'hide_link': True,
-            'hide_object': True,
-        },
-    )
-
-
-def document_page_transformation_create(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page.document)
-
-    if request.method == 'POST':
-        form = DocumentPageTransformationForm(request.POST, initial={'document_page': document_page})
-        if form.is_valid():
-            document_page.document.invalidate_cached_image(document_page.page_number)
-            form.save()
-            messages.success(request, _(u'Document page transformation created successfully.'))
-            return HttpResponseRedirect(reverse('document_page_transformation_list', args=[document_page_id]))
-    else:
-        form = DocumentPageTransformationForm(initial={'document_page': document_page})
-
-    return render_to_response('generic_form.html', {
-        'form': form,
-        'page': document_page,
-        'navigation_object_name': 'page',
-        'title': _(u'Create new transformation for page: %(page)s of document: %(document)s') % {
-            'page': document_page.page_number, 'document': document_page.document},
-        'web_theme_hide_menus': True,
-    }, context_instance=RequestContext(request))
-
-
-def document_page_transformation_edit(request, document_page_transformation_id):
-    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page_transformation.document_page.document)
-
-    if request.method == 'POST':
-        form = DocumentPageTransformationForm(request.POST, instance=document_page_transformation)
-        if form.is_valid():
-            document_page_transformation.document_page.document.invalidate_cached_image(document_page_transformation.document_page.page_number)
-            form.save()
-            messages.success(request, _(u'Document page transformation edited successfully.'))
-            return HttpResponseRedirect(reverse('document_page_transformation_list', args=[document_page_transformation.document_page_id]))
-    else:
-        form = DocumentPageTransformationForm(instance=document_page_transformation)
-
-    return render_to_response('generic_form.html', {
-        'form': form,
-        'transformation': document_page_transformation,
-        'page': document_page_transformation.document_page,
-        'navigation_object_list': [
-            {'object': 'page'},
-            {'object': 'transformation', 'name': _(u'transformation')}
-        ],
-        'title': _(u'Edit transformation "%(transformation)s" for: %(document_page)s') % {
-            'transformation': document_page_transformation.get_transformation_display(),
-            'document_page': document_page_transformation.document_page},
-        'web_theme_hide_menus': True,
-    }, context_instance=RequestContext(request))
-
-
-def document_page_transformation_delete(request, document_page_transformation_id):
-    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page_transformation.document_page.document)
-
-    redirect_view = reverse('document_page_transformation_list', args=[document_page_transformation.document_page_id])
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        document_page_transformation.document_page.document.invalidate_cached_image(document_page_transformation.document_page.page_number)
-        document_page_transformation.delete()
-        messages.success(request, _(u'Document page transformation deleted successfully.'))
-        return HttpResponseRedirect(redirect_view)
-
-    return render_to_response('generic_confirm.html', {
-        'delete_view': True,
-        'page': document_page_transformation.document_page,
-        'transformation': document_page_transformation,
-        'navigation_object_list': [
-            {'object': 'page'},
-            {'object': 'transformation', 'name': _(u'transformation')}
-        ],
-        'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
-            'transformation': document_page_transformation.get_transformation_display(),
-            'document_page': document_page_transformation.document_page},
-        'web_theme_hide_menus': True,
-        'previous': previous,
-        'form_icon': u'pencil_delete.png',
-    }, context_instance=RequestContext(request))
-
-
 def document_find_duplicates(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
@@ -1394,4 +1271,130 @@ def document_version_revert(request, document_version_pk):
         'title': _(u'Are you sure you wish to revert to this version?'),
         'message': _(u'All later version after this one will be deleted too.'),
         'form_icon': u'page_refresh.png',
+    }, context_instance=RequestContext(request))
+
+
+# DEPRECATION: These document page transformation views are schedules to be deleted once the transformations app is merged
+
+
+def document_page_transformation_list(request, document_page_id):
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page.document)
+
+    return object_list(
+        request,
+        queryset=document_page.documentpagetransformation_set.all(),
+        template_name='generic_list.html',
+        extra_context={
+            'page': document_page,
+            'navigation_object_name': 'page',
+            'title': _(u'transformations for: %s') % document_page,
+            'web_theme_hide_menus': True,
+            'list_object_variable_name': 'transformation',
+            'extra_columns': [
+                {'name': _(u'order'), 'attribute': 'order'},
+                {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
+                {'name': _(u'arguments'), 'attribute': 'arguments'}
+                ],
+            'hide_link': True,
+            'hide_object': True,
+        },
+    )
+
+
+def document_page_transformation_create(request, document_page_id):
+    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page.document)
+
+    if request.method == 'POST':
+        form = DocumentPageTransformationForm(request.POST, initial={'document_page': document_page})
+        if form.is_valid():
+            document_page.document.invalidate_cached_image(document_page.page_number)
+            form.save()
+            messages.success(request, _(u'Document page transformation created successfully.'))
+            return HttpResponseRedirect(reverse('document_page_transformation_list', args=[document_page_id]))
+    else:
+        form = DocumentPageTransformationForm(initial={'document_page': document_page})
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'page': document_page,
+        'navigation_object_name': 'page',
+        'title': _(u'Create new transformation for page: %(page)s of document: %(document)s') % {
+            'page': document_page.page_number, 'document': document_page.document},
+        'web_theme_hide_menus': True,
+    }, context_instance=RequestContext(request))
+
+
+def document_page_transformation_edit(request, document_page_transformation_id):
+    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page_transformation.document_page.document)
+
+    if request.method == 'POST':
+        form = DocumentPageTransformationForm(request.POST, instance=document_page_transformation)
+        if form.is_valid():
+            document_page_transformation.document_page.document.invalidate_cached_image(document_page_transformation.document_page.page_number)
+            form.save()
+            messages.success(request, _(u'Document page transformation edited successfully.'))
+            return HttpResponseRedirect(reverse('document_page_transformation_list', args=[document_page_transformation.document_page_id]))
+    else:
+        form = DocumentPageTransformationForm(instance=document_page_transformation)
+
+    return render_to_response('generic_form.html', {
+        'form': form,
+        'transformation': document_page_transformation,
+        'page': document_page_transformation.document_page,
+        'navigation_object_list': [
+            {'object': 'page'},
+            {'object': 'transformation', 'name': _(u'transformation')}
+        ],
+        'title': _(u'Edit transformation "%(transformation)s" for: %(document_page)s') % {
+            'transformation': document_page_transformation.get_transformation_display(),
+            'document_page': document_page_transformation.document_page},
+        'web_theme_hide_menus': True,
+    }, context_instance=RequestContext(request))
+
+
+def document_page_transformation_delete(request, document_page_transformation_id):
+    document_page_transformation = get_object_or_404(DocumentPageTransformation, pk=document_page_transformation_id)
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page_transformation.document_page.document)
+
+    redirect_view = reverse('document_page_transformation_list', args=[document_page_transformation.document_page_id])
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
+
+    if request.method == 'POST':
+        document_page_transformation.document_page.document.invalidate_cached_image(document_page_transformation.document_page.page_number)
+        document_page_transformation.delete()
+        messages.success(request, _(u'Document page transformation deleted successfully.'))
+        return HttpResponseRedirect(redirect_view)
+
+    return render_to_response('generic_confirm.html', {
+        'delete_view': True,
+        'page': document_page_transformation.document_page,
+        'transformation': document_page_transformation,
+        'navigation_object_list': [
+            {'object': 'page'},
+            {'object': 'transformation', 'name': _(u'transformation')}
+        ],
+        'title': _(u'Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
+            'transformation': document_page_transformation.get_transformation_display(),
+            'document_page': document_page_transformation.document_page},
+        'web_theme_hide_menus': True,
+        'previous': previous,
+        'form_icon': u'pencil_delete.png',
     }, context_instance=RequestContext(request))
