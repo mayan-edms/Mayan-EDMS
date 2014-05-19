@@ -148,7 +148,7 @@ INSTALLED_APPS = (
     'taggit',
     'mptt',
     'compressor',
-    'djangorestframework',
+    'rest_framework',
 # Base generic
     'permissions',
     'project_setup',
@@ -274,7 +274,7 @@ if DEVELOPMENT:
         import debug_toolbar
         #INSTALLED_APPS +=('debug_toolbar',)
     except ImportError:
-        pass        
+        pass
 
     TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
 

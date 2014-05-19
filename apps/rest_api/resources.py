@@ -1,15 +1,12 @@
 from django.core.urlresolvers import reverse
 
-from djangorestframework.resources import ModelResource
+from rest_framework import serializers
 
-from documents.models import Document
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
+from documents.models import Document, DocumentType
 
 
-class DocumentResourceSimple(ModelResource):
-    model = Document
-    fields = ('url', 'pk', 'document_type', 'uuid', 'date_added', 'description', 'tags', 'comments', 'expensive_methods', 'versions')
-   
+class DocumentResourceSimple(serializers.HyperlinkedModelSerializer):
     def versions(self, instance):
         return [
             {
@@ -36,10 +33,11 @@ class DocumentResourceSimple(ModelResource):
                     }
                     for page in version.pages.all()
                 ]
-                
+
             }
             for version in instance.versions.all()
         ]
 
-    def expensive_methods(self, instance):
-        return []
+    class Meta:
+        model = Document
+        fields = ('url', 'uuid', 'date_added', 'description')
