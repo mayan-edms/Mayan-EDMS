@@ -15,11 +15,11 @@ from .filesystem import (fs_create_index_directory,
     fs_delete_index_directory, assemble_suffixed_filename)
 from .models import Index, IndexInstanceNode, DocumentRenameCount
 
-if SLUGIFY_PATHS == False:
+if SLUGIFY_PATHS:
+    SLUGIFY_FUNCTION = slugify
+else:
     # Do not slugify path or filenames and extensions
     SLUGIFY_FUNCTION = lambda x: x
-else:
-    SLUGIFY_FUNCTION = slugify
 
 
 # External functions

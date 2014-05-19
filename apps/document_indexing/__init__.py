@@ -5,7 +5,6 @@ from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from main.api import register_maintenance_links
 from metadata.models import DocumentMetadata
 from navigation.api import (register_top_menu, register_sidebar_template,
@@ -15,16 +14,9 @@ from project_setup.api import register_setup
 from .api import update_indexes, delete_indexes
 from .links import (index_setup, index_setup_list, index_setup_create, index_setup_edit,
     index_setup_delete, index_setup_view, index_setup_document_types, template_node_create,
-    template_node_edit, template_node_delete, index_list, index_parent, document_index_list,
+    template_node_edit, template_node_delete, index_parent, document_index_list,
     rebuild_index_instances, document_index_main_menu_link)
 from .models import Index, IndexTemplateNode, IndexInstanceNode
-from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
-    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
-    PERMISSION_DOCUMENT_INDEXING_SETUP,
-    PERMISSION_DOCUMENT_INDEXING_CREATE,
-    PERMISSION_DOCUMENT_INDEXING_EDIT,
-    PERMISSION_DOCUMENT_INDEXING_DELETE
-)
 
 
 @receiver(pre_delete, dispatch_uid='document_index_delete', sender=Document)

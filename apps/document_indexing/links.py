@@ -14,10 +14,12 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
 
 
 def is_not_root_node(context):
+    # TODO: FIX: Check for parent node the proper way
     return context['node'].parent is not None
 
 
 def is_not_instance_root_node(context):
+    # TODO: FIX: Check for parent node the proper way
     return context['object'].parent is not None
 
 
