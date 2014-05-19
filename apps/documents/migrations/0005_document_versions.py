@@ -8,7 +8,7 @@ class Migration(DataMigration):
 
     def forwards(self, orm):
         for document in orm.Document.objects.all():
-            document_version = document.documentversion_set.create(
+            document_version = document.versions.create(
                 document = document,
                 timestamp = document.date_added,
                 file = document.file,
@@ -24,7 +24,7 @@ class Migration(DataMigration):
 
     def backwards(self, orm):
         for document in orm.Document.objects.all():
-            document_version = document.documentversion_set.all()[0]
+            document_version = document.versions.all()[0]
             document.date_added = document_version.timestamp
             document.file = document_version.file
             document.file_mimetype = document_version.mimetype
