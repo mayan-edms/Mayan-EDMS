@@ -165,4 +165,4 @@ class FileDisplayForm(forms.Form):
 
 class LicenseForm(FileDisplayForm):
     FILENAME = u'LICENSE'
-    DIRECTORY = [u'docs', u'credits']
+    DIRECTORY = [u'.']
