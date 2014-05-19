@@ -189,7 +189,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         )
                         if document:
                             messages.success(request, _(u'New document version uploaded successfully.'))
-                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                            return HttpResponseRedirect(reverse('document_version_list', args=[document.pk]))
                         else:
                             if result['is_compressed'] == None:
                                 messages.success(request, _(u'File uploaded successfully.'))
