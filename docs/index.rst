@@ -22,7 +22,7 @@ On the Web
 =====================
 
 * Website: http://www.mayan-edms.com
-* Source: http://github.com/rosarior/mayan
+* Source: https://github.com/mayan-edms/mayan-edms/
 * Video: http://bit.ly/Mayan-Intro
 * Mailing list: http://groups.google.com/group/mayan-edms/
 
@@ -58,28 +58,28 @@ Between versions
 ================
 .. toctree::
     :maxdepth: 1
-    
+
     releases/0.13.rst
-    
+
 Customization and fine tunning
 ==============================
 
   :doc:`Settings <topics/settings>` | :doc:`Customization <topics/customization>`
-  
+
 
 For developers
 ==============
 
   :doc:`Development <topics/development>` | :doc:`Documentation <topics/documentation>` | :doc:`Translations <topics/translations>`
 
-  
+
 Credits
 =======
 
   :doc:`Contributors <credits/contributors>` |
   :doc:`Software used <credits/software_used>` |
   :doc:`Licensing <credits/license>`
-    
+
 
 Getting help
 ============
@@ -96,4 +96,4 @@ Having trouble? We'd like to help!
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
 .. _Gname: http://news.gmane.org/gmane.comp.python.django.mayan-edms
 .. _post a question: http://groups.google.com/group/mayan-edms
-.. _ticket tracker: http://github.com/rosarior/mayan/issues
+.. _ticket tracker: https://github.com/mayan-edms/mayan-edms/issues
