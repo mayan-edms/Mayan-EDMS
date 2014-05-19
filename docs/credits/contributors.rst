@@ -8,7 +8,7 @@ Contributors
 How to contribute?
 ------------------
 
-You can help further the development of **Mayan EDMS** by reporting bugs, submitting documentation, patches, with monetary or hardware donations. 
+You can help further the development of **Mayan EDMS** by reporting bugs, submitting documentation, patches, with monetary or hardware donations.
 
 
 Bug fixes
@@ -21,6 +21,7 @@ Bug fixes
 * Webfaction (https://www.webfaction.com)
 * Kolmar Kafran
 * Nate Aune (nate@appsembler.com)
+* Mathias Behrle <mbehrle@m9s.biz>
 
 Bug reports
 -----------
@@ -37,6 +38,7 @@ Bug reports
 * Nate Aune (nate@appsembler.com)
 * Fabio Duran Verdugo (fabiognome@gmail.com)
 * Ed Schipul (eschipul@schipul.com)
+* Mathias Behrle <mbehrle@m9s.biz>
 
 Patches
 -------
@@ -46,6 +48,7 @@ Patches
 * Bertrand Bordage (https://github.com/BertrandBordage)
 * Iliya Georgiev (ikgeorgiev@gmail.com)
 * Lars Kruse (devel@sumpfralle.de)
+* Mathias Behrle <mbehrle@m9s.biz>
 
 Suggestions
 -----------
@@ -80,6 +83,8 @@ Translations
   - Tetja Rediske (tetja.rediske@googlemail.com)
   - Tilmann Sittig (tilmann.sittig@web.de)
   - Manticor (sl@suchreflex.de)
+  - Mathias Behrle <mbehrle@m9s.biz>
+  - Tobias Paepke <https://twitter.com/paepke_net>
 
 * Italian
 
