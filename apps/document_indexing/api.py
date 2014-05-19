@@ -1,19 +1,19 @@
 from __future__ import absolute_import
 
 from django.db.models import Q
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
 from django.template.defaultfilters import slugify
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
 from metadata.classes import MetadataClass
 
-from .models import Index, IndexInstanceNode, DocumentRenameCount
 from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
     MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
+from .exceptions import MaxSuffixCountReached
 from .filesystem import (fs_create_index_directory,
     fs_create_document_link, fs_delete_document_link,
     fs_delete_index_directory, assemble_suffixed_filename)
-from .exceptions import MaxSuffixCountReached
+from .models import Index, IndexInstanceNode, DocumentRenameCount
 
 if SLUGIFY_PATHS == False:
     # Do not slugify path or filenames and extensions
