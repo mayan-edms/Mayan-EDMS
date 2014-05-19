@@ -1,14 +1,18 @@
 from __future__ import absolute_import
 
+from django.db.models.signals import post_save, pre_delete, post_delete
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from main.api import register_maintenance_links
+from metadata.models import DocumentMetadata
 from navigation.api import (register_top_menu, register_sidebar_template,
     register_links)
 from project_setup.api import register_setup
 
+from .api import update_indexes, delete_indexes
 from .links import (index_setup, index_setup_list, index_setup_create, index_setup_edit,
     index_setup_delete, index_setup_view, index_setup_document_types, template_node_create,
     template_node_edit, template_node_delete, index_list, index_parent, document_index_list,
@@ -21,6 +25,28 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_EDIT,
     PERMISSION_DOCUMENT_INDEXING_DELETE
 )
+
+
+@receiver(pre_delete, dispatch_uid='document_index_delete', sender=Document)
+def document_index_delete(sender, **kwargs):
+    delete_indexes(kwargs['instance'])
+
+
+@receiver(post_save, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
+def document_metadata_index_update(sender, **kwargs):
+    delete_indexes(kwargs['instance'].document)
+    update_indexes(kwargs['instance'].document)
+
+
+@receiver(pre_delete, dispatch_uid='document_metadata_index_delete', sender=DocumentMetadata)
+def document_metadata_index_delete(sender, **kwargs):
+    delete_indexes(kwargs['instance'].document)
+
+
+@receiver(post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
+def document_metadata_index_post_delete(sender, **kwargs):
+    update_indexes(kwargs['instance'].document)
+
 
 register_top_menu('indexes', document_index_main_menu_link)
 
