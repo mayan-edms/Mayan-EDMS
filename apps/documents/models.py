@@ -259,15 +259,11 @@ class Document(models.Model):
 
     @property
     def latest_version(self):
-        return self.documentversion_set.order_by('-timestamp')[0]
+        return self.versions.order_by('-timestamp')[0]
 
     @property
     def first_version(self):
-        return self.documentversion_set.order_by('timestamp')[0]
-
-    @property
-    def versions(self):
-        return self.documentversion_set
+        return self.versions.order_by('timestamp')[0]
 
     def rename(self, new_name):
         version = self.latest_version
@@ -307,7 +303,7 @@ class DocumentVersion(models.Model):
     def register_post_save_hook(cls, order, func):
         cls._post_save_hooks[order] = func
 
-    document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
+    document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False, related_name='versions')
     major = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1, editable=False)
     minor = models.PositiveIntegerField(verbose_name=_(u'minor'), default=0, editable=False)
     micro = models.PositiveIntegerField(verbose_name=_(u'micro'), default=0, editable=False)
