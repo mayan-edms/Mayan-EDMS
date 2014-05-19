@@ -108,7 +108,7 @@ class Document(models.Model):
 
     def get_cached_image_name(self, page, version):
         document_version = DocumentVersion.objects.get(pk=version)
-        document_page = document_version.documentpage_set.get(page_number=page)
+        document_page = document_version.pages.get(page_number=page)
         transformations, warnings = document_page.get_transformation_list()
         hash_value = HASH_FUNCTION(u''.join([document_version.checksum, unicode(page), unicode(transformations)]))
         return os.path.join(CACHE_PATH, hash_value), transformations
@@ -361,10 +361,6 @@ class DocumentVersion(models.Model):
             vers.append(u'%s%i' % (self.get_release_level_display(), self.serial))
         return u''.join(vers)
 
-    @property
-    def pages(self):
-        return self.documentpage_set
-
     def save(self, *args, **kwargs):
         """
         Overloaded save method that updates the document version's checksum,
@@ -421,7 +417,7 @@ class DocumentVersion(models.Model):
         except OSError:
             pass
 
-        current_pages = self.documentpage_set.order_by('page_number',)
+        current_pages = self.pages.order_by('page_number',)
         if current_pages.count() > detected_pages:
             for page in current_pages[detected_pages:]:
                 page.delete()
@@ -555,7 +551,7 @@ class DocumentPage(models.Model):
     """
     Model that describes a document version page including it's content
     """
-    document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'))
+    document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'), related_name='pages')
     content = models.TextField(blank=True, null=True, verbose_name=_(u'content'))
     page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'), db_index=True)
@@ -564,7 +560,7 @@ class DocumentPage(models.Model):
         return _(u'Page %(page_num)d out of %(total_pages)d of %(document)s') % {
             'document': unicode(self.document),
             'page_num': self.page_number,
-            'total_pages': self.document_version.documentpage_set.count()
+            'total_pages': self.document_version.pages.count()
         }
 
     class Meta:

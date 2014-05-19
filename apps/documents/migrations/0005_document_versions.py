@@ -18,7 +18,7 @@ class Migration(DataMigration):
                 checksum = document.checksum,
             )
             document_version.save()
-            for document_page in document.documentpage_set.all():
+            for document_page in document.pages.all():
                 document_page.document_version = document_version
                 document_page.save()
 
