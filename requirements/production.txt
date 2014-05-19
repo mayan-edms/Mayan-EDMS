@@ -6,7 +6,7 @@ Django==1.4.13
 django-pagination==1.0.7
 django-compressor==1.1.1
 django-taggit==0.9.3
--e git+https://github.com/django-mptt/django-mptt.git@0af02a95877041b2fd6d458bd95413dc1666c321#egg=django-mptt
+django-mptt==0.6.0
 -e git+https://github.com/rosarior/django-sendfile.git#egg=django-sendfile
 djangorestframework==2.3.13
 
