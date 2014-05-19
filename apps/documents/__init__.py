@@ -15,8 +15,6 @@ from navigation.api import (register_links, register_top_menu,
     register_sidebar_template)
 from project_setup.api import register_setup
 
-from .conf.settings import ZOOM_MAX_LEVEL
-from .conf.settings import ZOOM_MIN_LEVEL
 from .conf import settings as document_settings
 from .events import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)

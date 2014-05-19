@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from history.permissions import PERMISSION_HISTORY_VIEW
 
+from .conf.settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
