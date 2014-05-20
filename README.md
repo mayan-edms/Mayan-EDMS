@@ -1,4 +1,6 @@
-Development of this project has now moved to (https://github.com/mayan-edms/mayan-edms/), please update your git remotes accordingly and post future issues on this new location, thanks!
+[![Build Status](https://travis-ci.org/mayan-edms/mayan-edms.svg?branch=master)](https://travis-ci.org/mayan-edms/mayan-edms)
+
+[![Coverage Status](https://img.shields.io/coveralls/mayan-edms/mayan-edms.svg)](https://coveralls.io/r/mayan-edms/mayan-edms)
 
 ![Logo](https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo_landscape_black.jpg)
 
@@ -31,7 +33,7 @@ installation when executing the fabfile.
 - Debian or Ubuntu:
 
     cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=&lt;Your MySQL root password&gt;" > ~/.fabricrc && fab -H localhost install
-    
+
 - Fedora:
 
     cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=&lt;Your MySQL root password&gt;" > ~/.fabricrc && fab -H localhost install
