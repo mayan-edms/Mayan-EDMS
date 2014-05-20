@@ -28,9 +28,6 @@ from common.conf.settings import DEFAULT_PAPER_SIZE
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
 from converter.office_converter import OfficeConverter
-# TODO: do not import from document_indexing, update document_indexing to
-# catch Document model after save and after delete signals
-from document_indexing.api import update_indexes, delete_indexes
 from filetransfers.api import serve_file
 from history.api import create_history
 from navigation.utils import resolve_to_name
@@ -183,11 +180,6 @@ def document_delete(request, document_id=None, document_id_list=None):
     if request.method == 'POST':
         for document in documents:
             try:
-                warnings = delete_indexes(document)
-                if request.user.is_staff or request.user.is_superuser:
-                    for warning in warnings:
-                        messages.warning(request, warning)
-
                 document.delete()
                 # create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
                 messages.success(request, _(u'Document deleted successfully.'))
@@ -232,11 +224,6 @@ def document_edit(request, document_id):
         old_document = copy.copy(document)
         form = DocumentForm_edit(request.POST, instance=document)
         if form.is_valid():
-            warnings = delete_indexes(document)
-            if request.user.is_staff or request.user.is_superuser:
-                for warning in warnings:
-                    messages.warning(request, warning)
-
             document.filename = form.cleaned_data['new_filename']
             document.description = form.cleaned_data['description']
 
@@ -249,11 +236,6 @@ def document_edit(request, document_id):
             RecentDocument.objects.add_document_for_user(request.user, document)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
-
-            warnings = update_indexes(document)
-            if request.user.is_staff or request.user.is_superuser:
-                for warning in warnings:
-                    messages.warning(request, warning)
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:
