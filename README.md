@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/mayan-edms/mayan-edms.svg?branch=master)](https://travis-ci.org/mayan-edms/mayan-edms)
 
-[![Coverage Status](https://img.shields.io/coveralls/mayan-edms/mayan-edms.svg)](https://coveralls.io/r/mayan-edms/mayan-edms)
+[![Coverage Status](https://coveralls.io/repos/mayan-edms/mayan-edms/badge.png?branch=master)](https://coveralls.io/r/mayan-edms/mayan-edms?branch=master)
 
 ![Logo](https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo_landscape_black.jpg)
 
