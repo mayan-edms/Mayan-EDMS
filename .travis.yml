@@ -1,0 +1,18 @@
+language: python
+python:
+  - "2.7"
+  - "2.6"
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq python-dev gcc tesseract-ocr unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
+install:
+  - "pip install -r requirements/testing.txt --use-mirrors"
+notifications:
+  email: false
+script:
+  - coverage run --source=documents manage.py test documents
+after_success:
+  - coveralls
+branches:
+  only:
+    - master
