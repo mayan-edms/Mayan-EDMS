@@ -30,14 +30,14 @@ you plan to assign to it, during the MySQL installation when executing the fabfi
 -  Debian or Ubuntu:
 
    cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget
-   https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz
+   https://github.com/mayan-edms/mayan-edms/raw/master/contrib/fabfile.tar.gz
    -O - \| tar -xvzf - && echo “database\_manager\_admin\_password=<Your
    MySQL root password>” > ~/.fabricrc && fab -H localhost install
 
 -  Fedora:
 
    cd /tmp && sudo yum install -y fabric wget tar gzip && wget
-   https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz
+   https://github.com/mayan-edms/mayan-edms/raw/master/contrib/fabfile.tar.gz
    -O - \| tar -xvzf - && echo “database\_manager\_admin\_password=<Your
    MySQL root password>” > ~/.fabricrc && fab -H localhost install
 
