@@ -6,7 +6,7 @@ from django.utils import unittest
 from django.conf import settings
 from django.core.files.base import File
 
-from django_gpg.api import SIGNATURE_STATE_VALID
+# from django_gpg.api import SIGNATURE_STATE_VALID
 
 from .models import Document, DocumentType
 from .literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
@@ -41,7 +41,7 @@ class DocumentTestCase(unittest.TestCase):
         self.failUnlessEqual(self.document.page_count, 47)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '1.0')
-        self.failUnlessEqual(self.document.has_detached_signature(), False)
+        #self.failUnlessEqual(self.document.has_detached_signature(), False)
 
         file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.gpg'))
         new_version_data = {
@@ -55,9 +55,9 @@ class DocumentTestCase(unittest.TestCase):
         file_object.close()
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '2.0')
-        self.failUnlessEqual(self.document.has_detached_signature(), False)
+        #self.failUnlessEqual(self.document.has_detached_signature(), False)
 
-        self.failUnlessEqual(self.document.verify_signature().status, SIGNATURE_STATE_VALID)
+        #self.failUnlessEqual(self.document.verify_signature().status, SIGNATURE_STATE_VALID)
 
         new_version_data = {
             'comment': 'test comment 2',
@@ -72,14 +72,14 @@ class DocumentTestCase(unittest.TestCase):
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '3.0')
 
         # GPGVerificationError
-        self.failUnlessEqual(self.document.verify_signature(), None)
+        # self.failUnlessEqual(self.document.verify_signature(), None)
 
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.sig'), 'rb')
-        new_version = self.document.add_detached_signature(File(file_object))
-        file_object.close()
+        # file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.sig'), 'rb')
+        # new_version = self.document.add_detached_signature(File(file_object))
+        # file_object.close()
 
-        self.failUnlessEqual(self.document.has_detached_signature(), True)
-        self.failUnlessEqual(self.document.verify_signature().status, SIGNATURE_STATE_VALID)
+        # self.failUnlessEqual(self.document.has_detached_signature(), True)
+        # self.failUnlessEqual(self.document.verify_signature().status, SIGNATURE_STATE_VALID)
 
     def tearDown(self):
         self.document.delete()
