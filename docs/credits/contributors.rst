@@ -10,6 +10,9 @@ How to contribute?
 
 You can help further the development of **Mayan EDMS** by reporting bugs, submitting documentation, patches, with monetary or hardware donations.
 
+Lead developer
+--------------
+* Roberto Rosario (roberto.rosario.gonzalez@gmail.com) <https://twitter.com/siloraptor>
 
 Bug fixes
 ---------
