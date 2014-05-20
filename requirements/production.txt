@@ -7,7 +7,7 @@ django-pagination==1.0.7
 django-compressor==1.1.1
 django-taggit==0.9.3
 django-mptt==0.6.0
--e git+https://github.com/rosarior/django-sendfile.git#egg=django-sendfile
+django-sendfile==0.3.4
 djangorestframework==2.3.13
 
 GitPython==0.3.2.RC1
@@ -20,7 +20,7 @@ pdfminer==20110227
 psutil==0.5.1
 https://github.com/rosarior/python-gnupg/zipball/0.2.8
 python-hkp==0.1.3
--e git+https://github.com/ahupp/python-magic.git@0d8f718f786a6ed7691fb3d9af726e395ac75ac3#egg=python-magic
+python-magic==0.4.6
 
 requests==0.14.1
 
