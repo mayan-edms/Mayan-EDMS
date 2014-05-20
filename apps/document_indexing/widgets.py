@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 
 from django.utils.html import mark_safe
+from django.utils.translation import ugettext
 
 from .models import IndexInstanceNode
 
@@ -82,8 +83,8 @@ def node_level(x):
         u''.join(
             [
                 u'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(x, x._mptt_meta.level_attr) - 1),
-                u'' if x.parent else u'',
-                unicode(x if x.parent else 'root')
+                u'' if x.is_root_node() else u'',
+                ugettext('root') if x.is_root_node() else unicode(x)
             ]
         )
     )
