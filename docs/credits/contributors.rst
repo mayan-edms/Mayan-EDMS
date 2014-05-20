@@ -12,7 +12,7 @@ You can help further the development of **Mayan EDMS** by reporting bugs, submit
 
 Lead developer
 --------------
-* Roberto Rosario (roberto.rosario.gonzalez@gmail.com) <https://twitter.com/siloraptor>
+* Roberto Rosario (roberto.rosario@mayan-edms.com) <https://twitter.com/siloraptor>
 
 Bug fixes
 ---------
