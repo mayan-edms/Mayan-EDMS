@@ -14,13 +14,11 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
 
 
 def is_not_root_node(context):
-    # TODO: FIX: Check for parent node the proper way
-    return context['node'].parent is not None
+    return not context['node'].is_root_node()
 
 
 def is_not_instance_root_node(context):
-    # TODO: FIX: Check for parent node the proper way
-    return context['object'].parent is not None
+    return not context['object'].is_root_node()
 
 
 index_setup = {'text': _(u'indexes'), 'view': 'index_setup_list', 'icon': 'tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP], 'children_view_regex': [r'^index_setup', r'^template_node']}
