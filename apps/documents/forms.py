@@ -1,23 +1,24 @@
 from __future__ import absolute_import
 
 from django import forms
+from django.core.urlresolvers import reverse
+from django.utils.encoding import force_unicode
+from django.utils.html import conditional_escape
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.core.urlresolvers import reverse
-from django.utils.safestring import mark_safe
-from django.utils.html import conditional_escape
-from django.utils.encoding import force_unicode
-        
+
+from common.conf.settings import DEFAULT_PAPER_SIZE, DEFAULT_PAGE_ORIENTATION
 from common.forms import DetailForm
 from common.literals import PAGE_SIZE_CHOICES, PAGE_ORIENTATION_CHOICES
-from common.conf.settings import DEFAULT_PAPER_SIZE, DEFAULT_PAGE_ORIENTATION
 from common.widgets import TextAreaDiv
 
 from .models import (Document, DocumentType,
     DocumentPage, DocumentPageTransformation, DocumentTypeFilename,
     DocumentVersion)
+from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
+    DEFAULT_ZIP_FILENAME)
 from .widgets import document_html_widget
-from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES, DEFAULT_ZIP_FILENAME)
 
 
 # Document page forms
@@ -283,10 +284,10 @@ class DocumentTypeSelectForm(forms.Form):
 
 
 class PrintForm(forms.Form):
-    #page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
-    #custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
-    #custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
-    #page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
+    # page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
+    # custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
+    # custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
+    # page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
 
@@ -315,16 +316,14 @@ class DocumentTypeFilenameForm_create(forms.ModelForm):
         model = DocumentTypeFilename
         fields = ('filename',)
 
-        
+
 class DocumentDownloadForm(forms.Form):
     compressed = forms.BooleanField(label=_(u'Compress'), required=False, help_text=_(u'Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.'))
     zip_filename = forms.CharField(initial=DEFAULT_ZIP_FILENAME, label=_(u'Compressed filename'), required=False, help_text=_(u'The filename of the compressed file that will contain the documents to be downloaded, if the previous option is selected.'))
-    
+
     def __init__(self, *args, **kwargs):
         self.document_versions = kwargs.pop('document_versions', None)
         super(DocumentDownloadForm, self).__init__(*args, **kwargs)
         if len(self.document_versions) > 1:
             self.fields['compressed'].initial = True
-            self.fields['compressed'].widget.attrs.update({'disabled': True})   
-    
-    
+            self.fields['compressed'].widget.attrs.update({'disabled': True})

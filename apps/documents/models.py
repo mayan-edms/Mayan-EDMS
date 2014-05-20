@@ -370,7 +370,7 @@ class DocumentVersion(models.Model):
         if not self.pk:
             self.timestamp = datetime.datetime.now()
 
-        #Only do this for new documents
+        # Only do this for new documents
         transformations = kwargs.pop('transformations', None)
         super(DocumentVersion, self).save(*args, **kwargs)
 
@@ -378,7 +378,7 @@ class DocumentVersion(models.Model):
             DocumentVersion._post_save_hooks[key](self)
 
         if new_document:
-            #Only do this for new documents
+            # Only do this for new documents
             self.update_checksum(save=False)
             self.update_mimetype(save=False)
             self.save()
@@ -432,7 +432,7 @@ class DocumentVersion(models.Model):
         return detected_pages
 
     def apply_default_transformations(self, transformations):
-        #Only apply default transformations on new documents
+        # Only apply default transformations on new documents
         if reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.pages.all()]) == 0:
             for transformation in transformations:
                 for document_page in self.pages.all():

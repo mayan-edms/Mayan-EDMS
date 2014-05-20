@@ -22,7 +22,7 @@ class DocumentTestCase(unittest.TestCase):
             description='description',
         )
         self.document.save()
-        #return File(file(self.filepath, 'rb'), name=self.filename)
+        # return File(file(self.filepath, 'rb'), name=self.filename)
 
         file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf'))
         new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
@@ -71,7 +71,7 @@ class DocumentTestCase(unittest.TestCase):
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '3.0')
 
-        #GPGVerificationError
+        # GPGVerificationError
         self.failUnlessEqual(self.document.verify_signature(), None)
 
         file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.sig'), 'rb')

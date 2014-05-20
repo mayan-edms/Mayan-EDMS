@@ -36,13 +36,11 @@ from history.api import create_history
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
-from .events import (HISTORY_DOCUMENT_CREATED,
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
+from .events import HISTORY_DOCUMENT_EDITED
 from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, PRINT_SIZE,
     RECENT_COUNT)
-from .forms import (DocumentTypeSelectForm,
-        DocumentForm_edit, DocumentPropertiesForm,
+from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
         DocumentPageTransformationForm, DocumentContentForm,
         DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
@@ -51,13 +49,13 @@ from .forms import (DocumentTypeSelectForm,
 from .models import (Document, DocumentType, DocumentPage,
     DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
     DocumentVersion)
-from .permissions import (PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW)
+from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+    PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_DELETE,
+    PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
+    PERMISSION_DOCUMENT_TOOLS, PERMISSION_DOCUMENT_EDIT,
+    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_TYPE_EDIT,
+    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE,
+    PERMISSION_DOCUMENT_TYPE_VIEW)
 
 logger = logging.getLogger(__name__)
 
@@ -96,7 +94,7 @@ def document_view(request, document_id, advanced=False):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
-    #document = get_object_or_404(Document.objects.select_related(), pk=document_id)
+    # document = get_object_or_404(Document.objects.select_related(), pk=document_id)
     # Triggers a 404 error on documents uploaded via local upload
     # TODO: investigate
 
@@ -109,11 +107,11 @@ def document_view(request, document_id, advanced=False):
             {'label': _(u'Filename'), 'field': 'filename'},
             {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
             {'label': _(u'File mime encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
-            {'label': _(u'File size'), 'field':lambda x: pretty_size(x.size) if x.size else '-'},
+            {'label': _(u'File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
             {'label': _(u'Exists in storage'), 'field': 'exists'},
             {'label': _(u'File path in storage'), 'field': 'file'},
-            {'label': _(u'Date added'), 'field':lambda x: x.date_added.date()},
-            {'label': _(u'Time added'), 'field':lambda x: unicode(x.date_added.time()).split('.')[0]},
+            {'label': _(u'Date added'), 'field': lambda x: x.date_added.date()},
+            {'label': _(u'Time added'), 'field': lambda x: unicode(x.date_added.time()).split('.')[0]},
             {'label': _(u'Checksum'), 'field': 'checksum'},
             {'label': _(u'UUID'), 'field': 'uuid'},
             {'label': _(u'Pages'), 'field': 'page_count'},
@@ -191,7 +189,7 @@ def document_delete(request, document_id=None, document_id_list=None):
                         messages.warning(request, warning)
 
                 document.delete()
-                #create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
+                # create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
                 messages.success(request, _(u'Document deleted successfully.'))
             except Exception, e:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
@@ -818,18 +816,18 @@ def document_print(request, document_id):
                 hard_copy_arguments['page_range'] = form.cleaned_data['page_range']
 
             # Compute page width and height
-            #if form.cleaned_data['custom_page_width'] and form.cleaned_data['custom_page_height']:
+            # if form.cleaned_data['custom_page_width'] and form.cleaned_data['custom_page_height']:
             #    page_width = form.cleaned_data['custom_page_width']
             #    page_height = form.cleaned_data['custom_page_height']
-            #elif form.cleaned_data['page_size']:
+            # elif form.cleaned_data['page_size']:
             #    page_width, page_height = dict(PAGE_SIZE_DIMENSIONS)[form.cleaned_data['page_size']]
 
             # Page orientation
-            #if form.cleaned_data['page_orientation'] == PAGE_ORIENTATION_LANDSCAPE:
+            # if form.cleaned_data['page_orientation'] == PAGE_ORIENTATION_LANDSCAPE:
             #    page_width, page_height = page_height, page_width
 
-            #hard_copy_arguments['page_width'] = page_width
-            #hard_copy_arguments['page_height'] = page_height
+            # hard_copy_arguments['page_width'] = page_width
+            # hard_copy_arguments['page_height'] = page_height
 
             new_url = [reverse('document_hard_copy', args=[document_id])]
             if hard_copy_arguments:
@@ -837,8 +835,8 @@ def document_print(request, document_id):
 
             new_window_url = u'?'.join(new_url)
             new_window_url_name = u'document_hard_copy'
-            #html_redirect = next
-            #messages.success(request, _(u'Preparing document hardcopy.'))
+            # html_redirect = next
+            # messages.success(request, _(u'Preparing document hardcopy.'))
     else:
         form = PrintForm()
 
@@ -853,7 +851,7 @@ def document_print(request, document_id):
 
 
 def document_hard_copy(request, document_id):
-    #TODO: FIXME
+    # TODO: FIXME
     document = get_object_or_404(Document, pk=document_id)
 
     try:
@@ -863,10 +861,10 @@ def document_hard_copy(request, document_id):
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
-    #arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT)
+    # arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT)
 
     # Pre-generate
-    #convert_document(document, **arguments)
+    # convert_document(document, **arguments)
 
     # Extract dimension values ignoring any unit
     page_width = request.GET.get('page_width', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][0])
@@ -948,7 +946,7 @@ def document_type_edit(request, document_type_id):
     return render_to_response('generic_form.html', {
         'title': _(u'edit document type: %s') % document_type,
         'form': form,
-        #'object': document_type,
+        # 'object': document_type,
         'object_name': _(u'document type'),
         'navigation_object_name': 'document_type',
         'document_type': document_type,

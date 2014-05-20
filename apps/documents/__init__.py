@@ -20,7 +20,7 @@ from .events import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .links import (document_list, document_list_recent,
     document_view_simple, document_view_advanced,
-    document_delete, document_multiple_delete, document_edit, document_preview,
+    document_delete, document_multiple_delete, document_edit,
     document_download, document_multiple_download, document_version_download,
     document_find_duplicates, document_find_all_duplicates, document_update_page_count,
     document_clear_transformations, document_multiple_clear_transformations,
@@ -37,14 +37,11 @@ from .links import (document_list, document_list_recent,
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
-from .permissions import (PERMISSION_DOCUMENT_CREATE,
+from .permissions import (
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW,
-    PERMISSION_DOCUMENT_NEW_VERSION)
+    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_EDIT,
+    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_NEW_VERSION)
 from .widgets import document_thumbnail
 
 # History setup
@@ -95,7 +92,7 @@ register_diagnostic('documents', _(u'Documents'), document_missing_list)
 register_maintenance_links([document_find_all_duplicates, document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'documents'))
 
 register_model_list_columns(Document, [
-        {'name':_(u'thumbnail'), 'attribute':
+        {'name': _(u'thumbnail'), 'attribute':
             encapsulate(lambda x: document_thumbnail(x))
         },
     ])
@@ -119,7 +116,7 @@ register_links(Document, [document_view_advanced], menu_name='form_header', posi
 register_links(Document, [document_history_view], menu_name='form_header')
 register_links(Document, [document_version_list], menu_name='form_header')
 
-if (validate_path(document_settings.CACHE_PATH) == False) or (not document_settings.CACHE_PATH):
+if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
 register_setup(document_type_setup)
