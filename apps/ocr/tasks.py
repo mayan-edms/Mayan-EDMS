@@ -5,6 +5,7 @@ import platform
 import logging
 
 from django.db.models import Q
+from django import db
 
 from job_processor.api import process_job
 from lock_manager import Lock, LockError
@@ -48,6 +49,8 @@ def task_process_queue_document(queue_document_id):
 
 
 def task_process_document_queues():
+    # Make sure this task get a fresh connection to the database
+    db.close_connection()
     logger.debug('executed')
     # TODO: reset_orphans()
     q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
@@ -74,3 +77,6 @@ def task_process_document_queues():
             logger.debug('already processing maximum')
     else:
         logger.debug('nothing to process')
+
+    # Close the database explicitly or else Django keeps it open
+    db.close_connection()
