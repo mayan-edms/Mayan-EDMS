@@ -1,0 +1,84 @@
+=============================
+Mayan EDMS v1.0 release notes
+=============================
+
+*[...] 2014*
+
+Welcome to Mayan EDMS v1.0!
+
+Overview
+========
+
+
+
+What's new in Mayan EDMS v1.0
+=============================
+
+New home
+~~~~~~~~
+[...] https://github.com/mayan-edms/mayan-edms
+
+Django 1.4.13
+~~~~~~~~~~~~~
+This release updates the required version of Django to 1.4.13.
+
+Translation updates
+~~~~~~~~~~~~~~~~~~~
+The translation for all the current languages were synchronized to the
+latest transifex project sources.
+
+Model updates
+~~~~~~~~~~~~~
+
+Source code improvements
+~~~~~~~~~~~~~~~~~~~~~~~~
+Circular import of metadata and document_index app from documents app
+
+Removal of included 3rd party modules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Automatic testing and code coverage check
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Update of required modules and libraries versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database connection leaks
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Upgrading from a previous version
+=================================
+If you installed **Mayan EDMS** by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the existing installation.
+
+Next add the new requirements::
+
+    $ pip install -r requirements.txt
+
+Migrate existing database schema with::
+
+    $ ./manage.py migrate metadata 0001 --fake
+
+Add new static media::
+
+    $ ./manage.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+* None
+
+Bugs fixed or issues closed
+===========================
+* `issue #39`_ Feature request "Bulk move folders"
+
+
+.. _issue #39: https://github.com/rosarior/mayan/issues/39
