@@ -3,7 +3,7 @@
 {% load navigation_tags %}
 {% load subtemplates_tags %}
 
-{% block title %} :: {% blocktrans with title|striptags as stripped_title %}List of {{ stripped_title }}{% endblocktrans %}{% endblock %}
+{% block title %} :: {% blocktrans with title as title %}List of {{ title }}{% endblocktrans %}{% endblock %}
 {#{% block secondary_links %}{{ secondary_links|safe }}{% endblock %}#}
 
 {% block sidebar %}

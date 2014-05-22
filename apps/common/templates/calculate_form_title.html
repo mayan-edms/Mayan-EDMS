@@ -1,10 +1,6 @@
 {% load i18n %}
 {% if title %}
-    {% if striptags %}
-        {{ title|capfirst|striptags }}
-    {% else %}
-        {{ title|capfirst|safe }}
-    {% endif %}
+    {{ title|capfirst }}
 {% else %}
     {% if read_only %}
         {% if object_name %}
@@ -15,9 +11,9 @@
     {% else %}
         {% if object %}
             {% if object_name %}
-                {% blocktrans %}Edit {{ object_name }}:{% endblocktrans %} {% if not striptags %}<a href="{{ object.get_absolute_url }}">{% endif %}{{ object|capfirst }}{% if not striptags %}</a>{% endif %}
+                {% blocktrans with object as object and object_name as object_name %}Edit {{ object_name }}: {{ object }}{% endblocktrans %}
             {% else %}
-                {% trans "Edit" %}: {% if not striptags %}<a href="{{ object.get_absolute_url }}">{% endif %}{{ object|capfirst }}{% if not striptags %}</a>{% endif %}
+                {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
             {% endif %}
         {% else %}
             {% if object_name %}
@@ -25,6 +21,6 @@
             {% else %}
                 {% trans "Create" %}
             {% endif %}
-        {% endif %}                
+        {% endif %}
     {% endif %}
 {% endif %}

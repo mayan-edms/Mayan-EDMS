@@ -2,15 +2,15 @@
 {% load i18n %}
 {% load subtemplates_tags %}
 
-{% block title %} :: {% with "true" as read_only %}{% with "true" as striptags %}{% include "calculate_form_title.html" %}{% endwith %}{% endwith %}{% endblock %}
+{% block title %} :: {% with "true" as read_only %}{% include "calculate_form_title.html" %}{% endwith %}{% endblock %}
 
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates %}
         <div class="generic_subform">
             {% include subtemplate %}
-        </div>        
+        </div>
     {% endfor %}
-  
+
     {% for subtemplate in sidebar_subtemplates_list %}
         {% with "true" as side_bar %}
             {% if subtemplate.form %}
@@ -26,18 +26,18 @@
             {% endif %}
                 </div>
                 {% if subtemplate.grid_clear or not subtemplate.grid %}
-                    <div class=""></div> 
+                    <div class=""></div>
             {% endif %}
         {% endwith %}
-    {% endfor %}     
+    {% endfor %}
 {% endblock %}
 
 {% block stylesheets %}
     <style type="text/css">
-        #subform form  textarea, 
+        #subform form  textarea,
         #subform form  select option,
-        #subform form  input, 
-        #subform form  select, 
+        #subform form  input,
+        #subform form  select,
         #subform form  input { background: none; color: black; border: none; }
     </style>
 {% endblock %}
@@ -51,14 +51,14 @@
                 </div>
             </div>
             {% if grid_clear or not grid %}
-                <div class=""></div> 
+                <div class=""></div>
             {% endif %}
         {% endwith %}
     {% endif %}
-    
+
     <div class="container_12">
         {% for subtemplate in subtemplates_list %}
-            <div class="grid_{{ subtemplate.grid|default:12 }}">       
+            <div class="grid_{{ subtemplate.grid|default:12 }}">
                 {% with "true" as read_only %}
                     {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
                     <div class="generic_subform">
@@ -67,10 +67,10 @@
                 {% endwith %}
             </div>
             {% if subtemplate.grid_clear or not subtemplate.grid %}
-                <div class="clear"></div> 
+                <div class="clear"></div>
             {% endif %}
          {% endfor %}
-    </div>    
-    
+    </div>
+
 {% endblock %}
 
