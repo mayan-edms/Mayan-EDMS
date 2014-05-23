@@ -16,36 +16,58 @@ What's new in Mayan EDMS v1.0
 
 New home
 ~~~~~~~~
-[...] https://github.com/mayan-edms/mayan-edms
+The growth and reach of the project has necesitaded for a while the move
+of the project to its own organization in Github. This moved has finally
+done, the new URL of the project is: https://github.com/mayan-edms/mayan-edms
 
 Django 1.4.13
 ~~~~~~~~~~~~~
-This release updates the required version of Django to 1.4.13.
+This release updates the required version of Django to 1.4.13, bringing with it
+not only new features but also a lot of security updates.
 
 Translation updates
 ~~~~~~~~~~~~~~~~~~~
-The translation for all the current languages were synchronized to the
-latest transifex project sources.
+The translation for some languages were synchronized to the latest transifex project sources.
 
 Model updates
 ~~~~~~~~~~~~~
+There were some convenience properties created to allow quick access to
+a document's version and pages. These custom properties were removed and
+an official method to access these properties as provided by Django is now
+used.
 
 Source code improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Circular import of metadata and document_index app from documents app
+A circular import of metadata and document_index apps code from the documents app
+was removed. Document index updates are now handled via signals not called
+directly as before.
 
 Removal of included 3rd party modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+One last 3rd party module was included with the source code of Mayan EDMS,
+this module is now available on PyPI and fetched during installation instead
+of being included.
 
 Automatic testing and code coverage check
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Some initial tests were added, this will help with the detection of
+regressions or bug when adding new features. More tests are needed but
+the initial work has being started.
 
 Update of required modules and libraries versions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Many of the required modules and libraries have been updated to a more
+recent version if not to their most recent released version.
 
 Database connection leaks
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+Stale database connection being left open by the OCR queue handling task
+are now explictly closed. This should increase the stability and reduce memory
+usage.
 
+Deletion of detached signatures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Detached signatures can now be deleted if accidentally added to the wrong document.
 
 
 Upgrading from a previous version
