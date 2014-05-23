@@ -1,6 +1,5 @@
 import os
 
-from django.core.exceptions import ImproperlyConfigured
 from django.utils.importlib import import_module
 
 

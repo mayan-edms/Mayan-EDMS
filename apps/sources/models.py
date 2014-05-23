@@ -12,11 +12,10 @@ from django.db import transaction
 
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
-from documents.models import DocumentType, Document
+from documents.models import Document
 from documents.events import HISTORY_DOCUMENT_CREATED
 from document_indexing.api import update_indexes
 from history.api import create_history
-from metadata.models import MetadataType
 from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
 from acls.utils import apply_default_acls
@@ -37,7 +36,6 @@ class BaseModel(models.Model):
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
     whitelist = models.TextField(blank=True, verbose_name=_(u'whitelist'), editable=False)
     blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'), editable=False)
-    #document_type = models.ForeignKey(DocumentType, blank=True, null=True, verbose_name=_(u'document type'), help_text=(u'Optional document type to be applied to documents uploaded from this source.'))
 
     @classmethod
     def class_fullname(cls):
@@ -127,7 +125,7 @@ class BaseModel(models.Model):
         transformations, errors = self.get_transformation_list()
 
         new_version.apply_default_transformations(transformations)
-        #TODO: new HISTORY for version updates
+        # TODO: new HISTORY for version updates
 
         if metadata_dict_list and new_document:
             # Only do for new documents
@@ -174,22 +172,6 @@ class StagingFolder(InteractiveBaseModel):
         verbose_name = _(u'staging folder')
         verbose_name_plural = _(u'staging folders')
 
-"""
-class SourceMetadata(models.Model):
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    value = models.CharField(max_length=256, blank=True, verbose_name=_(u'value'))
-
-    def __unicode__(self):
-        return self.source
-
-    class Meta:
-        verbose_name = _(u'source metadata')
-        verbose_name_plural = _(u'sources metadata')
-"""
-
 
 class WebForm(InteractiveBaseModel):
     is_interactive = True
@@ -197,7 +179,7 @@ class WebForm(InteractiveBaseModel):
     default_icon = SOURCE_ICON_DISK
 
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
-    #Default path
+    # Default path
 
     class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'web form')
@@ -276,7 +258,7 @@ class SourceTransformation(models.Model):
     transformations = SourceTransformationManager()
 
     def __unicode__(self):
-        #return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.content_object))
+        # return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.content_object))
         return self.get_transformation_display()
 
     class Meta:

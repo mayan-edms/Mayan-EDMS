@@ -2,30 +2,29 @@ from __future__ import absolute_import
 
 import logging
 
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ObjectDoesNotExist
-from django.utils.simplejson import loads
-from django.core.exceptions import PermissionDenied
 from django.utils.http import urlencode
+from django.utils.simplejson import loads
+from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission
 from common.utils import encapsulate
 from common.widgets import two_state_template
+from permissions.models import Permission
 
-from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL,
-    ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
-from .models import AccessEntry, DefaultAccessEntry
+from .api import get_class_permissions_for
 from .classes import (AccessHolder, AccessObject, AccessObjectClass,
     ClassAccessHolder)
-from .widgets import object_w_content_type_icon
 from .forms import HolderSelectionForm, ClassHolderSelectionForm
-from .api import get_class_permissions_for
+from .models import AccessEntry, DefaultAccessEntry
+from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL,
+    ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
+from .widgets import object_w_content_type_icon
 
 logger = logging.getLogger(__name__)
 
@@ -78,7 +77,7 @@ def acl_detail(request, access_object_gid, holder_object_gid):
     except ObjectDoesNotExist:
         raise Http404
 
-    #return acl_detail_for(request, holder.source_object, access_object.source_object)
+    # return acl_detail_for(request, holder.source_object, access_object.source_object)
     return acl_detail_for(request, holder, access_object)
 
 
@@ -89,7 +88,7 @@ def acl_detail_for(request, actor, obj):
         AccessEntry.objects.check_accesses([ACLS_VIEW_ACL], actor, obj)
 
     permission_list = get_class_permissions_for(obj.source_object)
-    #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
+    # TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
             'name': u'generic_list_subtemplate.html',
@@ -97,14 +96,14 @@ def acl_detail_for(request, actor, obj):
                 'title': _(u'permissions available to: %(actor)s for %(obj)s' % {
                     'actor': actor,
                     'obj': obj
-                    }
+                }
                 ),
                 'object_list': permission_list,
                 'extra_columns': [
                     {'name': _(u'namespace'), 'attribute': 'namespace'},
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
-                        'name':_(u'has permission'),
+                        'name': _(u'has permission'),
                         'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj, db_only=True)))
                     },
                 ],
@@ -386,7 +385,7 @@ def acl_setup_valid_classes(request):
         'title': _(u'classes'),
         'extra_columns': [
             {'name': _(u'class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
-            ],
+        ],
         'hide_object': True,
     }
 
@@ -408,7 +407,7 @@ def acl_class_acl_list(request, access_object_class_gid):
         'extra_columns': [
             {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
             {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(DefaultAccessEntry.objects.get_holder_permissions_for(access_object_class.source_object, x.source_object)))},
-            ],
+        ],
         'hide_object': True,
         'access_object_class': access_object_class,
         'object': access_object_class,
@@ -427,7 +426,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         raise Http404
 
     permission_list = get_class_permissions_for(access_object_class.content_type.model_class())
-    #TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
+    # TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
             'name': u'generic_list_subtemplate.html',
@@ -442,7 +441,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
                     {'name': _(u'namespace'), 'attribute': 'namespace'},
                     {'name': _(u'label'), 'attribute': 'label'},
                     {
-                        'name':_(u'has permission'),
+                        'name': _(u'has permission'),
                         'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, actor.source_object, access_object_class.source_object)))
                     },
                 ],

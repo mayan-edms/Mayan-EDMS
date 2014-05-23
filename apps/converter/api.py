@@ -1,23 +1,22 @@
 from __future__ import absolute_import
 
-import os
-import subprocess
-import hashlib
 import logging
+import hashlib
+import os
 
 from django.utils.encoding import smart_str
 
 from common.conf.settings import TEMPORARY_DIRECTORY
 
+from . import backend
+from .exceptions import OfficeConversionError, UnknownFileFormat
 from .literals import (DEFAULT_PAGE_NUMBER,
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
-from . import backend
 from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
     FILE_FORMATS)
-from .utils import cleanup
 from .runtime import office_converter
-from .exceptions import OfficeConversionError, UnknownFileFormat
+from .utils import cleanup
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
@@ -116,6 +115,7 @@ def get_page_count(input_filepath):
 
     return backend.get_page_count(input_filepath)
 
+
 '''
 def get_document_dimensions(document, *args, **kwargs):
     document_filepath = create_image_cache_filename(document.checksum, *args, **kwargs)
@@ -125,6 +125,7 @@ def get_document_dimensions(document, *args, **kwargs):
     else:
         return [0, 0]
 '''
+
 
 def get_available_transformations_choices():
     result = []

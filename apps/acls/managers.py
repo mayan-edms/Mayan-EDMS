@@ -2,13 +2,13 @@ from __future__ import absolute_import
 
 import logging
 
-from django.db import models
-from django.utils.translation import ugettext
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
+from django.db import models
 from django.db.models import Q
+from django.utils.translation import ugettext
 
 from common.models import AnonymousUserSingleton
 from permissions.models import Permission, RoleMember
@@ -67,7 +67,7 @@ class AccessEntryManager(models.Manager):
         obj = get_source_object(obj)
         actor = get_source_object(actor)
 
-        if isinstance(actor, User) and db_only == False:
+        if isinstance(actor, User) and not db_only:
             # db_only causes the return of only the stored permissions
             # and not the perceived permissions for an actor
             if actor.is_superuser or actor.is_staff:
@@ -75,7 +75,7 @@ class AccessEntryManager(models.Manager):
 
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
         try:
-            content_type=ContentType.objects.get_for_model(obj)
+            content_type = ContentType.objects.get_for_model(obj)
         except AttributeError:
             # Object doesn't have a content type, therefore allow access
             return True
@@ -207,7 +207,7 @@ class AccessEntryManager(models.Manager):
         logger.debug('obj: %s' % obj)
         logger.debug('actor: %s' % actor)
 
-        if isinstance(actor, User) and db_only == False:
+        if isinstance(actor, User) and not db_only:
             if actor.is_superuser or actor.is_staff:
                 return Permission.objects.all()
 
@@ -240,7 +240,7 @@ class AccessEntryManager(models.Manager):
             qs = object_list.filter(pk__in=[obj.pk for obj in self.get_allowed_class_objects(permission, actor, object_list[0].__class__, related)])
             logger.debug('qs: %s' % qs)
 
-            if qs.count() == 0 and exception_on_empty == True:
+            if qs.count() == 0 and exception_on_empty:
                 raise PermissionDenied
 
             return qs
@@ -248,7 +248,7 @@ class AccessEntryManager(models.Manager):
             # Fallback to a filtered list
             object_list = list(set(object_list) & set(self.get_allowed_class_objects(permission, actor, object_list[0].__class__, related)))
             logger.debug('object_list: %s' % object_list)
-            if len(object_list) == 0 and exception_on_empty == True:
+            if len(object_list) == 0 and exception_on_empty:
                 raise PermissionDenied
 
             return object_list

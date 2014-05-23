@@ -1,17 +1,17 @@
 from __future__ import absolute_import
 
+from optparse import make_option
 import os
 import sys
-from optparse import make_option
 
-from django.core.management.base import BaseCommand, CommandError, LabelCommand
+from django.core.management.base import CommandError, LabelCommand
 from django.utils.simplejson import loads
 
-from metadata.api import convert_dict_to_dict_list
 from documents.models import DocumentType
+from metadata.api import convert_dict_to_dict_list
 
 from ...models import OutOfProcess
-from ...compressed_file import CompressedFile, NotACompressedFile
+from ...compressed_file import NotACompressedFile
 
 
 class Command(LabelCommand):
@@ -76,6 +76,6 @@ class Command(LabelCommand):
 def _confirm(interactive):
     if not interactive:
         return 'yes'
-    return raw_input('You have requested to bulk upload a number of documents from a compressed file.\n' 
+    return raw_input('You have requested to bulk upload a number of documents from a compressed file.\n'
             'Are you sure you want to do this?\n'
             'Type \'yes\' to continue, or any other value to cancel: ')

@@ -20,5 +20,5 @@ class CompressedFile(object):
         except zipfile.BadZipfile:
             raise NotACompressedFile
 
-    #def close(self):
-    #    self.file_object.close()
+    # def close(self):
+    #     self.file_object.close()

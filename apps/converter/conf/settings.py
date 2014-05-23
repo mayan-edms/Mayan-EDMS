@@ -1,4 +1,4 @@
-'''Configuration options for the converter app'''
+"""Configuration options for the converter app"""
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,9 +14,9 @@ register_settings(
         {'name': u'GM_SETTINGS', 'global_name': u'CONVERTER_GM_SETTINGS', 'default': u''},
         {'name': u'GRAPHICS_BACKEND', 'global_name': u'CONVERTER_GRAPHICS_BACKEND', 'default': u'converter.backends.python', 'description': _(u'Graphics conversion backend to use.  Options are: converter.backends.imagemagick, converter.backends.graphicsmagick and converter.backends.python.')},
         {'name': u'LIBREOFFICE_PATH', 'global_name': u'CONVERTER_LIBREOFFICE_PATH', 'default': u'/usr/bin/libreoffice', 'exists': True, 'description': _(u'Path to the libreoffice program.')},
-        
-        #{'name': u'OCR_OPTIONS', 'global_name': u'CONVERTER_OCR_OPTIONS', 'default': u'-colorspace Gray -depth 8 -resample 200x200'},
-        #{'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},
-        #{'name': u'PRINT_QUALITY_OPTIONS', 'global_name': u'CONVERTER_PRINT_QUALITY_OPTIONS', 'default': u'-density 500'},
+
+        # {'name': u'OCR_OPTIONS', 'global_name': u'CONVERTER_OCR_OPTIONS', 'default': u'-colorspace Gray -depth 8 -resample 200x200'},
+        # {'name': u'HIGH_QUALITY_OPTIONS', 'global_name': u'CONVERTER_HIGH_QUALITY_OPTIONS', 'default': u'-density 400'},
+        # {'name': u'PRINT_QUALITY_OPTIONS', 'global_name': u'CONVERTER_PRINT_QUALITY_OPTIONS', 'default': u'-density 500'},
     ]
 )

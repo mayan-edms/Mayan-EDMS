@@ -178,7 +178,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
                         new_filename = get_form_filename(form)
 
-                        result = web_form.upload_file(request.FILES['file'],
+                        result = web_form.upload_file(
+                            request.FILES['file'],
                             new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
                             document_type=document_type,
                             expand=expand,
@@ -191,13 +192,13 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             messages.success(request, _(u'New document version uploaded successfully.'))
                             return HttpResponseRedirect(reverse('document_version_list', args=[document.pk]))
                         else:
-                            if result['is_compressed'] == None:
+                            if result['is_compressed'] is None:
                                 messages.success(request, _(u'File uploaded successfully.'))
 
-                            if result['is_compressed'] == True:
+                            if result['is_compressed'] is True:
                                 messages.success(request, _(u'File uncompressed successfully and uploaded as individual files.'))
 
-                            if result['is_compressed'] == False:
+                            if result['is_compressed'] is False:
                                 messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
 
                             return HttpResponseRedirect(request.get_full_path())
@@ -253,7 +254,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
                         new_filename = get_form_filename(form)
 
-                        result = staging_folder.upload_file(staging_file.upload(),
+                        result = staging_folder.upload_file(
+                            staging_file.upload(),
                             new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
                             document_type=document_type,
                             expand=expand,
@@ -265,13 +267,13 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         if document:
                             messages.success(request, _(u'Document version from staging file: %s, uploaded successfully.') % staging_file.filename)
                         else:
-                            if result['is_compressed'] == None:
+                            if result['is_compressed'] is None:
                                 messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
 
-                        if result['is_compressed'] == True:
+                        if result['is_compressed'] is True:
                             messages.success(request, _(u'Staging file: %s, uncompressed successfully and uploaded as individual files.') % staging_file.filename)
 
-                        if result['is_compressed'] == False:
+                        if result['is_compressed'] is False:
                             messages.warning(request, _(u'Staging file: %s, was not compressed, uploaded as a single file.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
@@ -621,7 +623,7 @@ def setup_source_transformation_list(request, source_type, source_id):
             {'name': _(u'order'), 'attribute': 'order'},
             {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
             {'name': _(u'arguments'), 'attribute': 'arguments'}
-            ],
+        ],
         'hide_link': True,
         'hide_object': True,
     }

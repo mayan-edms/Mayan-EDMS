@@ -1,16 +1,14 @@
 from __future__ import absolute_import
 
+import logging
 import os
 import subprocess
-import logging
 
-from mimetype.api import get_mimetype
 from common.conf.settings import TEMPORARY_DIRECTORY
-from common.utils import id_generator
+from mimetype.api import get_mimetype
 
 from .conf.settings import LIBREOFFICE_PATH
-from .exceptions import (OfficeConversionError,
-    OfficeBackendError, UnknownFileFormat)
+from .exceptions import OfficeBackendError, UnknownFileFormat
 
 CACHED_FILE_SUFFIX = u'_office_converter'
 
@@ -50,7 +48,6 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'text/plain',
     u'text/rtf',
 ]
-
 
 logger = logging.getLogger(__name__)
 
@@ -146,4 +143,3 @@ class OfficeConverterBackendDirect(object):
             raise OfficeBackendError(msg)
         except Exception, msg:
             logger.error('Unhandled exception', exc_info=msg)
-

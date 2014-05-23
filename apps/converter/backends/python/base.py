@@ -1,5 +1,7 @@
-import tempfile
+from __future__ import absolute_import
+
 import os
+import tempfile
 
 import slate
 from PIL import Image
@@ -12,13 +14,11 @@ except RuntimeError:
 
 from mimetype.api import get_mimetype
 
-from converter.exceptions import UnknownFileFormat
-from converter.backends import ConverterBase
-from converter.literals import TRANSFORMATION_RESIZE, \
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
-from converter.literals import DEFAULT_PAGE_NUMBER, \
-    DEFAULT_FILE_FORMAT
-from converter.utils import cleanup
+from ...exceptions import UnknownFileFormat
+from ...backends import ConverterBase
+from ...literals import (TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
+    TRANSFORMATION_ZOOM, DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT)
+from ...utils import cleanup
 
 
 class ConverterClass(ConverterBase):
@@ -36,12 +36,12 @@ class ConverterClass(ConverterBase):
                     return 1
                     # TODO: Maybe return UnknownFileFormat to display proper unknwon file format message in document description
             return len(pages)
-            
+
         try:
             im = Image.open(input_filepath)
         except IOError:  # cannot identify image file
             raise UnknownFileFormat
-            
+
         try:
             while 1:
                 im.seek(im.tell() + 1)
@@ -49,7 +49,7 @@ class ConverterClass(ConverterBase):
                 # do something to im
         except EOFError:
             pass  # end of sequence
-            
+
         return page_count
 
     def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT, **kwargs):
@@ -69,7 +69,7 @@ class ConverterClass(ConverterBase):
             input_file_tmpl = '-f%s' % input_filepath
             args = [
                 'gs', '-q', '-dQUIET', '-dSAFER', '-dBATCH',
-                '-dNOPAUSE', '-dNOPROMPT', 
+                '-dNOPAUSE', '-dNOPROMPT',
                 first_page_tmpl, last_page_tmpl,
                 '-sDEVICE=jpeg', '-dJPEGQ=95',
                 '-r150', output_file_tmpl,
@@ -80,12 +80,12 @@ class ConverterClass(ConverterBase):
                 '-dAlignToPixels=0',
                 '-dGridFitTT=0',
                 '-dTextAlphaBits=4',
-                '-dGraphicsAlphaBits=4',                
-            ] 
+                '-dGraphicsAlphaBits=4',
+            ]
 
             ghostscript.Ghostscript(*args)
             page = 1  # Don't execute the following while loop
-            input_filepath = tmpfile    
+            input_filepath = tmpfile
 
         try:
             im = Image.open(input_filepath)
@@ -95,7 +95,7 @@ class ConverterClass(ConverterBase):
         finally:
             if tmpfile:
                 cleanup(tmpfile)
-        
+
         current_page = 0
         try:
             while current_page == page - 1:
@@ -105,7 +105,7 @@ class ConverterClass(ConverterBase):
         except EOFError:
             # end of sequence
             pass
-        
+
         try:
             if transformations:
                 aspect = 1.0 * im.size[0] / im.size[1]
@@ -117,7 +117,7 @@ class ConverterClass(ConverterBase):
                         im = self.resize(im, (width, height))
                     elif transformation['transformation'] == TRANSFORMATION_ZOOM:
                         decimal_value = float(arguments.get('percent', 100)) / 100
-                        im = im.transform((int(im.size[0] * decimal_value), int(im.size[1] * decimal_value)), Image.EXTENT, (0, 0, im.size[0], im.size[1])) 
+                        im = im.transform((int(im.size[0] * decimal_value), int(im.size[1] * decimal_value)), Image.EXTENT, (0, 0, im.size[0], im.size[1]))
                     elif transformation['transformation'] == TRANSFORMATION_ROTATE:
                         # PIL counter degress counter-clockwise, reverse them
                         im = im.rotate(360 - arguments.get('degrees', 0))
@@ -127,7 +127,7 @@ class ConverterClass(ConverterBase):
 
         if im.mode not in ('L', 'RGB'):
             im = im.convert('RGB')
-            
+
         im.save(output_filepath, format=file_format)
 
     def get_format_list(self):
@@ -141,16 +141,16 @@ class ConverterClass(ConverterBase):
                 formats.append('GBR_PIL')
             else:
                 formats.append(format_name)
-        
+
         if USE_GHOSTSCRIPT:
             formats.append('PDF')
             formats.append('PS')
-        
+
         return formats
 
     def get_available_transformations(self):
         return [
-            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, \
+            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
             TRANSFORMATION_ZOOM
         ]
 
@@ -162,14 +162,14 @@ class ConverterClass(ConverterBase):
         @param fit: boolean - crop the image to fill the box
         @param out: file-like-object - save the image into the output stream
         '''
-        #preresize image with factor 2, 4, 8 and fast algorithm
+        # preresize image with factor 2, 4, 8 and fast algorithm
         factor = 1
         while img.size[0] / factor > 2 * box[0] and img.size[1] * 2 / factor > 2 * box[1]:
-            factor *=2
+            factor *= 2
         if factor > 1:
             img.thumbnail((img.size[0] / factor, img.size[1] / factor), Image.NEAREST)
 
-        #calculate the cropping box and get the cropped part
+        # calculate the cropping box and get the cropped part
         if fit:
             x1 = y1 = 0
             x2, y2 = img.size
@@ -183,14 +183,14 @@ class ConverterClass(ConverterBase):
                 x2 = x2 / 2 + box[0] * hRatio / 2
             img = img.crop((x1, y1, x2, y2))
 
-        #Resize the image with best quality algorithm ANTI-ALIAS
+        # Resize the image with best quality algorithm ANTI-ALIAS
         img.thumbnail(box, Image.ANTIALIAS)
 
         if out:
-            #save it into a file-like object
+            # save it into a file-like object
             img.save(out, 'JPEG', quality=75)
         else:
             return img
 
-        #if isinstance(self.regex, basestring):
+        # if isinstance(self.regex, basestring):
         #    self.regex = re.compile(regex)

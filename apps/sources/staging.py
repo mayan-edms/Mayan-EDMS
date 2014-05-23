@@ -1,41 +1,24 @@
 from __future__ import absolute_import
 
 import errno
-import os
 import hashlib
+import os
 
-from django.core.files.base import File
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.translation import ugettext
+from django.core.files.base import File
 from django.utils.encoding import smart_str
+from django.utils.translation import ugettext
 
-from documents.conf.settings import THUMBNAIL_SIZE
-
-from mimetype.api import (get_icon_file_path, get_error_icon_file_path,
-    get_mimetype)
 from converter.api import convert, cache_cleanup
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
+from documents.conf.settings import THUMBNAIL_SIZE
+from mimetype.api import (get_icon_file_path, get_error_icon_file_path,
+    get_mimetype)
 
 
 DEFAULT_STAGING_DIRECTORY = u'/tmp'
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
-#TODO: Do benchmarks
-#func = lambda:[StagingFile.get_all() is None for i in range(100)]
-#t1=time.time();func();t2=time.time();print '%s took %0.3f ms' % (func.func_name, (t2-t1)*1000.0)
-
-#STAGING_FILE_FUNCTIONS = {
-#    UPLOAD_SOURCE_STAGING: lambda x: STAGING_DIRECTORY,
-#    UPLOAD_SOURCE_USER_STAGING: lambda x: os.path.join(USER_STAGING_DIRECTORY_ROOT, eval(USER_STAGING_DIRECTORY_EXPRESSION, {'user': x.user}))
-#}
-
-
-#def evaluate_user_staging_path(request, source):
-#    try:
-#        return STAGING_FILE_FUNCTIONS[source](request)
-#    except Exception, exc:
-#        messages.error(request, _(u'Error evaluating user staging directory expression; %s') % exc)
-#        return u''
 
 
 def get_all_files(path):
@@ -51,7 +34,7 @@ def _return_new_class():
 
 def create_staging_file_class(request, directory_path, source=None):
     cls = _return_new_class()
-    #cls.set_path(evaluate_user_staging_path(request, source))
+    # cls.set_path(evaluate_user_staging_path(request, source))
     cls.set_path(directory_path)
     if source is not None:
         cls.set_source(source)
@@ -143,7 +126,7 @@ class StagingFile(object):
     def get_image(self, size, transformations):
         try:
             return self.get_valid_image(size=size, transformations=transformations)
-            #return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
+            # return convert(self.filepath, size=size, cleanup_files=False, transformations=transformations)
         except UnknownFileFormat:
             mimetype, encoding = get_mimetype(open(self.filepath, 'rb'), self.filepath)
             return get_icon_file_path(mimetype)

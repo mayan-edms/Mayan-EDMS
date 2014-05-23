@@ -1,14 +1,14 @@
-import subprocess
-import re
+from __future__ import absolute_import
 
-from converter.conf.settings import GM_PATH
-from converter.conf.settings import GM_SETTINGS
-from converter.exceptions import ConvertError, UnknownFileFormat, \
-    IdentifyError
-from converter.backends import ConverterBase
-from converter.literals import TRANSFORMATION_RESIZE, \
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
-from converter.literals import DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER, \
+import re
+import subprocess
+
+from ...backends import ConverterBase
+from ...conf.settings import GM_PATH, GM_SETTINGS
+from ...exceptions import ConvertError, UnknownFileFormat, IdentifyError
+from ...literals import (TRANSFORMATION_RESIZE,
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM)
+from ...literals import DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER, \
     DEFAULT_FILE_FORMAT
 
 CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
@@ -74,10 +74,10 @@ class ConverterClass(ConverterBase):
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
         if return_code != 0:
-            #Got an error from convert program
+            # Got an error from convert program
             error_line = proc.stderr.readline()
             if (CONVERTER_ERROR_STRING_NO_DECODER in error_line) or (CONVERTER_ERROR_STARTS_WITH in error_line):
-                #Try to determine from error message which class of error is it
+                # Try to determine from error message which class of error is it
                 raise UnknownFileFormat
             else:
                 raise ConvertError(error_line)
@@ -108,7 +108,7 @@ class ConverterClass(ConverterBase):
 
     def get_available_transformations(self):
         return [
-            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, \
+            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
             TRANSFORMATION_ZOOM
         ]
 
