@@ -24,7 +24,7 @@ class MetadataType(models.Model):
     lookup = models.TextField(blank=True, null=True,
         verbose_name=_(u'lookup'),
         help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
-    #TODO: datatype?
+    # TODO: datatype?
 
     objects = MetadataTypeManager()
 
@@ -67,7 +67,7 @@ class MetadataSetItem(models.Model):
     """
     metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'metadata set'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    #required = models.BooleanField(default=True, verbose_name=_(u'required'))
+    # required = models.BooleanField(default=True, verbose_name=_(u'required'))
 
     def __unicode__(self):
         return unicode(self.metadata_type)

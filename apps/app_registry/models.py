@@ -1,17 +1,14 @@
 from __future__ import absolute_import
 
 import logging
-import imp
-import sys
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 from django.utils.importlib import import_module
 
+from bootstrap.classes import BootstrapModel, Cleanup
+from navigation.api import register_top_menu
 from project_setup.api import register_setup
 from project_tools.api import register_tool
-from navigation.api import register_top_menu
-from bootstrap.classes import Cleanup, BootstrapModel
 
 logger = logging.getLogger(__name__)
 
@@ -33,19 +30,19 @@ class App(object):
             else:
                 if not getattr(registration, 'disabled', False):
                     app = App()
-                    app.name=app_name
+                    app.name = app_name
                     # If there are not error go ahead with the stored app instance
                     app.label = getattr(registration, 'label', app_name)
                     app.description = getattr(registration, 'description', u'')
-                          
+
                     for link in getattr(registration, 'setup_links', []):
                         logger.debug('setup link: %s' % link)
-                        register_setup(link) 
+                        register_setup(link)
 
                     for link in getattr(registration, 'tool_links', []):
                         logger.debug('tool link: %s' % link)
                         register_tool(link)
-                        
+
                     for index, link in enumerate(getattr(registration, 'menu_links', [])):
                         logger.debug('menu_link: %s' % link)
                         register_top_menu(name='%s.%s' % (app_name, index), link=link)

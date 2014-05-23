@@ -2,12 +2,11 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from acls import ACLS_VIEW_ACL
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 
-from .permissions import (PERMISSION_SMART_LINK_VIEW,
-    PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
-    PERMISSION_SMART_LINK_EDIT)
+from .permissions import (PERMISSION_SMART_LINK_CREATE,
+    PERMISSION_SMART_LINK_DELETE, PERMISSION_SMART_LINK_EDIT)
 
 smart_link_instance_view_link = {'text': _(u'smart links actions'), 'view': 'smart_link_instance_view', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 smart_link_instances_for_document = {'text': _(u'smart links'), 'view': 'smart_link_instances_for_document', 'args': 'object.pk', 'famfam': 'page_link', 'permissions': [PERMISSION_DOCUMENT_VIEW]}

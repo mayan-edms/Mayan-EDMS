@@ -1,27 +1,26 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.core.exceptions import PermissionDenied
+from django.utils.translation import ugettext_lazy as _
 
-from documents.views import document_list
 from documents.models import Document
+from documents.views import document_list
 
-from permissions.models import Permission
 from acls.models import AccessEntry
 from common.utils import get_object_name
 from common.utils import encapsulate
+from permissions.models import Permission
 
+from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
+from .forms import DocumentCheckoutForm
 from .models import DocumentCheckout
 from .permissions import (PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN,
     PERMISSION_DOCUMENT_CHECKIN_OVERRIDE)
-from .forms import DocumentCheckoutForm
-from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
-from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN, STATE_ICONS, STATE_LABELS
 from .widgets import checkout_widget
 
 
@@ -56,12 +55,12 @@ def checkout_info(request, document_pk):
         paragraphs.append(_(u'Check out time: %s') % checkout_info.checkout_datetime)
         paragraphs.append(_(u'Check out expiration: %s') % checkout_info.expiration_datetime)
         paragraphs.append(_(u'New versions allowed: %s') % (_(u'yes') if not checkout_info.block_new_version else _(u'no')))
-        
+
     return render_to_response('generic_template.html', {
         'paragraphs': paragraphs,
         'object': document,
         'title': _(u'Check out details for document: %s') % document
-    }, context_instance=RequestContext(request))    
+    }, context_instance=RequestContext(request))
 
 
 def checkout_document(request, document_pk):
@@ -70,7 +69,7 @@ def checkout_document(request, document_pk):
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKOUT])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKOUT, request.user, document)
-        
+
     if request.method == 'POST':
         form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
         try:
@@ -94,7 +93,7 @@ def checkout_document(request, document_pk):
         'form': form,
         'object': document,
         'title': _(u'Check out document: %s') % document
-    }, context_instance=RequestContext(request))    
+    }, context_instance=RequestContext(request))
 
 
 def checkin_document(request, document_pk):
@@ -114,7 +113,7 @@ def checkin_document(request, document_pk):
             Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN_OVERRIDE])
         except PermissionDenied:
             AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN_OVERRIDE, request.user, document)
-        
+
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
 

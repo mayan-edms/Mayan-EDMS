@@ -1,10 +1,11 @@
 from __future__ import absolute_import
 
+from hkp import Key as KeyServerKey
+
 from django.utils.translation import ugettext_lazy as _
 
 from navigation.api import register_links
 from project_setup.api import register_setup
-from hkp import Key as KeyServerKey
 
 from .api import Key
 from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
@@ -18,7 +19,7 @@ key_query = {'text': _(u'query keyservers'), 'view': 'key_query', 'famfam': 'zoo
 key_receive = {'text': _(u'import'), 'view': 'key_receive', 'args': 'object.keyid', 'famfam': 'key_add', 'keep_query': True, 'permissions': [PERMISSION_KEY_RECEIVE]}
 key_setup = {'text': _(u'key management'), 'view': 'key_public_list', 'args': 'object.pk', 'famfam': 'key', 'icon': 'key.png', 'permissions': [PERMISSION_KEY_VIEW], 'children_view_regex': [r'^key_']}
 
-#register_links(['key_delete', 'key_private_list', 'key_public_list', 'key_query'], [private_keys, public_keys, key_query], menu_name='sidebar')
+# register_links(['key_delete', 'key_private_list', 'key_public_list', 'key_query'], [private_keys, public_keys, key_query], menu_name='sidebar')
 register_links(['key_delete', 'key_public_list', 'key_query'], [public_keys, key_query], menu_name='sidebar')
 
 register_links(Key, [key_delete])

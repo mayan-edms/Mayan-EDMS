@@ -1,24 +1,24 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.core.exceptions import PermissionDenied
 from django.utils.html import mark_safe
-from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission
+from acls.models import AccessEntry
+from acls.utils import apply_default_acls
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
 from common.utils import encapsulate, generate_choices_w_labels
 from common.views import assign_remove
 from common.widgets import two_state_template
-from acls.utils import apply_default_acls
-from acls.models import AccessEntry
+from permissions.models import Permission
 
 from .forms import IndexForm, IndexTemplateNodeForm
 from .models import (Index, IndexTemplateNode, IndexInstanceNode)
@@ -167,7 +167,7 @@ def index_setup_view(request, index_pk):
         'extra_columns': [
             {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
             {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},            
+            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
         ],
     }
 

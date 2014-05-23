@@ -41,7 +41,7 @@ class DocumentTestCase(unittest.TestCase):
         self.failUnlessEqual(self.document.page_count, 47)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '1.0')
-        #self.failUnlessEqual(self.document.has_detached_signature(), False)
+        # self.failUnlessEqual(self.document.has_detached_signature(), False)
 
         file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.gpg'))
         new_version_data = {
@@ -55,9 +55,9 @@ class DocumentTestCase(unittest.TestCase):
         file_object.close()
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '2.0')
-        #self.failUnlessEqual(self.document.has_detached_signature(), False)
+        # self.failUnlessEqual(self.document.has_detached_signature(), False)
 
-        #self.failUnlessEqual(self.document.verify_signature().status, SIGNATURE_STATE_VALID)
+        # self.failUnlessEqual(self.document.verify_signature().status, SIGNATURE_STATE_VALID)
 
         new_version_data = {
             'comment': 'test comment 2',

@@ -3,13 +3,12 @@ from __future__ import absolute_import
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import PermissionDenied
 
-from permissions.models import Permission
 from common.utils import encapsulate
+from permissions.models import Permission
 
-from .permissions import PERMISSION_VIEW_JOB_LIST
 from .api import get_job_list
+from .permissions import PERMISSION_VIEW_JOB_LIST
 
 
 def job_list(request):

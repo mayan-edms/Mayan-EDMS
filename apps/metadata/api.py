@@ -17,13 +17,13 @@ def decode_metadata_from_url(url_dict):
         'value': {}
     }
     metadata_list = []
-    #Match out of order metadata_type ids with metadata values from request
+    # Match out of order metadata_type ids with metadata values from request
     for key, value in url_dict.items():
         if 'metadata' in key:
             index, element = key[8:].split('_')
             metadata_dict[element][index] = value
 
-    #Convert the nested dictionary into a list of id+values dictionaries
+    # Convert the nested dictionary into a list of id+values dictionaries
     for order, identifier in metadata_dict['id'].items():
         if order in metadata_dict['value'].keys():
             metadata_list.append({
@@ -74,7 +74,7 @@ def save_metadata(metadata_dict, document, create=False):
 
     # unquote_plus handles utf-8?!?
     # http://stackoverflow.com/questions/4382875/handling-iri-in-django
-    #.decode('utf-8')
+    # .decode('utf-8')
     if document_metadata:
         document_metadata.value = unquote_plus(metadata_dict['value'])
         document_metadata.save()
@@ -117,5 +117,5 @@ def convert_dict_to_dict_list(dictionary):
         except MetadataType.DoesNotExist:
             raise ValueError('Unknown metadata type name')
         result.append({'id': metadata_type.pk, 'value': value})
-    
+
     return result

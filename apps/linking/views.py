@@ -2,29 +2,29 @@ from __future__ import absolute_import
 
 import logging
 
-from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
-from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from django.core.exceptions import PermissionDenied
+from django.utils.translation import ugettext_lazy as _
 
+from acls.views import acl_list_for
+from acls.models import AccessEntry
+from acls.utils import apply_default_acls
 from common.utils import encapsulate
 from common.widgets import two_state_template
 from documents.models import Document
 from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
-from acls.views import acl_list_for
-from acls.models import AccessEntry
-from acls.utils import apply_default_acls
 
-from .models import SmartLink, SmartLinkCondition
+from . import smart_link_instance_view_link
 from .conf.settings import SHOW_EMPTY_SMART_LINKS
 from .forms import (SmartLinkInstanceForm, SmartLinkForm,
     SmartLinkConditionForm)
-from . import smart_link_instance_view_link
+from .models import SmartLink, SmartLinkCondition
 from .permissions import (PERMISSION_SMART_LINK_VIEW,
     PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
     PERMISSION_SMART_LINK_EDIT)
@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 
 def smart_link_action(request):
-    #Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
+    # Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
 
     action = request.GET.get('action', None)
 
@@ -76,8 +76,8 @@ def smart_link_instances_for_document(request, document_id):
             messages.warning(request, _(u'Smart link query error: %s' % error))
 
     if not SHOW_EMPTY_SMART_LINKS:
-        #If SHOW_EMPTY_SMART_LINKS is False, remove empty groups from
-        #dictionary
+        # If SHOW_EMPTY_SMART_LINKS is False, remove empty groups from
+        # dictionary
         smart_link_instances = dict([(group, data) for group, data in smart_link_instances.items() if data['documents']])
 
     try:
@@ -178,7 +178,7 @@ def smart_link_edit(request, smart_link_pk):
         form = SmartLinkForm(instance=smart_link)
 
     return render_to_response('generic_form.html', {
-        #'navigation_object_name': 'smart_link',
+        # 'navigation_object_name': 'smart_link',
         'object': smart_link,
         'form': form,
         'title': _(u'Edit smart link: %s') % smart_link

@@ -43,7 +43,7 @@ class RegistrationSingleton(Singleton):
             name_value = dictionary.get('company') or dictionary.get('name')
             if name_value:
                 cls._cached_name = name_value
-        
+
             return name_value or _(u'No name')
 
     @property
@@ -65,7 +65,7 @@ class RegistrationSingleton(Singleton):
         self.registration_data = dumps(dictionary)
         self.save()
         self.submit()
-         
+
     def submit(self):
         try:
             lock = Lock.acquire_lock('upload_registration')

@@ -3,8 +3,8 @@ from __future__ import absolute_import
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from mptt.models import MPTTModel
 from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
 
 from documents.models import Document, DocumentType
 
@@ -68,7 +68,7 @@ class IndexTemplateNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='index_template_node')
     index = models.ForeignKey(Index, verbose_name=_(u'index'))
     expression = models.CharField(max_length=128, verbose_name=_(u'indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
-        # % available_indexing_functions_string)
+    # % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
     link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
@@ -82,7 +82,7 @@ class IndexTemplateNode(MPTTModel):
     class Meta:
         verbose_name = _(u'index template node')
         verbose_name_plural = _(u'indexes template nodes')
-    
+
 
 class IndexInstanceNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='index_instance_node')

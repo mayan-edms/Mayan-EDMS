@@ -1,19 +1,18 @@
 from __future__ import absolute_import
 
-import logging
 import datetime
+import logging
 
-from django.db import models, IntegrityError
-from django.utils.translation import ugettext_lazy as _
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 from history.api import create_history
 
-from .managers import DocumentCheckoutManager
-from .exceptions import DocumentAlreadyCheckedOut
 from .events import HISTORY_DOCUMENT_CHECKED_OUT
+from .managers import DocumentCheckoutManager
 
 logger = logging.getLogger(__name__)
 
@@ -31,12 +30,12 @@ class DocumentCheckout(models.Model):
 
     block_new_version = models.BooleanField(default=True, verbose_name=_(u'block new version upload'), help_text=_(u'Do not allow new version of this document to be uploaded.'))
 
-    #block_metadata
-    #block_editing
-    #block tag add/remove
-    
+    # block_metadata
+    # block_editing
+    # block tag add/remove
+
     objects = DocumentCheckoutManager()
-    
+
     def __unicode__(self):
         return unicode(self.document)
 
@@ -46,11 +45,11 @@ class DocumentCheckout(models.Model):
         result = super(DocumentCheckout, self).save(*args, **kwargs)
         create_history(HISTORY_DOCUMENT_CHECKED_OUT, source_object=self.document, data={'user': self.user_object, 'document': self.document})
         return result
-    
+
     @models.permalink
     def get_absolute_url(self):
-        return ('checkout_info', [self.document.pk])        
-        
+        return ('checkout_info', [self.document.pk])
+
     class Meta:
         verbose_name = _(u'document checkout')
         verbose_name_plural = _(u'document checkouts')

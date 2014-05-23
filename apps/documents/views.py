@@ -35,8 +35,7 @@ from permissions.models import Permission
 
 from .events import HISTORY_DOCUMENT_EDITED
 from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
-    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, PRINT_SIZE,
-    RECENT_COUNT)
+    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, RECENT_COUNT)
 from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
         DocumentPageTransformationForm, DocumentContentForm,

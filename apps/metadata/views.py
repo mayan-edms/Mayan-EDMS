@@ -165,7 +165,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
         form = AddMetadataForm()
 
     context = {
-        #'form_display_mode_table': True,
+        # 'form_display_mode_table': True,
         'form': form,
         'next': next,
     }
@@ -309,7 +309,7 @@ def setup_metadata_type_edit(request, metadatatype_id):
     if request.method == 'POST':
         form = MetadataTypeForm(instance=metadata_type, data=request.POST)
         if form.is_valid():
-            #folder.title = form.cleaned_data['title']
+            # folder.title = form.cleaned_data['title']
             try:
                 form.save()
                 messages.success(request, _(u'Metadata type edited successfully'))
@@ -509,7 +509,6 @@ def setup_metadata_set_delete(request, metadata_set_id):
             messages.error(request, _(u'Metadata set: %(metadata_set)s delete error: %(error)s') % {
                 'metadata_set': metadata_set, 'error': e})
             return HttpResponseRedirect(previous)
-
 
     context = {
         'object_name': _(u'metadata set'),

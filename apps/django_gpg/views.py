@@ -2,21 +2,21 @@ from __future__ import absolute_import
 
 import logging
 
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission
 from common.utils import encapsulate
+from permissions.models import Permission
 
 from .api import Key
-from .runtime import gpg
-from .exceptions import KeyFetchingError, KeyImportError
+from .exceptions import KeyImportError
 from .forms import KeySearchForm
 from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
     PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
+from .runtime import gpg
 
 logger = logging.getLogger(__name__)
 

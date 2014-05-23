@@ -1,10 +1,9 @@
 from __future__ import absolute_import
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 
-from .models import DocumentCheckout
 from .exceptions import DocumentAlreadyCheckedOut
+from .models import DocumentCheckout
 from .widgets import SplitTimeDeltaField
 
 
@@ -17,7 +16,7 @@ class DocumentCheckoutForm(forms.ModelForm):
 
         widgets = {
             'document': forms.widgets.HiddenInput(),
-        }     
+        }
 
     def clean_document(self):
         document = self.cleaned_data['document']

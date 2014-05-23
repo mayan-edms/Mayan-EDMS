@@ -1,18 +1,18 @@
 from __future__ import absolute_import
 
 import logging
-import tempfile
 import os
+import tempfile
 
 try:
     from cStringIO import StringIO
 except ImportError:
     from StringIO import StringIO
 
-from django.utils.translation import ugettext_lazy as _
-
 from hkp import KeyServer
 import gnupg
+
+from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import (GPGVerificationError, GPGSigningError,
     GPGDecryptionError, KeyDeleteError, KeyGenerationError,
@@ -110,7 +110,7 @@ class Key(object):
         keys = gpg.gpg.list_keys(secret=secret)
         key = next((key for key in keys if key['keyid'] == key_id), None)
         if not key:
-            if search_keyservers and secret == False:
+            if search_keyservers and secret is False:
                 try:
                     gpg.receive_key(key_id)
                     return Key(gpg, key_id)

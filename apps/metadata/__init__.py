@@ -5,7 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
-from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from navigation.api import (register_links, register_multi_item_links,
     register_sidebar_template, register_model_list_columns)
 from project_setup.api import register_setup
@@ -20,11 +19,7 @@ from .links import (metadata_edit, metadata_view, metadata_multiple_edit,
 from .models import MetadataType, MetadataSet
 from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
-    PERMISSION_METADATA_DOCUMENT_VIEW, PERMISSION_METADATA_TYPE_EDIT,
-    PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
-    PERMISSION_METADATA_TYPE_VIEW, PERMISSION_METADATA_SET_EDIT,
-    PERMISSION_METADATA_SET_CREATE, PERMISSION_METADATA_SET_DELETE,
-    PERMISSION_METADATA_SET_VIEW)
+    PERMISSION_METADATA_DOCUMENT_VIEW)
 
 register_links(['metadata_add', 'metadata_edit', 'metadata_remove', 'metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
 register_links(Document, [metadata_view], menu_name='form_header')
@@ -52,7 +47,7 @@ class_permissions(Document, [
 ])
 
 register_model_list_columns(Document, [
-        {'name':_(u'metadata'), 'attribute':
+        {'name': _(u'metadata'), 'attribute':
             encapsulate(lambda x: get_metadata_string(x))
         },
     ])

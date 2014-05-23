@@ -14,20 +14,20 @@ class MetadataForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
 
-        #Set form fields initial values
+        # Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            #self.document_type = kwargs['initial'].pop('document_type', None)
+            # self.document_type = kwargs['initial'].pop('document_type', None)
 
             # FIXME:
-            #required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
+            # required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
             required = False
             required_string = u''
             if required:
                 self.fields['value'].required = True
                 required_string = ' (%s)' % _(u'required')
             else:
-                #TODO: FIXME: not working correctly
+                # TODO: FIXME: not working correctly
                 self.fields['value'].required = False
 
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
@@ -71,7 +71,7 @@ class MetadataRemoveForm(MetadataForm):
 
 class MetadataSelectionForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        #document_type = kwargs.pop('document_type', None)
+        # document_type = kwargs.pop('document_type', None)
         super(MetadataSelectionForm, self).__init__(*args, **kwargs)
         document_type = getattr(self, 'initial', {}).get('document_type', None)
         if document_type:
@@ -86,7 +86,7 @@ class MetadataSelectionForm(forms.Form):
         queryset=MetadataSet.objects.all(),
         label=_(u'Metadata sets'),
         required=False,
-        #widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+        # widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
         widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
     )
 
@@ -94,7 +94,7 @@ class MetadataSelectionForm(forms.Form):
         queryset=MetadataType.objects.all(),
         label=_(u'Metadata'),
         required=False,
-        #widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
+        # widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
         widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
     )
 

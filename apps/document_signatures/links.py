@@ -16,7 +16,7 @@ def has_embedded_signature(context):
 
 
 def doesnt_have_detached_signature(context):
-    return DocumentVersionSignature.objects.has_detached_signature(context['object']) == False
+    return DocumentVersionSignature.objects.has_detached_signature(context['object']) is False
 
 
 document_signature_delete = {'text': _(u'delete signature'), 'view': 'document_signature_delete', 'args': 'object.pk', 'famfam': 'pencil_delete', 'permissions': [PERMISSION_SIGNATURE_DELETE], 'conditional_disable': doesnt_have_detached_signature}

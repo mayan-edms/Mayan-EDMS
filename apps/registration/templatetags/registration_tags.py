@@ -1,8 +1,6 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
-from django.core.urlresolvers import reverse, NoReverseMatch
-from django.template import (TemplateSyntaxError, Library,
-    VariableDoesNotExist, Node, Variable)
+from django.template import Library
 from django.utils.translation import ugettext as _
 
 from ..models import RegistrationSingleton

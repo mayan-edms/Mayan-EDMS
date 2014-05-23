@@ -9,8 +9,7 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
     PERMISSION_DOCUMENT_INDEXING_SETUP,
     PERMISSION_DOCUMENT_INDEXING_CREATE,
     PERMISSION_DOCUMENT_INDEXING_EDIT,
-    PERMISSION_DOCUMENT_INDEXING_DELETE
-)
+    PERMISSION_DOCUMENT_INDEXING_DELETE)
 
 
 def is_not_root_node(context):
@@ -38,6 +37,6 @@ index_list = {'text': _(u'index list'), 'view': 'index_list', 'famfam': 'tab', '
 index_parent = {'text': _(u'go up one level'), 'view': 'index_instance_node_view', 'args': 'object.parent.pk', 'famfam': 'arrow_up', 'permissions': [PERMISSION_DOCUMENT_INDEXING_VIEW], 'dont_mark_active': True, 'condition': is_not_instance_root_node}
 document_index_list = {'text': _(u'indexes'), 'view': 'document_index_list', 'args': 'object.pk', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_INDEXING_VIEW, PERMISSION_DOCUMENT_VIEW]}
 
-document_index_main_menu_link={'text': _('indexes'), 'famfam': 'tab', 'view': 'index_list', 'children_view_regex': [r'^index_[i,l]']}
+document_index_main_menu_link = {'text': _('indexes'), 'famfam': 'tab', 'view': 'index_list', 'children_view_regex': [r'^index_[i,l]']}
 
 rebuild_index_instances = {'text': _('rebuild indexes'), 'view': 'rebuild_index_instances', 'famfam': 'folder_page', 'permissions': [PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES], 'description': _(u'Deletes and creates from scratch all the document indexes.')}

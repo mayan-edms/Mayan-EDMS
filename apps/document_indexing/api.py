@@ -87,7 +87,7 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
         else:
             if result:
                 index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result, parent=parent_index_instance)
-                #if created:
+                # if created:
                 try:
                     fs_create_index_directory(index_instance)
                 except Exception, exc:

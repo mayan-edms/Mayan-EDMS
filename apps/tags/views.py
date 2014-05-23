@@ -2,22 +2,22 @@ from __future__ import absolute_import
 
 import logging
 
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import PermissionDenied
 
-from permissions import Permission
-from taggit.models import Tag
-from documents.models import Document
-from documents.views import document_list
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 from acls.utils import apply_default_acls
+from documents.models import Document
+from documents.views import document_list
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from permissions import Permission
+from taggit.models import Tag
 
 from .forms import TagListForm, TagForm
 from .models import TagProperties
@@ -102,7 +102,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         'previous': previous,
         'next': next,
     }
-    
+
     if len(documents) == 1:
         context['object'] = documents[0]
         context['title'] = _(u'Attach tag to document: %s.') % ', '.join([unicode(d) for d in documents])
@@ -111,7 +111,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
 
     return render_to_response('generic_form.html', context,
         context_instance=RequestContext(request))
-        
+
 
 def tag_multiple_attach(request):
     return tag_attach(
@@ -344,7 +344,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
                     messages.success(request, _(u'Tag "%(tag)s" removed successfully from document "%(document)s".') % {
                         'document': document, 'tag': tag}
                     )
-                    
+
         return HttpResponseRedirect(next)
     else:
         return render_to_response(template, context,

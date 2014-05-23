@@ -13,7 +13,7 @@ urlpatterns = patterns('tags.views',
 
     url(r'^selection/attach/document/(?P<document_id>\d+)/$', 'tag_attach', (), 'tag_attach'),
     url(r'^selection/attach/document/multiple/$', 'tag_multiple_attach', (), 'tag_multiple_attach'),
-    
+
     url(r'^for/document/(?P<document_id>\d+)/$', 'document_tags', (), 'document_tags'),
 
     url(r'^(?P<tag_pk>\d+)/acl/list/$', 'tag_acl_list', (), 'tag_acl_list'),
