@@ -4,7 +4,7 @@ Installation
 
 Automatic install using included fabfile
 ----------------------------------------
-A Fabric_ file is included to help users not very familiar with Ubuntu_, 
+A Fabric_ file is included to help users not very familiar with Ubuntu_,
 Python_ and Django_ install **Mayan EDMS**, or for system administrators
 looking to automate the install whether in a local or remote system.
 
@@ -16,11 +16,11 @@ installation when executing the fabfile.
 
 * Debian or Ubuntu::
 
-    $ cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
-    
+    $ cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget https://github.com/mayan-edms/mayan-edms/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+
 * Fedora::
 
-    $ cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://github.com/rosarior/mayan/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
+    $ cd /tmp && sudo yum install -y fabric wget tar gzip && wget https://github.com/mayan-edms/mayan-edms/raw/master/contrib/fabfile.tar.gz -O - | tar -xvzf - && echo "database_manager_admin_password=<Your MySQL root password>" > ~/.fabricrc && fab -H localhost install
 
 
 The ``fabfile`` also supports deploying to more than one server whether
@@ -48,15 +48,15 @@ A sample ``server_config.yaml`` would be as follows::
 To install **Mayan EDMS** to these servers the ``fabfile`` should be called in the following manner::
 
     $ fab servers:debian_server install
-    
+
 or::
-    
+
     $ fab servers:ubuntu_server,debian_server install
-    
+
 or::
-    
+
     $ fab servers:all_servers install
-    
+
 
 Configuration options for the ``fabfile``:
 
@@ -85,34 +85,34 @@ Local or managed Ubuntu or Debian server
 
 If using a Debian_ or Ubuntu_ based Linux distribution getting the executable requirements is as easy as::
 
-	$ sudo apt-get install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils -y
-    
+    $ sudo apt-get install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils -y
+
 To initialize a ``virtualenv`` to deploy the project do::
 
-	$ virtualenv --no-site-packages mayan
-    
+    $ virtualenv --no-site-packages mayan
+
 Download_ and decompress the latest version of **Mayan EDMS**::
 
-	$ cd mayan
-	$ tar -xvzf mayan.tar.gz
-    
+    $ cd mayan
+    $ tar -xvzf mayan.tar.gz
+
 Or clone the latest development version straight from github::
 
-	$ cd mayan
-	$ git clone git://github.com/rosarior/mayan.git
+    $ cd mayan
+    $ git clone git://github.com/mayan-edms/mayan-edms.git
 
 To install the python dependencies ``easy_install`` can be used, however for easier retrieval a production dependencies file is included, to use it execute::
 
-	$ cd mayan
-	$ source ../bin/activate
-	$ pip install -r requirements/production.txt
+    $ cd mayan
+    $ source ../bin/activate
+    $ pip install -r requirements/production.txt
 
 Create the database that will hold the data. Install any corresponding python database drivers. Update the settings.py file with you database settings.
 If using the ``MySQL`` database manager, use the following commands::
 
     $ sudo apt-get install libmysqlclient-dev -y
     $ pip install MySQL-python
-    
+
 If using ``PostgreSQL``, enter the following::
 
     $ sudo apt-get install libpq-dev -y
@@ -121,7 +121,7 @@ If using ``PostgreSQL``, enter the following::
 Populate the database with the project's schema doing::
 
     $ ./manage.py syncdb --migrate --noinput
-    
+
 To test your installation, create a file called settings_local.py with the following content::
 
     DEBUG=True
@@ -151,34 +151,34 @@ Local or managed Fedora server
 
 If using a Fedora_ based Linux distribution getting the executable requirements is as easy as::
 
-	$ sudo yum install -y git gcc tesseract unpaper python-virtualenv ghostscript libjpeg-turbo-devel libpng-devel poppler-util python-devel
-    
+    $ sudo yum install -y git gcc tesseract unpaper python-virtualenv ghostscript libjpeg-turbo-devel libpng-devel poppler-util python-devel
+
 To initialize a ``virtualenv`` to deploy the project do::
 
-	$ virtualenv --no-site-packages mayan
-    
+    $ virtualenv --no-site-packages mayan
+
 Download_ and decompress the latest version of **Mayan EDMS**::
 
-	$ cd mayan
-	$ tar -xvzf mayan.tar.gz
-    
+    $ cd mayan
+    $ tar -xvzf mayan.tar.gz
+
 Or clone the latest development version straight from github::
 
-	$ cd mayan
-	$ git clone git://github.com/rosarior/mayan.git
+    $ cd mayan
+    $ git clone git://github.com/mayan-edms/mayan-edms.git
 
 To install the python dependencies ``easy_install`` can be used, however for easier retrieval a production dependencies file is included, to use it execute::
 
-	$ cd mayan
-	$ source ../bin/activate
-	$ pip install -r requirements/production.txt
+    $ cd mayan
+    $ source ../bin/activate
+    $ pip install -r requirements/production.txt
 
 Create the database that will hold the data. Install any corresponding python database drivers. Update the settings.py file with you database settings.
 If using the ``MySQL`` database manager, use the following commands::
 
     $ sudo yum install -y mysql-devel
     $ pip install MySQL-python
-        
+
 If using ``PostgreSQL``, enter the following::
 
     $ sudo yum install -y postgresql-devel
@@ -187,7 +187,7 @@ If using ``PostgreSQL``, enter the following::
 Populate the database with the project's schema doing::
 
     $ ./manage.py syncdb --migrate --noinput
-    
+
 To test your installation, create a file called settings_local.py with the following content::
 
     DEBUG=True
@@ -239,9 +239,9 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
   * Anotate the provided password.
 
 2. Create a new app:
-    
+
   * Enter the following in the textbox:
-    
+
     * Name:* ``mayan_app``
     * App category:* ``mod_wsgi``
     * App type:* ``mod_wsgi 3.3/Python 2.7``
@@ -252,7 +252,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
     $ cd ~/webapps/mayan_app
     $ virtualenv --no-site-packages mayan
     $ cd mayan
-    $ git clone git://github.com/rosarior/mayan.git
+    $ git clone git://github.com/mayan-edms/mayan-edms.git
     $ cd mayan
     $ source ../bin/activate
     $ pip install -r requirements/production.txt
@@ -265,7 +265,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql', 
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': '<username>_mayan',
             'USER': '<username>_mayan',
             'PASSWORD': '<database password from step 1>',
@@ -285,7 +285,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 8. Create a new app:
 
   * Enter the following:
-    
+
     * Name:* ``mayan_static``
     * App category:* ``Symbolic link``
     * App type:* ``Symbolic link to static-only app``
@@ -295,33 +295,33 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 
   * Name: ``mayan_edms``
   * Choose a subdomain
-  * Under ``Site apps:`` enter the following selections: 
-    
+  * Under ``Site apps:`` enter the following selections:
+
     * App #1
-        
+
       * App:* ``mayan_app``
       * URL path (ex: '/' or '/blog'):* ``/``
-            
+
     * App #2
-        
+
       * App:* ``mayan_static``
       * URL path (ex: '/' or '/blog'):* ``/mayan-static``
 
 10. Edit the file ``~/webapps/mayan_app/apache2/conf/httpd.conf``:
-    
+
   * Disable the ``DirectoryIndex`` line and the ``DocumentRoot`` line.
   * Add the following line::
-        
+
       WSGIScriptAlias / /home/<username>/webapps/mayan_app/mayan/mayan/wsgi/dispatch.wsgi
- 
+
   * Tune your WSGI process to only use 2 workers (as explained here: `Reducing mod_wsgi Memory Consumption`_)
     to keep the memory usage under the basic 256MB of RAM provided or upgrade your plan to 512MB,
     the line that controls the amount of workers launched is::
-  
+
       WSGIDaemonProcess mayan_app processes=5 python-path=/home/<username>/webapps/mayan_app/lib/python2.7 threads=1
-      
+
     change it to::
-    
+
       WSGIDaemonProcess mayan_app processes=2 python-path=/home/<username>/webapps/mayan_app/lib/python2.7 threads=1
 
 
@@ -331,7 +331,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 
      apache2/bin/restart
 
- 
+
 
 
 .. _`vendor lock-in`: https://secure.wikimedia.org/wikipedia/en/wiki/Vendor_lock-in
@@ -347,7 +347,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
 .. _Apache: https://www.apache.org/
 .. _Debian: http://www.debian.org/
 .. _Ubuntu: http://www.ubuntu.com/
-.. _Download: https://github.com/rosarior/mayan/archives/master
+.. _Download: https://github.com/mayan-edms/mayan-edms/archives/master
 .. _Webfaction: http://www.webfaction.com
 .. _deployed: https://docs.djangoproject.com/en/1.3/howto/deployment/
 .. _virtualenv: http://www.virtualenv.org/en/latest/index.html

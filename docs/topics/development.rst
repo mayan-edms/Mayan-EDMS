@@ -9,8 +9,8 @@ If you have a feature request, suggestion, or bug reports, please open a new
 issue on the `GitHub issue tracker`_. To submit patches, please send a pull request on GitHub_.  Contributors are credited accordingly on the :ref:`contributors` section.
 
 
-.. _GitHub: http://github.com/rosarior/mayan/
-.. _`GitHub issue tracker`: https://github.com/rosarior/mayan/issues
+.. _GitHub: https://github.com/mayan-edms/mayan-edms/
+.. _`GitHub issue tracker`: https://github.com/mayan-edms/mayan-edms/issues
 
 .. _scm:
 
@@ -23,7 +23,7 @@ Source Control
 
 The project is publicly accessible, hosted and can be cloned from **GitHub** using::
 
-    $ git clone git://github.com/rosarior/mayan.git
+    $ git clone git://github.com/mayan-edms/mayan-edms.git
 
 
 Git branch structure
@@ -46,8 +46,8 @@ To familiarize yourself with the technical details of the project read the :ref:
 
 .. _Git: http://git-scm.org
 .. _`Successful Git Branching Model`: http://nvie.com/posts/a-successful-git-branching-model/
-.. _git-flow: http://github.com/nvie/gitflow
-.. _Downloads:  https://github.com/rosarior/mayan/archives/master
+.. _git-flow: https://github.com/nvie/gitflow
+.. _Downloads:  https://github.com/mayan-edms/mayan-edms/archives/master
 
 .. _docs:
 
@@ -73,7 +73,7 @@ lines to your ``settings_local.py`` file::
             'simple': {
                 'format': '%(levelname)s %(message)s'
             },
-        },    
+        },
         'handlers': {
             'console':{
                 'level':'DEBUG',
@@ -86,7 +86,7 @@ lines to your ``settings_local.py`` file::
                 'handlers':['console'],
                 'propagate': True,
                 'level':'DEBUG',
-            },            
+            },
         }
     }
 
@@ -98,7 +98,7 @@ Likewise, to see the debug output of the ``tags`` app, just add the following in
         'handlers':['console'],
         'propagate': True,
         'level':'DEBUG',
-    },            
+    },
 
 
 .. _`logging capabilities`: https://docs.djangoproject.com/en/dev/topics/logging
