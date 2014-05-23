@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 
 from .permissions import (PERMISSION_FOLDER_CREATE,

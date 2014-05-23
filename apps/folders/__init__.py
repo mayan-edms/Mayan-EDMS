@@ -2,8 +2,8 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 from acls.api import class_permissions
+from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from navigation.api import (register_links, register_top_menu,
