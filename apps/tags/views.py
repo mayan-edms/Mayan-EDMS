@@ -16,7 +16,7 @@ from acls.utils import apply_default_acls
 from documents.models import Document
 from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
-from permissions import Permission
+from permissions.models import Permission
 from taggit.models import Tag
 
 from .forms import TagListForm, TagForm
