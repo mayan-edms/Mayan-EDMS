@@ -36,7 +36,7 @@ Git branch structure
 ``master``
     Current production release (|version|).
 ``feature/``
-    Unfinished/ummerged feature.
+    Unfinished/unmerged feature.
 
 
 Each release is tagged and available for download on the Downloads_ section of the **Mayan EDMS** repository on GitHub_

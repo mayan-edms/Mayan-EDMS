@@ -20,7 +20,7 @@ New to Mayan EDMS?  Read this material to quickly get up and running.
     comfort with Python you'll probably get a lot more out of Mayan EDMS.
     
     If you're new to programming entirely, you might want to start with this
-    `list of Python resources for non-programmers`_
+    `list of Python resources for non-programmers`_.
     
     If you already know a few other languages and want to get up to speed with
     Python quickly, we recommend `Dive Into Python`_ (also available in a

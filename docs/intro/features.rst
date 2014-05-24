@@ -18,19 +18,19 @@ Features
 
 * Office document format support.
 
-  * Word processing files?  Spreadsheets?  Presentations?  They are supported too.
+  * Word processing files, spreadsheets, presentations are common supported formats.
 
 * User defined metadata fields and meta data sets.
 
-  * Metadata fields can be grouped into sets per technical, legal or structural requirements such as the `Dublin core`_
+  * Metadata fields can be grouped into sets per technical, legal or structural requirements such as the `Dublin core`_.
     
 * Dynamic default values for metadata.
     
-  * Metadata fields can have an initial value which can be static or determined by an user provided Python code snipped.
+  * Metadata fields can have an initial value, which can be static or determined by an user provided Python code snippet.
 
 * Filesystem integration.
     
-  * If enabled, the document database index can be mirrored in the filesystem of the hosting computers and shared via Samba_ or any other method to clients computers on a network.
+  * If enabled, the document database index can be mirrored in the filesystem of the host and shared via Samba_ or any other sharing method to client computers on a network.
     
 * User defined document unique identifier and checksum algorithms.
     
@@ -50,7 +50,7 @@ Features
 
 * Full text searching.
 
-  * Document can be searched by their text content, their metadata or any other file attribute such as name, extension, etc.
+  * Documents can be searched by their text content, their metadata or any other file attribute such as name, extension, etc.
 
 * Configurable document grouping.
     
@@ -58,7 +58,7 @@ Features
 
 * :doc:`Roles support <../topics/permissions>`.
 
-  * Users can created an unlimited amount of different roles and are not restricted to the traditional admin, operator, guest paradigm.
+  * It is possible to create an unlimited amount of different roles not being restricted to the traditional admin, operator, guest paradigm.
 
 * :doc:`Fine grained permissions system <../topics/permissions>`.
 
@@ -66,7 +66,7 @@ Features
 
 * Multi page document support.
 
-  * Multiple page PDFs and TIFFs files supported.
+  * Multiple page PDFs and TIFFs files are supported.
 
 * :doc:`Distributed OCR processing <../topics/ocr>`.
 
@@ -74,13 +74,16 @@ Features
 
 * Multilingual user interface (English, Spanish, Portuguese, Russian, Polish).
 
-  * **Mayan EDMS** is written using the Django_ framework which natively support Unicode, this coupled with the use of text templates allows **Mayan EDMS** to be translated to practically any language spoken in the world, by default four translations are provided: English, Spanish, Portuguese and Russian.
+  * **Mayan EDMS** is written using the Django_ framework, which natively supports Unicode. Together with the use of text templates **Mayan EDMS** can be translated to practically any language spoken in the world.
+    For a list of translated languages have a look at Transifex_.
 
 * :doc:`Multilingual OCR support <../topics/ocr>`.
 
-  * As supported by the OCR engine tesseract.
+  * Multilingual OCR is provided as supported by the available language backends of the OCR engine tesseract.
 
-* Duplicated document search.
+* Search of duplicates.
+
+  * Duplicate documents can easily be searched.
 
 * :doc:`Plugable storage backends <../topics/file_storage>` (File based and GridFS included).
     
@@ -88,7 +91,7 @@ Features
 
 * Color coded tagging.
 
-  * Labeled and color coded tags that are intituitive.
+  * Labeled and color coded tags can be assigned for intuitive recognition.
 
 * Staging folders to receive scanned documents directly from network attached scanners.
 
@@ -98,3 +101,4 @@ Features
 .. _`Dublin core`: http://dublincore.org/metadata-basics/
 .. _Samba:  http://www.samba.org/
 .. _Django:  https://www.djangoproject.com/
+.. _Transifex: https://www.transifex.net/projects/p/mayan-edms/
