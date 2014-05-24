@@ -26,10 +26,15 @@ Quickly bootstraping your Mayan EDMS install
 --------------------------------------------
 |Setup tab| |Right arrow| |Bootstrap button|
 
-**Mayan EDMS** now includes an app called ``Bootstrap``.  This app stores
+**Mayan EDMS** includes an app called ``Bootstrap``.  This app stores
 scripted configurations, that when executed will setup your installation of **Mayan EDMS**.
 From there you can then fine tune this setup to your needs.  To use this
 app go to the ``Setup`` area and launch the app using the ``Bootstrap`` button.
+
+.. hint:: Predefined sample setups can be downloaded from the
+        `Official bootstrap setup repository for Mayan EDMS`_. If you want to use
+        one of the available setups for testing or as a starting point, choose one
+        and import it with ``Import from URL``. Finally execute it on an empty database.
 
 The longer custom setup
 =======================
@@ -41,7 +46,7 @@ Setting your document types
 If none of the available bootstrap setups fit your needs and your wish to
 setup **Mayan EDMS** from scratch the first thing to consider are which are
 going to be your document types.  Examples of document types are: ``Legal documents``,
-``Internal documents``, ``Medical records``, ``Desging specifications``, ``Permits``.
+``Internal documents``, ``Medical records``, ``Designing specifications``, ``Permits``.
 A document type represent a group, a type, a class of documents which share some
 common properties.  A good indicator that can help you determine you document types
 is what kind of information or ``metadata`` is attached to the documents.
@@ -121,3 +126,6 @@ Refer to the chapter named :doc:`Indexes </topics/indexes>` for examples on how 
 .. |Metadata types button| image:: /_static/metadata_types_button.png
  :alt: Metadata types button
  :align: middle
+
+.. _DjangoZoom: http://djangozoom.com/
+.. _`Official bootstrap setup repository for Mayan EDMS`: http://bootstrap.mayan-edms.com/
