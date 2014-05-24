@@ -10,7 +10,7 @@ install:
 notifications:
   email: false
 script:
-  - coverage run --source=documents,document_signatures,lock_manager,folders manage.py test documents lock_manager document_signatures folders
+  - coverage run --source=documents,document_signatures,lock_manager,folders,tags manage.py test documents lock_manager document_signatures folders tags
 after_success:
   - coveralls
 branches:
