@@ -16,14 +16,14 @@ What's new in Mayan EDMS v1.0
 
 New home
 ~~~~~~~~
-The growth and reach of the project has necesitaded for a while the move
-of the project to its own organization in Github. This moved has finally
+The growth and reach of the project has necessitaded for a while the move
+of the project to its own organization in Github. This move has finally been
 done, the new URL of the project is: https://github.com/mayan-edms/mayan-edms
 
 Django 1.4.13
 ~~~~~~~~~~~~~
 This release updates the required version of Django to 1.4.13, bringing with it
-not only new features but also a lot of security updates.
+not only new features, but also a lot of security updates.
 
 Translation updates
 ~~~~~~~~~~~~~~~~~~~
@@ -39,19 +39,19 @@ used.
 Source code improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~
 A circular import of metadata and document_index apps code from the documents app
-was removed. Document index updates are now handled via signals not called
+was removed. Document index updates are now handled via signals, not called
 directly as before.
 
 Removal of included 3rd party modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-One last 3rd party module was included with the source code of Mayan EDMS,
-this module is now available on PyPI and fetched during installation instead
+One last 3rd party module was included with the source code of Mayan EDMS.
+This module is now available on PyPI and fetched during the installation instead
 of being included.
 
 Automatic testing and code coverage check
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Some initial tests were added, this will help with the detection of
-regressions or bug when adding new features. More tests are needed but
+Some initial tests were added, which will help with the detection of
+regressions or bugs when adding new features. More tests are needed, but
 the initial work has being started.
 
 Update of required modules and libraries versions
@@ -61,13 +61,13 @@ recent version if not to their most recent released version.
 
 Database connection leaks
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Stale database connection being left open by the OCR queue handling task
-are now explictly closed. This should increase the stability and reduce memory
-usage.
+Stale database connection being left open by scheduler tasks are now explictly
+closed. This avoids consumption of the pool of database connections, increases
+stability and reduces memory usage.
 
 Deletion of detached signatures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Detached signatures can now be deleted if accidentally added to the wrong document.
+Detached signatures can now be deleted, if accidentally added to the wrong document.
 
 
 Upgrading from a previous version
@@ -79,9 +79,9 @@ If you installed **Mayan EDMS** by cloning the Git repository issue the commands
 
 otherwise download the compressed archived and uncompress it overriding the existing installation.
 
-Next add the new requirements::
+Next upgrade/add the new requirements::
 
-    $ pip install -r requirements.txt
+    $ pip install --upgrade -r requirements.txt
 
 Migrate existing database schema with::
 
