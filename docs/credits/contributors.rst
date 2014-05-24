@@ -64,6 +64,9 @@ Suggestions
 * Nate Aune (nate@appsembler.com)
 * Ed Schipul (eschipul@schipul.com)
 
+Security audit
+--------------
+* Dolev Farhi <dolev@openflare.org>
 
 Translations
 ------------
