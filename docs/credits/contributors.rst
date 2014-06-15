@@ -52,6 +52,7 @@ Patches
 * Iliya Georgiev (ikgeorgiev@gmail.com)
 * Lars Kruse (devel@sumpfralle.de)
 * Mathias Behrle <mbehrle@m9s.biz>
+* Simone Federici [https://twitter.com/aldaranalton] [https://github.com/simone]
 
 Suggestions
 -----------
