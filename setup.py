@@ -71,7 +71,7 @@ with open('AUTHORS.rst') as f:
 
 setup(
     author='Roberto Rosario',
-    author_email='rrosario@ogp.pr.gov',
+    author_email='roberto.rosario@mayan-edms.com',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
@@ -82,14 +82,13 @@ setup(
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
         'Programming Language :: Python',
-        'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
         'Topic :: Communications :: File Sharing',
     ],
-    description='A Python based open data API engine.',
+    description='A Django Document Management System.',
     include_package_data=True,
     install_requires=get_requirements(),
     license=license,
