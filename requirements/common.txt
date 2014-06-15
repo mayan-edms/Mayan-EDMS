@@ -2,7 +2,7 @@ APScheduler==2.0.3
 
 cssmin==0.1.4
 
-#Django<1.6
+Django<1.6
 django-filetransfers==0.1.0
 django-pagination==1.0.7
 django-compressor==1.1.1
