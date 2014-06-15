@@ -9,12 +9,13 @@ reverse_lazy = lazy(reverse, str)
 
 ugettext = lambda s: s
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), './'))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-sys.path.append(os.path.join(PROJECT_ROOT, 'modules'))
-sys.path.append(os.path.join(PROJECT_ROOT, 'customization_apps'))
-sys.path.append(os.path.join(PROJECT_ROOT, 'apps'))
-sys.path.append(os.path.join(PROJECT_ROOT, 'shared_apps'))
+# PROJECT_ROOT is deprecated
+# PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), './'))
+
+sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
@@ -29,7 +30,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_ROOT, '%s.sqlite' % PROJECT_NAME),     # Or path to database file if using sqlite3.
+        'NAME': os.path.join(SITE_ROOT, '%s.sqlite' % PROJECT_NAME),     # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -78,15 +79,11 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-#MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'site_media/')
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-#MEDIA_URL = '/%s-site_media/' % PROJECT_NAME
-
 STATIC_URL = '/%s-static/' % PROJECT_NAME
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
@@ -119,7 +116,7 @@ MIDDLEWARE_CLASSES = (
     'pagination.middleware.PaginationMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'mayan.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

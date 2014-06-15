@@ -36,7 +36,7 @@ FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
 FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
 FORM_RECEIVER_FIELD = 'entry.0.single'
 TIMEOUT = 5
-FABFILE_MARKER = os.path.join(settings.PROJECT_ROOT, 'fabfile_install')
+FABFILE_MARKER = os.path.join(settings.BASE_DIR, 'fabfile_install')
 
 
 class Installation(Singleton):
@@ -63,7 +63,7 @@ class Installation(Singleton):
             namespace.add_property('sysinfo', _(u'System info'), uname('-a'), True)
         else:
             namespace.add_property('is_lsb', _(u'LSB OS'), False)
-                            
+
         namespace.add_property('architecture', _(u'OS architecture'), platform.architecture(), report=True)
         namespace.add_property('python_version', _(u'Python version'), platform.python_version(), report=True)
         namespace.add_property('hostname', _(u'Hostname'), platform.node())
@@ -112,7 +112,7 @@ class Installation(Singleton):
         namespace = PropertyNamespace('git', _(u'Git repository'))
 
         try:
-            repo = Repo(settings.PROJECT_ROOT)
+            repo = Repo(os.path.abspath(os.path.join(settings.BASE_DIR, '..')))
         except:
             namespace.add_property(Property('is_git_repo', _(u'Running from a Git repository'), False))
         else:

@@ -9,7 +9,7 @@ import pbs
 try:
     from pbs import pip
     PIP = True
-except pbs.CommandNotFound: 
+except pbs.CommandNotFound:
     PIP = False
 
 from django.conf import settings
@@ -125,13 +125,12 @@ class VirtualEnv(object):
         else:
             for item in pip('freeze').splitlines():
                 yield self.extract_dependency(item)
-            
+
 
     def __init__(self):
-        self.requirements_file_path = os.path.join(settings.PROJECT_ROOT, 'requirements', 'production.txt')
+        self.requirements_file_path = os.path.join(settings.BASE_DIR, 'requirements', 'production.txt')
         if not PIP:
             raise PIPNotFound
-
 
     def get_results(self):
         requirements = {}
@@ -162,5 +161,5 @@ class VirtualEnv(object):
             except KeyError:
                 # Not installed package found matching with name matchin requirement
                 status = False
-            
+
             yield name, item.version, status

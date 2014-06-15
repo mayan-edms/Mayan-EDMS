@@ -5,6 +5,9 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^admin/', include(admin.site.urls)),
+
     (r'^', include('common.urls')),
     (r'^', include('main.urls')),
     (r'^documents/', include('documents.urls')),
@@ -13,8 +16,6 @@ urlpatterns = patterns('',
     (r'^ocr/', include('ocr.urls')),
     (r'^permissions/', include('permissions.urls')),
     (r'^tags/', include('tags.urls')),
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    (r'^admin/', include(admin.site.urls)),
     (r'^comments/', include('document_comments.urls')),
     (r'^user_management/', include('user_management.urls')),
     (r'^settings/', include('smart_settings.urls')),
