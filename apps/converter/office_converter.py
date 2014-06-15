@@ -39,6 +39,7 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     u'application/vnd.oasis.opendocument.text-web',
     u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     u'application/vnd.ms-office',
+    u'application/xml',
     u'text/x-c',
     u'text/x-c++',
     u'text/x-pascal',
