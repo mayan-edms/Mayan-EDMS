@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, url
-from django.views.generic.simple import direct_to_template
+from common.backport.generic.simple import direct_to_template
 from django.conf import settings
 
 urlpatterns = patterns('common.views',
@@ -23,7 +23,7 @@ urlpatterns += patterns('',
     url(r'^password/reset/complete/$', 'django.contrib.auth.views.password_reset_complete', {'template_name': 'password_reset_complete.html'}, name='password_reset_complete_view'),
     url(r'^password/reset/done/$', 'django.contrib.auth.views.password_reset_done', {'template_name': 'password_reset_done.html'}, name='password_reset_done_view'),
 
-    (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '%s%s' % (settings.STATIC_URL, 'images/favicon.ico')}),
+    (r'^favicon\.ico$', 'common.backport.generic.simple.redirect_to', {'url': '%s%s' % (settings.STATIC_URL, 'images/favicon.ico')}),
 )
 
 urlpatterns += patterns('',

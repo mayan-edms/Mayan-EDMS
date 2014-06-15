@@ -30,7 +30,7 @@
     <div class="inner">
 {% endif %}
 
-        <form action="{% url multi_object_action_view %}" class="form multi_select" method="get">
+        <form action="{% url 'multi_object_action_view' %}" class="form multi_select" method="get">
 
             {% if object_list %}
                 {% if multi_select or multi_select_as_buttons %}
