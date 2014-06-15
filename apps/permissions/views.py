@@ -8,9 +8,9 @@ from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import messages
-from django.views.generic.list_detail import object_list
+from common.backport.generic.list_detail import object_list
 from django.core.urlresolvers import reverse
-from django.views.generic.create_update import create_object, delete_object, update_object
+from common.backport.generic.create_update import create_object, delete_object, update_object
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User, Group
 from django.utils.simplejson import loads
