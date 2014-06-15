@@ -57,7 +57,7 @@ def get_statistics():
     except NotImplementedError:
         pass
 
-    document_stats = DocumentVersion.objects.annotate(page_count=Count('documentpage')).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
+    document_stats = DocumentVersion.objects.annotate(page_count=Count('pages')).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
     paragraphs.extend(
         [
             _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
