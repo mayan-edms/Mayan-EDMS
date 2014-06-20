@@ -1,15 +1,16 @@
-{% extends "base.html" %}
-{% load i18n %}
-{% block title %} :: {% blocktrans %}Assign {{ title }} {{ object }}{% endblocktrans %}{% endblock %}
+{% extends 'base.html' %}
 
+{% load i18n %}
+
+{% block title %} :: {% blocktrans %}Assign {{ title }} {{ object }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
     <style>
         #id_right_list,#id_left_list { min-width: 28em; min-height: 13em; }
     </style>
-    <div class="content">   
+    <div class="content">
     <h2 class="title">{{ title|safe }}</h2>
-    
+
     <form method='POST' action='' id='assign_remove'>{% csrf_token %}
         <input name='action' value='' type='hidden' />
          <table>
@@ -30,12 +31,12 @@
                                 <tr>
                                   <td><button class="button" onclick='document.forms["assign_remove"].action.value="remove";document.forms["assign_remove"].submit();'>&lt;</button></td>
                                 </tr>
-                            </tbody>					
+                            </tbody>
                         </table>
                     </td>
                     <td>{{ form.right_list }}{{ form.right_list.errors }}</td>
                 </tr>
-                {{ form.media|safe }}			
+                {{ form.media|safe }}
             </tbody>
         </table>
     </form>

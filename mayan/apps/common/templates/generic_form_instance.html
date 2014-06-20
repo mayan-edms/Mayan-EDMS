@@ -1,6 +1,9 @@
 {% load i18n %}
+
 {% load styling %}
-{{ form.media|safe }}  
+
+{{ form.media|safe }}
+
 {% add_classes_to_form form %}
 
 {% if form.non_field_errors %}
@@ -9,7 +12,7 @@
             <div class="message error">
                 <p>{{ value }}</p>
             </div>
-      {% endfor %}                    
+      {% endfor %}
   </div>
 {% endif %}
 
@@ -24,20 +27,20 @@
               {{ field }}
             {% if field.errors %}</div></div>{% endif %}
             </td>
-    {% endfor %} 
+    {% endfor %}
     </tr>
 {% else %}
     {% for field in form.hidden_fields %}
         {{ field }}
     {% endfor %}
-    
+
     {% for field in form.visible_fields %}
         <div class="group">
             {% if field.errors %}<div class="fieldWithErrors">{% endif %}
-            <label class="label">{{ field.label_tag }}{% if field.field.required and not read_only and not form_hide_required_text %} ({% trans "required" %}){% endif %}</label>
-            {% if field.errors %}<span class="error">{% for error in field.errors %}{{ error }}{% if not forloop.last %} | {% endif %}{% endfor %}</span></div>{% endif %} 
+            <label class="label">{{ field.label_tag }}{% if field.field.required and not read_only and not form_hide_required_text %} ({% trans 'required' %}){% endif %}</label>
+            {% if field.errors %}<span class="error">{% for error in field.errors %}{{ error }}{% if not forloop.last %} | {% endif %}{% endfor %}</span></div>{% endif %}
             {{ field }}
             {% if field.help_text %}<span class="description">{{ field.help_text }}</span>{% endif %}
         </div>
-    {% endfor %} 
+    {% endfor %}
 {% endif %}

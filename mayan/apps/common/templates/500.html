@@ -7,12 +7,11 @@
 <body>
     <h1>Page unavailable</h1>
 
-    <p>Sorry, but the requested page is unavailable due to a
-    server problem.</p>
+    <p>Sorry, but the requested page is unavailable due to a server problem.</p>
 
     <p>Administrators have been notified, so check back later.</p>
     {% if request.sentry.id %}
-        <p>If you need assistance, you may reference this error as 
+        <p>If you need assistance, you may reference this error as
         <strong>{{ request.sentry.id }}</strong>.</p>
     {% endif %}
 

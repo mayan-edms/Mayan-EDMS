@@ -1,4 +1,5 @@
 {% load i18n %}
+
 {% load attribute_tags %}
 {% load pagination_tags %}
 {% load navigation_tags %}
@@ -7,7 +8,7 @@
 {% load main_settings_tags %}
 {% load multiselect_tags %}
 
-{% get_main_setting "DISABLE_ICONS" as disable_icons %}
+{% get_main_setting 'DISABLE_ICONS' as disable_icons %}
 
 {% if side_bar %}
     <div class="block">
@@ -44,12 +45,12 @@
                         {% endfor %}
                         </div>
                     {% else %}
-                        {% with "true" as form_hide_required_text %}
+                        {% with 'true' as form_hide_required_text %}
                             {% get_multi_item_links_form %}
                         {% endwith %}
                         <div class="group navform wat-cf">
                             <button class="button" type="submit" name="{{ form.prefix }}-submit">
-                                <img src="{{ STATIC_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans "Save" %}{% else %}{% trans "Submit" %}{% endif %}
+                                <img src="{{ STATIC_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
                             </button>
                         </div>
                     {% endif %}
@@ -69,7 +70,7 @@
                             {% endif %}
 
                             {% if not hide_object %}
-                                <th>{% trans "Identifier" %}</th>
+                                <th>{% trans 'Identifier' %}</th>
                             {% endif %}
 
                             {% for column in extra_columns_preffixed %}
@@ -170,7 +171,7 @@
                         {% endfor %}
                         </div>
                     {% else %}
-                        {% with "true" as form_hide_required_text %}
+                        {% with 'true' as form_hide_required_text %}
                             {% get_multi_item_links_form %}
                         {% endwith %}
                         <div class="group navform wat-cf">
