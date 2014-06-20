@@ -24,7 +24,7 @@ class FolderTestCase(unittest.TestCase):
         )
         self.document.save()
 
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
         new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
         file_object.close()
 

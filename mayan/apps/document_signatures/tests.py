@@ -24,7 +24,7 @@ class DocumentTestCase(unittest.TestCase):
         )
         self.document.save()
 
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
         new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
         file_object.close()
 
@@ -32,7 +32,7 @@ class DocumentTestCase(unittest.TestCase):
         self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document), False)
 
     def test_new_document_version_signed(self):
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.gpg'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg'))
         new_version_data = {
             'comment': 'test comment 1',
             'version_update': VERSION_UPDATE_MAJOR,
@@ -51,14 +51,14 @@ class DocumentTestCase(unittest.TestCase):
             'release_level': RELEASE_LEVEL_FINAL,
             'serial': 0,
         }
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
         new_version = self.document.new_version(file=File(file_object), **new_version_data)
         file_object.close()
 
         # GPGVerificationError
         self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document), None)
 
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.sig'), 'rb')
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf.sig'), 'rb')
         DocumentVersionSignature.objects.add_detached_signature(self.document, File(file_object))
         file_object.close()
 

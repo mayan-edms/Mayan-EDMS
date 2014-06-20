@@ -22,7 +22,7 @@ class DocumentTestCase(unittest.TestCase):
         self.document.save()
         # return File(file(self.filepath, 'rb'), name=self.filename)
 
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
         new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
         file_object.close()
 
@@ -41,7 +41,7 @@ class DocumentTestCase(unittest.TestCase):
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '1.0')
         # self.failUnlessEqual(self.document.has_detached_signature(), False)
 
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf.gpg'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg'))
         new_version_data = {
             'comment': 'test comment 1',
             'version_update': VERSION_UPDATE_MAJOR,
@@ -60,7 +60,7 @@ class DocumentTestCase(unittest.TestCase):
             'release_level': RELEASE_LEVEL_FINAL,
             'serial': 0,
         }
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
         new_version = self.document.new_version(file=File(file_object), **new_version_data)
         file_object.close()
 
@@ -83,7 +83,7 @@ class DocumentSearchTestCase(unittest.TestCase):
         )
         self.document.save()
 
-        file_object = open(os.path.join(settings.PROJECT_ROOT, 'contrib', 'mayan_11_1.pdf'))
+        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
         new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
         file_object.close()
         # Text extraction on the first page only
