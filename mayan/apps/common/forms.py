@@ -3,13 +3,13 @@ from __future__ import absolute_import
 import os
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
-from django.db import models
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate
 from django.conf import settings
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
+from django.db import models
 from django.utils.html import escape
+from django.utils.translation import ugettext_lazy as _
 
 from .utils import return_attrib
 from .widgets import (DetailSelectMultiple, PlainWidget, TextAreaDiv,
