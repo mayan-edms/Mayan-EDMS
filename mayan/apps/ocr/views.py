@@ -1,30 +1,30 @@
 from __future__ import absolute_import
 
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from common.backport.generic.list_detail import object_list
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
-from django.core.exceptions import PermissionDenied
 
-from permissions.models import Permission
+from acls.models import AccessEntry
+from common.backport.generic.list_detail import object_list
+from common.utils import encapsulate
 from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
-from common.utils import encapsulate
-from acls.models import AccessEntry
+from permissions.models import Permission
 
-from .permissions import (PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
-from .models import DocumentQueue, QueueDocument, QueueTransformation
+from .api import clean_pages
+from .exceptions import AlreadyQueued, ReQueueError
+from .forms import QueueTransformationForm, QueueTransformationForm_create
 from .literals import (QUEUEDOCUMENT_STATE_PENDING,
     QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED,
     DOCUMENTQUEUE_STATE_ACTIVE)
-from .exceptions import AlreadyQueued, ReQueueError
-from .api import clean_pages
-from .forms import QueueTransformationForm, QueueTransformationForm_create
+from .models import DocumentQueue, QueueDocument, QueueTransformation
+from .permissions import (PERMISSION_OCR_DOCUMENT,
+    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
+    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
 
 
 def queue_document_list(request, queue_name='default'):

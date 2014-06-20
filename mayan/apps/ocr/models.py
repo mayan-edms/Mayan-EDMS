@@ -4,23 +4,22 @@ from ast import literal_eval
 from datetime import datetime
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.contrib.contenttypes import generic
-from django.core.exceptions import ValidationError
+from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 from converter.api import get_available_transformations_choices
 from sources.managers import SourceTransformationManager
 
+from .exceptions import ReQueueError
 from .literals import (DOCUMENTQUEUE_STATE_STOPPED,
     DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING,
     QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PROCESSING,
     DOCUMENTQUEUE_STATE_ACTIVE)
 from .managers import DocumentQueueManager
-from .exceptions import ReQueueError
 
 
 class DocumentQueue(models.Model):
@@ -101,10 +100,10 @@ class ArgumentsValidator(object):
 
 
 class QueueTransformation(models.Model):
-    '''
+    """
     Model that stores the transformation and transformation arguments
     for a given document queue
-    '''
+    """
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')

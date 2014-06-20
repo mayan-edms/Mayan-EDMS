@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 from django import forms
 
-from ocr.models import QueueTransformation
+from .models import QueueTransformation
 
 
 class QueueTransformationForm(forms.ModelForm):

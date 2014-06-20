@@ -7,8 +7,8 @@ import subprocess
 import tempfile
 import sys
 
-from django.utils.translation import ugettext as _
 from django.utils.importlib import import_module
+from django.utils.translation import ugettext as _
 
 from common.conf.settings import TEMPORARY_DIRECTORY
 from converter.api import convert
@@ -16,10 +16,10 @@ from documents.models import DocumentPage
 
 from .conf.settings import (TESSERACT_PATH, TESSERACT_LANGUAGE, UNPAPER_PATH)
 from .exceptions import TesseractError, UnpaperError
-from .parsers import parse_document_page
-from .parsers.exceptions import ParserError, ParserUnknownFile
 from .literals import (DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT,
     DEFAULT_OCR_FILE_EXTENSION)
+from .parsers import parse_document_page
+from .parsers.exceptions import ParserError, ParserUnknownFile
 
 
 def get_language_backend():

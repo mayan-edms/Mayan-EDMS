@@ -1,6 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
 
-
 DOCUMENTQUEUE_STATE_STOPPED = 's'
 DOCUMENTQUEUE_STATE_ACTIVE = 'a'
 
@@ -8,7 +7,6 @@ DOCUMENTQUEUE_STATE_CHOICES = (
     (DOCUMENTQUEUE_STATE_STOPPED, _(u'stopped')),
     (DOCUMENTQUEUE_STATE_ACTIVE, _(u'active')),
 )
-
 
 QUEUEDOCUMENT_STATE_PENDING = 'p'
 QUEUEDOCUMENT_STATE_PROCESSING = 'i'

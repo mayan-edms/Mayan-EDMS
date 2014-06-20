@@ -3,28 +3,27 @@ from __future__ import absolute_import
 import logging
 
 from django.db import transaction
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
+from django.db.utils import DatabaseError
 from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
-from django.db.utils import DatabaseError
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_multi_item_links
+from acls.api import class_permissions
 from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
+from navigation.api import register_links, register_multi_item_links
 from project_tools.api import register_tool
-from acls.api import class_permissions
-
 from scheduler.api import register_interval_job
 
+from . import models as ocr_models
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
+from .exceptions import AlreadyQueued
 from .models import DocumentQueue, QueueTransformation
 from .tasks import task_process_document_queues
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
     PERMISSION_OCR_CLEAN_ALL_PAGES)
-from .exceptions import AlreadyQueued
-from . import models as ocr_models
 
 logger = logging.getLogger(__name__)
 

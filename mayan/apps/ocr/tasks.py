@@ -1,8 +1,8 @@
 from __future__ import absolute_import
 
 from datetime import timedelta, datetime
-import platform
 import logging
+import platform
 
 from django.db.models import Q
 
@@ -10,12 +10,12 @@ from job_processor.api import process_job
 from lock_manager import Lock, LockError
 
 from .api import do_document_ocr
+from .conf.settings import (NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY,
+    QUEUE_PROCESSING_INTERVAL)
 from .literals import (QUEUEDOCUMENT_STATE_PENDING,
     QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE,
     QUEUEDOCUMENT_STATE_ERROR)
 from .models import QueueDocument, DocumentQueue
-from .conf.settings import (NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY,
-    QUEUE_PROCESSING_INTERVAL)
 
 LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
