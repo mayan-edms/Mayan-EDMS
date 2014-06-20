@@ -3,8 +3,8 @@ from __future__ import absolute_import
 import logging
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import PermissionDenied
+from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from permissions.models import Permission

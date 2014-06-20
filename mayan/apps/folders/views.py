@@ -2,25 +2,25 @@ from __future__ import absolute_import
 
 import logging
 
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.core.exceptions import PermissionDenied
+from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessEntry
+from acls.utils import apply_default_acls
+from acls.views import acl_list_for
+from common.utils import encapsulate
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import document_list
 from permissions.models import Permission
-from common.utils import encapsulate
-from acls.models import AccessEntry
-from acls.views import acl_list_for
-from acls.utils import apply_default_acls
 
-from .models import Folder
 from .forms import FolderForm, FolderListForm
+from .models import Folder
 from .permissions import (PERMISSION_FOLDER_CREATE,
     PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
     PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
