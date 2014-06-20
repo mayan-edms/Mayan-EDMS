@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-
 COLOR_RED = u'red'
 COLOR_BLUE = u'blu'
 COLOR_MAGENTA = u'mag'

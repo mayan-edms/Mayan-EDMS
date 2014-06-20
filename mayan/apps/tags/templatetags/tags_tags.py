@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+
 from django.core.urlresolvers import reverse
 from django.template import Library
 
 from django.utils.translation import ugettext as _
 
-from tags.forms import AddTagForm
+from ..forms import AddTagForm
 
 register = Library()
 
