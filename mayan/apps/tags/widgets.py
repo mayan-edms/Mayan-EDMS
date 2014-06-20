@@ -1,3 +1,4 @@
+from django.utils.html import escape, strip_tags
 from django.utils.safestring import mark_safe
 
 
@@ -12,7 +13,7 @@ def get_tags_inline_widget(document):
         tags_template.append(u'<div class="tc">')
 
         for tag in document.tags.all():
-            tags_template.append(u'<ul class="tags"><li style="background: %s;">%s</li></ul>' % (tag.tagproperties_set.get().get_color_code(), tag.name))
+            tags_template.append(u'<ul class="tags"><li style="background: %s;">%s</li></ul>' % (tag.tagproperties_set.get().get_color_code(), escape(tag.name)))
 
         tags_template.append(u'<div style="clear:both;"></div>')
         tags_template.append(u'</div>')
@@ -45,4 +46,4 @@ def single_tag_widget(tag):
 
 
 def get_single_tag_template(tag):
-    return '<li style="background: %s">%s</li>' % (tag.tagproperties_set.get().get_color_code(), tag.name.replace(u' ', u'&nbsp;'))
+    return '<li style="background: %s">%s</li>' % (tag.tagproperties_set.get().get_color_code(), escape(tag.name.replace(u' ', u'&nbsp;')))
