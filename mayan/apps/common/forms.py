@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.conf import settings
+from django.utils.html import escape
 
 from .utils import return_attrib
 from .widgets import (DetailSelectMultiple, PlainWidget, TextAreaDiv,
@@ -30,8 +31,8 @@ class DetailForm(forms.ModelForm):
                 else:
                     self.fields[extra_field['field']] = forms.CharField(
                         label=extra_field['label'],
-                        initial=return_attrib(self.instance,
-                            extra_field['field'], None),
+                        initial=escape(return_attrib(self.instance,
+                            extra_field['field'], None)),
                             widget=PlainWidget)
 
         for field_name, field in self.fields.items():
