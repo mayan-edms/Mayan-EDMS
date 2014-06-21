@@ -19,27 +19,6 @@ text parsing and OCR capabilities.
 
 `Mailing list (via Google Groups)`_
 
-Quick install
--------------
-
-To bootstrap **Mayan EDMS** via the fabfile without having to clone
-the entire repository, run the following command, replacing the part that
-reads: with your current MySQL root password or the MySQL root password
-you plan to assign to it, during the MySQL installation when executing the fabfile.
-
--  Debian or Ubuntu:
-
-   cd /tmp && sudo apt-get install -y fabric wget tar gzip && wget
-   https://github.com/mayan-edms/mayan-edms/raw/master/contrib/fabfile.tar.gz
-   -O - \| tar -xvzf - && echo “database\_manager\_admin\_password=<Your
-   MySQL root password>” > ~/.fabricrc && fab -H localhost install
-
--  Fedora:
-
-   cd /tmp && sudo yum install -y fabric wget tar gzip && wget
-   https://github.com/mayan-edms/mayan-edms/raw/master/contrib/fabfile.tar.gz
-   -O - \| tar -xvzf - && echo “database\_manager\_admin\_password=<Your
-   MySQL root password>” > ~/.fabricrc && fab -H localhost install
 
 License
 -------

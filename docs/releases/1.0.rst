@@ -20,10 +20,11 @@ The growth and reach of the project has necessitaded for a while the move
 of the project to its own organization in Github. This move has finally been
 done, the new URL of the project is: https://github.com/mayan-edms/mayan-edms
 
-Django 1.4.13
+Django 1.5
 ~~~~~~~~~~~~~
-This release updates the required version of Django to 1.4.13, bringing with it
-not only new features, but also a lot of security updates.
+This release updates the required version of Django to 1.5, bringing with it
+not only new features, but also a lot of security updates, a new project
+directory structure and new deployment methods.
 
 Translation updates
 ~~~~~~~~~~~~~~~~~~~
@@ -68,6 +69,9 @@ stability and reduces memory usage.
 Deletion of detached signatures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Detached signatures can now be deleted, if accidentally added to the wrong document.
+
+Removal of fabric based installations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Upgrading from a previous version
