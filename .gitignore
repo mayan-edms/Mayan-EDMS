@@ -15,3 +15,5 @@ gpg_home/
 /fabfile_install
 /venv/
 .coverage
+/dist/
+*egg-info*
