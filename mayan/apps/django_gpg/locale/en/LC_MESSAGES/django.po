@@ -1,157 +1,157 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-25 20:11-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:14 views.py:66
 msgid "private keys"
-msgstr ""
+msgstr "private keys"
 
 #: __init__.py:15 views.py:69
 msgid "public keys"
-msgstr ""
+msgstr "public keys"
 
 #: __init__.py:16
 msgid "delete"
-msgstr ""
+msgstr "delete"
 
 #: __init__.py:17
 msgid "query keyservers"
-msgstr ""
+msgstr "query keyservers"
 
 #: __init__.py:18
 msgid "import"
-msgstr ""
+msgstr "import"
 
 #: __init__.py:19
 msgid "key management"
-msgstr ""
+msgstr "key management"
 
 #: api.py:24
 msgid "Public"
-msgstr ""
+msgstr "Public"
 
 #: api.py:25
 msgid "Secret"
-msgstr ""
+msgstr "Secret"
 
 #: api.py:33 api.py:38
 msgid "RSA"
-msgstr ""
+msgstr "RSA"
 
 #: api.py:34
 msgid "DSA"
-msgstr ""
+msgstr "DSA"
 
 #: api.py:39
 msgid "Elgamal"
-msgstr ""
+msgstr "Elgamal"
 
 #: api.py:53
 msgid "Bad signature."
-msgstr ""
+msgstr "Bad signature."
 
 #: api.py:57
 msgid "Document not signed or invalid signature."
-msgstr ""
+msgstr "Document not signed or invalid signature."
 
 #: api.py:61
 msgid "Signature error."
-msgstr ""
+msgstr "Signature error."
 
 #: api.py:65
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
+msgstr "Document is signed but no public key is available for verification."
 
 #: api.py:69
 msgid "Document is signed, and signature is good."
-msgstr ""
+msgstr "Document is signed, and signature is good."
 
 #: api.py:73
 msgid "Document is signed with a valid signature."
-msgstr ""
+msgstr "Document is signed with a valid signature."
 
 #: api.py:146
 msgid "unknown"
-msgstr ""
+msgstr "unknown"
 
 #: forms.py:7
 msgid "Term"
-msgstr ""
+msgstr "Term"
 
 #: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
+msgstr "Name, e-mail, key ID or key fingerprint to look for."
 
 #: permissions.py:7
 msgid "Key management"
-msgstr ""
+msgstr "Key management"
 
 #: permissions.py:9
 msgid "View keys"
-msgstr ""
+msgstr "View keys"
 
 #: permissions.py:10
 msgid "Delete keys"
-msgstr ""
+msgstr "Delete keys"
 
 #: permissions.py:11
 msgid "Query keyservers"
-msgstr ""
+msgstr "Query keyservers"
 
 #: permissions.py:12
 msgid "Import keys from keyservers"
-msgstr ""
+msgstr "Import keys from keyservers"
 
 #: views.py:37
 #, python-format
 msgid "Key: %s, imported successfully."
-msgstr ""
+msgstr "Key: %s, imported successfully."
 
 #: views.py:42
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "Unable to import key id: %(key_id)s; %(error)s"
 
 #: views.py:51
 msgid "Import key"
-msgstr ""
+msgstr "Import key"
 
 #: views.py:52
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
-msgstr ""
+msgstr "Are you sure you wish to import key id: %s?"
 
 #: views.py:77
 msgid "Key ID"
-msgstr ""
+msgstr "Key ID"
 
 #: views.py:81
 msgid "Owner"
-msgstr ""
+msgstr "Owner"
 
 #: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
-msgstr ""
+msgstr "Key: %s, deleted successfully."
 
 #: views.py:108
 msgid "Delete key"
-msgstr ""
+msgstr "Delete key"
 
 #: views.py:110
 #, python-format
@@ -159,56 +159,56 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
+msgstr "Are you sure you wish to delete key: %s?  If you try to delete a public key that is part of a public/private pair the private key will be deleted as well."
 
 #: views.py:128
 msgid "Query key server"
-msgstr ""
+msgstr "Query key server"
 
 #: views.py:141
 msgid "results"
-msgstr ""
+msgstr "results"
 
 #: views.py:146
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: views.py:150
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: views.py:154
 msgid "creation date"
-msgstr ""
+msgstr "creation date"
 
 #: views.py:158
 msgid "disabled"
-msgstr ""
+msgstr "disabled"
 
 #: views.py:162
 msgid "expiration date"
-msgstr ""
+msgstr "expiration date"
 
 #: views.py:166
 msgid "expired"
-msgstr ""
+msgstr "expired"
 
 #: views.py:170
 msgid "length"
-msgstr ""
+msgstr "length"
 
 #: views.py:174
 msgid "revoked"
-msgstr ""
+msgstr "revoked"
 
 #: views.py:179
 msgid "Identifies"
-msgstr ""
+msgstr "Identifies"
 
 #: conf/settings.py:15
 msgid "List of keyservers to be queried for unknown keys."
-msgstr ""
+msgstr "List of keyservers to be queried for unknown keys."
 
 #: conf/settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
+msgstr "Home directory used to store keys as well as configuration files."

@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lucas Weel <ljj.weel@gmail.com>, 2013.
+# Lucas Weel <ljj.weel@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2013-01-21 10:57+0000\n"
+"PO-Revision-Date: 2013-12-18 14:15+0000\n"
 "Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -29,27 +29,27 @@ msgstr "indexeringslijst"
 
 #: __init__.py:33 views.py:78
 msgid "create index"
-msgstr ""
+msgstr "indexering aanmaken"
 
 #: __init__.py:34 __init__.py:40
 msgid "edit"
-msgstr ""
+msgstr "wijzigen"
 
 #: __init__.py:35 __init__.py:41
 msgid "delete"
-msgstr ""
+msgstr "verwijderen"
 
 #: __init__.py:36
 msgid "tree template"
-msgstr ""
+msgstr "sjabloon boomstructuur"
 
 #: __init__.py:37 models.py:21 views.py:314
 msgid "document types"
-msgstr ""
+msgstr "document-typen"
 
 #: __init__.py:39
 msgid "new child node"
-msgstr ""
+msgstr "nieuwe node"
 
 #: __init__.py:45
 msgid "go up one level"
@@ -104,114 +104,114 @@ msgstr "Niet mogelijke om een 'symbolic link' aan te maken. Bestand bestaat reed
 #: filesystem.py:71
 #, python-format
 msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
-msgstr ""
+msgstr "Niet mogelijk om een 'symbolic link': %(filepath)s; aan te maken, voor: %(exc)s "
 
 #: filesystem.py:84
 #, python-format
 msgid "Unable to delete document symbolic link; %s"
-msgstr ""
+msgstr "Niet mogelijk om de 'symbolic link' voor document: %s te verwijderen."
 
 #: filesystem.py:96
 #, python-format
 msgid "Unable to delete indexing directory; %s"
-msgstr ""
+msgstr "Niet mogelijk om de indexingfolder: %s, te verwijderen."
 
 #: models.py:14
 #, python-format
 msgid "Available functions: %s"
-msgstr ""
+msgstr "Beschikbare functies: %s"
 
 #: models.py:18 views.py:43
 msgid "name"
-msgstr ""
+msgstr "naam"
 
 #: models.py:18
 msgid "Internal name used to reference this index."
-msgstr ""
+msgstr "Interne naam voor deze index."
 
 #: models.py:19 views.py:44
 msgid "title"
-msgstr ""
+msgstr "titel"
 
 #: models.py:19
 msgid "The name that will be visible to users."
-msgstr ""
+msgstr "Naam zichtbaar voor gebruikers"
 
 #: models.py:20 models.py:72 views.py:45 views.py:169
 msgid "enabled"
-msgstr ""
+msgstr "ingeschakeld"
 
 #: models.py:20
 msgid ""
 "Causes this index to be visible and updated when document data changes."
-msgstr ""
+msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer document gegevens wijzigd."
 
 #: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
 #: views.py:198 views.py:225 views.py:255 views.py:295
 msgid "index"
-msgstr ""
+msgstr "index"
 
 #: models.py:70
 msgid "indexing expression"
-msgstr ""
+msgstr "indexering-expressie"
 
 #: models.py:70
 msgid "Enter a python string expression to be evaluated."
-msgstr ""
+msgstr "Voer een python sting expressie in, voor evaluatie."
 
 #: models.py:72
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
+msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
 
 #: models.py:73
 msgid "link documents"
-msgstr ""
+msgstr "gekoppelde documenten"
 
 #: models.py:73
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
-msgstr ""
+msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
 
 #: models.py:83 models.py:89
 msgid "index template node"
-msgstr ""
+msgstr "sjabloon indexering node"
 
 #: models.py:84
 msgid "indexes template nodes"
-msgstr ""
+msgstr "sjabloon indexeringen nodes"
 
 #: models.py:90
 msgid "value"
-msgstr ""
+msgstr "waarde"
 
 #: models.py:91
 msgid "documents"
-msgstr ""
+msgstr "documenten"
 
 #: models.py:101
 msgid "index instance node"
-msgstr ""
+msgstr "instantie indexeringsnode"
 
 #: models.py:102
 msgid "indexes instance nodes"
-msgstr ""
+msgstr "instantie indexeringsnodes"
 
 #: models.py:106
 msgid "index instance"
-msgstr ""
+msgstr "index instantie"
 
 #: models.py:107
 msgid "document"
-msgstr ""
+msgstr "document"
 
 #: models.py:114
 msgid "document rename count"
-msgstr ""
+msgstr "document hernoem teller"
 
 #: models.py:115
 msgid "documents rename count"
-msgstr ""
+msgstr "documenten hernoem teller"
 
 #: permissions.py:7
 msgid "Indexing"
@@ -219,19 +219,19 @@ msgstr "Indexering bezig"
 
 #: permissions.py:9
 msgid "Configure document indexes"
-msgstr ""
+msgstr "Document indexeringen configureren"
 
 #: permissions.py:10
 msgid "Create new document indexes"
-msgstr ""
+msgstr "Aanmaken van nieuw document-indexeringen"
 
 #: permissions.py:11
 msgid "Edit document indexes"
-msgstr ""
+msgstr "Wijzig document-indexeringen"
 
 #: permissions.py:12
 msgid "Delete document indexes"
-msgstr ""
+msgstr "Verwijder document-indexeringen"
 
 #: permissions.py:14
 msgid "View document indexes"
@@ -243,140 +243,140 @@ msgstr "documenten opnieuw indexeren"
 
 #: utils.py:19
 msgid "document indexes"
-msgstr ""
+msgstr "document-indexeringen"
 
 #: views.py:72
 msgid "Index created successfully."
-msgstr ""
+msgstr "Indexering succesvol aangemaakt."
 
 #: views.py:96
 msgid "Index edited successfully"
-msgstr ""
+msgstr "Indexering succesvol bewerkt"
 
 #: views.py:102
 #, python-format
 msgid "edit index: %s"
-msgstr ""
+msgstr "wijzig index: %s"
 
 #: views.py:127
 #, python-format
 msgid "Index: %s deleted successfully."
-msgstr ""
+msgstr "Index: %s verwijderd."
 
 #: views.py:129
 #, python-format
 msgid "Index: %(index)s delete error: %(error)s"
-msgstr ""
+msgstr "Fout bij het verwijderen van index: %(index)s, foutmelding: %(error)s "
 
 #: views.py:141
 #, python-format
 msgid "Are you sure you with to delete the index: %s?"
-msgstr ""
+msgstr "Bent u er zeker van om index: %s, te verwijderen?"
 
 #: views.py:165
 #, python-format
 msgid "tree template nodes for index: %s"
-msgstr ""
+msgstr "sjabloon node boomstructuur voor index: %s"
 
 #: views.py:168
 msgid "level"
-msgstr ""
+msgstr "niveau"
 
 #: views.py:170
 msgid "has document links?"
-msgstr ""
+msgstr "heeft document verwijzingen?"
 
 #: views.py:192
 #, python-format
 msgid "document types not in index: %s"
-msgstr ""
+msgstr "documenttype komt niet voor in index: %s"
 
 #: views.py:193
 #, python-format
 msgid "document types for index: %s"
-msgstr ""
+msgstr "documenttype for index: %s"
 
 #: views.py:216
 msgid "Index template node created successfully."
-msgstr ""
+msgstr "sjabloon node index succesvol aangemaakt."
 
 #: views.py:222
 msgid "create child node"
-msgstr ""
+msgstr "aanmaken node"
 
 #: views.py:243
 msgid "Index template node edited successfully"
-msgstr ""
+msgstr "Sjabloon node index succesvol bewerkt"
 
 #: views.py:249
 #, python-format
 msgid "edit index template node: %s"
-msgstr ""
+msgstr "Bewerken sjabloon node index: %s"
 
 #: views.py:256 views.py:296 views.py:365
 msgid "node"
-msgstr ""
+msgstr "node"
 
 #: views.py:278
 #, python-format
 msgid "Node: %s deleted successfully."
-msgstr ""
+msgstr "Node: %s verwijdert"
 
 #: views.py:280
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
-msgstr ""
+msgstr "Fout bij het verwijderen van Node: %(node)s, foutmelding: %(error)s"
 
 #: views.py:289
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
-msgstr ""
+msgstr "Bent u er zeker van om sjabloon indexeringsnode: %s, te verwijderen?"
 
 #: views.py:313
 msgid "nodes"
-msgstr ""
+msgstr "nodes"
 
 #: views.py:347
 #, python-format
 msgid "contents for index: %s"
-msgstr ""
+msgstr "inhoud voor index: %s"
 
 #: views.py:369
 msgid "items"
-msgstr ""
+msgstr "items"
 
 #: views.py:394
 msgid "Are you sure you wish to rebuild all indexes?"
-msgstr ""
+msgstr "Weet u zeker dat u alle indexeringen wilt herbouwen."
 
 #: views.py:395
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
+msgstr "Voor een grote database kan deze operatie lang duren."
 
 #: views.py:401
 msgid "Index rebuild completed successfully."
-msgstr ""
+msgstr "aanmaken indexering succesvol voltooid."
 
 #: views.py:408
 #, python-format
 msgid "Index rebuild error: %s"
-msgstr ""
+msgstr "Fout bij het aanmaken van de indexering. Melding: %s"
 
 #: views.py:431
 #, python-format
 msgid "indexes containing: %s"
-msgstr ""
+msgstr "Indexeringen met inhoud: %s"
 
 #: conf/settings.py:22
 msgid ""
 "A dictionary that maps the index name and where on the filesystem that index"
 " will be mirrored."
-msgstr ""
+msgstr "Een mapping tussen indexnaam en de locatie op het filesysteem."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
-msgstr ""
+msgstr "Wat zijn indexeringen?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr ""
+msgstr "Indexeringen groeperen documenten in een hierargische boomstructuur."

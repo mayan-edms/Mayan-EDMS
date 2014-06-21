@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <winterfall24@gmail.com>, 2012.
+# mic <winterfall24@gmail.com>, 2013
+# mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:49-0400\n"
-"PO-Revision-Date: 2012-12-12 06:06+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2013-11-20 13:14+0000\n"
+"Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr "podgląd"
 
 #: __init__.py:21 __init__.py:29 __init__.py:35
 msgid "delete"
-msgstr "usunąć"
+msgstr "usuń"
 
 #: __init__.py:23
 msgid "sources"
@@ -48,7 +49,7 @@ msgstr "edycja"
 
 #: __init__.py:30
 msgid "add new source"
-msgstr ""
+msgstr "dodaj nowe źródło"
 
 #: __init__.py:32
 msgid "transformations"
@@ -124,7 +125,7 @@ msgstr "Koperta"
 
 #: literals.py:36
 msgid "Folder"
-msgstr "Folder"
+msgstr "Katalog"
 
 #: literals.py:37
 msgid "World"
@@ -412,7 +413,7 @@ msgstr ""
 
 #: views.py:327
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 #: views.py:334
 msgid "Current metadata"

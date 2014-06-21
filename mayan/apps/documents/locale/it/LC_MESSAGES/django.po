@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Carlo Zanatto <>, 2012.
-#   <pierpaolo.baldan@gmail.com>, 2011.
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012.
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Carlo Zanatto <>, 2012
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2014
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012
+# Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-12-27 08:29+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2014-01-11 11:53+0000\n"
+"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgstr "documenti recenti"
 
 #: __init__.py:64
 msgid "upload new documents"
-msgstr ""
+msgstr "carica nuovi documenti "
 
 #: __init__.py:65
 msgid "clone metadata"
@@ -326,13 +327,13 @@ msgstr "Scarica il documento nel formato originale o in modo compresso. Questa o
 
 #: forms.py:321
 msgid "Compressed filename"
-msgstr ""
+msgstr "Nome file compresso "
 
 #: forms.py:321
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
+msgstr "Il nome file del file compresso che conterrà il documento da scaricare, se l'opzione precedente è selezionata."
 
 #: literals.py:15
 msgid "final"
@@ -526,11 +527,11 @@ msgstr "documenti recenti"
 
 #: models.py:662
 msgid "Document type"
-msgstr ""
+msgstr "Tipo documento "
 
 #: models.py:663
 msgid "MIME type"
-msgstr ""
+msgstr "Tipo MIME"
 
 #: models.py:664 views.py:132
 msgid "Filename"
@@ -538,27 +539,27 @@ msgstr "Nome file"
 
 #: models.py:665
 msgid "Metadata type"
-msgstr ""
+msgstr "Tipo metdata"
 
 #: models.py:666
 msgid "Metadata value"
-msgstr ""
+msgstr "Valore metadata"
 
 #: models.py:667
 msgid "Content"
-msgstr ""
+msgstr "Contenuto "
 
 #: models.py:668
 msgid "Description"
-msgstr ""
+msgstr "Descrizione "
 
 #: models.py:669
 msgid "Tags"
-msgstr ""
+msgstr "Etichette "
 
 #: models.py:670
 msgid "Comments"
-msgstr ""
+msgstr "Commenti "
 
 #: permissions.py:9
 msgid "Create documents"
@@ -650,17 +651,17 @@ msgstr "Pagine di documenti nel database:%d"
 #: statistics.py:64
 #, python-format
 msgid "Minimum amount of pages per document: %d"
-msgstr ""
+msgstr "Minimo numero di pagine per documento: %d"
 
 #: statistics.py:65
 #, python-format
 msgid "Maximum amount of pages per document: %d"
-msgstr ""
+msgstr "Massimo numero di pagine per documento: %d"
 
 #: statistics.py:66
 #, python-format
 msgid "Average amount of pages per document: %f"
-msgstr ""
+msgstr "Media numero di pagine per documento: %f"
 
 #: statistics.py:71
 msgid "Document statistics"
@@ -672,7 +673,7 @@ msgstr "File mimetype"
 
 #: views.py:133 views.py:134
 msgid "None"
-msgstr ""
+msgstr "Nessuno "
 
 #: views.py:134
 msgid "File mime encoding"
@@ -1048,19 +1049,19 @@ msgstr "immagine della pagina del documento"
 
 #: wizards.py:36
 msgid "step 1 of 3: Document type"
-msgstr ""
+msgstr "Passo 1 di 3: Tipo documento "
 
 #: wizards.py:37
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "Passo 2 di 3: Selezione metadata"
 
 #: wizards.py:38
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "Passo 3 di 3: Metadata documento "
 
 #: wizards.py:46
 msgid "Next step"
-msgstr ""
+msgstr "Prossimo passo "
 
 #: conf/settings.py:38
 msgid ""

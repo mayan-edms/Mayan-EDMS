@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# mic <diveaway12@gmail.com>, 2012.
-# <winterfall24@gmail.com>, 2012.
-#   <winterfall24@gmail.com>, 2012.
+# mic <diveaway12@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2012-02-20 21:42+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"

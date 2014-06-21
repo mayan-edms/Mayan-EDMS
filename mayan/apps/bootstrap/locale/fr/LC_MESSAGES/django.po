@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <patrick.hetu@gmail.com>, 2012.
-# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012.
+# PatrickHetu <patrick.hetu@gmail.com>, 2012
+# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
+# SadE54 <yannsuisini@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:49-0400\n"
-"PO-Revision-Date: 2012-12-12 06:04+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2013-02-04 13:37+0000\n"
+"Last-Translator: SadE54 <yannsuisini@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,35 +22,35 @@ msgstr ""
 
 #: forms.py:50
 msgid "Bootstrap setup file"
-msgstr ""
+msgstr "Fichier de pré-configuration"
 
 #: forms.py:56
 msgid "Bootstrap setup URL"
-msgstr ""
+msgstr "URL de la pré-configuration"
 
 #: links.py:11
 msgid "bootstrap"
-msgstr ""
+msgstr "Pré-configuration"
 
 #: links.py:12
 msgid "bootstrap setup list"
-msgstr ""
+msgstr "Liste des pré-configurations"
 
 #: links.py:13
 msgid "create new bootstrap setup"
-msgstr ""
+msgstr "Créer une nouvelle pré-configuration"
 
 #: links.py:14
 msgid "edit"
-msgstr ""
+msgstr "éditer"
 
 #: links.py:15
 msgid "delete"
-msgstr ""
+msgstr "effacer"
 
 #: links.py:16
 msgid "details"
-msgstr ""
+msgstr "détails"
 
 #: links.py:17
 msgid "execute"
@@ -57,23 +58,23 @@ msgstr "exécuter"
 
 #: links.py:18
 msgid "dump current setup"
-msgstr ""
+msgstr "injecter la configuration actuelle"
 
 #: links.py:19
 msgid "export"
-msgstr ""
+msgstr "exporter"
 
 #: links.py:20
 msgid "import from file"
-msgstr ""
+msgstr "importer depuis le fichier"
 
 #: links.py:21
 msgid "import from URL"
-msgstr ""
+msgstr "importer depuis l'URL"
 
 #: links.py:22
 msgid "sync with repository"
-msgstr ""
+msgstr "synchroniser avec le dépôt"
 
 #: links.py:23
 msgid "erase database"
@@ -81,23 +82,23 @@ msgstr "Supprimer la base de données"
 
 #: literals.py:20
 msgid "JSON"
-msgstr ""
+msgstr "JSON"
 
 #: literals.py:63
 msgid "YAML"
-msgstr ""
+msgstr "YAML"
 
 #: literals.py:64
 msgid "Better YAML"
-msgstr ""
+msgstr "Better YAML"
 
 #: models.py:30
 msgid "name"
-msgstr ""
+msgstr "nom"
 
 #: models.py:31
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
 #: models.py:32 views.py:34
 msgid "description"
@@ -105,19 +106,19 @@ msgstr "description"
 
 #: models.py:33
 msgid "fixture"
-msgstr ""
+msgstr "fixation"
 
 #: models.py:33
 msgid "These are the actual database structure creation instructions."
-msgstr ""
+msgstr "Ce sont les instructions pour la création de la base de données."
 
 #: models.py:34 views.py:35
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: models.py:35
 msgid "creation date and time"
-msgstr ""
+msgstr "date et heure de création"
 
 #: models.py:104 views.py:90 views.py:119 views.py:144 views.py:172
 msgid "bootstrap setup"
@@ -125,7 +126,7 @@ msgstr "pré-configuration"
 
 #: models.py:105 views.py:31
 msgid "bootstrap setups"
-msgstr ""
+msgstr "Pré-configurations"
 
 #: permissions.py:7
 msgid "Database bootstrap"
@@ -133,39 +134,39 @@ msgstr "Pré-configuration de base de données"
 
 #: permissions.py:9
 msgid "View bootstrap setups"
-msgstr ""
+msgstr "Afficher les pré-configurations"
 
 #: permissions.py:10
 msgid "Create bootstrap setups"
-msgstr ""
+msgstr "Créer de nouvelles pré-configurations"
 
 #: permissions.py:11
 msgid "Edit bootstrap setups"
-msgstr ""
+msgstr "Modifier des pré-configurations"
 
 #: permissions.py:12
 msgid "Delete bootstrap setups"
-msgstr ""
+msgstr "Supprimer des pré-configurations"
 
 #: permissions.py:13
 msgid "Execute bootstrap setups"
-msgstr ""
+msgstr "Exécuter des pré-configurations"
 
 #: permissions.py:14
 msgid "Dump the current project\\s setup into a bootstrap setup"
-msgstr ""
+msgstr "Insérer la configuration actuelle dans une pré-configuration"
 
 #: permissions.py:15
 msgid "Export bootstrap setups as files"
-msgstr ""
+msgstr "Exporter les pré-configurations sous forme de fichier"
 
 #: permissions.py:16
 msgid "Import new bootstrap setups"
-msgstr ""
+msgstr "Importer de nouvelles pré-configurations"
 
 #: permissions.py:17
 msgid "Sync the local bootstrap setups with a published repository"
-msgstr ""
+msgstr "Synchroniser localement les pré-configurations depuis un dépôt en ligne"
 
 #: permissions.py:18
 msgid "Erase the entire database and document storage"
@@ -173,57 +174,57 @@ msgstr "Effacer l'ensemble de la base de donnée et tous les documents stockés"
 
 #: registry.py:7
 msgid "Bootstrap"
-msgstr ""
+msgstr "Pré-configuration"
 
 #: registry.py:8
 msgid "Provides pre configured setups for indexes, document types, tags, etc."
-msgstr ""
+msgstr "Permet une pré-configurations des index, types de documents, étiquettes, etc..."
 
 #: views.py:50
 msgid "Bootstrap setup created successfully"
-msgstr ""
+msgstr "Pré-configuration crée avec succès"
 
 #: views.py:53
 msgid "Error creating bootstrap setup."
-msgstr ""
+msgstr "Erreur en créant la pré-configuration."
 
 #: views.py:58
 msgid "create bootstrap"
-msgstr ""
+msgstr "Créer une pré-configuration"
 
 #: views.py:78
 msgid "Bootstrap setup edited successfully"
-msgstr ""
+msgstr "Pré-configuration modifiée avec succès"
 
 #: views.py:81
 msgid "Error editing bootstrap setup."
-msgstr ""
+msgstr "erreur en modifiant la pré-configuration."
 
 #: views.py:86
 #, python-format
 msgid "edit bootstrap setup: %s"
-msgstr ""
+msgstr "modifier la pré-configuration: %s"
 
 #: views.py:111
 #, python-format
 msgid "Bootstrap setup: %s deleted successfully."
-msgstr ""
+msgstr "La pré-configuration: %s a été effacée avec succès."
 
 #: views.py:113
 #, python-format
 msgid "Bootstrap setup: %(bootstrap)s, delete error: %(error)s"
-msgstr ""
+msgstr "Pré-configuration: %(bootstrap)s, erreur de suppression: %(error)s"
 
 #: views.py:124
 #, python-format
 msgid "Are you sure you with to delete the bootstrap setup: %s?"
-msgstr ""
+msgstr "Êtes-vous sûrs de vouloir effacer la pré-configuration: %s?"
 
 #: views.py:164
 msgid ""
 "Cannot execute bootstrap setup, there is existing data.  Erase all data and "
 "try again."
-msgstr ""
+msgstr "Impossible d'exécuter la pré-configuration car des données existent. Effacez-les et recommencez."
 
 #: views.py:166
 #, python-format
@@ -239,50 +240,50 @@ msgstr "Pré-configuration \"%s\" effectuée avec succès."
 #, python-format
 msgid ""
 "Are you sure you wish to execute the database bootstrap setup named: %s?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir exécuter  la pré-configuration intitulée: %s?"
 
 #: views.py:196
 #, python-format
 msgid "Error dumping configuration into a bootstrap setup; %s"
-msgstr ""
+msgstr "Erreur en insérant la configuration actuelle dans la pré-configuration: %s"
 
 #: views.py:200
 msgid "Bootstrap setup created successfully."
-msgstr ""
+msgstr "Pré-configuration crée avec succès."
 
 #: views.py:206
 msgid "dump current configuration into a bootstrap setup"
-msgstr ""
+msgstr "insérer la configuration actuelle dans une pré-configuration"
 
 #: views.py:240 views.py:268
 msgid "Bootstrap setup imported successfully."
-msgstr ""
+msgstr "Pré-configuration importée avec succès."
 
 #: views.py:243
 msgid "File is not a bootstrap setup."
-msgstr ""
+msgstr "Ce fichier n'est pas un fichier de pré-configuration."
 
 #: views.py:245
 #, python-format
 msgid "Error importing bootstrap setup from file; %s."
-msgstr ""
+msgstr "Erreur en important la pré-configuration depuis le fichier: %s."
 
 #: views.py:251
 msgid "Import bootstrap setup from file"
-msgstr ""
+msgstr "Importer la pré-configuration depuis le fichier."
 
 #: views.py:271
 msgid "Data from URL is not a bootstrap setup."
-msgstr ""
+msgstr "Les données provenant de l'URL ne sont pas une pré-configuration."
 
 #: views.py:273
 #, python-format
 msgid "Error importing bootstrap setup from URL; %s."
-msgstr ""
+msgstr "Erreur en important la pré-configuration depuis l'URL: %s."
 
 #: views.py:279
 msgid "Import bootstrap setup from URL"
-msgstr ""
+msgstr "Importer une pré-configuration depuis une URL"
 
 #: views.py:298
 #, python-format
@@ -306,13 +307,13 @@ msgstr "Tous les documents, sources, métadonnées, types de métadonnées, jeux
 
 #: views.py:328
 msgid "Bootstrap repository successfully synchronized."
-msgstr ""
+msgstr "Dépôt de pré-configurations correctement synchronisé."
 
 #: views.py:330
 #, python-format
 msgid "Bootstrap repository synchronization error: %(error)s"
-msgstr ""
+msgstr "Erreur de synchronisation du dépôt de pré-configurations: %(error)s"
 
 #: views.py:337
 msgid "Are you sure you wish to synchronize with the bootstrap repository?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir effectuer la synchronisation avec le dépôt de pré-configurations ?"

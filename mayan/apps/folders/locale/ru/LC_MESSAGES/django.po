@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2012.
+# Sergey Glita <gsv70@mail.ru>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2013-05-14 06:36+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgstr "добавить в папку"
 
 #: __init__.py:25
 msgid "add to folder"
-msgstr ""
+msgstr "добавить в папку"
 
 #: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
@@ -171,7 +171,7 @@ msgstr "документы в папке: %s"
 
 #: views.py:180
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "Необходимо указатьть хотя бы один документ."
 
 #: views.py:198
 #, python-format
@@ -186,12 +186,12 @@ msgstr "Документ: %(document)s is already in folder: %(folder)s."
 #: views.py:217
 #, python-format
 msgid "Add document: %s to folder."
-msgstr ""
+msgstr "Добавить документ %s в папку"
 
 #: views.py:219
 #, python-format
 msgid "Add documents: %s to folder."
-msgstr ""
+msgstr "Добавить документы %s в папку"
 
 #: views.py:237
 #, python-format

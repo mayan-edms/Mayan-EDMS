@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# mic <winterfall24@gmail.com>, 2012.
-#   <winterfall24@gmail.com>, 2012.
+# mic <winterfall24@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2013
+# mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2013-11-06 12:41+0000\n"
+"Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,11 +22,11 @@ msgstr ""
 
 #: __init__.py:18
 msgid "folder list"
-msgstr "lista folderów"
+msgstr "Spis katalogów"
 
 #: __init__.py:19 views.py:77
 msgid "create folder"
-msgstr "stworzyć folder"
+msgstr "Utwórz katalog"
 
 #: __init__.py:20
 msgid "edit"
@@ -37,7 +38,7 @@ msgstr "usuń"
 
 #: __init__.py:22
 msgid "remove from folder"
-msgstr "usuń z folderu"
+msgstr "usuń z katalogu"
 
 #: __init__.py:23
 msgid "folder documents"
@@ -45,11 +46,11 @@ msgstr ""
 
 #: __init__.py:24
 msgid "add to a folder"
-msgstr "dodać do folderu"
+msgstr "dodaj do folderu"
 
 #: __init__.py:25
 msgid "add to folder"
-msgstr ""
+msgstr "dodaj do katalogu"
 
 #: __init__.py:26 __init__.py:36 models.py:43 views.py:34
 msgid "folders"
@@ -57,11 +58,11 @@ msgstr "katalogi"
 
 #: __init__.py:28
 msgid "ACLs"
-msgstr ""
+msgstr "ACLs"
 
 #: forms.py:38
 msgid "Folder"
-msgstr ""
+msgstr "Katalog"
 
 #: models.py:11
 msgid "title"
@@ -77,7 +78,7 @@ msgstr ""
 
 #: models.py:42 models.py:47 views.py:108 views.py:137 views.py:162
 msgid "folder"
-msgstr "folder"
+msgstr "katalog"
 
 #: models.py:48 views.py:209
 msgid "document"
@@ -93,11 +94,11 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Folders"
-msgstr "Foldery"
+msgstr "Katalogi"
 
 #: permissions.py:9
 msgid "Create new folders"
-msgstr ""
+msgstr "Utwórz nowe katalogi"
 
 #: permissions.py:10
 msgid "Edit new folders"
@@ -105,23 +106,23 @@ msgstr "Edytuj nowe foldery"
 
 #: permissions.py:11
 msgid "Delete new folders"
-msgstr "Usuń nowe foldery"
+msgstr "Usuń nowe katalogi"
 
 #: permissions.py:12
 msgid "Remove documents from folders"
-msgstr ""
+msgstr "Usuń dokumenty z katalogów"
 
 #: permissions.py:13
 msgid "View existing folders"
-msgstr ""
+msgstr "Zobacz istniejące katalogi"
 
 #: permissions.py:14
 msgid "Add documents to existing folders"
-msgstr "Dodaj dokumenty do istniejących folderów"
+msgstr "Dodaj dokumenty do istniejących katalogów"
 
 #: views.py:37
 msgid "created"
-msgstr ""
+msgstr "utworzony"
 
 #: views.py:38
 msgid "documents"
@@ -153,7 +154,7 @@ msgstr ""
 #: views.py:129
 #, python-format
 msgid "Folder: %s deleted successfully."
-msgstr ""
+msgstr "Katalog: %s został usunięty."
 
 #: views.py:131
 #, python-format
@@ -163,7 +164,7 @@ msgstr ""
 #: views.py:142
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć katalog: %s?"
 
 #: views.py:168
 #, python-format
@@ -172,7 +173,7 @@ msgstr ""
 
 #: views.py:180
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "Musisz podać co najmniej jeden dokument."
 
 #: views.py:198
 #, python-format
@@ -187,12 +188,12 @@ msgstr ""
 #: views.py:217
 #, python-format
 msgid "Add document: %s to folder."
-msgstr ""
+msgstr "Dodaj dokument: %s do katalogu."
 
 #: views.py:219
 #, python-format
 msgid "Add documents: %s to folder."
-msgstr ""
+msgstr "Dodaj dokumenty: %s do katalogu."
 
 #: views.py:237
 #, python-format

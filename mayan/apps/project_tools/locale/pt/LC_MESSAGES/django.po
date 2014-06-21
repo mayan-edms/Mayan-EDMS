@@ -3,11 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <dev.emerson@gmail.com>, 2011.
+# emersonsoares <dev.emerson@gmail.com>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2011-11-02 01:25+0000\n"
 "Last-Translator: emersonsoares <dev.emerson@gmail.com>\n"

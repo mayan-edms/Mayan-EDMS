@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2011-2012.
+# Roberto Rosario, 2011-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 03:19-0400\n"
-"PO-Revision-Date: 2012-12-27 08:29+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2013-11-20 11:36+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "documentos recientes"
 
 #: __init__.py:64
 msgid "upload new documents"
-msgstr ""
+msgstr "subir nuevos documentos"
 
 #: __init__.py:65
 msgid "clone metadata"
@@ -127,7 +127,7 @@ msgstr "texto de la página"
 
 #: __init__.py:95
 msgid "edit page text"
-msgstr "editar el texto de la página"
+msgstr "editar texto de la página"
 
 #: __init__.py:96
 msgid "next page"
@@ -175,7 +175,7 @@ msgstr "revertir"
 
 #: __init__.py:111
 msgid "document type list"
-msgstr "ista de tipos de documentos"
+msgstr "lista de tipos de documentos"
 
 #: __init__.py:112 views.py:1051
 msgid "document types"
@@ -211,7 +211,7 @@ msgstr "miniatura"
 
 #: events.py:5
 msgid "Document creation"
-msgstr "Creación de documentos"
+msgstr "Creación de documento"
 
 #: events.py:6
 #, python-format
@@ -523,11 +523,11 @@ msgstr "documento reciente"
 
 #: models.py:662
 msgid "Document type"
-msgstr ""
+msgstr "Tipo de documento"
 
 #: models.py:663
 msgid "MIME type"
-msgstr ""
+msgstr "Tipo MIME"
 
 #: models.py:664 views.py:132
 msgid "Filename"
@@ -535,27 +535,27 @@ msgstr "Nombre del archivo"
 
 #: models.py:665
 msgid "Metadata type"
-msgstr ""
+msgstr "Tipo de metadato"
 
 #: models.py:666
 msgid "Metadata value"
-msgstr ""
+msgstr "Valor de metadato"
 
 #: models.py:667
 msgid "Content"
-msgstr ""
+msgstr "Contenido"
 
 #: models.py:668
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: models.py:669
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: models.py:670
 msgid "Comments"
-msgstr ""
+msgstr "Comentarios"
 
 #: permissions.py:9
 msgid "Create documents"
@@ -1045,19 +1045,19 @@ msgstr "imagen de página de documento"
 
 #: wizards.py:36
 msgid "step 1 of 3: Document type"
-msgstr ""
+msgstr "Paso 1 de 3: Tipo de documento"
 
 #: wizards.py:37
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "paso 2 de 3: Selección de metadatos"
 
 #: wizards.py:38
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "paso 3 de 3: Metadatos de documento"
 
 #: wizards.py:46
 msgid "Next step"
-msgstr ""
+msgstr "Siguiente paso"
 
 #: conf/settings.py:38
 msgid ""

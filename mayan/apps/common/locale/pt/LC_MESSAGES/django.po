@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <dev.emerson@gmail.com>, 2011.
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
-# Vítor Figueiró <vfigueiro@gmail.com>, 2012.
+# emersonsoares <dev.emerson@gmail.com>, 2011
+# Roberto Rosario, 2012
+# Vítor Figueiró <vfigueiro@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

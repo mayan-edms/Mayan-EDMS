@@ -1,0 +1,302 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-08-27 11:27+0000\n"
+"Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/language/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:24
+msgid "preview"
+msgstr "forhåndsvisning"
+
+#: __init__.py:28
+msgid "tagged items"
+msgstr "taggede elementer"
+
+#: __init__.py:34 __init__.py:42 links.py:21 views.py:124
+msgid "tags"
+msgstr "tags"
+
+#: forms.py:24
+msgid "Name"
+msgstr "Navn"
+
+#: forms.py:25
+msgid "Color"
+msgstr "Farve"
+
+#: forms.py:42 permissions.py:7
+msgid "Tags"
+msgstr "Tags"
+
+#: links.py:11
+msgid "tag list"
+msgstr "tag liste"
+
+#: links.py:12
+msgid "create new tag"
+msgstr "opret nyt tag"
+
+#: links.py:14 links.py:15
+msgid "attach tag"
+msgstr "vedhæfte tag"
+
+#: links.py:18
+msgid "remove tag"
+msgstr "fjern tag"
+
+#: links.py:19
+msgid "remove tags"
+msgstr "fjern tags"
+
+#: links.py:22 links.py:25
+msgid "delete"
+msgstr "slet"
+
+#: links.py:23
+msgid "edit"
+msgstr "redigér"
+
+#: links.py:24
+msgid "tagged documents"
+msgstr "taggede dokumenter"
+
+#: links.py:26
+msgid "ACLs"
+msgstr "ACLs"
+
+#: literals.py:18
+msgid "Blue"
+msgstr "Blå"
+
+#: literals.py:19
+msgid "Cyan"
+msgstr "Cyan"
+
+#: literals.py:20
+msgid "Coral"
+msgstr "Coral"
+
+#: literals.py:21
+msgid "Green-Yellow"
+msgstr "Grøn-Gul"
+
+#: literals.py:22
+msgid "Khaki"
+msgstr "Khaki"
+
+#: literals.py:23
+msgid "LightGrey"
+msgstr "LysGrå"
+
+#: literals.py:24
+msgid "Magenta"
+msgstr "Magenta"
+
+#: literals.py:25
+msgid "Red"
+msgstr "Rød"
+
+#: literals.py:26
+msgid "Orange"
+msgstr "Orange"
+
+#: literals.py:27
+msgid "Yellow"
+msgstr "Gul"
+
+#: models.py:12 views.py:180 views.py:232 views.py:246
+msgid "tag"
+msgstr "tag"
+
+#: models.py:13
+msgid "color"
+msgstr "farve"
+
+#: models.py:16
+msgid "tag properties"
+msgstr "tag egenskaber"
+
+#: models.py:17
+msgid "tags properties"
+msgstr "tags egenskaber"
+
+#: permissions.py:9
+msgid "Create new tags"
+msgstr "Opret nye tags"
+
+#: permissions.py:10
+msgid "Delete tags"
+msgstr "Slet tags"
+
+#: permissions.py:11
+msgid "Edit tags"
+msgstr "Redigér tags"
+
+#: permissions.py:12
+msgid "View tags"
+msgstr "Vis tags"
+
+#: permissions.py:13
+msgid "Attach tags to documents"
+msgstr "Vedhæft tags til dokumenter"
+
+#: permissions.py:14
+msgid "Remove tags from documents"
+msgstr "Fjern tags fra dokumenter"
+
+#: views.py:42
+msgid "Tag already exists."
+msgstr "Tag eksistere allerede."
+
+#: views.py:50
+msgid "Tag created succesfully."
+msgstr "Tag oprettet."
+
+#: views.py:56
+msgid "create tag"
+msgstr "opret tag"
+
+#: views.py:69
+msgid "Must provide at least one document."
+msgstr "Skal angive mindst ét ​​dokument."
+
+#: views.py:87
+#, python-format
+msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
+msgstr "Dokumentet \"%(document)s\" er allerede mærket som \"%(tag)s\""
+
+#: views.py:92
+#, python-format
+msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
+msgstr "Tag \"%(tag)s\" vedhæftet til at dokumentet \"%(document)s\"."
+
+#: views.py:100
+msgid "document"
+msgstr "dokument"
+
+#: views.py:108
+#, python-format
+msgid "Attach tag to document: %s."
+msgstr "Vedhæft tag til dokumenter: %s."
+
+#: views.py:110
+#, python-format
+msgid "Attach tag to documents: %s."
+msgstr "Vedhæft tag til dokumenter: %s."
+
+#: views.py:156
+msgid "Must provide at least one tag."
+msgstr "Der skal angives mindst én tag."
+
+#: views.py:171
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "Tag \"%s\" slettet."
+
+#: views.py:173
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "Fejl ved sletning af tag \"%(tag)s\": %(error)s"
+
+#: views.py:188
+#, python-format
+msgid "Are you sure you wish to delete the tag: %s?"
+msgstr "Er du sikker på du ønsker at slette tag: %s?"
+
+#: views.py:189 views.py:192
+msgid "Will be removed from all documents."
+msgstr "Vil blive fjernet fra alle dokumenter."
+
+#: views.py:191
+#, python-format
+msgid "Are you sure you wish to delete the tags: %s?"
+msgstr "Er du sikker på du ønsker at slette disse tags: %s?"
+
+#: views.py:220
+msgid "Tag updated succesfully."
+msgstr "Tag opdateret."
+
+#: views.py:229
+#, python-format
+msgid "edit tag: %s"
+msgstr "redigér tag: %s"
+
+#: views.py:243
+#, python-format
+msgid "documents with the tag \"%s\""
+msgstr "dokumenter med tag \"%s\""
+
+#: views.py:262
+#, python-format
+msgid "tags for: %s"
+msgstr "tags for: %s"
+
+#: views.py:274
+msgid "Must provide at least one tagged document."
+msgstr "Skal angive mindst ét tagget dokument."
+
+#: views.py:313
+#, python-format
+msgid "Remove tag from document: %s."
+msgstr "Fjern tag fra dokument: %s."
+
+#: views.py:315
+#, python-format
+msgid "Remove tag from documents: %s."
+msgstr "Fjern tag fra dokumenter: %s."
+
+#: views.py:321
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
+"%(document)s?"
+msgstr "Er du sikker på du vil fjerne mærket \"%(tag)s\" fra dokumentet: %(document)s?"
+
+#: views.py:324
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
+"%(documents)s?"
+msgstr "Er du sikker på du vil fjerne mærket \"%(tag)s\" fra dokumenterne: %(documents)s?"
+
+#: views.py:329
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tags: %(tags)s from the document: "
+"%(document)s?"
+msgstr "Er du sikker på du ønsker at fjerne tags: %(tags)s fra dokumentet: %(document)s?"
+
+#: views.py:332
+#, python-format
+msgid ""
+"Are you sure you wish to remove the tags %(tag)s from the documents: "
+"%(documents)s?"
+msgstr "Er du sikker på du ønsker at fjerne tags %(tag)s fra dokumenter: %(documents)s?"
+
+#: views.py:339
+#, python-format
+msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
+msgstr "Dokumentet \"%(document)s\" ikke blev kodet som \"%(tag)s\""
+
+#: views.py:344
+#, python-format
+msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+msgstr "Tag \"%(tag)s\" blev fjernet fra dokumentet \"%(document)s\"."
+
+#: templatetags/tags_tags.py:17
+msgid "Add tag to document"
+msgstr "Tilføj tag til dokument"

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# mic <winterfall24@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-01-02 09:45+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-11-06 23:35+0000\n"
+"Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,19 +20,19 @@ msgstr ""
 
 #: __init__.py:14
 msgid "ACLs"
-msgstr ""
+msgstr "ACLs"
 
 #: __init__.py:15 __init__.py:23
 msgid "details"
-msgstr ""
+msgstr "szczegóły"
 
 #: __init__.py:16 __init__.py:25
 msgid "grant"
-msgstr ""
+msgstr "przyznać"
 
 #: __init__.py:17 __init__.py:26
 msgid "revoke"
-msgstr ""
+msgstr "odwołać"
 
 #: __init__.py:18 __init__.py:24 forms.py:21
 msgid "New holder"
@@ -39,7 +40,7 @@ msgstr ""
 
 #: __init__.py:20
 msgid "Default ACLs"
-msgstr ""
+msgstr "Domyślne ACLs"
 
 #: __init__.py:21
 msgid "List of classes"
@@ -51,11 +52,11 @@ msgstr ""
 
 #: forms.py:38
 msgid "Users"
-msgstr ""
+msgstr "Użytkownicy"
 
 #: forms.py:41
 msgid "Groups"
-msgstr ""
+msgstr "Grupy"
 
 #: forms.py:44
 msgid "Roles"
@@ -67,11 +68,11 @@ msgstr ""
 
 #: managers.py:118 managers.py:130
 msgid "Insufficient access."
-msgstr ""
+msgstr "Niewystarczające uprawnienia."
 
 #: models.py:25 models.py:67
 msgid "permission"
-msgstr ""
+msgstr "uprawnienie"
 
 #: models.py:51
 msgid "access entry"
@@ -103,11 +104,11 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr ""
+msgstr "Edytuj ACLs"
 
 #: permissions.py:11
 msgid "View ACLs"
-msgstr ""
+msgstr "Podgląd ACLs"
 
 #: permissions.py:13
 msgid "Edit class default ACLs"
@@ -128,7 +129,7 @@ msgstr ""
 
 #: views.py:50 views.py:410
 msgid "permissions"
-msgstr ""
+msgstr "uprawnienia"
 
 #: views.py:97
 #, python-format
@@ -141,11 +142,11 @@ msgstr ""
 
 #: views.py:105 views.py:443
 msgid "label"
-msgstr ""
+msgstr "etykieta"
 
 #: views.py:107 views.py:445
 msgid "has permission"
-msgstr ""
+msgstr "ma uprawnienie"
 
 #: views.py:184 views.py:277 views.py:525 views.py:604
 msgid ", "
@@ -164,12 +165,12 @@ msgstr ""
 #: views.py:189 views.py:530
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
+msgstr "Czy na pewno chcesz przyznać uprawnienia %(title_suffix)s?"
 
 #: views.py:191 views.py:532
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
+msgstr "Czy na pewno chcesz przyznać uprawnienia %(title_suffix)s?"
 
 #: views.py:198 views.py:539
 #, python-format
@@ -215,7 +216,7 @@ msgstr ""
 
 #: views.py:354 views.py:486
 msgid "Select"
-msgstr ""
+msgstr "Wybierz"
 
 #: views.py:386
 msgid "classes"

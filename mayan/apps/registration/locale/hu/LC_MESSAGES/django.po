@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dezső József <dejo60@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-06-24 13:02+0000\n"
+"Last-Translator: Dezső József <dejo60@gmail.com>\n"
+"Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/language/hu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:15
+msgid "Registration"
+msgstr "Regiszráció"
+
+#: forms.py:13
+msgid "Your name:"
+msgstr "neve:"
+
+#: forms.py:18
+msgid "Your email:"
+msgstr "email címe:"
+
+#: forms.py:23
+msgid "Company name:"
+msgstr "cég neve:"
+
+#: forms.py:28
+msgid "Industry:"
+msgstr "iparág:"
+
+#: forms.py:33
+msgid "Company website:"
+msgstr "cég web-oldala:"
+
+#: forms.py:38
+msgid "Country:"
+msgstr "ország"
+
+#: forms.py:46
+msgid "Other information:"
+msgstr "egyéb információ"
+
+#: models.py:20
+msgid "registered"
+msgstr "regisztrált"
+
+#: models.py:21
+msgid "registration data"
+msgstr "regisztrációs adatok"
+
+#: models.py:47
+msgid "No name"
+msgstr "névtelen"
+
+#: models.py:86
+msgid "registration properties"
+msgstr "regisztrációs tulajdonságok"
+
+#: views.py:22
+msgid "Thank you for registering."
+msgstr "Köszönjük, hogy  regisztrált."
+
+#: views.py:25
+msgid "Your copy is already registered."
+msgstr "Regisztrált példány."
+
+#: views.py:28
+#, python-format
+msgid "Error submiting form; %s."
+msgstr "Űrlap hiba: %s"
+
+#: views.py:33
+msgid "registration form"
+msgstr "regisztrációs űrlap"
+
+#: templatetags/registration_tags.py:18
+msgid "Unregistered"
+msgstr "Nem regisztrált"

@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# mic <diveaway12@gmail.com>, 2012.
-# <winterfall24@gmail.com>, 2012.
-#   <winterfall24@gmail.com>, 2012.
+# mic <diveaway12@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:48-0400\n"
-"PO-Revision-Date: 2012-02-21 14:50+0000\n"
+"PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"

@@ -3,11 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lucas Weel <ljj.weel@gmail.com>, 2012-2013.
+# Lucas Weel <ljj.weel@gmail.com>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:49-0400\n"
 "PO-Revision-Date: 2013-01-12 10:56+0000\n"
 "Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"

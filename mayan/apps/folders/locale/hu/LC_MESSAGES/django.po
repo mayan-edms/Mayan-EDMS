@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dezső József <dejo60@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-06-25 12:25+0000\n"
+"Last-Translator: Dezső József <dejo60@gmail.com>\n"
+"Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/language/hu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:18
+msgid "folder list"
+msgstr "mappalista"
+
+#: __init__.py:19 views.py:77
+msgid "create folder"
+msgstr "mappa létrehozás"
+
+#: __init__.py:20
+msgid "edit"
+msgstr "szerkesztés"
+
+#: __init__.py:21
+msgid "delete"
+msgstr "törlés"
+
+#: __init__.py:22
+msgid "remove from folder"
+msgstr "eltávolítás a mappából"
+
+#: __init__.py:23
+msgid "folder documents"
+msgstr "dokumentum mappa"
+
+#: __init__.py:24
+msgid "add to a folder"
+msgstr "a mappába helyez"
+
+#: __init__.py:25
+msgid "add to folder"
+msgstr "mappába helyezés"
+
+#: __init__.py:26 __init__.py:36 models.py:43 views.py:34
+msgid "folders"
+msgstr "mappák"
+
+#: __init__.py:28
+msgid "ACLs"
+msgstr "ACL-ek"
+
+#: forms.py:38
+msgid "Folder"
+msgstr "Mappa"
+
+#: models.py:11
+msgid "title"
+msgstr "cím"
+
+#: models.py:12
+msgid "user"
+msgstr "felhasználó"
+
+#: models.py:13
+msgid "datetime created"
+msgstr "létrehozás dátuma és ideje"
+
+#: models.py:42 models.py:47 views.py:108 views.py:137 views.py:162
+msgid "folder"
+msgstr "mappa"
+
+#: models.py:48 views.py:209
+msgid "document"
+msgstr "dokumentum"
+
+#: models.py:54 views.py:279
+msgid "folder document"
+msgstr "dokumentum mappa"
+
+#: models.py:55
+msgid "folders documents"
+msgstr "dokumentum mappák"
+
+#: permissions.py:7
+msgid "Folders"
+msgstr "Mappák"
+
+#: permissions.py:9
+msgid "Create new folders"
+msgstr "Új mappa"
+
+#: permissions.py:10
+msgid "Edit new folders"
+msgstr "Új mappák módosítása"
+
+#: permissions.py:11
+msgid "Delete new folders"
+msgstr "Új mappák törlése"
+
+#: permissions.py:12
+msgid "Remove documents from folders"
+msgstr "Dokumentumok eltávolítása a mappákból"
+
+#: permissions.py:13
+msgid "View existing folders"
+msgstr "Meglévő mappák megtekintése"
+
+#: permissions.py:14
+msgid "Add documents to existing folders"
+msgstr "Dokumentumok elhelyezése a meglévő mappákba"
+
+#: views.py:37
+msgid "created"
+msgstr "létrehozva"
+
+#: views.py:38
+msgid "documents"
+msgstr "dokumentumok"
+
+#: views.py:69
+msgid "Folder created successfully"
+msgstr "mappa létrehozása sikerült"
+
+#: views.py:72
+#, python-format
+msgid "A folder named: %s, already exists."
+msgstr "Már van %s nevű mappa."
+
+#: views.py:97
+msgid "Folder edited successfully"
+msgstr "Mappa módosítása sikerült"
+
+#: views.py:100
+#, python-format
+msgid "Error editing folder; %s"
+msgstr "Hiba mappa módosítás közben; %s"
+
+#: views.py:105
+#, python-format
+msgid "edit folder: %s"
+msgstr "%s mappa módosítása"
+
+#: views.py:129
+#, python-format
+msgid "Folder: %s deleted successfully."
+msgstr "%s mappa sikeresen törölve"
+
+#: views.py:131
+#, python-format
+msgid "Folder: %(folder)s delete error: %(error)s"
+msgstr "Hiba a %(folder)s mappa törlésekor: %(error)s"
+
+#: views.py:142
+#, python-format
+msgid "Are you sure you with to delete the folder: %s?"
+msgstr "Biztosan törölni akarja a %s mappát?"
+
+#: views.py:168
+#, python-format
+msgid "documents in folder: %s"
+msgstr "dokumentumok a %s mappában"
+
+#: views.py:180
+msgid "Must provide at least one document."
+msgstr "Adjon meg legalább egy dokumentumot."
+
+#: views.py:198
+#, python-format
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgstr "A %(document)s dokumentum elhelyezése a %(folder)s mappában sikerült."
+
+#: views.py:201
+#, python-format
+msgid "Document: %(document)s is already in folder: %(folder)s."
+msgstr "A %(document)s nevű dokumentum már van a %(folder)s. mappában."
+
+#: views.py:217
+#, python-format
+msgid "Add document: %s to folder."
+msgstr "Dokumentum elhelyezése a %s mappában."
+
+#: views.py:219
+#, python-format
+msgid "Add documents: %s to folder."
+msgstr "Dokumentumok elhelyezése a %s mappában."
+
+#: views.py:237
+#, python-format
+msgid "folders containing: %s"
+msgstr "A mappa tartalma: %s"
+
+#: views.py:253
+msgid "Must provide at least one folder document."
+msgstr "Legalább egy dokumentum mappa szükséges"
+
+#: views.py:271
+#, python-format
+msgid "Document: %s removed successfully."
+msgstr "A %s dokumentum eltávolítása sikerült."
+
+#: views.py:273
+#, python-format
+msgid "Document: %(document)s delete error: %(error)s"
+msgstr "Hiba %(error)s a  %(document)s dokumentum törlésekor."
+
+#: views.py:287
+#, python-format
+msgid ""
+"Are you sure you wish to remove the document: %(document)s from the folder "
+"\"%(folder)s\"?"
+msgstr "Biztosan eltávolítja a %(document)s dokumentumot a \"%(folder)s\" mappából?"
+
+#: views.py:290
+#, python-format
+msgid ""
+"Are you sure you wish to remove the documents: %(documents)s from the folder"
+" \"%(folder)s\"?"
+msgstr "Biztosan eltávolítja a %(documents)s dokumentumokat a \"%(folder)s\" mappából?"
+
+#: templates/folders_help.html:3
+msgid "What are folders?"
+msgstr "Mik azok a mappák?"
+
+#: templates/folders_help.html:4
+msgid ""
+"These folders can also be described as user folders.  They are a way to let "
+"individual users create their own document organization methods.  Folders "
+"created by one user and the documents contained by them don't affect any "
+"other user folders or documents."
+msgstr "Ezek a mappák hasonlóak, mint a felhasználók mappái a számítógépen. Ez lehetőséget biztosít arra, hogy az egyes felhasználók saját dokumentumaik tárolására egyéni módszert, logikát alakítsanak ki. A felhasználók által létrehozott mappák és a bennük elhelyezett dokumentumaik nem befolyásolják más felhasználók mappáit és dokumentumait."
+
+#: templatetags/folder_tags.py:17
+msgid "Add document to a folder"
+msgstr "Dokumentum elhelyezése egy mappában"

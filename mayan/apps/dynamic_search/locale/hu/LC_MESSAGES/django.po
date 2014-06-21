@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dezső József <dejo60@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-06-25 11:22+0000\n"
+"Last-Translator: Dezső József <dejo60@gmail.com>\n"
+"Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/language/hu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:5
+msgid "search"
+msgstr "keresés"
+
+#: __init__.py:6 views.py:72
+msgid "advanced search"
+msgstr "részletes keresés"
+
+#: __init__.py:7
+msgid "search again"
+msgstr "keresés ismétlése"
+
+#: forms.py:8
+msgid "Search terms"
+msgstr "keresési feltételek"
+
+#: models.py:20
+msgid "user"
+msgstr "felhasználó"
+
+#: models.py:21
+msgid "query"
+msgstr "lekérdezés"
+
+#: models.py:22
+msgid "datetime created"
+msgstr "létrehozás dátuma és ideje"
+
+#: models.py:23
+msgid "hits"
+msgstr "találat"
+
+#: models.py:61
+msgid "recent search"
+msgstr "legutóbbi keresés"
+
+#: models.py:62
+msgid "recent searches"
+msgstr "legutóbbi keresések"
+
+#: views.py:33
+#, python-format
+msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+msgstr "eredmények,  (csak  %(shown_result_count)s látható a %(result_count)s)-ból."
+
+#: views.py:37
+msgid "results"
+msgstr "eredmények"
+
+#: views.py:56
+#, python-format
+msgid "Search error: %s"
+msgstr "Keresési hiba: %s"
+
+#: views.py:60
+msgid "type"
+msgstr "típus"
+
+#: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
+#: templatetags/search_tags.py:20
+msgid "Search"
+msgstr "Keresés"
+
+#: conf/settings.py:12
+msgid "Maximum amount search hits to fetch and display."
+msgstr "A letölthető és megjeleníthető keresési találatok maximális száma."
+
+#: conf/settings.py:13
+msgid "Maximum number of search queries to remember per user."
+msgstr "A keresési előzmények maximális száma felhasználónként."
+
+#: templates/search_help.html:3
+msgid "Help"
+msgstr "Segítség / súgó"
+
+#: templates/search_help.html:4
+#, python-format
+msgid ""
+"Enter the desired search keywords separated by space.  Only the top "
+"%(search_results_limit)s results will be available."
+msgstr "Adja meg a kívánt keresési kulcsszavakat szóközzel elválasztva. Csak az első %(search_results_limit)s eredmények lesznek elérhetőek."
+
+#: templates/search_results.html:3
+msgid "Search results"
+msgstr "A keresés eredményei"
+
+#: templates/search_results.html:19
+#, python-format
+msgid "Elapsed time: %(time_delta)s seconds"
+msgstr "Eltelt idő: %(time_delta)s másodperc"
+
+#: templatetags/search_tags.py:33
+#, python-format
+msgid "recent searches (maximum of %d)"
+msgstr "legutóbbi keresések (legfeljebb %d)"

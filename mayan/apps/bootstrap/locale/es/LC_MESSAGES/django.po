@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2012.
+# Roberto Rosario, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
-"Report-Msgid-Bugs-To: http://github.com/rosarior/mayan/issues\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-12 01:49-0400\n"
-"PO-Revision-Date: 2012-12-12 07:20+0000\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>\n"
+"PO-Revision-Date: 2013-02-10 16:51+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: forms.py:50
 msgid "Bootstrap setup file"
-msgstr ""
+msgstr "Archivo de configuración de arranque"
 
 #: forms.py:56
 msgid "Bootstrap setup URL"
-msgstr ""
+msgstr "URL de configuración de arranque"
 
 #: links.py:11
 msgid "bootstrap"
@@ -156,15 +156,15 @@ msgstr "Grabar la configuración actual del projecto en una configuración de ar
 
 #: permissions.py:15
 msgid "Export bootstrap setups as files"
-msgstr ""
+msgstr "Exportar configuraciones de arranque como archivos"
 
 #: permissions.py:16
 msgid "Import new bootstrap setups"
-msgstr ""
+msgstr "Importar de nuevas configuraciones de arranque"
 
 #: permissions.py:17
 msgid "Sync the local bootstrap setups with a published repository"
-msgstr ""
+msgstr "Sincronizar las configuraciones de arranque locales con un repositorio publicado"
 
 #: permissions.py:18
 msgid "Erase the entire database and document storage"
@@ -180,7 +180,7 @@ msgstr "Proporciona configuraciones pre ajustadas para los índices, tipos de do
 
 #: views.py:50
 msgid "Bootstrap setup created successfully"
-msgstr ""
+msgstr "Configuración de arranque creada exitosamente."
 
 #: views.py:53
 msgid "Error creating bootstrap setup."
@@ -211,7 +211,7 @@ msgstr "Configuración de arranque :%s eliminada exitosamente."
 #: views.py:113
 #, python-format
 msgid "Bootstrap setup: %(bootstrap)s, delete error: %(error)s"
-msgstr ""
+msgstr "Error borrando configuración de arranque: %(bootstrap)s; %(error)s "
 
 #: views.py:124
 #, python-format
@@ -222,7 +222,7 @@ msgstr "¿Seguro que desea borrar la configuración de arranque: %s?"
 msgid ""
 "Cannot execute bootstrap setup, there is existing data.  Erase all data and "
 "try again."
-msgstr ""
+msgstr "No se puede ejecutar la configuración de arranque, existen datos.  Borre la base de datos y vuelva a intentarlo."
 
 #: views.py:166
 #, python-format
@@ -238,50 +238,50 @@ msgstr "Configuración de arranque \"%s\" ejecutada exitosamente."
 #, python-format
 msgid ""
 "Are you sure you wish to execute the database bootstrap setup named: %s?"
-msgstr ""
+msgstr "¿Seguro de que desea ejecutar la configuración de arranque de base de datos llamada: %s?"
 
 #: views.py:196
 #, python-format
 msgid "Error dumping configuration into a bootstrap setup; %s"
-msgstr ""
+msgstr "Error vertiendo configuración actual en una configuración de arranque; %s"
 
 #: views.py:200
 msgid "Bootstrap setup created successfully."
-msgstr ""
+msgstr "Configuración de arranque creada con exitosamente."
 
 #: views.py:206
 msgid "dump current configuration into a bootstrap setup"
-msgstr ""
+msgstr "vertir la configuración actual en una configuración de arranque"
 
 #: views.py:240 views.py:268
 msgid "Bootstrap setup imported successfully."
-msgstr ""
+msgstr "Configuración de arranque importada con exitosamente."
 
 #: views.py:243
 msgid "File is not a bootstrap setup."
-msgstr ""
+msgstr "El archivo no es una configuración de arranque."
 
 #: views.py:245
 #, python-format
 msgid "Error importing bootstrap setup from file; %s."
-msgstr ""
+msgstr "Error al importar la configuración de arranque desde el archivo; %s."
 
 #: views.py:251
 msgid "Import bootstrap setup from file"
-msgstr ""
+msgstr "Importar configuración de arranque desde un archivo"
 
 #: views.py:271
 msgid "Data from URL is not a bootstrap setup."
-msgstr ""
+msgstr "Los datos desde el URL no son una configuración de arranque."
 
 #: views.py:273
 #, python-format
 msgid "Error importing bootstrap setup from URL; %s."
-msgstr ""
+msgstr "Error al importar la configuración de arranque desde la URL; %s."
 
 #: views.py:279
 msgid "Import bootstrap setup from URL"
-msgstr ""
+msgstr "Importar configuración de arranque desde la URL"
 
 #: views.py:298
 #, python-format
@@ -305,13 +305,13 @@ msgstr "¡Todos los documentos, las fuentes, los metadatos, los tipos de metadat
 
 #: views.py:328
 msgid "Bootstrap repository successfully synchronized."
-msgstr ""
+msgstr "Repositorio de configuración de arranque sincronizado exitosamente."
 
 #: views.py:330
 #, python-format
 msgid "Bootstrap repository synchronization error: %(error)s"
-msgstr ""
+msgstr "Error sincronizando repositorio de configuraciónes de arranque: %(error)s"
 
 #: views.py:337
 msgid "Are you sure you wish to synchronize with the bootstrap repository?"
-msgstr ""
+msgstr "¿Está seguro que desea sincronizar con el repositorio de configuraciónes de arranque?"
