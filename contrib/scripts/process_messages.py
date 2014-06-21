@@ -10,7 +10,7 @@ APP_LIST = ('acls', 'checkouts', 'common', 'converter', 'django_gpg', 'documents
     'folders', 'history', 'installation', 'linking', 'main', 'metadata', 'navigation',
     'ocr', 'permissions', 'project_setup', 'project_tools', 'scheduler', 'smart_settings',
     'sources', 'tags', 'user_management', 'web_theme', 'bootstrap', 'registration')
-LANGUAGE_LIST = ('ar', 'bg', 'de_DE', 'en', 'es', 'fr', 'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ru', 'vi_VN')
+LANGUAGE_LIST = ('ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'id', 'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'tr_TR', 'vi_VN')
 
 makemessages = pbs.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')
@@ -18,11 +18,7 @@ makemessages = makemessages.bake('makemessages')
 compilemessages = pbs.Command('django-admin.py')
 compilemessages = compilemessages.bake('compilemessages')
 
-if hasattr(sys, 'real_prefix'):
-    # We are inside a virtual env
-    BASE_DIR = os.path.join(os.environ['VIRTUAL_ENV'], '..')
-else:
-    BASE_DIR = os.getcwd()
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'mayan'))
 
 
 def process(command, app_list, language_list):
@@ -47,7 +43,7 @@ if __name__ == '__main__':
     parser.add_option('-a', '--app', help='specify which app to process', dest='app', action='store', metavar='appname')
     parser.add_option('-l', '--lang', help='specify which language to process', dest='lang', action='store', metavar='language')
     (opts, args) = parser.parse_args()
-    
+
     if not opts.make and not opts.compile:
         parser.print_help()
 
