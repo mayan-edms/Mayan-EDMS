@@ -1,14 +1,12 @@
 language: python
 python:
-  - "2.7"
-  - "2.6"
+  - 2.7
+  - 2.6
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq python-dev gcc tesseract-ocr unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
 install:
-  - "pip install -r requirements/testing.txt --use-mirrors"
-notifications:
-  email: false
+  - "pip install -r requirements/testing.txt"
 script:
   - coverage run --source=documents,document_signatures,lock_manager,folders,tags manage.py test documents lock_manager document_signatures folders tags
 after_success:
@@ -16,3 +14,9 @@ after_success:
 branches:
   only:
     - master
+notifications:
+  email:
+    recipients:
+    - roberto.rosario@mayan-edms.com
+    on_success: never
+    on_failure: always
