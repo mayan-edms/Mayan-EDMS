@@ -101,4 +101,4 @@ Features
 .. _`Dublin core`: http://dublincore.org/metadata-basics/
 .. _Samba:  http://www.samba.org/
 .. _Django:  https://www.djangoproject.com/
-.. _Transifex: https://www.transifex.net/projects/p/mayan-edms/
+.. _Transifex: https://www.transifex.com/projects/p/mayan-edms/
