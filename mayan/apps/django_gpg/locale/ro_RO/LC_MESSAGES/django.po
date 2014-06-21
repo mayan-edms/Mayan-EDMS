@@ -1,0 +1,215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Badea Gabriel <gcbadea@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-02-10 14:09+0000\n"
+"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: __init__.py:14 views.py:66
+msgid "private keys"
+msgstr "cheile private"
+
+#: __init__.py:15 views.py:69
+msgid "public keys"
+msgstr "chei publice"
+
+#: __init__.py:16
+msgid "delete"
+msgstr "șterge"
+
+#: __init__.py:17
+msgid "query keyservers"
+msgstr "interogare keyservers"
+
+#: __init__.py:18
+msgid "import"
+msgstr "import"
+
+#: __init__.py:19
+msgid "key management"
+msgstr "gestionare chei"
+
+#: api.py:24
+msgid "Public"
+msgstr "Public"
+
+#: api.py:25
+msgid "Secret"
+msgstr "Secret"
+
+#: api.py:33 api.py:38
+msgid "RSA"
+msgstr "RSA"
+
+#: api.py:34
+msgid "DSA"
+msgstr "DSA"
+
+#: api.py:39
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: api.py:53
+msgid "Bad signature."
+msgstr "Semnătură nereuşită."
+
+#: api.py:57
+msgid "Document not signed or invalid signature."
+msgstr "Documentul nu e semnat sau semnătură invalidă."
+
+#: api.py:61
+msgid "Signature error."
+msgstr "Eroare semnătură."
+
+#: api.py:65
+msgid "Document is signed but no public key is available for verification."
+msgstr "Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru verificare."
+
+#: api.py:69
+msgid "Document is signed, and signature is good."
+msgstr "Documentul este semnat, iar semnătura este bună."
+
+#: api.py:73
+msgid "Document is signed with a valid signature."
+msgstr "Documentul este semnat cu o semnătură validă."
+
+#: api.py:146
+msgid "unknown"
+msgstr "necunoscut"
+
+#: forms.py:7
+msgid "Term"
+msgstr "Termen"
+
+#: forms.py:8
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Nume, e-mail, ID-ul de cheie sau amprenta cheii pentru a căuta."
+
+#: permissions.py:7
+msgid "Key management"
+msgstr "gestionare chei"
+
+#: permissions.py:9
+msgid "View keys"
+msgstr "Vizualiza cheile"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "Ștergeți cheile"
+
+#: permissions.py:11
+msgid "Query keyservers"
+msgstr "Interogare keyservers"
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
+msgstr "Importă cheile din keyservers"
+
+#: views.py:37
+#, python-format
+msgid "Key: %s, imported successfully."
+msgstr "Key:% s, importată cu succes."
+
+#: views.py:42
+#, python-format
+msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgstr "Imposibil de a importa ID-cheie: %(key_id)s; %(error)s"
+
+#: views.py:51
+msgid "Import key"
+msgstr "Import cheie"
+
+#: views.py:52
+#, python-format
+msgid "Are you sure you wish to import key id: %s?"
+msgstr "Sunteți sigur că doriți să importați ID-cheie:% s?"
+
+#: views.py:77
+msgid "Key ID"
+msgstr "ID cheie"
+
+#: views.py:81
+msgid "Owner"
+msgstr "Proprietar"
+
+#: views.py:101
+#, python-format
+msgid "Key: %s, deleted successfully."
+msgstr "Cheie :% s, elimină cu succes."
+
+#: views.py:108
+msgid "Delete key"
+msgstr "Ștergeți-cheie"
+
+#: views.py:110
+#, python-format
+msgid ""
+"Are you sure you wish to delete key: %s?  If you try to delete a public key "
+"that is part of a public/private pair the private key will be deleted as "
+"well."
+msgstr "Sunteți sigur că doriți să ștergeți cheie:% s? Dacă încercați să ștergeți o cheie publică, care este parte dintr-o pereche publi /privat cheia privată va fi șterse de asemenea."
+
+#: views.py:128
+msgid "Query key server"
+msgstr "Interogare cheie serverul"
+
+#: views.py:141
+msgid "results"
+msgstr "rezultate"
+
+#: views.py:146
+msgid "ID"
+msgstr "ID-ul"
+
+#: views.py:150
+msgid "type"
+msgstr "tip"
+
+#: views.py:154
+msgid "creation date"
+msgstr "data creării"
+
+#: views.py:158
+msgid "disabled"
+msgstr "invalid"
+
+#: views.py:162
+msgid "expiration date"
+msgstr "dată de expirare"
+
+#: views.py:166
+msgid "expired"
+msgstr "expirat"
+
+#: views.py:170
+msgid "length"
+msgstr "lungime"
+
+#: views.py:174
+msgid "revoked"
+msgstr "revocată"
+
+#: views.py:179
+msgid "Identifies"
+msgstr "Identifică"
+
+#: conf/settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "Lista de keyservers care urmează să fie interogat pentru chei necunoscute."
+
+#: conf/settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Cale director utilizată pentru a stoca cheile, precum și fișiere de configurare."

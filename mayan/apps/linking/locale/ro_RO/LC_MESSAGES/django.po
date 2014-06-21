@@ -1,0 +1,334 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Badea Gabriel <gcbadea@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-02-10 15:24+0000\n"
+"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: __init__.py:17
+msgid "smart links actions"
+msgstr "acțiuni inteligente link-uri"
+
+#: __init__.py:18 __init__.py:20 models.py:23 views.py:132
+msgid "smart links"
+msgstr "link-uri inteligente"
+
+#: __init__.py:21
+msgid "smart links list"
+msgstr "listă link-uri inteligente "
+
+#: __init__.py:22
+msgid "create new smart link"
+msgstr "creați link inteligent nou"
+
+#: __init__.py:23 __init__.py:28
+msgid "edit"
+msgstr "editează"
+
+#: __init__.py:24 __init__.py:29
+msgid "delete"
+msgstr "șterge"
+
+#: __init__.py:26
+msgid "conditions"
+msgstr "condiții"
+
+#: __init__.py:27
+msgid "create condition"
+msgstr "crează condiții"
+
+#: __init__.py:31
+msgid "ACLs"
+msgstr "ACL-uri"
+
+#: forms.py:48
+msgid "Pages"
+msgstr "Pagini"
+
+#: forms.py:54
+msgid "Select"
+msgstr "Selecta"
+
+#: forms.py:61
+msgid "Click on the image for full size view of the first page."
+msgstr "Click pe imagine pentru vizualizare full size din prima pagină."
+
+#: literals.py:7
+msgid "and"
+msgstr "și"
+
+#: literals.py:8
+msgid "or"
+msgstr "sau"
+
+#: literals.py:12
+msgid "is equal to"
+msgstr "este egal cu"
+
+#: literals.py:13
+msgid "is equal to (case insensitive)"
+msgstr "este egal cu (majusculele sunt nesemnificative)"
+
+#: literals.py:14
+msgid "contains"
+msgstr "conține"
+
+#: literals.py:15
+msgid "contains (case insensitive)"
+msgstr "conține (majusculele sunt nesemnificative)"
+
+#: literals.py:16
+msgid "is in"
+msgstr "este în"
+
+#: literals.py:17
+msgid "is greater than"
+msgstr "este mai mare decât"
+
+#: literals.py:18
+msgid "is greater than or equal to"
+msgstr "este mai mare sau egală cu"
+
+#: literals.py:19
+msgid "is less than"
+msgstr "este mai mică decât"
+
+#: literals.py:20
+msgid "is less than or equal to"
+msgstr "este mai mică sau egală cu"
+
+#: literals.py:21
+msgid "starts with"
+msgstr "începe cu"
+
+#: literals.py:22
+msgid "starts with (case insensitive)"
+msgstr "începe cu (majusculele sunt nesemnificative)"
+
+#: literals.py:23
+msgid "ends with"
+msgstr "se termină cu"
+
+#: literals.py:24
+msgid "ends with (case insensitive)"
+msgstr "se încheie cu (majusculele sunt nesemnificative)"
+
+#: literals.py:25
+msgid "is in regular expression"
+msgstr "este în expresie regulată"
+
+#: literals.py:26
+msgid "is in regular expression (case insensitive)"
+msgstr "este în expresie regulată (case insensitive)"
+
+#: models.py:12
+msgid "title"
+msgstr "titlu"
+
+#: models.py:13 views.py:135
+msgid "dynamic title"
+msgstr "dinamic titlu"
+
+#: models.py:13 models.py:31
+msgid ""
+"This expression will be evaluated against the current selected document.  "
+"The document metadata is available as variables `metadata` and document "
+"properties under the variable `document`."
+msgstr "Această expresie va fi evaluată împotriva documentul curent selectat. Metadatele documentului sunt disponibile ca  variabile `metadata` și proprietățile documentelor în cadrul variabilei `document`."
+
+#: models.py:14 models.py:33 views.py:136 views.py:232
+msgid "enabled"
+msgstr "activată"
+
+#: models.py:22 models.py:27 views.py:296 views.py:330
+msgid "smart link"
+msgstr "link-ul inteligent"
+
+#: models.py:28
+msgid "The inclusion is ignored for the first item."
+msgstr "Includerea este ignorată pentru primul element."
+
+#: models.py:29
+msgid "foreign document data"
+msgstr "Datele străine documente"
+
+#: models.py:29
+msgid ""
+"This represents the metadata of all other documents.  Available objects: "
+"`document.<attribute>` and `metadata.<metadata_type_name>`."
+msgstr "Aceasta reprezintă metadate a tuturor celorlalte documente. Obiecte disponibile: `documente. <attribute> `şi` metadate. <metadata_type_name> `."
+
+#: models.py:31
+msgid "expression"
+msgstr "expresie"
+
+#: models.py:32
+msgid "negated"
+msgstr "negata"
+
+#: models.py:32
+msgid "Inverts the logic of the operator."
+msgstr "Inversează logica operatorului."
+
+#: models.py:36
+msgid "not"
+msgstr "nu"
+
+#: models.py:39
+msgid "link condition"
+msgstr "stare link-ul "
+
+#: models.py:40
+msgid "link conditions"
+msgstr "condiții link "
+
+#: permissions.py:7
+msgid "Smart links"
+msgstr "Link-uri inteligente"
+
+#: permissions.py:9
+msgid "View existing smart links"
+msgstr "Vedeţi link-uri existente inteligente"
+
+#: permissions.py:10
+msgid "Create new smart links"
+msgstr "Creați link-uri noi inteligente"
+
+#: permissions.py:11
+msgid "Delete smart links"
+msgstr "Ștergeți link-uri inteligente"
+
+#: permissions.py:12
+msgid "Edit smart links"
+msgstr "Editați link-uri inteligente"
+
+#: views.py:41
+msgid "No action selected."
+msgstr "Nici o acțiune selectată."
+
+#: views.py:60
+#, python-format
+msgid "documents in smart link: %(group)s"
+msgstr "documente in link-uri inteligente:%(group)s"
+
+#: views.py:76
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "Eroare interogare  link-ul:% s"
+
+#: views.py:98
+#, python-format
+msgid "smart links (%s)"
+msgstr "link-uri inteligente (% s)"
+
+#: views.py:112
+msgid "There no defined smart links for the current document."
+msgstr "Nu există link-uri  inteligente definite pentru documentul curent."
+
+#: views.py:152
+#, python-format
+msgid "Smart link: %s created successfully."
+msgstr "Legătură inteligentă:% s creat cu succes."
+
+#: views.py:159
+msgid "Create new smart link"
+msgstr "Creați un nou link inteligent"
+
+#: views.py:175
+#, python-format
+msgid "Smart link: %s edited successfully."
+msgstr "Legătură inteligentă:% s editat cu succes."
+
+#: views.py:184
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Editare legătură inteligentă:% s"
+
+#: views.py:202
+#, python-format
+msgid "Smart link: %s deleted successfully."
+msgstr "Legătură inteligentă:% s eliminat cu succes."
+
+#: views.py:204
+#, python-format
+msgid "Error deleting smart link: %(smart_link)s; %(error)s."
+msgstr "Eroare la ștergerea legătură inteligentă:%(smart_link)s; %(error)s."
+
+#: views.py:213
+#, python-format
+msgid "Are you sure you wish to delete smart link: %s?"
+msgstr "Sunteți sigur că doriți să ștergeți legătură inteligentă:% s?"
+
+#: views.py:229
+#, python-format
+msgid "conditions for smart link: %s"
+msgstr "condițiile de legătură inteligentă:% s"
+
+#: views.py:254
+#, python-format
+msgid "Smart link condition: \"%s\" created successfully."
+msgstr "Stare de legătură inteligentă: \"%s\" a fost creată cu succes."
+
+#: views.py:261
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "Adauga la noile condiții de legătură inteligentă: \"%s\""
+
+#: views.py:283
+#, python-format
+msgid "Smart link condition: \"%s\" edited successfully."
+msgstr "Stare de legătură inteligentă: \"%s\" editată cu succes."
+
+#: views.py:290
+msgid "Edit smart link condition"
+msgstr "Editați condiție legătură inteligentă"
+
+#: views.py:297 views.py:331
+msgid "condition"
+msgstr "condiție"
+
+#: views.py:317
+#, python-format
+msgid "Smart link condition: \"%s\" deleted successfully."
+msgstr "Stare de legătură inteligentă: \"%s\"  a fost ștearsă cu succes."
+
+#: views.py:319
+#, python-format
+msgid ""
+"Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
+msgstr "Eroare la ștergerea condiție legătură inteligentă: %(smart_link_condition)s; %(error)s."
+
+#: views.py:333
+#, python-format
+msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
+msgstr "Sunteți sigur că doriți să ștergeți starea de legătură inteligentă: \"%s\"?"
+
+#: conf/settings.py:11
+msgid "Show smart link that don't return any documents."
+msgstr "Arată legătura inteligentă, care nu întoarce niciun document."
+
+#: templates/smart_links_help.html:3
+msgid "What are smart links?"
+msgstr "Ce sunt link-uri inteligente?"
+
+#: templates/smart_links_help.html:4
+msgid ""
+"Smart links are a set of conditional statements that are used to query the "
+"database using the current document the user is accessing as the data "
+"source, the results of these queries are a list of documents that relate in "
+"some manner to the document being displayed and allow users the ability to "
+"jump to and from linked documents very easily."
+msgstr "Link-uri inteligente sunt un set de afirmații condiționale, care sunt utilizate pentru a interoga baza de date folosind documentul curent utilizatorul accesează ca sursă de date, rezultatele acestor interogări sunt o listă de documente care se referă într-un mod care să fie afișat documentul și pentru a permite Utilizatorii capacitatea de a sari la și de la documentele legate foarte usor."

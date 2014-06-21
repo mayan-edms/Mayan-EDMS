@@ -1,0 +1,530 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Abalaru Paul <paul.abalaru@hotmail.com>, 2013
+# Badea Gabriel <gcbadea@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"PO-Revision-Date: 2013-11-20 13:14+0000\n"
+"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: __init__.py:20
+msgid "preview"
+msgstr "Vizualizare"
+
+#: __init__.py:21 __init__.py:29 __init__.py:35
+msgid "delete"
+msgstr "Șterge"
+
+#: __init__.py:23
+msgid "sources"
+msgstr "Surse"
+
+#: __init__.py:24 literals.py:53 models.py:204
+msgid "web forms"
+msgstr "web forms"
+
+#: __init__.py:25 models.py:175
+msgid "staging folders"
+msgstr "Așteptare dosare"
+
+#: __init__.py:26 models.py:239
+msgid "watch folders"
+msgstr "Vizualizare foldere"
+
+#: __init__.py:28 __init__.py:34
+msgid "edit"
+msgstr "Modifica"
+
+#: __init__.py:30
+msgid "add new source"
+msgstr "Adauga sursa noua"
+
+#: __init__.py:32
+msgid "transformations"
+msgstr "Modificari"
+
+#: __init__.py:33
+msgid "add transformation"
+msgstr "Modifica"
+
+#: __init__.py:37
+msgid "Document sources"
+msgstr "Sursa documentului"
+
+#: __init__.py:39
+msgid "upload new version"
+msgstr "încărcați noua versiune"
+
+#: __init__.py:69 widgets.py:39
+msgid "thumbnail"
+msgstr "Miniatura"
+
+#: forms.py:34 forms.py:59
+msgid "Expand compressed files"
+msgstr "Dezarhivare fișiere comprimate"
+
+#: forms.py:35 forms.py:60
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr "Încărcați fișiere de fișier comprimat care sunt incluse ca documente individuale"
+
+#: forms.py:43
+msgid "Staging file"
+msgstr "Structura fisier"
+
+#: forms.py:50
+msgid "File"
+msgstr "Fișier"
+
+#: literals.py:8 literals.py:13
+msgid "Always"
+msgstr "Mereu"
+
+#: literals.py:9 literals.py:14
+msgid "Never"
+msgstr "niciodată"
+
+#: literals.py:15
+msgid "Ask user"
+msgstr "Întreabă utilizatorul"
+
+#: literals.py:30
+msgid "Disk"
+msgstr "disc"
+
+#: literals.py:31
+msgid "Database"
+msgstr "Baza de date"
+
+#: literals.py:32
+msgid "Drive"
+msgstr "Drive"
+
+#: literals.py:33
+msgid "Network drive"
+msgstr "Network drive"
+
+#: literals.py:34
+msgid "User drive"
+msgstr "User drive"
+
+#: literals.py:35
+msgid "Envelope"
+msgstr "Plic"
+
+#: literals.py:36
+msgid "Folder"
+msgstr "Director"
+
+#: literals.py:37
+msgid "World"
+msgstr "World"
+
+#: literals.py:38
+msgid "Printer"
+msgstr "Imprimanta"
+
+#: literals.py:39
+msgid "Empty printer"
+msgstr "Goleste imprimanta"
+
+#: literals.py:47 models.py:203
+msgid "web form"
+msgstr "web form"
+
+#: literals.py:48
+msgid "server staging folder"
+msgstr "serverul directorului de astepatare "
+
+#: literals.py:49
+msgid "server watch folder"
+msgstr "server director de veghe"
+
+#: literals.py:54
+msgid "server staging folders"
+msgstr "serverul directoarelor de astepatare "
+
+#: literals.py:55
+msgid "server watch folders"
+msgstr "server directoare de veghe"
+
+#: models.py:36
+msgid "title"
+msgstr "Titlu"
+
+#: models.py:37
+msgid "enabled"
+msgstr "activată"
+
+#: models.py:38
+msgid "whitelist"
+msgstr "lista alba"
+
+#: models.py:39
+msgid "blacklist"
+msgstr "list neagra"
+
+#: models.py:143
+msgid "icon"
+msgstr "icon"
+
+#: models.py:143
+msgid "An icon to visually distinguish this source."
+msgstr "O pictogramă pentru a distinge vizual această sursă."
+
+#: models.py:159 models.py:211
+msgid "folder path"
+msgstr "Cale director"
+
+#: models.py:159 models.py:211
+msgid "Server side filesystem path."
+msgstr "Cale de fișiere server."
+
+#: models.py:160
+msgid "preview width"
+msgstr "previzualizare lățime"
+
+#: models.py:160
+msgid "Width value to be passed to the converter backend."
+msgstr "Valoarea lățime trecuta convertorului."
+
+#: models.py:161
+msgid "preview height"
+msgstr "previzualizare înălțime"
+
+#: models.py:161
+msgid "Height value to be passed to the converter backend."
+msgstr "Valoare de înălțime trecuta convertorului."
+
+#: models.py:162 models.py:199 models.py:212
+msgid "uncompress"
+msgstr "necomprimata"
+
+#: models.py:162 models.py:199 models.py:212
+msgid "Whether to expand or not compressed archives."
+msgstr "Dacă se extinde sau nu se arhivează."
+
+#: models.py:163 models.py:213
+msgid "delete after upload"
+msgstr "șterge după încărcare"
+
+#: models.py:163 models.py:213
+msgid "Delete the file after is has been successfully uploaded."
+msgstr "Ștergeți fișierul după ce este a fost încărcat cu succes."
+
+#: models.py:174
+msgid "staging folder"
+msgstr "director așteptare"
+
+#: models.py:214
+msgid "interval"
+msgstr "interval"
+
+#: models.py:214
+msgid ""
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr "Inverval în secunde pentru cazul în care folderul de veghe este verificat pentru documente noi."
+
+#: models.py:238
+msgid "watch folder"
+msgstr "folder de veghe"
+
+#: models.py:243
+msgid "Enter a valid value."
+msgstr "Introduceți o valoare validă."
+
+#: models.py:271 views.py:595
+msgid "order"
+msgstr "comandă"
+
+#: models.py:272 views.py:596 views.py:633 views.py:663
+msgid "transformation"
+msgstr "transformare"
+
+#: models.py:273 views.py:597
+msgid "arguments"
+msgstr "argumente"
+
+#: models.py:273
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr "Utilizarea dicționarelor de a identifica argumente, de exemplu:% s"
+
+#: models.py:284
+msgid "document source transformation"
+msgstr "documentul sursă de transformare"
+
+#: models.py:285
+msgid "document source transformations"
+msgstr "sursa documentului transformări"
+
+#: models.py:292 models.py:293
+msgid "out of process"
+msgstr "dintr-un proces"
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr "Configurare surse"
+
+#: permissions.py:8
+msgid "View existing document sources"
+msgstr "Vezi sursele existente de documente"
+
+#: permissions.py:9
+msgid "Edit document sources"
+msgstr "Editare de documente din surse"
+
+#: permissions.py:10
+msgid "Delete document sources"
+msgstr "Ștergeți din surse de documente"
+
+#: permissions.py:11
+msgid "Create new document sources"
+msgstr "Creaza noi surse de documente"
+
+#: staging.py:45
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr "Imposibil obține lista de fișiere de așteptare:% s"
+
+#: staging.py:128
+#, python-format
+msgid "Unable to upload staging file: %s"
+msgstr "Imposibil de încărcat fișierul de așteptare:% s"
+
+#: staging.py:138
+#, python-format
+msgid "Unable to delete staging file: %s"
+msgstr "Imposibil de șters fișierul de așteptare:% s"
+
+#: utils.py:40
+msgid "Whitelist Blacklist validation error."
+msgstr "Lista neagră lista albă eroare de validare."
+
+#: views.py:100
+msgid "here"
+msgstr "aici"
+
+#: views.py:105
+msgid "Upload sources"
+msgstr "Încărcați surse"
+
+#: views.py:107
+msgid ""
+"No interactive document sources have been defined or none have been enabled."
+msgstr "Nu există surse interactive de documente care au fost definite sau nu au fost activate."
+
+#: views.py:108
+#, python-format
+msgid "Click %(setup_link)s to add or enable some document sources."
+msgstr "Faceți clic pe %(setup_link)s pentru a adăuga sau pentru a permite acseul la surse."
+
+#: views.py:165
+msgid "New document version uploaded successfully."
+msgstr "Versiunea document nou încărcat cu succes."
+
+#: views.py:169
+msgid "File uploaded successfully."
+msgstr "Fișier încărcat cu succes."
+
+#: views.py:172
+msgid "File uncompressed successfully and uploaded as individual files."
+msgstr "Fișier necomprimat  încărcat cu succes ca fișiere individuale."
+
+#: views.py:175
+msgid "File was not a compressed file, uploaded as it was."
+msgstr "Fișierul nu a fost un fișier comprimat, a fost încărcat aşa cum este."
+
+#: views.py:179 views.py:260
+msgid "New version uploads are not allowed for this document."
+msgstr "Încărcărcarea unei noi versiuni nu este permise pentru acest document."
+
+#: views.py:183 views.py:264
+#, python-format
+msgid "Unhandled exception: %s"
+msgstr "Excepție netratată:% s"
+
+#: views.py:192
+#, python-format
+msgid "upload a new version from source: %s"
+msgstr "încărcați o versiune nouă de la sursa:% s"
+
+#: views.py:194
+#, python-format
+msgid "upload a local document from source: %s"
+msgstr "încărcați un document local din sursa: %s"
+
+#: views.py:240
+#, python-format
+msgid "Document version from staging file: %s, uploaded successfully."
+msgstr "Versiunea de documente din dosarul de așteptare:% s, încărcat cu succes."
+
+#: views.py:243
+#, python-format
+msgid "Staging file: %s, uploaded successfully."
+msgstr "Schela fișier:% s, încărcată cu succes."
+
+#: views.py:246
+#, python-format
+msgid ""
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
+msgstr "Schemă fișier:% s, dezarhivat cu succes și încărcat ca fișiere individuale."
+
+#: views.py:249
+#, python-format
+msgid "Staging file: %s, was not compressed, uploaded as a single file."
+msgstr "Schema fișier:% s, necomprimată, a fost încărcată ca un singur fișier."
+
+#: views.py:254
+#, python-format
+msgid "Staging file: %s, deleted successfully."
+msgstr "Schema fișier:% s, eliminătă cu succes."
+
+#: views.py:279
+#, python-format
+msgid "upload a new version from staging source: %s"
+msgstr "încărcați o versiune nouă de la sursa de așteptare:% s"
+
+#: views.py:281
+#, python-format
+msgid "upload a document from staging source: %s"
+msgstr "încărcați un document de la sursa de așteptare:% s"
+
+#: views.py:294
+msgid "files in staging path"
+msgstr "fișiere în calea de așteptare"
+
+#: views.py:326
+msgid "Current document type"
+msgstr "Tip curent de document"
+
+#: views.py:327
+msgid "None"
+msgstr "Nici unul"
+
+#: views.py:334
+msgid "Current metadata"
+msgstr "Metatdate curente"
+
+#: views.py:372 views.py:391
+#, python-format
+msgid "Staging file transformation error: %(error)s"
+msgstr "Schema de transformare eroare : %(error)s"
+
+#: views.py:414
+msgid "Staging file delete successfully."
+msgstr "Schema fișier ștearsă cu succes."
+
+#: views.py:416
+#, python-format
+msgid "Staging file delete error; %s."
+msgstr "Schema fișier erarare la ștergere; %s."
+
+#: views.py:476
+msgid "Source edited successfully"
+msgstr "Sursa editat cu succes"
+
+#: views.py:479
+#, python-format
+msgid "Error editing source; %s"
+msgstr "Eroare editare sursă ; %s"
+
+#: views.py:484
+#, python-format
+msgid "edit source: %s"
+msgstr "edit sursa:% s"
+
+#: views.py:489 views.py:529 views.py:591 views.py:632 views.py:662
+#: views.py:705
+msgid "source"
+msgstr "sursă"
+
+#: views.py:518
+#, python-format
+msgid "Source \"%s\" deleted successfully."
+msgstr "Sursa \"%s\" a fost șters cu succes."
+
+#: views.py:520
+#, python-format
+msgid "Error deleting source \"%(source)s\": %(error)s"
+msgstr "Eroare la ștergerea sursa \"%(source)s\": %(error)s"
+
+#: views.py:527
+#, python-format
+msgid "Are you sure you wish to delete the source: %s?"
+msgstr "Sunteți sigur că doriți să ștergeți sursa:% s?"
+
+#: views.py:559
+msgid "Source created successfully"
+msgstr "Sursa creat cu succes"
+
+#: views.py:562
+#, python-format
+msgid "Error creating source; %s"
+msgstr "Eroare la crearea sursă;% s"
+
+#: views.py:567
+#, python-format
+msgid "Create new source of type: %s"
+msgstr "Creați o nouă sursă de tipul:% s"
+
+#: views.py:589
+#, python-format
+msgid "transformations for: %s"
+msgstr "transformări pentru:% s"
+
+#: views.py:619
+msgid "Source transformation edited successfully"
+msgstr "Transformarea sursa editată cu succes"
+
+#: views.py:622
+#, python-format
+msgid "Error editing source transformation; %s"
+msgstr "Eroare editare sursă de transformare;% s"
+
+#: views.py:627
+#, python-format
+msgid "Edit transformation: %s"
+msgstr "Editare transformare:% s"
+
+#: views.py:650
+msgid "Source transformation deleted successfully."
+msgstr "Transformarea sursa ștersă cu succes."
+
+#: views.py:652
+#, python-format
+msgid "Error deleting source transformation; %(error)s"
+msgstr "Eroare la ștergerea transformare sursă; %(error)s"
+
+#: views.py:665
+#, python-format
+msgid ""
+"Are you sure you wish to delete source transformation \"%(transformation)s\""
+msgstr "Sunteți sigur că doriți să ștergeți transformare sursa \"%(transformation)s\""
+
+#: views.py:695
+msgid "Source transformation created successfully"
+msgstr "Transformarea sursă creat cu succes"
+
+#: views.py:698
+#, python-format
+msgid "Error creating source transformation; %s"
+msgstr "Eroare la crearea de transformare sursă;% s"
+
+#: views.py:707
+#, python-format
+msgid "Create new transformation for source: %s"
+msgstr "Creați transformare nou pentru sursa:% s"
