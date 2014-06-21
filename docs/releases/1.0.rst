@@ -28,7 +28,30 @@ directory structure and new deployment methods.
 
 Translation updates
 ~~~~~~~~~~~~~~~~~~~
-The translation for some languages were synchronized to the latest transifex project sources.
+The translation for all languages were synchronized to the latest transifex project sources.
+Translation completion as reported by Transifex:
+English - 100%
+Arabic - 100%
+Bosnian - 100%
+French - 100%
+German - 100%
+Romanian - 100%
+Russian - 100%
+Spanish - 100%
+Italian - 80%
+Portuguese - 78%
+Dutch - 70%
+Portugese (Brazil) - 69%
+Bulgarian - 63%
+Danish - 44%
+Vietnamese - 41%
+Polish - 40%
+Hungarian - 28%
+Indonesian - 19%
+Slovenian - 17%
+Persian - 6%
+Croatian - 3%
+Turkish - 3%
 
 Model updates
 ~~~~~~~~~~~~~
@@ -72,7 +95,7 @@ Detached signatures can now be deleted, if accidentally added to the wrong docum
 
 Removal of fabric based installations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+These files are now part of their own project.
 
 Upgrading from a previous version
 =================================
