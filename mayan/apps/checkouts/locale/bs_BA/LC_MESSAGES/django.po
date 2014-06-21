@@ -1,0 +1,272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"PO-Revision-Date: 2013-06-28 14:18+0000\n"
+"Last-Translator: www.ping.ba <jomer@ping.ba>\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: __init__.py:43
+msgid "Check expired check out documents and checks them in."
+msgstr "Provjeri zastarjele odjavljene dokumente i prijavi ih."
+
+#: events.py:5
+msgid "Document checked out"
+msgstr "Dokument odjavljen"
+
+#: events.py:6
+#, python-format
+msgid "Document \"%(document)s\" checked out by %(fullname)s."
+msgstr "Dokument \"%(document)s\" odjavio/la %(fullname)s."
+
+#: events.py:12
+msgid "Document checked in"
+msgstr "Dokument prijavljen"
+
+#: events.py:13
+#, python-format
+msgid "Document \"%(document)s\" checked in by %(fullname)s."
+msgstr "Dokument \"%(document)s\" prijavio/la %(fullname)s."
+
+#: events.py:19
+msgid "Document automatically checked in"
+msgstr "Dokument je automatski prijavljen"
+
+#: events.py:20
+#, python-format
+msgid "Document \"%(document)s\" automatically checked in."
+msgstr "Dokument \"%(document)s\" je automatski prijavljen."
+
+#: events.py:25
+msgid "Document forcefully checked in"
+msgstr "Dokument je prisilno prijavljen"
+
+#: events.py:26
+#, python-format
+msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+msgstr "Dokument \"%(document)s\" prisilno prijavio/la %(fullname)s."
+
+#: links.py:18
+msgid "checkouts"
+msgstr "izvadci"
+
+#: links.py:19
+msgid "check out document"
+msgstr "odjavni dokument"
+
+#: links.py:20
+msgid "check in document"
+msgstr "prijavni dokument"
+
+#: links.py:21
+msgid "check in/out"
+msgstr "prijava/odjava"
+
+#: literals.py:14
+msgid "checked out"
+msgstr "odjavljeno"
+
+#: literals.py:15
+msgid "checked in/available"
+msgstr "prijavljeno/dostupno"
+
+#: models.py:25 views.py:133
+msgid "document"
+msgstr "dokument"
+
+#: models.py:26
+msgid "check out date and time"
+msgstr "datum i vrijeme odjave"
+
+#: models.py:27
+msgid "check out expiration date and time"
+msgstr "datum i vrijeme istjecanja prijave"
+
+#: models.py:27
+msgid "Amount of time to hold the document checked out in minutes."
+msgstr "Vrijeme zadržavanja odjavljenog dokumenta u minutama "
+
+#: models.py:32
+msgid "block new version upload"
+msgstr "blokirati upload nove verzije"
+
+#: models.py:32
+msgid "Do not allow new version of this document to be uploaded."
+msgstr "Ne dozvoliti upload nove verzije ovog dokumenta."
+
+#: models.py:55
+msgid "document checkout"
+msgstr "odjava dokumenta"
+
+#: models.py:56
+msgid "document checkouts"
+msgstr "odjave dokumenta"
+
+#: permissions.py:7
+msgid "Document checkout"
+msgstr "Odjava dokumenta"
+
+#: permissions.py:9
+msgid "Check out documents"
+msgstr "Odjaviti dokumente"
+
+#: permissions.py:10
+msgid "Check in documents"
+msgstr "Prijaviti dokumente"
+
+#: permissions.py:11
+msgid "Forcefully check in documents"
+msgstr "Prisilno prijaviti dokumente"
+
+#: permissions.py:12
+msgid "Allow overriding check out restrictions"
+msgstr "Dozvoliti zanemarivanje ograničenja odjavljivanja"
+
+#: views.py:33
+msgid "checked out documents"
+msgstr "odjavljeni dokumenti"
+
+#: views.py:36
+msgid "checkout user"
+msgstr "korisnik koji je odjavio"
+
+#: views.py:37
+msgid "checkout time and date"
+msgstr "vrijeme i datum odjave"
+
+#: views.py:38
+msgid "checkout expiration"
+msgstr "isticanje odjave"
+
+#: views.py:55
+#, python-format
+msgid "User: %s"
+msgstr "Korisnik: %s"
+
+#: views.py:56
+#, python-format
+msgid "Check out time: %s"
+msgstr "Vrijeme odjave: %s"
+
+#: views.py:57
+#, python-format
+msgid "Check out expiration: %s"
+msgstr "Isticanje odjave za: %s"
+
+#: views.py:58
+#, python-format
+msgid "New versions allowed: %s"
+msgstr "Nove verzije dozvoljene: %s"
+
+#: views.py:58
+msgid "yes"
+msgstr "da"
+
+#: views.py:58
+msgid "no"
+msgstr "ne"
+
+#: views.py:63
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Odjavni detalji za dokument: %s"
+
+#: views.py:83
+#, python-format
+msgid "Error trying to check out document; %s"
+msgstr "Greška pokušaja odjave dokumenta; %s"
+
+#: views.py:85
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "Dokument \"%s\" uspješno odjavljen."
+
+#: views.py:88
+msgid "Document already checked out."
+msgstr "Dokument je već odjavljen."
+
+#: views.py:96
+#, python-format
+msgid "Check out document: %s"
+msgstr "Odjaviti dokument: %s"
+
+#: views.py:125
+msgid "Document has not been checked out."
+msgstr "Dokument nije odjavljen."
+
+#: views.py:127
+#, python-format
+msgid "Error trying to check in document; %s"
+msgstr "Greška pokušaja prijave dokumenta; %s"
+
+#: views.py:129
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr "Dokument \"%s\" uspješno prijavljen."
+
+#: views.py:142
+#, python-format
+msgid ""
+"You didn't originally checked out this document.  Are you sure you wish to "
+"forcefully check in document: %s?"
+msgstr "Vi niste odjavili ovaj dokument. Jeste li sigurni da želite prisilno prijaviti dokument: %s?"
+
+#: views.py:144
+#, python-format
+msgid "Are you sure you wish to check in document: %s?"
+msgstr "Jeste li sigurni da želite prijaviti dokument: %s?"
+
+#: widgets.py:18
+#, python-format
+msgid "Document status: %(widget)s %(text)s"
+msgstr "Status dokumenta: %(widget)s %(text)s"
+
+#: widgets.py:30
+msgid "Days"
+msgstr "Dana"
+
+#: widgets.py:31
+msgid "Hours"
+msgstr "Sati"
+
+#: widgets.py:32
+msgid "Minutes"
+msgstr "Minuta"
+
+#: widgets.py:62
+msgid "Enter a valid number of days."
+msgstr "Unesite validan broj dana."
+
+#: widgets.py:63
+msgid "Enter a valid number of hours."
+msgstr "Unesite validan broj sati."
+
+#: widgets.py:64
+msgid "Enter a valid number of minutes."
+msgstr "Unesite validan broj minuta."
+
+#: widgets.py:65
+msgid "Enter a valid time difference."
+msgstr "Unesite važeću vremensku razliku."
+
+#: widgets.py:88
+msgid ""
+"Amount of time to hold the document in the checked out state in days, hours "
+"and/or minutes."
+msgstr "Vremenski period zadržavanja dokumenta u odjavljenom stanju u danima, satima i/ili minutama."
+
+#: widgets.py:89
+msgid "Check out expiration date and time"
+msgstr "Datum i vrijeme istjecanja odjave"
