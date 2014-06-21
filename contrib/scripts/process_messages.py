@@ -10,13 +10,16 @@ APP_LIST = ('acls', 'checkouts', 'common', 'converter', 'django_gpg', 'documents
     'folders', 'history', 'installation', 'linking', 'main', 'metadata', 'navigation',
     'ocr', 'permissions', 'project_setup', 'project_tools', 'scheduler', 'smart_settings',
     'sources', 'tags', 'user_management', 'web_theme', 'bootstrap', 'registration')
-LANGUAGE_LIST = ('ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'id', 'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'tr_TR', 'vi_VN')
+LANGUAGE_LIST = ('ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'hr_HR', 'id', 'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'tr_TR', 'vi_VN')
 
 makemessages = pbs.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')
 
 compilemessages = pbs.Command('django-admin.py')
 compilemessages = compilemessages.bake('compilemessages')
+
+pull_translations = pbs.Command('tx')
+pull_translations = pull_translations.bake('pull')
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'mayan'))
 
@@ -26,20 +29,28 @@ def process(command, app_list, language_list):
         print 'Making messages'
     elif command == compilemessages:
         print 'Compiling messages'
+    elif command == pull_translations:
+        print 'Pulling translation files'
 
-    for app in app_list:
-        print 'Processing app: %s...' % app
-        app_path = os.path.join(BASE_DIR, 'apps', app)
-        os.chdir(app_path)
+    if command in [compilemessages, makemessages]:
+        for app in app_list:
+            print 'Processing app: %s...' % app
+            app_path = os.path.join(BASE_DIR, 'apps', app)
+            os.chdir(app_path)
+            for lang in language_list:
+                print 'Doing language: %s' % lang
+                command(locale=lang)
+    elif command == pull_translations:
         for lang in language_list:
             print 'Doing language: %s' % lang
-            command(locale=lang)
+            command('-f', '-l', lang)
 
 
 if __name__ == '__main__':
     parser = optparse.OptionParser()
     parser.add_option('-m', '--make', help='create message sources file', dest='make', default=False, action='store_true')
     parser.add_option('-c', '--compile', help='compile message files', dest='compile', default=False, action='store_true')
+    parser.add_option('-p', '--pull', help='pull translation files', dest='pull', default=False, action='store_true')
     parser.add_option('-a', '--app', help='specify which app to process', dest='app', action='store', metavar='appname')
     parser.add_option('-l', '--lang', help='specify which language to process', dest='lang', action='store', metavar='language')
     (opts, args) = parser.parse_args()
@@ -61,3 +72,5 @@ if __name__ == '__main__':
         process(makemessages, app_list, language_list)
     elif opts.compile:
         process(compilemessages, app_list, language_list)
+    elif opts.pull:
+        process(pull_translations, app_list, language_list)
