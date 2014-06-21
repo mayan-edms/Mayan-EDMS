@@ -26,7 +26,7 @@ from django.conf import settings
 
 from common.models import Singleton
 from common.utils import pretty_size
-from main import __version__ as mayan_version
+from mayan import __version__ as mayan_version
 from lock_manager import Lock, LockError
 from ocr.conf.settings import TESSERACT_PATH, UNPAPER_PATH, PDFTOTEXT_PATH
 

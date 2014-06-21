@@ -8,6 +8,6 @@ register = Library()
 def app_version(app_name):
     try:
         app = import_module(app_name)
-        return app.get_version()
+        return app.__version__
     except ImportError:
         return u''

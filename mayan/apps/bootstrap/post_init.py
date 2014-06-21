@@ -2,19 +2,19 @@ from __future__ import absolute_import
 
 import datetime
 
+from mayan import __version__
 from navigation.api import register_links
-from main import __version__
 
+from .classes import FixtureMetadata
 from .links import (link_bootstrap_setup_create, link_bootstrap_setup_execute,
     link_bootstrap_setup_list, link_bootstrap_setup_edit, link_bootstrap_setup_delete,
     link_bootstrap_setup_view, link_bootstrap_setup_dump, link_bootstrap_setup_export,
     link_bootstrap_setup_import_from_url, link_bootstrap_setup_import_from_file,
     link_bootstrap_setup_repository_sync)
-from .models import BootstrapSetup
-from .classes import FixtureMetadata
 from .literals import (FIXTURE_METADATA_CREATED, FIXTURE_METADATA_EDITED,
     FIXTURE_METADATA_MAYAN_VERSION, FIXTURE_METADATA_FORMAT, FIXTURE_METADATA_NAME,
     FIXTURE_METADATA_DESCRIPTION, DATETIME_STRING_FORMAT, FIXTURE_METADATA_SLUG)
+from .models import BootstrapSetup
 
 register_links([BootstrapSetup], [link_bootstrap_setup_view, link_bootstrap_setup_edit, link_bootstrap_setup_delete, link_bootstrap_setup_execute, link_bootstrap_setup_export])
 register_links([BootstrapSetup], [link_bootstrap_setup_list, link_bootstrap_setup_create, link_bootstrap_setup_dump, link_bootstrap_setup_import_from_file, link_bootstrap_setup_import_from_url, link_bootstrap_setup_repository_sync], menu_name='secondary_menu')
