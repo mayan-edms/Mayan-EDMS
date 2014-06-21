@@ -1,0 +1,3 @@
+include README.rst LICENSE HISTORY.rst
+recursive-include mayan *.txt *.html *.css *.ico *.png
+

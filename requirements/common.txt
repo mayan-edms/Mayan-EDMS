@@ -19,7 +19,7 @@ PyYAML==3.10
 pbs==0.105
 pdfminer==20110227
 psutil==0.5.1
-https://github.com/rosarior/python-gnupg/zipball/0.2.8
+python-gnupg==0.3.6
 python-hkp==0.1.3
 python-magic==0.4.6
 

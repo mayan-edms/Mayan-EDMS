@@ -53,8 +53,8 @@ def find_packages(directory):
 
 
 def get_requirements():
-    with open(os.path.join(PACKAGE_DIR, 'requirements/common.txt')) as f:
-        requires = [requirement.replace('==', '>=') for requirement in f.readlines()]
+    with open('requirements/common.txt') as f:
+        requires = [requirement.replace('==', '>=') for requirement in f.readlines() if requirement != '\n']
     return requires
 
 
@@ -64,10 +64,6 @@ with open('HISTORY.rst') as f:
     history = f.read()
 with open('LICENSE') as f:
     license = f.read()
-with open('AUTHORS.rst') as f:
-    authors = f.read()
-
-
 
 setup(
     author='Roberto Rosario',
@@ -92,11 +88,11 @@ setup(
     include_package_data=True,
     install_requires=get_requirements(),
     license=license,
-    long_description=readme + '\n\n' + history + '\n\n' + authors,
+    long_description=readme + '\n\n' + history,
     name=PACKAGE_NAME,
     packages=find_packages(PACKAGE_DIR),
     platforms=['any'],
-    scripts=['mayan/bin/mayan-admin.py'],
+    scripts=['mayan/bin/mayan-edms.py'],
     url='https://github.com/mayan-edms/mayan-edms',
     version=mayan.__version__,
     zip_safe=False,
