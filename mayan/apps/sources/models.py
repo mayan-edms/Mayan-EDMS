@@ -10,6 +10,7 @@ from django.contrib.contenttypes import generic
 from django.core.exceptions import ValidationError
 from django.db import transaction
 
+from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from documents.models import Document
@@ -26,7 +27,6 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
     SOURCE_UNCOMPRESS_CHOICE_Y)
-from .compressed_file import CompressedFile, NotACompressedFile
 
 logger = logging.getLogger(__name__)
 

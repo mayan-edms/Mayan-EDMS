@@ -21,7 +21,14 @@ class NotACompressedFile(Exception):
 class CompressedFile(object):
     def __init__(self, file_input=None):
         if file_input:
-            self._open(file_input)
+            try:
+                # Is it a file like object?
+                file_input.seek(0)
+            except AttributeError:
+                # If not, try open it.
+                self._open(file_input)
+            else:
+                self.file_object = file_input
         else:
             self._create()
 
@@ -79,6 +86,15 @@ class CompressedFile(object):
 
     def as_file(self, filename):
         return SimpleUploadedFile(name=filename, content=self.write().read())
+
+    def children(self):
+        try:
+            # Try for a ZIP file
+            zfobj = zipfile.ZipFile(self.file_object)
+            filenames = [filename for filename in zfobj.namelist() if not filename.endswith('/')]
+            return (SimpleUploadedFile(name=filename, content=zfobj.read(filename)) for filename in filenames)
+        except zipfile.BadZipfile:
+            raise NotACompressedFile
 
     def close(self):
         self.zf.close()
