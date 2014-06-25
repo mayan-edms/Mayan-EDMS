@@ -1,6 +1,9 @@
-{% extends "base.html" %}
-{% load project_tags %}
+{% extends 'base.html' %}
+
 {% load i18n %}
+
+{% load project_tags %}
+
 {% block content %}
     <div class="content tc">
         <h1>{% project_name %}</h1>
@@ -11,7 +14,7 @@
 {% block footer %}
     <div id="footer">
         <div class="block">
-            <p>Copyright &copy; 2011 Roberto Rosario.</p>
+            <p>{% trans 'Copyright &copy; 2011 Roberto Rosario.' %}</p>
         </div>
     </div>
 {% endblock %}
