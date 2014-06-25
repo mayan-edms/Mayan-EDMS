@@ -110,9 +110,9 @@ def comment_add(request, document_id):
 
 
 def comments_for_document(request, document_id):
-    '''
+    """
     Show a list of all the comments related to the passed object
-    '''
+    """
     document = get_object_or_404(Document, pk=document_id)
 
     try:

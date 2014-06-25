@@ -1,4 +1,4 @@
-'''Configuration options for the linking app'''
+"""Configuration options for the linking app"""
 
 from django.utils.translation import ugettext_lazy as _
 

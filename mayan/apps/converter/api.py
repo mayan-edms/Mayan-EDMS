@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
-import logging
 import hashlib
+import logging
 import os
 
 from django.utils.encoding import smart_str
@@ -114,17 +114,6 @@ def get_page_count(input_filepath):
             raise UnknownFileFormat('office converter exception')
 
     return backend.get_page_count(input_filepath)
-
-
-'''
-def get_document_dimensions(document, *args, **kwargs):
-    document_filepath = create_image_cache_filename(document.checksum, *args, **kwargs)
-    if os.path.exists(document_filepath):
-        options = [u'-format', u'%w %h']
-        return [int(dimension) for dimension in backend.identify_file(unicode(document_filepath), options).split()]
-    else:
-        return [0, 0]
-'''
 
 
 def get_available_transformations_choices():

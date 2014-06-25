@@ -89,9 +89,9 @@ class ArgumentsValidator(object):
             self.code = code
 
     def __call__(self, value):
-        '''
+        """
         Validates that the input evaluates correctly.
-        '''
+        """
         value = value.strip()
         try:
             literal_eval(value)

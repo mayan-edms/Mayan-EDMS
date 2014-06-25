@@ -137,9 +137,9 @@ def submit_document(request, document_id):
 
 
 def submit_document_to_queue(request, document, post_submit_redirect=None):
-    '''
+    """
     This view is meant to be reusable
-    '''
+    """
 
     try:
         document_queue = DocumentQueue.objects.queue_document(document)

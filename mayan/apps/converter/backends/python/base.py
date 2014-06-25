@@ -156,12 +156,13 @@ class ConverterClass(ConverterBase):
 
     # From: http://united-coders.com/christian-harms/image-resizing-tips-general-and-for-python
     def resize(self, img, box, fit=False, out=None):
-        '''Downsample the image.
+        """
+        Downsample the image.
         @param img: Image -  an Image-object
         @param box: tuple(x, y) - the bounding box of the result image
         @param fit: boolean - crop the image to fill the box
         @param out: file-like-object - save the image into the output stream
-        '''
+        """
         # preresize image with factor 2, 4, 8 and fast algorithm
         factor = 1
         while img.size[0] / factor > 2 * box[0] and img.size[1] * 2 / factor > 2 * box[1]:
