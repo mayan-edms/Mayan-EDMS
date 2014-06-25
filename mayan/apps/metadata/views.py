@@ -35,7 +35,7 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
 def metadata_edit(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
-        if documents[0].documentmetadata_set.count() == 0:
+        if documents[0].metadata.count() == 0:
             messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     elif document_id_list:
@@ -58,7 +58,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
 
-        for item in document.documentmetadata_set.all():
+        for item in document.metadata.all():
             value = item.value
             if item.metadata_type in metadata:
                 if value not in metadata[item.metadata_type]:
@@ -186,7 +186,7 @@ def metadata_multiple_add(request):
 def metadata_remove(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
-        if documents[0].documentmetadata_set.count() == 0:
+        if documents[0].metadata.count() == 0:
             messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
@@ -210,7 +210,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
 
-        for item in document.documentmetadata_set.all():
+        for item in document.metadata.all():
             value = item.value
             if item.metadata_type in metadata:
                 if value not in metadata[item.metadata_type]:
@@ -274,7 +274,7 @@ def metadata_view(request, document_id):
 
     return render_to_response('generic_list.html', {
         'title': _(u'metadata for: %s') % document,
-        'object_list': document.documentmetadata_set.all(),
+        'object_list': document.metadata.all(),
         'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
         'hide_link': True,
         'object': document,

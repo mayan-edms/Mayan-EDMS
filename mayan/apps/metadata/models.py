@@ -82,7 +82,7 @@ class DocumentMetadata(models.Model):
     Link a document to a specific instance of a metadata type with it's
     current value
     """
-    document = models.ForeignKey(Document, verbose_name=_(u'document'))
+    document = models.ForeignKey(Document, verbose_name=_(u'document'), related_name='metadata')
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'type'))
     value = models.CharField(max_length=255, blank=True, verbose_name=_(u'value'), db_index=True)
 

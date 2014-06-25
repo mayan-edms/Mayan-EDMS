@@ -30,7 +30,7 @@ def update_indexes(document):
     warnings = []
 
     eval_dict = {}
-    document_metadata_dict = dict([(metadata.metadata_type.name, metadata.value) for metadata in document.documentmetadata_set.all() if metadata.value])
+    document_metadata_dict = dict([(metadata.metadata_type.name, metadata.value) for metadata in document.metadata.all() if metadata.value])
     eval_dict['document'] = document
     eval_dict['metadata'] = MetadataClass(document_metadata_dict)
 

@@ -53,7 +53,7 @@ def document_create_siblings(request, document_id):
 
     document = get_object_or_404(Document, pk=document_id)
     query_dict = {}
-    for pk, metadata in enumerate(document.documentmetadata_set.all()):
+    for pk, metadata in enumerate(document.metadata.all()):
         query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
         query_dict['metadata%s_value' % pk] = metadata.value
 

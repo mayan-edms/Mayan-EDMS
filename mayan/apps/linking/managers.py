@@ -14,7 +14,7 @@ class SmartLinkManager(models.Manager):
         errors = []
         result = {}
         metadata_dict = {}
-        for document_metadata in document.documentmetadata_set.all():
+        for document_metadata in document.metadata.all():
             metadata_dict[document_metadata.metadata_type.name] = document_metadata.value
         eval_dict = {}
         eval_dict['document'] = document
