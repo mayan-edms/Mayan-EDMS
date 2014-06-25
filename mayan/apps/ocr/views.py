@@ -18,9 +18,8 @@ from permissions.models import Permission
 from .api import clean_pages
 from .exceptions import AlreadyQueued, ReQueueError
 from .forms import QueueTransformationForm, QueueTransformationForm_create
-from .literals import (QUEUEDOCUMENT_STATE_PENDING,
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_STOPPED,
-    DOCUMENTQUEUE_STATE_ACTIVE)
+from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
+    DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE)
 from .models import DocumentQueue, QueueDocument, QueueTransformation
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
@@ -144,10 +143,12 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
     try:
         document_queue = DocumentQueue.objects.queue_document(document)
         messages.success(request, _(u'Document: %(document)s was added to the OCR queue: %(queue)s.') % {
-            'document': document, 'queue': document_queue.label})
+            'document': document, 'queue': document_queue.label}
+        )
     except AlreadyQueued:
         messages.warning(request, _(u'Document: %(document)s is already queued.') % {
-        'document': document})
+            'document': document}
+        )
     except Exception, e:
         messages.error(request, e)
 
@@ -317,7 +318,7 @@ def setup_queue_transformation_list(request, document_queue_id):
             {'name': _(u'order'), 'attribute': 'order'},
             {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
             {'name': _(u'arguments'), 'attribute': 'arguments'}
-            ],
+        ],
         'hide_link': True,
         'hide_object': True,
     }
@@ -355,8 +356,7 @@ def setup_queue_transformation_edit(request, transformation_id):
             {'object': 'transformation', 'name': _(u'transformation')}
         ],
         'next': next,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_queue_transformation_delete(request, transformation_id):
@@ -389,8 +389,7 @@ def setup_queue_transformation_delete(request, transformation_id):
         },
         'previous': previous,
         'form_icon': u'shape_square_delete.png',
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_queue_transformation_create(request, document_queue_id):

@@ -6,7 +6,7 @@ from documents.models import Document
 from navigation.api import register_links, register_sidebar_template
 from project_setup.api import register_setup
 
-from .links import (smart_link_instance_view_link, smart_link_instances_for_document,
+from .links import (smart_link_instances_for_document,
     smart_link_setup, smart_link_list, smart_link_create, smart_link_edit,
     smart_link_delete, smart_link_condition_list, smart_link_condition_create,
     smart_link_condition_edit, smart_link_condition_delete, smart_link_acl_list)

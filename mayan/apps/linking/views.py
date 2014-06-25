@@ -20,10 +20,10 @@ from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 
-from . import smart_link_instance_view_link
 from .conf.settings import SHOW_EMPTY_SMART_LINKS
 from .forms import (SmartLinkInstanceForm, SmartLinkForm,
     SmartLinkConditionForm)
+from .links import smart_link_instance_view_link
 from .models import SmartLink, SmartLinkCondition
 from .permissions import (PERMISSION_SMART_LINK_VIEW,
     PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,

@@ -25,7 +25,7 @@ def register_history_type(history_type_dict):
     except DatabaseError:
         # Special case for syncdb
         transaction.rollback()
-        
+
     # Runtime
     history_types_dict.setdefault(namespace, {})
     history_types_dict[namespace][name] = {

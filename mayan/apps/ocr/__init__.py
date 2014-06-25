@@ -20,16 +20,14 @@ from . import models as ocr_models
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
 from .exceptions import AlreadyQueued
 from .links import (submit_document, submit_document_multiple,
-    re_queue_document, re_queue_multiple_document, queue_document_delete,
-    queue_document_multiple_delete, document_queue_disable,
-    document_queue_enable, all_document_ocr_cleanup, queue_document_list,
+    re_queue_multiple_document, queue_document_multiple_delete,
+    document_queue_disable, document_queue_enable,
+    all_document_ocr_cleanup, queue_document_list,
     ocr_tool_link, setup_queue_transformation_list,
     setup_queue_transformation_create, setup_queue_transformation_edit,
     setup_queue_transformation_delete)
 from .models import DocumentQueue, QueueTransformation
-from .permissions import (PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES)
+from .permissions import PERMISSION_OCR_DOCUMENT
 from .tasks import task_process_document_queues
 
 logger = logging.getLogger(__name__)
@@ -72,14 +70,6 @@ def document_post_save(sender, instance, **kwargs):
             except AlreadyQueued:
                 pass
 
-# Disabled because it appears Django execute signals using the same
-# process of the signal emiter effectively blocking the view until
-# the OCR process completes which could take several minutes :/
-#@receiver(post_save, dispatch_uid='call_queue', sender=QueueDocument)
-#def call_queue(sender, **kwargs):
-#    if kwargs.get('created', False):
-#        logger.debug('got call_queue signal: %s' % kwargs)
-#        task_process_document_queues()
 
 @receiver(post_syncdb, dispatch_uid='create_default_queue', sender=ocr_models)
 def create_default_queue_signal_handler(sender, **kwargs):

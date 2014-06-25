@@ -15,10 +15,9 @@ from converter.api import get_available_transformations_choices
 from sources.managers import SourceTransformationManager
 
 from .exceptions import ReQueueError
-from .literals import (DOCUMENTQUEUE_STATE_STOPPED,
-    DOCUMENTQUEUE_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING,
-    QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PROCESSING,
-    DOCUMENTQUEUE_STATE_ACTIVE)
+from .literals import (DOCUMENTQUEUE_STATE_CHOICES,
+    QUEUEDOCUMENT_STATE_PENDING, QUEUEDOCUMENT_STATE_CHOICES,
+    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE)
 from .managers import DocumentQueueManager
 
 

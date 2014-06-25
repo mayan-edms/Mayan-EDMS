@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from collections import namedtuple
 import os
-import sys
 
 import pbs
 
@@ -116,7 +115,6 @@ class VirtualEnv(object):
         else:
             return Dependency(package, version, standard=True)
 
-
     def get_packages_info(self, requirements_file=None):
         if requirements_file:
             with open(requirements_file) as file_in:
@@ -125,7 +123,6 @@ class VirtualEnv(object):
         else:
             for item in pip('freeze').splitlines():
                 yield self.extract_dependency(item)
-
 
     def __init__(self):
         self.requirements_file_path = os.path.join(settings.BASE_DIR, 'requirements', 'production.txt')

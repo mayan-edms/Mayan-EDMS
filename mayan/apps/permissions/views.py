@@ -1,32 +1,31 @@
 from __future__ import absolute_import
 
-import operator
 import itertools
+import operator
 
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from django.contrib.auth.models import User, Group
+from django.contrib.contenttypes.models import ContentType
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from common.backport.generic.list_detail import object_list
-from django.core.urlresolvers import reverse
-from common.backport.generic.create_update import create_object, delete_object, update_object
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import User, Group
 from django.utils.simplejson import loads
+from django.utils.translation import ugettext_lazy as _
 
-from common.views import assign_remove
-from common.utils import generate_choices_w_labels, encapsulate, get_object_name
-from common.widgets import two_state_template
-from common.models import AnonymousUserSingleton
 from acls.classes import EncapsulatedObject
+from common.backport.generic.list_detail import object_list
+from common.backport.generic.create_update import create_object, delete_object, update_object
+from common.models import AnonymousUserSingleton
+from common.views import assign_remove
+from common.utils import encapsulate, get_object_name
+from common.widgets import two_state_template
 
-from .models import Role, Permission, PermissionHolder, RoleMember
 from .forms import RoleForm, RoleForm_view
+from .models import Role, Permission
 from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
     PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
     PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)
-from .widgets import role_permission_link
 
 
 def role_list(request):
@@ -49,7 +48,6 @@ def role_permissions(request, role_id):
     role = get_object_or_404(Role, pk=role_id)
     form = RoleForm_view(instance=role)
 
-    role_permissions_list = Permission.objects.get_for_holder(role)
     subtemplates_list = [
         {
             'name': u'generic_list_subtemplate.html',
@@ -60,7 +58,7 @@ def role_permissions(request, role_id):
                     {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: x.namespace)},
                     {'name': _(u'name'), 'attribute': encapsulate(lambda x: x.label)},
                     {
-                        'name':_(u'has permission'),
+                        'name': _(u'has permission'),
                         'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role))),
                     },
                 ],
@@ -90,7 +88,8 @@ def role_edit(request, role_id):
 
     return update_object(request, template_name='generic_form.html',
         form_class=RoleForm, object_id=role_id, extra_context={
-        'object_name': _(u'role')})
+            'object_name': _(u'role')}
+    )
 
 
 def role_create(request):
@@ -129,7 +128,7 @@ def permission_grant(request):
 
     items = []
     for item_properties in items_property_list:
-        #permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        # permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
@@ -192,7 +191,7 @@ def permission_revoke(request):
 
     items = []
     for item_properties in items_property_list:
-        #permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
+        # permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
@@ -280,7 +279,7 @@ def get_role_members(role, separate=False):
 
 
 def get_non_role_members(role):
-    #non members = all users - members - staff - super users
+    # non members = all users - members - staff - super users
     member_users, member_groups, member_anonymous = get_role_members(role, separate=True)
 
     staff_users = User.objects.filter(is_staff=True)
@@ -300,7 +299,7 @@ def get_non_role_members(role):
     if anonymous:
         non_members.append((_(u'Special'), _as_choice_list(list(anonymous))))
 
-    #non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.objects.get()])))
+    # non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.objects.get()])))
 
     return non_members
 
@@ -321,9 +320,9 @@ def role_members(request, role_id):
 
     return assign_remove(
         request,
-        #left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),
+        # left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),
         left_list=lambda: get_non_role_members(role),
-        #right_list=lambda: generate_choices_w_labels(get_role_members(role)),
+        # right_list=lambda: generate_choices_w_labels(get_role_members(role)),
         right_list=lambda: get_role_members(role),
         add_method=lambda x: add_role_member(role, x),
         remove_method=lambda x: remove_role_member(role, x),

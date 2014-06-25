@@ -2,13 +2,13 @@ from __future__ import absolute_import
 
 import logging
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
+from django.db import models
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
 from common.models import AnonymousUserSingleton
 
@@ -70,14 +70,13 @@ class PermissionManager(object):
             except KeyError:
                 raise Permission.DoesNotExist
 
-
     def __init__(self, model):
         self.model = model
 
 
 class Permission(object):
     _stored_permissions_cache = {}
-    
+
     DoesNotExist = PermissionDoesNotExists
 
     def __init__(self, namespace, name, label):
@@ -236,7 +235,7 @@ class Role(models.Model):
 
     def remove_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)
-        member_type=ContentType.objects.get_for_model(member)
+        member_type = ContentType.objects.get_for_model(member)
         role_member = RoleMember.objects.get(role=self, member_type=member_type, member_id=member.pk)
         role_member.delete()
 
@@ -261,7 +260,6 @@ class RoleMember(models.Model):
     objects = RoleMemberManager()
 
     class Meta:
-        #ordering = ('label',)
         verbose_name = _(u'role member')
         verbose_name_plural = _(u'role members')
 

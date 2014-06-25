@@ -1,9 +1,7 @@
 from __future__ import absolute_import
 
-import codecs
 import os
 import subprocess
-import tempfile
 import sys
 
 from django.utils.importlib import import_module
@@ -15,7 +13,7 @@ from documents.models import DocumentPage
 
 from .backends import ocr_backend
 from .conf.settings import UNPAPER_PATH, LANGUAGE
-from .exceptions import OCRError, UnpaperError
+from .exceptions import UnpaperError
 from .literals import (DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT,
     DEFAULT_OCR_FILE_EXTENSION)
 from .parsers import parse_document_page
@@ -69,13 +67,13 @@ def do_document_ocr(queue_document):
             unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT, transformations=ocr_transformations)
             execute_unpaper(input_filepath=unpaper_input, output_filepath=unpaper_output_filepath)
 
-            #from PIL import Image, ImageOps
-            #im = Image.open(document_filepath)
-            ##if im.mode=='RGBA':
-            ##    im=im.convert('RGB')
-            ##im = im.convert('L')
-            #im = ImageOps.grayscale(im)
-            #im.save(unpaper_output_filepath)
+            # from PIL import Image, ImageOps
+            # im = Image.open(document_filepath)
+            # #if im.mode=='RGBA':
+            # #    im=im.convert('RGB')
+            # #im = im.convert('L')
+            # im = ImageOps.grayscale(im)
+            # im.save(unpaper_output_filepath)
 
             # Convert to TIFF
             pre_ocr_filepath = convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)

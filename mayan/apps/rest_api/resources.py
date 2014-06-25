@@ -2,8 +2,7 @@ from django.core.urlresolvers import reverse
 
 from rest_framework import serializers
 
-from converter.exceptions import UnknownFileFormat, UnkownConvertError
-from documents.models import Document, DocumentType
+from documents.models import Document
 
 
 class DocumentResourceSimple(serializers.HyperlinkedModelSerializer):

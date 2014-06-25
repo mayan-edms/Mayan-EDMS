@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+import sys
+
 from django.utils.importlib import import_module
 
 from ..conf.settings import BACKEND

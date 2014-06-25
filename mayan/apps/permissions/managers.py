@@ -2,14 +2,8 @@ import logging
 
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
-from django.db import transaction
-from django.core.exceptions import PermissionDenied
-from django.shortcuts import get_object_or_404
-from django.db.utils import IntegrityError
-from django.core.exceptions import ImproperlyConfigured
 
 from common.models import AnonymousUserSingleton
-
 
 logger = logging.getLogger(__name__)
 

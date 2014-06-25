@@ -5,8 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls.api import class_permissions
 from documents.models import Document
 from history.api import register_history_type
-from navigation.api import (register_links, register_top_menu,
-    register_multi_item_links, register_sidebar_template)
+from navigation.api import register_links, register_top_menu
 from scheduler.api import register_interval_job
 
 from .events import (HISTORY_DOCUMENT_CHECKED_OUT, HISTORY_DOCUMENT_CHECKED_IN,

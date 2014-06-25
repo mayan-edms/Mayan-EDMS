@@ -2,16 +2,12 @@
 
 import logging
 
-from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
-from django.utils.translation import ugettext_lazy as _
 
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
 from documents.models import Document, DocumentVersion, DocumentPage
 
 from rest_framework import generics
-from rest_framework import permissions
-from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 

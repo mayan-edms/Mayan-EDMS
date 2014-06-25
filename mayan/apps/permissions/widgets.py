@@ -1,7 +1,7 @@
-from django.utils.translation import ugettext
-from django.utils.safestring import mark_safe
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext
 
 
 def role_permission_link(requester, permission, permission_list):

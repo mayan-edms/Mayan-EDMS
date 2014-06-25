@@ -15,7 +15,7 @@ from project_tools.api import register_tool
 from .classes import Property, PropertyNamespace
 from .links import link_menu_link, link_namespace_details, link_namespace_list
 from .models import Installation
-    
+
 
 @receiver(post_migrate, dispatch_uid='trigger_first_time')
 def trigger_first_time(sender, **kwargs):
@@ -31,7 +31,7 @@ def check_first_run():
         details = Installation.objects.get()
     except DatabaseError:
         # Avoid database errors when the app tables haven't been created yet
-        transaction.rollback()        
+        transaction.rollback()
     else:
         if details.is_first_run:
             details.submit()
@@ -45,7 +45,7 @@ register_model_list_columns(PropertyNamespace, [
     {
         'name': _(u'items'),
         'attribute': encapsulate(lambda entry: len(entry.get_properties()))
-    }    
+    }
 ])
 
 register_model_list_columns(Property, [
@@ -56,7 +56,7 @@ register_model_list_columns(Property, [
     {
         'name': _(u'value'),
         'attribute': 'value'
-    }    
+    }
 ])
 
 register_links(PropertyNamespace, [link_namespace_details])

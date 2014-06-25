@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from .models import Role, PermissionHolder
+from .models import Role
 
 
 def cleanup():
