@@ -19,7 +19,7 @@ FIXTURE_TYPE_XML = 'xml'
 FIXTURE_TYPES_CHOICES = (
     (FIXTURE_TYPE_JSON, _(u'JSON')),
     # Disabing XML until a way to specify a null pk is found
-    #(FIXTURE_TYPE_XML, _(u'XML')),
+    # (FIXTURE_TYPE_XML, _(u'XML')),
 )
 
 FIXTURE_FILE_TYPE = {

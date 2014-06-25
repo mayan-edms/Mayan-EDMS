@@ -1,9 +1,9 @@
 from __future__ import absolute_import
 
-import os
-import tempfile
-import re
 import datetime
+import os
+import re
+import tempfile
 
 import slugify
 
@@ -12,15 +12,15 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
 from django.core import management
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
+from .classes import BootstrapModel, FixtureMetadata
 from .literals import (FIXTURE_TYPES_CHOICES, FIXTURE_FILE_TYPE, COMMAND_LOADDATA,
     BOOTSTRAP_EXTENSION, FIXTURE_METADATA_REMARK_CHARACTER)
 from .managers import BootstrapSetupManager
-from .classes import BootstrapModel, FixtureMetadata
 
 
 class BootstrapSetup(models.Model):
@@ -59,7 +59,7 @@ class BootstrapSetup(models.Model):
 
         with open(filepath, 'w') as file_handle:
             file_handle.write(self.cleaned_fixture)
-        
+
         content = StringIO()
         management.call_command(COMMAND_LOADDATA, filepath, verbosity=0, stderr=content)
         content.seek(0, os.SEEK_END)

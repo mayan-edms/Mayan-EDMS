@@ -4,11 +4,9 @@ import logging
 
 import requests
 
-from django.db import models
-from django.core import serializers
-from django.utils.simplejson import loads
-from django.db import IntegrityError
+from django.db import IntegrityError, models
 from django.db.models import Q
+from django.utils.simplejson import loads
 
 from .classes import BootstrapModel, FixtureMetadata
 from .literals import (FIXTURE_TYPE_FIXTURE_PROCESS, FIXTURE_TYPE_EMPTY_FIXTURE,
@@ -56,7 +54,7 @@ class BootstrapSetupManager(models.Manager):
     def import_from_file(self, files):
         file_data = files.read()
         self.import_setup(file_data)
-        
+
     def import_from_url(self, url, **kwargs):
         response = requests.get(url)
         if response.status_code == requests.codes.ok:
@@ -72,4 +70,3 @@ class BootstrapSetupManager(models.Manager):
                 self.import_from_url(bootstrap_setup_url, overwrite=True)
         else:
             response.raise_for_status()
-        

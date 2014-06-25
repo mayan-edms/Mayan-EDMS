@@ -17,8 +17,7 @@ class BootstrapSetupForm(forms.ModelForm):
         model = BootstrapSetup
         widgets = {
             'description': forms.widgets.Textarea(attrs={
-                'rows': 5, 'cols': 80,
-                }
+                'rows': 5, 'cols': 80}
             )
         }
 
@@ -28,10 +27,10 @@ class BootstrapSetupForm_view(DetailForm):
         model = BootstrapSetup
         widgets = {
             'description': forms.widgets.Textarea(attrs={
-                'rows': 5, 'cols': 80,
-                }
+                'rows': 5, 'cols': 80}
             )
         }
+
 
 class BootstrapSetupForm_edit(BootstrapSetupForm):
     class Meta(BootstrapSetupForm.Meta):

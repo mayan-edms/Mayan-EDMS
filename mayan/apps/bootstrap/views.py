@@ -1,26 +1,27 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.core.files import File
+from django.utils.translation import ugettext_lazy as _
 
 from filetransfers.api import serve_file
 
+from acls.models import AccessEntry
 from permissions.models import Permission
 
+from .classes import Cleanup
+from .exceptions import ExistingData, NotABootstrapSetup
+from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
+    BootstrapSetupForm_edit, BootstrapFileImportForm, BootstrapURLImportForm)
 from .models import BootstrapSetup
-from .classes import Cleanup, BootstrapModel
 from .permissions import (PERMISSION_BOOTSTRAP_VIEW, PERMISSION_BOOTSTRAP_CREATE,
     PERMISSION_BOOTSTRAP_EDIT, PERMISSION_BOOTSTRAP_DELETE,
     PERMISSION_BOOTSTRAP_EXECUTE, PERMISSION_NUKE_DATABASE, PERMISSION_BOOTSTRAP_DUMP,
     PERMISSION_BOOTSTRAP_EXPORT, PERMISSION_BOOTSTRAP_IMPORT, PERMISSION_BOOTSTRAP_REPOSITORY_SYNC)
-from .forms import (BootstrapSetupForm, BootstrapSetupForm_view, BootstrapSetupForm_dump,
-    BootstrapSetupForm_edit, BootstrapFileImportForm, BootstrapURLImportForm)
-from .exceptions import ExistingData, NotABootstrapSetup
 
 
 def bootstrap_setup_list(request):
@@ -218,7 +219,7 @@ def bootstrap_setup_export(request, bootstrap_setup_pk):
         Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_EXPORT])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_BOOTSTRAP_EXPORT, request.user, bootstrap)
-       
+
     return serve_file(
         request,
         bootstrap.as_file(),
@@ -316,7 +317,7 @@ def erase_database_view(request):
 
 def bootstrap_setup_repository_sync(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_REPOSITORY_SYNC])
-    
+
     post_action_redirect = reverse('bootstrap_setup_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))

@@ -1,10 +1,10 @@
 from __future__ import absolute_import
 
-import logging
 from itertools import chain
+import logging
 
-from django.db import models
 from django.core import serializers
+from django.db import models
 from django.utils.datastructures import SortedDict
 
 from .exceptions import ExistingData, NotABootstrapSetup
@@ -40,7 +40,7 @@ class BootstrapModel(object):
 
     @classmethod
     def get_magic_number(cls):
-        return '%s %s' % (FIXTURE_METADATA_REMARK_CHARACTER, BOOTSTRAP_SETUP_MAGIC_NUMBER) 
+        return '%s %s' % (FIXTURE_METADATA_REMARK_CHARACTER, BOOTSTRAP_SETUP_MAGIC_NUMBER)
 
     @classmethod
     def check_magic_number(cls, data):
@@ -102,7 +102,7 @@ class BootstrapModel(object):
         app_name_splitted = None
         if '.' in model_name:
             app_name_splitted, model_name = model_name.split('.')
-        
+
         self.app_name = app_name_splitted or app_name
         if not self.app_name:
             raise Exception('Pass either a dotted app plus model name or a model name and a separate app name')
@@ -157,7 +157,7 @@ class FixtureMetadata(object):
         self.property_name = property_name
         self.read_function = read_function or (lambda x: x)
         self.__class__._registry[id(self)] = self
-        
+
     def get_with_remark(self):
         return '%s %s' % (FIXTURE_METADATA_REMARK_CHARACTER, self.literal)
 
@@ -169,4 +169,4 @@ class FixtureMetadata(object):
             for line in fixture_data.splitlines(False):
                 if line.startswith(self.get_with_remark()):
                     # TODO: replace the "+ 4" with a space and next character finding algo
-                    return self.read_function(line[len(self.literal) + 4:])             
+                    return self.read_function(line[len(self.literal) + 4:])
