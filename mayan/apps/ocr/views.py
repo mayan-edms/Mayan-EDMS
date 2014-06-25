@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -17,13 +16,12 @@ from permissions.models import Permission
 
 from .api import clean_pages
 from .exceptions import AlreadyQueued, ReQueueError
-from .forms import QueueTransformationForm, QueueTransformationForm_create
 from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
     DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE)
-from .models import DocumentQueue, QueueDocument, QueueTransformation
+from .models import DocumentQueue, QueueDocument
 from .permissions import (PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_QUEUE_EDIT)
+    PERMISSION_OCR_CLEAN_ALL_PAGES)
 
 
 def queue_document_list(request, queue_name='default'):
@@ -299,124 +297,3 @@ def display_link(obj):
         return u''.join(output)
     else:
         return obj
-
-
-# Setup views
-def setup_queue_transformation_list(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    context = {
-        'object_list': QueueTransformation.transformations.get_for_object(document_queue),
-        'title': _(u'transformations for: %s') % document_queue,
-        'queue': document_queue,
-        'object_name': _(u'document queue'),
-        'navigation_object_name': 'queue',
-        'list_object_variable_name': 'transformation',
-        'extra_columns': [
-            {'name': _(u'order'), 'attribute': 'order'},
-            {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
-            {'name': _(u'arguments'), 'attribute': 'arguments'}
-        ],
-        'hide_link': True,
-        'hide_object': True,
-    }
-
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
-
-
-def setup_queue_transformation_edit(request, transformation_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
-    redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        form = QueueTransformationForm(instance=transformation, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _(u'Queue transformation edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing queue transformation; %s') % e)
-    else:
-        form = QueueTransformationForm(instance=transformation)
-
-    return render_to_response('generic_form.html', {
-        'title': _(u'Edit transformation: %s') % transformation,
-        'form': form,
-        'queue': transformation.content_object,
-        'transformation': transformation,
-        'navigation_object_list': [
-            {'object': 'queue', 'name': _(u'document queue')},
-            {'object': 'transformation', 'name': _(u'transformation')}
-        ],
-        'next': next,
-    }, context_instance=RequestContext(request))
-
-
-def setup_queue_transformation_delete(request, transformation_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    transformation = get_object_or_404(QueueTransformation, pk=transformation_id)
-    redirect_view = reverse('setup_queue_transformation_list', args=[transformation.content_object.pk])
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        try:
-            transformation.delete()
-            messages.success(request, _(u'Queue transformation deleted successfully.'))
-        except Exception, e:
-            messages.error(request, _(u'Error deleting queue transformation; %(error)s') % {
-                'error': e}
-            )
-        return HttpResponseRedirect(redirect_view)
-
-    return render_to_response('generic_confirm.html', {
-        'delete_view': True,
-        'transformation': transformation,
-        'queue': transformation.content_object,
-        'navigation_object_list': [
-            {'object': 'queue', 'name': _(u'document queue')},
-            {'object': 'transformation', 'name': _(u'transformation')}
-        ],
-        'title': _(u'Are you sure you wish to delete queue transformation "%(transformation)s"') % {
-            'transformation': transformation.get_transformation_display(),
-        },
-        'previous': previous,
-        'form_icon': u'shape_square_delete.png',
-    }, context_instance=RequestContext(request))
-
-
-def setup_queue_transformation_create(request, document_queue_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_QUEUE_EDIT])
-
-    document_queue = get_object_or_404(DocumentQueue, pk=document_queue_id)
-
-    redirect_view = reverse('setup_queue_transformation_list', args=[document_queue.pk])
-
-    if request.method == 'POST':
-        form = QueueTransformationForm_create(request.POST)
-        if form.is_valid():
-            try:
-                queue_tranformation = form.save(commit=False)
-                queue_tranformation.content_object = document_queue
-                queue_tranformation.save()
-                messages.success(request, _(u'Queue transformation created successfully'))
-                return HttpResponseRedirect(redirect_view)
-            except Exception, e:
-                messages.error(request, _(u'Error creating queue transformation; %s') % e)
-    else:
-        form = QueueTransformationForm_create()
-
-    return render_to_response('generic_form.html', {
-        'form': form,
-        'queue': document_queue,
-        'object_name': _(u'document queue'),
-        'navigation_object_name': 'queue',
-        'title': _(u'Create new transformation for queue: %s') % document_queue,
-    }, context_instance=RequestContext(request))
