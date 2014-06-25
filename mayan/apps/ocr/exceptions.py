@@ -5,9 +5,9 @@ class AlreadyQueued(Exception):
     pass
 
 
-class TesseractError(Exception):
+class OCRError(Exception):
     """
-    Raised by tesseract
+    Raised by the OCR backend
     """
     pass
 

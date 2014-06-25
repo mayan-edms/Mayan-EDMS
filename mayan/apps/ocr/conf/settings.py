@@ -9,12 +9,13 @@ register_settings(
     module=u'ocr.conf.settings',
     settings=[
         {'name': u'TESSERACT_PATH', 'global_name': u'OCR_TESSERACT_PATH', 'default': u'/usr/bin/tesseract', 'exists': True},
-        {'name': u'TESSERACT_LANGUAGE', 'global_name': u'OCR_TESSERACT_LANGUAGE', 'default': u'eng'},
+        {'name': u'LANGUAGE', 'global_name': u'OCR_LANGUAGE', 'default': u'eng'},
         {'name': u'REPLICATION_DELAY', 'global_name': u'OCR_REPLICATION_DELAY', 'default': 0, 'description': _(u'Amount of seconds to delay OCR of documents to allow for the node\'s storage replication overhead.')},
         {'name': u'NODE_CONCURRENT_EXECUTION', 'global_name': u'OCR_NODE_CONCURRENT_EXECUTION', 'default': 1, 'description': _(u'Maximum amount of concurrent document OCRs a node can perform.')},
         {'name': u'AUTOMATIC_OCR', 'global_name': u'OCR_AUTOMATIC_OCR', 'default': True, 'description': _(u'Automatically queue newly created documents for OCR.')},
         {'name': u'QUEUE_PROCESSING_INTERVAL', 'global_name': u'OCR_QUEUE_PROCESSING_INTERVAL', 'default': 10},
         {'name': u'UNPAPER_PATH', 'global_name': u'OCR_UNPAPER_PATH', 'default': u'/usr/bin/unpaper', 'description': _(u'File path to unpaper program.'), 'exists': True},
         {'name': u'PDFTOTEXT_PATH', 'global_name': u'OCR_PDFTOTEXT_PATH', 'default': u'/usr/bin/pdftotext', 'description': _(u'File path to poppler\'s pdftotext program used to extract text from PDF files.'), 'exists': True},
+        {'name': u'BACKEND', 'global_name': u'OCR_BACKEND', 'default': u'ocr.backends.tesseract', 'description': _(u'Full path to the backend to be used to do OCR.')},
     ]
 )
