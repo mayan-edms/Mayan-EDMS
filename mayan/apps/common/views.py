@@ -12,6 +12,8 @@ from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.simplejson import dumps, loads
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.list import ListView
 
 from permissions.models import Permission
 
@@ -263,3 +265,107 @@ class MayanPermissionCheckMixin(object):
             Permission.objects.check_permissions(self.request.user, self.permissions_required)
 
         return super(MayanPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
+
+
+class MayanViewMixin(object):
+    # TODO: split into two mixins, MayanView and ExtraContextMixin
+    extra_context = {}
+    post_action_redirect = None
+
+    def dispatch(self, request, *args, **kwargs):
+        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', '/')))
+        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', '/')))
+
+        return super(MayanViewMixin, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(MayanViewMixin, self).get_context_data(**kwargs)
+        context.update(
+            {
+                'next': self.next_url,
+                'previous': self.previous_url
+            }
+        )
+
+        context.update(self.extra_context)
+
+        return context
+
+
+class SingleObjectEditView(MayanPermissionCheckMixin, MayanViewMixin, UpdateView):
+    template_name = 'generic_form.html'
+
+    def form_invalid(self, form):
+        result = super(SingleObjectEditView, self).form_invalid(form)
+
+        try:
+            messages.error(self.request, _('Error saving %s details.') % self.extra_context['object_name'])
+        except KeyError:
+            messages.error(self.request, _('Error saving details.'))
+
+        return result
+
+    def form_valid(self, form):
+        result = super(SingleObjectEditView, self).form_valid(form)
+
+        try:
+            messages.success(self.request, _('%s details saved successfully.') % self.extra_context['object_name'].capitalize())
+        except KeyError:
+            messages.success(self.request, _('Details saved successfully.'))
+
+        return result
+
+
+class SingleObjectCreateView(MayanPermissionCheckMixin, MayanViewMixin, CreateView):
+    template_name = 'generic_form.html'
+
+    def form_invalid(self, form):
+        result = super(SingleObjectCreateView, self).form_invalid(form)
+
+        try:
+            messages.error(self.request, _('Error creating new %s.') % self.extra_context['object_name'])
+        except KeyError:
+            messages.error(self.request, _('Error creating object.'))
+
+        return result
+
+    def form_valid(self, form):
+        result = super(SingleObjectCreateView, self).form_valid(form)
+        try:
+            messages.success(self.request, _('%s created successfully.') % self.extra_context['object_name'].capitalize())
+        except KeyError:
+            messages.success(self.request, _('New object created successfully.'))
+
+        return result
+
+
+class SingleObjectDeleteView(MayanPermissionCheckMixin, MayanViewMixin, DeleteView):
+    template_name = 'generic_confirm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
+        context.update({'delete_view': True})
+        return context
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
+        except Exception as exception:
+            try:
+                messages.error(self.request, _('Error deleting %s.') % self.extra_context['object_name'])
+            except KeyError:
+                messages.error(self.request, _('Error deleting object.'))
+
+            raise exception
+        else:
+            try:
+                messages.success(self.request, _('%s deleted successfully.') % self.extra_context['object_name'].capitalize())
+            except KeyError:
+                messages.success(self.request, _('Object deleted successfully.'))
+
+            return result
+
+
+class SingleObjectListView(MayanPermissionCheckMixin, MayanViewMixin, ListView):
+    # TODO: filter object_list by permission
+    template_name = 'generic_list.html'
