@@ -2,11 +2,11 @@ APScheduler==2.0.3
 
 cssmin==0.1.4
 
-Django==1.5.8
+Django==1.6.5
 django-filetransfers==0.1.0
 django-pagination==1.0.7
-django-compressor==1.1.1
-django-taggit==0.9.3
+django-compressor==1.4
+django-taggit==0.12
 django-mptt==0.6.0
 django-sendfile==0.3.4
 djangorestframework==2.3.13
