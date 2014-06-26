@@ -8,7 +8,6 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from common.backport.generic.list_detail import object_list
 from common.utils import encapsulate
 from documents.models import Document
 from documents.widgets import document_link, document_thumbnail
@@ -29,39 +28,39 @@ def queue_document_list(request, queue_name='default'):
 
     document_queue = get_object_or_404(DocumentQueue, name=queue_name)
 
-    return object_list(
-        request,
-        queryset=document_queue.queuedocument_set.all(),
-        template_name='generic_list.html',
-        extra_context={
-            'title': _(u'documents in queue: %s') % document_queue,
-            'hide_object': True,
-            'queue': document_queue,
-            'object_name': _(u'document queue'),
-            'navigation_object_name': 'queue',
-            'list_object_variable_name': 'queue_document',
-            'extra_columns': [
-                {'name': 'document', 'attribute': encapsulate(lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.'))},
-                {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document))},
-                {'name': 'submitted', 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
-                {'name': 'delay', 'attribute': 'delay'},
-                {'name': 'state', 'attribute': encapsulate(lambda x: x.get_state_display())},
-                {'name': 'node', 'attribute': 'node_name'},
-                {'name': 'result', 'attribute': 'result'},
-            ],
-            'multi_select_as_buttons': True,
-            'sidebar_subtemplates_list': [
-                {
-                    'name': 'generic_subtemplate.html',
-                    'context': {
-                        'side_bar': True,
-                        'title': _(u'document queue properties'),
-                        'content': _(u'Current state: %s') % document_queue.get_state_display(),
-                    }
+    context = {
+        'object_list': document_queue.queuedocument_set.all(),
+        'title': _(u'documents in queue: %s') % document_queue,
+        'hide_object': True,
+        'queue': document_queue,
+        'object_name': _(u'document queue'),
+        'navigation_object_name': 'queue',
+        'list_object_variable_name': 'queue_document',
+        'extra_columns': [
+            {'name': 'document', 'attribute': encapsulate(lambda x: document_link(x.document) if hasattr(x, 'document') else _(u'Missing document.'))},
+            {'name': _(u'thumbnail'), 'attribute': encapsulate(lambda x: document_thumbnail(x.document))},
+            {'name': 'submitted', 'attribute': encapsulate(lambda x: unicode(x.datetime_submitted).split('.')[0]), 'keep_together':True},
+            {'name': 'delay', 'attribute': 'delay'},
+            {'name': 'state', 'attribute': encapsulate(lambda x: x.get_state_display())},
+            {'name': 'node', 'attribute': 'node_name'},
+            {'name': 'result', 'attribute': 'result'},
+        ],
+        'multi_select_as_buttons': True,
+        'sidebar_subtemplates_list': [
+            {
+                'name': 'generic_subtemplate.html',
+                'context': {
+                    'side_bar': True,
+                    'title': _(u'document queue properties'),
+                    'content': _(u'Current state: %s') % document_queue.get_state_display(),
                 }
-            ]
-        },
-    )
+            }
+        ]
+    }
+
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def queue_document_delete(request, queue_document_id=None, queue_document_id_list=None):
