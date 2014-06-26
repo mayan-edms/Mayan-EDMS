@@ -6,7 +6,7 @@ import operator
 from django.contrib import messages
 from django.contrib.auth.models import User, Group
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -14,10 +14,9 @@ from django.utils.simplejson import loads
 from django.utils.translation import ugettext_lazy as _
 
 from acls.classes import EncapsulatedObject
-from common.backport.generic.list_detail import object_list
-from common.backport.generic.create_update import create_object, delete_object, update_object
 from common.models import AnonymousUserSingleton
 from common.views import assign_remove
+from common.views import SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView
 from common.utils import encapsulate, get_object_name
 from common.widgets import two_state_template
 
@@ -28,18 +27,41 @@ from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
     PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)
 
 
+class RoleCreateView(SingleObjectCreateView):
+    extra_context = {'object_name': _(u'role')}
+    form_class = RoleForm
+    model = Role
+    permissions_required = [PERMISSION_ROLE_CREATE]
+    success_url = reverse_lazy('role_list')
+
+
+class RoleDeleteView(SingleObjectDeleteView):
+    model = Role
+    permissions_required = [PERMISSION_ROLE_DELETE]
+    extra_context = {
+        'object_name': _(u'role'),
+        'form_icon': u'medal_gold_delete.png'
+    }
+    success_url = reverse_lazy('role_list')
+
+
+class RoleEditView(SingleObjectEditView):
+    extra_context={'object_name': _(u'role')}
+    model=Role
+    permissions_required=[PERMISSION_ROLE_EDIT]
+
+
 def role_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_VIEW])
 
-    return object_list(
-        request,
-        queryset=Role.objects.all(),
-        template_name='generic_list.html',
-        extra_context={
-            'title': _(u'roles'),
-            'hide_link': True,
-        },
-    )
+    context = {
+        'object_list': Role.objects.all(),
+        'title': _(u'roles'),
+        'hide_link': True,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def role_permissions(request, role_id):
