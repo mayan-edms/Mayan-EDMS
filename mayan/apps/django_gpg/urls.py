@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('django_gpg.views',
     url(r'^delete/(?P<fingerprint>.+)/(?P<key_type>\w+)/$', 'key_delete', (), 'key_delete'),

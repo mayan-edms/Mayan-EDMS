@@ -1,6 +1,7 @@
-from django.conf.urls.defaults import patterns, url
-from common.backport.generic.simple import direct_to_template
 from django.conf import settings
+from django.conf.urls import patterns, url
+
+from common.backport.generic.simple import direct_to_template
 
 urlpatterns = patterns('common.views',
     url(r'^about/$', direct_to_template, {'template': 'about.html'}, 'about_view'),

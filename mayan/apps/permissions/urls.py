@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('permissions.views',
     url(r'^role/list/$', 'role_list', (), 'role_list'),

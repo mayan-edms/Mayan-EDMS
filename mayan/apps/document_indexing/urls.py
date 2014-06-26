@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('document_indexing.views',
     url(r'^setup/index/list/$', 'index_setup_list', (), 'index_setup_list'),

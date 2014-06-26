@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('installation.views',
     url(r'^$', 'namespace_list', (), 'namespace_list'),

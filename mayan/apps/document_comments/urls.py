@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('document_comments.views',
     url(r'^comment/(?P<comment_id>\d+)/delete/$', 'comment_delete', (), 'comment_delete'),

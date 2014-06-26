@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('document_signatures.views',
     url(r'^verify/(?P<document_pk>\d+)/$', 'document_verify', (), 'document_verify'),

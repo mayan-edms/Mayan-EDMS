@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('tags.views',
     url(r'^list/$', 'tag_list', (), 'tag_list'),

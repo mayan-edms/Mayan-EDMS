@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('user_management.views',
     url(r'^user/list/$', 'user_list', (), 'user_list'),

@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('bootstrap.views',
     url(r'^setup/list/$', 'bootstrap_setup_list', (), 'bootstrap_setup_list'),

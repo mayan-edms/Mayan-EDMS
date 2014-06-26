@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('folders.views',
     url(r'^list/$', 'folder_list', (), 'folder_list'),

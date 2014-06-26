@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('ocr.views',
     url(r'^document/(?P<document_id>\d+)/submit/$', 'submit_document', (), 'submit_document'),

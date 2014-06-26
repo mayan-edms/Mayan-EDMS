@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('history.views',
     url(r'^list/$', 'history_list', (), 'history_list'),
