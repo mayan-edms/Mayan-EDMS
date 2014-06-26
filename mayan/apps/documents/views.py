@@ -17,7 +17,6 @@ from django.utils.translation import ugettext_lazy as _
 import sendfile
 
 from acls.models import AccessEntry
-from common.backport.generic.list_detail import object_list
 from common.compressed_files import CompressedFile
 from common.literals import (PAGE_SIZE_DIMENSIONS,
     PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE)
@@ -1240,24 +1239,23 @@ def document_page_transformation_list(request, document_page_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page.document)
 
-    return object_list(
-        request,
-        queryset=document_page.documentpagetransformation_set.all(),
-        template_name='generic_list.html',
-        extra_context={
-            'page': document_page,
-            'navigation_object_name': 'page',
-            'title': _(u'transformations for: %s') % document_page,
-            'web_theme_hide_menus': True,
-            'list_object_variable_name': 'transformation',
-            'extra_columns': [
-                {'name': _(u'order'), 'attribute': 'order'},
-                {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
-                {'name': _(u'arguments'), 'attribute': 'arguments'}
-                ],
-            'hide_link': True,
-            'hide_object': True,
-        },
+    context = {
+        'object_list': document_page.documentpagetransformation_set.all(),
+        'page': document_page,
+        'navigation_object_name': 'page',
+        'title': _(u'transformations for: %s') % document_page,
+        'web_theme_hide_menus': True,
+        'list_object_variable_name': 'transformation',
+        'extra_columns': [
+            {'name': _(u'order'), 'attribute': 'order'},
+            {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
+            {'name': _(u'arguments'), 'attribute': 'arguments'}
+        ],
+        'hide_link': True,
+        'hide_object': True,
+    }
+    return render_to_response(
+        'generic_list.html', context, context_instance=RequestContext(request)
     )
 
 
