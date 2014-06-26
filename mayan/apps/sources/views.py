@@ -40,14 +40,6 @@ from .staging import create_staging_file_class
 from .wizards import DocumentCreateWizard
 
 
-def document_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-
-    wizard = DocumentCreateWizard(form_list=[DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet])
-
-    return wizard(request)
-
-
 def document_create_siblings(request, document_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
 

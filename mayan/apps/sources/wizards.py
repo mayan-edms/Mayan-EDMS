@@ -1,25 +1,40 @@
-# DEPRECATION: This module is scheduled to be delete once the update to Django 1.6.X is complete
 from __future__ import absolute_import
 
+from django.contrib.formtools.wizard.views import SessionWizardView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
-from common.wizard import BoundFormWizard
+from common.views import MayanPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
+from documents.permissions import PERMISSION_DOCUMENT_CREATE
 from metadata.forms import MetadataSelectionForm, MetadataFormSet
 
 
-class DocumentCreateWizard(BoundFormWizard):
+class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
+    form_list = [DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet]
+    template_name = 'generic_wizard.html'
+    extra_context = {}
+    permissions_required = [PERMISSION_DOCUMENT_CREATE]
+
+    @staticmethod
+    def has_metadata_types(wizard):
+        # Skip the 3rd step if no metadata types or sets are selected
+        try:
+            return wizard.get_cleaned_data_for_step('1')['metadata_sets'] or wizard.get_cleaned_data_for_step('1')['metadata_types']
+        except TypeError:
+            return False
+
     def generate_metadata_initial_values(self):
         initial = []
-        for metadata_type in self.metadata_types:
+
+        for metadata_type in self.get_cleaned_data_for_step('1')['metadata_types']:
             initial.append({
                 'metadata_type': metadata_type,
             })
 
-        for metadata_set in self.metadata_sets:
+        for metadata_set in self.get_cleaned_data_for_step('1')['metadata_sets']:
             for metadata_set_item in metadata_set.metadatasetitem_set.all():
                 data = {
                     'metadata_type': metadata_set_item.metadata_type,
@@ -30,53 +45,49 @@ class DocumentCreateWizard(BoundFormWizard):
         return initial
 
     def __init__(self, *args, **kwargs):
-        self.query_dict = {}
-        self.step_titles = kwargs.pop('step_titles', [
+        super(DocumentCreateWizard, self).__init__(*args, **kwargs)
+
+        self.condition_dict = {'2': DocumentCreateWizard.has_metadata_types}
+
+        self.step_titles = [
             _(u'step 1 of 3: Document type'),
             _(u'step 2 of 3: Metadata selection'),
             _(u'step 3 of 3: Document metadata'),
-            ])
+        ]
 
-        super(DocumentCreateWizard, self).__init__(*args, **kwargs)
+    def get_form_initial(self, step):
+        if step == '1':
+            try:
+                return {'document_type': self.get_cleaned_data_for_step('0')['document_type']}
+            except TypeError:
+                return {}
+        elif step == '2':
+            return self.generate_metadata_initial_values()
 
-    def render_template(self, request, form, previous_fields, step, context=None):
-        context = {
-            'step_title': self.extra_context['step_titles'][step],
+        return self.initial_dict.get(step, {})
+
+    def get_context_data(self, form, **kwargs):
+        context = super(DocumentCreateWizard, self).get_context_data(form=form, **kwargs)
+        context.update({
+            'step_title': self.step_titles[self.steps.step0],
             'submit_label': _(u'Next step'),
             'submit_icon_famfam': 'arrow_right',
-        }
-        return super(DocumentCreateWizard, self).render_template(
-            request, form, previous_fields, step, context
-        )
+        })
+        return context
 
-    def parse_params(self, request, *args, **kwargs):
-        self.extra_context = {'step_titles': self.step_titles}
+    def done(self, form_list):
+        query_dict = {}
+        try:
+            query_dict['document_type_id'] = self.get_cleaned_data_for_step('0')['document_type'].pk
+        except AttributeError:
+            pass
 
-    def process_step(self, request, form, step):
-        if isinstance(form, DocumentTypeSelectForm):
-            self.document_type = form.cleaned_data['document_type']
-            self.initial = {1: {'document_type': self.document_type}}
+        try:
+            for identifier, metadata in enumerate(self.get_cleaned_data_for_step('2')):
+                query_dict['metadata%s_id' % identifier] = metadata['id']
+                query_dict['metadata%s_value' % identifier] = metadata['value']
+        except TypeError:
+            pass
 
-        if isinstance(form, MetadataSelectionForm):
-            self.metadata_sets = form.cleaned_data['metadata_sets']
-            self.metadata_types = form.cleaned_data['metadata_types']
-            initial_data = self.generate_metadata_initial_values()
-            self.initial = {2: initial_data}
-            if not initial_data:
-                # If there is no metadata selected, finish wizard
-                self.form_list = [DocumentTypeSelectForm, MetadataSelectionForm]
-
-        if isinstance(form, MetadataFormSet):
-            for identifier, metadata in enumerate(form.cleaned_data):
-                self.query_dict['metadata%s_id' % identifier] = metadata['id']
-                self.query_dict['metadata%s_value' % identifier] = metadata['value']
-
-    def get_template(self, step):
-        return 'generic_wizard.html'
-
-    def done(self, request, form_list):
-        if self.document_type:
-            self.query_dict['document_type_id'] = self.document_type.pk
-
-        url = '?'.join([reverse('upload_interactive'), urlencode(self.query_dict, doseq=True)])
+        url = '?'.join([reverse('upload_interactive'), urlencode(query_dict, doseq=True)])
         return HttpResponseRedirect(url)

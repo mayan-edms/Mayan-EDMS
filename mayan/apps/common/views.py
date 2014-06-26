@@ -1,23 +1,23 @@
 from __future__ import absolute_import
 
-from django.shortcuts import redirect
-from django.utils.translation import ugettext_lazy as _
-from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
-from django.utils.http import urlencode
-from django.contrib.auth.views import login
-from django.utils.simplejson import dumps, loads
-from django.contrib.auth.views import password_change
 from django.contrib.auth.models import User
+from django.contrib.auth.views import login, password_change
+from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render_to_response
+from django.template import RequestContext
+from django.utils.http import urlencode
+from django.utils.simplejson import dumps, loads
+from django.utils.translation import ugettext_lazy as _
 
+from permissions.models import Permission
+
+from .conf.settings import LOGIN_METHOD
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
     EmailAuthenticationForm)
-from .conf.settings import LOGIN_METHOD
 
 
 def multi_object_action_view(request):
@@ -237,7 +237,7 @@ def password_change_view(request):
     Password change wrapper for better control
     """
     context={'title': _(u'Current user password change')}
-    
+
     return password_change(
         request,
         extra_context=context,
@@ -253,3 +253,13 @@ def password_change_done(request):
 
     messages.success(request, _(u'Your password has been successfully changed.'))
     return redirect('current_user_details')
+
+
+class MayanPermissionCheckMixin(object):
+    permissions_required = None
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.permissions_required:
+            Permission.objects.check_permissions(self.request.user, self.permissions_required)
+
+        return super(MayanPermissionCheckMixin, self).dispatch(request, *args, **kwargs)

@@ -1,9 +1,10 @@
 from __future__ import absolute_import
 
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
     SOURCE_CHOICE_WATCH)
+from .wizards import DocumentCreateWizard
 
 urlpatterns = patterns('sources.views',
     url(r'^staging_file/type/(?P<source_type>\w+)/(?P<source_id>\d+)/(?P<staging_file_id>\w+)/preview/$', 'staging_file_preview', (), 'staging_file_preview'),
@@ -34,6 +35,6 @@ urlpatterns = patterns('sources.views',
 
     # Document create views
 
-    url(r'^create/from/local/multiple/$', 'document_create', (), 'document_create_multiple'),
+    url(r'^create/from/local/multiple/$', DocumentCreateWizard.as_view(), name='document_create_multiple'),
     url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', (), 'document_create_siblings'),
 )
