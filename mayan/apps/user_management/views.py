@@ -1,56 +1,54 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
+from django.contrib.auth.models import User, Group
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from common.backport.generic.list_detail import object_list
-from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User, Group
+from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission
 from common.utils import generate_choices_w_labels, encapsulate
-from common.widgets import two_state_template
 from common.views import assign_remove
+from common.widgets import two_state_template
+from permissions.models import Permission
 
+from .forms import UserForm, PasswordForm, GroupForm
 from .permissions import (PERMISSION_USER_CREATE, PERMISSION_USER_EDIT,
     PERMISSION_USER_VIEW, PERMISSION_USER_DELETE, PERMISSION_GROUP_CREATE,
     PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, PERMISSION_GROUP_DELETE)
-from .forms import UserForm, PasswordForm, GroupForm
 
 
 def user_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_USER_VIEW])
 
-    return object_list(
-        request,
-        queryset=User.objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('username'),
-        template_name='generic_list.html',
-        extra_context={
-            'title': _(u'users'),
-            'hide_link': True,
-            'extra_columns': [
-                {
-                    'name': _(u'full name'),
-                    'attribute': 'get_full_name'
-                },
-                {
-                    'name': _(u'email'),
-                    'attribute': 'email'
-                },
-                {
-                    'name': _(u'active'),
-                    'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
-                },
-                {
-                    'name': _(u'has usable password?'),
-                    'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
-                },
-            ],
-            'multi_select_as_buttons': True,
-        },
-    )
+    context = {
+        'object_list': get_user_model().objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('username'),
+        'title': _(u'users'),
+        'hide_link': True,
+        'extra_columns': [
+            {
+                'name': _(u'full name'),
+                'attribute': 'get_full_name'
+            },
+            {
+                'name': _(u'email'),
+                'attribute': 'email'
+            },
+            {
+                'name': _(u'active'),
+                'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
+            },
+            {
+                'name': _(u'has usable password?'),
+                'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
+            },
+        ],
+        'multi_select_as_buttons': True,
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def user_edit(request, user_id):
@@ -249,11 +247,9 @@ def user_groups(request, user_id):
 def group_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_VIEW])
 
-    return object_list(
-        request,
-        queryset=Group.objects.all(),
-        template_name='generic_list.html',
-        extra_context={
+    context = {
+        'object_list': Group.objects.all(),
+        'extra_context': {
             'title': _(u'groups'),
             'hide_link': True,
             'extra_columns': [
@@ -263,8 +259,11 @@ def group_list(request):
                 },
             ],
             'multi_select_as_buttons': True,
-        },
-    )
+        }
+    }
+
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def group_edit(request, group_id):
