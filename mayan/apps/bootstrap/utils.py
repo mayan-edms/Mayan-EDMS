@@ -1,4 +1,6 @@
 # {{{ http://code.activestate.com/recipes/578272/ (r1)
+
+
 def toposort2(data):
     """Dependencies are expressed as a dictionary whose keys are items
     and whose values are a set of dependent items. Output is a list of
