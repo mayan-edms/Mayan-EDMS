@@ -244,6 +244,10 @@ SEARCH_SHOW_OBJECT_TYPE = False
 SERIALIZATION_MODULES = {
     'better_yaml': 'common.serializers.better_yaml',
 }
+#--------- Taggit ------------
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+}
 
 try:
     from settings_local import *
