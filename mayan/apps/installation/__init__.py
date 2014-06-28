@@ -25,13 +25,13 @@ def trigger_first_time(sender, **kwargs):
         details.save()
 
 
-@transaction.commit_on_success
 def check_first_run():
     try:
-        details = Installation.objects.get()
+        with transaction.atomic():
+            details = Installation.objects.get()
     except DatabaseError:
         # Avoid database errors when the app tables haven't been created yet
-        transaction.rollback()
+        pass
     else:
         if details.is_first_run:
             details.submit()

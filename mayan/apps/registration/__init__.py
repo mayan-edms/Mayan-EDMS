@@ -18,8 +18,8 @@ form_view = {'text': _('Registration'), 'view': 'form_view', 'famfam': 'telephon
 register_links(['form_view'], [about_view, license_view], menu_name='secondary_menu')
 register_links(['form_view', 'about_view', 'license_view'], [form_view], menu_name='secondary_menu')
 
-with transaction.commit_on_success():
-    try:
+try:
+    with transaction.atomic():
         RegistrationSingleton.objects.get()
-    except DatabaseError:
-        transaction.rollback()
+except DatabaseError:
+    pass

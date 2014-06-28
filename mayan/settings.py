@@ -106,14 +106,14 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.transaction.TransactionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'common.middleware.login_required_middleware.LoginRequiredMiddleware',
     'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
     'pagination.middleware.PaginationMiddleware',

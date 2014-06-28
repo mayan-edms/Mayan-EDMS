@@ -3,30 +3,29 @@ from __future__ import absolute_import
 from ast import literal_eval
 import logging
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
-from django.db import transaction
+from django.db import models, transaction
+from django.utils.translation import ugettext_lazy as _
 
+from acls.utils import apply_default_acls
 from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
-from documents.models import Document
-from documents.events import HISTORY_DOCUMENT_CREATED
 from document_indexing.api import update_indexes
+from documents.events import HISTORY_DOCUMENT_CREATED
+from documents.models import Document
 from history.api import create_history
 from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
-from acls.utils import apply_default_acls
 
-from .managers import SourceTransformationManager
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
     SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
     SOURCE_UNCOMPRESS_CHOICE_Y)
+from .managers import SourceTransformationManager
 
 logger = logging.getLogger(__name__)
 
@@ -85,7 +84,7 @@ class BaseModel(models.Model):
         file_object.close()
         return {'is_compressed': is_compressed}
 
-    @transaction.commit_on_success
+    @transaction.atomic
     def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
         new_document = not document
 

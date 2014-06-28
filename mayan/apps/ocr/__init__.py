@@ -43,18 +43,6 @@ register_links(['document_queue_disable', 'document_queue_enable', 'queue_docume
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
 
 
-@transaction.commit_on_success
-def create_default_queue():
-    try:
-        default_queue, created = DocumentQueue.objects.get_or_create(name='default')
-    except DatabaseError:
-        transaction.rollback()
-    else:
-        if created:
-            default_queue.label = ugettext(u'Default')
-            default_queue.save()
-
-
 @receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
 def document_post_save(sender, instance, **kwargs):
     logger.debug('received post save signal')
@@ -69,7 +57,8 @@ def document_post_save(sender, instance, **kwargs):
 
 @receiver(post_syncdb, dispatch_uid='create_default_queue', sender=ocr_models)
 def create_default_queue_signal_handler(sender, **kwargs):
-    create_default_queue()
+    default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+
 
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
 

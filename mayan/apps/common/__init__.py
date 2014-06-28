@@ -2,23 +2,23 @@ from __future__ import absolute_import
 
 import tempfile
 
-from south.signals import post_migrate
-
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import models as auth_models
-from django.contrib.auth.models import User
 from django.contrib.auth.management import create_superuser
-from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.contrib.auth.models import User
 from django.db import transaction, DatabaseError
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.utils.translation import ugettext_lazy as _
+
+from south.signals import post_migrate
 
 from navigation.api import register_links, register_top_menu
 
+from .conf import settings as common_settings
 from .conf.settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
-from .conf import settings as common_settings
-from .utils import validate_path
 from .models import AutoAdminSingleton
+from .utils import validate_path
 
 
 def has_usable_password(context):
@@ -72,14 +72,14 @@ def create_superuser(sender, **kwargs):
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
 def auto_admin_account_passwd_change(sender, instance, **kwargs):
-    with transaction.commit_on_success():
-        try:
+    try:
+        with transaction.atomic():
             auto_admin_properties = AutoAdminSingleton.objects.get()
             if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
                 # Only delete the auto admin properties when the password has been changed
                 auto_admin_properties.delete(force=True)
-        except DatabaseError:
-            transaction.rollback()
+    except DatabaseError:
+        pass
 
 
 if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):

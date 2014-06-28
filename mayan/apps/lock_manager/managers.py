@@ -1,11 +1,10 @@
 from __future__ import absolute_import
 
-import logging
 import datetime
+import logging
 
+from django.db import models, transaction
 from django.db.utils import IntegrityError
-from django.db import transaction
-from django.db import models
 
 from .exceptions import LockError
 
@@ -13,16 +12,16 @@ logger = logging.getLogger(__name__)
 
 
 class LockManager(models.Manager):
-    @transaction.commit_on_success
     def acquire_lock(self, name, timeout=None):
         logger.debug('trying to acquire lock: %s' % name)
         lock = self.model(name=name, timeout=timeout)
+
         try:
-            lock.save(force_insert=True)
-            logger.debug('acquired lock: %s' % name)
-            return lock
+            with transaction.atomic():
+                lock.save(force_insert=True)
+                logger.debug('acquired lock: %s' % name)
+                return lock
         except IntegrityError, msg:
-            transaction.rollback()
             logger.debug('IntegrityError: %s', msg)
             # There is already an existing lock
             # Check it's expiration date and if expired, reset it
