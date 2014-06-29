@@ -16,6 +16,7 @@ except ImportError:
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.timezone import now
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
@@ -103,7 +104,7 @@ class Document(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.uuid = UUID_FUNCTION()
-            self.date_added = datetime.datetime.now()
+            self.date_added = now()
         super(Document, self).save(*args, **kwargs)
 
     def get_cached_image_name(self, page, version):
@@ -368,7 +369,7 @@ class DocumentVersion(models.Model):
         """
         new_document = not self.pk
         if not self.pk:
-            self.timestamp = datetime.datetime.now()
+            self.timestamp = now()
 
         # Only do this for new documents
         transformations = kwargs.pop('transformations', None)
@@ -633,7 +634,7 @@ class RecentDocument(models.Model):
     """
     user = models.ForeignKey(User, verbose_name=_(u'user'), editable=False)
     document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False)
-    datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), default=lambda: datetime.datetime.now(), db_index=True)
+    datetime_accessed = models.DateTimeField(verbose_name=_(u'accessed'), default=lambda: now(), db_index=True)
 
     objects = RecentDocumentManager()
 

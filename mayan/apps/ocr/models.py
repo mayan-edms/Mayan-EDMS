@@ -4,6 +4,7 @@ from datetime import datetime
 
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.timezone import now
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
@@ -55,7 +56,7 @@ class QueueDocument(models.Model):
         if self.state == QUEUEDOCUMENT_STATE_PROCESSING:
             raise ReQueueError
         else:
-            self.datetime_submitted = datetime.now()
+            self.datetime_submitted = now()
             self.state = QUEUEDOCUMENT_STATE_PENDING
             self.delay = False
             self.result = None

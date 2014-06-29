@@ -2,15 +2,14 @@ from __future__ import absolute_import
 
 import json
 import pickle
-from datetime import datetime
 
-from django.db import models
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes.models import ContentType
 from django.core import serializers
+from django.db import models
+from django.utils.timezone import now
+from django.utils.translation import ugettext_lazy as _
 
-#from history.managers import HistoryManager
 from .runtime_data import history_types_dict
 
 
@@ -48,7 +47,7 @@ class History(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.datetime = datetime.now()
+            self.datetime = now()
         super(History, self).save(*args, **kwargs)
 
     def get_label(self):

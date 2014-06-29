@@ -1,18 +1,17 @@
 from __future__ import absolute_import
 
-import urlparse
 import urllib
+import urlparse
 
-from datetime import datetime
-
-from django.db import models
-from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.db import models
 from django.utils.encoding import smart_unicode, smart_str
+from django.utils.timezone import now
+from django.utils.translation import ugettext as _
 
-from .managers import RecentSearchManager
 from .classes import SearchModel
+from .managers import RecentSearchManager
 
 
 class RecentSearch(models.Model):
@@ -28,7 +27,7 @@ class RecentSearch(models.Model):
 
     def __unicode__(self):
         document_search = SearchModel.get('documents.Document')
-        
+
         query_dict = urlparse.parse_qs(urllib.unquote_plus(smart_str(self.query)))
 
         if self.is_advanced():
@@ -46,7 +45,7 @@ class RecentSearch(models.Model):
         return u'%s (%s)' % (display_string, self.hits)
 
     def save(self, *args, **kwargs):
-        self.datetime_created = datetime.now()
+        self.datetime_created = now()
         super(RecentSearch, self).save(*args, **kwargs)
 
     def url(self):

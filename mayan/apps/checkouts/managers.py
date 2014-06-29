@@ -5,6 +5,7 @@ import logging
 
 from django.db import models
 from django.core.exceptions import PermissionDenied
+from django.utils.timezone import now
 
 from acls.models import AccessEntry
 from documents.models import Document
@@ -25,7 +26,7 @@ class DocumentCheckoutManager(models.Manager):
         return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
 
     def expired_check_outs(self):
-        expired_list = Document.objects.filter(pk__in=self.model.objects.filter(expiration_datetime__lte=datetime.datetime.now()).values_list('document__pk', flat=True))
+        expired_list = Document.objects.filter(pk__in=self.model.objects.filter(expiration_datetime__lte=now()).values_list('document__pk', flat=True))
         logger.debug('expired_list: %s' % expired_list)
         return expired_list
 

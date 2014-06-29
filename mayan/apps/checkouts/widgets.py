@@ -6,6 +6,7 @@ from django import forms
 from django.conf import settings
 from django.core import validators
 from django.utils.safestring import mark_safe
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from .literals import STATE_ICONS, STATE_LABELS
@@ -103,5 +104,5 @@ class SplitTimeDeltaField(forms.MultiValueField):
                 raise forms.ValidationError(self.error_messages['invalid_minutes'])
 
             timedelta = datetime.timedelta(days=data_list[0], hours=data_list[1], minutes=data_list[2])
-            return datetime.datetime.now() + timedelta
+            return now() + timedelta
         return None

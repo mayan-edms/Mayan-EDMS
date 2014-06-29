@@ -3,12 +3,13 @@
 import datetime
 
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 from smart_settings.api import register_settings
 
 
 default_available_functions = {
-    'current_date': datetime.datetime.now().date,
+    'current_date': now().date,
 }
 
 default_available_models = {

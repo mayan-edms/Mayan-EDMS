@@ -1,9 +1,8 @@
 from __future__ import absolute_import
 
-import datetime
-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.timezone import now
 
 from .managers import LockManager
 from .conf.settings import DEFAULT_LOCK_TIMEOUT
@@ -20,7 +19,7 @@ class Lock(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.creation_datetime = datetime.datetime.now()
+        self.creation_datetime = now()
         if not self.timeout and not kwargs.get('timeout'):
             self.timeout = DEFAULT_LOCK_TIMEOUT
 
@@ -31,7 +30,7 @@ class Lock(models.Model):
             lock = Lock.objects.get(name=self.name, creation_datetime=self.creation_datetime)
             lock.delete()
         except Lock.DoesNotExist:
-            # Out lock expired and was reassigned
+            # Our lock has expired and was reassigned
             pass
 
     class Meta:

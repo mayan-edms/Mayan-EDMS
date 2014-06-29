@@ -1,8 +1,9 @@
 from datetime import datetime
 
-from django.db import models
-from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
+from django.db import models
+from django.utils.timezone import now
+from django.utils.translation import ugettext as _
 
 from documents.models import Document
 
@@ -17,7 +18,7 @@ class Folder(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.datetime_created = datetime.now()
+            self.datetime_created = now()
         super(Folder, self).save(*args, **kwargs)
 
     @models.permalink

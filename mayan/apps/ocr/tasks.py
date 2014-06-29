@@ -5,6 +5,7 @@ import logging
 import platform
 
 from django.db.models import Q
+from django.utils.timezone import now
 
 from job_processor.api import process_job
 from lock_manager import Lock, LockError
@@ -51,7 +52,7 @@ def task_process_document_queues():
     # TODO: reset_orphans()
     q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
     q_delayed = Q(delay=True)
-    q_delay_interval = Q(datetime_submitted__lt=datetime.now() - timedelta(seconds=REPLICATION_DELAY))
+    q_delay_interval = Q(datetime_submitted__lt=now() - timedelta(seconds=REPLICATION_DELAY))
     for document_queue in DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE):
         current_local_processing_count = QueueDocument.objects.filter(
             state=QUEUEDOCUMENT_STATE_PROCESSING).filter(

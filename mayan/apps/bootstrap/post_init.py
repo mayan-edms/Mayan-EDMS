@@ -2,6 +2,8 @@ from __future__ import absolute_import
 
 import datetime
 
+from django.utils.timezone import now
+
 from mayan import __version__
 from navigation.api import register_links
 
@@ -21,7 +23,7 @@ register_links([BootstrapSetup], [link_bootstrap_setup_list, link_bootstrap_setu
 register_links(['bootstrap_setup_list', 'bootstrap_setup_create', 'bootstrap_setup_dump', 'bootstrap_setup_import_from_file', 'bootstrap_setup_import_from_url', 'bootstrap_setup_repository_sync'], [link_bootstrap_setup_list, link_bootstrap_setup_create, link_bootstrap_setup_dump, link_bootstrap_setup_import_from_file, link_bootstrap_setup_import_from_url, link_bootstrap_setup_repository_sync], menu_name='secondary_menu')
 
 FixtureMetadata(FIXTURE_METADATA_CREATED, generate_function=lambda fixture_instance: fixture_instance.created.strftime(DATETIME_STRING_FORMAT), read_function=lambda x: datetime.datetime.strptime(x, DATETIME_STRING_FORMAT), property_name='created')
-FixtureMetadata(FIXTURE_METADATA_EDITED, generate_function=lambda fixture_instance: datetime.datetime.now().strftime(DATETIME_STRING_FORMAT))
+FixtureMetadata(FIXTURE_METADATA_EDITED, generate_function=lambda fixture_instance: now().strftime(DATETIME_STRING_FORMAT))
 FixtureMetadata(FIXTURE_METADATA_MAYAN_VERSION, generate_function=lambda fixture_instance: __version__)
 FixtureMetadata(FIXTURE_METADATA_FORMAT, generate_function=lambda fixture_instance: fixture_instance.type, property_name='type')
 FixtureMetadata(FIXTURE_METADATA_NAME, generate_function=lambda fixture_instance: fixture_instance.name, property_name='name')

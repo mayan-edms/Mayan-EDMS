@@ -5,6 +5,7 @@ import logging
 
 from django.db import models, transaction
 from django.db.utils import IntegrityError
+from django.utils.timezone import now
 
 from .exceptions import LockError
 
@@ -32,7 +33,7 @@ class LockManager(models.Manager):
                 logger.debug('lock: %s does not exist' % name)
                 raise LockError('Unable to acquire lock')
 
-            if datetime.datetime.now() > lock.creation_datetime + datetime.timedelta(seconds=lock.timeout):
+            if now() > lock.creation_datetime + datetime.timedelta(seconds=lock.timeout):
                 logger.debug('reseting deleting stale lock: %s' % name)
                 lock.timeout = timeout
                 logger.debug('trying to reacquire stale lock: %s' % name)

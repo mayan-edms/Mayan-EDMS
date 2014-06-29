@@ -1,9 +1,9 @@
 from __future__ import absolute_import
 
 from ast import literal_eval
-import datetime
 
 from django.db import models
+from django.utils.timezone import now
 
 from .conf.settings import RECENT_COUNT
 
@@ -35,7 +35,7 @@ class RecentDocumentManager(models.Manager):
             new_recent, created = self.model.objects.get_or_create(user=user, document=document)
             if not created:
                 # document already in the recent list, just update the accessed date and time
-                new_recent.datetime_accessed = datetime.datetime.now()
+                new_recent.datetime_accessed = now()
                 new_recent.save()
             for recent_to_delete in self.model.objects.filter(user=user)[RECENT_COUNT:]:
                 recent_to_delete.delete()
