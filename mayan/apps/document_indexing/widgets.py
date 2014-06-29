@@ -54,8 +54,6 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False, include_cou
         # Return the entire breadcrumb path as a single HTML anchor
         simple = True
 
-    # result.append(get_instance_link(index_instance.get_root(), simple=simple))
-
     for instance in index_instance.get_ancestors():
         result.append(get_instance_link(instance, simple=simple))
 
