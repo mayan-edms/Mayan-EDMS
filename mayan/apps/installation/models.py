@@ -114,7 +114,7 @@ class Installation(Singleton):
         try:
             repo = Repo(os.path.abspath(os.path.join(settings.BASE_DIR, '..')))
         except:
-            namespace.add_property(Property('is_git_repo', _(u'Running from a Git repository'), False))
+            namespace.add_property('is_git_repo', _(u'Running from a Git repository'), False)
         else:
             repo.config_reader()
             headcommit = repo.head.commit
