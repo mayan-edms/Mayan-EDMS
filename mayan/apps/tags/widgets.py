@@ -46,4 +46,4 @@ def single_tag_widget(tag):
 
 
 def get_single_tag_template(tag):
-    return '<li style="background: %s">%s</li>' % (tag.tagproperties_set.get().get_color_code(), escape(tag.name.replace(u' ', u'&nbsp;')))
+    return '<li style="background: %s">%s</li>' % (tag.tagproperties_set.get().get_color_code(), escape(tag.name))
