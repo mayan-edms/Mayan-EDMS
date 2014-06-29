@@ -25,6 +25,7 @@ Bug fixes
 * Kolmar Kafran
 * Nate Aune (nate@appsembler.com)
 * Mathias Behrle <mbehrle@m9s.biz>
+* Rafael Esparra <rafael.esparra1@upr.edu>
 
 Bug reports
 -----------
@@ -53,6 +54,8 @@ Patches
 * Lars Kruse (devel@sumpfralle.de)
 * Mathias Behrle <mbehrle@m9s.biz>
 * Simone Federici [https://twitter.com/aldaranalton] [https://github.com/simone]
+* Rafael Esparra <rafael.esparra1@upr.edu>
+
 
 Suggestions
 -----------
