@@ -14,7 +14,7 @@ import os
 ugettext = lambda s: s
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-SITE_ROOT = BASE_DIR
+SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 
 # Quick-start development settings - unsuitable for production
