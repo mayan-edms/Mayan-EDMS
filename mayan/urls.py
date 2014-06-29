@@ -55,7 +55,7 @@ def handler500(request):
         'request': request,
     })))
 
-if settings.DEVELOPMENT:
+if settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     urlpatterns += staticfiles_urlpatterns()
 
