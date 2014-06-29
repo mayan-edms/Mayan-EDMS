@@ -5,7 +5,7 @@ import os
 import sys
 from optparse import make_option
 
-from django.core.management.base import BaseCommand, CommandError, LabelCommand
+from django.core.management.base import CommandError, LabelCommand
 from django.contrib.auth.models import User
 from django.db.utils import IntegrityError
 
@@ -80,6 +80,6 @@ class Command(LabelCommand):
 def _confirm(interactive):
     if not interactive:
         return 'yes'
-    return raw_input('You have requested to import a number of users from a CSV file.\n' 
+    return raw_input('You have requested to import a number of users from a CSV file.\n'
             'Are you sure you want to do this?\n'
             'Type \'yes\' to continue, or any other value to cancel: ')

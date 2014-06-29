@@ -1,13 +1,12 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'DocumentVersion'
         db.create_table('documents_documentversion', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -32,9 +31,7 @@ class Migration(SchemaMigration):
         # Adding field 'DocumentPage.document_version'
         db.add_column('documents_documentpage', 'document_version', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.DocumentVersion'], null=True, blank=True), keep_default=False)
 
-
     def backwards(self, orm):
-        
         # Removing unique constraint on 'DocumentVersion', fields ['document', 'mayor', 'minor', 'micro', 'release_level', 'serial']
         db.delete_unique('documents_documentversion', ['document_id', 'mayor', 'minor', 'micro', 'release_level', 'serial'])
 
@@ -43,7 +40,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'DocumentPage.document_version'
         db.delete_column('documents_documentpage', 'document_version_id')
-
 
     models = {
         'auth.group': {

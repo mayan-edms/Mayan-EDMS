@@ -8,7 +8,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-
         # Changing field 'DocumentVersion.mimetype'
         db.alter_column('documents_documentversion', 'mimetype', self.gf('django.db.models.fields.CharField')(max_length=64, null=True))
 
@@ -16,7 +15,6 @@ class Migration(SchemaMigration):
         db.alter_column('documents_documentversion', 'encoding', self.gf('django.db.models.fields.CharField')(max_length=64, null=True))
 
     def backwards(self, orm):
-
         # Changing field 'DocumentVersion.mimetype'
         db.alter_column('documents_documentversion', 'mimetype', self.gf('django.db.models.fields.CharField')(max_length=64))
 

@@ -1,13 +1,12 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'DocumentType'
         db.create_table('documents_documenttype', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -70,9 +69,7 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('documents', ['RecentDocument'])
 
-
     def backwards(self, orm):
-        
         # Deleting model 'DocumentType'
         db.delete_table('documents_documenttype')
 
@@ -90,7 +87,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'RecentDocument'
         db.delete_table('documents_recentdocument')
-
 
     models = {
         'auth.group': {

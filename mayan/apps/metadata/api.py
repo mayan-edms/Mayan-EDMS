@@ -54,8 +54,7 @@ def save_metadata(metadata_dict, document, create=False):
             document=document,
             metadata_type=get_object_or_404(
                 MetadataType,
-                pk=metadata_dict['id']
-           ),
+                pk=metadata_dict['id'])
         )
     else:
         try:

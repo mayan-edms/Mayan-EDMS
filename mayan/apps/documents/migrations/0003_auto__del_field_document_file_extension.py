@@ -4,19 +4,16 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Deleting field 'Document.file_extension'
         db.delete_column('documents_document', 'file_extension')
 
-
     def backwards(self, orm):
-        
         # Adding field 'Document.file_extension'
         db.add_column('documents_document', 'file_extension', self.gf('django.db.models.fields.CharField')(default=u'', max_length=16, db_index=True), keep_default=False)
-
 
     models = {
         'auth.group': {

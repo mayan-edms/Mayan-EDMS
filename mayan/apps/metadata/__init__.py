@@ -47,7 +47,7 @@ class_permissions(Document, [
 ])
 
 register_model_list_columns(Document, [
-        {'name': _(u'metadata'), 'attribute':
-            encapsulate(lambda x: get_metadata_string(x))
+        {
+            'name': _(u'metadata'), 'attribute': encapsulate(lambda x: get_metadata_string(x))
         },
     ])

@@ -1,9 +1,8 @@
 from __future__ import absolute_import
 
-import re
-import types
-import logging
 import datetime
+import logging
+import re
 
 from django.db.models import Q
 from django.db.models.loading import get_model
@@ -37,7 +36,7 @@ class SearchModel(object):
 
     def get_all_search_fields(self):
         return self.search_fields.values()
-        
+
     def get_search_field(self, full_name):
         return self.search_fields[full_name]
 
@@ -57,7 +56,7 @@ class SearchModel(object):
         """
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields[search_field.get_full_name()] = search_field
-    
+
     def add_related_field(self, *args, **kwargs):
         """
         Add a search field that will search content in a related field in
@@ -92,15 +91,15 @@ class SearchModel(object):
                     'field_name': [search_field.field],
                     'terms': self.normalize_query(query_string)
                 }
-            )        
-        
+            )
+
         logger.debug('search_dict: %s' % search_dict)
 
         return self.execute_search(search_dict, global_and_search=False)
 
     def advanced_search(self, dictionary):
         search_dict = {}
-        
+
         for key, value in dictionary.items():
             logger.debug('key: %s' % key)
             logger.debug('value: %s' % value)
@@ -118,7 +117,7 @@ class SearchModel(object):
                         'field_name': [search_field.field],
                         'terms': self.normalize_query(value)
                     }
-                )  
+                )
 
 
         logger.debug('search_dict: %s' % search_dict)
@@ -147,12 +146,12 @@ class SearchModel(object):
 
                 # Initialize per field result set
                 field_result_set = set()
-               
+
                 # Get results per search field
                 for query in field_query_list:
                     logger.debug('query: %s' % query)
                     term_query_result_set = set(model.objects.filter(query).values_list(data['return_value'], flat=True))
-                
+
                     # Convert the QuerySet to a Python set and perform the
                     # AND operation on the program and not as a query.
                     # This operation ANDs all the field term results
@@ -174,7 +173,7 @@ class SearchModel(object):
                         model_result_set &= field_result_set
                 else:
                     model_result_set |= field_result_set
-                    
+
                 logger.debug('model_result_set: %s' % model_result_set)
 
             # Update the search result total count
@@ -192,7 +191,7 @@ class SearchModel(object):
                 for result in results:
                     if result not in flat_list:
                         flat_list.append(result)
-            
+
             logger.debug('model_list: %s' % model_list)
             logger.debug('flat_list: %s' % flat_list)
 

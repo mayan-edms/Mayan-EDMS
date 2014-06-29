@@ -1,7 +1,6 @@
 """Configuration options for the storage app"""
 import os
 
-from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 from smart_settings.api import register_settings

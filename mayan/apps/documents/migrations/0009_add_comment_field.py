@@ -4,19 +4,16 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding field 'DocumentVersion.comment'
         db.add_column('documents_documentversion', 'comment', self.gf('django.db.models.fields.TextField')(default='', blank=True), keep_default=False)
 
-
     def backwards(self, orm):
-        
         # Deleting field 'DocumentVersion.comment'
         db.delete_column('documents_documentversion', 'comment')
-
 
     models = {
         'auth.group': {

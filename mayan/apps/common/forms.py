@@ -12,8 +12,7 @@ from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
 from .utils import return_attrib
-from .widgets import (DetailSelectMultiple, PlainWidget, TextAreaDiv,
-    EmailInput)
+from .widgets import DetailSelectMultiple, PlainWidget, EmailInput
 
 
 class DetailForm(forms.ModelForm):

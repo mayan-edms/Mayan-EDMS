@@ -2,12 +2,11 @@ from __future__ import absolute_import
 
 import os
 
-from django.utils import unittest
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files.base import File
+from django.utils import unittest
 
-from documents.literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
 from documents.models import Document, DocumentType
 
 from .models import Folder

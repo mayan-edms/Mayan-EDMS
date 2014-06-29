@@ -58,7 +58,6 @@ def queue_document_list(request, queue_name='default'):
         ]
     }
 
-
     return render_to_response('generic_list.html', context,
         context_instance=RequestContext(request))
 

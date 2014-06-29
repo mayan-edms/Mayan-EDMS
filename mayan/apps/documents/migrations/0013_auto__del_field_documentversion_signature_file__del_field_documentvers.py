@@ -1,32 +1,28 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
-    
+
     depends_on = (
         ('document_signatures', '0002_move_signatures_to_new_app'),
-    )    
+    )
 
     def forwards(self, orm):
-        
         # Deleting field 'DocumentVersion.signature_file'
         db.delete_column('documents_documentversion', 'signature_file')
 
         # Deleting field 'DocumentVersion.signature_state'
         db.delete_column('documents_documentversion', 'signature_state')
 
-
     def backwards(self, orm):
-        
         # Adding field 'DocumentVersion.signature_file'
         db.add_column('documents_documentversion', 'signature_file', self.gf('django.db.models.fields.files.FileField')(max_length=100, null=True, blank=True), keep_default=False)
 
         # Adding field 'DocumentVersion.signature_state'
         db.add_column('documents_documentversion', 'signature_state', self.gf('django.db.models.fields.CharField')(max_length=16, null=True, blank=True), keep_default=False)
-
 
     models = {
         'auth.group': {

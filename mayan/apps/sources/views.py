@@ -18,12 +18,10 @@ from acls.models import AccessEntry
 from common.utils import encapsulate
 from documents.conf.settings import THUMBNAIL_SIZE
 from documents.exceptions import NewDocumentVersionNotAllowed
-from documents.forms import DocumentTypeSelectForm
 from documents.models import DocumentType, Document
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
     PERMISSION_DOCUMENT_NEW_VERSION)
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
-from metadata.forms import MetadataSelectionForm, MetadataFormSet
 from permissions.models import Permission
 
 from .forms import (SourceTransformationForm, SourceTransformationForm_create,
@@ -37,7 +35,6 @@ from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
 from .staging import create_staging_file_class
-from .wizards import DocumentCreateWizard
 
 
 def document_create_siblings(request, document_id):

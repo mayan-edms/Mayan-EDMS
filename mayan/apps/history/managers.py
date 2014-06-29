@@ -1,7 +1,6 @@
-from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
-#from django.shortcuts import get_object_or_404
+from django.db import models
 
 
 class ObjectHistoryManager(models.Manager):

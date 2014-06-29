@@ -5,8 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.permissions import (PERMISSION_DOCUMENT_NEW_VERSION,
     PERMISSION_DOCUMENT_CREATE)
 
-from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder)
+from .models import (WebForm, StagingFolder, WatchFolder)
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)

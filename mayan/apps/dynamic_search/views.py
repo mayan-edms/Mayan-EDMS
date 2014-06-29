@@ -1,22 +1,18 @@
 from __future__ import absolute_import
 
-import urlparse
 import logging
+import urlparse
 
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
-from django.conf import settings
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.utils.http import urlencode
 
-from .conf.settings import SHOW_OBJECT_TYPE
-from .conf.settings import LIMIT
+from .classes import SearchModel
+from .conf.settings import LIMIT, SHOW_OBJECT_TYPE
 from .forms import SearchForm, AdvancedSearchForm
 from .models import RecentSearch
-from .classes import SearchModel
 
 logger = logging.getLogger(__name__)
 document_search = SearchModel.get('documents.Document')
@@ -44,22 +40,22 @@ def results(request, extra_context=None):
             # Advanced search
             logger.debug('advanced search')
             model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search(request.GET)
-            
+
         if shown_result_count != result_count:
             title = _(u'results, (showing only %(shown_result_count)s out of %(result_count)s)') % {
                 'shown_result_count': shown_result_count,
                 'result_count': result_count}
-                
+
         else:
             title = _(u'results')
-        
+
         # Update the context with the search results
         context.update({
             'found_entries': model_list,
             'object_list': flat_list,
             'title': title,
             'time_delta': elapsed_time,
-        })            
+        })
 
         RecentSearch.objects.add_query_for_user(request.user, request.GET, result_count)
 

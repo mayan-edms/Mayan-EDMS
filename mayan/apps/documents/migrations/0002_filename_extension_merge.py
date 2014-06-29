@@ -1,9 +1,9 @@
 # encoding: utf-8
 import os
-import datetime
 from south.db import db
 from south.v2 import DataMigration
 from django.db import models
+
 
 class Migration(DataMigration):
 
@@ -18,7 +18,7 @@ class Migration(DataMigration):
         for document in orm.Document.objects.all():
             document.file_filename, document.file_extension = document.file_filename.split(os.extsep)
             document.save()
-            
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},

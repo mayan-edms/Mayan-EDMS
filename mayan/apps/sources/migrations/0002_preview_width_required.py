@@ -1,22 +1,18 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Changing field 'StagingFolder.preview_width'
         db.alter_column('sources_stagingfolder', 'preview_width', self.gf('django.db.models.fields.IntegerField')(default=640))
 
-
     def backwards(self, orm):
-        
         # Changing field 'StagingFolder.preview_width'
         db.alter_column('sources_stagingfolder', 'preview_width', self.gf('django.db.models.fields.IntegerField')(null=True))
-
 
     models = {
         'contenttypes.contenttype': {

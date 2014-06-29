@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -65,7 +64,6 @@ class Migration(SchemaMigration):
         ))
         db.create_unique('metadata_documenttypedefaults_default_metadata', ['documenttypedefaults_id', 'metadatatype_id'])
 
-
     def backwards(self, orm):
         # Deleting model 'MetadataType'
         db.delete_table('metadata_metadatatype')
@@ -87,7 +85,6 @@ class Migration(SchemaMigration):
 
         # Removing M2M table for field default_metadata on 'DocumentTypeDefaults'
         db.delete_table('metadata_documenttypedefaults_default_metadata')
-
 
     models = {
         'auth.group': {

@@ -1,4 +1,4 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 import copy
 import re
@@ -10,7 +10,7 @@ from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
-from django.utils.encoding import smart_str, force_unicode, smart_unicode
+from django.utils.encoding import smart_str, smart_unicode
 
 from common.utils import urlquote
 
@@ -38,7 +38,7 @@ class TopMenuNavigationNode(Node):
             for child_path_regex in link.get('children_path_regex', []):
                 if re.compile(child_path_regex).match(current_path.lstrip('/')):
                     menu_links[index]['active'] = True
-            
+
             for children_view_regex in link.get('children_view_regex', []):
                 if re.compile(children_view_regex).match(current_view):
                     menu_links[index]['active'] = True
@@ -258,11 +258,11 @@ def object_navigation_template(context):
     new_context = copy.copy(context)
     new_context.update({
         'horizontal': True,
-        'object_navigation_links': _get_object_navigation_links(context)    
+        'object_navigation_links': _get_object_navigation_links(context)
     })
     return new_context
-    
-    
+
+
 @register.tag
 def get_multi_item_links(parser, token):
     tag_name, arg = token.contents.split(None, 1)

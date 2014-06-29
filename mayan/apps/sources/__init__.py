@@ -4,23 +4,18 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.utils import encapsulate
 from documents.models import Document
-from documents.permissions import (PERMISSION_DOCUMENT_NEW_VERSION,
-    PERMISSION_DOCUMENT_CREATE)
 from navigation.api import register_links, register_model_list_columns
 from project_setup.api import register_setup
 
 from .links import (document_create_multiple, document_create_siblings,
-    staging_file_preview, staging_file_delete, setup_sources,
-    setup_web_form_list, setup_staging_folder_list,
-    setup_watch_folder_list, setup_source_edit, setup_source_delete,
-    setup_source_create, setup_source_transformation_list,
-    setup_source_transformation_create, setup_source_transformation_edit,
-    setup_source_transformation_delete, source_list, upload_version)
+    staging_file_delete, setup_sources, setup_web_form_list,
+    setup_staging_folder_list, setup_watch_folder_list,
+    setup_source_edit, setup_source_delete, setup_source_create,
+    setup_source_transformation_list, setup_source_transformation_create,
+    setup_source_transformation_edit, setup_source_transformation_delete,
+    upload_version)
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder)
-from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
-    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
-    PERMISSION_SOURCES_SETUP_CREATE)
 from .staging import StagingFile
 from .widgets import staging_file_thumbnail
 

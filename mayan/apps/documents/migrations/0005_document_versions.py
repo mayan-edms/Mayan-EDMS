@@ -1,21 +1,20 @@
 # encoding: utf-8
-import datetime
-from south.db import db
 from south.v2 import DataMigration
 from django.db import models
+
 
 class Migration(DataMigration):
 
     def forwards(self, orm):
         for document in orm.Document.objects.all():
             document_version = document.versions.create(
-                document = document,
-                timestamp = document.date_added,
-                file = document.file,
-                mimetype = document.file_mimetype,
-                encoding = document.file_mime_encoding,
-                filename = document.file_filename,
-                checksum = document.checksum,
+                document=document,
+                timestamp=document.date_added,
+                file=document.file,
+                mimetype=document.file_mimetype,
+                encoding=document.file_mime_encoding,
+                filename=document.file_filename,
+                checksum=document.checksum,
             )
             document_version.save()
             for document_page in document.pages.all():

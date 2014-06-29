@@ -2,11 +2,8 @@ from __future__ import absolute_import
 
 import logging
 
-from django.db import transaction
-from django.db.utils import DatabaseError
 from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
-from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions

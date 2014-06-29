@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 from django.db import transaction
-from django.db.models.signals import post_save
 from django.db.utils import DatabaseError
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _

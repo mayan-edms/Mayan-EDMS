@@ -1,5 +1,4 @@
 from django.template import Library
-from django.utils.importlib import import_module
 
 from common.models import AutoAdminSingleton
 

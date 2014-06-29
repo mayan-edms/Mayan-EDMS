@@ -4,10 +4,10 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Changing field 'DocumentVersion.document'
         db.alter_column('documents_documentversion', 'document_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document']))
 
@@ -35,9 +35,7 @@ class Migration(SchemaMigration):
         # Changing field 'DocumentPage.document_version'
         db.alter_column('documents_documentpage', 'document_version_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.DocumentVersion']))
 
-
     def backwards(self, orm):
-        
         # Changing field 'DocumentVersion.document'
         db.alter_column('documents_documentversion', 'document_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document'], null=True))
 
@@ -64,7 +62,6 @@ class Migration(SchemaMigration):
 
         # Changing field 'DocumentPage.document_version'
         db.alter_column('documents_documentpage', 'document_version_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.DocumentVersion'], null=True))
-
 
     models = {
         'auth.group': {

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,11 +10,9 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'MetadataSet', fields ['title']
         db.create_unique('metadata_metadataset', ['title'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'MetadataSet', fields ['title']
         db.delete_unique('metadata_metadataset', ['title'])
-
 
     models = {
         'auth.group': {

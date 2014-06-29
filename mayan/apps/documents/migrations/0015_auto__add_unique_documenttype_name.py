@@ -11,11 +11,9 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'DocumentType', fields ['name']
         db.create_unique('documents_documenttype', ['name'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'DocumentType', fields ['name']
         db.delete_unique('documents_documenttype', ['name'])
-
 
     models = {
         'auth.group': {

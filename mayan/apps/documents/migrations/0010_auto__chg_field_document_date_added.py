@@ -4,19 +4,16 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Changing field 'Document.date_added'
         db.alter_column('documents_document', 'date_added', self.gf('django.db.models.fields.DateTimeField')())
 
-
     def backwards(self, orm):
-        
         # Changing field 'Document.date_added'
         db.alter_column('documents_document', 'date_added', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True))
-
 
     models = {
         'auth.group': {
