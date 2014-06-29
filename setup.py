@@ -51,12 +51,33 @@ def find_packages(directory):
             data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
     return packages
 
-
-def get_requirements():
-    with open('requirements/common.txt') as f:
-        requires = [requirement.replace('==', '>=') for requirement in f.readlines() if requirement != '\n']
-    return requires
-
+install_requires = [
+'APScheduler==2.0.3',
+'cssmin==0.1.4',
+'Django==1.6.5',
+'django-filetransfers==0.1.0',
+'django-pagination==1.0.7',
+'django-compressor==1.4',
+'django-taggit==0.12',
+'django-mptt==0.6.0',
+'django-sendfile==0.3.4',
+'djangorestframework==2.3.13',
+'GitPython==0.3.2.RC1',
+'ghostscript==0.4.1',
+'Pillow==2.4.0',
+'PyYAML==3.10',
+'pbs==0.105',
+'pdfminer==20110227',
+'psutil==0.5.1',
+'python-gnupg==0.3.6',
+'python-hkp==0.1.3',
+'python-magic==0.4.6',
+'requests==0.14.1',
+'slate==0.3',
+'South==0.8.4',
+'unicode-slugify==0.1',
+'wsgiref==0.1.2',
+]
 
 with open('README.rst') as f:
     readme = f.read()
@@ -86,7 +107,7 @@ setup(
     ],
     description='A Django based Document Management System.',
     include_package_data=True,
-    install_requires=get_requirements(),
+    install_requires=install_requires,
     license=license,
     long_description=readme + '\n\n' + history,
     name=PACKAGE_NAME,
