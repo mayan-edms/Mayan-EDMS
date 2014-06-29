@@ -23,7 +23,7 @@ text parsing and OCR capabilities.
 License
 -------
 
-This project is open sourced under `GNU GPL Version 3`_.
+This project is open sourced under `Apache 2.0 License`_.
 
 
 Contribute
@@ -48,7 +48,7 @@ of this project.
 .. _Documentation: http://readthedocs.org/docs/mayan/en/latest/
 .. _Translations: https://www.transifex.com/projects/p/mayan-edms/
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
-.. _GNU GPL Version 3: http://www.gnu.org/licenses/gpl-3.0.html
+.. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
 .. _donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W6LMMZHTNUJ6L
 
 .. |Build Status| image:: https://travis-ci.org/mayan-edms/mayan-edms.svg?branch=master
