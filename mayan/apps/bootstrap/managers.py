@@ -1,12 +1,12 @@
 from __future__ import absolute_import
 
+from json import loads
 import logging
 
 import requests
 
 from django.db import IntegrityError, models
 from django.db.models import Q
-from django.utils.simplejson import loads
 
 from .classes import BootstrapModel, FixtureMetadata
 from .literals import (FIXTURE_TYPE_FIXTURE_PROCESS, FIXTURE_TYPE_EMPTY_FIXTURE,
