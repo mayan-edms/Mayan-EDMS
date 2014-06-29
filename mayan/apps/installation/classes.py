@@ -117,12 +117,20 @@ class VirtualEnv(object):
 
     def get_packages_info(self, requirements_file=None):
         if requirements_file:
-            with open(requirements_file) as file_in:
-                for line in file_in.readlines():
-                    yield self.extract_dependency(line)
+            try:
+                with open(requirements_file) as file_in:
+                    for line in file_in.readlines():
+                        yield self.extract_dependency(line)
+            except IOError:
+                # A requirement file was specified but not found or unable
+                # to be read
+                self.get_environment_packages()
         else:
-            for item in pip('freeze').splitlines():
-                yield self.extract_dependency(item)
+            self.get_environment_packages()
+
+    def get_environment_packages(self):
+        for item in pip('freeze').splitlines():
+            yield self.extract_dependency(item)
 
     def __init__(self):
         self.requirements_file_path = os.path.join(settings.SITE_ROOT, 'requirements', 'production.txt')
