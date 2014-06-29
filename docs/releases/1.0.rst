@@ -100,6 +100,12 @@ These files are now part of their own project.
 Pluggable OCR backends
 ~~~~~~~~~~~~~~~~~~~~~~
 
+License change
+~~~~~~~~~~~~~~
+Mayan EDMS is now licensed under the Apache 2.0 license. This means many
+things but the main change is that inclusion of Mayan EDMS into
+commercial products is now explicitly allowed.
+
 Upgrading from a previous version
 =================================
 If you installed **Mayan EDMS** by cloning the Git repository issue the commands::

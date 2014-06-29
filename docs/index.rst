@@ -26,8 +26,6 @@ On the Web
 * Video: http://bit.ly/Mayan-Intro
 * Mailing list: http://groups.google.com/group/mayan-edms/
 
-Looking for specific information? Try the :doc:`detailed table of contents <contents>` otherwise below are the different part of the documentation.
-
 First steps
 ===========
 

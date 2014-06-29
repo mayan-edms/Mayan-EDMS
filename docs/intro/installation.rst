@@ -2,8 +2,8 @@
 Installation
 ============
 
-Local or managed Ubuntu or Debian server
-----------------------------------------
+Ubuntu, Debian or Fedora server
+-------------------------------
 
 **Mayan EDMS** should be deployed_ like any other Django_ project and preferably using virtualenv_.
 
@@ -11,69 +11,7 @@ If using a Debian_ or Ubuntu_ based Linux distribution getting the executable re
 
     $ sudo apt-get install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils -y
 
-To initialize a ``virtualenv`` to deploy the project do::
-
-    $ virtualenv --no-site-packages mayan
-
-Download_ and decompress the latest version of **Mayan EDMS**::
-
-    $ cd mayan
-    $ tar -xvzf mayan.tar.gz
-
-Or clone the latest development version straight from github::
-
-    $ cd mayan
-    $ git clone git://github.com/mayan-edms/mayan-edms.git
-
-To install the python dependencies ``easy_install`` can be used, however for easier retrieval a production dependencies file is included, to use it execute::
-
-    $ cd mayan
-    $ source ../bin/activate
-    $ pip install -r requirements/production.txt
-
-Create the database that will hold the data. Install any corresponding python database drivers. Update the settings.py file with you database settings.
-If using the ``MySQL`` database manager, use the following commands::
-
-    $ sudo apt-get install libmysqlclient-dev -y
-    $ pip install MySQL-python
-
-If using ``PostgreSQL``, enter the following::
-
-    $ sudo apt-get install libpq-dev -y
-    $ pip install psycopg2
-
-Populate the database with the project's schema doing::
-
-    $ ./manage.py syncdb --migrate --noinput
-
-To test your installation, create a file called settings_local.py with the following content::
-
-    DEBUG=True
-    DEVELOPMENT=True
-
-Execute Django’s development server using the ``runserver`` command to launch a local instance of Mayan EDMS::
-
-    $ ./manage.py runserver
-
-Point your browser to http://127:0.0.1:8000, if everything was installed
-correctly you should see the login screen.  After making sure everything
-is running correctly, stop the runserver command and delete the settings_local.py.
-Deploy **Mayan EDMS** using the webserver of your preference. If your are
-using Apache_, a sample site file is included under the contrib directory.
-
-Before finally deploying to your favorite webserver don't forget to collect the
-static files of the project into the ``static`` folder for serving via a webserver::
-
-    $ ./manage.py collectstatic
-
-
-
-Local or managed Fedora server
-------------------------------
-
-**Mayan EDMS** should be deployed_ like any other Django_ project and preferably using virtualenv_.
-
-If using a Fedora_ based Linux distribution getting the executable requirements is as easy as::
+If using a Fedora_ based Linux distribution get the executable requirements using Yum::
 
     $ sudo yum install -y git gcc tesseract unpaper python-virtualenv ghostscript libjpeg-turbo-devel libpng-devel poppler-util python-devel
 
@@ -95,10 +33,20 @@ To install the python dependencies ``easy_install`` can be used, however for eas
 
     $ cd mayan
     $ source ../bin/activate
-    $ pip install -r requirements/production.txt
+    $ pip install -r requirements.txt
 
 Create the database that will hold the data. Install any corresponding python database drivers. Update the settings.py file with you database settings.
 If using the ``MySQL`` database manager, use the following commands::
+
+    $ sudo apt-get install libmysqlclient-dev -y
+    $ pip install MySQL-python
+
+If using ``PostgreSQL``, enter the following::
+
+    $ sudo apt-get install libpq-dev -y
+    $ pip install psycopg2
+
+For Fedora systems just use Yum instead of APT::
 
     $ sudo yum install -y mysql-devel
     $ pip install MySQL-python
@@ -112,12 +60,7 @@ Populate the database with the project's schema doing::
 
     $ ./manage.py syncdb --migrate --noinput
 
-To test your installation, create a file called settings_local.py with the following content::
-
-    DEBUG=True
-    DEVELOPMENT=True
-
-Execute Django’s development server using the ``runserver`` command to launch a local instance of Mayan EDMS::
+To test your installation, execute Django’s development server using the ``runserver`` command to launch a local instance of Mayan EDMS::
 
     $ ./manage.py runserver
 
@@ -171,7 +114,7 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
     $ git clone git://github.com/mayan-edms/mayan-edms.git
     $ cd mayan
     $ source ../bin/activate
-    $ pip install -r requirements/production.txt
+    $ pip install -r requirements.txt
 
 4. Install the Python MySQL database driver::
 
@@ -246,8 +189,6 @@ To install **Mayan EDMS** on Webfaction_, follow these steps:
   * Execute::
 
      apache2/bin/restart
-
-
 
 
 .. _`vendor lock-in`: https://secure.wikimedia.org/wikipedia/en/wiki/Vendor_lock-in
