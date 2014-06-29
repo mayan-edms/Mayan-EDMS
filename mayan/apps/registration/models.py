@@ -1,10 +1,10 @@
 from __future__ import absolute_import
 
+from json import dumps, loads
 import requests
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.simplejson import dumps, loads
 
 from common.models import Singleton
 from lock_manager import Lock, LockError
