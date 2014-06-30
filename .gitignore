@@ -2,6 +2,7 @@
 *.pyc
 *.pyo
 *.sqlite
+*.sqlite3
 settings_local.py
 /celerybeat-schedule
 document_storage/
