@@ -6,7 +6,6 @@ from django.db import models
 
 
 class Migration(SchemaMigration):
-
     def forwards(self, orm):
         # Adding model 'AnonymousUserSingleton'
         db.create_table('common_anonymoususersingleton', (
@@ -15,11 +14,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('common', ['AnonymousUserSingleton'])
 
-
     def backwards(self, orm):
         # Deleting model 'AnonymousUserSingleton'
         db.delete_table('common_anonymoususersingleton')
-
 
     models = {
         'common.anonymoususersingleton': {

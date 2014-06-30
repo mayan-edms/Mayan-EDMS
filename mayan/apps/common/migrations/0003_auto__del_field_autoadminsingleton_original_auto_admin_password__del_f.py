@@ -24,7 +24,6 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.CharField')(max_length=128, null=True, blank=True),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Adding field 'AutoAdminSingleton.original_auto_admin_password'
         db.add_column('common_autoadminsingleton', 'original_auto_admin_password',
@@ -41,7 +40,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'AutoAdminSingleton.auto_admin_password'
         db.delete_column('common_autoadminsingleton', 'auto_admin_password')
-
 
     models = {
         'auth.group': {

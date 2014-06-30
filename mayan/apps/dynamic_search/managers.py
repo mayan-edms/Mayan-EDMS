@@ -1,16 +1,18 @@
+from __future__ import absolute_import
+
 import urlparse
 
+from django.contrib.auth.models import AnonymousUser
 from django.db import models
 from django.utils.http import urlencode
-from django.contrib.auth.models import AnonymousUser
-        
-from dynamic_search.conf.settings import RECENT_COUNT
+
+from ..conf.settings import RECENT_COUNT
 
 
 class RecentSearchManager(models.Manager):
     def add_query_for_user(self, user, query, hits):
         parsed_query = urlparse.parse_qs(urlencode(dict(query.items())))
-        
+
         for key, value in parsed_query.items():
             parsed_query[key] = ' '.join(value)
 

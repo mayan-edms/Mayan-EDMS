@@ -22,7 +22,7 @@ class DetailForm(forms.ModelForm):
             for extra_field in extra_fields:
                 result = return_attrib(self.instance, extra_field['field'])
                 label = 'label' in extra_field and extra_field['label'] or None
-                #TODO: Add others result types <=> Field types
+                # TODO: Add others result types <=> Field types
                 if isinstance(result, models.query.QuerySet):
                     self.fields[extra_field['field']] = \
                         forms.ModelMultipleChoiceField(
@@ -32,7 +32,7 @@ class DetailForm(forms.ModelForm):
                         label=extra_field['label'],
                         initial=escape(return_attrib(self.instance,
                             extra_field['field'], None)),
-                            widget=PlainWidget)
+                        widget=PlainWidget)
 
         for field_name, field in self.fields.items():
             if isinstance(field.widget, forms.widgets.SelectMultiple):

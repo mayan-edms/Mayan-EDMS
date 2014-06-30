@@ -108,8 +108,8 @@ def perform_search(query_string, field_list=None):
             model_result_ids = None
             for query in queries:
                 single_result_ids = set(model.objects.filter(query).values_list('pk', flat=True))
-                #Convert queryset to python set and perform the
-                #AND operation on the program and not as a query
+                # Convert queryset to python set and perform the
+                # AND operation on the program and not as a query
                 if not model_result_ids:
                     model_result_ids = single_result_ids
                 else:

@@ -138,7 +138,7 @@ def smart_link_list(request):
         'hide_link': True,
         'list_object_variable_name': 'smart_link',
 
-        }, context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def smart_link_create(request):
@@ -234,7 +234,7 @@ def smart_link_condition_list(request, smart_link_pk):
         'hide_link': True,
         'object': smart_link,
         'list_object_variable_name': 'condition',
-        }, context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def smart_link_condition_create(request, smart_link_pk):

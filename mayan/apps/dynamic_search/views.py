@@ -21,7 +21,7 @@ document_search = SearchModel.get('documents.Document')
 def results(request, extra_context=None):
     context = {
         'query_string': request.GET,
-        #'hide_header': True,
+        # 'hide_header': True,
         'hide_links': True,
         'multi_select_as_buttons': True,
         'search_results_limit': LIMIT,

@@ -17,11 +17,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('common', ['AutoAdminSingleton'])
 
-
     def backwards(self, orm):
         # Deleting model 'AutoAdminSingleton'
         db.delete_table('common_autoadminsingleton')
-
 
     models = {
         'auth.group': {

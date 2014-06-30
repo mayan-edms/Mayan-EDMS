@@ -2,19 +2,19 @@
 from __future__ import absolute_import
 
 import os
-import re
-import types
-import tempfile
-import string
 import random
+import re
+import string
+import tempfile
+import types
 
-from django.utils.http import urlquote  as django_urlquote
-from django.utils.http import urlencode as django_urlencode
-from django.utils.datastructures import MultiValueDict
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.utils.datastructures import MultiValueDict
+from django.utils.http import urlquote as django_urlquote
+from django.utils.http import urlencode as django_urlencode
+from django.utils.translation import ugettext_lazy as _
 
 
 def urlquote(link=None, get=None):
@@ -365,7 +365,7 @@ def return_diff(old_obj, new_obj, attrib_list=None):
 
 
 def validate_path(path):
-    if os.path.exists(path) != True:
+    if not os.path.exists(path):
         # If doesn't exist try to create it
         try:
             os.mkdir(path)
@@ -408,7 +408,7 @@ def get_descriptor(file_input, read=True):
         return file_input
 
 
-#http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
+# http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
 def copyfile(source, destination, buffer_size=1024 * 1024):
     """
     Copy a file from source to dest. source and dest

@@ -58,7 +58,7 @@ class SmartLinkImageWidget(forms.widgets.Widget):
         output.append(u'</div>')
         output.append(
             u'<br /><span class="famfam active famfam-magnifier"></span>%s' %
-             ugettext(u'Click on the image for full size view of the first page.')
+            ugettext(u'Click on the image for full size view of the first page.')
         )
 
         return mark_safe(u''.join(output))

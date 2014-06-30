@@ -46,9 +46,9 @@ class RoleDeleteView(SingleObjectDeleteView):
 
 
 class RoleEditView(SingleObjectEditView):
-    extra_context={'object_name': _(u'role')}
-    model=Role
-    permissions_required=[PERMISSION_ROLE_EDIT]
+    extra_context = {'object_name': _(u'role')}
+    model = Role
+    permissions_required = [PERMISSION_ROLE_EDIT]
 
 
 def role_list(request):

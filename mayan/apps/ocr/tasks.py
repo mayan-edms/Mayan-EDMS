@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from datetime import timedelta, datetime
+from datetime import timedelta
 import logging
 import platform
 

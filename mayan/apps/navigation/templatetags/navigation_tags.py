@@ -58,12 +58,12 @@ def get_top_menu_links(parser, token):
 def resolve_arguments(context, src_args):
     args = []
     kwargs = {}
-    if type(src_args) == type([]):
+    if isinstance(src_args, list):
         for i in src_args:
             val = resolve_template_variable(context, i)
             if val:
                 args.append(val)
-    elif type(src_args) == type({}):
+    elif isinstance(src_args, dict):
         for key, value in src_args.items():
             val = resolve_template_variable(context, value)
             if val:
@@ -223,8 +223,8 @@ def resolve_template_variable(context, name):
     try:
         return unescape_string_literal(name)
     except ValueError:
-        #return Variable(name).resolve(context)
-        #TODO: Research if should return always as a str
+        # return Variable(name).resolve(context)
+        # TODO: Research if should return always as a str
         return str(Variable(name).resolve(context))
     except TypeError:
         return name

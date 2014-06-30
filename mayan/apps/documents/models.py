@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from ast import literal_eval
 import base64
-import datetime
 import hashlib
 import logging
 import os

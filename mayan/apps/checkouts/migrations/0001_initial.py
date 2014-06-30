@@ -18,11 +18,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('checkouts', ['DocumentCheckout'])
 
-
     def backwards(self, orm):
         # Deleting model 'DocumentCheckout'
         db.delete_table('checkouts_documentcheckout')
-
 
     models = {
         'auth.group': {

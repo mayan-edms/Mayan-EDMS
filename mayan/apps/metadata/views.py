@@ -90,7 +90,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                 if errors:
                     for error in errors:
                         messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
-                        'document': document, 'error': error})
+                            'document': document, 'error': error})
                 else:
                     messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
 
@@ -325,8 +325,7 @@ def setup_metadata_type_edit(request, metadatatype_id):
         'form': form,
         'object': metadata_type,
         'object_name': _(u'metadata type'),
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_metadata_type_create(request):
@@ -344,8 +343,7 @@ def setup_metadata_type_create(request):
     return render_to_response('generic_form.html', {
         'title': _(u'create metadata type'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_metadata_type_delete(request, metadatatype_id):
@@ -424,8 +422,7 @@ def setup_metadata_set_edit(request, metadata_set_id):
         'form': form,
         'object': metadata_set,
         'object_name': _(u'metadata set'),
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def get_set_members(metadata_set):
@@ -486,8 +483,7 @@ def setup_metadata_set_create(request):
     return render_to_response('generic_form.html', {
         'title': _(u'create metadata set'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_metadata_set_delete(request, metadata_set_id):
