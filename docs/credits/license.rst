@@ -2,10 +2,10 @@
 License
 =======
 
-**Mayan EDMS** is distributed under the `GNU GPL Version 3.0 License`_.
+**Mayan EDMS** is distributed under the `Apache 2.0 License`_.
 The complete license terms are included below.
 
-.. _`GNU GPL Version 3.0 License`: https://www.gnu.org/licenses/gpl-3.0.html
+.. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
 
 
 License terms
