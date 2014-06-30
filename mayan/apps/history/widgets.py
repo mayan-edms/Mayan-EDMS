@@ -1,10 +1,11 @@
+from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
 
 def history_entry_object_link(entry):
     return mark_safe(u'<a href="%(url)s">%(label)s</a>' % {
         'url': entry.content_object.get_absolute_url() if entry.content_object else u'#',
-        'label': unicode(entry.content_object) if entry.content_object else u''}
+        'label': escape(unicode(entry.content_object)) if entry.content_object else u''}
     )
 
 
