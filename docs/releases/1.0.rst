@@ -102,7 +102,7 @@ Detached signatures can now be deleted, if accidentally added to the wrong docum
 
 Removal of fabric based installations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-These files are now part of their own project.
+These files are now part of their own project and located at https://github.com/mayan-edms/mayan-fabric
 
 Pluggable OCR backends
 ~~~~~~~~~~~~~~~~~~~~~~
