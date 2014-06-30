@@ -55,9 +55,10 @@ Requires PyYaml (http://pyyaml.org/), of course.
 from StringIO import StringIO
 import yaml
 
-from django.core.serializers.pyyaml import Serializer as YamlSerializer
 from django.core.serializers.python import Deserializer as PythonDeserializer
+from django.core.serializers.pyyaml import Serializer as YamlSerializer
 from django.utils.encoding import smart_unicode
+
 
 class Serializer (YamlSerializer):
     """

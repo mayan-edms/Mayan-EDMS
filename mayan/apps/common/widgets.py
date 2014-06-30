@@ -1,12 +1,12 @@
-import os
 from itertools import chain
+import os
 
-from django.utils.translation import ugettext_lazy as _
-from django.utils.safestring import mark_safe
 from django import forms
 from django.forms.util import flatatt
-from django.utils.html import conditional_escape
 from django.utils.encoding import force_unicode
+from django.utils.html import conditional_escape
+from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 
 
 class PlainWidget(forms.widgets.Widget):
@@ -32,15 +32,15 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         options = None
         if value:
             if getattr(value, '__iter__', None):
-                options = [(index, string) for index, string in \
+                options = [(index, string) for index, string in
                     self.choices if index in value]
             else:
-                options = [(index, string) for index, string in \
+                options = [(index, string) for index, string in
                     self.choices if index == value]
         else:
             if self.choices:
                 if self.choices[0] != (u'', u'---------') and value != []:
-                    options = [(index, string) for index, string in \
+                    options = [(index, string) for index, string in
                         self.choices]
 
         if options:

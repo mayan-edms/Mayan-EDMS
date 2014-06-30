@@ -82,5 +82,5 @@ def auto_admin_account_passwd_change(sender, instance, **kwargs):
         pass
 
 
-if (validate_path(TEMPORARY_DIRECTORY) == False) or (not TEMPORARY_DIRECTORY):
+if (not validate_path(TEMPORARY_DIRECTORY)) or (not TEMPORARY_DIRECTORY):
     setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())

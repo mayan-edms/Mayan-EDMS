@@ -1,4 +1,5 @@
-#http://www.djangosnippets.org/snippets/1378/
+# TODO: Django now has a resolve function use it instead of this
+# http://www.djangosnippets.org/snippets/1378/
 
 from django.core.urlresolvers import RegexURLResolver, RegexURLPattern, Resolver404, get_resolver
 

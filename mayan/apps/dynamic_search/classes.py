@@ -119,7 +119,6 @@ class SearchModel(object):
                     }
                 )
 
-
         logger.debug('search_dict: %s' % search_dict)
 
         return self.execute_search(search_dict, global_and_search=True)

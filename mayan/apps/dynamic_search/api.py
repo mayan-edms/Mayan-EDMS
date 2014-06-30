@@ -110,12 +110,12 @@ def perform_search(query_string, field_list=None):
                 single_result_ids = set(model.objects.filter(query).values_list('pk', flat=True))
                 #Convert queryset to python set and perform the
                 #AND operation on the program and not as a query
-                if model_result_ids == None:
+                if not model_result_ids:
                     model_result_ids = single_result_ids
                 else:
                     model_result_ids &= single_result_ids
 
-            if model_result_ids == None:
+            if not model_result_ids:
                 model_result_ids = []
 
             result_count += len(model_result_ids)

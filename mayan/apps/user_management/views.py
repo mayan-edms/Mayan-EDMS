@@ -1,13 +1,13 @@
 from __future__ import absolute_import
 
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User, Group
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
-
 from common.utils import generate_choices_w_labels, encapsulate
 from common.views import assign_remove
 from common.widgets import two_state_template

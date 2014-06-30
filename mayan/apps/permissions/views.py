@@ -105,41 +105,6 @@ def role_permissions(request, role_id):
     }, context_instance=RequestContext(request))
 
 
-def role_edit(request, role_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_EDIT])
-
-    return update_object(request, template_name='generic_form.html',
-        form_class=RoleForm, object_id=role_id, extra_context={
-            'object_name': _(u'role')}
-    )
-
-
-def role_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_CREATE])
-
-    return create_object(request, model=Role,
-        template_name='generic_form.html',
-        post_save_redirect=reverse('role_list'))
-
-
-def role_delete(request, role_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_DELETE])
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-
-    return delete_object(request, model=Role, object_id=role_id,
-        template_name='generic_confirm.html',
-        post_delete_redirect=reverse('role_list'),
-        extra_context={
-            'delete_view': True,
-            'next': next,
-            'previous': previous,
-            'object_name': _(u'role'),
-            'form_icon': u'medal_gold_delete.png',
-        })
-
-
 def permission_grant(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
     items_property_list = loads(request.GET.get('items_property_list', []))

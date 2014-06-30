@@ -1,14 +1,14 @@
-from __future__ import absolute_import 
+from __future__ import absolute_import
 
 import urlparse
 
-from django.utils.safestring import mark_safe
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
-from django.template.defaultfilters import capfirst
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.template import RequestContext, Variable
+from django.template.defaultfilters import capfirst
+from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 
 from permissions.models import Permission
 

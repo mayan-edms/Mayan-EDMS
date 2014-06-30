@@ -130,7 +130,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
     context = {
         'subtemplates_list': [
             {
-                'name':'generic_form_subtemplate.html',
+                'name': 'generic_form_subtemplate.html',
                 'grid': 6,
                 'context': {
                     'form': unselected_list,
@@ -140,7 +140,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 }
             },
             {
-                'name':'generic_form_subtemplate.html',
+                'name': 'generic_form_subtemplate.html',
                 'grid': 6,
                 'grid_clear': True,
                 'context': {
@@ -238,7 +238,7 @@ def password_change_view(request):
     """
     Password change wrapper for better control
     """
-    context={'title': _(u'Current user password change')}
+    context = {'title': _(u'Current user password change')}
 
     return password_change(
         request,

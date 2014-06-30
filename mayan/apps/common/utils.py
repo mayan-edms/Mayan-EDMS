@@ -44,7 +44,7 @@ def urlquote(link=None, get=None):
         get = link
         link = ''
     assert isinstance(get, dict), u'wrong type "%s", dict required' % type(get)
-    #assert not (link.startswith('http://') or link.startswith('https://')), \
+    # assert not (link.startswith('http://') or link.startswith('https://')), \
     #    'This method should only quote the url path.
     #    It should not start with http(s)://  (%s)' % (
     #    link)
@@ -81,8 +81,8 @@ def return_attrib(obj, attrib, arguments=None):
             pass
 
 
-#http://snippets.dzone.com/posts/show/5434
-#http://snippets.dzone.com/user/jakob
+# http://snippets.dzone.com/posts/show/5434
+# http://snippets.dzone.com/user/jakob
 def pretty_size(size, suffixes=None):
     suffixes = suffixes if not suffixes is None else [
         (u'B', 1024L), (u'K', 1048576L), (u'M', 1073741824L),
@@ -326,7 +326,7 @@ def generate_choices_w_labels(choices, display_object_type=True):
         else:
             results.append((u'%s,%s' % (ct.model, choice.pk), u'%s' % (label)))
 
-    #Sort results by the label not the key value
+    # Sort results by the label not the key value
     return sorted(results, key=lambda x: x[1])
 
 

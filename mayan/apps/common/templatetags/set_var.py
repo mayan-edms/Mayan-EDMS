@@ -13,7 +13,6 @@ class SetVarNode(template.Node):
             value = template.Variable(self.var_value).resolve(context)
         except template.VariableDoesNotExist:
             value = ""
-        #context[self.var_name] = value
         # Make it global across all blocks
         context.dicts[0][self.var_name] = value
 
