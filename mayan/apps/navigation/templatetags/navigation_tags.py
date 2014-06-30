@@ -5,7 +5,7 @@ import re
 import urlparse
 import urllib
 
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.core.urlresolvers import NoReverseMatch, resolve, reverse
 from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
 from django.utils.text import unescape_string_literal
@@ -17,9 +17,12 @@ from common.utils import urlquote
 from ..api import (object_navigation, multi_object_navigation,
     top_menu_entries, sidebar_templates)
 from ..forms import MultiItemForm
-from ..utils import resolve_to_name
 
 register = Library()
+
+
+def resolve_to_name(path, urlconf=None):
+    return resolve(path, urlconf=urlconf).view_name
 
 
 class TopMenuNavigationNode(Node):
