@@ -2,14 +2,19 @@
 Mayan EDMS v1.0 release notes
 =============================
 
-*[...] 2014*
+*July 2014*
 
 Welcome to Mayan EDMS v1.0!
 
 Overview
 ========
-
-
+After a year of low activity the focus of this release was to get the code
+updated to work with the most recent version of Django and the most recent
+version of the dependencies Mayan EDMS uses. The goal was to have a strong
+and stable 1.0 release so reduction, trimming, warning reductions and bug
+fixes were the primary focus of this cycle. Because of this not much
+emphasis was placed on adding new features, or at least new features
+that could have the potential to break things.
 
 What's new in Mayan EDMS v1.0
 =============================
@@ -30,28 +35,29 @@ Translation updates
 ~~~~~~~~~~~~~~~~~~~
 The translation for all languages were synchronized to the latest transifex project sources.
 Translation completion as reported by Transifex:
-English - 100%
-Arabic - 100%
-Bosnian - 100%
-French - 100%
-German - 100%
-Romanian - 100%
-Russian - 100%
-Spanish - 100%
-Italian - 80%
-Portuguese - 78%
-Dutch - 70%
-Portugese (Brazil) - 69%
-Bulgarian - 63%
-Danish - 44%
-Vietnamese - 41%
-Polish - 40%
-Hungarian - 28%
-Indonesian - 19%
-Slovenian - 17%
-Persian - 6%
-Croatian - 3%
-Turkish - 3%
+
+* English - 100%
+* Arabic - 100%
+* Bosnian - 100%
+* French - 100%
+* German - 100%
+* Romanian - 100%
+* Russian - 100%
+* Spanish - 100%
+* Italian - 80%
+* Portuguese - 78%
+* Dutch - 70%
+* Portugese (Brazil) - 69%
+* Bulgarian - 63%
+* Danish - 44%
+* Vietnamese - 41%
+* Polish - 40%
+* Hungarian - 28%
+* Indonesian - 19%
+* Slovenian - 17%
+* Persian - 6%
+* Croatian - 3%
+* Turkish - 3%
 
 Model updates
 ~~~~~~~~~~~~~
@@ -64,7 +70,8 @@ Source code improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~
 A circular import of metadata and document_index apps code from the documents app
 was removed. Document index updates are now handled via signals, not called
-directly as before.
+directly as before. A lot of time was spent cleaning up the code for PEP8
+compliance.
 
 Removal of included 3rd party modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,6 +106,8 @@ These files are now part of their own project.
 
 Pluggable OCR backends
 ~~~~~~~~~~~~~~~~~~~~~~
+A commonly requested feature, it is now possible to write backends drivers
+to do document OCR using software or services other than Tesseract.
 
 License change
 ~~~~~~~~~~~~~~
@@ -108,7 +117,7 @@ commercial products is now explicitly allowed.
 
 Upgrading from a previous version
 =================================
-If you installed **Mayan EDMS** by cloning the Git repository issue the commands::
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
     $ git reset --hard HEAD
     $ git pull
@@ -128,6 +137,8 @@ Add new static media::
 
     $ ./manage.py collectstatic --noinput
 
+If using the SQLite3 database option, rename the file named `mayan.sqlite` file to `db.sqlite3`
+
 The upgrade procedure is now complete.
 
 
@@ -137,7 +148,4 @@ Backward incompatible changes
 
 Bugs fixed or issues closed
 ===========================
-* `issue #39`_ Feature request "Bulk move folders"
-
-
-.. _issue #39: https://github.com/rosarior/mayan/issues/39
+* None
