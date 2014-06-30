@@ -23,6 +23,9 @@
     {% else %}
         <form name="{{ form.prefix }}" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
     {% endif %}
+
+        {{ wizard.management_form }}
+
         {% if step_field %}
             <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
         {% endif %}
