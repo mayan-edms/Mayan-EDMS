@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import logging
 
+from django.db import DatabaseError
 from django.db.models.signals import post_save, post_syncdb
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
@@ -59,8 +60,11 @@ def create_default_queue_signal_handler(sender, **kwargs):
 
 
 def reset_queue_documents():
-    default_queue = DocumentQueue.objects.get(name='default')
-    default_queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).update(state=QUEUEDOCUMENT_STATE_PENDING)
+    try:
+        default_queue = DocumentQueue.objects.get(name='default')
+        default_queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).update(state=QUEUEDOCUMENT_STATE_PENDING)
+    except DatabaseError:
+        pass
 
 
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
