@@ -21,6 +21,7 @@ from .links import (submit_document, submit_document_multiple,
     document_queue_disable, document_queue_enable,
     all_document_ocr_cleanup, queue_document_list,
     ocr_tool_link)
+from .literals import QUEUEDOCUMENT_STATE_PENDING, QUEUEDOCUMENT_STATE_PROCESSING
 from .models import DocumentQueue
 from .permissions import PERMISSION_OCR_DOCUMENT
 from .tasks import task_process_document_queues
@@ -57,6 +58,11 @@ def create_default_queue_signal_handler(sender, **kwargs):
     default_queue, created = DocumentQueue.objects.get_or_create(name='default')
 
 
+def reset_queue_documents():
+    default_queue = DocumentQueue.objects.get(name='default')
+    default_queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).update(state=QUEUEDOCUMENT_STATE_PENDING)
+
+
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
 
 register_tool(ocr_tool_link)
@@ -64,3 +70,5 @@ register_tool(ocr_tool_link)
 class_permissions(Document, [
     PERMISSION_OCR_DOCUMENT,
 ])
+
+reset_queue_documents()
