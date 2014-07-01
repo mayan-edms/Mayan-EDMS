@@ -12,16 +12,18 @@ try:
 except RuntimeError:
     USE_GHOSTSCRIPT = False
 
+from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
 
-from ...exceptions import UnknownFileFormat
-from ...backends import ConverterBase
-from ...literals import (TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
+from . import ConverterBase
+from ..exceptions import UnknownFileFormat
+from ..literals import (TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
     TRANSFORMATION_ZOOM, DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT)
-from ...utils import cleanup
+
+Image.init()
 
 
-class ConverterClass(ConverterBase):
+class Python(ConverterBase):
     def get_page_count(self, input_filepath):
         page_count = 1
 
@@ -94,7 +96,7 @@ class ConverterClass(ConverterBase):
             raise UnknownFileFormat
         finally:
             if tmpfile:
-                cleanup(tmpfile)
+                fs_cleanup(tmpfile)
 
         current_page = 0
         try:

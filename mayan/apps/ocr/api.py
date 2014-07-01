@@ -1,48 +1,26 @@
 from __future__ import absolute_import
 
+import logging
 import os
 import subprocess
 import sys
 
-from django.utils.importlib import import_module
 from django.utils.translation import ugettext as _
 
 from common.conf.settings import TEMPORARY_DIRECTORY
+from common.utils import fs_cleanup
 from converter.api import convert
 from documents.models import DocumentPage
 
-from .backends import ocr_backend
 from .conf.settings import UNPAPER_PATH, LANGUAGE
 from .exceptions import UnpaperError
 from .literals import (DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT,
     DEFAULT_OCR_FILE_EXTENSION)
 from .parsers import parse_document_page
 from .parsers.exceptions import ParserError, ParserUnknownFile
+from .runtime import language_backend, ocr_backend
 
-
-def get_language_backend():
-    """
-    Return the OCR cleanup language backend using the selected language
-    in the configuration settings
-    """
-    try:
-        module = import_module(u'.'.join([u'ocr', u'lang', LANGUAGE]))
-    except ImportError:
-        sys.stderr.write(u'\nWarning: No OCR app language backend for language: %s\n\n' % LANGUAGE)
-        return None
-    return module
-
-language_backend = get_language_backend()
-
-
-def cleanup(filename):
-    """
-    Try to remove the given filename, ignoring non-existent files
-    """
-    try:
-        os.remove(filename)
-    except OSError:
-        pass
+logger = logging.getLogger(__name__)
 
 
 def do_document_ocr(queue_document):
@@ -58,14 +36,20 @@ def do_document_ocr(queue_document):
             parse_document_page(document_page)
         except (ParserError, ParserUnknownFile):
             # Fall back to doing visual OCR
-            ocr_transformations, warnings = queue_document.get_transformation_list()
 
             document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number, version=document_page.document_version.pk)
             unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
             unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
 
-            unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT, transformations=ocr_transformations)
+            logger.debug('document_filepath: %s' % document_filepath)
+
+            unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
+
+            logger.debug('unpaper_input: %s' % unpaper_input)
+
             execute_unpaper(input_filepath=unpaper_input, output_filepath=unpaper_output_filepath)
+
+            logger.debug('unpaper_output_filepath: %s' % unpaper_output_filepath)
 
             # from PIL import Image, ImageOps
             # im = Image.open(document_filepath)
@@ -77,8 +61,14 @@ def do_document_ocr(queue_document):
 
             # Convert to TIFF
             pre_ocr_filepath = convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)
+
+            logger.debug('pre_ocr_filepath: %s' % pre_ocr_filepath)
+
             # Tesseract needs an explicit file extension
             pre_ocr_filepath_w_ext = os.extsep.join([pre_ocr_filepath, DEFAULT_OCR_FILE_EXTENSION])
+
+            logger.debug('pre_ocr_filepath_w_ext: %s' % pre_ocr_filepath_w_ext)
+
             os.rename(pre_ocr_filepath, pre_ocr_filepath_w_ext)
             try:
                 ocr_text = ocr_backend.execute(pre_ocr_filepath_w_ext, LANGUAGE)
@@ -87,10 +77,10 @@ def do_document_ocr(queue_document):
                 document_page.page_label = _(u'Text from OCR')
                 document_page.save()
             finally:
-                cleanup(pre_ocr_filepath_w_ext)
-                cleanup(unpaper_input)
-                cleanup(document_filepath)
-                cleanup(unpaper_output_filepath)
+                fs_cleanup(pre_ocr_filepath_w_ext)
+                fs_cleanup(unpaper_input)
+                fs_cleanup(document_filepath)
+                fs_cleanup(unpaper_output_filepath)
 
 
 def ocr_cleanup(text):

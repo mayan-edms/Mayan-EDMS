@@ -5,6 +5,8 @@ import os
 import subprocess
 import tempfile
 
+from common.utils import fs_cleanup
+
 from . import BackendBase
 from ..conf.settings import TESSERACT_PATH
 from ..exceptions import OCRError
@@ -27,8 +29,8 @@ class Tesseract(BackendBase):
         return_code = proc.wait()
         if return_code != 0:
             error_text = proc.stderr.read()
-            cleanup(filepath)
-            cleanup(ocr_output)
+            fs_cleanup(filepath)
+            fs_cleanup(ocr_output)
             if language:
                 # If tesseract gives an error with a language parameter
                 # re-run it with no parameter again
@@ -43,14 +45,3 @@ class Tesseract(BackendBase):
         os.unlink(filepath)
 
         return text
-
-
-# TODO: Reduntant, also in api.py
-def cleanup(filename):
-    """
-    Try to remove the given filename, ignoring non-existent files
-    """
-    try:
-        os.remove(filename)
-    except OSError:
-        pass

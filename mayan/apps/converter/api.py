@@ -7,16 +7,15 @@ import os
 from django.utils.encoding import smart_str
 
 from common.conf.settings import TEMPORARY_DIRECTORY
+from common.utils import fs_cleanup
 
-from . import backend
 from .exceptions import OfficeConversionError, UnknownFileFormat
 from .literals import (DEFAULT_PAGE_NUMBER,
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
 from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
     FILE_FORMATS)
-from .runtime import office_converter
-from .utils import cleanup
+from .runtime import backend, office_converter
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 
@@ -96,7 +95,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
         backend.convert_file(input_filepath=input_filepath, output_filepath=output_filepath, transformations=transformations, page=page, file_format=file_format, mimetype=mimetype)
     finally:
         if cleanup_files:
-            cleanup(input_filepath)
+            fs_cleanup(input_filepath)
 
     return output_filepath
 

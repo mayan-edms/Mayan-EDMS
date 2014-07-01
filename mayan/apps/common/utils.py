@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
+import logging
 import os
 import random
 import re
@@ -14,7 +15,10 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.datastructures import MultiValueDict
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
+from django.utils.importlib import import_module
 from django.utils.translation import ugettext_lazy as _
+
+logger = logging.getLogger(__name__)
 
 
 def urlquote(link=None, get=None):
@@ -427,3 +431,34 @@ def copyfile(source, destination, buffer_size=1024 * 1024):
 
     source_descriptor.close()
     destination_descriptor.close()
+
+
+def _lazy_load(fn):
+    _cached = []
+
+    def _decorated():
+        if not _cached:
+            _cached.append(fn())
+        return _cached[0]
+    return _decorated
+
+
+def load_backend(backend_string):
+    logger.debug('loading: %s' % backend_string)
+    module_name, klass = backend_string.rsplit('.', 1)
+
+    try:
+        return getattr(import_module(module_name), klass)()
+    except ImportError as exception:
+        logger.debug('error importing: %s' % backend_string)
+        raise
+
+
+def fs_cleanup(filename):
+    """
+    Tries to remove the given filename. Ignores non-existent files
+    """
+    try:
+        os.remove(filename)
+    except OSError:
+        pass

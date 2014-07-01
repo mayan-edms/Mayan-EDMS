@@ -1,26 +1,28 @@
 from __future__ import absolute_import
 
-import re
 import subprocess
+import re
 
-from ...backends import ConverterBase
-from ...conf.settings import IM_CONVERT_PATH, IM_IDENTIFY_PATH
-from ...exceptions import ConvertError, UnknownFileFormat, IdentifyError
-from ...literals import (TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
-    TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER,
+from . import ConverterBase
+from ..conf.settings import GM_PATH, GM_SETTINGS
+from ..exceptions import ConvertError, UnknownFileFormat, IdentifyError
+from ..literals import (TRANSFORMATION_RESIZE,
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM)
+from ..literals import (DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER,
     DEFAULT_FILE_FORMAT)
 
-CONVERTER_ERROR_STRING_NO_DECODER = u'no decode delegate for this image format'
+CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
+CONVERTER_ERROR_STARTS_WITH = u'starts with'
 
 
-class ConverterClass(ConverterBase):
+class GraphicsMagick(ConverterBase):
     def identify_file(self, input_filepath, arguments=None):
         command = []
-        command.append(unicode(IM_IDENTIFY_PATH))
+        command.append(unicode(GM_PATH))
+        command.append(u'identify')
         if arguments:
             command.extend(arguments)
         command.append(unicode(input_filepath))
-
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
         if return_code != 0:
@@ -29,6 +31,7 @@ class ConverterClass(ConverterBase):
 
     def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT, **kwargs):
         arguments = []
+
         try:
             if transformations:
                 for transformation in transformations:
@@ -54,14 +57,16 @@ class ConverterClass(ConverterBase):
             arguments.append(u'-quality')
             arguments.append(u'85')
 
-        # Imagemagick page number is 0 base
+        # Graphicsmagick page number is 0 base
         input_arg = u'%s[%d]' % (input_filepath, page - 1)
 
         # Specify the file format next to the output filename
         output_filepath = u'%s:%s' % (file_format, output_filepath)
 
         command = []
-        command.append(unicode(IM_CONVERT_PATH))
+        command.append(unicode(GM_PATH))
+        command.append(u'convert')
+        command.extend(unicode(GM_SETTINGS).split())
         command.append(unicode(input_arg))
         if arguments:
             command.extend(arguments)
@@ -71,7 +76,7 @@ class ConverterClass(ConverterBase):
         if return_code != 0:
             # Got an error from convert program
             error_line = proc.stderr.readline()
-            if CONVERTER_ERROR_STRING_NO_DECODER in error_line:
+            if (CONVERTER_ERROR_STRING_NO_DECODER in error_line) or (CONVERTER_ERROR_STARTS_WITH in error_line):
                 # Try to determine from error message which class of error is it
                 raise UnknownFileFormat
             else:
@@ -79,15 +84,16 @@ class ConverterClass(ConverterBase):
 
     def get_format_list(self):
         """
-        Call ImageMagick to parse all of it's supported file formats, and
+        Call GraphicsMagick to parse all of it's supported file formats, and
         return a list of the names and descriptions
         """
         format_regex = re.compile(' *([A-Z0-9]+)[*]? +([A-Z0-9]+) +([rw\-+]+) *(.*).*')
         formats = []
         command = []
-        command.append(unicode(IM_CONVERT_PATH))
+        command.append(unicode(GM_PATH))
+        command.append(u'convert')
         command.append(u'-list')
-        command.append(u'format')
+        command.append(u'formats')
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
         if return_code != 0:
