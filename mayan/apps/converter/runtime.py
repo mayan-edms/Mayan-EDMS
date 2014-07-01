@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-from django.core.exceptions import ImproperlyConfigured
-
 from common.utils import load_backend
 
 from .conf.settings import GRAPHICS_BACKEND
@@ -14,4 +12,3 @@ except OfficeBackendError:
     office_converter = None
 
 backend = load_backend(GRAPHICS_BACKEND)
-
