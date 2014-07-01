@@ -7,7 +7,7 @@ from . import BackendBase
 
 
 class LanguageBackend(BackendBase):
-    def check_word(word):
+    def check_word(self, word):
         ALL_ALPHANUM = re.compile('([0-9ёйцукенгшщзхъфывапролджэячсмитьбю])', re.I)
         NON_ALPHANUM = re.compile('([^0-9ёйцукенгшщзхъфывапролджэячсмитьбю])', re.I)
 
