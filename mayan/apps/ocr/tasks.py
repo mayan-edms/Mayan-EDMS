@@ -3,6 +3,8 @@ from __future__ import absolute_import
 from datetime import timedelta
 import logging
 import platform
+import sys
+import traceback
 
 from django.db.models import Q
 from django.utils.timezone import now
@@ -17,7 +19,7 @@ from .literals import (QUEUEDOCUMENT_STATE_PENDING,
     QUEUEDOCUMENT_STATE_ERROR)
 from .models import QueueDocument, DocumentQueue
 
-LOCK_EXPIRE = 60 * 10  # Lock expires in 10 minutes
+LOCK_EXPIRE = 60 * 2  # Lock expires in 2 minutes
 # TODO: Tie LOCK_EXPIRATION with hard task timeout
 
 logger = logging.getLogger(__name__)
@@ -36,9 +38,13 @@ def task_process_queue_document(queue_document_id):
         try:
             do_document_ocr(queue_document)
             queue_document.delete()
-        except Exception, e:
+        except Exception as e:
+            result = []
+            type, value, tb = sys.exc_info()
+            result.append('%s: %s' % (type.__name__, value))
+            result.extend(traceback.format_tb(tb))
             queue_document.state = QUEUEDOCUMENT_STATE_ERROR
-            queue_document.result = e
+            queue_document.result = '\n'.join(result)
             queue_document.save()
 
         lock.release()
