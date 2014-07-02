@@ -3,6 +3,9 @@ from __future__ import absolute_import
 import logging
 import os
 import subprocess
+import tempfile
+
+import sh
 
 from django.utils.translation import ugettext as _
 
@@ -21,6 +24,12 @@ from .runtime import language_backend, ocr_backend
 
 logger = logging.getLogger(__name__)
 
+try:
+    UNPAPER = sh.Command(UNPAPER_PATH).bake(overwrite=True, no_multi_pages=True)
+except sh.CommandNotFound:
+    logger.debug('unpaper not found')
+    UNPAPER = None
+
 
 def do_document_ocr(queue_document):
     """
@@ -37,8 +46,6 @@ def do_document_ocr(queue_document):
             # Fall back to doing visual OCR
 
             document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number, version=document_page.document_version.pk)
-            unpaper_output_filename = u'%s_unpaper_out_page_%s%s%s' % (document_page.document.uuid, document_page.page_number, os.extsep, UNPAPER_FILE_FORMAT)
-            unpaper_output_filepath = os.path.join(TEMPORARY_DIRECTORY, unpaper_output_filename)
 
             logger.debug('document_filepath: %s' % document_filepath)
 
@@ -46,20 +53,12 @@ def do_document_ocr(queue_document):
 
             logger.debug('unpaper_input: %s' % unpaper_input)
 
-            execute_unpaper(input_filepath=unpaper_input, output_filepath=unpaper_output_filepath)
+            unpaper_output = execute_unpaper(input_filepath=unpaper_input)
 
-            logger.debug('unpaper_output_filepath: %s' % unpaper_output_filepath)
-
-            # from PIL import Image, ImageOps
-            # im = Image.open(document_filepath)
-            # #if im.mode=='RGBA':
-            # #    im=im.convert('RGB')
-            # #im = im.convert('L')
-            # im = ImageOps.grayscale(im)
-            # im.save(unpaper_output_filepath)
+            logger.debug('unpaper_output: %s' % unpaper_output)
 
             # Convert to TIFF
-            pre_ocr_filepath = convert(input_filepath=unpaper_output_filepath, file_format=DEFAULT_OCR_FILE_FORMAT)
+            pre_ocr_filepath = convert(input_filepath=unpaper_output, file_format=DEFAULT_OCR_FILE_FORMAT)
 
             logger.debug('pre_ocr_filepath: %s' % pre_ocr_filepath)
 
@@ -79,7 +78,7 @@ def do_document_ocr(queue_document):
                 fs_cleanup(pre_ocr_filepath_w_ext)
                 fs_cleanup(unpaper_input)
                 fs_cleanup(document_filepath)
-                fs_cleanup(unpaper_output_filepath)
+                fs_cleanup(unpaper_output)
 
 
 def ocr_cleanup(text):
@@ -114,17 +113,22 @@ def clean_pages():
             page.save()
 
 
-def execute_unpaper(input_filepath, output_filepath):
+def execute_unpaper(input_filepath, output_filepath=None):
     """
     Executes the program unpaper using subprocess's Popen
     """
-    command = []
-    command.append(UNPAPER_PATH)
-    command.append(u'--overwrite')
-    command.append(u'--no-multi-pages')
-    command.append(input_filepath)
-    command.append(output_filepath)
-    proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE)
-    return_code = proc.wait()
-    if return_code != 0:
-        raise UnpaperError(proc.stderr.readline())
+    if UNPAPER:
+        if not output_filepath:
+            fd, output_filepath = tempfile.mkstemp(dir=TEMPORARY_DIRECTORY)
+
+        try:
+            UNPAPER(input_filepath, output_filepath)
+        except sh.ErrorReturnCode as exception:
+            logger.error(exception)
+            raise UnpaperError(exception.stderr)
+        else:
+            return output_filepath
+        finally:
+            os.close(fd)
+    else:
+        return input_filepath
