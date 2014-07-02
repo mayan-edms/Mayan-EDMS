@@ -126,6 +126,9 @@ class Document(models.Model):
         if not version:
             version = self.latest_version.pk
         image_cache_name = self.get_image_cache_name(page=page, version=version)
+
+        logger.debug('image_cache_name: %s' % image_cache_name)
+
         return convert(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
 
     def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
@@ -137,20 +140,12 @@ class Document(models.Model):
 
         rotation = rotation % 360
 
-        try:
-            file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
-        except UnknownFileFormat:
-            file_path = get_icon_file_path(self.file_mimetype)
-        except UnkownConvertError:
-            file_path = get_error_icon_file_path()
-        except:
-            file_path = get_error_icon_file_path()
+        file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
+        logger.debug('file_path: %s' % file_path)
 
         if as_base64:
             image = open(file_path, 'r')
-            out = StringIO()
-            base64.encode(image, out)
-            return u'data:%s;base64,%s' % (get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0], out.getvalue().replace('\n', ''))
+            return u'data:%s;base64,%s' % (get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0], base64.b64encode(image.read()))
         else:
             return file_path
 

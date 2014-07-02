@@ -16,6 +16,7 @@ from navigation.api import (register_links, register_top_menu,
 from project_setup.api import register_setup
 
 from .conf import settings as document_settings
+from .conf.settings import THUMBNAIL_SIZE
 from .events import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .links import (document_list, document_list_recent,
@@ -92,11 +93,10 @@ register_diagnostic('documents', _(u'Documents'), document_missing_list)
 register_maintenance_links([document_find_all_duplicates, document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'documents'))
 
 register_model_list_columns(Document, [
-        {
-            'name': _(u'thumbnail'), 'attribute':
-            encapsulate(lambda x: document_thumbnail(x))
-        },
-    ])
+    {'name': _(u'thumbnail'), 'attribute':
+        encapsulate(lambda x: document_thumbnail(x, gallery_name='document_list', title=x.filename, size=THUMBNAIL_SIZE))
+    },
+])
 
 register_top_menu(
     'documents',

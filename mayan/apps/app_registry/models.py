@@ -9,6 +9,7 @@ from bootstrap.classes import BootstrapModel, Cleanup
 from navigation.api import register_top_menu
 from project_setup.api import register_setup
 from project_tools.api import register_tool
+from rest_api.classes import EndPoint
 
 logger = logging.getLogger(__name__)
 
@@ -25,8 +26,8 @@ class App(object):
             logger.debug('Trying to import registry from: %s' % app_name)
             try:
                 registration = import_module('%s.registry' % app_name)
-            except ImportError:
-                logger.debug('Unable to import registry for app: %s' % app_name)
+            except ImportError as e:
+                logger.debug('Unable to import registry for app: %s; %s' % (app_name, e))
             else:
                 if not getattr(registration, 'disabled', False):
                     app = App()
@@ -54,6 +55,15 @@ class App(object):
                     for bootstrap_model in getattr(registration, 'bootstrap_models', []):
                         logger.debug('bootstrap_model: %s' % bootstrap_model)
                         BootstrapModel(model_name=bootstrap_model.get('name'), app_name=app_name, sanitize=bootstrap_model.get('sanitize', True), dependencies=bootstrap_model.get('dependencies'))
+
+                    version_0_api_services = getattr(registration, 'version_0_api_services', [])
+                    logger.debug('version_0_api_services: %s' % version_0_api_services)
+
+                    if version_0_api_services:
+                        endpoint = EndPoint(app_name)
+
+                        for service in version_0_api_services:
+                            endpoint.add_service(**service)
 
     def __unicode__(self):
         return unicode(self.label)

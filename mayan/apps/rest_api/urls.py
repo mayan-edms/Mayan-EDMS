@@ -1,14 +1,24 @@
 from __future__ import absolute_import
 
-from django.conf.urls import patterns, url
+from django.conf.urls import include, patterns, url
 
-from .views import APIBase, Version_1, DocumentDetailView, IsZoomable
+from .classes import EndPoint
+from .views import APIBase, Version_0, EndPointView
+
+version_0_endpoints_urlpatterns = patterns('',
+    url(r'^$', Version_0.as_view(), name='api-version-0'),
+    url(r'^(?P<endpoint_name>\w+)$', EndPointView.as_view(), name='api-version-0-endpoint'),
+)
+
+for endpoint in EndPoint.get_all():
+    endpoint_urlpatterns = patterns('')
+
+    for service in endpoint.services:
+        endpoint_urlpatterns += patterns('', service['urlpattern'])
+
+    version_0_endpoints_urlpatterns += patterns('', url(r'^%s/' % endpoint.name, include(endpoint_urlpatterns)))
 
 urlpatterns = patterns('',
     url(r'^$', APIBase.as_view(), name='api-root'),
-    url(r'^v1/$', Version_1.as_view(), name='api-version-1'),
-
-    # Version 1 API calls
-    url(r'^v1/document/(?P<pk>[0-9]+)/$', DocumentDetailView.as_view(), name='document-detail'),
-    url(r'^v1/document/(?P<pk>[0-9]+)/version/(?P<version_pk>[0-9]+)/page/(?P<page_number>[0-9]+)/expensive/is_zoomable/$', IsZoomable.as_view(), name='documents-expensive-is_zoomable'),
+    url(r'^v0/', include(version_0_endpoints_urlpatterns)),
 )

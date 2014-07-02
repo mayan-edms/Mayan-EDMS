@@ -6,6 +6,7 @@
 {% load navigation_tags %}
 {% load settings %}
 {% load search_tags %}
+{% load static %}
 {% load main_settings_tags %}
 {% load variable_tags %}
 {% load registration_tags %}
@@ -30,10 +31,10 @@
 {% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %}{% endif %} - {% registered_name %}{% endblock %}
 
 {% block web_theme_stylesheets %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/famfamfam-silk-sprite.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/960-fluid.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/override.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/famfamfam-silk-sprite.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/960-fluid.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/override.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
     <style type="text/css">
         #fancybox-left-ico {
          left: 20px;
@@ -113,10 +114,10 @@
 {% endblock %}
 
 {% block web_theme_javascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.scrollview.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}packages/JqueryAsynchImageLoader-0.9.7.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}packages/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js"></script>
+    <script type="text/javascript" src="{% static 'packages/jquery.scrollview.js' %}"></script>
+    <script type="text/javascript" src="{% static 'packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.pack.js' %}"></script>
+    <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/lib/jquery.mousewheel-3.0.6.pack.js' %}"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function() {
@@ -131,60 +132,113 @@
                     return false;
                 });
             });
-
-            $("a.fancybox").fancybox({
-            'titleShow'     : false,
-            'transitionIn'  : 'elastic',
-            'transitionOut' : 'elastic',
-            'easingIn'      : 'easeOutBack',
-            'easingOut'     : 'easeInBack',
-            'type'          : 'image',
-            'autoScale'     : true
-            });
-
-            $("a.fancybox-staging").fancybox({
-            'titleShow'     : true,
-            'transitionIn'  : 'elastic',
-            'transitionOut' : 'elastic',
-            'easingIn'      : 'easeOutBack',
-            'easingOut'     : 'easeInBack',
-            'type'          : 'image',
-            'autoScale'     : true
-            });
-
-            $("a.fancybox-noscaling").fancybox({
-            'titleShow'     : false,
-            'transitionIn'  : 'elastic',
-            'transitionOut' : 'elastic',
-            'easingIn'      : 'easeOutBack',
-            'easingOut'     : 'easeInBack',
-            'type'          : 'image',
-            'autoScale'     : false
-            });
-
-            $("a.fancybox-iframe").fancybox({
-                'titleShow'     : false,
-                'transitionIn'  : 'elastic',
-                'transitionOut' : 'elastic',
-                'easingIn'      : 'easeOutBack',
-                'easingOut'     : 'easeInBack',
-                'type'          : 'iframe',
-                'autoScale'     : false,
-                'width'         : '99%',
-                'height'        : '99%',
-                'showNavArrows' : false,
-                'margin'        : 20
-            });
             $('.scrollable').scrollview();
-            $('.full-height').height($(window).height() - 210);
+            $('.full-height').height($(window).height() - 230);
+            $(window).resize(function() {
+                $('.full-height').height($(window).height() - 230);
+            });
             $('.no-parent-history', this).click(function() {
                 location.replace(this.href);
                 return false;
             });
-            $('img.lazy-load').jail({
-                event: 'load',
-                timeout: 10,
-                placeholder: '{{ STATIC_URL }}images/ajax-loader.gif'
+
+            $("a.fancybox").fancybox({
+                openEffect  : 'elastic',
+                closeEffect : 'elastic',
+                prevEffect  : 'none',
+                nextEffect  : 'none',
+                'titleShow' : true,
+                'type'      : 'image',
+                'autoResize': true
+            });
+
+            $("a.fancybox-staging").fancybox({
+                openEffect  : 'elastic',
+                closeEffect : 'elastic',
+                prevEffect  : 'none',
+                nextEffect  : 'none',
+                'titleShow' : true,
+                'type'      : 'image',
+                'autoResize': true
+            });
+
+            $("a.fancybox-noscaling").fancybox({
+                openEffect  : 'elastic',
+                closeEffect : 'elastic',
+                prevEffect  : 'none',
+                nextEffect  : 'none',
+                'titleShow' : true,
+                'type'      : 'image',
+                'autoResize': false
+            });
+
+            $("a.fancybox-iframe").fancybox({
+                openEffect     : 'elastic',
+                closeEffect    : 'elastic',
+                'titleShow'    : false,
+                'type'         : 'iframe',
+                autoHeight     : false,
+                width          : '99%',
+                height         : '99%',
+                minHeight      : '100%',
+                minWidth       : '100%',
+                'showNavArrows': false,
+                'margin'       : 18,
+            });
+
+            function set_image_noninteractive(image) {
+                // Remove border to indicate non interactive image
+                image.removeClass('thin_border');
+                container = image.parent().parent();
+                // Save img HTML
+                html = image.parent().html();
+                // Remove anchor
+                image.parent().remove();
+                // Place again img
+                container.html(html);
+            }
+
+            function load_document_image(image_tag) {
+                var image = image_tag;
+                var container = image.parent();
+                $.get( image.attr('data-original'), function( result ) {
+                    if (result.status == 'success') {
+                        image.attr('src', result.data);
+                    } else if (result.detail == 'unknown_file_format') {
+                        image.attr('src', "{% static 'images/mimetypes/unknown.png' %}");
+                        set_image_noninteractive(image);
+                    } else {
+                        image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                        set_image_noninteractive(image);
+                    }
+                })
+              .fail(function() {
+                image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                set_image_noninteractive(image);
+              })
+            }
+
+           $('img.lazy-load').lazyload({
+                appear: function(elements_left, settings) {
+                    load_document_image($(this));
+                },
+                load: function(elements_left, settings) {
+                    console.log(this, elements_left, settings);
+                }
+            });
+
+            $('img.lazy-load-carousel').lazyload({
+                container: $(".carousel-container"),
+
+                appear: function(elements_left, settings) {
+                    load_document_image($(this));
+                }
+            });
+
+            $('img.lazy-load-interactive').lazyload({
+                appear: function(elements_left, settings) {
+                    load_document_image($(this));
+                }
             });
         });
     </script>
@@ -192,9 +246,9 @@
 {% endblock %}
 
 {% block web_theme_user_navigation %}
-    <li><strong>{% trans "User" %}:</strong>
+    <li><strong>{% trans 'User' %}:</strong>
         {% if not user.is_authenticated %}
-            {% trans "Anonymous" %}
+            {% trans 'Anonymous' %}
         {% else %}
             {{ user.get_full_name|default:user }}
                 <a href="{% url 'current_user_details' %}" title="{% trans 'User details' %}"><span class="famfam active famfam-vcard"></span></a>
@@ -202,7 +256,7 @@
     </li>
 
     {% get_setting "MIDDLEWARE_CLASSES" as middleware_classes %}
-    {% if "django.middleware.locale.LocaleMiddleware" in middleware_classes %}
+    {% if 'django.middleware.locale.LocaleMiddleware' in middleware_classes %}
         <li>
             <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                 <select name="language" onchange="this.form.submit()">
@@ -214,17 +268,17 @@
         </li>
     {% endif %}
     {% get_setting "LOGIN_URL" as login_url %}
-    <li><a class="logout" href="{% if not user.is_authenticated %}{% url 'login_view' %}?next=/{% else %}{% url 'logout_view' %}{% endif %}">{% if not user.is_authenticated %}{% trans "Login" %}{% else %}{% trans "Logout" %}{% endif %}</a></li>
+    <li><a class="logout" href="{% if not user.is_authenticated %}{% url 'login_view' %}?next=/{% else %}{% url 'logout_view' %}{% endif %}">{% if not user.is_authenticated %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
 {% endblock %}
 
 {% block web_theme_main_navigation %}
     {% get_top_menu_links %}
     {% for link in menu_links %}
-        {% with "true" as as_li %}
-        {% with "true" as hide_active_anchor %}
-        {% with "active" as li_class_active %}
-        {% with "first" as li_class_first %}
-            {% include "generic_subnavigation.html" %}
+        {% with 'true' as as_li %}
+        {% with 'true' as hide_active_anchor %}
+        {% with 'active' as li_class_active %}
+        {% with 'first' as li_class_first %}
+            {% include 'generic_subnavigation.html' %}
         {% endwith %}
         {% endwith %}
         {% endwith %}
@@ -241,11 +295,11 @@
                     <div class="secondary-navigation">
                         <ul class="wat-cf">
                                 {% with form_navigation_links as object_navigation_links %}
-                                {% with "true" as as_li %}
-                                {% with "true" as hide_active_anchor %}
-                                {% with "active" as li_class_active %}
-                                {% with "first" as li_class_first %}
-                                    {% include "generic_navigation.html" %}
+                                {% with 'true' as as_li %}
+                                {% with 'true' as hide_active_anchor %}
+                                {% with 'active' as li_class_active %}
+                                {% with 'first' as li_class_first %}
+                                    {% include 'generic_navigation.html' %}
                                 {% endwith %}
                                 {% endwith %}
                                 {% endwith %}
@@ -261,11 +315,11 @@
                 <div class="secondary-navigation">
                     <ul class="wat-cf">
                             {% with form_navigation_links as object_navigation_links %}
-                            {% with "true" as as_li %}
-                            {% with "true" as hide_active_anchor %}
-                            {% with "active" as li_class_active %}
-                            {% with "first" as li_class_first %}
-                                {% include "generic_navigation.html" %}
+                            {% with 'true' as as_li %}
+                            {% with 'true' as hide_active_anchor %}
+                            {% with 'active' as li_class_active %}
+                            {% with 'first' as li_class_first %}
+                                {% include 'generic_navigation.html' %}
                             {% endwith %}
                             {% endwith %}
                             {% endwith %}
@@ -280,10 +334,10 @@
 {% block web_theme_sidebar %}
     {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
     {% if side_bar_search and not web_theme_hide_menus %}
-        {% with "true" as side_bar %}
-        {% with "true" as form_hide_required_text %}
-        {% with "" as read_only %}
-        {% with "" as object %}
+        {% with 'true' as side_bar %}
+        {% with 'true' as form_hide_required_text %}
+        {% with '' as read_only %}
+        {% with '' as object %}
             {% search_form %}
         {% endwith %}
         {% endwith %}
@@ -296,8 +350,8 @@
         <div class="block">
             <h3>{% trans "Secondary menu" %}</h3>
             <ul class="navigation">
-                {% with "true" as as_li %}
-                    {% include "generic_navigation.html" %}
+                {% with 'true' as as_li %}
+                    {% include 'generic_navigation.html' %}
                 {% endwith %}
             </ul>
         </div>
@@ -315,11 +369,11 @@
                             <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
                         {% endif %}
                     {% else %}
-                        <h3>{% trans "Available actions" %}</h3>
+                        <h3>{% trans 'Available actions' %}</h3>
                     {% endif %}
                     <ul class="navigation">
-                        {% with "true" as as_li %}
-                            {% include "generic_navigation.html" %}
+                        {% with 'true' as as_li %}
+                            {% include 'generic_navigation.html' %}
                         {% endwith %}
                     </ul>
                 </div>
@@ -329,8 +383,8 @@
                 <div class="block">
                     <h3>{% trans "Related actions" %}</h3>
                     <ul class="navigation">
-                        {% with "true" as as_li %}
-                            {% include "generic_navigation.html" %}
+                        {% with 'true' as as_li %}
+                            {% include 'generic_navigation.html' %}
                         {% endwith %}
                     </ul>
                 </div>
@@ -338,10 +392,10 @@
             {% get_object_navigation_links "sidebar" as object_navigation_links %}
             {% if object_navigation_links %}
             <div class="block">
-                <h3>{% trans "Other available actions" %}</h3>
+                <h3>{% trans 'Other available actions' %}</h3>
                 <ul class="navigation">
-                    {% with "true" as as_li %}
-                        {% include "generic_navigation.html" %}
+                    {% with 'true' as as_li %}
+                        {% include 'generic_navigation.html' %}
                     {% endwith %}
                 </ul>
             </div>
@@ -358,11 +412,11 @@
                         <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
                     {% endif %}
                 {% else %}
-                    <h3>{% trans "Actions" %}</h3>
+                    <h3>{% trans 'Actions' %}</h3>
                 {% endif %}
                 <ul class="navigation">
-                    {% with "true" as as_li %}
-                        {% include "generic_navigation.html" %}
+                    {% with 'true' as as_li %}
+                        {% include 'generic_navigation.html' %}
                     {% endwith %}
                 </ul>
             </div>
@@ -370,10 +424,10 @@
         {% get_object_navigation_links "related" as object_navigation_links %}
             {% if object_navigation_links %}
             <div class="block">
-                <h3>{% trans "Related actions" %}</h3>
+                <h3>{% trans 'Related actions' %}</h3>
                 <ul class="navigation">
-                    {% with "true" as as_li %}
-                        {% include "generic_navigation.html" %}
+                    {% with 'true' as as_li %}
+                        {% include 'generic_navigation.html' %}
                     {% endwith %}
                 </ul>
             </div>
@@ -385,8 +439,8 @@
         <div class="block">
             <h3>{% trans "Other available actions" %}</h3>
             <ul class="navigation">
-                {% with "true" as as_li %}
-                    {% include "generic_navigation.html" %}
+                {% with 'true' as as_li %}
+                    {% include 'generic_navigation.html' %}
                 {% endwith %}
             </ul>
         </div>
@@ -394,7 +448,7 @@
 
     {% get_sidebar_templates as sidebar_templates %}
     {% for template in sidebar_templates %}
-        {% with "true" as side_bar %}
+        {% with 'true' as side_bar %}
             {% include template %}
         {% endwith %}
     {% endfor %}

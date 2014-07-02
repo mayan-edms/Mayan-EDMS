@@ -10,11 +10,11 @@
         {% if as_li %}
             <li class="{% if forloop.first and li_class_first %}{{ li_class_first }} {% endif %}{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
         {% endif %}
-        
-            {% include "generic_link_instance.html" %}
-        
+
+            {% include 'generic_link_instance.html' %}
+
         {% if as_li %}
             </li>
-        {% endif %}    
+        {% endif %}
     {% endif %}
 {% endwith %}

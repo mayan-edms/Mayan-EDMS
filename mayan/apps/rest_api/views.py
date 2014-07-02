@@ -1,62 +1,52 @@
 """Views file for the rest_api app"""
+from __future__ import absolute_import
 
 import logging
 
-from django.shortcuts import get_object_or_404
-
-from converter.exceptions import UnknownFileFormat, UnkownConvertError
-from documents.models import Document, DocumentVersion, DocumentPage
+from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import generics
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .resources import DocumentResourceSimple
+from .classes import EndPoint
 
 logger = logging.getLogger(__name__)
 
+registered_version_0_endpoints = [
+]
+
 
 class APIBase(generics.GenericAPIView):
-    """This is the REST API for Mayan EDMS (https://github.com/mayan-edms/mayan-edms).
-
-    All the API calls can be navigated either through the browser or from the command line...
-
-        bash: curl -X GET http://127.0.0.1:8000/api/                           # (Use default renderer)
-        bash: curl -X GET http://127.0.0.1:8000/api/ -H 'Accept: text/plain'   # (Use plaintext documentation renderer)
-
-    """
-
     def get(self, request, format=None):
-        return Response(
-            {'versions': [
-                {'name': 'Version 1', 'url': reverse('api-version-1', request=request, format=format), 'number': 1}
-            ]}
-        )
+        return Response([
+            {'name': 'Version 0', 'url': reverse('api-version-0', request=request, format=format)}
+        ])
 
 
-class Version_1(generics.GenericAPIView):
+class Version_0(generics.GenericAPIView):
     def get(self, request, format=None):
-        return Response(
-            [
-                {'name': 'Resources', 'resources': ['document/<pk>']}
-            ]
-        )
+        return Response({
+            'endpoints': [
+                {'name': unicode(endpoint), 'url': reverse('api-version-0-endpoint', args=[unicode(endpoint)], request=request, format=format)} for endpoint in EndPoint.get_all()
+            ],
+        })
 
+class EndPointView(generics.GenericAPIView):
+    def get(self, request, endpoint_name, format=None):
+        result = []
 
-class DocumentDetailView(generics.RetrieveAPIView):
-    allowed_methods = ['GET']
-    serializer_class = DocumentResourceSimple
-    queryset = Document.objects.all()
+        endpoint = EndPoint.get(endpoint_name)
+        for service in endpoint.services:
+            result.append(
+                {
+                    'description': service['description'],
+                    'name': service['urlpattern'].name,
+                    'url': service['url'],
+                }
+            )
 
-
-class IsZoomable(generics.GenericAPIView):
-    def get(self, request, pk, page_number, version_pk):
-        logger.info('received is_zoomable call from: %s' % (request.META['REMOTE_ADDR']))
-        document_version = get_object_or_404(DocumentVersion, pk=version_pk)
-        try:
-            document_version.document.get_image_cache_name(int(page_number), version_pk)
-            return Response({'result': True})
-        except (UnknownFileFormat, UnkownConvertError,
-            DocumentPage.DoesNotExist, Document.DoesNotExist,
-            DocumentVersion.DoesNotExist):
-            return Response({'result': False})
+        return Response({
+            'services': result
+        })

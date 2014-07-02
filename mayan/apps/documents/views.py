@@ -8,7 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
@@ -24,6 +24,7 @@ from common.utils import (pretty_size, parse_range, urlquote,
     return_diff, encapsulate)
 from common.widgets import two_state_template
 from common.conf.settings import DEFAULT_PAPER_SIZE
+from converter.exceptions import UnknownFileFormat, UnkownConvertError
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
 from converter.office_converter import OfficeConverter
@@ -33,7 +34,7 @@ from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
 from .events import HISTORY_DOCUMENT_EDITED
-from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
+from .conf.settings import (DISPLAY_SIZE, PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, RECENT_COUNT)
 from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
@@ -246,7 +247,7 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=False):
+def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
@@ -267,11 +268,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE, base64_version=F
 
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
-    if base64_version:
-        return HttpResponse(u'<html><body><img src="%s" /></body></html>' % document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True, version=version))
-    else:
-        # TODO: fix hardcoded MIMETYPE
-        return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
+    return sendfile.sendfile(request, document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
