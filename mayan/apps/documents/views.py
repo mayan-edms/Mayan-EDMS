@@ -239,7 +239,7 @@ def document_edit(request, document_id):
             return HttpResponseRedirect(document.get_absolute_url())
     else:
         form = DocumentForm_edit(instance=document, initial={
-            'new_filename': document.filename})
+            'new_filename': document.filename, 'description': document.description})
 
     return render_to_response('generic_form.html', {
         'form': form,
