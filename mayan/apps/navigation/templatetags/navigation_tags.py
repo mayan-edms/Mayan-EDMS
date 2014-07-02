@@ -2,27 +2,24 @@ from __future__ import absolute_import
 
 import copy
 import re
-import urlparse
 import urllib
+import urlparse
 
-from django.core.urlresolvers import NoReverseMatch, resolve, reverse
+from django.core.urlresolvers import NoReverseMatch, reverse
 from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
+from django.utils.encoding import smart_str, smart_unicode
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext as _
-from django.utils.encoding import smart_str, smart_unicode
 
 from common.utils import urlquote
 
 from ..api import (object_navigation, multi_object_navigation,
     top_menu_entries, sidebar_templates)
 from ..forms import MultiItemForm
+from ..utils import resolve_to_name
 
 register = Library()
-
-
-def resolve_to_name(path, urlconf=None):
-    return resolve(path, urlconf=urlconf).view_name
 
 
 class TopMenuNavigationNode(Node):
