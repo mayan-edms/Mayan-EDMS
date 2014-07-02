@@ -6,6 +6,7 @@ import platform
 import sys
 import traceback
 
+from django.conf import settings
 from django.db.models import Q
 from django.utils.timezone import now
 
@@ -38,13 +39,18 @@ def task_process_queue_document(queue_document_id):
         try:
             do_document_ocr(queue_document)
             queue_document.delete()
-        except Exception as e:
-            result = []
-            type, value, tb = sys.exc_info()
-            result.append('%s: %s' % (type.__name__, value))
-            result.extend(traceback.format_tb(tb))
+        except Exception as exception:
             queue_document.state = QUEUEDOCUMENT_STATE_ERROR
-            queue_document.result = '\n'.join(result)
+
+            if settings.DEBUG:
+                result = []
+                type, value, tb = sys.exc_info()
+                result.append('%s: %s' % (type.__name__, value))
+                result.extend(traceback.format_tb(tb))
+                queue_document.result = '\n'.join(result)
+            else:
+                queue_document.result = exception
+
             queue_document.save()
 
         lock.release()
