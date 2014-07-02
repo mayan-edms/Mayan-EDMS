@@ -72,9 +72,11 @@ install_requires = [
 'python-gnupg==0.3.6',
 'python-hkp==0.1.3',
 'python-magic==0.4.6',
+'pytz==2014.4',
 'requests==0.14.1',
-'slate==0.3',
 'South==0.8.4',
+'sh==1.09',
+'slate==0.3',
 'unicode-slugify==0.1',
 'wsgiref==0.1.2',
 ]

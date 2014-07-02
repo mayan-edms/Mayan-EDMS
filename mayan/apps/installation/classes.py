@@ -4,12 +4,12 @@ from collections import namedtuple
 from json import dumps
 import os
 
-import pbs
+import sh
 
 try:
-    from pbs import pip
+    from sh import pip
     PIP = True
-except pbs.CommandNotFound:
+except sh.CommandNotFound:
     PIP = False
 
 from django.conf import settings
@@ -116,19 +116,6 @@ class VirtualEnv(object):
             return Dependency(package, version, standard=True)
 
     def get_packages_info(self, requirements_file=None):
-        if requirements_file:
-            try:
-                with open(requirements_file) as file_in:
-                    for line in file_in.readlines():
-                        yield self.extract_dependency(line)
-            except IOError:
-                # A requirement file was specified but not found or unable
-                # to be read
-                self.get_environment_packages()
-        else:
-            self.get_environment_packages()
-
-    def get_environment_packages(self):
         for item in pip('freeze').splitlines():
             yield self.extract_dependency(item)
 
@@ -141,7 +128,7 @@ class VirtualEnv(object):
         requirements = {}
         installed_packages = {}
 
-        for item in self.get_packages_info(self.requirements_file_path):
+        for item in self.get_packages_info():
             requirements[item.name] = item
 
         for item in self.get_packages_info():

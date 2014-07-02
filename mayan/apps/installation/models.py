@@ -6,14 +6,14 @@ import platform
 import uuid
 import time
 
-import pbs
+from git import Repo
 import psutil
 import requests
-from git import Repo
+import sh
 
 try:
-    from pbs import lsb_release, uname
-except pbs.CommandNotFound:
+    from sh import lsb_release, uname
+except sh.CommandNotFound:
     LSB = False
 else:
     LSB = True
@@ -31,12 +31,8 @@ from lock_manager import Lock, LockError
 from ocr.conf.settings import TESSERACT_PATH, UNPAPER_PATH, PDFTOTEXT_PATH
 
 from .classes import Property, PropertyNamespace, VirtualEnv, PIPNotFound
-
-FORM_SUBMIT_URL = 'https://docs.google.com/spreadsheet/formResponse'
-FORM_KEY = 'dGZrYkw3SDl5OENMTG15emp1UFFEUWc6MQ'
-FORM_RECEIVER_FIELD = 'entry.0.single'
-TIMEOUT = 5
-FABFILE_MARKER = os.path.join(settings.BASE_DIR, 'fabfile_install')
+from .literals import (FORM_SUBMIT_URL, FORM_KEY, FORM_RECEIVER_FIELD,
+    TIMEOUT, FABFILE_MARKER)
 
 
 class Installation(Singleton):
@@ -77,26 +73,26 @@ class Installation(Singleton):
     def binary_dependencies(self):
         namespace = PropertyNamespace('bins', _(u'Binary dependencies'))
 
-        tesseract = pbs.Command(TESSERACT_PATH)
+        tesseract = sh.Command(TESSERACT_PATH)
         try:
             namespace.add_property('tesseract', _(u'tesseract version'), tesseract('-v').stderr, report=True)
-        except pbs.CommandNotFound:
+        except sh.CommandNotFound:
             namespace.add_property('tesseract', _(u'tesseract version'), _(u'not found'), report=True)
         except Exception:
             namespace.add_property('tesseract', _(u'tesseract version'), _(u'error getting version'), report=True)
 
-        unpaper = pbs.Command(UNPAPER_PATH)
+        unpaper = sh.Command(UNPAPER_PATH)
         try:
             namespace.add_property('unpaper', _(u'unpaper version'), unpaper('-V').stdout, report=True)
-        except pbs.CommandNotFound:
+        except sh.CommandNotFound:
             namespace.add_property('unpaper', _(u'unpaper version'), _(u'not found'), report=True)
         except Exception:
             namespace.add_property('unpaper', _(u'unpaper version'), _(u'error getting version'), report=True)
 
-        pdftotext = pbs.Command(PDFTOTEXT_PATH)
+        pdftotext = sh.Command(PDFTOTEXT_PATH)
         try:
             namespace.add_property('pdftotext', _(u'pdftotext version'), pdftotext('-v').stderr, report=True)
-        except pbs.CommandNotFound:
+        except sh.CommandNotFound:
             namespace.add_property('pdftotext', _(u'pdftotext version'), _(u'not found'), report=True)
         except Exception:
             namespace.add_property('pdftotext', _(u'pdftotext version'), _(u'error getting version'), report=True)

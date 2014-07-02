@@ -16,7 +16,6 @@ ghostscript==0.4.1
 
 Pillow==2.4.0
 PyYAML==3.10
-pbs==0.105
 pdfminer==20110227
 psutil==0.5.1
 pytz==2014.4
@@ -26,6 +25,7 @@ python-magic==0.4.6
 
 requests==0.14.1
 
+sh==1.09
 slate==0.3
 South==0.8.4
 
