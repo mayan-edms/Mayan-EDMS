@@ -20,11 +20,10 @@ from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
 from converter.api import convert, get_page_count, get_available_transformations_choices
-from converter.exceptions import UnknownFileFormat, UnkownConvertError
+from converter.exceptions import UnknownFileFormat
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
-from mimetype.api import (get_mimetype, get_icon_file_path,
-    get_error_icon_file_path)
+from mimetype.api import get_mimetype
 
 from .conf.settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
     STORAGE_BACKEND, DISPLAY_SIZE, CACHE_PATH,

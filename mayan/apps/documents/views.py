@@ -24,7 +24,6 @@ from common.utils import (pretty_size, parse_range, urlquote,
     return_diff, encapsulate)
 from common.widgets import two_state_template
 from common.conf.settings import DEFAULT_PAPER_SIZE
-from converter.exceptions import UnknownFileFormat, UnkownConvertError
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
 from converter.office_converter import OfficeConverter
@@ -34,7 +33,7 @@ from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
 from .events import HISTORY_DOCUMENT_EDITED
-from .conf.settings import (DISPLAY_SIZE, PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
+from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, RECENT_COUNT)
 from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
