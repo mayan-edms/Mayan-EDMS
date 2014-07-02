@@ -31,7 +31,6 @@ class DocumentPageTransformationForm(forms.ModelForm):
 class DocumentPageForm(DetailForm):
     class Meta:
         model = DocumentPage
-        #exclude = ('document', 'document_type', 'page_label', 'content')
         fields = ()
 
     def __init__(self, *args, **kwargs):
@@ -99,7 +98,6 @@ class DocumentForm(forms.ModelForm):
     """
     class Meta:
         model = Document
-        #exclude = ('description', 'tags', 'document_type')
         exclude = ('tags', 'document_type')
 
     def __init__(self, *args, **kwargs):
@@ -201,7 +199,7 @@ class DocumentPropertiesForm(DetailForm):
     """
     class Meta:
         model = Document
-        exclude = ('file', 'tags')
+        fields = ('document_type', 'description',)
 
 
 class DocumentContentForm(forms.Form):
