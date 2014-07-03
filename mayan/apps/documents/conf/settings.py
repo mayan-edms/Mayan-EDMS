@@ -1,13 +1,12 @@
 """Configuration options for the documents app"""
 
 import hashlib
-import uuid
 import os
+import uuid
 
-from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
-from storage.backends.filebasedstorage import FileBasedStorage
 from smart_settings.api import register_settings
 
 
@@ -20,6 +19,7 @@ def default_uuid():
     """unicode(uuid.uuid4())"""
     return unicode(uuid.uuid4())
 
+
 register_settings(
     namespace=u'documents',
     module=u'documents.conf.settings',
@@ -28,7 +28,7 @@ register_settings(
         {'name': u'CHECKSUM_FUNCTION', 'global_name': u'DOCUMENTS_CHECKSUM_FUNCTION', 'default': default_checksum},
         {'name': u'UUID_FUNCTION', 'global_name': u'DOCUMENTS_UUID_FUNCTION', 'default': default_uuid},
         # Storage
-        {'name': u'STORAGE_BACKEND', 'global_name': u'DOCUMENTS_STORAGE_BACKEND', 'default': FileBasedStorage},
+        {'name': u'STORAGE_BACKEND', 'global_name': u'DOCUMENTS_STORAGE_BACKEND', 'default': 'storage.backends.filebasedstorage.FileBasedStorage'},
         # Usage
         {'name': u'PREVIEW_SIZE', 'global_name': u'DOCUMENTS_PREVIEW_SIZE', 'default': u'640x480'},
         {'name': u'PRINT_SIZE', 'global_name': u'DOCUMENTS_PRINT_SIZE', 'default': u'1400'},

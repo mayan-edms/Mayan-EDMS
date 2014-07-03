@@ -26,13 +26,13 @@ from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
 from mimetype.api import get_mimetype
 
 from .conf.settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
-    STORAGE_BACKEND, DISPLAY_SIZE, CACHE_PATH,
-    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+    DISPLAY_SIZE, CACHE_PATH, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 from .exceptions import NewDocumentVersionNotAllowed
 from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
     VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
 from .managers import (DocumentPageTransformationManager, RecentDocumentManager,
     DocumentTypeManager)
+from .runtime import storage_backend
 from .utils import document_save_to_temp_dir
 
 # document image cache name hash function
@@ -307,7 +307,7 @@ class DocumentVersion(models.Model):
     comment = models.TextField(blank=True, verbose_name=_(u'comment'))
 
     # File related fields
-    file = models.FileField(upload_to=get_filename_from_uuid, storage=STORAGE_BACKEND(), verbose_name=_(u'file'))
+    file = models.FileField(upload_to=get_filename_from_uuid, storage=storage_backend, verbose_name=_(u'file'))
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)

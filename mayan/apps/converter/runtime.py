@@ -11,4 +11,4 @@ try:
 except OfficeBackendError:
     office_converter = None
 
-backend = load_backend(GRAPHICS_BACKEND)
+backend = load_backend(GRAPHICS_BACKEND)()
