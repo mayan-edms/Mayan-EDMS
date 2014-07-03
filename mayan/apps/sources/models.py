@@ -115,7 +115,6 @@ class BaseModel(models.Model):
         except Exception:
             # Don't leave the database in a broken state
             # document.delete()
-            transaction.rollback()
             raise
 
         if filename:
