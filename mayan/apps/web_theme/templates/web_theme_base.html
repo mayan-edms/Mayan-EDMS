@@ -40,35 +40,6 @@
         <link rel="stylesheet" href="{% static 'packages/animate-custom.css' %}" type="text/css" media="screen" />
         {% block web_theme_stylesheets %}{% endblock %}
         {% endcompress %}
-
-        {% compress js %}
-        <script type="text/javascript" charset="utf-8" src="{% static 'packages/jquery-2.1.1.min.js' %}"></script>
-
-        {% if enable_scroll_js %}
-            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.scrollTo.js' %}"></script>
-            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.localscroll.js' %}"></script>
-        {% endif %}
-
-        {% block web_theme_javascript %}{% endblock %}
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $(".dismiss").click(function(){
-                    $(this).parent().parent().addClass("fadeOutUp").fadeOut("slow"); return false;
-                });
-                $(".dismiss-all").click(function(){
-                    $(".message").each(function(){
-                        $(this).addClass("fadeOutUp").fadeOut("slow");
-                    });
-                    return false;
-                });
-                $('th input:checkbox').click(function(e) {
-                    var table = $(e.target).closest('table');
-                    $('td input:checkbox', table).attr('checked', e.target.checked);
-                });
-            });
-        </script>
-        {% endcompress %}
     </head>
     <body>
         <div id="container">
@@ -101,8 +72,8 @@
                                         <div class="animated fadeInDown message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}">
                                             <p>
                                                 {{ message }}
-                                                <span class="dismiss-all"><a title={% trans "dismiss all notifications" %}>[{% trans "close all" %}]</a></span>
-                                                <span class="dismiss"><a title={% trans "dismiss this notification" %}>[{% trans "close" %}]</a></span>
+                                                <span class="dismiss-all"><a title="{% trans 'dismiss all notifications' %}">[{% trans 'close all' %}]</a></span>
+                                                <span class="dismiss"><a title="{% trans 'dismiss this notification' %}">[{% trans 'close' %}]</a></span>
                                             </p>
                                          </div>
                                     {% endfor %}
@@ -124,5 +95,35 @@
                 </div><!--end #wrapper .wat-cf-->
             {% endif %}
         </div><!--end #container-->
+
+        {% compress js %}
+        <script type="text/javascript" charset="utf-8" src="{% static 'packages/jquery-2.1.1.min.js' %}"></script>
+
+        {% if enable_scroll_js %}
+            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.scrollTo.js' %}"></script>
+            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.localscroll.js' %}"></script>
+        {% endif %}
+
+        {% block web_theme_javascript %}{% endblock %}
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".dismiss").click(function(){
+                    $(this).parent().parent().addClass("fadeOutUp").fadeOut("slow"); return false;
+                });
+                $(".dismiss-all").click(function(){
+                    $(".message").each(function(){
+                        $(this).addClass("fadeOutUp").fadeOut("slow");
+                    });
+                    return false;
+                });
+                $('th input:checkbox').click(function(e) {
+                    var table = $(e.target).closest('table');
+                    $('td input:checkbox', table).attr('checked', e.target.checked);
+                });
+            });
+        </script>
+        {% endcompress %}
+
     </body>
 </html>
