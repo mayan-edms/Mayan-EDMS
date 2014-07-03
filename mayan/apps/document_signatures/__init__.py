@@ -7,13 +7,10 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-# from django.db.models.signals import post_save
-# from django.dispatch import receiver
-
 from acls.api import class_permissions
-from documents.models import Document, DocumentVersion
 from django_gpg.exceptions import GPGDecryptionError
 from django_gpg.runtime import gpg
+from documents.models import Document, DocumentVersion
 from navigation.api import register_links
 
 from .links import (document_signature_delete, document_signature_download,
@@ -43,23 +40,7 @@ def document_pre_open_hook(descriptor, instance):
             descriptor.close()
             return StringIO(result.data)
     else:
-        # It no embedded signature pass along
-        # Doing this single DB lookup avoids trying to decrypt non signed
-        # files always, which could result in slow down for big non signed
-        # files
-        # descriptor.seek(0)
         return descriptor
-
-    # try:
-    #     result = gpg.decrypt_file(descriptor, close_descriptor=False)
-    #     # gpg return a string, turn it into a file like object
-    # except GPGDecryptionError:
-    #     # At least return the original raw content
-    #     descriptor.seek(0)
-    #     return descriptor
-    # else:
-    #     descriptor.close()
-    #     return StringIO(result.data)
 
 
 def document_post_save_hook(instance):
@@ -67,12 +48,6 @@ def document_post_save_hook(instance):
         document_signature, created = DocumentVersionSignature.objects.get_or_create(
             document_version=instance.latest_version,
         )
-        # DocumentVersionSignature.objects.update_signed_state(instance.document)
-
-# @receiver(post_save, dispatch_uid='check_document_signature_state', sender=DocumentVersion)
-# def check_document_signature_state(sender, instance, **kwargs):
-#     if kwargs.get('created', False):
-#         DocumentVersionSignature.objects.signature_state(instance.document)
 
 
 register_links(Document, [document_verify], menu_name='form_header')

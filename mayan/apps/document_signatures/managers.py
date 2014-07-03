@@ -2,8 +2,8 @@ import logging
 
 from django.db import models
 
-from django_gpg.runtime import gpg
 from django_gpg.exceptions import GPGVerificationError
+from django_gpg.runtime import gpg
 
 logger = logging.getLogger(__name__)
 

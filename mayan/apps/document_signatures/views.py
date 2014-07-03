@@ -3,22 +3,21 @@ from __future__ import absolute_import
 from datetime import datetime
 import logging
 
-from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import PermissionDenied
+from django.conf import settings
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib import messages
-from django.utils.safestring import mark_safe
-from django.conf import settings
 from django.template.defaultfilters import force_escape
-from django.core.exceptions import PermissionDenied
+from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessEntry
+from filetransfers.api import serve_file
+from django_gpg.api import SIGNATURE_STATES
 from documents.models import Document, RecentDocument
 from permissions.models import Permission
-from filetransfers.api import serve_file
-from acls.models import AccessEntry
-
-from django_gpg.api import SIGNATURE_STATES
 
 from . import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
     PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE)
