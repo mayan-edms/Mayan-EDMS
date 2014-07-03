@@ -65,7 +65,6 @@ urlpatterns = patterns('documents.views',
     # Admin views
     url(r'^type/list/$', 'document_type_list', (), 'document_type_list'),
     url(r'^type/create/$', 'document_type_create', (), 'document_type_create'),
-    url(r'^type/(?P<document_type_id>\d+)/list/documents/$', 'document_type_document_list', (), 'document_type_document_list'),
     url(r'^type/(?P<document_type_id>\d+)/edit/$', 'document_type_edit', (), 'document_type_edit'),
     url(r'^type/(?P<document_type_id>\d+)/delete/$', 'document_type_delete', (), 'document_type_delete'),
 

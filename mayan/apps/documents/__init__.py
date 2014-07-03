@@ -32,9 +32,10 @@ from .links import (document_list, document_list_recent,
     document_page_navigation_last, document_page_zoom_in, document_page_zoom_out,
     document_page_rotate_right, document_page_rotate_left, document_page_view_reset,
     document_version_list, document_version_revert, document_type_list,
-    document_type_setup, document_type_document_list, document_type_edit, document_type_delete,
-    document_type_create, document_type_filename_list, document_type_filename_create,
-    document_type_filename_edit, document_type_filename_delete)
+    document_type_setup, document_type_edit, document_type_delete,
+    document_type_create, document_type_filename_list,
+    document_type_filename_create, document_type_filename_edit,
+    document_type_filename_delete)
 from .models import (Document, DocumentPage,
     DocumentPageTransformation, DocumentType, DocumentTypeFilename,
     DocumentVersion)
@@ -51,15 +52,15 @@ register_history_type(HISTORY_DOCUMENT_EDITED)
 register_history_type(HISTORY_DOCUMENT_DELETED)
 
 # Register document type links
-register_links(DocumentType, [document_type_edit, document_type_delete, document_type_document_list, document_type_filename_list])
+register_links(DocumentType, [document_type_edit, document_type_delete, document_type_filename_list])
 register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
 
-register_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_document_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='secondary_menu')
+register_links(['setup_document_type_metadata', 'document_type_filename_delete', 'document_type_create', 'document_type_filename_create', 'document_type_filename_edit', 'document_type_filename_list', 'document_type_list', 'document_type_edit', 'document_type_delete'], [document_type_list, document_type_create], menu_name='secondary_menu')
 register_links([DocumentTypeFilename, 'document_type_filename_list', 'document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
 register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_find_duplicates, document_clear_transformations])
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download])
+register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download])
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])

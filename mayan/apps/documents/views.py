@@ -885,22 +885,6 @@ def document_type_list(request):
         context_instance=RequestContext(request))
 
 
-def document_type_document_list(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_VIEW])
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
-
-    return document_list(
-        request,
-        object_list=Document.objects.filter(document_type=document_type),
-        title=_(u'documents of type "%s"') % document_type,
-        extra_context={
-            'object_name': _(u'document type'),
-            'navigation_object_name': 'document_type',
-            'document_type': document_type,
-        }
-    )
-
-
 def document_type_edit(request, document_type_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
