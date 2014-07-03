@@ -448,7 +448,7 @@ def load_backend(backend_string):
     module_name, klass = backend_string.rsplit('.', 1)
 
     try:
-        return getattr(import_module(module_name), klass)()
+        return getattr(import_module(module_name), klass)
     except ImportError as exception:
         logger.debug('error importing: %s' % backend_string)
         raise
