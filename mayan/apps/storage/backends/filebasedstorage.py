@@ -1,8 +1,10 @@
+from __future__ import absolute_import
+
 import os
 
 from django.core.files.storage import FileSystemStorage
 
-from storage.conf.settings import FILESTORAGE_LOCATION
+from ..conf.settings import FILESTORAGE_LOCATION
 
 
 class FileBasedStorage(FileSystemStorage):
