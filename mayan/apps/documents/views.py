@@ -296,7 +296,6 @@ def document_download(request, document_id=None, document_id_list=None, document
                 'hide_link': True,
                 'hide_object': True,
                 'hide_links': True,
-                'navigation_object_links': None,
                 'scrollable_content': True,
                 'scrollable_content_height': '200px',
                 'extra_columns': [

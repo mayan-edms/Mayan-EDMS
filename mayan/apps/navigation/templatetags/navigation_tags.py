@@ -178,24 +178,14 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
 
     try:
         """
-        Override the navigation links dictionary with the provided
-        link list
-        """
-        navigation_object_links = Variable('overrided_object_links').resolve(context)
-        if navigation_object_links:
-            return [link for link in resolve_links(context, navigation_object_links, current_view, current_path, parsed_query_string)]
-    except VariableDoesNotExist:
-        pass
-
-    try:
-        """
         Check for and inject a temporary navigation dictionary
         """
         temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
-        if temp_navigation_links:
-            links_dict.update(temp_navigation_links)
     except VariableDoesNotExist:
         pass
+    else:
+        if temp_navigation_links:
+            links_dict.update(temp_navigation_links)
 
     try:
         links = links_dict[menu_name][current_view]['links']

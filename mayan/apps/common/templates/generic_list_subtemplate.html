@@ -139,13 +139,7 @@
                                     {% copy_variable list_object_variable_name as "navigation_object_name" %}
                                 {% endif %}
                                 <td class="last">
-                                    {% if navigation_object_links %}
-                                        {% with navigation_object_links as overrided_object_links %}
-                                            {% object_navigation_template %}
-                                        {% endwith %}
-                                    {% else %}
-                                        {% object_navigation_template %}
-                                    {% endif %}
+                                    {% object_navigation_template %}
                                 </td>
                             {% endif %}
                         </tr>
