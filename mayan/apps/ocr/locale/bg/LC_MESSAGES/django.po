@@ -1,186 +1,143 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"POT-Creation-Date: 2014-07-03 21:34-0400\n"
 "PO-Revision-Date: 2012-10-18 05:28+0000\n"
 "Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:32 __init__.py:33
-msgid "submit to OCR queue"
-msgstr "подаване към OCR опашката"
-
-#: __init__.py:34 __init__.py:35
-msgid "re-queue"
-msgstr "пренареждане"
-
-#: __init__.py:36 __init__.py:37 __init__.py:50
-msgid "delete"
-msgstr "изтриване"
-
-#: __init__.py:39
-msgid "stop queue"
-msgstr "спиране опашка"
-
-#: __init__.py:40
-msgid "activate queue"
-msgstr "активиране опашка"
-
-#: __init__.py:42
-msgid "clean up pages content"
-msgstr "изчистване съдържанието на страниците"
-
-#: __init__.py:42
-msgid ""
-"Runs a language filter to remove common OCR mistakes from document pages "
-"content."
-msgstr "Стартиране на филтър за език, за премахване обичайни грешки от OCR от съдържанието на документите."
-
-#: __init__.py:44
-msgid "queue document list"
-msgstr ""
-
-#: __init__.py:45 __init__.py:63 permissions.py:7
+#: __init__.py:42 links.py:22 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:47
-msgid "transformations"
-msgstr "трансформации"
-
-#: __init__.py:48
-msgid "add transformation"
-msgstr "добави трансформация"
-
-#: __init__.py:49
-msgid "edit"
-msgstr "редактиране"
-
-#: __init__.py:74
-msgid "Default"
-msgstr "По подразбиране"
-
-#: __init__.py:102
+#: __init__.py:70
 msgid "Checks the OCR queue for pending documents."
 msgstr "Провери OCR опашката за чакащи документи."
 
-#: api.py:122
+#: api.py:75
 msgid "Text from OCR"
 msgstr "Текст от OCR"
 
-#: literals.py:8
+#: links.py:9 links.py:10
+msgid "submit to OCR queue"
+msgstr "подаване към OCR опашката"
+
+#: links.py:11 links.py:12
+msgid "re-queue"
+msgstr "пренареждане"
+
+#: links.py:13 links.py:14
+msgid "delete"
+msgstr "изтриване"
+
+#: links.py:16
+msgid "stop queue"
+msgstr "спиране опашка"
+
+#: links.py:17
+msgid "activate queue"
+msgstr "активиране опашка"
+
+#: links.py:19
+msgid "clean up pages content"
+msgstr "изчистване съдържанието на страниците"
+
+#: links.py:19
+msgid ""
+"Runs a language filter to remove common OCR mistakes from document pages "
+"content."
+msgstr ""
+"Стартиране на филтър за език, за премахване обичайни грешки от OCR от "
+"съдържанието на документите."
+
+#: links.py:21
+msgid "queue document list"
+msgstr ""
+
+#: literals.py:7
 msgid "stopped"
 msgstr "спрян"
 
-#: literals.py:9
+#: literals.py:8
 msgid "active"
 msgstr "активен"
 
-#: literals.py:18
+#: literals.py:16
 msgid "pending"
 msgstr "чакащ"
 
-#: literals.py:19
+#: literals.py:17
 msgid "processing"
 msgstr "обработван"
 
-#: literals.py:20
+#: literals.py:18
 msgid "error"
 msgstr "грешка"
 
-#: models.py:27
+#: models.py:19
 msgid "name"
 msgstr "име"
 
-#: models.py:28
+#: models.py:20
 msgid "label"
 msgstr "етикет"
 
-#: models.py:32 models.py:52
+#: models.py:24 models.py:44
 msgid "state"
 msgstr "състояние"
 
-#: models.py:37 models.py:45 views.py:43 views.py:313 views.py:354
-#: views.py:384 views.py:420
+#: models.py:29 models.py:37 views.py:36
 msgid "document queue"
 msgstr "опашка документи"
 
-#: models.py:38
+#: models.py:30
 msgid "document queues"
 msgstr "опашки документи"
 
-#: models.py:46
+#: models.py:38
 msgid "document"
 msgstr "документ"
 
-#: models.py:47
+#: models.py:39
 msgid "date time submitted"
 msgstr "дата и час на подаване"
 
-#: models.py:48
+#: models.py:40
 msgid "delay ocr"
 msgstr "забавяне OCR"
 
-#: models.py:53
+#: models.py:45
 msgid "result"
 msgstr "резултат"
 
-#: models.py:54
+#: models.py:46
 msgid "node name"
 msgstr "име на нод"
 
-#: models.py:58
+#: models.py:50
 msgid "queue document"
 msgstr ""
 
-#: models.py:59
+#: models.py:51
 msgid "queue documents"
 msgstr ""
 
-#: models.py:79 views.py:47
+#: models.py:68 views.py:40
 msgid "Missing document."
 msgstr "Липсващ документ."
-
-#: models.py:83
-msgid "Enter a valid value."
-msgstr "Въведете валидна стойност."
-
-#: models.py:111 views.py:317
-msgid "order"
-msgstr ""
-
-#: models.py:112 views.py:318 views.py:355 views.py:385
-msgid "transformation"
-msgstr "трансформация"
-
-#: models.py:113 views.py:319
-msgid "arguments"
-msgstr "аргументи"
-
-#: models.py:113
-#, python-format
-msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
-
-#: models.py:123
-msgid "document queue transformation"
-msgstr ""
-
-#: models.py:124
-msgid "document queue transformations"
-msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -202,195 +159,147 @@ msgstr ""
 msgid "Can edit an OCR queue properties"
 msgstr "Възможност за редактиране настройките на  OCR опашката"
 
-#: statistics.py:8
+#: statistics.py:10
 #, python-format
 msgid "Document queues: %d"
 msgstr ""
 
-#: statistics.py:9
+#: statistics.py:11
 #, python-format
 msgid "Queued documents: %d"
 msgstr "Добавени в опашката документи: %d"
 
-#: statistics.py:13
+#: statistics.py:15
 msgid "OCR statistics"
 msgstr "OCR статистика"
 
-#: views.py:40
+#: views.py:33
 #, python-format
 msgid "documents in queue: %s"
 msgstr ""
 
-#: views.py:48
+#: views.py:41
 msgid "thumbnail"
 msgstr ""
 
-#: views.py:61
+#: views.py:54
 msgid "document queue properties"
 msgstr ""
 
-#: views.py:62
+#: views.py:55
 #, python-format
 msgid "Current state: %s"
 msgstr "Текущо състояние: %s"
 
-#: views.py:78 views.py:166
+#: views.py:73 views.py:163
 msgid "Must provide at least one queue document."
 msgstr ""
 
-#: views.py:88
+#: views.py:83
 #, python-format
 msgid "Document: %s is being processed and can't be deleted."
 msgstr "Документът: %s е в процес на обработка и не може да бъде изтрит."
 
-#: views.py:91
+#: views.py:86
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr ""
 
-#: views.py:95
+#: views.py:90
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Грешка при изтриване на документ: %(document)s; %(error)s"
 
-#: views.py:108
+#: views.py:103
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr ""
 
-#: views.py:110
+#: views.py:105
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr ""
 
-#: views.py:146
+#: views.py:141
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
 msgstr "Документ: %(document)s е добавен към OCR опашката: %(queue)s."
 
-#: views.py:149
+#: views.py:145
 #, python-format
 msgid "Document: %(document)s is already queued."
 msgstr ""
 
-#: views.py:178
+#: views.py:175
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 msgstr ""
 
-#: views.py:184
+#: views.py:181
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "ДОкумент с id#: %d, вече не съществува."
 
-#: views.py:188
+#: views.py:185
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
 msgstr ""
 
-#: views.py:200
+#: views.py:197
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr ""
 
-#: views.py:202
+#: views.py:199
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr ""
 
-#: views.py:220
+#: views.py:217
 #, python-format
 msgid "Document queue: %s, already stopped."
 msgstr ""
 
-#: views.py:226
+#: views.py:223
 #, python-format
 msgid "Document queue: %s, stopped successfully."
 msgstr ""
 
-#: views.py:232
+#: views.py:229
 #, python-format
 msgid "Are you sure you wish to disable document queue: %s"
 msgstr ""
 
-#: views.py:247
+#: views.py:244
 #, python-format
 msgid "Document queue: %s, already active."
 msgstr ""
 
-#: views.py:253
+#: views.py:250
 #, python-format
 msgid "Document queue: %s, activated successfully."
 msgstr ""
 
-#: views.py:259
+#: views.py:256
 #, python-format
 msgid "Are you sure you wish to activate document queue: %s"
 msgstr ""
 
-#: views.py:276
+#: views.py:273
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr ""
 
-#: views.py:277
+#: views.py:274
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 
-#: views.py:283
+#: views.py:280
 msgid "Document pages content clean up complete."
 msgstr ""
 
-#: views.py:285
+#: views.py:282
 #, python-format
 msgid "Document pages content clean up error: %s"
-msgstr ""
-
-#: views.py:311
-#, python-format
-msgid "transformations for: %s"
-msgstr "трансформации за: %s"
-
-#: views.py:341
-msgid "Queue transformation edited successfully"
-msgstr ""
-
-#: views.py:344
-#, python-format
-msgid "Error editing queue transformation; %s"
-msgstr ""
-
-#: views.py:349
-#, python-format
-msgid "Edit transformation: %s"
-msgstr "Редактиране трансформация: %s"
-
-#: views.py:372
-msgid "Queue transformation deleted successfully."
-msgstr ""
-
-#: views.py:374
-#, python-format
-msgid "Error deleting queue transformation; %(error)s"
-msgstr ""
-
-#: views.py:387
-#, python-format
-msgid ""
-"Are you sure you wish to delete queue transformation \"%(transformation)s\""
-msgstr ""
-
-#: views.py:410
-msgid "Queue transformation created successfully"
-msgstr ""
-
-#: views.py:413
-#, python-format
-msgid "Error creating queue transformation; %s"
-msgstr ""
-
-#: views.py:422
-#, python-format
-msgid "Create new transformation for queue: %s"
 msgstr ""
 
 #: conf/settings.py:13
@@ -413,10 +322,40 @@ msgstr "Пътх към приложението unpaper."
 
 #: conf/settings.py:18
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
 
-#: parsers/__init__.py:87 parsers/__init__.py:164
+#: conf/settings.py:19
+msgid "Full path to the backend to be used to do OCR."
+msgstr ""
+
+#: parsers/__init__.py:93 parsers/__init__.py:170
 msgid "Text extracted from PDF"
 msgstr "Текст, извлечен от PDF"
+
+#~ msgid "transformations"
+#~ msgstr "трансформации"
+
+#~ msgid "add transformation"
+#~ msgstr "добави трансформация"
+
+#~ msgid "edit"
+#~ msgstr "редактиране"
+
+#~ msgid "Default"
+#~ msgstr "По подразбиране"
+
+#~ msgid "Enter a valid value."
+#~ msgstr "Въведете валидна стойност."
+
+#~ msgid "transformation"
+#~ msgstr "трансформация"
+
+#~ msgid "arguments"
+#~ msgstr "аргументи"
+
+#~ msgid "transformations for: %s"
+#~ msgstr "трансформации за: %s"
+
+#~ msgid "Edit transformation: %s"
+#~ msgstr "Редактиране трансформация: %s"

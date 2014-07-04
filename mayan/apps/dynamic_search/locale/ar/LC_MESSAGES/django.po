@@ -1,82 +1,79 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:32-0400\n"
 "PO-Revision-Date: 2013-01-25 20:19+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
+"language/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-#: __init__.py:5
-msgid "search"
-msgstr "البحث"
-
-#: __init__.py:6 views.py:72
-msgid "advanced search"
-msgstr "بحث متقدم"
-
-#: __init__.py:7
-msgid "search again"
-msgstr "البحث مرة أخرى"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: forms.py:8
 msgid "Search terms"
 msgstr "مصطلحات البحث"
 
-#: models.py:20
+#: links.py:3
+msgid "search"
+msgstr "البحث"
+
+#: links.py:4 views.py:79
+msgid "advanced search"
+msgstr "بحث متقدم"
+
+#: links.py:5
+msgid "search again"
+msgstr "البحث مرة أخرى"
+
+#: models.py:21
 msgid "user"
 msgstr "مستخدم"
 
-#: models.py:21
+#: models.py:22
 msgid "query"
 msgstr "سؤال"
 
-#: models.py:22
+#: models.py:23
 msgid "datetime created"
 msgstr "التاريخ والوقت للانشاء"
 
-#: models.py:23
+#: models.py:24
 msgid "hits"
 msgstr "مشاهدات"
 
-#: models.py:61
+#: models.py:60
 msgid "recent search"
 msgstr "البحث الأخيرة"
 
-#: models.py:62
+#: models.py:61
 msgid "recent searches"
 msgstr "عمليات البحث الأخيرة"
 
-#: views.py:33
+#: views.py:45
 #, python-format
 msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr "نتائج البحث، اظهار %(shown_result_count)s من أصل %(result_count)s"
 
-#: views.py:37
+#: views.py:50
 msgid "results"
 msgstr "النتائج"
 
-#: views.py:56
-#, python-format
-msgid "Search error: %s"
-msgstr "خطأ بالبحث: %s"
-
-#: views.py:60
+#: views.py:67
 msgid "type"
 msgstr "نوع"
 
-#: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
+#: views.py:83 views.py:93 views.py:95 templatetags/search_tags.py:19
 #: templatetags/search_tags.py:20
 msgid "Search"
 msgstr "البحث"
@@ -113,3 +110,6 @@ msgstr "الوقت المنقضي %(time_delta)s ثانية"
 #, python-format
 msgid "recent searches (maximum of %d)"
 msgstr "عمليات البحث الأخيرة (الحد الأقصى من %d)"
+
+#~ msgid "Search error: %s"
+#~ msgstr "خطأ بالبحث: %s"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -10,39 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:32-0400\n"
 "PO-Revision-Date: 2014-03-12 16:11+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: __init__.py:14 views.py:66
-msgid "private keys"
-msgstr "Private Schlüssel"
-
-#: __init__.py:15 views.py:69
-msgid "public keys"
-msgstr "Öffentliche Schlüssel"
-
-#: __init__.py:16
-msgid "delete"
-msgstr "Löschen"
-
-#: __init__.py:17
-msgid "query keyservers"
-msgstr "Schlüsselserver abfragen"
-
-#: __init__.py:18
-msgid "import"
-msgstr "Importieren"
-
-#: __init__.py:19
-msgid "key management"
-msgstr "Schlüssel-Management"
 
 #: api.py:24
 msgid "Public"
@@ -78,7 +55,9 @@ msgstr "Signatur Fehler."
 
 #: api.py:65
 msgid "Document is signed but no public key is available for verification."
-msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
+msgstr ""
+"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
+"verfügbar."
 
 #: api.py:69
 msgid "Document is signed, and signature is good."
@@ -98,7 +77,33 @@ msgstr "Begriff"
 
 #: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird."
+msgstr ""
+"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
+"wird."
+
+#: links.py:6 views.py:66
+msgid "private keys"
+msgstr "Private Schlüssel"
+
+#: links.py:7 views.py:69
+msgid "public keys"
+msgstr "Öffentliche Schlüssel"
+
+#: links.py:8
+msgid "delete"
+msgstr "Löschen"
+
+#: links.py:9
+msgid "query keyservers"
+msgstr "Schlüsselserver abfragen"
+
+#: links.py:10
+msgid "import"
+msgstr "Importieren"
+
+#: links.py:11
+msgid "key management"
+msgstr "Schlüssel-Management"
 
 #: permissions.py:7
 msgid "Key management"
@@ -162,7 +167,10 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr "Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen öffentlichen Schlüssel, der Teil eines öffentlichen/privaten Paars ist, zu löschen versuchen, wird der private Schlüssel ebenfalls gelöscht."
+msgstr ""
+"Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen "
+"öffentlichen Schlüssel, der Teil eines öffentlichen/privaten Paars ist, zu "
+"löschen versuchen, wird der private Schlüssel ebenfalls gelöscht."
 
 #: views.py:128
 msgid "Query key server"

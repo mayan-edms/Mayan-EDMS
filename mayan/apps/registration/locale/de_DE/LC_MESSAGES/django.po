@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Tobias Paepke <tobias.paepke@paepke.net>, 2014
@@ -9,17 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"POT-Creation-Date: 2014-07-03 21:35-0400\n"
 "PO-Revision-Date: 2014-03-12 16:12+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:15
+#: __init__.py:16
 msgid "Registration"
 msgstr "Registrierung"
 
@@ -84,6 +85,6 @@ msgstr "Fehler beim Übertragen des Formulars: %s."
 msgid "registration form"
 msgstr "Registrierungs-Formular"
 
-#: templatetags/registration_tags.py:18
+#: templatetags/registration_tags.py:16
 msgid "Unregistered"
 msgstr "Unregistriert"

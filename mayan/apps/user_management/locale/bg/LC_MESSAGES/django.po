@@ -1,62 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Iliya Georgiev <ikgeorgiev@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"POT-Creation-Date: 2014-07-03 21:35-0400\n"
 "PO-Revision-Date: 2012-12-12 06:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: __init__.py:13
-msgid "user list"
-msgstr "списък с потребители"
-
-#: __init__.py:14 views.py:31
-msgid "users"
-msgstr "потребители"
-
-#: __init__.py:15 __init__.py:25
-msgid "edit"
-msgstr "редактиране"
-
-#: __init__.py:16 views.py:97
-msgid "create new user"
-msgstr "създаване на нов потребител"
-
-#: __init__.py:17 __init__.py:18 __init__.py:27 __init__.py:28
-msgid "delete"
-msgstr "изтриване"
-
-#: __init__.py:19 __init__.py:20
-msgid "reset password"
-msgstr "промяна на парола"
-
-#: __init__.py:21 __init__.py:24 views.py:257
-msgid "groups"
-msgstr "групи"
-
-#: __init__.py:23
-msgid "group list"
-msgstr "списък с групи"
-
-#: __init__.py:26 views.py:305
-msgid "create new group"
-msgstr "създаване на нова група"
-
-#: __init__.py:29 views.py:261
-msgid "members"
-msgstr "участници"
 
 #: forms.py:13
 msgid "New password"
@@ -65,6 +26,46 @@ msgstr "Нова парола"
 #: forms.py:14
 msgid "Confirm password"
 msgstr "Потвърждение на парола"
+
+#: links.py:9
+msgid "user list"
+msgstr "списък с потребители"
+
+#: links.py:10 views.py:27
+msgid "users"
+msgstr "потребители"
+
+#: links.py:11 links.py:21
+msgid "edit"
+msgstr "редактиране"
+
+#: links.py:12 views.py:95
+msgid "create new user"
+msgstr "създаване на нов потребител"
+
+#: links.py:13 links.py:14 links.py:23 links.py:24
+msgid "delete"
+msgstr "изтриване"
+
+#: links.py:15 links.py:16
+msgid "reset password"
+msgstr "промяна на парола"
+
+#: links.py:17 links.py:20 views.py:253
+msgid "groups"
+msgstr "групи"
+
+#: links.py:19
+msgid "group list"
+msgstr "списък с групи"
+
+#: links.py:22 views.py:304
+msgid "create new group"
+msgstr "създаване на нова група"
+
+#: links.py:25 views.py:257
+msgid "members"
+msgstr "участници"
 
 #: permissions.py:7
 msgid "User management"
@@ -102,166 +103,172 @@ msgstr "Преглед на съществуващи групи"
 msgid "Delete existing groups"
 msgstr "Изтриване на съществуващи групи"
 
-#: views.py:35
+#: views.py:31
 msgid "full name"
 msgstr "име и фамилия"
 
-#: views.py:39
+#: views.py:35
 msgid "email"
 msgstr "имейл"
 
-#: views.py:43
+#: views.py:39
 msgid "active"
 msgstr "активен"
 
-#: views.py:47
+#: views.py:43
 msgid "has usable password?"
 msgstr "има ли използваема парола?"
 
-#: views.py:61
+#: views.py:59
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr "Редактиране на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
+msgstr ""
+"Редактиране на потребители от супер потребител и служител не е разрешено. "
+"Използвайте администраторския модул за тези случаи."
 
-#: views.py:68
+#: views.py:66
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "Потребител \"%s\" е обновен успешно"
 
-#: views.py:74
+#: views.py:72
 #, python-format
 msgid "edit user: %s"
 msgstr "редактиране на потребител \"%s\""
 
-#: views.py:77 views.py:135 views.py:198 views.py:243
+#: views.py:75 views.py:133 views.py:196 views.py:241
 msgid "user"
 msgstr "потребител"
 
-#: views.py:91
+#: views.py:89
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Потребител \"%s\" е създаден успешно."
 
-#: views.py:113 views.py:167
+#: views.py:111 views.py:165
 msgid "Must provide at least one user."
 msgstr "Трябва да изберете поне един потребител."
 
-#: views.py:123
+#: views.py:121
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Изтриване на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
+msgstr ""
+"Изтриване на потребители от супер потребител и служител не е разрешено. "
+"Използвайте администраторския модул за тези случаи."
 
-#: views.py:126
+#: views.py:124
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Потребител \"%s\" е изтрит успешно."
 
-#: views.py:128
+#: views.py:126
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Грешка при изтриването на потребител \"%(user)s\": %(error)s"
 
-#: views.py:143
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете потребителят %s?"
 
-#: views.py:145
+#: views.py:143
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете потребителите %s?"
 
-#: views.py:178
+#: views.py:176
 msgid "Passwords do not match, try again."
 msgstr "Паролата не съвпада. Опитайте отново."
 
-#: views.py:183
+#: views.py:181
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Промяна на парола на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
+msgstr ""
+"Промяна на парола на потребители от супер потребител и служител не е "
+"разрешено. Използвайте администраторския модул за тези случаи."
 
-#: views.py:187
+#: views.py:185
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Успешна промяна на парола на потребител %s."
 
-#: views.py:189
+#: views.py:187
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Грешка при промяна на парола на потребител \"%(user)s\": %(error)s"
 
-#: views.py:205
+#: views.py:203
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Промяна на парола на потребител %s"
 
-#: views.py:207
+#: views.py:205
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Промяна на парола на потребители %s"
 
-#: views.py:238
+#: views.py:236
 #, python-format
 msgid "non groups of user: %s"
 msgstr ""
 
-#: views.py:239
+#: views.py:237
 #, python-format
 msgid "groups of user: %s"
 msgstr ""
 
-#: views.py:278
+#: views.py:277
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr "Групата \"%s\" е обновена успешно."
 
-#: views.py:284
+#: views.py:283
 #, python-format
 msgid "edit group: %s"
 msgstr "редактиране на група %s"
 
-#: views.py:287 views.py:340 views.py:385
+#: views.py:286 views.py:339 views.py:384
 msgid "group"
 msgstr "група"
 
-#: views.py:299
+#: views.py:298
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr "Групата \"%s\" е създадена успешно."
 
-#: views.py:321
+#: views.py:320
 msgid "Must provide at least one group."
 msgstr "Необходимо е да се включи поне една група."
 
-#: views.py:331
+#: views.py:330
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "Групата \"%s\" е изтрита успешно."
 
-#: views.py:333
+#: views.py:332
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "Грешка при изтриването на група \"%(group)s\": %(error)s"
 
-#: views.py:348
+#: views.py:347
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете групата %s?"
 
-#: views.py:350
+#: views.py:349
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете групите %s?"
 
-#: views.py:380
+#: views.py:379
 #, python-format
 msgid "non members of group: %s"
 msgstr "не членуващи в групата: %s"
 
-#: views.py:381
+#: views.py:380
 #, python-format
 msgid "members of group: %s"
 msgstr "участници в групата: %s"

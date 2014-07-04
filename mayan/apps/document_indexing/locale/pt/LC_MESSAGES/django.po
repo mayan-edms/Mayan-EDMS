@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Renata Oliveira <renatabels@gmail.com>, 2011
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -9,62 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:32-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:31 __init__.py:46 __init__.py:48 models.py:64 views.py:39
-#: views.py:310
-msgid "indexes"
-msgstr "índices"
-
-#: __init__.py:32 __init__.py:43
-msgid "index list"
-msgstr "lista de índices"
-
-#: __init__.py:33 views.py:78
-msgid "create index"
-msgstr "criar índice"
-
-#: __init__.py:34 __init__.py:40
-msgid "edit"
-msgstr "editar"
-
-#: __init__.py:35 __init__.py:41
-msgid "delete"
-msgstr "excluir"
-
-#: __init__.py:36
-msgid "tree template"
-msgstr "modelo de árvore"
-
-#: __init__.py:37 models.py:21 views.py:314
-msgid "document types"
-msgstr ""
-
-#: __init__.py:39
-msgid "new child node"
-msgstr "novo nó filho"
-
 #: __init__.py:45
-msgid "go up one level"
-msgstr "subir um nível"
-
-#: __init__.py:50
-msgid "rebuild indexes"
-msgstr "reconstruir índices"
-
-#: __init__.py:50
-msgid "Deletes and creates from scratch all the document indexes."
-msgstr "Exclui e cria a partir do zero todos os índices de documentos."
-
-#: __init__.py:52
 msgid "Indexes"
 msgstr "Índices"
 
@@ -77,13 +33,17 @@ msgstr "Contagem máxima do sufixo (%s) alcançada."
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr "Erro na expressão de atualização de indexação de documentos: %(expression)s; %(exception)s "
+msgstr ""
+"Erro na expressão de atualização de indexação de documentos: %(expression)s; "
+"%(exception)s "
 
 #: api.py:94 api.py:109
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr "Erro ao atualizar índice de documentos, expressão: %(expression)s ; %(exception)s "
+msgstr ""
+"Erro ao atualizar índice de documentos, expressão: %(expression)s ; "
+"%(exception)s "
 
 #: api.py:151
 #, python-format
@@ -100,7 +60,9 @@ msgstr "Não é possível criar o diretório de indexação; %s"
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
-msgstr "Não é possível criar a ligação simbólica, o ficheiro existe e não pode ser excluído: %(filepath)s; %(exc)s "
+msgstr ""
+"Não é possível criar a ligação simbólica, o ficheiro existe e não pode ser "
+"excluído: %(filepath)s; %(exc)s "
 
 #: filesystem.py:71
 #, python-format
@@ -116,6 +78,50 @@ msgstr "Não é possível excluir a ligação simbólica do documento; %s"
 #, python-format
 msgid "Unable to delete indexing directory; %s"
 msgstr "Não é possível excluir o diretório de indexação; %s"
+
+#: links.py:23 links.py:38 links.py:40 models.py:64 views.py:39 views.py:310
+msgid "indexes"
+msgstr "índices"
+
+#: links.py:24 links.py:35
+msgid "index list"
+msgstr "lista de índices"
+
+#: links.py:25 views.py:78
+msgid "create index"
+msgstr "criar índice"
+
+#: links.py:26 links.py:32
+msgid "edit"
+msgstr "editar"
+
+#: links.py:27 links.py:33
+msgid "delete"
+msgstr "excluir"
+
+#: links.py:28
+msgid "tree template"
+msgstr "modelo de árvore"
+
+#: links.py:29 models.py:21 views.py:314
+msgid "document types"
+msgstr ""
+
+#: links.py:31
+msgid "new child node"
+msgstr "novo nó filho"
+
+#: links.py:37
+msgid "go up one level"
+msgstr "subir um nível"
+
+#: links.py:42
+msgid "rebuild indexes"
+msgstr "reconstruir índices"
+
+#: links.py:42
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "Exclui e cria a partir do zero todos os índices de documentos."
 
 #: models.py:14
 #, python-format
@@ -143,9 +149,10 @@ msgid "enabled"
 msgstr "habilitado"
 
 #: models.py:20
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Faz com que este índice seja visível e atualizado quando os dados do documento forem alterados."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Faz com que este índice seja visível e atualizado quando os dados do "
+"documento forem alterados."
 
 #: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
 #: views.py:198 views.py:225 views.py:255 views.py:295
@@ -162,7 +169,9 @@ msgstr "Digite uma expressão python para ser avaliada."
 
 #: models.py:72
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Faz com que este nó seja visível e atualizado quando os dados do documento forem alterados."
+msgstr ""
+"Faz com que este nó seja visível e atualizado quando os dados do documento "
+"forem alterados."
 
 #: models.py:73
 msgid "link documents"
@@ -170,9 +179,11 @@ msgstr "ligar documentos"
 
 #: models.py:73
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Escolha esta opção para que este nó atue como contentor para documentos e não como pai de outros nós."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Escolha esta opção para que este nó atue como contentor para documentos e "
+"não como pai de outros nós."
 
 #: models.py:83 models.py:89
 msgid "index template node"
@@ -368,11 +379,17 @@ msgstr "Erro na reconstrução do índice: %s"
 msgid "indexes containing: %s"
 msgstr "índices contendo: %s"
 
+#: widgets.py:85
+msgid "root"
+msgstr ""
+
 #: conf/settings.py:22
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index"
-" will be mirrored."
-msgstr "Um dicionário que mapeia o nome do índice com o local no sistema de ficheiros onde será espelhado."
+"A dictionary that maps the index name and where on the filesystem that index "
+"will be mirrored."
+msgstr ""
+"Um dicionário que mapeia o nome do índice com o local no sistema de "
+"ficheiros onde será espelhado."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
@@ -380,4 +397,5 @@ msgstr "O que são índices?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr "Os índices agrupam documentos numa árvore como uma estrutura hierárquica."
+msgstr ""
+"Os índices agrupam documentos numa árvore como uma estrutura hierárquica."

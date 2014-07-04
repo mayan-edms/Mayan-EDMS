@@ -1,82 +1,80 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:33-0400\n"
 "PO-Revision-Date: 2013-02-10 13:27+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-
-#: __init__.py:5
-msgid "search"
-msgstr "căută"
-
-#: __init__.py:6 views.py:72
-msgid "advanced search"
-msgstr "căutare avansată"
-
-#: __init__.py:7
-msgid "search again"
-msgstr "căuta din nou"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: forms.py:8
 msgid "Search terms"
 msgstr "Caută termeni"
 
-#: models.py:20
+#: links.py:3
+msgid "search"
+msgstr "căută"
+
+#: links.py:4 views.py:79
+msgid "advanced search"
+msgstr "căutare avansată"
+
+#: links.py:5
+msgid "search again"
+msgstr "căuta din nou"
+
+#: models.py:21
 msgid "user"
 msgstr "utilizator"
 
-#: models.py:21
+#: models.py:22
 msgid "query"
 msgstr "interogare"
 
-#: models.py:22
+#: models.py:23
 msgid "datetime created"
 msgstr "marcare temporară creată"
 
-#: models.py:23
+#: models.py:24
 msgid "hits"
 msgstr "afisari"
 
-#: models.py:61
+#: models.py:60
 msgid "recent search"
 msgstr "căutare recentă"
 
-#: models.py:62
+#: models.py:61
 msgid "recent searches"
 msgstr "Căutări recente"
 
-#: views.py:33
+#: views.py:45
 #, python-format
 msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr "Rezultate, (arătând numai %(shown_result_count)s  din %(result_count)s)"
+msgstr ""
+"Rezultate, (arătând numai %(shown_result_count)s  din %(result_count)s)"
 
-#: views.py:37
+#: views.py:50
 msgid "results"
 msgstr "rezultate"
 
-#: views.py:56
-#, python-format
-msgid "Search error: %s"
-msgstr "Eroare de căutare:% s"
-
-#: views.py:60
+#: views.py:67
 msgid "type"
 msgstr "tip"
 
-#: views.py:76 views.py:86 views.py:88 templatetags/search_tags.py:19
+#: views.py:83 views.py:93 views.py:95 templatetags/search_tags.py:19
 #: templatetags/search_tags.py:20
 msgid "Search"
 msgstr "Căută"
@@ -98,7 +96,9 @@ msgstr "Ajutor"
 msgid ""
 "Enter the desired search keywords separated by space.  Only the top "
 "%(search_results_limit)s results will be available."
-msgstr "Introduceți cuvintele cheie de căutare dorite, separate prin spațiu. Doar primele %(search_results_limit)s  rezultatele vor fi disponibile."
+msgstr ""
+"Introduceți cuvintele cheie de căutare dorite, separate prin spațiu. Doar "
+"primele %(search_results_limit)s  rezultatele vor fi disponibile."
 
 #: templates/search_results.html:3
 msgid "Search results"
@@ -113,3 +113,6 @@ msgstr "Timp scurs: %(time_delta)s  secunde"
 #, python-format
 msgid "recent searches (maximum of %d)"
 msgstr "Cautari recente (maximum of %d)"
+
+#~ msgid "Search error: %s"
+#~ msgstr "Eroare de căutare:% s"

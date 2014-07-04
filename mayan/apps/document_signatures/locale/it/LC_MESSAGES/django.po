@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Carlo Zanatto <>, 2012
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012
@@ -9,31 +9,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:32-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:83
-msgid "upload signature"
-msgstr "aggiorna firma"
+#: forms.py:7
+msgid "Signature file"
+msgstr "File della firma"
 
-#: __init__.py:84
+#: links.py:22
+#, fuzzy
+msgid "delete signature"
+msgstr "scarica firma"
+
+#: links.py:23
 msgid "download signature"
 msgstr "scarica firma"
 
-#: __init__.py:85
+#: links.py:24
+msgid "upload signature"
+msgstr "aggiorna firma"
+
+#: links.py:25
 msgid "signatures"
 msgstr "firma"
-
-#: forms.py:11
-msgid "Signature file"
-msgstr "File della firma"
 
 #: models.py:20
 msgid "document version"
@@ -64,61 +70,82 @@ msgid "Verify document signatures"
 msgstr "Verifica la firma del documento"
 
 #: permissions.py:9
-msgid "Upload detached signatures"
-msgstr "Carica firme separatamente"
+#, fuzzy
+msgid "Delete detached signatures"
+msgstr "Scarica firme separatamente"
 
 #: permissions.py:10
 msgid "Download detached signatures"
 msgstr "Scarica firme separatamente"
 
-#: views.py:47
+#: permissions.py:11
+msgid "Upload detached signatures"
+msgstr "Carica firme separatamente"
+
+#: views.py:46
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
 msgstr "Status della firma: %(widget)s %(text)s"
 
-#: views.py:54
+#: views.py:53
 msgid "embedded"
 msgstr "incorporato"
 
-#: views.py:56
+#: views.py:55
 msgid "detached"
 msgstr "scaduto"
 
-#: views.py:61
+#: views.py:60
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID Firma: %s"
 
-#: views.py:62
+#: views.py:61
 #, python-format
 msgid "Signature type: %s"
 msgstr "Tipo di firma: %s"
 
-#: views.py:63
+#: views.py:62
 #, python-format
 msgid "Key ID: %s"
 msgstr "Chiave ID: %s"
 
-#: views.py:64
+#: views.py:63
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Timestamp: %s"
 
-#: views.py:65
+#: views.py:64
 #, python-format
 msgid "Signee: %s"
 msgstr "Signee: %s"
 
-#: views.py:70
+#: views.py:69
 #, python-format
 msgid "signature properties for: %s"
 msgstr "Proprietà per la firma: %s"
 
-#: views.py:96
+#: views.py:95
 msgid "Detached signature uploaded successfully."
 msgstr "Firma scaduta aggiornata con successo."
 
-#: views.py:105
+#: views.py:104
 #, python-format
 msgid "Upload detached signature for: %s"
 msgstr "Aggiornata firma scaduta per: %s"
+
+#: views.py:154
+#, fuzzy
+msgid "Detached signature deleted successfully."
+msgstr "Firma scaduta aggiornata con successo."
+
+#: views.py:157
+#, fuzzy, python-format
+msgid "Error while deleting the detached signature; %s"
+msgstr "Scarica firme separatamente"
+
+#: views.py:161
+#, python-format
+msgid ""
+"Are you sure you wish to delete the detached signature from document: %s?"
+msgstr ""

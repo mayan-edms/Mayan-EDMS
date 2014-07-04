@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:33-0400\n"
 "PO-Revision-Date: 2014-03-12 16:11+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:17
@@ -34,7 +35,7 @@ msgstr "Typ"
 msgid "summary"
 msgstr "Zusammenfassung"
 
-#: links.py:7 models.py:78
+#: links.py:7 models.py:77
 msgid "history"
 msgstr "Verlauf"
 
@@ -42,31 +43,31 @@ msgstr "Verlauf"
 msgid "details"
 msgstr "Details"
 
-#: models.py:18
+#: models.py:17
 msgid "namespace"
 msgstr "Namensraum"
 
-#: models.py:19
+#: models.py:18
 msgid "name"
 msgstr "Name"
 
-#: models.py:34 models.py:43
+#: models.py:33 models.py:42
 msgid "history type"
 msgstr "Verlaufstyp"
 
-#: models.py:35
+#: models.py:34
 msgid "history types"
 msgstr "Verlaufstypen"
 
-#: models.py:39
+#: models.py:38
 msgid "date time"
 msgstr "Datum Uhrzeit"
 
-#: models.py:44
+#: models.py:43
 msgid "dictionary"
 msgstr "Python Dictionary"
 
-#: models.py:79
+#: models.py:78
 msgid "histories"
 msgstr "Verläufe"
 
@@ -120,7 +121,7 @@ msgstr "Keine"
 msgid "details for: %s"
 msgstr "Details für: %s"
 
-#: views.py:106
+#: views.py:105
 #, python-format
 msgid "history events of type: %s"
 msgstr "Verlauf des Typs: %s"

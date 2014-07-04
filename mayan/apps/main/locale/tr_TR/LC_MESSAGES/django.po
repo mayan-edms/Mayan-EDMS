@@ -1,50 +1,51 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Caner Başaran <basaran.caner@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"POT-Creation-Date: 2014-07-03 21:33-0400\n"
 "PO-Revision-Date: 2013-06-10 10:42+0000\n"
 "Last-Translator: Caner Başaran <basaran.caner@gmail.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:33
-msgid "maintenance"
-msgstr ""
-
-#: __init__.py:34
-msgid "statistics"
-msgstr "istatistikler"
-
-#: __init__.py:35
-msgid "diagnostics"
-msgstr ""
-
-#: __init__.py:36
-msgid "sentry"
-msgstr ""
-
-#: __init__.py:37
-msgid "admin site"
-msgstr "yönetici sayfası"
-
-#: __init__.py:40
+#: __init__.py:14
 msgid "home"
 msgstr ""
 
-#: __init__.py:42
+#: __init__.py:16
 msgid "search"
 msgstr ""
+
+#: links.py:8
+msgid "maintenance"
+msgstr ""
+
+#: links.py:9
+msgid "statistics"
+msgstr "istatistikler"
+
+#: links.py:10
+msgid "diagnostics"
+msgstr ""
+
+#: links.py:11
+msgid "sentry"
+msgstr ""
+
+#: links.py:12
+msgid "admin site"
+msgstr "yönetici sayfası"
 
 #: views.py:43
 msgid "maintenance menu"
@@ -60,88 +61,93 @@ msgstr ""
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or"
-" by a menu entry."
+"Controls whether the search functionality is provided by a sidebar widget or "
+"by a menu entry."
 msgstr ""
 
-#: templates/about.html:5
+#: templates/about.html:8
 msgid "About this program"
 msgstr "Bu program hakkında"
 
-#: templates/about.html:9 templates/verbose_login.html:4
+#: templates/about.html:12 templates/verbose_login.html:5
 msgid "Version"
 msgstr "Sürüm"
 
-#: templates/base.html:28
+#: templates/about.html:20 templates/home.html:17
+#: templates/verbose_login.html:7
+msgid "Copyright &copy; 2011 Roberto Rosario."
+msgstr ""
+
+#: templates/base.html:31
 msgid "(DEBUG)"
 msgstr ""
 
-#: templates/base.html:193
+#: templates/base.html:249
 msgid "User"
 msgstr ""
 
-#: templates/base.html:195
+#: templates/base.html:251
 msgid "Anonymous"
 msgstr "Anonim"
 
-#: templates/base.html:198
+#: templates/base.html:254
 msgid "User details"
 msgstr ""
 
-#: templates/base.html:215
+#: templates/base.html:271
 msgid "Login"
 msgstr "Giriş"
 
-#: templates/base.html:215
+#: templates/base.html:271
 msgid "Logout"
 msgstr "Çıkış"
 
-#: templates/base.html:295
+#: templates/base.html:351
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/base.html:311
+#: templates/base.html:367
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:313 templates/base.html.py:345
+#: templates/base.html:369 templates/base.html.py:412
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:316
+#: templates/base.html:372
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:328 templates/base.html.py:360
+#: templates/base.html:384 templates/base.html.py:427
 msgid "Related actions"
 msgstr ""
 
-#: templates/base.html:343
+#: templates/base.html:395 templates/base.html.py:440
+msgid "Other available actions"
+msgstr ""
+
+#: templates/base.html:410
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:348
+#: templates/base.html:415
 msgid "Actions"
 msgstr ""
 
-#: templates/base.html:373
-msgid "Other available actions"
-msgstr ""
-
-#: templates/home.html:8
+#: templates/home.html:11
 msgid "Django based open source document management system"
 msgstr ""
 
-#: templates/project_description.html:6
+#: templates/project_description.html:7
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
 msgstr ""
 
-#: templates/project_description.html:21
-msgid "Released under the GPL V3 License"
+#: templates/project_description.html:22
+msgid "Released under the Apache 2.0 License"
 msgstr ""

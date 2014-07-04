@@ -1,50 +1,52 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"POT-Creation-Date: 2014-07-03 21:33-0400\n"
 "PO-Revision-Date: 2013-06-24 12:26+0000\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"projects/p/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:33
-msgid "maintenance"
-msgstr "održavanje"
-
-#: __init__.py:34
-msgid "statistics"
-msgstr "statistika"
-
-#: __init__.py:35
-msgid "diagnostics"
-msgstr "diagnostika"
-
-#: __init__.py:36
-msgid "sentry"
-msgstr "straža"
-
-#: __init__.py:37
-msgid "admin site"
-msgstr "admin site"
-
-#: __init__.py:40
+#: __init__.py:14
 msgid "home"
 msgstr "home"
 
-#: __init__.py:42
+#: __init__.py:16
 msgid "search"
 msgstr "traži"
+
+#: links.py:8
+msgid "maintenance"
+msgstr "održavanje"
+
+#: links.py:9
+msgid "statistics"
+msgstr "statistika"
+
+#: links.py:10
+msgid "diagnostics"
+msgstr "diagnostika"
+
+#: links.py:11
+msgid "sentry"
+msgstr "straža"
+
+#: links.py:12
+msgid "admin site"
+msgstr "admin site"
 
 #: views.py:43
 msgid "maintenance menu"
@@ -60,88 +62,99 @@ msgstr "Diagnostika"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or"
-" by a menu entry."
-msgstr "Kontrola da li funkcija pretraživanja je omogućeno preko sidebar widget ili preko stavke menija."
+"Controls whether the search functionality is provided by a sidebar widget or "
+"by a menu entry."
+msgstr ""
+"Kontrola da li funkcija pretraživanja je omogućeno preko sidebar widget ili "
+"preko stavke menija."
 
-#: templates/about.html:5
+#: templates/about.html:8
 msgid "About this program"
 msgstr "O ovom programu"
 
-#: templates/about.html:9 templates/verbose_login.html:4
+#: templates/about.html:12 templates/verbose_login.html:5
 msgid "Version"
 msgstr "Verzija"
 
-#: templates/base.html:28
+#: templates/about.html:20 templates/home.html:17
+#: templates/verbose_login.html:7
+msgid "Copyright &copy; 2011 Roberto Rosario."
+msgstr ""
+
+#: templates/base.html:31
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:193
+#: templates/base.html:249
 msgid "User"
 msgstr "Korisnik"
 
-#: templates/base.html:195
+#: templates/base.html:251
 msgid "Anonymous"
 msgstr "Anonimni"
 
-#: templates/base.html:198
+#: templates/base.html:254
 msgid "User details"
 msgstr "Detalji o korisniku"
 
-#: templates/base.html:215
+#: templates/base.html:271
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:215
+#: templates/base.html:271
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:295
+#: templates/base.html:351
 msgid "Secondary menu"
 msgstr "Pomoćni meni"
 
-#: templates/base.html:311
+#: templates/base.html:367
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Akcije za %(name)s: %(navigation_object)s"
 
-#: templates/base.html:313 templates/base.html.py:345
+#: templates/base.html:369 templates/base.html.py:412
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Akcije za: %(navigation_object)s"
 
-#: templates/base.html:316
+#: templates/base.html:372
 msgid "Available actions"
 msgstr "Omogućene akcije"
 
-#: templates/base.html:328 templates/base.html.py:360
+#: templates/base.html:384 templates/base.html.py:427
 msgid "Related actions"
 msgstr "Vezane akcije"
 
-#: templates/base.html:343
+#: templates/base.html:395 templates/base.html.py:440
+msgid "Other available actions"
+msgstr "Ostale omogućene akcije"
+
+#: templates/base.html:410
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Akcije za %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:348
+#: templates/base.html:415
 msgid "Actions"
 msgstr "Akcije"
 
-#: templates/base.html:373
-msgid "Other available actions"
-msgstr "Ostale omogućene akcije"
-
-#: templates/home.html:8
+#: templates/home.html:11
 msgid "Django based open source document management system"
 msgstr "Django bazirani open source document management system"
 
-#: templates/project_description.html:6
+#: templates/project_description.html:7
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr "Open source, Django bazirani electronic document manager sa prilagodljivim metadata podacima, indeksiranjem, tagovanjem, integracijom datoteka, podrškom za digitalni potpis i OCR mogućnostima"
+msgstr ""
+"Open source, Django bazirani electronic document manager sa prilagodljivim "
+"metadata podacima, indeksiranjem, tagovanjem, integracijom datoteka, "
+"podrškom za digitalni potpis i OCR mogućnostima"
 
-#: templates/project_description.html:21
-msgid "Released under the GPL V3 License"
+#: templates/project_description.html:22
+#, fuzzy
+msgid "Released under the Apache 2.0 License"
 msgstr "Izdato pod GPL V3 Licencom"

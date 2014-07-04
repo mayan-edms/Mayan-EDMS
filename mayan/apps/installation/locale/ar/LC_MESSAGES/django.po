@@ -1,154 +1,208 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:33-0400\n"
 "PO-Revision-Date: 2013-01-26 08:50+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
+"language/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: links.py:7 models.py:194
+#: __init__.py:41 __init__.py:52
+msgid "label"
+msgstr ""
+
+#: __init__.py:45
+msgid "items"
+msgstr ""
+
+#: __init__.py:56
+msgid "value"
+msgstr ""
+
+#: links.py:7 models.py:172
 msgid "installation details"
 msgstr "installation details"
 
-#: models.py:68 models.py:75
+#: links.py:8 views.py:21
+#, fuzzy
+msgid "installation property namespaces"
+msgstr "installation details"
+
+#: links.py:9
+msgid "details"
+msgstr ""
+
+#: models.py:52
+msgid "Operating system"
+msgstr ""
+
+#: models.py:54 models.py:61
 msgid "LSB OS"
 msgstr "LSB OS"
 
-#: models.py:69
+#: models.py:55
 msgid "Distributor ID"
 msgstr "Distributor ID"
 
-#: models.py:70
+#: models.py:56
 msgid "Description"
 msgstr "Description"
 
-#: models.py:71
+#: models.py:57
 msgid "Release"
 msgstr "Release"
 
-#: models.py:72
+#: models.py:58
 msgid "Codename"
 msgstr "Codename"
 
-#: models.py:73
+#: models.py:59
 msgid "System info"
 msgstr "System info"
 
-#: models.py:77
+#: models.py:63
 msgid "OS architecture"
 msgstr "OS architecture"
 
-#: models.py:78
+#: models.py:64
 msgid "Python version"
 msgstr "Python version"
 
-#: models.py:79
+#: models.py:65
 msgid "Hostname"
 msgstr "Hostname"
 
-#: models.py:80
+#: models.py:66
 msgid "Platform"
 msgstr "Platform"
 
-#: models.py:81
+#: models.py:67
 msgid "Machine"
 msgstr "Machine"
 
-#: models.py:82
+#: models.py:68
 msgid "Processor"
 msgstr "Processor"
 
-#: models.py:83
+#: models.py:69
 msgid "Number of CPUs"
 msgstr "Number of CPUs"
 
-#: models.py:84
+#: models.py:70
 msgid "Total physical memory"
 msgstr "Total physical memory"
 
-#: models.py:85
+#: models.py:71
 msgid "Disk partitions"
 msgstr "Disk partitions"
 
-#: models.py:89 models.py:91 models.py:93
+#: models.py:74
+msgid "Binary dependencies"
+msgstr ""
+
+#: models.py:78 models.py:80 models.py:82
 msgid "tesseract version"
 msgstr "tesseract version"
 
-#: models.py:91 models.py:99 models.py:107
+#: models.py:80 models.py:88 models.py:96
 msgid "not found"
 msgstr "not found"
 
-#: models.py:93 models.py:101 models.py:109
+#: models.py:82 models.py:90 models.py:98
 msgid "error getting version"
 msgstr "error getting version"
 
-#: models.py:97 models.py:99 models.py:101
+#: models.py:86 models.py:88 models.py:90
 msgid "unpaper version"
 msgstr "unpaper version"
 
-#: models.py:105 models.py:107 models.py:109
+#: models.py:94 models.py:96 models.py:98
 msgid "pdftotext version"
 msgstr "pdftotext version"
 
-#: models.py:111
+#: models.py:101
+#, fuzzy
+msgid "Mayan EDMS"
+msgstr "Mayan EDMS version"
+
+#: models.py:103
+msgid "UUID"
+msgstr ""
+
+#: models.py:104
 msgid "Mayan EDMS version"
 msgstr "Mayan EDMS version"
 
-#: models.py:112
+#: models.py:105
 msgid "Installed via fabfile"
 msgstr "Installed via fabfile"
 
-#: models.py:117 models.py:121
+#: models.py:108
+#, fuzzy
+msgid "Git repository"
+msgstr "Running from a Git repository"
+
+#: models.py:113 models.py:117
 msgid "Running from a Git repository"
 msgstr "Running from a Git repository"
 
-#: models.py:122
+#: models.py:118
 msgid "Repository remotes"
 msgstr "Repository remotes"
 
-#: models.py:123
+#: models.py:119
 msgid "Repository remotes URLs"
 msgstr "Repository remotes URLs"
 
-#: models.py:124
+#: models.py:120
 msgid "Branch"
 msgstr "Branch"
 
-#: models.py:125
+#: models.py:121
 msgid "HEAD commit hex SHA"
 msgstr "HEAD commit hex SHA"
 
-#: models.py:126
+#: models.py:122
 msgid "HEAD commit author"
 msgstr "HEAD commit author"
 
-#: models.py:127
+#: models.py:123
 msgid "HEAD commit authored date"
 msgstr "HEAD commit authored date"
 
-#: models.py:128
+#: models.py:124
 msgid "HEAD commit committer"
 msgstr "HEAD commit committer"
 
-#: models.py:129
+#: models.py:125
 msgid "HEAD commit committed date"
 msgstr "HEAD commit committed date"
 
-#: models.py:130
+#: models.py:126
 msgid "HEAD commit message"
 msgstr "HEAD commit message"
+
+#: models.py:129
+msgid "VirtuanEnv"
+msgstr ""
+
+#: models.py:133
+#, fuzzy
+msgid "pip not found."
+msgstr "not found"
 
 #: permissions.py:7
 msgid "Installation"
@@ -158,6 +212,10 @@ msgstr "Installation"
 msgid "View installation environment details"
 msgstr "View installation environment details"
 
-#: views.py:24
-msgid "Installation environment details"
-msgstr "Installation environment details"
+#: views.py:33
+#, fuzzy, python-format
+msgid "installation namespace details for: %s"
+msgstr "installation details"
+
+#~ msgid "Installation environment details"
+#~ msgstr "Installation environment details"

@@ -1,62 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # René Rovsing Bach <reroba@outlook.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:49-0400\n"
+"POT-Creation-Date: 2014-07-03 21:35-0400\n"
 "PO-Revision-Date: 2013-02-10 11:43+0000\n"
 "Last-Translator: René Rovsing Bach <reroba@outlook.com>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: __init__.py:13
-msgid "user list"
-msgstr "brugerliste"
-
-#: __init__.py:14 views.py:31
-msgid "users"
-msgstr "brugere"
-
-#: __init__.py:15 __init__.py:25
-msgid "edit"
-msgstr "redigér"
-
-#: __init__.py:16 views.py:97
-msgid "create new user"
-msgstr "opret ny bruger"
-
-#: __init__.py:17 __init__.py:18 __init__.py:27 __init__.py:28
-msgid "delete"
-msgstr "slet"
-
-#: __init__.py:19 __init__.py:20
-msgid "reset password"
-msgstr "nulstil password"
-
-#: __init__.py:21 __init__.py:24 views.py:257
-msgid "groups"
-msgstr "grupper"
-
-#: __init__.py:23
-msgid "group list"
-msgstr "gruppeliste"
-
-#: __init__.py:26 views.py:305
-msgid "create new group"
-msgstr "opret ny gruppe"
-
-#: __init__.py:29 views.py:261
-msgid "members"
-msgstr "medlemmer"
 
 #: forms.py:13
 msgid "New password"
@@ -65,6 +26,46 @@ msgstr "Nyt password"
 #: forms.py:14
 msgid "Confirm password"
 msgstr "Bekræft password"
+
+#: links.py:9
+msgid "user list"
+msgstr "brugerliste"
+
+#: links.py:10 views.py:27
+msgid "users"
+msgstr "brugere"
+
+#: links.py:11 links.py:21
+msgid "edit"
+msgstr "redigér"
+
+#: links.py:12 views.py:95
+msgid "create new user"
+msgstr "opret ny bruger"
+
+#: links.py:13 links.py:14 links.py:23 links.py:24
+msgid "delete"
+msgstr "slet"
+
+#: links.py:15 links.py:16
+msgid "reset password"
+msgstr "nulstil password"
+
+#: links.py:17 links.py:20 views.py:253
+msgid "groups"
+msgstr "grupper"
+
+#: links.py:19
+msgid "group list"
+msgstr "gruppeliste"
+
+#: links.py:22 views.py:304
+msgid "create new group"
+msgstr "opret ny gruppe"
+
+#: links.py:25 views.py:257
+msgid "members"
+msgstr "medlemmer"
 
 #: permissions.py:7
 msgid "User management"
@@ -102,166 +103,172 @@ msgstr "Se eksisterende grupper"
 msgid "Delete existing groups"
 msgstr "Slet eksisterende grupper"
 
-#: views.py:35
+#: views.py:31
 msgid "full name"
 msgstr "fulde navn"
 
-#: views.py:39
+#: views.py:35
 msgid "email"
 msgstr "e-mail"
 
-#: views.py:43
+#: views.py:39
 msgid "active"
 msgstr "aktiv"
 
-#: views.py:47
+#: views.py:43
 msgid "has usable password?"
 msgstr "har brugbart password?"
 
-#: views.py:61
+#: views.py:59
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr "Superbruger og personale-bruger redigering er ikke tilladt.  Anvend administrator brugerflade i disse tilfælde. "
+msgstr ""
+"Superbruger og personale-bruger redigering er ikke tilladt.  Anvend "
+"administrator brugerflade i disse tilfælde. "
 
-#: views.py:68
+#: views.py:66
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "Bruger \"%s\" opdateret."
 
-#: views.py:74
+#: views.py:72
 #, python-format
 msgid "edit user: %s"
 msgstr "rediger bruger: %s"
 
-#: views.py:77 views.py:135 views.py:198 views.py:243
+#: views.py:75 views.py:133 views.py:196 views.py:241
 msgid "user"
 msgstr "bruger"
 
-#: views.py:91
+#: views.py:89
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Bruger \"%s\" oprettet."
 
-#: views.py:113 views.py:167
+#: views.py:111 views.py:165
 msgid "Must provide at least one user."
 msgstr "Der skal angives mindst én bruger."
 
-#: views.py:123
+#: views.py:121
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Det er ikke tilladt at slette superbruger og personalebruger.  Anvend administrator brugerfladen i disse tilfælde."
+msgstr ""
+"Det er ikke tilladt at slette superbruger og personalebruger.  Anvend "
+"administrator brugerfladen i disse tilfælde."
 
-#: views.py:126
+#: views.py:124
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Bruger \"%s\" slettet."
 
-#: views.py:128
+#: views.py:126
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Fejl ved sletning af bruger \"%(user)s\": %(error)s"
 
-#: views.py:143
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "Er du sikker på at du vil slette brugeren: %s?"
 
-#: views.py:145
+#: views.py:143
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "Er du sikker på at du vil slette brugerne: %s?"
 
-#: views.py:178
+#: views.py:176
 msgid "Passwords do not match, try again."
 msgstr "De to password stemmer ikke overens, prøv igen."
 
-#: views.py:183
+#: views.py:181
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Det er ikke tilladt at nulstille Superbruger og personale brugeradgangskode. Anvend administrator brugerflade istedet."
+msgstr ""
+"Det er ikke tilladt at nulstille Superbruger og personale brugeradgangskode. "
+"Anvend administrator brugerflade istedet."
 
-#: views.py:187
+#: views.py:185
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Password er blevet nulstillet for bruger: %s."
 
-#: views.py:189
+#: views.py:187
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Fejl ved nulstilling af password for bruger \"%(user)s\": %(error)s"
 
-#: views.py:205
+#: views.py:203
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Nulstiller password for bruger: %s"
 
-#: views.py:207
+#: views.py:205
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Nulstiller password for brugerne: %s"
 
-#: views.py:238
+#: views.py:236
 #, python-format
 msgid "non groups of user: %s"
 msgstr "Grupper ej tilhørende bruger: %s"
 
-#: views.py:239
+#: views.py:237
 #, python-format
 msgid "groups of user: %s"
 msgstr "Grupper tilhørende bruger: %s"
 
-#: views.py:278
+#: views.py:277
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr "Gruppen \"%s\" opdateret."
 
-#: views.py:284
+#: views.py:283
 #, python-format
 msgid "edit group: %s"
 msgstr "redigér gruppe: %s"
 
-#: views.py:287 views.py:340 views.py:385
+#: views.py:286 views.py:339 views.py:384
 msgid "group"
 msgstr "gruppe"
 
-#: views.py:299
+#: views.py:298
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr "Gruppen \"%s\" oprettet."
 
-#: views.py:321
+#: views.py:320
 msgid "Must provide at least one group."
 msgstr "Du skal angive mindst én gruppe."
 
-#: views.py:331
+#: views.py:330
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "Gruppen \"%s\" slettet."
 
-#: views.py:333
+#: views.py:332
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "Fejl ved sletning af gruppen \"%(group)s\": %(error)s"
 
-#: views.py:348
+#: views.py:347
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "Er du sikker på du vil slette gruppen: %s?"
 
-#: views.py:350
+#: views.py:349
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "Er du sikker på du ønsker at slette grupperne: %s?"
 
-#: views.py:380
+#: views.py:379
 #, python-format
 msgid "non members of group: %s"
 msgstr "ikke medlem af gruppen: %s"
 
-#: views.py:381
+#: views.py:380
 #, python-format
 msgid "members of group: %s"
 msgstr "medlemmer af gruppen:% s"

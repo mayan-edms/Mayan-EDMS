@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:31-0400\n"
 "PO-Revision-Date: 2013-02-17 12:20+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: __init__.py:27
 msgid "change password"
@@ -50,7 +52,9 @@ msgstr "email"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr "Vă rugăm să introduceți o adresa de  e-mail și o parolă corectă. Rețineți că datele pentru parola sunt sensibile la majuscule."
+msgstr ""
+"Vă rugăm să introduceți o adresa de  e-mail și o parolă corectă. Rețineți că "
+"datele pentru parola sunt sensibile la majuscule."
 
 #: forms.py:142
 msgid "This account is inactive."
@@ -124,68 +128,123 @@ msgstr "hash parolă"
 msgid "auto admin properties"
 msgstr "proprietăți admin"
 
-#: utils.py:295
+#: utils.py:299
 msgid "function found"
 msgstr "functie gasită"
 
-#: views.py:36
+#: views.py:38
 msgid "No action selected."
 msgstr "Nu a fost selectată nici o acţiune."
 
-#: views.py:40
+#: views.py:42
 msgid "Must select at least one item."
 msgstr "Trebuie sa selectaţi cel puţin un rând"
 
-#: views.py:88
+#: views.py:90
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "%(selection)s adaugate cu succes la %(right_list_title)s."
 
-#: views.py:94 views.py:121
+#: views.py:96 views.py:123
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "nu au putut fi adăugate %(selection)s la %(right_list_title)s."
 
-#: views.py:115
+#: views.py:117
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
-msgstr "%(selection)s adăugate cu succes şi şterse urmatoarele %(right_list_title)s."
+msgstr ""
+"%(selection)s adăugate cu succes şi şterse urmatoarele %(right_list_title)s."
 
-#: views.py:136
+#: views.py:138
 msgid "Add"
 msgstr "Adaugă"
 
-#: views.py:147
+#: views.py:149
 msgid "Remove"
 msgstr "Şterge"
 
-#: views.py:170
+#: views.py:172
 msgid "current user details"
 msgstr "detaliile utilizatorului curent"
 
-#: views.py:187
+#: views.py:189
 msgid "E-mail conflict, another user has that same email."
 msgstr "E-mail conflict, un alt utilizator are acest e-mail."
 
-#: views.py:190
+#: views.py:192
 msgid "Current user's details updated."
 msgstr "Detaliile utilizatorului curent au fost actualizate."
 
-#: views.py:199
+#: views.py:201
 msgid "edit current user details"
 msgstr "editează detaliile utilizatorului curent"
 
-#: views.py:230
+#: views.py:232
 msgid "License"
 msgstr "Licenţă"
 
-#: views.py:239
+#: views.py:241
 msgid "Current user password change"
 msgstr "Schimbare parola pentru utilizatorul curent"
 
-#: views.py:254 templates/password_change_done.html:5
+#: views.py:256 templates/password_change_done.html:8
 msgid "Your password has been successfully changed."
 msgstr "Parola dvs. a fost schimbată cu succes"
+
+#: views.py:302
+#, python-format
+msgid "Error saving %s details."
+msgstr ""
+
+#: views.py:304
+msgid "Error saving details."
+msgstr ""
+
+#: views.py:312
+#, python-format
+msgid "%s details saved successfully."
+msgstr ""
+
+#: views.py:314
+msgid "Details saved successfully."
+msgstr ""
+
+#: views.py:326
+#, python-format
+msgid "Error creating new %s."
+msgstr ""
+
+#: views.py:328
+msgid "Error creating object."
+msgstr ""
+
+#: views.py:335
+#, python-format
+msgid "%s created successfully."
+msgstr ""
+
+#: views.py:337
+msgid "New object created successfully."
+msgstr ""
+
+#: views.py:355
+#, python-format
+msgid "Error deleting %s."
+msgstr ""
+
+#: views.py:357
+msgid "Error deleting object."
+msgstr ""
+
+#: views.py:362
+#, python-format
+msgid "%s deleted successfully."
+msgstr ""
+
+#: views.py:364
+msgid "Object deleted successfully."
+msgstr ""
 
 #: widgets.py:58
 msgid "None"
@@ -194,159 +253,171 @@ msgstr "Nici unul"
 #: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()"
-msgstr "Directorul temporar utilizat de site pentru a stoca miniaturi, previzualizări și fișiere temporare.  În cazul în care nu este specificat, se va fi creat cu ajutorul tempfile.mkdtemp ()"
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"Directorul temporar utilizat de site pentru a stoca miniaturi, "
+"previzualizări și fișiere temporare.  În cazul în care nu este specificat, "
+"se va fi creat cu ajutorul tempfile.mkdtemp ()"
 
 #: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr "Controlează mecanismul utilizat pentru autentificare. Optiunile sunt: numele de utilizator, e-mail"
+msgstr ""
+"Controlează mecanismul utilizat pentru autentificare. Optiunile sunt: numele "
+"de utilizator, e-mail"
 
 #: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
-msgstr "Permiteți accesul utilizatorilor neautentificati la toate punctele de vedere"
+msgstr ""
+"Permiteți accesul utilizatorilor neautentificati la toate punctele de vedere"
 
-#: templates/403.html:3 templates/403.html.py:7
+#: templates/403.html:5 templates/403.html.py:9
 msgid "Insufficient permissions"
 msgstr "permisiuni insuficiente"
 
-#: templates/403.html:9
+#: templates/403.html:11
 msgid "You don't have enough permissions for this operation."
 msgstr "Nu aveți permisiuni suficiente pentru această operație."
 
-#: templates/404.html:3 templates/404.html.py:7
+#: templates/404.html:5 templates/404.html.py:9
 msgid "Page not found"
 msgstr "Pagina nu a fost gasită"
 
-#: templates/404.html:9
+#: templates/404.html:11
 msgid "Sorry, but the requested page could not be found."
 msgstr "Ne pare rău, dar pagina solicitată nu a putut fi găsit."
 
-#: templates/calculate_form_title.html:11
+#: templates/calculate_form_title.html:8
 #, python-format
 msgid "Details for %(object_name)s: %(object)s"
 msgstr "Detalii pentru %(object_name)s: %(object)s"
 
-#: templates/calculate_form_title.html:13
+#: templates/calculate_form_title.html:10
 #, python-format
 msgid "Details for: %(object)s"
 msgstr "Detalii pentru: %(object)s"
 
-#: templates/calculate_form_title.html:18
-#, python-format
-msgid "Edit %(object_name)s:"
+#: templates/calculate_form_title.html:15
+#, fuzzy, python-format
+msgid "Edit %(object_name)s: %(object)s"
+msgstr "Detalii pentru %(object_name)s: %(object)s"
+
+#: templates/calculate_form_title.html:17
+#, fuzzy, python-format
+msgid "Edit: %(object)s"
 msgstr "Editează %(object_name)s:"
 
-#: templates/calculate_form_title.html:20
-msgid "Edit"
-msgstr "Editează"
-
-#: templates/calculate_form_title.html:24
+#: templates/calculate_form_title.html:21
 #, python-format
 msgid "Create new %(object_name)s"
 msgstr "Creati nou %(object_name)s"
 
-#: templates/calculate_form_title.html:26
+#: templates/calculate_form_title.html:23
 msgid "Create"
 msgstr "Creati"
 
-#: templates/generic_assign_remove.html:3
+#: templates/generic_assign_remove.html:5
 #, python-format
 msgid "Assign %(title)s %(object)s"
 msgstr "Atribuirea %(title)s  %(object)s "
 
-#: templates/generic_confirm.html:3 templates/generic_confirm.html.py:18
+#: templates/generic_confirm.html:5 templates/generic_confirm.html.py:19
 msgid "Confirm"
 msgstr "Confirmă"
 
-#: templates/generic_confirm.html:16
+#: templates/generic_confirm.html:17
 msgid "Confirm delete"
 msgstr "Confirmă stergerea"
 
-#: templates/generic_confirm.html:32
+#: templates/generic_confirm.html:33
 msgid "form icon"
 msgstr "icon formular"
 
-#: templates/generic_confirm.html:40
+#: templates/generic_confirm.html:41
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
 msgstr "Sunteți sigur că doriți să ștergeți %(object_name)s:  %(object)s ?"
 
-#: templates/generic_confirm.html:42
+#: templates/generic_confirm.html:43
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
 msgstr "Sunteți sigur că doriți să ștergeți:  %(object)s?"
 
-#: templates/generic_confirm.html:50
+#: templates/generic_confirm.html:51
 msgid "Yes"
 msgstr "Da"
 
-#: templates/generic_confirm.html:54
+#: templates/generic_confirm.html:55
 msgid "No"
 msgstr "Nu"
 
-#: templates/generic_form_instance.html:37
-#: templates/generic_form_subtemplate.html:56
+#: templates/generic_form_instance.html:40
+#: templates/generic_form_subtemplate.html:59
 msgid "required"
 msgstr "necesar"
 
-#: templates/generic_form_subtemplate.html:80
-#: templates/generic_form_subtemplate.html:82
-#: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:90
-#: templates/generic_list_subtemplate.html:52
-#: templates/generic_list_subtemplate.html:178
+#: templates/generic_form_subtemplate.html:83
+#: templates/generic_form_subtemplate.html:85
+#: templates/generic_list_horizontal_subtemplate.html:50
+#: templates/generic_list_horizontal_subtemplate.html:88
+#: templates/generic_list_subtemplate.html:53
+#: templates/generic_list_subtemplate.html:179
 msgid "Save"
 msgstr "salvează"
 
-#: templates/generic_form_subtemplate.html:80
-#: templates/generic_form_subtemplate.html:82
-#: templates/generic_list_horizontal_subtemplate.html:51
-#: templates/generic_list_horizontal_subtemplate.html:90
-#: templates/generic_list_subtemplate.html:52
-#: templates/generic_list_subtemplate.html:178
+#: templates/generic_form_subtemplate.html:83
+#: templates/generic_form_subtemplate.html:85
+#: templates/generic_list_horizontal_subtemplate.html:50
+#: templates/generic_list_horizontal_subtemplate.html:88
+#: templates/generic_list_subtemplate.html:53
+#: templates/generic_list_subtemplate.html:179
 msgid "Submit"
 msgstr "Trimiteţi"
 
-#: templates/generic_form_subtemplate.html:87
+#: templates/generic_form_subtemplate.html:90
 msgid "Cancel"
 msgstr "Anulează"
 
-#: templates/generic_list.html:6 templates/generic_list_horizontal.html:6
-#, python-format
-msgid "List of %(stripped_title)s"
+#: templates/generic_list.html:8 templates/generic_list_horizontal.html:8
+#, fuzzy, python-format
+msgid "List of %(title)s"
 msgstr "Lista de  %(stripped_title)s"
 
-#: templates/generic_list_horizontal_subtemplate.html:23
-#: templates/generic_list_subtemplate.html:24
+#: templates/generic_list_horizontal_subtemplate.html:24
+#: templates/generic_list_subtemplate.html:25
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr "Listă de %(title)s (%(start)s - %(end)s din %(total)s) (Page %(page_number)s din %(total_pages)s)"
+msgstr ""
+"Listă de %(title)s (%(start)s - %(end)s din %(total)s) (Page %(page_number)s "
+"din %(total_pages)s)"
 
-#: templates/generic_list_horizontal_subtemplate.html:25
-#: templates/generic_list_subtemplate.html:26
+#: templates/generic_list_horizontal_subtemplate.html:26
+#: templates/generic_list_subtemplate.html:27
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr "Listă de %(title)s (%(total)s)"
 
-#: templates/generic_list_subtemplate.html:72
+#: templates/generic_list_subtemplate.html:73
 msgid "Identifier"
 msgstr "ID"
 
-#: templates/generic_list_subtemplate.html:152
-#, python-format
-msgid "There are no %(stripped_title)s"
+#: templates/generic_list_subtemplate.html:153
+#, fuzzy, python-format
+msgid "There are no %(title)s"
 msgstr "Nu sunt %(stripped_title)s"
 
-#: templates/login.html:5
+#: templates/login.html:7
 msgid "Login"
 msgstr "Conectare"
 
-#: templates/password_change_done.html:3 templates/password_change_form.html:3
-#: templates/password_change_form.html:5
+#: templates/password_change_done.html:5 templates/password_change_form.html:5
+#: templates/password_change_form.html:7
 msgid "Password change"
 msgstr "Schimbarea parolei "
+
+#~ msgid "Edit"
+#~ msgstr "Editează"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
@@ -9,85 +9,86 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:33-0400\n"
 "PO-Revision-Date: 2013-02-04 00:27+0000\n"
 "Last-Translator: SadE54 <yannsuisini@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: __init__.py:18
-msgid "folder list"
-msgstr "liste des répertoires"
-
-#: __init__.py:19 views.py:77
-msgid "create folder"
-msgstr "créer un répertoire"
-
-#: __init__.py:20
-msgid "edit"
-msgstr "modifier"
-
-#: __init__.py:21
-msgid "delete"
-msgstr "supprimer"
-
-#: __init__.py:22
-msgid "remove from folder"
-msgstr "retirer du répertoire"
-
-#: __init__.py:23
-msgid "folder documents"
-msgstr "documents du répertoire"
-
-#: __init__.py:24
-msgid "add to a folder"
-msgstr "ajouter à un répertoire"
-
-#: __init__.py:25
-msgid "add to folder"
-msgstr "ajouter au répertoire"
-
-#: __init__.py:26 __init__.py:36 models.py:43 views.py:34
-msgid "folders"
-msgstr "répertoires"
-
-#: __init__.py:28
-msgid "ACLs"
-msgstr "ACLs"
 
 #: forms.py:38
 msgid "Folder"
 msgstr "Répertoire"
 
-#: models.py:11
+#: links.py:13
+msgid "folder list"
+msgstr "liste des répertoires"
+
+#: links.py:14 views.py:77
+msgid "create folder"
+msgstr "créer un répertoire"
+
+#: links.py:15
+msgid "edit"
+msgstr "modifier"
+
+#: links.py:16
+msgid "delete"
+msgstr "supprimer"
+
+#: links.py:17
+msgid "remove from folder"
+msgstr "retirer du répertoire"
+
+#: links.py:18
+msgid "folder documents"
+msgstr "documents du répertoire"
+
+#: links.py:19
+msgid "add to a folder"
+msgstr "ajouter à un répertoire"
+
+#: links.py:20
+msgid "add to folder"
+msgstr "ajouter au répertoire"
+
+#: links.py:21 links.py:24 models.py:42 views.py:34
+msgid "folders"
+msgstr "répertoires"
+
+#: links.py:23
+msgid "ACLs"
+msgstr "ACLs"
+
+#: models.py:10
 msgid "title"
 msgstr "titre"
 
-#: models.py:12
+#: models.py:11
 msgid "user"
 msgstr "utilisateur"
 
-#: models.py:13
+#: models.py:12
 msgid "datetime created"
 msgstr "date et heure de création"
 
-#: models.py:42 models.py:47 views.py:108 views.py:137 views.py:162
+#: models.py:41 models.py:46 views.py:108 views.py:137 views.py:162
 msgid "folder"
 msgstr "répertoire"
 
-#: models.py:48 views.py:209
+#: models.py:47 views.py:209
 msgid "document"
 msgstr "document"
 
-#: models.py:54 views.py:279
+#: models.py:53 views.py:279
 msgid "folder document"
 msgstr "document du répertoire"
 
-#: models.py:55
+#: models.py:54
 msgid "folders documents"
 msgstr "documents du répertoire"
 
@@ -182,7 +183,8 @@ msgstr "Document: %(document)s ajouté avec succès au répertoire: %(folder)s."
 #: views.py:201
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
-msgstr "Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
+msgstr ""
+"Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
 
 #: views.py:217
 #, python-format
@@ -218,14 +220,18 @@ msgstr "Document: %(document)s erreur de suppression: %(error)s"
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr "Êtes vous certain de vouloir supprimer le document: %(document)s du  répertoire \"%(folder)s\"?"
+msgstr ""
+"Êtes vous certain de vouloir supprimer le document: %(document)s du  "
+"répertoire \"%(folder)s\"?"
 
 #: views.py:290
 #, python-format
 msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder"
-" \"%(folder)s\"?"
-msgstr "Êtes vous certain de vouloir retirer les documents: %(documents)s du répertoire \"%(folder)s\"?"
+"Are you sure you wish to remove the documents: %(documents)s from the folder "
+"\"%(folder)s\"?"
+msgstr ""
+"Êtes vous certain de vouloir retirer les documents: %(documents)s du "
+"répertoire \"%(folder)s\"?"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
@@ -237,7 +243,12 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr "Ces répertoires peuvent également être qualifiés de répertoire utilisateurs.  Ils permettent à des utilisateurs particuliers de créer leur propre structure de  d'organisation de documents. Les répertoires créés par un utilisateur particulier ainsi que les documents qu'ils contiennent n'affectent en rien les répertoires et documents des autres utilisateurs."
+msgstr ""
+"Ces répertoires peuvent également être qualifiés de répertoire "
+"utilisateurs.  Ils permettent à des utilisateurs particuliers de créer leur "
+"propre structure de  d'organisation de documents. Les répertoires créés par "
+"un utilisateur particulier ainsi que les documents qu'ils contiennent "
+"n'affectent en rien les répertoires et documents des autres utilisateurs."
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"

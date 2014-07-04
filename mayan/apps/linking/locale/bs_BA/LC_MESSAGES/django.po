@@ -1,70 +1,72 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 01:48-0400\n"
+"POT-Creation-Date: 2014-07-03 21:33-0400\n"
 "PO-Revision-Date: 2013-06-27 09:28+0000\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"projects/p/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: __init__.py:17
-msgid "smart links actions"
-msgstr "smart link akcija"
-
-#: __init__.py:18 __init__.py:20 models.py:23 views.py:132
-msgid "smart links"
-msgstr "smart linkovi"
-
-#: __init__.py:21
-msgid "smart links list"
-msgstr "lista smart linkova"
-
-#: __init__.py:22
-msgid "create new smart link"
-msgstr "kreiraj novi smart link"
-
-#: __init__.py:23 __init__.py:28
-msgid "edit"
-msgstr "izmijeni"
-
-#: __init__.py:24 __init__.py:29
-msgid "delete"
-msgstr "obriši"
-
-#: __init__.py:26
-msgid "conditions"
-msgstr "uslovi"
-
-#: __init__.py:27
-msgid "create condition"
-msgstr "kreiraj uslove"
-
-#: __init__.py:31
-msgid "ACLs"
-msgstr "ACLs"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: forms.py:48
 msgid "Pages"
 msgstr "Stranice"
 
-#: forms.py:54
+#: forms.py:55
 msgid "Select"
 msgstr "Odaberi"
 
-#: forms.py:61
+#: forms.py:62
 msgid "Click on the image for full size view of the first page."
 msgstr "Klikni na sliku za pregled u punoj veličini prve stranice"
+
+#: links.py:11
+msgid "smart links actions"
+msgstr "smart link akcija"
+
+#: links.py:12 links.py:14 models.py:23 views.py:132
+msgid "smart links"
+msgstr "smart linkovi"
+
+#: links.py:15
+msgid "smart links list"
+msgstr "lista smart linkova"
+
+#: links.py:16
+msgid "create new smart link"
+msgstr "kreiraj novi smart link"
+
+#: links.py:17 links.py:22
+msgid "edit"
+msgstr "izmijeni"
+
+#: links.py:18 links.py:23
+msgid "delete"
+msgstr "obriši"
+
+#: links.py:20
+msgid "conditions"
+msgstr "uslovi"
+
+#: links.py:21
+msgid "create condition"
+msgstr "kreiraj uslove"
+
+#: links.py:25
+msgid "ACLs"
+msgstr "ACLs"
 
 #: literals.py:7
 msgid "and"
@@ -147,7 +149,10 @@ msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
-msgstr "Ovaj izraz će biti upoređen sa trenutno odabranim dokumentom. Metadata dokumenta su dostupna kao variable `metadata` i u svojstvima dokumenta pod variablom `document`."
+msgstr ""
+"Ovaj izraz će biti upoređen sa trenutno odabranim dokumentom. Metadata "
+"dokumenta su dostupna kao variable `metadata` i u svojstvima dokumenta pod "
+"variablom `document`."
 
 #: models.py:14 models.py:33 views.py:136 views.py:232
 msgid "enabled"
@@ -169,7 +174,9 @@ msgstr "podaci stranog dokumenta"
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
-msgstr "Ovo predstavlja metadata svih ostalih dokumenata. Dostupni objekti: `document.<attribute>` and `metadata.<metadata_type_name>`."
+msgstr ""
+"Ovo predstavlja metadata svih ostalih dokumenata. Dostupni objekti: "
+"`document.<attribute>` and `metadata.<metadata_type_name>`."
 
 #: models.py:31
 msgid "expression"
@@ -309,7 +316,8 @@ msgstr "Uslov smart linka: \"%s\" uspješno obrisan."
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
-msgstr "Greška brisanja smart link uslova: %(smart_link_condition)s; %(error)s."
+msgstr ""
+"Greška brisanja smart link uslova: %(smart_link_condition)s; %(error)s."
 
 #: views.py:333
 #, python-format
@@ -331,4 +339,9 @@ msgid ""
 "source, the results of these queries are a list of documents that relate in "
 "some manner to the document being displayed and allow users the ability to "
 "jump to and from linked documents very easily."
-msgstr "Smart linkovi su skup uvjetnih izjava koje se koriste za postavljanje upita na bazu podataka pomoću trenutnog dokumenta kao izvor podataka, rezultati tih upita su popis dokumenata koji se odnose na neki način prema dokumentu koji se prikazuje i omogućavaju korisnicima mogućnost da prelaze između povezanih dokumenata vrlo jednostavno."
+msgstr ""
+"Smart linkovi su skup uvjetnih izjava koje se koriste za postavljanje upita "
+"na bazu podataka pomoću trenutnog dokumenta kao izvor podataka, rezultati "
+"tih upita su popis dokumenata koji se odnose na neki način prema dokumentu "
+"koji se prikazuje i omogućavaju korisnicima mogućnost da prelaze između "
+"povezanih dokumenata vrlo jednostavno."
