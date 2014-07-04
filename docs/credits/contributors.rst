@@ -81,7 +81,7 @@ Translations
 
 * Dutch (Netherlands)
 
-  - Lucas Weel (ljj.weel@gmail.com)
+  - Lucas Weel
 
 * French
 
