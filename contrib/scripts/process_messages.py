@@ -9,7 +9,8 @@ APP_LIST = ('acls', 'checkouts', 'common', 'converter', 'django_gpg', 'documents
     'document_comments', 'document_indexing', 'document_signatures', 'dynamic_search',
     'folders', 'history', 'installation', 'linking', 'main', 'metadata', 'navigation',
     'ocr', 'permissions', 'project_setup', 'project_tools', 'scheduler', 'smart_settings',
-    'sources', 'tags', 'user_management', 'web_theme', 'bootstrap', 'registration')
+    'sources', 'tags', 'user_management', 'web_theme', 'bootstrap',
+    'registration', 'statistics')
 LANGUAGE_LIST = ('ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'hr_HR', 'id', 'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'tr_TR', 'vi_VN')
 
 makemessages = sh.Command('django-admin.py')
