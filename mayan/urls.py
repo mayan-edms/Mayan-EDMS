@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     (r'^scheduler/', include('scheduler.urls')),
     (r'^bootstrap/', include('bootstrap.urls')),
     (r'^registration/', include('registration.urls')),
+    (r'^statistics/', include('statistics.urls', namespace='statistics')),
 )
 
 

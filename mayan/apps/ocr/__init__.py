@@ -13,6 +13,7 @@ from main.api import register_maintenance_links
 from navigation.api import register_links, register_multi_item_links
 from project_tools.api import register_tool
 from scheduler.api import register_interval_job
+from statistics.classes import StatisticNamespace
 
 from . import models as ocr_models
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
@@ -25,6 +26,7 @@ from .links import (submit_document, submit_document_multiple,
 from .literals import QUEUEDOCUMENT_STATE_PENDING, QUEUEDOCUMENT_STATE_PROCESSING
 from .models import DocumentQueue
 from .permissions import PERMISSION_OCR_DOCUMENT
+from .statistics import OCRStatistics
 from .tasks import task_process_document_queues
 
 logger = logging.getLogger(__name__)
@@ -76,3 +78,6 @@ class_permissions(Document, [
 ])
 
 reset_queue_documents()
+
+namespace = StatisticNamespace(name='ocr', label=_(u'OCR'))
+namespace.add_statistic(OCRStatistics(name='ocr_stats', label=_(u'OCR queue statistics')))

@@ -14,6 +14,7 @@ from navigation.api import (register_links, register_top_menu,
     register_model_list_columns, register_multi_item_links,
     register_sidebar_template)
 from project_setup.api import register_setup
+from statistics.classes import StatisticNamespace
 
 from .conf import settings as document_settings
 from .conf.settings import THUMBNAIL_SIZE
@@ -44,6 +45,7 @@ from .permissions import (
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_EDIT,
     PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_NEW_VERSION)
+from .statistics import DocumentStatistics, DocumentUsageStatistics
 from .widgets import document_thumbnail
 
 # History setup
@@ -145,3 +147,7 @@ document_search.add_model_field('versions__pages__content', label=_(u'Content'))
 document_search.add_model_field('description', label=_(u'Description'))
 document_search.add_model_field('tags__name', label=_(u'Tags'))
 document_search.add_related_field('comments', 'Comment', 'comment', 'object_pk', label=_(u'Comments'))
+
+namespace = StatisticNamespace(name='documents', label=_(u'Documents'))
+namespace.add_statistic(DocumentStatistics(name='document_stats', label=_(u'Document tendencies')))
+namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_(u'Document usage')))

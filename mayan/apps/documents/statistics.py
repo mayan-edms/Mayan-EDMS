@@ -4,9 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Avg, Count, Min, Max
 
 from common.utils import pretty_size, pretty_size_10
+from statistics.classes import Statistic
 
-from .runtime import storage_backend
 from .models import Document, DocumentType, DocumentPage, DocumentVersion
+from .runtime import storage_backend
 
 
 def get_used_size(path, file_list):
@@ -37,37 +38,47 @@ def storage_count(path=u'.'):
         return total_count, total_size
 
 
-def get_statistics():
-    total_db_documents = Document.objects.only('pk',).count()
+class DocumentStatistics(Statistic):
+    def get_results(self):
+        results = []
 
-    paragraphs = [
-        _(u'Document types: %d') % DocumentType.objects.count(),
-        _(u'Documents in database: %d') % total_db_documents,
-    ]
-
-    try:
-        total_storage_documents, storage_used_space = storage_count()
-        paragraphs.append(_(u'Documents in storage: %d') %
-            total_storage_documents)
-        paragraphs.append(_(u'Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes') % {
-            'base_2': pretty_size(storage_used_space),
-            'base_10': pretty_size_10(storage_used_space),
-            'bytes': storage_used_space
-        })
-    except NotImplementedError:
-        pass
-
-    document_stats = DocumentVersion.objects.annotate(page_count=Count('pages')).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
-    paragraphs.extend(
-        [
-            _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
+        results.extend([
+            _(u'Document types: %d') % DocumentType.objects.count(),
+        ])
+        document_stats = DocumentVersion.objects.annotate(page_count=Count('pages')).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
+        results.extend([
             _(u'Minimum amount of pages per document: %d') % (document_stats['page_count__min'] or 0),
             _(u'Maximum amount of pages per document: %d') % (document_stats['page_count__max'] or 0),
             _(u'Average amount of pages per document: %f') % (document_stats['page_count__avg'] or 0),
-        ]
-    )
+        ])
 
-    return {
-        'title': _(u'Document statistics'),
-        'paragraphs': paragraphs
-    }
+        return results
+
+
+class DocumentUsageStatistics(Statistic):
+    def get_results(self):
+        results = []
+
+        total_db_documents = Document.objects.only('pk',).count()
+
+        results.extend([
+            _(u'Documents in database: %d') % total_db_documents,
+        ])
+
+        try:
+            total_storage_documents, storage_used_space = storage_count()
+            results.append(_(u'Documents in storage: %d') %
+                total_storage_documents)
+            results.append(_(u'Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes') % {
+                'base_2': pretty_size(storage_used_space),
+                'base_10': pretty_size_10(storage_used_space),
+                'bytes': storage_used_space
+            })
+        except NotImplementedError:
+            pass
+
+        results.extend([
+            _(u'Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
+        ])
+
+        return results

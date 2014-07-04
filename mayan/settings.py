@@ -81,6 +81,7 @@ INSTALLED_APPS = (
     'tags',
     'document_comments',
     'metadata',
+    'statistics',
     'documents',
     'linking',
     'document_indexing',

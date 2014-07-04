@@ -8,7 +8,7 @@ from project_setup.api import register_setup
 from project_tools.api import register_tool
 
 from .conf.settings import SIDE_BAR_SEARCH, DISABLE_HOME_VIEW
-from .links import (admin_site, diagnostics, maintenance_menu, sentry, statistics)
+from .links import admin_site, diagnostics, maintenance_menu, sentry
 
 if not DISABLE_HOME_VIEW:
     register_top_menu('home', link={'text': _(u'home'), 'view': 'home', 'famfam': 'house'}, position=0)
@@ -18,9 +18,8 @@ if not SIDE_BAR_SEARCH:
 if 'django.contrib.admin' in settings.INSTALLED_APPS:
     register_setup(admin_site)
 
-register_tool(maintenance_menu)
-register_tool(statistics)
 register_tool(diagnostics)
+register_tool(maintenance_menu)
 
 if 'sentry' in settings.INSTALLED_APPS:
     register_tool(sentry)
