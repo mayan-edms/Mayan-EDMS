@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import copy
+import inspect
 import re
 import urllib
 import urlparse
@@ -187,6 +188,7 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         if temp_navigation_links:
             links_dict.update(temp_navigation_links)
 
+    # Match view links
     try:
         links = links_dict[menu_name][current_view]['links']
         for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
@@ -196,12 +198,12 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
 
     obj, object_name = get_navigation_object(context)
 
-    try:
-        links = links_dict[menu_name][type(obj)]['links']
-        for link in resolve_links(context, links, current_view, current_path, parsed_query_string):
-            context_links.append(link)
-    except KeyError:
-        pass
+    # Match context navigation object links
+    for source, data in links_dict[menu_name].items():
+        if inspect.isclass(source) and isinstance(obj, source):
+            for link in resolve_links(context, data['links'], current_view, current_path, parsed_query_string):
+                context_links.append(link)
+            break
 
     return context_links
 
