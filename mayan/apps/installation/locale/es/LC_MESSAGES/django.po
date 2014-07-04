@@ -1,52 +1,51 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Roberto Rosario, 2012
+# Translators:
+# Roberto Rosario, 2012,2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:33-0400\n"
-"PO-Revision-Date: 2012-12-12 06:17+0000\n"
+"PO-Revision-Date: 2014-07-04 03:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:41 __init__.py:52
 msgid "label"
-msgstr ""
+msgstr "etiqueta"
 
 #: __init__.py:45
 msgid "items"
-msgstr ""
+msgstr "artículos"
 
 #: __init__.py:56
 msgid "value"
-msgstr ""
+msgstr "valor"
 
 #: links.py:7 models.py:172
 msgid "installation details"
 msgstr "detalles de la instalación"
 
 #: links.py:8 views.py:21
-#, fuzzy
 msgid "installation property namespaces"
-msgstr "detalles de la instalación"
+msgstr "categorias de propiedades de instalación"
 
 #: links.py:9
 msgid "details"
-msgstr ""
+msgstr "detalles"
 
 #: models.py:52
 msgid "Operating system"
-msgstr ""
+msgstr "Sistema operativo"
 
 #: models.py:54 models.py:61
 msgid "LSB OS"
@@ -110,7 +109,7 @@ msgstr "Particiones de disco"
 
 #: models.py:74
 msgid "Binary dependencies"
-msgstr ""
+msgstr "Dependencias binarias"
 
 #: models.py:78 models.py:80 models.py:82
 msgid "tesseract version"
@@ -133,9 +132,8 @@ msgid "pdftotext version"
 msgstr "versión de pdftotext"
 
 #: models.py:101
-#, fuzzy
 msgid "Mayan EDMS"
-msgstr "Versión de Mayan EDMS"
+msgstr "Mayan EDMS"
 
 #: models.py:103
 msgid "UUID"
@@ -150,9 +148,8 @@ msgid "Installed via fabfile"
 msgstr "Instalado a través de fabfile"
 
 #: models.py:108
-#, fuzzy
 msgid "Git repository"
-msgstr "Ejecutado desde un repositorio Git"
+msgstr "Repositorio Git"
 
 #: models.py:113 models.py:117
 msgid "Running from a Git repository"
@@ -196,12 +193,11 @@ msgstr "Mensaje de sumisión"
 
 #: models.py:129
 msgid "VirtuanEnv"
-msgstr ""
+msgstr "VirtualEnv"
 
 #: models.py:133
-#, fuzzy
 msgid "pip not found."
-msgstr "No se encontró"
+msgstr "pip no fue encontrado."
 
 #: permissions.py:7
 msgid "Installation"
@@ -212,9 +208,9 @@ msgid "View installation environment details"
 msgstr "Ver detalles del ambiente de instalación"
 
 #: views.py:33
-#, fuzzy, python-format
+#, python-format
 msgid "installation namespace details for: %s"
-msgstr "detalles de la instalación"
+msgstr "detalles de categoría para de instalación: %s"
 
 #~ msgid "Installation environment details"
-#~ msgstr "Detalles del ambiente de instalación"
+#~ msgstr "Installation environment details"

@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Roberto Rosario, 2011-2012
+# Translators:
+# Roberto Rosario, 2011-2012,2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:34-0400\n"
-"PO-Revision-Date: 2013-11-20 13:14+0000\n"
+"PO-Revision-Date: 2014-07-04 03:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:50 widgets.py:39
@@ -29,8 +29,7 @@ msgstr "Expandir archivos comprimidos"
 
 #: forms.py:35 forms.py:60
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Subir los archivos de un archivo comprimido como documentos individuales"
+msgstr "Subir los archivos de un archivo comprimido como documentos individuales"
 
 #: forms.py:43
 msgid "Staging file"
@@ -41,14 +40,12 @@ msgid "File"
 msgstr "Archivo"
 
 #: links.py:13
-#, fuzzy
 msgid "upload new documents"
-msgstr "subir nueva versión"
+msgstr "subir nuevos documentos"
 
 #: links.py:14
-#, fuzzy
 msgid "clone metadata"
-msgstr "Metadatos actuales"
+msgstr "clonar metadatos"
 
 #: links.py:16
 msgid "preview"
@@ -244,10 +241,9 @@ msgstr "intervalo"
 
 #: models.py:194
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
-msgstr ""
-"Inverval es segundos, donde se comprueba la ruta de la carpeta para detectar "
-"nuevos documentos."
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr "Inverval es segundos, donde se comprueba la ruta de la carpeta para detectar nuevos documentos."
 
 #: models.py:218
 msgid "watch folder"
@@ -336,16 +332,12 @@ msgstr "Upload sources"
 #: views.py:122
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
-"No hay fuentes de documentos interactivos definidos o ninguna de ellas ha "
-"sido activada."
+msgstr "No hay fuentes de documentos interactivos definidos o ninguna de ellas ha sido activada."
 
 #: views.py:123
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
-"Haga clic en %(setup_link)s para agregar o habilitar algunas fuentes de "
-"documentos."
+msgstr "Haga clic en %(setup_link)s para agregar o habilitar algunas fuentes de documentos."
 
 #: views.py:181
 msgid "New document version uploaded successfully."
@@ -357,8 +349,7 @@ msgstr "Archivo subido correctamente."
 
 #: views.py:188
 msgid "File uncompressed successfully and uploaded as individual files."
-msgstr ""
-"Archivo descomprimido exitosamente y subido como archivos individuales."
+msgstr "Archivo descomprimido exitosamente y subido como archivos individuales."
 
 #: views.py:191
 msgid "File was not a compressed file, uploaded as it was."
@@ -396,16 +387,14 @@ msgstr "Archivo provisional: %s, subido exitosamente."
 #: views.py:263
 #, python-format
 msgid ""
-"Staging file: %s, uncompressed successfully and uploaded as individual files."
-msgstr ""
-"Archivo provisional: %s, descomprido exitosamente y subido como documentos "
-"individuales."
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
+msgstr "Archivo provisional: %s, descomprido exitosamente y subido como documentos individuales."
 
 #: views.py:266
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
-msgstr ""
-"Archivo provisional: %s, no esta comprimido, subido como un solo documento."
+msgstr "Archivo provisional: %s, no esta comprimido, subido como un solo documento."
 
 #: views.py:271
 #, python-format
@@ -532,9 +521,7 @@ msgstr "Error borrando la transformación de la fuente; %(error)s"
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"¿Está seguro que desea eliminar la transformación de la fuente "
-"\"%(transformation)s\""
+msgstr "¿Está seguro que desea eliminar la transformación de la fuente \"%(transformation)s\""
 
 #: views.py:712
 msgid "Source transformation created successfully"
@@ -552,16 +539,16 @@ msgstr "Crear una nueva transformación para la fuente: %s"
 
 #: wizards.py:53
 msgid "step 1 of 3: Document type"
-msgstr ""
+msgstr "Paso 1 de 3: Tipo de documento"
 
 #: wizards.py:54
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "paso 2 de 3: Selección de metadatos"
 
 #: wizards.py:55
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "paso 3 de 3: Metadatos de documento"
 
 #: wizards.py:73
 msgid "Next step"
-msgstr ""
+msgstr "Siguiente paso"
