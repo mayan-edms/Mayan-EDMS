@@ -33,7 +33,7 @@ from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
 from .events import HISTORY_DOCUMENT_EDITED
-from .conf.settings import (PREVIEW_SIZE, STORAGE_BACKEND, ZOOM_PERCENT_STEP,
+from .conf.settings import (PREVIEW_SIZE, ZOOM_PERCENT_STEP,
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, RECENT_COUNT)
 from .forms import (DocumentForm_edit, DocumentPropertiesForm,
         DocumentPreviewForm, DocumentPageForm,
@@ -51,6 +51,7 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
     PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_TYPE_EDIT,
     PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE,
     PERMISSION_DOCUMENT_TYPE_VIEW)
+from .runtime import storage_backend
 
 logger = logging.getLogger(__name__)
 
@@ -532,7 +533,7 @@ def document_missing_list(request):
     else:
         missing_id_list = []
         for document in Document.objects.only('id',):
-            if not STORAGE_BACKEND().exists(document.file):
+            if not storate_backend.exists(document.file):
                 missing_id_list.append(document.pk)
 
         return render_to_response('generic_list.html', {
