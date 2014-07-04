@@ -3,7 +3,7 @@ import sys
 import os
 import optparse
 
-import pbs
+import sh
 
 APP_LIST = ('acls', 'checkouts', 'common', 'converter', 'django_gpg', 'documents',
     'document_comments', 'document_indexing', 'document_signatures', 'dynamic_search',
@@ -12,13 +12,13 @@ APP_LIST = ('acls', 'checkouts', 'common', 'converter', 'django_gpg', 'documents
     'sources', 'tags', 'user_management', 'web_theme', 'bootstrap', 'registration')
 LANGUAGE_LIST = ('ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'hr_HR', 'id', 'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'tr_TR', 'vi_VN')
 
-makemessages = pbs.Command('django-admin.py')
+makemessages = sh.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')
 
-compilemessages = pbs.Command('django-admin.py')
+compilemessages = sh.Command('django-admin.py')
 compilemessages = compilemessages.bake('compilemessages')
 
-pull_translations = pbs.Command('tx')
+pull_translations = sh.Command('tx')
 pull_translations = pull_translations.bake('pull')
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'mayan'))
