@@ -6,7 +6,6 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
-from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 
 from acls.models import AccessEntry
@@ -16,19 +15,32 @@ from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
 from permissions.models import Permission
 
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
-from .models import Document
+from .models import Document, DocumentVersion, DocumentPage
 from .permissions import PERMISSION_DOCUMENT_VIEW
-from .resources import ResourceDocument
+from .resources import ResourceDocument, ResourceDocumentVersion, ResourceDocumentPage
 
 logger = logging.getLogger(__name__)
 
 # API Views
 
 
-class APIDocumentView(RetrieveAPIView):
+class APIDocumentPageView(generics.RetrieveAPIView):
+    allowed_methods = ['GET']
+    serializer_class = ResourceDocumentPage
+    queryset = DocumentPage.objects.all()
+
+
+class APIDocumentView(generics.RetrieveAPIView):
     allowed_methods = ['GET']
     serializer_class = ResourceDocument
     queryset = Document.objects.all()
+
+
+class APIDocumentVersionView(generics.RetrieveAPIView):
+    allowed_methods = ['GET']
+    serializer_class = DocumentVersion
+    queryset = DocumentVersion.objects.all()
+
 
 
 class APIDocumentImageView(generics.GenericAPIView):
