@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django.conf.urls import url
 
 from .cleanup import cleanup
-from .api import APIReadOnlyInstanceModelView, APIDocumentImageView
+from .api import APIDocumentView, APIDocumentImageView
 
 bootstrap_models = [
     {
@@ -17,6 +17,6 @@ bootstrap_models = [
 cleanup_functions = [cleanup]
 
 version_0_api_services = [
-    {'urlpattern': url(r'^document/(?P<pk>[0-9]+)/$', APIReadOnlyInstanceModelView.as_view(), name='document-detail'), 'description': 'Show document data', 'url': 'document/<document ID>'},
+    {'urlpattern': url(r'^document/(?P<pk>[0-9]+)/$', APIDocumentView.as_view(), name='document-detail'), 'description': 'Show document data', 'url': 'document/<document ID>'},
     {'urlpattern': url(r'^document/(?P<pk>[0-9]+)/image/$', APIDocumentImageView.as_view(), name='document-image'), 'description': 'Return a base64 image of the document', 'url': 'document/<document_id>/image/?page=<page number>&zoom=<zoom percent>&rotate=<rotation degrees>'},
 ]

@@ -18,16 +18,16 @@ from permissions.models import Permission
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .models import Document
 from .permissions import PERMISSION_DOCUMENT_VIEW
-from .resources import DocumentResourceSimple
+from .resources import ResourceDocument
 
 logger = logging.getLogger(__name__)
 
 # API Views
 
 
-class APIReadOnlyInstanceModelView(RetrieveAPIView):
+class APIDocumentView(RetrieveAPIView):
     allowed_methods = ['GET']
-    serializer_class = DocumentResourceSimple
+    serializer_class = ResourceDocument
     queryset = Document.objects.all()
 
 
