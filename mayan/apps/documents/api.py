@@ -38,9 +38,8 @@ class APIDocumentView(generics.RetrieveAPIView):
 
 class APIDocumentVersionView(generics.RetrieveAPIView):
     allowed_methods = ['GET']
-    serializer_class = DocumentVersion
+    serializer_class = ResourceDocumentVersion
     queryset = DocumentVersion.objects.all()
-
 
 
 class APIDocumentImageView(generics.GenericAPIView):

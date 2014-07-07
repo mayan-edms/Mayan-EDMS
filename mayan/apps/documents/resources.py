@@ -10,7 +10,6 @@ from .models import Document, DocumentVersion, DocumentPage
 class ResourceDocumentPage(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DocumentPage
-        fields = ('url', 'content', 'page_label', 'page_number')
 
 
 class ResourceDocumentVersion(serializers.HyperlinkedModelSerializer):
@@ -18,7 +17,6 @@ class ResourceDocumentVersion(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = DocumentVersion
-        fields = ('document', 'major', 'minor', 'micro', 'release_level', 'serial', 'timestamp', 'comment', 'file', 'mimetype', 'encoding', 'filename', 'checksum', 'pages')
 
 
 class ResourceDocument(serializers.HyperlinkedModelSerializer):
