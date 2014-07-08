@@ -8,8 +8,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from converter.literals import DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
-from documents.conf.settings import (THUMBNAIL_SIZE, PREVIEW_SIZE,
-    DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE)
+from documents.conf.settings import THUMBNAIL_SIZE, PREVIEW_SIZE
 
 
 class FamFamRadioFieldRenderer(forms.widgets.RadioFieldRenderer):

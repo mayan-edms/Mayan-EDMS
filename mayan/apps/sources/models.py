@@ -7,7 +7,6 @@ import os
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
-from django.core.files.storage import FileSystemStorage
 from django.db import models, transaction
 from django.utils.translation import ugettext_lazy as _
 

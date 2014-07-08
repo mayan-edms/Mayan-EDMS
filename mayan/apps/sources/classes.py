@@ -1,22 +1,12 @@
 from __future__ import absolute_import
 
 import base64
-import errno
 import os
 import urllib
 
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.files import File
-from django.core.files.storage import FileSystemStorage
-from django.utils.encoding import smart_str
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
 
-from common.utils import fs_cleanup
-from converter.api import convert, cache_cleanup
-from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
-    DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
-from documents.conf.settings import DISPLAY_SIZE, THUMBNAIL_SIZE
+from converter.api import convert
 from mimetype.api import get_mimetype
 
 
@@ -54,7 +44,7 @@ class StagingFile(object):
             image.close()
             return u'data:%s;base64,%s' % (mimetype, base64_data)
         else:
-            return file_path
+            return converted_file_path
 
     def delete(self):
         os.unlink(self.get_full_path())
