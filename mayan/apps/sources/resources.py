@@ -1,10 +1,14 @@
 from __future__ import absolute_import
 
+import logging
+
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 from .classes import StagingFile
 from .models import StagingFolder
+
+logger = logging.getLogger(__name__)
 
 
 class SerializerStagingFolderFile(serializers.Serializer):
@@ -23,7 +27,11 @@ class SerializerStagingFolder(serializers.HyperlinkedModelSerializer):
     files = serializers.SerializerMethodField('get_files')
 
     def get_files(self, obj):
-        return [SerializerStagingFolderFile(entry).data for entry in obj.get_files()]
+        try:
+            return [SerializerStagingFolderFile(entry).data for entry in obj.get_files()]
+        except Exception as exception:
+            logger.error('unhandled exception: %s' % exception)
+            return []
 
     class Meta:
         model = StagingFolder
