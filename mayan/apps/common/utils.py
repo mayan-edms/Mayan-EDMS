@@ -454,11 +454,14 @@ def load_backend(backend_string):
         raise
 
 
-def fs_cleanup(filename):
+def fs_cleanup(filename, suppress_exceptions=True):
     """
     Tries to remove the given filename. Ignores non-existent files
     """
     try:
         os.remove(filename)
     except OSError:
-        pass
+        if suppress_exceptions:
+            pass
+        else:
+            raise
