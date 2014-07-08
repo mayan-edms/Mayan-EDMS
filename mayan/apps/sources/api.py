@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 # API Views
 
-class StagingSourceFileView(generics.GenericAPIView):
+class APIStagingSourceFileView(generics.GenericAPIView):
     """
     Details of the selected staging file.
     """
@@ -32,7 +32,7 @@ class StagingSourceFileView(generics.GenericAPIView):
         return Response(SerializerStagingFolderFile(staging_folder.get_file(encoded_filename=filename), context={'request': request}).data)
 
 
-class StagingSourceListView(generics.ListAPIView):
+class APIStagingSourceListView(generics.ListAPIView):
     """
     Returns a list of all the staging folders and the files they contain.
     """
@@ -41,7 +41,7 @@ class StagingSourceListView(generics.ListAPIView):
     queryset = StagingFolder.objects.all()
 
 
-class StagingSourceView(generics.RetrieveAPIView):
+class APIStagingSourceView(generics.RetrieveAPIView):
     """
     Details of the selected staging folders and the files it contains.
     """
@@ -49,7 +49,7 @@ class StagingSourceView(generics.RetrieveAPIView):
     queryset = StagingFolder.objects.all()
 
 
-class StagingSourceFileImageView(generics.GenericAPIView):
+class APIStagingSourceFileImageView(generics.GenericAPIView):
     """
     Image of the selected staging file.
     """
