@@ -37,9 +37,8 @@ class StagingFile(object):
     def __unicode__(self):
         return unicode(self.filename)
 
-    def open(self):
-        return open(self.get_full_path(), mode='rb')
-        #return File(file=descriptor, name=filename)
+    def as_file(self):
+        return File(file=open(self.get_full_path(), mode='rb'), name=self.filename)
 
     def get_full_path(self):
         return os.path.join(self.staging_folder.folder_path, self.filename)
