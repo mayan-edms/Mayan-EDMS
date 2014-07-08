@@ -39,10 +39,10 @@ urlpatterns = patterns('sources.views',
 
 
 #version_0_api_services = [
-    url(r'^api/staging_folder/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/image/$', APIStagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
-    url(r'^api/staging_folder/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/$', APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
-    url(r'^api/staging_folder/$', APIStagingSourceListView.as_view(), name='stagingfolder-list'),
-    url(r'^api/staging_folder/(?P<pk>[0-9]+)/$', APIStagingSourceView.as_view(), name='stagingfolder-detail')
+    url(r'^api/staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/image/$', APIStagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
+    url(r'^api/staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/$', APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
+    url(r'^api/staging_folders/$', APIStagingSourceListView.as_view(), name='stagingfolder-list'),
+    url(r'^api/staging_folders/(?P<pk>[0-9]+)/$', APIStagingSourceView.as_view(), name='stagingfolder-detail')
 #]
 
 )
