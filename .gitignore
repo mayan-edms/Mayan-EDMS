@@ -17,4 +17,5 @@ gpg_home/
 /venv/
 .coverage
 /dist/
+.idea/
 *egg-info*
