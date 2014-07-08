@@ -7,6 +7,7 @@ from documents.models import Document
 from navigation.api import register_links, register_model_list_columns
 from project_setup.api import register_setup
 
+from .classes import StagingFile
 from .links import (document_create_multiple, document_create_siblings,
     staging_file_delete, setup_sources, setup_web_form_list,
     setup_staging_folder_list, setup_watch_folder_list,
@@ -16,23 +17,19 @@ from .links import (document_create_multiple, document_create_siblings,
     upload_version)
 from .models import (WebForm, StagingFolder, SourceTransformation,
     WatchFolder)
-from .staging import StagingFile
 from .widgets import staging_file_thumbnail
 
-register_links(StagingFile, [staging_file_delete])
+register_links([StagingFile], [staging_file_delete])
 
 register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
 
-# register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
 register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 
-# register_links(WebForm, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
 register_links(WebForm, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 register_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create'], [setup_sources, setup_source_create], menu_name='sidebar')
 
-# register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
 register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 register_links(StagingFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
@@ -48,7 +45,7 @@ source_views = ['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch
 
 register_model_list_columns(StagingFile, [
         {'name': _(u'thumbnail'), 'attribute':
-            encapsulate(lambda x: staging_file_thumbnail(x))
+            encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='staging_list', title=x.filename, size='100'))
         },
     ])
 

@@ -1,9 +1,15 @@
 from django import forms
-from django.utils.safestring import mark_safe
-from django.utils.encoding import force_unicode
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.utils.encoding import force_unicode
+from django.utils.html import strip_tags
+from django.utils.http import urlencode
+from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
+
+from converter.literals import DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from documents.conf.settings import (THUMBNAIL_SIZE, PREVIEW_SIZE,
+    DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE)
 
 
 class FamFamRadioFieldRenderer(forms.widgets.RadioFieldRenderer):
@@ -25,17 +31,55 @@ class FamFamRadioSelect(forms.widgets.RadioSelect):
     renderer = FamFamRadioFieldRenderer
 
 
-def staging_file_thumbnail(staging_file):
-    try:
-        staging_file.get_valid_image()
-        template = u'<a class="fancybox-staging" href="%(url)s" title="%(filename)s" rel="staging")><img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)simages/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript></a>'
-    except:
-        template = u'<img class="lazy-load" data-href="%(thumbnail)s" src="%(static_url)simages/ajax-loader.gif" alt="%(string)s" /><noscript><img src="%(thumbnail)s" alt="%(string)s" /></noscript>'
+def staging_file_thumbnail(staging_file, **kwargs):
+    return staging_file_html_widget(staging_file, click_view='stagingfolderfile-image-view', **kwargs)
 
-    return mark_safe(template % {
-        'url': reverse('staging_file_preview', args=[staging_file.source.source_type, staging_file.source.pk, staging_file.id]),
-        'thumbnail': reverse('staging_file_thumbnail', args=[staging_file.source.pk, staging_file.id]),
-        'static_url': settings.STATIC_URL,
-        'string': _(u'thumbnail'),
-        'filename': staging_file.filename
-    })
+
+def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox-staging', image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False):
+    result = []
+
+    alt_text = _(u'staging file page image')
+
+    query_dict = {
+        'page': page,
+        'zoom': zoom,
+        'rotation': rotation,
+        'size': size,
+    }
+
+    if gallery_name:
+        gallery_template = u'rel="%s"' % gallery_name
+    else:
+        gallery_template = u''
+
+    query_string = urlencode(query_dict)
+
+    preview_view = u'%s?%s' % (reverse('stagingfolderfile-image-view', args=[staging_file.staging_folder.pk, staging_file.filename]), query_string)
+
+    plain_template = []
+    plain_template.append(u'<img src="%s" alt="%s" />' % (preview_view, alt_text))
+
+    result.append(u'<div class="tc" id="staging_file-%s-%d">' % (staging_file.filename, page if page else DEFAULT_PAGE_NUMBER))
+
+    if title:
+        title_template = u'title="%s"' % strip_tags(title)
+    else:
+        title_template = u''
+
+    if click_view:
+        # TODO: fix this hack
+        query_dict['size'] = PREVIEW_SIZE
+        query_string = urlencode(query_dict)
+        result.append(u'<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, u'%s?%s' % (reverse(click_view, args=[staging_file.staging_folder.pk, staging_file.filename]), query_string), title_template))
+
+    if nolazyload:
+        result.append(u'<img style="border: 1px solid black;" src="%s" alt="%s" />' % (preview_view, alt_text))
+    else:
+        result.append(u'<img class="thin_border %s" data-original="%s" src="%simages/ajax-loader.gif" alt="%s" />' % (image_class, preview_view, settings.STATIC_URL, alt_text))
+        result.append(u'<noscript><img style="border: 1px solid black;" src="%s" alt="%s" /></noscript>' % (preview_view, alt_text))
+
+    if click_view:
+        result.append(u'</a>')
+    result.append(u'</div>')
+
+    return mark_safe(u''.join(result))

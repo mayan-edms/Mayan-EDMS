@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.core.files.storage import FileSystemStorage
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -219,10 +220,10 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
         elif source_type == SOURCE_CHOICE_STAGING:
             staging_folder = get_object_or_404(StagingFolder, pk=source_id)
             context['source'] = staging_folder
-            StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
+
             if request.method == 'POST':
                 form = StagingDocumentForm(request.POST, request.FILES,
-                    cls=StagingFile, document_type=document_type,
+                    document_type=document_type,
                     show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
                     source=staging_folder,
                     instance=document
@@ -280,15 +281,14 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             raise
                         messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
-                form = StagingDocumentForm(cls=StagingFile,
-                    document_type=document_type,
+                form = StagingDocumentForm(document_type=document_type,
                     show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
                     source=staging_folder,
                     instance=document
                 )
             try:
-                staging_filelist = StagingFile.get_all()
-            except Exception, e:
+                staging_filelist = list(staging_folder.get_files())
+            except Exception as e:
                 messages.error(request, e)
                 staging_filelist = []
             finally:
@@ -374,63 +374,20 @@ def get_form_filename(form):
     return filename
 
 
-def staging_file_preview(request, source_type, source_id, staging_file_id):
+def staging_file_delete(request, staging_folder_pk, filename):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
-    staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-    StagingFile = create_staging_file_class(request, staging_folder.folder_path)
-    transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
+    staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
 
-    output_file = StagingFile.get(staging_file_id).get_image(
-        size=staging_folder.get_preview_size(),
-        transformations=transformations
-    )
-    if errors and (request.user.is_staff or request.user.is_superuser):
-        for error in errors:
-            messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
-                'error': error
-            })
-
-    return sendfile.sendfile(request, output_file)
-
-
-def staging_file_thumbnail(request, source_id, staging_file_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
-    staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-    StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
-    transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
-
-    output_file = StagingFile.get(staging_file_id).get_image(
-        size=THUMBNAIL_SIZE,
-        transformations=transformations
-    )
-    if errors and (request.user.is_staff or request.user.is_superuser):
-        for error in errors:
-            messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
-                'error': error
-            })
-
-    return sendfile.sendfile(request, output_file)
-
-
-def staging_file_delete(request, source_type, source_id, staging_file_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
-    staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-    StagingFile = create_staging_file_class(request, staging_folder.folder_path)
-
-    staging_file = StagingFile.get(staging_file_id)
+    staging_file = staging_folder.get_file(filename)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
         try:
-            transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
-            staging_file.delete(
-                preview_size=staging_folder.get_preview_size(),
-                transformations=transformations
-            )
+            staging_file.delete()
             messages.success(request, _(u'Staging file delete successfully.'))
-        except Exception, e:
-            messages.error(request, _(u'Staging file delete error; %s.') % e)
+        except Exception as exception:
+            messages.error(request, _(u'Staging file delete error; %s.') % exception)
         return HttpResponseRedirect(next)
 
     results = get_active_tab_links()

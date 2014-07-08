@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+import logging
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -11,6 +13,8 @@ from .models import (WebForm, StagingFolder, SourceTransformation,
 from .widgets import FamFamRadioSelect
 from .utils import validate_whitelist_blacklist
 
+logger = logging.getLogger(__name__)
+
 
 class StagingDocumentForm(DocumentForm):
     """
@@ -18,15 +22,16 @@ class StagingDocumentForm(DocumentForm):
     StagingFile class passed as 'cls' argument
     """
     def __init__(self, *args, **kwargs):
-        cls = kwargs.pop('cls')
         show_expand = kwargs.pop('show_expand', False)
         self.source = kwargs.pop('source')
         super(StagingDocumentForm, self).__init__(*args, **kwargs)
+
         try:
             self.fields['staging_file_id'].choices = [
-                (staging_file.id, staging_file) for staging_file in cls.get_all()
+                (hash(staging_file), unicode(staging_file)) for staging_file in self.source.get_files()
             ]
-        except:
+        except Exception as exception:
+            logger.error('exception: %s' % exception)
             pass
 
         if show_expand:
