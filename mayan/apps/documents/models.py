@@ -143,8 +143,11 @@ class Document(models.Model):
         logger.debug('file_path: %s' % file_path)
 
         if as_base64:
+            mimetype = get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0]
             image = open(file_path, 'r')
-            return u'data:%s;base64,%s' % (get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0], base64.b64encode(image.read()))
+            base64_data = base64.b64encode(image.read())
+            image.close()
+            return u'data:%s;base64,%s' % (mimetype, base64_data)
         else:
             return file_path
 
