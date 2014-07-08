@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import base64
 import errno
 import os
+import urllib
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.files import File
@@ -22,9 +23,14 @@ class StagingFile(object):
     Simple class to extend the File class to add preview capabilities
     files in a directory on a storage
     """
-    def __init__(self, staging_folder, filename):
+    def __init__(self, staging_folder, filename=None, encoded_filename=None):
         self.staging_folder = staging_folder
-        self.filename = filename
+        if encoded_filename:
+            self.encoded_filename = str(encoded_filename)
+            self.filename = base64.urlsafe_b64decode(urllib.unquote_plus(self.encoded_filename))
+        else:
+            self.filename = filename
+            self.encoded_filename = base64.urlsafe_b64encode(filename)
 
     def __unicode__(self):
         return unicode(self.filename)

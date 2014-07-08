@@ -42,8 +42,7 @@ class APIStagingSourceView(generics.RetrieveAPIView):
 class APIStagingSourceFileImageView(generics.GenericAPIView):
     def get(self, request, staging_folder_pk, filename):
         staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
-
-        staging_file = staging_folder.get_file(filename)
+        staging_file = staging_folder.get_file(encoded_filename=filename)
 
         #try:
         #    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])

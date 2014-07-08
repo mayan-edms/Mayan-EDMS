@@ -13,7 +13,7 @@ from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
 document_create_multiple = {'text': _(u'upload new documents'), 'view': 'document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
 document_create_siblings = {'text': _(u'clone metadata'), 'view': 'document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 
-staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.pk', 'object.filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
+staging_file_delete = {'text': _(u'delete'), 'view': 'staging_file_delete', 'args': ['source.pk', 'object.encoded_filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
 
 setup_sources = {'text': _(u'sources'), 'view': 'setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebForm], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW], 'children_view_regex': [r'setup_web_form', r'setup_staging_folder', r'setup_source_']}
 setup_web_form_list = {'text': _(u'web forms'), 'view': 'setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebForm], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}

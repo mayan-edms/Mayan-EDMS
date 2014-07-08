@@ -378,7 +378,7 @@ def staging_file_delete(request, staging_folder_pk, filename):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
     staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
 
-    staging_file = staging_folder.get_file(filename)
+    staging_file = staging_folder.get_file(encoded_filename=filename)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 

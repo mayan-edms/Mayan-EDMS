@@ -54,7 +54,7 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
 
     query_string = urlencode(query_dict)
 
-    preview_view = u'%s?%s' % (reverse('stagingfolderfile-image-view', args=[staging_file.staging_folder.pk, staging_file.filename]), query_string)
+    preview_view = u'%s?%s' % (reverse('stagingfolderfile-image-view', args=[staging_file.staging_folder.pk, staging_file.encoded_filename]), query_string)
 
     plain_template = []
     plain_template.append(u'<img src="%s" alt="%s" />' % (preview_view, alt_text))
@@ -70,7 +70,7 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
         # TODO: fix this hack
         query_dict['size'] = PREVIEW_SIZE
         query_string = urlencode(query_dict)
-        result.append(u'<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, u'%s?%s' % (reverse(click_view, args=[staging_file.staging_folder.pk, staging_file.filename]), query_string), title_template))
+        result.append(u'<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, u'%s?%s' % (reverse(click_view, args=[staging_file.staging_folder.pk, staging_file.encoded_filename]), query_string), title_template))
 
     if nolazyload:
         result.append(u'<img style="border: 1px solid black;" src="%s" alt="%s" />' % (preview_view, alt_text))

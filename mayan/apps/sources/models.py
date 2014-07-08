@@ -169,15 +169,15 @@ class StagingFolder(InteractiveBaseModel):
 
         return DIMENSION_SEPARATOR.join(dimensions)
 
-    def get_file(self, filename):
-        return StagingFile(staging_folder=self, filename=filename)
+    def get_file(self, *args, **kwargs):
+        return StagingFile(staging_folder=self, *args, **kwargs)
 
     def get_files(self):
         try:
             for entry in sorted([os.path.normcase(f) for f in os.listdir(self.folder_path) if os.path.isfile(os.path.join(self.folder_path, f))]):
                 yield self.get_file(filename=entry)
         except OSError as exception:
-            raise Exception(ugettext(u'Unable get list of staging files: %s') % exception)
+            raise Exception(_(u'Unable get list of staging files: %s') % exception)
 
     class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'staging folder')
