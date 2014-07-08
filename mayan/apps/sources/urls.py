@@ -2,8 +2,8 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
-from .api import (APIStagingSourceListView, APIStagingSourceView,
-    APIStagingSourceFileView, APIStagingSourceFileImageView)
+from .api import (StagingSourceListView, StagingSourceView,
+    StagingSourceFileView, StagingSourceFileImageView)
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
     SOURCE_CHOICE_WATCH)
 from .wizards import DocumentCreateWizard
@@ -40,8 +40,8 @@ urlpatterns = patterns('sources.views',
 )
 
 api_urls = patterns('',
-    url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/image/$', APIStagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
-    url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/$', APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
-    url(r'^staging_folders/$', APIStagingSourceListView.as_view(), name='stagingfolder-list'),
-    url(r'^staging_folders/(?P<pk>[0-9]+)/$', APIStagingSourceView.as_view(), name='stagingfolder-detail')
+    url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/image/$', StagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
+    url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/$', StagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
+    url(r'^staging_folders/$', StagingSourceListView.as_view(), name='stagingfolder-list'),
+    url(r'^staging_folders/(?P<pk>[0-9]+)/$', StagingSourceView.as_view(), name='stagingfolder-detail')
 )

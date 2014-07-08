@@ -6,10 +6,8 @@ from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import register_links, register_model_list_columns
 from project_setup.api import register_setup
-from rest_api.classes import EndPoint
+from rest_api.classes import APIEndPoint
 
-from .api import (APIStagingSourceListView, APIStagingSourceView,
-    APIStagingSourceFileView, APIStagingSourceFileImageView)
 from .classes import StagingFile
 from .links import (document_create_multiple, document_create_siblings,
     staging_file_delete, setup_sources, setup_web_form_list,
@@ -58,5 +56,6 @@ register_setup(setup_sources)
 register_links([Document, 'document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
 register_links(Document, [document_create_siblings])
 
-endpoint = EndPoint('sources')
+endpoint = APIEndPoint('sources')
 endpoint.register_urls(api_urls)
+endpoint.add_endpoint('stagingfolder-list')

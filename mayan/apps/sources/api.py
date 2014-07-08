@@ -23,23 +23,36 @@ logger = logging.getLogger(__name__)
 
 # API Views
 
-class APIStagingSourceFileView(generics.GenericAPIView):
+class StagingSourceFileView(generics.GenericAPIView):
+    """
+    Details of the selected staging file.
+    """
     def get(self, request, staging_folder_pk, filename):
         staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
         return Response(SerializerStagingFolderFile(staging_folder.get_file(encoded_filename=filename), context={'request': request}).data)
 
 
-class APIStagingSourceListView(generics.ListAPIView):
+class StagingSourceListView(generics.ListAPIView):
+    """
+    Returns a list of all the staging folders and the files they contain.
+    """
+
     serializer_class = SerializerStagingFolder
     queryset = StagingFolder.objects.all()
 
 
-class APIStagingSourceView(generics.RetrieveAPIView):
+class StagingSourceView(generics.RetrieveAPIView):
+    """
+    Details of the selected staging folders and the files it contains.
+    """
     serializer_class = SerializerStagingFolder
     queryset = StagingFolder.objects.all()
 
 
-class APIStagingSourceFileImageView(generics.GenericAPIView):
+class StagingSourceFileImageView(generics.GenericAPIView):
+    """
+    Image of the selected staging file.
+    """
     def get(self, request, staging_folder_pk, filename):
         staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
         staging_file = staging_folder.get_file(encoded_filename=filename)

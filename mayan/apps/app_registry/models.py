@@ -9,7 +9,7 @@ from bootstrap.classes import BootstrapModel, Cleanup
 from navigation.api import register_top_menu
 from project_setup.api import register_setup
 from project_tools.api import register_tool
-from rest_api.classes import EndPoint
+from rest_api.classes import APIEndPoint
 
 logger = logging.getLogger(__name__)
 
@@ -60,10 +60,10 @@ class App(object):
                     logger.debug('version_0_api_services: %s' % version_0_api_services)
 
                     if version_0_api_services:
-                        endpoint = EndPoint(app_name)
+                        api_endpoint = APIEndPoint(app_name)
 
                         for service in version_0_api_services:
-                            endpoint.add_service(**service)
+                            api_endpoint.add_service(**service)
 
     def __unicode__(self):
         return unicode(self.label)
