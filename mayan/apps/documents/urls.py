@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
+from .api import APIDocumentView, APIDocumentListView, APIDocumentVersionView, APIDocumentImageView, APIDocumentPageView
 from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, DISPLAY_SIZE,
     MULTIPAGE_PREVIEW_SIZE)
 
@@ -67,5 +68,12 @@ urlpatterns = patterns('documents.views',
     url(r'^type/filename/(?P<document_type_filename_id>\d+)/edit/$', 'document_type_filename_edit', (), 'document_type_filename_edit'),
     url(r'^type/filename/(?P<document_type_filename_id>\d+)/delete/$', 'document_type_filename_delete', (), 'document_type_filename_delete'),
     url(r'^type/(?P<document_type_id>\d+)/filename/create/$', 'document_type_filename_create', (), 'document_type_filename_create'),
+)
 
+api_urls = patterns('',
+    url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
+    url(r'^documents/(?P<pk>[0-9]+)/$', APIDocumentView.as_view(), name='document-detail'),
+    url(r'^document_version/(?P<pk>[0-9]+)/$', APIDocumentVersionView.as_view(), name='documentversion-detail'),
+    url(r'^document_page/(?P<pk>[0-9]+)/$', APIDocumentPageView.as_view(), name='documentpage-detail'),
+    url(r'^documents/(?P<pk>[0-9]+)/image/$', APIDocumentImageView.as_view(), name='document-image'),
 )
