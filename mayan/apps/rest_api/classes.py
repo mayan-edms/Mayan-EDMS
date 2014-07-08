@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+from django.conf.urls import include, patterns, url
+
 
 class EndPoint(object):
     _registry = {}
@@ -28,3 +30,11 @@ class EndPoint(object):
                 'urlpattern': urlpattern,
             }
         )
+
+    def register_urls(self, urlpatterns):
+        from .urls import version_0_endpoints_urlpatterns
+        endpoint_urls = patterns('',
+            url(r'^%s/' % self.name, include(urlpatterns)),
+        )
+
+        version_0_endpoints_urlpatterns += endpoint_urls

@@ -37,13 +37,11 @@ urlpatterns = patterns('sources.views',
 
     url(r'^create/from/local/multiple/$', DocumentCreateWizard.as_view(), name='document_create_multiple'),
     url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', (), 'document_create_siblings'),
+)
 
-
-#version_0_api_services = [
-    url(r'^api/staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/image/$', APIStagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
-    url(r'^api/staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/$', APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
-    url(r'^api/staging_folders/$', APIStagingSourceListView.as_view(), name='stagingfolder-list'),
-    url(r'^api/staging_folders/(?P<pk>[0-9]+)/$', APIStagingSourceView.as_view(), name='stagingfolder-detail')
-#]
-
+api_urls = patterns('',
+    url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/image/$', APIStagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
+    url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<filename>.+)/$', APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
+    url(r'^staging_folders/$', APIStagingSourceListView.as_view(), name='stagingfolder-list'),
+    url(r'^staging_folders/(?P<pk>[0-9]+)/$', APIStagingSourceView.as_view(), name='stagingfolder-detail')
 )
