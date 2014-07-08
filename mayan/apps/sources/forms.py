@@ -28,7 +28,7 @@ class StagingDocumentForm(DocumentForm):
 
         try:
             self.fields['staging_file_id'].choices = [
-                (hash(staging_file), unicode(staging_file)) for staging_file in self.source.get_files()
+                (staging_file.encoded_filename, unicode(staging_file)) for staging_file in self.source.get_files()
             ]
         except Exception as exception:
             logger.error('exception: %s' % exception)

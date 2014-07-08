@@ -230,7 +230,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 )
                 if form.is_valid():
                     try:
-                        staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
+                        staging_file = staging_folder.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
                         if document:
                             expand = False
                         else:
@@ -245,7 +245,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         new_filename = get_form_filename(form)
 
                         result = staging_folder.upload_file(
-                            staging_file.upload(),
+                            staging_file.as_file(),
                             new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
                             document_type=document_type,
                             expand=expand,
@@ -267,8 +267,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             messages.warning(request, _(u'Staging file: %s, was not compressed, uploaded as a single file.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
-                            transformations, errors = staging_folder.get_transformation_list()
-                            staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
+                            staging_file.delete()
                             messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
                         if document:
                             return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
