@@ -11,25 +11,22 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from django.core.exceptions import ImproperlyConfigured
+
+
 ugettext = lambda s: s
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..//'))
 
+try:
+    from .secrets import *
+except ImportError:
+    raise ImproperlyConfigured('You need a secrets.py file - contact aaron.dennis@crossculturalconsult.com')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+DEBUG = False
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
+TEMPLATE_DEBUG = DEBUG
 
 # Application definition
 
@@ -117,17 +114,7 @@ ROOT_URLCONF = 'mayan.urls'
 
 WSGI_APPLICATION = 'mayan.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mayan',
-        'USER': 'mayan',
-        'PASSWORD': 'Jeeji4ah',
-        'HOST': '',
-        'PORT': ''}}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -154,7 +141,7 @@ import sys
 
 from django.core.urlresolvers import reverse_lazy
 
-sys.path.append(os.path.join(BASE_DIR, 'apps'))
+sys.path.append(os.path.join(BASE_DIR, '../../../apps'))
 
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
