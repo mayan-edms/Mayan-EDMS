@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 class APIStagingSourceFileView(generics.GenericAPIView):
     def get(self, request, staging_folder_pk, filename):
         staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
-        return Response(SerializerStagingFolderFile(staging_folder.get_file(filename)).data)
+        return Response(SerializerStagingFolderFile(staging_folder.get_file(encoded_filename=filename), context={'request': request}).data)
 
 
 class APIStagingSourceListView(generics.ListAPIView):
