@@ -608,7 +608,7 @@ class DocumentPageTransformation(models.Model):
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
     transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
+    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[ArgumentsValidator()])
     objects = DocumentPageTransformationManager()
 
     def __unicode__(self):
