@@ -17,63 +17,53 @@ If using a Fedora_ based Linux distribution get the executable requirements usin
 
 To initialize a ``virtualenv`` to deploy the project do::
 
-    $ virtualenv --no-site-packages mayan
+    $ virtualenv --no-site-packages venv
+    $ source venv/bin/activate
 
 Download_ and decompress the latest version of **Mayan EDMS**::
 
-    $ cd mayan
+    $ cd venv
     $ tar -xvzf mayan.tar.gz
 
 Or clone the latest development version straight from github::
 
-    $ cd mayan
-    $ git clone git://github.com/mayan-edms/mayan-edms.git
+    $ cd venv
+    $ git clone https://github.com/mayan-edms/mayan-edms.git
 
 To install the python dependencies ``easy_install`` can be used, however for easier retrieval a production dependencies file is included, to use it execute::
 
-    $ cd mayan
-    $ source ../bin/activate
+    $ cd mayan-edms
     $ pip install -r requirements.txt
 
-Create the database that will hold the data. Install any corresponding python database drivers. Update the settings.py file with you database settings.
-If using the ``MySQL`` database manager, use the following commands::
-
-    $ sudo apt-get install libmysqlclient-dev -y
-    $ pip install MySQL-python
-
-If using ``PostgreSQL``, enter the following::
-
-    $ sudo apt-get install libpq-dev -y
-    $ pip install psycopg2
-
-For Fedora systems just use Yum instead of APT::
-
-    $ sudo yum install -y mysql-devel
-    $ pip install MySQL-python
-
-If using ``PostgreSQL``, enter the following::
-
-    $ sudo yum install -y postgresql-devel
-    $ pip install psycopg2
-
+By default Mayan EDMS will create a single file SQLite database which makes is very easy to start using Mayan EDMS.
 Populate the database with the project's schema doing::
 
     $ ./manage.py syncdb --migrate --noinput
+
 
 To test your installation, execute Django’s development server using the ``runserver`` command to launch a local instance of Mayan EDMS::
 
     $ ./manage.py runserver
 
 Point your browser to http://127:0.0.1:8000, if everything was installed
-correctly you should see the login screen.  After making sure everything
-is running correctly, stop the runserver command and delete the settings_local.py.
-Deploy **Mayan EDMS** using the webserver of your preference. If your are
-using Apache_, a sample site file is included under the contrib directory.
+correctly you should see the login screen and panel showing a randomly generated admin password.
 
-Before finally deploying to your favorite webserver don't forget to collect the
-static files of the project into the ``static`` folder for serving via a webserver::
 
-    $ ./manage.py collectstatic
+Production use
+--------------
+
+After making sure everything is running correctly, stop the runserver command.
+Deploy **Mayan EDMS** using the webserver of your preference. For more information
+on deployment instructions and examples checkout Django's official documentation
+on the topic https://docs.djangoproject.com/en/1.6/howto/deployment/
+
+
+Other database managers
+-----------------------
+
+If you want to use a database manager other than SQLite3 install any
+corresponding python database drivers and create a settings_local.py file
+with the corresponding database settings as shown here: https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES
 
 
 Cloud install
