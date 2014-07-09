@@ -9,10 +9,14 @@ from rest_framework import generics
 from rest_framework.response import Response
 
 from acls.models import AccessEntry
+from permissions.models import Permission
+
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
     DEFAULT_PAGE_NUMBER)
 from permissions.models import Permission
+from rest_api.filters import MayanObjectPermissionsFilter
+from rest_api.permissions import MayanPermission
 
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .models import Document, DocumentVersion, DocumentPage
@@ -33,6 +37,9 @@ class APIDocumentListView(generics.ListAPIView):
     serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+
 
 class APIDocumentPageView(generics.RetrieveAPIView):
     """
@@ -42,6 +49,10 @@ class APIDocumentPageView(generics.RetrieveAPIView):
     allowed_methods = ['GET']
     serializer_class = DocumentPageSerializer
     queryset = DocumentPage.objects.all()
+
+    permission_classes = (MayanPermission,)
+    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+    mayan_permission_attribute_check = 'document'
 
 
 class APIDocumentView(generics.RetrieveAPIView):
@@ -53,6 +64,9 @@ class APIDocumentView(generics.RetrieveAPIView):
     serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
+    permission_classes = (MayanPermission,)
+    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+
 
 class APIDocumentVersionView(generics.RetrieveAPIView):
     """
@@ -62,6 +76,10 @@ class APIDocumentVersionView(generics.RetrieveAPIView):
     allowed_methods = ['GET']
     serializer_class = DocumentVersionSerializer
     queryset = DocumentVersion.objects.all()
+
+    permission_classes = (MayanPermission,)
+    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+    mayan_permission_attribute_check = 'document'
 
 
 class APIDocumentImageView(generics.GenericAPIView):
