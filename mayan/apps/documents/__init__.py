@@ -156,4 +156,4 @@ namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_(u
 
 endpoint = APIEndPoint('documents')
 endpoint.register_urls(api_urls)
-endpoint.add_endpoint('document-list')
+endpoint.add_endpoint('document-list', _(u'Returns a list of all the documents.'))

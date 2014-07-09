@@ -58,4 +58,4 @@ register_links(Document, [document_create_siblings])
 
 endpoint = APIEndPoint('sources')
 endpoint.register_urls(api_urls)
-endpoint.add_endpoint('stagingfolder-list')
+endpoint.add_endpoint('stagingfolder-list', _(u'Returns a list of all the staging folders and the files they contain.'))
