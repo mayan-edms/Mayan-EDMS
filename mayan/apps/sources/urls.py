@@ -2,10 +2,10 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
-from .api import (APIStagingSourceListView, APIStagingSourceView,
-    APIStagingSourceFileView, APIStagingSourceFileImageView)
 from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
     SOURCE_CHOICE_WATCH)
+from .views import (APIStagingSourceListView, APIStagingSourceView,
+    APIStagingSourceFileView, APIStagingSourceFileImageView)
 from .wizards import DocumentCreateWizard
 
 urlpatterns = patterns('sources.views',
