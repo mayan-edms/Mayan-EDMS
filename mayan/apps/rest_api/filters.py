@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+from django.core.exceptions import PermissionDenied
+
 from rest_framework.filters import BaseFilterBackend
 
 from acls.models import AccessEntry
