@@ -6,7 +6,7 @@ import urlparse
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import smart_unicode, smart_str
+from django.utils.encoding import smart_str, smart_unicode
 from django.utils.timezone import now
 from django.utils.translation import ugettext as _
 

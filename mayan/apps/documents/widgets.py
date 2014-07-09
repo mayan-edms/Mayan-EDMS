@@ -9,11 +9,10 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
-    DEFAULT_PAGE_NUMBER)
+from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
+                                DEFAULT_ZOOM_LEVEL)
 
-from .conf.settings import (THUMBNAIL_SIZE,
-    DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE)
+from .conf.settings import DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE, THUMBNAIL_SIZE
 
 
 class DocumentPageImageWidget(forms.widgets.Widget):

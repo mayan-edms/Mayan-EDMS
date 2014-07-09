@@ -19,19 +19,21 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from converter.api import convert, get_page_count, get_available_transformations_choices
+from converter.api import (convert, get_page_count,
+                           get_available_transformations_choices)
 from converter.exceptions import UnknownFileFormat
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
-    DEFAULT_PAGE_NUMBER)
+                                DEFAULT_PAGE_NUMBER)
 from mimetype.api import get_mimetype
 
-from .conf.settings import (CHECKSUM_FUNCTION, UUID_FUNCTION,
-    DISPLAY_SIZE, CACHE_PATH, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+from .conf.settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE,
+                            UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 from .exceptions import NewDocumentVersionNotAllowed
-from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
-    VERSION_UPDATE_MAJOR, VERSION_UPDATE_MINOR, VERSION_UPDATE_MICRO)
-from .managers import (DocumentPageTransformationManager, RecentDocumentManager,
-    DocumentTypeManager)
+from .literals import (RELEASE_LEVEL_CHOICES, RELEASE_LEVEL_FINAL,
+                       VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
+                       VERSION_UPDATE_MINOR)
+from .managers import (DocumentPageTransformationManager, DocumentTypeManager,
+                       RecentDocumentManager)
 from .runtime import storage_backend
 from .utils import document_save_to_temp_dir
 

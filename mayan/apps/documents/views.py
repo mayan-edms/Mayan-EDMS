@@ -20,15 +20,15 @@ import sendfile
 
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
-from common.literals import (PAGE_SIZE_DIMENSIONS,
-    PAGE_ORIENTATION_PORTRAIT, PAGE_ORIENTATION_LANDSCAPE)
-from common.utils import (pretty_size, parse_range, urlquote,
-    return_diff, encapsulate)
+from common.literals import (PAGE_ORIENTATION_LANDSCAPE, PAGE_ORIENTATION_PORTRAIT,
+                             PAGE_SIZE_DIMENSIONS)
+from common.utils import (encapsulate, pretty_size, parse_range, return_diff,
+                          urlquote)
 from common.widgets import two_state_template
 from common.conf.settings import DEFAULT_PAPER_SIZE
 from converter.exceptions import UnknownFileFormat, UnkownConvertError
-from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
-    DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT_MIMETYPE)
+from converter.literals import (DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER,
+                                DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL)
 from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
 from history.api import create_history
@@ -38,27 +38,27 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .events import HISTORY_DOCUMENT_EDITED
-from .conf.settings import (DISPLAY_SIZE, PREVIEW_SIZE, ZOOM_PERCENT_STEP,
-    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL, ROTATION_STEP, RECENT_COUNT)
+from .conf.settings import (DISPLAY_SIZE, PREVIEW_SIZE, RECENT_COUNT,
+                            ROTATION_STEP, ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL,
+                            ZOOM_MIN_LEVEL)
 from .forms import (DocumentForm_edit, DocumentPropertiesForm,
-        DocumentPreviewForm, DocumentPageForm,
-        DocumentPageTransformationForm, DocumentContentForm,
-        DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
-        DocumentTypeForm, DocumentTypeFilenameForm,
-        DocumentTypeFilenameForm_create, DocumentDownloadForm)
+                    DocumentPreviewForm, DocumentPageForm,
+                    DocumentPageTransformationForm, DocumentContentForm,
+                    DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
+                    DocumentTypeForm, DocumentTypeFilenameForm,
+                    DocumentTypeFilenameForm_create, DocumentDownloadForm)
 from .models import (Document, DocumentType, DocumentPage,
-    DocumentPageTransformation, RecentDocument, DocumentTypeFilename,
-    DocumentVersion)
+                     DocumentPageTransformation, DocumentTypeFilename,
+                     DocumentVersion, RecentDocument)
 from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-    PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_DELETE,
-    PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
-    PERMISSION_DOCUMENT_TOOLS, PERMISSION_DOCUMENT_EDIT,
-    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_TYPE_EDIT,
-    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE,
-    PERMISSION_DOCUMENT_TYPE_VIEW)
-from .runtime import storage_backend
+                          PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_DELETE,
+                          PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
+                          PERMISSION_DOCUMENT_TOOLS, PERMISSION_DOCUMENT_EDIT,
+                          PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_TYPE_EDIT,
+                          PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE,
+                          PERMISSION_DOCUMENT_TYPE_VIEW)
 from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
-    DocumentSerializer, DocumentVersionSerializer)
+                          DocumentSerializer, DocumentVersionSerializer)
 
 logger = logging.getLogger(__name__)
 
@@ -72,7 +72,8 @@ def document_list(request, object_list=None, title=None, extra_context=None):
         # If user doesn't have global permission, get a list of document
         # for which he/she does hace access use it to filter the
         # provided object_list
-        final_object_list = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_VIEW, request.user, pre_object_list)
+        final_object_list = AccessEntry.objects.filter_objects_by_access(
+            PERMISSION_DOCUMENT_VIEW, request.user, pre_object_list)
     else:
         final_object_list = pre_object_list
 
@@ -96,10 +97,6 @@ def document_view(request, document_id, advanced=False):
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
-
-    # document = get_object_or_404(Document.objects.select_related(), pk=document_id)
-    # Triggers a 404 error on documents uploaded via local upload
-    # TODO: investigate
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
@@ -189,9 +186,9 @@ def document_delete(request, document_id=None, document_id_list=None):
                 document.delete()
                 # create_history(HISTORY_DOCUMENT_DELETED, data={'user': request.user, 'document': document})
                 messages.success(request, _(u'Document deleted successfully.'))
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
-                    'document': document, 'error': e
+                    'document': document, 'error': exception
                 })
 
         return HttpResponseRedirect(next)
@@ -333,11 +330,11 @@ def document_download(request, document_id=None, document_id_list=None, document
                         content_type='application/zip'
                     )
                     # TODO: DO a redirection afterwards
-                except Exception, e:
+                except Exception as exception:
                     if settings.DEBUG:
                         raise
                     else:
-                        messages.error(request, e)
+                        messages.error(request, exception)
                         return HttpResponseRedirect(request.META['HTTP_REFERER'])
             else:
                 try:
@@ -350,11 +347,11 @@ def document_download(request, document_id=None, document_id_list=None, document
                         save_as=u'"%s"' % document_versions[0].filename,
                         content_type=document_versions[0].mimetype if document_versions[0].mimetype else 'application/octet-stream'
                     )
-                except Exception, e:
+                except Exception as exception:
                     if settings.DEBUG:
                         raise
                     else:
-                        messages.error(request, e)
+                        messages.error(request, exception)
                         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
     else:
@@ -498,9 +495,9 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
                     for transformation in document_page.documentpagetransformation_set.all():
                         transformation.delete()
                 messages.success(request, _(u'All the page transformations for document: %s, have been deleted successfully.') % document)
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error deleting the page transformations for document: %(document)s; %(error)s.') % {
-                    'document': document, 'error': e})
+                    'document': document, 'error': exception})
 
         return HttpResponseRedirect(next)
 
@@ -798,28 +795,12 @@ def document_print(request, document_id):
             if form.cleaned_data['page_range']:
                 hard_copy_arguments['page_range'] = form.cleaned_data['page_range']
 
-            # Compute page width and height
-            # if form.cleaned_data['custom_page_width'] and form.cleaned_data['custom_page_height']:
-            #    page_width = form.cleaned_data['custom_page_width']
-            #    page_height = form.cleaned_data['custom_page_height']
-            # elif form.cleaned_data['page_size']:
-            #    page_width, page_height = dict(PAGE_SIZE_DIMENSIONS)[form.cleaned_data['page_size']]
-
-            # Page orientation
-            # if form.cleaned_data['page_orientation'] == PAGE_ORIENTATION_LANDSCAPE:
-            #    page_width, page_height = page_height, page_width
-
-            # hard_copy_arguments['page_width'] = page_width
-            # hard_copy_arguments['page_height'] = page_height
-
             new_url = [reverse('document_hard_copy', args=[document_id])]
             if hard_copy_arguments:
                 new_url.append(urlquote(hard_copy_arguments))
 
             new_window_url = u'?'.join(new_url)
             new_window_url_name = u'document_hard_copy'
-            # html_redirect = next
-            # messages.success(request, _(u'Preparing document hardcopy.'))
     else:
         form = PrintForm()
 
@@ -843,11 +824,6 @@ def document_hard_copy(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
     RecentDocument.objects.add_document_for_user(request.user, document)
-
-    # arguments, warnings = calculate_converter_arguments(document, size=PRINT_SIZE, file_format=DEFAULT_FILE_FORMAT)
-
-    # Pre-generate
-    # convert_document(document, **arguments)
 
     # Extract dimension values ignoring any unit
     page_width = request.GET.get('page_width', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][0])
@@ -905,15 +881,14 @@ def document_type_edit(request, document_type_id):
                 form.save()
                 messages.success(request, _(u'Document type edited successfully'))
                 return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing document type; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error editing document type; %s') % exception)
     else:
         form = DocumentTypeForm(instance=document_type)
 
     return render_to_response('generic_form.html', {
         'title': _(u'edit document type: %s') % document_type,
         'form': form,
-        # 'object': document_type,
         'object_name': _(u'document type'),
         'navigation_object_name': 'document_type',
         'document_type': document_type,
@@ -936,9 +911,9 @@ def document_type_delete(request, document_type_id):
             Document.objects.filter(document_type=document_type).update(document_type=None)
             document_type.delete()
             messages.success(request, _(u'Document type: %s deleted successfully.') % document_type)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Document type: %(document_type)s delete error: %(error)s') % {
-                'document_type': document_type, 'error': e})
+                'document_type': document_type, 'error': exception})
 
         return HttpResponseRedirect(next)
 
@@ -971,9 +946,9 @@ def document_type_create(request):
                 form.save()
                 messages.success(request, _(u'Document type created successfully'))
                 return HttpResponseRedirect(reverse('document_type_list'))
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error creating document type; %(error)s') % {
-                    'error': e})
+                    'error': exception})
     else:
         form = DocumentTypeForm()
 
@@ -1023,8 +998,8 @@ def document_type_filename_edit(request, document_type_filename_id):
                 document_type_filename.save()
                 messages.success(request, _(u'Document type filename edited successfully'))
                 return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing document type filename; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error editing document type filename; %s') % exception)
     else:
         form = DocumentTypeFilenameForm(instance=document_type_filename)
 
@@ -1057,9 +1032,9 @@ def document_type_filename_delete(request, document_type_filename_id):
         try:
             document_type_filename.delete()
             messages.success(request, _(u'Document type filename: %s deleted successfully.') % document_type_filename)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Document type filename: %(document_type_filename)s delete error: %(error)s') % {
-                'document_type_filename': document_type_filename, 'error': e})
+                'document_type_filename': document_type_filename, 'error': exception})
 
         return HttpResponseRedirect(next)
 
@@ -1101,9 +1076,9 @@ def document_type_filename_create(request, document_type_id):
                 document_type_filename.save()
                 messages.success(request, _(u'Document type filename created successfully'))
                 return HttpResponseRedirect(reverse('document_type_filename_list', args=[document_type_id]))
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error creating document type filename; %(error)s') % {
-                    'error': e})
+                    'error': exception})
     else:
         form = DocumentTypeFilenameForm_create()
 
@@ -1127,8 +1102,8 @@ def document_clear_image_cache(request):
         try:
             Document.clear_image_cache()
             messages.success(request, _(u'Document image cache cleared successfully'))
-        except Exception, msg:
-            messages.error(request, _(u'Error clearing document image cache; %s') % msg)
+        except Exception as exception:
+            messages.error(request, _(u'Error clearing document image cache; %s') % exception)
 
         return HttpResponseRedirect(previous)
 
@@ -1201,8 +1176,8 @@ def document_version_revert(request, document_version_pk):
         try:
             document_version.revert()
             messages.success(request, _(u'Document version reverted successfully'))
-        except Exception, msg:
-            messages.error(request, _(u'Error reverting document version; %s') % msg)
+        except Exception as exception:
+            messages.error(request, _(u'Error reverting document version; %s') % exception)
 
         return HttpResponseRedirect(previous)
 

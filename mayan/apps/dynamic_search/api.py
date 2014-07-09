@@ -1,13 +1,14 @@
 # original code from:
 # http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/
+from __future__ import absolute_import
 
+import datetime
 import re
 import types
-import datetime
 
 from django.db.models import Q
 
-from dynamic_search.conf.settings import LIMIT
+from .conf.settings import LIMIT
 
 registered_search_dict = {}
 

@@ -10,12 +10,12 @@ from django.utils.translation import ugettext
 from common.forms import DetailForm
 from common.widgets import TextAreaDiv
 
-from .models import (Document, DocumentType,
-    DocumentPage, DocumentPageTransformation, DocumentTypeFilename,
-    DocumentVersion)
-from .literals import (RELEASE_LEVEL_FINAL, RELEASE_LEVEL_CHOICES,
-    DEFAULT_ZIP_FILENAME)
-from .widgets import DocumentPageImageWidget, DocumentPagesCarouselWidget
+from .models import (Document, DocumentType, DocumentPage,
+                     DocumentPageTransformation, DocumentTypeFilename,
+                     DocumentVersion)
+from .literals import (DEFAULT_ZIP_FILENAME, RELEASE_LEVEL_CHOICES,
+                       RELEASE_LEVEL_FINAL)
+from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 
 
 # Document page forms
@@ -234,10 +234,6 @@ class DocumentTypeSelectForm(forms.Form):
 
 
 class PrintForm(forms.Form):
-    # page_size = forms.ChoiceField(choices=PAGE_SIZE_CHOICES, initial=DEFAULT_PAPER_SIZE, label=_(u'Page size'), required=False)
-    # custom_page_width = forms.CharField(label=_(u'Custom page width'), required=False)
-    # custom_page_height = forms.CharField(label=_(u'Custom page height'), required=False)
-    # page_orientation = forms.ChoiceField(choices=PAGE_ORIENTATION_CHOICES, initial=DEFAULT_PAGE_ORIENTATION, label=_(u'Page orientation'), required=True)
     page_range = forms.CharField(label=_(u'Page range'), required=False)
 
 
