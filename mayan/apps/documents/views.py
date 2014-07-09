@@ -532,7 +532,7 @@ def document_missing_list(request):
     else:
         missing_id_list = []
         for document in Document.objects.only('id',):
-            if not storate_backend.exists(document.file):
+            if not storage_backend.exists(document.file):
                 missing_id_list.append(document.pk)
 
         return render_to_response('generic_list.html', {
