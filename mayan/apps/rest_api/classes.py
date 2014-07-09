@@ -1,7 +1,9 @@
 from __future__ import absolute_import
 
+from django.conf.urls import include, patterns, url
 
-class EndPoint(object):
+
+class APIEndPoint(object):
     _registry = {}
 
     @classmethod
@@ -17,14 +19,21 @@ class EndPoint(object):
 
     def __init__(self, name):
         self.name = name
-        self.services = []
+        self.endpoints = []
         self.__class__._registry[name] = self
 
-    def add_service(self, urlpattern, url=None, description=None):
-        self.services.append(
+    def add_endpoint(self, view_name, description=None):
+        self.endpoints.append(
             {
                 'description': description,
-                'url': url,
-                'urlpattern': urlpattern,
+                'view_name': view_name,
             }
         )
+
+    def register_urls(self, urlpatterns):
+        from .urls import version_0_urlpatterns
+        endpoint_urls = patterns('',
+            url(r'^%s/' % self.name, include(urlpatterns)),
+        )
+
+        version_0_urlpatterns += endpoint_urls

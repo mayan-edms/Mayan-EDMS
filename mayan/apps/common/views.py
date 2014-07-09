@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+from json import dumps, loads
+
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.views import login, password_change
@@ -10,7 +12,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
-from django.utils.simplejson import dumps, loads
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView

@@ -17,33 +17,57 @@ from permissions.models import Permission
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .models import Document, DocumentVersion, DocumentPage
 from .permissions import PERMISSION_DOCUMENT_VIEW
-from .resources import ResourceDocument, ResourceDocumentVersion, ResourceDocumentPage
+from .serializers import DocumentSerializer, DocumentVersionSerializer, DocumentPageSerializer
 
 logger = logging.getLogger(__name__)
 
 # API Views
 
 
+class APIDocumentListView(generics.ListAPIView):
+    """
+    Returns a list of all the documents.
+    """
+
+    serializer_class = DocumentSerializer
+    queryset = Document.objects.all()
+
+
 class APIDocumentPageView(generics.RetrieveAPIView):
+    """
+    Returns the selected document page details.
+    """
+
     allowed_methods = ['GET']
-    serializer_class = ResourceDocumentPage
+    serializer_class = DocumentPageSerializer
     queryset = DocumentPage.objects.all()
 
 
 class APIDocumentView(generics.RetrieveAPIView):
+    """
+    Returns the selected document details.
+    """
+
     allowed_methods = ['GET']
-    serializer_class = ResourceDocument
+    serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
 
 class APIDocumentVersionView(generics.RetrieveAPIView):
+    """
+    Returns the selected document version details.
+    """
+
     allowed_methods = ['GET']
-    serializer_class = DocumentVersion
+    serializer_class = DocumentVersionSerializer
     queryset = DocumentVersion.objects.all()
 
 
-
 class APIDocumentImageView(generics.GenericAPIView):
+    """
+    Returns an image representation of the selected document.
+    """
+
     def get(self, request, pk):
         document = get_object_or_404(Document, pk=pk)
 

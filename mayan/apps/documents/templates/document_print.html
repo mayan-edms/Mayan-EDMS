@@ -1,5 +1,5 @@
 {% load project_tags %}
-{#{% load printing_tags %}#}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -13,7 +13,7 @@
                 padding: 0;
                 margin: 0;
                 background: #fff;
-                color: #000;               
+                color: #000;
             }
             html, body {
                 height: 100%;
@@ -25,7 +25,7 @@
             }
             * html .container {
                 height: 100%;
-            }          
+            }
             .centered {
                   position: absolute;
                   top: 0;
@@ -33,7 +33,7 @@
                   bottom: 0;
                   left: 0;
                   margin: auto;
-            } 
+            }
             {% endcomment %}
             .break { page-break-after: always; }
             img { border: 1px solid black; }
@@ -45,15 +45,12 @@
                 margin-right: auto;
             }
         </style>
-	</head>
-	<body>
+    </head>
+    <body>
         {% for page in pages %}
-            {#{% get_document_size object %}#}
             <div class="{% if forloop.counter > 1 and not forloop.last %}break{% endif %}">
-                {#<img src="{% url 'document_display_print' object.id %}?page={{ page.page_number }}" {% if document_aspect > page_aspect %}width="97%"{% else %}height="97%"{% endif %} />#}
                 <img src="{% url 'document_display_print' object.id %}?page={{ page.page_number }}" />
             </div>
         {% endfor %}
-
     </body>
 </html>

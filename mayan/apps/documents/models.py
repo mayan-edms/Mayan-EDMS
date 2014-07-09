@@ -143,8 +143,11 @@ class Document(models.Model):
         logger.debug('file_path: %s' % file_path)
 
         if as_base64:
+            mimetype = get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0]
             image = open(file_path, 'r')
-            return u'data:%s;base64,%s' % (get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0], base64.b64encode(image.read()))
+            base64_data = base64.b64encode(image.read())
+            image.close()
+            return u'data:%s;base64,%s' % (mimetype, base64_data)
         else:
             return file_path
 
@@ -562,9 +565,6 @@ class DocumentPage(models.Model):
         verbose_name = _(u'document page')
         verbose_name_plural = _(u'document pages')
 
-    def get_transformation_list(self):
-        return DocumentPageTransformation.objects.get_for_document_page_as_list(self)
-
     @models.permalink
     def get_absolute_url(self):
         return ('document_page_view', [self.pk])
@@ -608,7 +608,7 @@ class DocumentPageTransformation(models.Model):
     document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
     transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
+    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[ArgumentsValidator()])
     objects = DocumentPageTransformationManager()
 
     def __unicode__(self):
@@ -638,3 +638,8 @@ class RecentDocument(models.Model):
         ordering = ('-datetime_accessed',)
         verbose_name = _(u'recent document')
         verbose_name_plural = _(u'recent documents')
+
+
+# Quick hack to break the DocumentPage and DocumentPageTransformation circular dependency
+# Can be remove once the transformations are moved to the converter app
+DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))

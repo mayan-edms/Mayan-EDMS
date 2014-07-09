@@ -2,8 +2,9 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
-from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, THUMBNAIL_SIZE,
-    DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE)
+from .api import APIDocumentView, APIDocumentListView, APIDocumentVersionView, APIDocumentImageView, APIDocumentPageView
+from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, DISPLAY_SIZE,
+    MULTIPAGE_PREVIEW_SIZE)
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),
@@ -19,13 +20,8 @@ urlpatterns = patterns('documents.views',
 
     url(r'^(?P<document_id>\d+)/display/preview/$', 'get_document_image', {'size': PREVIEW_SIZE}, 'document_preview'),
     url(r'^(?P<document_id>\d+)/display/preview/multipage/$', 'get_document_image', {'size': MULTIPAGE_PREVIEW_SIZE}, 'document_preview_multipage'),
-    url(r'^(?P<document_id>\d+)/display/thumbnail/$', 'get_document_image', {'size': THUMBNAIL_SIZE}, 'document_thumbnail'),
     url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': DISPLAY_SIZE}, 'document_display'),
     url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE}, 'document_display_print'),
-
-    url(r'^(?P<document_id>\d+)/display/preview/base64/$', 'get_document_image', {'size': PREVIEW_SIZE, 'base64_version': True}, 'document_preview_base64'),
-    url(r'^(?P<document_id>\d+)/display/preview/multipage/base64/$', 'get_document_image', {'size': MULTIPAGE_PREVIEW_SIZE, 'base64_version': True}, 'document_preview_multipage_base64'),
-    url(r'^(?P<document_id>\d+)/display/thumbnail/base64/$', 'get_document_image', {'size': THUMBNAIL_SIZE, 'base64_version': True}, 'document_thumbnail_base64'),
 
     url(r'^(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^multiple/download/$', 'document_multiple_download', (), 'document_multiple_download'),
@@ -72,5 +68,12 @@ urlpatterns = patterns('documents.views',
     url(r'^type/filename/(?P<document_type_filename_id>\d+)/edit/$', 'document_type_filename_edit', (), 'document_type_filename_edit'),
     url(r'^type/filename/(?P<document_type_filename_id>\d+)/delete/$', 'document_type_filename_delete', (), 'document_type_filename_delete'),
     url(r'^type/(?P<document_type_id>\d+)/filename/create/$', 'document_type_filename_create', (), 'document_type_filename_create'),
+)
 
+api_urls = patterns('',
+    url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
+    url(r'^documents/(?P<pk>[0-9]+)/$', APIDocumentView.as_view(), name='document-detail'),
+    url(r'^document_version/(?P<pk>[0-9]+)/$', APIDocumentVersionView.as_view(), name='documentversion-detail'),
+    url(r'^document_page/(?P<pk>[0-9]+)/$', APIDocumentPageView.as_view(), name='documentpage-detail'),
+    url(r'^documents/(?P<pk>[0-9]+)/image/$', APIDocumentImageView.as_view(), name='document-image'),
 )

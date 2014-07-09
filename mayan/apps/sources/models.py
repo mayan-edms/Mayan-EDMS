@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from ast import literal_eval
 import logging
+import os
 
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
@@ -20,6 +21,7 @@ from history.api import create_history
 from metadata.api import save_metadata_list
 from scheduler.api import register_interval_job, remove_job
 
+from .classes import StagingFile
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
     SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
@@ -165,6 +167,16 @@ class StagingFolder(InteractiveBaseModel):
             dimensions.append(unicode(self.preview_height))
 
         return DIMENSION_SEPARATOR.join(dimensions)
+
+    def get_file(self, *args, **kwargs):
+        return StagingFile(staging_folder=self, *args, **kwargs)
+
+    def get_files(self):
+        try:
+            for entry in sorted([os.path.normcase(f) for f in os.listdir(self.folder_path) if os.path.isfile(os.path.join(self.folder_path, f))]):
+                yield self.get_file(filename=entry)
+        except OSError as exception:
+            raise Exception(_(u'Unable get list of staging files: %s') % exception)
 
     class Meta(InteractiveBaseModel.Meta):
         verbose_name = _(u'staging folder')

@@ -143,24 +143,37 @@
             });
 
             $("a.fancybox").fancybox({
-                openEffect  : 'elastic',
-                closeEffect : 'elastic',
+                'openEffect'  : 'elastic',
+                'closeEffect' : 'elastic',
                 prevEffect  : 'none',
                 nextEffect  : 'none',
                 'titleShow' : true,
                 'type'      : 'image',
-                'autoResize': true
+                'autoResize': true,
             });
 
-            $("a.fancybox-staging").fancybox({
-                openEffect  : 'elastic',
-                closeEffect : 'elastic',
-                prevEffect  : 'none',
-                nextEffect  : 'none',
-                'titleShow' : true,
-                'type'      : 'image',
-                'autoResize': true
-            });
+            $("a.fancybox-staging").click(function(e) {
+                var $this = $(this);
+
+                    $.get($this.attr('href'), function( result ) {
+                        if (result.status == 'success') {
+                            $.fancybox.open([
+                                {
+                                    href : result.data,
+                                    title : $this.attr('title'),
+                                    'openEffect'  : 'elastic',
+                                    'closeEffect' : 'elastic',
+                                    prevEffect  : 'none',
+                                    nextEffect  : 'none',
+                                    'titleShow' : true,
+                                    'type'      : 'image',
+                                    'autoResize': true,
+                                },
+                            ]);
+                        }
+                    })
+                e.preventDefault();
+            })
 
             $("a.fancybox-noscaling").fancybox({
                 openEffect  : 'elastic',

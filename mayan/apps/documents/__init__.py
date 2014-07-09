@@ -14,6 +14,7 @@ from navigation.api import (register_links, register_top_menu,
     register_model_list_columns, register_multi_item_links,
     register_sidebar_template)
 from project_setup.api import register_setup
+from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
 from .conf import settings as document_settings
@@ -46,6 +47,7 @@ from .permissions import (
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_EDIT,
     PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_NEW_VERSION)
 from .statistics import DocumentStatistics, DocumentUsageStatistics
+from .urls import api_urls
 from .widgets import document_thumbnail
 
 # History setup
@@ -151,3 +153,7 @@ document_search.add_related_field('comments', 'Comment', 'comment', 'object_pk',
 namespace = StatisticNamespace(name='documents', label=_(u'Documents'))
 namespace.add_statistic(DocumentStatistics(name='document_stats', label=_(u'Document tendencies')))
 namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_(u'Document usage')))
+
+endpoint = APIEndPoint('documents')
+endpoint.register_urls(api_urls)
+endpoint.add_endpoint('document-list')

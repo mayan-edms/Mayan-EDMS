@@ -12,11 +12,8 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-import sendfile
-
 from acls.models import AccessEntry
 from common.utils import encapsulate
-from documents.conf.settings import THUMBNAIL_SIZE
 from documents.exceptions import NewDocumentVersionNotAllowed
 from documents.models import DocumentType, Document
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
@@ -34,7 +31,6 @@ from .models import (WebForm, StagingFolder, SourceTransformation,
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
-from .staging import create_staging_file_class
 
 
 def document_create_siblings(request, document_id):
@@ -219,17 +215,17 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
         elif source_type == SOURCE_CHOICE_STAGING:
             staging_folder = get_object_or_404(StagingFolder, pk=source_id)
             context['source'] = staging_folder
-            StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
+
             if request.method == 'POST':
                 form = StagingDocumentForm(request.POST, request.FILES,
-                    cls=StagingFile, document_type=document_type,
+                    document_type=document_type,
                     show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
                     source=staging_folder,
                     instance=document
                 )
                 if form.is_valid():
                     try:
-                        staging_file = StagingFile.get(form.cleaned_data['staging_file_id'])
+                        staging_file = staging_folder.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
                         if document:
                             expand = False
                         else:
@@ -244,7 +240,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         new_filename = get_form_filename(form)
 
                         result = staging_folder.upload_file(
-                            staging_file.upload(),
+                            staging_file.as_file(),
                             new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
                             document_type=document_type,
                             expand=expand,
@@ -266,8 +262,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             messages.warning(request, _(u'Staging file: %s, was not compressed, uploaded as a single file.') % staging_file.filename)
 
                         if staging_folder.delete_after_upload:
-                            transformations, errors = staging_folder.get_transformation_list()
-                            staging_file.delete(preview_size=staging_folder.get_preview_size(), transformations=transformations)
+                            staging_file.delete()
                             messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
                         if document:
                             return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
@@ -280,15 +275,14 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             raise
                         messages.error(request, _(u'Unhandled exception: %s') % e)
             else:
-                form = StagingDocumentForm(cls=StagingFile,
-                    document_type=document_type,
+                form = StagingDocumentForm(document_type=document_type,
                     show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
                     source=staging_folder,
                     instance=document
                 )
             try:
-                staging_filelist = StagingFile.get_all()
-            except Exception, e:
+                staging_filelist = list(staging_folder.get_files())
+            except Exception as e:
                 messages.error(request, e)
                 staging_filelist = []
             finally:
@@ -374,63 +368,20 @@ def get_form_filename(form):
     return filename
 
 
-def staging_file_preview(request, source_type, source_id, staging_file_id):
+def staging_file_delete(request, staging_folder_pk, filename):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
-    staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-    StagingFile = create_staging_file_class(request, staging_folder.folder_path)
-    transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
+    staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
 
-    output_file = StagingFile.get(staging_file_id).get_image(
-        size=staging_folder.get_preview_size(),
-        transformations=transformations
-    )
-    if errors and (request.user.is_staff or request.user.is_superuser):
-        for error in errors:
-            messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
-                'error': error
-            })
-
-    return sendfile.sendfile(request, output_file)
-
-
-def staging_file_thumbnail(request, source_id, staging_file_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
-    staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-    StagingFile = create_staging_file_class(request, staging_folder.folder_path, source=staging_folder)
-    transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
-
-    output_file = StagingFile.get(staging_file_id).get_image(
-        size=THUMBNAIL_SIZE,
-        transformations=transformations
-    )
-    if errors and (request.user.is_staff or request.user.is_superuser):
-        for error in errors:
-            messages.warning(request, _(u'Staging file transformation error: %(error)s') % {
-                'error': error
-            })
-
-    return sendfile.sendfile(request, output_file)
-
-
-def staging_file_delete(request, source_type, source_id, staging_file_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
-    staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-    StagingFile = create_staging_file_class(request, staging_folder.folder_path)
-
-    staging_file = StagingFile.get(staging_file_id)
+    staging_file = staging_folder.get_file(encoded_filename=filename)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
 
     if request.method == 'POST':
         try:
-            transformations, errors = SourceTransformation.transformations.get_for_object_as_list(staging_folder)
-            staging_file.delete(
-                preview_size=staging_folder.get_preview_size(),
-                transformations=transformations
-            )
+            staging_file.delete()
             messages.success(request, _(u'Staging file delete successfully.'))
-        except Exception, e:
-            messages.error(request, _(u'Staging file delete error; %s.') % e)
+        except Exception as exception:
+            messages.error(request, _(u'Staging file delete error; %s.') % exception)
         return HttpResponseRedirect(next)
 
     results = get_active_tab_links()
