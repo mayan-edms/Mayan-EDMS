@@ -12,12 +12,9 @@ from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from documents.conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
-#from acls.models import AccessEntry
-#from permissions.models import Permission
 from .classes import StagingFile
-from .resources import SerializerStagingFolder, SerializerStagingFolderFile
 from .models import StagingFolder
-#from .permissions import PERMISSION_DOCUMENT_VIEW
+from .serializers import SerializerStagingFolder, SerializerStagingFolderFile
 
 logger = logging.getLogger(__name__)
 
@@ -56,12 +53,6 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
     def get(self, request, staging_folder_pk, filename):
         staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
         staging_file = staging_folder.get_file(encoded_filename=filename)
-
-        #try:
-        #    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-        #except PermissionDenied:
-        #    AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
-        # Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
 
         size = request.GET.get('size', DISPLAY_SIZE)
 

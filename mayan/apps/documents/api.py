@@ -17,7 +17,7 @@ from permissions.models import Permission
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .models import Document, DocumentVersion, DocumentPage
 from .permissions import PERMISSION_DOCUMENT_VIEW
-from .resources import DocumentSerializer, DocumentVersionSerializer, DocumentPageSerializer
+from .serializers import DocumentSerializer, DocumentVersionSerializer, DocumentPageSerializer
 
 logger = logging.getLogger(__name__)
 
