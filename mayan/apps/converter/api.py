@@ -118,8 +118,7 @@ def get_page_count(input_filepath):
 def get_available_transformations_choices():
     result = []
     for transformation in backend.get_available_transformations():
-        transformation_template = u'%s %s' % (TRANSFORMATION_CHOICES[transformation]['label'], u','.join(['<%s>' % argument['name'] if argument['required'] else '[%s]' % argument['name'] for argument in TRANSFORMATION_CHOICES[transformation]['arguments']]))
-        result.append([transformation, transformation_template])
+        result.append((transformation, TRANSFORMATION_CHOICES[transformation]['label']))
 
     return result
 
