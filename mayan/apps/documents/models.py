@@ -565,9 +565,6 @@ class DocumentPage(models.Model):
         verbose_name = _(u'document page')
         verbose_name_plural = _(u'document pages')
 
-    def get_transformation_list(self):
-        return DocumentPageTransformation.objects.get_for_document_page_as_list(self)
-
     @models.permalink
     def get_absolute_url(self):
         return ('document_page_view', [self.pk])
@@ -641,3 +638,8 @@ class RecentDocument(models.Model):
         ordering = ('-datetime_accessed',)
         verbose_name = _(u'recent document')
         verbose_name_plural = _(u'recent documents')
+
+
+# Quick hack to break the DocumentPage and DocumentPageTransformation circular dependency
+# Can be remove once the transformations are moved to the converter app
+DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))

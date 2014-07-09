@@ -154,7 +154,6 @@ namespace = StatisticNamespace(name='documents', label=_(u'Documents'))
 namespace.add_statistic(DocumentStatistics(name='document_stats', label=_(u'Document tendencies')))
 namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_(u'Document usage')))
 
-
 endpoint = APIEndPoint('documents')
 endpoint.register_urls(api_urls)
 endpoint.add_endpoint('document-list')
