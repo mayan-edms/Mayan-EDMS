@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 
     (r'^', include('common.urls')),
     (r'^', include('main.urls')),
+    url(r'^docs/', include('rest_framework_swagger.urls')),
     (r'^documents/', include('documents.urls')),
     (r'^folders/', include('folders.urls')),
     (r'^search/', include('dynamic_search.urls')),

@@ -8,6 +8,7 @@ django-pagination==1.0.7
 django-compressor==1.4
 django-taggit==0.12
 django-mptt==0.6.0
+django-rest-swagger==0.1.14
 django-sendfile==0.3.4
 djangorestframework==2.3.13
 

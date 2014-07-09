@@ -51,35 +51,35 @@ def find_packages(directory):
             data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
     return packages
 
-install_requires = [
-'APScheduler==2.0.3',
-'cssmin==0.1.4',
-'Django==1.6.5',
-'django-filetransfers==0.1.0',
-'django-pagination==1.0.7',
-'django-compressor==1.4',
-'django-taggit==0.12',
-'django-mptt==0.6.0',
-'django-sendfile==0.3.4',
-'djangorestframework==2.3.13',
-'GitPython==0.3.2.RC1',
-'ghostscript==0.4.1',
-'Pillow==2.4.0',
-'PyYAML==3.10',
-'pbs==0.105',
-'pdfminer==20110227',
-'psutil==0.5.1',
-'python-gnupg==0.3.6',
-'python-hkp==0.1.3',
-'python-magic==0.4.6',
-'pytz==2014.4',
-'requests==0.14.1',
-'South==0.8.4',
-'sh==1.09',
-'slate==0.3',
-'unicode-slugify==0.1',
-'wsgiref==0.1.2',
-]
+install_requires = """
+APScheduler==2.0.3
+cssmin==0.1.4
+Django==1.6.5
+django-filetransfers==0.1.0
+django-pagination==1.0.7
+django-compressor==1.4
+django-taggit==0.12
+django-mptt==0.6.0
+django-rest-swagger==0.1.14
+django-sendfile==0.3.4
+djangorestframework==2.3.13
+GitPython==0.3.2.RC1
+ghostscript==0.4.1
+Pillow==2.4.0
+PyYAML==3.10
+pdfminer==20110227
+psutil==0.5.1
+pytz==2014.4
+python-gnupg==0.3.6
+python-hkp==0.1.3
+python-magic==0.4.6
+requests==0.14.1
+sh==1.09
+slate==0.3
+South==0.8.4
+unicode-slugify==0.1
+wsgiref==0.1.2
+""".split()
 
 with open('README.rst') as f:
     readme = f.read()

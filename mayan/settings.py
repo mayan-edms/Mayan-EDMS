@@ -45,9 +45,8 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.staticfiles',
 # 3rd party
-# South
     'south',
-# Others
+    'rest_framework_swagger',
     'filetransfers',
     'taggit',
     'mptt',
@@ -267,6 +266,22 @@ REST_FRAMEWORK = {
     'PAGINATE_BY': 10,
     'PAGINATE_BY_PARAM': 'page_size',
     'MAX_PAGINATE_BY': 100,
+}
+# ---------- Swagger ---------------
+SWAGGER_SETTINGS = {
+    #"exclude_namespaces": [], # List URL namespaces to ignore
+    #"api_version": '0.1',  # Specify your API's version
+    #"api_path": "/",  # Specify the path to your API not a root level
+    #"enabled_methods": [  # Specify which methods to enable in Swagger UI
+    #    'get',
+    #    'post',
+    #    'put',
+    #    'patch',
+    #    'delete'
+    #],
+    #"api_key": '', # An API key
+    #"is_authenticated": False,  # Set to True to enforce user authentication,
+    #"is_superuser": False,  # Set to True to enforce admin only access
 }
 
 try:
