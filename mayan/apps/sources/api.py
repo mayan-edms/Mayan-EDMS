@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 import logging
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
@@ -12,13 +11,13 @@ from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from documents.conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
-from .classes import StagingFile
 from .models import StagingFolder
 from .serializers import SerializerStagingFolder, SerializerStagingFolderFile
 
 logger = logging.getLogger(__name__)
 
 # API Views
+
 
 class APIStagingSourceFileView(generics.GenericAPIView):
     """
