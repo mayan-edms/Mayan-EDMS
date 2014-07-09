@@ -1,8 +1,7 @@
 from __future__ import absolute_import
 
-from django.core.urlresolvers import reverse
-
 from rest_framework import serializers
+from rest_framework.reverse import reverse
 
 from .models import Document, DocumentVersion, DocumentPage
 
@@ -19,8 +18,15 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
         model = DocumentVersion
 
 
+class DocumentImageSerializer(serializers.Serializer):
+    status = serializers.CharField()
+    data = serializers.CharField()
+
+
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     versions = DocumentVersionSerializer(many=True, read_only=True)
+    image = serializers.HyperlinkedIdentityField(view_name='document-image')
 
     class Meta:
         model = Document
+

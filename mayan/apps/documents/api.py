@@ -17,7 +17,8 @@ from permissions.models import Permission
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .models import Document, DocumentVersion, DocumentPage
 from .permissions import PERMISSION_DOCUMENT_VIEW
-from .serializers import DocumentSerializer, DocumentVersionSerializer, DocumentPageSerializer
+from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
+    DocumentSerializer, DocumentVersionSerializer)
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +67,12 @@ class APIDocumentVersionView(generics.RetrieveAPIView):
 class APIDocumentImageView(generics.GenericAPIView):
     """
     Returns an image representation of the selected document.
+    size -- 'x' seprated width and height of the desired image representation.
+    page -- Page number of the document to be imaged.
+    zoom -- Zoom level of the image to be generated, numeric value only.
+    version -- Version number of the document to be imaged.
     """
+    serializer_class = DocumentImageSerializer
 
     def get(self, request, pk):
         document = get_object_or_404(Document, pk=pk)

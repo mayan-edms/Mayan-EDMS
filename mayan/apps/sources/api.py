@@ -8,11 +8,13 @@ from rest_framework import generics
 from rest_framework.response import Response
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
-from converter.literals import DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
+    DEFAULT_ZOOM_LEVEL)
 from documents.conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
 from .models import StagingFolder
-from .serializers import SerializerStagingFolder, SerializerStagingFolderFile
+from .serializers import (StagingFolderSerializer, StagingFolderFileSerializer,
+    StagingSourceFileImageSerializer)
 
 logger = logging.getLogger(__name__)
 
@@ -23,9 +25,11 @@ class APIStagingSourceFileView(generics.GenericAPIView):
     """
     Details of the selected staging file.
     """
-    def get(self, request, staging_folder_pk, filename):
+    serializer_class = StagingFolderFileSerializer
+
+    def get(self, request, staging_folder_pk, encoded_filename):
         staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
-        return Response(SerializerStagingFolderFile(staging_folder.get_file(encoded_filename=filename), context={'request': request}).data)
+        return Response(StagingFolderFileSerializer(staging_folder.get_file(encoded_filename=encoded_filename), context={'request': request}).data)
 
 
 class APIStagingSourceListView(generics.ListAPIView):
@@ -33,7 +37,7 @@ class APIStagingSourceListView(generics.ListAPIView):
     Returns a list of all the staging folders and the files they contain.
     """
 
-    serializer_class = SerializerStagingFolder
+    serializer_class = StagingFolderSerializer
     queryset = StagingFolder.objects.all()
 
 
@@ -41,17 +45,23 @@ class APIStagingSourceView(generics.RetrieveAPIView):
     """
     Details of the selected staging folders and the files it contains.
     """
-    serializer_class = SerializerStagingFolder
+    serializer_class = StagingFolderSerializer
     queryset = StagingFolder.objects.all()
 
 
 class APIStagingSourceFileImageView(generics.GenericAPIView):
     """
     Image of the selected staging file.
+    size -- 'x' seprated width and height of the desired image representation.
+    page -- Page number of the staging file to be imaged.
+    zoom -- Zoom level of the image to be generated, numeric value only.
     """
-    def get(self, request, staging_folder_pk, filename):
+
+    serializer_class = StagingSourceFileImageSerializer
+
+    def get(self, request, staging_folder_pk, encoded_filename):
         staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
-        staging_file = staging_folder.get_file(encoded_filename=filename)
+        staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
 
         size = request.GET.get('size', DISPLAY_SIZE)
 
