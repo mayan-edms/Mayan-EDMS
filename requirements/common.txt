@@ -32,3 +32,4 @@ South==0.8.4
 unicode-slugify==0.1
 
 wsgiref==0.1.2
+psycopg2==2.5.3

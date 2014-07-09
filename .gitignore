@@ -18,4 +18,5 @@ gpg_home/
 .coverage
 /dist/
 .idea/
+static_collected/
 *egg-info*
