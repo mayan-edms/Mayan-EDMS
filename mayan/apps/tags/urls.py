@@ -1,4 +1,8 @@
+from __future__ import absolute_import
+
 from django.conf.urls import patterns, url
+
+from .views import APITagListView, APITagView
 
 urlpatterns = patterns('tags.views',
     url(r'^list/$', 'tag_list', (), 'tag_list'),
@@ -17,4 +21,9 @@ urlpatterns = patterns('tags.views',
     url(r'^for/document/(?P<document_id>\d+)/$', 'document_tags', (), 'document_tags'),
 
     url(r'^(?P<tag_pk>\d+)/acl/list/$', 'tag_acl_list', (), 'tag_acl_list'),
+)
+
+api_urls = patterns('',
+    url(r'^tags/(?P<pk>[0-9]+)/$', APITagView.as_view(), name='tag-detail'),
+    url(r'^tags/$', APITagListView.as_view(), name='tag-list'),
 )

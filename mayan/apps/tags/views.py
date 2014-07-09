@@ -10,6 +10,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from rest_framework import generics
+from taggit.models import Tag
+
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 from acls.utils import apply_default_acls
@@ -17,13 +20,15 @@ from documents.models import Document
 from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
-from taggit.models import Tag
+from rest_api.filters import MayanObjectPermissionsFilter
+from rest_api.permissions import MayanPermission
 
 from .forms import TagListForm, TagForm
 from .models import TagProperties
 from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
     PERMISSION_TAG_VIEW)
+from .serializers import TagSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -370,3 +375,29 @@ def tag_acl_list(request, tag_pk):
             'object': tag,
         }
     )
+
+
+# API views
+
+
+class APITagView(generics.RetrieveAPIView):
+    """
+    Details of the selected tag.
+    """
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
+
+    permission_classes = (MayanPermission,)
+    mayan_object_permissions = [PERMISSION_TAG_VIEW]
+
+
+class APITagListView(generics.ListAPIView):
+    """
+    Returns a list of all the tags.
+    """
+
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
+
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = [PERMISSION_TAG_VIEW]

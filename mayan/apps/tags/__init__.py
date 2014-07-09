@@ -2,14 +2,15 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
+from taggit.managers import TaggableManager
+from taggit.models import Tag
+
 from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import (register_links, register_top_menu,
     register_model_list_columns, register_multi_item_links)
-
-from taggit.managers import TaggableManager
-from taggit.models import Tag
+from rest_api.classes import APIEndPoint
 
 from .links import (tag_list, tag_create, tag_attach,
     tag_document_list, tag_delete, tag_edit, tag_tagged_item_list,
@@ -17,6 +18,7 @@ from .links import (tag_list, tag_create, tag_attach,
     single_document_multiple_tag_remove, multiple_documents_selection_tag_remove)
 from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
     PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW)
+from .urls import api_urls
 from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 
 register_model_list_columns(Tag, [
@@ -59,3 +61,7 @@ class_permissions(Tag, [
 ])
 
 Document.add_to_class('tags', TaggableManager())
+
+endpoint = APIEndPoint('tags')
+endpoint.register_urls(api_urls)
+endpoint.add_endpoint('tag-list', _(u'Returns a list of all the tags.'))
