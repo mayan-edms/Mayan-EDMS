@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 
 from documents.widgets import document_html_widget
+from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
 from tags.widgets import get_tags_inline_widget
 
 from .models import SmartLink, SmartLinkCondition
@@ -48,7 +49,7 @@ class SmartLinkImageWidget(forms.widgets.Widget):
             output.append(u'<div class="tc">%s: %d</div>' % (ugettext(u'Pages'), document.pages.count()))
             output.append(get_tags_inline_widget(document))
             output.append(u'<div style="padding: 5px;">')
-            output.append(document_html_widget(document, click_view='document_display', view='document_preview_multipage', fancybox_class='fancybox-noscaling', gallery_name=u'smart_link_%d_documents_gallery' % value['smart_link_instance'].pk))
+            output.append(document_html_widget(document, click_view='document_display', size=MULTIPAGE_PREVIEW_SIZE, fancybox_class='fancybox-noscaling', gallery_name=u'smart_link_%d_documents_gallery' % value['smart_link_instance'].pk))
             output.append(u'</div>')
             output.append(u'<div class="tc">')
             output.append(u'<a href="%s"><span class="famfam active famfam-page_go"></span>%s</a>' % (reverse('document_view_simple', args=[document.pk]), ugettext(u'Select')))
