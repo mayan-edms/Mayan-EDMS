@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys
+from django.core.exceptions import ImproperlyConfigured
 
 ugettext = lambda s: s
 
@@ -22,12 +23,13 @@ sys.path.append(os.path.join(BASE_DIR, 'mayan', 'apps'))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
+try:
+    from .secrets import *
+except ImportError:
+    raise ImproperlyConfigured('You need a secrets.py file - use secrets.py.example for development')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
