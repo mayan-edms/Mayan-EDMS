@@ -2,12 +2,19 @@ from __future__ import absolute_import
 
 import os
 
-from django.utils import unittest
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.files.base import File
+from django.core.urlresolvers import reverse
+from django.test.client import Client
+from django.utils import unittest
 
-from .models import Document, DocumentType
 from .literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
+from .models import Document, DocumentType
+
+TEST_ADMIN_PASSWORD = 'test_admin_password'
+TEST_ADMIN_USERNAME = 'test_admin'
+TEST_ADMIN_EMAIL = 'admin@admin.com'
 
 
 class DocumentTestCase(unittest.TestCase):
@@ -120,3 +127,53 @@ class DocumentSearchTestCase(unittest.TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+
+
+class DocumentUploadFunctionalTestCase(unittest.TestCase):
+    def setUp(self):
+        from history.api import register_history_type
+
+        from .events import (HISTORY_DOCUMENT_CREATED,
+            HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
+
+        self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+        self.client = Client()
+
+        # There events are registered upon loading documents/__init__.py
+        # while Django's test DB is still not created, so we created them by
+        # hand.
+        register_history_type(HISTORY_DOCUMENT_CREATED)
+        register_history_type(HISTORY_DOCUMENT_EDITED)
+        register_history_type(HISTORY_DOCUMENT_DELETED)
+
+    def test_upload_a_document(self):
+        from sources.models import WebForm
+        from sources.literals import SOURCE_CHOICE_WEB_FORM
+
+        # Login the admin user
+        logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
+        # Create new webform source
+        response = self.client.post(reverse('setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        self.assertEqual(WebForm.objects.count(), 1)
+
+        # Upload the test document
+        with open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf')) as file_descriptor:
+            response = self.client.post(reverse('upload_interactive'), {'file': file_descriptor})
+        self.assertEqual(Document.objects.count(), 1)
+
+        self.document = Document.objects.all().first()
+        self.failUnlessEqual(self.document.exists(), True)
+        self.failUnlessEqual(self.document.size, 272213)
+
+        self.failUnlessEqual(self.document.file_mimetype, 'application/pdf')
+        self.failUnlessEqual(self.document.file_mime_encoding, 'binary')
+        self.failUnlessEqual(self.document.file_filename, 'mayan_11_1.pdf')
+        self.failUnlessEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
+        self.failUnlessEqual(self.document.page_count, 47)
+
+        # Delete the document
+        response = self.client.post(reverse('document_delete', args=[self.document.pk]))
+        self.assertEqual(Document.objects.count(), 0)
