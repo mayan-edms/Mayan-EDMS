@@ -8,8 +8,9 @@ from django.utils.translation import ugettext
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+from solo.models import SingletonModel
+
 from permissions.models import StoredPermission
-from common.models import Singleton, SingletonManager
 
 from .managers import AccessEntryManager, DefaultAccessEntryManager
 from .classes import AccessObjectClass
@@ -92,7 +93,7 @@ class DefaultAccessEntry(models.Model):
         return u'%s: %s' % (self.content_type, self.content_object)
 
 
-class CreatorSingletonManager(SingletonManager):
+class CreatorSingletonManager(models.Manager):
     def passthru_check(self, holder, creator=None):
         if isinstance(holder, self.model):
             # TODO: raise explicit error if is instance and creator=None
@@ -101,7 +102,7 @@ class CreatorSingletonManager(SingletonManager):
             return holder
 
 
-class CreatorSingleton(Singleton):
+class CreatorSingleton(SingletonModel):
     objects = CreatorSingletonManager()
 
     def __unicode__(self):

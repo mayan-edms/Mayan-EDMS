@@ -19,7 +19,7 @@ from .models import Installation
 @receiver(post_migrate, dispatch_uid='trigger_first_time')
 def trigger_first_time(sender, **kwargs):
     if kwargs['app'] == 'installation':
-        details = Installation.objects.get()
+        details, created = Installation.objects.get_or_create()
         details.is_first_run = True
         details.save()
 
@@ -27,7 +27,7 @@ def trigger_first_time(sender, **kwargs):
 def check_first_run():
     try:
         with transaction.atomic():
-            details = Installation.objects.get()
+            details, created = Installation.objects.get_or_create()
     except DatabaseError:
         # Avoid database errors when the app tables haven't been created yet
         pass

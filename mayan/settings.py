@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'mptt',
     'compressor',
     'rest_framework',
+    'solo',
 # Base generic
     'permissions',
     'project_setup',

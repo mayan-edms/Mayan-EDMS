@@ -62,6 +62,7 @@ django-taggit==0.12
 django-mptt==0.6.1
 django-rest-swagger==0.1.14
 django-sendfile==0.3.6
+django-solo==1.0.5
 djangorestframework==2.3.14
 GitPython==0.3.2.RC1
 ghostscript==0.4.1

@@ -6,14 +6,15 @@ import requests
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from common.models import Singleton
+from solo.models import SingletonModel
+
 from lock_manager import Lock, LockError
 
 from .literals import FORM_SUBMIT_URL, FORM_KEY, FORM_RECEIVER_FIELD, TIMEOUT
 from .exceptions import AlreadyRegistered
 
 
-class RegistrationSingleton(Singleton):
+class RegistrationSingleton(SingletonModel):
     _cached_name = None
     _registered = None
 

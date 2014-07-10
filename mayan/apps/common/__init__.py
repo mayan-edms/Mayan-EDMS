@@ -17,7 +17,7 @@ from navigation.api import register_links, register_top_menu
 from .conf import settings as common_settings
 from .conf.settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
-from .models import AutoAdminSingleton
+from .models import AnonymousUserSingleton, AutoAdminSingleton
 from .utils import validate_path
 
 
@@ -61,7 +61,7 @@ def create_superuser(sender, **kwargs):
             assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
             admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
             # Store the auto admin password properties to display the first login message
-            auto_admin_properties = AutoAdminSingleton.objects.get()
+            auto_admin_properties, created = AutoAdminSingleton.objects.get_or_create()
             auto_admin_properties.account = admin
             auto_admin_properties.password = AUTO_ADMIN_PASSWORD
             auto_admin_properties.password_hash = admin.password
@@ -74,7 +74,7 @@ def create_superuser(sender, **kwargs):
 def auto_admin_account_passwd_change(sender, instance, **kwargs):
     try:
         with transaction.atomic():
-            auto_admin_properties = AutoAdminSingleton.objects.get()
+            auto_admin_properties, created = AutoAdminSingleton.objects.get_or_create()
             if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
                 # Only delete the auto admin properties when the password has been changed
                 auto_admin_properties.delete(force=True)

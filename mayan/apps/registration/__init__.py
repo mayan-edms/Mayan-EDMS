@@ -20,6 +20,6 @@ register_links(['form_view', 'about_view', 'license_view'], [form_view], menu_na
 
 try:
     with transaction.atomic():
-        RegistrationSingleton.objects.get()
+        RegistrationSingleton.objects.get_or_create()
 except DatabaseError:
     pass

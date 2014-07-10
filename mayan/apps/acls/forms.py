@@ -51,8 +51,8 @@ class BaseHolderSelectionForm(forms.Form):
 
 
 class HolderSelectionForm(BaseHolderSelectionForm):
-    special_holders = [AnonymousUserSingleton.objects.get()]
+    special_holders = [AnonymousUserSingleton.objects.get_or_create()[0]]
 
 
 class ClassHolderSelectionForm(BaseHolderSelectionForm):
-    special_holders = [AnonymousUserSingleton.objects.get(), CreatorSingleton.objects.get()]
+    special_holders = [AnonymousUserSingleton.objects.get_or_create()[0], CreatorSingleton.objects.get_or_create()[0]]
