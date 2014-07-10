@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
-from .views import APITagListView, APITagView
+from .api_views import APITagListView, APITagView
 
 urlpatterns = patterns('tags.views',
     url(r'^list/$', 'tag_list', (), 'tag_list'),

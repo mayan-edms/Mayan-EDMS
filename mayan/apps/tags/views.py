@@ -375,29 +375,3 @@ def tag_acl_list(request, tag_pk):
             'object': tag,
         }
     )
-
-
-# API views
-
-
-class APITagView(generics.RetrieveAPIView):
-    """
-    Details of the selected tag.
-    """
-    serializer_class = TagSerializer
-    queryset = Tag.objects.all()
-
-    permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_TAG_VIEW]
-
-
-class APITagListView(generics.ListAPIView):
-    """
-    Returns a list of all the tags.
-    """
-
-    serializer_class = TagSerializer
-    queryset = Tag.objects.all()
-
-    filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = [PERMISSION_TAG_VIEW]
