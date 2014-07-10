@@ -42,7 +42,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-#Django
+    #Django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -52,16 +52,16 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.comments',
     'django.contrib.staticfiles',
-# 3rd party
-# South
+    # 3rd party
+    # South
     'south',
-# Others
+    # Others
     'filetransfers',
     'taggit',
     'mptt',
     'compressor',
     'rest_framework',
-# Base generic
+    # Base generic
     'permissions',
     'project_setup',
     'project_tools',
@@ -69,8 +69,8 @@ INSTALLED_APPS = (
     'navigation',
     'lock_manager',
     'web_theme',
-# pagination needs to go after web_theme so that the pagination template
-# if found
+    # pagination needs to go after web_theme so that the pagination template
+    # if found
     'pagination',
     'common',
     'django_gpg',
@@ -82,7 +82,7 @@ INSTALLED_APPS = (
     'scheduler',
     'job_processor',
     'installation',
-# Mayan EDMS
+    # Mayan EDMS
     'storage',
     'app_registry',
     'folders',
@@ -103,9 +103,8 @@ INSTALLED_APPS = (
     'checkouts',
     'bootstrap',
     'registration',
-# Has to be last so the other apps can register it's signals
-    'signaler',
-)
+    # Has to be last so the other apps can register it's signals
+    'signaler')
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -267,42 +266,3 @@ REST_FRAMEWORK = {
     'PAGINATE_BY_PARAM': 'page_size',
     'MAX_PAGINATE_BY': 100,
 }
-
-try:
-    from settings_local import *
-except ImportError:
-    pass
-
-if DEBUG:
-    INTERNAL_IPS = ('127.0.0.1',)
-
-    TEMPLATE_LOADERS = (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )
-    try:
-        import rosetta
-        INSTALLED_APPS += ('rosetta',)
-    except ImportError:
-        pass
-
-    try:
-        import django_extensions
-        INSTALLED_APPS += ('django_extensions',)
-    except ImportError:
-        pass
-
-    try:
-        import debug_toolbar
-        #INSTALLED_APPS +=('debug_toolbar',)
-    except ImportError:
-        pass
-
-    TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
-
-    WSGI_AUTO_RELOAD = True
-    if 'debug_toolbar' in INSTALLED_APPS:
-        MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-        DEBUG_TOOLBAR_CONFIG = {
-            'INTERCEPT_REDIRECTS': False,
-        }
