@@ -64,7 +64,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
 
 def document_thumbnail(document, **kwargs):
-    return document_html_widget(document, click_view='document_preview', **kwargs)
+    return document_html_widget(document, click_view='document_display', **kwargs)
 
 
 def document_link(document):
