@@ -2,10 +2,10 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
+from .api_views import (APIDocumentView, APIDocumentImageView, APIDocumentListView,
+                        APIDocumentPageView, APIDocumentVersionView)
 from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, DISPLAY_SIZE,
-    MULTIPAGE_PREVIEW_SIZE)
-from .views import (APIDocumentView, APIDocumentImageView, APIDocumentListView,
-    APIDocumentPageView, APIDocumentVersionView)
+                            MULTIPAGE_PREVIEW_SIZE)
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),
