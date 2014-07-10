@@ -138,14 +138,13 @@ Add new static media::
 
     $ ./manage.py collectstatic --noinput
 
-If using the SQLite3 database option, rename the file named `mayan.sqlite` file to `db.sqlite3`
-
 The upgrade procedure is now complete.
 
 
 Backward incompatible changes
 =============================
-* None
+* If using the SQLite3 database option, rename the file named `mayan.sqlite` file to `db.sqlite3`
+
 
 Bugs fixed or issues closed
 ===========================
