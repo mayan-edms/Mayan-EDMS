@@ -52,7 +52,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-APScheduler==2.0.3
+APScheduler==2.1.2
 cssmin==0.1.4
 Django==1.6.5
 django-filetransfers==0.1.0

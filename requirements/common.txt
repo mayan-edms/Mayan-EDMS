@@ -1,4 +1,4 @@
-APScheduler==2.0.3
+APScheduler==2.1.2
 
 cssmin==0.1.4
 
