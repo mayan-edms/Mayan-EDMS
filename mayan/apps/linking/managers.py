@@ -31,11 +31,11 @@ class SmartLinkManager(models.Manager):
                 cls, attribute = condition.foreign_document_data.lower().split(u'.')
                 try:
                     if cls == u'metadata':
-                        value_query = Q(**{'documentmetadata__value__%s' % condition.operator: eval(condition.expression, eval_dict)})
+                        value_query = Q(**{'metadata__value__%s' % condition.operator: eval(condition.expression, eval_dict)})
                         if condition.negated:
-                            query = (Q(documentmetadata__metadata_type__name=attribute) & ~value_query)
+                            query = (Q(metadata__metadata_type__name=attribute) & ~value_query)
                         else:
-                            query = (Q(documentmetadata__metadata_type__name=attribute) & value_query)
+                            query = (Q(metadata__metadata_type__name=attribute) & value_query)
                         if condition.inclusion == INCLUSION_AND:
                             total_query &= query
                         elif condition.inclusion == INCLUSION_OR:
