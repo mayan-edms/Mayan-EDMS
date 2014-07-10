@@ -1,7 +1,9 @@
 from django.utils import unittest
 
+from taggit.models import Tag
+
 from .literals import COLOR_RED
-from .models import Tag, TagProperties
+from .models import TagProperties
 
 
 class TagTestCase(unittest.TestCase):
