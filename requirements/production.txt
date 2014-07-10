@@ -1,2 +1,3 @@
 # requirements/production.txt
 -r common.txt
+gunicorn==19.0.0
