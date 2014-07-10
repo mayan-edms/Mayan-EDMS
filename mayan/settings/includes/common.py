@@ -1,6 +1,4 @@
 """
-Django settings for testproject project.
-
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
 
@@ -18,9 +16,12 @@ ugettext = lambda s: s
 import os
 import sys
 
-BASE_DIR = '/'.join(os.path.abspath(os.path.dirname(__file__)).split('/')[0:-4])  # up from mayan/settings/include
+BASE_DIR = '/'.join(os.path.abspath(os.path.dirname(__file__)).split('/')[0:-3])  # up from mayan/settings/include
 SITE_ROOT = BASE_DIR  # for compatibility
-sys.path.append(os.path.join(BASE_DIR, 'mayan/apps'))
+
+_apps_path = os.path.join(BASE_DIR, 'mayan/apps')
+if _apps_path not in sys.path:
+    sys.path.append(_apps_path)
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected/')
