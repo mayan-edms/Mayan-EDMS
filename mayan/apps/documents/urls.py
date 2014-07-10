@@ -4,8 +4,7 @@ from django.conf.urls import patterns, url
 
 from .api_views import (APIDocumentView, APIDocumentImageView, APIDocumentListView,
                         APIDocumentPageView, APIDocumentVersionView)
-from .conf.settings import (PREVIEW_SIZE, PRINT_SIZE, DISPLAY_SIZE,
-                            MULTIPAGE_PREVIEW_SIZE)
+from .conf.settings import PREVIEW_SIZE, PRINT_SIZE, DISPLAY_SIZE
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),
@@ -20,7 +19,6 @@ urlpatterns = patterns('documents.views',
     url(r'^(?P<document_id>\d+)/hard_copy/$', 'document_hard_copy', (), 'document_hard_copy'),
 
     url(r'^(?P<document_id>\d+)/display/preview/$', 'get_document_image', {'size': PREVIEW_SIZE}, 'document_preview'),
-    url(r'^(?P<document_id>\d+)/display/preview/multipage/$', 'get_document_image', {'size': MULTIPAGE_PREVIEW_SIZE}, 'document_preview_multipage'),
     url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': DISPLAY_SIZE}, 'document_display'),
     url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE}, 'document_display_print'),
 
