@@ -130,6 +130,7 @@ Next upgrade/add the new requirements::
 
 Migrate existing database schema with::
 
+    $ ./manage.py migrate acls 0001 --fake
     $ ./manage.py migrate taggit 0001 --fake
     $ ./manage.py migrate
 
