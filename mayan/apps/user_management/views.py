@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+
 from common.utils import generate_choices_w_labels, encapsulate
 from common.views import assign_remove
 from common.widgets import two_state_template
@@ -73,8 +74,7 @@ def user_edit(request, user_id):
         'form': form,
         'object': user,
         'object_name': _(u'user'),
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def user_add(request):
@@ -94,8 +94,7 @@ def user_add(request):
     return render_to_response('generic_form.html', {
         'title': _(u'create new user'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def user_delete(request, user_id=None, user_id_list=None):
@@ -215,7 +214,6 @@ def user_multiple_set_password(request):
 
 
 def get_user_groups(user):
-    #return user.group_set.all()
     return Group.objects.filter(user=user)
 
 
@@ -303,8 +301,7 @@ def group_add(request):
     return render_to_response('generic_form.html', {
         'title': _(u'create new group'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def group_delete(request, group_id=None, group_id_list=None):

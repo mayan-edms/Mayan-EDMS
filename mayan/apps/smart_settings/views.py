@@ -23,7 +23,7 @@ def setting_list(request):
                     'description': sub_setting.get('description', None),
                     'exists': sub_setting.get('exists', False),
                     'default': sub_setting['default'],
-                    })
+                })
     context = {
         'title': _(u'settings'),
         'object_list': new_settings,
@@ -32,7 +32,8 @@ def setting_list(request):
         'extra_columns': [
             {'name': _(u'name'), 'attribute': encapsulate(lambda x: mark_safe(u'<span style="font-weight: bold;">%s</span><br />%s' % (x.get('global_name'), x.get('description'))))},
             {'name': _(u'default'), 'attribute': encapsulate(lambda x: return_type(x['default']))},
-            {'name': _(u'value'), 'attribute': encapsulate(lambda x: mark_safe(u'<div class="nowrap">%s&nbsp;%s</div>' % (
+            {
+                'name': _(u'value'), 'attribute': encapsulate(lambda x: mark_safe(u'<div class="nowrap">%s&nbsp;%s</div>' % (
                     return_type(getattr(x['module'], x['name'])),
                     exists_with_famfam(getattr(x['module'], x['name'])) if x['exists'] else ''
                 )))

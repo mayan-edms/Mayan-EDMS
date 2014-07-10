@@ -12,15 +12,8 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import generics
-from rest_framework.response import Response
-
 from acls.models import AccessEntry
 from common.utils import encapsulate
-from converter.exceptions import UnkownConvertError, UnknownFileFormat
-from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
-    DEFAULT_ZOOM_LEVEL)
-from documents.conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from documents.exceptions import NewDocumentVersionNotAllowed
 from documents.models import DocumentType, Document
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
@@ -38,8 +31,6 @@ from .models import (WebForm, StagingFolder, SourceTransformation,
 from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
     PERMISSION_SOURCES_SETUP_CREATE)
-from .serializers import (StagingFolderSerializer, StagingFolderFileSerializer,
-    StagingSourceFileImageSerializer)
 
 
 def document_create_siblings(request, document_id):

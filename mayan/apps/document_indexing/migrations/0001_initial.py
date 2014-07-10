@@ -1,13 +1,12 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'Index'
         db.create_table('document_indexing_index', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -52,9 +51,7 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('document_indexing', ['DocumentRenameCount'])
 
-
     def backwards(self, orm):
-        
         # Deleting model 'Index'
         db.delete_table('document_indexing_index')
 
@@ -66,7 +63,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'DocumentRenameCount'
         db.delete_table('document_indexing_documentrenamecount')
-
 
     models = {
         'auth.group': {

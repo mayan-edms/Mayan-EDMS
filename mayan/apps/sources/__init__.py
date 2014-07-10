@@ -46,10 +46,11 @@ register_links(['setup_source_transformation_create', 'setup_source_transformati
 source_views = ['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create', 'setup_source_transformation_list', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_create']
 
 register_model_list_columns(StagingFile, [
-        {'name': _(u'thumbnail'), 'attribute':
-            encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='staging_list', title=x.filename, size='100'))
-        },
-    ])
+    {
+        'name': _(u'thumbnail'), 'attribute':
+        encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='staging_list', title=x.filename, size='100'))
+    },
+])
 
 register_setup(setup_sources)
 

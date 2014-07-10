@@ -13,11 +13,9 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 10, 8, 0, 0)),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting field 'BootstrapSetup.created'
         db.delete_column('bootstrap_bootstrapsetup', 'created')
-
 
     models = {
         'bootstrap.bootstrapsetup': {

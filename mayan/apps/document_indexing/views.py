@@ -12,28 +12,29 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
-from documents.models import Document
-from documents.views import document_list
 from common.utils import encapsulate, generate_choices_w_labels
 from common.views import assign_remove
 from common.widgets import two_state_template
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from documents.models import Document
+from documents.views import document_list
 from permissions.models import Permission
 
 from .forms import IndexForm, IndexTemplateNodeForm
-from .models import (Index, IndexTemplateNode, IndexInstanceNode)
-from .tools import do_rebuild_all_indexes
-from .widgets import (index_instance_item_link, get_breadcrumbs, node_level)
+from .models import Index, IndexTemplateNode, IndexInstanceNode
 from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
-    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
-    PERMISSION_DOCUMENT_INDEXING_SETUP,
-    PERMISSION_DOCUMENT_INDEXING_CREATE,
-    PERMISSION_DOCUMENT_INDEXING_EDIT,
-    PERMISSION_DOCUMENT_INDEXING_DELETE
-)
+                          PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
+                          PERMISSION_DOCUMENT_INDEXING_SETUP,
+                          PERMISSION_DOCUMENT_INDEXING_CREATE,
+                          PERMISSION_DOCUMENT_INDEXING_EDIT,
+                          PERMISSION_DOCUMENT_INDEXING_DELETE)
+from .tools import do_rebuild_all_indexes
+from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 
 
 # Setup views
+
+
 def index_setup_list(request):
     context = {
         'title': _(u'indexes'),
@@ -55,10 +56,8 @@ def index_setup_list(request):
 
     context['object_list'] = queryset
 
-    return render_to_response('generic_list.html',
-        context,
-        context_instance=RequestContext(request)
-    )
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def index_setup_create(request):
@@ -77,8 +76,7 @@ def index_setup_create(request):
     return render_to_response('generic_form.html', {
         'title': _(u'create index'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def index_setup_edit(request, index_pk):
@@ -104,8 +102,7 @@ def index_setup_edit(request, index_pk):
         'index': index,
         'object_name': _(u'index'),
         'navigation_object_name': 'index',
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def index_setup_delete(request, index_pk):
@@ -125,9 +122,9 @@ def index_setup_delete(request, index_pk):
         try:
             index.delete()
             messages.success(request, _(u'Index: %s deleted successfully.') % index)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Index: %(index)s delete error: %(error)s') % {
-                'index': index, 'error': e})
+                'index': index, 'error': exception})
 
         return HttpResponseRedirect(next)
 
@@ -224,8 +221,7 @@ def template_node_create(request, parent_pk):
         'index': parent_node.index,
         'object_name': _(u'index'),
         'navigation_object_name': 'index',
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def template_node_edit(request, node_pk):
@@ -255,8 +251,7 @@ def template_node_edit(request, node_pk):
             {'object': 'index', 'name': _(u'index')},
             {'object': 'node', 'name': _(u'node')}
         ],
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def template_node_delete(request, node_pk):
@@ -276,9 +271,9 @@ def template_node_delete(request, node_pk):
         try:
             node.delete()
             messages.success(request, _(u'Node: %s deleted successfully.') % node)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Node: %(node)s delete error: %(error)s') % {
-                'node': node, 'error': e})
+                'node': node, 'error': exception})
 
         return HttpResponseRedirect(next)
 
@@ -324,10 +319,8 @@ def index_list(request):
 
     context['object_list'] = queryset
 
-    return render_to_response('generic_list.html',
-        context,
-        context_instance=RequestContext(request)
-    )
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def index_instance_node_view(request, index_instance_node_pk):
@@ -402,10 +395,10 @@ def rebuild_index_instances(request):
             for warning in warnings:
                 messages.warning(request, warning)
 
-        except Exception, e:
+        except Exception as exception:
             if settings.DEBUG:
                 raise
-            messages.error(request, _(u'Index rebuild error: %s') % e)
+            messages.error(request, _(u'Index rebuild error: %s') % exception)
 
         return HttpResponseRedirect(next)
 

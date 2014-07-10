@@ -18,7 +18,7 @@ def home(request):
         return HttpResponseRedirect(reverse('document_list_recent'))
     else:
         return render_to_response('home.html', {},
-        context_instance=RequestContext(request))
+            context_instance=RequestContext(request))
 
 
 def maintenance_menu(request):
@@ -26,7 +26,7 @@ def maintenance_menu(request):
     for namespace, values in tools.items():
         user_tools[namespace] = {
             'title': values['title']
-            }
+        }
         user_tools[namespace].setdefault('links', [])
         for link in values['links']:
             try:
@@ -39,13 +39,11 @@ def maintenance_menu(request):
     return render_to_response('tools.html', {
         'blocks': user_tools,
         'title': _(u'maintenance menu')
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def diagnostics_view(request):
     return render_to_response('diagnostics.html', {
         'blocks': diagnostics,
         'title': _(u'Diagnostics')
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))

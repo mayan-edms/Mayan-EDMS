@@ -18,11 +18,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('bootstrap', ['BootstrapSetup'])
 
-
     def backwards(self, orm):
         # Deleting model 'BootstrapSetup'
         db.delete_table('bootstrap_bootstrapsetup')
-
 
     models = {
         'bootstrap.bootstrapsetup': {

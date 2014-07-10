@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 from rest_framework import serializers
-from rest_framework.reverse import reverse
 
 from .models import Document, DocumentVersion, DocumentPage
 
@@ -29,4 +28,3 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Document
-

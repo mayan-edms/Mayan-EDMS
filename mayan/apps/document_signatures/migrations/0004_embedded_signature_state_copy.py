@@ -1,8 +1,8 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import DataMigration
 from django.db import models
+
 
 class Migration(DataMigration):
 
@@ -12,14 +12,13 @@ class Migration(DataMigration):
                 document_signature.has_embedded_signature = True
             else:
                 document_signature.has_embedded_signature = False
-            
+
             document_signature.save()
 
     def backwards(self, orm):
         # The content of signature_state is lost during the forward migration
         # No way to revert
         raise RuntimeError("Cannot reverse this migration.")
-
 
     models = {
         'auth.group': {

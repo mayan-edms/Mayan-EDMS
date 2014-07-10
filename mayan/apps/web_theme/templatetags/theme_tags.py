@@ -1,10 +1,12 @@
+from __future__ import absolute_import
+
 import re
 
 from django.conf import settings
 from django.template import Library, Node, TemplateSyntaxError
 from django.utils.safestring import mark_safe
 
-from web_theme.conf import settings as web_theme_settings
+from ..conf import settings as web_theme_settings
 
 register = Library()
 
@@ -27,15 +29,11 @@ def get_theme(parser, token):
     except ValueError:
         raise TemplateSyntaxError('%r tag requires arguments' % token.contents.split()[0])
 
-    #m = re.search(r'(.*?) as (\w+)', arg)
     m = re.search(r'as (\w+)', arg)
     if not m:
         raise TemplateSyntaxError('%r tag had invalid arguments' % tag_name)
-    #format_string, var_name = m.groups()
     var_name = m.groups()
 
-    #if not (format_string[0] == format_string[-1] and format_string[0] in ('"', "'")):
-    #    raise template.TemplateSyntaxError, "%r tag's argument should be in quotes" % tag_name
     return GetThemeNode(var_name)
 
 
@@ -79,5 +77,4 @@ def get_web_theme_setting(parser, token):
 
 @register.filter
 def highlight(text, word):
-    #return mark_safe(unicode(text).replace(word, mark_safe('<span class="highlight">%s</span>' % word)))
     return mark_safe(unicode(text).replace(word, mark_safe('<mark>%s</mark>' % word)))

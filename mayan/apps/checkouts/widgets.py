@@ -72,15 +72,18 @@ class SplitTimeDeltaField(forms.MultiValueField):
             errors.update(kwargs['error_messages'])
         localize = kwargs.get('localize', False)
         fields = (
-            forms.IntegerField(min_value=0,
+            forms.IntegerField(
+                min_value=0,
                 error_messages={'invalid': errors['invalid_days']},
                 localize=localize
             ),
-            forms.IntegerField(min_value=0,
+            forms.IntegerField(
+                min_value=0,
                 error_messages={'invalid': errors['invalid_hours']},
                 localize=localize
             ),
-            forms.IntegerField(min_value=0,
+            forms.IntegerField(
+                min_value=0,
                 error_messages={'invalid': errors['invalid_minutes']},
                 localize=localize
             ),

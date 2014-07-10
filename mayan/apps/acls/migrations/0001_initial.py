@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -36,7 +35,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'acls', ['CreatorSingleton'])
 
-
     def backwards(self, orm):
         # Deleting model 'AccessEntry'
         db.delete_table(u'acls_accessentry')
@@ -46,7 +44,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'CreatorSingleton'
         db.delete_table(u'acls_creatorsingleton')
-
 
     models = {
         u'acls.accessentry': {

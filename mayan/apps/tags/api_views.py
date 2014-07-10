@@ -1,10 +1,6 @@
 from __future__ import absolute_import
 
-from django.core.exceptions import PermissionDenied
-
-from permissions.models import Permission
 from rest_framework import generics
-from rest_framework.response import Response
 
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission

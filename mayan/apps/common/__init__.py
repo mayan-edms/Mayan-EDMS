@@ -17,7 +17,7 @@ from navigation.api import register_links, register_top_menu
 from .conf import settings as common_settings
 from .conf.settings import (AUTO_CREATE_ADMIN, AUTO_ADMIN_USERNAME,
     AUTO_ADMIN_PASSWORD, TEMPORARY_DIRECTORY)
-from .models import AnonymousUserSingleton, AutoAdminSingleton
+from .models import AutoAdminSingleton
 from .utils import validate_path
 
 

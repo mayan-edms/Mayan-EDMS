@@ -3,10 +3,7 @@ from __future__ import absolute_import
 
 import logging
 
-from django.utils.translation import ugettext_lazy as _
-
 from rest_framework import generics
-from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 

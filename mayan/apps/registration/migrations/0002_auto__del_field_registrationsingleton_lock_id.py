@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,13 +10,11 @@ class Migration(SchemaMigration):
         # Deleting field 'RegistrationSingleton.lock_id'
         db.delete_column(u'registration_registrationsingleton', 'lock_id')
 
-
     def backwards(self, orm):
         # Adding field 'RegistrationSingleton.lock_id'
         db.add_column(u'registration_registrationsingleton', 'lock_id',
                       self.gf('django.db.models.fields.CharField')(default=1, max_length=1, unique=True),
                       keep_default=False)
-
 
     models = {
         u'registration.registrationsingleton': {

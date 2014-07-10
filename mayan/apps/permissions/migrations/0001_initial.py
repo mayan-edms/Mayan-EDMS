@@ -1,13 +1,12 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'Permission'
         db.create_table('permissions_permission', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -46,9 +45,7 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('permissions', ['RoleMember'])
 
-
     def backwards(self, orm):
-        
         # Removing unique constraint on 'Permission', fields ['namespace', 'name']
         db.delete_unique('permissions_permission', ['namespace', 'name'])
 
@@ -63,7 +60,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'RoleMember'
         db.delete_table('permissions_rolemember')
-
 
     models = {
         'contenttypes.contenttype': {

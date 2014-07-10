@@ -4,10 +4,10 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'DocumentVersionSignature'
         db.create_table('document_signatures_documentversionsignature', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -17,12 +17,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('document_signatures', ['DocumentVersionSignature'])
 
-
     def backwards(self, orm):
-        
         # Deleting model 'DocumentVersionSignature'
         db.delete_table('document_signatures_documentversionsignature')
-
 
     models = {
         'auth.group': {

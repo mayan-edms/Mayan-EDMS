@@ -1,13 +1,12 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Deleting model 'DocumentRenameCount'
         db.delete_table('document_indexing_documentrenamecount')
 
@@ -20,9 +19,7 @@ class Migration(SchemaMigration):
         # Deleting model 'Index'
         db.delete_table('document_indexing_index')
 
-
     def backwards(self, orm):
-        
         # Adding model 'DocumentRenameCount'
         db.create_table('document_indexing_documentrenamecount', (
             ('suffix', self.gf('django.db.models.fields.PositiveIntegerField')(blank=True)),
@@ -67,9 +64,8 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('document_indexing', ['Index'])
 
-
     models = {
-        
+
     }
 
     complete_apps = ['document_indexing']

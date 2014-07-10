@@ -1,22 +1,18 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Deleting field 'DocumentVersionSignature.signature_state'
         db.delete_column('document_signatures_documentversionsignature', 'signature_state')
 
-
     def backwards(self, orm):
-        
         # Adding field 'DocumentVersionSignature.signature_state'
         db.add_column('document_signatures_documentversionsignature', 'signature_state', self.gf('django.db.models.fields.CharField')(max_length=16, null=True, blank=True), keep_default=False)
-
 
     models = {
         'auth.group': {

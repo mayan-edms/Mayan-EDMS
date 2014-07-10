@@ -52,7 +52,6 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        #'object_name': _(u'comment'),
         'delete_view': True,
         'previous': previous,
         'next': next,

@@ -1,8 +1,8 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import DataMigration
 from django.db import models
+
 
 class Migration(DataMigration):
 
@@ -10,10 +10,8 @@ class Migration(DataMigration):
         for permission_holder in orm.PermissionHolder.objects.all():
             permission_holder.delete()
 
-
     def backwards(self, orm):
         raise RuntimeError("Cannot reverse this migration.")
-
 
     models = {
         'contenttypes.contenttype': {

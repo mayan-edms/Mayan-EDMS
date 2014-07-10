@@ -19,4 +19,3 @@ class MayanObjectPermissionsFilter(BaseFilterBackend):
                 return queryset
         else:
             return queryset
-

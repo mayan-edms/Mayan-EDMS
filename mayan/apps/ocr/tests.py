@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 import os
-import time
 
 from django.conf import settings
 from django.core.files.base import File
@@ -9,10 +8,8 @@ from django.utils import unittest
 
 from documents.models import Document, DocumentType
 
-from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
-    DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE)
-from .models import DocumentQueue
 from .api import do_document_ocr
+from .models import DocumentQueue
 
 
 class DocumentSearchTestCase(unittest.TestCase):

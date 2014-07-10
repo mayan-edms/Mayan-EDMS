@@ -1,20 +1,15 @@
 from __future__ import absolute_import
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
-from converter.literals import (DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER,
+from converter.literals import (DEFAULT_PAGE_NUMBER,
                                 DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL)
-from permissions.models import Permission
 from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.conf.settings import (DISPLAY_SIZE, PREVIEW_SIZE, RECENT_COUNT,
-                            ROTATION_STEP, ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL,
-                            ZOOM_MIN_LEVEL)
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
+from documents.conf.settings import (DISPLAY_SIZE, ZOOM_MAX_LEVEL,
+                                     ZOOM_MIN_LEVEL)
 
 from .models import StagingFolder
 from .serializers import (StagingFolderFileSerializer, StagingFolderSerializer,
@@ -81,9 +76,10 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
         rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
         try:
-            return Response({'status': 'success',
+            return Response({
+                'status': 'success',
                 'data': staging_file.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True)
-                })
+            })
         except UnknownFileFormat as exception:
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
         except UnkownConvertError as exception:

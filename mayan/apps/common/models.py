@@ -3,7 +3,6 @@ from __future__ import absolute_import
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth.models import User
 
 from solo.models import SingletonModel

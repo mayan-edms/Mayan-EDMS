@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -16,11 +15,9 @@ class Migration(SchemaMigration):
         ))
         db.create_unique('document_indexing_index_document_types', ['index_id', 'documenttype_id'])
 
-
     def backwards(self, orm):
         # Removing M2M table for field document_types on 'Index'
         db.delete_table('document_indexing_index_document_types')
-
 
     models = {
         'auth.group': {

@@ -33,6 +33,7 @@ def user_post_save(sender, instance, **kwargs):
                 except ObjectDoesNotExist:
                     pass
 
+
 post_save.connect(user_post_save, sender=User)
 
 register_setup(role_list)

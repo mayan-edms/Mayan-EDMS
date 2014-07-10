@@ -4,12 +4,13 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
+
 class Migration(DataMigration):
 
     depends_on = (
         ('documents', '0012_auto__add_field_documentversion_signature_file'),
     )
-    
+
     def forwards(self, orm):
         for document_version in orm['documents.DocumentVersion'].objects.all():
             if document_version.signature_state or document_version.signature_file:
@@ -20,14 +21,12 @@ class Migration(DataMigration):
                 )
                 document_signature.save()
 
-
     def backwards(self, orm):
         for document_signature in orm.DocumentVersionSignature.objects.all():
             document_version = document_signature.document_version
-            document_version.signature_state=document_signature.signature_state
-            document_version.signature_file=document_signature.signature_file
+            document_version.signature_state = document_signature.signature_state
+            document_version.signature_file = document_signature.signature_file
             document_version.save()
-
 
     models = {
         'auth.group': {

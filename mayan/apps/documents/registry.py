@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-from django.conf.urls import url
-
 from .cleanup import cleanup
 
 bootstrap_models = [
@@ -14,4 +12,3 @@ bootstrap_models = [
     }
 ]
 cleanup_functions = [cleanup]
-

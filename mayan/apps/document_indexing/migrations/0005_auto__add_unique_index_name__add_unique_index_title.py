@@ -1,28 +1,24 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding unique constraint on 'Index', fields ['name']
         db.create_unique('document_indexing_index', ['name'])
 
         # Adding unique constraint on 'Index', fields ['title']
         db.create_unique('document_indexing_index', ['title'])
 
-
     def backwards(self, orm):
-        
         # Removing unique constraint on 'Index', fields ['title']
         db.delete_unique('document_indexing_index', ['title'])
 
         # Removing unique constraint on 'Index', fields ['name']
         db.delete_unique('document_indexing_index', ['name'])
-
 
     models = {
         'auth.group': {

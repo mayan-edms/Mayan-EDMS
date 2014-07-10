@@ -1,5 +1,4 @@
 # encoding: utf-8
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -72,7 +71,6 @@ class Migration(SchemaMigration):
         db.send_create_signal('sources', ['OutOfProcess'])
 
     def backwards(self, orm):
-
         # Deleting model 'StagingFolder'
         db.delete_table('sources_stagingfolder')
 

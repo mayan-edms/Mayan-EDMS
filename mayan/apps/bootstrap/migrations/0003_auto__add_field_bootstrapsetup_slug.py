@@ -13,11 +13,9 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.SlugField')(default='', unique=True, max_length=128, blank=True),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting field 'BootstrapSetup.slug'
         db.delete_column('bootstrap_bootstrapsetup', 'slug')
-
 
     models = {
         'bootstrap.bootstrapsetup': {

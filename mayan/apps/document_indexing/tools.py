@@ -2,9 +2,9 @@ from __future__ import absolute_import
 
 from documents.models import Document
 
-from .models import Index, IndexInstanceNode, DocumentRenameCount
-from .filesystem import fs_delete_directory_recusive
 from .api import update_indexes
+from .filesystem import fs_delete_directory_recusive
+from .models import Index, IndexInstanceNode, DocumentRenameCount
 
 
 def do_rebuild_all_indexes():

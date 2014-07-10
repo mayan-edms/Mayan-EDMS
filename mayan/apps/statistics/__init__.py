@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from navigation.api import register_links, register_model_list_columns
+from navigation.api import register_links
 
 from .classes import Statistic, StatisticNamespace
 from .links import link_execute, link_namespace_details, link_namespace_list

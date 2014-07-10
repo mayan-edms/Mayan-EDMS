@@ -51,10 +51,8 @@ def folder_list(request, queryset=None, extra_context=None):
 
     context['object_list'] = queryset
 
-    return render_to_response('generic_list.html',
-        context,
-        context_instance=RequestContext(request)
-    )
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def folder_create(request):

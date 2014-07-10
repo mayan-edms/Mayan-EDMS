@@ -33,7 +33,8 @@ register_model_list_columns(Tag, [
 ])
 
 register_model_list_columns(Document, [
-    {'name': _(u'tags'), 'attribute':
+    {
+        'name': _(u'tags'), 'attribute':
         encapsulate(lambda x: get_tags_inline_widget_simple(x))
     },
 ])

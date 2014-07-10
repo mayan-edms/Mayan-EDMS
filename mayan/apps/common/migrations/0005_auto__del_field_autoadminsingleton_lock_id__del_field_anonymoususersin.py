@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -14,7 +13,6 @@ class Migration(SchemaMigration):
         # Deleting field 'AnonymousUserSingleton.lock_id'
         db.delete_column(u'common_anonymoususersingleton', 'lock_id')
 
-
     def backwards(self, orm):
         # Adding field 'AutoAdminSingleton.lock_id'
         db.add_column(u'common_autoadminsingleton', 'lock_id',
@@ -25,7 +23,6 @@ class Migration(SchemaMigration):
         db.add_column(u'common_anonymoususersingleton', 'lock_id',
                       self.gf('django.db.models.fields.CharField')(default=1, max_length=1, unique=True),
                       keep_default=False)
-
 
     models = {
         u'auth.group': {

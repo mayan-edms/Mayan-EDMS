@@ -98,7 +98,8 @@ register_diagnostic('documents', _(u'Documents'), document_missing_list)
 register_maintenance_links([document_find_all_duplicates, document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'documents'))
 
 register_model_list_columns(Document, [
-    {'name': _(u'thumbnail'), 'attribute':
+    {
+        'name': _(u'thumbnail'), 'attribute':
         encapsulate(lambda x: document_thumbnail(x, gallery_name='document_list', title=x.filename, size=THUMBNAIL_SIZE))
     },
 ])

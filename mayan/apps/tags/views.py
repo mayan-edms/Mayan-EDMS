@@ -10,7 +10,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import generics
 from taggit.models import Tag
 
 from acls.models import AccessEntry
@@ -20,15 +19,12 @@ from documents.models import Document
 from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
 
 from .forms import TagListForm, TagForm
 from .models import TagProperties
 from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
     PERMISSION_TAG_VIEW)
-from .serializers import TagSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -60,8 +56,7 @@ def tag_create(request):
     return render_to_response('generic_form.html', {
         'title': _(u'create tag'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def tag_attach(request, document_id=None, document_id_list=None):
@@ -143,10 +138,8 @@ def tag_list(request, queryset=None, extra_context=None):
 
     context['object_list'] = queryset
 
-    return render_to_response('generic_list.html',
-        context,
-        context_instance=RequestContext(request)
-    )
+    return render_to_response('generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def tag_delete(request, tag_id=None, tag_id_list=None):
@@ -235,8 +228,7 @@ def tag_edit(request, tag_id):
         'form': form,
         'object': tag,
         'object_name': _(u'tag'),
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def tag_tagged_item_list(request, tag_id):

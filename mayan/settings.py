@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-#Django
+# Django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -223,7 +223,7 @@ STATICFILES_FINDERS = (
 # --------- Django compressor -------------
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
-COMPRESS_ENABLED=False
+COMPRESS_ENABLED = False
 # ---------- Django sendfile --------------
 SENDFILE_BACKEND = 'sendfile.backends.simple'
 # --------- Web theme ---------------
@@ -299,7 +299,7 @@ if DEBUG:
 
     try:
         import debug_toolbar
-        #INSTALLED_APPS +=('debug_toolbar',)
+        # INSTALLED_APPS +=('debug_toolbar',)
     except ImportError:
         pass
 

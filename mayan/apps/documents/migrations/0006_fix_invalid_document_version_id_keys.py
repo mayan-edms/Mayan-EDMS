@@ -7,7 +7,6 @@ class Migration(DataMigration):
 
     def forwards(self, orm):
         qs = orm.DocumentPage.objects.filter(document_version=None)
-        #print 'Invalid document pages to delete: %s' % qs.count()
         for document_page in qs:
             document_page.delete()
 

@@ -5,7 +5,7 @@ from django.template import RequestContext, Template, loader, TemplateDoesNotExi
 from django.utils.importlib import import_module
 
 
-#http://mitchfournier.com/2010/07/12/show-a-custom-403-forbidden-error-page-in-django/
+# http://mitchfournier.com/2010/07/12/show-a-custom-403-forbidden-error-page-in-django/
 class PermissionDeniedMiddleware(object):
     def process_exception(self, request, exception):
         if isinstance(exception, PermissionDenied):
