@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER,
@@ -9,12 +10,12 @@ from permissions.models import Permission
 from rest_framework import generics
 from rest_framework.response import Response
 
-from .conf.settings import (DISPLAY_SIZE, PREVIEW_SIZE, RECENT_COUNT,
-                            ROTATION_STEP, ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL,
-                            ZOOM_MIN_LEVEL)
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
+from .conf.settings import (DISPLAY_SIZE, PREVIEW_SIZE, RECENT_COUNT,
+                            ROTATION_STEP, ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL,
+                            ZOOM_MIN_LEVEL)
 from .permissions import PERMISSION_DOCUMENT_VIEW
 from .models import Document, DocumentPage, DocumentVersion
 from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
@@ -86,8 +87,6 @@ class APIDocumentImageView(generics.GenericAPIView):
 
     def get(self, request, pk):
         document = get_object_or_404(Document, pk=pk)
-
-        logger.debug('document: %s' % document)
 
         try:
             Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
