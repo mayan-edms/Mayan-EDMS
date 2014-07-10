@@ -64,9 +64,10 @@ def create_default_queue_signal_handler(sender, **kwargs):
 def reset_queue_documents():
     try:
         default_queue = DocumentQueue.objects.get(name='default')
-        default_queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).update(state=QUEUEDOCUMENT_STATE_PENDING)
-    except DatabaseError:
+    except (DatabaseError, DocumentQueue.DoesNotExist):
         pass
+    else:
+        default_queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).update(state=QUEUEDOCUMENT_STATE_PENDING)
 
 
 register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
