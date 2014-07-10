@@ -43,7 +43,7 @@ source_suffix = '.rst'
 # source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'contents'
 
 # General information about the project.
 project = mayan.__title__
@@ -221,3 +221,9 @@ man_pages = [
     ('index', 'mayanedms', u'Mayan EDMS Documentation',
      [u'Roberto Rosario'], 1)
 ]
+
+import sphinx_rtd_theme
+
+html_theme = "sphinx_rtd_theme"
+
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]

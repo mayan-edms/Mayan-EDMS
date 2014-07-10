@@ -1,4 +1,3 @@
-
 .. _index:
 
 ========================
@@ -18,13 +17,20 @@ Mayan EDMS documentation
 .. _Open source: http://en.wikipedia.org/wiki/Open_source
 .. _checking out and in: http://en.wikipedia.org/wiki/Revision_control
 
-On the Web
-=====================
+Getting help
+============
 
-* Website: http://www.mayan-edms.com
-* Source: https://github.com/mayan-edms/mayan-edms/
-* Video: http://bit.ly/Mayan-Intro
-* Mailing list: http://groups.google.com/group/mayan-edms/
+* Try the :doc:`FAQ <faq/index>` -- it's got answers to many common questions.
+
+* Search for information in the `archives of the mayan-edms mailing list`_, or
+  `post a question`_.  If you prefer news servers, use the gateway provided by Gname_.
+
+* Report bugs with **Mayan EDMS** using Github's `ticket tracker`_.
+
+.. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
+.. _Gname: http://news.gmane.org/gmane.comp.python.django.mayan-edms
+.. _post a question: http://groups.google.com/group/mayan-edms
+.. _ticket tracker: https://github.com/mayan-edms/mayan-edms/issues
 
 First steps
 ===========
@@ -34,7 +40,6 @@ First steps
   :doc:`Requirements <intro/requirements>` |
   :doc:`Installation <intro/installation>` |
   :doc:`Getting started <intro/getting_started>`
-
 
 Understanding Mayan EDMS
 ========================
@@ -51,47 +56,25 @@ Understanding Mayan EDMS
   :doc:`Tags <topics/tags>` |
   :doc:`OCR <topics/ocr>`
 
-
-Between versions
-================
-.. toctree::
-    :maxdepth: 1
-
-    releases/1.0.rst
+Release notes
+=============
+  :doc:`Release notes and upgrading instructions <releases/index>`
 
 Customization and fine tunning
 ==============================
 
   :doc:`Settings <topics/settings>` | :doc:`Customization <topics/customization>`
 
-
 For developers
 ==============
 
   :doc:`Development <topics/development>` | :doc:`Documentation <topics/documentation>` | :doc:`Translations <topics/translations>`
 
-
 Credits
 =======
 
   :doc:`Contributors <credits/contributors>` |
-  :doc:`Software used <credits/software_used>` |
   :doc:`Licensing <credits/license>`
 
 
-Getting help
-============
 
-Having trouble? We'd like to help!
-
-* Try the :doc:`FAQ <faq/index>` -- it's got answers to many common questions.
-
-* Search for information in the `archives of the mayan-edms mailing list`_, or
-  `post a question`_.  If you prefer news servers, use the gateway provided by Gname_.
-
-* Report bugs with **Mayan EDMS** using Github's `ticket tracker`_.
-
-.. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
-.. _Gname: http://news.gmane.org/gmane.comp.python.django.mayan-edms
-.. _post a question: http://groups.google.com/group/mayan-edms
-.. _ticket tracker: https://github.com/mayan-edms/mayan-edms/issues

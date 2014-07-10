@@ -8,5 +8,4 @@ Here we list everything and everybody that has made his/her/its part in improvin
    :maxdepth: 1
 
    contributors
-   software_used
    license

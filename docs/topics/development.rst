@@ -42,7 +42,6 @@ Git branch structure
 Each release is tagged and available for download on the Downloads_ section of the **Mayan EDMS** repository on GitHub_
 
 When submitting patches, please place your feature/change in its own branch prior to opening a pull request on GitHub_.
-To familiarize yourself with the technical details of the project read the :ref:`internals` section.
 
 .. _Git: http://git-scm.org
 .. _`Successful Git Branching Model`: http://nvie.com/posts/a-successful-git-branching-model/

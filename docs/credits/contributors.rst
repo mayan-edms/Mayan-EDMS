@@ -14,63 +14,25 @@ Lead developer
 --------------
 * Roberto Rosario (roberto.rosario@mayan-edms.com) <https://twitter.com/siloraptor>
 
-Bug fixes
----------
+Contributors (in alphabetical order)
+------------------------------------
 * Aziz M. Bookwala (https://github.com/azizmb)
-* IHLeanne (https://github.com/IHLeanne)
-* Sergey Glita (s.v.glita@gmail.com)
-* Meurig Freeman (https://github.com/meurig)
-* David Herring (https://github.com/abadger1406)
-* Webfaction (https://www.webfaction.com)
-* Kolmar Kafran
-* Nate Aune (nate@appsembler.com)
-* Mathias Behrle <mbehrle@m9s.biz>
-* Rafael Esparra <rafael.esparra1@upr.edu>
-
-Bug reports
------------
-* Aziz M. Bookwala (https://github.com/azizmb)
-* tightwork (https://github.com/tightwork)
-* Joost Cassee (joost@cassee.net, https://github.com/jcassee)
-* Brian Huxley
-* dAnjou (https://github.com/dAnjou)
-* Sergey Glita (s.v.glita@gmail.com)
-* IHLeanne (https://github.com/IHLeanne)
-* valterwill (https://github.com/valterwill)
-* David Herring (https://github.com/abadger1406)
-* Alexandru Kiss (usurel@gmail.com)
-* Nate Aune (nate@appsembler.com)
-* Fabio Duran Verdugo (fabiognome@gmail.com)
-* Ed Schipul (eschipul@schipul.com)
-* Mathias Behrle <mbehrle@m9s.biz>
-
-Patches
--------
-* Meurig Freeman (https://github.com/meurig)
-* Sergey Glita (s.v.glita@gmail.com)
-* Brian E (brian@realize.org)
 * Bertrand Bordage (https://github.com/BertrandBordage)
+* Brian E (brian@realize.org)
+
+* David Herring (https://github.com/abadger1406)
+* Kolmar Kafran
+
+* IHLeanne (https://github.com/IHLeanne)
 * Iliya Georgiev (ikgeorgiev@gmail.com)
 * Lars Kruse (devel@sumpfralle.de)
 * Mathias Behrle <mbehrle@m9s.biz>
-* Simone Federici [https://twitter.com/aldaranalton] [https://github.com/simone]
-* Rafael Esparra <rafael.esparra1@upr.edu>
-
-
-Suggestions
------------
-* Cezar Jenkins (https://twitter.com/#!/emperorcezar)
-* Sergey Glita (s.v.glita@gmail.com)
-* Barry Rowlingson (http://geospaced.blogspot.com)
-* Gour (https://github.com/gour)
-* Alexandru Kiss (usurel@gmail.com)
-* Stephen Knox
+* Meurig Freeman (https://github.com/meurig)
 * Nate Aune (nate@appsembler.com)
-* Ed Schipul (eschipul@schipul.com)
-
-Security audit
---------------
-* Dolev Farhi <dolev@openflare.org>
+* Rafael Esparra <rafael.esparra1@upr.edu>
+* Sergey Glita (s.v.glita@gmail.com)
+* Simone Federici [https://twitter.com/aldaranalton] [https://github.com/simone]
+* Webfaction (https://www.webfaction.com)
 
 Translations
 ------------
@@ -127,18 +89,3 @@ Translations
 * Spanish
 
   - Roberto Rosario
-
-Remote access for debugging
----------------------------
-* Sergey Glita (s.v.glita@gmail.com)
-* David Herring (https://github.com/abadger1406)
-* Michael Terretta (terretta@gmail.com)
-* Alexandru Kiss (usurel@gmail.com)
-
-
-Monetary donations
-------------------
-* David Herring (https://github.com/abadger1406) - $100
-* David Herring (https://github.com/abadger1406) - $250
-* Michael Terretta (terretta@gmail.com) - $100
-* Ed Schipul (eschipul@schipul.com, http://www.schipul.com) - $100
