@@ -67,8 +67,8 @@ class Installation(SingletonModel):
         namespace.add_property('platform', _(u'Platform'), sys.platform, report=True)
         namespace.add_property('machine', _(u'Machine'), platform.machine(), report=True)
         namespace.add_property('processor', _(u'Processor'), platform.processor(), report=True)
-        namespace.add_property('cpus', _(u'Number of CPUs'), psutil.NUM_CPUS, report=True)
-        namespace.add_property('total_phymem', _(u'Total physical memory'), pretty_size(psutil.TOTAL_PHYMEM), report=True)
+        namespace.add_property('cpus', _(u'Number of CPUs'), psutil.cpu_count(), report=True)
+        namespace.add_property('total_phymem', _(u'Total physical memory'), pretty_size(psutil.virtual_memory().total), report=True)
         namespace.add_property('disk_partitions', _(u'Disk partitions'), '; '.join(['%s %s %s %s' % (partition.device, partition.mountpoint, partition.fstype, partition.opts) for partition in psutil.disk_partitions()]))
 
     def binary_dependencies(self):
