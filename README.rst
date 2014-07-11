@@ -56,20 +56,12 @@ Contribute
 - Make sure to add yourself to the `contributors file`_.
 
 
-Donations
----------
-
-Please `donate`_ if you are willing to support the further development
-of this project.
-
-
 .. _Website: http://www.mayan-edms.com
 .. _Video demostration: http://bit.ly/pADNXv
 .. _Documentation: http://readthedocs.org/docs/mayan/en/latest/
 .. _Translations: https://www.transifex.com/projects/p/mayan-edms/
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
 .. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
-.. _donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W6LMMZHTNUJ6L
 
 .. |Build Status| image:: https://travis-ci.org/mayan-edms/mayan-edms.svg?branch=master
    :target: https://travis-ci.org/mayan-edms/mayan-edms
