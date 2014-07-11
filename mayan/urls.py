@@ -58,16 +58,16 @@ def handler500(request):
     })))
 
 if settings.DEBUG:
-    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-    urlpatterns += staticfiles_urlpatterns()
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
     if 'rosetta' in settings.INSTALLED_APPS:
         urlpatterns += patterns(
             '',
             url(r'^rosetta/', include('rosetta.urls'), name='rosetta'))
 
-    import debug_toolbar
-    urlpatterns += patterns(
-        '',
-        url(r'^__debug__/', include(debug_toolbar.urls)))
-
+    if 'debug_toolbar' in settings.INSTALLED_APPS:
+        import debug_toolbar
+        urlpatterns += patterns(
+            '',
+            url(r'^__debug__/', include(debug_toolbar.urls)))
