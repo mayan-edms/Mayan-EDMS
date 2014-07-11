@@ -10,7 +10,7 @@ except ImportError:
 
 import mayan
 
-PACKAGE_NAME = 'mayan'
+PACKAGE_NAME = 'mayan-edms'
 PACKAGE_DIR = 'mayan'
 
 if sys.argv[-1] == 'publish':
