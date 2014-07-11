@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 
 import os
+import random;
+import string;
 import sys
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
+    from distutils.command.install import install as _install
+else:
+    from setuptools.command.install import install as _install
 
 import mayan
 
@@ -16,6 +21,22 @@ PACKAGE_DIR = 'mayan'
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
+
+
+def post_install(dir):
+    secret = ''.join([random.SystemRandom().choice(string.digits + string.letters + string.punctuation) for i in range(100)])
+    with open(os.path.join(dir, 'mayan', 'settings', 'local.py'), 'w+') as file_object:
+        file_object.write('\n'.join([
+            'from __future__ import absolute_import',
+            'from .base import *',
+            "SECRET_KEY = '{}'".format(secret),
+        ]))
+
+
+class install(_install):
+    def run(self):
+        _install.run(self)
+        self.execute(post_install, (self.install_lib,), msg="Running post install task")
 
 
 def fullsplit(path, result=None):
@@ -108,6 +129,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
         'Topic :: Communications :: File Sharing',
     ],
+    cmdclass={'install': install},
     description='A Django based Document Management System.',
     include_package_data=True,
     install_requires=install_requires,
