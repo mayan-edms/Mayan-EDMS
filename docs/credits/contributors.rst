@@ -55,6 +55,7 @@ Patches
 * Mathias Behrle <mbehrle@m9s.biz>
 * Simone Federici [https://twitter.com/aldaranalton] [https://github.com/simone]
 * Rafael Esparra <rafael.esparra1@upr.edu>
+* Paul Whipp (https://github.com/pwhipp) (http://paulwhippconsulting.com/)
 
 
 Suggestions
