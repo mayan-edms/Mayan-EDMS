@@ -28,11 +28,15 @@ This project is open sourced under `Apache 2.0 License`_.
 Installation
 ------------
 
+.. code-block:: bash
+
     $ virtualenv venv
     $ source venv/bin/activate
     $ pip install mayan-edms==1.0.rc1
 
-Instead of using the usual ./manage.py use the alias mayan-edms.py
+Instead of using the usual ./manage.py use the alias mayan-edms.py::
+
+.. code-block:: bash
 
     $ mayan-edms.py syncdb --migrate --noinput
     $ mayan-edms.py runserver
