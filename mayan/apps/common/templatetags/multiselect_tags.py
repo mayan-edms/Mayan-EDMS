@@ -1,7 +1,9 @@
-from django.template import Library
-from django.utils.simplejson import dumps
+from __future__ import absolute_import
 
-from common.utils import return_attrib
+from json import dumps
+from django.template import Library
+
+from ..utils import return_attrib
 
 register = Library()
 

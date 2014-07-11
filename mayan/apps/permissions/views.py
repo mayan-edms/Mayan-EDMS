@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import itertools
+from json import loads
 import operator
 
 from django.contrib import messages
@@ -10,7 +11,6 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.utils.simplejson import loads
 from django.utils.translation import ugettext_lazy as _
 
 from acls.classes import EncapsulatedObject

@@ -1,11 +1,11 @@
 from __future__ import absolute_import
 
+from json import loads
 from optparse import make_option
 import os
 import sys
 
 from django.core.management.base import CommandError, LabelCommand
-from django.utils.simplejson import loads
 
 from documents.models import DocumentType
 from metadata.api import convert_dict_to_dict_list
