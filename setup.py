@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import os
-import random;
-import string;
+import random
+import string
 import sys
 
 try:
@@ -24,7 +24,7 @@ if sys.argv[-1] == 'publish':
 
 
 def post_install(dir):
-    secret = ''.join([random.SystemRandom().choice(string.digits + string.letters + string.punctuation) for i in range(100)])
+    secret = ''.join([random.SystemRandom().choice((string.digits + string.letters + string.punctuation).replace("'",'')) for i in range(100)])
     with open(os.path.join(dir, 'mayan', 'settings', 'local.py'), 'w+') as file_object:
         file_object.write('\n'.join([
             'from __future__ import absolute_import',
