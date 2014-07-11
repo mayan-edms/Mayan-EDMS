@@ -120,7 +120,6 @@ class VirtualEnv(object):
             yield self.extract_dependency(item)
 
     def __init__(self):
-        self.requirements_file_path = os.path.join(settings.SITE_ROOT, 'requirements', 'production.txt')
         if not PIP:
             raise PIPNotFound
 

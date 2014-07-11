@@ -14,7 +14,9 @@ import sys
 
 _file_path = os.path.abspath(os.path.dirname(__file__)).split('/')
 
-BASE_DIR = SITE_ROOT = '/'.join(_file_path[0:-2])
+BASE_DIR = '/'.join(_file_path[0:-2])
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mayan', 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -118,7 +120,7 @@ WSGI_APPLICATION = 'mayan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(SITE_ROOT, 'db.sqlite3'),
+        'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
     }
 }
 
