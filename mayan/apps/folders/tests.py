@@ -11,6 +11,8 @@ from documents.models import Document, DocumentType
 
 from .models import Folder
 
+TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
+
 
 class FolderTestCase(unittest.TestCase):
     def setUp(self):
@@ -23,9 +25,8 @@ class FolderTestCase(unittest.TestCase):
         )
         self.document.save()
 
-        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
-        new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
-        file_object.close()
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
 
     def test_creation_of_folder(self):
         user = User.objects.all()[0]

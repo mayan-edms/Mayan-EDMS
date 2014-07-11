@@ -11,6 +11,8 @@ from documents.models import Document, DocumentType
 from .api import do_document_ocr
 from .models import DocumentQueue
 
+TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png')
+
 
 class DocumentSearchTestCase(unittest.TestCase):
     def setUp(self):
@@ -27,9 +29,8 @@ class DocumentSearchTestCase(unittest.TestCase):
         )
         self.document.save()
 
-        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'title_page.png'))
-        new_version = self.document.new_version(file=File(file_object, name='title_page.png'))
-        file_object.close()
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            self.document.new_version(file=File(file_object, name='title_page.png'))
 
         self.failUnlessEqual(self.default_queue.queuedocument_set.count(), 1)
 

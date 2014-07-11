@@ -15,6 +15,8 @@ from .models import Document, DocumentType
 TEST_ADMIN_PASSWORD = 'test_admin_password'
 TEST_ADMIN_USERNAME = 'test_admin'
 TEST_ADMIN_EMAIL = 'admin@admin.com'
+TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
+TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
 
 
 class DocumentTestCase(unittest.TestCase):
@@ -27,11 +29,9 @@ class DocumentTestCase(unittest.TestCase):
             description='description',
         )
         self.document.save()
-        # return File(file(self.filepath, 'rb'), name=self.filename)
 
-        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
-        new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
-        file_object.close()
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
 
     def test_document_creation(self):
         self.failUnlessEqual(self.document_type.name, 'test doc type')
@@ -48,16 +48,15 @@ class DocumentTestCase(unittest.TestCase):
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '1.0')
         # self.failUnlessEqual(self.document.has_detached_signature(), False)
 
-        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg'))
-        new_version_data = {
-            'comment': 'test comment 1',
-            'version_update': VERSION_UPDATE_MAJOR,
-            'release_level': RELEASE_LEVEL_FINAL,
-            'serial': 0,
-        }
+        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            new_version_data = {
+                'comment': 'test comment 1',
+                'version_update': VERSION_UPDATE_MAJOR,
+                'release_level': RELEASE_LEVEL_FINAL,
+                'serial': 0,
+            }
 
-        new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
-        file_object.close()
+            new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '2.0')
 
@@ -67,9 +66,8 @@ class DocumentTestCase(unittest.TestCase):
             'release_level': RELEASE_LEVEL_FINAL,
             'serial': 0,
         }
-        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
-        new_version = self.document.new_version(file=File(file_object), **new_version_data)
-        file_object.close()
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            new_version = self.document.new_version(file=File(file_object), **new_version_data)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '3.0')
 
@@ -90,9 +88,9 @@ class DocumentSearchTestCase(unittest.TestCase):
         )
         self.document.save()
 
-        file_object = open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf'))
-        new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
-        file_object.close()
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
+
         # Text extraction on the first page only
         parse_document_page(self.document.latest_version.pages.all()[0])
 
@@ -160,7 +158,7 @@ class DocumentUploadFunctionalTestCase(unittest.TestCase):
         self.assertEqual(WebForm.objects.count(), 1)
 
         # Upload the test document
-        with open(os.path.join(settings.SITE_ROOT, 'contrib', 'sample_documents', 'mayan_11_1.pdf')) as file_descriptor:
+        with open(TEST_DOCUMENT_PATH) as file_descriptor:
             response = self.client.post(reverse('upload_interactive'), {'file': file_descriptor})
         self.assertEqual(Document.objects.count(), 1)
 
