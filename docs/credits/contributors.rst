@@ -19,16 +19,15 @@ Contributors (in alphabetical order)
 * Aziz M. Bookwala (https://github.com/azizmb)
 * Bertrand Bordage (https://github.com/BertrandBordage)
 * Brian E (brian@realize.org)
-
 * David Herring (https://github.com/abadger1406)
 * Kolmar Kafran
-
 * IHLeanne (https://github.com/IHLeanne)
 * Iliya Georgiev (ikgeorgiev@gmail.com)
 * Lars Kruse (devel@sumpfralle.de)
 * Mathias Behrle <mbehrle@m9s.biz>
 * Meurig Freeman (https://github.com/meurig)
 * Nate Aune (nate@appsembler.com)
+* Paul Whipp [https://github.com/pwhipp] [http://paulwhippconsulting.com]
 * Rafael Esparra <rafael.esparra1@upr.edu>
 * Sergey Glita (s.v.glita@gmail.com)
 * Simone Federici [https://twitter.com/aldaranalton] [https://github.com/simone]
