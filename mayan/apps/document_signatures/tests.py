@@ -31,7 +31,7 @@ class DocumentTestCase(unittest.TestCase):
         self.document.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
+            self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
 
         with open(TEST_KEY_FILE) as file_object:
             gpg.import_key(file_object.read())
