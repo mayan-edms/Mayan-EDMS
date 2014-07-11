@@ -28,20 +28,22 @@ This project is open sourced under `Apache 2.0 License`_.
 Installation
 ------------
 
+To install **Mayan EDMS**, simply do:
+
 .. code-block:: bash
 
     $ virtualenv venv
     $ source venv/bin/activate
     $ pip install mayan-edms==1.0.rc1
 
-Instead of using the usual ./manage.py use the alias mayan-edms.py::
+Instead of using the usual ./manage.py use the alias mayan-edms.py:
 
 .. code-block:: bash
 
     $ mayan-edms.py syncdb --migrate --noinput
     $ mayan-edms.py runserver
 
-Point your browsers to 127.0.0.1:8000 and use the automatically created admin
+Point your browser to 127.0.0.1:8000 and use the automatically created admin
 account.
 
 Contribute
