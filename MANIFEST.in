@@ -1,3 +1,3 @@
 include README.rst LICENSE HISTORY.rst
-recursive-include mayan *.txt *.html *.css *.ico *.png *.jpg *.js
-recursive-exclude settings_local.* mayan.sqlite* db.sqlite* gpg_home document_storage image_cache
+recursive-include mayan README *.txt *.html *.css *.ico *.png *.jpg *.js
+global-exclude settings_local.* mayan.sqlite* db.sqlite* gpg_home document_storage image_cache
