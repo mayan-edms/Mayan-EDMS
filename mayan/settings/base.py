@@ -21,6 +21,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mayan', 'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
