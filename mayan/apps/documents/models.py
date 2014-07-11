@@ -552,7 +552,7 @@ class DocumentPage(models.Model):
     """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'), related_name='pages')
     content = models.TextField(blank=True, null=True, verbose_name=_(u'content'))
-    page_label = models.CharField(max_length=32, blank=True, null=True, verbose_name=_(u'page label'))
+    page_label = models.CharField(max_length=40, blank=True, null=True, verbose_name=_(u'page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'page number'), db_index=True)
 
     def __unicode__(self):
