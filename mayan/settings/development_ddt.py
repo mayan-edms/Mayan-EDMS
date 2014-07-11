@@ -27,4 +27,4 @@ TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
 
 WSGI_AUTO_RELOAD = True
 
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+MIDDLEWARE_CLASSES = ('debug_toolbar.middleware.DebugToolbarMiddleware',) + MIDDLEWARE_CLASSES
