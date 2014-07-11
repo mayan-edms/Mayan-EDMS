@@ -59,6 +59,6 @@ of this project.
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
 .. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/credits/contributors.rst
 .. |Installs badge| image:: https://pypip.in/d/mayan-edms/badge.png
-   :target: :target: https://crate.io/packages/mayan-edms/
+   :target: https://crate.io/packages/mayan-edms/
 .. |PyPI badge| image:: https://badge.fury.io/py/mayan-edms.png
    :target: http://badge.fury.io/py/mayan-edms
