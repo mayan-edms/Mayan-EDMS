@@ -1,5 +1,5 @@
 """
-Django settings for testproject project.
+Django settings for Mayan EDMS project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -10,18 +10,14 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 
-ugettext = lambda s: s
+_file_path = os.path.abspath(os.path.dirname(__file__)).split('/')
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
+BASE_DIR = SITE_ROOT = '/'.join(_file_path[0:-2])
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -30,11 +26,10 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
-# Django
+    #Django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -44,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.comments',
     'django.contrib.staticfiles',
-# 3rd party
+    # 3rd party
     'south',
     'rest_framework_swagger',
     'filetransfers',
@@ -53,7 +48,7 @@ INSTALLED_APPS = (
     'compressor',
     'rest_framework',
     'solo',
-# Base generic
+    # Base generic
     'permissions',
     'project_setup',
     'project_tools',
@@ -61,8 +56,8 @@ INSTALLED_APPS = (
     'navigation',
     'lock_manager',
     'web_theme',
-# pagination needs to go after web_theme so that the pagination template
-# if found
+    # pagination needs to go after web_theme so that the pagination template
+    # if found
     'pagination',
     'common',
     'django_gpg',
@@ -74,7 +69,7 @@ INSTALLED_APPS = (
     'scheduler',
     'job_processor',
     'installation',
-# Mayan EDMS
+    # Mayan EDMS
     'storage',
     'app_registry',
     'folders',
@@ -95,8 +90,8 @@ INSTALLED_APPS = (
     'checkouts',
     'bootstrap',
     'registration',
-# Has to be last so the other apps can register it's signals
-    'signaler',
+    # Has to be last so the other apps can register it's signals
+    'signaler'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -140,22 +135,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
-
 # Custom settings section
-
-import sys
 
 from django.core.urlresolvers import reverse_lazy
 
-sys.path.append(os.path.join(BASE_DIR, 'apps'))
-
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
+
+ugettext = lambda s: s
 
 LANGUAGES = (
     ('ar', ugettext('Arabic')),
@@ -184,11 +171,13 @@ LANGUAGES = (
 
 SITE_ID = 1
 
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
+STATIC_URL = '/static/'
 
-STATIC_URL = '/%s-static/' % PROJECT_NAME
+# Custom settings section
 
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+sys.path.append(os.path.join(BASE_DIR, 'mayan', 'apps'))
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -196,13 +185,6 @@ TEMPLATE_LOADERS = (
         'django.template.loaders.filesystem.Loader',
         'django.template.loaders.app_directories.Loader',
     )),
-)
-
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    # os.path.join(PROJECT_ROOT, 'templates')
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -216,7 +198,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other finders..
     'compressor.finders.CompressorFinder',
 )
 
@@ -272,42 +253,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
-
-try:
-    from settings_local import *
-except ImportError:
-    pass
-
-if DEBUG:
-    INTERNAL_IPS = ('127.0.0.1',)
-
-    TEMPLATE_LOADERS = (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )
-    try:
-        import rosetta
-        INSTALLED_APPS += ('rosetta',)
-    except ImportError:
-        pass
-
-    try:
-        import django_extensions
-        INSTALLED_APPS += ('django_extensions',)
-    except ImportError:
-        pass
-
-    try:
-        import debug_toolbar
-        # INSTALLED_APPS +=('debug_toolbar',)
-    except ImportError:
-        pass
-
-    TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)
-
-    WSGI_AUTO_RELOAD = True
-    if 'debug_toolbar' in INSTALLED_APPS:
-        MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-        DEBUG_TOOLBAR_CONFIG = {
-            'INTERCEPT_REDIRECTS': False,
-        }
