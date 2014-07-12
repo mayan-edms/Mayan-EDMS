@@ -115,6 +115,17 @@ Mayan EDMS is now licensed under the Apache 2.0 license. This means many
 things but the main change is that inclusion of Mayan EDMS into
 commercial products is now explicitly allowed.
 
+PyPI package
+~~~~~~~~~~~~
+**Mayan EDMS** has been packaged and submitted to the PyPI_ Python Package Index
+making it even easier to install and use.
+
+New REST API
+~~~~~~~~~~~~
+This release feature a completely new REST API and automatic API documentation.
+This new API is also used internally by *Mayan EDMS* itself.
+
+:q
 Upgrading from a previous version
 =================================
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
@@ -143,9 +154,15 @@ The upgrade procedure is now complete.
 
 Backward incompatible changes
 =============================
-* If using the SQLite3 database option, rename the file named `mayan.sqlite` file to `db.sqlite3`
+* If using the SQLite3 database option, rename the file named `mayan.sqlite` file to `db.sqlite3` and
+  move it to the new `media` provided folder.
+* Also move to the `media` folder any `gpg_home`, `document_storage` and `image_cache` folders
+  from your previous installation.
 
 
 Bugs fixed or issues closed
 ===========================
 * None
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

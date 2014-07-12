@@ -12,9 +12,7 @@ issue on the `GitHub issue tracker`_. To submit patches, please send a pull requ
 .. _GitHub: https://github.com/mayan-edms/mayan-edms/
 .. _`GitHub issue tracker`: https://github.com/mayan-edms/mayan-edms/issues
 
-.. _scm:
 
---------------
 Source Control
 --------------
 
@@ -48,10 +46,19 @@ When submitting patches, please place your feature/change in its own branch prio
 .. _git-flow: https://github.com/nvie/gitflow
 .. _Downloads:  https://github.com/mayan-edms/mayan-edms/archives/master
 
-.. _docs:
+
+Contributing changes
+--------------------
+Once your have create and committed some new code or feature, submit a Pull Request.
+Be sure to merge with mayan-edms/master before doing a pull request so that patches
+apply as cleanly as possible.  If there are no conflicts, Pull Requests can be merged
+directly from Github otherwise a manual command line merge has to be done and
+your patches might take longer to get merged.
+
+For more information on how to create Pull Request read: https://help.github.com/articles/using-pull-requests
+or the quick version: https://help.github.com/articles/creating-a-pull-request
 
 
----------
 Debugging
 ---------
 

@@ -2,7 +2,7 @@
 Permissions
 ===========
 
-**Mayan EDMS** provides very exact control over what activies users can 
+**Mayan EDMS** provides very exact control over what activies users can
 perform.  This control is divided into two levels of operation:
 
 2 tier permissions assignement
@@ -16,13 +16,13 @@ this method could be thought out as a global permission granting level.
 Example: Roles being granted the ``Document view`` permission will be able to view
 **all** documents in existance.
 
-.. image:: permissions.png
+.. image:: ../_static/permissions.png
  :alt: 2-tier permission diagram
-  
-  
+
+
 3 tier access control
 =====================
-  
+
 When more control is desired over which objects
 actors(user, groups and roles) can exercise an action this method should be
 used.  Under this level, actors are granted a
@@ -30,9 +30,9 @@ permission but only in relation to a selected object.  Example: Granting user
 ``Joe`` the ``Document view`` access control for document ``Payroll``,
 would allow him to view this document only.
 
-.. image:: ACL.png
+.. image:: ../_static/ACL.png
  :alt: 3-tier access control diagram
-  
+
 The permission system enforces inheritance by first checking if the user
 has a global permission, is a member of a group or a role that has a global
 permission and if not then checks to see if that user, a group or role to
@@ -51,13 +51,13 @@ One of the specifics of the 3 tier access control in contrast with the 2 tier ac
 
 **Example 1.** Each user have to access only the documents that he uploads
 
-The example will show how to restrict a user in order not to view documents uploaded by other users, but only by himself. For that purpose we have to restrict the access to something that does not exist yet. The system must know that before the actual upload in order to act accordingly. This is where Default ACLs come in place. 
+The example will show how to restrict a user in order not to view documents uploaded by other users, but only by himself. For that purpose we have to restrict the access to something that does not exist yet. The system must know that before the actual upload in order to act accordingly. This is where Default ACLs come in place.
 
 Follow the steps:
     1. Enter **Mayan EDMS** with user that has administrative rights.
     2. Go to Setup menu. Enter Default ACLs submenu.
     3. Click ``New holder`` next to the class Documents. From the list of users choose the special user Creator. Give the permission ``View Documents`` to the Creator.
-    4. Go back to Setup menu. Go to Users and create the users ``Pedro`` and ``Sancho``. 
+    4. Go back to Setup menu. Go to Users and create the users ``Pedro`` and ``Sancho``.
     5. Go back to Setup menu. Go to Groups and create the group ``Employees``. Click to members of the groups and add ``Pedro`` and ``Sancho`` to that group.
     6. Go back to Setup menu. Go to Roles submenu. Create the role ``Uploaders``. Give the permission ``Create documents`` to the role. Add the group ``Employees`` as a member to that role.
     7. Now enter **Mayan EDMS** with ``Pedro`` and ``Sancho`` one after another and upload documents. Pedro should not see the documents that ``Sancho`` uploaded and vice versa. He should see only documents uploaded by himself.

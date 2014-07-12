@@ -15,7 +15,7 @@ an organtization existing applications' look and feel.
 The theme can be changed very easily by setting the :setting:`WEB_THEME_THEME`
 configuration option to one of its valid values.
 
-.. image:: themes.png
+.. image:: ../_static/themes.png
  :alt: themes
 
 ------------
@@ -25,7 +25,7 @@ The amount of information presented at the login screen can also be restricted
 for security or design reasons using :setting:`WEB_THEME_VERBOSE_LOGIN`
 configuration option.
 
-.. image:: mayan-login.png
+.. image:: ../_static/mayan-login.png
  :alt: mayan login screen
 
 -----------
@@ -43,7 +43,7 @@ Some themes such as ``default`` might be more visually appealing to some
 people without the menu icons, for this **Mayan EDMS** provides the
 :setting:`MAIN_DISABLE_ICONS` configuration option.
 
-.. image:: no-icons.png
+.. image:: ../_static/no-icons.png
  :alt: mayan screens with out icons
 
 .. _`Andrea Franz's excellent web app template`: https://github.com/pilu/web-app-theme

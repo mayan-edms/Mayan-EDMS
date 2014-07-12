@@ -8,7 +8,7 @@ and stored in a simple flat arrangement in a directory.  This doesn't
 stop access to the files but it is not recommended because moving,
 renaming or updating the files directly would throw the database out
 of sync.  For direct access to the files the recommended way is to create an
-:doc:`index <indexes>`, use the indexing mirroring feature and share the result via 
+:doc:`index <indexes>`, use the indexing mirroring feature and share the result via
 file serving software [#f1]_.
 
 **Mayan EDMS** components are as decoupled from each other as possible,
@@ -19,7 +19,7 @@ storage, so that **Mayan EDMS** can work saving files locally, over the
 network or even across the internet and still operate exactly the same.
 
 The file storage behavior is controlled by the :setting:`DOCUMENTS_STORAGE_BACKEND`
-and should be set to a class or subclass of Django's ``django.core.files.storage.FileSystemStorage`` class.
+and should be set to a class or subclass of Django's ``django.core.files.storage.Storage`` class.
 
 .. rubric:: Footnotes
 

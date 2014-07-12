@@ -16,7 +16,7 @@ Each branch can be a pseudo folder, which can hold other child 'folders' or
 a document container which will have all the links to the documents that
 matched the path to reach the document container.
 
-.. image:: index_template.png
+.. image:: ../_static/index_template.png
  :alt: index template
 
 Index instances
@@ -26,7 +26,7 @@ The template is the skeleton from which an instance of the index is then
 auto-populated with links to the documents depending on the rules of each
 branch of the index evaluated against the metadata and properties of the documents.
 
-.. image:: index_instance.png
+.. image:: ../_static/index_instance.png
  :alt: index instance
 
 Index serving
@@ -35,7 +35,7 @@ Index serving
 Indexes can be mirrored to the operating system filesystem
 using the configuration option
 :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`.
- 
+
 ``settings_local.py``::
 
   # Supposing the 'Sample index' internal name is 'sample_index'
@@ -44,9 +44,9 @@ using the configuration option
   }
 
 This creates an actual directory tree and links to the actual stored files but using
-the filename of the documents as stored in the database. 
+the filename of the documents as stored in the database.
 
-.. image:: indexes.png
+.. image:: ../_static/indexes.png
  :alt: indexes diagram
 
 This filesystem mirror of the index can them be served with Samba_ across the
@@ -57,7 +57,7 @@ The index cannot be edited manually to protect it's integrity, only changing
 the rules or the metadata of the documents would cause the index to be
 regenerated.  For manual organization of documents there are the folders,
 their structure is however flat, and they have to be manually updated and
-curated. 
+curated.
 
 .. _Samba: http://www.samba.org/
 

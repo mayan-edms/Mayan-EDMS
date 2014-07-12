@@ -15,35 +15,21 @@ If using a Fedora_ based Linux distribution get the executable requirements usin
 
     $ sudo yum install -y git gcc tesseract unpaper python-virtualenv ghostscript libjpeg-turbo-devel libpng-devel poppler-util python-devel
 
-Initialize a ``virtualenv`` to deploy the project::
+Initialize a ``virtualenv`` to deploy the project:
 
-    $ virtualenv --no-site-packages venv
+.. code-block:: bash
+
+    $ virtualenv venv
     $ source venv/bin/activate
+    $ pip install mayan-edms==1.0.rc1
 
-Download_ and decompress the latest version of **Mayan EDMS**::
+By default **Mayan EDMS** will create a single file SQLite_ database which makes
+is very easy to start using **Mayan EDMS**. Populate the database with the project's schema doing:
 
-    $ cd venv
-    $ tar -xvzf mayan.tar.gz
+.. code-block:: bash
 
-Or clone the latest development version straight from github::
-
-    $ cd venv
-    $ git clone https://github.com/mayan-edms/mayan-edms.git
-
-To install the python dependencies ``easy_install`` can be used, however for easier retrieval a production dependencies file is included, to use it execute::
-
-    $ cd mayan-edms
-    $ pip install -r requirements.txt
-
-By default **Mayan EDMS** will create a single file SQLite_ database which makes is very easy to start using **Mayan EDMS**.
-Populate the database with the project's schema doing::
-
-    $ ./manage.py syncdb --migrate --noinput
-
-
-To test your installation, execute Django’s development server using the ``runserver`` command to launch a local instance of **Mayan EDMS**::
-
-    $ ./manage.py runserver
+    $ mayan-edms.py syncdb --migrate --noinput
+    $ mayan-edms.py runserver
 
 Point your browser to http://127:0.0.1:8000, if everything was installed
 correctly you should see the login screen and panel showing a randomly generated admin password.
@@ -51,6 +37,21 @@ correctly you should see the login screen and panel showing a randomly generated
 
 Production use
 --------------
+
+To create a custom settings file for **Mayan EDMS**, create your a Python (.py) file
+in the directory: venv/mayan/settings/ with the following basic content::
+
+    # my_settings.py
+
+    from __future__ import absolute_import
+
+    from .local import *
+
+    <Your customized settings>
+
+Then test your settings launch **Mayan EDMS** use::
+
+    $ mayan-edms runserver --settings=mayan.settings.my_settings
 
 After making sure everything is running correctly, stop the runserver command.
 Deploy **Mayan EDMS** using the webserver of your preference. For more information

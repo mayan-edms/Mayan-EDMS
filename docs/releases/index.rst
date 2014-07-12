@@ -17,8 +17,6 @@ Final releases
 Below are release notes through **Mayan EDMS** |version| and its minor releases. Newer
 versions of the documentation contain the release notes for any later releases.
 
-.. _development_release_notes:
-
 1.0 release
 -----------
 .. toctree::
