@@ -1,9 +1,9 @@
-|Build Status| |Coverage Status| |PyPI badge| |Installs badge|
+|Build Status| |Coverage Status| |PyPI badge| |Installs badge| |Wheel badge|
 
 |Logo|
 
-Mayan EDMS
-==========
+Description
+-----------
 
 Free Open Source, Django based document management system with custom metadata
 indexing, file serving integration, tagging, digital signature verification,
@@ -62,15 +62,16 @@ Contribute
 .. _Translations: https://www.transifex.com/projects/p/mayan-edms/
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
 .. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
-
-.. |Build Status| image:: https://travis-ci.org/mayan-edms/mayan-edms.svg?branch=master
-   :target: https://travis-ci.org/mayan-edms/mayan-edms
-.. |Coverage Status| image:: https://coveralls.io/repos/mayan-edms/mayan-edms/badge.png?branch=master
-   :target: https://coveralls.io/r/mayan-edms/mayan-edms?branch=master
-.. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
 .. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/credits/contributors.rst
-.. |Installs badge| image:: https://pypip.in/d/mayan-edms/badge.png
+
+.. |Build Status| image:: http://img.shields.io/travis/mayan-edms/mayan-edms/master.svg?style=flat
+   :target: https://travis-ci.org/mayan-edms/mayan-edms
+.. |Coverage Status| image:: http://img.shields.io/coveralls/mayan-edms/mayan-edms/master.svg?style=flat
+   :target: https://coveralls.io/r/mayan-edms/mayan-edms?branch=master
+.. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
+.. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat
    :target: https://crate.io/packages/mayan-edms/
-.. |PyPI badge| image:: https://badge.fury.io/py/mayan-edms.png
+.. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
    :target: http://badge.fury.io/py/mayan-edms
+.. |Wheel badge| image:: http://img.shields.io/badge/wheel-yes-green.svg?style=flat
