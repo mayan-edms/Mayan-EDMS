@@ -67,7 +67,7 @@ Contribute
    :target: https://travis-ci.org/mayan-edms/mayan-edms
 .. |Coverage Status| image:: https://coveralls.io/repos/mayan-edms/mayan-edms/badge.png?branch=master
    :target: https://coveralls.io/r/mayan-edms/mayan-edms?branch=master
-.. |Logo| image:: https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo_landscape_black.jpg
+.. |Logo| image:: https://github.com/rosarior/mayan/raw/master/docs/_static/mayan_logo.png
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
 .. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/credits/contributors.rst
 .. |Installs badge| image:: https://pypip.in/d/mayan-edms/badge.png
