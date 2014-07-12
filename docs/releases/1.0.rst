@@ -37,23 +37,23 @@ The translation for all languages were synchronized to the latest transifex proj
 Translation completion as reported by Transifex:
 
 * English - 100%
-* Arabic - 100%
-* Bosnian - 100%
-* French - 100%
-* German - 100%
-* Romanian - 100%
-* Russian - 100%
 * Spanish - 100%
-* Italian - 80%
-* Portuguese - 78%
-* Dutch - 70%
-* Portugese (Brazil) - 69%
-* Bulgarian - 63%
-* Danish - 44%
-* Vietnamese - 41%
-* Polish - 40%
-* Hungarian - 28%
-* Indonesian - 19%
+* Arabic - 96%
+* Bosnian - 96%
+* French - 96%
+* German - 96%
+* Romanian - 96%
+* Russian - 96%
+* Italian - 77%
+* Portuguese - 76%
+* Dutch - 68%
+* Portugese (Brazil) - 67%
+* Bulgarian - 62%
+* Danish - 42%
+* Vietnamese - 40%
+* Polish - 39%
+* Hungarian - 27%
+* Indonesian - 18%
 * Slovenian - 17%
 * Persian - 6%
 * Croatian - 3%
@@ -70,8 +70,15 @@ Source code improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~
 A circular import of metadata and document_index apps code from the documents app
 was removed. Document index updates are now handled via signals, not called
-directly as before. A lot of time was spent cleaning up the code for PEP8
-compliance.
+directly as before. Hundreds of PEP8 style fixes, unused import removals,
+unused variables removals and removal of remarked or unused code. Removal of the
+DEVELOPMENT flag (was used to trigger static media serving during development),
+this is now handled by the DEBUG flag. The DEBUG flag is now set to `True` by
+default as per Django 1.6 defaults. Removed usage of Django's JSON libraries
+using Python's JSON library instead. Update of time and date use to use Django's
+new timezone aware data and time handling. Removal of custom code in favor of using
+modules provided by Django or by existing 3rd party libraries. Unification of code
+used for equal or similar purpose in various modules.
 
 Removal of included 3rd party modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,6 +116,13 @@ Pluggable OCR backends
 A commonly requested feature, it is now possible to write backends drivers
 to do document OCR using software or services other than Tesseract.
 
+OCR improvements
+~~~~~~~~~~~~~~~~
+OCR queue state is now reset when reloading **Mayan EMDS**, avoiding the OCR queue
+to remain locked. `unpaper` binary is now an optional pre OCR requirement, the OCR
+queue will now continue working is `unpaper` is not installed. Addition of post
+OCR processing support for French and German.
+
 License change
 ~~~~~~~~~~~~~~
 Mayan EDMS is now licensed under the Apache 2.0 license. This means many
@@ -125,7 +139,14 @@ New REST API
 This release feature a completely new REST API and automatic API documentation.
 This new API is also used internally by *Mayan EDMS* itself.
 
-:q
+Other changes
+~~~~~~~~~~~~~
+More office document types are now recognized and supported. More file types are now
+supported as text files and properly previewed and parsed. Removal of the legacy
+runserver.sh and runserver_plus.sh scripts. New document preview generation and
+display pipeline, faster, simpler. Inclusion of a proof of concept compressed storage
+backend.
+
 Upgrading from a previous version
 =================================
 If you installed Mayan EDMS by cloning the Git repository issue the commands::

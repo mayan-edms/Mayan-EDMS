@@ -6,8 +6,10 @@ Development
 **Mayan EDMS** is under active development, and contributions are welcome.
 
 If you have a feature request, suggestion, or bug reports, please open a new
-issue on the `GitHub issue tracker`_. To submit patches, please send a pull request on GitHub_.  Contributors are credited accordingly on the :ref:`contributors` section.
+issue on the `GitHub issue tracker`_. To submit patches, please send a pull
+request on GitHub_.  Contributors are credited accordingly on the :ref:`contributors` section.
 
+Follow the coding conventions document available at: https://github.com/mayan-edms/mayan-edms/wiki/Coding-conventions
 
 .. _GitHub: https://github.com/mayan-edms/mayan-edms/
 .. _`GitHub issue tracker`: https://github.com/mayan-edms/mayan-edms/issues
@@ -15,7 +17,6 @@ issue on the `GitHub issue tracker`_. To submit patches, please send a pull requ
 
 Source Control
 --------------
-
 
 **Mayan EDMS** source is controlled with Git_
 
