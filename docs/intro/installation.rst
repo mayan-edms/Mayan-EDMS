@@ -38,7 +38,7 @@ correctly you should see the login screen and panel showing a randomly generated
 Production use
 --------------
 
-To create a custom settings file for **Mayan EDMS**, create your a Python (.py) file
+To create a custom settings file for **Mayan EDMS**, create a Python (.py) file
 in the directory: venv/mayan/settings/ with the following basic content::
 
     # my_settings.py
