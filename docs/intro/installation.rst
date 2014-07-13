@@ -39,7 +39,7 @@ Production use
 --------------
 
 To create a custom settings file for **Mayan EDMS**, create a Python (.py) file
-in the directory: venv/mayan/settings/ with the following basic content::
+in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the following basic content::
 
     # my_settings.py
 
