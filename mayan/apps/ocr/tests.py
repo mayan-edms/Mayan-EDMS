@@ -43,7 +43,7 @@ class DocumentSearchTestCase(unittest.TestCase):
 
         reload(runtime)
         from .runtime import language_backend
-        self.assertEqual(unicode(language_backend.__class__), u"<class 'ocr.lang.{}.LanguageBackend'>".format(language))
+        self.assertEqual(unicode(language_backend.__class__), u"<class 'ocr.lang.{0}.LanguageBackend'>".format(language))
 
     def _test_ocr_language_issue_16(self, language):
         """
