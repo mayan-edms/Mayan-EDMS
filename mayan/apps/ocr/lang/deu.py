@@ -10,8 +10,6 @@ class LanguageBackend(BackendBase):
     def check_word(self, word):
         ALL_ALPHANUM = re.compile('([0-9a-zäöüß])', re.I)
         NON_ALPHANUM = re.compile('([^0-9a-zäöüß])', re.I)
-        ALL_ALPHANUM = re.compile('([0-9a-z])', re.I)
-        NON_ALPHANUM = re.compile('([^0-9a-z])', re.I)
 
         TOO_MANY_VOWELS = re.compile('[aäeioöuü]{4}', re.I)
         TOO_MANY_CONSONANTS = re.compile('[bcdfghjklmnpqrstvwxyz]{4}', re.I)
