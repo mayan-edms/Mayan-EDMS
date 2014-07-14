@@ -13,7 +13,6 @@ class LanguageBackend(BackendBase):
 
         TOO_MANY_VOWELS = re.compile('[aäeioöuü]{4}', re.I)
         TOO_MANY_CONSONANTS = re.compile('[bcdfghjklmnpqrstvwxyz]{4}', re.I)
-        ALL_ALPHA = re.compile('^[a-z]+$', re.I)
         # SINGLE_LETTER_WORDS = re.compile('^$', re.I)
 
         #(L) If a string is longer than 40 characters, it is considered as garbage
