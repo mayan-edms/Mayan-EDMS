@@ -8,20 +8,18 @@ from . import BackendBase
 
 class LanguageBackend(BackendBase):
     def check_word(self, word):
-        ALL_ALPHANUM = re.compile('([0-9a-zäöüß])', re.I)
-        NON_ALPHANUM = re.compile('([^0-9a-zäöüß])', re.I)
+        ALL_ALPHANUM = re.compile('([0-9a-záéíóúüñ])', re.I)
+        NON_ALPHANUM = re.compile('([^0-9a-záéíóúüñ])', re.I)
 
-        TOO_MANY_VOWELS = re.compile('[aäeioöuü]{4}', re.I)
-        TOO_MANY_CONSONANTS = re.compile('[bcdfghjklmnpqrstvwxyz]{4}', re.I)
-        # SINGLE_LETTER_WORDS = re.compile('^$', re.I)
+        TOO_MANY_VOWELS = re.compile('[aáeéiíoóuúü]{3}', re.I)
+        TOO_MANY_CONSONANTS = re.compile('[bcdfghjklmnñpqrstvwxyz]{5}', re.I)
+        SINGLE_LETTER_WORDS = re.compile('^[aeoóuy]$', re.I)
 
-        #(L) If a string is longer than 40 characters, it is considered as garbage
-        # http://www.duden.de/sprachwissen/sprachratgeber/die-laengsten-woerter-im-dudenkorpus
-        # http://www.duden.de/sprachwissen/sprachratgeber/durchschnittliche-laenge-eines-deutschen-wortes
-        if len(word) > 40:
+        #(L) If a string is longer than 20 characters, it is garbage
+        if len(word) > 20:
             return None
 
-        #(A) If a string's ratio of alphanumeric characters to total
+        #(A) If a string’s ratio of alphanumeric characters to total
         #characters is less than 50%, the string is garbage
         if len(ALL_ALPHANUM.findall(word)) < len(word) / 2:
             return None
@@ -38,8 +36,8 @@ class LanguageBackend(BackendBase):
         if TOO_MANY_CONSONANTS.findall(word):
             return None
 
-        # No single letter words in German
-        if len(word) == 1:
+        #Only allow specific single letter words
+        if len(word) == 1 and not SINGLE_LETTER_WORDS.findall(word):
             return None
 
         return word
