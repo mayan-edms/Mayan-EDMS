@@ -13,7 +13,7 @@ import sh
 
 try:
     from sh import lsb_release, uname
-except sh.CommandNotFound:
+except ImportError:
     LSB = False
 else:
     LSB = True
