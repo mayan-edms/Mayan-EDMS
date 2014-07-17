@@ -23,23 +23,23 @@ Initialize a ``virtualenv`` to deploy the project:
     $ source venv/bin/activate
     $ pip install mayan-edms==1.0.rc1
 
-By default **Mayan EDMS** will create a single file SQLite_ database which makes
-is very easy to start using **Mayan EDMS**. Populate the database with the project's schema doing:
+By default **Mayan EDMS** will create a single file SQLite_ database, which makes
+it very easy to start using **Mayan EDMS**. Populate the database with the project's schema doing:
 
 .. code-block:: bash
 
     $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver
 
-Point your browser to http://127:0.0.1:8000, if everything was installed
+Point your browser to http://127.0.0.1:8000. If everything was installed
 correctly you should see the login screen and panel showing a randomly generated admin password.
 
 
 Production use
 --------------
 
-To create a custom settings file for **Mayan EDMS**, create your a Python (.py) file
-in the directory: venv/mayan/settings/ with the following basic content::
+To create a custom settings file for **Mayan EDMS**, create a Python (.py) file
+in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the following basic content::
 
     # my_settings.py
 
@@ -49,7 +49,7 @@ in the directory: venv/mayan/settings/ with the following basic content::
 
     <Your customized settings>
 
-Then test your settings launch **Mayan EDMS** use::
+To test your settings launch **Mayan EDMS** using::
 
     $ mayan-edms runserver --settings=mayan.settings.my_settings
 
@@ -63,8 +63,8 @@ Other database managers
 -----------------------
 
 If you want to use a database manager other than SQLite_ install any
-corresponding python database drivers and create a settings_local.py file
-with the corresponding database settings as shown here: https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES
+corresponding python database drivers and add the corresponding database settings
+to your settings file (see above) as shown here: https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES
 
 
 .. _`vendor lock-in`: https://secure.wikimedia.org/wikipedia/en/wiki/Vendor_lock-in
