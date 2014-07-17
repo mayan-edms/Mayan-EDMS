@@ -1,0 +1,7 @@
+[run]
+source=
+    mayan
+omit=
+    mayan/wsgi.py
+    migrations/*
+    tests.py
