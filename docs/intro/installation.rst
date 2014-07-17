@@ -28,7 +28,7 @@ is very easy to start using **Mayan EDMS**. Populate the database with the proje
 
 .. code-block:: bash
 
-    $ mayan-edms.py syncdb --migrate --noinput
+    $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver
 
 Point your browser to http://127:0.0.1:8000, if everything was installed

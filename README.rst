@@ -40,7 +40,7 @@ Instead of using the usual ./manage.py use the alias mayan-edms.py:
 
 .. code-block:: bash
 
-    $ mayan-edms.py syncdb --migrate --noinput
+    $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver
 
 Point your browser to 127.0.0.1:8000 and use the automatically created admin
