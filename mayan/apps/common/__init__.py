@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import logging
 import tempfile
 
 from django.contrib.auth import models as auth_models
@@ -23,10 +24,12 @@ from .links import (link_about, link_current_user_details,
 from .models import AutoAdminSingleton
 from .utils import validate_path
 
+logger = logging.getLogger(__name__)
+
 register_links(['current_user_details', 'current_user_edit', 'password_change_view'], [link_current_user_details, link_current_user_edit, link_password_change], menu_name='secondary_menu')
 register_links(['about_view', 'license_view', 'form_view'], [link_about, link_license], menu_name='secondary_menu')
 
-register_top_menu('about', link={'text': _(u'about'), 'view': 'about_view', 'famfam': 'information'}, position=-1)
+register_top_menu('about', link_about, position=-1)
 
 
 @receiver(post_migrate, dispatch_uid='create_superuser')
@@ -46,9 +49,7 @@ def create_superuser(sender, **kwargs):
         try:
             auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
         except auth_models.User.DoesNotExist:
-            print '*' * 80
-            print 'Creating super admin user -- login: %s, password: %s' % (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD)
-            print '*' * 80
+            logger.info('Creating super admin user -- login: %s, password: %s' % (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD))
             assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
             admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
             # Store the auto admin password properties to display the first login message
@@ -58,7 +59,7 @@ def create_superuser(sender, **kwargs):
             auto_admin_properties.password_hash = admin.password
             auto_admin_properties.save()
         else:
-            print 'Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME
+            logger.info('Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME)
 
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
