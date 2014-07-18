@@ -20,14 +20,15 @@ from .models import Installation
 def trigger_first_time(sender, **kwargs):
     if kwargs['app'] == 'installation':
         details, created = Installation.objects.get_or_create()
-        details.is_first_run = True
-        details.save()
+        if created:
+            details.is_first_run = True
+            details.save()
 
 
 def check_first_run():
     try:
         with transaction.atomic():
-            details, created = Installation.objects.get_or_create()
+            details = Installation.objects.get()
     except DatabaseError:
         # Avoid database errors when the app tables haven't been created yet
         pass
