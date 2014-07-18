@@ -3,10 +3,8 @@ from __future__ import absolute_import
 import json
 import pickle
 
-from django.db import models, transaction
-from django.db.utils import DatabaseError
+from django.db import models
 from django.core import serializers
-from django.shortcuts import get_object_or_404
 
 from .models import HistoryType, History
 from .runtime_data import history_types_dict
@@ -15,14 +13,6 @@ from .runtime_data import history_types_dict
 def register_history_type(history_type_dict):
     namespace = history_type_dict['namespace']
     name = history_type_dict['name']
-
-    try:
-        with transaction.atomic():
-            history_type_obj, created = HistoryType.objects.get_or_create(
-                namespace=namespace, name=name)
-            history_type_obj.save()
-    except DatabaseError:
-        pass
 
     # Runtime
     history_types_dict.setdefault(namespace, {})
@@ -35,7 +25,8 @@ def register_history_type(history_type_dict):
 
 
 def create_history(history_type_dict, source_object=None, data=None):
-    history_type = get_object_or_404(HistoryType, namespace=history_type_dict['namespace'], name=history_type_dict['name'])
+    history_type, created = HistoryType.objects.get_or_create(namespace=history_type_dict['namespace'], name=history_type_dict['name'])
+
     new_history = History(history_type=history_type)
     if source_object:
         new_history.content_object = source_object

@@ -129,20 +129,8 @@ class DocumentSearchTestCase(TestCase):
 
 class DocumentUploadFunctionalTestCase(TestCase):
     def setUp(self):
-        from history.api import register_history_type
-
-        from .events import (HISTORY_DOCUMENT_CREATED,
-            HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
-
-        # There events are registered upon loading documents/__init__.py
-        # while Django's test DB is still not created, so we created them by
-        # hand.
-        register_history_type(HISTORY_DOCUMENT_CREATED)
-        register_history_type(HISTORY_DOCUMENT_EDITED)
-        register_history_type(HISTORY_DOCUMENT_DELETED)
 
     def test_upload_a_document(self):
         from sources.models import WebForm
