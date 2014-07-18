@@ -5,7 +5,7 @@ import os
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files.base import File
-from django.utils import unittest
+from django.test import TestCase
 
 from documents.models import Document, DocumentType
 
@@ -14,7 +14,7 @@ from .models import Folder
 TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
 
 
-class FolderTestCase(unittest.TestCase):
+class FolderTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType(name='test doc type')
         self.document_type.save()

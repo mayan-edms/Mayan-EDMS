@@ -4,7 +4,7 @@ import os
 
 from django.conf import settings
 from django.core.files.base import File
-from django.utils import unittest
+from django.test import TestCase
 
 from documents.literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
 from documents.models import Document, DocumentType
@@ -19,7 +19,7 @@ TEST_SIGNATURE_FILE_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_do
 TEST_KEY_FILE = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'key0x5F3F7F75D210724D.asc')
 
 
-class DocumentTestCase(unittest.TestCase):
+class DocumentTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType(name='test doc type')
         self.document_type.save()

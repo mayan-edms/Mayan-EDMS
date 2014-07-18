@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.core.files.base import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
-from django.utils import unittest
+from django.test import TestCase
 
 from .literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
 from .models import Document, DocumentType
@@ -19,7 +19,7 @@ TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_document
 TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
 
 
-class DocumentTestCase(unittest.TestCase):
+class DocumentTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType(name='test doc type')
         self.document_type.save()
@@ -76,7 +76,7 @@ class DocumentTestCase(unittest.TestCase):
         self.document_type.delete()
 
 
-class DocumentSearchTestCase(unittest.TestCase):
+class DocumentSearchTestCase(TestCase):
     def setUp(self):
         from ocr.parsers import parse_document_page
         self.document_type = DocumentType(name='test doc type')
@@ -127,7 +127,7 @@ class DocumentSearchTestCase(unittest.TestCase):
         self.document_type.delete()
 
 
-class DocumentUploadFunctionalTestCase(unittest.TestCase):
+class DocumentUploadFunctionalTestCase(TestCase):
     def setUp(self):
         from history.api import register_history_type
 

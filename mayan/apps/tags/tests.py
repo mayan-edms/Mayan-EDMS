@@ -1,4 +1,4 @@
-from django.utils import unittest
+from django.test import TestCase
 
 from taggit.models import Tag
 
@@ -6,7 +6,7 @@ from .literals import COLOR_RED
 from .models import TagProperties
 
 
-class TagTestCase(unittest.TestCase):
+class TagTestCase(TestCase):
     def setUp(self):
         self.tag = Tag(name='test')
         self.tag.save()

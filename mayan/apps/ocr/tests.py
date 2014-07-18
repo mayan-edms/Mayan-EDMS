@@ -4,7 +4,7 @@ import os
 
 from django.conf import settings
 from django.core.files.base import File
-from django.utils import unittest
+from django.test import TestCase
 
 from documents.models import Document, DocumentType
 
@@ -14,7 +14,7 @@ from .models import DocumentQueue, QueueDocument
 TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png')
 
 
-class DocumentSearchTestCase(unittest.TestCase):
+class DocumentSearchTestCase(TestCase):
     def setUp(self):
         # Start the OCR queue
         self.default_queue = DocumentQueue.objects.get(name='default')
