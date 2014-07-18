@@ -17,7 +17,6 @@ from statistics.classes import StatisticNamespace
 
 from south.signals import post_migrate
 
-from . import models as ocr_models
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
 from .exceptions import AlreadyQueued
 from .links import (submit_document, submit_document_multiple,
@@ -58,7 +57,7 @@ def document_post_save(sender, instance, **kwargs):
                 pass
 
 
-@receiver(post_migrate, dispatch_uid='create_default_queue', sender=ocr_models)
+@receiver(post_migrate, dispatch_uid='create_default_queue', sender=DocumentQueue)
 def create_default_queue_signal_handler(sender, **kwargs):
     default_queue, created = DocumentQueue.objects.get_or_create(name='default')
 
