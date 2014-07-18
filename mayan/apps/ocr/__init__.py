@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import logging
 
 from django.db import DatabaseError
-from django.db.models.signals import post_save, post_syncdb
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,6 +14,8 @@ from navigation.api import register_links, register_multi_item_links
 from project_tools.api import register_tool
 from scheduler.api import register_interval_job
 from statistics.classes import StatisticNamespace
+
+from south.signals import post_migrate
 
 from . import models as ocr_models
 from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
@@ -56,7 +58,7 @@ def document_post_save(sender, instance, **kwargs):
                 pass
 
 
-@receiver(post_syncdb, dispatch_uid='create_default_queue', sender=ocr_models)
+@receiver(post_migrate, dispatch_uid='create_default_queue', sender=ocr_models)
 def create_default_queue_signal_handler(sender, **kwargs):
     default_queue, created = DocumentQueue.objects.get_or_create(name='default')
 
