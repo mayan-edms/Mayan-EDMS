@@ -26,7 +26,7 @@ class RegistrationSingleton(SingletonModel):
         if cls._registered:
             return cls._registered
         else:
-            instance, created = cls.objects.get_or_create()
+            instance = cls.objects.get()
             if instance.is_registered:
                 cls._registered = instance.is_registered
             return instance.is_registered
