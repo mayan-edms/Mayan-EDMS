@@ -1,13 +1,17 @@
+from __future__ import absolute_import
+
+import sys
+import logging
+
 from apscheduler.scheduler import Scheduler
 
-_lockdown = False
+from .literals import SHUTDOWN_COMMANDS
+
+logger = logging.getLogger(__name__)
 scheduler = Scheduler()
 
-
-def lockdown():
-    global _lockdown
-    _lockdown = True
-
-
-if not _lockdown:
+if not any([command in sys.argv for command in SHUTDOWN_COMMANDS]):
+    logger.debug('Starting scheduler')
     scheduler.start()
+
+
