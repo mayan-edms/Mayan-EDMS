@@ -39,7 +39,7 @@ from .literals import (FORM_SUBMIT_URL, FORM_KEY, FORM_RECEIVER_FIELD,
 class Installation(SingletonModel):
     _properties = SortedDict()
 
-    is_first_run = models.BooleanField(default=False)
+    is_first_run = models.BooleanField(default=True)
     uuid = models.CharField(max_length=48, blank=True, default=lambda: unicode(uuid.uuid4()))
 
     def add_property(self, property_instance):

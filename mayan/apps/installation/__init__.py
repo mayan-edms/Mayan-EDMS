@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-from django.db import transaction
 from django.db.utils import DatabaseError
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
@@ -16,19 +15,14 @@ from .links import link_menu_link, link_namespace_details, link_namespace_list
 from .models import Installation
 
 
-@receiver(post_migrate, dispatch_uid='trigger_first_time')
+@receiver(post_migrate, dispatch_uid='trigger_first_time', sender=Installation)
 def trigger_first_time(sender, **kwargs):
-    if kwargs['app'] == 'installation':
-        details, created = Installation.objects.get_or_create()
-        if created:
-            details.is_first_run = True
-            details.save()
+    Installation.objects.get_or_create()
 
 
 def check_first_run():
     try:
-        with transaction.atomic():
-            details = Installation.objects.get()
+        details = Installation.objects.get()
     except DatabaseError:
         # Avoid database errors when the app tables haven't been created yet
         pass
