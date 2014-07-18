@@ -15,9 +15,10 @@ from .links import link_menu_link, link_namespace_details, link_namespace_list
 from .models import Installation
 
 
-@receiver(post_migrate, dispatch_uid='trigger_first_time', sender=Installation)
-def trigger_first_time(sender, **kwargs):
-    Installation.objects.get_or_create()
+@receiver(post_migrate, dispatch_uid='create_installation_instance')
+def create_installation_instance(sender, **kwargs):
+    if kwargs['app'] == 'installation':
+        Installation.objects.get_or_create()
 
 
 def check_first_run():

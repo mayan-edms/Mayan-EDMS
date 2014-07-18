@@ -57,9 +57,10 @@ def document_post_save(sender, instance, **kwargs):
                 pass
 
 
-@receiver(post_migrate, dispatch_uid='create_default_queue', sender=DocumentQueue)
+@receiver(post_migrate, dispatch_uid='create_default_queue')
 def create_default_queue_signal_handler(sender, **kwargs):
-    default_queue, created = DocumentQueue.objects.get_or_create(name='default')
+    if kwargs['app'] == 'ocr':
+        DocumentQueue.objects.get_or_create(name='default')
 
 
 def reset_queue_documents():

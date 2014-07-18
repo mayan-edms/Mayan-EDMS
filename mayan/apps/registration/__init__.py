@@ -12,6 +12,7 @@ from .models import RegistrationSingleton
 register_links(['form_view', 'about_view', 'license_view'], [form_view], menu_name='secondary_menu')
 
 
-@receiver(post_migrate, dispatch_uid='trigger_first_time', sender=RegistrationSingleton)
-def trigger_first_time(sender, **kwargs):
-    RegistrationSingleton.objects.get_or_create()
+@receiver(post_migrate, dispatch_uid='create_registration_instance')
+def create_registration_instance(sender, **kwargs):
+    if kwargs['app'] == 'registration':
+        RegistrationSingleton.objects.get_or_create()
