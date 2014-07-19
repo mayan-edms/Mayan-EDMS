@@ -42,8 +42,10 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
 
     Create our own admin super user automatically.
     """
-
     if kwargs['app'] == 'common':
+        AutoAdminSingleton.objects.get_or_create()
+        AnonymousUserSingleton.objects.get_or_create()
+
         if AUTO_CREATE_ADMIN:
             try:
                 auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
@@ -59,8 +61,6 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
                 auto_admin_properties.save()
             else:
                 logger.info('Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME)
-
-        AnonymousUserSingleton.objects.get_or_create()
 
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
