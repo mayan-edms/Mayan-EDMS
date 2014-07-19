@@ -4,7 +4,6 @@ import logging
 import tempfile
 
 from django.contrib.auth import models as auth_models
-from django.contrib.auth.management import create_superuser
 from django.contrib.auth.models import User
 from django.db import transaction, DatabaseError
 from django.db.models.signals import post_save
@@ -21,7 +20,7 @@ from .conf.settings import (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD,
 from .links import (link_about, link_current_user_details,
                     link_current_user_edit, link_license,
                     link_password_change)
-from .models import AutoAdminSingleton
+from .models import AnonymousUserSingleton, AutoAdminSingleton
 from .utils import validate_path
 
 logger = logging.getLogger(__name__)
@@ -32,8 +31,8 @@ register_links(['about_view', 'license_view', 'form_view'], [link_about, link_li
 register_top_menu('about', link_about, position=-1)
 
 
-@receiver(post_migrate, dispatch_uid='create_superuser')
-def create_superuser(sender, **kwargs):
+@receiver(post_migrate, dispatch_uid='create_superuser_and_anonymous_user')
+def create_superuser_and_anonymous_user(sender, **kwargs):
     """
     From https://github.com/lambdalisue/django-qwert/blob/master/qwert/autoscript/__init__.py
     From http://stackoverflow.com/questions/1466827/ --
@@ -45,21 +44,24 @@ def create_superuser(sender, **kwargs):
     Create our own admin super user automatically.
     """
 
-    if AUTO_CREATE_ADMIN and kwargs['app'] == 'common':
-        try:
-            auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
-        except auth_models.User.DoesNotExist:
-            logger.info('Creating super admin user -- login: %s, password: %s' % (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD))
-            assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
-            admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
-            # Store the auto admin password properties to display the first login message
-            auto_admin_properties, created = AutoAdminSingleton.objects.get_or_create()
-            auto_admin_properties.account = admin
-            auto_admin_properties.password = AUTO_ADMIN_PASSWORD
-            auto_admin_properties.password_hash = admin.password
-            auto_admin_properties.save()
-        else:
-            logger.info('Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME)
+    if kwargs['app'] == 'common':
+        if AUTO_CREATE_ADMIN:
+            try:
+                auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
+            except auth_models.User.DoesNotExist:
+                logger.info('Creating super admin user -- login: %s, password: %s' % (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD))
+                assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
+                admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
+                # Store the auto admin password properties to display the first login message
+                auto_admin_properties, created = AutoAdminSingleton.objects.get_or_create()
+                auto_admin_properties.account = admin
+                auto_admin_properties.password = AUTO_ADMIN_PASSWORD
+                auto_admin_properties.password_hash = admin.password
+                auto_admin_properties.save()
+            else:
+                logger.info('Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME)
+
+        AnonymousUserSingleton.objects.get_or_create()
 
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
