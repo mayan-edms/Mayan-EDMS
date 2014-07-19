@@ -2,6 +2,6 @@
 source=
     mayan
 omit=
+    mayan/bin/mayan-edms.py
     mayan/wsgi.py
-    migrations/*
     tests.py
