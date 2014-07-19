@@ -70,3 +70,6 @@ Contribute
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
    :target: http://badge.fury.io/py/mayan-edms
 .. |Wheel badge| image:: http://img.shields.io/badge/wheel-yes-green.svg?style=flat
+.. |Analytics| image:: https://ga-beacon.appspot.com/UA-52965619-2/mayan-edms/readme?pixel
+
+|Analytics|
