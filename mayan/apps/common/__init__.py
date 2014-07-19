@@ -5,7 +5,6 @@ import tempfile
 
 from django.contrib.auth import models as auth_models
 from django.contrib.auth.models import User
-from django.db import transaction, DatabaseError
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
@@ -66,14 +65,13 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)
 def auto_admin_account_passwd_change(sender, instance, **kwargs):
-    try:
-        with transaction.atomic():
-            auto_admin_properties, created = AutoAdminSingleton.objects.get_or_create()
-            if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
-                # Only delete the auto admin properties when the password has been changed
-                auto_admin_properties.delete(force=True)
-    except DatabaseError:
-        pass
+    auto_admin_properties = AutoAdminSingleton.objects.get()
+    if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
+        # Only delete the auto admin properties when the password has been changed
+        auto_admin_properties.account = None
+        auto_admin_properties.password = None
+        auto_admin_properties.password_hash = None
+        auto_admin_properties.save()
 
 
 if (not validate_path(TEMPORARY_DIRECTORY)) or (not TEMPORARY_DIRECTORY):
