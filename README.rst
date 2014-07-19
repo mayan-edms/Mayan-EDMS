@@ -1,4 +1,4 @@
-|Build Status| |Coverage Status| |PyPI badge| |Installs badge| |Wheel badge|
+|Build Status| |Coverage Status| |PyPI badge| |Installs badge| |License badge| |Wheel badge|
 
 |Logo|
 
@@ -70,6 +70,7 @@ Contribute
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
    :target: http://badge.fury.io/py/mayan-edms
 .. |Wheel badge| image:: http://img.shields.io/badge/wheel-yes-green.svg?style=flat
+.. |License badge| image:: http://img.shields.io/badge/license-Apache%202.0-green.svg?style=flat
 .. |Analytics| image:: https://ga-beacon.appspot.com/UA-52965619-2/mayan-edms/readme?pixel
 
 |Analytics|
