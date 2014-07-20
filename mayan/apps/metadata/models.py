@@ -23,7 +23,8 @@ class MetadataType(models.Model):
         verbose_name=_(u'lookup'),
         help_text=_(u'Enter a string to be evaluated that returns an iterable.'))
     # TODO: Add datatype choice: Date, Time, String, Number
-
+    # TODO: Find a different way to let users know what models and functions are
+    # available now that we removed these from the help_text
     objects = MetadataTypeManager()
 
     def __unicode__(self):
