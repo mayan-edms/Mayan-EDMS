@@ -5,11 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
 
-from .conf.settings import (AVAILABLE_MODELS, AVAILABLE_FUNCTIONS)
-from .managers import MetadataTypeManager, MetadataSetManager
-
-available_models_string = (_(u' Available models: %s') % u','.join([name for name, model in AVAILABLE_MODELS.items()])) if AVAILABLE_MODELS else u''
-available_functions_string = (_(u' Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_FUNCTIONS.items()])) if AVAILABLE_FUNCTIONS else u''
+from .managers import MetadataSetManager, MetadataTypeManager
 
 
 class MetadataType(models.Model):
@@ -20,11 +16,13 @@ class MetadataType(models.Model):
     title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
         verbose_name=_(u'default'),
-        help_text=_(u'Enter a string to be evaluated.%s') % available_functions_string)
+        help_text=_(u'Enter a string to be evaluated.'))
+    # TODO: Add enable_lookup boolean to allow users to switch the lookup on and
+    # off without losing the lookup expression
     lookup = models.TextField(blank=True, null=True,
         verbose_name=_(u'lookup'),
-        help_text=_(u'Enter a string to be evaluated.  Example: [user.get_full_name() for user in User.objects.all()].%s') % available_models_string)
-    # TODO: datatype?
+        help_text=_(u'Enter a string to be evaluated that returns an iterable.'))
+    # TODO: Add datatype choice: Date, Time, String, Number
 
     objects = MetadataTypeManager()
 
@@ -65,9 +63,9 @@ class MetadataSetItem(models.Model):
     Define the set of metadata that relates to a set or group of
     metadata fields
     """
+    # TODO: is the metadata set model really necessary?
     metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'metadata set'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
-    # required = models.BooleanField(default=True, verbose_name=_(u'required'))
 
     def __unicode__(self):
         return unicode(self.metadata_type)
