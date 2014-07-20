@@ -127,7 +127,7 @@ class Installation(SingletonModel):
             namespace.add_property('headcommit_message', _(u'HEAD commit message'), headcommit.message, report=True)
 
     def virtualenv_properties(self):
-        namespace = PropertyNamespace('venv', _(u'VirtuanEnv'))
+        namespace = PropertyNamespace('venv', _(u'VirtualEnv'))
         try:
             venv = VirtualEnv()
         except PIPNotFound:
