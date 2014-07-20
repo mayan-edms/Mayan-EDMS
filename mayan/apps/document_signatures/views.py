@@ -127,8 +127,8 @@ def document_signature_download(request, document_pk):
                 save_as=u'"%s.sig"' % document.filename,
                 content_type=u'application/octet-stream'
             )
-    except Exception, e:
-        messages.error(request, e)
+    except Exception as exception:
+        messages.error(request, exception)
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

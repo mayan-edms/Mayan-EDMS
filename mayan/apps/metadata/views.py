@@ -84,8 +84,8 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                     if form.cleaned_data['update']:
                         try:
                             save_metadata_list([form.cleaned_data], document)
-                        except Exception, e:
-                            errors.append(e)
+                        except Exception as exception:
+                            errors.append(exception)
 
                 if errors:
                     for error in errors:
@@ -165,7 +165,6 @@ def metadata_add(request, document_id=None, document_id_list=None):
         form = AddMetadataForm()
 
     context = {
-        # 'form_display_mode_table': True,
         'form': form,
         'next': next,
     }
@@ -309,13 +308,12 @@ def setup_metadata_type_edit(request, metadatatype_id):
     if request.method == 'POST':
         form = MetadataTypeForm(instance=metadata_type, data=request.POST)
         if form.is_valid():
-            # folder.title = form.cleaned_data['title']
             try:
                 form.save()
                 messages.success(request, _(u'Metadata type edited successfully'))
                 return HttpResponseRedirect(reverse('setup_metadata_type_list'))
-            except Exception, e:
-                messages.error(request, _(u'Error editing metadata type; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error editing metadata type; %s') % exception)
             pass
     else:
         form = MetadataTypeForm(instance=metadata_type)
@@ -360,9 +358,9 @@ def setup_metadata_type_delete(request, metadatatype_id):
         try:
             metadata_type.delete()
             messages.success(request, _(u'Metadata type: %s deleted successfully.') % metadata_type)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Metadata type: %(metadata_type)s delete error: %(error)s') % {
-                'metadata_type': metadata_type, 'error': e})
+                'metadata_type': metadata_type, 'error': exception})
 
         return HttpResponseRedirect(next)
 
@@ -411,8 +409,8 @@ def setup_metadata_set_edit(request, metadata_set_id):
                 form.save()
                 messages.success(request, _(u'Metadata set edited successfully'))
                 return HttpResponseRedirect(reverse('setup_metadata_set_list'))
-            except Exception, e:
-                messages.error(request, _(u'Error editing metadata set; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error editing metadata set; %s') % exception)
             pass
     else:
         form = MetadataSetForm(instance=metadata_set)
@@ -501,9 +499,9 @@ def setup_metadata_set_delete(request, metadata_set_id):
             metadata_set.delete()
             messages.success(request, _(u'Metadata set: %s deleted successfully.') % metadata_set)
             return HttpResponseRedirect(post_action_redirect)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Metadata set: %(metadata_set)s delete error: %(error)s') % {
-                'metadata_set': metadata_set, 'error': e})
+                'metadata_set': metadata_set, 'error': exception})
             return HttpResponseRedirect(previous)
 
     context = {

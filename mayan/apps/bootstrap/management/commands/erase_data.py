@@ -41,7 +41,7 @@ Are you sure you want to do this?
         if confirm == 'yes':
             try:
                 Cleanup.execute_all()
-            except Exception, e:
+            except Exception as exception:
                 raise CommandError("""Unable to erase data.  Possible reasons:
   * The database isn't running or isn't configured correctly.
   * At least one of the expected database tables doesn't exist.""")

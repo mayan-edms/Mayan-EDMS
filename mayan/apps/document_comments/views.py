@@ -1,22 +1,22 @@
 from __future__ import absolute_import
 
-from django.shortcuts import render_to_response, get_object_or_404
-from django.utils.translation import ugettext_lazy as _
-from django.contrib.comments.models import Comment
-from django.http import HttpResponseRedirect
-from django.template import RequestContext
 from django.contrib import messages
+from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404
+from django.template import RequestContext
+from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from permissions.models import Permission
 from documents.models import Document
+from permissions.models import Permission
 
-from .permissions import (PERMISSION_COMMENT_CREATE,
-    PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_VIEW)
 from .forms import CommentForm
+from .permissions import (PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_DELETE,
+                          PERMISSION_COMMENT_VIEW)
 
 
 def comment_delete(request, comment_id=None, comment_id_list=None):
@@ -44,9 +44,9 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
             try:
                 comment.delete()
                 messages.success(request, _(u'Comment "%s" deleted successfully.') % comment)
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error deleting comment "%(comment)s": %(error)s') % {
-                    'comment': comment, 'error': e
+                    'comment': comment, 'error': exception
                 })
 
         return HttpResponseRedirect(next)

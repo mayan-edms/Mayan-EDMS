@@ -54,25 +54,25 @@ class SmartLinkManager(models.Manager):
                         elif condition.inclusion == INCLUSION_OR:
                             total_query |= query
 
-                except Exception, e:
-                    errors.append(e)
+                except Exception as exception:
+                    errors.append(exception)
                     value_query = Q()
                     query = Q()
             if total_query:
                 try:
                     document_qs = Document.objects.filter(total_query)
                     result[smart_link] = {'documents': document_qs.order_by('date_added') or []}
-                except Exception, e:
+                except Exception as exception:
                     result[smart_link] = {'documents': []}
-                    errors.append(e)
+                    errors.append(exception)
             else:
                 result[smart_link] = {'documents': []}
 
             if smart_link.dynamic_title:
                 try:
                     result[smart_link]['title'] = eval(smart_link.dynamic_title, eval_dict)
-                except Exception, e:
-                    result[smart_link]['title'] = 'Error; %s' % e
+                except Exception as exception:
+                    result[smart_link]['title'] = 'Error; %s' % exception
             else:
                 result[smart_link]['title'] = smart_link.title
 

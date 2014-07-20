@@ -69,8 +69,8 @@ class Command(LabelCommand):
                             else:
                                 sys.exit()
 
-                except csv.Error, e:
-                    sys.exit('file %s, line %d: %s' % (label, reader.line_num, e))
+                except csv.Error as exception:
+                    sys.exit('file %s, line %d: %s' % (label, reader.line_num, exception))
                 else:
                     print 'Finish.'
         else:

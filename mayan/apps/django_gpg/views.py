@@ -36,13 +36,13 @@ def key_receive(request, key_id):
             key = gpg.import_key(keys_dict[key_id].key)
             messages.success(request, _(u'Key: %s, imported successfully.') % key)
             return HttpResponseRedirect(next)
-        except (KeyImportError, KeyError, TypeError), e:
+        except (KeyImportError, KeyError, TypeError) as exception:
             messages.error(
                 request,
                 _(u'Unable to import key id: %(key_id)s; %(error)s') %
                 {
                     'key_id': key_id,
-                    'error': e,
+                    'error': exception,
                 }
             )
             return HttpResponseRedirect(previous)

@@ -189,10 +189,10 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             return HttpResponseRedirect(request.get_full_path())
                     except NewDocumentVersionNotAllowed:
                         messages.error(request, _(u'New version uploads are not allowed for this document.'))
-                    except Exception, e:
+                    except Exception as exception:
                         if settings.DEBUG:
                             raise
-                        messages.error(request, _(u'Unhandled exception: %s') % e)
+                        messages.error(request, _(u'Unhandled exception: %s') % exception)
             else:
                 form = WebFormForm(
                     show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
@@ -270,10 +270,10 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             return HttpResponseRedirect(request.get_full_path())
                     except NewDocumentVersionNotAllowed:
                         messages.error(request, _(u'New version uploads are not allowed for this document.'))
-                    except Exception, e:
+                    except Exception as exception:
                         if settings.DEBUG:
                             raise
-                        messages.error(request, _(u'Unhandled exception: %s') % e)
+                        messages.error(request, _(u'Unhandled exception: %s') % exception)
             else:
                 form = StagingDocumentForm(document_type=document_type,
                     show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
@@ -282,8 +282,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 )
             try:
                 staging_filelist = list(staging_folder.get_files())
-            except Exception as e:
-                messages.error(request, e)
+            except Exception as exception:
+                messages.error(request, exception)
                 staging_filelist = []
             finally:
                 if document:
@@ -443,8 +443,8 @@ def setup_source_edit(request, source_type, source_id):
                 form.save()
                 messages.success(request, _(u'Source edited successfully'))
                 return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing source; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error editing source; %s') % exception)
     else:
         form = form_class(instance=source)
 
@@ -484,9 +484,9 @@ def setup_source_delete(request, source_type, source_id):
         try:
             source.delete()
             messages.success(request, _(u'Source "%s" deleted successfully.') % source)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Error deleting source "%(source)s": %(error)s') % {
-                'source': source, 'error': e
+                'source': source, 'error': exception
             })
 
         return HttpResponseRedirect(redirect_view)
@@ -526,8 +526,8 @@ def setup_source_create(request, source_type):
                 form.save()
                 messages.success(request, _(u'Source created successfully'))
                 return HttpResponseRedirect(reverse('setup_web_form_list'))
-            except Exception, e:
-                messages.error(request, _(u'Error creating source; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error creating source; %s') % exception)
     else:
         form = form_class()
 
@@ -586,8 +586,8 @@ def setup_source_transformation_edit(request, transformation_id):
                 form.save()
                 messages.success(request, _(u'Source transformation edited successfully'))
                 return HttpResponseRedirect(next)
-            except Exception, e:
-                messages.error(request, _(u'Error editing source transformation; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error editing source transformation; %s') % exception)
     else:
         form = SourceTransformationForm(instance=source_transformation)
 
@@ -616,9 +616,9 @@ def setup_source_transformation_delete(request, transformation_id):
         try:
             source_transformation.delete()
             messages.success(request, _(u'Source transformation deleted successfully.'))
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Error deleting source transformation; %(error)s') % {
-                'error': e}
+                'error': exception}
             )
         return HttpResponseRedirect(redirect_view)
 
@@ -662,8 +662,8 @@ def setup_source_transformation_create(request, source_type, source_id):
                 source_tranformation.save()
                 messages.success(request, _(u'Source transformation created successfully'))
                 return HttpResponseRedirect(redirect_view)
-            except Exception, e:
-                messages.error(request, _(u'Error creating source transformation; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error creating source transformation; %s') % exception)
     else:
         form = SourceTransformationForm_create()
 

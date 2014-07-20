@@ -24,8 +24,8 @@ def form_view(request):
             except AlreadyRegistered:
                 messages.error(request, _(u'Your copy is already registered.'))
                 return HttpResponseRedirect('/')
-            except Exception, e:
-                messages.error(request, _(u'Error submiting form; %s.') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error submiting form; %s.') % exception)
     else:
         form = RegistrationForm()
 

@@ -86,9 +86,9 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
                     messages.success(request, _(u'Queue document: %(document)s deleted successfully.') % {
                         'document': queue_document.document})
 
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error deleting document: %(document)s; %(error)s') % {
-                    'document': queue_document, 'error': e})
+                    'document': queue_document, 'error': exception})
         return HttpResponseRedirect(next)
 
     context = {
@@ -145,8 +145,8 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
         messages.warning(request, _(u'Document: %(document)s is already queued.') % {
             'document': document}
         )
-    except Exception, e:
-        messages.error(request, e)
+    except Exception as exception:
+        messages.error(request, exception)
 
     if post_submit_redirect:
         return HttpResponseRedirect(post_submit_redirect)
@@ -278,8 +278,8 @@ def all_document_ocr_cleanup(request):
         try:
             clean_pages()
             messages.success(request, _(u'Document pages content clean up complete.'))
-        except Exception, e:
-            messages.error(request, _(u'Document pages content clean up error: %s') % e)
+        except Exception as exception:
+            messages.error(request, _(u'Document pages content clean up error: %s') % exception)
 
         return HttpResponseRedirect(next)
 

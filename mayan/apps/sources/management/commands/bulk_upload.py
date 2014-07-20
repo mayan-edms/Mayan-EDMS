@@ -35,8 +35,8 @@ class Command(LabelCommand):
             try:
                 metadata_dict = loads(options['metadata'])
                 metadata_dict_list = convert_dict_to_dict_list(metadata_dict)
-            except Exception, e:
-                sys.exit('Metadata error: %s' % e)
+            except Exception as exception:
+                sys.exit('Metadata error: %s' % exception)
         else:
             metadata_dict_list = None
 

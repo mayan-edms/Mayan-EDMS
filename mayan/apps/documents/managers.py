@@ -23,8 +23,8 @@ class DocumentPageTransformationManager(models.Manager):
                         'arguments': literal_eval(transformation['arguments'].strip())
                     }
                 )
-            except (ValueError, SyntaxError), e:
-                warnings.append(e)
+            except (ValueError, SyntaxError) as exception:
+                warnings.append(exception)
 
         return transformations, warnings
 

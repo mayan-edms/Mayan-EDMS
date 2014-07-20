@@ -121,9 +121,9 @@ def user_delete(request, user_id=None, user_id_list=None):
                 else:
                     user.delete()
                     messages.success(request, _(u'User "%s" deleted successfully.') % user)
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error deleting user "%(user)s": %(error)s') % {
-                    'user': user, 'error': e
+                    'user': user, 'error': exception
                 })
 
         return HttpResponseRedirect(next)
@@ -182,9 +182,9 @@ def user_set_password(request, user_id=None, user_id_list=None):
                             user.set_password(password_1)
                             user.save()
                             messages.success(request, _(u'Successfull password reset for user: %s.') % user)
-                    except Exception, e:
+                    except Exception as exception:
                         messages.error(request, _(u'Error reseting password for user "%(user)s": %(error)s') % {
-                            'user': user, 'error': e
+                            'user': user, 'error': exception
                         })
 
                 return HttpResponseRedirect(next)
@@ -325,9 +325,9 @@ def group_delete(request, group_id=None, group_id_list=None):
             try:
                 group.delete()
                 messages.success(request, _(u'Group "%s" deleted successfully.') % group)
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error deleting group "%(group)s": %(error)s') % {
-                    'group': group, 'error': e
+                    'group': group, 'error': exception
                 })
 
         return HttpResponseRedirect(next)

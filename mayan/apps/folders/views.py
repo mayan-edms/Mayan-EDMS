@@ -94,8 +94,8 @@ def folder_edit(request, folder_id):
                 folder.save()
                 messages.success(request, _(u'Folder edited successfully'))
                 return HttpResponseRedirect(reverse('folder_list'))
-            except Exception, e:
-                messages.error(request, _(u'Error editing folder; %s') % e)
+            except Exception as exception:
+                messages.error(request, _(u'Error editing folder; %s') % exception)
     else:
         form = FolderForm(instance=folder)
 
@@ -125,9 +125,9 @@ def folder_delete(request, folder_id):
         try:
             folder.delete()
             messages.success(request, _(u'Folder: %s deleted successfully.') % folder)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Folder: %(folder)s delete error: %(error)s') % {
-                'folder': folder, 'error': e})
+                'folder': folder, 'error': exception})
 
         return HttpResponseRedirect(next)
 
@@ -267,9 +267,9 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
             try:
                 folder.remove_document(folder_document)
                 messages.success(request, _(u'Document: %s removed successfully.') % folder_document)
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
-                    'document': folder_document, 'error': e})
+                    'document': folder_document, 'error': exception})
 
         return HttpResponseRedirect(next)
 

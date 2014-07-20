@@ -167,9 +167,9 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
             try:
                 tag.delete()
                 messages.success(request, _(u'Tag "%s" deleted successfully.') % tag)
-            except Exception, e:
+            except Exception as exception:
                 messages.error(request, _(u'Error deleting tag "%(tag)s": %(error)s') % {
-                    'tag': tag, 'error': e
+                    'tag': tag, 'error': exception
                 })
 
         return HttpResponseRedirect(next)

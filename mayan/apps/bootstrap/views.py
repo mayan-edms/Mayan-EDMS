@@ -110,9 +110,9 @@ def bootstrap_setup_delete(request, bootstrap_setup_pk):
         try:
             bootstrap.delete()
             messages.success(request, _(u'Bootstrap setup: %s deleted successfully.') % bootstrap)
-        except Exception, e:
+        except Exception as exception:
             messages.error(request, _(u'Bootstrap setup: %(bootstrap)s, delete error: %(error)s') % {
-                'bootstrap': bootstrap, 'error': e})
+                'bootstrap': bootstrap, 'error': exception})
 
         return HttpResponseRedirect(reverse('bootstrap_setup_list'))
 
@@ -327,8 +327,8 @@ def bootstrap_setup_repository_sync(request):
         try:
             BootstrapSetup.objects.repository_sync()
             messages.success(request, _(u'Bootstrap repository successfully synchronized.'))
-        except Exception, e:
-            messages.error(request, _(u'Bootstrap repository synchronization error: %(error)s') % {'error': e})
+        except Exception as exception:
+            messages.error(request, _(u'Bootstrap repository synchronization error: %(error)s') % {'error': exception})
 
         return HttpResponseRedirect(reverse('bootstrap_setup_list'))
 

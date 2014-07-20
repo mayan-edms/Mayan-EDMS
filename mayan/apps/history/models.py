@@ -106,8 +106,8 @@ def _process_history_text(history, text):
     for key, value in history.get_expressions().items():
         try:
             expressions_dict[key] = eval(value, key_values.copy())
-        except Exception, e:
-            expressions_dict[key] = e
+        except Exception as exception:
+            expressions_dict[key] = exception
 
     key_values.update(expressions_dict)
     return text % key_values
