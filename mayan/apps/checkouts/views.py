@@ -78,8 +78,8 @@ def checkout_document(request, document_pk):
                     document_checkout = form.save(commit=False)
                     document_checkout.user_object = request.user
                     document_checkout.save()
-                except Exception, exc:
-                    messages.error(request, _(u'Error trying to check out document; %s') % exc)
+                except Exception as exception:
+                    messages.error(request, _(u'Error trying to check out document; %s') % exception)
                 else:
                     messages.success(request, _(u'Document "%s" checked out successfully.') % document)
                     return HttpResponseRedirect(reverse('checkout_info', args=[document.pk]))
@@ -122,8 +122,8 @@ def checkin_document(request, document_pk):
             document.check_in(user=request.user)
         except DocumentNotCheckedOut:
             messages.error(request, _(u'Document has not been checked out.'))
-        except Exception, exc:
-            messages.error(request, _(u'Error trying to check in document; %s') % exc)
+        except Exception as exception:
+            messages.error(request, _(u'Error trying to check in document; %s') % exception)
         else:
             messages.success(request, _(u'Document "%s" checked in successfully.') % document)
             return HttpResponseRedirect(next)

@@ -44,11 +44,11 @@ def fs_create_index_directory(index_instance):
         target_directory = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance)])
         try:
             os.mkdir(target_directory)
-        except OSError, exc:
-            if exc.errno == errno.EEXIST:
+        except OSError as exception:
+            if exception.errno == errno.EEXIST:
                 pass
             else:
-                raise Exception(_(u'Unable to create indexing directory; %s') % exc)
+                raise Exception(_(u'Unable to create indexing directory; %s') % exception)
 
 
 def fs_create_document_link(index_instance, document, suffix=0):
@@ -58,17 +58,17 @@ def fs_create_document_link(index_instance, document, suffix=0):
 
         try:
             os.symlink(document.file.path, filepath)
-        except OSError, exc:
-            if exc.errno == errno.EEXIST:
+        except OSError as exception:
+            if exception.errno == errno.EEXIST:
                 # This link should not exist, try to delete it
                 try:
                     os.unlink(filepath)
                     # Try again
                     os.symlink(document.file.path, filepath)
-                except Exception, exc:
-                    raise Exception(_(u'Unable to create symbolic link, file exists and could not be deleted: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
+                except Exception as exception:
+                    raise Exception(_(u'Unable to create symbolic link, file exists and could not be deleted: %(filepath)s; %(exception)s') % {'filepath': filepath, 'exception': exception})
             else:
-                raise Exception(_(u'Unable to create symbolic link: %(filepath)s; %(exc)s') % {'filepath': filepath, 'exc': exc})
+                raise Exception(_(u'Unable to create symbolic link: %(filepath)s; %(exception)s') % {'filepath': filepath, 'exception': exception})
 
 
 def fs_delete_document_link(index_instance, document, suffix=0):
@@ -78,10 +78,10 @@ def fs_delete_document_link(index_instance, document, suffix=0):
 
         try:
             os.unlink(filepath)
-        except OSError, exc:
-            if exc.errno != errno.ENOENT:
+        except OSError as exception:
+            if exception.errno != errno.ENOENT:
                 # Raise when any error other than doesn't exits
-                raise Exception(_(u'Unable to delete document symbolic link; %s') % exc)
+                raise Exception(_(u'Unable to delete document symbolic link; %s') % exception)
 
 
 def fs_delete_index_directory(index_instance):
@@ -89,11 +89,11 @@ def fs_delete_index_directory(index_instance):
         target_directory = assemble_path_from_list([FILESYSTEM_SERVING[index_instance.index_template_node.index.name], get_instance_path(index_instance)])
         try:
             os.removedirs(target_directory)
-        except OSError, exc:
-            if exc.errno == errno.EEXIST:
+        except OSError as exception:
+            if exception.errno == errno.EEXIST:
                 pass
             else:
-                raise Exception(_(u'Unable to delete indexing directory; %s') % exc)
+                raise Exception(_(u'Unable to delete indexing directory; %s') % exception)
 
 
 def fs_delete_directory_recusive(index):

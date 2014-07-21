@@ -94,8 +94,8 @@ def document_signature_upload(request, document_pk):
                 DocumentVersionSignature.objects.add_detached_signature(document, request.FILES['file'])
                 messages.success(request, _(u'Detached signature uploaded successfully.'))
                 return HttpResponseRedirect(next)
-            except Exception, msg:
-                messages.error(request, msg)
+            except Exception as exception:
+                messages.error(request, exception)
                 return HttpResponseRedirect(previous)
     else:
         form = DetachedSignatureForm()
@@ -153,8 +153,8 @@ def document_signature_delete(request, document_pk):
             DocumentVersionSignature.objects.clear_detached_signature(document)
             messages.success(request, _(u'Detached signature deleted successfully.'))
             return HttpResponseRedirect(next)
-        except Exception, exc:
-            messages.error(request, _(u'Error while deleting the detached signature; %s') % exc)
+        except Exception as exception:
+            messages.error(request, _(u'Error while deleting the detached signature; %s') % exception)
             return HttpResponseRedirect(previous)
 
     return render_to_response('generic_confirm.html', {

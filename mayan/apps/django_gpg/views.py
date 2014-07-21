@@ -100,8 +100,8 @@ def key_delete(request, fingerprint, key_type):
             gpg.delete_key(key)
             messages.success(request, _(u'Key: %s, deleted successfully.') % fingerprint)
             return HttpResponseRedirect(next)
-        except Exception, msg:
-            messages.error(request, msg)
+        except Exception as exception:
+            messages.error(request, exception)
             return HttpResponseRedirect(previous)
 
     return render_to_response('generic_confirm.html', {

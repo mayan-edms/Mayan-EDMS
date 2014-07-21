@@ -33,8 +33,6 @@ logger = logging.getLogger(__name__)
 
 
 def smart_link_action(request):
-    # Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
-
     action = request.GET.get('action', None)
 
     if not action:
@@ -178,7 +176,6 @@ def smart_link_edit(request, smart_link_pk):
         form = SmartLinkForm(instance=smart_link)
 
     return render_to_response('generic_form.html', {
-        # 'navigation_object_name': 'smart_link',
         'object': smart_link,
         'form': form,
         'title': _(u'Edit smart link: %s') % smart_link
@@ -200,10 +197,10 @@ def smart_link_delete(request, smart_link_pk):
         try:
             smart_link.delete()
             messages.success(request, _(u'Smart link: %s deleted successfully.') % smart_link)
-        except Exception, error:
-            messages.error(request, _(u'Error deleting smart link: %(smart_link)s; %(error)s.') % {
+        except Exception as exception:
+            messages.error(request, _(u'Error deleting smart link: %(smart_link)s; %(exception)s.') % {
                 'smart_link': smart_link,
-                'error': error
+                'exception': exception
             })
         return HttpResponseRedirect(next)
 
@@ -315,10 +312,10 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
         try:
             smart_link_condition.delete()
             messages.success(request, _(u'Smart link condition: "%s" deleted successfully.') % smart_link_condition)
-        except Exception, error:
-            messages.error(request, _(u'Error deleting smart link condition: %(smart_link_condition)s; %(error)s.') % {
+        except Exception as exception:
+            messages.error(request, _(u'Error deleting smart link condition: %(smart_link_condition)s; %(exception)s.') % {
                 'smart_link_condition': smart_link_condition,
-                'error': error
+                'exception': exception
             })
         return HttpResponseRedirect(next)
 

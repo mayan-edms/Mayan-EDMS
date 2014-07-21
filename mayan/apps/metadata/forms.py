@@ -1,8 +1,8 @@
 from __future__ import absolute_import
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 from django.forms.formsets import formset_factory
+from django.utils.translation import ugettext_lazy as _
 
 from common.widgets import ScrollableCheckboxSelectMultiple
 
@@ -17,7 +17,6 @@ class MetadataForm(forms.Form):
         # Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            # self.document_type = kwargs['initial'].pop('document_type', None)
 
             # FIXME:
             # required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
@@ -42,15 +41,15 @@ class MetadataForm(forms.Form):
                         choices.insert(0, ('', '------'))
                     self.fields['value'].choices = choices
                     self.fields['value'].required = required
-                except Exception, err:
-                    self.fields['value'].initial = err
+                except Exception as exception:
+                    self.fields['value'].initial = exception
                     self.fields['value'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
 
             if self.metadata_type.default:
                 try:
                     self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
-                except Exception, err:
-                    self.fields['value'].initial = err
+                except Exception as exception:
+                    self.fields['value'].initial = exception
 
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
     name = forms.CharField(label=_(u'Name'),
@@ -71,7 +70,6 @@ class MetadataRemoveForm(MetadataForm):
 
 class MetadataSelectionForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        # document_type = kwargs.pop('document_type', None)
         super(MetadataSelectionForm, self).__init__(*args, **kwargs)
         document_type = getattr(self, 'initial', {}).get('document_type', None)
         if document_type:
@@ -86,7 +84,6 @@ class MetadataSelectionForm(forms.Form):
         queryset=MetadataSet.objects.all(),
         label=_(u'Metadata sets'),
         required=False,
-        # widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
         widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
     )
 
@@ -94,7 +91,6 @@ class MetadataSelectionForm(forms.Form):
         queryset=MetadataType.objects.all(),
         label=_(u'Metadata'),
         required=False,
-        # widget=forms.widgets.SelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
         widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
     )
 

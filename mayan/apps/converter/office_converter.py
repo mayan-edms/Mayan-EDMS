@@ -85,9 +85,9 @@ class OfficeConverter(object):
                 try:
                     self.backend.convert(self.input_filepath, self.output_filepath)
                     self.exists = True
-                except OfficeBackendError, msg:
+                except OfficeBackendError as exception:
                     # convert exception so that at least the mime type icon is displayed
-                    raise UnknownFileFormat(msg)
+                    raise UnknownFileFormat(exception)
 
     def __unicode__(self):
         return getattr(self, 'output_filepath', None)
@@ -140,7 +140,7 @@ class OfficeConverterBackendDirect(object):
             logger.debug('converted_output: %s' % converted_output)
 
             os.rename(converted_output, self.output_filepath)
-        except OSError, msg:
-            raise OfficeBackendError(msg)
-        except Exception, msg:
-            logger.error('Unhandled exception', exc_info=msg)
+        except OSError as exception:
+            raise OfficeBackendError(exception)
+        except Exception as exception:
+            logger.error('Unhandled exception', exc_info=exception)

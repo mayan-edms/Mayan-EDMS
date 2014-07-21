@@ -81,18 +81,18 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
     if template_node.enabled:
         try:
             result = eval(template_node.expression, eval_dict, AVAILABLE_INDEXING_FUNCTIONS)
-        except Exception, exc:
+        except Exception as exception:
             warnings.append(_(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
-                'expression': template_node.expression, 'exception': exc})
+                'expression': template_node.expression, 'exception': exception})
         else:
             if result:
                 index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result, parent=parent_index_instance)
                 # if created:
                 try:
                     fs_create_index_directory(index_instance)
-                except Exception, exc:
+                except Exception as exception:
                     warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                        'expression': template_node.expression, 'exception': exc})
+                        'expression': template_node.expression, 'exception': exception})
 
                 if template_node.link_documents:
                     suffix = find_lowest_available_suffix(index_instance, document)
@@ -105,9 +105,9 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
 
                     try:
                         fs_create_document_link(index_instance, document, suffix)
-                    except Exception, exc:
+                    except Exception as exception:
                         warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                            'expression': template_node.expression, 'exception': exc})
+                            'expression': template_node.expression, 'exception': exception})
 
                     index_instance.documents.add(document)
 
@@ -147,7 +147,7 @@ def cascade_document_remove(document, index_instance):
             warnings.extend(parent_warnings)
     except DocumentRenameCount.DoesNotExist:
         return warnings
-    except Exception, exc:
-        warnings.append(_(u'Unable to delete document indexing node; %s') % exc)
+    except Exception as exception:
+        warnings.append(_(u'Unable to delete document indexing node; %s') % exception)
 
     return warnings

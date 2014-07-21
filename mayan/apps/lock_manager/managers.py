@@ -22,8 +22,8 @@ class LockManager(models.Manager):
                 lock.save(force_insert=True)
                 logger.debug('acquired lock: %s' % name)
                 return lock
-        except IntegrityError, msg:
-            logger.debug('IntegrityError: %s', msg)
+        except IntegrityError as exception:
+            logger.debug('IntegrityError: %s', exception)
             # There is already an existing lock
             # Check it's expiration date and if expired, reset it
             try:

@@ -62,8 +62,8 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
 def exists_with_famfam(path):
     try:
         return two_state_template(os.path.exists(path))
-    except Exception, exc:
-        return exc
+    except Exception as exception:
+        return exception
 
 
 def two_state_template(state, famfam_ok_icon=u'tick', famfam_fail_icon=u'cross'):
