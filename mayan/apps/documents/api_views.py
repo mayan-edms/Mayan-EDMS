@@ -20,8 +20,9 @@ from .models import Document, DocumentPage, DocumentVersion
 from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
                           DocumentSerializer, DocumentVersionSerializer)
 
+#TODO: PUT, POST, permissions
 
-class APIDocumentListView(generics.ListAPIView):
+class APIDocumentListView(generics.ListCreateAPIView):
     """
     Returns a list of all the documents.
     """
@@ -33,12 +34,11 @@ class APIDocumentListView(generics.ListAPIView):
     mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
 
 
-class APIDocumentPageView(generics.RetrieveAPIView):
+class APIDocumentPageView(generics.RetrieveUpdateAPIView):
     """
     Returns the selected document page details.
     """
 
-    allowed_methods = ['GET']
     serializer_class = DocumentPageSerializer
     queryset = DocumentPage.objects.all()
 
@@ -47,17 +47,28 @@ class APIDocumentPageView(generics.RetrieveAPIView):
     mayan_permission_attribute_check = 'document'
 
 
-class APIDocumentView(generics.RetrieveAPIView):
+class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
     """
     Returns the selected document details.
     """
 
-    allowed_methods = ['GET']
     serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+
+
+class APIDocumentVersionCreateView(generics.CreateAPIView):
+    """
+    Create a new document version.
+    """
+
+    serializer_class = DocumentVersionSerializer
+    queryset = DocumentVersion.objects.all()
+
+    #filter_backends = (MayanObjectPermissionsFilter,)
+    #mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
 
 
 class APIDocumentVersionView(generics.RetrieveAPIView):
