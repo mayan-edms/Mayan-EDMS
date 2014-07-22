@@ -316,7 +316,7 @@ class DocumentVersion(models.Model):
     micro = models.PositiveIntegerField(verbose_name=_(u'micro'), default=0)
     release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'release level'))
     serial = models.PositiveIntegerField(verbose_name=_(u'serial'), default=0)
-    timestamp = models.DateTimeField(verbose_name=_(u'timestamp'), editable=False)
+    timestamp = models.DateTimeField(verbose_name=_(u'timestamp'), editable=False, db_index=True)
     comment = models.TextField(blank=True, verbose_name=_(u'comment'))
 
     # File related fields
