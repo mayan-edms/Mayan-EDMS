@@ -15,12 +15,15 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
-from .permissions import PERMISSION_DOCUMENT_VIEW
+from .permissions import (PERMISSION_DOCUMENT_CREATE,
+                          PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_EDIT,
+                          PERMISSION_DOCUMENT_NEW_VERSION,
+                          PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+                          PERMISSION_DOCUMENT_VIEW)
 from .models import Document, DocumentPage, DocumentVersion
 from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
                           DocumentSerializer, DocumentVersionSerializer)
 
-#TODO: PUT, POST, permissions
 
 class APIDocumentListView(generics.ListCreateAPIView):
     """
@@ -30,21 +33,10 @@ class APIDocumentListView(generics.ListCreateAPIView):
     serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
-    filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
-
-
-class APIDocumentPageView(generics.RetrieveUpdateAPIView):
-    """
-    Returns the selected document page details.
-    """
-
-    serializer_class = DocumentPageSerializer
-    queryset = DocumentPage.objects.all()
-
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
-    mayan_permission_attribute_check = 'document'
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_CREATE]}
 
 
 class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
@@ -56,7 +48,10 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Document.objects.all()
 
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW],
+        'PUT': [PERMISSION_DOCUMENT_PROPERTIES_EDIT],
+        'PATCH': [PERMISSION_DOCUMENT_PROPERTIES_EDIT],
+        'DELETE': [PERMISSION_DOCUMENT_DELETE]}
 
 
 class APIDocumentVersionCreateView(generics.CreateAPIView):
@@ -67,8 +62,8 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
     serializer_class = DocumentVersionSerializer
     queryset = DocumentVersion.objects.all()
 
-    #filter_backends = (MayanObjectPermissionsFilter,)
-    #mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+    permission_classes = (MayanPermission,)
+    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_NEW_VERSION]}
 
 
 class APIDocumentVersionView(generics.RetrieveAPIView):
@@ -81,7 +76,7 @@ class APIDocumentVersionView(generics.RetrieveAPIView):
     queryset = DocumentVersion.objects.all()
 
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
     mayan_permission_attribute_check = 'document'
 
 
@@ -131,3 +126,19 @@ class APIDocumentImageView(generics.GenericAPIView):
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
         except UnkownConvertError as exception:
             return Response({'status': 'error', 'detail': 'converter_error', 'message': unicode(exception)})
+
+
+class APIDocumentPageView(generics.RetrieveUpdateAPIView):
+    """
+    Returns the selected document page details.
+    """
+
+    serializer_class = DocumentPageSerializer
+    queryset = DocumentPage.objects.all()
+
+    permission_classes = (MayanPermission,)
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW],
+        'PUT': [PERMISSION_DOCUMENT_EDIT],
+        'PATCH': [PERMISSION_DOCUMENT_EDIT]}
+    mayan_permission_attribute_check = 'document'
+
