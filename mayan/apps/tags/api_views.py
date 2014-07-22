@@ -1,12 +1,12 @@
 from __future__ import absolute_import
 
 from rest_framework import generics
+from taggit.models import Tag
 
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .permissions import PERMISSION_TAG_VIEW
-from taggit.models import Tag
 from .serializers import TagSerializer
 
 
@@ -18,7 +18,7 @@ class APITagView(generics.RetrieveAPIView):
     queryset = Tag.objects.all()
 
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_TAG_VIEW]
+    mayan_object_permissions = {'GET': [PERMISSION_TAG_VIEW]}
 
 
 class APITagListView(generics.ListAPIView):
@@ -30,4 +30,4 @@ class APITagListView(generics.ListAPIView):
     queryset = Tag.objects.all()
 
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = [PERMISSION_TAG_VIEW]
+    mayan_object_permissions = {'GET': [PERMISSION_TAG_VIEW]}
