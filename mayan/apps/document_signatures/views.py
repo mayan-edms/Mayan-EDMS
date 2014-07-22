@@ -15,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from filetransfers.api import serve_file
-from django_gpg.api import SIGNATURE_STATES
+from django_gpg.api import SIGNATURE_STATE_NONE, SIGNATURE_STATES
 from documents.models import Document, RecentDocument
 from permissions.models import Permission
 
@@ -37,9 +37,13 @@ def document_verify(request, document_pk):
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
-    signature = DocumentVersionSignature.objects.verify_signature(document)
-
-    signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
+    try:
+        signature = DocumentVersionSignature.objects.verify_signature(document)
+    except AttributeError:
+        signature_state = SIGNATURE_STATES.get(SIGNATURE_STATE_NONE)
+        signature = None
+    else:
+        signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
 
     widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
     paragraphs = [
@@ -49,10 +53,13 @@ def document_verify(request, document_pk):
         },
     ]
 
-    if DocumentVersionSignature.objects.has_embedded_signature(document):
-        signature_type = _(u'embedded')
-    else:
-        signature_type = _(u'detached')
+    try:
+        if DocumentVersionSignature.objects.has_embedded_signature(document):
+            signature_type = _(u'embedded')
+        else:
+            signature_type = _(u'detached')
+    except ValueError:
+        signature_type = _(u'None')
 
     if signature:
         paragraphs.extend(

@@ -96,19 +96,24 @@ def document_view(request, document_id, advanced=False):
     subtemplates_list = []
 
     if advanced:
-        document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=[
-            {'label': _(u'Filename'), 'field': 'filename'},
-            {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
-            {'label': _(u'File mime encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
-            {'label': _(u'File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
-            {'label': _(u'Exists in storage'), 'field': 'exists'},
-            {'label': _(u'File path in storage'), 'field': 'file'},
+        document_fields = [
             {'label': _(u'Date added'), 'field': lambda x: x.date_added.date()},
             {'label': _(u'Time added'), 'field': lambda x: unicode(x.date_added.time()).split('.')[0]},
-            {'label': _(u'Checksum'), 'field': 'checksum'},
             {'label': _(u'UUID'), 'field': 'uuid'},
-            {'label': _(u'Pages'), 'field': 'page_count'},
-        ])
+        ]
+        if document.latest_version:
+            document_fields.extend([
+                {'label': _(u'Filename'), 'field': 'filename'},
+                {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
+                {'label': _(u'File mime encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
+                {'label': _(u'File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
+                {'label': _(u'Exists in storage'), 'field': 'exists'},
+                {'label': _(u'File path in storage'), 'field': 'file'},
+                {'label': _(u'Checksum'), 'field': 'checksum'},
+                {'label': _(u'Pages'), 'field': 'page_count'},
+            ])
+
+        document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=document_fields)
 
         subtemplates_list.append(
             {
@@ -235,8 +240,12 @@ def document_edit(request, document_id):
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:
-        form = DocumentForm_edit(instance=document, initial={
-            'new_filename': document.filename, 'description': document.description})
+        if document.latest_version:
+            form = DocumentForm_edit(instance=document, initial={
+                'new_filename': document.filename, 'description': document.description})
+        else:
+            form = DocumentForm_edit(instance=document, initial={
+                'description': document.description})
 
     return render_to_response('generic_form.html', {
         'form': form,

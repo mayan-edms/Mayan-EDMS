@@ -100,7 +100,7 @@ register_maintenance_links([document_find_all_duplicates, document_update_page_c
 register_model_list_columns(Document, [
     {
         'name': _(u'thumbnail'), 'attribute':
-        encapsulate(lambda x: document_thumbnail(x, gallery_name='document_list', title=x.filename, size=THUMBNAIL_SIZE))
+        encapsulate(lambda x: document_thumbnail(x, gallery_name='document_list', title=getattr(x, 'filename', None), size=THUMBNAIL_SIZE))
     },
 ])
 

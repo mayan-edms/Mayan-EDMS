@@ -32,19 +32,25 @@ class DocumentVersionSignatureManager(models.Manager):
             document_signature.save()
 
     def has_detached_signature(self, document):
-        document_signature = self.get_document_signature(document)
-
-        if document_signature.signature_file:
-            return True
-        else:
+        try:
+            document_signature = self.get_document_signature(document)
+        except ValueError:
             return False
+        else:
+            if document_signature.signature_file:
+                return True
+            else:
+                return False
 
     def has_embedded_signature(self, document):
         logger.debug('document: %s' % document)
 
-        document_signature = self.get_document_signature(document)
-
-        return document_signature.has_embedded_signature
+        try:
+            document_signature = self.get_document_signature(document)
+        except ValueError:
+            return False
+        else:
+            return document_signature.has_embedded_signature
 
     def detached_signature(self, document):
         document_signature = self.get_document_signature(document)
