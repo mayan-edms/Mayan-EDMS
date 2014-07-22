@@ -86,6 +86,14 @@ class Migration(SchemaMigration):
             'page_label': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'}),
             'page_number': ('django.db.models.fields.PositiveIntegerField', [], {'default': '1', 'db_index': 'True'})
         },
+        'documents.documentpagetransformation': {
+            'Meta': {'ordering': "('order',)", 'object_name': 'DocumentPageTransformation'},
+            'arguments': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'document_page': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['documents.DocumentPage']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'order': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0', 'null': 'True', 'db_index': 'True', 'blank': 'True'}),
+            'transformation': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
         'documents.documenttype': {
             'Meta': {'ordering': "['name']", 'object_name': 'DocumentType'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -109,7 +117,7 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'major': ('django.db.models.fields.PositiveIntegerField', [], {'default': '1'}),
             'micro': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
-            'mimetype': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'}),
+            'mimetype': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'minor': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
             'release_level': ('django.db.models.fields.PositiveIntegerField', [], {'default': '1'}),
             'serial': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
