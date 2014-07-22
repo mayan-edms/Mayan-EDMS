@@ -10,9 +10,11 @@ from permissions.models import Permission
 
 class MayanPermission(BasePermission):
     def has_permission(self, request, view):
-        if hasattr(view, 'mayan_view_permissions'):
+        required_permission = getattr(view, 'mayan_view_permissions', {}).get(request.method, None)
+
+        if required_permission:
             try:
-                Permission.objects.check_permissions(request.user, view.mayan_view_permissions)
+                Permission.objects.check_permissions(request.user, required_permission)
             except PermissionDenied:
                 return False
             else:
@@ -21,15 +23,17 @@ class MayanPermission(BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-        if hasattr(view, 'mayan_object_permissions'):
+        required_permission = getattr(view, 'mayan_object_permissions', {}).get(request.method, None)
+
+        if required_permission:
             try:
-                Permission.objects.check_permissions(request.user, view.mayan_object_permissions)
+                Permission.objects.check_permissions(request.user, required_permission)
             except PermissionDenied:
                 try:
                     if hasattr(view, 'mayan_permission_attribute_check'):
-                        AccessEntry.objects.check_accesses(view.mayan_object_permissions, request.user, getattr(obj, view.mayan_permission_attribute_check))
+                        AccessEntry.objects.check_accesses(required_permission, request.user, getattr(obj, view.mayan_permission_attribute_check))
                     else:
-                        AccessEntry.objects.check_accesses(view.mayan_object_permissions, request.user, obj)
+                        AccessEntry.objects.check_accesses(required_permission, request.user, obj)
                 except PermissionDenied:
                     return False
                 else:
