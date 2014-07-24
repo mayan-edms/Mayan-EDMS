@@ -1,5 +1,5 @@
 __title__ = 'Mayan EDMS'
-__version__ = '1.0 rc2'
+__version__ = '1.0 rc3'
 __build__ = 0x010000
 __author__ = 'Roberto Rosario'
 __license__ = 'Apache 2.0'
