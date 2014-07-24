@@ -42,13 +42,14 @@ def find_packages(directory):
         os.chdir(root_dir)
 
     for dirpath, dirnames, filenames in os.walk(directory):
-        # Ignore dirnames that start with '.'
-        if os.path.basename(dirpath).startswith('.'):
-            continue
-        if '__init__.py' in filenames:
-            packages.append('.'.join(fullsplit(dirpath)))
-        elif filenames:
-            data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
+        if not dirpath.startswith('mayan/media'):
+            # Ignore dirnames that start with '.'
+            if os.path.basename(dirpath).startswith('.'):
+                continue
+            if '__init__.py' in filenames:
+                packages.append('.'.join(fullsplit(dirpath)))
+            elif filenames:
+                data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
     return packages
 
 install_requires = """
