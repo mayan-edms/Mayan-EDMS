@@ -15,6 +15,7 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = DocumentVersion
+        read_only_fields = ('document',)
 
 
 class DocumentImageSerializer(serializers.Serializer):
