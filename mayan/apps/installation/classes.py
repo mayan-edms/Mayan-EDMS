@@ -7,7 +7,7 @@ import os
 import sh
 
 try:
-    from sh import pip
+    pip = sh.Command('pip')
     PIP = True
 except sh.CommandNotFound:
     PIP = False
