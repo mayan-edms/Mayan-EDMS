@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'mptt',
     'compressor',
     'rest_framework',
+    'rest_framework.authtoken',
     'solo',
     # Base generic
     'permissions',
@@ -255,6 +256,7 @@ REST_FRAMEWORK = {
     'MAX_PAGINATE_BY': 100,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     )
 }

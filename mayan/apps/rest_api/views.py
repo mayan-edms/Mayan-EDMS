@@ -3,7 +3,8 @@ from __future__ import absolute_import
 
 import logging
 
-from rest_framework import generics
+from rest_framework import generics, renderers
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
@@ -66,3 +67,10 @@ class APIAppView(generics.GenericAPIView):
         return Response({
             'endpoints': result
         })
+
+
+class BrowseableObtainAuthToken(ObtainAuthToken):
+    """
+    Obtain an API authentication token.
+    """
+    renderer_classes = (renderers.JSONRenderer, renderers.BrowsableAPIRenderer)
