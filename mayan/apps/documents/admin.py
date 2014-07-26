@@ -20,9 +20,6 @@ class DocumentVersionInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-    # inlines = [
-    #    DocumentPageInline,
-    # ]
 
 
 class DocumentTypeFilenameInline(admin.StackedInline):

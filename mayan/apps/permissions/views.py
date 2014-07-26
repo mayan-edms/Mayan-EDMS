@@ -115,7 +115,6 @@ def permission_grant(request):
 
     items = []
     for item_properties in items_property_list:
-        # permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
@@ -178,7 +177,6 @@ def permission_revoke(request):
 
     items = []
     for item_properties in items_property_list:
-        # permission = get_object_or_404(Permission, pk=item_properties['permission_id'])
         try:
             permission = Permission.objects.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
@@ -286,8 +284,6 @@ def get_non_role_members(role):
     if anonymous:
         non_members.append((_(u'Special'), _as_choice_list(list(anonymous))))
 
-    # non_holder_list.append((_(u'Special'), _as_choice_list([AnonymousUserSingleton.objects.get()])))
-
     return non_members
 
 
@@ -307,9 +303,7 @@ def role_members(request, role_id):
 
     return assign_remove(
         request,
-        # left_list=lambda: generate_choices_w_labels(get_non_role_members(role)),
         left_list=lambda: get_non_role_members(role),
-        # right_list=lambda: generate_choices_w_labels(get_role_members(role)),
         right_list=lambda: get_role_members(role),
         add_method=lambda x: add_role_member(role, x),
         remove_method=lambda x: remove_role_member(role, x),

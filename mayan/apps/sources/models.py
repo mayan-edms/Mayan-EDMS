@@ -112,12 +112,7 @@ class BaseModel(models.Model):
         if not new_version_data:
             new_version_data = {}
 
-        try:
-            new_version = document.new_version(file=file_object, user=user, **new_version_data)
-        except Exception:
-            # Don't leave the database in a broken state
-            # document.delete()
-            raise
+        new_version = document.new_version(file=file_object, user=user, **new_version_data)
 
         if filename:
             document.rename(filename)
@@ -268,7 +263,6 @@ class SourceTransformation(models.Model):
     transformations = SourceTransformationManager()
 
     def __unicode__(self):
-        # return u'"%s" for %s' % (self.get_transformation_display(), unicode(self.content_object))
         return self.get_transformation_display()
 
     class Meta:
