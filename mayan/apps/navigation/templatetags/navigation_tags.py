@@ -105,9 +105,9 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                         new_link['url'] = reverse(link['view'], args=args)
                         if link.get('keep_query', False):
                             new_link['url'] = urlquote(new_link['url'], parsed_query_string)
-                except NoReverseMatch, err:
+                except NoReverseMatch as exception:
                     new_link['url'] = '#'
-                    new_link['error'] = err
+                    new_link['error'] = exception
             elif 'url' in link:
                 if not link.get('dont_mark_active', False):
                     new_link['active'] = link['url'] == current_path

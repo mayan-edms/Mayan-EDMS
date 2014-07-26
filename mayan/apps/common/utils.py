@@ -78,9 +78,9 @@ def return_attrib(obj, attrib, arguments=None):
                     return result()
             else:
                 return result
-    except Exception, err:
+    except Exception as exception:
         if settings.DEBUG:
-            return 'Attribute error: %s; %s' % (attrib, err)
+            return 'Attribute error: %s; %s' % (attrib, exception)
         else:
             pass
 

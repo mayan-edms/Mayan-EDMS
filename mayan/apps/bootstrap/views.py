@@ -163,8 +163,8 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
             bootstrap_setup.execute()
         except ExistingData:
             messages.error(request, _(u'Cannot execute bootstrap setup, there is existing data.  Erase all data and try again.'))
-        except Exception, exc:
-            messages.error(request, _(u'Error executing bootstrap setup; %s') % exc)
+        except Exception as exception:
+            messages.error(request, _(u'Error executing bootstrap setup; %s') % exception)
         else:
             messages.success(request, _(u'Bootstrap setup "%s" executed successfully.') % bootstrap_setup)
             return HttpResponseRedirect(next)
@@ -295,8 +295,8 @@ def erase_database_view(request):
     if request.method == 'POST':
         try:
             Cleanup.execute_all()
-        except Exception, exc:
-            messages.error(request, _(u'Error erasing database; %s') % exc)
+        except Exception as exception:
+            messages.error(request, _(u'Error erasing database; %s') % exception)
         else:
             messages.success(request, _(u'Database erased successfully.'))
             return HttpResponseRedirect(next)

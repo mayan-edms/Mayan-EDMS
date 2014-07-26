@@ -95,7 +95,11 @@ class Document(models.Model):
         ordering = ['-date_added']
 
     def __unicode__(self):
-        return self.latest_version.filename
+        try:
+            return self.latest_version.filename
+        except AttributeError:
+            # Document has no version yet, let's return a place holder text
+            return ugettext(u'Uninitialized document')
 
     @models.permalink
     def get_absolute_url(self):
@@ -250,7 +254,11 @@ class Document(models.Model):
 
     @property
     def pages(self):
-        return self.latest_version.pages
+        try:
+            return self.latest_version.pages
+        except AttributeError:
+            # Document has no version yet
+            return 0
 
     @property
     def page_count(self):
@@ -258,11 +266,11 @@ class Document(models.Model):
 
     @property
     def latest_version(self):
-        return self.versions.order_by('-timestamp')[0]
+        return self.versions.order_by('timestamp').last()
 
     @property
     def first_version(self):
-        return self.versions.order_by('timestamp')[0]
+        return self.versions.order_by('timestamp').first()
 
     def rename(self, new_name):
         version = self.latest_version
@@ -302,13 +310,13 @@ class DocumentVersion(models.Model):
     def register_post_save_hook(cls, order, func):
         cls._post_save_hooks[order] = func
 
-    document = models.ForeignKey(Document, verbose_name=_(u'document'), editable=False, related_name='versions')
-    major = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1, editable=False)
-    minor = models.PositiveIntegerField(verbose_name=_(u'minor'), default=0, editable=False)
-    micro = models.PositiveIntegerField(verbose_name=_(u'micro'), default=0, editable=False)
-    release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'release level'), editable=False)
-    serial = models.PositiveIntegerField(verbose_name=_(u'serial'), default=0, editable=False)
-    timestamp = models.DateTimeField(verbose_name=_(u'timestamp'), editable=False)
+    document = models.ForeignKey(Document, verbose_name=_(u'document'), related_name='versions')
+    major = models.PositiveIntegerField(verbose_name=_(u'mayor'), default=1)
+    minor = models.PositiveIntegerField(verbose_name=_(u'minor'), default=0)
+    micro = models.PositiveIntegerField(verbose_name=_(u'micro'), default=0)
+    release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'release level'))
+    serial = models.PositiveIntegerField(verbose_name=_(u'serial'), default=0)
+    timestamp = models.DateTimeField(verbose_name=_(u'timestamp'), editable=False, db_index=True)
     comment = models.TextField(blank=True, verbose_name=_(u'comment'))
 
     # File related fields

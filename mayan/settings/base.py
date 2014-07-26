@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'mptt',
     'compressor',
     'rest_framework',
+    'rest_framework.authtoken',
     'solo',
     # Base generic
     'permissions',
@@ -235,6 +236,8 @@ LOGIN_EXEMPT_URLS = (
     r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
     r'^password/reset/complete/$',
     r'^password/reset/done/$',
+
+    r'^api/',
 )
 # --------- Pagination ----------------
 PAGINATION_INVALID_PAGE_RAISES_404 = True
@@ -255,6 +258,7 @@ REST_FRAMEWORK = {
     'MAX_PAGINATE_BY': 100,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     )
 }

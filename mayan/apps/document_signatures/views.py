@@ -15,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from filetransfers.api import serve_file
-from django_gpg.api import SIGNATURE_STATES
+from django_gpg.api import SIGNATURE_STATE_NONE, SIGNATURE_STATES
 from documents.models import Document, RecentDocument
 from permissions.models import Permission
 
@@ -37,9 +37,13 @@ def document_verify(request, document_pk):
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
-    signature = DocumentVersionSignature.objects.verify_signature(document)
-
-    signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
+    try:
+        signature = DocumentVersionSignature.objects.verify_signature(document)
+    except AttributeError:
+        signature_state = SIGNATURE_STATES.get(SIGNATURE_STATE_NONE)
+        signature = None
+    else:
+        signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
 
     widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
     paragraphs = [
@@ -49,10 +53,13 @@ def document_verify(request, document_pk):
         },
     ]
 
-    if DocumentVersionSignature.objects.has_embedded_signature(document):
-        signature_type = _(u'embedded')
-    else:
-        signature_type = _(u'detached')
+    try:
+        if DocumentVersionSignature.objects.has_embedded_signature(document):
+            signature_type = _(u'embedded')
+        else:
+            signature_type = _(u'detached')
+    except ValueError:
+        signature_type = _(u'None')
 
     if signature:
         paragraphs.extend(
@@ -94,8 +101,8 @@ def document_signature_upload(request, document_pk):
                 DocumentVersionSignature.objects.add_detached_signature(document, request.FILES['file'])
                 messages.success(request, _(u'Detached signature uploaded successfully.'))
                 return HttpResponseRedirect(next)
-            except Exception, msg:
-                messages.error(request, msg)
+            except Exception as exception:
+                messages.error(request, exception)
                 return HttpResponseRedirect(previous)
     else:
         form = DetachedSignatureForm()
@@ -153,8 +160,8 @@ def document_signature_delete(request, document_pk):
             DocumentVersionSignature.objects.clear_detached_signature(document)
             messages.success(request, _(u'Detached signature deleted successfully.'))
             return HttpResponseRedirect(next)
-        except Exception, exc:
-            messages.error(request, _(u'Error while deleting the detached signature; %s') % exc)
+        except Exception as exception:
+            messages.error(request, _(u'Error while deleting the detached signature; %s') % exception)
             return HttpResponseRedirect(previous)
 
     return render_to_response('generic_confirm.html', {

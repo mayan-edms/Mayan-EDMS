@@ -11,10 +11,11 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
-    pages = DocumentPageSerializer(many=True, read_only=True)
+    pages = DocumentPageSerializer(many=True, required=False, read_only=True)
 
     class Meta:
         model = DocumentVersion
+        read_only_fields = ('document',)
 
 
 class DocumentImageSerializer(serializers.Serializer):
@@ -25,6 +26,7 @@ class DocumentImageSerializer(serializers.Serializer):
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     versions = DocumentVersionSerializer(many=True, read_only=True)
     image = serializers.HyperlinkedIdentityField(view_name='document-image')
+    new_version = serializers.HyperlinkedIdentityField(view_name='document-new-version')
 
     class Meta:
         model = Document

@@ -1,9 +1,12 @@
-# Aliasing it for the sake of page size.
-from django.utils.html import strip_spaces_between_tags as short
+from django.utils.html import strip_spaces_between_tags
 
 
 class SpacelessMiddleware(object):
+    """
+    Remove spaces between tags in HTML responses to save on bandwidth
+    """
+
     def process_response(self, request, response):
-        if u'text/html' in response['Content-Type']:
-            response.content = short(response.content)
+        if 'text/html' in response.get('Content-Type', ''):
+            response.content = strip_spaces_between_tags(response.content)
         return response

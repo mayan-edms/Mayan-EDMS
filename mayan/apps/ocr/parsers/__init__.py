@@ -116,8 +116,8 @@ class OfficeParser(Parser):
             else:
                 raise ParserError
 
-        except OfficeConversionError, msg:
-            logger.error(msg)
+        except OfficeConversionError as exception:
+            logger.error(exception)
             raise ParserError
 
 

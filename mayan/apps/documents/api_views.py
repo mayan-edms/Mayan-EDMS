@@ -3,25 +3,29 @@ from __future__ import absolute_import
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
+from rest_framework import generics, status
+from rest_framework.response import Response
+
+from acls.models import AccessEntry
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
                                 DEFAULT_ZOOM_LEVEL)
 from permissions.models import Permission
-from rest_framework import generics
-from rest_framework.response import Response
-
-from acls.models import AccessEntry
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
-from .permissions import PERMISSION_DOCUMENT_VIEW
 from .models import Document, DocumentPage, DocumentVersion
+from .permissions import (PERMISSION_DOCUMENT_CREATE,
+                          PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_EDIT,
+                          PERMISSION_DOCUMENT_NEW_VERSION,
+                          PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+                          PERMISSION_DOCUMENT_VIEW)
 from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
                           DocumentSerializer, DocumentVersionSerializer)
 
 
-class APIDocumentListView(generics.ListAPIView):
+class APIDocumentListView(generics.ListCreateAPIView):
     """
     Returns a list of all the documents.
     """
@@ -29,35 +33,75 @@ class APIDocumentListView(generics.ListAPIView):
     serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
-    filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
-
-
-class APIDocumentPageView(generics.RetrieveAPIView):
-    """
-    Returns the selected document page details.
-    """
-
-    allowed_methods = ['GET']
-    serializer_class = DocumentPageSerializer
-    queryset = DocumentPage.objects.all()
-
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
-    mayan_permission_attribute_check = 'document'
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_CREATE]}
 
 
-class APIDocumentView(generics.RetrieveAPIView):
+class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
     """
     Returns the selected document details.
     """
 
-    allowed_methods = ['GET']
     serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+    mayan_object_permissions = {
+        'GET': [PERMISSION_DOCUMENT_VIEW],
+        'PUT': [PERMISSION_DOCUMENT_PROPERTIES_EDIT],
+        'PATCH': [PERMISSION_DOCUMENT_PROPERTIES_EDIT],
+        'DELETE': [PERMISSION_DOCUMENT_DELETE]
+    }
+
+
+class APIDocumentVersionCreateView(generics.CreateAPIView):
+    """
+    Create a new document version.
+    """
+
+    serializer_class = DocumentVersionSerializer
+    queryset = DocumentVersion.objects.all()
+
+    permission_classes = (MayanPermission,)
+    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_NEW_VERSION]}
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+
+        if serializer.is_valid():
+            self.pre_save(serializer.object)
+            # Nested resource we take the document pk from the URL and insert it
+            # so that it needs not to be specified by the user, we mark it as
+            # a read only field in the serializer
+            serializer.object.document = get_object_or_404(Document, pk=kwargs['pk'])
+
+            try:
+                # Check the uniqueness of this version for this document instead
+                # of letting Django explode with an IntegrityError
+                DocumentVersion.objects.get(
+                    document=serializer.object.document,
+                    major=serializer.object.major,
+                    minor=serializer.object.minor,
+                    micro=serializer.object.micro,
+                    release_level=serializer.object.release_level,
+                    serial=serializer.object.serial
+                )
+            except DocumentVersion.DoesNotExist:
+                self.object = serializer.save(force_insert=True)
+            else:
+                return Response(
+                    {'non_field_errors': 'A version with the same major, minor, micro, release_level and serial values already exist for this document.'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            self.post_save(self.object, created=True)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED,
+                            headers=headers)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class APIDocumentVersionView(generics.RetrieveAPIView):
@@ -70,7 +114,7 @@ class APIDocumentVersionView(generics.RetrieveAPIView):
     queryset = DocumentVersion.objects.all()
 
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = [PERMISSION_DOCUMENT_VIEW]
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
     mayan_permission_attribute_check = 'document'
 
 
@@ -120,3 +164,20 @@ class APIDocumentImageView(generics.GenericAPIView):
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
         except UnkownConvertError as exception:
             return Response({'status': 'error', 'detail': 'converter_error', 'message': unicode(exception)})
+
+
+class APIDocumentPageView(generics.RetrieveUpdateAPIView):
+    """
+    Returns the selected document page details.
+    """
+
+    serializer_class = DocumentPageSerializer
+    queryset = DocumentPage.objects.all()
+
+    permission_classes = (MayanPermission,)
+    mayan_object_permissions = {
+        'GET': [PERMISSION_DOCUMENT_VIEW],
+        'PUT': [PERMISSION_DOCUMENT_EDIT],
+        'PATCH': [PERMISSION_DOCUMENT_EDIT]
+    }
+    mayan_permission_attribute_check = 'document'

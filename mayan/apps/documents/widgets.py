@@ -38,8 +38,12 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output = []
         output.append(u'<div class="carousel-container" style="white-space:nowrap; overflow: auto;">')
 
-        for page in value.pages.all():
+        try:
+            document_pages = value.pages.all()
+        except AttributeError:
+            document_pages = []
 
+        for page in document_pages:
             output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
             output.append(u'<div class="tc">%(page_string)s %(page)s</div>' % {'page_string': ugettext(u'Page'), 'page': page.page_number})
             output.append(
@@ -77,7 +81,10 @@ def document_html_widget(document, click_view=None, page=DEFAULT_PAGE_NUMBER, zo
     alt_text = _(u'document page image')
 
     if not version:
-        version = document.latest_version.pk
+        try:
+            version = document.latest_version.pk
+        except AttributeError:
+            version = None
 
     query_dict = {
         'page': page,

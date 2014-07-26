@@ -20,6 +20,7 @@ Contributors (in alphabetical order)
 * Bertrand Bordage (https://github.com/BertrandBordage)
 * Brian E (brian@realize.org)
 * David Herring (https://github.com/abadger1406)
+* Jens Kadenbach (https://github.com/audax)
 * Kolmar Kafran
 * IHLeanne (https://github.com/IHLeanne)
 * Iliya Georgiev (ikgeorgiev@gmail.com)

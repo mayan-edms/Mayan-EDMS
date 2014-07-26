@@ -86,7 +86,10 @@ class DocumentPreviewForm(forms.Form):
         document = kwargs.pop('document', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = document
-        self.fields['preview'].label = _(u'Document pages (%s)') % document.pages.count()
+        try:
+            self.fields['preview'].label = _(u'Document pages (%d)') % document.pages.count()
+        except AttributeError:
+            self.fields['preview'].label = _(u'Document pages (%d)') % 0
 
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
@@ -131,7 +134,8 @@ class DocumentForm(forms.ModelForm):
                     label=_(u'Quick document rename'))
 
         if instance:
-            self.version_fields(instance)
+            if instance.latest_version:
+                self.version_fields(instance)
 
     def version_fields(self, document):
         self.fields['version_update'] = forms.ChoiceField(
@@ -186,10 +190,14 @@ class DocumentForm_edit(DocumentForm):
 
     def __init__(self, *args, **kwargs):
         super(DocumentForm_edit, self).__init__(*args, **kwargs)
-        self.fields.pop('serial')
-        self.fields.pop('release_level')
-        self.fields.pop('version_update')
-        self.fields.pop('comment')
+        if kwargs['instance'].latest_version:
+            self.fields.pop('serial')
+            self.fields.pop('release_level')
+            self.fields.pop('version_update')
+            self.fields.pop('comment')
+        else:
+            self.fields.pop('new_filename')
+
         self.fields.pop('use_file_name')
 
 
@@ -212,7 +220,12 @@ class DocumentContentForm(forms.Form):
         super(DocumentContentForm, self).__init__(*args, **kwargs)
         content = []
         self.fields['contents'].initial = u''
-        for page in self.document.pages.all():
+        try:
+            document_pages = self.document.pages.all()
+        except AttributeError:
+            document_pages = []
+
+        for page in document_pages:
             if page.content:
                 content.append(conditional_escape(force_unicode(page.content)))
                 content.append(u'\n\n\n<hr/><div style="text-align: center;">- %s %s -</div><hr/>\n\n\n' % (ugettext(u'Page'), page.page_number))

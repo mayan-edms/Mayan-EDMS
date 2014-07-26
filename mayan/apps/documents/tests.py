@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from json import loads
 import os
 
 from django.conf import settings
@@ -8,6 +9,9 @@ from django.core.files.base import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
+
+from rest_framework import status
+from rest_framework.test import APIClient
 
 from .literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
 from .models import Document, DocumentType
@@ -95,11 +99,13 @@ class DocumentSearchTestCase(TestCase):
         parse_document_page(self.document.latest_version.pages.all()[0])
 
     def test_simple_search_after_related_name_change(self):
-        from . import document_search
         """
         Test that simple search works after related_name changes to
         document versions and document version pages
         """
+
+        from . import document_search
+
         model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.simple_search('Mayan')
         self.assertEqual(result_count, 1)
         self.assertEqual(flat_list, [self.document])
@@ -128,6 +134,11 @@ class DocumentSearchTestCase(TestCase):
 
 
 class DocumentUploadFunctionalTestCase(TestCase):
+    """
+    Functional test to make sure all the moving parts to create a document from
+    the frontend are working correctly
+    """
+
     def setUp(self):
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
@@ -162,4 +173,74 @@ class DocumentUploadFunctionalTestCase(TestCase):
 
         # Delete the document
         response = self.client.post(reverse('document_delete', args=[self.document.pk]))
+        self.assertEqual(Document.objects.count(), 0)
+
+
+class DocumentAPICreateDocumentTestCase(TestCase):
+    """
+    Functional test to make sure all the moving parts to create a document from
+    the API are working correctly
+    """
+
+    def setUp(self):
+        self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+
+    def test_uploading_a_document_using_token_auth(self):
+        # Get the an user token
+        token_client = APIClient()
+        response = token_client.post(reverse('auth_token_obtain'), {'username': TEST_ADMIN_USERNAME, 'password': TEST_ADMIN_PASSWORD})
+
+        # Be able to get authentication token
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        # Make a token was returned
+        self.assertTrue(u'token' in response.content)
+
+        token = loads(response.content)['token']
+
+        # Create a new client to simulate a different request
+        document_client = APIClient()
+
+        # Create a blank document with no token in the header
+        response = document_client.post(reverse('document-list'), {'description': 'test document'})
+
+        # Make sure toke authentication is working, should fail
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        document_client.credentials(HTTP_AUTHORIZATION='Token ' + token)
+
+        # Create a blank document
+        document_response = document_client.post(reverse('document-list'), {'description': 'test document'})
+        self.assertEqual(document_response.status_code, status.HTTP_201_CREATED)
+
+        # The document was created in the DB?
+        self.assertEqual(Document.objects.count(), 1)
+
+        new_version_url = loads(document_response.content)['new_version']
+
+        with open(TEST_DOCUMENT_PATH) as file_descriptor:
+            response = document_client.post(new_version_url, {'file': file_descriptor})
+
+        # Make sure the document uploaded correctly
+        document = Document.objects.first()
+        self.failUnlessEqual(document.exists(), True)
+        self.failUnlessEqual(document.size, 272213)
+
+        self.failUnlessEqual(document.file_mimetype, 'application/pdf')
+        self.failUnlessEqual(document.file_mime_encoding, 'binary')
+        self.failUnlessEqual(document.file_filename, 'mayan_11_1.pdf')
+        self.failUnlessEqual(document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
+        self.failUnlessEqual(document.page_count, 47)
+
+        # Make sure we can edit the document via the API
+        document_url = loads(document_response.content)['url']
+
+        response = document_client.post(document_url, {'description': 'edited test document'})
+
+        self.assertTrue(document.description, 'edited test document')
+
+        # Make sure we can delete the document via the API
+        response = document_client.delete(document_url)
+
+        # The document was deleted from the the DB?
         self.assertEqual(Document.objects.count(), 0)
