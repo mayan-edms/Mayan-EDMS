@@ -5,7 +5,7 @@ HISTORY_DOCUMENT_CREATED = {
     'label': _(u'Document creation'),
     'summary': _(u'Document "%(content_object)s" created by %(fullname)s.'),
     'details': _(u'Document "%(content_object)s" created on %(datetime)s by %(fullname)s.'),
-    'expressions': {'fullname': 'user.get_full_name() if user.get_full_name() else user.username'}
+    'expressions': {'fullname': 'user[0]["fields"]["username"] if isinstance(user, list) else user.get_full_name() if user.get_full_name() else user.username'}
 }
 
 HISTORY_DOCUMENT_EDITED = {
@@ -14,7 +14,7 @@ HISTORY_DOCUMENT_EDITED = {
     'summary': _(u'Document "%(content_object)s" edited by %(fullname)s.'),
     'details': _(u'Document "%(content_object)s" was edited on %(datetime)s by %(fullname)s.  The following changes took place: %(changes)s.'),
     'expressions': {
-        'fullname': 'user.get_full_name() if user.get_full_name() else user.username',
+        'fullname': 'user[0]["fields"]["username"] if isinstance(user, list) else user.get_full_name() if user.get_full_name() else user.username',
         'changes': 'u\', \'.join([\'"%s": "%s" -> "%s"\' % (key, value[\'old_value\'], value[\'new_value\']) for key, value in diff.items()])'
     }
 }
