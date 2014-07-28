@@ -1,16 +1,16 @@
 import os
-import string
-import random
 
 from django.conf import settings
 from django.core import management
+from django.utils.crypto import get_random_string
 
 
 class Command(management.BaseCommand):
     help = 'Gets Mayan EDMS ready to be used (initializes database, creates a secret key, etc).'
 
     def _generate_secret_key(self):
-        return ''.join([random.SystemRandom().choice((string.digits + string.letters + string.punctuation).replace("'",'')) for i in range(100)])
+        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+        return get_random_string(50, chars)
 
     def handle(self, *args, **options):
         with open(os.path.join(settings.BASE_DIR, 'mayan', 'settings', 'local.py'), 'w+') as file_object:
