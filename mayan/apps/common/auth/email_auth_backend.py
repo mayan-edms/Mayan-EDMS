@@ -1,5 +1,4 @@
-# From: http://www.micahcarrick.com/django-email-authentication.html
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 
 
@@ -12,12 +11,12 @@ class EmailAuthBackend(ModelBackend):
     """
 
     def authenticate(self, email=None, password=None):
-        """
-        Authenticate a user based on email address as the user name.
-        """
+        UserModel = get_user_model()
         try:
-            user = User.objects.get(email=email)
+            user = UserModel.objects.get(email=email)
             if user.check_password(password):
                 return user
-        except User.DoesNotExist:
-            return None
+        except UserModel.DoesNotExist:
+            # Run the default password hasher once to reduce the timing
+            # difference between an existing and a non-existing user (#20760).
+            UserModel().set_password(password)
