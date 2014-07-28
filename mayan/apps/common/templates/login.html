@@ -5,4 +5,11 @@
 {% load project_tags %}
 
 {% block html_title %}{% project_name %} :: {% trans 'Login' %}{% endblock %}
+
+{% block web_theme_stylesheets %}
+    <style>
+        input#id_email { width: 100%; }
+    </style>
+{% endblock web_theme_stylesheets %}
+
 {% block project_name %}{% project_name %}{% endblock %}
