@@ -1,8 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
@@ -11,44 +13,42 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:33-0400\n"
-"PO-Revision-Date: 2013-02-04 00:28+0000\n"
-"Last-Translator: SadE54 <yannsuisini@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2014-07-18 17:21+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:41 __init__.py:52
 msgid "label"
-msgstr ""
+msgstr "étiquette"
 
 #: __init__.py:45
 msgid "items"
-msgstr ""
+msgstr "éléments"
 
 #: __init__.py:56
 msgid "value"
-msgstr ""
+msgstr "valeur"
 
 #: links.py:7 models.py:172
 msgid "installation details"
 msgstr "détails de l'installation"
 
 #: links.py:8 views.py:21
-#, fuzzy
 msgid "installation property namespaces"
-msgstr "détails de l'installation"
+msgstr "installation des propriétés des espaces de nommages"
 
 #: links.py:9
 msgid "details"
-msgstr ""
+msgstr "détails"
 
 #: models.py:52
 msgid "Operating system"
-msgstr ""
+msgstr "Système d'exploitation"
 
 #: models.py:54 models.py:61
 msgid "LSB OS"
@@ -112,7 +112,7 @@ msgstr "Les partitions du disque"
 
 #: models.py:74
 msgid "Binary dependencies"
-msgstr ""
+msgstr "Dépendances binaires"
 
 #: models.py:78 models.py:80 models.py:82
 msgid "tesseract version"
@@ -135,13 +135,12 @@ msgid "pdftotext version"
 msgstr "version de pdftotext"
 
 #: models.py:101
-#, fuzzy
 msgid "Mayan EDMS"
-msgstr "la version de l'EDMS Maya"
+msgstr "Mayan EDMS"
 
 #: models.py:103
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: models.py:104
 msgid "Mayan EDMS version"
@@ -152,9 +151,8 @@ msgid "Installed via fabfile"
 msgstr "Installé avec un fabfile"
 
 #: models.py:108
-#, fuzzy
 msgid "Git repository"
-msgstr "Installé depuis un dépôt Git"
+msgstr "Dépôt Git"
 
 #: models.py:113 models.py:117
 msgid "Running from a Git repository"
@@ -198,12 +196,11 @@ msgstr "HEAD commit message"
 
 #: models.py:129
 msgid "VirtuanEnv"
-msgstr ""
+msgstr "VirtuanEnv"
 
 #: models.py:133
-#, fuzzy
 msgid "pip not found."
-msgstr "non trouvée"
+msgstr "pip non trouvé"
 
 #: permissions.py:7
 msgid "Installation"
@@ -214,9 +211,9 @@ msgid "View installation environment details"
 msgstr "Voir détails de la plateforme"
 
 #: views.py:33
-#, fuzzy, python-format
+#, python-format
 msgid "installation namespace details for: %s"
-msgstr "détails de l'installation"
+msgstr "installation détaillée de l'espace de nomage pour: %s"
 
 #~ msgid "Installation environment details"
-#~ msgstr "Détails de la plateforme"
+#~ msgstr "Installation environment details"

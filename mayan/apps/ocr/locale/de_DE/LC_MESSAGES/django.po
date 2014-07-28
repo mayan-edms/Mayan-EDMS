@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
+# Stefan Lodders <sl@suchreflex.de>, 2012
+# tilmannsittig <tilmann.sittig@web.de>, 2012
 # tilmannsittig <tilmann.sittig@web.de>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:34-0400\n"
-"PO-Revision-Date: 2014-03-12 16:12+0000\n"
+"PO-Revision-Date: 2014-07-20 00:07+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:42 links.py:22 permissions.py:7
@@ -61,9 +63,7 @@ msgstr "Seiteninhalt aufräumen"
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr ""
-"Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige "
-"Erkennungsfehler zu beseitigen."
+msgstr "Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige Erkennungsfehler zu beseitigen."
 
 #: links.py:21
 msgid "queue document list"
@@ -210,26 +210,22 @@ msgstr "Dokument %(document)s erfolgreich von Warteschlange gelöscht."
 #: views.py:90
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
-msgstr ""
-"Fehler beim Löschen des Warteschlangen-Dokuments %(document)s: %(error)s"
+msgstr "Fehler beim Löschen des Warteschlangen-Dokuments %(document)s: %(error)s"
 
 #: views.py:103
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
-msgstr ""
-"Sind Sie sicher, dass das Warteschlangen-Dokument %s gelöscht werden soll?"
+msgstr "Sind Sie sicher, dass das Warteschlangen-Dokument %s gelöscht werden soll?"
 
 #: views.py:105
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
-msgstr ""
-"Sind Sie sicher, dass die Warteschlangen-Dokumente %s gelöscht werden sollen?"
+msgstr "Sind Sie sicher, dass die Warteschlangen-Dokumente %s gelöscht werden sollen?"
 
 #: views.py:141
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-msgstr ""
-"Dokument %(document)s wurde zu OCR-Warteschlange %(queue)s hinzugefügt."
+msgstr "Dokument %(document)s wurde zu OCR-Warteschlange %(queue)s hinzugefügt."
 
 #: views.py:145
 #, python-format
@@ -239,9 +235,7 @@ msgstr "Dokument %(document)s ist bereits in der Warteschlange."
 #: views.py:175
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr ""
-"Dokument %(document)s wurde erneut in die OCR-Warteschlange: %(queue)s "
-"eingestellt."
+msgstr "Dokument %(document)s wurde erneut in die OCR-Warteschlange: %(queue)s eingestellt."
 
 #: views.py:181
 #, python-format
@@ -251,9 +245,7 @@ msgstr "Dokument mit ID %d existiert nicht mehr."
 #: views.py:185
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
-msgstr ""
-"Dokument %s wird bereits verarbeitet und kann nicht erneut eingestellt "
-"werden."
+msgstr "Dokument %s wird bereits verarbeitet und kann nicht erneut eingestellt werden."
 
 #: views.py:197
 #, python-format
@@ -278,9 +270,7 @@ msgstr "Dokumenten-Warteschlange %s angehalten."
 #: views.py:229
 #, python-format
 msgid "Are you sure you wish to disable document queue: %s"
-msgstr ""
-"Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s deaktivieren "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s deaktivieren möchten?"
 
 #: views.py:244
 #, python-format
@@ -295,19 +285,15 @@ msgstr "Dokumenten-Warteschlange %s erfolgreich aktiviert."
 #: views.py:256
 #, python-format
 msgid "Are you sure you wish to activate document queue: %s"
-msgstr ""
-"Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s aktivieren möchten?"
+msgstr "Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s aktivieren möchten?"
 
 #: views.py:273
 msgid "Are you sure you wish to clean up all the pages content?"
-msgstr ""
-"Sind Sie sicher, dass Sie den gesamten erkannten Seiteninhalt bereinigen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie den gesamten erkannten Seiteninhalt bereinigen möchten?"
 
 #: views.py:274
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Auf großen Datenbanken kann diese Operation einige Zeit in Anspruch nehmen."
+msgstr "Auf großen Datenbanken kann diese Operation einige Zeit in Anspruch nehmen."
 
 #: views.py:280
 msgid "Document pages content clean up complete."
@@ -322,15 +308,11 @@ msgstr "Fehler bei der Bereinigung des Dokumenten-Seiteninhalts: %s"
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr ""
-"Verzögerung in Sekunden für die OCR-Texterkennung, um den Overhead für die "
-"Speicherreplikation zu berücksichtigen."
+msgstr "Verzögerung in Sekunden für die OCR-Texterkennung, um den Overhead für die Speicherreplikation zu berücksichtigen."
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr ""
-"Maximale Anzahl an parallelen OCR-Texterkennungsvorgängen einer "
-"Serverinstanz."
+msgstr "Maximale Anzahl an parallelen OCR-Texterkennungsvorgängen einer Serverinstanz."
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
@@ -342,82 +324,79 @@ msgstr "Pfad zum 'unpaper'-Programm"
 
 #: conf/settings.py:18
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt "
-"wird, um Text aus PDF-Dateien zu extrahieren."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt wird, um Text aus PDF-Dateien zu extrahieren."
 
 #: conf/settings.py:19
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
+msgstr "Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwendet werden soll."
 
 #: parsers/__init__.py:93 parsers/__init__.py:170
 msgid "Text extracted from PDF"
 msgstr "Text extrahiert aus PDF"
 
 #~ msgid "transformations"
-#~ msgstr "Transformationen"
+#~ msgstr "transformations"
 
 #~ msgid "add transformation"
-#~ msgstr "Transformation hinzufügen"
+#~ msgstr "add transformation"
 
 #~ msgid "edit"
-#~ msgstr "Bearbeiten"
+#~ msgstr "edit"
 
 #~ msgid "Default"
-#~ msgstr "Standard"
+#~ msgstr "Default"
 
 #~ msgid "Enter a valid value."
-#~ msgstr "Geben Sie einen gültigen Wert ein."
+#~ msgstr "Enter a valid value."
 
 #~ msgid "order"
-#~ msgstr "Reihenfolge"
+#~ msgstr "order"
 
 #~ msgid "transformation"
-#~ msgstr "Transformation"
+#~ msgstr "transformation"
 
 #~ msgid "arguments"
-#~ msgstr "Parameter"
+#~ msgstr "arguments"
 
 #~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "Python-Dictionaries verwenden, um Argumente anzugeben, Beispiel: %s"
+#~ msgstr "Use dictionaries to indentify arguments, example: %s"
 
 #~ msgid "document queue transformation"
-#~ msgstr "Warteschlangen-Transformation"
+#~ msgstr "document queue transformation"
 
 #~ msgid "document queue transformations"
-#~ msgstr "Warteschlangen-Transformationen"
+#~ msgstr "document queue transformations"
 
 #~ msgid "transformations for: %s"
-#~ msgstr "Transformationen für: %s"
+#~ msgstr "transformations for: %s"
 
 #~ msgid "Queue transformation edited successfully"
-#~ msgstr "Warteschlangen-Transformation erfolgreich bearbeitet"
+#~ msgstr "Queue transformation edited successfully"
 
 #~ msgid "Error editing queue transformation; %s"
-#~ msgstr "Fehler beim Bearbeiten der Warteschlangen-Transformation: %s"
+#~ msgstr "Error editing queue transformation; %s"
 
 #~ msgid "Edit transformation: %s"
-#~ msgstr "Transformationen bearbeiten: %s"
+#~ msgstr "Edit transformation: %s"
 
 #~ msgid "Queue transformation deleted successfully."
-#~ msgstr "Warteschlangen-Transformation erfolgreich gelöscht."
+#~ msgstr "Queue transformation deleted successfully."
 
 #~ msgid "Error deleting queue transformation; %(error)s"
-#~ msgstr "Fehler beim Löschen der Warteschlangen-Transformation: %(error)s"
+#~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Sind Sie sicher, dass Sie die Warteschlangen-Transformationen "
-#~ "\"%(transformation)s\" löschen möchten?"
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
-#~ msgstr "Warteschlangen-Transformation erfolgreich erstellt"
+#~ msgstr "Queue transformation created successfully"
 
 #~ msgid "Error creating queue transformation; %s"
-#~ msgstr "Fehler beim Erzeugen der Warteschlangen-Transformation: %s"
+#~ msgstr "Error creating queue transformation; %s"
 
 #~ msgid "Create new transformation for queue: %s"
-#~ msgstr "Transformation für Warteschlange erzeugen: %s"
+#~ msgstr "Create new transformation for queue: %s"

@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:34-0400\n"
-"PO-Revision-Date: 2013-11-20 13:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2014-07-18 17:12+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:50 widgets.py:39
@@ -29,9 +30,7 @@ msgstr "Décompresser les fichiers"
 
 #: forms.py:35 forms.py:60
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Importer le contenu d'un ensemble de fichiers compressés comme fichiers "
-"individuels"
+msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
 #: forms.py:43
 msgid "Staging file"
@@ -42,14 +41,12 @@ msgid "File"
 msgstr "Fichier"
 
 #: links.py:13
-#, fuzzy
 msgid "upload new documents"
-msgstr "importer une nouvelle version"
+msgstr "envoyer de nouveaux documents"
 
 #: links.py:14
-#, fuzzy
 msgid "clone metadata"
-msgstr "Métadonnées actuelles"
+msgstr "dupliquer les métadonnées"
 
 #: links.py:16
 msgid "preview"
@@ -245,10 +242,9 @@ msgstr "intervalle"
 
 #: models.py:194
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
-msgstr ""
-"Intervalle en secondes entre deux vérifications du répertoire sous "
-"surveillance pour détecter l'ajout de nouveaux documents"
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr "Intervalle en secondes entre deux vérifications du répertoire sous surveillance pour détecter l'ajout de nouveaux documents"
 
 #: models.py:218
 msgid "watch folder"
@@ -342,8 +338,7 @@ msgstr "Aucune source de document interactifs n'a été définie ou/ni activée"
 #: views.py:123
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
-"Cliquez %(setup_link)s pour ajouter ou activer des sources de documents. "
+msgstr "Cliquez %(setup_link)s pour ajouter ou activer des sources de documents. "
 
 #: views.py:181
 msgid "New document version uploaded successfully."
@@ -383,9 +378,7 @@ msgstr "importer un document local à partir de la source:%s"
 #: views.py:257
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
-msgstr ""
-"Import de la version de document à partir du document en cours de "
-"modification: %s,réalisé avec succès"
+msgstr "Import de la version de document à partir du document en cours de modification: %s,réalisé avec succès"
 
 #: views.py:260
 #, python-format
@@ -395,17 +388,14 @@ msgstr "fichier en cours de modification:%s importé avec succès"
 #: views.py:263
 #, python-format
 msgid ""
-"Staging file: %s, uncompressed successfully and uploaded as individual files."
-msgstr ""
-"Document en cours de modification:%s, décompressé et importé en tant que "
-"fichiers individuels, avec succès."
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
+msgstr "Document en cours de modification:%s, décompressé et importé en tant que fichiers individuels, avec succès."
 
 #: views.py:266
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
-msgstr ""
-"Document en cours de modification:%s, n'était pas un fichier compressé, "
-"importé comme fichier unique."
+msgstr "Document en cours de modification:%s, n'était pas un fichier compressé, importé comme fichier unique."
 
 #: views.py:271
 #, python-format
@@ -415,9 +405,7 @@ msgstr "fichier en cours de modification:%s supprimé avec succès"
 #: views.py:296
 #, python-format
 msgid "upload a new version from staging source: %s"
-msgstr ""
-"importer une nouvelle version à partir de la source en cours de modification:"
-"%s"
+msgstr "importer une nouvelle version à partir de la source en cours de modification:%s"
 
 #: views.py:298
 #, python-format
@@ -528,16 +516,13 @@ msgstr "Transformation de source supprimée avec succès."
 #: views.py:669
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr ""
-"Erreur lors de la suppression de la transformation de source; %(error)s"
+msgstr "Erreur lors de la suppression de la transformation de source; %(error)s"
 
 #: views.py:682
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Êtes vous certain de vouloir supprimer la transformation de source "
-"\"%(transformation)s\""
+msgstr "Êtes vous certain de vouloir supprimer la transformation de source \"%(transformation)s\""
 
 #: views.py:712
 msgid "Source transformation created successfully"
@@ -555,16 +540,16 @@ msgstr "Créer une nouvelle transformation pour la source:%s"
 
 #: wizards.py:53
 msgid "step 1 of 3: Document type"
-msgstr ""
+msgstr "étape 1 sur 3: Type de document"
 
 #: wizards.py:54
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "étape 2 sur 3: sélectionner les métadonnées"
 
 #: wizards.py:55
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "étape 3 sur 3: métadonnées du document"
 
 #: wizards.py:73
 msgid "Next step"
-msgstr ""
+msgstr "Prochaine étape"

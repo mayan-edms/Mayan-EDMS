@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2014
 # Roberto Rosario, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:32-0400\n"
-"PO-Revision-Date: 2012-12-12 06:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2014-07-04 17:50+0000\n"
+"Last-Translator: jmcainzos <jmcainzos@vodafone.es>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:45
@@ -32,17 +33,13 @@ msgstr "Cuenta máxima de sufijo (%s) alcanzada."
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error en la expresión de actualización de indexación: %(expression)s; "
-"%(exception)s "
+msgstr "Error en la expresión de actualización de indexación: %(expression)s; %(exception)s "
 
 #: api.py:94 api.py:109
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr ""
-"Error actualizando el indice de documento, expresión: %(expression)s; "
-"%(exception)s "
+msgstr "Error actualizando el índice de documento, expresión: %(expression)s; %(exception)s "
 
 #: api.py:151
 #, python-format
@@ -59,9 +56,7 @@ msgstr "No se puede crear el directorio de indexación; %s"
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exc)s"
-msgstr ""
-"No se puede crear un enlace simbólico, el archivo existe y no puede "
-"eliminarse: %(filepath)s; %(exc)s "
+msgstr "No se puede crear un enlace simbólico, el archivo existe y no puede eliminarse: %(filepath)s; %(exc)s "
 
 #: filesystem.py:71
 #, python-format
@@ -71,7 +66,7 @@ msgstr "No se puede crear enlace simbólico: %(filepath)s; %(exc)s "
 #: filesystem.py:84
 #, python-format
 msgid "Unable to delete document symbolic link; %s"
-msgstr "No se puede eliminar vínculo simbólico de documento; %s"
+msgstr "No se puede eliminar enlace simbólico de documento; %s"
 
 #: filesystem.py:96
 #, python-format
@@ -116,11 +111,11 @@ msgstr "subir un nivel"
 
 #: links.py:42
 msgid "rebuild indexes"
-msgstr "generar índices"
+msgstr "reconstruir índices"
 
 #: links.py:42
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr "Borra y crea de la nada todos los índices de documentos."
+msgstr "Borra y crea desde cero todos los índices de documentos."
 
 #: models.py:14
 #, python-format
@@ -148,10 +143,9 @@ msgid "enabled"
 msgstr "habilitado"
 
 #: models.py:20
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Hace que este índice sea visible y actualizado cuando los datos de "
-"documentos cambien."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
 
 #: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
 #: views.py:198 views.py:225 views.py:255 views.py:295
@@ -168,9 +162,7 @@ msgstr "Introduzca una expresión de python para ser evaluada."
 
 #: models.py:72
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Causa que este nodo sea visible y actualizado cuando los datos de los "
-"documentos son cambiados."
+msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
 
 #: models.py:73
 msgid "link documents"
@@ -178,11 +170,9 @@ msgstr "enlace de documentos"
 
 #: models.py:73
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Marque esta opción para que el nodo actue como un contenedor de documentos y "
-"no como un padre para mas nodos secundarios."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
 
 #: models.py:83 models.py:89
 msgid "index template node"
@@ -210,7 +200,7 @@ msgstr "nodos de instancias de indices"
 
 #: models.py:106
 msgid "index instance"
-msgstr "instancia de indice"
+msgstr "instancia de índice"
 
 #: models.py:107
 msgid "document"
@@ -218,11 +208,11 @@ msgstr "documento"
 
 #: models.py:114
 msgid "document rename count"
-msgstr "conteo de cambio de nombre de documento"
+msgstr "recuento de renombrado de documento"
 
 #: models.py:115
 msgid "documents rename count"
-msgstr "conteos de cambio de nombre de documentos"
+msgstr "recuento de renombrado de documentos"
 
 #: permissions.py:7
 msgid "Indexing"
@@ -258,16 +248,16 @@ msgstr "índices de documentos"
 
 #: views.py:72
 msgid "Index created successfully."
-msgstr "Índice creado con exitosamente."
+msgstr "Índice creado con éxito."
 
 #: views.py:96
 msgid "Index edited successfully"
-msgstr "Índice editado con exitosamente."
+msgstr "Índice editado con éxito."
 
 #: views.py:102
 #, python-format
 msgid "edit index: %s"
-msgstr "editar Índice: %s"
+msgstr "editar índice: %s"
 
 #: views.py:127
 #, python-format
@@ -309,7 +299,7 @@ msgstr "tipos de documentos para el índice: %s"
 
 #: views.py:216
 msgid "Index template node created successfully."
-msgstr "Nodo de plantilla de índice creado exitosamente."
+msgstr "Nodo de plantilla de índice creado con éxito."
 
 #: views.py:222
 msgid "create child node"
@@ -317,7 +307,7 @@ msgstr "crear nodo hijo"
 
 #: views.py:243
 msgid "Index template node edited successfully"
-msgstr "Nodo de la plantilla de índice editado exitosamente"
+msgstr "Nodo de la plantilla de índice editado con éxito"
 
 #: views.py:249
 #, python-format
@@ -331,7 +321,7 @@ msgstr "nodo"
 #: views.py:278
 #, python-format
 msgid "Node: %s deleted successfully."
-msgstr "Nodo: %s eliminado exitosamente."
+msgstr "Nodo: %s eliminado con éxito."
 
 #: views.py:280
 #, python-format
@@ -350,7 +340,7 @@ msgstr "nodos"
 #: views.py:347
 #, python-format
 msgid "contents for index: %s"
-msgstr "contenido del indice: %s"
+msgstr "contenido del índice: %s"
 
 #: views.py:369
 msgid "items"
@@ -362,13 +352,11 @@ msgstr "¿Está seguro que desea reconstruir todos los índices?"
 
 #: views.py:395
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
-"ejecutarse."
+msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:401
 msgid "Index rebuild completed successfully."
-msgstr "Reconstrucción de Índices completada exitosamente."
+msgstr "Reconstrucción de índices completada con éxito."
 
 #: views.py:408
 #, python-format
@@ -382,21 +370,18 @@ msgstr "índices que contienen: %s"
 
 #: widgets.py:85
 msgid "root"
-msgstr ""
+msgstr "raíz"
 
 #: conf/settings.py:22
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
-msgstr ""
-"Un diccionario que asigna el nombre del índice y en qué parte del sistema de "
-"archivos dicho índice se va a reflejar."
+"A dictionary that maps the index name and where on the filesystem that index"
+" will be mirrored."
+msgstr "Un diccionario que asigna el nombre del índice y en qué parte del sistema de archivos dicho índice se va a replicar."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
-msgstr "¿Que son los índices?"
+msgstr "¿Qué son los índices?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr ""
-"Los índices agrupan documentos en una estructura jerárquica tipo árbol. "
+msgstr "Los índices agrupan documentos en una estructura jerárquica tipo árbol. "

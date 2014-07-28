@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:32-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2014-07-18 17:18+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: forms.py:7
@@ -24,9 +25,8 @@ msgid "Signature file"
 msgstr "Fichier de signature"
 
 #: links.py:22
-#, fuzzy
 msgid "delete signature"
-msgstr "télécharger une signature"
+msgstr "supprimer la signature"
 
 #: links.py:23
 msgid "download signature"
@@ -69,9 +69,8 @@ msgid "Verify document signatures"
 msgstr "Vérifier les signatures du document"
 
 #: permissions.py:9
-#, fuzzy
 msgid "Delete detached signatures"
-msgstr "Télécharger des signatures externes"
+msgstr "Suppression des signatures détachées"
 
 #: permissions.py:10
 msgid "Download detached signatures"
@@ -134,17 +133,16 @@ msgid "Upload detached signature for: %s"
 msgstr "Importer la signature externe pour: %s"
 
 #: views.py:154
-#, fuzzy
 msgid "Detached signature deleted successfully."
-msgstr "Signature externe importée avec succès"
+msgstr "La signature détachée a été supprimé avec succès."
 
 #: views.py:157
-#, fuzzy, python-format
+#, python-format
 msgid "Error while deleting the detached signature; %s"
-msgstr "Télécharger des signatures externes"
+msgstr "Erreur lors de la suppression de la signature détachée; %s"
 
 #: views.py:161
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"
-msgstr ""
+msgstr "Êtes vous sur de vouloir supprimer la signature détachée du document: %s ?"

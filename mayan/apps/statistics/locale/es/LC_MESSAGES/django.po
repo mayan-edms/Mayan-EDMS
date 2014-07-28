@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2013
+# jmcainzos <jmcainzos@vodafone.es>, 2013-2014
 # Roberto Rosario, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 01:46-0400\n"
-"PO-Revision-Date: 2014-07-04 05:54+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2014-07-04 17:36+0000\n"
+"Last-Translator: jmcainzos <jmcainzos@vodafone.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr "detalles"
 
 #: links.py:12
 msgid "namespace list"
-msgstr ""
+msgstr "lista de categorías"
 
 #: links.py:13 registry.py:7
 msgid "Statistics"
@@ -37,26 +37,26 @@ msgstr "Estadísticas"
 
 #: registry.py:8
 msgid "Central place to store and display app statistics."
-msgstr ""
+msgstr "Lugar principal para almacenar y mostrar estadísticas de la aplicación."
 
 #: views.py:18
 msgid "statistics namespaces"
-msgstr ""
+msgstr "categorías estadísticas"
 
 #: views.py:34
 #, python-format
 msgid "namespace details for: %s"
-msgstr ""
+msgstr "detalles de la categoría para: %s"
 
 #: views.py:35 views.py:49
 msgid "namespace"
-msgstr ""
+msgstr "categoría"
 
 #: views.py:50
 msgid "statistic"
-msgstr ""
+msgstr "estadística"
 
 #: views.py:54
 #, python-format
 msgid "results for: %s"
-msgstr ""
+msgstr "resultados para: %s"

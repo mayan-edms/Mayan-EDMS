@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2014
 # Roberto Rosario, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:31-0400\n"
-"PO-Revision-Date: 2012-12-12 06:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2014-07-04 17:49+0000\n"
+"Last-Translator: jmcainzos <jmcainzos@vodafone.es>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:27
@@ -51,10 +52,7 @@ msgstr "E-mail"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"Por favor entre la dirección de correo electrónico y la contraseña "
-"correctas.  Tenga en cuenta que los campos de contraseña distingue entre "
-"mayúsculas y minúsculas."
+msgstr "Por favor entre la dirección de correo electrónico y la contraseña correctas.  Tenga en cuenta que los campos de contraseña distingue entre mayúsculas y minúsculas."
 
 #: forms.py:142
 msgid "This account is inactive."
@@ -98,7 +96,7 @@ msgstr "Retrato"
 
 #: literals.py:39
 msgid "Landscape"
-msgstr "Paisaje"
+msgstr "Apaisado"
 
 #: models.py:17
 msgid "lock field"
@@ -143,7 +141,7 @@ msgstr "Debe seleccionar al menos un artículo."
 #: views.py:90
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
-msgstr "Se agrego exitosamente %(selection)s a %(right_list_title)s."
+msgstr "Se agregó con éxito %(selection)s a %(right_list_title)s."
 
 #: views.py:96 views.py:123
 #, python-format
@@ -153,7 +151,7 @@ msgstr "No se puede agregar %(selection)s a %(right_list_title)s."
 #: views.py:117
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
-msgstr "Se removió exitosamente %(selection)s de %(right_list_title)s."
+msgstr "Se eliminó con éxito %(selection)s de %(right_list_title)s."
 
 #: views.py:138
 msgid "Add"
@@ -161,25 +159,23 @@ msgstr "Agregar"
 
 #: views.py:149
 msgid "Remove"
-msgstr "Remover"
+msgstr "Eliminar"
 
 #: views.py:172
 msgid "current user details"
-msgstr "detalles del usuario corriente"
+msgstr "detalles del usuario actual"
 
 #: views.py:189
 msgid "E-mail conflict, another user has that same email."
-msgstr ""
-"Conflicto de correo electrónica, otro usuario tiene ese mismo correo "
-"electrónico."
+msgstr "Conflicto de correo electrónico, otro usuario tiene ese mismo correo electrónico."
 
 #: views.py:192
 msgid "Current user's details updated."
-msgstr "Datos del usuario corriente actualizados."
+msgstr "Datos del usuario actual actualizados."
 
 #: views.py:201
 msgid "edit current user details"
-msgstr "editar detalles del usuario corriente"
+msgstr "editar detalles del usuario actual"
 
 #: views.py:232
 msgid "License"
@@ -196,56 +192,56 @@ msgstr "Su contraseña se ha modificado correctamente."
 #: views.py:302
 #, python-format
 msgid "Error saving %s details."
-msgstr ""
+msgstr "Error al salvar los detalles %s."
 
 #: views.py:304
 msgid "Error saving details."
-msgstr ""
+msgstr "Error al salvar los detalles."
 
 #: views.py:312
 #, python-format
 msgid "%s details saved successfully."
-msgstr ""
+msgstr "Los detalles %s se han guardado con éxito."
 
 #: views.py:314
 msgid "Details saved successfully."
-msgstr ""
+msgstr "Detalles guardados con éxito."
 
 #: views.py:326
 #, python-format
 msgid "Error creating new %s."
-msgstr ""
+msgstr "Error al crear nuevo %s."
 
 #: views.py:328
 msgid "Error creating object."
-msgstr ""
+msgstr "Error al crear objeto."
 
 #: views.py:335
 #, python-format
 msgid "%s created successfully."
-msgstr ""
+msgstr "%s creado con éxito."
 
 #: views.py:337
 msgid "New object created successfully."
-msgstr ""
+msgstr "Nuevo objeto creado con éxito."
 
 #: views.py:355
 #, python-format
 msgid "Error deleting %s."
-msgstr ""
+msgstr "Error al borrar %s."
 
 #: views.py:357
 msgid "Error deleting object."
-msgstr ""
+msgstr "Error al borrar objeto."
 
 #: views.py:362
 #, python-format
 msgid "%s deleted successfully."
-msgstr ""
+msgstr "%s borrado con éxito."
 
 #: views.py:364
 msgid "Object deleted successfully."
-msgstr ""
+msgstr "Objeto borrado con éxito."
 
 #: widgets.py:58
 msgid "None"
@@ -254,25 +250,19 @@ msgstr "Ninguno"
 #: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"El directorio temporero es usado para almacenar miniaturas, "
-"previsualizaciones y archivos temporales.  Si no se especifica ninguno, se "
-"creará utilizando tempfile.mkdtemp()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "El directorio temporal se usa para almacenar miniaturas, previsualizaciones y archivos temporales.  Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp()"
 
 #: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
-"son: 'username' nombre de usuario, 'email' correo electrónico"
+msgstr "Controla el mecanismo utilizado para el usuario autenticado. Las opciones son: 'username' nombre de usuario, 'email' correo electrónico"
 
 #: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
-msgstr ""
-"Permita a los usuarios no autenticados, el acceso a todas las pantallas"
+msgstr "Permita a los usuarios no autenticados el acceso a todas las pantallas"
 
 #: templates/403.html:5 templates/403.html.py:9
 msgid "Insufficient permissions"
@@ -301,14 +291,14 @@ msgid "Details for: %(object)s"
 msgstr "Detalles para: %(object)s "
 
 #: templates/calculate_form_title.html:15
-#, fuzzy, python-format
+#, python-format
 msgid "Edit %(object_name)s: %(object)s"
-msgstr "Detalles para %(object_name)s: %(object)s"
+msgstr "Editar %(object_name)s: %(object)s"
 
 #: templates/calculate_form_title.html:17
-#, fuzzy, python-format
+#, python-format
 msgid "Edit: %(object)s"
-msgstr "Editar %(object_name)s:"
+msgstr "Editar: %(object)s"
 
 #: templates/calculate_form_title.html:21
 #, python-format
@@ -334,7 +324,7 @@ msgstr "Confirmar eliminación"
 
 #: templates/generic_confirm.html:33
 msgid "form icon"
-msgstr "emblema de la forma"
+msgstr "icono del formulario"
 
 #: templates/generic_confirm.html:41
 #, python-format
@@ -382,9 +372,9 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: templates/generic_list.html:8 templates/generic_list_horizontal.html:8
-#, fuzzy, python-format
+#, python-format
 msgid "List of %(title)s"
-msgstr "Lista de %(stripped_title)s "
+msgstr "Lista de %(title)s"
 
 #: templates/generic_list_horizontal_subtemplate.html:24
 #: templates/generic_list_subtemplate.html:25
@@ -392,9 +382,7 @@ msgstr "Lista de %(stripped_title)s "
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página "
-"%(page_number)s de %(total_pages)s)"
+msgstr "Lista de %(title)s (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:26
 #: templates/generic_list_subtemplate.html:27
@@ -407,9 +395,9 @@ msgid "Identifier"
 msgstr "Identificador"
 
 #: templates/generic_list_subtemplate.html:153
-#, fuzzy, python-format
+#, python-format
 msgid "There are no %(title)s"
-msgstr "No hay %(stripped_title)s "
+msgstr "No existen %(title)s"
 
 #: templates/login.html:7
 msgid "Login"
@@ -421,4 +409,4 @@ msgid "Password change"
 msgstr "Cambio de contraseña"
 
 #~ msgid "Edit"
-#~ msgstr "Editar"
+#~ msgstr "Edit"

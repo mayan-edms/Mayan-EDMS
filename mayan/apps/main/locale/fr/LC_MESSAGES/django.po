@@ -1,8 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
 msgid ""
@@ -10,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:33-0400\n"
-"PO-Revision-Date: 2013-02-04 00:31+0000\n"
-"Last-Translator: SadE54 <yannsuisini@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2014-07-18 17:22+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:14
@@ -62,11 +63,9 @@ msgstr "Diagnostiques"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or "
-"by a menu entry."
-msgstr ""
-"Permet de proposer la fonctionnalité de recherche dans un module de barre "
-"latérale ou par une entrée du menu "
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr "Permet de proposer la fonctionnalité de recherche dans un module de barre latérale ou par une entrée du menu "
 
 #: templates/about.html:8
 msgid "About this program"
@@ -79,7 +78,7 @@ msgstr "Version"
 #: templates/about.html:20 templates/home.html:17
 #: templates/verbose_login.html:7
 msgid "Copyright &copy; 2011 Roberto Rosario."
-msgstr ""
+msgstr "Copyright &copy; 2011 Roberto Rosario."
 
 #: templates/base.html:31
 msgid "(DEBUG)"
@@ -149,13 +148,8 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
-"Système de Gestion de documents électroniques open source basé sur Django, "
-"avec des fonctionnalités de métadonnées personnalisables, d'indexation de "
-"contenu, d'étiquetage, de serveur de fichiers, avec support de signature "
-"digitale des documents et support natif des fonctionnalités OCR"
+msgstr "Système de Gestion de documents électroniques open source basé sur Django, avec des fonctionnalités de métadonnées personnalisables, d'indexation de contenu, d'étiquetage, de serveur de fichiers, avec support de signature digitale des documents et support natif des fonctionnalités OCR"
 
 #: templates/project_description.html:22
-#, fuzzy
 msgid "Released under the Apache 2.0 License"
-msgstr "Publié sous license GPL V3"
+msgstr "Publié sous licence Apache 2.0"

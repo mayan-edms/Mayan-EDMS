@@ -1,10 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
+# Stefan Lodders <sl@suchreflex.de>, 2012
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
@@ -12,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:31-0400\n"
-"PO-Revision-Date: 2014-03-12 16:11+0000\n"
+"PO-Revision-Date: 2014-07-20 00:16+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:27
@@ -54,9 +55,7 @@ msgstr "E-Mail"
 msgid ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
-msgstr ""
-"Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass "
-"die Passwortfelder Groß- und Kleinschreibung unterscheiden."
+msgstr "Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass die Passwortfelder Groß- und Kleinschreibung unterscheiden."
 
 #: forms.py:142
 msgid "This account is inactive."
@@ -150,8 +149,7 @@ msgstr "%(selection)s erfolgreich hinzugefügt zu %(right_list_title)s."
 #: views.py:96 views.py:123
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
-msgstr ""
-"%(selection)s konnte nicht zu %(right_list_title)s hinzuzugefügt werden."
+msgstr "%(selection)s konnte nicht zu %(right_list_title)s hinzuzugefügt werden."
 
 #: views.py:117
 #, python-format
@@ -197,56 +195,56 @@ msgstr "Das Passwort wurde erfolgreich geändert."
 #: views.py:302
 #, python-format
 msgid "Error saving %s details."
-msgstr ""
+msgstr "Fehler bei der Speicherung von %s Details."
 
 #: views.py:304
 msgid "Error saving details."
-msgstr ""
+msgstr "Fehler bei der Speicherung von Details."
 
 #: views.py:312
 #, python-format
 msgid "%s details saved successfully."
-msgstr ""
+msgstr "%s Details erfolgreich gespeichert."
 
 #: views.py:314
 msgid "Details saved successfully."
-msgstr ""
+msgstr "Details erfolgreich gespeichert."
 
 #: views.py:326
 #, python-format
 msgid "Error creating new %s."
-msgstr ""
+msgstr "Fehler bei der Erstellung von neuem %s."
 
 #: views.py:328
 msgid "Error creating object."
-msgstr ""
+msgstr "Fehler bei der Erstellung des Objekts."
 
 #: views.py:335
 #, python-format
 msgid "%s created successfully."
-msgstr ""
+msgstr "%s erfolgreich erstellt."
 
 #: views.py:337
 msgid "New object created successfully."
-msgstr ""
+msgstr "Neues Objekt erfolgreich erstellt."
 
 #: views.py:355
 #, python-format
 msgid "Error deleting %s."
-msgstr ""
+msgstr "Fehler beim Löschen von %s."
 
 #: views.py:357
 msgid "Error deleting object."
-msgstr ""
+msgstr "Fehler beim Löschen des Objekts."
 
 #: views.py:362
 #, python-format
 msgid "%s deleted successfully."
-msgstr ""
+msgstr "%s erfolgreich gelöscht."
 
 #: views.py:364
 msgid "Object deleted successfully."
-msgstr ""
+msgstr "Objekt erfolgreich gelöscht."
 
 #: widgets.py:58
 msgid "None"
@@ -255,20 +253,15 @@ msgstr "Kein(e)"
 #: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschau "
-"und temporären Dateien. Falls keines angegeben wurde, wird es mit tempfile."
-"mkdtemp() erzeugt."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschau und temporären Dateien. Falls keines angegeben wurde, wird es mit tempfile.mkdtemp() erzeugt."
 
 #: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-"
-"Mailadresse"
+msgstr "Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-Mailadresse"
 
 #: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
@@ -301,14 +294,14 @@ msgid "Details for: %(object)s"
 msgstr "Details für %(object)s"
 
 #: templates/calculate_form_title.html:15
-#, fuzzy, python-format
+#, python-format
 msgid "Edit %(object_name)s: %(object)s"
-msgstr "Details für %(object_name)s %(object)s"
+msgstr "%(object_name)s bearbeiten: %(object)s"
 
 #: templates/calculate_form_title.html:17
-#, fuzzy, python-format
+#, python-format
 msgid "Edit: %(object)s"
-msgstr "%(object_name)s bearbeiten"
+msgstr "%(object)s bearbeiten"
 
 #: templates/calculate_form_title.html:21
 #, python-format
@@ -322,7 +315,7 @@ msgstr "Erstellen"
 #: templates/generic_assign_remove.html:5
 #, python-format
 msgid "Assign %(title)s %(object)s"
-msgstr "%(title)s %(object)s zuordnen "
+msgstr "%(title)s %(object)s zuordnen"
 
 #: templates/generic_confirm.html:5 templates/generic_confirm.html.py:19
 msgid "Confirm"
@@ -334,7 +327,7 @@ msgstr "Löschen bestätigen"
 
 #: templates/generic_confirm.html:33
 msgid "form icon"
-msgstr "Formular Icon"
+msgstr "Formularsymbol"
 
 #: templates/generic_confirm.html:41
 #, python-format
@@ -382,9 +375,9 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: templates/generic_list.html:8 templates/generic_list_horizontal.html:8
-#, fuzzy, python-format
+#, python-format
 msgid "List of %(title)s"
-msgstr "%(stripped_title)s"
+msgstr "%(title)s"
 
 #: templates/generic_list_horizontal_subtemplate.html:24
 #: templates/generic_list_subtemplate.html:25
@@ -392,9 +385,7 @@ msgstr "%(stripped_title)s"
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
-"%(title)s (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von "
-"%(total_pages)s)"
+msgstr "%(title)s (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:26
 #: templates/generic_list_subtemplate.html:27
@@ -407,9 +398,9 @@ msgid "Identifier"
 msgstr "Bezeichner"
 
 #: templates/generic_list_subtemplate.html:153
-#, fuzzy, python-format
+#, python-format
 msgid "There are no %(title)s"
-msgstr "%(stripped_title)s leer"
+msgstr "There are no %(title)s"
 
 #: templates/login.html:7
 msgid "Login"
@@ -421,4 +412,4 @@ msgid "Password change"
 msgstr "Passwort ändern"
 
 #~ msgid "Edit"
-#~ msgstr "Bearbeiten"
+#~ msgstr "Edit"

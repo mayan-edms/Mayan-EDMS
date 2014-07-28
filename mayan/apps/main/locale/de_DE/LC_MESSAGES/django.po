@@ -1,10 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
+# Stefan Lodders <sl@suchreflex.de>, 2012
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
@@ -14,14 +16,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 21:33-0400\n"
-"PO-Revision-Date: 2014-03-12 16:12+0000\n"
+"PO-Revision-Date: 2014-07-20 00:06+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:14
@@ -66,11 +67,9 @@ msgstr "Diagnosen"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or "
-"by a menu entry."
-msgstr ""
-"Steuert, ob die Suche in einem Sidebar Widget oder in einem Menüeintrag "
-"bereitgestellt wird."
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr "Steuert, ob die Suche in einem Sidebar Widget oder in einem Menüeintrag bereitgestellt wird."
 
 #: templates/about.html:8
 msgid "About this program"
@@ -83,7 +82,7 @@ msgstr "Version"
 #: templates/about.html:20 templates/home.html:17
 #: templates/verbose_login.html:7
 msgid "Copyright &copy; 2011 Roberto Rosario."
-msgstr ""
+msgstr "Copyright &copy; 2011 Roberto Rosario."
 
 #: templates/base.html:31
 msgid "(DEBUG)"
@@ -153,12 +152,8 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
-"Open Source, auf Django basierender elektronischer Dokumentenmanager mit "
-"anpassbaren Metadaten, Indizierung, Tagging, Dateiserverintegration, "
-"Unterstützung digitaler Unterschriften und OCR-Fähigkeiten."
+msgstr "Open Source, auf Django basierender elektronischer Dokumentenmanager mit anpassbaren Metadaten, Indizierung, Tagging, Dateiserverintegration, Unterstützung digitaler Unterschriften und OCR-Fähigkeiten."
 
 #: templates/project_description.html:22
-#, fuzzy
 msgid "Released under the Apache 2.0 License"
-msgstr "Veröffentlicht unter der GPL V3 Lizenz"
+msgstr "Veröffentlicht unter der Apache 2.0 Lizenz"
