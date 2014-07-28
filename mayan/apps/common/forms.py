@@ -121,14 +121,29 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'first_name', 'last_name', 'email')
 
 
-class EmailAuthenticationForm(AuthenticationForm):
+class EmailAuthenticationForm(forms.Form):
     """
-    Override the default authentication form to use email address
-    authentication
+    A form to use email address authentication
     """
-    email = forms.CharField(label=_(u'Email'), max_length=75,
-        widget=EmailInput(attrs={'style': 'width: 100%;'})
+    email = forms.CharField(label=_(u'Email'), max_length=254,
+        widget=EmailInput()
     )
+    password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput)
+
+    error_messages = {
+        'invalid_login': _(u'Please enter a correct email and password. '
+                           u'Note that the password field is case-sensitive.'),
+        'inactive': _(u'This account is inactive.'),
+    }
+
+    def __init__(self, request=None, *args, **kwargs):
+        """
+        The 'request' parameter is set for custom auth use by subclasses.
+        The form data comes in via the standard 'data' kwarg.
+        """
+        self.request = request
+        self.user_cache = None
+        super(EmailAuthenticationForm, self).__init__(*args, **kwargs)
 
     def clean(self):
         email = self.cleaned_data.get('email')
@@ -137,14 +152,28 @@ class EmailAuthenticationForm(AuthenticationForm):
         if email and password:
             self.user_cache = authenticate(email=email, password=password)
             if self.user_cache is None:
-                raise forms.ValidationError(_('Please enter a correct email and password. Note that the password fields is case-sensitive.'))
+                raise forms.ValidationError(
+                    self.error_messages['invalid_login'],
+                    code='invalid_login',
+                )
             elif not self.user_cache.is_active:
-                raise forms.ValidationError(_('This account is inactive.'))
-        self.check_for_test_cookie()
+                raise forms.ValidationError(
+                    self.error_messages['inactive'],
+                    code='inactive',
+                )
         return self.cleaned_data
 
-# Remove the inherited username field
-EmailAuthenticationForm.base_fields.keyOrder = ['email', 'password']
+    def check_for_test_cookie(self):
+        warnings.warn("check_for_test_cookie is deprecated; ensure your login "
+                "view is CSRF-protected.", DeprecationWarning)
+
+    def get_user_id(self):
+        if self.user_cache:
+            return self.user_cache.id
+        return None
+
+    def get_user(self):
+        return self.user_cache
 
 
 class FileDisplayForm(forms.Form):
