@@ -11,8 +11,7 @@ from documents.models import DocumentType
 from metadata.api import convert_dict_to_dict_list
 
 from ...models import OutOfProcess
-from ...compressed_file import NotACompressedFile
-
+from common.compressed_files import NotACompressedFile
 
 class Command(LabelCommand):
     args = '<filename>'
