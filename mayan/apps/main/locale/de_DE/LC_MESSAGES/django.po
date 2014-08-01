@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -15,14 +15,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2014-07-20 00:06+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:14
@@ -38,38 +39,32 @@ msgid "maintenance"
 msgstr "Wartung"
 
 #: links.py:9
-msgid "statistics"
-msgstr "Statistiken"
-
-#: links.py:10
 msgid "diagnostics"
 msgstr "Diagnose"
 
-#: links.py:11
+#: links.py:10
 msgid "sentry"
 msgstr "Überwachung"
 
-#: links.py:12
+#: links.py:11
 msgid "admin site"
 msgstr "Administration"
 
-#: views.py:43
+#: views.py:41
 msgid "maintenance menu"
 msgstr "Wartungsmenü"
 
-#: views.py:56
-msgid "Statistics"
-msgstr "Statistiken"
-
-#: views.py:66
+#: views.py:48
 msgid "Diagnostics"
 msgstr "Diagnosen"
 
 #: conf/settings.py:12
 msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or"
-" by a menu entry."
-msgstr "Steuert, ob die Suche in einem Sidebar Widget oder in einem Menüeintrag bereitgestellt wird."
+"Controls whether the search functionality is provided by a sidebar widget or "
+"by a menu entry."
+msgstr ""
+"Steuert, ob die Suche in einem Sidebar Widget oder in einem Menüeintrag "
+"bereitgestellt wird."
 
 #: templates/about.html:8
 msgid "About this program"
@@ -88,58 +83,58 @@ msgstr "Copyright &copy; 2011 Roberto Rosario."
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:249
+#: templates/base.html:262
 msgid "User"
 msgstr "Benutzer"
 
-#: templates/base.html:251
+#: templates/base.html:264
 msgid "Anonymous"
 msgstr "Anonym"
 
-#: templates/base.html:254
+#: templates/base.html:267
 msgid "User details"
 msgstr "Benutzerdetails"
 
-#: templates/base.html:271
+#: templates/base.html:284
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:271
+#: templates/base.html:284
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:351
+#: templates/base.html:364
 msgid "Secondary menu"
 msgstr "Untermenü"
 
-#: templates/base.html:367
+#: templates/base.html:380
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Aktionen für  %(name)s: %(navigation_object)s"
 
-#: templates/base.html:369 templates/base.html.py:412
+#: templates/base.html:382 templates/base.html.py:425
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Aktionen für: %(navigation_object)s"
 
-#: templates/base.html:372
+#: templates/base.html:385
 msgid "Available actions"
 msgstr "Verfügbare Aktionen"
 
-#: templates/base.html:384 templates/base.html.py:427
+#: templates/base.html:397 templates/base.html.py:440
 msgid "Related actions"
 msgstr "Verwandte Aktionen"
 
-#: templates/base.html:395 templates/base.html.py:440
+#: templates/base.html:408 templates/base.html.py:453
 msgid "Other available actions"
 msgstr "Andere verfügbare Aktionen"
 
-#: templates/base.html:410
+#: templates/base.html:423
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Aktionen für %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:415
+#: templates/base.html:428
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -152,8 +147,17 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr "Open Source, auf Django basierender elektronischer Dokumentenmanager mit anpassbaren Metadaten, Indizierung, Tagging, Dateiserverintegration, Unterstützung digitaler Unterschriften und OCR-Fähigkeiten."
+msgstr ""
+"Open Source, auf Django basierender elektronischer Dokumentenmanager mit "
+"anpassbaren Metadaten, Indizierung, Tagging, Dateiserverintegration, "
+"Unterstützung digitaler Unterschriften und OCR-Fähigkeiten."
 
 #: templates/project_description.html:22
 msgid "Released under the Apache 2.0 License"
 msgstr "Veröffentlicht unter der Apache 2.0 Lizenz"
+
+#~ msgid "statistics"
+#~ msgstr "Statistiken"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistiken"

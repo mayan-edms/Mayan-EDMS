@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2014-03-12 16:12+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:48
+#: forms.py:49
 msgid "Pages"
 msgstr "Seiten"
 
@@ -40,7 +40,7 @@ msgstr ""
 msgid "smart links actions"
 msgstr "Aktionen für Intelligente Verknüpfungen"
 
-#: links.py:12 links.py:14 models.py:23 views.py:132
+#: links.py:12 links.py:14 models.py:23 views.py:130
 msgid "smart links"
 msgstr "Intelligente Verknüpfungen"
 
@@ -144,7 +144,7 @@ msgstr "ist in regulärem Ausdruck (ohne Groß/Kleinschreibung)"
 msgid "title"
 msgstr "Titel"
 
-#: models.py:13 views.py:135
+#: models.py:13 views.py:133
 msgid "dynamic title"
 msgstr "Dynamischer Titel"
 
@@ -158,11 +158,11 @@ msgstr ""
 "werden. Die Dokument-Metadaten sind verfügbar als Variable `metadata` und "
 "Dokumenteneigenschaften als Variable `document`. "
 
-#: models.py:14 models.py:33 views.py:136 views.py:232
+#: models.py:14 models.py:33 views.py:134 views.py:229
 msgid "enabled"
 msgstr "Aktiviert"
 
-#: models.py:22 models.py:27 views.py:296 views.py:330
+#: models.py:22 models.py:27 views.py:293 views.py:327
 msgid "smart link"
 msgstr "intelligente Verknüpfung"
 
@@ -226,105 +226,105 @@ msgstr "Intelligente Verknüpfungen löschen"
 msgid "Edit smart links"
 msgstr "Intelligente Verknüpfungen bearbeiten"
 
-#: views.py:41
+#: views.py:39
 msgid "No action selected."
 msgstr "Keine Aktion ausgewählt."
 
-#: views.py:60
+#: views.py:58
 #, python-format
 msgid "documents in smart link: %(group)s"
 msgstr "Dokumente in intelligenter Verknüpfung: %(group)s"
 
-#: views.py:76
+#: views.py:74
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Abfragefehler in intelligenter Verknüpfung: %s"
 
-#: views.py:98
+#: views.py:96
 #, python-format
 msgid "smart links (%s)"
 msgstr "intelligente Verknüpfungen (%s)"
 
-#: views.py:112
+#: views.py:110
 msgid "There no defined smart links for the current document."
 msgstr "Keine Intelligenten Verknüpfungen für das aktuelle Dokument definiert."
 
-#: views.py:152
+#: views.py:150
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "Intelligente Verknüpfung %s erfolgreich erstellt."
 
-#: views.py:159
+#: views.py:157
 msgid "Create new smart link"
 msgstr "Intelligente Verknüpfung erstellen"
 
-#: views.py:175
+#: views.py:173
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "intelligente Verknüpfung %s erfolgreich bearbeitet."
 
-#: views.py:184
+#: views.py:181
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Intelligente Verknüpfung bearbeiten: %s"
 
-#: views.py:202
+#: views.py:199
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "Intelligente Verknüpfung %s erfolgreich gelöscht."
 
-#: views.py:204
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(error)s."
+#: views.py:201
+#, fuzzy, python-format
+msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
 msgstr ""
 "Fehler beim Löschen der intelligenten Verknüpfung %(smart_link)s: %(error)s ."
 
-#: views.py:213
+#: views.py:210
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr ""
 "Sind Sie sicher, dass Sie die intelligente Verknüpfung %s löschen möchten?"
 
-#: views.py:229
+#: views.py:226
 #, python-format
 msgid "conditions for smart link: %s"
 msgstr "Bedingungen für die Intelligente Verknüpfung %s"
 
-#: views.py:254
+#: views.py:251
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Bedingung für Intelligente Verknüpfung \"%s\" erfolgreich erstellt."
 
-#: views.py:261
+#: views.py:258
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Neue Bedingungen zu Intelligenter Verknüpfung \"%s\" hinzufügen"
 
-#: views.py:283
+#: views.py:280
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Bedingung für Intelligente Verknüpfung: \"%s\" erfolgreich bearbeitet."
 
-#: views.py:290
+#: views.py:287
 msgid "Edit smart link condition"
 msgstr "Bedingung für Intelligente Verknüpfung bearbeiten"
 
-#: views.py:297 views.py:331
+#: views.py:294 views.py:328
 msgid "condition"
 msgstr "Bedingung"
 
-#: views.py:317
+#: views.py:314
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Bedingung für Intelligente Verknüpfung: \"%s\" erfolgreich gelöscht."
 
-#: views.py:319
-#, python-format
+#: views.py:316
+#, fuzzy, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
+"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr "Fehler beim Löschen der Bedingung %(smart_link_condition)s: %(error)s."
 
-#: views.py:333
+#: views.py:330
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr "Sind Sie sicher, dass Sie die Bedingung \"%s\" löschen möchten?"

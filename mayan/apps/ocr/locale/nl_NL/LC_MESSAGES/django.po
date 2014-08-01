@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:34-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2012-09-28 19:58+0000\n"
 "Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
@@ -19,15 +19,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:42 links.py:22 permissions.py:7
+#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:70
+#: __init__.py:75
 msgid "Checks the OCR queue for pending documents."
 msgstr "Controleer de OCR-rij voor uitstaande documenten."
 
-#: api.py:75
+#: __init__.py:86
+#, fuzzy
+msgid "OCR queue statistics"
+msgstr "OCR statistieken"
+
+#: api.py:74
 msgid "Text from OCR"
 msgstr "Tekst van OCR"
 
@@ -157,19 +162,15 @@ msgstr "OCR opschonen toestaan op alle documentpagina's"
 msgid "Can edit an OCR queue properties"
 msgstr "Bewerk de eigenschappen van een OCR rij"
 
-#: statistics.py:10
+#: statistics.py:15
 #, python-format
 msgid "Document queues: %d"
 msgstr "Aantal document-rijen: %d"
 
-#: statistics.py:11
+#: statistics.py:16
 #, python-format
 msgid "Queued documents: %d"
 msgstr "Documenten in de rij: %d"
-
-#: statistics.py:15
-msgid "OCR statistics"
-msgstr "OCR statistieken"
 
 #: views.py:33
 #, python-format

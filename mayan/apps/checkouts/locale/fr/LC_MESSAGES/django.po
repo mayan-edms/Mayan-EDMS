@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2012-07-28 14:44+0000\n"
 "Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
@@ -266,7 +266,7 @@ msgstr "Saisissez un nombre de minutes valide."
 msgid "Enter a valid time difference."
 msgstr "Saisissez un intervalle de temps valide."
 
-#: widgets.py:89
+#: widgets.py:92
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
@@ -274,6 +274,6 @@ msgstr ""
 "Durée pendant laquelle conserver le verrou sur le document en jours, heures "
 "et/ou minutes."
 
-#: widgets.py:90
+#: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Date et heure de l'expiration du verrou"

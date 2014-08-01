@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2013-12-21 20:15+0000\n"
 "Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
@@ -19,23 +19,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:21 links.py:10 links.py:16
+#: forms.py:25 links.py:10 links.py:16
 msgid "New holder"
 msgstr "Nieuwe houder"
 
-#: forms.py:38
+#: forms.py:42
 msgid "Users"
 msgstr "Gebruikers"
 
-#: forms.py:41
+#: forms.py:45
 msgid "Groups"
 msgstr "Groepen"
 
-#: forms.py:44
+#: forms.py:48
 msgid "Roles"
 msgstr "gebruikersrollen"
 
-#: forms.py:47
+#: forms.py:51
 msgid "Special"
 msgstr ""
 
@@ -71,31 +71,31 @@ msgstr "Authorisatielijst voor authorisatieklasse"
 msgid "Insufficient access."
 msgstr "Permissies zijn ontoereikend"
 
-#: models.py:25 models.py:67
+#: models.py:26 models.py:68
 msgid "permission"
 msgstr "permissie"
 
-#: models.py:51
+#: models.py:52
 msgid "access entry"
 msgstr "Authorisatie invoer"
 
-#: models.py:52
+#: models.py:53
 msgid "access entries"
 msgstr "Authorisatie invoer"
 
-#: models.py:88
+#: models.py:89
 msgid "default access entry"
 msgstr "Verstekwaarden authorisatie invoer"
 
-#: models.py:89
+#: models.py:90
 msgid "default access entries"
 msgstr "Verstekwaarden authorisatie invoer"
 
-#: models.py:108
+#: models.py:109
 msgid "Creator"
 msgstr ""
 
-#: models.py:111 models.py:112
+#: models.py:112 models.py:113
 msgid "creator"
 msgstr ""
 

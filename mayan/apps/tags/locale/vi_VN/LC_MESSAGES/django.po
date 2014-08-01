@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2013-01-22 07:31+0000\n"
 "Last-Translator: Trung Phan Minh <navmobile@gmail.com>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -19,17 +19,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:24
+#: __init__.py:26
 msgid "preview"
 msgstr "xem trước"
 
-#: __init__.py:28
+#: __init__.py:30
 msgid "tagged items"
 msgstr "các phần tử được tag"
 
-#: __init__.py:34 __init__.py:42 links.py:20 views.py:124
+#: __init__.py:37 __init__.py:45 links.py:19 views.py:124
 msgid "tags"
 msgstr "tags"
+
+#: __init__.py:68
+msgid "Returns a list of all the tags."
+msgstr ""
 
 #: forms.py:24
 msgid "Name"
@@ -55,27 +59,27 @@ msgstr "tạo tag mới"
 msgid "attach tag"
 msgstr "đính tag"
 
-#: links.py:17
+#: links.py:16
 msgid "remove tag"
 msgstr "xóa tag"
 
-#: links.py:18
+#: links.py:17
 msgid "remove tags"
 msgstr "xóa tags"
 
-#: links.py:21 links.py:24
+#: links.py:20 links.py:23
 msgid "delete"
 msgstr "xóa"
 
-#: links.py:22
+#: links.py:21
 msgid "edit"
 msgstr "sửa"
 
-#: links.py:23
+#: links.py:22
 msgid "tagged documents"
 msgstr "các tài liệu được tag"
 
-#: links.py:25
+#: links.py:24
 msgid "ACLs"
 msgstr "ACLs"
 
@@ -119,19 +123,19 @@ msgstr "Orange"
 msgid "Yellow"
 msgstr "Yellow"
 
-#: models.py:12 views.py:180 views.py:232 views.py:246
+#: models.py:13 views.py:178 views.py:230 views.py:243
 msgid "tag"
 msgstr "tag"
 
-#: models.py:13
+#: models.py:14
 msgid "color"
 msgstr "màu"
 
-#: models.py:16
+#: models.py:17
 msgid "tag properties"
 msgstr "tag properties"
 
-#: models.py:17
+#: models.py:18
 msgid "tags properties"
 msgstr "tags properties"
 
@@ -159,15 +163,15 @@ msgstr "Gắn tag cho tài liệu"
 msgid "Remove tags from documents"
 msgstr "Xóa tag từ tài liệu"
 
-#: views.py:42
+#: views.py:43
 msgid "Tag already exists."
 msgstr "Tag đã tồn tại."
 
-#: views.py:50
+#: views.py:51
 msgid "Tag created succesfully."
 msgstr "Tag được tạo thành công."
 
-#: views.py:56
+#: views.py:57
 msgid "create tag"
 msgstr "tạo tag"
 
@@ -199,75 +203,75 @@ msgstr "Gắn tag cho tài liệu: %s"
 msgid "Attach tag to documents: %s."
 msgstr "Gắn tag cho các tài liệu: %s"
 
-#: views.py:156
+#: views.py:154
 msgid "Must provide at least one tag."
 msgstr "Cần cung cấp ít nhất một tag"
 
-#: views.py:171
+#: views.py:169
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Tag \"%s\" xóa thành công."
 
-#: views.py:173
+#: views.py:171
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Lỗi xóa tag  \"%(tag)s\": %(error)s"
 
-#: views.py:188
+#: views.py:186
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
 msgstr "Bạn chắc chắn muốn xóa tag: %s?"
 
-#: views.py:189 views.py:192
+#: views.py:187 views.py:190
 msgid "Will be removed from all documents."
 msgstr "Sẽ được xóa trong tất cả tài liệu."
 
-#: views.py:191
+#: views.py:189
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
 msgstr "Bạn chắc chắn muốn xóa tag: %s?"
 
-#: views.py:220
+#: views.py:218
 msgid "Tag updated succesfully."
 msgstr "Tag cập nhật thành công."
 
-#: views.py:229
+#: views.py:227
 #, python-format
 msgid "edit tag: %s"
 msgstr "sửa tag: %s"
 
-#: views.py:243
+#: views.py:240
 #, python-format
 msgid "documents with the tag \"%s\""
 msgstr "Các tài liệu được gắn tag  \"%s\""
 
-#: views.py:262
+#: views.py:259
 #, python-format
 msgid "tags for: %s"
 msgstr "tags cho: %s"
 
-#: views.py:274
+#: views.py:271
 msgid "Must provide at least one tagged document."
 msgstr "Cần cung cấp ít nhất một tài liệu đã được tag"
 
-#: views.py:313
+#: views.py:310
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr "Xóa tag từ tài liệu: %s"
 
-#: views.py:315
+#: views.py:312
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr "Xóa tag từ các tài liệu: %s"
 
-#: views.py:321
+#: views.py:318
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
 msgstr "Bạn chắc chắn muốn xóa tag \"%(tag)s\" từ tài liệu: %(document)s?"
 
-#: views.py:324
+#: views.py:321
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
@@ -275,14 +279,14 @@ msgid ""
 msgstr ""
 "Bạn chắc chắn muốn xóa tag \"%(tag)s\" từ những tài liệu: %(documents)s?"
 
-#: views.py:329
+#: views.py:326
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
 msgstr "Bạn chắc chắn muốn xóa các tag \"%(tags)s\" từ tài liệu: %(document)s?"
 
-#: views.py:332
+#: views.py:329
 #, fuzzy, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
@@ -290,12 +294,12 @@ msgid ""
 msgstr ""
 "Bạn chắc chắn muốn xóa các tag \"%(tag)s\" từ các tài liệu: %(documents)s?"
 
-#: views.py:339
+#: views.py:336
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr "Tài liệu  \"%(document)s\" không thể được tag như là \"%(tag)s\""
 
-#: views.py:344
+#: views.py:341
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" đã được xóa thành công từ tài liệu \"%(document)s\"."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2013-01-26 08:08+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
@@ -28,7 +28,7 @@ msgstr "مجلد"
 msgid "folder list"
 msgstr "قائمة المجلدات"
 
-#: links.py:14 views.py:77
+#: links.py:14 views.py:75
 msgid "create folder"
 msgstr "إنشاء مجلد"
 
@@ -76,15 +76,15 @@ msgstr "مستخدم"
 msgid "datetime created"
 msgstr "تاريخ و وقت الانشاء"
 
-#: models.py:41 models.py:46 views.py:108 views.py:137 views.py:162
+#: models.py:41 models.py:46 views.py:106 views.py:135 views.py:160
 msgid "folder"
 msgstr "ملف"
 
-#: models.py:47 views.py:209
+#: models.py:47 views.py:207
 msgid "document"
 msgstr "وثيقة"
 
-#: models.py:53 views.py:279
+#: models.py:53 views.py:277
 msgid "folder document"
 msgstr "مجلد الوثيقة"
 
@@ -128,93 +128,93 @@ msgstr "أنشئت"
 msgid "documents"
 msgstr "وثائق"
 
-#: views.py:69
+#: views.py:67
 msgid "Folder created successfully"
 msgstr "تم انشاء المجلد بنجاح"
 
-#: views.py:72
+#: views.py:70
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "مجلد باسم: %s ، موجود مسبقا."
 
-#: views.py:97
+#: views.py:95
 msgid "Folder edited successfully"
 msgstr "المجلد تم تتعديله بنجاح"
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "خطأ بتعديل المجلد %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "edit folder: %s"
 msgstr "تعديل المجلد %s"
 
-#: views.py:129
+#: views.py:127
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "تم مسح المجلد %s بنجاح"
 
-#: views.py:131
+#: views.py:129
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "خطأ بمسح المجلد %(folder)s  : %(error)s"
 
-#: views.py:142
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "هل أنت متأكد من حذف المجلد: %s ؟"
 
-#: views.py:168
+#: views.py:166
 #, python-format
 msgid "documents in folder: %s"
 msgstr "الوثائق بالمجلد: %s"
 
-#: views.py:180
+#: views.py:178
 msgid "Must provide at least one document."
 msgstr "يجب أن توفر ما لا يقل عن وثيقة واحدة."
 
-#: views.py:198
+#: views.py:196
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "الوثيقة %(document)s  تم اضافتها للمجلد %(folder)s بنجاح"
 
-#: views.py:201
+#: views.py:199
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "الوثيقة %(document)s  موجودة بالمجلد %(folder)s مسبقاً"
 
-#: views.py:217
+#: views.py:215
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "إضافة الوثيقة: %s إلى المجلد."
 
-#: views.py:219
+#: views.py:217
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "إضافة الوثائق: %s  إلى مجلد."
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "folders containing: %s"
 msgstr "المجلد يحتوي: %s"
 
-#: views.py:253
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "يجب أن توفر ما لا يقل عن مجلد واحد."
 
-#: views.py:271
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "الوثيقة %s أزيلت بنجاح"
 
-#: views.py:273
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "خطأ بمسح الوثيقة %(document)s  : %(error)s"
 
-#: views.py:287
+#: views.py:285
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -222,7 +222,7 @@ msgid ""
 msgstr ""
 "هل أنت متأكد أنك ترغب في إزالة الوثيقة %(document)s من المجلد \"%(folder)s\"؟"
 
-#: views.py:290
+#: views.py:288
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

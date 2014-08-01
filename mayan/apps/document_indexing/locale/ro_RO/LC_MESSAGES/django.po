@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:32-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2013-02-10 21:18+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
@@ -56,17 +56,17 @@ msgid "Unable to create indexing directory; %s"
 msgstr "Nu se poate crea directorul indexare;% s"
 
 #: filesystem.py:69
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
-"%(filepath)s; %(exc)s"
+"%(filepath)s; %(exception)s"
 msgstr ""
 "Imposibil de a crea link-ul simbolic, fișierul există și nu a putut fi "
 "șters: %(filepath)s; %(exc)s"
 
 #: filesystem.py:71
-#, python-format
-msgid "Unable to create symbolic link: %(filepath)s; %(exc)s"
+#, fuzzy, python-format
+msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
 msgstr "Imposibil de a crea link-ul simbolic:%(filepath)s; %(exc)s"
 
 #: filesystem.py:84
@@ -79,7 +79,7 @@ msgstr "Imposibil de șters link de document simbolic;% s"
 msgid "Unable to delete indexing directory; %s"
 msgstr "Imposibil de șters directorul indexare;% s"
 
-#: links.py:23 links.py:38 links.py:40 models.py:64 views.py:39 views.py:310
+#: links.py:23 links.py:38 links.py:40 models.py:64 views.py:40 views.py:305
 msgid "indexes"
 msgstr "index"
 
@@ -87,7 +87,7 @@ msgstr "index"
 msgid "index list"
 msgstr "Listă index"
 
-#: links.py:25 views.py:78
+#: links.py:25 views.py:77
 msgid "create index"
 msgstr "crează index"
 
@@ -103,7 +103,7 @@ msgstr "șterge"
 msgid "tree template"
 msgstr "șablon structura"
 
-#: links.py:29 models.py:21 views.py:314
+#: links.py:29 models.py:21 views.py:309
 msgid "document types"
 msgstr "tipuri de documente"
 
@@ -128,7 +128,7 @@ msgstr "Șterge și creează de la zero toate indexurile de documente."
 msgid "Available functions: %s"
 msgstr "Funcții disponibile:% s"
 
-#: models.py:18 views.py:43
+#: models.py:18 views.py:44
 msgid "name"
 msgstr "nume"
 
@@ -136,7 +136,7 @@ msgstr "nume"
 msgid "Internal name used to reference this index."
 msgstr "Numele intern utilizat pentru a face referire la acest index."
 
-#: models.py:19 views.py:44
+#: models.py:19 views.py:45
 msgid "title"
 msgstr "titlu"
 
@@ -144,7 +144,7 @@ msgstr "titlu"
 msgid "The name that will be visible to users."
 msgstr "Numele care va fi vizibil pentru utilizatori."
 
-#: models.py:20 models.py:72 views.py:45 views.py:169
+#: models.py:20 models.py:72 views.py:46 views.py:166
 msgid "enabled"
 msgstr "activată"
 
@@ -154,8 +154,8 @@ msgstr ""
 "Cauză pentru acest index să fie vizibil și actualizat când documentul suferă "
 "schimbări."
 
-#: models.py:63 models.py:69 views.py:105 views.py:136 views.py:162
-#: views.py:198 views.py:225 views.py:255 views.py:295
+#: models.py:63 models.py:69 views.py:103 views.py:133 views.py:159
+#: views.py:195 views.py:222 views.py:251 views.py:290
 msgid "index"
 msgstr "index"
 
@@ -257,125 +257,125 @@ msgstr "Reconstruire index documente"
 msgid "document indexes"
 msgstr "indexuri documente"
 
-#: views.py:72
+#: views.py:71
 msgid "Index created successfully."
 msgstr "Index creat cu succes."
 
-#: views.py:96
+#: views.py:94
 msgid "Index edited successfully"
 msgstr "Indexul  a fost editat cu succes"
 
-#: views.py:102
+#: views.py:100
 #, python-format
 msgid "edit index: %s"
 msgstr "editează indexul:% s"
 
-#: views.py:127
+#: views.py:124
 #, python-format
 msgid "Index: %s deleted successfully."
 msgstr "Index:% s eliminat cu succes."
 
-#: views.py:129
+#: views.py:126
 #, python-format
 msgid "Index: %(index)s delete error: %(error)s"
 msgstr "eroare de ștergere %(error)s a indexului:%(index)s"
 
-#: views.py:141
+#: views.py:138
 #, python-format
 msgid "Are you sure you with to delete the index: %s?"
 msgstr "Ești sigur că vă să ștergeți indexul: % s?"
 
-#: views.py:165
+#: views.py:162
 #, python-format
 msgid "tree template nodes for index: %s"
 msgstr "noduri șablon pentru index:% s"
 
-#: views.py:168
+#: views.py:165
 msgid "level"
 msgstr "nivel"
 
-#: views.py:170
+#: views.py:167
 msgid "has document links?"
 msgstr "are legături de documente?"
 
-#: views.py:192
+#: views.py:189
 #, python-format
 msgid "document types not in index: %s"
 msgstr "tipuri de documente care nu sunt în index:% s"
 
-#: views.py:193
+#: views.py:190
 #, python-format
 msgid "document types for index: %s"
 msgstr "tipuri de documente pentru index:% s"
 
-#: views.py:216
+#: views.py:213
 msgid "Index template node created successfully."
 msgstr "Nodul șablon index creat cu succes."
 
-#: views.py:222
+#: views.py:219
 msgid "create child node"
 msgstr "creați nodul copil"
 
-#: views.py:243
+#: views.py:239
 msgid "Index template node edited successfully"
 msgstr "Nod șablon index a fost editat cu succes"
 
-#: views.py:249
+#: views.py:245
 #, python-format
 msgid "edit index template node: %s"
 msgstr "editare șablon nod index:% s"
 
-#: views.py:256 views.py:296 views.py:365
+#: views.py:252 views.py:291 views.py:358
 msgid "node"
 msgstr "nod"
 
-#: views.py:278
+#: views.py:273
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr "Nod:% s eliminat cu succes."
 
-#: views.py:280
+#: views.py:275
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr "eroare de ștergere %(error)s pentru nodul :%(node)s"
 
-#: views.py:289
+#: views.py:284
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr "Ești sigur că vă să ștergeți nodul șablon al  indexului: % s?"
 
-#: views.py:313
+#: views.py:308
 msgid "nodes"
 msgstr "noduri"
 
-#: views.py:347
+#: views.py:340
 #, python-format
 msgid "contents for index: %s"
 msgstr "conținutul de index:% s"
 
-#: views.py:369
+#: views.py:362
 msgid "items"
 msgstr "articole"
 
-#: views.py:394
+#: views.py:387
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr "Sunteți sigur că doriți să reconstruiți toate indexurile?"
 
-#: views.py:395
+#: views.py:388
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Pe baze de date mari, această operație poate dura ceva timp pentru a executa."
 
-#: views.py:401
+#: views.py:394
 msgid "Index rebuild completed successfully."
 msgstr "Reconstruire index finalizat cu succes."
 
-#: views.py:408
+#: views.py:401
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr "Index reconstrui eroare:% s"
 
-#: views.py:431
+#: views.py:424
 #, python-format
 msgid "indexes containing: %s"
 msgstr "index care conține:% s"

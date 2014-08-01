@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2013-06-25 12:25+0000\n"
 "Last-Translator: Dezső József <dejo60@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -27,7 +27,7 @@ msgstr "Mappa"
 msgid "folder list"
 msgstr "mappalista"
 
-#: links.py:14 views.py:77
+#: links.py:14 views.py:75
 msgid "create folder"
 msgstr "mappa létrehozás"
 
@@ -75,15 +75,15 @@ msgstr "felhasználó"
 msgid "datetime created"
 msgstr "létrehozás dátuma és ideje"
 
-#: models.py:41 models.py:46 views.py:108 views.py:137 views.py:162
+#: models.py:41 models.py:46 views.py:106 views.py:135 views.py:160
 msgid "folder"
 msgstr "mappa"
 
-#: models.py:47 views.py:209
+#: models.py:47 views.py:207
 msgid "document"
 msgstr "dokumentum"
 
-#: models.py:53 views.py:279
+#: models.py:53 views.py:277
 msgid "folder document"
 msgstr "dokumentum mappa"
 
@@ -127,93 +127,93 @@ msgstr "létrehozva"
 msgid "documents"
 msgstr "dokumentumok"
 
-#: views.py:69
+#: views.py:67
 msgid "Folder created successfully"
 msgstr "mappa létrehozása sikerült"
 
-#: views.py:72
+#: views.py:70
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Már van %s nevű mappa."
 
-#: views.py:97
+#: views.py:95
 msgid "Folder edited successfully"
 msgstr "Mappa módosítása sikerült"
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Hiba mappa módosítás közben; %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "edit folder: %s"
 msgstr "%s mappa módosítása"
 
-#: views.py:129
+#: views.py:127
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "%s mappa sikeresen törölve"
 
-#: views.py:131
+#: views.py:129
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Hiba a %(folder)s mappa törlésekor: %(error)s"
 
-#: views.py:142
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Biztosan törölni akarja a %s mappát?"
 
-#: views.py:168
+#: views.py:166
 #, python-format
 msgid "documents in folder: %s"
 msgstr "dokumentumok a %s mappában"
 
-#: views.py:180
+#: views.py:178
 msgid "Must provide at least one document."
 msgstr "Adjon meg legalább egy dokumentumot."
 
-#: views.py:198
+#: views.py:196
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "A %(document)s dokumentum elhelyezése a %(folder)s mappában sikerült."
 
-#: views.py:201
+#: views.py:199
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "A %(document)s nevű dokumentum már van a %(folder)s. mappában."
 
-#: views.py:217
+#: views.py:215
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "Dokumentum elhelyezése a %s mappában."
 
-#: views.py:219
+#: views.py:217
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "Dokumentumok elhelyezése a %s mappában."
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "folders containing: %s"
 msgstr "A mappa tartalma: %s"
 
-#: views.py:253
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "Legalább egy dokumentum mappa szükséges"
 
-#: views.py:271
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "A %s dokumentum eltávolítása sikerült."
 
-#: views.py:273
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Hiba %(error)s a  %(document)s dokumentum törlésekor."
 
-#: views.py:287
+#: views.py:285
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -221,7 +221,7 @@ msgid ""
 msgstr ""
 "Biztosan eltávolítja a %(document)s dokumentumot a \"%(folder)s\" mappából?"
 
-#: views.py:290
+#: views.py:288
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

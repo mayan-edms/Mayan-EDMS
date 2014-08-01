@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2014-03-12 16:11+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -269,13 +269,13 @@ msgstr "Eine gültige Anzahl an Minuten ist erforderlich."
 msgid "Enter a valid time difference."
 msgstr "Eine gültige Zeitdifferenz ist erforderlich."
 
-#: widgets.py:89
+#: widgets.py:92
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
 msgstr ""
 "Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)."
 
-#: widgets.py:90
+#: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Ablauf-Datum und -Zeit Ausbuchung"

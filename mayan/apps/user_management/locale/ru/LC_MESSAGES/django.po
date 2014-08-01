@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:55-0400\n"
 "PO-Revision-Date: 2013-05-14 06:34+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -32,7 +32,7 @@ msgstr "Подтвердите пароль"
 msgid "user list"
 msgstr "список пользователей"
 
-#: links.py:10 views.py:27
+#: links.py:10 views.py:28
 msgid "users"
 msgstr "пользователи"
 
@@ -52,7 +52,7 @@ msgstr "удалить"
 msgid "reset password"
 msgstr "сброс пароля"
 
-#: links.py:17 links.py:20 views.py:253
+#: links.py:17 links.py:20 views.py:251
 msgid "groups"
 msgstr "группы"
 
@@ -60,11 +60,11 @@ msgstr "группы"
 msgid "group list"
 msgstr "список групп"
 
-#: links.py:22 views.py:304
+#: links.py:22 views.py:302
 msgid "create new group"
 msgstr "создать новую группу"
 
-#: links.py:25 views.py:257
+#: links.py:25 views.py:255
 msgid "members"
 msgstr "Участники"
 
@@ -104,23 +104,23 @@ msgstr "Просмотр существующих групп"
 msgid "Delete existing groups"
 msgstr "Удалить существующие группы"
 
-#: views.py:31
+#: views.py:32
 msgid "full name"
 msgstr "полное имя"
 
-#: views.py:35
+#: views.py:36
 msgid "email"
 msgstr "электронная почта"
 
-#: views.py:39
+#: views.py:40
 msgid "active"
 msgstr "активно"
 
-#: views.py:43
+#: views.py:44
 msgid "has usable password?"
 msgstr "есть действующий пароль?"
 
-#: views.py:59
+#: views.py:60
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
@@ -128,17 +128,17 @@ msgstr ""
 "Редактирование суперпользователя и персонала не допускается, используйте для "
 "этого интерфейс администратора."
 
-#: views.py:66
+#: views.py:67
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "Пользователь \"%s\"обновлён"
 
-#: views.py:72
+#: views.py:73
 #, python-format
 msgid "edit user: %s"
 msgstr "редактировать пользователя: %s."
 
-#: views.py:75 views.py:133 views.py:196 views.py:241
+#: views.py:76 views.py:132 views.py:195 views.py:239
 msgid "user"
 msgstr "пользователь"
 
@@ -147,11 +147,11 @@ msgstr "пользователь"
 msgid "User \"%s\" created successfully."
 msgstr "Пользователь \"%s\" создан."
 
-#: views.py:111 views.py:165
+#: views.py:110 views.py:164
 msgid "Must provide at least one user."
 msgstr "Должен быть хотя бы один пользователь."
 
-#: views.py:121
+#: views.py:120
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
@@ -159,31 +159,31 @@ msgstr ""
 "Удаление суперпользователя и  персонала не допускается, используйте "
 "интерфейс администратора для этих случаев."
 
-#: views.py:124
+#: views.py:123
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Пользователь \"%s\" удален."
 
-#: views.py:126
+#: views.py:125
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Ошибка при удалении пользователя \"%(user)s\": %(error)s"
 
-#: views.py:141
+#: views.py:140
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "Вы действительно хотите удалить пользователя:%s?"
 
-#: views.py:143
+#: views.py:142
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "Вы действительно хотите удалить пользователей:%s?"
 
-#: views.py:176
+#: views.py:175
 msgid "Passwords do not match, try again."
 msgstr "Пароли не совпадают, попробуйте еще раз."
 
-#: views.py:181
+#: views.py:180
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
@@ -191,85 +191,85 @@ msgstr ""
 "Сброс паролей суперпользователя и персонала не допускается, используйте "
 "интерфейс администратора для этих случаев."
 
-#: views.py:185
+#: views.py:184
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Пароль пользователя %s сброшен."
 
-#: views.py:187
+#: views.py:186
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Ошибка сброса пароля для пользователя \"%(user)s\": %(error)s"
 
-#: views.py:203
+#: views.py:202
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Сброс пароля пользователя: %s"
 
-#: views.py:205
+#: views.py:204
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Сброс пароля для пользователей: %s"
 
-#: views.py:236
+#: views.py:234
 #, python-format
 msgid "non groups of user: %s"
 msgstr "вне групп %s"
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "groups of user: %s"
 msgstr "групп пользователя %s"
 
-#: views.py:277
+#: views.py:275
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr "Группа \"%s\" обновлены."
 
-#: views.py:283
+#: views.py:281
 #, python-format
 msgid "edit group: %s"
 msgstr "редактировать группу: %s"
 
-#: views.py:286 views.py:339 views.py:384
+#: views.py:284 views.py:336 views.py:381
 msgid "group"
 msgstr "группа"
 
-#: views.py:298
+#: views.py:296
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr "Группа \"%s\"создана."
 
-#: views.py:320
+#: views.py:317
 msgid "Must provide at least one group."
 msgstr "Должна быть хотя бы одна группа."
 
-#: views.py:330
+#: views.py:327
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "Группа \"%s\" удалена."
 
-#: views.py:332
+#: views.py:329
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "Ошибка при удалении группы \"%(group)s\": %(error)s"
 
-#: views.py:347
+#: views.py:344
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "Вы действительно хотите удалить группу: %s?"
 
-#: views.py:349
+#: views.py:346
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "Вы действительно хотите удалить группы: %s?"
 
-#: views.py:379
+#: views.py:376
 #, python-format
 msgid "non members of group: %s"
 msgstr "не входят в группу: %s"
 
-#: views.py:380
+#: views.py:377
 #, python-format
 msgid "members of group: %s"
 msgstr "входят в группу: %s"

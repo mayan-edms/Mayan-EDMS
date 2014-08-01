@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2014-01-11 12:04+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -31,7 +31,7 @@ msgstr "Cartella"
 msgid "folder list"
 msgstr "lista delle cartelle"
 
-#: links.py:14 views.py:77
+#: links.py:14 views.py:75
 msgid "create folder"
 msgstr "crea cartella"
 
@@ -79,15 +79,15 @@ msgstr "utente"
 msgid "datetime created"
 msgstr "data di creazione"
 
-#: models.py:41 models.py:46 views.py:108 views.py:137 views.py:162
+#: models.py:41 models.py:46 views.py:106 views.py:135 views.py:160
 msgid "folder"
 msgstr "cartella"
 
-#: models.py:47 views.py:209
+#: models.py:47 views.py:207
 msgid "document"
 msgstr "documento"
 
-#: models.py:53 views.py:279
+#: models.py:53 views.py:277
 msgid "folder document"
 msgstr "cartella documento"
 
@@ -131,94 +131,94 @@ msgstr "creata"
 msgid "documents"
 msgstr "documenti"
 
-#: views.py:69
+#: views.py:67
 msgid "Folder created successfully"
 msgstr "Cartella creata con successo"
 
-#: views.py:72
+#: views.py:70
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Il nome cartella: %s, già esiste."
 
-#: views.py:97
+#: views.py:95
 msgid "Folder edited successfully"
 msgstr "Cartella modificata con successo"
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Errore modificando la cartella; %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "edit folder: %s"
 msgstr "Modifica cartella: %s"
 
-#: views.py:129
+#: views.py:127
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Cartella : %s cancellata con successo."
 
-#: views.py:131
+#: views.py:129
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Cartella: %(folder)s errore di cancellazione: %(error)s"
 
-#: views.py:142
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Sei sicuro di voler cancellare la cartella: %s?"
 
-#: views.py:168
+#: views.py:166
 #, python-format
 msgid "documents in folder: %s"
 msgstr "documenti nella cartella: %s"
 
-#: views.py:180
+#: views.py:178
 msgid "Must provide at least one document."
 msgstr "Bisogna fornire almeno un documento."
 
-#: views.py:198
+#: views.py:196
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 "Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
 
-#: views.py:201
+#: views.py:199
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s è già nella cartella: %(folder)s."
 
-#: views.py:217
+#: views.py:215
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "Aggiungi documento: %s alla cartella."
 
-#: views.py:219
+#: views.py:217
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "Aggiungi documenti: %s alla cartella."
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "folders containing: %s"
 msgstr "le cartelle contengono: %s"
 
-#: views.py:253
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "Devi almeno indicare una cartella documenti."
 
-#: views.py:271
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s cancellato con successo."
 
-#: views.py:273
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s errore di cancellazione: %(error)s"
 
-#: views.py:287
+#: views.py:285
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -227,7 +227,7 @@ msgstr ""
 "Sei sicuro di voler rimuovere il documento: %(document)s dalla cartella "
 "\"%(folder)s\"?"
 
-#: views.py:290
+#: views.py:288
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

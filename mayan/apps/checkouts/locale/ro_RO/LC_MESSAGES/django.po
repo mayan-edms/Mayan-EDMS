@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2013-02-16 21:03+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
@@ -267,7 +267,7 @@ msgstr "Introduceți un număr valid de minute."
 msgid "Enter a valid time difference."
 msgstr "Introduceți o diferență de timp validă."
 
-#: widgets.py:89
+#: widgets.py:92
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
@@ -275,6 +275,6 @@ msgstr ""
 "Total timp acordat pentru a deține documente în statul pentru aprobare în "
 "zile, ore și / sau minute."
 
-#: widgets.py:90
+#: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Verifică data şi ora de expirare"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2012-12-19 19:08+0000\n"
 "Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -27,7 +27,7 @@ msgstr "Mappe"
 msgid "folder list"
 msgstr "mappeliste"
 
-#: links.py:14 views.py:77
+#: links.py:14 views.py:75
 msgid "create folder"
 msgstr "opret mappe"
 
@@ -75,15 +75,15 @@ msgstr "bruger"
 msgid "datetime created"
 msgstr "oprettelsestidspunkt"
 
-#: models.py:41 models.py:46 views.py:108 views.py:137 views.py:162
+#: models.py:41 models.py:46 views.py:106 views.py:135 views.py:160
 msgid "folder"
 msgstr "mappe"
 
-#: models.py:47 views.py:209
+#: models.py:47 views.py:207
 msgid "document"
 msgstr "dokument"
 
-#: models.py:53 views.py:279
+#: models.py:53 views.py:277
 msgid "folder document"
 msgstr "mappe dokument"
 
@@ -127,93 +127,93 @@ msgstr "oprettet"
 msgid "documents"
 msgstr "dokumenter"
 
-#: views.py:69
+#: views.py:67
 msgid "Folder created successfully"
 msgstr "Folder blevet oprettet"
 
-#: views.py:72
+#: views.py:70
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "En navngiven mappe: %s, eksisterer allerede."
 
-#: views.py:97
+#: views.py:95
 msgid "Folder edited successfully"
 msgstr "Mappe redigeret"
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Fejl ved redigering af mappe; %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "edit folder: %s"
 msgstr "redigér mappe: %s"
 
-#: views.py:129
+#: views.py:127
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Mappe: %s slettet."
 
-#: views.py:131
+#: views.py:129
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Mapper: %(folder)s slettefejl: %(error)s"
 
-#: views.py:142
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Er du sikker på at du vil slette mappen: %s?"
 
-#: views.py:168
+#: views.py:166
 #, python-format
 msgid "documents in folder: %s"
 msgstr "dokumenter i mappen: %s"
 
-#: views.py:180
+#: views.py:178
 msgid "Must provide at least one document."
 msgstr "Angiv mindst ét ​​dokument."
 
-#: views.py:198
+#: views.py:196
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Dokument: %(document)s  føjet til mappen: %(folder)s med succes."
 
-#: views.py:201
+#: views.py:199
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Dokument: %(document)s er allerede i mappen: %(folder)s."
 
-#: views.py:217
+#: views.py:215
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "Tilføj dokument: %s til mappe."
 
-#: views.py:219
+#: views.py:217
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "Tilføj dokumenter: %s til mappe."
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "folders containing: %s"
 msgstr "mapper, der indeholder: %s"
 
-#: views.py:253
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "Skal give mindst ét mappe dokument."
 
-#: views.py:271
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Dokument: %s blev slettet."
 
-#: views.py:273
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Dokument: %(document)s slettefejl: %(error)s "
 
-#: views.py:287
+#: views.py:285
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -222,7 +222,7 @@ msgstr ""
 "Er du sikker på du vil fjerne dokumentet: %(document)s  fra mappen \" "
 "%(folder)s \"?"
 
-#: views.py:290
+#: views.py:288
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

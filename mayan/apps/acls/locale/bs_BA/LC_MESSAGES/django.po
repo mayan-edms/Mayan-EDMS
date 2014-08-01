@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2013-06-28 13:46+0000\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -20,23 +20,23 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:21 links.py:10 links.py:16
+#: forms.py:25 links.py:10 links.py:16
 msgid "New holder"
 msgstr "Novi posjednik"
 
-#: forms.py:38
+#: forms.py:42
 msgid "Users"
 msgstr "Korisnici"
 
-#: forms.py:41
+#: forms.py:45
 msgid "Groups"
 msgstr "Grupe"
 
-#: forms.py:44
+#: forms.py:48
 msgid "Roles"
 msgstr "Role"
 
-#: forms.py:47
+#: forms.py:51
 msgid "Special"
 msgstr "Posebno"
 
@@ -72,31 +72,31 @@ msgstr "ACLs za klasu"
 msgid "Insufficient access."
 msgstr "Nedovoljne dozvole."
 
-#: models.py:25 models.py:67
+#: models.py:26 models.py:68
 msgid "permission"
 msgstr "dozvole"
 
-#: models.py:51
+#: models.py:52
 msgid "access entry"
 msgstr "pristupni unos"
 
-#: models.py:52
+#: models.py:53
 msgid "access entries"
 msgstr "pristupni unosi"
 
-#: models.py:88
+#: models.py:89
 msgid "default access entry"
 msgstr "difoltni pristupni unos"
 
-#: models.py:89
+#: models.py:90
 msgid "default access entries"
 msgstr "difoltni pristupni unosi"
 
-#: models.py:108
+#: models.py:109
 msgid "Creator"
 msgstr "Kreator"
 
-#: models.py:111 models.py:112
+#: models.py:112 models.py:113
 msgid "creator"
 msgstr "kreator"
 

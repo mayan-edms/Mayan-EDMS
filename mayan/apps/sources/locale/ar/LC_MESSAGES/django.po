@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:34-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2013-11-20 13:14+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,23 +20,27 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: __init__.py:50 widgets.py:39
+#: __init__.py:50
 msgid "thumbnail"
 msgstr "صورة مصغرة"
 
-#: forms.py:34 forms.py:59
+#: __init__.py:62
+msgid "Returns a list of all the staging folders and the files they contain."
+msgstr ""
+
+#: forms.py:39 forms.py:64
 msgid "Expand compressed files"
 msgstr "فك الملفات المضغوطة"
 
-#: forms.py:35 forms.py:60
+#: forms.py:40 forms.py:65
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "تحميل الملفات في ملف مضغوط كوثائق منفردة"
 
-#: forms.py:43
+#: forms.py:48
 msgid "Staging file"
 msgstr "ملف الاعداد"
 
-#: forms.py:50
+#: forms.py:55
 msgid "File"
 msgstr "ملف"
 
@@ -50,51 +54,47 @@ msgstr "رفع إصدار جديد"
 msgid "clone metadata"
 msgstr "البيانات الوصفية الحالية"
 
-#: links.py:16
-msgid "preview"
-msgstr "معاينة"
-
-#: links.py:17 links.py:25 links.py:31
+#: links.py:16 links.py:24 links.py:30
 msgid "delete"
 msgstr "حذف"
 
-#: links.py:19
+#: links.py:18
 msgid "sources"
 msgstr "مصادر"
 
-#: links.py:20 literals.py:53 models.py:184
+#: links.py:19 literals.py:53 models.py:191
 msgid "web forms"
 msgstr "نماذج ويب"
 
-#: links.py:21 models.py:171
+#: links.py:20 models.py:178
 msgid "staging folders"
 msgstr "مجلدات الاعداد"
 
-#: links.py:22 models.py:219
+#: links.py:21 models.py:226
 msgid "watch folders"
 msgstr "مجلدات المتابعة"
 
-#: links.py:24 links.py:30
+#: links.py:23 links.py:29
 msgid "edit"
 msgstr "تحرير"
 
-#: links.py:26
+#: links.py:25
 msgid "add new source"
 msgstr "إضافة مصدر جديد"
 
-#: links.py:28
+#: links.py:27
 msgid "transformations"
 msgstr "التحويلات"
 
-#: links.py:29
+#: links.py:28
 msgid "add transformation"
 msgstr "إضافة تحويل"
 
-#: links.py:33
+#: links.py:32
 msgid "Document sources"
 msgstr "مصادر الوثائق"
 
-#: links.py:35
+#: links.py:34
 msgid "upload new version"
 msgstr "رفع إصدار جديد"
 
@@ -150,7 +150,7 @@ msgstr "الطابعة"
 msgid "Empty printer"
 msgstr "طابعة فارغة"
 
-#: literals.py:47 models.py:183
+#: literals.py:47 models.py:190
 msgid "web form"
 msgstr "نموذج ويب"
 
@@ -170,117 +170,122 @@ msgstr "مجلدات إعداد الخادم"
 msgid "server watch folders"
 msgstr "مجلدات المتابعة للخادم"
 
-#: models.py:34
+#: models.py:36
 msgid "title"
 msgstr "عنوان"
 
-#: models.py:35
+#: models.py:37
 msgid "enabled"
 msgstr "تمكين"
 
-#: models.py:36
+#: models.py:38
 msgid "whitelist"
 msgstr "القائمة المسموحة"
 
-#: models.py:37
+#: models.py:39
 msgid "blacklist"
 msgstr "القائمة الممنوعة"
 
-#: models.py:139
+#: models.py:136
 msgid "icon"
 msgstr "أيقونة"
 
-#: models.py:139
+#: models.py:136
 msgid "An icon to visually distinguish this source."
 msgstr "أيقونة لتمييز هذا المصدر"
 
-#: models.py:155 models.py:191
+#: models.py:152 models.py:198
 msgid "folder path"
 msgstr "مسار المجلد"
 
-#: models.py:155 models.py:191
+#: models.py:152 models.py:198
 msgid "Server side filesystem path."
 msgstr "مسار نظام الملفات على الخادم"
 
-#: models.py:156
+#: models.py:153
 msgid "preview width"
 msgstr "عرض المعاينة"
 
-#: models.py:156
+#: models.py:153
 msgid "Width value to be passed to the converter backend."
 msgstr "قيمة العرض لتمريرها إلى نظام المعالجة"
 
-#: models.py:157
+#: models.py:154
 msgid "preview height"
 msgstr "ارتفاع المعاينة"
 
-#: models.py:157
+#: models.py:154
 msgid "Height value to be passed to the converter backend."
 msgstr "قيمة الارتفاع لتمريرها إلى نظام المعالجة"
 
-#: models.py:158 models.py:179 models.py:192
+#: models.py:155 models.py:186 models.py:199
 msgid "uncompress"
 msgstr "فك الضغط"
 
-#: models.py:158 models.py:179 models.py:192
+#: models.py:155 models.py:186 models.py:199
 msgid "Whether to expand or not compressed archives."
 msgstr "هل يتم فك الملفات المضغوطة أم لا."
 
-#: models.py:159 models.py:193
+#: models.py:156 models.py:200
 msgid "delete after upload"
 msgstr "حذف بعد الرفع"
 
-#: models.py:159 models.py:193
+#: models.py:156 models.py:200
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "حذف الملف بعد رفعه بنجاح."
 
-#: models.py:170
+#: models.py:174
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr "غير قادر على ايجاد قائمة بملفات الاعداد: %s"
+
+#: models.py:177
 msgid "staging folder"
 msgstr "مجلد الاعداد"
 
-#: models.py:194
+#: models.py:201
 msgid "interval"
 msgstr "فترة"
 
-#: models.py:194
+#: models.py:201
 msgid ""
 "Inverval in seconds where the watch folder path is checked for new documents."
 msgstr "الفترة بالثواني التي يتم فحص مجلد المتابعة فيها لإيجاد وثائق جديدة."
 
-#: models.py:218
+#: models.py:225
 msgid "watch folder"
 msgstr "مجلد المتابعة"
 
-#: models.py:223
+#: models.py:230
 msgid "Enter a valid value."
 msgstr "أدخل قيمة صالحة"
 
-#: models.py:251 views.py:612
+#: models.py:258 views.py:563
 msgid "order"
 msgstr "ترتيب"
 
-#: models.py:252 views.py:613 views.py:650 views.py:680
+#: models.py:259 views.py:564 views.py:601 views.py:631
 msgid "transformation"
 msgstr "تحويل"
 
-#: models.py:253 views.py:614
+#: models.py:260 views.py:565
 msgid "arguments"
 msgstr "مدخلات"
 
-#: models.py:253
+#: models.py:260
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "استخدم مصادر لتحديد المدخلات، مثل: %s"
 
-#: models.py:264
+#: models.py:270
 msgid "document source transformation"
 msgstr "تحويل مصدر الوثيقة"
 
-#: models.py:265
+#: models.py:271
 msgid "document source transformations"
 msgstr "تحويلات مصدر الوثيقة"
 
-#: models.py:272 models.py:273
+#: models.py:278 models.py:279
 msgid "out of process"
 msgstr "خارج العملية"
 
@@ -304,239 +309,224 @@ msgstr "حذف مصادر الوثائق"
 msgid "Create new document sources"
 msgstr "خلق مصادر وثائق جديدة"
 
-#: staging.py:28
-#, python-format
-msgid "Unable get list of staging files: %s"
-msgstr "غير قادر على ايجاد قائمة بملفات الاعداد: %s"
-
-#: staging.py:111
-#, python-format
-msgid "Unable to upload staging file: %s"
-msgstr "غير قادر على رفع ملف الاعداد: %s"
-
-#: staging.py:121
-#, python-format
-msgid "Unable to delete staging file: %s"
-msgstr "غيى قادر على مسح ملف الاعداد: %s"
-
 #: utils.py:35
 msgid "Whitelist Blacklist validation error."
 msgstr "خطأ تحقق بالقوائم المسموحة و الممنوعة"
 
-#: views.py:115
+#: views.py:111
 msgid "here"
 msgstr "هنا"
 
-#: views.py:120
+#: views.py:116
 msgid "Upload sources"
 msgstr "رفع المصادر"
 
-#: views.py:122
+#: views.py:118
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
 msgstr "لم يتم تحديد مصدر للوثائق أو لم يتم تشغيل أي منها."
 
-#: views.py:123
+#: views.py:119
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
 msgstr "اضغط %(setup_link)s لإضافة أو تشغيل مصادر للوثائق."
 
-#: views.py:181
+#: views.py:177
 msgid "New document version uploaded successfully."
 msgstr "تم رفع اصدار جديد من الوثيقة بنجاح."
 
-#: views.py:185
+#: views.py:181
 msgid "File uploaded successfully."
 msgstr "الملف تم رفعه بنجاح."
 
-#: views.py:188
+#: views.py:184
 msgid "File uncompressed successfully and uploaded as individual files."
 msgstr "الملف المضغوط تم فك ضغطه ورفعه كلمفات منفردة بنجاح."
 
-#: views.py:191
+#: views.py:187
 msgid "File was not a compressed file, uploaded as it was."
 msgstr "الملف ليس ملفاً مضغوطاً و تم رفعه كما هو."
 
-#: views.py:195 views.py:277
+#: views.py:191 views.py:272
 msgid "New version uploads are not allowed for this document."
 msgstr "يمنع رفع اصدارات جديدة لهذه الوثيقة."
 
-#: views.py:199 views.py:281
+#: views.py:195 views.py:276
 #, python-format
 msgid "Unhandled exception: %s"
 msgstr "خطأ لم تتم معالجته: %s"
 
-#: views.py:208
+#: views.py:204
 #, python-format
 msgid "upload a new version from source: %s"
 msgstr "رفع اصدار جديد من المصدر: %s"
 
-#: views.py:210
+#: views.py:206
 #, python-format
 msgid "upload a local document from source: %s"
 msgstr "ارفع وثيقة محلية من المصدر: %s"
 
-#: views.py:257
+#: views.py:253
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
 msgstr "تم رفع ملف الاعداد لإصدار الوثيقة %s بنجاح"
 
-#: views.py:260
+#: views.py:256
 #, python-format
 msgid "Staging file: %s, uploaded successfully."
 msgstr "ملف الاعداد %s تم رفعه بنجاح"
 
-#: views.py:263
+#: views.py:259
 #, python-format
 msgid ""
 "Staging file: %s, uncompressed successfully and uploaded as individual files."
 msgstr "ملف الاعداد: %s تم فك ضغطه ورفعه كلمفات منفردة بنجاح."
 
-#: views.py:266
+#: views.py:262
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
 msgstr "ملف الاعداد %s  ليس ملفاً مضغوطاً و تم رفعه كما هو."
 
-#: views.py:271
+#: views.py:266
 #, python-format
 msgid "Staging file: %s, deleted successfully."
 msgstr "ملف الاعداد %s تم مسحه بنجاح"
 
-#: views.py:296
+#: views.py:290
 #, python-format
 msgid "upload a new version from staging source: %s"
 msgstr "رفع اصدار جديد من مصدر الاعداد %s"
 
-#: views.py:298
+#: views.py:292
 #, python-format
 msgid "upload a document from staging source: %s"
 msgstr "ارفع وثيقة من مصدر اعداد: %s"
 
-#: views.py:311
+#: views.py:305
 msgid "files in staging path"
 msgstr "الملفات في مسار الاعداد"
 
-#: views.py:343
+#: views.py:337
 msgid "Current document type"
 msgstr "نوع الوثيقة الحالي"
 
-#: views.py:344
+#: views.py:338
 msgid "None"
 msgstr "لا شيء"
 
-#: views.py:351
+#: views.py:345
 msgid "Current metadata"
 msgstr "البيانات الوصفية الحالية"
 
-#: views.py:389 views.py:408
-#, python-format
-msgid "Staging file transformation error: %(error)s"
-msgstr "أخطاء بتحويل ملف الاعداد: %(error)s"
-
-#: views.py:431
+#: views.py:382
 msgid "Staging file delete successfully."
 msgstr "تم مسح ملف الاعداد بنجاح"
 
-#: views.py:433
+#: views.py:384
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr "خطأ بمسح ملف الاعداد %s"
 
-#: views.py:493
+#: views.py:444
 msgid "Source edited successfully"
 msgstr "تم تعديل المصدر بنجاح"
 
-#: views.py:496
+#: views.py:447
 #, python-format
 msgid "Error editing source; %s"
 msgstr "خطأ بتعديل المصدر: %s"
 
-#: views.py:501
+#: views.py:452
 #, python-format
 msgid "edit source: %s"
 msgstr "تعديل المصدر: %s"
 
-#: views.py:506 views.py:546 views.py:608 views.py:649 views.py:679
-#: views.py:722
+#: views.py:457 views.py:497 views.py:559 views.py:600 views.py:630
+#: views.py:673
 msgid "source"
 msgstr "مصدر"
 
-#: views.py:535
+#: views.py:486
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr "المصدر \"%s\" تم مسحه بنجاح"
 
-#: views.py:537
+#: views.py:488
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr "خطأ بمسح المصدر: %(source)s\": %(error)s"
 
-#: views.py:544
+#: views.py:495
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr "هل أنت متأكد من مسح المصدر: %s ؟"
 
-#: views.py:576
+#: views.py:527
 msgid "Source created successfully"
 msgstr "تم انشاء المصدر بنجاح"
 
-#: views.py:579
+#: views.py:530
 #, python-format
 msgid "Error creating source; %s"
 msgstr "خطأ بانشاء المصدر: %s"
 
-#: views.py:584
+#: views.py:535
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "انشاء مصدر جديد من النوع: %s"
 
-#: views.py:606
+#: views.py:557
 #, python-format
 msgid "transformations for: %s"
 msgstr "التحويلات ل: %s"
 
-#: views.py:636
+#: views.py:587
 msgid "Source transformation edited successfully"
 msgstr "تم تعديل تحويلات المصدر بنجاح"
 
-#: views.py:639
+#: views.py:590
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr "خطأ بتعديل تحويل المصدر: %s"
 
-#: views.py:644
+#: views.py:595
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "تعديل التحرير: %s"
 
-#: views.py:667
+#: views.py:618
 msgid "Source transformation deleted successfully."
 msgstr "تم حذف مصدر التحويل بنجاح"
 
-#: views.py:669
+#: views.py:620
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr "خطأ أثناء حذف مصدر التحويل: %(error)s"
 
-#: views.py:682
+#: views.py:633
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr "هل أنت متأكد أنك تريد حذف مصدر التحويل \"%(transformation)s\" ؟"
 
-#: views.py:712
+#: views.py:663
 msgid "Source transformation created successfully"
 msgstr "إنشاء تحويل المصدر بنجاح"
 
-#: views.py:715
+#: views.py:666
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr "خطأ في إنشاء مصدر التحويل؛ %s"
 
-#: views.py:724
+#: views.py:675
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "إنشاء تحويل جديد للمصدر: %s"
+
+#: widgets.py:40
+#, fuzzy
+msgid "staging file page image"
+msgstr "ملف الاعداد"
 
 #: wizards.py:53
 msgid "step 1 of 3: Document type"
@@ -553,3 +543,15 @@ msgstr ""
 #: wizards.py:73
 msgid "Next step"
 msgstr ""
+
+#~ msgid "preview"
+#~ msgstr "معاينة"
+
+#~ msgid "Unable to upload staging file: %s"
+#~ msgstr "غير قادر على رفع ملف الاعداد: %s"
+
+#~ msgid "Unable to delete staging file: %s"
+#~ msgstr "غيى قادر على مسح ملف الاعداد: %s"
+
+#~ msgid "Staging file transformation error: %(error)s"
+#~ msgstr "أخطاء بتحويل ملف الاعداد: %(error)s"

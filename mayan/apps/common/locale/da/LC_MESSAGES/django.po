@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,42 +18,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:27
-msgid "change password"
-msgstr ""
-
-#: __init__.py:28
-msgid "user details"
-msgstr ""
-
-#: __init__.py:29
-msgid "edit details"
-msgstr ""
-
-#: __init__.py:33 __init__.py:38
-msgid "about"
-msgstr ""
-
-#: __init__.py:34
-msgid "license"
-msgstr ""
-
 #: forms.py:97
 msgid "Selection"
 msgstr ""
 
-#: forms.py:129
+#: forms.py:128
 msgid "Email"
 msgstr ""
 
-#: forms.py:140
+#: forms.py:131
+msgid "Password"
+msgstr ""
+
+#: forms.py:134
 msgid ""
-"Please enter a correct email and password. Note that the password fields is "
+"Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
 msgstr ""
 
-#: forms.py:142
+#: forms.py:136
 msgid "This account is inactive."
+msgstr ""
+
+#: links.py:10
+msgid "change password"
+msgstr ""
+
+#: links.py:11
+msgid "user details"
+msgstr ""
+
+#: links.py:12
+msgid "edit details"
+msgstr ""
+
+#: links.py:14
+msgid "about"
+msgstr ""
+
+#: links.py:15
+msgid "license"
 msgstr ""
 
 #: literals.py:24
@@ -97,30 +101,26 @@ msgid "Landscape"
 msgstr ""
 
 #: models.py:17
-msgid "lock field"
-msgstr ""
-
-#: models.py:45
 msgid "Anonymous user"
 msgstr ""
 
-#: models.py:48 models.py:49
+#: models.py:20 models.py:21
 msgid "anonymous user"
 msgstr ""
 
-#: models.py:53
+#: models.py:25
 msgid "account"
 msgstr ""
 
-#: models.py:54
+#: models.py:26
 msgid "password"
 msgstr ""
 
-#: models.py:55
+#: models.py:27
 msgid "password hash"
 msgstr ""
 
-#: models.py:58
+#: models.py:30
 msgid "auto admin properties"
 msgstr ""
 
@@ -128,116 +128,116 @@ msgstr ""
 msgid "function found"
 msgstr ""
 
-#: views.py:38
+#: views.py:39
 msgid "No action selected."
 msgstr ""
 
-#: views.py:42
+#: views.py:43
 msgid "Must select at least one item."
 msgstr ""
 
-#: views.py:90
+#: views.py:91
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr ""
 
-#: views.py:96 views.py:123
+#: views.py:97 views.py:124
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr ""
 
-#: views.py:117
+#: views.py:118
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr ""
 
-#: views.py:138
+#: views.py:139
 msgid "Add"
 msgstr ""
 
-#: views.py:149
+#: views.py:150
 msgid "Remove"
 msgstr ""
 
-#: views.py:172
+#: views.py:173
 msgid "current user details"
 msgstr ""
 
-#: views.py:189
+#: views.py:190
 msgid "E-mail conflict, another user has that same email."
 msgstr ""
 
-#: views.py:192
+#: views.py:193
 msgid "Current user's details updated."
 msgstr ""
 
-#: views.py:201
+#: views.py:202
 msgid "edit current user details"
 msgstr ""
 
-#: views.py:232
+#: views.py:233
 msgid "License"
 msgstr ""
 
-#: views.py:241
+#: views.py:242
 msgid "Current user password change"
 msgstr ""
 
-#: views.py:256 templates/password_change_done.html:8
+#: views.py:257 templates/password_change_done.html:8
 msgid "Your password has been successfully changed."
 msgstr ""
 
-#: views.py:302
+#: views.py:303
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: views.py:304
+#: views.py:305
 msgid "Error saving details."
 msgstr ""
 
-#: views.py:312
+#: views.py:313
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: views.py:314
+#: views.py:315
 msgid "Details saved successfully."
 msgstr ""
 
-#: views.py:326
+#: views.py:327
 #, python-format
 msgid "Error creating new %s."
 msgstr ""
 
-#: views.py:328
+#: views.py:329
 msgid "Error creating object."
 msgstr ""
 
-#: views.py:335
+#: views.py:336
 #, python-format
 msgid "%s created successfully."
 msgstr ""
 
-#: views.py:337
+#: views.py:338
 msgid "New object created successfully."
 msgstr ""
 
-#: views.py:355
+#: views.py:356
 #, python-format
 msgid "Error deleting %s."
 msgstr ""
 
-#: views.py:357
+#: views.py:358
 msgid "Error deleting object."
 msgstr ""
 
-#: views.py:362
+#: views.py:363
 #, python-format
 msgid "%s deleted successfully."
 msgstr ""
 
-#: views.py:364
+#: views.py:365
 msgid "Object deleted successfully."
 msgstr ""
 
@@ -352,7 +352,7 @@ msgstr ""
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
 #: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:179
+#: templates/generic_list_subtemplate.html:173
 msgid "Save"
 msgstr ""
 
@@ -361,7 +361,7 @@ msgstr ""
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
 #: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:179
+#: templates/generic_list_subtemplate.html:173
 msgid "Submit"
 msgstr ""
 
@@ -392,7 +392,7 @@ msgstr ""
 msgid "Identifier"
 msgstr ""
 
-#: templates/generic_list_subtemplate.html:153
+#: templates/generic_list_subtemplate.html:147
 #, python-format
 msgid "There are no %(title)s"
 msgstr ""

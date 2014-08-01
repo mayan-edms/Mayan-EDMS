@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:32-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -82,69 +82,73 @@ msgstr "Scarica firme separatamente"
 msgid "Upload detached signatures"
 msgstr "Carica firme separatamente"
 
-#: views.py:46
+#: views.py:50
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
 msgstr "Status della firma: %(widget)s %(text)s"
 
-#: views.py:53
+#: views.py:58
 msgid "embedded"
 msgstr "incorporato"
 
-#: views.py:55
+#: views.py:60
 msgid "detached"
 msgstr "scaduto"
 
-#: views.py:60
+#: views.py:62
+msgid "None"
+msgstr ""
+
+#: views.py:67
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID Firma: %s"
 
-#: views.py:61
+#: views.py:68
 #, python-format
 msgid "Signature type: %s"
 msgstr "Tipo di firma: %s"
 
-#: views.py:62
+#: views.py:69
 #, python-format
 msgid "Key ID: %s"
 msgstr "Chiave ID: %s"
 
-#: views.py:63
+#: views.py:70
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Timestamp: %s"
 
-#: views.py:64
+#: views.py:71
 #, python-format
 msgid "Signee: %s"
 msgstr "Signee: %s"
 
-#: views.py:69
+#: views.py:76
 #, python-format
 msgid "signature properties for: %s"
 msgstr "Proprietà per la firma: %s"
 
-#: views.py:95
+#: views.py:102
 msgid "Detached signature uploaded successfully."
 msgstr "Firma scaduta aggiornata con successo."
 
-#: views.py:104
+#: views.py:111
 #, python-format
 msgid "Upload detached signature for: %s"
 msgstr "Aggiornata firma scaduta per: %s"
 
-#: views.py:154
+#: views.py:161
 #, fuzzy
 msgid "Detached signature deleted successfully."
 msgstr "Firma scaduta aggiornata con successo."
 
-#: views.py:157
+#: views.py:164
 #, fuzzy, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "Scarica firme separatamente"
 
-#: views.py:161
+#: views.py:168
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"

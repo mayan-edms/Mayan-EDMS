@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:34-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,15 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:42 links.py:22 permissions.py:7
+#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:70
+#: __init__.py:75
 msgid "Checks the OCR queue for pending documents."
 msgstr "Checks the OCR queue for pending documents."
 
-#: api.py:75
+#: __init__.py:86
+#, fuzzy
+msgid "OCR queue statistics"
+msgstr "OCR statistics"
+
+#: api.py:74
 msgid "Text from OCR"
 msgstr "Text from OCR"
 
@@ -158,19 +163,15 @@ msgstr "Can execute the OCR clean up on all document pages"
 msgid "Can edit an OCR queue properties"
 msgstr "Can edit an OCR queue properties"
 
-#: statistics.py:10
+#: statistics.py:15
 #, python-format
 msgid "Document queues: %d"
 msgstr "Document queues: %d"
 
-#: statistics.py:11
+#: statistics.py:16
 #, python-format
 msgid "Queued documents: %d"
 msgstr "Queued documents: %d"
-
-#: statistics.py:15
-msgid "OCR statistics"
-msgstr "OCR statistics"
 
 #: views.py:33
 #, python-format

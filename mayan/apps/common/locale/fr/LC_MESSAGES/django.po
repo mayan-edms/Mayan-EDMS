@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014
@@ -12,53 +12,62 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2014-07-18 17:17+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: __init__.py:27
-msgid "change password"
-msgstr "modifier le mot de passe"
-
-#: __init__.py:28
-msgid "user details"
-msgstr "détails de l'utilisateur"
-
-#: __init__.py:29
-msgid "edit details"
-msgstr "modifier les détails"
-
-#: __init__.py:33 __init__.py:38
-msgid "about"
-msgstr "à propos"
-
-#: __init__.py:34
-msgid "license"
-msgstr "licence"
 
 #: forms.py:97
 msgid "Selection"
 msgstr "Sélection"
 
-#: forms.py:129
+#: forms.py:128
 msgid "Email"
 msgstr "adresse électronique"
 
-#: forms.py:140
-msgid ""
-"Please enter a correct email and password. Note that the password fields is "
-"case-sensitive."
-msgstr "S'il vous plaît veuillez entrer une adresse électronique et un mot de passe. Notez que les champs de mot de passe sont sensibles à la casse."
+#: forms.py:131
+#, fuzzy
+msgid "Password"
+msgstr "mot de passe"
 
-#: forms.py:142
+#: forms.py:134
+#, fuzzy
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr ""
+"S'il vous plaît veuillez entrer une adresse électronique et un mot de passe. "
+"Notez que les champs de mot de passe sont sensibles à la casse."
+
+#: forms.py:136
 msgid "This account is inactive."
 msgstr "Ce compte est inactif."
+
+#: links.py:10
+msgid "change password"
+msgstr "modifier le mot de passe"
+
+#: links.py:11
+msgid "user details"
+msgstr "détails de l'utilisateur"
+
+#: links.py:12
+msgid "edit details"
+msgstr "modifier les détails"
+
+#: links.py:14
+msgid "about"
+msgstr "à propos"
+
+#: links.py:15
+msgid "license"
+msgstr "licence"
 
 #: literals.py:24
 msgid "A5"
@@ -101,30 +110,26 @@ msgid "Landscape"
 msgstr "Paysage"
 
 #: models.py:17
-msgid "lock field"
-msgstr "Champ verrouiller"
-
-#: models.py:45
 msgid "Anonymous user"
 msgstr "Utilisateur anonyme"
 
-#: models.py:48 models.py:49
+#: models.py:20 models.py:21
 msgid "anonymous user"
 msgstr "utilisateur anonyme"
 
-#: models.py:53
+#: models.py:25
 msgid "account"
 msgstr "compte"
 
-#: models.py:54
+#: models.py:26
 msgid "password"
 msgstr "mot de passe"
 
-#: models.py:55
+#: models.py:27
 msgid "password hash"
 msgstr "hachage de mot de passe"
 
-#: models.py:58
+#: models.py:30
 msgid "auto admin properties"
 msgstr "propriétés de l'administration automatique"
 
@@ -132,116 +137,116 @@ msgstr "propriétés de l'administration automatique"
 msgid "function found"
 msgstr "fonction trouvée"
 
-#: views.py:38
+#: views.py:39
 msgid "No action selected."
 msgstr "Aucune action sélectionnée."
 
-#: views.py:42
+#: views.py:43
 msgid "Must select at least one item."
 msgstr "Vous devez sélectionner au moins un élément."
 
-#: views.py:90
+#: views.py:91
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr " %(selection)s a été ajouté avec succès à %(right_list_title)s ."
 
-#: views.py:96 views.py:123
+#: views.py:97 views.py:124
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "Impossible d'ajouter %(selection)s à %(right_list_title)s ."
 
-#: views.py:117
+#: views.py:118
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr " %(selection)s a été supprimé avec succès de %(right_list_title)s ."
 
-#: views.py:138
+#: views.py:139
 msgid "Add"
 msgstr "Ajouter"
 
-#: views.py:149
+#: views.py:150
 msgid "Remove"
 msgstr "Supprimer"
 
-#: views.py:172
+#: views.py:173
 msgid "current user details"
 msgstr "détails de l'utilisateur courant"
 
-#: views.py:189
+#: views.py:190
 msgid "E-mail conflict, another user has that same email."
 msgstr "Conflit d'adresse électronique: un autre utilisateur a cette adresse."
 
-#: views.py:192
+#: views.py:193
 msgid "Current user's details updated."
 msgstr "Les détails de l'utilisateur actuel ont été mis à jour."
 
-#: views.py:201
+#: views.py:202
 msgid "edit current user details"
 msgstr "modifier les détails des utilisateurs actuels"
 
-#: views.py:232
+#: views.py:233
 msgid "License"
 msgstr "Licence"
 
-#: views.py:241
+#: views.py:242
 msgid "Current user password change"
 msgstr "Modifier le mot de passe de l'utilisateur courant"
 
-#: views.py:256 templates/password_change_done.html:8
+#: views.py:257 templates/password_change_done.html:8
 msgid "Your password has been successfully changed."
 msgstr "Votre mot de passe a été modifié avec succès."
 
-#: views.py:302
+#: views.py:303
 #, python-format
 msgid "Error saving %s details."
 msgstr "Erreur de sauvegarde %s pour voir les détails."
 
-#: views.py:304
+#: views.py:305
 msgid "Error saving details."
 msgstr "Erreur de sauvegarde détaillée."
 
-#: views.py:312
+#: views.py:313
 #, python-format
 msgid "%s details saved successfully."
 msgstr "Sauvegarde de %s détaillé avec succès."
 
-#: views.py:314
+#: views.py:315
 msgid "Details saved successfully."
 msgstr "Détails sauvegardé avec succès."
 
-#: views.py:326
+#: views.py:327
 #, python-format
 msgid "Error creating new %s."
 msgstr "Erreur nouvelle création %s. "
 
-#: views.py:328
+#: views.py:329
 msgid "Error creating object."
 msgstr "Erreur de création de l'objet."
 
-#: views.py:335
+#: views.py:336
 #, python-format
 msgid "%s created successfully."
 msgstr "%s créé avec succès"
 
-#: views.py:337
+#: views.py:338
 msgid "New object created successfully."
 msgstr "Le nouvel objet a été créé avec succès"
 
-#: views.py:355
+#: views.py:356
 #, python-format
 msgid "Error deleting %s."
 msgstr "Erreur de suppression %s."
 
-#: views.py:357
+#: views.py:358
 msgid "Error deleting object."
 msgstr "Erreur de suppression de l'objet"
 
-#: views.py:362
+#: views.py:363
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s supprimé avec succès."
 
-#: views.py:364
+#: views.py:365
 msgid "Object deleted successfully."
 msgstr "Objet supprimé avec succès"
 
@@ -252,15 +257,19 @@ msgstr "Aucun"
 #: conf/settings.py:16
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()"
-msgstr "Répertoire temporaire utilisé pour stocker les miniatures, les aperçus et les fichiers temporaires. Si aucun n'est indiqué, celui-ci sera crée à l'aide de la fonction tempfile.mdktemp()"
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"Répertoire temporaire utilisé pour stocker les miniatures, les aperçus et "
+"les fichiers temporaires. Si aucun n'est indiqué, celui-ci sera crée à "
+"l'aide de la fonction tempfile.mdktemp()"
 
 #: conf/settings.py:66
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr "Mécanisme utilisé pour l'authentification. Les options sont: username, email"
+msgstr ""
+"Mécanisme utilisé pour l'authentification. Les options sont: username, email"
 
 #: conf/settings.py:75
 msgid "Allow non authenticated users, access to all views"
@@ -331,7 +340,9 @@ msgstr "icône du formulaire"
 #: templates/generic_confirm.html:41
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
-msgstr "Etes-vous certain de vouloir supprimer l'élément %(object_name)s : %(object)s ?"
+msgstr ""
+"Etes-vous certain de vouloir supprimer l'élément %(object_name)s : "
+"%(object)s ?"
 
 #: templates/generic_confirm.html:43
 #, python-format
@@ -356,7 +367,7 @@ msgstr "requis"
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
 #: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:179
+#: templates/generic_list_subtemplate.html:173
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -365,7 +376,7 @@ msgstr "Sauvegarder"
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
 #: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:179
+#: templates/generic_list_subtemplate.html:173
 msgid "Submit"
 msgstr "Envoyer"
 
@@ -384,7 +395,9 @@ msgstr "Liste des %(title)s"
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr "Liste des %(title)s (%(start)s - %(end)s sur %(total)s) (Page %(page_number)s de %(total_pages)s)"
+msgstr ""
+"Liste des %(title)s (%(start)s - %(end)s sur %(total)s) (Page "
+"%(page_number)s de %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:26
 #: templates/generic_list_subtemplate.html:27
@@ -396,7 +409,7 @@ msgstr "Liste des %(title)s  (%(total)s )"
 msgid "Identifier"
 msgstr "Identifiant"
 
-#: templates/generic_list_subtemplate.html:153
+#: templates/generic_list_subtemplate.html:147
 #, python-format
 msgid "There are no %(title)s"
 msgstr "Il n'y a pas de %(title)s"
@@ -409,6 +422,9 @@ msgstr "Connexion"
 #: templates/password_change_form.html:7
 msgid "Password change"
 msgstr "Modifier le mot de passe"
+
+#~ msgid "lock field"
+#~ msgstr "Champ verrouiller"
 
 #~ msgid "Edit"
 #~ msgstr "Edit"

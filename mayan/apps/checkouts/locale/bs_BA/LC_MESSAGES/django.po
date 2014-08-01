@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2013-06-28 14:18+0000\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -265,7 +265,7 @@ msgstr "Unesite validan broj minuta."
 msgid "Enter a valid time difference."
 msgstr "Unesite važeću vremensku razliku."
 
-#: widgets.py:89
+#: widgets.py:92
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
@@ -273,6 +273,6 @@ msgstr ""
 "Vremenski period zadržavanja dokumenta u odjavljenom stanju u danima, satima "
 "i/ili minutama."
 
-#: widgets.py:90
+#: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Datum i vrijeme istjecanja odjave"

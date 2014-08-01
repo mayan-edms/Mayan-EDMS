@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:55-0400\n"
 "PO-Revision-Date: 2013-05-14 05:31+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,10 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: __init__.py:16
-msgid "Registration"
-msgstr "Регистрация"
 
 #: forms.py:13
 msgid "Your name:"
@@ -52,19 +48,23 @@ msgstr "Страна:"
 msgid "Other information:"
 msgstr "Дополнительная информация:"
 
-#: models.py:20
+#: links.py:12
+msgid "Registration"
+msgstr "Регистрация"
+
+#: models.py:21
 msgid "registered"
 msgstr "зарегистрированный"
 
-#: models.py:21
+#: models.py:22
 msgid "registration data"
 msgstr "регистрационные данные"
 
-#: models.py:47
+#: models.py:48
 msgid "No name"
 msgstr "Без названия"
 
-#: models.py:86
+#: models.py:87
 msgid "registration properties"
 msgstr "свойства регистрации"
 

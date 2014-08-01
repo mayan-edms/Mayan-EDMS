@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:34-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2013-02-10 16:09+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
@@ -29,39 +29,39 @@ msgstr "metadate"
 msgid "'metadata' object has no attribute '%s'"
 msgstr "obiectul 'metadata' nu are nici un atribut &'%s'"
 
-#: forms.py:28
+#: forms.py:27
 msgid "required"
 msgstr "necesar"
 
-#: forms.py:55
+#: forms.py:54
 msgid "id"
 msgstr "id"
 
-#: forms.py:56
+#: forms.py:55
 msgid "Name"
 msgstr "Nume"
 
-#: forms.py:58
+#: forms.py:57
 msgid "Value"
 msgstr "Valoare"
 
-#: forms.py:59
+#: forms.py:58
 msgid "Update"
 msgstr "Actualizați"
 
-#: forms.py:65
+#: forms.py:64
 msgid "Metadata type"
 msgstr "Metadate de tip"
 
-#: forms.py:69
+#: forms.py:68
 msgid "Remove"
 msgstr "Scoate"
 
-#: forms.py:87 views.py:537 views.py:555
+#: forms.py:85 views.py:535 views.py:553
 msgid "Metadata sets"
 msgstr "Metadate seturi"
 
-#: forms.py:95 permissions.py:7
+#: forms.py:92 permissions.py:7
 msgid "Metadata"
 msgstr "Metadate"
 
@@ -77,7 +77,7 @@ msgstr "adăuga metadate"
 msgid "remove metadata"
 msgstr "eliminarea metadatelor"
 
-#: links.py:23 models.py:40 views.py:290
+#: links.py:23 models.py:39 views.py:289
 msgid "metadata types"
 msgstr "tipuri demetadate"
 
@@ -93,108 +93,94 @@ msgstr "șterge"
 msgid "create new"
 msgstr "crearea de noi"
 
-#: links.py:28 views.py:388
+#: links.py:28 views.py:386
 msgid "metadata sets"
 msgstr "metadate seturi"
 
-#: links.py:30 views.py:392
+#: links.py:30 views.py:390
 msgid "members"
 msgstr "membrii"
 
-#: links.py:34 models.py:104
+#: links.py:34 models.py:103
 msgid "default metadata"
 msgstr "metadate iniţiale "
 
-#: models.py:11
-#, python-format
-msgid " Available models: %s"
-msgstr "Modele disponibile:% s"
-
-#: models.py:12
-#, python-format
-msgid " Available functions: %s"
-msgstr "Funcții disponibile:% s"
-
-#: models.py:19
+#: models.py:15
 msgid "name"
 msgstr "nume"
 
-#: models.py:19
+#: models.py:15
 msgid "Do not use python reserved words, or spaces."
 msgstr "Nu folosi cuvinte rezervate, pyton sau spații."
 
-#: models.py:20 models.py:47
+#: models.py:16 models.py:46
 msgid "title"
 msgstr "titlu"
 
-#: models.py:22
+#: models.py:18
 msgid "default"
 msgstr "iniţial"
 
-#: models.py:23
-#, python-format
-msgid "Enter a string to be evaluated.%s"
+#: models.py:19
+#, fuzzy
+msgid "Enter a string to be evaluated."
 msgstr "Introduceți un șir pentru a fi evaluat. %s"
 
-#: models.py:25
+#: models.py:23
 msgid "lookup"
 msgstr "căutare"
 
-#: models.py:26
-#, python-format
-msgid ""
-"Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
-"User.objects.all()].%s"
-msgstr ""
-"Introduceți un șir pentru a fi evaluat. Exemplu: [user.get_full_name() "
-"pentru utilizator in User.objects.all()].%s"
+#: models.py:24
+#, fuzzy
+msgid "Enter a string to be evaluated that returns an iterable."
+msgstr "Introduceți un șir pentru a fi evaluat. %s"
 
-#: models.py:39 models.py:69 views.py:327 views.py:370
+#: models.py:38 models.py:69 views.py:325 views.py:368
 msgid "metadata type"
 msgstr "metadate de tip"
 
-#: models.py:59 models.py:60 models.py:68 views.py:424 views.py:466
-#: views.py:510
+#: models.py:58 models.py:59 models.py:68 views.py:422 views.py:464
+#: views.py:508
 msgid "metadata set"
 msgstr "setul de metadate"
 
-#: models.py:76
+#: models.py:75
 msgid "metadata set item"
 msgstr "setul de metadate articol"
 
-#: models.py:77
+#: models.py:76
 msgid "metadata set items"
 msgstr "set de metadate articole"
 
-#: models.py:85
+#: models.py:84
 msgid "document"
 msgstr "document"
 
-#: models.py:86
+#: models.py:85
 msgid "type"
 msgstr "tip"
 
-#: models.py:87 views.py:278
+#: models.py:86 views.py:277
 msgid "value"
 msgstr "valoare"
 
-#: models.py:93 models.py:94
+#: models.py:92 models.py:93
 msgid "document metadata"
 msgstr "Documentul metadate"
 
-#: models.py:102 views.py:595
+#: models.py:101 views.py:593
 msgid "document type"
 msgstr "tipul document"
 
-#: models.py:103
+#: models.py:102
 msgid "default metadata sets"
 msgstr "seturi metadate implicite "
 
-#: models.py:110
+#: models.py:109
 msgid "document type defaults"
 msgstr "tip de document implicite"
 
-#: models.py:111
+#: models.py:110
 msgid "document types defaults"
 msgstr "tipuri de documente implicite"
 
@@ -250,11 +236,11 @@ msgstr "Ștergeți seturi de metadate"
 msgid "View metadata sets"
 msgstr "Vezi seturi de metadate"
 
-#: views.py:39 views.py:190
+#: views.py:39 views.py:189
 msgid "The selected document doesn't have any metadata."
 msgstr "Documentul selectat nu are metadate."
 
-#: views.py:50 views.py:130 views.py:202
+#: views.py:50 views.py:130 views.py:201
 msgid "Must provide at least one document."
 msgstr "Trebuie să furnizeze cel puțin un document."
 
@@ -294,17 +280,17 @@ msgstr ""
 "Tipul de metadate:%(metadata_type)s e deja prezent în documentul "
 "%(document)s."
 
-#: views.py:174
+#: views.py:173
 #, python-format
 msgid "Add metadata type to document: %s"
 msgstr "Adauga tipul de metadate în document:% s"
 
-#: views.py:176
+#: views.py:175
 #, python-format
 msgid "Add metadata type to documents: %s"
 msgstr "Adauga tipul de metadate la documente:% s"
 
-#: views.py:240
+#: views.py:239
 #, python-format
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
@@ -313,7 +299,7 @@ msgstr ""
 "Elimina cu succes tipul de metadate:%(metadata_type)s din documentul : "
 "%(document)s."
 
-#: views.py:243
+#: views.py:242
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
@@ -321,119 +307,119 @@ msgstr ""
 "Eroare la eliminarea tipul de metadate: %(metadata_type)s  din document: "
 "%(document)s."
 
-#: views.py:255
+#: views.py:254
 #, python-format
 msgid "Remove metadata types from document: %s"
 msgstr "Scoateți tipuri de metadate din document:% s"
 
-#: views.py:257
+#: views.py:256
 #, python-format
 msgid "Remove metadata types from documents: %s"
 msgstr "Scoateți tipuri de metadate din documente:% s"
 
-#: views.py:276
+#: views.py:275
 #, python-format
 msgid "metadata for: %s"
 msgstr "metadate pentru:% s"
 
-#: views.py:294
+#: views.py:293
 msgid "internal name"
 msgstr "nume intern"
 
-#: views.py:315
+#: views.py:313
 msgid "Metadata type edited successfully"
 msgstr "Tipul de metadate fost editat cu succes"
 
-#: views.py:318
+#: views.py:316
 #, python-format
 msgid "Error editing metadata type; %s"
 msgstr "Eroare editare tip metadate;% s"
 
-#: views.py:324
+#: views.py:322
 #, python-format
 msgid "edit metadata type: %s"
 msgstr "edit tipul de metadate:% s"
 
-#: views.py:338
+#: views.py:336
 msgid "Metadata type created successfully"
 msgstr "Tipul de metadate creat cu succes"
 
-#: views.py:344
+#: views.py:342
 msgid "create metadata type"
 msgstr "creați tipul de metadate"
 
-#: views.py:362
+#: views.py:360
 #, python-format
 msgid "Metadata type: %s deleted successfully."
 msgstr "Tipul de metadate:% s eliminat cu succes."
 
-#: views.py:364
+#: views.py:362
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
 msgstr "eroare de ștergere %(error)s tipul de metadate: %(metadata_type)s"
 
-#: views.py:375
+#: views.py:373
 #, python-format
 msgid "Are you sure you wish to delete the metadata type: %s?"
 msgstr "Sunteți sigur că doriți să ștergeți tipul de metadate:% s?"
 
-#: views.py:412
+#: views.py:410
 msgid "Metadata set edited successfully"
 msgstr "Set de metadate fost editat cu succes"
 
-#: views.py:415
+#: views.py:413
 #, python-format
 msgid "Error editing metadata set; %s"
 msgstr "Editare eroare setul de metadate;% s"
 
-#: views.py:421
+#: views.py:419
 #, python-format
 msgid "edit metadata set: %s"
 msgstr "edit set de metadate:% s"
 
-#: views.py:462
+#: views.py:460
 #, python-format
 msgid "non members of metadata set: %s"
 msgstr "non membrii ai setului de metadate:% s"
 
-#: views.py:463
+#: views.py:461
 #, python-format
 msgid "members of metadata set: %s"
 msgstr "membri ai set de metadate:% s"
 
-#: views.py:478
+#: views.py:476
 msgid "Metadata set created successfully"
 msgstr "Set de metadate creat cu succes"
 
-#: views.py:484
+#: views.py:482
 msgid "create metadata set"
 msgstr "crearea set de metadate"
 
-#: views.py:502
+#: views.py:500
 #, python-format
 msgid "Metadata set: %s deleted successfully."
 msgstr "Set de metadate:% s eliminat cu succes."
 
-#: views.py:505
+#: views.py:503
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
 msgstr "eroare de ștergere: %(error)s set de metadate: %(metadata_set)s"
 
-#: views.py:515
+#: views.py:513
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
 msgstr "Sunteți sigur că doriți să ștergeți set de metadate:% s?"
 
-#: views.py:534 views.py:552
+#: views.py:532 views.py:550
 msgid "Metadata types"
 msgstr "Metadate tipuri de"
 
-#: views.py:590
+#: views.py:588
 #, python-format
 msgid "non members of document type: %s"
 msgstr "non membrii de tipul de document:% s"
 
-#: views.py:591
+#: views.py:589
 #, python-format
 msgid "members of document type: %s"
 msgstr "Membrii tip de document:% s"
@@ -478,6 +464,19 @@ msgstr ""
 "valoarea de căutare se transformă o instanță a unui metadate de acest tip "
 "într-o lista de alegere ce opțiuni sunt rezultatul executarea de cod de "
 "căutare a lui."
+
+#~ msgid " Available models: %s"
+#~ msgstr "Modele disponibile:% s"
+
+#~ msgid " Available functions: %s"
+#~ msgstr "Funcții disponibile:% s"
+
+#~ msgid ""
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
+#~ "in User.objects.all()].%s"
+#~ msgstr ""
+#~ "Introduceți un șir pentru a fi evaluat. Exemplu: [user.get_full_name() "
+#~ "pentru utilizator in User.objects.all()].%s"
 
 #~ msgid "Error deleting document indexes; %s"
 #~ msgstr "Eroare la ștergerea indexurile documentului;% s"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:55-0400\n"
 "PO-Revision-Date: 2013-01-24 08:37+0000\n"
 "Last-Translator: Trung Phan Minh <navmobile@gmail.com>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -18,10 +18,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: __init__.py:16
-msgid "Registration"
-msgstr "Đăng ký"
 
 #: forms.py:13
 msgid "Your name:"
@@ -51,19 +47,23 @@ msgstr "Nước:"
 msgid "Other information:"
 msgstr "Thông tin khác"
 
-#: models.py:20
+#: links.py:12
+msgid "Registration"
+msgstr "Đăng ký"
+
+#: models.py:21
 msgid "registered"
 msgstr "đã đăng ký"
 
-#: models.py:21
+#: models.py:22
 msgid "registration data"
 msgstr "dữ liệu đăng ký"
 
-#: models.py:47
+#: models.py:48
 msgid "No name"
 msgstr "Không tên"
 
-#: models.py:86
+#: models.py:87
 msgid "registration properties"
 msgstr "Các đặc điểm đăng ký"
 

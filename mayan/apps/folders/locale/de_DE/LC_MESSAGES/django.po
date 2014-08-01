@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2014-03-12 16:11+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -31,7 +31,7 @@ msgstr "Ordner"
 msgid "folder list"
 msgstr "Ordnerliste"
 
-#: links.py:14 views.py:77
+#: links.py:14 views.py:75
 msgid "create folder"
 msgstr "Ordner erstellen"
 
@@ -79,15 +79,15 @@ msgstr "Benutzer"
 msgid "datetime created"
 msgstr "Erstellt am"
 
-#: models.py:41 models.py:46 views.py:108 views.py:137 views.py:162
+#: models.py:41 models.py:46 views.py:106 views.py:135 views.py:160
 msgid "folder"
 msgstr "Ordner"
 
-#: models.py:47 views.py:209
+#: models.py:47 views.py:207
 msgid "document"
 msgstr "Dokument"
 
-#: models.py:53 views.py:279
+#: models.py:53 views.py:277
 msgid "folder document"
 msgstr "Ordnerdokument"
 
@@ -131,93 +131,93 @@ msgstr "Erstellt"
 msgid "documents"
 msgstr "Dokumente"
 
-#: views.py:69
+#: views.py:67
 msgid "Folder created successfully"
 msgstr "Ordner erfolgreich erstellt"
 
-#: views.py:72
+#: views.py:70
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Ein Ordner \"%s\" existiert bereits."
 
-#: views.py:97
+#: views.py:95
 msgid "Folder edited successfully"
 msgstr "Ordner erfolgreich bearbeitet"
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Fehler beim Bearbeiten von Ordner \"%s\""
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "edit folder: %s"
 msgstr "Ordner \"%s\" bearbeiten"
 
-#: views.py:129
+#: views.py:127
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Ordner \"%s\" erfolgreich gelöscht"
 
-#: views.py:131
+#: views.py:129
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Fehler beim Löschen von Ordner %(folder)s: %(error)s"
 
-#: views.py:142
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Sind Sie sicher, dass Sie den Ordner \"%s\" löschen wollen?"
 
-#: views.py:168
+#: views.py:166
 #, python-format
 msgid "documents in folder: %s"
 msgstr "Dokumente im Ordner: %s"
 
-#: views.py:180
+#: views.py:178
 msgid "Must provide at least one document."
 msgstr "Es muss mindestens ein Dokument angegeben werden."
 
-#: views.py:198
+#: views.py:196
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Dokument %(document)s zum Ordner %(folder)s erfolgreich hinzugefügt."
 
-#: views.py:201
+#: views.py:199
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Dokument %(document)s ist bereits im Ordner %(folder)s."
 
-#: views.py:217
+#: views.py:215
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "Dokument %s dem Ordner hinzufügen."
 
-#: views.py:219
+#: views.py:217
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "Dokument %s dem Ordner hinzufügen."
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "folders containing: %s"
 msgstr "Ordner enthalten: %s"
 
-#: views.py:253
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "Es muss mindestens ein Ordnerdokument angegeben werden"
 
-#: views.py:271
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Dokument \"%s\" erfolgreich entfernt."
 
-#: views.py:273
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Fehler beim Löschen von Dokument %(document)s: %(error)s"
 
-#: views.py:287
+#: views.py:285
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -226,7 +226,7 @@ msgstr ""
 "Sind sie sicher, dass Sie das Dokument %(document)s aus Ordner %(folder)s "
 "entfernen möchten?"
 
-#: views.py:290
+#: views.py:288
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:34-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2013-02-17 11:57+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
@@ -20,15 +20,20 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: __init__.py:42 links.py:22 permissions.py:7
+#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:70
+#: __init__.py:75
 msgid "Checks the OCR queue for pending documents."
 msgstr "Verifică coada OCR pentru documentele în aşteptare."
 
-#: api.py:75
+#: __init__.py:86
+#, fuzzy
+msgid "OCR queue statistics"
+msgstr "statistici OCR"
+
+#: api.py:74
 msgid "Text from OCR"
 msgstr "Textul de la OCR"
 
@@ -160,19 +165,15 @@ msgstr "Poate executa OCR curat pe toate paginile documentului"
 msgid "Can edit an OCR queue properties"
 msgstr "Puteți edita proprietățile cozii OCR"
 
-#: statistics.py:10
+#: statistics.py:15
 #, python-format
 msgid "Document queues: %d"
 msgstr "Cozile de documente:% d"
 
-#: statistics.py:11
+#: statistics.py:16
 #, python-format
 msgid "Queued documents: %d"
 msgstr "Documente din coada de așteptare:% d"
-
-#: statistics.py:15
-msgid "OCR statistics"
-msgstr "statistici OCR"
 
 #: views.py:33
 #, python-format

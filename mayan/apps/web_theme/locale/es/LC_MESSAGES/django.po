@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:55-0400\n"
 "PO-Revision-Date: 2012-12-12 06:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -49,8 +49,8 @@ msgstr "cerrar esta notificación"
 msgid "close"
 msgstr "cerrar"
 
-#: templates/web_theme_login.html:15 templates/web_theme_login.html.py:52
-#: templates/web_theme_login.html:60
+#: templates/web_theme_login.html:15 templates/web_theme_login.html.py:53
+#: templates/web_theme_login.html:61
 msgid "Login"
 msgstr "Iniciar sesión"
 
@@ -93,11 +93,16 @@ msgid "Username: <strong>%(account)s</strong>"
 msgstr "Nombre de usuario: <strong>%(account)s</strong>"
 
 #: templates/web_theme_login.html:43
+#, fuzzy, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "Nombre de usuario: <strong>%(account)s</strong>"
+
+#: templates/web_theme_login.html:44
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
 msgstr "Contraseña: <strong>%(password)s</strong>"
 
-#: templates/web_theme_login.html:44
+#: templates/web_theme_login.html:45
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."

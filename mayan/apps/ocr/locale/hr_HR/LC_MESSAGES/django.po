@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:34-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2011-09-30 04:41+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Croatian (Croatia) (http://www.transifex.com/projects/p/mayan-"
@@ -19,15 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: __init__.py:42 links.py:22 permissions.py:7
+#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
 msgid "OCR"
 msgstr ""
 
-#: __init__.py:70
+#: __init__.py:75
 msgid "Checks the OCR queue for pending documents."
 msgstr ""
 
-#: api.py:75
+#: __init__.py:86
+msgid "OCR queue statistics"
+msgstr ""
+
+#: api.py:74
 msgid "Text from OCR"
 msgstr ""
 
@@ -157,18 +161,14 @@ msgstr ""
 msgid "Can edit an OCR queue properties"
 msgstr ""
 
-#: statistics.py:10
+#: statistics.py:15
 #, python-format
 msgid "Document queues: %d"
 msgstr ""
 
-#: statistics.py:11
+#: statistics.py:16
 #, python-format
 msgid "Queued documents: %d"
-msgstr ""
-
-#: statistics.py:15
-msgid "OCR statistics"
 msgstr ""
 
 #: views.py:33

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2013-01-25 21:20+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
@@ -32,7 +32,7 @@ msgstr "تأكيد كلمة المرور"
 msgid "user list"
 msgstr "قائمة المستخدمين"
 
-#: links.py:10 views.py:27
+#: links.py:10 views.py:28
 msgid "users"
 msgstr "المستخدمين"
 
@@ -52,7 +52,7 @@ msgstr "حذف"
 msgid "reset password"
 msgstr "إعادة تعيين كلمة المرور"
 
-#: links.py:17 links.py:20 views.py:253
+#: links.py:17 links.py:20 views.py:251
 msgid "groups"
 msgstr "مجموعات"
 
@@ -60,11 +60,11 @@ msgstr "مجموعات"
 msgid "group list"
 msgstr "قائمة المجموعات"
 
-#: links.py:22 views.py:304
+#: links.py:22 views.py:302
 msgid "create new group"
 msgstr "إنشاء مجموعة جديدة"
 
-#: links.py:25 views.py:257
+#: links.py:25 views.py:255
 msgid "members"
 msgstr "الأعضاء"
 
@@ -104,23 +104,23 @@ msgstr "عرض المجموعات الحالية"
 msgid "Delete existing groups"
 msgstr "حذف المجموعات الحالية"
 
-#: views.py:31
+#: views.py:32
 msgid "full name"
 msgstr "الاسم الكامل"
 
-#: views.py:35
+#: views.py:36
 msgid "email"
 msgstr "البريد الإلكتروني"
 
-#: views.py:39
+#: views.py:40
 msgid "active"
 msgstr "نشط"
 
-#: views.py:43
+#: views.py:44
 msgid "has usable password?"
 msgstr "لديه كلمة المرور صالحة للاستعمال؟"
 
-#: views.py:59
+#: views.py:60
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
@@ -128,17 +128,17 @@ msgstr ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
 
-#: views.py:66
+#: views.py:67
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "تم تحديث المستخدم \"%s\" بنجاح."
 
-#: views.py:72
+#: views.py:73
 #, python-format
 msgid "edit user: %s"
 msgstr "تعديل المستخدم: %s"
 
-#: views.py:75 views.py:133 views.py:196 views.py:241
+#: views.py:76 views.py:132 views.py:195 views.py:239
 msgid "user"
 msgstr "مستخدم"
 
@@ -147,11 +147,11 @@ msgstr "مستخدم"
 msgid "User \"%s\" created successfully."
 msgstr "تم انشاء المستخدم \"%s\"  بنجاح."
 
-#: views.py:111 views.py:165
+#: views.py:110 views.py:164
 msgid "Must provide at least one user."
 msgstr "يجب أن توفر ما لا يقل عن مستخدم واحد."
 
-#: views.py:121
+#: views.py:120
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
@@ -159,31 +159,31 @@ msgstr ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 
-#: views.py:124
+#: views.py:123
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "تم مسح المستخدم \"%s\"  بنجاح."
 
-#: views.py:126
+#: views.py:125
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "خطأ  أثناء حذف المستخدم \"%(user)s\": %(error)s"
 
-#: views.py:141
+#: views.py:140
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المستخدم %s ؟"
 
-#: views.py:143
+#: views.py:142
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المستخدمين %s ؟"
 
-#: views.py:176
+#: views.py:175
 msgid "Passwords do not match, try again."
 msgstr "لا تتطابق كلمات المرور، حاول مرة أخرى."
 
-#: views.py:181
+#: views.py:180
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
@@ -191,85 +191,85 @@ msgstr ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 
-#: views.py:185
+#: views.py:184
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "نجحت إعادة تعيين كلمة المرور للمستخدم: %s"
 
-#: views.py:187
+#: views.py:186
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "خطأ أثناء إعادة تعيين كلمة المرور للمستخدم \"%(user)s\": %(error)s"
 
-#: views.py:203
+#: views.py:202
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "إعادة كلمة السر للمستخدم: %s"
 
-#: views.py:205
+#: views.py:204
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "إعادة كلمة السر للمستخدمين %s"
 
-#: views.py:236
+#: views.py:234
 #, python-format
 msgid "non groups of user: %s"
 msgstr "non groups of user: %s"
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "groups of user: %s"
 msgstr "مجموعات المستخدم: %s"
 
-#: views.py:277
+#: views.py:275
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr "تم تحديث مجموعة \"%s\"  بنجاح."
 
-#: views.py:283
+#: views.py:281
 #, python-format
 msgid "edit group: %s"
 msgstr "تحرير مجموعة %s"
 
-#: views.py:286 views.py:339 views.py:384
+#: views.py:284 views.py:336 views.py:381
 msgid "group"
 msgstr "مجموعة"
 
-#: views.py:298
+#: views.py:296
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr "تم انشاء مجموعة \"%s \"  بنجاح."
 
-#: views.py:320
+#: views.py:317
 msgid "Must provide at least one group."
 msgstr "يجب أن توفر ما لا يقل عن مجموعة واحدة."
 
-#: views.py:330
+#: views.py:327
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "تم حذف مجموعة \"%s \"  بنجاح."
 
-#: views.py:332
+#: views.py:329
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "خطأ أثناء مسح المجموعة: \"%(group)s\": %(error)s"
 
-#: views.py:347
+#: views.py:344
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المجموعة %s ؟"
 
-#: views.py:349
+#: views.py:346
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المجموعات %s ؟"
 
-#: views.py:379
+#: views.py:376
 #, python-format
 msgid "non members of group: %s"
 msgstr "non members of group: %s"
 
-#: views.py:380
+#: views.py:377
 #, python-format
 msgid "members of group: %s"
 msgstr "أعضاء المجموعة: %s"

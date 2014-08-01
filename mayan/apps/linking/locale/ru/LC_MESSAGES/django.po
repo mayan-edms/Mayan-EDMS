@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2013-05-14 06:13+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:48
+#: forms.py:49
 msgid "Pages"
 msgstr "Страницы"
 
@@ -37,7 +37,7 @@ msgstr ""
 msgid "smart links actions"
 msgstr "действия отношений"
 
-#: links.py:12 links.py:14 models.py:23 views.py:132
+#: links.py:12 links.py:14 models.py:23 views.py:130
 msgid "smart links"
 msgstr "отношения"
 
@@ -141,7 +141,7 @@ msgstr "В регулярном выражении (без учета регис
 msgid "title"
 msgstr "название"
 
-#: models.py:13 views.py:135
+#: models.py:13 views.py:133
 msgid "dynamic title"
 msgstr "динамический заголовок"
 
@@ -155,11 +155,11 @@ msgstr ""
 "документа доступны как переменные `metadata` и свойства документа в "
 "переменной `document`."
 
-#: models.py:14 models.py:33 views.py:136 views.py:232
+#: models.py:14 models.py:33 views.py:134 views.py:229
 msgid "enabled"
 msgstr "разрешено"
 
-#: models.py:22 models.py:27 views.py:296 views.py:330
+#: models.py:22 models.py:27 views.py:293 views.py:327
 msgid "smart link"
 msgstr "отношение"
 
@@ -223,103 +223,103 @@ msgstr "Удалить отношения"
 msgid "Edit smart links"
 msgstr "Редактировать отношения"
 
-#: views.py:41
+#: views.py:39
 msgid "No action selected."
 msgstr "Никаких действий не выбрано."
 
-#: views.py:60
+#: views.py:58
 #, python-format
 msgid "documents in smart link: %(group)s"
 msgstr "документы в отношении %(group)s"
 
-#: views.py:76
+#: views.py:74
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Ошибка запроса в отношении %s"
 
-#: views.py:98
+#: views.py:96
 #, python-format
 msgid "smart links (%s)"
 msgstr "отношения (%s)"
 
-#: views.py:112
+#: views.py:110
 msgid "There no defined smart links for the current document."
 msgstr "Для этого документа отношения не определены."
 
-#: views.py:152
+#: views.py:150
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "Отношение %s создано."
 
-#: views.py:159
+#: views.py:157
 msgid "Create new smart link"
 msgstr "Создать новое отношение"
 
-#: views.py:175
+#: views.py:173
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "Отношение %s изменено."
 
-#: views.py:184
+#: views.py:181
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Редактировать отношение %s"
 
-#: views.py:202
+#: views.py:199
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "Отношение %s удалено."
 
-#: views.py:204
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(error)s."
+#: views.py:201
+#, fuzzy, python-format
+msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
 msgstr "Ошибка при удалении отношения %(smart_link)s; %(error)s."
 
-#: views.py:213
+#: views.py:210
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "Вы действительно хотите удалить отношение %s?"
 
-#: views.py:229
+#: views.py:226
 #, python-format
 msgid "conditions for smart link: %s"
 msgstr "условия для отношения %s"
 
-#: views.py:254
+#: views.py:251
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Условие для отношения \"%s\" успешно создано."
 
-#: views.py:261
+#: views.py:258
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Добавить новые условия отношения \"%s\""
 
-#: views.py:283
+#: views.py:280
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Условие отношения  \"%s\" изменено."
 
-#: views.py:290
+#: views.py:287
 msgid "Edit smart link condition"
 msgstr "Изменить условие отношения"
 
-#: views.py:297 views.py:331
+#: views.py:294 views.py:328
 msgid "condition"
 msgstr "состояние"
 
-#: views.py:317
+#: views.py:314
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Условие отношения \"%s\" удалено."
 
-#: views.py:319
-#, python-format
+#: views.py:316
+#, fuzzy, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
+"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr "Ошибка при удалении условия %(smart_link_condition)s; %(error)s."
 
-#: views.py:333
+#: views.py:330
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr "Вы действительно хотите удалить условие отношения \"%s\"?"

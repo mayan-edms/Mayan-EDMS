@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:34-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2013-11-07 11:21+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:14 links.py:8 views.py:28
+#: links.py:8 views.py:28
 msgid "settings"
 msgstr "ustawienia"
 
@@ -34,6 +34,6 @@ msgstr "nazwa"
 msgid "default"
 msgstr "domyślny"
 
-#: views.py:35
+#: views.py:36
 msgid "value"
 msgstr "wartość"

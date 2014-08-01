@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2013-11-06 11:44+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -34,30 +34,22 @@ msgid "maintenance"
 msgstr "konserwacja"
 
 #: links.py:9
-msgid "statistics"
-msgstr "statystyka"
-
-#: links.py:10
 msgid "diagnostics"
 msgstr "diagnostyka"
 
-#: links.py:11
+#: links.py:10
 msgid "sentry"
 msgstr ""
 
-#: links.py:12
+#: links.py:11
 msgid "admin site"
 msgstr "panel administracyjna"
 
-#: views.py:43
+#: views.py:41
 msgid "maintenance menu"
 msgstr "Menu konserwacji"
 
-#: views.py:56
-msgid "Statistics"
-msgstr "Statystyka"
-
-#: views.py:66
+#: views.py:48
 msgid "Diagnostics"
 msgstr "Diagnostyka"
 
@@ -84,58 +76,58 @@ msgstr ""
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:249
+#: templates/base.html:262
 msgid "User"
 msgstr "Użytkownik"
 
-#: templates/base.html:251
+#: templates/base.html:264
 msgid "Anonymous"
 msgstr "Anonimowy"
 
-#: templates/base.html:254
+#: templates/base.html:267
 msgid "User details"
 msgstr "Dane użytkownika"
 
-#: templates/base.html:271
+#: templates/base.html:284
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:271
+#: templates/base.html:284
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base.html:351
+#: templates/base.html:364
 msgid "Secondary menu"
 msgstr "Dodatkowe menu"
 
-#: templates/base.html:367
+#: templates/base.html:380
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:369 templates/base.html.py:412
+#: templates/base.html:382 templates/base.html.py:425
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:372
+#: templates/base.html:385
 msgid "Available actions"
 msgstr ""
 
-#: templates/base.html:384 templates/base.html.py:427
+#: templates/base.html:397 templates/base.html.py:440
 msgid "Related actions"
 msgstr ""
 
-#: templates/base.html:395 templates/base.html.py:440
+#: templates/base.html:408 templates/base.html.py:453
 msgid "Other available actions"
 msgstr ""
 
-#: templates/base.html:410
+#: templates/base.html:423
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/base.html:415
+#: templates/base.html:428
 msgid "Actions"
 msgstr ""
 
@@ -154,3 +146,9 @@ msgstr ""
 #, fuzzy
 msgid "Released under the Apache 2.0 License"
 msgstr "Released under the GPL V3 License"
+
+#~ msgid "statistics"
+#~ msgstr "statystyka"
+
+#~ msgid "Statistics"
+#~ msgstr "Statystyka"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:55-0400\n"
 "PO-Revision-Date: 2013-05-29 08:49+0000\n"
 "Last-Translator: kontrabant <kontrabant@gmail.com>\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/"
@@ -19,10 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
-
-#: __init__.py:16
-msgid "Registration"
-msgstr "Registracija"
 
 #: forms.py:13
 msgid "Your name:"
@@ -52,19 +48,23 @@ msgstr "Držaja:"
 msgid "Other information:"
 msgstr "Ostale informacije:"
 
-#: models.py:20
+#: links.py:12
+msgid "Registration"
+msgstr "Registracija"
+
+#: models.py:21
 msgid "registered"
 msgstr "prijavljen"
 
-#: models.py:21
+#: models.py:22
 msgid "registration data"
 msgstr "podatki o prijavi"
 
-#: models.py:47
+#: models.py:48
 msgid "No name"
 msgstr "Ni imena"
 
-#: models.py:86
+#: models.py:87
 msgid "registration properties"
 msgstr "Lastnosti prijave"
 

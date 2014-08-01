@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:32-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2013-06-16 18:57+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -78,68 +78,72 @@ msgstr ""
 msgid "Upload detached signatures"
 msgstr ""
 
-#: views.py:46
+#: views.py:50
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
 msgstr ""
 
-#: views.py:53
+#: views.py:58
 msgid "embedded"
 msgstr ""
 
-#: views.py:55
+#: views.py:60
 msgid "detached"
 msgstr ""
 
-#: views.py:60
+#: views.py:62
+msgid "None"
+msgstr ""
+
+#: views.py:67
 #, python-format
 msgid "Signature ID: %s"
 msgstr ""
 
-#: views.py:61
+#: views.py:68
 #, python-format
 msgid "Signature type: %s"
 msgstr ""
 
-#: views.py:62
+#: views.py:69
 #, python-format
 msgid "Key ID: %s"
 msgstr ""
 
-#: views.py:63
+#: views.py:70
 #, python-format
 msgid "Timestamp: %s"
 msgstr ""
 
-#: views.py:64
+#: views.py:71
 #, python-format
 msgid "Signee: %s"
 msgstr ""
 
-#: views.py:69
+#: views.py:76
 #, python-format
 msgid "signature properties for: %s"
 msgstr ""
 
-#: views.py:95
+#: views.py:102
 msgid "Detached signature uploaded successfully."
 msgstr ""
 
-#: views.py:104
+#: views.py:111
 #, python-format
 msgid "Upload detached signature for: %s"
 msgstr ""
 
-#: views.py:154
+#: views.py:161
 msgid "Detached signature deleted successfully."
 msgstr ""
 
-#: views.py:157
+#: views.py:164
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr ""
 
-#: views.py:161
+#: views.py:168
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"

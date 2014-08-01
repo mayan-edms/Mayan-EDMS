@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:55-0400\n"
 "PO-Revision-Date: 2013-07-05 10:37+0000\n"
 "Last-Translator: Mohammad Dashtizadeh <mohammad@dashtizadeh.net>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,10 +18,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: __init__.py:16
-msgid "Registration"
-msgstr "عضویت"
 
 #: forms.py:13
 msgid "Your name:"
@@ -51,19 +47,23 @@ msgstr "کشور:"
 msgid "Other information:"
 msgstr "دیگر اطلاعات:"
 
-#: models.py:20
+#: links.py:12
+msgid "Registration"
+msgstr "عضویت"
+
+#: models.py:21
 msgid "registered"
 msgstr "عضویت‌یافته"
 
-#: models.py:21
+#: models.py:22
 msgid "registration data"
 msgstr "داده‌های عضویت"
 
-#: models.py:47
+#: models.py:48
 msgid "No name"
 msgstr "بدون نام"
 
-#: models.py:86
+#: models.py:87
 msgid "registration properties"
 msgstr "خصوصیاتِ عضویت"
 

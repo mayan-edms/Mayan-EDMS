@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2013-01-26 08:48+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,23 +20,23 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: forms.py:21 links.py:10 links.py:16
+#: forms.py:25 links.py:10 links.py:16
 msgid "New holder"
 msgstr "New holder"
 
-#: forms.py:38
+#: forms.py:42
 msgid "Users"
 msgstr "Users"
 
-#: forms.py:41
+#: forms.py:45
 msgid "Groups"
 msgstr "Groups"
 
-#: forms.py:44
+#: forms.py:48
 msgid "Roles"
 msgstr "Roles"
 
-#: forms.py:47
+#: forms.py:51
 msgid "Special"
 msgstr "Special"
 
@@ -72,31 +72,31 @@ msgstr "ACLs for class"
 msgid "Insufficient access."
 msgstr "Insufficient access."
 
-#: models.py:25 models.py:67
+#: models.py:26 models.py:68
 msgid "permission"
 msgstr "permission"
 
-#: models.py:51
+#: models.py:52
 msgid "access entry"
 msgstr "access entry"
 
-#: models.py:52
+#: models.py:53
 msgid "access entries"
 msgstr "access entries"
 
-#: models.py:88
+#: models.py:89
 msgid "default access entry"
 msgstr "default access entry"
 
-#: models.py:89
+#: models.py:90
 msgid "default access entries"
 msgstr "default access entries"
 
-#: models.py:108
+#: models.py:109
 msgid "Creator"
 msgstr "Creator"
 
-#: models.py:111 models.py:112
+#: models.py:112 models.py:113
 msgid "creator"
 msgstr "creator"
 

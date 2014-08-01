@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2013-06-26 14:13+0000\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -28,7 +28,7 @@ msgstr "Folder"
 msgid "folder list"
 msgstr "lista foldera"
 
-#: links.py:14 views.py:77
+#: links.py:14 views.py:75
 msgid "create folder"
 msgstr "kreiraj folder"
 
@@ -76,15 +76,15 @@ msgstr "korisnik"
 msgid "datetime created"
 msgstr "datum i vrijeme kreiranja"
 
-#: models.py:41 models.py:46 views.py:108 views.py:137 views.py:162
+#: models.py:41 models.py:46 views.py:106 views.py:135 views.py:160
 msgid "folder"
 msgstr "folder"
 
-#: models.py:47 views.py:209
+#: models.py:47 views.py:207
 msgid "document"
 msgstr "dokument"
 
-#: models.py:53 views.py:279
+#: models.py:53 views.py:277
 msgid "folder document"
 msgstr "dokument foldera"
 
@@ -128,93 +128,93 @@ msgstr "kreirano"
 msgid "documents"
 msgstr "dokumenti"
 
-#: views.py:69
+#: views.py:67
 msgid "Folder created successfully"
 msgstr "Folder uspješno kreiran"
 
-#: views.py:72
+#: views.py:70
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Folder sa imenom: %s, već postoji."
 
-#: views.py:97
+#: views.py:95
 msgid "Folder edited successfully"
 msgstr "Folder uspješno izmijenjen"
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Greška pri izmjeni foldera; %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "edit folder: %s"
 msgstr "izmijeni folder: %s"
 
-#: views.py:129
+#: views.py:127
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Folder: %s uspješno obrisan."
 
-#: views.py:131
+#: views.py:129
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Folder: %(folder)s greška brisanja: %(error)s"
 
-#: views.py:142
+#: views.py:140
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Jeste li sigurni da želite obrisati folderr: %s?"
 
-#: views.py:168
+#: views.py:166
 #, python-format
 msgid "documents in folder: %s"
 msgstr "dokumenti u folderu: %s"
 
-#: views.py:180
+#: views.py:178
 msgid "Must provide at least one document."
 msgstr "Mora biti barem jedan dokument."
 
-#: views.py:198
+#: views.py:196
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Dokument: %(document)s uspješno dodan u folder: %(folder)s ."
 
-#: views.py:201
+#: views.py:199
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Dokument: %(document)s je već u folderu: %(folder)s."
 
-#: views.py:217
+#: views.py:215
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "Dodati dokument: %s u folder."
 
-#: views.py:219
+#: views.py:217
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "Dodati dokumente: %s u folder."
 
-#: views.py:237
+#: views.py:235
 #, python-format
 msgid "folders containing: %s"
 msgstr "folderi sadrže: %s"
 
-#: views.py:253
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "Mora biti makar jedan folder dokumenata."
 
-#: views.py:271
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Dokument \"%s\" uspješno uklonjen."
 
-#: views.py:273
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Dokument: %(document)s greška brisanja: %(error)s"
 
-#: views.py:287
+#: views.py:285
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -223,7 +223,7 @@ msgstr ""
 "Jeste li sigurni da želite ukloniti dokument: %(document)s iz foldera "
 "\"%(folder)s\"?"
 
-#: views.py:290
+#: views.py:288
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

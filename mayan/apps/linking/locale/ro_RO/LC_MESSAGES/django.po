@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2013-02-10 15:24+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: forms.py:48
+#: forms.py:49
 msgid "Pages"
 msgstr "Pagini"
 
@@ -36,7 +36,7 @@ msgstr "Click pe imagine pentru vizualizare full size din prima pagină."
 msgid "smart links actions"
 msgstr "acțiuni inteligente link-uri"
 
-#: links.py:12 links.py:14 models.py:23 views.py:132
+#: links.py:12 links.py:14 models.py:23 views.py:130
 msgid "smart links"
 msgstr "link-uri inteligente"
 
@@ -140,7 +140,7 @@ msgstr "este în expresie regulată (case insensitive)"
 msgid "title"
 msgstr "titlu"
 
-#: models.py:13 views.py:135
+#: models.py:13 views.py:133
 msgid "dynamic title"
 msgstr "dinamic titlu"
 
@@ -154,11 +154,11 @@ msgstr ""
 "Metadatele documentului sunt disponibile ca  variabile `metadata` și "
 "proprietățile documentelor în cadrul variabilei `document`."
 
-#: models.py:14 models.py:33 views.py:136 views.py:232
+#: models.py:14 models.py:33 views.py:134 views.py:229
 msgid "enabled"
 msgstr "activată"
 
-#: models.py:22 models.py:27 views.py:296 views.py:330
+#: models.py:22 models.py:27 views.py:293 views.py:327
 msgid "smart link"
 msgstr "link-ul inteligent"
 
@@ -222,105 +222,105 @@ msgstr "Ștergeți link-uri inteligente"
 msgid "Edit smart links"
 msgstr "Editați link-uri inteligente"
 
-#: views.py:41
+#: views.py:39
 msgid "No action selected."
 msgstr "Nici o acțiune selectată."
 
-#: views.py:60
+#: views.py:58
 #, python-format
 msgid "documents in smart link: %(group)s"
 msgstr "documente in link-uri inteligente:%(group)s"
 
-#: views.py:76
+#: views.py:74
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Eroare interogare  link-ul:% s"
 
-#: views.py:98
+#: views.py:96
 #, python-format
 msgid "smart links (%s)"
 msgstr "link-uri inteligente (% s)"
 
-#: views.py:112
+#: views.py:110
 msgid "There no defined smart links for the current document."
 msgstr "Nu există link-uri  inteligente definite pentru documentul curent."
 
-#: views.py:152
+#: views.py:150
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "Legătură inteligentă:% s creat cu succes."
 
-#: views.py:159
+#: views.py:157
 msgid "Create new smart link"
 msgstr "Creați un nou link inteligent"
 
-#: views.py:175
+#: views.py:173
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "Legătură inteligentă:% s editat cu succes."
 
-#: views.py:184
+#: views.py:181
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Editare legătură inteligentă:% s"
 
-#: views.py:202
+#: views.py:199
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "Legătură inteligentă:% s eliminat cu succes."
 
-#: views.py:204
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(error)s."
+#: views.py:201
+#, fuzzy, python-format
+msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
 msgstr "Eroare la ștergerea legătură inteligentă:%(smart_link)s; %(error)s."
 
-#: views.py:213
+#: views.py:210
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "Sunteți sigur că doriți să ștergeți legătură inteligentă:% s?"
 
-#: views.py:229
+#: views.py:226
 #, python-format
 msgid "conditions for smart link: %s"
 msgstr "condițiile de legătură inteligentă:% s"
 
-#: views.py:254
+#: views.py:251
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Stare de legătură inteligentă: \"%s\" a fost creată cu succes."
 
-#: views.py:261
+#: views.py:258
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Adauga la noile condiții de legătură inteligentă: \"%s\""
 
-#: views.py:283
+#: views.py:280
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Stare de legătură inteligentă: \"%s\" editată cu succes."
 
-#: views.py:290
+#: views.py:287
 msgid "Edit smart link condition"
 msgstr "Editați condiție legătură inteligentă"
 
-#: views.py:297 views.py:331
+#: views.py:294 views.py:328
 msgid "condition"
 msgstr "condiție"
 
-#: views.py:317
+#: views.py:314
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Stare de legătură inteligentă: \"%s\"  a fost ștearsă cu succes."
 
-#: views.py:319
-#, python-format
+#: views.py:316
+#, fuzzy, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
+"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr ""
 "Eroare la ștergerea condiție legătură inteligentă: %(smart_link_condition)s; "
 "%(error)s."
 
-#: views.py:333
+#: views.py:330
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr ""

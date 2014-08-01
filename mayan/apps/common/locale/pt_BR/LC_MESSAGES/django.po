@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:31-0400\n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -20,45 +20,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: __init__.py:27
-msgid "change password"
-msgstr "alterar a senha"
-
-#: __init__.py:28
-msgid "user details"
-msgstr "detalhes do usuário"
-
-#: __init__.py:29
-msgid "edit details"
-msgstr "editar detalhes"
-
-#: __init__.py:33 __init__.py:38
-msgid "about"
-msgstr "sobre"
-
-#: __init__.py:34
-msgid "license"
-msgstr "licença"
-
 #: forms.py:97
 msgid "Selection"
 msgstr "Seleção"
 
-#: forms.py:129
+#: forms.py:128
 msgid "Email"
 msgstr "E-mail"
 
-#: forms.py:140
+#: forms.py:131
+#, fuzzy
+msgid "Password"
+msgstr "Alterar a senha"
+
+#: forms.py:134
+#, fuzzy
 msgid ""
-"Please enter a correct email and password. Note that the password fields is "
+"Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
 msgstr ""
 "Por favor insira o e-mail e senha corretos. Note que os campos de senha são "
 "case-sensitive."
 
-#: forms.py:142
+#: forms.py:136
 msgid "This account is inactive."
 msgstr "Esta conta está inativa."
+
+#: links.py:10
+msgid "change password"
+msgstr "alterar a senha"
+
+#: links.py:11
+msgid "user details"
+msgstr "detalhes do usuário"
+
+#: links.py:12
+msgid "edit details"
+msgstr "editar detalhes"
+
+#: links.py:14
+msgid "about"
+msgstr "sobre"
+
+#: links.py:15
+msgid "license"
+msgstr "licença"
 
 #: literals.py:24
 msgid "A5"
@@ -101,30 +107,26 @@ msgid "Landscape"
 msgstr "Paisagem"
 
 #: models.py:17
-msgid "lock field"
-msgstr ""
-
-#: models.py:45
 msgid "Anonymous user"
 msgstr "Usuário anônimo"
 
-#: models.py:48 models.py:49
+#: models.py:20 models.py:21
 msgid "anonymous user"
 msgstr "usuário anônimo"
 
-#: models.py:53
+#: models.py:25
 msgid "account"
 msgstr ""
 
-#: models.py:54
+#: models.py:26
 msgid "password"
 msgstr ""
 
-#: models.py:55
+#: models.py:27
 msgid "password hash"
 msgstr ""
 
-#: models.py:58
+#: models.py:30
 msgid "auto admin properties"
 msgstr ""
 
@@ -132,116 +134,116 @@ msgstr ""
 msgid "function found"
 msgstr "função encontrada"
 
-#: views.py:38
+#: views.py:39
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
-#: views.py:42
+#: views.py:43
 msgid "Must select at least one item."
 msgstr "Deve selecionar pelo menos um item."
 
-#: views.py:90
+#: views.py:91
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "%(selection)s adicionadas com sucesso a %(right_list_title)s ."
 
-#: views.py:96 views.py:123
+#: views.py:97 views.py:124
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "Não foi possível adicionar %(selection)s  para %(right_list_title)s ."
 
-#: views.py:117
+#: views.py:118
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr " %(selection)s  adicionado com sucesso removidos %(right_list_title)s."
 
-#: views.py:138
+#: views.py:139
 msgid "Add"
 msgstr "Adicionar"
 
-#: views.py:149
+#: views.py:150
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:172
+#: views.py:173
 msgid "current user details"
 msgstr "detalhes atuais do usuário"
 
-#: views.py:189
+#: views.py:190
 msgid "E-mail conflict, another user has that same email."
 msgstr "E-mail conflito, outro usuário que tem mesmo e-mail."
 
-#: views.py:192
+#: views.py:193
 msgid "Current user's details updated."
 msgstr "Detalhes do usuário atual atualizados."
 
-#: views.py:201
+#: views.py:202
 msgid "edit current user details"
 msgstr "editar os detalhes do usuário atual"
 
-#: views.py:232
+#: views.py:233
 msgid "License"
 msgstr "Licença"
 
-#: views.py:241
+#: views.py:242
 msgid "Current user password change"
 msgstr "Alteração de senha do usuário atual"
 
-#: views.py:256 templates/password_change_done.html:8
+#: views.py:257 templates/password_change_done.html:8
 msgid "Your password has been successfully changed."
 msgstr "Sua senha foi alterada com êxito."
 
-#: views.py:302
+#: views.py:303
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: views.py:304
+#: views.py:305
 msgid "Error saving details."
 msgstr ""
 
-#: views.py:312
+#: views.py:313
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: views.py:314
+#: views.py:315
 msgid "Details saved successfully."
 msgstr ""
 
-#: views.py:326
+#: views.py:327
 #, python-format
 msgid "Error creating new %s."
 msgstr ""
 
-#: views.py:328
+#: views.py:329
 msgid "Error creating object."
 msgstr ""
 
-#: views.py:335
+#: views.py:336
 #, python-format
 msgid "%s created successfully."
 msgstr ""
 
-#: views.py:337
+#: views.py:338
 msgid "New object created successfully."
 msgstr ""
 
-#: views.py:355
+#: views.py:356
 #, python-format
 msgid "Error deleting %s."
 msgstr ""
 
-#: views.py:357
+#: views.py:358
 msgid "Error deleting object."
 msgstr ""
 
-#: views.py:362
+#: views.py:363
 #, python-format
 msgid "%s deleted successfully."
 msgstr ""
 
-#: views.py:364
+#: views.py:365
 msgid "Object deleted successfully."
 msgstr ""
 
@@ -358,7 +360,7 @@ msgstr "exigido"
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
 #: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:179
+#: templates/generic_list_subtemplate.html:173
 msgid "Save"
 msgstr "Salvar"
 
@@ -367,7 +369,7 @@ msgstr "Salvar"
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
 #: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:179
+#: templates/generic_list_subtemplate.html:173
 msgid "Submit"
 msgstr "Submeter"
 
@@ -400,7 +402,7 @@ msgstr "Lista de %(title)s  (%(total)s)"
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/generic_list_subtemplate.html:153
+#: templates/generic_list_subtemplate.html:147
 #, fuzzy, python-format
 msgid "There are no %(title)s"
 msgstr "Não há %(stripped_title)s "

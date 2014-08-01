@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2013-06-24 12:26+0000\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -33,30 +33,22 @@ msgid "maintenance"
 msgstr "održavanje"
 
 #: links.py:9
-msgid "statistics"
-msgstr "statistika"
-
-#: links.py:10
 msgid "diagnostics"
 msgstr "diagnostika"
 
-#: links.py:11
+#: links.py:10
 msgid "sentry"
 msgstr "straža"
 
-#: links.py:12
+#: links.py:11
 msgid "admin site"
 msgstr "admin site"
 
-#: views.py:43
+#: views.py:41
 msgid "maintenance menu"
 msgstr "meni održavanja"
 
-#: views.py:56
-msgid "Statistics"
-msgstr "Statistika"
-
-#: views.py:66
+#: views.py:48
 msgid "Diagnostics"
 msgstr "Diagnostika"
 
@@ -85,58 +77,58 @@ msgstr ""
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:249
+#: templates/base.html:262
 msgid "User"
 msgstr "Korisnik"
 
-#: templates/base.html:251
+#: templates/base.html:264
 msgid "Anonymous"
 msgstr "Anonimni"
 
-#: templates/base.html:254
+#: templates/base.html:267
 msgid "User details"
 msgstr "Detalji o korisniku"
 
-#: templates/base.html:271
+#: templates/base.html:284
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:271
+#: templates/base.html:284
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:351
+#: templates/base.html:364
 msgid "Secondary menu"
 msgstr "Pomoćni meni"
 
-#: templates/base.html:367
+#: templates/base.html:380
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Akcije za %(name)s: %(navigation_object)s"
 
-#: templates/base.html:369 templates/base.html.py:412
+#: templates/base.html:382 templates/base.html.py:425
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Akcije za: %(navigation_object)s"
 
-#: templates/base.html:372
+#: templates/base.html:385
 msgid "Available actions"
 msgstr "Omogućene akcije"
 
-#: templates/base.html:384 templates/base.html.py:427
+#: templates/base.html:397 templates/base.html.py:440
 msgid "Related actions"
 msgstr "Vezane akcije"
 
-#: templates/base.html:395 templates/base.html.py:440
+#: templates/base.html:408 templates/base.html.py:453
 msgid "Other available actions"
 msgstr "Ostale omogućene akcije"
 
-#: templates/base.html:410
+#: templates/base.html:423
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Akcije za %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:415
+#: templates/base.html:428
 msgid "Actions"
 msgstr "Akcije"
 
@@ -158,3 +150,9 @@ msgstr ""
 #, fuzzy
 msgid "Released under the Apache 2.0 License"
 msgstr "Izdato pod GPL V3 Licencom"
+
+#~ msgid "statistics"
+#~ msgstr "statistika"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistika"

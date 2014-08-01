@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
 "PO-Revision-Date: 2013-01-25 19:42+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: forms.py:48
+#: forms.py:49
 msgid "Pages"
 msgstr "صفحات"
 
@@ -36,7 +36,7 @@ msgstr "اضغط على الصورة لمشاهدة الحجم الكامل لل
 msgid "smart links actions"
 msgstr "اجراءات الروابط الذكية"
 
-#: links.py:12 links.py:14 models.py:23 views.py:132
+#: links.py:12 links.py:14 models.py:23 views.py:130
 msgid "smart links"
 msgstr "الروابط الذكية"
 
@@ -140,7 +140,7 @@ msgstr "is in regular expression (case insensitive)"
 msgid "title"
 msgstr "عنوان"
 
-#: models.py:13 views.py:135
+#: models.py:13 views.py:133
 msgid "dynamic title"
 msgstr "عنوان متغير"
 
@@ -154,11 +154,11 @@ msgstr ""
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
 
-#: models.py:14 models.py:33 views.py:136 views.py:232
+#: models.py:14 models.py:33 views.py:134 views.py:229
 msgid "enabled"
 msgstr "مشغل"
 
-#: models.py:22 models.py:27 views.py:296 views.py:330
+#: models.py:22 models.py:27 views.py:293 views.py:327
 msgid "smart link"
 msgstr "رابط ذكي"
 
@@ -222,103 +222,103 @@ msgstr "حذف الروابط الذكية"
 msgid "Edit smart links"
 msgstr "تحرير الروابط الذكية"
 
-#: views.py:41
+#: views.py:39
 msgid "No action selected."
 msgstr "لم يتم اختيار اجراء"
 
-#: views.py:60
+#: views.py:58
 #, python-format
 msgid "documents in smart link: %(group)s"
 msgstr "وثائق في الارتباط الذكي : %(group)s"
 
-#: views.py:76
+#: views.py:74
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "خطأ بالاستعلام عن الرابط الذكي: %s"
 
-#: views.py:98
+#: views.py:96
 #, python-format
 msgid "smart links (%s)"
 msgstr "الروابط الذكية (%s)"
 
-#: views.py:112
+#: views.py:110
 msgid "There no defined smart links for the current document."
 msgstr "لا توجد هناك روابط ذكية للوثيقة الحالية."
 
-#: views.py:152
+#: views.py:150
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "تم انشاء الرابط الذكي %s بنجاح"
 
-#: views.py:159
+#: views.py:157
 msgid "Create new smart link"
 msgstr "إنشاء ارتباط ذكي جديد"
 
-#: views.py:175
+#: views.py:173
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "تم تحرير  الرابط الذكي %s بنجاح."
 
-#: views.py:184
+#: views.py:181
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "تحرير الرابط الذكي: %s"
 
-#: views.py:202
+#: views.py:199
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "تم مسح  الرابط الذكي %s بنجاح."
 
-#: views.py:204
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(error)s."
+#: views.py:201
+#, fuzzy, python-format
+msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
 msgstr "خطأ بمسح الرابط الذكي: %(smart_link)s; %(error)s."
 
-#: views.py:213
+#: views.py:210
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "هل أنت متأكد من مسح الرابط الذكي: %s ؟"
 
-#: views.py:229
+#: views.py:226
 #, python-format
 msgid "conditions for smart link: %s"
 msgstr "الشروط للرابط الذكي: %s"
 
-#: views.py:254
+#: views.py:251
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "تم انشاء شرط الرابط الذكي \"%s\" بنجاح."
 
-#: views.py:261
+#: views.py:258
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "أضف شرط جديد للرابط الذكي: \"%s\""
 
-#: views.py:283
+#: views.py:280
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "تم تعديل شرط الرابط الذكي \"%s\" بنجاح."
 
-#: views.py:290
+#: views.py:287
 msgid "Edit smart link condition"
 msgstr "تحرير شرط الرابط الذكي"
 
-#: views.py:297 views.py:331
+#: views.py:294 views.py:328
 msgid "condition"
 msgstr "شرط"
 
-#: views.py:317
+#: views.py:314
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "تم مسح شرط الرابط الذكي \"%s\" بنجاح."
 
-#: views.py:319
-#, python-format
+#: views.py:316
+#, fuzzy, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
+"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr "خطأ أثناء مسح شرط الرابط الذكي %(smart_link_condition)s; %(error)s."
 
-#: views.py:333
+#: views.py:330
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr "هل أنت متأكد أنك تريد حذف شرط الرابط الذكي: \"%s\"؟"

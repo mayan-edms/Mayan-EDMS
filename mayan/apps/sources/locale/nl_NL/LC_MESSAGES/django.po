@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:35-0400\n"
+"POT-Creation-Date: 2014-07-31 19:54-0400\n"
 "PO-Revision-Date: 2013-11-20 13:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
@@ -19,24 +19,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:50 widgets.py:39
+#: __init__.py:50
 msgid "thumbnail"
 msgstr "thumbnail"
 
-#: forms.py:34 forms.py:59
+#: __init__.py:62
+msgid "Returns a list of all the staging folders and the files they contain."
+msgstr ""
+
+#: forms.py:39 forms.py:64
 msgid "Expand compressed files"
 msgstr "Uitpakken gecomprimeerde bestanden"
 
-#: forms.py:35 forms.py:60
+#: forms.py:40 forms.py:65
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr ""
 "Upload een gecomprimeerd archief van bestanden als individuele documenten"
 
-#: forms.py:43
+#: forms.py:48
 msgid "Staging file"
 msgstr "Tijdelijk bestand"
 
-#: forms.py:50
+#: forms.py:55
 msgid "File"
 msgstr "Bestand"
 
@@ -50,51 +54,47 @@ msgstr "'upload' nieuwe versie"
 msgid "clone metadata"
 msgstr "Huidige 'metadata'"
 
-#: links.py:16
-msgid "preview"
-msgstr "preview"
-
-#: links.py:17 links.py:25 links.py:31
+#: links.py:16 links.py:24 links.py:30
 msgid "delete"
 msgstr "verwijder"
 
-#: links.py:19
+#: links.py:18
 msgid "sources"
 msgstr "bronnen"
 
-#: links.py:20 literals.py:53 models.py:184
+#: links.py:19 literals.py:53 models.py:191
 msgid "web forms"
 msgstr "webformulieren"
 
-#: links.py:21 models.py:171
+#: links.py:20 models.py:178
 msgid "staging folders"
 msgstr "tijdelijke mappen"
 
-#: links.py:22 models.py:219
+#: links.py:21 models.py:226
 msgid "watch folders"
 msgstr "controlemappen"
 
-#: links.py:24 links.py:30
+#: links.py:23 links.py:29
 msgid "edit"
 msgstr "bewerk"
 
-#: links.py:26
+#: links.py:25
 msgid "add new source"
 msgstr "toevoegen van nieuwe bron"
 
-#: links.py:28
+#: links.py:27
 msgid "transformations"
 msgstr "transformaties"
 
-#: links.py:29
+#: links.py:28
 msgid "add transformation"
 msgstr "toevoegen transformatie"
 
-#: links.py:33
+#: links.py:32
 msgid "Document sources"
 msgstr "Documentbronnen"
 
-#: links.py:35
+#: links.py:34
 msgid "upload new version"
 msgstr "'upload' nieuwe versie"
 
@@ -150,7 +150,7 @@ msgstr "Printer"
 msgid "Empty printer"
 msgstr "Leeg printer"
 
-#: literals.py:47 models.py:183
+#: literals.py:47 models.py:190
 msgid "web form"
 msgstr "webformulier"
 
@@ -170,119 +170,126 @@ msgstr "server tijdelijke mappen"
 msgid "server watch folders"
 msgstr "server voor controlemappen"
 
-#: models.py:34
+#: models.py:36
 msgid "title"
 msgstr "titel"
 
-#: models.py:35
+#: models.py:37
 msgid "enabled"
 msgstr "ingeschakeld"
 
-#: models.py:36
+#: models.py:38
 msgid "whitelist"
 msgstr "whitelist"
 
-#: models.py:37
+#: models.py:39
 msgid "blacklist"
 msgstr "blacklist"
 
-#: models.py:139
+#: models.py:136
 msgid "icon"
 msgstr "icon"
 
-#: models.py:139
+#: models.py:136
 msgid "An icon to visually distinguish this source."
 msgstr "Een icoon om deze bron visueel te onderscheiden."
 
-#: models.py:155 models.py:191
+#: models.py:152 models.py:198
 msgid "folder path"
 msgstr "pad naar map"
 
-#: models.py:155 models.py:191
+#: models.py:152 models.py:198
 msgid "Server side filesystem path."
 msgstr "pad naar filesysteem server"
 
-#: models.py:156
+#: models.py:153
 msgid "preview width"
 msgstr "breedte van preview afbeelding"
 
-#: models.py:156
+#: models.py:153
 msgid "Width value to be passed to the converter backend."
 msgstr "Breedte waarde die moet worden doorgegeven aan de converter backend."
 
-#: models.py:157
+#: models.py:154
 msgid "preview height"
 msgstr "hoogte van preview afbeelding"
 
-#: models.py:157
+#: models.py:154
 msgid "Height value to be passed to the converter backend."
 msgstr "Hoogte waarde die moet worden doorgegeven aan de converter backend."
 
-#: models.py:158 models.py:179 models.py:192
+#: models.py:155 models.py:186 models.py:199
 msgid "uncompress"
 msgstr "uitpakken"
 
-#: models.py:158 models.py:179 models.py:192
+#: models.py:155 models.py:186 models.py:199
 msgid "Whether to expand or not compressed archives."
 msgstr "Keuze om te expanderen of uitpakken van archief. (TODO: review this)"
 
-#: models.py:159 models.py:193
+#: models.py:156 models.py:200
 msgid "delete after upload"
 msgstr "verwijderen na 'upload'"
 
-#: models.py:159 models.py:193
+#: models.py:156 models.py:200
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Verwijder het bestand nadat de 'upload' succesvol is voltooid."
 
-#: models.py:170
+#: models.py:174
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr ""
+"Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. "
+"Foutmelding: %s"
+
+#: models.py:177
 msgid "staging folder"
 msgstr "tijdelijke map"
 
-#: models.py:194
+#: models.py:201
 msgid "interval"
 msgstr "interval"
 
-#: models.py:194
+#: models.py:201
 msgid ""
 "Inverval in seconds where the watch folder path is checked for new documents."
 msgstr ""
 "Controle periode (in seconden) waarop in het controle pad wordt "
 "gecontroleerd op nieuwe documenten."
 
-#: models.py:218
+#: models.py:225
 msgid "watch folder"
 msgstr "controle folder"
 
-#: models.py:223
+#: models.py:230
 msgid "Enter a valid value."
 msgstr "Voer een valide waarde in."
 
-#: models.py:251 views.py:612
+#: models.py:258 views.py:563
 msgid "order"
 msgstr "volgorde"
 
-#: models.py:252 views.py:613 views.py:650 views.py:680
+#: models.py:259 views.py:564 views.py:601 views.py:631
 msgid "transformation"
 msgstr "transformeren"
 
-#: models.py:253 views.py:614
+#: models.py:260 views.py:565
 msgid "arguments"
 msgstr "argumenten"
 
-#: models.py:253
+#: models.py:260
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Gebruik woordenboeken om argumenten te identificeren. Bijvoorbeeld: %s"
 
-#: models.py:264
+#: models.py:270
 msgid "document source transformation"
 msgstr "transformatie van het bron document"
 
-#: models.py:265
+#: models.py:271
 msgid "document source transformations"
 msgstr "transformaties van het bron document"
 
-#: models.py:272 models.py:273
+#: models.py:278 models.py:279
 msgid "out of process"
 msgstr "'out of process'"
 
@@ -306,95 +313,78 @@ msgstr "Verwijder documentbronnen"
 msgid "Create new document sources"
 msgstr "Aanmaken van een nieuwe documentbron"
 
-#: staging.py:28
-#, python-format
-msgid "Unable get list of staging files: %s"
-msgstr ""
-"Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. "
-"Foutmelding: %s"
-
-#: staging.py:111
-#, python-format
-msgid "Unable to upload staging file: %s"
-msgstr "Niet mogelijk om tijdelijk bestand te 'uploaden'. Foutmelding: %s"
-
-#: staging.py:121
-#, python-format
-msgid "Unable to delete staging file: %s"
-msgstr "Niet mogelijk om tijdelijk bestand te verwijderen. Foutmelding: %s"
-
 #: utils.py:35
 msgid "Whitelist Blacklist validation error."
 msgstr "'Whitelist', 'Blacklist' validatie fout."
 
-#: views.py:115
+#: views.py:111
 msgid "here"
 msgstr "hier"
 
-#: views.py:120
+#: views.py:116
 msgid "Upload sources"
 msgstr "'Upload' bronnen"
 
-#: views.py:122
+#: views.py:118
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
 msgstr "Er zijn geen documentbronnen gedefinieerd of ingeschakeld."
 
-#: views.py:123
+#: views.py:119
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
 msgstr ""
 "Selecteer %(setup_link)s om documentbronnen toe te voegen of in te schakelen."
 
-#: views.py:181
+#: views.py:177
 msgid "New document version uploaded successfully."
 msgstr "'Upload' van nieuwe document versie succesvol."
 
-#: views.py:185
+#: views.py:181
 msgid "File uploaded successfully."
 msgstr "'Upload' van bestand succesvol."
 
-#: views.py:188
+#: views.py:184
 msgid "File uncompressed successfully and uploaded as individual files."
 msgstr ""
 "Bestands-archief succesvol uitgepakt en ge-upload als afzonderlijke besanden."
 
-#: views.py:191
+#: views.py:187
 msgid "File was not a compressed file, uploaded as it was."
 msgstr ""
 "Bestand was geen gecomprimeerd archief. Bestand is in orginele formaat ge-"
 "upload."
 
-#: views.py:195 views.py:277
+#: views.py:191 views.py:272
 msgid "New version uploads are not allowed for this document."
 msgstr "'uploads' van nieuwe versies voor dit document, zijn niet toegestaan."
 
-#: views.py:199 views.py:281
+#: views.py:195 views.py:276
 #, python-format
 msgid "Unhandled exception: %s"
 msgstr "Unhandled exception: %s"
 
-#: views.py:208
+#: views.py:204
 #, python-format
 msgid "upload a new version from source: %s"
 msgstr "'upload' een nieuwe versie van bestandbron: %s"
 
-#: views.py:210
+#: views.py:206
 #, python-format
 msgid "upload a local document from source: %s"
 msgstr "'upload' een locaal document van documentbron: %s"
 
-#: views.py:257
+#: views.py:253
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
 msgstr "Documentversie van tijdelijk bestand: %s, succesvol ge-'upload'."
 
-#: views.py:260
+#: views.py:256
 #, python-format
 msgid "Staging file: %s, uploaded successfully."
 msgstr "'Upload' van tijdelijk bestand: %s, is succesvol."
 
-#: views.py:263
+#: views.py:259
 #, python-format
 msgid ""
 "Staging file: %s, uncompressed successfully and uploaded as individual files."
@@ -402,137 +392,132 @@ msgstr ""
 "Tijdelijk archiefbestand: %s, succesvol ge-'upload, uitgepakt en opgeslagen "
 "als individuele files."
 
-#: views.py:266
+#: views.py:262
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
 msgstr ""
 "Tijdelijk archiefbestand: %s, was geen gecomprimeerd archief. Opgeslagen als "
 "een enkelvoudig bestand."
 
-#: views.py:271
+#: views.py:266
 #, python-format
 msgid "Staging file: %s, deleted successfully."
 msgstr "Tijdelijke bestand: %s, succesvol verwijderd."
 
-#: views.py:296
+#: views.py:290
 #, python-format
 msgid "upload a new version from staging source: %s"
 msgstr "'upload' een nieuwe versie van tijdelijke bestandsbron: %s"
 
-#: views.py:298
+#: views.py:292
 #, python-format
 msgid "upload a document from staging source: %s"
 msgstr "'upload' een document van tijdelijke bron: %s"
 
-#: views.py:311
+#: views.py:305
 msgid "files in staging path"
 msgstr "bestanden in tijdelijk pad"
 
-#: views.py:343
+#: views.py:337
 msgid "Current document type"
 msgstr "Huidige documentsoort"
 
-#: views.py:344
+#: views.py:338
 msgid "None"
 msgstr "Niets"
 
-#: views.py:351
+#: views.py:345
 msgid "Current metadata"
 msgstr "Huidige 'metadata'"
 
-#: views.py:389 views.py:408
-#, python-format
-msgid "Staging file transformation error: %(error)s"
-msgstr "Transformatie fout in tijdelijk bestand. Foutmelding: %(error)s"
-
-#: views.py:431
+#: views.py:382
 msgid "Staging file delete successfully."
 msgstr "Tijdelijk bestand succesvol verwijderd."
 
-#: views.py:433
+#: views.py:384
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr "Fout bij het verwijderen van tijdelijk bestand. Foutmelding: %s."
 
-#: views.py:493
+#: views.py:444
 msgid "Source edited successfully"
 msgstr "Documentbron succesvol bewerkt"
 
-#: views.py:496
+#: views.py:447
 #, python-format
 msgid "Error editing source; %s"
 msgstr "Fout bij bewerken van documentbron. Foutmelding: %s"
 
-#: views.py:501
+#: views.py:452
 #, python-format
 msgid "edit source: %s"
 msgstr "bewerk documentbron: %s"
 
-#: views.py:506 views.py:546 views.py:608 views.py:649 views.py:679
-#: views.py:722
+#: views.py:457 views.py:497 views.py:559 views.py:600 views.py:630
+#: views.py:673
 msgid "source"
 msgstr "documentbron"
 
-#: views.py:535
+#: views.py:486
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr "Documentbron \"%s\" succesvol verwijderd."
 
-#: views.py:537
+#: views.py:488
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr ""
 "Fout bij verwijderen documentbron \"%(source)s\". Foutmelding: %(error)s"
 
-#: views.py:544
+#: views.py:495
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr "Bent u er zeker van dat u documentbron: %s, wenst te verwijderen?"
 
-#: views.py:576
+#: views.py:527
 msgid "Source created successfully"
 msgstr "Documentbron succesvol aangemaakt"
 
-#: views.py:579
+#: views.py:530
 #, python-format
 msgid "Error creating source; %s"
 msgstr "Fout bij het aanmaken van documentbron. Foutmelding: %s."
 
-#: views.py:584
+#: views.py:535
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Aanmaken van nieuw documentbron van type: %s"
 
-#: views.py:606
+#: views.py:557
 #, python-format
 msgid "transformations for: %s"
 msgstr "transformaties voor: %s"
 
-#: views.py:636
+#: views.py:587
 msgid "Source transformation edited successfully"
 msgstr "Documentbron transformatie succesvol bewerkt."
 
-#: views.py:639
+#: views.py:590
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr "Fout bij het bewerken van documentbron transformatie. Foutmelding: %s"
 
-#: views.py:644
+#: views.py:595
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "Bewerk transformatie: %s"
 
-#: views.py:667
+#: views.py:618
 msgid "Source transformation deleted successfully."
 msgstr "Documentbron transformatie succesvol verwijderd."
 
-#: views.py:669
+#: views.py:620
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr ""
 "Fout bij verwijderen van documentbron transformatie. Foutmelding: %(error)s"
 
-#: views.py:682
+#: views.py:633
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
@@ -540,19 +525,24 @@ msgstr ""
 "Bent u er zeker van dat u de documentbron transformatie: , "
 "\"%(transformation)s\" wenst te verwijderen."
 
-#: views.py:712
+#: views.py:663
 msgid "Source transformation created successfully"
 msgstr "Documentbron transformatie succesvol aangemaakt."
 
-#: views.py:715
+#: views.py:666
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr "Fout bij het aanmaken van document transformatie: %s"
 
-#: views.py:724
+#: views.py:675
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "Aanmaken van een nieuwe transformatie voor documentbron: %s"
+
+#: widgets.py:40
+#, fuzzy
+msgid "staging file page image"
+msgstr "Tijdelijk bestand"
 
 #: wizards.py:53
 msgid "step 1 of 3: Document type"
@@ -569,3 +559,15 @@ msgstr ""
 #: wizards.py:73
 msgid "Next step"
 msgstr ""
+
+#~ msgid "preview"
+#~ msgstr "preview"
+
+#~ msgid "Unable to upload staging file: %s"
+#~ msgstr "Niet mogelijk om tijdelijk bestand te 'uploaden'. Foutmelding: %s"
+
+#~ msgid "Unable to delete staging file: %s"
+#~ msgstr "Niet mogelijk om tijdelijk bestand te verwijderen. Foutmelding: %s"
+
+#~ msgid "Staging file transformation error: %(error)s"
+#~ msgstr "Transformatie fout in tijdelijk bestand. Foutmelding: %(error)s"

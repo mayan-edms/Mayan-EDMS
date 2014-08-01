@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 21:33-0400\n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
 "PO-Revision-Date: 2013-05-14 06:21+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -28,7 +28,7 @@ msgstr "Условия поиска"
 msgid "search"
 msgstr "поиск"
 
-#: links.py:4 views.py:79
+#: links.py:4 views.py:78
 msgid "advanced search"
 msgstr "расширенный поиск"
 
@@ -60,20 +60,20 @@ msgstr "недавний поиск"
 msgid "recent searches"
 msgstr "последние запросы"
 
-#: views.py:45
+#: views.py:44
 #, python-format
 msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr "результаты (%(shown_result_count)s из %(result_count)s)"
 
-#: views.py:50
+#: views.py:49
 msgid "results"
 msgstr "результаты"
 
-#: views.py:67
+#: views.py:66
 msgid "type"
 msgstr "тип"
 
-#: views.py:83 views.py:93 views.py:95 templatetags/search_tags.py:19
+#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
 #: templatetags/search_tags.py:20
 msgid "Search"
 msgstr "Поиск"
