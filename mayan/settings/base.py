@@ -183,7 +183,7 @@ STATIC_URL = '/static/'
 
 sys.path.append(os.path.join(BASE_DIR, 'mayan', 'apps'))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'mayan', 'media', 'static')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
