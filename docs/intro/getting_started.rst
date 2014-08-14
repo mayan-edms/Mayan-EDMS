@@ -13,7 +13,7 @@ Document sources
 |Setup tab| |Right arrow| |Sources button| |Right arrow| |Web form tab|
  
 Before anything else you must define from where you will feed **Mayan EDMS**
-document for it to process and store.  To do this first go to the ``Setup`` tab
+documents for it to process and store.  To do this first go to the ``Setup`` tab
 then to the ``Sources`` button.  To obtain the fastest working setup, create a
 new source of type ``Web forms``.  This source will open a browser file upload
 dialog, hence the name ``Web forms``.  Name it something simple like ``Local documents``,
@@ -44,10 +44,10 @@ Setting your document types
 |Setup tab| |Right arrow| |Document types button|
 
 If none of the available bootstrap setups fit your needs and your wish to
-setup **Mayan EDMS** from scratch the first thing to consider are which are
-going to be your document types.  Examples of document types are: ``Legal documents``,
+setup **Mayan EDMS** from scratch, the first thing to consider is what your document 
+types will be. Examples of document types are: ``Legal documents``, 
 ``Internal documents``, ``Medical records``, ``Designing specifications``, ``Permits``.
-A document type represent a group, a type, a class of documents which share some
+A document type represents a group, a type, a class of documents which share some
 common properties.  A good indicator that can help you determine you document types
 is what kind of information or ``metadata`` is attached to the documents.
 
@@ -59,9 +59,9 @@ Defining metadata
 With your document types defined it should be much easier now to define the required
 ``metadata`` for each of these document types.  When creating ``metadata`` types,
 the first thing that will be needed is the internal name with which this metadata
-type will be references in other areas of **Mayan EDMS**.  Internal name is like a
+type will be referenced in other areas of **Mayan EDMS**.  Internal name is like a
 variable so it should not contain spaces or uppercase characters.  After the internal name,
-enter the name that will visible to you and your users, this is usuall the same as the
+enter the name that will be visible to you and your users, this is usually the same as the
 internal name but with proper capitalization and spacing.  ``metadata`` types
 can have default values to speed up data entry, default static values are enclosed in
 quotes, ie::
@@ -85,10 +85,10 @@ list of quoted values, for example::
 Instead of a free entry text field, your users will get a dropdown list of years.
 You can also use a ``Python`` expression to generate the lookup list.
 
-When you are uploading new document a choice of metadata types will be presented
+When you are uploading a new document, a choice of metadata types will be presented
 and you choose which of those you wish to enter for the document you are about
 to upload.  To speed data entry you can also match which metadata types will
-be preselected when uploading a document of certain type.  To match metadata types
+be preselected when uploading a document of a certain type.  To match metadata types
 to document types, go to the ``setup`` tab, ``document types`` button, and
 lastly ``Default metadata``.  Choose the desired metadata for the document type
 currently selected and press ``Add``.  From now on whenever you upload a document of
@@ -96,7 +96,8 @@ this type, the related metadata types for this document type will be preselected
 
 After defining all your metadata types you can also define your indexes to
 let **Mayan EDMS** automatically categorize your documents based on their metadata.
-Refer to the chapter named :doc:`Indexes </topics/indexes>` for examples on how to use the document indexes. 
+Refer to the chapter named :doc:`Indexes </topics/indexes>` for examples on how to 
+use the document indexes. 
 
 
 .. |Setup tab| image:: /_static/setup_tab.png
