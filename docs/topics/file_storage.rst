@@ -14,7 +14,7 @@ file serving software [#f1]_.
 **Mayan EDMS** components are as decoupled from each other as possible,
 storage in this case is very decoupled and its behavior is controlled
 not by the project but by the Storage progamming class.  Why this design?
-All the other part don't make any assumptions about the actual file
+All the other parts don't make any assumptions about the actual file
 storage, so that **Mayan EDMS** can work saving files locally, over the
 network or even across the internet and still operate exactly the same.
 
