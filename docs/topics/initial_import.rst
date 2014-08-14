@@ -7,7 +7,7 @@ Bulk document import
 
 **Mayan EDMS** has the ability to individually upload the contents of compressed 
 files, however by nature of being a web based application it is bounded by the 
-limitations of the HTTP protocol, this imposes a limit on the file size and 
+limitations of the HTTP protocol. This imposes a limit on the file size and 
 the amount of time **Mayan EDMS** may keep a connection open while it processes 
 compressed files.  When the desired amount of documents is bigger than what 
 these limitations allow, **Mayan EDMS** provides a command line tool for out of 
@@ -30,19 +30,19 @@ Bulk user import
 ----------------
 
 As well as providing bulk document import functionality **Mayan EDMS** also
-includes a management command to import a large number users
+includes a management command to import a large number of users
 from a CSV file.  The command line options for this feature are as
 follow::
 
   $ ./manage.py import_users --noinput --password=welcome123 --skip-repeated user_list.csv 
 
-The CSV field order must be: username, first name, last name and email, any other 
-column after those is ignored.
+The CSV field order must be: username, first name, last name and email, any columns after 
+those are ignored.
 
 **Optional arguments**
 
 * The ``--noinput`` argument skips confirmation and starts the import immediately.
 * The ``--password`` argument allows specifing what default password will be assigned
   to all the new users that are imported.
-* The ``--skip-repeated`` tells the importedr to not stop when finding
+* The ``--skip-repeated`` tells the importer to not stop when finding
   that a user already exists in the database.
