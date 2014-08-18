@@ -11,7 +11,7 @@ image_cache/
 build/
 _build/
 gpg_home/
-/static/
+/mayan/media/static/
 /whoosh_index/
 /fabfile_install
 /venv/
