@@ -20,3 +20,4 @@ gpg_home/
 .idea/
 static_collected/
 *egg-info*
+mayan/settings/local.py 
