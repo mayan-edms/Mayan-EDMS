@@ -15,7 +15,7 @@ def namespace_list(request):
     return render_to_response('generic_list.html', {
         'object_list': StatisticNamespace.get_all(),
         'hide_link': True,
-        'title': _(u'statistics namespaces'),
+        'title': _(u'Statistics namespaces'),
         'list_object_variable_name': 'namespace',
     }, context_instance=RequestContext(request))
 
@@ -31,7 +31,7 @@ def namespace_details(request, namespace_id):
         'namespace': namespace,
         'object_list': namespace.statistics,
         'hide_link': True,
-        'title': _(u'namespace details for: %s') % namespace,
+        'title': _(u'Namespace details for: %s') % namespace,
         'object_name': _(u'namespace'),
     }, context_instance=RequestContext(request))
 
@@ -51,5 +51,5 @@ def execute(request, statistic_id):
         ],
         'object_list': statictic.get_results(),
         'hide_link': True,
-        'title': _(u'results for: %s') % statictic,
+        'title': _(u'Results for: %s') % statictic,
     }, context_instance=RequestContext(request))
