@@ -131,7 +131,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
     context = {
         'subtemplates_list': [
             {
-                'name': 'generic_form_subtemplate.html',
+                'name': 'main/generic_form_subtemplate.html',
                 'grid': 6,
                 'context': {
                     'form': unselected_list,
@@ -141,7 +141,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 }
             },
             {
-                'name': 'generic_form_subtemplate.html',
+                'name': 'main/generic_form_subtemplate.html',
                 'grid': 6,
                 'grid_clear': True,
                 'context': {
@@ -157,7 +157,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -168,7 +168,7 @@ def current_user_details(request):
     form = UserForm_view(instance=request.user)
 
     return render_to_response(
-        'generic_form.html', {
+        'main/generic_form.html', {
             'form': form,
             'title': _(u'current user details'),
             'read_only': True,
@@ -196,7 +196,7 @@ def current_user_edit(request):
         form = UserForm(instance=request.user)
 
     return render_to_response(
-        'generic_form.html', {
+        'main/generic_form.html', {
             'form': form,
             'next': next,
             'title': _(u'edit current user details'),
@@ -209,7 +209,7 @@ def login_view(request):
     Control how the use is to be authenticated, options are 'email' and
     'username'
     """
-    kwargs = {'template_name': 'login.html'}
+    kwargs = {'template_name': 'main/login.html'}
 
     if LOGIN_METHOD == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
@@ -228,7 +228,7 @@ def license_view(request):
     """
     form = LicenseForm()
     return render_to_response(
-        'generic_detail.html', {
+        'main/generic_detail.html', {
             'form': form,
             'title': _(u'License'),
         },
@@ -244,7 +244,7 @@ def password_change_view(request):
     return password_change(
         request,
         extra_context=context,
-        template_name='password_change_form.html',
+        template_name='main/password_change_form.html',
         post_change_redirect=reverse('password_change_done'),
     )
 
@@ -294,7 +294,7 @@ class MayanViewMixin(object):
 
 
 class SingleObjectEditView(MayanPermissionCheckMixin, MayanViewMixin, UpdateView):
-    template_name = 'generic_form.html'
+    template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
         result = super(SingleObjectEditView, self).form_invalid(form)
@@ -318,7 +318,7 @@ class SingleObjectEditView(MayanPermissionCheckMixin, MayanViewMixin, UpdateView
 
 
 class SingleObjectCreateView(MayanPermissionCheckMixin, MayanViewMixin, CreateView):
-    template_name = 'generic_form.html'
+    template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
         result = super(SingleObjectCreateView, self).form_invalid(form)
@@ -341,7 +341,7 @@ class SingleObjectCreateView(MayanPermissionCheckMixin, MayanViewMixin, CreateVi
 
 
 class SingleObjectDeleteView(MayanPermissionCheckMixin, MayanViewMixin, DeleteView):
-    template_name = 'generic_confirm.html'
+    template_name = 'main/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
         context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
@@ -369,4 +369,4 @@ class SingleObjectDeleteView(MayanPermissionCheckMixin, MayanViewMixin, DeleteVi
 
 class SingleObjectListView(MayanPermissionCheckMixin, MayanViewMixin, ListView):
     # TODO: filter object_list by permission
-    template_name = 'generic_list.html'
+    template_name = 'main/generic_list.html'

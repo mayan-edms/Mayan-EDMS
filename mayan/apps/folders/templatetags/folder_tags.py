@@ -8,7 +8,7 @@ from folders.forms import AddDocumentForm
 register = Library()
 
 
-@register.inclusion_tag('generic_form_subtemplate.html', takes_context=True)
+@register.inclusion_tag('main/generic_form_subtemplate.html', takes_context=True)
 def get_add_document_to_folder_form(context):
     context.update({
         'form': AddDocumentForm(user=context['request'].user),

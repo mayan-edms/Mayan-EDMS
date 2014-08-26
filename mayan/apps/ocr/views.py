@@ -48,7 +48,7 @@ def queue_document_list(request, queue_name='default'):
         'multi_select_as_buttons': True,
         'sidebar_subtemplates_list': [
             {
-                'name': 'generic_subtemplate.html',
+                'name': 'main/generic_subtemplate.html',
                 'context': {
                     'side_bar': True,
                     'title': _(u'document queue properties'),
@@ -58,7 +58,7 @@ def queue_document_list(request, queue_name='default'):
         ]
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -104,7 +104,7 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
     elif len(queue_documents) > 1:
         context['title'] = _(u'Are you sure you wish to delete queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -198,7 +198,7 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
     elif len(queue_documents) > 1:
         context['title'] = _(u'Are you sure you wish to re-queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -223,7 +223,7 @@ def document_queue_disable(request, document_queue_id):
         messages.success(request, _(u'Document queue: %s, stopped successfully.') % document_queue)
         return HttpResponseRedirect(next)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'queue': document_queue,
         'navigation_object_name': 'queue',
         'title': _(u'Are you sure you wish to disable document queue: %s') % document_queue,
@@ -250,7 +250,7 @@ def document_queue_enable(request, document_queue_id):
         messages.success(request, _(u'Document queue: %s, activated successfully.') % document_queue)
         return HttpResponseRedirect(next)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'queue': document_queue,
         'navigation_object_name': 'queue',
         'title': _(u'Are you sure you wish to activate document queue: %s') % document_queue,
@@ -267,7 +267,7 @@ def all_document_ocr_cleanup(request):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
 
     if request.method != 'POST':
-        return render_to_response('generic_confirm.html', {
+        return render_to_response('main/generic_confirm.html', {
             'previous': previous,
             'next': next,
             'title': _(u'Are you sure you wish to clean up all the pages content?'),

@@ -266,7 +266,7 @@ def get_multi_item_links(parser, token):
     return GetNavigationLinks(menu_name=menu_name, links_dict=multi_object_navigation, var_name=var_name)
 
 
-@register.inclusion_tag('generic_form_instance.html', takes_context=True)
+@register.inclusion_tag('main/generic_form_instance.html', takes_context=True)
 def get_multi_item_links_form(context):
     new_context = copy.copy(context)
     new_context.update({

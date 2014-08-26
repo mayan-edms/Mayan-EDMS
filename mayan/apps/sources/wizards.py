@@ -14,7 +14,7 @@ from metadata.forms import MetadataSelectionForm, MetadataFormSet
 
 class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
     form_list = [DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet]
-    template_name = 'generic_wizard.html'
+    template_name = 'main/generic_wizard.html'
     extra_context = {}
     permissions_required = [PERMISSION_DOCUMENT_CREATE]
 

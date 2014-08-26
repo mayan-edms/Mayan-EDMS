@@ -14,7 +14,7 @@ def get_document_indexing_subtemplate(document):
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
     return {
-            'name': 'generic_list_subtemplate.html',
+            'name': 'main/generic_list_subtemplate.html',
             'context': {
                 'title': _(u'document indexes'),
                 'object_list': object_list,

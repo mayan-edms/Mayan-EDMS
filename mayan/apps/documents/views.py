@@ -79,7 +79,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -117,7 +117,7 @@ def document_view(request, document_id, advanced=False):
 
         subtemplates_list.append(
             {
-                'name': 'generic_form_subtemplate.html',
+                'name': 'main/generic_form_subtemplate.html',
                 'context': {
                     'form': document_properties_form,
                     'object': document,
@@ -129,7 +129,7 @@ def document_view(request, document_id, advanced=False):
         preview_form = DocumentPreviewForm(document=document)
         subtemplates_list.append(
             {
-                'name': 'generic_form_subtemplate.html',
+                'name': 'main/generic_form_subtemplate.html',
                 'context': {
                     'form': preview_form,
                     'object': document,
@@ -141,7 +141,7 @@ def document_view(request, document_id, advanced=False):
 
         subtemplates_list.append(
             {
-                'name': 'generic_form_subtemplate.html',
+                'name': 'main/generic_form_subtemplate.html',
                 'context': {
                     'title': _(u'document data'),
                     'form': content_form,
@@ -150,7 +150,7 @@ def document_view(request, document_id, advanced=False):
             }
         )
 
-    return render_to_response('generic_detail.html', {
+    return render_to_response('main/generic_detail.html', {
         'object': document,
         'document': document,
         'subtemplates_list': subtemplates_list,
@@ -204,7 +204,7 @@ def document_delete(request, document_id=None, document_id_list=None):
     elif len(documents) > 1:
         context['title'] = _(u'Are you sure you wish to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -247,7 +247,7 @@ def document_edit(request, document_id):
             form = DocumentForm_edit(instance=document, initial={
                 'description': document.description})
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'form': form,
         'object': document,
     }, context_instance=RequestContext(request))
@@ -295,7 +295,7 @@ def document_download(request, document_id=None, document_id_list=None, document
     subtemplates_list = []
     subtemplates_list.append(
         {
-            'name': 'generic_list_subtemplate.html',
+            'name': 'main/generic_list_subtemplate.html',
             'context': {
                 'title': _(u'documents to be downloaded'),
                 'object_list': document_versions,
@@ -373,7 +373,7 @@ def document_download(request, document_id=None, document_id_list=None, document
         context['object'] = document_versions[0].document
 
     return render_to_response(
-        'generic_form.html',
+        'main/generic_form.html',
         context,
         context_instance=RequestContext(request)
     )
@@ -404,7 +404,7 @@ def _find_duplicate_list(request, source_document_list=Document.objects.all(), i
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
     if confirmation and request.method != 'POST':
-        return render_to_response('generic_confirm.html', {
+        return render_to_response('main/generic_confirm.html', {
             'previous': previous,
             'title': _(u'Are you sure you wish to find all duplicates?'),
             'message': _(u'On large databases this operation may take some time to execute.'),
@@ -462,7 +462,7 @@ def document_update_page_count(request):
         })
         return HttpResponseRedirect(previous)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'previous': previous,
         'title': _(u'Are you sure you wish to update the page count for the office documents (%d)?') % qs.count(),
         'message': _(u'On large databases this operation may take some time to execute.'),
@@ -517,7 +517,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     elif len(documents) > 1:
         context['title'] = _(u'Are you sure you wish to clear all the page transformations for documents: %s?') % ', '.join([unicode(d) for d in documents])
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -531,7 +531,7 @@ def document_missing_list(request):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
 
     if request.method != 'POST':
-        return render_to_response('generic_confirm.html', {
+        return render_to_response('main/generic_confirm.html', {
             'previous': previous,
             'message': _(u'On large databases this operation may take some time to execute.'),
         }, context_instance=RequestContext(request))
@@ -541,7 +541,7 @@ def document_missing_list(request):
             if not storage_backend.exists(document.file):
                 missing_id_list.append(document.pk)
 
-        return render_to_response('generic_list.html', {
+        return render_to_response('main/generic_list.html', {
             'object_list': Document.objects.in_bulk(missing_id_list).values(),
             'title': _(u'missing documents'),
         }, context_instance=RequestContext(request))
@@ -571,7 +571,7 @@ def document_page_view(request, document_page_id):
     else:
         rotation_text = u''
 
-    return render_to_response('generic_detail.html', {
+    return render_to_response('main/generic_detail.html', {
         'page': document_page,
         'access_object': document_page.document,
         'navigation_object_name': 'page',
@@ -596,7 +596,7 @@ def document_page_text(request, document_page_id):
 
     document_page_form = DocumentPageForm_text(instance=document_page)
 
-    return render_to_response('generic_detail.html', {
+    return render_to_response('main/generic_detail.html', {
         'page': document_page,
         'navigation_object_name': 'page',
         'web_theme_hide_menus': True,
@@ -625,7 +625,7 @@ def document_page_edit(request, document_page_id):
     else:
         form = DocumentPageForm_edit(instance=document_page)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'form': form,
         'page': document_page,
         'navigation_object_name': 'page',
@@ -806,7 +806,7 @@ def document_print(request, document_id):
     else:
         form = PrintForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'form': form,
         'object': document,
         'title': _(u'print: %s') % document,
@@ -866,7 +866,7 @@ def document_type_list(request):
         'list_object_variable_name': 'document_type',
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -888,7 +888,7 @@ def document_type_edit(request, document_type_id):
     else:
         form = DocumentTypeForm(instance=document_type)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'edit document type: %s') % document_type,
         'form': form,
         'object_name': _(u'document type'),
@@ -934,7 +934,7 @@ def document_type_delete(request, document_type_id):
         'form_icon': u'layout_delete.png',
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -954,7 +954,7 @@ def document_type_create(request):
     else:
         form = DocumentTypeForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'create document type'),
         'form': form,
     },
@@ -981,7 +981,7 @@ def document_type_filename_list(request, document_type_id):
         ]
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -1005,7 +1005,7 @@ def document_type_filename_edit(request, document_type_filename_id):
     else:
         form = DocumentTypeFilenameForm(instance=document_type_filename)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'edit filename "%(filename)s" from document type "%(document_type)s"') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
@@ -1057,7 +1057,7 @@ def document_type_filename_delete(request, document_type_filename_id):
         'form_icon': u'database_delete.png',
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -1084,7 +1084,7 @@ def document_type_filename_create(request, document_type_id):
     else:
         form = DocumentTypeFilenameForm_create()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'create filename for document type: %s') % document_type,
         'form': form,
         'document_type': document_type,
@@ -1109,7 +1109,7 @@ def document_clear_image_cache(request):
 
         return HttpResponseRedirect(previous)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'previous': previous,
         'title': _(u'Are you sure you wish to clear the document image cache?'),
         'form_icon': u'camera_delete.png',
@@ -1160,7 +1160,7 @@ def document_version_list(request, document_pk):
         ]
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -1183,7 +1183,7 @@ def document_version_revert(request, document_version_pk):
 
         return HttpResponseRedirect(previous)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'previous': previous,
         'object': document_version.document,
         'title': _(u'Are you sure you wish to revert to this version?'),
@@ -1219,7 +1219,7 @@ def document_page_transformation_list(request, document_page_id):
         'hide_object': True,
     }
     return render_to_response(
-        'generic_list.html', context, context_instance=RequestContext(request)
+        'main/generic_list.html', context, context_instance=RequestContext(request)
     )
 
 
@@ -1241,7 +1241,7 @@ def document_page_transformation_create(request, document_page_id):
     else:
         form = DocumentPageTransformationForm(initial={'document_page': document_page})
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'form': form,
         'page': document_page,
         'navigation_object_name': 'page',
@@ -1269,7 +1269,7 @@ def document_page_transformation_edit(request, document_page_transformation_id):
     else:
         form = DocumentPageTransformationForm(instance=document_page_transformation)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'form': form,
         'transformation': document_page_transformation,
         'page': document_page_transformation.document_page,
@@ -1300,7 +1300,7 @@ def document_page_transformation_delete(request, document_page_transformation_id
         messages.success(request, _(u'Document page transformation deleted successfully.'))
         return HttpResponseRedirect(redirect_view)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'delete_view': True,
         'page': document_page_transformation.document_page,
         'transformation': document_page_transformation,

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 
 {% load i18n %}
 
@@ -16,12 +16,12 @@
 
             {% with wizard.form as form %}
             {% with 'true' as form_display_mode_table %}
-                {% include 'generic_form_subtemplate.html' %}
+                {% include 'main/generic_form_subtemplate.html' %}
             {% endwith %}
             {% endwith %}
         {% else %}
             {% with wizard.form as form %}
-                {% include 'generic_form_subtemplate.html' %}
+                {% include 'main/generic_form_subtemplate.html' %}
             {% endwith %}
         {% endif %}
     {% endwith %}

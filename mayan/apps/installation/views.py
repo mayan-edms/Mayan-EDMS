@@ -16,7 +16,7 @@ def namespace_list(request):
 
     Installation().get_properties()
 
-    return render_to_response('generic_list.html', {
+    return render_to_response('main/generic_list.html', {
         'object_list': PropertyNamespace.get_all(),
         'title': _(u'Installation property namespaces'),
         'hide_object': True,
@@ -32,7 +32,7 @@ def namespace_details(request, namespace_id):
     object_list = namespace.get_properties()
     title = _(u'Installation namespace details for: %s') % namespace.label
 
-    return render_to_response('generic_list.html', {
+    return render_to_response('main/generic_list.html', {
         'object_list': object_list,
         'hide_object': True,
         'title': title,

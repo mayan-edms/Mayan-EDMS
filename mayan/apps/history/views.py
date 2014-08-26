@@ -47,7 +47,7 @@ def history_list(request, object_list=None, title=None, extra_context=None):
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -70,7 +70,7 @@ def history_for_object(request, app_label, module_name, object_id):
         'hide_object': True,
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -90,7 +90,7 @@ def history_view(request, object_id):
         {'label': _(u'Additional details'), 'field': lambda x: x.get_processed_details() or _(u'None')},
     ])
 
-    return render_to_response('generic_detail.html', {
+    return render_to_response('main/generic_detail.html', {
         'title': _(u'details for: %s') % history.get_processed_summary(),
         'form': form,
     }, context_instance=RequestContext(request))

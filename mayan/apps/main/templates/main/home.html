@@ -1,18 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 
 {% load i18n %}
 
 {% load project_tags %}
-{% load version_tags %}
 
-{% block title %} :: {% trans 'About this program' %}{% endblock %}
 {% block content %}
-
     <div class="content tc">
-        <h3>{% project_name %} ({% trans 'Version' %} {% app_version 'mayan' %})</h3>
+        <h1>{% project_name %}</h1>
+        <img src="{{ STATIC_URL }}images/1068504_92921456.jpg" />
+        <h2>{% trans 'Django based open source document management system' %}</h2><hr>
     </div>
-    {% include 'project_description.html' %}
-
 {% endblock %}
 {% block footer %}
     <div id="footer">

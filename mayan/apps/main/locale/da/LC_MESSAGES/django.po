@@ -71,62 +71,62 @@ msgstr "Version"
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr ""
 
-#: templates/base.html:31
+#: templates/main/base.html:31
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:262
+#: templates/main/base.html:262
 msgid "User"
 msgstr "Bruger"
 
-#: templates/base.html:264
+#: templates/main/base.html:264
 msgid "Anonymous"
 msgstr "Anonym"
 
-#: templates/base.html:267
+#: templates/main/base.html:267
 msgid "User details"
 msgstr "Bruger detaljer"
 
-#: templates/base.html:284
+#: templates/main/base.html:284
 msgid "Login"
 msgstr "Log ind"
 
-#: templates/base.html:284
+#: templates/main/base.html:284
 msgid "Logout"
 msgstr "Log ud"
 
-#: templates/base.html:364
+#: templates/main/base.html:364
 msgid "Secondary menu"
 msgstr "Sekundær menu"
 
-#: templates/base.html:380
+#: templates/main/base.html:380
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Handlinger for %(name)s : %(navigation_object)s "
 
-#: templates/base.html:382 templates/base.html.py:425
+#: templates/main/base.html:382 templates/main/base.html.py:425
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Handlinger for: %(navigation_object)s "
 
-#: templates/base.html:385
+#: templates/main/base.html:385
 msgid "Available actions"
 msgstr "Mulige valg"
 
-#: templates/base.html:397 templates/base.html.py:440
+#: templates/main/base.html:397 templates/main/base.html.py:440
 msgid "Related actions"
 msgstr "Relaterede handlinger"
 
-#: templates/base.html:408 templates/base.html.py:453
+#: templates/main/base.html:408 templates/main/base.html.py:453
 msgid "Other available actions"
 msgstr "Andre mulige valg"
 
-#: templates/base.html:423
+#: templates/main/base.html:423
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Handlinger for %(object_name)s : %(navigation_object)s "
 
-#: templates/base.html:428
+#: templates/main/base.html:428
 msgid "Actions"
 msgstr "Handlinger"
 

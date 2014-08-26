@@ -51,7 +51,7 @@ def folder_list(request, queryset=None, extra_context=None):
 
     context['object_list'] = queryset
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -71,7 +71,7 @@ def folder_create(request):
     else:
         form = FolderForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'create folder'),
         'form': form,
     },
@@ -99,7 +99,7 @@ def folder_edit(request, folder_id):
     else:
         form = FolderForm(instance=folder)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'edit folder: %s') % folder,
         'form': form,
         'object': folder,
@@ -141,7 +141,7 @@ def folder_delete(request, folder_id):
         'form_icon': u'folder_delete.png',
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -216,7 +216,7 @@ def folder_add_document(request, document_id=None, document_id_list=None):
     elif len(documents) > 1:
         context['title'] = _(u'Add documents: %s to folder.') % ', '.join([unicode(d) for d in documents])
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -288,7 +288,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         context['title'] = _(u'Are you sure you wish to remove the documents: %(documents)s from the folder "%(folder)s"?') % {
             'documents': ', '.join([unicode(d) for d in folder_documents]), 'folder': folder}
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 

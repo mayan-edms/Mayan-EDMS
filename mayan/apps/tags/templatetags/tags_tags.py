@@ -9,7 +9,7 @@ from ..forms import AddTagForm
 register = Library()
 
 
-@register.inclusion_tag('generic_form_subtemplate.html', takes_context=True)
+@register.inclusion_tag('main/generic_form_subtemplate.html', takes_context=True)
 def get_add_tag_to_document_form(context):
     context.update({
         'form': AddTagForm(),

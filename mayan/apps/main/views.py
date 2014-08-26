@@ -17,7 +17,7 @@ def home(request):
     if DISABLE_HOME_VIEW:
         return HttpResponseRedirect(reverse('document_list_recent'))
     else:
-        return render_to_response('home.html', {},
+        return render_to_response('main/home.html', {},
             context_instance=RequestContext(request))
 
 
@@ -36,14 +36,14 @@ def maintenance_menu(request):
             except PermissionDenied:
                 pass
 
-    return render_to_response('tools.html', {
+    return render_to_response('main/tools.html', {
         'blocks': user_tools,
         'title': _(u'maintenance menu')
     }, context_instance=RequestContext(request))
 
 
 def diagnostics_view(request):
-    return render_to_response('diagnostics.html', {
+    return render_to_response('main/diagnostics.html', {
         'blocks': diagnostics,
         'title': _(u'Diagnostics')
     }, context_instance=RequestContext(request))

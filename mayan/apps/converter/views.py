@@ -30,7 +30,7 @@ def formats_list(request):
             'backend': GRAPHICS_BACKEND,
         }
 
-        return render_to_response('generic_list.html', context,
+        return render_to_response('main/generic_list.html', context,
             context_instance=RequestContext(request))
     else:
         raise PermissionDenied

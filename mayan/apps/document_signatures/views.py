@@ -72,7 +72,7 @@ def document_verify(request, document_pk):
             ]
         )
 
-    return render_to_response('generic_template.html', {
+    return render_to_response('main/generic_template.html', {
         'title': _(u'signature properties for: %s') % document,
         'object': document,
         'document': document,
@@ -107,7 +107,7 @@ def document_signature_upload(request, document_pk):
     else:
         form = DetachedSignatureForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'Upload detached signature for: %s') % document,
         'form_icon': 'key_delete.png',
         'next': next,
@@ -164,7 +164,7 @@ def document_signature_delete(request, document_pk):
             messages.error(request, _(u'Error while deleting the detached signature; %s') % exception)
             return HttpResponseRedirect(previous)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'title': _(u'Are you sure you wish to delete the detached signature from document: %s?') % document,
         'form_icon': 'pencil_delete.png',
         'next': next,

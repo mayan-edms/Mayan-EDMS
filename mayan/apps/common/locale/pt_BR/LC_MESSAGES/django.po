@@ -320,70 +320,70 @@ msgstr "Criar"
 msgid "Assign %(title)s %(object)s"
 msgstr "Atribuir %(title)s  %(object)s "
 
-#: templates/generic_confirm.html:5 templates/generic_confirm.html.py:19
+#: templates/main/generic_confirm.html:5 templates/main/generic_confirm.html.py:19
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templates/generic_confirm.html:17
+#: templates/main/generic_confirm.html:17
 msgid "Confirm delete"
 msgstr "Confirmar exclusão"
 
-#: templates/generic_confirm.html:33
+#: templates/main/generic_confirm.html:33
 msgid "form icon"
 msgstr "ícone de formulário"
 
-#: templates/generic_confirm.html:41
+#: templates/main/generic_confirm.html:41
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
 msgstr "Tem certeza de que deseja excluir %(object_name)s: %(object)s ?"
 
-#: templates/generic_confirm.html:43
+#: templates/main/generic_confirm.html:43
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
 msgstr "Tem certeza de que deseja excluir: %(object)s ?"
 
-#: templates/generic_confirm.html:51
+#: templates/main/generic_confirm.html:51
 msgid "Yes"
 msgstr "Sim"
 
-#: templates/generic_confirm.html:55
+#: templates/main/generic_confirm.html:55
 msgid "No"
 msgstr "Não"
 
-#: templates/generic_form_instance.html:40
-#: templates/generic_form_subtemplate.html:59
+#: templates/main/generic_form_instance.html:40
+#: templates/main/generic_form_subtemplate.html:59
 msgid "required"
 msgstr "exigido"
 
-#: templates/generic_form_subtemplate.html:83
-#: templates/generic_form_subtemplate.html:85
+#: templates/main/generic_form_subtemplate.html:83
+#: templates/main/generic_form_subtemplate.html:85
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
-#: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:173
+#: templates/main/generic_list_subtemplate.html:53
+#: templates/main/generic_list_subtemplate.html:173
 msgid "Save"
 msgstr "Salvar"
 
-#: templates/generic_form_subtemplate.html:83
-#: templates/generic_form_subtemplate.html:85
+#: templates/main/generic_form_subtemplate.html:83
+#: templates/main/generic_form_subtemplate.html:85
 #: templates/generic_list_horizontal_subtemplate.html:50
 #: templates/generic_list_horizontal_subtemplate.html:88
-#: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:173
+#: templates/main/generic_list_subtemplate.html:53
+#: templates/main/generic_list_subtemplate.html:173
 msgid "Submit"
 msgstr "Submeter"
 
-#: templates/generic_form_subtemplate.html:90
+#: templates/main/generic_form_subtemplate.html:90
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/generic_list.html:8 templates/generic_list_horizontal.html:8
+#: templates/main/generic_list.html:8 templates/main/generic_list_horizontal.html:8
 #, fuzzy, python-format
 msgid "List of %(title)s"
 msgstr "Lista de %(stripped_title)s "
 
 #: templates/generic_list_horizontal_subtemplate.html:24
-#: templates/generic_list_subtemplate.html:25
+#: templates/main/generic_list_subtemplate.html:25
 #, python-format
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
@@ -393,16 +393,16 @@ msgstr ""
 "of %(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:26
-#: templates/generic_list_subtemplate.html:27
+#: templates/main/generic_list_subtemplate.html:27
 #, python-format
 msgid "List of %(title)s (%(total)s)"
 msgstr "Lista de %(title)s  (%(total)s)"
 
-#: templates/generic_list_subtemplate.html:73
+#: templates/main/generic_list_subtemplate.html:73
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/generic_list_subtemplate.html:147
+#: templates/main/generic_list_subtemplate.html:147
 #, fuzzy, python-format
 msgid "There are no %(title)s"
 msgstr "Não há %(stripped_title)s "

@@ -79,62 +79,62 @@ msgstr "Version"
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr "Copyright &copy; 2011 Roberto Rosario."
 
-#: templates/base.html:31
+#: templates/main/base.html:31
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/base.html:262
+#: templates/main/base.html:262
 msgid "User"
 msgstr "Benutzer"
 
-#: templates/base.html:264
+#: templates/main/base.html:264
 msgid "Anonymous"
 msgstr "Anonym"
 
-#: templates/base.html:267
+#: templates/main/base.html:267
 msgid "User details"
 msgstr "Benutzerdetails"
 
-#: templates/base.html:284
+#: templates/main/base.html:284
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:284
+#: templates/main/base.html:284
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:364
+#: templates/main/base.html:364
 msgid "Secondary menu"
 msgstr "Untermenü"
 
-#: templates/base.html:380
+#: templates/main/base.html:380
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Aktionen für  %(name)s: %(navigation_object)s"
 
-#: templates/base.html:382 templates/base.html.py:425
+#: templates/main/base.html:382 templates/main/base.html.py:425
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Aktionen für: %(navigation_object)s"
 
-#: templates/base.html:385
+#: templates/main/base.html:385
 msgid "Available actions"
 msgstr "Verfügbare Aktionen"
 
-#: templates/base.html:397 templates/base.html.py:440
+#: templates/main/base.html:397 templates/main/base.html.py:440
 msgid "Related actions"
 msgstr "Verwandte Aktionen"
 
-#: templates/base.html:408 templates/base.html.py:453
+#: templates/main/base.html:408 templates/main/base.html.py:453
 msgid "Other available actions"
 msgstr "Andere verfügbare Aktionen"
 
-#: templates/base.html:423
+#: templates/main/base.html:423
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Aktionen für %(object_name)s: %(navigation_object)s"
 
-#: templates/base.html:428
+#: templates/main/base.html:428
 msgid "Actions"
 msgstr "Aktionen"
 

@@ -47,7 +47,7 @@ def key_receive(request, key_id):
             )
             return HttpResponseRedirect(previous)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'title': _(u'Import key'),
         'message': _(u'Are you sure you wish to import key id: %s?') % key_id,
         'form_icon': 'key_add.png',
@@ -68,7 +68,7 @@ def key_list(request, secret=True):
         object_list = Key.get_all(gpg)
         title = _(u'public keys')
 
-    return render_to_response('generic_list.html', {
+    return render_to_response('main/generic_list.html', {
         'object_list': object_list,
         'title': title,
         'hide_object': True,
@@ -104,7 +104,7 @@ def key_delete(request, fingerprint, key_type):
             messages.error(request, exception)
             return HttpResponseRedirect(previous)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'title': _(u'Delete key'),
         'delete_view': True,
         'message': _(u'Are you sure you wish to delete key: %s?  If you try to delete a public key that is part of a public/private pair the private key will be deleted as well.') % key,
@@ -123,7 +123,7 @@ def key_query(request):
     form = KeySearchForm(initial={'term': term})
     subtemplates_list.append(
         {
-            'name': 'generic_form_subtemplate.html',
+            'name': 'main/generic_form_subtemplate.html',
             'context': {
                 'title': _(u'Query key server'),
                 'form': form,
@@ -136,7 +136,7 @@ def key_query(request):
         results = gpg.query(term)
         subtemplates_list.append(
             {
-                'name': 'generic_list_subtemplate.html',
+                'name': 'main/generic_list_subtemplate.html',
                 'context': {
                     'title': _(u'results'),
                     'object_list': results,
@@ -184,6 +184,6 @@ def key_query(request):
             }
         )
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'subtemplates_list': subtemplates_list,
     }, context_instance=RequestContext(request))

@@ -29,7 +29,7 @@ def form_view(request):
     else:
         form = RegistrationForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'registration form'),
         'form': form,
     },

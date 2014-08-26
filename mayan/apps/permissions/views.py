@@ -60,7 +60,7 @@ def role_list(request):
         'hide_link': True,
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -72,7 +72,7 @@ def role_permissions(request, role_id):
 
     subtemplates_list = [
         {
-            'name': u'generic_list_subtemplate.html',
+            'name': u'main/generic_list_subtemplate.html',
             'context': {
                 'title': _(u'permissions'),
                 'object_list': Permission.objects.all(),
@@ -90,7 +90,7 @@ def role_permissions(request, role_id):
         },
     ]
 
-    return render_to_response('generic_detail.html', {
+    return render_to_response('main/generic_detail.html', {
         'form': form,
         'object': role,
         'object_name': _(u'role'),
@@ -163,7 +163,7 @@ def permission_grant(request):
     if len(grouped_items) == 1:
         context['object'] = grouped_items[0][0]
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -225,7 +225,7 @@ def permission_revoke(request):
     if len(grouped_items) == 1:
         context['object'] = grouped_items[0][0]
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 

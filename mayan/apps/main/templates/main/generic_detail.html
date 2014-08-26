@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 
 {% load i18n %}
 
 {% load subtemplates_tags %}
 
-{% block title %} :: {% with 'true' as read_only %}{% include 'calculate_form_title.html' %}{% endwith %}{% endblock %}
+{% block title %} :: {% with 'true' as read_only %}{% include 'main/calculate_form_title.html' %}{% endwith %}{% endblock %}
 
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates %}
@@ -17,7 +17,7 @@
         {% with 'true' as side_bar %}
             {% if subtemplate.form %}
                 {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
-                {% with "true" as read_only %}
+                {% with 'true' as read_only %}
                     <div class="generic_subform">
                         {{ rendered_subtemplate }}
                     </div>
@@ -49,7 +49,7 @@
         {% with 'true' as read_only %}
             <div class="">
                 <div class="generic_subform">
-                    {% include 'generic_form_subtemplate.html' %}
+                    {% include 'main/generic_form_subtemplate.html' %}
                 </div>
             </div>
             {% if grid_clear or not grid %}

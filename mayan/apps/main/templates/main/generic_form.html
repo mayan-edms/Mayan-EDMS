@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 
 {% load subtemplates_tags %}
 
-{% block title %} :: {% include 'calculate_form_title.html' %}{% endblock %}
+{% block title %} :: {% include 'main/calculate_form_title.html' %}{% endblock %}
 
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates_list %}
@@ -23,7 +23,7 @@
 {% block content %}
     {% if form %}
         <div class="generic_subform">
-            {% include "generic_form_subtemplate.html" %}
+            {% include "main/generic_form_subtemplate.html" %}
         </div>
     {% endif %}
 

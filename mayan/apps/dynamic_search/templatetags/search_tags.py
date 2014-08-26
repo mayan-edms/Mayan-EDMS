@@ -23,7 +23,7 @@ def search_form(context):
     return context
 
 
-@register.inclusion_tag('generic_subtemplate.html', takes_context=True)
+@register.inclusion_tag('main/generic_subtemplate.html', takes_context=True)
 def recent_searches_template(context):
     recent_searches = RecentSearch.objects.filter(user=context['user'])
     context.update({

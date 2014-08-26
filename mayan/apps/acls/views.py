@@ -60,7 +60,7 @@ def acl_list_for(request, obj, extra_context=None):
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -91,7 +91,7 @@ def acl_detail_for(request, actor, obj):
     # TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
-            'name': u'generic_list_subtemplate.html',
+            'name': u'main/generic_list_subtemplate.html',
             'context': {
                 'title': _(u'permissions available to: %(actor)s for %(obj)s' % {
                     'actor': actor,
@@ -129,7 +129,7 @@ def acl_detail_for(request, actor, obj):
     }
 
     return render_to_response(
-        'generic_detail.html',
+        'main/generic_detail.html',
         context,
         context_instance=RequestContext(request)
     )
@@ -224,7 +224,7 @@ def acl_grant(request):
     if navigation_object_count == 1:
         context['object'] = navigation_object.source_object
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -317,7 +317,7 @@ def acl_revoke(request):
     if navigation_object_count == 1:
         context['object'] = navigation_object.source_object
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -363,7 +363,7 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -389,7 +389,7 @@ def acl_setup_valid_classes(request):
         'hide_object': True,
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -413,7 +413,7 @@ def acl_class_acl_list(request, access_object_class_gid):
         'object': access_object_class,
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -429,7 +429,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
     # TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
-            'name': u'generic_list_subtemplate.html',
+            'name': u'main/generic_list_subtemplate.html',
             'context': {
                 'title': _(u'permissions available to: %(actor)s for class %(class)s' % {
                         'actor': actor,
@@ -450,7 +450,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         },
     ]
 
-    return render_to_response('generic_detail.html', {
+    return render_to_response('main/generic_detail.html', {
         'object': access_object_class,
         'subtemplates_list': subtemplates_list,
         'multi_select_as_buttons': True,
@@ -486,7 +486,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
         'submit_icon_famfam': 'tick'
     }
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -565,7 +565,7 @@ def acl_class_multiple_grant(request):
     if navigation_object_count == 1:
         context['object'] = navigation_object
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -644,5 +644,5 @@ def acl_class_multiple_revoke(request):
     if navigation_object_count == 1:
         context['object'] = navigation_object
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))

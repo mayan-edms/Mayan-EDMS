@@ -107,7 +107,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
     elif len(documents) > 1:
         context['title'] = _(u'Edit metadata for documents: %s') % ', '.join([unicode(d) for d in documents])
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -174,7 +174,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
     elif len(documents) > 1:
         context['title'] = _(u'Add metadata type to documents: %s') % ', '.join([unicode(d) for d in documents])
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -255,7 +255,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     elif len(documents) > 1:
         context['title'] = _(u'Remove metadata types from documents: %s') % ', '.join([unicode(d) for d in documents])
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -271,7 +271,7 @@ def metadata_view(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
 
-    return render_to_response('generic_list.html', {
+    return render_to_response('main/generic_list.html', {
         'title': _(u'metadata for: %s') % document,
         'object_list': document.metadata.all(),
         'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
@@ -296,7 +296,7 @@ def setup_metadata_type_list(request):
         ]
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -318,7 +318,7 @@ def setup_metadata_type_edit(request, metadatatype_id):
     else:
         form = MetadataTypeForm(instance=metadata_type)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'edit metadata type: %s') % metadata_type,
         'form': form,
         'object': metadata_type,
@@ -338,7 +338,7 @@ def setup_metadata_type_create(request):
     else:
         form = MetadataTypeForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'create metadata type'),
         'form': form,
     }, context_instance=RequestContext(request))
@@ -374,7 +374,7 @@ def setup_metadata_type_delete(request, metadatatype_id):
         'form_icon': u'xhtml_delete.png',
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -393,7 +393,7 @@ def setup_metadata_set_list(request):
         ]
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -415,7 +415,7 @@ def setup_metadata_set_edit(request, metadata_set_id):
     else:
         form = MetadataSetForm(instance=metadata_set)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'edit metadata set: %s') % metadata_set,
         'form': form,
         'object': metadata_set,
@@ -478,7 +478,7 @@ def setup_metadata_set_create(request):
     else:
         form = MetadataSetForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'create metadata set'),
         'form': form,
     }, context_instance=RequestContext(request))
@@ -514,7 +514,7 @@ def setup_metadata_set_delete(request, metadata_set_id):
         'form_icon': u'application_form_delete.png',
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 

@@ -37,7 +37,7 @@ def bootstrap_setup_list(request):
         ],
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -55,7 +55,7 @@ def bootstrap_setup_create(request):
     else:
         form = BootstrapSetupForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'create bootstrap'),
         'form': form,
     },
@@ -83,7 +83,7 @@ def bootstrap_setup_edit(request, bootstrap_setup_pk):
     else:
         form = BootstrapSetupForm_edit(instance=bootstrap)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'edit bootstrap setup: %s') % bootstrap,
         'form': form,
         'object': bootstrap,
@@ -126,7 +126,7 @@ def bootstrap_setup_delete(request, bootstrap_setup_pk):
         'form_icon': 'lightning_delete.png',
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -145,7 +145,7 @@ def bootstrap_setup_view(request, bootstrap_setup_pk):
         'object_name': _(u'bootstrap setup'),
     }
 
-    return render_to_response('generic_detail.html', context,
+    return render_to_response('main/generic_detail.html', context,
         context_instance=RequestContext(request))
 
 
@@ -180,7 +180,7 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
 
     context['title'] = _(u'Are you sure you wish to execute the database bootstrap setup named: %s?') % bootstrap_setup
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -203,7 +203,7 @@ def bootstrap_setup_dump(request):
     else:
         form = BootstrapSetupForm_dump()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'dump current configuration into a bootstrap setup'),
         'form': form,
     },
@@ -248,7 +248,7 @@ def bootstrap_setup_import_from_file(request):
     else:
         form = BootstrapFileImportForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'Import bootstrap setup from file'),
         'form_icon': 'folder.png',
         'form': form,
@@ -276,7 +276,7 @@ def bootstrap_setup_import_from_url(request):
     else:
         form = BootstrapURLImportForm()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'Import bootstrap setup from URL'),
         'form_icon': 'folder.png',
         'form': form,
@@ -311,7 +311,7 @@ def erase_database_view(request):
     context['title'] = _(u'Are you sure you wish to erase the entire database and document storage?')
     context['message'] = _(u'All documents, sources, metadata, metadata types, set, tags, indexes and logs will be lost irreversibly!')
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -339,5 +339,5 @@ def bootstrap_setup_repository_sync(request):
         'form_icon': 'world.png',
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))

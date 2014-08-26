@@ -8,7 +8,7 @@
     <h2 class="title">
 {% endif %}
 
-{% include 'calculate_form_title.html' %}
+{% include 'main/calculate_form_title.html' %}
 
 {% if side_bar %}
     </h3>
@@ -64,7 +64,7 @@
                 {% endif %}
 
                 {% for form in formset.forms %}
-                    {% include 'generic_form_instance.html' %}
+                    {% include 'main/generic_form_instance.html' %}
                 {% endfor %}
                 {% if form_display_mode_table %}
                     </tbody>
@@ -72,7 +72,7 @@
                 {% endif %}
             {% endwith %}
         {% else %}
-            {% include 'generic_form_instance.html' %}
+            {% include 'main/generic_form_instance.html' %}
         {% endif %}
         {% if not read_only %}
         <div class="group navform wat-cf">

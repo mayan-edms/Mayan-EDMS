@@ -111,7 +111,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
         source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'here')))
         subtemplates_list.append(
             {
-                'name': 'generic_subtemplate.html',
+                'name': 'main/generic_subtemplate.html',
                 'context': {
                     'title': _(u'Upload sources'),
                     'paragraphs': [
@@ -207,7 +207,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 title = _(u'upload a local document from source: %s') % web_form.title
 
             subtemplates_list.append({
-                'name': 'generic_form_subtemplate.html',
+                'name': 'main/generic_form_subtemplate.html',
                 'context': {
                     'form': form,
                     'title': title,
@@ -295,14 +295,14 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
 
                 subtemplates_list = [
                     {
-                        'name': 'generic_form_subtemplate.html',
+                        'name': 'main/generic_form_subtemplate.html',
                         'context': {
                             'form': form,
                             'title': title,
                         }
                     },
                     {
-                        'name': 'generic_list_subtemplate.html',
+                        'name': 'main/generic_list_subtemplate.html',
                         'context': {
                             'title': _(u'files in staging path'),
                             'object_list': staging_filelist,
@@ -334,7 +334,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
             {
                 'sidebar_subtemplates_list': [
                     {
-                        'name': 'generic_subtemplate.html',
+                        'name': 'main/generic_subtemplate.html',
                         'context': {
                             'title': _(u'Current document type'),
                             'paragraphs': [document_type if document_type else _(u'None')],
@@ -342,7 +342,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                         }
                     },
                     {
-                        'name': 'generic_subtemplate.html',
+                        'name': 'main/generic_subtemplate.html',
                         'context': {
                             'title': _(u'Current metadata'),
                             'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
@@ -353,7 +353,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
             }
         )
 
-    return render_to_response('generic_form.html', context,
+    return render_to_response('main/generic_form.html', context,
         context_instance=RequestContext(request))
 
 
@@ -388,7 +388,7 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
 
     results = get_active_tab_links()
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'source': staging_folder,
         'delete_view': True,
         'object': staging_file,
@@ -418,7 +418,7 @@ def setup_source_list(request, source_type):
         'source_type': source_type,
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -450,7 +450,7 @@ def setup_source_edit(request, source_type, source_id):
     else:
         form = form_class(instance=source)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'edit source: %s') % source.fullname(),
         'form': form,
         'source': source,
@@ -504,7 +504,7 @@ def setup_source_delete(request, source_type, source_id):
         'source_type': source_type,
     }
 
-    return render_to_response('generic_confirm.html', context,
+    return render_to_response('main/generic_confirm.html', context,
         context_instance=RequestContext(request))
 
 
@@ -533,7 +533,7 @@ def setup_source_create(request, source_type):
     else:
         form = form_class()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'Create new source of type: %s') % cls.class_fullname(),
         'form': form,
         'source_type': source_type,
@@ -570,7 +570,7 @@ def setup_source_transformation_list(request, source_type, source_id):
         'hide_object': True,
     }
 
-    return render_to_response('generic_list.html', context,
+    return render_to_response('main/generic_list.html', context,
         context_instance=RequestContext(request))
 
 
@@ -593,7 +593,7 @@ def setup_source_transformation_edit(request, transformation_id):
     else:
         form = SourceTransformationForm(instance=source_transformation)
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'title': _(u'Edit transformation: %s') % source_transformation,
         'form': form,
         'source': source_transformation.content_object,
@@ -624,7 +624,7 @@ def setup_source_transformation_delete(request, transformation_id):
             )
         return HttpResponseRedirect(redirect_view)
 
-    return render_to_response('generic_confirm.html', {
+    return render_to_response('main/generic_confirm.html', {
         'delete_view': True,
         'transformation': source_transformation,
         'source': source_transformation.content_object,
@@ -669,7 +669,7 @@ def setup_source_transformation_create(request, source_type, source_id):
     else:
         form = SourceTransformationForm_create()
 
-    return render_to_response('generic_form.html', {
+    return render_to_response('main/generic_form.html', {
         'form': form,
         'source': source,
         'object_name': _(u'source'),
