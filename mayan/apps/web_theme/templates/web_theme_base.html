@@ -107,13 +107,26 @@
         {% block web_theme_javascript %}{% endblock %}
 
         <script type="text/javascript">
+            function dismissAlert($element){
+                $element.parent().parent().addClass('fadeOutUp').fadeOut('slow');
+            }
+
             $(document).ready(function() {
-                $(".dismiss").click(function(){
-                    $(this).parent().parent().addClass("fadeOutUp").fadeOut("slow"); return false;
+                var dismissTimer = setInterval(function(){
+                    $('.success').each(function(){
+                        dismissAlert($(this).find('.dismiss'));
+                    });
+
+                    clearInterval(dismissTimer);
+                }, 2500);
+
+                $('.dismiss').click(function(){
+                    dismissAlert($(this));
+                    return false;
                 });
-                $(".dismiss-all").click(function(){
-                    $(".message").each(function(){
-                        $(this).addClass("fadeOutUp").fadeOut("slow");
+                $('.dismiss-all').click(function(){
+                    $('.message').each(function(){
+                        dismissAlert($(this).parent().find('.dismiss'));
                     });
                     return false;
                 });
