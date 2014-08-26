@@ -95,8 +95,6 @@ INSTALLED_APPS = (
     'checkouts',
     'bootstrap',
     'registration',
-    # Has to be last so the other apps can register it's signals
-    'signaler'
 )
 
 MIDDLEWARE_CLASSES = (
