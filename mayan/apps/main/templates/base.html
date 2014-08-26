@@ -1,476 +1,576 @@
-{% extends 'web_theme_base.html' %}
-
 {% load i18n %}
-
-{% load project_tags %}
-{% load navigation_tags %}
-{% load settings %}
-{% load search_tags %}
 {% load static %}
+
+{% load compress %}
+
 {% load main_settings_tags %}
-{% load variable_tags %}
+{% load navigation_tags %}
+{% load project_tags %}
 {% load registration_tags %}
+{% load search_tags %}
+{% load settings %}
+{% load theme_tags %}
+{% load variable_tags %}
 
-{% block web_theme_head %}
-    {% if new_window_url %}
-        <script type="text/javascript">
-            window.open('{{ new_window_url|safe }}','{{ new_window_url_name|default:"_blank" }}','toolbar=1,scrollbars=1,location=1,status=1,menubar=1,resizable=1');
-        </script>
-        <noscript>
-            <META HTTP-EQUIV="refresh" CONTENT="{{ new_window_url_timeout|default:'2' }};{{ new_window_url|safe }}">
-        </noscript>
-    {% endif %}
+{% get_theme as web_theme %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
+        <title>{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}</title>
 
-    {% if html_redirect %}
-        <META HTTP-EQUIV="refresh" CONTENT="{{ html_redirect_timeout|default:'2' }};{{ html_redirect|safe }}">
-    {% endif %}
-{% endblock %}
-
-{% block html_title %}{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}{% endblock %}
-
-{% block web_theme_project_name %}{% project_name %}{% if debug %} {% trans "(DEBUG)" %}{% endif %} - {% registered_name %}{% endblock %}
-
-{% block web_theme_stylesheets %}
-    <link rel="stylesheet" href="{% static 'css/famfamfam-silk-sprite.css' %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static 'css/960-fluid.css' %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static 'css/override.css' %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
-    <style type="text/css">
-        #fancybox-left-ico {
-         left: 20px;
-        }
-
-        #fancybox-right-ico {
-         right: 20px;
-         left: auto;
-        }
-
-        .tags {
-            margin: 0;
-            padding: 0;
-            right: 24px;
-            bottom: -12px;
-            list-style: none;
-        }
-
-        .tags li {
-            float:left;
-            height: 18px;
-            line-height: 18px;
-            position:relative;
-            font-size: 11px;
-            margin-left: 15px;
-            padding: 0 5px 0 15px;
-            background: #0089e0;
-            color: black;
-            text-decoration: none;
-            -moz-border-radius-bottomright: 4px;
-            -webkit-border-bottom-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-            -moz-border-radius-topright: 4px;
-            -webkit-border-top-right-radius: 4px;
-            border-top-right-radius: 4px;
-
-            border-top-left-radius: 12px;
-            -moz-border-radius-topleft: 12px;
-            -webkit-border-top-left-radius: 12px;
-
-            border-bottom-left-radius: 12px;
-            -moz-border-radius-bottomleft: 12px;
-            -webkit-border-bottom-left-radius: 12px;
-
-            /*border:1px solid #ccc;*/
-            border: 1px solid rgba(0, 0, 0, 0.4);
-            -moz-box-shadow: 1px 1px 2px #888;
-            -webkit-box-shadow: 1px 1px 2px #888;
-            box-shadow: 1px 1px 2px #888;
-
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 70px #fff, 0 0 80px #fff, 0 0 100px #fff, 0 0 150px #fff;
-            margin-bottom: 2px;
-        }
-
-        .tags li:after {
-            content: "";
-            position: absolute;
-            top: 7px;
-            left: 5px;
-            float: left;
-            width: 4px;
-            height: 4px;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-            border-radius: 2px;
-            background: #fff;
-            -moz-box-shadow: -1px -1px 2px #004977;
-            -webkit-box-shadow: -1px -1px 2px #004977;
-            box-shadow: -1px -1px 2px #004977;
-        }
-
-        .thin_border {
-            border: 1px solid black;
-        }
-    </style>
-    {% block stylesheets %}{% endblock %}
-{% endblock %}
-
-{% block web_theme_javascript %}
-    <script type="text/javascript" src="{% static 'packages/jquery.scrollview.js' %}"></script>
-    <script type="text/javascript" src="{% static 'packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.pack.js' %}"></script>
-    <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/lib/jquery.mousewheel-3.0.6.pack.js' %}"></script>
-
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            {% if not disable_auto_focus %}
-                $("input:text:visible:not(#livesearch):not([readonly]):enabled:first").focus();
-            {% endif %}
-            $('form').submit(function(){
-                $('button', this).click(function() {
-                    return false;
-                });
-                $(':submit', this).click(function() {
-                    return false;
-                });
-            });
-            $('.scrollable').scrollview();
-            $('.full-height').height($(window).height() - 230);
-            $(window).resize(function() {
-                $('.full-height').height($(window).height() - 230);
-            });
-            $('.no-parent-history', this).click(function() {
-                location.replace(this.href);
-                return false;
-            });
-
-            $("a.fancybox").fancybox({
-                'openEffect'  : 'elastic',
-                'closeEffect' : 'elastic',
-                prevEffect  : 'none',
-                nextEffect  : 'none',
-                'titleShow' : true,
-                'type'      : 'image',
-                'autoResize': true,
-            });
-
-            $("a.fancybox-staging").click(function(e) {
-                var $this = $(this);
-
-                    $.get($this.attr('href'), function( result ) {
-                        if (result.status == 'success') {
-                            $.fancybox.open([
-                                {
-                                    href : result.data,
-                                    title : $this.attr('title'),
-                                    'openEffect'  : 'elastic',
-                                    'closeEffect' : 'elastic',
-                                    prevEffect  : 'none',
-                                    nextEffect  : 'none',
-                                    'titleShow' : true,
-                                    'type'      : 'image',
-                                    'autoResize': true,
-                                },
-                            ]);
-                        }
-                    })
-                e.preventDefault();
-            })
-
-            $("a.fancybox-noscaling").fancybox({
-                openEffect  : 'elastic',
-                closeEffect : 'elastic',
-                prevEffect  : 'none',
-                nextEffect  : 'none',
-                'titleShow' : true,
-                'type'      : 'image',
-                'autoResize': false
-            });
-
-            $("a.fancybox-iframe").fancybox({
-                openEffect     : 'elastic',
-                closeEffect    : 'elastic',
-                'titleShow'    : false,
-                'type'         : 'iframe',
-                autoHeight     : false,
-                width          : '99%',
-                height         : '99%',
-                minHeight      : '100%',
-                minWidth       : '100%',
-                'showNavArrows': false,
-                'margin'       : 18,
-            });
-
-            function set_image_noninteractive(image) {
-                // Remove border to indicate non interactive image
-                image.removeClass('thin_border');
-                container = image.parent().parent();
-                // Save img HTML
-                html = image.parent().html();
-                // Remove anchor
-                image.parent().remove();
-                // Place again img
-                container.html(html);
-            }
-
-            function load_document_image(image_tag) {
-                var image = image_tag;
-                var container = image.parent();
-                $.get( image.attr('data-original'), function( result ) {
-                    if (result.status == 'success') {
-                        image.attr('src', result.data);
-                    } else if (result.detail == 'unknown_file_format') {
-                        image.attr('src', "{% static 'images/mimetypes/unknown.png' %}");
-                        set_image_noninteractive(image);
-                    } else {
-                        image.attr('src', "{% static 'images/mimetypes/error.png' %}");
-                        set_image_noninteractive(image);
-                    }
-                })
-              .fail(function() {
-                image.attr('src', "{% static 'images/mimetypes/error.png' %}");
-                set_image_noninteractive(image);
-              })
-            }
-
-           $('img.lazy-load').lazyload({
-                appear: function(elements_left, settings) {
-                    load_document_image($(this));
-                },
-                load: function(elements_left, settings) {
-                    console.log(this, elements_left, settings);
-                }
-            });
-
-            $('img.lazy-load-carousel').lazyload({
-                container: $(".carousel-container"),
-
-                appear: function(elements_left, settings) {
-                    load_document_image($(this));
-                }
-            });
-
-            $('img.lazy-load-interactive').lazyload({
-                appear: function(elements_left, settings) {
-                    load_document_image($(this));
-                }
-            });
-        });
-    </script>
-    {% block javascript %}{% endblock %}
-{% endblock %}
-
-{% block web_theme_user_navigation %}
-    <li><strong>{% trans 'User' %}:</strong>
-        {% if not user.is_authenticated %}
-            {% trans 'Anonymous' %}
-        {% else %}
-            {{ user.get_full_name|default:user }}
-                <a href="{% url 'current_user_details' %}" title="{% trans 'User details' %}"><span class="famfam active famfam-vcard"></span></a>
+        {% if new_window_url %}
+            <script type="text/javascript">
+                window.open('{{ new_window_url|safe }}','{{ new_window_url_name|default:"_blank" }}','toolbar=1,scrollbars=1,location=1,status=1,menubar=1,resizable=1');
+            </script>
+            <noscript>
+                <META HTTP-EQUIV="refresh" CONTENT="{{ new_window_url_timeout|default:'2' }};{{ new_window_url|safe }}">
+            </noscript>
         {% endif %}
-    </li>
 
-    {% get_setting "MIDDLEWARE_CLASSES" as middleware_classes %}
-    {% if 'django.middleware.locale.LocaleMiddleware' in middleware_classes %}
-        <li>
-            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                <select name="language" onchange="this.form.submit()">
-                    {% for lang in LANGUAGES %}
-                        <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected="selected"{% endif %}>{{ lang.0|language_name_local|capfirst }}</option>
-                    {% endfor %}
-                </select>
-            </form>
-        </li>
-    {% endif %}
-    {% get_setting "LOGIN_URL" as login_url %}
-    <li><a class="logout" href="{% if not user.is_authenticated %}{% url 'login_view' %}?next=/{% else %}{% url 'logout_view' %}{% endif %}">{% if not user.is_authenticated %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
-{% endblock %}
+        {% if html_redirect %}
+            <META HTTP-EQUIV="refresh" CONTENT="{{ html_redirect_timeout|default:'2' }};{{ html_redirect|safe }}">
+        {% endif %}
 
-{% block web_theme_main_navigation %}
-    {% get_top_menu_links %}
-    {% for link in menu_links %}
-        {% with 'true' as as_li %}
-        {% with 'true' as hide_active_anchor %}
-        {% with 'active' as li_class_active %}
-        {% with 'first' as li_class_first %}
-            {% include 'generic_subnavigation.html' %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-    {% endfor %}
-{% endblock %}
+        {% compress css %}
+            <link rel="stylesheet" href="{% static 'web_theme_media/stylesheets/base.css' %}" type="text/css" media="screen" />
+            <link rel="stylesheet" id="current-theme" href="{{ STATIC_URL }}web_theme_media/stylesheets/themes/{{ web_theme|default:'activo' }}/style.css" type="text/css" media="screen" />
+            <style type="text/css">
+                .message span.dismiss {
+                    padding:0 5px;
+                    cursor:pointer;
+                    float:right;
+                    margin-right:10px;
+                }
+                .message span.dismiss-all {
+                    padding:0 5px;
+                    cursor:pointer;
+                    float:right;
+                    margin-right:10px;
+                }
+                .message a {
+                    text-decoration:none;
+                    font-weight:bold
+                }
+            </style>
+            <link rel="stylesheet" href="{% static 'packages/animate-custom.css' %}" type="text/css" media="screen" />
+            <link rel="stylesheet" href="{% static 'css/famfamfam-silk-sprite.css' %}" type="text/css" media="screen" />
+            <link rel="stylesheet" href="{% static 'css/960-fluid.css' %}" type="text/css" media="screen" />
+            <link rel="stylesheet" href="{% static 'css/override.css' %}" type="text/css" media="screen" />
+            <link rel="stylesheet" href="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
+            <style type="text/css">
+                #fancybox-left-ico {
+                 left: 20px;
+                }
 
-{% block web_theme_secondary_navigation %}
-    {% if navigation_object_list %}
-        {% for navigation_object_dict in navigation_object_list %}
-            {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-            {% get_object_navigation_links "form_header" as form_navigation_links %}
-                {% if form_navigation_links %}
-                    <div class="secondary-navigation">
-                        <ul class="wat-cf">
-                                {% with form_navigation_links as object_navigation_links %}
-                                {% with 'true' as as_li %}
-                                {% with 'true' as hide_active_anchor %}
-                                {% with 'active' as li_class_active %}
-                                {% with 'first' as li_class_first %}
-                                    {% include 'generic_navigation.html' %}
-                                {% endwith %}
-                                {% endwith %}
-                                {% endwith %}
-                                {% endwith %}
-                                {% endwith %}
-                        </ul>
+                #fancybox-right-ico {
+                 right: 20px;
+                 left: auto;
+                }
+
+                .tags {
+                    margin: 0;
+                    padding: 0;
+                    right: 24px;
+                    bottom: -12px;
+                    list-style: none;
+                }
+
+                .tags li {
+                    float:left;
+                    height: 18px;
+                    line-height: 18px;
+                    position:relative;
+                    font-size: 11px;
+                    margin-left: 15px;
+                    padding: 0 5px 0 15px;
+                    background: #0089e0;
+                    color: black;
+                    text-decoration: none;
+                    -moz-border-radius-bottomright: 4px;
+                    -webkit-border-bottom-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                    -moz-border-radius-topright: 4px;
+                    -webkit-border-top-right-radius: 4px;
+                    border-top-right-radius: 4px;
+
+                    border-top-left-radius: 12px;
+                    -moz-border-radius-topleft: 12px;
+                    -webkit-border-top-left-radius: 12px;
+
+                    border-bottom-left-radius: 12px;
+                    -moz-border-radius-bottomleft: 12px;
+                    -webkit-border-bottom-left-radius: 12px;
+
+                    /*border:1px solid #ccc;*/
+                    border: 1px solid rgba(0, 0, 0, 0.4);
+                    -moz-box-shadow: 1px 1px 2px #888;
+                    -webkit-box-shadow: 1px 1px 2px #888;
+                    box-shadow: 1px 1px 2px #888;
+
+                    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 70px #fff, 0 0 80px #fff, 0 0 100px #fff, 0 0 150px #fff;
+                    margin-bottom: 2px;
+                }
+
+                .tags li:after {
+                    content: "";
+                    position: absolute;
+                    top: 7px;
+                    left: 5px;
+                    float: left;
+                    width: 4px;
+                    height: 4px;
+                    -moz-border-radius: 2px;
+                    -webkit-border-radius: 2px;
+                    border-radius: 2px;
+                    background: #fff;
+                    -moz-box-shadow: -1px -1px 2px #004977;
+                    -webkit-box-shadow: -1px -1px 2px #004977;
+                    box-shadow: -1px -1px 2px #004977;
+                }
+
+                .thin_border {
+                    border: 1px solid black;
+                }
+            </style>
+            {% block stylesheets %}{% endblock %}
+
+        {% endcompress %}
+    </head>
+    <body>
+        <div id="container">
+            {% if web_theme_view_type == 'plain' %}
+                <div id="box">
+                    {% block content_plain %}{% endblock %}
+                </div>
+            {% else %}
+                {% if not web_theme_hide_menus %}
+                    <div id="header">
+                        <h1><a href="{% url 'home' %}">{% project_name %}{% if debug %} {% trans "(DEBUG)" %}{% endif %} - {% registered_name %}</a></h1>
+                        <div id="main-navigation">
+                            <ul class="wat-cf" style="width: 73%;">
+                                {% get_top_menu_links %}
+                                {% for link in menu_links %}
+                                    {% with 'true' as as_li %}
+                                    {% with 'true' as hide_active_anchor %}
+                                    {% with 'active' as li_class_active %}
+                                    {% with 'first' as li_class_first %}
+                                        {% include 'generic_subnavigation.html' %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div id="user-navigation">
+                            <ul class="wat-cf">
+                                <li><strong>{% trans 'User' %}:</strong>
+                                    {% if not user.is_authenticated %}
+                                        {% trans 'Anonymous' %}
+                                    {% else %}
+                                        {{ user.get_full_name|default:user }}
+                                            <a href="{% url 'current_user_details' %}" title="{% trans 'User details' %}"><span class="famfam active famfam-vcard"></span></a>
+                                    {% endif %}
+                                </li>
+
+                                {% get_setting "MIDDLEWARE_CLASSES" as middleware_classes %}
+                                {% if 'django.middleware.locale.LocaleMiddleware' in middleware_classes %}
+                                    <li>
+                                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                            <select name="language" onchange="this.form.submit()">
+                                                {% for lang in LANGUAGES %}
+                                                    <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected="selected"{% endif %}>{{ lang.0|language_name_local|capfirst }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </form>
+                                    </li>
+                                {% endif %}
+                                {% get_setting "LOGIN_URL" as login_url %}
+                                <li><a class="logout" href="{% if not user.is_authenticated %}{% url 'login_view' %}?next=/{% else %}{% url 'logout_view' %}{% endif %}">{% if not user.is_authenticated %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
+                            </ul>
+                        </div>
                     </div>
                 {% endif %}
-        {% endfor %}
-    {% else %}
-        {% get_object_navigation_links "form_header" as form_navigation_links %}
-            {% if form_navigation_links %}
-                <div class="secondary-navigation">
-                    <ul class="wat-cf">
-                            {% with form_navigation_links as object_navigation_links %}
-                            {% with 'true' as as_li %}
-                            {% with 'true' as hide_active_anchor %}
-                            {% with 'active' as li_class_active %}
-                            {% with 'first' as li_class_first %}
-                                {% include 'generic_navigation.html' %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                    </ul>
-                </div>
-            {% endif %}
-    {% endif %}
-{% endblock %}
-
-{% block web_theme_sidebar %}
-    {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
-    {% if side_bar_search and not web_theme_hide_menus %}
-        {% with 'true' as side_bar %}
-        {% with 'true' as form_hide_required_text %}
-        {% with '' as read_only %}
-        {% with '' as object %}
-            {% search_form %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-    {% endif %}
-
-    {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
-        {% if object_navigation_links %}
-        <div class="block">
-            <h3>{% trans "Secondary menu" %}</h3>
-            <ul class="navigation">
-                {% with 'true' as as_li %}
-                    {% include 'generic_navigation.html' %}
-                {% endwith %}
-            </ul>
-        </div>
-    {% endif %}
-    {% if navigation_object_list %}
-        {% for navigation_object_dict in navigation_object_list %}
-            {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-            {% get_object_navigation_links as object_navigation_links %}
-            {% if object_navigation_links %}
-                <div class="block">
-                    {% if navigation_object %}
-                        {% if navigation_object_dict.name %}
-                            <h3>{% blocktrans with navigation_object_dict.name as name %}Actions for {{ name }}: {{ navigation_object }}{% endblocktrans %}</h3>
-                        {% else %}
-                            <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
+                <div id="wrapper" class="wat-cf">
+                    <div id="main">
+                        {% if messages %}
+                            <div class="inner">
+                                <div class="flash">
+                                    {% for message in messages %}
+                                        <div class="animated fadeInDown message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}">
+                                            <p>
+                                                {{ message }}
+                                                <span class="dismiss-all"><a title="{% trans 'dismiss all notifications' %}">[{% trans 'close all' %}]</a></span>
+                                                <span class="dismiss"><a title="{% trans 'dismiss this notification' %}">[{% trans 'close' %}]</a></span>
+                                            </p>
+                                         </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
                         {% endif %}
-                    {% else %}
-                        <h3>{% trans 'Available actions' %}</h3>
-                    {% endif %}
-                    <ul class="navigation">
-                        {% with 'true' as as_li %}
-                            {% include 'generic_navigation.html' %}
-                        {% endwith %}
-                    </ul>
-                </div>
+
+                        {% block messages %}{% endblock %}
+
+                        <div class="block" id="block-text">
+                            {% if navigation_object_list %}
+                                {% for navigation_object_dict in navigation_object_list %}
+                                    {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
+                                    {% get_object_navigation_links "form_header" as form_navigation_links %}
+                                        {% if form_navigation_links %}
+                                            <div class="secondary-navigation">
+                                                <ul class="wat-cf">
+                                                        {% with form_navigation_links as object_navigation_links %}
+                                                        {% with 'true' as as_li %}
+                                                        {% with 'true' as hide_active_anchor %}
+                                                        {% with 'active' as li_class_active %}
+                                                        {% with 'first' as li_class_first %}
+                                                            {% include 'generic_navigation.html' %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {% get_object_navigation_links "form_header" as form_navigation_links %}
+                                    {% if form_navigation_links %}
+                                        <div class="secondary-navigation">
+                                            <ul class="wat-cf">
+                                                    {% with form_navigation_links as object_navigation_links %}
+                                                    {% with 'true' as as_li %}
+                                                    {% with 'true' as hide_active_anchor %}
+                                                    {% with 'active' as li_class_active %}
+                                                    {% with 'first' as li_class_first %}
+                                                        {% include 'generic_navigation.html' %}
+                                                    {% endwith %}
+                                                    {% endwith %}
+                                                    {% endwith %}
+                                                    {% endwith %}
+                                                    {% endwith %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                            {% endif %}
+                            {% block content %}{% endblock %}
+                        </div><!--end .block #block-text-->
+                        {% block footer %}{% endblock %}
+                    </div><!--end #main-->
+                    <div id="sidebar">
+                        {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
+                        {% if side_bar_search and not web_theme_hide_menus %}
+                            {% with 'true' as side_bar %}
+                            {% with 'true' as form_hide_required_text %}
+                            {% with '' as read_only %}
+                            {% with '' as object %}
+                                {% search_form %}
+                            {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
+                        {% endif %}
+
+                        {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
+                            {% if object_navigation_links %}
+                            <div class="block">
+                                <h3>{% trans "Secondary menu" %}</h3>
+                                <ul class="navigation">
+                                    {% with 'true' as as_li %}
+                                        {% include 'generic_navigation.html' %}
+                                    {% endwith %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        {% if navigation_object_list %}
+                            {% for navigation_object_dict in navigation_object_list %}
+                                {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
+                                {% get_object_navigation_links as object_navigation_links %}
+                                {% if object_navigation_links %}
+                                    <div class="block">
+                                        {% if navigation_object %}
+                                            {% if navigation_object_dict.name %}
+                                                <h3>{% blocktrans with navigation_object_dict.name as name %}Actions for {{ name }}: {{ navigation_object }}{% endblocktrans %}</h3>
+                                            {% else %}
+                                                <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
+                                            {% endif %}
+                                        {% else %}
+                                            <h3>{% trans 'Available actions' %}</h3>
+                                        {% endif %}
+                                        <ul class="navigation">
+                                            {% with 'true' as as_li %}
+                                                {% include 'generic_navigation.html' %}
+                                            {% endwith %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                {% get_object_navigation_links "related" as object_navigation_links %}
+                                    {% if object_navigation_links %}
+                                    <div class="block">
+                                        <h3>{% trans "Related actions" %}</h3>
+                                        <ul class="navigation">
+                                            {% with 'true' as as_li %}
+                                                {% include 'generic_navigation.html' %}
+                                            {% endwith %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                {% get_object_navigation_links "sidebar" as object_navigation_links %}
+                                {% if object_navigation_links %}
+                                <div class="block">
+                                    <h3>{% trans 'Other available actions' %}</h3>
+                                    <ul class="navigation">
+                                        {% with 'true' as as_li %}
+                                            {% include 'generic_navigation.html' %}
+                                        {% endwith %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {% get_object_navigation_links as object_navigation_links %}
+                            {% if object_navigation_links %}
+                                <div class="block">
+                                    {% if navigation_object %}
+                                        {% if object_name %}
+                                            <h3>{% blocktrans %}Actions for {{ object_name }}: {{ navigation_object }}{% endblocktrans %}</h3>
+                                        {% else %}
+                                            <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
+                                        {% endif %}
+                                    {% else %}
+                                        <h3>{% trans 'Actions' %}</h3>
+                                    {% endif %}
+                                    <ul class="navigation">
+                                        {% with 'true' as as_li %}
+                                            {% include 'generic_navigation.html' %}
+                                        {% endwith %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% get_object_navigation_links "related" as object_navigation_links %}
+                                {% if object_navigation_links %}
+                                <div class="block">
+                                    <h3>{% trans 'Related actions' %}</h3>
+                                    <ul class="navigation">
+                                        {% with 'true' as as_li %}
+                                            {% include 'generic_navigation.html' %}
+                                        {% endwith %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% get_object_navigation_links "sidebar" as object_navigation_links %}
+                            {% if object_navigation_links %}
+                            <div class="block">
+                                <h3>{% trans "Other available actions" %}</h3>
+                                <ul class="navigation">
+                                    {% with 'true' as as_li %}
+                                        {% include 'generic_navigation.html' %}
+                                    {% endwith %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        {% get_sidebar_templates as sidebar_templates %}
+                        {% for template in sidebar_templates %}
+                            {% with 'true' as side_bar %}
+                                {% include template %}
+                            {% endwith %}
+                        {% endfor %}
+
+                        {% block sidebar %}{% endblock %}
+                    </div><!--end #sidebar-->
+                </div><!--end #wrapper .wat-cf-->
             {% endif %}
-            {% get_object_navigation_links "related" as object_navigation_links %}
-                {% if object_navigation_links %}
-                <div class="block">
-                    <h3>{% trans "Related actions" %}</h3>
-                    <ul class="navigation">
-                        {% with 'true' as as_li %}
-                            {% include 'generic_navigation.html' %}
-                        {% endwith %}
-                    </ul>
-                </div>
-            {% endif %}
-            {% get_object_navigation_links "sidebar" as object_navigation_links %}
-            {% if object_navigation_links %}
-            <div class="block">
-                <h3>{% trans 'Other available actions' %}</h3>
-                <ul class="navigation">
-                    {% with 'true' as as_li %}
-                        {% include 'generic_navigation.html' %}
-                    {% endwith %}
-                </ul>
-            </div>
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        {% get_object_navigation_links as object_navigation_links %}
-        {% if object_navigation_links %}
-            <div class="block">
-                {% if navigation_object %}
-                    {% if object_name %}
-                        <h3>{% blocktrans %}Actions for {{ object_name }}: {{ navigation_object }}{% endblocktrans %}</h3>
-                    {% else %}
-                        <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
-                    {% endif %}
-                {% else %}
-                    <h3>{% trans 'Actions' %}</h3>
+        </div><!--end #container-->
+
+        {% compress js %}
+        <script type="text/javascript" charset="utf-8" src="{% static 'packages/jquery-2.1.1.min.js' %}"></script>
+
+        {% if enable_scroll_js %}
+            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.scrollTo.js' %}"></script>
+            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.localscroll.js' %}"></script>
+        {% endif %}
+
+        <script type="text/javascript" src="{% static 'packages/jquery.scrollview.js' %}"></script>
+        <script type="text/javascript" src="{% static 'packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.pack.js' %}"></script>
+        <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/lib/jquery.mousewheel-3.0.6.pack.js' %}"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                {% if not disable_auto_focus %}
+                    $("input:text:visible:not(#livesearch):not([readonly]):enabled:first").focus();
                 {% endif %}
-                <ul class="navigation">
-                    {% with 'true' as as_li %}
-                        {% include 'generic_navigation.html' %}
-                    {% endwith %}
-                </ul>
-            </div>
-        {% endif %}
-        {% get_object_navigation_links "related" as object_navigation_links %}
-            {% if object_navigation_links %}
-            <div class="block">
-                <h3>{% trans 'Related actions' %}</h3>
-                <ul class="navigation">
-                    {% with 'true' as as_li %}
-                        {% include 'generic_navigation.html' %}
-                    {% endwith %}
-                </ul>
-            </div>
-        {% endif %}
-    {% endif %}
+                $('form').submit(function(){
+                    $('button', this).click(function() {
+                        return false;
+                    });
+                    $(':submit', this).click(function() {
+                        return false;
+                    });
+                });
+                $('.scrollable').scrollview();
+                $('.full-height').height($(window).height() - 230);
+                $(window).resize(function() {
+                    $('.full-height').height($(window).height() - 230);
+                });
+                $('.no-parent-history', this).click(function() {
+                    location.replace(this.href);
+                    return false;
+                });
 
-    {% get_object_navigation_links "sidebar" as object_navigation_links %}
-        {% if object_navigation_links %}
-        <div class="block">
-            <h3>{% trans "Other available actions" %}</h3>
-            <ul class="navigation">
-                {% with 'true' as as_li %}
-                    {% include 'generic_navigation.html' %}
-                {% endwith %}
-            </ul>
-        </div>
-    {% endif %}
+                $("a.fancybox").fancybox({
+                    'openEffect'  : 'elastic',
+                    'closeEffect' : 'elastic',
+                    prevEffect  : 'none',
+                    nextEffect  : 'none',
+                    'titleShow' : true,
+                    'type'      : 'image',
+                    'autoResize': true,
+                });
 
-    {% get_sidebar_templates as sidebar_templates %}
-    {% for template in sidebar_templates %}
-        {% with 'true' as side_bar %}
-            {% include template %}
-        {% endwith %}
-    {% endfor %}
+                $("a.fancybox-staging").click(function(e) {
+                    var $this = $(this);
 
-    {% block sidebar %}{% endblock %}
-{% endblock %}
+                        $.get($this.attr('href'), function( result ) {
+                            if (result.status == 'success') {
+                                $.fancybox.open([
+                                    {
+                                        href : result.data,
+                                        title : $this.attr('title'),
+                                        'openEffect'  : 'elastic',
+                                        'closeEffect' : 'elastic',
+                                        prevEffect  : 'none',
+                                        nextEffect  : 'none',
+                                        'titleShow' : true,
+                                        'type'      : 'image',
+                                        'autoResize': true,
+                                    },
+                                ]);
+                            }
+                        })
+                    e.preventDefault();
+                })
 
-{% block web_theme_messages %}{% block messages %}{% endblock %}{% endblock %}
+                $("a.fancybox-noscaling").fancybox({
+                    openEffect  : 'elastic',
+                    closeEffect : 'elastic',
+                    prevEffect  : 'none',
+                    nextEffect  : 'none',
+                    'titleShow' : true,
+                    'type'      : 'image',
+                    'autoResize': false
+                });
 
-{% block web_theme_content %}{% block content %}{% endblock %}{% endblock %}
+                $("a.fancybox-iframe").fancybox({
+                    openEffect     : 'elastic',
+                    closeEffect    : 'elastic',
+                    'titleShow'    : false,
+                    'type'         : 'iframe',
+                    autoHeight     : false,
+                    width          : '99%',
+                    height         : '99%',
+                    minHeight      : '100%',
+                    minWidth       : '100%',
+                    'showNavArrows': false,
+                    'margin'       : 18,
+                });
 
-{% block web_theme_footer %}{% block footer %}{% endblock %}{% endblock %}
+                function set_image_noninteractive(image) {
+                    // Remove border to indicate non interactive image
+                    image.removeClass('thin_border');
+                    container = image.parent().parent();
+                    // Save img HTML
+                    html = image.parent().html();
+                    // Remove anchor
+                    image.parent().remove();
+                    // Place again img
+                    container.html(html);
+                }
+
+                function load_document_image(image_tag) {
+                    var image = image_tag;
+                    var container = image.parent();
+                    $.get( image.attr('data-original'), function( result ) {
+                        if (result.status == 'success') {
+                            image.attr('src', result.data);
+                        } else if (result.detail == 'unknown_file_format') {
+                            image.attr('src', "{% static 'images/mimetypes/unknown.png' %}");
+                            set_image_noninteractive(image);
+                        } else {
+                            image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                            set_image_noninteractive(image);
+                        }
+                    })
+                  .fail(function() {
+                    image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                    set_image_noninteractive(image);
+                  })
+                }
+
+               $('img.lazy-load').lazyload({
+                    appear: function(elements_left, settings) {
+                        load_document_image($(this));
+                    },
+                    load: function(elements_left, settings) {
+                        console.log(this, elements_left, settings);
+                    }
+                });
+
+                $('img.lazy-load-carousel').lazyload({
+                    container: $(".carousel-container"),
+
+                    appear: function(elements_left, settings) {
+                        load_document_image($(this));
+                    }
+                });
+
+                $('img.lazy-load-interactive').lazyload({
+                    appear: function(elements_left, settings) {
+                        load_document_image($(this));
+                    }
+                });
+            });
+        </script>
+        {% block javascript %}{% endblock %}
+
+        <script type="text/javascript">
+            function dismissAlert($element){
+                $element.parent().parent().addClass('fadeOutUp').fadeOut('slow');
+            }
+
+            $(document).ready(function() {
+                var dismissTimer = setInterval(function(){
+                    $('.success').each(function(){
+                        dismissAlert($(this).find('.dismiss'));
+                    });
+
+                    clearInterval(dismissTimer);
+                }, 2500);
+
+                $('.dismiss').click(function(){
+                    dismissAlert($(this));
+                    return false;
+                });
+                $('.dismiss-all').click(function(){
+                    $('.message').each(function(){
+                        dismissAlert($(this).parent().find('.dismiss'));
+                    });
+                    return false;
+                });
+                $('th input:checkbox').click(function(e) {
+                    var table = $(e.target).closest('table');
+                    $('td input:checkbox', table).attr('checked', e.target.checked);
+                });
+            });
+        </script>
+        {% endcompress %}
+
+    </body>
+</html>
