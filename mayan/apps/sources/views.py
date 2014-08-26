@@ -267,7 +267,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             staging_file.delete()
                             messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
                         if document:
-                            return HttpResponseRedirect(reverse('document_view_simple', args=[document.pk]))
+                            return HttpResponseRedirect(reverse('documents:document_view_simple', args=[document.pk]))
                         else:
                             return HttpResponseRedirect(request.get_full_path())
                     except NewDocumentVersionNotAllowed:

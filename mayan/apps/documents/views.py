@@ -473,7 +473,7 @@ def document_update_page_count(request):
 def document_clear_transformations(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document.objects, pk=document_id)]
-        post_redirect = reverse('document_view_simple', args=[documents[0].pk])
+        post_redirect = reverse('documents:document_view_simple', args=[documents[0].pk])
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
         post_redirect = None
@@ -486,8 +486,8 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, documents, exception_on_empty=True)
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('document_list'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
 
     if request.method == 'POST':
         for document in documents:
@@ -584,7 +584,7 @@ def document_page_view(request, document_page_id):
 
 
 def document_page_view_reset(request, document_page_id):
-    return HttpResponseRedirect(reverse('document_page_view', args=[document_page_id]))
+    return HttpResponseRedirect(reverse('documents:document_page_view', args=[document_page_id]))
 
 
 def document_page_text(request, document_page_id):
@@ -797,7 +797,7 @@ def document_print(request, document_id):
             if form.cleaned_data['page_range']:
                 hard_copy_arguments['page_range'] = form.cleaned_data['page_range']
 
-            new_url = [reverse('document_hard_copy', args=[document_id])]
+            new_url = [reverse('documents:document_hard_copy', args=[document_id])]
             if hard_copy_arguments:
                 new_url.append(urlquote(hard_copy_arguments))
 
@@ -874,7 +874,7 @@ def document_type_edit(request, document_type_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_type_list'))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('documents:document_type_list'))))
 
     if request.method == 'POST':
         form = DocumentTypeForm(instance=document_type, data=request.POST)
@@ -903,7 +903,7 @@ def document_type_delete(request, document_type_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_DELETE])
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
-    post_action_redirect = reverse('document_type_list')
+    post_action_redirect = reverse('documents:document_type_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -947,7 +947,7 @@ def document_type_create(request):
             try:
                 form.save()
                 messages.success(request, _(u'Document type created successfully'))
-                return HttpResponseRedirect(reverse('document_type_list'))
+                return HttpResponseRedirect(reverse('documents:document_type_list'))
             except Exception as exception:
                 messages.error(request, _(u'Error creating document type; %(error)s') % {
                     'error': exception})
@@ -989,7 +989,7 @@ def document_type_filename_edit(request, document_type_filename_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
     document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('document_type_filename_list', args=[document_type_filename.document_type_id]))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('documents:document_type_filename_list', args=[document_type_filename.document_type_id]))))
 
     if request.method == 'POST':
         form = DocumentTypeFilenameForm(instance=document_type_filename, data=request.POST)
@@ -1025,7 +1025,7 @@ def document_type_filename_delete(request, document_type_filename_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
     document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
 
-    post_action_redirect = reverse('document_type_filename_list', args=[document_type_filename.document_type_id])
+    post_action_redirect = reverse('documents:document_type_filename_list', args=[document_type_filename.document_type_id])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -1077,7 +1077,7 @@ def document_type_filename_create(request, document_type_id):
                 )
                 document_type_filename.save()
                 messages.success(request, _(u'Document type filename created successfully'))
-                return HttpResponseRedirect(reverse('document_type_filename_list', args=[document_type_id]))
+                return HttpResponseRedirect(reverse('documents:document_type_filename_list', args=[document_type_id]))
             except Exception as exception:
                 messages.error(request, _(u'Error creating document type filename; %(error)s') % {
                     'error': exception})
@@ -1237,7 +1237,7 @@ def document_page_transformation_create(request, document_page_id):
             document_page.document.invalidate_cached_image(document_page.page_number)
             form.save()
             messages.success(request, _(u'Document page transformation created successfully.'))
-            return HttpResponseRedirect(reverse('document_page_transformation_list', args=[document_page_id]))
+            return HttpResponseRedirect(reverse('documents:document_page_transformation_list', args=[document_page_id]))
     else:
         form = DocumentPageTransformationForm(initial={'document_page': document_page})
 
@@ -1265,7 +1265,7 @@ def document_page_transformation_edit(request, document_page_transformation_id):
             document_page_transformation.document_page.document.invalidate_cached_image(document_page_transformation.document_page.page_number)
             form.save()
             messages.success(request, _(u'Document page transformation edited successfully.'))
-            return HttpResponseRedirect(reverse('document_page_transformation_list', args=[document_page_transformation.document_page_id]))
+            return HttpResponseRedirect(reverse('documents:document_page_transformation_list', args=[document_page_transformation.document_page_id]))
     else:
         form = DocumentPageTransformationForm(instance=document_page_transformation)
 
@@ -1291,7 +1291,7 @@ def document_page_transformation_delete(request, document_page_transformation_id
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, document_page_transformation.document_page.document)
 
-    redirect_view = reverse('document_page_transformation_list', args=[document_page_transformation.document_page_id])
+    redirect_view = reverse('documents:document_page_transformation_list', args=[document_page_transformation.document_page_id])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
     if request.method == 'POST':

@@ -116,7 +116,7 @@ def folder_delete(request, folder_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_FOLDER_DELETE, request.user, folder)
 
-    post_action_redirect = reverse('folder_list')
+    post_action_redirect = reverse('folders:folder_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))

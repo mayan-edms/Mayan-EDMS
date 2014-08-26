@@ -49,7 +49,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
             output.append(
                 document_html_widget(
                     page.document,
-                    click_view='document_display',
+                    click_view='documents:document_display',
                     page=page.page_number,
                     gallery_name='document_pages',
                     fancybox_class='fancybox-noscaling',
@@ -59,7 +59,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                 )
             )
             output.append(u'<div class="tc">')
-            output.append(u'<a class="fancybox-iframe" href="%s">%s%s</a>' % (reverse('document_page_view', args=[page.pk]), '<span class="famfam active famfam-page_white_go"></span>', ugettext(u'Details')))
+            output.append(u'<a class="fancybox-iframe" href="%s">%s%s</a>' % (reverse('documents:document_page_view', args=[page.pk]), '<span class="famfam active famfam-page_white_go"></span>', ugettext(u'Details')))
             output.append(u'</div></div>')
 
         output.append(u'</div><br />%s%s' % ('<span class="famfam active famfam-page_white_magnify"></span>', ugettext(u'Click on the image for full size preview')))
@@ -68,11 +68,11 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
 
 def document_thumbnail(document, **kwargs):
-    return document_html_widget(document, click_view='document_display', **kwargs)
+    return document_html_widget(document, click_view='documents:document_display', **kwargs)
 
 
 def document_link(document):
-    return mark_safe(u'<a href="%s">%s</a>' % (reverse('document_view_simple', args=[document.pk]), document))
+    return mark_safe(u'<a href="%s">%s</a>' % (reverse('documents:document_view_simple', args=[document.pk]), document))
 
 
 def document_html_widget(document, click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None, image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False):
