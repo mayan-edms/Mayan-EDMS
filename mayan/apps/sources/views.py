@@ -171,7 +171,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             metadata_dict_list=decode_metadata_from_url(request.GET),
                             user=request.user,
                             document=document,
-                            new_version_data=form.cleaned_data.get('new_version_data')
+                            new_version_data=form.cleaned_data.get('new_version_data'),
+                            description=form.cleaned_data.get('description')
                         )
                         if document:
                             messages.success(request, _(u'New document version uploaded successfully.'))
@@ -247,7 +248,8 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                             metadata_dict_list=decode_metadata_from_url(request.GET),
                             user=request.user,
                             document=document,
-                            new_version_data=form.cleaned_data.get('new_version_data')
+                            new_version_data=form.cleaned_data.get('new_version_data'),
+                            description=form.cleaned_data.get('description')
                         )
                         if document:
                             messages.success(request, _(u'Document version from staging file: %s, uploaded successfully.') % staging_file.filename)

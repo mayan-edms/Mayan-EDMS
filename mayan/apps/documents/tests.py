@@ -21,6 +21,7 @@ TEST_ADMIN_USERNAME = 'test_admin'
 TEST_ADMIN_EMAIL = 'admin@admin.com'
 TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
 TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
+TEST_DOCUMENT_DESCRIPTION = 'test description'
 
 
 class DocumentTestCase(TestCase):
@@ -174,6 +175,39 @@ class DocumentUploadFunctionalTestCase(TestCase):
         # Delete the document
         response = self.client.post(reverse('document_delete', args=[self.document.pk]))
         self.assertEqual(Document.objects.count(), 0)
+
+    def test_issue_25(self):
+        from sources.models import WebForm
+        from sources.literals import SOURCE_CHOICE_WEB_FORM
+
+        # Login the admin user
+        logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
+        # Create new webform source
+        response = self.client.post(reverse('setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        self.assertEqual(WebForm.objects.count(), 1)
+
+        # Upload the test document
+        with open(TEST_DOCUMENT_PATH) as file_descriptor:
+            response = self.client.post(reverse('upload_interactive'), {'file': file_descriptor, 'description': TEST_DOCUMENT_DESCRIPTION})
+        self.assertEqual(Document.objects.count(), 1)
+
+        document = Document.objects.all().first()
+        # Test for issue 25 during creation
+        self.failUnlessEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
+
+        # Reset description
+        document.description = ''
+        document.save()
+        self.failUnlessEqual(document.description, '')
+
+        # Test for issue 25 during editing
+        response = self.client.post(reverse('document_edit', args=[document.pk]), {'description': TEST_DOCUMENT_DESCRIPTION})
+        # Fetch document again and test description
+        document = Document.objects.all().first()
+        self.failUnlessEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
 
 
 class DocumentAPICreateDocumentTestCase(TestCase):

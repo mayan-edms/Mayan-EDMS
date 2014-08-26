@@ -58,7 +58,7 @@ class BaseModel(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, command_line=False):
+    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, command_line=False, description=None):
         is_compressed = None
 
         if expand:
@@ -68,7 +68,7 @@ class BaseModel(models.Model):
                 for fp in cf.children():
                     if command_line:
                         print 'Uploading file #%d: %s' % (count, fp)
-                    self.upload_single_file(file_object=fp, filename=None, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user)
+                    self.upload_single_file(file_object=fp, filename=None, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description)
                     fp.close()
                     count += 1
 
@@ -77,23 +77,27 @@ class BaseModel(models.Model):
                 logging.debug('Exception: NotACompressedFile')
                 if command_line:
                     raise
-                self.upload_single_file(file_object=file_object, filename=filename, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user)
+                self.upload_single_file(file_object=file_object, filename=filename, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description)
             else:
                 is_compressed = True
         else:
-            self.upload_single_file(file_object, filename, use_file_name, document_type, metadata_dict_list, user, document, new_version_data)
+            self.upload_single_file(file_object, filename, use_file_name, document_type, metadata_dict_list, user, document, new_version_data, description=description)
 
         file_object.close()
         return {'is_compressed': is_compressed}
 
     @transaction.atomic
-    def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None):
+    def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None, description=None):
         new_document = not document
 
         if not document:
             document = Document()
             if document_type:
                 document.document_type = document_type
+
+            if description:
+                document.description = description
+
             document.save()
 
             apply_default_acls(document, user)
@@ -108,6 +112,10 @@ class BaseModel(models.Model):
                 filename = None
             else:
                 filename = filename if filename else document.latest_version.filename
+
+            if description:
+                document.description = description
+                document.save()
 
         if not new_version_data:
             new_version_data = {}
