@@ -50,7 +50,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    post_action_redirect = reverse('document_list_recent')
+    post_action_redirect = reverse('documents:document_list_recent')
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
 
@@ -133,7 +133,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
 
-    post_action_redirect = reverse('document_list_recent')
+    post_action_redirect = reverse('documents:document_list_recent')
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
 
@@ -201,7 +201,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    post_action_redirect = reverse('document_list_recent')
+    post_action_redirect = reverse('documents:document_list_recent')
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
 
@@ -349,7 +349,7 @@ def setup_metadata_type_delete(request, metadatatype_id):
 
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
-    post_action_redirect = reverse('setup_metadata_type_list')
+    post_action_redirect = reverse('metadata:setup_metadata_type_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_action_redirect)))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
@@ -408,7 +408,7 @@ def setup_metadata_set_edit(request, metadata_set_id):
             try:
                 form.save()
                 messages.success(request, _(u'Metadata set edited successfully'))
-                return HttpResponseRedirect(reverse('setup_metadata_set_list'))
+                return HttpResponseRedirect(reverse('metadata:setup_metadata_set_list'))
             except Exception as exception:
                 messages.error(request, _(u'Error editing metadata set; %s') % exception)
             pass
@@ -489,7 +489,7 @@ def setup_metadata_set_delete(request, metadata_set_id):
 
     metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
 
-    post_action_redirect = reverse('setup_metadata_set_list')
+    post_action_redirect = reverse('metadata:setup_metadata_set_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_action_redirect)))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))

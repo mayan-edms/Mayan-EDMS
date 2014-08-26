@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 def tag_create(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_TAG_CREATE])
-    redirect_url = reverse('tag_list')
+    redirect_url = reverse('tags:tag_list')
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_url)))
 
     if request.method == 'POST':
@@ -62,7 +62,7 @@ def tag_create(request):
 def tag_attach(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
-        post_action_redirect = reverse('tag_list')
+        post_action_redirect = reverse('tags:tag_list')
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
@@ -147,7 +147,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
 
     if tag_id:
         tags = [get_object_or_404(Tag, pk=tag_id)]
-        post_action_redirect = reverse('tag_list')
+        post_action_redirect = reverse('tags:tag_list')
     elif tag_id_list:
         tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
     else:
@@ -216,7 +216,7 @@ def tag_edit(request, tag_id):
             tag_properties.color = form.cleaned_data['color']
             tag_properties.save()
             messages.success(request, _(u'Tag updated succesfully.'))
-            return HttpResponseRedirect(reverse('tag_list'))
+            return HttpResponseRedirect(reverse('tags:tag_list'))
     else:
         form = TagForm(initial={
             'name': tag.name,

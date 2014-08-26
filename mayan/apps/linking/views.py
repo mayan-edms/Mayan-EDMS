@@ -171,7 +171,7 @@ def smart_link_edit(request, smart_link_pk):
         if form.is_valid():
             smart_link = form.save()
             messages.success(request, _(u'Smart link: %s edited successfully.') % smart_link)
-            return HttpResponseRedirect(reverse('smart_link_list'))
+            return HttpResponseRedirect(reverse('linking:smart_link_list'))
     else:
         form = SmartLinkForm(instance=smart_link)
 

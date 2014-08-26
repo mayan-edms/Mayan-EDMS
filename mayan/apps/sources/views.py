@@ -477,7 +477,7 @@ def setup_source_delete(request, source_type, source_id):
         form_icon = u'folder_delete.png'
         redirect_view = 'setup_watch_folder_list'
 
-    redirect_view = reverse('setup_source_list', args=[source_type])
+    redirect_view = reverse('sources:setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
     source = get_object_or_404(cls, pk=source_id)
@@ -527,7 +527,7 @@ def setup_source_create(request, source_type):
             try:
                 form.save()
                 messages.success(request, _(u'Source created successfully'))
-                return HttpResponseRedirect(reverse('setup_web_form_list'))
+                return HttpResponseRedirect(reverse('sources:setup_web_form_list'))
             except Exception as exception:
                 messages.error(request, _(u'Error creating source; %s') % exception)
     else:
@@ -578,7 +578,7 @@ def setup_source_transformation_edit(request, transformation_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
-    redirect_view = reverse('setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
+    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', redirect_view)))
 
     if request.method == 'POST':
@@ -611,7 +611,7 @@ def setup_source_transformation_delete(request, transformation_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
-    redirect_view = reverse('setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
+    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
     if request.method == 'POST':
@@ -653,7 +653,7 @@ def setup_source_transformation_create(request, source_type, source_id):
 
     source = get_object_or_404(cls, pk=source_id)
 
-    redirect_view = reverse('setup_source_transformation_list', args=[source.source_type, source.pk])
+    redirect_view = reverse('sources:setup_source_transformation_list', args=[source.source_type, source.pk])
 
     if request.method == 'POST':
         form = SourceTransformationForm_create(request.POST)
