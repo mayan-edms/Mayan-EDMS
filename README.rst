@@ -19,6 +19,7 @@ text parsing and OCR capabilities.
 
 `Mailing list (via Google Groups)`_
 
+|Animation|
 
 License
 -------
@@ -65,6 +66,7 @@ Contribute
 .. |Coverage Status| image:: http://img.shields.io/coveralls/mayan-edms/mayan-edms/master.svg?style=flat
    :target: https://coveralls.io/r/mayan-edms/mayan-edms?branch=master
 .. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
+.. |Animation| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
 .. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat
    :target: https://crate.io/packages/mayan-edms/
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
