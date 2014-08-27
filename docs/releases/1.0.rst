@@ -2,7 +2,7 @@
 Mayan EDMS v1.0 release notes
 =============================
 
-*July 2014*
+*August 26, 2014*
 
 Welcome to Mayan EDMS v1.0!
 

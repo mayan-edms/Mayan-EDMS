@@ -21,7 +21,7 @@ Initialize a ``virtualenv`` to deploy the project:
 
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install mayan-edms==1.0.rc3
+    $ pip install mayan-edms
 
 By default **Mayan EDMS** will create a single file SQLite_ database, which makes
 it very easy to start using **Mayan EDMS**. Populate the database with the project's schema doing:

@@ -1,4 +1,4 @@
-1.0 (2014-07-??)
+1.0 (2014-08-27)
 ================
 
 - New home @ https://github.com/mayan-edms/mayan-edms
