@@ -25,12 +25,12 @@ register_links([StagingFile], [staging_file_delete])
 
 register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
 
-register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_create'], [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
+register_links(['sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_create'], [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 
 register_links(WebForm, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 register_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
-register_links(['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create'], [setup_sources, setup_source_create], menu_name='sidebar')
+register_links(['sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_edit', 'sources:setup_source_delete', 'sources:setup_source_create'], [setup_sources, setup_source_create], menu_name='sidebar')
 
 register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 register_links(StagingFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
@@ -39,22 +39,22 @@ register_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, set
 register_links(WatchFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 # Document version
-register_links(['document_version_list', 'upload_version', 'document_version_revert'], [upload_version], menu_name='sidebar')
+register_links(['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'], [upload_version], menu_name='sidebar')
 
-register_links(['setup_source_transformation_create', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
+register_links(['sources:setup_source_transformation_create', 'sources:setup_source_transformation_edit', 'sources:setup_source_transformation_delete', 'sources:setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
 
-source_views = ['setup_web_form_list', 'setup_staging_folder_list', 'setup_watch_folder_list', 'setup_source_edit', 'setup_source_delete', 'setup_source_create', 'setup_source_transformation_list', 'setup_source_transformation_edit', 'setup_source_transformation_delete', 'setup_source_transformation_create']
+source_views = ['sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_edit', 'sources:setup_source_delete', 'sources:setup_source_create', 'sources:setup_source_transformation_list', 'sources:setup_source_transformation_edit', 'sources:setup_source_transformation_delete', 'sources:setup_source_transformation_create']
 
 register_model_list_columns(StagingFile, [
     {
         'name': _(u'thumbnail'), 'attribute':
-        encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='staging_list', title=x.filename, size='100'))
+        encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='sources:staging_list', title=x.filename, size='100'))
     },
 ])
 
 register_setup(setup_sources)
 
-register_links([Document, 'document_list_recent', 'document_list', 'document_create', 'document_create_multiple', 'upload_interactive', 'staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
+register_links([Document, 'documents:document_list_recent', 'documents:document_list', 'sources:document_create', 'sources:document_create_multiple', 'sources:upload_interactive', 'sources:staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
 register_links(Document, [document_create_siblings])
 
 endpoint = APIEndPoint('sources')

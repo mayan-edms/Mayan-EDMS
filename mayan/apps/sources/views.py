@@ -45,7 +45,7 @@ def document_create_siblings(request, document_id):
     if document.document_type_id:
         query_dict['document_type_id'] = document.document_type_id
 
-    url = reverse('upload_interactive')
+    url = reverse('sources:upload_interactive')
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
 
@@ -58,7 +58,7 @@ def get_tab_link_for_source(source, document=None):
         view = u'upload_version'
         args = [document.pk, u'"%s"' % source.source_type, source.pk]
     else:
-        view = u'upload_interactive'
+        view = u'sources:upload_interactive'
         args = [u'"%s"' % source.source_type, source.pk]
 
     return {
@@ -322,7 +322,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 'upload_version': {
                     'links': results['tab_links']
                 },
-                'upload_interactive': {
+                'sources:upload_interactive': {
                     'links': results['tab_links']
                 }
             }

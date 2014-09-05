@@ -78,6 +78,7 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
     """
     Express a list of links from definition to final values
     """
+
     context_links = []
     for link in links:
         # Check to see if link has conditional display

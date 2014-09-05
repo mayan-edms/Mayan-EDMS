@@ -89,5 +89,5 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
         except TypeError:
             pass
 
-        url = '?'.join([reverse('upload_interactive'), urlencode(query_dict, doseq=True)])
+        url = '?'.join([reverse('sources:upload_interactive'), urlencode(query_dict, doseq=True)])
         return HttpResponseRedirect(url)
