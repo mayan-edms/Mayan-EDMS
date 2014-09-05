@@ -22,7 +22,7 @@ before trying again.
 
 * Solution::
 
-  $ manage.py shell
+  $ mayan-edms.py shell
 
   >>> from django.db import connection
   >>> cursor = connection.cursor()
@@ -110,7 +110,7 @@ Django's development server doesn't serve static files unless the ``DEBUG``
 option is set to ``True``, this mode of operation should only be used for
 development or testing.  For production deployments the management command::
 
-  $ ./manage.py collectstatic
+  $ mayan-edms.py collectstatic
 
 should be used and the resulting ``static`` folder served from a webserver.
 For more information, read https://docs.djangoproject.com/en/dev/howto/static-files/
