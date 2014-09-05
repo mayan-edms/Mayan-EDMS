@@ -7,6 +7,10 @@ Ubuntu, Debian or Fedora server
 
 **Mayan EDMS** should be deployed like any other Django_ project and preferably using virtualenv_.
 
+Being a Django_ and a Python_ project familiarity with these technologies is
+required to understand why **Mayan EDMS** does some of the things it does the way
+it does them.
+
 If using a Debian_ or Ubuntu_ based Linux distribution getting the executable requirements is as easy as::
 
     $ sudo apt-get install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils -y
@@ -51,7 +55,7 @@ in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the foll
 
 To test your settings launch **Mayan EDMS** using::
 
-    $ mayan-edms runserver --settings=mayan.settings.my_settings
+    $ mayan-edms.py runserver --settings=mayan.settings.my_settings
 
 After making sure everything is running correctly, stop the runserver command.
 Deploy **Mayan EDMS** using the webserver of your preference. For more information
