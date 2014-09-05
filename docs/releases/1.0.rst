@@ -162,14 +162,14 @@ Next upgrade/add the new requirements::
 
 Migrate existing database schema with::
 
-    $ ./manage.py migrate acls 0001 --fake
-    $ ./manage.py migrate taggit 0001 --fake
-    $ ./manage.py migrate ocr 0001 --fake
-    $ ./manage.py migrate
+    $ mayan-edms.py migrate acls 0001 --fake
+    $ mayan-edms.py migrate taggit 0001 --fake
+    $ mayan-edms.py migrate ocr 0001 --fake
+    $ mayan-edms.py migrate
 
 Add new static media::
 
-    $ ./manage.py collectstatic --noinput
+    $ mayan-edms.py collectstatic --noinput
 
 The upgrade procedure is now complete.
 
