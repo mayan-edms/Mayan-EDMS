@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ingo, 2013
@@ -11,19 +11,19 @@
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
 # tilmannsittig <tilmann.sittig@web.de>, 2012
 # tilmannsittig <tilmann.sittig@web.de>, 2012
+# Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2014-07-20 00:07+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2014-08-28 12:38+0000\n"
+"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:50
@@ -32,7 +32,7 @@ msgstr "Miniaturbild"
 
 #: __init__.py:62
 msgid "Returns a list of all the staging folders and the files they contain."
-msgstr ""
+msgstr "Gibt eine Liste aller Arbeitsordner und deren Dateien zurück"
 
 #: forms.py:39 forms.py:64
 msgid "Expand compressed files"
@@ -253,7 +253,8 @@ msgstr "Intervall"
 
 #: models.py:201
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
 msgstr "Intervall für die Überprüfung des Überwachungsordners (in Sekunden)."
 
 #: models.py:225
@@ -328,16 +329,12 @@ msgstr "Quellen hochladen"
 #: views.py:118
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
-"Es wurden keine interaktiven Dokumentenquellen definiert oder sie sind nicht "
-"aktiviert."
+msgstr "Es wurden keine interaktiven Dokumentenquellen definiert oder sie sind nicht aktiviert."
 
 #: views.py:119
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
-"Klicken Sie %(setup_link)s um Dokumentenquellen hinzuzufügen oder zu "
-"aktivieren."
+msgstr "Klicken Sie %(setup_link)s um Dokumentenquellen hinzuzufügen oder zu aktivieren."
 
 #: views.py:177
 msgid "New document version uploaded successfully."
@@ -387,9 +384,9 @@ msgstr "Arbeitsdatei %s erfolgreich hochgeladen."
 #: views.py:259
 #, python-format
 msgid ""
-"Staging file: %s, uncompressed successfully and uploaded as individual files."
-msgstr ""
-"Arbeitsdatei %s erfolgreich entpackt und als einzelne Dateien hochgeladen."
+"Staging file: %s, uncompressed successfully and uploaded as individual "
+"files."
+msgstr "Arbeitsdatei %s erfolgreich entpackt und als einzelne Dateien hochgeladen."
 
 #: views.py:262
 #, python-format
@@ -516,9 +513,7 @@ msgstr "Fehler beim Löschen der Quellen-Transformation: %(error)s"
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Sind Sie sicher, dass Sie die Quellen-Transformation \"%(transformation)s\" "
-"löschen möchten?"
+msgstr "Sind Sie sicher, dass Sie die Quellen-Transformation \"%(transformation)s\" löschen möchten?"
 
 #: views.py:663
 msgid "Source transformation created successfully"
@@ -535,9 +530,8 @@ msgid "Create new transformation for source: %s"
 msgstr "Transformation für Quelle erstellen: %s"
 
 #: widgets.py:40
-#, fuzzy
 msgid "staging file page image"
-msgstr "Arbeitsdatei"
+msgstr "Seiten Bild der Arbeitsdatei"
 
 #: wizards.py:53
 msgid "step 1 of 3: Document type"
@@ -556,13 +550,13 @@ msgid "Next step"
 msgstr "Nächster Schritt"
 
 #~ msgid "preview"
-#~ msgstr "Vorschau"
+#~ msgstr "preview"
 
 #~ msgid "Unable to upload staging file: %s"
-#~ msgstr "Arbeitsdatei konnte nicht hochgeladen werden: %s"
+#~ msgstr "Unable to upload staging file: %s"
 
 #~ msgid "Unable to delete staging file: %s"
-#~ msgstr "Arbeitsdatei konnte nicht gelöscht werden: %s"
+#~ msgstr "Unable to delete staging file: %s"
 
 #~ msgid "Staging file transformation error: %(error)s"
-#~ msgstr "Fehler bei Transformation der Arbeitsdatei: %(error)s"
+#~ msgstr "Staging file transformation error: %(error)s"

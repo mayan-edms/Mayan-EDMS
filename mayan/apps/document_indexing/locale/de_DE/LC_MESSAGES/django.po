@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -16,14 +16,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-07-20 00:06+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2014-08-28 12:29+0000\n"
+"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:45
@@ -39,16 +38,13 @@ msgstr "Maximale Suffix (%s) Anzahl erreicht."
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Fehler in Updateausdruck für Dokumentenindex: %(expression)s; %(exception)s"
+msgstr "Fehler in Updateausdruck für Dokumentenindex: %(expression)s; %(exception)s"
 
 #: api.py:94 api.py:109
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr ""
-"Fehler beim Aktualisieren des Dokumentenindex, Ausdruck: %(expression)s; "
-"%(exception)s"
+msgstr "Fehler beim Aktualisieren des Dokumentenindex, Ausdruck: %(expression)s; %(exception)s"
 
 #: api.py:151
 #, python-format
@@ -61,19 +57,16 @@ msgid "Unable to create indexing directory; %s"
 msgstr "Indizierungsverzeichnis kann nicht erstellt werden: %s"
 
 #: filesystem.py:69
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exception)s"
-msgstr ""
-"Symbolische Verknüpfung kann nicht erstellt werden, Datei existiert und kann "
-"nicht gelöscht werden:  %(filepath)s; %(exc)s"
+msgstr "Erstellen der symbolischen Verknüpfung nicht möglich, Datei existiert und kann nicht gelöscht werden:  %(filepath)s; %(exception)s"
 
 #: filesystem.py:71
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
-msgstr ""
-"Symbolische Verknüpfung kann nicht erstellt werden: %(filepath)s; %(exc)s"
+msgstr "Erstellen der symbolischen Verknüpfung nicht möglich: %(filepath)s; %(exception)s"
 
 #: filesystem.py:84
 #, python-format
@@ -155,10 +148,9 @@ msgid "enabled"
 msgstr "Aktiviert"
 
 #: models.py:20
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
-"werden."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
 
 #: models.py:63 models.py:69 views.py:103 views.py:133 views.py:159
 #: views.py:195 views.py:222 views.py:251 views.py:290
@@ -175,9 +167,7 @@ msgstr "Geben Sie einen Python-Ausdruck zur Auswertung an."
 
 #: models.py:72
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
-"werden."
+msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
 
 #: models.py:73
 msgid "link documents"
@@ -185,12 +175,9 @@ msgstr "Dokumente verknüpfen"
 
 #: models.py:73
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden "
-"sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-"
-"Knotenpunkte fungieren soll)."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-Knotenpunkte fungieren soll)."
 
 #: models.py:83 models.py:89
 msgid "index template node"
@@ -370,8 +357,7 @@ msgstr "Sind Sie sicher, dass Sie alle Indices neu aufbauen möchten?"
 
 #: views.py:388
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
+msgstr "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
 #: views.py:394
 msgid "Index rebuild completed successfully."
@@ -393,11 +379,9 @@ msgstr "Wurzel"
 
 #: conf/settings.py:22
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
-msgstr ""
-"Ein Python-Dictionary, das Zuweisungen von Index-Namen an Verzeichnisse im "
-"Dateisystem (wo der Index abgebildet wird) enthält."
+"A dictionary that maps the index name and where on the filesystem that index"
+" will be mirrored."
+msgstr "Ein Python-Dictionary, das Zuweisungen von Index-Namen an Verzeichnisse im Dateisystem (wo der Index abgebildet wird) enthält."
 
 #: templates/indexing_help.html:3
 msgid "What are indexes?"
@@ -405,5 +389,4 @@ msgstr "Was sind Indices?"
 
 #: templates/indexing_help.html:4
 msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr ""
-"Indices gruppieren Dokumente in eine baumartige, hierarchische Struktur."
+msgstr "Indices gruppieren Dokumente in eine baumartige, hierarchische Struktur."
