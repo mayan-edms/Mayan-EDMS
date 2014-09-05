@@ -1,0 +1,50 @@
+=============================
+Mayan EDMS v1.1 release notes
+=============================
+
+*? 2014*
+
+Welcome to Mayan EDMS v1.1
+
+Overview
+========
+
+What's new in Mayan EDMS v1.1
+=============================
+
+
+Upgrading from a previous version
+=================================
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py migrate
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+
+
+Bugs fixed or issues closed
+===========================
+* None
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
