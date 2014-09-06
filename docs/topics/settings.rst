@@ -485,15 +485,6 @@ Display extra information in the login screen.
 Main
 ====
 
-.. setting:: MAIN_SIDE_BAR_SEARCH
-
-**MAIN_SIDE_BAR_SEARCH**
-
-Default: ``False``
-
-Controls whether the search functionality is provided by a sidebar widget or by a menu entry.
-
-
 .. setting:: MAIN_DISABLE_HOME_VIEW
 
 **MAIN_DISABLE_HOME_VIEW**

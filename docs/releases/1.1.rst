@@ -12,6 +12,10 @@ Overview
 What's new in Mayan EDMS v1.1
 =============================
 
+*  Removal of the MAIN_SIDE_BAR_SEARCH
+*  Views namespaces
+*  German language translation updates
+
 
 Upgrading from a previous version
 =================================
