@@ -220,7 +220,7 @@ def tag_edit(request, tag_id):
     else:
         form = TagForm(initial={
             'name': tag.name,
-            'color': tag.tagproperties_set.get().color
+            'color': tag.properties.get().color
         })
 
     return render_to_response('generic_form.html', {
