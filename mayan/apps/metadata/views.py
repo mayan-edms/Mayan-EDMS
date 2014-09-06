@@ -157,7 +157,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 )
             elif len(documents) > 1:
                 return HttpResponseRedirect(u'%s?%s' % (
-                    reverse('metadata_multiple_edit'),
+                    reverse('metadata:metadata_multiple_edit'),
                     urlencode({'id_list': document_id_list, 'next': next}))
                 )
 
@@ -311,7 +311,7 @@ def setup_metadata_type_edit(request, metadatatype_id):
             try:
                 form.save()
                 messages.success(request, _(u'Metadata type edited successfully'))
-                return HttpResponseRedirect(reverse('setup_metadata_type_list'))
+                return HttpResponseRedirect(reverse('metadata:setup_metadata_type_list'))
             except Exception as exception:
                 messages.error(request, _(u'Error editing metadata type; %s') % exception)
             pass
@@ -334,7 +334,7 @@ def setup_metadata_type_create(request):
         if form.is_valid():
             form.save()
             messages.success(request, _(u'Metadata type created successfully'))
-            return HttpResponseRedirect(reverse('setup_metadata_type_list'))
+            return HttpResponseRedirect(reverse('metadata:setup_metadata_type_list'))
     else:
         form = MetadataTypeForm()
 
@@ -474,7 +474,7 @@ def setup_metadata_set_create(request):
         if form.is_valid():
             form.save()
             messages.success(request, _(u'Metadata set created successfully'))
-            return HttpResponseRedirect(reverse('setup_metadata_set_list'))
+            return HttpResponseRedirect(reverse('metadata:setup_metadata_set_list'))
     else:
         form = MetadataSetForm()
 

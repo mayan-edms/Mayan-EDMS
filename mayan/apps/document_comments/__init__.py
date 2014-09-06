@@ -34,7 +34,7 @@ register_model_list_columns(Comment, [
     }
 ])
 
-register_links(['comments_for_document', 'comment_add', 'comment_delete', 'comment_multiple_delete'], [comment_add], menu_name='sidebar')
+register_links(['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'], [comment_add], menu_name='sidebar')
 register_links(Comment, [comment_delete])
 register_links(Document, [comments_for_document], menu_name='form_header')
 

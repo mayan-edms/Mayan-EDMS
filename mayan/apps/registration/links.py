@@ -9,4 +9,4 @@ def is_not_registered(context):
     return RegistrationSingleton.registration_state() is False
 
 
-form_view = {'text': _('Registration'), 'view': 'form_view', 'famfam': 'telephone', 'condition': is_not_registered}
+form_view = {'text': _('Registration'), 'view': 'registration:form_view', 'famfam': 'telephone', 'condition': is_not_registered}

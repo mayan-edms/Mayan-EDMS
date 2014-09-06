@@ -6,7 +6,6 @@ setup_items = []
 
 
 def register_setup(link):
-    print "link", link
     setup_items.append(link)
 
     # Append the link's children_view_regex to the setup main menu children view regex

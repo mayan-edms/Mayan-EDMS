@@ -163,7 +163,7 @@ def document_delete(request, document_id=None, document_id_list=None):
 
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
-        post_action_redirect = reverse('document_list_recent')
+        post_action_redirect = reverse('documents:document_list_recent')
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:

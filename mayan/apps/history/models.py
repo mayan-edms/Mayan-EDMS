@@ -9,6 +9,7 @@ from django.core import serializers
 from django.db import models
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 from .runtime_data import history_types_dict
 
@@ -23,9 +24,8 @@ class HistoryType(models.Model):
         except KeyError:
             return u'obsolete history type: %s - %s' % (self.namespace, self.name)
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('history_type_list', [self.pk])
+        return reverse('history:history_type_list', args=[self.pk])
 
     class Meta:
         ordering = ('namespace', 'name')

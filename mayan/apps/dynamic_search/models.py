@@ -49,7 +49,7 @@ class RecentSearch(models.Model):
         super(RecentSearch, self).save(*args, **kwargs)
 
     def url(self):
-        view = 'results' if self.is_advanced() else 'search'
+        view = 'search:results' if self.is_advanced() else 'search:search'
         return '%s?%s' % (reverse(view), self.query)
 
     def is_advanced(self):

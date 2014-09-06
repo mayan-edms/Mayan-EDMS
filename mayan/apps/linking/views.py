@@ -98,7 +98,7 @@ def smart_link_instances_for_document(request, document_id):
                     smart_link_instances=smart_link_instances, current_document=document,
                     links=[smart_link_instance_view_link]
                 ),
-                'form_action': reverse('smart_link_action'),
+                'form_action': reverse('linking:smart_link_action'),
                 'submit_method': 'GET',
             }
         }]
@@ -148,7 +148,7 @@ def smart_link_create(request):
             document_group = form.save()
             apply_default_acls(document_group, request.user)
             messages.success(request, _(u'Smart link: %s created successfully.') % document_group)
-            return HttpResponseRedirect(reverse('smart_link_list'))
+            return HttpResponseRedirect(reverse('linking:smart_link_list'))
     else:
         form = SmartLinkForm()
 
@@ -249,7 +249,7 @@ def smart_link_condition_create(request, smart_link_pk):
             new_smart_link_condition.smart_link = smart_link
             new_smart_link_condition.save()
             messages.success(request, _(u'Smart link condition: "%s" created successfully.') % new_smart_link_condition)
-            return HttpResponseRedirect(reverse('smart_link_condition_list', args=[smart_link.pk]))
+            return HttpResponseRedirect(reverse('linking:smart_link_condition_list', args=[smart_link.pk]))
     else:
         form = SmartLinkConditionForm(initial={'smart_link': smart_link})
 

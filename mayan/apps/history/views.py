@@ -1,20 +1,19 @@
 from __future__ import absolute_import
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _
-from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import PermissionDenied
 from django.db.models.loading import get_model
 from django.http import Http404
-from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404, render_to_response
+from django.template import RequestContext
+from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission
-from common.utils import encapsulate
 from acls.models import AccessEntry
+from common.utils import encapsulate
+from permissions.models import Permission
 
-from .models import History, HistoryType
 from .forms import HistoryDetailForm
+from .models import History, HistoryType
 from .permissions import PERMISSION_HISTORY_VIEW
 from .widgets import history_entry_object_link
 

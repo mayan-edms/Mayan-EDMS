@@ -55,7 +55,7 @@ register_model_list_columns(Property, [
 ])
 
 register_links(PropertyNamespace, [link_namespace_details])
-register_links(['namespace_list', PropertyNamespace], [link_namespace_list], menu_name='secondary_menu')
+register_links(['installation:namespace_list', PropertyNamespace], [link_namespace_list], menu_name='secondary_menu')
 
 register_tool(link_menu_link)
 
