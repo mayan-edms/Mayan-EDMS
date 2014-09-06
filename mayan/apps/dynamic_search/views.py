@@ -76,7 +76,7 @@ def search(request, advanced=False):
             {
                 'form': form,
                 'title': _(u'advanced search'),
-                'form_action': reverse('results'),
+                'form_action': reverse('search:results'),
                 'submit_method': 'GET',
                 'search_results_limit': LIMIT,
                 'submit_label': _(u'Search'),
@@ -110,4 +110,4 @@ def search(request, advanced=False):
 
 def search_again(request):
     query = urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
-    return HttpResponseRedirect('%s?%s' % (reverse('search_advanced'), query))
+    return HttpResponseRedirect('%s?%s' % (reverse('search:search_advanced'), query))

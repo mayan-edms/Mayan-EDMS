@@ -65,7 +65,7 @@ def user_edit(request, user_id):
         if form.is_valid():
             form.save()
             messages.success(request, _(u'User "%s" updated successfully.') % user)
-            return HttpResponseRedirect(reverse('user_list'))
+            return HttpResponseRedirect(reverse('user_management:user_list'))
     else:
         form = UserForm(instance=user)
 
@@ -87,7 +87,7 @@ def user_add(request):
             user.set_unusable_password()
             user.save()
             messages.success(request, _(u'User "%s" created successfully.') % user)
-            return HttpResponseRedirect(reverse('user_set_password', args=[user.pk]))
+            return HttpResponseRedirect(reverse('user_management:user_set_password', args=[user.pk]))
     else:
         form = UserForm()
 
@@ -103,7 +103,7 @@ def user_delete(request, user_id=None, user_id_list=None):
 
     if user_id:
         users = [get_object_or_404(User, pk=user_id)]
-        post_action_redirect = reverse('user_list')
+        post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
         users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
     else:
@@ -157,7 +157,7 @@ def user_set_password(request, user_id=None, user_id_list=None):
 
     if user_id:
         users = [get_object_or_404(User, pk=user_id)]
-        post_action_redirect = reverse('user_list')
+        post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
         users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
     else:
@@ -273,7 +273,7 @@ def group_edit(request, group_id):
         if form.is_valid():
             form.save()
             messages.success(request, _(u'Group "%s" updated successfully.') % group)
-            return HttpResponseRedirect(reverse('group_list'))
+            return HttpResponseRedirect(reverse('user_management:group_list'))
     else:
         form = GroupForm(instance=group)
 
@@ -294,7 +294,7 @@ def group_add(request):
         if form.is_valid():
             group = form.save()
             messages.success(request, _(u'Group "%s" created successfully.') % group)
-            return HttpResponseRedirect(reverse('group_list'))
+            return HttpResponseRedirect(reverse('user_management:group_list'))
     else:
         form = GroupForm()
 
@@ -310,7 +310,7 @@ def group_delete(request, group_id=None, group_id_list=None):
 
     if group_id:
         groups = [get_object_or_404(Group, pk=group_id)]
-        post_action_redirect = reverse('group_list')
+        post_action_redirect = reverse('user_management:group_list')
     elif group_id_list:
         groups = [get_object_or_404(Group, pk=group_id) for group_id in group_id_list.split(',')]
     else:

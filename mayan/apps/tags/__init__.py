@@ -40,15 +40,15 @@ register_model_list_columns(Document, [
 ])
 
 register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete, tag_acl_list])
-register_multi_item_links(['tag_list'], [tag_multiple_delete])
-register_links([Tag, 'tag_list', 'tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
+register_multi_item_links(['tags:tag_list'], [tag_multiple_delete])
+register_links([Tag, 'tags:tag_list', 'tags:tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
 register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}, children_view_regex=[r'^tag_(list|create|delete|edit|tagged|acl)'])
 
 register_links(Document, [tag_document_list], menu_name='form_header')
-register_links(['document_tags', 'tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')
+register_links(['tags:document_tags', 'tags:tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')
 register_multi_item_links(['document_tags'], [single_document_multiple_tag_remove])
 
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [tag_multiple_attach, multiple_documents_selection_tag_remove])
+register_multi_item_links(['documents:document_find_duplicates', 'folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [tag_multiple_attach, multiple_documents_selection_tag_remove])
 
 class_permissions(Document, [
     PERMISSION_TAG_ATTACH,

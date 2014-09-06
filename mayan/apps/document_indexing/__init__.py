@@ -44,7 +44,7 @@ register_top_menu('indexes', document_index_main_menu_link)
 
 register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_(u'Indexes'))
 
-register_sidebar_template(['index_instance_list'], 'indexing_help.html')
+register_sidebar_template(['indexing:index_instance_list'], 'indexing_help.html')
 
 register_links(IndexInstanceNode, [index_parent])
 
@@ -52,7 +52,7 @@ register_links(Document, [document_index_list], menu_name='form_header')
 
 register_setup(index_setup)
 
-register_links([Index, 'index_setup_list', 'index_setup_create', 'template_node_edit', 'template_node_delete'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
+register_links([Index, 'indexing:index_setup_list', 'indexing:index_setup_create', 'indexing:template_node_edit', 'indexing:template_node_delete'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
 
 register_links(Index, [index_setup_edit, index_setup_delete, index_setup_view, index_setup_document_types])
 

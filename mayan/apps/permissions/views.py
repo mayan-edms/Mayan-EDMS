@@ -32,7 +32,7 @@ class RoleCreateView(SingleObjectCreateView):
     form_class = RoleForm
     model = Role
     permissions_required = [PERMISSION_ROLE_CREATE]
-    success_url = reverse_lazy('role_list')
+    success_url = reverse_lazy('permissions:role_list')
 
 
 class RoleDeleteView(SingleObjectDeleteView):
@@ -42,7 +42,7 @@ class RoleDeleteView(SingleObjectDeleteView):
         'object_name': _(u'role'),
         'form_icon': u'medal_gold_delete.png'
     }
-    success_url = reverse_lazy('role_list')
+    success_url = reverse_lazy('permissions:role_list')
 
 
 class RoleEditView(SingleObjectEditView):

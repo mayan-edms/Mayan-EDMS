@@ -69,7 +69,7 @@ def index_setup_create(request):
             index = form.save()
             apply_default_acls(index, request.user)
             messages.success(request, _(u'Index created successfully.'))
-            return HttpResponseRedirect(reverse('index_setup_list'))
+            return HttpResponseRedirect(reverse('indexing:index_setup_list'))
     else:
         form = IndexForm()
 
@@ -92,7 +92,7 @@ def index_setup_edit(request, index_pk):
         if form.is_valid():
             form.save()
             messages.success(request, _(u'Index edited successfully'))
-            return HttpResponseRedirect(reverse('index_setup_list'))
+            return HttpResponseRedirect(reverse('indexing:index_setup_list'))
     else:
         form = IndexForm(instance=index)
 
@@ -113,7 +113,7 @@ def index_setup_delete(request, index_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_DELETE, request.user, index)
 
-    post_action_redirect = reverse('index_setup_list')
+    post_action_redirect = reverse('indexing:index_setup_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -211,7 +211,7 @@ def template_node_create(request, parent_pk):
         if form.is_valid():
             node = form.save()
             messages.success(request, _(u'Index template node created successfully.'))
-            return HttpResponseRedirect(reverse('index_setup_view', args=[node.index.pk]))
+            return HttpResponseRedirect(reverse('indexing:index_setup_view', args=[node.index.pk]))
     else:
         form = IndexTemplateNodeForm(initial={'index': parent_node.index, 'parent': parent_node})
 
@@ -237,7 +237,7 @@ def template_node_edit(request, node_pk):
         if form.is_valid():
             form.save()
             messages.success(request, _(u'Index template node edited successfully'))
-            return HttpResponseRedirect(reverse('index_setup_view', args=[node.index.pk]))
+            return HttpResponseRedirect(reverse('indexing:index_setup_view', args=[node.index.pk]))
     else:
         form = IndexTemplateNodeForm(instance=node)
 
@@ -262,7 +262,7 @@ def template_node_delete(request, node_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, node.index)
 
-    post_action_redirect = reverse('index_setup_view', args=[node.index.pk])
+    post_action_redirect = reverse('indexing:index_setup_view', args=[node.index.pk])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))

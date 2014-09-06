@@ -199,7 +199,7 @@ def bootstrap_setup_dump(request):
             else:
                 bootstrap.save()
                 messages.success(request, _(u'Bootstrap setup created successfully.'))
-                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+                return HttpResponseRedirect(reverse('bootstrap:bootstrap_setup_list'))
     else:
         form = BootstrapSetupForm_dump()
 
@@ -239,7 +239,7 @@ def bootstrap_setup_import_from_file(request):
             try:
                 BootstrapSetup.objects.import_from_file(request.FILES['file'])
                 messages.success(request, _(u'Bootstrap setup imported successfully.'))
-                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+                return HttpResponseRedirect(reverse('bootstrap:bootstrap_setup_list'))
             except NotABootstrapSetup:
                 messages.error(request, _(u'File is not a bootstrap setup.'))
             except Exception as exception:
@@ -267,7 +267,7 @@ def bootstrap_setup_import_from_url(request):
             try:
                 BootstrapSetup.objects.import_from_url(form.cleaned_data['url'])
                 messages.success(request, _(u'Bootstrap setup imported successfully.'))
-                return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+                return HttpResponseRedirect(reverse('bootstrap:bootstrap_setup_list'))
             except NotABootstrapSetup:
                 messages.error(request, _(u'Data from URL is not a bootstrap setup.'))
             except Exception as exception:
@@ -318,7 +318,7 @@ def erase_database_view(request):
 def bootstrap_setup_repository_sync(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_REPOSITORY_SYNC])
 
-    post_action_redirect = reverse('bootstrap_setup_list')
+    post_action_redirect = reverse('bootstrap:bootstrap_setup_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
@@ -330,7 +330,7 @@ def bootstrap_setup_repository_sync(request):
         except Exception as exception:
             messages.error(request, _(u'Bootstrap repository synchronization error: %(error)s') % {'error': exception})
 
-        return HttpResponseRedirect(reverse('bootstrap_setup_list'))
+        return HttpResponseRedirect(reverse('bootstrap:bootstrap_setup_list'))
 
     context = {
         'previous': previous,

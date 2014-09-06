@@ -13,10 +13,10 @@ from .links import (role_list, role_create, role_edit, role_members, role_permis
     role_delete, permission_grant, permission_revoke)
 
 register_links(Role, [role_edit, role_delete, role_permissions, role_members])
-register_links([Role, 'role_list', 'role_create'], [role_list, role_create], menu_name='secondary_menu')
-register_multi_item_links(['role_permissions'], [permission_grant, permission_revoke])
+register_links([Role, 'permissions:role_list', 'permissions:role_create'], [role_list, role_create], menu_name='secondary_menu')
+register_multi_item_links(['permissions:role_permissions'], [permission_grant, permission_revoke])
 
-permission_views = ['role_list', 'role_create', 'role_edit', 'role_members', 'role_permissions', 'role_delete']
+permission_views = ['permissions:role_list', 'permissions:role_create', 'permissions:role_edit', 'permissions:role_members', 'permissions:role_permissions', 'permissions:role_delete']
 
 
 def user_post_save(sender, instance, **kwargs):

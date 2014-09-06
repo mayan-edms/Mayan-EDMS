@@ -338,7 +338,7 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
 
                 return HttpResponseRedirect(
                     u'%s?%s' % (
-                        reverse('acl_detail', args=[access_object.gid, access_holder.gid]),
+                        reverse('acls:acl_detail', args=[access_object.gid, access_holder.gid]),
                         urlencode(query_string)
                     )
                 )
@@ -472,7 +472,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
             try:
                 access_holder = ClassAccessHolder.get(form.cleaned_data['holder_gid'])
 
-                return HttpResponseRedirect(reverse('acl_class_acl_detail', args=[access_object_class.gid, access_holder.gid]))
+                return HttpResponseRedirect(reverse('acls:acl_class_acl_detail', args=[access_object_class.gid, access_holder.gid]))
             except ObjectDoesNotExist:
                 raise Http404
     else:

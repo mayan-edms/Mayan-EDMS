@@ -65,7 +65,7 @@ def folder_create(request):
             if created:
                 apply_default_acls(folder, request.user)
                 messages.success(request, _(u'Folder created successfully'))
-                return HttpResponseRedirect(reverse('folder_list'))
+                return HttpResponseRedirect(reverse('folders:folder_list'))
             else:
                 messages.error(request, _(u'A folder named: %s, already exists.') % form.cleaned_data['title'])
     else:
@@ -93,7 +93,7 @@ def folder_edit(request, folder_id):
             try:
                 folder.save()
                 messages.success(request, _(u'Folder edited successfully'))
-                return HttpResponseRedirect(reverse('folder_list'))
+                return HttpResponseRedirect(reverse('folders:folder_list'))
             except Exception as exception:
                 messages.error(request, _(u'Error editing folder; %s') % exception)
     else:
