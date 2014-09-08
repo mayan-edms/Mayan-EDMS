@@ -155,12 +155,12 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
 
         # Create new webform source
-        response = self.client.post(reverse('setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebForm.objects.count(), 1)
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('upload_interactive'), {'file': file_descriptor})
+            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor})
         self.assertEqual(Document.objects.count(), 1)
 
         self.document = Document.objects.all().first()
@@ -174,7 +174,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.failUnlessEqual(self.document.page_count, 47)
 
         # Delete the document
-        response = self.client.post(reverse('document_delete', args=[self.document.pk]))
+        response = self.client.post(reverse('documents:document_delete', args=[self.document.pk]))
         self.assertEqual(Document.objects.count(), 0)
 
     def test_issue_25(self):
@@ -187,12 +187,12 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
 
         # Create new webform source
-        response = self.client.post(reverse('setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebForm.objects.count(), 1)
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('upload_interactive'), {'file': file_descriptor, 'description': TEST_DOCUMENT_DESCRIPTION})
+            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'description': TEST_DOCUMENT_DESCRIPTION})
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.all().first()
@@ -205,7 +205,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.failUnlessEqual(document.description, '')
 
         # Test for issue 25 during editing
-        response = self.client.post(reverse('document_edit', args=[document.pk]), {'description': TEST_DOCUMENT_DESCRIPTION})
+        response = self.client.post(reverse('documents:document_edit', args=[document.pk]), {'description': TEST_DOCUMENT_DESCRIPTION})
         # Fetch document again and test description
         document = Document.objects.all().first()
         self.failUnlessEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
@@ -298,43 +298,43 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertTrue(logged_in)
         self.assertTrue(self.admin_user.is_authenticated())
         # Create new webform source
-        response = self.client.post(reverse('setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebForm.objects.count(), 1)
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('upload_interactive'), {'file': file_descriptor})
+            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor})
         self.assertEqual(Document.objects.count(), 1)
         self.document = Document.objects.first()
 
     def test_document_view(self):
-        response = self.client.get(reverse('document_list'))
+        response = self.client.get(reverse('documents:document_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('List of documents (1)' in response.content)
 
         # test document simple view
-        response = self.client.get(reverse('document_view_simple', args=[self.document.pk]))
+        response = self.client.get(reverse('documents:document_view_simple', args=[self.document.pk]))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Details for: mayan_11_1.pdf' in response.content)
 
         # test document advanced view
-        response = self.client.get(reverse('document_view_advanced', args=[self.document.pk]))
+        response = self.client.get(reverse('documents:document_view_advanced', args=[self.document.pk]))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Document properties for: mayan_11_1.pdf' in response.content)
 
     def test_document_type_views(self):
         # Check that there are no document types
-        response = self.client.get(reverse('document_type_list'))
+        response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('List of document types (0)' in response.content)
 
         # Create a document type
-        response = self.client.post(reverse('document_type_create'), data={'name': TEST_DOCUMENT_TYPE}, follow=True)
+        response = self.client.post(reverse('documents:document_type_create'), data={'name': TEST_DOCUMENT_TYPE}, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Document type created successfully' in response.content)
 
         # Check that there is one document types
-        response = self.client.get(reverse('document_type_list'))
+        response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('List of document types (1)' in response.content)
 
@@ -342,7 +342,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertEqual(document_type.name, TEST_DOCUMENT_TYPE)
 
         # Edit the document type
-        response = self.client.post(reverse('document_type_edit', args=[document_type.pk]), data={'name': TEST_DOCUMENT_TYPE + 'partial'}, follow=True)
+        response = self.client.post(reverse('documents:document_type_edit', args=[document_type.pk]), data={'name': TEST_DOCUMENT_TYPE + 'partial'}, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Document type edited successfully' in response.content)
 
@@ -350,11 +350,11 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertEqual(document_type.name, TEST_DOCUMENT_TYPE + 'partial')
 
         # Delete the document type
-        response = self.client.post(reverse('document_type_delete', args=[document_type.pk]), follow=True)
+        response = self.client.post(reverse('documents:document_type_delete', args=[document_type.pk]), follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Document type: {0} deleted successfully'.format(document_type.name) in response.content)
 
         # Check that there are no document types
-        response = self.client.get(reverse('document_type_list'))
+        response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('List of document types (0)' in response.content)
