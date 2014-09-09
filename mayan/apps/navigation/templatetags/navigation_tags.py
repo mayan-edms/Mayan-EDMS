@@ -273,7 +273,7 @@ def get_multi_item_links_form(context):
     new_context.update({
         'form': MultiItemForm(actions=[(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]),
         'title': _(u'Selected item actions:'),
-        'form_action': reverse('multi_object_action_view'),
+        'form_action': reverse('common:multi_object_action_view'),
         'submit_method': 'get',
     })
     return new_context
