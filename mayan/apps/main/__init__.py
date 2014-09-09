@@ -11,7 +11,7 @@ from .conf.settings import DISABLE_HOME_VIEW
 from .links import admin_site, diagnostics, maintenance_menu, sentry
 
 if not DISABLE_HOME_VIEW:
-    register_top_menu('home', link={'text': _(u'home'), 'view': 'home', 'famfam': 'house'}, position=0)
+    register_top_menu('home', link={'text': _(u'home'), 'view': 'main:home', 'famfam': 'house'}, position=0)
 
 if 'django.contrib.admin' in settings.INSTALLED_APPS:
     register_setup(admin_site)

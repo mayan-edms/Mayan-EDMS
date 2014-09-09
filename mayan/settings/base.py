@@ -140,8 +140,6 @@ USE_TZ = True
 
 # Custom settings section
 
-from django.core.urlresolvers import reverse_lazy
-
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
 
@@ -213,8 +211,8 @@ SENDFILE_BACKEND = 'sendfile.backends.simple'
 # --------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 # --------- Django -------------------
-LOGIN_URL = reverse_lazy('login_view')
-LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_URL = 'common:login_view'
+LOGIN_REDIRECT_URL = 'main:home'
 # -------- LoginRequiredMiddleware ----------
 LOGIN_EXEMPT_URLS = (
     r'^favicon\.ico$',

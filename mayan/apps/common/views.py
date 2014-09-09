@@ -181,7 +181,7 @@ def current_user_edit(request):
     Allow an user to edit his own details
     """
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('current_user_details'))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('common:current_user_details'))))
 
     if request.method == 'POST':
         form = UserForm(instance=request.user, data=request.POST)
@@ -245,7 +245,7 @@ def password_change_view(request):
         request,
         extra_context=context,
         template_name='main/password_change_form.html',
-        post_change_redirect=reverse('password_change_done'),
+        post_change_redirect=reverse('common:password_change_done'),
     )
 
 

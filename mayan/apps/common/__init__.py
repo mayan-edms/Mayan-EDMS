@@ -24,8 +24,8 @@ from .utils import validate_path
 
 logger = logging.getLogger(__name__)
 
-register_links(['current_user_details', 'current_user_edit', 'password_change_view'], [link_current_user_details, link_current_user_edit, link_password_change], menu_name='secondary_menu')
-register_links(['about_view', 'license_view', 'form_view'], [link_about, link_license], menu_name='secondary_menu')
+register_links(['common:current_user_details', 'common:current_user_edit', 'common:password_change_view'], [link_current_user_details, link_current_user_edit, link_password_change], menu_name='secondary_menu')
+register_links(['common:about_view', 'common:license_view', 'registration:form_view'], [link_about, link_license], menu_name='secondary_menu')
 
 register_top_menu('about', link_about, position=-1)
 

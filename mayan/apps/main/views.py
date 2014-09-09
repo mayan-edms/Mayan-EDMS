@@ -15,7 +15,7 @@ from .conf.settings import DISABLE_HOME_VIEW
 
 def home(request):
     if DISABLE_HOME_VIEW:
-        return HttpResponseRedirect(reverse('document_list_recent'))
+        return HttpResponseRedirect(reverse('documents:document_list_recent'))
     else:
         return render_to_response('main/home.html', {},
             context_instance=RequestContext(request))
