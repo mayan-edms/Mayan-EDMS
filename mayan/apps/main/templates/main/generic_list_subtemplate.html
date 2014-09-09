@@ -144,7 +144,7 @@
                             {% endif %}
                         </tr>
                     {% empty %}
-                        <tr><td colspan=99 class="tc">{% blocktrans with title as title %}There are no {{ title }}{% endblocktrans %}</td></tr>
+                        <tr><td colspan=99 class="tc">{% trans 'No results' %}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
