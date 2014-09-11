@@ -26,8 +26,6 @@ from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
                                 DEFAULT_PAGE_NUMBER)
 from mimetype.api import get_mimetype
 
-from .conf.settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE,
-                            UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 from .exceptions import NewDocumentVersionNotAllowed
 from .literals import (RELEASE_LEVEL_CHOICES, RELEASE_LEVEL_FINAL,
                        VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
@@ -35,6 +33,8 @@ from .literals import (RELEASE_LEVEL_CHOICES, RELEASE_LEVEL_FINAL,
 from .managers import (DocumentPageTransformationManager, DocumentTypeManager,
                        RecentDocumentManager)
 from .runtime import storage_backend
+from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE,
+                       UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 from .utils import document_save_to_temp_dir
 
 # document image cache name hash function

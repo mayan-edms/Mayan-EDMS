@@ -17,7 +17,6 @@ from statistics.classes import StatisticNamespace
 
 from south.signals import post_migrate
 
-from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
 from .exceptions import AlreadyQueued
 from .links import (submit_document, submit_document_multiple,
     re_queue_multiple_document, queue_document_multiple_delete,
@@ -27,6 +26,7 @@ from .links import (submit_document, submit_document_multiple,
 from .literals import QUEUEDOCUMENT_STATE_PENDING, QUEUEDOCUMENT_STATE_PROCESSING
 from .models import DocumentQueue
 from .permissions import PERMISSION_OCR_DOCUMENT
+from .settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
 from .statistics import OCRStatistics
 from .tasks import task_process_document_queues
 

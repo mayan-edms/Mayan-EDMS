@@ -4,11 +4,11 @@ import subprocess
 import re
 
 from . import ConverterBase
-from ..conf.settings import IM_CONVERT_PATH, IM_IDENTIFY_PATH
 from ..exceptions import ConvertError, UnknownFileFormat, IdentifyError
 from ..literals import (TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
     TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER,
     DEFAULT_FILE_FORMAT)
+from ..settings import IM_CONVERT_PATH, IM_IDENTIFY_PATH
 
 CONVERTER_ERROR_STRING_NO_DECODER = u'no decode delegate for this image format'
 

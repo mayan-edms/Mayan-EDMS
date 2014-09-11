@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 
 from documents.widgets import document_html_widget
-from documents.conf.settings import MULTIPAGE_PREVIEW_SIZE
+from documents.settings import MULTIPAGE_PREVIEW_SIZE
 from tags.widgets import get_tags_inline_widget
 
 from .models import SmartLink, SmartLinkCondition

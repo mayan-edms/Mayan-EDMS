@@ -6,8 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.widgets import ScrollableCheckboxSelectMultiple
 
-from .conf.settings import AVAILABLE_MODELS, AVAILABLE_FUNCTIONS
 from .models import MetadataSet, MetadataType, DocumentTypeDefaults
+from .settings import AVAILABLE_MODELS, AVAILABLE_FUNCTIONS
 
 
 class MetadataForm(forms.Form):

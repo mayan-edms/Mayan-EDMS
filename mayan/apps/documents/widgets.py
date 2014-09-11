@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
                                 DEFAULT_ZOOM_LEVEL)
 
-from .conf.settings import DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE, THUMBNAIL_SIZE
+from .settings import DISPLAY_SIZE, MULTIPAGE_PREVIEW_SIZE, THUMBNAIL_SIZE
 
 
 class DocumentPageImageWidget(forms.widgets.Widget):

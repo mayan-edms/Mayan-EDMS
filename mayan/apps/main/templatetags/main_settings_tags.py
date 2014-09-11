@@ -1,8 +1,8 @@
 import re
 
-from django.template import Node
-from django.template import TemplateSyntaxError, Library
-from main.conf import settings
+from django.template import Library, Node, TemplateSyntaxError
+
+from main import settings
 
 register = Library()
 

@@ -14,7 +14,6 @@ from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
-from .conf.settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .models import Document, DocumentPage, DocumentVersion
 from .permissions import (PERMISSION_DOCUMENT_CREATE,
                           PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_EDIT,
@@ -23,6 +22,7 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
                           PERMISSION_DOCUMENT_VIEW)
 from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
                           DocumentSerializer, DocumentVersionSerializer)
+from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
 
 class APIDocumentListView(generics.ListCreateAPIView):

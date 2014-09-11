@@ -29,7 +29,7 @@ from solo.models import SingletonModel
 from common.utils import pretty_size
 from mayan import __version__ as mayan_version
 from lock_manager import Lock, LockError
-from ocr.conf.settings import TESSERACT_PATH, UNPAPER_PATH, PDFTOTEXT_PATH
+from ocr.settings import TESSERACT_PATH, UNPAPER_PATH, PDFTOTEXT_PATH
 
 from .classes import Property, PropertyNamespace, VirtualEnv, PIPNotFound
 from .literals import (FORM_SUBMIT_URL, FORM_KEY, FORM_RECEIVER_FIELD,

@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import sys
 
 from .api import GPG
-from .conf.settings import KEYSERVERS, GPG_HOME
+from .settings import KEYSERVERS, GPG_HOME
 
 try:
     gpg = GPG(home=GPG_HOME, keyservers=KEYSERVERS)

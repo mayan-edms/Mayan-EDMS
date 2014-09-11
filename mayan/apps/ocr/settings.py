@@ -6,7 +6,7 @@ from smart_settings.api import register_settings
 
 register_settings(
     namespace=u'ocr',
-    module=u'ocr.conf.settings',
+    module=u'ocr.settings',
     settings=[
         {'name': u'TESSERACT_PATH', 'global_name': u'OCR_TESSERACT_PATH', 'default': u'/usr/bin/tesseract', 'exists': True},
         {'name': u'LANGUAGE', 'global_name': u'OCR_LANGUAGE', 'default': u'eng'},

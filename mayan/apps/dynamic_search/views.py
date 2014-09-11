@@ -10,9 +10,9 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import SearchModel
-from .conf.settings import LIMIT, SHOW_OBJECT_TYPE
 from .forms import SearchForm, AdvancedSearchForm
 from .models import RecentSearch
+from .settings import LIMIT, SHOW_OBJECT_TYPE
 
 logger = logging.getLogger(__name__)
 document_search = SearchModel.get('documents.Document')

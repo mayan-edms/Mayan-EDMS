@@ -6,7 +6,7 @@ from smart_settings.api import register_settings
 
 register_settings(
     namespace=u'converter',
-    module=u'converter.conf.settings',
+    module=u'converter.settings',
     settings=[
         {'name': u'IM_CONVERT_PATH', 'global_name': u'CONVERTER_IM_CONVERT_PATH', 'default': u'/usr/bin/convert', 'description': _(u'File path to imagemagick\'s convert program.'), 'exists': True},
         {'name': u'IM_IDENTIFY_PATH', 'global_name': u'CONVERTER_IM_IDENTIFY_PATH', 'default': u'/usr/bin/identify', 'description': _(u'File path to imagemagick\'s identify program.'), 'exists': True},

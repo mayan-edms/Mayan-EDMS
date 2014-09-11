@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from common.utils import encapsulate
 
 from .api import get_format_list
-from .conf.settings import GRAPHICS_BACKEND
+from .settings import GRAPHICS_BACKEND
 
 
 def formats_list(request):

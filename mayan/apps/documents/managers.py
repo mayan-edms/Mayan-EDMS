@@ -5,7 +5,7 @@ from ast import literal_eval
 from django.db import models
 from django.utils.timezone import now
 
-from .conf.settings import RECENT_COUNT
+from .settings import RECENT_COUNT
 
 
 class DocumentPageTransformationManager(models.Manager):

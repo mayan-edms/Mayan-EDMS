@@ -4,7 +4,7 @@ from django.utils.translation import ugettext as _
 
 from dynamic_search.forms import SearchForm
 from dynamic_search.models import RecentSearch
-from dynamic_search.conf.settings import RECENT_COUNT
+from dynamic_search.settings import RECENT_COUNT
 
 register = Library()
 

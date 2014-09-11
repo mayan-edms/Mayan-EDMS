@@ -18,7 +18,7 @@ default_available_models = {
 
 register_settings(
     namespace=u'metadata',
-    module=u'metadata.conf.settings',
+    module=u'metadata.settings',
     settings=[
         # Definition
         {'name': u'AVAILABLE_FUNCTIONS', 'global_name': u'METADATA_AVAILABLE_FUNCTIONS', 'default': default_available_functions},

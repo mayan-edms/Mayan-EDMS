@@ -8,8 +8,8 @@ import tempfile
 from common.utils import fs_cleanup
 
 from . import BackendBase
-from ..conf.settings import TESSERACT_PATH
 from ..exceptions import OCRError
+from ..settings import TESSERACT_PATH
 
 
 class Tesseract(BackendBase):

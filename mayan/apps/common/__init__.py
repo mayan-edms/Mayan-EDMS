@@ -13,13 +13,13 @@ from south.signals import post_migrate
 
 from navigation.api import register_links, register_top_menu
 
-from .conf import settings as common_settings
-from .conf.settings import (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD,
-                            AUTO_CREATE_ADMIN, TEMPORARY_DIRECTORY)
+from common import settings as common_settings
 from .links import (link_about, link_current_user_details,
                     link_current_user_edit, link_license,
                     link_password_change)
 from .models import AnonymousUserSingleton, AutoAdminSingleton
+from .settings import (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD,
+                       AUTO_CREATE_ADMIN, TEMPORARY_DIRECTORY)
 from .utils import validate_path
 
 logger = logging.getLogger(__name__)

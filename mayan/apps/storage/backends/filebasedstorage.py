@@ -4,7 +4,7 @@ import os
 
 from django.core.files.storage import FileSystemStorage
 
-from ..conf.settings import FILESTORAGE_LOCATION
+from ..settings import FILESTORAGE_LOCATION
 
 
 class FileBasedStorage(FileSystemStorage):

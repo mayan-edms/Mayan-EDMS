@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from history.permissions import PERMISSION_HISTORY_VIEW
 
-from .conf.settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
                           PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_DELETE,
                           PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_TRANSFORM,
@@ -12,6 +11,7 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
                           PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_TYPE_EDIT,
                           PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE,
                           PERMISSION_DOCUMENT_TYPE_VIEW)
+from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
 # Document page links expressions
 

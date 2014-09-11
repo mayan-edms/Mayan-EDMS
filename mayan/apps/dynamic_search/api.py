@@ -8,7 +8,7 @@ import types
 
 from django.db.models import Q
 
-from .conf.settings import LIMIT
+from .settings import LIMIT
 
 registered_search_dict = {}
 

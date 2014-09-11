@@ -8,18 +8,18 @@ import sh
 
 from django.utils.translation import ugettext as _
 
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common.settings import TEMPORARY_DIRECTORY
 from common.utils import fs_cleanup
 from converter.api import convert
 from documents.models import DocumentPage
 
-from .conf.settings import UNPAPER_PATH, LANGUAGE
 from .exceptions import UnpaperError
 from .literals import (DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT,
     DEFAULT_OCR_FILE_EXTENSION)
 from .parsers import parse_document_page
 from .parsers.exceptions import ParserError, ParserUnknownFile
 from .runtime import language_backend, ocr_backend
+from .settings import UNPAPER_PATH, LANGUAGE
 
 logger = logging.getLogger(__name__)
 

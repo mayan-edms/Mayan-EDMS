@@ -7,7 +7,7 @@ import re
 from django.db.models import Q
 from django.db.models.loading import get_model
 
-from .conf.settings import LIMIT
+from .settings import LIMIT
 
 logger = logging.getLogger(__name__)
 

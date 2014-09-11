@@ -22,7 +22,7 @@ def default_uuid():
 
 register_settings(
     namespace=u'documents',
-    module=u'documents.conf.settings',
+    module=u'documents.settings',
     settings=[
         # Saving
         {'name': u'CHECKSUM_FUNCTION', 'global_name': u'DOCUMENTS_CHECKSUM_FUNCTION', 'default': default_checksum},

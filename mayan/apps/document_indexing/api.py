@@ -7,13 +7,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from metadata.classes import MetadataClass
 
-from .conf.settings import (AVAILABLE_INDEXING_FUNCTIONS,
-    MAX_SUFFIX_COUNT, SLUGIFY_PATHS)
 from .exceptions import MaxSuffixCountReached
-from .filesystem import (fs_create_index_directory,
-    fs_create_document_link, fs_delete_document_link,
-    fs_delete_index_directory, assemble_suffixed_filename)
+from .filesystem import (fs_create_index_directory, fs_create_document_link,
+                         fs_delete_document_link, fs_delete_index_directory,
+                         assemble_suffixed_filename)
 from .models import Index, IndexInstanceNode, DocumentRenameCount
+from .settings import (AVAILABLE_INDEXING_FUNCTIONS, MAX_SUFFIX_COUNT,
+                       SLUGIFY_PATHS)
 
 if SLUGIFY_PATHS:
     SLUGIFY_FUNCTION = slugify

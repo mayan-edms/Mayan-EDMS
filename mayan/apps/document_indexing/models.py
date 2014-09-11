@@ -8,8 +8,8 @@ from mptt.models import MPTTModel
 
 from documents.models import Document, DocumentType
 
-from .conf.settings import AVAILABLE_INDEXING_FUNCTIONS
 from .managers import IndexManager
+from .settings import AVAILABLE_INDEXING_FUNCTIONS
 
 available_indexing_functions_string = (_(u'Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
 

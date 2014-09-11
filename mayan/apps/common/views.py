@@ -18,9 +18,9 @@ from django.views.generic.list import ListView
 
 from permissions.models import Permission
 
-from .conf.settings import LOGIN_METHOD
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
     EmailAuthenticationForm)
+from .settings import LOGIN_METHOD
 
 
 def multi_object_action_view(request):

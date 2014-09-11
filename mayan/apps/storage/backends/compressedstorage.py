@@ -17,7 +17,7 @@ except ImportError:
 from django.core.files import File
 from django.core.files.storage import FileSystemStorage
 
-from ..conf.settings import FILESTORAGE_LOCATION
+from ..settings import FILESTORAGE_LOCATION
 
 
 class CompressedStorage(FileSystemStorage):

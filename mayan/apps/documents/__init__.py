@@ -17,8 +17,7 @@ from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
-from .conf import settings as document_settings
-from .conf.settings import THUMBNAIL_SIZE
+from documents import settings as document_settings
 from .events import (HISTORY_DOCUMENT_CREATED,
     HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
 from .links import (document_list, document_list_recent,
@@ -46,6 +45,7 @@ from .permissions import (
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
     PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_EDIT,
     PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_NEW_VERSION)
+from .settings import THUMBNAIL_SIZE
 from .statistics import DocumentStatistics, DocumentUsageStatistics
 from .urls import api_urls
 from .widgets import document_thumbnail

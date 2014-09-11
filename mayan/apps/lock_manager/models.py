@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
 
 from .managers import LockManager
-from .conf.settings import DEFAULT_LOCK_TIMEOUT
+from .settings import DEFAULT_LOCK_TIMEOUT
 
 
 class Lock(models.Model):

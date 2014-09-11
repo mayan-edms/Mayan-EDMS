@@ -6,15 +6,15 @@ import os
 
 from django.utils.encoding import smart_str
 
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common.settings import TEMPORARY_DIRECTORY
 from common.utils import fs_cleanup
 
 from .exceptions import OfficeConversionError, UnknownFileFormat
-from .literals import (DEFAULT_PAGE_NUMBER,
-    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
-from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
-    FILE_FORMATS)
+from .literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ZOOM_LEVEL,
+                       DEFAULT_ROTATION, DEFAULT_FILE_FORMAT,
+                       TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
+                       TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM,
+                       DIMENSION_SEPARATOR, FILE_FORMATS)
 from .runtime import backend, office_converter
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()

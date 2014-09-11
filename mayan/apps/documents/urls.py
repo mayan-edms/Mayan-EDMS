@@ -5,7 +5,7 @@ from django.conf.urls import patterns, url
 from .api_views import (APIDocumentView, APIDocumentImageView, APIDocumentListView,
                         APIDocumentPageView, APIDocumentVersionCreateView,
                         APIDocumentVersionView)
-from .conf.settings import PRINT_SIZE, DISPLAY_SIZE
+from .settings import PRINT_SIZE, DISPLAY_SIZE
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', 'document_list', (), 'document_list'),

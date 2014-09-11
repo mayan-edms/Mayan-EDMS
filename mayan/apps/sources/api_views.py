@@ -8,8 +8,8 @@ from converter.literals import (DEFAULT_PAGE_NUMBER,
 from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.conf.settings import (DISPLAY_SIZE, ZOOM_MAX_LEVEL,
-                                     ZOOM_MIN_LEVEL)
+from documents.settings import (DISPLAY_SIZE, ZOOM_MAX_LEVEL,
+                                ZOOM_MIN_LEVEL)
 
 from .models import StagingFolder
 from .serializers import (StagingFolderFileSerializer, StagingFolderSerializer,

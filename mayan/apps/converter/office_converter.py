@@ -4,11 +4,11 @@ import logging
 import os
 import subprocess
 
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common.settings import TEMPORARY_DIRECTORY
 from mimetype.api import get_mimetype
 
-from .conf.settings import LIBREOFFICE_PATH
 from .exceptions import OfficeBackendError, UnknownFileFormat
+from .settings import LIBREOFFICE_PATH
 
 CACHED_FILE_SUFFIX = u'_office_converter'
 

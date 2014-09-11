@@ -7,10 +7,11 @@ from django.db.models.signals import post_save
 from navigation.api import register_links, register_multi_item_links
 from project_setup.api import register_setup
 
-from .conf.settings import DEFAULT_ROLES
 from .models import Role
-from .links import (role_list, role_create, role_edit, role_members, role_permissions,
-    role_delete, permission_grant, permission_revoke)
+from .links import (role_list, role_create, role_edit, role_members,
+                    role_permissions, role_delete, permission_grant,
+                    permission_revoke)
+from .settings import DEFAULT_ROLES
 
 register_links(Role, [role_edit, role_delete, role_permissions, role_members])
 register_links([Role, 'permissions:role_list', 'permissions:role_create'], [role_list, role_create], menu_name='secondary_menu')

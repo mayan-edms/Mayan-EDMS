@@ -1,21 +1,22 @@
+import logging
 import os
 import slate
-import logging
-import tempfile
 import subprocess
+import tempfile
 
 from django.utils.translation import ugettext as _
 
-from converter import office_converter
-from converter.office_converter import OfficeConverter
-from converter.office_converter import CONVERTER_OFFICE_FILE_MIMETYPES
-from converter.exceptions import OfficeConversionError
-from documents.utils import document_save_to_temp_dir
+from common.settings import TEMPORARY_DIRECTORY
 from common.utils import copyfile
-from common.conf.settings import TEMPORARY_DIRECTORY
+from converter import office_converter
+from converter.exceptions import OfficeConversionError
+from converter.office_converter import (CONVERTER_OFFICE_FILE_MIMETYPES,
+                                        OfficeConverter)
+from documents.utils import document_save_to_temp_dir
 
-from ocr.parsers.exceptions import ParserError, ParserUnknownFile
-from ocr.conf.settings import PDFTOTEXT_PATH
+from ..settings import PDFTOTEXT_PATH
+
+from .exceptions import ParserError, ParserUnknownFile
 
 
 mimetype_registry = {}

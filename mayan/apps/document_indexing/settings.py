@@ -11,7 +11,7 @@ available_indexing_functions = {
 
 register_settings(
     namespace=u'document_indexing',
-    module=u'document_indexing.conf.settings',
+    module=u'document_indexing.settings',
     settings=[
         # Definition
         {'name': u'AVAILABLE_INDEXING_FUNCTIONS', 'global_name': u'DOCUMENT_INDEXING_AVAILABLE_INDEXING_FUNCTIONS', 'default': available_indexing_functions},
