@@ -43,10 +43,10 @@ def acl_list_for(request, obj, extra_context=None):
 
     context = {
         'object_list': AccessEntry.objects.get_holders_for(obj),
-        'title': _(u'access control lists for: %s' % obj),
+        'title': _(u'Access control lists for: %s' % obj),
         'extra_columns': [
-            {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
-            {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object, db_only=True)))},
+            {'name': _(u'Holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _(u'Permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object, db_only=True)))},
         ],
         'hide_object': True,
         'access_object': AccessObject.encapsulate(obj),
@@ -93,17 +93,17 @@ def acl_detail_for(request, actor, obj):
         {
             'name': u'main/generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions available to: %(actor)s for %(obj)s' % {
+                'title': _(u'Permissions available to: %(actor)s for %(obj)s' % {
                     'actor': actor,
                     'obj': obj
                 }
                 ),
                 'object_list': permission_list,
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': 'namespace'},
-                    {'name': _(u'label'), 'attribute': 'label'},
+                    {'name': _(u'Namespace'), 'attribute': 'namespace'},
+                    {'name': _(u'Label'), 'attribute': 'label'},
                     {
-                        'name': _(u'has permission'),
+                        'name': _(u'Has permission'),
                         'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj, db_only=True)))
                     },
                 ],
@@ -349,7 +349,7 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
 
     context = {
         'form': form,
-        'title': _(u'add new holder for: %s') % obj,
+        'title': _(u'Add new holder for: %s') % obj,
         'submit_label': _(u'Select'),
         'submit_icon_famfam': 'tick',
         'object': obj,
@@ -382,9 +382,9 @@ def acl_setup_valid_classes(request):
 
     context = {
         'object_list': DefaultAccessEntry.get_classes(),
-        'title': _(u'classes'),
+        'title': _(u'Classes'),
         'extra_columns': [
-            {'name': _(u'class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _(u'Class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
         ],
         'hide_object': True,
     }
@@ -403,10 +403,10 @@ def acl_class_acl_list(request, access_object_class_gid):
 
     context = {
         'object_list': DefaultAccessEntry.objects.get_holders_for(access_object_class.source_object),
-        'title': _(u'default access control lists for class: %s') % access_object_class,
+        'title': _(u'Default access control lists for class: %s') % access_object_class,
         'extra_columns': [
-            {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
-            {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(DefaultAccessEntry.objects.get_holder_permissions_for(access_object_class.source_object, x.source_object)))},
+            {'name': _(u'Holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _(u'Permissions'), 'attribute': encapsulate(lambda x: _permission_titles(DefaultAccessEntry.objects.get_holder_permissions_for(access_object_class.source_object, x.source_object)))},
         ],
         'hide_object': True,
         'access_object_class': access_object_class,
@@ -431,17 +431,17 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         {
             'name': u'main/generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions available to: %(actor)s for class %(class)s' % {
+                'title': _(u'Permissions available to: %(actor)s for class %(class)s' % {
                         'actor': actor,
                         'class': access_object_class
                     }
                 ),
                 'object_list': permission_list,
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': 'namespace'},
-                    {'name': _(u'label'), 'attribute': 'label'},
+                    {'name': _(u'Namespace'), 'attribute': 'namespace'},
+                    {'name': _(u'Label'), 'attribute': 'label'},
                     {
-                        'name': _(u'has permission'),
+                        'name': _(u'Has permission'),
                         'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, actor.source_object, access_object_class.source_object)))
                     },
                 ],
@@ -480,7 +480,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
 
     context = {
         'form': form,
-        'title': _(u'add new holder for class: %s') % unicode(access_object_class),
+        'title': _(u'Add new holder for class: %s') % unicode(access_object_class),
         'object': access_object_class,
         'submit_label': _(u'Select'),
         'submit_icon_famfam': 'tick'

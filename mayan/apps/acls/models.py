@@ -49,8 +49,8 @@ class AccessEntry(models.Model):
     objects = AccessEntryManager()
 
     class Meta:
-        verbose_name = _(u'access entry')
-        verbose_name_plural = _(u'access entries')
+        verbose_name = _(u'Access entry')
+        verbose_name_plural = _(u'Access entries')
 
     def __unicode__(self):
         return u'%s: %s' % (self.content_type, self.content_object)
@@ -86,8 +86,8 @@ class DefaultAccessEntry(models.Model):
     objects = DefaultAccessEntryManager()
 
     class Meta:
-        verbose_name = _(u'default access entry')
-        verbose_name_plural = _(u'default access entries')
+        verbose_name = _(u'Default access entry')
+        verbose_name_plural = _(u'Default access entries')
 
     def __unicode__(self):
         return u'%s: %s' % (self.content_type, self.content_object)
@@ -109,5 +109,5 @@ class CreatorSingleton(SingletonModel):
         return ugettext('Creator')
 
     class Meta:
-        verbose_name = _(u'creator')
-        verbose_name_plural = _(u'creator')
+        verbose_name = _(u'Creator')
+        verbose_name_plural = _(u'Creator')
