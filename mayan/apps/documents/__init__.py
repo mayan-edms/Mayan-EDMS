@@ -99,14 +99,14 @@ register_maintenance_links([document_find_all_duplicates, document_update_page_c
 
 register_model_list_columns(Document, [
     {
-        'name': _(u'thumbnail'), 'attribute':
+        'name': _(u'Thumbnail'), 'attribute':
         encapsulate(lambda x: document_thumbnail(x, gallery_name='documents:document_list', title=getattr(x, 'filename', None), size=THUMBNAIL_SIZE))
     },
 ])
 
 register_top_menu(
     'documents',
-    link={'famfam': 'page', 'text': _(u'documents'), 'view': 'documents:document_list_recent'},
+    link={'famfam': 'page', 'text': _(u'Documents'), 'view': 'documents:document_list_recent'},
     children_path_regex=[
         r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents',
     ],
