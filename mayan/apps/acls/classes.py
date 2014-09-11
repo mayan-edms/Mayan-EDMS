@@ -83,8 +83,6 @@ class EncapsulatedObject(object):
             try:
                 content_type = ContentType.objects.get(app_label=app_label, model=model)
             except ContentType.DoesNotExist:
-                # cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
-                # raise cls.DoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
                 raise ObjectDoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
             else:
                 source_object_model_class = content_type.model_class()
@@ -92,8 +90,6 @@ class EncapsulatedObject(object):
                     try:
                         source_object = content_type.get_object_for_this_type(pk=pk)
                     except source_object_model_class.DoesNotExist:
-                        # cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
-                        # raise cls.DoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
                         raise ObjectDoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
                 else:
                     source_object = source_object_model_class
