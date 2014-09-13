@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
+from acls.models import AccessEntry
 from permissions.models import Permission
 
 from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
@@ -263,14 +264,22 @@ class MayanPermissionCheckMixin(object):
 
     def dispatch(self, request, *args, **kwargs):
         if self.permissions_required:
+            print self.permissions_required
             Permission.objects.check_permissions(self.request.user, self.permissions_required)
 
         return super(MayanPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
 
 
-class MayanViewMixin(object):
-    # TODO: split into two mixins, MayanView and ExtraContextMixin
+class ExtraContextMixin(object):
     extra_context = {}
+
+    def get_context_data(self, **kwargs):
+        context = super(ExtraContextMixin, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class MayanViewMixin(object):
     post_action_redirect = None
 
     def dispatch(self, request, *args, **kwargs):
@@ -288,12 +297,10 @@ class MayanViewMixin(object):
             }
         )
 
-        context.update(self.extra_context)
-
         return context
 
 
-class SingleObjectEditView(MayanPermissionCheckMixin, MayanViewMixin, UpdateView):
+class SingleObjectEditView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, UpdateView):
     template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
@@ -317,7 +324,7 @@ class SingleObjectEditView(MayanPermissionCheckMixin, MayanViewMixin, UpdateView
         return result
 
 
-class SingleObjectCreateView(MayanPermissionCheckMixin, MayanViewMixin, CreateView):
+class SingleObjectCreateView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, CreateView):
     template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
@@ -340,7 +347,7 @@ class SingleObjectCreateView(MayanPermissionCheckMixin, MayanViewMixin, CreateVi
         return result
 
 
-class SingleObjectDeleteView(MayanPermissionCheckMixin, MayanViewMixin, DeleteView):
+class SingleObjectDeleteView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, DeleteView):
     template_name = 'main/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
@@ -367,6 +374,14 @@ class SingleObjectDeleteView(MayanPermissionCheckMixin, MayanViewMixin, DeleteVi
             return result
 
 
-class SingleObjectListView(MayanPermissionCheckMixin, MayanViewMixin, ListView):
-    # TODO: filter object_list by permission
+class SingleObjectListView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, ListView):
     template_name = 'main/generic_list.html'
+    object_permission = None
+
+    def get_queryset(self):
+        queryset = super(SingleObjectListView, self).get_queryset()
+
+        if self.object_permission:
+            return AccessEntry.objects.filter_objects_by_access(self.object_permission, self.request.user, queryset)
+        else:
+            return queryset
