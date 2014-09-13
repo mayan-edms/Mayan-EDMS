@@ -3,13 +3,14 @@ from __future__ import absolute_import
 from django.conf.urls import patterns, url
 
 from .api_views import APITagListView, APITagView
+from .views import TagTaggedItemListView
 
 urlpatterns = patterns('tags.views',
     url(r'^list/$', 'tag_list', (), 'tag_list'),
     url(r'^create/$', 'tag_create', (), 'tag_create'),
     url(r'^(?P<tag_id>\d+)/delete/$', 'tag_delete', (), 'tag_delete'),
     url(r'^(?P<tag_id>\d+)/edit/$', 'tag_edit', (), 'tag_edit'),
-    url(r'^(?P<tag_id>\d+)/tagged_item/list/$', 'tag_tagged_item_list', (), 'tag_tagged_item_list'),
+    url(r'^(?P<pk>\d+)/documents/$', TagTaggedItemListView.as_view(), name='tag_tagged_item_list'),
     url(r'^multiple/delete/$', 'tag_multiple_delete', (), 'tag_multiple_delete'),
 
     url(r'^multiple/remove/document/(?P<document_id>\d+)/$', 'single_document_multiple_tag_remove', (), 'single_document_multiple_tag_remove'),

@@ -16,7 +16,7 @@ from acls.models import AccessEntry
 from acls.views import acl_list_for
 from acls.utils import apply_default_acls
 from documents.models import Document
-from documents.views import document_list
+from documents.views import DocumentListView
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 
@@ -231,18 +231,21 @@ def tag_edit(request, tag_id):
     }, context_instance=RequestContext(request))
 
 
-def tag_tagged_item_list(request, tag_id):
-    tag = get_object_or_404(Tag, pk=tag_id)
+class TagTaggedItemListView(DocumentListView):
+    def get_tag(self):
+        return get_object_or_404(Tag, pk=self.kwargs['pk'])
 
-    return document_list(
-        request,
-        object_list=Document.objects.filter(tags__in=[tag]),
-        title=_('documents with the tag "%s"') % tag,
-        extra_context={
-            'object': tag,
+    def get_queryset(self):
+        return Document.objects.filter(tags__in=[self.get_tag()])
+
+    def get_extra_context(self):
+        return {
+            'title': _(u'Documents with the tag "%s"') % self.get_tag(),
+            'hide_links': True,
+            'multi_select_as_buttons': True,
+            'object': self.get_tag(),
             'object_name': _(u'tag'),
         }
-    )
 
 
 def document_tags(request, document_id):

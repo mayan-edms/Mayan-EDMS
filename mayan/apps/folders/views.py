@@ -16,7 +16,7 @@ from acls.views import acl_list_for
 from common.utils import encapsulate
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
-from documents.views import document_list
+from documents.views import DocumentListView
 from permissions.models import Permission
 
 from .forms import FolderForm, FolderListForm
@@ -145,27 +145,28 @@ def folder_delete(request, folder_id):
         context_instance=RequestContext(request))
 
 
-def folder_view(request, folder_id):
-    folder = get_object_or_404(Folder, pk=folder_id)
+class FolderDetailView(DocumentListView):
+    def get_folder(self):
+        folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
 
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, request.user, folder)
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_FOLDER_VIEW])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, self.request.user, folder)
 
-    context = {
-        'hide_links': True,
-        'multi_select_as_buttons': True,
-        'object': folder,
-        'object_name': _(u'folder'),
-    }
+        return folder
 
-    return document_list(
-        request,
-        object_list=folder.documents,
-        title=_(u'documents in folder: %s') % folder,
-        extra_context=context
-    )
+    def get_queryset(self):
+        return self.get_folder().documents
+
+    def get_extra_context(self):
+        return {
+            'title': _(u'Documents in folder: %s') % self.get_folder(),
+            'hide_links': True,
+            'multi_select_as_buttons': True,
+            'object': self.get_folder(),
+            'object_name': _(u'folder'),
+        }
 
 
 def folder_add_document(request, document_id=None, document_id_list=None):
