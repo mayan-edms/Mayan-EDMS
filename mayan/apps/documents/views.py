@@ -23,6 +23,7 @@ from common.literals import (PAGE_ORIENTATION_LANDSCAPE, PAGE_ORIENTATION_PORTRA
 from common.settings import DEFAULT_PAPER_SIZE
 from common.utils import (encapsulate, pretty_size, parse_range, return_diff,
                           urlquote)
+from common.views import SingleObjectListView
 from common.widgets import two_state_template
 from converter.literals import (DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER,
                                 DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL)
@@ -54,6 +55,17 @@ from .settings import (PREVIEW_SIZE, RECENT_COUNT, ROTATION_STEP,
                        ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 
 logger = logging.getLogger(__name__)
+
+
+class DocumentListView(SingleObjectListView):
+    queryset = Document.objects.all()
+    object_permission = PERMISSION_DOCUMENT_VIEW
+
+    extra_context = {
+        'title': _(u'All documents'),
+        'multi_select_as_buttons': True,
+        'hide_links': True,
+    }
 
 
 def document_list(request, object_list=None, title=None, extra_context=None):
