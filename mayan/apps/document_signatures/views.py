@@ -19,10 +19,12 @@ from documents.models import Document, RecentDocument
 from filetransfers.api import serve_file
 from permissions.models import Permission
 
-from . import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
-    PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE)
 from .forms import DetachedSignatureForm
 from .models import DocumentVersionSignature
+from .permissions import (PERMISSION_DOCUMENT_VERIFY,
+                          PERMISSION_SIGNATURE_UPLOAD,
+                          PERMISSION_SIGNATURE_DOWNLOAD,
+                          PERMISSION_SIGNATURE_DELETE)
 
 logger = logging.getLogger(__name__)
 
