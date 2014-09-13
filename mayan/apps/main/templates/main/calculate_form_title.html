@@ -1,7 +1,7 @@
 {% load i18n %}
 
 {% if title %}
-    {{ title|capfirst }}
+    {{ title }}
 {% else %}
     {% if read_only %}
         {% if object_name %}
@@ -20,7 +20,7 @@
             {% if object_name %}
                 {% blocktrans %}Create new {{ object_name }}{% endblocktrans %}
             {% else %}
-                {% trans "Create" %}
+                {% trans 'Create' %}
             {% endif %}
         {% endif %}
     {% endif %}

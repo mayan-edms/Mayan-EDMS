@@ -5,7 +5,7 @@
 {% load navigation_tags %}
 {% load subtemplates_tags %}
 
-{% block title %} :: {% blocktrans with title as title %}List of {{ title }}{% endblocktrans %}{% endblock %}
+{% block title %} :: {% blocktrans with title as title %}{{ title }}{% endblocktrans %}{% endblock %}
 
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates_list %}

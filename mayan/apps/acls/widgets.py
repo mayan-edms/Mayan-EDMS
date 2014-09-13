@@ -3,7 +3,6 @@ from __future__ import absolute_import
 from django.utils.safestring import mark_safe
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.base import ModelBase
-from django.template.defaultfilters import capfirst
 
 from .literals import CONTENT_TYPE_ICON_MAP
 
@@ -24,4 +23,4 @@ def object_w_content_type_icon(obj):
         else:
             label = unicode(obj)
 
-    return mark_safe('%s<span>%s</span>' % (content_type_icon(content_type), capfirst(label)))
+    return mark_safe('%s<span>%s</span>' % (content_type_icon(content_type), label))

@@ -13,7 +13,7 @@
 {% if side_bar %}
     <div class="block">
     <h3>
-        {{ title|capfirst }}
+        {{ title }}
     </h3>
     <div class="content">
         <p>
@@ -22,9 +22,9 @@
     <div class="content">
     <h2 class="title">
         {% ifnotequal page_obj.paginator.num_pages 1 %}
-            {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}List of {{ title }} ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
+            {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}{{ title }} ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
         {% else %}
-            {% blocktrans with page_obj.paginator.object_list|length as total %}List of {{ title }} ({{ total }}){% endblocktrans %}
+            {% blocktrans with page_obj.paginator.object_list|length as total %}{{ title }} ({{ total }}){% endblocktrans %}
         {% endifnotequal %}
     </h2>
 
@@ -40,7 +40,7 @@
                         <div class="group navform wat-cf" style="margin-bottom: 0px;">
                         {% for link in multi_item_links %}
                             <button class="button" type="submit" name="action" value="{{ link.url }}" style="margin-bottom: 8px;">
-                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text }}
                             </button>
                         {% endfor %}
                         </div>
@@ -74,15 +74,15 @@
                             {% endif %}
 
                             {% for column in extra_columns_preffixed %}
-                                <th>{{ column.name|capfirst }}</th>
+                                <th>{{ column.name }}</th>
                             {% endfor %}
 
                             {% for column in object_list.0|get_model_list_columns %}
-                                <th>{{ column.name|capfirst }}</th>
+                                <th>{{ column.name }}</th>
                             {% endfor %}
 
                             {% for column in extra_columns %}
-                                <th>{{ column.name|capfirst }}</th>
+                                <th>{{ column.name }}</th>
                             {% endfor %}
 
                             {% if not hide_links %}
@@ -160,7 +160,7 @@
                         <div class="group navform wat-cf" style="margin-bottom: 0px;">
                         {% for link in multi_item_links %}
                             <button class="button" type="submit" name="action" value="{{ link.url }}" style="margin-bottom: 8px;">
-                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}
+                               {% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text }}
                             </button>
                         {% endfor %}
                         </div>

@@ -6,7 +6,6 @@ from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.template import RequestContext, Variable
-from django.template.defaultfilters import capfirst
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
@@ -44,7 +43,7 @@ def render_widget(request, link):
             'url': reverse(link['view']) if 'view' in link else link['url'],
             'icon': link.get('icon', 'link_button.png'),
             'static_url': settings.STATIC_URL,
-            'string': capfirst(link['text']),
+            'string': link['text'],
             'image_alt': _(u'icon'),
         })
     else:

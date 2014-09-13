@@ -7,7 +7,6 @@ import types
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.base import ModelBase
-from django.template.defaultfilters import capfirst
 
 from common.models import AnonymousUserSingleton
 
@@ -111,7 +110,7 @@ class EncapsulatedObject(object):
 
     def __unicode__(self):
         if isinstance(self.source_object, ModelBase):
-            return capfirst(unicode(self.source_object._meta.verbose_name_plural))
+            return unicode(self.source_object._meta.verbose_name_plural)
         elif self.ct_fullname == 'auth.user':
             return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object.get_full_name())
         elif self.ct_fullname == 'common.anonymoususersingleton':

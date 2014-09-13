@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django import forms
 from django.core.urlresolvers import reverse
-from django.template.defaultfilters import capfirst
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 
@@ -37,7 +36,7 @@ class SmartLinkImageWidget(forms.widgets.Widget):
                     </button>
                 ''' % {
                     'famfam': link.get('famfam', u'link'),
-                    'text': capfirst(link['text']),
+                    'text': link['text'],
                     'action': reverse(link.get('view'), args=[value['current_document'].pk, value['smart_link_instance'].pk])
                 })
             output.append(u'</div>')
