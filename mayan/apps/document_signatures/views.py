@@ -14,9 +14,9 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from filetransfers.api import serve_file
-from django_gpg.api import SIGNATURE_STATE_NONE, SIGNATURE_STATES
+from django_gpg.literals import SIGNATURE_STATE_NONE, SIGNATURE_STATES
 from documents.models import Document, RecentDocument
+from filetransfers.api import serve_file
 from permissions.models import Permission
 
 from . import (PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,

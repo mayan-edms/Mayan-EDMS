@@ -15,65 +15,11 @@ import gnupg
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import (GPGVerificationError, GPGSigningError,
-    GPGDecryptionError, KeyDeleteError, KeyGenerationError,
-    KeyFetchingError, KeyDoesNotExist, KeyImportError)
+                         GPGDecryptionError, KeyDeleteError, KeyGenerationError,
+                         KeyFetchingError, KeyDoesNotExist, KeyImportError)
+from .literals import KEY_TYPES
 
 logger = logging.getLogger(__name__)
-
-KEY_TYPES = {
-    'pub': _(u'Public'),
-    'sec': _(u'Secret'),
-}
-
-KEY_CLASS_RSA = 'RSA'
-KEY_CLASS_DSA = 'DSA'
-KEY_CLASS_ELG = 'ELG-E'
-
-KEY_PRIMARY_CLASSES = (
-    ((KEY_CLASS_RSA), _(u'RSA')),
-    ((KEY_CLASS_DSA), _(u'DSA')),
-)
-
-KEY_SECONDARY_CLASSES = (
-    ((KEY_CLASS_RSA), _(u'RSA')),
-    ((KEY_CLASS_ELG), _(u'Elgamal')),
-)
-
-KEYSERVER_DEFAULT_PORT = 11371
-
-SIGNATURE_STATE_BAD = 'signature bad'
-SIGNATURE_STATE_NONE = None
-SIGNATURE_STATE_ERROR = 'signature error'
-SIGNATURE_STATE_NO_PUBLIC_KEY = 'no public key'
-SIGNATURE_STATE_GOOD = 'signature good'
-SIGNATURE_STATE_VALID = 'signature valid'
-
-SIGNATURE_STATES = {
-    SIGNATURE_STATE_BAD: {
-        'text': _(u'Bad signature.'),
-        'icon': 'cross.png'
-    },
-    SIGNATURE_STATE_NONE: {
-        'text': _(u'Document not signed or invalid signature.'),
-        'icon': 'cross.png'
-    },
-    SIGNATURE_STATE_ERROR: {
-        'text': _(u'Signature error.'),
-        'icon': 'cross.png'
-    },
-    SIGNATURE_STATE_NO_PUBLIC_KEY: {
-        'text': _(u'Document is signed but no public key is available for verification.'),
-        'icon': 'user_silhouette.png'
-    },
-    SIGNATURE_STATE_GOOD: {
-        'text': _(u'Document is signed, and signature is good.'),
-        'icon': 'document_signature.png'
-    },
-    SIGNATURE_STATE_VALID: {
-        'text': _(u'Document is signed with a valid signature.'),
-        'icon': 'document_signature.png'
-    },
-}
 
 
 class Key(object):
