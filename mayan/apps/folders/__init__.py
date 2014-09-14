@@ -1,10 +1,14 @@
 from __future__ import absolute_import
 
+from django.utils.translation import ugettext as _
+
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import (register_links, register_top_menu,
-    register_multi_item_links, register_sidebar_template)
+from navigation.api import (register_links, register_model_list_columns,
+                            register_multi_item_links,
+                            register_sidebar_template, register_top_menu)
 
 from .links import (folder_list, folder_create, folder_edit, folder_delete,
     folder_document_multiple_remove, folder_view, folder_add_document,
@@ -42,4 +46,9 @@ class_permissions(Folder, [
 class_permissions(Document, [
     PERMISSION_FOLDER_ADD_DOCUMENT,
     PERMISSION_FOLDER_REMOVE_DOCUMENT,
+])
+
+register_model_list_columns(Folder, [
+    {'name': _(u'Created'), 'attribute': 'datetime_created'},
+    {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())},
 ])

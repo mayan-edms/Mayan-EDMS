@@ -36,12 +36,8 @@ class FolderListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'title': _(u'folders'),
+            'title': _(u'Folders'),
             'multi_select_as_buttons': True,
-            'extra_columns': [
-                {'name': _(u'Created'), 'attribute': 'datetime_created'},
-                {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
-            ],
             'hide_link': True,
         }
 
@@ -224,10 +220,6 @@ def document_folder_list(request, document_id):
         'title': _(u'Folders containing: %s') % document,
         'object': document,
         'multi_select_as_buttons': True,
-        'extra_columns': [
-            {'name': _(u'Created'), 'attribute': 'datetime_created'},
-            {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
-        ],
         'hide_link': True,
         }
 
