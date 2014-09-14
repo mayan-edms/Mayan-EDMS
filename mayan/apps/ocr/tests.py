@@ -36,8 +36,7 @@ class DocumentSearchTestCase(TestCase):
         Forces the reloading of the language_backend for different languages
         """
 
-        from ocr.conf import settings
-        from ocr import runtime
+        from ocr import runtime, settings
 
         setattr(settings, 'LANGUAGE', language)
 

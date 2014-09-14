@@ -310,7 +310,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
     def test_document_view(self):
         response = self.client.get(reverse('documents:document_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('List of documents (1)' in response.content)
+        self.assertTrue('ocuments (1)' in response.content)
 
         # test document simple view
         response = self.client.get(reverse('documents:document_view_simple', args=[self.document.pk]))
@@ -320,13 +320,13 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         # test document advanced view
         response = self.client.get(reverse('documents:document_view_advanced', args=[self.document.pk]))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('Document properties for: mayan_11_1.pdf' in response.content)
+        self.assertTrue('ocument properties for: mayan_11_1.pdf' in response.content)
 
     def test_document_type_views(self):
         # Check that there are no document types
         response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('List of document types (0)' in response.content)
+        self.assertTrue('ocument types (0)' in response.content)
 
         # Create a document type
         response = self.client.post(reverse('documents:document_type_create'), data={'name': TEST_DOCUMENT_TYPE}, follow=True)
@@ -336,7 +336,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         # Check that there is one document types
         response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('List of document types (1)' in response.content)
+        self.assertTrue('ocument types (1)' in response.content)
 
         document_type = DocumentType.objects.first()
         self.assertEqual(document_type.name, TEST_DOCUMENT_TYPE)
@@ -357,4 +357,4 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         # Check that there are no document types
         response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('List of document types (0)' in response.content)
+        self.assertTrue('ocument types (0)' in response.content)

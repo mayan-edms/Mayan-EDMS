@@ -8,7 +8,7 @@ from django.test import TestCase
 
 from documents.literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
 from documents.models import Document, DocumentType
-from django_gpg.api import SIGNATURE_STATE_VALID
+from django_gpg.literals import SIGNATURE_STATE_VALID
 from django_gpg.runtime import gpg
 
 from .models import DocumentVersionSignature
