@@ -14,6 +14,7 @@ from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 from acls.views import acl_list_for
 from common.utils import encapsulate
+from common.views import SingleObjectListView
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
 from documents.views import DocumentListView
@@ -29,30 +30,20 @@ from .permissions import (PERMISSION_FOLDER_CREATE,
 logger = logging.getLogger(__name__)
 
 
-def folder_list(request, queryset=None, extra_context=None):
-    context = {
-        'title': _(u'folders'),
-        'multi_select_as_buttons': True,
-        'extra_columns': [
-            {'name': _(u'created'), 'attribute': 'datetime_created'},
-            {'name': _(u'documents'), 'attribute': encapsulate(lambda x: x.folderdocument_set.count())}
-        ],
-        'hide_link': True,
-    }
-    if extra_context:
-        context.update(extra_context)
+class FolderListView(SingleObjectListView):
+    model =  Folder
+    object_permission = PERMISSION_FOLDER_VIEW
 
-    queryset = queryset if not (queryset is None) else Folder.objects.all()
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
-    except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_VIEW, request.user, queryset)
-
-    context['object_list'] = queryset
-
-    return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _(u'folders'),
+            'multi_select_as_buttons': True,
+            'extra_columns': [
+                {'name': _(u'Created'), 'attribute': 'datetime_created'},
+                {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
+            ],
+            'hide_link': True,
+        }
 
 
 def folder_create(request):
@@ -229,14 +220,28 @@ def document_folder_list(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
-    return folder_list(
-        request,
-        queryset=Folder.objects.filter(folderdocument__document=document),
-        extra_context={
-            'title': _(u'folders containing: %s') % document,
-            'object': document,
+    context = {
+        'title': _(u'Folders containing: %s') % document,
+        'object': document,
+        'multi_select_as_buttons': True,
+        'extra_columns': [
+            {'name': _(u'Created'), 'attribute': 'datetime_created'},
+            {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
+        ],
+        'hide_link': True,
         }
-    )
+
+    queryset=Folder.objects.filter(folderdocument__document=document)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])
+    except PermissionDenied:
+        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_VIEW, request.user, queryset)
+
+    context['object_list'] = queryset
+
+    return render_to_response('main/generic_list.html', context,
+        context_instance=RequestContext(request))
 
 
 def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
