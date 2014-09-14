@@ -264,7 +264,6 @@ class MayanPermissionCheckMixin(object):
 
     def dispatch(self, request, *args, **kwargs):
         if self.permissions_required:
-            print self.permissions_required
             Permission.objects.check_permissions(self.request.user, self.permissions_required)
 
         return super(MayanPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
@@ -385,6 +384,14 @@ class SingleObjectListView(MayanPermissionCheckMixin, ExtraContextMixin, MayanVi
         queryset = super(SingleObjectListView, self).get_queryset()
 
         if self.object_permission:
-            return AccessEntry.objects.filter_objects_by_access(self.object_permission, self.request.user, queryset)
+            try:
+                # Check to see if the user has the permissions globally
+                Permission.objects.check_permissions(self.request.user, [self.object_permission])
+            except PermissionDenied:
+                # No global permission, filter ther queryset per object + permission
+                return AccessEntry.objects.filter_objects_by_access(self.object_permission, self.request.user, queryset)
+            else:
+                # Has the permission globally, return all results
+                return queryset
         else:
             return queryset
