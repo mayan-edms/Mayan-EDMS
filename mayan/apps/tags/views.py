@@ -236,7 +236,7 @@ def tag_tagged_item_list(request, tag_id):
 
     return document_list(
         request,
-        object_list=Document.objects.filter(tags__in=[tag]),
+        object_list=tag.documents.all(),
         title=_('documents with the tag "%s"') % tag,
         extra_context={
             'object': tag,

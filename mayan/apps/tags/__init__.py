@@ -61,7 +61,11 @@ class_permissions(Tag, [
     PERMISSION_TAG_VIEW,
 ])
 
+def tag_documents(self):
+    return Document.objects.filter(tags__in=[self])
+
 Document.add_to_class('tags', TaggableManager())
+Tag.add_to_class('documents', property(tag_documents))
 
 endpoint = APIEndPoint('tags')
 endpoint.register_urls(api_urls)
