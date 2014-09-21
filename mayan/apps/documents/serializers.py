@@ -37,3 +37,4 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = DocumentType
+        fields = ('id', 'url', 'name', 'documents')
