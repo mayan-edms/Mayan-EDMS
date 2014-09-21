@@ -78,7 +78,7 @@ class Document(models.Model):
     Defines a single document with it's fields and properties
     """
     uuid = models.CharField(max_length=48, blank=True, editable=False)
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), null=True, blank=True)
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'), related_name='documents', null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'description'))
     date_added = models.DateTimeField(verbose_name=_(u'added'), db_index=True, editable=False)
 
