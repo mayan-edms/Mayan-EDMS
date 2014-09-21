@@ -5,11 +5,6 @@ from rest_framework import serializers
 from .models import Document, DocumentVersion, DocumentPage, DocumentType
 
 
-class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = DocumentType
-
-
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DocumentPage
@@ -35,3 +30,10 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Document
+
+
+class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
+    documents = DocumentSerializer()
+
+    class Meta:
+        model = DocumentType
