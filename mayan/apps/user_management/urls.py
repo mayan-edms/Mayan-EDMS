@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
 
+from .api_views import APIUserListView, APIUserView
+
 urlpatterns = patterns('user_management.views',
     url(r'^user/list/$', 'user_list', (), 'user_list'),
     url(r'^user/add/$', 'user_add', (), 'user_add'),
@@ -16,4 +18,9 @@ urlpatterns = patterns('user_management.views',
     url(r'^group/(?P<group_id>\d+)/delete/$', 'group_delete', (), 'group_delete'),
     url(r'^group/multiple/delete/$', 'group_multiple_delete', (), 'group_multiple_delete'),
     url(r'^group/(?P<group_id>\d+)/members/$', 'group_members', (), 'group_members'),
+)
+
+api_urls = patterns('',
+    url(r'^users/$', APIUserListView.as_view(), name='user-list'),
+    url(r'^users/(?P<pk>[0-9]+)/$', APIUserView.as_view(), name='user-detail'),
 )
