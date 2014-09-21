@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
 
+from .api_views import APIFolderListView, APIFolderView
+
 urlpatterns = patterns('folders.views',
     url(r'^list/$', 'folder_list', (), 'folder_list'),
     url(r'^create/$', 'folder_create', (), 'folder_create'),
@@ -13,4 +15,9 @@ urlpatterns = patterns('folders.views',
     url(r'^document/(?P<document_id>\d+)/folder/list/$', 'document_folder_list', (), 'document_folder_list'),
 
     url(r'^(?P<folder_pk>\d+)/acl/list/$', 'folder_acl_list', (), 'folder_acl_list'),
+)
+
+api_urls = patterns('',
+    url(r'^folders/$', APIFolderListView.as_view(), name='folder-list'),
+    url(r'^folders/(?P<pk>[0-9]+)/$', APIFolderView.as_view(), name='folder-detail'),
 )
