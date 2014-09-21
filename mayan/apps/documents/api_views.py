@@ -21,6 +21,7 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
                           PERMISSION_DOCUMENT_NEW_VERSION,
                           PERMISSION_DOCUMENT_PROPERTIES_EDIT,
                           PERMISSION_DOCUMENT_VIEW,
+                          PERMISSION_DOCUMENT_TYPE_CREATE,
                           PERMISSION_DOCUMENT_TYPE_DELETE,
                           PERMISSION_DOCUMENT_TYPE_EDIT,
                           PERMISSION_DOCUMENT_TYPE_VIEW)
@@ -185,6 +186,20 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
         'PATCH': [PERMISSION_DOCUMENT_EDIT]
     }
     mayan_permission_attribute_check = 'document'
+
+
+class APIDocumentTypeListView(generics.ListCreateAPIView):
+    """
+    Returns a list of all the document types.
+    """
+
+    serializer_class = DocumentTypeSerializer
+    queryset = DocumentType.objects.all()
+
+    permission_classes = (MayanPermission,)
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_TYPE_CREATE]}
 
 
 class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
