@@ -2,7 +2,12 @@ from __future__ import absolute_import
 
 from rest_framework import serializers
 
-from .models import Document, DocumentVersion, DocumentPage
+from .models import Document, DocumentVersion, DocumentPage, DocumentType
+
+
+class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = DocumentType
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
