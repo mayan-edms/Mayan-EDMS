@@ -212,7 +212,7 @@ def tag_edit(request, tag_id):
         if form.is_valid():
             tag.name = form.cleaned_data['name']
             tag.save()
-            tag_properties = tag.tagproperties_set.get()
+            tag_properties = tag.properties.get()
             tag_properties.color = form.cleaned_data['color']
             tag_properties.save()
             messages.success(request, _(u'Tag updated succesfully.'))
