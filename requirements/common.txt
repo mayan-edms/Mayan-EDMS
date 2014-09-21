@@ -6,6 +6,7 @@ Django==1.6.5
 django-filetransfers==0.1.0
 django-pagination==1.0.7
 django-compressor==1.4
+django-cors-headers==0.13
 django-taggit==0.12
 django-mptt==0.6.1
 django-rest-swagger==0.1.14
