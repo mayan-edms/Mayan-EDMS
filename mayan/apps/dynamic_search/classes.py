@@ -104,6 +104,8 @@ class SearchModel(object):
             logger.debug('key: %s' % key)
             logger.debug('value: %s' % value)
 
+            if key == 'page':
+                continue
             if value:
                 search_field = self.get_search_field(key)
                 logger.debug('search_field: %s' % search_field)
