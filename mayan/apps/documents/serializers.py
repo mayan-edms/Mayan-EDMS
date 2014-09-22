@@ -29,11 +29,12 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     new_version = serializers.HyperlinkedIdentityField(view_name='document-new-version')
 
     class Meta:
+        fields = ('id', 'url', 'image', 'new_version', 'uuid', 'document_type', 'description', 'date_added', 'versions')
         model = Document
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
-    documents = DocumentSerializer()
+    documents = DocumentSerializer(many=True, required=False)
 
     class Meta:
         model = DocumentType
