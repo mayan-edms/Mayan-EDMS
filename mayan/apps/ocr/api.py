@@ -73,6 +73,9 @@ def do_document_ocr(queue_document):
                 document_page.content = ocr_cleanup(ocr_text)
                 document_page.page_label = _(u'Text from OCR')
                 document_page.save()
+            except Exception as e:
+                logger.debug('missing ocr backend: %s' % ocr_backend)
+                logger.debug('I/O error({0}): {1}'.format(e.errno, e.strerror))
             finally:
                 fs_cleanup(pre_ocr_filepath_w_ext)
                 fs_cleanup(unpaper_input)
