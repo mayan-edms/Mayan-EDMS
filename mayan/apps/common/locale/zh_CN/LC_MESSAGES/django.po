@@ -1,0 +1,414 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Ford Guo <agile.guo@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
+"PO-Revision-Date: 2014-09-24 07:33+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: forms.py:97
+msgid "Selection"
+msgstr "选择"
+
+#: forms.py:128
+msgid "Email"
+msgstr "电子邮件"
+
+#: forms.py:131
+msgid "Password"
+msgstr "密码"
+
+#: forms.py:134
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr "请输入正确的邮箱或者密码。注意！密码是大小写敏感的。"
+
+#: forms.py:136
+msgid "This account is inactive."
+msgstr "此账号未激活"
+
+#: links.py:10
+msgid "change password"
+msgstr "修改密码"
+
+#: links.py:11
+msgid "user details"
+msgstr "用户详细信息"
+
+#: links.py:12
+msgid "edit details"
+msgstr "编辑详细信息"
+
+#: links.py:14
+msgid "about"
+msgstr "关于"
+
+#: links.py:15
+msgid "license"
+msgstr "许可证"
+
+#: literals.py:24
+msgid "A5"
+msgstr "A5"
+
+#: literals.py:25
+msgid "A4"
+msgstr "A4"
+
+#: literals.py:26
+msgid "A3"
+msgstr "A3"
+
+#: literals.py:27
+msgid "B5"
+msgstr "B5"
+
+#: literals.py:28
+msgid "B4"
+msgstr "B4"
+
+#: literals.py:29
+msgid "Letter"
+msgstr "Letter"
+
+#: literals.py:30
+msgid "Legal"
+msgstr "Legal"
+
+#: literals.py:31
+msgid "Ledger"
+msgstr "Ledger"
+
+#: literals.py:38
+msgid "Portrait"
+msgstr "Portrait"
+
+#: literals.py:39
+msgid "Landscape"
+msgstr "Landscape"
+
+#: models.py:17
+msgid "Anonymous user"
+msgstr "匿名用户"
+
+#: models.py:20 models.py:21
+msgid "anonymous user"
+msgstr "匿名用户"
+
+#: models.py:25
+msgid "account"
+msgstr "账号"
+
+#: models.py:26
+msgid "password"
+msgstr "密码"
+
+#: models.py:27
+msgid "password hash"
+msgstr "密码哈希"
+
+#: models.py:30
+msgid "auto admin properties"
+msgstr "自动管理属性"
+
+#: utils.py:299
+msgid "function found"
+msgstr "功能已存在"
+
+#: views.py:39
+msgid "No action selected."
+msgstr "请选择一个操作"
+
+#: views.py:43
+msgid "Must select at least one item."
+msgstr "至少需要选择一项"
+
+#: views.py:91
+#, python-format
+msgid "%(selection)s added successfully added to %(right_list_title)s."
+msgstr "%(selection)s成功添加到 %(right_list_title)s."
+
+#: views.py:97 views.py:124
+#, python-format
+msgid "Unable to add %(selection)s to %(right_list_title)s."
+msgstr "不能添加%(selection)s到%(right_list_title)s."
+
+#: views.py:118
+#, python-format
+msgid "%(selection)s added successfully removed from %(right_list_title)s."
+msgstr "%(selection)s 成功从%(right_list_title)s.移除"
+
+#: views.py:139
+msgid "Add"
+msgstr "新增"
+
+#: views.py:150
+msgid "Remove"
+msgstr "移除"
+
+#: views.py:173
+msgid "current user details"
+msgstr "当前用户详细信息"
+
+#: views.py:190
+msgid "E-mail conflict, another user has that same email."
+msgstr "电子邮箱冲突，另外用户已经使用此邮箱"
+
+#: views.py:193
+msgid "Current user's details updated."
+msgstr "当前用户信息已经更新"
+
+#: views.py:202
+msgid "edit current user details"
+msgstr "编辑当前用户信息"
+
+#: views.py:233
+msgid "License"
+msgstr "许可证"
+
+#: views.py:242
+msgid "Current user password change"
+msgstr "当前用户密码修改"
+
+#: views.py:257 templates/password_change_done.html:8
+msgid "Your password has been successfully changed."
+msgstr "你的密码已经修改成功"
+
+#: views.py:303
+#, python-format
+msgid "Error saving %s details."
+msgstr "保存 %s 详细信息出错。"
+
+#: views.py:305
+msgid "Error saving details."
+msgstr "保存详细信息出错"
+
+#: views.py:313
+#, python-format
+msgid "%s details saved successfully."
+msgstr "%s的详单成功保存"
+
+#: views.py:315
+msgid "Details saved successfully."
+msgstr "详单保存成功"
+
+#: views.py:327
+#, python-format
+msgid "Error creating new %s."
+msgstr "创建新 %s的时候出错。"
+
+#: views.py:329
+msgid "Error creating object."
+msgstr "创建对象的时候出错"
+
+#: views.py:336
+#, python-format
+msgid "%s created successfully."
+msgstr "创建%s成功"
+
+#: views.py:338
+msgid "New object created successfully."
+msgstr "新对象创建成功"
+
+#: views.py:356
+#, python-format
+msgid "Error deleting %s."
+msgstr "删除%s时候出错。"
+
+#: views.py:358
+msgid "Error deleting object."
+msgstr "删除对象时候出错。"
+
+#: views.py:363
+#, python-format
+msgid "%s deleted successfully."
+msgstr "删除%s成功。"
+
+#: views.py:365
+msgid "Object deleted successfully."
+msgstr "对象删除成功"
+
+#: widgets.py:58
+msgid "None"
+msgstr "无"
+
+#: conf/settings.py:16
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用tempfile.mkdtemp()"
+
+#: conf/settings.py:66
+msgid ""
+"Controls the mechanism used to authenticated user.  Options are: username, "
+"email"
+msgstr "控制验证用户的机制。可选项有：username, email"
+
+#: conf/settings.py:75
+msgid "Allow non authenticated users, access to all views"
+msgstr "允许非授权用户访问所有的视图"
+
+#: templates/403.html:5 templates/403.html.py:9
+msgid "Insufficient permissions"
+msgstr "权限不足"
+
+#: templates/403.html:11
+msgid "You don't have enough permissions for this operation."
+msgstr "你没有足够权限执行当前操作"
+
+#: templates/404.html:5 templates/404.html.py:9
+msgid "Page not found"
+msgstr "页不存在"
+
+#: templates/404.html:11
+msgid "Sorry, but the requested page could not be found."
+msgstr "抱歉，请求页不存在。"
+
+#: templates/calculate_form_title.html:8
+#, python-format
+msgid "Details for %(object_name)s: %(object)s"
+msgstr "%(object_name)s的详细信息是：%(object)s"
+
+#: templates/calculate_form_title.html:10
+#, python-format
+msgid "Details for: %(object)s"
+msgstr "详细信息：%(object)s"
+
+#: templates/calculate_form_title.html:15
+#, python-format
+msgid "Edit %(object_name)s: %(object)s"
+msgstr "编辑%(object_name)s的 %(object)s"
+
+#: templates/calculate_form_title.html:17
+#, python-format
+msgid "Edit: %(object)s"
+msgstr "编辑：%(object)s"
+
+#: templates/calculate_form_title.html:21
+#, python-format
+msgid "Create new %(object_name)s"
+msgstr "创建新的%(object_name)s"
+
+#: templates/calculate_form_title.html:23
+msgid "Create"
+msgstr "创建"
+
+#: templates/generic_assign_remove.html:5
+#, python-format
+msgid "Assign %(title)s %(object)s"
+msgstr "分配 %(title)s %(object)s"
+
+#: templates/generic_confirm.html:5 templates/generic_confirm.html.py:19
+msgid "Confirm"
+msgstr "确认"
+
+#: templates/generic_confirm.html:17
+msgid "Confirm delete"
+msgstr "确认删除"
+
+#: templates/generic_confirm.html:33
+msgid "form icon"
+msgstr "表单图标"
+
+#: templates/generic_confirm.html:41
+#, python-format
+msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+msgstr ""
+
+#: templates/generic_confirm.html:43
+#, python-format
+msgid "Are you sure you wish to delete: %(object)s?"
+msgstr ""
+
+#: templates/generic_confirm.html:51
+msgid "Yes"
+msgstr "是"
+
+#: templates/generic_confirm.html:55
+msgid "No"
+msgstr "否"
+
+#: templates/generic_form_instance.html:40
+#: templates/generic_form_subtemplate.html:59
+msgid "required"
+msgstr "必须的"
+
+#: templates/generic_form_subtemplate.html:83
+#: templates/generic_form_subtemplate.html:85
+#: templates/generic_list_horizontal_subtemplate.html:50
+#: templates/generic_list_horizontal_subtemplate.html:88
+#: templates/generic_list_subtemplate.html:53
+#: templates/generic_list_subtemplate.html:173
+msgid "Save"
+msgstr "保存"
+
+#: templates/generic_form_subtemplate.html:83
+#: templates/generic_form_subtemplate.html:85
+#: templates/generic_list_horizontal_subtemplate.html:50
+#: templates/generic_list_horizontal_subtemplate.html:88
+#: templates/generic_list_subtemplate.html:53
+#: templates/generic_list_subtemplate.html:173
+msgid "Submit"
+msgstr "提交"
+
+#: templates/generic_form_subtemplate.html:90
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/generic_list.html:8 templates/generic_list_horizontal.html:8
+#, python-format
+msgid "List of %(title)s"
+msgstr "%(title)s列表"
+
+#: templates/generic_list_horizontal_subtemplate.html:24
+#: templates/generic_list_subtemplate.html:25
+#, python-format
+msgid ""
+"List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
+"%(page_number)s of %(total_pages)s)"
+msgstr ""
+
+#: templates/generic_list_horizontal_subtemplate.html:26
+#: templates/generic_list_subtemplate.html:27
+#, python-format
+msgid "List of %(title)s (%(total)s)"
+msgstr "%(title)s (%(total)s)列表"
+
+#: templates/generic_list_subtemplate.html:73
+msgid "Identifier"
+msgstr ""
+
+#: templates/generic_list_subtemplate.html:147
+#, python-format
+msgid "There are no %(title)s"
+msgstr ""
+
+#: templates/login.html:7
+msgid "Login"
+msgstr "登录"
+
+#: templates/password_change_done.html:5 templates/password_change_form.html:5
+#: templates/password_change_form.html:7
+msgid "Password change"
+msgstr "密码改变"
+
+#~ msgid "lock field"
+#~ msgstr "lock field"
+
+#~ msgid "Edit"
+#~ msgstr "Edit"

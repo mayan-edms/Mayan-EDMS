@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Ford Guo <agile.guo@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-31 19:52-0400\n"
+"PO-Revision-Date: 2014-09-26 03:34+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: api.py:24
+msgid "Public"
+msgstr "公开的"
+
+#: api.py:25
+msgid "Secret"
+msgstr "隐私的"
+
+#: api.py:33 api.py:38
+msgid "RSA"
+msgstr "RSA"
+
+#: api.py:34
+msgid "DSA"
+msgstr "DSA"
+
+#: api.py:39
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: api.py:53
+msgid "Bad signature."
+msgstr "无效签名"
+
+#: api.py:57
+msgid "Document not signed or invalid signature."
+msgstr "文档未签名或者无效签名"
+
+#: api.py:61
+msgid "Signature error."
+msgstr "签名出错。"
+
+#: api.py:65
+msgid "Document is signed but no public key is available for verification."
+msgstr "文档已经签名，但是没法验证公钥。"
+
+#: api.py:69
+msgid "Document is signed, and signature is good."
+msgstr "文档已签名，并且是有效的。"
+
+#: api.py:73
+msgid "Document is signed with a valid signature."
+msgstr "文档使用有效签名进行签名"
+
+#: api.py:146
+msgid "unknown"
+msgstr "未知"
+
+#: forms.py:7
+msgid "Term"
+msgstr ""
+
+#: forms.py:8
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr ""
+
+#: links.py:6 views.py:66
+msgid "private keys"
+msgstr "私钥"
+
+#: links.py:7 views.py:69
+msgid "public keys"
+msgstr "公钥"
+
+#: links.py:8
+msgid "delete"
+msgstr "删除"
+
+#: links.py:9
+msgid "query keyservers"
+msgstr ""
+
+#: links.py:10
+msgid "import"
+msgstr "导入"
+
+#: links.py:11
+msgid "key management"
+msgstr "密钥管理"
+
+#: permissions.py:7
+msgid "Key management"
+msgstr "密钥管理"
+
+#: permissions.py:9
+msgid "View keys"
+msgstr "查看密钥"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "删除密钥"
+
+#: permissions.py:11
+msgid "Query keyservers"
+msgstr ""
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
+msgstr ""
+
+#: views.py:37
+#, python-format
+msgid "Key: %s, imported successfully."
+msgstr ""
+
+#: views.py:42
+#, python-format
+msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgstr ""
+
+#: views.py:51
+msgid "Import key"
+msgstr ""
+
+#: views.py:52
+#, python-format
+msgid "Are you sure you wish to import key id: %s?"
+msgstr ""
+
+#: views.py:77
+msgid "Key ID"
+msgstr ""
+
+#: views.py:81
+msgid "Owner"
+msgstr ""
+
+#: views.py:101
+#, python-format
+msgid "Key: %s, deleted successfully."
+msgstr ""
+
+#: views.py:108
+msgid "Delete key"
+msgstr ""
+
+#: views.py:110
+#, python-format
+msgid ""
+"Are you sure you wish to delete key: %s?  If you try to delete a public key "
+"that is part of a public/private pair the private key will be deleted as "
+"well."
+msgstr ""
+
+#: views.py:128
+msgid "Query key server"
+msgstr ""
+
+#: views.py:141
+msgid "results"
+msgstr ""
+
+#: views.py:146
+msgid "ID"
+msgstr ""
+
+#: views.py:150
+msgid "type"
+msgstr ""
+
+#: views.py:154
+msgid "creation date"
+msgstr ""
+
+#: views.py:158
+msgid "disabled"
+msgstr ""
+
+#: views.py:162
+msgid "expiration date"
+msgstr ""
+
+#: views.py:166
+msgid "expired"
+msgstr ""
+
+#: views.py:170
+msgid "length"
+msgstr ""
+
+#: views.py:174
+msgid "revoked"
+msgstr ""
+
+#: views.py:179
+msgid "Identifies"
+msgstr ""
+
+#: conf/settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr ""
+
+#: conf/settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr ""
