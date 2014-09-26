@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2014-09-24 07:33+0000\n"
+"PO-Revision-Date: 2014-09-26 04:04+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -328,12 +328,12 @@ msgstr "表单图标"
 #: templates/generic_confirm.html:41
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
-msgstr ""
+msgstr "确定要删除%(object_name)s的%(object)s么？"
 
 #: templates/generic_confirm.html:43
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
-msgstr ""
+msgstr "确定要删除%(object)s么?"
 
 #: templates/generic_confirm.html:51
 msgid "Yes"
@@ -346,7 +346,7 @@ msgstr "否"
 #: templates/generic_form_instance.html:40
 #: templates/generic_form_subtemplate.html:59
 msgid "required"
-msgstr "必须的"
+msgstr "必填"
 
 #: templates/generic_form_subtemplate.html:83
 #: templates/generic_form_subtemplate.html:85
@@ -381,7 +381,7 @@ msgstr "%(title)s列表"
 msgid ""
 "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
 "%(page_number)s of %(total_pages)s)"
-msgstr ""
+msgstr "%(title)s列表(%(start)s - %(end)s 总共 %(total)s) （第%(page_number)s页，总共%(total_pages)s)"
 
 #: templates/generic_list_horizontal_subtemplate.html:26
 #: templates/generic_list_subtemplate.html:27
@@ -391,12 +391,12 @@ msgstr "%(title)s (%(total)s)列表"
 
 #: templates/generic_list_subtemplate.html:73
 msgid "Identifier"
-msgstr ""
+msgstr "标识"
 
 #: templates/generic_list_subtemplate.html:147
 #, python-format
 msgid "There are no %(title)s"
-msgstr ""
+msgstr "无%(title)s"
 
 #: templates/login.html:7
 msgid "Login"

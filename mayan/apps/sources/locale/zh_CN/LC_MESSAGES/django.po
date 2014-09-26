@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2014-09-24 13:34+0000\n"
+"PO-Revision-Date: 2014-09-26 05:08+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "上传新文件"
 
 #: links.py:14
 msgid "clone metadata"
-msgstr "克隆metadata"
+msgstr "克隆元数据"
 
 #: links.py:16 links.py:24 links.py:30
 msgid "delete"
@@ -58,7 +58,7 @@ msgstr "删除"
 
 #: links.py:18
 msgid "sources"
-msgstr "来源"
+msgstr "数据源"
 
 #: links.py:19 literals.py:53 models.py:191
 msgid "web forms"
@@ -78,7 +78,7 @@ msgstr "编辑"
 
 #: links.py:25
 msgid "add new source"
-msgstr "添加新源"
+msgstr "新增数据源"
 
 #: links.py:27
 msgid "transformations"
@@ -90,7 +90,7 @@ msgstr "添加变换"
 
 #: links.py:32
 msgid "Document sources"
-msgstr "文档来源"
+msgstr "文档数据源"
 
 #: links.py:34
 msgid "upload new version"
@@ -102,7 +102,7 @@ msgstr "总是"
 
 #: literals.py:9 literals.py:14
 msgid "Never"
-msgstr "从来没有"
+msgstr "从不"
 
 #: literals.py:15
 msgid "Ask user"
@@ -110,7 +110,7 @@ msgstr "询问用户"
 
 #: literals.py:30
 msgid "Disk"
-msgstr "盘"
+msgstr "磁盘"
 
 #: literals.py:31
 msgid "Database"
@@ -190,7 +190,7 @@ msgstr "图标"
 
 #: models.py:136
 msgid "An icon to visually distinguish this source."
-msgstr ""
+msgstr "跟当前数据源不同的图标"
 
 #: models.py:152 models.py:198
 msgid "folder path"
@@ -206,7 +206,7 @@ msgstr "预览宽度"
 
 #: models.py:153
 msgid "Width value to be passed to the converter backend."
-msgstr ""
+msgstr "宽度的值用于后台转换。"
 
 #: models.py:154
 msgid "preview height"
@@ -214,7 +214,7 @@ msgstr "预览高度"
 
 #: models.py:154
 msgid "Height value to be passed to the converter backend."
-msgstr ""
+msgstr "高度的值用于后台转换"
 
 #: models.py:155 models.py:186 models.py:199
 msgid "uncompress"
@@ -222,7 +222,7 @@ msgstr "解压缩"
 
 #: models.py:155 models.py:186 models.py:199
 msgid "Whether to expand or not compressed archives."
-msgstr ""
+msgstr "是否要展开或者解压缩归档文件"
 
 #: models.py:156 models.py:200
 msgid "delete after upload"
@@ -230,95 +230,95 @@ msgstr "上传后删除"
 
 #: models.py:156 models.py:200
 msgid "Delete the file after is has been successfully uploaded."
-msgstr ""
+msgstr "在上传成功后，删除此文件。"
 
 #: models.py:174
 #, python-format
 msgid "Unable get list of staging files: %s"
-msgstr ""
+msgstr "未能获取暂存文件列表：%s"
 
 #: models.py:177
 msgid "staging folder"
-msgstr ""
+msgstr "暂存文件夹"
 
 #: models.py:201
 msgid "interval"
-msgstr ""
+msgstr "间隔"
 
 #: models.py:201
 msgid ""
 "Inverval in seconds where the watch folder path is checked for new "
 "documents."
-msgstr ""
+msgstr "关注文件夹用来检查新文档的间隔秒数"
 
 #: models.py:225
 msgid "watch folder"
-msgstr ""
+msgstr "关注文件夹"
 
 #: models.py:230
 msgid "Enter a valid value."
-msgstr ""
+msgstr "输入有效值"
 
 #: models.py:258 views.py:563
 msgid "order"
-msgstr ""
+msgstr "排序"
 
 #: models.py:259 views.py:564 views.py:601 views.py:631
 msgid "transformation"
-msgstr ""
+msgstr "转换"
 
 #: models.py:260 views.py:565
 msgid "arguments"
-msgstr ""
+msgstr "参数"
 
 #: models.py:260
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
-msgstr ""
+msgstr "使用字典来标识参数，比如：%s"
 
 #: models.py:270
 msgid "document source transformation"
-msgstr ""
+msgstr "文档数据源转换"
 
 #: models.py:271
 msgid "document source transformations"
-msgstr ""
+msgstr "文档数据源转换"
 
 #: models.py:278 models.py:279
 msgid "out of process"
-msgstr ""
+msgstr "超过处理范围"
 
 #: permissions.py:7
 msgid "Sources setup"
-msgstr ""
+msgstr "数据源设置"
 
 #: permissions.py:8
 msgid "View existing document sources"
-msgstr ""
+msgstr "查看存在数据源"
 
 #: permissions.py:9
 msgid "Edit document sources"
-msgstr ""
+msgstr "编辑文档数据源"
 
 #: permissions.py:10
 msgid "Delete document sources"
-msgstr ""
+msgstr "删除文档数据源"
 
 #: permissions.py:11
 msgid "Create new document sources"
-msgstr ""
+msgstr "新建文档数据源"
 
 #: utils.py:35
 msgid "Whitelist Blacklist validation error."
-msgstr ""
+msgstr "黑白名单校验出错。"
 
 #: views.py:111
 msgid "here"
-msgstr ""
+msgstr "这里"
 
 #: views.py:116
 msgid "Upload sources"
-msgstr ""
+msgstr "上传数据源"
 
 #: views.py:118
 msgid ""
@@ -529,19 +529,19 @@ msgstr ""
 
 #: wizards.py:53
 msgid "step 1 of 3: Document type"
-msgstr ""
+msgstr "步骤1／3：文档类型"
 
 #: wizards.py:54
 msgid "step 2 of 3: Metadata selection"
-msgstr ""
+msgstr "步骤2／3：选择元数据"
 
 #: wizards.py:55
 msgid "step 3 of 3: Document metadata"
-msgstr ""
+msgstr "步骤3／3：文档元数据"
 
 #: wizards.py:73
 msgid "Next step"
-msgstr ""
+msgstr "下一步"
 
 #~ msgid "preview"
 #~ msgstr "preview"

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-23 08:22+0000\n"
+"PO-Revision-Date: 2014-09-26 05:29+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -117,7 +117,7 @@ msgstr "文档删除"
 #: events.py:25
 #, python-format
 msgid "Document \"%(document)s\" deleted by %(fullname)s."
-msgstr ""
+msgstr "文档 \"%(document)s\"被%(fullname)s删除。"
 
 #: events.py:26
 #, python-format
@@ -139,7 +139,7 @@ msgstr "文档页(%d)"
 
 #: forms.py:118
 msgid "Use the new version filename as the document filename"
-msgstr ""
+msgstr "使用新版本文件名作为文档名称"
 
 #: forms.py:134
 msgid "Quick document rename"
