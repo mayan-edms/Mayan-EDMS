@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2014-09-26 05:08+0000\n"
+"PO-Revision-Date: 2014-09-28 04:05+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -323,20 +323,20 @@ msgstr "上传数据源"
 #: views.py:118
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
+msgstr "无可交互的文档数据源或者数据源都无效。"
 
 #: views.py:119
 #, python-format
 msgid "Click %(setup_link)s to add or enable some document sources."
-msgstr ""
+msgstr "点击%(setup_link)s新增或者激活文档数据源。"
 
 #: views.py:177
 msgid "New document version uploaded successfully."
-msgstr ""
+msgstr "新文档版本上传成功。"
 
 #: views.py:181
 msgid "File uploaded successfully."
-msgstr ""
+msgstr "文件上传成功。"
 
 #: views.py:184
 msgid "File uncompressed successfully and uploaded as individual files."
@@ -408,15 +408,15 @@ msgstr ""
 
 #: views.py:337
 msgid "Current document type"
-msgstr ""
+msgstr "当前文档类型"
 
 #: views.py:338
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #: views.py:345
 msgid "Current metadata"
-msgstr ""
+msgstr "当前元数据"
 
 #: views.py:382
 msgid "Staging file delete successfully."
@@ -444,12 +444,12 @@ msgstr ""
 #: views.py:457 views.py:497 views.py:559 views.py:600 views.py:630
 #: views.py:673
 msgid "source"
-msgstr ""
+msgstr "数据源"
 
 #: views.py:486
 #, python-format
 msgid "Source \"%s\" deleted successfully."
-msgstr ""
+msgstr "数据源\"%s\"删除成功。"
 
 #: views.py:488
 #, python-format

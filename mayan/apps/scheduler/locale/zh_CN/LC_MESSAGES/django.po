@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Ford Guo <agile.guo@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2013-08-08 14:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2014-09-28 03:54+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,28 +21,28 @@ msgstr ""
 
 #: links.py:7
 msgid "interval job list"
-msgstr ""
+msgstr "周期任务列表"
 
 #: permissions.py:7
 msgid "Scheduler"
-msgstr ""
+msgstr "调度者"
 
 #: permissions.py:8
 msgid "View the interval job list"
-msgstr ""
+msgstr "查看周期任务列表"
 
 #: views.py:19
 msgid "interval jobs"
-msgstr ""
+msgstr "周期任务"
 
 #: views.py:22
 msgid "label"
-msgstr ""
+msgstr "标签"
 
 #: views.py:26
 msgid "start date time"
-msgstr ""
+msgstr "开始时间"
 
 #: views.py:30
 msgid "interval"
-msgstr ""
+msgstr "间隔"
