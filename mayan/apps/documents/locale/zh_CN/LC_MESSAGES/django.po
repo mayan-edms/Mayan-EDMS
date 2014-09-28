@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-26 05:29+0000\n"
+"PO-Revision-Date: 2014-09-28 03:38+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "文档 \"%(content_object)s\"由%(fullname)s编辑"
 msgid ""
 "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
 "  The following changes took place: %(changes)s."
-msgstr ""
+msgstr "%(fullname)s于%(datetime)s编辑文档\"%(content_object)s\"。修改如下：%(changes)s"
 
 #: events.py:24
 msgid "Document deleted"
@@ -122,7 +122,7 @@ msgstr "文档 \"%(document)s\"被%(fullname)s删除。"
 #: events.py:26
 #, python-format
 msgid "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
-msgstr ""
+msgstr "%(fullname)s于%(datetime)s删除文档 \"%(document)s\"。"
 
 #: forms.py:47
 msgid "Page image"
@@ -182,7 +182,7 @@ msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
+msgstr "以原始格式或者压缩方式下载文档。此选项仅仅在下载一个文档时候有效，对多个文档，总是以压缩文件方式下载。"
 
 #: forms.py:281
 msgid "Compressed filename"
@@ -192,7 +192,7 @@ msgstr "压缩的文件名"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
+msgstr "如果选择了前面选项，压缩文件的文件名将包含要下载的文档"
 
 #: links.py:39
 msgid "all documents"
@@ -233,18 +233,18 @@ msgstr "找所有重复"
 #: links.py:50
 msgid ""
 "Search all the documents' checksums and return a list of the exact matches."
-msgstr ""
+msgstr "搜索全部文档的校验码，并且返回精确匹配列表。"
 
 #: links.py:51
 msgid "update office documents' page count"
-msgstr ""
+msgstr "更新办公文档页面数"
 
 #: links.py:51
 msgid ""
 "Update the page count of the office type documents.  This is useful when "
 "enabling office document support after there were already office type "
 "documents in the database."
-msgstr ""
+msgstr "更新办公类型文档的页数。当支持办公文档存在于数据库时，将是有用的。"
 
 #: links.py:52 links.py:53
 msgid "clear transformations"
@@ -270,7 +270,7 @@ msgstr "清除文档预览图片缓存"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
+msgstr "清除图像信息有助于加速文档显示和变换结果交互。"
 
 #: links.py:62
 msgid "page transformations"
@@ -497,7 +497,7 @@ msgstr "页面数"
 #: models.py:567
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
-msgstr ""
+msgstr "文档%(document)s页%(page_num)d超出%(total_pages)d"
 
 #: models.py:575 models.py:618
 msgid "document page"
@@ -525,7 +525,7 @@ msgstr "参数"
 
 #: models.py:621
 msgid "Use dictionaries to indentify arguments, example: {'degrees':90}"
-msgstr ""
+msgstr "使用字典来标识参数，比如：{'degrees':90}"
 
 #: models.py:629
 msgid "document page transformation"
@@ -615,17 +615,17 @@ msgstr "文档类型：%d"
 #: statistics.py:50
 #, python-format
 msgid "Minimum amount of pages per document: %d"
-msgstr ""
+msgstr "每个文档的最小页数： %d"
 
 #: statistics.py:51
 #, python-format
 msgid "Maximum amount of pages per document: %d"
-msgstr ""
+msgstr "每个文档的最大页数：%d"
 
 #: statistics.py:52
 #, python-format
 msgid "Average amount of pages per document: %f"
-msgstr ""
+msgstr "每个文档的平均页数：%f"
 
 #: statistics.py:65
 #, python-format
@@ -642,7 +642,7 @@ msgstr "存储中文档数：%d"
 msgid ""
 "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
 " bytes"
-msgstr ""
+msgstr "存储使用空间：%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d字节"
 
 #: statistics.py:81
 #, python-format
@@ -696,7 +696,7 @@ msgstr "页面"
 #: views.py:124
 #, python-format
 msgid "document properties for: %s"
-msgstr ""
+msgstr "文档: %s的属性"
 
 #: views.py:146
 msgid "document data"
@@ -704,35 +704,35 @@ msgstr "文档数据"
 
 #: views.py:170 views.py:481
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "必须至少提供一个文档"
 
 #: views.py:186
 msgid "Document deleted successfully."
-msgstr ""
+msgstr "文档删除成功"
 
 #: views.py:188
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
-msgstr ""
+msgstr "文档%(document)s删除出错: %(error)s"
 
 #: views.py:203
 #, python-format
 msgid "Are you sure you wish to delete the document: %s?"
-msgstr ""
+msgstr "确定要删除文档%s么？"
 
 #: views.py:205
 #, python-format
 msgid "Are you sure you wish to delete the documents: %s?"
-msgstr ""
+msgstr "确定要删除文档：%s么？"
 
 #: views.py:239
 #, python-format
 msgid "Document \"%s\" edited successfully."
-msgstr ""
+msgstr "文档\"%s\"编辑成功。"
 
 #: views.py:300
 msgid "documents to be downloaded"
-msgstr ""
+msgstr "文档将被下载"
 
 #: views.py:309 views.py:1137
 msgid "version"
@@ -753,15 +753,15 @@ msgstr "重复：%s"
 
 #: views.py:409
 msgid "Are you sure you wish to find all duplicates?"
-msgstr ""
+msgstr "确定要查找所有重复么？"
 
 #: views.py:410 views.py:468 views.py:536
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
+msgstr "在大数据中，此操作将比较耗时。"
 
 #: views.py:433
 msgid "duplicated documents"
-msgstr ""
+msgstr "重复文档"
 
 #: views.py:459
 #, python-format
@@ -816,20 +816,20 @@ msgstr ""
 #: views.py:562 views.py:604
 #, python-format
 msgid "details for: %s"
-msgstr ""
+msgstr "%s的详细信息"
 
 #: views.py:623
 msgid "Document page edited successfully."
-msgstr ""
+msgstr "文档页面修改成功"
 
 #: views.py:632
 #, python-format
 msgid "edit: %s"
-msgstr ""
+msgstr "编辑：%s"
 
 #: views.py:649
 msgid "There are no more pages in this document"
-msgstr ""
+msgstr "此文档中无更多页"
 
 #: views.py:667
 msgid "You are already at the first page of this document"
@@ -838,11 +838,11 @@ msgstr ""
 #: views.py:812
 #, python-format
 msgid "print: %s"
-msgstr ""
+msgstr "打印： %s"
 
 #: views.py:884
 msgid "Document type edited successfully"
-msgstr ""
+msgstr "文档类型编辑成功"
 
 #: views.py:887
 #, python-format
@@ -955,19 +955,19 @@ msgstr ""
 #: views.py:1131
 #, python-format
 msgid "versions for document: %s"
-msgstr ""
+msgstr "文档：%s的版本"
 
 #: views.py:1141
 msgid "time and date"
-msgstr ""
+msgstr "时间和日期"
 
 #: views.py:1145
 msgid "mimetype"
-msgstr ""
+msgstr "媒体类型"
 
 #: views.py:1149
 msgid "encoding"
-msgstr ""
+msgstr "编码"
 
 #: views.py:1180
 msgid "Document version reverted successfully"
@@ -1027,15 +1027,15 @@ msgstr ""
 
 #: widgets.py:62
 msgid "Details"
-msgstr ""
+msgstr "详细"
 
 #: widgets.py:65
 msgid "Click on the image for full size preview"
-msgstr ""
+msgstr "点击图像预览实际尺寸"
 
 #: widgets.py:81
 msgid "document page image"
-msgstr ""
+msgstr "文档页面图像"
 
 #: conf/settings.py:38
 msgid ""
@@ -1065,7 +1065,7 @@ msgstr ""
 
 #: templates/document_types_help.html:3
 msgid "What are document types?"
-msgstr ""
+msgstr "什么是文档类型？"
 
 #: templates/document_types_help.html:4
 msgid ""
@@ -1077,14 +1077,14 @@ msgstr ""
 
 #: templates/recent_document_list_help.html:3
 msgid "What are recent documents?"
-msgstr ""
+msgstr "什么是近期文档？"
 
 #: templates/recent_document_list_help.html:4
 #, python-format
 msgid ""
 "Here you will find the latest %(recent_count)s documents you have either "
 "created or edited in any way."
-msgstr ""
+msgstr "此处将显示你最近创建或者修改的%(recent_count)s条文档。"
 
 #~ msgid "preview"
 #~ msgstr "preview"

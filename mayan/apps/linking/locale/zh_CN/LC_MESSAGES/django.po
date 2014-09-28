@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Ford Guo <agile.guo@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-07-31 23:58+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2014-09-27 04:39+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,150 +21,150 @@ msgstr ""
 
 #: forms.py:49
 msgid "Pages"
-msgstr ""
+msgstr "页面"
 
 #: forms.py:55
 msgid "Select"
-msgstr ""
+msgstr "选择"
 
 #: forms.py:62
 msgid "Click on the image for full size view of the first page."
-msgstr ""
+msgstr "点击图像查看第一页视图的实际尺寸"
 
 #: links.py:11
 msgid "smart links actions"
-msgstr ""
+msgstr "智能链接操作"
 
 #: links.py:12 links.py:14 models.py:23 views.py:130
 msgid "smart links"
-msgstr ""
+msgstr "智能链接"
 
 #: links.py:15
 msgid "smart links list"
-msgstr ""
+msgstr "智能链接列表"
 
 #: links.py:16
 msgid "create new smart link"
-msgstr ""
+msgstr "新建智能链接"
 
 #: links.py:17 links.py:22
 msgid "edit"
-msgstr ""
+msgstr "编辑"
 
 #: links.py:18 links.py:23
 msgid "delete"
-msgstr ""
+msgstr "删除"
 
 #: links.py:20
 msgid "conditions"
-msgstr ""
+msgstr "条件"
 
 #: links.py:21
 msgid "create condition"
-msgstr ""
+msgstr "创建条件"
 
 #: links.py:25
 msgid "ACLs"
-msgstr ""
+msgstr "访问控制列表"
 
 #: literals.py:7
 msgid "and"
-msgstr ""
+msgstr "和"
 
 #: literals.py:8
 msgid "or"
-msgstr ""
+msgstr "或"
 
 #: literals.py:12
 msgid "is equal to"
-msgstr ""
+msgstr "相等"
 
 #: literals.py:13
 msgid "is equal to (case insensitive)"
-msgstr ""
+msgstr "相等(大小写不敏感)"
 
 #: literals.py:14
 msgid "contains"
-msgstr ""
+msgstr "包含"
 
 #: literals.py:15
 msgid "contains (case insensitive)"
-msgstr ""
+msgstr "包含(大小写不敏感)"
 
 #: literals.py:16
 msgid "is in"
-msgstr ""
+msgstr "in"
 
 #: literals.py:17
 msgid "is greater than"
-msgstr ""
+msgstr "大于"
 
 #: literals.py:18
 msgid "is greater than or equal to"
-msgstr ""
+msgstr "大于等于"
 
 #: literals.py:19
 msgid "is less than"
-msgstr ""
+msgstr "小于"
 
 #: literals.py:20
 msgid "is less than or equal to"
-msgstr ""
+msgstr "小于等于"
 
 #: literals.py:21
 msgid "starts with"
-msgstr ""
+msgstr "开始"
 
 #: literals.py:22
 msgid "starts with (case insensitive)"
-msgstr ""
+msgstr "开始(大小写不敏感)"
 
 #: literals.py:23
 msgid "ends with"
-msgstr ""
+msgstr "结束"
 
 #: literals.py:24
 msgid "ends with (case insensitive)"
-msgstr ""
+msgstr "结束(大小写不敏感)"
 
 #: literals.py:25
 msgid "is in regular expression"
-msgstr ""
+msgstr "正则表达式"
 
 #: literals.py:26
 msgid "is in regular expression (case insensitive)"
-msgstr ""
+msgstr "正则表达式(大小写不敏感)"
 
 #: models.py:12
 msgid "title"
-msgstr ""
+msgstr "标题"
 
 #: models.py:13 views.py:133
 msgid "dynamic title"
-msgstr ""
+msgstr "动态标题"
 
 #: models.py:13 models.py:31
 msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
-msgstr ""
+msgstr "表达式将被当前选择的文档执行。在变量 `document`范围内，文档的元数据对变量 `metadata` 和文档属性来说是有效的。"
 
 #: models.py:14 models.py:33 views.py:134 views.py:229
 msgid "enabled"
-msgstr ""
+msgstr "可用"
 
 #: models.py:22 models.py:27 views.py:293 views.py:327
 msgid "smart link"
-msgstr ""
+msgstr "智能链接"
 
 #: models.py:28
 msgid "The inclusion is ignored for the first item."
-msgstr ""
+msgstr "第一项的包含将被忽略。"
 
 #: models.py:29
 msgid "foreign document data"
-msgstr ""
+msgstr "外部文档数据"
 
 #: models.py:29
 msgid ""
@@ -173,114 +174,114 @@ msgstr ""
 
 #: models.py:31
 msgid "expression"
-msgstr ""
+msgstr "表达式"
 
 #: models.py:32
 msgid "negated"
-msgstr ""
+msgstr "否定"
 
 #: models.py:32
 msgid "Inverts the logic of the operator."
-msgstr ""
+msgstr "颠倒操作符的逻辑"
 
 #: models.py:36
 msgid "not"
-msgstr ""
+msgstr "否"
 
 #: models.py:39
 msgid "link condition"
-msgstr ""
+msgstr "链接条件"
 
 #: models.py:40
 msgid "link conditions"
-msgstr ""
+msgstr "链接条件"
 
 #: permissions.py:7
 msgid "Smart links"
-msgstr ""
+msgstr "智能链接"
 
 #: permissions.py:9
 msgid "View existing smart links"
-msgstr ""
+msgstr "查看智能链接"
 
 #: permissions.py:10
 msgid "Create new smart links"
-msgstr ""
+msgstr "新建智能链接"
 
 #: permissions.py:11
 msgid "Delete smart links"
-msgstr ""
+msgstr "删除智能链接"
 
 #: permissions.py:12
 msgid "Edit smart links"
-msgstr ""
+msgstr "编辑智能链接"
 
 #: views.py:39
 msgid "No action selected."
-msgstr ""
+msgstr "未选择操作。"
 
 #: views.py:58
 #, python-format
 msgid "documents in smart link: %(group)s"
-msgstr ""
+msgstr "智能链接%(group)s的文档"
 
 #: views.py:74
 #, python-format
 msgid "Smart link query error: %s"
-msgstr ""
+msgstr "智能链接查询错误：%s"
 
 #: views.py:96
 #, python-format
 msgid "smart links (%s)"
-msgstr ""
+msgstr "智能链接 (%s)"
 
 #: views.py:110
 msgid "There no defined smart links for the current document."
-msgstr ""
+msgstr "当前文档没有定义智能链接"
 
 #: views.py:150
 #, python-format
 msgid "Smart link: %s created successfully."
-msgstr ""
+msgstr "智能链接: %s创建成功"
 
 #: views.py:157
 msgid "Create new smart link"
-msgstr ""
+msgstr "新建智能链接"
 
 #: views.py:173
 #, python-format
 msgid "Smart link: %s edited successfully."
-msgstr ""
+msgstr "智能链接: %s编辑成功"
 
 #: views.py:181
 #, python-format
 msgid "Edit smart link: %s"
-msgstr ""
+msgstr "编辑智能链接: %s"
 
 #: views.py:199
 #, python-format
 msgid "Smart link: %s deleted successfully."
-msgstr ""
+msgstr "智能链接: %s删除成功"
 
 #: views.py:201
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr ""
+msgstr "删除智能链接%(smart_link)s出错： %(exception)s."
 
 #: views.py:210
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
-msgstr ""
+msgstr "确定要删除智能链接: %s么?"
 
 #: views.py:226
 #, python-format
 msgid "conditions for smart link: %s"
-msgstr ""
+msgstr "智能链接: %s的条件"
 
 #: views.py:251
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
-msgstr ""
+msgstr "智能链接条件: \"%s\"创建成功。"
 
 #: views.py:258
 #, python-format
@@ -298,7 +299,7 @@ msgstr ""
 
 #: views.py:294 views.py:328
 msgid "condition"
-msgstr ""
+msgstr "条件"
 
 #: views.py:314
 #, python-format
@@ -323,7 +324,7 @@ msgstr ""
 
 #: templates/smart_links_help.html:3
 msgid "What are smart links?"
-msgstr ""
+msgstr "什么是智能链接"
 
 #: templates/smart_links_help.html:4
 msgid ""

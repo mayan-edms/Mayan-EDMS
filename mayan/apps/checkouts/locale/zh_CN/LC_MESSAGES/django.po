@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Ford Guo <agile.guo@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2013-08-08 14:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2014-09-28 02:59+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,79 +21,79 @@ msgstr ""
 
 #: __init__.py:40
 msgid "Check expired check out documents and checks them in."
-msgstr ""
+msgstr "检查过期的检出文档，并且将他们签入。"
 
 #: events.py:5
 msgid "Document checked out"
-msgstr ""
+msgstr "文档检出"
 
 #: events.py:6
 #, python-format
 msgid "Document \"%(document)s\" checked out by %(fullname)s."
-msgstr ""
+msgstr "文档\"%(document)s\"由%(fullname)s检出"
 
 #: events.py:12
 msgid "Document checked in"
-msgstr ""
+msgstr "文档签入"
 
 #: events.py:13
 #, python-format
 msgid "Document \"%(document)s\" checked in by %(fullname)s."
-msgstr ""
+msgstr "文档 \"%(document)s\"由%(fullname)s签入"
 
 #: events.py:19
 msgid "Document automatically checked in"
-msgstr ""
+msgstr "文档自动签入"
 
 #: events.py:20
 #, python-format
 msgid "Document \"%(document)s\" automatically checked in."
-msgstr ""
+msgstr "文档\"%(document)s\"自动签入"
 
 #: events.py:25
 msgid "Document forcefully checked in"
-msgstr ""
+msgstr "文档强制签入"
 
 #: events.py:26
 #, python-format
 msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr ""
+msgstr "文档\"%(document)s\"由%(fullname)s强制签入。"
 
 #: links.py:16
 msgid "checkouts"
-msgstr ""
+msgstr "检出"
 
 #: links.py:17
 msgid "check out document"
-msgstr ""
+msgstr "检出文档"
 
 #: links.py:18
 msgid "check in document"
-msgstr ""
+msgstr "签入文档"
 
 #: links.py:19
 msgid "check in/out"
-msgstr ""
+msgstr "检出／签入"
 
 #: literals.py:14
 msgid "checked out"
-msgstr ""
+msgstr "检出"
 
 #: literals.py:15
 msgid "checked in/available"
-msgstr ""
+msgstr "签入／有效"
 
 #: models.py:24 views.py:132
 msgid "document"
-msgstr ""
+msgstr "文档"
 
 #: models.py:25
 msgid "check out date and time"
-msgstr ""
+msgstr "检出日期和时间"
 
 #: models.py:26
 msgid "check out expiration date and time"
-msgstr ""
+msgstr "检出过期的日期和时间"
 
 #: models.py:26
 msgid "Amount of time to hold the document checked out in minutes."
@@ -100,7 +101,7 @@ msgstr ""
 
 #: models.py:31
 msgid "block new version upload"
-msgstr ""
+msgstr "阻止新版本上传"
 
 #: models.py:31
 msgid "Do not allow new version of this document to be uploaded."
@@ -108,27 +109,27 @@ msgstr ""
 
 #: models.py:54
 msgid "document checkout"
-msgstr ""
+msgstr "文档检出"
 
 #: models.py:55
 msgid "document checkouts"
-msgstr ""
+msgstr "文档检出"
 
 #: permissions.py:7
 msgid "Document checkout"
-msgstr ""
+msgstr "文档检出"
 
 #: permissions.py:9
 msgid "Check out documents"
-msgstr ""
+msgstr "检出文档"
 
 #: permissions.py:10
 msgid "Check in documents"
-msgstr ""
+msgstr "签入文档"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr ""
+msgstr "强制文档签入"
 
 #: permissions.py:12
 msgid "Allow overriding check out restrictions"
@@ -136,52 +137,52 @@ msgstr ""
 
 #: views.py:32
 msgid "checked out documents"
-msgstr ""
+msgstr "检出文档"
 
 #: views.py:35
 msgid "checkout user"
-msgstr ""
+msgstr "检出用户"
 
 #: views.py:36
 msgid "checkout time and date"
-msgstr ""
+msgstr "检出日期和时间"
 
 #: views.py:37
 msgid "checkout expiration"
-msgstr ""
+msgstr "检出过期"
 
 #: views.py:54
 #, python-format
 msgid "User: %s"
-msgstr ""
+msgstr "用户：%s"
 
 #: views.py:55
 #, python-format
 msgid "Check out time: %s"
-msgstr ""
+msgstr "检出时间：%s"
 
 #: views.py:56
 #, python-format
 msgid "Check out expiration: %s"
-msgstr ""
+msgstr "检出过期：%s"
 
 #: views.py:57
 #, python-format
 msgid "New versions allowed: %s"
-msgstr ""
+msgstr "允许新版本：%s"
 
 #: views.py:57
 msgid "yes"
-msgstr ""
+msgstr "是"
 
 #: views.py:57
 msgid "no"
-msgstr ""
+msgstr "否"
 
 #: views.py:62
 #, python-format
 msgid "Check out details for document: %s"
-msgstr ""
+msgstr "文档：%s的检出信息"
 
 #: views.py:82
 #, python-format
@@ -235,15 +236,15 @@ msgstr ""
 
 #: widgets.py:31
 msgid "Days"
-msgstr ""
+msgstr "天"
 
 #: widgets.py:32
 msgid "Hours"
-msgstr ""
+msgstr "小时"
 
 #: widgets.py:33
 msgid "Minutes"
-msgstr ""
+msgstr "分钟"
 
 #: widgets.py:63
 msgid "Enter a valid number of days."
