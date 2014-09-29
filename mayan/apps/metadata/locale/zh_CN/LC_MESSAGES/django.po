@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-09-24 07:41+0000\n"
+"PO-Revision-Date: 2014-09-29 03:20+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -130,7 +130,7 @@ msgstr "查找"
 
 #: models.py:24
 msgid "Enter a string to be evaluated that returns an iterable."
-msgstr ""
+msgstr "请输入一个返回可以迭代的字符串。"
 
 #: models.py:38 models.py:69 views.py:325 views.py:368
 msgid "metadata type"
@@ -235,11 +235,11 @@ msgstr "查看元数据集"
 
 #: views.py:39 views.py:189
 msgid "The selected document doesn't have any metadata."
-msgstr ""
+msgstr "选择的文档无元数据"
 
 #: views.py:50 views.py:130 views.py:201
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "必须至少提供一个文档"
 
 #: views.py:92
 #, python-format
@@ -277,12 +277,12 @@ msgstr ""
 #: views.py:173
 #, python-format
 msgid "Add metadata type to document: %s"
-msgstr ""
+msgstr "添加元数据类型到文档：%s"
 
 #: views.py:175
 #, python-format
 msgid "Add metadata type to documents: %s"
-msgstr ""
+msgstr "添加元数据类型到文档：%s"
 
 #: views.py:239
 #, python-format
@@ -314,7 +314,7 @@ msgstr ""
 
 #: views.py:293
 msgid "internal name"
-msgstr ""
+msgstr "内部名"
 
 #: views.py:313
 msgid "Metadata type edited successfully"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: views.py:342
 msgid "create metadata type"
-msgstr ""
+msgstr "创建元数据类型"
 
 #: views.py:360
 #, python-format
@@ -383,7 +383,7 @@ msgstr ""
 
 #: views.py:482
 msgid "create metadata set"
-msgstr ""
+msgstr "创建元数据集"
 
 #: views.py:500
 #, python-format
@@ -402,21 +402,21 @@ msgstr ""
 
 #: views.py:532 views.py:550
 msgid "Metadata types"
-msgstr ""
+msgstr "元数据类型"
 
 #: views.py:588
 #, python-format
 msgid "non members of document type: %s"
-msgstr ""
+msgstr "文档类型： %s无成员"
 
 #: views.py:589
 #, python-format
 msgid "members of document type: %s"
-msgstr ""
+msgstr "文档类型： %s的成员"
 
 #: templates/metadata_set_help.html:3
 msgid "What are metadata sets?"
-msgstr ""
+msgstr "什么是元数据集？"
 
 #: templates/metadata_set_help.html:4
 msgid ""
@@ -427,7 +427,7 @@ msgstr ""
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"
-msgstr ""
+msgstr "什么是元数据类型？"
 
 #: templates/metadata_type_help.html:4
 msgid ""
@@ -440,7 +440,7 @@ msgid ""
 " will have initially, and the lookup value turns an instance of a metadata "
 "of this type into a choice list which options are the result of the lookup's"
 " code execution."
-msgstr ""
+msgstr "一个元数据类型定义了跟文档相关的某些特性值。例如：一个客户名，日期，或者一个包含几个文档的的项目。一个元数据类型的名字是跟其他模块（比如索引模块）交互的内部标识，而标题的值才是显示给用户看的，缺省值是此类型实例的初始值，查找值则是将此类型实例转变成一个选择列表。"
 
 #~ msgid " Available models: %s"
 #~ msgstr " Available models: %s"

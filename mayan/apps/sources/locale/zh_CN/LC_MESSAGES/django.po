@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2014-09-28 04:05+0000\n"
+"PO-Revision-Date: 2014-09-28 08:14+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -340,71 +340,71 @@ msgstr "文件上传成功。"
 
 #: views.py:184
 msgid "File uncompressed successfully and uploaded as individual files."
-msgstr ""
+msgstr "文件解压缩成功，并且上传为单独文件。"
 
 #: views.py:187
 msgid "File was not a compressed file, uploaded as it was."
-msgstr ""
+msgstr "文件不是压缩文件，将原封不动上传。"
 
 #: views.py:191 views.py:272
 msgid "New version uploads are not allowed for this document."
-msgstr ""
+msgstr "文档不允许上传新版本。"
 
 #: views.py:195 views.py:276
 #, python-format
 msgid "Unhandled exception: %s"
-msgstr ""
+msgstr "未知异常：%s"
 
 #: views.py:204
 #, python-format
 msgid "upload a new version from source: %s"
-msgstr ""
+msgstr "从数据源上传一个新版本：%s"
 
 #: views.py:206
 #, python-format
 msgid "upload a local document from source: %s"
-msgstr ""
+msgstr "从数据源上传一个本地文档：%s"
 
 #: views.py:253
 #, python-format
 msgid "Document version from staging file: %s, uploaded successfully."
-msgstr ""
+msgstr "暂存文件的文档版本：%s上传成功。"
 
 #: views.py:256
 #, python-format
 msgid "Staging file: %s, uploaded successfully."
-msgstr ""
+msgstr "暂存文件：%s上传成功。"
 
 #: views.py:259
 #, python-format
 msgid ""
 "Staging file: %s, uncompressed successfully and uploaded as individual "
 "files."
-msgstr ""
+msgstr "暂存文件：%s解压缩成功，并且上传为单独文件。"
 
 #: views.py:262
 #, python-format
 msgid "Staging file: %s, was not compressed, uploaded as a single file."
-msgstr ""
+msgstr "暂存文件：%s未压缩，上传为一个单独文件。"
 
 #: views.py:266
 #, python-format
 msgid "Staging file: %s, deleted successfully."
-msgstr ""
+msgstr "暂存文件：%s删除成功。"
 
 #: views.py:290
 #, python-format
 msgid "upload a new version from staging source: %s"
-msgstr ""
+msgstr "从暂存数据源：%s中上传一个新版本"
 
 #: views.py:292
 #, python-format
 msgid "upload a document from staging source: %s"
-msgstr ""
+msgstr "从暂存数据源：%s中上传一个文档"
 
 #: views.py:305
 msgid "files in staging path"
-msgstr ""
+msgstr "暂存路径中的文件"
 
 #: views.py:337
 msgid "Current document type"
@@ -420,26 +420,26 @@ msgstr "当前元数据"
 
 #: views.py:382
 msgid "Staging file delete successfully."
-msgstr ""
+msgstr "暂存文件删除成功。"
 
 #: views.py:384
 #, python-format
 msgid "Staging file delete error; %s."
-msgstr ""
+msgstr "暂存文件删除出错：%s"
 
 #: views.py:444
 msgid "Source edited successfully"
-msgstr ""
+msgstr "数据源编辑成功"
 
 #: views.py:447
 #, python-format
 msgid "Error editing source; %s"
-msgstr ""
+msgstr "编辑数据源出错：%s"
 
 #: views.py:452
 #, python-format
 msgid "edit source: %s"
-msgstr ""
+msgstr "编辑数据源：%s"
 
 #: views.py:457 views.py:497 views.py:559 views.py:600 views.py:630
 #: views.py:673
@@ -454,26 +454,26 @@ msgstr "数据源\"%s\"删除成功。"
 #: views.py:488
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
-msgstr ""
+msgstr "删除数据源：\"%(source)s\"出错，%(error)s"
 
 #: views.py:495
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
-msgstr ""
+msgstr "确定要删除数据源：%s么？"
 
 #: views.py:527
 msgid "Source created successfully"
-msgstr ""
+msgstr "数据源创建成功"
 
 #: views.py:530
 #, python-format
 msgid "Error creating source; %s"
-msgstr ""
+msgstr "创建数据源：%s出错"
 
 #: views.py:535
 #, python-format
 msgid "Create new source of type: %s"
-msgstr ""
+msgstr "新建数据源类型:%s"
 
 #: views.py:557
 #, python-format
