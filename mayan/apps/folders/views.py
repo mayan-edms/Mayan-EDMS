@@ -230,7 +230,7 @@ def document_folder_list(request, document_id):
 
     return folder_list(
         request,
-        queryset=Folder.objects.filter(folderdocument__document=document),
+        queryset=document.folders.all(),
         extra_context={
             'title': _(u'folders containing: %s') % document,
             'object': document,

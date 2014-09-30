@@ -48,6 +48,11 @@ class_permissions(Document, [
     PERMISSION_FOLDER_REMOVE_DOCUMENT,
 ])
 
+def document_folders(self):
+    return Folder.objects.filter(folderdocument__document=self)
+
+Document.add_to_class('folders', property(document_folders))
+
 endpoint = APIEndPoint('folders')
 endpoint.register_urls(api_urls)
 endpoint.add_endpoint('folder-list', _(u'Returns a list of all the folders.'))
