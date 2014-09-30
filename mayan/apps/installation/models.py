@@ -74,29 +74,32 @@ class Installation(SingletonModel):
     def binary_dependencies(self):
         namespace = PropertyNamespace('bins', _(u'Binary dependencies'))
 
-        tesseract = sh.Command(TESSERACT_PATH)
         try:
-            namespace.add_property('tesseract', _(u'tesseract version'), tesseract('-v').stderr, report=True)
+            tesseract = sh.Command(TESSERACT_PATH)
         except sh.CommandNotFound:
             namespace.add_property('tesseract', _(u'tesseract version'), _(u'not found'), report=True)
         except Exception:
             namespace.add_property('tesseract', _(u'tesseract version'), _(u'error getting version'), report=True)
+        else:
+            namespace.add_property('tesseract', _(u'tesseract version'), tesseract('-v').stderr, report=True)
 
-        unpaper = sh.Command(UNPAPER_PATH)
         try:
-            namespace.add_property('unpaper', _(u'unpaper version'), unpaper('-V').stdout, report=True)
+            unpaper = sh.Command(UNPAPER_PATH)
         except sh.CommandNotFound:
             namespace.add_property('unpaper', _(u'unpaper version'), _(u'not found'), report=True)
         except Exception:
             namespace.add_property('unpaper', _(u'unpaper version'), _(u'error getting version'), report=True)
+        else:
+            namespace.add_property('unpaper', _(u'unpaper version'), unpaper('-V').stdout, report=True)
 
-        pdftotext = sh.Command(PDFTOTEXT_PATH)
         try:
-            namespace.add_property('pdftotext', _(u'pdftotext version'), pdftotext('-v').stderr, report=True)
+            pdftotext = sh.Command(PDFTOTEXT_PATH)
         except sh.CommandNotFound:
             namespace.add_property('pdftotext', _(u'pdftotext version'), _(u'not found'), report=True)
         except Exception:
             namespace.add_property('pdftotext', _(u'pdftotext version'), _(u'error getting version'), report=True)
+        else:
+            namespace.add_property('pdftotext', _(u'pdftotext version'), pdftotext('-v').stderr, report=True)
 
     def mayan_properties(self):
         namespace = PropertyNamespace('mayan', _(u'Mayan EDMS'))
