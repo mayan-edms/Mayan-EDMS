@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-09-27 04:39+0000\n"
+"PO-Revision-Date: 2014-09-30 01:34+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -170,7 +170,7 @@ msgstr "外部文档数据"
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
-msgstr ""
+msgstr "它代表了所有其他文档的元数据。有效的对象有： `document.<attribute>` 和 `metadata.<metadata_type_name>`."
 
 #: models.py:31
 msgid "expression"
@@ -286,16 +286,16 @@ msgstr "智能链接条件: \"%s\"创建成功。"
 #: views.py:258
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr ""
+msgstr "新建条件到智能链接：\"%s\""
 
 #: views.py:280
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
-msgstr ""
+msgstr "智能链接条件: \"%s\"编辑成功。"
 
 #: views.py:287
 msgid "Edit smart link condition"
-msgstr ""
+msgstr "编辑智能链接条件"
 
 #: views.py:294 views.py:328
 msgid "condition"
@@ -304,23 +304,23 @@ msgstr "条件"
 #: views.py:314
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
-msgstr ""
+msgstr "智能链接条件: \"%s\"删除成功。"
 
 #: views.py:316
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; "
 "%(exception)s."
-msgstr ""
+msgstr "删除智能链接条件：%(smart_link_condition)s出错： %(exception)s."
 
 #: views.py:330
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
+msgstr "确定要删除智能链接条件: \"%s\"么?"
 
 #: conf/settings.py:11
 msgid "Show smart link that don't return any documents."
-msgstr ""
+msgstr "显示没有任何文档的智能链接"
 
 #: templates/smart_links_help.html:3
 msgid "What are smart links?"
@@ -333,4 +333,4 @@ msgid ""
 "source, the results of these queries are a list of documents that relate in "
 "some manner to the document being displayed and allow users the ability to "
 "jump to and from linked documents very easily."
-msgstr ""
+msgstr "智能链接是以当前文档作为数据库查询条件的一个条件声明集合，这些查询的结构是某种相关的文档列表，并且允许用户轻松的相互直接跳转。"

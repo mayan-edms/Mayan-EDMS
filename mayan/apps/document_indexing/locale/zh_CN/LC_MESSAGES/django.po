@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-28 09:29+0000\n"
+"PO-Revision-Date: 2014-09-30 01:43+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -171,7 +171,7 @@ msgstr "连接文档"
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
-msgstr ""
+msgstr "检查当前节点是否为文档容器，而不是作为别处节点的父节点。"
 
 #: models.py:83 models.py:89
 msgid "index template node"
@@ -276,15 +276,15 @@ msgstr "确定要删除索引：%s么?"
 #: views.py:162
 #, python-format
 msgid "tree template nodes for index: %s"
-msgstr ""
+msgstr "树模版节点的索引: %s"
 
 #: views.py:165
 msgid "level"
-msgstr ""
+msgstr "级"
 
 #: views.py:167
 msgid "has document links?"
-msgstr ""
+msgstr "是否有文档链接？"
 
 #: views.py:189
 #, python-format
@@ -298,34 +298,34 @@ msgstr "索引：%s的文档类型"
 
 #: views.py:213
 msgid "Index template node created successfully."
-msgstr ""
+msgstr "索引模版节点创建成功"
 
 #: views.py:219
 msgid "create child node"
-msgstr ""
+msgstr "创建子节点"
 
 #: views.py:239
 msgid "Index template node edited successfully"
-msgstr ""
+msgstr "索引模版节点编辑成功"
 
 #: views.py:245
 #, python-format
 msgid "edit index template node: %s"
-msgstr ""
+msgstr "编辑索引模版节点: %s"
 
 #: views.py:252 views.py:291 views.py:358
 msgid "node"
-msgstr ""
+msgstr "节点"
 
 #: views.py:273
 #, python-format
 msgid "Node: %s deleted successfully."
-msgstr ""
+msgstr "节点: %s删除成功"
 
 #: views.py:275
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
-msgstr ""
+msgstr "节点: %(node)s删除出错：: %(error)s"
 
 #: views.py:284
 #, python-format

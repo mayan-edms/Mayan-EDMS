@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-23 07:43+0000\n"
+"PO-Revision-Date: 2014-09-29 15:44+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -79,11 +79,11 @@ msgstr "搜索"
 
 #: conf/settings.py:12
 msgid "Maximum amount search hits to fetch and display."
-msgstr ""
+msgstr "搜索的最大查询和显示数量"
 
 #: conf/settings.py:13
 msgid "Maximum number of search queries to remember per user."
-msgstr ""
+msgstr "每一个用户所能保存的最大查询数"
 
 #: templates/search_help.html:3
 msgid "Help"
@@ -94,7 +94,7 @@ msgstr "帮助"
 msgid ""
 "Enter the desired search keywords separated by space.  Only the top "
 "%(search_results_limit)s results will be available."
-msgstr ""
+msgstr "输入要查询的关键字，以空格分割。只显示前 %(search_results_limit)s的结果。"
 
 #: templates/search_results.html:3
 msgid "Search results"

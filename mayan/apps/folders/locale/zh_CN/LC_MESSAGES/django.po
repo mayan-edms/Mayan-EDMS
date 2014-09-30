@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-23 14:18+0000\n"
+"PO-Revision-Date: 2014-09-29 15:50+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -177,31 +177,31 @@ msgstr "至少要有一个文档"
 #: views.py:196
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr ""
+msgstr "文档 %(document)s 成功添加到文件夹: %(folder)s。"
 
 #: views.py:199
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
-msgstr ""
+msgstr "文档: %(document)s已经存在于文件夹: %(folder)s."
 
 #: views.py:215
 #, python-format
 msgid "Add document: %s to folder."
-msgstr ""
+msgstr "添加文档: %s 到文件夹。"
 
 #: views.py:217
 #, python-format
 msgid "Add documents: %s to folder."
-msgstr ""
+msgstr "添加文档: %s 到文件夹。"
 
 #: views.py:235
 #, python-format
 msgid "folders containing: %s"
-msgstr ""
+msgstr "文件夹包含: %s"
 
 #: views.py:251
 msgid "Must provide at least one folder document."
-msgstr ""
+msgstr "必须提供至少一个文件夹文档"
 
 #: views.py:269
 #, python-format
@@ -218,14 +218,14 @@ msgstr "文档： %(document)s 删除错误：%(error)s"
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr ""
+msgstr "确定要从文件夹 \"%(folder)s\"移除文档 %(document)s么？"
 
 #: views.py:288
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder"
 " \"%(folder)s\"?"
-msgstr ""
+msgstr "确定要从文件夹 \"%(folder)s\"移除文档 %(documents)s么？"
 
 #: templates/folders_help.html:3
 msgid "What are folders?"
@@ -237,7 +237,7 @@ msgid ""
 "individual users create their own document organization methods.  Folders "
 "created by one user and the documents contained by them don't affect any "
 "other user folders or documents."
-msgstr ""
+msgstr "这些文件夹可被描述为用户的文件夹。这是让单独用户创建自己文档结构的一种方法。一个用户创建的文件夹及其所包含的文档不会影响其他用户的文件夹和文档。"
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"

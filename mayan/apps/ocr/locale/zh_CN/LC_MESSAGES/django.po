@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-09-26 03:14+0000\n"
+"PO-Revision-Date: 2014-09-29 15:41+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -304,15 +304,15 @@ msgstr "文档页面内容清除出错：%s"
 msgid ""
 "Amount of seconds to delay OCR of documents to allow for the node's storage "
 "replication overhead."
-msgstr ""
+msgstr "当节点的复制存储超限，允许扫描输入文档延时的秒数。"
 
 #: conf/settings.py:14
 msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr ""
+msgstr "一个节点所能执行的最大并发文档数"
 
 #: conf/settings.py:15
 msgid "Automatically queue newly created documents for OCR."
-msgstr ""
+msgstr "自动将扫描输入作为新建文档队列"
 
 #: conf/settings.py:17
 msgid "File path to unpaper program."

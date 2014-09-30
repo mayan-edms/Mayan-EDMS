@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-09-29 03:20+0000\n"
+"PO-Revision-Date: 2014-09-30 01:49+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -244,35 +244,35 @@ msgstr "必须至少提供一个文档"
 #: views.py:92
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
-msgstr ""
+msgstr "编辑文档%(document)s的元数据出错：%(error)s"
 
 #: views.py:95
 #, python-format
 msgid "Metadata for document %s edited successfully."
-msgstr ""
+msgstr "文档 %s 的元数据编辑成功。"
 
 #: views.py:106
 #, python-format
 msgid "Edit metadata for document: %s"
-msgstr ""
+msgstr "编辑文档 %s 元数据"
 
 #: views.py:108
 #, python-format
 msgid "Edit metadata for documents: %s"
-msgstr ""
+msgstr "编辑文档 %s 元数据"
 
 #: views.py:147
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
-msgstr ""
+msgstr "元数据类型: %(metadata_type)s成功加入到文档%(document)s"
 
 #: views.py:150
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
+msgstr "元数据类型: %(metadata_type)s 已经存在于文档%(document)s."
 
 #: views.py:173
 #, python-format
@@ -289,28 +289,28 @@ msgstr "添加元数据类型到文档：%s"
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
-msgstr ""
+msgstr "成功从文档: %(document)s移除元数据类型: %(metadata_type)s"
 
 #: views.py:242
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
-msgstr ""
+msgstr "从文档: %(document)s移除元数据类型: %(metadata_type)s 出错。"
 
 #: views.py:254
 #, python-format
 msgid "Remove metadata types from document: %s"
-msgstr ""
+msgstr "从文档: %s移除元数据类型"
 
 #: views.py:256
 #, python-format
 msgid "Remove metadata types from documents: %s"
-msgstr ""
+msgstr "从文档: %s移除元数据类型"
 
 #: views.py:275
 #, python-format
 msgid "metadata for: %s"
-msgstr ""
+msgstr "%s的元数据"
 
 #: views.py:293
 msgid "internal name"
@@ -318,21 +318,21 @@ msgstr "内部名"
 
 #: views.py:313
 msgid "Metadata type edited successfully"
-msgstr ""
+msgstr "元数据类型编辑成功"
 
 #: views.py:316
 #, python-format
 msgid "Error editing metadata type; %s"
-msgstr ""
+msgstr "编辑元数据类型 %s出错"
 
 #: views.py:322
 #, python-format
 msgid "edit metadata type: %s"
-msgstr ""
+msgstr "编辑元数据类型: %s"
 
 #: views.py:336
 msgid "Metadata type created successfully"
-msgstr ""
+msgstr "元数据类型创建成功"
 
 #: views.py:342
 msgid "create metadata type"
@@ -341,45 +341,45 @@ msgstr "创建元数据类型"
 #: views.py:360
 #, python-format
 msgid "Metadata type: %s deleted successfully."
-msgstr ""
+msgstr "元数据类型: %s 删除成功。"
 
 #: views.py:362
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
-msgstr ""
+msgstr "元数据类型: %(metadata_type)s删除失败：%(error)s"
 
 #: views.py:373
 #, python-format
 msgid "Are you sure you wish to delete the metadata type: %s?"
-msgstr ""
+msgstr "确定要删除元数据类型：%s么?"
 
 #: views.py:410
 msgid "Metadata set edited successfully"
-msgstr ""
+msgstr "元数据集编辑成功"
 
 #: views.py:413
 #, python-format
 msgid "Error editing metadata set; %s"
-msgstr ""
+msgstr "编辑元数据集%s出错"
 
 #: views.py:419
 #, python-format
 msgid "edit metadata set: %s"
-msgstr ""
+msgstr "编辑元数据集: %s"
 
 #: views.py:460
 #, python-format
 msgid "non members of metadata set: %s"
-msgstr ""
+msgstr "元数据集: %s无成员"
 
 #: views.py:461
 #, python-format
 msgid "members of metadata set: %s"
-msgstr ""
+msgstr "元数据集: %s的成员"
 
 #: views.py:476
 msgid "Metadata set created successfully"
-msgstr ""
+msgstr "元数据集创建成功"
 
 #: views.py:482
 msgid "create metadata set"
@@ -388,17 +388,17 @@ msgstr "创建元数据集"
 #: views.py:500
 #, python-format
 msgid "Metadata set: %s deleted successfully."
-msgstr ""
+msgstr "元数据集: %s删除成功"
 
 #: views.py:503
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
-msgstr ""
+msgstr "元数据集: %(metadata_set)s删除失败： %(error)s"
 
 #: views.py:513
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
-msgstr ""
+msgstr "确定要删除元数据集: %s么?"
 
 #: views.py:532 views.py:550
 msgid "Metadata types"
@@ -423,7 +423,7 @@ msgid ""
 "A metadata set is a group of one or more metadata types.  Metadata sets are "
 "useful when creating new documents; selecing a metadata set automatically "
 "attaches it's member metadata types to said document."
-msgstr ""
+msgstr "元数据集是一组元数据类型。元数据集用于新建文档的时候，选择一个元数据集将自动添加元数据类型成员到文档。"
 
 #: templates/metadata_type_help.html:3
 msgid "What are metadata types?"

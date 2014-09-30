@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-28 09:50+0000\n"
+"PO-Revision-Date: 2014-09-30 02:57+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -768,50 +768,50 @@ msgstr "重复文档"
 msgid ""
 "Page count update complete.  Documents processed: %(total)d, documents with "
 "changed page count: %(change)d"
-msgstr ""
+msgstr "页数更新完成。文档处理了%(total)d，其中变化页数的文档: %(change)d"
 
 #: views.py:467
 #, python-format
 msgid ""
 "Are you sure you wish to update the page count for the office documents "
 "(%d)?"
-msgstr ""
+msgstr "确定要更新办公文档的页数(%d)么？"
 
 #: views.py:499
 #, python-format
 msgid ""
 "All the page transformations for document: %s, have been deleted "
 "successfully."
-msgstr ""
+msgstr "文档: %s的变换页数已经成功删除"
 
 #: views.py:501
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
+msgstr "删除文档: %(document)s变换页数失败%(error)s"
 
 #: views.py:507
 msgid "document transformation"
-msgstr ""
+msgstr "文档变换"
 
 #: views.py:516
 #, python-format
 msgid ""
 "Are you sure you wish to clear all the page transformations for document: "
 "%s?"
-msgstr ""
+msgstr "确定要清除文档: %s的所有变换页么？"
 
 #: views.py:518
 #, python-format
 msgid ""
 "Are you sure you wish to clear all the page transformations for documents: "
 "%s?"
-msgstr ""
+msgstr "确定要清除文档: %s的所有变换页么？"
 
 #: views.py:546
 msgid "missing documents"
-msgstr ""
+msgstr "缺失文档"
 
 #: views.py:562 views.py:604
 #, python-format
@@ -833,7 +833,7 @@ msgstr "此文档中无更多页"
 
 #: views.py:667
 msgid "You are already at the first page of this document"
-msgstr ""
+msgstr "你已经在此文档的第一页了"
 
 #: views.py:812
 #, python-format
@@ -847,110 +847,110 @@ msgstr "文档类型编辑成功"
 #: views.py:887
 #, python-format
 msgid "Error editing document type; %s"
-msgstr ""
+msgstr "编辑文档类型 %s出错"
 
 #: views.py:892
 #, python-format
 msgid "edit document type: %s"
-msgstr ""
+msgstr "编辑文档类型: %s"
 
 #: views.py:915
 #, python-format
 msgid "Document type: %s deleted successfully."
-msgstr ""
+msgstr "文档类型: %s删除成功"
 
 #: views.py:917
 #, python-format
 msgid "Document type: %(document_type)s delete error: %(error)s"
-msgstr ""
+msgstr "文档类型: %(document_type)s删除失败: %(error)s"
 
 #: views.py:932
 #, python-format
 msgid "Are you sure you wish to delete the document type: %s?"
-msgstr ""
+msgstr "确定要删除文档类型: %s么？"
 
 #: views.py:933
 msgid ""
 "The document type of all documents using this document type will be set to "
 "none."
-msgstr ""
+msgstr "使用这个文档类型的所有文档的文档类型将被置为NONE"
 
 #: views.py:949
 msgid "Document type created successfully"
-msgstr ""
+msgstr "文档类型创建成功"
 
 #: views.py:952
 #, python-format
 msgid "Error creating document type; %(error)s"
-msgstr ""
+msgstr "创建文档类型失败 %(error)s"
 
 #: views.py:970
 #, python-format
 msgid "filenames for document type: %s"
-msgstr ""
+msgstr "文档类型: %s的文件名"
 
 #: views.py:1001
 msgid "Document type filename edited successfully"
-msgstr ""
+msgstr "文档类型文件名编辑成功"
 
 #: views.py:1004
 #, python-format
 msgid "Error editing document type filename; %s"
-msgstr ""
+msgstr "编辑文档类型文件名%s失败"
 
 #: views.py:1009
 #, python-format
 msgid "edit filename \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
+msgstr "从文档类型 \"%(document_type)s\"编辑文件名\"%(filename)s\" "
 
 #: views.py:1018 views.py:1044 views.py:1052
 msgid "document type filename"
-msgstr ""
+msgstr "文档类型文件名"
 
 #: views.py:1036
 #, python-format
 msgid "Document type filename: %s deleted successfully."
-msgstr ""
+msgstr "文档类型文件名: %s删除成功"
 
 #: views.py:1038
 #, python-format
 msgid ""
 "Document type filename: %(document_type_filename)s delete error: %(error)s"
-msgstr ""
+msgstr "文档类型文件名 %(document_type_filename)s删除失败: %(error)s"
 
 #: views.py:1054
 #, python-format
 msgid ""
 "Are you sure you wish to delete the filename: %(filename)s, from document "
 "type \"%(document_type)s\"?"
-msgstr ""
+msgstr "确定要删除文档类型 \"%(document_type)s\"的文件名: %(filename)s么？"
 
 #: views.py:1079
 msgid "Document type filename created successfully"
-msgstr ""
+msgstr "文档类型文件名创建成功"
 
 #: views.py:1082
 #, python-format
 msgid "Error creating document type filename; %(error)s"
-msgstr ""
+msgstr "创建文档类型文件名失败 %(error)s"
 
 #: views.py:1088
 #, python-format
 msgid "create filename for document type: %s"
-msgstr ""
+msgstr "创建文档类型: %s的文件名"
 
 #: views.py:1106
 msgid "Document image cache cleared successfully"
-msgstr ""
+msgstr "清除文档图像缓存成功"
 
 #: views.py:1108
 #, python-format
 msgid "Error clearing document image cache; %s"
-msgstr ""
+msgstr "清除文档图像缓存失败 %s"
 
 #: views.py:1114
 msgid "Are you sure you wish to clear the document image cache?"
-msgstr ""
+msgstr "确定要清除文档图像缓存么？"
 
 #: views.py:1131
 #, python-format
@@ -971,59 +971,59 @@ msgstr "编码"
 
 #: views.py:1180
 msgid "Document version reverted successfully"
-msgstr ""
+msgstr "文档版本恢复成功"
 
 #: views.py:1182
 #, python-format
 msgid "Error reverting document version; %s"
-msgstr ""
+msgstr "恢复文档版本失败%s"
 
 #: views.py:1189
 msgid "Are you sure you wish to revert to this version?"
-msgstr ""
+msgstr "确定要恢复此版本么？"
 
 #: views.py:1190
 msgid "All later version after this one will be deleted too."
-msgstr ""
+msgstr "此版本以后的所有版本将被删除"
 
 #: views.py:1210
 #, python-format
 msgid "transformations for: %s"
-msgstr ""
+msgstr "%s的变换"
 
 #: views.py:1239
 msgid "Document page transformation created successfully."
-msgstr ""
+msgstr "文档 页面变换创建成功"
 
 #: views.py:1248
 #, python-format
 msgid "Create new transformation for page: %(page)s of document: %(document)s"
-msgstr ""
+msgstr "新建文档: %(document)s页: %(page)s的变换"
 
 #: views.py:1267
 msgid "Document page transformation edited successfully."
-msgstr ""
+msgstr "文档页变换编辑成功"
 
 #: views.py:1280
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(document_page)s"
-msgstr ""
+msgstr "编辑文档页: %(document_page)s的变换\"%(transformation)s\""
 
 #: views.py:1300
 msgid "Document page transformation deleted successfully."
-msgstr ""
+msgstr "文档页变换删除成功"
 
 #: views.py:1311
 #, python-format
 msgid ""
 "Are you sure you wish to delete transformation \"%(transformation)s\" for: "
 "%(document_page)s"
-msgstr ""
+msgstr "确定要删除文档页: %(document_page)s的变换 \"%(transformation)s\"么？"
 
 #: widgets.py:57
 #, python-format
 msgid "Page %(page_num)d of %(total_pages)d"
-msgstr ""
+msgstr "页数 %(page_num)d / %(total_pages)d"
 
 #: widgets.py:62
 msgid "Details"
@@ -1041,27 +1041,27 @@ msgstr "文档页面图像"
 msgid ""
 "Maximum number of recent (created, edited, viewed) documents to remember per"
 " user."
-msgstr ""
+msgstr "记住每个用户近期文档的最大数(新建, 编辑, 查看)"
 
 #: conf/settings.py:39
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
+msgstr "每个交互用户文档页的放大或缩小百分比"
 
 #: conf/settings.py:40
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
+msgstr "文档交互页中允许用户放大的最大百分比(%)"
 
 #: conf/settings.py:41
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
+msgstr "文档交互页中允许用户缩小的最小百分比(%)"
 
 #: conf/settings.py:42
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
+msgstr "每个交互用户中文档页的旋转度数"
 
 #: templates/document_types_help.html:3
 msgid "What are document types?"
@@ -1073,7 +1073,7 @@ msgid ""
 "such as: invoices, regulations or manuals.  The advantage of using document "
 "types are: assigning a list of typical filenames for quick renaming during "
 "creation, as well as assigning default metadata types and sets to it."
-msgstr ""
+msgstr "文档类型就是一组广泛文档的类定义，比如发票，制度或者手册。文档类型的高级用法是：在创建的时候，给典型的文件名快速改名，也可以设置缺省的元数据类型。"
 
 #: templates/recent_document_list_help.html:3
 msgid "What are recent documents?"

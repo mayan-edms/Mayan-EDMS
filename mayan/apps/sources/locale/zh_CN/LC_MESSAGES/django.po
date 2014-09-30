@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2014-09-28 08:14+0000\n"
+"PO-Revision-Date: 2014-09-30 01:59+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -478,54 +478,54 @@ msgstr "新建数据源类型:%s"
 #: views.py:557
 #, python-format
 msgid "transformations for: %s"
-msgstr ""
+msgstr "变换: %s"
 
 #: views.py:587
 msgid "Source transformation edited successfully"
-msgstr ""
+msgstr "数据源变换编辑成功"
 
 #: views.py:590
 #, python-format
 msgid "Error editing source transformation; %s"
-msgstr ""
+msgstr "编辑数据源变换%s出错"
 
 #: views.py:595
 #, python-format
 msgid "Edit transformation: %s"
-msgstr ""
+msgstr "编辑变换: %s"
 
 #: views.py:618
 msgid "Source transformation deleted successfully."
-msgstr ""
+msgstr "数据源变换删除成功"
 
 #: views.py:620
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr ""
+msgstr "删除数据源变换失败：%(error)s"
 
 #: views.py:633
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
+msgstr "确定要删除数据源变换\"%(transformation)s\""
 
 #: views.py:663
 msgid "Source transformation created successfully"
-msgstr ""
+msgstr "数据源变换创建成功"
 
 #: views.py:666
 #, python-format
 msgid "Error creating source transformation; %s"
-msgstr ""
+msgstr "创建数据源变换 %s失败"
 
 #: views.py:675
 #, python-format
 msgid "Create new transformation for source: %s"
-msgstr ""
+msgstr "新建数据源变换: %s"
 
 #: widgets.py:40
 msgid "staging file page image"
-msgstr ""
+msgstr "临时文件页图像"
 
 #: wizards.py:53
 msgid "step 1 of 3: Document type"
