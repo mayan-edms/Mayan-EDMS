@@ -21,6 +21,7 @@ TEST_ADMIN_USERNAME = 'test_admin'
 TEST_ADMIN_EMAIL = 'admin@admin.com'
 TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
 TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
+TEST_SMALL_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png')
 TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_TYPE = 'test_document_type'
 
@@ -358,3 +359,43 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('ocument types (0)' in response.content)
+
+
+class Issue46TestCase(TestCase):
+    """
+    Functional tests to make sure issue 46 is fixed
+    """
+
+    def setUp(self):
+        self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+        self.client = Client()
+        # Login the admin user
+        logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
+        self.document_count = 30
+
+        # Upload 30 instances of the same test document
+        for i in range(self.document_count):
+            document = Document(
+            )
+            document.save()
+
+            with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+                document.new_version(file=File(file_object))
+
+    def test_advanced_search_past_first_page(self):
+        from . import document_search
+
+        # Make sure all documents are returned by the search
+        model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search({'versions__filename': 'png'})
+        self.assertEqual(result_count, self.document_count)
+
+        # Funcitonal test for the first page of advanced results
+        response = self.client.get(reverse('results'), {'versions__filename': 'png'})
+        self.assertTrue('List of results (1 - 20 out of 30) (Page 1 of 2)' in response.content)
+
+        # Functional test for the second page of advanced results
+        response = self.client.get(reverse('results'), {'versions__filename': 'png', 'page': 2})
+        self.assertTrue('List of results (21 - 30 out of 30) (Page 2 of 2)' in response.content)
