@@ -25,7 +25,11 @@ def search_form(context):
 
 @register.inclusion_tag('main/generic_subtemplate.html', takes_context=True)
 def recent_searches_template(context):
-    recent_searches = RecentSearch.objects.filter(user=context['user'])
+    if not context['user'].is_anonymous():
+        recent_searches = RecentSearch.objects.filter(user=context['user'])
+    else:
+        return context
+
     context.update({
         'request': context['request'],
         'STATIC_URL': context['STATIC_URL'],
