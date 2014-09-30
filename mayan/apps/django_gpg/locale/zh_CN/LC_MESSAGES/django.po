@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-26 03:34+0000\n"
+"PO-Revision-Date: 2014-09-30 03:54+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -69,11 +69,11 @@ msgstr "未知"
 
 #: forms.py:7
 msgid "Term"
-msgstr ""
+msgstr "术语"
 
 #: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
+msgstr "要查找的名称，邮件，密钥ID或者密钥指纹"
 
 #: links.py:6 views.py:66
 msgid "private keys"
@@ -89,7 +89,7 @@ msgstr "删除"
 
 #: links.py:9
 msgid "query keyservers"
-msgstr ""
+msgstr "查询密钥服务器"
 
 #: links.py:10
 msgid "import"
@@ -113,47 +113,47 @@ msgstr "删除密钥"
 
 #: permissions.py:11
 msgid "Query keyservers"
-msgstr ""
+msgstr "查询密钥服务器"
 
 #: permissions.py:12
 msgid "Import keys from keyservers"
-msgstr ""
+msgstr "从密钥服务器倒入密钥"
 
 #: views.py:37
 #, python-format
 msgid "Key: %s, imported successfully."
-msgstr ""
+msgstr "密钥: %s导入成功"
 
 #: views.py:42
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "不能导入密钥 id: %(key_id)s，错误：%(error)s"
 
 #: views.py:51
 msgid "Import key"
-msgstr ""
+msgstr "导入密钥"
 
 #: views.py:52
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
-msgstr ""
+msgstr "确定要导入密钥id: %s么?"
 
 #: views.py:77
 msgid "Key ID"
-msgstr ""
+msgstr "密钥ID"
 
 #: views.py:81
 msgid "Owner"
-msgstr ""
+msgstr "持有者"
 
 #: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
-msgstr ""
+msgstr "密钥: %s,删除成功"
 
 #: views.py:108
 msgid "Delete key"
-msgstr ""
+msgstr "删除密钥"
 
 #: views.py:110
 #, python-format
@@ -161,56 +161,56 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
+msgstr "确定要删除密钥%s么？如果你试图删除一个带有共／私配对的公钥，那么私钥也将被删除。"
 
 #: views.py:128
 msgid "Query key server"
-msgstr ""
+msgstr "查询密钥服务器"
 
 #: views.py:141
 msgid "results"
-msgstr ""
+msgstr "结果"
 
 #: views.py:146
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: views.py:150
 msgid "type"
-msgstr ""
+msgstr "类型"
 
 #: views.py:154
 msgid "creation date"
-msgstr ""
+msgstr "创建日期"
 
 #: views.py:158
 msgid "disabled"
-msgstr ""
+msgstr "无效"
 
 #: views.py:162
 msgid "expiration date"
-msgstr ""
+msgstr "过期时间"
 
 #: views.py:166
 msgid "expired"
-msgstr ""
+msgstr "过期的"
 
 #: views.py:170
 msgid "length"
-msgstr ""
+msgstr "长度"
 
 #: views.py:174
 msgid "revoked"
-msgstr ""
+msgstr "撤销"
 
 #: views.py:179
 msgid "Identifies"
-msgstr ""
+msgstr "标识"
 
 #: conf/settings.py:15
 msgid "List of keyservers to be queried for unknown keys."
-msgstr ""
+msgstr "查询未知密钥的密钥服务器列表"
 
 #: conf/settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
+msgstr "存储密钥和配置文件的用户目录。"

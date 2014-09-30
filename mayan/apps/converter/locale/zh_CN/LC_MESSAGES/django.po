@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2014-09-23 14:08+0000\n"
+"PO-Revision-Date: 2014-09-30 03:35+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -117,35 +117,35 @@ msgstr "微软Audio/Visual Interleaved"
 
 #: literals.py:64
 msgid "AVS X image"
-msgstr ""
+msgstr "AVS X 图像"
 
 #: literals.py:66
 msgid "Raw blue samples"
-msgstr ""
+msgstr "原始蓝色取样"
 
 #: literals.py:67
 msgid "Raw blue, green, and red samples"
-msgstr ""
+msgstr "原始蓝, 绿, 红取样"
 
 #: literals.py:68
 msgid "Raw blue, green, red and alpha samples"
-msgstr ""
+msgstr "原始蓝, 绿, 红，alpha取样"
 
 #: literals.py:69
 msgid "Microsoft Windows bitmap image"
-msgstr ""
+msgstr "微软视窗位图图像"
 
 #: literals.py:70
 msgid "Microsoft Windows bitmap image version 2"
-msgstr ""
+msgstr "微软视窗位图图像V2"
 
 #: literals.py:71
 msgid "Microsoft Windows bitmap image version 3"
-msgstr ""
+msgstr "微软视窗位图图像V3"
 
 #: literals.py:72
 msgid "BRF ASCII Braille format"
-msgstr ""
+msgstr "BRF ASCII Braille格式"
 
 #: literals.py:73
 msgid "Raw blue, red, and green samples"
@@ -165,7 +165,7 @@ msgstr ""
 
 #: literals.py:79
 msgid "Image caption"
-msgstr ""
+msgstr "图像标题"
 
 #: literals.py:80
 msgid "Cineon Image File"
@@ -851,7 +851,7 @@ msgstr ""
 
 #: literals.py:295
 msgid "GIMP image"
-msgstr ""
+msgstr "GIMP图像"
 
 #: literals.py:296
 msgid "Adobe XML metadata"
@@ -883,27 +883,27 @@ msgstr ""
 
 #: views.py:17
 msgid "suported file formats"
-msgstr ""
+msgstr "支持的文件格式"
 
 #: views.py:22
 msgid "name"
-msgstr ""
+msgstr "名称"
 
 #: views.py:26
 msgid "description"
-msgstr ""
+msgstr "描述"
 
 #: conf/settings.py:11
 msgid "File path to imagemagick's convert program."
-msgstr ""
+msgstr "imagemagick的文件目录"
 
 #: conf/settings.py:12
 msgid "File path to imagemagick's identify program."
-msgstr ""
+msgstr "imagemagick标识的文件目录"
 
 #: conf/settings.py:13
 msgid "File path to graphicsmagick's program."
-msgstr ""
+msgstr "graphicsmagick的文件目录"
 
 #: conf/settings.py:15
 msgid ""
@@ -915,15 +915,15 @@ msgstr ""
 
 #: conf/settings.py:16
 msgid "Path to the libreoffice program."
-msgstr ""
+msgstr "libreoffice的目录"
 
 #: templates/converter_file_formats_help.html:3
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: templates/converter_file_formats_help.html:4
 #, python-format
 msgid ""
 "These are the file formats supported by the currently selected converter "
 "backend.  In this case: '%(backend)s'"
-msgstr ""
+msgstr "这些都是当前后台转换所支持的文件格式，使用环境: '%(backend)s'"

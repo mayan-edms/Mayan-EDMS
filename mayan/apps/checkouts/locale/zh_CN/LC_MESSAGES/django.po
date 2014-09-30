@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2014-09-28 02:59+0000\n"
+"PO-Revision-Date: 2014-09-30 03:28+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgstr "检出过期的日期和时间"
 
 #: models.py:26
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr ""
+msgstr "持有文档检出的时间分钟数"
 
 #: models.py:31
 msgid "block new version upload"
@@ -105,7 +105,7 @@ msgstr "阻止新版本上传"
 
 #: models.py:31
 msgid "Do not allow new version of this document to be uploaded."
-msgstr ""
+msgstr "此文档不允许上传新版本"
 
 #: models.py:54
 msgid "document checkout"
@@ -133,7 +133,7 @@ msgstr "强制文档签入"
 
 #: permissions.py:12
 msgid "Allow overriding check out restrictions"
-msgstr ""
+msgstr "允许覆盖检出限制"
 
 #: views.py:32
 msgid "checked out documents"
@@ -187,52 +187,52 @@ msgstr "文档：%s的检出信息"
 #: views.py:82
 #, python-format
 msgid "Error trying to check out document; %s"
-msgstr ""
+msgstr "尝试检出文档出错%s"
 
 #: views.py:84
 #, python-format
 msgid "Document \"%s\" checked out successfully."
-msgstr ""
+msgstr "文档\"%s\"检出成功"
 
 #: views.py:87
 msgid "Document already checked out."
-msgstr ""
+msgstr "文档已经检出"
 
 #: views.py:95
 #, python-format
 msgid "Check out document: %s"
-msgstr ""
+msgstr "检出文档: %s"
 
 #: views.py:124
 msgid "Document has not been checked out."
-msgstr ""
+msgstr "文档未被检出"
 
 #: views.py:126
 #, python-format
 msgid "Error trying to check in document; %s"
-msgstr ""
+msgstr "尝试签入文档出错: %s"
 
 #: views.py:128
 #, python-format
 msgid "Document \"%s\" checked in successfully."
-msgstr ""
+msgstr "文档\"%s\"签入成功"
 
 #: views.py:141
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
+msgstr "你起初没有检出此文档，确定要强制签入文档: %s么?"
 
 #: views.py:143
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
-msgstr ""
+msgstr "确定要签入文档: %s么？"
 
 #: widgets.py:19
 #, python-format
 msgid "Document status: %(widget)s %(text)s"
-msgstr ""
+msgstr "文档状态: %(widget)s %(text)s"
 
 #: widgets.py:31
 msgid "Days"
@@ -248,26 +248,26 @@ msgstr "分钟"
 
 #: widgets.py:63
 msgid "Enter a valid number of days."
-msgstr ""
+msgstr "输入有效的天数"
 
 #: widgets.py:64
 msgid "Enter a valid number of hours."
-msgstr ""
+msgstr "输入有效的小时数"
 
 #: widgets.py:65
 msgid "Enter a valid number of minutes."
-msgstr ""
+msgstr "输入有效的分钟数"
 
 #: widgets.py:66
 msgid "Enter a valid time difference."
-msgstr ""
+msgstr "输入有效的时间差"
 
 #: widgets.py:92
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
+msgstr "持有文档检出状态的时间数，以天，小时，分钟为单位。"
 
 #: widgets.py:93
 msgid "Check out expiration date and time"
-msgstr ""
+msgstr "检出过期的日期和时间"
