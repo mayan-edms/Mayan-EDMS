@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Ford Guo <agile.guo@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-31 19:53-0400\n"
+"PO-Revision-Date: 2014-09-24 07:08+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:14
+msgid "home"
+msgstr "主页"
+
+#: __init__.py:16
+msgid "search"
+msgstr "搜索"
+
+#: links.py:8
+msgid "maintenance"
+msgstr "维护"
+
+#: links.py:9
+msgid "diagnostics"
+msgstr "诊断"
+
+#: links.py:10
+msgid "sentry"
+msgstr "哨兵"
+
+#: links.py:11
+msgid "admin site"
+msgstr "站点管理"
+
+#: views.py:41
+msgid "maintenance menu"
+msgstr "维护菜单"
+
+#: views.py:48
+msgid "Diagnostics"
+msgstr "诊断"
+
+#: conf/settings.py:12
+msgid ""
+"Controls whether the search functionality is provided by a sidebar widget or"
+" by a menu entry."
+msgstr "通过边栏工具或者菜单来控制搜索功能。"
+
+#: templates/about.html:8
+msgid "About this program"
+msgstr "关于本程序"
+
+#: templates/about.html:12 templates/verbose_login.html:5
+msgid "Version"
+msgstr "版本"
+
+#: templates/about.html:20 templates/home.html:17
+#: templates/verbose_login.html:7
+msgid "Copyright &copy; 2011 Roberto Rosario."
+msgstr "版权归 &copy; 2011 Roberto Rosario所有."
+
+#: templates/base.html:31
+msgid "(DEBUG)"
+msgstr "(调试)"
+
+#: templates/base.html:262
+msgid "User"
+msgstr "用户"
+
+#: templates/base.html:264
+msgid "Anonymous"
+msgstr "匿名用户"
+
+#: templates/base.html:267
+msgid "User details"
+msgstr "用户信息"
+
+#: templates/base.html:284
+msgid "Login"
+msgstr "登录"
+
+#: templates/base.html:284
+msgid "Logout"
+msgstr "退出"
+
+#: templates/base.html:364
+msgid "Secondary menu"
+msgstr "二级菜单"
+
+#: templates/base.html:380
+#, python-format
+msgid "Actions for %(name)s: %(navigation_object)s"
+msgstr "%(name)s的操作是：%(navigation_object)s"
+
+#: templates/base.html:382 templates/base.html.py:425
+#, python-format
+msgid "Actions for: %(navigation_object)s"
+msgstr "%(navigation_object)s的操作"
+
+#: templates/base.html:385
+msgid "Available actions"
+msgstr "有效操作"
+
+#: templates/base.html:397 templates/base.html.py:440
+msgid "Related actions"
+msgstr "相关操作"
+
+#: templates/base.html:408 templates/base.html.py:453
+msgid "Other available actions"
+msgstr "其他有效操作"
+
+#: templates/base.html:423
+#, python-format
+msgid "Actions for %(object_name)s: %(navigation_object)s"
+msgstr "%(object_name)s的操作是：%(navigation_object)s"
+
+#: templates/base.html:428
+msgid "Actions"
+msgstr "操作"
+
+#: templates/home.html:11
+msgid "Django based open source document management system"
+msgstr "基于Django的开源文档管理系统"
+
+#: templates/project_description.html:7
+msgid ""
+"Open source, Django based electronic document manager with custom metadata, "
+"indexing, tagging, file serving integration, digital signature support and "
+"OCR capabilities"
+msgstr "开源，基于Django的电子文档管理，支持自定义元数据，索引，标签，集成文件服务，数字签名以及OCR。"
+
+#: templates/project_description.html:22
+msgid "Released under the Apache 2.0 License"
+msgstr "基于Apache 2.0许可证"
+
+#~ msgid "statistics"
+#~ msgstr "statistics"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistics"
