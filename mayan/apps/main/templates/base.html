@@ -116,6 +116,7 @@
 {% block web_theme_javascript %}
     <script type="text/javascript" src="{% static 'packages/jquery.scrollview.js' %}"></script>
     <script type="text/javascript" src="{% static 'packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'packages/jquery.scrollstop.js' %}"></script>
     <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.pack.js' %}"></script>
     <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/lib/jquery.mousewheel-3.0.6.pack.js' %}"></script>
 
@@ -242,10 +243,10 @@
 
             $('img.lazy-load-carousel').lazyload({
                 container: $(".carousel-container"),
-
                 appear: function(elements_left, settings) {
                     load_document_image($(this));
-                }
+                },
+                event: 'scrollstop'
             });
 
             $('img.lazy-load-interactive').lazyload({
