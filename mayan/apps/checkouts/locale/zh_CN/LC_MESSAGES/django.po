@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Ford Guo <agile.guo@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-31 19:51-0400\n"
+"PO-Revision-Date: 2014-09-30 03:28+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:40
+msgid "Check expired check out documents and checks them in."
+msgstr "检查过期的检出文档，并且将他们签入。"
+
+#: events.py:5
+msgid "Document checked out"
+msgstr "文档检出"
+
+#: events.py:6
+#, python-format
+msgid "Document \"%(document)s\" checked out by %(fullname)s."
+msgstr "文档\"%(document)s\"由%(fullname)s检出"
+
+#: events.py:12
+msgid "Document checked in"
+msgstr "文档签入"
+
+#: events.py:13
+#, python-format
+msgid "Document \"%(document)s\" checked in by %(fullname)s."
+msgstr "文档 \"%(document)s\"由%(fullname)s签入"
+
+#: events.py:19
+msgid "Document automatically checked in"
+msgstr "文档自动签入"
+
+#: events.py:20
+#, python-format
+msgid "Document \"%(document)s\" automatically checked in."
+msgstr "文档\"%(document)s\"自动签入"
+
+#: events.py:25
+msgid "Document forcefully checked in"
+msgstr "文档强制签入"
+
+#: events.py:26
+#, python-format
+msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+msgstr "文档\"%(document)s\"由%(fullname)s强制签入。"
+
+#: links.py:16
+msgid "checkouts"
+msgstr "检出"
+
+#: links.py:17
+msgid "check out document"
+msgstr "检出文档"
+
+#: links.py:18
+msgid "check in document"
+msgstr "签入文档"
+
+#: links.py:19
+msgid "check in/out"
+msgstr "检出／签入"
+
+#: literals.py:14
+msgid "checked out"
+msgstr "检出"
+
+#: literals.py:15
+msgid "checked in/available"
+msgstr "签入／有效"
+
+#: models.py:24 views.py:132
+msgid "document"
+msgstr "文档"
+
+#: models.py:25
+msgid "check out date and time"
+msgstr "检出日期和时间"
+
+#: models.py:26
+msgid "check out expiration date and time"
+msgstr "检出过期的日期和时间"
+
+#: models.py:26
+msgid "Amount of time to hold the document checked out in minutes."
+msgstr "持有文档检出的时间分钟数"
+
+#: models.py:31
+msgid "block new version upload"
+msgstr "阻止新版本上传"
+
+#: models.py:31
+msgid "Do not allow new version of this document to be uploaded."
+msgstr "此文档不允许上传新版本"
+
+#: models.py:54
+msgid "document checkout"
+msgstr "文档检出"
+
+#: models.py:55
+msgid "document checkouts"
+msgstr "文档检出"
+
+#: permissions.py:7
+msgid "Document checkout"
+msgstr "文档检出"
+
+#: permissions.py:9
+msgid "Check out documents"
+msgstr "检出文档"
+
+#: permissions.py:10
+msgid "Check in documents"
+msgstr "签入文档"
+
+#: permissions.py:11
+msgid "Forcefully check in documents"
+msgstr "强制文档签入"
+
+#: permissions.py:12
+msgid "Allow overriding check out restrictions"
+msgstr "允许覆盖检出限制"
+
+#: views.py:32
+msgid "checked out documents"
+msgstr "检出文档"
+
+#: views.py:35
+msgid "checkout user"
+msgstr "检出用户"
+
+#: views.py:36
+msgid "checkout time and date"
+msgstr "检出日期和时间"
+
+#: views.py:37
+msgid "checkout expiration"
+msgstr "检出过期"
+
+#: views.py:54
+#, python-format
+msgid "User: %s"
+msgstr "用户：%s"
+
+#: views.py:55
+#, python-format
+msgid "Check out time: %s"
+msgstr "检出时间：%s"
+
+#: views.py:56
+#, python-format
+msgid "Check out expiration: %s"
+msgstr "检出过期：%s"
+
+#: views.py:57
+#, python-format
+msgid "New versions allowed: %s"
+msgstr "允许新版本：%s"
+
+#: views.py:57
+msgid "yes"
+msgstr "是"
+
+#: views.py:57
+msgid "no"
+msgstr "否"
+
+#: views.py:62
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "文档：%s的检出信息"
+
+#: views.py:82
+#, python-format
+msgid "Error trying to check out document; %s"
+msgstr "尝试检出文档出错%s"
+
+#: views.py:84
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "文档\"%s\"检出成功"
+
+#: views.py:87
+msgid "Document already checked out."
+msgstr "文档已经检出"
+
+#: views.py:95
+#, python-format
+msgid "Check out document: %s"
+msgstr "检出文档: %s"
+
+#: views.py:124
+msgid "Document has not been checked out."
+msgstr "文档未被检出"
+
+#: views.py:126
+#, python-format
+msgid "Error trying to check in document; %s"
+msgstr "尝试签入文档出错: %s"
+
+#: views.py:128
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr "文档\"%s\"签入成功"
+
+#: views.py:141
+#, python-format
+msgid ""
+"You didn't originally checked out this document.  Are you sure you wish to "
+"forcefully check in document: %s?"
+msgstr "你起初没有检出此文档，确定要强制签入文档: %s么?"
+
+#: views.py:143
+#, python-format
+msgid "Are you sure you wish to check in document: %s?"
+msgstr "确定要签入文档: %s么？"
+
+#: widgets.py:19
+#, python-format
+msgid "Document status: %(widget)s %(text)s"
+msgstr "文档状态: %(widget)s %(text)s"
+
+#: widgets.py:31
+msgid "Days"
+msgstr "天"
+
+#: widgets.py:32
+msgid "Hours"
+msgstr "小时"
+
+#: widgets.py:33
+msgid "Minutes"
+msgstr "分钟"
+
+#: widgets.py:63
+msgid "Enter a valid number of days."
+msgstr "输入有效的天数"
+
+#: widgets.py:64
+msgid "Enter a valid number of hours."
+msgstr "输入有效的小时数"
+
+#: widgets.py:65
+msgid "Enter a valid number of minutes."
+msgstr "输入有效的分钟数"
+
+#: widgets.py:66
+msgid "Enter a valid time difference."
+msgstr "输入有效的时间差"
+
+#: widgets.py:92
+msgid ""
+"Amount of time to hold the document in the checked out state in days, hours "
+"and/or minutes."
+msgstr "持有文档检出状态的时间数，以天，小时，分钟为单位。"
+
+#: widgets.py:93
+msgid "Check out expiration date and time"
+msgstr "检出过期的日期和时间"
