@@ -212,9 +212,7 @@
                 container.html(html);
             }
 
-            function load_document_image(image_tag) {
-                var image = image_tag;
-                var container = image.parent();
+            function load_document_image(image) {
                 $.get( image.attr('data-original'), function( result ) {
                     if (result.status == 'success') {
                         image.attr('src', result.data);
@@ -236,14 +234,13 @@
                 appear: function(elements_left, settings) {
                     load_document_image($(this));
                 },
-                load: function(elements_left, settings) {
-                    console.log(this, elements_left, settings);
-                }
             });
 
             $('img.lazy-load-carousel').lazyload({
                 container: $(".carousel-container"),
                 appear: function(elements_left, settings) {
+                    var $this = $(this);
+                    $this.removeClass('lazy-load-carousel');
                     load_document_image($(this));
                 },
                 event: 'scrollstop'
