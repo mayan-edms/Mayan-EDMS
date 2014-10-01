@@ -399,6 +399,7 @@
 
         <script type="text/javascript" src="{% static 'packages/jquery.scrollview.js' %}"></script>
         <script type="text/javascript" src="{% static 'packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'packages/jquery.scrollstop.js' %}"></script>
         <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/source/jquery.fancybox.pack.js' %}"></script>
         <script type="text/javascript" src="{% static 'packages/fancyapps-fancyBox-18d1712/lib/jquery.mousewheel-3.0.6.pack.js' %}"></script>
 
@@ -494,10 +495,8 @@
                     container.html(html);
                 }
 
-                function load_document_image(image_tag) {
-                    var image = image_tag;
-                    var container = image.parent();
-                    $.get( image.attr('data-original'), function( result ) {
+                function load_document_image(image) {
+                    $.get( image.attr('data-src'), function( result ) {
                         if (result.status == 'success') {
                             image.attr('src', result.data);
                         } else if (result.detail == 'unknown_file_format') {
@@ -518,17 +517,16 @@
                     appear: function(elements_left, settings) {
                         load_document_image($(this));
                     },
-                    load: function(elements_left, settings) {
-                        console.log(this, elements_left, settings);
-                    }
                 });
 
                 $('img.lazy-load-carousel').lazyload({
                     container: $(".carousel-container"),
-
                     appear: function(elements_left, settings) {
-                        load_document_image($(this));
-                    }
+                        var $this = $(this);
+                        $this.removeClass('lazy-load-carousel');
+                        load_document_image($this);
+                    },
+                    event: 'scrollstop'
                 });
 
                 $('img.lazy-load-interactive').lazyload({
