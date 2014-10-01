@@ -213,7 +213,7 @@
             }
 
             function load_document_image(image) {
-                $.get( image.attr('data-original'), function( result ) {
+                $.get( image.attr('data-src'), function( result ) {
                     if (result.status == 'success') {
                         image.attr('src', result.data);
                     } else if (result.detail == 'unknown_file_format') {
@@ -241,7 +241,7 @@
                 appear: function(elements_left, settings) {
                     var $this = $(this);
                     $this.removeClass('lazy-load-carousel');
-                    load_document_image($(this));
+                    load_document_image($this);
                 },
                 event: 'scrollstop'
             });
