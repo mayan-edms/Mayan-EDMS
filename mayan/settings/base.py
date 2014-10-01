@@ -168,6 +168,7 @@ LANGUAGES = (
     ('sl', ugettext('Slovenian')),
     ('tr', ugettext('Turkish')),
     ('vi', ugettext('Vietnamese (Viet Nam)')),
+    ('zh-cn', ugettext('Chinese (China)')),
 )
 
 SITE_ID = 1
