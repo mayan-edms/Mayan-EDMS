@@ -16,7 +16,6 @@ class GetThemeNode(Node):
         self.var_name = var_name
 
     def render(self, context):
-        context['web_theme'] = web_theme_settings.THEME
         context['enable_scroll_js'] = web_theme_settings.ENABLE_SCROLL_JS
         return ''
 
