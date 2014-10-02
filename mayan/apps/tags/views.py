@@ -5,6 +5,7 @@ import logging
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -67,7 +68,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_ATTACH])
@@ -75,8 +76,8 @@ def tag_attach(request, document_id=None, document_id_list=None):
         documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_ATTACH, request.user, documents)
 
     post_action_redirect = None
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         form = TagListForm(request.POST, user=request.user)
@@ -152,15 +153,15 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one tag.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_DELETE])
     except PermissionDenied:
         tags = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_DELETE, request.user, tags)
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         for tag in tags:
@@ -272,7 +273,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one tagged document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_TAG_REMOVE])
@@ -281,8 +282,8 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
 
     post_action_redirect = None
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     context = {
         'previous': previous,

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User, Group
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -58,7 +59,7 @@ def user_edit(request, user_id):
 
     if user.is_superuser or user.is_staff:
         messages.error(request, _(u'Super user and staff user editing is not allowed, use the admin interface for these cases.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     if request.method == 'POST':
         form = UserForm(instance=user, data=request.POST)
@@ -108,10 +109,10 @@ def user_delete(request, user_id=None, user_id_list=None):
         users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one user.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         for user in users:
@@ -162,9 +163,9 @@ def user_set_password(request, user_id=None, user_id_list=None):
         users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one user.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         form = PasswordForm(request.POST)
@@ -315,10 +316,10 @@ def group_delete(request, group_id=None, group_id_list=None):
         groups = [get_object_or_404(Group, pk=group_id) for group_id in group_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one group.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         for group in groups:

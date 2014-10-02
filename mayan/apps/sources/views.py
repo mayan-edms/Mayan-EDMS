@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -376,8 +377,8 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
     staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
 
     staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         try:
@@ -437,7 +438,7 @@ def setup_source_edit(request, source_type, source_id):
         form_class = WatchFolderSetupForm
 
     source = get_object_or_404(cls, pk=source_id)
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         form = form_class(instance=source, data=request.POST)

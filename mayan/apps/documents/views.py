@@ -180,15 +180,15 @@ def document_delete(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DELETE])
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DELETE, request.user, documents, exception_on_empty=True)
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         for document in documents:
@@ -290,7 +290,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if document_id:
         document_versions = [get_object_or_404(Document, pk=document_id).latest_version]
@@ -456,7 +456,7 @@ def document_update_page_count(request):
 
     office_converter = OfficeConverter()
     qs = DocumentVersion.objects.exclude(filename__iendswith='dxf').filter(mimetype__in=office_converter.mimetypes())
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         updated = 0
@@ -491,7 +491,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         post_redirect = None
     else:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
@@ -655,11 +655,11 @@ def document_page_navigation_next(request, document_page_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
 
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path)
 
     if document_page.page_number >= document_page.siblings.count():
         messages.warning(request, _(u'There are no more pages in this document'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
     else:
         document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number + 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
@@ -673,11 +673,11 @@ def document_page_navigation_previous(request, document_page_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
 
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path)
 
     if document_page.page_number <= 1:
         messages.warning(request, _(u'You are already at the first page of this document'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
     else:
         document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number - 1)
         return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
@@ -692,7 +692,7 @@ def document_page_navigation_first(request, document_page_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
 
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path)
 
     return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
@@ -706,7 +706,7 @@ def document_page_navigation_last(request, document_page_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
 
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path)
 
     return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
 
@@ -730,10 +730,10 @@ def transform_page(request, document_page_id, zoom_function=None, rotation_funct
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
 
-    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).path)
+    view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path)
 
     # Get the query string from the referer url
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).query
     # Parse the query string and get the zoom value
     # parse_qs return a dictionary whose values are lists
     zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
@@ -917,8 +917,8 @@ def document_type_delete(request, document_type_id):
 
     post_action_redirect = reverse('documents:document_type_list')
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         try:
@@ -1036,8 +1036,8 @@ def document_type_filename_delete(request, document_type_filename_id):
 
     post_action_redirect = reverse('documents:document_type_filename_list', args=[document_type_filename.document_type_id])
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         try:
@@ -1107,7 +1107,7 @@ def document_type_filename_create(request, document_type_id):
 def document_clear_image_cache(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         try:
@@ -1181,7 +1181,7 @@ def document_version_revert(request, document_version_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VERSION_REVERT, request.user, document_version.document)
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         try:
