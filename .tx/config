@@ -174,9 +174,3 @@ file_filter = mayan/apps/user_management/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/user_management/locale/en/LC_MESSAGES/django.po
 type = PO
-
-[mayan-edms.apps-web_theme]
-file_filter = mayan/apps/web_theme/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/web_theme/locale/en/LC_MESSAGES/django.po
-type = PO
