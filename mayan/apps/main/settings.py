@@ -11,14 +11,6 @@ register_setting(
     default=False,
 )
 
-register_setting(
-    namespace=u'main',
-    module=u'main.settings',
-    name=u'DISABLE_ICONS',
-    global_name=u'MAIN_DISABLE_ICONS',
-    default=False,
-)
-
 register_settings(
     namespace=u'main',
     module=u'main.settings',

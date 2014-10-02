@@ -471,15 +471,6 @@ Default: ``False``
 Disable the home view and redirect users straight to the recent document list as soon as they log in.
 
 
-.. setting:: MAIN_DISABLE_ICONS
-
-**MAIN_DISABLE_ICONS**
-
-Default: ``False``
-
-Turns off navigation links' icons.
-
-
 User management
 ===============
 
