@@ -17,20 +17,21 @@ from common.utils import encapsulate
 from documents.exceptions import NewDocumentVersionNotAllowed
 from documents.models import DocumentType, Document
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
-    PERMISSION_DOCUMENT_NEW_VERSION)
+                                   PERMISSION_DOCUMENT_NEW_VERSION)
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 
-from .forms import (SourceTransformationForm, SourceTransformationForm_create,
-    WebFormSetupForm, StagingFolderSetupForm, StagingDocumentForm, WebFormForm,
-    WatchFolderSetupForm)
-from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICE_Y, SOURCE_UNCOMPRESS_CHOICE_ASK)
-from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder)
-from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
-    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
-    PERMISSION_SOURCES_SETUP_CREATE)
+from .forms import (StagingDocumentForm, StagingFolderSetupForm,
+                    SourceTransformationForm, SourceTransformationForm_create,
+                    WatchFolderSetupForm, WebFormForm, WebFormSetupForm)
+from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+                       SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_ASK,
+                       SOURCE_UNCOMPRESS_CHOICE_Y)
+from .models import StagingFolder, SourceTransformation, WatchFolder, WebForm
+from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
+                          PERMISSION_SOURCES_SETUP_DELETE,
+                          PERMISSION_SOURCES_SETUP_EDIT,
+                          PERMISSION_SOURCES_SETUP_VIEW)
 
 
 def document_create_siblings(request, document_id):

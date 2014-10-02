@@ -10,23 +10,24 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from acls.views import acl_list_for
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
+from acls.views import acl_list_for
 from common.utils import encapsulate
 from common.widgets import two_state_template
 from documents.models import Document
-from documents.views import document_list
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from documents.views import document_list
 from permissions.models import Permission
 
-from .forms import (SmartLinkInstanceForm, SmartLinkForm,
-    SmartLinkConditionForm)
+from .forms import (SmartLinkConditionForm, SmartLinkInstanceForm,
+                    SmartLinkForm)
 from .links import smart_link_instance_view_link
 from .models import SmartLink, SmartLinkCondition
-from .permissions import (PERMISSION_SMART_LINK_VIEW,
-    PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
-    PERMISSION_SMART_LINK_EDIT)
+from .permissions import (PERMISSION_SMART_LINK_CREATE,
+                          PERMISSION_SMART_LINK_DELETE,
+                          PERMISSION_SMART_LINK_EDIT,
+                          PERMISSION_SMART_LINK_VIEW)
 from .settings import SHOW_EMPTY_SMART_LINKS
 
 logger = logging.getLogger(__name__)

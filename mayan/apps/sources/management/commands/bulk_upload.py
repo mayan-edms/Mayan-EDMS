@@ -8,10 +8,10 @@ import sys
 from django.core.management.base import CommandError, LabelCommand
 
 from documents.models import DocumentType
+from common.compressed_files import NotACompressedFile
 from metadata.api import convert_dict_to_dict_list
 
 from ...models import OutOfProcess
-from common.compressed_files import NotACompressedFile
 
 class Command(LabelCommand):
     args = '<filename>'

@@ -2,9 +2,10 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from .permissions import (PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES)
+from .permissions import (PERMISSION_OCR_CLEAN_ALL_PAGES,
+                          PERMISSION_OCR_DOCUMENT,
+                          PERMISSION_OCR_DOCUMENT_DELETE,
+                          PERMISSION_OCR_QUEUE_ENABLE_DISABLE)
 
 submit_document = {'text': _('Submit to OCR queue'), 'view': 'ocr:submit_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
 submit_document_multiple = {'text': _('Submit to OCR queue'), 'view': 'ocr:submit_document_multiple', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}

@@ -51,14 +51,11 @@ register_multi_item_links(['document_tags'], [single_document_multiple_tag_remov
 register_multi_item_links(['documents:document_find_duplicates', 'folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [tag_multiple_attach, multiple_documents_selection_tag_remove])
 
 class_permissions(Document, [
-    PERMISSION_TAG_ATTACH,
-    PERMISSION_TAG_REMOVE,
+    PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
 ])
 
 class_permissions(Tag, [
-    PERMISSION_TAG_DELETE,
-    PERMISSION_TAG_EDIT,
-    PERMISSION_TAG_VIEW,
+    PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW,
 ])
 
 Document.add_to_class('tags', TaggableManager())

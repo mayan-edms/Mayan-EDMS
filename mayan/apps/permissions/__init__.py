@@ -8,13 +8,13 @@ from navigation.api import register_links, register_multi_item_links
 from project_setup.api import register_setup
 
 from .models import Role
-from .links import (role_list, role_create, role_edit, role_members,
-                    role_permissions, role_delete, permission_grant,
-                    permission_revoke)
+from .links import (permission_grant, permission_revoke, role_create,
+                    role_delete, role_edit, role_list, role_members,
+                    role_permissions)
 from .settings import DEFAULT_ROLES
 
-register_links(Role, [role_edit, role_delete, role_permissions, role_members])
-register_links([Role, 'permissions:role_list', 'permissions:role_create'], [role_list, role_create], menu_name='secondary_menu')
+register_links(Role, [role_delete, role_edit, role_members, role_permissions])
+register_links([Role, 'permissions:role_create', 'permissions:role_list'], [role_create, role_list], menu_name='secondary_menu')
 register_multi_item_links(['permissions:role_permissions'], [permission_grant, permission_revoke])
 
 permission_views = ['permissions:role_list', 'permissions:role_create', 'permissions:role_edit', 'permissions:role_members', 'permissions:role_permissions', 'permissions:role_delete']

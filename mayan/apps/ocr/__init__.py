@@ -18,15 +18,15 @@ from statistics.classes import StatisticNamespace
 from south.signals import post_migrate
 
 from .exceptions import AlreadyQueued
-from .links import (submit_document, submit_document_multiple,
-    re_queue_multiple_document, queue_document_multiple_delete,
-    document_queue_disable, document_queue_enable,
-    all_document_ocr_cleanup, queue_document_list,
-    ocr_tool_link)
-from .literals import QUEUEDOCUMENT_STATE_PENDING, QUEUEDOCUMENT_STATE_PROCESSING
+from .links import (all_document_ocr_cleanup, document_queue_disable,
+                    document_queue_enable, ocr_tool_link, queue_document_list,
+                    queue_document_multiple_delete, re_queue_multiple_document,
+                    submit_document, submit_document_multiple)
+from .literals import (QUEUEDOCUMENT_STATE_PENDING,
+                       QUEUEDOCUMENT_STATE_PROCESSING)
 from .models import DocumentQueue
 from .permissions import PERMISSION_OCR_DOCUMENT
-from .settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
+from .settings import AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL
 from .statistics import OCRStatistics
 from .tasks import task_process_document_queues
 

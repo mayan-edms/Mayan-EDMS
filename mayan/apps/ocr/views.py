@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,12 +15,14 @@ from permissions.models import Permission
 
 from .api import clean_pages
 from .exceptions import AlreadyQueued, ReQueueError
-from .literals import (QUEUEDOCUMENT_STATE_PROCESSING,
-    DOCUMENTQUEUE_STATE_STOPPED, DOCUMENTQUEUE_STATE_ACTIVE)
+from .literals import (DOCUMENTQUEUE_STATE_ACTIVE,
+                       DOCUMENTQUEUE_STATE_STOPPED,
+                       QUEUEDOCUMENT_STATE_PROCESSING)
 from .models import DocumentQueue, QueueDocument
-from .permissions import (PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES)
+from .permissions import (PERMISSION_OCR_CLEAN_ALL_PAGES,
+                          PERMISSION_OCR_DOCUMENT,
+                          PERMISSION_OCR_DOCUMENT_DELETE,
+                          PERMISSION_OCR_QUEUE_ENABLE_DISABLE)
 
 
 def queue_document_list(request, queue_name='default'):

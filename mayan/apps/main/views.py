@@ -1,11 +1,11 @@
 from __future__ import absolute_import
 
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import PermissionDenied
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
 
 from permissions.models import Permission
 

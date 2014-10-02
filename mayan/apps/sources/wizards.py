@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from common.views import MayanPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
 from documents.permissions import PERMISSION_DOCUMENT_CREATE
-from metadata.forms import MetadataSelectionForm, MetadataFormSet
+from metadata.forms import MetadataFormSet, MetadataSelectionForm
 
 
 class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):

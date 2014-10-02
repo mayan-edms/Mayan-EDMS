@@ -3,15 +3,14 @@ from __future__ import absolute_import
 import logging
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
 from documents.forms import DocumentForm
 
-from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder)
-from .widgets import FamFamRadioSelect
+from .models import SourceTransformation, StagingFolder, WebForm, WatchFolder
 from .utils import validate_whitelist_blacklist
+from .widgets import FamFamRadioSelect
 
 logger = logging.getLogger(__name__)
 

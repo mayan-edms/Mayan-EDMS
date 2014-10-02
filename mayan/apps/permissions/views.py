@@ -5,26 +5,27 @@ from json import loads
 import operator
 
 from django.contrib import messages
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group, User
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.classes import EncapsulatedObject
 from common.models import AnonymousUserSingleton
-from common.views import assign_remove
-from common.views import SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView
+from common.views import (SingleObjectCreateView, SingleObjectDeleteView,
+                          SingleObjectEditView, assign_remove)
 from common.utils import encapsulate, get_object_name
 from common.widgets import two_state_template
 
 from .forms import RoleForm, RoleForm_view
-from .models import Role, Permission
-from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
-    PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
-    PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE)
+from .models import Permission, Role
+from .permissions import (PERMISSION_PERMISSION_GRANT,
+                          PERMISSION_PERMISSION_REVOKE, PERMISSION_ROLE_VIEW,
+                          PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
+                          PERMISSION_ROLE_EDIT)
 
 
 class RoleCreateView(SingleObjectCreateView):

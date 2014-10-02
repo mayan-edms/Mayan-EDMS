@@ -2,13 +2,14 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from documents.permissions import (PERMISSION_DOCUMENT_NEW_VERSION,
-    PERMISSION_DOCUMENT_CREATE)
+from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
+                                   PERMISSION_DOCUMENT_NEW_VERSION)
 
-from .models import (WebForm, StagingFolder, WatchFolder)
-from .permissions import (PERMISSION_SOURCES_SETUP_VIEW,
-    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_DELETE,
-    PERMISSION_SOURCES_SETUP_CREATE)
+from .models import (StagingFolder, WatchFolder, WebForm)
+from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
+                          PERMISSION_SOURCES_SETUP_DELETE,
+                          PERMISSION_SOURCES_SETUP_EDIT,
+                          PERMISSION_SOURCES_SETUP_VIEW)
 
 document_create_multiple = {'text': _(u'Upload new documents'), 'view': 'sources:document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
 document_create_siblings = {'text': _(u'Clone metadata'), 'view': 'sources:document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}

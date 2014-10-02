@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
-from common.utils import return_type, encapsulate
+from common.utils import encapsulate, return_type
 from common.widgets import exists_with_famfam
 
 from .api import settings

@@ -9,9 +9,9 @@ from django.utils.translation import ugettext_lazy as _
 from documents.models import Document
 
 from .exceptions import ReQueueError
-from .literals import (DOCUMENTQUEUE_STATE_CHOICES,
-    QUEUEDOCUMENT_STATE_PENDING, QUEUEDOCUMENT_STATE_CHOICES,
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE)
+from .literals import (DOCUMENTQUEUE_STATE_ACTIVE, DOCUMENTQUEUE_STATE_CHOICES,
+                       QUEUEDOCUMENT_STATE_CHOICES, QUEUEDOCUMENT_STATE_PENDING,
+                       QUEUEDOCUMENT_STATE_PROCESSING)
 from .managers import DocumentQueueManager
 
 

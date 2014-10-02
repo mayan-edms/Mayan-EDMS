@@ -14,10 +14,10 @@ from job_processor.api import process_job
 from lock_manager import Lock, LockError
 
 from .api import do_document_ocr
-from .literals import (QUEUEDOCUMENT_STATE_PENDING,
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE,
-    QUEUEDOCUMENT_STATE_ERROR)
-from .models import QueueDocument, DocumentQueue
+from .literals import (DOCUMENTQUEUE_STATE_ACTIVE, QUEUEDOCUMENT_STATE_ERROR,
+                       QUEUEDOCUMENT_STATE_PENDING,
+                       QUEUEDOCUMENT_STATE_PROCESSING)
+from .models import DocumentQueue, QueueDocument
 from .settings import NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY
 
 LOCK_EXPIRE = 60 * 2  # Lock expires in 2 minutes

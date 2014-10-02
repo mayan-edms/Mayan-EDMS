@@ -3,8 +3,8 @@ from __future__ import absolute_import
 from django.db import models
 from django.db.models import Q
 
-from metadata.classes import MetadataClass
 from documents.models import Document
+from metadata.classes import MetadataClass
 
 from .literals import INCLUSION_AND, INCLUSION_OR
 
