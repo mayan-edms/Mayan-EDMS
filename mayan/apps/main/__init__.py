@@ -7,7 +7,7 @@ from navigation.api import register_top_menu
 from project_setup.api import register_setup
 from project_tools.api import register_tool
 
-from .links import admin_site, diagnostics, maintenance_menu, sentry
+from .links import admin_site, diagnostics, maintenance_menu
 from .settings import DISABLE_HOME_VIEW
 
 if not DISABLE_HOME_VIEW:
@@ -18,7 +18,3 @@ if 'django.contrib.admin' in django_settings.INSTALLED_APPS:
 
 register_tool(diagnostics)
 register_tool(maintenance_menu)
-
-# TODO: Remove this
-if 'sentry' in django_settings.INSTALLED_APPS:
-    register_tool(sentry)
