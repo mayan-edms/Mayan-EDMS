@@ -1,16 +1,16 @@
-{% extends "main/base.html" %}
+{% extends 'main/base.html' %}
 {% load i18n %}
-{% block title %} :: {% trans "Search results" %}{% endblock %}
+{% block title %} :: {% trans 'Search results' %}{% endblock %}
 
 {% block content %}
     {% if form %}
-            {% include "search_results_subtemplate.html" %}
+            {% include 'search_results_subtemplate.html' %}
     {% endif %}
     {% if query_string %}
-        {% include "main/generic_list_subtemplate.html" %}
+        {% include 'main/generic_list_subtemplate.html' %}
     {% endif %}
     {% if not form and not query_string %}
-        {% include "main/generic_list_subtemplate.html" %}
+        {% include 'main/generic_list_subtemplate.html' %}
     {% endif %}
 {% endblock %}
 
