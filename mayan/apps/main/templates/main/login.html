@@ -66,10 +66,6 @@
                     </div>
                 </div>
             </div>
-            {% get_web_theme_setting "VERBOSE_LOGIN" as verbose_login %}
-            {% if verbose_login %}
-                {% include 'main/verbose_login.html' %}
-            {% endif %}
         {% endblock %}
     {% endif %}
 

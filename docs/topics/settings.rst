@@ -459,29 +459,6 @@ Default: ``5``
 Maximum number of search queries to remember per user.
 
 
-Web theme
-=========
-
-.. setting:: WEB_THEME_THEME
-
-**WEB_THEME_THEME**
-
-Default: ``activo``
-
-CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``,
-``default``, ``djime-cerulean``, ``drastic-dark``, ``kathleene``, ``olive``,
-``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
-
-
-.. setting:: WEB_THEME_VERBOSE_LOGIN
-
-**WEB_THEME_VERBOSE_LOGIN**
-
-Default: ``True``
-
-Display extra information in the login screen.
-
-
 Main
 ====
 
@@ -492,15 +469,6 @@ Main
 Default: ``False``
 
 Disable the home view and redirect users straight to the recent document list as soon as they log in.
-
-
-.. setting:: MAIN_DISABLE_ICONS
-
-**MAIN_DISABLE_ICONS**
-
-Default: ``False``
-
-Turns off navigation links' icons.
 
 
 User management
