@@ -18,16 +18,6 @@ configuration option to one of its valid values.
 .. image:: ../_static/themes.png
  :alt: themes
 
-------------
-Login screen
-------------
-The amount of information presented at the login screen can also be restricted
-for security or design reasons using :setting:`WEB_THEME_VERBOSE_LOGIN`
-configuration option.
-
-.. image:: ../_static/mayan-login.png
- :alt: mayan login screen
-
 -----------
 Home screen
 -----------

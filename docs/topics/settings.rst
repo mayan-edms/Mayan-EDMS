@@ -473,15 +473,6 @@ CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``,
 ``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
 
 
-.. setting:: WEB_THEME_VERBOSE_LOGIN
-
-**WEB_THEME_VERBOSE_LOGIN**
-
-Default: ``True``
-
-Display extra information in the login screen.
-
-
 Main
 ====
 
