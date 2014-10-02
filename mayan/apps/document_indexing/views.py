@@ -41,9 +41,9 @@ def index_setup_list(request):
         'hide_object': True,
         'list_object_variable_name': 'index',
         'extra_columns': [
-            {'name': _(u'name'), 'attribute': 'name'},
-            {'name': _(u'title'), 'attribute': 'title'},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'Name'), 'attribute': 'name'},
+            {'name': _(u'Title'), 'attribute': 'title'},
+            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ]
     }
 
@@ -74,7 +74,7 @@ def index_setup_create(request):
         form = IndexForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create index'),
+        'title': _(u'Create index'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -97,10 +97,10 @@ def index_setup_edit(request, index_pk):
         form = IndexForm(instance=index)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit index: %s') % index,
+        'title': _(u'Edit index: %s') % index,
         'form': form,
         'index': index,
-        'object_name': _(u'index'),
+        'object_name': _(u'Index'),
         'navigation_object_name': 'index',
     }, context_instance=RequestContext(request))
 
@@ -130,7 +130,7 @@ def index_setup_delete(request, index_pk):
 
     context = {
         'index': index,
-        'object_name': _(u'index'),
+        'object_name': _(u'Index'),
         'navigation_object_name': 'index',
         'delete_view': True,
         'previous': previous,
@@ -156,15 +156,15 @@ def index_setup_view(request, index_pk):
     context = {
         'object_list': object_list,
         'index': index,
-        'object_name': _(u'index'),
+        'object_name': _(u'Index'),
         'list_object_variable_name': 'node',
         'navigation_object_name': 'index',
-        'title': _(u'tree template nodes for index: %s') % index,
+        'title': _(u'Tree template nodes for index: %s') % index,
         'hide_object': True,
         'extra_columns': [
-            {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
+            {'name': _(u'Level'), 'attribute': encapsulate(lambda x: node_level(x))},
+            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'Has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
         ],
     }
 
@@ -186,13 +186,13 @@ def index_setup_document_types(request, index_pk):
         right_list=lambda: generate_choices_w_labels(index.get_index_document_types(), display_object_type=False),
         add_method=lambda x: index.document_types.add(x),
         remove_method=lambda x: index.document_types.remove(x),
-        left_list_title=_(u'document types not in index: %s') % index,
-        right_list_title=_(u'document types for index: %s') % index,
+        left_list_title=_(u'Document types not in index: %s') % index,
+        right_list_title=_(u'Document types for index: %s') % index,
         decode_content_type=True,
         extra_context={
             'navigation_object_name': 'index',
             'index': index,
-            'object_name': _(u'index'),
+            'object_name': _(u'Index'),
         }
     )
 
@@ -216,10 +216,10 @@ def template_node_create(request, parent_pk):
         form = IndexTemplateNodeForm(initial={'index': parent_node.index, 'parent': parent_node})
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create child node'),
+        'title': _(u'Create child node'),
         'form': form,
         'index': parent_node.index,
-        'object_name': _(u'index'),
+        'object_name': _(u'Index'),
         'navigation_object_name': 'index',
     }, context_instance=RequestContext(request))
 
@@ -242,14 +242,14 @@ def template_node_edit(request, node_pk):
         form = IndexTemplateNodeForm(instance=node)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit index template node: %s') % node,
+        'title': _(u'Edit index template node: %s') % node,
         'form': form,
         'index': node.index,
         'node': node,
 
         'navigation_object_list': [
-            {'object': 'index', 'name': _(u'index')},
-            {'object': 'node', 'name': _(u'node')}
+            {'object': 'index', 'name': _(u'Index')},
+            {'object': 'node', 'name': _(u'Node')}
         ],
     }, context_instance=RequestContext(request))
 
@@ -287,8 +287,8 @@ def template_node_delete(request, node_pk):
         'node': node,
 
         'navigation_object_list': [
-            {'object': 'index', 'name': _(u'index')},
-            {'object': 'node', 'name': _(u'node')}
+            {'object': 'index', 'name': _(u'Index')},
+            {'object': 'node', 'name': _(u'Node')}
         ],
     }
 
@@ -302,11 +302,11 @@ def index_list(request):
     Show a list of enabled indexes
     """
     context = {
-        'title': _(u'indexes'),
+        'title': _(u'Indexes'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _(u'nodes'), 'attribute': 'get_instance_node_count'},
-            {'name': _(u'document types'), 'attribute': 'get_document_types_names'},
+            {'name': _(u'Nodes'), 'attribute': 'get_instance_node_count'},
+            {'name': _(u'Document types'), 'attribute': 'get_document_types_names'},
         ],
     }
 
@@ -337,7 +337,7 @@ def index_instance_node_view(request, index_instance_node_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, index_instance.index)
 
-    title = mark_safe(_(u'contents for index: %s') % breadcrumbs)
+    title = mark_safe(_(u'Contents for index: %s') % breadcrumbs)
 
     if index_instance:
         if index_instance.index_template_node.link_documents:
@@ -355,11 +355,11 @@ def index_instance_node_view(request, index_instance_node_pk):
         'object_list': index_instance_list,
         'extra_columns_preffixed': [
             {
-                'name': _(u'node'),
+                'name': _(u'Node'),
                 'attribute': encapsulate(lambda x: index_instance_item_link(x))
             },
             {
-                'name': _(u'items'),
+                'name': _(u'Items'),
                 'attribute': encapsulate(lambda x: x.documents.count() if x.index_template_node.link_documents else x.get_children().count())
             }
         ],
@@ -421,7 +421,7 @@ def document_index_list(request, document_id):
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'indexes containing: %s') % document,
+        'title': _(u'Indexes containing: %s') % document,
         'object_list': object_list,
         'hide_link': True,
         'object': document

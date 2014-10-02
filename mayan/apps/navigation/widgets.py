@@ -44,7 +44,7 @@ def render_widget(request, link):
             'icon': link.get('icon', 'link_button.png'),
             'static_url': settings.STATIC_URL,
             'string': link['text'],
-            'image_alt': _(u'icon'),
+            'image_alt': _(u'Icon'),
         })
     else:
         return u''

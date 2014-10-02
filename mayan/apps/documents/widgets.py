@@ -78,7 +78,7 @@ def document_link(document):
 def document_html_widget(document, click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None, image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False):
     result = []
 
-    alt_text = _(u'document page image')
+    alt_text = _(u'Document page image')
 
     if not version:
         try:

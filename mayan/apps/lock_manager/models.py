@@ -9,9 +9,9 @@ from .settings import DEFAULT_LOCK_TIMEOUT
 
 
 class Lock(models.Model):
-    creation_datetime = models.DateTimeField(verbose_name=_(u'creation datetime'))
-    timeout = models.IntegerField(default=DEFAULT_LOCK_TIMEOUT, verbose_name=_(u'timeout'))
-    name = models.CharField(max_length=48, verbose_name=_(u'name'), unique=True)
+    creation_datetime = models.DateTimeField(verbose_name=_(u'Creation datetime'))
+    timeout = models.IntegerField(default=DEFAULT_LOCK_TIMEOUT, verbose_name=_(u'Timeout'))
+    name = models.CharField(max_length=48, verbose_name=_(u'Name'), unique=True)
 
     objects = LockManager()
 
@@ -34,5 +34,5 @@ class Lock(models.Model):
             pass
 
     class Meta:
-        verbose_name = _(u'lock')
-        verbose_name_plural = _(u'locks')
+        verbose_name = _(u'Lock')
+        verbose_name_plural = _(u'Locks')

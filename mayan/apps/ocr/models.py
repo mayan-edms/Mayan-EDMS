@@ -16,39 +16,39 @@ from .managers import DocumentQueueManager
 
 
 class DocumentQueue(models.Model):
-    name = models.CharField(max_length=64, unique=True, verbose_name=_(u'name'))
-    label = models.CharField(max_length=64, verbose_name=_(u'label'))
+    name = models.CharField(max_length=64, unique=True, verbose_name=_(u'Name'))
+    label = models.CharField(max_length=64, verbose_name=_(u'Label'))
     state = models.CharField(max_length=4,
         choices=DOCUMENTQUEUE_STATE_CHOICES,
         default=DOCUMENTQUEUE_STATE_ACTIVE,
-        verbose_name=_(u'state'))
+        verbose_name=_(u'State'))
 
     objects = DocumentQueueManager()
 
     class Meta:
-        verbose_name = _(u'document queue')
-        verbose_name_plural = _(u'document queues')
+        verbose_name = _(u'Document queue')
+        verbose_name_plural = _(u'Document queues')
 
     def __unicode__(self):
         return self.label
 
 
 class QueueDocument(models.Model):
-    document_queue = models.ForeignKey(DocumentQueue, verbose_name=_(u'document queue'))
-    document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    datetime_submitted = models.DateTimeField(verbose_name=_(u'date time submitted'), auto_now_add=True, db_index=True)
-    delay = models.BooleanField(verbose_name=_(u'delay ocr'), default=False)
+    document_queue = models.ForeignKey(DocumentQueue, verbose_name=_(u'Document queue'))
+    document = models.ForeignKey(Document, verbose_name=_(u'Document'))
+    datetime_submitted = models.DateTimeField(verbose_name=_(u'Date time submitted'), auto_now_add=True, db_index=True)
+    delay = models.BooleanField(verbose_name=_(u'Delay OCR'), default=False)
     state = models.CharField(max_length=4,
         choices=QUEUEDOCUMENT_STATE_CHOICES,
         default=QUEUEDOCUMENT_STATE_PENDING,
-        verbose_name=_(u'state'))
-    result = models.TextField(blank=True, null=True, verbose_name=_(u'result'))
-    node_name = models.CharField(max_length=32, verbose_name=_(u'node name'), blank=True, null=True)
+        verbose_name=_(u'State'))
+    result = models.TextField(blank=True, null=True, verbose_name=_(u'Result'))
+    node_name = models.CharField(max_length=32, verbose_name=_(u'Node name'), blank=True, null=True)
 
     class Meta:
         ordering = ('datetime_submitted',)
-        verbose_name = _(u'queue document')
-        verbose_name_plural = _(u'queue documents')
+        verbose_name = _(u'Queue document')
+        verbose_name_plural = _(u'Queue documents')
 
     def requeue(self):
         if self.state == QUEUEDOCUMENT_STATE_PROCESSING:

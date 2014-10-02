@@ -142,6 +142,8 @@ class_permissions(Document, [
 
 document_search = SearchModel('documents', 'Document')
 document_search.add_model_field('document_type__name', label=_(u'Document type'))
+
+# TODO: move these to their respective apps
 document_search.add_model_field('versions__mimetype', label=_(u'MIME type'))
 document_search.add_model_field('versions__filename', label=_(u'Filename'))
 document_search.add_model_field('metadata__metadata_type__name', label=_(u'Metadata type'))

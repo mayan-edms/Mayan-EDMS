@@ -38,7 +38,7 @@ def staging_file_thumbnail(staging_file, **kwargs):
 def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox-staging', image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False):
     result = []
 
-    alt_text = _(u'staging file page image')
+    alt_text = _(u'Staging file page image')
 
     query_dict = {
         'page': page,

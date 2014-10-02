@@ -12,11 +12,11 @@ RELEASE_LEVEL_RC = 4
 RELEASE_LEVEL_HF = 5
 
 RELEASE_LEVEL_CHOICES = (
-    (RELEASE_LEVEL_FINAL, _(u'final')),
-    (RELEASE_LEVEL_ALPHA, _(u'alpha')),
-    (RELEASE_LEVEL_BETA, _(u'beta')),
-    (RELEASE_LEVEL_RC, _(u'release candidate')),
-    (RELEASE_LEVEL_HF, _(u'hotfix')),
+    (RELEASE_LEVEL_FINAL, _(u'Final')),
+    (RELEASE_LEVEL_ALPHA, _(u'Alpha')),
+    (RELEASE_LEVEL_BETA, _(u'Beta')),
+    (RELEASE_LEVEL_RC, _(u'Release candidate')),
+    (RELEASE_LEVEL_HF, _(u'Hotfix')),
 )
 
 VERSION_UPDATE_MAJOR = u'major'

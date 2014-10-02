@@ -25,23 +25,23 @@ def user_list(request):
 
     context = {
         'object_list': get_user_model().objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('username'),
-        'title': _(u'users'),
+        'title': _(u'Users'),
         'hide_link': True,
         'extra_columns': [
             {
-                'name': _(u'full name'),
+                'name': _(u'Full name'),
                 'attribute': 'get_full_name'
             },
             {
-                'name': _(u'email'),
+                'name': _(u'Email'),
                 'attribute': 'email'
             },
             {
-                'name': _(u'active'),
+                'name': _(u'Active'),
                 'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
             },
             {
-                'name': _(u'has usable password?'),
+                'name': _(u'Has usable password?'),
                 'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
             },
         ],
@@ -70,10 +70,10 @@ def user_edit(request, user_id):
         form = UserForm(instance=user)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit user: %s') % user,
+        'title': _(u'Edit user: %s') % user,
         'form': form,
         'object': user,
-        'object_name': _(u'user'),
+        'object_name': _(u'User'),
     }, context_instance=RequestContext(request))
 
 
@@ -92,7 +92,7 @@ def user_add(request):
         form = UserForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create new user'),
+        'title': _(u'Create new user'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -129,7 +129,7 @@ def user_delete(request, user_id=None, user_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'user'),
+        'object_name': _(u'User'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -192,7 +192,7 @@ def user_set_password(request, user_id=None, user_id_list=None):
         form = PasswordForm()
 
     context = {
-        'object_name': _(u'user'),
+        'object_name': _(u'User'),
         'next': next,
         'form': form,
     }
@@ -231,12 +231,12 @@ def user_groups(request, user_id):
         right_list=lambda: generate_choices_w_labels(get_user_groups(user), display_object_type=False),
         add_method=lambda x: x.user_set.add(user),
         remove_method=lambda x: x.user_set.remove(user),
-        left_list_title=_(u'non groups of user: %s') % user,
-        right_list_title=_(u'groups of user: %s') % user,
+        left_list_title=_(u'Non groups of user: %s') % user,
+        right_list_title=_(u'Groups of user: %s') % user,
         decode_content_type=True,
         extra_context={
             'object': user,
-            'object_name': _(u'user'),
+            'object_name': _(u'User'),
         }
     )
 
@@ -248,11 +248,11 @@ def group_list(request):
     context = {
         'object_list': Group.objects.all(),
         'extra_context': {
-            'title': _(u'groups'),
+            'title': _(u'Groups'),
             'hide_link': True,
             'extra_columns': [
                 {
-                    'name': _(u'members'),
+                    'name': _(u'Members'),
                     'attribute': 'user_set.count'
                 },
             ],
@@ -278,10 +278,10 @@ def group_edit(request, group_id):
         form = GroupForm(instance=group)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit group: %s') % group,
+        'title': _(u'Edit group: %s') % group,
         'form': form,
         'object': group,
-        'object_name': _(u'group'),
+        'object_name': _(u'Group'),
     },
     context_instance=RequestContext(request))
 
@@ -299,7 +299,7 @@ def group_add(request):
         form = GroupForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create new group'),
+        'title': _(u'Create new group'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -333,7 +333,7 @@ def group_delete(request, group_id=None, group_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'group'),
+        'object_name': _(u'Group'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -373,11 +373,11 @@ def group_members(request, group_id):
         right_list=lambda: generate_choices_w_labels(get_group_members(group), display_object_type=False),
         add_method=lambda x: group.user_set.add(x),
         remove_method=lambda x: group.user_set.remove(x),
-        left_list_title=_(u'non members of group: %s') % group,
-        right_list_title=_(u'members of group: %s') % group,
+        left_list_title=_(u'Non members of group: %s') % group,
+        right_list_title=_(u'Members of group: %s') % group,
         decode_content_type=True,
         extra_context={
             'object': group,
-            'object_name': _(u'group'),
+            'object_name': _(u'Group'),
         }
     )

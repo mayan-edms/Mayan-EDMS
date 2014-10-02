@@ -34,22 +34,22 @@ def check_first_run():
 
 register_model_list_columns(PropertyNamespace, [
     {
-        'name': _(u'label'),
+        'name': _(u'Label'),
         'attribute': 'label'
     },
     {
-        'name': _(u'items'),
+        'name': _(u'Items'),
         'attribute': encapsulate(lambda entry: len(entry.get_properties()))
     }
 ])
 
 register_model_list_columns(Property, [
     {
-        'name': _(u'label'),
+        'name': _(u'Label'),
         'attribute': 'label'
     },
     {
-        'name': _(u'value'),
+        'name': _(u'Value'),
         'attribute': 'value'
     }
 ])

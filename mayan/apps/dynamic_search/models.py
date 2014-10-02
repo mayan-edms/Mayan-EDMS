@@ -18,10 +18,10 @@ class RecentSearch(models.Model):
     """
     Keeps a list of the n most recent search keywords for a given user
     """
-    user = models.ForeignKey(User, verbose_name=_(u'user'), editable=False)
-    query = models.TextField(verbose_name=_(u'query'), editable=False)
-    datetime_created = models.DateTimeField(verbose_name=_(u'datetime created'), editable=False)
-    hits = models.IntegerField(verbose_name=_(u'hits'), editable=False)
+    user = models.ForeignKey(User, verbose_name=_(u'User'), editable=False)
+    query = models.TextField(verbose_name=_(u'Query'), editable=False)
+    datetime_created = models.DateTimeField(verbose_name=_(u'Datetime created'), editable=False)
+    hits = models.IntegerField(verbose_name=_(u'Hits'), editable=False)
 
     objects = RecentSearchManager()
 
@@ -58,5 +58,5 @@ class RecentSearch(models.Model):
 
     class Meta:
         ordering = ('-datetime_created',)
-        verbose_name = _(u'recent search')
-        verbose_name_plural = _(u'recent searches')
+        verbose_name = _(u'Recent search')
+        verbose_name_plural = _(u'Recent searches')

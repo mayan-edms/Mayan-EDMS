@@ -23,18 +23,18 @@ from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 
 register_model_list_columns(Tag, [
     {
-        'name': _(u'preview'),
+        'name': _(u'Preview'),
         'attribute': encapsulate(lambda x: single_tag_widget(x))
     },
     {
-        'name': _(u'tagged items'),
+        'name': _(u'Tagged items'),
         'attribute': encapsulate(lambda x: x.taggit_taggeditem_items.count())
     }
 ])
 
 register_model_list_columns(Document, [
     {
-        'name': _(u'tags'), 'attribute':
+        'name': _(u'Tags'), 'attribute':
         encapsulate(lambda x: get_tags_inline_widget_simple(x))
     },
 ])
@@ -42,7 +42,7 @@ register_model_list_columns(Document, [
 register_links(Tag, [tag_tagged_item_list, tag_edit, tag_delete, tag_acl_list])
 register_multi_item_links(['tags:tag_list'], [tag_multiple_delete])
 register_links([Tag, 'tags:tag_list', 'tags:tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
-register_top_menu('tags', link={'text': _(u'tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}, children_view_regex=[r'^tag_(list|create|delete|edit|tagged|acl)'])
+register_top_menu('tags', link={'text': _(u'Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}, children_view_regex=[r'^tag_(list|create|delete|edit|tagged|acl)'])
 
 register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['tags:document_tags', 'tags:tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')

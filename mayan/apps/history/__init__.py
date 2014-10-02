@@ -14,15 +14,15 @@ register_tool(history_list)
 
 register_model_list_columns(History, [
     {
-        'name': _(u'date and time'),
+        'name': _(u'Date and time'),
         'attribute': 'datetime'
     },
     {
-        'name': _(u'type'),
+        'name': _(u'Type'),
         'attribute': encapsulate(lambda entry: history_entry_type_link(entry))
     },
     {
-        'name': _(u'summary'),
+        'name': _(u'Summary'),
         'attribute': encapsulate(lambda entry: unicode(entry.get_processed_summary()))
     }
 ])

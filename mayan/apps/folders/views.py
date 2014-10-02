@@ -59,7 +59,7 @@ def folder_create(request):
         form = FolderForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create folder'),
+        'title': _(u'Create folder'),
         'form': form,
     },
     context_instance=RequestContext(request))
@@ -87,10 +87,10 @@ def folder_edit(request, folder_id):
         form = FolderForm(instance=folder)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit folder: %s') % folder,
+        'title': _(u'Edit folder: %s') % folder,
         'form': form,
         'object': folder,
-        'object_name': _(u'folder'),
+        'object_name': _(u'Folder'),
     },
     context_instance=RequestContext(request))
 
@@ -119,7 +119,7 @@ def folder_delete(request, folder_id):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'folder'),
+        'object_name': _(u'Folder'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -152,7 +152,7 @@ class FolderDetailView(DocumentListView):
             'hide_links': True,
             'multi_select_as_buttons': True,
             'object': self.get_folder(),
-            'object_name': _(u'folder'),
+            'object_name': _(u'Folder'),
         }
 
 
@@ -192,7 +192,7 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         form = FolderListForm(user=request.user)
 
     context = {
-        'object_name': _(u'document'),
+        'object_name': _(u'Document'),
         'form': form,
         'previous': previous,
         'next': next,
@@ -272,7 +272,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'folder document'),
+        'object_name': _(u'Folder document'),
         'previous': previous,
         'next': next,
         'form_icon': u'delete.png',

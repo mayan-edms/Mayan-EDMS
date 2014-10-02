@@ -38,7 +38,7 @@ def maintenance_menu(request):
 
     return render_to_response('main/tools.html', {
         'blocks': user_tools,
-        'title': _(u'maintenance menu')
+        'title': _(u'Maintenance menu')
     }, context_instance=RequestContext(request))
 
 

@@ -33,10 +33,10 @@ logger = logging.getLogger(__name__)
 
 
 class BaseModel(models.Model):
-    title = models.CharField(max_length=64, verbose_name=_(u'title'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'))
-    whitelist = models.TextField(blank=True, verbose_name=_(u'whitelist'), editable=False)
-    blacklist = models.TextField(blank=True, verbose_name=_(u'blacklist'), editable=False)
+    title = models.CharField(max_length=64, verbose_name=_(u'Title'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'))
+    whitelist = models.TextField(blank=True, verbose_name=_(u'Whitelist'), editable=False)
+    blacklist = models.TextField(blank=True, verbose_name=_(u'Blacklist'), editable=False)
 
     @classmethod
     def class_fullname(cls):
@@ -141,7 +141,7 @@ class BaseModel(models.Model):
 
 
 class InteractiveBaseModel(BaseModel):
-    icon = models.CharField(blank=True, null=True, max_length=24, choices=SOURCE_ICON_CHOICES, verbose_name=_(u'icon'), help_text=_(u'An icon to visually distinguish this source.'))
+    icon = models.CharField(blank=True, null=True, max_length=24, choices=SOURCE_ICON_CHOICES, verbose_name=_(u'Icon'), help_text=_(u'An icon to visually distinguish this source.'))
 
     def save(self, *args, **kwargs):
         if not self.icon:
@@ -157,11 +157,11 @@ class StagingFolder(InteractiveBaseModel):
     source_type = SOURCE_CHOICE_STAGING
     default_icon = SOURCE_ICON_DRIVE
 
-    folder_path = models.CharField(max_length=255, verbose_name=_(u'folder path'), help_text=_(u'Server side filesystem path.'))
-    preview_width = models.IntegerField(verbose_name=_(u'preview width'), help_text=_(u'Width value to be passed to the converter backend.'))
-    preview_height = models.IntegerField(blank=True, null=True, verbose_name=_(u'preview height'), help_text=_(u'Height value to be passed to the converter backend.'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
-    delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
+    folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
+    preview_width = models.IntegerField(verbose_name=_(u'Preview width'), help_text=_(u'Width value to be passed to the converter backend.'))
+    preview_height = models.IntegerField(blank=True, null=True, verbose_name=_(u'Preview height'), help_text=_(u'Height value to be passed to the converter backend.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'Delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
 
     def get_preview_size(self):
         dimensions = []
@@ -182,8 +182,8 @@ class StagingFolder(InteractiveBaseModel):
             raise Exception(_(u'Unable get list of staging files: %s') % exception)
 
     class Meta(InteractiveBaseModel.Meta):
-        verbose_name = _(u'staging folder')
-        verbose_name_plural = _(u'staging folders')
+        verbose_name = _(u'Staging folder')
+        verbose_name_plural = _(u'Staging folders')
 
 
 class WebForm(InteractiveBaseModel):
@@ -191,22 +191,22 @@ class WebForm(InteractiveBaseModel):
     source_type = SOURCE_CHOICE_WEB_FORM
     default_icon = SOURCE_ICON_DISK
 
-    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     # Default path
 
     class Meta(InteractiveBaseModel.Meta):
-        verbose_name = _(u'web form')
-        verbose_name_plural = _(u'web forms')
+        verbose_name = _(u'Web form')
+        verbose_name_plural = _(u'Web forms')
 
 
 class WatchFolder(BaseModel):
     is_interactive = False
     source_type = SOURCE_CHOICE_WATCH
 
-    folder_path = models.CharField(max_length=255, verbose_name=_(u'folder path'), help_text=_(u'Server side filesystem path.'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
-    delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
-    interval = models.PositiveIntegerField(verbose_name=_(u'interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
+    folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'Delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
+    interval = models.PositiveIntegerField(verbose_name=_(u'Interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
 
     def save(self, *args, **kwargs):
         if self.pk:
@@ -230,8 +230,8 @@ class WatchFolder(BaseModel):
         print 'execute: %s' % self.internal_name()
 
     class Meta(BaseModel.Meta):
-        verbose_name = _(u'watch folder')
-        verbose_name_plural = _(u'watch folders')
+        verbose_name = _(u'Watch folder')
+        verbose_name_plural = _(u'Watch folders')
 
 
 class ArgumentsValidator(object):
@@ -263,9 +263,9 @@ class SourceTransformation(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
-    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'order'), db_index=True)
-    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
+    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'Order'), db_index=True)
+    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'Transformation'))
+    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'Arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
 
     objects = models.Manager()
     transformations = SourceTransformationManager()
@@ -275,13 +275,13 @@ class SourceTransformation(models.Model):
 
     class Meta:
         ordering = ('order',)
-        verbose_name = _(u'document source transformation')
-        verbose_name_plural = _(u'document source transformations')
+        verbose_name = _(u'Document source transformation')
+        verbose_name_plural = _(u'Document source transformations')
 
 
 class OutOfProcess(BaseModel):
     is_interactive = False
 
     class Meta(BaseModel.Meta):
-        verbose_name = _(u'out of process')
-        verbose_name_plural = _(u'out of process')
+        verbose_name = _(u'Out of process')
+        verbose_name_plural = _(u'Out of process')

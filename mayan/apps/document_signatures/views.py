@@ -57,9 +57,9 @@ def document_verify(request, document_pk):
 
     try:
         if DocumentVersionSignature.objects.has_embedded_signature(document):
-            signature_type = _(u'embedded')
+            signature_type = _(u'Embedded')
         else:
-            signature_type = _(u'detached')
+            signature_type = _(u'Detached')
     except ValueError:
         signature_type = _(u'None')
 
@@ -75,7 +75,7 @@ def document_verify(request, document_pk):
         )
 
     return render_to_response('main/generic_template.html', {
-        'title': _(u'signature properties for: %s') % document,
+        'title': _(u'Signature properties for: %s') % document,
         'object': document,
         'document': document,
         'paragraphs': paragraphs,

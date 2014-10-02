@@ -33,10 +33,10 @@ def history_list(request, object_list=None, title=None, extra_context=None):
 
     context = {
         'object_list': final_object_list,
-        'title': title if title else _(u'history events'),
+        'title': title if title else _(u'History events'),
         'extra_columns': [
             {
-                'name': _(u'object link'),
+                'name': _(u'Object link'),
                 'attribute': encapsulate(lambda x: history_entry_object_link(x))
             },
         ],
@@ -64,7 +64,7 @@ def history_for_object(request, app_label, module_name, object_id):
 
     context = {
         'object_list': History.objects.filter(content_type=content_type, object_id=object_id),
-        'title': _(u'history events for: %s') % content_object,
+        'title': _(u'History events for: %s') % content_object,
         'object': content_object,
         'hide_object': True,
     }
@@ -90,7 +90,7 @@ def history_view(request, object_id):
     ])
 
     return render_to_response('main/generic_detail.html', {
-        'title': _(u'details for: %s') % history.get_processed_summary(),
+        'title': _(u'Details for: %s') % history.get_processed_summary(),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -101,5 +101,5 @@ def history_type_list(request, history_type_pk):
     return history_list(
         request,
         object_list=History.objects.filter(history_type=history_type),
-        title=_(u'history events of type: %s') % history_type,
+        title=_(u'History events of type: %s') % history_type,
     )

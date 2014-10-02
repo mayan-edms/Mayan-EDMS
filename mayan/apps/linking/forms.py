@@ -41,6 +41,7 @@ class SmartLinkImageWidget(forms.widgets.Widget):
                 })
             output.append(u'</div>')
 
+        # TODO: Move CSS markup outside of forms.py
         output.append(u'<div style="white-space:nowrap; overflow: auto;">')
         for document in value['documents']:
             output.append(u'<div style="display: inline-block; margin: 0px 10px 10px 10px; %s">' % (u'border: 5px solid black; padding: 3px;' if value['current_document'] == document else u''))

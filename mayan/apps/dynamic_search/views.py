@@ -41,7 +41,7 @@ def results(request, extra_context=None):
             model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search(request.GET)
 
         if shown_result_count != result_count:
-            title = _(u'results, (showing only %(shown_result_count)s out of %(result_count)s)') % {
+            title = _(u'Results, (showing only %(shown_result_count)s out of %(result_count)s)') % {
                 'shown_result_count': shown_result_count,
                 'result_count': result_count}
 
@@ -63,7 +63,7 @@ def results(request, extra_context=None):
 
     if SHOW_OBJECT_TYPE:
         context.update({'extra_columns':
-            [{'name': _(u'type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]})
+            [{'name': _(u'Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]})
 
     return render_to_response('search_results.html', context,
                           context_instance=RequestContext(request))
@@ -75,7 +75,7 @@ def search(request, advanced=False):
         return render_to_response('main/generic_form.html',
             {
                 'form': form,
-                'title': _(u'advanced search'),
+                'title': _(u'Advanced search'),
                 'form_action': reverse('search:results'),
                 'submit_method': 'GET',
                 'search_results_limit': LIMIT,

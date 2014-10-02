@@ -89,7 +89,7 @@ class Key(object):
         return u', '.join(self.uids)
 
     def __str__(self):
-        return '%s "%s" (%s)' % (self.key_id, self.user_ids, KEY_TYPES.get(self.type, _(u'unknown')))
+        return '%s "%s" (%s)' % (self.key_id, self.user_ids, KEY_TYPES.get(self.type, _(u'Unknown')))
 
     def __unicode__(self):
         return unicode(self.__str__())

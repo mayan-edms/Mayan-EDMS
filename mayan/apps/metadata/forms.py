@@ -24,7 +24,7 @@ class MetadataForm(forms.Form):
             required_string = u''
             if required:
                 self.fields['value'].required = True
-                required_string = ' (%s)' % _(u'required')
+                required_string = ' (%s)' % _(u'Required')
             else:
                 # TODO: FIXME: not working correctly
                 self.fields['value'].required = False

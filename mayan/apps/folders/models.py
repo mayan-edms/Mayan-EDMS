@@ -7,9 +7,9 @@ from documents.models import Document
 
 
 class Folder(models.Model):
-    title = models.CharField(max_length=128, verbose_name=_(u'title'), db_index=True)
-    user = models.ForeignKey(User, verbose_name=_(u'user'))
-    datetime_created = models.DateTimeField(verbose_name=_(u'datetime created'))
+    title = models.CharField(max_length=128, verbose_name=_(u'Title'), db_index=True)
+    user = models.ForeignKey(User, verbose_name=_(u'User'))
+    datetime_created = models.DateTimeField(verbose_name=_(u'Datetime created'))
 
     def __unicode__(self):
         return self.title
@@ -38,17 +38,17 @@ class Folder(models.Model):
     class Meta:
         unique_together = ('title', 'user')
         ordering = ('title',)
-        verbose_name = _(u'folder')
-        verbose_name_plural = _(u'folders')
+        verbose_name = _(u'Folder')
+        verbose_name_plural = _(u'Folders')
 
 
 class FolderDocument(models.Model):
-    folder = models.ForeignKey(Folder, verbose_name=_('folder'))
-    document = models.ForeignKey(Document, verbose_name=_('document'))
+    folder = models.ForeignKey(Folder, verbose_name=_('Folder'))
+    document = models.ForeignKey(Document, verbose_name=_('Document'))
 
     def __unicode__(self):
         return unicode(self.document)
 
     class Meta:
-        verbose_name = _(u'folder document')
-        verbose_name_plural = _(u'folders documents')
+        verbose_name = _(u'Folder document')
+        verbose_name_plural = _(u'Folders documents')

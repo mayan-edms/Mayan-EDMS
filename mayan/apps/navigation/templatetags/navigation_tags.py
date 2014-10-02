@@ -240,7 +240,7 @@ def get_object_navigation_links(parser, token):
 
     m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
     if not m:
-        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+        raise TemplateSyntaxError('%r tag had invalid arguments' % tag_name)
 
     menu_name, var_name = m.groups()
     return GetNavigationLinks(menu_name=menu_name, var_name=var_name)
@@ -261,7 +261,7 @@ def get_multi_item_links(parser, token):
     tag_name, arg = token.contents.split(None, 1)
     m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
     if not m:
-        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+        raise TemplateSyntaxError('%r tag had invalid arguments' % tag_name)
 
     menu_name, var_name = m.groups()
     return GetNavigationLinks(menu_name=menu_name, links_dict=multi_object_navigation, var_name=var_name)
@@ -296,7 +296,7 @@ def get_sidebar_templates(parser, token):
 
     m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
     if not m:
-        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+        raise TemplateSyntaxError('%r tag had invalid arguments' % tag_name)
 
     menu_name, var_name = m.groups()
     return GetSidebarTemplatesNone(var_name=var_name)

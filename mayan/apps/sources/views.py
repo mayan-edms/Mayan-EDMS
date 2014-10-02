@@ -108,7 +108,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
     context = {}
 
     if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
-        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'here')))
+        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'Here')))
         subtemplates_list.append(
             {
                 'name': 'main/generic_subtemplate.html',
@@ -202,9 +202,9 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                     instance=document
                 )
             if document:
-                title = _(u'upload a new version from source: %s') % web_form.title
+                title = _(u'Upload a new version from source: %s') % web_form.title
             else:
-                title = _(u'upload a local document from source: %s') % web_form.title
+                title = _(u'Upload a local document from source: %s') % web_form.title
 
             subtemplates_list.append({
                 'name': 'main/generic_form_subtemplate.html',
@@ -289,9 +289,9 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                 staging_filelist = []
             finally:
                 if document:
-                    title = _(u'upload a new version from staging source: %s') % staging_folder.title
+                    title = _(u'Upload a new version from staging source: %s') % staging_folder.title
                 else:
-                    title = _(u'upload a document from staging source: %s') % staging_folder.title
+                    title = _(u'Upload a document from staging source: %s') % staging_folder.title
 
                 subtemplates_list = [
                     {
@@ -304,7 +304,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
                     {
                         'name': 'main/generic_list_subtemplate.html',
                         'context': {
-                            'title': _(u'files in staging path'),
+                            'title': _(u'Files in staging path'),
                             'object_list': staging_filelist,
                             'hide_link': True,
                         }
@@ -451,12 +451,12 @@ def setup_source_edit(request, source_type, source_id):
         form = form_class(instance=source)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit source: %s') % source.fullname(),
+        'title': _(u'Edit source: %s') % source.fullname(),
         'form': form,
         'source': source,
         'navigation_object_name': 'source',
         'next': next,
-        'object_name': _(u'source'),
+        'object_name': _(u'Source'),
         'source_type': source_type,
     },
     context_instance=RequestContext(request))
@@ -496,7 +496,7 @@ def setup_source_delete(request, source_type, source_id):
     context = {
         'title': _(u'Are you sure you wish to delete the source: %s?') % source.fullname(),
         'source': source,
-        'object_name': _(u'source'),
+        'object_name': _(u'Source'),
         'navigation_object_name': 'source',
         'delete_view': True,
         'previous': previous,
@@ -556,15 +556,15 @@ def setup_source_transformation_list(request, source_type, source_id):
 
     context = {
         'object_list': SourceTransformation.transformations.get_for_object(source),
-        'title': _(u'transformations for: %s') % source.fullname(),
+        'title': _(u'Transformations for: %s') % source.fullname(),
         'source': source,
-        'object_name': _(u'source'),
+        'object_name': _(u'Source'),
         'navigation_object_name': 'source',
         'list_object_variable_name': 'transformation',
         'extra_columns': [
-            {'name': _(u'order'), 'attribute': 'order'},
-            {'name': _(u'transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
-            {'name': _(u'arguments'), 'attribute': 'arguments'}
+            {'name': _(u'Order'), 'attribute': 'order'},
+            {'name': _(u'Transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
+            {'name': _(u'Arguments'), 'attribute': 'arguments'}
         ],
         'hide_link': True,
         'hide_object': True,
@@ -599,8 +599,8 @@ def setup_source_transformation_edit(request, transformation_id):
         'source': source_transformation.content_object,
         'transformation': source_transformation,
         'navigation_object_list': [
-            {'object': 'source', 'name': _(u'source')},
-            {'object': 'transformation', 'name': _(u'transformation')}
+            {'object': 'source', 'name': _(u'Source')},
+            {'object': 'transformation', 'name': _(u'Transformation')}
         ],
         'next': next,
     },
@@ -629,8 +629,8 @@ def setup_source_transformation_delete(request, transformation_id):
         'transformation': source_transformation,
         'source': source_transformation.content_object,
         'navigation_object_list': [
-            {'object': 'source', 'name': _(u'source')},
-            {'object': 'transformation', 'name': _(u'transformation')}
+            {'object': 'source', 'name': _(u'Source')},
+            {'object': 'transformation', 'name': _(u'Transformation')}
         ],
         'title': _(u'Are you sure you wish to delete source transformation "%(transformation)s"') % {
             'transformation': source_transformation.get_transformation_display(),
@@ -672,7 +672,7 @@ def setup_source_transformation_create(request, source_type, source_id):
     return render_to_response('main/generic_form.html', {
         'form': form,
         'source': source,
-        'object_name': _(u'source'),
+        'object_name': _(u'Source'),
         'navigation_object_name': 'source',
         'title': _(u'Create new transformation for source: %s') % source,
     }, context_instance=RequestContext(request))

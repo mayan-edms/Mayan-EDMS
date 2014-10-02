@@ -123,16 +123,16 @@ Permission._default_manager = Permission.objects
 
 
 class StoredPermission(models.Model):
-    namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
-    name = models.CharField(max_length=64, verbose_name=_(u'name'))
+    namespace = models.CharField(max_length=64, verbose_name=_(u'Namespace'))
+    name = models.CharField(max_length=64, verbose_name=_(u'Name'))
 
     objects = StoredPermissionManager()
 
     class Meta:
-        ordering = ('namespace', )
+        ordering = ('namespace',)
         unique_together = ('namespace', 'name')
-        verbose_name = _(u'permission')
-        verbose_name_plural = _(u'permissions')
+        verbose_name = _(u'Permission')
+        verbose_name_plural = _(u'Permissions')
 
     def __init__(self, *args, **kwargs):
         super(StoredPermission, self).__init__(*args, **kwargs)
@@ -193,7 +193,7 @@ class StoredPermission(models.Model):
 
 
 class PermissionHolder(models.Model):
-    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
+    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'Permission'))
     holder_type = models.ForeignKey(ContentType,
         related_name='permission_holder',
         limit_choices_to={'model__in': ('user', 'group', 'role')})
@@ -201,8 +201,8 @@ class PermissionHolder(models.Model):
     holder_object = generic.GenericForeignKey(ct_field='holder_type', fk_field='holder_id')
 
     class Meta:
-        verbose_name = _(u'permission holder')
-        verbose_name_plural = _(u'permission holders')
+        verbose_name = _(u'Permission holder')
+        verbose_name_plural = _(u'Permission holders')
 
     def __unicode__(self):
         return u'%s: %s' % (self.holder_type, self.holder_object)
@@ -210,12 +210,12 @@ class PermissionHolder(models.Model):
 
 class Role(models.Model):
     name = models.CharField(max_length=64, unique=True)
-    label = models.CharField(max_length=64, unique=True, verbose_name=_(u'label'))
+    label = models.CharField(max_length=64, unique=True, verbose_name=_(u'Label'))
 
     class Meta:
         ordering = ('label',)
-        verbose_name = _(u'role')
-        verbose_name_plural = _(u'roles')
+        verbose_name = _(u'Role')
+        verbose_name_plural = _(u'Roles')
 
     def __unicode__(self):
         return self.label
@@ -245,7 +245,7 @@ class Role(models.Model):
 
 
 class RoleMember(models.Model):
-    role = models.ForeignKey(Role, verbose_name=_(u'role'))
+    role = models.ForeignKey(Role, verbose_name=_(u'Role'))
     member_type = models.ForeignKey(ContentType,
         related_name='role_member',
         limit_choices_to={
@@ -260,8 +260,8 @@ class RoleMember(models.Model):
     objects = RoleMemberManager()
 
     class Meta:
-        verbose_name = _(u'role member')
-        verbose_name_plural = _(u'role members')
+        verbose_name = _(u'Role member')
+        verbose_name_plural = _(u'Role members')
 
     def __unicode__(self):
         return unicode(self.member_object)

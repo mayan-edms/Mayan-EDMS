@@ -55,7 +55,7 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
 
     return document_list(
         request,
-        title=_(u'documents in smart link: %(group)s') % {
+        title=_(u'Documents in smart link: %(group)s') % {
             'group': object_list['title']
         },
         object_list=object_list['documents'],
@@ -93,7 +93,7 @@ def smart_link_instances_for_document(request, document_id):
         subtemplates_list = [{
             'name': 'main/generic_form_subtemplate.html',
             'context': {
-                'title': _(u'smart links (%s)') % len(smart_link_instances.keys()),
+                'title': _(u'Smart links (%s)') % len(smart_link_instances.keys()),
                 'form': SmartLinkInstanceForm(
                     smart_link_instances=smart_link_instances, current_document=document,
                     links=[smart_link_instance_view_link]
@@ -127,11 +127,11 @@ def smart_link_list(request):
         qs = AccessEntry.objects.filter_objects_by_access(PERMISSION_SMART_LINK_VIEW, request.user, qs)
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'smart links'),
+        'title': _(u'Smart links'),
         'object_list': qs,
         'extra_columns': [
-            {'name': _(u'dynamic title'), 'attribute': 'dynamic_title'},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'Dynamic title'), 'attribute': 'dynamic_title'},
+            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],
         'hide_link': True,
         'list_object_variable_name': 'smart_link',
@@ -223,10 +223,10 @@ def smart_link_condition_list(request, smart_link_pk):
         AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link)
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'conditions for smart link: %s') % smart_link,
+        'title': _(u'Conditions for smart link: %s') % smart_link,
         'object_list': smart_link.smartlinkcondition_set.all(),
         'extra_columns': [
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],
         'hide_link': True,
         'object': smart_link,
@@ -290,8 +290,8 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
         'condition': smart_link_condition,
         'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'object', 'name': _(u'smart link')},
-            {'object': 'condition', 'name': _(u'condition')}
+            {'object': 'object', 'name': _(u'Smart link')},
+            {'object': 'condition', 'name': _(u'Condition')}
         ],
 
     }, context_instance=RequestContext(request))
@@ -324,8 +324,8 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
         'condition': smart_link_condition,
         'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'object', 'name': _(u'smart link')},
-            {'object': 'condition', 'name': _(u'condition')}
+            {'object': 'object', 'name': _(u'Smart link')},
+            {'object': 'condition', 'name': _(u'Condition')}
         ],
         'title': _(u'Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
         'next': next,

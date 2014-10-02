@@ -30,10 +30,10 @@ def queue_document_list(request, queue_name='default'):
 
     context = {
         'object_list': document_queue.queuedocument_set.all(),
-        'title': _(u'documents in queue: %s') % document_queue,
+        'title': _(u'Documents in queue: %s') % document_queue,
         'hide_object': True,
         'queue': document_queue,
-        'object_name': _(u'document queue'),
+        'object_name': _(u'Document queue'),
         'navigation_object_name': 'queue',
         'list_object_variable_name': 'queue_document',
         'extra_columns': [
@@ -51,7 +51,7 @@ def queue_document_list(request, queue_name='default'):
                 'name': 'main/generic_subtemplate.html',
                 'context': {
                     'side_bar': True,
-                    'title': _(u'document queue properties'),
+                    'title': _(u'Document queue properties'),
                     'content': _(u'Current state: %s') % document_queue.get_state_display(),
                 }
             }

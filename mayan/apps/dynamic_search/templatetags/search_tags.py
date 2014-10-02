@@ -34,7 +34,7 @@ def recent_searches_template(context):
         'request': context['request'],
         'STATIC_URL': context['STATIC_URL'],
         'side_bar': True,
-        'title': _(u'recent searches (maximum of %d)') % RECENT_COUNT,
+        'title': _(u'Recent searches (maximum of %d)') % RECENT_COUNT,
         'paragraphs': [
             u'<a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a>' % {
                 'text': rs,

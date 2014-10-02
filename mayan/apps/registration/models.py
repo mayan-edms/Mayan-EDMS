@@ -18,8 +18,8 @@ class RegistrationSingleton(SingletonModel):
     _cached_name = None
     _registered = None
 
-    registered = models.BooleanField(default=False, verbose_name=_('registered'))
-    registration_data = models.TextField(verbose_name=_(u'registration data'), blank=True)
+    registered = models.BooleanField(default=False, verbose_name=_('Registered'))
+    registration_data = models.TextField(verbose_name=_(u'Registration data'), blank=True)
 
     @classmethod
     def registration_state(cls):
@@ -84,4 +84,4 @@ class RegistrationSingleton(SingletonModel):
                 lock.release()
 
     class Meta:
-        verbose_name = verbose_name_plural = _(u'registration properties')
+        verbose_name = verbose_name_plural = _(u'Registration properties')

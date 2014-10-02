@@ -272,9 +272,9 @@ def metadata_view(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'metadata for: %s') % document,
+        'title': _(u'Metadata for: %s') % document,
         'object_list': document.metadata.all(),
-        'extra_columns': [{'name': _(u'value'), 'attribute': 'value'}],
+        'extra_columns': [{'name': _(u'Value'), 'attribute': 'value'}],
         'hide_link': True,
         'object': document,
     }, context_instance=RequestContext(request))
@@ -286,11 +286,11 @@ def setup_metadata_type_list(request):
 
     context = {
         'object_list': MetadataType.objects.all(),
-        'title': _(u'metadata types'),
+        'title': _(u'Metadata types'),
         'hide_link': True,
         'extra_columns': [
             {
-                'name': _(u'internal name'),
+                'name': _(u'Internal name'),
                 'attribute': 'name',
             },
         ]
@@ -319,10 +319,10 @@ def setup_metadata_type_edit(request, metadatatype_id):
         form = MetadataTypeForm(instance=metadata_type)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit metadata type: %s') % metadata_type,
+        'title': _(u'Edit metadata type: %s') % metadata_type,
         'form': form,
         'object': metadata_type,
-        'object_name': _(u'metadata type'),
+        'object_name': _(u'Metadata type'),
     }, context_instance=RequestContext(request))
 
 
@@ -339,7 +339,7 @@ def setup_metadata_type_create(request):
         form = MetadataTypeForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create metadata type'),
+        'title': _(u'Create metadata type'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -365,7 +365,7 @@ def setup_metadata_type_delete(request, metadatatype_id):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'metadata type'),
+        'object_name': _(u'Metadata type'),
         'delete_view': True,
         'next': next,
         'previous': previous,
@@ -383,11 +383,11 @@ def setup_metadata_set_list(request):
 
     context = {
         'object_list': MetadataSet.objects.all(),
-        'title': _(u'metadata sets'),
+        'title': _(u'Metadata sets'),
         'hide_link': True,
         'extra_columns': [
             {
-                'name': _(u'members'),
+                'name': _(u'Members'),
                 'attribute': encapsulate(lambda x: x.metadatasetitem_set.count()),
             },
         ]
@@ -416,10 +416,10 @@ def setup_metadata_set_edit(request, metadata_set_id):
         form = MetadataSetForm(instance=metadata_set)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit metadata set: %s') % metadata_set,
+        'title': _(u'Edit metadata set: %s') % metadata_set,
         'form': form,
         'object': metadata_set,
-        'object_name': _(u'metadata set'),
+        'object_name': _(u'Metadata set'),
     }, context_instance=RequestContext(request))
 
 
@@ -457,11 +457,11 @@ def setup_metadata_set_members(request, metadata_set_id):
         right_list=lambda: generate_choices_w_labels(get_set_members(metadata_set), display_object_type=False),
         add_method=lambda x: add_set_member(metadata_set, x),
         remove_method=lambda x: remove_set_member(metadata_set, x),
-        left_list_title=_(u'non members of metadata set: %s') % metadata_set,
-        right_list_title=_(u'members of metadata set: %s') % metadata_set,
+        left_list_title=_(u'Non members of metadata set: %s') % metadata_set,
+        right_list_title=_(u'Members of metadata set: %s') % metadata_set,
         extra_context={
             'object': metadata_set,
-            'object_name': _(u'metadata set'),
+            'object_name': _(u'Metadata set'),
         }
     )
 
@@ -479,7 +479,7 @@ def setup_metadata_set_create(request):
         form = MetadataSetForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create metadata set'),
+        'title': _(u'Create metadata set'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -505,7 +505,7 @@ def setup_metadata_set_delete(request, metadata_set_id):
             return HttpResponseRedirect(previous)
 
     context = {
-        'object_name': _(u'metadata set'),
+        'object_name': _(u'Metadata set'),
         'delete_view': True,
         'next': next,
         'previous': previous,
@@ -585,12 +585,12 @@ def setup_document_type_metadata(request, document_type_id):
         right_list=lambda: get_document_type_metadata_members(document_type),
         add_method=lambda x: add_document_type_metadata(document_type, x),
         remove_method=lambda x: remove_document_type_metadata(document_type, x),
-        left_list_title=_(u'non members of document type: %s') % document_type,
-        right_list_title=_(u'members of document type: %s') % document_type,
+        left_list_title=_(u'Non members of document type: %s') % document_type,
+        right_list_title=_(u'Members of document type: %s') % document_type,
         extra_context={
             'document_type': document_type,
             'navigation_object_name': 'document_type',
-            'object_name': _(u'document type'),
+            'object_name': _(u'Document type'),
         },
         grouped=True,
     )

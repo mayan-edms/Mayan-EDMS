@@ -27,12 +27,12 @@ class BootstrapSetup(models.Model):
     """
     Model to store the fixture for a pre configured setup.
     """
-    name = models.CharField(max_length=128, verbose_name=_(u'name'), unique=True)
-    slug = models.SlugField(max_length=128, verbose_name=_(u'slug'), unique=True, blank=True)
-    description = models.TextField(verbose_name=_(u'description'), blank=True)
-    fixture = models.TextField(verbose_name=_(u'fixture'), help_text=_(u'These are the actual database structure creation instructions.'))
-    type = models.CharField(max_length=16, verbose_name=_(u'type'), choices=FIXTURE_TYPES_CHOICES)
-    created = models.DateTimeField(verbose_name=_('creation date and time'), default=lambda: now(), editable=False)
+    name = models.CharField(max_length=128, verbose_name=_(u'Name'), unique=True)
+    slug = models.SlugField(max_length=128, verbose_name=_(u'Slug'), unique=True, blank=True)
+    description = models.TextField(verbose_name=_(u'Description'), blank=True)
+    fixture = models.TextField(verbose_name=_(u'Fixture'), help_text=_(u'These are the actual database structure creation instructions.'))
+    type = models.CharField(max_length=16, verbose_name=_(u'Type'), choices=FIXTURE_TYPES_CHOICES)
+    created = models.DateTimeField(verbose_name=_('Creation date and time'), default=lambda: now(), editable=False)
 
     objects = BootstrapSetupManager()
 
@@ -101,6 +101,6 @@ class BootstrapSetup(models.Model):
         return super(BootstrapSetup, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _(u'bootstrap setup')
-        verbose_name_plural = _(u'bootstrap setups')
+        verbose_name = _(u'Bootstrap setup')
+        verbose_name_plural = _(u'Bootstrap setups')
         ordering = ['name']

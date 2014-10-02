@@ -173,4 +173,4 @@ class Installation(SingletonModel):
                 lock.release()
 
     class Meta:
-        verbose_name = verbose_name_plural = _(u'installation details')
+        verbose_name = verbose_name_plural = _(u'Installation details')

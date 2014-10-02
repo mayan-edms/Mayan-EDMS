@@ -54,7 +54,7 @@ def tag_create(request):
         form = TagForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create tag'),
+        'title': _(u'Create tag'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -97,7 +97,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         form = TagListForm(user=request.user)
 
     context = {
-        'object_name': _(u'document'),
+        'object_name': _(u'Document'),
         'form': form,
         'previous': previous,
         'next': next,
@@ -121,7 +121,7 @@ def tag_multiple_attach(request):
 
 def tag_list(request, queryset=None, extra_context=None):
     context = {
-        'title': _(u'tags'),
+        'title': _(u'Tags'),
         'hide_link': True,
         'multi_select_as_buttons': True,
         'hide_object': True,
@@ -175,7 +175,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'tag'),
+        'object_name': _(u'Tag'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -224,10 +224,10 @@ def tag_edit(request, tag_id):
         })
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit tag: %s') % tag,
+        'title': _(u'Edit tag: %s') % tag,
         'form': form,
         'object': tag,
-        'object_name': _(u'tag'),
+        'object_name': _(u'Tag'),
     }, context_instance=RequestContext(request))
 
 
@@ -244,7 +244,7 @@ class TagTaggedItemListView(DocumentListView):
             'hide_links': True,
             'multi_select_as_buttons': True,
             'object': self.get_tag(),
-            'object_name': _(u'tag'),
+            'object_name': _(u'Tag'),
         }
 
 
@@ -259,7 +259,7 @@ def document_tags(request, document_id):
     context = {
         'object': document,
         'document': document,
-        'title': _(u'tags for: %s') % document,
+        'title': _(u'Tags for: %s') % document,
     }
 
     return tag_list(request, queryset=document.tags.all(), extra_context=context)

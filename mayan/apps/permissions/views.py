@@ -28,7 +28,7 @@ from .permissions import (PERMISSION_ROLE_VIEW, PERMISSION_ROLE_EDIT,
 
 
 class RoleCreateView(SingleObjectCreateView):
-    extra_context = {'object_name': _(u'role')}
+    extra_context = {'object_name': _(u'Role')}
     form_class = RoleForm
     model = Role
     permissions_required = [PERMISSION_ROLE_CREATE]
@@ -39,14 +39,14 @@ class RoleDeleteView(SingleObjectDeleteView):
     model = Role
     permissions_required = [PERMISSION_ROLE_DELETE]
     extra_context = {
-        'object_name': _(u'role'),
+        'object_name': _(u'Role'),
         'form_icon': u'medal_gold_delete.png'
     }
     success_url = reverse_lazy('permissions:role_list')
 
 
 class RoleEditView(SingleObjectEditView):
-    extra_context = {'object_name': _(u'role')}
+    extra_context = {'object_name': _(u'Role')}
     model = Role
     permissions_required = [PERMISSION_ROLE_EDIT]
 
@@ -56,7 +56,7 @@ def role_list(request):
 
     context = {
         'object_list': Role.objects.all(),
-        'title': _(u'roles'),
+        'title': _(u'Roles'),
         'hide_link': True,
     }
 
@@ -74,13 +74,13 @@ def role_permissions(request, role_id):
         {
             'name': u'main/generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions'),
+                'title': _(u'Permissions'),
                 'object_list': Permission.objects.all(),
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': encapsulate(lambda x: x.namespace)},
-                    {'name': _(u'name'), 'attribute': encapsulate(lambda x: x.label)},
+                    {'name': _(u'Namespace'), 'attribute': encapsulate(lambda x: x.namespace)},
+                    {'name': _(u'Name'), 'attribute': encapsulate(lambda x: x.label)},
                     {
-                        'name': _(u'has permission'),
+                        'name': _(u'Has permission'),
                         'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role))),
                     },
                 ],
@@ -93,7 +93,7 @@ def role_permissions(request, role_id):
     return render_to_response('main/generic_detail.html', {
         'form': form,
         'object': role,
-        'object_name': _(u'role'),
+        'object_name': _(u'Role'),
         'subtemplates_list': subtemplates_list,
         'multi_select_as_buttons': True,
         'multi_select_item_properties': {
@@ -134,9 +134,9 @@ def permission_grant(request):
     title_suffix = _(u' and ').join([_(u'%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
 
     if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
-        permissions_label = _(u'permission')
+        permissions_label = _(u'Permission')
     else:
-        permissions_label = _(u'permissions')
+        permissions_label = _(u'Permissions')
 
     if request.method == 'POST':
         for item in items:
@@ -307,11 +307,11 @@ def role_members(request, role_id):
         right_list=lambda: get_role_members(role),
         add_method=lambda x: add_role_member(role, x),
         remove_method=lambda x: remove_role_member(role, x),
-        left_list_title=_(u'non members of role: %s') % role,
-        right_list_title=_(u'members of role: %s') % role,
+        left_list_title=_(u'Non members of role: %s') % role,
+        right_list_title=_(u'Members of role: %s') % role,
         extra_context={
             'object': role,
-            'object_name': _(u'role'),
+            'object_name': _(u'Role'),
         },
         grouped=True,
     )

@@ -12,7 +12,7 @@ from .api import setup_items
 def setup_list(request):
     context = {
         'object_list': [button_navigation_widget(request, item) for item in setup_items],
-        'title': _(u'setup items'),
+        'title': _(u'Setup items'),
     }
 
     return render_to_response('main/generic_list_horizontal.html', context,

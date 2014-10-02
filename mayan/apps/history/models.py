@@ -15,14 +15,14 @@ from .runtime_data import history_types_dict
 
 
 class HistoryType(models.Model):
-    namespace = models.CharField(max_length=64, verbose_name=_(u'namespace'))
-    name = models.CharField(max_length=64, verbose_name=_(u'name'))
+    namespace = models.CharField(max_length=64, verbose_name=_(u'Namespace'))
+    name = models.CharField(max_length=64, verbose_name=_(u'Name'))
 
     def __unicode__(self):
         try:
             return unicode(history_types_dict[self.namespace][self.name]['label'])
         except KeyError:
-            return u'obsolete history type: %s - %s' % (self.namespace, self.name)
+            return u'Obsolete history type: %s - %s' % (self.namespace, self.name)
 
     def get_absolute_url(self):
         return reverse('history:history_type_list', args=[self.pk])
@@ -30,17 +30,17 @@ class HistoryType(models.Model):
     class Meta:
         ordering = ('namespace', 'name')
         unique_together = ('namespace', 'name')
-        verbose_name = _(u'history type')
-        verbose_name_plural = _(u'history types')
+        verbose_name = _(u'History type')
+        verbose_name_plural = _(u'History types')
 
 
 class History(models.Model):
-    datetime = models.DateTimeField(verbose_name=_(u'date time'))
+    datetime = models.DateTimeField(verbose_name=_(u'Date time'))
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=True, null=True)
     content_object = generic.GenericForeignKey('content_type', 'object_id')
-    history_type = models.ForeignKey(HistoryType, verbose_name=_(u'history type'))
-    dictionary = models.TextField(verbose_name=_(u'dictionary'), blank=True)
+    history_type = models.ForeignKey(HistoryType, verbose_name=_(u'History type'))
+    dictionary = models.TextField(verbose_name=_(u'Dictionary'), blank=True)
 
     def __unicode__(self):
         return u'%s - %s - %s' % (self.datetime, self.content_object, self.history_type)
@@ -74,8 +74,8 @@ class History(models.Model):
 
     class Meta:
         ordering = ('-datetime',)
-        verbose_name = _(u'history')
-        verbose_name_plural = _(u'histories')
+        verbose_name = _(u'History')
+        verbose_name_plural = _(u'Histories')
 
 
 def _process_history_text(history, text):

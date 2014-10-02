@@ -29,11 +29,11 @@ def bootstrap_setup_list(request):
 
     context = {
         'object_list': BootstrapSetup.objects.all(),
-        'title': _(u'bootstrap setups'),
+        'title': _(u'Bootstrap setups'),
         'hide_link': True,
         'extra_columns': [
-            {'name': _(u'description'), 'attribute': 'description'},
-            {'name': _(u'type'), 'attribute': 'get_type_display'},
+            {'name': _(u'Description'), 'attribute': 'description'},
+            {'name': _(u'Type'), 'attribute': 'get_type_display'},
         ],
     }
 
@@ -56,7 +56,7 @@ def bootstrap_setup_create(request):
         form = BootstrapSetupForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'create bootstrap'),
+        'title': _(u'Create bootstrap'),
         'form': form,
     },
     context_instance=RequestContext(request))
@@ -84,11 +84,11 @@ def bootstrap_setup_edit(request, bootstrap_setup_pk):
         form = BootstrapSetupForm_edit(instance=bootstrap)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'edit bootstrap setup: %s') % bootstrap,
+        'title': _(u'Edit bootstrap setup: %s') % bootstrap,
         'form': form,
         'object': bootstrap,
         'previous': previous,
-        'object_name': _(u'bootstrap setup'),
+        'object_name': _(u'Bootstrap setup'),
     },
     context_instance=RequestContext(request))
 
@@ -117,7 +117,7 @@ def bootstrap_setup_delete(request, bootstrap_setup_pk):
         return HttpResponseRedirect(reverse('bootstrap_setup_list'))
 
     context = {
-        'object_name': _(u'bootstrap setup'),
+        'object_name': _(u'Bootstrap setup'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -142,7 +142,7 @@ def bootstrap_setup_view(request, bootstrap_setup_pk):
     context = {
         'form': form,
         'object': bootstrap,
-        'object_name': _(u'bootstrap setup'),
+        'object_name': _(u'Bootstrap setup'),
     }
 
     return render_to_response('main/generic_detail.html', context,
@@ -170,7 +170,7 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
             return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'bootstrap setup'),
+        'object_name': _(u'Bootstrap setup'),
         'delete_view': False,
         'previous': previous,
         'next': next,
@@ -204,7 +204,7 @@ def bootstrap_setup_dump(request):
         form = BootstrapSetupForm_dump()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'dump current configuration into a bootstrap setup'),
+        'title': _(u'Dump current configuration into a bootstrap setup'),
         'form': form,
     },
     context_instance=RequestContext(request))

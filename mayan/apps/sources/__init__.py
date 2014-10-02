@@ -47,7 +47,7 @@ source_views = ['sources:setup_web_form_list', 'sources:setup_staging_folder_lis
 
 register_model_list_columns(StagingFile, [
     {
-        'name': _(u'thumbnail'), 'attribute':
+        'name': _(u'Thumbnail'), 'attribute':
         encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='sources:staging_list', title=x.filename, size='100'))
     },
 ])

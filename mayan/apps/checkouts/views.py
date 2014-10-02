@@ -32,9 +32,9 @@ def checkout_list(request):
         title=_(u'checked out documents'),
         extra_context={
                 'extra_columns': [
-                    {'name': _(u'checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
-                    {'name': _(u'checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
-                    {'name': _(u'checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
+                    {'name': _(u'Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
+                    {'name': _(u'Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
+                    {'name': _(u'Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
                 ],
         }
     )
@@ -129,7 +129,7 @@ def checkin_document(request, document_pk):
             return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'document'),
+        'object_name': _(u'Document'),
         'delete_view': False,
         'previous': previous,
         'next': next,

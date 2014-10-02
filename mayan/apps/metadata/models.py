@@ -12,15 +12,15 @@ class MetadataType(models.Model):
     """
     Define a type of metadata
     """
-    name = models.CharField(unique=True, max_length=48, verbose_name=_(u'name'), help_text=_(u'Do not use python reserved words, or spaces.'))
-    title = models.CharField(max_length=48, verbose_name=_(u'title'), blank=True, null=True)
+    name = models.CharField(unique=True, max_length=48, verbose_name=_(u'Name'), help_text=_(u'Do not use python reserved words, or spaces.'))
+    title = models.CharField(max_length=48, verbose_name=_(u'Title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
-        verbose_name=_(u'default'),
+        verbose_name=_(u'Default'),
         help_text=_(u'Enter a string to be evaluated.'))
     # TODO: Add enable_lookup boolean to allow users to switch the lookup on and
     # off without losing the lookup expression
     lookup = models.TextField(blank=True, null=True,
-        verbose_name=_(u'lookup'),
+        verbose_name=_(u'Lookup'),
         help_text=_(u'Enter a string to be evaluated that returns an iterable.'))
     # TODO: Add datatype choice: Date, Time, String, Number
     # TODO: Find a different way to let users know what models and functions are
@@ -35,15 +35,15 @@ class MetadataType(models.Model):
 
     class Meta:
         ordering = ('title',)
-        verbose_name = _(u'metadata type')
-        verbose_name_plural = _(u'metadata types')
+        verbose_name = _(u'Metadata type')
+        verbose_name_plural = _(u'Metadata types')
 
 
 class MetadataSet(models.Model):
     """
     Define a group of metadata types
     """
-    title = models.CharField(max_length=48, verbose_name=_(u'title'), unique=True)
+    title = models.CharField(max_length=48, verbose_name=_(u'Title'), unique=True)
 
     objects = MetadataSetManager()
 
@@ -55,8 +55,8 @@ class MetadataSet(models.Model):
 
     class Meta:
         ordering = ('title',)
-        verbose_name = _(u'metadata set')
-        verbose_name_plural = _(u'metadata set')
+        verbose_name = _(u'Metadata set')
+        verbose_name_plural = _(u'Metadata set')
 
 
 class MetadataSetItem(models.Model):
@@ -65,15 +65,15 @@ class MetadataSetItem(models.Model):
     metadata fields
     """
     # TODO: is the metadata set model really necessary?
-    metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'metadata set'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'metadata type'))
+    metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'Metadata set'))
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'Metadata type'))
 
     def __unicode__(self):
         return unicode(self.metadata_type)
 
     class Meta:
-        verbose_name = _(u'metadata set item')
-        verbose_name_plural = _(u'metadata set items')
+        verbose_name = _(u'Metadata set item')
+        verbose_name_plural = _(u'Metadata set items')
 
 
 class DocumentMetadata(models.Model):
@@ -81,16 +81,16 @@ class DocumentMetadata(models.Model):
     Link a document to a specific instance of a metadata type with it's
     current value
     """
-    document = models.ForeignKey(Document, verbose_name=_(u'document'), related_name='metadata')
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'type'))
-    value = models.CharField(max_length=255, blank=True, verbose_name=_(u'value'), db_index=True)
+    document = models.ForeignKey(Document, verbose_name=_(u'Document'), related_name='metadata')
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'Type'))
+    value = models.CharField(max_length=255, blank=True, verbose_name=_(u'Value'), db_index=True)
 
     def __unicode__(self):
         return unicode(self.metadata_type)
 
     class Meta:
-        verbose_name = _(u'document metadata')
-        verbose_name_plural = _(u'document metadata')
+        verbose_name = _(u'Document metadata')
+        verbose_name_plural = _(u'Document metadata')
 
 
 class DocumentTypeDefaults(models.Model):
@@ -98,13 +98,13 @@ class DocumentTypeDefaults(models.Model):
     Default preselected metadata types and metadata set per document
     type
     """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'document type'))
-    default_metadata_sets = models.ManyToManyField(MetadataSet, blank=True, verbose_name=_(u'default metadata sets'))
-    default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'default metadata'))
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'))
+    default_metadata_sets = models.ManyToManyField(MetadataSet, blank=True, verbose_name=_(u'Default metadata sets'))
+    default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'Default metadata'))
 
     def __unicode__(self):
         return unicode(self.document_type)
 
     class Meta:
-        verbose_name = _(u'document type defaults')
-        verbose_name_plural = _(u'document types defaults')
+        verbose_name = _(u'Document type defaults')
+        verbose_name_plural = _(u'Document types defaults')
