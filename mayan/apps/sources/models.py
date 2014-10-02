@@ -23,10 +23,10 @@ from scheduler.api import register_interval_job, remove_job
 
 from .classes import StagingFile
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
-    SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_CHOICE_WEB_FORM,
-    SOURCE_CHOICE_STAGING, SOURCE_ICON_DISK, SOURCE_ICON_DRIVE,
-    SOURCE_ICON_CHOICES, SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICE_Y)
+                       SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+                       SOURCE_CHOICE_WEB_FORM,
+                       SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
+                       SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_Y)
 from .managers import SourceTransformationManager
 
 logger = logging.getLogger(__name__)
@@ -141,13 +141,6 @@ class BaseModel(models.Model):
 
 
 class InteractiveBaseModel(BaseModel):
-    icon = models.CharField(blank=True, null=True, max_length=24, choices=SOURCE_ICON_CHOICES, verbose_name=_(u'Icon'), help_text=_(u'An icon to visually distinguish this source.'))
-
-    def save(self, *args, **kwargs):
-        if not self.icon:
-            self.icon = self.default_icon
-        super(BaseModel, self).save(*args, **kwargs)
-
     class Meta(BaseModel.Meta):
         abstract = True
 
@@ -155,7 +148,6 @@ class InteractiveBaseModel(BaseModel):
 class StagingFolder(InteractiveBaseModel):
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
-    default_icon = SOURCE_ICON_DRIVE
 
     folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
     preview_width = models.IntegerField(verbose_name=_(u'Preview width'), help_text=_(u'Width value to be passed to the converter backend.'))
@@ -189,7 +181,6 @@ class StagingFolder(InteractiveBaseModel):
 class WebForm(InteractiveBaseModel):
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
-    default_icon = SOURCE_ICON_DISK
 
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     # Default path

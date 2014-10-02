@@ -67,7 +67,6 @@ def get_tab_link_for_source(source, document=None):
         'text': source.title,
         'view': view,
         'args': args,
-        'famfam': source.icon,
         'keep_query': True,
         'conditional_highlight': return_function(source),
     }
