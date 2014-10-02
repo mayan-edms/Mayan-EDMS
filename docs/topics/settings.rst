@@ -459,20 +459,6 @@ Default: ``5``
 Maximum number of search queries to remember per user.
 
 
-Web theme
-=========
-
-.. setting:: WEB_THEME_THEME
-
-**WEB_THEME_THEME**
-
-Default: ``activo``
-
-CSS theme to apply, options are: ``amro``, ``bec``, ``bec-green``, ``blue``,
-``default``, ``djime-cerulean``, ``drastic-dark``, ``kathleene``, ``olive``,
-``orange``, ``red``, ``reidb-greenish`` and ``warehouse``.
-
-
 Main
 ====
 

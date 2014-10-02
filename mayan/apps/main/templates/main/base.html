@@ -36,7 +36,7 @@
 
         {% compress css %}
             <link rel="stylesheet" href="{% static 'web_theme_media/stylesheets/base.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" id="current-theme" href="{{ STATIC_URL }}web_theme_media/stylesheets/themes/{{ web_theme|default:'activo' }}/style.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="{% static 'web_theme_media/stylesheets/themes/activo/style.css' %}" type="text/css" media="screen" />
             <style type="text/css">
                 .message span.dismiss {
                     padding:0 5px;
