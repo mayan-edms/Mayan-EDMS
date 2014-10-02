@@ -15,10 +15,10 @@ available_indexing_functions_string = (_(u'Available functions: %s') % u','.join
 
 
 class Index(models.Model):
-    name = models.CharField(unique=True, max_length=64, verbose_name=_(u'name'), help_text=_(u'Internal name used to reference this index.'))
-    title = models.CharField(unique=True, max_length=128, verbose_name=_(u'title'), help_text=_(u'The name that will be visible to users.'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this index to be visible and updated when document data changes.'))
-    document_types = models.ManyToManyField(DocumentType, verbose_name=_(u'document types'))
+    name = models.CharField(unique=True, max_length=64, verbose_name=_(u'Name'), help_text=_(u'Internal name used to reference this index.'))
+    title = models.CharField(unique=True, max_length=128, verbose_name=_(u'Title'), help_text=_(u'The name that will be visible to users.'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'), help_text=_(u'Causes this index to be visible and updated when document data changes.'))
+    document_types = models.ManyToManyField(DocumentType, verbose_name=_(u'Document types'))
 
     objects = IndexManager()
 
@@ -60,17 +60,17 @@ class Index(models.Model):
             return 0
 
     class Meta:
-        verbose_name = _(u'index')
-        verbose_name_plural = _(u'indexes')
+        verbose_name = _(u'Index')
+        verbose_name_plural = _(u'Indexes')
 
 
 class IndexTemplateNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='index_template_node')
-    index = models.ForeignKey(Index, verbose_name=_(u'index'))
-    expression = models.CharField(max_length=128, verbose_name=_(u'indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
+    index = models.ForeignKey(Index, verbose_name=_(u'Index'))
+    expression = models.CharField(max_length=128, verbose_name=_(u'Indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
     # % available_indexing_functions_string)
-    enabled = models.BooleanField(default=True, verbose_name=_(u'enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
-    link_documents = models.BooleanField(default=False, verbose_name=_(u'link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
+    enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
+    link_documents = models.BooleanField(default=False, verbose_name=_(u'Link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
     def __unicode__(self):
         return self.expression
@@ -80,15 +80,15 @@ class IndexTemplateNode(MPTTModel):
         return self.indexinstancenode_set.get()
 
     class Meta:
-        verbose_name = _(u'index template node')
-        verbose_name_plural = _(u'indexes template nodes')
+        verbose_name = _(u'Index template node')
+        verbose_name_plural = _(u'Indexes template nodes')
 
 
 class IndexInstanceNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='index_instance_node')
-    index_template_node = models.ForeignKey(IndexTemplateNode, verbose_name=_(u'index template node'))
-    value = models.CharField(max_length=128, blank=True, verbose_name=_(u'value'))
-    documents = models.ManyToManyField(Document, verbose_name=_(u'documents'))
+    index_template_node = models.ForeignKey(IndexTemplateNode, verbose_name=_(u'Index template node'))
+    value = models.CharField(max_length=128, blank=True, verbose_name=_(u'Value'))
+    documents = models.ManyToManyField(Document, verbose_name=_(u'Documents'))
 
     def __unicode__(self):
         return self.value
@@ -98,18 +98,18 @@ class IndexInstanceNode(MPTTModel):
         return ('index_instance_node_view', [self.pk])
 
     class Meta:
-        verbose_name = _(u'index instance node')
-        verbose_name_plural = _(u'indexes instance nodes')
+        verbose_name = _(u'Index instance node')
+        verbose_name_plural = _(u'Indexes instance nodes')
 
 
 class DocumentRenameCount(models.Model):
-    index_instance_node = models.ForeignKey(IndexInstanceNode, verbose_name=_(u'index instance'))
-    document = models.ForeignKey(Document, verbose_name=_(u'document'))
-    suffix = models.PositiveIntegerField(blank=True, verbose_name=(u'suffix'))
+    index_instance_node = models.ForeignKey(IndexInstanceNode, verbose_name=_(u'Index instance'))
+    document = models.ForeignKey(Document, verbose_name=_(u'Document'))
+    suffix = models.PositiveIntegerField(blank=True, verbose_name=(u'Suffix'))
 
     def __unicode__(self):
         return u'%s - %s - %s' % (self.index_instance_node, self.document, self.suffix or u'0')
 
     class Meta:
-        verbose_name = _(u'document rename count')
-        verbose_name_plural = _(u'documents rename count')
+        verbose_name = _(u'Document rename count')
+        verbose_name_plural = _(u'Documents rename count')

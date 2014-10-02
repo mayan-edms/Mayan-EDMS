@@ -82,7 +82,7 @@ def node_level(x):
             [
                 u'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(x, x._mptt_meta.level_attr) - 1),
                 u'' if x.is_root_node() else u'',
-                ugettext('root') if x.is_root_node() else unicode(x)
+                ugettext('Root') if x.is_root_node() else unicode(x)
             ]
         )
     )
