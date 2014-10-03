@@ -50,9 +50,9 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
         self.condition_dict = {'2': DocumentCreateWizard.has_metadata_types}
 
         self.step_titles = [
-            _(u'step 1 of 3: Document type'),
-            _(u'step 2 of 3: Metadata selection'),
-            _(u'step 3 of 3: Document metadata'),
+            _(u'Step 1 of 3: Document type'),
+            _(u'Step 2 of 3: Metadata selection'),
+            _(u'Step 3 of 3: Document metadata'),
         ]
 
     def get_form_initial(self, step):
