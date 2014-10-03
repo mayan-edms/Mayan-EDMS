@@ -11,7 +11,6 @@ from django.db.models import Q
 from django.utils.timezone import now
 
 from documents.models import Document
-from job_processor.api import process_job
 from lock_manager import Lock, LockError
 from mayan.celery import app
 

@@ -19,7 +19,6 @@ from documents.events import HISTORY_DOCUMENT_CREATED
 from documents.models import Document
 from history.api import create_history
 from metadata.api import save_metadata_list
-from scheduler.api import register_interval_job, remove_job
 
 from .classes import StagingFile
 from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
