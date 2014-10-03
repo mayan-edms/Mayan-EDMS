@@ -30,14 +30,14 @@ except sh.CommandNotFound:
     UNPAPER = None
 
 
-def do_document_ocr(queue_document):
+def do_document_ocr(document):
     """
     Try first to extract text from document pages using the registered
     parser, if the parser fails or if there is no parser registered for
     the document mimetype do a visual OCR by calling the corresponding
     OCR backend
     """
-    for document_page in queue_document.document.pages.all():
+    for document_page in document.pages.all():
         try:
             # Try to extract text by means of a parser
             parse_document_page(document_page)
@@ -73,9 +73,6 @@ def do_document_ocr(queue_document):
                 document_page.content = ocr_cleanup(ocr_text)
                 document_page.page_label = _(u'Text from OCR')
                 document_page.save()
-            except Exception as e:
-                logger.debug('missing ocr backend: %s' % ocr_backend)
-                logger.debug('I/O error({0}): {1}'.format(e.errno, e.strerror))
             finally:
                 fs_cleanup(pre_ocr_filepath_w_ext)
                 fs_cleanup(unpaper_input)

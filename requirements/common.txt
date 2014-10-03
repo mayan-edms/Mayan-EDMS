@@ -1,8 +1,10 @@
 APScheduler==2.1.2
 
+celery==3.1.15
 cssmin==0.2.0
 
 Django==1.6.5
+django-celery==3.1.16
 django-filetransfers==0.1.0
 django-pagination==1.0.7
 django-compressor==1.4

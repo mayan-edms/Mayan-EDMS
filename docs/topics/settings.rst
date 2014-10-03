@@ -288,25 +288,6 @@ Default: ``eng``
 Language code passed to the ``tesseract`` executable.
 
 
-.. setting:: OCR_REPLICATION_DELAY
-
-**OCR_REPLICATION_DELAY**
-
-Default: ``0``
-
-Amount of seconds to delay OCR of documents to allow for the node's
-storage replication overhead.
-
-
-.. setting:: OCR_NODE_CONCURRENT_EXECUTION
-
-**OCR_NODE_CONCURRENT_EXECUTION**
-
-Default: ``1``
-
-Maximum amount of concurrent document OCRs a node can perform.
-
-
 .. setting:: OCR_AUTOMATIC_OCR
 
 **OCR_AUTOMATIC_OCR**
@@ -315,13 +296,6 @@ Default: ``True``
 
 Automatically queue newly created documents or newly uploaded versions
 of existing documents for OCR.
-
-
-.. setting:: OCR_QUEUE_PROCESSING_INTERVAL
-
-**OCR_QUEUE_PROCESSING_INTERVAL**
-
-Default: ``10``
 
 
 .. setting:: OCR_UNPAPER_PATH

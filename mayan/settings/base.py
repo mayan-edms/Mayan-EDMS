@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 3rd party
     'south',
+    'kombu.transport.django',
+    'djcelery',
     'rest_framework_swagger',
     'filetransfers',
     'taggit',
@@ -258,3 +260,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
+# ----------- Celery ----------
+BROKER_URL = 'django://'
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'

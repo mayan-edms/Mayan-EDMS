@@ -14,7 +14,7 @@ class QueueDocumentInline(admin.StackedInline):
 
 class DocumentQueueAdmin(admin.ModelAdmin):
     inlines = [QueueDocumentInline]
-    list_display = ('name', 'label', 'state')
+    list_display = ('name', 'label')
 
 
 admin.site.register(DocumentQueue, DocumentQueueAdmin)
