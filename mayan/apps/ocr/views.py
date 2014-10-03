@@ -120,7 +120,7 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
     This view is meant to be reusable
     """
 
-    task_do_ocr.delay(document.pk)
+    task_do_ocr.apply_async(args=[document.pk], queue='ocr')
     messages.success(request, _(u'Document: %(document)s was added to the OCR queue.') % {
         'document': document}
     )

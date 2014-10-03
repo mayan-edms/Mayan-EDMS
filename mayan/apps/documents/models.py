@@ -125,7 +125,8 @@ class Document(models.Model):
         else:
             document_version = DocumentVersion.objects.get(pk=version)
             document_file = document_save_to_temp_dir(document_version, document_version.checksum)
-            return convert(document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
+            task = task_convert.apply_async(kwargs=dict(input_filepath=document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype), queue='converter')
+            return task.get(timeout=CONVERTER_TASK_TIMEOUT)
 
     def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
         if not version:
@@ -134,7 +135,7 @@ class Document(models.Model):
 
         logger.debug('image_cache_name: %s' % image_cache_name)
 
-        task = task_convert.delay(image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
+        task = task_convert.apply_async(kwargs=dict(input_filepath=image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation), queue='converter')
         return task.get(timeout=CONVERTER_TASK_TIMEOUT)
 
     def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):

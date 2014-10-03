@@ -42,7 +42,7 @@ def document_post_save(sender, instance, **kwargs):
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-            task_do_ocr(instance.document.pk)
+            task_do_ocr.apply_async(args=[instance.document.pk], queue='ocr')
 
 
 @receiver(post_migrate, dispatch_uid='create_default_queue')

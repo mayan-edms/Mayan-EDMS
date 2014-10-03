@@ -50,5 +50,6 @@ app.conf.CELERYBEAT_SCHEDULE.update({
     'check_expired_check_outs': {
         'task': 'checkouts.tasks.task_check_expired_check_outs',
         'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
+        'options': {'queue': 'checkouts'}
     },
 })
