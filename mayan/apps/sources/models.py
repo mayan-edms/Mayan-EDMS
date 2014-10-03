@@ -103,8 +103,10 @@ class Source(models.Model):
 
             document.save()
 
+            # TODO: move this to the Document model
             apply_default_acls(document, user)
 
+            # TODO: move this to the Document model
             if user:
                 document.add_as_recent_document_for_user(user)
                 create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
