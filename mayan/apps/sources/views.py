@@ -33,6 +33,7 @@ from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
                           PERMISSION_SOURCES_SETUP_VIEW)
+from .tasks import task_upload_document
 
 
 def document_create_siblings(request, document_id):
@@ -170,43 +171,43 @@ def upload_interactive(request, source_id=None, document_pk=None):
 
                     if isinstance(source, WebFormSource):
                         file_object = request.FILES['file']
+                        staging_file = None
                     else:
                         staging_file = source.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
                         file_object = staging_file.as_file()
 
-                    result = source.upload_file(
-                        file_object,
-                        new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
-                        document_type=document_type,
+                    if document_type:
+                        document_type_id = document_type.pk
+                    else:
+                        document_type_id = None
+
+                    if document:
+                        document_id = document.pk
+                    else:
+                        document_id = None
+
+                    task_upload_document.apply_async(kwargs=dict(
+                        source_id=source.pk,
+                        file_object=file_object, filename=new_filename,
+                        use_file_name=form.cleaned_data.get('use_file_name', False),
+                        document_type_id=document_type_id,
                         expand=expand,
                         metadata_dict_list=decode_metadata_from_url(request.GET),
                         user=request.user,
-                        document=document,
+                        document_id=document_id,
                         new_version_data=form.cleaned_data.get('new_version_data'),
-                        description=form.cleaned_data.get('description')
-                    )
+                        description=form.cleaned_data.get('description'),
+                        staging_file=None
+                    ), queue='uploads')
 
-                    if isinstance(source, StagingFolderSource):
-                        if source.delete_after_upload:
-                            staging_file.delete()
-                            messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
-
+                    # TODO: Notify user
                     if document:
-                        messages.success(request, _(u'New document version uploaded successfully.'))
+                        messages.success(request, _(u'New document version queued for uploaded and will be available shortly.'))
                         return HttpResponseRedirect(reverse('documents:document_version_list', args=[document.pk]))
                     else:
-                        if result['is_compressed'] is None:
-                            messages.success(request, _(u'File uploaded successfully.'))
-
-                        if result['is_compressed'] is True:
-                            messages.success(request, _(u'File uncompressed successfully and uploaded as individual files.'))
-
-                        if result['is_compressed'] is False:
-                            messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
+                        messages.success(request, _(u'New document version queued for uploaded and will be available shortly.'))
 
                         return HttpResponseRedirect(request.get_full_path())
-                except NewDocumentVersionNotAllowed:
-                    messages.error(request, _(u'New version uploads are not allowed for this document.'))
                 except Exception as exception:
                     if settings.DEBUG:
                         raise
