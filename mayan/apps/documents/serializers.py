@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from rest_framework import serializers
 
-from .models import Document, DocumentVersion, DocumentPage
+from .models import Document, DocumentVersion, DocumentPage, DocumentType
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
@@ -29,4 +29,13 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     new_version = serializers.HyperlinkedIdentityField(view_name='document-new-version')
 
     class Meta:
+        fields = ('id', 'url', 'image', 'new_version', 'uuid', 'document_type', 'description', 'date_added', 'versions')
         model = Document
+
+
+class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
+    documents = DocumentSerializer(many=True, required=False)
+
+    class Meta:
+        model = DocumentType
+        fields = ('id', 'url', 'name', 'documents')

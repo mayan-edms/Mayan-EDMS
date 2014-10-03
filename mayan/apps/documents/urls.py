@@ -3,7 +3,8 @@ from __future__ import absolute_import
 from django.conf.urls import patterns, url
 
 from .api_views import (APIDocumentView, APIDocumentImageView, APIDocumentListView,
-                        APIDocumentPageView, APIDocumentVersionCreateView,
+                        APIDocumentPageView, APIDocumentTypeListView,
+                        APIDocumentTypeView, APIDocumentVersionCreateView,
                         APIDocumentVersionView)
 from .settings import PRINT_SIZE, DISPLAY_SIZE
 from .views import DocumentListView
@@ -77,4 +78,6 @@ api_urls = patterns('',
     url(r'^document_page/(?P<pk>[0-9]+)/$', APIDocumentPageView.as_view(), name='documentpage-detail'),
     url(r'^documents/(?P<pk>[0-9]+)/image/$', APIDocumentImageView.as_view(), name='document-image'),
     url(r'^documents/(?P<pk>[0-9]+)/new_version/$', APIDocumentVersionCreateView.as_view(), name='document-new-version'),
+    url(r'^documenttypes/$', APIDocumentTypeListView.as_view(), name='documenttype-list'),
+    url(r'^documenttypes/(?P<pk>[0-9]+)/$', APIDocumentTypeView.as_view(), name='documenttype-detail'),
 )

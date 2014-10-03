@@ -1,21 +1,20 @@
 from __future__ import absolute_import
 
 from rest_framework import serializers
-from taggit.models import Tag
+
+from .models import Folder
 
 
-class TagSerializer(serializers.HyperlinkedModelSerializer):
+class FolderSerializer(serializers.HyperlinkedModelSerializer):
     # FIXME: Doing a: from documents.serializers import DocumentSerializer
     # causes an unexplained ImportError, so we import it hidden until the issue
     # is resolved
 
     def __init__(self, *args, **kwargs):
         from documents.serializers import DocumentSerializer
-        super(TagSerializer, self).__init__(*args, **kwargs)
+        super(FolderSerializer, self).__init__(*args, **kwargs)
         self.fields['documents'] = DocumentSerializer()
 
-    color = serializers.CharField(source='properties.get.color')
-
     class Meta:
-        fields = ('id', 'url', 'name', 'color', 'slug')
-        model = Tag
+        fields = ('id', 'url', 'title', 'user', 'datetime_created')
+        model = Folder

@@ -213,7 +213,7 @@ def tag_edit(request, tag_id):
         if form.is_valid():
             tag.name = form.cleaned_data['name']
             tag.save()
-            tag_properties = tag.tagproperties_set.get()
+            tag_properties = tag.properties.get()
             tag_properties.color = form.cleaned_data['color']
             tag_properties.save()
             messages.success(request, _(u'Tag updated succesfully.'))
@@ -237,7 +237,7 @@ class TagTaggedItemListView(DocumentListView):
         return get_object_or_404(Tag, pk=self.kwargs['pk'])
 
     def get_queryset(self):
-        return Document.objects.filter(tags__in=[self.get_tag()])
+        return self.get_tag.documents.all()
 
     def get_extra_context(self):
         return {

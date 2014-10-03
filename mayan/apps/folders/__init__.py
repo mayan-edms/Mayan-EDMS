@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
@@ -9,6 +9,7 @@ from documents.models import Document
 from navigation.api import (register_links, register_model_list_columns,
                             register_multi_item_links,
                             register_sidebar_template, register_top_menu)
+from rest_api.classes import APIEndPoint
 
 from .links import (folder_list, folder_create, folder_edit, folder_delete,
     folder_document_multiple_remove, folder_view, folder_add_document,
@@ -18,6 +19,7 @@ from .models import Folder
 from .permissions import (PERMISSION_FOLDER_EDIT,
     PERMISSION_FOLDER_DELETE, PERMISSION_FOLDER_REMOVE_DOCUMENT,
     PERMISSION_FOLDER_VIEW, PERMISSION_FOLDER_ADD_DOCUMENT)
+from .urls import api_urls
 
 register_multi_item_links(['folders:folder_view'], [folder_document_multiple_remove])
 
@@ -52,3 +54,12 @@ register_model_list_columns(Folder, [
     {'name': _(u'Created'), 'attribute': 'datetime_created'},
     {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())},
 ])
+
+def document_folders(self):
+    return Folder.objects.filter(folderdocument__document=self)
+
+Document.add_to_class('folders', property(document_folders))
+
+endpoint = APIEndPoint('folders')
+endpoint.register_urls(api_urls)
+endpoint.add_endpoint('folder-list', _(u'Returns a list of all the folders.'))

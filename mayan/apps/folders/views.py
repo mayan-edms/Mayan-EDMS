@@ -221,9 +221,9 @@ def document_folder_list(request, document_id):
         'object': document,
         'multi_select_as_buttons': True,
         'hide_link': True,
-        }
+    }
 
-    queryset=Folder.objects.filter(folderdocument__document=document)
+    queryset = document.folders.all()
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_VIEW])

@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.staticfiles',
     # 3rd party
+    'corsheaders',
     'south',
     'kombu.transport.django',
     'djcelery',
@@ -99,6 +100,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -263,3 +265,5 @@ BROKER_URL = 'django://'
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
+#------------ CORS ------------
+CORS_ORIGIN_ALLOW_ALL = True
