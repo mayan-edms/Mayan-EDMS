@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+import tempfile
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
@@ -186,9 +188,19 @@ def upload_interactive(request, source_id=None, document_pk=None):
                     else:
                         document_id = None
 
+                    temporary_file = tempfile.NamedTemporaryFile(delete=False)
+                    for chunk in file_object.chunks():
+                        temporary_file.write(chunk)
+
+                    temporary_file.close()
+
+                    if isinstance(source, StagingFolderSource):
+                        if source.delete_after_upload:
+                            staging_file.delete()
+
                     task_upload_document.apply_async(kwargs=dict(
                         source_id=source.pk,
-                        file_object=file_object, filename=new_filename,
+                        file_path=temporary_file.name, filename=new_filename,
                         use_file_name=form.cleaned_data.get('use_file_name', False),
                         document_type_id=document_type_id,
                         expand=expand,
@@ -197,7 +209,6 @@ def upload_interactive(request, source_id=None, document_pk=None):
                         document_id=document_id,
                         new_version_data=form.cleaned_data.get('new_version_data'),
                         description=form.cleaned_data.get('description'),
-                        staging_file=None
                     ), queue='uploads')
 
                     # TODO: Notify user
