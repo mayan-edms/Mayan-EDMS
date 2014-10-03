@@ -2,8 +2,8 @@ from __future__ import absolute_import
 
 from django.contrib import admin
 
-from .models import StagingFolder, SourceTransformation, WebForm
+from .models import StagingFolderSource, SourceTransformation, WebFormSource
 
-admin.site.register(StagingFolder)
+admin.site.register(StagingFolderSource)
 admin.site.register(SourceTransformation)
-admin.site.register(WebForm)
+admin.site.register(WebFormSource)

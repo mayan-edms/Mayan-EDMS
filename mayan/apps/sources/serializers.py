@@ -5,7 +5,7 @@ import logging
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from .models import StagingFolder
+from .models import StagingFolderSource
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +33,7 @@ class StagingFolderSerializer(serializers.HyperlinkedModelSerializer):
             return []
 
     class Meta:
-        model = StagingFolder
+        model = StagingFolderSource
 
 
 class StagingSourceFileImageSerializer(serializers.Serializer):

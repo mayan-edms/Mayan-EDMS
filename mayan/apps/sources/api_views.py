@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from documents.settings import (DISPLAY_SIZE, ZOOM_MAX_LEVEL,
                                 ZOOM_MIN_LEVEL)
 
-from .models import StagingFolder
+from .models import StagingFolderSource
 from .serializers import (StagingFolderFileSerializer, StagingFolderSerializer,
                           StagingSourceFileImageSerializer)
 
@@ -23,7 +23,7 @@ class APIStagingSourceFileView(generics.GenericAPIView):
     serializer_class = StagingFolderFileSerializer
 
     def get(self, request, staging_folder_pk, encoded_filename):
-        staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
+        staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
         return Response(StagingFolderFileSerializer(staging_folder.get_file(encoded_filename=encoded_filename), context={'request': request}).data)
 
 
@@ -33,7 +33,7 @@ class APIStagingSourceListView(generics.ListAPIView):
     """
 
     serializer_class = StagingFolderSerializer
-    queryset = StagingFolder.objects.all()
+    queryset = StagingFolderSource.objects.all()
 
 
 class APIStagingSourceView(generics.RetrieveAPIView):
@@ -41,7 +41,7 @@ class APIStagingSourceView(generics.RetrieveAPIView):
     Details of the selected staging folders and the files it contains.
     """
     serializer_class = StagingFolderSerializer
-    queryset = StagingFolder.objects.all()
+    queryset = StagingFolderSource.objects.all()
 
 
 class APIStagingSourceFileImageView(generics.GenericAPIView):
@@ -55,7 +55,7 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
     serializer_class = StagingSourceFileImageSerializer
 
     def get(self, request, staging_folder_pk, encoded_filename):
-        staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
+        staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
         staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
 
         size = request.GET.get('size', DISPLAY_SIZE)

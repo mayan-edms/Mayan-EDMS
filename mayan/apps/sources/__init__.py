@@ -10,14 +10,16 @@ from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
 from .links import (document_create_multiple, document_create_siblings,
-    staging_file_delete, setup_sources, setup_web_form_list,
-    setup_staging_folder_list, setup_watch_folder_list,
-    setup_source_edit, setup_source_delete, setup_source_create,
-    setup_source_transformation_list, setup_source_transformation_create,
-    setup_source_transformation_edit, setup_source_transformation_delete,
-    upload_version)
-from .models import (WebForm, StagingFolder, SourceTransformation,
-    WatchFolder)
+                    setup_sources, setup_web_form_list, setup_source_create,
+                    setup_source_delete, setup_source_edit,
+                    setup_source_transformation_create,
+                    setup_source_transformation_delete,
+                    setup_source_transformation_edit,
+                    setup_source_transformation_list,
+                    setup_staging_folder_list, setup_watch_folder_list,
+                    staging_file_delete, upload_version)
+from .models import (SourceTransformation, StagingFolderSource,
+                     WatchFolderSource, WebFormSource)
 from .urls import api_urls
 from .widgets import staging_file_thumbnail
 
@@ -27,16 +29,16 @@ register_links(SourceTransformation, [setup_source_transformation_edit, setup_so
 
 register_links(['sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_create'], [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
 
-register_links(WebForm, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
-register_links(WebForm, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+register_links(WebFormSource, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
+register_links(WebFormSource, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 register_links(['sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_edit', 'sources:setup_source_delete', 'sources:setup_source_create'], [setup_sources, setup_source_create], menu_name='sidebar')
 
-register_links(StagingFolder, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
-register_links(StagingFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+register_links(StagingFolderSource, [setup_web_form_list, setup_staging_folder_list], menu_name='form_header')
+register_links(StagingFolderSource, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
-register_links(WatchFolder, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
-register_links(WatchFolder, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+register_links(WatchFolderSource, [setup_web_form_list, setup_staging_folder_list, setup_watch_folder_list], menu_name='form_header')
+register_links(WatchFolderSource, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
 
 # Document version
 register_links(['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'], [upload_version], menu_name='sidebar')

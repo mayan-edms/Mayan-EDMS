@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
-from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -28,7 +27,8 @@ from .forms import (StagingDocumentForm, StagingFolderSetupForm,
 from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
                        SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_ASK,
                        SOURCE_UNCOMPRESS_CHOICE_Y)
-from .models import StagingFolder, SourceTransformation, WatchFolder, WebForm
+from .models import (Source, StagingFolderSource, SourceTransformation,
+                     WatchFolderSource, WebFormSource)
 from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
@@ -57,11 +57,11 @@ def return_function(obj):
 
 def get_tab_link_for_source(source, document=None):
     if document:
-        view = u'upload_version'
-        args = [document.pk, u'"%s"' % source.source_type, source.pk]
+        view = u'sources:upload_version'
+        args = [document.pk, source.pk]
     else:
         view = u'sources:upload_interactive'
-        args = [u'"%s"' % source.source_type, source.pk]
+        args = [source.pk]
 
     return {
         'text': source.title,
@@ -75,11 +75,11 @@ def get_tab_link_for_source(source, document=None):
 def get_active_tab_links(document=None):
     tab_links = []
 
-    web_forms = WebForm.objects.filter(enabled=True)
+    web_forms = WebFormSource.objects.filter(enabled=True)
     for web_form in web_forms:
         tab_links.append(get_tab_link_for_source(web_form, document))
 
-    staging_folders = StagingFolder.objects.filter(enabled=True)
+    staging_folders = StagingFolderSource.objects.filter(enabled=True)
     for staging_folder in staging_folders:
         tab_links.append(get_tab_link_for_source(staging_folder, document))
 
@@ -90,7 +90,7 @@ def get_active_tab_links(document=None):
     }
 
 
-def upload_interactive(request, source_type=None, source_id=None, document_pk=None):
+def upload_interactive(request, source_id=None, document_pk=None):
     subtemplates_list = []
 
     if document_pk:
@@ -109,7 +109,7 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
     context = {}
 
     if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
-        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('setup_web_form_list'), ugettext(u'Here')))
+        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('sources:setup_web_form_list'), ugettext(u'Here')))
         subtemplates_list.append(
             {
                 'name': 'main/generic_subtemplate.html',
@@ -130,170 +130,115 @@ def upload_interactive(request, source_type=None, source_id=None, document_pk=No
     else:
         document_type = None
 
-    if source_type is None and source_id is None:
+    if source_id is None:
         if results[SOURCE_CHOICE_WEB_FORM].count():
-            source_type = results[SOURCE_CHOICE_WEB_FORM][0].source_type
             source_id = results[SOURCE_CHOICE_WEB_FORM][0].pk
         elif results[SOURCE_CHOICE_STAGING].count():
-            source_type = results[SOURCE_CHOICE_STAGING][0].source_type
             source_id = results[SOURCE_CHOICE_STAGING][0].pk
 
-    if source_type and source_id:
-        if source_type == SOURCE_CHOICE_WEB_FORM:
-            web_form = get_object_or_404(WebForm, pk=source_id)
-            context['source'] = web_form
-            if request.method == 'POST':
-                form = WebFormForm(request.POST, request.FILES,
-                    document_type=document_type,
-                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
-                    source=web_form,
-                    instance=document
-                )
-                if form.is_valid():
-                    try:
-                        if document:
-                            expand = False
+    if source_id:
+        source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
+        if isinstance(source, WebFormSource):
+            form_class = WebFormForm
+        else:
+            form_class = StagingDocumentForm
+
+        context['source'] = source
+
+        if request.method == 'POST':
+            form = form_class(request.POST, request.FILES,
+                document_type=document_type,
+                show_expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
+                source=source,
+                instance=document
+            )
+
+            if form.is_valid():
+                try:
+                    if document:
+                        expand = False
+                    else:
+                        if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                            expand = form.cleaned_data.get('expand')
                         else:
-                            if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                                expand = form.cleaned_data.get('expand')
+                            if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                                expand = True
                             else:
-                                if web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                                    expand = True
-                                else:
-                                    expand = False
+                                expand = False
 
-                        new_filename = get_form_filename(form)
+                    new_filename = get_form_filename(form)
 
-                        result = web_form.upload_file(
-                            request.FILES['file'],
-                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
-                            document_type=document_type,
-                            expand=expand,
-                            metadata_dict_list=decode_metadata_from_url(request.GET),
-                            user=request.user,
-                            document=document,
-                            new_version_data=form.cleaned_data.get('new_version_data'),
-                            description=form.cleaned_data.get('description')
-                        )
-                        if document:
-                            messages.success(request, _(u'New document version uploaded successfully.'))
-                            return HttpResponseRedirect(reverse('document_version_list', args=[document.pk]))
-                        else:
-                            if result['is_compressed'] is None:
-                                messages.success(request, _(u'File uploaded successfully.'))
+                    if isinstance(source, WebFormSource):
+                        file_object = request.FILES['file']
+                    else:
+                        staging_file = source.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
+                        file_object = staging_file.as_file()
 
-                            if result['is_compressed'] is True:
-                                messages.success(request, _(u'File uncompressed successfully and uploaded as individual files.'))
+                    result = source.upload_file(
+                        file_object,
+                        new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
+                        document_type=document_type,
+                        expand=expand,
+                        metadata_dict_list=decode_metadata_from_url(request.GET),
+                        user=request.user,
+                        document=document,
+                        new_version_data=form.cleaned_data.get('new_version_data'),
+                        description=form.cleaned_data.get('description')
+                    )
 
-                            if result['is_compressed'] is False:
-                                messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
-
-                            return HttpResponseRedirect(request.get_full_path())
-                    except NewDocumentVersionNotAllowed:
-                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
-                    except Exception as exception:
-                        if settings.DEBUG:
-                            raise
-                        messages.error(request, _(u'Unhandled exception: %s') % exception)
-            else:
-                form = WebFormForm(
-                    show_expand=(web_form.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
-                    document_type=document_type,
-                    source=web_form,
-                    instance=document
-                )
-            if document:
-                title = _(u'Upload a new version from source: %s') % web_form.title
-            else:
-                title = _(u'Upload a local document from source: %s') % web_form.title
-
-            subtemplates_list.append({
-                'name': 'main/generic_form_subtemplate.html',
-                'context': {
-                    'form': form,
-                    'title': title,
-                },
-            })
-        elif source_type == SOURCE_CHOICE_STAGING:
-            staging_folder = get_object_or_404(StagingFolder, pk=source_id)
-            context['source'] = staging_folder
-
-            if request.method == 'POST':
-                form = StagingDocumentForm(request.POST, request.FILES,
-                    document_type=document_type,
-                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
-                    source=staging_folder,
-                    instance=document
-                )
-                if form.is_valid():
-                    try:
-                        staging_file = staging_folder.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
-                        if document:
-                            expand = False
-                        else:
-                            if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                                expand = form.cleaned_data.get('expand')
-                            else:
-                                if staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                                    expand = True
-                                else:
-                                    expand = False
-
-                        new_filename = get_form_filename(form)
-
-                        result = staging_folder.upload_file(
-                            staging_file.as_file(),
-                            new_filename, use_file_name=form.cleaned_data.get('use_file_name', False),
-                            document_type=document_type,
-                            expand=expand,
-                            metadata_dict_list=decode_metadata_from_url(request.GET),
-                            user=request.user,
-                            document=document,
-                            new_version_data=form.cleaned_data.get('new_version_data'),
-                            description=form.cleaned_data.get('description')
-                        )
-                        if document:
-                            messages.success(request, _(u'Document version from staging file: %s, uploaded successfully.') % staging_file.filename)
-                        else:
-                            if result['is_compressed'] is None:
-                                messages.success(request, _(u'Staging file: %s, uploaded successfully.') % staging_file.filename)
-
-                        if result['is_compressed'] is True:
-                            messages.success(request, _(u'Staging file: %s, uncompressed successfully and uploaded as individual files.') % staging_file.filename)
-
-                        if result['is_compressed'] is False:
-                            messages.warning(request, _(u'Staging file: %s, was not compressed, uploaded as a single file.') % staging_file.filename)
-
-                        if staging_folder.delete_after_upload:
+                    if isinstance(source, StagingFolderSource):
+                        if source.delete_after_upload:
                             staging_file.delete()
                             messages.success(request, _(u'Staging file: %s, deleted successfully.') % staging_file.filename)
-                        if document:
-                            return HttpResponseRedirect(reverse('documents:document_view_simple', args=[document.pk]))
-                        else:
-                            return HttpResponseRedirect(request.get_full_path())
-                    except NewDocumentVersionNotAllowed:
-                        messages.error(request, _(u'New version uploads are not allowed for this document.'))
-                    except Exception as exception:
-                        if settings.DEBUG:
-                            raise
-                        messages.error(request, _(u'Unhandled exception: %s') % exception)
-            else:
-                form = StagingDocumentForm(document_type=document_type,
-                    show_expand=(staging_folder.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
-                    source=staging_folder,
-                    instance=document
-                )
+
+                    if document:
+                        messages.success(request, _(u'New document version uploaded successfully.'))
+                        return HttpResponseRedirect(reverse('documents:document_version_list', args=[document.pk]))
+                    else:
+                        if result['is_compressed'] is None:
+                            messages.success(request, _(u'File uploaded successfully.'))
+
+                        if result['is_compressed'] is True:
+                            messages.success(request, _(u'File uncompressed successfully and uploaded as individual files.'))
+
+                        if result['is_compressed'] is False:
+                            messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
+
+                        return HttpResponseRedirect(request.get_full_path())
+                except NewDocumentVersionNotAllowed:
+                    messages.error(request, _(u'New version uploads are not allowed for this document.'))
+                except Exception as exception:
+                    if settings.DEBUG:
+                        raise
+                    messages.error(request, _(u'Unhandled exception: %s') % exception)
+        else:
+            form = form_class(
+                show_expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
+                document_type=document_type,
+                source=source,
+                instance=document
+            )
+
+        if document:
+            title = _(u'Upload a new version from source: %s') % source.title
+        else:
+            title = _(u'Upload a local document from source: %s') % source.title
+
+        subtemplates_list.append({
+            'name': 'main/generic_form_subtemplate.html',
+            'context': {
+                'form': form,
+                'title': title,
+            },
+        })
+
+        if isinstance(source, StagingFolderSource):
             try:
-                staging_filelist = list(staging_folder.get_files())
+                staging_filelist = list(source.get_files())
             except Exception as exception:
                 messages.error(request, exception)
                 staging_filelist = []
             finally:
-                if document:
-                    title = _(u'Upload a new version from staging source: %s') % staging_folder.title
-                else:
-                    title = _(u'Upload a document from staging source: %s') % staging_folder.title
-
                 subtemplates_list = [
                     {
                         'name': 'main/generic_form_subtemplate.html',
@@ -373,7 +318,7 @@ def get_form_filename(form):
 
 def staging_file_delete(request, staging_folder_pk, encoded_filename):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
-    staging_folder = get_object_or_404(StagingFolder, pk=staging_folder_pk)
+    staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
 
     staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -405,11 +350,11 @@ def setup_source_list(request, source_type):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
 
     if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebForm
+        cls = WebFormSource
     elif source_type == SOURCE_CHOICE_STAGING:
-        cls = StagingFolder
+        cls = StagingFolderSource
     elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WatchFolder
+        cls = WatchFolderSource
 
     context = {
         'object_list': cls.objects.all(),
@@ -423,20 +368,17 @@ def setup_source_list(request, source_type):
         context_instance=RequestContext(request))
 
 
-def setup_source_edit(request, source_type, source_id):
+def setup_source_edit(request, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebForm
+    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
+    if isinstance(source, WebFormSource):
         form_class = WebFormSetupForm
-    elif source_type == SOURCE_CHOICE_STAGING:
-        cls = StagingFolder
+    elif isinstance(source, StagingFolderSource):
         form_class = StagingFolderSetupForm
-    elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WatchFolder
+    elif isinstance(source, WatchFolderSource):
         form_class = WatchFolderSetupForm
 
-    source = get_object_or_404(cls, pk=source_id)
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
@@ -458,30 +400,27 @@ def setup_source_edit(request, source_type, source_id):
         'navigation_object_name': 'source',
         'next': next,
         'object_name': _(u'Source'),
-        'source_type': source_type,
+        'source_type': source.source_type,
     },
     context_instance=RequestContext(request))
 
 
-def setup_source_delete(request, source_type, source_id):
+def setup_source_delete(request, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_DELETE])
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebForm
+    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
+    redirect_view = reverse('sources:setup_source_list', args=[source.source_type])
+
+    if isinstance(source, WebFormSource):
         form_icon = u'application_form_delete.png'
-        redirect_view = 'setup_web_form_list'
-    elif source_type == SOURCE_CHOICE_STAGING:
-        cls = StagingFolder
+        redirect_view = 'sources:setup_web_form_list'
+    elif isinstance(source, StagingFolderSource):
         form_icon = u'folder_delete.png'
-        redirect_view = 'setup_staging_folder_list'
-    elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WatchFolder
+        redirect_view = 'sources:setup_staging_folder_list'
+    elif isinstance(source, WatchFolderSource):
         form_icon = u'folder_delete.png'
-        redirect_view = 'setup_watch_folder_list'
+        redirect_view = 'sources:setup_watch_folder_list'
 
-    redirect_view = reverse('sources:setup_source_list', args=[source_type])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
-
-    source = get_object_or_404(cls, pk=source_id)
 
     if request.method == 'POST':
         try:
@@ -502,7 +441,7 @@ def setup_source_delete(request, source_type, source_id):
         'delete_view': True,
         'previous': previous,
         'form_icon': form_icon,
-        'source_type': source_type,
+        'source_type': source.source_type,
     }
 
     return render_to_response('main/generic_confirm.html', context,
@@ -513,13 +452,13 @@ def setup_source_create(request, source_type):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_CREATE])
 
     if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebForm
+        cls = WebFormSource
         form_class = WebFormSetupForm
     elif source_type == SOURCE_CHOICE_STAGING:
-        cls = StagingFolder
+        cls = WebFormSource
         form_class = StagingFolderSetupForm
     elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WatchFolder
+        cls = WebFormSource
         form_class = WatchFolderSetupForm
 
     if request.method == 'POST':
@@ -543,17 +482,10 @@ def setup_source_create(request, source_type):
     context_instance=RequestContext(request))
 
 
-def setup_source_transformation_list(request, source_type, source_id):
+def setup_source_transformation_list(request, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebForm
-    elif source_type == SOURCE_CHOICE_STAGING:
-        cls = StagingFolder
-    elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WatchFolder
-
-    source = get_object_or_404(cls, pk=source_id)
+    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
 
     context = {
         'object_list': SourceTransformation.transformations.get_for_object(source),
@@ -579,7 +511,7 @@ def setup_source_transformation_edit(request, transformation_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
-    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
+    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.pk])
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', redirect_view)))
 
     if request.method == 'POST':
@@ -612,7 +544,7 @@ def setup_source_transformation_delete(request, transformation_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
-    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.source_type, source_transformation.content_object.pk])
+    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.pk])
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
     if request.method == 'POST':
@@ -642,19 +574,12 @@ def setup_source_transformation_delete(request, transformation_id):
     context_instance=RequestContext(request))
 
 
-def setup_source_transformation_create(request, source_type, source_id):
+def setup_source_transformation_create(request, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebForm
-    elif source_type == SOURCE_CHOICE_STAGING:
-        cls = StagingFolder
-    elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WatchFolder
+    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
 
-    source = get_object_or_404(cls, pk=source_id)
-
-    redirect_view = reverse('sources:setup_source_transformation_list', args=[source.source_type, source.pk])
+    redirect_view = reverse('sources:setup_source_transformation_list', args=[source.pk])
 
     if request.method == 'POST':
         form = SourceTransformationForm_create(request.POST)

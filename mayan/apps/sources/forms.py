@@ -8,9 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.forms import DocumentForm
 
-from .models import SourceTransformation, StagingFolder, WebForm, WatchFolder
+from .models import (SourceTransformation, StagingFolderSource, WebFormSource,
+                     WatchFolderSource)
 from .utils import validate_whitelist_blacklist
-from .widgets import FamFamRadioSelect
 
 logger = logging.getLogger(__name__)
 
@@ -77,17 +77,17 @@ class WebFormForm(DocumentForm):
 
 class WebFormSetupForm(forms.ModelForm):
     class Meta:
-        model = WebForm
+        model = WebFormSource
 
 
 class StagingFolderSetupForm(forms.ModelForm):
     class Meta:
-        model = StagingFolder
+        model = StagingFolderSource
 
 
 class WatchFolderSetupForm(forms.ModelForm):
     class Meta:
-        model = WatchFolder
+        model = WatchFolderSource
 
 
 class SourceTransformationForm(forms.ModelForm):

@@ -10,6 +10,8 @@ from django.core.exceptions import ValidationError
 from django.db import models, transaction
 from django.utils.translation import ugettext_lazy as _
 
+from model_utils.managers import InheritanceManager
+
 from acls.utils import apply_default_acls
 from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.api import get_available_transformations_choices
@@ -31,11 +33,13 @@ from .managers import SourceTransformationManager
 logger = logging.getLogger(__name__)
 
 
-class BaseModel(models.Model):
+class Source(models.Model):
     title = models.CharField(max_length=64, verbose_name=_(u'Title'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'))
     whitelist = models.TextField(blank=True, verbose_name=_(u'Whitelist'), editable=False)
     blacklist = models.TextField(blank=True, verbose_name=_(u'Blacklist'), editable=False)
+
+    objects = InheritanceManager()
 
     @classmethod
     def class_fullname(cls):
@@ -136,15 +140,17 @@ class BaseModel(models.Model):
 
     class Meta:
         ordering = ('title',)
-        abstract = True
+        verbose_name = _(u'Source')
+        verbose_name_plural = _(u'Sources')
 
 
-class InteractiveBaseModel(BaseModel):
-    class Meta(BaseModel.Meta):
-        abstract = True
+class InteractiveSource(Source):
+    class Meta:
+        verbose_name = _(u'Interactive source')
+        verbose_name_plural = _(u'Interactive sources')
 
 
-class StagingFolder(InteractiveBaseModel):
+class StagingFolderSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
 
@@ -172,24 +178,32 @@ class StagingFolder(InteractiveBaseModel):
         except OSError as exception:
             raise Exception(_(u'Unable get list of staging files: %s') % exception)
 
-    class Meta(InteractiveBaseModel.Meta):
+    class Meta:
         verbose_name = _(u'Staging folder')
         verbose_name_plural = _(u'Staging folders')
 
 
-class WebForm(InteractiveBaseModel):
+class WebFormSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
 
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     # Default path
 
-    class Meta(InteractiveBaseModel.Meta):
+    class Meta:
         verbose_name = _(u'Web form')
         verbose_name_plural = _(u'Web forms')
 
 
-class WatchFolder(BaseModel):
+class OutOfProcessSource(Source):
+    is_interactive = False
+
+    class Meta:
+        verbose_name = _(u'Out of process')
+        verbose_name_plural = _(u'Out of process')
+
+
+class WatchFolderSource(OutOfProcessSource):
     is_interactive = False
     source_type = SOURCE_CHOICE_WATCH
 
@@ -198,28 +212,14 @@ class WatchFolder(BaseModel):
     delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'Delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
     interval = models.PositiveIntegerField(verbose_name=_(u'Interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
 
-    def save(self, *args, **kwargs):
-        if self.pk:
-            remove_job(self.internal_name())
-        super(WatchFolder, self).save(*args, **kwargs)
-        self.schedule()
-
-    def schedule(self):
-        if self.enabled:
-            register_interval_job(self.internal_name(),
-                title=self.fullname(), func=self.execute,
-                kwargs={'source_id': self.pk}, seconds=self.interval
-            )
-
     def execute(self, source_id):
-        source = WatchFolder.objects.get(pk=source_id)
-        if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+        if self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
             expand = True
         else:
             expand = False
         print 'execute: %s' % self.internal_name()
 
-    class Meta(BaseModel.Meta):
+    class Meta:
         verbose_name = _(u'Watch folder')
         verbose_name_plural = _(u'Watch folders')
 
@@ -267,11 +267,3 @@ class SourceTransformation(models.Model):
         ordering = ('order',)
         verbose_name = _(u'Document source transformation')
         verbose_name_plural = _(u'Document source transformations')
-
-
-class OutOfProcess(BaseModel):
-    is_interactive = False
-
-    class Meta(BaseModel.Meta):
-        verbose_name = _(u'Out of process')
-        verbose_name_plural = _(u'Out of process')
