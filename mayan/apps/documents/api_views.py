@@ -30,6 +30,8 @@ from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
 from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .tasks import task_get_document_image
 
+DOCUMENT_IMAGE_TASK_TIMEOUT = 2
+
 
 class APIDocumentListView(generics.ListCreateAPIView):
     """
@@ -165,7 +167,7 @@ class APIDocumentImageView(generics.GenericAPIView):
             task = task_get_document_image.apply_async(kwargs=dict(document_id=document.pk, size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
             return Response({
                 'status': 'success',
-                'data': task.get(timeout=1)
+                'data': task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
             })
         except UnknownFileFormat as exception:
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
