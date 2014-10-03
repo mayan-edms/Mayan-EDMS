@@ -24,7 +24,6 @@ from converter.api import (convert, get_page_count,
 from converter.exceptions import UnknownFileFormat
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
                                 DEFAULT_PAGE_NUMBER)
-from converter.tasks import task_convert
 from mimetype.api import get_mimetype
 
 from .exceptions import NewDocumentVersionNotAllowed
@@ -38,7 +37,6 @@ from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE,
                        UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 from .utils import document_save_to_temp_dir
 
-CONVERTER_TASK_TIMEOUT = 2  # In seconds
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
 logger = logging.getLogger(__name__)
 
@@ -125,8 +123,7 @@ class Document(models.Model):
         else:
             document_version = DocumentVersion.objects.get(pk=version)
             document_file = document_save_to_temp_dir(document_version, document_version.checksum)
-            task = task_convert.apply_async(kwargs=dict(input_filepath=document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype), queue='converter')
-            return task.get(timeout=CONVERTER_TASK_TIMEOUT)
+            return convert(input_filepath=document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
 
     def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
         if not version:
@@ -135,8 +132,7 @@ class Document(models.Model):
 
         logger.debug('image_cache_name: %s' % image_cache_name)
 
-        task = task_convert.apply_async(kwargs=dict(input_filepath=image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation), queue='converter')
-        return task.get(timeout=CONVERTER_TASK_TIMEOUT)
+        return convert(input_filepath=image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
 
     def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
         if zoom < ZOOM_MIN_LEVEL:

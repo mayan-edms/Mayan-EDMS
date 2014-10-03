@@ -28,6 +28,7 @@ from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
                           DocumentSerializer, DocumentTypeSerializer,
                           DocumentVersionSerializer)
 from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+from .tasks import task_get_document_image
 
 
 class APIDocumentListView(generics.ListCreateAPIView):
@@ -161,9 +162,10 @@ class APIDocumentImageView(generics.GenericAPIView):
         rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
         try:
+            task = task_get_document_image.apply_async(kwargs=dict(document_id=document.pk, size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
             return Response({
                 'status': 'success',
-                'data': document.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True, version=version)
+                'data': task.get(timeout=1)
             })
         except UnknownFileFormat as exception:
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
