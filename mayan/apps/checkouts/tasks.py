@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import logging
 
 from lock_manager import Lock, LockError
+from mayan.celery import app
 
 from .models import DocumentCheckout
 
@@ -10,6 +11,7 @@ LOCK_EXPIRE = 50
 logger = logging.getLogger(__name__)
 
 
+@app.task
 def task_check_expired_check_outs():
     logger.debug('executing...')
     lock_id = u'task_expired_check_outs'
