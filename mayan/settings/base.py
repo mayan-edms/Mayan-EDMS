@@ -263,3 +263,5 @@ REST_FRAMEWORK = {
 # ----------- Celery ----------
 BROKER_URL = 'django://'
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
