@@ -17,4 +17,5 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
     color = serializers.CharField(source='properties.get.color')
 
     class Meta:
+        fields = ('id', 'url', 'name', 'color', 'slug')
         model = Tag
