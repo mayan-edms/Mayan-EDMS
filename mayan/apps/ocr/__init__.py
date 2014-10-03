@@ -14,7 +14,6 @@ from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from navigation.api import register_links, register_multi_item_links
 from project_tools.api import register_tool
-from scheduler.api import register_interval_job
 from statistics.classes import StatisticNamespace
 
 from .links import (all_document_ocr_cleanup, ocr_tool_link,
