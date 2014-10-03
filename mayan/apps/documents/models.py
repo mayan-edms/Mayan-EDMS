@@ -577,7 +577,7 @@ class DocumentPage(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('document_page_view', [self.pk])
+        return ('documents:document_page_view', [self.pk])
 
     @property
     def siblings(self):
