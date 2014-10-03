@@ -175,6 +175,7 @@ class Document(models.Model):
 
     def new_version(self, file, user=None, comment=None, version_update=None, release_level=None, serial=None):
         logger.debug('creating new document version')
+        # TODO: move this restriction to a signal processor of the checkouts app
         if not self.is_new_versions_allowed(user=user):
             raise NewDocumentVersionNotAllowed
 
