@@ -218,7 +218,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
 
                     # TODO: Notify user
                     if document:
-                        messages.success(request, _(u'New document version queued for uploaded and will be available shortly.'))
+                        messages.success(request, _(u'New document queued for uploaded and will be available shortly.'))
                         return HttpResponseRedirect(reverse('documents:document_version_list', args=[document.pk]))
                     else:
                         messages.success(request, _(u'New document version queued for uploaded and will be available shortly.'))
