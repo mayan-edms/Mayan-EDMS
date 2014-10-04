@@ -198,6 +198,11 @@ def upload_interactive(request, source_id=None, document_pk=None):
                         if source.delete_after_upload:
                             staging_file.delete()
 
+                    if not request.user.is_anonymous():
+                        user_id = request.user.pk
+                    else:
+                        user_id = None
+
                     task_upload_document.apply_async(kwargs=dict(
                         source_id=source.pk,
                         file_path=temporary_file.name, filename=new_filename,
@@ -205,7 +210,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
                         document_type_id=document_type_id,
                         expand=expand,
                         metadata_dict_list=decode_metadata_from_url(request.GET),
-                        user=request.user,
+                        user_id=user_id,
                         document_id=document_id,
                         new_version_data=form.cleaned_data.get('new_version_data'),
                         description=form.cleaned_data.get('description'),

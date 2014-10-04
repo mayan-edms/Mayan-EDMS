@@ -1,5 +1,6 @@
 import logging
 
+from django.contrib.auth.models import User
 from django.core.files import File
 
 from mayan.celery import app
@@ -13,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 @app.task
-def task_upload_document(source_id, file_path, filename=None, use_file_name=False, document_type_id=None, expand=False, metadata_dict_list=None, user=None, document_id=None, new_version_data=None, command_line=False, description=None):
+def task_upload_document(source_id, file_path, filename=None, use_file_name=False, document_type_id=None, expand=False, metadata_dict_list=None, user_id=None, document_id=None, new_version_data=None, command_line=False, description=None):
     source = Source.objects.get_subclass(pk=source_id)
 
     if document_type_id:
@@ -25,6 +26,11 @@ def task_upload_document(source_id, file_path, filename=None, use_file_name=Fals
         document = Document.objects.get(pk=document_id)
     else:
         document = None
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
 
     with File(file=open(file_path, mode='rb')) as file_object:
         #try:
