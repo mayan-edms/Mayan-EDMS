@@ -49,6 +49,28 @@ class APIFolderView(generics.RetrieveUpdateDestroyAPIView):
     }
 
 
+class APIFolderDocumentListView(generics.ListAPIView):
+    """
+    Returns a list of all the documents contained in a particular folder.
+    """
+
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+
+    def get_serializer_class(self):
+        from documents.serializers import DocumentSerializer
+        return DocumentSerializer
+
+    def get_queryset(self):
+        folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_FOLDER_VIEW])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, self.request.user, folder)
+
+        queryset = folder.documents.all()
+        return queryset
+
 class APIDocumentFolderListView(generics.ListAPIView):
     """
     Returns a list of all the folders to which a document belongs.
@@ -56,7 +78,6 @@ class APIDocumentFolderListView(generics.ListAPIView):
 
     serializer_class = FolderSerializer
 
-    permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': [PERMISSION_FOLDER_VIEW]}
 

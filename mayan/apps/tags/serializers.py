@@ -5,17 +5,9 @@ from taggit.models import Tag
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
-    # FIXME: Doing a: from documents.serializers import DocumentSerializer
-    # causes an unexplained ImportError, so we import it hidden until the issue
-    # is resolved
-
-    def __init__(self, *args, **kwargs):
-        from documents.serializers import DocumentSerializer
-        super(TagSerializer, self).__init__(*args, **kwargs)
-        self.fields['documents'] = DocumentSerializer()
-
     color = serializers.CharField(source='properties.get.color')
+    documents = serializers.HyperlinkedIdentityField(view_name='tag-document-list')
 
     class Meta:
-        fields = ('id', 'url', 'name', 'color', 'slug')
+        fields = ('id', 'url', 'name', 'color', 'slug', 'documents')
         model = Tag

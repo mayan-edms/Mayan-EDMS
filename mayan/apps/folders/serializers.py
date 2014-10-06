@@ -6,15 +6,8 @@ from .models import Folder
 
 
 class FolderSerializer(serializers.HyperlinkedModelSerializer):
-    # FIXME: Doing a: from documents.serializers import DocumentSerializer
-    # causes an unexplained ImportError, so we import it hidden until the issue
-    # is resolved
-
-    def __init__(self, *args, **kwargs):
-        from documents.serializers import DocumentSerializer
-        super(FolderSerializer, self).__init__(*args, **kwargs)
-        self.fields['documents'] = DocumentSerializer()
+    documents = serializers.HyperlinkedIdentityField(view_name='folder-document-list')
 
     class Meta:
-        fields = ('id', 'url', 'title', 'user', 'datetime_created')
+        fields = ('id', 'url', 'title', 'user', 'datetime_created', 'documents')
         model = Folder
