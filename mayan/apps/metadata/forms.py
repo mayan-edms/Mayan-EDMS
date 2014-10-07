@@ -1,27 +1,40 @@
 from __future__ import absolute_import
 
 from django import forms
-from django.forms.formsets import formset_factory
+from django.forms.formsets import formset_factory, BaseFormSet
 from django.utils.translation import ugettext_lazy as _
 
 from common.widgets import ScrollableCheckboxSelectMultiple
 
 from .models import DocumentTypeDefaults, MetadataSet, MetadataType
-from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS
+from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, AVAILABLE_VALIDATORS
 
 
 class MetadataForm(forms.Form):
+
+    def clean_value(self):
+	value = self.cleaned_data['value']
+        metadata_id = self.cleaned_data['id']
+        metadata_type = MetadataType.objects.get(pk=metadata_id)
+        if ( metadata_type.lookup
+             and AVAILABLE_VALIDATORS.has_key(metadata_type.lookup) ):
+               val_func=AVAILABLE_VALIDATORS[metadata_type.lookup]
+               new_value = val_func(value)
+               if new_value:
+                 value = new_value
+	return value
+
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
 
         # Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-
             # FIXME:
             # required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
             required = False
             required_string = u''
+
             if required:
                 self.fields['value'].required = True
                 required_string = ' (%s)' % _(u'Required')
@@ -31,8 +44,10 @@ class MetadataForm(forms.Form):
 
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
             self.fields['id'].initial = self.metadata_type.pk
+                  
 
-            if self.metadata_type.lookup:
+            if ( self.metadata_type.lookup
+                and not AVAILABLE_VALIDATORS.has_key(self.metadata_type.lookup)):
                 try:
                     choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
                     self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
@@ -51,11 +66,15 @@ class MetadataForm(forms.Form):
                 except Exception as exception:
                     self.fields['value'].initial = exception
 
+
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
+
     name = forms.CharField(label=_(u'Name'),
         required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     value = forms.CharField(label=_(u'Value'), required=False)
     update = forms.BooleanField(initial=True, label=_(u'Update'), required=False)
+
+
 
 MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
