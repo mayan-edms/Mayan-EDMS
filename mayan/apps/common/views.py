@@ -256,7 +256,7 @@ def password_change_done(request):
     """
 
     messages.success(request, _(u'Your password has been successfully changed.'))
-    return redirect('current_user_details')
+    return redirect('common:current_user_details')
 
 
 class MayanPermissionCheckMixin(object):
