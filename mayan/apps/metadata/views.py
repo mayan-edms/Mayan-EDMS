@@ -14,22 +14,27 @@ from documents.models import Document, RecentDocument, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from permissions.models import Permission
 
-from common.utils import generate_choices_w_labels, encapsulate, get_object_name
+from common.utils import encapsulate, generate_choices_w_labels, get_object_name
 from common.views import assign_remove
 
 from .api import save_metadata_list
 from .classes import MetadataObjectWrapper
-from .forms import (MetadataFormSet, AddMetadataForm,
-    MetadataRemoveFormSet, MetadataTypeForm, MetadataSetForm)
-from .models import (DocumentMetadata, MetadataType, MetadataSet,
-    MetadataSetItem, DocumentTypeDefaults)
-from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
-    PERMISSION_METADATA_DOCUMENT_VIEW, PERMISSION_METADATA_TYPE_EDIT,
-    PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
-    PERMISSION_METADATA_TYPE_VIEW, PERMISSION_METADATA_SET_EDIT,
-    PERMISSION_METADATA_SET_CREATE, PERMISSION_METADATA_SET_DELETE,
-    PERMISSION_METADATA_SET_VIEW)
+from .forms import (AddMetadataForm, MetadataFormSet, MetadataRemoveFormSet,
+                    MetadataSetForm, MetadataTypeForm)
+from .models import (DocumentMetadata, DocumentTypeDefaults, MetadataSet,
+                     MetadataSetItem, MetadataType)
+from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
+                          PERMISSION_METADATA_DOCUMENT_EDIT,
+                          PERMISSION_METADATA_DOCUMENT_REMOVE,
+                          PERMISSION_METADATA_DOCUMENT_VIEW,
+                          PERMISSION_METADATA_SET_CREATE,
+                          PERMISSION_METADATA_SET_DELETE,
+                          PERMISSION_METADATA_SET_EDIT,
+                          PERMISSION_METADATA_SET_VIEW,
+                          PERMISSION_METADATA_TYPE_CREATE,
+                          PERMISSION_METADATA_TYPE_DELETE,
+                          PERMISSION_METADATA_TYPE_EDIT,
+                          PERMISSION_METADATA_TYPE_VIEW)
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
@@ -152,7 +157,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
             if len(documents) == 1:
                 return HttpResponseRedirect(u'%s?%s' % (
-                    reverse(metadata_edit, args=[document.pk]),
+                    reverse('metadata:metadata_edit', args=[document.pk]),
                     urlencode({'next': next}))
                 )
             elif len(documents) > 1:
