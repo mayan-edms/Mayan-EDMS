@@ -34,7 +34,7 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
-    documents = DocumentSerializer(many=True, required=False)
+    documents = serializers.HyperlinkedIdentityField(view_name='documenttype-document-list')
 
     class Meta:
         model = DocumentType

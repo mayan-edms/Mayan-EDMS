@@ -221,3 +221,25 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': [PERMISSION_DOCUMENT_TYPE_EDIT],
         'DELETE': [PERMISSION_DOCUMENT_TYPE_DELETE]
     }
+
+
+class APIDocumentTypeDocumentListView(generics.ListAPIView):
+    """
+    Returns a list of all the documents of a particular document type.
+    """
+
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+
+    def get_serializer_class(self):
+        from documents.serializers import DocumentSerializer
+        return DocumentSerializer
+
+    def get_queryset(self):
+        document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_TYPE_VIEW])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TYPE_VIEW, self.request.user, document_type)
+
+        return document_type.documents.all()
