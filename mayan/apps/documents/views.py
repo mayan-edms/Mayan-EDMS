@@ -289,7 +289,7 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
     task = task_get_document_image.apply_async(kwargs=dict(document_id=document.pk, size=size, page=page, zoom=zoom, rotation=rotation, as_base64=False, version=version), queue='converter')
-    return sendfile.sendfile(request, task.get(timeout=1), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
+    return sendfile.sendfile(request, task.get(timeout=10), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):

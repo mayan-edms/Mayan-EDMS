@@ -30,7 +30,7 @@ from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
 from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .tasks import task_get_document_image
 
-DOCUMENT_IMAGE_TASK_TIMEOUT = 2
+DOCUMENT_IMAGE_TASK_TIMEOUT = 10
 
 
 class APIDocumentListView(generics.ListCreateAPIView):
