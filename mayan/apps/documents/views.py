@@ -93,7 +93,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
         context.update(extra_context)
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_view(request, document_id, advanced=False):
@@ -218,7 +218,7 @@ def document_delete(request, document_id=None, document_id_list=None):
         context['title'] = _(u'Are you sure you wish to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_multiple_delete(request):
@@ -533,7 +533,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         context['title'] = _(u'Are you sure you wish to clear all the page transformations for documents: %s?') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_multiple_clear_transformations(request):
@@ -817,7 +817,6 @@ def document_print(request, document_id):
                 new_url.append(urlquote(hard_copy_arguments))
 
             new_window_url = u'?'.join(new_url)
-            new_window_url_name = u'document_hard_copy'
     else:
         form = PrintForm()
 
@@ -882,7 +881,7 @@ def document_type_list(request):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_type_edit(request, document_type_id):
@@ -910,8 +909,7 @@ def document_type_edit(request, document_type_id):
         'navigation_object_name': 'document_type',
         'document_type': document_type,
         'next': next
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def document_type_delete(request, document_type_id):
@@ -947,7 +945,7 @@ def document_type_delete(request, document_type_id):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_type_create(request):
@@ -969,8 +967,7 @@ def document_type_create(request):
     return render_to_response('main/generic_form.html', {
         'title': _(u'Create document type'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def document_type_filename_list(request, document_type_id):
@@ -994,7 +991,7 @@ def document_type_filename_list(request, document_type_id):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_type_filename_edit(request, document_type_filename_id):
@@ -1029,8 +1026,7 @@ def document_type_filename_edit(request, document_type_filename_id):
             {'object': 'document_type', 'name': _(u'Document type')},
             {'object': 'filename', 'name': _(u'Document type filename')}
         ],
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def document_type_filename_delete(request, document_type_filename_id):
@@ -1070,7 +1066,7 @@ def document_type_filename_delete(request, document_type_filename_id):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_type_filename_create(request, document_type_id):
@@ -1103,8 +1099,7 @@ def document_type_filename_create(request, document_type_id):
         'navigation_object_list': [
             {'object': 'document_type', 'name': _(u'Document type')},
         ],
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def document_clear_image_cache(request):
@@ -1173,7 +1168,7 @@ def document_version_list(request, document_pk):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_version_revert(request, document_version_pk):

@@ -7,6 +7,7 @@ import operator
 from django.contrib import messages
 from django.contrib.auth.models import Group, User
 from django.contrib.contenttypes.models import ContentType
+from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 from django.conf import settings
 from django.http import Http404, HttpResponseRedirect

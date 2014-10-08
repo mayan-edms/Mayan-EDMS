@@ -113,7 +113,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         context['title'] = _(u'Edit metadata for documents: %s') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def metadata_multiple_edit(request):
@@ -180,7 +180,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
         context['title'] = _(u'Add metadata type to documents: %s') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def metadata_multiple_add(request):
@@ -261,7 +261,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         context['title'] = _(u'Remove metadata types from documents: %s') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def metadata_multiple_remove(request):
@@ -302,7 +302,7 @@ def setup_metadata_type_list(request):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def setup_metadata_type_edit(request, metadatatype_id):
@@ -380,7 +380,7 @@ def setup_metadata_type_delete(request, metadatatype_id):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def setup_metadata_set_list(request):
@@ -399,7 +399,7 @@ def setup_metadata_set_list(request):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def setup_metadata_set_edit(request, metadata_set_id):
@@ -520,7 +520,7 @@ def setup_metadata_set_delete(request, metadata_set_id):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def _as_choice_list(items):

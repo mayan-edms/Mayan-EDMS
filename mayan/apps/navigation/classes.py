@@ -1,16 +1,15 @@
 from __future__ import absolute_import
 
+import inspect
 import logging
 import re
 import urllib
 import urlparse
-import inspect
 
 from django.core.urlresolvers import NoReverseMatch, resolve, reverse
 from django.template import VariableDoesNotExist, Variable
-from django.template import (VariableDoesNotExist, Variable)
 from django.utils.encoding import smart_str, smart_unicode
-from django.utils.http import urlquote, urlencode
+from django.utils.http import urlencode, urlquote
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext_lazy as _
 
@@ -44,10 +43,10 @@ class Link(object):
             raise Exception('The bind_links source argument must be a list, even for single element sources.')
 
     def __init__(self, text, view, klass=None, args=None, icon=None,
-        permissions=None, condition=None, conditional_disable=None,
-        description=None, dont_mark_active=False, children_view_regex=None,
-        keep_query=False, children_classes=None, children_views=None,
-        conditional_highlight=None):
+                 permissions=None, condition=None, conditional_disable=None,
+                 description=None, dont_mark_active=False, children_view_regex=None,
+                 keep_query=False, children_classes=None, children_views=None,
+                 conditional_highlight=None):
 
         self.text = text
         self.view = view

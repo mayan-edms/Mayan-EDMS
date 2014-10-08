@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from collections import namedtuple
 from json import dumps
-import os
 
 import sh
 
@@ -11,8 +10,6 @@ try:
     PIP = True
 except sh.CommandNotFound:
     PIP = False
-
-from django.conf import settings
 
 
 class PIPNotFound(Exception):

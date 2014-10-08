@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -17,7 +16,6 @@ class Migration(SchemaMigration):
         # Deleting field 'QueueDocument.state'
         db.delete_column(u'ocr_queuedocument', 'state')
 
-
     def backwards(self, orm):
         # Adding field 'DocumentQueue.state'
         db.add_column(u'ocr_documentqueue', 'state',
@@ -33,7 +31,6 @@ class Migration(SchemaMigration):
         db.add_column(u'ocr_queuedocument', 'state',
                       self.gf('django.db.models.fields.CharField')(default='p', max_length=4),
                       keep_default=False)
-
 
     models = {
         u'documents.document': {

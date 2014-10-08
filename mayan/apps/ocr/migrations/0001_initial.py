@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -30,14 +29,12 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'ocr', ['QueueDocument'])
 
-
     def backwards(self, orm):
         # Deleting model 'DocumentQueue'
         db.delete_table(u'ocr_documentqueue')
 
         # Deleting model 'QueueDocument'
         db.delete_table(u'ocr_queuedocument')
-
 
     models = {
         u'documents.document': {

@@ -15,13 +15,13 @@ class MetadataType(models.Model):
     name = models.CharField(unique=True, max_length=48, verbose_name=_(u'Name'), help_text=_(u'Do not use python reserved words, or spaces.'))
     title = models.CharField(max_length=48, verbose_name=_(u'Title'), blank=True, null=True)
     default = models.CharField(max_length=128, blank=True, null=True,
-        verbose_name=_(u'Default'),
-        help_text=_(u'Enter a string to be evaluated.'))
+                               verbose_name=_(u'Default'),
+                               help_text=_(u'Enter a string to be evaluated.'))
     # TODO: Add enable_lookup boolean to allow users to switch the lookup on and
     # off without losing the lookup expression
     lookup = models.TextField(blank=True, null=True,
-        verbose_name=_(u'Lookup'),
-        help_text=_(u'Enter a string to be evaluated that returns an iterable.'))
+                              verbose_name=_(u'Lookup'),
+                              help_text=_(u'Enter a string to be evaluated that returns an iterable.'))
     # TODO: Add datatype choice: Date, Time, String, Number
     # TODO: Find a different way to let users know what models and functions are
     # available now that we removed these from the help_text

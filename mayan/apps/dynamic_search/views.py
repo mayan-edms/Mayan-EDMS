@@ -66,7 +66,7 @@ def results(request, extra_context=None):
             [{'name': _(u'Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]})
 
     return render_to_response('search_results.html', context,
-                          context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def search(request, advanced=False):
@@ -81,8 +81,7 @@ def search(request, advanced=False):
                 'search_results_limit': LIMIT,
                 'submit_label': _(u'Search'),
                 'submit_icon_famfam': 'zoom',
-            },
-            context_instance=RequestContext(request)
+            }, context_instance=RequestContext(request)
         )
     else:
         if request.GET.get('source') != 'sidebar':

@@ -3,7 +3,6 @@ from __future__ import absolute_import
 from django.contrib import messages
 from django.contrib.sites.models import Site
 from django.core.exceptions import PermissionDenied
-from django.core.mail import EmailMultiAlternatives
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -88,4 +87,4 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
             context['title'] = _('Email links for documents: %s') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))

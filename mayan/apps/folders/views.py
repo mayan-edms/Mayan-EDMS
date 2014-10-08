@@ -6,14 +6,13 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 from acls.views import acl_list_for
-from common.utils import encapsulate
 from common.views import SingleObjectListView
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
@@ -22,16 +21,16 @@ from permissions.models import Permission
 
 from .forms import FolderForm, FolderListForm
 from .models import Folder
-from .permissions import (PERMISSION_FOLDER_CREATE,
-    PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
-    PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
-    PERMISSION_FOLDER_ADD_DOCUMENT)
+from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
+                          PERMISSION_FOLDER_CREATE, PERMISSION_FOLDER_DELETE,
+                          PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_VIEW,
+                          PERMISSION_FOLDER_REMOVE_DOCUMENT)
 
 logger = logging.getLogger(__name__)
 
 
 class FolderListView(SingleObjectListView):
-    model =  Folder
+    model = Folder
     object_permission = PERMISSION_FOLDER_VIEW
 
     def get_extra_context(self):
@@ -61,8 +60,7 @@ def folder_create(request):
     return render_to_response('main/generic_form.html', {
         'title': _(u'Create folder'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def folder_edit(request, folder_id):
@@ -91,8 +89,7 @@ def folder_edit(request, folder_id):
         'form': form,
         'object': folder,
         'object_name': _(u'Folder'),
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def folder_delete(request, folder_id):
@@ -129,7 +126,7 @@ def folder_delete(request, folder_id):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 class FolderDetailView(DocumentListView):
@@ -205,7 +202,7 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         context['title'] = _(u'Add documents: %s to folder.') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def document_folder_list(request, document_id):
@@ -233,7 +230,7 @@ def document_folder_list(request, document_id):
     context['object_list'] = queryset
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
@@ -287,7 +284,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
             'documents': ', '.join([unicode(d) for d in folder_documents]), 'folder': folder}
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def folder_document_multiple_remove(request, folder_id):

@@ -16,12 +16,11 @@ class MetadataForm(forms.Form):
         value = self.cleaned_data['value']
         metadata_id = self.cleaned_data['id']
         metadata_type = MetadataType.objects.get(pk=metadata_id)
-        if ( metadata_type.lookup
-             and AVAILABLE_VALIDATORS.has_key(metadata_type.lookup) ):
-               val_func=AVAILABLE_VALIDATORS[metadata_type.lookup]
-               new_value = val_func(value)
-               if new_value:
-                 value = new_value
+        if metadata_type.lookup and metadata_type.lookup in AVAILABLE_VALIDATORS:
+            val_func = AVAILABLE_VALIDATORS[metadata_type.lookup]
+            new_value = val_func(value)
+            if new_value:
+                value = new_value
         return value
 
     def __init__(self, *args, **kwargs):
@@ -45,9 +44,7 @@ class MetadataForm(forms.Form):
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
             self.fields['id'].initial = self.metadata_type.pk
 
-
-            if ( self.metadata_type.lookup
-                and not AVAILABLE_VALIDATORS.has_key(self.metadata_type.lookup)):
+            if self.metadata_type.lookup and self.metadata_type.lookup not in AVAILABLE_VALIDATORS:
                 try:
                     choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
                     self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
@@ -66,15 +63,11 @@ class MetadataForm(forms.Form):
                 except Exception as exception:
                     self.fields['value'].initial = exception
 
-
     id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
 
-    name = forms.CharField(label=_(u'Name'),
-        required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    name = forms.CharField(label=_(u'Name'), required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     value = forms.CharField(label=_(u'Value'), required=False)
     update = forms.BooleanField(initial=True, label=_(u'Update'), required=False)
-
-
 
 MetadataFormSet = formset_factory(MetadataForm, extra=0)
 

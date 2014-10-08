@@ -46,7 +46,7 @@ def queue_document_list(request, queue_name='default'):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def queue_document_delete(request, queue_document_id=None, queue_document_id_list=None):
@@ -89,7 +89,7 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
         context['title'] = _(u'Are you sure you wish to delete queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def queue_document_multiple_delete(request):
@@ -112,7 +112,7 @@ def submit_document(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
 
     return submit_document_to_queue(request, document=document,
-        post_submit_redirect=request.META.get('HTTP_REFERER', '/'))
+                                    post_submit_redirect=request.META.get('HTTP_REFERER', '/'))
 
 
 def submit_document_to_queue(request, document, post_submit_redirect=None):
@@ -176,7 +176,7 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
         context['title'] = _(u'Are you sure you wish to re-queue documents: %s?') % ', '.join([unicode(d) for d in queue_documents])
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def re_queue_multiple_document(request):

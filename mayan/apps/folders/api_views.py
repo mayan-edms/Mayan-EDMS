@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
+from acls.models import AccessEntry
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
@@ -12,9 +13,8 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Folder
-from .permissions import (PERMISSION_FOLDER_CREATE,
-                          PERMISSION_FOLDER_DELETE, PERMISSION_FOLDER_EDIT,
-                          PERMISSION_FOLDER_VIEW)
+from .permissions import (PERMISSION_FOLDER_CREATE, PERMISSION_FOLDER_DELETE,
+                          PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_VIEW)
 from .serializers import FolderSerializer
 
 
@@ -70,6 +70,7 @@ class APIFolderDocumentListView(generics.ListAPIView):
 
         queryset = folder.documents.all()
         return queryset
+
 
 class APIDocumentFolderListView(generics.ListAPIView):
     """

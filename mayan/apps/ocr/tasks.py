@@ -7,8 +7,6 @@ import sys
 import traceback
 
 from django.conf import settings
-from django.db.models import Q
-from django.utils.timezone import now
 
 from documents.models import Document
 from lock_manager import Lock, LockError

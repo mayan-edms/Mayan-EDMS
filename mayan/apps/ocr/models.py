@@ -36,6 +36,7 @@ class QueueDocument(models.Model):
         verbose_name_plural = _(u'Queue documents')
 
     def requeue(self):
+        # TODO: Fix properly using Celery tasks
         if self.state == QUEUEDOCUMENT_STATE_PROCESSING:
             raise ReQueueError
         else:

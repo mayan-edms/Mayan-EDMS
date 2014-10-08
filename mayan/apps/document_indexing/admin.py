@@ -4,8 +4,8 @@ from django.contrib import admin
 
 from mptt.admin import MPTTModelAdmin
 
-from .models import (Index, IndexTemplateNode, IndexInstanceNode,
-    DocumentRenameCount)
+from .models import (DocumentRenameCount, Index, IndexInstanceNode,
+                     IndexTemplateNode)
 
 
 class IndexTemplateNodeAdmin(MPTTModelAdmin):
@@ -17,7 +17,7 @@ class IndexInstanceNodeAdmin(MPTTModelAdmin):
     list_display = ('value',)
 
 
+admin.site.register(DocumentRenameCount)
 admin.site.register(Index)
 admin.site.register(IndexTemplateNode, IndexTemplateNodeAdmin)
 admin.site.register(IndexInstanceNode, IndexInstanceNodeAdmin)
-admin.site.register(DocumentRenameCount)

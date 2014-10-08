@@ -1,9 +1,7 @@
 from __future__ import absolute_import
 
-import re
-
 from django.conf import settings
-from django.template import Library, Node, TemplateSyntaxError
+from django.template import Library, Node
 from django.utils.safestring import mark_safe
 
 register = Library()

@@ -4,20 +4,20 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 
-from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
-    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
-    PERMISSION_DOCUMENT_INDEXING_SETUP,
-    PERMISSION_DOCUMENT_INDEXING_CREATE,
-    PERMISSION_DOCUMENT_INDEXING_EDIT,
-    PERMISSION_DOCUMENT_INDEXING_DELETE)
-
-
-def is_not_root_node(context):
-    return not context['node'].is_root_node()
+from .permissions import (PERMISSION_DOCUMENT_INDEXING_CREATE,
+                          PERMISSION_DOCUMENT_INDEXING_EDIT,
+                          PERMISSION_DOCUMENT_INDEXING_DELETE,
+                          PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
+                          PERMISSION_DOCUMENT_INDEXING_SETUP,
+                          PERMISSION_DOCUMENT_INDEXING_VIEW)
 
 
 def is_not_instance_root_node(context):
     return not context['object'].is_root_node()
+
+
+def is_not_root_node(context):
+    return not context['node'].is_root_node()
 
 
 index_setup = {'text': _(u'Indexes'), 'view': 'indexing:index_setup_list', 'icon': 'tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP], 'children_view_regex': [r'^index_setup', r'^template_node']}

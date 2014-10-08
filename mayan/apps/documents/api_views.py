@@ -152,9 +152,6 @@ class APIDocumentImageView(generics.GenericAPIView):
 
         version = int(request.GET.get('version', document.latest_version.pk))
 
-        if request.GET.get('as_base64', False):
-            base64_version = True
-
         if zoom < ZOOM_MIN_LEVEL:
             zoom = ZOOM_MIN_LEVEL
 

@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
@@ -15,19 +15,19 @@ from acls.utils import apply_default_acls
 from common.utils import encapsulate, generate_choices_w_labels
 from common.views import assign_remove
 from common.widgets import two_state_template
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.views import document_list
 from permissions.models import Permission
 
 from .forms import IndexForm, IndexTemplateNodeForm
-from .models import Index, IndexTemplateNode, IndexInstanceNode
-from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
+from .models import Index, IndexInstanceNode, IndexTemplateNode
+from .permissions import (PERMISSION_DOCUMENT_INDEXING_CREATE,
+                          PERMISSION_DOCUMENT_INDEXING_DELETE,
+                          PERMISSION_DOCUMENT_INDEXING_EDIT,
                           PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
                           PERMISSION_DOCUMENT_INDEXING_SETUP,
-                          PERMISSION_DOCUMENT_INDEXING_CREATE,
-                          PERMISSION_DOCUMENT_INDEXING_EDIT,
-                          PERMISSION_DOCUMENT_INDEXING_DELETE)
+                          PERMISSION_DOCUMENT_INDEXING_VIEW)
 from .tools import do_rebuild_all_indexes
 from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 
@@ -57,7 +57,7 @@ def index_setup_list(request):
     context['object_list'] = queryset
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def index_setup_create(request):
@@ -140,7 +140,7 @@ def index_setup_delete(request, index_pk):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def index_setup_view(request, index_pk):
@@ -169,7 +169,7 @@ def index_setup_view(request, index_pk):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def index_setup_document_types(request, index_pk):
@@ -293,7 +293,7 @@ def template_node_delete(request, node_pk):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 # User views
@@ -320,7 +320,7 @@ def index_list(request):
     context['object_list'] = queryset
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def index_instance_node_view(request, index_instance_node_pk):

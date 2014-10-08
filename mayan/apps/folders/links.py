@@ -5,10 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 from acls.permissions import ACLS_VIEW_ACL
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 
-from .permissions import (PERMISSION_FOLDER_CREATE,
-    PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_DELETE,
-    PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW,
-    PERMISSION_FOLDER_ADD_DOCUMENT)
+from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
+                          PERMISSION_FOLDER_CREATE, PERMISSION_FOLDER_DELETE,
+                          PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_VIEW,
+                          PERMISSION_FOLDER_REMOVE_DOCUMENT)
 
 folder_list = {'text': _(u'Folder list'), 'view': 'folders:folder_list', 'famfam': 'folder_user'}
 folder_create = {'text': _('Create folder'), 'view': 'folders:folder_create', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_CREATE]}
