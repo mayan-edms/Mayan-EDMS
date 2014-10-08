@@ -139,10 +139,6 @@ class Source(models.Model):
             # Only do for new documents
             save_metadata_list(metadata_dict_list, document, create=True)
 
-            # TODO: Might not be required as metadata app registers signal
-            # handlers for index update
-            warnings = update_indexes(document)
-
     class Meta:
         ordering = ('title',)
         verbose_name = _(u'Source')
