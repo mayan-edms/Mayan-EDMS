@@ -22,7 +22,7 @@ class MetadataForm(forms.Form):
                new_value = val_func(value)
                if new_value:
                  value = new_value
-    return value
+        return value
 
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
