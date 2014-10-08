@@ -85,9 +85,3 @@ def register_model_list_columns(model, columns):
 
     model_list_columns.setdefault(model, [])
     model_list_columns[model].extend(columns)
-
-
-def register_sidebar_template(source_list, template_name):
-    for source in source_list:
-        sidebar_templates.setdefault(source, [])
-        sidebar_templates[source].append(template_name)

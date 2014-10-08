@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 from documents.models import Document
-from navigation.api import register_links, register_sidebar_template
+from navigation.api import register_links
 from project_setup.api import register_setup
 
 from .links import (smart_link_acl_list, smart_link_create,
@@ -24,7 +24,6 @@ register_links(SmartLinkCondition, [smart_link_condition_edit, smart_link_condit
 register_links(['linking:smart_link_condition_list', 'linking:smart_link_condition_create', 'linking:smart_link_condition_edit', 'linking:smart_link_condition_delete'], [smart_link_condition_create], menu_name='sidebar')
 
 register_setup(smart_link_setup)
-register_sidebar_template(['linking:smart_link_list'], 'smart_links_help.html')
 
 class_permissions(SmartLink, [
     ACLS_EDIT_ACL, ACLS_VIEW_ACL, PERMISSION_SMART_LINK_DELETE,
