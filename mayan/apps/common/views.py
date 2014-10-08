@@ -19,8 +19,8 @@ from django.views.generic.list import ListView
 from acls.models import AccessEntry
 from permissions.models import Permission
 
-from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
-    EmailAuthenticationForm)
+from .forms import (ChoiceForm, EmailAuthenticationForm, LicenseForm,
+                    UserForm, UserForm_view)
 from .settings import LOGIN_METHOD
 
 
@@ -200,7 +200,7 @@ def current_user_edit(request):
         'main/generic_form.html', {
             'form': form,
             'next': next,
-            'title': _(u'edit current user details'),
+            'title': _(u'Edit current user details'),
         },
         context_instance=RequestContext(request))
 

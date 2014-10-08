@@ -17,14 +17,13 @@ class AnonymousUserSingleton(SingletonModel):
         return ugettext('Anonymous user')
 
     class Meta:
-        verbose_name = _(u'anonymous user')
-        verbose_name_plural = _(u'anonymous user')
+        verbose_name = verbose_name_plural = _(u'Anonymous user')
 
 
 class AutoAdminSingleton(SingletonModel):
-    account = models.ForeignKey(User, null=True, blank=True, related_name='auto_admin_account', verbose_name=_(u'account'))
-    password = models.CharField(null=True, blank=True, verbose_name=_(u'password'), max_length=128)
-    password_hash = models.CharField(null=True, blank=True, verbose_name=_(u'password hash'), max_length=128)
+    account = models.ForeignKey(User, null=True, blank=True, related_name='auto_admin_account', verbose_name=_(u'Account'))
+    password = models.CharField(null=True, blank=True, verbose_name=_(u'Password'), max_length=128)
+    password_hash = models.CharField(null=True, blank=True, verbose_name=_(u'Password hash'), max_length=128)
 
     class Meta:
-        verbose_name = verbose_name_plural = _(u'auto admin properties')
+        verbose_name = verbose_name_plural = _(u'Auto admin properties')
