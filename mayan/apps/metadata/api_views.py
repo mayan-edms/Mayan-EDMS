@@ -5,8 +5,8 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
+from acls.models import AccessEntry
 from documents.models import Document
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission

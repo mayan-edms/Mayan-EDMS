@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,11 +10,9 @@ class Migration(SchemaMigration):
         # Adding index on 'DocumentVersion', fields ['timestamp']
         db.create_index(u'documents_documentversion', ['timestamp'])
 
-
     def backwards(self, orm):
         # Removing index on 'DocumentVersion', fields ['timestamp']
         db.delete_index(u'documents_documentversion', ['timestamp'])
-
 
     models = {
         u'auth.group': {

@@ -11,12 +11,14 @@ from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
-from .links import (metadata_edit, metadata_view, metadata_multiple_edit,
-    metadata_add, metadata_multiple_add, metadata_remove, metadata_multiple_remove,
-    setup_metadata_type_list, setup_metadata_type_edit, setup_metadata_type_delete,
-    setup_metadata_type_create, setup_metadata_set_list, setup_metadata_set_edit,
-    setup_metadata_set_members, setup_metadata_set_delete, setup_metadata_set_create,
-    setup_document_type_metadata)
+from .links import (metadata_add, metadata_edit, metadata_multiple_add,
+                    metadata_multiple_edit, metadata_multiple_remove,
+                    metadata_remove, metadata_view,
+                    setup_document_type_metadata, setup_metadata_set_create,
+                    setup_metadata_set_delete, setup_metadata_set_edit,
+                    setup_metadata_set_list, setup_metadata_set_members,
+                    setup_metadata_type_create, setup_metadata_type_delete,
+                    setup_metadata_type_edit, setup_metadata_type_list)
 from .models import MetadataSet, MetadataType
 from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
@@ -42,10 +44,10 @@ class_permissions(Document, [
 ])
 
 register_model_list_columns(Document, [
-        {
-            'name': _(u'Metadata'), 'attribute': encapsulate(lambda x: get_metadata_string(x))
-        },
-    ])
+    {
+        'name': _(u'Metadata'), 'attribute': encapsulate(lambda x: get_metadata_string(x))
+    },
+])
 
 endpoint = APIEndPoint('metadata')
 endpoint.register_urls(api_urls)

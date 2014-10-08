@@ -1,14 +1,13 @@
 import logging
 
 from django.core.exceptions import PermissionDenied
-from django.template import (TemplateSyntaxError, Library,
-    Node, Variable, VariableDoesNotExist)
-
+from django.template import (Library, Node, TemplateSyntaxError, Variable,
+                             VariableDoesNotExist)
 
 from acls.models import AccessEntry
 
-register = Library()
 logger = logging.getLogger(__name__)
+register = Library()
 
 
 class CheckAccessNode(Node):

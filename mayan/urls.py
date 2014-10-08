@@ -38,6 +38,7 @@ urlpatterns = patterns('',
     url(r'^user_management/', include('user_management.urls', namespace='user_management')),
 )
 
+
 def handler500(request):
     """
     500 error handler which includes ``request`` in the context.

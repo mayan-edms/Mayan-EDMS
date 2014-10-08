@@ -33,15 +33,15 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         if value:
             if getattr(value, '__iter__', None):
                 options = [(index, string) for index, string in
-                    self.choices if index in value]
+                           self.choices if index in value]
             else:
                 options = [(index, string) for index, string in
-                    self.choices if index == value]
+                           self.choices if index == value]
         else:
             if self.choices:
                 if self.choices[0] != (u'', u'---------') and value != []:
                     options = [(index, string) for index, string in
-                        self.choices]
+                               self.choices]
 
         if options:
             for index, string in options:

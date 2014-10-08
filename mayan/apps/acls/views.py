@@ -7,8 +7,8 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
@@ -19,11 +19,11 @@ from permissions.models import Permission
 
 from .api import get_class_permissions_for
 from .classes import (AccessHolder, AccessObject, AccessObjectClass,
-    ClassAccessHolder)
-from .forms import HolderSelectionForm, ClassHolderSelectionForm
+                      ClassAccessHolder)
+from .forms import ClassHolderSelectionForm, HolderSelectionForm
 from .models import AccessEntry, DefaultAccessEntry
-from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL,
-    ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
+from .permissions import (ACLS_EDIT_ACL, ACLS_CLASS_EDIT_ACL,
+                          ACLS_CLASS_VIEW_ACL, ACLS_VIEW_ACL)
 from .widgets import object_w_content_type_icon
 
 logger = logging.getLogger(__name__)
@@ -61,7 +61,7 @@ def acl_list_for(request, obj, extra_context=None):
         context.update(extra_context)
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_list(request, app_label, model_name, object_id):
@@ -128,11 +128,8 @@ def acl_detail_for(request, actor, obj):
         ],
     }
 
-    return render_to_response(
-        'main/generic_detail.html',
-        context,
-        context_instance=RequestContext(request)
-    )
+    return render_to_response('main/generic_detail.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_grant(request):
@@ -225,7 +222,7 @@ def acl_grant(request):
         context['object'] = navigation_object.source_object
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_revoke(request):
@@ -318,7 +315,7 @@ def acl_revoke(request):
         context['object'] = navigation_object.source_object
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None):
@@ -364,7 +361,7 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
         context.update(extra_context)
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_holder_new(request, access_object_gid):
@@ -390,7 +387,7 @@ def acl_setup_valid_classes(request):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_class_acl_list(request, access_object_class_gid):
@@ -414,7 +411,7 @@ def acl_class_acl_list(request, access_object_class_gid):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
@@ -432,10 +429,9 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
             'name': u'main/generic_list_subtemplate.html',
             'context': {
                 'title': _(u'Permissions available to: %(actor)s for class %(class)s' % {
-                        'actor': actor,
-                        'class': access_object_class
-                    }
-                ),
+                    'actor': actor,
+                    'class': access_object_class
+                }),
                 'object_list': permission_list,
                 'extra_columns': [
                     {'name': _(u'Namespace'), 'attribute': 'namespace'},
@@ -487,7 +483,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
     }
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_class_multiple_grant(request):
@@ -566,7 +562,7 @@ def acl_class_multiple_grant(request):
         context['object'] = navigation_object
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def acl_class_multiple_revoke(request):
@@ -645,4 +641,4 @@ def acl_class_multiple_revoke(request):
         context['object'] = navigation_object
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))

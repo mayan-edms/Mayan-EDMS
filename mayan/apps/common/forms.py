@@ -5,14 +5,13 @@ import os
 from django import forms
 from django.conf import settings
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
 from .utils import return_attrib
-from .widgets import DetailSelectMultiple, PlainWidget, EmailInput
+from .widgets import EmailInput, DetailSelectMultiple, PlainWidget
 
 
 class DetailForm(forms.ModelForm):
@@ -165,7 +164,7 @@ class EmailAuthenticationForm(forms.Form):
 
     def check_for_test_cookie(self):
         warnings.warn('check_for_test_cookie is deprecated; ensure your login '
-                'view is CSRF-protected.', DeprecationWarning)
+                      'view is CSRF-protected.', DeprecationWarning)
 
     def get_user_id(self):
         if self.user_cache:

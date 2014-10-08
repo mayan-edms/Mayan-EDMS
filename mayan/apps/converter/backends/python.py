@@ -17,8 +17,9 @@ from mimetype.api import get_mimetype
 
 from . import ConverterBase
 from ..exceptions import UnknownFileFormat
-from ..literals import (TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
-    TRANSFORMATION_ZOOM, DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT)
+from ..literals import (DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER,
+                        TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
+                        TRANSFORMATION_ZOOM)
 
 Image.init()
 

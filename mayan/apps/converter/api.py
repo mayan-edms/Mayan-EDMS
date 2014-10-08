@@ -121,7 +121,3 @@ def get_available_transformations_choices():
         result.append((transformation, TRANSFORMATION_CHOICES[transformation]['label']))
 
     return result
-
-
-def get_format_list():
-    return [(format, FILE_FORMATS.get(format, u'')) for format in backend.get_format_list()]

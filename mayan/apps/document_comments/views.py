@@ -64,7 +64,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         context['title'] = _(u'Are you sure you wish to delete the comments: %s?') % ', '.join([unicode(d) for d in comments])
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def comment_multiple_delete(request):

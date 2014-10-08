@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 from django import forms
-from django.forms.formsets import formset_factory, BaseFormSet
+from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
 from common.widgets import ScrollableCheckboxSelectMultiple
@@ -13,7 +13,7 @@ from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, AVAILABLE_VALIDATOR
 class MetadataForm(forms.Form):
 
     def clean_value(self):
-	value = self.cleaned_data['value']
+        value = self.cleaned_data['value']
         metadata_id = self.cleaned_data['id']
         metadata_type = MetadataType.objects.get(pk=metadata_id)
         if ( metadata_type.lookup
@@ -22,7 +22,7 @@ class MetadataForm(forms.Form):
                new_value = val_func(value)
                if new_value:
                  value = new_value
-	return value
+    return value
 
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
@@ -44,7 +44,7 @@ class MetadataForm(forms.Form):
 
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
             self.fields['id'].initial = self.metadata_type.pk
-                  
+
 
             if ( self.metadata_type.lookup
                 and not AVAILABLE_VALIDATORS.has_key(self.metadata_type.lookup)):

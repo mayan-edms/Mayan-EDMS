@@ -14,8 +14,8 @@ from permissions.models import Permission
 from .api import Key
 from .exceptions import KeyImportError
 from .forms import KeySearchForm
-from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
-    PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
+from .permissions import (PERMISSION_KEY_DELETE, PERMISSION_KEY_RECEIVE,
+                          PERMISSION_KEY_VIEW, PERMISSION_KEYSERVER_QUERY)
 from .runtime import gpg
 
 logger = logging.getLogger(__name__)

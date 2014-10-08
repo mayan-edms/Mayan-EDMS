@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
-from .permissions import (PERMISSION_KEY_VIEW, PERMISSION_KEY_DELETE,
-    PERMISSION_KEYSERVER_QUERY, PERMISSION_KEY_RECEIVE)
+from .permissions import (PERMISSION_KEY_DELETE, PERMISSION_KEY_RECEIVE,
+                          PERMISSION_KEY_VIEW, PERMISSION_KEYSERVER_QUERY)
 
 private_keys = {'text': _(u'Private keys'), 'view': 'django_gpg:key_private_list', 'args': 'object.pk', 'famfam': 'key', 'icon': 'key.png', 'permissions': [PERMISSION_KEY_VIEW]}
 public_keys = {'text': _(u'Public keys'), 'view': 'django_gpg:key_public_list', 'args': 'object.pk', 'famfam': 'key', 'icon': 'key.png', 'permissions': [PERMISSION_KEY_VIEW]}

@@ -2,22 +2,23 @@ from __future__ import absolute_import
 
 from datetime import timedelta
 
-from django.utils.translation import ugettext_lazy as _
-
 from acls.api import class_permissions
 from documents.models import Document
 from mayan.celery import app
 from history.api import register_history_type
 from navigation.api import register_links, register_top_menu
 
-from .events import (HISTORY_DOCUMENT_CHECKED_OUT, HISTORY_DOCUMENT_CHECKED_IN,
-    HISTORY_DOCUMENT_AUTO_CHECKED_IN, HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
-from .links import checkout_list, checkout_document, checkout_info, checkin_document
+from .events import (HISTORY_DOCUMENT_AUTO_CHECKED_IN,
+                     HISTORY_DOCUMENT_CHECKED_OUT,
+                     HISTORY_DOCUMENT_CHECKED_IN,
+                     HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
+from .links import (checkin_document, checkout_document, checkout_info,
+                    checkout_list)
 from .models import DocumentCheckout
-from .permissions import (PERMISSION_DOCUMENT_CHECKOUT,
-    PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
-    PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE)
-from .tasks import task_check_expired_check_outs
+from .permissions import (PERMISSION_DOCUMENT_CHECKIN,
+                          PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
+                          PERMISSION_DOCUMENT_CHECKOUT,
+                          PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE)
 
 CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
 
@@ -29,9 +30,14 @@ def initialize_document_checkout_extra_methods():
     Document.add_to_class('checkout_state', lambda document: DocumentCheckout.objects.document_checkout_state(document))
     Document.add_to_class('is_new_versions_allowed', lambda document, user=None: DocumentCheckout.objects.is_document_new_versions_allowed(document, user))
 
-register_top_menu(name='checkouts', link=checkout_list)
-register_links(Document, [checkout_info], menu_name='form_header')
-register_links(['checkout_info', 'checkout_document', 'checkin_document'], [checkout_document, checkin_document], menu_name="sidebar")
+
+app.conf.CELERYBEAT_SCHEDULE.update({
+    'check_expired_check_outs': {
+        'task': 'checkouts.tasks.task_check_expired_check_outs',
+        'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
+        'options': {'queue': 'checkouts'}
+    },
+})
 
 class_permissions(Document, [
     PERMISSION_DOCUMENT_CHECKOUT,
@@ -46,10 +52,6 @@ register_history_type(HISTORY_DOCUMENT_CHECKED_IN)
 register_history_type(HISTORY_DOCUMENT_AUTO_CHECKED_IN)
 register_history_type(HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
 
-app.conf.CELERYBEAT_SCHEDULE.update({
-    'check_expired_check_outs': {
-        'task': 'checkouts.tasks.task_check_expired_check_outs',
-        'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
-        'options': {'queue': 'checkouts'}
-    },
-})
+register_links(Document, [checkout_info], menu_name='form_header')
+register_links(['checkout_info', 'checkout_document', 'checkin_document'], [checkout_document, checkin_document], menu_name="sidebar")
+register_top_menu(name='checkouts', link=checkout_list)

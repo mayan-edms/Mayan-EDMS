@@ -4,7 +4,6 @@ from __future__ import absolute_import
 import logging
 import os
 import random
-import re
 import string
 import tempfile
 import types
@@ -268,7 +267,7 @@ def load_backend(backend_string):
     try:
         return getattr(import_module(module_name), klass)
     except ImportError as exception:
-        logger.debug('error importing: %s' % backend_string)
+        logger.debug('error importing: %s; %s' % (backend_string, exception))
         raise
 
 
