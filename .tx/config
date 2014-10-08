@@ -139,12 +139,6 @@ source_lang = en
 source_file = mayan/apps/registration/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.apps-scheduler]
-file_filter = mayan/apps/scheduler/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/scheduler/locale/en/LC_MESSAGES/django.po
-type = PO
-
 [mayan-edms.apps-smart_settings]
 file_filter = mayan/apps/smart_settings/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
