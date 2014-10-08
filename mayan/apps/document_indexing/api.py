@@ -8,9 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 from metadata.classes import MetadataClass
 
 from .exceptions import MaxSuffixCountReached
-from .filesystem import (fs_create_index_directory, fs_create_document_link,
-                         fs_delete_document_link, fs_delete_index_directory,
-                         assemble_suffixed_filename)
+from .filesystem import (assemble_suffixed_filename, fs_create_index_directory,
+                         fs_create_document_link, fs_delete_document_link,
+                         fs_delete_index_directory)
 from .models import Index, IndexInstanceNode, DocumentRenameCount
 from .settings import (AVAILABLE_INDEXING_FUNCTIONS, MAX_SUFFIX_COUNT,
                        SLUGIFY_PATHS)
@@ -27,6 +27,7 @@ def update_indexes(document):
     """
     Update or create all the index instances related to a document
     """
+
     warnings = []
 
     eval_dict = {}
@@ -48,6 +49,7 @@ def delete_indexes(document):
     """
     Delete all the index instances related to a document
     """
+
     warnings = []
 
     for index_instance in document.indexinstancenode_set.all():
@@ -77,6 +79,7 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
     related index instances also recursively calling itself to evaluate
     all the index's children
     """
+
     warnings = []
     if template_node.enabled:
         try:
@@ -129,6 +132,7 @@ def cascade_document_remove(document, index_instance):
     recusively deleting documents and empty index instances up to the
     root of the tree
     """
+
     warnings = []
     try:
         document_rename_count = DocumentRenameCount.objects.get(index_instance_node=index_instance, document=document)
