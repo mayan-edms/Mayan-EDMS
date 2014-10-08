@@ -3,11 +3,9 @@
 
 {% load compress %}
 
-{% load main_settings_tags %}
 {% load navigation_tags %}
 {% load project_tags %}
 {% load registration_tags %}
-{% load search_tags %}
 {% load settings %}
 {% load variable_tags %}
 
@@ -260,19 +258,6 @@
                         {% block footer %}{% endblock %}
                     </div><!--end #main-->
                     <div id="sidebar">
-                        {% get_main_setting "SIDE_BAR_SEARCH" as side_bar_search %}
-                        {% if side_bar_search and not web_theme_hide_menus %}
-                            {% with 'true' as side_bar %}
-                            {% with 'true' as form_hide_required_text %}
-                            {% with '' as read_only %}
-                            {% with '' as object %}
-                                {% search_form %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                        {% endif %}
-
                         {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
                             {% if object_navigation_links %}
                             <div class="block">

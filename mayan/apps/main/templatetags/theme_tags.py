@@ -6,8 +6,6 @@ from django.conf import settings
 from django.template import Library, Node, TemplateSyntaxError
 from django.utils.safestring import mark_safe
 
-from main import settings as web_theme_settings
-
 register = Library()
 
 
