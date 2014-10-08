@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+import tempfile
+
 from django.shortcuts import get_object_or_404
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
@@ -8,12 +10,17 @@ from converter.literals import (DEFAULT_PAGE_NUMBER,
 from rest_framework import generics
 from rest_framework.response import Response
 
+from documents.permissions import PERMISSION_DOCUMENT_CREATE
 from documents.settings import (DISPLAY_SIZE, ZOOM_MAX_LEVEL,
                                 ZOOM_MIN_LEVEL)
+from rest_api.permissions import MayanPermission
 
-from .models import StagingFolderSource
-from .serializers import (StagingFolderFileSerializer, StagingFolderSerializer,
-                          StagingSourceFileImageSerializer)
+from .models import StagingFolderSource, WatchFolderSource
+from .serializers import (NewDocumentSerializer, StagingFolderFileSerializer,
+                          StagingFolderSerializer,
+                          StagingSourceFileImageSerializer,
+                          WebFormSourceSerializer)
+from .tasks import task_upload_document
 
 
 class APIStagingSourceFileView(generics.GenericAPIView):
@@ -84,3 +91,54 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
         except UnkownConvertError as exception:
             return Response({'status': 'error', 'detail': 'converter_error', 'message': unicode(exception)})
+
+
+class APIDocumentCreateView(generics.CreateAPIView):
+    """
+    Create a new document from an uploaded file.
+    """
+
+    serializer_class = NewDocumentSerializer
+
+    permission_classes = (MayanPermission,)
+    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_CREATE]}
+
+    def get_serializer_class(self):
+        return NewDocumentSerializer
+
+    def create(self, request):
+        # TODO: use serializer instance instead of raw request
+        request = self.request.POST
+
+        if self.request.FILES:
+            temporary_file = tempfile.NamedTemporaryFile(delete=False)
+            for chunk in self.request.FILES['file'].chunks():
+                temporary_file.write(chunk)
+
+            temporary_file.close()
+        else:
+            return Response({
+                'status': 'error',
+                'message': 'No file provided.'
+            })
+
+        if not self.request.user.is_anonymous():
+            user_id = self.request.user.pk
+        else:
+            user_id = None
+
+        task_upload_document.apply_async(kwargs=dict(
+            source_id=int(request.get('source')),
+            file_path=temporary_file.name, filename=request.get('filename', None),
+            use_file_name=request.get('use_file_name', False),
+            document_type_id=int(request.get('document_type', 0)) or None,
+            expand=request.get('expand', False),
+            metadata_dict_list={},
+            user_id=user_id,
+            description=request.get('description', None),
+        ), queue='uploads')
+
+        return Response({
+            'status': 'success',
+            'message': 'New document creation queued.'
+        })

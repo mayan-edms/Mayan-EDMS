@@ -5,7 +5,7 @@ import logging
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from .models import StagingFolderSource
+from .models import StagingFolderSource, WebFormSource
 
 logger = logging.getLogger(__name__)
 
@@ -39,3 +39,18 @@ class StagingFolderSerializer(serializers.HyperlinkedModelSerializer):
 class StagingSourceFileImageSerializer(serializers.Serializer):
     status = serializers.CharField()
     data = serializers.CharField()
+
+
+class WebFormSourceSerializer(serializers.Serializer):
+    class Meta:
+        model = WebFormSource
+
+
+class NewDocumentSerializer(serializers.Serializer):
+    source = serializers.IntegerField()
+    document_type = serializers.IntegerField(required=False)
+    description = serializers.CharField(required=False)
+    expand = serializers.BooleanField(default=False)
+    file = serializers.FileField()
+    filename = serializers.CharField(required=False)
+    use_file_name = serializers.BooleanField(default=False)

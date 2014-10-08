@@ -138,6 +138,9 @@ class Source(models.Model):
         if metadata_dict_list and new_document:
             # Only do for new documents
             save_metadata_list(metadata_dict_list, document, create=True)
+
+            # TODO: Might not be required as metadata app registers signal
+            # handlers for index update
             warnings = update_indexes(document)
 
     class Meta:
