@@ -2,11 +2,9 @@
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import proper_name
 from smart_settings.api import register_settings
 
 available_indexing_functions = {
-    'proper_name': proper_name
 }
 
 register_settings(
