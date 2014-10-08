@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     (r'^bootstrap/', include('bootstrap.urls', namespace='bootstrap')),
     (r'^registration/', include('registration.urls', namespace='registration')),
     (r'^statistics/', include('statistics.urls', namespace='statistics')),
+    (r'^mailer/', include('mailer.urls', namespace='mailer')),
 )
 
 

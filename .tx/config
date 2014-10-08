@@ -174,3 +174,10 @@ file_filter = mayan/apps/user_management/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/user_management/locale/en/LC_MESSAGES/django.po
 type = PO
+
+[mayan-edms.apps-mailer]
+file_filter = mayan/apps/mailer/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/mailer/locale/en/LC_MESSAGES/django.po
+type = PO
+

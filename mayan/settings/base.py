@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'document_signatures',
     'checkouts',
     'bootstrap',
+    'mailer',
     'registration',
 )
 
