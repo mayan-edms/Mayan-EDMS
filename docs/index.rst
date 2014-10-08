@@ -63,7 +63,7 @@ Release notes
 Customization and fine tunning
 ==============================
 
-  :doc:`Settings <topics/settings>` | :doc:`Customization <topics/customization>`
+  :doc:`Settings <topics/settings>`
 
 For developers
 ==============

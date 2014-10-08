@@ -18,7 +18,6 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    tags
    ocr
    settings
-   customization
    development
    documentation
    translations

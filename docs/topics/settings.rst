@@ -433,18 +433,6 @@ Default: ``5``
 Maximum number of search queries to remember per user.
 
 
-Main
-====
-
-.. setting:: MAIN_DISABLE_HOME_VIEW
-
-**MAIN_DISABLE_HOME_VIEW**
-
-Default: ``False``
-
-Disable the home view and redirect users straight to the recent document list as soon as they log in.
-
-
 User management
 ===============
 

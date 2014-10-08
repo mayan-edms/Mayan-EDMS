@@ -10,15 +10,10 @@ from django.utils.translation import ugettext_lazy as _
 from permissions.models import Permission
 
 from .api import diagnostics, tools
-from .settings import DISABLE_HOME_VIEW
 
 
 def home(request):
-    if DISABLE_HOME_VIEW:
-        return HttpResponseRedirect(reverse('documents:document_list_recent'))
-    else:
-        return render_to_response('main/home.html', {},
-            context_instance=RequestContext(request))
+    return HttpResponseRedirect(reverse('documents:document_list_recent'))
 
 
 def maintenance_menu(request):
