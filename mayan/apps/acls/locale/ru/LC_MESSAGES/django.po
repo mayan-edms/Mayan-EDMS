@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2013-05-14 06:44+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: forms.py:25 links.py:10 links.py:16
 msgid "New holder"
@@ -45,16 +44,16 @@ msgid "ACLs"
 msgstr "Списки ACL"
 
 #: links.py:7 links.py:15
-msgid "details"
-msgstr "детали"
+msgid "Details"
+msgstr ""
 
 #: links.py:8 links.py:17
-msgid "grant"
-msgstr "предоставить"
+msgid "Grant"
+msgstr ""
 
 #: links.py:9 links.py:18
-msgid "revoke"
-msgstr "отозвать"
+msgid "Revoke"
+msgstr ""
 
 #: links.py:12
 msgid "Default ACLs"
@@ -77,28 +76,24 @@ msgid "permission"
 msgstr "разрешение"
 
 #: models.py:52
-msgid "access entry"
-msgstr "запись доступа"
+msgid "Access entry"
+msgstr ""
 
 #: models.py:53
-msgid "access entries"
-msgstr "записи доступа"
+msgid "Access entries"
+msgstr ""
 
 #: models.py:89
-msgid "default access entry"
-msgstr "запись доступа по умолчанию"
+msgid "Default access entry"
+msgstr ""
 
 #: models.py:90
-msgid "default access entries"
-msgstr "записи доступа по умолчанию"
+msgid "Default access entries"
+msgstr ""
 
-#: models.py:109
+#: models.py:109 models.py:112 models.py:113
 msgid "Creator"
 msgstr "Создатель"
-
-#: models.py:112 models.py:113
-msgid "creator"
-msgstr "создатель"
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
@@ -122,33 +117,33 @@ msgstr "Просмотр списков ACL класса по умолчанию
 
 #: views.py:46
 #, python-format
-msgid "access control lists for: %s"
-msgstr "списки контроля доступа для %s"
+msgid "Access control lists for: %s"
+msgstr ""
 
 #: views.py:48 views.py:408
-msgid "holder"
-msgstr "владелец"
+msgid "Holder"
+msgstr ""
 
 #: views.py:49 views.py:409
-msgid "permissions"
-msgstr "разрешения"
+msgid "Permissions"
+msgstr ""
 
 #: views.py:96
 #, python-format
-msgid "permissions available to: %(actor)s for %(obj)s"
-msgstr "разрешения, доступные %(actor)s для %(obj)s"
+msgid "Permissions available to: %(actor)s for %(obj)s"
+msgstr ""
 
 #: views.py:103 views.py:441
-msgid "namespace"
-msgstr "пространство имен"
+msgid "Namespace"
+msgstr ""
 
 #: views.py:104 views.py:442
-msgid "label"
-msgstr "этикетка"
+msgid "Label"
+msgstr ""
 
 #: views.py:106 views.py:444
-msgid "has permission"
-msgstr "имеет разрешение"
+msgid "Has permission"
+msgstr ""
 
 #: views.py:183 views.py:276 views.py:524 views.py:603
 msgid ", "
@@ -213,32 +208,35 @@ msgstr "%(actor)s не имеет права \"%(permission)s\" для %(object)
 
 #: views.py:352
 #, python-format
-msgid "add new holder for: %s"
-msgstr "добавить нового владельца для %s"
+msgid "Add new holder for: %s"
+msgstr ""
 
 #: views.py:353 views.py:485
 msgid "Select"
 msgstr "Выбор"
 
 #: views.py:385
-msgid "classes"
-msgstr "классы"
+msgid "Classes"
+msgstr ""
 
 #: views.py:387
-msgid "class"
-msgstr "класс"
+msgid "Class"
+msgstr ""
 
 #: views.py:406
 #, python-format
-msgid "default access control lists for class: %s"
-msgstr "списки контроля доступа умолчанию для класса %s"
+msgid "Default access control lists for class: %s"
+msgstr ""
 
 #: views.py:434
 #, python-format
-msgid "permissions available to: %(actor)s for class %(class)s"
-msgstr "разрешения доступные %(actor)s для класса %(class)s"
+msgid "Permissions available to: %(actor)s for class %(class)s"
+msgstr ""
 
 #: views.py:483
 #, python-format
-msgid "add new holder for class: %s"
-msgstr "добавить нового владельца для класса %s"
+msgid "Add new holder for class: %s"
+msgstr ""
+
+#~ msgid "creator"
+#~ msgstr "creator"

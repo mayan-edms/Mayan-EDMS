@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
+"POT-Creation-Date: 2014-10-08 17:11-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,15 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
+#: __init__.py:36 __init__.py:58 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:75
-msgid "Checks the OCR queue for pending documents."
-msgstr "Checks the OCR queue for pending documents."
-
-#: __init__.py:86
+#: __init__.py:59
 #, fuzzy
 msgid "OCR queue statistics"
 msgstr "OCR statistics"
@@ -36,30 +32,26 @@ msgid "Text from OCR"
 msgstr "Text from OCR"
 
 #: links.py:9 links.py:10
-msgid "submit to OCR queue"
+#, fuzzy
+msgid "Submit to OCR queue"
 msgstr "submit to OCR queue"
 
 #: links.py:11 links.py:12
-msgid "re-queue"
+#, fuzzy
+msgid "Re-queue"
 msgstr "re-queue"
 
 #: links.py:13 links.py:14
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "delete"
 
 #: links.py:16
-msgid "stop queue"
-msgstr "stop queue"
-
-#: links.py:17
-msgid "activate queue"
-msgstr "activate queue"
-
-#: links.py:19
-msgid "clean up pages content"
+#, fuzzy
+msgid "Clean up pages content"
 msgstr "clean up pages content"
 
-#: links.py:19
+#: links.py:16
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
@@ -67,79 +59,61 @@ msgstr ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
 
-#: links.py:21
-msgid "queue document list"
+#: links.py:18
+#, fuzzy
+msgid "Queue document list"
 msgstr "queue document list"
 
-#: literals.py:7
-msgid "stopped"
-msgstr "stopped"
+#: models.py:15
+msgid "Name"
+msgstr ""
 
-#: literals.py:8
-msgid "active"
-msgstr "active"
-
-#: literals.py:16
-msgid "pending"
-msgstr "pending"
-
-#: literals.py:17
-msgid "processing"
-msgstr "processing"
-
-#: literals.py:18
-msgid "error"
-msgstr "error"
-
-#: models.py:19
-msgid "name"
-msgstr "name"
-
-#: models.py:20
-msgid "label"
+#: models.py:16
+#, fuzzy
+msgid "Label"
 msgstr "label"
 
-#: models.py:24 models.py:44
-msgid "state"
-msgstr "state"
-
-#: models.py:29 models.py:37 views.py:36
-msgid "document queue"
+#: models.py:19 models.py:27 views.py:35
+#, fuzzy
+msgid "Document queue"
 msgstr "document queue"
 
-#: models.py:30
-msgid "document queues"
+#: models.py:20
+#, fuzzy
+msgid "Document queues"
 msgstr "document queues"
 
-#: models.py:38
-msgid "document"
+#: models.py:28 views.py:39
+#, fuzzy
+msgid "Document"
 msgstr "document"
 
-#: models.py:39
-msgid "date time submitted"
+#: models.py:29
+#, fuzzy
+msgid "Date time submitted"
 msgstr "date time submitted"
 
-#: models.py:40
-msgid "delay ocr"
-msgstr "delay ocr"
-
-#: models.py:45
-msgid "result"
+#: models.py:30 views.py:43
+#, fuzzy
+msgid "Result"
 msgstr "result"
 
-#: models.py:46
-msgid "node name"
+#: models.py:31
+#, fuzzy
+msgid "Node name"
 msgstr "node name"
 
-#: models.py:50
-msgid "queue document"
+#: models.py:35
+#, fuzzy
+msgid "Queue document"
 msgstr "queue document"
 
-#: models.py:51
-msgid "queue documents"
+#: models.py:36
+#, fuzzy
+msgid "Queue documents"
 msgstr "queue documents"
 
-#: models.py:68 views.py:40
+#: models.py:53 views.py:39
 msgid "Missing document."
 msgstr "Missing document."
 
@@ -152,16 +126,30 @@ msgid "Delete documents from OCR queue"
 msgstr "Delete documents from OCR queue"
 
 #: permissions.py:10
-msgid "Can enable/disable the OCR queue"
-msgstr "Can enable/disable the OCR queue"
-
-#: permissions.py:11
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "Can execute the OCR clean up on all document pages"
 
-#: permissions.py:12
+#: permissions.py:11
 msgid "Can edit an OCR queue properties"
 msgstr "Can edit an OCR queue properties"
+
+#: settings.py:13
+msgid "Automatically queue newly created documents for OCR."
+msgstr "Automatically queue newly created documents for OCR."
+
+#: settings.py:14
+msgid "File path to unpaper program."
+msgstr "File path to unpaper program."
+
+#: settings.py:15
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF files."
+msgstr ""
+"File path to poppler's pdftotext program used to extract text from PDF files."
+
+#: settings.py:16
+msgid "Full path to the backend to be used to do OCR."
+msgstr ""
 
 #: statistics.py:15
 #, python-format
@@ -173,168 +161,174 @@ msgstr "Document queues: %d"
 msgid "Queued documents: %d"
 msgstr "Queued documents: %d"
 
-#: views.py:33
-#, python-format
-msgid "documents in queue: %s"
+#: views.py:32
+#, fuzzy, python-format
+msgid "Documents in queue: %s"
 msgstr "documents in queue: %s"
 
-#: views.py:41
-msgid "thumbnail"
+#: views.py:40
+#, fuzzy
+msgid "Thumbnail"
 msgstr "thumbnail"
 
-#: views.py:54
-msgid "document queue properties"
-msgstr "document queue properties"
+#: views.py:41
+msgid "Added"
+msgstr ""
 
-#: views.py:55
-#, python-format
-msgid "Current state: %s"
-msgstr "Current state: %s"
+#: views.py:42
+msgid "Node"
+msgstr ""
 
-#: views.py:73 views.py:163
+#: views.py:60 views.py:140
 msgid "Must provide at least one queue document."
 msgstr "Must provide at least one queue document."
 
-#: views.py:83
-#, python-format
-msgid "Document: %s is being processed and can't be deleted."
-msgstr "Document: %s is being processed and can't be deleted."
-
-#: views.py:86
+#: views.py:70
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr "Queue document: %(document)s deleted successfully."
 
-#: views.py:90
+#: views.py:74
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Error deleting document: %(document)s; %(error)s"
 
-#: views.py:103
+#: views.py:87
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Are you sure you wish to delete queue document: %s?"
 
-#: views.py:105
+#: views.py:89
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Are you sure you wish to delete queue documents: %s?"
 
-#: views.py:141
-#, python-format
-msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
+#: views.py:124
+#, fuzzy, python-format
+msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Document: %(document)s was added to the OCR queue: %(queue)s."
 
-#: views.py:145
-#, python-format
-msgid "Document: %(document)s is already queued."
-msgstr "Document: %(document)s is already queued."
-
-#: views.py:175
+#: views.py:152
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 
-#: views.py:181
+#: views.py:158
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "Document id#: %d, no longer exists."
 
-#: views.py:185
+#: views.py:162
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
 msgstr "Document: %s is already being processed and can't be re-queded."
 
-#: views.py:197
+#: views.py:174
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Are you sure you wish to re-queue document: %s?"
 
-#: views.py:199
+#: views.py:176
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Are you sure you wish to re-queue documents: %s?"
 
-#: views.py:217
-#, python-format
-msgid "Document queue: %s, already stopped."
-msgstr "Document queue: %s, already stopped."
-
-#: views.py:223
-#, python-format
-msgid "Document queue: %s, stopped successfully."
-msgstr "Document queue: %s, stopped successfully."
-
-#: views.py:229
-#, python-format
-msgid "Are you sure you wish to disable document queue: %s"
-msgstr "Are you sure you wish to disable document queue: %s"
-
-#: views.py:244
-#, python-format
-msgid "Document queue: %s, already active."
-msgstr "Document queue: %s, already active."
-
-#: views.py:250
-#, python-format
-msgid "Document queue: %s, activated successfully."
-msgstr "Document queue: %s, activated successfully."
-
-#: views.py:256
-#, python-format
-msgid "Are you sure you wish to activate document queue: %s"
-msgstr "Are you sure you wish to activate document queue: %s"
-
-#: views.py:273
+#: views.py:196
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Are you sure you wish to clean up all the pages content?"
 
-#: views.py:274
+#: views.py:197
 msgid "On large databases this operation may take some time to execute."
 msgstr "On large databases this operation may take some time to execute."
 
-#: views.py:280
+#: views.py:203
 msgid "Document pages content clean up complete."
 msgstr "Document pages content clean up complete."
 
-#: views.py:282
+#: views.py:205
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Document pages content clean up error: %s"
 
-#: conf/settings.py:13
-msgid ""
-"Amount of seconds to delay OCR of documents to allow for the node's storage "
-"replication overhead."
-msgstr ""
-"Amount of seconds to delay OCR of documents to allow for the node's storage "
-"replication overhead."
-
-#: conf/settings.py:14
-msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr "Maximum amount of concurrent document OCRs a node can perform."
-
-#: conf/settings.py:15
-msgid "Automatically queue newly created documents for OCR."
-msgstr "Automatically queue newly created documents for OCR."
-
-#: conf/settings.py:17
-msgid "File path to unpaper program."
-msgstr "File path to unpaper program."
-
-#: conf/settings.py:18
-msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-
-#: conf/settings.py:19
-msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-
-#: parsers/__init__.py:93 parsers/__init__.py:170
+#: parsers/__init__.py:94 parsers/__init__.py:171
 msgid "Text extracted from PDF"
 msgstr "Text extracted from PDF"
+
+#~ msgid "Checks the OCR queue for pending documents."
+#~ msgstr "Checks the OCR queue for pending documents."
+
+#~ msgid "stop queue"
+#~ msgstr "stop queue"
+
+#~ msgid "activate queue"
+#~ msgstr "activate queue"
+
+#~ msgid "stopped"
+#~ msgstr "stopped"
+
+#~ msgid "active"
+#~ msgstr "active"
+
+#~ msgid "pending"
+#~ msgstr "pending"
+
+#~ msgid "processing"
+#~ msgstr "processing"
+
+#~ msgid "error"
+#~ msgstr "error"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "state"
+#~ msgstr "state"
+
+#~ msgid "delay ocr"
+#~ msgstr "delay ocr"
+
+#~ msgid "Can enable/disable the OCR queue"
+#~ msgstr "Can enable/disable the OCR queue"
+
+#~ msgid "document queue properties"
+#~ msgstr "document queue properties"
+
+#~ msgid "Current state: %s"
+#~ msgstr "Current state: %s"
+
+#~ msgid "Document: %s is being processed and can't be deleted."
+#~ msgstr "Document: %s is being processed and can't be deleted."
+
+#~ msgid "Document: %(document)s is already queued."
+#~ msgstr "Document: %(document)s is already queued."
+
+#~ msgid "Document queue: %s, already stopped."
+#~ msgstr "Document queue: %s, already stopped."
+
+#~ msgid "Document queue: %s, stopped successfully."
+#~ msgstr "Document queue: %s, stopped successfully."
+
+#~ msgid "Are you sure you wish to disable document queue: %s"
+#~ msgstr "Are you sure you wish to disable document queue: %s"
+
+#~ msgid "Document queue: %s, already active."
+#~ msgstr "Document queue: %s, already active."
+
+#~ msgid "Document queue: %s, activated successfully."
+#~ msgstr "Document queue: %s, activated successfully."
+
+#~ msgid "Are you sure you wish to activate document queue: %s"
+#~ msgstr "Are you sure you wish to activate document queue: %s"
+
+#~ msgid ""
+#~ "Amount of seconds to delay OCR of documents to allow for the node's "
+#~ "storage replication overhead."
+#~ msgstr ""
+#~ "Amount of seconds to delay OCR of documents to allow for the node's "
+#~ "storage replication overhead."
+
+#~ msgid "Maximum amount of concurrent document OCRs a node can perform."
+#~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
 
 #~ msgid "transformations"
 #~ msgstr "transformations"

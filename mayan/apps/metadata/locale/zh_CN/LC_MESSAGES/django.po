@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-09-30 01:49+0000\n"
-"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"POT-Creation-Date: 2014-10-08 17:11-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,167 +19,151 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:51 links.py:16
-msgid "metadata"
+#: __init__.py:46 forms.py:111 links.py:16 permissions.py:7
+msgid "Metadata"
 msgstr "元数据"
+
+#: __init__.py:52
+msgid "Returns a list of all the metadata types."
+msgstr ""
 
 #: classes.py:14
 #, python-format
 msgid "'metadata' object has no attribute '%s'"
 msgstr "元数据对象没有属性  '%s'"
 
-#: forms.py:27
-msgid "required"
-msgstr "必须的"
+#: forms.py:40
+msgid "Required"
+msgstr ""
 
-#: forms.py:54
+#: forms.py:70
 msgid "id"
 msgstr "id"
 
-#: forms.py:55
+#: forms.py:72 models.py:15
 msgid "Name"
 msgstr "名称"
 
-#: forms.py:57
+#: forms.py:74 models.py:86 views.py:282
 msgid "Value"
 msgstr "值"
 
-#: forms.py:58
+#: forms.py:75
 msgid "Update"
 msgstr "更新"
 
-#: forms.py:64
+#: forms.py:83 models.py:38 models.py:69 views.py:330 views.py:373
 msgid "Metadata type"
 msgstr "元数据类型"
 
-#: forms.py:68
+#: forms.py:87
 msgid "Remove"
 msgstr "移除"
 
-#: forms.py:85 views.py:535 views.py:553
+#: forms.py:104 links.py:28 views.py:391 views.py:540 views.py:558
 msgid "Metadata sets"
 msgstr "元数据集"
 
-#: forms.py:92 permissions.py:7
-msgid "Metadata"
-msgstr "元数据"
-
 #: links.py:15 links.py:17
-msgid "edit metadata"
-msgstr "编辑元数据"
+msgid "Edit metadata"
+msgstr ""
 
 #: links.py:18 links.py:19
-msgid "add metadata"
-msgstr "添加元数据"
+msgid "Add metadata"
+msgstr ""
 
 #: links.py:20 links.py:21
-msgid "remove metadata"
-msgstr "移除元数据"
+msgid "Remove metadata"
+msgstr ""
 
-#: links.py:23 models.py:39 views.py:289
-msgid "metadata types"
+#: links.py:23 models.py:39 views.py:294 views.py:537 views.py:555
+msgid "Metadata types"
 msgstr "元数据类型"
 
 #: links.py:24 links.py:29
-msgid "edit"
-msgstr "编辑"
+msgid "Edit"
+msgstr ""
 
 #: links.py:25 links.py:31
-msgid "delete"
-msgstr "删除"
+msgid "Delete"
+msgstr ""
 
 #: links.py:26 links.py:32
-msgid "create new"
-msgstr "新建"
+msgid "Create new"
+msgstr ""
 
-#: links.py:28 views.py:386
-msgid "metadata sets"
-msgstr "元数据集"
-
-#: links.py:30 views.py:390
-msgid "members"
-msgstr "成员"
+#: links.py:30 views.py:395
+msgid "Members"
+msgstr ""
 
 #: links.py:34 models.py:103
-msgid "default metadata"
-msgstr "缺省元数据"
-
-#: models.py:15
-msgid "name"
-msgstr "名称"
+msgid "Default metadata"
+msgstr ""
 
 #: models.py:15
 msgid "Do not use python reserved words, or spaces."
 msgstr "不要使用python保留字或者空格。"
 
 #: models.py:16 models.py:46
-msgid "title"
-msgstr "标题"
+msgid "Title"
+msgstr ""
 
 #: models.py:18
-msgid "default"
-msgstr "缺省"
+msgid "Default"
+msgstr ""
 
 #: models.py:19
 msgid "Enter a string to be evaluated."
 msgstr "请输入要执行的字符串"
 
 #: models.py:23
-msgid "lookup"
-msgstr "查找"
+msgid "Lookup"
+msgstr ""
 
 #: models.py:24
 msgid "Enter a string to be evaluated that returns an iterable."
 msgstr "请输入一个返回可以迭代的字符串。"
 
-#: models.py:38 models.py:69 views.py:325 views.py:368
-msgid "metadata type"
-msgstr "元数据类型"
-
-#: models.py:58 models.py:59 models.py:68 views.py:422 views.py:464
-#: views.py:508
-msgid "metadata set"
-msgstr "元数据集"
+#: models.py:58 models.py:59 models.py:68 views.py:427 views.py:469
+#: views.py:513
+msgid "Metadata set"
+msgstr ""
 
 #: models.py:75
-msgid "metadata set item"
-msgstr "元数据集的一项"
+msgid "Metadata set item"
+msgstr ""
 
 #: models.py:76
-msgid "metadata set items"
-msgstr "元数据集的内容"
+msgid "Metadata set items"
+msgstr ""
 
 #: models.py:84
-msgid "document"
-msgstr "文档"
+msgid "Document"
+msgstr ""
 
 #: models.py:85
-msgid "type"
-msgstr "类型"
-
-#: models.py:86 views.py:277
-msgid "value"
-msgstr "值"
+msgid "Type"
+msgstr ""
 
 #: models.py:92 models.py:93
-msgid "document metadata"
-msgstr "文档元数据"
+msgid "Document metadata"
+msgstr ""
 
-#: models.py:101 views.py:593
-msgid "document type"
-msgstr "文档类型"
+#: models.py:101 views.py:598
+msgid "Document type"
+msgstr ""
 
 #: models.py:102
-msgid "default metadata sets"
-msgstr "缺省元数据集"
+msgid "Default metadata sets"
+msgstr ""
 
 #: models.py:109
-msgid "document type defaults"
-msgstr "缺省文档类型"
+msgid "Document type defaults"
+msgstr ""
 
 #: models.py:110
-msgid "document types defaults"
-msgstr "缺省文档类型"
+msgid "Document types defaults"
+msgstr ""
 
 #: permissions.py:8
 msgid "Edit a document's metadata"
@@ -233,214 +217,245 @@ msgstr "删除元数据集"
 msgid "View metadata sets"
 msgstr "查看元数据集"
 
-#: views.py:39 views.py:189
+#: views.py:44 views.py:194
 msgid "The selected document doesn't have any metadata."
 msgstr "选择的文档无元数据"
 
-#: views.py:50 views.py:130 views.py:201
+#: views.py:55 views.py:135 views.py:206
 msgid "Must provide at least one document."
 msgstr "必须至少提供一个文档"
 
-#: views.py:92
+#: views.py:97
 #, python-format
 msgid "Error editing metadata for document %(document)s; %(error)s."
 msgstr "编辑文档%(document)s的元数据出错：%(error)s"
 
-#: views.py:95
+#: views.py:100
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "文档 %s 的元数据编辑成功。"
 
-#: views.py:106
+#: views.py:111
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "编辑文档 %s 元数据"
 
-#: views.py:108
+#: views.py:113
 #, python-format
 msgid "Edit metadata for documents: %s"
 msgstr "编辑文档 %s 元数据"
 
-#: views.py:147
+#: views.py:152
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
 msgstr "元数据类型: %(metadata_type)s成功加入到文档%(document)s"
 
-#: views.py:150
+#: views.py:155
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr "元数据类型: %(metadata_type)s 已经存在于文档%(document)s."
 
-#: views.py:173
+#: views.py:178
 #, python-format
 msgid "Add metadata type to document: %s"
 msgstr "添加元数据类型到文档：%s"
 
-#: views.py:175
+#: views.py:180
 #, python-format
 msgid "Add metadata type to documents: %s"
 msgstr "添加元数据类型到文档：%s"
 
-#: views.py:239
+#: views.py:244
 #, python-format
 msgid ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
 msgstr "成功从文档: %(document)s移除元数据类型: %(metadata_type)s"
 
-#: views.py:242
+#: views.py:247
 #, python-format
 msgid ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
 msgstr "从文档: %(document)s移除元数据类型: %(metadata_type)s 出错。"
 
-#: views.py:254
+#: views.py:259
 #, python-format
 msgid "Remove metadata types from document: %s"
 msgstr "从文档: %s移除元数据类型"
 
-#: views.py:256
+#: views.py:261
 #, python-format
 msgid "Remove metadata types from documents: %s"
 msgstr "从文档: %s移除元数据类型"
 
-#: views.py:275
+#: views.py:280
 #, python-format
-msgid "metadata for: %s"
-msgstr "%s的元数据"
+msgid "Metadata for: %s"
+msgstr ""
 
-#: views.py:293
-msgid "internal name"
-msgstr "内部名"
+#: views.py:298
+msgid "Internal name"
+msgstr ""
 
-#: views.py:313
+#: views.py:318
 msgid "Metadata type edited successfully"
 msgstr "元数据类型编辑成功"
 
-#: views.py:316
+#: views.py:321
 #, python-format
 msgid "Error editing metadata type; %s"
 msgstr "编辑元数据类型 %s出错"
 
-#: views.py:322
+#: views.py:327
 #, python-format
-msgid "edit metadata type: %s"
-msgstr "编辑元数据类型: %s"
+msgid "Edit metadata type: %s"
+msgstr ""
 
-#: views.py:336
+#: views.py:341
 msgid "Metadata type created successfully"
 msgstr "元数据类型创建成功"
 
-#: views.py:342
-msgid "create metadata type"
-msgstr "创建元数据类型"
+#: views.py:347
+msgid "Create metadata type"
+msgstr ""
 
-#: views.py:360
+#: views.py:365
 #, python-format
 msgid "Metadata type: %s deleted successfully."
 msgstr "元数据类型: %s 删除成功。"
 
-#: views.py:362
+#: views.py:367
 #, python-format
 msgid "Metadata type: %(metadata_type)s delete error: %(error)s"
 msgstr "元数据类型: %(metadata_type)s删除失败：%(error)s"
 
-#: views.py:373
+#: views.py:378
 #, python-format
 msgid "Are you sure you wish to delete the metadata type: %s?"
 msgstr "确定要删除元数据类型：%s么?"
 
-#: views.py:410
+#: views.py:415
 msgid "Metadata set edited successfully"
 msgstr "元数据集编辑成功"
 
-#: views.py:413
+#: views.py:418
 #, python-format
 msgid "Error editing metadata set; %s"
 msgstr "编辑元数据集%s出错"
 
-#: views.py:419
+#: views.py:424
 #, python-format
-msgid "edit metadata set: %s"
-msgstr "编辑元数据集: %s"
+msgid "Edit metadata set: %s"
+msgstr ""
 
-#: views.py:460
+#: views.py:465
 #, python-format
-msgid "non members of metadata set: %s"
-msgstr "元数据集: %s无成员"
+msgid "Non members of metadata set: %s"
+msgstr ""
 
-#: views.py:461
+#: views.py:466
 #, python-format
-msgid "members of metadata set: %s"
-msgstr "元数据集: %s的成员"
+msgid "Members of metadata set: %s"
+msgstr ""
 
-#: views.py:476
+#: views.py:481
 msgid "Metadata set created successfully"
 msgstr "元数据集创建成功"
 
-#: views.py:482
-msgid "create metadata set"
-msgstr "创建元数据集"
+#: views.py:487
+msgid "Create metadata set"
+msgstr ""
 
-#: views.py:500
+#: views.py:505
 #, python-format
 msgid "Metadata set: %s deleted successfully."
 msgstr "元数据集: %s删除成功"
 
-#: views.py:503
+#: views.py:508
 #, python-format
 msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
 msgstr "元数据集: %(metadata_set)s删除失败： %(error)s"
 
-#: views.py:513
+#: views.py:518
 #, python-format
 msgid "Are you sure you wish to delete the metadata set: %s?"
 msgstr "确定要删除元数据集: %s么?"
 
-#: views.py:532 views.py:550
-msgid "Metadata types"
-msgstr "元数据类型"
-
-#: views.py:588
+#: views.py:593
 #, python-format
-msgid "non members of document type: %s"
-msgstr "文档类型： %s无成员"
+msgid "Non members of document type: %s"
+msgstr ""
 
-#: views.py:589
+#: views.py:594
 #, python-format
-msgid "members of document type: %s"
-msgstr "文档类型： %s的成员"
+msgid "Members of document type: %s"
+msgstr ""
 
-#: templates/metadata_set_help.html:3
-msgid "What are metadata sets?"
-msgstr "什么是元数据集？"
+#~ msgid "metadata"
+#~ msgstr "metadata"
 
-#: templates/metadata_set_help.html:4
-msgid ""
-"A metadata set is a group of one or more metadata types.  Metadata sets are "
-"useful when creating new documents; selecing a metadata set automatically "
-"attaches it's member metadata types to said document."
-msgstr "元数据集是一组元数据类型。元数据集用于新建文档的时候，选择一个元数据集将自动添加元数据类型成员到文档。"
+#~ msgid "metadata types"
+#~ msgstr "metadata types"
 
-#: templates/metadata_type_help.html:3
-msgid "What are metadata types?"
-msgstr "什么是元数据类型？"
+#~ msgid "edit"
+#~ msgstr "edit"
 
-#: templates/metadata_type_help.html:4
-msgid ""
-"A metadata type defines the characteristics of a value of some kind that can"
-" be attached to a document.  Examples of metadata types are: a client name, "
-"a date, or a project to which several documents belong.  A metadata type's "
-"name is the internal identifier with which it can be referenced to by other "
-"modules such as the indexing module, the title is the value that is shown to"
-" the users, the default value is the value an instance of this metadata type"
-" will have initially, and the lookup value turns an instance of a metadata "
-"of this type into a choice list which options are the result of the lookup's"
-" code execution."
-msgstr "一个元数据类型定义了跟文档相关的某些特性值。例如：一个客户名，日期，或者一个包含几个文档的的项目。一个元数据类型的名字是跟其他模块（比如索引模块）交互的内部标识，而标题的值才是显示给用户看的，缺省值是此类型实例的初始值，查找值则是将此类型实例转变成一个选择列表。"
+#~ msgid "metadata sets"
+#~ msgstr "metadata sets"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "metadata type"
+#~ msgstr "metadata type"
+
+#~ msgid "metadata set"
+#~ msgstr "metadata set"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "value"
+#~ msgstr "value"
+
+#~ msgid "What are metadata sets?"
+#~ msgstr "What are metadata sets?"
+
+#~ msgid ""
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
+#~ msgstr ""
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
+
+#~ msgid "What are metadata types?"
+#~ msgstr "What are metadata types?"
+
+#~ msgid ""
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
+#~ msgstr ""
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
 
 #~ msgid " Available models: %s"
 #~ msgstr " Available models: %s"

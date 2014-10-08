@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# emersonsoares <dev.emerson@gmail.com>, 2011
+# Translators:
+# Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Roberto Rosario, 2012
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2012-12-12 06:06+0000\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:49
@@ -33,39 +33,39 @@ msgstr "Selecionar"
 msgid "Click on the image for full size view of the first page."
 msgstr "Clique na imagem para ver a primeira página em tamanho grande."
 
-#: links.py:11
-msgid "smart links actions"
-msgstr "ações de ligações inteligentes"
+#: links.py:12
+msgid "Smart links actions"
+msgstr ""
 
-#: links.py:12 links.py:14 models.py:23 views.py:130
-msgid "smart links"
-msgstr "ligações inteligentes"
-
-#: links.py:15
-msgid "smart links list"
-msgstr "lista de ligações inteligentes"
+#: links.py:13 links.py:15 models.py:22 permissions.py:7 views.py:131
+msgid "Smart links"
+msgstr "Ligações inteligentes"
 
 #: links.py:16
-msgid "create new smart link"
-msgstr "criar uma nova ligação inteligente"
+msgid "Smart links list"
+msgstr ""
 
-#: links.py:17 links.py:22
-msgid "edit"
-msgstr "editar"
+#: links.py:17 views.py:158
+msgid "Create new smart link"
+msgstr "Criar nova ligação inteligente"
 
 #: links.py:18 links.py:23
-msgid "delete"
-msgstr "excluir"
+msgid "Edit"
+msgstr ""
 
-#: links.py:20
-msgid "conditions"
-msgstr "condições"
+#: links.py:19 links.py:24
+msgid "Delete"
+msgstr ""
 
 #: links.py:21
-msgid "create condition"
-msgstr "criar condição"
+msgid "Conditions"
+msgstr ""
 
-#: links.py:25
+#: links.py:22
+msgid "Create condition"
+msgstr ""
+
+#: links.py:26
 msgid "ACLs"
 msgstr "ACL's"
 
@@ -137,75 +137,66 @@ msgstr "contido em expressão regular"
 msgid "is in regular expression (case insensitive)"
 msgstr "contido em expressão regular (insensível a minúsculas/maiúsculas)"
 
-#: models.py:12
-msgid "title"
-msgstr "título"
+#: models.py:11
+msgid "Title"
+msgstr ""
 
-#: models.py:13 views.py:133
-msgid "dynamic title"
-msgstr "título dinâmico"
+#: models.py:12 views.py:134
+msgid "Dynamic title"
+msgstr ""
 
-#: models.py:13 models.py:31
+#: models.py:12 models.py:30
 msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
+msgstr "Esta expressão será avaliada em relação ao documento atualmente selecionado. Os metadados do documento estão disponíveis como variável `metadata` e as propriedades do documento como  variável `document`."
+
+#: models.py:13 models.py:32 views.py:135 views.py:230
+msgid "Enabled"
 msgstr ""
-"Esta expressão será avaliada em relação ao documento atualmente selecionado. "
-"Os metadados do documento estão disponíveis como variável `metadata` e as "
-"propriedades do documento como  variável `document`."
 
-#: models.py:14 models.py:33 views.py:134 views.py:229
-msgid "enabled"
-msgstr "habilitado"
+#: models.py:21 models.py:26 views.py:294 views.py:328
+msgid "Smart link"
+msgstr ""
 
-#: models.py:22 models.py:27 views.py:293 views.py:327
-msgid "smart link"
-msgstr "ligação inteligente"
-
-#: models.py:28
+#: models.py:27
 msgid "The inclusion is ignored for the first item."
 msgstr "A inclusão é ignorada para o primeiro item."
 
-#: models.py:29
-msgid "foreign document data"
-msgstr "dados de documentos externos"
+#: models.py:28
+msgid "Foreign document data"
+msgstr ""
 
-#: models.py:29
+#: models.py:28
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
+msgstr "Isto representa os metadados de todos os outros documentos.  Objetos disponíveis: `document. <attribute> ` e ` metadata. <metadata_type_name> `."
+
+#: models.py:30
+msgid "Expression"
 msgstr ""
-"Isto representa os metadados de todos os outros documentos.  Objetos "
-"disponíveis: `document. <attribute> ` e ` metadata. <metadata_type_name> `."
 
 #: models.py:31
-msgid "expression"
-msgstr "expressão"
+msgid "Negated"
+msgstr ""
 
-#: models.py:32
-msgid "negated"
-msgstr "negado"
-
-#: models.py:32
+#: models.py:31
 msgid "Inverts the logic of the operator."
 msgstr "Inverte a lógica do operador."
 
-#: models.py:36
+#: models.py:35
 msgid "not"
 msgstr "não"
 
+#: models.py:38
+msgid "Link condition"
+msgstr ""
+
 #: models.py:39
-msgid "link condition"
-msgstr "condição de ligação"
-
-#: models.py:40
-msgid "link conditions"
-msgstr "condições de ligação"
-
-#: permissions.py:7
-msgid "Smart links"
-msgstr "Ligações inteligentes"
+msgid "Link conditions"
+msgstr ""
 
 #: permissions.py:9
 msgid "View existing smart links"
@@ -223,129 +214,132 @@ msgstr "Excluir ligações inteligentes"
 msgid "Edit smart links"
 msgstr "Editar ligações inteligentes"
 
-#: views.py:39
+#: settings.py:11
+msgid "Show smart link that don't return any documents."
+msgstr "Mostrar ligações inteligentes que não retornam nenhum documento."
+
+#: views.py:40
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
-#: views.py:58
+#: views.py:59
 #, python-format
-msgid "documents in smart link: %(group)s"
-msgstr "documentos na ligação inteligente: %(group)s"
+msgid "Documents in smart link: %(group)s"
+msgstr ""
 
-#: views.py:74
+#: views.py:75
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Erro na consulta de ligações inteligentes: %s"
 
-#: views.py:96
+#: views.py:97
 #, python-format
-msgid "smart links (%s)"
-msgstr "ligações inteligentes (%s)"
+msgid "Smart links (%s)"
+msgstr ""
 
-#: views.py:110
+#: views.py:111
 msgid "There no defined smart links for the current document."
 msgstr "Não há ligações inteligentes definidas para o documento atual."
 
-#: views.py:150
+#: views.py:151
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "Ligação inteligente: %s criado com sucesso."
 
-#: views.py:157
-msgid "Create new smart link"
-msgstr "Criar nova ligação inteligente"
-
-#: views.py:173
+#: views.py:174
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "Ligação inteligente: %s editada com sucesso."
 
-#: views.py:181
+#: views.py:182
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Editar Ligação inteligente: %s"
 
-#: views.py:199
+#: views.py:200
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "Ligação inteligente: %s excluída com sucesso."
 
-#: views.py:201
-#, fuzzy, python-format
+#: views.py:202
+#, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr "Erro ao excluir a ligação inteligente: %(smart_link)s; %(error)s."
+msgstr ""
 
-#: views.py:210
+#: views.py:211
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "Tem a certeza de que pretende excluir a ligação inteligente: %s?"
 
-#: views.py:226
+#: views.py:227
 #, python-format
-msgid "conditions for smart link: %s"
-msgstr "condições para a ligação inteligente: %s"
+msgid "Conditions for smart link: %s"
+msgstr ""
 
-#: views.py:251
+#: views.py:252
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Condição da ligação inteligente: \"%s\" criada com sucesso."
 
-#: views.py:258
+#: views.py:259
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Adicionar novas condições à ligação inteligente: \"%s\""
 
-#: views.py:280
+#: views.py:281
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Condição de ligação inteligente: \"%s\" editada com sucesso."
 
-#: views.py:287
+#: views.py:288
 msgid "Edit smart link condition"
 msgstr "Editar condição de ligação inteligente"
 
-#: views.py:294 views.py:328
-msgid "condition"
-msgstr "condição"
+#: views.py:295 views.py:329
+msgid "Condition"
+msgstr ""
 
-#: views.py:314
+#: views.py:315
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Condição de ligação inteligente: \"%s\" excluída com sucesso."
 
-#: views.py:316
-#, fuzzy, python-format
+#: views.py:317
+#, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
 msgstr ""
-"Erro ao excluir a condição de ligação inteligente: %(smart_link_condition)s; "
-"%(error)s."
 
-#: views.py:330
+#: views.py:331
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
-"Tem a certeza de que pretende eliminar a condição de ligação inteligente: "
-"\"%s\"?"
+msgstr "Tem a certeza de que pretende eliminar a condição de ligação inteligente: \"%s\"?"
 
-#: conf/settings.py:11
-msgid "Show smart link that don't return any documents."
-msgstr "Mostrar ligações inteligentes que não retornam nenhum documento."
+#~ msgid "smart links"
+#~ msgstr "smart links"
 
-#: templates/smart_links_help.html:3
-msgid "What are smart links?"
-msgstr "O que são ligações inteligentes?"
+#~ msgid "create new smart link"
+#~ msgstr "create new smart link"
 
-#: templates/smart_links_help.html:4
-msgid ""
-"Smart links are a set of conditional statements that are used to query the "
-"database using the current document the user is accessing as the data "
-"source, the results of these queries are a list of documents that relate in "
-"some manner to the document being displayed and allow users the ability to "
-"jump to and from linked documents very easily."
-msgstr ""
-"Ligações condicionais são conjuntos de declarações condicionais que são "
-"usados para consultar a base de dados usando o documento atual como fonte de "
-"dados. O resultado desta consulta é uma lista de documentos relacionados de "
-"alguma forma com o documento atual, que permite ao utilizador saltar para e "
-"de documentos ligados facilmente."
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "smart link"
+#~ msgstr "smart link"
+
+#~ msgid "What are smart links?"
+#~ msgstr "What are smart links?"
+
+#~ msgid ""
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
+#~ msgstr ""
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

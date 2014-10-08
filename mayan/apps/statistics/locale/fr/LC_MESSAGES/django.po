@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2014-07-18 17:25+0000\n"
-"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: links.py:10
@@ -38,17 +37,16 @@ msgstr "Statistiques"
 
 #: registry.py:8
 msgid "Central place to store and display app statistics."
-msgstr ""
-"Point central pour stocker et afficher les statistiques de l'application."
+msgstr "Point central pour stocker et afficher les statistiques de l'application."
 
 #: views.py:18
-msgid "statistics namespaces"
-msgstr "statistiques des espaces de nommage"
+msgid "Statistics namespaces"
+msgstr ""
 
 #: views.py:34
 #, python-format
-msgid "namespace details for: %s"
-msgstr "détails de l'espace de nommage pour: %s"
+msgid "Namespace details for: %s"
+msgstr ""
 
 #: views.py:35 views.py:49
 msgid "namespace"
@@ -60,5 +58,5 @@ msgstr "statistique"
 
 #: views.py:54
 #, python-format
-msgid "results for: %s"
-msgstr "résultats pour: %s"
+msgid "Results for: %s"
+msgstr ""

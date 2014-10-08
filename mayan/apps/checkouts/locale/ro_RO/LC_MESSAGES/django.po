@@ -1,28 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2013-02-16 21:03+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
-
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr "Verificaţi termenul de aprobare"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: events.py:5
 msgid "Document checked out"
@@ -58,24 +53,23 @@ msgstr "Document aprobat forţat"
 #: events.py:26
 #, python-format
 msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr ""
-"Documentul \"%(document)s\" aprobat obligatoriu de către %(fullname)s.."
+msgstr "Documentul \"%(document)s\" aprobat obligatoriu de către %(fullname)s.."
 
 #: links.py:16
-msgid "checkouts"
-msgstr "aprobări"
+msgid "Checkouts"
+msgstr ""
 
 #: links.py:17
-msgid "check out document"
-msgstr "document de aprobat"
+msgid "Check out document"
+msgstr ""
 
 #: links.py:18
-msgid "check in document"
-msgstr "aprobă document"
+msgid "Check in document"
+msgstr ""
 
 #: links.py:19
-msgid "check in/out"
-msgstr "aprobări"
+msgid "Check in/out"
+msgstr ""
 
 #: literals.py:14
 msgid "checked out"
@@ -85,7 +79,7 @@ msgstr "de aprobat "
 msgid "checked in/available"
 msgstr "aprobare disponibilă"
 
-#: models.py:24 views.py:132
+#: models.py:24
 msgid "document"
 msgstr "document"
 
@@ -99,8 +93,7 @@ msgstr "data și ora de expirare aprobare"
 
 #: models.py:26
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr ""
-"Total timp alocat pentru a deține documentul pentru aprobare în minute."
+msgstr "Total timp alocat pentru a deține documentul pentru aprobare în minute."
 
 #: models.py:31
 msgid "block new version upload"
@@ -143,16 +136,16 @@ msgid "checked out documents"
 msgstr "aprobări documente"
 
 #: views.py:35
-msgid "checkout user"
-msgstr "aprobate de"
+msgid "Checkout user"
+msgstr ""
 
 #: views.py:36
-msgid "checkout time and date"
-msgstr "aprobat ora și data"
+msgid "Checkout time and date"
+msgstr ""
 
 #: views.py:37
-msgid "checkout expiration"
-msgstr "aprobarea expiră"
+msgid "Checkout expiration"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -220,14 +213,16 @@ msgstr "Eroare la încercarea de aprobare a documentului; % s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Documentul  \"%s\" aprobat cu succes."
 
+#: views.py:132
+msgid "Document"
+msgstr ""
+
 #: views.py:141
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Tu nu ai aprobat inițial acest document. Sunteți sigur că doriți să aprobaţi "
-"forţat documentul:% s?"
+msgstr "Tu nu ai aprobat inițial acest document. Sunteți sigur că doriți să aprobaţi forţat documentul:% s?"
 
 #: views.py:143
 #, python-format
@@ -271,10 +266,17 @@ msgstr "Introduceți o diferență de timp validă."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Total timp acordat pentru a deține documente în statul pentru aprobare în "
-"zile, ore și / sau minute."
+msgstr "Total timp acordat pentru a deține documente în statul pentru aprobare în zile, ore și / sau minute."
 
 #: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Verifică data şi ora de expirare"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

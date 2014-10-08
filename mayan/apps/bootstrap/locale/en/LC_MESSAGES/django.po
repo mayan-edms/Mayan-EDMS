@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
 "PO-Revision-Date: 2012-12-12 06:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -26,56 +26,67 @@ msgstr "Bootstrap setup file"
 msgid "Bootstrap setup URL"
 msgstr "Bootstrap setup URL"
 
-#: links.py:11
-msgid "bootstrap"
-msgstr "bootstrap"
+#: links.py:11 registry.py:7
+msgid "Bootstrap"
+msgstr "Bootstrap"
 
 #: links.py:12
-msgid "bootstrap setup list"
+#, fuzzy
+msgid "Bootstrap setup list"
 msgstr "bootstrap setup list"
 
 #: links.py:13
-msgid "create new bootstrap setup"
+#, fuzzy
+msgid "Create new bootstrap setup"
 msgstr "create new bootstrap setup"
 
 #: links.py:14
-msgid "edit"
-msgstr "edit"
+msgid "Edit"
+msgstr ""
 
 #: links.py:15
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "delete"
 
 #: links.py:16
-msgid "details"
+#, fuzzy
+msgid "Details"
 msgstr "details"
 
 #: links.py:17
-msgid "execute"
+#, fuzzy
+msgid "Execute"
 msgstr "execute"
 
 #: links.py:18
-msgid "dump current setup"
+#, fuzzy
+msgid "Dump current setup"
 msgstr "dump current setup"
 
 #: links.py:19
-msgid "export"
+#, fuzzy
+msgid "Export"
 msgstr "export"
 
 #: links.py:20
-msgid "import from file"
+#, fuzzy
+msgid "Import from file"
 msgstr "import from file"
 
 #: links.py:21
-msgid "import from URL"
+#, fuzzy
+msgid "Import from URL"
 msgstr "import from URL"
 
 #: links.py:22
-msgid "sync with repository"
+#, fuzzy
+msgid "Sync with repository"
 msgstr "sync with repository"
 
 #: links.py:23
-msgid "erase database"
+#, fuzzy
+msgid "Erase database"
 msgstr "erase database"
 
 #: literals.py:20
@@ -91,19 +102,21 @@ msgid "Better YAML"
 msgstr "Better YAML"
 
 #: models.py:30
-msgid "name"
-msgstr "name"
+msgid "Name"
+msgstr ""
 
 #: models.py:31
-msgid "slug"
-msgstr "slug"
+msgid "Slug"
+msgstr ""
 
 #: models.py:32 views.py:35
-msgid "description"
+#, fuzzy
+msgid "Description"
 msgstr "description"
 
 #: models.py:33
-msgid "fixture"
+#, fuzzy
+msgid "Fixture"
 msgstr "fixture"
 
 #: models.py:33
@@ -111,19 +124,22 @@ msgid "These are the actual database structure creation instructions."
 msgstr "These are the actual database structure creation instructions."
 
 #: models.py:34 views.py:36
-msgid "type"
-msgstr "type"
+msgid "Type"
+msgstr ""
 
 #: models.py:35
-msgid "creation date and time"
+#, fuzzy
+msgid "Creation date and time"
 msgstr "creation date and time"
 
 #: models.py:104 views.py:91 views.py:120 views.py:145 views.py:173
-msgid "bootstrap setup"
+#, fuzzy
+msgid "Bootstrap setup"
 msgstr "bootstrap setup"
 
 #: models.py:105 views.py:32
-msgid "bootstrap setups"
+#, fuzzy
+msgid "Bootstrap setups"
 msgstr "bootstrap setups"
 
 #: permissions.py:7
@@ -170,10 +186,6 @@ msgstr "Sync the local bootstrap setups with a published repository"
 msgid "Erase the entire database and document storage"
 msgstr "Erase the entire database and document storage"
 
-#: registry.py:7
-msgid "Bootstrap"
-msgstr "Bootstrap"
-
 #: registry.py:8
 msgid "Provides pre configured setups for indexes, document types, tags, etc."
 msgstr "Provides pre configured setups for indexes, document types, tags, etc."
@@ -187,7 +199,8 @@ msgid "Error creating bootstrap setup."
 msgstr "Error creating bootstrap setup."
 
 #: views.py:59
-msgid "create bootstrap"
+#, fuzzy
+msgid "Create bootstrap"
 msgstr "create bootstrap"
 
 #: views.py:79
@@ -199,8 +212,8 @@ msgid "Error editing bootstrap setup."
 msgstr "Error editing bootstrap setup."
 
 #: views.py:87
-#, python-format
-msgid "edit bootstrap setup: %s"
+#, fuzzy, python-format
+msgid "Edit bootstrap setup: %s"
 msgstr "edit bootstrap setup: %s"
 
 #: views.py:112
@@ -253,7 +266,8 @@ msgid "Bootstrap setup created successfully."
 msgstr "Bootstrap setup created successfully."
 
 #: views.py:207
-msgid "dump current configuration into a bootstrap setup"
+#, fuzzy
+msgid "Dump current configuration into a bootstrap setup"
 msgstr "dump current configuration into a bootstrap setup"
 
 #: views.py:241 views.py:269
@@ -321,3 +335,18 @@ msgstr "Bootstrap repository synchronization error: %(error)s"
 #: views.py:338
 msgid "Are you sure you wish to synchronize with the bootstrap repository?"
 msgstr "Are you sure you wish to synchronize with the bootstrap repository?"
+
+#~ msgid "bootstrap"
+#~ msgstr "bootstrap"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "slug"
+#~ msgstr "slug"
+
+#~ msgid "type"
+#~ msgstr "type"

@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2012-07-28 15:20+0000\n"
-"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: forms.py:25 links.py:10 links.py:16
@@ -44,16 +44,16 @@ msgid "ACLs"
 msgstr "ACLs"
 
 #: links.py:7 links.py:15
-msgid "details"
-msgstr "détails"
+msgid "Details"
+msgstr ""
 
 #: links.py:8 links.py:17
-msgid "grant"
-msgstr "autoriser"
+msgid "Grant"
+msgstr ""
 
 #: links.py:9 links.py:18
-msgid "revoke"
-msgstr "révoquer"
+msgid "Revoke"
+msgstr ""
 
 #: links.py:12
 msgid "Default ACLs"
@@ -76,28 +76,24 @@ msgid "permission"
 msgstr "autorisation"
 
 #: models.py:52
-msgid "access entry"
-msgstr "autorisation d'accès"
+msgid "Access entry"
+msgstr ""
 
 #: models.py:53
-msgid "access entries"
-msgstr "autorisations d'accès"
+msgid "Access entries"
+msgstr ""
 
 #: models.py:89
-msgid "default access entry"
-msgstr "autorisation d'accès par défaut"
+msgid "Default access entry"
+msgstr ""
 
 #: models.py:90
-msgid "default access entries"
-msgstr "autorisations d'accès par défaut"
+msgid "Default access entries"
+msgstr ""
 
-#: models.py:109
+#: models.py:109 models.py:112 models.py:113
 msgid "Creator"
 msgstr "Créateur"
-
-#: models.py:112 models.py:113
-msgid "creator"
-msgstr "créateur"
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
@@ -121,33 +117,33 @@ msgstr "Afficher ACLs par défaut pour la classe"
 
 #: views.py:46
 #, python-format
-msgid "access control lists for: %s"
-msgstr "Liste de contrôle d'accès (ACL) pour: %s"
+msgid "Access control lists for: %s"
+msgstr ""
 
 #: views.py:48 views.py:408
-msgid "holder"
-msgstr "détenteur"
+msgid "Holder"
+msgstr ""
 
 #: views.py:49 views.py:409
-msgid "permissions"
-msgstr "autorisations"
+msgid "Permissions"
+msgstr ""
 
 #: views.py:96
 #, python-format
-msgid "permissions available to: %(actor)s for %(obj)s"
-msgstr "autorisations pour: %(actor)s for %(obj)s"
+msgid "Permissions available to: %(actor)s for %(obj)s"
+msgstr ""
 
 #: views.py:103 views.py:441
-msgid "namespace"
-msgstr "espace de nommage"
+msgid "Namespace"
+msgstr ""
 
 #: views.py:104 views.py:442
-msgid "label"
-msgstr "label"
+msgid "Label"
+msgstr ""
 
 #: views.py:106 views.py:444
-msgid "has permission"
-msgstr "autorisation accordée "
+msgid "Has permission"
+msgstr ""
 
 #: views.py:183 views.py:276 views.py:524 views.py:603
 msgid ", "
@@ -166,14 +162,12 @@ msgstr "sur %s"
 #: views.py:188 views.py:529
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
-"Êtes vous certain de vouloir attribuer l'autorisation %(title_suffix)s?"
+msgstr "Êtes vous certain de vouloir attribuer l'autorisation %(title_suffix)s?"
 
 #: views.py:190 views.py:531
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
-"Êtes vous certain de vouloir attribuer les autorisations %(title_suffix)s?"
+msgstr "Êtes vous certain de vouloir attribuer les autorisations %(title_suffix)s?"
 
 #: views.py:197 views.py:538
 #, python-format
@@ -185,9 +179,7 @@ msgstr "Autorisation \"%(permission)s\" accordée à %(actor)s sur %(object)s."
 msgid ""
 "%(actor)s, already had the permission \"%(permission)s\" granted for "
 "%(object)s."
-msgstr ""
-"%(actor)s, dispose déjà de l'autorisation \"%(permission)s\" accordée sur "
-"%(object)s."
+msgstr "%(actor)s, dispose déjà de l'autorisation \"%(permission)s\" accordée sur %(object)s."
 
 #: views.py:278 views.py:605
 #, python-format
@@ -202,14 +194,12 @@ msgstr "Êtes vous certain de vouloir révoquer l'autorisation %(title_suffix)s?
 #: views.py:283 views.py:610
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr ""
-"Êtes vous certain de vouloir révoquer les autorisations %(title_suffix)s?"
+msgstr "Êtes vous certain de vouloir révoquer les autorisations %(title_suffix)s?"
 
 #: views.py:290 views.py:617
 #, python-format
 msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-msgstr ""
-"Autorisation \"%(permission)s\" révoquée pour %(actor)s sur %(object)s."
+msgstr "Autorisation \"%(permission)s\" révoquée pour %(actor)s sur %(object)s."
 
 #: views.py:296 views.py:623
 #, python-format
@@ -218,32 +208,35 @@ msgstr "%(actor)s, n'a pas l'autorisation \"%(permission)s\" sur %(object)s."
 
 #: views.py:352
 #, python-format
-msgid "add new holder for: %s"
-msgstr "ajouter un nouveau détenteur pour: %s"
+msgid "Add new holder for: %s"
+msgstr ""
 
 #: views.py:353 views.py:485
 msgid "Select"
 msgstr "Sélectionner"
 
 #: views.py:385
-msgid "classes"
-msgstr "classes"
+msgid "Classes"
+msgstr ""
 
 #: views.py:387
-msgid "class"
-msgstr "classe"
+msgid "Class"
+msgstr ""
 
 #: views.py:406
 #, python-format
-msgid "default access control lists for class: %s"
-msgstr "liste de contrôle d'accès (ACL) par défaut pour: %s"
+msgid "Default access control lists for class: %s"
+msgstr ""
 
 #: views.py:434
 #, python-format
-msgid "permissions available to: %(actor)s for class %(class)s"
-msgstr "autorisations attribuées à: %(actor)s sur la classe %(class)s"
+msgid "Permissions available to: %(actor)s for class %(class)s"
+msgstr ""
 
 #: views.py:483
 #, python-format
-msgid "add new holder for class: %s"
-msgstr "ajouter un nouveau détenteur sur la classe: %s"
+msgid "Add new holder for class: %s"
+msgstr ""
+
+#~ msgid "creator"
+#~ msgstr "creator"

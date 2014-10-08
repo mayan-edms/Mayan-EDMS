@@ -1,75 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
+# Stefan Lodders <sl@suchreflex.de>, 2012
+# tetjarediske <tetja.rediske@googlemail.com>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-03-12 16:11+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: api.py:24
-msgid "Public"
-msgstr "Öffentlich"
-
-#: api.py:25
-msgid "Secret"
-msgstr "Geheim"
-
-#: api.py:33 api.py:38
-msgid "RSA"
-msgstr "RSA"
-
-#: api.py:34
-msgid "DSA"
-msgstr "DSA"
-
-#: api.py:39
-msgid "Elgamal"
-msgstr "Elgamal"
-
-#: api.py:53
-msgid "Bad signature."
-msgstr "Ungültige Signatur."
-
-#: api.py:57
-msgid "Document not signed or invalid signature."
-msgstr "Dokument nicht signiert oder ungültige Signatur."
-
-#: api.py:61
-msgid "Signature error."
-msgstr "Signatur Fehler."
-
-#: api.py:65
-msgid "Document is signed but no public key is available for verification."
+#: api.py:92
+msgid "Unknown"
 msgstr ""
-"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
-"verfügbar."
-
-#: api.py:69
-msgid "Document is signed, and signature is good."
-msgstr "Dokument ist signiert mit guter Unterschrift."
-
-#: api.py:73
-msgid "Document is signed with a valid signature."
-msgstr "Das Dokument ist mit einer gültigen Signatur signiert."
-
-#: api.py:146
-msgid "unknown"
-msgstr "Unbekannt"
 
 #: forms.py:7
 msgid "Term"
@@ -77,37 +33,75 @@ msgstr "Begriff"
 
 #: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird."
+
+#: links.py:6
+msgid "Private keys"
 msgstr ""
-"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
-"wird."
 
-#: links.py:6 views.py:66
-msgid "private keys"
-msgstr "Private Schlüssel"
-
-#: links.py:7 views.py:69
-msgid "public keys"
-msgstr "Öffentliche Schlüssel"
+#: links.py:7
+msgid "Public keys"
+msgstr ""
 
 #: links.py:8
-msgid "delete"
-msgstr "Löschen"
+msgid "Delete"
+msgstr ""
 
-#: links.py:9
-msgid "query keyservers"
+#: links.py:9 permissions.py:11
+msgid "Query keyservers"
 msgstr "Schlüsselserver abfragen"
 
 #: links.py:10
-msgid "import"
-msgstr "Importieren"
+msgid "Import"
+msgstr ""
 
-#: links.py:11
-msgid "key management"
-msgstr "Schlüssel-Management"
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Key management"
 msgstr "Schlüssel-Management"
+
+#: literals.py:6
+msgid "Public"
+msgstr "Öffentlich"
+
+#: literals.py:7
+msgid "Secret"
+msgstr "Geheim"
+
+#: literals.py:15 literals.py:20
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:16
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:21
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:35
+msgid "Bad signature."
+msgstr "Ungültige Signatur."
+
+#: literals.py:39
+msgid "Document not signed or invalid signature."
+msgstr "Dokument nicht signiert oder ungültige Signatur."
+
+#: literals.py:43
+msgid "Signature error."
+msgstr "Signatur Fehler."
+
+#: literals.py:47
+msgid "Document is signed but no public key is available for verification."
+msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
+
+#: literals.py:51
+msgid "Document is signed, and signature is good."
+msgstr "Dokument ist signiert mit guter Unterschrift."
+
+#: literals.py:55
+msgid "Document is signed with a valid signature."
+msgstr "Das Dokument ist mit einer gültigen Signatur signiert."
 
 #: permissions.py:9
 msgid "View keys"
@@ -117,13 +111,17 @@ msgstr "Schlüssel anzeigen"
 msgid "Delete keys"
 msgstr "Schlüssel löschen"
 
-#: permissions.py:11
-msgid "Query keyservers"
-msgstr "Schlüsselserver abfragen"
-
 #: permissions.py:12
 msgid "Import keys from keyservers"
 msgstr "Schlüssel von Schlüsselservern importieren"
+
+#: settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "Liste der Server, die nach unbekannten Schlüsseln durchsucht werden."
+
+#: settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Verzeichnis zum Speichern von Schlüsseln und Konfigurationsdateien."
 
 #: views.py:37
 #, python-format
@@ -143,6 +141,14 @@ msgstr "Schlüssel importieren"
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Sind Sie sicher, dass Sie die Schlüssel-ID %s importieren möchten?"
+
+#: views.py:66
+msgid "private keys"
+msgstr "Private Schlüssel"
+
+#: views.py:69
+msgid "public keys"
+msgstr "Öffentliche Schlüssel"
 
 #: views.py:77
 msgid "Key ID"
@@ -167,10 +173,7 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
-"Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen "
-"öffentlichen Schlüssel, der Teil eines öffentlichen/privaten Paars ist, zu "
-"löschen versuchen, wird der private Schlüssel ebenfalls gelöscht."
+msgstr "Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen öffentlichen Schlüssel, der Teil eines öffentlichen/privaten Paars ist, zu löschen versuchen, wird der private Schlüssel ebenfalls gelöscht."
 
 #: views.py:128
 msgid "Query key server"
@@ -216,10 +219,8 @@ msgstr "Zurückgezogen"
 msgid "Identifies"
 msgstr "Identifiziert"
 
-#: conf/settings.py:15
-msgid "List of keyservers to be queried for unknown keys."
-msgstr "Liste der Server, die nach unbekannten Schlüsseln durchsucht werden."
+#~ msgid "query keyservers"
+#~ msgstr "query keyservers"
 
-#: conf/settings.py:16
-msgid "Home directory used to store keys as well as configuration files."
-msgstr "Verzeichnis zum Speichern von Schlüsseln und Konfigurationsdateien."
+#~ msgid "key management"
+#~ msgstr "key management"

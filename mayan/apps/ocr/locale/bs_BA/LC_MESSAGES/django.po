@@ -1,147 +1,103 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2013-06-26 14:18+0000\n"
-"Last-Translator: www.ping.ba <jomer@ping.ba>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"projects/p/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"POT-Creation-Date: 2014-10-08 17:11-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
+#: __init__.py:36 __init__.py:58 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:75
-msgid "Checks the OCR queue for pending documents."
-msgstr "Provjeri OCR red za dokumente na čekanju."
-
-#: __init__.py:86
-#, fuzzy
+#: __init__.py:59
 msgid "OCR queue statistics"
-msgstr "OCR statistika"
+msgstr ""
 
 #: api.py:74
 msgid "Text from OCR"
 msgstr "Tekst iz OCR-a"
 
 #: links.py:9 links.py:10
-msgid "submit to OCR queue"
-msgstr "predaj u OCR red"
+msgid "Submit to OCR queue"
+msgstr ""
 
 #: links.py:11 links.py:12
-msgid "re-queue"
-msgstr "ponovno poredaj"
+msgid "Re-queue"
+msgstr ""
 
 #: links.py:13 links.py:14
-msgid "delete"
-msgstr "obriši"
+msgid "Delete"
+msgstr ""
 
 #: links.py:16
-msgid "stop queue"
-msgstr "zaustavi red"
+msgid "Clean up pages content"
+msgstr ""
 
-#: links.py:17
-msgid "activate queue"
-msgstr "aktiviraj red"
-
-#: links.py:19
-msgid "clean up pages content"
-msgstr "očisti sadržaj stranica"
-
-#: links.py:19
+#: links.py:16
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
+msgstr "Pokreće jezični filter da ukloni uobičajene OCR greške iz sadžaja stranica dokumenta."
+
+#: links.py:18
+msgid "Queue document list"
 msgstr ""
-"Pokreće jezični filter da ukloni uobičajene OCR greške iz sadžaja stranica "
-"dokumenta."
 
-#: links.py:21
-msgid "queue document list"
-msgstr "lista dokumenata u redu"
+#: models.py:15
+msgid "Name"
+msgstr ""
 
-#: literals.py:7
-msgid "stopped"
-msgstr "zaustavljen"
+#: models.py:16
+msgid "Label"
+msgstr ""
 
-#: literals.py:8
-msgid "active"
-msgstr "aktivan"
-
-#: literals.py:16
-msgid "pending"
-msgstr "na čekanju"
-
-#: literals.py:17
-msgid "processing"
-msgstr "obrada"
-
-#: literals.py:18
-msgid "error"
-msgstr "greška"
-
-#: models.py:19
-msgid "name"
-msgstr "ime"
+#: models.py:19 models.py:27 views.py:35
+msgid "Document queue"
+msgstr ""
 
 #: models.py:20
-msgid "label"
-msgstr "oznaka"
+msgid "Document queues"
+msgstr ""
 
-#: models.py:24 models.py:44
-msgid "state"
-msgstr "stanje"
+#: models.py:28 views.py:39
+msgid "Document"
+msgstr ""
 
-#: models.py:29 models.py:37 views.py:36
-msgid "document queue"
-msgstr "red dokumenata"
+#: models.py:29
+msgid "Date time submitted"
+msgstr ""
 
-#: models.py:30
-msgid "document queues"
-msgstr "redovi dokumenata"
+#: models.py:30 views.py:43
+msgid "Result"
+msgstr ""
 
-#: models.py:38
-msgid "document"
-msgstr "dokument"
+#: models.py:31
+msgid "Node name"
+msgstr ""
 
-#: models.py:39
-msgid "date time submitted"
-msgstr "datum i vrijeme podneseni"
+#: models.py:35
+msgid "Queue document"
+msgstr ""
 
-#: models.py:40
-msgid "delay ocr"
-msgstr "odgoditi OCR"
+#: models.py:36
+msgid "Queue documents"
+msgstr ""
 
-#: models.py:45
-msgid "result"
-msgstr "rezultat"
-
-#: models.py:46
-msgid "node name"
-msgstr "ime noda"
-
-#: models.py:50
-msgid "queue document"
-msgstr "red dokumenta"
-
-#: models.py:51
-msgid "queue documents"
-msgstr "red dokumenata"
-
-#: models.py:68 views.py:40
+#: models.py:53 views.py:39
 msgid "Missing document."
 msgstr "Nedostaje dokument."
 
@@ -154,16 +110,30 @@ msgid "Delete documents from OCR queue"
 msgstr "Brisati dokumente iz OCR reda"
 
 #: permissions.py:10
-msgid "Can enable/disable the OCR queue"
-msgstr "Može omogućiti ili onemogućiti OCR red"
-
-#: permissions.py:11
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "Može izvršiti OCR čišćenje u svim stranicama dokumenta"
 
-#: permissions.py:12
+#: permissions.py:11
 msgid "Can edit an OCR queue properties"
 msgstr "Mogu se urediti osobine OCR reda"
+
+#: settings.py:13
+msgid "Automatically queue newly created documents for OCR."
+msgstr "Novi kreirani dokumenti se automatski stavljaju u red za OCR."
+
+#: settings.py:14
+msgid "File path to unpaper program."
+msgstr "Staza prema datotekama za bezpapirni program."
+
+#: settings.py:15
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Staza do popplerovog programa pdftotext za vađenje teksta iz PDF datoteka."
+
+#: settings.py:16
+msgid "Full path to the backend to be used to do OCR."
+msgstr ""
 
 #: statistics.py:15
 #, python-format
@@ -175,232 +145,235 @@ msgstr "Redovi dokumenata: %d"
 msgid "Queued documents: %d"
 msgstr "Dokumenti u redu: %d"
 
-#: views.py:33
+#: views.py:32
 #, python-format
-msgid "documents in queue: %s"
-msgstr "dokumenti u redu: %s"
+msgid "Documents in queue: %s"
+msgstr ""
+
+#: views.py:40
+msgid "Thumbnail"
+msgstr ""
 
 #: views.py:41
-msgid "thumbnail"
-msgstr "thumbnail"
+msgid "Added"
+msgstr ""
 
-#: views.py:54
-msgid "document queue properties"
-msgstr "osobine reda dokumenata"
+#: views.py:42
+msgid "Node"
+msgstr ""
 
-#: views.py:55
-#, python-format
-msgid "Current state: %s"
-msgstr "Trenutno stanje: %s"
-
-#: views.py:73 views.py:163
+#: views.py:60 views.py:140
 msgid "Must provide at least one queue document."
 msgstr "Mora postojati bar jedan red dokumenta."
 
-#: views.py:83
-#, python-format
-msgid "Document: %s is being processed and can't be deleted."
-msgstr "Dokument: %s se obrađuju i ne može se izbrisati."
-
-#: views.py:86
+#: views.py:70
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr "Red dokumenata: %(document)s uspješno obrisan."
 
-#: views.py:90
+#: views.py:74
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Greška brisanja dokumenta: %(document)s; %(error)s"
 
-#: views.py:103
+#: views.py:87
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Jeste li sigurni da želite obrisati dokument u redu: %s?"
 
-#: views.py:105
+#: views.py:89
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Jeste li sigurni da želite obrisati dokumente u redu: %s?"
 
-#: views.py:141
+#: views.py:124
 #, python-format
-msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-msgstr "Dokument: %(document)s je dodan u OCR red: %(queue)s."
+msgid "Document: %(document)s was added to the OCR queue."
+msgstr ""
 
-#: views.py:145
-#, python-format
-msgid "Document: %(document)s is already queued."
-msgstr "Dokument: %(document)s je već u redu."
-
-#: views.py:175
+#: views.py:152
 #, python-format
 msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 msgstr "Dokument: %(document)s je ponovo uvršten u OCR red: %(queue)s"
 
-#: views.py:181
+#: views.py:158
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "Dokument id#: %d, više ne postoji."
 
-#: views.py:185
+#: views.py:162
 #, python-format
 msgid "Document: %s is already being processed and can't be re-queded."
 msgstr "Dokument: %s je obrađen i ne može ponovo biti ubačen u red."
 
-#: views.py:197
+#: views.py:174
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Jeste li sigurni da želite ponovo uvrstiti u red dokument: %s?"
 
-#: views.py:199
+#: views.py:176
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Jeste li sigurni da želite ponovo uvrstiti u red dokumente: %s?"
 
-#: views.py:217
-#, python-format
-msgid "Document queue: %s, already stopped."
-msgstr "Red dokumenata: %s, je ranije zaustavljen."
-
-#: views.py:223
-#, python-format
-msgid "Document queue: %s, stopped successfully."
-msgstr "Red dokumenata: %s, uspješno zaustavljen."
-
-#: views.py:229
-#, python-format
-msgid "Are you sure you wish to disable document queue: %s"
-msgstr "Jeste li sigurni da želite onemogućiti red dokumenata: %s?"
-
-#: views.py:244
-#, python-format
-msgid "Document queue: %s, already active."
-msgstr "Red dokumenata: %s, je već aktivan."
-
-#: views.py:250
-#, python-format
-msgid "Document queue: %s, activated successfully."
-msgstr "Red dokumenata: %s, uspješno aktiviran."
-
-#: views.py:256
-#, python-format
-msgid "Are you sure you wish to activate document queue: %s"
-msgstr "Jeste li sigurni da želite aktivirati red dokumenata: %s?"
-
-#: views.py:273
+#: views.py:196
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Jeste li sigurni da želite obrisati sav sadržaj stranica?"
 
-#: views.py:274
+#: views.py:197
 msgid "On large databases this operation may take some time to execute."
 msgstr "Na velikim bazama ova operacija može potrajati duže."
 
-#: views.py:280
+#: views.py:203
 msgid "Document pages content clean up complete."
 msgstr "Potpuno obrisan sadržaj stranica."
 
-#: views.py:282
+#: views.py:205
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Greška brisanja stranica: %s"
 
-#: conf/settings.py:13
-msgid ""
-"Amount of seconds to delay OCR of documents to allow for the node's storage "
-"replication overhead."
-msgstr ""
-"Iznos sekundi kašnjenja OCR dokumenata kako bi se prilagodilo kašnjenju "
-"diskova."
-
-#: conf/settings.py:14
-msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr "Maksimalan broj dokumenata koje OCR čvor može istovremeno da obrađuje."
-
-#: conf/settings.py:15
-msgid "Automatically queue newly created documents for OCR."
-msgstr "Novi kreirani dokumenti se automatski stavljaju u red za OCR."
-
-#: conf/settings.py:17
-msgid "File path to unpaper program."
-msgstr "Staza prema datotekama za bezpapirni program."
-
-#: conf/settings.py:18
-msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Staza do popplerovog programa pdftotext za vađenje teksta iz PDF datoteka."
-
-#: conf/settings.py:19
-msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-
-#: parsers/__init__.py:93 parsers/__init__.py:170
+#: parsers/__init__.py:94 parsers/__init__.py:171
 msgid "Text extracted from PDF"
 msgstr "Tekst izvađen iz PDF"
 
-#~ msgid "transformations"
-#~ msgstr "transformacije"
+#~ msgid "Checks the OCR queue for pending documents."
+#~ msgstr "Checks the OCR queue for pending documents."
 
-#~ msgid "add transformation"
-#~ msgstr "dodaj transformaciju"
+#~ msgid "stop queue"
+#~ msgstr "stop queue"
 
-#~ msgid "edit"
-#~ msgstr "izmjeni"
+#~ msgid "activate queue"
+#~ msgstr "activate queue"
 
-#~ msgid "Default"
-#~ msgstr "default"
+#~ msgid "stopped"
+#~ msgstr "stopped"
 
-#~ msgid "Enter a valid value."
-#~ msgstr "Unesite važeću vrijednost."
+#~ msgid "active"
+#~ msgstr "active"
 
-#~ msgid "order"
-#~ msgstr "poredak"
+#~ msgid "pending"
+#~ msgstr "pending"
 
-#~ msgid "transformation"
-#~ msgstr "transformacija"
+#~ msgid "processing"
+#~ msgstr "processing"
 
-#~ msgid "arguments"
-#~ msgstr "argumenti"
+#~ msgid "error"
+#~ msgstr "error"
 
-#~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "Koristi riječnike da identifikuješ argumente, na primjer: %s"
+#~ msgid "name"
+#~ msgstr "name"
 
-#~ msgid "document queue transformation"
-#~ msgstr "transformacija reda dokumenata"
+#~ msgid "state"
+#~ msgstr "state"
 
-#~ msgid "document queue transformations"
-#~ msgstr "transformacije reda dokumenata"
+#~ msgid "delay ocr"
+#~ msgstr "delay ocr"
 
-#~ msgid "transformations for: %s"
-#~ msgstr "transformacije za: %s"
+#~ msgid "Can enable/disable the OCR queue"
+#~ msgstr "Can enable/disable the OCR queue"
 
-#~ msgid "Queue transformation edited successfully"
-#~ msgstr "Uspješno izmjenjene transformacije reda"
+#~ msgid "document queue properties"
+#~ msgstr "document queue properties"
 
-#~ msgid "Error editing queue transformation; %s"
-#~ msgstr "Greška izmjene transformacije reda; %s"
+#~ msgid "Current state: %s"
+#~ msgstr "Current state: %s"
 
-#~ msgid "Edit transformation: %s"
-#~ msgstr "Izmjeniti transormaciju: %s"
+#~ msgid "Document: %s is being processed and can't be deleted."
+#~ msgstr "Document: %s is being processed and can't be deleted."
 
-#~ msgid "Queue transformation deleted successfully."
-#~ msgstr "Transformacija reda uspješno obrisana."
+#~ msgid "Document: %(document)s is already queued."
+#~ msgstr "Document: %(document)s is already queued."
 
-#~ msgid "Error deleting queue transformation; %(error)s"
-#~ msgstr "Greška pri brisanju transformacije reda; %(error)s"
+#~ msgid "Document queue: %s, already stopped."
+#~ msgstr "Document queue: %s, already stopped."
+
+#~ msgid "Document queue: %s, stopped successfully."
+#~ msgstr "Document queue: %s, stopped successfully."
+
+#~ msgid "Are you sure you wish to disable document queue: %s"
+#~ msgstr "Are you sure you wish to disable document queue: %s"
+
+#~ msgid "Document queue: %s, already active."
+#~ msgstr "Document queue: %s, already active."
+
+#~ msgid "Document queue: %s, activated successfully."
+#~ msgstr "Document queue: %s, activated successfully."
+
+#~ msgid "Are you sure you wish to activate document queue: %s"
+#~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Jeste li sigurni da želite obrisati transformaciju reda "
-#~ "\"%(transformation)s\" "
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
+
+#~ msgid "Maximum amount of concurrent document OCRs a node can perform."
+#~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
+
+#~ msgid "transformations"
+#~ msgstr "transformations"
+
+#~ msgid "add transformation"
+#~ msgstr "add transformation"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Enter a valid value."
+#~ msgstr "Enter a valid value."
+
+#~ msgid "order"
+#~ msgstr "order"
+
+#~ msgid "transformation"
+#~ msgstr "transformation"
+
+#~ msgid "arguments"
+#~ msgstr "arguments"
+
+#~ msgid "Use dictionaries to indentify arguments, example: %s"
+#~ msgstr "Use dictionaries to indentify arguments, example: %s"
+
+#~ msgid "document queue transformation"
+#~ msgstr "document queue transformation"
+
+#~ msgid "document queue transformations"
+#~ msgstr "document queue transformations"
+
+#~ msgid "transformations for: %s"
+#~ msgstr "transformations for: %s"
+
+#~ msgid "Queue transformation edited successfully"
+#~ msgstr "Queue transformation edited successfully"
+
+#~ msgid "Error editing queue transformation; %s"
+#~ msgstr "Error editing queue transformation; %s"
+
+#~ msgid "Edit transformation: %s"
+#~ msgstr "Edit transformation: %s"
+
+#~ msgid "Queue transformation deleted successfully."
+#~ msgstr "Queue transformation deleted successfully."
+
+#~ msgid "Error deleting queue transformation; %(error)s"
+#~ msgstr "Error deleting queue transformation; %(error)s"
+
+#~ msgid ""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
+#~ msgstr ""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
-#~ msgstr "Transformacija reda uspješno kreirana."
+#~ msgstr "Queue transformation created successfully"
 
 #~ msgid "Error creating queue transformation; %s"
-#~ msgstr "Greška pri kreiranju transformacije reda; %s"
+#~ msgstr "Error creating queue transformation; %s"
 
 #~ msgid "Create new transformation for queue: %s"
-#~ msgstr "Kreiraj novu transformaciju za red: %s"
+#~ msgstr "Create new transformation for queue: %s"

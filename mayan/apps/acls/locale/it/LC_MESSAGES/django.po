@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Carlo Zanatto <>, 2012
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012
+# Roberto Rosario, 2012
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2012-06-08 07:20+0000\n"
-"Last-Translator: Carlo Zanatto <>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:25 links.py:10 links.py:16
@@ -46,16 +47,16 @@ msgid "ACLs"
 msgstr "ACL"
 
 #: links.py:7 links.py:15
-msgid "details"
-msgstr "dettagli"
+msgid "Details"
+msgstr ""
 
 #: links.py:8 links.py:17
-msgid "grant"
-msgstr "permetti"
+msgid "Grant"
+msgstr ""
 
 #: links.py:9 links.py:18
-msgid "revoke"
-msgstr "revocare"
+msgid "Revoke"
+msgstr ""
 
 #: links.py:12
 msgid "Default ACLs"
@@ -78,28 +79,24 @@ msgid "permission"
 msgstr "autorizzazione"
 
 #: models.py:52
-msgid "access entry"
-msgstr "voce di accesso"
+msgid "Access entry"
+msgstr ""
 
 #: models.py:53
-msgid "access entries"
-msgstr "voci di accesso"
+msgid "Access entries"
+msgstr ""
 
 #: models.py:89
-msgid "default access entry"
-msgstr "accesso voce predefinita"
+msgid "Default access entry"
+msgstr ""
 
 #: models.py:90
-msgid "default access entries"
-msgstr "voci di accesso predefinite "
+msgid "Default access entries"
+msgstr ""
 
-#: models.py:109
+#: models.py:109 models.py:112 models.py:113
 msgid "Creator"
 msgstr "Creatore"
-
-#: models.py:112 models.py:113
-msgid "creator"
-msgstr "creatore"
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
@@ -123,33 +120,33 @@ msgstr "Visualizza classi ACL predefinite"
 
 #: views.py:46
 #, python-format
-msgid "access control lists for: %s"
-msgstr "lista controllo accessi per: %s"
+msgid "Access control lists for: %s"
+msgstr ""
 
 #: views.py:48 views.py:408
-msgid "holder"
-msgstr "titolare"
+msgid "Holder"
+msgstr ""
 
 #: views.py:49 views.py:409
-msgid "permissions"
-msgstr "le autorizzazioni"
+msgid "Permissions"
+msgstr ""
 
 #: views.py:96
 #, python-format
-msgid "permissions available to: %(actor)s for %(obj)s"
-msgstr "autorizzazioni disponibili per: %(actor)s per %(obj)s "
+msgid "Permissions available to: %(actor)s for %(obj)s"
+msgstr ""
 
 #: views.py:103 views.py:441
-msgid "namespace"
-msgstr "namespace"
+msgid "Namespace"
+msgstr ""
 
 #: views.py:104 views.py:442
-msgid "label"
-msgstr "etichetta"
+msgid "Label"
+msgstr ""
 
 #: views.py:106 views.py:444
-msgid "has permission"
-msgstr "ha l'autorizzazione"
+msgid "Has permission"
+msgstr ""
 
 #: views.py:183 views.py:276 views.py:524 views.py:603
 msgid ", "
@@ -214,32 +211,35 @@ msgstr "%(actor)s, non ha i permessi\"%(permission)s\" per %(object)s."
 
 #: views.py:352
 #, python-format
-msgid "add new holder for: %s"
-msgstr "aggiungi nuovo titolare per: %s"
+msgid "Add new holder for: %s"
+msgstr ""
 
 #: views.py:353 views.py:485
 msgid "Select"
 msgstr "Selezionare"
 
 #: views.py:385
-msgid "classes"
-msgstr "classi"
+msgid "Classes"
+msgstr ""
 
 #: views.py:387
-msgid "class"
-msgstr "classe"
+msgid "Class"
+msgstr ""
 
 #: views.py:406
 #, python-format
-msgid "default access control lists for class: %s"
-msgstr "lista di default per il controllo accessi per la classe: %s"
+msgid "Default access control lists for class: %s"
+msgstr ""
 
 #: views.py:434
 #, python-format
-msgid "permissions available to: %(actor)s for class %(class)s"
-msgstr "permessi disponibili per: %(actor)s per la classe %(class)s"
+msgid "Permissions available to: %(actor)s for class %(class)s"
+msgstr ""
 
 #: views.py:483
 #, python-format
-msgid "add new holder for class: %s"
-msgstr "aggiungi un nuovo titolare per la calsse: %s"
+msgid "Add new holder for class: %s"
+msgstr ""
+
+#~ msgid "creator"
+#~ msgstr "creator"

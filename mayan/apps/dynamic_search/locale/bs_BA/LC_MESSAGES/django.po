@@ -1,104 +1,85 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-06-26 14:14+0000\n"
-"Last-Translator: www.ping.ba <jomer@ping.ba>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"projects/p/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: forms.py:8
 msgid "Search terms"
 msgstr "Pojmovi pretrage"
 
-#: links.py:3
-msgid "search"
-msgstr "pretraga"
+#: links.py:3 links.py:6 views.py:82 views.py:92 views.py:94
+#: templatetags/search_tags.py:19 templatetags/search_tags.py:20
+msgid "Search"
+msgstr "Pretraga"
 
 #: links.py:4 views.py:78
-msgid "advanced search"
-msgstr "napredna pretraga"
+msgid "Advanced search"
+msgstr ""
 
 #: links.py:5
-msgid "search again"
-msgstr "traži ponovo"
+msgid "Search again"
+msgstr ""
 
 #: models.py:21
-msgid "user"
-msgstr "korisnik"
+msgid "User"
+msgstr ""
 
 #: models.py:22
-msgid "query"
-msgstr "upit"
+msgid "Query"
+msgstr ""
 
 #: models.py:23
-msgid "datetime created"
-msgstr "datum i vrijeme kreiranja"
+msgid "Datetime created"
+msgstr ""
 
 #: models.py:24
-msgid "hits"
-msgstr "hits"
-
-#: models.py:60
-msgid "recent search"
-msgstr "nedavne pretrage"
+msgid "Hits"
+msgstr ""
 
 #: models.py:61
-msgid "recent searches"
-msgstr "nedavne pretrage"
+msgid "Recent search"
+msgstr ""
+
+#: models.py:62
+msgid "Recent searches"
+msgstr ""
+
+#: settings.py:12
+msgid "Maximum amount search hits to fetch and display."
+msgstr "Maksimalni broj pretražnih hitova da se rezultati prikažu."
+
+#: settings.py:13
+msgid "Maximum number of search queries to remember per user."
+msgstr "Maksimalni broj po korisniku upita u pretrazi koji će biti zapamćeni."
 
 #: views.py:44
 #, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
-"rezultatu, (prikazano samo %(shown_result_count)s od ukupno %(result_count)s)"
 
 #: views.py:49
 msgid "results"
 msgstr "rezultati"
 
 #: views.py:66
-msgid "type"
-msgstr "tip"
-
-#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
-msgid "Search"
-msgstr "Pretraga"
-
-#: conf/settings.py:12
-msgid "Maximum amount search hits to fetch and display."
-msgstr "Maksimalni broj pretražnih hitova da se rezultati prikažu."
-
-#: conf/settings.py:13
-msgid "Maximum number of search queries to remember per user."
-msgstr "Maksimalni broj po korisniku upita u pretrazi koji će biti zapamćeni."
-
-#: templates/search_help.html:3
-msgid "Help"
-msgstr "Pomoć"
-
-#: templates/search_help.html:4
-#, python-format
-msgid ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
+msgid "Type"
 msgstr ""
-"Upišite željene ključne riječi za pretragu odvojene space-om. Samo najbližih "
-"%(search_results_limit)s rezultata će biti dozvoljeno."
 
 #: templates/search_results.html:3
 msgid "Search results"
@@ -109,10 +90,32 @@ msgstr "Rezultati pretrage"
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Potrošeno vrijeme: %(time_delta)s sekundi"
 
-#: templatetags/search_tags.py:33
+#: templatetags/search_tags.py:37
 #, python-format
-msgid "recent searches (maximum of %d)"
-msgstr "nedavne pretrage (maksimalno od %d)"
+msgid "Recent searches (maximum of %d)"
+msgstr ""
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "hits"
+#~ msgstr "hits"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+#~ msgstr ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
 
 #~ msgid "Search error: %s"
-#~ msgstr "Greška pretrage: %s"
+#~ msgstr "Search error: %s"

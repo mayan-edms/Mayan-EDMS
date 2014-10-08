@@ -1,10 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
+# Stefan Lodders <sl@suchreflex.de>, 2012
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # tilmannsittig <tilmann.sittig@web.de>, 2012
 # tilmannsittig <tilmann.sittig@web.de>, 2012
@@ -13,15 +15,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2014-03-12 16:11+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:25 links.py:10 links.py:16
@@ -49,16 +50,16 @@ msgid "ACLs"
 msgstr "Zugriffsberechtigungen"
 
 #: links.py:7 links.py:15
-msgid "details"
-msgstr "Details"
+msgid "Details"
+msgstr ""
 
 #: links.py:8 links.py:17
-msgid "grant"
-msgstr "Erlauben"
+msgid "Grant"
+msgstr ""
 
 #: links.py:9 links.py:18
-msgid "revoke"
-msgstr "Entziehen"
+msgid "Revoke"
+msgstr ""
 
 #: links.py:12
 msgid "Default ACLs"
@@ -81,27 +82,23 @@ msgid "permission"
 msgstr "Berechtigung"
 
 #: models.py:52
-msgid "access entry"
-msgstr "Zugriffsberechtigungseintrag"
+msgid "Access entry"
+msgstr ""
 
 #: models.py:53
-msgid "access entries"
-msgstr "Zugriffsberechtigungseinträge"
+msgid "Access entries"
+msgstr ""
 
 #: models.py:89
-msgid "default access entry"
-msgstr "Zugriffsberechtigungseintrag"
+msgid "Default access entry"
+msgstr ""
 
 #: models.py:90
-msgid "default access entries"
-msgstr "Zugriffsberechtigungseinträge"
+msgid "Default access entries"
+msgstr ""
 
-#: models.py:109
+#: models.py:109 models.py:112 models.py:113
 msgid "Creator"
-msgstr "Ersteller"
-
-#: models.py:112 models.py:113
-msgid "creator"
 msgstr "Ersteller"
 
 #: permissions.py:7 permissions.py:8
@@ -126,33 +123,33 @@ msgstr "Zugriffsberechtigungen der Klasse anzeigen"
 
 #: views.py:46
 #, python-format
-msgid "access control lists for: %s"
-msgstr "Zugriffberechtigungsliste für %s"
+msgid "Access control lists for: %s"
+msgstr ""
 
 #: views.py:48 views.py:408
-msgid "holder"
-msgstr "Berechtigter"
+msgid "Holder"
+msgstr ""
 
 #: views.py:49 views.py:409
-msgid "permissions"
-msgstr "Berechtigungen"
+msgid "Permissions"
+msgstr ""
 
 #: views.py:96
 #, python-format
-msgid "permissions available to: %(actor)s for %(obj)s"
-msgstr "Verfügbare Berechtigungen für %(actor)s in Bezug auf %(obj)s "
+msgid "Permissions available to: %(actor)s for %(obj)s"
+msgstr ""
 
 #: views.py:103 views.py:441
-msgid "namespace"
-msgstr "Namensraum"
+msgid "Namespace"
+msgstr ""
 
 #: views.py:104 views.py:442
-msgid "label"
-msgstr "Bezeichner"
+msgid "Label"
+msgstr ""
 
 #: views.py:106 views.py:444
-msgid "has permission"
-msgstr "hat die Berechtigung"
+msgid "Has permission"
+msgstr ""
 
 #: views.py:183 views.py:276 views.py:524 views.py:603
 msgid ", "
@@ -171,16 +168,12 @@ msgstr "zu %s"
 #: views.py:188 views.py:529
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  erteilen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  erteilen möchten?"
 
 #: views.py:190 views.py:531
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  erteilen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  erteilen möchten?"
 
 #: views.py:197 views.py:538
 #, python-format
@@ -192,9 +185,7 @@ msgstr "Berechtigung \"%(permission)s\" gewährt an %(actor)s für %(object)s."
 msgid ""
 "%(actor)s, already had the permission \"%(permission)s\" granted for "
 "%(object)s."
-msgstr ""
-"%(actor)s verfügt bereits über die Berechtigung \"%(permission)s an "
-"%(object)s."
+msgstr "%(actor)s verfügt bereits über die Berechtigung \"%(permission)s an %(object)s."
 
 #: views.py:278 views.py:605
 #, python-format
@@ -204,16 +195,12 @@ msgstr "von %s"
 #: views.py:281 views.py:608
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  entziehen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  entziehen möchten?"
 
 #: views.py:283 views.py:610
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  entziehen "
-"möchten?"
+msgstr "Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  entziehen möchten?"
 
 #: views.py:290 views.py:617
 #, python-format
@@ -223,37 +210,39 @@ msgstr "Berechtigung \"%(permission)s\" für %(actor)s an %(object)s entzogen."
 #: views.py:296 views.py:623
 #, python-format
 msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-msgstr ""
-"%(actor)s verfügte nicht über Berechtigung \"%(permission)s\" für %(object)s."
+msgstr "%(actor)s verfügte nicht über Berechtigung \"%(permission)s\" für %(object)s."
 
 #: views.py:352
 #, python-format
-msgid "add new holder for: %s"
-msgstr "Neuen Berechtigten eintragen für %s"
+msgid "Add new holder for: %s"
+msgstr ""
 
 #: views.py:353 views.py:485
 msgid "Select"
 msgstr "Auswählen"
 
 #: views.py:385
-msgid "classes"
-msgstr "Klassen"
+msgid "Classes"
+msgstr ""
 
 #: views.py:387
-msgid "class"
-msgstr "Klasse"
+msgid "Class"
+msgstr ""
 
 #: views.py:406
 #, python-format
-msgid "default access control lists for class: %s"
-msgstr "Zugriffsberechtigungen für Klasse %s"
+msgid "Default access control lists for class: %s"
+msgstr ""
 
 #: views.py:434
 #, python-format
-msgid "permissions available to: %(actor)s for class %(class)s"
-msgstr "Verfügbare Berechtigungen für %(actor)s in Bezug auf %(class)s "
+msgid "Permissions available to: %(actor)s for class %(class)s"
+msgstr ""
 
 #: views.py:483
 #, python-format
-msgid "add new holder for class: %s"
-msgstr "Neue Berechtigung für Klasse %s eintragen"
+msgid "Add new holder for class: %s"
+msgstr ""
+
+#~ msgid "creator"
+#~ msgstr "creator"

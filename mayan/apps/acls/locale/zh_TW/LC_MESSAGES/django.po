@@ -1,0 +1,241 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/mayan-edms/language/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: forms.py:25 links.py:10 links.py:16
+msgid "New holder"
+msgstr ""
+
+#: forms.py:42
+msgid "Users"
+msgstr ""
+
+#: forms.py:45
+msgid "Groups"
+msgstr ""
+
+#: forms.py:48
+msgid "Roles"
+msgstr ""
+
+#: forms.py:51
+msgid "Special"
+msgstr ""
+
+#: links.py:6
+msgid "ACLs"
+msgstr ""
+
+#: links.py:7 links.py:15
+msgid "Details"
+msgstr ""
+
+#: links.py:8 links.py:17
+msgid "Grant"
+msgstr ""
+
+#: links.py:9 links.py:18
+msgid "Revoke"
+msgstr ""
+
+#: links.py:12
+msgid "Default ACLs"
+msgstr ""
+
+#: links.py:13
+msgid "List of classes"
+msgstr ""
+
+#: links.py:14
+msgid "ACLs for class"
+msgstr ""
+
+#: managers.py:118 managers.py:130
+msgid "Insufficient access."
+msgstr ""
+
+#: models.py:26 models.py:68
+msgid "permission"
+msgstr ""
+
+#: models.py:52
+msgid "Access entry"
+msgstr ""
+
+#: models.py:53
+msgid "Access entries"
+msgstr ""
+
+#: models.py:89
+msgid "Default access entry"
+msgstr ""
+
+#: models.py:90
+msgid "Default access entries"
+msgstr ""
+
+#: models.py:109 models.py:112 models.py:113
+msgid "Creator"
+msgstr ""
+
+#: permissions.py:7 permissions.py:8
+msgid "Access control lists"
+msgstr ""
+
+#: permissions.py:10
+msgid "Edit ACLs"
+msgstr ""
+
+#: permissions.py:11
+msgid "View ACLs"
+msgstr ""
+
+#: permissions.py:13
+msgid "Edit class default ACLs"
+msgstr ""
+
+#: permissions.py:14
+msgid "View class default ACLs"
+msgstr ""
+
+#: views.py:46
+#, python-format
+msgid "Access control lists for: %s"
+msgstr ""
+
+#: views.py:48 views.py:408
+msgid "Holder"
+msgstr ""
+
+#: views.py:49 views.py:409
+msgid "Permissions"
+msgstr ""
+
+#: views.py:96
+#, python-format
+msgid "Permissions available to: %(actor)s for %(obj)s"
+msgstr ""
+
+#: views.py:103 views.py:441
+msgid "Namespace"
+msgstr ""
+
+#: views.py:104 views.py:442
+msgid "Label"
+msgstr ""
+
+#: views.py:106 views.py:444
+msgid "Has permission"
+msgstr ""
+
+#: views.py:183 views.py:276 views.py:524 views.py:603
+msgid ", "
+msgstr ""
+
+#: views.py:184 views.py:277 views.py:525 views.py:604
+#, python-format
+msgid " for %s"
+msgstr ""
+
+#: views.py:185 views.py:526
+#, python-format
+msgid " to %s"
+msgstr ""
+
+#: views.py:188 views.py:529
+#, python-format
+msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
+msgstr ""
+
+#: views.py:190 views.py:531
+#, python-format
+msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
+msgstr ""
+
+#: views.py:197 views.py:538
+#, python-format
+msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
+msgstr ""
+
+#: views.py:203 views.py:544
+#, python-format
+msgid ""
+"%(actor)s, already had the permission \"%(permission)s\" granted for "
+"%(object)s."
+msgstr ""
+
+#: views.py:278 views.py:605
+#, python-format
+msgid " from %s"
+msgstr ""
+
+#: views.py:281 views.py:608
+#, python-format
+msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
+msgstr ""
+
+#: views.py:283 views.py:610
+#, python-format
+msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
+msgstr ""
+
+#: views.py:290 views.py:617
+#, python-format
+msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
+msgstr ""
+
+#: views.py:296 views.py:623
+#, python-format
+msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+msgstr ""
+
+#: views.py:352
+#, python-format
+msgid "Add new holder for: %s"
+msgstr ""
+
+#: views.py:353 views.py:485
+msgid "Select"
+msgstr ""
+
+#: views.py:385
+msgid "Classes"
+msgstr ""
+
+#: views.py:387
+msgid "Class"
+msgstr ""
+
+#: views.py:406
+#, python-format
+msgid "Default access control lists for class: %s"
+msgstr ""
+
+#: views.py:434
+#, python-format
+msgid "Permissions available to: %(actor)s for class %(class)s"
+msgstr ""
+
+#: views.py:483
+#, python-format
+msgid "Add new holder for class: %s"
+msgstr ""
+
+#~ msgid "creator"
+#~ msgstr "creator"

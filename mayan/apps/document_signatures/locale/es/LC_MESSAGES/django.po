@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -10,56 +10,51 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-07-04 17:40+0000\n"
-"Last-Translator: jmcainzos <jmcainzos@vodafone.es>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:7
+#: forms.py:7 models.py:21
 msgid "Signature file"
 msgstr "Archivo de firma"
 
 #: links.py:22
-msgid "delete signature"
-msgstr "borrar firma"
+msgid "Delete signature"
+msgstr ""
 
 #: links.py:23
-msgid "download signature"
-msgstr "descargar firma"
+msgid "Download signature"
+msgstr ""
 
 #: links.py:24
-msgid "upload signature"
-msgstr "subir firma"
+msgid "Upload signature"
+msgstr ""
 
 #: links.py:25
-msgid "signatures"
-msgstr "firmas"
+msgid "Signatures"
+msgstr ""
 
 #: models.py:20
-msgid "document version"
-msgstr "versión del documento"
-
-#: models.py:21
-msgid "signature file"
-msgstr "archivo de firma"
+msgid "Document version"
+msgstr ""
 
 #: models.py:22
-msgid "has embedded signature"
-msgstr "tiene firma integrada"
+msgid "Has embedded signature"
+msgstr ""
 
 #: models.py:37
-msgid "document version signature"
-msgstr "firma de la versión de documento"
+msgid "Document version signature"
+msgstr ""
 
 #: models.py:38
-msgid "document version signatures"
-msgstr "firmas de las versiónes de documentos"
+msgid "Document version signatures"
+msgstr ""
 
 #: permissions.py:7
 msgid "Document signatures"
@@ -81,73 +76,76 @@ msgstr "Descargar firmas separadas"
 msgid "Upload detached signatures"
 msgstr "Subir firmas separadas"
 
-#: views.py:50
+#: views.py:52
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
 msgstr "Estado de la firma: %(widget)s %(text)s"
 
-#: views.py:58
-msgid "embedded"
-msgstr "integrada"
-
 #: views.py:60
-msgid "detached"
-msgstr "separada"
-
-#: views.py:62
-msgid "None"
+msgid "Embedded"
 msgstr ""
 
-#: views.py:67
+#: views.py:62
+msgid "Detached"
+msgstr ""
+
+#: views.py:64
+msgid "None"
+msgstr "Ninguno"
+
+#: views.py:69
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID de la firma: %s"
 
-#: views.py:68
+#: views.py:70
 #, python-format
 msgid "Signature type: %s"
 msgstr "Tipo de firma: %s"
 
-#: views.py:69
+#: views.py:71
 #, python-format
 msgid "Key ID: %s"
 msgstr "ID de la clave: %s"
 
-#: views.py:70
+#: views.py:72
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Marca de tiempo: %s"
 
-#: views.py:71
+#: views.py:73
 #, python-format
 msgid "Signee: %s"
 msgstr "Firmante: %s"
 
-#: views.py:76
+#: views.py:78
 #, python-format
-msgid "signature properties for: %s"
-msgstr "propiedades de la firma para: %s"
+msgid "Signature properties for: %s"
+msgstr ""
 
-#: views.py:102
+#: views.py:104
 msgid "Detached signature uploaded successfully."
 msgstr "Firma separada subida con éxito."
 
-#: views.py:111
+#: views.py:113
 #, python-format
 msgid "Upload detached signature for: %s"
 msgstr "Subir firma separada para: %s"
 
-#: views.py:161
+#: views.py:163
 msgid "Detached signature deleted successfully."
 msgstr "Firma separada borrada con éxito."
 
-#: views.py:164
+#: views.py:166
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "Error al borrar la firma separada: %s"
 
-#: views.py:168
+#: views.py:170
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"
 msgstr "Está seguro de que quiere borrar la firma separada del documento: %s?"
+
+#~ msgid "signature file"
+#~ msgstr "signature file"

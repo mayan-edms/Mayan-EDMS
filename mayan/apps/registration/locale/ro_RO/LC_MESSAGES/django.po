@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Abalaru Paul <paul.abalaru@hotmail.com>, 2013
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -9,17 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2013-02-10 12:24+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: forms.py:13
 msgid "Your name:"
@@ -54,20 +53,20 @@ msgid "Registration"
 msgstr "Înregistrare"
 
 #: models.py:21
-msgid "registered"
-msgstr "înregistrat"
+msgid "Registered"
+msgstr ""
 
 #: models.py:22
-msgid "registration data"
-msgstr "înregistrare de date"
+msgid "Registration data"
+msgstr ""
 
 #: models.py:48
 msgid "No name"
 msgstr "nici un nume"
 
 #: models.py:87
-msgid "registration properties"
-msgstr "proprietăți înregistrare "
+msgid "Registration properties"
+msgstr ""
 
 #: views.py:22
 msgid "Thank you for registering."

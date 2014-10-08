@@ -9,19 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2014-09-30 03:28+0000\n"
-"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr "检查过期的检出文档，并且将他们签入。"
 
 #: events.py:5
 msgid "Document checked out"
@@ -60,20 +56,20 @@ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 msgstr "文档\"%(document)s\"由%(fullname)s强制签入。"
 
 #: links.py:16
-msgid "checkouts"
-msgstr "检出"
+msgid "Checkouts"
+msgstr ""
 
 #: links.py:17
-msgid "check out document"
-msgstr "检出文档"
+msgid "Check out document"
+msgstr ""
 
 #: links.py:18
-msgid "check in document"
-msgstr "签入文档"
+msgid "Check in document"
+msgstr ""
 
 #: links.py:19
-msgid "check in/out"
-msgstr "检出／签入"
+msgid "Check in/out"
+msgstr ""
 
 #: literals.py:14
 msgid "checked out"
@@ -83,7 +79,7 @@ msgstr "检出"
 msgid "checked in/available"
 msgstr "签入／有效"
 
-#: models.py:24 views.py:132
+#: models.py:24
 msgid "document"
 msgstr "文档"
 
@@ -140,16 +136,16 @@ msgid "checked out documents"
 msgstr "检出文档"
 
 #: views.py:35
-msgid "checkout user"
-msgstr "检出用户"
+msgid "Checkout user"
+msgstr ""
 
 #: views.py:36
-msgid "checkout time and date"
-msgstr "检出日期和时间"
+msgid "Checkout time and date"
+msgstr ""
 
 #: views.py:37
-msgid "checkout expiration"
-msgstr "检出过期"
+msgid "Checkout expiration"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -217,6 +213,10 @@ msgstr "尝试签入文档出错: %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "文档\"%s\"签入成功"
 
+#: views.py:132
+msgid "Document"
+msgstr ""
+
 #: views.py:141
 #, python-format
 msgid ""
@@ -271,3 +271,12 @@ msgstr "持有文档检出状态的时间数，以天，小时，分钟为单位
 #: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "检出过期的日期和时间"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

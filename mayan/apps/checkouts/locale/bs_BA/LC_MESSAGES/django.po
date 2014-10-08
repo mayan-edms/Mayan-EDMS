@@ -1,28 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2013-06-28 14:18+0000\n"
-"Last-Translator: www.ping.ba <jomer@ping.ba>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"projects/p/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr "Provjeri zastarjele odjavljene dokumente i prijavi ih."
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: events.py:5
 msgid "Document checked out"
@@ -61,20 +56,20 @@ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 msgstr "Dokument \"%(document)s\" prisilno prijavio/la %(fullname)s."
 
 #: links.py:16
-msgid "checkouts"
-msgstr "izvadci"
+msgid "Checkouts"
+msgstr ""
 
 #: links.py:17
-msgid "check out document"
-msgstr "odjavni dokument"
+msgid "Check out document"
+msgstr ""
 
 #: links.py:18
-msgid "check in document"
-msgstr "prijavni dokument"
+msgid "Check in document"
+msgstr ""
 
 #: links.py:19
-msgid "check in/out"
-msgstr "prijava/odjava"
+msgid "Check in/out"
+msgstr ""
 
 #: literals.py:14
 msgid "checked out"
@@ -84,7 +79,7 @@ msgstr "odjavljeno"
 msgid "checked in/available"
 msgstr "prijavljeno/dostupno"
 
-#: models.py:24 views.py:132
+#: models.py:24
 msgid "document"
 msgstr "dokument"
 
@@ -141,16 +136,16 @@ msgid "checked out documents"
 msgstr "odjavljeni dokumenti"
 
 #: views.py:35
-msgid "checkout user"
-msgstr "korisnik koji je odjavio"
+msgid "Checkout user"
+msgstr ""
 
 #: views.py:36
-msgid "checkout time and date"
-msgstr "vrijeme i datum odjave"
+msgid "Checkout time and date"
+msgstr ""
 
 #: views.py:37
-msgid "checkout expiration"
-msgstr "isticanje odjave"
+msgid "Checkout expiration"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -218,14 +213,16 @@ msgstr "Greška pokušaja prijave dokumenta; %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" uspješno prijavljen."
 
+#: views.py:132
+msgid "Document"
+msgstr ""
+
 #: views.py:141
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Vi niste odjavili ovaj dokument. Jeste li sigurni da želite prisilno "
-"prijaviti dokument: %s?"
+msgstr "Vi niste odjavili ovaj dokument. Jeste li sigurni da želite prisilno prijaviti dokument: %s?"
 
 #: views.py:143
 #, python-format
@@ -269,10 +266,17 @@ msgstr "Unesite važeću vremensku razliku."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Vremenski period zadržavanja dokumenta u odjavljenom stanju u danima, satima "
-"i/ili minutama."
+msgstr "Vremenski period zadržavanja dokumenta u odjavljenom stanju u danima, satima i/ili minutama."
 
 #: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Datum i vrijeme istjecanja odjave"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

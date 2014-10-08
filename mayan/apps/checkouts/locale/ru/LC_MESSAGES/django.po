@@ -1,28 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2013-05-14 09:21+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr "Проверка истечения бронирования документов"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: events.py:5
 msgid "Document checked out"
@@ -61,20 +56,20 @@ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 msgstr "Документ \"%(document)s\" проверен %(fullname)s."
 
 #: links.py:16
-msgid "checkouts"
-msgstr "бронирование"
+msgid "Checkouts"
+msgstr ""
 
 #: links.py:17
-msgid "check out document"
-msgstr "бронирование документа"
+msgid "Check out document"
+msgstr ""
 
 #: links.py:18
-msgid "check in document"
-msgstr "освободить документ"
+msgid "Check in document"
+msgstr ""
 
 #: links.py:19
-msgid "check in/out"
-msgstr "бронировать/освободить"
+msgid "Check in/out"
+msgstr ""
 
 #: literals.py:14
 msgid "checked out"
@@ -84,7 +79,7 @@ msgstr "забронировано"
 msgid "checked in/available"
 msgstr "освобожден/доступен"
 
-#: models.py:24 views.py:132
+#: models.py:24
 msgid "document"
 msgstr "документ"
 
@@ -141,16 +136,16 @@ msgid "checked out documents"
 msgstr "забронированные документы"
 
 #: views.py:35
-msgid "checkout user"
-msgstr "забронировал"
+msgid "Checkout user"
+msgstr ""
 
 #: views.py:36
-msgid "checkout time and date"
-msgstr "дата и время бронирования"
+msgid "Checkout time and date"
+msgstr ""
 
 #: views.py:37
-msgid "checkout expiration"
-msgstr "истечение бронирования"
+msgid "Checkout expiration"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -218,6 +213,10 @@ msgstr "Ошибка освобождения документа %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Документ \"%s\" освобожден."
 
+#: views.py:132
+msgid "Document"
+msgstr ""
+
 #: views.py:141
 #, python-format
 msgid ""
@@ -272,3 +271,12 @@ msgstr "Время бронирования документа в днях, ча
 #: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Дата и время окончания бронирования"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

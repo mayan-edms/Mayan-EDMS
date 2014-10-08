@@ -1,104 +1,85 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-02-10 13:27+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: forms.py:8
 msgid "Search terms"
 msgstr "Caută termeni"
 
-#: links.py:3
-msgid "search"
-msgstr "căută"
+#: links.py:3 links.py:6 views.py:82 views.py:92 views.py:94
+#: templatetags/search_tags.py:19 templatetags/search_tags.py:20
+msgid "Search"
+msgstr "Căută"
 
 #: links.py:4 views.py:78
-msgid "advanced search"
-msgstr "căutare avansată"
+msgid "Advanced search"
+msgstr ""
 
 #: links.py:5
-msgid "search again"
-msgstr "căuta din nou"
+msgid "Search again"
+msgstr ""
 
 #: models.py:21
-msgid "user"
-msgstr "utilizator"
+msgid "User"
+msgstr ""
 
 #: models.py:22
-msgid "query"
-msgstr "interogare"
+msgid "Query"
+msgstr ""
 
 #: models.py:23
-msgid "datetime created"
-msgstr "marcare temporară creată"
+msgid "Datetime created"
+msgstr ""
 
 #: models.py:24
-msgid "hits"
-msgstr "afisari"
-
-#: models.py:60
-msgid "recent search"
-msgstr "căutare recentă"
+msgid "Hits"
+msgstr ""
 
 #: models.py:61
-msgid "recent searches"
-msgstr "Căutări recente"
+msgid "Recent search"
+msgstr ""
+
+#: models.py:62
+msgid "Recent searches"
+msgstr ""
+
+#: settings.py:12
+msgid "Maximum amount search hits to fetch and display."
+msgstr "Căutare suma maximă hit-uri pentru a prelua și afișa."
+
+#: settings.py:13
+msgid "Maximum number of search queries to remember per user."
+msgstr "Numărul maxim de interogări de căutare per utilizator."
 
 #: views.py:44
 #, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
-"Rezultate, (arătând numai %(shown_result_count)s  din %(result_count)s)"
 
 #: views.py:49
 msgid "results"
 msgstr "rezultate"
 
 #: views.py:66
-msgid "type"
-msgstr "tip"
-
-#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
-msgid "Search"
-msgstr "Căută"
-
-#: conf/settings.py:12
-msgid "Maximum amount search hits to fetch and display."
-msgstr "Căutare suma maximă hit-uri pentru a prelua și afișa."
-
-#: conf/settings.py:13
-msgid "Maximum number of search queries to remember per user."
-msgstr "Numărul maxim de interogări de căutare per utilizator."
-
-#: templates/search_help.html:3
-msgid "Help"
-msgstr "Ajutor"
-
-#: templates/search_help.html:4
-#, python-format
-msgid ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
+msgid "Type"
 msgstr ""
-"Introduceți cuvintele cheie de căutare dorite, separate prin spațiu. Doar "
-"primele %(search_results_limit)s  rezultatele vor fi disponibile."
 
 #: templates/search_results.html:3
 msgid "Search results"
@@ -109,10 +90,32 @@ msgstr "Rezultatele căutării"
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Timp scurs: %(time_delta)s  secunde"
 
-#: templatetags/search_tags.py:33
+#: templatetags/search_tags.py:37
 #, python-format
-msgid "recent searches (maximum of %d)"
-msgstr "Cautari recente (maximum of %d)"
+msgid "Recent searches (maximum of %d)"
+msgstr ""
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "hits"
+#~ msgstr "hits"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+#~ msgstr ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
 
 #~ msgid "Search error: %s"
-#~ msgstr "Eroare de căutare:% s"
+#~ msgstr "Search error: %s"

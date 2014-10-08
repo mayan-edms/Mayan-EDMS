@@ -1,29 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2012-07-28 14:44+0000\n"
-"Last-Translator: Pierre Lhoste <peter.cathbad.host@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr ""
-"Vérifier les documents retirés aux modifications, dont la période de verrou "
-"expiré, et les remettre dans l'état modifiable."
 
 #: events.py:5
 msgid "Document checked out"
@@ -62,20 +56,20 @@ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 msgstr "Document \"%(document)s\" dévérouillé de force par %(fullname)s."
 
 #: links.py:16
-msgid "checkouts"
-msgstr "Verrous"
+msgid "Checkouts"
+msgstr ""
 
 #: links.py:17
-msgid "check out document"
-msgstr "Poser un verrou sur le document"
+msgid "Check out document"
+msgstr ""
 
 #: links.py:18
-msgid "check in document"
-msgstr "Déverrouiller le document"
+msgid "Check in document"
+msgstr ""
 
 #: links.py:19
-msgid "check in/out"
-msgstr "verrouiller/déverrouiller"
+msgid "Check in/out"
+msgstr ""
 
 #: literals.py:14
 msgid "checked out"
@@ -85,7 +79,7 @@ msgstr "verrouillé"
 msgid "checked in/available"
 msgstr "déverrouillé/disponible"
 
-#: models.py:24 views.py:132
+#: models.py:24
 msgid "document"
 msgstr "document"
 
@@ -142,16 +136,16 @@ msgid "checked out documents"
 msgstr "documents verrouillés"
 
 #: views.py:35
-msgid "checkout user"
-msgstr "utilisateur ayant verrouillé"
+msgid "Checkout user"
+msgstr ""
 
 #: views.py:36
-msgid "checkout time and date"
-msgstr "date et heure du verrou"
+msgid "Checkout time and date"
+msgstr ""
 
 #: views.py:37
-msgid "checkout expiration"
-msgstr "expiration du verrou"
+msgid "Checkout expiration"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -219,14 +213,16 @@ msgstr "Erreur lors de la tentative de déverrouillage du document; %s  "
 msgid "Document \"%s\" checked in successfully."
 msgstr "Document \"%s\" déverrouillé avec succès."
 
+#: views.py:132
+msgid "Document"
+msgstr ""
+
 #: views.py:141
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Ce n'est pas vous qui avec posé le verrou sur ce document. Êtes vous certain "
-"de vouloir forcer le déverrouillage de: %s?"
+msgstr "Ce n'est pas vous qui avec posé le verrou sur ce document. Êtes vous certain de vouloir forcer le déverrouillage de: %s?"
 
 #: views.py:143
 #, python-format
@@ -270,10 +266,17 @@ msgstr "Saisissez un intervalle de temps valide."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Durée pendant laquelle conserver le verrou sur le document en jours, heures "
-"et/ou minutes."
+msgstr "Durée pendant laquelle conserver le verrou sur le document en jours, heures et/ou minutes."
 
 #: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Date et heure de l'expiration du verrou"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

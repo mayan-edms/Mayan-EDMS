@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2014-09-25 14:29+0000\n"
-"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,57 +27,57 @@ msgstr "引导设置文件"
 msgid "Bootstrap setup URL"
 msgstr "引导设置URL"
 
-#: links.py:11
-msgid "bootstrap"
-msgstr "引导"
+#: links.py:11 registry.py:7
+msgid "Bootstrap"
+msgstr ""
 
 #: links.py:12
-msgid "bootstrap setup list"
-msgstr "引导设置列表"
+msgid "Bootstrap setup list"
+msgstr ""
 
 #: links.py:13
-msgid "create new bootstrap setup"
-msgstr "新建引导设置"
+msgid "Create new bootstrap setup"
+msgstr ""
 
 #: links.py:14
-msgid "edit"
-msgstr "编辑"
+msgid "Edit"
+msgstr ""
 
 #: links.py:15
-msgid "delete"
-msgstr "删除"
+msgid "Delete"
+msgstr ""
 
 #: links.py:16
-msgid "details"
-msgstr "详细"
+msgid "Details"
+msgstr ""
 
 #: links.py:17
-msgid "execute"
-msgstr "执行"
+msgid "Execute"
+msgstr ""
 
 #: links.py:18
-msgid "dump current setup"
-msgstr "导出当前设置"
+msgid "Dump current setup"
+msgstr ""
 
 #: links.py:19
-msgid "export"
-msgstr "导出"
+msgid "Export"
+msgstr ""
 
 #: links.py:20
-msgid "import from file"
-msgstr "从文件导入"
+msgid "Import from file"
+msgstr ""
 
 #: links.py:21
-msgid "import from URL"
-msgstr "从URL导入"
+msgid "Import from URL"
+msgstr ""
 
 #: links.py:22
-msgid "sync with repository"
-msgstr "同步存储库"
+msgid "Sync with repository"
+msgstr ""
 
 #: links.py:23
-msgid "erase database"
-msgstr "删除数据库"
+msgid "Erase database"
+msgstr ""
 
 #: literals.py:20
 msgid "JSON"
@@ -92,19 +92,19 @@ msgid "Better YAML"
 msgstr "Better YAML"
 
 #: models.py:30
-msgid "name"
-msgstr "名称"
+msgid "Name"
+msgstr ""
 
 #: models.py:31
-msgid "slug"
+msgid "Slug"
 msgstr ""
 
 #: models.py:32 views.py:35
-msgid "description"
-msgstr "描述"
+msgid "Description"
+msgstr ""
 
 #: models.py:33
-msgid "fixture"
+msgid "Fixture"
 msgstr ""
 
 #: models.py:33
@@ -112,20 +112,20 @@ msgid "These are the actual database structure creation instructions."
 msgstr ""
 
 #: models.py:34 views.py:36
-msgid "type"
-msgstr "类型"
+msgid "Type"
+msgstr ""
 
 #: models.py:35
-msgid "creation date and time"
-msgstr "创建日期时间"
+msgid "Creation date and time"
+msgstr ""
 
 #: models.py:104 views.py:91 views.py:120 views.py:145 views.py:173
-msgid "bootstrap setup"
-msgstr "引导设置"
+msgid "Bootstrap setup"
+msgstr ""
 
 #: models.py:105 views.py:32
-msgid "bootstrap setups"
-msgstr "引导设置"
+msgid "Bootstrap setups"
+msgstr ""
 
 #: permissions.py:7
 msgid "Database bootstrap"
@@ -171,10 +171,6 @@ msgstr ""
 msgid "Erase the entire database and document storage"
 msgstr ""
 
-#: registry.py:7
-msgid "Bootstrap"
-msgstr ""
-
 #: registry.py:8
 msgid "Provides pre configured setups for indexes, document types, tags, etc."
 msgstr ""
@@ -188,7 +184,7 @@ msgid "Error creating bootstrap setup."
 msgstr ""
 
 #: views.py:59
-msgid "create bootstrap"
+msgid "Create bootstrap"
 msgstr ""
 
 #: views.py:79
@@ -201,7 +197,7 @@ msgstr ""
 
 #: views.py:87
 #, python-format
-msgid "edit bootstrap setup: %s"
+msgid "Edit bootstrap setup: %s"
 msgstr ""
 
 #: views.py:112
@@ -251,7 +247,7 @@ msgid "Bootstrap setup created successfully."
 msgstr ""
 
 #: views.py:207
-msgid "dump current configuration into a bootstrap setup"
+msgid "Dump current configuration into a bootstrap setup"
 msgstr ""
 
 #: views.py:241 views.py:269
@@ -316,3 +312,18 @@ msgstr ""
 #: views.py:338
 msgid "Are you sure you wish to synchronize with the bootstrap repository?"
 msgstr ""
+
+#~ msgid "bootstrap"
+#~ msgstr "bootstrap"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "slug"
+#~ msgstr "slug"
+
+#~ msgid "type"
+#~ msgstr "type"

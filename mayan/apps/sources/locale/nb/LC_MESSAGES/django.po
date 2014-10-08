@@ -1,0 +1,545 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/mayan-edms/language/nb/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.py:52
+msgid "Thumbnail"
+msgstr ""
+
+#: __init__.py:64
+msgid "Returns a list of all the staging folders and the files they contain."
+msgstr ""
+
+#: forms.py:38 forms.py:63
+msgid "Expand compressed files"
+msgstr ""
+
+#: forms.py:39 forms.py:64
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr ""
+
+#: forms.py:47
+msgid "Staging file"
+msgstr ""
+
+#: forms.py:54
+msgid "File"
+msgstr ""
+
+#: links.py:14
+msgid "Upload new documents"
+msgstr ""
+
+#: links.py:15
+msgid "Clone metadata"
+msgstr ""
+
+#: links.py:17 links.py:25 links.py:31
+msgid "Delete"
+msgstr ""
+
+#: links.py:19 models.py:145
+msgid "Sources"
+msgstr ""
+
+#: links.py:20 literals.py:29 models.py:196
+msgid "Web forms"
+msgstr ""
+
+#: links.py:21 models.py:184
+msgid "Staging folders"
+msgstr ""
+
+#: links.py:22 models.py:225
+msgid "Watch folders"
+msgstr ""
+
+#: links.py:24 links.py:30
+msgid "Edit"
+msgstr ""
+
+#: links.py:26
+msgid "Add new source"
+msgstr ""
+
+#: links.py:28
+msgid "Transformations"
+msgstr ""
+
+#: links.py:29
+msgid "Add transformation"
+msgstr ""
+
+#: links.py:33
+msgid "Document sources"
+msgstr ""
+
+#: links.py:35
+msgid "Upload new version"
+msgstr ""
+
+#: literals.py:8 literals.py:13
+msgid "Always"
+msgstr ""
+
+#: literals.py:9 literals.py:14
+msgid "Never"
+msgstr ""
+
+#: literals.py:15
+msgid "Ask user"
+msgstr ""
+
+#: literals.py:23 models.py:195
+msgid "Web form"
+msgstr ""
+
+#: literals.py:24
+msgid "Server staging folder"
+msgstr ""
+
+#: literals.py:25
+msgid "Server watch folder"
+msgstr ""
+
+#: literals.py:30
+msgid "Server staging folders"
+msgstr ""
+
+#: literals.py:31
+msgid "Server watch folders"
+msgstr ""
+
+#: models.py:37
+msgid "Title"
+msgstr ""
+
+#: models.py:38
+msgid "Enabled"
+msgstr ""
+
+#: models.py:39
+msgid "Whitelist"
+msgstr ""
+
+#: models.py:40
+msgid "Blacklist"
+msgstr ""
+
+#: models.py:144 views.py:419 views.py:456 views.py:511 views.py:552
+#: views.py:582 views.py:618
+msgid "Source"
+msgstr ""
+
+#: models.py:150
+msgid "Interactive source"
+msgstr ""
+
+#: models.py:151
+msgid "Interactive sources"
+msgstr ""
+
+#: models.py:158 models.py:211
+msgid "Folder path"
+msgstr ""
+
+#: models.py:158 models.py:211
+msgid "Server side filesystem path."
+msgstr ""
+
+#: models.py:159
+msgid "Preview width"
+msgstr ""
+
+#: models.py:159
+msgid "Width value to be passed to the converter backend."
+msgstr ""
+
+#: models.py:160
+msgid "Preview height"
+msgstr ""
+
+#: models.py:160
+msgid "Height value to be passed to the converter backend."
+msgstr ""
+
+#: models.py:161 models.py:191 models.py:212
+msgid "Uncompress"
+msgstr ""
+
+#: models.py:161 models.py:191 models.py:212
+msgid "Whether to expand or not compressed archives."
+msgstr ""
+
+#: models.py:162 models.py:213
+msgid "Delete after upload"
+msgstr ""
+
+#: models.py:162 models.py:213
+msgid "Delete the file after is has been successfully uploaded."
+msgstr ""
+
+#: models.py:180
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr ""
+
+#: models.py:183
+msgid "Staging folder"
+msgstr ""
+
+#: models.py:203 models.py:204
+msgid "Out of process"
+msgstr ""
+
+#: models.py:214
+msgid "Interval"
+msgstr ""
+
+#: models.py:214
+msgid ""
+"Inverval in seconds where the watch folder path is checked for new "
+"documents."
+msgstr ""
+
+#: models.py:224
+msgid "Watch folder"
+msgstr ""
+
+#: models.py:229
+msgid "Enter a valid value."
+msgstr ""
+
+#: models.py:257 views.py:515
+msgid "Order"
+msgstr ""
+
+#: models.py:258 views.py:516 views.py:553 views.py:583
+msgid "Transformation"
+msgstr ""
+
+#: models.py:259 views.py:517
+msgid "Arguments"
+msgstr ""
+
+#: models.py:259
+#, python-format
+msgid "Use dictionaries to indentify arguments, example: %s"
+msgstr ""
+
+#: models.py:269
+msgid "Document source transformation"
+msgstr ""
+
+#: models.py:270
+msgid "Document source transformations"
+msgstr ""
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new document sources"
+msgstr ""
+
+#: permissions.py:9
+msgid "Delete document sources"
+msgstr ""
+
+#: permissions.py:10
+msgid "Edit document sources"
+msgstr ""
+
+#: permissions.py:11
+msgid "View existing document sources"
+msgstr ""
+
+#: utils.py:35
+msgid "Whitelist Blacklist validation error."
+msgstr ""
+
+#: views.py:115
+msgid "Here"
+msgstr ""
+
+#: views.py:120
+msgid "Upload sources"
+msgstr ""
+
+#: views.py:122
+msgid ""
+"No interactive document sources have been defined or none have been enabled."
+msgstr ""
+
+#: views.py:123
+#, python-format
+msgid "Click %(setup_link)s to add or enable some document sources."
+msgstr ""
+
+#: views.py:221
+msgid "New document queued for uploaded and will be available shortly."
+msgstr ""
+
+#: views.py:224
+msgid ""
+"New document version queued for uploaded and will be available shortly."
+msgstr ""
+
+#: views.py:230
+#, python-format
+msgid "Unhandled exception: %s"
+msgstr ""
+
+#: views.py:240
+#, python-format
+msgid "Upload a new version from source: %s"
+msgstr ""
+
+#: views.py:242
+#, python-format
+msgid "Upload a local document from source: %s"
+msgstr ""
+
+#: views.py:270
+msgid "Files in staging path"
+msgstr ""
+
+#: views.py:302
+msgid "Current document type"
+msgstr ""
+
+#: views.py:303
+msgid "None"
+msgstr ""
+
+#: views.py:310
+msgid "Current metadata"
+msgstr ""
+
+#: views.py:347
+msgid "Staging file delete successfully."
+msgstr ""
+
+#: views.py:349
+#, python-format
+msgid "Staging file delete error; %s."
+msgstr ""
+
+#: views.py:406
+msgid "Source edited successfully"
+msgstr ""
+
+#: views.py:409
+#, python-format
+msgid "Error editing source; %s"
+msgstr ""
+
+#: views.py:414
+#, python-format
+msgid "Edit source: %s"
+msgstr ""
+
+#: views.py:445
+#, python-format
+msgid "Source \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:447
+#, python-format
+msgid "Error deleting source \"%(source)s\": %(error)s"
+msgstr ""
+
+#: views.py:454
+#, python-format
+msgid "Are you sure you wish to delete the source: %s?"
+msgstr ""
+
+#: views.py:486
+msgid "Source created successfully"
+msgstr ""
+
+#: views.py:489
+#, python-format
+msgid "Error creating source; %s"
+msgstr ""
+
+#: views.py:494
+#, python-format
+msgid "Create new source of type: %s"
+msgstr ""
+
+#: views.py:509
+#, python-format
+msgid "Transformations for: %s"
+msgstr ""
+
+#: views.py:539
+msgid "Source transformation edited successfully"
+msgstr ""
+
+#: views.py:542
+#, python-format
+msgid "Error editing source transformation; %s"
+msgstr ""
+
+#: views.py:547
+#, python-format
+msgid "Edit transformation: %s"
+msgstr ""
+
+#: views.py:570
+msgid "Source transformation deleted successfully."
+msgstr ""
+
+#: views.py:572
+#, python-format
+msgid "Error deleting source transformation; %(error)s"
+msgstr ""
+
+#: views.py:585
+#, python-format
+msgid ""
+"Are you sure you wish to delete source transformation \"%(transformation)s\""
+msgstr ""
+
+#: views.py:608
+msgid "Source transformation created successfully"
+msgstr ""
+
+#: views.py:611
+#, python-format
+msgid "Error creating source transformation; %s"
+msgstr ""
+
+#: views.py:620
+#, python-format
+msgid "Create new transformation for source: %s"
+msgstr ""
+
+#: widgets.py:20
+msgid "Staging file page image"
+msgstr ""
+
+#: wizards.py:53
+msgid "Step 1 of 3: Document type"
+msgstr ""
+
+#: wizards.py:54
+msgid "Step 2 of 3: Metadata selection"
+msgstr ""
+
+#: wizards.py:55
+msgid "Step 3 of 3: Document metadata"
+msgstr ""
+
+#: wizards.py:73
+msgid "Next step"
+msgstr ""
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "Disk"
+#~ msgstr "Disk"
+
+#~ msgid "Database"
+#~ msgstr "Database"
+
+#~ msgid "Drive"
+#~ msgstr "Drive"
+
+#~ msgid "Network drive"
+#~ msgstr "Network drive"
+
+#~ msgid "User drive"
+#~ msgstr "User drive"
+
+#~ msgid "Envelope"
+#~ msgstr "Envelope"
+
+#~ msgid "Folder"
+#~ msgstr "Folder"
+
+#~ msgid "World"
+#~ msgstr "World"
+
+#~ msgid "Printer"
+#~ msgstr "Printer"
+
+#~ msgid "Empty printer"
+#~ msgstr "Empty printer"
+
+#~ msgid "icon"
+#~ msgstr "icon"
+
+#~ msgid "An icon to visually distinguish this source."
+#~ msgstr "An icon to visually distinguish this source."
+
+#~ msgid "here"
+#~ msgstr "here"
+
+#~ msgid "File uploaded successfully."
+#~ msgstr "File uploaded successfully."
+
+#~ msgid "File uncompressed successfully and uploaded as individual files."
+#~ msgstr "File uncompressed successfully and uploaded as individual files."
+
+#~ msgid "File was not a compressed file, uploaded as it was."
+#~ msgstr "File was not a compressed file, uploaded as it was."
+
+#~ msgid "New version uploads are not allowed for this document."
+#~ msgstr "New version uploads are not allowed for this document."
+
+#~ msgid "Document version from staging file: %s, uploaded successfully."
+#~ msgstr "Document version from staging file: %s, uploaded successfully."
+
+#~ msgid "Staging file: %s, uploaded successfully."
+#~ msgstr "Staging file: %s, uploaded successfully."
+
+#~ msgid ""
+#~ "Staging file: %s, uncompressed successfully and uploaded as individual "
+#~ "files."
+#~ msgstr ""
+#~ "Staging file: %s, uncompressed successfully and uploaded as individual "
+#~ "files."
+
+#~ msgid "Staging file: %s, was not compressed, uploaded as a single file."
+#~ msgstr "Staging file: %s, was not compressed, uploaded as a single file."
+
+#~ msgid "Staging file: %s, deleted successfully."
+#~ msgstr "Staging file: %s, deleted successfully."
+
+#~ msgid "upload a new version from staging source: %s"
+#~ msgstr "upload a new version from staging source: %s"
+
+#~ msgid "upload a document from staging source: %s"
+#~ msgstr "upload a document from staging source: %s"
+
+#~ msgid "preview"
+#~ msgstr "preview"
+
+#~ msgid "Unable to upload staging file: %s"
+#~ msgstr "Unable to upload staging file: %s"
+
+#~ msgid "Unable to delete staging file: %s"
+#~ msgstr "Unable to delete staging file: %s"
+
+#~ msgid "Staging file transformation error: %(error)s"
+#~ msgstr "Staging file transformation error: %(error)s"

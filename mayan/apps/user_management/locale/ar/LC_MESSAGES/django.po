@@ -1,24 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2013-01-25 21:20+0000\n"
-"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: __init__.py:36
+msgid "Returns a list of all the users."
+msgstr ""
 
 #: forms.py:13
 msgid "New password"
@@ -29,44 +32,44 @@ msgid "Confirm password"
 msgstr "تأكيد كلمة المرور"
 
 #: links.py:9
-msgid "user list"
-msgstr "قائمة المستخدمين"
+msgid "User list"
+msgstr ""
 
-#: links.py:10 views.py:28
-msgid "users"
-msgstr "المستخدمين"
+#: links.py:10 views.py:29
+msgid "Users"
+msgstr ""
 
 #: links.py:11 links.py:21
-msgid "edit"
-msgstr "تحرير"
+msgid "Edit"
+msgstr ""
 
-#: links.py:12 views.py:95
-msgid "create new user"
-msgstr "إنشاء مستخدم جديد"
+#: links.py:12 views.py:96
+msgid "Create new user"
+msgstr ""
 
 #: links.py:13 links.py:14 links.py:23 links.py:24
-msgid "delete"
-msgstr "حذف"
+msgid "Delete"
+msgstr ""
 
 #: links.py:15 links.py:16
-msgid "reset password"
-msgstr "إعادة تعيين كلمة المرور"
+msgid "Reset password"
+msgstr ""
 
-#: links.py:17 links.py:20 views.py:251
-msgid "groups"
-msgstr "مجموعات"
+#: links.py:17 links.py:20 views.py:252
+msgid "Groups"
+msgstr ""
 
 #: links.py:19
-msgid "group list"
-msgstr "قائمة المجموعات"
+msgid "Group list"
+msgstr ""
 
-#: links.py:22 views.py:302
-msgid "create new group"
-msgstr "إنشاء مجموعة جديدة"
+#: links.py:22 views.py:303
+msgid "Create new group"
+msgstr ""
 
-#: links.py:25 views.py:255
-msgid "members"
-msgstr "الأعضاء"
+#: links.py:25 views.py:256
+msgid "Members"
+msgstr ""
 
 #: permissions.py:7
 msgid "User management"
@@ -104,172 +107,178 @@ msgstr "عرض المجموعات الحالية"
 msgid "Delete existing groups"
 msgstr "حذف المجموعات الحالية"
 
-#: views.py:32
-msgid "full name"
-msgstr "الاسم الكامل"
+#: views.py:33
+msgid "Full name"
+msgstr ""
 
-#: views.py:36
-msgid "email"
-msgstr "البريد الإلكتروني"
+#: views.py:37
+msgid "Email"
+msgstr ""
 
-#: views.py:40
-msgid "active"
-msgstr "نشط"
+#: views.py:41
+msgid "Active"
+msgstr ""
 
-#: views.py:44
-msgid "has usable password?"
-msgstr "لديه كلمة المرور صالحة للاستعمال؟"
+#: views.py:45
+msgid "Has usable password?"
+msgstr ""
 
-#: views.py:60
+#: views.py:61
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user and staff user editing is not allowed, use the admin interface "
-"for these cases."
+msgstr "Super user and staff user editing is not allowed, use the admin interface for these cases."
 
-#: views.py:67
+#: views.py:68
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "تم تحديث المستخدم \"%s\" بنجاح."
 
-#: views.py:73
+#: views.py:74
 #, python-format
-msgid "edit user: %s"
-msgstr "تعديل المستخدم: %s"
+msgid "Edit user: %s"
+msgstr ""
 
-#: views.py:76 views.py:132 views.py:195 views.py:239
-msgid "user"
-msgstr "مستخدم"
+#: views.py:77 views.py:133 views.py:196 views.py:240
+msgid "User"
+msgstr ""
 
-#: views.py:89
+#: views.py:90
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "تم انشاء المستخدم \"%s\"  بنجاح."
 
-#: views.py:110 views.py:164
+#: views.py:111 views.py:165
 msgid "Must provide at least one user."
 msgstr "يجب أن توفر ما لا يقل عن مستخدم واحد."
 
-#: views.py:120
+#: views.py:121
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
+msgstr "Super user and staff user deleting is not allowed, use the admin interface for these cases."
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "تم مسح المستخدم \"%s\"  بنجاح."
 
-#: views.py:125
+#: views.py:126
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "خطأ  أثناء حذف المستخدم \"%(user)s\": %(error)s"
 
-#: views.py:140
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المستخدم %s ؟"
 
-#: views.py:142
+#: views.py:143
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المستخدمين %s ؟"
 
-#: views.py:175
+#: views.py:176
 msgid "Passwords do not match, try again."
 msgstr "لا تتطابق كلمات المرور، حاول مرة أخرى."
 
-#: views.py:180
+#: views.py:181
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
+msgstr "Super user and staff user password reseting is not allowed, use the admin interface for these cases."
 
-#: views.py:184
+#: views.py:185
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "نجحت إعادة تعيين كلمة المرور للمستخدم: %s"
 
-#: views.py:186
+#: views.py:187
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "خطأ أثناء إعادة تعيين كلمة المرور للمستخدم \"%(user)s\": %(error)s"
 
-#: views.py:202
+#: views.py:203
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "إعادة كلمة السر للمستخدم: %s"
 
-#: views.py:204
+#: views.py:205
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "إعادة كلمة السر للمستخدمين %s"
 
-#: views.py:234
-#, python-format
-msgid "non groups of user: %s"
-msgstr "non groups of user: %s"
-
 #: views.py:235
 #, python-format
-msgid "groups of user: %s"
-msgstr "مجموعات المستخدم: %s"
+msgid "Non groups of user: %s"
+msgstr ""
 
-#: views.py:275
+#: views.py:236
+#, python-format
+msgid "Groups of user: %s"
+msgstr ""
+
+#: views.py:276
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr "تم تحديث مجموعة \"%s\"  بنجاح."
 
-#: views.py:281
+#: views.py:282
 #, python-format
-msgid "edit group: %s"
-msgstr "تحرير مجموعة %s"
+msgid "Edit group: %s"
+msgstr ""
 
-#: views.py:284 views.py:336 views.py:381
-msgid "group"
-msgstr "مجموعة"
+#: views.py:285 views.py:337 views.py:382
+msgid "Group"
+msgstr ""
 
-#: views.py:296
+#: views.py:297
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr "تم انشاء مجموعة \"%s \"  بنجاح."
 
-#: views.py:317
+#: views.py:318
 msgid "Must provide at least one group."
 msgstr "يجب أن توفر ما لا يقل عن مجموعة واحدة."
 
-#: views.py:327
+#: views.py:328
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "تم حذف مجموعة \"%s \"  بنجاح."
 
-#: views.py:329
+#: views.py:330
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "خطأ أثناء مسح المجموعة: \"%(group)s\": %(error)s"
 
-#: views.py:344
+#: views.py:345
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المجموعة %s ؟"
 
-#: views.py:346
+#: views.py:347
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "هل أنت متأكد أنك تريد حذف المجموعات %s ؟"
 
-#: views.py:376
-#, python-format
-msgid "non members of group: %s"
-msgstr "non members of group: %s"
-
 #: views.py:377
 #, python-format
-msgid "members of group: %s"
-msgstr "أعضاء المجموعة: %s"
+msgid "Non members of group: %s"
+msgstr ""
+
+#: views.py:378
+#, python-format
+msgid "Members of group: %s"
+msgstr ""
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "create new user"
+#~ msgstr "create new user"
+
+#~ msgid "create new group"
+#~ msgstr "create new group"
+
+#~ msgid "user"
+#~ msgstr "user"

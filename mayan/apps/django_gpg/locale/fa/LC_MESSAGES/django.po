@@ -1,158 +1,167 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-06-16 18:57+0000\n"
+"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: api.py:24
-msgid "Public"
-msgstr ""
-
-#: api.py:25
-msgid "Secret"
-msgstr ""
-
-#: api.py:33 api.py:38
-msgid "RSA"
-msgstr ""
-
-#: api.py:34
-msgid "DSA"
-msgstr ""
-
-#: api.py:39
-msgid "Elgamal"
-msgstr ""
-
-#: api.py:53
-msgid "Bad signature."
-msgstr ""
-
-#: api.py:57
-msgid "Document not signed or invalid signature."
-msgstr ""
-
-#: api.py:61
-msgid "Signature error."
-msgstr ""
-
-#: api.py:65
-msgid "Document is signed but no public key is available for verification."
-msgstr ""
-
-#: api.py:69
-msgid "Document is signed, and signature is good."
-msgstr ""
-
-#: api.py:73
-msgid "Document is signed with a valid signature."
-msgstr ""
-
-#: api.py:146
-msgid "unknown"
+#: api.py:92
+msgid "Unknown"
 msgstr ""
 
 #: forms.py:7
 msgid "Term"
-msgstr ""
+msgstr "ترم Term"
 
 #: forms.py:8
 msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
+
+#: links.py:6
+msgid "Private keys"
 msgstr ""
 
-#: links.py:6 views.py:66
-msgid "private keys"
-msgstr ""
-
-#: links.py:7 views.py:69
-msgid "public keys"
+#: links.py:7
+msgid "Public keys"
 msgstr ""
 
 #: links.py:8
-msgid "delete"
+msgid "Delete"
 msgstr ""
 
-#: links.py:9
-msgid "query keyservers"
-msgstr ""
+#: links.py:9 permissions.py:11
+msgid "Query keyservers"
+msgstr "پرسش و یا query از سرورهای کلید"
 
 #: links.py:10
-msgid "import"
+msgid "Import"
 msgstr ""
 
-#: links.py:11
-msgid "key management"
-msgstr ""
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Key management"
-msgstr ""
+msgstr "مدیریت کلید"
+
+#: literals.py:6
+msgid "Public"
+msgstr "عمومی"
+
+#: literals.py:7
+msgid "Secret"
+msgstr "سری و یا رمز"
+
+#: literals.py:15 literals.py:20
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:16
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:21
+msgid "Elgamal"
+msgstr "الگمال Elgmal"
+
+#: literals.py:35
+msgid "Bad signature."
+msgstr "امضای اشتباه"
+
+#: literals.py:39
+msgid "Document not signed or invalid signature."
+msgstr "سند امضا نشده و یا امضا قابل قبول نییست"
+
+#: literals.py:43
+msgid "Signature error."
+msgstr "خطا در امضا"
+
+#: literals.py:47
+msgid "Document is signed but no public key is available for verification."
+msgstr "سند امضا شده است ولیکن کلید عمومی جهت بررسی صحت امضا وجود ندارد."
+
+#: literals.py:51
+msgid "Document is signed, and signature is good."
+msgstr "سند امضا شده است و امضا مورد تایید میباشد."
+
+#: literals.py:55
+msgid "Document is signed with a valid signature."
+msgstr "سند با امضای مورد تایید امضا شده است."
 
 #: permissions.py:9
 msgid "View keys"
-msgstr ""
+msgstr "دیدن کلیدها"
 
 #: permissions.py:10
 msgid "Delete keys"
-msgstr ""
-
-#: permissions.py:11
-msgid "Query keyservers"
-msgstr ""
+msgstr "پاک و یا حذف کلیدها"
 
 #: permissions.py:12
 msgid "Import keys from keyservers"
-msgstr ""
+msgstr "وارد کردن کلیده از سرور کلیدها"
+
+#: settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "لیست سرور کلیدها برای پرسش درباره کلید های ناشناس."
+
+#: settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "ریشه دایرکتوری جهت نگهداری کلیدها بهمراه فایلهای پیکربندی."
 
 #: views.py:37
 #, python-format
 msgid "Key: %s, imported successfully."
-msgstr ""
+msgstr "کلید: %s, بصورت موفقیت آمیز وارد شد."
 
 #: views.py:42
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "فادر نبودن در وارد کردن کلید با شناسه: %(key_id)s , خطای  %(error)s"
 
 #: views.py:51
 msgid "Import key"
-msgstr ""
+msgstr "وارد کردن کلید"
 
 #: views.py:52
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
-msgstr ""
+msgstr "آیا از ورود کلیدی با شناسه: %s مطمئن هستید؟"
+
+#: views.py:66
+msgid "private keys"
+msgstr "کلید خصوصی"
+
+#: views.py:69
+msgid "public keys"
+msgstr "کلید عمومی"
 
 #: views.py:77
 msgid "Key ID"
-msgstr ""
+msgstr "شناسه کلید"
 
 #: views.py:81
 msgid "Owner"
-msgstr ""
+msgstr "صاحب"
 
 #: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
-msgstr ""
+msgstr "کلید: %s با موفقیت حذف شد."
 
 #: views.py:108
 msgid "Delete key"
-msgstr ""
+msgstr "حذف کلید"
 
 #: views.py:110
 #, python-format
@@ -160,56 +169,54 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
+msgstr "آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
 
 #: views.py:128
 msgid "Query key server"
-msgstr ""
+msgstr "پرسش از سرور کلید"
 
 #: views.py:141
 msgid "results"
-msgstr ""
+msgstr "نتایج"
 
 #: views.py:146
 msgid "ID"
-msgstr ""
+msgstr "شناسه"
 
 #: views.py:150
 msgid "type"
-msgstr ""
+msgstr "نوع"
 
 #: views.py:154
 msgid "creation date"
-msgstr ""
+msgstr "زمان ایجاد"
 
 #: views.py:158
 msgid "disabled"
-msgstr ""
+msgstr "عیر فعال"
 
 #: views.py:162
 msgid "expiration date"
-msgstr ""
+msgstr "تاریخ انقضا"
 
 #: views.py:166
 msgid "expired"
-msgstr ""
+msgstr "منقضی شده"
 
 #: views.py:170
 msgid "length"
-msgstr ""
+msgstr "طول"
 
 #: views.py:174
 msgid "revoked"
-msgstr ""
+msgstr "لغو شده"
 
 #: views.py:179
 msgid "Identifies"
-msgstr ""
+msgstr "شناسایی کردن."
 
-#: conf/settings.py:15
-msgid "List of keyservers to be queried for unknown keys."
-msgstr ""
+#~ msgid "query keyservers"
+#~ msgstr "query keyservers"
 
-#: conf/settings.py:16
-msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
+#~ msgid "key management"
+#~ msgstr "key management"

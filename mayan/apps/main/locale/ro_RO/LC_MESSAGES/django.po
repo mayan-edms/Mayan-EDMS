@@ -1,159 +1,369 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2013-02-17 12:38+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2014-10-08 17:11-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
-
-#: __init__.py:14
-msgid "home"
-msgstr "acasă"
-
-#: __init__.py:16
-msgid "search"
-msgstr "caută"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: links.py:8
-msgid "maintenance"
-msgstr "mentenanţă"
+msgid "Maintenance"
+msgstr ""
 
-#: links.py:9
-msgid "diagnostics"
-msgstr "diagnostic"
-
-#: links.py:10
-msgid "sentry"
-msgstr "santinelă"
-
-#: links.py:11
-msgid "admin site"
-msgstr "administrator site"
-
-#: views.py:41
-msgid "maintenance menu"
-msgstr "meniu mentenanţă"
-
-#: views.py:48
+#: links.py:9 views.py:43
 msgid "Diagnostics"
 msgstr "diagnostic"
 
-#: conf/settings.py:12
-msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or "
-"by a menu entry."
+#: links.py:10
+msgid "Admin site"
 msgstr ""
-"Controlează dacă funcția de căutare este asigurată de un widget sidebar sau "
-"de către o intrare în meniu."
 
-#: templates/about.html:8
+#: views.py:36
+msgid "Maintenance menu"
+msgstr ""
+
+#: templates/main/403.html:5 templates/main/403.html.py:9
+msgid "Insufficient permissions"
+msgstr ""
+
+#: templates/main/403.html:11
+msgid "You don't have enough permissions for this operation."
+msgstr ""
+
+#: templates/main/404.html:5 templates/main/404.html.py:9
+msgid "Page not found"
+msgstr ""
+
+#: templates/main/404.html:11
+msgid "Sorry, but the requested page could not be found."
+msgstr ""
+
+#: templates/main/about.html:8
 msgid "About this program"
 msgstr "Despre acest program"
 
-#: templates/about.html:12 templates/verbose_login.html:5
+#: templates/main/about.html:12
 msgid "Version"
 msgstr "Versiune"
 
-#: templates/about.html:20 templates/home.html:17
-#: templates/verbose_login.html:7
+#: templates/main/about.html:20 templates/main/home.html:17
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr ""
 
-#: templates/main/base.html:31
+#: templates/main/base.html:147
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/main/base.html:262
+#: templates/main/base.html:166
 msgid "User"
 msgstr "utilizator"
 
-#: templates/main/base.html:264
+#: templates/main/base.html:168
 msgid "Anonymous"
 msgstr "anonim"
 
-#: templates/main/base.html:267
+#: templates/main/base.html:171
 msgid "User details"
 msgstr "detalii utilizator"
 
-#: templates/main/base.html:284
+#: templates/main/base.html:188 templates/main/login.html:16
+#: templates/main/login.html.py:54 templates/main/login.html:62
 msgid "Login"
 msgstr "logare"
 
-#: templates/main/base.html:284
+#: templates/main/base.html:188
 msgid "Logout"
 msgstr "deconectare"
 
-#: templates/main/base.html:364
+#: templates/main/base.html:202
+msgid "dismiss all notifications"
+msgstr ""
+
+#: templates/main/base.html:202
+msgid "close all"
+msgstr ""
+
+#: templates/main/base.html:203
+msgid "dismiss this notification"
+msgstr ""
+
+#: templates/main/base.html:203
+msgid "close"
+msgstr ""
+
+#: templates/main/base.html:264
 msgid "Secondary menu"
 msgstr "meniu secundar"
 
-#: templates/main/base.html:380
+#: templates/main/base.html:280
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Acţiuni pentru %(name)s: %(navigation_object)s"
 
-#: templates/main/base.html:382 templates/main/base.html.py:425
+#: templates/main/base.html:282 templates/main/base.html.py:325
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Acţiuni pentru: %(navigation_object)s"
 
-#: templates/main/base.html:385
+#: templates/main/base.html:285
 msgid "Available actions"
 msgstr "acţiuni disponibile"
 
-#: templates/main/base.html:397 templates/main/base.html.py:440
+#: templates/main/base.html:297 templates/main/base.html.py:340
 msgid "Related actions"
 msgstr "acţiuni conexe"
 
-#: templates/main/base.html:408 templates/main/base.html.py:453
+#: templates/main/base.html:308 templates/main/base.html.py:353
 msgid "Other available actions"
 msgstr "alte acţuni disponibile"
 
-#: templates/main/base.html:423
+#: templates/main/base.html:323
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Acţiuni pentru %(object_name)s: %(navigation_object)s"
 
-#: templates/main/base.html:428
+#: templates/main/base.html:328
 msgid "Actions"
 msgstr "Acţiuni"
 
-#: templates/home.html:11
-msgid "Django based open source document management system"
+#: templates/main/calculate_form_title.html:8
+#, python-format
+msgid "Details for %(object_name)s: %(object)s"
 msgstr ""
-"are la bază Django, un sistem de management al documentelor open source"
 
-#: templates/project_description.html:7
+#: templates/main/calculate_form_title.html:10
+#, python-format
+msgid "Details for: %(object)s"
+msgstr ""
+
+#: templates/main/calculate_form_title.html:15
+#, python-format
+msgid "Edit %(object_name)s: %(object)s"
+msgstr ""
+
+#: templates/main/calculate_form_title.html:17
+#, python-format
+msgid "Edit: %(object)s"
+msgstr ""
+
+#: templates/main/calculate_form_title.html:21
+#, python-format
+msgid "Create new %(object_name)s"
+msgstr ""
+
+#: templates/main/calculate_form_title.html:23
+msgid "Create"
+msgstr ""
+
+#: templates/main/generic_assign_remove.html:5
+#, python-format
+msgid "Assign %(title)s %(object)s"
+msgstr ""
+
+#: templates/main/generic_confirm.html:5
+#: templates/main/generic_confirm.html:19
+msgid "Confirm"
+msgstr ""
+
+#: templates/main/generic_confirm.html:17
+msgid "Confirm delete"
+msgstr ""
+
+#: templates/main/generic_confirm.html:33
+msgid "form icon"
+msgstr ""
+
+#: templates/main/generic_confirm.html:41
+#, python-format
+msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+msgstr ""
+
+#: templates/main/generic_confirm.html:43
+#, python-format
+msgid "Are you sure you wish to delete: %(object)s?"
+msgstr ""
+
+#: templates/main/generic_confirm.html:51
+msgid "Yes"
+msgstr ""
+
+#: templates/main/generic_confirm.html:55
+msgid "No"
+msgstr ""
+
+#: templates/main/generic_form_instance.html:40
+#: templates/main/generic_form_subtemplate.html:59
+msgid "required"
+msgstr ""
+
+#: templates/main/generic_form_subtemplate.html:83
+#: templates/main/generic_form_subtemplate.html:85
+#: templates/main/generic_list_horizontal_subtemplate.html:47
+#: templates/main/generic_list_horizontal_subtemplate.html:85
+#: templates/main/generic_list_subtemplate.html:50
+#: templates/main/generic_list_subtemplate.html:170
+msgid "Save"
+msgstr ""
+
+#: templates/main/generic_form_subtemplate.html:83
+#: templates/main/generic_form_subtemplate.html:85
+#: templates/main/generic_list_horizontal_subtemplate.html:47
+#: templates/main/generic_list_horizontal_subtemplate.html:85
+#: templates/main/generic_list_subtemplate.html:50
+#: templates/main/generic_list_subtemplate.html:170
+msgid "Submit"
+msgstr ""
+
+#: templates/main/generic_form_subtemplate.html:90
+msgid "Cancel"
+msgstr ""
+
+#: templates/main/generic_list_horizontal.html:8
+#, python-format
+msgid "%(title)s"
+msgstr ""
+
+#: templates/main/generic_list_horizontal_subtemplate.html:21
+#: templates/main/generic_list_subtemplate.html:22
+#, python-format
+msgid ""
+"%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
+msgstr ""
+
+#: templates/main/generic_list_horizontal_subtemplate.html:23
+#: templates/main/generic_list_subtemplate.html:24
+#, python-format
+msgid "%(title)s (%(total)s)"
+msgstr ""
+
+#: templates/main/generic_list_subtemplate.html:70
+msgid "Identifier"
+msgstr ""
+
+#: templates/main/generic_list_subtemplate.html:144
+msgid "No results"
+msgstr ""
+
+#: templates/main/home.html:11
+msgid "Django based open source document management system"
+msgstr "are la bază Django, un sistem de management al documentelor open source"
+
+#: templates/main/login.html:22
+msgid "You are already logged in"
+msgstr ""
+
+#: templates/main/login.html:25
+msgid "Redirecting you to the website entry point in 5 seconds."
+msgstr ""
+
+#: templates/main/login.html:28
+#, python-format
+msgid ""
+"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
+"work."
+msgstr ""
+
+#: templates/main/login.html:39
+msgid "First time login"
+msgstr ""
+
+#: templates/main/login.html:41
+msgid ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
+msgstr ""
+
+#: templates/main/login.html:42
+msgid "Login using the following credentials:"
+msgstr ""
+
+#: templates/main/login.html:43
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr ""
+
+#: templates/main/login.html:44
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr ""
+
+#: templates/main/login.html:45
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/main/login.html:46
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+
+#: templates/main/password_change_done.html:5
+#: templates/main/password_change_form.html:5
+#: templates/main/password_change_form.html:7
+msgid "Password change"
+msgstr ""
+
+#: templates/main/password_change_done.html:8
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: templates/main/project_description.html:7
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
-"Open source, Django manager de bază de document electronic cu metadate "
-"personalizate, indexare, marcare, integrarea fișier de servire, sprijin "
-"semnătură digitală și capacitățile OCR"
+msgstr "Open source, Django manager de bază de document electronic cu metadate personalizate, indexare, marcare, integrarea fișier de servire, sprijin semnătură digitală și capacitățile OCR"
 
-#: templates/project_description.html:22
-#, fuzzy
+#: templates/main/project_description.html:22
 msgid "Released under the Apache 2.0 License"
-msgstr "Lansat sub licența GPL v3"
+msgstr ""
+
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
+msgid "Previous"
+msgstr ""
+
+#: templates/pagination/pagination.html:26
+#: templates/pagination/pagination.html:28
+msgid "Next"
+msgstr ""
+
+#~ msgid "home"
+#~ msgstr "home"
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "diagnostics"
+#~ msgstr "diagnostics"
+
+#~ msgid "sentry"
+#~ msgstr "sentry"
+
+#~ msgid ""
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
+#~ msgstr ""
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
-#~ msgstr "statistică"
+#~ msgstr "statistics"
 
 #~ msgid "Statistics"
-#~ msgstr "statistici"
+#~ msgstr "Statistics"

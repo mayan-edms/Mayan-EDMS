@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2013-06-27 09:28+0000\n"
-"Last-Translator: www.ping.ba <jomer@ping.ba>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"projects/p/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: forms.py:49
 msgid "Pages"
@@ -32,39 +31,39 @@ msgstr "Odaberi"
 msgid "Click on the image for full size view of the first page."
 msgstr "Klikni na sliku za pregled u punoj veličini prve stranice"
 
-#: links.py:11
-msgid "smart links actions"
-msgstr "smart link akcija"
+#: links.py:12
+msgid "Smart links actions"
+msgstr ""
 
-#: links.py:12 links.py:14 models.py:23 views.py:130
-msgid "smart links"
-msgstr "smart linkovi"
-
-#: links.py:15
-msgid "smart links list"
-msgstr "lista smart linkova"
+#: links.py:13 links.py:15 models.py:22 permissions.py:7 views.py:131
+msgid "Smart links"
+msgstr "Smart linkovi"
 
 #: links.py:16
-msgid "create new smart link"
-msgstr "kreiraj novi smart link"
+msgid "Smart links list"
+msgstr ""
 
-#: links.py:17 links.py:22
-msgid "edit"
-msgstr "izmijeni"
+#: links.py:17 views.py:158
+msgid "Create new smart link"
+msgstr "Kreiraj novi smart link"
 
 #: links.py:18 links.py:23
-msgid "delete"
-msgstr "obriši"
+msgid "Edit"
+msgstr ""
 
-#: links.py:20
-msgid "conditions"
-msgstr "uslovi"
+#: links.py:19 links.py:24
+msgid "Delete"
+msgstr ""
 
 #: links.py:21
-msgid "create condition"
-msgstr "kreiraj uslove"
+msgid "Conditions"
+msgstr ""
 
-#: links.py:25
+#: links.py:22
+msgid "Create condition"
+msgstr ""
+
+#: links.py:26
 msgid "ACLs"
 msgstr "ACLs"
 
@@ -136,75 +135,66 @@ msgstr "je u regularnom izrazu"
 msgid "is in regular expression (case insensitive)"
 msgstr "je u regularnom izrazu (nije bitno velika ili mala slova)"
 
-#: models.py:12
-msgid "title"
-msgstr "naslov"
+#: models.py:11
+msgid "Title"
+msgstr ""
 
-#: models.py:13 views.py:133
-msgid "dynamic title"
-msgstr "dinamički naslov"
+#: models.py:12 views.py:134
+msgid "Dynamic title"
+msgstr ""
 
-#: models.py:13 models.py:31
+#: models.py:12 models.py:30
 msgid ""
 "This expression will be evaluated against the current selected document.  "
 "The document metadata is available as variables `metadata` and document "
 "properties under the variable `document`."
+msgstr "Ovaj izraz će biti upoređen sa trenutno odabranim dokumentom. Metadata dokumenta su dostupna kao variable `metadata` i u svojstvima dokumenta pod variablom `document`."
+
+#: models.py:13 models.py:32 views.py:135 views.py:230
+msgid "Enabled"
 msgstr ""
-"Ovaj izraz će biti upoređen sa trenutno odabranim dokumentom. Metadata "
-"dokumenta su dostupna kao variable `metadata` i u svojstvima dokumenta pod "
-"variablom `document`."
 
-#: models.py:14 models.py:33 views.py:134 views.py:229
-msgid "enabled"
-msgstr "omogućen"
+#: models.py:21 models.py:26 views.py:294 views.py:328
+msgid "Smart link"
+msgstr ""
 
-#: models.py:22 models.py:27 views.py:293 views.py:327
-msgid "smart link"
-msgstr "smart link"
-
-#: models.py:28
+#: models.py:27
 msgid "The inclusion is ignored for the first item."
 msgstr "Inkluzija je ignorisana za prvu stavku"
 
-#: models.py:29
-msgid "foreign document data"
-msgstr "podaci stranog dokumenta"
+#: models.py:28
+msgid "Foreign document data"
+msgstr ""
 
-#: models.py:29
+#: models.py:28
 msgid ""
 "This represents the metadata of all other documents.  Available objects: "
 "`document.<attribute>` and `metadata.<metadata_type_name>`."
+msgstr "Ovo predstavlja metadata svih ostalih dokumenata. Dostupni objekti: `document.<attribute>` and `metadata.<metadata_type_name>`."
+
+#: models.py:30
+msgid "Expression"
 msgstr ""
-"Ovo predstavlja metadata svih ostalih dokumenata. Dostupni objekti: "
-"`document.<attribute>` and `metadata.<metadata_type_name>`."
 
 #: models.py:31
-msgid "expression"
-msgstr "izraz"
+msgid "Negated"
+msgstr ""
 
-#: models.py:32
-msgid "negated"
-msgstr "negirano"
-
-#: models.py:32
+#: models.py:31
 msgid "Inverts the logic of the operator."
 msgstr "Obrće logiku operatora"
 
-#: models.py:36
+#: models.py:35
 msgid "not"
 msgstr "ne"
 
+#: models.py:38
+msgid "Link condition"
+msgstr ""
+
 #: models.py:39
-msgid "link condition"
-msgstr "uslov linka"
-
-#: models.py:40
-msgid "link conditions"
-msgstr "uslovi linka"
-
-#: permissions.py:7
-msgid "Smart links"
-msgstr "Smart linkovi"
+msgid "Link conditions"
+msgstr ""
 
 #: permissions.py:9
 msgid "View existing smart links"
@@ -222,126 +212,132 @@ msgstr "Obrisati smart linkove"
 msgid "Edit smart links"
 msgstr "Izmjeni smart linkove"
 
-#: views.py:39
+#: settings.py:11
+msgid "Show smart link that don't return any documents."
+msgstr "Prikazati smart link koji ne vraća nikakve dokumente."
+
+#: views.py:40
 msgid "No action selected."
 msgstr "Nije odabrana akcija"
 
-#: views.py:58
+#: views.py:59
 #, python-format
-msgid "documents in smart link: %(group)s"
-msgstr "dokumenti u smart linku: %(group)s"
+msgid "Documents in smart link: %(group)s"
+msgstr ""
 
-#: views.py:74
+#: views.py:75
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Greška smart link upita: %s"
 
-#: views.py:96
+#: views.py:97
 #, python-format
-msgid "smart links (%s)"
-msgstr "smart linkovi (%s)"
+msgid "Smart links (%s)"
+msgstr ""
 
-#: views.py:110
+#: views.py:111
 msgid "There no defined smart links for the current document."
 msgstr "Ne postoje smart linkovi za trenutni dokument."
 
-#: views.py:150
+#: views.py:151
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "Smart link: %s uspješno kreiran."
 
-#: views.py:157
-msgid "Create new smart link"
-msgstr "Kreiraj novi smart link"
-
-#: views.py:173
+#: views.py:174
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "Smart link: %s uspješno izmijenjen."
 
-#: views.py:181
+#: views.py:182
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Izmjeni smart link: %s"
 
-#: views.py:199
+#: views.py:200
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "Smart link: %s uspješno obrisan."
 
-#: views.py:201
-#, fuzzy, python-format
+#: views.py:202
+#, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr "Greška brisanja smart linka: %(smart_link)s; %(error)s."
+msgstr ""
 
-#: views.py:210
+#: views.py:211
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "Jeste li sigurni da želite izbrisati smart link: %s?"
 
-#: views.py:226
+#: views.py:227
 #, python-format
-msgid "conditions for smart link: %s"
-msgstr "uslovi za smart link: %s"
+msgid "Conditions for smart link: %s"
+msgstr ""
 
-#: views.py:251
+#: views.py:252
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Uslovi smart linka: \"%s\" uspješno kreirani."
 
-#: views.py:258
+#: views.py:259
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Dodati nove uslove za smart link: \"%s\""
 
-#: views.py:280
+#: views.py:281
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Uslovi smart linka: \"%s\" uspješno izmjenjeni."
 
-#: views.py:287
+#: views.py:288
 msgid "Edit smart link condition"
 msgstr "Izmjeniti uslove smart linka"
 
-#: views.py:294 views.py:328
-msgid "condition"
-msgstr "uslov"
+#: views.py:295 views.py:329
+msgid "Condition"
+msgstr ""
 
-#: views.py:314
+#: views.py:315
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Uslov smart linka: \"%s\" uspješno obrisan."
 
-#: views.py:316
-#, fuzzy, python-format
+#: views.py:317
+#, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
 msgstr ""
-"Greška brisanja smart link uslova: %(smart_link_condition)s; %(error)s."
 
-#: views.py:330
+#: views.py:331
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr "Jeste li sigurni da želite izbrisati uslov smart linka: %s?"
 
-#: conf/settings.py:11
-msgid "Show smart link that don't return any documents."
-msgstr "Prikazati smart link koji ne vraća nikakve dokumente."
+#~ msgid "smart links"
+#~ msgstr "smart links"
 
-#: templates/smart_links_help.html:3
-msgid "What are smart links?"
-msgstr "Šta su smart linkovi?"
+#~ msgid "create new smart link"
+#~ msgstr "create new smart link"
 
-#: templates/smart_links_help.html:4
-msgid ""
-"Smart links are a set of conditional statements that are used to query the "
-"database using the current document the user is accessing as the data "
-"source, the results of these queries are a list of documents that relate in "
-"some manner to the document being displayed and allow users the ability to "
-"jump to and from linked documents very easily."
-msgstr ""
-"Smart linkovi su skup uvjetnih izjava koje se koriste za postavljanje upita "
-"na bazu podataka pomoću trenutnog dokumenta kao izvor podataka, rezultati "
-"tih upita su popis dokumenata koji se odnose na neki način prema dokumentu "
-"koji se prikazuje i omogućavaju korisnicima mogućnost da prelaze između "
-"povezanih dokumenata vrlo jednostavno."
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "smart link"
+#~ msgstr "smart link"
+
+#~ msgid "What are smart links?"
+#~ msgstr "What are smart links?"
+
+#~ msgid ""
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
+#~ msgstr ""
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

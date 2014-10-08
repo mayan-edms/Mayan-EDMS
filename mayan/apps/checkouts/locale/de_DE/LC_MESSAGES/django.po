@@ -1,32 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
+# Stefan Lodders <sl@suchreflex.de>, 2012
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2014-03-12 16:11+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr ""
-"Überprüft, ob die Frist für ausgebuchte Dokumente abgelaufen ist und bucht "
-"sie ggf. wieder ein."
 
 #: events.py:5
 msgid "Document checked out"
@@ -65,20 +60,20 @@ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 msgstr "Dokument \" %(document)s \" zwingend durch %(fullname)s eingebucht."
 
 #: links.py:16
-msgid "checkouts"
-msgstr "Ausbuchungen"
+msgid "Checkouts"
+msgstr ""
 
 #: links.py:17
-msgid "check out document"
-msgstr "Dokument ausbuchen"
+msgid "Check out document"
+msgstr ""
 
 #: links.py:18
-msgid "check in document"
-msgstr "Dokument einbuchen"
+msgid "Check in document"
+msgstr ""
 
 #: links.py:19
-msgid "check in/out"
-msgstr "Aus-/Einbuchen"
+msgid "Check in/out"
+msgstr ""
 
 #: literals.py:14
 msgid "checked out"
@@ -88,7 +83,7 @@ msgstr "Ausgebucht"
 msgid "checked in/available"
 msgstr "Eingebucht/Verfügbar"
 
-#: models.py:24 views.py:132
+#: models.py:24
 msgid "document"
 msgstr "Dokument"
 
@@ -145,16 +140,16 @@ msgid "checked out documents"
 msgstr "Ausgebuchte Dokumente"
 
 #: views.py:35
-msgid "checkout user"
-msgstr "Ausgebucht durch"
+msgid "Checkout user"
+msgstr ""
 
 #: views.py:36
-msgid "checkout time and date"
-msgstr "Zeit und Datum Ausbuchung"
+msgid "Checkout time and date"
+msgstr ""
 
 #: views.py:37
-msgid "checkout expiration"
-msgstr "Ablauf der Ausbuchung"
+msgid "Checkout expiration"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -222,14 +217,16 @@ msgstr "Fehler beim Versuch das Dokument %s auszubuchen."
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" erfolgreich eingebucht."
 
+#: views.py:132
+msgid "Document"
+msgstr ""
+
 #: views.py:141
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Sie haben dieses Dokument ursprünglich nicht ausgebucht. Sind Sie sicher, "
-"dass Sie die Einbuchung von Dokument %s erzwingen wollen?"
+msgstr "Sie haben dieses Dokument ursprünglich nicht ausgebucht. Sind Sie sicher, dass Sie die Einbuchung von Dokument %s erzwingen wollen?"
 
 #: views.py:143
 #, python-format
@@ -273,9 +270,17 @@ msgstr "Eine gültige Zeitdifferenz ist erforderlich."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)."
+msgstr "Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)."
 
 #: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Ablauf-Datum und -Zeit Ausbuchung"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

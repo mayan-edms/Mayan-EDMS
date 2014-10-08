@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,104 +19,120 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:17
-msgid "date and time"
+#, fuzzy
+msgid "Date and time"
 msgstr "date and time"
 
 #: __init__.py:21
-msgid "type"
-msgstr "type"
+msgid "Type"
+msgstr ""
 
 #: __init__.py:25
-msgid "summary"
+#, fuzzy
+msgid "Summary"
 msgstr "summary"
 
-#: links.py:7 models.py:77
-msgid "history"
-msgstr "history"
+#: links.py:7 models.py:77 permissions.py:7
+msgid "History"
+msgstr "History"
 
 #: links.py:8
-msgid "details"
+#, fuzzy
+msgid "Details"
 msgstr "details"
 
-#: models.py:17
-msgid "namespace"
+#: models.py:18
+#, fuzzy
+msgid "Namespace"
 msgstr "namespace"
 
-#: models.py:18
-msgid "name"
-msgstr "name"
+#: models.py:19
+msgid "Name"
+msgstr ""
 
 #: models.py:33 models.py:42
-msgid "history type"
+#, fuzzy
+msgid "History type"
 msgstr "history type"
 
 #: models.py:34
-msgid "history types"
+#, fuzzy
+msgid "History types"
 msgstr "history types"
 
 #: models.py:38
-msgid "date time"
+#, fuzzy
+msgid "Date time"
 msgstr "date time"
 
 #: models.py:43
-msgid "dictionary"
+#, fuzzy
+msgid "Dictionary"
 msgstr "dictionary"
 
 #: models.py:78
-msgid "histories"
+#, fuzzy
+msgid "Histories"
 msgstr "histories"
-
-#: permissions.py:7
-msgid "History"
-msgstr "History"
 
 #: permissions.py:8
 msgid "Access the history of an object"
 msgstr "Access the history of an object"
 
-#: views.py:37
-msgid "history events"
+#: views.py:36
+#, fuzzy
+msgid "History events"
 msgstr "history events"
 
-#: views.py:40
-msgid "object link"
+#: views.py:39
+#, fuzzy
+msgid "Object link"
 msgstr "object link"
 
-#: views.py:68
-#, python-format
-msgid "history events for: %s"
+#: views.py:67
+#, fuzzy, python-format
+msgid "History events for: %s"
 msgstr "history events for: %s"
 
-#: views.py:86
+#: views.py:85
 msgid "Date"
 msgstr "Date"
 
-#: views.py:87
+#: views.py:86
 msgid "Time"
 msgstr "Time"
 
-#: views.py:88
+#: views.py:87
 msgid "Object"
 msgstr "Object"
 
-#: views.py:89
+#: views.py:88
 msgid "Event type"
 msgstr "Event type"
 
-#: views.py:90
+#: views.py:89
 msgid "Additional details"
 msgstr "Additional details"
 
-#: views.py:90
+#: views.py:89
 msgid "None"
 msgstr "None"
 
-#: views.py:94
-#, python-format
-msgid "details for: %s"
+#: views.py:93
+#, fuzzy, python-format
+msgid "Details for: %s"
 msgstr "details for: %s"
 
-#: views.py:105
-#, python-format
-msgid "history events of type: %s"
+#: views.py:104
+#, fuzzy, python-format
+msgid "History events of type: %s"
 msgstr "history events of type: %s"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "history"
+#~ msgstr "history"
+
+#~ msgid "name"
+#~ msgstr "name"

@@ -1,104 +1,86 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2014
 # Roberto Rosario, 2011,2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-02-10 17:00+0000\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:8
 msgid "Search terms"
 msgstr "Términos de búsqueda"
 
-#: links.py:3
-msgid "search"
-msgstr "búsqueda"
+#: links.py:3 links.py:6 views.py:82 views.py:92 views.py:94
+#: templatetags/search_tags.py:19 templatetags/search_tags.py:20
+msgid "Search"
+msgstr "Búsqueda"
 
 #: links.py:4 views.py:78
-msgid "advanced search"
-msgstr "búsqueda avanzada"
+msgid "Advanced search"
+msgstr ""
 
 #: links.py:5
-msgid "search again"
-msgstr "buscar de nuevo"
+msgid "Search again"
+msgstr ""
 
 #: models.py:21
-msgid "user"
-msgstr "usuario"
+msgid "User"
+msgstr ""
 
 #: models.py:22
-msgid "query"
-msgstr "pregunta"
+msgid "Query"
+msgstr ""
 
 #: models.py:23
-msgid "datetime created"
-msgstr "fecha y hora creados"
+msgid "Datetime created"
+msgstr ""
 
 #: models.py:24
-msgid "hits"
-msgstr "accesos"
-
-#: models.py:60
-msgid "recent search"
-msgstr "búsqueda reciente"
+msgid "Hits"
+msgstr ""
 
 #: models.py:61
-msgid "recent searches"
-msgstr "búsquedas recientes"
+msgid "Recent search"
+msgstr ""
+
+#: models.py:62
+msgid "Recent searches"
+msgstr ""
+
+#: settings.py:12
+msgid "Maximum amount search hits to fetch and display."
+msgstr "La cantidad máxima de resultados de búsqueda a recabar y mostrar."
+
+#: settings.py:13
+msgid "Maximum number of search queries to remember per user."
+msgstr "El número máximo de consultas de búsqueda para recordar por usuario."
 
 #: views.py:44
 #, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 msgstr ""
-"resultados, (mostrando solamente %(shown_result_count)s de %(result_count)s)"
 
 #: views.py:49
 msgid "results"
 msgstr "resultados"
 
 #: views.py:66
-msgid "type"
-msgstr "tipo"
-
-#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
-msgid "Search"
-msgstr "Búsqueda"
-
-#: conf/settings.py:12
-msgid "Maximum amount search hits to fetch and display."
-msgstr "La cantidad máxima de resultados de búsqueda a buscar y mostrar."
-
-#: conf/settings.py:13
-msgid "Maximum number of search queries to remember per user."
-msgstr "El número máximo de consultas de búsqueda para recordar por usuario."
-
-#: templates/search_help.html:3
-msgid "Help"
-msgstr "Ayuda"
-
-#: templates/search_help.html:4
-#, python-format
-msgid ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
+msgid "Type"
 msgstr ""
-"Introduzca las palabras clave de búsqueda que desee separadas por un "
-"espacio.  Sólo los primeros %(search_results_limit)s resultados estarán "
-"disponibles."
 
 #: templates/search_results.html:3
 msgid "Search results"
@@ -109,10 +91,32 @@ msgstr "Resultados de la búsqueda"
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Tiempo transcurrido: %(time_delta)s segundos"
 
-#: templatetags/search_tags.py:33
+#: templatetags/search_tags.py:37
 #, python-format
-msgid "recent searches (maximum of %d)"
-msgstr "búsquedas recientes (máximo de %d)"
+msgid "Recent searches (maximum of %d)"
+msgstr ""
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "hits"
+#~ msgstr "hits"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+#~ msgstr ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
 
 #~ msgid "Search error: %s"
-#~ msgstr "Error de búsqueda: %s"
+#~ msgstr "Search error: %s"

@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2014-07-04 05:50+0000\n"
+"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: links.py:10
@@ -39,12 +38,12 @@ msgid "Central place to store and display app statistics."
 msgstr ""
 
 #: views.py:18
-msgid "statistics namespaces"
+msgid "Statistics namespaces"
 msgstr ""
 
 #: views.py:34
 #, python-format
-msgid "namespace details for: %s"
+msgid "Namespace details for: %s"
 msgstr ""
 
 #: views.py:35 views.py:49
@@ -57,5 +56,5 @@ msgstr ""
 
 #: views.py:54
 #, python-format
-msgid "results for: %s"
+msgid "Results for: %s"
 msgstr ""

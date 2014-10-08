@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
+"POT-Creation-Date: 2014-10-08 17:08-0400\n"
 "PO-Revision-Date: 2012-07-10 15:47+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -17,10 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr "Check expired check out documents and checks them in."
 
 #: events.py:5
 msgid "Document checked out"
@@ -59,19 +55,23 @@ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 
 #: links.py:16
-msgid "checkouts"
+#, fuzzy
+msgid "Checkouts"
 msgstr "checkouts"
 
 #: links.py:17
-msgid "check out document"
-msgstr "check out document"
+#, fuzzy
+msgid "Check out document"
+msgstr "Check out documents"
 
 #: links.py:18
-msgid "check in document"
-msgstr "check in document"
+#, fuzzy
+msgid "Check in document"
+msgstr "Check in documents"
 
 #: links.py:19
-msgid "check in/out"
+#, fuzzy
+msgid "Check in/out"
 msgstr "check in/out"
 
 #: literals.py:14
@@ -82,7 +82,7 @@ msgstr "checked out"
 msgid "checked in/available"
 msgstr "checked in/available"
 
-#: models.py:24 views.py:132
+#: models.py:24
 msgid "document"
 msgstr "document"
 
@@ -139,15 +139,18 @@ msgid "checked out documents"
 msgstr "checked out documents"
 
 #: views.py:35
-msgid "checkout user"
+#, fuzzy
+msgid "Checkout user"
 msgstr "checkout user"
 
 #: views.py:36
-msgid "checkout time and date"
+#, fuzzy
+msgid "Checkout time and date"
 msgstr "checkout time and date"
 
 #: views.py:37
-msgid "checkout expiration"
+#, fuzzy
+msgid "Checkout expiration"
 msgstr "checkout expiration"
 
 #: views.py:54
@@ -216,6 +219,11 @@ msgstr "Error trying to check in document; %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Document \"%s\" checked in successfully."
 
+#: views.py:132
+#, fuzzy
+msgid "Document"
+msgstr "document"
+
 #: views.py:141
 #, python-format
 msgid ""
@@ -274,3 +282,12 @@ msgstr ""
 #: widgets.py:93
 msgid "Check out expiration date and time"
 msgstr "Check out expiration date and time"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

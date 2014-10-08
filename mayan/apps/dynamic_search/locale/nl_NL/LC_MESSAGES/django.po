@@ -1,102 +1,85 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-01-15 14:53+0000\n"
-"Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:8
 msgid "Search terms"
 msgstr "Zoektermen"
 
-#: links.py:3
-msgid "search"
-msgstr "zoeken"
+#: links.py:3 links.py:6 views.py:82 views.py:92 views.py:94
+#: templatetags/search_tags.py:19 templatetags/search_tags.py:20
+msgid "Search"
+msgstr "Zoek"
 
 #: links.py:4 views.py:78
-msgid "advanced search"
-msgstr "uitgebreid zoeken"
+msgid "Advanced search"
+msgstr ""
 
 #: links.py:5
-msgid "search again"
-msgstr "zoek nogmaals"
+msgid "Search again"
+msgstr ""
 
 #: models.py:21
-msgid "user"
-msgstr "gebruiker"
+msgid "User"
+msgstr ""
 
 #: models.py:22
-msgid "query"
-msgstr "'query'"
+msgid "Query"
+msgstr ""
 
 #: models.py:23
-msgid "datetime created"
-msgstr "aanmaakdatum en tijd"
+msgid "Datetime created"
+msgstr ""
 
 #: models.py:24
-msgid "hits"
-msgstr "resultaten"
-
-#: models.py:60
-msgid "recent search"
-msgstr "recente zoek-opdracht"
+msgid "Hits"
+msgstr ""
 
 #: models.py:61
-msgid "recent searches"
-msgstr "recente zoek-opdrachten"
+msgid "Recent search"
+msgstr ""
+
+#: models.py:62
+msgid "Recent searches"
+msgstr ""
+
+#: settings.py:12
+msgid "Maximum amount search hits to fetch and display."
+msgstr "Het maximum aantal zoekresultaten."
+
+#: settings.py:13
+msgid "Maximum number of search queries to remember per user."
+msgstr "Het maximum aantal zoek-opdrachten dat per gebruiker wordt opgeslagen"
 
 #: views.py:44
 #, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr "resultaten, (toon alleen %(shown_result_count)s van %(result_count)s)"
+msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+msgstr ""
 
 #: views.py:49
 msgid "results"
 msgstr "resultaten"
 
 #: views.py:66
-msgid "type"
-msgstr "soort"
-
-#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
-msgid "Search"
-msgstr "Zoek"
-
-#: conf/settings.py:12
-msgid "Maximum amount search hits to fetch and display."
-msgstr "Het maximum aantal zoekresultaten."
-
-#: conf/settings.py:13
-msgid "Maximum number of search queries to remember per user."
-msgstr "Het maximum aantal zoek-opdrachten dat per gebruiker wordt opgeslagen"
-
-#: templates/search_help.html:3
-msgid "Help"
-msgstr "Help"
-
-#: templates/search_help.html:4
-#, python-format
-msgid ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
+msgid "Type"
 msgstr ""
-"Voer de gewenste sleutelwoorden in, gescheiden door een spatie. Alleen de "
-"eerste %(search_results_limit)s zoekresultaten zullen beschikbaar zijn."
 
 #: templates/search_results.html:3
 msgid "Search results"
@@ -107,10 +90,32 @@ msgstr "Zoekresultaten"
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "%(time_delta)s seconden verlopen"
 
-#: templatetags/search_tags.py:33
+#: templatetags/search_tags.py:37
 #, python-format
-msgid "recent searches (maximum of %d)"
-msgstr "recente zoek-opdrachten (met maximum van %d)"
+msgid "Recent searches (maximum of %d)"
+msgstr ""
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "hits"
+#~ msgstr "hits"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+#~ msgstr ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
 
 #~ msgid "Search error: %s"
-#~ msgstr "Fout tijdens het zoeken. Foutmelding: %s"
+#~ msgstr "Search error: %s"

@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012
@@ -9,66 +10,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: api.py:24
-msgid "Public"
-msgstr "Pubblica"
-
-#: api.py:25
-msgid "Secret"
-msgstr "Segreta"
-
-#: api.py:33 api.py:38
-msgid "RSA"
-msgstr "RSA"
-
-#: api.py:34
-msgid "DSA"
-msgstr "DSA"
-
-#: api.py:39
-msgid "Elgamal"
-msgstr "Elgamal"
-
-#: api.py:53
-msgid "Bad signature."
-msgstr "Firma cattiva."
-
-#: api.py:57
-msgid "Document not signed or invalid signature."
-msgstr "Documento non firmato o firma invalida."
-
-#: api.py:61
-msgid "Signature error."
-msgstr "Errore di firma"
-
-#: api.py:65
-msgid "Document is signed but no public key is available for verification."
+#: api.py:92
+msgid "Unknown"
 msgstr ""
-"Il documento è stato firmato, ma la chiave pubblica non è disponibile per la "
-"verifica"
-
-#: api.py:69
-msgid "Document is signed, and signature is good."
-msgstr "Documento firmato e firma è buona."
-
-#: api.py:73
-msgid "Document is signed with a valid signature."
-msgstr "Il documento è firmato con una firma valida."
-
-#: api.py:146
-msgid "unknown"
-msgstr "sconosciuto"
 
 #: forms.py:7
 msgid "Term"
@@ -78,33 +32,73 @@ msgstr "Scadenza"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nome, e-mail,key ID , impronte digitali per cercare"
 
-#: links.py:6 views.py:66
-msgid "private keys"
-msgstr "Chiave privata"
+#: links.py:6
+msgid "Private keys"
+msgstr ""
 
-#: links.py:7 views.py:69
-msgid "public keys"
-msgstr "Chiave pubblica"
+#: links.py:7
+msgid "Public keys"
+msgstr ""
 
 #: links.py:8
-msgid "delete"
-msgstr "cancella"
+msgid "Delete"
+msgstr ""
 
-#: links.py:9
-msgid "query keyservers"
-msgstr "Interroga il server delle chiavi"
+#: links.py:9 permissions.py:11
+msgid "Query keyservers"
+msgstr "Interroga l'autorità per le chiavi"
 
 #: links.py:10
-msgid "import"
-msgstr "import"
+msgid "Import"
+msgstr ""
 
-#: links.py:11
-msgid "key management"
-msgstr "gestione della firma"
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Key management"
 msgstr "Gestione delle chiavi"
+
+#: literals.py:6
+msgid "Public"
+msgstr "Pubblica"
+
+#: literals.py:7
+msgid "Secret"
+msgstr "Segreta"
+
+#: literals.py:15 literals.py:20
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:16
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:21
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:35
+msgid "Bad signature."
+msgstr "Firma cattiva."
+
+#: literals.py:39
+msgid "Document not signed or invalid signature."
+msgstr "Documento non firmato o firma invalida."
+
+#: literals.py:43
+msgid "Signature error."
+msgstr "Errore di firma"
+
+#: literals.py:47
+msgid "Document is signed but no public key is available for verification."
+msgstr "Il documento è stato firmato, ma la chiave pubblica non è disponibile per la verifica"
+
+#: literals.py:51
+msgid "Document is signed, and signature is good."
+msgstr "Documento firmato e firma è buona."
+
+#: literals.py:55
+msgid "Document is signed with a valid signature."
+msgstr "Il documento è firmato con una firma valida."
 
 #: permissions.py:9
 msgid "View keys"
@@ -114,13 +108,17 @@ msgstr "Vista delle chiavi"
 msgid "Delete keys"
 msgstr "Cancella chiavi"
 
-#: permissions.py:11
-msgid "Query keyservers"
-msgstr "Interroga l'autorità per le chiavi"
-
 #: permissions.py:12
 msgid "Import keys from keyservers"
 msgstr "Importa le chiavi dal server di chiavi"
+
+#: settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "Lista di server per chiavi che si possono interrogare."
+
+#: settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Home directory utilizzata per memorizzare le chiavi così come i file di configurazione."
 
 #: views.py:37
 #, python-format
@@ -140,6 +138,14 @@ msgstr "Importa chiave"
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Sei sicuro di voler importare la chiave id: %s?"
+
+#: views.py:66
+msgid "private keys"
+msgstr "Chiave privata"
+
+#: views.py:69
+msgid "public keys"
+msgstr "Chiave pubblica"
 
 #: views.py:77
 msgid "Key ID"
@@ -164,10 +170,7 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
-"Sei sicuro di voler cancellare la chiave: %s?  Se provi a cancellare una "
-"chiave pubblica che è parte di una coppia publica/privata anche la chiave "
-"privata sarà cancellata"
+msgstr "Sei sicuro di voler cancellare la chiave: %s?  Se provi a cancellare una chiave pubblica che è parte di una coppia publica/privata anche la chiave privata sarà cancellata"
 
 #: views.py:128
 msgid "Query key server"
@@ -213,12 +216,8 @@ msgstr "revocata"
 msgid "Identifies"
 msgstr "Identifica"
 
-#: conf/settings.py:15
-msgid "List of keyservers to be queried for unknown keys."
-msgstr "Lista di server per chiavi che si possono interrogare."
+#~ msgid "query keyservers"
+#~ msgstr "query keyservers"
 
-#: conf/settings.py:16
-msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Home directory utilizzata per memorizzare le chiavi così come i file di "
-"configurazione."
+#~ msgid "key management"
+#~ msgstr "key management"

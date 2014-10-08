@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2014-09-25 05:32+0000\n"
-"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,45 +19,41 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:7
+#: forms.py:7 models.py:21
 msgid "Signature file"
 msgstr "签名文件"
 
 #: links.py:22
-msgid "delete signature"
-msgstr "删除签名"
+msgid "Delete signature"
+msgstr ""
 
 #: links.py:23
-msgid "download signature"
-msgstr "下载签名"
+msgid "Download signature"
+msgstr ""
 
 #: links.py:24
-msgid "upload signature"
-msgstr "上传签名"
+msgid "Upload signature"
+msgstr ""
 
 #: links.py:25
-msgid "signatures"
-msgstr "签名"
+msgid "Signatures"
+msgstr ""
 
 #: models.py:20
-msgid "document version"
-msgstr "文档版本"
-
-#: models.py:21
-msgid "signature file"
-msgstr "签名文件"
+msgid "Document version"
+msgstr ""
 
 #: models.py:22
-msgid "has embedded signature"
-msgstr "内嵌签名"
+msgid "Has embedded signature"
+msgstr ""
 
 #: models.py:37
-msgid "document version signature"
-msgstr "文档版本签名"
+msgid "Document version signature"
+msgstr ""
 
 #: models.py:38
-msgid "document version signatures"
-msgstr "文档版本签名"
+msgid "Document version signatures"
+msgstr ""
 
 #: permissions.py:7
 msgid "Document signatures"
@@ -79,73 +75,76 @@ msgstr "下载分离的签名"
 msgid "Upload detached signatures"
 msgstr "上传分离的签名"
 
-#: views.py:50
+#: views.py:52
 #, python-format
 msgid "Signature status: %(widget)s %(text)s"
 msgstr "签名状态：%(widget)s %(text)s"
 
-#: views.py:58
-msgid "embedded"
-msgstr "内嵌"
-
 #: views.py:60
-msgid "detached"
-msgstr "分离"
+msgid "Embedded"
+msgstr ""
 
 #: views.py:62
+msgid "Detached"
+msgstr ""
+
+#: views.py:64
 msgid "None"
 msgstr "无"
 
-#: views.py:67
+#: views.py:69
 #, python-format
 msgid "Signature ID: %s"
 msgstr "签名 ID：%s"
 
-#: views.py:68
+#: views.py:70
 #, python-format
 msgid "Signature type: %s"
 msgstr "签名类型：%s"
 
-#: views.py:69
+#: views.py:71
 #, python-format
 msgid "Key ID: %s"
 msgstr "键 ID: %s"
 
-#: views.py:70
+#: views.py:72
 #, python-format
 msgid "Timestamp: %s"
 msgstr "时间戳： %s"
 
-#: views.py:71
+#: views.py:73
 #, python-format
 msgid "Signee: %s"
 msgstr "签名者：%s"
 
-#: views.py:76
+#: views.py:78
 #, python-format
-msgid "signature properties for: %s"
-msgstr "%s的签名属性"
+msgid "Signature properties for: %s"
+msgstr ""
 
-#: views.py:102
+#: views.py:104
 msgid "Detached signature uploaded successfully."
 msgstr "分离的签名上传成功"
 
-#: views.py:111
+#: views.py:113
 #, python-format
 msgid "Upload detached signature for: %s"
 msgstr "上传分离的签名：%s"
 
-#: views.py:161
+#: views.py:163
 msgid "Detached signature deleted successfully."
 msgstr "分离的签名删除成功"
 
-#: views.py:164
+#: views.py:166
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "删除分离的签名：%s 出错"
 
-#: views.py:168
+#: views.py:170
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"
 msgstr "确定要删除文档：%s的分离签名么？"
+
+#~ msgid "signature file"
+#~ msgstr "signature file"

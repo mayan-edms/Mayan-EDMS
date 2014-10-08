@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
 # René Rovsing Bach <reroba@outlook.com>, 2013
@@ -9,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2013-02-15 15:22+0000\n"
-"Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/da/)\n"
-"Language: da\n"
+"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:13
@@ -53,20 +53,20 @@ msgid "Registration"
 msgstr "Registrering"
 
 #: models.py:21
-msgid "registered"
-msgstr "registreret"
+msgid "Registered"
+msgstr ""
 
 #: models.py:22
-msgid "registration data"
-msgstr "registreringsdata"
+msgid "Registration data"
+msgstr ""
 
 #: models.py:48
 msgid "No name"
 msgstr "Intet navn"
 
 #: models.py:87
-msgid "registration properties"
-msgstr "egenskaber for registrering"
+msgid "Registration properties"
+msgstr ""
 
 #: views.py:22
 msgid "Thank you for registering."

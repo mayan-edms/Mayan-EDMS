@@ -1,0 +1,221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/mayan-edms/language/de_CH/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_CH\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: api.py:92
+msgid "Unknown"
+msgstr ""
+
+#: forms.py:7
+msgid "Term"
+msgstr ""
+
+#: forms.py:8
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr ""
+
+#: links.py:6
+msgid "Private keys"
+msgstr ""
+
+#: links.py:7
+msgid "Public keys"
+msgstr ""
+
+#: links.py:8
+msgid "Delete"
+msgstr ""
+
+#: links.py:9 permissions.py:11
+msgid "Query keyservers"
+msgstr ""
+
+#: links.py:10
+msgid "Import"
+msgstr ""
+
+#: links.py:11 permissions.py:7
+msgid "Key management"
+msgstr ""
+
+#: literals.py:6
+msgid "Public"
+msgstr ""
+
+#: literals.py:7
+msgid "Secret"
+msgstr ""
+
+#: literals.py:15 literals.py:20
+msgid "RSA"
+msgstr ""
+
+#: literals.py:16
+msgid "DSA"
+msgstr ""
+
+#: literals.py:21
+msgid "Elgamal"
+msgstr ""
+
+#: literals.py:35
+msgid "Bad signature."
+msgstr ""
+
+#: literals.py:39
+msgid "Document not signed or invalid signature."
+msgstr ""
+
+#: literals.py:43
+msgid "Signature error."
+msgstr ""
+
+#: literals.py:47
+msgid "Document is signed but no public key is available for verification."
+msgstr ""
+
+#: literals.py:51
+msgid "Document is signed, and signature is good."
+msgstr ""
+
+#: literals.py:55
+msgid "Document is signed with a valid signature."
+msgstr ""
+
+#: permissions.py:9
+msgid "View keys"
+msgstr ""
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr ""
+
+#: permissions.py:12
+msgid "Import keys from keyservers"
+msgstr ""
+
+#: settings.py:15
+msgid "List of keyservers to be queried for unknown keys."
+msgstr ""
+
+#: settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr ""
+
+#: views.py:37
+#, python-format
+msgid "Key: %s, imported successfully."
+msgstr ""
+
+#: views.py:42
+#, python-format
+msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgstr ""
+
+#: views.py:51
+msgid "Import key"
+msgstr ""
+
+#: views.py:52
+#, python-format
+msgid "Are you sure you wish to import key id: %s?"
+msgstr ""
+
+#: views.py:66
+msgid "private keys"
+msgstr ""
+
+#: views.py:69
+msgid "public keys"
+msgstr ""
+
+#: views.py:77
+msgid "Key ID"
+msgstr ""
+
+#: views.py:81
+msgid "Owner"
+msgstr ""
+
+#: views.py:101
+#, python-format
+msgid "Key: %s, deleted successfully."
+msgstr ""
+
+#: views.py:108
+msgid "Delete key"
+msgstr ""
+
+#: views.py:110
+#, python-format
+msgid ""
+"Are you sure you wish to delete key: %s?  If you try to delete a public key "
+"that is part of a public/private pair the private key will be deleted as "
+"well."
+msgstr ""
+
+#: views.py:128
+msgid "Query key server"
+msgstr ""
+
+#: views.py:141
+msgid "results"
+msgstr ""
+
+#: views.py:146
+msgid "ID"
+msgstr ""
+
+#: views.py:150
+msgid "type"
+msgstr ""
+
+#: views.py:154
+msgid "creation date"
+msgstr ""
+
+#: views.py:158
+msgid "disabled"
+msgstr ""
+
+#: views.py:162
+msgid "expiration date"
+msgstr ""
+
+#: views.py:166
+msgid "expired"
+msgstr ""
+
+#: views.py:170
+msgid "length"
+msgstr ""
+
+#: views.py:174
+msgid "revoked"
+msgstr ""
+
+#: views.py:179
+msgid "Identifies"
+msgstr ""
+
+#~ msgid "query keyservers"
+#~ msgstr "query keyservers"
+
+#~ msgid "key management"
+#~ msgstr "key management"

@@ -1,31 +1,39 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2013-06-16 18:57+0000\n"
+"POT-Creation-Date: 2014-10-08 17:11-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:14
+#: classes.py:23
+msgid "Unnamed link"
+msgstr ""
+
+#: forms.py:13
 msgid "Multi item action"
+msgstr "عمل چند وچهی"
+
+#: widgets.py:47
+msgid "Icon"
 msgstr ""
 
-#: widgets.py:48
-msgid "icon"
-msgstr ""
-
-#: templatetags/navigation_tags.py:274
+#: templatetags/navigation_tags.py:275
 msgid "Selected item actions:"
-msgstr ""
+msgstr "عملکرد مورد انتخاب شده"
+
+#~ msgid "icon"
+#~ msgstr "icon"
