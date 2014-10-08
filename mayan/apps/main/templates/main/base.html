@@ -9,10 +9,8 @@
 {% load registration_tags %}
 {% load search_tags %}
 {% load settings %}
-{% load theme_tags %}
 {% load variable_tags %}
 
-{% get_theme as web_theme %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -391,12 +389,6 @@
 
         {% compress js %}
         <script type="text/javascript" charset="utf-8" src="{% static 'packages/jquery-2.1.1.min.js' %}"></script>
-
-        {% if enable_scroll_js %}
-            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.scrollTo.js' %}"></script>
-            <script type="text/javascript" charset="utf-8" src="{% static 'web_theme_media/javascripts/jquery.localscroll.js' %}"></script>
-        {% endif %}
-
         <script type="text/javascript" src="{% static 'packages/jquery.scrollview.js' %}"></script>
         <script type="text/javascript" src="{% static 'packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'packages/jquery.scrollstop.js' %}"></script>
