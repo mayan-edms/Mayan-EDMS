@@ -55,7 +55,7 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
                 else:
                     output += u'<li>%s</li>' % string
         else:
-            output += u'<li>%s</li>' % _(u"None")
+            output += u'<li>%s</li>' % _(u'None')
         return mark_safe(output + u'</ul>\n')
 
 
