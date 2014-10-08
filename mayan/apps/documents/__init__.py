@@ -5,46 +5,58 @@ import tempfile
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common.utils import validate_path, encapsulate
+from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from main.api import register_diagnostic, register_maintenance_links
-from navigation.api import (register_links, register_top_menu,
-    register_model_list_columns, register_multi_item_links,
-    register_sidebar_template)
+from navigation.api import (register_links, register_model_list_columns,
+                            register_multi_item_links,register_top_menu)
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
 from documents import settings as document_settings
 from .events import (HISTORY_DOCUMENT_CREATED,
-    HISTORY_DOCUMENT_EDITED, HISTORY_DOCUMENT_DELETED)
-from .links import (document_list, document_list_recent,
-    document_view_simple, document_view_advanced,
-    document_delete, document_multiple_delete, document_edit,
-    document_download, document_multiple_download, document_version_download,
-    document_find_duplicates, document_find_all_duplicates, document_update_page_count,
-    document_clear_transformations, document_multiple_clear_transformations,
-    document_print, document_history_view, document_missing_list, document_clear_image_cache,
-    document_page_transformation_list, document_page_transformation_create, document_page_transformation_edit,
-    document_page_transformation_delete, document_page_view, document_page_text, document_page_edit,
-    document_page_navigation_next, document_page_navigation_previous, document_page_navigation_first,
-    document_page_navigation_last, document_page_zoom_in, document_page_zoom_out,
-    document_page_rotate_right, document_page_rotate_left, document_page_view_reset,
-    document_version_list, document_version_revert, document_type_list,
-    document_type_setup, document_type_edit, document_type_delete,
-    document_type_create, document_type_filename_list,
-    document_type_filename_create, document_type_filename_edit,
-    document_type_filename_delete)
-from .models import (Document, DocumentPage,
-    DocumentPageTransformation, DocumentType, DocumentTypeFilename,
-    DocumentVersion)
-from .permissions import (
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_EDIT,
-    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_NEW_VERSION)
+                     HISTORY_DOCUMENT_DELETED, HISTORY_DOCUMENT_EDITED)
+from .links import (document_clear_image_cache,
+                    document_clear_transformations, document_delete,
+                    document_download, document_edit,
+                    document_find_all_duplicates, document_find_duplicates,
+                    document_history_view, document_list,
+                    document_list_recent, document_missing_list,
+                    document_multiple_delete,
+                    document_multiple_clear_transformations,
+                    document_multiple_download, document_page_edit,
+                    document_page_navigation_first,
+                    document_page_navigation_last,
+                    document_page_navigation_next,
+                    document_page_navigation_previous,
+                    document_page_rotate_left, document_page_rotate_right,
+                    document_page_text, document_page_transformation_list,
+                    document_page_transformation_create,
+                    document_page_transformation_edit,
+                    document_page_transformation_delete, document_page_view,
+                    document_page_view_reset, document_page_zoom_in,
+                    document_page_zoom_out, document_print,
+                    document_type_create, document_type_delete,
+                    document_type_edit, document_type_filename_create,
+                    document_type_filename_delete,
+                    document_type_filename_edit, document_type_filename_list,
+                    document_type_list, document_type_setup,
+                    document_update_page_count, document_version_download,
+                    document_version_list, document_version_revert,
+                    document_view_advanced, document_view_simple)
+from .models import (Document, DocumentPage, DocumentPageTransformation,
+                     DocumentType, DocumentTypeFilename, DocumentVersion)
+from .permissions import (PERMISSION_DOCUMENT_DELETE,
+                          PERMISSION_DOCUMENT_DOWNLOAD,
+                          PERMISSION_DOCUMENT_EDIT,
+                          PERMISSION_DOCUMENT_NEW_VERSION,
+                          PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+                          PERMISSION_DOCUMENT_TRANSFORM,
+                          PERMISSION_DOCUMENT_VERSION_REVERT,
+                          PERMISSION_DOCUMENT_VIEW)
 from .settings import THUMBNAIL_SIZE
 from .statistics import DocumentStatistics, DocumentUsageStatistics
 from .urls import api_urls
