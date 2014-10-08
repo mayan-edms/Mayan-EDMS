@@ -35,7 +35,7 @@ class Index(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('index_instance_node_view', [self.instance_root.pk])
+        return ('indexing:index_instance_node_view', [self.instance_root.pk])
 
     def get_index_document_types(self):
         return self.document_types.all()
@@ -95,7 +95,7 @@ class IndexInstanceNode(MPTTModel):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('index_instance_node_view', [self.pk])
+        return ('indexing:index_instance_node_view', [self.pk])
 
     class Meta:
         verbose_name = _(u'Index instance node')
