@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    #Django
+    # Django
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -204,7 +204,8 @@ STATICFILES_FINDERS = (
 
 # --------- Django compressor -------------
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
+                        'compressor.filters.cssmin.CSSMinFilter']
 COMPRESS_ENABLED = False
 # ---------- Django sendfile --------------
 SENDFILE_BACKEND = 'sendfile.backends.simple'
@@ -261,5 +262,5 @@ REST_FRAMEWORK = {
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
 CELERY_ALWAYS_EAGER = True
-#------------ CORS ------------
+# ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True

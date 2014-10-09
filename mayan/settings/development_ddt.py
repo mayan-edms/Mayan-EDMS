@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from .base import *
+from . import *  # NOQA
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -20,7 +20,8 @@ INSTALLED_APPS += (
     'debug_toolbar'
 )
 
-# Stop debug toolbar patching! (see https://github.com/django-debug-toolbar/django-debug-toolbar/issues/524)
+# Stop debug toolbar patching!
+# see https://github.com/django-debug-toolbar/django-debug-toolbar/issues/524
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.debug',)

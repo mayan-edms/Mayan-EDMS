@@ -16,6 +16,7 @@ class Command(management.BaseCommand):
         with open(os.path.join(settings.BASE_DIR, 'mayan', 'settings', 'local.py'), 'w+') as file_object:
             file_object.write('\n'.join([
                 'from __future__ import absolute_import',
+                '',
                 'from .base import *',
                 '',
                 "SECRET_KEY = '{0}'".format(self._generate_secret_key()),
