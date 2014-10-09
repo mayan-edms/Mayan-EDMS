@@ -24,6 +24,8 @@ def task_do_ocr(document_pk):
     lock_id = u'task_do_ocr_doc-%d' % document_pk
     try:
         logger.debug('trying to acquire lock: %s' % lock_id)
+        # Acquire lock to avoid doing OCR on the same document more than once
+        # concurrently
         lock = Lock.acquire_lock(lock_id, LOCK_EXPIRE)
         logger.debug('acquired lock: %s' % lock_id)
         try:

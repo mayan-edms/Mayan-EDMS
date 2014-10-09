@@ -8,8 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 
-from .exceptions import ReQueueError
-
 
 class DocumentQueue(models.Model):
     name = models.CharField(max_length=64, unique=True, verbose_name=_(u'Name'))
@@ -34,18 +32,6 @@ class QueueDocument(models.Model):
         ordering = ('datetime_submitted',)
         verbose_name = _(u'Queue document')
         verbose_name_plural = _(u'Queue documents')
-
-    def requeue(self):
-        # TODO: Fix properly using Celery tasks
-        if self.state == QUEUEDOCUMENT_STATE_PROCESSING:
-            raise ReQueueError
-        else:
-            self.datetime_submitted = now()
-            self.state = QUEUEDOCUMENT_STATE_PENDING
-            self.delay = False
-            self.result = None
-            self.node_name = None
-            self.save()
 
     def __unicode__(self):
         try:

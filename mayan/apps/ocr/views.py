@@ -14,7 +14,6 @@ from documents.widgets import document_link, document_thumbnail
 from permissions.models import Permission
 
 from .api import clean_pages
-from .exceptions import ReQueueError
 from .models import DocumentQueue, QueueDocument
 from .permissions import (PERMISSION_OCR_CLEAN_ALL_PAGES,
                           PERMISSION_OCR_DOCUMENT,
@@ -120,7 +119,7 @@ def submit_document_to_queue(request, document, post_submit_redirect=None):
     This view is meant to be reusable
     """
 
-    task_do_ocr.apply_async(args=[document.pk], queue='ocr')
+    document.submit_for_ocr()
     messages.success(request, _(u'Document: %(document)s was added to the OCR queue.') % {
         'document': document}
     )
@@ -146,21 +145,15 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
     if request.method == 'POST':
         for queue_document in queue_documents:
             try:
-                queue_document.requeue()
+                queue_document.document.submit_for_ocr()
                 messages.success(
                     request,
-                    _(u'Document: %(document)s was re-queued to the OCR queue: %(queue)s') % {
-                        'document': queue_document.document,
-                        'queue': queue_document.document_queue.label
+                    _(u'Document: %(document)s was re-queued for OCR.') % {
+                        'document': queue_document.document
                     }
                 )
             except Document.DoesNotExist:
                 messages.error(request, _(u'Document id#: %d, no longer exists.') % queue_document.document_id)
-            except ReQueueError:
-                messages.warning(
-                    request,
-                    _(u'Document: %s is already being processed and can\'t be re-queded.') % queue_document
-                )
         return HttpResponseRedirect(next)
 
     context = {

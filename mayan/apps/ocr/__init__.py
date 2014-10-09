@@ -35,13 +35,17 @@ register_links(['ocr:queue_document_list'], [queue_document_list], menu_name='se
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
 
 
+def document_ocr_submit(self):
+    task_do_ocr.apply_async(args=[self.pk], queue='ocr')
+
+
 @receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
 def document_post_save(sender, instance, **kwargs):
     logger.debug('received post save signal')
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
         if AUTOMATIC_OCR:
-            task_do_ocr.apply_async(args=[instance.document.pk], queue='ocr')
+            instance.document.submit_for_ocr()
 
 
 @receiver(post_migrate, dispatch_uid='create_default_queue')
@@ -50,9 +54,11 @@ def create_default_queue_signal_handler(sender, **kwargs):
         DocumentQueue.objects.get_or_create(name='default')
 
 
-register_tool(ocr_tool_link)
+Document.add_to_class('submit_for_ocr', document_ocr_submit)
 
 class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
 
 namespace = StatisticNamespace(name='ocr', label=_(u'OCR'))
 namespace.add_statistic(OCRStatistics(name='ocr_stats', label=_(u'OCR queue statistics')))
+
+register_tool(ocr_tool_link)
