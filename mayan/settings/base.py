@@ -45,11 +45,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     # 3rd party
-    'djcelery',
     'compressor',
     'corsheaders',
     'filetransfers',
-    'kombu.transport.django',
     'mptt',
     'rest_framework',
     'rest_framework.authtoken',
@@ -260,9 +258,8 @@ REST_FRAMEWORK = {
     )
 }
 # ----------- Celery ----------
-BROKER_URL = 'django://'
-CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
+CELERY_ALWAYS_EAGER = True
 #------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
