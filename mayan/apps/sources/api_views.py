@@ -116,6 +116,7 @@ class APIDocumentCreateView(generics.CreateAPIView):
                 temporary_file.write(chunk)
 
             temporary_file.close()
+            self.request.FILES['file'].close()
         else:
             return Response({
                 'status': 'error',
@@ -129,7 +130,8 @@ class APIDocumentCreateView(generics.CreateAPIView):
 
         task_upload_document.apply_async(kwargs=dict(
             source_id=int(request.get('source')),
-            file_path=temporary_file.name, filename=request.get('filename', None),
+            file_path=temporary_file.name,
+            filename=request.get('filename', self.request.FILES['file'].name),
             use_file_name=request.get('use_file_name', False),
             document_type_id=int(request.get('document_type', 0)) or None,
             expand=request.get('expand', False),

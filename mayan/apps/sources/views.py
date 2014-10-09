@@ -193,6 +193,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
                         temporary_file.write(chunk)
 
                     temporary_file.close()
+                    file_object.close()
 
                     if isinstance(source, StagingFolderSource):
                         if source.delete_after_upload:
@@ -205,7 +206,8 @@ def upload_interactive(request, source_id=None, document_pk=None):
 
                     task_upload_document.apply_async(kwargs=dict(
                         source_id=source.pk,
-                        file_path=temporary_file.name, filename=new_filename,
+                        file_path=temporary_file.name,
+                        filename=new_filename or file_object.name,
                         use_file_name=form.cleaned_data.get('use_file_name', False),
                         document_type_id=document_type_id,
                         expand=expand,
