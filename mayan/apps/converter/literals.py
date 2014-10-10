@@ -19,30 +19,30 @@ TRANSFORMATION_CHOICES = {
         'label': _(u'Resize'),
         'description': _(u'Resize.'),
         'arguments': [
-            {'name': 'width', 'label': _(u'width'), 'required': True},
-            {'name': 'height', 'label': _(u'height'), 'required': False},
+            {'name': 'width', 'label': _(u'Width'), 'required': True},
+            {'name': 'height', 'label': _(u'Height'), 'required': False},
         ]
     },
     TRANSFORMATION_ROTATE: {
         'label': _(u'Rotate'),
         'description': _(u'Rotate by n degress.'),
         'arguments': [
-            {'name': 'degrees', 'label': _(u'degrees'), 'required': True}
+            {'name': 'degrees', 'label': _(u'Degrees'), 'required': True}
         ]
     },
     TRANSFORMATION_DENSITY: {
         'label': _(u'Density'),
         'description': _(u'Change the resolution (ie: DPI) without resizing.'),
         'arguments': [
-            {'name': 'width', 'label': _(u'width'), 'required': True},
-            {'name': 'height', 'label': _(u'height'), 'required': False},
+            {'name': 'width', 'label': _(u'Width'), 'required': True},
+            {'name': 'height', 'label': _(u'Height'), 'required': False},
         ]
     },
     TRANSFORMATION_ZOOM: {
         'label': _(u'Zoom'),
         'description': _(u'Zoom by n percent.'),
         'arguments': [
-            {'name': 'percent', 'label': _(u'percent'), 'required': True}
+            {'name': 'percent', 'label': _(u'Percent'), 'required': True}
         ]
     },
 }

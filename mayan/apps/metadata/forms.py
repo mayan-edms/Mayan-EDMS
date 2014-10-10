@@ -63,7 +63,7 @@ class MetadataForm(forms.Form):
                 except Exception as exception:
                     self.fields['value'].initial = exception
 
-    id = forms.CharField(label=_(u'id'), widget=forms.HiddenInput)
+    id = forms.CharField(label=_(u'ID'), widget=forms.HiddenInput)
 
     name = forms.CharField(label=_(u'Name'), required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     value = forms.CharField(label=_(u'Value'), required=False)

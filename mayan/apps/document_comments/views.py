@@ -123,7 +123,7 @@ def comments_for_document(request, document_id):
     return render_to_response('main/generic_list.html', {
         'object': document,
         'access_object': document,
-        'title': _(u'comments: %s') % document,
+        'title': _(u'Comments for document: %s') % document,
         'object_list': Comment.objects.for_model(document).order_by('-submit_date'),
         'hide_link': True,
         'hide_object': True,

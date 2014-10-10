@@ -23,7 +23,7 @@ class AccessEntry(models.Model):
     """
     Model that hold the permission, object, actor relationship
     """
-    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
+    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'Permission'))
 
     holder_type = models.ForeignKey(
         ContentType,
@@ -65,7 +65,7 @@ class DefaultAccessEntry(models.Model):
     def get_classes(cls):
         return [AccessObjectClass.encapsulate(cls) for cls in get_classes()]
 
-    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'permission'))
+    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'Permission'))
 
     holder_type = models.ForeignKey(
         ContentType,

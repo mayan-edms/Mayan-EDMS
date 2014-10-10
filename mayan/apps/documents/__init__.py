@@ -102,7 +102,7 @@ register_links('documents:document_page_transformation_create', [document_page_t
 register_links(['documents:document_page_transformation_edit', 'documents:document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
 
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
-register_maintenance_links([document_find_all_duplicates, document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'documents'))
+register_maintenance_links([document_find_all_duplicates, document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'Documents'))
 register_model_list_columns(Document, [
     {
         'name': _(u'Thumbnail'), 'attribute':

@@ -64,10 +64,10 @@ def key_list(request, secret=True):
 
     if secret:
         object_list = Key.get_all(gpg, secret=True)
-        title = _(u'private keys')
+        title = _(u'Private keys')
     else:
         object_list = Key.get_all(gpg)
-        title = _(u'public keys')
+        title = _(u'Public keys')
 
     return render_to_response('main/generic_list.html', {
         'object_list': object_list,
@@ -148,31 +148,31 @@ def key_query(request):
                             'attribute': 'keyid',
                         },
                         {
-                            'name': _(u'type'),
+                            'name': _(u'Type'),
                             'attribute': 'algo',
                         },
                         {
-                            'name': _(u'creation date'),
+                            'name': _(u'Creation date'),
                             'attribute': 'creation_date',
                         },
                         {
-                            'name': _(u'disabled'),
+                            'name': _(u'Disabled'),
                             'attribute': 'disabled',
                         },
                         {
-                            'name': _(u'expiration date'),
+                            'name': _(u'Expiration date'),
                             'attribute': 'expiration_date',
                         },
                         {
-                            'name': _(u'expired'),
+                            'name': _(u'Expired'),
                             'attribute': 'expired',
                         },
                         {
-                            'name': _(u'length'),
+                            'name': _(u'Length'),
                             'attribute': 'key_length',
                         },
                         {
-                            'name': _(u'revoked'),
+                            'name': _(u'Revoked'),
                             'attribute': 'revoked',
                         },
 

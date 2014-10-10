@@ -46,7 +46,7 @@ def results(request, extra_context=None):
                 'result_count': result_count}
 
         else:
-            title = _(u'results')
+            title = _(u'Results')
 
         # Update the context with the search results
         context.update({

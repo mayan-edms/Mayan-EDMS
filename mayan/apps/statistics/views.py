@@ -32,7 +32,7 @@ def namespace_details(request, namespace_id):
         'object_list': namespace.statistics,
         'hide_link': True,
         'title': _(u'Namespace details for: %s') % namespace,
-        'object_name': _(u'namespace'),
+        'object_name': _(u'Namespace'),
     }, context_instance=RequestContext(request))
 
 
@@ -46,8 +46,8 @@ def execute(request, statistic_id):
         'object': statictic,
         'namespace': statictic.namespace,
         'navigation_object_list': [
-            {'object': 'namespace', 'name': _(u'namespace')},
-            {'object': 'object', 'name': _(u'statistic')},
+            {'object': 'namespace', 'name': _(u'Namespace')},
+            {'object': 'object', 'name': _(u'Statistic')},
         ],
         'object_list': statictic.get_results(),
         'hide_link': True,

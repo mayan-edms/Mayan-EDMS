@@ -54,7 +54,7 @@ def checkout_info(request, document_pk):
         paragraphs.append(_(u'User: %s') % get_object_name(checkout_info.user_object, display_object_type=False))
         paragraphs.append(_(u'Check out time: %s') % checkout_info.checkout_datetime)
         paragraphs.append(_(u'Check out expiration: %s') % checkout_info.expiration_datetime)
-        paragraphs.append(_(u'New versions allowed: %s') % (_(u'yes') if not checkout_info.block_new_version else _(u'no')))
+        paragraphs.append(_(u'New versions allowed: %s') % (_(u'Yes') if not checkout_info.block_new_version else _(u'No')))
 
     return render_to_response('main/generic_template.html', {
         'paragraphs': paragraphs,

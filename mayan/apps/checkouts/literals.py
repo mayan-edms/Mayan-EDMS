@@ -11,6 +11,6 @@ STATE_ICONS = {
 }
 
 STATE_LABELS = {
-    STATE_CHECKED_OUT: _(u'checked out'),
-    STATE_CHECKED_IN: _(u'checked in/available'),
+    STATE_CHECKED_OUT: _(u'Checked out'),
+    STATE_CHECKED_IN: _(u'Checked in/available'),
 }

@@ -29,15 +29,15 @@ class_permissions(Document, [PERMISSION_COMMENT_CREATE,
 
 register_model_list_columns(Comment, [
     {
-        'name': _(u'date'),
+        'name': _(u'Date'),
         'attribute': 'submit_date'
     },
     {
-        'name': _(u'user'),
+        'name': _(u'User'),
         'attribute': encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user)
     },
     {
-        'name': _(u'comment'),
+        'name': _(u'Comment'),
         'attribute': 'comment'
     }
 ])

@@ -113,7 +113,7 @@ def pretty_size_10(size):
 
 def return_type(value):
     if isinstance(value, types.FunctionType):
-        return value.__doc__ if value.__doc__ else _(u'function found')
+        return value.__doc__ if value.__doc__ else _(u'Function found')
     elif isinstance(value, types.ClassType):
         return u'%s.%s' % (value.__class__.__module__, value.__class__.__name__)
     elif isinstance(value, types.TypeType):

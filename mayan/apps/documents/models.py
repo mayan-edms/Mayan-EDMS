@@ -327,7 +327,7 @@ class DocumentVersion(models.Model):
     major = models.PositiveIntegerField(verbose_name=_(u'Mayor'), default=1)
     minor = models.PositiveIntegerField(verbose_name=_(u'Minor'), default=0)
     micro = models.PositiveIntegerField(verbose_name=_(u'Micro'), default=0)
-    release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'release level'))
+    release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'Release level'))
     serial = models.PositiveIntegerField(verbose_name=_(u'Serial'), default=0)
     timestamp = models.DateTimeField(verbose_name=_(u'Timestamp'), editable=False, db_index=True)
     comment = models.TextField(blank=True, verbose_name=_(u'Comment'))
