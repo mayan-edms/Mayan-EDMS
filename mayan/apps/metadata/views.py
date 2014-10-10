@@ -42,7 +42,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id)]
         if documents[0].metadata.count() == 0:
             messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
 
@@ -53,7 +53,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
     if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     post_action_redirect = reverse('documents:document_list_recent')
 
@@ -133,7 +133,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
     if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     for document in documents:
         RecentDocument.objects.add_document_for_user(request.user, document)
@@ -192,7 +192,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id)]
         if documents[0].metadata.count() == 0:
             messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
@@ -204,7 +204,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     if not documents:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     post_action_redirect = reverse('documents:document_list_recent')
 

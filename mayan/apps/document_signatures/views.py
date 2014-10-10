@@ -3,9 +3,10 @@ from __future__ import absolute_import
 from datetime import datetime
 import logging
 
-from django.core.exceptions import PermissionDenied
 from django.conf import settings
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -93,8 +94,8 @@ def document_signature_upload(request, document_pk):
     RecentDocument.objects.add_document_for_user(request.user, document)
 
     post_action_redirect = None
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         form = DetachedSignatureForm(request.POST, request.FILES)
@@ -154,8 +155,8 @@ def document_signature_delete(request, document_pk):
     RecentDocument.objects.add_document_for_user(request.user, document)
 
     post_action_redirect = None
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:

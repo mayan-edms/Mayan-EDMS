@@ -31,7 +31,7 @@ def multi_object_action_view(request):
     then redirects to the appropiate specialized view
     """
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     action = request.GET.get('action', None)
     id_list = u','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
@@ -39,11 +39,11 @@ def multi_object_action_view(request):
 
     if not action:
         messages.error(request, _(u'No action selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     if not id_list and not items_property_list:
         messages.error(request, _(u'Must select at least one item.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     # Separate redirects to keep backwards compatibility with older
     # functions that don't expect a properties_list parameter
@@ -284,8 +284,8 @@ class MayanViewMixin(object):
     post_action_redirect = None
 
     def dispatch(self, request, *args, **kwargs):
-        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', '/')))
-        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', '/')))
+        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', reverse('main:home'))))
+        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', reverse('main:home'))))
 
         return super(MayanViewMixin, self).dispatch(request, *args, **kwargs)
 

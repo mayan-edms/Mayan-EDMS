@@ -102,8 +102,8 @@ def folder_delete(request, folder_id):
 
     post_action_redirect = reverse('folders:folder_list')
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:
@@ -161,7 +161,7 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_ADD_DOCUMENT])
@@ -169,8 +169,8 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_ADD_DOCUMENT, request.user, documents)
 
     post_action_redirect = None
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         form = FolderListForm(request.POST, user=request.user)
@@ -244,7 +244,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         folder_documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one folder document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     logger.debug('folder_documents (pre permission check): %s' % folder_documents)
     try:
@@ -254,8 +254,8 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
 
     logger.debug('folder_documents (post permission check): %s' % folder_documents)
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         for folder_document in folder_documents:

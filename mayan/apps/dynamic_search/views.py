@@ -108,5 +108,5 @@ def search(request, advanced=False):
 
 
 def search_again(request):
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', reverse('main:home'))).query
     return HttpResponseRedirect('%s?%s' % (reverse('search:search_advanced'), query))

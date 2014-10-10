@@ -63,7 +63,7 @@ def bootstrap_setup_create(request):
 
 
 def bootstrap_setup_edit(request, bootstrap_setup_pk):
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     bootstrap = get_object_or_404(BootstrapSetup, pk=bootstrap_setup_pk)
 
@@ -103,8 +103,8 @@ def bootstrap_setup_delete(request, bootstrap_setup_pk):
 
     post_action_redirect = reverse('bootstrap_setup_list')
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:
@@ -155,8 +155,8 @@ def bootstrap_setup_execute(request, bootstrap_setup_pk):
 
     post_action_redirect = reverse('bootstrap_setup_list')
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:
@@ -211,7 +211,7 @@ def bootstrap_setup_dump(request):
 
 
 def bootstrap_setup_export(request, bootstrap_setup_pk):
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     bootstrap = get_object_or_404(BootstrapSetup, pk=bootstrap_setup_pk)
 
@@ -231,7 +231,7 @@ def bootstrap_setup_export(request, bootstrap_setup_pk):
 def bootstrap_setup_import_from_file(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_IMPORT])
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         form = BootstrapFileImportForm(request.POST, request.FILES)
@@ -259,7 +259,7 @@ def bootstrap_setup_import_from_file(request):
 def bootstrap_setup_import_from_url(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_BOOTSTRAP_IMPORT])
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         form = BootstrapURLImportForm(request.POST, request.FILES)
@@ -289,8 +289,8 @@ def erase_database_view(request):
 
     post_action_redirect = None
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:
@@ -320,8 +320,8 @@ def bootstrap_setup_repository_sync(request):
 
     post_action_redirect = reverse('bootstrap:bootstrap_setup_list')
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:

@@ -38,7 +38,7 @@ def smart_link_action(request):
 
     if not action:
         messages.error(request, _(u'No action selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', u'/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     return HttpResponseRedirect(action)
 
@@ -191,8 +191,8 @@ def smart_link_delete(request, smart_link_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_SMART_LINK_DELETE, request.user, smart_link)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:
@@ -269,8 +269,8 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     except PermissionDenied:
         AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link_condition.smart_link)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         form = SmartLinkConditionForm(request.POST, instance=smart_link_condition)
@@ -306,8 +306,8 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
     except PermissionDenied:
         AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link_condition.smart_link)
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:

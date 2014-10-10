@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -57,7 +58,7 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one queue document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -99,7 +100,7 @@ def submit_document_multiple(request):
     for item_id in request.GET.get('id_list', '').split(','):
         submit_document(request, item_id)
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
 
 def submit_document(request, document_id):
@@ -111,7 +112,7 @@ def submit_document(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
 
     return submit_document_to_queue(request, document=document,
-                                    post_submit_redirect=request.META.get('HTTP_REFERER', '/'))
+                                    post_submit_redirect=request.META.get('HTTP_REFERER', reverse('main:home')))
 
 
 def submit_document_to_queue(request, document, post_submit_redirect=None):
@@ -137,7 +138,7 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
         queue_documents = [get_object_or_404(QueueDocument, pk=queue_document_id) for queue_document_id in queue_document_id_list.split(',')]
     else:
         messages.error(request, _(u'Must provide at least one queue document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))

@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 from django.contrib import messages
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -20,10 +21,10 @@ def form_view(request):
             try:
                 registration.register(form)
                 messages.success(request, _(u'Thank you for registering.'))
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect(reverse('main:home'))
             except AlreadyRegistered:
                 messages.error(request, _(u'Your copy is already registered.'))
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect(reverse('main:home'))
             except Exception as exception:
                 messages.error(request, _(u'Error submiting form; %s.') % exception)
     else:

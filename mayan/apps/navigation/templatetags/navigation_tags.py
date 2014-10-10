@@ -174,7 +174,7 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     links_dict = links_dict.copy()
 
     # Preserve unicode data in URL query
-    previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
+    previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse('main:home')))))
     query_string = urlparse.urlparse(previous_path).query
     parsed_query_string = urlparse.parse_qs(query_string)
 

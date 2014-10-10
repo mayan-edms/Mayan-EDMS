@@ -33,7 +33,7 @@ def render_widget(request, link):
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
 
-    query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
+    query_string = urlparse.urlparse(request.get_full_path()).query or urlparse.urlparse(request.META.get('HTTP_REFERER', reverse('main:home'))).query
     parsed_query_string = urlparse.parse_qs(query_string)
 
     links = resolve_links(context, [link], current_view, current_path, parsed_query_string)

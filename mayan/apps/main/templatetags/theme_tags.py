@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.template import Library, Node
 from django.utils.safestring import mark_safe
 
@@ -9,7 +10,7 @@ register = Library()
 
 class LoginRedirectNode(Node):
     def render(self, context):
-        context['LOGIN_REDIRECT_URL'] = getattr(settings, 'LOGIN_REDIRECT_URL', '/')
+        context['LOGIN_REDIRECT_URL'] = getattr(settings, 'LOGIN_REDIRECT_URL', reverse('main:home'))
         return ''
 
 
