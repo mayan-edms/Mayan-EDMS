@@ -12,13 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from acls.utils import apply_default_acls
 from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
-from documents.events import HISTORY_DOCUMENT_CREATED
 from documents.models import Document
-from history.api import create_history
 from metadata.api import save_metadata_list
 
 from .classes import StagingFile
@@ -92,7 +89,7 @@ class Source(models.Model):
     def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None, description=None):
         new_document = not document
 
-        if not document:
+        if new_document:
             document = Document()
             if document_type:
                 document.document_type = document_type
@@ -100,17 +97,7 @@ class Source(models.Model):
             if description:
                 document.description = description
 
-            document.save()
-
-            # TODO: move this to the Document model
-            apply_default_acls(document, user)
-
-            # TODO: move this to the Document model
-            if user:
-                document.add_as_recent_document_for_user(user)
-                create_history(HISTORY_DOCUMENT_CREATED, document, {'user': user})
-            else:
-                create_history(HISTORY_DOCUMENT_CREATED, document)
+            document.save(user=user)
         else:
             if use_file_name:
                 filename = None

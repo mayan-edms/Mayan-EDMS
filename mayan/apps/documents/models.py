@@ -19,13 +19,16 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
+from acls.utils import apply_default_acls
 from converter.api import (convert, get_page_count,
                            get_available_transformations_choices)
 from converter.exceptions import UnknownFileFormat
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
                                 DEFAULT_PAGE_NUMBER)
+from history.api import create_history
 from mimetype.api import get_mimetype
 
+from .events import HISTORY_DOCUMENT_CREATED
 from .exceptions import NewDocumentVersionNotAllowed
 from .literals import (RELEASE_LEVEL_CHOICES, RELEASE_LEVEL_FINAL,
                        VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
@@ -104,10 +107,21 @@ class Document(models.Model):
         return ('documents:document_view_simple', [self.pk])
 
     def save(self, *args, **kwargs):
-        if not self.pk:
+        user = kwargs.pop('user', None)
+        new_document = not self.pk
+        if new_document:
             self.uuid = UUID_FUNCTION()
             self.date_added = now()
         super(Document, self).save(*args, **kwargs)
+
+        if new_document:
+            apply_default_acls(self, user)
+
+            if user:
+                self.add_as_recent_document_for_user(user)
+                create_history(HISTORY_DOCUMENT_CREATED, self, {'user': user})
+            else:
+                create_history(HISTORY_DOCUMENT_CREATED, self)
 
     def get_cached_image_name(self, page, version):
         document_version = DocumentVersion.objects.get(pk=version)
